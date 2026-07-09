@@ -19,7 +19,10 @@ import {
   useAuth,
 } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
+
 import { Login } from './pages/Login';
+import { Unauthorized } from './pages/Unauthorized';
+import AdminPage from './pages/Admin/AdminPage';
 
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
@@ -27,8 +30,6 @@ import TeacherDashboard from './components/TeacherDashboard';
 import StudentDashboard from './components/StudentDashboard';
 import DirectorDashboard from './components/DirectorDashboard';
 import ParentDashboard from './components/ParentDashboard';
-
-import AdminPage from './pages/Admin/AdminPage';
 
 import { mapDatabaseRole } from './lib/roles';
 import type {
@@ -95,8 +96,8 @@ function InvalidRolePage({
   onLogout: () => Promise<void>;
 }) {
   return (
-    <main className="grid min-h-screen place-items-center p-6">
-      <section className="max-w-md text-center">
+    <main className="grid min-h-screen place-items-center bg-slate-50 p-6">
+      <section className="w-full max-w-md rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-sm">
         <h1 className="text-xl font-bold text-[#181c20]">
           Papel de usuário inválido
         </h1>
@@ -155,7 +156,7 @@ function ModulePlaceholder({
         <button
           type="button"
           onClick={onReturn}
-          className="mt-6 cursor-pointer rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
+          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
         >
           Voltar para o dashboard
         </button>
@@ -168,7 +169,7 @@ function DashboardLayout() {
   const { profile, signOut } = useAuth();
 
   const [activeTab, setActiveTab] =
-    useState<string>('dashboard');
+    useState('dashboard');
 
   const [mobileSidebarOpen, setMobileSidebarOpen] =
     useState(false);
@@ -177,12 +178,6 @@ function DashboardLayout() {
     return <Navigate to="/login" replace />;
   }
 
-  /*
-   * Hoje o papel efetivo vem de profiles.role.
-   * Quando memberships estiver integrado, o AuthContext continuará
-   * entregando o papel efetivo e este componente não precisará ser
-   * reescrito.
-   */
   const currentRole = mapDatabaseRole(profile.role);
 
   if (!currentRole) {
@@ -197,6 +192,10 @@ function DashboardLayout() {
     role: currentRole,
     subtitle: roleToSubtitle[currentRole],
   };
+
+  const canAccessSettings =
+    currentRole === 'admin' ||
+    currentRole === 'director';
 
   async function handleLogout(): Promise<void> {
     try {
@@ -222,8 +221,20 @@ function DashboardLayout() {
       <div className="flex min-h-screen flex-1 flex-col lg:ml-64">
         <Header
           currentUser={currentUser}
-          onOpenSidebar={() => setMobileSidebarOpen(true)}
-          searchPlaceholder={searchPlaceholders[currentRole]}
+          onOpenSidebar={() =>
+            setMobileSidebarOpen(true)
+          }
+          searchPlaceholder={
+            searchPlaceholders[currentRole]
+          }
+          onMessagesClick={() =>
+            setActiveTab('mensagens')
+          }
+          onSettingsClick={
+            canAccessSettings
+              ? () => setActiveTab('configurações')
+              : undefined
+          }
         />
 
         <main className="mx-auto w-full max-w-7xl flex-1 p-6">
@@ -241,7 +252,9 @@ function DashboardLayout() {
             ) : (
               <ModulePlaceholder
                 moduleName={activeTab}
-                onReturn={() => setActiveTab('dashboard')}
+                onReturn={() =>
+                  setActiveTab('dashboard')
+                }
               />
             )}
           </AnimatePresence>
@@ -263,6 +276,11 @@ function App() {
             />
 
             <Route
+              path="/unauthorized"
+              element={<Unauthorized />}
+            />
+
+            <Route
               path="/dashboard/*"
               element={
                 <ProtectedRoute>
@@ -275,7 +293,10 @@ function App() {
               path="/admin/*"
               element={
                 <ProtectedRoute
-                  allowedRoles={['ADMIN', 'DIRECTOR']}
+                  allowedRoles={[
+                    'ADMIN',
+                    'DIRECTOR',
+                  ]}
                 >
                   <AdminPage />
                 </ProtectedRoute>
