@@ -1,13 +1,24 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
-import { User } from '@supabase/supabase-js';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from 'react';
+import type { User } from '@supabase/supabase-js';
 
-interface Profile {
+import { supabase } from '../lib/supabaseClient';
+import {
+  isDatabaseRole,
+  type DatabaseRole,
+} from '../lib/roles';
+
+export interface Profile {
   id: string;
   full_name: string;
   email: string;
-  role: 'ADMIN' | 'DIRECTOR' | 'TEACHER' | 'STUDENT' | 'GUARDIAN';
-  avatar_url?: string;
+  role: DatabaseRole;
+  avatar_url: string | null;
 }
 
 interface AuthContextType {
@@ -18,68 +29,177 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(
+  undefined,
+);
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+async function loadProfile(userId: string): Promise<Profile> {
+  const { data, error } = await supabase
+    .from('profiles')
+    .select('id, full_name, email, role, avatar_url')
+    .eq('id', userId)
+    .single();
+
+  if (error) {
+    throw error;
+  }
+
+  if (!data) {
+    throw new Error('Perfil acadêmico não encontrado.');
+  }
+
+  if (
+    typeof data.role !== 'string' ||
+    !isDatabaseRole(data.role)
+  ) {
+    throw new Error(
+      `Papel inválido recebido do banco: ${String(data.role)}`,
+    );
+  }
+
+  return {
+    id: data.id,
+    full_name: data.full_name,
+    email: data.email,
+    role: data.role,
+    avatar_url: data.avatar_url ?? null,
+  };
+}
+
+export function AuthProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  async function fetchProfile(userId: string) {
-    try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .single();
-      if (error) throw error;
-      setProfile(data);
-    } catch (error) {
-      console.error('Erro ao carregar perfil:', error);
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    let active = true;
+
+    async function synchronizeSession(
+      nextUser: User | null,
+    ): Promise<void> {
+      if (!active) {
+        return;
+      }
+
+      setLoading(true);
+      setUser(nextUser);
+      setProfile(null);
+
+      if (!nextUser) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const nextProfile = await loadProfile(nextUser.id);
+
+        if (active) {
+          setProfile(nextProfile);
+        }
+      } catch (error) {
+        console.error('Erro ao carregar perfil:', error);
+
+        if (active) {
+          setProfile(null);
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    }
+
+    async function restoreSession(): Promise<void> {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
+
+      if (error) {
+        console.error('Erro ao recuperar sessão:', error);
+
+        if (active) {
+          setUser(null);
+          setProfile(null);
+          setLoading(false);
+        }
+
+        return;
+      }
+
+      await synchronizeSession(session?.user ?? null);
+    }
+
+    void restoreSession();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      void synchronizeSession(session?.user ?? null);
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  async function signIn(
+    email: string,
+    password: string,
+  ): Promise<void> {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: email.trim().toLowerCase(),
+      password,
+    });
+
+    if (error) {
+      throw error;
     }
   }
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null);
-      if (session?.user) fetchProfile(session.user.id);
-      else setLoading(false);
-    });
+  async function signOut(): Promise<void> {
+    setLoading(true);
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-      if (session?.user) fetchProfile(session.user.id);
-      else { setProfile(null); setLoading(false); }
-    });
-
-    return () => listener?.subscription.unsubscribe();
-  }, []);
-
-  async function signIn(email: string, password: string) {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-  }
-
-  async function signOut() {
     const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+
+    if (error) {
+      setLoading(false);
+      throw error;
+    }
+
     setUser(null);
     setProfile(null);
+    setLoading(false);
   }
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        profile,
+        loading,
+        signIn,
+        signOut,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
 
-export function useAuth() {
+export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+
+  if (!context) {
+    throw new Error(
+      'useAuth deve ser usado dentro de AuthProvider.',
+    );
   }
+
   return context;
 }

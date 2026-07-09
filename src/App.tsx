@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import {
+  useState,
+  type ReactNode,
+} from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -11,7 +14,10 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 
-import { AuthProvider, useAuth } from './contexts/AuthContext';
+import {
+  AuthProvider,
+  useAuth,
+} from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 
@@ -25,14 +31,22 @@ import ParentDashboard from './components/ParentDashboard';
 import AdminPage from './pages/Admin/AdminPage';
 
 import { mapDatabaseRole } from './lib/roles';
-import type { UserRole } from './types';
+import type {
+  User,
+  UserRole,
+} from './types';
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 5,
+      gcTime: 1000 * 60 * 30,
       refetchOnWindowFocus: false,
+      refetchOnReconnect: true,
       retry: 1,
+    },
+    mutations: {
+      retry: 0,
     },
   },
 });
@@ -53,7 +67,7 @@ const searchPlaceholders: Record<UserRole, string> = {
   parent: 'Pesquisar aluno, nota ou evento...',
 };
 
-function renderDashboard(role: UserRole) {
+function renderDashboard(role: UserRole): ReactNode {
   switch (role) {
     case 'admin':
     case 'director':
@@ -67,7 +81,87 @@ function renderDashboard(role: UserRole) {
 
     case 'parent':
       return <ParentDashboard />;
+
+    default: {
+      const exhaustiveRole: never = role;
+      return exhaustiveRole;
+    }
   }
+}
+
+function InvalidRolePage({
+  onLogout,
+}: {
+  onLogout: () => Promise<void>;
+}) {
+  return (
+    <main className="grid min-h-screen place-items-center p-6">
+      <section className="max-w-md text-center">
+        <h1 className="text-xl font-bold text-[#181c20]">
+          Papel de usuário inválido
+        </h1>
+
+        <p className="mt-3 text-sm text-[#727785]">
+          Sua conta não possui um papel acadêmico reconhecido.
+          Entre em contato com a administração.
+        </p>
+
+        <button
+          type="button"
+          onClick={() => void onLogout()}
+          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
+        >
+          Sair
+        </button>
+      </section>
+    </main>
+  );
+}
+
+function ModulePlaceholder({
+  moduleName,
+  onReturn,
+}: {
+  moduleName: string;
+  onReturn: () => void;
+}) {
+  return (
+    <motion.div
+      key={moduleName}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0 }}
+      className="space-y-4 rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-2xs"
+    >
+      <div className="mx-auto max-w-md py-12">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1a73e8]/10 text-[#005bbf]">
+          <span
+            className="text-2xl font-bold"
+            aria-hidden="true"
+          >
+            🛠
+          </span>
+        </div>
+
+        <h2 className="text-xl font-bold capitalize text-[#181c20]">
+          Módulo {moduleName}
+        </h2>
+
+        <p className="mt-2 text-sm leading-relaxed text-[#727785]">
+          Este módulo ainda está em desenvolvimento e será conectado
+          aos serviços acadêmicos nas próximas etapas.
+        </p>
+
+        <button
+          type="button"
+          onClick={onReturn}
+          className="mt-6 cursor-pointer rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
+        >
+          Voltar para o dashboard
+        </button>
+      </div>
+    </motion.div>
+  );
 }
 
 function DashboardLayout() {
@@ -77,47 +171,40 @@ function DashboardLayout() {
     useState<string>('dashboard');
 
   const [mobileSidebarOpen, setMobileSidebarOpen] =
-    useState<boolean>(false);
+    useState(false);
 
   if (!profile) {
     return <Navigate to="/login" replace />;
   }
 
+  /*
+   * Hoje o papel efetivo vem de profiles.role.
+   * Quando memberships estiver integrado, o AuthContext continuará
+   * entregando o papel efetivo e este componente não precisará ser
+   * reescrito.
+   */
   const currentRole = mapDatabaseRole(profile.role);
 
   if (!currentRole) {
-    return (
-      <main className="grid min-h-screen place-items-center p-6">
-        <section className="max-w-md text-center">
-          <h1 className="text-xl font-bold text-[#181c20]">
-            Papel de usuário inválido
-          </h1>
-
-          <p className="mt-3 text-sm text-[#727785]">
-            Sua conta não possui um papel acadêmico reconhecido.
-            Entre em contato com a administração.
-          </p>
-
-          <button
-            type="button"
-            onClick={() => void signOut()}
-            className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
-          >
-            Sair
-          </button>
-        </section>
-      </main>
-    );
+    return <InvalidRolePage onLogout={signOut} />;
   }
 
-  const currentUser = {
+  const currentUser: User = {
     id: profile.id,
     name: profile.full_name,
     email: profile.email,
-    avatar: profile.avatar_url ?? '',
+    avatar: profile.avatar_url?.trim() || null,
     role: currentRole,
     subtitle: roleToSubtitle[currentRole],
   };
+
+  async function handleLogout(): Promise<void> {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Erro ao sair da aplicação:', error);
+    }
+  }
 
   return (
     <div
@@ -125,7 +212,7 @@ function DashboardLayout() {
       id="app-authenticated-container"
     >
       <Sidebar
-        onLogout={() => void signOut()}
+        onLogout={() => void handleLogout()}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         isOpen={mobileSidebarOpen}
@@ -152,42 +239,10 @@ function DashboardLayout() {
                 {renderDashboard(currentRole)}
               </motion.div>
             ) : (
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="space-y-4 rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-2xs"
-              >
-                <div className="mx-auto max-w-md py-12">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1a73e8]/10 text-[#005bbf]">
-                    <span
-                      className="text-2xl font-bold"
-                      aria-hidden="true"
-                    >
-                      🛠
-                    </span>
-                  </div>
-
-                  <h2 className="text-xl font-bold capitalize text-[#181c20]">
-                    Módulo {activeTab}
-                  </h2>
-
-                  <p className="mt-2 text-sm leading-relaxed text-[#727785]">
-                    Este módulo ainda está em desenvolvimento e será
-                    conectado aos serviços acadêmicos nas próximas
-                    etapas.
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('dashboard')}
-                    className="mt-6 cursor-pointer rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
-                  >
-                    Voltar para o dashboard
-                  </button>
-                </div>
-              </motion.div>
+              <ModulePlaceholder
+                moduleName={activeTab}
+                onReturn={() => setActiveTab('dashboard')}
+              />
             )}
           </AnimatePresence>
         </main>
@@ -202,7 +257,10 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
 
             <Route
               path="/dashboard/*"
@@ -226,12 +284,22 @@ function App() {
 
             <Route
               path="/"
-              element={<Navigate to="/dashboard" replace />}
+              element={
+                <Navigate
+                  to="/dashboard"
+                  replace
+                />
+              }
             />
 
             <Route
               path="*"
-              element={<Navigate to="/dashboard" replace />}
+              element={
+                <Navigate
+                  to="/dashboard"
+                  replace
+                />
+              }
             />
           </Routes>
         </AuthProvider>

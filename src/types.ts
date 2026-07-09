@@ -10,7 +10,7 @@ export interface User {
   name: string;
   email: string;
   role: UserRole;
-  avatar: string;
+  avatar: string | null;
   subtitle: string; // ex: "Administrador", "Professor", etc.
 }
 
