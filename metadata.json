@@ -1,0 +1,6 @@
+{
+  "name": "EduManager Pro",
+  "description": "Sistema de gestão acadêmica com painéis personalizados para alunos, professores, diretores e responsáveis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
