@@ -1,4 +1,4 @@
-export type UserRole = 'teacher' | 'student' | 'director' | 'parent';
+export type UserRole = 'admin' | 'teacher' | 'student' | 'director' | 'parent';
 
 export interface User {
   id: string;
@@ -6,7 +6,7 @@ export interface User {
   email: string;
   role: UserRole;
   avatar: string;
-  subtitle: string;
+  subtitle: string; // ex: "Administrador", "Professor", etc.
 }
 
 export interface ClassSchedule {

@@ -46,14 +46,17 @@ export default function Sidebar({
     { id: 'settings', label: 'Ajustes', icon: Settings },
   ];
 
+  // ✅ ADICIONADO 'admin' AO roleLabels
   const roleLabels: Record<UserRole, { label: string; icon: any; color: string }> = {
+    admin: { label: 'Administrador', icon: UserCog, color: 'text-blue-600 bg-blue-50' },
     teacher: { label: 'Professor', icon: GraduationCap, color: 'text-blue-600 bg-blue-50' },
     student: { label: 'Aluno', icon: Users, color: 'text-emerald-600 bg-emerald-50' },
     director: { label: 'Diretor', icon: UserCog, color: 'text-amber-600 bg-amber-50' },
     parent: { label: 'Responsável', icon: UserCheck, color: 'text-purple-600 bg-purple-50' },
   };
 
-  const currentRoleInfo = roleLabels[currentRole];
+  // Fallback para caso currentRole não esteja no roleLabels (ex: undefined)
+  const currentRoleInfo = roleLabels[currentRole] || roleLabels.student;
 
   return (
     <>
@@ -120,19 +123,19 @@ export default function Sidebar({
           })}
         </nav>
 
-        {/* Active Role Quick Toggle (Super handy for evaluation!) */}
+        {/* Active Role Quick Toggle - com admin incluído */}
         <div className="px-4 mb-4" id="role-quick-switcher">
           <div className="p-3.5 bg-[#f1f4fa] border border-[#dfe3e8] rounded-xl">
             <p className="text-[10px] font-bold text-[#727785] uppercase tracking-widest mb-2">Alternar Perfil Demo</p>
-            <div className="grid grid-cols-4 gap-1.5">
-              {(['teacher', 'student', 'director', 'parent'] as UserRole[]).map((role) => {
+            <div className="grid grid-cols-5 gap-1.5">
+              {(['admin', 'teacher', 'student', 'director', 'parent'] as UserRole[]).map((role) => {
                 const info = roleLabels[role];
-                const RoleIcon = info.icon;
+                const RoleIcon = info?.icon || UserCircle;
                 const isSelected = currentRole === role;
                 return (
                   <button
                     key={role}
-                    title={`Mudar para ${info.label}`}
+                    title={`Mudar para ${info?.label || role}`}
                     onClick={() => {
                       onRoleChange(role);
                       onClose();
