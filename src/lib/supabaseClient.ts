@@ -1,7 +1,17 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Valores fixos (seus dados do Supabase)
-const supabaseUrl = 'https://jrdmrhsqqclnrouoednn.supabase.co';
-const supabaseAnonKey = 'sb_publishable_8Zdx4hp5J6oyW_6j9dGOXQ_7vsQmbFp';
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabasePublishableKey =
+    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+if (!supabaseUrl || !supabasePublishableKey) {
+    throw new Error(
+        'As variáveis VITE_SUPABASE_URL e ' +
+        'VITE_SUPABASE_PUBLISHABLE_KEY são obrigatórias.',
+    );
+}
+
+export const supabase = createClient(
+    supabaseUrl,
+    supabasePublishableKey,
+);
