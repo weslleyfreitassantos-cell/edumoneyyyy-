@@ -1,9 +1,16 @@
-import { useMemo, useState } from 'react';
+import {
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
 
 import {
   PlusCircle,
+  Search,
   ShieldCheck,
   UserCog,
+  UserRoundCheck,
+  UserRoundX,
   Users,
 } from 'lucide-react';
 
@@ -13,7 +20,10 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 
-import type { CurrentDatabaseRole } from '../../../lib/permissions';
+import {
+  CURRENT_DATABASE_ROLES,
+  type CurrentDatabaseRole,
+} from '../../../lib/permissions';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 
@@ -21,7 +31,7 @@ type RoleFilter =
   | 'ALL'
   | CurrentDatabaseRole;
 
-const roleLabels: Record<
+export const schoolUserRoleLabels: Record<
   CurrentDatabaseRole,
   string
 > = {
@@ -56,23 +66,34 @@ const filterOptions: {
 const plannedRoles = [
   {
     role: 'SUPER_ADMIN',
+    title: 'Papel futuro de plataforma',
     description:
-      'Em breve, papel de plataforma',
+      'Administração global para criação e gestão de escolas.',
     icon: ShieldCheck,
   },
   {
     role: 'SCHOOL_ADMIN',
+    title:
+      'Papel futuro de administração interna da escola',
     description:
-      'Em breve, administração interna da escola',
+      'Gestão escolar de usuários, estrutura acadêmica e permissões internas.',
     icon: UserCog,
   },
   {
     role: 'SECRETARY',
+    title: 'Papel futuro de secretaria escolar',
     description:
-      'Em breve, secretaria escolar',
+      'Operação de cadastros, responsáveis e matrículas da própria escola.',
     icon: Users,
   },
 ] as const;
+
+export interface SchoolUserSummary {
+  total: number;
+  active: number;
+  inactive: number;
+  byRole: Record<CurrentDatabaseRole, number>;
+}
 
 function getErrorMessage(
   error: unknown,
@@ -91,6 +112,16 @@ function getErrorMessage(
   }
 
   return 'Não foi possível carregar os usuários da escola.';
+}
+
+function normalizeSearchValue(
+  value: string,
+): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim()
+    .toLowerCase();
 }
 
 function formatDate(
@@ -114,6 +145,68 @@ function formatDate(
   ).format(date);
 }
 
+export function filterSchoolUsers(
+  users: SchoolUserRow[],
+  selectedRole: RoleFilter,
+  searchTerm: string,
+): SchoolUserRow[] {
+  const normalizedTerm =
+    normalizeSearchValue(searchTerm);
+
+  return users.filter((user) => {
+    const matchesRole =
+      selectedRole === 'ALL' ||
+      user.role === selectedRole;
+
+    if (!matchesRole) {
+      return false;
+    }
+
+    if (!normalizedTerm) {
+      return true;
+    }
+
+    const searchableText = [
+      user.profile?.full_name ?? '',
+      user.profile?.email ?? '',
+      user.role,
+      schoolUserRoleLabels[user.role],
+    ]
+      .map(normalizeSearchValue)
+      .join(' ');
+
+    return searchableText.includes(
+      normalizedTerm,
+    );
+  });
+}
+
+export function getSchoolUserSummary(
+  users: SchoolUserRow[],
+): SchoolUserSummary {
+  const byRole = Object.fromEntries(
+    CURRENT_DATABASE_ROLES.map((role) => [
+      role,
+      0,
+    ]),
+  ) as Record<CurrentDatabaseRole, number>;
+
+  for (const user of users) {
+    byRole[user.role] += 1;
+  }
+
+  const active = users.filter(
+    (user) => user.active,
+  ).length;
+
+  return {
+    total: users.length,
+    active,
+    inactive: users.length - active,
+    byRole,
+  };
+}
+
 function StatusBadge({
   active,
 }: {
@@ -122,7 +215,7 @@ function StatusBadge({
   if (active === null) {
     return (
       <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600">
-        Não informado
+        Status não informado
       </span>
     );
   }
@@ -140,19 +233,52 @@ function StatusBadge({
   );
 }
 
+function SummaryCard({
+  label,
+  value,
+  icon,
+  tone = 'default',
+}: {
+  label: string;
+  value: number;
+  icon: ReactNode;
+  tone?: 'default' | 'success' | 'muted';
+}) {
+  const toneClass =
+    tone === 'success'
+      ? 'bg-green-50 text-green-700'
+      : tone === 'muted'
+        ? 'bg-gray-100 text-gray-600'
+        : 'bg-blue-50 text-[#005bbf]';
+
+  return (
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold text-[#727785]">
+            {label}
+          </p>
+
+          <p className="mt-2 text-2xl font-bold text-[#181c20]">
+            {value}
+          </p>
+        </div>
+
+        <span
+          className={`flex h-10 w-10 items-center justify-center rounded-lg ${toneClass}`}
+        >
+          {icon}
+        </span>
+      </div>
+    </article>
+  );
+}
+
 function SchoolUsersTable({
   users,
 }: {
   users: SchoolUserRow[];
 }) {
-  if (users.length === 0) {
-    return (
-      <div className="rounded-xl border border-[#dfe3e8] bg-white p-8 text-center text-sm text-gray-500">
-        Nenhum usuário encontrado para o filtro selecionado.
-      </div>
-    );
-  }
-
   return (
     <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
       <div className="overflow-x-auto">
@@ -203,7 +329,11 @@ function SchoolUsersTable({
 
                 <td className="px-4 py-3">
                   <span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf]">
-                    {roleLabels[user.role]}
+                    {
+                      schoolUserRoleLabels[
+                        user.role
+                      ]
+                    }
                   </span>
                 </td>
 
@@ -233,6 +363,28 @@ function SchoolUsersTable({
   );
 }
 
+function EmptyState({
+  hasUsers,
+}: {
+  hasUsers: boolean;
+}) {
+  return (
+    <div className="rounded-xl border border-[#dfe3e8] bg-white p-8 text-center">
+      <h3 className="text-base font-bold text-[#181c20]">
+        {hasUsers
+          ? 'Nenhum resultado encontrado'
+          : 'Nenhum usuário vinculado'}
+      </h3>
+
+      <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#727785]">
+        {hasUsers
+          ? 'Ajuste a busca ou os filtros para localizar usuários por nome, e-mail ou papel.'
+          : 'Quando houver vínculos ativos ou inativos em memberships para esta instituição, eles aparecerão nesta tela somente leitura.'}
+      </p>
+    </div>
+  );
+}
+
 export default function SchoolUsersTab() {
   const { profile } = useAuth();
 
@@ -248,17 +400,25 @@ export default function SchoolUsersTab() {
   const [selectedRole, setSelectedRole] =
     useState<RoleFilter>('ALL');
 
-  const filteredUsers = useMemo(() => {
-    const users = usersQuery.data ?? [];
+  const [searchTerm, setSearchTerm] =
+    useState('');
 
-    if (selectedRole === 'ALL') {
-      return users;
-    }
+  const users = usersQuery.data ?? [];
 
-    return users.filter(
-      (user) => user.role === selectedRole,
-    );
-  }, [selectedRole, usersQuery.data]);
+  const summary = useMemo(
+    () => getSchoolUserSummary(users),
+    [users],
+  );
+
+  const filteredUsers = useMemo(
+    () =>
+      filterSchoolUsers(
+        users,
+        selectedRole,
+        searchTerm,
+      ),
+    [searchTerm, selectedRole, users],
+  );
 
   if (institutionQuery.isLoading) {
     return (
@@ -320,24 +480,122 @@ export default function SchoolUsersTab() {
         </div>
       </section>
 
+      <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        <SummaryCard
+          label="Usuários vinculados"
+          value={summary.total}
+          icon={
+            <Users
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <SummaryCard
+          label="Vínculos ativos"
+          value={summary.active}
+          tone="success"
+          icon={
+            <UserRoundCheck
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <SummaryCard
+          label="Vínculos inativos"
+          value={summary.inactive}
+          tone="muted"
+          icon={
+            <UserRoundX
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+          <p className="text-xs font-semibold text-[#727785]">
+            Total por papel
+          </p>
+
+          <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+            {CURRENT_DATABASE_ROLES.map(
+              (role) => (
+                <div
+                  key={role}
+                  className="flex items-center justify-between gap-2"
+                >
+                  <dt className="truncate text-[#727785]">
+                    {schoolUserRoleLabels[role]}
+                  </dt>
+                  <dd className="font-bold text-[#181c20]">
+                    {summary.byRole[role]}
+                  </dd>
+                </div>
+              ),
+            )}
+          </dl>
+        </article>
+      </section>
+
       <section className="space-y-3">
-        <div className="flex flex-wrap gap-2">
-          {filterOptions.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() =>
-                setSelectedRole(option.value)
-              }
-              className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
-                selectedRole === option.value
-                  ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
-                  : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50'
-              }`}
+        <div className="grid gap-3 lg:grid-cols-[minmax(240px,1fr)_auto] lg:items-end">
+          <div>
+            <label
+              htmlFor="school-users-search"
+              className="block text-sm font-medium text-[#414754]"
             >
-              {option.label}
-            </button>
-          ))}
+              Buscar usuário
+            </label>
+
+            <div className="relative mt-1">
+              <Search
+                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400"
+                aria-hidden="true"
+              />
+
+              <input
+                id="school-users-search"
+                type="search"
+                value={searchTerm}
+                onChange={(event) =>
+                  setSearchTerm(
+                    event.target.value,
+                  )
+                }
+                placeholder="Nome, e-mail ou papel"
+                className="w-full rounded-lg border border-[#dfe3e8] bg-white py-2 pl-9 pr-3 text-sm text-[#181c20] outline-none transition-colors placeholder:text-gray-400 focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+              />
+            </div>
+          </div>
+
+          <div
+            className="flex flex-wrap gap-2"
+            aria-label="Filtrar usuários por papel"
+          >
+            {filterOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                aria-pressed={
+                  selectedRole === option.value
+                }
+                onClick={() =>
+                  setSelectedRole(option.value)
+                }
+                className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
+                  selectedRole === option.value
+                    ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
+                    : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50'
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {usersQuery.isLoading ? (
@@ -353,6 +611,10 @@ export default function SchoolUsersTab() {
               usersQuery.error,
             )}
           </div>
+        ) : filteredUsers.length === 0 ? (
+          <EmptyState
+            hasUsers={users.length > 0}
+          />
         ) : (
           <SchoolUsersTable
             users={filteredUsers}
@@ -361,9 +623,15 @@ export default function SchoolUsersTab() {
       </section>
 
       <section className="space-y-3">
-        <h3 className="text-lg font-bold text-[#181c20]">
-          Papéis planejados
-        </h3>
+        <div>
+          <h3 className="text-lg font-bold text-[#181c20]">
+            Papéis planejados
+          </h3>
+
+          <p className="mt-1 text-sm text-[#727785]">
+            Estes papéis ainda não estão ativos no banco e aparecem apenas como referência do modelo futuro.
+          </p>
+        </div>
 
         <div className="grid gap-3 md:grid-cols-3">
           {plannedRoles.map((plannedRole) => {
@@ -374,8 +642,8 @@ export default function SchoolUsersTab() {
                 key={plannedRole.role}
                 className="rounded-xl border border-dashed border-[#dfe3e8] bg-white p-4"
               >
-                <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-600">
                     <Icon
                       className="h-5 w-5"
                       aria-hidden="true"
@@ -387,8 +655,16 @@ export default function SchoolUsersTab() {
                       {plannedRole.role}
                     </h4>
 
+                    <p className="mt-1 text-xs font-semibold text-[#414754]">
+                      {plannedRole.title}
+                    </p>
+
                     <p className="mt-1 text-xs leading-relaxed text-[#727785]">
                       {plannedRole.description}
+                    </p>
+
+                    <p className="mt-2 text-xs font-semibold text-amber-700">
+                      Ainda não ativo no banco.
                     </p>
                   </div>
                 </div>
