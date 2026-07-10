@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 import AdminOverviewTab from './tabs/AdminOverviewTab';
+import AcademicYearsTab from './tabs/AcademicYearsTab';
 import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
 import EnrollmentsTab from './tabs/EnrollmentsTab';
@@ -64,6 +65,8 @@ export default function AdminPage() {
         return <StudentsTab />;
       case 'teachers':
         return <TeachersTab />;
+      case 'academic-years':
+        return <AcademicYearsTab />;
       case 'classes':
         return <ClassesTab />;
       case 'subjects':

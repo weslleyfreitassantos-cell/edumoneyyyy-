@@ -5,9 +5,13 @@ import {
 } from 'vitest';
 
 import {
+  academicYearSchema,
+  academicYearUpdateSchema,
   studentSchema,
   studentUpdateSchema,
   teacherSchema,
+  termSchema,
+  termUpdateSchema,
 } from './adminSchemas';
 
 const validStudent = {
@@ -28,6 +32,24 @@ const validTeacher = {
   full_name: 'Professor Teste',
 
   email: 'professor@escola.com',
+};
+
+const validAcademicYear = {
+  institution_id:
+    '22222222-2222-4222-8222-222222222222',
+  name: 'Ano letivo 2026',
+  start_date: '2026-01-20',
+  end_date: '2026-12-10',
+  active: true,
+};
+
+const validTerm = {
+  academic_year_id:
+    '33333333-3333-4333-8333-333333333333',
+  name: '1º Bimestre',
+  start_date: '2026-01-20',
+  end_date: '2026-03-31',
+  active: true,
 };
 
 describe('studentSchema', () => {
@@ -151,6 +173,82 @@ describe('teacherSchema', () => {
       teacherSchema.safeParse({
         ...validTeacher,
         role: 'ADMIN',
+      });
+
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('academicYearSchema', () => {
+  it('valida um ano letivo', () => {
+    const result =
+      academicYearSchema.parse({
+        ...validAcademicYear,
+        name: '  Ano letivo 2026  ',
+      });
+
+    expect(result.name).toBe(
+      'Ano letivo 2026',
+    );
+  });
+
+  it('rejeita data final anterior à inicial', () => {
+    const result =
+      academicYearSchema.safeParse({
+        ...validAcademicYear,
+        start_date: '2026-12-10',
+        end_date: '2026-01-20',
+      });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita alteração com campo externo', () => {
+    const result =
+      academicYearUpdateSchema.safeParse({
+        name: 'Ano letivo 2026',
+        start_date: '2026-01-20',
+        end_date: '2026-12-10',
+        institution_id:
+          '22222222-2222-4222-8222-222222222222',
+        active: true,
+      });
+
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('termSchema', () => {
+  it('valida um período', () => {
+    const result = termSchema.parse({
+      ...validTerm,
+      name: '  1º Bimestre  ',
+    });
+
+    expect(result.name).toBe(
+      '1º Bimestre',
+    );
+  });
+
+  it('rejeita data final anterior à inicial', () => {
+    const result = termSchema.safeParse({
+      ...validTerm,
+      start_date: '2026-03-31',
+      end_date: '2026-01-20',
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita edição com troca de ano letivo', () => {
+    const result =
+      termUpdateSchema.safeParse({
+        name: '2º Bimestre',
+        start_date: '2026-04-01',
+        end_date: '2026-06-30',
+        academic_year_id:
+          '33333333-3333-4333-8333-333333333333',
+        active: true,
       });
 
     expect(result.success).toBe(false);

@@ -53,6 +53,32 @@ const studentEditableFields = {
   cpf: optionalCpfSchema,
 };
 
+const dateStringSchema = z
+  .string()
+  .regex(
+    /^\d{4}-\d{2}-\d{2}$/,
+    'Data inválida',
+  );
+
+function refineDateOrder<
+  T extends {
+    start_date: string;
+    end_date: string;
+  },
+>(
+  value: T,
+  context: z.RefinementCtx,
+): void {
+  if (value.end_date < value.start_date) {
+    context.addIssue({
+      code: 'custom',
+      path: ['end_date'],
+      message:
+        'A data final não pode ser anterior à data inicial',
+    });
+  }
+}
+
 export const studentSchema = z
   .object({
     ...personIdentityFields,
@@ -67,6 +93,72 @@ export const studentUpdateSchema = z
 export const teacherSchema = z
   .object(personIdentityFields)
   .strict();
+
+const academicYearFields = {
+  name: z
+    .string()
+    .trim()
+    .min(3, 'Nome do ano letivo é obrigatório')
+    .max(
+      80,
+      'Nome do ano letivo deve possuir no máximo 80 caracteres',
+    ),
+
+  start_date: dateStringSchema,
+
+  end_date: dateStringSchema,
+
+  active: z.boolean().default(true),
+};
+
+export const academicYearSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+
+    ...academicYearFields,
+  })
+  .strict()
+  .superRefine(refineDateOrder);
+
+export const academicYearUpdateSchema = z
+  .object(academicYearFields)
+  .strict()
+  .superRefine(refineDateOrder);
+
+const termFields = {
+  name: z
+    .string()
+    .trim()
+    .min(2, 'Nome do período é obrigatório')
+    .max(
+      80,
+      'Nome do período deve possuir no máximo 80 caracteres',
+    ),
+
+  start_date: dateStringSchema,
+
+  end_date: dateStringSchema,
+
+  active: z.boolean().default(true),
+};
+
+export const termSchema = z
+  .object({
+    academic_year_id: z.guid(
+      'Ano letivo é obrigatório',
+    ),
+
+    ...termFields,
+  })
+  .strict()
+  .superRefine(refineDateOrder);
+
+export const termUpdateSchema = z
+  .object(termFields)
+  .strict()
+  .superRefine(refineDateOrder);
 
 export const classSchema = z.object({
   name: z
@@ -113,6 +205,18 @@ export type StudentUpdateData =
 
 export type TeacherFormData =
   z.infer<typeof teacherSchema>;
+
+export type AcademicYearFormData =
+  z.infer<typeof academicYearSchema>;
+
+export type AcademicYearUpdateData =
+  z.infer<typeof academicYearUpdateSchema>;
+
+export type TermFormData =
+  z.infer<typeof termSchema>;
+
+export type TermUpdateData =
+  z.infer<typeof termUpdateSchema>;
 
 export type ClassFormData =
   z.infer<typeof classSchema>;
