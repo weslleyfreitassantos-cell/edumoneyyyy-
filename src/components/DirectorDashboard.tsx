@@ -11,6 +11,21 @@ import type { ReactNode } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useAdminOverview } from '../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
+import type { DatabaseRole } from '../lib/roles';
+
+export function getDirectorDashboardTitle(
+  role: DatabaseRole | undefined,
+): string {
+  if (role === 'ADMIN') {
+    return 'Painel do Administrador';
+  }
+
+  if (role === 'DIRECTOR') {
+    return 'Painel do Diretor';
+  }
+
+  return 'Painel acadêmico';
+}
 
 function getErrorMessage(
   error: unknown,
@@ -123,6 +138,8 @@ export default function DirectorDashboard() {
   }
 
   const overview = overviewQuery.data;
+  const dashboardTitle =
+    getDirectorDashboardTitle(profile.role);
 
   if (!overview) {
     return (
@@ -136,7 +153,7 @@ export default function DirectorDashboard() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-[#181c20]">
-          Painel do Diretor
+          {dashboardTitle}
         </h2>
         <p className="mt-1 text-sm text-[#727785]">
           Resumo da estrutura acadêmica carregado das tabelas operacionais.
