@@ -9,6 +9,8 @@ import {
   FUTURE_PLATFORM_ROLES,
   FUTURE_ROLE_PLAN,
   FUTURE_SCHOOL_ROLES,
+  getEffectiveRole,
+  hasEffectivePermission,
   hasPermission,
 } from './permissions';
 
@@ -79,5 +81,84 @@ describe('school permissions', () => {
     expect(CURRENT_DATABASE_ROLES).not.toContain(
       'SECRETARY',
     );
+  });
+});
+
+describe('effective school role permissions', () => {
+  it('usa membershipRole quando ela existe', () => {
+    expect(
+      getEffectiveRole({
+        membershipRole: 'DIRECTOR',
+        profileRole: 'ADMIN',
+      }),
+    ).toBe('DIRECTOR');
+  });
+
+  it('usa profileRole como fallback quando membershipRole nao existe', () => {
+    expect(
+      getEffectiveRole({
+        membershipRole: null,
+        profileRole: 'ADMIN',
+      }),
+    ).toBe('ADMIN');
+  });
+
+  it('retorna null quando nao existe membershipRole nem profileRole', () => {
+    expect(
+      getEffectiveRole({
+        membershipRole: null,
+        profileRole: null,
+      }),
+    ).toBeNull();
+  });
+
+  it('prioriza membershipRole ao verificar permissao efetiva', () => {
+    expect(
+      hasEffectivePermission({
+        membershipRole: 'TEACHER',
+        profileRole: 'ADMIN',
+        permission: 'manage_school_users',
+      }),
+    ).toBe(false);
+  });
+
+  it('permite ADMIN via membership gerenciar usuarios da escola', () => {
+    expect(
+      hasEffectivePermission({
+        membershipRole: 'ADMIN',
+        profileRole: null,
+        permission: 'manage_school_users',
+      }),
+    ).toBe(true);
+  });
+
+  it('mantem compatibilidade de DIRECTOR via membership', () => {
+    expect(
+      hasEffectivePermission({
+        membershipRole: 'DIRECTOR',
+        profileRole: null,
+        permission: 'manage_school_users',
+      }),
+    ).toBe(true);
+  });
+
+  it('nao permite TEACHER via membership gerenciar usuarios da escola', () => {
+    expect(
+      hasEffectivePermission({
+        membershipRole: 'TEACHER',
+        profileRole: null,
+        permission: 'manage_school_users',
+      }),
+    ).toBe(false);
+  });
+
+  it('mantem fallback com profileRole quando membershipRole nao existe', () => {
+    expect(
+      hasEffectivePermission({
+        membershipRole: null,
+        profileRole: 'ADMIN',
+        permission: 'manage_school_users',
+      }),
+    ).toBe(true);
   });
 });
