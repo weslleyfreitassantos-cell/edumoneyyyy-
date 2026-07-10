@@ -365,19 +365,25 @@ function SchoolUsersTable({
 
 function EmptyState({
   hasUsers,
+  hasInstitution,
 }: {
   hasUsers: boolean;
+  hasInstitution: boolean;
 }) {
   return (
     <div className="rounded-xl border border-[#dfe3e8] bg-white p-8 text-center">
       <h3 className="text-base font-bold text-[#181c20]">
-        {hasUsers
+        {!hasInstitution
+          ? 'Nenhuma escola ativa selecionada'
+          : hasUsers
           ? 'Nenhum resultado encontrado'
           : 'Nenhum usuário vinculado'}
       </h3>
 
       <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-[#727785]">
-        {hasUsers
+        {!hasInstitution
+          ? 'Selecione uma escola ativa para visualizar os usuários vinculados a ela.'
+          : hasUsers
           ? 'Ajuste a busca ou os filtros para localizar usuários por nome, e-mail ou papel.'
           : 'Quando houver vínculos ativos ou inativos em memberships para esta instituição, eles aparecerão nesta tela somente leitura.'}
       </p>
@@ -611,9 +617,15 @@ export default function SchoolUsersTab() {
               usersQuery.error,
             )}
           </div>
+        ) : !institutionId ? (
+          <EmptyState
+            hasUsers={false}
+            hasInstitution={false}
+          />
         ) : filteredUsers.length === 0 ? (
           <EmptyState
             hasUsers={users.length > 0}
+            hasInstitution
           />
         ) : (
           <SchoolUsersTable
