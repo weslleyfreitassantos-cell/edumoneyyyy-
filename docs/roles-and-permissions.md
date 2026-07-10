@@ -188,6 +188,31 @@ Novas funcoes ou fluxos futuros podem incluir convites unificados, cadastro de s
 - `Convites`: acompanhamento de convites e definicao de senha.
 - `Permissoes`: governanca de papeis e autorizacoes por escola.
 
+## Cadastro unificado de usuarios - previa visual
+
+A aba `Usuarios da Escola` possui uma previa visual do fluxo futuro de cadastro
+e convite unificado. A interface permite escolher o tipo de usuario, preencher
+dados locais e revisar o que seria criado futuramente, mas nenhuma acao real e
+executada nesta etapa.
+
+Garantias desta etapa:
+
+- nenhum usuario e criado;
+- nenhum convite real e enviado;
+- o botao de envio permanece desabilitado;
+- nenhuma chamada a Supabase Auth, Edge Functions ou banco e feita;
+- `SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` continuam nao ativos no banco;
+- a criacao real depende da reconciliacao das migrations;
+- a criacao real depende de Edge Functions e fluxo Auth seguros.
+
+O fluxo visual cobre:
+
+- alunos, que futuramente podem ter cadastro academico separado de login;
+- professores, que precisarao de vinculos e atribuicoes academicas;
+- responsaveis, que precisarao de vinculos via `guardianships`;
+- diretor, usando o papel atual `DIRECTOR`;
+- administracao escolar e secretaria escolar apenas como papeis planejados.
+
 ## Role efetiva por instituicao ativa
 
 A aplicacao agora possui helpers de permissao para a transicao gradual entre `profiles.role` e `memberships.role`.
