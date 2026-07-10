@@ -9,6 +9,7 @@ import {
   academicYearUpdateSchema,
   classSchema,
   classUpdateSchema,
+  guardianSchema,
   studentSchema,
   studentUpdateSchema,
   subjectSchema,
@@ -75,6 +76,21 @@ const validSubject = {
   code: ' mat ',
   workload: 80,
   active: true,
+};
+
+const validGuardian = {
+  institution_id:
+    '22222222-2222-4222-8222-222222222222',
+  full_name: 'Responsável Teste',
+  email: 'responsavel@escola.com',
+  student_links: [
+    {
+      student_id:
+        '44444444-4444-4444-8444-444444444444',
+      relationship: 'Mãe',
+      is_primary: true,
+    },
+  ],
 };
 
 describe('studentSchema', () => {
@@ -346,6 +362,54 @@ describe('subjectSchema', () => {
     const result =
       subjectUpdateSchema.safeParse({
         ...validSubject,
+      });
+
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('guardianSchema', () => {
+  it('valida responsável com vínculo de aluno', () => {
+    const result =
+      guardianSchema.parse({
+        ...validGuardian,
+        full_name:
+          '  Responsável Teste  ',
+        email:
+          '  RESPONSAVEL@ESCOLA.COM  ',
+      });
+
+    expect(result.full_name).toBe(
+      'Responsável Teste',
+    );
+    expect(result.email).toBe(
+      'responsavel@escola.com',
+    );
+    expect(result.student_links).toHaveLength(1);
+  });
+
+  it('rejeita responsável sem aluno vinculado', () => {
+    const result =
+      guardianSchema.safeParse({
+        ...validGuardian,
+        student_links: [],
+      });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita aluno duplicado no cadastro', () => {
+    const result =
+      guardianSchema.safeParse({
+        ...validGuardian,
+        student_links: [
+          ...validGuardian.student_links,
+          {
+            ...validGuardian
+              .student_links[0],
+            relationship: 'Pai',
+          },
+        ],
       });
 
     expect(result.success).toBe(false);

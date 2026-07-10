@@ -111,6 +111,60 @@ export const teacherSchema = z
   .object(personIdentityFields)
   .strict();
 
+export const guardianLinkSchema = z
+  .object({
+    student_id: z.guid(
+      'Aluno é obrigatório',
+    ),
+
+    relationship: z
+      .string()
+      .trim()
+      .min(2, 'Parentesco é obrigatório')
+      .max(
+        40,
+        'Parentesco deve possuir no máximo 40 caracteres',
+      ),
+
+    is_primary: z.boolean().default(false),
+  })
+  .strict();
+
+export const guardianSchema = z
+  .object({
+    ...personIdentityFields,
+
+    student_links: z
+      .array(guardianLinkSchema)
+      .min(
+        1,
+        'Selecione pelo menos um aluno',
+      ),
+  })
+  .strict()
+  .superRefine((value, context) => {
+    const seenStudents = new Set<string>();
+
+    value.student_links.forEach(
+      (link, index) => {
+        if (seenStudents.has(link.student_id)) {
+          context.addIssue({
+            code: 'custom',
+            path: [
+              'student_links',
+              index,
+              'student_id',
+            ],
+            message:
+              'O mesmo aluno não pode ser vinculado duas vezes no cadastro',
+          });
+        }
+
+        seenStudents.add(link.student_id);
+      },
+    );
+  });
+
 const academicYearFields = {
   name: z
     .string()
@@ -302,6 +356,12 @@ export type StudentUpdateData =
 
 export type TeacherFormData =
   z.infer<typeof teacherSchema>;
+
+export type GuardianLinkData =
+  z.infer<typeof guardianLinkSchema>;
+
+export type GuardianFormData =
+  z.infer<typeof guardianSchema>;
 
 export type AcademicYearFormData =
   z.infer<typeof academicYearSchema>;

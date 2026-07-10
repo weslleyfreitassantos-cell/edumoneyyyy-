@@ -8,6 +8,7 @@ import AcademicYearsTab from './tabs/AcademicYearsTab';
 import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
 import EnrollmentsTab from './tabs/EnrollmentsTab';
+import GuardiansTab from './tabs/GuardiansTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
@@ -65,6 +66,8 @@ export default function AdminPage() {
         return <StudentsTab />;
       case 'teachers':
         return <TeachersTab />;
+      case 'guardians':
+        return <GuardiansTab />;
       case 'academic-years':
         return <AcademicYearsTab />;
       case 'classes':
