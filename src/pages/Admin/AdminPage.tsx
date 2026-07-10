@@ -3,9 +3,10 @@ import { Navigate } from 'react-router-dom';
 
 import InstitutionSwitcher from '../../components/InstitutionSwitcher';
 import { useAuth } from '../../contexts/AuthContext';
+import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
 
 import {
-  hasPermission,
+  hasEffectivePermission,
 } from '../../lib/permissions';
 
 import AdminOverviewTab from './tabs/AdminOverviewTab';
@@ -33,12 +34,22 @@ type TabType =
 
 export default function AdminPage() {
   const { profile } = useAuth();
+  const institutionQuery =
+    useCurrentInstitution(profile?.id);
   const [activeTab, setActiveTab] =
     useState<TabType>('overview');
 
+  const canManageSchool =
+    hasEffectivePermission({
+      membershipRole:
+        institutionQuery.currentRole,
+      profileRole: profile?.role,
+      permission: 'manage_school',
+    });
+
   if (
     !profile ||
-    !hasPermission(profile.role, 'manage_school')
+    !canManageSchool
   ) {
     return (
       <Navigate

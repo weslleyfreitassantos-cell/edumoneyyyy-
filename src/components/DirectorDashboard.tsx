@@ -11,11 +11,14 @@ import type { ReactNode } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useAdminOverview } from '../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
-import type { DatabaseRole } from '../lib/roles';
+import {
+  getEffectiveRole,
+  type CurrentDatabaseRole,
+} from '../lib/permissions';
 import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
-  role: DatabaseRole | undefined,
+  role: CurrentDatabaseRole | undefined,
 ): string {
   if (role === 'ADMIN') {
     return 'Painel do Administrador';
@@ -110,6 +113,13 @@ export default function DirectorDashboard() {
       institutionQuery.data ?? '',
     );
 
+  const effectiveRole =
+    getEffectiveRole({
+      membershipRole:
+        institutionQuery.currentRole,
+      profileRole: profile?.role,
+    }) ?? undefined;
+
   if (
     institutionQuery.isLoading ||
     overviewQuery.isLoading
@@ -140,7 +150,7 @@ export default function DirectorDashboard() {
 
   if (!institutionQuery.data) {
     const dashboardTitle =
-      getDirectorDashboardTitle(profile.role);
+      getDirectorDashboardTitle(effectiveRole);
 
     return (
       <div className="space-y-6">
@@ -167,7 +177,7 @@ export default function DirectorDashboard() {
 
   const overview = overviewQuery.data;
   const dashboardTitle =
-    getDirectorDashboardTitle(profile.role);
+    getDirectorDashboardTitle(effectiveRole);
 
   if (!overview) {
     return (

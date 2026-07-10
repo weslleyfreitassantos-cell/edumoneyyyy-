@@ -11,6 +11,12 @@ export const CURRENT_DATABASE_ROLES = [
 export type CurrentDatabaseRole =
   (typeof CURRENT_DATABASE_ROLES)[number];
 
+type EffectiveRoleInput =
+  | string
+  | CurrentDatabaseRole
+  | null
+  | undefined;
+
 export const FUTURE_PLATFORM_ROLES = [
   'SUPER_ADMIN',
 ] as const;
@@ -82,6 +88,21 @@ export const CURRENT_ROLE_PERMISSIONS = {
   readonly SystemPermission[]
 >;
 
+export interface EffectiveRoleSource {
+  membershipRole?: EffectiveRoleInput;
+  profileRole?: EffectiveRoleInput;
+}
+
+export interface EffectivePermissionCheck
+  extends EffectiveRoleSource {
+  permission: SystemPermission;
+}
+
+export interface EffectivePermissionsCheck
+  extends EffectiveRoleSource {
+  permissions: readonly SystemPermission[];
+}
+
 export interface FutureRolePlan {
   scope: 'platform' | 'school';
   description: string;
@@ -131,6 +152,32 @@ export const FUTURE_ROLE_PLAN = {
   FutureRolePlan
 >;
 
+export function isCurrentDatabaseRole(
+  role: unknown,
+): role is CurrentDatabaseRole {
+  return (
+    typeof role === 'string' &&
+    CURRENT_DATABASE_ROLES.includes(
+      role as CurrentDatabaseRole,
+    )
+  );
+}
+
+export function getEffectiveRole({
+  membershipRole,
+  profileRole,
+}: EffectiveRoleSource): CurrentDatabaseRole | null {
+  if (isCurrentDatabaseRole(membershipRole)) {
+    return membershipRole;
+  }
+
+  if (isCurrentDatabaseRole(profileRole)) {
+    return profileRole;
+  }
+
+  return null;
+}
+
 export function hasPermission(
   role: CurrentDatabaseRole,
   permission: SystemPermission,
@@ -139,6 +186,23 @@ export function hasPermission(
     CURRENT_ROLE_PERMISSIONS[role];
 
   return permissions.includes(permission);
+}
+
+export function hasEffectivePermission({
+  membershipRole,
+  profileRole,
+  permission,
+}: EffectivePermissionCheck): boolean {
+  const effectiveRole = getEffectiveRole({
+    membershipRole,
+    profileRole,
+  });
+
+  if (!effectiveRole) {
+    return false;
+  }
+
+  return hasPermission(effectiveRole, permission);
 }
 
 export function hasAnyPermission(
@@ -150,6 +214,23 @@ export function hasAnyPermission(
   );
 }
 
+export function hasAnyEffectivePermission({
+  membershipRole,
+  profileRole,
+  permissions,
+}: EffectivePermissionsCheck): boolean {
+  const effectiveRole = getEffectiveRole({
+    membershipRole,
+    profileRole,
+  });
+
+  if (!effectiveRole) {
+    return false;
+  }
+
+  return hasAnyPermission(effectiveRole, permissions);
+}
+
 export function hasAllPermissions(
   role: CurrentDatabaseRole,
   permissions: readonly SystemPermission[],
@@ -157,6 +238,23 @@ export function hasAllPermissions(
   return permissions.every((permission) =>
     hasPermission(role, permission),
   );
+}
+
+export function hasAllEffectivePermissions({
+  membershipRole,
+  profileRole,
+  permissions,
+}: EffectivePermissionsCheck): boolean {
+  const effectiveRole = getEffectiveRole({
+    membershipRole,
+    profileRole,
+  });
+
+  if (!effectiveRole) {
+    return false;
+  }
+
+  return hasAllPermissions(effectiveRole, permissions);
 }
 
 export function canManageSchoolUsers(
