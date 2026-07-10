@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   useState,
   type ReactNode,
 } from 'react';
@@ -20,22 +22,46 @@ import {
 } from './contexts/AuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
-import { Login } from './pages/Login';
-import { Unauthorized } from './pages/Unauthorized';
-import AdminPage from './pages/Admin/AdminPage';
-
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
-import TeacherDashboard from './components/TeacherDashboard';
-import StudentDashboard from './components/StudentDashboard';
-import DirectorDashboard from './components/DirectorDashboard';
-import ParentDashboard from './components/ParentDashboard';
 
 import { mapDatabaseRole } from './lib/roles';
 import type {
   User,
   UserRole,
 } from './types';
+
+const Login = lazy(() =>
+  import('./pages/Login').then((module) => ({
+    default: module.Login,
+  })),
+);
+
+const Unauthorized = lazy(() =>
+  import('./pages/Unauthorized').then((module) => ({
+    default: module.Unauthorized,
+  })),
+);
+
+const AdminPage = lazy(
+  () => import('./pages/Admin/AdminPage'),
+);
+
+const TeacherDashboard = lazy(
+  () => import('./components/TeacherDashboard'),
+);
+
+const StudentDashboard = lazy(
+  () => import('./components/StudentDashboard'),
+);
+
+const DirectorDashboard = lazy(
+  () => import('./components/DirectorDashboard'),
+);
+
+const ParentDashboard = lazy(
+  () => import('./components/ParentDashboard'),
+);
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -67,6 +93,23 @@ const searchPlaceholders: Record<UserRole, string> = {
   student: 'Pesquisar disciplinas ou notas...',
   parent: 'Pesquisar aluno, nota ou evento...',
 };
+
+function PageLoading() {
+  return (
+    <main className="grid min-h-screen place-items-center bg-slate-50">
+      <div className="text-center">
+        <div
+          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
+          aria-hidden="true"
+        />
+
+        <p className="mt-4 text-sm font-medium text-[#727785]">
+          Carregando...
+        </p>
+      </div>
+    </main>
+  );
+}
 
 function renderDashboard(role: UserRole): ReactNode {
   switch (role) {
@@ -264,65 +307,73 @@ function DashboardLayout() {
   );
 }
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route
+        path="/login"
+        element={<Login />}
+      />
+
+      <Route
+        path="/unauthorized"
+        element={<Unauthorized />}
+      />
+
+      <Route
+        path="/dashboard/*"
+        element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/admin/*"
+        element={
+          <ProtectedRoute
+            allowedRoles={[
+              'ADMIN',
+              'DIRECTOR',
+            ]}
+          >
+            <AdminPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/"
+        element={
+          <Navigate
+            to="/dashboard"
+            replace
+          />
+        }
+      />
+
+      <Route
+        path="*"
+        element={
+          <Navigate
+            to="/dashboard"
+            replace
+          />
+        }
+      />
+    </Routes>
+  );
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
-            <Route
-              path="/login"
-              element={<Login />}
-            />
-
-            <Route
-              path="/unauthorized"
-              element={<Unauthorized />}
-            />
-
-            <Route
-              path="/dashboard/*"
-              element={
-                <ProtectedRoute>
-                  <DashboardLayout />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="/admin/*"
-              element={
-                <ProtectedRoute
-                  allowedRoles={[
-                    'ADMIN',
-                    'DIRECTOR',
-                  ]}
-                >
-                  <AdminPage />
-                </ProtectedRoute>
-              }
-            />
-
-            <Route
-              path="/"
-              element={
-                <Navigate
-                  to="/dashboard"
-                  replace
-                />
-              }
-            />
-
-            <Route
-              path="*"
-              element={
-                <Navigate
-                  to="/dashboard"
-                  replace
-                />
-              }
-            />
-          </Routes>
+          <Suspense fallback={<PageLoading />}>
+            <AppRoutes />
+          </Suspense>
         </AuthProvider>
       </BrowserRouter>
     </QueryClientProvider>
