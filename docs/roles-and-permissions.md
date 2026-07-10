@@ -187,3 +187,40 @@ Novas funcoes ou fluxos futuros podem incluir convites unificados, cadastro de s
 - `Secretaria`: operacao diaria de cadastros e matriculas.
 - `Convites`: acompanhamento de convites e definicao de senha.
 - `Permissoes`: governanca de papeis e autorizacoes por escola.
+
+## Role efetiva por instituicao ativa
+
+A aplicacao agora possui helpers de permissao para a transicao gradual entre `profiles.role` e `memberships.role`.
+
+A role efetiva segue esta regra:
+
+1. se existir `memberships.role` da instituicao ativa, ela tem prioridade;
+2. se nao existir `memberships.role`, o sistema usa `profiles.role` como fallback temporario;
+3. se nenhuma role existir, a permissao e negada.
+
+Esse comportamento fica centralizado em:
+
+- `getEffectiveRole`
+- `hasEffectivePermission`
+- `hasAnyEffectivePermission`
+- `hasAllEffectivePermissions`
+
+Essa etapa nao conclui a migracao total para `memberships.role`. Algumas partes globais, como `ProtectedRoute`, ainda podem usar `profiles.role` para proteger rotas gerais enquanto a transicao acontece de forma segura.
+
+As Edge Functions existentes continuam validando os papeis atuais `ADMIN` e `DIRECTOR`.
+
+O banco ainda possui somente os papeis atuais:
+
+- `ADMIN`
+- `DIRECTOR`
+- `TEACHER`
+- `STUDENT`
+- `GUARDIAN`
+
+Os papeis abaixo continuam apenas planejados e documentados:
+
+- `SUPER_ADMIN`
+- `SCHOOL_ADMIN`
+- `SECRETARY`
+
+Esta etapa nao altera migrations, nao altera enums do banco, nao altera Edge Functions e nao executa comandos Supabase remotos.
