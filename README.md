@@ -783,3 +783,18 @@ Execute o fluxo com contas e e-mails de teste:
 Desenvolvido como uma base para gestão acadêmica institucional, com foco em
 separação de responsabilidades, preservação de histórico e segurança
 multi-tenant.
+
+## Diagnóstico final do banco
+
+A auditoria manual read-only do Supabase remoto foi consolidada em `docs/database-final-diagnosis.md`.
+
+Resumo:
+
+- o núcleo escolar remoto existe;
+- `supabase_migrations.schema_migrations` não existe no remoto;
+- notas/frequência ainda não existem no remoto;
+- roles reais atuais: `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT`, `GUARDIAN`;
+- `SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` seguem planejados;
+- cadastro real continua bloqueado até reconciliação de migrations, hardening de RLS e Edge Functions seguras.
+
+Não executar `supabase db push`, `migration repair` ou `db reset` sem reconciliação.

@@ -10,6 +10,17 @@
 - `ProtectedRoute` ainda pode usar `profile.role` para rotas globais.
 - `SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` nao sao roles ativas no banco.
 
+## Confirmacao da auditoria manual
+
+A auditoria read-only confirmou que o enum remoto `public.user_role` contem
+somente `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e `GUARDIAN`.
+`SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` nao devem ser ativados em UI,
+policies, Edge Functions ou seeds ate uma migration propria existir.
+
+Tambem foi confirmado que funcoes administrativas do remoto precisam de
+hardening para exigir `membership.active is true`. Ate la, qualquer expansao de
+permissao deve permanecer bloqueada.
+
 ## Matriz de roles
 
 | Role | Status atual | Escopo | Fonte atual | Fonte futura | Observacao de seguranca |
@@ -44,10 +55,21 @@
 
 ## Observacoes
 
-- A matriz reflete o frontend atual e planos documentados, nao um estado remoto
-  confirmado.
+- A matriz reflete o frontend atual, os planos documentados e o enum remoto
+  confirmado pela auditoria manual.
 - `DIRECTOR` ainda possui permissao compativel com `ADMIN` por transicao.
 - `SECRETARY` nao deve ser ativada ate o banco, RLS e Edge Functions suportarem
   o escopo real.
 - Qualquer mudanca real de role precisa passar por auditoria read-only e
   reconciliacao de migrations.
+
+## Consolidação pós-auditoria manual
+
+O enum remoto confirmado é `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e `GUARDIAN`.
+
+A separação futura recomendada continua sendo:
+
+- papel global em `profiles.platform_role`;
+- papel escolar em `memberships.role`.
+
+Até lá, `currentRole`/`memberships.role` deve ter prioridade nas telas contextuais, com `profiles.role` como fallback temporário.

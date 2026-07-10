@@ -1,10 +1,26 @@
 # Plano de reconciliacao das migrations
 
+## Estado remoto confirmado
+
+A auditoria manual read-only confirmou que
+`supabase_migrations.schema_migrations` esta ausente/null no remoto. Existem
+tabelas internas de `auth`, `storage` e `realtime`, mas nao ha historico
+Supabase CLI confirmado na tabela esperada.
+
+O remoto tem o nucleo academico principal, mas ainda nao tem `assessments`,
+`grades`, `attendance_sessions` e `attendance_records`. O enum remoto
+`public.user_role` contem somente `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e
+`GUARDIAN`.
+
 ## Por que nao rodar db push agora
 
 O banco remoto pode ter objetos criados antes da baseline local. Sem confirmar o
 historico remoto de migrations, um push pode tentar reaplicar tabelas, enums,
 policies ou indexes existentes.
+
+Como o remoto nao possui `supabase_migrations.schema_migrations` confirmado,
+`db push` direto e especialmente arriscado: ele pode tratar migrations locais
+como pendentes mesmo quando parte dos objetos ja existe por outro caminho.
 
 ## Por que nao rodar migration repair sem auditoria
 
@@ -18,8 +34,9 @@ aceitavel para ambiente remoto com dados reais ou de homologacao.
 
 ## Comparar remoto versus migrations locais
 
-1. Executar auditoria read-only no SQL Editor.
-2. Exportar resultados de tabelas, colunas, enums, FKs, indexes, RLS e policies.
+1. Usar o resultado ja coletado da auditoria read-only no SQL Editor.
+2. Exportar resultados de tabelas, colunas, enums, FKs, indexes, RLS e policies
+   sem dados sensiveis.
 3. Comparar com:
    - `20260709000100_baseline_schema.sql`
    - `20260710000200_attendance_and_grades.sql`
@@ -86,7 +103,7 @@ Staging deve receber restauracao ou replica segura do estado esperado.
 3. Aluno sem login opcional, se desejado.
 4. Tabelas/colunas para convites.
 5. Auditoria/logs de convites.
-6. Ajustes de RLS e policies.
+6. Ajustes de RLS e policies, incluindo `membership.active is true`.
 7. Indexes e constraints de integridade.
 
 ## Rollback conceitual
@@ -102,5 +119,13 @@ Staging deve receber restauracao ou replica segura do estado esperado.
 - Rodar testes frontend.
 - Validar Edge Functions em staging.
 - Testar isolamento entre instituicoes.
+- Confirmar que alunos sem login so foram liberados se houver migration
+  especifica para `students.profile_id` ou modelo equivalente.
 - Confirmar logs de convite e falhas.
 - Confirmar que roles futuras nao vazam para usuarios indevidos.
+
+## Consolidação pós-auditoria manual
+
+Como `supabase_migrations.schema_migrations` não existe no remoto, `db push`, `migration repair` e `db reset` continuam bloqueados.
+
+A estratégia recomendada é registrar o baseline remoto, comparar migrations locais com o schema real, validar em staging e aplicar apenas migrations incrementais controladas.

@@ -18,9 +18,12 @@ Legenda:
 
 - [x] Login com Supabase Auth.
 - [x] Fluxo de definicao de senha existente.
+- [!] Aluno sem login nao e suportado pelo remoto atual:
+  `students.profile_id` e obrigatorio e `profiles.id` depende de
+  `auth.users.id`.
 - [!] SMTP, redirects e `APP_URL` precisam de confirmacao antes de convites
   reais.
-- [!] Fluxo unificado de convite real bloqueado por auditoria de banco.
+- [!] Fluxo unificado de convite real bloqueado por reconciliacao de migrations.
 
 ## 3. Multi-instituicao
 
@@ -35,6 +38,8 @@ Legenda:
 - [x] Helpers de role efetiva.
 - [x] `memberships.role`/`currentRole` priorizado em telas contextuais seguras.
 - [x] `profile.role` como fallback temporario.
+- [x] Auditoria manual confirmou enum remoto apenas com `ADMIN`, `DIRECTOR`,
+  `TEACHER`, `STUDENT` e `GUARDIAN`.
 - [ ] Refatoracao futura de `ProtectedRoute`, se segura.
 - [!] `SECRETARY` e `SCHOOL_ADMIN` bloqueados por auditoria/migrations.
 
@@ -57,13 +62,16 @@ Legenda:
 ## 7. Banco de dados
 
 - [x] Migrations locais versionadas.
-- [!] Historico remoto de migrations nao confirmado nesta execucao.
-- [!] Auditoria read-only remota pendente.
+- [!] `supabase_migrations.schema_migrations` ausente/null no remoto.
+- [x] Auditoria read-only remota executada manualmente.
+- [!] `assessments`, `grades`, `attendance_sessions` e
+  `attendance_records` ausentes no remoto.
 - [!] Backup externo pendente antes de qualquer escrita.
 
 ## 8. RLS e policies
 
-- [!] Policies das tabelas antigas da baseline precisam de auditoria.
+- [x] RLS ativo nas tabelas publicas auditadas, com `force_rls = false`.
+- [!] Policies/funcoes precisam de hardening para `membership.active is true`.
 - [x] Migrations locais de RLS para notas/frequencia existem.
 - [!] Isolamento entre instituicoes precisa de teste remoto.
 
@@ -113,8 +121,18 @@ Legenda:
 
 ## 15. Go-live
 
-- [!] Auditoria read-only do banco concluida.
+- [x] Auditoria read-only do banco concluida.
 - [!] Reconciliacao de migrations concluida.
 - [!] Staging aprovado.
 - [ ] Plano de rollback.
 - [ ] Checklist final assinado.
+
+## Consolidação pós-auditoria manual
+
+- [x] Auditoria read-only manual realizada.
+- [x] Núcleo escolar remoto confirmado.
+- [x] RLS ativo nas tabelas públicas auditadas.
+- [!] Histórico Supabase CLI remoto ausente em `supabase_migrations.schema_migrations`.
+- [!] Notas e frequência ausentes no remoto.
+- [!] Cadastro real bloqueado até reconciliação e hardening.
+- [!] `SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` permanecem planejados.
