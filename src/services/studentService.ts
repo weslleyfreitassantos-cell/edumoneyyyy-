@@ -1,4 +1,10 @@
-﻿import { supabase } from '../lib/supabaseClient';
+﻿import {
+  FunctionsFetchError,
+  FunctionsHttpError,
+  FunctionsRelayError,
+} from '@supabase/supabase-js';
+
+import { supabase } from '../lib/supabaseClient';
 
 import {
   studentSchema,
@@ -40,23 +46,17 @@ interface StudentQueryRow {
   | null;
 }
 
-export interface AvailableStudentProfile {
+export interface CreatedStudent {
   id: string;
+  profile_id: string;
+  registration_number: string;
   full_name: string;
   email: string;
 }
 
-interface MembershipWithProfile {
-  profile_id: string;
-  profiles:
-  | AvailableStudentProfile
-  | AvailableStudentProfile[]
-  | null;
-}
-
-export interface CreatedStudent {
-  id: string;
-  registration_number: string;
+interface CreateStudentFunctionResponse {
+  student: CreatedStudent;
+  invitation_sent: boolean;
 }
 
 function normalizeStudentProfile(
@@ -69,59 +69,79 @@ function normalizeStudentProfile(
   return relation;
 }
 
-function normalizeAvailableProfile(
-  relation: MembershipWithProfile['profiles'],
-): AvailableStudentProfile | null {
-  if (Array.isArray(relation)) {
-    return relation[0] ?? null;
+function isCreatedStudent(
+  value: unknown,
+): value is CreatedStudent {
+  if (
+    typeof value !== 'object' ||
+    value === null
+  ) {
+    return false;
   }
 
-  return relation;
+  return (
+    'id' in value &&
+    typeof value.id === 'string' &&
+    'profile_id' in value &&
+    typeof value.profile_id === 'string' &&
+    'registration_number' in value &&
+    typeof value.registration_number ===
+    'string' &&
+    'full_name' in value &&
+    typeof value.full_name === 'string' &&
+    'email' in value &&
+    typeof value.email === 'string'
+  );
 }
 
-async function ensureStudentMembership(
-  profileId: string,
-  institutionId: string,
-): Promise<void> {
-  const { data, error } = await supabase
-    .from('memberships')
-    .select('profile_id')
-    .eq('profile_id', profileId)
-    .eq('institution_id', institutionId)
-    .eq('role', 'STUDENT')
-    .limit(1);
-
-  if (error) {
-    throw error;
+function isCreateStudentResponse(
+  value: unknown,
+): value is CreateStudentFunctionResponse {
+  if (
+    typeof value !== 'object' ||
+    value === null ||
+    !('student' in value)
+  ) {
+    return false;
   }
 
-  if (!data || data.length === 0) {
-    throw new Error(
-      'O perfil selecionado não possui vínculo de aluno com esta instituição.',
-    );
-  }
+  return isCreatedStudent(value.student);
 }
 
-async function ensureStudentNotRegistered(
-  institutionId: string,
-  profileId: string,
-): Promise<void> {
-  const { data, error } = await supabase
-    .from('students')
-    .select('id')
-    .eq('institution_id', institutionId)
-    .eq('profile_id', profileId)
-    .limit(1);
+async function getFunctionErrorMessage(
+  error: unknown,
+): Promise<string> {
+  if (error instanceof FunctionsHttpError) {
+    try {
+      const body: unknown =
+        await error.context.json();
 
-  if (error) {
-    throw error;
+      if (
+        typeof body === 'object' &&
+        body !== null &&
+        'error' in body &&
+        typeof body.error === 'string'
+      ) {
+        return body.error;
+      }
+    } catch {
+      return error.message;
+    }
   }
 
-  if (data && data.length > 0) {
-    throw new Error(
-      'Este perfil já está cadastrado como aluno nesta instituição.',
-    );
+  if (error instanceof FunctionsRelayError) {
+    return 'A função de cadastro está temporariamente indisponível.';
   }
+
+  if (error instanceof FunctionsFetchError) {
+    return 'Não foi possível conectar à função de cadastro.';
+  }
+
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return 'Não foi possível cadastrar o aluno.';
 }
 
 export const studentService = {
@@ -174,137 +194,34 @@ export const studentService = {
     }));
   },
 
-  async listAvailableProfiles(
-    institutionId: string,
-  ): Promise<AvailableStudentProfile[]> {
-    const [
-      membershipsResult,
-      studentsResult,
-    ] = await Promise.all([
-      supabase
-        .from('memberships')
-        .select(`
-          profile_id,
-          profiles:profile_id (
-            id,
-            full_name,
-            email
-          )
-        `)
-        .eq('institution_id', institutionId)
-        .eq('role', 'STUDENT'),
-
-      supabase
-        .from('students')
-        .select('profile_id')
-        .eq('institution_id', institutionId),
-    ]);
-
-    if (membershipsResult.error) {
-      throw membershipsResult.error;
-    }
-
-    if (studentsResult.error) {
-      throw studentsResult.error;
-    }
-
-    const registeredProfileIds = new Set(
-      (studentsResult.data ?? []).map(
-        (student) => student.profile_id,
-      ),
-    );
-
-    const memberships:
-      MembershipWithProfile[] =
-      membershipsResult.data ?? [];
-
-    const profiles = new Map<
-      string,
-      AvailableStudentProfile
-    >();
-
-    for (const membership of memberships) {
-      if (
-        registeredProfileIds.has(
-          membership.profile_id,
-        )
-      ) {
-        continue;
-      }
-
-      const profile =
-        normalizeAvailableProfile(
-          membership.profiles,
-        );
-
-      if (profile) {
-        profiles.set(profile.id, profile);
-      }
-    }
-
-    return Array.from(
-      profiles.values(),
-    ).sort((first, second) =>
-      first.full_name.localeCompare(
-        second.full_name,
-        'pt-BR',
-      ),
-    );
-  },
-
   async create(
     input: StudentFormData,
   ): Promise<CreatedStudent> {
     const data = studentSchema.parse(input);
 
-    await ensureStudentMembership(
-      data.profile_id,
-      data.institution_id,
-    );
-
-    await ensureStudentNotRegistered(
-      data.institution_id,
-      data.profile_id,
-    );
-
     const {
-      data: createdStudent,
+      data: response,
       error,
-    } = await supabase
-      .from('students')
-      .insert([
-        {
-          profile_id: data.profile_id,
-          institution_id:
-            data.institution_id,
-          birth_date: data.birth_date,
-          cpf: data.cpf ?? null,
-          active: data.active,
-        },
-      ])
-      .select('id, registration_number')
-      .single();
+    } = await supabase.functions.invoke(
+      'create-student',
+      {
+        body: data,
+      },
+    );
 
     if (error) {
-      throw error;
-    }
-
-    if (
-      !createdStudent ||
-      typeof createdStudent.id !== 'string' ||
-      typeof createdStudent.registration_number !==
-      'string'
-    ) {
       throw new Error(
-        'O aluno foi criado, mas o RA gerado não foi retornado.',
+        await getFunctionErrorMessage(error),
       );
     }
 
-    return {
-      id: createdStudent.id,
-      registration_number:
-        createdStudent.registration_number,
-    };
+    if (!isCreateStudentResponse(response)) {
+      throw new Error(
+        'A função respondeu em um formato inválido.',
+      );
+    }
+
+    return response.student;
   },
 
   async update(

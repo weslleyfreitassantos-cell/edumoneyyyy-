@@ -7,7 +7,6 @@
 import {
   studentService,
   type StudentRow,
-  type AvailableStudentProfile,
 } from '../services/studentService';
 
 import type {
@@ -22,15 +21,6 @@ const studentKeys = {
     [
       ...studentKeys.all,
       institutionId,
-    ] as const,
-
-  availableProfiles: (
-    institutionId: string,
-  ) =>
-    [
-      ...studentKeys.all,
-      institutionId,
-      'available-profiles',
     ] as const,
 };
 
@@ -48,28 +38,6 @@ export function useStudents(
   });
 }
 
-export function useAvailableStudentProfiles(
-  institutionId: string,
-  enabled: boolean,
-) {
-  return useQuery<
-    AvailableStudentProfile[]
-  >({
-    queryKey:
-      studentKeys.availableProfiles(
-        institutionId,
-      ),
-
-    queryFn: () =>
-      studentService.listAvailableProfiles(
-        institutionId,
-      ),
-
-    enabled:
-      Boolean(institutionId) && enabled,
-  });
-}
-
 export function useCreateStudent() {
   const queryClient = useQueryClient();
 
@@ -82,20 +50,11 @@ export function useCreateStudent() {
       _result,
       variables,
     ) => {
-      await Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: studentKeys.list(
-            variables.institution_id,
-          ),
-        }),
-
-        queryClient.invalidateQueries({
-          queryKey:
-            studentKeys.availableProfiles(
-              variables.institution_id,
-            ),
-        }),
-      ]);
+      await queryClient.invalidateQueries({
+        queryKey: studentKeys.list(
+          variables.institution_id,
+        ),
+      });
     },
   });
 }
@@ -155,20 +114,11 @@ export function useSetStudentActive() {
       _result,
       variables,
     ) => {
-      await Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: studentKeys.list(
-            variables.institutionId,
-          ),
-        }),
-
-        queryClient.invalidateQueries({
-          queryKey:
-            studentKeys.availableProfiles(
-              variables.institutionId,
-            ),
-        }),
-      ]);
+      await queryClient.invalidateQueries({
+        queryKey: studentKeys.list(
+          variables.institutionId,
+        ),
+      });
     },
   });
 }

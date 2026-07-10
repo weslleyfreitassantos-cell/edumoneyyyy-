@@ -13,7 +13,6 @@ import {
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
 import {
-  useAvailableStudentProfiles,
   useCreateStudent,
   useSetStudentActive,
   useStudents,
@@ -28,13 +27,15 @@ import {
 import type { StudentRow } from '../../../services/studentService';
 
 interface StudentDraft {
-  profile_id: string;
+  full_name: string;
+  email: string;
   birth_date: string;
   cpf: string;
 }
 
 const emptyDraft: StudentDraft = {
-  profile_id: '',
+  full_name: '',
+  email: '',
   birth_date: '',
   cpf: '',
 };
@@ -112,13 +113,6 @@ export default function StudentsTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
-
-  const availableProfilesQuery =
-    useAvailableStudentProfiles(
-      institutionId,
-      isModalOpen &&
-      editingStudent === null,
-    );
 
   const createMutation =
     useCreateStudent();
@@ -200,7 +194,9 @@ export default function StudentsTab() {
     setEditingStudent(student);
 
     setFormData({
-      profile_id: student.profile_id,
+      full_name:
+        student.profiles?.full_name ?? '',
+      email: student.profiles?.email ?? '',
       birth_date: student.birth_date,
       cpf: student.cpf ?? '',
     });
@@ -234,8 +230,7 @@ export default function StudentsTab() {
       if (editingStudent) {
         const result =
           studentUpdateSchema.safeParse({
-            birth_date:
-              formData.birth_date,
+            birth_date: formData.birth_date,
             cpf: formData.cpf,
           });
 
@@ -254,42 +249,43 @@ export default function StudentsTab() {
           data: result.data,
         });
 
+        closeModal();
+
         setFeedbackMessage(
           'Aluno atualizado com sucesso.',
         );
-      } else {
-        const result =
-          studentSchema.safeParse({
-            profile_id:
-              formData.profile_id,
-            institution_id:
-              institutionId,
-            birth_date:
-              formData.birth_date,
-            cpf: formData.cpf,
-            active: true,
-          });
 
-        if (!result.success) {
-          setModalError(
-            result.error.issues[0]
-              ?.message ??
-            'Dados inválidos.',
-          );
-          return;
-        }
-
-        const createdStudent =
-          await createMutation.mutateAsync(
-            result.data,
-          );
-
-        setFeedbackMessage(
-          `Aluno cadastrado com sucesso. RA gerado: ${createdStudent.registration_number}.`,
-        );
+        return;
       }
 
+      const result =
+        studentSchema.safeParse({
+          institution_id: institutionId,
+          full_name: formData.full_name,
+          email: formData.email,
+          birth_date: formData.birth_date,
+          cpf: formData.cpf,
+        });
+
+      if (!result.success) {
+        setModalError(
+          result.error.issues[0]
+            ?.message ??
+          'Dados inválidos.',
+        );
+        return;
+      }
+
+      const createdStudent =
+        await createMutation.mutateAsync(
+          result.data,
+        );
+
       closeModal();
+
+      setFeedbackMessage(
+        `Aluno cadastrado com sucesso. RA gerado: ${createdStudent.registration_number}. O convite foi enviado para ${createdStudent.email}.`,
+      );
     } catch (error) {
       setModalError(
         getErrorMessage(error),
@@ -383,9 +379,7 @@ export default function StudentsTab() {
         addLabel="Novo aluno"
         data={studentsQuery.data ?? []}
         columns={columns}
-        isLoading={
-          studentsQuery.isLoading
-        }
+        isLoading={studentsQuery.isLoading}
         onAdd={openCreateModal}
         emptyMessage="Nenhum aluno cadastrado nesta instituição."
         renderActions={(student) => {
@@ -467,18 +461,22 @@ export default function StudentsTab() {
                 <>
                   <div>
                     <span className="block text-sm font-medium text-gray-700">
-                      Perfil
+                      Nome
                     </span>
 
                     <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
-                      {editingStudent.profiles
-                        ?.full_name ??
+                      {formData.full_name ||
                         'Perfil indisponível'}
+                    </p>
+                  </div>
 
-                      {editingStudent.profiles
-                        ?.email
-                        ? ` (${editingStudent.profiles.email})`
-                        : ''}
+                  <div>
+                    <span className="block text-sm font-medium text-gray-700">
+                      E-mail
+                    </span>
+
+                    <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
+                      {formData.email || '—'}
                     </p>
                   </div>
 
@@ -498,93 +496,60 @@ export default function StudentsTab() {
                 <>
                   <div>
                     <label
-                      htmlFor="student-profile"
+                      htmlFor="student-full-name"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Perfil do aluno
+                      Nome completo
                     </label>
 
-                    <select
-                      id="student-profile"
+                    <input
+                      id="student-full-name"
+                      type="text"
                       className="mt-1 w-full rounded-lg border px-3 py-2"
-                      value={
-                        formData.profile_id
-                      }
+                      value={formData.full_name}
                       onChange={(event) =>
                         setFormData(
                           (current) => ({
                             ...current,
-                            profile_id:
-                              event.target
-                                .value,
+                            full_name:
+                              event.target.value,
                           }),
                         )
                       }
-                      disabled={
-                        availableProfilesQuery.isLoading
-                      }
+                      autoComplete="name"
                       required
-                    >
-                      <option value="">
-                        {availableProfilesQuery.isLoading
-                          ? 'Carregando perfis...'
-                          : 'Selecione um perfil'}
-                      </option>
-
-                      {(
-                        availableProfilesQuery.data ??
-                        []
-                      ).map(
-                        (
-                          availableProfile,
-                        ) => (
-                          <option
-                            key={
-                              availableProfile.id
-                            }
-                            value={
-                              availableProfile.id
-                            }
-                          >
-                            {
-                              availableProfile.full_name
-                            }{' '}
-                            (
-                            {
-                              availableProfile.email
-                            }
-                            )
-                          </option>
-                        ),
-                      )}
-                    </select>
-
-                    {availableProfilesQuery.isError && (
-                      <p className="mt-1 text-xs text-red-600">
-                        {getErrorMessage(
-                          availableProfilesQuery.error,
-                        )}
-                      </p>
-                    )}
-
-                    {!availableProfilesQuery.isLoading &&
-                      !availableProfilesQuery.isError &&
-                      (
-                        availableProfilesQuery.data ??
-                        []
-                      ).length === 0 && (
-                        <p className="mt-1 text-xs text-gray-500">
-                          Não existem perfis
-                          de aluno disponíveis
-                          nesta instituição.
-                        </p>
-                      )}
+                    />
                   </div>
 
-                  <p className="rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-700">
-                    O RA será gerado
-                    automaticamente após o
-                    cadastro.
+                  <div>
+                    <label
+                      htmlFor="student-email"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      E-mail
+                    </label>
+
+                    <input
+                      id="student-email"
+                      type="email"
+                      className="mt-1 w-full rounded-lg border px-3 py-2"
+                      value={formData.email}
+                      onChange={(event) =>
+                        setFormData(
+                          (current) => ({
+                            ...current,
+                            email:
+                              event.target.value,
+                          }),
+                        )
+                      }
+                      autoComplete="email"
+                      required
+                    />
+                  </div>
+
+                  <p className="rounded-lg bg-blue-50 px-3 py-2 text-xs leading-relaxed text-blue-700">
+                    O usuário, o vínculo acadêmico e o RA serão criados automaticamente. O aluno receberá um convite por e-mail para acessar o sistema.
                   </p>
                 </>
               )}
@@ -601,9 +566,7 @@ export default function StudentsTab() {
                   id="student-birth-date"
                   type="date"
                   className="mt-1 w-full rounded-lg border px-3 py-2"
-                  value={
-                    formData.birth_date
-                  }
+                  value={formData.birth_date}
                   onChange={(event) =>
                     setFormData(
                       (current) => ({
@@ -634,11 +597,13 @@ export default function StudentsTab() {
                     setFormData(
                       (current) => ({
                         ...current,
-                        cpf: event.target.value,
+                        cpf:
+                          event.target.value,
                       }),
                     )
                   }
                   placeholder="000.000.000-00"
+                  inputMode="numeric"
                 />
               </div>
 
@@ -661,7 +626,7 @@ export default function StudentsTab() {
                     ? 'Salvando...'
                     : editingStudent
                       ? 'Salvar alterações'
-                      : 'Cadastrar aluno'}
+                      : 'Cadastrar e enviar convite'}
                 </button>
               </div>
             </form>

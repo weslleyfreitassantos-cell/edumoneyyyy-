@@ -34,17 +34,26 @@ const studentEditableFields = {
 
 export const studentSchema = z
   .object({
-    profile_id: z
-      .string()
-      .uuid('Selecione um perfil válido'),
-
     institution_id: z
       .string()
       .uuid('Instituição inválida'),
 
-    ...studentEditableFields,
+    full_name: z
+      .string()
+      .trim()
+      .min(3, 'Nome é obrigatório')
+      .max(
+        120,
+        'Nome deve possuir no máximo 120 caracteres',
+      ),
 
-    active: z.boolean().default(true),
+    email: z
+      .string()
+      .trim()
+      .toLowerCase()
+      .email('E-mail inválido'),
+
+    ...studentEditableFields,
   })
   .strict();
 
@@ -73,7 +82,9 @@ export const classSchema = z.object({
 
   capacity: z
     .number()
-    .int('Capacidade deve ser um número inteiro')
+    .int(
+      'Capacidade deve ser um número inteiro',
+    )
     .min(
       1,
       'Capacidade deve ser maior que 0',
