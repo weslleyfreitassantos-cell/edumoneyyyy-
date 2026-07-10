@@ -11,11 +11,14 @@ import type { ReactNode } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useAdminOverview } from '../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
-import type { DatabaseRole } from '../lib/roles';
+import {
+  CURRENT_DATABASE_ROLES,
+  type CurrentDatabaseRole,
+} from '../lib/permissions';
 import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
-  role: DatabaseRole | undefined,
+  role: CurrentDatabaseRole | undefined,
 ): string {
   if (role === 'ADMIN') {
     return 'Painel do Administrador';
@@ -28,6 +31,19 @@ export function getDirectorDashboardTitle(
   return 'Painel acadêmico';
 }
 
+function toCurrentDatabaseRole(
+  role: string | null | undefined,
+): CurrentDatabaseRole | undefined {
+  if (
+    CURRENT_DATABASE_ROLES.includes(
+      role as CurrentDatabaseRole,
+    )
+  ) {
+    return role as CurrentDatabaseRole;
+  }
+
+  return undefined;
+}
 function getErrorMessage(
   error: unknown,
 ): string {
@@ -110,6 +126,11 @@ export default function DirectorDashboard() {
       institutionQuery.data ?? '',
     );
 
+  const effectiveRole =
+    toCurrentDatabaseRole(
+      institutionQuery.currentRole ?? profile?.role,
+    );
+
   if (
     institutionQuery.isLoading ||
     overviewQuery.isLoading
@@ -140,7 +161,7 @@ export default function DirectorDashboard() {
 
   if (!institutionQuery.data) {
     const dashboardTitle =
-      getDirectorDashboardTitle(profile.role);
+      getDirectorDashboardTitle(effectiveRole);
 
     return (
       <div className="space-y-6">
@@ -167,7 +188,7 @@ export default function DirectorDashboard() {
 
   const overview = overviewQuery.data;
   const dashboardTitle =
-    getDirectorDashboardTitle(profile.role);
+    getDirectorDashboardTitle(effectiveRole);
 
   if (!overview) {
     return (
