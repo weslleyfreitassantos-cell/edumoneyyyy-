@@ -17,6 +17,10 @@ vi.mock('../hooks/useCurrentInstitution', () => ({
   useCurrentInstitution: vi.fn(),
 }));
 
+vi.mock('./InstitutionSwitcher', () => ({
+  default: () => null,
+}));
+
 import { getDirectorDashboardTitle } from './DirectorDashboard';
 
 describe('getDirectorDashboardTitle', () => {
