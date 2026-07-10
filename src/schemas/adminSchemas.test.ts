@@ -7,8 +7,12 @@ import {
 import {
   academicYearSchema,
   academicYearUpdateSchema,
+  classSchema,
+  classUpdateSchema,
   studentSchema,
   studentUpdateSchema,
+  subjectSchema,
+  subjectUpdateSchema,
   teacherSchema,
   termSchema,
   termUpdateSchema,
@@ -49,6 +53,27 @@ const validTerm = {
   name: '1º Bimestre',
   start_date: '2026-01-20',
   end_date: '2026-03-31',
+  active: true,
+};
+
+const validClass = {
+  institution_id:
+    '22222222-2222-4222-8222-222222222222',
+  academic_year_id:
+    '33333333-3333-4333-8333-333333333333',
+  name: '9º Ano A',
+  grade_level: '9º Ano',
+  shift: 'Matutino',
+  capacity: 35,
+  active: true,
+};
+
+const validSubject = {
+  institution_id:
+    '22222222-2222-4222-8222-222222222222',
+  name: 'Matemática',
+  code: ' mat ',
+  workload: 80,
   active: true,
 };
 
@@ -249,6 +274,78 @@ describe('termSchema', () => {
         academic_year_id:
           '33333333-3333-4333-8333-333333333333',
         active: true,
+      });
+
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('classSchema', () => {
+  it('valida uma turma', () => {
+    const result = classSchema.parse({
+      ...validClass,
+      name: '  9º Ano A  ',
+      grade_level: '',
+      shift: '',
+    });
+
+    expect(result.name).toBe('9º Ano A');
+    expect(result.grade_level).toBeUndefined();
+    expect(result.shift).toBeUndefined();
+  });
+
+  it('rejeita capacidade inválida', () => {
+    const result = classSchema.safeParse({
+      ...validClass,
+      capacity: 0,
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita troca de instituição na edição', () => {
+    const result =
+      classUpdateSchema.safeParse({
+        ...validClass,
+      });
+
+    expect(result.success).toBe(false);
+  });
+});
+
+describe('subjectSchema', () => {
+  it('valida e normaliza uma disciplina', () => {
+    const result =
+      subjectSchema.parse(validSubject);
+
+    expect(result.name).toBe(
+      'Matemática',
+    );
+    expect(result.code).toBe('MAT');
+  });
+
+  it('transforma código vazio em indefinido', () => {
+    const result = subjectSchema.parse({
+      ...validSubject,
+      code: '',
+    });
+
+    expect(result.code).toBeUndefined();
+  });
+
+  it('rejeita carga horária inválida', () => {
+    const result = subjectSchema.safeParse({
+      ...validSubject,
+      workload: 0,
+    });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita troca de instituição na edição', () => {
+    const result =
+      subjectUpdateSchema.safeParse({
+        ...validSubject,
       });
 
     expect(result.success).toBe(false);

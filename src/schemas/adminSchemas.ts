@@ -21,6 +21,23 @@ const optionalCpfSchema = z.preprocess(
     .optional(),
 );
 
+const optionalTextSchema = z.preprocess(
+  (value) => {
+    if (
+      typeof value === 'string' &&
+      value.trim() === ''
+    ) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .trim()
+    .optional(),
+);
+
 const personIdentityFields = {
   institution_id: z.guid(
     'Instituição inválida',
@@ -160,24 +177,22 @@ export const termUpdateSchema = z
   .strict()
   .superRefine(refineDateOrder);
 
-export const classSchema = z.object({
+const classFields = {
   name: z
     .string()
     .trim()
     .min(
       1,
       'Nome da turma é obrigatório',
+    )
+    .max(
+      80,
+      'Nome da turma deve possuir no máximo 80 caracteres',
     ),
 
-  grade_level: z
-    .string()
-    .trim()
-    .optional(),
+  grade_level: optionalTextSchema,
 
-  shift: z
-    .string()
-    .trim()
-    .optional(),
+  shift: optionalTextSchema,
 
   capacity: z
     .number()
@@ -188,6 +203,10 @@ export const classSchema = z.object({
       1,
       'Capacidade deve ser maior que 0',
     )
+    .max(
+      500,
+      'Capacidade deve ser menor ou igual a 500',
+    )
     .default(30),
 
   academic_year_id: z.guid(
@@ -195,7 +214,85 @@ export const classSchema = z.object({
   ),
 
   active: z.boolean().default(true),
-});
+};
+
+export const classSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...classFields,
+  })
+  .strict();
+
+export const classUpdateSchema = z
+  .object(classFields)
+  .strict();
+
+const optionalSubjectCodeSchema = z.preprocess(
+  (value) => {
+    if (
+      typeof value === 'string' &&
+      value.trim() === ''
+    ) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .trim()
+    .toUpperCase()
+    .max(
+      20,
+      'Código deve possuir no máximo 20 caracteres',
+    )
+    .optional(),
+);
+
+const subjectFields = {
+  name: z
+    .string()
+    .trim()
+    .min(2, 'Nome da disciplina é obrigatório')
+    .max(
+      120,
+      'Nome da disciplina deve possuir no máximo 120 caracteres',
+    ),
+
+  code: optionalSubjectCodeSchema,
+
+  workload: z
+    .number()
+    .int(
+      'Carga horária deve ser um número inteiro',
+    )
+    .min(
+      1,
+      'Carga horária deve ser maior que 0',
+    )
+    .max(
+      10000,
+      'Carga horária deve ser menor ou igual a 10000',
+    )
+    .optional(),
+
+  active: z.boolean().default(true),
+};
+
+export const subjectSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...subjectFields,
+  })
+  .strict();
+
+export const subjectUpdateSchema = z
+  .object(subjectFields)
+  .strict();
 
 export type StudentFormData =
   z.infer<typeof studentSchema>;
@@ -220,3 +317,12 @@ export type TermUpdateData =
 
 export type ClassFormData =
   z.infer<typeof classSchema>;
+
+export type ClassUpdateData =
+  z.infer<typeof classUpdateSchema>;
+
+export type SubjectFormData =
+  z.infer<typeof subjectSchema>;
+
+export type SubjectUpdateData =
+  z.infer<typeof subjectUpdateSchema>;
