@@ -1,24 +1,65 @@
-<<<<<<< HEAD
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# EduManager Pro
 
-# Run and deploy your AI Studio app
+Sistema de gestão acadêmica desenvolvido com React, TypeScript e Supabase.
 
-This contains everything you need to run your app locally.
+O projeto está sendo migrado de um protótipo visual para uma aplicação acadêmica real, com autenticação, autorização por perfil, persistência de dados e isolamento entre instituições.
 
-View your app in AI Studio: https://ai.studio/apps/167742a8-9d2d-48ba-a432-c49dfa0e2718
+## Estado atual
 
-## Run Locally
+### Implementado
 
-**Prerequisites:**  Node.js
+- autenticação com Supabase Auth;
+- persistência de sessão;
+- papéis de administrador, diretor, professor, aluno e responsável;
+- rotas protegidas;
+- bloqueio de usuários sem perfil autorizado;
+- área administrativa inicial;
+- painel do diretor parcialmente conectado ao banco;
+- React Query para consultas e cache;
+- carregamento sob demanda dos dashboards;
+- testes básicos de papéis;
+- validação automatizada pelo GitHub Actions.
 
+### Em desenvolvimento
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
-=======
-# edumoneyyyy-
->>>>>>> c59d8d7eef43ae9b03d5087069b747b0d843bb9d
+- versionamento completo do banco por migrations;
+- revisão das políticas RLS;
+- vínculo institucional por `memberships`;
+- cadastros de professores e responsáveis;
+- turmas, disciplinas e matrículas;
+- painel real do professor;
+- painel real do aluno;
+- painel real do responsável;
+- frequência;
+- avaliações e notas;
+- notificações;
+- relatórios;
+- auditoria.
+
+## Tecnologias
+
+- React 19;
+- TypeScript;
+- Vite;
+- Tailwind CSS;
+- Supabase;
+- TanStack React Query;
+- React Router;
+- Vitest;
+- Motion;
+- Lucide React.
+
+## Requisitos
+
+- Node.js 22 ou superior;
+- npm;
+- acesso ao projeto Supabase.
+
+Docker Desktop e WSL 2 serão necessários para alguns comandos locais do Supabase CLI, como a captura e validação do schema remoto.
+
+## Configuração local
+
+Instale as dependências:
+
+```bash
+npm install
