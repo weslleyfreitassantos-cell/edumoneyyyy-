@@ -1,11 +1,16 @@
-export type UserRole = 'admin' | 'teacher' | 'student' | 'director' | 'parent';
+export type UserRole =
+  | 'admin'
+  | 'teacher'
+  | 'student'
+  | 'director'
+  | 'parent';
 
 export interface User {
   id: string;
   name: string;
   email: string;
   role: UserRole;
-  avatar: string;
+  avatar: string | null;
   subtitle: string; // ex: "Administrador", "Professor", etc.
 }
 

@@ -1,22 +1,524 @@
-﻿import { z } from 'zod';
+import { z } from 'zod';
 
-export const studentSchema = z.object({
-  profile_id: z.string().uuid('Selecione um perfil válido'),
-  institution_id: z.string().uuid(),
-  registration_number: z.string().min(1, 'RA é obrigatório'),
-  birth_date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Data inválida (YYYY-MM-DD)'),
-  cpf: z.string().optional(),
+const optionalCpfSchema = z.preprocess(
+  (value) => {
+    if (
+      typeof value === 'string' &&
+      value.trim() === ''
+    ) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .trim()
+    .regex(
+      /^(?:\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/,
+      'CPF deve conter 11 dígitos',
+    )
+    .optional(),
+);
+
+const optionalTextSchema = z.preprocess(
+  (value) => {
+    if (
+      typeof value === 'string' &&
+      value.trim() === ''
+    ) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .trim()
+    .optional(),
+);
+
+const personIdentityFields = {
+  institution_id: z.guid(
+    'Instituição inválida',
+  ),
+
+  full_name: z
+    .string()
+    .trim()
+    .min(3, 'Nome é obrigatório')
+    .max(
+      120,
+      'Nome deve possuir no máximo 120 caracteres',
+    ),
+
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .email('E-mail inválido'),
+};
+
+const studentEditableFields = {
+  birth_date: z
+    .string()
+    .regex(
+      /^\d{4}-\d{2}-\d{2}$/,
+      'Data inválida',
+    ),
+
+  cpf: optionalCpfSchema,
+};
+
+const dateStringSchema = z
+  .string()
+  .regex(
+    /^\d{4}-\d{2}-\d{2}$/,
+    'Data inválida',
+  );
+
+function refineDateOrder<
+  T extends {
+    start_date: string;
+    end_date: string;
+  },
+>(
+  value: T,
+  context: z.RefinementCtx,
+): void {
+  if (value.end_date < value.start_date) {
+    context.addIssue({
+      code: 'custom',
+      path: ['end_date'],
+      message:
+        'A data final não pode ser anterior à data inicial',
+    });
+  }
+}
+
+export const studentSchema = z
+  .object({
+    ...personIdentityFields,
+    ...studentEditableFields,
+  })
+  .strict();
+
+export const studentUpdateSchema = z
+  .object(studentEditableFields)
+  .strict();
+
+export const teacherSchema = z
+  .object(personIdentityFields)
+  .strict();
+
+export const guardianLinkSchema = z
+  .object({
+    student_id: z.guid(
+      'Aluno é obrigatório',
+    ),
+
+    relationship: z
+      .string()
+      .trim()
+      .min(2, 'Parentesco é obrigatório')
+      .max(
+        40,
+        'Parentesco deve possuir no máximo 40 caracteres',
+      ),
+
+    is_primary: z.boolean().default(false),
+  })
+  .strict();
+
+export const guardianSchema = z
+  .object({
+    ...personIdentityFields,
+
+    student_links: z
+      .array(guardianLinkSchema)
+      .min(
+        1,
+        'Selecione pelo menos um aluno',
+      ),
+  })
+  .strict()
+  .superRefine((value, context) => {
+    const seenStudents = new Set<string>();
+
+    value.student_links.forEach(
+      (link, index) => {
+        if (seenStudents.has(link.student_id)) {
+          context.addIssue({
+            code: 'custom',
+            path: [
+              'student_links',
+              index,
+              'student_id',
+            ],
+            message:
+              'O mesmo aluno não pode ser vinculado duas vezes no cadastro',
+          });
+        }
+
+        seenStudents.add(link.student_id);
+      },
+    );
+  });
+
+const academicYearFields = {
+  name: z
+    .string()
+    .trim()
+    .min(3, 'Nome do ano letivo é obrigatório')
+    .max(
+      80,
+      'Nome do ano letivo deve possuir no máximo 80 caracteres',
+    ),
+
+  start_date: dateStringSchema,
+
+  end_date: dateStringSchema,
+
   active: z.boolean().default(true),
-});
+};
 
-export const classSchema = z.object({
-  name: z.string().min(1, 'Nome da turma é obrigatório'),
-  grade_level: z.string().optional(),
-  shift: z.string().optional(),
-  capacity: z.number().min(1, 'Capacidade deve ser maior que 0').default(30),
-  academic_year_id: z.string().uuid('Ano letivo é obrigatório'),
+export const academicYearSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+
+    ...academicYearFields,
+  })
+  .strict()
+  .superRefine(refineDateOrder);
+
+export const academicYearUpdateSchema = z
+  .object(academicYearFields)
+  .strict()
+  .superRefine(refineDateOrder);
+
+const termFields = {
+  name: z
+    .string()
+    .trim()
+    .min(2, 'Nome do período é obrigatório')
+    .max(
+      80,
+      'Nome do período deve possuir no máximo 80 caracteres',
+    ),
+
+  start_date: dateStringSchema,
+
+  end_date: dateStringSchema,
+
   active: z.boolean().default(true),
-});
+};
 
-export type StudentFormData = z.infer<typeof studentSchema>;
-export type ClassFormData = z.infer<typeof classSchema>;
+export const termSchema = z
+  .object({
+    academic_year_id: z.guid(
+      'Ano letivo é obrigatório',
+    ),
+
+    ...termFields,
+  })
+  .strict()
+  .superRefine(refineDateOrder);
+
+export const termUpdateSchema = z
+  .object(termFields)
+  .strict()
+  .superRefine(refineDateOrder);
+
+const classFields = {
+  name: z
+    .string()
+    .trim()
+    .min(
+      1,
+      'Nome da turma é obrigatório',
+    )
+    .max(
+      80,
+      'Nome da turma deve possuir no máximo 80 caracteres',
+    ),
+
+  grade_level: optionalTextSchema,
+
+  shift: optionalTextSchema,
+
+  capacity: z
+    .number()
+    .int(
+      'Capacidade deve ser um número inteiro',
+    )
+    .min(
+      1,
+      'Capacidade deve ser maior que 0',
+    )
+    .max(
+      500,
+      'Capacidade deve ser menor ou igual a 500',
+    )
+    .default(30),
+
+  academic_year_id: z.guid(
+    'Ano letivo é obrigatório',
+  ),
+
+  active: z.boolean().default(true),
+};
+
+export const classSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...classFields,
+  })
+  .strict();
+
+export const classUpdateSchema = z
+  .object(classFields)
+  .strict();
+
+const optionalSubjectCodeSchema = z.preprocess(
+  (value) => {
+    if (
+      typeof value === 'string' &&
+      value.trim() === ''
+    ) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .trim()
+    .toUpperCase()
+    .max(
+      20,
+      'Código deve possuir no máximo 20 caracteres',
+    )
+    .optional(),
+);
+
+const subjectFields = {
+  name: z
+    .string()
+    .trim()
+    .min(2, 'Nome da disciplina é obrigatório')
+    .max(
+      120,
+      'Nome da disciplina deve possuir no máximo 120 caracteres',
+    ),
+
+  code: optionalSubjectCodeSchema,
+
+  workload: z
+    .number()
+    .int(
+      'Carga horária deve ser um número inteiro',
+    )
+    .min(
+      1,
+      'Carga horária deve ser maior que 0',
+    )
+    .max(
+      10000,
+      'Carga horária deve ser menor ou igual a 10000',
+    )
+    .optional(),
+
+  active: z.boolean().default(true),
+};
+
+export const subjectSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...subjectFields,
+  })
+  .strict();
+
+export const subjectUpdateSchema = z
+  .object(subjectFields)
+  .strict();
+
+export const enrollmentStatusSchema = z.enum([
+  'ACTIVE',
+  'TRANSFERRED',
+  'CANCELLED',
+  'COMPLETED',
+]);
+
+const enrollmentFields = {
+  student_id: z.guid(
+    'Aluno é obrigatório',
+  ),
+
+  class_id: z.guid(
+    'Turma é obrigatória',
+  ),
+
+  academic_year_id: z.guid(
+    'Ano letivo é obrigatório',
+  ),
+
+  status:
+    enrollmentStatusSchema.default(
+      'ACTIVE',
+    ),
+
+  active: z.boolean().default(true),
+};
+
+export const enrollmentSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...enrollmentFields,
+  })
+  .strict()
+  .superRefine((value, context) => {
+    if (
+      value.status === 'ACTIVE' &&
+      !value.active
+    ) {
+      context.addIssue({
+        code: 'custom',
+        path: ['active'],
+        message:
+          'Matrícula ativa precisa permanecer marcada como ativa',
+      });
+    }
+  });
+
+export const enrollmentTransferSchema = z
+  .object({
+    enrollment_id: z.guid(
+      'Matrícula inválida',
+    ),
+
+    target_class_id: z.guid(
+      'Turma de destino é obrigatória',
+    ),
+  })
+  .strict();
+
+export const enrollmentStatusUpdateSchema = z
+  .object({
+    status: enrollmentStatusSchema,
+    active: z.boolean(),
+  })
+  .strict()
+  .superRefine((value, context) => {
+    if (
+      value.status === 'ACTIVE' &&
+      !value.active
+    ) {
+      context.addIssue({
+        code: 'custom',
+        path: ['active'],
+        message:
+          'Matrícula ativa precisa permanecer marcada como ativa',
+      });
+    }
+  });
+
+const subjectOfferingFields = {
+  class_id: z.guid(
+    'Turma é obrigatória',
+  ),
+
+  subject_id: z.guid(
+    'Disciplina é obrigatória',
+  ),
+
+  teacher_profile_id: z.guid(
+    'Professor é obrigatório',
+  ),
+
+  term_id: z.guid(
+    'Período é obrigatório',
+  ),
+
+  active: z.boolean().default(true),
+};
+
+export const subjectOfferingSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...subjectOfferingFields,
+  })
+  .strict();
+
+export const subjectOfferingUpdateSchema = z
+  .object(subjectOfferingFields)
+  .strict();
+
+export type StudentFormData =
+  z.infer<typeof studentSchema>;
+
+export type StudentUpdateData =
+  z.infer<typeof studentUpdateSchema>;
+
+export type TeacherFormData =
+  z.infer<typeof teacherSchema>;
+
+export type GuardianLinkData =
+  z.infer<typeof guardianLinkSchema>;
+
+export type GuardianFormData =
+  z.infer<typeof guardianSchema>;
+
+export type AcademicYearFormData =
+  z.infer<typeof academicYearSchema>;
+
+export type AcademicYearUpdateData =
+  z.infer<typeof academicYearUpdateSchema>;
+
+export type TermFormData =
+  z.infer<typeof termSchema>;
+
+export type TermUpdateData =
+  z.infer<typeof termUpdateSchema>;
+
+export type ClassFormData =
+  z.infer<typeof classSchema>;
+
+export type ClassUpdateData =
+  z.infer<typeof classUpdateSchema>;
+
+export type SubjectFormData =
+  z.infer<typeof subjectSchema>;
+
+export type SubjectUpdateData =
+  z.infer<typeof subjectUpdateSchema>;
+
+export type EnrollmentFormData =
+  z.infer<typeof enrollmentSchema>;
+
+export type EnrollmentTransferData =
+  z.infer<
+    typeof enrollmentTransferSchema
+  >;
+
+export type EnrollmentStatusUpdateData =
+  z.infer<
+    typeof enrollmentStatusUpdateSchema
+  >;
+
+export type SubjectOfferingFormData =
+  z.infer<typeof subjectOfferingSchema>;
+
+export type SubjectOfferingUpdateData =
+  z.infer<
+    typeof subjectOfferingUpdateSchema
+  >;

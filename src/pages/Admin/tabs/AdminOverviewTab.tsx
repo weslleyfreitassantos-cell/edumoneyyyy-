@@ -1,0 +1,312 @@
+import type { ReactNode } from 'react';
+
+import {
+  AlertTriangle,
+  BookOpen,
+  CalendarDays,
+  GraduationCap,
+  Layers3,
+  School,
+  UserRoundCheck,
+  Users,
+} from 'lucide-react';
+
+import { useAuth } from '../../../contexts/AuthContext';
+
+import { useAdminOverview } from '../../../hooks/useAdminOverview';
+
+import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+
+function getErrorMessage(
+  error: unknown,
+): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (
+    typeof error === 'object' &&
+    error !== null &&
+    'message' in error &&
+    typeof error.message === 'string'
+  ) {
+    return error.message;
+  }
+
+  return 'Não foi possível carregar a visão geral.';
+}
+
+function formatDate(
+  value: string | undefined,
+): string {
+  if (!value) {
+    return 'Não informado';
+  }
+
+  const [year, month, day] = value.split('-');
+
+  if (!year || !month || !day) {
+    return value;
+  }
+
+  return `${day}/${month}/${year}`;
+}
+
+function MetricCard({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: number;
+  icon: ReactNode;
+}) {
+  return (
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <p className="text-xs font-semibold text-[#727785]">
+            {label}
+          </p>
+
+          <p className="mt-2 text-2xl font-bold text-[#181c20]">
+            {value}
+          </p>
+        </div>
+
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+          {icon}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function AdminOverviewTab() {
+  const { profile } = useAuth();
+
+  const institutionQuery =
+    useCurrentInstitution(profile?.id);
+
+  const institutionId =
+    institutionQuery.data ?? '';
+
+  const overviewQuery =
+    useAdminOverview(institutionId);
+
+  if (
+    institutionQuery.isLoading ||
+    overviewQuery.isLoading
+  ) {
+    return (
+      <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
+        Carregando visão geral...
+      </div>
+    );
+  }
+
+  if (
+    institutionQuery.isError ||
+    overviewQuery.isError ||
+    !overviewQuery.data
+  ) {
+    return (
+      <div
+        role="alert"
+        className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700"
+      >
+        {getErrorMessage(
+          institutionQuery.error ??
+            overviewQuery.error,
+        )}
+      </div>
+    );
+  }
+
+  const { metrics, warnings } =
+    overviewQuery.data;
+
+  const currentAcademicYear =
+    overviewQuery.data.currentAcademicYear;
+
+  const currentTerm =
+    overviewQuery.data.currentTerm;
+
+  return (
+    <div className="space-y-6">
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <MetricCard
+          label="Alunos ativos"
+          value={metrics.activeStudents}
+          icon={
+            <GraduationCap
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Alunos inativos"
+          value={metrics.inactiveStudents}
+          icon={
+            <Users
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Professores ativos"
+          value={metrics.activeTeachers}
+          icon={
+            <UserRoundCheck
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Responsáveis ativos"
+          value={metrics.activeGuardians}
+          icon={
+            <Users
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Turmas ativas"
+          value={metrics.activeClasses}
+          icon={
+            <School
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Disciplinas ativas"
+          value={metrics.activeSubjects}
+          icon={
+            <BookOpen
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Matrículas ativas"
+          value={metrics.activeEnrollments}
+          icon={
+            <Layers3
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Atribuições ativas"
+          value={metrics.activeAssignments}
+          icon={
+            <CalendarDays
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-2">
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
+            Ano letivo atual
+          </p>
+
+          <h3 className="mt-2 text-lg font-bold text-[#181c20]">
+            {currentAcademicYear?.name ??
+              'Nenhum ano ativo'}
+          </h3>
+
+          <p className="mt-2 text-sm text-[#727785]">
+            {currentAcademicYear
+              ? `${formatDate(
+                  currentAcademicYear.start_date,
+                )} a ${formatDate(
+                  currentAcademicYear.end_date,
+                )}`
+              : 'Cadastre um ano letivo para iniciar a operação acadêmica.'}
+          </p>
+        </article>
+
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
+            Período atual
+          </p>
+
+          <h3 className="mt-2 text-lg font-bold text-[#181c20]">
+            {currentTerm?.name ??
+              'Nenhum período ativo'}
+          </h3>
+
+          <p className="mt-2 text-sm text-[#727785]">
+            {currentTerm
+              ? `${formatDate(
+                  currentTerm.start_date,
+                )} a ${formatDate(
+                  currentTerm.end_date,
+                )}`
+              : 'Crie períodos dentro do ano letivo ativo.'}
+          </p>
+        </article>
+      </section>
+
+      <section>
+        <div className="mb-3 flex items-center gap-2">
+          <AlertTriangle
+            className="h-5 w-5 text-amber-600"
+            aria-hidden="true"
+          />
+
+          <h3 className="text-lg font-bold text-[#181c20]">
+            Pendências acadêmicas
+          </h3>
+        </div>
+
+        {warnings.length === 0 ? (
+          <div className="rounded-xl border border-green-200 bg-green-50 p-5 text-sm text-green-700">
+            Nenhuma pendência acadêmica encontrada.
+          </div>
+        ) : (
+          <div className="grid gap-3 md:grid-cols-2">
+            {warnings.map((warning) => (
+              <article
+                key={warning.id}
+                className={
+                  warning.severity === 'warning'
+                    ? 'rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800'
+                    : 'rounded-xl border border-[#dfe3e8] bg-white p-4 text-[#414754]'
+                }
+              >
+                <h4 className="text-sm font-bold">
+                  {warning.title}
+                </h4>
+
+                <p className="mt-1 text-xs leading-relaxed">
+                  {warning.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    </div>
+  );
+}

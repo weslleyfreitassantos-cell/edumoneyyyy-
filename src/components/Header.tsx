@@ -1,152 +1,386 @@
-import React, { useState } from 'react';
-import { Search, Bell, MessageSquare, Settings, Menu, Check } from 'lucide-react';
-import { User } from '../types';
-import { motion, AnimatePresence } from 'motion/react';
+import {
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import {
+  Bell,
+  Check,
+  Menu,
+  MessageSquare,
+  Search,
+  Settings,
+} from 'lucide-react';
+import {
+  AnimatePresence,
+  motion,
+} from 'motion/react';
+
+import type { User } from '../types';
+
+export interface HeaderNotification {
+  id: string;
+  text: string;
+  time: string;
+  unread: boolean;
+}
 
 interface HeaderProps {
   currentUser: User;
   onOpenSidebar: () => void;
-  onNotificationClick?: () => void;
   searchPlaceholder?: string;
-  notificationsCount?: number;
+
+  notifications?: HeaderNotification[];
+  onNotificationClick?: () => void;
+  onNotificationSelect?: (
+    notification: HeaderNotification,
+  ) => void;
+  onMarkAllNotificationsRead?: () => void;
+
+  onSearchChange?: (searchTerm: string) => void;
+  onMessagesClick?: () => void;
+  onSettingsClick?: () => void;
+}
+
+function getUserInitials(name: string): string {
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join('');
+
+  return initials || 'U';
 }
 
 export default function Header({
   currentUser,
   onOpenSidebar,
-  onNotificationClick,
   searchPlaceholder = 'Pesquisar dados, alunos ou turmas...',
-  notificationsCount = 3,
+  notifications = [],
+  onNotificationClick,
+  onNotificationSelect,
+  onMarkAllNotificationsRead,
+  onSearchChange,
+  onMessagesClick,
+  onSettingsClick,
 }: HeaderProps) {
-  const [showNotifications, setShowNotifications] = useState(false);
-  const [notifications, setNotifications] = useState([
-    { id: 1, text: 'Aviso: Feriado Antecipado nesta sexta-feira.', time: '10:30', unread: true },
-    { id: 2, text: 'Nova tarefa de física publicada por Prof. Ricardo.', time: '08:15', unread: true },
-    { id: 3, text: 'O boletim do 1º bimestre está consolidado e disponível.', time: 'Ontem', unread: false },
-  ]);
+  const [showNotifications, setShowNotifications] =
+    useState(false);
 
-  const handleMarkAllRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, unread: false })));
-  };
+  const [searchTerm, setSearchTerm] =
+    useState('');
 
-  const unreadCount = notifications.filter(n => n.unread).length;
+  const [avatarFailed, setAvatarFailed] =
+    useState(false);
+
+  const avatarUrl =
+    currentUser.avatar?.trim() || null;
+
+  const userInitials =
+    getUserInitials(currentUser.name);
+
+  const unreadCount = useMemo(
+    () =>
+      notifications.filter(
+        (notification) => notification.unread,
+      ).length,
+    [notifications],
+  );
+
+  useEffect(() => {
+    setAvatarFailed(false);
+  }, [avatarUrl]);
+
+  useEffect(() => {
+    if (!showNotifications) {
+      return;
+    }
+
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setShowNotifications(false);
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape);
+
+    return () => {
+      window.removeEventListener(
+        'keydown',
+        handleEscape,
+      );
+    };
+  }, [showNotifications]);
+
+  function handleToggleNotifications(): void {
+    const nextValue = !showNotifications;
+
+    setShowNotifications(nextValue);
+
+    if (nextValue) {
+      onNotificationClick?.();
+    }
+  }
+
+  function handleSearch(
+    value: string,
+  ): void {
+    setSearchTerm(value);
+    onSearchChange?.(value);
+  }
+
+  function handleNotificationSelection(
+    notification: HeaderNotification,
+  ): void {
+    onNotificationSelect?.(notification);
+    setShowNotifications(false);
+  }
 
   return (
-    <header className="h-16 px-6 sticky top-0 z-40 bg-white border-b border-[#dfe3e8] flex justify-between items-center" id="app-header">
-      {/* Search Input & Mobile Burger */}
-      <div className="flex items-center gap-4 flex-1">
-        <button 
-          className="lg:hidden p-2 hover:bg-[#f1f4fa] rounded-full text-[#414754]"
+    <header
+      className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-[#dfe3e8] bg-white px-6"
+      id="app-header"
+    >
+      <div className="flex flex-1 items-center gap-4">
+        <button
+          type="button"
+          className="rounded-full p-2 text-[#414754] transition-colors hover:bg-[#f1f4fa] lg:hidden"
           onClick={onOpenSidebar}
-          aria-label="Open navigation sidebar"
+          aria-label="Abrir menu de navegação"
         >
-          <Menu className="w-5 h-5" />
+          <Menu className="h-5 w-5" />
         </button>
 
-        <div className="relative w-full max-w-md hidden md:block" id="search-input-container">
-          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#727785]">
-            <Search className="w-4 h-4" />
+        <div
+          className="relative hidden w-full max-w-md md:block"
+          id="search-input-container"
+        >
+          <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#727785]">
+            <Search className="h-4 w-4" />
           </span>
-          <input 
-            type="text"
+
+          <input
+            type="search"
+            value={searchTerm}
+            onChange={(event) =>
+              handleSearch(event.target.value)
+            }
             placeholder={searchPlaceholder}
-            className="w-full bg-[#f1f4fa] border-none rounded-full py-2 pl-10 pr-4 text-sm text-[#181c20] focus:ring-2 focus:ring-[#005bbf] transition-all outline-none font-medium placeholder:text-[#727785]/70"
+            aria-label={searchPlaceholder}
+            className="w-full rounded-full border-none bg-[#f1f4fa] py-2 pl-10 pr-4 text-sm font-medium text-[#181c20] outline-none transition-all placeholder:text-[#727785]/70 focus:ring-2 focus:ring-[#005bbf]"
           />
         </div>
       </div>
 
-      {/* Quick Actions & Profile */}
       <div className="flex items-center gap-2">
-        {/* Alerts & Notifications */}
         <div className="relative">
-          <button 
-            onClick={() => setShowNotifications(!showNotifications)}
-            className="hover:bg-[#f1f4fa] rounded-full p-2.5 transition-all relative cursor-pointer"
-            aria-label="View notifications"
+          <button
+            type="button"
+            onClick={handleToggleNotifications}
+            className="relative cursor-pointer rounded-full p-2.5 transition-all hover:bg-[#f1f4fa]"
+            aria-label={
+              unreadCount > 0
+                ? `Abrir notificações. ${unreadCount} não lidas.`
+                : 'Abrir notificações'
+            }
+            aria-expanded={showNotifications}
+            aria-controls="header-notifications-panel"
           >
-            <Bell className="w-5 h-5 text-[#414754]" />
+            <Bell className="h-5 w-5 text-[#414754]" />
+
             {unreadCount > 0 && (
-              <span className="absolute top-2 right-2 w-2 h-2 bg-[#ba1a1a] rounded-full border border-white" />
+              <span
+                className="absolute right-2 top-2 h-2 w-2 rounded-full border border-white bg-[#ba1a1a]"
+                aria-hidden="true"
+              />
             )}
           </button>
 
-          {/* Notifications Dropdown */}
           <AnimatePresence>
             {showNotifications && (
               <>
-                {/* Backdrop to close click */}
-                <div className="fixed inset-0 z-40" onClick={() => setShowNotifications(false)} />
-                <motion.div 
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                <button
+                  type="button"
+                  className="fixed inset-0 z-40 cursor-default"
+                  onClick={() =>
+                    setShowNotifications(false)
+                  }
+                  aria-label="Fechar notificações"
+                />
+
+                <motion.section
+                  id="header-notifications-panel"
+                  initial={{
+                    opacity: 0,
+                    y: 10,
+                    scale: 0.95,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: 10,
+                    scale: 0.95,
+                  }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 mt-2 w-80 bg-white border border-[#dfe3e8] rounded-xl shadow-lg z-50 overflow-hidden"
+                  className="absolute right-0 z-50 mt-2 w-80 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-lg"
+                  aria-label="Notificações"
                 >
-                  <div className="p-3.5 border-b border-[#dfe3e8] flex justify-between items-center bg-[#f1f4fa]">
-                    <span className="text-xs font-bold text-[#181c20] uppercase tracking-wider">Notificações</span>
-                    {unreadCount > 0 && (
-                      <button 
-                        onClick={handleMarkAllRead}
-                        className="text-[10px] text-[#005bbf] font-bold hover:underline flex items-center gap-1"
-                      >
-                        <Check className="w-3 h-3" />
-                        Marcar como lidas
-                      </button>
+                  <header className="flex items-center justify-between border-b border-[#dfe3e8] bg-[#f1f4fa] p-3.5">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#181c20]">
+                      Notificações
+                    </span>
+
+                    {unreadCount > 0 &&
+                      onMarkAllNotificationsRead && (
+                        <button
+                          type="button"
+                          onClick={
+                            onMarkAllNotificationsRead
+                          }
+                          className="flex items-center gap-1 text-[10px] font-bold text-[#005bbf] hover:underline"
+                        >
+                          <Check className="h-3 w-3" />
+
+                          Marcar como lidas
+                        </button>
+                      )}
+                  </header>
+
+                  <div className="max-h-64 overflow-y-auto">
+                    {notifications.length === 0 ? (
+                      <div className="p-8 text-center">
+                        <Bell
+                          className="mx-auto h-8 w-8 text-[#c1c6d6]"
+                          aria-hidden="true"
+                        />
+
+                        <p className="mt-3 text-xs font-semibold text-[#414754]">
+                          Nenhuma notificação disponível
+                        </p>
+
+                        <p className="mt-1 text-[10px] text-[#727785]">
+                          Novos avisos aparecerão aqui.
+                        </p>
+                      </div>
+                    ) : (
+                      <div className="divide-y divide-[#dfe3e8]">
+                        {notifications.map(
+                          (notification) => (
+                            <button
+                              type="button"
+                              key={notification.id}
+                              onClick={() =>
+                                handleNotificationSelection(
+                                  notification,
+                                )
+                              }
+                              className={`block w-full p-3 text-left text-xs transition-colors hover:bg-[#f1f4fa] ${notification.unread
+                                  ? 'bg-[#1a73e8]/5 font-semibold'
+                                  : 'text-[#414754]'
+                                }`}
+                            >
+                              <p className="leading-snug text-[#181c20]">
+                                {notification.text}
+                              </p>
+
+                              <span className="mt-1 block text-[10px] text-[#727785]">
+                                {notification.time}
+                              </span>
+                            </button>
+                          ),
+                        )}
+                      </div>
                     )}
                   </div>
-                  <div className="divide-y divide-[#dfe3e8] max-h-64 overflow-y-auto">
-                    {notifications.map((n) => (
-                      <div 
-                        key={n.id} 
-                        className={`p-3 text-xs transition-colors hover:bg-[#f1f4fa] ${
-                          n.unread ? 'bg-[#1a73e8]/5 font-semibold' : 'text-[#414754]'
-                        }`}
-                      >
-                        <p className="text-[#181c20] leading-snug">{n.text}</p>
-                        <span className="text-[10px] text-[#727785] mt-1 block">{n.time}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
+                </motion.section>
               </>
             )}
           </AnimatePresence>
         </div>
 
-        {/* Messaging */}
-        <button 
-          onClick={() => alert('Mensagens: Nenhuma conversa não lida no momento.')}
-          className="hover:bg-[#f1f4fa] rounded-full p-2.5 transition-all cursor-pointer"
-          aria-label="View chat messages"
+        <button
+          type="button"
+          onClick={onMessagesClick}
+          disabled={!onMessagesClick}
+          className="cursor-pointer rounded-full p-2.5 transition-all hover:bg-[#f1f4fa] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+          aria-label={
+            onMessagesClick
+              ? 'Abrir mensagens'
+              : 'Mensagens ainda não disponíveis'
+          }
+          title={
+            onMessagesClick
+              ? 'Mensagens'
+              : 'Módulo de mensagens em desenvolvimento'
+          }
         >
-          <MessageSquare className="w-5 h-5 text-[#414754]" />
+          <MessageSquare className="h-5 w-5 text-[#414754]" />
         </button>
 
-        {/* Global Settings Shortcut */}
-        <button 
-          onClick={() => alert('Opções Globais de Sistema.')}
-          className="hover:bg-[#f1f4fa] rounded-full p-2.5 transition-all cursor-pointer"
-          aria-label="System settings"
+        <button
+          type="button"
+          onClick={onSettingsClick}
+          disabled={!onSettingsClick}
+          className="cursor-pointer rounded-full p-2.5 transition-all hover:bg-[#f1f4fa] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
+          aria-label={
+            onSettingsClick
+              ? 'Abrir configurações'
+              : 'Configurações ainda não disponíveis'
+          }
+          title={
+            onSettingsClick
+              ? 'Configurações'
+              : 'Módulo de configurações em desenvolvimento'
+          }
         >
-          <Settings className="w-5 h-5 text-[#414754]" />
+          <Settings className="h-5 w-5 text-[#414754]" />
         </button>
 
-        {/* Divider */}
-        <div className="h-8 w-[1px] bg-[#c1c6d6] mx-2 hidden sm:block" />
+        <div
+          className="mx-2 hidden h-8 w-px bg-[#c1c6d6] sm:block"
+          aria-hidden="true"
+        />
 
-        {/* User Profile */}
-        <div className="flex items-center gap-3 pl-2" id="header-user-profile">
-          <div className="text-right hidden sm:block leading-tight">
-            <p className="text-xs font-bold text-[#181c20]">{currentUser.name}</p>
-            <p className="text-[10px] text-[#414754] font-medium">{currentUser.subtitle}</p>
+        <div
+          className="flex items-center gap-3 pl-2"
+          id="header-user-profile"
+        >
+          <div className="hidden text-right leading-tight sm:block">
+            <p className="text-xs font-bold text-[#181c20]">
+              {currentUser.name}
+            </p>
+
+            <p className="text-[10px] font-medium text-[#414754]">
+              {currentUser.subtitle}
+            </p>
           </div>
-          <img 
-            className="w-10 h-10 rounded-full border-2 border-[#1a73e8]/30 object-cover" 
-            alt={currentUser.name} 
-            src={currentUser.avatar}
-            referrerPolicy="no-referrer"
-          />
+
+          <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-[#1a73e8]/30 bg-[#005bbf]">
+            {avatarUrl && !avatarFailed ? (
+              <img
+                className="h-full w-full object-cover"
+                alt={`Foto de ${currentUser.name}`}
+                src={avatarUrl}
+                referrerPolicy="no-referrer"
+                onError={() =>
+                  setAvatarFailed(true)
+                }
+              />
+            ) : (
+              <span
+                className="flex h-full w-full items-center justify-center text-sm font-bold text-white"
+                aria-label={`Usuário ${currentUser.name}`}
+              >
+                {userInitials}
+              </span>
+            )}
+          </div>
         </div>
       </div>
     </header>
