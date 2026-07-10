@@ -246,6 +246,9 @@ nenhum dado sensível é gravado no navegador.
 As telas administrativas e o dashboard compartilhado de `ADMIN`/`DIRECTOR`
 exibem o seletor de escola. As consultas acadêmicas continuam usando
 `institution_id`, agora vindo da instituição selecionada no contexto.
+Nas telas administrativas seguras, permissões e rótulos já usam a role efetiva
+da instituição ativa, priorizando `memberships.role` e mantendo `profiles.role`
+como fallback temporário.
 
 Essa entrega cria a base frontend da seleção de instituição ativa. O fluxo
 multi-instituição ainda requer homologação, revisão de RLS e evolução futura das
@@ -687,9 +690,9 @@ Revisões ainda recomendadas antes de produção:
 - a criação da instituição e do primeiro administrador ainda depende de
   onboarding técnico;
 - não há seletor para usuários vinculados a várias instituições;
-- `profiles.role` ainda participa do roteamento, enquanto o papel institucional
-  vive em `memberships`;
-- permissões futuras devem considerar o membership da escola ativa;
+- `profiles.role` ainda participa do roteamento global e permanece como fallback
+  temporário para a role efetiva;
+- a migração completa das permissões para `memberships.role` ainda é gradual;
 - notas, frequência e agenda ainda não estão expostas no frontend;
 - as migrations do banco remoto precisam ser reconciliadas;
 - as Edge Functions ainda não são verificadas pelo GitHub Actions;

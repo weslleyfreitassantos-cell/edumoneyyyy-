@@ -205,6 +205,10 @@ Esse comportamento fica centralizado em:
 - `hasAnyEffectivePermission`
 - `hasAllEffectivePermissions`
 
+Os helpers aceitam apenas os papeis atuais do banco. Roles planejadas como
+`SUPER_ADMIN`, `SCHOOL_ADMIN` e `SECRETARY` nao recebem permissao efetiva ate
+existirem no schema, nas policies e nos fluxos privilegiados.
+
 Essa etapa nao conclui a migracao total para `memberships.role`. Algumas partes globais, como `ProtectedRoute`, ainda podem usar `profiles.role` para proteger rotas gerais enquanto a transicao acontece de forma segura.
 
 As Edge Functions existentes continuam validando os papeis atuais `ADMIN` e `DIRECTOR`.
