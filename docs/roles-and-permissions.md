@@ -16,6 +16,28 @@ Um usuario da escola atua dentro de uma instituicao especifica. A mesma pessoa p
 
 Hoje o frontend ainda usa principalmente `profiles.role`. A migracao completa para `memberships.role` fica para uma etapa futura, depois da reconciliacao do banco.
 
+## Instituicao ativa no frontend
+
+O frontend agora possui a base de selecao de instituicao ativa. A selecao usa os
+memberships ativos do usuario e as instituicoes ativas retornadas pelo banco.
+
+Comportamento planejado nesta base:
+
+- com uma escola ativa, ela e selecionada automaticamente;
+- com multiplas escolas ativas, a ultima escola escolhida e restaurada quando
+  ainda existe e esta ativa;
+- quando a escolha salva nao existe mais, a primeira escola ativa e usada;
+- sem escola ativa, o contexto retorna instituicao e membership como `null`,
+  permitindo estados vazios nas telas.
+
+O `localStorage` guarda somente o ID da escola selecionada, usando a chave
+`edumanager.currentInstitutionId.{profileId}`. Nenhum segredo, e-mail, senha ou
+dado sensivel e salvo nessa selecao.
+
+As telas administrativas devem ler a escola atual pelo contexto/hook de
+instituicao e filtrar dados por `institution_id`. As permissoes futuras devem
+considerar o `memberships.role` da escola ativa, nao apenas `profiles.role`.
+
 ## Papel futuro de profiles.platform_role
 
 `profiles.platform_role` deve guardar papeis globais da plataforma. O primeiro papel planejado e `SUPER_ADMIN`, responsavel por administrar a plataforma e criar escolas.

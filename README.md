@@ -22,6 +22,7 @@ convites por e-mail e dados reais nos painéis.
 - [Funcionalidades](#funcionalidades)
 - [Papéis de acesso](#papéis-de-acesso)
 - [Como a instituição funciona](#como-a-instituição-funciona)
+- [Instituição ativa selecionada](#instituição-ativa-selecionada)
 - [Fluxos principais](#fluxos-principais)
 - [Tecnologias](#tecnologias)
 - [Arquitetura](#arquitetura)
@@ -221,8 +222,34 @@ profile
 Os serviços do frontend obtêm a instituição atual pelo membership ativo e
 filtram as operações pelo `institution_id`.
 
-> A interface atual espera uma instituição ativa por usuário. O banco suporta
-> múltiplos memberships, mas ainda não existe seletor de instituição.
+---
+
+## Instituição ativa selecionada
+
+O frontend possui a base de seleção de instituição ativa para preparar o uso
+multi-instituição. A seleção usa os vínculos ativos de `memberships` combinados
+com instituições ativas em `institutions`.
+
+Comportamento atual:
+
+- se o usuário tiver uma escola ativa, ela é selecionada automaticamente;
+- se o usuário tiver múltiplas escolas ativas, o sistema tenta restaurar a
+  última escola escolhida;
+- se a escolha salva não existir mais, a primeira escola ativa é selecionada;
+- se o usuário não tiver escola ativa, as telas exibem orientação sem quebrar a
+  aplicação.
+
+A escolha é persistida no `localStorage` com a chave
+`edumanager.currentInstitutionId.{profileId}`. Apenas o ID da escola é salvo;
+nenhum dado sensível é gravado no navegador.
+
+As telas administrativas e o dashboard compartilhado de `ADMIN`/`DIRECTOR`
+exibem o seletor de escola. As consultas acadêmicas continuam usando
+`institution_id`, agora vindo da instituição selecionada no contexto.
+
+Essa entrega cria a base frontend da seleção de instituição ativa. O fluxo
+multi-instituição ainda requer homologação, revisão de RLS e evolução futura das
+permissões por `memberships.role`.
 
 ---
 
@@ -662,6 +689,7 @@ Revisões ainda recomendadas antes de produção:
 - não há seletor para usuários vinculados a várias instituições;
 - `profiles.role` ainda participa do roteamento, enquanto o papel institucional
   vive em `memberships`;
+- permissões futuras devem considerar o membership da escola ativa;
 - notas, frequência e agenda ainda não estão expostas no frontend;
 - as migrations do banco remoto precisam ser reconciliadas;
 - as Edge Functions ainda não são verificadas pelo GitHub Actions;
