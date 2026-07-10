@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
+import InstitutionSwitcher from '../../components/InstitutionSwitcher';
 import { useAuth } from '../../contexts/AuthContext';
 
 import {
@@ -96,14 +97,18 @@ export default function AdminPage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold text-[#181c20]">
-          Administração
-        </h2>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div>
+          <h2 className="text-2xl font-bold text-[#181c20]">
+            Administração
+          </h2>
 
-        <p className="text-sm text-[#727785]">
-          Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
-        </p>
+          <p className="text-sm text-[#727785]">
+            Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
+          </p>
+        </div>
+
+        <InstitutionSwitcher />
       </div>
 
       <div className="flex gap-2 overflow-x-auto border-b border-[#dfe3e8] pb-px">

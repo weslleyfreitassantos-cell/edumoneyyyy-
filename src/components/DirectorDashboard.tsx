@@ -12,6 +12,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useAdminOverview } from '../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import type { DatabaseRole } from '../lib/roles';
+import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
   role: DatabaseRole | undefined,
@@ -137,6 +138,33 @@ export default function DirectorDashboard() {
     );
   }
 
+  if (!institutionQuery.data) {
+    const dashboardTitle =
+      getDirectorDashboardTitle(profile.role);
+
+    return (
+      <div className="space-y-6">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-[#181c20]">
+              {dashboardTitle}
+            </h2>
+            <p className="mt-1 text-sm text-[#727785]">
+              Selecione uma escola ativa para carregar a visão acadêmica.
+            </p>
+          </div>
+
+          <InstitutionSwitcher />
+        </div>
+
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
+          {institutionQuery.message ??
+            'Nenhuma escola ativa foi encontrada para este usuário.'}
+        </div>
+      </div>
+    );
+  }
+
   const overview = overviewQuery.data;
   const dashboardTitle =
     getDirectorDashboardTitle(profile.role);
@@ -151,13 +179,17 @@ export default function DirectorDashboard() {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div>
         <h2 className="text-2xl font-bold text-[#181c20]">
           {dashboardTitle}
         </h2>
         <p className="mt-1 text-sm text-[#727785]">
           Resumo da estrutura acadêmica carregado das tabelas operacionais.
         </p>
+        </div>
+
+        <InstitutionSwitcher />
       </div>
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

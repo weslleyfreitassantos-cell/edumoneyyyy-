@@ -27,6 +27,8 @@ import {
   useAuth,
 } from './contexts/AuthContext';
 
+import { InstitutionProvider } from './contexts/InstitutionContext';
+
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 import Sidebar from './components/Sidebar';
@@ -474,11 +476,13 @@ function App() {
     >
       <BrowserRouter>
         <AuthProvider>
-          <Suspense
-            fallback={<PageLoading />}
-          >
-            <AppRoutes />
-          </Suspense>
+          <InstitutionProvider>
+            <Suspense
+              fallback={<PageLoading />}
+            >
+              <AppRoutes />
+            </Suspense>
+          </InstitutionProvider>
         </AuthProvider>
       </BrowserRouter>
     </QueryClientProvider>
