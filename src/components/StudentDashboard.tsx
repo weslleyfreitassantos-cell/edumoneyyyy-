@@ -5,19 +5,19 @@ import {
   BadgeCheck,
   BookOpen,
   CalendarDays,
-  ClipboardList,
-  Clock3,
   GraduationCap,
   Mail,
   School,
   UserRound,
+  UsersRound,
 } from 'lucide-react';
 
 import { useAuth } from '../contexts/AuthContext';
 
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
-
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
+
+import type { StudentDashboardOffering } from '../services/studentDashboardService';
 
 function getErrorMessage(
   error: unknown,
@@ -66,14 +66,95 @@ function formatDate(
   return `${day}/${month}/${year}`;
 }
 
-function shortenInstitutionId(
-  institutionId: string,
-): string {
-  if (institutionId.length <= 16) {
-    return institutionId;
-  }
+function DetailCard({
+  icon,
+  label,
+  value,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string | number;
+}) {
+  return (
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+          {icon}
+        </div>
 
-  return `${institutionId.slice(0, 8)}…${institutionId.slice(-4)}`;
+        <div>
+          <p className="text-xs font-medium text-[#727785]">
+            {label}
+          </p>
+          <p className="mt-1 text-sm font-bold text-[#181c20]">
+            {value}
+          </p>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function OfferingCard({
+  offering,
+}: {
+  offering: StudentDashboardOffering;
+}) {
+  return (
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-[10px] font-bold uppercase tracking-wide text-[#005bbf]">
+            {offering.subject_code ?? 'Disciplina'}
+          </p>
+          <h3 className="mt-1 text-base font-bold text-[#181c20]">
+            {offering.subject_name}
+          </h3>
+        </div>
+
+        <BookOpen
+          className="h-5 w-5 shrink-0 text-[#727785]"
+          aria-hidden="true"
+        />
+      </div>
+
+      <dl className="mt-4 space-y-3 text-sm">
+        <div>
+          <dt className="text-xs font-medium text-[#727785]">
+            Professor
+          </dt>
+          <dd className="mt-1 font-semibold text-[#181c20]">
+            {offering.teacher_name}
+          </dd>
+          <dd className="mt-0.5 break-all text-xs text-[#727785]">
+            {offering.teacher_email}
+          </dd>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <dt className="text-xs font-medium text-[#727785]">
+              Período
+            </dt>
+            <dd className="mt-1 font-semibold text-[#181c20]">
+              {offering.term_name}
+            </dd>
+          </div>
+
+          <div>
+            <dt className="text-xs font-medium text-[#727785]">
+              Carga
+            </dt>
+            <dd className="mt-1 font-semibold text-[#181c20]">
+              {offering.workload
+                ? `${offering.workload}h`
+                : 'Não informada'}
+            </dd>
+          </div>
+        </div>
+      </dl>
+    </article>
+  );
 }
 
 function LoadingState() {
@@ -84,41 +165,10 @@ function LoadingState() {
           className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
           aria-hidden="true"
         />
-
         <p className="mt-4 text-sm font-medium text-[#727785]">
           Carregando dados acadêmicos...
         </p>
       </div>
-    </div>
-  );
-}
-
-function UnavailableModule({
-  icon,
-  title,
-  description,
-}: {
-  icon: ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#005bbf]/10 text-[#005bbf]">
-        {icon}
-      </div>
-
-      <h3 className="mt-4 text-sm font-bold text-[#181c20]">
-        {title}
-      </h3>
-
-      <p className="mt-2 text-xs leading-relaxed text-[#727785]">
-        {description}
-      </p>
-
-      <span className="mt-4 inline-flex rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-amber-700">
-        Em preparação
-      </span>
     </div>
   );
 }
@@ -129,7 +179,7 @@ export default function StudentDashboard() {
   const institutionQuery =
     useCurrentInstitution(profile?.id);
 
-  const studentQuery =
+  const dashboardQuery =
     useStudentDashboard(
       profile?.id,
       institutionQuery.data,
@@ -137,7 +187,7 @@ export default function StudentDashboard() {
 
   if (
     institutionQuery.isLoading ||
-    studentQuery.isLoading
+    dashboardQuery.isLoading
   ) {
     return <LoadingState />;
   }
@@ -145,11 +195,11 @@ export default function StudentDashboard() {
   if (
     !profile ||
     institutionQuery.isError ||
-    studentQuery.isError
+    dashboardQuery.isError
   ) {
     const error =
       institutionQuery.error ??
-      studentQuery.error;
+      dashboardQuery.error;
 
     return (
       <div
@@ -159,7 +209,6 @@ export default function StudentDashboard() {
         <h2 className="font-bold">
           Não foi possível carregar o dashboard
         </h2>
-
         <p className="mt-2">
           {getErrorMessage(error)}
         </p>
@@ -167,9 +216,9 @@ export default function StudentDashboard() {
     );
   }
 
-  const student = studentQuery.data;
+  const dashboard = dashboardQuery.data;
 
-  if (!student) {
+  if (!dashboard) {
     return (
       <div
         role="alert"
@@ -180,17 +229,25 @@ export default function StudentDashboard() {
     );
   }
 
+  const { student, activeEnrollment, offerings } =
+    dashboard;
+
   const firstName =
     getFirstName(profile.full_name);
 
+  const classDescription = activeEnrollment
+    ? [
+        activeEnrollment.grade_level,
+        activeEnrollment.shift,
+      ]
+        .filter(Boolean)
+        .join(' • ')
+    : '';
+
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       className="space-y-6"
       id="student-dashboard-main"
     >
@@ -200,13 +257,11 @@ export default function StudentDashboard() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
               Área do aluno
             </p>
-
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
               Olá, {firstName}!
             </h1>
-
             <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85">
-              Seus dados pessoais e acadêmicos já estão conectados ao sistema.
+              Matrícula, turma e disciplinas carregadas diretamente do cadastro acadêmico.
             </p>
           </div>
 
@@ -219,118 +274,53 @@ export default function StudentDashboard() {
         </div>
       </section>
 
-      <section>
-        <div className="mb-4">
-          <h2 className="text-lg font-bold text-[#181c20]">
-            Identificação acadêmica
-          </h2>
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <DetailCard
+          icon={
+            <UserRound
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+          label="Registro acadêmico"
+          value={student.registration_number}
+        />
 
-          <p className="mt-1 text-sm text-[#727785]">
-            Informações carregadas diretamente do banco de dados.
-          </p>
-        </div>
+        <DetailCard
+          icon={
+            <CalendarDays
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+          label="Nascimento"
+          value={formatDate(student.birth_date)}
+        />
 
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-                <UserRound
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              </div>
+        <DetailCard
+          icon={
+            <School
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+          label="Turma atual"
+          value={
+            activeEnrollment?.class_name ??
+            'Sem matrícula ativa'
+          }
+        />
 
-              <div>
-                <p className="text-xs font-medium text-[#727785]">
-                  Nome completo
-                </p>
-
-                <p className="mt-1 text-sm font-bold text-[#181c20]">
-                  {profile.full_name}
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-                <GraduationCap
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              </div>
-
-              <div>
-                <p className="text-xs font-medium text-[#727785]">
-                  Registro acadêmico
-                </p>
-
-                <p className="mt-1 text-sm font-bold text-[#181c20]">
-                  {student.registration_number}
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-                <CalendarDays
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              </div>
-
-              <div>
-                <p className="text-xs font-medium text-[#727785]">
-                  Data de nascimento
-                </p>
-
-                <p className="mt-1 text-sm font-bold text-[#181c20]">
-                  {formatDate(
-                    student.birth_date,
-                  )}
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-            <div className="flex items-center gap-3">
-              <div
-                className={
-                  student.active
-                    ? 'flex h-10 w-10 items-center justify-center rounded-lg bg-green-50 text-green-700'
-                    : 'flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 text-gray-600'
-                }
-              >
-                <BadgeCheck
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              </div>
-
-              <div>
-                <p className="text-xs font-medium text-[#727785]">
-                  Situação
-                </p>
-
-                <p
-                  className={
-                    student.active
-                      ? 'mt-1 text-sm font-bold text-green-700'
-                      : 'mt-1 text-sm font-bold text-gray-600'
-                  }
-                >
-                  {student.active
-                    ? 'Aluno ativo'
-                    : 'Aluno inativo'}
-                </p>
-              </div>
-            </div>
-          </article>
-        </div>
+        <DetailCard
+          icon={
+            <BookOpen
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+          label="Disciplinas ativas"
+          value={offerings.length}
+        />
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
@@ -345,12 +335,10 @@ export default function StudentDashboard() {
                 className="mt-0.5 h-5 w-5 text-[#727785]"
                 aria-hidden="true"
               />
-
               <div>
                 <dt className="text-xs font-medium text-[#727785]">
                   E-mail
                 </dt>
-
                 <dd className="mt-1 break-all text-sm font-semibold text-[#181c20]">
                   {profile.email}
                 </dd>
@@ -358,23 +346,28 @@ export default function StudentDashboard() {
             </div>
 
             <div className="flex items-start gap-3">
-              <School
-                className="mt-0.5 h-5 w-5 text-[#727785]"
+              <BadgeCheck
+                className={
+                  student.active
+                    ? 'mt-0.5 h-5 w-5 text-green-700'
+                    : 'mt-0.5 h-5 w-5 text-gray-500'
+                }
                 aria-hidden="true"
               />
-
               <div>
                 <dt className="text-xs font-medium text-[#727785]">
-                  Instituição vinculada
+                  Situação
                 </dt>
-
                 <dd
-                  className="mt-1 text-sm font-semibold text-[#181c20]"
-                  title={student.institution_id}
+                  className={
+                    student.active
+                      ? 'mt-1 text-sm font-semibold text-green-700'
+                      : 'mt-1 text-sm font-semibold text-gray-600'
+                  }
                 >
-                  {shortenInstitutionId(
-                    student.institution_id,
-                  )}
+                  {student.active
+                    ? 'Aluno ativo'
+                    : 'Aluno inativo'}
                 </dd>
               </div>
             </div>
@@ -383,75 +376,77 @@ export default function StudentDashboard() {
 
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
           <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-            Situação acadêmica
+            Matrícula ativa
           </h2>
 
-          <div className="mt-5 rounded-lg border border-green-200 bg-green-50 p-4">
-            <div className="flex items-start gap-3">
-              <BadgeCheck
-                className="mt-0.5 h-5 w-5 text-green-700"
-                aria-hidden="true"
-              />
+          {activeEnrollment ? (
+            <dl className="mt-5 space-y-4">
+              <div>
+                <dt className="text-xs font-medium text-[#727785]">
+                  Ano letivo
+                </dt>
+                <dd className="mt-1 text-sm font-semibold text-[#181c20]">
+                  {activeEnrollment.academic_year_name}
+                </dd>
+              </div>
 
               <div>
-                <p className="text-sm font-bold text-green-800">
-                  Cadastro conectado
-                </p>
-
-                <p className="mt-1 text-xs leading-relaxed text-green-700">
-                  Seu perfil, vínculo institucional e registro acadêmico foram encontrados.
-                </p>
+                <dt className="text-xs font-medium text-[#727785]">
+                  Turma
+                </dt>
+                <dd className="mt-1 text-sm font-semibold text-[#181c20]">
+                  {activeEnrollment.class_name}
+                </dd>
+                {classDescription && (
+                  <dd className="mt-0.5 text-xs text-[#727785]">
+                    {classDescription}
+                  </dd>
+                )}
               </div>
+
+              <div>
+                <dt className="text-xs font-medium text-[#727785]">
+                  Status
+                </dt>
+                <dd className="mt-1 text-sm font-semibold text-green-700">
+                  {activeEnrollment.status}
+                </dd>
+              </div>
+            </dl>
+          ) : (
+            <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
+              Nenhuma matrícula ativa encontrada para este aluno.
             </div>
-          </div>
+          )}
         </article>
       </section>
 
       <section>
-        <div className="mb-4">
+        <div className="mb-4 flex items-center gap-2">
+          <UsersRound
+            className="h-5 w-5 text-[#005bbf]"
+            aria-hidden="true"
+          />
           <h2 className="text-lg font-bold text-[#181c20]">
-            Recursos acadêmicos
+            Disciplinas e professores
           </h2>
-
-          <p className="mt-1 text-sm text-[#727785]">
-            Estes módulos serão ativados quando as tabelas correspondentes forem implementadas.
-          </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          <UnavailableModule
-            icon={
-              <Clock3
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            }
-            title="Horários e disciplinas"
-            description="Os horários serão exibidos quando as ofertas de disciplinas e matrículas estiverem conectadas."
-          />
-
-          <UnavailableModule
-            icon={
-              <ClipboardList
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            }
-            title="Notas e avaliações"
-            description="As notas aparecerão após a criação das tabelas de avaliações e lançamentos."
-          />
-
-          <UnavailableModule
-            icon={
-              <BookOpen
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            }
-            title="Frequência"
-            description="A frequência será calculada após a implementação das chamadas e registros de presença."
-          />
-        </div>
+        {offerings.length === 0 ? (
+          <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-8 text-center text-sm text-[#727785]">
+            Nenhuma disciplina ativa encontrada para a turma atual.
+          </div>
+        ) : (
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {offerings.map((offering) => (
+              <div key={offering.id}>
+                <OfferingCard
+                  offering={offering}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </motion.div>
   );

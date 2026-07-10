@@ -1,126 +1,289 @@
-import React from 'react';
-import { useDirectorDashboard } from '../hooks/useDirectorDashboard';
+import {
+  AlertTriangle,
+  BookOpen,
+  GraduationCap,
+  Layers3,
+  School,
+  UsersRound,
+} from 'lucide-react';
+import type { ReactNode } from 'react';
 
-export default function DirectorDashboard() {
-  const { data, isLoading, error } = useDirectorDashboard();
+import { useAuth } from '../contexts/AuthContext';
+import { useAdminOverview } from '../hooks/useAdminOverview';
+import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center h-64">
-        <div className="text-lg text-gray-500">Carregando dados...</div>
-      </div>
-    );
+function getErrorMessage(
+  error: unknown,
+): string {
+  if (error instanceof Error) {
+    return error.message;
   }
 
-  if (error) {
-    return (
-      <div className="p-4 bg-red-50 text-red-600 rounded-lg">
-        Erro ao carregar dados: {error.message}
-      </div>
-    );
+  if (
+    typeof error === 'object' &&
+    error !== null &&
+    'message' in error &&
+    typeof error.message === 'string'
+  ) {
+    return error.message;
   }
 
-  if (!data) {
-    return (
-      <div className="p-4 bg-yellow-50 text-yellow-600 rounded-lg">
-        Nenhum dado encontrado. Cadastre alunos, professores e turmas para ver o resumo.
-      </div>
-    );
-  }
+  return 'Não foi possível carregar o painel do diretor.';
+}
 
-  const { summary, upcomingEvents, alerts } = data;
-
+function MetricCard({
+  title,
+  value,
+  subtitle,
+  icon,
+}: {
+  title: string;
+  value: number;
+  subtitle?: string;
+  icon: ReactNode;
+}) {
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+      <div className="flex items-center justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-bold text-[#181c20]">Painel do Diretor</h2>
-          <p className="text-sm text-[#727785]">Resumo executivo do desempenho e gestão escolar global.</p>
+          <p className="text-xs font-medium text-[#727785]">
+            {title}
+          </p>
+          <p className="mt-2 text-2xl font-bold text-[#181c20]">
+            {value}
+          </p>
+          {subtitle && (
+            <p className="mt-1 text-xs text-[#727785]">
+              {subtitle}
+            </p>
+          )}
+        </div>
+
+        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
+          {icon}
         </div>
       </div>
+    </article>
+  );
+}
 
-      {/* Cards de resumo */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <StatCard 
-          title="Total de Alunos" 
-          value={summary.totalStudents} 
-          subtitle={`${summary.enrolledStudents} matriculados`}
+function LoadingState() {
+  return (
+    <div className="grid min-h-[360px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
+      <div className="text-center">
+        <div
+          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
+          aria-hidden="true"
         />
-        <StatCard 
-          title="Professores Ativos" 
-          value={summary.activeTeachers}
-          subtitle={`${summary.totalTeachers} total`}
-        />
-        <StatCard 
-          title="Turmas Ativas" 
-          value={summary.activeClasses}
-          subtitle={`${summary.totalClasses} total`}
-        />
-        <StatCard 
-          title="Média por Turma" 
-          value={summary.avgStudentsPerClass}
-          subtitle="alunos por turma"
-          isDecimal
-        />
-      </div>
-
-      {/* Próximos eventos */}
-      <div className="bg-white rounded-xl shadow p-4 border border-[#dfe3e8]">
-        <h3 className="font-bold text-lg mb-4">📅 Próximos Eventos</h3>
-        {upcomingEvents && upcomingEvents.length > 0 ? (
-          <ul className="space-y-2">
-            {upcomingEvents.map((event, index) => (
-              <li key={index} className="border-b pb-2">
-                <div className="font-medium">{event.title}</div>
-                <div className="text-sm text-gray-600">{event.start_date}</div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500">Nenhum evento próximo cadastrado.</p>
-        )}
-      </div>
-
-      {/* Alertas */}
-      <div className="bg-white rounded-xl shadow p-4 border border-[#dfe3e8]">
-        <h3 className="font-bold text-lg mb-4">⚠️ Alertas</h3>
-        {alerts && alerts.length > 0 ? (
-          <ul className="space-y-2">
-            {alerts.map((alert, index) => (
-              <li key={index} className="border-b pb-2 text-yellow-700">
-                {alert.student_name} - Frequência: {alert.attendance_percentage}% 
-                ({alert.alert_type})
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-gray-500">Nenhum alerta no momento.</p>
-        )}
+        <p className="mt-4 text-sm font-medium text-[#727785]">
+          Carregando visão acadêmica...
+        </p>
       </div>
     </div>
   );
 }
 
-function StatCard({ 
-  title, 
-  value, 
-  subtitle, 
-  isDecimal = false 
-}: { 
-  title: string; 
-  value: number; 
-  subtitle?: string;
-  isDecimal?: boolean;
-}) {
-  return (
-    <div className="bg-white rounded-xl shadow p-4 border border-[#dfe3e8]">
-      <div className="text-sm text-gray-500 font-medium">{title}</div>
-      <div className="text-2xl font-bold text-[#181c20]">
-        {isDecimal ? value.toFixed(1) : value}
+export default function DirectorDashboard() {
+  const { profile } = useAuth();
+
+  const institutionQuery =
+    useCurrentInstitution(profile?.id);
+
+  const overviewQuery =
+    useAdminOverview(
+      institutionQuery.data ?? '',
+    );
+
+  if (
+    institutionQuery.isLoading ||
+    overviewQuery.isLoading
+  ) {
+    return <LoadingState />;
+  }
+
+  if (
+    !profile ||
+    institutionQuery.isError ||
+    overviewQuery.isError
+  ) {
+    const error =
+      institutionQuery.error ??
+      overviewQuery.error;
+
+    return (
+      <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">
+        <h2 className="font-bold">
+          Não foi possível carregar o painel
+        </h2>
+        <p className="mt-2">
+          {getErrorMessage(error)}
+        </p>
       </div>
-      {subtitle && (
-        <div className="text-xs text-gray-400 mt-1">{subtitle}</div>
-      )}
+    );
+  }
+
+  const overview = overviewQuery.data;
+
+  if (!overview) {
+    return (
+      <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
+        Nenhum dado acadêmico encontrado para esta instituição.
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-2xl font-bold text-[#181c20]">
+          Painel do Diretor
+        </h2>
+        <p className="mt-1 text-sm text-[#727785]">
+          Resumo da estrutura acadêmica carregado das tabelas operacionais.
+        </p>
+      </div>
+
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <MetricCard
+          title="Alunos ativos"
+          value={overview.metrics.activeStudents}
+          subtitle={`${overview.metrics.inactiveStudents} inativos`}
+          icon={
+            <GraduationCap
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          title="Professores ativos"
+          value={overview.metrics.activeTeachers}
+          icon={
+            <UsersRound
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          title="Turmas ativas"
+          value={overview.metrics.activeClasses}
+          subtitle={`${overview.metrics.activeEnrollments} matrículas`}
+          icon={
+            <School
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          title="Atribuições ativas"
+          value={overview.metrics.activeAssignments}
+          subtitle={`${overview.metrics.activeSubjects} disciplinas`}
+          icon={
+            <BookOpen
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-2">
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-3">
+            <Layers3
+              className="h-5 w-5 text-[#005bbf]"
+              aria-hidden="true"
+            />
+            <h3 className="text-lg font-bold text-[#181c20]">
+              Período atual
+            </h3>
+          </div>
+
+          <dl className="mt-5 space-y-4">
+            <div>
+              <dt className="text-xs font-medium text-[#727785]">
+                Ano letivo
+              </dt>
+              <dd className="mt-1 text-sm font-semibold text-[#181c20]">
+                {overview.currentAcademicYear?.name ??
+                  'Nenhum ano ativo'}
+              </dd>
+            </div>
+
+            <div>
+              <dt className="text-xs font-medium text-[#727785]">
+                Período
+              </dt>
+              <dd className="mt-1 text-sm font-semibold text-[#181c20]">
+                {overview.currentTerm?.name ??
+                  'Nenhum período ativo'}
+              </dd>
+            </div>
+          </dl>
+        </article>
+
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
+          <div className="flex items-center gap-3">
+            <UsersRound
+              className="h-5 w-5 text-[#005bbf]"
+              aria-hidden="true"
+            />
+            <h3 className="text-lg font-bold text-[#181c20]">
+              Vínculos familiares
+            </h3>
+          </div>
+
+          <p className="mt-5 text-3xl font-bold text-[#181c20]">
+            {overview.metrics.activeGuardians}
+          </p>
+          <p className="mt-1 text-sm text-[#727785]">
+            Responsáveis com vínculo ativo a alunos da instituição.
+          </p>
+        </article>
+      </section>
+
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
+        <div className="flex items-center gap-3">
+          <AlertTriangle
+            className="h-5 w-5 text-amber-600"
+            aria-hidden="true"
+          />
+          <h3 className="text-lg font-bold text-[#181c20]">
+            Pontos de atenção
+          </h3>
+        </div>
+
+        {overview.warnings.length === 0 ? (
+          <p className="mt-4 text-sm text-[#727785]">
+            Nenhum alerta acadêmico encontrado.
+          </p>
+        ) : (
+          <div className="mt-4 grid gap-3">
+            {overview.warnings.map((warning) => (
+              <div
+                key={warning.id}
+                className={
+                  warning.severity === 'warning'
+                    ? 'rounded-lg border border-amber-200 bg-amber-50 px-4 py-3'
+                    : 'rounded-lg border border-blue-200 bg-blue-50 px-4 py-3'
+                }
+              >
+                <p className="text-sm font-semibold text-[#181c20]">
+                  {warning.title}
+                </p>
+                <p className="mt-1 text-sm text-[#727785]">
+                  {warning.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }

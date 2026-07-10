@@ -3,8 +3,6 @@ import type { ReactNode } from 'react';
 
 import {
   BookOpen,
-  CalendarCheck,
-  ClipboardPenLine,
   GraduationCap,
   Layers3,
   School,
@@ -370,70 +368,6 @@ export default function TeacherDashboard() {
             )}
           </div>
         )}
-      </section>
-
-      <section>
-        <div className="mb-4">
-          <h2 className="text-lg font-bold text-[#181c20]">
-            Operações acadêmicas
-          </h2>
-
-          <p className="mt-1 text-sm text-[#727785]">
-            As telas serão ativadas depois que as migrations forem aplicadas ao banco.
-          </p>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2">
-          <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
-            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-              <CalendarCheck
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            </div>
-
-            <h3 className="mt-4 text-base font-bold text-[#181c20]">
-              Lançar frequência
-            </h3>
-
-            <p className="mt-2 text-sm leading-relaxed text-[#727785]">
-              Criação de chamadas e registro individual de presença por turma.
-            </p>
-
-            <button
-              type="button"
-              disabled
-              className="mt-5 rounded-lg bg-gray-100 px-4 py-2 text-xs font-bold text-gray-500"
-            >
-              Aguardando aplicação das migrations
-            </button>
-          </article>
-
-          <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
-            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-              <ClipboardPenLine
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
-            </div>
-
-            <h3 className="mt-4 text-base font-bold text-[#181c20]">
-              Registrar notas
-            </h3>
-
-            <p className="mt-2 text-sm leading-relaxed text-[#727785]">
-              Criação de avaliações e lançamento das notas dos alunos matriculados.
-            </p>
-
-            <button
-              type="button"
-              disabled
-              className="mt-5 rounded-lg bg-gray-100 px-4 py-2 text-xs font-bold text-gray-500"
-            >
-              Aguardando aplicação das migrations
-            </button>
-          </article>
-        </div>
       </section>
     </motion.div>
   );

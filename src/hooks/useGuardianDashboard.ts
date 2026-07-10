@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 
 import {
-  studentDashboardService,
-  type StudentDashboardData,
-} from '../services/studentDashboardService';
+  guardianDashboardService,
+  type GuardianDashboardData,
+} from '../services/guardianDashboardService';
 
-export function useStudentDashboard(
+export function useGuardianDashboard(
   profileId: string | undefined,
   institutionId: string | undefined,
 ) {
-  return useQuery<StudentDashboardData>({
+  return useQuery<GuardianDashboardData>({
     queryKey: [
-      'student-dashboard',
+      'guardian-dashboard',
       profileId,
       institutionId,
     ],
@@ -19,17 +19,17 @@ export function useStudentDashboard(
     queryFn: () => {
       if (!profileId) {
         throw new Error(
-          'O perfil do aluno não foi informado.',
+          'O perfil do responsável não foi informado.',
         );
       }
 
       if (!institutionId) {
         throw new Error(
-          'A instituição do aluno não foi informada.',
+          'A instituição do responsável não foi informada.',
         );
       }
 
-      return studentDashboardService
+      return guardianDashboardService
         .getDashboard(
           profileId,
           institutionId,
