@@ -207,6 +207,19 @@ export function getSchoolUserSummary(
   };
 }
 
+function toCurrentDatabaseRole(
+  role: string | null | undefined,
+): CurrentDatabaseRole | undefined {
+  if (
+    CURRENT_DATABASE_ROLES.includes(
+      role as CurrentDatabaseRole,
+    )
+  ) {
+    return role as CurrentDatabaseRole;
+  }
+
+  return undefined;
+}
 function StatusBadge({
   active,
 }: {
@@ -465,7 +478,7 @@ export default function SchoolUsersTab() {
             <button
               type="button"
               disabled
-              title="O cadastro unificado de usuários será habilitado após a reconciliação das migrations, criação dos novos papéis e homologação do fluxo de convite/senha."
+              title={newUserDisabledTitle}
               aria-describedby="new-user-disabled-help"
               className="inline-flex cursor-not-allowed items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
             >

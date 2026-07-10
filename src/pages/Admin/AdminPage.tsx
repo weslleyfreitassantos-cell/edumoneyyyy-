@@ -19,6 +19,19 @@ import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
 
+function toCurrentDatabaseRole(
+  role: string | null | undefined,
+): CurrentDatabaseRole | undefined {
+  if (
+    CURRENT_DATABASE_ROLES.includes(
+      role as CurrentDatabaseRole,
+    )
+  ) {
+    return role as CurrentDatabaseRole;
+  }
+
+  return undefined;
+}
 type TabType =
   | 'overview'
   | 'school-users'
