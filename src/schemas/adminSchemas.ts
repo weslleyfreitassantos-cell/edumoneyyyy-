@@ -1,4 +1,4 @@
-﻿import { z } from 'zod';
+import { z } from 'zod';
 
 const optionalCpfSchema = z.preprocess(
   (value) => {
@@ -21,6 +21,27 @@ const optionalCpfSchema = z.preprocess(
     .optional(),
 );
 
+const personIdentityFields = {
+  institution_id: z.guid(
+    'Instituição inválida',
+  ),
+
+  full_name: z
+    .string()
+    .trim()
+    .min(3, 'Nome é obrigatório')
+    .max(
+      120,
+      'Nome deve possuir no máximo 120 caracteres',
+    ),
+
+  email: z
+    .string()
+    .trim()
+    .toLowerCase()
+    .email('E-mail inválido'),
+};
+
 const studentEditableFields = {
   birth_date: z
     .string()
@@ -34,31 +55,17 @@ const studentEditableFields = {
 
 export const studentSchema = z
   .object({
-    institution_id: z.guid(
-      'Instituição inválida',
-    ),
-
-    full_name: z
-      .string()
-      .trim()
-      .min(3, 'Nome é obrigatório')
-      .max(
-        120,
-        'Nome deve possuir no máximo 120 caracteres',
-      ),
-
-    email: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .email('E-mail inválido'),
-
+    ...personIdentityFields,
     ...studentEditableFields,
   })
   .strict();
 
 export const studentUpdateSchema = z
   .object(studentEditableFields)
+  .strict();
+
+export const teacherSchema = z
+  .object(personIdentityFields)
   .strict();
 
 export const classSchema = z.object({
@@ -103,6 +110,9 @@ export type StudentFormData =
 
 export type StudentUpdateData =
   z.infer<typeof studentUpdateSchema>;
+
+export type TeacherFormData =
+  z.infer<typeof teacherSchema>;
 
 export type ClassFormData =
   z.infer<typeof classSchema>;
