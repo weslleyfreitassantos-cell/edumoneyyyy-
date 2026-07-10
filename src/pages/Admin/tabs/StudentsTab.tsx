@@ -29,21 +29,17 @@ import type { StudentRow } from '../../../services/studentService';
 
 interface StudentDraft {
   profile_id: string;
-  registration_number: string;
   birth_date: string;
   cpf: string;
 }
 
 const emptyDraft: StudentDraft = {
   profile_id: '',
-  registration_number: '',
   birth_date: '',
   cpf: '',
 };
 
-function getErrorMessage(
-  error: unknown,
-): string {
+function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
   }
@@ -60,11 +56,8 @@ function getErrorMessage(
   return 'Não foi possível concluir a operação.';
 }
 
-function formatDate(
-  value: string,
-): string {
-  const [year, month, day] =
-    value.split('-');
+function formatDate(value: string): string {
+  const [year, month, day] = value.split('-');
 
   if (!year || !month || !day) {
     return value;
@@ -73,9 +66,7 @@ function formatDate(
   return `${day}/${month}/${year}`;
 }
 
-function getStudentName(
-  student: StudentRow,
-): string {
+function getStudentName(student: StudentRow): string {
   return (
     student.profiles?.full_name ??
     student.registration_number
@@ -210,8 +201,6 @@ export default function StudentsTab() {
 
     setFormData({
       profile_id: student.profile_id,
-      registration_number:
-        student.registration_number,
       birth_date: student.birth_date,
       cpf: student.cpf ?? '',
     });
@@ -245,8 +234,6 @@ export default function StudentsTab() {
       if (editingStudent) {
         const result =
           studentUpdateSchema.safeParse({
-            registration_number:
-              formData.registration_number,
             birth_date:
               formData.birth_date,
             cpf: formData.cpf,
@@ -273,9 +260,13 @@ export default function StudentsTab() {
       } else {
         const result =
           studentSchema.safeParse({
-            ...formData,
+            profile_id:
+              formData.profile_id,
             institution_id:
               institutionId,
+            birth_date:
+              formData.birth_date,
+            cpf: formData.cpf,
             active: true,
           });
 
@@ -288,12 +279,13 @@ export default function StudentsTab() {
           return;
         }
 
-        await createMutation.mutateAsync(
-          result.data,
-        );
+        const createdStudent =
+          await createMutation.mutateAsync(
+            result.data,
+          );
 
         setFeedbackMessage(
-          'Aluno cadastrado com sucesso.',
+          `Aluno cadastrado com sucesso. RA gerado: ${createdStudent.registration_number}.`,
         );
       }
 
@@ -391,7 +383,9 @@ export default function StudentsTab() {
         addLabel="Novo aluno"
         data={studentsQuery.data ?? []}
         columns={columns}
-        isLoading={studentsQuery.isLoading}
+        isLoading={
+          studentsQuery.isLoading
+        }
         onAdd={openCreateModal}
         emptyMessage="Nenhum aluno cadastrado nesta instituição."
         renderActions={(student) => {
@@ -470,135 +464,130 @@ export default function StudentsTab() {
               )}
 
               {editingStudent ? (
-                <div>
-                  <span className="block text-sm font-medium text-gray-700">
-                    Perfil
-                  </span>
+                <>
+                  <div>
+                    <span className="block text-sm font-medium text-gray-700">
+                      Perfil
+                    </span>
 
-                  <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
-                    {editingStudent.profiles
-                      ?.full_name ??
-                      'Perfil indisponível'}
-                    {editingStudent.profiles
-                      ?.email
-                      ? ` (${editingStudent.profiles.email})`
-                      : ''}
-                  </p>
-                </div>
-              ) : (
-                <div>
-                  <label
-                    htmlFor="student-profile"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Perfil do aluno
-                  </label>
+                    <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
+                      {editingStudent.profiles
+                        ?.full_name ??
+                        'Perfil indisponível'}
 
-                  <select
-                    id="student-profile"
-                    className="mt-1 w-full rounded-lg border px-3 py-2"
-                    value={
-                      formData.profile_id
-                    }
-                    onChange={(event) =>
-                      setFormData(
-                        (current) => ({
-                          ...current,
-                          profile_id:
-                            event.target
-                              .value,
-                        }),
-                      )
-                    }
-                    disabled={
-                      availableProfilesQuery.isLoading
-                    }
-                    required
-                  >
-                    <option value="">
-                      {availableProfilesQuery.isLoading
-                        ? 'Carregando perfis...'
-                        : 'Selecione um perfil'}
-                    </option>
-
-                    {(
-                      availableProfilesQuery.data ??
-                      []
-                    ).map(
-                      (
-                        availableProfile,
-                      ) => (
-                        <option
-                          key={
-                            availableProfile.id
-                          }
-                          value={
-                            availableProfile.id
-                          }
-                        >
-                          {
-                            availableProfile.full_name
-                          }{' '}
-                          (
-                          {
-                            availableProfile.email
-                          }
-                          )
-                        </option>
-                      ),
-                    )}
-                  </select>
-
-                  {availableProfilesQuery.isError && (
-                    <p className="mt-1 text-xs text-red-600">
-                      {getErrorMessage(
-                        availableProfilesQuery.error,
-                      )}
+                      {editingStudent.profiles
+                        ?.email
+                        ? ` (${editingStudent.profiles.email})`
+                        : ''}
                     </p>
-                  )}
+                  </div>
 
-                  {!availableProfilesQuery.isLoading &&
-                    !availableProfilesQuery.isError &&
-                    (
-                      availableProfilesQuery.data ??
-                      []
-                    ).length === 0 && (
-                      <p className="mt-1 text-xs text-gray-500">
-                        Não existem perfis de
-                        aluno disponíveis nesta
-                        instituição.
+                  <div>
+                    <span className="block text-sm font-medium text-gray-700">
+                      RA
+                    </span>
+
+                    <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
+                      {
+                        editingStudent.registration_number
+                      }
+                    </p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div>
+                    <label
+                      htmlFor="student-profile"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Perfil do aluno
+                    </label>
+
+                    <select
+                      id="student-profile"
+                      className="mt-1 w-full rounded-lg border px-3 py-2"
+                      value={
+                        formData.profile_id
+                      }
+                      onChange={(event) =>
+                        setFormData(
+                          (current) => ({
+                            ...current,
+                            profile_id:
+                              event.target
+                                .value,
+                          }),
+                        )
+                      }
+                      disabled={
+                        availableProfilesQuery.isLoading
+                      }
+                      required
+                    >
+                      <option value="">
+                        {availableProfilesQuery.isLoading
+                          ? 'Carregando perfis...'
+                          : 'Selecione um perfil'}
+                      </option>
+
+                      {(
+                        availableProfilesQuery.data ??
+                        []
+                      ).map(
+                        (
+                          availableProfile,
+                        ) => (
+                          <option
+                            key={
+                              availableProfile.id
+                            }
+                            value={
+                              availableProfile.id
+                            }
+                          >
+                            {
+                              availableProfile.full_name
+                            }{' '}
+                            (
+                            {
+                              availableProfile.email
+                            }
+                            )
+                          </option>
+                        ),
+                      )}
+                    </select>
+
+                    {availableProfilesQuery.isError && (
+                      <p className="mt-1 text-xs text-red-600">
+                        {getErrorMessage(
+                          availableProfilesQuery.error,
+                        )}
                       </p>
                     )}
-                </div>
+
+                    {!availableProfilesQuery.isLoading &&
+                      !availableProfilesQuery.isError &&
+                      (
+                        availableProfilesQuery.data ??
+                        []
+                      ).length === 0 && (
+                        <p className="mt-1 text-xs text-gray-500">
+                          Não existem perfis
+                          de aluno disponíveis
+                          nesta instituição.
+                        </p>
+                      )}
+                  </div>
+
+                  <p className="rounded-lg bg-blue-50 px-3 py-2 text-xs text-blue-700">
+                    O RA será gerado
+                    automaticamente após o
+                    cadastro.
+                  </p>
+                </>
               )}
-
-              <div>
-                <label
-                  htmlFor="student-registration"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  RA
-                </label>
-
-                <input
-                  id="student-registration"
-                  type="text"
-                  className="mt-1 w-full rounded-lg border px-3 py-2"
-                  value={
-                    formData.registration_number
-                  }
-                  onChange={(event) =>
-                    setFormData(
-                      (current) => ({
-                        ...current,
-                        registration_number:
-                          event.target.value,
-                      }),
-                    )
-                  }
-                  required
-                />
-              </div>
 
               <div>
                 <label

@@ -21,21 +21,7 @@ const optionalCpfSchema = z.preprocess(
     .optional(),
 );
 
-export const studentSchema = z.object({
-  profile_id: z
-    .string()
-    .uuid('Selecione um perfil válido'),
-
-  institution_id: z
-    .string()
-    .uuid('Instituição inválida'),
-
-  registration_number: z
-    .string()
-    .trim()
-    .min(1, 'RA é obrigatório')
-    .max(50, 'RA deve possuir no máximo 50 caracteres'),
-
+const studentEditableFields = {
   birth_date: z
     .string()
     .regex(
@@ -44,27 +30,50 @@ export const studentSchema = z.object({
     ),
 
   cpf: optionalCpfSchema,
+};
 
-  active: z.boolean().default(true),
-});
+export const studentSchema = z
+  .object({
+    profile_id: z
+      .string()
+      .uuid('Selecione um perfil válido'),
 
-export const studentUpdateSchema =
-  studentSchema.pick({
-    registration_number: true,
-    birth_date: true,
-    cpf: true,
-  });
+    institution_id: z
+      .string()
+      .uuid('Instituição inválida'),
+
+    ...studentEditableFields,
+
+    active: z.boolean().default(true),
+  })
+  .strict();
+
+export const studentUpdateSchema = z
+  .object(studentEditableFields)
+  .strict();
 
 export const classSchema = z.object({
   name: z
     .string()
-    .min(1, 'Nome da turma é obrigatório'),
+    .trim()
+    .min(
+      1,
+      'Nome da turma é obrigatório',
+    ),
 
-  grade_level: z.string().optional(),
-  shift: z.string().optional(),
+  grade_level: z
+    .string()
+    .trim()
+    .optional(),
+
+  shift: z
+    .string()
+    .trim()
+    .optional(),
 
   capacity: z
     .number()
+    .int('Capacidade deve ser um número inteiro')
     .min(
       1,
       'Capacidade deve ser maior que 0',

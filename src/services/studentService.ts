@@ -54,6 +54,11 @@ interface MembershipWithProfile {
   | null;
 }
 
+export interface CreatedStudent {
+  id: string;
+  registration_number: string;
+}
+
 function normalizeStudentProfile(
   relation: StudentQueryRow['profiles'],
 ): StudentProfileSummary | null {
@@ -97,72 +102,15 @@ async function ensureStudentMembership(
   }
 }
 
-async function ensureUniqueStudent(
+async function ensureStudentNotRegistered(
   institutionId: string,
   profileId: string,
-  registrationNumber: string,
-): Promise<void> {
-  const [profileResult, registrationResult] =
-    await Promise.all([
-      supabase
-        .from('students')
-        .select('id')
-        .eq('institution_id', institutionId)
-        .eq('profile_id', profileId)
-        .limit(1),
-
-      supabase
-        .from('students')
-        .select('id')
-        .eq('institution_id', institutionId)
-        .eq(
-          'registration_number',
-          registrationNumber,
-        )
-        .limit(1),
-    ]);
-
-  if (profileResult.error) {
-    throw profileResult.error;
-  }
-
-  if (registrationResult.error) {
-    throw registrationResult.error;
-  }
-
-  if (
-    profileResult.data &&
-    profileResult.data.length > 0
-  ) {
-    throw new Error(
-      'Este perfil já está cadastrado como aluno nesta instituição.',
-    );
-  }
-
-  if (
-    registrationResult.data &&
-    registrationResult.data.length > 0
-  ) {
-    throw new Error(
-      'Já existe um aluno com este RA nesta instituição.',
-    );
-  }
-}
-
-async function ensureUniqueRegistrationForUpdate(
-  id: string,
-  institutionId: string,
-  registrationNumber: string,
 ): Promise<void> {
   const { data, error } = await supabase
     .from('students')
     .select('id')
     .eq('institution_id', institutionId)
-    .eq(
-      'registration_number',
-      registrationNumber,
-    )
-    .neq('id', id)
+    .eq('profile_id', profileId)
     .limit(1);
 
   if (error) {
@@ -171,7 +119,7 @@ async function ensureUniqueRegistrationForUpdate(
 
   if (data && data.length > 0) {
     throw new Error(
-      'Já existe outro aluno com este RA nesta instituição.',
+      'Este perfil já está cadastrado como aluno nesta instituição.',
     );
   }
 }
@@ -306,7 +254,7 @@ export const studentService = {
 
   async create(
     input: StudentFormData,
-  ): Promise<void> {
+  ): Promise<CreatedStudent> {
     const data = studentSchema.parse(input);
 
     await ensureStudentMembership(
@@ -314,24 +262,49 @@ export const studentService = {
       data.institution_id,
     );
 
-    await ensureUniqueStudent(
+    await ensureStudentNotRegistered(
       data.institution_id,
       data.profile_id,
-      data.registration_number,
     );
 
-    const { error } = await supabase
+    const {
+      data: createdStudent,
+      error,
+    } = await supabase
       .from('students')
       .insert([
         {
-          ...data,
+          profile_id: data.profile_id,
+          institution_id:
+            data.institution_id,
+          birth_date: data.birth_date,
           cpf: data.cpf ?? null,
+          active: data.active,
         },
-      ]);
+      ])
+      .select('id, registration_number')
+      .single();
 
     if (error) {
       throw error;
     }
+
+    if (
+      !createdStudent ||
+      typeof createdStudent.id !== 'string' ||
+      typeof createdStudent.registration_number !==
+      'string'
+    ) {
+      throw new Error(
+        'O aluno foi criado, mas o RA gerado não foi retornado.',
+      );
+    }
+
+    return {
+      id: createdStudent.id,
+      registration_number:
+        createdStudent.registration_number,
+    };
   },
 
   async update(
@@ -342,17 +315,9 @@ export const studentService = {
     const data =
       studentUpdateSchema.parse(input);
 
-    await ensureUniqueRegistrationForUpdate(
-      id,
-      institutionId,
-      data.registration_number,
-    );
-
     const { error } = await supabase
       .from('students')
       .update({
-        registration_number:
-          data.registration_number,
         birth_date: data.birth_date,
         cpf: data.cpf ?? null,
       })
