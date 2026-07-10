@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+import { UNIFIED_USER_INVITE_TARGETS } from '../pages/Admin/tabs/school-users/unifiedUserInviteModel';
+
 const optionalCpfSchema = z.preprocess(
   (value) => {
     if (
@@ -37,6 +39,52 @@ const optionalTextSchema = z.preprocess(
     .trim()
     .optional(),
 );
+
+const optionalEmailSchema = z.preprocess(
+  (value) => {
+    if (
+      typeof value === 'string' &&
+      value.trim() === ''
+    ) {
+      return undefined;
+    }
+
+    return value;
+  },
+  z
+    .string()
+    .trim()
+    .toLowerCase()
+    .email('E-mail inválido')
+    .optional(),
+);
+
+export const unifiedUserInvitePreviewSchema =
+  z
+    .object({
+      target_type: z.enum(
+        UNIFIED_USER_INVITE_TARGETS,
+      ),
+
+      full_name: z
+        .string()
+        .trim()
+        .min(3, 'Nome é obrigatório')
+        .max(
+          120,
+          'Nome deve possuir no máximo 120 caracteres',
+        ),
+
+      email: optionalEmailSchema,
+      phone: optionalTextSchema,
+      create_access: z.boolean().default(true),
+
+      academic_code: optionalTextSchema,
+      teacher_area: optionalTextSchema,
+      linked_student_name: optionalTextSchema,
+      relationship: optionalTextSchema,
+    })
+    .strict();
 
 const personIdentityFields = {
   institution_id: z.guid(
@@ -465,6 +513,11 @@ export const subjectOfferingUpdateSchema = z
 
 export type StudentFormData =
   z.infer<typeof studentSchema>;
+
+export type UnifiedUserInvitePreviewData =
+  z.infer<
+    typeof unifiedUserInvitePreviewSchema
+  >;
 
 export type StudentUpdateData =
   z.infer<typeof studentUpdateSchema>;

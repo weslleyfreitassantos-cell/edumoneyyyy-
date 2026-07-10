@@ -22,7 +22,9 @@ import {
   teacherSchema,
   termSchema,
   termUpdateSchema,
+  unifiedUserInvitePreviewSchema,
 } from './adminSchemas';
+import { getUnifiedUserInviteOption } from '../pages/Admin/tabs/school-users/unifiedUserInviteModel';
 
 const validStudent = {
   institution_id:
@@ -124,6 +126,93 @@ const validSubjectOffering = {
     '99999999-9999-4999-8999-999999999999',
   active: true,
 };
+
+const validUnifiedInvitePreview = {
+  target_type: 'STUDENT',
+  full_name: 'Aluno Visual',
+  email: '',
+  phone: '',
+  create_access: true,
+  academic_code: 'MAT-001',
+  teacher_area: '',
+  linked_student_name: '',
+  relationship: '',
+} as const;
+
+describe('unifiedUserInvitePreviewSchema', () => {
+  it('exige nome obrigatorio', () => {
+    const result =
+      unifiedUserInvitePreviewSchema.safeParse({
+        ...validUnifiedInvitePreview,
+        full_name: '',
+      });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('rejeita e-mail invalido quando informado', () => {
+    const result =
+      unifiedUserInvitePreviewSchema.safeParse({
+        ...validUnifiedInvitePreview,
+        email: 'email-invalido',
+      });
+
+    expect(result.success).toBe(false);
+  });
+
+  it('aceita matricula visual para aluno', () => {
+    const result =
+      unifiedUserInvitePreviewSchema.parse(
+        validUnifiedInvitePreview,
+      );
+
+    expect(result.academic_code).toBe(
+      'MAT-001',
+    );
+  });
+
+  it('aceita nome do aluno vinculado para responsavel', () => {
+    const result =
+      unifiedUserInvitePreviewSchema.parse({
+        ...validUnifiedInvitePreview,
+        target_type: 'GUARDIAN',
+        full_name: 'Responsavel Visual',
+        linked_student_name:
+          'Aluno Vinculado',
+        relationship: 'Responsavel legal',
+      });
+
+    expect(result.linked_student_name).toBe(
+      'Aluno Vinculado',
+    );
+  });
+
+  it('mantem papel planejado marcado como bloqueado no modelo', () => {
+    const result =
+      unifiedUserInvitePreviewSchema.parse({
+        ...validUnifiedInvitePreview,
+        target_type: 'SECRETARY_PLANNED',
+        full_name: 'Secretaria Visual',
+      });
+
+    expect(
+      getUnifiedUserInviteOption(
+        result.target_type,
+      ).isPlanned,
+    ).toBe(true);
+  });
+
+  it('nao cria payload de banco', () => {
+    const result =
+      unifiedUserInvitePreviewSchema.safeParse({
+        ...validUnifiedInvitePreview,
+        profile_id:
+          '11111111-1111-4111-8111-111111111111',
+      });
+
+    expect(result.success).toBe(false);
+  });
+});
 
 describe('studentSchema', () => {
   it('valida o cadastro completo do aluno', () => {
