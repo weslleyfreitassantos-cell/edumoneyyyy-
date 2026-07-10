@@ -27,6 +27,7 @@ import {
 } from '../../../lib/permissions';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
+import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
 
 type RoleFilter =
   | 'ALL'
@@ -499,6 +500,20 @@ export default function SchoolUsersTab() {
           </div>
         </div>
       </section>
+
+      <UnifiedUserInvitePreview
+        currentRole={
+          institutionQuery.currentRole
+        }
+        profileRole={profile?.role}
+        currentInstitutionName={
+          institutionQuery.currentInstitution
+            ?.name ?? null
+        }
+        hasActiveInstitution={Boolean(
+          institutionId,
+        )}
+      />
 
       <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <SummaryCard
