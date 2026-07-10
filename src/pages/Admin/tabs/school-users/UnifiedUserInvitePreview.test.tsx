@@ -1,6 +1,16 @@
 // @vitest-environment jsdom
 
 import {
+  readFileSync,
+} from 'node:fs';
+import {
+  dirname,
+  join,
+} from 'node:path';
+import {
+  fileURLToPath,
+} from 'node:url';
+import {
   cleanup,
   fireEvent,
   render,
@@ -14,6 +24,10 @@ import {
 } from 'vitest';
 
 import UnifiedUserInvitePreview from './UnifiedUserInvitePreview';
+
+const currentDirectory = dirname(
+  fileURLToPath(import.meta.url),
+);
 
 const defaultProps = {
   currentRole: 'ADMIN',
@@ -129,5 +143,23 @@ describe('UnifiedUserInvitePreview', () => {
         /Ainda não ativo no banco/,
       ).length,
     ).toBeGreaterThan(0);
+  });
+
+  it('nao importa services nem chamadas Supabase', () => {
+    const source = readFileSync(
+      join(
+        currentDirectory,
+        'UnifiedUserInvitePreview.tsx',
+      ),
+      'utf8',
+    );
+
+    expect(source).not.toContain(
+      '/services/',
+    );
+    expect(source).not.toContain('supabase');
+    expect(source).not.toContain(
+      'functions.invoke',
+    );
   });
 });

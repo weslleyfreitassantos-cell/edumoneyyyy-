@@ -17,6 +17,30 @@ convites por e-mail e dados reais nos painéis.
 
 ---
 
+## Estado atual do projeto
+
+- multi-instituição ativo com `InstitutionContext` e `InstitutionSwitcher`;
+- role efetiva em telas contextuais, priorizando `memberships.role` e usando
+  `profiles.role` como fallback temporário;
+- aba **Usuários da Escola** com listagem somente leitura e prévia visual de
+  cadastro unificado;
+- cadastro/convite real ainda bloqueado até auditoria read-only do banco,
+  reconciliação das migrations e revisão das Edge Functions;
+- não execute `supabase db push`, `supabase migration repair` ou
+  `supabase db reset` sem reconciliação formal.
+
+Documentos de readiness:
+
+- [Auditoria read-only do banco](docs/database-readonly-audit.md)
+- [SQL read-only para auditoria manual](docs/supabase-readonly-audit.sql)
+- [Plano de reconciliação das migrations](docs/migration-reconciliation-plan.md)
+- [Especificação futura de convites](docs/edge-functions-user-invite-spec.md)
+- [Matriz de roles](docs/roles-matrix.md)
+- [Checklist de produção](docs/release-readiness-checklist.md)
+- [Auditoria de escritas frontend](docs/frontend-write-audit.md)
+
+---
+
 ## Sumário
 
 - [Funcionalidades](#funcionalidades)
