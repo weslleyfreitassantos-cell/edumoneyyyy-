@@ -11,6 +11,12 @@ export const CURRENT_DATABASE_ROLES = [
 export type CurrentDatabaseRole =
   (typeof CURRENT_DATABASE_ROLES)[number];
 
+type EffectiveRoleInput =
+  | string
+  | CurrentDatabaseRole
+  | null
+  | undefined;
+
 export const FUTURE_PLATFORM_ROLES = [
   'SUPER_ADMIN',
 ] as const;
@@ -83,8 +89,8 @@ export const CURRENT_ROLE_PERMISSIONS = {
 >;
 
 export interface EffectiveRoleSource {
-  membershipRole?: CurrentDatabaseRole | null;
-  profileRole?: CurrentDatabaseRole | null;
+  membershipRole?: EffectiveRoleInput;
+  profileRole?: EffectiveRoleInput;
 }
 
 export interface EffectivePermissionCheck
@@ -146,11 +152,30 @@ export const FUTURE_ROLE_PLAN = {
   FutureRolePlan
 >;
 
+export function isCurrentDatabaseRole(
+  role: unknown,
+): role is CurrentDatabaseRole {
+  return (
+    typeof role === 'string' &&
+    CURRENT_DATABASE_ROLES.includes(
+      role as CurrentDatabaseRole,
+    )
+  );
+}
+
 export function getEffectiveRole({
   membershipRole,
   profileRole,
 }: EffectiveRoleSource): CurrentDatabaseRole | null {
-  return membershipRole ?? profileRole ?? null;
+  if (isCurrentDatabaseRole(membershipRole)) {
+    return membershipRole;
+  }
+
+  if (isCurrentDatabaseRole(profileRole)) {
+    return profileRole;
+  }
+
+  return null;
 }
 
 export function hasPermission(

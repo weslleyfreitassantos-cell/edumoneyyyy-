@@ -112,6 +112,15 @@ describe('effective school role permissions', () => {
     ).toBeNull();
   });
 
+  it('ignora roles que ainda nao existem no banco', () => {
+    expect(
+      getEffectiveRole({
+        membershipRole: 'SECRETARY',
+        profileRole: null,
+      }),
+    ).toBeNull();
+  });
+
   it('prioriza membershipRole ao verificar permissao efetiva', () => {
     expect(
       hasEffectivePermission({
