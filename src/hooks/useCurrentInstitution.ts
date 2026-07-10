@@ -1,62 +1,59 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInstitution } from '../contexts/InstitutionContext';
+import type {
+  InstitutionSummary,
+  UserInstitutionMembership,
+} from '../services/institutionService';
 
-import { supabase } from '../lib/supabaseClient';
+export interface CurrentInstitutionResult {
+  data: string | null;
+  institution: InstitutionSummary | null;
+  membership: UserInstitutionMembership | null;
+  currentInstitution: InstitutionSummary | null;
+  currentMembership: UserInstitutionMembership | null;
+  currentInstitutionId: string | null;
+  currentRole: string | null;
+  isLoading: boolean;
+  isError: boolean;
+  error: Error | null;
+  message: string | null;
+  refetch: () => Promise<unknown>;
+}
 
 export function useCurrentInstitution(
   profileId: string | undefined,
-) {
-  return useQuery({
-    queryKey: [
-      'current-institution',
-      profileId,
-    ],
+): CurrentInstitutionResult {
+  const institutionContext = useInstitution();
 
-    queryFn: async (): Promise<string> => {
-      if (!profileId) {
-        throw new Error(
-          'Perfil não informado.',
-        );
-      }
+  const hasProfile = Boolean(profileId);
+  const hasNoInstitution =
+    hasProfile &&
+    !institutionContext.isLoading &&
+    !institutionContext.error &&
+    institutionContext.institutions.length === 0;
 
-      const { data, error } = await supabase
-        .from('memberships')
-        .select('institution_id')
-        .eq('profile_id', profileId)
-        .eq('active', true)
-        .limit(2);
+  const message = hasNoInstitution
+    ? 'Nenhuma escola ativa foi encontrada para este usuário.'
+    : null;
 
-      if (error) {
-        throw error;
-      }
-
-      if (!data || data.length === 0) {
-        throw new Error(
-          'Nenhum vínculo institucional ativo foi encontrado.',
-        );
-      }
-
-      if (data.length > 1) {
-        throw new Error(
-          'Este usuário possui mais de uma instituição. A seleção de instituição ainda precisa ser configurada.',
-        );
-      }
-
-      const institutionId =
-        data[0]?.institution_id;
-
-      if (
-        typeof institutionId !== 'string' ||
-        institutionId.length === 0
-      ) {
-        throw new Error(
-          'O vínculo institucional é inválido.',
-        );
-      }
-
-      return institutionId;
-    },
-
-    enabled: Boolean(profileId),
-    staleTime: 1000 * 60 * 10,
-  });
+  return {
+    data: institutionContext.currentInstitutionId,
+    institution:
+      institutionContext.currentInstitution,
+    membership:
+      institutionContext.currentMembership,
+    currentInstitution:
+      institutionContext.currentInstitution,
+    currentMembership:
+      institutionContext.currentMembership,
+    currentInstitutionId:
+      institutionContext.currentInstitutionId,
+    currentRole:
+      institutionContext.currentRole,
+    isLoading:
+      hasProfile && institutionContext.isLoading,
+    isError: Boolean(institutionContext.error),
+    error: institutionContext.error,
+    message,
+    refetch: institutionContext.refresh,
+  };
 }
