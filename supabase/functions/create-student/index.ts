@@ -2,6 +2,46 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import { z } from "zod";
 
+import type {
+  Database as GeneratedDatabase,
+} from "../_shared/database.types.ts";
+
+type GeneratedPublicSchema =
+  GeneratedDatabase["public"];
+
+type GeneratedTables =
+  GeneratedPublicSchema["Tables"];
+
+type GeneratedStudentTable =
+  GeneratedTables["students"];
+
+type Database = Omit<
+  GeneratedDatabase,
+  "public"
+> & {
+  public: Omit<
+    GeneratedPublicSchema,
+    "Tables"
+  > & {
+    Tables: Omit<
+      GeneratedTables,
+      "students"
+    > & {
+      students: Omit<
+        GeneratedStudentTable,
+        "Insert"
+      > & {
+        Insert: Omit<
+          GeneratedStudentTable["Insert"],
+          "registration_number"
+        > & {
+          registration_number?: string;
+        };
+      };
+    };
+  };
+};
+
 const optionalCpfSchema = z.preprocess(
   (value) => {
     if (
@@ -25,9 +65,9 @@ const optionalCpfSchema = z.preprocess(
 
 const requestSchema = z
   .object({
-    institution_id: z
-      .string()
-      .uuid("Instituição inválida"),
+    institution_id: z.guid(
+      "Instituição inválida",
+    ),
 
     full_name: z
       .string()
@@ -52,7 +92,9 @@ const requestSchema = z
   })
   .strict();
 
-function getErrorMessage(error: unknown): string {
+function getErrorMessage(
+  error: unknown,
+): string {
   if (error instanceof Error) {
     return error.message;
   }
@@ -69,7 +111,9 @@ function getErrorMessage(error: unknown): string {
   return "Não foi possível cadastrar o aluno.";
 }
 
-function getErrorStatus(message: string): number {
+function getErrorStatus(
+  message: string,
+): number {
   const normalizedMessage =
     message.toLowerCase();
 
@@ -77,7 +121,9 @@ function getErrorStatus(message: string): number {
     normalizedMessage.includes("already") ||
     normalizedMessage.includes("registered") ||
     normalizedMessage.includes("exists") ||
-    normalizedMessage.includes("duplicate")
+    normalizedMessage.includes("duplicate") ||
+    normalizedMessage.includes("já existe") ||
+    normalizedMessage.includes("já cadastrado")
   ) {
     return 409;
   }
@@ -86,8 +132,10 @@ function getErrorStatus(message: string): number {
 }
 
 export default {
-  fetch: withSupabase(
-    { auth: "user" },
+  fetch: withSupabase<Database>(
+    {
+      auth: "user",
+    },
     async (request, ctx) => {
       if (request.method !== "POST") {
         return Response.json(
@@ -127,7 +175,8 @@ export default {
           {
             error:
               validation.error.issues[0]
-                ?.message ?? "Dados inválidos.",
+                ?.message ??
+              "Dados inválidos.",
           },
           {
             status: 400,
@@ -208,12 +257,16 @@ export default {
           error: invitationError,
         } =
           await ctx.supabaseAdmin.auth.admin
-            .inviteUserByEmail(input.email, {
-              data: {
-                full_name: input.full_name,
-                role: "STUDENT",
+            .inviteUserByEmail(
+              input.email,
+              {
+                data: {
+                  full_name:
+                    input.full_name,
+                  role: "STUDENT",
+                },
               },
-            });
+            );
 
         if (
           invitationError ||
@@ -221,7 +274,7 @@ export default {
         ) {
           throw new Error(
             invitationError?.message ??
-              "Não foi possível criar o usuário.",
+            "Não foi possível criar o usuário.",
           );
         }
 
@@ -234,7 +287,8 @@ export default {
             .upsert(
               {
                 id: createdUserId,
-                full_name: input.full_name,
+                full_name:
+                  input.full_name,
                 email: input.email,
                 role: "STUDENT",
                 avatar_url: null,
@@ -274,7 +328,8 @@ export default {
             profile_id: createdUserId,
             institution_id:
               input.institution_id,
-            birth_date: input.birth_date,
+            birth_date:
+              input.birth_date,
             cpf: input.cpf ?? null,
             active: true,
           })
@@ -289,7 +344,7 @@ export default {
         ) {
           throw new Error(
             studentError?.message ??
-              "Não foi possível criar o registro acadêmico.",
+            "Não foi possível criar o registro acadêmico.",
           );
         }
 
@@ -297,10 +352,12 @@ export default {
           {
             student: {
               id: createdStudent.id,
-              profile_id: createdUserId,
+              profile_id:
+                createdUserId,
               registration_number:
                 createdStudent.registration_number,
-              full_name: input.full_name,
+              full_name:
+                input.full_name,
               email: input.email,
             },
             invitation_sent: true,
@@ -319,7 +376,10 @@ export default {
           await ctx.supabaseAdmin
             .from("students")
             .delete()
-            .eq("profile_id", createdUserId)
+            .eq(
+              "profile_id",
+              createdUserId,
+            )
             .eq(
               "institution_id",
               input.institution_id,
@@ -328,7 +388,10 @@ export default {
           await ctx.supabaseAdmin
             .from("memberships")
             .delete()
-            .eq("profile_id", createdUserId)
+            .eq(
+              "profile_id",
+              createdUserId,
+            )
             .eq(
               "institution_id",
               input.institution_id,

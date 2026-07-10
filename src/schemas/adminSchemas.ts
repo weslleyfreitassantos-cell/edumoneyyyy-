@@ -34,9 +34,9 @@ const studentEditableFields = {
 
 export const studentSchema = z
   .object({
-    institution_id: z
-      .string()
-      .uuid('Instituição inválida'),
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
 
     full_name: z
       .string()
@@ -91,9 +91,9 @@ export const classSchema = z.object({
     )
     .default(30),
 
-  academic_year_id: z
-    .string()
-    .uuid('Ano letivo é obrigatório'),
+  academic_year_id: z.guid(
+    'Ano letivo é obrigatório',
+  ),
 
   active: z.boolean().default(true),
 });
