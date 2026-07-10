@@ -430,6 +430,39 @@ export const enrollmentStatusUpdateSchema = z
     }
   });
 
+const subjectOfferingFields = {
+  class_id: z.guid(
+    'Turma é obrigatória',
+  ),
+
+  subject_id: z.guid(
+    'Disciplina é obrigatória',
+  ),
+
+  teacher_profile_id: z.guid(
+    'Professor é obrigatório',
+  ),
+
+  term_id: z.guid(
+    'Período é obrigatório',
+  ),
+
+  active: z.boolean().default(true),
+};
+
+export const subjectOfferingSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...subjectOfferingFields,
+  })
+  .strict();
+
+export const subjectOfferingUpdateSchema = z
+  .object(subjectOfferingFields)
+  .strict();
+
 export type StudentFormData =
   z.infer<typeof studentSchema>;
 
@@ -480,4 +513,12 @@ export type EnrollmentTransferData =
 export type EnrollmentStatusUpdateData =
   z.infer<
     typeof enrollmentStatusUpdateSchema
+  >;
+
+export type SubjectOfferingFormData =
+  z.infer<typeof subjectOfferingSchema>;
+
+export type SubjectOfferingUpdateData =
+  z.infer<
+    typeof subjectOfferingUpdateSchema
   >;

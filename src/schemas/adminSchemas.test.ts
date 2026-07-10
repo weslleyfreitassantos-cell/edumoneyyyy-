@@ -16,6 +16,8 @@ import {
   studentSchema,
   studentUpdateSchema,
   subjectSchema,
+  subjectOfferingSchema,
+  subjectOfferingUpdateSchema,
   subjectUpdateSchema,
   teacherSchema,
   termSchema,
@@ -108,6 +110,20 @@ const validEnrollment = {
   status: 'ACTIVE',
   active: true,
 } as const;
+
+const validSubjectOffering = {
+  institution_id:
+    '22222222-2222-4222-8222-222222222222',
+  class_id:
+    '55555555-5555-4555-8555-555555555555',
+  subject_id:
+    '77777777-7777-4777-8777-777777777777',
+  teacher_profile_id:
+    '88888888-8888-4888-8888-888888888888',
+  term_id:
+    '99999999-9999-4999-8999-999999999999',
+  active: true,
+};
 
 describe('studentSchema', () => {
   it('valida o cadastro completo do aluno', () => {
@@ -475,5 +491,35 @@ describe('enrollmentSchema', () => {
       });
 
     expect(result.success).toBe(true);
+  });
+});
+
+describe('subjectOfferingSchema', () => {
+  it('valida uma atribuição acadêmica', () => {
+    const result =
+      subjectOfferingSchema.parse(
+        validSubjectOffering,
+      );
+
+    expect(result.active).toBe(true);
+  });
+
+  it('aplica ativo por padrão', () => {
+    const result =
+      subjectOfferingSchema.parse({
+        ...validSubjectOffering,
+        active: undefined,
+      });
+
+    expect(result.active).toBe(true);
+  });
+
+  it('rejeita troca de instituição na edição', () => {
+    const result =
+      subjectOfferingUpdateSchema.safeParse(
+        validSubjectOffering,
+      );
+
+    expect(result.success).toBe(false);
   });
 });
