@@ -4,13 +4,19 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+
 import {
   BrowserRouter,
   Navigate,
   Route,
   Routes,
 } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
+
+import {
+  AnimatePresence,
+  motion,
+} from 'motion/react';
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -20,12 +26,14 @@ import {
   AuthProvider,
   useAuth,
 } from './contexts/AuthContext';
+
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
 import { mapDatabaseRole } from './lib/roles';
+
 import type {
   User,
   UserRole,
@@ -37,10 +45,16 @@ const Login = lazy(() =>
   })),
 );
 
+const SetPassword = lazy(
+  () => import('./pages/SetPassword'),
+);
+
 const Unauthorized = lazy(() =>
-  import('./pages/Unauthorized').then((module) => ({
-    default: module.Unauthorized,
-  })),
+  import('./pages/Unauthorized').then(
+    (module) => ({
+      default: module.Unauthorized,
+    }),
+  ),
 );
 
 const AdminPage = lazy(
@@ -48,19 +62,31 @@ const AdminPage = lazy(
 );
 
 const TeacherDashboard = lazy(
-  () => import('./components/TeacherDashboard'),
+  () =>
+    import(
+      './components/TeacherDashboard'
+    ),
 );
 
 const StudentDashboard = lazy(
-  () => import('./components/StudentDashboard'),
+  () =>
+    import(
+      './components/StudentDashboard'
+    ),
 );
 
 const DirectorDashboard = lazy(
-  () => import('./components/DirectorDashboard'),
+  () =>
+    import(
+      './components/DirectorDashboard'
+    ),
 );
 
 const ParentDashboard = lazy(
-  () => import('./components/ParentDashboard'),
+  () =>
+    import(
+      './components/ParentDashboard'
+    ),
 );
 
 const queryClient = new QueryClient({
@@ -78,7 +104,10 @@ const queryClient = new QueryClient({
   },
 });
 
-const roleToSubtitle: Record<UserRole, string> = {
+const roleToSubtitle: Record<
+  UserRole,
+  string
+> = {
   admin: 'Administrador',
   director: 'Diretor',
   teacher: 'Professor',
@@ -86,12 +115,20 @@ const roleToSubtitle: Record<UserRole, string> = {
   parent: 'Responsável',
 };
 
-const searchPlaceholders: Record<UserRole, string> = {
-  admin: 'Pesquisar dados, alunos ou professores...',
-  director: 'Pesquisar dados, alunos ou professores...',
-  teacher: 'Pesquisar alunos ou turmas...',
-  student: 'Pesquisar disciplinas ou notas...',
-  parent: 'Pesquisar aluno, nota ou evento...',
+const searchPlaceholders: Record<
+  UserRole,
+  string
+> = {
+  admin:
+    'Pesquisar dados, alunos ou professores...',
+  director:
+    'Pesquisar dados, alunos ou professores...',
+  teacher:
+    'Pesquisar alunos ou turmas...',
+  student:
+    'Pesquisar disciplinas ou notas...',
+  parent:
+    'Pesquisar aluno, nota ou evento...',
 };
 
 function PageLoading() {
@@ -111,7 +148,9 @@ function PageLoading() {
   );
 }
 
-function renderDashboard(role: UserRole): ReactNode {
+function renderDashboard(
+  role: UserRole,
+): ReactNode {
   switch (role) {
     case 'admin':
     case 'director':
@@ -127,7 +166,9 @@ function renderDashboard(role: UserRole): ReactNode {
       return <ParentDashboard />;
 
     default: {
-      const exhaustiveRole: never = role;
+      const exhaustiveRole: never =
+        role;
+
       return exhaustiveRole;
     }
   }
@@ -146,8 +187,9 @@ function InvalidRolePage({
         </h1>
 
         <p className="mt-3 text-sm text-[#727785]">
-          Sua conta não possui um papel acadêmico reconhecido.
-          Entre em contato com a administração.
+          Sua conta não possui um papel
+          acadêmico reconhecido. Entre em
+          contato com a administração.
         </p>
 
         <button
@@ -172,9 +214,17 @@ function ModulePlaceholder({
   return (
     <motion.div
       key={moduleName}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0 }}
+      initial={{
+        opacity: 0,
+        y: 10,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+      }}
+      exit={{
+        opacity: 0,
+      }}
       className="space-y-4 rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-2xs"
     >
       <div className="mx-auto max-w-md py-12">
@@ -183,7 +233,7 @@ function ModulePlaceholder({
             className="text-2xl font-bold"
             aria-hidden="true"
           >
-            🛠
+            🛠️
           </span>
         </div>
 
@@ -192,8 +242,10 @@ function ModulePlaceholder({
         </h2>
 
         <p className="mt-2 text-sm leading-relaxed text-[#727785]">
-          Este módulo ainda está em desenvolvimento e será conectado
-          aos serviços acadêmicos nas próximas etapas.
+          Este módulo ainda está em
+          desenvolvimento e será conectado
+          aos serviços acadêmicos nas
+          próximas etapas.
         </p>
 
         <button
@@ -209,31 +261,47 @@ function ModulePlaceholder({
 }
 
 function DashboardLayout() {
-  const { profile, signOut } = useAuth();
+  const { profile, signOut } =
+    useAuth();
 
   const [activeTab, setActiveTab] =
     useState('dashboard');
 
-  const [mobileSidebarOpen, setMobileSidebarOpen] =
-    useState(false);
+  const [
+    mobileSidebarOpen,
+    setMobileSidebarOpen,
+  ] = useState(false);
 
   if (!profile) {
-    return <Navigate to="/login" replace />;
+    return (
+      <Navigate
+        to="/login"
+        replace
+      />
+    );
   }
 
-  const currentRole = mapDatabaseRole(profile.role);
+  const currentRole =
+    mapDatabaseRole(profile.role);
 
   if (!currentRole) {
-    return <InvalidRolePage onLogout={signOut} />;
+    return (
+      <InvalidRolePage
+        onLogout={signOut}
+      />
+    );
   }
 
   const currentUser: User = {
     id: profile.id,
     name: profile.full_name,
     email: profile.email,
-    avatar: profile.avatar_url?.trim() || null,
+    avatar:
+      profile.avatar_url?.trim() ||
+      null,
     role: currentRole,
-    subtitle: roleToSubtitle[currentRole],
+    subtitle:
+      roleToSubtitle[currentRole],
   };
 
   const canAccessSettings =
@@ -244,7 +312,10 @@ function DashboardLayout() {
     try {
       await signOut();
     } catch (error) {
-      console.error('Erro ao sair da aplicação:', error);
+      console.error(
+        'Erro ao sair da aplicação:',
+        error,
+      );
     }
   }
 
@@ -254,11 +325,15 @@ function DashboardLayout() {
       id="app-authenticated-container"
     >
       <Sidebar
-        onLogout={() => void handleLogout()}
+        onLogout={() =>
+          void handleLogout()
+        }
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         isOpen={mobileSidebarOpen}
-        onClose={() => setMobileSidebarOpen(false)}
+        onClose={() =>
+          setMobileSidebarOpen(false)
+        }
       />
 
       <div className="flex min-h-screen flex-1 flex-col lg:ml-64">
@@ -268,35 +343,56 @@ function DashboardLayout() {
             setMobileSidebarOpen(true)
           }
           searchPlaceholder={
-            searchPlaceholders[currentRole]
+            searchPlaceholders[
+              currentRole
+            ]
           }
           onMessagesClick={() =>
             setActiveTab('mensagens')
           }
           onSettingsClick={
             canAccessSettings
-              ? () => setActiveTab('configurações')
+              ? () =>
+                  setActiveTab(
+                    'configurações',
+                  )
               : undefined
           }
         />
 
         <main className="mx-auto w-full max-w-7xl flex-1 p-6">
           <AnimatePresence mode="wait">
-            {activeTab === 'dashboard' ? (
+            {activeTab ===
+            'dashboard' ? (
               <motion.div
                 key={`dashboard-${currentRole}`}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.25 }}
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -15,
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
               >
-                {renderDashboard(currentRole)}
+                {renderDashboard(
+                  currentRole,
+                )}
               </motion.div>
             ) : (
               <ModulePlaceholder
                 moduleName={activeTab}
                 onReturn={() =>
-                  setActiveTab('dashboard')
+                  setActiveTab(
+                    'dashboard',
+                  )
                 }
               />
             )}
@@ -313,6 +409,11 @@ function AppRoutes() {
       <Route
         path="/login"
         element={<Login />}
+      />
+
+      <Route
+        path="/set-password"
+        element={<SetPassword />}
       />
 
       <Route
@@ -368,10 +469,14 @@ function AppRoutes() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider
+      client={queryClient}
+    >
       <BrowserRouter>
         <AuthProvider>
-          <Suspense fallback={<PageLoading />}>
+          <Suspense
+            fallback={<PageLoading />}
+          >
             <AppRoutes />
           </Suspense>
         </AuthProvider>

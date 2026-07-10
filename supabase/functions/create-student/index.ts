@@ -248,6 +248,22 @@ export default {
         );
       }
 
+      const appUrl = Deno.env
+        .get("APP_URL")
+        ?.replace(/\/+$/, "");
+
+      if (!appUrl) {
+        return Response.json(
+          {
+            error:
+              "A URL da aplicação não foi configurada.",
+          },
+          {
+            status: 500,
+          },
+        );
+      }
+
       let createdUserId: string | null =
         null;
 
@@ -265,6 +281,8 @@ export default {
                     input.full_name,
                   role: "STUDENT",
                 },
+                redirectTo:
+                  `${appUrl}/set-password`,
               },
             );
 
@@ -274,7 +292,7 @@ export default {
         ) {
           throw new Error(
             invitationError?.message ??
-            "Não foi possível criar o usuário.",
+              "Não foi possível criar o usuário.",
           );
         }
 
@@ -344,7 +362,7 @@ export default {
         ) {
           throw new Error(
             studentError?.message ??
-            "Não foi possível criar o registro acadêmico.",
+              "Não foi possível criar o registro acadêmico.",
           );
         }
 
