@@ -102,3 +102,23 @@ Termos auditados no codigo local:
   `memberships.role` deve ser gradual.
 - Ativar `SECRETARY` ou `SCHOOL_ADMIN` sem banco/RLS cria risco de permissao
   incompleta.
+
+## Impacto da auditoria remota
+
+- `supabase_migrations.schema_migrations` esta ausente/null, entao escrita nova
+  no remoto depende de reconciliacao.
+- `assessments`, `grades`, `attendance_sessions` e `attendance_records` estao
+  ausentes no remoto; telas futuras de notas/frequencia devem aguardar migration
+  controlada.
+- `students.profile_id` e obrigatorio e depende de `auth.users`; aluno sem
+  login requer migration futura.
+- As funcoes de RA estao protegidas para `service_role`, o que evita consumo
+  direto por usuarios comuns.
+- Funcoes/policies que nao filtram `membership.active is true` precisam de
+  hardening antes de ampliar fluxo de convite real.
+
+## Consolidação pós-auditoria manual
+
+O fluxo de cadastro unificado permanece visual e bloqueado. O banco remoto ainda não está pronto para convite real porque migrations não foram reconciliadas e roles planejadas não existem no enum remoto.
+
+Qualquer escrita real deve passar por Edge Function segura, RLS revisado e validação de membership ativa.

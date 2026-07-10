@@ -12,6 +12,21 @@ nesta entrega.
 - Testes em staging.
 - Logs e trilha de auditoria.
 
+## Estado remoto confirmado pela auditoria
+
+- Roles ativas no enum remoto: `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e
+  `GUARDIAN`.
+- `SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` seguem apenas planejadas.
+- `students.profile_id` e obrigatorio, e `profiles.id` referencia
+  `auth.users.id`; aluno sem login precisa de migration futura.
+- `generate_student_registration_number` e `set_student_registration_number`
+  estao protegidas para `service_role`; usuarios comuns nao devem chamar RA
+  diretamente.
+- `is_institution_admin` e `can_view_institution_profile` consideram
+  `ADMIN`/`DIRECTOR`, mas precisam de hardening para `membership.active is true`.
+- Cadastro real continua bloqueado ate reconciliacao de migrations, hardening de
+  RLS e revisao das Edge Functions em staging.
+
 ## Edge Functions existentes
 
 ### create-student
@@ -156,3 +171,9 @@ ou reativa `profile`/`membership` e escreve `guardianships`.
 - Riscos: revogar convite de outra instituicao.
 - Logs/auditoria: autor, convite, motivo.
 - Status atual: planejado, nao implementado.
+
+## Consolidação pós-auditoria manual
+
+O banco atual permite `DIRECTOR` no enum remoto, mas ainda não há fluxo real unificado de convite. Aluno, professor, responsável e diretor devem ser ativados por Edge Function segura apenas após reconciliação.
+
+`SECRETARY` e `SCHOOL_ADMIN` não devem ser aceitos por Edge Function real enquanto não existirem no enum remoto e nas policies.
