@@ -67,12 +67,14 @@ módulos:
   - listagem de usuários vinculados à escola via `memberships` + `profiles`;
   - exibição dos papéis atuais `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e
     `GUARDIAN`;
+  - prévia visual do cadastro/convite unificado de alunos, professores,
+    responsáveis, diretores e papéis escolares planejados;
   - seção informativa para os papéis planejados `SUPER_ADMIN`, `SCHOOL_ADMIN`
     e `SECRETARY`;
   - botão **Novo usuário** desabilitado até a reconciliação das migrations e a
     homologação do fluxo de convite/senha;
-  - não cria usuários, não chama Supabase Auth, não chama Edge Functions e não
-    escreve no banco.
+  - a prévia não cria usuários, não envia convites reais, não chama Supabase
+    Auth, não chama Edge Functions e não escreve no banco.
 
 - **Alunos**
   - cadastro com convite por e-mail;
