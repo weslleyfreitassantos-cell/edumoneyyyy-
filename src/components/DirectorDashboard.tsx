@@ -12,7 +12,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useAdminOverview } from '../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import {
-  CURRENT_DATABASE_ROLES,
+  getEffectiveRole,
   type CurrentDatabaseRole,
 } from '../lib/permissions';
 import InstitutionSwitcher from './InstitutionSwitcher';
@@ -31,19 +31,6 @@ export function getDirectorDashboardTitle(
   return 'Painel acadêmico';
 }
 
-function toCurrentDatabaseRole(
-  role: string | null | undefined,
-): CurrentDatabaseRole | undefined {
-  if (
-    CURRENT_DATABASE_ROLES.includes(
-      role as CurrentDatabaseRole,
-    )
-  ) {
-    return role as CurrentDatabaseRole;
-  }
-
-  return undefined;
-}
 function getErrorMessage(
   error: unknown,
 ): string {
@@ -127,9 +114,11 @@ export default function DirectorDashboard() {
     );
 
   const effectiveRole =
-    toCurrentDatabaseRole(
-      institutionQuery.currentRole ?? profile?.role,
-    );
+    getEffectiveRole({
+      membershipRole:
+        institutionQuery.currentRole,
+      profileRole: profile?.role,
+    }) ?? undefined;
 
   if (
     institutionQuery.isLoading ||

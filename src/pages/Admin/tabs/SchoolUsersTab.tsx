@@ -22,6 +22,7 @@ import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 
 import {
   CURRENT_DATABASE_ROLES,
+  hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
 
@@ -207,19 +208,6 @@ export function getSchoolUserSummary(
   };
 }
 
-function toCurrentDatabaseRole(
-  role: string | null | undefined,
-): CurrentDatabaseRole | undefined {
-  if (
-    CURRENT_DATABASE_ROLES.includes(
-      role as CurrentDatabaseRole,
-    )
-  ) {
-    return role as CurrentDatabaseRole;
-  }
-
-  return undefined;
-}
 function StatusBadge({
   active,
 }: {
@@ -438,6 +426,19 @@ export default function SchoolUsersTab() {
       ),
     [searchTerm, selectedRole, users],
   );
+
+  const canManageSchoolUsers =
+    hasEffectivePermission({
+      membershipRole:
+        institutionQuery.currentRole,
+      profileRole: profile?.role,
+      permission: 'manage_school_users',
+    });
+
+  const newUserDisabledTitle =
+    canManageSchoolUsers
+      ? 'O cadastro unificado de usuários será habilitado após a reconciliação das migrations, criação dos novos papéis e homologação do fluxo de convite/senha.'
+      : 'Seu papel efetivo nesta instituição ainda não permite gerenciar usuários da escola.';
 
   if (institutionQuery.isLoading) {
     return (
