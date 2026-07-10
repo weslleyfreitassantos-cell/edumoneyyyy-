@@ -9,6 +9,9 @@ import {
   academicYearUpdateSchema,
   classSchema,
   classUpdateSchema,
+  enrollmentSchema,
+  enrollmentStatusUpdateSchema,
+  enrollmentTransferSchema,
   guardianSchema,
   studentSchema,
   studentUpdateSchema,
@@ -92,6 +95,19 @@ const validGuardian = {
     },
   ],
 };
+
+const validEnrollment = {
+  institution_id:
+    '22222222-2222-4222-8222-222222222222',
+  student_id:
+    '44444444-4444-4444-8444-444444444444',
+  class_id:
+    '55555555-5555-4555-8555-555555555555',
+  academic_year_id:
+    '33333333-3333-4333-8333-333333333333',
+  status: 'ACTIVE',
+  active: true,
+} as const;
 
 describe('studentSchema', () => {
   it('valida o cadastro completo do aluno', () => {
@@ -413,5 +429,51 @@ describe('guardianSchema', () => {
       });
 
     expect(result.success).toBe(false);
+  });
+});
+
+describe('enrollmentSchema', () => {
+  it('valida uma matrícula ativa', () => {
+    const result =
+      enrollmentSchema.parse(
+        validEnrollment,
+      );
+
+    expect(result.status).toBe('ACTIVE');
+    expect(result.active).toBe(true);
+  });
+
+  it('aplica status ativo por padrão', () => {
+    const result =
+      enrollmentSchema.parse({
+        ...validEnrollment,
+        status: undefined,
+      });
+
+    expect(result.status).toBe('ACTIVE');
+  });
+
+  it('rejeita status ativo marcado como inativo', () => {
+    const result =
+      enrollmentStatusUpdateSchema.safeParse(
+        {
+          status: 'ACTIVE',
+          active: false,
+        },
+      );
+
+    expect(result.success).toBe(false);
+  });
+
+  it('valida payload de transferência', () => {
+    const result =
+      enrollmentTransferSchema.safeParse({
+        enrollment_id:
+          '66666666-6666-4666-8666-666666666666',
+        target_class_id:
+          '55555555-5555-4555-8555-555555555555',
+      });
+
+    expect(result.success).toBe(true);
   });
 });

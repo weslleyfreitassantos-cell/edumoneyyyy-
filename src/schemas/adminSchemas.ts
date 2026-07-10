@@ -348,6 +348,88 @@ export const subjectUpdateSchema = z
   .object(subjectFields)
   .strict();
 
+export const enrollmentStatusSchema = z.enum([
+  'ACTIVE',
+  'TRANSFERRED',
+  'CANCELLED',
+  'COMPLETED',
+]);
+
+const enrollmentFields = {
+  student_id: z.guid(
+    'Aluno é obrigatório',
+  ),
+
+  class_id: z.guid(
+    'Turma é obrigatória',
+  ),
+
+  academic_year_id: z.guid(
+    'Ano letivo é obrigatório',
+  ),
+
+  status:
+    enrollmentStatusSchema.default(
+      'ACTIVE',
+    ),
+
+  active: z.boolean().default(true),
+};
+
+export const enrollmentSchema = z
+  .object({
+    institution_id: z.guid(
+      'Instituição inválida',
+    ),
+    ...enrollmentFields,
+  })
+  .strict()
+  .superRefine((value, context) => {
+    if (
+      value.status === 'ACTIVE' &&
+      !value.active
+    ) {
+      context.addIssue({
+        code: 'custom',
+        path: ['active'],
+        message:
+          'Matrícula ativa precisa permanecer marcada como ativa',
+      });
+    }
+  });
+
+export const enrollmentTransferSchema = z
+  .object({
+    enrollment_id: z.guid(
+      'Matrícula inválida',
+    ),
+
+    target_class_id: z.guid(
+      'Turma de destino é obrigatória',
+    ),
+  })
+  .strict();
+
+export const enrollmentStatusUpdateSchema = z
+  .object({
+    status: enrollmentStatusSchema,
+    active: z.boolean(),
+  })
+  .strict()
+  .superRefine((value, context) => {
+    if (
+      value.status === 'ACTIVE' &&
+      !value.active
+    ) {
+      context.addIssue({
+        code: 'custom',
+        path: ['active'],
+        message:
+          'Matrícula ativa precisa permanecer marcada como ativa',
+      });
+    }
+  });
+
 export type StudentFormData =
   z.infer<typeof studentSchema>;
 
@@ -386,3 +468,16 @@ export type SubjectFormData =
 
 export type SubjectUpdateData =
   z.infer<typeof subjectUpdateSchema>;
+
+export type EnrollmentFormData =
+  z.infer<typeof enrollmentSchema>;
+
+export type EnrollmentTransferData =
+  z.infer<
+    typeof enrollmentTransferSchema
+  >;
+
+export type EnrollmentStatusUpdateData =
+  z.infer<
+    typeof enrollmentStatusUpdateSchema
+  >;
