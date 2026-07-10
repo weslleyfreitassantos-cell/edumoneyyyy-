@@ -3,18 +3,24 @@ import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 
+import {
+  hasPermission,
+} from '../../lib/permissions';
+
 import AdminOverviewTab from './tabs/AdminOverviewTab';
 import AcademicYearsTab from './tabs/AcademicYearsTab';
 import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
 import EnrollmentsTab from './tabs/EnrollmentsTab';
 import GuardiansTab from './tabs/GuardiansTab';
+import SchoolUsersTab from './tabs/SchoolUsersTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
 
 type TabType =
   | 'overview'
+  | 'school-users'
   | 'students'
   | 'teachers'
   | 'guardians'
@@ -31,9 +37,7 @@ export default function AdminPage() {
 
   if (
     !profile ||
-    !['ADMIN', 'DIRECTOR'].includes(
-      profile.role,
-    )
+    !hasPermission(profile.role, 'manage_school')
   ) {
     return (
       <Navigate
@@ -48,6 +52,7 @@ export default function AdminPage() {
     label: string;
   }[] = [
     { id: 'overview', label: 'Visão geral' },
+    { id: 'school-users', label: 'Usuários' },
     { id: 'students', label: 'Alunos' },
     { id: 'teachers', label: 'Professores' },
     { id: 'guardians', label: 'Responsáveis' },
@@ -62,6 +67,8 @@ export default function AdminPage() {
     switch (activeTab) {
       case 'overview':
         return <AdminOverviewTab />;
+      case 'school-users':
+        return <SchoolUsersTab />;
       case 'students':
         return <StudentsTab />;
       case 'teachers':
