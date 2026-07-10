@@ -62,6 +62,17 @@ módulos:
   - ano letivo e período atuais;
   - avisos de pendências acadêmicas.
 
+- **Usuários da Escola**
+  - listagem de usuários vinculados à escola via `memberships` + `profiles`;
+  - exibição dos papéis atuais `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e
+    `GUARDIAN`;
+  - seção informativa para os papéis planejados `SUPER_ADMIN`, `SCHOOL_ADMIN`
+    e `SECRETARY`;
+  - botão **Novo usuário** desabilitado até a reconciliação das migrations e a
+    homologação do fluxo de convite/senha;
+  - não cria usuários, não chama Supabase Auth, não chama Edge Functions e não
+    escreve no banco.
+
 - **Alunos**
   - cadastro com convite por e-mail;
   - criação automática de perfil e vínculo institucional;
@@ -168,7 +179,10 @@ No estado atual, `ADMIN` e `DIRECTOR` possuem acesso semelhante aos módulos
 acadêmicos de `/admin`. A separação futura pode reservar configurações técnicas,
 permissões e integrações somente ao administrador.
 
-Não existe ainda um papel global de plataforma como `SUPER_ADMIN`.
+Não existem ainda no banco os papéis `SUPER_ADMIN`, `SCHOOL_ADMIN` e
+`SECRETARY`. Hoje `ADMIN` representa o papel administrativo compatível; no
+modelo futuro ele deve ser dividido entre administração global da plataforma e
+administração interna da escola.
 
 ---
 
@@ -640,6 +654,9 @@ Revisões ainda recomendadas antes de produção:
 ## Limitações atuais
 
 - não há interface de `SUPER_ADMIN` para cadastrar instituições;
+- `SUPER_ADMIN`, `SCHOOL_ADMIN` e `SECRETARY` ainda não existem no banco;
+- a aba **Usuários da Escola** é somente leitura e não realiza cadastro
+  unificado de usuários;
 - a criação da instituição e do primeiro administrador ainda depende de
   onboarding técnico;
 - não há seletor para usuários vinculados a várias instituições;
@@ -650,6 +667,14 @@ Revisões ainda recomendadas antes de produção:
 - as Edge Functions ainda não são verificadas pelo GitHub Actions;
 - é necessário configurar SMTP e URLs de produção;
 - o projeto ainda precisa de homologação multi-instituição antes de produção.
+
+Próximos passos planejados:
+
+- reconciliar migrations antes de qualquer `db push`;
+- adicionar `SUPER_ADMIN`, `SCHOOL_ADMIN` e `SECRETARY` futuramente;
+- ajustar Edge Functions para o novo modelo de roles;
+- homologar o fluxo de convite e definição de senha;
+- liberar cadastro real por secretaria somente depois da validação completa.
 
 ---
 

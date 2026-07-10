@@ -156,7 +156,11 @@ Novas funcoes ou fluxos futuros podem incluir convites unificados, cadastro de s
 
 ## Telas futuras
 
-- `Usuarios da Escola`: listagem e administracao de vinculos por instituicao.
+- `Usuarios da Escola`: ja existe como tela somente leitura em `/admin`,
+  listando vinculos por instituicao via `memberships` + `profiles`. Ela mostra
+  papeis atuais, informa papeis planejados e mantem o botao de novo usuario
+  desabilitado. Ainda nao cria usuarios, nao chama Supabase Auth, nao chama Edge
+  Functions e nao escreve no banco.
 - `Escolas`: administracao de escolas pelo `SUPER_ADMIN`.
 - `Secretaria`: operacao diaria de cadastros e matriculas.
 - `Convites`: acompanhamento de convites e definicao de senha.
