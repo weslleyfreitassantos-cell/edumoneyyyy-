@@ -15,12 +15,15 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
 } from '@testing-library/react';
 import {
   afterEach,
+  beforeEach,
   describe,
   expect,
   it,
+  vi,
 } from 'vitest';
 
 import UnifiedUserInvitePreview from './UnifiedUserInvitePreview';
@@ -29,7 +32,40 @@ const currentDirectory = dirname(
   fileURLToPath(import.meta.url),
 );
 
+const mutateAsync = vi.fn();
+
+vi.mock(
+  '../../../../hooks/useSchoolUserInvites',
+  () => ({
+    useInviteSchoolUser: () => ({
+      isPending: false,
+      mutateAsync,
+    }),
+  }),
+);
+
+vi.mock('../../../../hooks/useStudents', () => ({
+  useStudents: () => ({
+    data: [
+      {
+        id: '44444444-4444-4444-8444-444444444444',
+        registration_number: 'RA-001',
+        active: true,
+        profiles: {
+          full_name: 'Aluno Teste',
+          email: 'aluno@escola.com',
+          avatar_url: null,
+        },
+      },
+    ],
+    isLoading: false,
+    isError: false,
+  }),
+}));
+
 const defaultProps = {
+  institutionId:
+    '22222222-2222-4222-8222-222222222222',
   currentRole: 'ADMIN',
   profileRole: null,
   currentInstitutionName: 'Escola Centro',
@@ -40,8 +76,27 @@ afterEach(() => {
   cleanup();
 });
 
+beforeEach(() => {
+  mutateAsync.mockReset();
+  mutateAsync.mockResolvedValue({
+    success: true,
+    userId:
+      '11111111-1111-4111-8111-111111111111',
+    profileId:
+      '11111111-1111-4111-8111-111111111111',
+    membershipId:
+      '33333333-3333-4333-8333-333333333333',
+    role: 'TEACHER',
+    email: 'professor@escola.com',
+    invitationSent: true,
+    reusedExistingUser: false,
+    message:
+      'Convite enviado e vinculo criado com sucesso.',
+  });
+});
+
 describe('UnifiedUserInvitePreview', () => {
-  it('renderiza titulo e aviso de previa visual', () => {
+  it('renderiza formulario real de convite', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -50,102 +105,206 @@ describe('UnifiedUserInvitePreview', () => {
 
     expect(
       screen.getByText(
-        'Cadastro unificado de usuários',
+        'Cadastro unificado de usuarios',
       ),
     ).toBeTruthy();
     expect(
-      screen.getAllByText(
-        /Nenhum usuário será criado/,
-      ).length,
-    ).toBeGreaterThan(0);
+      screen.getByText(
+        /invite-school-user/,
+      ),
+    ).toBeTruthy();
   });
 
-  it('mantem o envio de convite desabilitado', () => {
+  it('mantem envio desabilitado para formulario invalido', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
       />,
     );
 
-    const submitButton = screen.getByRole(
-      'button',
+    expect(
+      screen
+        .getByRole('button', {
+          name: /Enviar convite/,
+        })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+  });
+
+  it('envia professor valido para a mutation', async () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Professor/,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Nome completo/),
       {
+        target: {
+          value: 'Professor Teste',
+        },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/E-mail/),
+      {
+        target: {
+          value: 'PROFESSOR@ESCOLA.COM',
+        },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
         name: /Enviar convite/,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith({
+        institutionId:
+          defaultProps.institutionId,
+        role: 'TEACHER',
+        fullName: 'Professor Teste',
+        email: 'professor@escola.com',
+      });
+    });
+  });
+
+  it('envia responsavel com studentId selecionado', async () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Respons/,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Nome completo/),
+      {
+        target: {
+          value: 'Responsavel Teste',
+        },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/E-mail/),
+      {
+        target: {
+          value: 'resp@escola.com',
+        },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Aluno da instituicao/),
+      {
+        target: {
+          value:
+            '44444444-4444-4444-8444-444444444444',
+        },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Relacionamento/),
+      {
+        target: {
+          value: 'Mae',
+        },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Enviar convite/,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith({
+        institutionId:
+          defaultProps.institutionId,
+        role: 'GUARDIAN',
+        fullName: 'Responsavel Teste',
+        email: 'resp@escola.com',
+        guardian: {
+          studentId:
+            '44444444-4444-4444-8444-444444444444',
+          relationship: 'Mae',
+        },
+      });
+    });
+  });
+
+  it('mantem roles planejadas desabilitadas', () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+      />,
+    );
+
+    expect(
+      screen
+        .getByRole('button', {
+          name: /Secret/,
+        })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+  });
+
+  it('bloqueia envio visual de DIRECTOR por DIRECTOR', () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        currentRole="DIRECTOR"
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Diretor/,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Nome completo/),
+      {
+        target: {
+          value: 'Diretor Novo',
+        },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/E-mail/),
+      {
+        target: {
+          value: 'diretor@escola.com',
+        },
       },
     );
 
     expect(
-      submitButton.hasAttribute('disabled'),
+      screen
+        .getByRole('button', {
+          name: /Enviar convite/,
+        })
+        .hasAttribute('disabled'),
     ).toBe(true);
-  });
-
-  it('troca tipo de usuario e mostra campos de responsavel', () => {
-    render(
-      <UnifiedUserInvitePreview
-        {...defaultProps}
-      />,
-    );
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /Responsável/,
-      }),
-    );
-
     expect(
-      screen.getByLabelText(
-        /Nome do aluno vinculado/,
-      ),
-    ).toBeTruthy();
-    expect(
-      screen.getAllByText(
-        /guardianships/,
-      ).length,
+      screen.getAllByText(/Somente ADMIN/)
+        .length,
     ).toBeGreaterThan(0);
   });
 
-  it('mostra aviso de bloqueio sem permissao efetiva', () => {
-    render(
-      <UnifiedUserInvitePreview
-        {...defaultProps}
-        currentRole="TEACHER"
-        profileRole="ADMIN"
-      />,
-    );
-
-    expect(
-      screen.getByText(
-        'Seu papel na escola ativa não permite gerenciar usuários.',
-      ),
-    ).toBeTruthy();
-  });
-
-  it('mostra planejados como ainda nao ativos no banco', () => {
-    render(
-      <UnifiedUserInvitePreview
-        {...defaultProps}
-      />,
-    );
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /Administração escolar/,
-      }),
-    );
-
-    expect(
-      screen.getByText(
-        /SCHOOL_ADMIN ainda não existe no banco/,
-      ),
-    ).toBeTruthy();
-    expect(
-      screen.getAllByText(
-        /Ainda não ativo no banco/,
-      ).length,
-    ).toBeGreaterThan(0);
-  });
-
-  it('nao importa services nem chamadas Supabase', () => {
+  it('nao chama Supabase direto no componente', () => {
     const source = readFileSync(
       join(
         currentDirectory,
@@ -154,9 +313,6 @@ describe('UnifiedUserInvitePreview', () => {
       'utf8',
     );
 
-    expect(source).not.toContain(
-      '/services/',
-    );
     expect(source).not.toContain('supabase');
     expect(source).not.toContain(
       'functions.invoke',

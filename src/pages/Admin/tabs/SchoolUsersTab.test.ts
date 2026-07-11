@@ -1,4 +1,14 @@
+// @vitest-environment jsdom
+
+import { createElement } from 'react';
 import {
+  cleanup,
+  render,
+  screen,
+} from '@testing-library/react';
+import {
+  afterEach,
+  beforeEach,
   describe,
   expect,
   it,
@@ -6,6 +16,9 @@ import {
 } from 'vitest';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
+import { useAuth } from '../../../contexts/AuthContext';
+import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 
 vi.mock('../../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
@@ -19,10 +32,29 @@ vi.mock('../../../hooks/useSchoolUsers', () => ({
   useSchoolUsers: vi.fn(),
 }));
 
+vi.mock(
+  './school-users/UnifiedUserInvitePreview',
+  () => ({
+    default: vi.fn(() => null),
+  }),
+);
+
+import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
 import {
+  default as SchoolUsersTab,
   filterSchoolUsers,
   getSchoolUserSummary,
 } from './SchoolUsersTab';
+
+const mockedUseAuth = vi.mocked(useAuth);
+const mockedUseCurrentInstitution = vi.mocked(
+  useCurrentInstitution,
+);
+const mockedUseSchoolUsers = vi.mocked(
+  useSchoolUsers,
+);
+const mockedUnifiedUserInvitePreview =
+  vi.mocked(UnifiedUserInvitePreview);
 
 const users: SchoolUserRow[] = [
   {
@@ -65,6 +97,77 @@ const users: SchoolUserRow[] = [
     },
   },
 ];
+
+function mockTabState({
+  institutionId = 'institution-1',
+  currentRole = 'ADMIN',
+}: {
+  institutionId?: string;
+  currentRole?: string | null;
+} = {}) {
+  mockedUseAuth.mockReturnValue({
+    user: null,
+    profile: {
+      id: 'profile-1',
+      full_name: 'Ana Admin',
+      email: 'ana@escola.com',
+      role: 'ADMIN',
+      avatar_url: null,
+    },
+    loading: false,
+    signIn: vi.fn(),
+    signOut: vi.fn(),
+  });
+
+  mockedUseCurrentInstitution.mockReturnValue({
+    data: institutionId,
+    institution: {
+      id: institutionId,
+      name: 'Escola Centro',
+      active: true,
+    },
+    membership: {
+      id: 'membership-current',
+      institution_id: institutionId,
+      role: currentRole ?? 'TEACHER',
+      active: Boolean(currentRole),
+    },
+    currentInstitution: {
+      id: institutionId,
+      name: 'Escola Centro',
+      active: true,
+    },
+    currentMembership: {
+      id: 'membership-current',
+      institution_id: institutionId,
+      role: currentRole ?? 'TEACHER',
+      active: Boolean(currentRole),
+    },
+    currentInstitutionId: institutionId,
+    currentRole,
+    isLoading: false,
+    isError: false,
+    error: null,
+    message: null,
+    refetch: vi.fn(),
+  });
+
+  mockedUseSchoolUsers.mockReturnValue({
+    data: users,
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as ReturnType<typeof useSchoolUsers>);
+}
+
+beforeEach(() => {
+  vi.clearAllMocks();
+  mockTabState();
+});
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('SchoolUsersTab helpers', () => {
   it('filtra usuarios por nome', () => {
@@ -119,5 +222,50 @@ describe('SchoolUsersTab helpers', () => {
     expect(summary.byRole.TEACHER).toBe(1);
     expect(summary.byRole.STUDENT).toBe(0);
     expect(summary.byRole.GUARDIAN).toBe(0);
+  });
+});
+
+describe('SchoolUsersTab integration', () => {
+  it('passa a instituicao ativa para o cadastro unificado', () => {
+    render(createElement(SchoolUsersTab));
+
+    expect(
+      mockedUnifiedUserInvitePreview.mock
+        .calls[0]?.[0],
+    ).toEqual(
+      expect.objectContaining({
+        institutionId: 'institution-1',
+        currentRole: 'ADMIN',
+        hasActiveInstitution: true,
+      }),
+    );
+  });
+
+  it('habilita novo usuario para ADMIN ativo', () => {
+    render(createElement(SchoolUsersTab));
+
+    expect(
+      screen
+        .getByRole('button', {
+          name: /Novo/,
+        })
+        .hasAttribute('disabled'),
+    ).toBe(false);
+  });
+
+  it('desabilita novo usuario sem permissao efetiva', () => {
+    mockTabState({
+      currentRole: 'TEACHER',
+    });
+
+    render(createElement(SchoolUsersTab));
+
+    expect(
+      screen
+        .getByRole('button', {
+          name: /Novo/,
+        })
+        .hasAttribute('disabled'),
+    ).toBe(true);
   });
 });
