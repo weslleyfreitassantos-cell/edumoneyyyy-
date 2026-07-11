@@ -21,6 +21,8 @@ import {
 } from '../../../../services/schoolUserInviteService';
 import {
   buildUnifiedUserInvitePayload,
+  canInviteTarget,
+  getAllowedInviteTargets,
   getUnifiedUserInviteOption,
   isUnifiedInviteTargetCurrentlySupported,
   UNIFIED_USER_INVITE_OPTIONS,
@@ -66,14 +68,6 @@ const availabilityLabels: Record<
 > = {
   available_now:
     'Fluxo real habilitado localmente',
-  available_now_visual_only:
-    'Disponivel apenas como previa visual',
-  planned_requires_database:
-    'Depende de suporte no banco',
-  planned_requires_edge_function:
-    'Depende de Edge Function segura',
-  planned_requires_migration_reconciliation:
-    'Depende da reconciliacao das migrations',
 };
 
 function getTargetNote(
@@ -87,11 +81,9 @@ function getTargetNote(
     case 'GUARDIAN':
       return 'Cria usuario, profile, membership GUARDIAN e vinculo guardianships com aluno da escola ativa.';
     case 'DIRECTOR':
-      return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN ativo pode convidar diretor.';
-    case 'SCHOOL_ADMIN_PLANNED':
-      return 'SCHOOL_ADMIN ainda nao existe no banco e nao pode ser ativado nesta etapa.';
-    case 'SECRETARY_PLANNED':
-      return 'SECRETARY ainda nao existe no banco e nao pode ser ativado nesta etapa.';
+      return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode convidar diretor.';
+    case 'SECRETARY':
+      return 'Cria usuario, profile e membership SECRETARY para operacao institucional.';
   }
 }
 
@@ -145,6 +137,22 @@ export default function UnifiedUserInvitePreview({
     getUnifiedUserInviteOption(
       selectedTarget,
     );
+
+  const allowedTargets = useMemo(
+    () => getAllowedInviteTargets(currentRole),
+    [currentRole],
+  );
+
+  const visibleOptions = useMemo(() => {
+    if (allowedTargets.length === 0) {
+      return UNIFIED_USER_INVITE_OPTIONS;
+    }
+
+    return UNIFIED_USER_INVITE_OPTIONS.filter(
+      (option) =>
+        allowedTargets.includes(option.target),
+    );
+  }, [allowedTargets]);
 
   const canManageSchoolUsers =
     hasEffectivePermission({
@@ -200,12 +208,22 @@ export default function UnifiedUserInvitePreview({
     !canManageSchoolUsers ||
     !hasActiveInstitution ||
     !targetIsSupported ||
+    !canInviteTarget(currentRole, selectedTarget) ||
     inviteMutation.isPending;
 
   useEffect(() => {
     setServerFieldErrors({});
     setFeedback(null);
   }, [selectedTarget]);
+
+  useEffect(() => {
+    if (
+      allowedTargets.length > 0 &&
+      !allowedTargets.includes(selectedTarget)
+    ) {
+      setSelectedTarget(allowedTargets[0]);
+    }
+  }, [allowedTargets, selectedTarget]);
 
   function updateForm(
     field: keyof InviteFormState,
@@ -230,7 +248,10 @@ export default function UnifiedUserInvitePreview({
     const option =
       getUnifiedUserInviteOption(target);
 
-    if (option.isPlanned) {
+    if (
+      option.isPlanned ||
+      !canInviteTarget(currentRole, target)
+    ) {
       return;
     }
 
@@ -383,13 +404,17 @@ export default function UnifiedUserInvitePreview({
             </p>
 
             <div className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {UNIFIED_USER_INVITE_OPTIONS.map(
+              {visibleOptions.map(
                 (option) => {
                   const optionDisabled =
                     inviteMutation.isPending ||
                     !canManageSchoolUsers ||
                     !hasActiveInstitution ||
-                    option.isPlanned;
+                    option.isPlanned ||
+                    !canInviteTarget(
+                      currentRole,
+                      option.target,
+                    );
 
                   return (
                     <button
@@ -625,7 +650,13 @@ export default function UnifiedUserInvitePreview({
 
             {selectedTarget === 'DIRECTOR' && (
               <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
-                Diretor so pode ser convidado por ADMIN ativo da escola.
+                Diretor so pode ser convidado por ADMIN da conta.
+              </p>
+            )}
+
+            {selectedTarget === 'SECRETARY' && (
+              <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
+                Secretaria recebe acesso operacional para cadastros e matriculas da instituicao.
               </p>
             )}
 

@@ -7,8 +7,6 @@ import {
 import {
   PlusCircle,
   Search,
-  ShieldCheck,
-  UserCog,
   UserRoundCheck,
   UserRoundX,
   Users,
@@ -39,6 +37,7 @@ export const schoolUserRoleLabels: Record<
 > = {
   ADMIN: 'Administração',
   DIRECTOR: 'Direção',
+  SECRETARY: 'Secretaria',
   TEACHER: 'Professor',
   STUDENT: 'Aluno',
   GUARDIAN: 'Responsável',
@@ -54,6 +53,7 @@ const filterOptions: {
     label: 'Administração',
   },
   { value: 'DIRECTOR', label: 'Direção' },
+  { value: 'SECRETARY', label: 'Secretaria' },
   {
     value: 'TEACHER',
     label: 'Professores',
@@ -64,31 +64,6 @@ const filterOptions: {
     label: 'Responsáveis',
   },
 ];
-
-const plannedRoles = [
-  {
-    role: 'SUPER_ADMIN',
-    title: 'Papel futuro de plataforma',
-    description:
-      'Administração global para criação e gestão de escolas.',
-    icon: ShieldCheck,
-  },
-  {
-    role: 'SCHOOL_ADMIN',
-    title:
-      'Papel futuro de administração interna da escola',
-    description:
-      'Gestão escolar de usuários, estrutura acadêmica e permissões internas.',
-    icon: UserCog,
-  },
-  {
-    role: 'SECRETARY',
-    title: 'Papel futuro de secretaria escolar',
-    description:
-      'Operação de cadastros, responsáveis e matrículas da própria escola.',
-    icon: Users,
-  },
-] as const;
 
 export interface SchoolUserSummary {
   total: number;
@@ -430,6 +405,7 @@ export default function SchoolUsersTab() {
 
   const canManageSchoolUsers =
     hasEffectivePermission({
+      platformRole: profile?.platform_role,
       membershipRole:
         institutionQuery.currentRole,
       profileRole: profile?.role,
@@ -515,7 +491,7 @@ export default function SchoolUsersTab() {
               id="new-user-disabled-help"
               className="mt-2 text-xs leading-relaxed text-[#727785]"
             >
-              Use o cadastro unificado abaixo para convidar diretores, professores, alunos e responsaveis.
+              Use o cadastro unificado abaixo para convidar diretores, secretaria, professores, alunos e responsaveis.
             </p>
           </div>
         </div>
@@ -682,58 +658,6 @@ export default function SchoolUsersTab() {
             users={filteredUsers}
           />
         )}
-      </section>
-
-      <section className="space-y-3">
-        <div>
-          <h3 className="text-lg font-bold text-[#181c20]">
-            Papéis planejados
-          </h3>
-
-          <p className="mt-1 text-sm text-[#727785]">
-            Estes papéis ainda não estão ativos no banco e aparecem apenas como referência do modelo futuro.
-          </p>
-        </div>
-
-        <div className="grid gap-3 md:grid-cols-3">
-          {plannedRoles.map((plannedRole) => {
-            const Icon = plannedRole.icon;
-
-            return (
-              <article
-                key={plannedRole.role}
-                className="rounded-xl border border-dashed border-[#dfe3e8] bg-white p-4"
-              >
-                <div className="flex items-start gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gray-100 text-gray-600">
-                    <Icon
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  </span>
-
-                  <div>
-                    <h4 className="text-sm font-bold text-[#181c20]">
-                      {plannedRole.role}
-                    </h4>
-
-                    <p className="mt-1 text-xs font-semibold text-[#414754]">
-                      {plannedRole.title}
-                    </p>
-
-                    <p className="mt-1 text-xs leading-relaxed text-[#727785]">
-                      {plannedRole.description}
-                    </p>
-
-                    <p className="mt-2 text-xs font-semibold text-amber-700">
-                      Ainda não ativo no banco.
-                    </p>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
-        </div>
       </section>
     </div>
   );

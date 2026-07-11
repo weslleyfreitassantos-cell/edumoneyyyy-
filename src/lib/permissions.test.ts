@@ -6,86 +6,139 @@ import {
 
 import {
   CURRENT_DATABASE_ROLES,
-  FUTURE_PLATFORM_ROLES,
-  FUTURE_ROLE_PLAN,
-  FUTURE_SCHOOL_ROLES,
   getEffectiveRole,
   hasEffectivePermission,
   hasPermission,
+  PLATFORM_ROLES,
 } from './permissions';
 
 describe('school permissions', () => {
-  it('permite ADMIN gerenciar usuarios da escola', () => {
+  it('mantem SCHOOL_ADMIN fora das roles reais', () => {
+    expect(CURRENT_DATABASE_ROLES).toEqual([
+      'ADMIN',
+      'DIRECTOR',
+      'SECRETARY',
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ]);
+    expect(CURRENT_DATABASE_ROLES).not.toContain(
+      'SCHOOL_ADMIN',
+    );
+    expect(CURRENT_DATABASE_ROLES).not.toContain(
+      'SUPER_ADMIN',
+    );
+  });
+
+  it('declara SUPER_ADMIN como role de plataforma', () => {
+    expect(PLATFORM_ROLES).toEqual([
+      'USER',
+      'SUPER_ADMIN',
+    ]);
+  });
+
+  it('permite ADMIN criar instituicao e gerenciar usuarios', () => {
     expect(
       hasPermission(
+        null,
+        'ADMIN',
+        'create_institution',
+      ),
+    ).toBe(true);
+    expect(
+      hasPermission(
+        null,
         'ADMIN',
         'manage_school_users',
       ),
     ).toBe(true);
   });
 
-  it('permite DIRECTOR por compatibilidade atual', () => {
+  it('permite DIRECTOR administrar a instituicao', () => {
     expect(
       hasPermission(
+        null,
         'DIRECTOR',
-        'manage_school_users',
+        'manage_academic_structure',
       ),
     ).toBe(true);
   });
 
-  it('nao permite TEACHER gerenciar usuarios da escola', () => {
+  it('permite SECRETARY operar cadastros, mas nao criar instituicao', () => {
     expect(
       hasPermission(
+        null,
+        'SECRETARY',
+        'manage_students',
+      ),
+    ).toBe(true);
+    expect(
+      hasPermission(
+        null,
+        'SECRETARY',
+        'create_institution',
+      ),
+    ).toBe(false);
+  });
+
+  it('mantem TEACHER, STUDENT e GUARDIAN restritos', () => {
+    expect(
+      hasPermission(
+        null,
         'TEACHER',
         'manage_school_users',
       ),
     ).toBe(false);
-  });
-
-  it('nao permite STUDENT gerenciar usuarios da escola', () => {
     expect(
       hasPermission(
+        null,
         'STUDENT',
-        'manage_school_users',
+        'view_own_student_data',
       ),
-    ).toBe(false);
-  });
-
-  it('nao permite GUARDIAN gerenciar usuarios da escola', () => {
+    ).toBe(true);
     expect(
       hasPermission(
+        null,
         'GUARDIAN',
-        'manage_school_users',
+        'view_linked_students',
       ),
-    ).toBe(false);
-  });
-
-  it('documenta roles futuras sem ativa-las como roles atuais do banco', () => {
-    expect(FUTURE_PLATFORM_ROLES).toContain(
-      'SUPER_ADMIN',
-    );
-    expect(FUTURE_SCHOOL_ROLES).toEqual([
-      'SCHOOL_ADMIN',
-      'SECRETARY',
-    ]);
-    expect(FUTURE_ROLE_PLAN.SECRETARY.scope).toBe(
-      'school',
-    );
-
-    expect(CURRENT_DATABASE_ROLES).not.toContain(
-      'SUPER_ADMIN',
-    );
-    expect(CURRENT_DATABASE_ROLES).not.toContain(
-      'SCHOOL_ADMIN',
-    );
-    expect(CURRENT_DATABASE_ROLES).not.toContain(
-      'SECRETARY',
-    );
+    ).toBe(true);
   });
 });
 
-describe('effective school role permissions', () => {
-  it('usa membershipRole quando ela existe', () => {
+describe('effective role permissions', () => {
+  it('resolve SUPER_ADMIN por platform_role', () => {
+    expect(
+      hasEffectivePermission({
+        platformRole: 'SUPER_ADMIN',
+        permission: 'manage_accounts',
+      }),
+    ).toBe(true);
+  });
+
+  it('resolve ADMIN por ownership de conta ativa', () => {
+    expect(
+      getEffectiveRole({
+        isAccountOwner: true,
+        accountStatus: 'ACTIVE',
+        membershipRole: null,
+        profileRole: null,
+      }),
+    ).toBe('ADMIN');
+  });
+
+  it('nao resolve ADMIN por ownership suspensa', () => {
+    expect(
+      getEffectiveRole({
+        isAccountOwner: true,
+        accountStatus: 'SUSPENDED',
+        membershipRole: null,
+        profileRole: null,
+      }),
+    ).toBeNull();
+  });
+
+  it('usa membershipRole institucional quando nao ha plataforma ou ownership', () => {
     expect(
       getEffectiveRole({
         membershipRole: 'DIRECTOR',
@@ -94,74 +147,17 @@ describe('effective school role permissions', () => {
     ).toBe('DIRECTOR');
   });
 
-  it('usa profileRole como fallback quando membershipRole nao existe', () => {
+  it('aceita SECRETARY como membership real', () => {
     expect(
-      getEffectiveRole({
-        membershipRole: null,
-        profileRole: 'ADMIN',
-      }),
-    ).toBe('ADMIN');
-  });
-
-  it('retorna null quando nao existe membershipRole nem profileRole', () => {
-    expect(
-      getEffectiveRole({
-        membershipRole: null,
-        profileRole: null,
-      }),
-    ).toBeNull();
-  });
-
-  it('ignora roles que ainda nao existem no banco', () => {
-    expect(
-      getEffectiveRole({
+      hasEffectivePermission({
         membershipRole: 'SECRETARY',
         profileRole: null,
-      }),
-    ).toBeNull();
-  });
-
-  it('prioriza membershipRole ao verificar permissao efetiva', () => {
-    expect(
-      hasEffectivePermission({
-        membershipRole: 'TEACHER',
-        profileRole: 'ADMIN',
-        permission: 'manage_school_users',
-      }),
-    ).toBe(false);
-  });
-
-  it('permite ADMIN via membership gerenciar usuarios da escola', () => {
-    expect(
-      hasEffectivePermission({
-        membershipRole: 'ADMIN',
-        profileRole: null,
-        permission: 'manage_school_users',
+        permission: 'manage_students',
       }),
     ).toBe(true);
   });
 
-  it('mantem compatibilidade de DIRECTOR via membership', () => {
-    expect(
-      hasEffectivePermission({
-        membershipRole: 'DIRECTOR',
-        profileRole: null,
-        permission: 'manage_school_users',
-      }),
-    ).toBe(true);
-  });
-
-  it('nao permite TEACHER via membership gerenciar usuarios da escola', () => {
-    expect(
-      hasEffectivePermission({
-        membershipRole: 'TEACHER',
-        profileRole: null,
-        permission: 'manage_school_users',
-      }),
-    ).toBe(false);
-  });
-
-  it('mantem fallback com profileRole quando membershipRole nao existe', () => {
+  it('mantem profileRole apenas como fallback legado', () => {
     expect(
       hasEffectivePermission({
         membershipRole: null,

@@ -14,6 +14,44 @@ export type Database = {
   }
   public: {
     Tables: {
+      accounts: {
+        Row: {
+          created_at: string | null
+          id: string
+          institution_limit: number
+          name: string
+          owner_profile_id: string
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          institution_limit?: number
+          name: string
+          owner_profile_id: string
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          institution_limit?: number
+          name?: string
+          owner_profile_id?: string
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "accounts_owner_profile_id_fkey"
+            columns: ["owner_profile_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       academic_years: {
         Row: {
           active: boolean | null
@@ -259,6 +297,7 @@ export type Database = {
       }
       institutions: {
         Row: {
+          account_id: string | null
           active: boolean | null
           address: string | null
           cnpj: string | null
@@ -271,6 +310,7 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          account_id?: string | null
           active?: boolean | null
           address?: string | null
           cnpj?: string | null
@@ -283,6 +323,7 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          account_id?: string | null
           active?: boolean | null
           address?: string | null
           cnpj?: string | null
@@ -294,7 +335,15 @@ export type Database = {
           phone?: string | null
           updated_at?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "institutions_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       memberships: {
         Row: {
@@ -368,6 +417,7 @@ export type Database = {
           full_name: string
           id: string
           phone: string | null
+          platform_role: Database["public"]["Enums"]["platform_role"]
           role: Database["public"]["Enums"]["user_role"]
           updated_at: string | null
         }
@@ -379,6 +429,7 @@ export type Database = {
           full_name: string
           id: string
           phone?: string | null
+          platform_role?: Database["public"]["Enums"]["platform_role"]
           role: Database["public"]["Enums"]["user_role"]
           updated_at?: string | null
         }
@@ -390,6 +441,7 @@ export type Database = {
           full_name?: string
           id?: string
           phone?: string | null
+          platform_role?: Database["public"]["Enums"]["platform_role"]
           role?: Database["public"]["Enums"]["user_role"]
           updated_at?: string | null
         }
@@ -746,7 +798,14 @@ export type Database = {
       }
     }
     Enums: {
-      user_role: "ADMIN" | "DIRECTOR" | "TEACHER" | "STUDENT" | "GUARDIAN"
+      platform_role: "USER" | "SUPER_ADMIN"
+      user_role:
+        | "ADMIN"
+        | "DIRECTOR"
+        | "SECRETARY"
+        | "TEACHER"
+        | "STUDENT"
+        | "GUARDIAN"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -874,7 +933,15 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      user_role: ["ADMIN", "DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"],
+      platform_role: ["USER", "SUPER_ADMIN"],
+      user_role: [
+        "ADMIN",
+        "DIRECTOR",
+        "SECRETARY",
+        "TEACHER",
+        "STUDENT",
+        "GUARDIAN",
+      ],
     },
   },
 } as const

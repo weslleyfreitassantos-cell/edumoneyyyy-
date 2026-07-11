@@ -10,7 +10,9 @@ import type { User } from '@supabase/supabase-js';
 import { supabase } from '../lib/supabaseClient';
 import {
   isDatabaseRole,
+  isPlatformRole,
   type DatabaseRole,
+  type PlatformRole,
 } from '../lib/roles';
 
 export interface Profile {
@@ -18,6 +20,7 @@ export interface Profile {
   full_name: string;
   email: string;
   role: DatabaseRole;
+  platform_role: PlatformRole;
   avatar_url: string | null;
 }
 
@@ -36,7 +39,7 @@ const AuthContext = createContext<AuthContextType | undefined>(
 async function loadProfile(userId: string): Promise<Profile> {
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, full_name, email, role, avatar_url')
+    .select('id, full_name, email, role, platform_role, avatar_url')
     .eq('id', userId)
     .single();
 
@@ -57,11 +60,18 @@ async function loadProfile(userId: string): Promise<Profile> {
     );
   }
 
+  const platformRole =
+    typeof data.platform_role === 'string' &&
+    isPlatformRole(data.platform_role)
+      ? data.platform_role
+      : 'USER';
+
   return {
     id: data.id,
     full_name: data.full_name,
     email: data.email,
     role: data.role,
+    platform_role: platformRole,
     avatar_url: data.avatar_url ?? null,
   };
 }

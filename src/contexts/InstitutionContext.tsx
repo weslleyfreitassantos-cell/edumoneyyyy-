@@ -276,7 +276,7 @@ export function InstitutionProvider({
           selectedInstitutionLink?.institution.id ??
           null,
         currentRole:
-          selectedInstitutionLink?.membership.role ??
+          selectedInstitutionLink?.effectiveRole ??
           null,
         isLoading:
           Boolean(profile?.id) &&

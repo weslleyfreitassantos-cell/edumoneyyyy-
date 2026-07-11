@@ -2,16 +2,21 @@ import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
-import type { DatabaseRole } from '../lib/roles';
+import type {
+  DatabaseRole,
+  PlatformRole,
+} from '../lib/roles';
 
 interface ProtectedRouteProps {
   children: ReactNode;
   allowedRoles?: DatabaseRole[];
+  allowedPlatformRoles?: PlatformRole[];
 }
 
 export function ProtectedRoute({
   children,
   allowedRoles,
+  allowedPlatformRoles,
 }: ProtectedRouteProps) {
   const { user, profile, loading } = useAuth();
 
@@ -45,6 +50,15 @@ export function ProtectedRoute({
   }
 
   if (allowedRoles && !allowedRoles.includes(profile.role)) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  if (
+    allowedPlatformRoles &&
+    !allowedPlatformRoles.includes(
+      profile.platform_role,
+    )
+  ) {
     return <Navigate to="/unauthorized" replace />;
   }
 

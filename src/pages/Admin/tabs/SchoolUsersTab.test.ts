@@ -112,6 +112,7 @@ function mockTabState({
       full_name: 'Ana Admin',
       email: 'ana@escola.com',
       role: 'ADMIN',
+      platform_role: 'USER',
       avatar_url: null,
     },
     loading: false,
@@ -125,6 +126,7 @@ function mockTabState({
       id: institutionId,
       name: 'Escola Centro',
       active: true,
+      account_id: 'account-1',
     },
     membership: {
       id: 'membership-current',
@@ -136,6 +138,7 @@ function mockTabState({
       id: institutionId,
       name: 'Escola Centro',
       active: true,
+      account_id: 'account-1',
     },
     currentMembership: {
       id: 'membership-current',

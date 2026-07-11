@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 import { Navigate } from 'react-router-dom';
 
 import InstitutionSwitcher from '../../components/InstitutionSwitcher';
@@ -39,18 +42,69 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] =
     useState<TabType>('overview');
 
-  const canManageSchool =
+  const can = (
+    permission: Parameters<
+      typeof hasEffectivePermission
+    >[0]['permission'],
+  ) =>
     hasEffectivePermission({
+      platformRole: profile?.platform_role,
       membershipRole:
         institutionQuery.currentRole,
       profileRole: profile?.role,
-      permission: 'manage_school',
+      permission,
     });
 
-  if (
-    !profile ||
-    !canManageSchool
-  ) {
+  const tabs: {
+    id: TabType;
+    label: string;
+  }[] = [
+    ...(can('view_school_dashboard')
+      ? [{ id: 'overview' as const, label: 'Visão geral' }]
+      : []),
+    ...(can('manage_school_users')
+      ? [{ id: 'school-users' as const, label: 'Usuários' }]
+      : []),
+    ...(can('manage_students')
+      ? [{ id: 'students' as const, label: 'Alunos' }]
+      : []),
+    ...(can('manage_teachers')
+      ? [{ id: 'teachers' as const, label: 'Professores' }]
+      : []),
+    ...(can('manage_guardians')
+      ? [{ id: 'guardians' as const, label: 'Responsáveis' }]
+      : []),
+    ...(can('manage_academic_structure')
+      ? [
+          {
+            id: 'academic-years' as const,
+            label: 'Ano letivo',
+          },
+          { id: 'classes' as const, label: 'Turmas' },
+          {
+            id: 'subjects' as const,
+            label: 'Disciplinas',
+          },
+        ]
+      : []),
+    ...(can('manage_enrollments')
+      ? [{ id: 'enrollments' as const, label: 'Matrículas' }]
+      : []),
+    ...(can('manage_assignments')
+      ? [{ id: 'assignments' as const, label: 'Atribuições' }]
+      : []),
+  ];
+
+  useEffect(() => {
+    if (
+      tabs.length > 0 &&
+      !tabs.some((tab) => tab.id === activeTab)
+    ) {
+      setActiveTab(tabs[0].id);
+    }
+  }, [activeTab, tabs]);
+
+  if (!profile || tabs.length === 0) {
     return (
       <Navigate
         to="/dashboard"
@@ -58,22 +112,6 @@ export default function AdminPage() {
       />
     );
   }
-
-  const tabs: {
-    id: TabType;
-    label: string;
-  }[] = [
-    { id: 'overview', label: 'Visão geral' },
-    { id: 'school-users', label: 'Usuários' },
-    { id: 'students', label: 'Alunos' },
-    { id: 'teachers', label: 'Professores' },
-    { id: 'guardians', label: 'Responsáveis' },
-    { id: 'academic-years', label: 'Ano letivo' },
-    { id: 'classes', label: 'Turmas' },
-    { id: 'subjects', label: 'Disciplinas' },
-    { id: 'enrollments', label: 'Matrículas' },
-    { id: 'assignments', label: 'Atribuições' },
-  ];
 
   const renderTab = () => {
     switch (activeTab) {

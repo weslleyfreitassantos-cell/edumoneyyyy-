@@ -3,19 +3,14 @@ export const UNIFIED_USER_INVITE_TARGETS = [
   'TEACHER',
   'GUARDIAN',
   'DIRECTOR',
-  'SCHOOL_ADMIN_PLANNED',
-  'SECRETARY_PLANNED',
+  'SECRETARY',
 ] as const;
 
 export type UnifiedUserInviteTarget =
   (typeof UNIFIED_USER_INVITE_TARGETS)[number];
 
 export type UnifiedUserInviteAvailabilityStatus =
-  | 'available_now'
-  | 'available_now_visual_only'
-  | 'planned_requires_database'
-  | 'planned_requires_edge_function'
-  | 'planned_requires_migration_reconciliation';
+  | 'available_now';
 
 export interface UnifiedUserInviteOption {
   target: UnifiedUserInviteTarget;
@@ -32,7 +27,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     target: 'STUDENT',
     label: 'Aluno',
     description:
-      'Cadastro acadêmico do aluno. Login pode ser opcional no futuro.',
+      'Cadastro academico do aluno com vinculo institucional.',
     rolePreview: 'STUDENT',
     availabilityStatuses: [
       'available_now',
@@ -41,7 +36,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'profile',
       'membership',
       'student record',
-      'convite/senha, quando aplicável',
+      'convite/senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -49,7 +44,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     target: 'TEACHER',
     label: 'Professor',
     description:
-      'Usuário com vínculo docente e possível acesso ao painel de professor.',
+      'Usuario com vinculo docente e acesso ao painel de professor.',
     rolePreview: 'TEACHER',
     availabilityStatuses: [
       'available_now',
@@ -57,16 +52,15 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     futureRecords: [
       'profile',
       'membership',
-      'convite/senha, quando aplicável',
-      'atribuições acadêmicas futuras',
+      'convite/senha, quando aplicavel',
     ],
     isPlanned: false,
   },
   {
     target: 'GUARDIAN',
-    label: 'Responsável',
+    label: 'Responsavel',
     description:
-      'Usuário vinculado a aluno por guardianships no futuro.',
+      'Usuario vinculado a aluno por guardianships.',
     rolePreview: 'GUARDIAN',
     availabilityStatuses: [
       'available_now',
@@ -75,7 +69,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'profile',
       'membership',
       'guardianship',
-      'convite/senha, quando aplicável',
+      'convite/senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -83,7 +77,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     target: 'DIRECTOR',
     label: 'Diretor',
     description:
-      'Papel escolar atual compatível com DIRECTOR.',
+      'Administrador institucional com membership DIRECTOR.',
     rolePreview: 'DIRECTOR',
     availabilityStatuses: [
       'available_now',
@@ -96,40 +90,20 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     isPlanned: false,
   },
   {
-    target: 'SCHOOL_ADMIN_PLANNED',
-    label: 'Administração escolar',
+    target: 'SECRETARY',
+    label: 'Secretaria',
     description:
-      'Papel futuro SCHOOL_ADMIN, ainda não ativo no banco.',
-    rolePreview: 'SCHOOL_ADMIN planejado',
+      'Operacao institucional para cadastros, responsaveis e matriculas.',
+    rolePreview: 'SECRETARY',
     availabilityStatuses: [
-      'planned_requires_database',
-      'planned_requires_edge_function',
-      'planned_requires_migration_reconciliation',
+      'available_now',
     ],
     futureRecords: [
       'profile',
-      'membership com papel futuro',
+      'membership',
       'convite/senha',
     ],
-    isPlanned: true,
-  },
-  {
-    target: 'SECRETARY_PLANNED',
-    label: 'Secretaria escolar',
-    description:
-      'Papel futuro SECRETARY, ainda não ativo no banco.',
-    rolePreview: 'SECRETARY planejado',
-    availabilityStatuses: [
-      'planned_requires_database',
-      'planned_requires_edge_function',
-      'planned_requires_migration_reconciliation',
-    ],
-    futureRecords: [
-      'profile',
-      'membership com papel futuro',
-      'convite/senha',
-    ],
-    isPlanned: true,
+    isPlanned: false,
   },
 ] as const satisfies readonly UnifiedUserInviteOption[];
 
@@ -147,12 +121,8 @@ export function isUnifiedInviteTargetCurrentlySupported(
   return !getUnifiedUserInviteOption(target).isPlanned;
 }
 
-export const UNIFIED_USER_INVITE_ROLES = [
-  'DIRECTOR',
-  'TEACHER',
-  'STUDENT',
-  'GUARDIAN',
-] as const;
+export const UNIFIED_USER_INVITE_ROLES =
+  UNIFIED_USER_INVITE_TARGETS;
 
 export type UnifiedUserInviteRole =
   (typeof UNIFIED_USER_INVITE_ROLES)[number];
@@ -232,6 +202,47 @@ export function isUnifiedInviteRole(
   );
 }
 
+export function getAllowedInviteTargets(
+  currentRole: string | null | undefined,
+): UnifiedUserInviteRole[] {
+  if (currentRole === 'ADMIN') {
+    return [
+      'DIRECTOR',
+      'SECRETARY',
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ];
+  }
+
+  if (currentRole === 'DIRECTOR') {
+    return [
+      'SECRETARY',
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ];
+  }
+
+  if (currentRole === 'SECRETARY') {
+    return [
+      'STUDENT',
+      'GUARDIAN',
+    ];
+  }
+
+  return [];
+}
+
+export function canInviteTarget(
+  currentRole: string | null | undefined,
+  target: UnifiedUserInviteRole,
+): boolean {
+  return getAllowedInviteTargets(currentRole).includes(
+    target,
+  );
+}
+
 export function buildUnifiedUserInvitePayload(
   input: UnifiedUserInviteFormValues,
 ): UnifiedUserInviteValidationResult {
@@ -258,15 +269,12 @@ export function buildUnifiedUserInvitePayload(
 
   if (!isUnifiedInviteRole(input.target)) {
     fieldErrors.target =
-      'Este papel ainda nao pode receber convite.';
-  }
-
-  if (
-    input.target === 'DIRECTOR' &&
-    input.currentRole !== 'ADMIN'
+      'Este papel nao pode receber convite.';
+  } else if (
+    !canInviteTarget(input.currentRole, input.target)
   ) {
     fieldErrors.target =
-      'Somente ADMIN ativo pode convidar outro diretor.';
+      'Seu papel atual nao permite convidar este tipo de usuario.';
   }
 
   if (fullName.length < 3) {

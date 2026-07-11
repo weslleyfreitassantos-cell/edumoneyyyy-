@@ -25,6 +25,7 @@ import {
     type Profile,
 } from '../contexts/AuthContext';
 import type { DatabaseRole } from '../lib/roles';
+import type { PlatformRole } from '../lib/roles';
 import { ProtectedRoute } from './ProtectedRoute';
 
 vi.mock('../contexts/AuthContext', () => ({
@@ -43,6 +44,7 @@ const adminProfile: Profile = {
     email: 'admin@example.com',
     avatar_url: null,
     role: 'ADMIN',
+    platform_role: 'USER',
 };
 
 function createAuthState(
@@ -60,6 +62,7 @@ function createAuthState(
 
 function renderProtectedRoute(
     allowedRoles?: DatabaseRole[],
+    allowedPlatformRoles?: PlatformRole[],
 ) {
     render(
         <MemoryRouter initialEntries={['/protected']}>
@@ -77,7 +80,10 @@ function renderProtectedRoute(
                 <Route
                     path="/protected"
                     element={
-                        <ProtectedRoute allowedRoles={allowedRoles}>
+                        <ProtectedRoute
+                            allowedRoles={allowedRoles}
+                            allowedPlatformRoles={allowedPlatformRoles}
+                        >
                             <div>Conteúdo protegido</div>
                         </ProtectedRoute>
                     }
@@ -158,6 +164,36 @@ describe('ProtectedRoute', () => {
         );
 
         renderProtectedRoute(['DIRECTOR']);
+
+        expect(
+            screen.getByText('Acesso não autorizado'),
+        ).toBeTruthy();
+    });
+
+    it('autoriza SUPER_ADMIN pela platform_role', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, platform_role: 'SUPER_ADMIN' },
+            }),
+        );
+
+        renderProtectedRoute(undefined, ['SUPER_ADMIN']);
+
+        expect(
+            screen.getByText('Conteúdo protegido'),
+        ).toBeTruthy();
+    });
+
+    it('bloqueia USER pela platform_role', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, platform_role: 'USER' },
+            }),
+        );
+
+        renderProtectedRoute(undefined, ['SUPER_ADMIN']);
 
         expect(
             screen.getByText('Acesso não autorizado'),

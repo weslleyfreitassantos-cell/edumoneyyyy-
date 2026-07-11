@@ -1,15 +1,10 @@
-import {
-  FunctionsFetchError,
-  FunctionsHttpError,
-  FunctionsRelayError,
-} from '@supabase/supabase-js';
-
 import { supabase } from '../lib/supabaseClient';
 
 import {
   guardianSchema,
   type GuardianFormData,
 } from '../schemas/adminSchemas';
+import { schoolUserInviteService } from './schoolUserInviteService';
 
 interface GuardianProfileRelation {
   full_name: string;
@@ -76,12 +71,6 @@ export interface CreatedGuardian {
   email: string;
 }
 
-interface CreateGuardianFunctionResponse {
-  guardian: CreatedGuardian;
-  guardianships_created: number;
-  invitation_sent: boolean;
-}
-
 function normalizeRelation<T>(
   relation: T | T[] | null,
 ): T | null {
@@ -90,73 +79,6 @@ function normalizeRelation<T>(
   }
 
   return relation;
-}
-
-function isCreatedGuardian(
-  value: unknown,
-): value is CreatedGuardian {
-  if (
-    typeof value !== 'object' ||
-    value === null
-  ) {
-    return false;
-  }
-
-  return (
-    'profile_id' in value &&
-    typeof value.profile_id === 'string' &&
-    'full_name' in value &&
-    typeof value.full_name === 'string' &&
-    'email' in value &&
-    typeof value.email === 'string'
-  );
-}
-
-function isCreateGuardianResponse(
-  value: unknown,
-): value is CreateGuardianFunctionResponse {
-  return (
-    typeof value === 'object' &&
-    value !== null &&
-    'guardian' in value &&
-    isCreatedGuardian(value.guardian)
-  );
-}
-
-async function getFunctionErrorMessage(
-  error: unknown,
-): Promise<string> {
-  if (error instanceof FunctionsHttpError) {
-    try {
-      const body: unknown =
-        await error.context.json();
-
-      if (
-        typeof body === 'object' &&
-        body !== null &&
-        'error' in body &&
-        typeof body.error === 'string'
-      ) {
-        return body.error;
-      }
-    } catch {
-      return error.message;
-    }
-  }
-
-  if (error instanceof FunctionsRelayError) {
-    return 'A função de cadastro está temporariamente indisponível.';
-  }
-
-  if (error instanceof FunctionsFetchError) {
-    return 'Não foi possível conectar à função de cadastro.';
-  }
-
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return 'Não foi possível cadastrar o responsável.';
 }
 
 function normalizeGuardianRows(
@@ -283,30 +205,35 @@ export const guardianService = {
     input: GuardianFormData,
   ): Promise<CreatedGuardian> {
     const data = guardianSchema.parse(input);
+    let profileId: string | null = null;
 
-    const {
-      data: response,
-      error,
-    } = await supabase.functions.invoke(
-      'create-guardian',
-      {
-        body: data,
-      },
-    );
+    for (const link of data.student_links) {
+      const response =
+        await schoolUserInviteService.invite({
+          institutionId: data.institution_id,
+          role: 'GUARDIAN',
+          fullName: data.full_name,
+          email: data.email,
+          guardian: {
+            studentId: link.student_id,
+            relationship: link.relationship,
+          },
+        });
 
-    if (error) {
+      profileId ??= response.profileId;
+    }
+
+    if (!profileId) {
       throw new Error(
-        await getFunctionErrorMessage(error),
+        'Nenhum vinculo de responsavel foi criado.',
       );
     }
 
-    if (!isCreateGuardianResponse(response)) {
-      throw new Error(
-        'A função respondeu em um formato inválido.',
-      );
-    }
-
-    return response.guardian;
+    return {
+      profile_id: profileId,
+      full_name: data.full_name,
+      email: data.email,
+    };
   },
 
   async setLinkActive(
@@ -350,7 +277,7 @@ export const guardianService = {
       student.institution_id !== institutionId
     ) {
       throw new Error(
-        'Vínculo não encontrado nesta instituição.',
+        'Vinculo nao encontrado nesta instituicao.',
       );
     }
 

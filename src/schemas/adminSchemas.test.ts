@@ -187,11 +187,11 @@ describe('unifiedUserInvitePreviewSchema', () => {
     );
   });
 
-  it('mantem papel planejado marcado como bloqueado no modelo', () => {
+  it('aceita secretaria como papel real no modelo', () => {
     const result =
       unifiedUserInvitePreviewSchema.parse({
         ...validUnifiedInvitePreview,
-        target_type: 'SECRETARY_PLANNED',
+        target_type: 'SECRETARY',
         full_name: 'Secretaria Visual',
       });
 
@@ -199,7 +199,7 @@ describe('unifiedUserInvitePreviewSchema', () => {
       getUnifiedUserInviteOption(
         result.target_type,
       ).isPlanned,
-    ).toBe(true);
+    ).toBe(false);
   });
 
   it('nao cria payload de banco', () => {
