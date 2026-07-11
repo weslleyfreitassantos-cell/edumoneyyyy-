@@ -64,6 +64,11 @@ Legenda:
 - [x] Migrations locais versionadas.
 - [!] `supabase_migrations.schema_migrations` ausente/null no remoto.
 - [x] Auditoria read-only remota executada manualmente.
+- [!] Runbook e matriz de reconciliacao criados em
+  [`database-baseline-reconciliation-runbook.md`](database-baseline-reconciliation-runbook.md)
+  e
+  [`database-schema-reconciliation-matrix.md`](database-schema-reconciliation-matrix.md);
+  execucao real ainda depende de staging.
 - [!] `assessments`, `grades`, `attendance_sessions` e
   `attendance_records` ausentes no remoto.
 - [!] Backup externo pendente antes de qualquer escrita.
@@ -107,7 +112,8 @@ Legenda:
 ## 12. Deploy
 
 - [ ] Plano de deploy frontend.
-- [ ] Ambiente staging.
+- [ ] Ambiente staging validado com
+  [`staging-database-validation-checklist.md`](staging-database-validation-checklist.md).
 - [!] Deploy de Edge Functions futuras bloqueado.
 - [!] Qualquer deploy com escrita real depende de auditoria de banco.
 

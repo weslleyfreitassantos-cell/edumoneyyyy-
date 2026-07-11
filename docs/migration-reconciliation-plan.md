@@ -44,6 +44,13 @@ aceitavel para ambiente remoto com dados reais ou de homologacao.
    - `20260710000400_attendance_and_grades_integrity.sql`
 4. Registrar divergencias em documento externo.
 
+O runbook detalhado esta em
+[`database-baseline-reconciliation-runbook.md`](database-baseline-reconciliation-runbook.md).
+A matriz objeto a objeto esta em
+[`database-schema-reconciliation-matrix.md`](database-schema-reconciliation-matrix.md).
+O checklist de staging esta em
+[`staging-database-validation-checklist.md`](staging-database-validation-checklist.md).
+
 ## Identificar migrations ja aplicadas manualmente
 
 - Procurar objetos iguais aos das migrations locais.
