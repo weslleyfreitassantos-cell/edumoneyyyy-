@@ -396,12 +396,11 @@ export default {
       const reusedExistingUser = Boolean(existingProfile);
 
       if (!existingProfile) {
-        const appUrl = getAppUrl();
         const { data: invitationData, error: invitationError } = await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
           input.email,
           {
             data: { full_name: input.fullName, role: input.role },
-            redirectTo: appUrl,
+            redirectTo: getAppUrl() + '/auth/confirm',
           }
         );
 
