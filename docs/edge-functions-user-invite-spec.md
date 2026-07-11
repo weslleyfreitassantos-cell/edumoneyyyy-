@@ -81,7 +81,8 @@ Erro:
 
 ## Dependencias para deploy futuro
 
-- Validar `APP_URL` e redirect `/set-password` no ambiente alvo.
+- Validar `APP_URL`.
+- Configurar no Supabase o template de "Invite User" usando estritamente a URL da rota autenticadora: `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=invite`. Nunca redirecionar direto para `/set-password` no template para evitar falhas de contexto de sessão.
 - Validar SMTP/Auth invite no projeto de staging.
 - Reconciliar migrations e RLS antes de habilitar em producao.
 - Executar testes de staging sem aplicar migrations remotamente a partir desta
