@@ -638,6 +638,12 @@ O banco remoto já possuía tabelas e alterações aplicadas antes da criação 
 migration baseline. Aplicar a baseline diretamente pode tentar recriar objetos
 existentes ou produzir um histórico inconsistente.
 
+Existe um candidato documental de hardening de RLS em
+`docs/migration-candidates/001-rls-active-membership-hardening.md` e
+`docs/migration-candidates/001-rls-active-membership-hardening.sql`. Ele ainda
+nao e migration real e nao deve ser aplicado sem reconciliacao e teste em
+staging.
+
 A sequência segura é:
 
 1. gerar um inventário do schema remoto;

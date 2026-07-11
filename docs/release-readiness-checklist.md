@@ -72,6 +72,11 @@ Legenda:
 
 - [x] RLS ativo nas tabelas publicas auditadas, com `force_rls = false`.
 - [!] Policies/funcoes precisam de hardening para `membership.active is true`.
+- [!] Candidato documental de hardening criado em
+  [`migration-candidates/001-rls-active-membership-hardening.md`](migration-candidates/001-rls-active-membership-hardening.md)
+  e
+  [`migration-candidates/001-rls-active-membership-hardening.sql`](migration-candidates/001-rls-active-membership-hardening.sql);
+  ainda nao e migration real.
 - [x] Migrations locais de RLS para notas/frequencia existem.
 - [!] Isolamento entre instituicoes precisa de teste remoto.
 

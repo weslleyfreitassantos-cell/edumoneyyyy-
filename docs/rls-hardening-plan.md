@@ -28,6 +28,15 @@ A policy de `subject_offerings` já filtra membership ativa.
 
 Avaliar revogar `EXECUTE` de `anon` nas funções booleanas, mantendo `authenticated` e `service_role`, desde que não quebre RLS.
 
+## Candidato documental
+
+O primeiro candidato revisavel esta documentado em
+[`migration-candidates/001-rls-active-membership-hardening.md`](migration-candidates/001-rls-active-membership-hardening.md),
+com SQL em
+[`migration-candidates/001-rls-active-membership-hardening.sql`](migration-candidates/001-rls-active-membership-hardening.sql).
+Ele ainda nao e migration real e nao deve ser aplicado sem reconciliacao,
+baseline e teste em staging.
+
 ## Testes antes/depois
 
 - Usuário ativo vê dados.
