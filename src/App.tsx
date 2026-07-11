@@ -54,6 +54,10 @@ const SetPassword = lazy(
   () => import('./pages/SetPassword'),
 );
 
+const AuthConfirm = lazy(
+  () => import('./pages/AuthConfirm'),
+);
+
 const Unauthorized = lazy(() =>
   import('./pages/Unauthorized').then(
     (module) => ({
@@ -436,6 +440,11 @@ function AppRoutes() {
       <Route
         path="/login"
         element={<Login />}
+      />
+
+      <Route
+        path="/auth/confirm"
+        element={<AuthConfirm />}
       />
 
       <Route

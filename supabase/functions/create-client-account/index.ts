@@ -252,6 +252,8 @@ async function createOrReuseOwnerProfile(
     };
   }
 
+  const inviteRedirectUrl = `${getAppUrl()}/auth/confirm`;
+
   const { data: invitationData, error: invitationError } =
     await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
       input.adminEmail,
@@ -260,7 +262,7 @@ async function createOrReuseOwnerProfile(
           full_name: input.adminFullName,
           role: "ADMIN",
         },
-        redirectTo: `${getAppUrl()}/set-password`,
+        redirectTo: inviteRedirectUrl,
       },
     );
 
