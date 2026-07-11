@@ -69,6 +69,13 @@ equivalente no remoto. Exige checklist e aprovacao explicita.
 Usar quando o remoto esta reconciliado e a mudanca futura e pequena, testada e
 aplicavel por ambiente.
 
+Um primeiro candidato documental para hardening de RLS esta em
+[`migration-candidates/001-rls-active-membership-hardening.md`](migration-candidates/001-rls-active-membership-hardening.md),
+com SQL revisavel em
+[`migration-candidates/001-rls-active-membership-hardening.sql`](migration-candidates/001-rls-active-membership-hardening.sql).
+Ele nao esta em `supabase/migrations` e nao deve ser aplicado antes da
+reconciliacao, baseline e validacao em staging.
+
 ### Ambiente staging
 
 Obrigatorio antes de ativar convites reais, novos roles ou escritas sensiveis.
