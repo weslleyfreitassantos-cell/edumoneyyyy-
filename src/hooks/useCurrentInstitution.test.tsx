@@ -41,7 +41,11 @@ function mockInstitutionContext(
           id: 'institution-1',
           name: 'Escola Centro',
           active: true,
+          account_id: null,
         },
+        account: null,
+        accessSource: 'legacy_admin_membership',
+        effectiveRole: 'ADMIN',
       },
       {
         membership: {
@@ -54,13 +58,18 @@ function mockInstitutionContext(
           id: 'institution-2',
           name: 'Escola Norte',
           active: true,
+          account_id: 'account-1',
         },
+        account: null,
+        accessSource: 'membership',
+        effectiveRole: 'DIRECTOR',
       },
     ],
     currentInstitution: {
       id: 'institution-2',
       name: 'Escola Norte',
       active: true,
+      account_id: 'account-1',
     },
     currentMembership: {
       id: 'membership-2',

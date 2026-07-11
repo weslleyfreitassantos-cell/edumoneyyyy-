@@ -245,7 +245,7 @@ describe('UnifiedUserInvitePreview', () => {
     });
   });
 
-  it('mantem roles planejadas desabilitadas', () => {
+  it('habilita secretaria como role real para ADMIN', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -258,10 +258,10 @@ describe('UnifiedUserInvitePreview', () => {
           name: /Secret/,
         })
         .hasAttribute('disabled'),
-    ).toBe(true);
+    ).toBe(false);
   });
 
-  it('bloqueia envio visual de DIRECTOR por DIRECTOR', () => {
+  it('oculta DIRECTOR para diretor', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -269,39 +269,46 @@ describe('UnifiedUserInvitePreview', () => {
       />,
     );
 
-    fireEvent.click(
-      screen.getByRole('button', {
+    expect(
+      screen.queryByRole('button', {
         name: /Diretor/,
       }),
-    );
-    fireEvent.change(
-      screen.getByLabelText(/Nome completo/),
-      {
-        target: {
-          value: 'Diretor Novo',
-        },
-      },
-    );
-    fireEvent.change(
-      screen.getByLabelText(/E-mail/),
-      {
-        target: {
-          value: 'diretor@escola.com',
-        },
-      },
+    ).toBeNull();
+    expect(
+      screen.getByRole('button', {
+        name: /Secret/,
+      }),
+    ).toBeTruthy();
+  });
+
+  it('limita secretaria a aluno e responsavel', () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        currentRole="SECRETARY"
+      />,
     );
 
     expect(
-      screen
-        .getByRole('button', {
-          name: /Enviar convite/,
-        })
-        .hasAttribute('disabled'),
-    ).toBe(true);
+      screen.queryByRole('button', {
+        name: /Professor/,
+      }),
+    ).toBeNull();
     expect(
-      screen.getAllByText(/Somente ADMIN/)
-        .length,
-    ).toBeGreaterThan(0);
+      screen.queryByRole('button', {
+        name: /Diretor/,
+      }),
+    ).toBeNull();
+    expect(
+      screen.getByRole('button', {
+        name: /Aluno/,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /Respons/,
+      }),
+    ).toBeTruthy();
   });
 
   it('nao chama Supabase direto no componente', () => {
