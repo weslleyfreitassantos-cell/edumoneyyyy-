@@ -13,7 +13,7 @@ import type {
   TeacherFormData,
 } from '../schemas/adminSchemas';
 
-const teacherKeys = {
+export const teacherKeys = {
   all: ['teachers'] as const,
 
   list: (institutionId: string) =>

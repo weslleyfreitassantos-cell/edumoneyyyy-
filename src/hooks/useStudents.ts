@@ -14,7 +14,7 @@ import type {
   StudentUpdateData,
 } from '../schemas/adminSchemas';
 
-const studentKeys = {
+export const studentKeys = {
   all: ['students'] as const,
 
   list: (institutionId: string) =>
