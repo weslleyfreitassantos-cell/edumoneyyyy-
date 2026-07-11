@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { render, screen, waitFor, cleanup } from "@testing-library/react";
-import { MemoryRouter, useNavigate, useSearchParams } from "react-router-dom";
+import { MemoryRouter, useNavigate } from "react-router-dom";
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import AuthConfirm from "./AuthConfirm";
 import { supabase } from "../lib/supabaseClient";
@@ -10,7 +10,6 @@ vi.mock("react-router-dom", async () => {
   return {
     ...actual,
     useNavigate: vi.fn(),
-    useSearchParams: vi.fn(),
   };
 });
 
@@ -18,7 +17,7 @@ vi.mock("../lib/supabaseClient", () => ({
   supabase: {
     auth: {
       signOut: vi.fn(),
-      verifyOtp: vi.fn(),
+      setSession: vi.fn(),
       getUser: vi.fn(),
     },
   },
@@ -26,19 +25,29 @@ vi.mock("../lib/supabaseClient", () => ({
 
 describe("AuthConfirm", () => {
   const mockNavigate = vi.fn();
+  const originalLocation = window.location;
 
   beforeEach(() => {
     vi.clearAllMocks();
     (useNavigate as any).mockReturnValue(mockNavigate);
     sessionStorage.clear();
+
+    delete window.location;
+    // @ts-expect-error Override for tests
+    window.location = { ...originalLocation, hash: '', pathname: '/auth/confirm', search: '' };
+
+    // Mock replaceState
+    window.history.replaceState = vi.fn();
   });
 
   afterEach(() => {
     cleanup();
+    // @ts-expect-error Restore original
+    window.location = originalLocation;
   });
 
-  it("should show error if token_hash is missing", async () => {
-    (useSearchParams as any).mockReturnValue([new URLSearchParams()]);
+  it("should show error if tokens are missing", async () => {
+    window.location.hash = "";
 
     render(
       <MemoryRouter>
@@ -51,13 +60,25 @@ describe("AuthConfirm", () => {
     });
   });
 
-  it("should clear session and verify otp", async () => {
-    (useSearchParams as any).mockReturnValue([
-      new URLSearchParams("?token_hash=abc123&type=invite"),
-    ]);
+  it("should show error if type is not invite", async () => {
+    window.location.hash = "#access_token=123&refresh_token=456&type=recovery";
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText("Tipo de confirmação inválido.")).toBeDefined();
+    });
+  });
+
+  it("should clear session and set new session with valid tokens", async () => {
+    window.location.hash = "#access_token=acc123&refresh_token=ref456&type=invite";
 
     (supabase.auth.signOut as any).mockResolvedValue({});
-    (supabase.auth.verifyOtp as any).mockResolvedValue({ error: null });
+    (supabase.auth.setSession as any).mockResolvedValue({ error: null });
     (supabase.auth.getUser as any).mockResolvedValue({
       data: { user: { id: "user-123", email: "test@example.com" } },
       error: null,
@@ -71,22 +92,21 @@ describe("AuthConfirm", () => {
 
     await waitFor(() => {
       expect(supabase.auth.signOut).toHaveBeenCalledWith({ scope: "local" });
-      expect(supabase.auth.verifyOtp).toHaveBeenCalledWith({
-        token_hash: "abc123",
-        type: "invite",
+      expect(supabase.auth.setSession).toHaveBeenCalledWith({
+        access_token: "acc123",
+        refresh_token: "ref456",
       });
       expect(sessionStorage.getItem("invite_context")).toBeTruthy();
       expect(mockNavigate).toHaveBeenCalledWith("/set-password", { replace: true });
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
     });
   });
 
-  it("should handle verifyOtp error", async () => {
-    (useSearchParams as any).mockReturnValue([
-      new URLSearchParams("?token_hash=abc123&type=invite"),
-    ]);
+  it("should handle setSession error", async () => {
+    window.location.hash = "#access_token=acc123&refresh_token=ref456&type=invite";
 
     (supabase.auth.signOut as any).mockResolvedValue({});
-    (supabase.auth.verifyOtp as any).mockResolvedValue({
+    (supabase.auth.setSession as any).mockResolvedValue({
       error: { message: "Token expired" },
     });
 

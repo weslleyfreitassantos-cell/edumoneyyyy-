@@ -39,7 +39,6 @@ export function clearInviteContext(): void {
 }
 
 export default function AuthConfirm() {
-  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const processingRef = useRef(false);
 
@@ -52,10 +51,12 @@ export default function AuthConfirm() {
 
     async function confirmInvite() {
       try {
-        const tokenHash = searchParams.get('token_hash');
-        const type = searchParams.get('type');
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const accessToken = hashParams.get('access_token');
+        const refreshToken = hashParams.get('refresh_token');
+        const type = hashParams.get('type');
 
-        if (!tokenHash) {
+        if (!accessToken || !refreshToken) {
           throw new Error('Link de convite inválido ou ausente.');
         }
 
@@ -68,12 +69,12 @@ export default function AuthConfirm() {
         // Expel local session before verifying
         await supabase.auth.signOut({ scope: 'local' });
 
-        const { error: verifyError } = await supabase.auth.verifyOtp({
-          token_hash: tokenHash,
-          type: 'invite',
+        const { error: sessionError } = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
         });
 
-        if (verifyError) {
+        if (sessionError) {
           throw new Error('Convite inválido, expirado ou já utilizado.');
         }
 
@@ -93,6 +94,9 @@ export default function AuthConfirm() {
           purpose: 'invite',
         });
 
+        // Clear tokens from the address bar securely
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+
         navigate('/set-password', { replace: true });
       } catch (err) {
         // Expel any bad state again
@@ -110,7 +114,7 @@ export default function AuthConfirm() {
     }
 
     void confirmInvite();
-  }, [searchParams, navigate]);
+  }, [navigate]);
 
   if (isProcessing) {
     return (
