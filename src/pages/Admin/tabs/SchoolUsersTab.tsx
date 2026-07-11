@@ -436,10 +436,25 @@ export default function SchoolUsersTab() {
       permission: 'manage_school_users',
     });
 
-  const newUserDisabledTitle =
-    canManageSchoolUsers
-      ? 'O cadastro unificado de usuários será habilitado após a reconciliação das migrations, criação dos novos papéis e homologação do fluxo de convite/senha.'
-      : 'Seu papel efetivo nesta instituição ainda não permite gerenciar usuários da escola.';
+  const canOpenNewUserForm =
+    canManageSchoolUsers &&
+    Boolean(institutionId);
+
+  const newUserTitle =
+    canOpenNewUserForm
+      ? 'Abrir cadastro unificado de usuarios.'
+      : 'Seu papel efetivo nesta instituicao ainda nao permite gerenciar usuarios da escola.';
+
+  function focusUnifiedInviteForm(): void {
+    document
+      .getElementById(
+        'unified-user-invite-preview',
+      )
+      ?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+  }
 
   if (institutionQuery.isLoading) {
     return (
@@ -479,10 +494,15 @@ export default function SchoolUsersTab() {
           <div className="lg:max-w-sm lg:text-right">
             <button
               type="button"
-              disabled
-              title={newUserDisabledTitle}
+              disabled={!canOpenNewUserForm}
+              title={newUserTitle}
               aria-describedby="new-user-disabled-help"
-              className="inline-flex cursor-not-allowed items-center gap-2 rounded-lg bg-gray-200 px-4 py-2 text-sm font-semibold text-gray-500"
+              onClick={focusUnifiedInviteForm}
+              className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+                canOpenNewUserForm
+                  ? 'bg-[#005bbf] text-white hover:bg-[#004a9f]'
+                  : 'cursor-not-allowed bg-gray-200 text-gray-500'
+              }`}
             >
               <PlusCircle
                 className="h-4 w-4"
@@ -495,13 +515,14 @@ export default function SchoolUsersTab() {
               id="new-user-disabled-help"
               className="mt-2 text-xs leading-relaxed text-[#727785]"
             >
-              O cadastro unificado de usuários será habilitado após a reconciliação das migrations, criação dos novos papéis e homologação do fluxo de convite/senha.
+              Use o cadastro unificado abaixo para convidar diretores, professores, alunos e responsaveis.
             </p>
           </div>
         </div>
       </section>
 
       <UnifiedUserInvitePreview
+        institutionId={institutionId}
         currentRole={
           institutionQuery.currentRole
         }
