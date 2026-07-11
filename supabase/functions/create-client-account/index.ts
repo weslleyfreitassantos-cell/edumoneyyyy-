@@ -260,7 +260,7 @@ async function createOrReuseOwnerProfile(
           full_name: input.adminFullName,
           role: "ADMIN",
         },
-        redirectTo: `${getAppUrl()}/set-password`,
+        redirectTo: getAppUrl(),
       },
     );
 
