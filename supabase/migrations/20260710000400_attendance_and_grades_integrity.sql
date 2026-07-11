@@ -1,4 +1,4 @@
-﻿-- Regras de integridade entre avaliações, notas, frequência e matrículas.
+-- Regras de integridade entre avaliações, notas, frequência e matrículas.
 --
 -- Pré-requisitos:
 --   20260710000200_attendance_and_grades.sql
