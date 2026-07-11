@@ -47,8 +47,17 @@ type UserRole =
 
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  | "DIRECTOR"
+  | "SECRETARY"
+  | "TEACHER"
+  | "STUDENT"
+  | "GUARDIAN"
 >;
+
+type RequesterInviteRole =
+  | "ADMIN"
+  | "DIRECTOR"
+  | "SECRETARY";
 
 interface ExistingProfile {
   id: string;
@@ -61,6 +70,18 @@ interface ExistingMembership {
   id: string;
   role: UserRole;
   active: boolean | null;
+}
+
+interface InstitutionRecord {
+  id: string;
+  active: boolean | null;
+  account_id: string | null;
+}
+
+interface AccountRecord {
+  id: string;
+  owner_profile_id: string;
+  status: string;
 }
 
 interface ExistingGuardianship {
@@ -92,6 +113,7 @@ interface RollbackState {
 
 const targetRoleSchema = z.enum([
   "DIRECTOR",
+  "SECRETARY",
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
@@ -375,6 +397,43 @@ function toPublicError(
   });
 }
 
+function getAllowedInviteRoles(
+  requesterRole: RequesterInviteRole,
+): TargetRole[] {
+  if (requesterRole === "ADMIN") {
+    return [
+      "DIRECTOR",
+      "SECRETARY",
+      "TEACHER",
+      "STUDENT",
+      "GUARDIAN",
+    ];
+  }
+
+  if (requesterRole === "DIRECTOR") {
+    return [
+      "SECRETARY",
+      "TEACHER",
+      "STUDENT",
+      "GUARDIAN",
+    ];
+  }
+
+  return [
+    "STUDENT",
+    "GUARDIAN",
+  ];
+}
+
+function canRequesterInviteRole(
+  requesterRole: RequesterInviteRole,
+  targetRole: TargetRole,
+): boolean {
+  return getAllowedInviteRoles(requesterRole).includes(
+    targetRole,
+  );
+}
+
 export default {
   fetch: withSupabase<Database>(
     {
@@ -450,7 +509,7 @@ export default {
           error: institutionError,
         } = await ctx.supabaseAdmin
           .from("institutions")
-          .select("id, active")
+          .select("id, active, account_id")
           .eq("id", input.institutionId)
           .maybeSingle();
 
@@ -458,9 +517,12 @@ export default {
           throw institutionError;
         }
 
+        const activeInstitution =
+          institution as InstitutionRecord | null;
+
         if (
-          !institution ||
-          institution.active !== true
+          !activeInstitution ||
+          activeInstitution.active !== true
         ) {
           throw new InviteError({
             status: 404,
@@ -472,6 +534,46 @@ export default {
                 "Selecione uma instituicao ativa.",
             },
           });
+        }
+
+        let account: AccountRecord | null = null;
+
+        if (activeInstitution.account_id) {
+          const {
+            data: accountData,
+            error: accountError,
+          } = await ctx.supabaseAdmin
+            .from("accounts")
+            .select("id, owner_profile_id, status")
+            .eq(
+              "id",
+              activeInstitution.account_id,
+            )
+            .maybeSingle();
+
+          if (accountError) {
+            throw accountError;
+          }
+
+          account = accountData as AccountRecord | null;
+
+          if (!account) {
+            throw new InviteError({
+              status: 404,
+              code: "ACCOUNT_NOT_FOUND",
+              message:
+                "Conta da instituicao nao encontrada.",
+            });
+          }
+
+          if (account.status !== "ACTIVE") {
+            throw new InviteError({
+              status: 409,
+              code: "ACCOUNT_NOT_ACTIVE",
+              message:
+                "Conta suspensa ou cancelada nao permite convites.",
+            });
+          }
         }
 
         const {
@@ -490,38 +592,63 @@ export default {
           throw requesterMembershipError;
         }
 
-        const activeRequesterMembership = (
+        const activeMemberships = (
           requesterMembershipRows ?? []
-        ).find(
+        ).filter(
           (membership) =>
-            membership.active === true &&
-            (membership.role === "ADMIN" ||
-              membership.role ===
-                "DIRECTOR"),
+            membership.active === true,
         );
 
-        if (!activeRequesterMembership) {
+        const isAccountOwner =
+          account?.owner_profile_id === user.id;
+
+        const legacyAdminMembership =
+          activeInstitution.account_id === null
+            ? activeMemberships.find(
+                (membership) =>
+                  membership.role === "ADMIN",
+              )
+            : null;
+
+        const directorMembership =
+          activeMemberships.find(
+            (membership) =>
+              membership.role === "DIRECTOR",
+          );
+
+        const secretaryMembership =
+          activeMemberships.find(
+            (membership) =>
+              membership.role === "SECRETARY",
+          );
+
+        const requesterRole: RequesterInviteRole | null =
+          isAccountOwner || legacyAdminMembership
+            ? "ADMIN"
+            : directorMembership
+              ? "DIRECTOR"
+              : secretaryMembership
+                ? "SECRETARY"
+                : null;
+
+        if (!requesterRole) {
           throw new InviteError({
             status: 403,
             code: "INSUFFICIENT_PERMISSION",
             message:
-              "Voce precisa de membership ADMIN ou DIRECTOR ativa nesta escola.",
+              "Seu papel atual nao permite convidar usuarios nesta escola.",
           });
         }
 
-        if (
-          input.role === "DIRECTOR" &&
-          activeRequesterMembership.role !==
-            "ADMIN"
-        ) {
+        if (!canRequesterInviteRole(requesterRole, input.role)) {
           throw new InviteError({
             status: 403,
-            code: "DIRECTOR_INVITE_REQUIRES_ADMIN",
+            code: "TARGET_ROLE_NOT_ALLOWED",
             message:
-              "Somente ADMIN ativo pode convidar outro diretor.",
+              "Seu papel atual nao permite convidar este tipo de usuario.",
             fieldErrors: {
               target:
-                "Somente ADMIN ativo pode convidar diretor.",
+                "Escolha um papel permitido para seu acesso.",
             },
           });
         }
@@ -668,7 +795,17 @@ export default {
               membership.active === true,
           );
 
-        if (activeDuplicateMembership) {
+        let existingActiveGuardianMembershipId:
+          | string
+          | null = null;
+
+        if (
+          activeDuplicateMembership &&
+          input.role === "GUARDIAN"
+        ) {
+          existingActiveGuardianMembershipId =
+            activeDuplicateMembership.id;
+        } else if (activeDuplicateMembership) {
           throw new InviteError({
             status: 409,
             code: "MEMBERSHIP_ALREADY_ACTIVE",
@@ -728,6 +865,7 @@ export default {
                     input.fullName,
                   email: input.email,
                   role: input.role,
+                  platform_role: "USER",
                   avatar_url: null,
                   active: true,
                 },
@@ -742,8 +880,22 @@ export default {
         }
 
         let membershipId: string;
+        let studentResult:
+          | {
+              id: string;
+              registrationNumber: string;
+            }
+          | undefined;
+        let guardianshipResult:
+          | {
+              id: string;
+            }
+          | undefined;
 
-        if (inactiveMemberships[0]) {
+        if (existingActiveGuardianMembershipId) {
+          membershipId =
+            existingActiveGuardianMembershipId;
+        } else if (inactiveMemberships[0]) {
           rollback.reactivatedMembership =
             inactiveMemberships[0];
           membershipId =
@@ -880,6 +1032,11 @@ export default {
 
           rollback.createdStudentId =
             createdStudent.id;
+          studentResult = {
+            id: createdStudent.id,
+            registrationNumber:
+              createdStudent.registration_number,
+          };
         }
 
         if (input.role === "GUARDIAN") {
@@ -987,6 +1144,9 @@ export default {
           if (inactiveGuardianships[0]) {
             rollback.reactivatedGuardianship =
               inactiveGuardianships[0];
+            guardianshipResult = {
+              id: inactiveGuardianships[0].id,
+            };
 
             const {
               error: guardianshipUpdateError,
@@ -1039,6 +1199,9 @@ export default {
 
             rollback.createdGuardianshipId =
               createdGuardianship.id;
+            guardianshipResult = {
+              id: createdGuardianship.id,
+            };
           }
         }
 
@@ -1050,6 +1213,12 @@ export default {
             membershipId,
             role: input.role,
             email: input.email,
+            ...(studentResult
+              ? { student: studentResult }
+              : {}),
+            ...(guardianshipResult
+              ? { guardianship: guardianshipResult }
+              : {}),
             invitationSent,
             reusedExistingUser,
             message: invitationSent
