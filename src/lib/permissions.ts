@@ -1,8 +1,17 @@
-import type { DatabaseRole } from './roles';
+import type {
+  DatabaseRole,
+  PlatformRole,
+} from './roles';
+
+export const PLATFORM_ROLES = [
+  'USER',
+  'SUPER_ADMIN',
+] as const satisfies readonly PlatformRole[];
 
 export const CURRENT_DATABASE_ROLES = [
   'ADMIN',
   'DIRECTOR',
+  'SECRETARY',
   'TEACHER',
   'STUDENT',
   'GUARDIAN',
@@ -11,29 +20,38 @@ export const CURRENT_DATABASE_ROLES = [
 export type CurrentDatabaseRole =
   (typeof CURRENT_DATABASE_ROLES)[number];
 
+export type LegacyDatabaseRole = Extract<
+  CurrentDatabaseRole,
+  'ADMIN'
+>;
+
+export type InstitutionRole = Exclude<
+  CurrentDatabaseRole,
+  LegacyDatabaseRole
+>;
+
+export type AccountStatus =
+  | 'ACTIVE'
+  | 'SUSPENDED'
+  | 'CANCELED';
+
+export type EffectiveRole = CurrentDatabaseRole;
+
 type EffectiveRoleInput =
   | string
   | CurrentDatabaseRole
   | null
   | undefined;
 
-export const FUTURE_PLATFORM_ROLES = [
-  'SUPER_ADMIN',
-] as const;
-
-export type FuturePlatformRole =
-  (typeof FUTURE_PLATFORM_ROLES)[number];
-
-export const FUTURE_SCHOOL_ROLES = [
-  'SCHOOL_ADMIN',
-  'SECRETARY',
-] as const;
-
-export type FutureSchoolRole =
-  (typeof FUTURE_SCHOOL_ROLES)[number];
-
 export const SYSTEM_PERMISSIONS = [
-  'create_school',
+  'view_platform_dashboard',
+  'manage_accounts',
+  'manage_account_limits',
+  'suspend_accounts',
+  'view_all_institutions',
+  'create_institution',
+  'view_account_dashboard',
+  'manage_owned_institutions',
   'manage_school',
   'manage_school_users',
   'manage_students',
@@ -52,7 +70,16 @@ export const SYSTEM_PERMISSIONS = [
 export type SystemPermission =
   (typeof SYSTEM_PERMISSIONS)[number];
 
-const ADMIN_COMPATIBLE_PERMISSIONS = [
+const ADMIN_PERMISSIONS = [
+  'create_institution',
+  'view_account_dashboard',
+  'manage_owned_institutions',
+  'manage_school_users',
+  'view_school_dashboard',
+  'view_reports',
+] as const satisfies readonly SystemPermission[];
+
+const DIRECTOR_PERMISSIONS = [
   'manage_school',
   'manage_school_users',
   'manage_students',
@@ -66,11 +93,18 @@ const ADMIN_COMPATIBLE_PERMISSIONS = [
 ] as const satisfies readonly SystemPermission[];
 
 export const CURRENT_ROLE_PERMISSIONS = {
-  ADMIN: ADMIN_COMPATIBLE_PERMISSIONS,
+  ADMIN: ADMIN_PERMISSIONS,
 
-  // TODO: when SCHOOL_ADMIN exists, DIRECTOR should keep fewer permissions
-  // than school administration while preserving pedagogical oversight.
-  DIRECTOR: ADMIN_COMPATIBLE_PERMISSIONS,
+  DIRECTOR: DIRECTOR_PERMISSIONS,
+
+  SECRETARY: [
+    'manage_school_users',
+    'manage_students',
+    'manage_guardians',
+    'manage_teachers',
+    'manage_enrollments',
+    'view_school_dashboard',
+  ],
 
   TEACHER: [
     'view_own_classes',
@@ -88,7 +122,24 @@ export const CURRENT_ROLE_PERMISSIONS = {
   readonly SystemPermission[]
 >;
 
+export const PLATFORM_ROLE_PERMISSIONS: Record<
+  PlatformRole,
+  readonly SystemPermission[]
+> = {
+  SUPER_ADMIN: [
+    'view_platform_dashboard',
+    'manage_accounts',
+    'manage_account_limits',
+    'suspend_accounts',
+    'view_all_institutions',
+  ],
+  USER: [],
+};
+
 export interface EffectiveRoleSource {
+  platformRole?: PlatformRole | string | null;
+  isAccountOwner?: boolean;
+  accountStatus?: AccountStatus | string | null;
   membershipRole?: EffectiveRoleInput;
   profileRole?: EffectiveRoleInput;
 }
@@ -103,55 +154,6 @@ export interface EffectivePermissionsCheck
   permissions: readonly SystemPermission[];
 }
 
-export interface FutureRolePlan {
-  scope: 'platform' | 'school';
-  description: string;
-  plannedPermissions: readonly SystemPermission[];
-  storagePlan: string;
-}
-
-export const FUTURE_ROLE_PLAN = {
-  SUPER_ADMIN: {
-    scope: 'platform',
-    description:
-      'Administra a plataforma e cria escolas, sem representar um vinculo escolar comum.',
-    plannedPermissions: [
-      'create_school',
-      'view_reports',
-    ],
-    storagePlan:
-      'Deve viver em profiles.platform_role quando a plataforma separar papeis globais.',
-  },
-
-  SCHOOL_ADMIN: {
-    scope: 'school',
-    description:
-      'Administra usuarios, estrutura e operacao interna de uma escola.',
-    plannedPermissions: ADMIN_COMPATIBLE_PERMISSIONS,
-    storagePlan:
-      'Deve viver em memberships.role quando os novos papeis escolares forem migrados.',
-  },
-
-  SECRETARY: {
-    scope: 'school',
-    description:
-      'Opera cadastros escolares, alunos, responsaveis e matriculas dentro da propria escola.',
-    plannedPermissions: [
-      'manage_school_users',
-      'manage_students',
-      'manage_guardians',
-      'manage_teachers',
-      'manage_enrollments',
-      'view_school_dashboard',
-    ],
-    storagePlan:
-      'Deve viver em memberships.role depois da reconciliacao das migrations e das Edge Functions.',
-  },
-} as const satisfies Record<
-  FuturePlatformRole | FutureSchoolRole,
-  FutureRolePlan
->;
-
 export function isCurrentDatabaseRole(
   role: unknown,
 ): role is CurrentDatabaseRole {
@@ -163,10 +165,37 @@ export function isCurrentDatabaseRole(
   );
 }
 
+export function isInstitutionRole(
+  role: unknown,
+): role is InstitutionRole {
+  return (
+    isCurrentDatabaseRole(role) &&
+    role !== 'ADMIN'
+  );
+}
+
+export function isPlatformSuperAdmin(
+  platformRole: unknown,
+): platformRole is 'SUPER_ADMIN' {
+  return platformRole === 'SUPER_ADMIN';
+}
+
 export function getEffectiveRole({
+  isAccountOwner,
+  accountStatus,
   membershipRole,
   profileRole,
-}: EffectiveRoleSource): CurrentDatabaseRole | null {
+}: EffectiveRoleSource): EffectiveRole | null {
+
+  if (
+    isAccountOwner === true &&
+    (accountStatus === undefined ||
+      accountStatus === null ||
+      accountStatus === 'ACTIVE')
+  ) {
+    return 'ADMIN';
+  }
+
   if (isCurrentDatabaseRole(membershipRole)) {
     return membershipRole;
   }
@@ -179,116 +208,130 @@ export function getEffectiveRole({
 }
 
 export function hasPermission(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
   permission: SystemPermission,
 ): boolean {
-  const permissions: readonly SystemPermission[] =
-    CURRENT_ROLE_PERMISSIONS[role];
+  if (isPlatformSuperAdmin(platformRole)) {
+    const allowedPermissions: readonly SystemPermission[] =
+      PLATFORM_ROLE_PERMISSIONS.SUPER_ADMIN;
+    return allowedPermissions.includes(permission);
+  }
 
-  return permissions.includes(permission);
+  if (effectiveRole) {
+    const permissions: readonly SystemPermission[] =
+      CURRENT_ROLE_PERMISSIONS[effectiveRole];
+    return permissions.includes(permission);
+  }
+
+  return false;
 }
 
 export function hasEffectivePermission({
+  platformRole,
+  isAccountOwner,
+  accountStatus,
   membershipRole,
   profileRole,
   permission,
 }: EffectivePermissionCheck): boolean {
   const effectiveRole = getEffectiveRole({
+    isAccountOwner,
+    accountStatus,
     membershipRole,
     profileRole,
   });
 
-  if (!effectiveRole) {
-    return false;
-  }
-
-  return hasPermission(effectiveRole, permission);
+  return hasPermission(platformRole, effectiveRole, permission);
 }
 
 export function hasAnyPermission(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
   permissions: readonly SystemPermission[],
 ): boolean {
   return permissions.some((permission) =>
-    hasPermission(role, permission),
+    hasPermission(platformRole, effectiveRole, permission),
   );
 }
 
 export function hasAnyEffectivePermission({
+  platformRole,
+  isAccountOwner,
+  accountStatus,
   membershipRole,
   profileRole,
   permissions,
 }: EffectivePermissionsCheck): boolean {
   const effectiveRole = getEffectiveRole({
+    isAccountOwner,
+    accountStatus,
     membershipRole,
     profileRole,
   });
 
-  if (!effectiveRole) {
-    return false;
-  }
-
-  return hasAnyPermission(effectiveRole, permissions);
+  return hasAnyPermission(platformRole, effectiveRole, permissions);
 }
 
 export function hasAllPermissions(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
   permissions: readonly SystemPermission[],
 ): boolean {
   return permissions.every((permission) =>
-    hasPermission(role, permission),
+    hasPermission(platformRole, effectiveRole, permission),
   );
 }
 
 export function hasAllEffectivePermissions({
+  platformRole,
+  isAccountOwner,
+  accountStatus,
   membershipRole,
   profileRole,
   permissions,
 }: EffectivePermissionsCheck): boolean {
   const effectiveRole = getEffectiveRole({
+    isAccountOwner,
+    accountStatus,
     membershipRole,
     profileRole,
   });
 
-  if (!effectiveRole) {
-    return false;
-  }
-
-  return hasAllPermissions(effectiveRole, permissions);
+  return hasAllPermissions(platformRole, effectiveRole, permissions);
 }
 
 export function canManageSchoolUsers(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
 ): boolean {
-  return hasPermission(
-    role,
-    'manage_school_users',
-  );
+  return hasPermission(platformRole, effectiveRole, 'manage_school_users');
 }
 
 export function canManageStudents(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
 ): boolean {
-  return hasPermission(role, 'manage_students');
+  return hasPermission(platformRole, effectiveRole, 'manage_students');
 }
 
 export function canManageTeachers(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
 ): boolean {
-  return hasPermission(role, 'manage_teachers');
+  return hasPermission(platformRole, effectiveRole, 'manage_teachers');
 }
 
 export function canManageGuardians(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
 ): boolean {
-  return hasPermission(role, 'manage_guardians');
+  return hasPermission(platformRole, effectiveRole, 'manage_guardians');
 }
 
 export function canManageEnrollments(
-  role: CurrentDatabaseRole,
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
 ): boolean {
-  return hasPermission(
-    role,
-    'manage_enrollments',
-  );
+  return hasPermission(platformRole, effectiveRole, 'manage_enrollments');
 }

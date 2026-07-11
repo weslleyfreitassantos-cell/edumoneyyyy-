@@ -1,9 +1,22 @@
 import { supabase } from '../lib/supabaseClient';
 
+import type {
+  AccountStatus,
+  CurrentDatabaseRole,
+} from '../lib/permissions';
+
 export interface InstitutionSummary {
   id: string;
   name: string;
   active: boolean | null;
+  account_id: string | null;
+}
+
+export interface AccountSummary {
+  id: string;
+  name: string;
+  status: AccountStatus;
+  institution_limit: number;
 }
 
 export interface UserInstitutionMembership {
@@ -13,15 +26,35 @@ export interface UserInstitutionMembership {
   active: boolean;
 }
 
+export type UserInstitutionAccessSource =
+  | 'account_owner'
+  | 'membership'
+  | 'legacy_admin_membership';
+
 export interface UserInstitution {
-  membership: UserInstitutionMembership;
+  membership: UserInstitutionMembership | null;
   institution: InstitutionSummary;
+  account: AccountSummary | null;
+  accessSource: UserInstitutionAccessSource;
+  effectiveRole: CurrentDatabaseRole;
 }
 
 interface InstitutionRelation {
   id: string;
   name: string;
   active: boolean | null;
+  account_id: string | null;
+}
+
+interface AccountInstitutionQueryRow {
+  id: string;
+  name: string;
+  status: AccountStatus | string;
+  institution_limit: number | null;
+  institutions:
+    | InstitutionRelation
+    | InstitutionRelation[]
+    | null;
 }
 
 interface MembershipInstitutionQueryRow {
@@ -45,24 +78,129 @@ function normalizeRelation<T>(
   return relation;
 }
 
-function normalizeUserInstitution(
+function normalizeRelationList<T>(
+  relation: T | T[] | null,
+): T[] {
+  if (!relation) {
+    return [];
+  }
+
+  return Array.isArray(relation)
+    ? relation
+    : [relation];
+}
+
+function isAccountStatus(
+  value: string,
+): value is AccountStatus {
+  return [
+    'ACTIVE',
+    'SUSPENDED',
+    'CANCELED',
+  ].includes(value);
+}
+
+function normalizeInstitution(
+  institution: InstitutionRelation | null,
+): InstitutionSummary | null {
+  if (
+    !institution?.id ||
+    !institution.name ||
+    institution.active === false
+  ) {
+    return null;
+  }
+
+  return {
+    id: institution.id,
+    name: institution.name,
+    active: institution.active ?? true,
+    account_id: institution.account_id ?? null,
+  };
+}
+
+function normalizeAccount(
+  row: AccountInstitutionQueryRow,
+): AccountSummary | null {
+  if (!row.id || !row.name) {
+    return null;
+  }
+
+  return {
+    id: row.id,
+    name: row.name,
+    status: isAccountStatus(row.status)
+      ? row.status
+      : 'ACTIVE',
+    institution_limit: row.institution_limit ?? 1,
+  };
+}
+
+function addOwnedInstitutions(
+  output: Map<string, UserInstitution>,
+  row: AccountInstitutionQueryRow,
+): void {
+  const account = normalizeAccount(row);
+
+  if (!account || account.status !== 'ACTIVE') {
+    return;
+  }
+
+  for (const relation of normalizeRelationList(
+    row.institutions,
+  )) {
+    const institution =
+      normalizeInstitution(relation);
+
+    if (!institution) {
+      continue;
+    }
+
+    output.set(institution.id, {
+      membership: null,
+      institution,
+      account,
+      accessSource: 'account_owner',
+      effectiveRole: 'ADMIN',
+    });
+  }
+}
+
+function normalizeMembershipInstitution(
   row: MembershipInstitutionQueryRow,
 ): UserInstitution | null {
-  const institution = normalizeRelation(
-    row.institutions,
+  const institution = normalizeInstitution(
+    normalizeRelation(row.institutions),
   );
 
   if (
     !row.id ||
     !row.institution_id ||
     !row.role ||
-    !institution?.id ||
-    !institution.name
+    row.active === false ||
+    !institution
   ) {
     return null;
   }
 
-  if (row.active === false || institution.active === false) {
+  if (
+    row.role === 'ADMIN' &&
+    institution.account_id !== null
+  ) {
+    return null;
+  }
+
+  const role =
+    row.role === 'ADMIN' ||
+    row.role === 'DIRECTOR' ||
+    row.role === 'SECRETARY' ||
+    row.role === 'TEACHER' ||
+    row.role === 'STUDENT' ||
+    row.role === 'GUARDIAN'
+      ? row.role
+      : null;
+
+  if (!role) {
     return null;
   }
 
@@ -73,12 +211,24 @@ function normalizeUserInstitution(
       role: row.role,
       active: row.active ?? true,
     },
-    institution: {
-      id: institution.id,
-      name: institution.name,
-      active: institution.active ?? true,
-    },
+    institution,
+    account: null,
+    accessSource:
+      row.role === 'ADMIN'
+        ? 'legacy_admin_membership'
+        : 'membership',
+    effectiveRole: role,
   };
+}
+
+function compareInstitutions(
+  first: UserInstitution,
+  second: UserInstitution,
+): number {
+  return first.institution.name.localeCompare(
+    second.institution.name,
+    'pt-BR',
+  );
 }
 
 export const institutionService = {
@@ -89,45 +239,84 @@ export const institutionService = {
       return [];
     }
 
-    const { data, error } = await supabase
-      .from('memberships')
-      .select(
-        `
-        id,
-        institution_id,
-        role,
-        active,
-        institutions:institution_id!inner (
-          id,
-          name,
-          active
-        )
-      `,
-      )
-      .eq('profile_id', profileId)
-      .eq('active', true)
-      .eq('institutions.active', true);
+    const [accountResult, membershipResult] =
+      await Promise.all([
+        supabase
+          .from('accounts')
+          .select(
+            `
+            id,
+            name,
+            status,
+            institution_limit,
+            institutions (
+              id,
+              name,
+              active,
+              account_id
+            )
+          `,
+          )
+          .eq('owner_profile_id', profileId),
 
-    if (error) {
-      throw error;
+        supabase
+          .from('memberships')
+          .select(
+            `
+            id,
+            institution_id,
+            role,
+            active,
+            institutions:institution_id!inner (
+              id,
+              name,
+              active,
+              account_id
+            )
+          `,
+          )
+          .eq('profile_id', profileId)
+          .eq('active', true)
+          .eq('institutions.active', true),
+      ]);
+
+    if (accountResult.error) {
+      throw accountResult.error;
     }
 
-    const rows =
-      (data ?? []) as unknown as MembershipInstitutionQueryRow[];
+    if (membershipResult.error) {
+      throw membershipResult.error;
+    }
 
-    return rows
-      .map(normalizeUserInstitution)
-      .filter(
-        (
-          institution,
-        ): institution is UserInstitution =>
-          Boolean(institution),
-      )
-      .sort((first, second) =>
-        first.institution.name.localeCompare(
-          second.institution.name,
-          'pt-BR',
-        ),
+    const institutions = new Map<
+      string,
+      UserInstitution
+    >();
+
+    for (const row of
+      (accountResult.data ??
+        []) as unknown as AccountInstitutionQueryRow[]) {
+      addOwnedInstitutions(institutions, row);
+    }
+
+    for (const row of
+      (membershipResult.data ??
+        []) as unknown as MembershipInstitutionQueryRow[]) {
+      const item =
+        normalizeMembershipInstitution(row);
+
+      if (!item || institutions.has(item.institution.id)) {
+        continue;
+      }
+
+      institutions.set(
+        item.institution.id,
+        item,
       );
+    }
+
+    return Array.from(institutions.values()).sort(
+      compareInstitutions,
+    );
   },
 };

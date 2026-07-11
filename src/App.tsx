@@ -34,7 +34,10 @@ import { ProtectedRoute } from './components/ProtectedRoute';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
-import { mapDatabaseRole } from './lib/roles';
+import {
+  mapDatabaseRole,
+  mapPlatformRole,
+} from './lib/roles';
 
 import type {
   User,
@@ -61,6 +64,14 @@ const Unauthorized = lazy(() =>
 
 const AdminPage = lazy(
   () => import('./pages/Admin/AdminPage'),
+);
+
+const PlatformPage = lazy(
+  () => import('./pages/Platform/PlatformPage'),
+);
+
+const AccountPage = lazy(
+  () => import('./pages/Account/AccountPage'),
 );
 
 const TeacherDashboard = lazy(
@@ -110,8 +121,10 @@ const roleToSubtitle: Record<
   UserRole,
   string
 > = {
+  super_admin: 'Super Admin',
   admin: 'Administrador',
   director: 'Diretor',
+  secretary: 'Secretaria',
   teacher: 'Professor',
   student: 'Aluno',
   parent: 'Responsável',
@@ -121,10 +134,14 @@ const searchPlaceholders: Record<
   UserRole,
   string
 > = {
+  super_admin:
+    'Pesquisar contas ou instituições...',
   admin:
-    'Pesquisar dados, alunos ou professores...',
+    'Pesquisar conta ou instituições...',
   director:
     'Pesquisar dados, alunos ou professores...',
+  secretary:
+    'Pesquisar alunos, responsáveis ou matrículas...',
   teacher:
     'Pesquisar alunos ou turmas...',
   student:
@@ -154,8 +171,14 @@ function renderDashboard(
   role: UserRole,
 ): ReactNode {
   switch (role) {
+    case 'super_admin':
+      return <PlatformPage />;
+
     case 'admin':
+      return <AccountPage />;
+
     case 'director':
+    case 'secretary':
       return <DirectorDashboard />;
 
     case 'teacher':
@@ -284,6 +307,7 @@ function DashboardLayout() {
   }
 
   const currentRole =
+    mapPlatformRole(profile.platform_role) ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {
@@ -308,7 +332,8 @@ function DashboardLayout() {
 
   const canAccessSettings =
     currentRole === 'admin' ||
-    currentRole === 'director';
+    currentRole === 'director' ||
+    currentRole === 'secretary';
 
   async function handleLogout(): Promise<void> {
     try {
@@ -439,9 +464,32 @@ function AppRoutes() {
             allowedRoles={[
               'ADMIN',
               'DIRECTOR',
+              'SECRETARY',
             ]}
           >
             <AdminPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/platform/*"
+        element={
+          <ProtectedRoute
+            allowedPlatformRoles={[
+              'SUPER_ADMIN',
+            ]}
+          >
+            <PlatformPage />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/account/*"
+        element={
+          <ProtectedRoute>
+            <AccountPage />
           </ProtectedRoute>
         }
       />

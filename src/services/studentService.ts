@@ -1,9 +1,3 @@
-﻿import {
-  FunctionsFetchError,
-  FunctionsHttpError,
-  FunctionsRelayError,
-} from '@supabase/supabase-js';
-
 import { supabase } from '../lib/supabaseClient';
 
 import {
@@ -12,6 +6,7 @@ import {
   type StudentFormData,
   type StudentUpdateData,
 } from '../schemas/adminSchemas';
+import { schoolUserInviteService } from './schoolUserInviteService';
 
 export interface StudentProfileSummary {
   full_name: string;
@@ -41,9 +36,9 @@ interface StudentQueryRow {
   active: boolean;
   created_at: string | null;
   profiles:
-  | StudentProfileSummary
-  | StudentProfileSummary[]
-  | null;
+    | StudentProfileSummary
+    | StudentProfileSummary[]
+    | null;
 }
 
 export interface CreatedStudent {
@@ -54,11 +49,6 @@ export interface CreatedStudent {
   email: string;
 }
 
-interface CreateStudentFunctionResponse {
-  student: CreatedStudent;
-  invitation_sent: boolean;
-}
-
 function normalizeStudentProfile(
   relation: StudentQueryRow['profiles'],
 ): StudentProfileSummary | null {
@@ -67,81 +57,6 @@ function normalizeStudentProfile(
   }
 
   return relation;
-}
-
-function isCreatedStudent(
-  value: unknown,
-): value is CreatedStudent {
-  if (
-    typeof value !== 'object' ||
-    value === null
-  ) {
-    return false;
-  }
-
-  return (
-    'id' in value &&
-    typeof value.id === 'string' &&
-    'profile_id' in value &&
-    typeof value.profile_id === 'string' &&
-    'registration_number' in value &&
-    typeof value.registration_number ===
-    'string' &&
-    'full_name' in value &&
-    typeof value.full_name === 'string' &&
-    'email' in value &&
-    typeof value.email === 'string'
-  );
-}
-
-function isCreateStudentResponse(
-  value: unknown,
-): value is CreateStudentFunctionResponse {
-  if (
-    typeof value !== 'object' ||
-    value === null ||
-    !('student' in value)
-  ) {
-    return false;
-  }
-
-  return isCreatedStudent(value.student);
-}
-
-async function getFunctionErrorMessage(
-  error: unknown,
-): Promise<string> {
-  if (error instanceof FunctionsHttpError) {
-    try {
-      const body: unknown =
-        await error.context.json();
-
-      if (
-        typeof body === 'object' &&
-        body !== null &&
-        'error' in body &&
-        typeof body.error === 'string'
-      ) {
-        return body.error;
-      }
-    } catch {
-      return error.message;
-    }
-  }
-
-  if (error instanceof FunctionsRelayError) {
-    return 'A função de cadastro está temporariamente indisponível.';
-  }
-
-  if (error instanceof FunctionsFetchError) {
-    return 'Não foi possível conectar à função de cadastro.';
-  }
-
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return 'Não foi possível cadastrar o aluno.';
 }
 
 export const studentService = {
@@ -199,29 +114,32 @@ export const studentService = {
   ): Promise<CreatedStudent> {
     const data = studentSchema.parse(input);
 
-    const {
-      data: response,
-      error,
-    } = await supabase.functions.invoke(
-      'create-student',
-      {
-        body: data,
-      },
-    );
+    const response =
+      await schoolUserInviteService.invite({
+        institutionId: data.institution_id,
+        role: 'STUDENT',
+        fullName: data.full_name,
+        email: data.email,
+        student: {
+          birthDate: data.birth_date,
+          ...(data.cpf ? { cpf: data.cpf } : {}),
+        },
+      });
 
-    if (error) {
+    if (!response.student) {
       throw new Error(
-        await getFunctionErrorMessage(error),
+        'A funcao de convite nao retornou o aluno criado.',
       );
     }
 
-    if (!isCreateStudentResponse(response)) {
-      throw new Error(
-        'A função respondeu em um formato inválido.',
-      );
-    }
-
-    return response.student;
+    return {
+      id: response.student.id,
+      profile_id: response.profileId,
+      registration_number:
+        response.student.registrationNumber,
+      full_name: data.full_name,
+      email: data.email,
+    };
   },
 
   async update(

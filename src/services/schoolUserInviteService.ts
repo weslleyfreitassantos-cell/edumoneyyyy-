@@ -19,6 +19,13 @@ export interface SchoolUserInviteResponse {
   membershipId?: string;
   role: UnifiedUserInviteRole;
   email: string;
+  student?: {
+    id: string;
+    registrationNumber: string;
+  };
+  guardianship?: {
+    id: string;
+  };
   invitationSent: boolean;
   reusedExistingUser: boolean;
   message: string;

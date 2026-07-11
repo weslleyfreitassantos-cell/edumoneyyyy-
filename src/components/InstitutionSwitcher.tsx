@@ -1,10 +1,12 @@
-import { Building2 } from 'lucide-react';
+import { Building2, Plus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import { useInstitution } from '../contexts/InstitutionContext';
 
 const roleLabels: Record<string, string> = {
   ADMIN: 'Administração',
   DIRECTOR: 'Direção',
+  SECRETARY: 'Secretaria',
   TEACHER: 'Professor',
   STUDENT: 'Aluno',
   GUARDIAN: 'Responsável',
@@ -24,8 +26,8 @@ export default function InstitutionSwitcher() {
   const {
     institutions,
     currentInstitution,
-    currentMembership,
     currentInstitutionId,
+    currentRole,
     isLoading,
     error,
     hasMultipleInstitutions,
@@ -72,34 +74,54 @@ export default function InstitutionSwitcher() {
   }
 
   const currentRoleLabel = getRoleLabel(
-    currentMembership?.role ?? null,
+    currentRole,
+  );
+
+  const canCreateInstitution = institutions.some(
+    (item) => item.accessSource === 'account_owner',
   );
 
   if (!hasMultipleInstitutions) {
     return (
-      <div className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-left shadow-sm">
-        <Building2
-          className="h-4 w-4 text-[#005bbf]"
-          aria-hidden="true"
-        />
+      <div className="inline-flex items-center gap-2">
+        <div className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-left shadow-sm">
+          <Building2
+            className="h-4 w-4 text-[#005bbf]"
+            aria-hidden="true"
+          />
 
-        <div className="leading-tight">
-          <p className="text-sm font-semibold text-[#181c20]">
-            {currentInstitution.name}
-          </p>
-
-          {currentRoleLabel && (
-            <p className="text-xs text-[#727785]">
-              {currentRoleLabel}
+          <div className="leading-tight">
+            <p className="text-sm font-semibold text-[#181c20]">
+              {currentInstitution.name}
             </p>
-          )}
+
+            {currentRoleLabel && (
+              <p className="text-xs text-[#727785]">
+                {currentRoleLabel}
+              </p>
+            )}
+          </div>
         </div>
+
+        {canCreateInstitution && (
+          <Link
+            to="/account"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#dfe3e8] bg-white text-[#005bbf] shadow-sm transition-colors hover:bg-blue-50"
+            aria-label="Nova instituição"
+            title="Nova instituição"
+          >
+            <Plus
+              className="h-4 w-4"
+              aria-hidden="true"
+            />
+          </Link>
+        )}
       </div>
     );
   }
 
   return (
-    <div className="min-w-0">
+    <div className="flex min-w-0 items-center gap-2">
       <label
         htmlFor="institution-switcher"
         className="sr-only"
@@ -126,7 +148,7 @@ export default function InstitutionSwitcher() {
         >
           {institutions.map((item) => {
             const roleLabel = getRoleLabel(
-              item.membership.role,
+              item.effectiveRole,
             );
 
             return (
@@ -142,6 +164,20 @@ export default function InstitutionSwitcher() {
           })}
         </select>
       </div>
+
+      {canCreateInstitution && (
+        <Link
+          to="/account"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#dfe3e8] bg-white text-[#005bbf] shadow-sm transition-colors hover:bg-blue-50"
+          aria-label="Nova instituição"
+          title="Nova instituição"
+        >
+          <Plus
+            className="h-4 w-4"
+            aria-hidden="true"
+          />
+        </Link>
+      )}
     </div>
   );
 }

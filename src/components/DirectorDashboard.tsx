@@ -13,12 +13,12 @@ import { useAdminOverview } from '../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import {
   getEffectiveRole,
-  type CurrentDatabaseRole,
+  type EffectiveRole,
 } from '../lib/permissions';
 import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
-  role: CurrentDatabaseRole | undefined,
+  role: EffectiveRole | undefined,
 ): string {
   if (role === 'ADMIN') {
     return 'Painel do Administrador';
@@ -26,6 +26,10 @@ export function getDirectorDashboardTitle(
 
   if (role === 'DIRECTOR') {
     return 'Painel do Diretor';
+  }
+
+  if (role === 'SECRETARY') {
+    return 'Painel da Secretaria';
   }
 
   return 'Painel acadêmico';

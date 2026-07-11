@@ -1,15 +1,10 @@
-import {
-  FunctionsFetchError,
-  FunctionsHttpError,
-  FunctionsRelayError,
-} from '@supabase/supabase-js';
-
 import { supabase } from '../lib/supabaseClient';
 
 import {
   teacherSchema,
   type TeacherFormData,
 } from '../schemas/adminSchemas';
+import { schoolUserInviteService } from './schoolUserInviteService';
 
 export interface TeacherProfileSummary {
   full_name: string;
@@ -46,11 +41,6 @@ export interface CreatedTeacher {
   email: string;
 }
 
-interface CreateTeacherFunctionResponse {
-  teacher: CreatedTeacher;
-  invitation_sent: boolean;
-}
-
 function normalizeTeacherProfile(
   relation: TeacherQueryRow['profiles'],
 ): TeacherProfileSummary | null {
@@ -59,84 +49,6 @@ function normalizeTeacherProfile(
   }
 
   return relation;
-}
-
-function isCreatedTeacher(
-  value: unknown,
-): value is CreatedTeacher {
-  if (
-    typeof value !== 'object' ||
-    value === null
-  ) {
-    return false;
-  }
-
-  return (
-    'id' in value &&
-    typeof value.id === 'string' &&
-    'profile_id' in value &&
-    typeof value.profile_id === 'string' &&
-    'full_name' in value &&
-    typeof value.full_name === 'string' &&
-    'email' in value &&
-    typeof value.email === 'string'
-  );
-}
-
-function isCreateTeacherResponse(
-  value: unknown,
-): value is CreateTeacherFunctionResponse {
-  if (
-    typeof value !== 'object' ||
-    value === null ||
-    !('teacher' in value)
-  ) {
-    return false;
-  }
-
-  return isCreatedTeacher(
-    value.teacher,
-  );
-}
-
-async function getFunctionErrorMessage(
-  error: unknown,
-): Promise<string> {
-  if (error instanceof FunctionsHttpError) {
-    try {
-      const body: unknown =
-        await error.context.json();
-
-      if (
-        typeof body === 'object' &&
-        body !== null &&
-        'error' in body &&
-        typeof body.error === 'string'
-      ) {
-        return body.error;
-      }
-    } catch {
-      return error.message;
-    }
-  }
-
-  if (
-    error instanceof FunctionsRelayError
-  ) {
-    return 'A função de cadastro está temporariamente indisponível.';
-  }
-
-  if (
-    error instanceof FunctionsFetchError
-  ) {
-    return 'Não foi possível conectar à função de cadastro.';
-  }
-
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return 'Não foi possível cadastrar o professor.';
 }
 
 export const teacherService = {
@@ -196,33 +108,20 @@ export const teacherService = {
     const data =
       teacherSchema.parse(input);
 
-    const {
-      data: response,
-      error,
-    } = await supabase.functions.invoke(
-      'create-teacher',
-      {
-        body: data,
-      },
-    );
+    const response =
+      await schoolUserInviteService.invite({
+        institutionId: data.institution_id,
+        role: 'TEACHER',
+        fullName: data.full_name,
+        email: data.email,
+      });
 
-    if (error) {
-      throw new Error(
-        await getFunctionErrorMessage(
-          error,
-        ),
-      );
-    }
-
-    if (
-      !isCreateTeacherResponse(response)
-    ) {
-      throw new Error(
-        'A função respondeu em um formato inválido.',
-      );
-    }
-
-    return response.teacher;
+    return {
+      id: response.membershipId ?? response.profileId,
+      profile_id: response.profileId,
+      full_name: data.full_name,
+      email: data.email,
+    };
   },
 
   async setActive(
