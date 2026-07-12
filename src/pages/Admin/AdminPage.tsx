@@ -7,6 +7,8 @@ import { Navigate } from 'react-router-dom';
 import InstitutionSwitcher from '../../components/InstitutionSwitcher';
 import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from '../../components/grades/InstitutionGradesPanel';
+import InstitutionTermClosingPanel from '../../components/academic/InstitutionTermClosingPanel';
+import AcademicPolicyPanel from '../../components/academic/AcademicPolicyPanel';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
 
@@ -37,7 +39,9 @@ type TabType =
   | 'classes'
   | 'subjects'
   | 'enrollments'
-  | 'assignments';
+  | 'assignments'
+  | 'term-closing'
+  | 'academic-policies';
 
 export default function AdminPage() {
   const { profile } = useAuth();
@@ -68,6 +72,7 @@ export default function AdminPage() {
           { id: 'overview' as const, label: 'Visão geral' },
           { id: 'attendance' as const, label: 'Frequência' },
           { id: 'grades' as const, label: 'Notas' },
+          { id: 'term-closing' as const, label: 'Fechamento' },
         ]
       : []),
     ...(can('manage_school_users')
@@ -92,6 +97,10 @@ export default function AdminPage() {
           {
             id: 'subjects' as const,
             label: 'Disciplinas',
+          },
+          {
+            id: 'academic-policies' as const,
+            label: 'Política Acadêmica',
           },
         ]
       : []),
@@ -137,6 +146,12 @@ export default function AdminPage() {
             institutionId={institutionQuery.data}
           />
         );
+      case 'term-closing':
+        return (
+          <InstitutionTermClosingPanel
+            institutionId={institutionQuery.data}
+          />
+        );
       case 'school-users':
         return <SchoolUsersTab />;
       case 'students':
@@ -145,6 +160,8 @@ export default function AdminPage() {
         return <TeachersTab />;
       case 'guardians':
         return <GuardiansTab />;
+      case 'academic-policies':
+        return <AcademicPolicyPanel institutionId={institutionQuery.data} />;
       case 'academic-years':
         return <AcademicYearsTab />;
       case 'classes':

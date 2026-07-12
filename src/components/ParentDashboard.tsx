@@ -20,6 +20,7 @@ import { useGuardianDashboard } from '../hooks/useGuardianDashboard';
 import type { GuardianStudentDashboard } from '../services/guardianDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
+import GuardianReportCard from './academic/GuardianReportCard';
 
 function getErrorMessage(
   error: unknown,
@@ -367,6 +368,12 @@ export default function ParentDashboard() {
               institutionId={institutionQuery.data}
               studentId={selectedStudent.student.student.id}
               title="Notas do aluno"
+            />
+
+            <GuardianReportCard
+              institutionId={institutionQuery.data}
+              studentIds={students.map(s => s.student.student.id)}
+              selectedStudentId={selectedStudent.student.student.id}
             />
             </>
           )}
