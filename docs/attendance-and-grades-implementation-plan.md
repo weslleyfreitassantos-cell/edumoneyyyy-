@@ -1,38 +1,49 @@
-﻿# Plano de implementação de notas e frequência
+# Plano de implementação de frequência, avaliações e notas
 
-## Estado remoto
+## Estado confirmado do schema remoto
 
-A auditoria confirmou que estas tabelas estão ausentes no remoto:
+O banco remoto foi verificado manualmente.
 
-- `assessments`
-- `grades`
-- `attendance_sessions`
-- `attendance_records`
+As seguintes tabelas existem no schema `public`:
 
-## Bloqueio
+- `attendance_sessions`;
+- `attendance_records`;
+- `assessments`;
+- `grades`.
 
-Existem migrations locais relacionadas a notas/frequência, mas o histórico remoto Supabase CLI não está reconciliado. Não executar `db push` agora.
+A migration de frequência também foi confirmada no histórico remoto:
 
-## Ordem recomendada
+- `20260712000100_attendance_end_to_end_access.sql`.
 
-1. Reconciliar/baseline do banco.
-2. Validar schema em staging.
-3. Criar migration incremental para notas/frequência.
-4. Adicionar RLS.
-5. Testar professor, aluno, responsável e admin/diretor.
-6. Ativar telas reais.
+Antes da criação da branch de avaliações e notas, o comando:
 
-## RLS esperado
+```bash
+npx supabase db push --dry-run
+```
 
-- Admin/diretor vê tudo da instituição.
-- Professor vê e lança dados das ofertas vinculadas.
-- Aluno vê os próprios dados.
-- Responsável vê dados dos estudantes vinculados.
-- Usuário de outra instituição não acessa.
+## Fechamento Acadêmico e Boletins
 
-## Validações
-
-- Unicidade de nota por aluno/avaliação.
-- Unicidade de presença por aluno/sessão.
-- Bloqueio de acesso fora da instituição.
-- Consulta por turma, disciplina e período.
+- **Migration**: `20260712000300_term_closing_report_cards.sql` criada localmente. Ainda não aplicada no Supabase (nenhuma operação remota executada).
+- **Entidades**: `academic_policies`, `term_closures` e `student_term_results`.
+- **Regras de cálculo**:
+  - `calculateTermGradePercentage`: Média ponderada com arredondamento configurável (0-4 casas).
+  - `calculateTermAttendancePercentage`: Média de presença e faltas.
+  - O resultado baseia-se na política ativa (`minimum_grade_percentage`, `minimum_attendance_percentage`).
+- **Status**:
+  - Fechamento: `OPEN`, `SUBMITTED`, `CLOSED`, `REOPENED`.
+  - Resultado Escolar: `PENDING`, `APPROVED`, `FAILED_BY_GRADE`, `FAILED_BY_ATTENDANCE`, `FAILED_BY_GRADE_AND_ATTENDANCE`.
+- **Matriz de acesso**:
+  - **Professor**: submete fechamento das próprias ofertas; visualiza prévias e pendências; não tem acesso à edição das políticas.
+  - **Secretário**: apenas visualiza o fechamento consolidado.
+  - **Diretor / Admin**: aprovam fechamento (de submetido para fechado); editam políticas; podem reabrir períodos.
+  - **Aluno**: apenas visualiza o próprio boletim.
+  - **Responsável**: apenas visualiza os boletins dos estudantes vinculados ativamente.
+- **Fluxos**:
+  - **Submit (Professor)**: Verifica notas pendentes e política. Transição para `SUBMITTED`.
+  - **Fechamento (Admin/Diretor)**: Executado através do painel na Instituição, consolida snapshots e calcula os `student_term_results`. Transição para `CLOSED`. (Snapshot não sobrescreve retroativamente sem reabertura formal).
+  - **Reabertura (Admin/Diretor)**: Volta para `REOPENED`. Exige motivo justificado obrigatório, armazenado no histórico, e invalida o snapshot para recálculo.
+- **Limitações**:
+  - Não abrange recuperação final.
+  - Não gera emissão em PDF e não gera cobrança.
+  - A consulta dos pais carrega estudantes em lote para não causar N+1, otimizada localmente.
+- Nenhuma operação remota (Supabase cloud) foi executada durante o desenvolvimento destas funcionalidades.

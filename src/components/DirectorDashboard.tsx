@@ -15,6 +15,8 @@ import {
   getEffectiveRole,
   type EffectiveRole,
 } from '../lib/permissions';
+import InstitutionAttendancePanel from './attendance/InstitutionAttendancePanel';
+import InstitutionGradesPanel from './grades/InstitutionGradesPanel';
 import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
@@ -254,6 +256,14 @@ export default function DirectorDashboard() {
           }
         />
       </section>
+
+      <InstitutionAttendancePanel
+        institutionId={institutionQuery.data}
+      />
+
+      <InstitutionGradesPanel
+        institutionId={institutionQuery.data}
+      />
 
       <section className="grid gap-4 lg:grid-cols-2">
         <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
