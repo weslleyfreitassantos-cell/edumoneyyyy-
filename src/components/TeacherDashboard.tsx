@@ -18,6 +18,7 @@ import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
 import type { TeacherOffering } from '../services/teacherDashboardService';
 import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
+import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
 
 function getErrorMessage(
   error: unknown,
@@ -378,6 +379,11 @@ export default function TeacherDashboard() {
       />
 
       <TeacherAssessmentsPanel
+        profileId={profile.id}
+        institutionId={institutionQuery.data}
+      />
+
+      <TeacherTermClosingPanel
         profileId={profile.id}
         institutionId={institutionQuery.data}
       />

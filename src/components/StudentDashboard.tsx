@@ -20,6 +20,7 @@ import { useStudentDashboard } from '../hooks/useStudentDashboard';
 import type { StudentDashboardOffering } from '../services/studentDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
+import StudentReportCard from './academic/StudentReportCard';
 
 function getErrorMessage(
   error: unknown,
@@ -429,6 +430,11 @@ export default function StudentDashboard() {
       />
 
       <StudentGradesPanel
+        institutionId={institutionQuery.data}
+        studentId={student.id}
+      />
+
+      <StudentReportCard
         institutionId={institutionQuery.data}
         studentId={student.id}
       />
