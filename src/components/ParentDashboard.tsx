@@ -19,6 +19,7 @@ import { useGuardianDashboard } from '../hooks/useGuardianDashboard';
 
 import type { GuardianStudentDashboard } from '../services/guardianDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
+import StudentGradesPanel from './grades/StudentGradesPanel';
 
 function getErrorMessage(
   error: unknown,
@@ -360,6 +361,12 @@ export default function ParentDashboard() {
               institutionId={institutionQuery.data}
               studentId={selectedStudent.student.student.id}
               title="Frequência do aluno"
+            />
+
+            <StudentGradesPanel
+              institutionId={institutionQuery.data}
+              studentId={selectedStudent.student.student.id}
+              title="Notas do aluno"
             />
             </>
           )}

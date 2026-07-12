@@ -16,6 +16,7 @@ import {
   type EffectiveRole,
 } from '../lib/permissions';
 import InstitutionAttendancePanel from './attendance/InstitutionAttendancePanel';
+import InstitutionGradesPanel from './grades/InstitutionGradesPanel';
 import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
@@ -257,6 +258,10 @@ export default function DirectorDashboard() {
       </section>
 
       <InstitutionAttendancePanel
+        institutionId={institutionQuery.data}
+      />
+
+      <InstitutionGradesPanel
         institutionId={institutionQuery.data}
       />
 
