@@ -18,6 +18,7 @@ import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
 
 import type { StudentDashboardOffering } from '../services/studentDashboardService';
+import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 
 function getErrorMessage(
   error: unknown,
@@ -420,6 +421,11 @@ export default function StudentDashboard() {
           )}
         </article>
       </section>
+
+      <StudentAttendanceSummaryPanel
+        institutionId={institutionQuery.data}
+        studentId={student.id}
+      />
 
       <section>
         <div className="mb-4 flex items-center gap-2">

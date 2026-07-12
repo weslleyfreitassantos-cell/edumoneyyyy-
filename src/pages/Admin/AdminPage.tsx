@@ -5,6 +5,7 @@ import {
 import { Navigate } from 'react-router-dom';
 
 import InstitutionSwitcher from '../../components/InstitutionSwitcher';
+import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
 
@@ -25,6 +26,7 @@ import TeachersTab from './tabs/TeachersTab';
 
 type TabType =
   | 'overview'
+  | 'attendance'
   | 'school-users'
   | 'students'
   | 'teachers'
@@ -60,7 +62,10 @@ export default function AdminPage() {
     label: string;
   }[] = [
     ...(can('view_school_dashboard')
-      ? [{ id: 'overview' as const, label: 'Visão geral' }]
+      ? [
+          { id: 'overview' as const, label: 'Visão geral' },
+          { id: 'attendance' as const, label: 'Frequência' },
+        ]
       : []),
     ...(can('manage_school_users')
       ? [{ id: 'school-users' as const, label: 'Usuários' }]
@@ -117,6 +122,12 @@ export default function AdminPage() {
     switch (activeTab) {
       case 'overview':
         return <AdminOverviewTab />;
+      case 'attendance':
+        return (
+          <InstitutionAttendancePanel
+            institutionId={institutionQuery.data}
+          />
+        );
       case 'school-users':
         return <SchoolUsersTab />;
       case 'students':

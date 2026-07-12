@@ -18,6 +18,7 @@ import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useGuardianDashboard } from '../hooks/useGuardianDashboard';
 
 import type { GuardianStudentDashboard } from '../services/guardianDashboardService';
+import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 
 function getErrorMessage(
   error: unknown,
@@ -253,6 +254,7 @@ export default function ParentDashboard() {
           </section>
 
           {selectedStudent && (
+            <>
             <section className="grid gap-4 lg:grid-cols-[1fr_1.2fr]">
               <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
                 <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
@@ -353,6 +355,13 @@ export default function ParentDashboard() {
                 )}
               </article>
             </section>
+
+            <StudentAttendanceSummaryPanel
+              institutionId={institutionQuery.data}
+              studentId={selectedStudent.student.student.id}
+              title="Frequência do aluno"
+            />
+            </>
           )}
         </>
       )}
