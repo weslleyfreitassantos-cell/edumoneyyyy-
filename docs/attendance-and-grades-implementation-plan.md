@@ -44,3 +44,12 @@ Existem migrations locais relacionadas a notas/frequência, mas o histórico rem
 - Foi adicionada migration incremental para impedir mais de uma sessão não cancelada por atribuição/data, preservar histórico sem delete autenticado e permitir leitura por aluno/responsável via registros fechados.
 - A lista de chamada considera matrícula ativa/status `ACTIVE`, aluno ativo e `enrolled_at` até o fim da data. O schema atual não possui data de encerramento da matrícula; correções de registros já existentes foram preservadas sem inferir histórico ausente.
 - Frontend conectado com serviço real, hooks e painéis para professor, direção/admin, aluno e responsável. Nenhuma migration remota ou deploy foi executado.
+
+## Status da branch `feat/assessments-grades-end-to-end`
+
+- `assessments` usa `subject_offering_id`, `term_id`, `assessment_date`, `max_score`, `weight`, `status` e `created_by`; `grades` usa `assessment_id` e `student_id`.
+- Status existentes reutilizados: avaliações `DRAFT`, `PUBLISHED`, `CLOSED`, `CANCELED`; notas `PENDING`, `GRADED`, `EXCUSED`.
+- O schema já garante `unique(assessment_id, student_id)`, nota não negativa, nota nula para pendente/dispensada e trigger contra `max_score`.
+- Foi adicionada migration incremental para preservar histórico sem delete autenticado, permitir leitura institucional para secretaria, leitura de responsáveis por guardianship ativa e matrícula válida na data da avaliação.
+- A fórmula central é `score / max_score * 100`; nota ausente não entra como zero em médias, enquanto zero lançado continua sendo nota válida.
+- Frontend conectado com serviço real, hooks e painéis para professor, direção/admin, aluno e responsável. Nenhuma migration remota ou deploy foi executado.
