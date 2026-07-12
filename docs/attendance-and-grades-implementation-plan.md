@@ -36,3 +36,11 @@ Existem migrations locais relacionadas a notas/frequência, mas o histórico rem
 - Unicidade de presença por aluno/sessão.
 - Bloqueio de acesso fora da instituição.
 - Consulta por turma, disciplina e período.
+
+## Status da branch `feat/attendance-end-to-end`
+
+- `attendance_sessions` usa `subject_offering_id` e `session_date`; `attendance_records` usa `attendance_session_id` e `student_id`.
+- Status existentes reutilizados: sessões `DRAFT`, `OPEN`, `CLOSED`, `CANCELED`; registros `PRESENT`, `ABSENT`, `LATE`, `EXCUSED`.
+- Foi adicionada migration incremental para impedir mais de uma sessão não cancelada por atribuição/data, preservar histórico sem delete autenticado e permitir leitura por aluno/responsável via registros fechados.
+- A lista de chamada considera matrícula ativa/status `ACTIVE`, aluno ativo e `enrolled_at` até o fim da data. O schema atual não possui data de encerramento da matrícula; correções de registros já existentes foram preservadas sem inferir histórico ausente.
+- Frontend conectado com serviço real, hooks e painéis para professor, direção/admin, aluno e responsável. Nenhuma migration remota ou deploy foi executado.
