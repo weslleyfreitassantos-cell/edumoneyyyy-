@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom';
 
 import InstitutionSwitcher from '../../components/InstitutionSwitcher';
 import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
+import InstitutionGradesPanel from '../../components/grades/InstitutionGradesPanel';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
 
@@ -27,6 +28,7 @@ import TeachersTab from './tabs/TeachersTab';
 type TabType =
   | 'overview'
   | 'attendance'
+  | 'grades'
   | 'school-users'
   | 'students'
   | 'teachers'
@@ -65,6 +67,7 @@ export default function AdminPage() {
       ? [
           { id: 'overview' as const, label: 'Visão geral' },
           { id: 'attendance' as const, label: 'Frequência' },
+          { id: 'grades' as const, label: 'Notas' },
         ]
       : []),
     ...(can('manage_school_users')
@@ -125,6 +128,12 @@ export default function AdminPage() {
       case 'attendance':
         return (
           <InstitutionAttendancePanel
+            institutionId={institutionQuery.data}
+          />
+        );
+      case 'grades':
+        return (
+          <InstitutionGradesPanel
             institutionId={institutionQuery.data}
           />
         );
