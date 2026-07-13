@@ -18,6 +18,7 @@ vi.mock("../lib/supabaseClient", () => ({
     auth: {
       signOut: vi.fn(),
       setSession: vi.fn(),
+      verifyOtp: vi.fn(),
       getUser: vi.fn(),
     },
   },
@@ -71,6 +72,7 @@ describe("AuthConfirm", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Tipo de confirmação inválido.")).toBeDefined();
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
     });
   });
 
@@ -102,6 +104,54 @@ describe("AuthConfirm", () => {
     });
   });
 
+  it("should verify token_hash invite links", async () => {
+    window.location.search = "?token_hash=hash123&type=invite";
+
+    (supabase.auth.signOut as any).mockResolvedValue({});
+    (supabase.auth.verifyOtp as any).mockResolvedValue({ error: null });
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(supabase.auth.verifyOtp).toHaveBeenCalledWith({
+        token_hash: "hash123",
+        type: "invite",
+      });
+      expect(supabase.auth.setSession).not.toHaveBeenCalled();
+      expect(sessionStorage.getItem("invite_context")).toBeTruthy();
+      expect(mockNavigate).toHaveBeenCalledWith("/set-password", { replace: true });
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
+    });
+  });
+
+  it("should handle token_hash verification error", async () => {
+    window.location.search = "?token_hash=hash123&type=invite";
+
+    (supabase.auth.signOut as any).mockResolvedValue({});
+    (supabase.auth.verifyOtp as any).mockResolvedValue({
+      error: { message: "Token expired" },
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText("Convite inválido, expirado ou já utilizado.")).toBeDefined();
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
+    });
+  });
+
   it("should handle setSession error", async () => {
     window.location.hash = "#access_token=acc123&refresh_token=ref456&type=invite";
 
@@ -118,6 +168,7 @@ describe("AuthConfirm", () => {
 
     await waitFor(() => {
       expect(screen.getByText("Convite inválido, expirado ou já utilizado.")).toBeDefined();
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
     });
   });
 });

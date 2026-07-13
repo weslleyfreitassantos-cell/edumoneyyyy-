@@ -6,6 +6,13 @@ import type { Database } from "../_shared/database.types.ts";
 
 interface RollbackState {
   createdAuthUserId: string | null;
+  updatedExistingProfile: {
+    id: string;
+    full_name: string;
+    role: Database["public"]["Enums"]["user_role"];
+    platform_role: Database["public"]["Enums"]["platform_role"];
+    active: boolean | null;
+  } | null;
 }
 
 class AccountError extends Error {
@@ -157,12 +164,13 @@ async function findReusableProfile(
 ): Promise<{
   id: string;
   full_name: string;
+  role: Database["public"]["Enums"]["user_role"];
   active: boolean | null;
   platform_role: Database["public"]["Enums"]["platform_role"];
 } | null> {
   const { data, error } = await ctx.supabaseAdmin
     .from("profiles")
-    .select("id, full_name, active, platform_role")
+    .select("id, full_name, role, active, platform_role")
     .eq("email", email)
     .maybeSingle();
 
@@ -230,6 +238,13 @@ async function createOrReuseOwnerProfile(
 
   if (existingProfile) {
     await ensureNotAccountOwner(ctx, existingProfile.id);
+    rollback.updatedExistingProfile = {
+      id: existingProfile.id,
+      full_name: existingProfile.full_name,
+      role: existingProfile.role,
+      platform_role: existingProfile.platform_role,
+      active: existingProfile.active,
+    };
 
     const { error: updateError } = await ctx.supabaseAdmin
       .from("profiles")
@@ -356,6 +371,7 @@ export default {
 
       const rollback: RollbackState = {
         createdAuthUserId: null,
+        updatedExistingProfile: null,
       };
 
       try {
@@ -401,6 +417,27 @@ export default {
         );
       } catch (error) {
         console.error("Erro ao criar conta:", error);
+
+        if (rollback.updatedExistingProfile) {
+          try {
+            await ctx.supabaseAdmin
+              .from("profiles")
+              .update({
+                full_name:
+                  rollback.updatedExistingProfile.full_name,
+                role: rollback.updatedExistingProfile.role,
+                platform_role:
+                  rollback.updatedExistingProfile.platform_role,
+                active: rollback.updatedExistingProfile.active,
+              })
+              .eq("id", rollback.updatedExistingProfile.id);
+          } catch (cleanupError) {
+            console.error(
+              "Erro no rollback do profile da conta:",
+              cleanupError,
+            );
+          }
+        }
 
         if (rollback.createdAuthUserId) {
           try {
