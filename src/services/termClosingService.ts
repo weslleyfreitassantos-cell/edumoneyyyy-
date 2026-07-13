@@ -130,16 +130,7 @@ interface StudentRelation {
   profiles: ProfileRelation | ProfileRelation[] | null;
 }
 
-interface EnrollmentRow {
-  id: string;
-  student_id: string;
-  class_id: string;
-  academic_year_id: string;
-  status: string | null;
-  active: boolean | null;
-  enrolled_at: string | null;
-  students: StudentRelation | StudentRelation[] | null;
-}
+
 
 interface GradeRow {
   id: string;
@@ -508,25 +499,7 @@ function normalizeOffering(
   };
 }
 
-function normalizeStudent(
-  enrollment: EnrollmentRow,
-): TermClosureStudent | null {
-  const student = normalizeRelation(enrollment.students);
-  const profile = normalizeRelation(student?.profiles);
 
-  if (!student || !profile) {
-    return null;
-  }
-
-  return {
-    id: student.id,
-    profileId: student.profile_id,
-    fullName: profile.full_name,
-    email: profile.email,
-    registrationNumber: student.registration_number,
-    enrollmentId: enrollment.id,
-  };
-}
 
 function normalizeAssessment(
   row: AssessmentRow,
@@ -581,7 +554,7 @@ export function buildTermClosurePreview(
   offering: TermClosureOffering,
   policy: AcademicPolicyRule | null,
   closure: TermClosure | null,
-  enrollments: readonly EnrollmentRow[],
+  eligibleStudents: readonly TermClosureStudent[],
   assessmentRows: readonly AssessmentRow[],
   attendanceSessions: readonly AttendanceSessionRow[],
 ): TermClosurePreview {
@@ -637,19 +610,7 @@ export function buildTermClosurePreview(
     });
   }
 
-  const eligibleStudents = enrollments
-    .filter((enrollment) =>
-      isEnrollmentValidForAttendanceDate(
-        enrollment,
-        offering.termEndDate,
-      ),
-    )
-    .map(normalizeStudent)
-    .filter(
-      (
-        student,
-      ): student is TermClosureStudent => student !== null,
-    );
+
 
   if (eligibleStudents.length === 0) {
     issues.push({
@@ -979,36 +940,14 @@ async function loadOffering(
 
 async function loadEnrollments(
   offering: TermClosureOffering,
-): Promise<EnrollmentRow[]> {
-  const { data, error } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      id,
-      student_id,
-      class_id,
-      academic_year_id,
-      status,
-      active,
-      enrolled_at,
-      students:student_id (
-        id,
-        profile_id,
-        institution_id,
-        registration_number,
-        active,
-        profiles:profile_id (
-          full_name,
-          email
-        )
-      )
-    `,
-    )
-    .eq('class_id', offering.classId)
-    .eq('academic_year_id', offering.academicYearId)
-    .order('enrolled_at', {
-      ascending: true,
-    });
+): Promise<TermClosureStudent[]> {
+  const { data, error } = await supabase.rpc(
+    'get_teacher_offering_rosters',
+    {
+      target_offering_ids: [offering.id],
+      effective_date: offering.termEndDate,
+    },
+  );
 
   if (error) {
     throw createTermClosingError(
@@ -1017,7 +956,14 @@ async function loadEnrollments(
     );
   }
 
-  return (data ?? []) as unknown as EnrollmentRow[];
+  return (data ?? []).map((row: any) => ({
+    id: row.student_id,
+    profileId: row.profile_id,
+    fullName: row.full_name,
+    email: '',
+    registrationNumber: row.registration_number,
+    enrollmentId: row.enrollment_id,
+  }));
 }
 
 async function loadAssessments(

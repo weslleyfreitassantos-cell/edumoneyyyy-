@@ -975,41 +975,13 @@ async function getValidStudentsForAssessment(
     return [];
   }
 
-  const { data, error } = await supabase
-    .from('enrollments')
-    .select(
-      `
-      id,
-      student_id,
-      class_id,
-      academic_year_id,
-      status,
-      active,
-      enrolled_at,
-      created_at,
-      students:student_id (
-        id,
-        profile_id,
-        institution_id,
-        registration_number,
-        active,
-        profiles:profile_id (
-          full_name,
-          email,
-          avatar_url
-        )
-      )
-    `,
-    )
-    .eq('class_id', assessment.offering.classId)
-    .eq('active', true)
-    .lte(
-      'enrolled_at',
-      `${assessment.assessmentDate}T23:59:59.999Z`,
-    )
-    .order('created_at', {
-      ascending: true,
-    });
+  const { data, error } = await supabase.rpc(
+    'get_teacher_offering_rosters',
+    {
+      target_offering_ids: [assessment.subjectOfferingId],
+      effective_date: assessment.assessmentDate,
+    },
+  );
 
   if (error) {
     throw createGradeError(error, 'GRADE_FORBIDDEN');
@@ -1017,31 +989,18 @@ async function getValidStudentsForAssessment(
 
   const students = new Map<string, GradeStudent>();
 
-  for (const row of (data ?? []) as unknown as EnrollmentQueryRow[]) {
-    const student = normalizeRelation(row.students);
-
-    if (
-      !student ||
-      student.institution_id !== assessment.institutionId ||
-      !isEnrollmentValidForAssessmentDate(
-        row,
-        assessment.assessmentDate,
-      )
-    ) {
-      continue;
-    }
-
-    const normalizedStudent = normalizeStudent(
-      student,
-      row.id,
+  for (const row of (data ?? []) as any[]) {
+    students.set(
+      row.student_id,
+      {
+        id: row.student_id,
+        profileId: row.profile_id,
+        fullName: row.full_name,
+        email: '',
+        registrationNumber: row.registration_number,
+        enrollmentId: row.enrollment_id,
+      }
     );
-
-    if (normalizedStudent) {
-      students.set(
-        normalizedStudent.id,
-        normalizedStudent,
-      );
-    }
   }
 
   return Array.from(students.values()).sort((first, second) =>

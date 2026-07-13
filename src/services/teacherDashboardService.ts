@@ -19,6 +19,13 @@ interface SubjectRelation {
   active: boolean | null;
 }
 
+interface TermRelation {
+  id: string;
+  start_date: string;
+  end_date: string;
+  active: boolean | null;
+}
+
 interface OfferingQueryRow {
   id: string;
   class_id: string;
@@ -37,10 +44,15 @@ interface OfferingQueryRow {
     | SubjectRelation
     | SubjectRelation[]
     | null;
+
+  terms:
+    | TermRelation
+    | TermRelation[]
+    | null;
 }
 
-interface EnrollmentQueryRow {
-  class_id: string;
+interface RosterQueryRow {
+  offering_id: string;
   student_id: string;
 }
 
@@ -85,6 +97,22 @@ function normalizeRelation<T>(
   return relation;
 }
 
+function calculateEffectiveDate(startDate: string, endDate: string): string {
+  const today = new Date();
+  const start = new Date(`${startDate}T00:00:00.000Z`);
+  const end = new Date(`${endDate}T23:59:59.999Z`);
+  
+  if (today.getTime() < start.getTime()) {
+    return startDate;
+  }
+  
+  if (today.getTime() > end.getTime()) {
+    return endDate;
+  }
+  
+  return today.toISOString().split('T')[0];
+}
+
 export const teacherDashboardService = {
   async getDashboard(
     profileId: string,
@@ -119,6 +147,12 @@ export const teacherDashboardService = {
           code,
           workload,
           active
+        ),
+        terms:term_id (
+          id,
+          start_date,
+          end_date,
+          active
         )
       `)
       .eq(
@@ -147,19 +181,23 @@ export const teacherDashboardService = {
         subjectRecord: normalizeRelation(
           row.subjects,
         ),
+        termRecord: normalizeRelation(
+          row.terms,
+        ),
       }),
     );
 
     const inaccessibleRelation =
       normalizedRows.some(
-        ({ classRecord, subjectRecord }) =>
+        ({ classRecord, subjectRecord, termRecord }) =>
           !classRecord ||
-          !subjectRecord,
+          !subjectRecord ||
+          !termRecord,
       );
 
     if (inaccessibleRelation) {
       throw new Error(
-        'Não foi possível carregar as turmas ou disciplinas atribuídas. Verifique as políticas de acesso acadêmico.',
+        'Não foi possível carregar as turmas, disciplinas ou períodos atribuídos. Verifique as políticas de acesso acadêmico.',
       );
     }
 
@@ -168,65 +206,82 @@ export const teacherDashboardService = {
         ({
           classRecord,
           subjectRecord,
+          termRecord,
         }) =>
           classRecord?.institution_id ===
             institutionId &&
           subjectRecord?.institution_id ===
             institutionId &&
           classRecord.active !== false &&
-          subjectRecord.active !== false,
+          subjectRecord.active !== false &&
+          termRecord?.active !== false,
       );
 
-    const classIds = Array.from(
-      new Set(
-        institutionRows.map(
-          ({ row }) => row.class_id,
-        ),
-      ),
-    );
-
-    const studentsByClass =
+    const studentsByOffering =
       new Map<string, Set<string>>();
 
     let enrollmentAccessAvailable = true;
 
-    if (classIds.length > 0) {
-      const {
-        data: enrollmentData,
-        error: enrollmentError,
-      } = await supabase
-        .from('enrollments')
-        .select('class_id, student_id')
-        .in('class_id', classIds)
-        .eq('active', true);
+    if (institutionRows.length > 0) {
+      const offeringsByDate = new Map<string, string[]>();
+      
+      for (const { row, termRecord } of institutionRows) {
+        if (!termRecord) continue;
+        
+        const effectiveDate = calculateEffectiveDate(
+          termRecord.start_date,
+          termRecord.end_date
+        );
+        
+        const dateGroup = offeringsByDate.get(effectiveDate) ?? [];
+        dateGroup.push(row.id);
+        offeringsByDate.set(effectiveDate, dateGroup);
+      }
 
-      if (enrollmentError) {
+      const fetchPromises = Array.from(offeringsByDate.entries()).map(
+        async ([date, ids]) => {
+          const { data, error } = await supabase.rpc(
+            'get_teacher_offering_rosters',
+            {
+              target_offering_ids: ids,
+              effective_date: date,
+            },
+          );
+          
+          if (error) {
+            throw error;
+          }
+          
+          return data as RosterQueryRow[];
+        }
+      );
+
+      try {
+        const results = await Promise.all(fetchPromises);
+        const rosters = results.flat();
+        
+        for (const roster of rosters) {
+          const currentStudents =
+            studentsByOffering.get(
+              roster.offering_id,
+            ) ?? new Set<string>();
+
+          currentStudents.add(
+            roster.student_id,
+          );
+
+          studentsByOffering.set(
+            roster.offering_id,
+            currentStudents,
+          );
+        }
+      } catch (error) {
         enrollmentAccessAvailable = false;
 
         console.warn(
           'Não foi possível carregar as matrículas do professor:',
-          enrollmentError,
+          error,
         );
-      } else {
-        const enrollments =
-          (enrollmentData ??
-            []) as EnrollmentQueryRow[];
-
-        for (const enrollment of enrollments) {
-          const currentStudents =
-            studentsByClass.get(
-              enrollment.class_id,
-            ) ?? new Set<string>();
-
-          currentStudents.add(
-            enrollment.student_id,
-          );
-
-          studentsByClass.set(
-            enrollment.class_id,
-            currentStudents,
-          );
-        }
       }
     }
 
@@ -276,8 +331,8 @@ export const teacherDashboardService = {
 
               studentCount:
                 enrollmentAccessAvailable
-                  ? studentsByClass.get(
-                      row.class_id,
+                  ? studentsByOffering.get(
+                      row.id,
                     )?.size ?? 0
                   : null,
             };
@@ -302,7 +357,7 @@ export const teacherDashboardService = {
 
     const uniqueStudents = new Set<string>();
 
-    for (const students of studentsByClass.values()) {
+    for (const students of studentsByOffering.values()) {
       for (const studentId of students) {
         uniqueStudents.add(studentId);
       }
