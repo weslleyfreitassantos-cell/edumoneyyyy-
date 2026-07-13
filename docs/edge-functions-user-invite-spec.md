@@ -11,19 +11,27 @@
 Somente roles reais do enum atual:
 
 - `DIRECTOR`
+- `SECRETARY`
 - `TEACHER`
 - `STUDENT`
 - `GUARDIAN`
 
-`SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` continuam planejadas e nao sao
-aceitas pela funcao.
+`SCHOOL_ADMIN`, `ACCOUNT_ADMIN` e `SUPER_ADMIN` nao sao roles escolares de
+destino aceitas pela funcao. `ADMIN` e usado apenas como papel efetivo do
+solicitante autorizado.
+
+`GUARDIAN` e o papel persistido no banco. `parent` e somente identificador de
+apresentacao usado pela UI quando aplicavel.
 
 ## Autorizacao
 
 - O request precisa ter bearer token valido.
-- A funcao consulta a membership ativa do solicitante na `institutionId`.
-- Apenas `ADMIN` ou `DIRECTOR` ativos podem criar convites escolares.
-- Apenas `ADMIN` ativo pode convidar `DIRECTOR`.
+- A funcao consulta a instituicao ativa, a conta vinculada e a membership ativa
+  do solicitante na `institutionId`.
+- `ADMIN` efetivo pode convidar `DIRECTOR`, `SECRETARY`, `TEACHER`, `STUDENT`
+  e `GUARDIAN`.
+- `DIRECTOR` pode convidar `SECRETARY`, `TEACHER`, `STUDENT` e `GUARDIAN`.
+- `SECRETARY` pode convidar apenas `STUDENT` e `GUARDIAN`.
 - A role enviada pelo frontend nunca e usada como autoridade do solicitante.
 
 ## Payload
@@ -31,7 +39,7 @@ aceitas pela funcao.
 ```json
 {
   "institutionId": "uuid",
-  "role": "DIRECTOR | TEACHER | STUDENT | GUARDIAN",
+  "role": "DIRECTOR | SECRETARY | TEACHER | STUDENT | GUARDIAN",
   "fullName": "Nome completo",
   "email": "usuario@escola.com",
   "student": {

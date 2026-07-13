@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 
 export interface InviteContext {
@@ -38,6 +38,51 @@ export function clearInviteContext(): void {
   sessionStorage.removeItem('invite_context');
 }
 
+function clearInviteTokensFromUrl(): void {
+  window.history.replaceState(null, '', window.location.pathname);
+}
+
+type InviteConfirmation =
+  | {
+      kind: 'session';
+      accessToken: string;
+      refreshToken: string;
+    }
+  | {
+      kind: 'otp';
+      tokenHash: string;
+    };
+
+function getInviteConfirmationFromUrl(): InviteConfirmation {
+  const hashParams = new URLSearchParams(window.location.hash.substring(1));
+  const searchParams = new URLSearchParams(window.location.search);
+  const accessToken = hashParams.get('access_token');
+  const refreshToken = hashParams.get('refresh_token');
+  const tokenHash = searchParams.get('token_hash');
+  const type = hashParams.get('type') ?? searchParams.get('type');
+
+  if ((!accessToken || !refreshToken) && !tokenHash) {
+    throw new Error('Link de convite inválido ou ausente.');
+  }
+
+  if (type !== 'invite') {
+    throw new Error('Tipo de confirmação inválido.');
+  }
+
+  if (accessToken && refreshToken) {
+    return {
+      kind: 'session',
+      accessToken,
+      refreshToken,
+    };
+  }
+
+  return {
+    kind: 'otp',
+    tokenHash: tokenHash!,
+  };
+}
+
 export default function AuthConfirm() {
   const navigate = useNavigate();
   const processingRef = useRef(false);
@@ -51,31 +96,32 @@ export default function AuthConfirm() {
 
     async function confirmInvite() {
       try {
-        const hashParams = new URLSearchParams(window.location.hash.substring(1));
-        const accessToken = hashParams.get('access_token');
-        const refreshToken = hashParams.get('refresh_token');
-        const type = hashParams.get('type');
-
-        if (!accessToken || !refreshToken) {
-          throw new Error('Link de convite inválido ou ausente.');
-        }
-
-        if (type !== 'invite') {
-          throw new Error('Tipo de confirmação inválido.');
-        }
+        const confirmation = getInviteConfirmationFromUrl();
 
         clearInviteContext();
 
         // Expel local session before verifying
         await supabase.auth.signOut({ scope: 'local' });
 
-        const { error: sessionError } = await supabase.auth.setSession({
-          access_token: accessToken,
-          refresh_token: refreshToken,
-        });
+        if (confirmation.kind === 'session') {
+          const { error: sessionError } = await supabase.auth.setSession({
+            access_token: confirmation.accessToken,
+            refresh_token: confirmation.refreshToken,
+          });
 
-        if (sessionError) {
-          throw new Error('Convite inválido, expirado ou já utilizado.');
+          if (sessionError) {
+            throw new Error('Convite inválido, expirado ou já utilizado.');
+          }
+        } else {
+          const { error: verificationError } =
+            await supabase.auth.verifyOtp({
+              token_hash: confirmation.tokenHash,
+              type: 'invite',
+            });
+
+          if (verificationError) {
+            throw new Error('Convite inválido, expirado ou já utilizado.');
+          }
         }
 
         const {
@@ -95,13 +141,14 @@ export default function AuthConfirm() {
         });
 
         // Clear tokens from the address bar securely
-        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        clearInviteTokensFromUrl();
 
         navigate('/set-password', { replace: true });
       } catch (err) {
         // Expel any bad state again
         await supabase.auth.signOut({ scope: 'local' });
         clearInviteContext();
+        clearInviteTokensFromUrl();
 
         if (err instanceof Error) {
           setError(err.message);
