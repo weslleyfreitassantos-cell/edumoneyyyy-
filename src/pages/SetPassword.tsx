@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { getInviteContext, clearInviteContext, type InviteContext } from './AuthConfirm';
+import { validatePasswordConfirmation } from '../schemas/authSchemas';
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
@@ -64,13 +65,13 @@ export default function SetPassword() {
 
     if (!inviteContext) return;
 
-    if (password.length < 8) {
-      setErrorMessage('A senha deve possuir pelo menos 8 caracteres.');
-      return;
-    }
+    const passwordError = validatePasswordConfirmation(
+      password,
+      passwordConfirmation,
+    );
 
-    if (password !== passwordConfirmation) {
-      setErrorMessage('As senhas informadas não são iguais.');
+    if (passwordError) {
+      setErrorMessage(passwordError);
       return;
     }
 
