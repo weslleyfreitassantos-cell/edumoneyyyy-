@@ -14,7 +14,6 @@ import {
   type UpdateClientAccountInput,
   type UpdateClientAccountResponse,
 } from '../services/accountService';
-import { userInstitutionKeys } from './useUserInstitutions';
 
 export const accountKeys = {
   all: ['accounts'] as const,
@@ -87,7 +86,7 @@ export function useUpdateClientAccount() {
 }
 
 export function useCreateInstitution(
-  profileId: string | undefined,
+  _profileId: string | undefined,
 ) {
   const queryClient = useQueryClient();
 
@@ -99,14 +98,9 @@ export function useCreateInstitution(
     mutationFn: (input) =>
       accountService.createInstitution(input),
     onSuccess: async () => {
-      await Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: accountKeys.all,
-        }),
-        queryClient.invalidateQueries({
-          queryKey: userInstitutionKeys.list(profileId),
-        }),
-      ]);
+      await queryClient.invalidateQueries({
+        queryKey: accountKeys.all,
+      });
     },
   });
 }

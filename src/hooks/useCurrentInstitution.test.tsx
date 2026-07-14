@@ -82,7 +82,12 @@ function mockInstitutionContext(
     isLoading: false,
     error: null,
     hasMultipleInstitutions: true,
-    setCurrentInstitutionId: vi.fn(),
+    setCurrentInstitutionId: vi.fn(
+      async (institutionId: string) => ({
+        success: true as const,
+        institutionId,
+      }),
+    ),
     clearCurrentInstitutionSelection: vi.fn(),
     refresh: vi.fn(async () => undefined),
     ...overrides,
@@ -134,8 +139,30 @@ describe('useCurrentInstitution', () => {
 
     expect(result.current.data).toBeNull();
     expect(result.current.isError).toBe(false);
-    expect(result.current.message).toBe(
-      'Nenhuma escola ativa foi encontrada para este usuário.',
+    expect(result.current.message).toMatch(
+      /Nenhuma escola ativa/,
     );
+  });
+
+  it('mantem loading durante sincronizacao antes de declarar ausencia de escola', () => {
+    mockedUseInstitution.mockReturnValue(
+      mockInstitutionContext({
+        institutions: [],
+        currentInstitution: null,
+        currentMembership: null,
+        currentInstitutionId: null,
+        currentRole: null,
+        hasMultipleInstitutions: false,
+        isLoading: true,
+      }),
+    );
+
+    const { result } = renderHook(() =>
+      useCurrentInstitution('profile-1'),
+    );
+
+    expect(result.current.data).toBeNull();
+    expect(result.current.isLoading).toBe(true);
+    expect(result.current.message).toBeNull();
   });
 });

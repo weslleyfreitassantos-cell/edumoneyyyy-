@@ -80,7 +80,12 @@ function mockInstitutionContext(
     isLoading: false,
     error: null,
     hasMultipleInstitutions: false,
-    setCurrentInstitutionId: vi.fn(),
+    setCurrentInstitutionId: vi.fn(
+      async (institutionId: string) => ({
+        success: true as const,
+        institutionId,
+      }),
+    ),
     clearCurrentInstitutionSelection: vi.fn(),
     refresh: vi.fn(async () => undefined),
     ...overrides,
@@ -96,6 +101,34 @@ afterEach(() => {
 });
 
 describe('InstitutionSwitcher', () => {
+  it('mostra loading acessivel', () => {
+    mockedUseInstitution.mockReturnValue(
+      mockInstitutionContext({
+        isLoading: true,
+      }),
+    );
+
+    render(<InstitutionSwitcher />);
+
+    expect(
+      screen.getByRole('status').textContent,
+    ).toMatch(/Carregando escola/i);
+  });
+
+  it('mostra erro preservando mensagem global', () => {
+    mockedUseInstitution.mockReturnValue(
+      mockInstitutionContext({
+        error: new Error('Falha'),
+      }),
+    );
+
+    render(<InstitutionSwitcher />);
+
+    expect(
+      screen.getByRole('status').textContent,
+    ).toMatch(/carregar escolas/i);
+  });
+
   it('mostra o nome da escola unica', () => {
     mockedUseInstitution.mockReturnValue(
       mockInstitutionContext(),
@@ -126,9 +159,10 @@ describe('InstitutionSwitcher', () => {
 
     const select = screen.getByLabelText(
       'Selecionar escola atual',
-    );
+    ) as HTMLSelectElement;
 
     expect(select).toBeTruthy();
+    expect(select.value).toBe('institution-1');
     expect(
       screen.getByText(
         'Escola Norte - Direção',
@@ -155,7 +189,12 @@ describe('InstitutionSwitcher', () => {
   });
 
   it('chama setCurrentInstitutionId ao trocar escola', () => {
-    const setCurrentInstitutionId = vi.fn();
+    const setCurrentInstitutionId = vi.fn(
+      async (institutionId: string) => ({
+        success: true as const,
+        institutionId,
+      }),
+    );
 
     mockedUseInstitution.mockReturnValue(
       mockInstitutionContext({
@@ -184,5 +223,49 @@ describe('InstitutionSwitcher', () => {
     expect(setCurrentInstitutionId).toHaveBeenCalledWith(
       'institution-2',
     );
+  });
+
+  it('gera ids diferentes para duas instancias no mesmo DOM', () => {
+    mockedUseInstitution.mockReturnValue(
+      mockInstitutionContext({
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        hasMultipleInstitutions: true,
+      }),
+    );
+
+    render(
+      <>
+        <InstitutionSwitcher />
+        <InstitutionSwitcher />
+      </>,
+    );
+
+    const selects =
+      screen.getAllByLabelText(
+        'Selecionar escola atual',
+      ) as HTMLSelectElement[];
+    const ids = selects.map((select) => select.id);
+
+    expect(selects.length).toBe(2);
+    expect(new Set(ids).size).toBe(2);
+
+    selects.forEach((select) => {
+      const label = document.querySelector(
+        `label[for="${select.id}"]`,
+      );
+      const descriptionId =
+        select.getAttribute('aria-describedby');
+
+      expect(label).toBeTruthy();
+      expect(descriptionId).toBeTruthy();
+      expect(
+        descriptionId
+          ? document.getElementById(descriptionId)
+          : null,
+      ).toBeTruthy();
+    });
   });
 });

@@ -1,45 +1,33 @@
 import {
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import {
-  Bell,
-  Check,
+  ChevronDown,
+  LogOut,
   Menu,
-  MessageSquare,
-  Search,
-  Settings,
+  PanelLeftClose,
+  PanelLeftOpen,
 } from 'lucide-react';
 import {
-  AnimatePresence,
-  motion,
-} from 'motion/react';
+  useEffect,
+  useRef,
+  useState,
+  type RefObject,
+} from 'react';
 
+import InstitutionSwitcher from './InstitutionSwitcher';
 import type { User } from '../types';
-
-export interface HeaderNotification {
-  id: string;
-  text: string;
-  time: string;
-  unread: boolean;
-}
 
 interface HeaderProps {
   currentUser: User;
-  onOpenSidebar: () => void;
-  searchPlaceholder?: string;
-
-  notifications?: HeaderNotification[];
-  onNotificationClick?: () => void;
-  onNotificationSelect?: (
-    notification: HeaderNotification,
-  ) => void;
-  onMarkAllNotificationsRead?: () => void;
-
-  onSearchChange?: (searchTerm: string) => void;
-  onMessagesClick?: () => void;
-  onSettingsClick?: () => void;
+  pageTitle: string;
+  pageSection: string;
+  showInstitutionSwitcher: boolean;
+  isSidebarCollapsed: boolean;
+  isMobileSidebarOpen: boolean;
+  isLoggingOut: boolean;
+  mobileSidebarId: string;
+  onOpenMobileSidebar: () => void;
+  onToggleSidebar: () => void;
+  onLogout: () => void;
+  mobileMenuButtonRef?: RefObject<HTMLButtonElement | null>;
 }
 
 function getUserInitials(name: string): string {
@@ -56,333 +44,239 @@ function getUserInitials(name: string): string {
 
 export default function Header({
   currentUser,
-  onOpenSidebar,
-  searchPlaceholder = 'Pesquisar dados, alunos ou turmas...',
-  notifications = [],
-  onNotificationClick,
-  onNotificationSelect,
-  onMarkAllNotificationsRead,
-  onSearchChange,
-  onMessagesClick,
-  onSettingsClick,
+  pageTitle,
+  pageSection,
+  showInstitutionSwitcher,
+  isSidebarCollapsed,
+  isMobileSidebarOpen,
+  isLoggingOut,
+  mobileSidebarId,
+  onOpenMobileSidebar,
+  onToggleSidebar,
+  onLogout,
+  mobileMenuButtonRef,
 }: HeaderProps) {
-  const [showNotifications, setShowNotifications] =
+  const [isUserMenuOpen, setIsUserMenuOpen] =
     useState(false);
-
-  const [searchTerm, setSearchTerm] =
-    useState('');
-
   const [avatarFailed, setAvatarFailed] =
     useState(false);
+  const userMenuRef =
+    useRef<HTMLDivElement | null>(null);
 
   const avatarUrl =
     currentUser.avatar?.trim() || null;
-
   const userInitials =
     getUserInitials(currentUser.name);
-
-  const unreadCount = useMemo(
-    () =>
-      notifications.filter(
-        (notification) => notification.unread,
-      ).length,
-    [notifications],
-  );
 
   useEffect(() => {
     setAvatarFailed(false);
   }, [avatarUrl]);
 
   useEffect(() => {
-    if (!showNotifications) {
+    if (!isUserMenuOpen) {
       return;
     }
 
-    function handleEscape(event: KeyboardEvent) {
+    function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
-        setShowNotifications(false);
+        setIsUserMenuOpen(false);
       }
     }
 
-    window.addEventListener('keydown', handleEscape);
+    function handlePointerDown(event: PointerEvent) {
+      if (
+        userMenuRef.current &&
+        event.target instanceof Node &&
+        !userMenuRef.current.contains(event.target)
+      ) {
+        setIsUserMenuOpen(false);
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener(
+      'pointerdown',
+      handlePointerDown,
+    );
 
     return () => {
       window.removeEventListener(
         'keydown',
-        handleEscape,
+        handleKeyDown,
+      );
+      window.removeEventListener(
+        'pointerdown',
+        handlePointerDown,
       );
     };
-  }, [showNotifications]);
+  }, [isUserMenuOpen]);
 
-  function handleToggleNotifications(): void {
-    const nextValue = !showNotifications;
-
-    setShowNotifications(nextValue);
-
-    if (nextValue) {
-      onNotificationClick?.();
-    }
-  }
-
-  function handleSearch(
-    value: string,
-  ): void {
-    setSearchTerm(value);
-    onSearchChange?.(value);
-  }
-
-  function handleNotificationSelection(
-    notification: HeaderNotification,
-  ): void {
-    onNotificationSelect?.(notification);
-    setShowNotifications(false);
+  function handleLogout(): void {
+    setIsUserMenuOpen(false);
+    onLogout();
   }
 
   return (
-    <header
-      className="sticky top-0 z-40 flex h-16 items-center justify-between border-b border-[#dfe3e8] bg-white px-6"
-      id="app-header"
-    >
-      <div className="flex flex-1 items-center gap-4">
+    <header className="sticky top-0 z-30 border-b border-[#d8deea] bg-white/95 shadow-sm backdrop-blur">
+      <div className="flex min-h-16 items-center gap-3 px-4 sm:px-5 lg:px-6">
         <button
+          ref={mobileMenuButtonRef}
           type="button"
-          className="rounded-full p-2 text-[#414754] transition-colors hover:bg-[#f1f4fa] lg:hidden"
-          onClick={onOpenSidebar}
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] lg:hidden"
+          onClick={onOpenMobileSidebar}
           aria-label="Abrir menu de navegação"
+          aria-expanded={isMobileSidebarOpen}
+          aria-controls={mobileSidebarId}
         >
-          <Menu className="h-5 w-5" />
+          <Menu
+            className="h-5 w-5"
+            aria-hidden="true"
+          />
         </button>
 
-        <div
-          className="relative hidden w-full max-w-md md:block"
-          id="search-input-container"
+        <button
+          type="button"
+          className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] lg:inline-flex"
+          onClick={onToggleSidebar}
+          aria-label={
+            isSidebarCollapsed
+              ? 'Expandir sidebar'
+              : 'Recolher sidebar'
+          }
+          aria-expanded={!isSidebarCollapsed}
+          aria-controls={mobileSidebarId}
         >
-          <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-[#727785]">
-            <Search className="h-4 w-4" />
-          </span>
+          {isSidebarCollapsed ? (
+            <PanelLeftOpen
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          ) : (
+            <PanelLeftClose
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          )}
+        </button>
 
-          <input
-            type="search"
-            value={searchTerm}
-            onChange={(event) =>
-              handleSearch(event.target.value)
-            }
-            placeholder={searchPlaceholder}
-            aria-label={searchPlaceholder}
-            className="w-full rounded-full border-none bg-[#f1f4fa] py-2 pl-10 pr-4 text-sm font-medium text-[#181c20] outline-none transition-all placeholder:text-[#727785]/70 focus:ring-2 focus:ring-[#005bbf]"
-          />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+            {pageSection}
+          </p>
+          <h1 className="truncate text-lg font-extrabold leading-tight text-[#181c20] sm:text-xl">
+            {pageTitle}
+          </h1>
         </div>
-      </div>
 
-      <div className="flex items-center gap-2">
-        <div className="relative">
+        {showInstitutionSwitcher && (
+          <div className="hidden min-w-0 max-w-[22rem] md:block">
+            <InstitutionSwitcher />
+          </div>
+        )}
+
+        <div
+          ref={userMenuRef}
+          className="relative"
+        >
           <button
             type="button"
-            onClick={handleToggleNotifications}
-            className="relative cursor-pointer rounded-full p-2.5 transition-all hover:bg-[#f1f4fa]"
-            aria-label={
-              unreadCount > 0
-                ? `Abrir notificações. ${unreadCount} não lidas.`
-                : 'Abrir notificações'
+            className="flex min-h-11 items-center gap-2 rounded-xl border border-transparent px-1.5 py-1 outline-none transition-colors hover:border-[#d8deea] hover:bg-[#f8faff] focus-visible:ring-2 focus-visible:ring-[#005bbf] sm:px-2"
+            onClick={() =>
+              setIsUserMenuOpen((value) => !value)
             }
-            aria-expanded={showNotifications}
-            aria-controls="header-notifications-panel"
+            aria-label="Abrir menu do usuário"
+            aria-expanded={isUserMenuOpen}
+            aria-controls="header-user-menu"
           >
-            <Bell className="h-5 w-5 text-[#414754]" />
+            <span className="hidden min-w-0 text-right leading-tight xl:block">
+              <span className="block max-w-44 truncate text-sm font-bold text-[#181c20]">
+                {currentUser.name}
+              </span>
+              <span className="block truncate text-xs text-[#667085]">
+                {currentUser.subtitle}
+              </span>
+            </span>
 
-            {unreadCount > 0 && (
-              <span
-                className="absolute right-2 top-2 h-2 w-2 rounded-full border border-white bg-[#ba1a1a]"
-                aria-hidden="true"
-              />
-            )}
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
+              {avatarUrl && !avatarFailed ? (
+                <img
+                  className="h-full w-full object-cover"
+                  alt={`Foto de ${currentUser.name}`}
+                  src={avatarUrl}
+                  referrerPolicy="no-referrer"
+                  onError={() =>
+                    setAvatarFailed(true)
+                  }
+                />
+              ) : (
+                <span aria-hidden="true">
+                  {userInitials}
+                </span>
+              )}
+            </span>
+
+            <ChevronDown
+              className={`hidden h-4 w-4 text-[#667085] transition-transform sm:block ${
+                isUserMenuOpen
+                  ? 'rotate-180'
+                  : ''
+              }`}
+              aria-hidden="true"
+            />
           </button>
 
-          <AnimatePresence>
-            {showNotifications && (
-              <>
+          {isUserMenuOpen && (
+            <section
+              id="header-user-menu"
+              className="absolute right-0 mt-2 w-72 overflow-hidden rounded-xl border border-[#d8deea] bg-white shadow-xl shadow-slate-950/10"
+              aria-label="Menu do usuário"
+            >
+              <div className="border-b border-[#e4e8f1] bg-[#f8faff] p-4">
+                <div className="flex items-start gap-3">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f]">
+                    {userInitials}
+                  </span>
+
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-bold text-[#181c20]">
+                      {currentUser.name}
+                    </p>
+                    <p className="mt-0.5 truncate text-xs text-[#667085]">
+                      {currentUser.email}
+                    </p>
+                    <p className="mt-2 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#d8deea]">
+                      {currentUser.subtitle}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-2">
                 <button
                   type="button"
-                  className="fixed inset-0 z-40 cursor-default"
-                  onClick={() =>
-                    setShowNotifications(false)
-                  }
-                  aria-label="Fechar notificações"
-                />
-
-                <motion.section
-                  id="header-notifications-panel"
-                  initial={{
-                    opacity: 0,
-                    y: 10,
-                    scale: 0.95,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: 10,
-                    scale: 0.95,
-                  }}
-                  transition={{ duration: 0.15 }}
-                  className="absolute right-0 z-50 mt-2 w-80 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-lg"
-                  aria-label="Notificações"
+                  onClick={handleLogout}
+                  disabled={isLoggingOut}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
                 >
-                  <header className="flex items-center justify-between border-b border-[#dfe3e8] bg-[#f1f4fa] p-3.5">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#181c20]">
-                      Notificações
-                    </span>
-
-                    {unreadCount > 0 &&
-                      onMarkAllNotificationsRead && (
-                        <button
-                          type="button"
-                          onClick={
-                            onMarkAllNotificationsRead
-                          }
-                          className="flex items-center gap-1 text-[10px] font-bold text-[#005bbf] hover:underline"
-                        >
-                          <Check className="h-3 w-3" />
-
-                          Marcar como lidas
-                        </button>
-                      )}
-                  </header>
-
-                  <div className="max-h-64 overflow-y-auto">
-                    {notifications.length === 0 ? (
-                      <div className="p-8 text-center">
-                        <Bell
-                          className="mx-auto h-8 w-8 text-[#c1c6d6]"
-                          aria-hidden="true"
-                        />
-
-                        <p className="mt-3 text-xs font-semibold text-[#414754]">
-                          Nenhuma notificação disponível
-                        </p>
-
-                        <p className="mt-1 text-[10px] text-[#727785]">
-                          Novos avisos aparecerão aqui.
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="divide-y divide-[#dfe3e8]">
-                        {notifications.map(
-                          (notification) => (
-                            <button
-                              type="button"
-                              key={notification.id}
-                              onClick={() =>
-                                handleNotificationSelection(
-                                  notification,
-                                )
-                              }
-                              className={`block w-full p-3 text-left text-xs transition-colors hover:bg-[#f1f4fa] ${notification.unread
-                                  ? 'bg-[#1a73e8]/5 font-semibold'
-                                  : 'text-[#414754]'
-                                }`}
-                            >
-                              <p className="leading-snug text-[#181c20]">
-                                {notification.text}
-                              </p>
-
-                              <span className="mt-1 block text-[10px] text-[#727785]">
-                                {notification.time}
-                              </span>
-                            </button>
-                          ),
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </motion.section>
-              </>
-            )}
-          </AnimatePresence>
-        </div>
-
-        <button
-          type="button"
-          onClick={onMessagesClick}
-          disabled={!onMessagesClick}
-          className="cursor-pointer rounded-full p-2.5 transition-all hover:bg-[#f1f4fa] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
-          aria-label={
-            onMessagesClick
-              ? 'Abrir mensagens'
-              : 'Mensagens ainda não disponíveis'
-          }
-          title={
-            onMessagesClick
-              ? 'Mensagens'
-              : 'Módulo de mensagens em desenvolvimento'
-          }
-        >
-          <MessageSquare className="h-5 w-5 text-[#414754]" />
-        </button>
-
-        <button
-          type="button"
-          onClick={onSettingsClick}
-          disabled={!onSettingsClick}
-          className="cursor-pointer rounded-full p-2.5 transition-all hover:bg-[#f1f4fa] disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-transparent"
-          aria-label={
-            onSettingsClick
-              ? 'Abrir configurações'
-              : 'Configurações ainda não disponíveis'
-          }
-          title={
-            onSettingsClick
-              ? 'Configurações'
-              : 'Módulo de configurações em desenvolvimento'
-          }
-        >
-          <Settings className="h-5 w-5 text-[#414754]" />
-        </button>
-
-        <div
-          className="mx-2 hidden h-8 w-px bg-[#c1c6d6] sm:block"
-          aria-hidden="true"
-        />
-
-        <div
-          className="flex items-center gap-3 pl-2"
-          id="header-user-profile"
-        >
-          <div className="hidden text-right leading-tight sm:block">
-            <p className="text-xs font-bold text-[#181c20]">
-              {currentUser.name}
-            </p>
-
-            <p className="text-[10px] font-medium text-[#414754]">
-              {currentUser.subtitle}
-            </p>
-          </div>
-
-          <div className="h-10 w-10 overflow-hidden rounded-full border-2 border-[#1a73e8]/30 bg-[#005bbf]">
-            {avatarUrl && !avatarFailed ? (
-              <img
-                className="h-full w-full object-cover"
-                alt={`Foto de ${currentUser.name}`}
-                src={avatarUrl}
-                referrerPolicy="no-referrer"
-                onError={() =>
-                  setAvatarFailed(true)
-                }
-              />
-            ) : (
-              <span
-                className="flex h-full w-full items-center justify-center text-sm font-bold text-white"
-                aria-label={`Usuário ${currentUser.name}`}
-              >
-                {userInitials}
-              </span>
-            )}
-          </div>
+                  <LogOut
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                  {isLoggingOut
+                    ? 'Saindo...'
+                    : 'Sair'}
+                </button>
+              </div>
+            </section>
+          )}
         </div>
       </div>
+
+      {showInstitutionSwitcher && (
+        <div className="border-t border-[#e4e8f1] px-4 py-2 md:hidden">
+          <InstitutionSwitcher />
+        </div>
+      )}
     </header>
   );
 }

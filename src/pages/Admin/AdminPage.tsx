@@ -4,7 +4,6 @@ import {
 } from 'react';
 import { Navigate } from 'react-router-dom';
 
-import InstitutionSwitcher from '../../components/InstitutionSwitcher';
 import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from '../../components/grades/InstitutionGradesPanel';
 import InstitutionTermClosingPanel from '../../components/academic/InstitutionTermClosingPanel';
@@ -183,7 +182,7 @@ export default function AdminPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+      <div>
         <div>
           <h2 className="text-2xl font-bold text-[#181c20]">
             Administração
@@ -193,8 +192,6 @@ export default function AdminPage() {
             Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
           </p>
         </div>
-
-        <InstitutionSwitcher />
       </div>
 
       <div className="flex gap-2 overflow-x-auto border-b border-[#dfe3e8] pb-px">
