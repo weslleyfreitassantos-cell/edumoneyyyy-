@@ -4,7 +4,26 @@ import {
   useState,
   type FormEvent,
 } from 'react';
+import {
+  ArrowLeft,
+  CheckCircle2,
+  KeyRound,
+  Loader2,
+  Save,
+  ShieldAlert,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  AuthAlert,
+  AuthButton,
+  AuthPageHeader,
+  AuthPasswordInput,
+  AuthShell,
+  AuthStatusPanel,
+  authPlainLinkClass,
+  authPrimaryActionLinkClass,
+  authSecondaryActionClass,
+} from '../components/auth/AuthLayout';
 import { supabase } from '../lib/supabaseClient';
 import { validatePasswordConfirmation } from '../schemas/authSchemas';
 
@@ -282,8 +301,13 @@ export default function ResetPassword() {
     useState<RecoveryContext | null>(null);
   const [pageError, setPageError] = useState<string | null>(null);
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [passwordConfirmation, setPasswordConfirmation] =
     useState('');
+  const [
+    showPasswordConfirmation,
+    setShowPasswordConfirmation,
+  ] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(
@@ -427,142 +451,148 @@ export default function ResetPassword() {
 
   if (isChecking) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <div className="rounded-xl border bg-white p-8 text-sm text-gray-500 shadow-sm">
-          Validando link de recuperacao...
-        </div>
-      </main>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={Loader2}
+          title="Validando link de recuperacao..."
+          description="Aguarde enquanto confirmamos a sessao temporaria de redefinicao."
+        />
+      </AuthShell>
     );
   }
 
   if (successMessage) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <section className="w-full max-w-md rounded-xl border border-green-200 bg-green-50 p-8 text-center shadow-sm">
-          <h1 className="text-xl font-bold text-green-800">
-            Senha atualizada com sucesso
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-green-700">
-            Agora voce pode entrar usando sua nova senha.
-          </p>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={CheckCircle2}
+          variant="success"
+          title="Senha atualizada com sucesso"
+          description="Agora voce pode entrar usando sua nova senha."
+        >
           <Link
             to="/login"
-            className="mt-6 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]"
+            className={authPrimaryActionLinkClass}
           >
             Ir para o login
           </Link>
-        </section>
-      </main>
+        </AuthStatusPanel>
+      </AuthShell>
     );
   }
 
   if (pageError || !recoveryContext) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <section className="w-full max-w-md rounded-xl border bg-white p-8 shadow-sm">
-          <h1 className="text-xl font-bold text-gray-900">
-            Link de recuperacao invalido
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-gray-600">
-            {pageError ??
-              'Sessao de recuperacao ausente. Solicite um novo link.'}
-          </p>
-          <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+      <AuthShell>
+        <AuthStatusPanel
+          icon={ShieldAlert}
+          variant="error"
+          title="Link de recuperacao invalido"
+          description={
+            pageError ??
+            'Sessao de recuperacao ausente. Solicite um novo link.'
+          }
+        >
+          <div className="grid gap-3 sm:grid-cols-2">
             <Link
               to="/forgot-password"
-              className="inline-flex justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]"
+              className={authPrimaryActionLinkClass}
             >
               Solicitar novo link
             </Link>
             <Link
               to="/login"
-              className="inline-flex justify-center rounded-lg border px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className={authSecondaryActionClass}
             >
               Voltar ao login
             </Link>
           </div>
-        </section>
-      </main>
+        </AuthStatusPanel>
+      </AuthShell>
     );
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-      <section className="w-full max-w-md rounded-xl border bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-bold text-gray-900">
-          Definir nova senha
-        </h1>
-        <p className="mt-2 text-sm leading-relaxed text-gray-600">
-          Use pelo menos 8 caracteres para atualizar sua senha.
+    <AuthShell>
+      <AuthPageHeader
+        icon={KeyRound}
+        title="Definir nova senha"
+        description="Use pelo menos 8 caracteres para atualizar sua senha com seguranca."
+      />
+
+      <div className="mb-6 rounded-lg border border-[#dce1ff] bg-[#f4f6ff] px-4 py-3 text-sm leading-5 text-[#264191]">
+        Redefinindo senha para:{' '}
+        <strong>{recoveryContext.email}</strong>
+      </div>
+
+      <form
+        onSubmit={(event) => void handleSubmit(event)}
+        noValidate
+        className="space-y-5"
+      >
+        {formError && (
+          <AuthAlert variant="error">{formError}</AuthAlert>
+        )}
+
+        <AuthPasswordInput
+          id="recovery-password"
+          label="Nova senha"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          autoComplete="new-password"
+          minLength={8}
+          required
+          isVisible={showPassword}
+          onToggleVisibility={() =>
+            setShowPassword((current) => !current)
+          }
+          showLabel="Mostrar nova senha"
+          hideLabel="Ocultar nova senha"
+        />
+
+        <AuthPasswordInput
+          id="recovery-password-confirmation"
+          label="Confirmar nova senha"
+          value={passwordConfirmation}
+          onChange={(event) =>
+            setPasswordConfirmation(event.target.value)
+          }
+          autoComplete="new-password"
+          minLength={8}
+          required
+          isVisible={showPasswordConfirmation}
+          onToggleVisibility={() =>
+            setShowPasswordConfirmation((current) => !current)
+          }
+          showLabel="Mostrar confirmacao da senha"
+          hideLabel="Ocultar confirmacao da senha"
+        />
+
+        <p className="rounded-lg bg-[#f3f4f5] px-3 py-2 text-xs leading-5 text-[#444651]">
+          Criterio de senha: minimo de 8 caracteres.
         </p>
 
-        <form
-          onSubmit={(event) => void handleSubmit(event)}
-          noValidate
-          className="mt-6 space-y-4"
+        <AuthButton
+          type="submit"
+          loading={isSubmitting}
+          icon={Save}
         >
-          {formError && (
-            <div
-              role="alert"
-              className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
-            >
-              {formError}
-            </div>
-          )}
+          {isSubmitting ? 'Atualizando...' : 'Atualizar senha'}
+        </AuthButton>
+      </form>
 
-          <div>
-            <label
-              htmlFor="recovery-password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Nova senha
-            </label>
-            <input
-              id="recovery-password"
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete="new-password"
-              minLength={8}
-              required
-              className="mt-1 w-full rounded-lg border px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="recovery-password-confirmation"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Confirmar nova senha
-            </label>
-            <input
-              id="recovery-password-confirmation"
-              type="password"
-              value={passwordConfirmation}
-              onChange={(event) =>
-                setPasswordConfirmation(event.target.value)
-              }
-              autoComplete="new-password"
-              minLength={8}
-              required
-              className="mt-1 w-full rounded-lg border px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            />
-          </div>
-
-          <p className="text-xs leading-relaxed text-gray-500">
-            Criterio de senha: minimo de 8 caracteres.
-          </p>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {isSubmitting ? 'Atualizando...' : 'Atualizar senha'}
-          </button>
-        </form>
-      </section>
-    </main>
+      <div className="mt-6 border-t border-[#c5c5d3] pt-6 text-center">
+        <Link
+          to="/login"
+          className={authPlainLinkClass}
+        >
+          <ArrowLeft
+            className="h-4 w-4"
+            aria-hidden="true"
+          />
+          Voltar para o login
+        </Link>
+      </div>
+    </AuthShell>
   );
 }

@@ -144,4 +144,51 @@ describe("SetPassword", () => {
       expect(sessionStorage.getItem("invite_context")).toBeNull();
     });
   });
+
+  it("should not expose internal update errors", async () => {
+    sessionStorage.setItem(
+      "invite_context",
+      JSON.stringify({
+        userId: "user-123",
+        email: "test@example.com",
+        verifiedAt: Date.now(),
+        purpose: "invite",
+      })
+    );
+
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+
+    (supabase.auth.updateUser as any).mockResolvedValue({
+      error: { message: "postgres policy leaked detail" },
+    });
+
+    render(
+      <MemoryRouter>
+        <SetPassword />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText(/Defina sua senha/i)).toBeDefined();
+    });
+
+    fireEvent.change(screen.getByLabelText(/Nova senha/i), {
+      target: { value: "StrongPass123!" },
+    });
+    fireEvent.change(screen.getByLabelText(/Confirme a senha/i), {
+      target: { value: "StrongPass123!" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Definir senha e acessar/i }));
+
+    await waitFor(() => {
+      expect(screen.getByRole("alert").textContent).toMatch(
+        /Nao foi possivel definir a senha/i
+      );
+      expect(screen.queryByText(/postgres policy/i)).toBeNull();
+    });
+  });
 });

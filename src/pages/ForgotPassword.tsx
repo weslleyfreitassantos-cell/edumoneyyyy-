@@ -1,5 +1,19 @@
 import { useRef, useState, type FormEvent } from 'react';
+import {
+  ArrowLeft,
+  KeyRound,
+  Mail,
+  Send,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  AuthAlert,
+  AuthButton,
+  AuthPageHeader,
+  AuthShell,
+  AuthTextInput,
+  authPlainLinkClass,
+} from '../components/auth/AuthLayout';
 import { supabase } from '../lib/supabaseClient';
 import { authEmailSchema } from '../schemas/authSchemas';
 
@@ -131,87 +145,67 @@ export default function ForgotPassword() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
-      <section className="w-full max-w-md rounded-lg bg-white p-8 shadow">
-        <div>
-          <h1 className="text-center text-3xl font-bold text-gray-900">
-            Recuperar senha
-          </h1>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Informe seu e-mail para receber as instrucoes de redefinicao.
-          </p>
-        </div>
+    <AuthShell>
+      <AuthPageHeader
+        icon={KeyRound}
+        title="Recuperar senha"
+        description="Informe seu e-mail institucional para receber as instrucoes de redefinicao."
+      />
 
-        {feedback && (
-          <div
-            role="alert"
-            className={`mt-6 rounded-lg border px-3 py-2 text-sm ${
-              feedback.type === 'success'
-                ? 'border-green-200 bg-green-50 text-green-700'
-                : 'border-red-200 bg-red-50 text-red-700'
-            }`}
+      {feedback && (
+        <div className="mb-6">
+          <AuthAlert
+            variant={
+              feedback.type === 'success' ? 'success' : 'error'
+            }
           >
             {feedback.message}
-          </div>
-        )}
+          </AuthAlert>
+        </div>
+      )}
 
-        <form
-          onSubmit={(event) => void handleSubmit(event)}
-          noValidate
-          className="mt-6 space-y-4"
+      <form
+        onSubmit={(event) => void handleSubmit(event)}
+        noValidate
+        className="space-y-5"
+      >
+        <AuthTextInput
+          id="password-recovery-email"
+          label="E-mail institucional"
+          icon={Mail}
+          type="email"
+          value={email}
+          onChange={(event) => {
+            setEmail(event.target.value);
+            setFieldError(null);
+          }}
+          autoComplete="email"
+          error={fieldError}
+        />
+
+        <AuthButton
+          type="submit"
+          loading={isSubmitting}
+          icon={Send}
         >
-          <div>
-            <label
-              htmlFor="password-recovery-email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              E-mail
-            </label>
-            <input
-              id="password-recovery-email"
-              type="email"
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-                setFieldError(null);
-              }}
-              autoComplete="email"
-              aria-invalid={Boolean(fieldError)}
-              aria-describedby={
-                fieldError
-                  ? 'password-recovery-email-error'
-                  : undefined
-              }
-              className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring-blue-500"
-            />
-            {fieldError && (
-              <p
-                id="password-recovery-email-error"
-                className="mt-1 text-sm text-red-700"
-              >
-                {fieldError}
-              </p>
-            )}
-          </div>
+          {isSubmitting
+            ? 'Enviando...'
+            : 'Enviar link de recuperacao'}
+        </AuthButton>
+      </form>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full rounded-md bg-blue-600 px-4 py-2 text-white shadow-sm hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {isSubmitting
-              ? 'Enviando...'
-              : 'Enviar link de recuperacao'}
-          </button>
-        </form>
-
+      <div className="mt-6 border-t border-[#c5c5d3] pt-6 text-center">
         <Link
           to="/login"
-          className="mt-6 block text-center text-sm font-medium text-blue-700 hover:text-blue-800"
+          className={authPlainLinkClass}
         >
+          <ArrowLeft
+            className="h-4 w-4"
+            aria-hidden="true"
+          />
           Voltar para o login
         </Link>
-      </section>
-    </main>
+      </div>
+    </AuthShell>
   );
 }
