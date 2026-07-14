@@ -271,4 +271,34 @@ describe('SchoolUsersTab integration', () => {
         .hasAttribute('disabled'),
     ).toBe(true);
   });
+
+  it('mostra carregamento durante sincronizacao da instituicao sem falsa falta de permissao', () => {
+    mockTabState({
+      institutionId: '',
+      currentRole: null,
+    });
+    mockedUseCurrentInstitution.mockReturnValue({
+      data: null,
+      institution: null,
+      membership: null,
+      currentInstitution: null,
+      currentMembership: null,
+      currentInstitutionId: null,
+      currentRole: null,
+      isLoading: true,
+      isError: false,
+      error: null,
+      message: null,
+      refetch: vi.fn(async () => undefined),
+    });
+
+    render(createElement(SchoolUsersTab));
+
+    expect(
+      screen.getByText(/Carregando institu/i),
+    ).toBeTruthy();
+    expect(
+      screen.queryByText(/papel efetivo/i),
+    ).toBeNull();
+  });
 });

@@ -11,7 +11,10 @@ import {
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
-import { useInstitution } from '../../contexts/InstitutionContext';
+import {
+  useInstitution,
+  type SelectInstitutionResult,
+} from '../../contexts/InstitutionContext';
 import {
   useCreateInstitution,
   useOwnedAccount,
@@ -39,6 +42,27 @@ function getErrorMessage(error: unknown): string {
   }
 
   return 'Operacao nao concluida.';
+}
+
+type SelectInstitutionFailure = Extract<
+  SelectInstitutionResult,
+  { success: false }
+>;
+
+function getSelectionFailureMessage(
+  result: SelectInstitutionFailure,
+): string {
+  if (result.reason === 'REFETCH_FAILED') {
+    return (
+      result.message ??
+      'A instituicao foi criada, mas nao foi possivel atualizar a lista de instituicoes.'
+    );
+  }
+
+  return (
+    result.message ??
+    'A instituicao foi criada, mas ainda nao foi possivel ativa-la. Atualize a lista de instituicoes e tente seleciona-la novamente.'
+  );
 }
 
 export default function AccountPage() {
@@ -83,20 +107,72 @@ export default function AccountPage() {
     }
 
     try {
-      await createInstitution.mutateAsync({
-        accountId: account.id,
-        name: form.name,
-        cnpj: form.cnpj || undefined,
-        email: form.email || undefined,
-        phone: form.phone || undefined,
-        address: form.address || undefined,
-      });
+      const result =
+        await createInstitution.mutateAsync({
+          accountId: account.id,
+          name: form.name,
+          cnpj: form.cnpj || undefined,
+          email: form.email || undefined,
+          phone: form.phone || undefined,
+          address: form.address || undefined,
+        });
+
+      const selectionResult =
+        await institutionContext.setCurrentInstitutionId(
+          result.institutionId,
+        );
 
       setForm(initialForm);
+
+      if (selectionResult.success === false) {
+        setFeedback({
+          type: 'error',
+          message:
+            getSelectionFailureMessage(
+              selectionResult,
+            ),
+        });
+        return;
+      }
+
       setFeedback({
         type: 'success',
-        message: 'Instituicao criada.',
+        message:
+          'Instituicao criada e selecionada com sucesso.',
       });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getErrorMessage(error),
+      });
+    }
+  }
+
+  async function handleSelectInstitution(
+    institutionId: string,
+  ): Promise<void> {
+    try {
+      const selectionResult =
+        await institutionContext.setCurrentInstitutionId(
+          institutionId,
+        );
+
+      if (selectionResult.success === true) {
+        setFeedback({
+          type: 'success',
+          message: 'Instituicao selecionada.',
+        });
+        return;
+      }
+
+      if (selectionResult.success === false) {
+        setFeedback({
+          type: 'error',
+          message:
+            selectionResult.message ??
+            'Nao foi possivel selecionar a instituicao. Atualize a lista e tente novamente.',
+        });
+      }
     } catch (error) {
       setFeedback({
         type: 'error',
@@ -107,36 +183,36 @@ export default function AccountPage() {
 
   if (accountQuery.isLoading) {
     return (
-      <main className="grid min-h-screen place-items-center bg-slate-50">
+      <div className="grid min-h-screen place-items-center bg-slate-50">
         <div className="text-sm text-[#727785]">
           Carregando conta...
         </div>
-      </main>
+      </div>
     );
   }
 
   if (accountQuery.isError) {
     return (
-      <main className="min-h-screen bg-slate-50 p-6">
+      <div className="min-h-screen bg-slate-50 p-6">
         <div className="mx-auto max-w-3xl rounded-lg border border-red-200 bg-red-50 p-5 text-sm text-red-700">
           {getErrorMessage(accountQuery.error)}
         </div>
-      </main>
+      </div>
     );
   }
 
   if (!account) {
     return (
-      <main className="min-h-screen bg-slate-50 p-6">
+      <div className="min-h-screen bg-slate-50 p-6">
         <div className="mx-auto max-w-3xl rounded-lg border border-amber-200 bg-amber-50 p-5 text-sm text-amber-700">
           Nenhuma conta comercial foi encontrada para este usuario.
         </div>
-      </main>
+      </div>
     );
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 p-6">
+    <div className="min-h-screen bg-slate-50 p-6">
       <div className="mx-auto max-w-7xl space-y-6">
         <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div>
@@ -328,7 +404,7 @@ export default function AccountPage() {
                     <button
                       type="button"
                       onClick={() =>
-                        institutionContext.setCurrentInstitutionId(
+                        void handleSelectInstitution(
                           institution.id,
                         )
                       }
@@ -349,6 +425,6 @@ export default function AccountPage() {
           )}
         </section>
       </div>
-    </main>
+    </div>
   );
 }
