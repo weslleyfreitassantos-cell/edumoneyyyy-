@@ -380,7 +380,7 @@ export default function PlatformPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#f8f9fa] px-4 py-6 text-[#191c1d] sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f8f9fa] px-4 py-6 text-[#191c1d] sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
@@ -864,6 +864,6 @@ export default function PlatformPage() {
           )}
         </section>
       </div>
-    </main>
+    </div>
   );
 }

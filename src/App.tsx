@@ -1,7 +1,6 @@
 import {
   lazy,
   Suspense,
-  useState,
   type ReactNode,
 } from 'react';
 
@@ -11,11 +10,6 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-
-import {
-  AnimatePresence,
-  motion,
-} from 'motion/react';
 
 import {
   QueryClient,
@@ -29,20 +23,15 @@ import {
 
 import { InstitutionProvider } from './contexts/InstitutionContext';
 
+import AppShell from './components/AppShell';
 import { ProtectedRoute } from './components/ProtectedRoute';
-
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
 
 import {
   mapDatabaseRole,
   mapPlatformRole,
 } from './lib/roles';
 
-import type {
-  User,
-  UserRole,
-} from './types';
+import type { UserRole } from './types';
 
 const Login = lazy(() =>
   import('./pages/Login').then((module) => ({
@@ -129,43 +118,13 @@ const queryClient = new QueryClient({
   },
 });
 
-const roleToSubtitle: Record<
-  UserRole,
-  string
-> = {
-  super_admin: 'Super Admin',
-  admin: 'Administrador',
-  director: 'Diretor',
-  secretary: 'Secretaria',
-  teacher: 'Professor',
-  student: 'Aluno',
-  parent: 'Responsável',
-};
-
-const searchPlaceholders: Record<
-  UserRole,
-  string
-> = {
-  super_admin:
-    'Pesquisar contas ou instituições...',
-  admin:
-    'Pesquisar conta ou instituições...',
-  director:
-    'Pesquisar dados, alunos ou professores...',
-  secretary:
-    'Pesquisar alunos, responsáveis ou matrículas...',
-  teacher:
-    'Pesquisar alunos ou turmas...',
-  student:
-    'Pesquisar disciplinas ou notas...',
-  parent:
-    'Pesquisar aluno, nota ou evento...',
-};
-
 function PageLoading() {
   return (
     <main className="grid min-h-screen place-items-center bg-slate-50">
-      <div className="text-center">
+      <div
+        role="status"
+        className="text-center"
+      >
         <div
           className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
           aria-hidden="true"
@@ -232,7 +191,7 @@ function InvalidRolePage({
         <button
           type="button"
           onClick={() => void onLogout()}
-          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
+          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8] focus:outline-none focus:ring-2 focus:ring-[#005bbf] focus:ring-offset-2"
         >
           Sair
         </button>
@@ -241,73 +200,8 @@ function InvalidRolePage({
   );
 }
 
-function ModulePlaceholder({
-  moduleName,
-  onReturn,
-}: {
-  moduleName: string;
-  onReturn: () => void;
-}) {
-  return (
-    <motion.div
-      key={moduleName}
-      initial={{
-        opacity: 0,
-        y: 10,
-      }}
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
-      exit={{
-        opacity: 0,
-      }}
-      className="space-y-4 rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-2xs"
-    >
-      <div className="mx-auto max-w-md py-12">
-        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#1a73e8]/10 text-[#005bbf]">
-          <span
-            className="text-2xl font-bold"
-            aria-hidden="true"
-          >
-            🛠️
-          </span>
-        </div>
-
-        <h2 className="text-xl font-bold capitalize text-[#181c20]">
-          Módulo {moduleName}
-        </h2>
-
-        <p className="mt-2 text-sm leading-relaxed text-[#727785]">
-          Este módulo ainda está em
-          desenvolvimento e será conectado
-          aos serviços acadêmicos nas
-          próximas etapas.
-        </p>
-
-        <button
-          type="button"
-          onClick={onReturn}
-          className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8]"
-        >
-          Voltar para o dashboard
-        </button>
-      </div>
-    </motion.div>
-  );
-}
-
-function DashboardLayout() {
-  const { profile, signOut } =
-    useAuth();
-
-  const [activeTab, setActiveTab] =
-    useState('dashboard');
-
-  const [
-    mobileSidebarOpen,
-    setMobileSidebarOpen,
-  ] = useState(false);
+function DashboardContent() {
+  const { profile, signOut } = useAuth();
 
   if (!profile) {
     return (
@@ -330,116 +224,7 @@ function DashboardLayout() {
     );
   }
 
-  const currentUser: User = {
-    id: profile.id,
-    name: profile.full_name,
-    email: profile.email,
-    avatar:
-      profile.avatar_url?.trim() ||
-      null,
-    role: currentRole,
-    subtitle:
-      roleToSubtitle[currentRole],
-  };
-
-  const canAccessSettings =
-    currentRole === 'admin' ||
-    currentRole === 'director' ||
-    currentRole === 'secretary';
-
-  async function handleLogout(): Promise<void> {
-    try {
-      await signOut();
-    } catch (error) {
-      console.error(
-        'Erro ao sair da aplicação:',
-        error,
-      );
-    }
-  }
-
-  return (
-    <div
-      className="flex min-h-screen bg-slate-50"
-      id="app-authenticated-container"
-    >
-      <Sidebar
-        onLogout={() =>
-          void handleLogout()
-        }
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-        isOpen={mobileSidebarOpen}
-        onClose={() =>
-          setMobileSidebarOpen(false)
-        }
-      />
-
-      <div className="flex min-h-screen flex-1 flex-col lg:ml-64">
-        <Header
-          currentUser={currentUser}
-          onOpenSidebar={() =>
-            setMobileSidebarOpen(true)
-          }
-          searchPlaceholder={
-            searchPlaceholders[
-              currentRole
-            ]
-          }
-          onMessagesClick={() =>
-            setActiveTab('mensagens')
-          }
-          onSettingsClick={
-            canAccessSettings
-              ? () =>
-                  setActiveTab(
-                    'configurações',
-                  )
-              : undefined
-          }
-        />
-
-        <main className="mx-auto w-full max-w-7xl flex-1 p-6">
-          <AnimatePresence mode="wait">
-            {activeTab ===
-            'dashboard' ? (
-              <motion.div
-                key={`dashboard-${currentRole}`}
-                initial={{
-                  opacity: 0,
-                  y: 15,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                exit={{
-                  opacity: 0,
-                  y: -15,
-                }}
-                transition={{
-                  duration: 0.25,
-                }}
-              >
-                {renderDashboard(
-                  currentRole,
-                )}
-              </motion.div>
-            ) : (
-              <ModulePlaceholder
-                moduleName={activeTab}
-                onReturn={() =>
-                  setActiveTab(
-                    'dashboard',
-                  )
-                }
-              />
-            )}
-          </AnimatePresence>
-        </main>
-      </div>
-    </div>
-  );
+  return <>{renderDashboard(currentRole)}</>;
 }
 
 function AppRoutes() {
@@ -479,7 +264,9 @@ function AppRoutes() {
         path="/dashboard/*"
         element={
           <ProtectedRoute>
-            <DashboardLayout />
+            <AppShell>
+              <DashboardContent />
+            </AppShell>
           </ProtectedRoute>
         }
       />
@@ -494,7 +281,9 @@ function AppRoutes() {
               'SECRETARY',
             ]}
           >
-            <AdminPage />
+            <AppShell>
+              <AdminPage />
+            </AppShell>
           </ProtectedRoute>
         }
       />
@@ -507,7 +296,9 @@ function AppRoutes() {
               'SUPER_ADMIN',
             ]}
           >
-            <PlatformPage />
+            <AppShell>
+              <PlatformPage />
+            </AppShell>
           </ProtectedRoute>
         }
       />
@@ -516,7 +307,9 @@ function AppRoutes() {
         path="/account/*"
         element={
           <ProtectedRoute>
-            <AccountPage />
+            <AppShell>
+              <AccountPage />
+            </AppShell>
           </ProtectedRoute>
         }
       />

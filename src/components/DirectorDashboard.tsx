@@ -17,7 +17,6 @@ import {
 } from '../lib/permissions';
 import InstitutionAttendancePanel from './attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from './grades/InstitutionGradesPanel';
-import InstitutionSwitcher from './InstitutionSwitcher';
 
 export function getDirectorDashboardTitle(
   role: EffectiveRole | undefined,
@@ -160,7 +159,7 @@ export default function DirectorDashboard() {
 
     return (
       <div className="space-y-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div>
           <div>
             <h2 className="text-2xl font-bold text-[#181c20]">
               {dashboardTitle}
@@ -170,7 +169,6 @@ export default function DirectorDashboard() {
             </p>
           </div>
 
-          <InstitutionSwitcher />
         </div>
 
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
@@ -195,7 +193,7 @@ export default function DirectorDashboard() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+      <div>
         <div>
         <h2 className="text-2xl font-bold text-[#181c20]">
           {dashboardTitle}
@@ -205,7 +203,6 @@ export default function DirectorDashboard() {
         </p>
         </div>
 
-        <InstitutionSwitcher />
       </div>
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
