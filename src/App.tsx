@@ -54,6 +54,14 @@ const SetPassword = lazy(
   () => import('./pages/SetPassword'),
 );
 
+const ForgotPassword = lazy(
+  () => import('./pages/ForgotPassword'),
+);
+
+const ResetPassword = lazy(
+  () => import('./pages/ResetPassword'),
+);
+
 const AuthConfirm = lazy(
   () => import('./pages/AuthConfirm'),
 );
@@ -443,8 +451,18 @@ function AppRoutes() {
       />
 
       <Route
+        path="/forgot-password"
+        element={<ForgotPassword />}
+      />
+
+      <Route
         path="/auth/confirm"
         element={<AuthConfirm />}
+      />
+
+      <Route
+        path="/auth/reset-password"
+        element={<ResetPassword />}
       />
 
       <Route
