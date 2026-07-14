@@ -1,26 +1,99 @@
 import { useEffect, useState, type FormEvent } from 'react';
+import {
+  CheckCircle2,
+  KeyRound,
+  Loader2,
+  Save,
+  ShieldAlert,
+} from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import {
+  AuthAlert,
+  AuthButton,
+  AuthPageHeader,
+  AuthPasswordInput,
+  AuthShell,
+  AuthStatusPanel,
+  authPrimaryActionLinkClass,
+} from '../components/auth/AuthLayout';
 import { supabase } from '../lib/supabaseClient';
-import { getInviteContext, clearInviteContext, type InviteContext } from './AuthConfirm';
+import {
+  clearInviteContext,
+  getInviteContext,
+  type InviteContext,
+} from './AuthConfirm';
 import { validatePasswordConfirmation } from '../schemas/authSchemas';
 
 function getErrorMessage(error: unknown): string {
+  let message = '';
+
   if (error instanceof Error) {
-    return error.message;
+    message = error.message.toLowerCase();
+  } else if (
+    typeof error === 'object' &&
+    error !== null &&
+    'message' in error &&
+    typeof error.message === 'string'
+  ) {
+    message = error.message.toLowerCase();
   }
-  return 'Não foi possível definir a senha.';
+
+  if (
+    message.includes('weak') ||
+    message.includes('password') ||
+    message.includes('senha')
+  ) {
+    return 'A senha informada nao atende aos criterios minimos.';
+  }
+
+  if (
+    message.includes('identidade') ||
+    message.includes('session') ||
+    message.includes('sessao')
+  ) {
+    return 'Sessao de convite expirada. Solicite um novo convite.';
+  }
+
+  if (
+    message.includes('rate') ||
+    message.includes('limit') ||
+    message.includes('too many')
+  ) {
+    return 'Muitas tentativas foram feitas. Aguarde alguns minutos e tente novamente.';
+  }
+
+  if (
+    message.includes('network') ||
+    message.includes('fetch') ||
+    message.includes('unavailable')
+  ) {
+    return 'O servico esta temporariamente indisponivel. Tente novamente em instantes.';
+  }
+
+  return 'Nao foi possivel definir a senha. Tente novamente.';
 }
 
 export default function SetPassword() {
   const navigate = useNavigate();
 
   const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] =
+    useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [
+    showPasswordConfirmation,
+    setShowPasswordConfirmation,
+  ] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
-  const [inviteContext, setInviteContext] = useState<InviteContext | null>(null);
+  const [inviteContext, setInviteContext] =
+    useState<InviteContext | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(
+    null,
+  );
+  const [successMessage, setSuccessMessage] = useState<
+    string | null
+  >(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -36,11 +109,19 @@ export default function SetPassword() {
         return;
       }
 
-      const { data: { user }, error } = await supabase.auth.getUser();
+      const {
+        data: { user },
+        error,
+      } = await supabase.auth.getUser();
 
       if (!isMounted) return;
 
-      if (error || !user || user.id !== context.userId || user.email !== context.email) {
+      if (
+        error ||
+        !user ||
+        user.id !== context.userId ||
+        user.email !== context.email
+      ) {
         clearInviteContext();
         await supabase.auth.signOut({ scope: 'local' });
         setInviteContext(null);
@@ -79,20 +160,34 @@ export default function SetPassword() {
 
     try {
       // Re-validate just before update
-      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
 
-      if (userError || !user || user.id !== inviteContext.userId || user.email !== inviteContext.email) {
-        throw new Error('Identidade inválida para alteração de senha.');
+      if (
+        userError ||
+        !user ||
+        user.id !== inviteContext.userId ||
+        user.email !== inviteContext.email
+      ) {
+        throw new Error(
+          'Identidade inválida para alteração de senha.',
+        );
       }
 
-      const { error } = await supabase.auth.updateUser({ password });
+      const { error } = await supabase.auth.updateUser({
+        password,
+      });
 
       if (error) throw error;
 
       clearInviteContext();
       await supabase.auth.signOut({ scope: 'local' });
 
-      setSuccessMessage('Senha definida com sucesso. Faça o login com sua nova senha.');
+      setSuccessMessage(
+        'Senha definida com sucesso. Faça o login com sua nova senha.',
+      );
 
       // Delay navigation slightly so user sees the message
       setTimeout(() => {
@@ -106,103 +201,114 @@ export default function SetPassword() {
 
   if (isChecking) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <div className="rounded-xl border bg-white p-8 text-sm text-gray-500 shadow-sm">
-          Validando identidade do convite...
-        </div>
-      </main>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={Loader2}
+          title="Validando identidade do convite..."
+          description="Aguarde enquanto confirmamos a sessao temporaria do convite."
+        />
+      </AuthShell>
     );
   }
 
   if (!inviteContext && !successMessage) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <section className="w-full max-w-md rounded-xl border bg-white p-8 shadow-sm">
-          <h1 className="text-xl font-bold text-gray-900">
-            Convite inválido, expirado ou pertencente a outro usuário
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-gray-600">
-            Não é possível definir a senha usando esta sessão.
-            Se necessário, solicite à administração um novo convite.
-          </p>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={ShieldAlert}
+          variant="error"
+          title="Convite inválido, expirado ou pertencente a outro usuário"
+          description="Não é possível definir a senha usando esta sessão. Se necessário, solicite à administração um novo convite."
+        >
           <Link
             to="/login"
-            className="mt-6 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]"
+            className={authPrimaryActionLinkClass}
           >
             Ir para o login
           </Link>
-        </section>
-      </main>
+        </AuthStatusPanel>
+      </AuthShell>
     );
   }
 
   if (successMessage) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <section className="w-full max-w-md rounded-xl border border-green-200 bg-green-50 p-8 shadow-sm text-center">
-          <h1 className="text-xl font-bold text-green-800">Sucesso</h1>
-          <p className="mt-3 text-sm leading-relaxed text-green-700">{successMessage}</p>
-        </section>
-      </main>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={CheckCircle2}
+          variant="success"
+          title="Sucesso"
+          description={successMessage}
+        />
+      </AuthShell>
     );
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-      <section className="w-full max-w-md rounded-xl border bg-white p-8 shadow-sm">
-        <h1 className="text-2xl font-bold text-gray-900">Defina sua senha</h1>
-        <p className="mt-2 text-sm leading-relaxed text-gray-600">
-          Crie a senha que será utilizada para acessar o EduManager Pro.
-        </p>
+    <AuthShell>
+      <AuthPageHeader
+        icon={KeyRound}
+        title="Defina sua senha"
+        description="Crie a senha que sera utilizada para acessar o EduManager Pro."
+      />
 
-        <div className="mt-4 rounded bg-gray-50 p-3 text-xs text-gray-600 border">
-          Definindo senha para: <strong>{inviteContext?.email}</strong>
-        </div>
+      <div className="mb-6 rounded-lg border border-[#dce1ff] bg-[#f4f6ff] px-4 py-3 text-sm leading-5 text-[#264191]">
+        Definindo senha para:{' '}
+        <strong>{inviteContext?.email}</strong>
+      </div>
 
-        <form onSubmit={(event) => void handleSubmit(event)} className="mt-6 space-y-4">
-          {errorMessage && (
-            <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
-              {errorMessage}
-            </div>
-          )}
+      <form
+        onSubmit={(event) => void handleSubmit(event)}
+        className="space-y-5"
+      >
+        {errorMessage && (
+          <AuthAlert variant="error">{errorMessage}</AuthAlert>
+        )}
 
-          <div>
-            <label htmlFor="new-password" className="block text-sm font-medium text-gray-700">Nova senha</label>
-            <input
-              id="new-password"
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete="new-password"
-              minLength={8}
-              required
-              className="mt-1 w-full rounded-lg border px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            />
-          </div>
+        <AuthPasswordInput
+          id="new-password"
+          label="Nova senha"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          autoComplete="new-password"
+          minLength={8}
+          required
+          isVisible={showPassword}
+          onToggleVisibility={() =>
+            setShowPassword((current) => !current)
+          }
+          showLabel="Mostrar senha"
+          hideLabel="Ocultar senha"
+        />
 
-          <div>
-            <label htmlFor="password-confirmation" className="block text-sm font-medium text-gray-700">Confirme a senha</label>
-            <input
-              id="password-confirmation"
-              type="password"
-              value={passwordConfirmation}
-              onChange={(event) => setPasswordConfirmation(event.target.value)}
-              autoComplete="new-password"
-              minLength={8}
-              required
-              className="mt-1 w-full rounded-lg border px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            />
-          </div>
+        <AuthPasswordInput
+          id="password-confirmation"
+          label="Confirme a senha"
+          value={passwordConfirmation}
+          onChange={(event) =>
+            setPasswordConfirmation(event.target.value)
+          }
+          autoComplete="new-password"
+          minLength={8}
+          required
+          isVisible={showPasswordConfirmation}
+          onToggleVisibility={() =>
+            setShowPasswordConfirmation((current) => !current)
+          }
+          showLabel="Mostrar confirmacao da senha"
+          hideLabel="Ocultar confirmacao da senha"
+        />
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {isSubmitting ? 'Definindo senha...' : 'Definir senha e acessar'}
-          </button>
-        </form>
-      </section>
-    </main>
+        <AuthButton
+          type="submit"
+          loading={isSubmitting}
+          icon={Save}
+        >
+          {isSubmitting
+            ? 'Definindo senha...'
+            : 'Definir senha e acessar'}
+        </AuthButton>
+      </form>
+    </AuthShell>
   );
 }

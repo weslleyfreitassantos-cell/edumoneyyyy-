@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
+import {
+  Loader2,
+  ShieldAlert,
+} from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import {
+  AuthShell,
+  AuthStatusPanel,
+  authPrimaryActionLinkClass,
+} from '../components/auth/AuthLayout';
 import { supabase } from '../lib/supabaseClient';
 
 export interface InviteContext {
@@ -165,28 +174,33 @@ export default function AuthConfirm() {
 
   if (isProcessing) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <div className="rounded-xl border bg-white p-8 text-sm text-gray-500 shadow-sm">
-          Validando convite de acesso...
-        </div>
-      </main>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={Loader2}
+          title="Validando convite de acesso..."
+          description="Aguarde enquanto confirmamos a identidade do convite."
+        />
+      </AuthShell>
     );
   }
 
   if (error) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-[#f5f7fb] p-4">
-        <section className="w-full max-w-md rounded-xl border bg-white p-8 shadow-sm">
-          <h1 className="text-xl font-bold text-gray-900">Falha no Convite</h1>
-          <p className="mt-3 text-sm leading-relaxed text-gray-600">{error}</p>
+      <AuthShell>
+        <AuthStatusPanel
+          icon={ShieldAlert}
+          variant="error"
+          title="Falha no Convite"
+          description={error}
+        >
           <Link
             to="/login"
-            className="mt-6 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]"
+            className={authPrimaryActionLinkClass}
           >
             Ir para o login
           </Link>
-        </section>
-      </main>
+        </AuthStatusPanel>
+      </AuthShell>
     );
   }
 
