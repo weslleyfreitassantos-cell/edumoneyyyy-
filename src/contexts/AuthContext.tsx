@@ -1,7 +1,9 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
   type ReactNode,
 } from 'react';
@@ -32,6 +34,11 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
+interface ProfileRequest {
+  userId: string;
+  promise: Promise<Profile>;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
 );
@@ -48,7 +55,7 @@ async function loadProfile(userId: string): Promise<Profile> {
   }
 
   if (!data) {
-    throw new Error('Perfil acadêmico não encontrado.');
+    throw new Error('Perfil academico nao encontrado.');
   }
 
   if (
@@ -56,7 +63,7 @@ async function loadProfile(userId: string): Promise<Profile> {
     !isDatabaseRole(data.role)
   ) {
     throw new Error(
-      `Papel inválido recebido do banco: ${String(data.role)}`,
+      `Papel invalido recebido do banco: ${String(data.role)}`,
     );
   }
 
@@ -84,44 +91,113 @@ export function AuthProvider({
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const mountedRef = useRef(true);
+  const userRef = useRef<User | null>(null);
+  const profileRef = useRef<Profile | null>(null);
+  const profileRequestRef = useRef<ProfileRequest | null>(null);
+  const syncVersionRef = useRef(0);
 
-  useEffect(() => {
-    let active = true;
+  const setUserState = useCallback((nextUser: User | null) => {
+    userRef.current = nextUser;
+    setUser(nextUser);
+  }, []);
 
-    async function synchronizeSession(
-      nextUser: User | null,
-    ): Promise<void> {
-      if (!active) {
+  const setProfileState = useCallback((nextProfile: Profile | null) => {
+    profileRef.current = nextProfile;
+    setProfile(nextProfile);
+  }, []);
+
+  const getProfileForUser = useCallback((userId: string) => {
+    const currentRequest = profileRequestRef.current;
+
+    if (currentRequest?.userId === userId) {
+      return currentRequest.promise;
+    }
+
+    const promise = loadProfile(userId).finally(() => {
+      if (profileRequestRef.current?.promise === promise) {
+        profileRequestRef.current = null;
+      }
+    });
+
+    profileRequestRef.current = {
+      userId,
+      promise,
+    };
+
+    return promise;
+  }, []);
+
+  const synchronizeSession = useCallback(
+    async (nextUser: User | null): Promise<void> => {
+      if (!mountedRef.current) {
         return;
       }
 
-      setLoading(true);
-      setUser(nextUser);
-      setProfile(null);
+      const syncVersion = syncVersionRef.current + 1;
+      syncVersionRef.current = syncVersion;
 
       if (!nextUser) {
+        profileRequestRef.current = null;
+        setUserState(null);
+        setProfileState(null);
         setLoading(false);
         return;
       }
 
-      try {
-        const nextProfile = await loadProfile(nextUser.id);
+      if (
+        userRef.current?.id === nextUser.id &&
+        profileRef.current?.id === nextUser.id
+      ) {
+        setUserState(nextUser);
+        setLoading(false);
+        return;
+      }
 
-        if (active) {
-          setProfile(nextProfile);
+      setLoading(true);
+      setUserState(nextUser);
+
+      if (profileRef.current?.id !== nextUser.id) {
+        setProfileState(null);
+      }
+
+      try {
+        const nextProfile = await getProfileForUser(nextUser.id);
+
+        if (
+          mountedRef.current &&
+          syncVersionRef.current === syncVersion
+        ) {
+          setProfileState(nextProfile);
         }
       } catch (error) {
         console.error('Erro ao carregar perfil:', error);
 
-        if (active) {
-          setProfile(null);
+        if (
+          mountedRef.current &&
+          syncVersionRef.current === syncVersion
+        ) {
+          setProfileState(null);
         }
       } finally {
-        if (active) {
+        if (
+          mountedRef.current &&
+          syncVersionRef.current === syncVersion
+        ) {
           setLoading(false);
         }
       }
-    }
+    },
+    [
+      getProfileForUser,
+      setProfileState,
+      setUserState,
+    ],
+  );
+
+  useEffect(() => {
+    mountedRef.current = true;
+    const authEventTimers = new Set<number>();
 
     async function restoreSession(): Promise<void> {
       const {
@@ -130,11 +206,11 @@ export function AuthProvider({
       } = await supabase.auth.getSession();
 
       if (error) {
-        console.error('Erro ao recuperar sessão:', error);
+        console.error('Erro ao recuperar sessao:', error);
 
-        if (active) {
-          setUser(null);
-          setProfile(null);
+        if (mountedRef.current) {
+          setUserState(null);
+          setProfileState(null);
           setLoading(false);
         }
 
@@ -149,27 +225,42 @@ export function AuthProvider({
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      void synchronizeSession(session?.user ?? null);
+      const timerId = window.setTimeout(() => {
+        authEventTimers.delete(timerId);
+        void synchronizeSession(session?.user ?? null);
+      }, 0);
+
+      authEventTimers.add(timerId);
     });
 
     return () => {
-      active = false;
+      mountedRef.current = false;
+      authEventTimers.forEach((timerId) => {
+        window.clearTimeout(timerId);
+      });
       subscription.unsubscribe();
     };
-  }, []);
+  }, [
+    setProfileState,
+    setUserState,
+    synchronizeSession,
+  ]);
 
   async function signIn(
     email: string,
     password: string,
   ): Promise<void> {
-    const { error } = await supabase.auth.signInWithPassword({
-      email: email.trim().toLowerCase(),
-      password,
-    });
+    const { data, error } =
+      await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
+        password,
+      });
 
     if (error) {
       throw error;
     }
+
+    await synchronizeSession(data.session?.user ?? data.user ?? null);
   }
 
   async function signOut(): Promise<void> {
@@ -182,8 +273,9 @@ export function AuthProvider({
       throw error;
     }
 
-    setUser(null);
-    setProfile(null);
+    profileRequestRef.current = null;
+    setUserState(null);
+    setProfileState(null);
     setLoading(false);
   }
 

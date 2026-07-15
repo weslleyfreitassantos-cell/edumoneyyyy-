@@ -1,6 +1,8 @@
 import {
+  Component,
   lazy,
   Suspense,
+  type ErrorInfo,
   type ReactNode,
 } from 'react';
 
@@ -117,6 +119,60 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+class AppErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  declare props: Readonly<{ children: ReactNode }>;
+
+  state = {
+    hasError: false,
+  };
+
+  static getDerivedStateFromError() {
+    return {
+      hasError: true,
+    };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error(
+      'Erro de renderizacao da aplicacao:',
+      error,
+      errorInfo,
+    );
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <main className="grid min-h-screen place-items-center bg-slate-50 p-6">
+          <section className="w-full max-w-md rounded-xl border border-[#dfe3e8] bg-white p-8 text-center shadow-sm">
+            <h1 className="text-xl font-bold text-[#181c20]">
+              Nao foi possivel renderizar a pagina
+            </h1>
+
+            <p className="mt-3 text-sm text-[#727785]">
+              Atualize a pagina. Se persistir, abra em uma janela anonima sem
+              extensoes do navegador.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => window.location.reload()}
+              className="mt-6 rounded-lg bg-[#005bbf] px-5 py-2 text-xs font-bold text-white transition-colors hover:bg-[#1a73e8] focus:outline-none focus:ring-2 focus:ring-[#005bbf] focus:ring-offset-2"
+            >
+              Atualizar pagina
+            </button>
+          </section>
+        </main>
+      );
+    }
+
+    return this.props.children;
+  }
+}
 
 function PageLoading() {
   return (
@@ -339,21 +395,23 @@ function AppRoutes() {
 
 function App() {
   return (
-    <QueryClientProvider
-      client={queryClient}
-    >
-      <BrowserRouter>
-        <AuthProvider>
-          <InstitutionProvider>
-            <Suspense
-              fallback={<PageLoading />}
-            >
-              <AppRoutes />
-            </Suspense>
-          </InstitutionProvider>
-        </AuthProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <AppErrorBoundary>
+      <QueryClientProvider
+        client={queryClient}
+      >
+        <BrowserRouter>
+          <AuthProvider>
+            <InstitutionProvider>
+              <Suspense
+                fallback={<PageLoading />}
+              >
+                <AppRoutes />
+              </Suspense>
+            </InstitutionProvider>
+          </AuthProvider>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </AppErrorBoundary>
   );
 }
 
