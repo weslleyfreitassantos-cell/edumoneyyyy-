@@ -58,6 +58,10 @@ type InviteConfirmation =
       refreshToken: string;
     }
   | {
+      kind: 'code';
+      code: string;
+    }
+  | {
       kind: 'otp';
       tokenHash: string;
     };
@@ -68,13 +72,14 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
   const accessToken = hashParams.get('access_token');
   const refreshToken = hashParams.get('refresh_token');
   const tokenHash = searchParams.get('token_hash');
+  const code = searchParams.get('code');
   const type = hashParams.get('type') ?? searchParams.get('type');
 
-  if ((!accessToken || !refreshToken) && !tokenHash) {
+  if ((!accessToken || !refreshToken) && !tokenHash && !code) {
     throw new Error('Link de convite inválido ou ausente.');
   }
 
-  if (type !== 'invite') {
+  if (type && type !== 'invite') {
     throw new Error('Tipo de confirmação inválido.');
   }
 
@@ -83,6 +88,13 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
       kind: 'session',
       accessToken,
       refreshToken,
+    };
+  }
+
+  if (code) {
+    return {
+      kind: 'code',
+      code,
     };
   }
 
@@ -119,6 +131,15 @@ export default function AuthConfirm() {
           });
 
           if (sessionError) {
+            throw new Error('Convite inválido, expirado ou já utilizado.');
+          }
+        } else if (confirmation.kind === 'code') {
+          const { error: codeError } =
+            await supabase.auth.exchangeCodeForSession(
+              confirmation.code,
+            );
+
+          if (codeError) {
             throw new Error('Convite inválido, expirado ou já utilizado.');
           }
         } else {

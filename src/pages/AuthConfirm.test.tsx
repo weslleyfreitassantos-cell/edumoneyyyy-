@@ -18,6 +18,7 @@ vi.mock("../lib/supabaseClient", () => ({
     auth: {
       signOut: vi.fn(),
       setSession: vi.fn(),
+      exchangeCodeForSession: vi.fn(),
       verifyOtp: vi.fn(),
       getUser: vi.fn(),
     },
@@ -125,6 +126,36 @@ describe("AuthConfirm", () => {
         token_hash: "hash123",
         type: "invite",
       });
+      expect(supabase.auth.setSession).not.toHaveBeenCalled();
+      expect(sessionStorage.getItem("invite_context")).toBeTruthy();
+      expect(mockNavigate).toHaveBeenCalledWith("/set-password", { replace: true });
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
+    });
+  });
+
+  it("should exchange auth code invite callbacks", async () => {
+    window.location.search = "?code=auth-code-123";
+
+    (supabase.auth.signOut as any).mockResolvedValue({});
+    (supabase.auth.exchangeCodeForSession as any).mockResolvedValue({
+      error: null,
+    });
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(
+        supabase.auth.exchangeCodeForSession,
+      ).toHaveBeenCalledWith("auth-code-123");
+      expect(supabase.auth.verifyOtp).not.toHaveBeenCalled();
       expect(supabase.auth.setSession).not.toHaveBeenCalled();
       expect(sessionStorage.getItem("invite_context")).toBeTruthy();
       expect(mockNavigate).toHaveBeenCalledWith("/set-password", { replace: true });
