@@ -390,7 +390,6 @@ export function AuthAside({
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
-  const [isHovering, setIsHovering] = useState(false);
 
   // Força o vídeo a renderizar o primeiro frame no carregamento
   useEffect(() => {
@@ -402,17 +401,7 @@ export function AuthAside({
     }
   }, []);
 
-  useEffect(() => {
-    const video = activeVideo === 1 ? video1Ref.current : video2Ref.current;
-    if (video) {
-      if (isHovering) {
-        video.play().catch(() => { });
-      } else {
-        video.pause();
-      }
-    }
-  }, [isHovering, activeVideo]);
-
+  // Remove isHovering effect
   useEffect(() => {
     const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
     if (inactiveVideo) {
@@ -434,18 +423,14 @@ export function AuthAside({
     if (video.duration - video.currentTime <= threshold) {
       const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
       if (nextVideo) {
-        if (isHovering) nextVideo.play().catch(() => { });
+        nextVideo.play().catch(() => { });
         setActiveVideo(videoNum === 1 ? 2 : 1);
       }
     }
   };
 
   return (
-    <aside
-      className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
+    <aside className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center">
       {variant === 'video' ? (
         <>
           <div className="auth-hero-fallback" aria-hidden="true" />
@@ -453,6 +438,7 @@ export function AuthAside({
             <video
               ref={video1Ref}
               className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
+              autoPlay
               muted
               loop
               playsInline
