@@ -392,6 +392,16 @@ export function AuthAside({
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
   const [isHovering, setIsHovering] = useState(false);
 
+  // Força o vídeo a renderizar o primeiro frame no carregamento
+  useEffect(() => {
+    if (video1Ref.current) {
+      video1Ref.current.currentTime = 0.1;
+      video1Ref.current.play().then(() => {
+        video1Ref.current?.pause();
+      }).catch(() => {});
+    }
+  }, []);
+
   useEffect(() => {
     const video = activeVideo === 1 ? video1Ref.current : video2Ref.current;
     if (video) {
