@@ -7,7 +7,7 @@ import {
   Lock,
   type LucideIcon,
 } from 'lucide-react';
-import { useRef, useState, type ReactNode, type SyntheticEvent } from 'react';
+import { useRef, useState, useEffect, type ReactNode, type SyntheticEvent } from 'react';
 
 interface AuthShellProps {
   children: ReactNode;
@@ -259,9 +259,8 @@ export function AuthTextInput({
           id={id}
           aria-invalid={ariaInvalid ?? Boolean(error)}
           aria-describedby={describedBy}
-          className={`${authInputBaseClass} ${
-            Icon ? 'px-10' : 'px-3'
-          } ${className}`}
+          className={`${authInputBaseClass} ${Icon ? 'px-10' : 'px-3'
+            } ${className}`}
           {...inputProps}
         />
       </div>
@@ -392,18 +391,28 @@ export function AuthAside({
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
 
+  useEffect(() => {
+    const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
+    if (inactiveVideo) {
+      const timer = setTimeout(() => {
+        inactiveVideo.pause();
+        inactiveVideo.currentTime = 0;
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [activeVideo]);
+
   const handleTimeUpdate = (videoNum: 1 | 2) => (e: SyntheticEvent<HTMLVideoElement>) => {
     if (activeVideo !== videoNum) return;
     const video = e.currentTarget;
     if (!video.duration) return;
-    
-    // Crossfade threshold (e.g., 0.5s before end)
-    const threshold = 0.5;
+
+    // Crossfade threshold (e.g., 0.8s before end)
+    const threshold = 0.8;
     if (video.duration - video.currentTime <= threshold) {
       const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
       if (nextVideo) {
-        nextVideo.currentTime = 0;
-        nextVideo.play().catch(() => {});
+        nextVideo.play().catch(() => { });
         setActiveVideo(videoNum === 1 ? 2 : 1);
       }
     }
@@ -417,9 +426,10 @@ export function AuthAside({
           <div className="auth-hero-video-layer">
             <video
               ref={video1Ref}
-              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
               autoPlay
               muted
+              loop
               playsInline
               preload="auto"
               aria-hidden="true"
@@ -430,8 +440,9 @@ export function AuthAside({
             </video>
             <video
               ref={video2Ref}
-              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
               muted
+              loop
               playsInline
               preload="auto"
               aria-hidden="true"
@@ -443,19 +454,7 @@ export function AuthAside({
           </div>
           <div className="auth-hero-overlay opacity-60" aria-hidden="true" />
 
-          {/* Footer content */}
-          <div className="absolute bottom-6 left-0 right-0 z-20 flex items-center justify-center gap-3">
-            <BookOpenCheck
-              className="h-14 w-14 shrink-0 text-white drop-shadow-md"
-              aria-hidden="true"
-            />
-            <h2 
-              className="auth-hero-title text-[36px] text-white xl:text-[42px]" 
-              style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.35)' }}
-            >
-              Gestão Escolar Inteligente
-            </h2>
-          </div>
+
         </>
       ) : (
         <>
@@ -474,7 +473,7 @@ export function AuthAside({
             <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
               <BookOpenCheck className="h-10 w-10" aria-hidden="true" />
             </div>
-            
+
             <h2 className="text-[32px] font-bold leading-10">
               Gestão Escolar Inteligente
             </h2>
