@@ -382,6 +382,17 @@ export function AuthButton({
   );
 }
 
+function attemptVideoPlayback(video: HTMLVideoElement): void {
+  try {
+    const playResult = video.play();
+    if (playResult && typeof (playResult as Promise<void>).catch === 'function') {
+      void playResult.catch(() => undefined);
+    }
+  } catch {
+    // A reprodução do hero é decorativa e não deve quebrar a autenticação.
+  }
+}
+
 export function AuthAside({
   variant = 'default',
 }: {
@@ -395,7 +406,7 @@ export function AuthAside({
   useEffect(() => {
     if (video1Ref.current) {
       video1Ref.current.currentTime = 1.5;
-      video1Ref.current.play().catch(() => { });
+      attemptVideoPlayback(video1Ref.current);
     }
   }, []);
   // Remove isHovering effect
@@ -420,7 +431,7 @@ export function AuthAside({
     if (video.duration - video.currentTime <= threshold) {
       const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
       if (nextVideo) {
-        nextVideo.play().catch(() => { });
+        attemptVideoPlayback(nextVideo);
         setActiveVideo(videoNum === 1 ? 2 : 1);
       }
     }
