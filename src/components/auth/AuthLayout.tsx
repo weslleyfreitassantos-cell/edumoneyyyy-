@@ -390,13 +390,16 @@ export function AuthAside({
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
     if (inactiveVideo) {
       const timer = setTimeout(() => {
-        inactiveVideo.pause();
         inactiveVideo.currentTime = 0;
+        inactiveVideo.play().then(() => {
+          inactiveVideo.pause();
+        }).catch(() => {});
       }, 1500);
       return () => clearTimeout(timer);
     }
@@ -423,7 +426,7 @@ export function AuthAside({
       {variant === 'video' ? (
         <>
           <div className="auth-hero-fallback" aria-hidden="true" />
-          <div className="auth-hero-video-layer">
+          <div className={`auth-hero-video-layer transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
             <video
               ref={video1Ref}
               className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
@@ -434,6 +437,7 @@ export function AuthAside({
               preload="auto"
               aria-hidden="true"
               tabIndex={-1}
+              onCanPlay={() => setIsLoaded(true)}
               onTimeUpdate={handleTimeUpdate(1)}
             >
               <source src="/media/cinema-novo.mp4" type="video/mp4" />
