@@ -12,6 +12,8 @@ export interface AccountOwnerSummary {
   id: string;
   full_name: string;
   email: string;
+  role: string;
+  platform_role: string;
   active: boolean | null;
 }
 
@@ -60,6 +62,18 @@ export interface UpdateClientAccountResponse {
   accountId: string;
   institutionLimit: number;
   status: AccountStatus;
+}
+
+export interface DeleteClientAccountInput {
+  accountId: string;
+}
+
+export interface DeleteClientAccountResponse {
+  success: true;
+  accountId: string;
+  ownerProfileId: string;
+  ownerPreserved: boolean;
+  deletedAuthUser: boolean;
 }
 
 export interface CreateInstitutionInput {
@@ -370,6 +384,25 @@ function assertCreateInstitutionResponse(
   };
 }
 
+function assertDeleteAccountResponse(
+  value: unknown,
+): DeleteClientAccountResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    accountId: requireString(value, 'accountId'),
+    ownerProfileId: requireString(value, 'ownerProfileId'),
+    ownerPreserved: requireBoolean(value, 'ownerPreserved'),
+    deletedAuthUser: requireBoolean(value, 'deletedAuthUser'),
+  };
+}
+
 export const accountService = {
   async listAccounts(): Promise<AccountSummaryRow[]> {
     const { data, error } = await supabase
@@ -384,6 +417,8 @@ export const accountService = {
           id,
           full_name,
           email,
+          role,
+          platform_role,
           active
         ),
         institutions (
@@ -421,6 +456,8 @@ export const accountService = {
           id,
           full_name,
           email,
+          role,
+          platform_role,
           active
         ),
         institutions (
@@ -491,5 +528,21 @@ export const accountService = {
     }
 
     return assertCreateInstitutionResponse(data);
+  },
+
+  async deleteAccount(
+    input: DeleteClientAccountInput,
+  ): Promise<DeleteClientAccountResponse> {
+    const { data, error } =
+      await supabase.functions.invoke(
+        'delete-client-account',
+        { body: input },
+      );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertDeleteAccountResponse(data);
   },
 };

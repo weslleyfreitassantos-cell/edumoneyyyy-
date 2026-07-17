@@ -425,6 +425,12 @@ verify_jwt = true
 import_map = "./functions/create-client-account/deno.json"
 entrypoint = "./functions/create-client-account/index.ts"
 
+[functions.delete-client-account]
+enabled = true
+verify_jwt = true
+import_map = "./functions/delete-client-account/deno.json"
+entrypoint = "./functions/delete-client-account/index.ts"
+
 [functions.update-client-account]
 enabled = true
 verify_jwt = true
