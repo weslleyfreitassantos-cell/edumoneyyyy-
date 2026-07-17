@@ -92,7 +92,7 @@ export function AuthShell({
   heroVariant = 'default',
 }: AuthShellProps) {
   return (
-    <main className="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d] lg:grid lg:grid-cols-2">
+    <main className="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d] lg:grid lg:grid-cols-[55%_45%]">
       <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:px-12 lg:px-16 xl:px-24">
         <header>
           <AuthBrand />
@@ -444,7 +444,7 @@ export function AuthAside({
           <div className="auth-hero-overlay opacity-60" aria-hidden="true" />
 
           {/* Footer content */}
-          <div className="absolute bottom-[40px] left-0 right-0 z-20 flex items-center justify-center gap-3">
+          <div className="absolute bottom-6 left-0 right-0 z-20 flex items-center justify-center gap-3">
             <BookOpenCheck
               className="h-14 w-14 shrink-0 text-white drop-shadow-md"
               aria-hidden="true"
