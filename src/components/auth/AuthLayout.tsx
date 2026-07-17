@@ -7,12 +7,13 @@ import {
   Lock,
   type LucideIcon,
 } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useRef, useState, useEffect, type ReactNode, type SyntheticEvent } from 'react';
 
 interface AuthShellProps {
   children: ReactNode;
   contentClassName?: string;
   footer?: ReactNode;
+  heroVariant?: 'video' | 'default';
 }
 
 interface AuthPageHeaderProps {
@@ -88,10 +89,11 @@ export function AuthShell({
   children,
   contentClassName = '',
   footer = defaultFooter,
+  heroVariant = 'default',
 }: AuthShellProps) {
   return (
-    <main className="flex min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d]">
-      <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:w-1/2 md:px-12 lg:w-[44%] lg:px-16 xl:px-24">
+    <main className="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d] lg:grid lg:grid-cols-[55%_45%]">
+      <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:px-12 lg:px-16 xl:px-24">
         <header>
           <AuthBrand />
         </header>
@@ -109,7 +111,7 @@ export function AuthShell({
         </footer>
       </section>
 
-      <AuthAside />
+      <AuthAside variant={heroVariant} />
     </main>
   );
 }
@@ -257,9 +259,8 @@ export function AuthTextInput({
           id={id}
           aria-invalid={ariaInvalid ?? Boolean(error)}
           aria-describedby={describedBy}
-          className={`${authInputBaseClass} ${
-            Icon ? 'px-10' : 'px-3'
-          } ${className}`}
+          className={`${authInputBaseClass} ${Icon ? 'px-10' : 'px-3'
+            } ${className}`}
           {...inputProps}
         />
       </div>
@@ -381,55 +382,131 @@ export function AuthButton({
   );
 }
 
-function AuthAside() {
+export function AuthAside({
+  variant = 'default',
+}: {
+  variant?: 'video' | 'default';
+}) {
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+
+  // Pula a introdução azul nativa do arquivo e já dá o play
+  useEffect(() => {
+    if (video1Ref.current) {
+      video1Ref.current.currentTime = 1.5;
+      video1Ref.current.play().catch(() => { });
+    }
+  }, []);
+  // Remove isHovering effect
+  useEffect(() => {
+    const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
+    if (inactiveVideo) {
+      const timer = setTimeout(() => {
+        inactiveVideo.pause();
+        inactiveVideo.currentTime = 1.5;
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [activeVideo]);
+
+  const handleTimeUpdate = (videoNum: 1 | 2) => (e: SyntheticEvent<HTMLVideoElement>) => {
+    if (activeVideo !== videoNum) return;
+    const video = e.currentTarget;
+    if (!video.duration) return;
+
+    // Crossfade threshold (e.g., 0.8s before end)
+    const threshold = 0.8;
+    if (video.duration - video.currentTime <= threshold) {
+      const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
+      if (nextVideo) {
+        nextVideo.play().catch(() => { });
+        setActiveVideo(videoNum === 1 ? 2 : 1);
+      }
+    }
+  };
+
   return (
-    <aside className="relative hidden min-h-screen flex-1 overflow-hidden bg-[#00236f] text-white md:flex md:items-center md:justify-center">
-      <div
-        className="absolute inset-0 opacity-25"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px)',
-          backgroundSize: '56px 56px',
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70"
-        aria-hidden="true"
-      />
-      <div className="relative z-10 mx-auto max-w-xl px-10 text-center">
-        <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
-          <BookOpenCheck
-            className="h-10 w-10"
+    <aside className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center">
+      {variant === 'video' ? (
+        <>
+          <div className="auth-hero-fallback" aria-hidden="true" />
+          <div className="auth-hero-video-layer">
+            <video
+              ref={video1Ref}
+              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              tabIndex={-1}
+              onTimeUpdate={handleTimeUpdate(1)}
+            >
+              <source src="/media/cinema-novo.mp4" type="video/mp4" />
+            </video>
+            <video
+              ref={video2Ref}
+              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
+              muted
+              loop
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              tabIndex={-1}
+              onTimeUpdate={handleTimeUpdate(2)}
+            >
+              <source src="/media/cinema-novo.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="auth-hero-overlay opacity-60" aria-hidden="true" />
+
+
+        </>
+      ) : (
+        <>
+          <div
+            className="absolute inset-0 opacity-25"
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px)',
+              backgroundSize: '56px 56px',
+            }}
             aria-hidden="true"
           />
-        </div>
-        <h2 className="text-[32px] font-bold leading-10">
-          Gestão Escolar Inteligente
-        </h2>
-        <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
-          Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
-        </p>
+          <div className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70" aria-hidden="true" />
 
-        <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-            <p className="text-xs font-semibold uppercase text-[#b6c4ff]">
-              Governança
+          <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center">
+            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
+              <BookOpenCheck className="h-10 w-10" aria-hidden="true" />
+            </div>
+
+            <h2 className="text-[32px] font-bold leading-10">
+              Gestão Escolar Inteligente
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
+              Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
             </p>
-            <p className="mt-2 text-sm leading-5 text-white/90">
-              Perfis, permissões e instituições em um ambiente confiável.
-            </p>
+
+            <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <p className="text-xs font-semibold uppercase text-[#b6c4ff]">Governança</p>
+                <p className="mt-2 text-sm leading-5 text-white/90">
+                  Perfis, permissões e instituições em um ambiente confiável.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <p className="text-xs font-semibold uppercase text-[#6ffbbe]">Operação</p>
+                <p className="mt-2 text-sm leading-5 text-white/90">
+                  Dados escolares organizados para decisões rápidas.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-            <p className="text-xs font-semibold uppercase text-[#6ffbbe]">
-              Operação
-            </p>
-            <p className="mt-2 text-sm leading-5 text-white/90">
-              Dados escolares organizados para decisões rápidas.
-            </p>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </aside>
   );
 }

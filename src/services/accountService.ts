@@ -12,6 +12,8 @@ export interface AccountOwnerSummary {
   id: string;
   full_name: string;
   email: string;
+  role: string;
+  platform_role: string;
   active: boolean | null;
 }
 
@@ -20,6 +22,8 @@ export interface AccountInstitutionSummary {
   name: string;
   active: boolean | null;
   account_id: string | null;
+  logoUrl: string | null;
+  publicSlug: string | null;
 }
 
 export interface AccountSummaryRow {
@@ -62,6 +66,18 @@ export interface UpdateClientAccountResponse {
   status: AccountStatus;
 }
 
+export interface DeleteClientAccountInput {
+  accountId: string;
+}
+
+export interface DeleteClientAccountResponse {
+  success: true;
+  accountId: string;
+  ownerProfileId: string;
+  ownerPreserved: boolean;
+  deletedAuthUser: boolean;
+}
+
 export interface CreateInstitutionInput {
   accountId: string;
   name: string;
@@ -91,8 +107,8 @@ interface AccountQueryRow {
     | AccountOwnerSummary[]
     | null;
   institutions:
-    | AccountInstitutionSummary
-    | AccountInstitutionSummary[]
+    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })
+    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })[]
     | null;
 }
 
@@ -158,9 +174,14 @@ function normalizeStatus(
 function normalizeAccountRow(
   row: AccountQueryRow,
 ): AccountSummaryRow {
-  const institutions = normalizeRelationList(
-    row.institutions,
-  ).sort((first, second) =>
+  const institutions = normalizeRelationList(row.institutions).map((inst) => ({
+    id: inst.id,
+    name: inst.name,
+    active: inst.active,
+    account_id: inst.account_id,
+    logoUrl: inst.logo_url ?? null,
+    publicSlug: inst.public_slug ?? null,
+  })).sort((first, second) =>
     first.name.localeCompare(second.name, 'pt-BR'),
   );
 
@@ -370,6 +391,25 @@ function assertCreateInstitutionResponse(
   };
 }
 
+function assertDeleteAccountResponse(
+  value: unknown,
+): DeleteClientAccountResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    accountId: requireString(value, 'accountId'),
+    ownerProfileId: requireString(value, 'ownerProfileId'),
+    ownerPreserved: requireBoolean(value, 'ownerPreserved'),
+    deletedAuthUser: requireBoolean(value, 'deletedAuthUser'),
+  };
+}
+
 export const accountService = {
   async listAccounts(): Promise<AccountSummaryRow[]> {
     const { data, error } = await supabase
@@ -384,13 +424,17 @@ export const accountService = {
           id,
           full_name,
           email,
+          role,
+          platform_role,
           active
         ),
         institutions (
           id,
           name,
           active,
-          account_id
+          account_id,
+          logo_url,
+          public_slug
         )
       `,
       )
@@ -421,13 +465,17 @@ export const accountService = {
           id,
           full_name,
           email,
+          role,
+          platform_role,
           active
         ),
         institutions (
           id,
           name,
           active,
-          account_id
+          account_id,
+          logo_url,
+          public_slug
         )
       `,
       )
@@ -491,5 +539,21 @@ export const accountService = {
     }
 
     return assertCreateInstitutionResponse(data);
+  },
+
+  async deleteAccount(
+    input: DeleteClientAccountInput,
+  ): Promise<DeleteClientAccountResponse> {
+    const { data, error } =
+      await supabase.functions.invoke(
+        'delete-client-account',
+        { body: input },
+      );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertDeleteAccountResponse(data);
   },
 };

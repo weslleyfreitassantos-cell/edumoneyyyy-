@@ -70,4 +70,28 @@ describe('accountService', () => {
       institutionLimit: 1,
     })).rejects.toThrow(AccountServiceError);
   });
+
+  it('normaliza resposta de exclusao segura', async () => {
+    vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
+      data: {
+        success: true,
+        accountId: 'acc-1',
+        ownerProfileId: 'owner-1',
+        ownerPreserved: true,
+        deletedAuthUser: false,
+      },
+      error: null,
+    });
+
+    const response = await accountService.deleteAccount({
+      accountId: 'acc-1',
+    });
+
+    expect(supabase.functions.invoke).toHaveBeenCalledWith(
+      'delete-client-account',
+      { body: { accountId: 'acc-1' } },
+    );
+    expect(response.ownerPreserved).toBe(true);
+    expect(response.deletedAuthUser).toBe(false);
+  });
 });

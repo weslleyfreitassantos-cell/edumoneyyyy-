@@ -39,11 +39,19 @@ vi.mock('react-router-dom', async () => {
   };
 });
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 function renderLogin() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+
   return render(
-    <MemoryRouter>
-      <Login />
-    </MemoryRouter>,
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    </QueryClientProvider>,
   );
 }
 

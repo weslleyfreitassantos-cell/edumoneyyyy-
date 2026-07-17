@@ -102,6 +102,8 @@ beforeEach(() => {
         id: 'profile-1',
         full_name: 'Ana Admin',
         email: 'ana@escola.com',
+        role: 'ADMIN',
+        platform_role: 'USER',
         active: true,
       },
       institutions: [],

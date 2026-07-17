@@ -11,6 +11,8 @@ import {
   type CreateClientAccountResponse,
   type CreateInstitutionInput,
   type CreateInstitutionResponse,
+  type DeleteClientAccountInput,
+  type DeleteClientAccountResponse,
   type UpdateClientAccountInput,
   type UpdateClientAccountResponse,
 } from '../services/accountService';
@@ -77,6 +79,24 @@ export function useUpdateClientAccount() {
   >({
     mutationFn: (input) =>
       accountService.updateAccount(input),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: accountKeys.all,
+      });
+    },
+  });
+}
+
+export function useDeleteClientAccount() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    DeleteClientAccountResponse,
+    Error,
+    DeleteClientAccountInput
+  >({
+    mutationFn: (input) =>
+      accountService.deleteAccount(input),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: accountKeys.all,

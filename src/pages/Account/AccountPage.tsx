@@ -8,6 +8,7 @@ import {
   useState,
   type FormEvent,
 } from 'react';
+import { InstitutionBrandingSection } from '../../components/account/InstitutionBrandingSection';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -388,37 +389,46 @@ export default function AccountPage() {
               {account.institutions.map((institution) => (
                 <div
                   key={institution.id}
-                  className="flex flex-col gap-3 p-4 md:flex-row md:items-center md:justify-between"
+                  className="p-4"
                 >
-                  <div>
-                    <p className="font-semibold text-[#181c20]">
-                      {institution.name}
-                    </p>
-                    <p className="text-xs text-[#727785]">
-                      {institution.active === false
-                        ? 'Inativa'
-                        : 'Ativa'}
-                    </p>
+                  <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+                    <div>
+                      <p className="font-semibold text-[#181c20]">
+                        {institution.name}
+                      </p>
+                      <p className="text-xs text-[#727785]">
+                        {institution.active === false
+                          ? 'Inativa'
+                          : 'Ativa'}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          void handleSelectInstitution(
+                            institution.id,
+                          )
+                        }
+                        className="rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-semibold text-[#414754] hover:bg-gray-50"
+                      >
+                        Selecionar
+                      </button>
+                      <Link
+                        to="/admin"
+                        className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f]"
+                      >
+                        Entrar
+                      </Link>
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    <button
-                      type="button"
-                      onClick={() =>
-                        void handleSelectInstitution(
-                          institution.id,
-                        )
-                      }
-                      className="rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-semibold text-[#414754] hover:bg-gray-50"
-                    >
-                      Selecionar
-                    </button>
-                    <Link
-                      to="/admin"
-                      className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f]"
-                    >
-                      Entrar
-                    </Link>
-                  </div>
+                  
+                  <InstitutionBrandingSection
+                    institutionId={institution.id}
+                    institutionName={institution.name}
+                    currentLogoUrl={institution.logoUrl}
+                    currentPublicSlug={institution.publicSlug}
+                  />
                 </div>
               ))}
             </div>
