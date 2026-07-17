@@ -22,6 +22,8 @@ export interface AccountInstitutionSummary {
   name: string;
   active: boolean | null;
   account_id: string | null;
+  logoUrl: string | null;
+  publicSlug: string | null;
 }
 
 export interface AccountSummaryRow {
@@ -105,8 +107,8 @@ interface AccountQueryRow {
     | AccountOwnerSummary[]
     | null;
   institutions:
-    | AccountInstitutionSummary
-    | AccountInstitutionSummary[]
+    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })
+    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })[]
     | null;
 }
 
@@ -172,9 +174,14 @@ function normalizeStatus(
 function normalizeAccountRow(
   row: AccountQueryRow,
 ): AccountSummaryRow {
-  const institutions = normalizeRelationList(
-    row.institutions,
-  ).sort((first, second) =>
+  const institutions = normalizeRelationList(row.institutions).map((inst) => ({
+    id: inst.id,
+    name: inst.name,
+    active: inst.active,
+    account_id: inst.account_id,
+    logoUrl: inst.logo_url ?? null,
+    publicSlug: inst.public_slug ?? null,
+  })).sort((first, second) =>
     first.name.localeCompare(second.name, 'pt-BR'),
   );
 
@@ -425,7 +432,9 @@ export const accountService = {
           id,
           name,
           active,
-          account_id
+          account_id,
+          logo_url,
+          public_slug
         )
       `,
       )
@@ -464,7 +473,9 @@ export const accountService = {
           id,
           name,
           active,
-          account_id
+          account_id,
+          logo_url,
+          public_slug
         )
       `,
       )

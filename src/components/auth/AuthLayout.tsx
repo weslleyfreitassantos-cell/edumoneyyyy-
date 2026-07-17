@@ -13,6 +13,7 @@ interface AuthShellProps {
   children: ReactNode;
   contentClassName?: string;
   footer?: ReactNode;
+  heroVariant?: 'video' | 'default';
 }
 
 interface AuthPageHeaderProps {
@@ -88,6 +89,7 @@ export function AuthShell({
   children,
   contentClassName = '',
   footer = defaultFooter,
+  heroVariant = 'default',
 }: AuthShellProps) {
   return (
     <main className="flex min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d]">
@@ -109,7 +111,7 @@ export function AuthShell({
         </footer>
       </section>
 
-      <AuthAside />
+      <AuthAside variant={heroVariant} />
     </main>
   );
 }
@@ -381,54 +383,109 @@ export function AuthButton({
   );
 }
 
-function AuthAside() {
+export function AuthAside({
+  variant = 'default',
+}: {
+  variant?: 'video' | 'default';
+}) {
   return (
     <aside className="relative hidden min-h-screen flex-1 overflow-hidden bg-[#00236f] text-white md:flex md:items-center md:justify-center">
-      <div
-        className="absolute inset-0 opacity-25"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px)',
-          backgroundSize: '56px 56px',
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70"
-        aria-hidden="true"
-      />
-      <div className="relative z-10 mx-auto max-w-xl px-10 text-center">
-        <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
-          <BookOpenCheck
-            className="h-10 w-10"
+      {variant === 'video' ? (
+        <>
+          <div
+            className="auth-hero-fallback"
             aria-hidden="true"
           />
-        </div>
+          <video
+            className="auth-hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <source
+              src="/media/cinema-novo.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div
+            className="auth-hero-overlay"
+            aria-hidden="true"
+          />
+        </>
+      ) : (
+        <>
+          <div
+            className="absolute inset-0 opacity-25"
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px)',
+              backgroundSize: '56px 56px',
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70"
+            aria-hidden="true"
+          />
+        </>
+      )}
+
+      <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center">
+        {variant === 'video' ? (
+          <div className="mb-7 flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 shadow-2xl backdrop-blur">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#00236f]">
+              <BookOpenCheck
+                className="h-7 w-7"
+                aria-hidden="true"
+              />
+            </div>
+            <span className="text-xl font-bold">
+              EduManager Pro
+            </span>
+          </div>
+        ) : (
+          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
+            <BookOpenCheck
+              className="h-10 w-10"
+              aria-hidden="true"
+            />
+          </div>
+        )}
+        
         <h2 className="text-[32px] font-bold leading-10">
           Gestão Escolar Inteligente
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
-          Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
-        </p>
 
-        <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-            <p className="text-xs font-semibold uppercase text-[#b6c4ff]">
-              Governança
+        {variant === 'default' && (
+          <>
+            <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
+              Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
             </p>
-            <p className="mt-2 text-sm leading-5 text-white/90">
-              Perfis, permissões e instituições em um ambiente confiável.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-            <p className="text-xs font-semibold uppercase text-[#6ffbbe]">
-              Operação
-            </p>
-            <p className="mt-2 text-sm leading-5 text-white/90">
-              Dados escolares organizados para decisões rápidas.
-            </p>
-          </div>
-        </div>
+
+            <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <p className="text-xs font-semibold uppercase text-[#b6c4ff]">
+                  Governança
+                </p>
+                <p className="mt-2 text-sm leading-5 text-white/90">
+                  Perfis, permissões e instituições em um ambiente confiável.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+                <p className="text-xs font-semibold uppercase text-[#6ffbbe]">
+                  Operação
+                </p>
+                <p className="mt-2 text-sm leading-5 text-white/90">
+                  Dados escolares organizados para decisões rápidas.
+                </p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </aside>
   );
