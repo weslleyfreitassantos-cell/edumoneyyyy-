@@ -7,7 +7,7 @@ import {
   Lock,
   type LucideIcon,
 } from 'lucide-react';
-import { useRef, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode, type SyntheticEvent } from 'react';
 
 interface AuthShellProps {
   children: ReactNode;
@@ -92,8 +92,8 @@ export function AuthShell({
   heroVariant = 'default',
 }: AuthShellProps) {
   return (
-    <main className="flex min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d]">
-      <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:w-1/2 md:px-12 lg:w-[44%] lg:px-16 xl:px-24">
+    <main className="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d] lg:grid lg:grid-cols-2">
+      <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:px-12 lg:px-16 xl:px-24">
         <header>
           <AuthBrand />
         </header>
@@ -388,46 +388,72 @@ export function AuthAside({
 }: {
   variant?: 'video' | 'default';
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const video1Ref = useRef<HTMLVideoElement>(null);
+  const video2Ref = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
 
-  const handleTimeUpdate = () => {
-    if (videoRef.current && videoRef.current.duration) {
-      if (videoRef.current.currentTime >= videoRef.current.duration - 0.15) {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play().catch(() => {});
+  const handleTimeUpdate = (videoNum: 1 | 2) => (e: SyntheticEvent<HTMLVideoElement>) => {
+    if (activeVideo !== videoNum) return;
+    const video = e.currentTarget;
+    if (!video.duration) return;
+    
+    // Crossfade threshold (e.g., 0.5s before end)
+    const threshold = 0.5;
+    if (video.duration - video.currentTime <= threshold) {
+      const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
+      if (nextVideo) {
+        nextVideo.currentTime = 0;
+        nextVideo.play().catch(() => {});
+        setActiveVideo(videoNum === 1 ? 2 : 1);
       }
     }
   };
 
   return (
-    <aside className="relative hidden min-h-screen flex-1 overflow-hidden bg-[#00236f] text-white md:flex md:items-center md:justify-center">
+    <aside className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center">
       {variant === 'video' ? (
         <>
-          <div
-            className="auth-hero-fallback"
-            aria-hidden="true"
-          />
+          <div className="auth-hero-fallback" aria-hidden="true" />
           <video
-            ref={videoRef}
-            className="auth-hero-video"
+            ref={video1Ref}
+            className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
             autoPlay
             muted
-            loop
             playsInline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
             tabIndex={-1}
-            onTimeUpdate={handleTimeUpdate}
+            onTimeUpdate={handleTimeUpdate(1)}
           >
-            <source
-              src="/media/cinema-novo.mp4"
-              type="video/mp4"
-            />
+            <source src="/media/cinema-novo.mp4" type="video/mp4" />
           </video>
-          <div
-            className="auth-hero-overlay"
+          <video
+            ref={video2Ref}
+            className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            muted
+            playsInline
+            preload="auto"
             aria-hidden="true"
-          />
+            tabIndex={-1}
+            onTimeUpdate={handleTimeUpdate(2)}
+          >
+            <source src="/media/cinema-novo.mp4" type="video/mp4" />
+          </video>
+          <div className="auth-hero-overlay opacity-60" aria-hidden="true" />
+
+          {/* Footer content */}
+          <div className="absolute bottom-[40px] left-0 right-0 z-20 flex items-center justify-center gap-3">
+            <BookOpenCheck
+              className="h-8 w-8 text-white drop-shadow-md"
+              aria-hidden="true"
+            />
+            <h2 
+              className="text-2xl font-bold text-white lg:text-3xl" 
+              style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.35)' }}
+            >
+              Gestão Escolar Inteligente
+            </h2>
+          </div>
         </>
       ) : (
         <>
@@ -440,66 +466,38 @@ export function AuthAside({
             }}
             aria-hidden="true"
           />
-          <div
-            className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70"
-            aria-hidden="true"
-          />
-        </>
-      )}
+          <div className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70" aria-hidden="true" />
 
-      <div className={`relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center ${variant === 'video' ? 'translate-y-16' : ''}`}>
-        {variant === 'video' ? (
-          <div className="flex items-center gap-4">
-            <BookOpenCheck
-              className="h-12 w-12 text-white"
-              aria-hidden="true"
-            />
-            <h2 className="text-[32px] font-bold leading-10 text-white">
+          <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center">
+            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
+              <BookOpenCheck className="h-10 w-10" aria-hidden="true" />
+            </div>
+            
+            <h2 className="text-[32px] font-bold leading-10">
               Gestão Escolar Inteligente
             </h2>
-          </div>
-        ) : (
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
-            <BookOpenCheck
-              className="h-10 w-10"
-              aria-hidden="true"
-            />
-          </div>
-        )}
-        
-        {variant !== 'video' && (
-          <h2 className="text-[32px] font-bold leading-10">
-            Gestão Escolar Inteligente
-          </h2>
-        )}
 
-        {variant === 'default' && (
-          <>
             <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
               Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
             </p>
 
             <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
               <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <p className="text-xs font-semibold uppercase text-[#b6c4ff]">
-                  Governança
-                </p>
+                <p className="text-xs font-semibold uppercase text-[#b6c4ff]">Governança</p>
                 <p className="mt-2 text-sm leading-5 text-white/90">
                   Perfis, permissões e instituições em um ambiente confiável.
                 </p>
               </div>
               <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <p className="text-xs font-semibold uppercase text-[#6ffbbe]">
-                  Operação
-                </p>
+                <p className="text-xs font-semibold uppercase text-[#6ffbbe]">Operação</p>
                 <p className="mt-2 text-sm leading-5 text-white/90">
                   Dados escolares organizados para decisões rápidas.
                 </p>
               </div>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </aside>
   );
 }
