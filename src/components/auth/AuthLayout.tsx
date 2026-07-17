@@ -391,16 +391,13 @@ export function AuthAside({
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
 
-  // Força o vídeo a renderizar o primeiro frame no carregamento
+  // Pula a introdução azul nativa do arquivo e já dá o play
   useEffect(() => {
     if (video1Ref.current) {
       video1Ref.current.currentTime = 1.5;
-      video1Ref.current.play().then(() => {
-        video1Ref.current?.pause();
-      }).catch(() => { });
+      video1Ref.current.play().catch(() => { });
     }
   }, []);
-
   // Remove isHovering effect
   useEffect(() => {
     const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
