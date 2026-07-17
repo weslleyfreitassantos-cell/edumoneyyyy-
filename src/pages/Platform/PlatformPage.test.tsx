@@ -15,20 +15,36 @@ import {
   vi,
 } from 'vitest';
 import PlatformPage from './PlatformPage';
+import { AccountServiceError } from '../../services/accountService';
 
 const hookMock = vi.hoisted(() => ({
   accountsQuery: {} as any,
   createAccount: {} as any,
   updateAccount: {} as any,
-  refetch: vi.fn(),
+  deleteAccount: {} as any,
   createMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
+  deleteMutateAsync: vi.fn(),
 }));
 
 vi.mock('../../hooks/useAccounts', () => ({
   useAccounts: () => hookMock.accountsQuery,
   useCreateClientAccount: () => hookMock.createAccount,
   useUpdateClientAccount: () => hookMock.updateAccount,
+  useDeleteClientAccount: () => hookMock.deleteAccount,
+}));
+
+vi.mock('../../contexts/AuthContext', () => ({
+  useAuth: () => ({
+    profile: {
+      id: 'super-admin-1',
+      full_name: 'Super Admin',
+      email: 'superadmin@admin.com',
+      role: 'ADMIN',
+      platform_role: 'SUPER_ADMIN',
+      avatar_url: null,
+    },
+  }),
 }));
 
 const accounts = [
@@ -42,6 +58,8 @@ const accounts = [
       id: 'owner-1',
       full_name: 'Ana Admin',
       email: 'ana@example.com',
+      role: 'ADMIN',
+      platform_role: 'USER',
       active: true,
     },
     institutions: [
@@ -83,7 +101,6 @@ describe('PlatformPage', () => {
       isLoading: false,
       isError: false,
       error: null,
-      refetch: hookMock.refetch,
     };
     hookMock.createAccount = {
       isPending: false,
@@ -92,6 +109,10 @@ describe('PlatformPage', () => {
     hookMock.updateAccount = {
       isPending: false,
       mutateAsync: hookMock.updateMutateAsync,
+    };
+    hookMock.deleteAccount = {
+      isPending: false,
+      mutateAsync: hookMock.deleteMutateAsync,
     };
     hookMock.createMutateAsync.mockResolvedValue({
       success: true,
@@ -107,6 +128,13 @@ describe('PlatformPage', () => {
       accountId: 'account-1',
       institutionLimit: 4,
       status: 'ACTIVE',
+    });
+    hookMock.deleteMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      ownerProfileId: 'owner-1',
+      ownerPreserved: false,
+      deletedAuthUser: true,
     });
   });
 
@@ -212,6 +240,57 @@ describe('PlatformPage', () => {
     });
   });
 
+  it('mostra conflito de adminEmail sem limpar os demais campos', async () => {
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Já existe um usuário cadastrado com este e-mail.',
+        'EMAIL_ALREADY_REGISTERED',
+        {
+          adminEmail: 'Este e-mail já está cadastrado.',
+        },
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome da conta'), {
+      target: { value: 'Conta Nova' },
+    });
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'existente@example.com' },
+    });
+    fireEvent.change(
+      screen.getByLabelText('Limite de instituições'),
+      {
+        target: { value: '2' },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Criar conta/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText('Este e-mail já está cadastrado.'),
+      ).toBeDefined();
+      expect(
+        screen.getByDisplayValue('Conta Nova'),
+      ).toBeDefined();
+      expect(
+        screen.getByDisplayValue('Novo Admin'),
+      ).toBeDefined();
+      expect(
+        screen.getByDisplayValue('existente@example.com'),
+      ).toBeDefined();
+    });
+  });
+
   it('mantem as acoes reais de limite e status', async () => {
     renderPage();
 
@@ -248,16 +327,108 @@ describe('PlatformPage', () => {
     });
   });
 
-  it('permite atualizar a lista real', () => {
+  it('remove acoes superiores redundantes e mantem somente a criacao real', () => {
+    renderPage();
+
+    expect(
+      screen.queryByRole('button', {
+        name: /Atualizar/i,
+      }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('button', {
+        name: /Nova conta/i,
+      }),
+    ).toBeNull();
+    expect(
+      screen.getAllByRole('button', {
+        name: /Criar conta/i,
+      }),
+    ).toHaveLength(1);
+  });
+
+  it('exige confirmacao por e-mail para excluir administrador', async () => {
     renderPage();
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Atualizar/i,
+        name: /Excluir administrador de Conta Alfa/i,
       }),
     );
 
-    expect(hookMock.refetch).toHaveBeenCalledTimes(1);
+    expect(
+      screen.getByRole('dialog', {
+        name: /Excluir conta e administrador/i,
+      }),
+    ).toBeDefined();
+    expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('Ana Admin').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('ana@example.com').length).toBeGreaterThan(1);
+
+    const confirmButton = screen.getByRole('button', {
+      name: /^Excluir$/i,
+    }) as HTMLButtonElement;
+    expect(confirmButton.disabled).toBe(true);
+
+    fireEvent.change(
+      screen.getByLabelText(
+        /Digite o e-mail do administrador para confirmar/i,
+      ),
+      {
+        target: { value: 'ana@example.com' },
+      },
+    );
+
+    expect(confirmButton.disabled).toBe(false);
+    fireEvent.click(confirmButton);
+
+    await waitFor(() => {
+      expect(hookMock.deleteMutateAsync).toHaveBeenCalledWith({
+        accountId: 'account-1',
+      });
+      expect(
+        screen.getByText(/Conta vazia e administrador exclu/i),
+      ).toBeDefined();
+    });
+  });
+
+  it('mostra ACCOUNT_NOT_EMPTY sem remover item da interface', async () => {
+    hookMock.deleteMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Esta conta possui instituições ou vínculos e não pode ser excluída.',
+        'ACCOUNT_NOT_EMPTY',
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir administrador de Conta Alfa/i,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(
+        /Digite o e-mail do administrador para confirmar/i,
+      ),
+      {
+        target: { value: 'ana@example.com' },
+      },
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /^Excluir$/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          /Esta conta possui instituições ou vínculos e não pode ser excluída/i,
+        ),
+      ).toBeDefined();
+      expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
+    });
   });
 
   it('filtra contas e instituicoes com dados reais', () => {

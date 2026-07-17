@@ -27,11 +27,17 @@ import {
 } from './useUserInstitutions';
 import {
   accountKeys,
+  useCreateClientAccount,
   useCreateInstitution,
+  useDeleteClientAccount,
+  useUpdateClientAccount,
 } from './useAccounts';
 
 vi.mock('../services/accountService', () => ({
   accountService: {
+    createAccount: vi.fn(),
+    updateAccount: vi.fn(),
+    deleteAccount: vi.fn(),
     createInstitution: vi.fn(),
   },
 }));
@@ -128,5 +134,138 @@ describe('useCreateInstitution', () => {
           ),
       ),
     ).toBe(false);
+  });
+});
+
+describe('account mutations', () => {
+  it('invalida contas apos criar conta cliente', async () => {
+    const queryClient = createQueryClient();
+    const invalidateSpy = vi.spyOn(
+      queryClient,
+      'invalidateQueries',
+    );
+
+    mockedAccountService.createAccount.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      ownerProfileId: 'owner-1',
+      ownerEmail: 'admin@example.com',
+      institutionLimit: 2,
+      invitationSent: true,
+      reusedExistingUser: false,
+    });
+
+    const wrapper = ({
+      children,
+    }: {
+      children: ReactNode;
+    }) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+
+    const { result } = renderHook(
+      () => useCreateClientAccount(),
+      { wrapper },
+    );
+
+    await act(async () => {
+      await result.current.mutateAsync({
+        accountName: 'Conta',
+        adminFullName: 'Admin',
+        adminEmail: 'admin@example.com',
+        institutionLimit: 2,
+      });
+    });
+
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: accountKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('invalida contas apos atualizar limite ou status', async () => {
+    const queryClient = createQueryClient();
+    const invalidateSpy = vi.spyOn(
+      queryClient,
+      'invalidateQueries',
+    );
+
+    mockedAccountService.updateAccount.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      institutionLimit: 4,
+      status: 'ACTIVE',
+    });
+
+    const wrapper = ({
+      children,
+    }: {
+      children: ReactNode;
+    }) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+
+    const { result } = renderHook(
+      () => useUpdateClientAccount(),
+      { wrapper },
+    );
+
+    await act(async () => {
+      await result.current.mutateAsync({
+        accountId: 'account-1',
+        institutionLimit: 4,
+      });
+    });
+
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: accountKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('invalida contas apos excluir conta e administrador', async () => {
+    const queryClient = createQueryClient();
+    const invalidateSpy = vi.spyOn(
+      queryClient,
+      'invalidateQueries',
+    );
+
+    mockedAccountService.deleteAccount.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      ownerProfileId: 'owner-1',
+      ownerPreserved: false,
+      deletedAuthUser: true,
+    });
+
+    const wrapper = ({
+      children,
+    }: {
+      children: ReactNode;
+    }) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+
+    const { result } = renderHook(
+      () => useDeleteClientAccount(),
+      { wrapper },
+    );
+
+    await act(async () => {
+      await result.current.mutateAsync({
+        accountId: 'account-1',
+      });
+    });
+
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: accountKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledTimes(1);
   });
 });
