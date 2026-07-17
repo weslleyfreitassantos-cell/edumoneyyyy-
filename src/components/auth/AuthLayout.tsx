@@ -7,7 +7,7 @@ import {
   Lock,
   type LucideIcon,
 } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { useRef, type ReactNode } from 'react';
 
 interface AuthShellProps {
   children: ReactNode;
@@ -388,6 +388,17 @@ export function AuthAside({
 }: {
   variant?: 'video' | 'default';
 }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleTimeUpdate = () => {
+    if (videoRef.current && videoRef.current.duration) {
+      if (videoRef.current.currentTime >= videoRef.current.duration - 0.15) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play().catch(() => {});
+      }
+    }
+  };
+
   return (
     <aside className="relative hidden min-h-screen flex-1 overflow-hidden bg-[#00236f] text-white md:flex md:items-center md:justify-center">
       {variant === 'video' ? (
@@ -397,6 +408,7 @@ export function AuthAside({
             aria-hidden="true"
           />
           <video
+            ref={videoRef}
             className="auth-hero-video"
             autoPlay
             muted
@@ -405,6 +417,7 @@ export function AuthAside({
             preload="metadata"
             aria-hidden="true"
             tabIndex={-1}
+            onTimeUpdate={handleTimeUpdate}
           >
             <source
               src="/media/cinema-novo.mp4"
@@ -434,18 +447,16 @@ export function AuthAside({
         </>
       )}
 
-      <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center">
+      <div className={`relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center ${variant === 'video' ? 'translate-y-16' : ''}`}>
         {variant === 'video' ? (
-          <div className="mb-7 flex items-center gap-3 rounded-2xl border border-white/20 bg-white/10 px-5 py-4 shadow-2xl backdrop-blur">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#00236f]">
-              <BookOpenCheck
-                className="h-7 w-7"
-                aria-hidden="true"
-              />
-            </div>
-            <span className="text-xl font-bold">
-              EduManager Pro
-            </span>
+          <div className="flex items-center gap-4">
+            <BookOpenCheck
+              className="h-12 w-12 text-white"
+              aria-hidden="true"
+            />
+            <h2 className="text-[32px] font-bold leading-10 text-white">
+              Gestão Escolar Inteligente
+            </h2>
           </div>
         ) : (
           <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
@@ -456,9 +467,11 @@ export function AuthAside({
           </div>
         )}
         
-        <h2 className="text-[32px] font-bold leading-10">
-          Gestão Escolar Inteligente
-        </h2>
+        {variant !== 'video' && (
+          <h2 className="text-[32px] font-bold leading-10">
+            Gestão Escolar Inteligente
+          </h2>
+        )}
 
         {variant === 'default' && (
           <>
