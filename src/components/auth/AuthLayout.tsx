@@ -390,16 +390,25 @@ export function AuthAside({
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+
+  useEffect(() => {
+    const video = activeVideo === 1 ? video1Ref.current : video2Ref.current;
+    if (video) {
+      if (isHovering) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+  }, [isHovering, activeVideo]);
 
   useEffect(() => {
     const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
     if (inactiveVideo) {
       const timer = setTimeout(() => {
+        inactiveVideo.pause();
         inactiveVideo.currentTime = 0;
-        inactiveVideo.play().then(() => {
-          inactiveVideo.pause();
-        }).catch(() => {});
       }, 1500);
       return () => clearTimeout(timer);
     }
@@ -415,29 +424,31 @@ export function AuthAside({
     if (video.duration - video.currentTime <= threshold) {
       const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
       if (nextVideo) {
-        nextVideo.play().catch(() => { });
+        if (isHovering) nextVideo.play().catch(() => { });
         setActiveVideo(videoNum === 1 ? 2 : 1);
       }
     }
   };
 
   return (
-    <aside className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center">
+    <aside 
+      className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       {variant === 'video' ? (
         <>
           <div className="auth-hero-fallback" aria-hidden="true" />
-          <div className={`auth-hero-video-layer transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="auth-hero-video-layer">
             <video
               ref={video1Ref}
               className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
-              autoPlay
               muted
               loop
               playsInline
               preload="auto"
               aria-hidden="true"
               tabIndex={-1}
-              onCanPlay={() => setIsLoaded(true)}
               onTimeUpdate={handleTimeUpdate(1)}
             >
               <source src="/media/cinema-novo.mp4" type="video/mp4" />
