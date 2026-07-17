@@ -395,10 +395,10 @@ export function AuthAside({
   // Força o vídeo a renderizar o primeiro frame no carregamento
   useEffect(() => {
     if (video1Ref.current) {
-      video1Ref.current.currentTime = 0.1;
+      video1Ref.current.currentTime = 1.5;
       video1Ref.current.play().then(() => {
         video1Ref.current?.pause();
-      }).catch(() => {});
+      }).catch(() => { });
     }
   }, []);
 
@@ -406,7 +406,7 @@ export function AuthAside({
     const video = activeVideo === 1 ? video1Ref.current : video2Ref.current;
     if (video) {
       if (isHovering) {
-        video.play().catch(() => {});
+        video.play().catch(() => { });
       } else {
         video.pause();
       }
@@ -418,7 +418,7 @@ export function AuthAside({
     if (inactiveVideo) {
       const timer = setTimeout(() => {
         inactiveVideo.pause();
-        inactiveVideo.currentTime = 0;
+        inactiveVideo.currentTime = 1.5;
       }, 1500);
       return () => clearTimeout(timer);
     }
@@ -441,7 +441,7 @@ export function AuthAside({
   };
 
   return (
-    <aside 
+    <aside
       className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
