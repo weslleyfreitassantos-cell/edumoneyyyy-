@@ -27,6 +27,7 @@ import {
 } from 'vitest';
 
 import UnifiedUserInvitePreview from './UnifiedUserInvitePreview';
+import { SchoolUserInviteServiceError } from '../../../../services/schoolUserInviteService';
 
 const currentDirectory = dirname(
   fileURLToPath(import.meta.url),
@@ -174,6 +175,70 @@ describe('UnifiedUserInvitePreview', () => {
         fullName: 'Professor Teste',
         email: 'professor@escola.com',
       });
+    });
+  });
+
+  it('mostra erro especifico de e-mail ja cadastrado sem limpar formulario', async () => {
+    mutateAsync.mockRejectedValueOnce(
+      new SchoolUserInviteServiceError(
+        'Já existe um usuário cadastrado com este e-mail.',
+        'EMAIL_ALREADY_REGISTERED',
+        {
+          email: 'Este e-mail já está cadastrado.',
+        },
+      ),
+    );
+
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Professor/,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Nome completo/),
+      {
+        target: {
+          value: 'Professor Teste',
+        },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/E-mail/),
+      {
+        target: {
+          value: 'professor@escola.com',
+        },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Enviar convite/,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          'Este e-mail já está cadastrado.',
+        ),
+      ).toBeTruthy();
+      expect(
+        screen.getByDisplayValue(
+          'professor@escola.com',
+        ),
+      ).toBeTruthy();
+      expect(
+        screen.getByRole('button', {
+          name: /Enviar convite/,
+        }).hasAttribute('disabled'),
+      ).toBe(false);
     });
   });
 

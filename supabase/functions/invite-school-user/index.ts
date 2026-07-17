@@ -2,6 +2,12 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import { z } from "zod";
 
+import {
+  buildIdentityConflict,
+  getExistingProfileIdentityConflict,
+  normalizeIdentityEmail,
+  type IdentityConflict,
+} from "../_shared/identity-protection.ts";
 import type { Database as GeneratedDatabase } from "../_shared/database.types.ts";
 
 type GeneratedPublicSchema = GeneratedDatabase["public"];
@@ -26,15 +32,10 @@ type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
 interface ExistingProfile {
   id: string;
-  role: UserRole;
-  full_name: string;
-  active: boolean | null;
-}
-
-interface ExistingMembership {
-  id: string;
+  email: string;
   role: UserRole;
   active: boolean | null;
+  platform_role: Database["public"]["Enums"]["platform_role"];
 }
 
 interface InstitutionRecord {
@@ -49,25 +50,11 @@ interface AccountRecord {
   status: string;
 }
 
-interface ExistingGuardianship {
-  id: string;
-  relationship: string;
-  is_primary: boolean | null;
-  active: boolean | null;
-}
-
 interface RollbackState {
   createdAuthUserId: string | null;
   createdMembershipId: string | null;
   createdStudentId: string | null;
   createdGuardianshipId: string | null;
-  reactivatedMembership: ExistingMembership | null;
-  reactivatedGuardianship: ExistingGuardianship | null;
-  updatedExistingProfile: {
-    id: string;
-    full_name: string;
-    active: boolean | null;
-  } | null;
 }
 
 const targetRoleSchema = z.enum(["DIRECTOR", "SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"]);
@@ -127,6 +114,15 @@ class InviteError extends Error {
 
 function jsonError({ status, code, message, fieldErrors }: { status: number; code: string; message: string; fieldErrors?: Record<string, string> }): Response {
   return Response.json({ success: false, code, message, ...(fieldErrors ? { fieldErrors } : {}) }, { status });
+}
+
+function inviteErrorFromIdentityConflict(conflict: IdentityConflict): InviteError {
+  return new InviteError({
+    status: conflict.status,
+    code: conflict.code,
+    message: conflict.message,
+    fieldErrors: conflict.fieldErrors,
+  });
 }
 
 function toFieldName(issuePath: PropertyKey[]): string {
@@ -208,9 +204,6 @@ export default {
       createdMembershipId: null,
       createdStudentId: null,
       createdGuardianshipId: null,
-      reactivatedMembership: null,
-      reactivatedGuardianship: null,
-      updatedExistingProfile: null,
     };
 
     try {
@@ -277,85 +270,32 @@ export default {
 
       const { data: existingProfileData, error: profileLookupError } = await ctx.supabaseAdmin
         .from("profiles")
-        .select("id, role, full_name, active")
-        .eq("email", input.email)
-        .maybeSingle();
+        .select("id, email, role, active, platform_role")
+        .ilike("email", input.email)
+        .limit(10);
 
       if (profileLookupError) throw profileLookupError;
 
-      const existingProfile = existingProfileData as ExistingProfile | null;
+      const existingProfile = ((existingProfileData ?? []) as ExistingProfile[])
+        .find((profile) => normalizeIdentityEmail(profile.email) === input.email) ?? null;
 
-      let existingActiveGuardianMembershipId: string | null = null;
-      let inactiveMemberships: ExistingMembership[] = [];
-      let inactiveGuardianships: ExistingGuardianship[] = [];
-
-      // Validations using profileId (if exists)
       if (existingProfile) {
-        if (existingProfile.role !== input.role) {
-          throw new InviteError({ status: 409, code: "PROFILE_ROLE_CONFLICT", message: "Ja existe usuario com este e-mail em outro papel.", fieldErrors: { email: "E-mail vinculado a outro papel." } });
-        }
+        const { data: ownedAccount, error: ownedAccountError } = await ctx.supabaseAdmin
+          .from("accounts")
+          .select("id")
+          .eq("owner_profile_id", existingProfile.id)
+          .maybeSingle();
 
-        const { data: membershipRows, error: membershipLookupError } = await ctx.supabaseAdmin
-          .from("memberships")
-          .select("id, role, active")
-          .eq("profile_id", existingProfile.id)
-          .eq("institution_id", input.institutionId);
+        if (ownedAccountError) throw ownedAccountError;
 
-        if (membershipLookupError) throw membershipLookupError;
+        const conflict = getExistingProfileIdentityConflict(
+          existingProfile,
+          Boolean(ownedAccount),
+          "email",
+        );
 
-        const memberships = (membershipRows ?? []) as ExistingMembership[];
-        const conflictingMembership = memberships.find((membership) => membership.role !== input.role);
-
-        if (conflictingMembership) {
-          throw new InviteError({ status: 409, code: "MEMBERSHIP_ROLE_CONFLICT", message: "Este e-mail ja esta vinculado a esta escola com outro papel.", fieldErrors: { email: "E-mail vinculado com role conflitante." } });
-        }
-
-        const activeDuplicateMembership = memberships.find((membership) => membership.role === input.role && membership.active === true);
-
-        if (activeDuplicateMembership && input.role === "GUARDIAN") {
-          existingActiveGuardianMembershipId = activeDuplicateMembership.id;
-        } else if (activeDuplicateMembership) {
-          throw new InviteError({ status: 409, code: "MEMBERSHIP_ALREADY_ACTIVE", message: "Este e-mail ja possui vinculo ativo equivalente nesta escola.", fieldErrors: { email: "E-mail ja vinculado a instituicao." } });
-        }
-
-        inactiveMemberships = memberships.filter((membership) => membership.role === input.role && membership.active === false);
-        if (inactiveMemberships.length > 1) {
-          throw new InviteError({ status: 409, code: "DUPLICATE_INACTIVE_MEMBERSHIP", message: "Ha mais de um vinculo inativo para este e-mail nesta escola." });
-        }
-
-        if (input.role === "STUDENT") {
-          const { data: existingStudentRows, error: studentLookupError } = await ctx.supabaseAdmin
-            .from("students")
-            .select("id")
-            .eq("profile_id", existingProfile.id)
-            .eq("institution_id", input.institutionId);
-
-          if (studentLookupError) throw studentLookupError;
-          if ((existingStudentRows ?? []).length > 0) {
-            throw new InviteError({ status: 409, code: "STUDENT_ALREADY_EXISTS", message: "Este estudante ja esta cadastrado nesta escola.", fieldErrors: { email: "Estudante ja cadastrado." } });
-          }
-        }
-
-        if (input.role === "GUARDIAN") {
-          const guardian = input.guardian!;
-          const { data: existingGuardianshipRows, error: guardianshipLookupError } = await ctx.supabaseAdmin
-            .from("guardianships")
-            .select("id, relationship, is_primary, active")
-            .eq("guardian_profile_id", existingProfile.id)
-            .eq("student_id", guardian.studentId);
-
-          if (guardianshipLookupError) throw guardianshipLookupError;
-          const guardianships = (existingGuardianshipRows ?? []) as ExistingGuardianship[];
-
-          const activeGuardianship = guardianships.find((g) => g.active === true);
-          if (activeGuardianship) {
-            throw new InviteError({ status: 409, code: "GUARDIANSHIP_ALREADY_EXISTS", message: "Este responsavel ja possui vinculo ativo com o aluno selecionado.", fieldErrors: { guardianStudentId: "Vinculo com aluno ja existe." } });
-          }
-
-          inactiveGuardianships = guardianships.filter((g) => g.active === false);
-          if (inactiveGuardianships.length > 1) {
-            throw new InviteError({ status: 409, code: "DUPLICATE_INACTIVE_GUARDIANSHIP", message: "Ha mais de um vinculo inativo entre este responsavel e aluno." });
-          }
+        if (conflict) {
+          throw inviteErrorFromIdentityConflict(conflict);
         }
       }
 
@@ -392,67 +332,49 @@ export default {
 
       // EXECUTE AUTH CREATION (IF NEW)
       let profileId: string;
-      let invitationSent = false;
-      const reusedExistingUser = Boolean(existingProfile);
+      const invitationSent = true;
+      const reusedExistingUser = false;
 
-      if (!existingProfile) {
-        const { data: invitationData, error: invitationError } = await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
-          input.email,
-          {
-            data: { full_name: input.fullName, role: input.role },
-            redirectTo: getAppUrl() + '/auth/confirm',
-          }
-        );
-
-        if (invitationError || !invitationData.user) {
-          if (isDuplicateAuthError(invitationError?.message)) {
-            throw new InviteError({ status: 409, code: "AUTH_USER_ALREADY_EXISTS", message: "Ja existe usuario Auth com este e-mail, mas sem profile reutilizavel.", fieldErrors: { email: "E-mail ja existe no Auth." } });
-          }
-          throw new Error(invitationError?.message ?? "Nao foi possivel criar o usuario.");
+      const { data: invitationData, error: invitationError } = await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
+        input.email,
+        {
+          data: { full_name: input.fullName, role: input.role },
+          redirectTo: getAppUrl() + '/auth/confirm',
         }
+      );
 
-        profileId = invitationData.user.id;
-        rollback.createdAuthUserId = profileId;
-        invitationSent = true;
-      } else {
-        profileId = existingProfile.id;
+      if (invitationError || !invitationData.user) {
+        if (isDuplicateAuthError(invitationError?.message)) {
+          throw inviteErrorFromIdentityConflict(
+            buildIdentityConflict(
+              "AUTH_USER_ALREADY_EXISTS",
+              "email",
+            ),
+          );
+        }
+        throw new Error(invitationError?.message ?? "Nao foi possivel criar o usuario.");
       }
+
+      profileId = invitationData.user.id;
+      rollback.createdAuthUserId = profileId;
 
       // EXECUTE PUBLIC SCHEMA INSERTS
-      if (existingProfile) {
-        rollback.updatedExistingProfile = { id: existingProfile.id, full_name: existingProfile.full_name, active: existingProfile.active };
-        const { error: updateProfileError } = await ctx.supabaseAdmin
-          .from("profiles")
-          .update({ full_name: input.fullName, active: true })
-          .eq("id", profileId);
-        if (updateProfileError) throw updateProfileError;
-      } else {
-        const { error: profileInsertError } = await ctx.supabaseAdmin
-          .from("profiles")
-          .upsert({ id: profileId, full_name: input.fullName, email: input.email, role: input.role, platform_role: "USER", avatar_url: null, active: true }, { onConflict: "id" });
-        if (profileInsertError) throw profileInsertError;
-      }
+      const { error: profileInsertError } = await ctx.supabaseAdmin
+        .from("profiles")
+        .insert({ id: profileId, full_name: input.fullName, email: input.email, role: input.role, platform_role: "USER", avatar_url: null, active: true });
+      if (profileInsertError) throw profileInsertError;
 
       let membershipId: string;
       let studentResult: { id: string; registrationNumber: string; } | undefined;
       let guardianshipResult: { id: string; } | undefined;
 
-      if (existingActiveGuardianMembershipId) {
-        membershipId = existingActiveGuardianMembershipId;
-      } else if (inactiveMemberships[0]) {
-        rollback.reactivatedMembership = inactiveMemberships[0];
-        membershipId = inactiveMemberships[0].id;
-        const { error: membershipUpdateError } = await ctx.supabaseAdmin.from("memberships").update({ active: true }).eq("id", membershipId);
-        if (membershipUpdateError) throw membershipUpdateError;
-      } else {
-        const { data: createdMembership, error: membershipInsertError } = await ctx.supabaseAdmin
-          .from("memberships")
-          .insert({ profile_id: profileId, institution_id: input.institutionId, role: input.role, active: true })
-          .select("id").single();
-        if (membershipInsertError || !createdMembership) throw new Error(membershipInsertError?.message ?? "Nao foi possivel criar o vinculo.");
-        membershipId = createdMembership.id;
-        rollback.createdMembershipId = membershipId;
-      }
+      const { data: createdMembership, error: membershipInsertError } = await ctx.supabaseAdmin
+        .from("memberships")
+        .insert({ profile_id: profileId, institution_id: input.institutionId, role: input.role, active: true })
+        .select("id").single();
+      if (membershipInsertError || !createdMembership) throw new Error(membershipInsertError?.message ?? "Nao foi possivel criar o vinculo.");
+      membershipId = createdMembership.id;
+      rollback.createdMembershipId = membershipId;
 
       if (input.role === "STUDENT") {
         const { data: createdStudent, error: studentInsertError } = await ctx.supabaseAdmin
@@ -466,23 +388,13 @@ export default {
 
       if (input.role === "GUARDIAN") {
         const guardian = input.guardian!;
-        if (inactiveGuardianships[0]) {
-          rollback.reactivatedGuardianship = inactiveGuardianships[0];
-          guardianshipResult = { id: inactiveGuardianships[0].id };
-          const { error: guardianshipUpdateError } = await ctx.supabaseAdmin
-            .from("guardianships")
-            .update({ relationship: guardian.relationship, is_primary: false, active: true })
-            .eq("id", inactiveGuardianships[0].id);
-          if (guardianshipUpdateError) throw guardianshipUpdateError;
-        } else {
-          const { data: createdGuardianship, error: guardianshipInsertError } = await ctx.supabaseAdmin
-            .from("guardianships")
-            .insert({ guardian_profile_id: profileId, student_id: guardian.studentId, relationship: guardian.relationship, is_primary: false, active: true })
-            .select("id").single();
-          if (guardianshipInsertError || !createdGuardianship) throw new Error(guardianshipInsertError?.message ?? "Nao foi possivel criar o vinculo com o aluno.");
-          rollback.createdGuardianshipId = createdGuardianship.id;
-          guardianshipResult = { id: createdGuardianship.id };
-        }
+        const { data: createdGuardianship, error: guardianshipInsertError } = await ctx.supabaseAdmin
+          .from("guardianships")
+          .insert({ guardian_profile_id: profileId, student_id: guardian.studentId, relationship: guardian.relationship, is_primary: false, active: true })
+          .select("id").single();
+        if (guardianshipInsertError || !createdGuardianship) throw new Error(guardianshipInsertError?.message ?? "Nao foi possivel criar o vinculo com o aluno.");
+        rollback.createdGuardianshipId = createdGuardianship.id;
+        guardianshipResult = { id: createdGuardianship.id };
       }
 
       return Response.json(
@@ -497,7 +409,7 @@ export default {
           ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
           invitationSent,
           reusedExistingUser,
-          message: invitationSent ? "Convite enviado e vinculo criado com sucesso." : "Usuario existente vinculado com sucesso.",
+          message: "Convite enviado e vinculo criado com sucesso.",
         },
         { status: 201 },
       );
@@ -506,10 +418,7 @@ export default {
       try {
         if (rollback.createdStudentId) await ctx.supabaseAdmin.from("students").delete().eq("id", rollback.createdStudentId);
         if (rollback.createdGuardianshipId) await ctx.supabaseAdmin.from("guardianships").delete().eq("id", rollback.createdGuardianshipId);
-        if (rollback.reactivatedGuardianship) await ctx.supabaseAdmin.from("guardianships").update({ relationship: rollback.reactivatedGuardianship.relationship, is_primary: rollback.reactivatedGuardianship.is_primary, active: rollback.reactivatedGuardianship.active }).eq("id", rollback.reactivatedGuardianship.id);
         if (rollback.createdMembershipId) await ctx.supabaseAdmin.from("memberships").delete().eq("id", rollback.createdMembershipId);
-        if (rollback.reactivatedMembership) await ctx.supabaseAdmin.from("memberships").update({ active: rollback.reactivatedMembership.active }).eq("id", rollback.reactivatedMembership.id);
-        if (rollback.updatedExistingProfile) await ctx.supabaseAdmin.from("profiles").update({ full_name: rollback.updatedExistingProfile.full_name, active: rollback.updatedExistingProfile.active }).eq("id", rollback.updatedExistingProfile.id);
 
         // Remove only the newly created Auth user, leave pre-existing Auth users untouched!
         if (rollback.createdAuthUserId) {

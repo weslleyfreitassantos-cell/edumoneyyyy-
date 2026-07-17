@@ -2,17 +2,17 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import { z } from "zod";
 
+import {
+  buildIdentityConflict,
+  getExistingProfileIdentityConflict,
+  normalizeIdentityEmail,
+  type ExistingIdentityProfile,
+  type IdentityConflict,
+} from "../_shared/identity-protection.ts";
 import type { Database } from "../_shared/database.types.ts";
 
 interface RollbackState {
   createdAuthUserId: string | null;
-  updatedExistingProfile: {
-    id: string;
-    full_name: string;
-    role: Database["public"]["Enums"]["user_role"];
-    platform_role: Database["public"]["Enums"]["platform_role"];
-    active: boolean | null;
-  } | null;
 }
 
 class AccountError extends Error {
@@ -74,6 +74,17 @@ function jsonError(error: AccountError): Response {
     },
     { status: error.status },
   );
+}
+
+function accountErrorFromIdentityConflict(
+  conflict: IdentityConflict,
+): AccountError {
+  return new AccountError({
+    status: conflict.status,
+    code: conflict.code,
+    message: conflict.message,
+    fieldErrors: conflict.fieldErrors,
+  });
 }
 
 function getAppUrl(): string {
@@ -156,37 +167,36 @@ async function assertSuperAdmin(
   return user.id;
 }
 
-async function findReusableProfile(
+async function findExistingProfileByEmail(
   ctx: Parameters<
     Parameters<typeof withSupabase<Database>>[1]
   >[1],
   email: string,
-): Promise<{
-  id: string;
-  full_name: string;
-  role: Database["public"]["Enums"]["user_role"];
-  active: boolean | null;
-  platform_role: Database["public"]["Enums"]["platform_role"];
-} | null> {
+): Promise<ExistingIdentityProfile | null> {
   const { data, error } = await ctx.supabaseAdmin
     .from("profiles")
-    .select("id, full_name, role, active, platform_role")
-    .eq("email", email)
-    .maybeSingle();
+    .select("id, email, role, active, platform_role")
+    .ilike("email", email)
+    .limit(10);
 
   if (error) {
     throw error;
   }
 
-  return data ?? null;
+  return (
+    (data ?? []).find(
+      (profile) =>
+        normalizeIdentityEmail(profile.email) === email,
+    ) ?? null
+  );
 }
 
-async function ensureNotAccountOwner(
+async function profileOwnsAccount(
   ctx: Parameters<
     Parameters<typeof withSupabase<Database>>[1]
   >[1],
   profileId: string,
-): Promise<void> {
+): Promise<boolean> {
   const { data, error } = await ctx.supabaseAdmin
     .from("accounts")
     .select("id")
@@ -197,19 +207,10 @@ async function ensureNotAccountOwner(
     throw error;
   }
 
-  if (data) {
-    throw new AccountError({
-      status: 409,
-      code: "OWNER_ALREADY_HAS_ACCOUNT",
-      message: "Este ADMIN ja e proprietario de outra conta.",
-      fieldErrors: {
-        adminEmail: "E-mail ja possui uma conta.",
-      },
-    });
-  }
+  return Boolean(data);
 }
 
-async function createOrReuseOwnerProfile(
+async function createOwnerProfile(
   ctx: Parameters<
     Parameters<typeof withSupabase<Database>>[1]
   >[1],
@@ -220,58 +221,33 @@ async function createOrReuseOwnerProfile(
   invitationSent: boolean;
   reusedExistingUser: boolean;
 }> {
-  const existingProfile = await findReusableProfile(
+  const normalizedEmail = normalizeIdentityEmail(input.adminEmail);
+  const existingProfile = await findExistingProfileByEmail(
     ctx,
-    input.adminEmail,
+    normalizedEmail,
   );
 
-  if (existingProfile?.platform_role === "SUPER_ADMIN") {
-    throw new AccountError({
-      status: 409,
-      code: "OWNER_CANNOT_BE_SUPER_ADMIN",
-      message: "SUPER_ADMIN nao pode ser proprietario de conta cliente.",
-      fieldErrors: {
-        adminEmail: "Escolha um usuario cliente.",
-      },
-    });
-  }
+  const ownsAccount = existingProfile
+    ? await profileOwnsAccount(ctx, existingProfile.id)
+    : false;
 
   if (existingProfile) {
-    await ensureNotAccountOwner(ctx, existingProfile.id);
-    rollback.updatedExistingProfile = {
-      id: existingProfile.id,
-      full_name: existingProfile.full_name,
-      role: existingProfile.role,
-      platform_role: existingProfile.platform_role,
-      active: existingProfile.active,
-    };
+    const conflict = getExistingProfileIdentityConflict(
+      existingProfile,
+      ownsAccount,
+      "adminEmail",
+    );
 
-    const { error: updateError } = await ctx.supabaseAdmin
-      .from("profiles")
-      .update({
-        full_name: input.adminFullName,
-        role: "ADMIN",
-        platform_role: "USER",
-        active: true,
-      })
-      .eq("id", existingProfile.id);
-
-    if (updateError) {
-      throw updateError;
+    if (conflict) {
+      throw accountErrorFromIdentityConflict(conflict);
     }
-
-    return {
-      profileId: existingProfile.id,
-      invitationSent: false,
-      reusedExistingUser: true,
-    };
   }
 
   const inviteRedirectUrl = `${getAppUrl()}/auth/confirm`;
 
   const { data: invitationData, error: invitationError } =
     await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
-      input.adminEmail,
+      normalizedEmail,
       {
         data: {
           full_name: input.adminFullName,
@@ -283,15 +259,12 @@ async function createOrReuseOwnerProfile(
 
   if (invitationError || !invitationData.user) {
     if (isDuplicateAuthError(invitationError?.message)) {
-      throw new AccountError({
-        status: 409,
-        code: "AUTH_USER_ALREADY_EXISTS",
-        message:
-          "Ja existe usuario Auth com este e-mail, mas sem profile reutilizavel.",
-        fieldErrors: {
-          adminEmail: "E-mail ja existe no Auth.",
-        },
-      });
+      throw accountErrorFromIdentityConflict(
+        buildIdentityConflict(
+          "AUTH_USER_ALREADY_EXISTS",
+          "adminEmail",
+        ),
+      );
     }
 
     throw new Error(
@@ -308,7 +281,7 @@ async function createOrReuseOwnerProfile(
     .insert({
       id: profileId,
       full_name: input.adminFullName,
-      email: input.adminEmail,
+      email: normalizedEmail,
       role: "ADMIN",
       platform_role: "USER",
       avatar_url: null,
@@ -371,13 +344,12 @@ export default {
 
       const rollback: RollbackState = {
         createdAuthUserId: null,
-        updatedExistingProfile: null,
       };
 
       try {
         await assertSuperAdmin(ctx);
 
-        const owner = await createOrReuseOwnerProfile(
+        const owner = await createOwnerProfile(
           ctx,
           validation.data,
           rollback,
@@ -408,7 +380,9 @@ export default {
             success: true,
             accountId: account.id,
             ownerProfileId: owner.profileId,
-            ownerEmail: validation.data.adminEmail,
+            ownerEmail: normalizeIdentityEmail(
+              validation.data.adminEmail,
+            ),
             institutionLimit: account.institution_limit,
             invitationSent: owner.invitationSent,
             reusedExistingUser: owner.reusedExistingUser,
@@ -417,27 +391,6 @@ export default {
         );
       } catch (error) {
         console.error("Erro ao criar conta:", error);
-
-        if (rollback.updatedExistingProfile) {
-          try {
-            await ctx.supabaseAdmin
-              .from("profiles")
-              .update({
-                full_name:
-                  rollback.updatedExistingProfile.full_name,
-                role: rollback.updatedExistingProfile.role,
-                platform_role:
-                  rollback.updatedExistingProfile.platform_role,
-                active: rollback.updatedExistingProfile.active,
-              })
-              .eq("id", rollback.updatedExistingProfile.id);
-          } catch (cleanupError) {
-            console.error(
-              "Erro no rollback do profile da conta:",
-              cleanupError,
-            );
-          }
-        }
 
         if (rollback.createdAuthUserId) {
           try {
