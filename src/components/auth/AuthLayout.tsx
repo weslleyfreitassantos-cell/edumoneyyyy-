@@ -414,41 +414,43 @@ export function AuthAside({
       {variant === 'video' ? (
         <>
           <div className="auth-hero-fallback" aria-hidden="true" />
-          <video
-            ref={video1Ref}
-            className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-            autoPlay
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            tabIndex={-1}
-            onTimeUpdate={handleTimeUpdate(1)}
-          >
-            <source src="/media/cinema-novo.mp4" type="video/mp4" />
-          </video>
-          <video
-            ref={video2Ref}
-            className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            tabIndex={-1}
-            onTimeUpdate={handleTimeUpdate(2)}
-          >
-            <source src="/media/cinema-novo.mp4" type="video/mp4" />
-          </video>
+          <div className="auth-hero-video-layer">
+            <video
+              ref={video1Ref}
+              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              tabIndex={-1}
+              onTimeUpdate={handleTimeUpdate(1)}
+            >
+              <source src="/media/cinema-novo.mp4" type="video/mp4" />
+            </video>
+            <video
+              ref={video2Ref}
+              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+              muted
+              playsInline
+              preload="auto"
+              aria-hidden="true"
+              tabIndex={-1}
+              onTimeUpdate={handleTimeUpdate(2)}
+            >
+              <source src="/media/cinema-novo.mp4" type="video/mp4" />
+            </video>
+          </div>
           <div className="auth-hero-overlay opacity-60" aria-hidden="true" />
 
           {/* Footer content */}
           <div className="absolute bottom-[40px] left-0 right-0 z-20 flex items-center justify-center gap-3">
             <BookOpenCheck
-              className="h-8 w-8 text-white drop-shadow-md"
+              className="h-14 w-14 shrink-0 text-white drop-shadow-md"
               aria-hidden="true"
             />
             <h2 
-              className="text-2xl font-bold text-white lg:text-3xl" 
+              className="auth-hero-title text-[36px] text-white xl:text-[42px]" 
               style={{ textShadow: '0 2px 12px rgba(0, 0, 0, 0.35)' }}
             >
               Gestão Escolar Inteligente
