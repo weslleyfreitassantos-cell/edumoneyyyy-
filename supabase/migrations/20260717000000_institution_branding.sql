@@ -32,7 +32,7 @@ USING (
   EXISTS (
     SELECT 1 FROM public.institutions i
     JOIN public.accounts a ON i.account_id = a.id
-    WHERE i.id::text = (string_to_array(name, '/'))[1]
+    WHERE i.id::text = (storage.foldername(storage.objects.name))[1]
     AND a.owner_profile_id = auth.uid()
   )
 )
@@ -41,7 +41,7 @@ WITH CHECK (
   EXISTS (
     SELECT 1 FROM public.institutions i
     JOIN public.accounts a ON i.account_id = a.id
-    WHERE i.id::text = (string_to_array(name, '/'))[1]
+    WHERE i.id::text = (storage.foldername(storage.objects.name))[1]
     AND a.owner_profile_id = auth.uid()
   )
 );
