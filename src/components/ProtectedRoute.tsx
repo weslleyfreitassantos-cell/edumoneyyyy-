@@ -49,17 +49,24 @@ export function ProtectedRoute({
     );
   }
 
-  if (allowedRoles && !allowedRoles.includes(profile.role)) {
-    return <Navigate to="/unauthorized" replace />;
-  }
+  const hasAllowedRole =
+    !allowedRoles ||
+    allowedRoles.includes(profile.role);
 
-  if (
-    allowedPlatformRoles &&
-    !allowedPlatformRoles.includes(
+  const hasAllowedPlatformRole =
+    !allowedPlatformRoles ||
+    allowedPlatformRoles.includes(
       profile.platform_role,
-    )
-  ) {
-    return <Navigate to="/unauthorized" replace />;
+    );
+
+  if (allowedRoles && allowedPlatformRoles) {
+    if (!hasAllowedRole && !hasAllowedPlatformRole) {
+      return <Navigate to="/unauthorized" replace />;
+    }
+  } else {
+    if (!hasAllowedRole || !hasAllowedPlatformRole) {
+      return <Navigate to="/unauthorized" replace />;
+    }
   }
 
   return <>{children}</>;

@@ -232,6 +232,31 @@ function compareInstitutions(
 }
 
 export const institutionService = {
+  async listAllActiveInstitutions(): Promise<UserInstitution[]> {
+    const { data, error } = await supabase
+      .from('institutions')
+      .select('id, name, active, account_id')
+      .eq('active', true)
+      .order('name');
+
+    if (error) {
+      throw error;
+    }
+
+    return (data ?? []).map((inst) => ({
+      membership: null,
+      institution: {
+        id: inst.id,
+        name: inst.name,
+        active: inst.active ?? true,
+        account_id: inst.account_id ?? null,
+      },
+      account: null,
+      accessSource: 'membership' as const,
+      effectiveRole: 'ADMIN' as CurrentDatabaseRole,
+    }));
+  },
+
   async listForProfile(
     profileId: string,
   ): Promise<UserInstitution[]> {

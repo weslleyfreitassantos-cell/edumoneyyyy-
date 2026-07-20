@@ -212,6 +212,16 @@ export default {
         throw new InviteError({ status: 401, code: "UNAUTHENTICATED", message: "Sessao invalida ou expirada." });
       }
 
+      const { data: requesterProfile, error: requesterProfileError } = await ctx.supabaseAdmin
+        .from("profiles")
+        .select("platform_role")
+        .eq("id", user.id)
+        .single();
+
+      if (requesterProfileError) throw requesterProfileError;
+
+      const isSuperAdmin = requesterProfile?.platform_role === "SUPER_ADMIN";
+
       const { data: institution, error: institutionError } = await ctx.supabaseAdmin
         .from("institutions")
         .select("id, active, account_id")
@@ -258,7 +268,7 @@ export default {
       const directorMembership = activeMemberships.find((membership) => membership.role === "DIRECTOR");
       const secretaryMembership = activeMemberships.find((membership) => membership.role === "SECRETARY");
 
-      const requesterRole: RequesterInviteRole | null = isAccountOwner || legacyAdminMembership ? "ADMIN" : directorMembership ? "DIRECTOR" : secretaryMembership ? "SECRETARY" : null;
+      const requesterRole: RequesterInviteRole | null = isSuperAdmin ? "ADMIN" : isAccountOwner || legacyAdminMembership ? "ADMIN" : directorMembership ? "DIRECTOR" : secretaryMembership ? "SECRETARY" : null;
 
       if (!requesterRole) {
         throw new InviteError({ status: 403, code: "INSUFFICIENT_PERMISSION", message: "Seu papel atual nao permite convidar usuarios nesta escola." });

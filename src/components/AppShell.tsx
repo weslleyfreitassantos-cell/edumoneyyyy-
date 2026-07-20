@@ -441,8 +441,13 @@ export default function AppShell({
     currentRole,
   );
 
+  const hasAccessibleInstitutions =
+    institutionContext.institutions.length > 0;
+
   const showInstitutionSwitcher =
-    currentRole !== 'super_admin';
+    currentRole === 'super_admin'
+      ? hasAccessibleInstitutions
+      : true;
 
   function openMobileSidebar(): void {
     const activeElement =

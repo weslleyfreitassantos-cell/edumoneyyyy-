@@ -133,7 +133,7 @@ export function InstitutionProvider({
   const queryClient = useQueryClient();
 
   const institutionsQuery =
-    useUserInstitutions(profile?.id);
+    useUserInstitutions(profile?.id, profile?.platform_role);
 
   const institutions =
     institutionsQuery.data ?? [];

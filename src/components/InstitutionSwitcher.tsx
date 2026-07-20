@@ -2,6 +2,7 @@ import { Building2, Plus } from 'lucide-react';
 import { useId } from 'react';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 
 const roleLabels: Record<string, string> = {
@@ -15,7 +16,12 @@ const roleLabels: Record<string, string> = {
 
 function getRoleLabel(
   role: string | null,
+  isSuperAdmin: boolean,
 ): string | null {
+  if (isSuperAdmin) {
+    return null;
+  }
+
   if (!role) {
     return null;
   }
@@ -24,6 +30,9 @@ function getRoleLabel(
 }
 
 export default function InstitutionSwitcher() {
+  const { profile } = useAuth();
+  const isSuperAdmin =
+    profile?.platform_role === 'SUPER_ADMIN';
   const generatedId = useId();
   const selectId = `institution-switcher-${generatedId}`;
   const descriptionId = `${selectId}-description`;
@@ -85,6 +94,7 @@ export default function InstitutionSwitcher() {
 
   const currentRoleLabel = getRoleLabel(
     currentRole,
+    isSuperAdmin,
   );
 
   const canCreateInstitution = institutions.some(
@@ -165,6 +175,7 @@ export default function InstitutionSwitcher() {
           {institutions.map((item) => {
             const roleLabel = getRoleLabel(
               item.effectiveRole,
+              isSuperAdmin,
             );
 
             return (
