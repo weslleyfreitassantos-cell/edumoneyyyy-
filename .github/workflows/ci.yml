@@ -25,5 +25,39 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Configurar Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.9.3
+
+      - name: Validar Edge Functions
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          functions=(
+            create-client-account
+            create-institution
+            update-client-account
+            delete-client-account
+            invite-school-user
+          )
+
+          for function_name in "${functions[@]}"; do
+            function_dir="supabase/functions/$function_name"
+
+            echo "Checking $function_name"
+
+            deno check \
+              --frozen \
+              --config "$function_dir/deno.json" \
+              --lock "$function_dir/deno.lock" \
+              "$function_dir/index.ts"
+
+            deno lint \
+              --config "$function_dir/deno.json" \
+              "$function_dir/index.ts"
+          done
+
       - name: Validar projeto
         run: npm run check

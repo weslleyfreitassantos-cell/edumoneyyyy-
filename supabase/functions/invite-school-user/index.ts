@@ -331,7 +331,6 @@ export default {
       }
 
       // EXECUTE AUTH CREATION (IF NEW)
-      let profileId: string;
       const invitationSent = true;
       const reusedExistingUser = false;
 
@@ -355,7 +354,7 @@ export default {
         throw new Error(invitationError?.message ?? "Nao foi possivel criar o usuario.");
       }
 
-      profileId = invitationData.user.id;
+      const profileId = invitationData.user.id;
       rollback.createdAuthUserId = profileId;
 
       // EXECUTE PUBLIC SCHEMA INSERTS
@@ -364,7 +363,6 @@ export default {
         .insert({ id: profileId, full_name: input.fullName, email: input.email, role: input.role, platform_role: "USER", avatar_url: null, active: true });
       if (profileInsertError) throw profileInsertError;
 
-      let membershipId: string;
       let studentResult: { id: string; registrationNumber: string; } | undefined;
       let guardianshipResult: { id: string; } | undefined;
 
@@ -373,7 +371,7 @@ export default {
         .insert({ profile_id: profileId, institution_id: input.institutionId, role: input.role, active: true })
         .select("id").single();
       if (membershipInsertError || !createdMembership) throw new Error(membershipInsertError?.message ?? "Nao foi possivel criar o vinculo.");
-      membershipId = createdMembership.id;
+      const membershipId = createdMembership.id;
       rollback.createdMembershipId = membershipId;
 
       if (input.role === "STUDENT") {
