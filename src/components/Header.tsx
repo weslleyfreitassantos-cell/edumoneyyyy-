@@ -3,8 +3,10 @@ import {
   ChevronDown,
   LogOut,
   Menu,
+  Moon,
   PanelLeftClose,
   PanelLeftOpen,
+  Sun,
   UserRound,
 } from 'lucide-react';
 import {
@@ -16,6 +18,7 @@ import {
 
 import InstitutionSwitcher from './InstitutionSwitcher';
 import AccountSettingsModal from './AccountSettingsModal';
+import type { ThemePreference } from '../hooks/useThemePreference';
 import type { User } from '../types';
 
 interface HeaderProps {
@@ -32,6 +35,8 @@ interface HeaderProps {
   onLogout: () => void;
   onUpdateProfileName: (fullName: string) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
+  theme: ThemePreference;
+  onToggleTheme: () => void;
   mobileMenuButtonRef?: RefObject<HTMLButtonElement | null>;
 }
 
@@ -61,6 +66,8 @@ export default function Header({
   onLogout,
   onUpdateProfileName,
   onUpdatePassword,
+  theme,
+  onToggleTheme,
   mobileMenuButtonRef,
 }: HeaderProps) {
   const [isUserMenuOpen, setIsUserMenuOpen] =
@@ -192,6 +199,28 @@ export default function Header({
             <InstitutionSwitcher />
           </div>
         )}
+
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf]"
+          aria-label={
+            theme === 'dark'
+              ? 'Ativar tema claro'
+              : 'Ativar tema escuro'
+          }
+          title={
+            theme === 'dark'
+              ? 'Tema claro'
+              : 'Tema escuro'
+          }
+        >
+          {theme === 'dark' ? (
+            <Sun className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Moon className="h-5 w-5" aria-hidden="true" />
+          )}
+        </button>
 
         <div
           ref={userMenuRef}

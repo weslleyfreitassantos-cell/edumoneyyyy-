@@ -14,6 +14,7 @@ interface AuthShellProps {
   contentClassName?: string;
   footer?: ReactNode;
   heroVariant?: 'video' | 'default';
+  showBrand?: boolean;
 }
 
 interface AuthPageHeaderProps {
@@ -90,13 +91,16 @@ export function AuthShell({
   contentClassName = '',
   footer = defaultFooter,
   heroVariant = 'default',
+  showBrand = true,
 }: AuthShellProps) {
   return (
     <main className="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d] lg:grid lg:grid-cols-[55%_45%]">
       <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:px-12 lg:px-16 xl:px-24">
-        <header>
-          <AuthBrand />
-        </header>
+        {showBrand && (
+          <header>
+            <AuthBrand />
+          </header>
+        )}
 
         <div className="flex flex-1 items-center py-10">
           <div

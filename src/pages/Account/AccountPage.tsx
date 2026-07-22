@@ -19,6 +19,7 @@ import {
   useCreateInstitution,
   useOwnedAccount,
 } from '../../hooks/useAccounts';
+import { getAccountStatusLabel } from '../../lib/statusLabels';
 
 interface InstitutionFormState {
   name: string;
@@ -226,7 +227,8 @@ export default function AccountPage() {
               </h1>
             </div>
             <p className="mt-1 text-sm text-[#727785]">
-              Conta {account.status} · {activeCount}/{limit}{' '}
+              Conta {getAccountStatusLabel(account.status)} ·{' '}
+              {activeCount}/{limit}{' '}
               instituicoes usadas
             </p>
           </div>
@@ -260,7 +262,7 @@ export default function AccountPage() {
               Status
             </p>
             <p className="mt-2 text-xl font-bold text-[#181c20]">
-              {account.status}
+              {getAccountStatusLabel(account.status)}
             </p>
           </article>
           <article className="rounded-lg border border-[#dfe3e8] bg-white p-4">

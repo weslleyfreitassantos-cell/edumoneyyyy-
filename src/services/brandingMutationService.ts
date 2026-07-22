@@ -88,6 +88,12 @@ function resolvePublicSlug(
   );
 }
 
+function buildVersionedPublicUrl(publicUrl: string): string {
+  const separator = publicUrl.includes('?') ? '&' : '?';
+
+  return `${publicUrl}${separator}v=${Date.now()}`;
+}
+
 async function removeKnownLogoFiles(institutionId: string): Promise<void> {
   const { error } = await supabase.storage
     .from(INSTITUTION_BRANDING_BUCKET)
@@ -129,11 +135,13 @@ export const brandingMutationService = {
     }
 
     const { data: publicUrlData } = storage.getPublicUrl(logoPath);
-    const logoUrl = publicUrlData.publicUrl;
+    const publicLogoUrl = publicUrlData.publicUrl;
 
-    if (!logoUrl) {
+    if (!publicLogoUrl) {
       throw new Error('Nao foi possivel gerar a URL publica da logo.');
     }
+
+    const logoUrl = buildVersionedPublicUrl(publicLogoUrl);
 
     const publicSlug = resolvePublicSlug(
       input.institutionName,

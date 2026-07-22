@@ -187,7 +187,7 @@ describe('AccountPage', () => {
     ).toBeNull();
     expect(screen.getByText('Conta Sol')).toBeTruthy();
     expect(screen.getByText('Escola Sol')).toBeTruthy();
-    expect(screen.getByText('Ativa')).toBeTruthy();
+    expect(screen.getAllByText('Ativa')).toHaveLength(2);
     expect(screen.getByText('Slots restantes')).toBeTruthy();
     expect(
       screen.getByRole('link', { name: 'Entrar' }),

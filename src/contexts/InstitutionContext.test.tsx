@@ -176,6 +176,8 @@ function SelectionHarness() {
         onLogout={vi.fn()}
         onUpdateProfileName={vi.fn(async () => undefined)}
         onUpdatePassword={vi.fn(async () => undefined)}
+        theme="light"
+        onToggleTheme={vi.fn()}
       />
 
       <button

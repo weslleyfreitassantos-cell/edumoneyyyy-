@@ -24,6 +24,7 @@ import type {
   User,
   UserRole,
 } from '../types';
+import { useThemePreference } from '../hooks/useThemePreference';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
@@ -204,6 +205,7 @@ export default function AppShell({
     useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
+  const { theme, toggleTheme } = useThemePreference();
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] =
     useState(readSidebarPreference);
@@ -547,6 +549,8 @@ export default function AppShell({
           }}
           onUpdateProfileName={updateProfileName}
           onUpdatePassword={updatePassword}
+          theme={theme}
+          onToggleTheme={toggleTheme}
           mobileMenuButtonRef={
             mobileMenuButtonRef
           }

@@ -158,6 +158,36 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
+  it('restaura e persiste a preferencia de tema do usuario', async () => {
+    window.localStorage.setItem(
+      'edumanager.theme',
+      'dark',
+    );
+
+    renderShell();
+
+    await waitFor(() => {
+      expect(
+        document.documentElement.classList.contains('dark'),
+      ).toBe(true);
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Ativar tema claro',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        document.documentElement.classList.contains('dark'),
+      ).toBe(false);
+      expect(
+        window.localStorage.getItem('edumanager.theme'),
+      ).toBe('light');
+    });
+  });
+
   it('renderiza contexto da rota e conteudo principal', () => {
     renderShell('/admin');
 

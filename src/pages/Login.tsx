@@ -56,35 +56,30 @@ export function Login() {
   };
 
   return (
-    <AuthShell heroVariant="video">
-      <div className="mb-8">
-        {institutionSlug && brandingQuery.isLoading ? (
-          <div className="mb-6 flex h-16 w-32 items-center justify-center rounded-lg border border-[#c5c5d3] bg-[#f8f9fa]">
-            <Loader2 className="h-5 w-5 animate-spin text-[#757682]" />
-          </div>
-        ) : brandingQuery.data ? (
-          <div className="mb-6">
-            {brandingQuery.data.logoUrl ? (
-              <img
-                src={brandingQuery.data.logoUrl}
-                alt={`Logo da instituição ${brandingQuery.data.name}`}
-                className="h-16 w-auto max-w-[240px] object-contain"
-              />
-            ) : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#dce1ff] text-[#00236f]">
-                <Building2 className="h-8 w-8" aria-hidden="true" />
-              </div>
-            )}
-          </div>
-        ) : null}
-
-        <h1 className="text-[32px] font-bold leading-10 text-[#191c1d]">
-          Bem-vindo ao EduManager Pro
-        </h1>
-        <p className="mt-2 text-base leading-6 text-[#444651]">
-          Entre para acessar sua instituição.
-        </p>
-      </div>
+    <AuthShell heroVariant="video" showBrand={false}>
+      {institutionSlug && (
+        <div className="mb-8">
+          {brandingQuery.isLoading ? (
+            <div className="mb-6 flex h-16 w-32 items-center justify-center rounded-lg border border-[#c5c5d3] bg-[#f8f9fa]">
+              <Loader2 className="h-5 w-5 animate-spin text-[#757682]" />
+            </div>
+          ) : brandingQuery.data ? (
+            <div className="mb-6">
+              {brandingQuery.data.logoUrl ? (
+                <img
+                  src={brandingQuery.data.logoUrl}
+                  alt={`Logo da instituição ${brandingQuery.data.name}`}
+                  className="h-16 w-auto max-w-[240px] object-contain"
+                />
+              ) : (
+                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#dce1ff] text-[#00236f]">
+                  <Building2 className="h-8 w-8" aria-hidden="true" />
+                </div>
+              )}
+            </div>
+          ) : null}
+        </div>
+      )}
 
       <form
         onSubmit={handleSubmit}

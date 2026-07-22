@@ -16,6 +16,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
+import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 
 import type { StudentDashboardOffering } from '../services/studentDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
@@ -412,7 +413,7 @@ export default function StudentDashboard() {
                   Status
                 </dt>
                 <dd className="mt-1 text-sm font-semibold text-green-700">
-                  {activeEnrollment.status}
+                  {getEnrollmentStatusLabel(activeEnrollment.status)}
                 </dd>
               </div>
             </dl>

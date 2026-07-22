@@ -140,6 +140,8 @@ function renderHeader(
     onLogout: vi.fn(),
     onUpdateProfileName: vi.fn(async () => undefined),
     onUpdatePassword: vi.fn(async () => undefined),
+    theme: 'light',
+    onToggleTheme: vi.fn(),
     ...overrides,
   };
 
@@ -164,6 +166,23 @@ afterEach(() => {
 });
 
 describe('Header', () => {
+  it('oferece alternancia de tema para qualquer usuario autenticado', () => {
+    const onToggleTheme = vi.fn();
+
+    renderHeader({
+      theme: 'light',
+      onToggleTheme,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Ativar tema escuro',
+      }),
+    );
+
+    expect(onToggleTheme).toHaveBeenCalledTimes(1);
+  });
+
   it('mostra titulo, usuario, papel e seletor de instituicao', () => {
     renderHeader();
 

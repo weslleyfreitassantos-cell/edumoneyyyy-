@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from 'react';
+import { useEffect, useState, type ChangeEvent } from 'react';
 import { Building2, Image as ImageIcon, Loader2, Trash2, Upload } from 'lucide-react';
 import { useSaveInstitutionLogo, useRemoveInstitutionLogo } from '../../hooks/useInstitutionBranding';
 
@@ -20,10 +20,25 @@ export function InstitutionBrandingSection({
   
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [savedLogoUrl, setSavedLogoUrl] = useState(currentLogoUrl);
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  useEffect(() => {
+    setSavedLogoUrl(currentLogoUrl);
+  }, [currentLogoUrl]);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) {
+        URL.revokeObjectURL(previewUrl);
+      }
+    };
+  }, [previewUrl]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     setError(null);
+    setSuccess(null);
     const file = e.target.files?.[0];
     if (!file) {
       setSelectedFile(null);
@@ -49,15 +64,18 @@ export function InstitutionBrandingSection({
   const handleSave = async () => {
     if (!selectedFile) return;
     setError(null);
+    setSuccess(null);
     try {
-      await saveLogo.mutateAsync({
+      const savedBranding = await saveLogo.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug,
         file: selectedFile,
       });
+      setSavedLogoUrl(savedBranding.logoUrl);
       setSelectedFile(null);
       setPreviewUrl(null);
+      setSuccess('Logo salva com sucesso.');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao salvar logo.');
     }
@@ -65,14 +83,17 @@ export function InstitutionBrandingSection({
 
   const handleRemove = async () => {
     setError(null);
+    setSuccess(null);
     try {
       await removeLogo.mutateAsync({
         institutionId,
         institutionName,
         currentPublicSlug,
       });
+      setSavedLogoUrl(null);
       setSelectedFile(null);
       setPreviewUrl(null);
+      setSuccess('Logo removida com sucesso.');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Falha ao remover logo.');
     }
@@ -94,6 +115,15 @@ export function InstitutionBrandingSection({
           {error}
         </div>
       )}
+
+      {success && (
+        <div
+          role="status"
+          className="mt-3 rounded-md border border-green-200 bg-green-50 p-3 text-sm text-green-700"
+        >
+          {success}
+        </div>
+      )}
       
       {(saveLogo.error?.message?.includes('storage') || saveLogo.error?.message?.includes('função')) && (
         <div className="mt-3 rounded-md bg-amber-50 p-3 text-sm text-amber-700 border border-amber-200">
@@ -104,9 +134,9 @@ export function InstitutionBrandingSection({
       <div className="mt-4 flex flex-col sm:flex-row gap-6">
         <div className="flex flex-col items-center gap-2">
           <div className="flex h-24 w-24 items-center justify-center rounded-lg border border-gray-300 bg-white overflow-hidden shadow-sm">
-            {previewUrl || currentLogoUrl ? (
+            {previewUrl || savedLogoUrl ? (
               <img 
-                src={previewUrl || currentLogoUrl!} 
+                src={previewUrl || savedLogoUrl!}
                 alt="Logo" 
                 className="h-full w-full object-contain"
               />
@@ -115,7 +145,7 @@ export function InstitutionBrandingSection({
             )}
           </div>
           <span className="text-xs text-gray-500">
-            {previewUrl ? 'Preview' : 'Atual'}
+            {previewUrl ? 'Pre-visualizacao' : 'Atual'}
           </span>
         </div>
 
@@ -141,6 +171,7 @@ export function InstitutionBrandingSection({
 
               {selectedFile && (
                 <button
+                  type="button"
                   onClick={() => handleSave()}
                   disabled={saveLogo.isPending}
                   className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50 shadow-sm"
@@ -150,8 +181,9 @@ export function InstitutionBrandingSection({
                 </button>
               )}
 
-              {currentLogoUrl && !selectedFile && (
+              {savedLogoUrl && !selectedFile && (
                 <button
+                  type="button"
                   onClick={() => handleRemove()}
                   disabled={removeLogo.isPending}
                   className="inline-flex items-center gap-2 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100 shadow-sm"

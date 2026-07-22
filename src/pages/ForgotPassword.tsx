@@ -145,7 +145,7 @@ export default function ForgotPassword() {
   }
 
   return (
-    <AuthShell>
+    <AuthShell heroVariant="video">
       <AuthPageHeader
         icon={KeyRound}
         title="Recuperar senha"

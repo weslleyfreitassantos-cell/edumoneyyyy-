@@ -70,10 +70,14 @@ describe('Login', () => {
     renderLogin();
 
     expect(
-      screen.getByRole('heading', {
-        name: /Bem-vindo ao EduManager Pro/i,
-      }),
-    ).toBeDefined();
+      screen.queryByText('EduManager Pro'),
+    ).toBeNull();
+    expect(
+      screen.queryByText(/Bem-vindo ao EduManager Pro/i),
+    ).toBeNull();
+    expect(
+      screen.queryByText(/Entre para acessar/i),
+    ).toBeNull();
     expect(
       screen.getByLabelText(/E-mail institucional/i),
     ).toBeDefined();
