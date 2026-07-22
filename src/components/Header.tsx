@@ -1,9 +1,11 @@
 import {
+  CheckCircle2,
   ChevronDown,
   LogOut,
   Menu,
   PanelLeftClose,
   PanelLeftOpen,
+  UserRound,
 } from 'lucide-react';
 import {
   useEffect,
@@ -13,6 +15,7 @@ import {
 } from 'react';
 
 import InstitutionSwitcher from './InstitutionSwitcher';
+import AccountSettingsModal from './AccountSettingsModal';
 import type { User } from '../types';
 
 interface HeaderProps {
@@ -27,6 +30,8 @@ interface HeaderProps {
   onOpenMobileSidebar: () => void;
   onToggleSidebar: () => void;
   onLogout: () => void;
+  onUpdateProfileName: (fullName: string) => Promise<void>;
+  onUpdatePassword: (newPassword: string) => Promise<void>;
   mobileMenuButtonRef?: RefObject<HTMLButtonElement | null>;
 }
 
@@ -54,14 +59,22 @@ export default function Header({
   onOpenMobileSidebar,
   onToggleSidebar,
   onLogout,
+  onUpdateProfileName,
+  onUpdatePassword,
   mobileMenuButtonRef,
 }: HeaderProps) {
   const [isUserMenuOpen, setIsUserMenuOpen] =
     useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] =
+    useState(false);
+  const [accountFeedback, setAccountFeedback] =
+    useState<string | null>(null);
   const [avatarFailed, setAvatarFailed] =
     useState(false);
   const userMenuRef =
     useRef<HTMLDivElement | null>(null);
+  const userMenuButtonRef =
+    useRef<HTMLButtonElement | null>(null);
 
   const avatarUrl =
     currentUser.avatar?.trim() || null;
@@ -114,6 +127,12 @@ export default function Header({
   function handleLogout(): void {
     setIsUserMenuOpen(false);
     onLogout();
+  }
+
+  function openAccountSettings(): void {
+    setIsUserMenuOpen(false);
+    setAccountFeedback(null);
+    setIsAccountModalOpen(true);
   }
 
   return (
@@ -179,6 +198,7 @@ export default function Header({
           className="relative"
         >
           <button
+            ref={userMenuButtonRef}
             type="button"
             className="flex min-h-11 items-center gap-2 rounded-xl border border-transparent px-1.5 py-1 outline-none transition-colors hover:border-[#d8deea] hover:bg-[#f8faff] focus-visible:ring-2 focus-visible:ring-[#005bbf] sm:px-2"
             onClick={() =>
@@ -254,6 +274,17 @@ export default function Header({
               <div className="p-2">
                 <button
                   type="button"
+                  onClick={openAccountSettings}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-[#181c20] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf]"
+                >
+                  <UserRound
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                  Minha conta
+                </button>
+                <button
+                  type="button"
                   onClick={handleLogout}
                   disabled={isLoggingOut}
                   className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
@@ -271,6 +302,32 @@ export default function Header({
           )}
         </div>
       </div>
+
+      {accountFeedback && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed right-4 top-20 z-[70] flex max-w-sm items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800 shadow-lg"
+        >
+          <CheckCircle2
+            className="h-4 w-4 shrink-0"
+            aria-hidden="true"
+          />
+          {accountFeedback}
+        </div>
+      )}
+
+      {isAccountModalOpen && (
+        <AccountSettingsModal
+          currentName={currentUser.name}
+          email={currentUser.email}
+          returnFocusRef={userMenuButtonRef}
+          onClose={() => setIsAccountModalOpen(false)}
+          onUpdateName={onUpdateProfileName}
+          onUpdatePassword={onUpdatePassword}
+          onSuccess={setAccountFeedback}
+        />
+      )}
 
       {showInstitutionSwitcher && (
         <div className="border-t border-[#e4e8f1] px-4 py-2 md:hidden">

@@ -16,6 +16,11 @@ import {
   type DatabaseRole,
   type PlatformRole,
 } from '../lib/roles';
+import {
+  ProfileServiceError,
+  updateCurrentPassword,
+  updateCurrentProfile,
+} from '../services/profileService';
 
 export interface Profile {
   id: string;
@@ -34,6 +39,11 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
+interface AuthProfileActionsContextType {
+  updateProfileName: (fullName: string) => Promise<void>;
+  updatePassword: (newPassword: string) => Promise<void>;
+}
+
 interface ProfileRequest {
   userId: string;
   promise: Promise<Profile>;
@@ -42,6 +52,9 @@ interface ProfileRequest {
 const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
 );
+const AuthProfileActionsContext = createContext<
+  AuthProfileActionsContextType | undefined
+>(undefined);
 
 async function loadProfile(userId: string): Promise<Profile> {
   const { data, error } = await supabase
@@ -279,6 +292,49 @@ export function AuthProvider({
     setLoading(false);
   }
 
+  const updateProfileName = useCallback(
+    async (fullName: string): Promise<void> => {
+      const currentProfile = profileRef.current;
+
+      if (!currentProfile) {
+        throw new ProfileServiceError(
+          'SESSION_EXPIRED',
+          'Sessão expirada.',
+        );
+      }
+
+      const updatedProfile = await updateCurrentProfile({
+        fullName,
+      });
+
+      const latestProfile = profileRef.current;
+
+      if (
+        updatedProfile.id !== currentProfile.id ||
+        latestProfile?.id !== updatedProfile.id ||
+        userRef.current?.id !== updatedProfile.id
+      ) {
+        throw new ProfileServiceError(
+          'PROFILE_UPDATE_FAILED',
+          'Perfil atualizado não corresponde ao usuário atual.',
+        );
+      }
+
+      setProfileState({
+        ...latestProfile,
+        full_name: updatedProfile.full_name,
+      });
+    },
+    [setProfileState],
+  );
+
+  const updatePassword = useCallback(
+    async (newPassword: string): Promise<void> => {
+      await updateCurrentPassword(newPassword);
+    },
+    [],
+  );
+
   return (
     <AuthContext.Provider
       value={{
@@ -289,7 +345,14 @@ export function AuthProvider({
         signOut,
       }}
     >
-      {children}
+      <AuthProfileActionsContext.Provider
+        value={{
+          updateProfileName,
+          updatePassword,
+        }}
+      >
+        {children}
+      </AuthProfileActionsContext.Provider>
     </AuthContext.Provider>
   );
 }
@@ -300,6 +363,18 @@ export function useAuth(): AuthContextType {
   if (!context) {
     throw new Error(
       'useAuth deve ser usado dentro de AuthProvider.',
+    );
+  }
+
+  return context;
+}
+
+export function useAuthProfileActions(): AuthProfileActionsContextType {
+  const context = useContext(AuthProfileActionsContext);
+
+  if (!context) {
+    throw new Error(
+      'useAuthProfileActions deve ser usado dentro de AuthProvider.',
     );
   }
 

@@ -20,6 +20,7 @@ import {
 
 import {
   useAuth,
+  useAuthProfileActions,
   type Profile,
 } from '../contexts/AuthContext';
 import {
@@ -31,6 +32,7 @@ import AppShell, {
 
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
+  useAuthProfileActions: vi.fn(),
 }));
 
 vi.mock('../contexts/InstitutionContext', () => ({
@@ -42,6 +44,9 @@ vi.mock('./InstitutionSwitcher', () => ({
 }));
 
 const mockedUseAuth = vi.mocked(useAuth);
+const mockedUseAuthProfileActions = vi.mocked(
+  useAuthProfileActions,
+);
 const mockedUseInstitution =
   vi.mocked(useInstitution);
 
@@ -55,6 +60,8 @@ const profile: Profile = {
 };
 
 const signOut = vi.fn(async () => undefined);
+const updateProfileName = vi.fn(async () => undefined);
+const updatePassword = vi.fn(async () => undefined);
 
 function mockContexts(
   overrides: {
@@ -71,6 +78,11 @@ function mockContexts(
     loading: false,
     signIn: vi.fn(async () => undefined),
     signOut: overrides.signOut ?? signOut,
+  });
+
+  mockedUseAuthProfileActions.mockReturnValue({
+    updateProfileName,
+    updatePassword,
   });
 
   mockedUseInstitution.mockReturnValue({
@@ -359,5 +371,65 @@ describe('AppShell', () => {
     await waitFor(() => {
       expect(signOut).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it('mantem Administracao na navegacao lateral', () => {
+    renderShell('/account');
+
+    expect(
+      screen.getByRole('link', { name: /administra/i }),
+    ).toBeTruthy();
+  });
+
+  it('conecta Minha conta às ações do perfil autenticado', async () => {
+    renderShell('/dashboard');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+    fireEvent.change(screen.getByLabelText('Nome'), {
+      target: { value: 'Novo Nome' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Salvar alterações',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(updateProfileName).toHaveBeenCalledWith(
+        'Novo Nome',
+      );
+    });
+    expect(updatePassword).not.toHaveBeenCalled();
+  });
+
+  it('torna o shell inerte enquanto Minha conta está aberta', () => {
+    renderShell('/dashboard');
+    const shell = document.getElementById(
+      'app-authenticated-container',
+    ) as HTMLElement & { inert: boolean };
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    expect(shell.inert).toBe(true);
+
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Cancelar' }),
+    );
+
+    expect(shell.inert).toBe(false);
   });
 });

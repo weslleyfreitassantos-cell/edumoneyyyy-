@@ -56,6 +56,15 @@ vi.mock('../services/accountService', () => ({
   },
 }));
 
+vi.mock(
+  '../components/account/InstitutionBrandingSection',
+  () => ({
+    InstitutionBrandingSection: () => (
+      <div>Identidade visual preservada</div>
+    ),
+  }),
+);
+
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedInstitutionService =
   vi.mocked(institutionService);
@@ -165,6 +174,8 @@ function SelectionHarness() {
         onOpenMobileSidebar={vi.fn()}
         onToggleSidebar={vi.fn()}
         onLogout={vi.fn()}
+        onUpdateProfileName={vi.fn(async () => undefined)}
+        onUpdatePassword={vi.fn(async () => undefined)}
       />
 
       <button

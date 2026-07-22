@@ -11,6 +11,7 @@ import {
 
 import {
   useAuth,
+  useAuthProfileActions,
 } from '../contexts/AuthContext';
 import {
   useInstitution,
@@ -199,6 +200,8 @@ export default function AppShell({
   children,
 }: AppShellProps) {
   const { profile, signOut } = useAuth();
+  const { updateProfileName, updatePassword } =
+    useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
 
@@ -542,6 +545,8 @@ export default function AppShell({
           onLogout={() => {
             void handleLogout();
           }}
+          onUpdateProfileName={updateProfileName}
+          onUpdatePassword={updatePassword}
           mobileMenuButtonRef={
             mobileMenuButtonRef
           }

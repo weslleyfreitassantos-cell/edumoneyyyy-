@@ -40,6 +40,15 @@ vi.mock('../../hooks/useAccounts', () => ({
   useCreateInstitution: vi.fn(),
 }));
 
+vi.mock(
+  '../../components/account/InstitutionBrandingSection',
+  () => ({
+    InstitutionBrandingSection: () => (
+      <div>Identidade visual preservada</div>
+    ),
+  }),
+);
+
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseInstitution =
   vi.mocked(useInstitution);
@@ -139,6 +148,52 @@ afterEach(() => {
 });
 
 describe('AccountPage', () => {
+  it('remove o link redundante e preserva informações da conta e instituição', () => {
+    mockedUseOwnedAccount.mockReturnValueOnce({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    expect(
+      screen.queryByText('Painel institucional'),
+    ).toBeNull();
+    expect(screen.getByText('Conta Sol')).toBeTruthy();
+    expect(screen.getByText('Escola Sol')).toBeTruthy();
+    expect(screen.getByText('Ativa')).toBeTruthy();
+    expect(screen.getByText('Slots restantes')).toBeTruthy();
+    expect(
+      screen.getByRole('link', { name: 'Entrar' }),
+    ).toBeTruthy();
+  });
+
   it('seleciona a instituicao criada usando o id retornado antes de mostrar sucesso', async () => {
     const order: string[] = [];
 

@@ -1,7 +1,6 @@
 import {
   Building2,
   Loader2,
-  LogIn,
   Plus,
 } from 'lucide-react';
 import {
@@ -215,7 +214,7 @@ export default function AccountPage() {
   return (
     <div className="min-h-screen bg-slate-50 p-6">
       <div className="mx-auto max-w-7xl space-y-6">
-        <header className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <header>
           <div>
             <div className="flex items-center gap-2">
               <Building2
@@ -231,14 +230,6 @@ export default function AccountPage() {
               instituicoes usadas
             </p>
           </div>
-
-          <Link
-            to="/admin"
-            className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f]"
-          >
-            <LogIn className="h-4 w-4" />
-            Painel institucional
-          </Link>
         </header>
 
         {account.status !== 'ACTIVE' && (
