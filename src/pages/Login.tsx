@@ -2,11 +2,9 @@ import {
   ArrowRight,
   Eye,
   EyeOff,
-  GraduationCap,
   Loader2,
   Lock,
   Mail,
-  Building2,
 } from 'lucide-react';
 import {
   useEffect,
@@ -28,7 +26,7 @@ export function Login() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const institutionSlug = searchParams.get('institution');
-  
+
   const brandingQuery = usePublicInstitutionBranding(institutionSlug);
 
   useEffect(() => {
@@ -56,45 +54,54 @@ export function Login() {
   };
 
   return (
-    <AuthShell heroVariant="video" showBrand={false}>
-      {institutionSlug && (
-        <div className="mb-8">
-          {brandingQuery.isLoading ? (
-            <div className="mb-6 flex h-16 w-32 items-center justify-center rounded-lg border border-[#c5c5d3] bg-[#f8f9fa]">
-              <Loader2 className="h-5 w-5 animate-spin text-[#757682]" />
-            </div>
-          ) : brandingQuery.data ? (
-            <div className="mb-6">
-              {brandingQuery.data.logoUrl ? (
-                <img
-                  src={brandingQuery.data.logoUrl}
-                  alt={`Logo da instituição ${brandingQuery.data.name}`}
-                  className="h-16 w-auto max-w-[240px] object-contain"
-                />
-              ) : (
-                <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#dce1ff] text-[#00236f]">
-                  <Building2 className="h-8 w-8" aria-hidden="true" />
-                </div>
-              )}
-            </div>
-          ) : null}
-        </div>
-      )}
+    <AuthShell
+      heroVariant="video"
+      layoutVariant="login"
+      showBrand={false}
+    >
+      <div className="mb-8 flex h-[118px] items-center justify-center rounded-2xl border border-[#dce9ff] bg-gradient-to-br from-white to-[#f5f8ff] px-5">
+        {institutionSlug && brandingQuery.isLoading ? (
+          <Loader2
+            className="h-6 w-6 animate-spin text-[#657087]"
+            aria-label="Carregando identidade visual da instituicao"
+          />
+        ) : institutionSlug &&
+          brandingQuery.data?.logoUrl ? (
+          <img
+            src={brandingQuery.data.logoUrl}
+            alt={`Logo da instituicao ${brandingQuery.data.name}`}
+            className="max-h-[100px] max-w-[240px] object-contain"
+          />
+        ) : (
+          <div
+            className="h-16 w-40 rounded-2xl border border-dashed border-[#b9cff8] bg-[#f8fbff]"
+            aria-hidden="true"
+          />
+        )}
+      </div>
+
+      <div className="mb-6">
+        <h1 className="sr-only">Acessar sua conta</h1>
+        <div
+          className="mx-auto h-1.5 w-16 rounded-full bg-[#075be8]/20"
+          aria-hidden="true"
+        />
+      </div>
 
       <form
         onSubmit={handleSubmit}
         className="space-y-5"
       >
-        <div className="space-y-1.5">
+        <div className="space-y-2">
           <label
             htmlFor="login-email"
-            className="block text-[11px] font-semibold uppercase leading-4 text-[#444651]"
+            className="block text-xs font-semibold uppercase tracking-wide text-[#657087]"
           >
             E-mail institucional
           </label>
           <div className="relative">
             <Mail
-              className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#757682]"
+              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087]"
               aria-hidden="true"
             />
             <input
@@ -106,21 +113,21 @@ export function Login() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="nome@instituicao.edu.br"
-              className="h-12 w-full rounded-lg border border-[#c5c5d3] bg-white px-10 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20"
+              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
             />
           </div>
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-2">
           <label
             htmlFor="login-password"
-            className="block text-[11px] font-semibold uppercase leading-4 text-[#444651]"
+            className="block text-xs font-semibold uppercase tracking-wide text-[#657087]"
           >
             Senha
           </label>
           <div className="relative">
             <Lock
-              className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#757682]"
+              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087]"
               aria-hidden="true"
             />
             <input
@@ -131,8 +138,8 @@ export function Login() {
               autoComplete="current-password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              placeholder="••••••••"
-              className="h-12 w-full rounded-lg border border-[#c5c5d3] bg-white px-10 pr-12 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20"
+              placeholder="********"
+              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 pr-12 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
             />
             <button
               type="button"
@@ -145,7 +152,7 @@ export function Login() {
               onClick={() =>
                 setShowPassword((current) => !current)
               }
-              className="absolute right-2.5 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-[#757682] transition hover:bg-[#f3f4f5] hover:text-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
+              className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#657087] transition hover:bg-[#eef5ff] hover:text-[#075be8] focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
             >
               {showPassword ? (
                 <EyeOff
@@ -165,7 +172,7 @@ export function Login() {
         <div className="flex justify-end">
           <Link
             to="/forgot-password"
-            className="text-xs font-semibold text-[#1e3a8a] underline-offset-4 transition hover:text-[#00236f] hover:underline focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
+            className="text-xs font-semibold text-[#075be8] underline-offset-4 transition hover:text-[#082b67] hover:underline focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
           >
             Esqueci minha senha
           </Link>
@@ -174,7 +181,7 @@ export function Login() {
         {error && (
           <div
             role="alert"
-            className="rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-2 text-sm text-[#93000a]"
+            className="rounded-xl border border-[#ffdad6] bg-[#fff1ef] px-3 py-2 text-sm text-[#93000a]"
           >
             {error}
           </div>
@@ -184,7 +191,7 @@ export function Login() {
           type="submit"
           disabled={loading}
           aria-live="polite"
-          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#1e3a8a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#075be8] to-[#1c70f2] px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading ? (
             <Loader2

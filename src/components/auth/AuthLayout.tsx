@@ -2,9 +2,12 @@ import {
   BookOpenCheck,
   Eye,
   EyeOff,
+  Globe2,
   GraduationCap,
+  Lightbulb,
   Loader2,
   Lock,
+  Pencil,
   type LucideIcon,
 } from 'lucide-react';
 import { useRef, useState, useEffect, type ReactNode, type SyntheticEvent } from 'react';
@@ -14,6 +17,7 @@ interface AuthShellProps {
   contentClassName?: string;
   footer?: ReactNode;
   heroVariant?: 'video' | 'default';
+  layoutVariant?: 'default' | 'login';
   showBrand?: boolean;
 }
 
@@ -91,8 +95,36 @@ export function AuthShell({
   contentClassName = '',
   footer = defaultFooter,
   heroVariant = 'default',
+  layoutVariant = 'default',
   showBrand = true,
 }: AuthShellProps) {
+  if (layoutVariant === 'login') {
+    return (
+      <main className="relative min-h-dvh overflow-hidden bg-[#f5f8ff] font-sans text-[#172033] lg:grid lg:grid-cols-[47%_53%]">
+        <section className="relative z-20 flex min-h-dvh min-w-0 flex-col overflow-hidden px-5 pb-8 pt-0 sm:px-8 lg:px-10 xl:px-16">
+          <LoginEducationDecor />
+
+          <div className="relative z-20 mx-auto flex w-full max-w-[calc(100vw-64px)] flex-1 items-start pt-[210px] sm:max-w-[620px] sm:pt-[250px] lg:mx-0 lg:ml-auto lg:max-w-none lg:items-center lg:pt-0">
+            <div
+              className={`login-card relative max-w-full rounded-[26px] border border-[#235bbe]/10 bg-white/95 px-6 py-7 shadow-[0_28px_70px_rgba(17,44,92,0.18),0_8px_24px_rgba(17,44,92,0.08)] sm:px-9 sm:py-9 ${contentClassName}`}
+            >
+              {children}
+            </div>
+          </div>
+
+          <footer className="relative z-20 mt-8 text-center text-xs leading-4 text-[#657087] lg:max-w-[520px]">
+            {footer}
+          </footer>
+        </section>
+
+        <AuthAside
+          variant={heroVariant}
+          layoutVariant="login"
+        />
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d] lg:grid lg:grid-cols-[55%_45%]">
       <section className="flex min-h-screen w-full flex-col bg-white px-4 py-6 sm:px-8 md:px-12 lg:px-16 xl:px-24">
@@ -117,6 +149,48 @@ export function AuthShell({
 
       <AuthAside variant={heroVariant} />
     </main>
+  );
+}
+
+function LoginEducationDecor() {
+  return (
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+    >
+      <div className="absolute -left-20 top-14 h-72 w-72 rounded-full bg-[#dce9ff]/65 blur-3xl" />
+      <div className="absolute left-[16%] top-[18%] h-28 w-28 rounded-full border border-[#075be8]/10" />
+      <div
+        className="absolute left-8 top-36 hidden h-32 w-32 opacity-[0.08] sm:block"
+        style={{
+          backgroundImage:
+            'radial-gradient(circle, #075be8 1.2px, transparent 1.2px)',
+          backgroundSize: '14px 14px',
+        }}
+      />
+      <BookOpenCheck className="absolute left-[12%] top-[12%] h-14 w-14 rotate-[-10deg] text-[#075be8]/10" />
+      <GraduationCap className="absolute bottom-[22%] left-[10%] h-16 w-16 rotate-6 text-[#082b67]/10" />
+      <Pencil className="absolute bottom-[34%] right-[22%] hidden h-12 w-12 rotate-12 text-[#1c70f2]/10 sm:block" />
+      <Globe2 className="absolute right-[12%] top-[26%] hidden h-14 w-14 text-[#075be8]/10 md:block" />
+      <Lightbulb className="absolute bottom-[16%] right-[12%] hidden h-12 w-12 text-[#1c70f2]/10 lg:block" />
+      <svg
+        className="absolute inset-x-0 bottom-0 h-44 w-full text-[#dce9ff]"
+        viewBox="0 0 900 220"
+        preserveAspectRatio="none"
+        focusable="false"
+      >
+        <path
+          d="M0 122C132 82 226 176 362 134C512 88 616 38 740 82C804 105 852 143 900 151V220H0V122Z"
+          fill="currentColor"
+          opacity="0.68"
+        />
+        <path
+          d="M0 162C144 122 252 190 388 156C538 118 622 92 756 124C816 139 860 166 900 174V220H0V162Z"
+          fill="#eef5ff"
+          opacity="0.95"
+        />
+      </svg>
+    </div>
   );
 }
 
@@ -399,8 +473,10 @@ function attemptVideoPlayback(video: HTMLVideoElement): void {
 
 export function AuthAside({
   variant = 'default',
+  layoutVariant = 'default',
 }: {
   variant?: 'video' | 'default';
+  layoutVariant?: 'default' | 'login';
 }) {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
@@ -441,8 +517,13 @@ export function AuthAside({
     }
   };
 
+  const asideClassName =
+    layoutVariant === 'login'
+      ? 'absolute inset-x-0 top-0 z-10 h-[260px] overflow-hidden bg-[#082b67] text-white sm:h-[300px] lg:relative lg:inset-auto lg:flex lg:h-auto lg:min-h-dvh lg:w-full lg:flex-col lg:items-center lg:justify-center'
+      : 'relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center';
+
   return (
-    <aside className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center">
+    <aside className={asideClassName}>
       {variant === 'video' ? (
         <>
           <div className="auth-hero-fallback" aria-hidden="true" />
