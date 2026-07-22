@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
 import {
+  afterEach,
   beforeEach,
   describe,
   expect,
@@ -23,6 +24,13 @@ vi.mock('../lib/supabaseClient', () => ({
     },
   },
 }));
+
+const accountId = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
+const generatedAssetId = '11111111-2222-4333-8444-555555555555';
+const generatedLogoPath =
+  `branding/accounts/${accountId}/logo/${generatedAssetId}.png`;
+const previousLogoPath =
+  `branding/accounts/${accountId}/logo/99999999-9999-4999-8999-999999999999.png`;
 
 function pngFile(): File {
   const bytes = new Uint8Array(12);
@@ -75,10 +83,10 @@ function mockUpdateMaybeSingle(result: unknown) {
 const currentAccountBranding: BrandingRecord = {
   id: 'branding-1',
   scope: 'ACCOUNT',
-  accountId: 'account-1',
+  accountId,
   displayName: 'Conta A',
   logoUrl: 'https://cdn.example.com/old.png?v=1',
-  logoPath: 'branding/accounts/account-1/logo/old.png',
+  logoPath: previousLogoPath,
   faviconUrl: null,
   faviconPath: null,
   primaryColor: '#005bbf',
@@ -89,6 +97,13 @@ describe('brandingService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.spyOn(Date, 'now').mockReturnValue(9876);
+    vi.stubGlobal('crypto', {
+      randomUUID: vi.fn(() => generatedAssetId),
+    });
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
   });
 
   it('resolve branding publico por hostname e limita o payload visual', async () => {
@@ -145,7 +160,7 @@ describe('brandingService', () => {
     const maybeSingle = vi.fn().mockResolvedValue({
       data: {
         id: 'domain-1',
-        account_id: 'account-1',
+        account_id: accountId,
         hostname: 'escola.exemplo.com',
         status: 'PENDING',
         is_primary: false,
@@ -163,13 +178,13 @@ describe('brandingService', () => {
 
     const domain =
       await brandingService.requestAccountDomain(
-        'account-1',
+        accountId,
         'Escola.Exemplo.COM',
       );
 
     expect(insert).toHaveBeenCalledWith(
       expect.objectContaining({
-        account_id: 'account-1',
+        account_id: accountId,
         hostname: 'escola.exemplo.com',
         status: 'PENDING',
       }),
@@ -180,7 +195,7 @@ describe('brandingService', () => {
   it('bloqueia hostname reservado antes de chamar o banco', async () => {
     await expect(
       brandingService.requestAccountDomain(
-        'account-1',
+        accountId,
         'localhost',
       ),
     ).rejects.toThrow(/reservado/i);
@@ -208,10 +223,10 @@ describe('brandingService', () => {
       data: {
         id: 'branding-1',
         scope_type: 'ACCOUNT',
-        account_id: 'account-1',
+        account_id: accountId,
         display_name: 'Conta A',
         logo_url: 'https://cdn.example.com/new.png?v=9876',
-        logo_path: 'branding/accounts/account-1/logo/new.png',
+        logo_path: generatedLogoPath,
         favicon_url: null,
         favicon_path: null,
         primary_color: '#005bbf',
@@ -237,7 +252,7 @@ describe('brandingService', () => {
     } as never);
 
     const result =
-      await brandingService.saveAccountBranding('account-1', {
+      await brandingService.saveAccountBranding(accountId, {
         displayName: 'Conta A',
         primaryColor: '#005bbf',
         secondaryColor: '#6ffbbe',
@@ -249,14 +264,77 @@ describe('brandingService', () => {
     );
     expect(persisted.table.update).toHaveBeenCalled();
     expect(remove).toHaveBeenCalledWith([
-      'branding/accounts/account-1/logo/old.png',
+      previousLogoPath,
     ]);
     expect(result.logoUrl).toBe(
       'https://cdn.example.com/new.png?v=9876',
     );
-    expect(
-      upload.mock.calls[0][0],
-    ).not.toContain('original-name');
+    expect(upload).toHaveBeenCalledWith(
+      generatedLogoPath,
+      expect.any(File),
+      expect.objectContaining({
+        contentType: 'image/png',
+        upsert: false,
+      }),
+    );
+    expect(upload.mock.calls[0][0]).not.toContain(
+      'original-name',
+    );
+  });
+
+  it('usa fallback UUID v4 com crypto.getRandomValues', async () => {
+    const getRandomValues = vi.fn((bytes: Uint8Array) => {
+      bytes.set([
+        0x00,
+        0x01,
+        0x02,
+        0x03,
+        0x04,
+        0x05,
+        0x06,
+        0x07,
+        0x08,
+        0x09,
+        0x0a,
+        0x0b,
+        0x0c,
+        0x0d,
+        0x0e,
+        0x0f,
+      ]);
+
+      return bytes;
+    });
+    const upload = vi.fn().mockResolvedValue({ error: null });
+    const getPublicUrl = vi.fn(() => ({
+      data: {
+        publicUrl: 'https://cdn.example.com/fallback.png',
+      },
+    }));
+
+    vi.stubGlobal('crypto', { getRandomValues });
+    vi.mocked(supabase.storage.from).mockReturnValue({
+      upload,
+      remove: vi.fn(),
+      getPublicUrl,
+    } as never);
+
+    const result = await brandingService.uploadLogo({
+      scope: 'GLOBAL',
+      accountId: null,
+      file: pngFile(),
+    });
+
+    expect(result.path).toBe(
+      'branding/global/logo/00010203-0405-4607-8809-0a0b0c0d0e0f.png',
+    );
+    expect(upload).toHaveBeenCalledWith(
+      result.path,
+      expect.any(File),
+      expect.objectContaining({
+        contentType: 'image/png',
+      }),
+    );
   });
 
   it('limpa upload novo quando a persistencia falha', async () => {

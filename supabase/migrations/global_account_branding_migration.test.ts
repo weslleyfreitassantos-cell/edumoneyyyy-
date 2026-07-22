@@ -15,6 +15,14 @@ const migration = readFileSync(
   'utf8',
 );
 
+const assetEnforcementMigration = readFileSync(
+  new URL(
+    './20260722000400_branding_asset_enforcement.sql',
+    import.meta.url,
+  ),
+  'utf8',
+);
+
 describe('global account branding migration', () => {
   it('define constraints e unicidade por escopo', () => {
     expect(migration).toContain('branding_settings_scope_account_check');
@@ -46,5 +54,53 @@ describe('global account branding migration', () => {
     expect(migration).toContain('branding/accounts');
     expect(migration).toContain('edumoneyyyy.weslleyfreitassantos.workers.dev');
     expect(migration).toContain('localhost');
+  });
+
+  it('cria migration corretiva para enforcement de assets', () => {
+    expect(assetEnforcementMigration).toContain(
+      'is_valid_branding_asset_path',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'is_valid_branding_asset_url',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'is_valid_branding_storage_metadata',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'branding_settings_logo_pair_check',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'branding_settings_logo_url_matches_path_check',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'branding_storage_insert_policy',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'branding_storage_update_policy',
+    );
+    expect(assetEnforcementMigration).toContain(
+      'branding_storage_delete_policy',
+    );
+  });
+
+  it('valida metadata, MIME, extensoes e limites no Storage', () => {
+    expect(assetEnforcementMigration).toContain("object_metadata ->> 'mimetype'");
+    expect(assetEnforcementMigration).toContain("object_metadata ->> 'size'");
+    expect(assetEnforcementMigration).toContain("'image/png'");
+    expect(assetEnforcementMigration).toContain("'image/jpeg'");
+    expect(assetEnforcementMigration).toContain("'image/webp'");
+    expect(assetEnforcementMigration).toContain('(png|jpg|webp)');
+    expect(assetEnforcementMigration).toContain('2 * 1024 * 1024');
+    expect(assetEnforcementMigration).toContain('512 * 1024');
+  });
+
+  it('documenta que assert textual nao substitui smoke DB real', () => {
+    expect(assetEnforcementMigration).toContain(
+      "coalesce((storage.foldername(name))[1], '') <> 'branding'",
+    );
+    expect(assetEnforcementMigration).toContain(
+      '/storage/v1/object/public/institution-branding/',
+    );
+    expect(assetEnforcementMigration).toContain('?v=');
   });
 });

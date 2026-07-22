@@ -42,4 +42,10 @@ describe('branding isolation regressions', () => {
     expect(serviceSource).toContain('.maybeSingle()');
     expect(serviceSource).toContain('BRANDING_UPDATE_EMPTY');
   });
+
+  it('nao usa Math.random para nomes de arquivos no Storage', () => {
+    expect(serviceSource).not.toContain('Math.random');
+    expect(serviceSource).toContain('randomUUID');
+    expect(serviceSource).toContain('getRandomValues');
+  });
 });

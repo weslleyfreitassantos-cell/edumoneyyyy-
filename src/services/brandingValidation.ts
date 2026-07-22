@@ -5,6 +5,8 @@ export const LOGO_MAX_SIZE_BYTES = 2 * 1024 * 1024;
 export const FAVICON_MAX_SIZE_BYTES = 512 * 1024;
 export const DEFAULT_BRAND_PRIMARY_COLOR = '#005bbf';
 export const DEFAULT_BRAND_SECONDARY_COLOR = '#6ffbbe';
+export const BRANDING_STORAGE_PUBLIC_PATH =
+  '/storage/v1/object/public/institution-branding/';
 
 export const ALLOWED_BRANDING_MIME_TYPES = [
   'image/png',
@@ -31,6 +33,12 @@ export type AllowedBrandingMimeType = AllowedLogoMimeType;
 const hexColorPattern = /^#[0-9a-fA-F]{6}$/;
 const hostnamePattern =
   /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/;
+const uuidFilenamePattern =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.(png|jpg|webp)$/;
+const accountIdPattern =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+const supabaseStorageHostPattern =
+  /^[a-z0-9]{20}\.supabase\.co$/;
 
 const reservedHostnames = new Set([
   'localhost',
@@ -44,6 +52,12 @@ const reservedHostnames = new Set([
 export interface HostnameValidationResult {
   hostname: string | null;
   error: string | null;
+}
+
+export interface BrandingAssetPathOptions {
+  scope?: 'GLOBAL' | 'ACCOUNT';
+  accountId?: string | null;
+  kind?: BrandingImageKind;
 }
 
 export function isAllowedMimeType(
@@ -86,6 +100,91 @@ export function isValidBrandColor(
   value: string,
 ): boolean {
   return hexColorPattern.test(value.trim());
+}
+
+export function isValidBrandingAssetPath(
+  value: string | null | undefined,
+  options: BrandingAssetPathOptions = {},
+): boolean {
+  if (!value || value.trim() !== value) {
+    return false;
+  }
+
+  const parts = value.split('/');
+
+  if (parts.some((part) => part.length === 0)) {
+    return false;
+  }
+
+  if (parts[0] !== 'branding') {
+    return false;
+  }
+
+  if (parts[1] === 'global') {
+    const [, , kind, fileName] = parts;
+
+    return (
+      parts.length === 4 &&
+      (options.scope === undefined || options.scope === 'GLOBAL') &&
+      !options.accountId &&
+      (options.kind === undefined || options.kind === kind) &&
+      (kind === 'logo' || kind === 'favicon') &&
+      uuidFilenamePattern.test(fileName)
+    );
+  }
+
+  if (parts[1] === 'accounts') {
+    const [, , accountId, kind, fileName] = parts;
+
+    return (
+      parts.length === 5 &&
+      (options.scope === undefined || options.scope === 'ACCOUNT') &&
+      accountIdPattern.test(accountId) &&
+      (options.accountId == null || options.accountId === accountId) &&
+      (options.kind === undefined || options.kind === kind) &&
+      (kind === 'logo' || kind === 'favicon') &&
+      uuidFilenamePattern.test(fileName)
+    );
+  }
+
+  return false;
+}
+
+export function isValidBrandingAssetUrl(
+  assetUrl: string | null | undefined,
+  assetPath: string | null | undefined,
+): boolean {
+  if (!assetUrl || !assetPath || !isValidBrandingAssetPath(assetPath)) {
+    return false;
+  }
+
+  let parsedUrl: URL;
+
+  try {
+    parsedUrl = new URL(assetUrl);
+  } catch {
+    return false;
+  }
+
+  if (
+    parsedUrl.protocol !== 'https:' ||
+    !supabaseStorageHostPattern.test(parsedUrl.hostname) ||
+    parsedUrl.hash
+  ) {
+    return false;
+  }
+
+  if (
+    parsedUrl.pathname !==
+    `${BRANDING_STORAGE_PUBLIC_PATH}${assetPath}`
+  ) {
+    return false;
+  }
+
+  return (
+    parsedUrl.search === '' ||
+    /^\?v=[0-9]+$/.test(parsedUrl.search)
+  );
 }
 
 export function sanitizeBrandColor(
