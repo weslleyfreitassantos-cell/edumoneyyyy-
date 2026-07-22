@@ -199,4 +199,49 @@ describe('ProtectedRoute', () => {
             screen.getByText('Acesso não autorizado'),
         ).toBeTruthy();
     });
+
+    it('autoriza pelo role quando ambos os filtros sao definidos (OR)', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'DIRECTOR', platform_role: 'USER' },
+            }),
+        );
+
+        renderProtectedRoute(['ADMIN', 'DIRECTOR', 'SECRETARY'], ['SUPER_ADMIN']);
+
+        expect(
+            screen.getByText('Conteúdo protegido'),
+        ).toBeTruthy();
+    });
+
+    it('autoriza pela platform_role quando ambos os filtros sao definidos (OR)', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, platform_role: 'SUPER_ADMIN' },
+            }),
+        );
+
+        renderProtectedRoute(['ADMIN', 'DIRECTOR', 'SECRETARY'], ['SUPER_ADMIN']);
+
+        expect(
+            screen.getByText('Conteúdo protegido'),
+        ).toBeTruthy();
+    });
+
+    it('bloqueia quando ambos os filtros sao definidos e nenhum corresponde (OR)', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: { ...adminProfile, role: 'TEACHER', platform_role: 'USER' },
+            }),
+        );
+
+        renderProtectedRoute(['ADMIN', 'DIRECTOR', 'SECRETARY'], ['SUPER_ADMIN']);
+
+        expect(
+            screen.getByText('Acesso não autorizado'),
+        ).toBeTruthy();
+    });
 });

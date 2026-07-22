@@ -16,15 +16,21 @@ import {
 } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 
+import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 import type { UserInstitution } from '../services/institutionService';
 import type { User } from '../types';
 import Header from './Header';
 
+vi.mock('../contexts/AuthContext', () => ({
+  useAuth: vi.fn(),
+}));
+
 vi.mock('../contexts/InstitutionContext', () => ({
   useInstitution: vi.fn(),
 }));
 
+const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseInstitution =
   vi.mocked(useInstitution);
 
@@ -102,6 +108,21 @@ function renderHeader(
     Parameters<typeof Header>[0]
   > = {},
 ) {
+  mockedUseAuth.mockReturnValue({
+    user: { id: 'user-1' } as never,
+    profile: {
+      id: 'user-1',
+      full_name: 'Ana Silva',
+      email: 'ana@example.com',
+      avatar_url: null,
+      role: 'ADMIN',
+      platform_role: 'USER',
+    },
+    loading: false,
+    signIn: vi.fn(async () => undefined),
+    signOut: vi.fn(async () => undefined),
+  });
+
   mockInstitutionContext();
 
   const props: Parameters<typeof Header>[0] = {

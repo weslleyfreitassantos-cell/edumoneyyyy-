@@ -336,6 +336,7 @@ function AppRoutes() {
               'DIRECTOR',
               'SECRETARY',
             ]}
+            allowedPlatformRoles={['SUPER_ADMIN']}
           >
             <AppShell>
               <AdminPage />

@@ -9,6 +9,46 @@ vi.mock('../lib/supabaseClient', () => ({
 }));
 
 describe('institutionService', () => {
+  it('listAllActiveInstitutions retorna todas as instituicoes ativas para SUPER_ADMIN', async () => {
+    const mockSelect = vi.fn().mockReturnValue({
+      eq: vi.fn().mockReturnThis(),
+      order: vi.fn().mockResolvedValue({
+        data: [
+          { id: 'inst-1', name: 'Escola Ativa 1', active: true, account_id: null },
+          { id: 'inst-2', name: 'Escola Ativa 2', active: true, account_id: 'acc-1' },
+        ],
+        error: null,
+      }),
+    });
+
+    vi.mocked(supabase.from).mockReturnValue({ select: mockSelect } as any);
+
+    const result = await institutionService.listAllActiveInstitutions();
+
+    expect(result).toHaveLength(2);
+    expect(result[0].institution.id).toBe('inst-1');
+    expect(result[1].institution.id).toBe('inst-2');
+    expect(result[0].effectiveRole).toBe('ADMIN');
+    expect(result[0].membership).toBeNull();
+    expect(result[1].account).toBeNull();
+  });
+
+  it('listAllActiveInstitutions lanca erro quando a consulta falha', async () => {
+    const mockSelect = vi.fn().mockReturnValue({
+      eq: vi.fn().mockReturnThis(),
+      order: vi.fn().mockResolvedValue({
+        data: null,
+        error: new Error('Falha no banco'),
+      }),
+    });
+
+    vi.mocked(supabase.from).mockReturnValue({ select: mockSelect } as any);
+
+    await expect(
+      institutionService.listAllActiveInstitutions(),
+    ).rejects.toThrow('Falha no banco');
+  });
+
   it('combina ownership e memberships com deduplicacao, ignorando contas suspensas, e mantem limite e effectiveRole', async () => {
     const mockSelectAccount = vi.fn().mockReturnValue({
       eq: vi.fn().mockResolvedValue({

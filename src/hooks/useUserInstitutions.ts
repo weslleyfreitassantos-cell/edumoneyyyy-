@@ -13,16 +13,26 @@ export const userInstitutionKeys = {
       ...userInstitutionKeys.all,
       profileId ?? 'anonymous',
     ] as const,
+
+  allActive: () =>
+    [...userInstitutionKeys.all, 'all-active'] as const,
 };
 
 export function useUserInstitutions(
   profileId: string | undefined,
+  platformRole?: string,
 ) {
   return useQuery<UserInstitution[]>({
     queryKey:
-      userInstitutionKeys.list(profileId),
+      platformRole === 'SUPER_ADMIN'
+        ? userInstitutionKeys.allActive()
+        : userInstitutionKeys.list(profileId),
 
     queryFn: () => {
+      if (platformRole === 'SUPER_ADMIN') {
+        return institutionService.listAllActiveInstitutions();
+      }
+
       if (!profileId) {
         return Promise.resolve([]);
       }

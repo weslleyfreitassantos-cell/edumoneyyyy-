@@ -15,14 +15,20 @@ import {
   vi,
 } from 'vitest';
 
+import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
 import type { UserInstitution } from '../services/institutionService';
 import InstitutionSwitcher from './InstitutionSwitcher';
+
+vi.mock('../contexts/AuthContext', () => ({
+  useAuth: vi.fn(),
+}));
 
 vi.mock('../contexts/InstitutionContext', () => ({
   useInstitution: vi.fn(),
 }));
 
+const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseInstitution =
   vi.mocked(useInstitution);
 
@@ -93,6 +99,20 @@ function mockInstitutionContext(
 }
 
 beforeEach(() => {
+  mockedUseAuth.mockReturnValue({
+    user: { id: 'user-1' } as never,
+    profile: {
+      id: 'user-1',
+      full_name: 'Ana Silva',
+      email: 'ana@example.com',
+      avatar_url: null,
+      role: 'ADMIN',
+      platform_role: 'USER',
+    },
+    loading: false,
+    signIn: vi.fn(async () => undefined),
+    signOut: vi.fn(async () => undefined),
+  });
   mockedUseInstitution.mockReset();
 });
 
