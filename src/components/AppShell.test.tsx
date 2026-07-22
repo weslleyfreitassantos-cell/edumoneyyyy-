@@ -39,6 +39,17 @@ vi.mock('../contexts/InstitutionContext', () => ({
   useInstitution: vi.fn(),
 }));
 
+vi.mock('../hooks/useBranding', () => ({
+  useHostBranding: () => ({
+    scope: 'GLOBAL',
+    displayName: 'EduManager Pro',
+    logoUrl: null,
+    faviconUrl: null,
+    primaryColor: '#005bbf',
+    secondaryColor: '#6ffbbe',
+  }),
+}));
+
 vi.mock('./InstitutionSwitcher', () => ({
   default: () => <div>Seletor global</div>,
 }));

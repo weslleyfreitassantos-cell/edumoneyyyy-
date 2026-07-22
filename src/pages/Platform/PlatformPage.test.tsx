@@ -22,9 +22,17 @@ const hookMock = vi.hoisted(() => ({
   createAccount: {} as any,
   updateAccount: {} as any,
   deleteAccount: {} as any,
+  globalBrandingQuery: {} as any,
+  saveGlobalBranding: {} as any,
+  domainRequestsQuery: {} as any,
+  activateDomain: {} as any,
+  disableDomain: {} as any,
   createMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   deleteMutateAsync: vi.fn(),
+  saveGlobalBrandingMutateAsync: vi.fn(),
+  activateDomainMutateAsync: vi.fn(),
+  disableDomainMutateAsync: vi.fn(),
 }));
 
 vi.mock('../../hooks/useAccounts', () => ({
@@ -32,6 +40,14 @@ vi.mock('../../hooks/useAccounts', () => ({
   useCreateClientAccount: () => hookMock.createAccount,
   useUpdateClientAccount: () => hookMock.updateAccount,
   useDeleteClientAccount: () => hookMock.deleteAccount,
+}));
+
+vi.mock('../../hooks/useBranding', () => ({
+  useGlobalBranding: () => hookMock.globalBrandingQuery,
+  useSaveGlobalBranding: () => hookMock.saveGlobalBranding,
+  useDomainRequests: () => hookMock.domainRequestsQuery,
+  useActivateDomain: () => hookMock.activateDomain,
+  useDisableDomain: () => hookMock.disableDomain,
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -114,6 +130,47 @@ describe('PlatformPage', () => {
       isPending: false,
       mutateAsync: hookMock.deleteMutateAsync,
     };
+    hookMock.globalBrandingQuery = {
+      data: {
+        id: 'global-branding',
+        scope: 'GLOBAL',
+        accountId: null,
+        displayName: 'EduManager Pro',
+        logoUrl: null,
+        logoPath: null,
+        faviconUrl: null,
+        faviconPath: null,
+        primaryColor: '#005bbf',
+        secondaryColor: '#6ffbbe',
+      },
+      isLoading: false,
+    };
+    hookMock.saveGlobalBranding = {
+      isPending: false,
+      mutateAsync: hookMock.saveGlobalBrandingMutateAsync,
+    };
+    hookMock.domainRequestsQuery = {
+      data: [
+        {
+          id: 'domain-1',
+          accountId: 'account-1',
+          accountName: 'Conta Alfa',
+          hostname: 'alfa.example.com',
+          status: 'PENDING',
+          isPrimary: false,
+          createdAt: '2026-07-22T00:00:00.000Z',
+        },
+      ],
+      isLoading: false,
+    };
+    hookMock.activateDomain = {
+      isPending: false,
+      mutateAsync: hookMock.activateDomainMutateAsync,
+    };
+    hookMock.disableDomain = {
+      isPending: false,
+      mutateAsync: hookMock.disableDomainMutateAsync,
+    };
     hookMock.createMutateAsync.mockResolvedValue({
       success: true,
       accountId: 'account-3',
@@ -165,13 +222,34 @@ describe('PlatformPage', () => {
         level: 1,
       }),
     ).toBeDefined();
-    expect(screen.getByText('Conta Alfa')).toBeDefined();
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThan(0);
     expect(screen.getByText('Ana Admin')).toBeDefined();
     expect(
       screen.getByText(/Escola Alpha, Escola Pausada/i),
     ).toBeDefined();
     expect(screen.getByText('Ativa')).toBeDefined();
     expect(screen.getByText('Suspensa')).toBeDefined();
+  });
+
+  it('mostra identidade da plataforma e solicitacoes de dominio para SUPER_ADMIN', () => {
+    renderPage();
+
+    expect(
+      screen.getByRole('heading', {
+        name: /Identidade da plataforma/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.getByText(/serve como padrao para contas sem marca propria/i),
+    ).toBeDefined();
+    expect(
+      screen.getByRole('heading', {
+        name: /Solicitacoes de dominio/i,
+      }),
+    ).toBeDefined();
+    expect(screen.getByText('alfa.example.com')).toBeDefined();
   });
 
   it('renderiza estado vazio', () => {
@@ -441,7 +519,9 @@ describe('PlatformPage', () => {
       },
     );
 
-    expect(screen.getByText('Conta Alfa')).toBeDefined();
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThan(0);
     expect(screen.queryByText('Conta Beta')).toBeNull();
 
     fireEvent.change(
@@ -455,7 +535,11 @@ describe('PlatformPage', () => {
     });
 
     expect(screen.getByText('Conta Beta')).toBeDefined();
-    expect(screen.queryByText('Conta Alfa')).toBeNull();
+    expect(
+      screen.queryByRole('button', {
+        name: /Salvar limite de Conta Alfa/i,
+      }),
+    ).toBeNull();
   });
 
   it('nao renderiza elementos ficticios do prototipo', () => {

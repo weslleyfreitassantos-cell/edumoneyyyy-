@@ -41,6 +41,15 @@ const baseUser: User = {
   subtitle: 'Administrador',
 };
 
+const baseBranding = {
+  scope: 'GLOBAL' as const,
+  displayName: 'EduManager Pro',
+  logoUrl: null,
+  faviconUrl: null,
+  primaryColor: '#005bbf',
+  secondaryColor: '#6ffbbe',
+};
+
 function renderSidebar({
   route = '/admin',
   profile = baseProfile,
@@ -63,6 +72,7 @@ function renderSidebar({
       <Sidebar
         currentUser={currentUser}
         profile={profile}
+        branding={baseBranding}
         currentInstitutionRole={
           currentInstitutionRole
         }

@@ -9,12 +9,17 @@ import {
 import {
   useEffect,
   useState,
+  type CSSProperties,
   type FormEvent,
 } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
-import { usePublicInstitutionBranding } from '../hooks/useInstitutionBranding';
+import { useResolvedBranding } from '../hooks/useBranding';
+import {
+  FALLBACK_BRANDING,
+} from '../services/brandingService';
+import { applyDocumentBranding } from '../services/documentBranding';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -24,16 +29,25 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const { signIn, profile } = useAuth();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const institutionSlug = searchParams.get('institution');
-
-  const brandingQuery = usePublicInstitutionBranding(institutionSlug);
+  const brandingQuery = useResolvedBranding();
+  const branding =
+    brandingQuery.data ?? FALLBACK_BRANDING;
 
   useEffect(() => {
     if (profile) {
       navigate('/dashboard');
     }
   }, [profile, navigate]);
+
+  useEffect(
+    () => applyDocumentBranding(branding),
+    [
+      branding.displayName,
+      branding.faviconUrl,
+      branding.primaryColor,
+      branding.secondaryColor,
+    ],
+  );
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -59,17 +73,24 @@ export function Login() {
       layoutVariant="login"
       showBrand={false}
     >
+      <div
+        style={
+          {
+            '--brand-primary': branding.primaryColor,
+            '--brand-secondary': branding.secondaryColor,
+          } as CSSProperties
+        }
+      >
       <div className="mb-8 flex h-[118px] items-center justify-center rounded-2xl border border-[#dce9ff] bg-gradient-to-br from-white to-[#f5f8ff] px-5">
-        {institutionSlug && brandingQuery.isLoading ? (
+        {brandingQuery.isLoading ? (
           <Loader2
             className="h-6 w-6 animate-spin text-[#657087]"
-            aria-label="Carregando identidade visual da instituicao"
+            aria-label="Carregando identidade visual"
           />
-        ) : institutionSlug &&
-          brandingQuery.data?.logoUrl ? (
+        ) : branding.logoUrl ? (
           <img
-            src={brandingQuery.data.logoUrl}
-            alt={`Logo da instituicao ${brandingQuery.data.name}`}
+            src={branding.logoUrl}
+            alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
             className="max-h-[100px] max-w-[240px] object-contain"
           />
         ) : (
@@ -83,7 +104,10 @@ export function Login() {
       <div className="mb-6">
         <h1 className="sr-only">Acessar sua conta</h1>
         <div
-          className="mx-auto h-1.5 w-16 rounded-full bg-[#075be8]/20"
+          className="mx-auto h-1.5 w-16 rounded-full"
+          style={{
+            backgroundColor: 'color-mix(in srgb, var(--brand-primary) 20%, transparent)',
+          }}
           aria-hidden="true"
         />
       </div>
@@ -191,7 +215,11 @@ export function Login() {
           type="submit"
           disabled={loading}
           aria-live="polite"
-          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#075be8] to-[#1c70f2] px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
+          style={{
+            backgroundImage:
+              'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+          }}
         >
           {loading ? (
             <Loader2
@@ -207,6 +235,7 @@ export function Login() {
           {loading ? 'Entrando...' : 'Entrar no sistema'}
         </button>
       </form>
+      </div>
     </AuthShell>
   );
 }
