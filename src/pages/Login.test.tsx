@@ -25,9 +25,12 @@ const authMock = vi.hoisted(() => ({
 
 const brandingMock = vi.hoisted(() => ({
   data: null as null | {
-    name: string;
+    scope: 'GLOBAL' | 'ACCOUNT' | 'FALLBACK';
+    displayName: string | null;
     logoUrl: string | null;
-    publicSlug: string;
+    faviconUrl: string | null;
+    primaryColor: string;
+    secondaryColor: string;
   },
   isLoading: false,
 }));
@@ -39,8 +42,8 @@ vi.mock('../contexts/AuthContext', () => ({
   }),
 }));
 
-vi.mock('../hooks/useInstitutionBranding', () => ({
-  usePublicInstitutionBranding: () => ({
+vi.mock('../hooks/useBranding', () => ({
+  useResolvedBranding: () => ({
     data: brandingMock.data,
     isLoading: brandingMock.isLoading,
   }),
@@ -82,6 +85,10 @@ describe('Login', () => {
 
   afterEach(() => {
     cleanup();
+    document.title = '';
+    document.head.innerHTML = '';
+    document.documentElement.style.removeProperty('--brand-primary');
+    document.documentElement.style.removeProperty('--brand-secondary');
   });
 
   it('renderiza o formulario real e o link de recuperacao', () => {
@@ -154,17 +161,20 @@ describe('Login', () => {
     ).toBe(true);
   });
 
-  it('exibe logo dinamica da instituicao quando disponivel', () => {
+  it('exibe logo dinamica resolvida por hostname quando disponivel', () => {
     brandingMock.data = {
-      name: 'Colegio Azul',
+      scope: 'ACCOUNT',
+      displayName: 'Colegio Azul',
       logoUrl: 'https://cdn.example.com/logo.png',
-      publicSlug: 'colegio-azul',
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
     };
 
-    renderLogin('/login?institution=colegio-azul');
+    renderLogin();
 
     const logo = screen.getByRole('img', {
-      name: /Logo da instituicao Colegio Azul/i,
+      name: /Logo de Colegio Azul/i,
     });
 
     expect(logo.getAttribute('src')).toBe(
@@ -175,16 +185,44 @@ describe('Login', () => {
 
   it('mantem fallback neutro sem logo e sem marca fixa', () => {
     brandingMock.data = {
-      name: 'Colegio Sem Logo',
+      scope: 'GLOBAL',
+      displayName: 'Colegio Sem Logo',
       logoUrl: null,
-      publicSlug: 'colegio-sem-logo',
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
     };
 
-    renderLogin('/login?institution=colegio-sem-logo');
+    renderLogin();
 
     expect(screen.queryByRole('img')).toBeNull();
     expect(screen.queryByText(/EduManager/i)).toBeNull();
     expect(screen.queryByText(/Logo/i)).toBeNull();
+  });
+
+  it('atualiza favicon, titulo e cores dinamicamente', () => {
+    brandingMock.data = {
+      scope: 'GLOBAL',
+      displayName: 'Marca Global',
+      logoUrl: null,
+      faviconUrl: 'https://cdn.example.com/favicon.png',
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    };
+
+    renderLogin();
+
+    expect(document.title).toBe('Marca Global');
+    expect(
+      document.documentElement.style.getPropertyValue(
+        '--brand-primary',
+      ),
+    ).toBe('#123456');
+    expect(
+      document.querySelector<HTMLLinkElement>(
+        'link[rel="icon"]',
+      )?.href,
+    ).toBe('https://cdn.example.com/favicon.png');
   });
 
   it('mantem o card de login sobreposto ao video por classe dedicada', () => {

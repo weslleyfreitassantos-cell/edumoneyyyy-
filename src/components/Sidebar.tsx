@@ -17,11 +17,16 @@ import type {
   RefObject,
 } from 'react';
 import {
+  useEffect,
+  useState,
+} from 'react';
+import {
   Link,
   useLocation,
 } from 'react-router-dom';
 
 import type { Profile } from '../contexts/AuthContext';
+import type { PublicBranding } from '../services/brandingService';
 import type {
   SystemPermission,
 } from '../lib/permissions';
@@ -51,6 +56,7 @@ export interface SidebarNavigationItem {
 interface SidebarProps {
   currentUser: User;
   profile: Profile;
+  branding: PublicBranding;
   currentInstitutionRole: string | null;
   isCollapsed: boolean;
   isMobileOpen: boolean;
@@ -198,6 +204,7 @@ export function getSidebarNavigationItems({
 export default function Sidebar({
   currentUser,
   profile,
+  branding,
   currentInstitutionRole,
   isCollapsed,
   isMobileOpen,
@@ -210,6 +217,8 @@ export default function Sidebar({
   mobileTitleId = 'app-sidebar-title',
 }: SidebarProps) {
   const location = useLocation();
+  const [brandLogoFailed, setBrandLogoFailed] =
+    useState(false);
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
@@ -221,6 +230,16 @@ export default function Sidebar({
     ),
   );
   const initials = getInitials(currentUser.name);
+  const brandName =
+    branding.displayName?.trim() || 'EduManager Pro';
+  const brandLogoUrl =
+    branding.logoUrl && !brandLogoFailed
+      ? branding.logoUrl
+      : null;
+
+  useEffect(() => {
+    setBrandLogoFailed(false);
+  }, [branding.logoUrl]);
 
   return (
     <>
@@ -261,13 +280,27 @@ export default function Sidebar({
             to="/dashboard"
             onClick={onCloseMobile}
             className="group flex min-w-0 flex-1 items-center gap-3 rounded-lg outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
-            aria-label="EduManager Pro"
+            aria-label={brandName}
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#005bbf] text-white shadow-sm">
-              <GraduationCap
-                className="h-5 w-5"
-                aria-hidden="true"
-              />
+            <span
+              className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl text-white shadow-sm"
+              style={{
+                backgroundColor: 'var(--brand-primary)',
+              }}
+            >
+              {brandLogoUrl ? (
+                <img
+                  src={brandLogoUrl}
+                  alt=""
+                  className="h-full w-full object-contain"
+                  onError={() => setBrandLogoFailed(true)}
+                />
+              ) : (
+                <GraduationCap
+                  className="h-5 w-5"
+                  aria-hidden="true"
+                />
+              )}
             </span>
 
             <span
@@ -281,7 +314,7 @@ export default function Sidebar({
                 id={mobileTitleId}
                 className="block truncate text-sm font-extrabold text-[#061f6f]"
               >
-                EduManager Pro
+                {brandName}
               </span>
               <span className="block truncate text-[11px] font-semibold uppercase tracking-[0.18em] text-[#667085]">
                 Gestão acadêmica

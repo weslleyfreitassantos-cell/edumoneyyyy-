@@ -7,9 +7,10 @@ import {
   useState,
   type FormEvent,
 } from 'react';
-import { InstitutionBrandingSection } from '../../components/account/InstitutionBrandingSection';
 import { Link } from 'react-router-dom';
 
+import { BrandingEditor } from '../../components/branding/BrandingEditor';
+import { AccountDomainSection } from '../../components/branding/DomainManagement';
 import { useAuth } from '../../contexts/AuthContext';
 import {
   useInstitution,
@@ -19,6 +20,12 @@ import {
   useCreateInstitution,
   useOwnedAccount,
 } from '../../hooks/useAccounts';
+import {
+  useAccountBranding,
+  useAccountDomains,
+  useRequestAccountDomain,
+  useSaveAccountBranding,
+} from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
 
 interface InstitutionFormState {
@@ -71,6 +78,15 @@ export default function AccountPage() {
   const institutionContext = useInstitution();
   const accountQuery = useOwnedAccount(profile?.id);
   const createInstitution = useCreateInstitution(profile?.id);
+  const accountId = accountQuery.data?.id;
+  const accountBrandingQuery = useAccountBranding(accountId);
+  const saveAccountBranding = useSaveAccountBranding(
+    accountId ?? '',
+  );
+  const accountDomainsQuery = useAccountDomains(accountId);
+  const requestAccountDomain = useRequestAccountDomain(
+    accountId ?? '',
+  );
 
   const [form, setForm] =
     useState<InstitutionFormState>(initialForm);
@@ -256,6 +272,30 @@ export default function AccountPage() {
           </div>
         )}
 
+        <BrandingEditor
+          title="Identidade da conta"
+          description="Esta identidade sera exibida somente nos dominios ativos vinculados a esta conta."
+          branding={accountBrandingQuery.data}
+          isLoading={accountBrandingQuery.isLoading}
+          isSaving={saveAccountBranding.isPending}
+          onSave={(input) =>
+            saveAccountBranding
+              .mutateAsync(input)
+              .then(() => undefined)
+          }
+        />
+
+        <AccountDomainSection
+          domains={accountDomainsQuery.data ?? []}
+          isLoading={accountDomainsQuery.isLoading}
+          isRequesting={requestAccountDomain.isPending}
+          onRequestDomain={(hostname) =>
+            requestAccountDomain
+              .mutateAsync(hostname)
+              .then(() => undefined)
+          }
+        />
+
         <section className="grid gap-3 md:grid-cols-3">
           <article className="rounded-lg border border-[#dfe3e8] bg-white p-4">
             <p className="text-xs font-semibold text-[#727785]">
@@ -415,13 +455,6 @@ export default function AccountPage() {
                       </Link>
                     </div>
                   </div>
-                  
-                  <InstitutionBrandingSection
-                    institutionId={institution.id}
-                    institutionName={institution.name}
-                    currentLogoUrl={institution.logoUrl}
-                    currentPublicSlug={institution.publicSlug}
-                  />
                 </div>
               ))}
             </div>
