@@ -161,7 +161,7 @@ describe('Login', () => {
     ).toBe(true);
   });
 
-  it('exibe logo dinamica resolvida por hostname quando disponivel', () => {
+  it('exibe logo dinamica resolvida por hostname quando disponivel e nome abaixo', () => {
     brandingMock.data = {
       scope: 'ACCOUNT',
       displayName: 'Colegio Azul',
@@ -181,6 +181,10 @@ describe('Login', () => {
       'https://cdn.example.com/logo.png',
     );
     expect(logo.className).toContain('object-contain');
+
+    const name = screen.getByText('Colegio Azul');
+    expect(name).toBeDefined();
+    expect(name.tagName).toBe('P');
   });
 
   it('mantem fallback neutro sem logo e sem marca fixa', () => {
@@ -197,7 +201,7 @@ describe('Login', () => {
 
     expect(screen.queryByRole('img')).toBeNull();
     expect(screen.queryByText(/EduManager/i)).toBeNull();
-    expect(screen.queryByText(/Logo/i)).toBeNull();
+    expect(screen.getByText('Colegio Sem Logo')).toBeDefined();
   });
 
   it('atualiza favicon, titulo e cores dinamicamente', () => {

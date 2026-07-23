@@ -81,28 +81,31 @@ export function Login() {
           } as CSSProperties
         }
       >
-      <div className="mb-8 flex h-[118px] items-center justify-center rounded-2xl border border-[#dce9ff] bg-gradient-to-br from-white to-[#f5f8ff] px-5">
-        {brandingQuery.isLoading ? (
-          <Loader2
-            className="h-6 w-6 animate-spin text-[#657087]"
-            aria-label="Carregando identidade visual"
-          />
-        ) : branding.logoUrl ? (
-          <img
-            src={branding.logoUrl}
-            alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-            className="max-h-[100px] max-w-[240px] object-contain"
-          />
-        ) : (
-          <div
-            className="h-16 w-40 rounded-2xl border border-dashed border-[#b9cff8] bg-[#f8fbff]"
-            aria-hidden="true"
-          />
+      <div className="mb-6 flex flex-col items-center gap-3">
+        <div className="flex items-center justify-center">
+          {brandingQuery.isLoading ? (
+            <Loader2
+              className="h-6 w-6 animate-spin text-[#657087]"
+              aria-label="Carregando identidade visual"
+            />
+          ) : branding.logoUrl ? (
+            <img
+              src={branding.logoUrl}
+              alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
+              className="max-h-[100px] max-w-[240px] object-contain"
+            />
+          ) : (
+            <div
+              className="h-16 w-40 rounded-2xl border border-dashed border-[#b9cff8] bg-[#f8fbff]"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+        {branding.displayName && (
+          <p className="text-sm font-semibold text-[#172033] dark:text-slate-100">
+            {branding.displayName}
+          </p>
         )}
-      </div>
-
-      <div className="mb-6">
-        <h1 className="sr-only">Acessar sua conta</h1>
         <div
           className="mx-auto h-1.5 w-16 rounded-full"
           style={{
