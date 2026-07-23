@@ -86,7 +86,8 @@ export function useGlobalBranding() {
   return useQuery<BrandingRecord | null>({
     queryKey: brandingKeys.global,
     queryFn: () => brandingService.getGlobalBranding(),
-    retry: false,
+    retry: 3,
+    staleTime: 1000 * 30,
   });
 }
 
@@ -103,7 +104,8 @@ export function useAccountBranding(
       return brandingService.getAccountBranding(accountId);
     },
     enabled: Boolean(accountId),
-    retry: false,
+    retry: 3,
+    staleTime: 1000 * 30,
   });
 }
 

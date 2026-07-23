@@ -26,6 +26,7 @@ import {
 import {
   useInstitution,
 } from '../contexts/InstitutionContext';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import AppShell, {
   getRouteVisualContext,
 } from './AppShell';
@@ -120,9 +121,11 @@ function mockContexts(
 function renderShell(route = '/dashboard') {
   return render(
     <MemoryRouter initialEntries={[route]}>
-      <AppShell>
-        <div>Conteudo da rota</div>
-      </AppShell>
+      <ThemeProvider>
+        <AppShell>
+          <div>Conteudo da rota</div>
+        </AppShell>
+      </ThemeProvider>
     </MemoryRouter>,
   );
 }

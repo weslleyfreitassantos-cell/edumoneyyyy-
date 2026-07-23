@@ -18,7 +18,7 @@ import {
 
 import InstitutionSwitcher from './InstitutionSwitcher';
 import AccountSettingsModal from './AccountSettingsModal';
-import type { ThemePreference } from '../hooks/useThemePreference';
+import type { ThemePreference } from '../contexts/ThemeContext';
 import type { User } from '../types';
 
 interface HeaderProps {

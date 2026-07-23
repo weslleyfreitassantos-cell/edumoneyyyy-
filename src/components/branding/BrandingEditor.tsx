@@ -224,12 +224,16 @@ export function BrandingEditor({
   const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
-    setDisplayName(branding?.displayName ?? '');
+    if (!branding) {
+      return;
+    }
+
+    setDisplayName(branding.displayName ?? '');
     setPrimaryColor(
-      branding?.primaryColor ?? DEFAULT_BRAND_PRIMARY_COLOR,
+      branding.primaryColor ?? DEFAULT_BRAND_PRIMARY_COLOR,
     );
     setSecondaryColor(
-      branding?.secondaryColor ??
+      branding.secondaryColor ??
         DEFAULT_BRAND_SECONDARY_COLOR,
     );
     setLogoDraft((current) => {

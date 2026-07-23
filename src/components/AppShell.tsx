@@ -25,7 +25,7 @@ import type {
   User,
   UserRole,
 } from '../types';
-import { useThemePreference } from '../hooks/useThemePreference';
+import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
 import Sidebar from './Sidebar';
