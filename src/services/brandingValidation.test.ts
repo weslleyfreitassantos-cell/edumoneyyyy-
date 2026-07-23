@@ -7,7 +7,6 @@ import {
 import {
   FAVICON_MAX_SIZE_BYTES,
   isValidBrandingAssetPath,
-  isValidBrandingAssetUrl,
   LOGO_MAX_SIZE_BYTES,
   validateAccountDomainHostname,
   validateBrandingImageFile,
@@ -110,43 +109,28 @@ describe('brandingValidation', () => {
     ).toBe(false);
   });
 
-  it('valida URL publica do Supabase coerente com o path', () => {
+  it('rejeita URLs como fonte de verdade dos assets', () => {
     const path = `branding/accounts/${accountId}/logo/${assetId}.webp`;
-    const url =
-      `https://whztnyifxpqgilvurymx.supabase.co/storage/v1/object/public/institution-branding/${path}?v=123`;
 
-    expect(isValidBrandingAssetUrl(url, path)).toBe(true);
-    expect(isValidBrandingAssetUrl(null, null)).toBe(false);
-    expect(isValidBrandingAssetUrl(url, null)).toBe(false);
+    expect(isValidBrandingAssetPath(path)).toBe(true);
     expect(
-      isValidBrandingAssetUrl(
-        `https://evil.example/storage/v1/object/public/institution-branding/${path}`,
-        path,
+      isValidBrandingAssetPath(
+        `https://untrusted.example/storage/v1/object/public/institution-branding/${path}`,
       ),
     ).toBe(false);
     expect(
-      isValidBrandingAssetUrl(
-        `https://whztnyifxpqgilvurymx.supabase.co/storage/v1/object/public/other-bucket/${path}`,
-        path,
+      isValidBrandingAssetPath(
+        `storage/v1/object/public/institution-branding/${path}`,
       ),
     ).toBe(false);
     expect(
-      isValidBrandingAssetUrl(
-        `https://whztnyifxpqgilvurymx.supabase.co/storage/v1/object/public/institution-branding/branding/global/logo/${assetId}.png`,
-        path,
-      ),
+      isValidBrandingAssetPath(`/institution-branding/${path}`),
     ).toBe(false);
-    expect(isValidBrandingAssetUrl('data:image/png;base64,abc', path)).toBe(
-      false,
-    );
-    expect(isValidBrandingAssetUrl('javascript:alert(1)', path)).toBe(
-      false,
-    );
     expect(
-      isValidBrandingAssetUrl(
-        `https://whztnyifxpqgilvurymx.supabase.co/storage/v1/object/public/institution-branding/${path}?download=1`,
-        path,
-      ),
+      isValidBrandingAssetPath('data:image/png;base64,abc'),
+    ).toBe(false);
+    expect(
+      isValidBrandingAssetPath('javascript:alert(1)'),
     ).toBe(false);
   });
 

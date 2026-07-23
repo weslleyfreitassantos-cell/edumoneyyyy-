@@ -12,9 +12,22 @@ const serviceSource = readFileSync(
   'utf8',
 );
 
+const validationSource = readFileSync(
+  new URL('./brandingValidation.ts', import.meta.url),
+  'utf8',
+);
+
 const migrationSource = readFileSync(
   new URL(
     '../../supabase/migrations/20260722000300_global_account_branding.sql',
+    import.meta.url,
+  ),
+  'utf8',
+);
+
+const pathSourceOfTruthMigration = readFileSync(
+  new URL(
+    '../../supabase/migrations/20260722000500_branding_paths_as_source_of_truth.sql',
     import.meta.url,
   ),
   'utf8',
@@ -47,5 +60,21 @@ describe('branding isolation regressions', () => {
     expect(serviceSource).not.toContain('Math.random');
     expect(serviceSource).toContain('randomUUID');
     expect(serviceSource).toContain('getRandomValues');
+  });
+
+  it('nao valida assets por host externo do Supabase', () => {
+    expect(validationSource).not.toContain('isValidBrandingAssetUrl');
+    expect(validationSource).not.toContain('supabase.co');
+    expect(validationSource).not.toContain('supabaseStorageHostPattern');
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop column if exists logo_url',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop column if exists favicon_url',
+    );
+    expect(pathSourceOfTruthMigration).not.toContain(
+      'create or replace function public.is_valid_branding_asset_url',
+    );
+    expect(pathSourceOfTruthMigration).not.toContain('supabase.co');
   });
 });

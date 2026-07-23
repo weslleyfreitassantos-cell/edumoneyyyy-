@@ -23,6 +23,14 @@ const assetEnforcementMigration = readFileSync(
   'utf8',
 );
 
+const pathSourceOfTruthMigration = readFileSync(
+  new URL(
+    './20260722000500_branding_paths_as_source_of_truth.sql',
+    import.meta.url,
+  ),
+  'utf8',
+);
+
 describe('global account branding migration', () => {
   it('define constraints e unicidade por escopo', () => {
     expect(migration).toContain('branding_settings_scope_account_check');
@@ -102,5 +110,52 @@ describe('global account branding migration', () => {
       '/storage/v1/object/public/institution-branding/',
     );
     expect(assetEnforcementMigration).toContain('?v=');
+  });
+
+  it('remove URL publica como fonte de verdade no schema ativo', () => {
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop constraint if exists branding_settings_logo_pair_check',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop constraint if exists branding_settings_favicon_pair_check',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop constraint if exists branding_settings_logo_url_matches_path_check',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop constraint if exists branding_settings_favicon_url_matches_path_check',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop function if exists public.is_valid_branding_asset_url(text, text)',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop column if exists logo_url',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'drop column if exists favicon_url',
+    );
+  });
+
+  it('recria resolve_public_branding retornando paths sem URLs', () => {
+    expect(pathSourceOfTruthMigration).toContain(
+      'returns table (',
+    );
+    expect(pathSourceOfTruthMigration).toContain('logo_path text');
+    expect(pathSourceOfTruthMigration).toContain('favicon_path text');
+    expect(pathSourceOfTruthMigration).not.toContain('logo_url text');
+    expect(pathSourceOfTruthMigration).not.toContain('favicon_url text');
+    expect(pathSourceOfTruthMigration).toContain(
+      'coalesce(account_branding.logo_path, global_branding.logo_path)',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'coalesce(account_branding.favicon_path, global_branding.favicon_path)',
+    );
+    expect(pathSourceOfTruthMigration).toContain(
+      'grant execute on function public.resolve_public_branding(text)',
+    );
+    expect(pathSourceOfTruthMigration).not.toContain('supabase.co');
+    expect(pathSourceOfTruthMigration).not.toContain(
+      '/storage/v1/object/public',
+    );
   });
 });

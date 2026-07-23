@@ -5,8 +5,6 @@ export const LOGO_MAX_SIZE_BYTES = 2 * 1024 * 1024;
 export const FAVICON_MAX_SIZE_BYTES = 512 * 1024;
 export const DEFAULT_BRAND_PRIMARY_COLOR = '#005bbf';
 export const DEFAULT_BRAND_SECONDARY_COLOR = '#6ffbbe';
-export const BRANDING_STORAGE_PUBLIC_PATH =
-  '/storage/v1/object/public/institution-branding/';
 
 export const ALLOWED_BRANDING_MIME_TYPES = [
   'image/png',
@@ -37,8 +35,6 @@ const uuidFilenamePattern =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.(png|jpg|webp)$/;
 const accountIdPattern =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-const supabaseStorageHostPattern =
-  /^[a-z0-9]{20}\.supabase\.co$/;
 
 const reservedHostnames = new Set([
   'localhost',
@@ -148,43 +144,6 @@ export function isValidBrandingAssetPath(
   }
 
   return false;
-}
-
-export function isValidBrandingAssetUrl(
-  assetUrl: string | null | undefined,
-  assetPath: string | null | undefined,
-): boolean {
-  if (!assetUrl || !assetPath || !isValidBrandingAssetPath(assetPath)) {
-    return false;
-  }
-
-  let parsedUrl: URL;
-
-  try {
-    parsedUrl = new URL(assetUrl);
-  } catch {
-    return false;
-  }
-
-  if (
-    parsedUrl.protocol !== 'https:' ||
-    !supabaseStorageHostPattern.test(parsedUrl.hostname) ||
-    parsedUrl.hash
-  ) {
-    return false;
-  }
-
-  if (
-    parsedUrl.pathname !==
-    `${BRANDING_STORAGE_PUBLIC_PATH}${assetPath}`
-  ) {
-    return false;
-  }
-
-  return (
-    parsedUrl.search === '' ||
-    /^\?v=[0-9]+$/.test(parsedUrl.search)
-  );
 }
 
 export function sanitizeBrandColor(

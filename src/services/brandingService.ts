@@ -3,9 +3,11 @@ import {
   DEFAULT_BRAND_PRIMARY_COLOR,
   DEFAULT_BRAND_SECONDARY_COLOR,
   type AllowedBrandingMimeType,
+  type BrandingAssetPathOptions,
   type BrandingImageKind,
   getStorageExtension,
   isValidBrandColor,
+  isValidBrandingAssetPath,
   normalizeHostnameValue,
   sanitizeBrandColor,
   validateAccountDomainHostname,
@@ -57,14 +59,13 @@ export interface AccountDomain {
 
 export interface UploadedBrandingAsset {
   path: string;
-  publicUrl: string;
 }
 
 interface PublicBrandingRow {
   scope?: unknown;
   display_name?: unknown;
-  logo_url?: unknown;
-  favicon_url?: unknown;
+  logo_path?: unknown;
+  favicon_path?: unknown;
   primary_color?: unknown;
   secondary_color?: unknown;
 }
@@ -92,9 +93,7 @@ const brandingSelect = [
   'scope_type',
   'account_id',
   'display_name',
-  'logo_url',
   'logo_path',
-  'favicon_url',
   'favicon_path',
   'primary_color',
   'secondary_color',
@@ -159,6 +158,42 @@ function assertColor(value: string, label: string): string {
   return normalized;
 }
 
+function buildVersionedPublicUrl(publicUrl: string): string {
+  const separator = publicUrl.includes('?') ? '&' : '?';
+
+  return `${publicUrl}${separator}v=${Date.now()}`;
+}
+
+function normalizeBrandingAssetPath(
+  value: unknown,
+  options: BrandingAssetPathOptions = {},
+): string | null {
+  return typeof value === 'string' &&
+    isValidBrandingAssetPath(value, options)
+    ? value
+    : null;
+}
+
+function getPublicBrandingAssetUrl(
+  path: string | null,
+): string | null {
+  if (!path) {
+    return null;
+  }
+
+  const { data } = supabase.storage
+    .from(BRANDING_BUCKET)
+    .getPublicUrl(path);
+  const publicUrl =
+    typeof data?.publicUrl === 'string'
+      ? data.publicUrl
+      : null;
+
+  return publicUrl
+    ? buildVersionedPublicUrl(publicUrl)
+    : null;
+}
+
 function normalizePublicBrandingRow(
   row: PublicBrandingRow | null | undefined,
 ): PublicBranding {
@@ -169,6 +204,14 @@ function normalizePublicBrandingRow(
     rawScope === 'FALLBACK'
       ? rawScope
       : 'FALLBACK';
+  const logoPath = normalizeBrandingAssetPath(
+    row?.logo_path,
+    { kind: 'logo' },
+  );
+  const faviconPath = normalizeBrandingAssetPath(
+    row?.favicon_path,
+    { kind: 'favicon' },
+  );
 
   return {
     scope,
@@ -176,14 +219,8 @@ function normalizePublicBrandingRow(
       typeof row?.display_name === 'string'
         ? row.display_name
         : null,
-    logoUrl:
-      typeof row?.logo_url === 'string'
-        ? row.logo_url
-        : null,
-    faviconUrl:
-      typeof row?.favicon_url === 'string'
-        ? row.favicon_url
-        : null,
+    logoUrl: getPublicBrandingAssetUrl(logoPath),
+    faviconUrl: getPublicBrandingAssetUrl(faviconPath),
     primaryColor: sanitizeBrandColor(
       typeof row?.primary_color === 'string'
         ? row.primary_color
@@ -210,30 +247,41 @@ function normalizeBrandingRecord(
   }
 
   const scope = assertBrandingScope(row.scope_type);
+  const accountId =
+    typeof row.account_id === 'string'
+      ? row.account_id
+      : null;
+  const logoPath = normalizeBrandingAssetPath(
+    row.logo_path,
+    {
+      scope,
+      accountId,
+      kind: 'logo',
+    },
+  );
+  const faviconPath = normalizeBrandingAssetPath(
+    row.favicon_path,
+    {
+      scope,
+      accountId,
+      kind: 'favicon',
+    },
+  );
 
   return {
     ...normalizePublicBrandingRow({
       scope,
       display_name: row.display_name,
-      logo_url: row.logo_url,
-      favicon_url: row.favicon_url,
+      logo_path: logoPath,
+      favicon_path: faviconPath,
       primary_color: row.primary_color,
       secondary_color: row.secondary_color,
     }),
     id: row.id,
     scope,
-    accountId:
-      typeof row.account_id === 'string'
-        ? row.account_id
-        : null,
-    logoPath:
-      typeof row.logo_path === 'string'
-        ? row.logo_path
-        : null,
-    faviconPath:
-      typeof row.favicon_path === 'string'
-        ? row.favicon_path
-        : null,
+    accountId,
+    logoPath,
+    faviconPath,
   };
 }
 
@@ -285,12 +333,6 @@ function normalizeAccountDomain(row: AccountDomainRow): AccountDomain {
         ? row.created_at
         : '',
   };
-}
-
-function buildVersionedPublicUrl(publicUrl: string): string {
-  const separator = publicUrl.includes('?') ? '&' : '?';
-
-  return `${publicUrl}${separator}v=${Date.now()}`;
 }
 
 function randomAssetId(): string {
@@ -411,11 +453,9 @@ async function persistBrandingRecord({
   accountId: string | null;
   input: SaveBrandingInput;
   logo: {
-    url: string | null;
     path: string | null;
   };
   favicon: {
-    url: string | null;
     path: string | null;
   };
 }): Promise<BrandingRecord> {
@@ -423,9 +463,7 @@ async function persistBrandingRecord({
     scope_type: scope,
     account_id: scope === 'GLOBAL' ? null : accountId,
     display_name: normalizeDisplayName(input.displayName),
-    logo_url: logo.url,
     logo_path: logo.path,
-    favicon_url: favicon.url,
     favicon_path: favicon.path,
     primary_color: assertColor(input.primaryColor, 'Cor principal'),
     secondary_color: assertColor(input.secondaryColor, 'Cor secundaria'),
@@ -469,11 +507,9 @@ async function saveBranding(
   const uploadedAssets: UploadedBrandingAsset[] = [];
 
   let logo = {
-    url: input.removeLogo ? null : current?.logoUrl ?? null,
     path: input.removeLogo ? null : current?.logoPath ?? null,
   };
   let favicon = {
-    url: input.removeFavicon ? null : current?.faviconUrl ?? null,
     path: input.removeFavicon
       ? null
       : current?.faviconPath ?? null,
@@ -489,7 +525,6 @@ async function saveBranding(
 
       uploadedAssets.push(uploadedLogo);
       logo = {
-        url: uploadedLogo.publicUrl,
         path: uploadedLogo.path,
       };
     }
@@ -504,7 +539,6 @@ async function saveBranding(
 
       uploadedAssets.push(uploadedFavicon);
       favicon = {
-        url: uploadedFavicon.publicUrl,
         path: uploadedFavicon.path,
       };
     }
@@ -580,23 +614,8 @@ async function uploadBrandingAsset({
     throw uploadError;
   }
 
-  const { data } = storage.getPublicUrl(path);
-  const publicUrl =
-    typeof data?.publicUrl === 'string'
-      ? data.publicUrl
-      : null;
-
-  if (!publicUrl) {
-    await removeStoragePath(path);
-    throw new BrandingServiceError(
-      'PUBLIC_URL_UNAVAILABLE',
-      'Nao foi possivel gerar a URL publica do arquivo.',
-    );
-  }
-
   return {
     path,
-    publicUrl: buildVersionedPublicUrl(publicUrl),
   };
 }
 

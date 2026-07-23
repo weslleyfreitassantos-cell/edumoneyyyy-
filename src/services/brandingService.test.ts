@@ -31,6 +31,14 @@ const generatedLogoPath =
   `branding/accounts/${accountId}/logo/${generatedAssetId}.png`;
 const previousLogoPath =
   `branding/accounts/${accountId}/logo/99999999-9999-4999-8999-999999999999.png`;
+const generatedFaviconPath =
+  `branding/accounts/${accountId}/favicon/${generatedAssetId}.png`;
+const storageOrigin =
+  'https://trusted-storage.example/storage/v1/object/public/institution-branding';
+
+function derivedPublicUrl(path: string): string {
+  return `${storageOrigin}/${path}`;
+}
 
 function pngFile(): File {
   const bytes = new Uint8Array(12);
@@ -85,7 +93,7 @@ const currentAccountBranding: BrandingRecord = {
   scope: 'ACCOUNT',
   accountId,
   displayName: 'Conta A',
-  logoUrl: 'https://cdn.example.com/old.png?v=1',
+  logoUrl: `${derivedPublicUrl(previousLogoPath)}?v=1`,
   logoPath: previousLogoPath,
   faviconUrl: null,
   faviconPath: null,
@@ -95,7 +103,7 @@ const currentAccountBranding: BrandingRecord = {
 
 describe('brandingService', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    vi.resetAllMocks();
     vi.spyOn(Date, 'now').mockReturnValue(9876);
     vi.stubGlobal('crypto', {
       randomUUID: vi.fn(() => generatedAssetId),
@@ -103,22 +111,32 @@ describe('brandingService', () => {
   });
 
   afterEach(() => {
+    vi.restoreAllMocks();
     vi.unstubAllGlobals();
   });
 
   it('resolve branding publico por hostname e limita o payload visual', async () => {
+    const getPublicUrl = vi.fn((path: string) => ({
+      data: {
+        publicUrl: derivedPublicUrl(path),
+      },
+    }));
+
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [
         {
           scope: 'ACCOUNT',
           display_name: 'Conta A',
-          logo_url: 'https://cdn.example.com/logo.png',
-          favicon_url: null,
+          logo_path: generatedLogoPath,
+          favicon_path: generatedFaviconPath,
           primary_color: '#112233',
           secondary_color: '#445566',
         },
       ],
       error: null,
+    } as never);
+    vi.mocked(supabase.storage.from).mockReturnValue({
+      getPublicUrl,
     } as never);
 
     const result =
@@ -133,12 +151,39 @@ describe('brandingService', () => {
     expect(result).toEqual({
       scope: 'ACCOUNT',
       displayName: 'Conta A',
-      logoUrl: 'https://cdn.example.com/logo.png',
-      faviconUrl: null,
+      logoUrl: `${derivedPublicUrl(generatedLogoPath)}?v=9876`,
+      faviconUrl: `${derivedPublicUrl(generatedFaviconPath)}?v=9876`,
       primaryColor: '#112233',
       secondaryColor: '#445566',
     });
     expect('accountId' in result).toBe(false);
+    expect(getPublicUrl).toHaveBeenCalledWith(generatedLogoPath);
+    expect(getPublicUrl).toHaveBeenCalledWith(generatedFaviconPath);
+  });
+
+  it('ignora paths invalidos retornados pela RPC publica', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [
+        {
+          scope: 'GLOBAL',
+          display_name: 'Global',
+          logo_path: `branding/global/logo/${generatedAssetId}.svg`,
+          favicon_path: `branding/global/favicon/sub/${generatedAssetId}.png`,
+          primary_color: '#112233',
+          secondary_color: '#445566',
+        },
+      ],
+      error: null,
+    } as never);
+
+    const result =
+      await brandingService.resolveForHostname(
+        'global.exemplo.com',
+      );
+
+    expect(result.logoUrl).toBeNull();
+    expect(result.faviconUrl).toBeNull();
+    expect(supabase.storage.from).not.toHaveBeenCalled();
   });
 
   it('retorna fallback neutro quando a RPC publica falha', async () => {
@@ -210,9 +255,7 @@ describe('brandingService', () => {
         scope_type: currentAccountBranding.scope,
         account_id: currentAccountBranding.accountId,
         display_name: currentAccountBranding.displayName,
-        logo_url: currentAccountBranding.logoUrl,
         logo_path: currentAccountBranding.logoPath,
-        favicon_url: null,
         favicon_path: null,
         primary_color: currentAccountBranding.primaryColor,
         secondary_color: currentAccountBranding.secondaryColor,
@@ -225,9 +268,7 @@ describe('brandingService', () => {
         scope_type: 'ACCOUNT',
         account_id: accountId,
         display_name: 'Conta A',
-        logo_url: 'https://cdn.example.com/new.png?v=9876',
         logo_path: generatedLogoPath,
-        favicon_url: null,
         favicon_path: null,
         primary_color: '#005bbf',
         secondary_color: '#6ffbbe',
@@ -236,9 +277,9 @@ describe('brandingService', () => {
     });
     const upload = vi.fn().mockResolvedValue({ error: null });
     const remove = vi.fn().mockResolvedValue({ error: null });
-    const getPublicUrl = vi.fn(() => ({
+    const getPublicUrl = vi.fn((path: string) => ({
       data: {
-        publicUrl: 'https://cdn.example.com/new.png',
+        publicUrl: derivedPublicUrl(path),
       },
     }));
 
@@ -263,11 +304,19 @@ describe('brandingService', () => {
       remove.mock.invocationCallOrder[0],
     );
     expect(persisted.table.update).toHaveBeenCalled();
+    const updatePayload = (
+      persisted.table.update.mock.calls as unknown as Array<
+        [Record<string, unknown>]
+      >
+    )[0][0];
+
+    expect(updatePayload).not.toHaveProperty('logo_url');
+    expect(updatePayload).not.toHaveProperty('favicon_url');
     expect(remove).toHaveBeenCalledWith([
       previousLogoPath,
     ]);
     expect(result.logoUrl).toBe(
-      'https://cdn.example.com/new.png?v=9876',
+      `${derivedPublicUrl(generatedLogoPath)}?v=9876`,
     );
     expect(upload).toHaveBeenCalledWith(
       generatedLogoPath,
@@ -306,17 +355,11 @@ describe('brandingService', () => {
       return bytes;
     });
     const upload = vi.fn().mockResolvedValue({ error: null });
-    const getPublicUrl = vi.fn(() => ({
-      data: {
-        publicUrl: 'https://cdn.example.com/fallback.png',
-      },
-    }));
 
     vi.stubGlobal('crypto', { getRandomValues });
     vi.mocked(supabase.storage.from).mockReturnValue({
       upload,
       remove: vi.fn(),
-      getPublicUrl,
     } as never);
 
     const result = await brandingService.uploadLogo({
@@ -328,6 +371,7 @@ describe('brandingService', () => {
     expect(result.path).toBe(
       'branding/global/logo/00010203-0405-4607-8809-0a0b0c0d0e0f.png',
     );
+    expect(result).not.toHaveProperty('publicUrl');
     expect(upload).toHaveBeenCalledWith(
       result.path,
       expect.any(File),
@@ -353,11 +397,6 @@ describe('brandingService', () => {
     }));
     const upload = vi.fn().mockResolvedValue({ error: null });
     const remove = vi.fn().mockResolvedValue({ error: null });
-    const getPublicUrl = vi.fn(() => ({
-      data: {
-        publicUrl: 'https://cdn.example.com/orphan.png',
-      },
-    }));
 
     vi.mocked(supabase.from)
       .mockReturnValueOnce(current.table as never)
@@ -365,7 +404,6 @@ describe('brandingService', () => {
     vi.mocked(supabase.storage.from).mockReturnValue({
       upload,
       remove,
-      getPublicUrl,
     } as never);
 
     await expect(
@@ -390,9 +428,7 @@ describe('brandingService', () => {
         scope_type: 'GLOBAL',
         account_id: null,
         display_name: 'Global',
-        logo_url: null,
         logo_path: null,
-        favicon_url: null,
         favicon_path: null,
         primary_color: '#005bbf',
         secondary_color: '#6ffbbe',
