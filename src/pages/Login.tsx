@@ -5,6 +5,7 @@ import {
   Loader2,
   Lock,
   Mail,
+  Shield,
 } from 'lucide-react';
 import {
   useEffect,
@@ -32,6 +33,8 @@ export function Login() {
   const brandingQuery = useResolvedBranding();
   const branding =
     brandingQuery.data ?? FALLBACK_BRANDING;
+
+  const displayName = brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
 
   useEffect(() => {
     if (profile) {
@@ -67,6 +70,11 @@ export function Login() {
     }
   };
 
+  const brandStyle: CSSProperties = {
+    '--brand-primary': branding.primaryColor,
+    '--brand-secondary': branding.secondaryColor,
+  };
+
   return (
     <AuthShell
       heroVariant="video"
@@ -74,171 +82,185 @@ export function Login() {
       showBrand={false}
       footer={null}
     >
-      <div
-        style={
-          {
-            '--brand-primary': branding.primaryColor,
-            '--brand-secondary': branding.secondaryColor,
-          } as CSSProperties
-        }
-      >
-      <div className="login-brand-block mb-6 flex flex-col items-center gap-3">
-        <div className="flex items-center justify-center">
-          {brandingQuery.isLoading ? (
-            <Loader2
-              className="h-6 w-6 animate-spin text-[#657087]"
-              aria-label="Carregando identidade visual"
-            />
-          ) : branding.logoUrl ? (
-            <img
-              src={branding.logoUrl}
-              alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-              className="max-h-[100px] max-w-[240px] lg:max-h-[120px] lg:max-w-[280px] object-contain"
-            />
-          ) : (
-            <div
-              className="h-16 w-40 rounded-2xl border border-dashed border-[#b9cff8] bg-[#f8fbff]"
-              aria-hidden="true"
-            />
+      <div style={brandStyle}>
+        <div className="login-brand-block mb-6 flex flex-col items-center gap-3">
+          <div className="flex items-center justify-center">
+            {brandingQuery.isLoading ? (
+              <Loader2
+                className="h-6 w-6 animate-spin text-[#657087]"
+                aria-label="Carregando identidade visual"
+              />
+            ) : branding.logoUrl ? (
+              <img
+                src={branding.logoUrl}
+                alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
+                className="max-h-[100px] max-w-[240px] lg:max-h-[120px] lg:max-w-[280px] object-contain"
+              />
+            ) : (
+              <div
+                className="h-16 w-40 rounded-2xl border border-dashed border-[#b9cff8] bg-[#f8fbff]"
+                aria-hidden="true"
+              />
+            )}
+          </div>
+          {displayName && (
+            <p className="mb-2 text-center text-[22px] font-bold text-[#172033] dark:text-white">
+              {displayName}
+            </p>
           )}
         </div>
-        {branding.displayName && (
-          <p className="text-sm font-semibold text-[#172033] dark:text-slate-100">
-            {branding.displayName}
-          </p>
-        )}
-        <div
-          className="mx-auto h-1.5 w-16 rounded-full"
-          style={{
-            backgroundColor: 'color-mix(in srgb, var(--brand-primary) 20%, transparent)',
-          }}
-          aria-hidden="true"
-        />
-      </div>
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-5 lg:space-y-6"
-      >
-        <div className="space-y-2">
-          <label
-            htmlFor="login-email"
-            className="block text-xs font-semibold uppercase tracking-wide text-[#657087]"
-          >
-            E-mail institucional
-          </label>
-          <div className="relative">
-            <Mail
-              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087]"
-              aria-hidden="true"
-            />
-            <input
-              id="login-email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="nome@instituicao.edu.br"
-              className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <label
-            htmlFor="login-password"
-            className="block text-xs font-semibold uppercase tracking-wide text-[#657087]"
-          >
-            Senha
-          </label>
-          <div className="relative">
-            <Lock
-              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087]"
-              aria-hidden="true"
-            />
-            <input
-              id="login-password"
-              name="password"
-              type={showPassword ? 'text' : 'password'}
-              required
-              autoComplete="current-password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="********"
-              className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 pr-12 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
-            />
-            <button
-              type="button"
-              aria-label={
-                showPassword
-                  ? 'Ocultar senha'
-                  : 'Mostrar senha'
-              }
-              aria-pressed={showPassword}
-              onClick={() =>
-                setShowPassword((current) => !current)
-              }
-              className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#657087] transition hover:bg-[#eef5ff] hover:text-[#075be8] focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
-            >
-              {showPassword ? (
-                <EyeOff
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              ) : (
-                <Eye
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              )}
-            </button>
-          </div>
-        </div>
-
-        <div className="flex justify-end">
-          <Link
-            to="/forgot-password"
-            className="text-xs font-semibold text-[#075be8] underline-offset-4 transition hover:text-[#082b67] hover:underline focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
-          >
-            Esqueci minha senha
-          </Link>
-        </div>
-
-        {error && (
+        <div className="mb-6">
+          <h1 className="sr-only">Acessar sua conta</h1>
           <div
-            role="alert"
-            className="rounded-xl border border-[#ffdad6] bg-[#fff1ef] px-3 py-2 text-sm text-[#93000a]"
-          >
-            {error}
-          </div>
-        )}
+            className="mx-auto h-1.5 w-16 rounded-full"
+            style={{
+              backgroundColor: 'color-mix(in srgb, var(--brand-primary) 20%, transparent)',
+            }}
+            aria-hidden="true"
+          />
+        </div>
 
-        <button
-          type="submit"
-          disabled={loading}
-          aria-live="polite"
-          className="inline-flex min-h-14 lg:min-h-[58px] lg:text-base w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
-          style={{
-            backgroundImage:
-              'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
-          }}
+        <p className="mb-2 text-center text-[22px] font-semibold text-[#172033] dark:text-white">
+          Bem-vindo de volta!
+        </p>
+        <p className="mb-6 text-center text-[15px] text-[#657087] dark:text-[#aeb8c8]">
+          Acesse sua conta institucional para continuar gerenciando a escola.
+        </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5 lg:space-y-6"
         >
-          {loading ? (
-            <Loader2
-              className="h-4 w-4 animate-spin"
-              aria-hidden="true"
-            />
-          ) : (
-            <ArrowRight
-              className="h-4 w-4"
-              aria-hidden="true"
-            />
+          <div className="space-y-2">
+            <label
+              htmlFor="login-email"
+              className="block text-xs font-semibold uppercase tracking-wide text-[#657087] dark:text-[#aeb8c8]"
+            >
+              E-mail institucional
+            </label>
+            <div className="relative">
+              <Mail
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087] dark:text-[#aeb8c8]"
+                aria-hidden="true"
+              />
+              <input
+                id="login-email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="nome@instituicao.edu.br"
+                className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 dark:bg-[#18212f] px-11 text-sm text-[#172033] dark:text-white shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label
+              htmlFor="login-password"
+              className="block text-xs font-semibold uppercase tracking-wide text-[#657087] dark:text-[#aeb8c8]"
+            >
+              Senha
+            </label>
+            <div className="relative">
+              <Lock
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087] dark:text-[#aeb8c8]"
+                aria-hidden="true"
+              />
+              <input
+                id="login-password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                required
+                autoComplete="current-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="********"
+                className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 dark:bg-[#18212f] px-11 pr-12 text-sm text-[#172033] dark:text-white shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+              />
+              <button
+                type="button"
+                aria-label={
+                  showPassword
+                    ? 'Ocultar senha'
+                    : 'Mostrar senha'
+                }
+                aria-pressed={showPassword}
+                onClick={() =>
+                  setShowPassword((current) => !current)
+                }
+                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#657087] dark:text-[#aeb8c8] transition hover:bg-[#eef5ff] dark:hover:bg-[#243244] hover:text-[#075be8] dark:hover:text-[#b9c8ff] focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
+              >
+                {showPassword ? (
+                  <EyeOff
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Eye
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="flex justify-end">
+            <Link
+              to="/forgot-password"
+              className="text-xs font-semibold text-[#075be8] underline-offset-4 transition hover:text-[#082b67] hover:underline focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
+            >
+              Esqueci minha senha
+            </Link>
+          </div>
+
+          {error && (
+            <div
+              role="alert"
+              className="rounded-xl border border-[#ffdad6] bg-[#fff1ef] px-3 py-2 text-sm text-[#93000a]"
+            >
+              {error}
+            </div>
           )}
-          {loading ? 'Entrando...' : 'Entrar no sistema'}
-        </button>
-      </form>
+
+          <button
+            type="submit"
+            disabled={loading}
+            aria-live="polite"
+            className="inline-flex min-h-14 lg:min-h-[58px] lg:text-base w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+            }}
+          >
+            {loading ? (
+              <Loader2
+                className="h-4 w-4 animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <ArrowRight
+                className="h-4 w-4"
+                aria-hidden="true"
+              />
+            )}
+            {loading ? 'Entrando...' : 'Entrar no sistema'}
+          </button>
+        </form>
+
+        <div className="mt-8 flex items-center justify-center gap-2 text-[13px] text-[#657087] dark:text-[#aeb8c8]">
+          <Shield className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+          <span>Seus dados estão protegidos com segurança de nível institucional.</span>
+        </div>
+
+        <footer className="mt-10 hidden lg:block text-center text-xs leading-4 text-[#657087] dark:text-[#aeb8c8]">
+          <p>Educação que transforma. Tecnologia que aproxima.</p>
+          <p>© 2026 {displayName}. Todos os direitos reservados.</p>
+        </footer>
       </div>
     </AuthShell>
   );
