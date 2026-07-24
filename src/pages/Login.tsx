@@ -72,6 +72,7 @@ export function Login() {
       heroVariant="video"
       layoutVariant="login"
       showBrand={false}
+      footer={null}
     >
       <div
         style={
@@ -81,7 +82,7 @@ export function Login() {
           } as CSSProperties
         }
       >
-      <div className="mb-6 flex flex-col items-center gap-3">
+      <div className="login-brand-block mb-6 flex flex-col items-center gap-3">
         <div className="flex items-center justify-center">
           {brandingQuery.isLoading ? (
             <Loader2
@@ -92,7 +93,7 @@ export function Login() {
             <img
               src={branding.logoUrl}
               alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-              className="max-h-[100px] max-w-[240px] object-contain"
+              className="max-h-[100px] max-w-[240px] lg:max-h-[120px] lg:max-w-[280px] object-contain"
             />
           ) : (
             <div
@@ -117,7 +118,7 @@ export function Login() {
 
       <form
         onSubmit={handleSubmit}
-        className="space-y-5"
+        className="space-y-5 lg:space-y-6"
       >
         <div className="space-y-2">
           <label
@@ -140,7 +141,7 @@ export function Login() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="nome@instituicao.edu.br"
-              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+              className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
             />
           </div>
         </div>
@@ -166,7 +167,7 @@ export function Login() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="********"
-              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 pr-12 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+              className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 pr-12 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
             />
             <button
               type="button"
@@ -218,7 +219,7 @@ export function Login() {
           type="submit"
           disabled={loading}
           aria-live="polite"
-          className="inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex min-h-14 lg:min-h-[58px] lg:text-base w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
           style={{
             backgroundImage:
               'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',

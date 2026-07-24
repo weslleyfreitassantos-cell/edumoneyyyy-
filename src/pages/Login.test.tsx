@@ -238,7 +238,8 @@ describe('Login', () => {
     expect(loginCard).not.toBeNull();
     expect(loginCard?.className).toContain('login-card');
     expect(videoAside?.className).toContain('h-[260px]');
-    expect(videoAside?.className).toContain('lg:min-h-dvh');
+    expect(videoAside?.className).toContain('lg:relative');
+    expect(videoAside?.className).toContain('lg:col-start-2');
   });
 
   it('submete o login usando o useAuth', async () => {
