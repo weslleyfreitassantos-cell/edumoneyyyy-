@@ -98,27 +98,31 @@ export function AuthShell({
   layoutVariant = 'default',
   showBrand = true,
 }: AuthShellProps) {
+  const { theme } = useThemePreference();
+
   if (layoutVariant === 'login') {
+    const loginShellClasses = theme === 'dark'
+      ? 'login-shell min-h-dvh bg-[#060d1f] font-sans text-[#172033] dark:bg-[#060d1f] flex flex-col items-center justify-center p-0 lg:p-8'
+      : 'login-shell min-h-dvh bg-white font-sans text-[#000] flex flex-col items-center justify-center p-0 lg:p-8';
+    const loginMainClasses = theme === 'dark'
+      ? 'login-shell-main w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row lg:rounded-[32px] lg:overflow-hidden lg:border lg:border-[#235bbe]/15 lg:bg-[#0b1430]/95 lg:shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:backdrop-blur-sm'
+      : 'login-shell-main w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row';
     return (
-      <div className="login-shell min-h-dvh bg-[#060d1f] font-sans text-[#172033] dark:bg-[#060d1f] flex flex-col items-center justify-center p-0 lg:p-8">
-        <main className="login-shell-main w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row lg:rounded-[32px] lg:overflow-hidden lg:border lg:border-[#235bbe]/15 lg:bg-[#0b1430]/95 lg:shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:backdrop-blur-sm">
-          
+      <div className={loginShellClasses}>
+        <main className={loginMainClasses}>
           <aside className="relative min-h-[280px] w-full lg:w-1/2 lg:flex-none">
-            <AuthAside
-              variant={heroVariant}
-              layoutVariant="login"
-            />
+            <AuthAside variant={heroVariant} layoutVariant="login" />
           </aside>
 
           <section className="relative z-20 flex min-w-0 flex-col items-center justify-center w-full lg:w-1/2">
             <LoginEducationDecor />
 
             <div className="relative z-20 w-full lg:max-w-[480px]">
-              <div
-                className={`login-card relative w-full rounded-[24px] lg:rounded-none border border-[#235bbe]/15 lg:border-none bg-[#0b1430]/95 lg:bg-transparent px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:shadow-none backdrop-blur-sm lg:backdrop-blur-none dark:border-[#334155] lg:dark:border-none sm:px-10 lg:px-12 lg:py-16 ${contentClassName}`}
-              >
-                <div className="relative z-10">
-                  {children}
+              <div>
+                <div className={`login-card relative w-full rounded-[24px] lg:rounded-none border border-[#235bbe]/15 lg:border-none ${theme === 'dark' ? 'bg-[#0b1430]/95' : 'bg-white'} lg:bg-transparent px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:shadow-none backdrop-blur-sm lg:backdrop-blur-none dark:border-[#334155] lg:dark:border-none sm:px-10 lg:px-12 lg:py-16 ${contentClassName}`}>
+                  <div className="relative z-10">
+                    {children}
+                  </div>
                 </div>
               </div>
             </div>
