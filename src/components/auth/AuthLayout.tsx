@@ -100,37 +100,36 @@ export function AuthShell({
 }: AuthShellProps) {
   if (layoutVariant === 'login') {
     return (
-      <div className="login-shell min-h-dvh bg-[#060d1f] font-sans text-[#172033] dark:bg-[#060d1f]">
-        <main className="login-shell-main mx-auto flex min-h-dvh max-w-[1600px] flex-col px-6 py-6 lg:px-8 lg:pt-7 lg:pb-6">
-          <div className="flex flex-1 flex-col gap-5 lg:flex-row lg:items-stretch">
-            <section className="relative z-20 flex min-w-0 flex-col items-center justify-center px-1 sm:px-4 lg:flex-[0_0_minmax(430px,560px)] lg:items-center lg:justify-center lg:px-2">
-              <LoginEducationDecor />
+      <div className="login-shell min-h-dvh bg-[#060d1f] font-sans text-[#172033] dark:bg-[#060d1f] flex flex-col items-center justify-center p-0 lg:p-8">
+        <main className="login-shell-main w-full max-w-[1100px] mx-auto flex flex-col lg:flex-row lg:rounded-[32px] lg:overflow-hidden lg:border lg:border-[#235bbe]/15 lg:bg-[#0b1430]/95 lg:shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:backdrop-blur-sm">
+          
+          <aside className="relative min-h-[280px] w-full lg:w-1/2 lg:flex-none">
+            <AuthAside
+              variant={heroVariant}
+              layoutVariant="login"
+            />
+          </aside>
 
-              <div className="relative z-20 w-full max-w-[calc(100vw-48px)] pt-[200px] sm:max-w-[560px] sm:pt-[230px] lg:w-full lg:max-w-[550px] lg:pt-0">
-                <div
-                  className={`login-card relative max-h-[calc(100dvh-130px)] w-full overflow-y-auto rounded-[24px] border border-[#235bbe]/15 bg-[#0b1430]/95 px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] backdrop-blur-sm dark:border-[#334155] sm:px-10 lg:px-11 lg:py-9 ${contentClassName}`}
-                >
-                  <div className="relative z-10">
-                    {children}
-                  </div>
+          <section className="relative z-20 flex min-w-0 flex-col items-center justify-center w-full lg:w-1/2">
+            <LoginEducationDecor />
+
+            <div className="relative z-20 w-full lg:max-w-[480px]">
+              <div
+                className={`login-card relative w-full rounded-[24px] lg:rounded-none border border-[#235bbe]/15 lg:border-none bg-[#0b1430]/95 lg:bg-transparent px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:shadow-none backdrop-blur-sm lg:backdrop-blur-none dark:border-[#334155] lg:dark:border-none sm:px-10 lg:px-12 lg:py-16 ${contentClassName}`}
+              >
+                <div className="relative z-10">
+                  {children}
                 </div>
               </div>
-            </section>
-
-            <aside className="relative mt-5 min-h-[230px] overflow-hidden rounded-t-[24px] sm:rounded-[24px] lg:mt-0 lg:h-[calc(100dvh-115px)] lg:min-h-0 lg:flex-[1_1_minmax(0,1fr)] lg:rounded-[24px]">
-              <AuthAside
-                variant={heroVariant}
-                layoutVariant="login"
-              />
-            </aside>
-          </div>
-
-          {footer && (
-            <footer className="login-shell-footer mt-5 hidden h-[70px] shrink-0 flex-col items-center justify-center text-center text-xs leading-5 text-[#7c8ba8] lg:flex dark:text-[#aeb8c8]">
-              {footer}
-            </footer>
-          )}
+            </div>
+          </section>
         </main>
+
+        {footer && (
+          <footer className="login-shell-footer mt-5 hidden shrink-0 flex-col items-center justify-center text-center text-xs leading-5 text-[#7c8ba8] lg:flex dark:text-[#aeb8c8]">
+            {footer}
+          </footer>
+        )}
       </div>
     );
   }
@@ -488,42 +487,38 @@ export function AuthAside({
   variant?: 'video' | 'default';
   layoutVariant?: 'default' | 'login';
 }) {
-  const video1Ref = useRef<HTMLVideoElement>(null);
-  const video2Ref = useRef<HTMLVideoElement>(null);
-  const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Pula a introdução azul nativa do arquivo e já dá o play
   useEffect(() => {
-    if (video1Ref.current) {
-      video1Ref.current.currentTime = 1.5;
-      attemptVideoPlayback(video1Ref.current);
+    const video = videoRef.current;
+    if (!video) return;
+
+    const startVideo = () => {
+      try {
+        video.currentTime = 1.5;
+      } catch (e) {
+        // Ignora erro
+      }
+      attemptVideoPlayback(video);
+    };
+
+    if (video.readyState >= 1) {
+      startVideo();
+    } else {
+      video.addEventListener('loadedmetadata', startVideo, { once: true });
     }
   }, []);
-  // Remove isHovering effect
-  useEffect(() => {
-    const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
-    if (inactiveVideo) {
-      const timer = setTimeout(() => {
-        inactiveVideo.pause();
-        inactiveVideo.currentTime = 1.5;
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [activeVideo]);
 
-  const handleTimeUpdate = (videoNum: 1 | 2) => (e: SyntheticEvent<HTMLVideoElement>) => {
-    if (activeVideo !== videoNum) return;
+
+  const handleTimeUpdate = (e: SyntheticEvent<HTMLVideoElement>) => {
     const video = e.currentTarget;
     if (!video.duration) return;
-
-    // Crossfade threshold (e.g., 0.8s before end)
-    const threshold = 0.8;
-    if (video.duration - video.currentTime <= threshold) {
-      const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
-      if (nextVideo) {
-        attemptVideoPlayback(nextVideo);
-        setActiveVideo(videoNum === 1 ? 2 : 1);
-      }
+    
+    // Volta para 1.5s antes de chegar no fim para evitar a tela preta
+    if (video.duration - video.currentTime <= 0.3) {
+      video.currentTime = 1.5;
+      attemptVideoPlayback(video);
     }
   };
 
@@ -539,29 +534,15 @@ export function AuthAside({
           <div className="auth-hero-fallback" aria-hidden="true" />
           <div className="auth-hero-video-layer">
             <video
-              ref={video1Ref}
-              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
+              ref={videoRef}
+              className="auth-hero-video opacity-100 z-20"
               autoPlay
               muted
-              loop
               playsInline
               preload="auto"
               aria-hidden="true"
               tabIndex={-1}
-              onTimeUpdate={handleTimeUpdate(1)}
-            >
-              <source src="/media/cinema-novo.mp4" type="video/mp4" />
-            </video>
-            <video
-              ref={video2Ref}
-              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden="true"
-              tabIndex={-1}
-              onTimeUpdate={handleTimeUpdate(2)}
+              onTimeUpdate={handleTimeUpdate}
             >
               <source src="/media/cinema-novo.mp4" type="video/mp4" />
             </video>
