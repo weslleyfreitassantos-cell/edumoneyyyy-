@@ -34,7 +34,8 @@ export function Login() {
   const branding =
     brandingQuery.data ?? FALLBACK_BRANDING;
 
-  const displayName = brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
+  const displayName =
+    brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
 
   useEffect(() => {
     if (profile) {
@@ -75,73 +76,76 @@ export function Login() {
     '--brand-secondary': branding.secondaryColor,
   };
 
+  const footer = (
+    <>
+      <p>Educação que transforma. Tecnologia que aproxima.</p>
+      <p>© 2026 {displayName}. Todos os direitos reservados.</p>
+    </>
+  );
+
   return (
     <AuthShell
       heroVariant="video"
       layoutVariant="login"
       showBrand={false}
-      footer={null}
+      footer={footer}
     >
       <div style={brandStyle}>
-        <div className="login-brand-block mb-6 flex flex-col items-center gap-3">
+        <div className="login-brand-block flex flex-col items-center">
           <div className="flex items-center justify-center">
             {brandingQuery.isLoading ? (
               <Loader2
-                className="h-6 w-6 animate-spin text-[#657087]"
+                className="h-6 w-6 animate-spin text-[#7c8ba8]"
                 aria-label="Carregando identidade visual"
               />
             ) : branding.logoUrl ? (
               <img
                 src={branding.logoUrl}
                 alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-                className="max-h-[100px] max-w-[240px] lg:max-h-[120px] lg:max-w-[280px] object-contain"
+                className="max-h-[100px] max-w-[112px] object-contain sm:max-h-[112px]"
               />
             ) : (
               <div
-                className="h-16 w-40 rounded-2xl border border-dashed border-[#b9cff8] bg-[#f8fbff]"
+                className="h-20 w-20 rounded-2xl border border-dashed border-[#3a5294]/50 bg-[#0f1a3a]/60"
                 aria-hidden="true"
               />
             )}
           </div>
-          {displayName && (
-            <p className="mb-2 text-center text-[22px] font-bold text-[#172033] dark:text-white">
-              {displayName}
-            </p>
-          )}
-        </div>
-
-        <div className="mb-6">
-          <h1 className="sr-only">Acessar sua conta</h1>
+          <p className="mt-3 text-center text-[26px] font-bold leading-[1.2] text-white dark:text-white">
+            {displayName}
+          </p>
           <div
-            className="mx-auto h-1.5 w-16 rounded-full"
+            className="mt-4 h-[5px] w-16 rounded-full"
             style={{
-              backgroundColor: 'color-mix(in srgb, var(--brand-primary) 20%, transparent)',
+              backgroundImage:
+                'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
             }}
             aria-hidden="true"
           />
         </div>
 
-        <p className="mb-2 text-center text-[22px] font-semibold text-[#172033] dark:text-white">
+        <h1 className="sr-only">Acessar sua conta</h1>
+        <p className="mt-7 text-center text-[25px] font-bold leading-[1.2] text-white dark:text-white">
           Bem-vindo de volta!
         </p>
-        <p className="mb-6 text-center text-[15px] text-[#657087] dark:text-[#aeb8c8]">
+        <p className="mt-2 text-center text-[15px] leading-[1.6] text-[#9fb0cc] dark:text-[#aeb8c8]">
           Acesse sua conta institucional para continuar gerenciando a escola.
         </p>
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-5 lg:space-y-6"
+          className="mt-7 space-y-[22px]"
         >
           <div className="space-y-2">
             <label
               htmlFor="login-email"
-              className="block text-xs font-semibold uppercase tracking-wide text-[#657087] dark:text-[#aeb8c8]"
+              className="block text-xs font-semibold uppercase tracking-wide text-[#9fb0cc] dark:text-[#aeb8c8]"
             >
               E-mail institucional
             </label>
             <div className="relative">
               <Mail
-                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087] dark:text-[#aeb8c8]"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9fb0cc] dark:text-[#aeb8c8]"
                 aria-hidden="true"
               />
               <input
@@ -153,7 +157,7 @@ export function Login() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="nome@instituicao.edu.br"
-                className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 dark:bg-[#18212f] px-11 text-sm text-[#172033] dark:text-white shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+                className="h-[60px] w-full rounded-xl border border-[#2a3a66]/40 bg-[#0c1530]/80 px-12 text-sm text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] outline-none transition placeholder:text-[#6b7a99] focus:border-[var(--brand-primary)] focus:ring-4 focus:ring-[var(--brand-primary)]/20"
               />
             </div>
           </div>
@@ -161,13 +165,13 @@ export function Login() {
           <div className="space-y-2">
             <label
               htmlFor="login-password"
-              className="block text-xs font-semibold uppercase tracking-wide text-[#657087] dark:text-[#aeb8c8]"
+              className="block text-xs font-semibold uppercase tracking-wide text-[#9fb0cc] dark:text-[#aeb8c8]"
             >
               Senha
             </label>
             <div className="relative">
               <Lock
-                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087] dark:text-[#aeb8c8]"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9fb0cc] dark:text-[#aeb8c8]"
                 aria-hidden="true"
               />
               <input
@@ -179,7 +183,7 @@ export function Login() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder="********"
-                className="min-h-14 lg:min-h-[58px] w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 dark:bg-[#18212f] px-11 pr-12 text-sm text-[#172033] dark:text-white shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+                className="h-[60px] w-full rounded-xl border border-[#2a3a66]/40 bg-[#0c1530]/80 px-12 pr-12 text-sm text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] outline-none transition placeholder:text-[#6b7a99] focus:border-[var(--brand-primary)] focus:ring-4 focus:ring-[var(--brand-primary)]/20"
               />
               <button
                 type="button"
@@ -192,7 +196,7 @@ export function Login() {
                 onClick={() =>
                   setShowPassword((current) => !current)
                 }
-                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#657087] dark:text-[#aeb8c8] transition hover:bg-[#eef5ff] dark:hover:bg-[#243244] hover:text-[#075be8] dark:hover:text-[#b9c8ff] focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
+                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#9fb0cc] dark:text-[#aeb8c8] transition hover:bg-white/5 hover:text-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)]/30"
               >
                 {showPassword ? (
                   <EyeOff
@@ -209,10 +213,11 @@ export function Login() {
             </div>
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end pt-[14px]">
             <Link
               to="/forgot-password"
-              className="text-xs font-semibold text-[#075be8] underline-offset-4 transition hover:text-[#082b67] hover:underline focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
+              style={{ color: 'var(--brand-primary)' }}
+              className="text-xs font-semibold underline-offset-4 transition hover:underline focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)]/30"
             >
               Esqueci minha senha
             </Link>
@@ -231,7 +236,7 @@ export function Login() {
             type="submit"
             disabled={loading}
             aria-live="polite"
-            className="inline-flex min-h-14 lg:min-h-[58px] lg:text-base w-full items-center justify-center gap-2 rounded-xl px-5 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(7,91,232,0.24)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[#075be8]/25 disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-[24px] inline-flex h-[64px] w-full items-center justify-center gap-2 rounded-xl px-5 text-[17px] font-bold text-white shadow-[0_14px_26px_rgba(0,0,0,0.25)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[var(--brand-primary)]/25 disabled:cursor-not-allowed disabled:opacity-70"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
@@ -252,15 +257,10 @@ export function Login() {
           </button>
         </form>
 
-        <div className="mt-8 flex items-center justify-center gap-2 text-[13px] text-[#657087] dark:text-[#aeb8c8]">
+        <div className="mt-9 flex items-center justify-center gap-2 text-center text-[13px] leading-[1.5] text-[#9fb0cc] dark:text-[#aeb8c8]">
           <Shield className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
           <span>Seus dados estão protegidos com segurança de nível institucional.</span>
         </div>
-
-        <footer className="mt-10 hidden lg:block text-center text-xs leading-4 text-[#657087] dark:text-[#aeb8c8]">
-          <p>Educação que transforma. Tecnologia que aproxima.</p>
-          <p>© 2026 {displayName}. Todos os direitos reservados.</p>
-        </footer>
       </div>
     </AuthShell>
   );
