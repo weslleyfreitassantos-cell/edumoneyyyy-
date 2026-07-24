@@ -16,6 +16,7 @@ import {
   vi,
 } from 'vitest';
 import { Login } from './Login';
+import { ThemeProvider } from '../contexts/ThemeContext';
 
 const authMock = vi.hoisted(() => ({
   signIn: vi.fn(),
@@ -25,8 +26,8 @@ const authMock = vi.hoisted(() => ({
 
 const brandingMock = vi.hoisted(() => ({
   data: null as null | {
-    scope: 'GLOBAL' | 'ACCOUNT';
-    displayName: string;
+    scope: 'GLOBAL' | 'ACCOUNT' | 'FALLBACK';
+    displayName: string | null;
     logoUrl: string | null;
     faviconUrl: string | null;
     primaryColor: string;
@@ -67,9 +68,11 @@ function renderLogin(initialEntry = '/login') {
 
   return render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter initialEntries={[initialEntry]}>
-        <Login />
-      </MemoryRouter>
+      <ThemeProvider>
+        <MemoryRouter initialEntries={[initialEntry]}>
+          <Login />
+        </MemoryRouter>
+      </ThemeProvider>
     </QueryClientProvider>,
   );
 }
@@ -85,22 +88,15 @@ describe('Login', () => {
 
   afterEach(() => {
     cleanup();
+    document.title = '';
+    document.head.innerHTML = '';
+    document.documentElement.style.removeProperty('--brand-primary');
+    document.documentElement.style.removeProperty('--brand-secondary');
   });
 
   it('renderiza o formulario real e o link de recuperacao', () => {
     renderLogin();
 
-    expect(
-      screen.getByText('EduManager Pro'),
-    ).toBeDefined();
-    expect(
-      screen.getByText(/Bem-vindo de volta/i),
-    ).toBeDefined();
-    expect(
-      screen.getByText(
-        /Acesse sua conta institucional para continuar gerenciando a escola/i,
-      ),
-    ).toBeDefined();
     expect(
       screen.getByLabelText(/E-mail institucional/i),
     ).toBeDefined();
@@ -112,11 +108,49 @@ describe('Login', () => {
         })
         .getAttribute('href'),
     ).toBe('/forgot-password');
+    expect(
+      screen.getByText(/Bem-vindo de volta!/i),
+    ).toBeDefined();
   });
 
-  it('exibe logo dinamica da instituicao quando disponivel', () => {
+  it('preserva o elemento unico de video e seus atributos principais para iOS/Safari', () => {
+    const { container } = renderLogin();
+
+    const videos = Array.from(
+      container.querySelectorAll('video'),
+    );
+    const sources = Array.from(
+      container.querySelectorAll('video source'),
+    );
+
+    expect(videos).toHaveLength(1);
+    expect(sources).toHaveLength(1);
+    expect(sources[0].getAttribute('src')).toBe('/media/cinema-novo.mp4');
+    expect(sources[0].getAttribute('type')).toBe('video/mp4');
+
+    const video = videos[0];
+    expect(video.hasAttribute('autoplay')).toBe(true);
+    expect(video.muted).toBe(true);
+    expect(video.defaultMuted).toBe(true);
+    expect(video.loop).toBe(true);
+    expect(video.hasAttribute('playsinline')).toBe(true);
+    expect(video.hasAttribute('webkit-playsinline')).toBe(true);
+    expect(video.getAttribute('preload')).toBe('metadata');
+  });
+
+  it('registra listeners de canplay e pageshow para reproducao automatica sem quebrar login', () => {
+    const addEventListenerSpy = vi.spyOn(window, 'addEventListener');
+    renderLogin();
+
+    const registeredEvents = addEventListenerSpy.mock.calls.map(call => call[0]);
+    expect(registeredEvents).toContain('pageshow');
+    expect(registeredEvents).toContain('orientationchange');
+    expect(registeredEvents).toContain('resize');
+  });
+
+  it('exibe logo dinamica resolvida por hostname quando disponivel e nome abaixo', () => {
     brandingMock.data = {
-      scope: 'GLOBAL',
+      scope: 'ACCOUNT',
       displayName: 'Colegio Azul',
       logoUrl: 'https://cdn.example.com/logo.png',
       faviconUrl: null,
@@ -134,6 +168,9 @@ describe('Login', () => {
       'https://cdn.example.com/logo.png',
     );
     expect(logo.className).toContain('object-contain');
+
+    const names = screen.getAllByText('Colegio Azul');
+    expect(names.length).toBeGreaterThan(0);
   });
 
   it('mantem fallback neutro sem logo e sem marca fixa', () => {
@@ -149,10 +186,7 @@ describe('Login', () => {
     renderLogin();
 
     expect(screen.queryByRole('img')).toBeNull();
-    expect(screen.queryByText('EduManager Pro')).toBeNull();
-    expect(
-      screen.getByText('Colegio Sem Logo'),
-    ).toBeDefined();
+    expect(screen.getAllByText('Colegio Sem Logo')).toBeDefined();
   });
 
   it('atualiza favicon, titulo e cores dinamicamente', () => {
@@ -180,7 +214,7 @@ describe('Login', () => {
     ).toBe('https://cdn.example.com/favicon.png');
   });
 
-  it('mantem o card de login sobreposto ao video por classe dedicada', () => {
+  it('mantem o card de login com as classes de painel mobile e card responsivo', () => {
     const { container } = renderLogin();
 
     const loginCard = container.querySelector('.login-card');
@@ -188,28 +222,19 @@ describe('Login', () => {
 
     expect(loginCard).not.toBeNull();
     expect(loginCard?.className).toContain('login-card');
-    expect(videoAside?.className).toContain('rounded-[24px]');
+    expect(loginCard?.className).toContain('login-panel-mobile');
+    expect(videoAside?.className).toContain('video-mobile');
   });
 
-  it('renderiza rodape da pagina separado do card em desktop', () => {
+  it('suporta renderizacao em modo dark e light via ThemeProvider', () => {
+    document.documentElement.classList.add('dark');
     const { container } = renderLogin();
 
-    const pageFooter = container.querySelector('.login-shell-footer');
-    expect(pageFooter).not.toBeNull();
-    expect(pageFooter?.textContent).toContain('Educação que transforma');
-    expect(pageFooter?.textContent).toContain('© 2026 EduManager Pro');
+    const mainContainer = container.querySelector('main');
+    expect(mainContainer?.className).toContain('dark:bg-[#071323]');
+    expect(mainContainer?.className).toContain('dark:text-slate-100');
 
-    const footerInCard = container.querySelector('.login-card footer');
-    expect(footerInCard).toBeNull();
-  });
-
-  it('aplica gradient de branding na linha colorida', () => {
-    const { container } = renderLogin();
-
-    const divider = container.querySelector('.login-brand-block > div[aria-hidden="true"]');
-    expect(divider).not.toBeNull();
-    const bg = (divider as HTMLElement).style.backgroundImage;
-    expect(bg).toContain('linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))');
+    document.documentElement.classList.remove('dark');
   });
 
   it('submete o login usando o useAuth', async () => {

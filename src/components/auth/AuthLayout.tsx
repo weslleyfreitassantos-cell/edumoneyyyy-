@@ -100,38 +100,32 @@ export function AuthShell({
 }: AuthShellProps) {
   if (layoutVariant === 'login') {
     return (
-      <div className="login-shell min-h-dvh bg-[#060d1f] font-sans text-[#172033] dark:bg-[#060d1f]">
-        <main className="login-shell-main mx-auto flex min-h-dvh max-w-[1600px] flex-col px-6 py-6 lg:px-8 lg:pt-7 lg:pb-6">
-          <div className="flex flex-1 flex-col gap-5 lg:flex-row lg:items-stretch">
-            <section className="relative z-20 flex min-w-0 flex-col items-center justify-center px-1 sm:px-4 lg:flex-[0_0_minmax(430px,560px)] lg:items-center lg:justify-center lg:px-2">
-              <LoginEducationDecor />
-
-              <div className="relative z-20 w-full max-w-[calc(100vw-48px)] pt-[200px] sm:max-w-[560px] sm:pt-[230px] lg:w-full lg:max-w-[550px] lg:pt-0">
-                <div
-                  className={`login-card relative max-h-[calc(100dvh-130px)] w-full overflow-y-auto rounded-[24px] border border-[#235bbe]/15 bg-[#0b1430]/95 px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] backdrop-blur-sm dark:border-[#334155] sm:px-10 lg:px-11 lg:py-9 ${contentClassName}`}
-                >
-                  <div className="relative z-10">
-                    {children}
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <aside className="relative mt-5 min-h-[230px] overflow-hidden rounded-t-[24px] sm:rounded-[24px] lg:mt-0 lg:h-[calc(100dvh-115px)] lg:min-h-0 lg:flex-[1_1_minmax(0,1fr)] lg:rounded-[24px]">
-              <AuthAside
-                variant={heroVariant}
-                layoutVariant="login"
-              />
-            </aside>
+      <main className="login-shell-main relative min-h-dvh w-full overflow-x-hidden bg-slate-50 font-sans text-slate-900 dark:bg-[#071323] dark:text-slate-100 lg:flex lg:min-h-screen lg:flex-col lg:justify-between lg:p-6 xl:p-8">
+        <div className="relative flex min-h-dvh w-full flex-col lg:min-h-0 lg:flex-1 lg:grid lg:grid-cols-[38%_62%] xl:grid-cols-[38%_62%] lg:gap-6 xl:gap-8 lg:items-stretch">
+          {/* Mobile: Video no topo / Desktop: Video a direita */}
+          <div className="order-1 lg:order-2 w-full lg:h-full lg:min-h-0">
+            <AuthAside
+              variant={heroVariant}
+              layoutVariant="login"
+            />
           </div>
 
-          {footer && (
-            <footer className="login-shell-footer mt-5 hidden h-[70px] shrink-0 flex-col items-center justify-center text-center text-xs leading-5 text-[#7c8ba8] lg:flex dark:text-[#aeb8c8]">
-              {footer}
-            </footer>
-          )}
-        </main>
-      </div>
+          {/* Mobile: Painel de login sobreposto / Desktop: Painel a esquerda */}
+          <section className="order-2 lg:order-1 relative z-20 flex w-full flex-col justify-center px-4 pb-8 sm:px-6 lg:h-full lg:min-h-0 lg:p-0">
+            <div
+              className={`login-card login-panel-mobile relative mx-auto w-full max-w-[570px] min-w-[320px] sm:min-w-[430px] rounded-[24px] border border-slate-200/80 bg-white/95 shadow-xl backdrop-blur-sm dark:border-slate-800/80 dark:bg-[#0d1b2e]/95 lg:mx-0 lg:w-full lg:max-w-[570px] lg:max-h-full lg:overflow-y-auto lg:p-9 xl:p-11 ${contentClassName}`}
+            >
+              {children}
+            </div>
+          </section>
+        </div>
+
+        {footer && (
+          <footer className="relative z-20 w-full py-4 px-6 text-center text-xs leading-relaxed text-slate-500 dark:text-slate-400 lg:py-3 lg:shrink-0">
+            {footer}
+          </footer>
+        )}
+      </main>
     );
   }
 
@@ -470,17 +464,6 @@ export function AuthButton({
   );
 }
 
-function attemptVideoPlayback(video: HTMLVideoElement): void {
-  try {
-    const playResult = video.play();
-    if (playResult && typeof (playResult as Promise<void>).catch === 'function') {
-      void playResult.catch(() => undefined);
-    }
-  } catch {
-    // A reprodução do hero é decorativa e não deve quebrar a autenticação.
-  }
-}
-
 export function AuthAside({
   variant = 'default',
   layoutVariant = 'default',
@@ -488,131 +471,147 @@ export function AuthAside({
   variant?: 'video' | 'default';
   layoutVariant?: 'default' | 'login';
 }) {
-  const video1Ref = useRef<HTMLVideoElement>(null);
-  const video2Ref = useRef<HTMLVideoElement>(null);
-  const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Pula a introdução azul nativa do arquivo e já dá o play
   useEffect(() => {
-    if (video1Ref.current) {
-      video1Ref.current.currentTime = 1.5;
-      attemptVideoPlayback(video1Ref.current);
-    }
-  }, []);
-  // Remove isHovering effect
-  useEffect(() => {
-    const inactiveVideo = activeVideo === 1 ? video2Ref.current : video1Ref.current;
-    if (inactiveVideo) {
-      const timer = setTimeout(() => {
-        inactiveVideo.pause();
-        inactiveVideo.currentTime = 1.5;
-      }, 1500);
-      return () => clearTimeout(timer);
-    }
-  }, [activeVideo]);
+    const video = videoRef.current;
+    if (!video) return;
 
-  const handleTimeUpdate = (videoNum: 1 | 2) => (e: SyntheticEvent<HTMLVideoElement>) => {
-    if (activeVideo !== videoNum) return;
-    const video = e.currentTarget;
-    if (!video.duration) return;
+    // Propriedades obrigatorias para suporte Safari / iOS
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.muted = true;
+    video.defaultMuted = true;
 
-    // Crossfade threshold (e.g., 0.8s before end)
-    const threshold = 0.8;
-    if (video.duration - video.currentTime <= threshold) {
-      const nextVideo = videoNum === 1 ? video2Ref.current : video1Ref.current;
-      if (nextVideo) {
-        attemptVideoPlayback(nextVideo);
-        setActiveVideo(videoNum === 1 ? 2 : 1);
+    const attemptVideoPlayback = async () => {
+      const currentVideo = videoRef.current;
+      if (!currentVideo) return;
+
+      currentVideo.muted = true;
+      currentVideo.defaultMuted = true;
+
+      try {
+        await currentVideo.play();
+      } catch {
+        // Autoplay pode ser retido por politica do navegador/Safari
       }
-    }
-  };
+    };
 
-  const asideClassName =
-    layoutVariant === 'login'
-      ? 'absolute inset-0 z-10 h-full w-full overflow-hidden bg-[#082b67] text-white'
-      : 'relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center';
+    void attemptVideoPlayback();
+
+    const handleLoadedMetadata = () => {
+      void attemptVideoPlayback();
+    };
+    const handleCanPlay = () => {
+      void attemptVideoPlayback();
+    };
+    const handlePageShow = () => {
+      void attemptVideoPlayback();
+    };
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        void attemptVideoPlayback();
+      }
+    };
+    const handleUserInteraction = () => {
+      void attemptVideoPlayback();
+    };
+    const handleResizeOrOrientation = () => {
+      void attemptVideoPlayback();
+    };
+
+    video.addEventListener('loadedmetadata', handleLoadedMetadata);
+    video.addEventListener('canplay', handleCanPlay);
+    window.addEventListener('pageshow', handlePageShow);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('orientationchange', handleResizeOrOrientation);
+    window.addEventListener('resize', handleResizeOrOrientation);
+
+    window.addEventListener('pointerdown', handleUserInteraction, { once: true });
+    window.addEventListener('touchstart', handleUserInteraction, { once: true });
+
+    return () => {
+      video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      video.removeEventListener('canplay', handleCanPlay);
+      window.removeEventListener('pageshow', handlePageShow);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('orientationchange', handleResizeOrOrientation);
+      window.removeEventListener('resize', handleResizeOrOrientation);
+      window.removeEventListener('pointerdown', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
+    };
+  }, []);
+
+  if (variant === 'video') {
+    const containerClasses =
+      layoutVariant === 'login'
+        ? 'video-mobile relative w-full overflow-hidden bg-[#06152f] text-white lg:h-full lg:min-h-0 lg:w-full lg:rounded-[24px]'
+        : 'relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center';
+
+    return (
+      <aside className={containerClasses}>
+        <div className="auth-hero-fallback" aria-hidden="true" />
+        <div className="auth-hero-video-layer h-full w-full">
+          <video
+            ref={videoRef}
+            className="auth-hero-video block h-full w-full object-cover object-center"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            disablePictureInPicture
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <source src="/media/cinema-novo.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </aside>
+    );
+  }
 
   return (
-    <aside className={asideClassName}>
-      {variant === 'video' ? (
-        <>
-          <div className="auth-hero-fallback" aria-hidden="true" />
-          <div className="auth-hero-video-layer">
-            <video
-              ref={video1Ref}
-              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 1 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden="true"
-              tabIndex={-1}
-              onTimeUpdate={handleTimeUpdate(1)}
-            >
-              <source src="/media/cinema-novo.mp4" type="video/mp4" />
-            </video>
-            <video
-              ref={video2Ref}
-              className={`auth-hero-video transition-opacity duration-500 ${activeVideo === 2 ? 'opacity-100 z-20' : 'opacity-0 z-10 delay-500'}`}
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-hidden="true"
-              tabIndex={-1}
-              onTimeUpdate={handleTimeUpdate(2)}
-            >
-              <source src="/media/cinema-novo.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div className="auth-hero-overlay opacity-60" aria-hidden="true" />
+    <aside className="relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center">
+      <div
+        className="absolute inset-0 opacity-25"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px)',
+          backgroundSize: '56px 56px',
+        }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70" aria-hidden="true" />
 
+      <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center">
+        <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
+          <BookOpenCheck className="h-10 w-10" aria-hidden="true" />
+        </div>
 
-        </>
-      ) : (
-        <>
-          <div
-            className="absolute inset-0 opacity-25"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,.16) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.16) 1px, transparent 1px)',
-              backgroundSize: '56px 56px',
-            }}
-            aria-hidden="true"
-          />
-          <div className="absolute inset-x-0 top-0 h-48 bg-[#1e3a8a]/70" aria-hidden="true" />
+        <h2 className="text-[32px] font-bold leading-10">
+          Gestão Escolar Inteligente
+        </h2>
 
-          <div className="relative z-10 mx-auto flex max-w-xl flex-col items-center px-10 text-center">
-            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl backdrop-blur">
-              <BookOpenCheck className="h-10 w-10" aria-hidden="true" />
-            </div>
+        <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
+          Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
+        </p>
 
-            <h2 className="text-[32px] font-bold leading-10">
-              Gestão Escolar Inteligente
-            </h2>
-
-            <p className="mx-auto mt-4 max-w-lg text-base leading-6 text-[#dce1ff]">
-              Centralize operações acadêmicas, financeiras e administrativas em uma plataforma segura e moderna.
+        <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+            <p className="text-xs font-semibold uppercase text-[#b6c4ff]">Governança</p>
+            <p className="mt-2 text-sm leading-5 text-white/90">
+              Perfis, permissões e instituições em um ambiente confiável.
             </p>
-
-            <div className="mt-10 grid gap-4 text-left lg:grid-cols-2">
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <p className="text-xs font-semibold uppercase text-[#b6c4ff]">Governança</p>
-                <p className="mt-2 text-sm leading-5 text-white/90">
-                  Perfis, permissões e instituições em um ambiente confiável.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
-                <p className="text-xs font-semibold uppercase text-[#6ffbbe]">Operação</p>
-                <p className="mt-2 text-sm leading-5 text-white/90">
-                  Dados escolares organizados para decisões rápidas.
-                </p>
-              </div>
-            </div>
           </div>
-        </>
-      )}
+          <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur">
+            <p className="text-xs font-semibold uppercase text-[#6ffbbe]">Operação</p>
+            <p className="mt-2 text-sm leading-5 text-white/90">
+              Dados escolares organizados para decisões rápidas.
+            </p>
+          </div>
+        </div>
+      </div>
     </aside>
   );
 }

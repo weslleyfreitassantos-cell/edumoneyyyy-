@@ -5,7 +5,7 @@ import {
   Loader2,
   Lock,
   Mail,
-  Shield,
+  ShieldCheck,
 } from 'lucide-react';
 import {
   useEffect,
@@ -34,9 +34,6 @@ export function Login() {
   const branding =
     brandingQuery.data ?? FALLBACK_BRANDING;
 
-  const displayName =
-    brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
-
   useEffect(() => {
     if (profile) {
       navigate('/dashboard');
@@ -55,6 +52,7 @@ export function Login() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (loading) return;
     setError(null);
     setLoading(true);
 
@@ -71,16 +69,15 @@ export function Login() {
     }
   };
 
-  const brandStyle: CSSProperties = {
-    '--brand-primary': branding.primaryColor,
-    '--brand-secondary': branding.secondaryColor,
-  };
-
-  const footer = (
-    <>
-      <p>Educação que transforma. Tecnologia que aproxima.</p>
-      <p>© 2026 {displayName}. Todos os direitos reservados.</p>
-    </>
+  const footerContent = (
+    <div className="space-y-1">
+      <p className="font-medium text-slate-700 dark:text-slate-300">
+        Educação que transforma. Tecnologia que aproxima.
+      </p>
+      <p className="text-slate-500 dark:text-slate-400">
+        © 2026 {branding.displayName ?? 'EduManager Pro'}. Todos os direitos reservados.
+      </p>
+    </div>
   );
 
   return (
@@ -88,64 +85,76 @@ export function Login() {
       heroVariant="video"
       layoutVariant="login"
       showBrand={false}
-      footer={footer}
+      footer={footerContent}
     >
-      <div style={brandStyle}>
-        <div className="login-brand-block flex flex-col items-center">
-          <div className="flex items-center justify-center">
+      <div
+        style={
+          {
+            '--brand-primary': branding.primaryColor,
+            '--brand-secondary': branding.secondaryColor,
+          } as CSSProperties
+        }
+      >
+        <div className="login-brand-block mb-6 flex flex-col items-center gap-3">
+          <div className="flex items-center justify-center min-h-[48px]">
             {brandingQuery.isLoading ? (
               <Loader2
-                className="h-6 w-6 animate-spin text-[#7c8ba8]"
+                className="h-6 w-6 animate-spin text-slate-400"
                 aria-label="Carregando identidade visual"
               />
             ) : branding.logoUrl ? (
               <img
                 src={branding.logoUrl}
                 alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-                className="max-h-[100px] max-w-[112px] object-contain sm:max-h-[112px]"
+                className="max-h-[100px] max-w-[100px] lg:max-h-[112px] lg:max-w-[112px] object-contain"
               />
             ) : (
               <div
-                className="h-20 w-20 rounded-2xl border border-dashed border-[#3a5294]/50 bg-[#0f1a3a]/60"
+                className="h-14 w-36 rounded-2xl border border-dashed border-blue-200 bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800/50"
                 aria-hidden="true"
               />
             )}
           </div>
-          <p className="mt-3 text-center text-[26px] font-bold leading-[1.2] text-white dark:text-white">
-            {displayName}
-          </p>
+
+          {branding.displayName && (
+            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 text-center">
+              {branding.displayName}
+            </p>
+          )}
+
           <div
-            className="mt-4 h-[5px] w-16 rounded-full"
+            className="mx-auto h-1.5 w-16 rounded-full"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
             }}
             aria-hidden="true"
           />
-        </div>
 
-        <h1 className="sr-only">Acessar sua conta</h1>
-        <p className="mt-7 text-center text-[25px] font-bold leading-[1.2] text-white dark:text-white">
-          Bem-vindo de volta!
-        </p>
-        <p className="mt-2 text-center text-[15px] leading-[1.6] text-[#9fb0cc] dark:text-[#aeb8c8]">
-          Acesse sua conta institucional para continuar gerenciando a escola.
-        </p>
+          <div className="mt-2 text-center">
+            <h1 className="text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Bem-vindo de volta!
+            </h1>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+              Entre com suas credenciais para acessar a plataforma.
+            </p>
+          </div>
+        </div>
 
         <form
           onSubmit={handleSubmit}
-          className="mt-7 space-y-[22px]"
+          className="space-y-5"
         >
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <label
               htmlFor="login-email"
-              className="block text-xs font-semibold uppercase tracking-wide text-[#9fb0cc] dark:text-[#aeb8c8]"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
             >
               E-mail institucional
             </label>
             <div className="relative">
               <Mail
-                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9fb0cc] dark:text-[#aeb8c8]"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500"
                 aria-hidden="true"
               />
               <input
@@ -157,21 +166,21 @@ export function Login() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="nome@instituicao.edu.br"
-                className="h-[60px] w-full rounded-xl border border-[#2a3a66]/40 bg-[#0c1530]/80 px-12 text-sm text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] outline-none transition placeholder:text-[#6b7a99] focus:border-[var(--brand-primary)] focus:ring-4 focus:ring-[var(--brand-primary)]/20"
+                className="h-[56px] w-full rounded-xl border border-slate-300 bg-white px-11 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500"
               />
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <label
               htmlFor="login-password"
-              className="block text-xs font-semibold uppercase tracking-wide text-[#9fb0cc] dark:text-[#aeb8c8]"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
             >
               Senha
             </label>
             <div className="relative">
               <Lock
-                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9fb0cc] dark:text-[#aeb8c8]"
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500"
                 aria-hidden="true"
               />
               <input
@@ -183,7 +192,7 @@ export function Login() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder="********"
-                className="h-[60px] w-full rounded-xl border border-[#2a3a66]/40 bg-[#0c1530]/80 px-12 pr-12 text-sm text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] outline-none transition placeholder:text-[#6b7a99] focus:border-[var(--brand-primary)] focus:ring-4 focus:ring-[var(--brand-primary)]/20"
+                className="h-[56px] w-full rounded-xl border border-slate-300 bg-white px-11 pr-12 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500"
               />
               <button
                 type="button"
@@ -196,7 +205,7 @@ export function Login() {
                 onClick={() =>
                   setShowPassword((current) => !current)
                 }
-                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#9fb0cc] dark:text-[#aeb8c8] transition hover:bg-white/5 hover:text-white focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)]/30"
+                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:hover:bg-slate-800 dark:hover:text-slate-200"
               >
                 {showPassword ? (
                   <EyeOff
@@ -213,11 +222,10 @@ export function Login() {
             </div>
           </div>
 
-          <div className="flex justify-end pt-[14px]">
+          <div className="flex justify-end">
             <Link
               to="/forgot-password"
-              style={{ color: 'var(--brand-primary)' }}
-              className="text-xs font-semibold underline-offset-4 transition hover:underline focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)]/30"
+              className="text-xs font-semibold text-blue-600 underline-offset-4 transition hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:text-blue-400 dark:hover:text-blue-300"
             >
               Esqueci minha senha
             </Link>
@@ -226,7 +234,7 @@ export function Login() {
           {error && (
             <div
               role="alert"
-              className="rounded-xl border border-[#ffdad6] bg-[#fff1ef] px-3 py-2 text-sm text-[#93000a]"
+              className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300"
             >
               {error}
             </div>
@@ -236,7 +244,7 @@ export function Login() {
             type="submit"
             disabled={loading}
             aria-live="polite"
-            className="mt-[24px] inline-flex h-[64px] w-full items-center justify-center gap-2 rounded-xl px-5 text-[17px] font-bold text-white shadow-[0_14px_26px_rgba(0,0,0,0.25)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[var(--brand-primary)]/25 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex h-[62px] w-full items-center justify-center gap-2 rounded-xl text-base font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20 disabled:cursor-not-allowed disabled:opacity-70"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
@@ -244,23 +252,23 @@ export function Login() {
           >
             {loading ? (
               <Loader2
-                className="h-4 w-4 animate-spin"
+                className="h-5 w-5 animate-spin"
                 aria-hidden="true"
               />
             ) : (
               <ArrowRight
-                className="h-4 w-4"
+                className="h-5 w-5"
                 aria-hidden="true"
               />
             )}
             {loading ? 'Entrando...' : 'Entrar no sistema'}
           </button>
-        </form>
 
-        <div className="mt-9 flex items-center justify-center gap-2 text-center text-[13px] leading-[1.5] text-[#9fb0cc] dark:text-[#aeb8c8]">
-          <Shield className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
-          <span>Seus dados estão protegidos com segurança de nível institucional.</span>
-        </div>
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-slate-500 dark:text-slate-400">
+            <ShieldCheck className="h-4 w-4 text-emerald-500" aria-hidden="true" />
+            <span>Ambiente seguro. Acesso restrito a usuários autorizados.</span>
+          </div>
+        </form>
       </div>
     </AuthShell>
   );
