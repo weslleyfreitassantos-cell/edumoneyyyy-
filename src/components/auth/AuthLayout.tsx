@@ -15,7 +15,7 @@ import { useRef, useState, useEffect, type ReactNode, type SyntheticEvent } from
 interface AuthShellProps {
   children: ReactNode;
   contentClassName?: string;
-  footer?: ReactNode | null;
+  footer?: ReactNode;
   heroVariant?: 'video' | 'default';
   layoutVariant?: 'default' | 'login';
   showBrand?: boolean;
@@ -100,20 +100,25 @@ export function AuthShell({
 }: AuthShellProps) {
   if (layoutVariant === 'login') {
     return (
-      <main className="relative min-h-dvh overflow-hidden bg-[#f5f8ff] font-sans text-[#172033] dark:bg-[#0b1220] dark:text-white lg:grid lg:grid-cols-[40%_60%]">
-        <section className="relative z-20 flex min-h-dvh min-w-0 flex-col overflow-hidden px-5 pb-8 pt-0 sm:px-8 lg:px-10 xl:px-16">
+      <main className="relative min-h-dvh overflow-hidden bg-[#f5f8ff] font-sans text-[#172033] lg:grid lg:grid-cols-[40%_60%] lg:h-dvh lg:min-h-0 lg:bg-white lg:dark:bg-[#0f172a]">
+        <section className="relative z-20 flex min-h-dvh min-w-0 flex-col overflow-hidden px-5 pb-8 pt-0 sm:px-8 lg:h-full lg:min-h-0 lg:overflow-visible lg:bg-transparent lg:px-0 lg:py-6 lg:items-start lg:justify-center">
           <LoginEducationDecor />
 
-          <div className="relative z-20 mx-auto flex w-full max-w-[calc(100vw-64px)] flex-1 items-start pt-[210px] sm:max-w-[620px] sm:pt-[250px] lg:mx-0 lg:ml-auto lg:max-w-none lg:items-center lg:pt-0">
+          <div className="relative z-20 mx-auto flex w-full max-w-[calc(100vw-64px)] flex-1 items-start pt-[210px] sm:max-w-[620px] sm:pt-[250px] lg:mx-0 lg:max-w-none lg:flex-initial lg:items-center lg:pt-0 lg:w-[clamp(520px,42vw,700px)] lg:ml-[clamp(24px,4vw,80px)]">
             <div
-              className={`login-card relative max-w-full rounded-[26px] border border-[#235bbe]/10 bg-white/95 px-6 py-7 shadow-[0_28px_70px_rgba(17,44,92,0.18),0_8px_24px_rgba(17,44,92,0.08)] dark:border-white/10 dark:bg-[#0f1826] sm:px-9 sm:py-9 ${contentClassName}`}
+              className={`login-card relative overflow-hidden max-w-full rounded-[26px] border border-[#235bbe]/10 bg-white/95 px-6 py-7 shadow-[0_28px_70px_rgba(17,44,92,0.18),0_8px_24px_rgba(17,44,92,0.08)] sm:px-9 sm:py-9 lg:w-full lg:max-w-none lg:max-h-[calc(100dvh-3rem)] lg:overflow-x-hidden lg:overflow-y-auto lg:border-white/60 lg:bg-[#f5f8ff]/95 lg:px-10 lg:py-9 xl:px-12 xl:py-10 dark:bg-[#111b2d]/95 dark:border-[#334155] lg:backdrop-blur-sm ${contentClassName}`}
             >
-              {children}
+              <div className="hidden lg:block">
+                <LoginEducationDecor />
+              </div>
+              <div className="relative z-10">
+                {children}
+              </div>
             </div>
           </div>
 
           {footer && (
-            <footer className="relative z-20 mt-8 hidden text-center text-xs leading-4 text-[#657087] lg:block lg:max-w-[520px] dark:text-[#aeb8c8]">
+            <footer className="relative z-20 mt-8 text-center text-xs leading-4 text-[#657087] lg:mt-6 lg:w-[clamp(520px,42vw,700px)] lg:ml-[clamp(24px,4vw,80px)] lg:text-left lg:text-[#657087] lg:dark:text-[#aeb8c8] lg:drop-shadow-none">
               {footer}
             </footer>
           )}
@@ -157,7 +162,7 @@ export function AuthShell({
 function LoginEducationDecor() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className="pointer-events-none absolute inset-0 overflow-hidden lg:hidden"
       aria-hidden="true"
     >
       <div className="absolute -left-20 top-14 h-72 w-72 rounded-full bg-[#dce9ff]/65 blur-3xl" />
@@ -521,7 +526,7 @@ export function AuthAside({
 
   const asideClassName =
     layoutVariant === 'login'
-      ? 'absolute inset-x-0 top-0 z-10 h-[260px] overflow-hidden bg-[#082b67] text-white sm:h-[300px] lg:relative lg:inset-auto lg:flex lg:h-auto lg:min-h-dvh lg:w-full lg:flex-col lg:items-center lg:justify-center'
+      ? 'absolute inset-x-0 top-0 z-10 h-[260px] overflow-hidden bg-[#082b67] text-white sm:h-[300px] lg:relative lg:col-start-2 lg:h-full lg:min-h-0 lg:w-full lg:overflow-hidden'
       : 'relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center';
 
   return (

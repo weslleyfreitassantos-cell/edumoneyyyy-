@@ -2,6 +2,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type ReactNode,
 } from 'react';
 import {
@@ -24,7 +25,8 @@ import type {
   User,
   UserRole,
 } from '../types';
-import { useThemePreference } from '../hooks/useThemePreference';
+import { useThemePreference } from '../contexts/ThemeContext';
+import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
@@ -206,6 +208,7 @@ export default function AppShell({
   const institutionContext = useInstitution();
   const location = useLocation();
   const { theme, toggleTheme } = useThemePreference();
+  const branding = useHostBranding();
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] =
     useState(readSidebarPreference);
@@ -492,6 +495,10 @@ export default function AppShell({
     <div
       id="app-authenticated-container"
       className="flex min-h-screen bg-[#f3f6fb]"
+      style={{
+        '--brand-primary': branding.primaryColor,
+        '--brand-secondary': branding.secondaryColor,
+      } as CSSProperties}
     >
       <a
         href="#app-main-content"
@@ -503,6 +510,7 @@ export default function AppShell({
       <Sidebar
         currentUser={currentUser}
         profile={profile}
+        branding={branding}
         currentInstitutionRole={
           institutionContext.currentRole
         }

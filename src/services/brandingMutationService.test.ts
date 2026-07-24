@@ -43,7 +43,7 @@ describe('brandingMutationService', () => {
       getPublicUrl,
     } as never);
 
-    const single = vi.fn().mockResolvedValue({
+    const maybeSingle = vi.fn().mockResolvedValue({
       data: {
         id: 'institution-1',
         name: 'Escola Centro',
@@ -53,7 +53,7 @@ describe('brandingMutationService', () => {
       },
       error: null,
     });
-    const select = vi.fn().mockReturnValue({ single });
+    const select = vi.fn().mockReturnValue({ maybeSingle });
     const eq = vi.fn().mockReturnValue({ select });
     const update = vi.fn().mockReturnValue({ eq });
 
@@ -81,5 +81,41 @@ describe('brandingMutationService', () => {
       }),
     );
     expect(result.logoUrl).toContain('?v=123456');
+  });
+
+  it('retorna erro controlado quando o update nao retorna linha', async () => {
+    const upload = vi.fn().mockResolvedValue({ error: null });
+    const getPublicUrl = vi.fn().mockReturnValue({
+      data: {
+        publicUrl:
+          'https://storage.example.com/institution-1/logo.png',
+      },
+    });
+
+    vi.mocked(supabase.storage.from).mockReturnValue({
+      upload,
+      getPublicUrl,
+    } as never);
+
+    const maybeSingle = vi.fn().mockResolvedValue({
+      data: null,
+      error: null,
+    });
+    const select = vi.fn().mockReturnValue({ maybeSingle });
+    const eq = vi.fn().mockReturnValue({ select });
+    const update = vi.fn().mockReturnValue({ eq });
+
+    vi.mocked(supabase.from).mockReturnValue({ update } as never);
+
+    await expect(
+      brandingMutationService.saveLogo({
+        institutionId: 'institution-1',
+        institutionName: 'Escola Centro',
+        currentPublicSlug: null,
+        file: new File(['logo'], 'logo.png', {
+          type: 'image/png',
+        }),
+      }),
+    ).rejects.toThrow(/Nenhum registro/i);
   });
 });

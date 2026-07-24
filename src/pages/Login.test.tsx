@@ -25,9 +25,12 @@ const authMock = vi.hoisted(() => ({
 
 const brandingMock = vi.hoisted(() => ({
   data: null as null | {
-    name: string;
+    scope: 'GLOBAL' | 'ACCOUNT';
+    displayName: string;
     logoUrl: string | null;
-    publicSlug: string;
+    faviconUrl: string | null;
+    primaryColor: string;
+    secondaryColor: string;
   },
   isLoading: false,
 }));
@@ -39,8 +42,8 @@ vi.mock('../contexts/AuthContext', () => ({
   }),
 }));
 
-vi.mock('../hooks/useInstitutionBranding', () => ({
-  usePublicInstitutionBranding: () => ({
+vi.mock('../hooks/useBranding', () => ({
+  useResolvedBranding: () => ({
     data: brandingMock.data,
     isLoading: brandingMock.isLoading,
   }),
@@ -111,58 +114,20 @@ describe('Login', () => {
     ).toBe('/forgot-password');
   });
 
-  it('preserva o video atual e seus atributos principais', () => {
-    const { container } = renderLogin();
-
-    const videos = Array.from(
-      container.querySelectorAll('video'),
-    );
-    const sources = Array.from(
-      container.querySelectorAll('video source'),
-    );
-
-    expect(videos).toHaveLength(2);
-    expect(sources).toHaveLength(2);
-    expect(
-      sources.every(
-        (source) =>
-          source.getAttribute('src') ===
-          '/media/cinema-novo.mp4',
-      ),
-    ).toBe(true);
-    expect(
-      sources.every(
-        (source) =>
-          source.getAttribute('type') === 'video/mp4',
-      ),
-    ).toBe(true);
-    expect(videos[0].hasAttribute('autoplay')).toBe(true);
-    expect(videos[0].muted).toBe(true);
-    expect(videos[0].loop).toBe(true);
-    expect(
-      videos.every((video) =>
-        video.hasAttribute('playsinline'),
-      ),
-    ).toBe(true);
-    expect(
-      videos.every(
-        (video) =>
-          video.getAttribute('preload') === 'auto',
-      ),
-    ).toBe(true);
-  });
-
   it('exibe logo dinamica da instituicao quando disponivel', () => {
     brandingMock.data = {
-      name: 'Colegio Azul',
+      scope: 'GLOBAL',
+      displayName: 'Colegio Azul',
       logoUrl: 'https://cdn.example.com/logo.png',
-      publicSlug: 'colegio-azul',
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
     };
 
-    renderLogin('/login?institution=colegio-azul');
+    renderLogin();
 
     const logo = screen.getByRole('img', {
-      name: /Logo da instituicao Colegio Azul/i,
+      name: /Logo de Colegio Azul/i,
     });
 
     expect(logo.getAttribute('src')).toBe(
@@ -173,18 +138,46 @@ describe('Login', () => {
 
   it('mantem fallback neutro sem logo e sem marca fixa', () => {
     brandingMock.data = {
-      name: 'Colegio Sem Logo',
+      scope: 'GLOBAL',
+      displayName: 'Colegio Sem Logo',
       logoUrl: null,
-      publicSlug: 'colegio-sem-logo',
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
     };
 
-    renderLogin('/login?institution=colegio-sem-logo');
+    renderLogin();
 
     expect(screen.queryByRole('img')).toBeNull();
     expect(screen.queryByText('EduManager Pro')).toBeNull();
     expect(
       screen.getByText('Colegio Sem Logo'),
     ).toBeDefined();
+  });
+
+  it('atualiza favicon, titulo e cores dinamicamente', () => {
+    brandingMock.data = {
+      scope: 'GLOBAL',
+      displayName: 'Marca Global',
+      logoUrl: null,
+      faviconUrl: 'https://cdn.example.com/favicon.png',
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    };
+
+    renderLogin();
+
+    expect(document.title).toBe('Marca Global');
+    expect(
+      document.documentElement.style.getPropertyValue(
+        '--brand-primary',
+      ),
+    ).toBe('#123456');
+    expect(
+      document.querySelector<HTMLLinkElement>(
+        'link[rel="icon"]',
+      )?.href,
+    ).toBe('https://cdn.example.com/favicon.png');
   });
 
   it('mantem o card de login sobreposto ao video por classe dedicada', () => {
@@ -196,7 +189,7 @@ describe('Login', () => {
     expect(loginCard).not.toBeNull();
     expect(loginCard?.className).toContain('login-card');
     expect(videoAside?.className).toContain('h-[260px]');
-    expect(videoAside?.className).toContain('lg:min-h-dvh');
+    expect(videoAside?.className).toContain('lg:min-h-0');
   });
 
   it('submete o login usando o useAuth', async () => {

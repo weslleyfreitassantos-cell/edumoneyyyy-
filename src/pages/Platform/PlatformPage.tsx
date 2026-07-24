@@ -26,11 +26,20 @@ import {
   useDeleteClientAccount,
   useUpdateClientAccount,
 } from '../../hooks/useAccounts';
+import {
+  useActivateDomain,
+  useDisableDomain,
+  useDomainRequests,
+  useGlobalBranding,
+  useSaveGlobalBranding,
+} from '../../hooks/useBranding';
 import type { AccountStatus } from '../../lib/permissions';
 import {
   AccountServiceError,
   type AccountSummaryRow,
 } from '../../services/accountService';
+import { BrandingEditor } from '../../components/branding/BrandingEditor';
+import { PlatformDomainRequestsSection } from '../../components/branding/DomainManagement';
 
 interface AccountFormState {
   accountName: string;
@@ -275,6 +284,11 @@ export default function PlatformPage() {
   const createAccount = useCreateClientAccount();
   const updateAccount = useUpdateClientAccount();
   const deleteAccount = useDeleteClientAccount();
+  const globalBrandingQuery = useGlobalBranding();
+  const saveGlobalBranding = useSaveGlobalBranding();
+  const domainRequestsQuery = useDomainRequests();
+  const activateDomain = useActivateDomain();
+  const disableDomain = useDisableDomain();
 
   const [form, setForm] =
     useState<AccountFormState>(initialForm);
@@ -294,6 +308,8 @@ export default function PlatformPage() {
 
   const accounts = accountsQuery.data ?? [];
   const canDeleteAccounts =
+    profile?.platform_role === 'SUPER_ADMIN';
+  const isSuperAdmin =
     profile?.platform_role === 'SUPER_ADMIN';
 
   const totals = useMemo(
@@ -610,6 +626,42 @@ export default function PlatformPage() {
             helper="Limite somado das contas"
           />
         </section>
+
+        {isSuperAdmin && (
+          <BrandingEditor
+            title="Identidade da plataforma"
+            description="Esta identidade e exibida no dominio principal da plataforma e serve como padrao para contas sem marca propria."
+            branding={globalBrandingQuery.data}
+            isLoading={globalBrandingQuery.isLoading}
+            isSaving={saveGlobalBranding.isPending}
+            onSave={(input) =>
+              saveGlobalBranding
+                .mutateAsync(input)
+                .then(() => undefined)
+            }
+          />
+        )}
+
+        {isSuperAdmin && (
+          <PlatformDomainRequestsSection
+            domains={domainRequestsQuery.data ?? []}
+            isLoading={domainRequestsQuery.isLoading}
+            isMutating={
+              activateDomain.isPending ||
+              disableDomain.isPending
+            }
+            onActivate={(domainId) =>
+              activateDomain
+                .mutateAsync(domainId)
+                .then(() => undefined)
+            }
+            onDisable={(domainId) =>
+              disableDomain
+                .mutateAsync(domainId)
+                .then(() => undefined)
+            }
+          />
+        )}
 
         <form
           onSubmit={handleCreate}

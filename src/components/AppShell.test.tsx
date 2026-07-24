@@ -26,6 +26,7 @@ import {
 import {
   useInstitution,
 } from '../contexts/InstitutionContext';
+import { ThemeProvider } from '../contexts/ThemeContext';
 import AppShell, {
   getRouteVisualContext,
 } from './AppShell';
@@ -37,6 +38,17 @@ vi.mock('../contexts/AuthContext', () => ({
 
 vi.mock('../contexts/InstitutionContext', () => ({
   useInstitution: vi.fn(),
+}));
+
+vi.mock('../hooks/useBranding', () => ({
+  useHostBranding: () => ({
+    scope: 'GLOBAL',
+    displayName: 'EduManager Pro',
+    logoUrl: null,
+    faviconUrl: null,
+    primaryColor: '#005bbf',
+    secondaryColor: '#6ffbbe',
+  }),
 }));
 
 vi.mock('./InstitutionSwitcher', () => ({
@@ -109,9 +121,11 @@ function mockContexts(
 function renderShell(route = '/dashboard') {
   return render(
     <MemoryRouter initialEntries={[route]}>
-      <AppShell>
-        <div>Conteudo da rota</div>
-      </AppShell>
+      <ThemeProvider>
+        <AppShell>
+          <div>Conteudo da rota</div>
+        </AppShell>
+      </ThemeProvider>
     </MemoryRouter>,
   );
 }

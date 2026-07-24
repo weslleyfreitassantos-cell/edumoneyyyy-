@@ -69,10 +69,16 @@ async function updateInstitutionBranding(
     })
     .eq('id', institutionId)
     .select('id, name, logo_url, public_slug')
-    .single();
+    .maybeSingle();
 
   if (error) {
     throw error;
+  }
+
+  if (!data) {
+    throw new Error(
+      'Nenhum registro de identidade visual foi atualizado. Verifique suas permissoes.',
+    );
   }
 
   return normalizeBrandingRow(data as BrandingRow);
