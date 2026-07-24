@@ -88,18 +88,16 @@ describe('Login', () => {
     renderLogin();
 
     expect(
-      screen.queryByText('EduManager Pro'),
-    ).toBeNull();
-    expect(screen.queryByText('EduManager')).toBeNull();
+      screen.getByText('EduManager Pro'),
+    ).toBeDefined();
     expect(
-      screen.queryByText(/Bem-vindo ao EduManager Pro/i),
-    ).toBeNull();
+      screen.getByText(/Bem-vindo de volta/i),
+    ).toBeDefined();
     expect(
-      screen.queryByText(/Bem-vindo de volta/i),
-    ).toBeNull();
-    expect(
-      screen.queryByText(/Entre para acessar/i),
-    ).toBeNull();
+      screen.getByText(
+        /Acesse sua conta institucional para continuar gerenciando a escola/i,
+      ),
+    ).toBeDefined();
     expect(
       screen.getByLabelText(/E-mail institucional/i),
     ).toBeDefined();
@@ -183,8 +181,10 @@ describe('Login', () => {
     renderLogin('/login?institution=colegio-sem-logo');
 
     expect(screen.queryByRole('img')).toBeNull();
-    expect(screen.queryByText(/EduManager/i)).toBeNull();
-    expect(screen.queryByText(/Logo/i)).toBeNull();
+    expect(screen.queryByText('EduManager Pro')).toBeNull();
+    expect(
+      screen.getByText('Colegio Sem Logo'),
+    ).toBeDefined();
   });
 
   it('mantem o card de login sobreposto ao video por classe dedicada', () => {

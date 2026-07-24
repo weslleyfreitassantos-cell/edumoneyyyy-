@@ -15,7 +15,7 @@ import { useRef, useState, useEffect, type ReactNode, type SyntheticEvent } from
 interface AuthShellProps {
   children: ReactNode;
   contentClassName?: string;
-  footer?: ReactNode;
+  footer?: ReactNode | null;
   heroVariant?: 'video' | 'default';
   layoutVariant?: 'default' | 'login';
   showBrand?: boolean;
@@ -100,21 +100,23 @@ export function AuthShell({
 }: AuthShellProps) {
   if (layoutVariant === 'login') {
     return (
-      <main className="relative min-h-dvh overflow-hidden bg-[#f5f8ff] font-sans text-[#172033] lg:grid lg:grid-cols-[47%_53%]">
+      <main className="relative min-h-dvh overflow-hidden bg-[#f5f8ff] font-sans text-[#172033] dark:bg-[#0b1220] dark:text-white lg:grid lg:grid-cols-[40%_60%]">
         <section className="relative z-20 flex min-h-dvh min-w-0 flex-col overflow-hidden px-5 pb-8 pt-0 sm:px-8 lg:px-10 xl:px-16">
           <LoginEducationDecor />
 
           <div className="relative z-20 mx-auto flex w-full max-w-[calc(100vw-64px)] flex-1 items-start pt-[210px] sm:max-w-[620px] sm:pt-[250px] lg:mx-0 lg:ml-auto lg:max-w-none lg:items-center lg:pt-0">
             <div
-              className={`login-card relative max-w-full rounded-[26px] border border-[#235bbe]/10 bg-white/95 px-6 py-7 shadow-[0_28px_70px_rgba(17,44,92,0.18),0_8px_24px_rgba(17,44,92,0.08)] sm:px-9 sm:py-9 ${contentClassName}`}
+              className={`login-card relative max-w-full rounded-[26px] border border-[#235bbe]/10 bg-white/95 px-6 py-7 shadow-[0_28px_70px_rgba(17,44,92,0.18),0_8px_24px_rgba(17,44,92,0.08)] dark:border-white/10 dark:bg-[#0f1826] sm:px-9 sm:py-9 ${contentClassName}`}
             >
               {children}
             </div>
           </div>
 
-          <footer className="relative z-20 mt-8 text-center text-xs leading-4 text-[#657087] lg:max-w-[520px]">
-            {footer}
-          </footer>
+          {footer && (
+            <footer className="relative z-20 mt-8 hidden text-center text-xs leading-4 text-[#657087] lg:block lg:max-w-[520px] dark:text-[#aeb8c8]">
+              {footer}
+            </footer>
+          )}
         </section>
 
         <AuthAside

@@ -5,6 +5,7 @@ import {
   Loader2,
   Lock,
   Mail,
+  Shield,
 } from 'lucide-react';
 import {
   useEffect,
@@ -28,6 +29,8 @@ export function Login() {
   const institutionSlug = searchParams.get('institution');
 
   const brandingQuery = usePublicInstitutionBranding(institutionSlug);
+
+  const displayName = brandingQuery.data?.name ?? 'EduManager Pro';
 
   useEffect(() => {
     if (profile) {
@@ -58,8 +61,9 @@ export function Login() {
       heroVariant="video"
       layoutVariant="login"
       showBrand={false}
+      footer={null}
     >
-      <div className="mb-8 flex h-[118px] items-center justify-center rounded-2xl border border-[#dce9ff] bg-gradient-to-br from-white to-[#f5f8ff] px-5">
+      <div className="mb-8 flex h-[118px] items-center justify-center">
         {institutionSlug && brandingQuery.isLoading ? (
           <Loader2
             className="h-6 w-6 animate-spin text-[#657087]"
@@ -80,6 +84,12 @@ export function Login() {
         )}
       </div>
 
+      {displayName && (
+        <p className="mb-2 text-center text-[22px] font-bold text-[#172033] dark:text-white">
+          {displayName}
+        </p>
+      )}
+
       <div className="mb-6">
         <h1 className="sr-only">Acessar sua conta</h1>
         <div
@@ -88,6 +98,13 @@ export function Login() {
         />
       </div>
 
+      <p className="mb-2 text-center text-[22px] font-semibold text-[#172033] dark:text-white">
+        Bem-vindo de volta!
+      </p>
+      <p className="mb-6 text-center text-[15px] text-[#657087] dark:text-[#aeb8c8]">
+        Acesse sua conta institucional para continuar gerenciando a escola.
+      </p>
+
       <form
         onSubmit={handleSubmit}
         className="space-y-5"
@@ -95,13 +112,13 @@ export function Login() {
         <div className="space-y-2">
           <label
             htmlFor="login-email"
-            className="block text-xs font-semibold uppercase tracking-wide text-[#657087]"
+            className="block text-xs font-semibold uppercase tracking-wide text-[#657087] dark:text-[#aeb8c8]"
           >
             E-mail institucional
           </label>
           <div className="relative">
             <Mail
-              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087]"
+              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087] dark:text-[#aeb8c8]"
               aria-hidden="true"
             />
             <input
@@ -113,7 +130,7 @@ export function Login() {
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               placeholder="nome@instituicao.edu.br"
-              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 dark:bg-[#18212f] px-11 text-sm text-[#172033] dark:text-white shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
             />
           </div>
         </div>
@@ -121,13 +138,13 @@ export function Login() {
         <div className="space-y-2">
           <label
             htmlFor="login-password"
-            className="block text-xs font-semibold uppercase tracking-wide text-[#657087]"
+            className="block text-xs font-semibold uppercase tracking-wide text-[#657087] dark:text-[#aeb8c8]"
           >
             Senha
           </label>
           <div className="relative">
             <Lock
-              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087]"
+              className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#657087] dark:text-[#aeb8c8]"
               aria-hidden="true"
             />
             <input
@@ -139,7 +156,7 @@ export function Login() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               placeholder="********"
-              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 px-11 pr-12 text-sm text-[#172033] shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
+              className="min-h-14 w-full rounded-xl border border-[#284a82]/[0.16] bg-white/95 dark:bg-[#18212f] px-11 pr-12 text-sm text-[#172033] dark:text-white shadow-[0_5px_16px_rgba(27,62,119,0.06)] outline-none transition placeholder:text-[#8a94a8] focus:border-[#075be8] focus:ring-4 focus:ring-[#075be8]/[0.13]"
             />
             <button
               type="button"
@@ -152,7 +169,7 @@ export function Login() {
               onClick={() =>
                 setShowPassword((current) => !current)
               }
-              className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#657087] transition hover:bg-[#eef5ff] hover:text-[#075be8] focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
+              className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-[#657087] dark:text-[#aeb8c8] transition hover:bg-[#eef5ff] dark:hover:bg-[#243244] hover:text-[#075be8] dark:hover:text-[#b9c8ff] focus:outline-none focus:ring-2 focus:ring-[#075be8]/30"
             >
               {showPassword ? (
                 <EyeOff
@@ -207,6 +224,16 @@ export function Login() {
           {loading ? 'Entrando...' : 'Entrar no sistema'}
         </button>
       </form>
+
+      <div className="mt-8 flex items-center justify-center gap-2 text-[13px] text-[#657087] dark:text-[#aeb8c8]">
+        <Shield className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+        <span>Seus dados estão protegidos com segurança de nível institucional.</span>
+      </div>
+
+      <footer className="mt-10 hidden lg:block text-center text-xs leading-4 text-[#657087] dark:text-[#aeb8c8]">
+        <p>Educação que transforma. Tecnologia que aproxima.</p>
+        <p>© 2026 {displayName}. Todos os direitos reservados.</p>
+      </footer>
     </AuthShell>
   );
 }
