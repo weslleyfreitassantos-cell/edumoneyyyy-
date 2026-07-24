@@ -100,35 +100,38 @@ export function AuthShell({
 }: AuthShellProps) {
   if (layoutVariant === 'login') {
     return (
-      <main className="relative min-h-dvh overflow-hidden bg-[#f5f8ff] font-sans text-[#172033] lg:grid lg:grid-cols-[40%_60%] lg:h-dvh lg:min-h-0 lg:bg-white lg:dark:bg-[#0f172a]">
-        <section className="relative z-20 flex min-h-dvh min-w-0 flex-col overflow-hidden px-5 pb-8 pt-0 sm:px-8 lg:h-full lg:min-h-0 lg:overflow-visible lg:bg-transparent lg:px-0 lg:py-6 lg:items-start lg:justify-center">
-          <LoginEducationDecor />
+      <div className="login-shell min-h-dvh bg-[#060d1f] font-sans text-[#172033] dark:bg-[#060d1f]">
+        <main className="login-shell-main mx-auto flex min-h-dvh max-w-[1600px] flex-col px-6 py-6 lg:px-8 lg:pt-7 lg:pb-6">
+          <div className="flex flex-1 flex-col gap-5 lg:flex-row lg:items-stretch">
+            <section className="relative z-20 flex min-w-0 flex-col items-center justify-center px-1 sm:px-4 lg:flex-[0_0_minmax(430px,560px)] lg:items-center lg:justify-center lg:px-2">
+              <LoginEducationDecor />
 
-          <div className="relative z-20 mx-auto flex w-full max-w-[calc(100vw-64px)] flex-1 items-start pt-[210px] sm:max-w-[620px] sm:pt-[250px] lg:mx-0 lg:max-w-none lg:flex-initial lg:items-center lg:pt-0 lg:w-[clamp(520px,42vw,700px)] lg:ml-[clamp(24px,4vw,80px)]">
-            <div
-              className={`login-card relative overflow-hidden max-w-full rounded-[26px] border border-[#235bbe]/10 bg-white/95 px-6 py-7 shadow-[0_28px_70px_rgba(17,44,92,0.18),0_8px_24px_rgba(17,44,92,0.08)] sm:px-9 sm:py-9 lg:w-full lg:max-w-none lg:max-h-[calc(100dvh-3rem)] lg:overflow-x-hidden lg:overflow-y-auto lg:border-white/60 lg:bg-[#f5f8ff]/95 lg:px-10 lg:py-9 xl:px-12 xl:py-10 dark:bg-[#111b2d]/95 dark:border-[#334155] lg:backdrop-blur-sm ${contentClassName}`}
-            >
-              <div className="hidden lg:block">
-                <LoginEducationDecor />
+              <div className="relative z-20 w-full max-w-[calc(100vw-48px)] pt-[200px] sm:max-w-[560px] sm:pt-[230px] lg:w-full lg:max-w-[550px] lg:pt-0">
+                <div
+                  className={`login-card relative max-h-[calc(100dvh-130px)] w-full overflow-y-auto rounded-[24px] border border-[#235bbe]/15 bg-[#0b1430]/95 px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] backdrop-blur-sm dark:border-[#334155] sm:px-10 lg:px-11 lg:py-9 ${contentClassName}`}
+                >
+                  <div className="relative z-10">
+                    {children}
+                  </div>
+                </div>
               </div>
-              <div className="relative z-10">
-                {children}
-              </div>
-            </div>
+            </section>
+
+            <aside className="relative mt-5 min-h-[230px] overflow-hidden rounded-t-[24px] sm:rounded-[24px] lg:mt-0 lg:h-[calc(100dvh-115px)] lg:min-h-0 lg:flex-[1_1_minmax(0,1fr)] lg:rounded-[24px]">
+              <AuthAside
+                variant={heroVariant}
+                layoutVariant="login"
+              />
+            </aside>
           </div>
 
           {footer && (
-            <footer className="relative z-20 mt-8 text-center text-xs leading-4 text-[#657087] lg:mt-6 lg:w-[clamp(520px,42vw,700px)] lg:ml-[clamp(24px,4vw,80px)] lg:text-left lg:text-[#657087] lg:dark:text-[#aeb8c8] lg:drop-shadow-none">
+            <footer className="login-shell-footer mt-5 hidden h-[70px] shrink-0 flex-col items-center justify-center text-center text-xs leading-5 text-[#7c8ba8] lg:flex dark:text-[#aeb8c8]">
               {footer}
             </footer>
           )}
-        </section>
-
-        <AuthAside
-          variant={heroVariant}
-          layoutVariant="login"
-        />
-      </main>
+        </main>
+      </div>
     );
   }
 
@@ -526,7 +529,7 @@ export function AuthAside({
 
   const asideClassName =
     layoutVariant === 'login'
-      ? 'absolute inset-x-0 top-0 z-10 h-[260px] overflow-hidden bg-[#082b67] text-white sm:h-[300px] lg:relative lg:col-start-2 lg:h-full lg:min-h-0 lg:w-full lg:overflow-hidden'
+      ? 'absolute inset-0 z-10 h-full w-full overflow-hidden bg-[#082b67] text-white'
       : 'relative hidden min-h-screen w-full overflow-hidden bg-[#00236f] text-white lg:flex lg:flex-col lg:items-center lg:justify-center';
 
   return (

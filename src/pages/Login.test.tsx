@@ -188,8 +188,28 @@ describe('Login', () => {
 
     expect(loginCard).not.toBeNull();
     expect(loginCard?.className).toContain('login-card');
-    expect(videoAside?.className).toContain('h-[260px]');
-    expect(videoAside?.className).toContain('lg:min-h-0');
+    expect(videoAside?.className).toContain('rounded-[24px]');
+  });
+
+  it('renderiza rodape da pagina separado do card em desktop', () => {
+    const { container } = renderLogin();
+
+    const pageFooter = container.querySelector('.login-shell-footer');
+    expect(pageFooter).not.toBeNull();
+    expect(pageFooter?.textContent).toContain('Educação que transforma');
+    expect(pageFooter?.textContent).toContain('© 2026 EduManager Pro');
+
+    const footerInCard = container.querySelector('.login-card footer');
+    expect(footerInCard).toBeNull();
+  });
+
+  it('aplica gradient de branding na linha colorida', () => {
+    const { container } = renderLogin();
+
+    const divider = container.querySelector('.login-brand-block > div[aria-hidden="true"]');
+    expect(divider).not.toBeNull();
+    const bg = (divider as HTMLElement).style.backgroundImage;
+    expect(bg).toContain('linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))');
   });
 
   it('submete o login usando o useAuth', async () => {
