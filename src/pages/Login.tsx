@@ -95,8 +95,8 @@ export function Login() {
           } as CSSProperties
         }
       >
-        <div className="login-brand-block mb-6 flex flex-col items-center gap-3">
-          <div className="flex items-center justify-center min-h-[48px]">
+        <div className="login-brand-block mb-3 flex flex-col items-center">
+          <div className="flex items-center justify-center min-h-[36px]">
             {brandingQuery.isLoading ? (
               <Loader2
                 className="h-6 w-6 animate-spin text-slate-400"
@@ -106,7 +106,7 @@ export function Login() {
               <img
                 src={branding.logoUrl}
                 alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-                className="max-h-[100px] max-w-[100px] lg:max-h-[112px] lg:max-w-[112px] object-contain"
+                className="max-h-[190px] max-w-[320px] object-contain sm:max-h-[210px] sm:max-w-[360px] lg:max-h-[230px] lg:max-w-[400px]"
               />
             ) : (
               <div
@@ -114,16 +114,16 @@ export function Login() {
                 aria-hidden="true"
               />
             )}
-          </div>
+         </div>
 
           {branding.displayName && (
-            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 text-center">
+            <p className="mt-1 text-sm font-bold text-slate-800 dark:text-slate-100 text-center">
               {branding.displayName}
-            </p>
+           </p>
           )}
 
           <div
-            className="mx-auto h-1.5 w-16 rounded-full"
+            className="mt-1 mx-auto h-[4px] w-12 rounded-full"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
@@ -132,10 +132,10 @@ export function Login() {
           />
 
           <div className="mt-2 text-center">
-            <h1 className="text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+            <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
               Bem-vindo de volta!
             </h1>
-            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">
+            <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
               Entre com suas credenciais para acessar a plataforma.
             </p>
           </div>
@@ -143,9 +143,9 @@ export function Login() {
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-5"
+          className="space-y-3"
         >
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             <label
               htmlFor="login-email"
               className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
@@ -166,12 +166,12 @@ export function Login() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="nome@instituicao.edu.br"
-                className="h-[56px] w-full rounded-xl border border-slate-300 bg-white px-11 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-11 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
               />
             </div>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             <label
               htmlFor="login-password"
               className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
@@ -192,7 +192,7 @@ export function Login() {
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
                 placeholder="********"
-                className="h-[56px] w-full rounded-xl border border-slate-300 bg-white px-11 pr-12 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-11 pr-12 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
               />
               <button
                 type="button"
@@ -244,7 +244,7 @@ export function Login() {
             type="submit"
             disabled={loading}
             aria-live="polite"
-            className="inline-flex h-[62px] w-full items-center justify-center gap-2 rounded-xl text-base font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20 disabled:cursor-not-allowed disabled:opacity-70"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
@@ -264,9 +264,9 @@ export function Login() {
             {loading ? 'Entrando...' : 'Entrar no sistema'}
           </button>
 
-          <div className="flex items-center justify-center gap-2 pt-2 text-xs text-slate-500 dark:text-slate-400">
-            <ShieldCheck className="h-4 w-4 text-emerald-500" aria-hidden="true" />
-            <span>Ambiente seguro. Acesso restrito a usuários autorizados.</span>
+          <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
+            <span>Ambiente seguro. Acesso restrito.</span>
           </div>
         </form>
       </div>

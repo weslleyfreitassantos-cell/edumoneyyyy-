@@ -1,16 +1,12 @@
 import { useRef, useState, type FormEvent } from 'react';
 import {
   ArrowLeft,
-  KeyRound,
   Loader2,
   Mail,
   Send,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import {
-  AuthAlert,
-  AuthShell,
-} from '../components/auth/AuthLayout';
+import { AuthShell } from '../components/auth/AuthLayout';
 import { useResolvedBranding } from '../hooks/useBranding';
 import { FALLBACK_BRANDING } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
@@ -90,7 +86,8 @@ export default function ForgotPassword() {
 
   const brandingQuery = useResolvedBranding();
   const branding = brandingQuery.data ?? FALLBACK_BRANDING;
-  const displayName = brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
+  const displayName =
+    brandingQuery.data?.displayName ?? branding.displayName ?? 'EduManager Pro';
 
   useEffect(
     () => applyDocumentBranding(branding),
@@ -108,10 +105,14 @@ export default function ForgotPassword() {
   };
 
   const footer = (
-    <>
-      <p>Educação que transforma. Tecnologia que aproxima.</p>
-      <p>© 2026 {displayName}. Todos os direitos reservados.</p>
-    </>
+    <div className="space-y-1">
+      <p className="font-medium text-slate-700 dark:text-slate-300">
+        Educação que transforma. Tecnologia que aproxima.
+     </p>
+      <p className="text-slate-500 dark:text-slate-400">
+        © 2026 {displayName}. Todos os direitos reservados.
+     </p>
+   </div>
   );
 
   async function handleSubmit(
@@ -179,77 +180,82 @@ export default function ForgotPassword() {
       footer={footer}
     >
       <div style={brandStyle}>
-        <div className="login-brand-block flex flex-col items-center">
-          <div className="flex items-center justify-center">
+        <div className="login-brand-block mb-3 flex flex-col items-center">
+          <div className="flex items-center justify-center min-h-[36px]">
             {brandingQuery.isLoading ? (
               <Loader2
-                className="h-6 w-6 animate-spin text-[#7c8ba8]"
+                className="h-5 w-5 animate-spin text-slate-400"
                 aria-label="Carregando identidade visual"
               />
             ) : branding.logoUrl ? (
               <img
                 src={branding.logoUrl}
                 alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-                className="max-h-[100px] max-w-[112px] object-contain sm:max-h-[112px]"
+                className="max-h-[190px] max-w-[320px] object-contain sm:max-h-[210px] sm:max-w-[360px] lg:max-h-[230px] lg:max-w-[400px]"
               />
             ) : (
               <div
-                className="h-20 w-20 rounded-2xl border border-dashed border-[#3a5294]/50 bg-[#0f1a3a]/60"
+                className="h-12 w-32 rounded-2xl border border-dashed border-blue-200 bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800/50"
                 aria-hidden="true"
               />
             )}
-          </div>
-          <p className="mt-3 text-center text-[26px] font-bold leading-[1.2] text-white dark:text-white">
-            {displayName}
-          </p>
+         </div>
+
+          {branding.displayName && (
+            <p className="mt-1 text-sm font-bold text-slate-800 dark:text-slate-100 text-center">
+              {branding.displayName}
+           </p>
+          )}
+
           <div
-            className="mt-4 h-[5px] w-16 rounded-full"
+            className="mt-1 mx-auto h-[4px] w-12 rounded-full"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
             }}
             aria-hidden="true"
           />
-        </div>
 
-        <h1 className="sr-only">Recuperar senha</h1>
-        <p className="mt-7 text-center text-[25px] font-bold leading-[1.2] text-white dark:text-white">
-          Recuperar senha
-        </p>
-        <p className="mt-2 mb-7 text-center text-[15px] leading-[1.6] text-[#9fb0cc] dark:text-[#aeb8c8]">
-          Informe seu e-mail institucional para receber as instruções de redefinição.
-        </p>
+          <div className="mt-2 text-center">
+            <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+              Recuperar senha
+           </h1>
+            <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
+              Informe seu e-mail institucional para receber as instruções de redefinição.
+           </p>
+         </div>
+       </div>
 
         {feedback && (
-          <div className="mb-6">
+          <div className="mb-3">
             <div
               role="alert"
-              className={`rounded-xl border px-3 py-2 text-sm ${
+              className={`rounded-xl border p-2.5 text-xs ${
                 feedback.type === 'success'
-                  ? 'border-[#b7e4cf] bg-[#eefbf5] text-[#005236]'
-                  : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
+                  ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-300'
+                  : 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300'
               }`}
             >
               {feedback.message}
-            </div>
-          </div>
+           </div>
+         </div>
         )}
 
         <form
           onSubmit={(event) => void handleSubmit(event)}
           noValidate
-          className="space-y-[22px]"
+          className="space-y-3"
         >
-          <div className="space-y-2">
+          <div className="space-y-1">
             <label
               htmlFor="password-recovery-email"
-              className="block text-xs font-semibold uppercase tracking-wide text-[#9fb0cc] dark:text-[#aeb8c8]"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
             >
               E-mail institucional
-            </label>
+           </label>
             <div className="relative">
               <Mail
-                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#9fb0cc] dark:text-[#aeb8c8]"
+                className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500"
                 aria-hidden="true"
               />
               <input
@@ -262,21 +268,21 @@ export default function ForgotPassword() {
                 }}
                 autoComplete="email"
                 placeholder="nome@instituicao.edu.br"
-                className="h-[60px] w-full rounded-xl border border-[#2a3a66]/40 bg-[#0c1530]/80 px-12 text-sm text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] outline-none transition placeholder:text-[#6b7a99] focus:border-[var(--brand-primary)] focus:ring-4 focus:ring-[var(--brand-primary)]/20"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-10 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
               />
-            </div>
+           </div>
             {fieldError && (
-              <p className="text-sm leading-5 text-[#ffb4ab]">
+              <p className="text-xs text-red-600 dark:text-red-400">
                 {fieldError}
-              </p>
+             </p>
             )}
-          </div>
+         </div>
 
           <button
             type="submit"
             disabled={isSubmitting}
             aria-live="polite"
-            className="mt-[24px] inline-flex h-[64px] w-full items-center justify-center gap-2 rounded-xl px-5 text-[17px] font-bold text-white shadow-[0_14px_26px_rgba(0,0,0,0.25)] transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-[var(--brand-primary)]/25 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20 disabled:cursor-not-allowed disabled:opacity-70"
             style={{
               backgroundImage:
                 'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
@@ -294,23 +300,22 @@ export default function ForgotPassword() {
               />
             )}
             {isSubmitting ? 'Enviando...' : 'Enviar link de recuperação'}
-          </button>
-        </form>
+         </button>
 
-        <div className="mt-8 text-center">
-          <Link
-            to="/login"
-            style={{ color: 'var(--brand-primary)' }}
-            className="inline-flex items-center gap-2 text-[14px] font-semibold underline-offset-4 transition hover:underline focus:outline-none focus:ring-2 focus:ring-[var(--brand-primary)]/30"
-          >
-            <ArrowLeft
-              className="h-4 w-4"
-              aria-hidden="true"
-            />
-            Voltar para o login
-          </Link>
-        </div>
-      </div>
-    </AuthShell>
+          <div className="flex justify-center">
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 underline-offset-4 transition hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              <ArrowLeft
+                className="h-3.5 w-3.5"
+                aria-hidden="true"
+              />
+              Voltar para o login
+           </Link>
+         </div>
+       </form>
+     </div>
+   </AuthShell>
   );
 }
