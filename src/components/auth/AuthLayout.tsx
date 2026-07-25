@@ -111,10 +111,10 @@ export function AuthShell({
     return (
       <div className={loginShellClasses}>
         <main className={loginMainClasses}>
-          <aside className="relative min-h-[280px] w-full lg:w-1/2 lg:flex-none overflow-hidden">
+          <aside className="relative min-h-[280px] w-full lg:w-[calc(50%+5px)] lg:flex-none overflow-hidden">
             <AuthAside variant={heroVariant} layoutVariant="login" />
           </aside>
-          <section className="relative z-20 flex min-w-0 flex-col items-center justify-center w-full lg:w-1/2">
+          <section className="relative z-20 flex min-w-0 flex-col items-center justify-center w-full lg:w-[calc(50%-5px)]">
             <LoginEducationDecor />
             <div className="relative z-20 w-full lg:max-w-[480px]">
               <div className={`login-card relative w-full rounded-[24px] lg:rounded-none ${theme === 'dark' ? 'bg-[#0b1430]/95' : 'bg-[#f5f8ff] border-2 border-[#c7d9f8]'} lg:border-none lg:bg-transparent px-7 py-9 shadow-[0_18px_48px_rgba(3,8,24,0.55)] lg:shadow-none backdrop-blur-sm lg:backdrop-blur-none sm:px-10 lg:px-12 lg:py-16 ${contentClassName}`}>
@@ -213,13 +213,14 @@ export function AuthAside({
         <>
           <div className="auth-hero-fallback" aria-hidden="true" />
           <div className="auth-hero-video-layer">
-            <video
-              ref={videoRef}
-              className="auth-hero-video opacity-100 z-20"
-              autoPlay
-              muted
-              playsInline
-              preload="auto"
+              <video
+                ref={videoRef}
+                className="auth-hero-video opacity-100 z-20"
+                autoPlay
+                muted
+                playsInline
+                webkit-playsinline="true"
+                preload="auto"
               aria-hidden="true"
               tabIndex={-1}
               onTimeUpdate={handleTimeUpdate}

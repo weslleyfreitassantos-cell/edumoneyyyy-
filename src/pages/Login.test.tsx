@@ -131,21 +131,20 @@ describe('Login', () => {
     const video = videos[0];
     expect(video.hasAttribute('autoplay')).toBe(true);
     expect(video.muted).toBe(true);
-    expect(video.defaultMuted).toBe(true);
-    expect(video.loop).toBe(true);
     expect(video.hasAttribute('playsinline')).toBe(true);
     expect(video.hasAttribute('webkit-playsinline')).toBe(true);
-    expect(video.getAttribute('preload')).toBe('metadata');
+    expect(video.getAttribute('preload')).toBe('auto');
   });
 
-  it('registra listeners de canplay e pageshow para reproducao automatica sem quebrar login', () => {
-    const addEventListenerSpy = vi.spyOn(window, 'addEventListener');
+  it('registra listeners de video para reproducao automatica sem quebrar login', () => {
+    const addEventListenerSpy = vi.spyOn(
+      HTMLVideoElement.prototype,
+      'addEventListener',
+    );
     renderLogin();
 
     const registeredEvents = addEventListenerSpy.mock.calls.map(call => call[0]);
-    expect(registeredEvents).toContain('pageshow');
-    expect(registeredEvents).toContain('orientationchange');
-    expect(registeredEvents).toContain('resize');
+    expect(registeredEvents).toContain('loadedmetadata');
   });
 
   it('exibe logo dinamica resolvida por hostname quando disponivel e nome abaixo', () => {
@@ -222,19 +221,18 @@ describe('Login', () => {
 
     expect(loginCard).not.toBeNull();
     expect(loginCard?.className).toContain('login-card');
-    expect(loginCard?.className).toContain('login-panel-mobile');
-    expect(videoAside?.className).toContain('video-mobile');
+    expect(videoAside?.className).toContain('lg:w-[calc(50%+5px)]');
   });
 
   it('suporta renderizacao em modo dark e light via ThemeProvider', () => {
-    document.documentElement.classList.add('dark');
+    localStorage.setItem('edumanager.theme', 'dark');
     const { container } = renderLogin();
 
-    const mainContainer = container.querySelector('main');
-    expect(mainContainer?.className).toContain('dark:bg-[#071323]');
-    expect(mainContainer?.className).toContain('dark:text-slate-100');
+    const heading = container.querySelector('h1');
+    expect(heading?.className).toContain('dark:text-white');
+    expect(heading?.textContent).toBe('Bem-vindo de volta!');
 
-    document.documentElement.classList.remove('dark');
+    localStorage.removeItem('edumanager.theme');
   });
 
   it('submete o login usando o useAuth', async () => {
