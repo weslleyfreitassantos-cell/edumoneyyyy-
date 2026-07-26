@@ -121,7 +121,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('exibe plataforma e administracao para SUPER_ADMIN', () => {
+  it('exibe somente Plataforma para SUPER_ADMIN', () => {
     renderSidebar({
       route: '/platform',
       profile: {
@@ -142,10 +142,11 @@ describe('Sidebar', () => {
       }).getAttribute('aria-current'),
     ).toBe('page');
     expect(
-      screen.getByRole('link', {
+      screen.queryByRole('link', {
         name: /administração/i,
       }),
-    ).toBeTruthy();
+    ).toBeNull();
+    expect(screen.queryByText(/institui/i)).toBeNull();
   });
 
   it('omite administração para TEACHER', () => {

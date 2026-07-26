@@ -13,13 +13,20 @@ import {
   X,
 } from 'lucide-react';
 import {
+  useNavigate,
+} from 'react-router-dom';
+import {
+  useEffect,
   useMemo,
+  useRef,
   useState,
   type FormEvent,
+  type KeyboardEvent,
   type ReactNode,
 } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
+import { useInstitution } from '../../contexts/InstitutionContext';
 import {
   useAccounts,
   useCreateClientAccount,
@@ -36,6 +43,7 @@ import {
 import type { AccountStatus } from '../../lib/permissions';
 import {
   AccountServiceError,
+  type AccountInstitutionSummary,
   type AccountSummaryRow,
 } from '../../services/accountService';
 import { BrandingEditor } from '../../components/branding/BrandingEditor';
@@ -55,6 +63,13 @@ type AccountFormFieldErrors = Partial<
 interface DeleteDialogState {
   account: AccountSummaryRow;
   confirmation: string;
+  error: string | null;
+}
+
+interface InstitutionAccessDialogState {
+  account: AccountSummaryRow;
+  selectedInstitutionId: string;
+  schoolSearch: string;
   error: string | null;
 }
 
@@ -169,6 +184,21 @@ function formatInstitutionNames(account: AccountSummaryRow): string {
   return `${visibleNames} e mais ${hiddenCount}.`;
 }
 
+function getActiveAccountInstitutions(
+  account: AccountSummaryRow,
+): AccountInstitutionSummary[] {
+  return account.institutions.filter(
+    (institution) => institution.active !== false,
+  );
+}
+
+function normalizeInstitutionSearch(value: string): string {
+  return value
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLocaleLowerCase('pt-BR');
+}
+
 function accountMatchesSearch(
   account: AccountSummaryRow,
   query: string,
@@ -280,6 +310,11 @@ function Field({
 
 export default function PlatformPage() {
   const { profile } = useAuth();
+  const navigate = useNavigate();
+  const { setCurrentInstitutionId } =
+    useInstitution();
+  const institutionSearchInputRef =
+    useRef<HTMLInputElement | null>(null);
   const accountsQuery = useAccounts();
   const createAccount = useCreateClientAccount();
   const updateAccount = useUpdateClientAccount();
@@ -305,6 +340,15 @@ export default function PlatformPage() {
   >(null);
   const [deleteDialog, setDeleteDialog] =
     useState<DeleteDialogState | null>(null);
+  const [
+    institutionAccessDialog,
+    setInstitutionAccessDialog,
+  ] =
+    useState<InstitutionAccessDialogState | null>(
+      null,
+    );
+  const [isAccessingInstitution, setIsAccessingInstitution] =
+    useState(false);
 
   const accounts = accountsQuery.data ?? [];
   const canDeleteAccounts =
@@ -367,6 +411,63 @@ export default function PlatformPage() {
   );
   const deletePreservesSuperAdmin =
     deleteDialogOwner?.platform_role === 'SUPER_ADMIN';
+  const institutionAccessDialogOwner =
+    institutionAccessDialog?.account.owner ?? null;
+  const institutionAccessOptions = useMemo(
+    () =>
+      institutionAccessDialog
+        ? getActiveAccountInstitutions(
+            institutionAccessDialog.account,
+          )
+        : [],
+    [institutionAccessDialog],
+  );
+  const normalizedInstitutionAccessSearch =
+    normalizeInstitutionSearch(
+      institutionAccessDialog?.schoolSearch ?? '',
+    );
+  const visibleInstitutionAccessSearch =
+    institutionAccessDialog?.schoolSearch
+      .trim()
+      .replace(/\s+/g, ' ') ?? '';
+  const filteredInstitutionAccessOptions = useMemo(
+    () =>
+      normalizedInstitutionAccessSearch
+        ? institutionAccessOptions.filter(
+            (institution) =>
+              normalizeInstitutionSearch(
+                institution.name,
+              ).includes(
+                normalizedInstitutionAccessSearch,
+              ),
+          )
+        : institutionAccessOptions,
+    [
+      institutionAccessOptions,
+      normalizedInstitutionAccessSearch,
+    ],
+  );
+  const institutionAccessResultCount =
+    filteredInstitutionAccessOptions.length;
+  const institutionAccessResultLabel =
+    `${institutionAccessResultCount} ` +
+    (institutionAccessResultCount === 1
+      ? 'escola encontrada'
+      : 'escolas encontradas');
+  const canAccessSelectedInstitution = Boolean(
+    institutionAccessDialog?.selectedInstitutionId &&
+      institutionAccessOptions.some(
+        (institution) =>
+          institution.id ===
+          institutionAccessDialog.selectedInstitutionId,
+      ),
+  );
+
+  useEffect(() => {
+    if (institutionAccessDialog) {
+      institutionSearchInputRef.current?.focus();
+    }
+  }, [institutionAccessDialog?.account.id]);
 
   function clearFilters(): void {
     setSearchTerm('');
@@ -460,6 +561,116 @@ export default function PlatformPage() {
     }
 
     setDeleteDialog(null);
+  }
+
+  function openInstitutionAccessDialog(
+    account: AccountSummaryRow,
+  ): void {
+    const activeInstitutions =
+      getActiveAccountInstitutions(account);
+
+    setFeedback(null);
+    setInstitutionAccessDialog({
+      account,
+      selectedInstitutionId:
+        activeInstitutions.length === 1
+          ? activeInstitutions[0]?.id ?? ''
+          : '',
+      schoolSearch: '',
+      error: null,
+    });
+  }
+
+  function closeInstitutionAccessDialog(): void {
+    if (isAccessingInstitution) {
+      return;
+    }
+
+    setInstitutionAccessDialog(null);
+  }
+
+  function clearInstitutionAccessSearch(): void {
+    setInstitutionAccessDialog((current) =>
+      current
+        ? {
+            ...current,
+            schoolSearch: '',
+            error: null,
+          }
+        : current,
+    );
+    institutionSearchInputRef.current?.focus();
+  }
+
+  function selectInstitutionAccessOption(
+    institutionId: string,
+  ): void {
+    setInstitutionAccessDialog((current) =>
+      current
+        ? {
+            ...current,
+            selectedInstitutionId: institutionId,
+            error: null,
+          }
+        : current,
+    );
+  }
+
+  function handleInstitutionAccessKeyDown(
+    event: KeyboardEvent<HTMLDivElement>,
+  ): void {
+    if (event.key === 'Escape') {
+      event.stopPropagation();
+      closeInstitutionAccessDialog();
+    }
+  }
+
+  async function handleAccessInstitution(): Promise<void> {
+    if (
+      !institutionAccessDialog ||
+      !institutionAccessDialog.selectedInstitutionId ||
+      isAccessingInstitution
+    ) {
+      return;
+    }
+
+    setIsAccessingInstitution(true);
+    setInstitutionAccessDialog((current) =>
+      current
+        ? {
+            ...current,
+            error: null,
+          }
+        : current,
+    );
+
+    try {
+      const result = await setCurrentInstitutionId(
+        institutionAccessDialog.selectedInstitutionId,
+      );
+
+      if (result.success === true) {
+        setInstitutionAccessDialog(null);
+        navigate('/admin');
+        return;
+      }
+
+      const errorMessage =
+        'message' in result && result.message
+          ? result.message
+          : 'Nao foi possivel acessar esta escola.';
+
+      setInstitutionAccessDialog((current) =>
+        current
+          ? {
+              ...current,
+              error: errorMessage,
+            }
+          : current,
+      );
+    } finally {
+      setIsAccessingInstitution(false);
+    }
   }
 
   async function handleDeleteAccount(): Promise<void> {
@@ -955,13 +1166,32 @@ export default function PlatformPage() {
                           </div>
                         </td>
                         <td className="px-4 py-4 text-[#444651]">
-                          <p className="font-medium text-[#191c1d]">
-                            {account.owner?.full_name ??
-                              'Sem owner'}
-                          </p>
-                          <p className="text-xs">
-                            {account.owner?.email ?? ''}
-                          </p>
+                          {account.owner ? (
+                            <button
+                              type="button"
+                              onClick={() =>
+                                openInstitutionAccessDialog(
+                                  account,
+                                )
+                              }
+                              className="-m-1 max-w-full rounded-md p-1 text-left outline-none transition-colors hover:text-[#005bbf] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                              aria-label={`Acessar escolas de ${account.owner.full_name}`}
+                            >
+                              <span className="block truncate font-medium text-[#191c1d] transition-colors hover:text-[#005bbf]">
+                                {account.owner.full_name}
+                              </span>
+                              <span className="block truncate text-xs">
+                                {account.owner.email}
+                              </span>
+                            </button>
+                          ) : (
+                            <>
+                              <p className="font-medium text-[#191c1d]">
+                                Sem owner
+                              </p>
+                              <p className="text-xs" />
+                            </>
+                          )}
                         </td>
                         <td className="px-4 py-4">
                           <StatusBadge status={account.status} />
@@ -1102,6 +1332,242 @@ export default function PlatformPage() {
             </div>
           )}
         </section>
+
+        {institutionAccessDialog &&
+          institutionAccessDialogOwner && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6 dark:bg-black/60"
+              role="presentation"
+              onKeyDown={handleInstitutionAccessKeyDown}
+            >
+              <section
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="institution-access-title"
+                className="max-h-[calc(100dvh-48px)] w-full max-w-[620px] overflow-y-auto rounded-xl border border-transparent bg-white p-5 shadow-xl dark:border-[#334155] dark:bg-[#182235]"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h2
+                      id="institution-access-title"
+                      className="text-xl font-semibold leading-7 text-[#191c1d] dark:text-[#f8fafc]"
+                    >
+                      Acessar escola da conta
+                    </h2>
+                    <p className="mt-1 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
+                      {institutionAccessDialog.account.name}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeInstitutionAccessDialog}
+                    disabled={isAccessingInstitution}
+                    className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247] dark:hover:text-[#f8fafc]"
+                    aria-label="Fechar acesso a escola"
+                  >
+                    <X
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
+                  </button>
+                </div>
+
+                <div className="mt-3 grid gap-2 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-3 text-sm text-[#444651] sm:grid-cols-2 dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]">
+                  <div>
+                    <p className="text-xs font-semibold uppercase text-[#757682]">
+                      ADMIN
+                    </p>
+                    <p className="mt-0.5 font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                      {institutionAccessDialogOwner.full_name}
+                    </p>
+                    <p className="truncate">
+                      {institutionAccessDialogOwner.email}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase text-[#757682]">
+                      Conta
+                    </p>
+                    <p className="mt-0.5 font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                      {institutionAccessDialog.account.name}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <label
+                    htmlFor="institution-access-search"
+                    className="block text-xs font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    Buscar escola
+                  </label>
+                  <div className="relative mt-1">
+                    <Search
+                      className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#757682] dark:text-[#94a3b8]"
+                      aria-hidden="true"
+                    />
+                    <input
+                      ref={institutionSearchInputRef}
+                      id="institution-access-search"
+                      type="search"
+                      value={
+                        institutionAccessDialog.schoolSearch
+                      }
+                      onChange={(event) =>
+                        setInstitutionAccessDialog(
+                          (current) =>
+                            current
+                              ? {
+                                  ...current,
+                                  schoolSearch:
+                                    event.target.value,
+                                  error: null,
+                                }
+                              : current,
+                        )
+                      }
+                      disabled={
+                        isAccessingInstitution ||
+                        institutionAccessOptions.length === 0
+                      }
+                      placeholder="Digite o nome da escola..."
+                      className="h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-9 text-sm text-[#191c1d] outline-none transition placeholder:text-[#757682] focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:placeholder:text-[#64748b] dark:disabled:bg-[#111827]"
+                    />
+                  </div>
+                </div>
+
+                {institutionAccessOptions.length === 0 ? (
+                  <div
+                    role="status"
+                    className="mt-4 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651] dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]"
+                  >
+                    Nenhuma escola ativa nesta conta.
+                  </div>
+                ) : (
+                  <div className="mt-3">
+                    <div className="flex min-h-8 flex-wrap items-center justify-between gap-2">
+                      <p className="text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]">
+                        {institutionAccessResultLabel}
+                      </p>
+
+                      {visibleInstitutionAccessSearch && (
+                        <button
+                          type="button"
+                          onClick={clearInstitutionAccessSearch}
+                          disabled={isAccessingInstitution}
+                          className="rounded-md px-2 py-1 text-xs font-semibold text-[#005bbf] outline-none transition hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                        >
+                          Limpar busca
+                        </button>
+                      )}
+                    </div>
+
+                    {filteredInstitutionAccessOptions.length > 0 ? (
+                      <div
+                        role="listbox"
+                        aria-label="Escolas encontradas"
+                        className="mt-2 max-h-[260px] overflow-y-auto rounded-lg border border-[#c5c5d3] bg-white p-1 dark:border-[#475569] dark:bg-[#0f172a]"
+                      >
+                        {filteredInstitutionAccessOptions.map(
+                          (institution) => {
+                            const isSelected =
+                              institutionAccessDialog.selectedInstitutionId ===
+                              institution.id;
+
+                            return (
+                              <button
+                                key={institution.id}
+                                type="button"
+                                role="option"
+                                aria-selected={isSelected}
+                                onClick={() =>
+                                  selectInstitutionAccessOption(
+                                    institution.id,
+                                  )
+                                }
+                                disabled={
+                                  isAccessingInstitution
+                                }
+                                className={`flex min-h-11 w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-60 ${
+                                  isSelected
+                                    ? 'bg-[#e8f0ff] text-[#061f6f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]'
+                                    : 'text-[#191c1d] hover:bg-[#f3f4f5] dark:text-[#e2e8f0] dark:hover:bg-[#243247]'
+                                }`}
+                              >
+                                <span
+                                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                                    isSelected
+                                      ? 'border-[#005bbf] bg-[#005bbf] text-white dark:border-[#93c5fd] dark:bg-[#93c5fd] dark:text-[#0f172a]'
+                                      : 'border-[#9aa4b2] bg-white dark:border-[#64748b] dark:bg-[#111827]'
+                                  }`}
+                                  aria-hidden="true"
+                                >
+                                  {isSelected && (
+                                    <CheckCircle2 className="h-3.5 w-3.5" />
+                                  )}
+                                </span>
+                                <span className="min-w-0 truncate font-semibold">
+                                  {institution.name}
+                                </span>
+                              </button>
+                            );
+                          },
+                        )}
+                      </div>
+                    ) : (
+                      <div className="mt-2 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651] dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]">
+                        Nenhuma escola encontrada para “{visibleInstitutionAccessSearch}”.
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {institutionAccessDialog.error && (
+                  <div
+                    role="alert"
+                    className="mt-4 rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200"
+                  >
+                    {institutionAccessDialog.error}
+                  </div>
+                )}
+
+                <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                  <button
+                    type="button"
+                    onClick={closeInstitutionAccessDialog}
+                    disabled={isAccessingInstitution}
+                    className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247]"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      void handleAccessInstitution()
+                    }
+                    disabled={
+                      !canAccessSelectedInstitution ||
+                      isAccessingInstitution
+                    }
+                    className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#1e3a8a] px-4 text-sm font-semibold text-white transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto dark:focus:ring-offset-[#182235]"
+                  >
+                    {isAccessingInstitution ? (
+                      <Loader2
+                        className="h-4 w-4 animate-spin"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <Building2
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    )}
+                    Acessar escola
+                  </button>
+                </div>
+              </section>
+            </div>
+          )}
 
         {deleteDialog && deleteDialogOwner && (
           <div
