@@ -274,6 +274,28 @@ describe('Header', () => {
     );
   });
 
+  it('mostra escola estatica sem dropdown quando solicitado', () => {
+    renderHeader({
+      showInstitutionSwitcher: false,
+      staticInstitutionName: 'Escola do Saber',
+    });
+
+    expect(
+      screen.getAllByText('Escola do Saber').length,
+    ).toBe(2);
+    expect(
+      screen.getAllByText('Escola selecionada').length,
+    ).toBe(2);
+    expect(
+      screen.queryByLabelText(
+        /selecionar escola atual/i,
+      ),
+    ).toBeNull();
+    expect(
+      document.querySelector('select'),
+    ).toBeNull();
+  });
+
   it('usa iniciais quando nao ha avatar e nao cria src vazio', () => {
     renderHeader({
       currentUser: {

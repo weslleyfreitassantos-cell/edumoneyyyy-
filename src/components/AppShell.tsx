@@ -451,11 +451,24 @@ export default function AppShell({
 
   const hasAccessibleInstitutions =
     institutionContext.institutions.length > 0;
+  const isSuperAdmin =
+    profile.platform_role === 'SUPER_ADMIN';
+  const isPlatformRoute =
+    location.pathname.startsWith('/platform');
+  const isAdminRoute =
+    location.pathname.startsWith('/admin');
+  const showStaticInstitution =
+    isSuperAdmin &&
+    isAdminRoute &&
+    Boolean(institutionContext.currentInstitution);
 
   const showInstitutionSwitcher =
-    currentRole === 'super_admin'
-      ? hasAccessibleInstitutions
-      : true;
+    !showStaticInstitution &&
+    (isSuperAdmin
+      ? !isPlatformRoute &&
+        !isAdminRoute &&
+        hasAccessibleInstitutions
+      : true);
 
   function openMobileSidebar(): void {
     const activeElement =
@@ -539,6 +552,12 @@ export default function AppShell({
           pageSection={pageContext.section}
           showInstitutionSwitcher={
             showInstitutionSwitcher
+          }
+          staticInstitutionName={
+            showStaticInstitution
+              ? institutionContext
+                  .currentInstitution?.name
+              : null
           }
           isSidebarCollapsed={
             isSidebarCollapsed

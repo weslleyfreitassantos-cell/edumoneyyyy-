@@ -27,6 +27,7 @@ import {
   useInstitution,
 } from '../contexts/InstitutionContext';
 import { ThemeProvider } from '../contexts/ThemeContext';
+import type { UserInstitution } from '../services/institutionService';
 import AppShell, {
   getRouteVisualContext,
 } from './AppShell';
@@ -74,12 +75,50 @@ const profile: Profile = {
 const signOut = vi.fn(async () => undefined);
 const updateProfileName = vi.fn(async () => undefined);
 const updatePassword = vi.fn(async () => undefined);
+const firstInstitution: UserInstitution = {
+  membership: {
+    id: 'membership-1',
+    institution_id: 'institution-1',
+    role: 'ADMIN',
+    active: true,
+  },
+  institution: {
+    id: 'institution-1',
+    name: 'Escola do Saber',
+    active: true,
+    account_id: 'account-1',
+  },
+  account: null,
+  accessSource: 'membership',
+  effectiveRole: 'ADMIN',
+};
+
+const secondInstitution: UserInstitution = {
+  membership: {
+    id: 'membership-2',
+    institution_id: 'institution-2',
+    role: 'DIRECTOR',
+    active: true,
+  },
+  institution: {
+    id: 'institution-2',
+    name: 'Escola Luz',
+    active: true,
+    account_id: 'account-1',
+  },
+  account: null,
+  accessSource: 'membership',
+  effectiveRole: 'DIRECTOR',
+};
 
 function mockContexts(
   overrides: {
     profile?: Profile;
     currentRole?: string | null;
     signOut?: () => Promise<void>;
+    institutionContext?: Partial<
+      ReturnType<typeof useInstitution>
+    >;
   } = {},
 ) {
   mockedUseAuth.mockReturnValue({
@@ -115,6 +154,7 @@ function mockContexts(
     ),
     clearCurrentInstitutionSelection: vi.fn(),
     refresh: vi.fn(async () => undefined),
+    ...overrides.institutionContext,
   });
 }
 
@@ -213,6 +253,136 @@ describe('AppShell', () => {
     expect(
       screen.getByText('Conteudo da rota'),
     ).toBeTruthy();
+    expect(
+      screen.getAllByText(/seletor global/i).length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('nao mostra seletor de instituicao para SUPER_ADMIN em /platform', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        full_name: 'Super Administrador',
+        role: 'ADMIN',
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentRole: null,
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          firstInstitution.institution,
+        currentInstitutionId:
+          firstInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/platform');
+
+    expect(
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
+    expect(
+      screen.queryByText('Escola do Saber'),
+    ).toBeNull();
+    expect(
+      screen.getAllByText('Super Administrador')
+        .length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('mostra escola estatica e volta para Plataforma para SUPER_ADMIN em /admin', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        full_name: 'Super Administrador',
+        role: 'ADMIN',
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentRole: null,
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          firstInstitution.institution,
+        currentInstitutionId:
+          firstInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/admin?module=subjects');
+
+    expect(
+      screen.getAllByText('Escola do Saber').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText('Escola selecionada').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
+
+    const backLink = screen.getByRole('link', {
+      name: /Voltar para Plataforma/i,
+    });
+
+    expect(backLink.getAttribute('href')).toBe(
+      '/platform',
+    );
+  });
+
+  it('mantem seletor para ADMIN institucional', () => {
+    mockContexts({
+      profile,
+      currentRole: 'ADMIN',
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          firstInstitution.institution,
+        currentInstitutionId:
+          firstInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/admin');
+
+    expect(
+      screen.getAllByText(/seletor global/i).length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('mantem seletor para DIRECTOR institucional', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          secondInstitution.institution,
+        currentInstitutionId:
+          secondInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/admin');
+
     expect(
       screen.getAllByText(/seletor global/i).length,
     ).toBeGreaterThan(0);
