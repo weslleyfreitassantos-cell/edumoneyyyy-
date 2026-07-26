@@ -214,11 +214,20 @@ export default {
 
       const { data: requesterProfile, error: requesterProfileError } = await ctx.supabaseAdmin
         .from("profiles")
-        .select("platform_role")
+        .select("platform_role, active")
         .eq("id", user.id)
         .single();
 
       if (requesterProfileError) throw requesterProfileError;
+
+      if (requesterProfile?.active !== true) {
+        throw new InviteError({
+          status: 403,
+          code: "PROFILE_INACTIVE",
+          message:
+            "Perfil desativado nao pode convidar usuarios.",
+        });
+      }
 
       const isSuperAdmin = requesterProfile?.platform_role === "SUPER_ADMIN";
 

@@ -32,6 +32,7 @@ import {
   useCreateClientAccount,
   useDeleteClientAccount,
   useUpdateClientAccount,
+  useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import {
   useActivateDomain,
@@ -100,6 +101,27 @@ function getErrorMessage(error: unknown): string {
   return 'Operacao nao concluida.';
 }
 
+function getPlatformErrorMessage(error: unknown): string {
+  if (error instanceof AccountServiceError) {
+    if (
+      error.code ===
+      'INSTITUTION_LIMIT_BELOW_ACTIVE_INSTITUTIONS'
+    ) {
+      return 'O limite não pode ficar abaixo da quantidade de instituições ativas. Suspenda uma instituição antes de reduzir o limite.';
+    }
+
+    if (error.code === 'INSTITUTION_LIMIT_REACHED') {
+      return 'A conta atingiu o limite de instituições ativas. Aumente o limite antes de reativar esta escola.';
+    }
+
+    if (error.code === 'PROFILE_INACTIVE') {
+      return 'Seu usuário está desativado e não pode executar esta operação.';
+    }
+  }
+
+  return getErrorMessage(error);
+}
+
 function getCreateAccountFieldErrors(
   error: unknown,
 ): AccountFormFieldErrors {
@@ -162,7 +184,7 @@ function getDeleteAccountErrorMessage(
     return 'Esta conta possui instituições ou vínculos e não pode ser excluída.';
   }
 
-  return getErrorMessage(error);
+  return getPlatformErrorMessage(error);
 }
 
 function getInitials(name: string): string {
@@ -172,25 +194,6 @@ function getInitials(name: string): string {
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? '')
     .join('');
-}
-
-function formatInstitutionNames(account: AccountSummaryRow): string {
-  if (account.institutions.length === 0) {
-    return 'Nenhuma instituicao cadastrada.';
-  }
-
-  const visibleNames = account.institutions
-    .slice(0, 3)
-    .map((institution) => institution.name)
-    .join(', ');
-
-  const hiddenCount = account.institutions.length - 3;
-
-  if (hiddenCount <= 0) {
-    return visibleNames;
-  }
-
-  return `${visibleNames} e mais ${hiddenCount}.`;
 }
 
 function getActiveAccountInstitutions(
@@ -327,6 +330,8 @@ export default function PlatformPage() {
   const accountsQuery = useAccounts();
   const createAccount = useCreateClientAccount();
   const updateAccount = useUpdateClientAccount();
+  const updateInstitutionStatusMutation =
+    useUpdateInstitutionStatus();
   const deleteAccount = useDeleteClientAccount();
   const globalBrandingQuery = useGlobalBranding();
   const saveGlobalBranding = useSaveGlobalBranding();
@@ -554,7 +559,7 @@ export default function PlatformPage() {
       );
       setFeedback({
         type: 'error',
-        message: getErrorMessage(error),
+        message: getPlatformErrorMessage(error),
       });
     }
   }
@@ -768,37 +773,44 @@ export default function PlatformPage() {
   }
 
   async function updateLimit(
-    accountId: string,
-    fallbackLimit: number,
+    account: AccountSummaryRow,
   ): Promise<void> {
     const nextLimit = Number(
-      limitDrafts[accountId] ?? fallbackLimit,
+      limitDrafts[account.id] ??
+        account.institutionLimit,
+    );
+    const minimumLimit = Math.max(
+      1,
+      account.activeInstitutionCount,
     );
 
     if (
       !Number.isInteger(nextLimit) ||
-      nextLimit < 1
+      nextLimit < minimumLimit
     ) {
       setFeedback({
         type: 'error',
-        message: 'Informe um limite maior que zero.',
+        message:
+          account.activeInstitutionCount > 0
+            ? `O limite mínimo para ${account.name} é ${minimumLimit}, pois há ${account.activeInstitutionCount} instituições ativas. Suspenda instituições antes de reduzir.`
+            : 'Informe um limite maior que zero.',
       });
       return;
     }
 
     try {
       await updateAccount.mutateAsync({
-        accountId,
+        accountId: account.id,
         institutionLimit: nextLimit,
       });
       setFeedback({
         type: 'success',
-        message: 'Limite atualizado.',
+        message: `Limite de ${account.name} atualizado para ${nextLimit}.`,
       });
     } catch (error) {
       setFeedback({
         type: 'error',
-        message: getErrorMessage(error),
+        message: getPlatformErrorMessage(error),
       });
     }
   }
@@ -814,12 +826,38 @@ export default function PlatformPage() {
       });
       setFeedback({
         type: 'success',
-        message: 'Status da conta atualizado.',
+        message:
+          status === 'ACTIVE'
+            ? 'Conta reativada. As instituições e o histórico acadêmico foram preservados.'
+            : 'Conta suspensa. As instituições e o histórico acadêmico foram preservados.',
       });
     } catch (error) {
       setFeedback({
         type: 'error',
-        message: getErrorMessage(error),
+        message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
+  async function changeInstitutionStatus(
+    institution: AccountInstitutionSummary,
+    active: boolean,
+  ): Promise<void> {
+    try {
+      await updateInstitutionStatusMutation.mutateAsync({
+        institutionId: institution.id,
+        active,
+      });
+      setFeedback({
+        type: 'success',
+        message: active
+          ? `${institution.name} reativada. Histórico acadêmico preservado.`
+          : `${institution.name} suspensa. Histórico acadêmico preservado.`,
+      });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getPlatformErrorMessage(error),
       });
     }
   }
@@ -1170,6 +1208,10 @@ export default function PlatformPage() {
                             ),
                           )
                         : 0;
+                    const minimumLimit = Math.max(
+                      1,
+                      account.activeInstitutionCount,
+                    );
 
                     return (
                       <tr
@@ -1246,7 +1288,7 @@ export default function PlatformPage() {
                             <input
                               aria-label={`Limite de ${account.name}`}
                               type="number"
-                              min={1}
+                              min={minimumLimit}
                               value={draft}
                               onChange={(event) =>
                                 setLimitDrafts(
@@ -1263,8 +1305,7 @@ export default function PlatformPage() {
                               type="button"
                               onClick={() =>
                                 void updateLimit(
-                                  account.id,
-                                  account.institutionLimit,
+                                  account,
                                 )
                               }
                               disabled={updateAccount.isPending}
@@ -1279,8 +1320,81 @@ export default function PlatformPage() {
                             </button>
                           </div>
                         </td>
-                        <td className="max-w-xs px-4 py-4 text-sm leading-5 text-[#444651]">
-                          {formatInstitutionNames(account)}
+                        <td className="max-w-md px-4 py-4 text-sm leading-5 text-[#444651]">
+                          {account.institutions.length === 0 ? (
+                            <span>Nenhuma instituição cadastrada.</span>
+                          ) : (
+                            <div className="space-y-2">
+                              {account.institutions.map(
+                                (institution) => {
+                                  const isActiveInstitution =
+                                    institution.active !== false;
+
+                                  return (
+                                    <div
+                                      key={institution.id}
+                                      className="flex items-center justify-between gap-3 rounded-lg border border-[#d8deea] bg-white px-3 py-2"
+                                    >
+                                      <div className="min-w-0">
+                                        <p className="truncate font-medium text-[#191c1d]">
+                                          {institution.name}
+                                        </p>
+                                        <p
+                                          className={`text-xs font-semibold ${
+                                            isActiveInstitution
+                                              ? 'text-[#005236]'
+                                              : 'text-[#7a4d00]'
+                                          }`}
+                                        >
+                                          {isActiveInstitution
+                                            ? 'Ativa'
+                                            : 'Suspensa'}
+                                        </p>
+                                      </div>
+
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          void changeInstitutionStatus(
+                                            institution,
+                                            !isActiveInstitution,
+                                          )
+                                        }
+                                        disabled={
+                                          updateInstitutionStatusMutation.isPending
+                                        }
+                                        className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
+                                          isActiveInstitution
+                                            ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40'
+                                            : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50'
+                                        }`}
+                                        aria-label={`${
+                                          isActiveInstitution
+                                            ? 'Suspender'
+                                            : 'Reativar'
+                                        } ${institution.name}`}
+                                      >
+                                        {isActiveInstitution ? (
+                                          <PauseCircle
+                                            className="h-4 w-4"
+                                            aria-hidden="true"
+                                          />
+                                        ) : (
+                                          <RotateCcw
+                                            className="h-4 w-4"
+                                            aria-hidden="true"
+                                          />
+                                        )}
+                                        {isActiveInstitution
+                                          ? 'Suspender'
+                                          : 'Reativar'}
+                                      </button>
+                                    </div>
+                                  );
+                                },
+                              )}
+                            </div>
+                          )}
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex flex-wrap gap-2">

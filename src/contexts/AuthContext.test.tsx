@@ -121,6 +121,7 @@ beforeEach(() => {
       role: 'ADMIN',
       platform_role: 'USER',
       avatar_url: null,
+      active: true,
     },
     error: null,
   });
@@ -220,5 +221,42 @@ describe('AuthProfileActionsContext', () => {
       expect(screen.queryByText('Nome Tardio')).toBeNull();
       expect(screen.getByText('Carregando perfil')).toBeTruthy();
     });
+  });
+
+  it('encerra a sessao restaurada quando o perfil esta desativado', async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined);
+    const single = vi.fn().mockResolvedValue({
+      data: {
+        id: 'user-1',
+        full_name: 'Ana Silva',
+        email: 'ana@example.com',
+        role: 'ADMIN',
+        platform_role: 'USER',
+        avatar_url: null,
+        active: false,
+      },
+      error: null,
+    });
+    const eq = vi.fn().mockReturnValue({ single });
+    const select = vi.fn().mockReturnValue({ eq });
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    try {
+      render(
+        <AuthProvider>
+          <ProfileProbe />
+        </AuthProvider>,
+      );
+
+      await waitFor(() => {
+        expect(supabase.auth.signOut).toHaveBeenCalled();
+      });
+
+      expect(screen.getByText('Carregando perfil')).toBeTruthy();
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
   });
 });

@@ -70,6 +70,33 @@ function toFieldErrors(error: z.ZodError): Record<string, string> {
   return fields;
 }
 
+function getUnknownErrorMessage(error: unknown): string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof error.message === "string"
+  ) {
+    return error.message;
+  }
+
+  return "";
+}
+
+function isInstitutionLimitBelowActiveError(
+  error: unknown,
+): boolean {
+  return getUnknownErrorMessage(error)
+    .toLowerCase()
+    .includes(
+      "account institution limit cannot be below active institutions",
+    );
+}
+
 export default {
   fetch: withSupabase<Database>(
     { auth: "user" },
@@ -138,17 +165,79 @@ export default {
           throw profileError;
         }
 
-        if (
-          !profile ||
-          profile.active !== true ||
-          profile.platform_role !== "SUPER_ADMIN"
-        ) {
+        if (!profile || profile.active !== true) {
+          throw new UpdateAccountError({
+            status: 403,
+            code: "PROFILE_INACTIVE",
+            message:
+              "Perfil desativado nao pode alterar contas.",
+          });
+        }
+
+        if (profile.platform_role !== "SUPER_ADMIN") {
           throw new UpdateAccountError({
             status: 403,
             code: "SUPER_ADMIN_REQUIRED",
             message:
               "Apenas SUPER_ADMIN pode alterar contas.",
           });
+        }
+
+        const { data: existingAccount, error: accountError } =
+          await ctx.supabaseAdmin
+            .from("accounts")
+            .select("id, institution_limit, status")
+            .eq("id", validation.data.accountId)
+            .maybeSingle();
+
+        if (accountError) {
+          throw accountError;
+        }
+
+        if (!existingAccount) {
+          throw new UpdateAccountError({
+            status: 404,
+            code: "ACCOUNT_NOT_FOUND",
+            message: "Conta nao encontrada.",
+            fieldErrors: {
+              accountId: "Conta nao encontrada.",
+            },
+          });
+        }
+
+        if (validation.data.institutionLimit !== undefined) {
+          const { count, error: countError } =
+            await ctx.supabaseAdmin
+              .from("institutions")
+              .select("id", {
+                count: "exact",
+                head: true,
+              })
+              .eq("account_id", existingAccount.id)
+              .eq("active", true);
+
+          if (countError) {
+            throw countError;
+          }
+
+          const activeInstitutionCount = count ?? 0;
+
+          if (
+            validation.data.institutionLimit <
+            activeInstitutionCount
+          ) {
+            throw new UpdateAccountError({
+              status: 409,
+              code:
+                "INSTITUTION_LIMIT_BELOW_ACTIVE_INSTITUTIONS",
+              message:
+                "O limite nao pode ficar abaixo da quantidade de instituicoes ativas.",
+              fieldErrors: {
+                institutionLimit:
+                  `Limite minimo: ${activeInstitutionCount}.`,
+              },
+            });
+          }
         }
 
         const updates: {
@@ -169,23 +258,12 @@ export default {
           await ctx.supabaseAdmin
             .from("accounts")
             .update(updates)
-            .eq("id", validation.data.accountId)
+            .eq("id", existingAccount.id)
             .select("id, institution_limit, status")
-            .maybeSingle();
+            .single();
 
         if (updateError) {
           throw updateError;
-        }
-
-        if (!account) {
-          throw new UpdateAccountError({
-            status: 404,
-            code: "ACCOUNT_NOT_FOUND",
-            message: "Conta nao encontrada.",
-            fieldErrors: {
-              accountId: "Conta nao encontrada.",
-            },
-          });
         }
 
         return Response.json({
@@ -202,6 +280,22 @@ export default {
 
         if (error instanceof UpdateAccountError) {
           return jsonError(error);
+        }
+
+        if (isInstitutionLimitBelowActiveError(error)) {
+          return jsonError(
+            new UpdateAccountError({
+              status: 409,
+              code:
+                "INSTITUTION_LIMIT_BELOW_ACTIVE_INSTITUTIONS",
+              message:
+                "O limite nao pode ficar abaixo da quantidade de instituicoes ativas.",
+              fieldErrors: {
+                institutionLimit:
+                  "Limite abaixo da quantidade de instituicoes ativas.",
+              },
+            }),
+          );
         }
 
         return jsonError(

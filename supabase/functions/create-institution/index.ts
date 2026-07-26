@@ -185,6 +185,15 @@ export default {
           throw requesterError;
         }
 
+        if (!requester || requester.active !== true) {
+          throw new InstitutionError({
+            status: 403,
+            code: "PROFILE_INACTIVE",
+            message:
+              "Perfil desativado nao pode criar instituicoes.",
+          });
+        }
+
         const { data: account, error: accountError } =
           await ctx.supabaseAdmin
             .from("accounts")
@@ -210,7 +219,6 @@ export default {
         }
 
         const isSuperAdmin =
-          requester?.active === true &&
           requester.platform_role === "SUPER_ADMIN";
 
         const isOwner =
