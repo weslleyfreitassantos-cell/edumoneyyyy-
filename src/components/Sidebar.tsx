@@ -130,7 +130,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
       'manage_academic_structure',
       'manage_assignments',
     ],
-    roles: ['admin', 'director', 'secretary', 'super_admin'],
+    roles: ['admin', 'director', 'secretary'],
   },
 ];
 
