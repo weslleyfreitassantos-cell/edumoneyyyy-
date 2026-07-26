@@ -39,6 +39,7 @@ jobs:
             create-client-account
             create-institution
             update-client-account
+            update-institution-status
             delete-client-account
             invite-school-user
           )
