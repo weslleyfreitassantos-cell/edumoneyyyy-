@@ -317,7 +317,9 @@ describe('PlatformPage', () => {
     expect(screen.getByText('Escola Luz')).toBeDefined();
     expect(screen.getByText('Escola Pausada')).toBeDefined();
     expect(screen.getAllByText('Ativa').length).toBeGreaterThan(0);
-    expect(screen.getByText('Suspensa')).toBeDefined();
+    expect(
+      screen.getAllByText('Suspensa').length,
+    ).toBeGreaterThan(0);
     expect(
       screen.getByRole('button', {
         name: /Suspender Escola Alpha/i,
