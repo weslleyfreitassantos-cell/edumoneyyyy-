@@ -23,7 +23,8 @@ const hookMock = vi.hoisted(() => ({
   createAccount: {} as any,
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
-  deleteAccount: {} as any,
+  closeAccount: {} as any,
+  statusEventsQuery: {} as any,
   globalBrandingQuery: {} as any,
   saveGlobalBranding: {} as any,
   domainRequestsQuery: {} as any,
@@ -32,7 +33,7 @@ const hookMock = vi.hoisted(() => ({
   createMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
-  deleteMutateAsync: vi.fn(),
+  closeMutateAsync: vi.fn(),
   saveGlobalBrandingMutateAsync: vi.fn(),
   activateDomainMutateAsync: vi.fn(),
   disableDomainMutateAsync: vi.fn(),
@@ -50,7 +51,8 @@ vi.mock('../../hooks/useAccounts', () => ({
   useUpdateClientAccount: () => hookMock.updateAccount,
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
-  useDeleteClientAccount: () => hookMock.deleteAccount,
+  useCloseClientAccount: () => hookMock.closeAccount,
+  useAccountStatusEvents: () => hookMock.statusEventsQuery,
 }));
 
 vi.mock('../../hooks/useBranding', () => ({
@@ -156,6 +158,29 @@ const accounts = [
     },
     institutions: [],
   },
+  {
+    id: 'account-4',
+    name: 'Conta Encerrada',
+    status: 'CANCELED',
+    institutionLimit: 1,
+    activeInstitutionCount: 1,
+    owner: {
+      id: 'owner-4',
+      full_name: 'Dora Admin',
+      email: 'dora@example.com',
+      role: 'ADMIN',
+      platform_role: 'USER',
+      active: true,
+    },
+    institutions: [
+      {
+        id: 'institution-5',
+        name: 'Escola Histórica',
+        active: true,
+        account_id: 'account-4',
+      },
+    ],
+  },
 ] as const;
 
 function renderPage() {
@@ -199,9 +224,15 @@ describe('PlatformPage', () => {
       mutateAsync:
         hookMock.updateInstitutionStatusMutateAsync,
     };
-    hookMock.deleteAccount = {
+    hookMock.closeAccount = {
       isPending: false,
-      mutateAsync: hookMock.deleteMutateAsync,
+      mutateAsync: hookMock.closeMutateAsync,
+    };
+    hookMock.statusEventsQuery = {
+      data: [],
+      isLoading: false,
+      isError: false,
+      error: null,
     };
     hookMock.globalBrandingQuery = {
       data: {
@@ -261,7 +292,10 @@ describe('PlatformPage', () => {
       success: true,
       accountId: 'account-1',
       institutionLimit: 4,
+      previousStatus: 'ACTIVE',
       status: 'ACTIVE',
+      auditEventId: null,
+      statusChanged: false,
     });
     hookMock.updateInstitutionStatusMutateAsync.mockResolvedValue({
       success: true,
@@ -271,17 +305,20 @@ describe('PlatformPage', () => {
       institutionLimit: 3,
       remainingSlots: 2,
     });
-    hookMock.deleteMutateAsync.mockResolvedValue({
+    hookMock.closeMutateAsync.mockResolvedValue({
       success: true,
       accountId: 'account-1',
-      ownerProfileId: 'owner-1',
-      ownerPreserved: false,
-      deletedAuthUser: true,
+      institutionLimit: 3,
+      previousStatus: 'ACTIVE',
+      status: 'CANCELED',
+      auditEventId: 'event-1',
+      statusChanged: true,
     });
   });
 
   afterEach(() => {
     cleanup();
+    vi.restoreAllMocks();
   });
 
   it('renderiza loading acessivel', () => {
@@ -719,6 +756,10 @@ describe('PlatformPage', () => {
         .getByLabelText('Limite de Conta Alfa')
         .closest('tr')!;
 
+    vi.spyOn(window, 'prompt').mockReturnValue(
+      'Motivo valido da suspensao',
+    );
+
     fireEvent.click(
       within(alfaRow).getByRole('button', {
         name: /^Suspender$/i,
@@ -729,6 +770,7 @@ describe('PlatformPage', () => {
       expect(hookMock.updateMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-1',
         status: 'SUSPENDED',
+        reason: 'Motivo valido da suspensao',
       });
     });
   });
@@ -811,18 +853,90 @@ describe('PlatformPage', () => {
     ).toHaveLength(1);
   });
 
-  it('exige confirmacao por e-mail para excluir administrador', async () => {
+  it('mantem conta encerrada visivel sem acoes operacionais', () => {
     renderPage();
 
+    const closedRow = screen
+      .getByLabelText('Limite de Conta Encerrada')
+      .closest('tr')!;
+
+    expect(within(closedRow).getByText('Dora Admin')).toBeDefined();
+    expect(
+      within(closedRow).getByText(/Conta encerrada/i),
+    ).toBeDefined();
+    expect(
+      within(closedRow).queryByRole('button', {
+        name: /Acessar escolas/i,
+      }),
+    ).toBeNull();
+    expect(
+      within(closedRow).queryByRole('button', {
+        name: /Encerrar conta/i,
+      }),
+    ).toBeNull();
+    expect(
+      within(closedRow).queryByRole('button', {
+        name: /^Reativar$/i,
+      }),
+    ).toBeNull();
+  });
+
+  it('carrega historico de status sob demanda', async () => {
+    hookMock.statusEventsQuery = {
+      data: [
+        {
+          id: 'event-1',
+          accountId: 'account-1',
+          actorProfileId: 'super-admin-1',
+          actorName: 'Super Admin',
+          actorEmail: 'superadmin@admin.com',
+          previousStatus: 'ACTIVE',
+          newStatus: 'CANCELED',
+          reason: 'Encerramento comercial solicitado.',
+          metadata: {},
+          createdAt: '2026-07-26T12:00:00.000Z',
+        },
+      ],
+      isLoading: false,
+      isError: false,
+      error: null,
+    };
+
+    renderPage();
+
+    const alfaRow =
+      screen
+        .getByLabelText('Limite de Conta Alfa')
+        .closest('tr')!;
+
     fireEvent.click(
-      screen.getByRole('button', {
-        name: /Excluir administrador de Conta Alfa/i,
+      within(alfaRow).getByRole('button', {
+        name: /Ver histórico/i,
       }),
     );
 
     expect(
       screen.getByRole('dialog', {
-        name: /Excluir conta e administrador/i,
+        name: /Histórico da conta/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.getByText('Encerramento comercial solicitado.'),
+    ).toBeDefined();
+  });
+
+  it('exige motivo e confirmacao por e-mail para encerrar conta', async () => {
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Encerrar conta Conta Alfa/i,
+      }),
+    );
+
+    expect(
+      screen.getByRole('dialog', {
+        name: /Encerrar conta/i,
       }),
     ).toBeDefined();
     expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
@@ -830,10 +944,18 @@ describe('PlatformPage', () => {
     expect(screen.getAllByText('ana@example.com').length).toBeGreaterThan(1);
 
     const confirmButton = screen.getByRole('button', {
-      name: /^Excluir$/i,
+      name: /^Encerrar conta$/i,
     }) as HTMLButtonElement;
     expect(confirmButton.disabled).toBe(true);
 
+    fireEvent.change(
+      screen.getByLabelText(/Motivo do encerramento/i),
+      {
+        target: {
+          value: 'Encerramento comercial solicitado.',
+        },
+      },
+    );
     fireEvent.change(
       screen.getByLabelText(
         /Digite o e-mail do administrador para confirmar/i,
@@ -847,20 +969,23 @@ describe('PlatformPage', () => {
     fireEvent.click(confirmButton);
 
     await waitFor(() => {
-      expect(hookMock.deleteMutateAsync).toHaveBeenCalledWith({
+      expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-1',
+        reason: 'Encerramento comercial solicitado.',
       });
       expect(
-        screen.getByText(/Conta vazia e administrador exclu/i),
+        screen.getByText(
+          /Conta encerrada. Dados e historico preservados/i,
+        ),
       ).toBeDefined();
     });
   });
 
-  it('mostra ACCOUNT_NOT_EMPTY sem remover item da interface', async () => {
-    hookMock.deleteMutateAsync.mockRejectedValueOnce(
+  it('mostra erro de encerramento sem remover item da interface', async () => {
+    hookMock.closeMutateAsync.mockRejectedValueOnce(
       new AccountServiceError(
-        'Esta conta possui instituições ou vínculos e não pode ser excluída.',
-        'ACCOUNT_NOT_EMPTY',
+        'Não foi possível encerrar a conta.',
+        'ACCOUNT_STATUS_TRANSITION_INVALID',
       ),
     );
 
@@ -868,8 +993,16 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Excluir administrador de Conta Alfa/i,
+        name: /Encerrar conta Conta Alfa/i,
       }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Motivo do encerramento/i),
+      {
+        target: {
+          value: 'Encerramento comercial solicitado.',
+        },
+      },
     );
     fireEvent.change(
       screen.getByLabelText(
@@ -881,14 +1014,14 @@ describe('PlatformPage', () => {
     );
     fireEvent.click(
       screen.getByRole('button', {
-        name: /^Excluir$/i,
+        name: /^Encerrar conta$/i,
       }),
     );
 
     await waitFor(() => {
       expect(
         screen.getByText(
-          /Esta conta possui instituições ou vínculos e não pode ser excluída/i,
+          /Não foi possível encerrar a conta/i,
         ),
       ).toBeDefined();
       expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
