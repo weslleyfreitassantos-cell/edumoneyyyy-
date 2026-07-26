@@ -25,6 +25,10 @@ vi.mock("../lib/supabaseClient", () => ({
   },
 }));
 
+vi.mock("../contexts/ThemeContext", () => ({
+  useThemePreference: () => ({ theme: "light" }),
+}));
+
 describe("AuthConfirm", () => {
   const mockNavigate = vi.fn();
   const originalLocation = window.location;
