@@ -106,7 +106,7 @@ export function Login() {
               <img
                 src={branding.logoUrl}
                 alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
-                className="max-h-[190px] max-w-[320px] object-contain sm:max-h-[210px] sm:max-w-[360px] lg:max-h-[230px] lg:max-w-[400px]"
+                className="max-h-[100px] max-w-[220px] object-contain sm:max-h-[120px] sm:max-w-[260px]"
               />
             ) : (
               <div
