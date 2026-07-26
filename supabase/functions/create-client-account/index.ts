@@ -152,11 +152,15 @@ async function assertSuperAdmin(
     throw profileError;
   }
 
-  if (
-    !profile ||
-    profile.active !== true ||
-    profile.platform_role !== "SUPER_ADMIN"
-  ) {
+  if (!profile || profile.active !== true) {
+    throw new AccountError({
+      status: 403,
+      code: "PROFILE_INACTIVE",
+      message: "Perfil desativado nao pode criar contas.",
+    });
+  }
+
+  if (profile.platform_role !== "SUPER_ADMIN") {
     throw new AccountError({
       status: 403,
       code: "SUPER_ADMIN_REQUIRED",

@@ -97,6 +97,20 @@ export interface CreateInstitutionResponse {
   remainingSlots: number;
 }
 
+export interface UpdateInstitutionStatusInput {
+  institutionId: string;
+  active: boolean;
+}
+
+export interface UpdateInstitutionStatusResponse {
+  success: true;
+  institutionId: string;
+  active: boolean;
+  currentInstitutionCount: number;
+  institutionLimit: number;
+  remainingSlots: number;
+}
+
 interface AccountQueryRow {
   id: string;
   name: string;
@@ -391,6 +405,29 @@ function assertCreateInstitutionResponse(
   };
 }
 
+function assertUpdateInstitutionStatusResponse(
+  value: unknown,
+): UpdateInstitutionStatusResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    institutionId: requireString(value, 'institutionId'),
+    active: requireBoolean(value, 'active'),
+    currentInstitutionCount: requireNumber(
+      value,
+      'currentInstitutionCount',
+    ),
+    institutionLimit: requireNumber(value, 'institutionLimit'),
+    remainingSlots: requireNumber(value, 'remainingSlots'),
+  };
+}
+
 function assertDeleteAccountResponse(
   value: unknown,
 ): DeleteClientAccountResponse {
@@ -539,6 +576,22 @@ export const accountService = {
     }
 
     return assertCreateInstitutionResponse(data);
+  },
+
+  async updateInstitutionStatus(
+    input: UpdateInstitutionStatusInput,
+  ): Promise<UpdateInstitutionStatusResponse> {
+    const { data, error } =
+      await supabase.functions.invoke(
+        'update-institution-status',
+        { body: input },
+      );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertUpdateInstitutionStatusResponse(data);
   },
 
   async deleteAccount(

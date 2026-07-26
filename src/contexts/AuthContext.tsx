@@ -49,6 +49,19 @@ interface ProfileRequest {
   promise: Promise<Profile>;
 }
 
+interface SynchronizeSessionOptions {
+  throwOnProfileError?: boolean;
+}
+
+class InactiveProfileError extends Error {
+  constructor() {
+    super(
+      'Seu acesso foi desativado. Entre em contato com a administração.',
+    );
+    this.name = 'InactiveProfileError';
+  }
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
 );
@@ -59,7 +72,7 @@ const AuthProfileActionsContext = createContext<
 async function loadProfile(userId: string): Promise<Profile> {
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, full_name, email, role, platform_role, avatar_url')
+    .select('id, full_name, email, role, platform_role, avatar_url, active')
     .eq('id', userId)
     .single();
 
@@ -69,6 +82,10 @@ async function loadProfile(userId: string): Promise<Profile> {
 
   if (!data) {
     throw new Error('Perfil academico nao encontrado.');
+  }
+
+  if (data.active !== true) {
+    throw new InactiveProfileError();
   }
 
   if (
@@ -142,7 +159,10 @@ export function AuthProvider({
   }, []);
 
   const synchronizeSession = useCallback(
-    async (nextUser: User | null): Promise<void> => {
+    async (
+      nextUser: User | null,
+      options: SynchronizeSessionOptions = {},
+    ): Promise<void> => {
       if (!mountedRef.current) {
         return;
       }
@@ -154,15 +174,6 @@ export function AuthProvider({
         profileRequestRef.current = null;
         setUserState(null);
         setProfileState(null);
-        setLoading(false);
-        return;
-      }
-
-      if (
-        userRef.current?.id === nextUser.id &&
-        profileRef.current?.id === nextUser.id
-      ) {
-        setUserState(nextUser);
         setLoading(false);
         return;
       }
@@ -190,7 +201,33 @@ export function AuthProvider({
           mountedRef.current &&
           syncVersionRef.current === syncVersion
         ) {
+          profileRequestRef.current = null;
           setProfileState(null);
+
+          if (error instanceof InactiveProfileError) {
+            setUserState(null);
+
+            try {
+              const { error: signOutError } =
+                await supabase.auth.signOut();
+
+              if (signOutError) {
+                console.error(
+                  'Erro ao encerrar sessao de perfil desativado:',
+                  signOutError,
+                );
+              }
+            } catch (signOutError) {
+              console.error(
+                'Erro ao encerrar sessao de perfil desativado:',
+                signOutError,
+              );
+            }
+          }
+        }
+
+        if (options.throwOnProfileError) {
+          throw error;
         }
       } finally {
         if (
@@ -273,7 +310,12 @@ export function AuthProvider({
       throw error;
     }
 
-    await synchronizeSession(data.session?.user ?? data.user ?? null);
+    await synchronizeSession(
+      data.session?.user ?? data.user ?? null,
+      {
+        throwOnProfileError: true,
+      },
+    );
   }
 
   async function signOut(): Promise<void> {

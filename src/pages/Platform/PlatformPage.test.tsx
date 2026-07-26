@@ -22,6 +22,7 @@ const hookMock = vi.hoisted(() => ({
   accountsQuery: {} as any,
   createAccount: {} as any,
   updateAccount: {} as any,
+  updateInstitutionStatus: {} as any,
   deleteAccount: {} as any,
   globalBrandingQuery: {} as any,
   saveGlobalBranding: {} as any,
@@ -30,6 +31,7 @@ const hookMock = vi.hoisted(() => ({
   disableDomain: {} as any,
   createMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
+  updateInstitutionStatusMutateAsync: vi.fn(),
   deleteMutateAsync: vi.fn(),
   saveGlobalBrandingMutateAsync: vi.fn(),
   activateDomainMutateAsync: vi.fn(),
@@ -46,6 +48,8 @@ vi.mock('../../hooks/useAccounts', () => ({
   useAccounts: () => hookMock.accountsQuery,
   useCreateClientAccount: () => hookMock.createAccount,
   useUpdateClientAccount: () => hookMock.updateAccount,
+  useUpdateInstitutionStatus: () =>
+    hookMock.updateInstitutionStatus,
   useDeleteClientAccount: () => hookMock.deleteAccount,
 }));
 
@@ -190,6 +194,11 @@ describe('PlatformPage', () => {
       isPending: false,
       mutateAsync: hookMock.updateMutateAsync,
     };
+    hookMock.updateInstitutionStatus = {
+      isPending: false,
+      mutateAsync:
+        hookMock.updateInstitutionStatusMutateAsync,
+    };
     hookMock.deleteAccount = {
       isPending: false,
       mutateAsync: hookMock.deleteMutateAsync,
@@ -254,6 +263,14 @@ describe('PlatformPage', () => {
       institutionLimit: 4,
       status: 'ACTIVE',
     });
+    hookMock.updateInstitutionStatusMutateAsync.mockResolvedValue({
+      success: true,
+      institutionId: 'institution-1',
+      active: false,
+      currentInstitutionCount: 1,
+      institutionLimit: 3,
+      remainingSlots: 2,
+    });
     hookMock.deleteMutateAsync.mockResolvedValue({
       success: true,
       accountId: 'account-1',
@@ -295,12 +312,22 @@ describe('PlatformPage', () => {
     ).toBeGreaterThan(0);
     expect(screen.getByText('Ana Admin')).toBeDefined();
     expect(
-      screen.getByText(
-        /Escola Alpha, Escola Luz, Escola Pausada/i,
-      ),
+      screen.getByText('Escola Alpha'),
     ).toBeDefined();
+    expect(screen.getByText('Escola Luz')).toBeDefined();
+    expect(screen.getByText('Escola Pausada')).toBeDefined();
     expect(screen.getAllByText('Ativa').length).toBeGreaterThan(0);
     expect(screen.getByText('Suspensa')).toBeDefined();
+    expect(
+      screen.getByRole('button', {
+        name: /Suspender Escola Alpha/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.getByRole('button', {
+        name: /Reativar Escola Pausada/i,
+      }),
+    ).toBeDefined();
   });
 
   it('exibe busca, quantidade e somente escolas da conta do ADMIN', () => {
@@ -692,7 +719,7 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       within(alfaRow).getByRole('button', {
-        name: /Suspender/i,
+        name: /^Suspender$/i,
       }),
     );
 
@@ -700,6 +727,64 @@ describe('PlatformPage', () => {
       expect(hookMock.updateMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-1',
         status: 'SUSPENDED',
+      });
+    });
+  });
+
+  it('bloqueia limite abaixo das instituicoes ativas', () => {
+    renderPage();
+
+    fireEvent.change(
+      screen.getByLabelText('Limite de Conta Alfa'),
+      {
+        target: { value: '1' },
+      },
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Salvar limite de Conta Alfa/i,
+      }),
+    );
+
+    expect(hookMock.updateMutateAsync).not.toHaveBeenCalled();
+    expect(screen.getByRole('alert').textContent).toMatch(
+      /limite m.nimo.*2.*institui..es ativas/i,
+    );
+  });
+
+  it('suspende e reativa instituicao preservando historico', async () => {
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Suspender Escola Alpha/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.updateInstitutionStatusMutateAsync,
+      ).toHaveBeenCalledWith({
+        institutionId: 'institution-1',
+        active: false,
+      });
+      expect(
+        screen.getByText(/Hist.rico acad.mico preservado/i),
+      ).toBeDefined();
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Reativar Escola Pausada/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.updateInstitutionStatusMutateAsync,
+      ).toHaveBeenCalledWith({
+        institutionId: 'institution-3',
+        active: true,
       });
     });
   });
