@@ -71,27 +71,38 @@ describe('accountService', () => {
     })).rejects.toThrow(AccountServiceError);
   });
 
-  it('normaliza resposta de exclusao segura', async () => {
+  it('normaliza resposta de encerramento seguro', async () => {
     vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
       data: {
         success: true,
         accountId: 'acc-1',
-        ownerProfileId: 'owner-1',
-        ownerPreserved: true,
-        deletedAuthUser: false,
+        institutionLimit: 2,
+        previousStatus: 'ACTIVE',
+        status: 'CANCELED',
+        auditEventId: 'event-1',
+        statusChanged: true,
       },
       error: null,
     });
 
-    const response = await accountService.deleteAccount({
+    const response = await accountService.closeAccount({
       accountId: 'acc-1',
+      reason: 'Encerramento comercial solicitado.',
     });
 
     expect(supabase.functions.invoke).toHaveBeenCalledWith(
-      'delete-client-account',
-      { body: { accountId: 'acc-1' } },
+      'update-client-account',
+      {
+        body: {
+          accountId: 'acc-1',
+          status: 'CANCELED',
+          reason: 'Encerramento comercial solicitado.',
+        },
+      },
     );
-    expect(response.ownerPreserved).toBe(true);
-    expect(response.deletedAuthUser).toBe(false);
+    expect(response.previousStatus).toBe('ACTIVE');
+    expect(response.status).toBe('CANCELED');
+    expect(response.auditEventId).toBe('event-1');
+    expect(response.statusChanged).toBe(true);
   });
 });

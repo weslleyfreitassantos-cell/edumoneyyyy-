@@ -33,6 +33,7 @@ const requestSchema = z
     accountId: z.guid(),
     institutionLimit: z.number().int().min(1).max(500).optional(),
     status: z.enum(["ACTIVE", "SUSPENDED", "CANCELED"]).optional(),
+    reason: z.string().trim().max(500).optional(),
   })
   .strict()
   .refine(
@@ -95,6 +96,70 @@ function isInstitutionLimitBelowActiveError(
     .includes(
       "account institution limit cannot be below active institutions",
     );
+}
+
+function getBusinessErrorCode(error: unknown): string | null {
+  const message = getUnknownErrorMessage(error);
+
+  if (message.includes("ACCOUNT_NOT_FOUND")) {
+    return "ACCOUNT_NOT_FOUND";
+  }
+
+  if (message.includes("ACCOUNT_ALREADY_CANCELED")) {
+    return "ACCOUNT_ALREADY_CANCELED";
+  }
+
+  if (message.includes("ACCOUNT_STATUS_TRANSITION_INVALID")) {
+    return "ACCOUNT_STATUS_TRANSITION_INVALID";
+  }
+
+  if (message.includes("ACCOUNT_STATUS_REASON_REQUIRED")) {
+    return "ACCOUNT_STATUS_REASON_REQUIRED";
+  }
+
+  return null;
+}
+
+function accountStatusErrorFromCode(
+  code: string,
+): UpdateAccountError {
+  if (code === "ACCOUNT_NOT_FOUND") {
+    return new UpdateAccountError({
+      status: 404,
+      code,
+      message: "Conta nao encontrada.",
+      fieldErrors: {
+        accountId: "Conta nao encontrada.",
+      },
+    });
+  }
+
+  if (code === "ACCOUNT_ALREADY_CANCELED") {
+    return new UpdateAccountError({
+      status: 409,
+      code,
+      message:
+        "Conta encerrada nao pode ser reativada ou suspensa.",
+    });
+  }
+
+  if (code === "ACCOUNT_STATUS_REASON_REQUIRED") {
+    return new UpdateAccountError({
+      status: 400,
+      code,
+      message:
+        "Informe um motivo entre 10 e 500 caracteres.",
+      fieldErrors: {
+        reason: "Informe um motivo entre 10 e 500 caracteres.",
+      },
+    });
+  }
+
+  return new UpdateAccountError({
+    status: 409,
+    code: "ACCOUNT_STATUS_TRANSITION_INVALID",
+    message: "Transicao de status da conta invalida.",
+  });
 }
 
 export default {
@@ -240,37 +305,120 @@ export default {
           }
         }
 
-        const updates: {
-          institution_limit?: number;
-          status?: "ACTIVE" | "SUSPENDED" | "CANCELED";
-        } = {};
-
-        if (validation.data.institutionLimit !== undefined) {
-          updates.institution_limit =
-            validation.data.institutionLimit;
+        if (
+          validation.data.institutionLimit !== undefined &&
+          (existingAccount.status === "CANCELED" ||
+            validation.data.status === "CANCELED")
+        ) {
+          throw new UpdateAccountError({
+            status: 409,
+            code: "ACCOUNT_ALREADY_CANCELED",
+            message:
+              "Conta encerrada nao permite alterar limite.",
+          });
         }
+
+        let currentStatus = existingAccount.status;
+        let previousStatus = existingAccount.status;
+        let auditEventId: string | null = null;
+        let statusChanged = false;
 
         if (validation.data.status !== undefined) {
-          updates.status = validation.data.status;
+          type ChangeAccountStatusRow = {
+            account_id: string;
+            previous_status: string;
+            new_status: string;
+            institution_limit: number;
+            audit_event_id: string | null;
+            status_changed: boolean;
+          };
+          type RpcClient = {
+            rpc: (
+              functionName: "change_account_status",
+              args: {
+                target_account_id: string;
+                target_status: string;
+                actor_profile_id: string;
+                change_reason?: string | null;
+                change_metadata?: Record<string, unknown>;
+              },
+            ) => Promise<{
+              data: ChangeAccountStatusRow[] | null;
+              error: Error | null;
+            }>;
+          };
+
+          const { data: statusRows, error: statusError } =
+            await (ctx.supabaseAdmin as unknown as RpcClient).rpc(
+              "change_account_status",
+              {
+                target_account_id: existingAccount.id,
+                target_status: validation.data.status,
+                actor_profile_id: user.id,
+                change_reason: validation.data.reason ?? null,
+                change_metadata: {
+                  source: "update-client-account",
+                },
+              },
+            );
+
+          if (statusError) {
+            const businessCode =
+              getBusinessErrorCode(statusError);
+
+            if (businessCode) {
+              throw accountStatusErrorFromCode(businessCode);
+            }
+
+            throw statusError;
+          }
+
+          const statusResult = statusRows?.[0];
+
+          if (!statusResult) {
+            throw new UpdateAccountError({
+              status: 500,
+              code: "INVALID_STATUS_RESPONSE",
+              message:
+                "Nao foi possivel confirmar a alteracao de status.",
+            });
+          }
+
+          previousStatus = statusResult.previous_status;
+          currentStatus = statusResult.new_status;
+          auditEventId = statusResult.audit_event_id;
+          statusChanged = statusResult.status_changed;
         }
 
-        const { data: account, error: updateError } =
-          await ctx.supabaseAdmin
-            .from("accounts")
-            .update(updates)
-            .eq("id", existingAccount.id)
-            .select("id, institution_limit, status")
-            .single();
+        let currentLimit = existingAccount.institution_limit;
 
-        if (updateError) {
-          throw updateError;
+        if (validation.data.institutionLimit !== undefined) {
+          const { data: account, error: updateError } =
+            await ctx.supabaseAdmin
+              .from("accounts")
+              .update({
+                institution_limit:
+                  validation.data.institutionLimit,
+              })
+              .eq("id", existingAccount.id)
+              .select("institution_limit")
+              .single();
+
+          if (updateError) {
+            throw updateError;
+          }
+
+          currentLimit = account.institution_limit;
         }
 
         return Response.json({
           success: true,
-          accountId: account.id,
-          institutionLimit: account.institution_limit,
-          status: account.status,
+          accountId: existingAccount.id,
+          previousStatus,
+          status: currentStatus,
+          institutionLimit: currentLimit,
+          auditEventId,
+          statusChanged,
         });
       } catch (error) {
         console.error(

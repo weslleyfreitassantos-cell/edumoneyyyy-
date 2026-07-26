@@ -7,6 +7,9 @@ import {
 import {
   accountService,
   type AccountSummaryRow,
+  type AccountStatusEvent,
+  type CloseClientAccountInput,
+  type CloseClientAccountResponse,
   type CreateClientAccountInput,
   type CreateClientAccountResponse,
   type CreateInstitutionInput,
@@ -30,6 +33,12 @@ export const accountKeys = {
       ...accountKeys.all,
       'owned',
       profileId ?? 'anonymous',
+    ] as const,
+  statusEvents: (accountId: string | undefined) =>
+    [
+      ...accountKeys.all,
+      'status-events',
+      accountId ?? 'none',
     ] as const,
 };
 
@@ -92,6 +101,29 @@ export function useUpdateClientAccount() {
   });
 }
 
+export function useCloseClientAccount() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    CloseClientAccountResponse,
+    Error,
+    CloseClientAccountInput
+  >({
+    mutationFn: (input) =>
+      accountService.closeAccount(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
+    },
+  });
+}
+
 export function useDeleteClientAccount() {
   const queryClient = useQueryClient();
 
@@ -107,6 +139,23 @@ export function useDeleteClientAccount() {
         queryKey: accountKeys.all,
       });
     },
+  });
+}
+
+export function useAccountStatusEvents(
+  accountId: string | undefined,
+  enabled: boolean,
+) {
+  return useQuery<AccountStatusEvent[]>({
+    queryKey: accountKeys.statusEvents(accountId),
+    queryFn: () => {
+      if (!accountId) {
+        return Promise.resolve([]);
+      }
+
+      return accountService.listAccountStatusEvents(accountId);
+    },
+    enabled: enabled && Boolean(accountId),
   });
 }
 

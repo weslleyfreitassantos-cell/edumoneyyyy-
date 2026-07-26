@@ -57,13 +57,38 @@ export interface UpdateClientAccountInput {
   accountId: string;
   institutionLimit?: number;
   status?: AccountStatus;
+  reason?: string;
 }
 
 export interface UpdateClientAccountResponse {
   success: true;
   accountId: string;
   institutionLimit: number;
+  previousStatus: AccountStatus;
   status: AccountStatus;
+  auditEventId: string | null;
+  statusChanged: boolean;
+}
+
+export interface CloseClientAccountInput {
+  accountId: string;
+  reason: string;
+}
+
+export type CloseClientAccountResponse =
+  UpdateClientAccountResponse;
+
+export interface AccountStatusEvent {
+  id: string;
+  accountId: string;
+  actorProfileId: string | null;
+  actorName: string | null;
+  actorEmail: string | null;
+  previousStatus: AccountStatus;
+  newStatus: AccountStatus;
+  reason: string | null;
+  metadata: Record<string, unknown>;
+  createdAt: string;
 }
 
 export interface DeleteClientAccountInput {
@@ -131,6 +156,21 @@ interface FunctionErrorBody {
   code: string;
   message: string;
   fieldErrors?: Record<string, string>;
+}
+
+interface AccountStatusEventQueryRow {
+  id: string;
+  account_id: string;
+  actor_profile_id: string | null;
+  previous_status: string;
+  new_status: string;
+  reason: string | null;
+  metadata: Record<string, unknown> | null;
+  created_at: string;
+  profiles:
+    | Pick<AccountOwnerSummary, 'full_name' | 'email'>
+    | Pick<AccountOwnerSummary, 'full_name' | 'email'>[]
+    | null;
 }
 
 export class AccountServiceError extends Error {
@@ -368,11 +408,26 @@ function assertUpdateAccountResponse(
     typeof value.institutionLimit === 'number' &&
     typeof value.status === 'string'
   ) {
+    const status = normalizeStatus(value.status);
+    const previousStatus =
+      typeof value.previousStatus === 'string'
+        ? normalizeStatus(value.previousStatus)
+        : status;
+
     return {
       success: true,
       accountId: value.accountId,
       institutionLimit: value.institutionLimit,
-      status: normalizeStatus(value.status),
+      previousStatus,
+      status,
+      auditEventId:
+        typeof value.auditEventId === 'string'
+          ? value.auditEventId
+          : null,
+      statusChanged:
+        typeof value.statusChanged === 'boolean'
+          ? value.statusChanged
+          : previousStatus !== status,
     };
   }
 
@@ -380,6 +435,25 @@ function assertUpdateAccountResponse(
     'A funcao respondeu em um formato invalido.',
     'INVALID_FUNCTION_RESPONSE',
   );
+}
+
+function normalizeStatusEventRow(
+  row: AccountStatusEventQueryRow,
+): AccountStatusEvent {
+  const actor = normalizeRelation(row.profiles);
+
+  return {
+    id: row.id,
+    accountId: row.account_id,
+    actorProfileId: row.actor_profile_id,
+    actorName: actor?.full_name ?? null,
+    actorEmail: actor?.email ?? null,
+    previousStatus: normalizeStatus(row.previous_status),
+    newStatus: normalizeStatus(row.new_status),
+    reason: row.reason,
+    metadata: row.metadata ?? {},
+    createdAt: row.created_at,
+  };
 }
 
 function assertCreateInstitutionResponse(
@@ -560,6 +634,49 @@ export const accountService = {
     }
 
     return assertUpdateAccountResponse(data);
+  },
+
+  async closeAccount(
+    input: CloseClientAccountInput,
+  ): Promise<CloseClientAccountResponse> {
+    return accountService.updateAccount({
+      accountId: input.accountId,
+      status: 'CANCELED',
+      reason: input.reason,
+    });
+  },
+
+  async listAccountStatusEvents(
+    accountId: string,
+  ): Promise<AccountStatusEvent[]> {
+    const { data, error } = await supabase
+      .from('account_status_events')
+      .select(
+        `
+        id,
+        account_id,
+        actor_profile_id,
+        previous_status,
+        new_status,
+        reason,
+        metadata,
+        created_at,
+        profiles:actor_profile_id (
+          full_name,
+          email
+        )
+      `,
+      )
+      .eq('account_id', accountId)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      throw error;
+    }
+
+    return (
+      (data ?? []) as unknown as AccountStatusEventQueryRow[]
+    ).map(normalizeStatusEventRow);
   },
 
   async createInstitution(
