@@ -27,12 +27,20 @@ import {
 
 import type { Profile } from '../contexts/AuthContext';
 import type { PublicBranding } from '../services/brandingService';
+import {
+  ADMIN_MODULES,
+  DEFAULT_ADMIN_MODULE_ID,
+  groupAdminModules,
+  isAdminModuleId,
+  type AdminModuleDefinition,
+} from '../pages/Admin/adminNavigation';
 import type {
   SystemPermission,
 } from '../lib/permissions';
 import {
   getEffectiveRole,
   hasAnyPermission,
+  hasPermission,
 } from '../lib/permissions';
 import type { User } from '../types';
 
@@ -114,24 +122,6 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
       'parent',
     ],
   },
-  {
-    id: 'admin',
-    label: 'Administração',
-    path: '/admin',
-    section: 'school',
-    icon: School,
-    permissions: [
-      'view_school_dashboard',
-      'manage_school_users',
-      'manage_students',
-      'manage_guardians',
-      'manage_teachers',
-      'manage_enrollments',
-      'manage_academic_structure',
-      'manage_assignments',
-    ],
-    roles: ['admin', 'director', 'secretary'],
-  },
 ];
 
 function getInitials(name: string): string {
@@ -166,39 +156,122 @@ function isActivePath(
   });
 }
 
+function getSidebarEffectiveRole({
+  profile,
+  currentInstitutionRole,
+}: {
+  profile: Profile;
+  currentInstitutionRole: string | null;
+}) {
+  return getEffectiveRole({
+    membershipRole: currentInstitutionRole,
+    profileRole: profile.role,
+  });
+}
+
+function isAdminPath(pathname: string): boolean {
+  return (
+    pathname === '/admin' ||
+    pathname.startsWith('/admin/')
+  );
+}
+
 export function getSidebarNavigationItems({
   profile,
   currentInstitutionRole,
   currentUserRole,
+  pathname = '',
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
   currentUserRole: User['role'];
+  pathname?: string;
 }): SidebarNavigationItem[] {
-  const effectiveRole = getEffectiveRole({
-    membershipRole:
+  const effectiveRole =
+    getSidebarEffectiveRole({
+      profile,
       currentInstitutionRole,
-    profileRole: profile.role,
-  });
+    });
+  const isPlatformSuperAdmin =
+    profile.platform_role === 'SUPER_ADMIN';
 
-  return baseNavigationItems.filter((item) => {
-    if (
-      item.roles &&
-      !item.roles.includes(currentUserRole)
-    ) {
-      return false;
-    }
+  return baseNavigationItems
+    .filter((item) => {
+      if (
+        item.roles &&
+        !item.roles.includes(currentUserRole)
+      ) {
+        return false;
+      }
 
-    if (!item.permissions) {
-      return true;
-    }
+      if (!item.permissions) {
+        return true;
+      }
 
-    return hasAnyPermission(
+      return hasAnyPermission(
+        profile.platform_role,
+        effectiveRole,
+        item.permissions,
+      );
+    })
+    .map((item) =>
+      item.id === 'platform' &&
+      isPlatformSuperAdmin &&
+      isAdminPath(pathname)
+        ? {
+            ...item,
+            label: 'Voltar para Plataforma',
+            activePaths: ['/platform'],
+          }
+        : item,
+    );
+}
+
+export function getSidebarAdminModules({
+  profile,
+  currentInstitutionRole,
+  currentUserRole,
+  pathname = '',
+}: {
+  profile: Profile;
+  currentInstitutionRole: string | null;
+  currentUserRole: User['role'];
+  pathname?: string;
+}): AdminModuleDefinition[] {
+  const isPlatformSuperAdmin =
+    profile.platform_role === 'SUPER_ADMIN';
+
+  if (
+    isPlatformSuperAdmin &&
+    !isAdminPath(pathname)
+  ) {
+    return [];
+  }
+
+  if (
+    !isPlatformSuperAdmin &&
+    ![
+      'admin',
+      'director',
+      'secretary',
+    ].includes(currentUserRole)
+  ) {
+    return [];
+  }
+
+  const effectiveRole =
+    getSidebarEffectiveRole({
+      profile,
+      currentInstitutionRole,
+    });
+
+  return ADMIN_MODULES.filter((module) =>
+    hasPermission(
       profile.platform_role,
       effectiveRole,
-      item.permissions,
-    );
-  });
+      module.permission,
+    ),
+  );
 }
 
 export default function Sidebar({
@@ -223,7 +296,16 @@ export default function Sidebar({
     profile,
     currentInstitutionRole,
     currentUserRole: currentUser.role,
+    pathname: location.pathname,
   });
+  const adminModules = getSidebarAdminModules({
+    profile,
+    currentInstitutionRole,
+    currentUserRole: currentUser.role,
+    pathname: location.pathname,
+  });
+  const adminModuleGroups =
+    groupAdminModules(adminModules);
   const groupedSections = Array.from(
     new Set(
       navigationItems.map((item) => item.section),
@@ -236,10 +318,187 @@ export default function Sidebar({
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl
       : null;
+  const isSuperAdmin =
+    profile.platform_role === 'SUPER_ADMIN';
+  const adminSearchParams =
+    new URLSearchParams(location.search);
+  const requestedAdminModule =
+    adminSearchParams.get('module');
+  const activeAdminModuleId = isAdminModuleId(
+    requestedAdminModule,
+  )
+    ? requestedAdminModule
+    : DEFAULT_ADMIN_MODULE_ID;
+  const activeAdminModule =
+    adminModules.find(
+      (module) =>
+        module.id === activeAdminModuleId,
+    ) ?? adminModules[0];
+  const showAdminModules =
+    adminModules.length > 0;
+  const adminRouteActive = isAdminPath(
+    location.pathname,
+  );
 
   useEffect(() => {
     setBrandLogoFailed(false);
   }, [branding.logoUrl]);
+
+  function renderAdminModuleLink(
+    module: AdminModuleDefinition,
+  ) {
+    const isActive =
+      adminRouteActive &&
+      activeAdminModule?.id === module.id;
+
+    return (
+      <Link
+        key={module.id}
+        to={module.href}
+        onClick={onCloseMobile}
+        aria-current={
+          isActive ? 'page' : undefined
+        }
+        className={`group relative flex min-h-9 items-center rounded-lg py-2 pl-9 pr-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
+          isActive
+            ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
+            : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
+        }`}
+      >
+        <span
+          className={`absolute left-5 top-3 h-2 w-2 rounded-full ${
+            isActive
+              ? 'bg-[#005bbf]'
+              : 'bg-[#a8b3c7]'
+          }`}
+          aria-hidden="true"
+        />
+        <span className="min-w-0 truncate">
+          {module.label}
+        </span>
+      </Link>
+    );
+  }
+
+  function renderAdminModules() {
+    if (!showAdminModules) {
+      return null;
+    }
+
+    const shortcutLabel =
+      activeAdminModule?.label ?? 'Administração';
+
+    return (
+      <div className="mb-5 last:mb-0">
+        <p
+          className={`mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085] ${
+            isCollapsed ? 'lg:sr-only' : ''
+          }`}
+        >
+          {isSuperAdmin
+            ? 'Escola selecionada'
+            : sectionLabels.school}
+        </p>
+
+        {isCollapsed && (
+          <Link
+            to={
+              activeAdminModule?.href ??
+              '/admin?module=overview'
+            }
+            onClick={onCloseMobile}
+            aria-label="Administração"
+            aria-current={
+              adminRouteActive
+                ? 'page'
+                : undefined
+            }
+            className={`group relative hidden min-h-11 items-center justify-center rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 lg:flex ${
+              adminRouteActive
+                ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
+                : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
+            }`}
+          >
+            <span
+              className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
+                adminRouteActive
+                  ? 'bg-[#005bbf]'
+                  : 'bg-transparent'
+              }`}
+              aria-hidden="true"
+            />
+            <School
+              className={`h-5 w-5 shrink-0 ${
+                adminRouteActive
+                  ? 'text-[#005bbf]'
+                  : 'text-[#667085]'
+              }`}
+              aria-hidden="true"
+            />
+            <span
+              role="tooltip"
+              className="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 whitespace-nowrap rounded-lg border border-[#d8deea] bg-white px-3 py-1.5 text-xs font-semibold text-[#181c20] opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 lg:block"
+            >
+              {shortcutLabel}
+            </span>
+          </Link>
+        )}
+
+        <div
+          className={`space-y-3 ${
+            isCollapsed ? 'lg:hidden' : ''
+          }`}
+        >
+          {!isSuperAdmin && (
+            <Link
+              to="/admin?module=overview"
+              onClick={onCloseMobile}
+              className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
+                adminRouteActive
+                  ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
+                  : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
+              }`}
+            >
+              <span
+                className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
+                  adminRouteActive
+                    ? 'bg-[#005bbf]'
+                    : 'bg-transparent'
+                }`}
+                aria-hidden="true"
+              />
+
+              <School
+                className={`h-5 w-5 shrink-0 ${
+                  adminRouteActive
+                    ? 'text-[#005bbf]'
+                    : 'text-[#667085]'
+                }`}
+                aria-hidden="true"
+              />
+
+              <span className="min-w-0 truncate">
+                Administração
+              </span>
+            </Link>
+          )}
+
+          {adminModuleGroups.map((group) => (
+            <div key={group.id}>
+              <p className="mb-1 px-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[#667085]">
+                {group.label}
+              </p>
+              <div className="space-y-1">
+                {group.modules.map(
+                  renderAdminModuleLink,
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -436,6 +695,8 @@ export default function Sidebar({
               </div>
             );
           })}
+
+          {renderAdminModules()}
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">
