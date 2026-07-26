@@ -5,6 +5,7 @@ import {
   fireEvent,
   render,
   screen,
+  within,
 } from '@testing-library/react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import {
@@ -102,9 +103,23 @@ vi.mock(
 );
 
 vi.mock('./tabs/AdminOverviewTab', () => ({
-  default: () => (
+  default: ({
+    onNavigateToModule,
+  }: {
+    onNavigateToModule?: (
+      moduleId: 'subjects',
+    ) => void;
+  }) => (
     <div data-testid="overview-tab">
       Aba visao geral
+      <button
+        type="button"
+        onClick={() =>
+          onNavigateToModule?.('subjects')
+        }
+      >
+        Abrir modulo pelo checklist
+      </button>
     </div>
   ),
 }));
@@ -303,6 +318,51 @@ afterEach(() => {
 });
 
 describe('AdminPage permissions', () => {
+  it('agrupa modulos administrativos na navegacao interna', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage();
+
+    const navigation = screen.getByRole(
+      'navigation',
+      {
+        name: /m.dulos administrativos/i,
+      },
+    );
+
+    expect(
+      within(navigation).getByText(/in.cio/i),
+    ).toBeTruthy();
+    expect(
+      within(navigation).getByText(/pessoas/i),
+    ).toBeTruthy();
+    expect(
+      within(navigation).getByText(
+        /estrutura escolar/i,
+      ),
+    ).toBeTruthy();
+    expect(
+      within(navigation).getByText(
+        /opera..o acad.mica/i,
+      ),
+    ).toBeTruthy();
+
+    expect(
+      within(navigation).getByRole(
+        'button',
+        {
+          name: /disciplinas/i,
+        },
+      ),
+    ).toBeTruthy();
+  });
+
   it('renderiza o conjunto atual de abas para ADMIN efetivo', () => {
     renderAdminPage();
 
@@ -360,6 +420,92 @@ describe('AdminPage permissions', () => {
     expect(
       screen.getByTestId('students-tab'),
     ).toBeTruthy();
+
+    expect(
+      screen.getByRole('button', {
+        name: /alunos/i,
+        current: 'page',
+      }),
+    ).toBeTruthy();
+  });
+
+  it('permite alterar modulo pelo seletor mobile', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage();
+
+    fireEvent.change(
+      screen.getByLabelText(
+        /m.dulo administrativo/i,
+      ),
+      {
+        target: {
+          value: 'subjects',
+        },
+      },
+    );
+
+    expect(
+      screen.getByTestId('subjects-tab'),
+    ).toBeTruthy();
+  });
+
+  it('abre o modulo correspondente a partir do checklist', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir modulo pelo checklist/i,
+      }),
+    );
+
+    expect(
+      screen.getByTestId('subjects-tab'),
+    ).toBeTruthy();
+  });
+
+  it('preserva acesso completo do SUPER_ADMIN dentro da instituicao selecionada', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'ADMIN',
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentRole: null,
+    });
+
+    renderAdminPage();
+
+    [
+      /vis/i,
+      /frequ/i,
+      /notas/i,
+      /fechamento/i,
+      /usu/i,
+      /alunos/i,
+      /professores/i,
+      /respons/i,
+      /ano letivo/i,
+      /turmas/i,
+      /disciplinas/i,
+      /pol/i,
+      /matr/i,
+      /atribui/i,
+    ].forEach(expectTabVisible);
   });
 
   it('limita SECRETARY a operacao escolar sem estrutura e atribuicoes', () => {
