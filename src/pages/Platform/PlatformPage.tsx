@@ -50,7 +50,6 @@ import { BrandingEditor } from '../../components/branding/BrandingEditor';
 import { PlatformDomainRequestsSection } from '../../components/branding/DomainManagement';
 
 interface AccountFormState {
-  accountName: string;
   adminFullName: string;
   adminEmail: string;
   institutionLimit: string;
@@ -76,7 +75,6 @@ interface InstitutionAccessDialogState {
 type StatusFilter = 'ALL' | AccountStatus;
 
 const initialForm: AccountFormState = {
-  accountName: '',
   adminFullName: '',
   adminEmail: '',
   institutionLimit: '1',
@@ -114,6 +112,17 @@ function getCreateAccountFieldErrors(
   if (fieldErrors.adminEmail) {
     return {
       adminEmail: fieldErrors.adminEmail,
+    };
+  }
+
+  if (
+    fieldErrors.adminFullName ||
+    fieldErrors.accountName
+  ) {
+    return {
+      adminFullName:
+        fieldErrors.adminFullName ??
+        fieldErrors.accountName,
     };
   }
 
@@ -288,7 +297,7 @@ function Field({
   error?: string;
 }) {
   return (
-    <div className="space-y-1.5">
+    <div className="min-w-0 space-y-1.5">
       <label
         htmlFor={id}
         className="block text-xs font-semibold text-[#444651]"
@@ -503,18 +512,22 @@ export default function PlatformPage() {
     const institutionLimit = Number(
       form.institutionLimit,
     );
+    const normalizedAdminName =
+      form.adminFullName.trim();
+    const normalizedAdminEmail = form.adminEmail
+      .trim()
+      .toLocaleLowerCase();
 
     if (
-      !form.accountName.trim() ||
-      !form.adminFullName.trim() ||
-      !form.adminEmail.trim() ||
+      !normalizedAdminName ||
+      !normalizedAdminEmail ||
       !Number.isInteger(institutionLimit) ||
       institutionLimit < 1
     ) {
       setFeedback({
         type: 'error',
         message:
-          'Informe conta, ADMIN e limite valido.',
+          'Informe ADMIN, e-mail e limite valido.',
       });
       return;
     }
@@ -522,9 +535,9 @@ export default function PlatformPage() {
     try {
       const response =
         await createAccount.mutateAsync({
-          accountName: form.accountName,
-          adminFullName: form.adminFullName,
-          adminEmail: form.adminEmail,
+          accountName: normalizedAdminName,
+          adminFullName: normalizedAdminName,
+          adminEmail: normalizedAdminEmail,
           institutionLimit,
         });
 
@@ -914,35 +927,14 @@ export default function PlatformPage() {
         >
           <div className="flex flex-col gap-1">
             <h2 className="text-xl font-semibold leading-7 text-[#191c1d]">
-              Nova conta cliente
+              Novo cliente
             </h2>
             <p className="text-sm leading-5 text-[#444651]">
-              Crie a conta comercial e envie o convite real para o ADMIN.
+              Cadastre o administrador responsável e defina o limite de instituições.
             </p>
           </div>
 
-          <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <Field
-              id="account-name"
-              label="Nome da conta"
-              error={formFieldErrors.accountName}
-            >
-              <input
-                id="account-name"
-                value={form.accountName}
-                onChange={(event) =>
-                  updateCreateForm(
-                    'accountName',
-                    event.target.value,
-                  )
-                }
-                aria-invalid={Boolean(
-                  formFieldErrors.accountName,
-                )}
-                placeholder="Nome da conta"
-                className="h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20"
-              />
-            </Field>
+          <div className="mt-5 grid gap-4 md:grid-cols-[minmax(0,35fr)_minmax(0,40fr)_minmax(0,25fr)]">
             <Field
               id="admin-name"
               label="Nome do ADMIN"
@@ -1018,7 +1010,7 @@ export default function PlatformPage() {
           <button
             type="submit"
             disabled={createAccount.isPending}
-            className="mt-5 inline-flex h-10 items-center gap-2 rounded-lg bg-[#1e3a8a] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-70"
+            className="mt-5 inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#1e3a8a] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           >
             {createAccount.isPending ? (
               <Loader2

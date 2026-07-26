@@ -528,15 +528,66 @@ describe('PlatformPage', () => {
     );
   });
 
-  it('mantem a acao real de criar conta', async () => {
+  it('renderiza formulario simplificado de novo cliente', () => {
     renderPage();
 
-    fireEvent.change(screen.getByLabelText('Nome da conta'), {
-      target: { value: 'Conta Nova' },
-    });
+    expect(
+      screen.getByRole('heading', {
+        name: /Novo cliente/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.queryByLabelText('Nome da conta'),
+    ).toBeNull();
+    expect(
+      screen.getByLabelText('Nome do ADMIN'),
+    ).toBeDefined();
+    expect(
+      screen.getByLabelText('Email do ADMIN'),
+    ).toBeDefined();
+    expect(
+      screen.getByLabelText('Limite de instituições'),
+    ).toBeDefined();
+  });
+
+  it('mantem a acao real de criar conta usando o nome do ADMIN como accountName', async () => {
+    renderPage();
+
     fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
-      target: { value: 'Novo Admin' },
+      target: { value: '  Samuel Araújo  ' },
     });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'Samuel@Email.COM' },
+    });
+    fireEvent.change(
+      screen.getByLabelText('Limite de instituições'),
+      {
+        target: { value: '5' },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Criar conta/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.createMutateAsync).toHaveBeenCalledWith({
+        accountName: 'Samuel Araújo',
+        adminFullName: 'Samuel Araújo',
+        adminEmail: 'samuel@email.com',
+        institutionLimit: 5,
+      });
+      expect(
+        screen.getByText(/Conta criada e convite enviado/i),
+      ).toBeDefined();
+    });
+  });
+
+  it('bloqueia criacao com nome do ADMIN vazio', () => {
+    renderPage();
+
     fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
       target: { value: 'novo@example.com' },
     });
@@ -553,17 +604,10 @@ describe('PlatformPage', () => {
       }),
     );
 
-    await waitFor(() => {
-      expect(hookMock.createMutateAsync).toHaveBeenCalledWith({
-        accountName: 'Conta Nova',
-        adminFullName: 'Novo Admin',
-        adminEmail: 'novo@example.com',
-        institutionLimit: 2,
-      });
-      expect(
-        screen.getByText(/Conta criada e convite enviado/i),
-      ).toBeDefined();
-    });
+    expect(hookMock.createMutateAsync).not.toHaveBeenCalled();
+    expect(screen.getByRole('alert').textContent).toMatch(
+      /Informe ADMIN, e-mail e limite/i,
+    );
   });
 
   it('mostra conflito de adminEmail sem limpar os demais campos', async () => {
@@ -579,9 +623,6 @@ describe('PlatformPage', () => {
 
     renderPage();
 
-    fireEvent.change(screen.getByLabelText('Nome da conta'), {
-      target: { value: 'Conta Nova' },
-    });
     fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
       target: { value: 'Novo Admin' },
     });
@@ -605,9 +646,14 @@ describe('PlatformPage', () => {
       expect(
         screen.getByText('Este e-mail já está cadastrado.'),
       ).toBeDefined();
-      expect(
-        screen.getByDisplayValue('Conta Nova'),
-      ).toBeDefined();
+      expect(hookMock.createMutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          accountName: 'Novo Admin',
+          adminFullName: 'Novo Admin',
+          adminEmail: 'existente@example.com',
+          institutionLimit: 2,
+        }),
+      );
       expect(
         screen.getByDisplayValue('Novo Admin'),
       ).toBeDefined();
