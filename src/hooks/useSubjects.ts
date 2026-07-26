@@ -8,6 +8,7 @@ import { adminOverviewKeys } from './useAdminOverview';
 
 import {
   subjectService,
+  type SubjectBatchInput,
   type SubjectRow,
 } from '../services/subjectService';
 
@@ -69,6 +70,31 @@ export function useCreateSubject() {
       await invalidateSubjects(
         queryClient,
         variables.institution_id,
+      );
+    },
+  });
+}
+
+export function useCreateManyMissingSubjects() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      institutionId,
+      subjects,
+    }: {
+      institutionId: string;
+      subjects: SubjectBatchInput[];
+    }) =>
+      subjectService.createManyMissing({
+        institutionId,
+        subjects,
+      }),
+
+    onSuccess: async (_result, variables) => {
+      await invalidateSubjects(
+        queryClient,
+        variables.institutionId,
       );
     },
   });

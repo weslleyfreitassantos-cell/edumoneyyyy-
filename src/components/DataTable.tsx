@@ -17,6 +17,7 @@ interface DataTableProps<T> {
   isLoading?: boolean;
   title?: string;
   addLabel?: string;
+  extraHeaderActions?: ReactNode;
   emptyMessage?: string;
 }
 
@@ -30,6 +31,7 @@ export function DataTable<T extends { id: string }>({
   isLoading = false,
   title = 'Listagem',
   addLabel = 'Adicionar',
+  extraHeaderActions,
   emptyMessage = 'Nenhum registro encontrado.',
 }: DataTableProps<T>) {
   const hasActions = Boolean(
@@ -53,14 +55,20 @@ export function DataTable<T extends { id: string }>({
           {title}
         </h3>
 
-        {onAdd && (
-          <button
-            type="button"
-            onClick={onAdd}
-            className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1a73e8]"
-          >
-            + {addLabel}
-          </button>
+        {(extraHeaderActions || onAdd) && (
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            {extraHeaderActions}
+
+            {onAdd && (
+              <button
+                type="button"
+                onClick={onAdd}
+                className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1a73e8]"
+              >
+                + {addLabel}
+              </button>
+            )}
+          </div>
         )}
       </div>
 

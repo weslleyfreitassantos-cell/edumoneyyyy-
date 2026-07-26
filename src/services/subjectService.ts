@@ -35,8 +35,29 @@ export interface SubjectRow {
   updated_at?: string;
 }
 
+export interface SubjectBatchInput {
+  name: string;
+  code?: string | null;
+  workload?: number | null;
+  active?: boolean;
+}
+
+export type SubjectBatchSkipReason =
+  | 'NAME_EXISTS'
+  | 'CODE_EXISTS';
+
+export interface SubjectBatchSkipped {
+  name: string;
+  reason: SubjectBatchSkipReason;
+}
+
+export interface SubjectBatchResult {
+  created: SubjectRow[];
+  skipped: SubjectBatchSkipped[];
+}
+
 function normalizeCode(
-  value: string | undefined,
+  value: string | null | undefined,
 ): string | null {
   return value?.trim()
     ? value.trim().toUpperCase()
@@ -228,6 +249,148 @@ export const subjectService = {
       created as SubjectQueryRow,
       0,
     );
+  },
+
+  async createManyMissing({
+    institutionId,
+    subjects,
+  }: {
+    institutionId: string;
+    subjects: SubjectBatchInput[];
+  }): Promise<SubjectBatchResult> {
+    if (!institutionId.trim()) {
+      throw new Error(
+        'A instituição não foi carregada.',
+      );
+    }
+
+    if (subjects.length === 0) {
+      return {
+        created: [],
+        skipped: [],
+      };
+    }
+
+    const { data: currentData, error } =
+      await supabase
+        .from('subjects')
+        .select(
+          'id, institution_id, name, code, workload, active, created_at, updated_at',
+        )
+        .eq('institution_id', institutionId);
+
+    if (error) {
+      throw error;
+    }
+
+    const currentSubjects =
+      (currentData ?? []) as SubjectQueryRow[];
+
+    const existingNames = new Set(
+      currentSubjects.map((subject) =>
+        normalizeName(subject.name),
+      ),
+    );
+
+    const existingCodes = new Set(
+      currentSubjects
+        .map((subject) =>
+          normalizeCode(subject.code),
+        )
+        .filter(
+          (code): code is string =>
+            code !== null,
+        ),
+    );
+
+    const pendingNames = new Set<string>();
+    const pendingCodes = new Set<string>();
+    const skipped: SubjectBatchSkipped[] = [];
+    const subjectsToInsert: {
+      institution_id: string;
+      name: string;
+      code: string | null;
+      workload: null;
+      active: boolean;
+    }[] = [];
+
+    for (const subject of subjects) {
+      const name = subject.name.trim();
+      const code = normalizeCode(subject.code);
+      const nameKey = normalizeName(name);
+
+      if (!nameKey) {
+        throw new Error(
+          'Nome da disciplina é obrigatório.',
+        );
+      }
+
+      if (
+        existingNames.has(nameKey) ||
+        pendingNames.has(nameKey)
+      ) {
+        skipped.push({
+          name,
+          reason: 'NAME_EXISTS',
+        });
+        continue;
+      }
+
+      if (
+        code &&
+        (existingCodes.has(code) ||
+          pendingCodes.has(code))
+      ) {
+        skipped.push({
+          name,
+          reason: 'CODE_EXISTS',
+        });
+        continue;
+      }
+
+      pendingNames.add(nameKey);
+
+      if (code) {
+        pendingCodes.add(code);
+      }
+
+      subjectsToInsert.push({
+        institution_id: institutionId,
+        name,
+        code,
+        workload: null,
+        active: subject.active ?? true,
+      });
+    }
+
+    if (subjectsToInsert.length === 0) {
+      return {
+        created: [],
+        skipped,
+      };
+    }
+
+    const {
+      data: createdData,
+      error: insertError,
+    } = await supabase
+      .from('subjects')
+      .insert(subjectsToInsert)
+      .select(
+        'id, institution_id, name, code, workload, active, created_at, updated_at',
+      );
+
+    if (insertError) {
+      throw insertError;
+    }
+
+    return {
+      created: ((createdData ??
+        []) as SubjectQueryRow[]).map((subject) =>
+        normalizeSubject(subject, 0),
+      ),
+      skipped,
+    };
   },
 
   async update(

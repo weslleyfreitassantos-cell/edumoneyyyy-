@@ -5,6 +5,7 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from '@testing-library/react';
 import {
   afterEach,
@@ -33,6 +34,12 @@ const hookMock = vi.hoisted(() => ({
   saveGlobalBrandingMutateAsync: vi.fn(),
   activateDomainMutateAsync: vi.fn(),
   disableDomainMutateAsync: vi.fn(),
+  setCurrentInstitutionId: vi.fn(),
+  navigate: vi.fn(),
+}));
+
+vi.mock('react-router-dom', () => ({
+  useNavigate: () => hookMock.navigate,
 }));
 
 vi.mock('../../hooks/useAccounts', () => ({
@@ -48,6 +55,13 @@ vi.mock('../../hooks/useBranding', () => ({
   useDomainRequests: () => hookMock.domainRequestsQuery,
   useActivateDomain: () => hookMock.activateDomain,
   useDisableDomain: () => hookMock.disableDomain,
+}));
+
+vi.mock('../../contexts/InstitutionContext', () => ({
+  useInstitution: () => ({
+    setCurrentInstitutionId:
+      hookMock.setCurrentInstitutionId,
+  }),
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -69,7 +83,7 @@ const accounts = [
     name: 'Conta Alfa',
     status: 'ACTIVE',
     institutionLimit: 3,
-    activeInstitutionCount: 1,
+    activeInstitutionCount: 2,
     owner: {
       id: 'owner-1',
       full_name: 'Ana Admin',
@@ -87,6 +101,12 @@ const accounts = [
       },
       {
         id: 'institution-2',
+        name: 'Escola Luz',
+        active: true,
+        account_id: 'account-1',
+      },
+      {
+        id: 'institution-3',
         name: 'Escola Pausada',
         active: false,
         account_id: 'account-1',
@@ -98,14 +118,58 @@ const accounts = [
     name: 'Conta Beta',
     status: 'SUSPENDED',
     institutionLimit: 2,
+    activeInstitutionCount: 1,
+    owner: {
+      id: 'owner-2',
+      full_name: 'Bia Admin',
+      email: 'bia@example.com',
+      role: 'ADMIN',
+      platform_role: 'USER',
+      active: true,
+    },
+    institutions: [
+      {
+        id: 'institution-4',
+        name: 'Escola Beta',
+        active: true,
+        account_id: 'account-2',
+      },
+    ],
+  },
+  {
+    id: 'account-3',
+    name: 'Conta Gama',
+    status: 'ACTIVE',
+    institutionLimit: 1,
     activeInstitutionCount: 0,
-    owner: null,
+    owner: {
+      id: 'owner-3',
+      full_name: 'Caio Admin',
+      email: 'caio@example.com',
+      role: 'ADMIN',
+      platform_role: 'USER',
+      active: true,
+    },
     institutions: [],
   },
 ] as const;
 
 function renderPage() {
   return render(<PlatformPage />);
+}
+
+function openInstitutionAccessDialog() {
+  renderPage();
+
+  fireEvent.click(
+    screen.getByRole('button', {
+      name: /Acessar escolas de Ana Admin/i,
+    }),
+  );
+
+  return screen.getByRole('dialog', {
+    name: /Acessar escola da conta/i,
+  });
 }
 
 describe('PlatformPage', () => {
@@ -171,6 +235,10 @@ describe('PlatformPage', () => {
       isPending: false,
       mutateAsync: hookMock.disableDomainMutateAsync,
     };
+    hookMock.setCurrentInstitutionId.mockResolvedValue({
+      success: true,
+      institutionId: 'institution-1',
+    });
     hookMock.createMutateAsync.mockResolvedValue({
       success: true,
       accountId: 'account-3',
@@ -227,10 +295,190 @@ describe('PlatformPage', () => {
     ).toBeGreaterThan(0);
     expect(screen.getByText('Ana Admin')).toBeDefined();
     expect(
-      screen.getByText(/Escola Alpha, Escola Pausada/i),
+      screen.getByText(
+        /Escola Alpha, Escola Luz, Escola Pausada/i,
+      ),
     ).toBeDefined();
-    expect(screen.getByText('Ativa')).toBeDefined();
+    expect(screen.getAllByText('Ativa').length).toBeGreaterThan(0);
     expect(screen.getByText('Suspensa')).toBeDefined();
+  });
+
+  it('exibe busca, quantidade e somente escolas da conta do ADMIN', () => {
+    const dialog = openInstitutionAccessDialog();
+
+    expect(screen.getAllByText('Ana Admin').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('ana@example.com').length).toBeGreaterThan(1);
+    expect(
+      within(dialog).getByLabelText('Buscar escola'),
+    ).toBe(document.activeElement);
+    expect(
+      within(dialog).getByPlaceholderText(
+        'Digite o nome da escola...',
+      ),
+    ).toBeDefined();
+    expect(
+      within(dialog).getByText('2 escolas encontradas'),
+    ).toBeDefined();
+    expect(within(dialog).getByText('Escola Alpha')).toBeDefined();
+    expect(within(dialog).getByText('Escola Luz')).toBeDefined();
+    expect(within(dialog).queryByText('Escola Pausada')).toBeNull();
+    expect(within(dialog).queryByText('Escola Beta')).toBeNull();
+  });
+
+  it('filtra escolas localmente ignorando maiusculas e espacos extras', () => {
+    const dialog = openInstitutionAccessDialog();
+
+    fireEvent.change(
+      within(dialog).getByLabelText('Buscar escola'),
+      {
+        target: { value: '  escola   lUz  ' },
+      },
+    );
+
+    expect(
+      within(dialog).getByText('1 escola encontrada'),
+    ).toBeDefined();
+    expect(within(dialog).getByText('Escola Luz')).toBeDefined();
+    expect(within(dialog).queryByText('Escola Alpha')).toBeNull();
+  });
+
+  it('mostra estado vazio e limpa a busca', () => {
+    const dialog = openInstitutionAccessDialog();
+    const searchInput =
+      within(dialog).getByLabelText('Buscar escola');
+
+    fireEvent.change(searchInput, {
+      target: { value: 'inexistente' },
+    });
+
+    expect(
+      within(dialog).getByText('0 escolas encontradas'),
+    ).toBeDefined();
+    expect(
+      within(dialog).getByText(
+        'Nenhuma escola encontrada para “inexistente”.',
+      ),
+    ).toBeDefined();
+
+    fireEvent.click(
+      within(dialog).getByRole('button', {
+        name: /Limpar busca/i,
+      }),
+    );
+
+    expect(
+      (within(dialog).getByLabelText(
+        'Buscar escola',
+      ) as HTMLInputElement).value,
+    ).toBe('');
+    expect(
+      within(dialog).getByText('2 escolas encontradas'),
+    ).toBeDefined();
+  });
+
+  it('seleciona uma escola por vez e habilita o acesso somente apos selecao', async () => {
+    const dialog = openInstitutionAccessDialog();
+    const accessButton = within(dialog).getByRole(
+      'button',
+      {
+        name: /^Acessar escola$/i,
+      },
+    ) as HTMLButtonElement;
+
+    expect(accessButton.disabled).toBe(true);
+    expect(
+      within(dialog)
+        .getByRole('option', { name: /Escola Alpha/i })
+        .getAttribute('aria-selected'),
+    ).toBe('false');
+
+    fireEvent.click(
+      within(dialog).getByRole('option', {
+        name: /Escola Alpha/i,
+      }),
+    );
+
+    expect(accessButton.disabled).toBe(false);
+    expect(
+      within(dialog)
+        .getByRole('option', { name: /Escola Alpha/i })
+        .getAttribute('aria-selected'),
+    ).toBe('true');
+    expect(
+      within(dialog)
+        .getByRole('option', { name: /Escola Luz/i })
+        .getAttribute('aria-selected'),
+    ).toBe('false');
+
+    fireEvent.click(
+      within(dialog).getByRole('option', {
+        name: /Escola Luz/i,
+      }),
+    );
+
+    expect(
+      within(dialog)
+        .getByRole('option', { name: /Escola Alpha/i })
+        .getAttribute('aria-selected'),
+    ).toBe('false');
+    expect(
+      within(dialog)
+        .getByRole('option', { name: /Escola Luz/i })
+        .getAttribute('aria-selected'),
+    ).toBe('true');
+
+    fireEvent.click(accessButton);
+
+    await waitFor(() => {
+      expect(
+        hookMock.setCurrentInstitutionId,
+      ).toHaveBeenCalledWith('institution-2');
+      expect(hookMock.navigate).toHaveBeenCalledWith('/admin');
+    });
+  });
+
+  it('acessa diretamente conta com uma escola mesmo suspensa', async () => {
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Acessar escolas de Bia Admin/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.setCurrentInstitutionId,
+      ).toHaveBeenCalledWith('institution-4');
+      expect(hookMock.navigate).toHaveBeenCalledWith('/admin');
+    });
+
+    expect(
+      screen.queryByRole('dialog', {
+        name: /Acessar escola da conta/i,
+      }),
+    ).toBeNull();
+  });
+
+  it('mostra mensagem quando a conta nao possui escolas ativas', async () => {
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Acessar escolas de Caio Admin/i,
+      }),
+    );
+
+    expect(
+      (
+        await screen.findByRole('alert')
+      ).textContent,
+    ).toMatch(
+      /Esta conta n.o possui escolas ativas para acessar/i,
+    );
+    expect(
+      hookMock.setCurrentInstitutionId,
+    ).not.toHaveBeenCalled();
   });
 
   it('mostra identidade da plataforma e solicitacoes de dominio para SUPER_ADMIN', () => {
@@ -280,15 +528,66 @@ describe('PlatformPage', () => {
     );
   });
 
-  it('mantem a acao real de criar conta', async () => {
+  it('renderiza formulario simplificado de novo cliente', () => {
     renderPage();
 
-    fireEvent.change(screen.getByLabelText('Nome da conta'), {
-      target: { value: 'Conta Nova' },
-    });
+    expect(
+      screen.getByRole('heading', {
+        name: /Novo cliente/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.queryByLabelText('Nome da conta'),
+    ).toBeNull();
+    expect(
+      screen.getByLabelText('Nome do ADMIN'),
+    ).toBeDefined();
+    expect(
+      screen.getByLabelText('Email do ADMIN'),
+    ).toBeDefined();
+    expect(
+      screen.getByLabelText('Limite de instituições'),
+    ).toBeDefined();
+  });
+
+  it('mantem a acao real de criar conta usando o nome do ADMIN como accountName', async () => {
+    renderPage();
+
     fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
-      target: { value: 'Novo Admin' },
+      target: { value: '  Samuel Araújo  ' },
     });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'Samuel@Email.COM' },
+    });
+    fireEvent.change(
+      screen.getByLabelText('Limite de instituições'),
+      {
+        target: { value: '5' },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Criar conta/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.createMutateAsync).toHaveBeenCalledWith({
+        accountName: 'Samuel Araújo',
+        adminFullName: 'Samuel Araújo',
+        adminEmail: 'samuel@email.com',
+        institutionLimit: 5,
+      });
+      expect(
+        screen.getByText(/Conta criada e convite enviado/i),
+      ).toBeDefined();
+    });
+  });
+
+  it('bloqueia criacao com nome do ADMIN vazio', () => {
+    renderPage();
+
     fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
       target: { value: 'novo@example.com' },
     });
@@ -305,17 +604,10 @@ describe('PlatformPage', () => {
       }),
     );
 
-    await waitFor(() => {
-      expect(hookMock.createMutateAsync).toHaveBeenCalledWith({
-        accountName: 'Conta Nova',
-        adminFullName: 'Novo Admin',
-        adminEmail: 'novo@example.com',
-        institutionLimit: 2,
-      });
-      expect(
-        screen.getByText(/Conta criada e convite enviado/i),
-      ).toBeDefined();
-    });
+    expect(hookMock.createMutateAsync).not.toHaveBeenCalled();
+    expect(screen.getByRole('alert').textContent).toMatch(
+      /Informe ADMIN, e-mail e limite/i,
+    );
   });
 
   it('mostra conflito de adminEmail sem limpar os demais campos', async () => {
@@ -331,9 +623,6 @@ describe('PlatformPage', () => {
 
     renderPage();
 
-    fireEvent.change(screen.getByLabelText('Nome da conta'), {
-      target: { value: 'Conta Nova' },
-    });
     fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
       target: { value: 'Novo Admin' },
     });
@@ -357,9 +646,14 @@ describe('PlatformPage', () => {
       expect(
         screen.getByText('Este e-mail já está cadastrado.'),
       ).toBeDefined();
-      expect(
-        screen.getByDisplayValue('Conta Nova'),
-      ).toBeDefined();
+      expect(hookMock.createMutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          accountName: 'Novo Admin',
+          adminFullName: 'Novo Admin',
+          adminEmail: 'existente@example.com',
+          institutionLimit: 2,
+        }),
+      );
       expect(
         screen.getByDisplayValue('Novo Admin'),
       ).toBeDefined();
@@ -391,8 +685,13 @@ describe('PlatformPage', () => {
       });
     });
 
+    const alfaRow =
+      screen
+        .getByLabelText('Limite de Conta Alfa')
+        .closest('tr')!;
+
     fireEvent.click(
-      screen.getByRole('button', {
+      within(alfaRow).getByRole('button', {
         name: /Suspender/i,
       }),
     );

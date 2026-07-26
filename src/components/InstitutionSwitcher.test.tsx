@@ -208,7 +208,7 @@ describe('InstitutionSwitcher', () => {
     ).toBeTruthy();
   });
 
-  it('chama setCurrentInstitutionId ao trocar escola', () => {
+  it('permite usuario com varias instituicoes alternar normalmente', () => {
     const setCurrentInstitutionId = vi.fn(
       async (institutionId: string) => ({
         success: true as const,
