@@ -180,15 +180,51 @@ export function AuthAside({
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    const startVideo = () => {
-      try { video.currentTime = 1.5; } catch { /* ignora */ }
+
+    video.defaultMuted = true;
+    video.muted = true;
+
+    const resumeVideo = () => {
       attemptVideoPlayback(video);
     };
+
+    const startVideo = () => {
+      if (video.currentTime < 1.5) {
+        try {
+          video.currentTime = 1.5;
+        } catch {
+          // O navegador pode bloquear seek antes dos metadados.
+        }
+      }
+      resumeVideo();
+    };
+
+    const resumeWhenVisible = () => {
+      if (document.visibilityState === 'visible') {
+        resumeVideo();
+      }
+    };
+
     if (video.readyState >= 1) {
       startVideo();
     } else {
       video.addEventListener('loadedmetadata', startVideo, { once: true });
     }
+
+    video.addEventListener('canplay', resumeVideo);
+    window.addEventListener('pageshow', resumeVideo);
+    document.addEventListener('visibilitychange', resumeWhenVisible);
+    document.addEventListener('pointerdown', resumeVideo, { once: true });
+    document.addEventListener('touchstart', resumeVideo, { once: true });
+
+    return () => {
+      video.removeEventListener('loadedmetadata', startVideo);
+      video.removeEventListener('canplay', resumeVideo);
+      window.removeEventListener('pageshow', resumeVideo);
+      document.removeEventListener('visibilitychange', resumeWhenVisible);
+      document.removeEventListener('pointerdown', resumeVideo);
+      document.removeEventListener('touchstart', resumeVideo);
+    };
   }, []);
 
   const handleTimeUpdate = (e: SyntheticEvent<HTMLVideoElement>) => {
@@ -218,6 +254,7 @@ export function AuthAside({
                 className="auth-hero-video opacity-100 z-20"
                 autoPlay
                 muted
+                loop
                 playsInline
                 webkit-playsinline="true"
                 preload="auto"

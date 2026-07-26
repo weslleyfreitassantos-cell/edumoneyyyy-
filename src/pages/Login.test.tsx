@@ -131,20 +131,32 @@ describe('Login', () => {
     const video = videos[0];
     expect(video.hasAttribute('autoplay')).toBe(true);
     expect(video.muted).toBe(true);
+    expect(video.defaultMuted).toBe(true);
+    expect(video.loop).toBe(true);
     expect(video.hasAttribute('playsinline')).toBe(true);
     expect(video.hasAttribute('webkit-playsinline')).toBe(true);
     expect(video.getAttribute('preload')).toBe('auto');
   });
 
   it('registra listeners de video para reproducao automatica sem quebrar login', () => {
-    const addEventListenerSpy = vi.spyOn(
+    const videoEventSpy = vi.spyOn(
       HTMLVideoElement.prototype,
       'addEventListener',
     );
+    const windowEventSpy = vi.spyOn(window, 'addEventListener');
+    const documentEventSpy = vi.spyOn(document, 'addEventListener');
     renderLogin();
 
-    const registeredEvents = addEventListenerSpy.mock.calls.map(call => call[0]);
-    expect(registeredEvents).toContain('loadedmetadata');
+    const videoEvents = videoEventSpy.mock.calls.map(call => call[0]);
+    const windowEvents = windowEventSpy.mock.calls.map(call => call[0]);
+    const documentEvents = documentEventSpy.mock.calls.map(call => call[0]);
+
+    expect(videoEvents).toContain('loadedmetadata');
+    expect(videoEvents).toContain('canplay');
+    expect(windowEvents).toContain('pageshow');
+    expect(documentEvents).toContain('visibilitychange');
+    expect(documentEvents).toContain('pointerdown');
+    expect(documentEvents).toContain('touchstart');
   });
 
   it('exibe logo dinamica resolvida por hostname quando disponivel e nome abaixo', () => {

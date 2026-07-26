@@ -26,6 +26,19 @@ vi.mock('../lib/supabaseClient', () => ({
   },
 }));
 
+vi.mock('../hooks/useBranding', () => ({
+  useResolvedBranding: () => ({
+    data: null,
+    isLoading: false,
+  }),
+}));
+
+vi.mock('../contexts/ThemeContext', () => ({
+  useThemePreference: () => ({
+    theme: 'light',
+  }),
+}));
+
 describe('ForgotPassword', () => {
   const originalLocation = window.location;
 
@@ -60,7 +73,7 @@ describe('ForgotPassword', () => {
     ).toBeDefined();
     expect(
       screen.getByRole('button', {
-        name: /Enviar link de recuperacao/i,
+        name: /Enviar link de recuperação/i,
       }),
     ).toBeDefined();
     expect(
@@ -85,7 +98,7 @@ describe('ForgotPassword', () => {
     });
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar link de recuperacao/i,
+        name: /Enviar link de recuperação/i,
       }),
     );
 
@@ -116,7 +129,7 @@ describe('ForgotPassword', () => {
     });
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar link de recuperacao/i,
+        name: /Enviar link de recuperação/i,
       }),
     );
 
@@ -158,7 +171,7 @@ describe('ForgotPassword', () => {
       target: { value: 'user@example.com' },
     });
     const button = screen.getByRole('button', {
-      name: /Enviar link de recuperacao/i,
+      name: /Enviar link de recuperação/i,
     });
 
     fireEvent.click(button);
@@ -201,7 +214,7 @@ describe('ForgotPassword', () => {
     });
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar link de recuperacao/i,
+        name: /Enviar link de recuperação/i,
       }),
     );
 
@@ -234,7 +247,7 @@ describe('ForgotPassword', () => {
     });
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar link de recuperacao/i,
+        name: /Enviar link de recuperação/i,
       }),
     );
 

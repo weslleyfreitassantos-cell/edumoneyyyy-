@@ -23,6 +23,10 @@ vi.mock("../lib/supabaseClient", () => ({
   },
 }));
 
+vi.mock("../contexts/ThemeContext", () => ({
+  useThemePreference: () => ({ theme: "light" }),
+}));
+
 describe("SetPassword", () => {
   const mockNavigate = vi.fn();
 
