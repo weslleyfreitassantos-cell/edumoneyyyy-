@@ -210,7 +210,7 @@ export default function AppShell({
   const { theme, toggleTheme } = useThemePreference();
   const branding = useHostBranding();
 
-  const [isSidebarCollapsed, setIsSidebarCollapsed] =
+  const [isSidebarHidden, setIsSidebarHidden] =
     useState(readSidebarPreference);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] =
     useState(false);
@@ -230,8 +230,8 @@ export default function AppShell({
   const shouldRestoreFocusRef = useRef(false);
 
   useEffect(() => {
-    writeSidebarPreference(isSidebarCollapsed);
-  }, [isSidebarCollapsed]);
+    writeSidebarPreference(isSidebarHidden);
+  }, [isSidebarHidden]);
 
   useEffect(() => {
     if (!isMobileSidebarOpen) {
@@ -487,7 +487,7 @@ export default function AppShell({
   }
 
   function toggleSidebar(): void {
-    setIsSidebarCollapsed((value) => !value);
+    setIsSidebarHidden((value) => !value);
   }
 
   async function handleLogout(): Promise<void> {
@@ -527,11 +527,10 @@ export default function AppShell({
         currentInstitutionRole={
           institutionContext.currentRole
         }
-        isCollapsed={isSidebarCollapsed}
+        isDesktopHidden={isSidebarHidden}
         isMobileOpen={isMobileSidebarOpen}
         isLoggingOut={isLoggingOut}
         onCloseMobile={closeMobileSidebar}
-        onToggleCollapsed={toggleSidebar}
         onLogout={() => {
           void handleLogout();
         }}
@@ -559,9 +558,7 @@ export default function AppShell({
                   .currentInstitution?.name
               : null
           }
-          isSidebarCollapsed={
-            isSidebarCollapsed
-          }
+          isSidebarHidden={isSidebarHidden}
           isMobileSidebarOpen={
             isMobileSidebarOpen
           }

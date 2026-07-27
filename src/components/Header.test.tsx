@@ -131,7 +131,7 @@ function renderHeader(
     pageTitle: 'Gestao institucional',
     pageSection: 'Administracao',
     showInstitutionSwitcher: true,
-    isSidebarCollapsed: false,
+    isSidebarHidden: false,
     isMobileSidebarOpen: false,
     isLoggingOut: false,
     mobileSidebarId: 'app-sidebar',
@@ -351,18 +351,42 @@ describe('Header', () => {
     expect(onOpenMobileSidebar).toHaveBeenCalledTimes(1);
   });
 
-  it('aciona recolher e expandir sidebar no desktop', () => {
+  it('mantem um unico botao desktop de alternancia da Sidebar visivel', () => {
     const onToggleSidebar = vi.fn();
     renderHeader({
       onToggleSidebar,
-      isSidebarCollapsed: false,
+      isSidebarHidden: false,
     });
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /recolher sidebar/i,
-      }),
+    const buttons = screen.getAllByRole('button', {
+      name: /ocultar menu lateral/i,
+    });
+    expect(buttons).toHaveLength(1);
+    expect(buttons[0].getAttribute('aria-expanded')).toBe(
+      'true',
     );
+
+    fireEvent.click(buttons[0]);
+
+    expect(onToggleSidebar).toHaveBeenCalledTimes(1);
+  });
+
+  it('atualiza acessibilidade do toggle desktop quando a Sidebar esta oculta', () => {
+    const onToggleSidebar = vi.fn();
+    renderHeader({
+      onToggleSidebar,
+      isSidebarHidden: true,
+    });
+
+    const button = screen.getByRole('button', {
+      name: /mostrar menu lateral/i,
+    });
+
+    expect(button.getAttribute('aria-expanded')).toBe(
+      'false',
+    );
+
+    fireEvent.click(button);
 
     expect(onToggleSidebar).toHaveBeenCalledTimes(1);
   });

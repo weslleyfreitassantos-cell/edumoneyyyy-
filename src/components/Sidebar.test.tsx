@@ -56,18 +56,17 @@ function renderSidebar({
   profile = baseProfile,
   currentUser = baseUser,
   currentInstitutionRole = 'ADMIN',
-  isCollapsed = false,
+  isDesktopHidden = false,
   isMobileOpen = false,
 }: {
   route?: string;
   profile?: Profile;
   currentUser?: User;
   currentInstitutionRole?: string | null;
-  isCollapsed?: boolean;
+  isDesktopHidden?: boolean;
   isMobileOpen?: boolean;
 } = {}) {
   const onCloseMobile = vi.fn();
-  const onToggleCollapsed = vi.fn();
   const onLogout = vi.fn();
 
   render(
@@ -79,11 +78,10 @@ function renderSidebar({
         currentInstitutionRole={
           currentInstitutionRole
         }
-        isCollapsed={isCollapsed}
+        isDesktopHidden={isDesktopHidden}
         isMobileOpen={isMobileOpen}
         isLoggingOut={false}
         onCloseMobile={onCloseMobile}
-        onToggleCollapsed={onToggleCollapsed}
         onLogout={onLogout}
       />
     </MemoryRouter>,
@@ -91,7 +89,6 @@ function renderSidebar({
 
   return {
     onCloseMobile,
-    onToggleCollapsed,
     onLogout,
   };
 }
@@ -330,8 +327,8 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('mantem nomes acessiveis e acao de expandir quando recolhida', () => {
-    const { onToggleCollapsed } = renderSidebar({
+  it('mantem navegacao completa e nao exibe toggle redundante no rodape', () => {
+    renderSidebar({
       route: '/dashboard',
       profile: {
         ...baseProfile,
@@ -343,7 +340,6 @@ describe('Sidebar', () => {
         subtitle: 'Aluno',
       },
       currentInstitutionRole: 'STUDENT',
-      isCollapsed: true,
     });
 
     expect(
@@ -351,14 +347,18 @@ describe('Sidebar', () => {
         name: /dashboard/i,
       }),
     ).toBeTruthy();
-
-    fireEvent.click(
-      screen.getByRole('button', {
+    expect(screen.getByText('EduManager Pro')).toBeTruthy();
+    expect(screen.getByText('ana@example.com')).toBeTruthy();
+    expect(
+      screen.queryByRole('button', {
+        name: /recolher sidebar/i,
+      }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('button', {
         name: /expandir sidebar/i,
       }),
-    );
-
-    expect(onToggleCollapsed).toHaveBeenCalledTimes(1);
+    ).toBeNull();
   });
 
   it('chama logout real pelo rodape', () => {

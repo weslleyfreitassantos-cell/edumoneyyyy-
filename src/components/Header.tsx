@@ -29,7 +29,7 @@ interface HeaderProps {
   showInstitutionSwitcher: boolean;
   staticInstitutionName?: string | null;
   staticInstitutionHelper?: string;
-  isSidebarCollapsed: boolean;
+  isSidebarHidden: boolean;
   isMobileSidebarOpen: boolean;
   isLoggingOut: boolean;
   mobileSidebarId: string;
@@ -62,7 +62,7 @@ export default function Header({
   showInstitutionSwitcher,
   staticInstitutionName = null,
   staticInstitutionHelper = 'Escola selecionada',
-  isSidebarCollapsed,
+  isSidebarHidden,
   isMobileSidebarOpen,
   isLoggingOut,
   mobileSidebarId,
@@ -200,14 +200,14 @@ export default function Header({
           className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] lg:inline-flex"
           onClick={onToggleSidebar}
           aria-label={
-            isSidebarCollapsed
-              ? 'Expandir sidebar'
-              : 'Recolher sidebar'
+            isSidebarHidden
+              ? 'Mostrar menu lateral'
+              : 'Ocultar menu lateral'
           }
-          aria-expanded={!isSidebarCollapsed}
+          aria-expanded={!isSidebarHidden}
           aria-controls={mobileSidebarId}
         >
-          {isSidebarCollapsed ? (
+          {isSidebarHidden ? (
             <PanelLeftOpen
               className="h-5 w-5"
               aria-hidden="true"

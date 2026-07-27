@@ -258,6 +258,99 @@ describe('AppShell', () => {
     ).toBeGreaterThan(0);
   });
 
+  it('inicia com Sidebar desktop aberta e oculta completamente pelo Header', () => {
+    renderShell('/dashboard');
+
+    const sidebar = document.getElementById('app-sidebar');
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'false',
+    );
+    expect(sidebar?.className).toContain('lg:w-[280px]');
+    expect(sidebar?.className).not.toContain('lg:w-20');
+    expect(sidebar?.className).not.toContain('lg:hidden');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Ocultar menu lateral',
+      }),
+    );
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'true',
+    );
+    expect(sidebar?.className).toContain('lg:hidden');
+    expect(
+      window.localStorage.getItem(
+        'edumanager.sidebarCollapsed',
+      ),
+    ).toBe('true');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Mostrar menu lateral',
+      }),
+    );
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'false',
+    );
+    expect(sidebar?.className).not.toContain('lg:hidden');
+    expect(
+      window.localStorage.getItem(
+        'edumanager.sidebarCollapsed',
+      ),
+    ).toBe('false');
+  });
+
+  it('restaura preferencia de Sidebar desktop oculta', () => {
+    window.localStorage.setItem(
+      'edumanager.sidebarCollapsed',
+      'true',
+    );
+
+    renderShell('/dashboard');
+
+    const sidebar = document.getElementById('app-sidebar');
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'true',
+    );
+    expect(sidebar?.className).toContain('lg:hidden');
+    expect(
+      screen.getByRole('button', {
+        name: 'Mostrar menu lateral',
+      }).getAttribute('aria-expanded'),
+    ).toBe('false');
+    expect(
+      screen.queryByRole('button', {
+        name: /recolher sidebar/i,
+      }),
+    ).toBeNull();
+  });
+
+  it('abre drawer mobile mesmo com preferencia desktop oculta', () => {
+    window.localStorage.setItem(
+      'edumanager.sidebarCollapsed',
+      'true',
+    );
+
+    renderShell('/dashboard');
+
+    fireEvent.click(getMobileMenuButton());
+
+    expect(
+      getMobileMenuButton().getAttribute(
+        'aria-expanded',
+      ),
+    ).toBe('true');
+    expect(
+      screen.getByRole('dialog', {
+        name: /edumanager pro/i,
+      }),
+    ).toBeTruthy();
+  });
+
   it('nao mostra seletor de instituicao para SUPER_ADMIN em /platform', () => {
     mockContexts({
       profile: {
