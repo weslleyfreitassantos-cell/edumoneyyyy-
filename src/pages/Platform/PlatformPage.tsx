@@ -9,7 +9,6 @@ import {
   Save,
   Search,
   ShieldCheck,
-  Trash2,
   X,
 } from 'lucide-react';
 import {
@@ -29,8 +28,9 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import {
   useAccounts,
+  useAccountStatusEvents,
+  useCloseClientAccount,
   useCreateClientAccount,
-  useDeleteClientAccount,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
@@ -60,10 +60,15 @@ type AccountFormFieldErrors = Partial<
   Record<keyof AccountFormState, string>
 >;
 
-interface DeleteDialogState {
+interface CloseDialogState {
   account: AccountSummaryRow;
   confirmation: string;
+  reason: string;
   error: string | null;
+}
+
+interface StatusHistoryDialogState {
+  account: AccountSummaryRow;
 }
 
 interface InstitutionAccessDialogState {
@@ -174,16 +179,9 @@ function getCreateAccountFieldErrors(
   return {};
 }
 
-function getDeleteAccountErrorMessage(
+function getCloseAccountErrorMessage(
   error: unknown,
 ): string {
-  if (
-    error instanceof AccountServiceError &&
-    error.code === 'ACCOUNT_NOT_EMPTY'
-  ) {
-    return 'Esta conta possui instituições ou vínculos e não pode ser excluída.';
-  }
-
   return getPlatformErrorMessage(error);
 }
 
@@ -332,7 +330,7 @@ export default function PlatformPage() {
   const updateAccount = useUpdateClientAccount();
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
-  const deleteAccount = useDeleteClientAccount();
+  const closeAccount = useCloseClientAccount();
   const globalBrandingQuery = useGlobalBranding();
   const saveGlobalBranding = useSaveGlobalBranding();
   const domainRequestsQuery = useDomainRequests();
@@ -352,8 +350,10 @@ export default function PlatformPage() {
   const [feedback, setFeedback] = useState<
     { type: 'success' | 'error'; message: string } | null
   >(null);
-  const [deleteDialog, setDeleteDialog] =
-    useState<DeleteDialogState | null>(null);
+  const [closeDialog, setCloseDialog] =
+    useState<CloseDialogState | null>(null);
+  const [statusHistoryDialog, setStatusHistoryDialog] =
+    useState<StatusHistoryDialogState | null>(null);
   const [
     institutionAccessDialog,
     setInstitutionAccessDialog,
@@ -365,7 +365,7 @@ export default function PlatformPage() {
     useState(false);
 
   const accounts = accountsQuery.data ?? [];
-  const canDeleteAccounts =
+  const canCloseAccounts =
     profile?.platform_role === 'SUPER_ADMIN';
   const isSuperAdmin =
     profile?.platform_role === 'SUPER_ADMIN';
@@ -416,17 +416,22 @@ export default function PlatformPage() {
 
   const hasActiveFilters =
     searchTerm.trim().length > 0 || statusFilter !== 'ALL';
-  const deleteDialogOwner =
-    deleteDialog?.account.owner ?? null;
-  const deleteConfirmationMatches = Boolean(
-    deleteDialogOwner?.email &&
-      deleteDialog?.confirmation ===
-        deleteDialogOwner.email,
+  const closeDialogOwner =
+    closeDialog?.account.owner ?? null;
+  const closeConfirmationMatches = Boolean(
+    closeDialogOwner?.email &&
+      closeDialog?.confirmation ===
+        closeDialogOwner.email,
   );
-  const deletePreservesSuperAdmin =
-    deleteDialogOwner?.platform_role === 'SUPER_ADMIN';
+  const closeReason = closeDialog?.reason.trim() ?? '';
+  const closeReasonIsValid =
+    closeReason.length >= 10 && closeReason.length <= 500;
   const institutionAccessDialogOwner =
     institutionAccessDialog?.account.owner ?? null;
+  const statusEventsQuery = useAccountStatusEvents(
+    statusHistoryDialog?.account.id,
+    Boolean(statusHistoryDialog),
+  );
   const institutionAccessOptions = useMemo(
     () =>
       institutionAccessDialog
@@ -564,21 +569,26 @@ export default function PlatformPage() {
     }
   }
 
-  function openDeleteDialog(account: AccountSummaryRow): void {
+  function openCloseDialog(account: AccountSummaryRow): void {
+    if (account.status === 'CANCELED') {
+      return;
+    }
+
     setFeedback(null);
-    setDeleteDialog({
+    setCloseDialog({
       account,
       confirmation: '',
+      reason: '',
       error: null,
     });
   }
 
-  function closeDeleteDialog(): void {
-    if (deleteAccount.isPending) {
+  function closeCloseDialog(): void {
+    if (closeAccount.isPending) {
       return;
     }
 
-    setDeleteDialog(null);
+    setCloseDialog(null);
   }
 
   async function accessInstitutionById(
@@ -615,6 +625,24 @@ export default function PlatformPage() {
   async function openInstitutionAccessDialog(
     account: AccountSummaryRow,
   ): Promise<void> {
+    if (account.status === 'SUSPENDED') {
+      setFeedback({
+        type: 'error',
+        message:
+          'Esta conta esta suspensa. Reative a conta antes de acessar suas escolas.',
+      });
+      return;
+    }
+
+    if (account.status === 'CANCELED') {
+      setFeedback({
+        type: 'error',
+        message:
+          'Esta conta foi encerrada. O acesso operacional as escolas esta bloqueado e o historico permanece preservado.',
+      });
+      return;
+    }
+
     const activeInstitutions =
       getActiveAccountInstitutions(account);
 
@@ -725,16 +753,16 @@ export default function PlatformPage() {
     );
   }
 
-  async function handleDeleteAccount(): Promise<void> {
-    if (!deleteDialog || deleteAccount.isPending) {
+  async function handleCloseAccount(): Promise<void> {
+    if (!closeDialog || closeAccount.isPending) {
       return;
     }
 
     const ownerEmail =
-      deleteDialog.account.owner?.email ?? '';
+      closeDialog.account.owner?.email ?? '';
 
-    if (deleteDialog.confirmation !== ownerEmail) {
-      setDeleteDialog((current) =>
+    if (closeDialog.confirmation !== ownerEmail) {
+      setCloseDialog((current) =>
         current
           ? {
               ...current,
@@ -746,26 +774,38 @@ export default function PlatformPage() {
       return;
     }
 
-    try {
-      const response =
-        await deleteAccount.mutateAsync({
-          accountId: deleteDialog.account.id,
-        });
-
-      setDeleteDialog(null);
-      setFeedback({
-        type: 'success',
-        message: response.ownerPreserved
-          ? 'A conta indevida foi removida e o Super Administrador foi preservado.'
-          : 'Conta vazia e administrador excluídos.',
-      });
-    } catch (error) {
-      setDeleteDialog((current) =>
+    if (!closeReasonIsValid) {
+      setCloseDialog((current) =>
         current
           ? {
               ...current,
               error:
-                getDeleteAccountErrorMessage(error),
+                'Informe um motivo entre 10 e 500 caracteres.',
+            }
+          : current,
+      );
+      return;
+    }
+
+    try {
+      await closeAccount.mutateAsync({
+        accountId: closeDialog.account.id,
+        reason: closeReason,
+      });
+
+      setCloseDialog(null);
+      setFeedback({
+        type: 'success',
+        message:
+          'Conta encerrada. Dados e historico preservados.',
+      });
+    } catch (error) {
+      setCloseDialog((current) =>
+        current
+          ? {
+              ...current,
+              error:
+                getCloseAccountErrorMessage(error),
             }
           : current,
       );
@@ -775,6 +815,15 @@ export default function PlatformPage() {
   async function updateLimit(
     account: AccountSummaryRow,
   ): Promise<void> {
+    if (account.status === 'CANCELED') {
+      setFeedback({
+        type: 'error',
+        message:
+          'Conta encerrada nao permite alteracao de limite.',
+      });
+      return;
+    }
+
     const nextLimit = Number(
       limitDrafts[account.id] ??
         account.institutionLimit,
@@ -819,10 +868,30 @@ export default function PlatformPage() {
     accountId: string,
     status: AccountStatus,
   ): Promise<void> {
+    const reason =
+      status === 'SUSPENDED'
+        ? window.prompt(
+            'Informe o motivo da suspensao da conta (10 a 500 caracteres).',
+          )?.trim() ?? ''
+        : undefined;
+
+    if (
+      status === 'SUSPENDED' &&
+      (reason.length < 10 || reason.length > 500)
+    ) {
+      setFeedback({
+        type: 'error',
+        message:
+          'Informe um motivo entre 10 e 500 caracteres para suspender a conta.',
+      });
+      return;
+    }
+
     try {
       await updateAccount.mutateAsync({
         accountId,
         status,
+        reason,
       });
       setFeedback({
         type: 'success',
@@ -1116,7 +1185,6 @@ export default function PlatformPage() {
                   <option value="ALL">Todos</option>
                   <option value="ACTIVE">Ativas</option>
                   <option value="SUSPENDED">Suspensas</option>
-                  <option value="CANCELED">Canceladas</option>
                 </select>
               </Field>
 
@@ -1234,7 +1302,8 @@ export default function PlatformPage() {
                           </div>
                         </td>
                         <td className="px-4 py-4 text-[#444651]">
-                          {account.owner ? (
+                          {account.owner &&
+                          account.status === 'ACTIVE' ? (
                             <button
                               type="button"
                               onClick={() =>
@@ -1255,9 +1324,13 @@ export default function PlatformPage() {
                           ) : (
                             <>
                               <p className="font-medium text-[#191c1d]">
-                                Sem owner
+                                {account.owner
+                                  ? account.owner.full_name
+                                  : 'Sem owner'}
                               </p>
-                              <p className="text-xs" />
+                              <p className="text-xs">
+                                {account.owner?.email ?? ''}
+                              </p>
                             </>
                           )}
                         </td>
@@ -1299,7 +1372,10 @@ export default function PlatformPage() {
                                   }),
                                 )
                               }
-                              className="h-9 w-20 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20"
+                              disabled={
+                                account.status === 'CANCELED'
+                              }
+                              className="h-9 w-20 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682]"
                             />
                             <button
                               type="button"
@@ -1308,7 +1384,10 @@ export default function PlatformPage() {
                                   account,
                                 )
                               }
-                              disabled={updateAccount.isPending}
+                              disabled={
+                                updateAccount.isPending ||
+                                account.status === 'CANCELED'
+                              }
                               className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
                               aria-label={`Salvar limite de ${account.name}`}
                               title="Salvar limite"
@@ -1352,43 +1431,46 @@ export default function PlatformPage() {
                                         </p>
                                       </div>
 
-                                      <button
-                                        type="button"
-                                        onClick={() =>
-                                          void changeInstitutionStatus(
-                                            institution,
-                                            !isActiveInstitution,
-                                          )
-                                        }
-                                        disabled={
-                                          updateInstitutionStatusMutation.isPending
-                                        }
-                                        className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
-                                          isActiveInstitution
-                                            ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40'
-                                            : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50'
-                                        }`}
-                                        aria-label={`${
-                                          isActiveInstitution
+                                      {account.status ===
+                                        'ACTIVE' && (
+                                        <button
+                                          type="button"
+                                          onClick={() =>
+                                            void changeInstitutionStatus(
+                                              institution,
+                                              !isActiveInstitution,
+                                            )
+                                          }
+                                          disabled={
+                                            updateInstitutionStatusMutation.isPending
+                                          }
+                                          className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
+                                            isActiveInstitution
+                                              ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40'
+                                              : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50'
+                                          }`}
+                                          aria-label={`${
+                                            isActiveInstitution
+                                              ? 'Suspender'
+                                              : 'Reativar'
+                                          } ${institution.name}`}
+                                        >
+                                          {isActiveInstitution ? (
+                                            <PauseCircle
+                                              className="h-4 w-4"
+                                              aria-hidden="true"
+                                            />
+                                          ) : (
+                                            <RotateCcw
+                                              className="h-4 w-4"
+                                              aria-hidden="true"
+                                            />
+                                          )}
+                                          {isActiveInstitution
                                             ? 'Suspender'
-                                            : 'Reativar'
-                                        } ${institution.name}`}
-                                      >
-                                        {isActiveInstitution ? (
-                                          <PauseCircle
-                                            className="h-4 w-4"
-                                            aria-hidden="true"
-                                          />
-                                        ) : (
-                                          <RotateCcw
-                                            className="h-4 w-4"
-                                            aria-hidden="true"
-                                          />
-                                        )}
-                                        {isActiveInstitution
-                                          ? 'Suspender'
-                                          : 'Reativar'}
-                                      </button>
+                                            : 'Reativar'}
+                                        </button>
+                                      )}
                                     </div>
                                   );
                                 },
@@ -1416,7 +1498,8 @@ export default function PlatformPage() {
                                 />
                                 Suspender
                               </button>
-                            ) : (
+                            ) : account.status ===
+                              'SUSPENDED' ? (
                               <button
                                 type="button"
                                 onClick={() =>
@@ -1428,38 +1511,49 @@ export default function PlatformPage() {
                                 disabled={updateAccount.isPending}
                                 className="inline-flex items-center gap-2 rounded-lg border border-[#6ffbbe] px-3 py-1.5 text-xs font-semibold text-[#005236] transition hover:bg-[#effdf6] focus:outline-none focus:ring-2 focus:ring-[#6ffbbe]/50 disabled:cursor-not-allowed disabled:opacity-60"
                               >
-                                {account.status === 'CANCELED' ? (
-                                  <RotateCcw
-                                    className="h-4 w-4"
-                                    aria-hidden="true"
-                                  />
-                                ) : (
-                                  <CheckCircle2
-                                    className="h-4 w-4"
-                                    aria-hidden="true"
-                                  />
-                                )}
+                                <CheckCircle2
+                                  className="h-4 w-4"
+                                  aria-hidden="true"
+                                />
                                 Reativar
                               </button>
+                            ) : (
+                              <span className="inline-flex max-w-xs items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a]">
+                                Conta encerrada. Dados e
+                                historico preservados.
+                              </span>
                             )}
-                            {canDeleteAccounts &&
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setStatusHistoryDialog({
+                                  account,
+                                })
+                              }
+                              className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
+                            >
+                              Ver histórico
+                            </button>
+                            {canCloseAccounts &&
+                              account.status !==
+                                'CANCELED' &&
                               account.owner?.email && (
                                 <button
                                   type="button"
                                   onClick={() =>
-                                    openDeleteDialog(account)
+                                    openCloseDialog(account)
                                   }
                                   disabled={
-                                    deleteAccount.isPending
+                                    closeAccount.isPending
                                   }
                                   className="inline-flex items-center gap-2 rounded-lg border border-[#ffdad6] px-3 py-1.5 text-xs font-semibold text-[#93000a] transition hover:bg-[#fff1ef] focus:outline-none focus:ring-2 focus:ring-[#ffdad6]/70 disabled:cursor-not-allowed disabled:opacity-60"
-                                  aria-label={`Excluir administrador de ${account.name}`}
+                                  aria-label={`Encerrar conta ${account.name}`}
                                 >
-                                  <Trash2
+                                  <X
                                     className="h-4 w-4"
                                     aria-hidden="true"
                                   />
-                                  Excluir administrador
+                                  Encerrar conta
                                 </button>
                               )}
                           </div>
@@ -1709,7 +1803,7 @@ export default function PlatformPage() {
             </div>
           )}
 
-        {deleteDialog && deleteDialogOwner && (
+        {statusHistoryDialog && (
           <div
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
             role="presentation"
@@ -1717,27 +1811,133 @@ export default function PlatformPage() {
             <section
               role="dialog"
               aria-modal="true"
-              aria-labelledby="delete-account-title"
+              aria-labelledby="account-history-title"
+              className="max-h-[calc(100dvh-48px)] w-full max-w-xl overflow-y-auto rounded-xl bg-white p-5 shadow-xl"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="account-history-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d]"
+                  >
+                    Histórico da conta
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651]">
+                    {statusHistoryDialog.account.name}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setStatusHistoryDialog(null)
+                  }
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
+                  aria-label="Fechar histórico"
+                >
+                  <X
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651]">
+                Os registros mostram mudanças de status
+                auditadas. Dados acadêmicos e instituições
+                permanecem preservados.
+              </div>
+
+              <div className="mt-4 space-y-3">
+                {statusEventsQuery.isLoading ? (
+                  <div className="flex items-center gap-2 text-sm text-[#444651]">
+                    <Loader2
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                    Carregando histórico...
+                  </div>
+                ) : statusEventsQuery.isError ? (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a]"
+                  >
+                    Não foi possível carregar o histórico.
+                  </div>
+                ) : statusEventsQuery.data?.length ? (
+                  statusEventsQuery.data.map((event) => (
+                    <article
+                      key={event.id}
+                      className="rounded-lg border border-[#c5c5d3]/70 p-3 text-sm"
+                    >
+                      <div className="flex flex-wrap items-center gap-2">
+                        <StatusBadge
+                          status={event.previousStatus}
+                        />
+                        <span className="text-[#757682]">
+                          para
+                        </span>
+                        <StatusBadge
+                          status={event.newStatus}
+                        />
+                      </div>
+                      <p className="mt-2 text-[#191c1d]">
+                        {event.reason ??
+                          'Sem motivo registrado.'}
+                      </p>
+                      <p className="mt-2 text-xs text-[#757682]">
+                        {new Date(
+                          event.createdAt,
+                        ).toLocaleString('pt-BR')}
+                        {event.actorName
+                          ? ` por ${event.actorName}`
+                          : ''}
+                        {event.actorEmail
+                          ? ` (${event.actorEmail})`
+                          : ''}
+                      </p>
+                    </article>
+                  ))
+                ) : (
+                  <div className="rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651]">
+                    Nenhuma mudança de status registrada.
+                  </div>
+                )}
+              </div>
+            </section>
+          </div>
+        )}
+
+        {closeDialog && closeDialogOwner && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="close-account-title"
               className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h2
-                    id="delete-account-title"
+                    id="close-account-title"
                     className="text-xl font-semibold leading-7 text-[#191c1d]"
                   >
-                    Excluir conta e administrador
+                    Encerrar conta
                   </h2>
                   <p className="mt-1 text-sm leading-5 text-[#444651]">
-                    Ao excluir o único administrador, esta conta vazia também será removida.
+                    Encerre o contrato comercial sem apagar
+                    dados acadêmicos, instituições, perfis ou
+                    histórico.
                   </p>
                 </div>
                 <button
                   type="button"
-                  onClick={closeDeleteDialog}
-                  disabled={deleteAccount.isPending}
+                  onClick={closeCloseDialog}
+                  disabled={closeAccount.isPending}
                   className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
-                  aria-label="Fechar modal de exclusão"
+                  aria-label="Fechar modal de encerramento"
                 >
                   <X
                     className="h-4 w-4"
@@ -1752,7 +1952,7 @@ export default function PlatformPage() {
                     Conta
                   </p>
                   <p className="mt-1 font-semibold text-[#191c1d]">
-                    {deleteDialog.account.name}
+                    {closeDialog.account.name}
                   </p>
                 </div>
                 <div>
@@ -1760,9 +1960,9 @@ export default function PlatformPage() {
                     Administrador
                   </p>
                   <p className="mt-1 font-semibold text-[#191c1d]">
-                    {deleteDialogOwner.full_name}
+                    {closeDialogOwner.full_name}
                   </p>
-                  <p>{deleteDialogOwner.email}</p>
+                  <p>{closeDialogOwner.email}</p>
                 </div>
               </div>
 
@@ -1772,35 +1972,66 @@ export default function PlatformPage() {
                   aria-hidden="true"
                 />
                 <p>
-                  Esta ação é irreversível. Contas com instituições ou vínculos não podem ser excluídas.
-                  {deletePreservesSuperAdmin
-                    ? ' O Super Administrador será preservado.'
-                    : ''}
+                  A conta ficará com status Cancelada e não
+                  poderá ser reativada pelo aplicativo. O
+                  administrador, as escolas e todo o histórico
+                  acadêmico serão preservados.
                 </p>
               </div>
 
-              {deleteDialog.error && (
+              {closeDialog.error && (
                 <div
                   role="alert"
                   className="mt-4 rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a]"
                 >
-                  {deleteDialog.error}
+                  {closeDialog.error}
                 </div>
               )}
 
               <div className="mt-4">
                 <label
-                  htmlFor="delete-account-confirmation"
+                  htmlFor="close-account-reason"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Motivo do encerramento
+                </label>
+                <textarea
+                  id="close-account-reason"
+                  value={closeDialog.reason}
+                  onChange={(event) =>
+                    setCloseDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            reason: event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  minLength={10}
+                  maxLength={500}
+                  disabled={closeAccount.isPending}
+                  className="mt-1 min-h-24 w-full rounded-lg border border-[#c5c5d3] px-3 py-2 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+                <p className="mt-1 text-xs text-[#757682]">
+                  {closeReason.length}/500 caracteres
+                </p>
+              </div>
+
+              <div className="mt-4">
+                <label
+                  htmlFor="close-account-confirmation"
                   className="block text-xs font-semibold text-[#444651]"
                 >
                   Digite o e-mail do administrador para confirmar
                 </label>
                 <input
-                  id="delete-account-confirmation"
+                  id="close-account-confirmation"
                   type="email"
-                  value={deleteDialog.confirmation}
+                  value={closeDialog.confirmation}
                   onChange={(event) =>
-                    setDeleteDialog((current) =>
+                    setCloseDialog((current) =>
                       current
                         ? {
                             ...current,
@@ -1811,7 +2042,7 @@ export default function PlatformPage() {
                         : current,
                     )
                   }
-                  disabled={deleteAccount.isPending}
+                  disabled={closeAccount.isPending}
                   className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
                 />
               </div>
@@ -1819,33 +2050,34 @@ export default function PlatformPage() {
               <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                 <button
                   type="button"
-                  onClick={closeDeleteDialog}
-                  disabled={deleteAccount.isPending}
+                  onClick={closeCloseDialog}
+                  disabled={closeAccount.isPending}
                   className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   Cancelar
                 </button>
                 <button
                   type="button"
-                  onClick={() => void handleDeleteAccount()}
+                  onClick={() => void handleCloseAccount()}
                   disabled={
-                    !deleteConfirmationMatches ||
-                    deleteAccount.isPending
+                    !closeConfirmationMatches ||
+                    !closeReasonIsValid ||
+                    closeAccount.isPending
                   }
                   className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-[#93000a] px-4 text-sm font-semibold text-white transition hover:bg-[#730006] focus:outline-none focus:ring-2 focus:ring-[#93000a]/30 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {deleteAccount.isPending ? (
+                  {closeAccount.isPending ? (
                     <Loader2
                       className="h-4 w-4 animate-spin"
                       aria-hidden="true"
                     />
                   ) : (
-                    <Trash2
+                    <X
                       className="h-4 w-4"
                       aria-hidden="true"
                     />
                   )}
-                  Excluir
+                  Encerrar conta
                 </button>
               </div>
             </section>

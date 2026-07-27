@@ -44,6 +44,7 @@ interface InstitutionRelation {
   name: string;
   active: boolean | null;
   account_id: string | null;
+  accounts?: AccountSummary | AccountSummary[] | null;
 }
 
 interface AccountInstitutionQueryRow {
@@ -235,7 +236,20 @@ export const institutionService = {
   async listAllActiveInstitutions(): Promise<UserInstitution[]> {
     const { data, error } = await supabase
       .from('institutions')
-      .select('id, name, active, account_id')
+      .select(
+        `
+        id,
+        name,
+        active,
+        account_id,
+        accounts:account_id (
+          id,
+          name,
+          status,
+          institution_limit
+        )
+      `,
+      )
       .eq('active', true)
       .order('name');
 
@@ -243,18 +257,42 @@ export const institutionService = {
       throw error;
     }
 
-    return (data ?? []).map((inst) => ({
-      membership: null,
-      institution: {
-        id: inst.id,
-        name: inst.name,
-        active: inst.active ?? true,
-        account_id: inst.account_id ?? null,
-      },
-      account: null,
-      accessSource: 'membership' as const,
-      effectiveRole: 'ADMIN' as CurrentDatabaseRole,
-    }));
+    return (
+      (data ?? []) as unknown as InstitutionRelation[]
+    )
+      .filter((inst) => {
+        const account = normalizeRelation(inst.accounts);
+
+        return (
+          inst.account_id === null ||
+          account?.status === 'ACTIVE'
+        );
+      })
+      .map((inst) => {
+        const account = normalizeRelation(inst.accounts);
+
+        return {
+          membership: null,
+          institution: {
+            id: inst.id,
+            name: inst.name,
+            active: inst.active ?? true,
+            account_id: inst.account_id ?? null,
+          },
+          account:
+            account && isAccountStatus(account.status)
+              ? {
+                  id: account.id,
+                  name: account.name,
+                  status: account.status,
+                  institution_limit:
+                    account.institution_limit ?? 1,
+                }
+              : null,
+          accessSource: 'membership' as const,
+          effectiveRole: 'ADMIN' as CurrentDatabaseRole,
+        };
+      });
   },
 
   async listForProfile(

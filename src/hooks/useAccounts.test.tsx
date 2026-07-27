@@ -27,9 +27,9 @@ import {
 } from './useUserInstitutions';
 import {
   accountKeys,
+  useCloseClientAccount,
   useCreateClientAccount,
   useCreateInstitution,
-  useDeleteClientAccount,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
 } from './useAccounts';
@@ -37,6 +37,7 @@ import {
 vi.mock('../services/accountService', () => ({
   accountService: {
     createAccount: vi.fn(),
+    closeAccount: vi.fn(),
     updateAccount: vi.fn(),
     updateInstitutionStatus: vi.fn(),
     deleteAccount: vi.fn(),
@@ -198,7 +199,10 @@ describe('account mutations', () => {
       success: true,
       accountId: 'account-1',
       institutionLimit: 4,
+      previousStatus: 'ACTIVE',
       status: 'ACTIVE',
+      auditEventId: null,
+      statusChanged: false,
     });
 
     const wrapper = ({
@@ -276,19 +280,21 @@ describe('account mutations', () => {
     expect(invalidateSpy).toHaveBeenCalledTimes(2);
   });
 
-  it('invalida contas apos excluir conta e administrador', async () => {
+  it('invalida contas e instituicoes apos encerrar conta', async () => {
     const queryClient = createQueryClient();
     const invalidateSpy = vi.spyOn(
       queryClient,
       'invalidateQueries',
     );
 
-    mockedAccountService.deleteAccount.mockResolvedValue({
+    mockedAccountService.closeAccount.mockResolvedValue({
       success: true,
       accountId: 'account-1',
-      ownerProfileId: 'owner-1',
-      ownerPreserved: false,
-      deletedAuthUser: true,
+      institutionLimit: 3,
+      previousStatus: 'ACTIVE',
+      status: 'CANCELED',
+      auditEventId: 'event-1',
+      statusChanged: true,
     });
 
     const wrapper = ({
@@ -302,19 +308,23 @@ describe('account mutations', () => {
     );
 
     const { result } = renderHook(
-      () => useDeleteClientAccount(),
+      () => useCloseClientAccount(),
       { wrapper },
     );
 
     await act(async () => {
       await result.current.mutateAsync({
         accountId: 'account-1',
+        reason: 'Encerramento comercial solicitado.',
       });
     });
 
     expect(invalidateSpy).toHaveBeenCalledWith({
       queryKey: accountKeys.all,
     });
-    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: userInstitutionKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledTimes(2);
   });
 });
