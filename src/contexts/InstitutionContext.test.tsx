@@ -167,7 +167,7 @@ function SelectionHarness() {
         pageTitle="Instituicoes da conta"
         pageSection="Conta"
         showInstitutionSwitcher
-        isSidebarCollapsed={false}
+        isSidebarHidden={false}
         isMobileSidebarOpen={false}
         isLoggingOut={false}
         mobileSidebarId="app-sidebar"

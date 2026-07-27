@@ -3,8 +3,6 @@ import type {
 } from 'lucide-react';
 import {
   Building2,
-  ChevronLeft,
-  ChevronRight,
   GraduationCap,
   LayoutDashboard,
   LogOut,
@@ -66,11 +64,10 @@ interface SidebarProps {
   profile: Profile;
   branding: PublicBranding;
   currentInstitutionRole: string | null;
-  isCollapsed: boolean;
+  isDesktopHidden: boolean;
   isMobileOpen: boolean;
   isLoggingOut: boolean;
   onCloseMobile: () => void;
-  onToggleCollapsed: () => void;
   onLogout: () => void;
   mobileSidebarRef?: RefObject<HTMLElement | null>;
   mobileCloseButtonRef?: RefObject<HTMLButtonElement | null>;
@@ -279,11 +276,10 @@ export default function Sidebar({
   profile,
   branding,
   currentInstitutionRole,
-  isCollapsed,
+  isDesktopHidden,
   isMobileOpen,
   isLoggingOut,
   onCloseMobile,
-  onToggleCollapsed,
   onLogout,
   mobileSidebarRef,
   mobileCloseButtonRef,
@@ -385,70 +381,15 @@ export default function Sidebar({
       return null;
     }
 
-    const shortcutLabel =
-      activeAdminModule?.label ?? 'Administração';
-
     return (
       <div className="mb-5 last:mb-0">
-        <p
-          className={`mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085] ${
-            isCollapsed ? 'lg:sr-only' : ''
-          }`}
-        >
+        <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
           {isSuperAdmin
             ? 'Escola selecionada'
             : sectionLabels.school}
         </p>
 
-        {isCollapsed && (
-          <Link
-            to={
-              activeAdminModule?.href ??
-              '/admin?module=overview'
-            }
-            onClick={onCloseMobile}
-            aria-label="Administração"
-            aria-current={
-              adminRouteActive
-                ? 'page'
-                : undefined
-            }
-            className={`group relative hidden min-h-11 items-center justify-center rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 lg:flex ${
-              adminRouteActive
-                ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
-                : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
-            }`}
-          >
-            <span
-              className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
-                adminRouteActive
-                  ? 'bg-[#005bbf]'
-                  : 'bg-transparent'
-              }`}
-              aria-hidden="true"
-            />
-            <School
-              className={`h-5 w-5 shrink-0 ${
-                adminRouteActive
-                  ? 'text-[#005bbf]'
-                  : 'text-[#667085]'
-              }`}
-              aria-hidden="true"
-            />
-            <span
-              role="tooltip"
-              className="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 whitespace-nowrap rounded-lg border border-[#d8deea] bg-white px-3 py-1.5 text-xs font-semibold text-[#181c20] opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 lg:block"
-            >
-              {shortcutLabel}
-            </span>
-          </Link>
-        )}
-
-        <div
-          className={`space-y-3 ${
-            isCollapsed ? 'lg:hidden' : ''
-          }`}
-        >
+        <div className="space-y-3">
           {!isSuperAdmin && (
             <Link
               to="/admin?module=overview"
@@ -523,14 +464,13 @@ export default function Sidebar({
             : undefined
         }
         tabIndex={isMobileOpen ? -1 : undefined}
-        className={`fixed inset-y-0 left-0 z-50 flex w-[280px] max-w-[86vw] transform flex-col border-r border-[#d8deea] bg-[#f8faff] shadow-2xl shadow-slate-950/10 transition-transform duration-200 motion-reduce:transition-none lg:sticky lg:top-0 lg:z-30 lg:h-screen lg:max-w-none lg:translate-x-0 lg:shadow-none ${
+        data-desktop-hidden={isDesktopHidden ? 'true' : 'false'}
+        className={`fixed inset-y-0 left-0 z-50 flex w-[280px] max-w-[86vw] transform flex-col border-r border-[#d8deea] bg-[#f8faff] shadow-2xl shadow-slate-950/10 transition-transform duration-200 motion-reduce:transition-none lg:sticky lg:top-0 lg:z-30 lg:h-screen lg:w-[280px] lg:max-w-none lg:translate-x-0 lg:shadow-none ${
           isMobileOpen
             ? 'translate-x-0'
             : '-translate-x-full'
         } ${
-          isCollapsed
-            ? 'lg:w-20'
-            : 'lg:w-[280px]'
+          isDesktopHidden ? 'lg:hidden' : ''
         }`}
         aria-label="Navegação principal"
       >
@@ -562,13 +502,7 @@ export default function Sidebar({
               )}
             </span>
 
-            <span
-              className={`min-w-0 transition-opacity duration-150 motion-reduce:transition-none ${
-                isCollapsed
-                  ? 'lg:pointer-events-none lg:sr-only lg:opacity-0'
-                  : 'opacity-100'
-              }`}
-            >
+            <span className="min-w-0 transition-opacity duration-150 motion-reduce:transition-none">
               <span
                 id={mobileTitleId}
                 className="block truncate text-sm font-extrabold text-[#061f6f]"
@@ -609,13 +543,7 @@ export default function Sidebar({
                 key={section}
                 className="mb-5 last:mb-0"
               >
-                <p
-                  className={`mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085] ${
-                    isCollapsed
-                      ? 'lg:sr-only'
-                      : ''
-                  }`}
-                >
+                <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
                   {sectionLabels[section]}
                 </p>
 
@@ -637,20 +565,11 @@ export default function Sidebar({
                             ? 'page'
                             : undefined
                         }
-                        aria-label={
-                          isCollapsed
-                            ? item.label
-                            : undefined
-                        }
                         className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
                           isActive
                             ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
                             : 'text-[#414754] hover:bg-white hover:text-[#181c20] focus-visible:bg-white'
-                        } focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
-                          isCollapsed
-                            ? 'lg:justify-center'
-                            : ''
-                        }`}
+                        } focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2`}
                       >
                         <span
                           className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
@@ -670,24 +589,9 @@ export default function Sidebar({
                           aria-hidden="true"
                         />
 
-                        <span
-                          className={`min-w-0 truncate ${
-                            isCollapsed
-                              ? 'lg:sr-only'
-                              : ''
-                          }`}
-                        >
+                        <span className="min-w-0 truncate">
                           {item.label}
                         </span>
-
-                        {isCollapsed && (
-                          <span
-                            role="tooltip"
-                            className="pointer-events-none absolute left-full top-1/2 z-50 ml-3 hidden -translate-y-1/2 whitespace-nowrap rounded-lg border border-[#d8deea] bg-white px-3 py-1.5 text-xs font-semibold text-[#181c20] opacity-0 shadow-lg transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100 lg:block"
-                          >
-                            {item.label}
-                          </span>
-                        )}
                       </Link>
                     );
                   })}
@@ -700,13 +604,7 @@ export default function Sidebar({
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">
-          <div
-            className={`mb-3 flex items-center gap-3 rounded-xl bg-white p-3 ring-1 ring-[#e4e8f1] ${
-              isCollapsed
-                ? 'lg:justify-center lg:px-2'
-                : ''
-            }`}
-          >
+          <div className="mb-3 flex items-center gap-3 rounded-xl bg-white p-3 ring-1 ring-[#e4e8f1]">
             <span
               className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f]"
               aria-hidden="true"
@@ -714,13 +612,7 @@ export default function Sidebar({
               {initials}
             </span>
 
-            <span
-              className={`min-w-0 ${
-                isCollapsed
-                  ? 'lg:sr-only'
-                  : ''
-              }`}
-            >
+            <span className="min-w-0">
               <span className="block truncate text-sm font-bold text-[#181c20]">
                 {currentUser.name}
               </span>
@@ -730,52 +622,18 @@ export default function Sidebar({
             </span>
           </div>
 
-          <div className="flex gap-2">
-            <button
-              type="button"
-              className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#d8deea] bg-white text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] lg:inline-flex"
-              onClick={onToggleCollapsed}
-              aria-label={
-                isCollapsed
-                  ? 'Expandir sidebar'
-                  : 'Recolher sidebar'
-              }
-              aria-expanded={!isCollapsed}
-            >
-              {isCollapsed ? (
-                <ChevronRight
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
-              ) : (
-                <ChevronLeft
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
-              )}
-            </button>
-
+          <div className="flex">
             <button
               type="button"
               onClick={onLogout}
               disabled={isLoggingOut}
-              className={`inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70 ${
-                isCollapsed
-                  ? 'lg:w-10 lg:flex-none lg:px-0'
-                  : ''
-              }`}
+              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
             >
               <LogOut
                 className="h-4 w-4 shrink-0"
                 aria-hidden="true"
               />
-              <span
-                className={
-                  isCollapsed
-                    ? 'lg:sr-only'
-                    : ''
-                }
-              >
+              <span>
                 {isLoggingOut
                   ? 'Saindo...'
                   : 'Sair'}
@@ -783,13 +641,7 @@ export default function Sidebar({
             </button>
           </div>
 
-          <div
-            className={`mt-3 flex items-center gap-2 px-1 text-[11px] text-[#667085] ${
-              isCollapsed
-                ? 'lg:sr-only'
-                : ''
-            }`}
-          >
+          <div className="mt-3 flex items-center gap-2 px-1 text-[11px] text-[#667085]">
             <UserCircle2
               className="h-3.5 w-3.5"
               aria-hidden="true"
