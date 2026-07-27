@@ -503,27 +503,27 @@ describe('PlatformPage', () => {
     });
   });
 
-  it('acessa diretamente conta com uma escola mesmo suspensa', async () => {
+  it('bloqueia acesso direto a escolas de conta suspensa', () => {
     renderPage();
 
-    fireEvent.click(
-      screen.getByRole('button', {
+    const suspendedRow = screen
+      .getByText('Bia Admin')
+      .closest('tr');
+
+    expect(suspendedRow).not.toBeNull();
+    expect(
+      within(suspendedRow!).getByText('Suspensa'),
+    ).toBeDefined();
+    expect(
+      within(suspendedRow!).queryByRole('button', {
         name: /Acessar escolas de Bia Admin/i,
       }),
-    );
-
-    await waitFor(() => {
-      expect(
-        hookMock.setCurrentInstitutionId,
-      ).toHaveBeenCalledWith('institution-4');
-      expect(hookMock.navigate).toHaveBeenCalledWith('/admin');
-    });
-
-    expect(
-      screen.queryByRole('dialog', {
-        name: /Acessar escola da conta/i,
-      }),
     ).toBeNull();
+    expect(
+      within(suspendedRow!).getByRole('button', {
+        name: 'Reativar',
+      }),
+    ).toBeDefined();
   });
 
   it('mostra mensagem quando a conta nao possui escolas ativas', async () => {
@@ -862,7 +862,9 @@ describe('PlatformPage', () => {
 
     expect(within(closedRow).getByText('Dora Admin')).toBeDefined();
     expect(
-      within(closedRow).getByText(/Conta encerrada/i),
+      within(closedRow).getByText(
+        'Conta encerrada. Dados e historico preservados.',
+      ),
     ).toBeDefined();
     expect(
       within(closedRow).queryByRole('button', {
