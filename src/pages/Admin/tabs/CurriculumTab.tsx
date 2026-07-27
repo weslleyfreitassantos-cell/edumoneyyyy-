@@ -1,6 +1,6 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { DataTable, type Column } from '../../../components/DataTable';
 
@@ -77,6 +77,7 @@ function toCreatePayload(institutionId: string, draft: ItemDraft) {
 export default function CurriculumTab() {
   const { profile } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const institutionQuery = useCurrentInstitution(profile?.id);
   const institutionId = institutionQuery.data ?? '';
@@ -97,6 +98,11 @@ export default function CurriculumTab() {
   const [yearFilter, setYearFilter] = useState('all');
   const [classFilter, setClassFilter] = useState('all');
   const [modalError, setModalError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const classId = searchParams.get('classId');
+    if (classId) setClassFilter(classId);
+  }, [searchParams]);
   const [pageError, setPageError] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
 
