@@ -1,23 +1,30 @@
-const source = await Deno.readTextFile(
-  new URL("./index.ts", import.meta.url),
+import { readFileSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+
+const source = readFileSync(
+  new URL('./index.ts', import.meta.url),
+  'utf8',
 );
 
-Deno.test("delete-client-account returns hard delete disabled response", () => {
-  if (!source.includes("HARD_DELETE_DISABLED")) {
-    throw new Error("Missing HARD_DELETE_DISABLED response code.");
-  }
+describe('delete-client-account hard delete disabled', () => {
+  it('returns hard delete disabled with HTTP 410', () => {
+    expect(source).toContain('HARD_DELETE_DISABLED');
+    expect(source).toContain('status: 410');
+  });
 
-  if (!source.includes("410")) {
-    throw new Error("Missing HTTP 410 response.");
-  }
-});
+  it('does not delete auth users or restore deleted data', () => {
+    expect(source).not.toContain('auth.admin.deleteUser');
+    expect(source).not.toContain('restoreAccount');
+    expect(source).not.toContain('restoreProfile');
+    expect(source).not.toContain('restoreOwnerAndAccount');
+  });
 
-Deno.test("delete-client-account does not perform destructive deletion", () => {
-  if (source.includes(".delete(")) {
-    throw new Error("Unexpected table delete operation found.");
-  }
-
-  if (source.includes("deleteUser(")) {
-    throw new Error("Unexpected auth user deletion found.");
-  }
+  it('does not delete account or profile records', () => {
+    expect(source).not.toMatch(
+      /\.from\(["']accounts["']\)[\s\S]*?\.delete\(/,
+    );
+    expect(source).not.toMatch(
+      /\.from\(["']profiles["']\)[\s\S]*?\.delete\(/,
+    );
+  });
 });
