@@ -4,6 +4,8 @@ import {
   type FormEvent,
 } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import {
   DataTable,
   type Column,
@@ -102,6 +104,8 @@ function toClassPayload(
 
 export default function ClassesTab() {
   const { profile } = useAuth();
+
+  const navigate = useNavigate();
 
   const institutionQuery =
     useCurrentInstitution(profile?.id);
@@ -227,6 +231,10 @@ export default function ClassesTab() {
     {
       key: 'active_offerings_count',
       label: 'Ofertas',
+    },
+    {
+      key: 'active_curriculum_items_count',
+      label: 'Matriz',
     },
     {
       key: 'active',
@@ -533,6 +541,18 @@ export default function ClassesTab() {
                 className="font-medium text-blue-600 hover:text-blue-800"
               >
                 Editar
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  navigate(
+                    `/admin?module=curriculum&classId=${classRecord.id}`,
+                  )
+                }
+                className="font-medium text-indigo-600 hover:text-indigo-800"
+              >
+                Configurar matriz
               </button>
 
               <button

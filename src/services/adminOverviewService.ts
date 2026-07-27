@@ -601,6 +601,21 @@ export const adminOverviewService = {
       });
     }
 
+    const activeCurriculumClassIds = new Set(
+      activeCurriculumItems.map((item) => item.class_id),
+    );
+
+    for (const classRecord of activeClasses) {
+      if (!activeCurriculumClassIds.has(classRecord.id)) {
+        warnings.push({
+          id: `class-without-curriculum-${classRecord.id}`,
+          title: 'Turma sem matriz curricular',
+          description: `${classRecord.name} ainda não possui disciplinas na matriz curricular.`,
+          severity: 'info',
+        });
+      }
+    }
+
     return {
       metrics: {
         activeStudents: activeStudents.length,

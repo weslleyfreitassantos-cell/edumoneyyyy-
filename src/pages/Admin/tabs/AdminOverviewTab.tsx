@@ -301,6 +301,14 @@ export default function AdminOverviewTab({
       targetModuleId: 'assignments',
     },
     {
+      id: 'curriculum',
+      label: 'Configurar matriz curricular',
+      complete:
+        metrics.activeCurriculumItems > 0 &&
+        metrics.curriculumItemsNeedingReview === 0,
+      targetModuleId: 'curriculum',
+    },
+    {
       id: 'enrollments',
       label: 'Matricular alunos',
       complete: metrics.activeEnrollments > 0,
@@ -399,6 +407,17 @@ export default function AdminOverviewTab({
           value={metrics.activeAssignments}
           icon={
             <CalendarDays
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Itens na matriz"
+          value={metrics.activeCurriculumItems}
+          icon={
+            <BookOpen
               className="h-5 w-5"
               aria-hidden="true"
             />

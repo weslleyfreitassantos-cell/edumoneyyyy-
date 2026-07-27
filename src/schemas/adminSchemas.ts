@@ -575,3 +575,100 @@ export type SubjectOfferingUpdateData =
   z.infer<
     typeof subjectOfferingUpdateSchema
   >;
+
+const roomFields = {
+  name: z
+    .string()
+    .trim()
+    .min(1, 'Nome da sala é obrigatório')
+    .max(120, 'Nome da sala deve possuir no máximo 120 caracteres'),
+
+  code: z.preprocess(
+    (value) => {
+      if (typeof value === 'string' && value.trim() === '') return undefined;
+      return value;
+    },
+    z.string().trim().toUpperCase().max(20, 'Código deve possuir no máximo 20 caracteres').optional(),
+  ),
+
+  capacity: z
+    .number()
+    .int('Capacidade deve ser um número inteiro')
+    .min(1, 'Capacidade deve ser maior que 0')
+    .max(500, 'Capacidade deve ser menor ou igual a 500')
+    .optional(),
+
+  active: z.boolean().default(true),
+};
+
+export const roomSchema = z
+  .object({
+    institution_id: z.guid('Instituição inválida'),
+    ...roomFields,
+  })
+  .strict();
+
+export const roomUpdateSchema = z
+  .object(roomFields)
+  .strict();
+
+const DAYS_OF_WEEK = [1, 2, 3, 4, 5, 6] as const;
+
+const timetableEntryFields = {
+  subject_offering_id: z.guid('Atribuição é obrigatória'),
+
+  room_id: z.preprocess(
+    (value) => {
+      if (typeof value === 'string' && value.trim() === '') return undefined;
+      return value;
+    },
+    z.guid('Sala inválida').optional(),
+  ),
+
+  day_of_week: z
+    .number()
+    .int('Dia da semana inválido')
+    .refine((val) => (DAYS_OF_WEEK as readonly number[]).includes(val), {
+      message: 'Dia da semana deve ser entre 1 (segunda) e 6 (sábado)',
+    }),
+
+  start_time: z.string().regex(/^\d{2}:\d{2}$/, 'Horário inválido'),
+
+  end_time: z.string().regex(/^\d{2}:\d{2}$/, 'Horário inválido'),
+
+  active: z.boolean().default(true),
+};
+
+export const timetableEntrySchema = z
+  .object({
+    institution_id: z.guid('Instituição inválida'),
+    ...timetableEntryFields,
+  })
+  .strict()
+  .superRefine((value, context) => {
+    if (value.end_time <= value.start_time) {
+      context.addIssue({
+        code: 'custom',
+        path: ['end_time'],
+        message: 'O horário final deve ser posterior ao horário inicial',
+      });
+    }
+  });
+
+export const timetableEntryUpdateSchema = z
+  .object(timetableEntryFields)
+  .strict()
+  .superRefine((value, context) => {
+    if (value.end_time <= value.start_time) {
+      context.addIssue({
+        code: 'custom',
+        path: ['end_time'],
+        message: 'O horário final deve ser posterior ao horário inicial',
+      });
+    }
+  });
+
+export type RoomFormData = z.infer<typeof roomSchema>;
+export type RoomUpdateData = z.infer<typeof roomUpdateSchema>;
+export type TimetableEntryFormData = z.infer<typeof timetableEntrySchema>;
+export type TimetableEntryUpdateData = z.infer<typeof timetableEntryUpdateSchema>;

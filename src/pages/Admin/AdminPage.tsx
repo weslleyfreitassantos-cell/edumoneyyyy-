@@ -29,6 +29,7 @@ import AcademicYearsTab from './tabs/AcademicYearsTab';
 import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
 import CurriculumTab from './tabs/CurriculumTab';
+import TimetableTab from './tabs/TimetableTab';
 import EnrollmentsTab from './tabs/EnrollmentsTab';
 import GuardiansTab from './tabs/GuardiansTab';
 import SchoolUsersTab from './tabs/SchoolUsersTab';
@@ -201,6 +202,8 @@ export default function AdminPage() {
         return <SubjectsTab />;
       case 'curriculum':
         return <CurriculumTab />;
+      case 'timetable':
+        return <TimetableTab />;
       case 'enrollments':
         return <EnrollmentsTab />;
       case 'assignments':
