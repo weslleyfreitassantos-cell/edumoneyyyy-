@@ -5,7 +5,7 @@
 Permite definir quais disciplinas pertencem a cada turma, com contagem de aulas semanais, duração e cálculo de carga horária. Integra-se com as atribuições existentes para garantir a integridade dos dados.
 
 ### Funcionalidades Implementadas
-- **Migration** (`20260724000100_class_curriculum_matrix.sql`): Cria tabela `class_curriculum_items` com FKs, unique constraint, triggers de integridade, backfill das `subject_offerings`, políticas RLS
+- **Migration** (`20260727000100_class_curriculum_matrix.sql`): Cria tabela `class_curriculum_items` com FKs, unique constraint, triggers de integridade, backfill das `subject_offerings`, políticas RLS
 - **Proteção de Dados**: Impede criação de atribuição sem item na matriz (`CURRICULUM_COMPONENT_REQUIRED`), impede desativação se há ofertas ativas
 - **Service** (`curriculumService.ts`): list, create, update, setActive, getTeachersByItem
 - **Hooks** (`useCurriculum.ts`): query keys, useQuery, useMutation com invalidação de cache
