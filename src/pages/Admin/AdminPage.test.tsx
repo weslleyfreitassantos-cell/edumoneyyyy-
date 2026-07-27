@@ -187,6 +187,14 @@ vi.mock('./tabs/EnrollmentsTab', () => ({
   ),
 }));
 
+vi.mock('./tabs/CurriculumTab', () => ({
+  default: () => (
+    <div data-testid="curriculum-tab">
+      Aba matriz curricular
+    </div>
+  ),
+}));
+
 vi.mock('./tabs/AssignmentsTab', () => ({
   default: () => (
     <div data-testid="assignments-tab">

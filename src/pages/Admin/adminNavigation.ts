@@ -13,6 +13,7 @@ export type AdminModuleId =
   | 'academic-years'
   | 'classes'
   | 'subjects'
+  | 'curriculum'
   | 'enrollments'
   | 'assignments'
   | 'term-closing'
@@ -123,6 +124,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-structure',
     permission: 'manage_academic_structure',
     href: moduleHref('classes'),
+  },
+  {
+    id: 'curriculum',
+    label: 'Matriz curricular',
+    groupId: 'school-structure',
+    permission: 'manage_academic_structure',
+    href: moduleHref('curriculum'),
   },
   {
     id: 'enrollments',

@@ -39,6 +39,11 @@ interface OfferingCountRow {
   active: boolean | null;
 }
 
+interface CurriculumCountRow {
+  class_id: string;
+  active: boolean | null;
+}
+
 export interface ClassRow {
   id: string;
   institution_id: string;
@@ -51,6 +56,7 @@ export interface ClassRow {
   active: boolean;
   active_enrollments_count: number;
   active_offerings_count: number;
+  active_curriculum_items_count: number;
   created_at?: string;
   updated_at?: string;
 }
@@ -125,6 +131,7 @@ function normalizeClass(
   row: ClassQueryRow,
   activeEnrollmentsCount: number,
   activeOfferingsCount: number,
+  activeCurriculumItemsCount: number,
 ): ClassRow {
   const academicYear = normalizeRelation(
     row.academic_years,
@@ -145,6 +152,8 @@ function normalizeClass(
       activeEnrollmentsCount,
     active_offerings_count:
       activeOfferingsCount,
+    active_curriculum_items_count:
+      activeCurriculumItemsCount,
     created_at: row.created_at ?? undefined,
     updated_at: row.updated_at ?? undefined,
   };
@@ -196,10 +205,14 @@ export const classService = {
     const activeOfferingsByClass =
       new Map<string, number>();
 
+    const activeCurriculumItemsByClass =
+      new Map<string, number>();
+
     if (classIds.length > 0) {
       const [
         enrollmentsResult,
         offeringsResult,
+        curriculumResult,
       ] = await Promise.all([
         supabase
           .from('enrollments')
@@ -210,6 +223,11 @@ export const classService = {
           .from('subject_offerings')
           .select('class_id, active')
           .in('class_id', classIds),
+
+        supabase
+          .from('class_curriculum_items')
+          .select('class_id, active')
+          .in('class_id', classIds),
       ]);
 
       if (enrollmentsResult.error) {
@@ -218,6 +236,10 @@ export const classService = {
 
       if (offeringsResult.error) {
         throw offeringsResult.error;
+      }
+
+      if (curriculumResult.error) {
+        throw curriculumResult.error;
       }
 
       for (const enrollment of (enrollmentsResult.data ??
@@ -247,6 +269,20 @@ export const classService = {
           ) ?? 0) + 1,
         );
       }
+
+      for (const item of (curriculumResult.data ??
+        []) as CurriculumCountRow[]) {
+        if (item.active === false) {
+          continue;
+        }
+
+        activeCurriculumItemsByClass.set(
+          item.class_id,
+          (activeCurriculumItemsByClass.get(
+            item.class_id,
+          ) ?? 0) + 1,
+        );
+      }
     }
 
     return classRows.map((classRecord) =>
@@ -256,6 +292,9 @@ export const classService = {
           classRecord.id,
         ) ?? 0,
         activeOfferingsByClass.get(
+          classRecord.id,
+        ) ?? 0,
+        activeCurriculumItemsByClass.get(
           classRecord.id,
         ) ?? 0,
       ),
@@ -310,6 +349,7 @@ export const classService = {
 
     return normalizeClass(
       created as unknown as ClassQueryRow,
+      0,
       0,
       0,
     );
