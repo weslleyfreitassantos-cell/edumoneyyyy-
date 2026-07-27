@@ -17,7 +17,8 @@ export type AdminModuleId =
   | 'enrollments'
   | 'assignments'
   | 'term-closing'
-  | 'academic-policies';
+  | 'academic-policies'
+  | 'timetable';
 
 export type AdminNavigationGroupId =
   | 'start'
@@ -131,6 +132,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-structure',
     permission: 'manage_academic_structure',
     href: moduleHref('curriculum'),
+  },
+  {
+    id: 'timetable',
+    label: 'Grade horária',
+    groupId: 'school-structure',
+    permission: 'manage_academic_structure',
+    href: moduleHref('timetable'),
   },
   {
     id: 'enrollments',
