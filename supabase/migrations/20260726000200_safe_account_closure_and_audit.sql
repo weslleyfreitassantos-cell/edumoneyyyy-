@@ -15,13 +15,15 @@ create table if not exists public.account_status_events (
     check (previous_status in ('ACTIVE', 'SUSPENDED', 'CANCELED')),
   constraint account_status_events_new_status_check
     check (new_status in ('ACTIVE', 'SUSPENDED', 'CANCELED')),
+  constraint account_status_events_reason_length_check
+    check (
+      reason is null
+      or length(reason) between 10 and 500
+    ),
   constraint account_status_events_reason_required_check
     check (
       new_status = 'ACTIVE'
-      or (
-        reason is not null
-        and length(reason) between 10 and 500
-      )
+      or reason is not null
     )
 );
 
@@ -368,7 +370,17 @@ begin
       using errcode = 'P0001';
   end if;
 
-  normalized_reason := nullif(regexp_replace(coalesce(change_reason, ''), '\s+', ' ', 'g'), '');
+  normalized_reason := nullif(
+    btrim(
+      regexp_replace(
+        coalesce(change_reason, ''),
+        '\s+',
+        ' ',
+        'g'
+      )
+    ),
+    ''
+  );
 
   if account_record.status = normalized_status then
     return query
@@ -395,12 +407,14 @@ begin
       using errcode = 'P0001';
   end if;
 
-  if normalized_status in ('SUSPENDED', 'CANCELED') then
-    if normalized_reason is null or not (length(normalized_reason) between 10 and 500) then
-      raise exception 'ACCOUNT_STATUS_REASON_REQUIRED'
-        using errcode = 'P0001';
-    end if;
-  elsif normalized_reason is not null and length(normalized_reason) > 500 then
+  if normalized_status in ('SUSPENDED', 'CANCELED')
+      and normalized_reason is null then
+    raise exception 'ACCOUNT_STATUS_REASON_REQUIRED'
+      using errcode = 'P0001';
+  end if;
+
+  if normalized_reason is not null
+      and not (length(normalized_reason) between 10 and 500) then
     raise exception 'ACCOUNT_STATUS_REASON_REQUIRED'
       using errcode = 'P0001';
   end if;
