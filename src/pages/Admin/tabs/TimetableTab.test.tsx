@@ -9,7 +9,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useAssignments } from '../../../hooks/useAssignments';
-import { useRooms, useTimetableEntries } from '../../../hooks/useTimetable';
+import { useRooms, useCreateRoom, useCreateTimetableEntry, useTimetableEntries } from '../../../hooks/useTimetable';
 
 vi.mock('../../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
@@ -44,11 +44,15 @@ vi.mock('../../../hooks/useTimetable', () => ({
 
 import TimetableTab from './TimetableTab';
 
+const UUID = '00000000-0000-0000-0000-000000000000';
+const OFFERING_1_UUID = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
+const OFFERING_2_UUID = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb';
+
 const baseEntries = [
   {
     id: 'e1',
-    institution_id: 'inst-1',
-    subject_offering_id: 'off-1',
+    institution_id: '11111111-1111-1111-1111-111111111111',
+    subject_offering_id: OFFERING_1_UUID,
     room_id: 'room-1',
     room_name: 'Sala 01',
     day_of_week: 2,
@@ -62,8 +66,8 @@ const baseEntries = [
   },
   {
     id: 'e2',
-    institution_id: 'inst-1',
-    subject_offering_id: 'off-2',
+    institution_id: '11111111-1111-1111-1111-111111111111',
+    subject_offering_id: OFFERING_2_UUID,
     room_id: null,
     room_name: null,
     day_of_week: 3,
@@ -78,8 +82,8 @@ const baseEntries = [
 ];
 
 const baseRooms = [
-  { id: 'room-1', institution_id: 'inst-1', name: 'Sala 01', code: 'S01', capacity: 30, active: true },
-  { id: 'room-2', institution_id: 'inst-1', name: 'Sala 02', code: 'S02', capacity: 25, active: true },
+  { id: 'room-1', institution_id: '11111111-1111-1111-1111-111111111111', name: 'Sala 01', code: 'S01', capacity: 30, active: true },
+  { id: 'room-2', institution_id: '11111111-1111-1111-1111-111111111111', name: 'Sala 02', code: 'S02', capacity: 25, active: true },
 ];
 
 function mockDefaultHooks() {
@@ -92,17 +96,17 @@ function mockDefaultHooks() {
   });
 
   vi.mocked(useCurrentInstitution).mockReturnValue({
-    data: 'inst-1',
-    institution: { id: 'inst-1', name: 'Escola', active: true, account_id: 'acc-1' },
-    currentInstitution: { id: 'inst-1', name: 'Escola', active: true, account_id: 'acc-1' },
-    currentInstitutionId: 'inst-1',
+    data: UUID,
+    institution: { id: '11111111-1111-1111-1111-111111111111', name: 'Escola', active: true, account_id: 'acc-1' },
+    currentInstitution: { id: '11111111-1111-1111-1111-111111111111', name: 'Escola', active: true, account_id: 'acc-1' },
+    currentInstitutionId: '11111111-1111-1111-1111-111111111111',
     currentRole: 'DIRECTOR',
     isLoading: false,
     isError: false,
     error: null,
     message: null,
-    membership: { id: 'm-1', institution_id: 'inst-1', role: 'DIRECTOR', active: true },
-    currentMembership: { id: 'm-1', institution_id: 'inst-1', role: 'DIRECTOR', active: true },
+    membership: { id: 'm-1', institution_id: '11111111-1111-1111-1111-111111111111', role: 'DIRECTOR', active: true },
+    currentMembership: { id: 'm-1', institution_id: '11111111-1111-1111-1111-111111111111', role: 'DIRECTOR', active: true },
     refetch: vi.fn(),
   });
 
@@ -114,7 +118,7 @@ function mockDefaultHooks() {
   } as never);
 
   vi.mocked(useClasses).mockReturnValue({
-    data: [{ id: 'class-1', name: '1A', active: true, academic_year_id: 'year-1', institution_id: 'inst-1', academic_year_name: '2026', grade_level: null, shift: null, capacity: 30, active_enrollments_count: 0, active_offerings_count: 2, active_curriculum_items_count: 2 }],
+    data: [{ id: 'class-1', name: '1A', active: true, academic_year_id: 'year-1', institution_id: '11111111-1111-1111-1111-111111111111', academic_year_name: '2026', grade_level: null, shift: null, capacity: 30, active_enrollments_count: 0, active_offerings_count: 2, active_curriculum_items_count: 2 }],
     isLoading: false,
     isError: false,
     error: null,
@@ -122,8 +126,8 @@ function mockDefaultHooks() {
 
   vi.mocked(useAssignments).mockReturnValue({
     data: [
-      { id: 'off-1', class_id: 'class-1', subject_id: 'subj-1', teacher_profile_id: 'prof-1', term_id: 'term-1', active: true, class_name: '1A', subject_name: 'Português', teacher_name: 'Prof Silva', term_name: '1º Bimestre', academic_year_id: 'year-1', class_grade_level: null, class_shift: null, subject_code: 'LP' },
-      { id: 'off-2', class_id: 'class-1', subject_id: 'subj-2', teacher_profile_id: 'prof-2', term_id: 'term-1', active: true, class_name: '1A', subject_name: 'Matemática', teacher_name: 'Prof Souza', term_name: '1º Bimestre', academic_year_id: 'year-1', class_grade_level: null, class_shift: null, subject_code: 'MAT' },
+      { id: OFFERING_1_UUID, class_id: 'class-1', subject_id: 'subj-1', teacher_profile_id: 'prof-1', term_id: 'term-1', active: true, class_name: '1A', subject_name: 'Português', teacher_name: 'Prof Silva', term_name: '1º Bimestre', academic_year_id: 'year-1', class_grade_level: null, class_shift: null, subject_code: 'LP' },
+      { id: OFFERING_2_UUID, class_id: 'class-1', subject_id: 'subj-2', teacher_profile_id: 'prof-2', term_id: 'term-1', active: true, class_name: '1A', subject_name: 'Matemática', teacher_name: 'Prof Souza', term_name: '1º Bimestre', academic_year_id: 'year-1', class_grade_level: null, class_shift: null, subject_code: 'MAT' },
     ],
     isLoading: false,
     isError: false,
@@ -212,7 +216,7 @@ describe('TimetableTab', () => {
 
   it('mostra estado de carregamento', () => {
     vi.mocked(useCurrentInstitution).mockReturnValue({
-      data: 'inst-1',
+      data: '11111111-1111-1111-1111-111111111111',
       isLoading: true,
       isError: false,
       error: null,
@@ -241,5 +245,42 @@ describe('TimetableTab', () => {
     fireEvent.click(screen.getByText('Salas'));
     fireEvent.click(screen.getByText(/Adicionar sala/i));
     expect(screen.getByLabelText(/nome da sala/i)).toBeTruthy();
+  });
+
+  it('mostra mensagem amigavel em erro RLS ao criar sala', async () => {
+    const rejectError = new Error('Você não tem permissão para alterar a grade horária desta instituição.');
+    vi.mocked(useCreateRoom).mockReturnValue({
+      mutateAsync: vi.fn().mockRejectedValue(rejectError),
+      isPending: false,
+    } as never);
+
+    renderTab();
+    fireEvent.click(screen.getByText('Salas'));
+    fireEvent.click(screen.getByText(/Adicionar sala/i));
+
+    fireEvent.change(screen.getByLabelText(/nome da sala/i), { target: { value: 'Sala Teste' } });
+    fireEvent.click(screen.getAllByText('Criar')[0]);
+
+    expect(await screen.findByText('Você não tem permissão para alterar a grade horária desta instituição.')).toBeTruthy();
+  });
+
+  it('mostra mensagem amigavel em erro RLS ao criar horario', async () => {
+    const rejectError = new Error('Você não tem permissão para alterar a grade horária desta instituição.');
+    vi.mocked(useCreateTimetableEntry).mockReturnValue({
+      mutateAsync: vi.fn().mockRejectedValue(rejectError),
+      isPending: false,
+    } as never);
+
+    renderTab();
+    const buttons = screen.getAllByText(/Adicionar horário/i);
+    fireEvent.click(buttons[0]);
+
+    const turmaSelects = screen.getAllByLabelText('Turma');
+    fireEvent.change(turmaSelects[1], { target: { value: '1A' } });
+    fireEvent.change(screen.getByLabelText(/disciplina \/ professor \/ período/i), { target: { value: OFFERING_1_UUID } });
+    fireEvent.change(screen.getByLabelText('Dia'), { target: { value: '2' } });
+    fireEvent.click(screen.getAllByText('Salvar')[0]);
+
+    expect(await screen.findByText('Você não tem permissão para alterar a grade horária desta instituição.')).toBeTruthy();
   });
 });

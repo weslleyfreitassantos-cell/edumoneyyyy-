@@ -170,16 +170,49 @@ function addOwnedInstitutions(
 function normalizeMembershipInstitution(
   row: MembershipInstitutionQueryRow,
 ): UserInstitution | null {
-  const institution = normalizeInstitution(
-    normalizeRelation(row.institutions),
-  );
-
   if (
     !row.id ||
     !row.institution_id ||
     !row.role ||
-    row.active === false ||
-    !institution
+    row.active === false
+  ) {
+    return null;
+  }
+
+  const institutionRelation = normalizeRelation(
+    row.institutions,
+  );
+
+  const institution = normalizeInstitution(
+    institutionRelation,
+  );
+
+  if (!institution) {
+    return null;
+  }
+
+  const accountRelation = normalizeRelation(
+    institutionRelation?.accounts,
+  );
+
+  const account =
+    accountRelation && isAccountStatus(accountRelation.status)
+      ? {
+          id: accountRelation.id,
+          name: accountRelation.name,
+          status: accountRelation.status,
+          institution_limit:
+            accountRelation.institution_limit ?? 1,
+        }
+      : null;
+
+  if (institution.account_id !== null && !account) {
+    return null;
+  }
+
+  if (
+    account !== null &&
+    account.status !== 'ACTIVE'
   ) {
     return null;
   }
@@ -213,7 +246,7 @@ function normalizeMembershipInstitution(
       active: row.active ?? true,
     },
     institution,
-    account: null,
+    account,
     accessSource:
       row.role === 'ADMIN'
         ? 'legacy_admin_membership'
@@ -334,7 +367,13 @@ export const institutionService = {
               id,
               name,
               active,
-              account_id
+              account_id,
+              accounts:account_id (
+                id,
+                name,
+                status,
+                institution_limit
+              )
             )
           `,
           )

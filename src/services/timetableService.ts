@@ -135,14 +135,41 @@ function normalizeEntry(row: TimetableEntryQueryRow): TimetableEntryRow {
   };
 }
 
+interface PostgrestError {
+  message: string;
+  details: string | null;
+  hint: string | null;
+  code: string;
+}
+
 function mapTimetableError(error: unknown): Error {
+  let message = '';
+  let details: string | null = null;
+  let hint: string | null = null;
+  let code = '';
+
   if (error instanceof Error) {
-    const msg = error.message;
-    if (msg.includes('ROOM_ALREADY_BOOKED')) return new Error('A sala já está ocupada neste horário.');
-    if (msg.includes('TEACHER_ALREADY_BOOKED')) return new Error('O professor já possui aula neste horário.');
-    if (msg.includes('CLASS_ALREADY_BOOKED')) return new Error('A turma já possui aula neste horário.');
-    return error;
+    message = error.message;
+  } else if (typeof error === 'object' && error !== null) {
+    const pgError = error as PostgrestError;
+    message = pgError.message ?? '';
+    details = pgError.details ?? null;
+    hint = pgError.hint ?? null;
+    code = pgError.code ?? '';
   }
+
+  if (code === '42501' || /permission denied|row-level security policy/i.test(message)) {
+    return new Error('Você não tem permissão para alterar a grade horária desta instituição.');
+  }
+
+  if (message.includes('ROOM_ALREADY_BOOKED')) return new Error('A sala já está ocupada neste horário.');
+  if (message.includes('TEACHER_ALREADY_BOOKED')) return new Error('O professor já possui aula neste horário.');
+  if (message.includes('CLASS_ALREADY_BOOKED')) return new Error('A turma já possui aula neste horário.');
+
+  if (import.meta.env.DEV) {
+    console.error('[Timetable]', { code, message, details, hint });
+  }
+
   return new Error('Não foi possível concluir a operação.');
 }
 
@@ -177,7 +204,7 @@ export const timetableService = {
       .eq('institution_id', institutionId)
       .order('name', { ascending: true });
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
     return (data ?? []) as unknown as RoomRow[];
   },
 
@@ -189,7 +216,7 @@ export const timetableService = {
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
     return created as unknown as RoomRow;
   },
 
@@ -201,7 +228,7 @@ export const timetableService = {
       .eq('id', id)
       .eq('institution_id', institutionId);
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
   },
 
   async setRoomActive(id: string, institutionId: string, active: boolean): Promise<void> {
@@ -211,7 +238,7 @@ export const timetableService = {
       .eq('id', id)
       .eq('institution_id', institutionId);
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
   },
 
   // ==================== TIMETABLE ENTRIES ====================
@@ -224,7 +251,7 @@ export const timetableService = {
       .order('day_of_week', { ascending: true })
       .order('start_time', { ascending: true });
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
     return ((data ?? []) as unknown as TimetableEntryQueryRow[])
       .filter((row) => normalizeRelation(row.subject_offerings) !== null)
       .map(normalizeEntry);
@@ -275,7 +302,7 @@ export const timetableService = {
       .eq('id', id)
       .eq('institution_id', institutionId);
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
   },
 
   async listByClass(institutionId: string, classId: string): Promise<TimetableEntryRow[]> {
@@ -286,7 +313,7 @@ export const timetableService = {
       .order('day_of_week', { ascending: true })
       .order('start_time', { ascending: true });
 
-    if (error) throw error;
+    if (error) throw mapTimetableError(error);
 
     return ((data ?? []) as unknown as TimetableEntryQueryRow[])
       .filter((row) => {

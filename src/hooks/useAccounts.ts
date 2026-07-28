@@ -94,9 +94,14 @@ export function useUpdateClientAccount() {
     mutationFn: (input) =>
       accountService.updateAccount(input),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: accountKeys.all,
-      });
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
     },
   });
 }

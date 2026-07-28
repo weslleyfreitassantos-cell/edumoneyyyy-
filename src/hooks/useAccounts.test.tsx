@@ -230,7 +230,7 @@ describe('account mutations', () => {
     expect(invalidateSpy).toHaveBeenCalledWith({
       queryKey: accountKeys.all,
     });
-    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledTimes(2);
   });
 
   it('invalida contas e instituicoes autorizadas apos alterar instituicao', async () => {

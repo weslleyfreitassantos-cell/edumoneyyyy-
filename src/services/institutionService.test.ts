@@ -143,6 +143,12 @@ describe('institutionService', () => {
                   name: 'Instituicao 1',
                   active: true,
                   account_id: 'acc-1',
+                  accounts: {
+                    id: 'acc-1',
+                    name: 'Conta 1',
+                    status: 'ACTIVE',
+                    institution_limit: 5,
+                  },
                 },
               },
               {
@@ -155,6 +161,12 @@ describe('institutionService', () => {
                   name: 'Instituicao 3',
                   active: true,
                   account_id: 'acc-1',
+                  accounts: {
+                    id: 'acc-1',
+                    name: 'Conta 1',
+                    status: 'ACTIVE',
+                    institution_limit: 5,
+                  },
                 },
               },
               {

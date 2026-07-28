@@ -176,8 +176,11 @@ describe('timetableService.createEntry', () => {
     expect(result.subject_name).toBe('Português');
   });
 
-  it('mapeia ROOM_ALREADY_BOOKED com erro amigavel', async () => {
-    const err = new Error('ROOM_ALREADY_BOOKED');
+  it.each([
+    ['ROOM_ALREADY_BOOKED', new Error('ROOM_ALREADY_BOOKED'), 'A sala já está ocupada neste horário.'],
+    ['TEACHER_ALREADY_BOOKED', { message: 'TEACHER_ALREADY_BOOKED', code: 'P0001', details: null, hint: null }, 'O professor já possui aula neste horário.'],
+    ['CLASS_ALREADY_BOOKED', { message: 'CLASS_ALREADY_BOOKED', code: 'P0001', details: null, hint: null }, 'A turma já possui aula neste horário.'],
+  ])('mapeia %s com erro amigavel', async (_label, err, expectedMessage) => {
     const single = vi.fn().mockResolvedValue({ data: null, error: err });
     const selectFn = vi.fn().mockReturnValue({ single });
     const insert = vi.fn().mockReturnValue({ select: selectFn });
@@ -192,11 +195,11 @@ describe('timetableService.createEntry', () => {
         end_time: '07:50',
         active: true,
       }),
-    ).rejects.toThrow('A sala já está ocupada neste horário.');
+    ).rejects.toThrow(expectedMessage);
   });
 
-  it('mapeia TEACHER_ALREADY_BOOKED com erro amigavel', async () => {
-    const err = new Error('TEACHER_ALREADY_BOOKED');
+  it('mapeia RLS 42501 em createEntry com mensagem amigavel', async () => {
+    const err = { message: 'new row violates row-level security policy for table "timetable_entries"', code: '42501', details: null, hint: null };
     const single = vi.fn().mockResolvedValue({ data: null, error: err });
     const selectFn = vi.fn().mockReturnValue({ single });
     const insert = vi.fn().mockReturnValue({ select: selectFn });
@@ -211,11 +214,29 @@ describe('timetableService.createEntry', () => {
         end_time: '07:50',
         active: true,
       }),
-    ).rejects.toThrow('O professor já possui aula neste horário.');
+    ).rejects.toThrow('Você não tem permissão para alterar a grade horária desta instituição.');
   });
 
-  it('mapeia CLASS_ALREADY_BOOKED com erro amigavel', async () => {
-    const err = new Error('CLASS_ALREADY_BOOKED');
+  it('mapeia RLS 42501 em createRoom com mensagem amigavel', async () => {
+    const err = { message: 'new row violates row-level security policy for table "rooms"', code: '42501', details: null, hint: null };
+    const single = vi.fn().mockResolvedValue({ data: null, error: err });
+    const select = vi.fn().mockReturnValue({ single });
+    const insert = vi.fn().mockReturnValue({ select });
+    vi.mocked(supabase.from).mockReturnValue({ insert } as never);
+
+    await expect(
+      timetableService.createRoom({
+        institution_id: UUID,
+        name: 'Sala 01',
+        code: 'S01',
+        capacity: 30,
+        active: true,
+      }),
+    ).rejects.toThrow('Você não tem permissão para alterar a grade horária desta instituição.');
+  });
+
+  it('mapeia erro desconhecido como mensagem generica', async () => {
+    const err = { message: 'some internal database error', code: 'XXXXX', details: null, hint: null };
     const single = vi.fn().mockResolvedValue({ data: null, error: err });
     const selectFn = vi.fn().mockReturnValue({ single });
     const insert = vi.fn().mockReturnValue({ select: selectFn });
@@ -230,7 +251,7 @@ describe('timetableService.createEntry', () => {
         end_time: '07:50',
         active: true,
       }),
-    ).rejects.toThrow('A turma já possui aula neste horário.');
+    ).rejects.toThrow('Não foi possível concluir a operação.');
   });
 });
 
