@@ -1046,6 +1046,57 @@ describe('PlatformPage', () => {
     });
   });
 
+  it('encerra conta sem instituicoes sem limpar selecao de outra conta', async () => {
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Encerrar conta Conta Gama/i,
+      }),
+    );
+
+    expect(
+      screen.getByRole('dialog', {
+        name: /Encerrar conta/i,
+      }),
+    ).toBeDefined();
+    expect(screen.getAllByText('Conta Gama').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('Caio Admin').length).toBeGreaterThan(1);
+    expect(screen.getAllByText('caio@example.com').length).toBeGreaterThan(1);
+
+    fireEvent.change(
+      screen.getByLabelText(/Motivo do encerramento/i),
+      {
+        target: { value: 'Encerramento solicitado pelo cliente.' },
+      },
+    );
+    fireEvent.change(
+      screen.getByLabelText(
+        /Digite o e-mail do administrador para confirmar/i,
+      ),
+      {
+        target: { value: 'caio@example.com' },
+      },
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /^Encerrar conta$/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
+        accountId: 'account-3',
+        reason: 'Encerramento solicitado pelo cliente.',
+      });
+      expect(
+        hookMock.clearCurrentInstitutionSelection,
+      ).not.toHaveBeenCalled();
+      expect(hookMock.navigate).toHaveBeenCalledWith('/platform');
+    });
+  });
+
   it('filtra contas e instituicoes com dados reais', () => {
     renderPage();
 
