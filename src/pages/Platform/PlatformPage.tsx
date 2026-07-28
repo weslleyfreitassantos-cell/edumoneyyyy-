@@ -5,7 +5,6 @@ import {
   Loader2,
   PauseCircle,
   Plus,
-  RotateCcw,
   Save,
   Search,
   ShieldCheck,
@@ -407,8 +406,9 @@ export default function PlatformPage() {
 
     return accounts.filter((account) => {
       const matchesStatus =
-        statusFilter === 'ALL' ||
-        account.status === statusFilter;
+        statusFilter === 'ALL'
+          ? account.status !== 'CANCELED'
+          : account.status === statusFilter;
 
       return (
         matchesStatus &&
@@ -1203,6 +1203,7 @@ export default function PlatformPage() {
                   <option value="ALL">Todos</option>
                   <option value="ACTIVE">Ativas</option>
                   <option value="SUSPENDED">Suspensas</option>
+                  <option value="CANCELED">Canceladas</option>
                 </select>
               </Field>
 
@@ -1497,8 +1498,20 @@ export default function PlatformPage() {
                           )}
                         </td>
                         <td className="px-4 py-4">
-                          <div className="flex flex-wrap gap-2">
-                            {account.status === 'ACTIVE' ? (
+                          <div className="flex flex-wrap items-center gap-2">
+                            {account.status === 'CANCELED' ? (
+                              <>
+                                <span className="text-xs text-[#93000a]">
+                                  Dados preservados para auditoria
+                                </span>
+                                <button
+                                  type="button"
+                                  className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#c5c5d3]/50"
+                                >
+                                  Ver histórico
+                                </button>
+                              </>
+                            ) : account.status === 'ACTIVE' ? (
                               <button
                                 type="button"
                                 onClick={() =>

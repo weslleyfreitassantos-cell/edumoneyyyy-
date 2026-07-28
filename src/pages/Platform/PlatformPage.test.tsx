@@ -16,6 +16,7 @@ import {
   vi,
 } from 'vitest';
 import PlatformPage from './PlatformPage';
+import type { AccountSummaryRow } from '../../services/accountService';
 import { AccountServiceError } from '../../services/accountService';
 
 const hookMock = vi.hoisted(() => ({
@@ -89,7 +90,7 @@ vi.mock('../../contexts/AuthContext', () => ({
   }),
 }));
 
-const accounts = [
+const accounts: AccountSummaryRow[] = [
   {
     id: 'account-1',
     name: 'Conta Alfa',
@@ -100,8 +101,8 @@ const accounts = [
       id: 'owner-1',
       full_name: 'Ana Admin',
       email: 'ana@example.com',
-      role: 'ADMIN',
-      platform_role: 'USER',
+      role: 'ADMIN' as const,
+      platform_role: 'USER' as const,
       active: true,
     },
     institutions: [
@@ -110,6 +111,8 @@ const accounts = [
         name: 'Escola Alpha',
         active: true,
         account_id: 'account-1',
+        logoUrl: null,
+        publicSlug: null,
       },
       {
         id: 'institution-2',
@@ -122,6 +125,8 @@ const accounts = [
         name: 'Escola Pausada',
         active: false,
         account_id: 'account-1',
+        logoUrl: null,
+        publicSlug: null,
       },
     ],
   },
@@ -184,6 +189,8 @@ const accounts = [
         name: 'Escola Histórica',
         active: true,
         account_id: 'account-4',
+        logoUrl: null,
+        publicSlug: null,
       },
     ],
   },
@@ -1111,6 +1118,9 @@ describe('PlatformPage', () => {
       screen.getAllByText('Conta Alfa').length,
     ).toBeGreaterThan(0);
     expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(
+      screen.queryByText('Conta Cancelada'),
+    ).toBeNull();
 
     fireEvent.change(
       screen.getByLabelText('Buscar conta ou instituição'),
@@ -1139,5 +1149,126 @@ describe('PlatformPage', () => {
     expect(screen.queryByText(/Acessar como suporte/i)).toBeNull();
     expect(screen.queryByText(/485,2 mil alunos/i)).toBeNull();
     expect(screen.queryByText(/24 estados/i)).toBeNull();
+  });
+
+  it('Todos nao exibe conta CANCELED', () => {
+    renderPage();
+
+    expect(screen.getByText('Conta Alfa')).toBeDefined();
+    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(
+      screen.queryByText('Conta Cancelada'),
+    ).toBeNull();
+  });
+
+  it('filtro CANCELED exibe somente canceladas', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'CANCELED' },
+    });
+
+    expect(
+      screen.getByText('Conta Cancelada'),
+    ).toBeDefined();
+    expect(screen.queryByText('Conta Alfa')).toBeNull();
+    expect(screen.queryByText('Conta Beta')).toBeNull();
+  });
+
+  it('busca em Todos nao recupera cancelada', () => {
+    renderPage();
+
+    fireEvent.change(
+      screen.getByLabelText('Buscar conta ou instituição'),
+      {
+        target: { value: 'Cancelada' },
+      },
+    );
+
+    expect(
+      screen.queryByText('Conta Cancelada'),
+    ).toBeNull();
+  });
+
+  it('busca em CANCELED encontra cancelada', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'CANCELED' },
+    });
+    fireEvent.change(
+      screen.getByLabelText('Buscar conta ou instituição'),
+      {
+        target: { value: 'Cancelada' },
+      },
+    );
+
+    expect(
+      screen.getByText('Conta Cancelada'),
+    ).toBeDefined();
+  });
+
+  it('conta cancelada mantem botao Ver historico', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'CANCELED' },
+    });
+
+    expect(
+      screen.getByText('Ver histórico'),
+    ).toBeDefined();
+    expect(
+      screen.getByText('Dados preservados para auditoria'),
+    ).toBeDefined();
+  });
+
+  it('nenhuma exclusao fisica e executada', () => {
+    renderPage();
+
+    expect(
+      hookMock.deleteMutateAsync,
+    ).not.toHaveBeenCalled();
+  });
+
+  it('filtros Ativas e Suspensas continuam funcionando', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ACTIVE' },
+    });
+
+    expect(screen.getByText('Conta Alfa')).toBeDefined();
+    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(
+      screen.queryByText('Conta Cancelada'),
+    ).toBeNull();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'SUSPENDED' },
+    });
+
+    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(screen.queryByText('Conta Alfa')).toBeNull();
+    expect(
+      screen.queryByText('Conta Cancelada'),
+    ).toBeNull();
+  });
+
+  it('mostra mensagem para filtro sem resultados', () => {
+    renderPage();
+
+    fireEvent.change(
+      screen.getByLabelText('Buscar conta ou instituição'),
+      {
+        target: { value: 'naoexiste' },
+      },
+    );
+
+    expect(
+      screen.getByText(
+        /Nenhuma conta encontrada para os filtros informados/i,
+      ),
+    ).toBeDefined();
   });
 });
