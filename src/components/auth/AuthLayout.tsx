@@ -102,6 +102,28 @@ export function AuthShell({
   const { theme } = useThemePreference();
 
   if (layoutVariant === 'login') {
+    const showHero = heroVariant === 'video';
+    const darkBg = 'bg-[#060d1f] text-[#e8eaf6]';
+    const lightBg = 'bg-[#eef3fc] text-[#111]';
+    const shellBg = theme === 'dark' ? darkBg : lightBg;
+
+    if (!showHero) {
+      return (
+        <div className={`min-h-dvh font-sans ${shellBg} flex flex-col items-center justify-center px-4 py-8`}>
+          <div className="w-full max-w-[420px]">
+            <div className={`rounded-2xl border ${theme === 'dark' ? 'border-[#235bbe]/15 bg-[#0b1430]/95' : 'border-[#c7d9f8] bg-white'} px-6 py-8 shadow-sm sm:px-8 sm:py-10 ${contentClassName}`}>
+              {children}
+            </div>
+          </div>
+          {footer && (
+            <footer className="mt-6 text-center text-xs leading-5 text-[#7c8ba8] dark:text-[#aeb8c8]">
+              {footer}
+            </footer>
+          )}
+        </div>
+      );
+    }
+
     const loginShellClasses = theme === 'dark'
       ? 'login-shell min-h-dvh bg-[#060d1f] font-sans text-[#e8eaf6] flex flex-col items-center justify-center p-0 lg:p-10'
       : 'login-shell min-h-dvh bg-[#eef3fc] font-sans text-[#111] flex flex-col items-center justify-center p-0 lg:p-10';

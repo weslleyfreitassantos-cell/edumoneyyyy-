@@ -113,52 +113,6 @@ describe('Login', () => {
     ).toBeDefined();
   });
 
-  it('preserva o elemento unico de video e seus atributos principais para iOS/Safari', () => {
-    const { container } = renderLogin();
-
-    const videos = Array.from(
-      container.querySelectorAll('video'),
-    );
-    const sources = Array.from(
-      container.querySelectorAll('video source'),
-    );
-
-    expect(videos).toHaveLength(1);
-    expect(sources).toHaveLength(1);
-    expect(sources[0].getAttribute('src')).toBe('/media/cinema-novo.mp4');
-    expect(sources[0].getAttribute('type')).toBe('video/mp4');
-
-    const video = videos[0];
-    expect(video.hasAttribute('autoplay')).toBe(true);
-    expect(video.muted).toBe(true);
-    expect(video.defaultMuted).toBe(true);
-    expect(video.loop).toBe(true);
-    expect(video.hasAttribute('playsinline')).toBe(true);
-    expect(video.hasAttribute('webkit-playsinline')).toBe(true);
-    expect(video.getAttribute('preload')).toBe('auto');
-  });
-
-  it('registra listeners de video para reproducao automatica sem quebrar login', () => {
-    const videoEventSpy = vi.spyOn(
-      HTMLVideoElement.prototype,
-      'addEventListener',
-    );
-    const windowEventSpy = vi.spyOn(window, 'addEventListener');
-    const documentEventSpy = vi.spyOn(document, 'addEventListener');
-    renderLogin();
-
-    const videoEvents = videoEventSpy.mock.calls.map(call => call[0]);
-    const windowEvents = windowEventSpy.mock.calls.map(call => call[0]);
-    const documentEvents = documentEventSpy.mock.calls.map(call => call[0]);
-
-    expect(videoEvents).toContain('loadedmetadata');
-    expect(videoEvents).toContain('canplay');
-    expect(windowEvents).toContain('pageshow');
-    expect(documentEvents).toContain('visibilitychange');
-    expect(documentEvents).toContain('pointerdown');
-    expect(documentEvents).toContain('touchstart');
-  });
-
   it('exibe logo dinamica resolvida por hostname quando disponivel e nome abaixo', () => {
     brandingMock.data = {
       scope: 'ACCOUNT',
@@ -225,15 +179,12 @@ describe('Login', () => {
     ).toBe('https://cdn.example.com/favicon.png');
   });
 
-  it('mantem o card de login com as classes de painel mobile e card responsivo', () => {
+  it('renderiza o formulario centralizado sem hero', () => {
     const { container } = renderLogin();
 
-    const loginCard = container.querySelector('.login-card');
-    const videoAside = container.querySelector('aside');
-
-    expect(loginCard).not.toBeNull();
-    expect(loginCard?.className).toContain('login-card');
-    expect(videoAside?.className).toContain('lg:w-[calc(50%+5px)]');
+    expect(container.querySelector('aside')).toBeNull();
+    expect(container.querySelector('form')).not.toBeNull();
+    expect(screen.getByText('Bem-vindo de volta!')).toBeDefined();
   });
 
   it('suporta renderizacao em modo dark e light via ThemeProvider', () => {

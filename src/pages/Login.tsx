@@ -82,7 +82,7 @@ export function Login() {
 
   return (
     <AuthShell
-      heroVariant="video"
+      heroVariant="default"
       layoutVariant="login"
       showBrand={false}
       footer={footerContent}
