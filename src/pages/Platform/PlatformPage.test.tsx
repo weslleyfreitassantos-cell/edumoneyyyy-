@@ -38,6 +38,8 @@ const hookMock = vi.hoisted(() => ({
   activateDomainMutateAsync: vi.fn(),
   disableDomainMutateAsync: vi.fn(),
   setCurrentInstitutionId: vi.fn(),
+  clearCurrentInstitutionSelection: vi.fn(),
+  currentInstitutionId: 'institution-1',
   navigate: vi.fn(),
 }));
 
@@ -67,6 +69,10 @@ vi.mock('../../contexts/InstitutionContext', () => ({
   useInstitution: () => ({
     setCurrentInstitutionId:
       hookMock.setCurrentInstitutionId,
+    clearCurrentInstitutionSelection:
+      hookMock.clearCurrentInstitutionSelection,
+    currentInstitutionId:
+      hookMock.currentInstitutionId,
   }),
 }));
 
@@ -976,10 +982,16 @@ describe('PlatformPage', () => {
         reason: 'Encerramento comercial solicitado.',
       });
       expect(
-        screen.getByText(
+        hookMock.clearCurrentInstitutionSelection,
+      ).toHaveBeenCalled();
+      expect(hookMock.navigate).toHaveBeenCalledWith(
+        '/platform',
+      );
+      expect(
+        screen.getAllByText(
           /Conta encerrada. Dados e historico preservados/i,
-        ),
-      ).toBeDefined();
+        ).length,
+      ).toBeGreaterThanOrEqual(1);
     });
   });
 
@@ -1027,6 +1039,10 @@ describe('PlatformPage', () => {
         ),
       ).toBeDefined();
       expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
+      expect(
+        hookMock.clearCurrentInstitutionSelection,
+      ).not.toHaveBeenCalled();
+      expect(hookMock.navigate).not.toHaveBeenCalled();
     });
   });
 

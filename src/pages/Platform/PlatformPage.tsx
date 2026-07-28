@@ -321,8 +321,11 @@ function Field({
 export default function PlatformPage() {
   const { profile } = useAuth();
   const navigate = useNavigate();
-  const { setCurrentInstitutionId } =
-    useInstitution();
+  const {
+    setCurrentInstitutionId,
+    clearCurrentInstitutionSelection,
+    currentInstitutionId,
+  } = useInstitution();
   const institutionSearchInputRef =
     useRef<HTMLInputElement | null>(null);
   const accountsQuery = useAccounts();
@@ -793,7 +796,22 @@ export default function PlatformPage() {
         reason: closeReason,
       });
 
+      const closedAccountInstitutionIds =
+        closeDialog.account.institutions.map(
+          (inst) => inst.id,
+        );
+
+      if (
+        currentInstitutionId &&
+        closedAccountInstitutionIds.includes(
+          currentInstitutionId,
+        )
+      ) {
+        clearCurrentInstitutionSelection();
+      }
+
       setCloseDialog(null);
+      navigate('/platform');
       setFeedback({
         type: 'success',
         message:
