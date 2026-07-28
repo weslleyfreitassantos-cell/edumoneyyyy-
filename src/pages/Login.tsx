@@ -114,12 +114,12 @@ export function Login() {
                 aria-hidden="true"
               />
             )}
-         </div>
+          </div>
 
           {branding.displayName && (
             <p className="mt-1 text-sm font-bold text-slate-800 dark:text-slate-100 text-center">
               {branding.displayName}
-           </p>
+            </p>
           )}
 
           <div
@@ -133,7 +133,7 @@ export function Login() {
 
           <div className="mt-2 text-center">
             <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
-              Bem-vindo de volta!
+              Seja bem-vindo!
             </h1>
             <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
               Entre com suas credenciais para acessar a plataforma.
