@@ -174,7 +174,7 @@ export default function ForgotPassword() {
 
   return (
     <AuthShell
-      heroVariant="video"
+      heroVariant="default"
       layoutVariant="login"
       showBrand={false}
       footer={footer}
