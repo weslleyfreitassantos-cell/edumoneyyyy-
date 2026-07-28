@@ -144,13 +144,17 @@ export default function AdminPage() {
     );
   }
 
-  if (!profile || modules.length === 0) {
+  if (!profile) {
     return (
       <Navigate
-        to="/dashboard"
+        to="/login"
         replace
       />
     );
+  }
+
+  if (modules.length === 0) {
+    return <Navigate to="/platform" replace />;
   }
 
   const renderModule = () => {

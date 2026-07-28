@@ -294,6 +294,14 @@ function renderAdminPage(route = '/admin') {
           path="/dashboard"
           element={<div>Dashboard destino</div>}
         />
+        <Route
+          path="/login"
+          element={<div>Tela de login</div>}
+        />
+        <Route
+          path="/platform"
+          element={<div>Selecao de instituicao</div>}
+        />
       </Routes>
     </MemoryRouter>,
   );
@@ -492,7 +500,7 @@ describe('AdminPage permissions', () => {
     ).toBeTruthy();
   });
 
-  it('redireciona para dashboard quando nao ha perfil', () => {
+  it('redireciona para login quando nao ha perfil', () => {
     mockAdminState({
       profile: null,
       currentRole: null,
@@ -502,11 +510,11 @@ describe('AdminPage permissions', () => {
     renderAdminPage();
 
     expect(
-      screen.getByText('Dashboard destino'),
+      screen.getByText('Tela de login'),
     ).toBeTruthy();
   });
 
-  it('redireciona quando o papel efetivo nao tem permissoes administrativas', () => {
+  it('redireciona para platform quando o papel efetivo nao tem permissoes administrativas', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -518,7 +526,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage();
 
     expect(
-      screen.getByText('Dashboard destino'),
+      screen.getByText('Selecao de instituicao'),
     ).toBeTruthy();
   });
 });

@@ -109,7 +109,7 @@ describe('Login', () => {
         .getAttribute('href'),
     ).toBe('/forgot-password');
     expect(
-      screen.getByText(/Bem-vindo de volta!/i),
+      screen.getByText(/Seja bem-vindo!/i),
     ).toBeDefined();
   });
 
@@ -184,7 +184,7 @@ describe('Login', () => {
 
     expect(container.querySelector('aside')).toBeNull();
     expect(container.querySelector('form')).not.toBeNull();
-    expect(screen.getByText('Bem-vindo de volta!')).toBeDefined();
+    expect(screen.getByText('Seja bem-vindo!')).toBeDefined();
   });
 
   it('suporta renderizacao em modo dark e light via ThemeProvider', () => {
@@ -193,7 +193,7 @@ describe('Login', () => {
 
     const heading = container.querySelector('h1');
     expect(heading?.className).toContain('dark:text-white');
-    expect(heading?.textContent).toBe('Bem-vindo de volta!');
+    expect(heading?.textContent).toBe('Seja bem-vindo!');
 
     localStorage.removeItem('edumanager.theme');
   });
