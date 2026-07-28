@@ -5,7 +5,6 @@ import {
   Loader2,
   PauseCircle,
   Plus,
-  RotateCcw,
   Save,
   Search,
   ShieldCheck,
@@ -330,8 +329,9 @@ export default function PlatformPage() {
 
     return accounts.filter((account) => {
       const matchesStatus =
-        statusFilter === 'ALL' ||
-        account.status === statusFilter;
+        statusFilter === 'ALL'
+          ? account.status !== 'CANCELED'
+          : account.status === statusFilter;
 
       return (
         matchesStatus &&
@@ -975,8 +975,20 @@ export default function PlatformPage() {
                           {formatInstitutionNames(account)}
                         </td>
                         <td className="px-4 py-4">
-                          <div className="flex flex-wrap gap-2">
-                            {account.status === 'ACTIVE' ? (
+                          <div className="flex flex-wrap items-center gap-2">
+                            {account.status === 'CANCELED' ? (
+                              <>
+                                <span className="text-xs text-[#93000a]">
+                                  Dados preservados para auditoria
+                                </span>
+                                <button
+                                  type="button"
+                                  className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#c5c5d3]/50"
+                                >
+                                  Ver histórico
+                                </button>
+                              </>
+                            ) : account.status === 'ACTIVE' ? (
                               <button
                                 type="button"
                                 onClick={() =>
@@ -1006,21 +1018,15 @@ export default function PlatformPage() {
                                 disabled={updateAccount.isPending}
                                 className="inline-flex items-center gap-2 rounded-lg border border-[#6ffbbe] px-3 py-1.5 text-xs font-semibold text-[#005236] transition hover:bg-[#effdf6] focus:outline-none focus:ring-2 focus:ring-[#6ffbbe]/50 disabled:cursor-not-allowed disabled:opacity-60"
                               >
-                                {account.status === 'CANCELED' ? (
-                                  <RotateCcw
-                                    className="h-4 w-4"
-                                    aria-hidden="true"
-                                  />
-                                ) : (
-                                  <CheckCircle2
-                                    className="h-4 w-4"
-                                    aria-hidden="true"
-                                  />
-                                )}
+                                <CheckCircle2
+                                  className="h-4 w-4"
+                                  aria-hidden="true"
+                                />
                                 Reativar
                               </button>
                             )}
-                            {canDeleteAccounts &&
+                            {account.status !== 'CANCELED' &&
+                              canDeleteAccounts &&
                               account.owner?.email && (
                                 <button
                                   type="button"
