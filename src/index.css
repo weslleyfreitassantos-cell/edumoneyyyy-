@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -18,7 +21,7 @@
   .auth-hero-video-layer {
     position: absolute;
     inset: 0;
-    opacity: 0.78;
+    opacity: 0.88;
   }
 
   .auth-hero-video {
@@ -27,7 +30,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 60% center;
+    object-position: 58% center;
+    display: block;
     transform: none;
   }
 
@@ -51,12 +55,175 @@
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(135deg, rgba(18, 67, 150, 0.78), rgba(20, 61, 130, 0.66));
+      linear-gradient(135deg, rgba(6, 46, 125, 0.72), rgba(0, 75, 210, 0.48));
+  }
+
+  .login-card {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) and (max-height: 820px) {
+    .login-card {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+
+    .login-brand-block {
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .auth-hero-video {
+      object-position: 56% center;
+    }
+
+    .login-shell-main {
+      padding: 0 !important;
+    }
+
+    .login-shell-main > div {
+      gap: 0 !important;
+    }
+
+    .video-mobile {
+      width: 100% !important;
+      height: 34dvh !important;
+      min-height: 230px !important;
+      max-height: 350px !important;
+      aspect-ratio: 16 / 10 !important;
+      border-radius: 0 !important;
+    }
+
+    .login-panel-mobile {
+      margin-top: -28px !important;
+      border-radius: 30px 30px 0 0 !important;
+      padding: 28px 24px 40px !important;
+      max-height: none !important;
+      overflow: visible !important;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.12) !important;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .login-card form,
+    .login-card form > div,
+    .login-card input,
+    .login-card button {
+      max-width: 100%;
+    }
+
+    .login-card input,
+    .login-card button {
+      width: 100% !important;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .auth-hero-video {
-      display: none;
+      animation: none;
     }
+  }
+}
+
+html.dark #app-authenticated-container {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+html.dark #app-authenticated-container .bg-white,
+html.dark #app-authenticated-container [class~="bg-white/95"] {
+  background-color: #18212f;
+}
+
+html.dark #app-authenticated-container .bg-gray-50,
+html.dark #app-authenticated-container .bg-gray-100,
+html.dark #app-authenticated-container .bg-slate-50,
+html.dark #app-authenticated-container [class~="bg-[#f3f4f5]"],
+html.dark #app-authenticated-container [class~="bg-[#f3f6fb]"],
+html.dark #app-authenticated-container [class~="bg-[#f7f9fc]"],
+html.dark #app-authenticated-container [class~="bg-[#f8f9fa]"],
+html.dark #app-authenticated-container [class~="bg-[#f8faff]"] {
+  background-color: #111827;
+}
+
+html.dark #app-authenticated-container [class~="bg-[#eef3ff]"],
+html.dark #app-authenticated-container [class~="bg-[#e8eeff]"],
+html.dark #app-authenticated-container [class~="bg-[#dce1ff]"] {
+  background-color: #243449;
+}
+
+html.dark #app-authenticated-container [class~="text-[#181c20]"],
+html.dark #app-authenticated-container [class~="text-[#191c1d]"],
+html.dark #app-authenticated-container .text-gray-700,
+html.dark #app-authenticated-container .text-gray-800,
+html.dark #app-authenticated-container .text-gray-900 {
+  color: #f3f4f6;
+}
+
+html.dark #app-authenticated-container [class~="text-[#414754]"],
+html.dark #app-authenticated-container [class~="text-[#444651]"],
+html.dark #app-authenticated-container [class~="text-[#667085]"],
+html.dark #app-authenticated-container [class~="text-[#727785]"],
+html.dark #app-authenticated-container [class~="text-[#757682]"],
+html.dark #app-authenticated-container .text-gray-400,
+html.dark #app-authenticated-container .text-gray-500,
+html.dark #app-authenticated-container .text-gray-600 {
+  color: #aeb8c8;
+}
+
+html.dark #app-authenticated-container [class~="text-[#00236f]"],
+html.dark #app-authenticated-container [class~="text-[#061f6f]"] {
+  color: #b9c8ff;
+}
+
+html.dark #app-authenticated-container [class~="border-[#c1c6d6]"],
+html.dark #app-authenticated-container [class~="border-[#c5c5d3]"],
+html.dark #app-authenticated-container [class~="border-[#c5cbd6]"],
+html.dark #app-authenticated-container [class~="border-[#d8deea]"],
+html.dark #app-authenticated-container [class~="border-[#dfe3e8]"],
+html.dark #app-authenticated-container [class~="border-[#e4e8f1]"],
+html.dark #app-authenticated-container .border-gray-200,
+html.dark #app-authenticated-container .border-gray-300 {
+  border-color: #334155;
+}
+
+html.dark #app-authenticated-container input,
+html.dark #app-authenticated-container select,
+html.dark #app-authenticated-container textarea {
+  border-color: #475569;
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+html.dark #app-authenticated-container input::placeholder,
+html.dark #app-authenticated-container textarea::placeholder {
+  color: #8491a3;
+}
+
+html.dark #app-authenticated-container [class~="hover:bg-white"]:hover,
+html.dark #app-authenticated-container [class~="hover:bg-[#eef3ff]"]:hover,
+html.dark #app-authenticated-container [class~="hover:bg-[#f8faff]"]:hover,
+html.dark #app-authenticated-container [class~="hover:bg-gray-50"]:hover {
+  background-color: #243244;
+}
+
+html.dark .login-card input:-webkit-autofill,
+html.dark .login-card input:-webkit-autofill:hover,
+html.dark .login-card input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f3f4f6;
+  -webkit-box-shadow: 0 0 0 1000px #18212f inset;
+  caret-color: #f3f4f6;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+html.dark .login-card input::placeholder {
+  color: #8491a3;
+}
+
+@media (max-width: 1023px) {
+  .auth-hero-video-layer {
+    opacity: 0.7;
   }
 }

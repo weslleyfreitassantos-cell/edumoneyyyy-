@@ -20,21 +20,36 @@ import {
 
 import {
   useAuth,
+  useAuthProfileActions,
   type Profile,
 } from '../contexts/AuthContext';
 import {
   useInstitution,
 } from '../contexts/InstitutionContext';
+import { ThemeProvider } from '../contexts/ThemeContext';
+import type { UserInstitution } from '../services/institutionService';
 import AppShell, {
   getRouteVisualContext,
 } from './AppShell';
 
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
+  useAuthProfileActions: vi.fn(),
 }));
 
 vi.mock('../contexts/InstitutionContext', () => ({
   useInstitution: vi.fn(),
+}));
+
+vi.mock('../hooks/useBranding', () => ({
+  useHostBranding: () => ({
+    scope: 'GLOBAL',
+    displayName: 'EduManager Pro',
+    logoUrl: null,
+    faviconUrl: null,
+    primaryColor: '#005bbf',
+    secondaryColor: '#6ffbbe',
+  }),
 }));
 
 vi.mock('./InstitutionSwitcher', () => ({
@@ -42,6 +57,9 @@ vi.mock('./InstitutionSwitcher', () => ({
 }));
 
 const mockedUseAuth = vi.mocked(useAuth);
+const mockedUseAuthProfileActions = vi.mocked(
+  useAuthProfileActions,
+);
 const mockedUseInstitution =
   vi.mocked(useInstitution);
 
@@ -55,12 +73,52 @@ const profile: Profile = {
 };
 
 const signOut = vi.fn(async () => undefined);
+const updateProfileName = vi.fn(async () => undefined);
+const updatePassword = vi.fn(async () => undefined);
+const firstInstitution: UserInstitution = {
+  membership: {
+    id: 'membership-1',
+    institution_id: 'institution-1',
+    role: 'ADMIN',
+    active: true,
+  },
+  institution: {
+    id: 'institution-1',
+    name: 'Escola do Saber',
+    active: true,
+    account_id: 'account-1',
+  },
+  account: null,
+  accessSource: 'membership',
+  effectiveRole: 'ADMIN',
+};
+
+const secondInstitution: UserInstitution = {
+  membership: {
+    id: 'membership-2',
+    institution_id: 'institution-2',
+    role: 'DIRECTOR',
+    active: true,
+  },
+  institution: {
+    id: 'institution-2',
+    name: 'Escola Luz',
+    active: true,
+    account_id: 'account-1',
+  },
+  account: null,
+  accessSource: 'membership',
+  effectiveRole: 'DIRECTOR',
+};
 
 function mockContexts(
   overrides: {
     profile?: Profile;
     currentRole?: string | null;
     signOut?: () => Promise<void>;
+    institutionContext?: Partial<
+      ReturnType<typeof useInstitution>
+    >;
   } = {},
 ) {
   mockedUseAuth.mockReturnValue({
@@ -71,6 +129,11 @@ function mockContexts(
     loading: false,
     signIn: vi.fn(async () => undefined),
     signOut: overrides.signOut ?? signOut,
+  });
+
+  mockedUseAuthProfileActions.mockReturnValue({
+    updateProfileName,
+    updatePassword,
   });
 
   mockedUseInstitution.mockReturnValue({
@@ -91,15 +154,18 @@ function mockContexts(
     ),
     clearCurrentInstitutionSelection: vi.fn(),
     refresh: vi.fn(async () => undefined),
+    ...overrides.institutionContext,
   });
 }
 
 function renderShell(route = '/dashboard') {
   return render(
     <MemoryRouter initialEntries={[route]}>
-      <AppShell>
-        <div>Conteudo da rota</div>
-      </AppShell>
+      <ThemeProvider>
+        <AppShell>
+          <div>Conteudo da rota</div>
+        </AppShell>
+      </ThemeProvider>
     </MemoryRouter>,
   );
 }
@@ -146,6 +212,36 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
+  it('restaura e persiste a preferencia de tema do usuario', async () => {
+    window.localStorage.setItem(
+      'edumanager.theme',
+      'dark',
+    );
+
+    renderShell();
+
+    await waitFor(() => {
+      expect(
+        document.documentElement.classList.contains('dark'),
+      ).toBe(true);
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Ativar tema claro',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        document.documentElement.classList.contains('dark'),
+      ).toBe(false);
+      expect(
+        window.localStorage.getItem('edumanager.theme'),
+      ).toBe('light');
+    });
+  });
+
   it('renderiza contexto da rota e conteudo principal', () => {
     renderShell('/admin');
 
@@ -157,6 +253,229 @@ describe('AppShell', () => {
     expect(
       screen.getByText('Conteudo da rota'),
     ).toBeTruthy();
+    expect(
+      screen.getAllByText(/seletor global/i).length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('inicia com Sidebar desktop aberta e oculta completamente pelo Header', () => {
+    renderShell('/dashboard');
+
+    const sidebar = document.getElementById('app-sidebar');
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'false',
+    );
+    expect(sidebar?.className).toContain('lg:w-[280px]');
+    expect(sidebar?.className).not.toContain('lg:w-20');
+    expect(sidebar?.className).not.toContain('lg:hidden');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Ocultar menu lateral',
+      }),
+    );
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'true',
+    );
+    expect(sidebar?.className).toContain('lg:hidden');
+    expect(
+      window.localStorage.getItem(
+        'edumanager.sidebarCollapsed',
+      ),
+    ).toBe('true');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Mostrar menu lateral',
+      }),
+    );
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'false',
+    );
+    expect(sidebar?.className).not.toContain('lg:hidden');
+    expect(
+      window.localStorage.getItem(
+        'edumanager.sidebarCollapsed',
+      ),
+    ).toBe('false');
+  });
+
+  it('restaura preferencia de Sidebar desktop oculta', () => {
+    window.localStorage.setItem(
+      'edumanager.sidebarCollapsed',
+      'true',
+    );
+
+    renderShell('/dashboard');
+
+    const sidebar = document.getElementById('app-sidebar');
+
+    expect(sidebar?.getAttribute('data-desktop-hidden')).toBe(
+      'true',
+    );
+    expect(sidebar?.className).toContain('lg:hidden');
+    expect(
+      screen.getByRole('button', {
+        name: 'Mostrar menu lateral',
+      }).getAttribute('aria-expanded'),
+    ).toBe('false');
+    expect(
+      screen.queryByRole('button', {
+        name: /recolher sidebar/i,
+      }),
+    ).toBeNull();
+  });
+
+  it('abre drawer mobile mesmo com preferencia desktop oculta', () => {
+    window.localStorage.setItem(
+      'edumanager.sidebarCollapsed',
+      'true',
+    );
+
+    renderShell('/dashboard');
+
+    fireEvent.click(getMobileMenuButton());
+
+    expect(
+      getMobileMenuButton().getAttribute(
+        'aria-expanded',
+      ),
+    ).toBe('true');
+    expect(
+      screen.getByRole('dialog', {
+        name: /edumanager pro/i,
+      }),
+    ).toBeTruthy();
+  });
+
+  it('nao mostra seletor de instituicao para SUPER_ADMIN em /platform', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        full_name: 'Super Administrador',
+        role: 'ADMIN',
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentRole: null,
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          firstInstitution.institution,
+        currentInstitutionId:
+          firstInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/platform');
+
+    expect(
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
+    expect(
+      screen.queryByText('Escola do Saber'),
+    ).toBeNull();
+    expect(
+      screen.getAllByText('Super Administrador')
+        .length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('mostra escola estatica e volta para Plataforma para SUPER_ADMIN em /admin', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        full_name: 'Super Administrador',
+        role: 'ADMIN',
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentRole: null,
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          firstInstitution.institution,
+        currentInstitutionId:
+          firstInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/admin?module=subjects');
+
+    expect(
+      screen.getAllByText('Escola do Saber').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.getAllByText('Escola selecionada').length,
+    ).toBeGreaterThan(0);
+    expect(
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
+
+    const backLink = screen.getByRole('link', {
+      name: /Voltar para Plataforma/i,
+    });
+
+    expect(backLink.getAttribute('href')).toBe(
+      '/platform',
+    );
+  });
+
+  it('mantem seletor para ADMIN institucional', () => {
+    mockContexts({
+      profile,
+      currentRole: 'ADMIN',
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          firstInstitution.institution,
+        currentInstitutionId:
+          firstInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/admin');
+
+    expect(
+      screen.getAllByText(/seletor global/i).length,
+    ).toBeGreaterThan(0);
+  });
+
+  it('mantem seletor para DIRECTOR institucional', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+      institutionContext: {
+        institutions: [
+          firstInstitution,
+          secondInstitution,
+        ],
+        currentInstitution:
+          secondInstitution.institution,
+        currentInstitutionId:
+          secondInstitution.institution.id,
+        hasMultipleInstitutions: true,
+      },
+    });
+
+    renderShell('/admin');
+
     expect(
       screen.getAllByText(/seletor global/i).length,
     ).toBeGreaterThan(0);
@@ -359,5 +678,65 @@ describe('AppShell', () => {
     await waitFor(() => {
       expect(signOut).toHaveBeenCalledTimes(1);
     });
+  });
+
+  it('mantem Administracao na navegacao lateral', () => {
+    renderShell('/account');
+
+    expect(
+      screen.getByRole('link', { name: /administra/i }),
+    ).toBeTruthy();
+  });
+
+  it('conecta Minha conta às ações do perfil autenticado', async () => {
+    renderShell('/dashboard');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+    fireEvent.change(screen.getByLabelText('Nome'), {
+      target: { value: 'Novo Nome' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Salvar alterações',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(updateProfileName).toHaveBeenCalledWith(
+        'Novo Nome',
+      );
+    });
+    expect(updatePassword).not.toHaveBeenCalled();
+  });
+
+  it('torna o shell inerte enquanto Minha conta está aberta', () => {
+    renderShell('/dashboard');
+    const shell = document.getElementById(
+      'app-authenticated-container',
+    ) as HTMLElement & { inert: boolean };
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    expect(shell.inert).toBe(true);
+
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Cancelar' }),
+    );
+
+    expect(shell.inert).toBe(false);
   });
 });

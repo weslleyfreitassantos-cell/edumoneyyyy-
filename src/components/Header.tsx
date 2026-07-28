@@ -1,9 +1,14 @@
 import {
+  Building2,
+  CheckCircle2,
   ChevronDown,
   LogOut,
   Menu,
+  Moon,
   PanelLeftClose,
   PanelLeftOpen,
+  Sun,
+  UserRound,
 } from 'lucide-react';
 import {
   useEffect,
@@ -13,6 +18,8 @@ import {
 } from 'react';
 
 import InstitutionSwitcher from './InstitutionSwitcher';
+import AccountSettingsModal from './AccountSettingsModal';
+import type { ThemePreference } from '../contexts/ThemeContext';
 import type { User } from '../types';
 
 interface HeaderProps {
@@ -20,13 +27,19 @@ interface HeaderProps {
   pageTitle: string;
   pageSection: string;
   showInstitutionSwitcher: boolean;
-  isSidebarCollapsed: boolean;
+  staticInstitutionName?: string | null;
+  staticInstitutionHelper?: string;
+  isSidebarHidden: boolean;
   isMobileSidebarOpen: boolean;
   isLoggingOut: boolean;
   mobileSidebarId: string;
   onOpenMobileSidebar: () => void;
   onToggleSidebar: () => void;
   onLogout: () => void;
+  onUpdateProfileName: (fullName: string) => Promise<void>;
+  onUpdatePassword: (newPassword: string) => Promise<void>;
+  theme: ThemePreference;
+  onToggleTheme: () => void;
   mobileMenuButtonRef?: RefObject<HTMLButtonElement | null>;
 }
 
@@ -47,26 +60,40 @@ export default function Header({
   pageTitle,
   pageSection,
   showInstitutionSwitcher,
-  isSidebarCollapsed,
+  staticInstitutionName = null,
+  staticInstitutionHelper = 'Escola selecionada',
+  isSidebarHidden,
   isMobileSidebarOpen,
   isLoggingOut,
   mobileSidebarId,
   onOpenMobileSidebar,
   onToggleSidebar,
   onLogout,
+  onUpdateProfileName,
+  onUpdatePassword,
+  theme,
+  onToggleTheme,
   mobileMenuButtonRef,
 }: HeaderProps) {
   const [isUserMenuOpen, setIsUserMenuOpen] =
     useState(false);
+  const [isAccountModalOpen, setIsAccountModalOpen] =
+    useState(false);
+  const [accountFeedback, setAccountFeedback] =
+    useState<string | null>(null);
   const [avatarFailed, setAvatarFailed] =
     useState(false);
   const userMenuRef =
     useRef<HTMLDivElement | null>(null);
+  const userMenuButtonRef =
+    useRef<HTMLButtonElement | null>(null);
 
   const avatarUrl =
     currentUser.avatar?.trim() || null;
   const userInitials =
     getUserInitials(currentUser.name);
+  const showStaticInstitution =
+    Boolean(staticInstitutionName);
 
   useEffect(() => {
     setAvatarFailed(false);
@@ -116,6 +143,40 @@ export default function Header({
     onLogout();
   }
 
+  function openAccountSettings(): void {
+    setIsUserMenuOpen(false);
+    setAccountFeedback(null);
+    setIsAccountModalOpen(true);
+  }
+
+  function renderStaticInstitution() {
+    if (!staticInstitutionName) {
+      return null;
+    }
+
+    return (
+      <div
+        className="inline-flex min-h-11 w-full min-w-0 items-center gap-2 rounded-xl border border-[#d8deea] bg-white px-3 py-2 text-left shadow-sm md:w-auto"
+        aria-label={`Escola selecionada: ${staticInstitutionName}`}
+      >
+        <Building2
+          className="h-4 w-4 shrink-0 text-[#005bbf]"
+          aria-hidden="true"
+        />
+
+        <div className="min-w-0 leading-tight">
+          <p className="truncate text-sm font-bold text-[#181c20]">
+            {staticInstitutionName}
+          </p>
+
+          <p className="text-xs text-[#727785]">
+            {staticInstitutionHelper}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <header className="sticky top-0 z-30 border-b border-[#d8deea] bg-white/95 shadow-sm backdrop-blur">
       <div className="flex min-h-16 items-center gap-3 px-4 sm:px-5 lg:px-6">
@@ -139,14 +200,14 @@ export default function Header({
           className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] lg:inline-flex"
           onClick={onToggleSidebar}
           aria-label={
-            isSidebarCollapsed
-              ? 'Expandir sidebar'
-              : 'Recolher sidebar'
+            isSidebarHidden
+              ? 'Mostrar menu lateral'
+              : 'Ocultar menu lateral'
           }
-          aria-expanded={!isSidebarCollapsed}
+          aria-expanded={!isSidebarHidden}
           aria-controls={mobileSidebarId}
         >
-          {isSidebarCollapsed ? (
+          {isSidebarHidden ? (
             <PanelLeftOpen
               className="h-5 w-5"
               aria-hidden="true"
@@ -168,17 +229,44 @@ export default function Header({
           </h1>
         </div>
 
-        {showInstitutionSwitcher && (
+        {showStaticInstitution ? (
+          <div className="hidden min-w-0 max-w-[22rem] md:block">
+            {renderStaticInstitution()}
+          </div>
+        ) : showInstitutionSwitcher ? (
           <div className="hidden min-w-0 max-w-[22rem] md:block">
             <InstitutionSwitcher />
           </div>
-        )}
+        ) : null}
+
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-[#414754] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf]"
+          aria-label={
+            theme === 'dark'
+              ? 'Ativar tema claro'
+              : 'Ativar tema escuro'
+          }
+          title={
+            theme === 'dark'
+              ? 'Tema claro'
+              : 'Tema escuro'
+          }
+        >
+          {theme === 'dark' ? (
+            <Sun className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Moon className="h-5 w-5" aria-hidden="true" />
+          )}
+        </button>
 
         <div
           ref={userMenuRef}
           className="relative"
         >
           <button
+            ref={userMenuButtonRef}
             type="button"
             className="flex min-h-11 items-center gap-2 rounded-xl border border-transparent px-1.5 py-1 outline-none transition-colors hover:border-[#d8deea] hover:bg-[#f8faff] focus-visible:ring-2 focus-visible:ring-[#005bbf] sm:px-2"
             onClick={() =>
@@ -254,6 +342,17 @@ export default function Header({
               <div className="p-2">
                 <button
                   type="button"
+                  onClick={openAccountSettings}
+                  className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-[#181c20] outline-none transition-colors hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf]"
+                >
+                  <UserRound
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                  Minha conta
+                </button>
+                <button
+                  type="button"
                   onClick={handleLogout}
                   disabled={isLoggingOut}
                   className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
@@ -272,11 +371,41 @@ export default function Header({
         </div>
       </div>
 
-      {showInstitutionSwitcher && (
+      {accountFeedback && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed right-4 top-20 z-[70] flex max-w-sm items-center gap-2 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800 shadow-lg"
+        >
+          <CheckCircle2
+            className="h-4 w-4 shrink-0"
+            aria-hidden="true"
+          />
+          {accountFeedback}
+        </div>
+      )}
+
+      {isAccountModalOpen && (
+        <AccountSettingsModal
+          currentName={currentUser.name}
+          email={currentUser.email}
+          returnFocusRef={userMenuButtonRef}
+          onClose={() => setIsAccountModalOpen(false)}
+          onUpdateName={onUpdateProfileName}
+          onUpdatePassword={onUpdatePassword}
+          onSuccess={setAccountFeedback}
+        />
+      )}
+
+      {showStaticInstitution ? (
+        <div className="border-t border-[#e4e8f1] px-4 py-2 md:hidden">
+          {renderStaticInstitution()}
+        </div>
+      ) : showInstitutionSwitcher ? (
         <div className="border-t border-[#e4e8f1] px-4 py-2 md:hidden">
           <InstitutionSwitcher />
         </div>
-      )}
+      ) : null}
     </header>
   );
 }

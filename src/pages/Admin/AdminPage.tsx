@@ -1,8 +1,11 @@
 import {
   useEffect,
-  useState,
+  useMemo,
 } from 'react';
-import { Navigate } from 'react-router-dom';
+import {
+  Navigate,
+  useSearchParams,
+} from 'react-router-dom';
 
 import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from '../../components/grades/InstitutionGradesPanel';
@@ -15,10 +18,18 @@ import {
   hasEffectivePermission,
 } from '../../lib/permissions';
 
+import {
+  ADMIN_MODULES,
+  DEFAULT_ADMIN_MODULE_ID,
+  isAdminModuleId,
+  type AdminModuleId,
+} from './adminNavigation';
 import AdminOverviewTab from './tabs/AdminOverviewTab';
 import AcademicYearsTab from './tabs/AcademicYearsTab';
 import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
+import CurriculumTab from './tabs/CurriculumTab';
+import TimetableTab from './tabs/TimetableTab';
 import EnrollmentsTab from './tabs/EnrollmentsTab';
 import GuardiansTab from './tabs/GuardiansTab';
 import SchoolUsersTab from './tabs/SchoolUsersTab';
@@ -26,28 +37,23 @@ import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
 
-type TabType =
-  | 'overview'
-  | 'attendance'
-  | 'grades'
-  | 'school-users'
-  | 'students'
-  | 'teachers'
-  | 'guardians'
-  | 'academic-years'
-  | 'classes'
-  | 'subjects'
-  | 'enrollments'
-  | 'assignments'
-  | 'term-closing'
-  | 'academic-policies';
+function setModuleParam(
+  searchParams: URLSearchParams,
+  moduleId: AdminModuleId,
+): URLSearchParams {
+  const nextParams = new URLSearchParams(
+    searchParams,
+  );
+  nextParams.set('module', moduleId);
+  return nextParams;
+}
 
 export default function AdminPage() {
   const { profile } = useAuth();
   const institutionQuery =
     useCurrentInstitution(profile?.id);
-  const [activeTab, setActiveTab] =
-    useState<TabType>('overview');
+  const [searchParams, setSearchParams] =
+    useSearchParams();
 
   const can = (
     permission: Parameters<
@@ -62,77 +68,104 @@ export default function AdminPage() {
       permission,
     });
 
-  const tabs: {
-    id: TabType;
-    label: string;
-  }[] = [
-    ...(can('view_school_dashboard')
-      ? [
-          { id: 'overview' as const, label: 'Visão geral' },
-          { id: 'attendance' as const, label: 'Frequência' },
-          { id: 'grades' as const, label: 'Notas' },
-          { id: 'term-closing' as const, label: 'Fechamento' },
-        ]
-      : []),
-    ...(can('manage_school_users')
-      ? [{ id: 'school-users' as const, label: 'Usuários' }]
-      : []),
-    ...(can('manage_students')
-      ? [{ id: 'students' as const, label: 'Alunos' }]
-      : []),
-    ...(can('manage_teachers')
-      ? [{ id: 'teachers' as const, label: 'Professores' }]
-      : []),
-    ...(can('manage_guardians')
-      ? [{ id: 'guardians' as const, label: 'Responsáveis' }]
-      : []),
-    ...(can('manage_academic_structure')
-      ? [
-          {
-            id: 'academic-years' as const,
-            label: 'Ano letivo',
-          },
-          { id: 'classes' as const, label: 'Turmas' },
-          {
-            id: 'subjects' as const,
-            label: 'Disciplinas',
-          },
-          {
-            id: 'academic-policies' as const,
-            label: 'Política Acadêmica',
-          },
-        ]
-      : []),
-    ...(can('manage_enrollments')
-      ? [{ id: 'enrollments' as const, label: 'Matrículas' }]
-      : []),
-    ...(can('manage_assignments')
-      ? [{ id: 'assignments' as const, label: 'Atribuições' }]
-      : []),
-  ];
+  const modules = useMemo(
+    () =>
+      ADMIN_MODULES.filter((module) =>
+        can(module.permission),
+      ),
+    [
+      profile?.platform_role,
+      profile?.role,
+      institutionQuery.currentRole,
+    ],
+  );
+
+  const availableModuleIds = modules.map(
+    (module) => module.id,
+  );
+
+  const requestedModuleParam =
+    searchParams.get('module');
+  const requestedModuleId = isAdminModuleId(
+    requestedModuleParam,
+  )
+    ? requestedModuleParam
+    : DEFAULT_ADMIN_MODULE_ID;
+
+  const activeModuleId =
+    modules.some(
+      (module) =>
+        module.id === requestedModuleId,
+    )
+      ? requestedModuleId
+      : modules[0]?.id;
 
   useEffect(() => {
-    if (
-      tabs.length > 0 &&
-      !tabs.some((tab) => tab.id === activeTab)
-    ) {
-      setActiveTab(tabs[0].id);
+    if (!activeModuleId || modules.length === 0) {
+      return;
     }
-  }, [activeTab, tabs]);
 
-  if (!profile || tabs.length === 0) {
+    if (
+      requestedModuleParam === activeModuleId
+    ) {
+      return;
+    }
+
+    setSearchParams(
+      setModuleParam(
+        searchParams,
+        activeModuleId,
+      ),
+      {
+        replace: true,
+      },
+    );
+  }, [
+    activeModuleId,
+    modules.length,
+    requestedModuleParam,
+    searchParams,
+    setSearchParams,
+  ]);
+
+  function navigateToModule(
+    moduleId: AdminModuleId,
+  ): void {
+    if (
+      !modules.some(
+        (module) => module.id === moduleId,
+      )
+    ) {
+      return;
+    }
+
+    setSearchParams(
+      setModuleParam(searchParams, moduleId),
+    );
+  }
+
+  if (!profile) {
     return (
       <Navigate
-        to="/dashboard"
+        to="/login"
         replace
       />
     );
   }
 
-  const renderTab = () => {
-    switch (activeTab) {
+  if (modules.length === 0) {
+    return <Navigate to="/platform" replace />;
+  }
+
+  const renderModule = () => {
+    switch (activeModuleId) {
       case 'overview':
-        return <AdminOverviewTab />;
+        return (
+          <AdminOverviewTab
+            availableModuleIds={availableModuleIds}
+            onNavigateToModule={navigateToModule}
+          />
+        );
       case 'attendance':
         return (
           <InstitutionAttendancePanel
@@ -160,60 +193,45 @@ export default function AdminPage() {
       case 'guardians':
         return <GuardiansTab />;
       case 'academic-policies':
-        return <AcademicPolicyPanel institutionId={institutionQuery.data} />;
+        return (
+          <AcademicPolicyPanel
+            institutionId={institutionQuery.data}
+          />
+        );
       case 'academic-years':
         return <AcademicYearsTab />;
       case 'classes':
         return <ClassesTab />;
       case 'subjects':
         return <SubjectsTab />;
+      case 'curriculum':
+        return <CurriculumTab />;
+      case 'timetable':
+        return <TimetableTab />;
       case 'enrollments':
         return <EnrollmentsTab />;
       case 'assignments':
         return <AssignmentsTab />;
       default:
-        return (
-          <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
-            Este módulo ainda será conectado.
-          </div>
-        );
+        return null;
     }
   };
 
   return (
     <div className="space-y-6">
-      <div>
-        <div>
-          <h2 className="text-2xl font-bold text-[#181c20]">
-            Administração
-          </h2>
+      <header>
+        <h2 className="text-2xl font-bold text-[#181c20] dark:text-[#f8fafc]">
+          Gestão institucional
+        </h2>
 
-          <p className="text-sm text-[#727785]">
-            Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
-          </p>
-        </div>
-      </div>
+        <p className="text-sm text-[#727785] dark:text-[#cbd5e1]">
+          Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
+        </p>
+      </header>
 
-      <div className="flex gap-2 overflow-x-auto border-b border-[#dfe3e8] pb-px">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() =>
-              setActiveTab(tab.id)
-            }
-            className={`shrink-0 border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
-              activeTab === tab.id
-                ? 'border-[#005bbf] text-[#005bbf]'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      <div>{renderTab()}</div>
+      <section className="min-w-0">
+        {renderModule()}
+      </section>
     </div>
   );
 }

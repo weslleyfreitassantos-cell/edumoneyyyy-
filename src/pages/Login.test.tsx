@@ -16,6 +16,7 @@ import {
   vi,
 } from 'vitest';
 import { Login } from './Login';
+import { ThemeProvider } from '../contexts/ThemeContext';
 
 const authMock = vi.hoisted(() => ({
   signIn: vi.fn(),
@@ -23,10 +24,29 @@ const authMock = vi.hoisted(() => ({
   profile: null as unknown,
 }));
 
+const brandingMock = vi.hoisted(() => ({
+  data: null as null | {
+    scope: 'GLOBAL' | 'ACCOUNT' | 'FALLBACK';
+    displayName: string | null;
+    logoUrl: string | null;
+    faviconUrl: string | null;
+    primaryColor: string;
+    secondaryColor: string;
+  },
+  isLoading: false,
+}));
+
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: () => ({
     signIn: authMock.signIn,
     profile: authMock.profile,
+  }),
+}));
+
+vi.mock('../hooks/useBranding', () => ({
+  useResolvedBranding: () => ({
+    data: brandingMock.data,
+    isLoading: brandingMock.isLoading,
   }),
 }));
 
@@ -41,16 +61,18 @@ vi.mock('react-router-dom', async () => {
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-function renderLogin() {
+function renderLogin(initialEntry = '/login') {
   const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false } },
   });
 
   return render(
     <QueryClientProvider client={queryClient}>
-      <MemoryRouter>
-        <Login />
-      </MemoryRouter>
+      <ThemeProvider>
+        <MemoryRouter initialEntries={[initialEntry]}>
+          <Login />
+        </MemoryRouter>
+      </ThemeProvider>
     </QueryClientProvider>,
   );
 }
@@ -60,20 +82,21 @@ describe('Login', () => {
     vi.clearAllMocks();
     authMock.profile = null;
     authMock.signIn.mockResolvedValue(undefined);
+    brandingMock.data = null;
+    brandingMock.isLoading = false;
   });
 
   afterEach(() => {
     cleanup();
+    document.title = '';
+    document.head.innerHTML = '';
+    document.documentElement.style.removeProperty('--brand-primary');
+    document.documentElement.style.removeProperty('--brand-secondary');
   });
 
   it('renderiza o formulario real e o link de recuperacao', () => {
     renderLogin();
 
-    expect(
-      screen.getByRole('heading', {
-        name: /Bem-vindo ao EduManager Pro/i,
-      }),
-    ).toBeDefined();
     expect(
       screen.getByLabelText(/E-mail institucional/i),
     ).toBeDefined();
@@ -85,6 +108,94 @@ describe('Login', () => {
         })
         .getAttribute('href'),
     ).toBe('/forgot-password');
+    expect(
+      screen.getByText(/Seja bem-vindo!/i),
+    ).toBeDefined();
+  });
+
+  it('exibe logo dinamica resolvida por hostname quando disponivel e nome abaixo', () => {
+    brandingMock.data = {
+      scope: 'ACCOUNT',
+      displayName: 'Colegio Azul',
+      logoUrl: 'https://cdn.example.com/logo.png',
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    };
+
+    renderLogin();
+
+    const logo = screen.getByRole('img', {
+      name: /Logo de Colegio Azul/i,
+    });
+
+    expect(logo.getAttribute('src')).toBe(
+      'https://cdn.example.com/logo.png',
+    );
+    expect(logo.className).toContain('object-contain');
+
+    const names = screen.getAllByText('Colegio Azul');
+    expect(names.length).toBeGreaterThan(0);
+  });
+
+  it('mantem fallback neutro sem logo e sem marca fixa', () => {
+    brandingMock.data = {
+      scope: 'GLOBAL',
+      displayName: 'Colegio Sem Logo',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#112233',
+      secondaryColor: '#445566',
+    };
+
+    renderLogin();
+
+    expect(screen.queryByRole('img')).toBeNull();
+    expect(screen.getAllByText('Colegio Sem Logo')).toBeDefined();
+  });
+
+  it('atualiza favicon, titulo e cores dinamicamente', () => {
+    brandingMock.data = {
+      scope: 'GLOBAL',
+      displayName: 'Marca Global',
+      logoUrl: null,
+      faviconUrl: 'https://cdn.example.com/favicon.png',
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    };
+
+    renderLogin();
+
+    expect(document.title).toBe('Marca Global');
+    expect(
+      document.documentElement.style.getPropertyValue(
+        '--brand-primary',
+      ),
+    ).toBe('#123456');
+    expect(
+      document.querySelector<HTMLLinkElement>(
+        'link[rel="icon"]',
+      )?.href,
+    ).toBe('https://cdn.example.com/favicon.png');
+  });
+
+  it('renderiza o formulario centralizado sem hero', () => {
+    const { container } = renderLogin();
+
+    expect(container.querySelector('aside')).toBeNull();
+    expect(container.querySelector('form')).not.toBeNull();
+    expect(screen.getByText('Seja bem-vindo!')).toBeDefined();
+  });
+
+  it('suporta renderizacao em modo dark e light via ThemeProvider', () => {
+    localStorage.setItem('edumanager.theme', 'dark');
+    const { container } = renderLogin();
+
+    const heading = container.querySelector('h1');
+    expect(heading?.className).toContain('dark:text-white');
+    expect(heading?.textContent).toBe('Seja bem-vindo!');
+
+    localStorage.removeItem('edumanager.theme');
   });
 
   it('submete o login usando o useAuth', async () => {

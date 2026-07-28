@@ -1,8 +1,13 @@
 import {
+  useEffect,
   useMemo,
   useState,
   type FormEvent,
 } from 'react';
+
+import {
+  useSearchParams,
+} from 'react-router-dom';
 
 import {
   DataTable,
@@ -58,6 +63,9 @@ function getErrorMessage(
   error: unknown,
 ): string {
   if (error instanceof Error) {
+    if (error.message.includes('CURRICULUM_COMPONENT_REQUIRED')) {
+      return 'Adicione esta disciplina à matriz curricular da turma antes de atribuir um professor.';
+    }
     return error.message;
   }
 
@@ -67,7 +75,11 @@ function getErrorMessage(
     'message' in error &&
     typeof error.message === 'string'
   ) {
-    return error.message;
+    const msg = (error as Record<string, unknown>).message as string;
+    if (msg.includes('CURRICULUM_COMPONENT_REQUIRED')) {
+      return 'Adicione esta disciplina à matriz curricular da turma antes de atribuir um professor.';
+    }
+    return msg;
   }
 
   return 'Não foi possível concluir a operação.';
@@ -93,6 +105,8 @@ function StatusBadge({
 
 export default function AssignmentsTab() {
   const { profile } = useAuth();
+
+  const [searchParams] = useSearchParams();
 
   const institutionQuery =
     useCurrentInstitution(profile?.id);
@@ -176,6 +190,13 @@ export default function AssignmentsTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
+
+  useEffect(() => {
+    const classId = searchParams.get('classId');
+    const subjectId = searchParams.get('subjectId');
+    if (classId) setClassFilter(classId);
+    if (subjectId) setSubjectFilter(subjectId);
+  }, [searchParams]);
 
   const classes = classesQuery.data ?? [];
   const subjects = subjectsQuery.data ?? [];

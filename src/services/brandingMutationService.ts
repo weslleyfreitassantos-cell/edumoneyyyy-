@@ -69,10 +69,16 @@ async function updateInstitutionBranding(
     })
     .eq('id', institutionId)
     .select('id, name, logo_url, public_slug')
-    .single();
+    .maybeSingle();
 
   if (error) {
     throw error;
+  }
+
+  if (!data) {
+    throw new Error(
+      'Nenhum registro de identidade visual foi atualizado. Verifique suas permissoes.',
+    );
   }
 
   return normalizeBrandingRow(data as BrandingRow);
@@ -86,6 +92,12 @@ function resolvePublicSlug(
     normalizePublicSlug(currentPublicSlug) ??
     buildPublicSlugFromName(institutionName)
   );
+}
+
+function buildVersionedPublicUrl(publicUrl: string): string {
+  const separator = publicUrl.includes('?') ? '&' : '?';
+
+  return `${publicUrl}${separator}v=${Date.now()}`;
 }
 
 async function removeKnownLogoFiles(institutionId: string): Promise<void> {
@@ -129,11 +141,13 @@ export const brandingMutationService = {
     }
 
     const { data: publicUrlData } = storage.getPublicUrl(logoPath);
-    const logoUrl = publicUrlData.publicUrl;
+    const publicLogoUrl = publicUrlData.publicUrl;
 
-    if (!logoUrl) {
+    if (!publicLogoUrl) {
       throw new Error('Nao foi possivel gerar a URL publica da logo.');
     }
+
+    const logoUrl = buildVersionedPublicUrl(publicLogoUrl);
 
     const publicSlug = resolvePublicSlug(
       input.institutionName,

@@ -44,6 +44,7 @@ interface InstitutionRelation {
   name: string;
   active: boolean | null;
   account_id: string | null;
+  accounts?: AccountSummary | AccountSummary[] | null;
 }
 
 interface AccountInstitutionQueryRow {
@@ -169,16 +170,49 @@ function addOwnedInstitutions(
 function normalizeMembershipInstitution(
   row: MembershipInstitutionQueryRow,
 ): UserInstitution | null {
-  const institution = normalizeInstitution(
-    normalizeRelation(row.institutions),
-  );
-
   if (
     !row.id ||
     !row.institution_id ||
     !row.role ||
-    row.active === false ||
-    !institution
+    row.active === false
+  ) {
+    return null;
+  }
+
+  const institutionRelation = normalizeRelation(
+    row.institutions,
+  );
+
+  const institution = normalizeInstitution(
+    institutionRelation,
+  );
+
+  if (!institution) {
+    return null;
+  }
+
+  const accountRelation = normalizeRelation(
+    institutionRelation?.accounts,
+  );
+
+  const account =
+    accountRelation && isAccountStatus(accountRelation.status)
+      ? {
+          id: accountRelation.id,
+          name: accountRelation.name,
+          status: accountRelation.status,
+          institution_limit:
+            accountRelation.institution_limit ?? 1,
+        }
+      : null;
+
+  if (institution.account_id !== null && !account) {
+    return null;
+  }
+
+  if (
+    account !== null &&
+    account.status !== 'ACTIVE'
   ) {
     return null;
   }
@@ -212,7 +246,7 @@ function normalizeMembershipInstitution(
       active: row.active ?? true,
     },
     institution,
-    account: null,
+    account,
     accessSource:
       row.role === 'ADMIN'
         ? 'legacy_admin_membership'
@@ -235,7 +269,20 @@ export const institutionService = {
   async listAllActiveInstitutions(): Promise<UserInstitution[]> {
     const { data, error } = await supabase
       .from('institutions')
-      .select('id, name, active, account_id')
+      .select(
+        `
+        id,
+        name,
+        active,
+        account_id,
+        accounts:account_id (
+          id,
+          name,
+          status,
+          institution_limit
+        )
+      `,
+      )
       .eq('active', true)
       .order('name');
 
@@ -243,18 +290,42 @@ export const institutionService = {
       throw error;
     }
 
-    return (data ?? []).map((inst) => ({
-      membership: null,
-      institution: {
-        id: inst.id,
-        name: inst.name,
-        active: inst.active ?? true,
-        account_id: inst.account_id ?? null,
-      },
-      account: null,
-      accessSource: 'membership' as const,
-      effectiveRole: 'ADMIN' as CurrentDatabaseRole,
-    }));
+    return (
+      (data ?? []) as unknown as InstitutionRelation[]
+    )
+      .filter((inst) => {
+        const account = normalizeRelation(inst.accounts);
+
+        return (
+          inst.account_id === null ||
+          account?.status === 'ACTIVE'
+        );
+      })
+      .map((inst) => {
+        const account = normalizeRelation(inst.accounts);
+
+        return {
+          membership: null,
+          institution: {
+            id: inst.id,
+            name: inst.name,
+            active: inst.active ?? true,
+            account_id: inst.account_id ?? null,
+          },
+          account:
+            account && isAccountStatus(account.status)
+              ? {
+                  id: account.id,
+                  name: account.name,
+                  status: account.status,
+                  institution_limit:
+                    account.institution_limit ?? 1,
+                }
+              : null,
+          accessSource: 'membership' as const,
+          effectiveRole: 'ADMIN' as CurrentDatabaseRole,
+        };
+      });
   },
 
   async listForProfile(
@@ -296,7 +367,13 @@ export const institutionService = {
               id,
               name,
               active,
-              account_id
+              account_id,
+              accounts:account_id (
+                id,
+                name,
+                status,
+                institution_limit
+              )
             )
           `,
           )

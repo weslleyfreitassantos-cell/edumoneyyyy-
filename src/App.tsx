@@ -25,6 +25,8 @@ import {
 
 import { InstitutionProvider } from './contexts/InstitutionContext';
 
+import { ThemeProvider } from './contexts/ThemeContext';
+
 import AppShell from './components/AppShell';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
@@ -403,11 +405,13 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <InstitutionProvider>
-              <Suspense
-                fallback={<PageLoading />}
-              >
-                <AppRoutes />
-              </Suspense>
+              <ThemeProvider>
+                <Suspense
+                  fallback={<PageLoading />}
+                >
+                  <AppRoutes />
+                </Suspense>
+              </ThemeProvider>
             </InstitutionProvider>
           </AuthProvider>
         </BrowserRouter>

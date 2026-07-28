@@ -4,6 +4,8 @@ import {
   AlertTriangle,
   BookOpen,
   CalendarDays,
+  CheckCircle2,
+  Circle,
   GraduationCap,
   Layers3,
   School,
@@ -16,6 +18,10 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+
+import type {
+  AdminModuleId,
+} from '../adminNavigation';
 
 function getErrorMessage(
   error: unknown,
@@ -82,7 +88,130 @@ function MetricCard({
   );
 }
 
-export default function AdminOverviewTab() {
+interface SetupChecklistItem {
+  id: string;
+  label: string;
+  complete: boolean;
+  targetModuleId?: AdminModuleId;
+}
+
+interface SetupChecklistProps {
+  items: SetupChecklistItem[];
+  availableModuleIds: readonly AdminModuleId[];
+  onNavigateToModule?: (
+    moduleId: AdminModuleId,
+  ) => void;
+}
+
+function SetupChecklist({
+  items,
+  availableModuleIds,
+  onNavigateToModule,
+}: SetupChecklistProps) {
+  const availableModules = new Set(
+    availableModuleIds,
+  );
+
+  return (
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#182235]">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf] dark:text-[#93c5fd]">
+          Configuração inicial da escola
+        </p>
+
+        <h3 className="mt-2 text-lg font-bold text-[#181c20] dark:text-[#f8fafc]">
+          Primeiros passos
+        </h3>
+      </div>
+
+      <div className="mt-4 grid gap-2 md:grid-cols-2">
+        {items.map((item) => {
+          const canNavigate =
+            !item.complete &&
+            item.targetModuleId &&
+            availableModules.has(
+              item.targetModuleId,
+            ) &&
+            onNavigateToModule;
+
+          const content = (
+            <>
+              <span
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
+                  item.complete
+                    ? 'bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-300'
+                    : 'bg-gray-100 text-gray-500 dark:bg-[#0f172a] dark:text-[#94a3b8]'
+                }`}
+              >
+                {item.complete ? (
+                  <CheckCircle2
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Circle
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                )}
+              </span>
+
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm font-semibold text-[#181c20] dark:text-[#f8fafc]">
+                  {item.label}
+                </span>
+
+                <span className="mt-0.5 block text-xs text-[#727785] dark:text-[#94a3b8]">
+                  {item.complete
+                    ? 'Concluído'
+                    : 'Pendente'}
+                </span>
+              </span>
+            </>
+          );
+
+          if (canNavigate) {
+            return (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() =>
+                  onNavigateToModule(
+                    item.targetModuleId!,
+                  )
+                }
+                className="flex items-center gap-3 rounded-lg border border-[#dfe3e8] bg-white p-3 text-left outline-none transition hover:border-[#005bbf] hover:bg-[#f3f7ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-[#334155] dark:bg-[#0f172a] dark:hover:border-[#60a5fa] dark:hover:bg-[#1e293b]"
+              >
+                {content}
+              </button>
+            );
+          }
+
+          return (
+            <div
+              key={item.id}
+              className="flex items-center gap-3 rounded-lg border border-[#dfe3e8] bg-white p-3 dark:border-[#334155] dark:bg-[#0f172a]"
+            >
+              {content}
+            </div>
+          );
+        })}
+      </div>
+    </article>
+  );
+}
+
+interface AdminOverviewTabProps {
+  availableModuleIds?: readonly AdminModuleId[];
+  onNavigateToModule?: (
+    moduleId: AdminModuleId,
+  ) => void;
+}
+
+export default function AdminOverviewTab({
+  availableModuleIds = [],
+  onNavigateToModule,
+}: AdminOverviewTabProps) {
   const { profile } = useAuth();
 
   const institutionQuery =
@@ -132,8 +261,69 @@ export default function AdminOverviewTab() {
   const currentTerm =
     overviewQuery.data.currentTerm;
 
+  const setupItems: SetupChecklistItem[] = [
+    {
+      id: 'institution',
+      label: 'Instituição selecionada',
+      complete: Boolean(
+        institutionQuery.currentInstitution ??
+          institutionId,
+      ),
+    },
+    {
+      id: 'academic-year',
+      label: 'Criar ano letivo',
+      complete: Boolean(currentAcademicYear),
+      targetModuleId: 'academic-years',
+    },
+    {
+      id: 'subjects',
+      label: 'Adicionar disciplinas',
+      complete: metrics.activeSubjects > 0,
+      targetModuleId: 'subjects',
+    },
+    {
+      id: 'classes',
+      label: 'Criar turmas',
+      complete: metrics.activeClasses > 0,
+      targetModuleId: 'classes',
+    },
+    {
+      id: 'teachers',
+      label: 'Cadastrar professores',
+      complete: metrics.activeTeachers > 0,
+      targetModuleId: 'teachers',
+    },
+    {
+      id: 'assignments',
+      label: 'Vincular professores às turmas',
+      complete: metrics.activeAssignments > 0,
+      targetModuleId: 'assignments',
+    },
+    {
+      id: 'curriculum',
+      label: 'Configurar matriz curricular',
+      complete:
+        metrics.activeCurriculumItems > 0 &&
+        metrics.curriculumItemsNeedingReview === 0,
+      targetModuleId: 'curriculum',
+    },
+    {
+      id: 'enrollments',
+      label: 'Matricular alunos',
+      complete: metrics.activeEnrollments > 0,
+      targetModuleId: 'enrollments',
+    },
+  ];
+
   return (
     <div className="space-y-6">
+      <SetupChecklist
+        items={setupItems}
+        availableModuleIds={availableModuleIds}
+        onNavigateToModule={onNavigateToModule}
+      />
+
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard
           label="Alunos ativos"
@@ -217,6 +407,17 @@ export default function AdminOverviewTab() {
           value={metrics.activeAssignments}
           icon={
             <CalendarDays
+              className="h-5 w-5"
+              aria-hidden="true"
+            />
+          }
+        />
+
+        <MetricCard
+          label="Itens na matriz"
+          value={metrics.activeCurriculumItems}
+          icon={
+            <BookOpen
               className="h-5 w-5"
               aria-hidden="true"
             />

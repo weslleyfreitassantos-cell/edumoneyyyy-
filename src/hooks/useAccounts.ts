@@ -7,15 +7,23 @@ import {
 import {
   accountService,
   type AccountSummaryRow,
+  type AccountStatusEvent,
+  type CloseClientAccountInput,
+  type CloseClientAccountResponse,
   type CreateClientAccountInput,
   type CreateClientAccountResponse,
   type CreateInstitutionInput,
   type CreateInstitutionResponse,
   type DeleteClientAccountInput,
   type DeleteClientAccountResponse,
+  type UpdateInstitutionStatusInput,
+  type UpdateInstitutionStatusResponse,
   type UpdateClientAccountInput,
   type UpdateClientAccountResponse,
 } from '../services/accountService';
+import {
+  userInstitutionKeys,
+} from './useUserInstitutions';
 
 export const accountKeys = {
   all: ['accounts'] as const,
@@ -25,6 +33,12 @@ export const accountKeys = {
       ...accountKeys.all,
       'owned',
       profileId ?? 'anonymous',
+    ] as const,
+  statusEvents: (accountId: string | undefined) =>
+    [
+      ...accountKeys.all,
+      'status-events',
+      accountId ?? 'none',
     ] as const,
 };
 
@@ -80,9 +94,37 @@ export function useUpdateClientAccount() {
     mutationFn: (input) =>
       accountService.updateAccount(input),
     onSuccess: async () => {
-      await queryClient.invalidateQueries({
-        queryKey: accountKeys.all,
-      });
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
+    },
+  });
+}
+
+export function useCloseClientAccount() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    CloseClientAccountResponse,
+    Error,
+    CloseClientAccountInput
+  >({
+    mutationFn: (input) =>
+      accountService.closeAccount(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
     },
   });
 }
@@ -105,6 +147,23 @@ export function useDeleteClientAccount() {
   });
 }
 
+export function useAccountStatusEvents(
+  accountId: string | undefined,
+  enabled: boolean,
+) {
+  return useQuery<AccountStatusEvent[]>({
+    queryKey: accountKeys.statusEvents(accountId),
+    queryFn: () => {
+      if (!accountId) {
+        return Promise.resolve([]);
+      }
+
+      return accountService.listAccountStatusEvents(accountId);
+    },
+    enabled: enabled && Boolean(accountId),
+  });
+}
+
 export function useCreateInstitution(
   _profileId: string | undefined,
 ) {
@@ -121,6 +180,29 @@ export function useCreateInstitution(
       await queryClient.invalidateQueries({
         queryKey: accountKeys.all,
       });
+    },
+  });
+}
+
+export function useUpdateInstitutionStatus() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    UpdateInstitutionStatusResponse,
+    Error,
+    UpdateInstitutionStatusInput
+  >({
+    mutationFn: (input) =>
+      accountService.updateInstitutionStatus(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
     },
   });
 }

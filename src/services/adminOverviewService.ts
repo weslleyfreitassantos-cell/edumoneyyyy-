@@ -76,6 +76,18 @@ interface OfferingSubjectRelation {
   name: string;
 }
 
+interface CurriculumSummaryRow {
+  id: string;
+  class_id: string;
+  subject_id: string;
+  active: boolean | null;
+  needs_review: boolean;
+  classes:
+    | { institution_id: string; name: string }
+    | { institution_id: string; name: string }[]
+    | null;
+}
+
 interface OfferingSummaryRow {
   id: string;
   class_id: string;
@@ -109,6 +121,8 @@ export interface AdminOverviewData {
     activeSubjects: number;
     activeEnrollments: number;
     activeAssignments: number;
+    activeCurriculumItems: number;
+    curriculumItemsNeedingReview: number;
   };
   currentAcademicYear: AcademicYearSummaryRow | null;
   currentTerm: TermSummaryRow | null;
@@ -212,6 +226,7 @@ export const adminOverviewService = {
       enrollmentsResult,
       guardianshipsResult,
       offeringsResult,
+      curriculumResult,
     ] = await Promise.all([
       supabase
         .from('students')
@@ -298,6 +313,23 @@ export const adminOverviewService = {
           )
         `,
         ),
+
+      supabase
+        .from('class_curriculum_items')
+        .select(
+          `
+          id,
+          class_id,
+          subject_id,
+          active,
+          needs_review,
+          classes:class_id (
+            institution_id,
+            name
+          )
+        `,
+        )
+        .eq('institution_id', institutionId),
     ]);
 
     const queryErrors = [
@@ -310,6 +342,7 @@ export const adminOverviewService = {
       enrollmentsResult.error,
       guardianshipsResult.error,
       offeringsResult.error,
+      curriculumResult.error,
     ].filter(Boolean);
 
     if (queryErrors[0]) {
@@ -351,6 +384,10 @@ export const adminOverviewService = {
     const offerings =
       (offeringsResult.data ??
         []) as unknown as OfferingSummaryRow[];
+
+    const curriculumItems =
+      (curriculumResult.data ??
+        []) as unknown as CurriculumSummaryRow[];
 
     const classIds = new Set(
       classes.map((classRecord) => classRecord.id),
@@ -542,6 +579,43 @@ export const adminOverviewService = {
       }
     }
 
+    const institutionCurriculumItems = curriculumItems.filter((item) => {
+      const classRecord = normalizeRelation(item.classes);
+      return classRecord?.institution_id === institutionId;
+    });
+
+    const activeCurriculumItems = institutionCurriculumItems.filter(
+      (item) => isActive(item.active),
+    );
+
+    const curriculumItemsNeedingReview = institutionCurriculumItems.filter(
+      (item) => item.needs_review,
+    );
+
+    if (curriculumItemsNeedingReview.length > 0) {
+      warnings.push({
+        id: 'curriculum-needs-review',
+        title: 'Itens da matriz precisam de revisão',
+        description: `${curriculumItemsNeedingReview.length} item(ns) da matriz curricular foram criados por backfill da migração e precisam ser revisados.`,
+        severity: 'warning',
+      });
+    }
+
+    const activeCurriculumClassIds = new Set(
+      activeCurriculumItems.map((item) => item.class_id),
+    );
+
+    for (const classRecord of activeClasses) {
+      if (!activeCurriculumClassIds.has(classRecord.id)) {
+        warnings.push({
+          id: `class-without-curriculum-${classRecord.id}`,
+          title: 'Turma sem matriz curricular',
+          description: `${classRecord.name} ainda não possui disciplinas na matriz curricular.`,
+          severity: 'info',
+        });
+      }
+    }
+
     return {
       metrics: {
         activeStudents: activeStudents.length,
@@ -556,6 +630,10 @@ export const adminOverviewService = {
           activeEnrollments.length,
         activeAssignments:
           activeOfferings.length,
+        activeCurriculumItems:
+          activeCurriculumItems.length,
+        curriculumItemsNeedingReview:
+          curriculumItemsNeedingReview.length,
       },
       currentAcademicYear,
       currentTerm,

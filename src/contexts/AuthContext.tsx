@@ -16,6 +16,11 @@ import {
   type DatabaseRole,
   type PlatformRole,
 } from '../lib/roles';
+import {
+  ProfileServiceError,
+  updateCurrentPassword,
+  updateCurrentProfile,
+} from '../services/profileService';
 
 export interface Profile {
   id: string;
@@ -34,19 +39,40 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
+interface AuthProfileActionsContextType {
+  updateProfileName: (fullName: string) => Promise<void>;
+  updatePassword: (newPassword: string) => Promise<void>;
+}
+
 interface ProfileRequest {
   userId: string;
   promise: Promise<Profile>;
 }
 
+interface SynchronizeSessionOptions {
+  throwOnProfileError?: boolean;
+}
+
+class InactiveProfileError extends Error {
+  constructor() {
+    super(
+      'Seu acesso foi desativado. Entre em contato com a administração.',
+    );
+    this.name = 'InactiveProfileError';
+  }
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
 );
+const AuthProfileActionsContext = createContext<
+  AuthProfileActionsContextType | undefined
+>(undefined);
 
 async function loadProfile(userId: string): Promise<Profile> {
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, full_name, email, role, platform_role, avatar_url')
+    .select('id, full_name, email, role, platform_role, avatar_url, active')
     .eq('id', userId)
     .single();
 
@@ -56,6 +82,10 @@ async function loadProfile(userId: string): Promise<Profile> {
 
   if (!data) {
     throw new Error('Perfil academico nao encontrado.');
+  }
+
+  if (data.active !== true) {
+    throw new InactiveProfileError();
   }
 
   if (
@@ -129,7 +159,10 @@ export function AuthProvider({
   }, []);
 
   const synchronizeSession = useCallback(
-    async (nextUser: User | null): Promise<void> => {
+    async (
+      nextUser: User | null,
+      options: SynchronizeSessionOptions = {},
+    ): Promise<void> => {
       if (!mountedRef.current) {
         return;
       }
@@ -141,15 +174,6 @@ export function AuthProvider({
         profileRequestRef.current = null;
         setUserState(null);
         setProfileState(null);
-        setLoading(false);
-        return;
-      }
-
-      if (
-        userRef.current?.id === nextUser.id &&
-        profileRef.current?.id === nextUser.id
-      ) {
-        setUserState(nextUser);
         setLoading(false);
         return;
       }
@@ -177,7 +201,33 @@ export function AuthProvider({
           mountedRef.current &&
           syncVersionRef.current === syncVersion
         ) {
+          profileRequestRef.current = null;
           setProfileState(null);
+
+          if (error instanceof InactiveProfileError) {
+            setUserState(null);
+
+            try {
+              const { error: signOutError } =
+                await supabase.auth.signOut();
+
+              if (signOutError) {
+                console.error(
+                  'Erro ao encerrar sessao de perfil desativado:',
+                  signOutError,
+                );
+              }
+            } catch (signOutError) {
+              console.error(
+                'Erro ao encerrar sessao de perfil desativado:',
+                signOutError,
+              );
+            }
+          }
+        }
+
+        if (options.throwOnProfileError) {
+          throw error;
         }
       } finally {
         if (
@@ -260,7 +310,12 @@ export function AuthProvider({
       throw error;
     }
 
-    await synchronizeSession(data.session?.user ?? data.user ?? null);
+    await synchronizeSession(
+      data.session?.user ?? data.user ?? null,
+      {
+        throwOnProfileError: true,
+      },
+    );
   }
 
   async function signOut(): Promise<void> {
@@ -279,6 +334,49 @@ export function AuthProvider({
     setLoading(false);
   }
 
+  const updateProfileName = useCallback(
+    async (fullName: string): Promise<void> => {
+      const currentProfile = profileRef.current;
+
+      if (!currentProfile) {
+        throw new ProfileServiceError(
+          'SESSION_EXPIRED',
+          'Sessão expirada.',
+        );
+      }
+
+      const updatedProfile = await updateCurrentProfile({
+        fullName,
+      });
+
+      const latestProfile = profileRef.current;
+
+      if (
+        updatedProfile.id !== currentProfile.id ||
+        latestProfile?.id !== updatedProfile.id ||
+        userRef.current?.id !== updatedProfile.id
+      ) {
+        throw new ProfileServiceError(
+          'PROFILE_UPDATE_FAILED',
+          'Perfil atualizado não corresponde ao usuário atual.',
+        );
+      }
+
+      setProfileState({
+        ...latestProfile,
+        full_name: updatedProfile.full_name,
+      });
+    },
+    [setProfileState],
+  );
+
+  const updatePassword = useCallback(
+    async (newPassword: string): Promise<void> => {
+      await updateCurrentPassword(newPassword);
+    },
+    [],
+  );
+
   return (
     <AuthContext.Provider
       value={{
@@ -289,7 +387,14 @@ export function AuthProvider({
         signOut,
       }}
     >
-      {children}
+      <AuthProfileActionsContext.Provider
+        value={{
+          updateProfileName,
+          updatePassword,
+        }}
+      >
+        {children}
+      </AuthProfileActionsContext.Provider>
     </AuthContext.Provider>
   );
 }
@@ -300,6 +405,18 @@ export function useAuth(): AuthContextType {
   if (!context) {
     throw new Error(
       'useAuth deve ser usado dentro de AuthProvider.',
+    );
+  }
+
+  return context;
+}
+
+export function useAuthProfileActions(): AuthProfileActionsContextType {
+  const context = useContext(AuthProfileActionsContext);
+
+  if (!context) {
+    throw new Error(
+      'useAuthProfileActions deve ser usado dentro de AuthProvider.',
     );
   }
 

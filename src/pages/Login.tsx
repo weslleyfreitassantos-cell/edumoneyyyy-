@@ -2,21 +2,25 @@ import {
   ArrowRight,
   Eye,
   EyeOff,
-  GraduationCap,
   Loader2,
   Lock,
   Mail,
-  Building2,
+  ShieldCheck,
 } from 'lucide-react';
 import {
   useEffect,
   useState,
+  type CSSProperties,
   type FormEvent,
 } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
-import { usePublicInstitutionBranding } from '../hooks/useInstitutionBranding';
+import { useResolvedBranding } from '../hooks/useBranding';
+import {
+  FALLBACK_BRANDING,
+} from '../services/brandingService';
+import { applyDocumentBranding } from '../services/documentBranding';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -26,10 +30,9 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const { signIn, profile } = useAuth();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const institutionSlug = searchParams.get('institution');
-  
-  const brandingQuery = usePublicInstitutionBranding(institutionSlug);
+  const brandingQuery = useResolvedBranding();
+  const branding =
+    brandingQuery.data ?? FALLBACK_BRANDING;
 
   useEffect(() => {
     if (profile) {
@@ -37,8 +40,19 @@ export function Login() {
     }
   }, [profile, navigate]);
 
+  useEffect(
+    () => applyDocumentBranding(branding),
+    [
+      branding.displayName,
+      branding.faviconUrl,
+      branding.primaryColor,
+      branding.secondaryColor,
+    ],
+  );
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (loading) return;
     setError(null);
     setLoading(true);
 
@@ -55,156 +69,207 @@ export function Login() {
     }
   };
 
+  const footerContent = (
+    <div className="space-y-1">
+      <p className="font-medium text-slate-700 dark:text-slate-300">
+        Educação que transforma. Tecnologia que aproxima.
+      </p>
+      <p className="text-slate-500 dark:text-slate-400">
+        © 2026 {branding.displayName ?? 'EduManager Pro'}. Todos os direitos reservados.
+      </p>
+    </div>
+  );
+
   return (
-    <AuthShell heroVariant="video">
-      <div className="mb-8">
-        {institutionSlug && brandingQuery.isLoading ? (
-          <div className="mb-6 flex h-16 w-32 items-center justify-center rounded-lg border border-[#c5c5d3] bg-[#f8f9fa]">
-            <Loader2 className="h-5 w-5 animate-spin text-[#757682]" />
-          </div>
-        ) : brandingQuery.data ? (
-          <div className="mb-6">
-            {brandingQuery.data.logoUrl ? (
+    <AuthShell
+      heroVariant="default"
+      layoutVariant="login"
+      showBrand={false}
+      footer={footerContent}
+    >
+      <div
+        style={
+          {
+            '--brand-primary': branding.primaryColor,
+            '--brand-secondary': branding.secondaryColor,
+          } as CSSProperties
+        }
+      >
+        <div className="login-brand-block mb-3 flex flex-col items-center">
+          <div className="flex items-center justify-center min-h-[36px]">
+            {brandingQuery.isLoading ? (
+              <Loader2
+                className="h-6 w-6 animate-spin text-slate-400"
+                aria-label="Carregando identidade visual"
+              />
+            ) : branding.logoUrl ? (
               <img
-                src={brandingQuery.data.logoUrl}
-                alt={`Logo da instituição ${brandingQuery.data.name}`}
-                className="h-16 w-auto max-w-[240px] object-contain"
+                src={branding.logoUrl}
+                alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
+                className="max-h-[140px] max-w-[270px] object-contain sm:max-h-[160px] sm:max-w-[310px]"
               />
             ) : (
-              <div className="flex h-16 w-16 items-center justify-center rounded-lg bg-[#dce1ff] text-[#00236f]">
-                <Building2 className="h-8 w-8" aria-hidden="true" />
-              </div>
+              <div
+                className="h-14 w-36 rounded-2xl border border-dashed border-blue-200 bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800/50"
+                aria-hidden="true"
+              />
             )}
           </div>
-        ) : null}
 
-        <h1 className="text-[32px] font-bold leading-10 text-[#191c1d]">
-          Bem-vindo ao EduManager Pro
-        </h1>
-        <p className="mt-2 text-base leading-6 text-[#444651]">
-          Entre para acessar sua instituição.
-        </p>
-      </div>
-
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-5"
-      >
-        <div className="space-y-1.5">
-          <label
-            htmlFor="login-email"
-            className="block text-[11px] font-semibold uppercase leading-4 text-[#444651]"
-          >
-            E-mail institucional
-          </label>
-          <div className="relative">
-            <Mail
-              className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#757682]"
-              aria-hidden="true"
-            />
-            <input
-              id="login-email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              placeholder="nome@instituicao.edu.br"
-              className="h-12 w-full rounded-lg border border-[#c5c5d3] bg-white px-10 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20"
-            />
-          </div>
-        </div>
-
-        <div className="space-y-1.5">
-          <label
-            htmlFor="login-password"
-            className="block text-[11px] font-semibold uppercase leading-4 text-[#444651]"
-          >
-            Senha
-          </label>
-          <div className="relative">
-            <Lock
-              className="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#757682]"
-              aria-hidden="true"
-            />
-            <input
-              id="login-password"
-              name="password"
-              type={showPassword ? 'text' : 'password'}
-              required
-              autoComplete="current-password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              placeholder="••••••••"
-              className="h-12 w-full rounded-lg border border-[#c5c5d3] bg-white px-10 pr-12 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20"
-            />
-            <button
-              type="button"
-              aria-label={
-                showPassword
-                  ? 'Ocultar senha'
-                  : 'Mostrar senha'
-              }
-              aria-pressed={showPassword}
-              onClick={() =>
-                setShowPassword((current) => !current)
-              }
-              className="absolute right-2.5 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg text-[#757682] transition hover:bg-[#f3f4f5] hover:text-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
-            >
-              {showPassword ? (
-                <EyeOff
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              ) : (
-                <Eye
-                  className="h-5 w-5"
-                  aria-hidden="true"
-                />
-              )}
-            </button>
-          </div>
-        </div>
-
-        <div className="flex justify-end">
-          <Link
-            to="/forgot-password"
-            className="text-xs font-semibold text-[#1e3a8a] underline-offset-4 transition hover:text-[#00236f] hover:underline focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
-          >
-            Esqueci minha senha
-          </Link>
-        </div>
-
-        {error && (
-          <div
-            role="alert"
-            className="rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-2 text-sm text-[#93000a]"
-          >
-            {error}
-          </div>
-        )}
-
-        <button
-          type="submit"
-          disabled={loading}
-          aria-live="polite"
-          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#1e3a8a] px-5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {loading ? (
-            <Loader2
-              className="h-4 w-4 animate-spin"
-              aria-hidden="true"
-            />
-          ) : (
-            <ArrowRight
-              className="h-4 w-4"
-              aria-hidden="true"
-            />
+          {branding.displayName && (
+            <p className="mt-1 text-sm font-bold text-slate-800 dark:text-slate-100 text-center">
+              {branding.displayName}
+            </p>
           )}
-          {loading ? 'Entrando...' : 'Entrar no sistema'}
-        </button>
-      </form>
+
+          <div
+            className="mt-1 mx-auto h-[4px] w-12 rounded-full"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="mt-2 text-center">
+            <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+              Seja bem-vindo!
+            </h1>
+            <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
+              Entre com suas credenciais para acessar a plataforma.
+            </p>
+          </div>
+        </div>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-3"
+        >
+          <div className="space-y-1">
+            <label
+              htmlFor="login-email"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
+            >
+              E-mail institucional
+            </label>
+            <div className="relative">
+              <Mail
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+                aria-hidden="true"
+              />
+              <input
+                id="login-email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                placeholder="nome@instituicao.edu.br"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-11 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
+              />
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            <label
+              htmlFor="login-password"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
+            >
+              Senha
+            </label>
+            <div className="relative">
+              <Lock
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+                aria-hidden="true"
+              />
+              <input
+                id="login-password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                required
+                autoComplete="current-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="********"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-11 pr-12 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
+              />
+              <button
+                type="button"
+                aria-label={
+                  showPassword
+                    ? 'Ocultar senha'
+                    : 'Mostrar senha'
+                }
+                aria-pressed={showPassword}
+                onClick={() =>
+                  setShowPassword((current) => !current)
+                }
+                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+              >
+                {showPassword ? (
+                  <EyeOff
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Eye
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="flex justify-end">
+            <Link
+              to="/forgot-password"
+              className="text-xs font-semibold text-blue-600 underline-offset-4 transition hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              Esqueci minha senha
+            </Link>
+          </div>
+
+          {error && (
+            <div
+              role="alert"
+              className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300"
+            >
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            aria-live="polite"
+            className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20 disabled:cursor-not-allowed disabled:opacity-70"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+            }}
+          >
+            {loading ? (
+              <Loader2
+                className="h-5 w-5 animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <ArrowRight
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
+            )}
+            {loading ? 'Entrando...' : 'Entrar no sistema'}
+          </button>
+
+          <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" aria-hidden="true" />
+            <span>Ambiente seguro. Acesso restrito.</span>
+          </div>
+        </form>
+      </div>
     </AuthShell>
   );
 }

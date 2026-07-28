@@ -102,9 +102,23 @@ vi.mock(
 );
 
 vi.mock('./tabs/AdminOverviewTab', () => ({
-  default: () => (
+  default: ({
+    onNavigateToModule,
+  }: {
+    onNavigateToModule?: (
+      moduleId: 'subjects',
+    ) => void;
+  }) => (
     <div data-testid="overview-tab">
       Aba visao geral
+      <button
+        type="button"
+        onClick={() =>
+          onNavigateToModule?.('subjects')
+        }
+      >
+        Abrir modulo pelo checklist
+      </button>
     </div>
   ),
 }));
@@ -169,6 +183,14 @@ vi.mock('./tabs/EnrollmentsTab', () => ({
   default: () => (
     <div data-testid="enrollments-tab">
       Aba matriculas
+    </div>
+  ),
+}));
+
+vi.mock('./tabs/CurriculumTab', () => ({
+  default: () => (
+    <div data-testid="curriculum-tab">
+      Aba matriz curricular
     </div>
   ),
 }));
@@ -272,25 +294,17 @@ function renderAdminPage(route = '/admin') {
           path="/dashboard"
           element={<div>Dashboard destino</div>}
         />
+        <Route
+          path="/login"
+          element={<div>Tela de login</div>}
+        />
+        <Route
+          path="/platform"
+          element={<div>Selecao de instituicao</div>}
+        />
       </Routes>
     </MemoryRouter>,
   );
-}
-
-function expectTabVisible(label: RegExp) {
-  expect(
-    screen.getByRole('button', {
-      name: label,
-    }),
-  ).toBeTruthy();
-}
-
-function expectTabMissing(label: RegExp) {
-  expect(
-    screen.queryByRole('button', {
-      name: label,
-    }),
-  ).toBeNull();
 }
 
 beforeEach(() => {
@@ -302,25 +316,123 @@ afterEach(() => {
   cleanup();
 });
 
+describe('AdminPage URL module resolution', () => {
+  it('usa Visao geral como fallback quando modulo esta ausente', () => {
+    renderAdminPage('/admin');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
+    expect(
+      screen.queryByText(/^m.dulos$/i),
+    ).toBeNull();
+  });
+
+  it('renderiza modulo ativo informado pela URL', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=subjects');
+
+    expect(
+      screen.getByTestId('subjects-tab'),
+    ).toBeTruthy();
+  });
+
+  it('mantem modulo ao recarregar com a mesma URL', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=classes');
+
+    expect(
+      screen.getByTestId('classes-tab'),
+    ).toBeTruthy();
+  });
+
+  it('URL invalida volta para Visao geral', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=invalido');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
+  });
+
+  it('modulo sem permissao abre o primeiro modulo autorizado', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'SECRETARY',
+      },
+      currentRole: 'SECRETARY',
+    });
+
+    renderAdminPage('/admin?module=subjects');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
+    expect(
+      screen.queryByTestId('subjects-tab'),
+    ).toBeNull();
+  });
+
+  it('checklist navega alterando o modulo ativo pela URL', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=overview');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir modulo pelo checklist/i,
+      }),
+    );
+
+    expect(
+      screen.getByTestId('subjects-tab'),
+    ).toBeTruthy();
+  });
+});
+
 describe('AdminPage permissions', () => {
-  it('renderiza o conjunto atual de abas para ADMIN efetivo', () => {
-    renderAdminPage();
+  it('permite ADMIN acessar usuarios e bloqueia estrutura academica', () => {
+    renderAdminPage('/admin?module=school-users');
 
-    expectTabVisible(/vis/i);
-    expectTabVisible(/frequ/i);
-    expectTabVisible(/notas/i);
-    expectTabVisible(/fechamento/i);
-    expectTabVisible(/usu/i);
+    expect(
+      screen.getByTestId('school-users-tab'),
+    ).toBeTruthy();
 
-    expectTabMissing(/alunos/i);
-    expectTabMissing(/professores/i);
-    expectTabMissing(/respons/i);
-    expectTabMissing(/ano letivo/i);
-    expectTabMissing(/turmas/i);
-    expectTabMissing(/disciplinas/i);
-    expectTabMissing(/pol/i);
-    expectTabMissing(/matr/i);
-    expectTabMissing(/atribui/i);
+    cleanup();
+    mockAdminState();
+    renderAdminPage('/admin?module=subjects');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
   });
 
   it('renderiza operacao academica completa para DIRECTOR', () => {
@@ -332,33 +444,12 @@ describe('AdminPage permissions', () => {
       currentRole: 'DIRECTOR',
     });
 
-    renderAdminPage();
-
-    [
-      /vis/i,
-      /frequ/i,
-      /notas/i,
-      /fechamento/i,
-      /usu/i,
-      /alunos/i,
-      /professores/i,
-      /respons/i,
-      /ano letivo/i,
-      /turmas/i,
-      /disciplinas/i,
-      /pol/i,
-      /matr/i,
-      /atribui/i,
-    ].forEach(expectTabVisible);
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /alunos/i,
-      }),
-    );
+    renderAdminPage('/admin?module=academic-policies');
 
     expect(
-      screen.getByTestId('students-tab'),
+      screen.getByTestId(
+        'academic-policy-panel',
+      ),
     ).toBeTruthy();
   });
 
@@ -371,28 +462,45 @@ describe('AdminPage permissions', () => {
       currentRole: 'SECRETARY',
     });
 
-    renderAdminPage();
+    renderAdminPage('/admin?module=enrollments');
 
-    [
-      /vis/i,
-      /frequ/i,
-      /notas/i,
-      /fechamento/i,
-      /usu/i,
-      /alunos/i,
-      /professores/i,
-      /respons/i,
-      /matr/i,
-    ].forEach(expectTabVisible);
+    expect(
+      screen.getByTestId('enrollments-tab'),
+    ).toBeTruthy();
 
-    expectTabMissing(/ano letivo/i);
-    expectTabMissing(/turmas/i);
-    expectTabMissing(/disciplinas/i);
-    expectTabMissing(/pol/i);
-    expectTabMissing(/atribui/i);
+    cleanup();
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'SECRETARY',
+      },
+      currentRole: 'SECRETARY',
+    });
+    renderAdminPage('/admin?module=assignments');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
   });
 
-  it('redireciona para dashboard quando nao ha perfil', () => {
+  it('preserva acesso completo do SUPER_ADMIN dentro da instituicao selecionada', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'ADMIN',
+        platform_role: 'SUPER_ADMIN',
+      },
+      currentRole: null,
+    });
+
+    renderAdminPage('/admin?module=subjects');
+
+    expect(
+      screen.getByTestId('subjects-tab'),
+    ).toBeTruthy();
+  });
+
+  it('redireciona para login quando nao ha perfil', () => {
     mockAdminState({
       profile: null,
       currentRole: null,
@@ -402,11 +510,11 @@ describe('AdminPage permissions', () => {
     renderAdminPage();
 
     expect(
-      screen.getByText('Dashboard destino'),
+      screen.getByText('Tela de login'),
     ).toBeTruthy();
   });
 
-  it('redireciona quando o papel efetivo nao tem permissoes administrativas', () => {
+  it('redireciona para platform quando o papel efetivo nao tem permissoes administrativas', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -418,7 +526,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage();
 
     expect(
-      screen.getByText('Dashboard destino'),
+      screen.getByText('Selecao de instituicao'),
     ).toBeTruthy();
   });
 });

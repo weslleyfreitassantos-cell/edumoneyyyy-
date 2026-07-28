@@ -27,16 +27,19 @@ import {
 } from './useUserInstitutions';
 import {
   accountKeys,
+  useCloseClientAccount,
   useCreateClientAccount,
   useCreateInstitution,
-  useDeleteClientAccount,
   useUpdateClientAccount,
+  useUpdateInstitutionStatus,
 } from './useAccounts';
 
 vi.mock('../services/accountService', () => ({
   accountService: {
     createAccount: vi.fn(),
+    closeAccount: vi.fn(),
     updateAccount: vi.fn(),
+    updateInstitutionStatus: vi.fn(),
     deleteAccount: vi.fn(),
     createInstitution: vi.fn(),
   },
@@ -196,7 +199,10 @@ describe('account mutations', () => {
       success: true,
       accountId: 'account-1',
       institutionLimit: 4,
+      previousStatus: 'ACTIVE',
       status: 'ACTIVE',
+      auditEventId: null,
+      statusChanged: false,
     });
 
     const wrapper = ({
@@ -224,22 +230,23 @@ describe('account mutations', () => {
     expect(invalidateSpy).toHaveBeenCalledWith({
       queryKey: accountKeys.all,
     });
-    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledTimes(2);
   });
 
-  it('invalida contas apos excluir conta e administrador', async () => {
+  it('invalida contas e instituicoes autorizadas apos alterar instituicao', async () => {
     const queryClient = createQueryClient();
     const invalidateSpy = vi.spyOn(
       queryClient,
       'invalidateQueries',
     );
 
-    mockedAccountService.deleteAccount.mockResolvedValue({
+    mockedAccountService.updateInstitutionStatus.mockResolvedValue({
       success: true,
-      accountId: 'account-1',
-      ownerProfileId: 'owner-1',
-      ownerPreserved: false,
-      deletedAuthUser: true,
+      institutionId: 'institution-1',
+      active: false,
+      currentInstitutionCount: 1,
+      institutionLimit: 3,
+      remainingSlots: 2,
     });
 
     const wrapper = ({
@@ -253,19 +260,71 @@ describe('account mutations', () => {
     );
 
     const { result } = renderHook(
-      () => useDeleteClientAccount(),
+      () => useUpdateInstitutionStatus(),
       { wrapper },
     );
 
     await act(async () => {
       await result.current.mutateAsync({
-        accountId: 'account-1',
+        institutionId: 'institution-1',
+        active: false,
       });
     });
 
     expect(invalidateSpy).toHaveBeenCalledWith({
       queryKey: accountKeys.all,
     });
-    expect(invalidateSpy).toHaveBeenCalledTimes(1);
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: userInstitutionKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('invalida contas e instituicoes apos encerrar conta', async () => {
+    const queryClient = createQueryClient();
+    const invalidateSpy = vi.spyOn(
+      queryClient,
+      'invalidateQueries',
+    );
+
+    mockedAccountService.closeAccount.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      institutionLimit: 3,
+      previousStatus: 'ACTIVE',
+      status: 'CANCELED',
+      auditEventId: 'event-1',
+      statusChanged: true,
+    });
+
+    const wrapper = ({
+      children,
+    }: {
+      children: ReactNode;
+    }) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+
+    const { result } = renderHook(
+      () => useCloseClientAccount(),
+      { wrapper },
+    );
+
+    await act(async () => {
+      await result.current.mutateAsync({
+        accountId: 'account-1',
+        reason: 'Encerramento comercial solicitado.',
+      });
+    });
+
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: accountKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledWith({
+      queryKey: userInstitutionKeys.all,
+    });
+    expect(invalidateSpy).toHaveBeenCalledTimes(2);
   });
 });

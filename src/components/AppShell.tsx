@@ -2,6 +2,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type ReactNode,
 } from 'react';
 import {
@@ -11,6 +12,7 @@ import {
 
 import {
   useAuth,
+  useAuthProfileActions,
 } from '../contexts/AuthContext';
 import {
   useInstitution,
@@ -23,6 +25,8 @@ import type {
   User,
   UserRole,
 } from '../types';
+import { useThemePreference } from '../contexts/ThemeContext';
+import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
@@ -199,10 +203,14 @@ export default function AppShell({
   children,
 }: AppShellProps) {
   const { profile, signOut } = useAuth();
+  const { updateProfileName, updatePassword } =
+    useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
+  const { theme, toggleTheme } = useThemePreference();
+  const branding = useHostBranding();
 
-  const [isSidebarCollapsed, setIsSidebarCollapsed] =
+  const [isSidebarHidden, setIsSidebarHidden] =
     useState(readSidebarPreference);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] =
     useState(false);
@@ -222,8 +230,8 @@ export default function AppShell({
   const shouldRestoreFocusRef = useRef(false);
 
   useEffect(() => {
-    writeSidebarPreference(isSidebarCollapsed);
-  }, [isSidebarCollapsed]);
+    writeSidebarPreference(isSidebarHidden);
+  }, [isSidebarHidden]);
 
   useEffect(() => {
     if (!isMobileSidebarOpen) {
@@ -443,11 +451,24 @@ export default function AppShell({
 
   const hasAccessibleInstitutions =
     institutionContext.institutions.length > 0;
+  const isSuperAdmin =
+    profile.platform_role === 'SUPER_ADMIN';
+  const isPlatformRoute =
+    location.pathname.startsWith('/platform');
+  const isAdminRoute =
+    location.pathname.startsWith('/admin');
+  const showStaticInstitution =
+    isSuperAdmin &&
+    isAdminRoute &&
+    Boolean(institutionContext.currentInstitution);
 
   const showInstitutionSwitcher =
-    currentRole === 'super_admin'
-      ? hasAccessibleInstitutions
-      : true;
+    !showStaticInstitution &&
+    (isSuperAdmin
+      ? !isPlatformRoute &&
+        !isAdminRoute &&
+        hasAccessibleInstitutions
+      : true);
 
   function openMobileSidebar(): void {
     const activeElement =
@@ -466,7 +487,7 @@ export default function AppShell({
   }
 
   function toggleSidebar(): void {
-    setIsSidebarCollapsed((value) => !value);
+    setIsSidebarHidden((value) => !value);
   }
 
   async function handleLogout(): Promise<void> {
@@ -487,6 +508,10 @@ export default function AppShell({
     <div
       id="app-authenticated-container"
       className="flex min-h-screen bg-[#f3f6fb]"
+      style={{
+        '--brand-primary': branding.primaryColor,
+        '--brand-secondary': branding.secondaryColor,
+      } as CSSProperties}
     >
       <a
         href="#app-main-content"
@@ -498,14 +523,14 @@ export default function AppShell({
       <Sidebar
         currentUser={currentUser}
         profile={profile}
+        branding={branding}
         currentInstitutionRole={
           institutionContext.currentRole
         }
-        isCollapsed={isSidebarCollapsed}
+        isDesktopHidden={isSidebarHidden}
         isMobileOpen={isMobileSidebarOpen}
         isLoggingOut={isLoggingOut}
         onCloseMobile={closeMobileSidebar}
-        onToggleCollapsed={toggleSidebar}
         onLogout={() => {
           void handleLogout();
         }}
@@ -527,9 +552,13 @@ export default function AppShell({
           showInstitutionSwitcher={
             showInstitutionSwitcher
           }
-          isSidebarCollapsed={
-            isSidebarCollapsed
+          staticInstitutionName={
+            showStaticInstitution
+              ? institutionContext
+                  .currentInstitution?.name
+              : null
           }
+          isSidebarHidden={isSidebarHidden}
           isMobileSidebarOpen={
             isMobileSidebarOpen
           }
@@ -542,6 +571,10 @@ export default function AppShell({
           onLogout={() => {
             void handleLogout();
           }}
+          onUpdateProfileName={updateProfileName}
+          onUpdatePassword={updatePassword}
+          theme={theme}
+          onToggleTheme={toggleTheme}
           mobileMenuButtonRef={
             mobileMenuButtonRef
           }

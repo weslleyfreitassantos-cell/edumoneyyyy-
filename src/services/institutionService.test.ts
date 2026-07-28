@@ -15,7 +15,42 @@ describe('institutionService', () => {
       order: vi.fn().mockResolvedValue({
         data: [
           { id: 'inst-1', name: 'Escola Ativa 1', active: true, account_id: null },
-          { id: 'inst-2', name: 'Escola Ativa 2', active: true, account_id: 'acc-1' },
+          {
+            id: 'inst-2',
+            name: 'Escola Ativa 2',
+            active: true,
+            account_id: 'acc-1',
+            accounts: {
+              id: 'acc-1',
+              name: 'Conta Ativa',
+              status: 'ACTIVE',
+              institution_limit: 3,
+            },
+          },
+          {
+            id: 'inst-3',
+            name: 'Escola Suspensa',
+            active: true,
+            account_id: 'acc-2',
+            accounts: {
+              id: 'acc-2',
+              name: 'Conta Suspensa',
+              status: 'SUSPENDED',
+              institution_limit: 2,
+            },
+          },
+          {
+            id: 'inst-4',
+            name: 'Escola Cancelada',
+            active: true,
+            account_id: 'acc-3',
+            accounts: {
+              id: 'acc-3',
+              name: 'Conta Cancelada',
+              status: 'CANCELED',
+              institution_limit: 1,
+            },
+          },
         ],
         error: null,
       }),
@@ -30,7 +65,14 @@ describe('institutionService', () => {
     expect(result[1].institution.id).toBe('inst-2');
     expect(result[0].effectiveRole).toBe('ADMIN');
     expect(result[0].membership).toBeNull();
-    expect(result[1].account).toBeNull();
+    expect(result[0].account).toBeNull();
+    expect(result[1].account?.status).toBe('ACTIVE');
+    expect(
+      result.some((item) => item.institution.id === 'inst-3'),
+    ).toBe(false);
+    expect(
+      result.some((item) => item.institution.id === 'inst-4'),
+    ).toBe(false);
   });
 
   it('listAllActiveInstitutions lanca erro quando a consulta falha', async () => {
@@ -101,6 +143,12 @@ describe('institutionService', () => {
                   name: 'Instituicao 1',
                   active: true,
                   account_id: 'acc-1',
+                  accounts: {
+                    id: 'acc-1',
+                    name: 'Conta 1',
+                    status: 'ACTIVE',
+                    institution_limit: 5,
+                  },
                 },
               },
               {
@@ -113,6 +161,12 @@ describe('institutionService', () => {
                   name: 'Instituicao 3',
                   active: true,
                   account_id: 'acc-1',
+                  accounts: {
+                    id: 'acc-1',
+                    name: 'Conta 1',
+                    status: 'ACTIVE',
+                    institution_limit: 5,
+                  },
                 },
               },
               {
