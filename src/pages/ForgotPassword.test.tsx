@@ -82,8 +82,8 @@ describe('ForgotPassword', () => {
       }).getAttribute('href'),
     ).toBe('/login');
     expect(
-      document.querySelector('video source')?.getAttribute('src'),
-    ).toBe('/media/cinema-novo.mp4');
+      document.querySelector('video source'),
+    ).toBeNull();
   });
 
   it('valida e-mail invalido antes de chamar Supabase', async () => {
