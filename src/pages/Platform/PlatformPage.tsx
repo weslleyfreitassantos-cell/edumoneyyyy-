@@ -5,6 +5,7 @@ import {
   Loader2,
   PauseCircle,
   Plus,
+  RotateCcw,
   Save,
   Search,
   ShieldCheck,
@@ -406,9 +407,8 @@ export default function PlatformPage() {
 
     return accounts.filter((account) => {
       const matchesStatus =
-        statusFilter === 'ALL'
-          ? account.status !== 'CANCELED'
-          : account.status === statusFilter;
+        statusFilter === 'ALL' ||
+        account.status === statusFilter;
 
       return (
         matchesStatus &&
@@ -1303,24 +1303,24 @@ export default function PlatformPage() {
                     return (
                       <tr
                         key={account.id}
-                        className="transition hover:bg-[#f8f9fa]"
+                        className="transition hover:bg-[#f8f9fa] dark:hover:bg-[#1e293b]"
                       >
                         <td className="px-4 py-4">
                           <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#dce1ff] text-xs font-bold text-[#00236f]">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#dce1ff] text-xs font-bold text-[#00236f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]">
                               {getInitials(account.name)}
                             </div>
                             <div>
-                              <p className="font-semibold text-[#191c1d]">
+                              <p className="font-semibold text-[#191c1d] dark:text-[#f8fafc]">
                                 {account.name}
                               </p>
-                              <p className="text-xs text-[#444651]">
+                              <p className="text-xs text-[#444651] dark:text-[#cbd5e1]">
                                 {account.institutions.length} instituições
                               </p>
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-4 text-[#444651]">
+                        <td className="px-4 py-4 text-[#444651] dark:text-[#cbd5e1]">
                           {account.owner &&
                           account.status === 'ACTIVE' ? (
                             <button
@@ -1330,10 +1330,10 @@ export default function PlatformPage() {
                                   account,
                                 )
                               }
-                              className="-m-1 max-w-full rounded-md p-1 text-left outline-none transition-colors hover:text-[#005bbf] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                              className="-m-1 max-w-full rounded-md p-1 text-left outline-none transition-colors hover:text-[#005bbf] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:hover:text-[#93c5fd]"
                               aria-label={`Acessar escolas de ${account.owner.full_name}`}
                             >
-                              <span className="block truncate font-medium text-[#191c1d] transition-colors hover:text-[#005bbf]">
+                              <span className="block truncate font-medium text-[#191c1d] transition-colors hover:text-[#005bbf] dark:text-[#f8fafc] dark:hover:text-[#93c5fd]">
                                 {account.owner.full_name}
                               </span>
                               <span className="block truncate text-xs">
@@ -1342,7 +1342,7 @@ export default function PlatformPage() {
                             </button>
                           ) : (
                             <>
-                              <p className="font-medium text-[#191c1d]">
+                              <p className="font-medium text-[#191c1d] dark:text-[#f8fafc]">
                                 {account.owner
                                   ? account.owner.full_name
                                   : 'Sem owner'}
@@ -1358,14 +1358,14 @@ export default function PlatformPage() {
                         </td>
                         <td className="px-4 py-4">
                           <div className="w-36">
-                            <div className="flex justify-between text-xs text-[#444651]">
+                            <div className="flex justify-between text-xs text-[#444651] dark:text-[#cbd5e1]">
                               <span>
                                 {account.activeInstitutionCount}/
                                 {account.institutionLimit}
                               </span>
                               <span>{usagePercent}%</span>
                             </div>
-                            <div className="mt-2 h-2 rounded-full bg-[#edeeef]">
+                            <div className="mt-2 h-2 rounded-full bg-[#edeeef] dark:bg-[#334155]">
                               <div
                                 className="h-2 rounded-full bg-[#006c49]"
                                 style={{
@@ -1394,7 +1394,7 @@ export default function PlatformPage() {
                               disabled={
                                 account.status === 'CANCELED'
                               }
-                              className="h-9 w-20 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682]"
+                              className="h-9 w-20 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:disabled:bg-[#111827] dark:disabled:text-[#64748b]"
                             />
                             <button
                               type="button"
@@ -1407,7 +1407,7 @@ export default function PlatformPage() {
                                 updateAccount.isPending ||
                                 account.status === 'CANCELED'
                               }
-                              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:text-[#93c5fd] dark:hover:bg-[#1e3a5f]"
                               aria-label={`Salvar limite de ${account.name}`}
                               title="Salvar limite"
                             >
@@ -1418,7 +1418,7 @@ export default function PlatformPage() {
                             </button>
                           </div>
                         </td>
-                        <td className="max-w-md px-4 py-4 text-sm leading-5 text-[#444651]">
+                        <td className="max-w-md px-4 py-4 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
                           {account.institutions.length === 0 ? (
                             <span>Nenhuma instituição cadastrada.</span>
                           ) : (
@@ -1431,17 +1431,17 @@ export default function PlatformPage() {
                                   return (
                                     <div
                                       key={institution.id}
-                                      className="flex items-center justify-between gap-3 rounded-lg border border-[#d8deea] bg-white px-3 py-2"
+                                      className="flex items-center justify-between gap-3 rounded-lg border border-[#d8deea] bg-white px-3 py-2 dark:border-[#334155] dark:bg-[#0f172a]"
                                     >
                                       <div className="min-w-0">
-                                        <p className="truncate font-medium text-[#191c1d]">
+                                        <p className="truncate font-medium text-[#191c1d] dark:text-[#f8fafc]">
                                           {institution.name}
                                         </p>
                                         <p
                                           className={`text-xs font-semibold ${
                                             isActiveInstitution
-                                              ? 'text-[#005236]'
-                                              : 'text-[#7a4d00]'
+                                              ? 'text-[#005236] dark:text-[#6ffbbe]'
+                                              : 'text-[#7a4d00] dark:text-[#ffb95f]'
                                           }`}
                                         >
                                           {isActiveInstitution
@@ -1465,8 +1465,8 @@ export default function PlatformPage() {
                                           }
                                           className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
                                             isActiveInstitution
-                                              ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40'
-                                              : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50'
+                                              ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
+                                              : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
                                           }`}
                                           aria-label={`${
                                             isActiveInstitution
@@ -1499,19 +1499,7 @@ export default function PlatformPage() {
                         </td>
                         <td className="px-4 py-4">
                           <div className="flex flex-wrap items-center gap-2">
-                            {account.status === 'CANCELED' ? (
-                              <>
-                                <span className="text-xs text-[#93000a]">
-                                  Dados preservados para auditoria
-                                </span>
-                                <button
-                                  type="button"
-                                  className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#c5c5d3]/50"
-                                >
-                                  Ver histórico
-                                </button>
-                              </>
-                            ) : account.status === 'ACTIVE' ? (
+                            {account.status === 'ACTIVE' ? (
                               <button
                                 type="button"
                                 onClick={() =>
@@ -1521,7 +1509,7 @@ export default function PlatformPage() {
                                   )
                                 }
                                 disabled={updateAccount.isPending}
-                                className="inline-flex items-center gap-2 rounded-lg border border-[#ffb95f] px-3 py-1.5 text-xs font-semibold text-[#7a4d00] transition hover:bg-[#fff4ce] focus:outline-none focus:ring-2 focus:ring-[#ffb95f]/40 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex items-center gap-2 rounded-lg border border-[#ffb95f] px-3 py-1.5 text-xs font-semibold text-[#7a4d00] transition hover:bg-[#fff4ce] focus:outline-none focus:ring-2 focus:ring-[#ffb95f]/40 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60"
                               >
                                 <PauseCircle
                                   className="h-4 w-4"
@@ -1540,7 +1528,7 @@ export default function PlatformPage() {
                                   )
                                 }
                                 disabled={updateAccount.isPending}
-                                className="inline-flex items-center gap-2 rounded-lg border border-[#6ffbbe] px-3 py-1.5 text-xs font-semibold text-[#005236] transition hover:bg-[#effdf6] focus:outline-none focus:ring-2 focus:ring-[#6ffbbe]/50 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex items-center gap-2 rounded-lg border border-[#6ffbbe] px-3 py-1.5 text-xs font-semibold text-[#005236] transition hover:bg-[#effdf6] focus:outline-none focus:ring-2 focus:ring-[#6ffbbe]/50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60"
                               >
                                 <CheckCircle2
                                   className="h-4 w-4"
@@ -1549,7 +1537,7 @@ export default function PlatformPage() {
                                 Reativar
                               </button>
                             ) : (
-                              <span className="inline-flex max-w-xs items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a]">
+                              <span className="inline-flex max-w-xs items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200">
                                 Conta encerrada. Dados e
                                 historico preservados.
                               </span>
@@ -1561,7 +1549,7 @@ export default function PlatformPage() {
                                   account,
                                 })
                               }
-                              className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
+                              className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
                             >
                               Ver histórico
                             </button>
@@ -1577,7 +1565,7 @@ export default function PlatformPage() {
                                   disabled={
                                     closeAccount.isPending
                                   }
-                                  className="inline-flex items-center gap-2 rounded-lg border border-[#ffdad6] px-3 py-1.5 text-xs font-semibold text-[#93000a] transition hover:bg-[#fff1ef] focus:outline-none focus:ring-2 focus:ring-[#ffdad6]/70 disabled:cursor-not-allowed disabled:opacity-60"
+                                  className="inline-flex items-center gap-2 rounded-lg border border-[#ffdad6] px-3 py-1.5 text-xs font-semibold text-[#93000a] transition hover:bg-[#fff1ef] focus:outline-none focus:ring-2 focus:ring-[#ffdad6]/70 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
                                   aria-label={`Encerrar conta ${account.name}`}
                                 >
                                   <X

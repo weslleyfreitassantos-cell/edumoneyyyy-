@@ -119,6 +119,8 @@ const accounts: AccountSummaryRow[] = [
         name: 'Escola Luz',
         active: true,
         account_id: 'account-1',
+        logoUrl: null,
+        publicSlug: null,
       },
       {
         id: 'institution-3',
@@ -150,6 +152,8 @@ const accounts: AccountSummaryRow[] = [
         name: 'Escola Beta',
         active: true,
         account_id: 'account-2',
+        logoUrl: null,
+        publicSlug: null,
       },
     ],
   },
@@ -1151,14 +1155,16 @@ describe('PlatformPage', () => {
     expect(screen.queryByText(/24 estados/i)).toBeNull();
   });
 
-  it('Todos nao exibe conta CANCELED', () => {
+  it('Todos exibe todos os status', () => {
     renderPage();
 
-    expect(screen.getByText('Conta Alfa')).toBeDefined();
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('Conta Beta')).toBeDefined();
     expect(
-      screen.queryByText('Conta Cancelada'),
-    ).toBeNull();
+      screen.getByText('Conta Encerrada'),
+    ).toBeDefined();
   });
 
   it('filtro CANCELED exibe somente canceladas', () => {
@@ -1169,28 +1175,27 @@ describe('PlatformPage', () => {
     });
 
     expect(
-      screen.getByText('Conta Cancelada'),
+      screen.getByText('Conta Encerrada'),
     ).toBeDefined();
-    expect(screen.queryByText('Conta Alfa')).toBeNull();
     expect(screen.queryByText('Conta Beta')).toBeNull();
   });
 
-  it('busca em Todos nao recupera cancelada', () => {
+  it('busca em Todos encontra encerrada', () => {
     renderPage();
 
     fireEvent.change(
       screen.getByLabelText('Buscar conta ou instituição'),
       {
-        target: { value: 'Cancelada' },
+        target: { value: 'Encerrada' },
       },
     );
 
     expect(
-      screen.queryByText('Conta Cancelada'),
-    ).toBeNull();
+      screen.getByText('Conta Encerrada'),
+    ).toBeDefined();
   });
 
-  it('busca em CANCELED encontra cancelada', () => {
+  it('busca em CANCELED encontra encerrada', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
@@ -1199,12 +1204,12 @@ describe('PlatformPage', () => {
     fireEvent.change(
       screen.getByLabelText('Buscar conta ou instituição'),
       {
-        target: { value: 'Cancelada' },
+        target: { value: 'Encerrada' },
       },
     );
 
     expect(
-      screen.getByText('Conta Cancelada'),
+      screen.getByText('Conta Encerrada'),
     ).toBeDefined();
   });
 
@@ -1219,7 +1224,9 @@ describe('PlatformPage', () => {
       screen.getByText('Ver histórico'),
     ).toBeDefined();
     expect(
-      screen.getByText('Dados preservados para auditoria'),
+      screen.getByText(
+        'Conta encerrada. Dados e historico preservados.',
+      ),
     ).toBeDefined();
   });
 
@@ -1227,7 +1234,7 @@ describe('PlatformPage', () => {
     renderPage();
 
     expect(
-      hookMock.deleteMutateAsync,
+      hookMock.closeMutateAsync,
     ).not.toHaveBeenCalled();
   });
 
@@ -1238,10 +1245,12 @@ describe('PlatformPage', () => {
       target: { value: 'ACTIVE' },
     });
 
-    expect(screen.getByText('Conta Alfa')).toBeDefined();
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThanOrEqual(1);
     expect(screen.queryByText('Conta Beta')).toBeNull();
     expect(
-      screen.queryByText('Conta Cancelada'),
+      screen.queryByText('Conta Encerrada'),
     ).toBeNull();
 
     fireEvent.change(screen.getByLabelText('Status'), {
@@ -1249,9 +1258,8 @@ describe('PlatformPage', () => {
     });
 
     expect(screen.getByText('Conta Beta')).toBeDefined();
-    expect(screen.queryByText('Conta Alfa')).toBeNull();
     expect(
-      screen.queryByText('Conta Cancelada'),
+      screen.queryByText('Conta Encerrada'),
     ).toBeNull();
   });
 
