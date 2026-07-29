@@ -221,9 +221,11 @@ export default function Header({
         </button>
 
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-            {pageSection}
-          </p>
+          {pageSection ? (
+            <p className="truncate text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+              {pageSection}
+            </p>
+          ) : null}
           <h1 className="truncate text-lg font-extrabold leading-tight text-[#181c20] sm:text-xl">
             {pageTitle}
           </h1>

@@ -84,6 +84,10 @@ const sectionLabels: Record<
   personal: 'Acesso',
 };
 
+const hiddenSectionLabels: readonly NavigationSection[] = [
+  'global',
+];
+
 const baseNavigationItems: readonly SidebarNavigationItem[] = [
   {
     id: 'platform',
@@ -543,9 +547,11 @@ export default function Sidebar({
                 key={section}
                 className="mb-5 last:mb-0"
               >
-                <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-                  {sectionLabels[section]}
-                </p>
+                {hiddenSectionLabels.includes(section) ? null : (
+                  <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+                    {sectionLabels[section]}
+                  </p>
+                )}
 
                 <div className="space-y-1">
                   {items.map((item) => {
