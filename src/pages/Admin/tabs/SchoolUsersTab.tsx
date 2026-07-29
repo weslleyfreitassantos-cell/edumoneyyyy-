@@ -472,7 +472,6 @@ export default function SchoolUsersTab() {
               type="button"
               disabled={!canOpenNewUserForm}
               title={newUserTitle}
-              aria-describedby="new-user-disabled-help"
               onClick={focusUnifiedInviteForm}
               className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
                 canOpenNewUserForm
@@ -486,13 +485,6 @@ export default function SchoolUsersTab() {
               />
               Novo usuário
             </button>
-
-            <p
-              id="new-user-disabled-help"
-              className="mt-2 text-xs leading-relaxed text-[#727785]"
-            >
-              Use o cadastro unificado abaixo para convidar diretores, secretaria, professores, alunos e responsaveis.
-            </p>
           </div>
         </div>
       </section>
