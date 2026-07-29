@@ -127,7 +127,7 @@ export function getRouteVisualContext(
 
   if (normalizedPath.startsWith('/platform')) {
     return {
-      section: 'Plataforma',
+      section: '',
       title: 'Instituições',
     };
   }
@@ -149,7 +149,7 @@ export function getRouteVisualContext(
   if (normalizedPath.startsWith('/dashboard')) {
     if (role === 'super_admin') {
       return {
-        section: 'Plataforma',
+        section: '',
         title: 'Instituições',
       };
     }

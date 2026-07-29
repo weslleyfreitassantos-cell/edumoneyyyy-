@@ -193,7 +193,7 @@ describe('getRouteVisualContext', () => {
     expect(
       getRouteVisualContext('/platform', 'super_admin'),
     ).toEqual({
-      section: 'Plataforma',
+      section: '',
       title: 'Instituições',
     });
     expect(
