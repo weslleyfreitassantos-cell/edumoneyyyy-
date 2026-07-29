@@ -1312,7 +1312,7 @@ export default function PlatformPage() {
           </div>
 
           <div className="border-b border-[#c5c5d3]/60 bg-white px-5 py-4">
-            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_auto] lg:items-end">
+            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_150px_auto] lg:items-end">
               <Field
                 id="platform-account-search"
                 label="Buscar conta ou instituição"
