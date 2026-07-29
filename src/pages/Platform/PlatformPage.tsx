@@ -207,14 +207,6 @@ function getInitials(name: string): string {
     .join('');
 }
 
-function getActiveAccountInstitutions(
-  account: AccountSummaryRow,
-): AccountInstitutionSummary[] {
-  return account.institutions.filter(
-    (institution) => institution.active !== false,
-  );
-}
-
 function normalizeInstitutionSearch(value: string): string {
   return value
     .trim()
@@ -508,9 +500,7 @@ export default function PlatformPage() {
   const institutionAccessOptions = useMemo(
     () =>
       institutionAccessDialog
-        ? getActiveAccountInstitutions(
-            institutionAccessDialog.account,
-          )
+        ? institutionAccessDialog.account.institutions
         : [],
     [institutionAccessDialog],
   );
@@ -548,10 +538,12 @@ export default function PlatformPage() {
       : 'escolas encontradas');
   const canAccessSelectedInstitution = Boolean(
     institutionAccessDialog?.selectedInstitutionId &&
+      institutionAccessDialog.account.status === 'ACTIVE' &&
       institutionAccessOptions.some(
         (institution) =>
           institution.id ===
-          institutionAccessDialog.selectedInstitutionId,
+            institutionAccessDialog.selectedInstitutionId &&
+          institution.active !== false,
       ),
   );
 
@@ -648,6 +640,7 @@ export default function PlatformPage() {
     }
 
     setFeedback(null);
+    setInstitutionAccessDialog(null);
     setCloseDialog({
       account,
       confirmation: '',
@@ -660,6 +653,7 @@ export default function PlatformPage() {
     account: AccountSummaryRow,
   ): void {
     setFeedback(null);
+    setInstitutionAccessDialog(null);
     setPermanentDeleteDialog({
       account,
       confirmation: '',
@@ -712,50 +706,7 @@ export default function PlatformPage() {
   async function openInstitutionAccessDialog(
     account: AccountSummaryRow,
   ): Promise<void> {
-    if (account.status === 'SUSPENDED') {
-      setFeedback({
-        type: 'error',
-        message:
-          'Esta conta esta suspensa. Reative a conta antes de acessar suas escolas.',
-      });
-      return;
-    }
-
-    if (account.status === 'CANCELED') {
-      setFeedback({
-        type: 'error',
-        message:
-          'Esta conta foi encerrada. O acesso operacional as escolas esta bloqueado e o historico permanece preservado.',
-      });
-      return;
-    }
-
-    const activeInstitutions =
-      getActiveAccountInstitutions(account);
-
     setFeedback(null);
-
-    if (activeInstitutions.length === 0) {
-      setFeedback({
-        type: 'error',
-        message:
-          'Esta conta não possui escolas ativas para acessar.',
-      });
-      return;
-    }
-
-    if (activeInstitutions.length === 1) {
-      await accessInstitutionById(
-        activeInstitutions[0].id,
-        (message) =>
-          setFeedback({
-            type: 'error',
-            message,
-          }),
-      );
-      return;
-    }
-
     setInstitutionAccessDialog({
       account,
       selectedInstitutionId: '',
@@ -1430,10 +1381,7 @@ export default function PlatformPage() {
                       Limite
                     </th>
                     <th className="px-3 py-3 font-semibold">
-                      Instituições
-                    </th>
-                    <th className="px-3 py-3 text-right font-semibold">
-                      Ações
+                      Gerenciar
                     </th>
                   </tr>
                 </thead>
@@ -1479,37 +1427,14 @@ export default function PlatformPage() {
                           </div>
                         </td>
                         <td className="min-w-0 px-3 py-4 text-[#444651] dark:text-[#cbd5e1]">
-                          {account.owner &&
-                          account.status === 'ACTIVE' ? (
-                            <button
-                              type="button"
-                              onClick={() =>
-                                void openInstitutionAccessDialog(
-                                  account,
-                                )
-                              }
-                              className="-m-1 max-w-full rounded-md p-1 text-left outline-none transition-colors hover:text-[#005bbf] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:hover:text-[#93c5fd]"
-                              aria-label={`Acessar escolas de ${account.owner.full_name}`}
-                            >
-                              <span className="block truncate font-medium text-[#191c1d] transition-colors hover:text-[#005bbf] dark:text-[#f8fafc] dark:hover:text-[#93c5fd]">
-                                {account.owner.full_name}
-                              </span>
-                              <span className="block truncate text-xs">
-                                {account.owner.email}
-                              </span>
-                            </button>
-                          ) : (
-                            <>
-                              <p className="font-medium text-[#191c1d] dark:text-[#f8fafc]">
-                                {account.owner
-                                  ? account.owner.full_name
-                                  : 'Sem owner'}
-                              </p>
-                              <p className="text-xs">
-                                {account.owner?.email ?? ''}
-                              </p>
-                            </>
-                          )}
+                          <p className="font-medium text-[#191c1d] dark:text-[#f8fafc]">
+                            {account.owner
+                              ? account.owner.full_name
+                              : 'Sem owner'}
+                          </p>
+                          <p className="text-xs">
+                            {account.owner?.email ?? ''}
+                          </p>
                         </td>
                         <td className="px-3 py-4 text-center">
                           <StatusBadge status={account.status} />
@@ -1576,196 +1501,24 @@ export default function PlatformPage() {
                             </button>
                           </div>
                         </td>
-                        <td className="px-3 py-4 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
-                          {account.institutions.length === 0 ? (
-                            <span>Nenhuma instituição cadastrada.</span>
-                          ) : (
-                            <div className="space-y-2">
-                              {account.institutions.map(
-                                (institution) => {
-                                  const isActiveInstitution =
-                                    institution.active !== false;
-
-                                  return (
-                                    <div
-                                      key={institution.id}
-                                      className="flex items-center justify-between gap-2 rounded-lg border border-[#d8deea] bg-white px-2.5 py-2 dark:border-[#334155] dark:bg-[#0f172a]"
-                                    >
-                                      <div className="min-w-0">
-                                        <p className="truncate font-medium text-[#191c1d] dark:text-[#f8fafc]">
-                                          {institution.name}
-                                        </p>
-                                        <p
-                                          className={`text-xs font-semibold ${
-                                            isActiveInstitution
-                                              ? 'text-[#005236] dark:text-[#6ffbbe]'
-                                              : 'text-[#7a4d00] dark:text-[#ffb95f]'
-                                          }`}
-                                        >
-                                          {isActiveInstitution
-                                            ? 'Ativa'
-                                            : 'Suspensa'}
-                                        </p>
-                                      </div>
-
-                                      {account.status ===
-                                        'ACTIVE' && (
-                                        <IconActionButton
-                                          label={`${
-                                            isActiveInstitution
-                                              ? 'Suspender'
-                                              : 'Reativar'
-                                          } ${institution.name}`}
-                                          onClick={() =>
-                                            void changeInstitutionStatus(
-                                              institution,
-                                              !isActiveInstitution,
-                                            )
-                                          }
-                                          disabled={
-                                            updateInstitutionStatusMutation.isPending
-                                          }
-                                          className={`${
-                                            isActiveInstitution
-                                              ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
-                                              : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
-                                          }`}
-                                        >
-                                          {isActiveInstitution ? (
-                                            <PauseCircle
-                                              className="h-4 w-4"
-                                              aria-hidden="true"
-                                            />
-                                          ) : (
-                                            <RotateCcw
-                                              className="h-4 w-4"
-                                              aria-hidden="true"
-                                            />
-                                          )}
-                                        </IconActionButton>
-                                      )}
-                                    </div>
-                                  );
-                                },
-                              )}
-                            </div>
-                          )}
-                        </td>
                         <td className="px-3 py-4">
-                          <div className="flex flex-wrap items-center justify-end gap-2">
-                            {account.status === 'ACTIVE' ? (
-                              <IconActionButton
-                                label={`Suspender ${account.name}`}
-                                onClick={() =>
-                                  void updateStatus(
-                                    account.id,
-                                    'SUSPENDED',
-                                  )
-                                }
-                                disabled={updateAccount.isPending}
-                                className="border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60"
-                              >
-                                <PauseCircle
-                                  className="h-4 w-4"
-                                  aria-hidden="true"
-                                />
-                              </IconActionButton>
-                            ) : account.status ===
-                              'SUSPENDED' ? (
-                              <IconActionButton
-                                label={`Reativar ${account.name}`}
-                                onClick={() =>
-                                  void updateStatus(
-                                    account.id,
-                                    'ACTIVE',
-                                  )
-                                }
-                                disabled={updateAccount.isPending}
-                                className="border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60"
-                              >
-                                <CheckCircle2
-                                  className="h-4 w-4"
-                                  aria-hidden="true"
-                                />
-                              </IconActionButton>
-                            ) : null}
-                            <IconActionButton
-                              label={`Ver histórico de ${account.name}`}
-                              onClick={() =>
-                                setStatusHistoryDialog({
-                                  account,
-                                })
-                              }
-                              className="border-[#c5c5d3] text-[#444651] hover:bg-[#f3f4f5] focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
-                            >
-                              <History
-                                className="h-4 w-4"
-                                aria-hidden="true"
-                              />
-                            </IconActionButton>
-                            {account.status !== 'CANCELED' &&
-                              canCloseAccounts &&
-                              account.owner?.email && (
-                                <IconActionButton
-                                  label={`Excluir conta ${account.name}`}
-                                  onClick={() =>
-                                    openCloseDialog(account)
-                                  }
-                                  disabled={
-                                    closeAccount.isPending
-                                  }
-                                  className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
-                                >
-                                  <X
-                                    className="h-4 w-4"
-                                    aria-hidden="true"
-                                  />
-                                </IconActionButton>
-                              )}
-                            {account.status === 'CANCELED' &&
-                              canCloseAccounts && (
-                                <>
-                                  <IconActionButton
-                                    label={`Restaurar ${account.name}`}
-                                    onClick={() =>
-                                      setRestoreDialogAccount(
-                                        account,
-                                      )
-                                    }
-                                    className="border-emerald-300 text-emerald-700 hover:bg-emerald-50 focus:ring-emerald-300/50 active:bg-emerald-100 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-950 dark:active:bg-emerald-900"
-                                  >
-                                    <RotateCcw
-                                      className="h-4 w-4"
-                                      aria-hidden="true"
-                                    />
-                                  </IconActionButton>
-                                  <IconActionButton
-                                    label={`Excluir permanentemente ${account.name}`}
-                                    onClick={() =>
-                                      setPermanentDeleteDialog(
-                                        {
-                                          account,
-                                          confirmation:
-                                            '',
-                                          typedConfirmationLiteral:
-                                            '',
-                                          understands:
-                                            false,
-                                          reason: '',
-                                          error: null,
-                                        },
-                                      )
-                                    }
-                                    className="border-red-300 text-red-700 hover:bg-red-50 focus:ring-red-300/50 active:bg-red-100 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:active:bg-red-900"
-                                  >
-                                    <Trash2
-                                      className="h-4 w-4"
-                                      aria-hidden="true"
-                                    />
-                                  </IconActionButton>
-                                </>
-                              )}
-                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              void openInstitutionAccessDialog(
+                                account,
+                              )
+                            }
+                            disabled={!account.owner}
+                            className="inline-flex h-9 items-center justify-center gap-2 rounded-lg border border-[#c5c5d3] bg-white px-3 text-xs font-semibold text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:bg-[#182235] dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                            aria-label={`Gerenciar escolas e ações de ${account.name}`}
+                          >
+                            <Building2
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                            Gerenciar
+                          </button>
                         </td>
                       </tr>
                     );
@@ -1795,7 +1548,7 @@ export default function PlatformPage() {
                       id="institution-access-title"
                       className="text-xl font-semibold leading-7 text-[#191c1d] dark:text-[#f8fafc]"
                     >
-                      Acessar escola da conta
+                      Escolas e ações
                     </h2>
                     <p className="mt-1 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
                       {institutionAccessDialog.account.name}
@@ -1884,7 +1637,7 @@ export default function PlatformPage() {
                     role="status"
                     className="mt-4 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651] dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]"
                   >
-                    Nenhuma escola ativa nesta conta.
+                    Nenhuma escola cadastrada nesta conta.
                   </div>
                 ) : (
                   <div className="mt-3">
@@ -1918,41 +1671,96 @@ export default function PlatformPage() {
                               institution.id;
 
                             return (
-                              <button
+                              <div
                                 key={institution.id}
-                                type="button"
-                                role="option"
-                                aria-selected={isSelected}
-                                onClick={() =>
-                                  selectInstitutionAccessOption(
-                                    institution.id,
-                                  )
-                                }
-                                disabled={
-                                  isAccessingInstitution
-                                }
-                                className={`flex min-h-11 w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-60 ${
-                                  isSelected
-                                    ? 'bg-[#e8f0ff] text-[#061f6f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]'
-                                    : 'text-[#191c1d] hover:bg-[#f3f4f5] dark:text-[#e2e8f0] dark:hover:bg-[#243247]'
-                                }`}
+                                className="flex items-center gap-2 rounded-md p-1"
                               >
-                                <span
-                                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                                <button
+                                  type="button"
+                                  role="option"
+                                  aria-selected={isSelected}
+                                  onClick={() =>
+                                    selectInstitutionAccessOption(
+                                      institution.id,
+                                    )
+                                  }
+                                  disabled={
+                                    isAccessingInstitution ||
+                                    institution.active === false
+                                  }
+                                  className={`flex min-h-11 min-w-0 flex-1 items-center gap-3 rounded-md px-3 py-2 text-left text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-70 ${
                                     isSelected
-                                      ? 'border-[#005bbf] bg-[#005bbf] text-white dark:border-[#93c5fd] dark:bg-[#93c5fd] dark:text-[#0f172a]'
-                                      : 'border-[#9aa4b2] bg-white dark:border-[#64748b] dark:bg-[#111827]'
+                                      ? 'bg-[#e8f0ff] text-[#061f6f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]'
+                                      : 'text-[#191c1d] hover:bg-[#f3f4f5] dark:text-[#e2e8f0] dark:hover:bg-[#243247]'
                                   }`}
-                                  aria-hidden="true"
                                 >
-                                  {isSelected && (
-                                    <CheckCircle2 className="h-3.5 w-3.5" />
-                                  )}
-                                </span>
-                                <span className="min-w-0 truncate font-semibold">
-                                  {institution.name}
-                                </span>
-                              </button>
+                                  <span
+                                    className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                                      isSelected
+                                        ? 'border-[#005bbf] bg-[#005bbf] text-white dark:border-[#93c5fd] dark:bg-[#93c5fd] dark:text-[#0f172a]'
+                                        : 'border-[#9aa4b2] bg-white dark:border-[#64748b] dark:bg-[#111827]'
+                                    }`}
+                                    aria-hidden="true"
+                                  >
+                                    {isSelected && (
+                                      <CheckCircle2 className="h-3.5 w-3.5" />
+                                    )}
+                                  </span>
+                                  <span className="min-w-0">
+                                    <span className="block truncate font-semibold">
+                                      {institution.name}
+                                    </span>
+                                    <span
+                                      className={`block text-xs font-semibold ${
+                                        institution.active ===
+                                        false
+                                          ? 'text-[#7a4d00] dark:text-[#ffb95f]'
+                                          : 'text-[#005236] dark:text-[#6ffbbe]'
+                                      }`}
+                                    >
+                                      {institution.active ===
+                                      false
+                                        ? 'Suspensa'
+                                        : 'Ativa'}
+                                    </span>
+                                  </span>
+                                </button>
+
+                                {institutionAccessDialog.account
+                                  .status === 'ACTIVE' && (
+                                  <IconActionButton
+                                    label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institution.name}`}
+                                    onClick={() =>
+                                      void changeInstitutionStatus(
+                                        institution,
+                                        institution.active ===
+                                          false,
+                                      )
+                                    }
+                                    disabled={
+                                      updateInstitutionStatusMutation.isPending
+                                    }
+                                    className={
+                                      institution.active ===
+                                      false
+                                        ? 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
+                                        : 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
+                                    }
+                                  >
+                                    {institution.active === false ? (
+                                      <CheckCircle2
+                                        className="h-4 w-4"
+                                        aria-hidden="true"
+                                      />
+                                    ) : (
+                                      <PauseCircle
+                                        className="h-4 w-4"
+                                        aria-hidden="true"
+                                      />
+                                    )}
+                                  </IconActionButton>
+                                )}
+                              </div>
                             );
                           },
                         )}
@@ -1973,6 +1781,125 @@ export default function PlatformPage() {
                     {institutionAccessDialog.error}
                   </div>
                 )}
+
+                <div className="mt-4 rounded-lg border border-[#c5c5d3]/70 p-4 dark:border-[#334155]">
+                  <h3 className="text-sm font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                    Opções de ação
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {institutionAccessDialog.account.status ===
+                    'ACTIVE' ? (
+                      <IconActionButton
+                        label={`Suspender ${institutionAccessDialog.account.name}`}
+                        onClick={() =>
+                          void updateStatus(
+                            institutionAccessDialog.account.id,
+                            'SUSPENDED',
+                          )
+                        }
+                        disabled={updateAccount.isPending}
+                        className="border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60"
+                      >
+                        <PauseCircle
+                          className="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                      </IconActionButton>
+                    ) : institutionAccessDialog.account.status ===
+                      'SUSPENDED' ? (
+                      <IconActionButton
+                        label={`Reativar ${institutionAccessDialog.account.name}`}
+                        onClick={() =>
+                          void updateStatus(
+                            institutionAccessDialog.account.id,
+                            'ACTIVE',
+                          )
+                        }
+                        disabled={updateAccount.isPending}
+                        className="border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60"
+                      >
+                        <CheckCircle2
+                          className="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                      </IconActionButton>
+                    ) : null}
+
+                    <IconActionButton
+                      label={`Ver histórico de ${institutionAccessDialog.account.name}`}
+                      onClick={() => {
+                        setInstitutionAccessDialog(null);
+                        setStatusHistoryDialog({
+                          account: institutionAccessDialog.account,
+                        });
+                      }}
+                      className="border-[#c5c5d3] text-[#444651] hover:bg-[#f3f4f5] focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
+                    >
+                      <History
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    </IconActionButton>
+
+                    {institutionAccessDialog.account.status !==
+                      'CANCELED' &&
+                      canCloseAccounts &&
+                      institutionAccessDialog.account.owner
+                        ?.email && (
+                        <IconActionButton
+                          label={`Excluir conta ${institutionAccessDialog.account.name}`}
+                          onClick={() =>
+                            openCloseDialog(
+                              institutionAccessDialog.account,
+                            )
+                          }
+                          disabled={closeAccount.isPending}
+                          className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
+                        >
+                          <X
+                            className="h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </IconActionButton>
+                      )}
+
+                    {institutionAccessDialog.account.status ===
+                      'CANCELED' &&
+                      canCloseAccounts && (
+                        <>
+                          <IconActionButton
+                            label={`Restaurar ${institutionAccessDialog.account.name}`}
+                            onClick={() => {
+                              setInstitutionAccessDialog(null);
+                              setRestoreDialogAccount(
+                                institutionAccessDialog.account,
+                              );
+                            }}
+                            className="border-emerald-300 text-emerald-700 hover:bg-emerald-50 focus:ring-emerald-300/50 active:bg-emerald-100 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-950 dark:active:bg-emerald-900"
+                          >
+                            <RotateCcw
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                          </IconActionButton>
+                          <IconActionButton
+                            label={`Excluir permanentemente ${institutionAccessDialog.account.name}`}
+                            onClick={() =>
+                              openPermanentDeleteDialog(
+                                institutionAccessDialog.account,
+                              )
+                            }
+                            className="border-red-300 text-red-700 hover:bg-red-50 focus:ring-red-300/50 active:bg-red-100 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:active:bg-red-900"
+                          >
+                            <Trash2
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                          </IconActionButton>
+                        </>
+                      )}
+                  </div>
+                </div>
 
                 <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                   <button

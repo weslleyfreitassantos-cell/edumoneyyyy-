@@ -211,18 +211,24 @@ function renderPage() {
   return render(<PlatformPage />);
 }
 
-function openInstitutionAccessDialog() {
-  renderPage();
-
+function openAccountManagementDialog(accountName = 'Conta Alfa') {
   fireEvent.click(
     screen.getByRole('button', {
-      name: /Acessar escolas de Ana Admin/i,
+      name: new RegExp(
+        `Gerenciar escolas e ações de ${accountName}`,
+        'i',
+      ),
     }),
   );
 
   return screen.getByRole('dialog', {
-    name: /Acessar escola da conta/i,
+    name: /Escolas e ações/i,
   });
+}
+
+function openInstitutionAccessDialog() {
+  renderPage();
+  return openAccountManagementDialog();
 }
 
 describe('PlatformPage', () => {
@@ -398,25 +404,30 @@ describe('PlatformPage', () => {
       screen.getAllByText('Conta Alfa').length,
     ).toBeGreaterThan(0);
     expect(screen.getByText('Ana Admin')).toBeDefined();
-    expect(
-      screen.getByText('Escola Alpha'),
-    ).toBeDefined();
-    expect(screen.getByText('Escola Luz')).toBeDefined();
-    expect(screen.getByText('Escola Pausada')).toBeDefined();
     expect(screen.getAllByText('Ativa').length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText('Suspensa').length,
-    ).toBeGreaterThan(0);
+      screen.queryByRole('columnheader', {
+        name: /^Instituições$/i,
+      }),
+    ).toBeNull();
     expect(
-      screen.getByRole('button', {
-        name: /Suspender Escola Alpha/i,
+      screen.queryByRole('columnheader', {
+        name: /^Ações$/i,
+      }),
+    ).toBeNull();
+    expect(
+      screen.getByRole('columnheader', {
+        name: /^Gerenciar$/i,
       }),
     ).toBeDefined();
     expect(
       screen.getByRole('button', {
-        name: /Reativar Escola Pausada/i,
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
       }),
     ).toBeDefined();
+    expect(screen.queryByText('Escola Alpha')).toBeNull();
+    expect(screen.queryByText('Escola Luz')).toBeNull();
+    expect(screen.queryByText('Escola Pausada')).toBeNull();
   });
 
   it('exibe busca, quantidade e somente escolas da conta do ADMIN', () => {
@@ -433,11 +444,11 @@ describe('PlatformPage', () => {
       ),
     ).toBeDefined();
     expect(
-      within(dialog).getByText('2 escolas encontradas'),
+      within(dialog).getByText('3 escolas encontradas'),
     ).toBeDefined();
     expect(within(dialog).getByText('Escola Alpha')).toBeDefined();
     expect(within(dialog).getByText('Escola Luz')).toBeDefined();
-    expect(within(dialog).queryByText('Escola Pausada')).toBeNull();
+    expect(within(dialog).getByText('Escola Pausada')).toBeDefined();
     expect(within(dialog).queryByText('Escola Beta')).toBeNull();
   });
 
@@ -488,7 +499,7 @@ describe('PlatformPage', () => {
       ) as HTMLInputElement).value,
     ).toBe('');
     expect(
-      within(dialog).getByText('2 escolas encontradas'),
+      within(dialog).getByText('3 escolas encontradas'),
     ).toBeDefined();
   });
 
@@ -568,34 +579,45 @@ describe('PlatformPage', () => {
     expect(
       within(suspendedRow!).getByText('Suspensa'),
     ).toBeDefined();
-    expect(
-      within(suspendedRow!).queryByRole('button', {
-        name: /Acessar escolas de Bia Admin/i,
-      }),
-    ).toBeNull();
-    expect(
+    fireEvent.click(
       within(suspendedRow!).getByRole('button', {
+        name: /Gerenciar escolas e ações de Conta Beta/i,
+      }),
+    );
+
+    const dialog = screen.getByRole('dialog', {
+      name: /Escolas e ações/i,
+    });
+    const accessButton = within(dialog).getByRole('button', {
+      name: /^Acessar escola$/i,
+    }) as HTMLButtonElement;
+
+    fireEvent.click(
+      within(dialog).getByRole('option', {
+        name: /Escola Beta/i,
+      }),
+    );
+
+    expect(accessButton.disabled).toBe(true);
+    expect(
+      within(dialog).getByRole('button', {
         name: /Reativar Conta Beta/i,
       }),
     ).toBeDefined();
   });
 
-  it('mostra mensagem quando a conta nao possui escolas ativas', async () => {
+  it('mostra mensagem quando a conta nao possui escolas cadastradas', () => {
     renderPage();
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Acessar escolas de Caio Admin/i,
+        name: /Gerenciar escolas e ações de Conta Gama/i,
       }),
     );
 
     expect(
-      (
-        await screen.findByRole('alert')
-      ).textContent,
-    ).toMatch(
-      /Esta conta n.o possui escolas ativas para acessar/i,
-    );
+      screen.getByRole('status').textContent,
+    ).toMatch(/Nenhuma escola cadastrada nesta conta/i);
     expect(
       hookMock.setCurrentInstitutionId,
     ).not.toHaveBeenCalled();
@@ -816,6 +838,11 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       within(alfaRow).getByRole('button', {
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
         name: /Suspender Conta Alfa/i,
       }),
     );
@@ -852,6 +879,12 @@ describe('PlatformPage', () => {
 
   it('suspende e reativa instituicao preservando historico', async () => {
     renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('button', {
@@ -925,13 +958,16 @@ describe('PlatformPage', () => {
         name: /Acessar escolas/i,
       }),
     ).toBeNull();
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
     expect(
-      screen.getByRole('button', {
+      within(dialog).getByRole('button', {
         name: /Restaurar/i,
       }),
     ).toBeDefined();
     expect(
-      screen.getByRole('button', {
+      within(dialog).getByRole('button', {
         name: /Excluir permanentemente/i,
       }),
     ).toBeDefined();
@@ -972,7 +1008,12 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       within(alfaRow).getByRole('button', {
-        name: /Ver histórico/i,
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Ver histórico de Conta Alfa/i,
       }),
     );
 
@@ -989,6 +1030,7 @@ describe('PlatformPage', () => {
   it('exige motivo e confirmacao por e-mail para excluir conta', async () => {
     renderPage();
 
+    openAccountManagementDialog();
     fireEvent.click(
       screen.getByRole('button', {
         name: /Excluir conta Conta Alfa/i,
@@ -1058,6 +1100,7 @@ describe('PlatformPage', () => {
 
     renderPage();
 
+    openAccountManagementDialog();
     fireEvent.click(
       screen.getByRole('button', {
         name: /Excluir conta Conta Alfa/i,
@@ -1102,6 +1145,7 @@ describe('PlatformPage', () => {
   it('exclui conta sem instituicoes sem limpar selecao de outra conta', async () => {
     renderPage();
 
+    openAccountManagementDialog('Conta Gama');
     fireEvent.click(
       screen.getByRole('button', {
         name: /Excluir conta Conta Gama/i,
@@ -1272,15 +1316,19 @@ describe('PlatformPage', () => {
     ).toBeDefined();
   });
 
-  it('conta excluida mantem botao Ver historico e exibe acoes pendentes', () => {
+  it('conta excluida mantem botao Ver historico e exibe acoes pendentes no modal', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'DELETED' },
     });
 
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
+
     expect(
-      screen.getByRole('button', {
+      within(dialog).getByRole('button', {
         name: /Ver histórico de Conta Encerrada/i,
       }),
     ).toBeDefined();
@@ -1288,12 +1336,12 @@ describe('PlatformPage', () => {
       screen.getAllByText('Excluída').length,
     ).toBeGreaterThanOrEqual(1);
     expect(
-      screen.getByRole('button', {
+      within(dialog).getByRole('button', {
         name: /Restaurar Conta Encerrada/i,
       }),
     ).toBeDefined();
     expect(
-      screen.getByRole('button', {
+      within(dialog).getByRole('button', {
         name: /Excluir permanentemente Conta Encerrada/i,
       }),
     ).toBeDefined();
@@ -1306,7 +1354,10 @@ describe('PlatformPage', () => {
       target: { value: 'DELETED' },
     });
 
-    const restoreButton = screen.getByRole('button', {
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
+    const restoreButton = within(dialog).getByRole('button', {
       name: /Restaurar/i,
     });
     expect(restoreButton).toBeDefined();
@@ -1322,7 +1373,10 @@ describe('PlatformPage', () => {
       target: { value: 'DELETED' },
     });
 
-    const deleteButton = screen.getByRole('button', {
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
+    const deleteButton = within(dialog).getByRole('button', {
       name: /Excluir permanentemente/i,
     });
     expect(deleteButton).toBeDefined();
