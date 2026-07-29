@@ -226,9 +226,11 @@ export default function Header({
               {pageSection}
             </p>
           ) : null}
-          <h1 className="truncate text-lg font-extrabold leading-tight text-[#181c20] sm:text-xl">
-            {pageTitle}
-          </h1>
+          {pageTitle ? (
+            <h1 className="truncate text-lg font-extrabold leading-tight text-[#181c20] sm:text-xl">
+              {pageTitle}
+            </h1>
+          ) : null}
         </div>
 
         {showStaticInstitution ? (
