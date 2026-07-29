@@ -130,7 +130,6 @@ function renderHeader(
     currentUser,
     pageTitle: 'Gestao institucional',
     pageSection: 'Administracao',
-    showInstitutionSwitcher: true,
     isSidebarHidden: false,
     isMobileSidebarOpen: false,
     isLoggingOut: false,
@@ -183,7 +182,7 @@ describe('Header', () => {
     expect(onToggleTheme).toHaveBeenCalledTimes(1);
   });
 
-  it('mostra titulo, usuario, papel e seletor de instituicao', () => {
+  it('mostra titulo, usuario e papel sem seletor de instituicao', () => {
     renderHeader();
 
     expect(
@@ -199,93 +198,21 @@ describe('Header', () => {
       screen.getByText('Administrador'),
     ).toBeTruthy();
     expect(
-      screen.getAllByLabelText(
+      screen.queryByLabelText(
         /selecionar escola atual/i,
-      ).length,
-    ).toBe(2);
+      ),
+    ).toBeNull();
   });
 
-  it('mantem ids unicos para as instancias desktop e mobile do seletor', () => {
-    const { container } = renderHeader();
-    const ids = Array.from(
-      container.querySelectorAll('[id]'),
-    ).map((element) => element.id);
-    const selectElements =
-      screen.getAllByLabelText(
-        /selecionar escola atual/i,
-      ) as HTMLSelectElement[];
-    const selectIds = selectElements.map(
-      (select) => select.id,
-    );
-
-    expect(new Set(ids).size).toBe(ids.length);
-    expect(new Set(selectIds).size).toBe(2);
-
-    const labels = Array.from(
-      container.querySelectorAll('label'),
-    );
-
-    labels.forEach((label) => {
-      const controlId =
-        label.getAttribute('for');
-
-      expect(controlId).toBeTruthy();
-      expect(
-        controlId
-          ? document.getElementById(controlId)
-          : null,
-      ).toBeTruthy();
-    });
-  });
-
-  it('troca instituicao pelas instancias desktop e mobile usando o mesmo contexto', () => {
+  it('nao mostra escola estatica ou dropdown no topo', () => {
     renderHeader();
 
-    const selectElements =
-      screen.getAllByLabelText(
-        /selecionar escola atual/i,
-      );
-
-    fireEvent.change(selectElements[0], {
-      target: {
-        value: 'institution-2',
-      },
-    });
-    fireEvent.change(selectElements[1], {
-      target: {
-        value: 'institution-2',
-      },
-    });
-
     expect(
-      setCurrentInstitutionId,
-    ).toHaveBeenCalledTimes(2);
+      screen.queryByText('Escola do Saber'),
+    ).toBeNull();
     expect(
-      setCurrentInstitutionId,
-    ).toHaveBeenNthCalledWith(
-      1,
-      'institution-2',
-    );
-    expect(
-      setCurrentInstitutionId,
-    ).toHaveBeenNthCalledWith(
-      2,
-      'institution-2',
-    );
-  });
-
-  it('mostra escola estatica sem dropdown quando solicitado', () => {
-    renderHeader({
-      showInstitutionSwitcher: false,
-      staticInstitutionName: 'Escola do Saber',
-    });
-
-    expect(
-      screen.getAllByText('Escola do Saber').length,
-    ).toBe(2);
-    expect(
-      screen.getAllByText('Escola selecionada').length,
-    ).toBe(2);
+      screen.queryByText('Escola selecionada'),
+    ).toBeNull();
     expect(
       screen.queryByLabelText(
         /selecionar escola atual/i,

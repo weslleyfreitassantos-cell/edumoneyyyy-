@@ -387,11 +387,11 @@ export default function Sidebar({
 
     return (
       <div className="mb-5 last:mb-0">
-        <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-          {isSuperAdmin
-            ? 'Escola selecionada'
-            : sectionLabels.school}
-        </p>
+        {!isSuperAdmin && (
+          <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+            {sectionLabels.school}
+          </p>
+        )}
 
         <div className="space-y-3">
           {!isSuperAdmin && (

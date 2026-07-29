@@ -27,6 +27,22 @@ import {
 } from '../../hooks/useAccounts';
 import AccountPage from './AccountPage';
 
+const routerMock = vi.hoisted(() => ({
+  navigate: vi.fn(),
+}));
+
+vi.mock('react-router-dom', async () => {
+  const actual =
+    await vi.importActual<typeof import('react-router-dom')>(
+      'react-router-dom',
+    );
+
+  return {
+    ...actual,
+    useNavigate: () => routerMock.navigate,
+  };
+});
+
 vi.mock('../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
 }));
@@ -81,6 +97,7 @@ function renderPage() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  routerMock.navigate.mockReset();
 
   mockedUseAuth.mockReturnValue({
     user: null,
@@ -243,7 +260,10 @@ describe('AccountPage', () => {
     expect(screen.getAllByText('Ativa')).toHaveLength(2);
     expect(screen.getByText('Slots restantes')).toBeTruthy();
     expect(
-      screen.getByRole('link', { name: 'Entrar' }),
+      screen.queryByRole('button', { name: 'Selecionar' }),
+    ).toBeNull();
+    expect(
+      screen.getByRole('button', { name: 'Entrar' }),
     ).toBeTruthy();
     expect(
       screen.getByRole('heading', {
@@ -251,6 +271,54 @@ describe('AccountPage', () => {
       }),
     ).toBeTruthy();
     expect(screen.getByText('sol.example.com')).toBeTruthy();
+  });
+
+  it('entrar seleciona a instituicao e navega para o admin', async () => {
+    mockedUseOwnedAccount.mockReturnValueOnce({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Entrar' }),
+    );
+
+    await waitFor(() => {
+      expect(setCurrentInstitutionId).toHaveBeenCalledWith(
+        'institution-1',
+      );
+      expect(routerMock.navigate).toHaveBeenCalledWith(
+        '/admin',
+      );
+    });
   });
 
   it('seleciona a instituicao criada usando o id retornado antes de mostrar sucesso', async () => {

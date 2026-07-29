@@ -134,8 +134,8 @@ export function getRouteVisualContext(
 
   if (normalizedPath.startsWith('/account')) {
     return {
-      section: 'Conta',
-      title: 'Instituições da conta',
+      section: '',
+      title: '',
     };
   }
 
@@ -156,8 +156,8 @@ export function getRouteVisualContext(
 
     if (role === 'admin') {
       return {
-        section: 'Conta',
-        title: 'Instituições da conta',
+        section: '',
+        title: '',
       };
     }
 
@@ -449,27 +449,6 @@ export default function AppShell({
     currentRole,
   );
 
-  const hasAccessibleInstitutions =
-    institutionContext.institutions.length > 0;
-  const isSuperAdmin =
-    profile.platform_role === 'SUPER_ADMIN';
-  const isPlatformRoute =
-    location.pathname.startsWith('/platform');
-  const isAdminRoute =
-    location.pathname.startsWith('/admin');
-  const showStaticInstitution =
-    isSuperAdmin &&
-    isAdminRoute &&
-    Boolean(institutionContext.currentInstitution);
-
-  const showInstitutionSwitcher =
-    !showStaticInstitution &&
-    (isSuperAdmin
-      ? !isPlatformRoute &&
-        !isAdminRoute &&
-        hasAccessibleInstitutions
-      : true);
-
   function openMobileSidebar(): void {
     const activeElement =
       document.activeElement;
@@ -549,15 +528,6 @@ export default function AppShell({
           currentUser={currentUser}
           pageTitle={pageContext.title}
           pageSection={pageContext.section}
-          showInstitutionSwitcher={
-            showInstitutionSwitcher
-          }
-          staticInstitutionName={
-            showStaticInstitution
-              ? institutionContext
-                  .currentInstitution?.name
-              : null
-          }
           isSidebarHidden={isSidebarHidden}
           isMobileSidebarOpen={
             isMobileSidebarOpen

@@ -254,8 +254,8 @@ describe('AppShell', () => {
       screen.getByText('Conteudo da rota'),
     ).toBeTruthy();
     expect(
-      screen.getAllByText(/seletor global/i).length,
-    ).toBeGreaterThan(0);
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
   });
 
   it('inicia com Sidebar desktop aberta e oculta completamente pelo Header', () => {
@@ -387,7 +387,7 @@ describe('AppShell', () => {
     ).toBeGreaterThan(0);
   });
 
-  it('mostra escola estatica e volta para Plataforma para SUPER_ADMIN em /admin', () => {
+  it('oculta escola estatica e volta para Plataforma para SUPER_ADMIN em /admin', () => {
     mockContexts({
       profile: {
         ...profile,
@@ -412,11 +412,11 @@ describe('AppShell', () => {
     renderShell('/admin?module=subjects');
 
     expect(
-      screen.getAllByText('Escola do Saber').length,
-    ).toBeGreaterThan(0);
+      screen.queryByText('Escola do Saber'),
+    ).toBeNull();
     expect(
-      screen.getAllByText('Escola selecionada').length,
-    ).toBeGreaterThan(0);
+      screen.queryByText('Escola selecionada'),
+    ).toBeNull();
     expect(
       screen.queryByText(/seletor global/i),
     ).toBeNull();
@@ -430,7 +430,7 @@ describe('AppShell', () => {
     );
   });
 
-  it('mantem seletor para ADMIN institucional', () => {
+  it('oculta seletor para ADMIN institucional', () => {
     mockContexts({
       profile,
       currentRole: 'ADMIN',
@@ -450,11 +450,11 @@ describe('AppShell', () => {
     renderShell('/admin');
 
     expect(
-      screen.getAllByText(/seletor global/i).length,
-    ).toBeGreaterThan(0);
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
   });
 
-  it('mantem seletor para DIRECTOR institucional', () => {
+  it('oculta seletor para DIRECTOR institucional', () => {
     mockContexts({
       profile: {
         ...profile,
@@ -477,8 +477,8 @@ describe('AppShell', () => {
     renderShell('/admin');
 
     expect(
-      screen.getAllByText(/seletor global/i).length,
-    ).toBeGreaterThan(0);
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
   });
 
   it('abre e fecha o drawer mobile pelo botao com foco restaurado', async () => {

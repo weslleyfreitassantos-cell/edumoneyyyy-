@@ -7,7 +7,7 @@ import {
   useState,
   type FormEvent,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { BrandingEditor } from '../../components/branding/BrandingEditor';
 import { AccountDomainSection } from '../../components/branding/DomainManagement';
@@ -76,6 +76,7 @@ function getSelectionFailureMessage(
 export default function AccountPage() {
   const { profile } = useAuth();
   const institutionContext = useInstitution();
+  const navigate = useNavigate();
   const accountQuery = useOwnedAccount(profile?.id);
   const createInstitution = useCreateInstitution(profile?.id);
   const accountId = accountQuery.data?.id;
@@ -167,6 +168,7 @@ export default function AccountPage() {
 
   async function handleSelectInstitution(
     institutionId: string,
+    shouldNavigate = false,
   ): Promise<void> {
     try {
       const selectionResult =
@@ -175,6 +177,11 @@ export default function AccountPage() {
         );
 
       if (selectionResult.success === true) {
+        if (shouldNavigate) {
+          navigate('/admin');
+          return;
+        }
+
         setFeedback({
           type: 'success',
           message: 'Instituicao selecionada.',
@@ -441,18 +448,13 @@ export default function AccountPage() {
                         onClick={() =>
                           void handleSelectInstitution(
                             institution.id,
+                            true,
                           )
                         }
-                        className="rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-semibold text-[#414754] hover:bg-gray-50"
-                      >
-                        Selecionar
-                      </button>
-                      <Link
-                        to="/admin"
                         className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f]"
                       >
                         Entrar
-                      </Link>
+                      </button>
                     </div>
                   </div>
                 </div>

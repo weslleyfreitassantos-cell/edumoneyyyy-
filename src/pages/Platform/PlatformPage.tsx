@@ -1350,17 +1350,16 @@ export default function PlatformPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[1040px] table-fixed text-left text-sm">
+              <table className="w-full min-w-[900px] table-fixed text-left text-sm">
                 <caption className="sr-only">
                   Contas e instituições da plataforma
                 </caption>
                 <colgroup>
-                  <col className="w-[17%]" />
-                  <col className="w-[21%]" />
+                  <col className="w-[24%]" />
+                  <col className="w-[25%]" />
+                  <col className="w-[10%]" />
                   <col className="w-[8%]" />
-                  <col className="w-[5%]" />
-                  <col className="w-[13%]" />
-                  <col className="w-[20%]" />
+                  <col className="w-[17%]" />
                   <col className="w-[16%]" />
                 </colgroup>
                 <thead className="bg-[#f3f4f5] text-[11px] uppercase leading-4 text-[#444651]">

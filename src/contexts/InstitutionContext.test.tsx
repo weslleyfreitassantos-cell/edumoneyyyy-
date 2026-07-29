@@ -166,7 +166,6 @@ function SelectionHarness() {
         currentUser={currentUser}
         pageTitle="Instituicoes da conta"
         pageSection="Conta"
-        showInstitutionSwitcher
         isSidebarHidden={false}
         isMobileSidebarOpen={false}
         isLoggingOut={false}

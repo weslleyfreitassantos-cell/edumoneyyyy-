@@ -286,8 +286,8 @@ describe('Sidebar', () => {
         .getAttribute('href'),
     ).toBe('/platform');
     expect(
-      screen.getByText(/escola selecionada/i),
-    ).toBeTruthy();
+      screen.queryByText(/escola selecionada/i),
+    ).toBeNull();
     expect(
       screen.getByRole('link', {
         name: /disciplinas/i,
