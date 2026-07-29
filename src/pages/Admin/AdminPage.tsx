@@ -219,13 +219,6 @@ export default function AdminPage() {
 
   return (
     <div className="space-y-6">
-      <header>
-        <h2 className="text-2xl font-bold text-[#181c20] dark:text-[#f8fafc]">
-          {institutionQuery.currentInstitution?.name ??
-            'Carregando escola...'}
-        </h2>
-      </header>
-
       <section
         key={institutionQuery.currentInstitutionId ?? 'no-institution'}
         className="min-w-0"
