@@ -5,8 +5,6 @@ import {
   LogOut,
   Menu,
   Moon,
-  PanelLeftClose,
-  PanelLeftOpen,
   Sun,
   UserRound,
 } from 'lucide-react';
@@ -207,17 +205,10 @@ export default function Header({
           aria-expanded={!isSidebarHidden}
           aria-controls={mobileSidebarId}
         >
-          {isSidebarHidden ? (
-            <PanelLeftOpen
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          ) : (
-            <PanelLeftClose
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          )}
+          <Menu
+            className="h-5 w-5"
+            aria-hidden="true"
+          />
         </button>
 
         <div className="min-w-0 flex-1">
