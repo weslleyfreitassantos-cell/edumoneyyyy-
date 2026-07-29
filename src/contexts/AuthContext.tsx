@@ -62,6 +62,15 @@ class InactiveProfileError extends Error {
   }
 }
 
+class AccountAccessBlockedError extends Error {
+  constructor() {
+    super(
+      'Voce nao tem acesso a esta plataforma. Procure a administracao da sua instituicao.',
+    );
+    this.name = 'AccountAccessBlockedError';
+  }
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(
   undefined,
 );
@@ -103,6 +112,10 @@ async function loadProfile(userId: string): Promise<Profile> {
       ? data.platform_role
       : 'USER';
 
+  if (platformRole !== 'SUPER_ADMIN') {
+    await assertActiveAccountAccess(userId);
+  }
+
   return {
     id: data.id,
     full_name: data.full_name,
@@ -111,6 +124,99 @@ async function loadProfile(userId: string): Promise<Profile> {
     platform_role: platformRole,
     avatar_url: data.avatar_url ?? null,
   };
+}
+
+function getAccountStatusFromRelation(
+  relation: unknown,
+): string | null {
+  if (
+    typeof relation === 'object' &&
+    relation !== null &&
+    'status' in relation &&
+    typeof relation.status === 'string'
+  ) {
+    return relation.status;
+  }
+
+  return null;
+}
+
+async function assertActiveAccountAccess(
+  userId: string,
+): Promise<void> {
+  const { data: ownedAccounts, error: ownedAccountsError } =
+    await supabase
+      .from('accounts')
+      .select('id, status')
+      .eq('owner_profile_id', userId);
+
+  if (ownedAccountsError) {
+    throw ownedAccountsError;
+  }
+
+  const { data: memberships, error: membershipsError } =
+    await supabase
+      .from('memberships')
+      .select(
+        `
+        id,
+        active,
+        institutions:institution_id (
+          id,
+          active,
+          account_id,
+          accounts:account_id (
+            id,
+            status
+          )
+        )
+      `,
+      )
+      .eq('profile_id', userId);
+
+  if (membershipsError) {
+    throw membershipsError;
+  }
+
+  const ownedStatuses = (ownedAccounts ?? [])
+    .map((account) => getAccountStatusFromRelation(account))
+    .filter((status): status is string => Boolean(status));
+
+  const membershipStatuses = (memberships ?? [])
+    .filter((membership) => membership.active === true)
+    .map((membership) => {
+      const institution = Array.isArray(membership.institutions)
+        ? membership.institutions[0]
+        : membership.institutions;
+
+      if (!institution || institution.active !== true) {
+        return null;
+      }
+
+      if (institution.account_id === null) {
+        return 'ACTIVE';
+      }
+
+      const account = Array.isArray(institution.accounts)
+        ? institution.accounts[0]
+        : institution.accounts;
+
+      return getAccountStatusFromRelation(account);
+    })
+    .filter((status): status is string => Boolean(status));
+
+  const accountStatuses = [
+    ...ownedStatuses,
+    ...membershipStatuses,
+  ];
+
+  if (accountStatuses.length === 0) {
+    throw new AccountAccessBlockedError();
+  }
+
+  if (!accountStatuses.includes('ACTIVE')) {
+    throw new AccountAccessBlockedError();
+  }
 }
 
 export function AuthProvider({
@@ -204,7 +310,10 @@ export function AuthProvider({
           profileRequestRef.current = null;
           setProfileState(null);
 
-          if (error instanceof InactiveProfileError) {
+          if (
+            error instanceof InactiveProfileError ||
+            error instanceof AccountAccessBlockedError
+          ) {
             setUserState(null);
 
             try {
