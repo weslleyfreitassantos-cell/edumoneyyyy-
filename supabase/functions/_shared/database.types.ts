@@ -14,6 +14,53 @@ export type Database = {
   }
   public: {
     Tables: {
+      platform_destructive_actions: {
+        Row: {
+          action_type: string
+          created_at: string
+          error_message: string | null
+          id: string
+          performed_by_profile_id: string | null
+          reason: string
+          result_status: string
+          summary: Json
+          target_account_id: string | null
+          target_account_name: string
+        }
+        Insert: {
+          action_type: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          performed_by_profile_id?: string | null
+          reason: string
+          result_status?: string
+          summary?: Json
+          target_account_id?: string | null
+          target_account_name: string
+        }
+        Update: {
+          action_type?: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          performed_by_profile_id?: string | null
+          reason?: string
+          result_status?: string
+          summary?: Json
+          target_account_id?: string | null
+          target_account_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "platform_destructive_actions_performed_by_profile_id_fkey"
+            columns: ["performed_by_profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       accounts: {
         Row: {
           created_at: string | null
@@ -784,6 +831,32 @@ export type Database = {
       }
     }
     Functions: {
+      hard_delete_client_account: {
+        Args: {
+          acknowledgement: boolean
+          actor_profile_id: string
+          change_reason: string
+          confirmation_email: string
+          confirmation_text: string
+          target_account_id: string
+        }
+        Returns: Json
+      }
+      restore_client_account: {
+        Args: {
+          actor_profile_id: string
+          change_reason?: string
+          target_account_id: string
+        }
+        Returns: {
+          account_id: string
+          audit_event_id: string | null
+          institution_limit: number
+          new_status: string
+          previous_status: string
+          status_changed: boolean
+        }[]
+      }
       can_view_institution_profile: {
         Args: { target_profile_id: string }
         Returns: boolean
