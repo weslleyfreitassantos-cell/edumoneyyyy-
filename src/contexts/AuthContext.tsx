@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import type { User } from '@supabase/supabase-js';
 
 import { supabase } from '../lib/supabaseClient';
@@ -224,6 +225,7 @@ export function AuthProvider({
 }: {
   children: ReactNode;
 }) {
+  const queryClient = useQueryClient();
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
@@ -475,8 +477,20 @@ export function AuthProvider({
         ...latestProfile,
         full_name: updatedProfile.full_name,
       });
+
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: ['profile'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['account'],
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['user-institutions'],
+        }),
+      ]);
     },
-    [setProfileState],
+    [queryClient, setProfileState],
   );
 
   const updatePassword = useCallback(

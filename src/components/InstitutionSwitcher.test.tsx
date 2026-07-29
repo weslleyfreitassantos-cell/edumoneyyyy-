@@ -84,6 +84,7 @@ function mockInstitutionContext(
     currentRole:
       firstInstitution.membership.role,
     isLoading: false,
+    isSwitchingInstitution: false,
     error: null,
     hasMultipleInstitutions: false,
     setCurrentInstitutionId: vi.fn(

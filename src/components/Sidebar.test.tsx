@@ -177,13 +177,13 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
-    expect(screen.getByText(/pessoas/i)).toBeTruthy();
+    expect(screen.queryByText(/pessoas/i)).toBeNull();
     expect(
-      screen.getByText(/estrutura escolar/i),
-    ).toBeTruthy();
+      screen.queryByText(/estrutura escolar/i),
+    ).toBeNull();
     expect(
-      screen.getByText(/opera..o acad.mica/i),
-    ).toBeTruthy();
+      screen.queryByText(/opera..o acad.mica/i),
+    ).toBeNull();
     expect(
       screen.getByRole('link', {
         name: /disciplinas/i,

@@ -22,6 +22,7 @@ interface HeaderProps {
   currentUser: User;
   pageTitle: string;
   pageSection: string;
+  currentInstitutionName?: string | null;
   isSidebarHidden: boolean;
   isMobileSidebarOpen: boolean;
   isLoggingOut: boolean;
@@ -52,6 +53,7 @@ export default function Header({
   currentUser,
   pageTitle,
   pageSection,
+  currentInstitutionName = null,
   isSidebarHidden,
   isMobileSidebarOpen,
   isLoggingOut,
@@ -282,6 +284,11 @@ export default function Header({
                     <p className="mt-2 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#d8deea]">
                       {currentUser.subtitle}
                     </p>
+                    {currentInstitutionName ? (
+                      <p className="mt-2 truncate text-xs font-semibold text-[#414754]">
+                        {currentInstitutionName}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </div>

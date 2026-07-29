@@ -141,8 +141,8 @@ export function getRouteVisualContext(
 
   if (normalizedPath.startsWith('/admin')) {
     return {
-      section: 'Administração',
-      title: 'Gestão institucional',
+      section: '',
+      title: '',
     };
   }
 
@@ -448,6 +448,12 @@ export default function AppShell({
     location.pathname,
     currentRole,
   );
+  const isAdminRoute =
+    location.pathname.startsWith('/admin');
+  const pageTitle =
+    isAdminRoute && institutionContext.currentInstitution
+      ? institutionContext.currentInstitution.name
+      : pageContext.title;
 
   function openMobileSidebar(): void {
     const activeElement =
@@ -526,8 +532,11 @@ export default function AppShell({
       >
         <Header
           currentUser={currentUser}
-          pageTitle={pageContext.title}
+          pageTitle={pageTitle}
           pageSection={pageContext.section}
+          currentInstitutionName={
+            institutionContext.currentInstitution?.name ?? null
+          }
           isSidebarHidden={isSidebarHidden}
           isMobileSidebarOpen={
             isMobileSidebarOpen

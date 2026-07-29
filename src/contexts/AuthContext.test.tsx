@@ -7,8 +7,12 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import type { User } from '@supabase/supabase-js';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import {
   afterEach,
   beforeEach,
@@ -28,6 +32,21 @@ import {
   useAuth,
   useAuthProfileActions,
 } from './AuthContext';
+
+function renderAuthProvider(children: ReactNode) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false },
+      mutations: { retry: false },
+    },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>{children}</AuthProvider>
+    </QueryClientProvider>,
+  );
+}
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
@@ -186,11 +205,7 @@ describe('AuthProfileActionsContext', () => {
       full_name: 'Novo Nome',
     });
 
-    render(
-      <AuthProvider>
-        <ProfileProbe />
-      </AuthProvider>,
-    );
+    renderAuthProvider(<ProfileProbe />);
 
     await screen.findByText('Ana Silva');
     fireEvent.click(
@@ -212,11 +227,7 @@ describe('AuthProfileActionsContext', () => {
   it('encaminha a senha sem persistir no perfil global', async () => {
     vi.mocked(updateCurrentPassword).mockResolvedValue(undefined);
 
-    render(
-      <AuthProvider>
-        <ProfileProbe />
-      </AuthProvider>,
-    );
+    renderAuthProvider(<ProfileProbe />);
 
     await screen.findByText('Ana Silva');
     fireEvent.click(
@@ -242,11 +253,7 @@ describe('AuthProfileActionsContext', () => {
       }),
     );
 
-    render(
-      <AuthProvider>
-        <ProfileProbe />
-      </AuthProvider>,
-    );
+    renderAuthProvider(<ProfileProbe />);
 
     await screen.findByText('Ana Silva');
     fireEvent.click(
@@ -285,11 +292,7 @@ describe('AuthProfileActionsContext', () => {
     });
 
     try {
-      render(
-        <AuthProvider>
-          <ProfileProbe />
-        </AuthProvider>,
-      );
+      renderAuthProvider(<ProfileProbe />);
 
       await waitFor(() => {
         expect(supabase.auth.signOut).toHaveBeenCalled();
@@ -356,11 +359,7 @@ describe('AuthProfileActionsContext', () => {
     }
 
     try {
-      render(
-        <AuthProvider>
-          <SignInProbe />
-        </AuthProvider>,
-      );
+      renderAuthProvider(<SignInProbe />);
 
       await screen.findByText('Sem perfil');
       fireEvent.click(

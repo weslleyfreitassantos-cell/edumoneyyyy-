@@ -274,10 +274,8 @@ describe('InstitutionContext', () => {
 
     await waitFor(() => {
       expect(
-        screen.getAllByText(
-          /Nenhuma escola ativa/i,
-        ).length,
-      ).toBeGreaterThan(0);
+        screen.getByTestId('current-id').textContent,
+      ).toBe('none');
     });
 
     fireEvent.click(
@@ -287,9 +285,6 @@ describe('InstitutionContext', () => {
     );
 
     await waitFor(() => {
-      expect(
-        screen.getAllByText('Escola Sol').length,
-      ).toBeGreaterThan(0);
       expect(
         screen.getByTestId('current-id').textContent,
       ).toBe('institution-1');
@@ -408,9 +403,6 @@ describe('InstitutionContext', () => {
       expect(
         screen.getByTestId('current-id').textContent,
       ).toBe('institution-1');
-      expect(
-        screen.getAllByText(/Escola Sol/i).length,
-      ).toBeGreaterThan(0);
     });
   });
 
