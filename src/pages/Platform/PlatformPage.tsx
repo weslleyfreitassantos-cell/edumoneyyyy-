@@ -9,6 +9,7 @@ import {
   Save,
   Search,
   ShieldCheck,
+  Trash2,
   X,
 } from 'lucide-react';
 import {
@@ -31,6 +32,8 @@ import {
   useAccountStatusEvents,
   useCloseClientAccount,
   useCreateClientAccount,
+  useDeleteClientAccount,
+  useRestoreClientAccount,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
@@ -67,6 +70,15 @@ interface CloseDialogState {
   error: string | null;
 }
 
+interface PermanentDeleteDialogState {
+  account: AccountSummaryRow;
+  confirmation: string;
+  typedConfirmationLiteral: string;
+  understands: boolean;
+  reason: string;
+  error: string | null;
+}
+
 interface StatusHistoryDialogState {
   account: AccountSummaryRow;
 }
@@ -78,7 +90,7 @@ interface InstitutionAccessDialogState {
   error: string | null;
 }
 
-type StatusFilter = 'ALL' | AccountStatus;
+type StatusFilter = 'ALL' | 'ACTIVE' | 'SUSPENDED' | 'DELETED';
 
 const initialForm: AccountFormState = {
   adminFullName: '',
@@ -89,7 +101,7 @@ const initialForm: AccountFormState = {
 const statusLabels: Record<AccountStatus, string> = {
   ACTIVE: 'Ativa',
   SUSPENDED: 'Suspensa',
-  CANCELED: 'Cancelada',
+  CANCELED: 'Excluída',
 };
 
 const statusStyles: Record<AccountStatus, string> = {
@@ -334,6 +346,9 @@ export default function PlatformPage() {
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
   const closeAccount = useCloseClientAccount();
+  const restoreAccount = useRestoreClientAccount();
+  const permanentlyDeleteAccount =
+    useDeleteClientAccount();
   const globalBrandingQuery = useGlobalBranding();
   const saveGlobalBranding = useSaveGlobalBranding();
   const domainRequestsQuery = useDomainRequests();
@@ -355,6 +370,10 @@ export default function PlatformPage() {
   >(null);
   const [closeDialog, setCloseDialog] =
     useState<CloseDialogState | null>(null);
+  const [permanentDeleteDialog, setPermanentDeleteDialog] =
+    useState<PermanentDeleteDialogState | null>(null);
+  const [restoreDialogAccount, setRestoreDialogAccount] =
+    useState<AccountSummaryRow | null>(null);
   const [statusHistoryDialog, setStatusHistoryDialog] =
     useState<StatusHistoryDialogState | null>(null);
   const [
@@ -407,8 +426,11 @@ export default function PlatformPage() {
 
     return accounts.filter((account) => {
       const matchesStatus =
-        statusFilter === 'ALL' ||
-        account.status === statusFilter;
+        statusFilter === 'ALL'
+          ? account.status !== 'CANCELED'
+          : statusFilter === 'DELETED'
+            ? account.status === 'CANCELED'
+            : account.status === statusFilter;
 
       return (
         matchesStatus &&
@@ -429,6 +451,24 @@ export default function PlatformPage() {
   const closeReason = closeDialog?.reason.trim() ?? '';
   const closeReasonIsValid =
     closeReason.length >= 10 && closeReason.length <= 500;
+  const permanentDeleteReason =
+    permanentDeleteDialog?.reason.trim() ?? '';
+  const permanentDeleteReasonIsValid =
+    permanentDeleteReason.length >= 10 &&
+    permanentDeleteReason.length <= 500;
+  const permanentDeleteConfirmationMatches = Boolean(
+    permanentDeleteDialog?.confirmation ===
+      permanentDeleteDialog?.account.owner?.email,
+  );
+  const permanentDeleteLiteralMatches =
+    permanentDeleteDialog?.typedConfirmationLiteral ===
+    'EXCLUIR DEFINITIVAMENTE';
+  const permanentDeleteCanSubmit = Boolean(
+    permanentDeleteReasonIsValid &&
+      permanentDeleteConfirmationMatches &&
+      permanentDeleteLiteralMatches &&
+      permanentDeleteDialog?.understands,
+  );
   const institutionAccessDialogOwner =
     institutionAccessDialog?.account.owner ?? null;
   const statusEventsQuery = useAccountStatusEvents(
@@ -581,6 +621,20 @@ export default function PlatformPage() {
     setCloseDialog({
       account,
       confirmation: '',
+      reason: '',
+      error: null,
+    });
+  }
+
+  function openPermanentDeleteDialog(
+    account: AccountSummaryRow,
+  ): void {
+    setFeedback(null);
+    setPermanentDeleteDialog({
+      account,
+      confirmation: '',
+      typedConfirmationLiteral: '',
+      understands: false,
       reason: '',
       error: null,
     });
@@ -815,7 +869,7 @@ export default function PlatformPage() {
       setFeedback({
         type: 'success',
         message:
-          'Conta encerrada. Dados e historico preservados.',
+          'Conta movida para Excluídos. Os dados foram preservados.',
       });
     } catch (error) {
       setCloseDialog((current) =>
@@ -824,6 +878,64 @@ export default function PlatformPage() {
               ...current,
               error:
                 getCloseAccountErrorMessage(error),
+            }
+          : current,
+      );
+    }
+  }
+
+  async function handleRestoreAccount(): Promise<void> {
+    if (
+      !restoreDialogAccount ||
+      restoreAccount.isPending
+    ) {
+      return;
+    }
+
+    try {
+      await restoreAccount.mutateAsync({
+        accountId: restoreDialogAccount.id,
+        reason: 'Restauracao pelo super admin.',
+      });
+
+      setRestoreDialogAccount(null);
+      setFeedback({
+        type: 'success',
+        message: 'Conta restaurada com sucesso.',
+      });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
+  async function handlePermanentDelete(): Promise<void> {
+    if (
+      !permanentDeleteDialog ||
+      permanentlyDeleteAccount.isPending
+    ) {
+      return;
+    }
+
+    try {
+      await permanentlyDeleteAccount.mutateAsync({
+        accountId: permanentDeleteDialog.account.id,
+      });
+
+      setPermanentDeleteDialog(null);
+      setFeedback({
+        type: 'success',
+        message:
+          'Conta e dados relacionados foram excluídos definitivamente.',
+      });
+    } catch (error) {
+      setPermanentDeleteDialog((current) =>
+        current
+          ? {
+              ...current,
+              error: getPlatformErrorMessage(error),
             }
           : current,
       );
@@ -1203,7 +1315,7 @@ export default function PlatformPage() {
                   <option value="ALL">Todos</option>
                   <option value="ACTIVE">Ativas</option>
                   <option value="SUSPENDED">Suspensas</option>
-                  <option value="CANCELED">Canceladas</option>
+                  <option value="DELETED">Excluídos</option>
                 </select>
               </Field>
 
@@ -1537,9 +1649,8 @@ export default function PlatformPage() {
                                 Reativar
                               </button>
                             ) : (
-                              <span className="inline-flex max-w-xs items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200">
-                                Conta encerrada. Dados e
-                                historico preservados.
+                              <span className="inline-flex items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200">
+                                Excluída
                               </span>
                             )}
                             <button
@@ -1553,9 +1664,8 @@ export default function PlatformPage() {
                             >
                               Ver histórico
                             </button>
-                            {canCloseAccounts &&
-                              account.status !==
-                                'CANCELED' &&
+                            {account.status !== 'CANCELED' &&
+                              canCloseAccounts &&
                               account.owner?.email && (
                                 <button
                                   type="button"
@@ -1566,14 +1676,40 @@ export default function PlatformPage() {
                                     closeAccount.isPending
                                   }
                                   className="inline-flex items-center gap-2 rounded-lg border border-[#ffdad6] px-3 py-1.5 text-xs font-semibold text-[#93000a] transition hover:bg-[#fff1ef] focus:outline-none focus:ring-2 focus:ring-[#ffdad6]/70 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
-                                  aria-label={`Encerrar conta ${account.name}`}
+                                  aria-label={`Excluir conta ${account.name}`}
                                 >
                                   <X
                                     className="h-4 w-4"
                                     aria-hidden="true"
                                   />
-                                  Encerrar conta
+                                  Excluir
                                 </button>
+                              )}
+                            {account.status === 'CANCELED' &&
+                              canCloseAccounts && (
+                                <>
+                                  <span
+                                    className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#757682] dark:border-[#475569] dark:text-[#64748b]"
+                                    title="Disponível após atualização do backend"
+                                  >
+                                    <RotateCcw
+                                      className="h-4 w-4"
+                                      aria-hidden="true"
+                                    />
+                                    Restaurar
+                                  </span>
+                                  <span
+                                    className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#757682] dark:border-[#475569] dark:text-[#64748b]"
+                                    title="Disponível após atualização do backend"
+                                  >
+                                    <Trash2
+                                      className="h-4 w-4"
+                                      aria-hidden="true"
+                                    />
+                                    Excluir
+                                    permanentemente
+                                  </span>
+                                </>
                               )}
                           </div>
                         </td>
@@ -1943,12 +2079,12 @@ export default function PlatformPage() {
                     id="close-account-title"
                     className="text-xl font-semibold leading-7 text-[#191c1d]"
                   >
-                    Encerrar conta
+                    Excluir conta
                   </h2>
                   <p className="mt-1 text-sm leading-5 text-[#444651]">
-                    Encerre o contrato comercial sem apagar
-                    dados acadêmicos, instituições, perfis ou
-                    histórico.
+                    A conta será movida para Excluídos. Dados
+                    acadêmicos, instituições, perfis e
+                    histórico serão preservados.
                   </p>
                 </div>
                 <button
@@ -1991,10 +2127,9 @@ export default function PlatformPage() {
                   aria-hidden="true"
                 />
                 <p>
-                  A conta ficará com status Cancelada e não
-                  poderá ser reativada pelo aplicativo. O
-                  administrador, as escolas e todo o histórico
-                  acadêmico serão preservados.
+                  A conta será movida para Excluídos. Todos os
+                  dados permanecem preservados e podem ser
+                  restaurados posteriormente.
                 </p>
               </div>
 
@@ -2012,7 +2147,7 @@ export default function PlatformPage() {
                   htmlFor="close-account-reason"
                   className="block text-xs font-semibold text-[#444651]"
                 >
-                  Motivo do encerramento
+                  Motivo da exclusão
                 </label>
                 <textarea
                   id="close-account-reason"
@@ -2096,7 +2231,351 @@ export default function PlatformPage() {
                       aria-hidden="true"
                     />
                   )}
-                  Encerrar conta
+                  Excluir conta
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {restoreDialogAccount && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="restore-account-title"
+              className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="restore-account-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d]"
+                  >
+                    Restaurar conta
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651]">
+                    {restoreDialogAccount.name}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setRestoreDialogAccount(null)
+                  }
+                  disabled={restoreAccount.isPending}
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                  aria-label="Fechar restauracao"
+                >
+                  <X
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-[#6ffbbe] bg-[#effdf6] p-4 text-sm leading-5 text-[#005236]">
+                <p>
+                  Restaurar esta conta e permitir novamente o
+                  acesso operacional? Todos os dados anteriores
+                  serão preservados.
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setRestoreDialogAccount(null)
+                  }
+                  disabled={restoreAccount.isPending}
+                  className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    void handleRestoreAccount()
+                  }
+                  disabled={restoreAccount.isPending}
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-[#006c49] px-4 text-sm font-semibold text-white transition hover:bg-[#005236] focus:outline-none focus:ring-2 focus:ring-[#006c49]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {restoreAccount.isPending ? (
+                    <Loader2
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <RotateCcw
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
+                  )}
+                  Restaurar
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {permanentDeleteDialog && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="permanent-delete-title"
+              className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="permanent-delete-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d]"
+                  >
+                    Excluir permanentemente
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651]">
+                    {permanentDeleteDialog.account.name}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setPermanentDeleteDialog(null)
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                  aria-label="Fechar exclusao permanente"
+                >
+                  <X
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+
+              <div className="mt-4 space-y-3 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651]">
+                <div>
+                  <p className="text-xs font-semibold uppercase text-[#757682]">
+                    Conta
+                  </p>
+                  <p className="mt-1 font-semibold text-[#191c1d]">
+                    {permanentDeleteDialog.account.name}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase text-[#757682]">
+                    Administrador
+                  </p>
+                  <p className="mt-1 font-semibold text-[#191c1d]">
+                    {permanentDeleteDialog.account.owner
+                      ?.full_name ?? 'Sem owner'}
+                  </p>
+                  <p>
+                    {permanentDeleteDialog.account.owner
+                      ?.email ?? ''}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-4 flex gap-3 rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-4 text-sm leading-5 text-[#93000a]">
+                <AlertTriangle
+                  className="mt-0.5 h-4 w-4 shrink-0"
+                  aria-hidden="true"
+                />
+                <p>
+                  Esta operação removerá todos os dados
+                  relacionados à conta de forma irreversível.
+                  Não será possível recuperar nenhuma
+                  informação após a confirmação.
+                </p>
+              </div>
+
+              {permanentDeleteDialog.error && (
+                <div
+                  role="alert"
+                  className="mt-4 rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a]"
+                >
+                  {permanentDeleteDialog.error}
+                </div>
+              )}
+
+              <div className="mt-4">
+                <label
+                  htmlFor="permanent-delete-reason"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Motivo da exclusão permanente
+                </label>
+                <textarea
+                  id="permanent-delete-reason"
+                  value={permanentDeleteDialog.reason}
+                  onChange={(event) =>
+                    setPermanentDeleteDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            reason:
+                              event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  minLength={10}
+                  maxLength={500}
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-1 min-h-24 w-full rounded-lg border border-[#c5c5d3] px-3 py-2 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+              </div>
+
+              <div className="mt-4">
+                <label
+                  htmlFor="permanent-delete-confirmation"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Digite o e-mail do administrador para
+                  confirmar
+                </label>
+                <input
+                  id="permanent-delete-confirmation"
+                  type="email"
+                  value={
+                    permanentDeleteDialog.confirmation
+                  }
+                  onChange={(event) =>
+                    setPermanentDeleteDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            confirmation:
+                              event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+              </div>
+
+              <div className="mt-4">
+                <label
+                  htmlFor="permanent-delete-literal"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Digite{' '}
+                  <span className="font-bold tracking-wider">
+                    EXCLUIR DEFINITIVAMENTE
+                  </span>{' '}
+                  para confirmar
+                </label>
+                <input
+                  id="permanent-delete-literal"
+                  type="text"
+                  value={
+                    permanentDeleteDialog
+                      .typedConfirmationLiteral
+                  }
+                  onChange={(event) =>
+                    setPermanentDeleteDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            typedConfirmationLiteral:
+                              event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+              </div>
+
+              <label className="mt-4 flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={
+                    permanentDeleteDialog.understands
+                  }
+                  onChange={(event) =>
+                    setPermanentDeleteDialog(
+                      (current) =>
+                        current
+                          ? {
+                              ...current,
+                              understands:
+                                event.target.checked,
+                              error: null,
+                            }
+                          : current,
+                    )
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-0.5 h-4 w-4 rounded border-[#c5c5d3] text-[#93000a] focus:ring-[#93000a]/30"
+                />
+                <span className="text-sm leading-5 text-[#444651]">
+                  Entendo que esta operação não poderá ser
+                  desfeita.
+                </span>
+              </label>
+
+              <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setPermanentDeleteDialog(null)
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    void handlePermanentDelete()
+                  }
+                  disabled={
+                    !permanentDeleteCanSubmit ||
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-[#93000a] px-4 text-sm font-semibold text-white transition hover:bg-[#730006] focus:outline-none focus:ring-2 focus:ring-[#93000a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {permanentlyDeleteAccount.isPending ? (
+                    <Loader2
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <Trash2
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
+                  )}
+                  Excluir permanentemente
                 </button>
               </div>
             </section>

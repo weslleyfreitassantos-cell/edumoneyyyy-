@@ -3,7 +3,7 @@ import type { AccountStatus } from './permissions';
 const accountStatusLabels: Record<AccountStatus, string> = {
   ACTIVE: 'Ativa',
   SUSPENDED: 'Suspensa',
-  CANCELED: 'Cancelada',
+  CANCELED: 'Excluída',
 };
 
 const enrollmentStatusLabels: Record<string, string> = {

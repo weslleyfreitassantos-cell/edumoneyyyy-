@@ -25,6 +25,8 @@ const hookMock = vi.hoisted(() => ({
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
   closeAccount: {} as any,
+  restoreAccount: {} as any,
+  permanentlyDeleteAccount: {} as any,
   statusEventsQuery: {} as any,
   globalBrandingQuery: {} as any,
   saveGlobalBranding: {} as any,
@@ -35,6 +37,8 @@ const hookMock = vi.hoisted(() => ({
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
   closeMutateAsync: vi.fn(),
+  restoreMutateAsync: vi.fn(),
+  permanentlyDeleteMutateAsync: vi.fn(),
   saveGlobalBrandingMutateAsync: vi.fn(),
   activateDomainMutateAsync: vi.fn(),
   disableDomainMutateAsync: vi.fn(),
@@ -55,6 +59,9 @@ vi.mock('../../hooks/useAccounts', () => ({
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
   useCloseClientAccount: () => hookMock.closeAccount,
+  useRestoreClientAccount: () => hookMock.restoreAccount,
+  useDeleteClientAccount: () =>
+    hookMock.permanentlyDeleteAccount,
   useAccountStatusEvents: () => hookMock.statusEventsQuery,
 }));
 
@@ -245,6 +252,14 @@ describe('PlatformPage', () => {
       isPending: false,
       mutateAsync: hookMock.closeMutateAsync,
     };
+    hookMock.restoreAccount = {
+      isPending: false,
+      mutateAsync: hookMock.restoreMutateAsync,
+    };
+    hookMock.permanentlyDeleteAccount = {
+      isPending: false,
+      mutateAsync: hookMock.permanentlyDeleteMutateAsync,
+    };
     hookMock.statusEventsQuery = {
       data: [],
       isLoading: false,
@@ -331,6 +346,24 @@ describe('PlatformPage', () => {
       auditEventId: 'event-1',
       statusChanged: true,
     });
+    hookMock.restoreMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-4',
+      institutionLimit: 1,
+      previousStatus: 'CANCELED',
+      status: 'ACTIVE',
+      auditEventId: 'event-2',
+      statusChanged: true,
+    });
+    hookMock.permanentlyDeleteMutateAsync.mockResolvedValue(
+      {
+        success: true,
+        accountId: 'account-4',
+        ownerProfileId: 'owner-4',
+        ownerPreserved: false,
+        deletedAuthUser: true,
+      },
+    );
   });
 
   afterEach(() => {
@@ -870,31 +903,32 @@ describe('PlatformPage', () => {
     ).toHaveLength(1);
   });
 
-  it('mantem conta encerrada visivel sem acoes operacionais', () => {
+  it('conta excluida mostra labels Restaurar e Excluir permanentemente desabilitados', () => {
     renderPage();
 
-    const closedRow = screen
-      .getByLabelText('Limite de Conta Encerrada')
-      .closest('tr')!;
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
 
-    expect(within(closedRow).getByText('Dora Admin')).toBeDefined();
     expect(
-      within(closedRow).getByText(
-        'Conta encerrada. Dados e historico preservados.',
-      ),
+      screen.getByText('Conta Encerrada'),
     ).toBeDefined();
     expect(
-      within(closedRow).queryByRole('button', {
+      screen.getAllByText('Excluída').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(
+      screen.queryByRole('button', {
         name: /Acessar escolas/i,
       }),
     ).toBeNull();
     expect(
-      within(closedRow).queryByRole('button', {
-        name: /Encerrar conta/i,
-      }),
-    ).toBeNull();
+      screen.getByText('Restaurar'),
+    ).toBeDefined();
     expect(
-      within(closedRow).queryByRole('button', {
+      screen.getByText('Excluir permanentemente'),
+    ).toBeDefined();
+    expect(
+      screen.queryByRole('button', {
         name: /^Reativar$/i,
       }),
     ).toBeNull();
@@ -944,18 +978,18 @@ describe('PlatformPage', () => {
     ).toBeDefined();
   });
 
-  it('exige motivo e confirmacao por e-mail para encerrar conta', async () => {
+  it('exige motivo e confirmacao por e-mail para excluir conta', async () => {
     renderPage();
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Encerrar conta Conta Alfa/i,
+        name: /Excluir conta Conta Alfa/i,
       }),
     );
 
     expect(
       screen.getByRole('dialog', {
-        name: /Encerrar conta/i,
+        name: /Excluir conta/i,
       }),
     ).toBeDefined();
     expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
@@ -963,15 +997,15 @@ describe('PlatformPage', () => {
     expect(screen.getAllByText('ana@example.com').length).toBeGreaterThan(1);
 
     const confirmButton = screen.getByRole('button', {
-      name: /^Encerrar conta$/i,
+      name: /^Excluir conta$/i,
     }) as HTMLButtonElement;
     expect(confirmButton.disabled).toBe(true);
 
     fireEvent.change(
-      screen.getByLabelText(/Motivo do encerramento/i),
+      screen.getByLabelText(/Motivo da exclusão/i),
       {
         target: {
-          value: 'Encerramento comercial solicitado.',
+          value: 'Exclusao solicitada.',
         },
       },
     );
@@ -990,7 +1024,7 @@ describe('PlatformPage', () => {
     await waitFor(() => {
       expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-1',
-        reason: 'Encerramento comercial solicitado.',
+        reason: 'Exclusao solicitada.',
       });
       expect(
         hookMock.clearCurrentInstitutionSelection,
@@ -1000,16 +1034,16 @@ describe('PlatformPage', () => {
       );
       expect(
         screen.getAllByText(
-          /Conta encerrada. Dados e historico preservados/i,
+          /Conta movida para Excluídos/i,
         ).length,
       ).toBeGreaterThanOrEqual(1);
     });
   });
 
-  it('mostra erro de encerramento sem remover item da interface', async () => {
+  it('mostra erro de exclusao sem remover item da interface', async () => {
     hookMock.closeMutateAsync.mockRejectedValueOnce(
       new AccountServiceError(
-        'Não foi possível encerrar a conta.',
+        'Não foi possível excluir a conta.',
         'ACCOUNT_STATUS_TRANSITION_INVALID',
       ),
     );
@@ -1018,14 +1052,14 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Encerrar conta Conta Alfa/i,
+        name: /Excluir conta Conta Alfa/i,
       }),
     );
     fireEvent.change(
-      screen.getByLabelText(/Motivo do encerramento/i),
+      screen.getByLabelText(/Motivo da exclusão/i),
       {
         target: {
-          value: 'Encerramento comercial solicitado.',
+          value: 'Exclusao solicitada.',
         },
       },
     );
@@ -1039,14 +1073,14 @@ describe('PlatformPage', () => {
     );
     fireEvent.click(
       screen.getByRole('button', {
-        name: /^Encerrar conta$/i,
+        name: /^Excluir conta$/i,
       }),
     );
 
     await waitFor(() => {
       expect(
         screen.getByText(
-          /Não foi possível encerrar a conta/i,
+          /Não foi possível excluir a conta/i,
         ),
       ).toBeDefined();
       expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
@@ -1057,18 +1091,18 @@ describe('PlatformPage', () => {
     });
   });
 
-  it('encerra conta sem instituicoes sem limpar selecao de outra conta', async () => {
+  it('exclui conta sem instituicoes sem limpar selecao de outra conta', async () => {
     renderPage();
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Encerrar conta Conta Gama/i,
+        name: /Excluir conta Conta Gama/i,
       }),
     );
 
     expect(
       screen.getByRole('dialog', {
-        name: /Encerrar conta/i,
+        name: /Excluir conta/i,
       }),
     ).toBeDefined();
     expect(screen.getAllByText('Conta Gama').length).toBeGreaterThan(1);
@@ -1076,9 +1110,9 @@ describe('PlatformPage', () => {
     expect(screen.getAllByText('caio@example.com').length).toBeGreaterThan(1);
 
     fireEvent.change(
-      screen.getByLabelText(/Motivo do encerramento/i),
+      screen.getByLabelText(/Motivo da exclusão/i),
       {
-        target: { value: 'Encerramento solicitado pelo cliente.' },
+        target: { value: 'Exclusao solicitada pelo cliente.' },
       },
     );
     fireEvent.change(
@@ -1092,14 +1126,14 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /^Encerrar conta$/i,
+        name: /^Excluir conta$/i,
       }),
     );
 
     await waitFor(() => {
       expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-3',
-        reason: 'Encerramento solicitado pelo cliente.',
+        reason: 'Exclusao solicitada pelo cliente.',
       });
       expect(
         hookMock.clearCurrentInstitutionSelection,
@@ -1155,7 +1189,7 @@ describe('PlatformPage', () => {
     expect(screen.queryByText(/24 estados/i)).toBeNull();
   });
 
-  it('Todos exibe todos os status', () => {
+  it('Todos exibe apenas ativas e suspensas (oculta excluidas)', () => {
     renderPage();
 
     expect(
@@ -1163,15 +1197,15 @@ describe('PlatformPage', () => {
     ).toBeGreaterThanOrEqual(1);
     expect(screen.getByText('Conta Beta')).toBeDefined();
     expect(
-      screen.getByText('Conta Encerrada'),
-    ).toBeDefined();
+      screen.queryByText('Conta Encerrada'),
+    ).toBeNull();
   });
 
-  it('filtro CANCELED exibe somente canceladas', () => {
+  it('filtro Excluidos exibe somente excluidas', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
-      target: { value: 'CANCELED' },
+      target: { value: 'DELETED' },
     });
 
     expect(
@@ -1180,7 +1214,7 @@ describe('PlatformPage', () => {
     expect(screen.queryByText('Conta Beta')).toBeNull();
   });
 
-  it('busca em Todos encontra encerrada', () => {
+  it('busca em Todos nao encontra excluida', () => {
     renderPage();
 
     fireEvent.change(
@@ -1191,15 +1225,15 @@ describe('PlatformPage', () => {
     );
 
     expect(
-      screen.getByText('Conta Encerrada'),
-    ).toBeDefined();
+      screen.queryByText('Conta Encerrada'),
+    ).toBeNull();
   });
 
-  it('busca em CANCELED encontra encerrada', () => {
+  it('busca em Excluidos encontra conta excluida', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
-      target: { value: 'CANCELED' },
+      target: { value: 'DELETED' },
     });
     fireEvent.change(
       screen.getByLabelText('Buscar conta ou instituição'),
@@ -1213,24 +1247,55 @@ describe('PlatformPage', () => {
     ).toBeDefined();
   });
 
-  it('conta cancelada mantem botao Ver historico', () => {
+  it('conta excluida mantem botao Ver historico e exibe acoes pendentes', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
-      target: { value: 'CANCELED' },
+      target: { value: 'DELETED' },
     });
 
     expect(
       screen.getByText('Ver histórico'),
     ).toBeDefined();
     expect(
-      screen.getByText(
-        'Conta encerrada. Dados e historico preservados.',
-      ),
+      screen.getAllByText('Excluída').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(
+      screen.getByText('Restaurar'),
+    ).toBeDefined();
+    expect(
+      screen.getByText('Excluir permanentemente'),
     ).toBeDefined();
   });
 
-  it('nenhuma exclusao fisica e executada', () => {
+  it('restauracao exibe label com indicacao de backend pendente', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+
+    expect(screen.getByText('Restaurar')).toBeDefined();
+    expect(
+      screen.getAllByTitle(
+        'Disponível após atualização do backend',
+      ),
+    ).toHaveLength(2);
+  });
+
+  it('exclusao permanente exibe label com indicacao de backend pendente', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+
+    expect(
+      screen.getByText('Excluir permanentemente'),
+    ).toBeDefined();
+  });
+
+  it('nenhuma exclusao fisica e executada sem acao', () => {
     renderPage();
 
     expect(

@@ -91,6 +91,14 @@ export interface AccountStatusEvent {
   createdAt: string;
 }
 
+export interface RestoreClientAccountInput {
+  accountId: string;
+  reason: string;
+}
+
+export type RestoreClientAccountResponse =
+  UpdateClientAccountResponse;
+
 export interface DeleteClientAccountInput {
   accountId: string;
 }
@@ -642,6 +650,16 @@ export const accountService = {
     return accountService.updateAccount({
       accountId: input.accountId,
       status: 'CANCELED',
+      reason: input.reason,
+    });
+  },
+
+  async restoreAccount(
+    input: RestoreClientAccountInput,
+  ): Promise<RestoreClientAccountResponse> {
+    return accountService.updateAccount({
+      accountId: input.accountId,
+      status: 'ACTIVE',
       reason: input.reason,
     });
   },
