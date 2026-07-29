@@ -903,7 +903,7 @@ describe('PlatformPage', () => {
     ).toHaveLength(1);
   });
 
-  it('conta excluida mostra labels Restaurar e Excluir permanentemente desabilitados', () => {
+  it('conta excluida mostra botoes Restaurar e Excluir permanentemente habilitados', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
@@ -922,10 +922,14 @@ describe('PlatformPage', () => {
       }),
     ).toBeNull();
     expect(
-      screen.getByText('Restaurar'),
+      screen.getByRole('button', {
+        name: /Restaurar/i,
+      }),
     ).toBeDefined();
     expect(
-      screen.getByText('Excluir permanentemente'),
+      screen.getByRole('button', {
+        name: /Excluir permanentemente/i,
+      }),
     ).toBeDefined();
     expect(
       screen.queryByRole('button', {
@@ -1268,31 +1272,36 @@ describe('PlatformPage', () => {
     ).toBeDefined();
   });
 
-  it('restauracao exibe label com indicacao de backend pendente', () => {
+  it('restauracao exibe botao Restaurar como botao habilitado', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'DELETED' },
     });
 
-    expect(screen.getByText('Restaurar')).toBeDefined();
+    const restoreButton = screen.getByRole('button', {
+      name: /Restaurar/i,
+    });
+    expect(restoreButton).toBeDefined();
     expect(
-      screen.getAllByTitle(
-        'Disponível após atualização do backend',
-      ),
-    ).toHaveLength(2);
+      restoreButton.tagName,
+    ).toBe('BUTTON');
   });
 
-  it('exclusao permanente exibe label com indicacao de backend pendente', () => {
+  it('exclusao permanente exibe botao Excluir permanentemente habilitado', () => {
     renderPage();
 
     fireEvent.change(screen.getByLabelText('Status'), {
       target: { value: 'DELETED' },
     });
 
+    const deleteButton = screen.getByRole('button', {
+      name: /Excluir permanentemente/i,
+    });
+    expect(deleteButton).toBeDefined();
     expect(
-      screen.getByText('Excluir permanentemente'),
-    ).toBeDefined();
+      deleteButton.tagName,
+    ).toBe('BUTTON');
   });
 
   it('nenhuma exclusao fisica e executada sem acao', () => {

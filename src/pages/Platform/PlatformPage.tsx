@@ -922,6 +922,13 @@ export default function PlatformPage() {
     try {
       await permanentlyDeleteAccount.mutateAsync({
         accountId: permanentDeleteDialog.account.id,
+        reason: permanentDeleteDialog.reason,
+        confirmationEmail:
+          permanentDeleteDialog.confirmation,
+        confirmationText:
+          permanentDeleteDialog.typedConfirmationLiteral,
+        acknowledgement:
+          permanentDeleteDialog.understands as true,
       });
 
       setPermanentDeleteDialog(null);
@@ -1688,19 +1695,39 @@ export default function PlatformPage() {
                             {account.status === 'CANCELED' &&
                               canCloseAccounts && (
                                 <>
-                                  <span
-                                    className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#757682] dark:border-[#475569] dark:text-[#64748b]"
-                                    title="Disponível após atualização do backend"
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setRestoreDialogAccount(
+                                        account,
+                                      )
+                                    }
+                                    className="inline-flex items-center gap-2 rounded-lg border border-emerald-300 px-3 py-1.5 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 active:bg-emerald-100 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-950 dark:active:bg-emerald-900"
                                   >
                                     <RotateCcw
                                       className="h-4 w-4"
                                       aria-hidden="true"
                                     />
                                     Restaurar
-                                  </span>
-                                  <span
-                                    className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#757682] dark:border-[#475569] dark:text-[#64748b]"
-                                    title="Disponível após atualização do backend"
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      setPermanentDeleteDialog(
+                                        {
+                                          account,
+                                          confirmation:
+                                            '',
+                                          typedConfirmationLiteral:
+                                            '',
+                                          understands:
+                                            false,
+                                          reason: '',
+                                          error: null,
+                                        },
+                                      )
+                                    }
+                                    className="inline-flex items-center gap-2 rounded-lg border border-red-300 px-3 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:bg-red-50 active:bg-red-100 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:active:bg-red-900"
                                   >
                                     <Trash2
                                       className="h-4 w-4"
@@ -1708,7 +1735,7 @@ export default function PlatformPage() {
                                     />
                                     Excluir
                                     permanentemente
-                                  </span>
+                                  </button>
                                 </>
                               )}
                           </div>

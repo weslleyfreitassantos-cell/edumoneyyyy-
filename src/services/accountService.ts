@@ -101,14 +101,23 @@ export type RestoreClientAccountResponse =
 
 export interface DeleteClientAccountInput {
   accountId: string;
+  reason: string;
+  confirmationEmail: string;
+  confirmationText: string;
+  acknowledgement: true;
 }
 
 export interface DeleteClientAccountResponse {
   success: true;
   accountId: string;
-  ownerProfileId: string;
+  accountName: string;
+  auditId: string;
+  summary: Record<string, number>;
   ownerPreserved: boolean;
-  deletedAuthUser: boolean;
+  exclusiveProfileIds: string[];
+  sharedProfileIds: string[];
+  deletedAuthUsers: number;
+  authDeletionFailed: number;
 }
 
 export interface CreateInstitutionInput {
@@ -510,6 +519,45 @@ function assertUpdateInstitutionStatusResponse(
   };
 }
 
+function assertRestoreAccountResponse(
+  value: unknown,
+): RestoreClientAccountResponse {
+  if (
+    isRecord(value) &&
+    value.success === true &&
+    typeof value.accountId === 'string' &&
+    typeof value.institutionLimit === 'number' &&
+    typeof value.status === 'string'
+  ) {
+    const status = normalizeStatus(value.status);
+    const previousStatus =
+      typeof value.previousStatus === 'string'
+        ? normalizeStatus(value.previousStatus)
+        : status;
+
+    return {
+      success: true,
+      accountId: value.accountId,
+      institutionLimit: value.institutionLimit,
+      previousStatus,
+      status,
+      auditEventId:
+        typeof value.auditEventId === 'string'
+          ? value.auditEventId
+          : null,
+      statusChanged:
+        typeof value.statusChanged === 'boolean'
+          ? value.statusChanged
+          : previousStatus !== status,
+    };
+  }
+
+  throw new AccountServiceError(
+    'A funcao respondeu em um formato invalido.',
+    'INVALID_FUNCTION_RESPONSE',
+  );
+}
+
 function assertDeleteAccountResponse(
   value: unknown,
 ): DeleteClientAccountResponse {
@@ -523,9 +571,39 @@ function assertDeleteAccountResponse(
   return {
     success: requireTrue(value, 'success'),
     accountId: requireString(value, 'accountId'),
-    ownerProfileId: requireString(value, 'ownerProfileId'),
+    accountName: requireString(value, 'accountName'),
+    auditId: requireString(value, 'auditId'),
+    summary: (() => {
+      const raw = value.summary;
+      if (
+        typeof raw === 'object' &&
+        raw !== null &&
+        !Array.isArray(raw)
+      ) {
+        return raw as Record<string, number>;
+      }
+      throw new AccountServiceError(
+        'A funcao respondeu em um formato invalido.',
+        'INVALID_FUNCTION_RESPONSE',
+      );
+    })(),
     ownerPreserved: requireBoolean(value, 'ownerPreserved'),
-    deletedAuthUser: requireBoolean(value, 'deletedAuthUser'),
+    exclusiveProfileIds: (() => {
+      const raw = value.exclusiveProfileIds;
+      if (Array.isArray(raw)) {
+        return raw.map(String);
+      }
+      return [];
+    })(),
+    sharedProfileIds: (() => {
+      const raw = value.sharedProfileIds;
+      if (Array.isArray(raw)) {
+        return raw.map(String);
+      }
+      return [];
+    })(),
+    deletedAuthUsers: requireNumber(value, 'deletedAuthUsers'),
+    authDeletionFailed: requireNumber(value, 'authDeletionFailed'),
   };
 }
 
@@ -657,11 +735,17 @@ export const accountService = {
   async restoreAccount(
     input: RestoreClientAccountInput,
   ): Promise<RestoreClientAccountResponse> {
-    return accountService.updateAccount({
-      accountId: input.accountId,
-      status: 'ACTIVE',
-      reason: input.reason,
-    });
+    const { data, error } =
+      await supabase.functions.invoke(
+        'restore-client-account',
+        { body: input },
+      );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertRestoreAccountResponse(data);
   },
 
   async listAccountStatusEvents(
@@ -743,5 +827,15 @@ export const accountService = {
     }
 
     return assertDeleteAccountResponse(data);
+  },
+
+  async restoreAccountOld(
+    input: RestoreClientAccountInput,
+  ): Promise<RestoreClientAccountResponse> {
+    return accountService.updateAccount({
+      accountId: input.accountId,
+      status: 'ACTIVE',
+      reason: input.reason,
+    });
   },
 };
