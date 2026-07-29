@@ -28,6 +28,12 @@ describe('restore-client-account', () => {
     expect(source).toContain('ACCOUNT_OWNER_INACTIVE');
   });
 
+  it('reads Supabase error fields beyond message', () => {
+    expect(source).toContain('"details"');
+    expect(source).toContain('"hint"');
+    expect(source).toContain('"code"');
+  });
+
   it('returns success response with status fields', () => {
     expect(source).toContain('success: true');
     expect(source).toContain('previousStatus');
