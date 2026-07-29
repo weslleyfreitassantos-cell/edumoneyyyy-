@@ -2,6 +2,7 @@ import {
   AlertTriangle,
   Building2,
   CheckCircle2,
+  History,
   Loader2,
   PauseCircle,
   Plus,
@@ -327,6 +328,35 @@ function Field({
         </p>
       )}
     </div>
+  );
+}
+
+interface IconActionButtonProps {
+  label: string;
+  children: ReactNode;
+  className: string;
+  disabled?: boolean;
+  onClick: () => void;
+}
+
+function IconActionButton({
+  label,
+  children,
+  className,
+  disabled,
+  onClick,
+}: IconActionButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
+      aria-label={label}
+      title={label}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -1369,31 +1399,40 @@ export default function PlatformPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[940px] text-left text-sm">
+              <table className="w-full min-w-[1040px] table-fixed text-left text-sm">
                 <caption className="sr-only">
                   Contas e instituições da plataforma
                 </caption>
+                <colgroup>
+                  <col className="w-[13%]" />
+                  <col className="w-[17%]" />
+                  <col className="w-[8%]" />
+                  <col className="w-[5%]" />
+                  <col className="w-[13%]" />
+                  <col className="w-[32%]" />
+                  <col className="w-[12%]" />
+                </colgroup>
                 <thead className="bg-[#f3f4f5] text-[11px] uppercase leading-4 text-[#444651]">
                   <tr>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       Conta
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       ADMIN
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 text-center font-semibold">
                       Status
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 text-center font-semibold">
                       Uso
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       Limite
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       Instituições
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 text-right font-semibold">
                       Ações
                     </th>
                   </tr>
@@ -1424,22 +1463,22 @@ export default function PlatformPage() {
                         key={account.id}
                         className="transition hover:bg-[#f8f9fa] dark:hover:bg-[#1e293b]"
                       >
-                        <td className="px-4 py-4">
+                        <td className="px-3 py-4">
                           <div className="flex items-center gap-3">
                             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#dce1ff] text-xs font-bold text-[#00236f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]">
                               {getInitials(account.name)}
                             </div>
-                            <div>
-                              <p className="font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                            <div className="min-w-0">
+                              <p className="truncate font-semibold text-[#191c1d] dark:text-[#f8fafc]">
                                 {account.name}
                               </p>
-                              <p className="text-xs text-[#444651] dark:text-[#cbd5e1]">
+                              <p className="truncate text-xs text-[#444651] dark:text-[#cbd5e1]">
                                 {account.institutions.length} instituições
                               </p>
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-4 text-[#444651] dark:text-[#cbd5e1]">
+                        <td className="min-w-0 px-3 py-4 text-[#444651] dark:text-[#cbd5e1]">
                           {account.owner &&
                           account.status === 'ACTIVE' ? (
                             <button
@@ -1472,21 +1511,21 @@ export default function PlatformPage() {
                             </>
                           )}
                         </td>
-                        <td className="px-4 py-4">
+                        <td className="px-3 py-4 text-center">
                           <StatusBadge status={account.status} />
                         </td>
-                        <td className="px-4 py-4">
-                          <div className="w-36">
-                            <div className="flex justify-between text-xs text-[#444651] dark:text-[#cbd5e1]">
-                              <span>
-                                {account.activeInstitutionCount}/
-                                {account.institutionLimit}
-                              </span>
-                              <span>{usagePercent}%</span>
-                            </div>
-                            <div className="mt-2 h-2 rounded-full bg-[#edeeef] dark:bg-[#334155]">
+                        <td className="px-3 py-4 text-center">
+                          <div
+                            className="mx-auto w-9"
+                            aria-label={`Uso de ${account.name}: ${account.activeInstitutionCount} de ${account.institutionLimit}, ${usagePercent}%`}
+                          >
+                            <span className="block text-xs font-semibold text-[#444651] dark:text-[#cbd5e1]">
+                              {account.activeInstitutionCount}/
+                              {account.institutionLimit}
+                            </span>
+                            <div className="mx-auto mt-1.5 h-1 w-8 rounded-full bg-[#edeeef] dark:bg-[#334155]">
                               <div
-                                className="h-2 rounded-full bg-[#006c49]"
+                                className="h-1 rounded-full bg-[#006c49]"
                                 style={{
                                   width: `${usagePercent}%`,
                                 }}
@@ -1494,7 +1533,7 @@ export default function PlatformPage() {
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-4">
+                        <td className="px-3 py-4">
                           <div className="flex items-center gap-2">
                             <input
                               aria-label={`Limite de ${account.name}`}
@@ -1513,7 +1552,7 @@ export default function PlatformPage() {
                               disabled={
                                 account.status === 'CANCELED'
                               }
-                              className="h-9 w-20 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:disabled:bg-[#111827] dark:disabled:text-[#64748b]"
+                              className="h-9 w-16 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:disabled:bg-[#111827] dark:disabled:text-[#64748b]"
                             />
                             <button
                               type="button"
@@ -1537,7 +1576,7 @@ export default function PlatformPage() {
                             </button>
                           </div>
                         </td>
-                        <td className="max-w-md px-4 py-4 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
+                        <td className="px-3 py-4 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
                           {account.institutions.length === 0 ? (
                             <span>Nenhuma instituição cadastrada.</span>
                           ) : (
@@ -1550,7 +1589,7 @@ export default function PlatformPage() {
                                   return (
                                     <div
                                       key={institution.id}
-                                      className="flex items-center justify-between gap-3 rounded-lg border border-[#d8deea] bg-white px-3 py-2 dark:border-[#334155] dark:bg-[#0f172a]"
+                                      className="flex items-center justify-between gap-2 rounded-lg border border-[#d8deea] bg-white px-2.5 py-2 dark:border-[#334155] dark:bg-[#0f172a]"
                                     >
                                       <div className="min-w-0">
                                         <p className="truncate font-medium text-[#191c1d] dark:text-[#f8fafc]">
@@ -1571,8 +1610,12 @@ export default function PlatformPage() {
 
                                       {account.status ===
                                         'ACTIVE' && (
-                                        <button
-                                          type="button"
+                                        <IconActionButton
+                                          label={`${
+                                            isActiveInstitution
+                                              ? 'Suspender'
+                                              : 'Reativar'
+                                          } ${institution.name}`}
                                           onClick={() =>
                                             void changeInstitutionStatus(
                                               institution,
@@ -1582,16 +1625,11 @@ export default function PlatformPage() {
                                           disabled={
                                             updateInstitutionStatusMutation.isPending
                                           }
-                                          className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
+                                          className={`${
                                             isActiveInstitution
                                               ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
                                               : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
                                           }`}
-                                          aria-label={`${
-                                            isActiveInstitution
-                                              ? 'Suspender'
-                                              : 'Reativar'
-                                          } ${institution.name}`}
                                         >
                                           {isActiveInstitution ? (
                                             <PauseCircle
@@ -1604,10 +1642,7 @@ export default function PlatformPage() {
                                               aria-hidden="true"
                                             />
                                           )}
-                                          {isActiveInstitution
-                                            ? 'Suspender'
-                                            : 'Reativar'}
-                                        </button>
+                                        </IconActionButton>
                                       )}
                                     </div>
                                   );
@@ -1616,11 +1651,11 @@ export default function PlatformPage() {
                             </div>
                           )}
                         </td>
-                        <td className="px-4 py-4">
-                          <div className="flex flex-wrap items-center gap-2">
+                        <td className="px-3 py-4">
+                          <div className="flex flex-wrap items-center justify-end gap-2">
                             {account.status === 'ACTIVE' ? (
-                              <button
-                                type="button"
+                              <IconActionButton
+                                label={`Suspender ${account.name}`}
                                 onClick={() =>
                                   void updateStatus(
                                     account.id,
@@ -1628,18 +1663,17 @@ export default function PlatformPage() {
                                   )
                                 }
                                 disabled={updateAccount.isPending}
-                                className="inline-flex items-center gap-2 rounded-lg border border-[#ffb95f] px-3 py-1.5 text-xs font-semibold text-[#7a4d00] transition hover:bg-[#fff4ce] focus:outline-none focus:ring-2 focus:ring-[#ffb95f]/40 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60"
+                                className="border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60"
                               >
                                 <PauseCircle
                                   className="h-4 w-4"
                                   aria-hidden="true"
                                 />
-                                Suspender
-                              </button>
+                              </IconActionButton>
                             ) : account.status ===
                               'SUSPENDED' ? (
-                              <button
-                                type="button"
+                              <IconActionButton
+                                label={`Reativar ${account.name}`}
                                 onClick={() =>
                                   void updateStatus(
                                     account.id,
@@ -1647,71 +1681,66 @@ export default function PlatformPage() {
                                   )
                                 }
                                 disabled={updateAccount.isPending}
-                                className="inline-flex items-center gap-2 rounded-lg border border-[#6ffbbe] px-3 py-1.5 text-xs font-semibold text-[#005236] transition hover:bg-[#effdf6] focus:outline-none focus:ring-2 focus:ring-[#6ffbbe]/50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60"
+                                className="border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60"
                               >
                                 <CheckCircle2
                                   className="h-4 w-4"
                                   aria-hidden="true"
                                 />
-                                Reativar
-                              </button>
-                            ) : (
-                              <span className="inline-flex items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200">
-                                Excluída
-                              </span>
-                            )}
-                            <button
-                              type="button"
+                              </IconActionButton>
+                            ) : null}
+                            <IconActionButton
+                              label={`Ver histórico de ${account.name}`}
                               onClick={() =>
                                 setStatusHistoryDialog({
                                   account,
                                 })
                               }
-                              className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
+                              className="border-[#c5c5d3] text-[#444651] hover:bg-[#f3f4f5] focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
                             >
-                              Ver histórico
-                            </button>
+                              <History
+                                className="h-4 w-4"
+                                aria-hidden="true"
+                              />
+                            </IconActionButton>
                             {account.status !== 'CANCELED' &&
                               canCloseAccounts &&
                               account.owner?.email && (
-                                <button
-                                  type="button"
+                                <IconActionButton
+                                  label={`Excluir conta ${account.name}`}
                                   onClick={() =>
                                     openCloseDialog(account)
                                   }
                                   disabled={
                                     closeAccount.isPending
                                   }
-                                  className="inline-flex items-center gap-2 rounded-lg border border-[#ffdad6] px-3 py-1.5 text-xs font-semibold text-[#93000a] transition hover:bg-[#fff1ef] focus:outline-none focus:ring-2 focus:ring-[#ffdad6]/70 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
-                                  aria-label={`Excluir conta ${account.name}`}
+                                  className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
                                 >
                                   <X
                                     className="h-4 w-4"
                                     aria-hidden="true"
                                   />
-                                  Excluir
-                                </button>
+                                </IconActionButton>
                               )}
                             {account.status === 'CANCELED' &&
                               canCloseAccounts && (
                                 <>
-                                  <button
-                                    type="button"
+                                  <IconActionButton
+                                    label={`Restaurar ${account.name}`}
                                     onClick={() =>
                                       setRestoreDialogAccount(
                                         account,
                                       )
                                     }
-                                    className="inline-flex items-center gap-2 rounded-lg border border-emerald-300 px-3 py-1.5 text-xs font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 active:bg-emerald-100 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-950 dark:active:bg-emerald-900"
+                                    className="border-emerald-300 text-emerald-700 hover:bg-emerald-50 focus:ring-emerald-300/50 active:bg-emerald-100 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-950 dark:active:bg-emerald-900"
                                   >
                                     <RotateCcw
                                       className="h-4 w-4"
                                       aria-hidden="true"
                                     />
-                                    Restaurar
-                                  </button>
-                                  <button
-                                    type="button"
+                                  </IconActionButton>
+                                  <IconActionButton
+                                    label={`Excluir permanentemente ${account.name}`}
                                     onClick={() =>
                                       setPermanentDeleteDialog(
                                         {
@@ -1727,15 +1756,13 @@ export default function PlatformPage() {
                                         },
                                       )
                                     }
-                                    className="inline-flex items-center gap-2 rounded-lg border border-red-300 px-3 py-1.5 text-xs font-semibold text-red-700 transition-colors hover:bg-red-50 active:bg-red-100 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:active:bg-red-900"
+                                    className="border-red-300 text-red-700 hover:bg-red-50 focus:ring-red-300/50 active:bg-red-100 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:active:bg-red-900"
                                   >
                                     <Trash2
                                       className="h-4 w-4"
                                       aria-hidden="true"
                                     />
-                                    Excluir
-                                    permanentemente
-                                  </button>
+                                  </IconActionButton>
                                 </>
                               )}
                           </div>

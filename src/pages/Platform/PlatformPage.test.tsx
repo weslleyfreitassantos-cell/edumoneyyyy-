@@ -571,7 +571,7 @@ describe('PlatformPage', () => {
     ).toBeNull();
     expect(
       within(suspendedRow!).getByRole('button', {
-        name: 'Reativar',
+        name: /Reativar Conta Beta/i,
       }),
     ).toBeDefined();
   });
@@ -812,7 +812,7 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       within(alfaRow).getByRole('button', {
-        name: /^Suspender$/i,
+        name: /Suspender Conta Alfa/i,
       }),
     );
 
@@ -1259,16 +1259,22 @@ describe('PlatformPage', () => {
     });
 
     expect(
-      screen.getByText('Ver histórico'),
+      screen.getByRole('button', {
+        name: /Ver histórico de Conta Encerrada/i,
+      }),
     ).toBeDefined();
     expect(
       screen.getAllByText('Excluída').length,
     ).toBeGreaterThanOrEqual(1);
     expect(
-      screen.getByText('Restaurar'),
+      screen.getByRole('button', {
+        name: /Restaurar Conta Encerrada/i,
+      }),
     ).toBeDefined();
     expect(
-      screen.getByText('Excluir permanentemente'),
+      screen.getByRole('button', {
+        name: /Excluir permanentemente Conta Encerrada/i,
+      }),
     ).toBeDefined();
   });
 
