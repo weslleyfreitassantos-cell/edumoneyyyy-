@@ -340,14 +340,6 @@ export default function UnifiedUserInvitePreview({
               Cadastro unificado de usuarios
             </h3>
           </div>
-
-          <p className="mt-1 text-sm text-[#727785]">
-            Convite real local para roles escolares atuais.
-          </p>
-        </div>
-
-        <div className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 text-xs font-semibold text-[#005bbf]">
-          Edge Function local: invite-school-user
         </div>
       </div>
 
@@ -744,51 +736,10 @@ export default function UnifiedUserInvitePreview({
               </div>
             )}
 
-            <p className="rounded-lg bg-blue-50 p-3 text-sm text-[#005bbf]">
-              {getTargetNote(selectedTarget)}
-            </p>
           </fieldset>
         </div>
 
         <aside className="space-y-4">
-          <div className="rounded-lg border border-[#dfe3e8] p-4">
-            <h4 className="text-sm font-bold text-[#181c20]">
-              Registros do fluxo
-            </h4>
-
-            <ul className="mt-3 space-y-2 text-sm text-[#414754]">
-              {selectedOption.futureRecords.map(
-                (record) => (
-                  <li
-                    key={record}
-                    className="rounded-lg bg-gray-50 px-3 py-2"
-                  >
-                    {record}
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-
-          <div className="rounded-lg border border-[#dfe3e8] p-4">
-            <h4 className="text-sm font-bold text-[#181c20]">
-              Disponibilidade
-            </h4>
-
-            <ul className="mt-3 space-y-2 text-xs text-[#727785]">
-              {selectedOption.availabilityStatuses.map(
-                (status) => (
-                  <li
-                    key={status}
-                    className="rounded-lg bg-gray-50 px-3 py-2"
-                  >
-                    {availabilityLabels[status]}
-                  </li>
-                ),
-              )}
-            </ul>
-          </div>
-
           <div className="flex flex-col gap-2">
             <button
               type="submit"
