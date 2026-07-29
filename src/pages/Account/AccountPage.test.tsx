@@ -121,6 +121,7 @@ beforeEach(() => {
     currentInstitutionId: null,
     currentRole: null,
     isLoading: false,
+    isSwitchingInstitution: false,
     error: null,
     hasMultipleInstitutions: false,
     setCurrentInstitutionId,

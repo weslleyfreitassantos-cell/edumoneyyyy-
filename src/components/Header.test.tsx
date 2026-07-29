@@ -96,6 +96,7 @@ function mockInstitutionContext() {
       firstInstitution.institution.id,
     currentRole: 'ADMIN',
     isLoading: false,
+    isSwitchingInstitution: false,
     error: null,
     hasMultipleInstitutions: true,
     setCurrentInstitutionId,

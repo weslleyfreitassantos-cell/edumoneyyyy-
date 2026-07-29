@@ -39,6 +39,7 @@ interface InstitutionContextType {
   currentInstitutionId: string | null;
   currentRole: string | null;
   isLoading: boolean;
+  isSwitchingInstitution: boolean;
   error: Error | null;
   hasMultipleInstitutions: boolean;
   setCurrentInstitutionId: (
@@ -142,6 +143,10 @@ export function InstitutionProvider({
     currentInstitutionId,
     setCurrentInstitutionIdState,
   ] = useState<string | null>(null);
+  const [
+    isSwitchingInstitution,
+    setIsSwitchingInstitution,
+  ] = useState(false);
   const selectionRequestRef = useRef(0);
 
   useEffect(() => {
@@ -221,10 +226,10 @@ export function InstitutionProvider({
   );
 
   const selectAuthorizedInstitution = useCallback(
-    (
+    async (
       institutionId: string,
       authorizedInstitutions: UserInstitution[],
-    ): SelectInstitutionResult => {
+    ): Promise<SelectInstitutionResult> => {
       if (!profile?.id) {
         return {
           success: false,
@@ -268,11 +273,32 @@ export function InstitutionProvider({
           Boolean(value),
       );
 
-      void queryClient.invalidateQueries({
+      await queryClient.cancelQueries({
         predicate: (query) =>
           queryKeyContainsInstitution(
             query.queryKey,
             institutionIds,
+          ),
+      });
+
+      if (
+        previousInstitutionId &&
+        previousInstitutionId !== institutionId
+      ) {
+        queryClient.removeQueries({
+          predicate: (query) =>
+            queryKeyContainsInstitution(
+              query.queryKey,
+              [previousInstitutionId],
+            ),
+        });
+      }
+
+      await queryClient.invalidateQueries({
+        predicate: (query) =>
+          queryKeyContainsInstitution(
+            query.queryKey,
+            [institutionId],
           ),
       });
 
@@ -290,77 +316,94 @@ export function InstitutionProvider({
 
   const setCurrentInstitutionId = useCallback(
     async (institutionId: string) => {
+      if (institutionId === currentInstitutionId) {
+        return {
+          success: true,
+          institutionId,
+        } as const;
+      }
+
       const requestId =
         selectionRequestRef.current + 1;
       selectionRequestRef.current = requestId;
-
-      const selectedFromCurrentList =
-        selectAuthorizedInstitution(
-          institutionId,
-          institutions,
-        );
-
-      if (selectedFromCurrentList.success) {
-        return selectedFromCurrentList;
-      }
-
-      if (
-        selectedFromCurrentList.reason ===
-        'NOT_AUTHORIZED'
-      ) {
-        return selectedFromCurrentList;
-      }
-
-      let refreshedInstitutions:
-        | Awaited<
-            ReturnType<
-              typeof institutionsQuery.refetch
-            >
-          >
-        | null = null;
+      setIsSwitchingInstitution(true);
 
       try {
-        refreshedInstitutions =
-          await institutionsQuery.refetch();
-      } catch (error) {
-        return {
-          success: false,
-          reason: 'REFETCH_FAILED',
-          message:
-            error instanceof Error
-              ? error.message
-              : 'Nao foi possivel atualizar a lista de instituicoes.',
-        };
-      }
+        const selectedFromCurrentList =
+          await selectAuthorizedInstitution(
+            institutionId,
+            institutions,
+          );
 
-      if (
-        selectionRequestRef.current !== requestId
-      ) {
-        return {
-          success: false,
-          reason: 'NOT_FOUND',
-          message:
-            'A selecao foi substituida por uma tentativa mais recente.',
-        };
-      }
+        if (selectedFromCurrentList.success) {
+          return selectedFromCurrentList;
+        }
 
-      if (refreshedInstitutions.error) {
-        return {
-          success: false,
-          reason: 'REFETCH_FAILED',
-          message:
-            refreshedInstitutions.error instanceof Error
-              ? refreshedInstitutions.error.message
-              : 'Nao foi possivel atualizar a lista de instituicoes.',
-        };
-      }
+        if (
+          selectedFromCurrentList.reason ===
+          'NOT_AUTHORIZED'
+        ) {
+          return selectedFromCurrentList;
+        }
 
-      return selectAuthorizedInstitution(
-        institutionId,
-        refreshedInstitutions.data ?? [],
-      );
+        let refreshedInstitutions:
+          | Awaited<
+              ReturnType<
+                typeof institutionsQuery.refetch
+              >
+            >
+          | null = null;
+
+        try {
+          refreshedInstitutions =
+            await institutionsQuery.refetch();
+        } catch (error) {
+          return {
+            success: false,
+            reason: 'REFETCH_FAILED',
+            message:
+              error instanceof Error
+                ? error.message
+                : 'Nao foi possivel atualizar a lista de instituicoes.',
+          };
+        }
+
+        if (
+          selectionRequestRef.current !== requestId
+        ) {
+          return {
+            success: false,
+            reason: 'NOT_FOUND',
+            message:
+              'A selecao foi substituida por uma tentativa mais recente.',
+          };
+        }
+
+        if (refreshedInstitutions.error) {
+          return {
+            success: false,
+            reason: 'REFETCH_FAILED',
+            message:
+              refreshedInstitutions.error instanceof Error
+                ? refreshedInstitutions.error.message
+                : 'Nao foi possivel atualizar a lista de instituicoes.',
+          };
+        }
+
+        return selectAuthorizedInstitution(
+          institutionId,
+          refreshedInstitutions.data ?? [],
+        );
+      } finally {
+        if (
+          selectionRequestRef.current === requestId
+        ) {
+          setIsSwitchingInstitution(false);
+        }
+      }
     },
     [
+      currentInstitutionId,
       institutions,
       institutionsQuery.refetch,
       selectAuthorizedInstitution,
@@ -394,9 +437,11 @@ export function InstitutionProvider({
           null,
         isLoading:
           Boolean(profile?.id) &&
-          (institutionsQuery.isLoading ||
+          (isSwitchingInstitution ||
+            institutionsQuery.isLoading ||
             (institutionsQuery.isFetching &&
               !selectedInstitutionLink)),
+        isSwitchingInstitution,
         error:
           institutionsQuery.error instanceof Error
             ? institutionsQuery.error
@@ -414,6 +459,7 @@ export function InstitutionProvider({
         institutionsQuery.isFetching,
         institutionsQuery.isLoading,
         institutionsQuery.refetch,
+        isSwitchingInstitution,
         profile?.id,
         selectedInstitutionLink,
         setCurrentInstitutionId,

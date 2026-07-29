@@ -86,6 +86,9 @@ const sectionLabels: Record<
 
 const hiddenSectionLabels: readonly NavigationSection[] = [
   'global',
+  'account',
+  'school',
+  'personal',
 ];
 
 const baseNavigationItems: readonly SidebarNavigationItem[] = [
@@ -387,12 +390,6 @@ export default function Sidebar({
 
     return (
       <div className="mb-5 last:mb-0">
-        {!isSuperAdmin && (
-          <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-            {sectionLabels.school}
-          </p>
-        )}
-
         <div className="space-y-3">
           {!isSuperAdmin && (
             <Link
@@ -430,9 +427,6 @@ export default function Sidebar({
 
           {adminModuleGroups.map((group) => (
             <div key={group.id}>
-              <p className="mb-1 px-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[#667085]">
-                {group.label}
-              </p>
               <div className="space-y-1">
                 {group.modules.map(
                   renderAdminModuleLink,

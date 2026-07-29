@@ -426,16 +426,32 @@ export default function AccountPage() {
             </div>
           ) : (
             <div className="divide-y divide-[#dfe3e8]">
-              {account.institutions.map((institution) => (
+              {account.institutions.map((institution) => {
+                const isCurrentInstitution =
+                  institution.id ===
+                  institutionContext.currentInstitutionId;
+
+                return (
                 <div
                   key={institution.id}
-                  className="p-4"
+                  className={`p-4 ${
+                    isCurrentInstitution
+                      ? 'bg-blue-50/60'
+                      : ''
+                  }`}
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <p className="font-semibold text-[#181c20]">
-                        {institution.name}
-                      </p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="font-semibold text-[#181c20]">
+                          {institution.name}
+                        </p>
+                        {isCurrentInstitution && (
+                          <span className="rounded-full bg-[#e8eeff] px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#cbd6ff]">
+                            Selecionada
+                          </span>
+                        )}
+                      </div>
                       <p className="text-xs text-[#727785]">
                         {institution.active === false
                           ? 'Inativa'
@@ -445,20 +461,24 @@ export default function AccountPage() {
                     <div className="flex flex-wrap gap-2">
                       <button
                         type="button"
+                        disabled={isCurrentInstitution}
                         onClick={() =>
                           void handleSelectInstitution(
                             institution.id,
                             true,
                           )
                         }
-                        className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f]"
+                        className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-default disabled:bg-[#d8deea] disabled:text-[#414754]"
                       >
-                        Entrar
+                        {isCurrentInstitution
+                          ? 'Selecionada'
+                          : 'Entrar'}
                       </button>
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </section>

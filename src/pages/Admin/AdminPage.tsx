@@ -221,15 +221,15 @@ export default function AdminPage() {
     <div className="space-y-6">
       <header>
         <h2 className="text-2xl font-bold text-[#181c20] dark:text-[#f8fafc]">
-          Gestão institucional
+          {institutionQuery.currentInstitution?.name ??
+            'Carregando escola...'}
         </h2>
-
-        <p className="text-sm text-[#727785] dark:text-[#cbd5e1]">
-          Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
-        </p>
       </header>
 
-      <section className="min-w-0">
+      <section
+        key={institutionQuery.currentInstitutionId ?? 'no-institution'}
+        className="min-w-0"
+      >
         {renderModule()}
       </section>
     </div>

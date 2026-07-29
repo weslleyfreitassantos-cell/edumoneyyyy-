@@ -144,6 +144,7 @@ function mockContexts(
     currentRole:
       overrides.currentRole ?? 'ADMIN',
     isLoading: false,
+    isSwitchingInstitution: false,
     error: null,
     hasMultipleInstitutions: false,
     setCurrentInstitutionId: vi.fn(
@@ -199,8 +200,8 @@ describe('getRouteVisualContext', () => {
     expect(
       getRouteVisualContext('/admin', 'director'),
     ).toEqual({
-      section: 'Administração',
-      title: 'Gestão institucional',
+      section: '',
+      title: '',
     });
     expect(
       getRouteVisualContext('/dashboard', 'parent'),
@@ -246,10 +247,10 @@ describe('AppShell', () => {
     renderShell('/admin');
 
     expect(
-      screen.getByRole('heading', {
-        name: /gest/i,
+      screen.queryByRole('heading', {
+        name: /gestão institucional/i,
       }),
-    ).toBeTruthy();
+    ).toBeNull();
     expect(
       screen.getByText('Conteudo da rota'),
     ).toBeTruthy();
@@ -412,8 +413,10 @@ describe('AppShell', () => {
     renderShell('/admin?module=subjects');
 
     expect(
-      screen.queryByText('Escola do Saber'),
-    ).toBeNull();
+      screen.getByRole('heading', {
+        name: 'Escola do Saber',
+      }),
+    ).toBeTruthy();
     expect(
       screen.queryByText('Escola selecionada'),
     ).toBeNull();
