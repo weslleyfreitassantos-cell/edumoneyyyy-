@@ -1407,9 +1407,9 @@ export default function PlatformPage() {
                   <col className="w-[13%]" />
                   <col className="w-[17%]" />
                   <col className="w-[8%]" />
-                  <col className="w-[7%]" />
+                  <col className="w-[5%]" />
                   <col className="w-[13%]" />
-                  <col className="w-[30%]" />
+                  <col className="w-[32%]" />
                   <col className="w-[12%]" />
                 </colgroup>
                 <thead className="bg-[#f3f4f5] text-[11px] uppercase leading-4 text-[#444651]">
@@ -1516,16 +1516,16 @@ export default function PlatformPage() {
                         </td>
                         <td className="px-3 py-4 text-center">
                           <div
-                            className="mx-auto w-16"
+                            className="mx-auto w-9"
                             aria-label={`Uso de ${account.name}: ${account.activeInstitutionCount} de ${account.institutionLimit}, ${usagePercent}%`}
                           >
                             <span className="block text-xs font-semibold text-[#444651] dark:text-[#cbd5e1]">
                               {account.activeInstitutionCount}/
                               {account.institutionLimit}
                             </span>
-                            <div className="mt-1.5 h-1.5 rounded-full bg-[#edeeef] dark:bg-[#334155]">
+                            <div className="mx-auto mt-1.5 h-1 w-8 rounded-full bg-[#edeeef] dark:bg-[#334155]">
                               <div
-                                className="h-1.5 rounded-full bg-[#006c49]"
+                                className="h-1 rounded-full bg-[#006c49]"
                                 style={{
                                   width: `${usagePercent}%`,
                                 }}
