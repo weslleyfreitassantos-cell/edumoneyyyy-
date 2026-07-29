@@ -387,10 +387,9 @@ export default function UnifiedUserInvitePreview({
 
       <form
         onSubmit={handleSubmit}
-        className="mt-5 grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_minmax(280px,0.7fr)]"
+        className="mt-5 space-y-6"
       >
-        <div className="space-y-5">
-          <div>
+        <div>
             <p className="text-sm font-semibold text-[#414754]">
               Tipo de usuario
             </p>
@@ -453,19 +452,19 @@ export default function UnifiedUserInvitePreview({
             />
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-2">
-            <fieldset
-              disabled={
-                inviteMutation.isPending ||
-                !canManageSchoolUsers ||
-                !hasActiveInstitution
-              }
-              className="space-y-3 rounded-lg border border-[#dfe3e8] p-4"
-            >
-              <legend className="px-1 text-sm font-bold text-[#181c20]">
-                Dados basicos
-              </legend>
-
+        <fieldset
+          disabled={
+            inviteMutation.isPending ||
+            !canManageSchoolUsers ||
+            !hasActiveInstitution
+          }
+          className="rounded-lg border border-[#dfe3e8] p-4"
+        >
+          <legend className="px-1 text-sm font-bold text-[#181c20]">
+            Dados basicos
+          </legend>
+          <div className="mt-2 grid gap-4 sm:grid-cols-2">
+            <div>
               <label
                 htmlFor="unified-invite-full-name"
                 className="block text-sm font-medium text-[#414754]"
@@ -482,7 +481,7 @@ export default function UnifiedUserInvitePreview({
                     event.target.value,
                   )
                 }
-                className="w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
               />
               <FieldError
                 message={getFieldError(
@@ -490,7 +489,8 @@ export default function UnifiedUserInvitePreview({
                   'fullName',
                 )}
               />
-
+            </div>
+            <div>
               <label
                 htmlFor="unified-invite-email"
                 className="block text-sm font-medium text-[#414754]"
@@ -507,7 +507,7 @@ export default function UnifiedUserInvitePreview({
                     event.target.value,
                   )
                 }
-                className="w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
               />
               <FieldError
                 message={getFieldError(
@@ -515,54 +515,9 @@ export default function UnifiedUserInvitePreview({
                   'email',
                 )}
               />
-            </fieldset>
-
-            <fieldset
-              disabled
-              className="space-y-3 rounded-lg border border-[#dfe3e8] p-4"
-            >
-              <legend className="px-1 text-sm font-bold text-[#181c20]">
-                Vinculo escolar
-              </legend>
-
-              <label
-                htmlFor="unified-invite-role"
-                className="block text-sm font-medium text-[#414754]"
-              >
-                Papel na escola
-              </label>
-              <input
-                id="unified-invite-role"
-                type="text"
-                readOnly
-                value={selectedOption.rolePreview}
-                className="w-full rounded-lg border border-[#dfe3e8] bg-gray-50 px-3 py-2 text-sm text-[#181c20]"
-              />
-
-              <label
-                htmlFor="unified-invite-institution"
-                className="block text-sm font-medium text-[#414754]"
-              >
-                Instituicao ativa
-              </label>
-              <input
-                id="unified-invite-institution"
-                type="text"
-                readOnly
-                value={
-                  currentInstitutionName ??
-                  'Nenhuma escola ativa'
-                }
-                className="w-full rounded-lg border border-[#dfe3e8] bg-gray-50 px-3 py-2 text-sm text-[#181c20]"
-              />
-              <FieldError
-                message={getFieldError(
-                  fieldErrors,
-                  'institutionId',
-                )}
-              />
-            </fieldset>
+            </div>
           </div>
+        </fieldset>
 
           <fieldset
             disabled={
@@ -737,55 +692,49 @@ export default function UnifiedUserInvitePreview({
             )}
 
           </fieldset>
-        </div>
-
-        <aside className="space-y-4">
-          <div className="flex flex-col gap-2">
-            <button
-              type="submit"
-              disabled={submitDisabled}
-              className={`inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
-                submitDisabled
-                  ? 'cursor-not-allowed bg-gray-200 text-gray-500'
-                  : 'bg-[#005bbf] text-white hover:bg-[#004a9f]'
-              }`}
-            >
-              {inviteMutation.isPending ? (
-                <Loader2
-                  className="h-4 w-4 animate-spin"
-                  aria-hidden="true"
-                />
-              ) : (
-                <Send
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                />
-              )}
-              {inviteMutation.isPending
-                ? 'Enviando...'
-                : 'Enviar convite'}
-            </button>
-
-            <button
-              type="button"
-              onClick={resetForm}
-              disabled={inviteMutation.isPending}
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-sm font-semibold text-[#414754] transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
-            >
-              <RotateCcw
+        <div className="flex flex-col-reverse justify-end gap-3 border-t border-[#dfe3e8] pt-5 sm:flex-row sm:items-center">
+          {inviteMutation.isPending && (
+            <p className="mr-auto text-xs leading-relaxed text-[#727785]">
+              Aguarde o retorno da funcao para evitar envio duplicado.
+            </p>
+          )}
+          <button
+            type="button"
+            onClick={resetForm}
+            disabled={inviteMutation.isPending}
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-sm font-semibold text-[#414754] transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            <RotateCcw
+              className="h-4 w-4"
+              aria-hidden="true"
+            />
+            Limpar formulario
+          </button>
+          <button
+            type="submit"
+            disabled={submitDisabled}
+            className={`inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
+              submitDisabled
+                ? 'cursor-not-allowed bg-gray-200 text-gray-500'
+                : 'bg-[#005bbf] text-white hover:bg-[#004a9f]'
+            }`}
+          >
+            {inviteMutation.isPending ? (
+              <Loader2
+                className="h-4 w-4 animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <Send
                 className="h-4 w-4"
                 aria-hidden="true"
               />
-              Limpar formulario
-            </button>
-
-            {inviteMutation.isPending && (
-              <p className="text-xs leading-relaxed text-[#727785]">
-                Aguarde o retorno da funcao para evitar envio duplicado.
-              </p>
             )}
-          </div>
-        </aside>
+            {inviteMutation.isPending
+              ? 'Enviando...'
+              : 'Enviar convite'}
+          </button>
+        </div>
       </form>
     </section>
   );
