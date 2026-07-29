@@ -87,6 +87,10 @@ function accountErrorFromIdentityConflict(
   });
 }
 
+function isLocalhostUrl(url: string): boolean {
+  return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(url);
+}
+
 function getAppUrl(): string {
   const appUrl = Deno.env.get("APP_URL")?.replace(/\/+$/, "");
 
@@ -95,6 +99,14 @@ function getAppUrl(): string {
       status: 500,
       code: "MISSING_APP_URL",
       message: "A URL da aplicacao nao foi configurada.",
+    });
+  }
+
+  if (isLocalhostUrl(appUrl)) {
+    throw new AccountError({
+      status: 500,
+      code: "LOCALHOST_APP_URL",
+      message: "A URL da aplicacao nao pode ser localhost em ambiente de producao.",
     });
   }
 

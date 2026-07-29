@@ -448,3 +448,9 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/update-institution-status/deno.json"
 entrypoint = "./functions/update-institution-status/index.ts"
+
+[functions.restore-client-account]
+enabled = true
+verify_jwt = true
+import_map = "./functions/restore-client-account/deno.json"
+entrypoint = "./functions/restore-client-account/index.ts"
