@@ -40,6 +40,7 @@ jobs:
             create-institution
             update-client-account
             update-institution-status
+            restore-client-account
             delete-client-account
             invite-school-user
           )

@@ -61,20 +61,28 @@ function toFieldErrors(error: z.ZodError): Record<string, string> {
 }
 
 function getUnknownErrorMessage(error: unknown): string {
+  const parts: string[] = [];
+
   if (error instanceof Error) {
-    return error.message;
+    parts.push(error.message);
   }
 
   if (
     typeof error === "object" &&
-    error !== null &&
-    "message" in error &&
-    typeof error.message === "string"
+    error !== null
   ) {
-    return error.message;
+    const errorRecord = error as Record<string, unknown>;
+
+    for (const key of ["message", "details", "hint", "code"]) {
+      const value = errorRecord[key];
+
+      if (typeof value === "string") {
+        parts.push(value);
+      }
+    }
   }
 
-  return "";
+  return parts.join(" ");
 }
 
 function getBusinessErrorCode(error: unknown): string | null {

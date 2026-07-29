@@ -394,7 +394,7 @@ export default function PlatformPage() {
   >({});
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] =
-    useState<StatusFilter>('ALL');
+    useState<StatusFilter>('ACTIVE');
   const [feedback, setFeedback] = useState<
     { type: 'success' | 'error'; message: string } | null
   >(null);
@@ -457,7 +457,7 @@ export default function PlatformPage() {
     return accounts.filter((account) => {
       const matchesStatus =
         statusFilter === 'ALL'
-          ? account.status !== 'CANCELED'
+          ? true
           : statusFilter === 'DELETED'
             ? account.status === 'CANCELED'
             : account.status === statusFilter;
@@ -470,7 +470,7 @@ export default function PlatformPage() {
   }, [accounts, searchTerm, statusFilter]);
 
   const hasActiveFilters =
-    searchTerm.trim().length > 0 || statusFilter !== 'ALL';
+    searchTerm.trim().length > 0 || statusFilter !== 'ACTIVE';
   const closeDialogOwner =
     closeDialog?.account.owner ?? null;
   const closeConfirmationMatches = Boolean(
@@ -563,7 +563,7 @@ export default function PlatformPage() {
 
   function clearFilters(): void {
     setSearchTerm('');
-    setStatusFilter('ALL');
+    setStatusFilter('ACTIVE');
   }
 
   function updateCreateForm(

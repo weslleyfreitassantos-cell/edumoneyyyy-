@@ -556,6 +556,10 @@ describe('PlatformPage', () => {
   it('bloqueia acesso direto a escolas de conta suspensa', () => {
     renderPage();
 
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'SUSPENDED' },
+    });
+
     const suspendedRow = screen
       .getByText('Bia Admin')
       .closest('tr');
@@ -1193,16 +1197,30 @@ describe('PlatformPage', () => {
     expect(screen.queryByText(/24 estados/i)).toBeNull();
   });
 
-  it('Todos exibe apenas ativas e suspensas (oculta excluidas)', () => {
+  it('abre por padrao mostrando somente contas ativas', () => {
     renderPage();
 
     expect(
       screen.getAllByText('Conta Alfa').length,
     ).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(screen.queryByText('Conta Beta')).toBeNull();
     expect(
       screen.queryByText('Conta Encerrada'),
     ).toBeNull();
+  });
+
+  it('Todos exibe ativas, suspensas e excluidas', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
+
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(screen.getByText('Conta Encerrada')).toBeDefined();
   });
 
   it('filtro Excluidos exibe somente excluidas', () => {
@@ -1218,9 +1236,12 @@ describe('PlatformPage', () => {
     expect(screen.queryByText('Conta Beta')).toBeNull();
   });
 
-  it('busca em Todos nao encontra excluida', () => {
+  it('busca em Todos encontra conta excluida', () => {
     renderPage();
 
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
     fireEvent.change(
       screen.getByLabelText('Buscar conta ou instituição'),
       {
@@ -1229,8 +1250,8 @@ describe('PlatformPage', () => {
     );
 
     expect(
-      screen.queryByText('Conta Encerrada'),
-    ).toBeNull();
+      screen.getByText('Conta Encerrada'),
+    ).toBeDefined();
   });
 
   it('busca em Excluidos encontra conta excluida', () => {
