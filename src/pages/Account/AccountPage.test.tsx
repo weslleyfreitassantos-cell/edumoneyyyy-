@@ -23,7 +23,9 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import {
   useCreateInstitution,
+  useDeleteInstitution,
   useOwnedAccount,
+  useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import AccountPage from './AccountPage';
 
@@ -55,6 +57,7 @@ vi.mock('../../hooks/useAccounts', () => ({
   useOwnedAccount: vi.fn(),
   useCreateInstitution: vi.fn(),
   useUpdateInstitutionStatus: vi.fn(),
+  useDeleteInstitution: vi.fn(),
 }));
 
 const brandingHookMock = vi.hoisted(() => ({
@@ -85,12 +88,17 @@ const mockedUseOwnedAccount =
 const mockedUseCreateInstitution =
   vi.mocked(useCreateInstitution);
 const mockedUseUpdateInstitutionStatus = vi.mocked(
-  // @ts-ignore
-  (await import('../../hooks/useAccounts')).useUpdateInstitutionStatus,
+  useUpdateInstitutionStatus,
+);
+const mockedUseDeleteInstitution = vi.mocked(
+  useDeleteInstitution,
 );
 
 const createInstitution = vi.fn();
+const updateInstitutionStatus = vi.fn();
+const deleteInstitution = vi.fn();
 const setCurrentInstitutionId = vi.fn();
+const clearCurrentInstitutionSelection = vi.fn();
 
 function renderPage() {
   render(
@@ -130,7 +138,7 @@ beforeEach(() => {
     error: null,
     hasMultipleInstitutions: false,
     setCurrentInstitutionId,
-    clearCurrentInstitutionSelection: vi.fn(),
+    clearCurrentInstitutionSelection,
     refresh: vi.fn(async () => undefined),
   });
 
@@ -176,10 +184,31 @@ beforeEach(() => {
     typeof useCreateInstitution
   >);
 
+  updateInstitutionStatus.mockResolvedValue({
+    success: true,
+    institutionId: 'institution-1',
+    active: false,
+    currentInstitutionCount: 1,
+    institutionLimit: 3,
+    remainingSlots: 1,
+  });
   mockedUseUpdateInstitutionStatus.mockReturnValue({
-    mutateAsync: vi.fn(),
+    mutateAsync: updateInstitutionStatus,
     isPending: false,
-  } as any);
+  } as unknown as ReturnType<
+    typeof useUpdateInstitutionStatus
+  >);
+
+  deleteInstitution.mockResolvedValue({
+    success: true,
+    institutionId: 'institution-1',
+  });
+  mockedUseDeleteInstitution.mockReturnValue({
+    mutateAsync: deleteInstitution,
+    isPending: false,
+  } as unknown as ReturnType<
+    typeof useDeleteInstitution
+  >);
 
   brandingHookMock.accountBrandingQuery = {
     data: {
@@ -269,12 +298,14 @@ describe('AccountPage', () => {
     ).toBeGreaterThan(0);
     expect(screen.getByText('Escola Sol')).toBeTruthy();
     expect(screen.getAllByText('Ativa')).toHaveLength(2);
-    expect(screen.getByText('Slots restantes')).toBeTruthy();
+    expect(screen.getByText('Licenças restantes')).toBeTruthy();
     expect(
       screen.queryByRole('button', { name: 'Selecionar' }),
     ).toBeNull();
     expect(
-      screen.getByRole('button', { name: 'Entrar' }),
+      screen.getByRole('button', {
+        name: /Entrar em Escola Sol/i,
+      }),
     ).toBeTruthy();
     expect(
       screen.getByRole('heading', {
@@ -282,6 +313,88 @@ describe('AccountPage', () => {
       }),
     ).toBeTruthy();
     expect(screen.getByText('sol.example.com')).toBeTruthy();
+  });
+
+  it('suspender nao libera licenca e excluir remove a instituicao', async () => {
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    mockedUseOwnedAccount.mockReturnValue({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 2,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+          {
+            id: 'institution-2',
+            name: 'Escola Luz',
+            active: false,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    expect(screen.getByText('Licenças restantes')).toBeTruthy();
+    expect(screen.getByText('0')).toBeTruthy();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Suspender Escola Sol/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(updateInstitutionStatus).toHaveBeenCalledWith({
+        institutionId: 'institution-1',
+        active: false,
+      });
+      expect(
+        screen.getByText(
+          /A licença continua ocupada/i,
+        ),
+      ).toBeTruthy();
+    });
+
+    fireEvent.click(
+      await screen.findByRole('button', {
+        name: /Excluir Escola Sol/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(deleteInstitution).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        institutionId: 'institution-1',
+      });
+      expect(
+        screen.getByText(/A licença foi liberada/i),
+      ).toBeTruthy();
+    });
   });
 
   it('entrar seleciona a instituicao e navega para o admin', async () => {
@@ -319,7 +432,9 @@ describe('AccountPage', () => {
     renderPage();
 
     fireEvent.click(
-      screen.getByRole('button', { name: 'Entrar' }),
+      screen.getByRole('button', {
+        name: /Entrar em Escola Sol/i,
+      }),
     );
 
     await waitFor(() => {

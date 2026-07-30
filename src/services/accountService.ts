@@ -153,6 +153,16 @@ export interface UpdateInstitutionStatusResponse {
   remainingSlots: number;
 }
 
+export interface DeleteInstitutionInput {
+  accountId: string;
+  institutionId: string;
+}
+
+export interface DeleteInstitutionResponse {
+  success: true;
+  institutionId: string;
+}
+
 interface AccountQueryRow {
   id: string;
   name: string;
@@ -811,6 +821,25 @@ export const accountService = {
     }
 
     return assertUpdateInstitutionStatusResponse(data);
+  },
+
+  async deleteInstitution(
+    input: DeleteInstitutionInput,
+  ): Promise<DeleteInstitutionResponse> {
+    const { error } = await supabase
+      .from('institutions')
+      .delete()
+      .eq('id', input.institutionId)
+      .eq('account_id', input.accountId);
+
+    if (error) {
+      throw error;
+    }
+
+    return {
+      success: true,
+      institutionId: input.institutionId,
+    };
   },
 
   async deleteAccount(
