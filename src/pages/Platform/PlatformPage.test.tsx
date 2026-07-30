@@ -24,6 +24,7 @@ const hookMock = vi.hoisted(() => ({
   createAccount: {} as any,
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
+  deleteInstitution: {} as any,
   closeAccount: {} as any,
   restoreAccount: {} as any,
   permanentlyDeleteAccount: {} as any,
@@ -36,6 +37,7 @@ const hookMock = vi.hoisted(() => ({
   createMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
+  deleteInstitutionMutateAsync: vi.fn(),
   closeMutateAsync: vi.fn(),
   restoreMutateAsync: vi.fn(),
   permanentlyDeleteMutateAsync: vi.fn(),
@@ -58,6 +60,7 @@ vi.mock('../../hooks/useAccounts', () => ({
   useUpdateClientAccount: () => hookMock.updateAccount,
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
+  useDeleteInstitution: () => hookMock.deleteInstitution,
   useCloseClientAccount: () => hookMock.closeAccount,
   useRestoreClientAccount: () => hookMock.restoreAccount,
   useDeleteClientAccount: () =>
@@ -254,6 +257,10 @@ describe('PlatformPage', () => {
       mutateAsync:
         hookMock.updateInstitutionStatusMutateAsync,
     };
+    hookMock.deleteInstitution = {
+      isPending: false,
+      mutateAsync: hookMock.deleteInstitutionMutateAsync,
+    };
     hookMock.closeAccount = {
       isPending: false,
       mutateAsync: hookMock.closeMutateAsync,
@@ -342,6 +349,15 @@ describe('PlatformPage', () => {
       currentInstitutionCount: 1,
       institutionLimit: 3,
       remainingSlots: 2,
+    });
+    hookMock.deleteInstitutionMutateAsync.mockResolvedValue({
+      success: true,
+      institutionId: 'institution-1',
+      accountId: 'account-1',
+      currentInstitutionCount: 2,
+      institutionLimit: 3,
+      remainingSlots: 1,
+      summary: {},
     });
     hookMock.closeMutateAsync.mockResolvedValue({
       success: true,
@@ -917,6 +933,26 @@ describe('PlatformPage', () => {
         institutionId: 'institution-3',
         active: true,
       });
+    });
+
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir Escola Alpha/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.deleteInstitutionMutateAsync,
+      ).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        institutionId: 'institution-1',
+      });
+      expect(
+        screen.getByText(/licen.a foi liberada/i),
+      ).toBeDefined();
     });
   });
 
