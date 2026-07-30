@@ -41,6 +41,14 @@ function getLoginErrorMessage(error: unknown): string {
     return 'E-mail ou senha incorretos.';
   }
 
+  if (
+    message.includes('nao tem acesso') ||
+    message.includes('no access') ||
+    message.includes('accountaccessblocked')
+  ) {
+    return 'Voce nao tem acesso a esta plataforma. Procure a administracao da sua instituicao.';
+  }
+
   if (message.includes('email not confirmed')) {
     return 'Confirme seu e-mail antes de entrar.';
   }
