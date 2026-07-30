@@ -513,25 +513,25 @@ export default function AccountPage() {
                 return (
                 <div
                   key={institution.id}
-                  className={`p-4 ${
+                  className={`p-4 transition-colors ${
                     isCurrentInstitution
-                      ? 'bg-blue-50/60'
-                      : ''
+                      ? 'bg-[#e8f0ff] dark:bg-[#1e3a5f]/80'
+                      : 'dark:bg-transparent'
                   }`}
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
-                        <p className="font-semibold text-[#181c20]">
+                        <p className="font-semibold text-[#181c20] dark:text-[#f8fafc]">
                           {institution.name}
                         </p>
                         {isCurrentInstitution && (
-                          <span className="rounded-full bg-[#e8eeff] px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#cbd6ff]">
+                          <span className="rounded-full bg-[#dce8ff] px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#b7c8ff] dark:bg-[#0f2f63] dark:text-[#dbeafe] dark:ring-[#60a5fa]/40">
                             Selecionada
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-[#727785]">
+                      <p className="text-xs text-[#727785] dark:text-[#cbd5e1]">
                         {institution.active === false
                           ? 'Inativa'
                           : 'Ativa'}
@@ -557,7 +557,7 @@ export default function AccountPage() {
                             ? 'Selecionada'
                             : 'Entrar'
                         }
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#005bbf] text-white hover:bg-[#004a9f] disabled:cursor-default disabled:bg-[#d8deea] disabled:text-[#414754]"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#005bbf] text-white hover:bg-[#004a9f] disabled:cursor-default disabled:bg-[#d8deea] disabled:text-[#414754] dark:disabled:bg-[#334155] dark:disabled:text-[#e2e8f0]"
                       >
                         <DoorOpen className="h-4 w-4" />
                         <span className="sr-only">
