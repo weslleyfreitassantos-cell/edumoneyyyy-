@@ -217,6 +217,18 @@ export default function UnifiedUserInvitePreview({
   }, [selectedTarget]);
 
   useEffect(() => {
+    if (!feedback) {
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      setFeedback(null);
+    }, 6000);
+
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
+
+  useEffect(() => {
     if (
       allowedTargets.length > 0 &&
       !allowedTargets.includes(selectedTarget)
