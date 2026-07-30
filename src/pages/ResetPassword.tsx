@@ -2,6 +2,7 @@ import {
   useEffect,
   useRef,
   useState,
+  type CSSProperties,
   type FormEvent,
 } from 'react';
 import {
@@ -24,8 +25,11 @@ import {
   authPrimaryActionLinkClass,
   authSecondaryActionClass,
 } from '../components/auth/AuthLayout';
+import { useResolvedBranding } from '../hooks/useBranding';
 import { supabase } from '../lib/supabaseClient';
 import { validatePasswordConfirmation } from '../schemas/authSchemas';
+import { FALLBACK_BRANDING } from '../services/brandingService';
+import { applyDocumentBranding } from '../services/documentBranding';
 
 const recoveryContextKey = 'password_recovery_context';
 const recoveryContextTtlMs = 10 * 60 * 1000;
@@ -261,7 +265,6 @@ async function validateRecoveryFromCurrentLocation(): Promise<RecoveryContext> {
   }
 
   clearRecoveryContext();
-  await signOutLocal();
 
   if (confirmation.kind === 'session') {
     const { error } = await supabase.auth.setSession({
@@ -312,6 +315,72 @@ export default function ResetPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(
     null,
+  );
+  const brandingQuery = useResolvedBranding();
+  const branding = brandingQuery.data ?? FALLBACK_BRANDING;
+  const displayName =
+    brandingQuery.data?.displayName ??
+    branding.displayName ??
+    'EduManager Pro';
+
+  useEffect(
+    () => applyDocumentBranding(branding),
+    [
+      branding.displayName,
+      branding.faviconUrl,
+      branding.primaryColor,
+      branding.secondaryColor,
+    ],
+  );
+
+  const brandStyle: CSSProperties = {
+    '--brand-primary': branding.primaryColor,
+    '--brand-secondary': branding.secondaryColor,
+  };
+
+  const footer = (
+    <div className="space-y-1">
+      <p className="font-medium text-slate-700 dark:text-slate-300">
+        Educacao que transforma. Tecnologia que aproxima.
+      </p>
+      <p className="text-slate-500 dark:text-slate-400">
+        2026 {displayName}. Todos os direitos reservados.
+      </p>
+    </div>
+  );
+
+  const brandHeader = (
+    <div className="mb-4 flex flex-col items-center">
+      <div className="flex min-h-[36px] items-center justify-center">
+        {branding.logoUrl ? (
+          <img
+            src={branding.logoUrl}
+            alt={`Logo de ${displayName}`}
+            className="max-h-[120px] max-w-[250px] object-contain sm:max-h-[140px] sm:max-w-[290px]"
+          />
+        ) : (
+          <div
+            className="h-12 w-32 rounded-2xl border border-dashed border-blue-200 bg-blue-50/50 dark:border-slate-700 dark:bg-slate-800/50"
+            aria-hidden="true"
+          />
+        )}
+      </div>
+
+      {branding.displayName && (
+        <p className="mt-1 text-center text-sm font-bold text-slate-800 dark:text-slate-100">
+          {branding.displayName}
+        </p>
+      )}
+
+      <div
+        className="mx-auto mt-1 h-[4px] w-12 rounded-full"
+        style={{
+          backgroundImage:
+            'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+        }}
+        aria-hidden="true"
+      />
+    </div>
   );
 
   useEffect(() => {
@@ -451,7 +520,12 @@ export default function ResetPassword() {
 
   if (isChecking) {
     return (
-      <AuthShell>
+      <AuthShell
+        heroVariant="default"
+        layoutVariant="login"
+        showBrand={false}
+        footer={footer}
+      >
         <AuthStatusPanel
           icon={Loader2}
           title="Validando link de recuperacao..."
@@ -463,7 +537,12 @@ export default function ResetPassword() {
 
   if (successMessage) {
     return (
-      <AuthShell>
+      <AuthShell
+        heroVariant="default"
+        layoutVariant="login"
+        showBrand={false}
+        footer={footer}
+      >
         <AuthStatusPanel
           icon={CheckCircle2}
           variant="success"
@@ -483,7 +562,12 @@ export default function ResetPassword() {
 
   if (pageError || !recoveryContext) {
     return (
-      <AuthShell>
+      <AuthShell
+        heroVariant="default"
+        layoutVariant="login"
+        showBrand={false}
+        footer={footer}
+      >
         <AuthStatusPanel
           icon={ShieldAlert}
           variant="error"
@@ -513,85 +597,94 @@ export default function ResetPassword() {
   }
 
   return (
-    <AuthShell>
-      <AuthPageHeader
-        icon={KeyRound}
-        title="Definir nova senha"
-        description="Use pelo menos 8 caracteres para atualizar sua senha com seguranca."
-      />
+    <AuthShell
+      heroVariant="default"
+      layoutVariant="login"
+      showBrand={false}
+      footer={footer}
+    >
+      <div style={brandStyle}>
+        {brandHeader}
 
-      <div className="mb-6 rounded-lg border border-[#dce1ff] bg-[#f4f6ff] px-4 py-3 text-sm leading-5 text-[#264191]">
-        Redefinindo senha para:{' '}
-        <strong>{recoveryContext.email}</strong>
-      </div>
-
-      <form
-        onSubmit={(event) => void handleSubmit(event)}
-        noValidate
-        className="space-y-5"
-      >
-        {formError && (
-          <AuthAlert variant="error">{formError}</AuthAlert>
-        )}
-
-        <AuthPasswordInput
-          id="recovery-password"
-          label="Nova senha"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          autoComplete="new-password"
-          minLength={8}
-          required
-          isVisible={showPassword}
-          onToggleVisibility={() =>
-            setShowPassword((current) => !current)
-          }
-          showLabel="Mostrar nova senha"
-          hideLabel="Ocultar nova senha"
+        <AuthPageHeader
+          icon={KeyRound}
+          title="Definir nova senha"
+          description="Use pelo menos 8 caracteres para atualizar sua senha com seguranca."
         />
 
-        <AuthPasswordInput
-          id="recovery-password-confirmation"
-          label="Confirmar nova senha"
-          value={passwordConfirmation}
-          onChange={(event) =>
-            setPasswordConfirmation(event.target.value)
-          }
-          autoComplete="new-password"
-          minLength={8}
-          required
-          isVisible={showPasswordConfirmation}
-          onToggleVisibility={() =>
-            setShowPasswordConfirmation((current) => !current)
-          }
-          showLabel="Mostrar confirmacao da senha"
-          hideLabel="Ocultar confirmacao da senha"
-        />
+        <div className="mb-6 rounded-lg border border-[#dce1ff] bg-[#f4f6ff] px-4 py-3 text-sm leading-5 text-[#264191] dark:border-[#334155] dark:bg-[#111c2e] dark:text-[#dbeafe]">
+          Redefinindo senha para:{' '}
+          <strong>{recoveryContext.email}</strong>
+        </div>
 
-        <p className="rounded-lg bg-[#f3f4f5] px-3 py-2 text-xs leading-5 text-[#444651]">
-          Criterio de senha: minimo de 8 caracteres.
-        </p>
-
-        <AuthButton
-          type="submit"
-          loading={isSubmitting}
-          icon={Save}
+        <form
+          onSubmit={(event) => void handleSubmit(event)}
+          noValidate
+          className="space-y-5"
         >
-          {isSubmitting ? 'Atualizando...' : 'Atualizar senha'}
-        </AuthButton>
-      </form>
+          {formError && (
+            <AuthAlert variant="error">{formError}</AuthAlert>
+          )}
 
-      <div className="mt-6 border-t border-[#c5c5d3] pt-6 text-center">
-        <Link
-          to="/login"
-          className={authPlainLinkClass}
-        >
-          <ArrowLeft
-            className="h-4 w-4"
-            aria-hidden="true"
+          <AuthPasswordInput
+            id="recovery-password"
+            label="Nova senha"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            autoComplete="new-password"
+            minLength={8}
+            required
+            isVisible={showPassword}
+            onToggleVisibility={() =>
+              setShowPassword((current) => !current)
+            }
+            showLabel="Mostrar nova senha"
+            hideLabel="Ocultar nova senha"
           />
-          Voltar para o login
-        </Link>
+
+          <AuthPasswordInput
+            id="recovery-password-confirmation"
+            label="Confirmar nova senha"
+            value={passwordConfirmation}
+            onChange={(event) =>
+              setPasswordConfirmation(event.target.value)
+            }
+            autoComplete="new-password"
+            minLength={8}
+            required
+            isVisible={showPasswordConfirmation}
+            onToggleVisibility={() =>
+              setShowPasswordConfirmation((current) => !current)
+            }
+            showLabel="Mostrar confirmacao da senha"
+            hideLabel="Ocultar confirmacao da senha"
+          />
+
+          <p className="rounded-lg bg-[#f3f4f5] px-3 py-2 text-xs leading-5 text-[#444651] dark:bg-[#111827] dark:text-[#cbd5e1]">
+            Criterio de senha: minimo de 8 caracteres.
+          </p>
+
+          <AuthButton
+            type="submit"
+            loading={isSubmitting}
+            icon={Save}
+          >
+            {isSubmitting ? 'Atualizando...' : 'Atualizar senha'}
+          </AuthButton>
+        </form>
+
+        <div className="mt-6 border-t border-[#c5c5d3] pt-6 text-center dark:border-[#334155]">
+          <Link
+            to="/login"
+            className={authPlainLinkClass}
+          >
+            <ArrowLeft
+              className="h-4 w-4"
+              aria-hidden="true"
+            />
+            Voltar para o login
+          </Link>
+        </div>
       </div>
     </AuthShell>
   );
