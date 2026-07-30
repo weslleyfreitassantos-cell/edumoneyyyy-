@@ -149,6 +149,49 @@ describe("SetPassword", () => {
     });
   });
 
+  it("should explain when password is missing uppercase letter", async () => {
+    sessionStorage.setItem(
+      "invite_context",
+      JSON.stringify({
+        userId: "user-123",
+        email: "test@example.com",
+        verifiedAt: Date.now(),
+        purpose: "invite",
+      })
+    );
+
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <SetPassword />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText(/Defina sua senha/i)).toBeDefined();
+    });
+
+    fireEvent.change(screen.getByLabelText(/Nova senha/i), {
+      target: { value: "12345678p@" },
+    });
+    fireEvent.change(screen.getByLabelText(/Confirme a senha/i), {
+      target: { value: "12345678p@" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Definir senha e acessar/i }));
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/pelo menos uma letra maiuscula/i)
+      ).toBeDefined();
+    });
+    expect(supabase.auth.updateUser).not.toHaveBeenCalled();
+  });
+
   it("should not expose internal update errors", async () => {
     sessionStorage.setItem(
       "invite_context",
