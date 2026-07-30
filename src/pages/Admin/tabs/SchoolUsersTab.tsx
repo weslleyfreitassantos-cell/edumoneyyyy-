@@ -403,35 +403,6 @@ export default function SchoolUsersTab() {
     [searchTerm, selectedRole, users],
   );
 
-  const canManageSchoolUsers =
-    hasEffectivePermission({
-      platformRole: profile?.platform_role,
-      membershipRole:
-        institutionQuery.currentRole,
-      profileRole: profile?.role,
-      permission: 'manage_school_users',
-    });
-
-  const canOpenNewUserForm =
-    canManageSchoolUsers &&
-    Boolean(institutionId);
-
-  const newUserTitle =
-    canOpenNewUserForm
-      ? 'Abrir cadastro unificado de usuarios.'
-      : 'Seu papel efetivo nesta instituicao ainda nao permite gerenciar usuarios da escola.';
-
-  function focusUnifiedInviteForm(): void {
-    document
-      .getElementById(
-        'unified-user-invite-preview',
-      )
-      ?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-  }
-
   if (institutionQuery.isLoading) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
@@ -455,39 +426,6 @@ export default function SchoolUsersTab() {
 
   return (
     <div className="space-y-5">
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-[#181c20]">
-              Usuários da Escola
-            </h3>
-
-            <p className="mt-1 text-sm text-[#727785]">
-              Vínculos atuais da instituição com base em memberships e profiles.
-            </p>
-          </div>
-
-          <div className="lg:max-w-sm lg:text-right">
-            <button
-              type="button"
-              disabled={!canOpenNewUserForm}
-              title={newUserTitle}
-              onClick={focusUnifiedInviteForm}
-              className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
-                canOpenNewUserForm
-                  ? 'bg-[#005bbf] text-white hover:bg-[#004a9f]'
-                  : 'cursor-not-allowed bg-gray-200 text-gray-500'
-              }`}
-            >
-              <PlusCircle
-                className="h-4 w-4"
-                aria-hidden="true"
-              />
-              Novo usuário
-            </button>
-          </div>
-        </div>
-      </section>
 
       <UnifiedUserInvitePreview
         institutionId={institutionId}
