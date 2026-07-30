@@ -198,7 +198,9 @@ export default {
         const { data: account, error: accountError } =
           await ctx.supabaseAdmin
             .from("accounts")
-            .select("id, institution_limit")
+            .select(
+              "id, owner_profile_id, institution_limit, status",
+            )
             .eq("id", institution.account_id)
             .maybeSingle();
 
@@ -216,13 +218,24 @@ export default {
 
         const isSuperAdmin =
           requester.platform_role === "SUPER_ADMIN";
+        const isOwner =
+          account.owner_profile_id === user.id;
 
-        if (!isSuperAdmin) {
+        if (!isSuperAdmin && !isOwner) {
           throw new InstitutionStatusError({
             status: 403,
-            code: "SUPER_ADMIN_REQUIRED",
+            code: "PERMISSION_DENIED",
             message:
-              "Apenas SUPER_ADMIN pode alterar instituicoes pela Plataforma.",
+              "Apenas SUPER_ADMIN ou o ADMIN da conta pode alterar o status da instituicao.",
+          });
+        }
+
+        if (!isSuperAdmin && account.status !== "ACTIVE") {
+          throw new InstitutionStatusError({
+            status: 409,
+            code: "ACCOUNT_NOT_ACTIVE",
+            message:
+              "Conta suspensa ou cancelada nao pode alterar instituicoes.",
           });
         }
 

@@ -204,8 +204,15 @@ export default function AccountPage() {
 
   async function changeInstitutionStatus(
     institutionId: string,
+    institutionName: string,
     active: boolean,
   ): Promise<void> {
+    const actionLabel = active ? 'reativar' : 'suspender';
+    const confirmMessage = `Tem certeza de que deseja ${actionLabel} a instituição "${institutionName}"?`;
+    if (!window.confirm(confirmMessage)) {
+      return;
+    }
+
     try {
       setFeedback(null);
       await updateInstitutionStatusMutation.mutateAsync({
@@ -470,6 +477,7 @@ export default function AccountPage() {
                           onClick={() =>
                             void changeInstitutionStatus(
                               institution.id,
+                              institution.name,
                               institution.active === false,
                             )
                           }
