@@ -916,6 +916,11 @@ describe('PlatformPage', () => {
         active: false,
       });
       expect(
+        screen.getByRole('button', {
+          name: /Reativar Escola Alpha/i,
+        }),
+      ).toBeDefined();
+      expect(
         screen.getByText(/Hist.rico acad.mico preservado/i),
       ).toBeDefined();
     });
@@ -953,6 +958,7 @@ describe('PlatformPage', () => {
       expect(
         screen.getByText(/licen.a foi liberada/i),
       ).toBeDefined();
+      expect(screen.queryByText('Escola Alpha')).toBeNull();
     });
   });
 
