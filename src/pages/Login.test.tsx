@@ -304,6 +304,40 @@ describe('Login', () => {
     ).toBeDefined();
   });
 
+  it('exibe bloqueio de acesso institucional no login', async () => {
+    authMock.signIn.mockRejectedValueOnce(
+      new Error(
+        'Voce nao tem acesso a esta plataforma. Procure a administracao da sua instituicao.',
+      ),
+    );
+
+    renderLogin();
+
+    fireEvent.change(
+      screen.getByLabelText(/E-mail institucional/i),
+      {
+        target: { value: 'sem-acesso@example.com' },
+      },
+    );
+    fireEvent.change(screen.getByLabelText('Senha'), {
+      target: { value: 'StrongPass123!' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Entrar no sistema/i,
+      }),
+    );
+
+    expect(
+      await screen.findByText(
+        /Voce nao tem acesso a esta plataforma/i,
+      ),
+    ).toBeDefined();
+    expect(
+      screen.queryByText(/Nao foi possivel entrar/i),
+    ).toBeNull();
+  });
+
   it('alterna a visibilidade da senha com botao acessivel', () => {
     renderLogin();
 
