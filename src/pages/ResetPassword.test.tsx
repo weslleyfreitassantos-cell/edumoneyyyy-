@@ -36,6 +36,23 @@ vi.mock('../contexts/ThemeContext', () => ({
   useThemePreference: () => ({ theme: 'light' }),
 }));
 
+vi.mock('../hooks/useBranding', () => ({
+  useResolvedBranding: () => ({
+    data: {
+      displayName: 'EduManager Pro',
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: '#1e3a8a',
+      secondaryColor: '#6ffbbe',
+    },
+    isLoading: false,
+  }),
+}));
+
+vi.mock('../services/documentBranding', () => ({
+  applyDocumentBranding: vi.fn(),
+}));
+
 const recoveryUser = {
   id: 'user-123',
   email: 'user@example.com',
@@ -246,6 +263,7 @@ describe('ResetPassword', () => {
       expect(
         sessionStorage.getItem('password_recovery_context'),
       ).toBeTruthy();
+      expect(supabase.auth.signOut).not.toHaveBeenCalled();
     });
   });
 
