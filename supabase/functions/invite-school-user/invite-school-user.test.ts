@@ -22,4 +22,25 @@ describe('invite-school-user', () => {
     expect(source).toContain('redirectTo');
     expect(source).toContain('/auth/confirm');
   });
+
+  it('authorizes by account ownership or active membership role', () => {
+    expect(source).toContain('owner_profile_id');
+    expect(source).toContain('isAccountOwner');
+    expect(source).toContain('activeMemberships');
+    expect(source).toContain('directorMembership');
+    expect(source).toContain('secretaryMembership');
+  });
+
+  it('does not block school invites by institution quota', () => {
+    expect(source).not.toContain('institution_limit');
+    expect(source).not.toContain('remainingSlots');
+  });
+
+  it('maps known failures to public status codes', () => {
+    expect(source).toContain('DATABASE_PERMISSION_DENIED');
+    expect(source).toContain('INVITE_CONFLICT');
+    expect(source).toContain('INVALID_INVITE_RELATION');
+    expect(source).toContain('INVITE_EMAIL_DELIVERY_FAILED');
+    expect(source).toContain('requestId');
+  });
 });

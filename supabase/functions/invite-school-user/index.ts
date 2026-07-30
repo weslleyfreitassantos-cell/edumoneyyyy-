@@ -112,8 +112,8 @@ class InviteError extends Error {
   }
 }
 
-function jsonError({ status, code, message, fieldErrors }: { status: number; code: string; message: string; fieldErrors?: Record<string, string> }): Response {
-  return Response.json({ success: false, code, message, ...(fieldErrors ? { fieldErrors } : {}) }, { status });
+function jsonError({ status, code, message, requestId, fieldErrors }: { status: number; code: string; message: string; requestId?: string; fieldErrors?: Record<string, string> }): Response {
+  return Response.json({ success: false, code, message, ...(requestId ? { requestId } : {}), ...(fieldErrors ? { fieldErrors } : {}) }, { status });
 }
 
 function inviteErrorFromIdentityConflict(conflict: IdentityConflict): InviteError {
@@ -167,8 +167,93 @@ function isDuplicateAuthError(message: string | undefined): boolean {
   return normalized.includes("already") || normalized.includes("registered") || normalized.includes("exists") || normalized.includes("duplicate");
 }
 
+function isEmailDeliveryError(message: string | undefined): boolean {
+  const normalized = message?.toLowerCase() ?? "";
+  return normalized.includes("smtp") ||
+    normalized.includes("email") ||
+    normalized.includes("mail") ||
+    normalized.includes("invite") ||
+    normalized.includes("rate limit") ||
+    normalized.includes("send");
+}
+
+function toPostgresCode(error: unknown): string | null {
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    typeof error.code === "string"
+  ) {
+    return error.code;
+  }
+
+  return null;
+}
+
+function toErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof error.message === "string"
+  ) {
+    return error.message;
+  }
+
+  return "";
+}
+
 function toPublicError(error: unknown): InviteError {
   if (error instanceof InviteError) return error;
+
+  const postgresCode = toPostgresCode(error);
+  if (postgresCode === "42501") {
+    return new InviteError({
+      status: 403,
+      code: "DATABASE_PERMISSION_DENIED",
+      message: "Seu acesso atual nao permite concluir este convite.",
+    });
+  }
+
+  if (
+    postgresCode === "23503" ||
+    postgresCode === "22P02" ||
+    postgresCode === "42804"
+  ) {
+    return new InviteError({
+      status: 422,
+      code: "INVALID_INVITE_RELATION",
+      message: "Revise os dados informados para concluir o convite.",
+    });
+  }
+
+  if (postgresCode === "23505") {
+    return new InviteError({
+      status: 409,
+      code: "INVITE_CONFLICT",
+      message: "Ja existe um cadastro com estes dados.",
+    });
+  }
+
+  const message = toErrorMessage(error);
+  if (isDuplicateAuthError(message)) {
+    return new InviteError({
+      status: 409,
+      code: "AUTH_USER_ALREADY_EXISTS",
+      message: "Ja existe um usuario cadastrado com este e-mail.",
+      fieldErrors: { email: "E-mail ja cadastrado." },
+    });
+  }
+
+  if (isEmailDeliveryError(message)) {
+    return new InviteError({
+      status: 502,
+      code: "INVITE_EMAIL_DELIVERY_FAILED",
+      message: "Nao foi possivel enviar o convite agora. Tente novamente em instantes.",
+    });
+  }
+
   return new InviteError({ status: 500, code: "INTERNAL_ERROR", message: "Nao foi possivel concluir o convite." });
 }
 
@@ -184,15 +269,20 @@ function canRequesterInviteRole(requesterRole: RequesterInviteRole, targetRole: 
 
 export default {
   fetch: withSupabase<Database>({ auth: "user" }, async (request, ctx) => {
+    const requestId =
+      request.headers.get("x-request-id") ??
+      request.headers.get("x-supabase-request-id") ??
+      crypto.randomUUID();
+
     if (request.method !== "POST") {
-      return jsonError({ status: 405, code: "METHOD_NOT_ALLOWED", message: "Metodo nao permitido." });
+      return jsonError({ status: 405, code: "METHOD_NOT_ALLOWED", message: "Metodo nao permitido.", requestId });
     }
 
     let requestBody: unknown;
     try {
       requestBody = await request.json();
     } catch {
-      return jsonError({ status: 400, code: "INVALID_JSON", message: "Corpo da requisicao invalido." });
+      return jsonError({ status: 400, code: "INVALID_JSON", message: "Corpo da requisicao invalido.", requestId });
     }
 
     const validation = requestSchema.safeParse(requestBody);
@@ -201,6 +291,7 @@ export default {
         status: 400,
         code: "INVALID_PAYLOAD",
         message: validation.error.issues[0]?.message ?? "Dados invalidos.",
+        requestId,
         fieldErrors: getFieldErrors(validation.error),
       });
     }
@@ -377,7 +468,11 @@ export default {
             ),
           );
         }
-        throw new Error(invitationError?.message ?? "Nao foi possivel criar o usuario.");
+        throw new InviteError({
+          status: 502,
+          code: "INVITE_EMAIL_DELIVERY_FAILED",
+          message: "Nao foi possivel enviar o convite agora. Tente novamente em instantes.",
+        });
       }
 
       const profileId = invitationData.user.id;
@@ -438,7 +533,10 @@ export default {
         { status: 201 },
       );
     } catch (error) {
-      console.error("Erro ao convidar usuario escolar:", error);
+      console.error("Erro ao convidar usuario escolar:", {
+        requestId,
+        error,
+      });
       try {
         if (rollback.createdStudentId) await ctx.supabaseAdmin.from("students").delete().eq("id", rollback.createdStudentId);
         if (rollback.createdGuardianshipId) await ctx.supabaseAdmin.from("guardianships").delete().eq("id", rollback.createdGuardianshipId);
@@ -450,10 +548,13 @@ export default {
           await ctx.supabaseAdmin.auth.admin.deleteUser(rollback.createdAuthUserId);
         }
       } catch (cleanupError) {
-        console.error("Erro no cleanup do convite escolar:", cleanupError);
+        console.error("Erro no cleanup do convite escolar:", {
+          requestId,
+          error: cleanupError,
+        });
       }
       const publicError = toPublicError(error);
-      return jsonError({ status: publicError.status, code: publicError.code, message: publicError.message, fieldErrors: publicError.fieldErrors });
+      return jsonError({ status: publicError.status, code: publicError.code, message: publicError.message, requestId, fieldErrors: publicError.fieldErrors });
     }
   }),
 };
