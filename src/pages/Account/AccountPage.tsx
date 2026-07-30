@@ -1,9 +1,7 @@
 import {
   Building2,
   Loader2,
-  PauseCircle,
   Plus,
-  RotateCcw,
 } from 'lucide-react';
 import {
   useState,
@@ -21,7 +19,6 @@ import {
 import {
   useCreateInstitution,
   useOwnedAccount,
-  useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import {
   useAccountBranding,
@@ -82,7 +79,6 @@ export default function AccountPage() {
   const navigate = useNavigate();
   const accountQuery = useOwnedAccount(profile?.id);
   const createInstitution = useCreateInstitution(profile?.id);
-  const updateInstitutionStatusMutation = useUpdateInstitutionStatus();
   const accountId = accountQuery.data?.id;
   const accountBrandingQuery = useAccountBranding(accountId);
   const saveAccountBranding = useSaveAccountBranding(
@@ -201,30 +197,6 @@ export default function AccountPage() {
             'Nao foi possivel selecionar a instituicao. Atualize a lista e tente novamente.',
         });
       }
-    } catch (error) {
-      setFeedback({
-        type: 'error',
-        message: getErrorMessage(error),
-      });
-    }
-  }
-
-  async function changeInstitutionStatus(
-    institutionId: string,
-    active: boolean,
-  ): Promise<void> {
-    try {
-      setFeedback(null);
-      await updateInstitutionStatusMutation.mutateAsync({
-        institutionId,
-        active,
-      });
-      setFeedback({
-        type: 'success',
-        message: active
-          ? 'Instituicao reativada com sucesso.'
-          : 'Instituicao suspensa com sucesso.',
-      });
     } catch (error) {
       setFeedback({
         type: 'error',
@@ -487,33 +459,6 @@ export default function AccountPage() {
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {account.status === 'ACTIVE' && (
-                        <button
-                          type="button"
-                          onClick={() =>
-                            void changeInstitutionStatus(
-                              institution.id,
-                              institution.active === false,
-                            )
-                          }
-                          disabled={updateInstitutionStatusMutation.isPending}
-                          className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
-                            institution.active !== false
-                              ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40'
-                              : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50'
-                          }`}
-                          aria-label={`${
-                            institution.active !== false ? 'Suspender' : 'Reativar'
-                          } ${institution.name}`}
-                        >
-                          {institution.active !== false ? (
-                            <PauseCircle className="h-4 w-4" aria-hidden="true" />
-                          ) : (
-                            <RotateCcw className="h-4 w-4" aria-hidden="true" />
-                          )}
-                          {institution.active !== false ? 'Suspender' : 'Reativar'}
-                        </button>
-                      )}
                       <button
                         type="button"
                         disabled={isCurrentInstitution}

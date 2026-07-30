@@ -54,7 +54,6 @@ vi.mock('../../contexts/InstitutionContext', () => ({
 vi.mock('../../hooks/useAccounts', () => ({
   useOwnedAccount: vi.fn(),
   useCreateInstitution: vi.fn(),
-  useUpdateInstitutionStatus: vi.fn(),
 }));
 
 const brandingHookMock = vi.hoisted(() => ({
@@ -84,10 +83,6 @@ const mockedUseOwnedAccount =
   vi.mocked(useOwnedAccount);
 const mockedUseCreateInstitution =
   vi.mocked(useCreateInstitution);
-const mockedUseUpdateInstitutionStatus = vi.mocked(
-  // @ts-ignore
-  (await import('../../hooks/useAccounts')).useUpdateInstitutionStatus,
-);
 
 const createInstitution = vi.fn();
 const setCurrentInstitutionId = vi.fn();
@@ -175,11 +170,6 @@ beforeEach(() => {
   } as unknown as ReturnType<
     typeof useCreateInstitution
   >);
-
-  mockedUseUpdateInstitutionStatus.mockReturnValue({
-    mutateAsync: vi.fn(),
-    isPending: false,
-  } as any);
 
   brandingHookMock.accountBrandingQuery = {
     data: {

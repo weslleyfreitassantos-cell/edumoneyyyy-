@@ -109,6 +109,11 @@ describe('UnifiedUserInvitePreview', () => {
         'Cadastro unificado de usuarios',
       ),
     ).toBeTruthy();
+    expect(
+      screen.getByText(
+        /invite-school-user/,
+      ),
+    ).toBeTruthy();
   });
 
   it('mantem envio desabilitado para formulario invalido', () => {
