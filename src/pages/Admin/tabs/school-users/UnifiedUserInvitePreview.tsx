@@ -390,7 +390,7 @@ export default function UnifiedUserInvitePreview({
         className="mt-5 space-y-6"
       >
         <div>
-            <p className="text-sm font-semibold text-[#414754]">
+            <p className="text-sm font-semibold text-[#414754] dark:text-[#cbd5e1]">
               Tipo de usuario
             </p>
 
@@ -420,22 +420,22 @@ export default function UnifiedUserInvitePreview({
                       className={`min-h-[116px] rounded-lg border p-3 text-left transition-colors ${
                         selectedTarget ===
                         option.target
-                          ? 'border-[#005bbf] bg-blue-50'
-                          : 'border-[#dfe3e8] bg-white hover:bg-gray-50'
+                          ? 'border-[#005bbf] bg-[#e8f0ff] dark:border-[#60a5fa] dark:bg-[#1e3a5f]/80'
+                          : 'border-[#dfe3e8] bg-white hover:bg-gray-50 dark:border-[#334155] dark:bg-[#182235] dark:hover:bg-[#243247]'
                       } ${
                         optionDisabled
                           ? 'cursor-not-allowed opacity-70'
                           : ''
                       }`}
                     >
-                      <span className="block text-sm font-bold text-[#181c20]">
+                      <span className="block text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
                         {option.label}
                       </span>
-                      <span className="mt-1 block text-xs leading-relaxed text-[#727785]">
+                      <span className="mt-1 block text-xs leading-relaxed text-[#727785] dark:text-[#cbd5e1]">
                         {option.description}
                       </span>
                       {option.isPlanned && (
-                        <span className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-700">
+                        <span className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-950/60 dark:text-amber-200">
                           Em breve
                         </span>
                       )}
@@ -702,7 +702,7 @@ export default function UnifiedUserInvitePreview({
             type="button"
             onClick={resetForm}
             disabled={inviteMutation.isPending}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-sm font-semibold text-[#414754] transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-sm font-semibold text-[#414754] transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-70 dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247]"
           >
             <RotateCcw
               className="h-4 w-4"
@@ -715,8 +715,8 @@ export default function UnifiedUserInvitePreview({
             disabled={submitDisabled}
             className={`inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
               submitDisabled
-                ? 'cursor-not-allowed bg-gray-200 text-gray-500'
-                : 'bg-[#005bbf] text-white hover:bg-[#004a9f]'
+                ? 'cursor-not-allowed bg-gray-200 text-gray-500 dark:bg-[#334155] dark:text-[#cbd5e1]'
+                : 'bg-[#005bbf] text-white hover:bg-[#004a9f] dark:bg-[#2563eb] dark:hover:bg-[#1d4ed8]'
             }`}
           >
             {inviteMutation.isPending ? (
