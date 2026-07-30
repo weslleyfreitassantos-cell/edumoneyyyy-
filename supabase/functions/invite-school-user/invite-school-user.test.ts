@@ -41,6 +41,9 @@ describe('invite-school-user', () => {
     expect(source).toContain('INVITE_CONFLICT');
     expect(source).toContain('INVALID_INVITE_RELATION');
     expect(source).toContain('INVITE_EMAIL_DELIVERY_FAILED');
+    expect(source).toContain('INVITE_RATE_LIMITED');
+    expect(source).toContain('authStatus');
+    expect(source).toContain('authCode');
     expect(source).toContain('requestId');
   });
 });
