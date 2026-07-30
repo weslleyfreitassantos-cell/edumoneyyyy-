@@ -556,6 +556,36 @@ export default function PlatformPage() {
     }
   }, [institutionAccessDialog?.account.id]);
 
+  useEffect(() => {
+    setInstitutionAccessDialog((current) => {
+      if (!current) {
+        return current;
+      }
+
+      const updatedAccount = accounts.find(
+        (account) => account.id === current.account.id,
+      );
+
+      if (!updatedAccount) {
+        return null;
+      }
+
+      const selectedInstitutionStillExists =
+        updatedAccount.institutions.some(
+          (institution) =>
+            institution.id === current.selectedInstitutionId,
+        );
+
+      return {
+        ...current,
+        account: updatedAccount,
+        selectedInstitutionId: selectedInstitutionStillExists
+          ? current.selectedInstitutionId
+          : '',
+      };
+    });
+  }, [accounts]);
+
   function clearFilters(): void {
     setSearchTerm('');
     setStatusFilter('ACTIVE');

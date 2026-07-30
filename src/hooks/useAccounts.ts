@@ -50,6 +50,12 @@ export function useAccounts() {
   return useQuery<AccountSummaryRow[]>({
     queryKey: accountKeys.lists(),
     queryFn: () => accountService.listAccounts(),
+    refetchInterval: 1000 * 10,
+    refetchIntervalInBackground: true,
+    refetchOnMount: 'always',
+    refetchOnReconnect: 'always',
+    refetchOnWindowFocus: 'always',
+    staleTime: 1000 * 5,
   });
 }
 

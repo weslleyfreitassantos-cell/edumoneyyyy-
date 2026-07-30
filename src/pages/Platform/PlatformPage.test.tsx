@@ -962,6 +962,48 @@ describe('PlatformPage', () => {
     });
   });
 
+  it('atualiza o modal de escolas quando os dados da conta sao recarregados', async () => {
+    const { rerender } = renderPage();
+
+    openAccountManagementDialog();
+
+    expect(
+      screen.getByRole('button', {
+        name: /Suspender Escola Alpha/i,
+      }),
+    ).toBeDefined();
+
+    hookMock.accountsQuery = {
+      ...hookMock.accountsQuery,
+      data: accounts.map((account) =>
+        account.id === 'account-1'
+          ? {
+              ...account,
+              institutions: account.institutions.map(
+                (institution) =>
+                  institution.id === 'institution-1'
+                    ? {
+                        ...institution,
+                        active: false,
+                      }
+                    : institution,
+              ),
+            }
+          : account,
+      ),
+    };
+
+    rerender(<PlatformPage />);
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('button', {
+          name: /Reativar Escola Alpha/i,
+        }),
+      ).toBeDefined();
+    });
+  });
+
   it('remove acoes superiores redundantes e mantem somente a criacao real', () => {
     renderPage();
 
