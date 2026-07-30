@@ -72,6 +72,12 @@ export function useOwnedAccount(
       return accountService.getOwnedAccount(profileId);
     },
     enabled: Boolean(profileId),
+    refetchInterval: 1000 * 5,
+    refetchIntervalInBackground: true,
+    refetchOnMount: 'always',
+    refetchOnReconnect: 'always',
+    refetchOnWindowFocus: 'always',
+    staleTime: 1000 * 2,
   });
 }
 
