@@ -33,5 +33,6 @@ describe('manage-school-user', () => {
     expect(source).toContain('corsHeaders');
     expect(source).toContain('request.method === "OPTIONS"');
     expect(source).toContain('access-control-allow-origin');
+    expect(source).toContain('authenticatedFetch');
   });
 });

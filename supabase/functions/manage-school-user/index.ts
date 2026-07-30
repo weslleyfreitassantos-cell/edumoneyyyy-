@@ -414,17 +414,9 @@ async function handleDelete(
   });
 }
 
-export default {
-  fetch: withSupabase<Database>(
-    { auth: "user" },
-    async (request, ctx) => {
-      if (request.method === "OPTIONS") {
-        return new Response("ok", {
-          status: 200,
-          headers: corsHeaders,
-        });
-      }
-
+const authenticatedFetch = withSupabase<Database>(
+  { auth: "user" },
+  async (request, ctx) => {
       if (request.method !== "POST") {
         return jsonError(
           new ManageSchoolUserError({
@@ -489,5 +481,25 @@ export default {
         return jsonError(toPublicError(error));
       }
     },
-  ),
+);
+
+export default {
+  fetch: (
+    request: Request,
+    ...args: Parameters<typeof authenticatedFetch> extends [
+      Request,
+      ...infer Rest,
+    ]
+      ? Rest
+      : never
+  ) => {
+    if (request.method === "OPTIONS") {
+      return new Response("ok", {
+        status: 200,
+        headers: corsHeaders,
+      });
+    }
+
+    return authenticatedFetch(request, ...args);
+  },
 };
