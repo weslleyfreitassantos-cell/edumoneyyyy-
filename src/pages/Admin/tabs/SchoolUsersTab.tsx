@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -623,6 +624,18 @@ export default function SchoolUsersTab() {
       type: 'success' | 'error';
       message: string;
     } | null>(null);
+
+  useEffect(() => {
+    if (!feedback) {
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      setFeedback(null);
+    }, 6000);
+
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
 
   const users = usersQuery.data ?? [];
 
