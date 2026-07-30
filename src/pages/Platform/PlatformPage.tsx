@@ -1033,11 +1033,34 @@ export default function PlatformPage() {
     institution: AccountInstitutionSummary,
     active: boolean,
   ): Promise<void> {
+    const previousDialog = institutionAccessDialog;
+
     try {
       await updateInstitutionStatusMutation.mutateAsync({
         institutionId: institution.id,
         active,
       });
+
+      setInstitutionAccessDialog((current) =>
+        current
+          ? {
+              ...current,
+              account: {
+                ...current.account,
+                institutions: current.account.institutions.map((item) =>
+                  item.id === institution.id
+                    ? {
+                        ...item,
+                        active,
+                      }
+                    : item,
+                ),
+              },
+              error: null,
+            }
+          : current,
+      );
+
       setFeedback({
         type: 'success',
         message: active
@@ -1045,6 +1068,7 @@ export default function PlatformPage() {
           : `${institution.name} suspensa. Histórico acadêmico preservado.`,
       });
     } catch (error) {
+      setInstitutionAccessDialog(previousDialog);
       setFeedback({
         type: 'error',
         message: getPlatformErrorMessage(error),
@@ -1066,6 +1090,8 @@ export default function PlatformPage() {
     if (!confirmed) {
       return;
     }
+
+    const previousDialog = institutionAccessDialog;
 
     try {
       await deleteInstitutionMutation.mutateAsync({
@@ -1102,14 +1128,10 @@ export default function PlatformPage() {
         message: `${institution.name} excluída. A licença foi liberada.`,
       });
     } catch (error) {
-      setInstitutionAccessDialog((current) =>
-        current
-          ? {
-              ...current,
-              error: getPlatformErrorMessage(error),
-            }
-          : current,
-      );
+      setInstitutionAccessDialog({
+        ...previousDialog,
+        error: getPlatformErrorMessage(error),
+      });
     }
   }
 
