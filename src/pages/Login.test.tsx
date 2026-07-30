@@ -270,7 +270,7 @@ describe('Login', () => {
 
   it('exibe erro de autenticacao sem quebrar o formulario', async () => {
     authMock.signIn.mockRejectedValueOnce(
-      new Error('Credenciais invalidas'),
+      new Error('Invalid login credentials'),
     );
 
     renderLogin();
@@ -293,6 +293,12 @@ describe('Login', () => {
     expect(
       await screen.findByRole('alert'),
     ).toBeDefined();
+    expect(
+      screen.getByText('E-mail ou senha incorretos.'),
+    ).toBeDefined();
+    expect(
+      screen.queryByText(/Invalid login credentials/i),
+    ).toBeNull();
     expect(
       screen.getByLabelText(/E-mail institucional/i),
     ).toBeDefined();
