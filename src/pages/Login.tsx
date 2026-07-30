@@ -22,6 +22,48 @@ import {
 } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
 
+function getLoginErrorMessage(error: unknown): string {
+  const message =
+    error instanceof Error
+      ? error.message.toLowerCase()
+      : typeof error === 'object' &&
+          error !== null &&
+          'message' in error &&
+          typeof error.message === 'string'
+        ? error.message.toLowerCase()
+        : '';
+
+  if (
+    message.includes('invalid login credentials') ||
+    message.includes('invalid credentials') ||
+    message.includes('credenciais invalidas')
+  ) {
+    return 'E-mail ou senha incorretos.';
+  }
+
+  if (message.includes('email not confirmed')) {
+    return 'Confirme seu e-mail antes de entrar.';
+  }
+
+  if (
+    message.includes('rate') ||
+    message.includes('limit') ||
+    message.includes('too many')
+  ) {
+    return 'Muitas tentativas foram feitas. Aguarde alguns minutos e tente novamente.';
+  }
+
+  if (
+    message.includes('network') ||
+    message.includes('fetch') ||
+    message.includes('unavailable')
+  ) {
+    return 'Servico temporariamente indisponivel. Tente novamente em instantes.';
+  }
+
+  return 'Nao foi possivel entrar. Tente novamente.';
+}
+
 export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -59,11 +101,7 @@ export function Login() {
     try {
       await signIn(email, password);
     } catch (err: unknown) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : 'Falha no login',
-      );
+      setError(getLoginErrorMessage(err));
     } finally {
       setLoading(false);
     }
