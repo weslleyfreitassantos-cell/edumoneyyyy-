@@ -161,6 +161,11 @@ export interface DeleteInstitutionInput {
 export interface DeleteInstitutionResponse {
   success: true;
   institutionId: string;
+  accountId: string;
+  currentInstitutionCount: number;
+  institutionLimit: number;
+  remainingSlots: number;
+  summary: Record<string, number>;
 }
 
 interface AccountQueryRow {
@@ -529,6 +534,38 @@ function assertUpdateInstitutionStatusResponse(
   };
 }
 
+function assertDeleteInstitutionResponse(
+  value: unknown,
+): DeleteInstitutionResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  const rawSummary = value.summary;
+  const summary =
+    typeof rawSummary === 'object' &&
+    rawSummary !== null &&
+    !Array.isArray(rawSummary)
+      ? (rawSummary as Record<string, number>)
+      : {};
+
+  return {
+    success: requireTrue(value, 'success'),
+    institutionId: requireString(value, 'institutionId'),
+    accountId: requireString(value, 'accountId'),
+    currentInstitutionCount: requireNumber(
+      value,
+      'currentInstitutionCount',
+    ),
+    institutionLimit: requireNumber(value, 'institutionLimit'),
+    remainingSlots: requireNumber(value, 'remainingSlots'),
+    summary,
+  };
+}
+
 function assertRestoreAccountResponse(
   value: unknown,
 ): RestoreClientAccountResponse {
@@ -826,20 +863,17 @@ export const accountService = {
   async deleteInstitution(
     input: DeleteInstitutionInput,
   ): Promise<DeleteInstitutionResponse> {
-    const { error } = await supabase
-      .from('institutions')
-      .delete()
-      .eq('id', input.institutionId)
-      .eq('account_id', input.accountId);
+    const { data, error } =
+      await supabase.functions.invoke(
+        'delete-institution',
+        { body: input },
+      );
 
     if (error) {
-      throw error;
+      throw await getFunctionError(error);
     }
 
-    return {
-      success: true,
-      institutionId: input.institutionId,
-    };
+    return assertDeleteInstitutionResponse(data);
   },
 
   async deleteAccount(

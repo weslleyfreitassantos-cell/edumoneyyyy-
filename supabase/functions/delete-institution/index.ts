@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import type { Database } from "../_shared/database.types.ts";
 
-class InstitutionStatusError extends Error {
+class DeleteInstitutionError extends Error {
   status: number;
   code: string;
   fieldErrors?: Record<string, string>;
@@ -21,7 +21,7 @@ class InstitutionStatusError extends Error {
     fieldErrors?: Record<string, string>;
   }) {
     super(message);
-    this.name = "InstitutionStatusError";
+    this.name = "DeleteInstitutionError";
     this.status = status;
     this.code = code;
     this.fieldErrors = fieldErrors;
@@ -30,12 +30,12 @@ class InstitutionStatusError extends Error {
 
 const requestSchema = z
   .object({
+    accountId: z.guid(),
     institutionId: z.guid(),
-    active: z.boolean(),
   })
   .strict();
 
-function jsonError(error: InstitutionStatusError): Response {
+function jsonError(error: DeleteInstitutionError): Response {
   return Response.json(
     {
       success: false,
@@ -77,10 +77,42 @@ function getUnknownErrorMessage(error: unknown): string {
   return "";
 }
 
-function isInstitutionLimitReachedError(error: unknown): boolean {
-  return getUnknownErrorMessage(error)
-    .toLowerCase()
-    .includes("institution limit reached");
+async function deleteByInstitution(
+  client: {
+    from: (table: string) => {
+      delete: (options: { count: "exact" }) => {
+        eq: (
+          column: string,
+          value: string,
+        ) => Promise<{
+          count: number | null;
+          error: unknown;
+        }>;
+      };
+    };
+  },
+  table: string,
+  institutionId: string,
+): Promise<number> {
+  const { count, error } = await client
+    .from(table)
+    .delete({ count: "exact" })
+    .eq("institution_id", institutionId);
+
+  if (error) {
+    const message = getUnknownErrorMessage(error);
+    if (
+      message.includes("Could not find the table") ||
+      message.includes("does not exist") ||
+      message.includes("schema cache")
+    ) {
+      return 0;
+    }
+
+    throw error;
+  }
+
+  return count ?? 0;
 }
 
 export default {
@@ -89,7 +121,7 @@ export default {
     async (request, ctx) => {
       if (request.method !== "POST") {
         return jsonError(
-          new InstitutionStatusError({
+          new DeleteInstitutionError({
             status: 405,
             code: "METHOD_NOT_ALLOWED",
             message: "Metodo nao permitido.",
@@ -103,7 +135,7 @@ export default {
         body = await request.json();
       } catch {
         return jsonError(
-          new InstitutionStatusError({
+          new DeleteInstitutionError({
             status: 400,
             code: "INVALID_JSON",
             message: "Corpo da requisicao invalido.",
@@ -115,7 +147,7 @@ export default {
 
       if (!validation.success) {
         return jsonError(
-          new InstitutionStatusError({
+          new DeleteInstitutionError({
             status: 400,
             code: "INVALID_PAYLOAD",
             message:
@@ -135,7 +167,7 @@ export default {
         } = await ctx.supabase.auth.getUser();
 
         if (userError || !user) {
-          throw new InstitutionStatusError({
+          throw new DeleteInstitutionError({
             status: 401,
             code: "UNAUTHENTICATED",
             message: "Sessao invalida ou expirada.",
@@ -154,11 +186,11 @@ export default {
         }
 
         if (!requester || requester.active !== true) {
-          throw new InstitutionStatusError({
+          throw new DeleteInstitutionError({
             status: 403,
             code: "PROFILE_INACTIVE",
             message:
-              "Perfil desativado nao pode alterar instituicoes.",
+              "Perfil desativado nao pode excluir instituicoes.",
           });
         }
 
@@ -167,8 +199,9 @@ export default {
           error: institutionError,
         } = await ctx.supabaseAdmin
           .from("institutions")
-          .select("id, name, active, account_id")
+          .select("id, name, account_id")
           .eq("id", input.institutionId)
+          .eq("account_id", input.accountId)
           .maybeSingle();
 
         if (institutionError) {
@@ -176,7 +209,7 @@ export default {
         }
 
         if (!institution) {
-          throw new InstitutionStatusError({
+          throw new DeleteInstitutionError({
             status: 404,
             code: "INSTITUTION_NOT_FOUND",
             message: "Instituicao nao encontrada.",
@@ -186,19 +219,10 @@ export default {
           });
         }
 
-        if (!institution.account_id) {
-          throw new InstitutionStatusError({
-            status: 409,
-            code: "INSTITUTION_WITHOUT_ACCOUNT",
-            message:
-              "Instituicao sem conta associada nao pode ser alterada pela Plataforma.",
-          });
-        }
-
         const { data: account, error: accountError } =
           await ctx.supabaseAdmin
             .from("accounts")
-            .select("id, institution_limit, owner_profile_id")
+            .select("id, owner_profile_id, institution_limit")
             .eq("id", institution.account_id)
             .maybeSingle();
 
@@ -207,7 +231,7 @@ export default {
         }
 
         if (!account) {
-          throw new InstitutionStatusError({
+          throw new DeleteInstitutionError({
             status: 404,
             code: "ACCOUNT_NOT_FOUND",
             message: "Conta da instituicao nao encontrada.",
@@ -220,12 +244,55 @@ export default {
           account.owner_profile_id === requester.id;
 
         if (!isSuperAdmin && !isAccountOwner) {
-          throw new InstitutionStatusError({
+          throw new DeleteInstitutionError({
             status: 403,
             code: "INSTITUTION_ADMIN_REQUIRED",
             message:
-              "Apenas o dono da conta ou SUPER_ADMIN pode alterar instituicoes.",
+              "Apenas o dono da conta ou SUPER_ADMIN pode excluir instituicoes.",
           });
+        }
+
+        const tablesByDependency = [
+          "student_term_results",
+          "term_closures",
+          "attendance_records",
+          "grades",
+          "attendance_sessions",
+          "assessments",
+          "timetable_entries",
+          "class_curriculum_items",
+          "subject_offerings",
+          "enrollments",
+          "guardianships",
+          "rooms",
+          "classes",
+          "subjects",
+          "terms",
+          "academic_policies",
+          "academic_years",
+          "student_registration_counters",
+          "students",
+          "memberships",
+          "institution_branding",
+        ];
+
+        const summary: Record<string, number> = {};
+
+        for (const table of tablesByDependency) {
+          summary[table] = await deleteByInstitution(
+            ctx.supabaseAdmin,
+            table,
+            institution.id,
+          );
+        }
+
+        const { error: deleteError } = await ctx.supabaseAdmin
+          .from("institutions")
+          .delete()
+          .eq("id", institution.id);
+
+        if (deleteError) {
+          throw deleteError;
         }
 
         const { count, error: countError } =
@@ -235,87 +302,37 @@ export default {
               count: "exact",
               head: true,
             })
-            .eq("account_id", account.id)
-            .eq("active", true);
+            .eq("account_id", account.id);
 
         if (countError) {
           throw countError;
         }
 
-        const activeInstitutionCount = count ?? 0;
-        const isCurrentlyActive =
-          institution.active !== false;
-
-        if (
-          input.active &&
-          !isCurrentlyActive &&
-          activeInstitutionCount >= account.institution_limit
-        ) {
-          throw new InstitutionStatusError({
-            status: 409,
-            code: "INSTITUTION_LIMIT_REACHED",
-            message:
-              "A conta atingiu o limite de instituicoes ativas.",
-          });
-        }
-
-        const { data: updatedInstitution, error: updateError } =
-          await ctx.supabaseAdmin
-            .from("institutions")
-            .update({
-              active: input.active,
-            })
-            .eq("id", institution.id)
-            .select("id, active")
-            .single();
-
-        if (updateError) {
-          throw updateError;
-        }
-
-        const nextActiveCount =
-          input.active && !isCurrentlyActive
-            ? activeInstitutionCount + 1
-            : !input.active && isCurrentlyActive
-              ? activeInstitutionCount - 1
-              : activeInstitutionCount;
+        const currentInstitutionCount = count ?? 0;
 
         return Response.json({
           success: true,
-          institutionId: updatedInstitution.id,
-          active: updatedInstitution.active === true,
-          currentInstitutionCount: nextActiveCount,
+          institutionId: institution.id,
+          accountId: account.id,
+          currentInstitutionCount,
           institutionLimit: account.institution_limit,
           remainingSlots:
-            account.institution_limit - nextActiveCount,
+            account.institution_limit - currentInstitutionCount,
+          summary,
         });
       } catch (error) {
-        console.error(
-          "Erro ao atualizar instituicao:",
-          error,
-        );
+        console.error("Erro ao excluir instituicao:", error);
 
-        if (error instanceof InstitutionStatusError) {
+        if (error instanceof DeleteInstitutionError) {
           return jsonError(error);
         }
 
-        if (isInstitutionLimitReachedError(error)) {
-          return jsonError(
-            new InstitutionStatusError({
-              status: 409,
-              code: "INSTITUTION_LIMIT_REACHED",
-              message:
-                "A conta atingiu o limite de instituicoes ativas.",
-            }),
-          );
-        }
-
         return jsonError(
-          new InstitutionStatusError({
+          new DeleteInstitutionError({
             status: 500,
             code: "INTERNAL_ERROR",
             message:
-              "Nao foi possivel atualizar a instituicao.",
+              "Nao foi possivel excluir a instituicao.",
           }),
         );
       }

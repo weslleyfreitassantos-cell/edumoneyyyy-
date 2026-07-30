@@ -34,6 +34,7 @@ import {
   useCloseClientAccount,
   useCreateClientAccount,
   useDeleteClientAccount,
+  useDeleteInstitution,
   useRestoreClientAccount,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
@@ -367,6 +368,8 @@ export default function PlatformPage() {
   const updateAccount = useUpdateClientAccount();
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
+  const deleteInstitutionMutation =
+    useDeleteInstitution();
   const closeAccount = useCloseClientAccount();
   const restoreAccount = useRestoreClientAccount();
   const permanentlyDeleteAccount =
@@ -1049,6 +1052,67 @@ export default function PlatformPage() {
     }
   }
 
+  async function deleteInstitutionFromAccessDialog(
+    institution: AccountInstitutionSummary,
+  ): Promise<void> {
+    if (!institutionAccessDialog) {
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Excluir definitivamente a instituição "${institution.name}"? Esta ação libera uma licença e remove os dados vinculados a esta escola.`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      await deleteInstitutionMutation.mutateAsync({
+        accountId: institutionAccessDialog.account.id,
+        institutionId: institution.id,
+      });
+
+      setInstitutionAccessDialog((current) => {
+        if (!current) {
+          return current;
+        }
+
+        const institutions =
+          current.account.institutions.filter(
+            (item) => item.id !== institution.id,
+          );
+
+        return {
+          ...current,
+          account: {
+            ...current.account,
+            institutions,
+          },
+          selectedInstitutionId:
+            current.selectedInstitutionId === institution.id
+              ? institutions[0]?.id ?? ''
+              : current.selectedInstitutionId,
+          error: null,
+        };
+      });
+
+      setFeedback({
+        type: 'success',
+        message: `${institution.name} excluída. A licença foi liberada.`,
+      });
+    } catch (error) {
+      setInstitutionAccessDialog((current) =>
+        current
+          ? {
+              ...current,
+              error: getPlatformErrorMessage(error),
+            }
+          : current,
+      );
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#f8f9fa] px-4 py-6 text-[#191c1d] sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6">
@@ -1727,37 +1791,56 @@ export default function PlatformPage() {
 
                                 {institutionAccessDialog.account
                                   .status === 'ACTIVE' && (
-                                  <IconActionButton
-                                    label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institution.name}`}
-                                    onClick={() =>
-                                      void changeInstitutionStatus(
-                                        institution,
+                                  <>
+                                    <IconActionButton
+                                      label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institution.name}`}
+                                      onClick={() =>
+                                        void changeInstitutionStatus(
+                                          institution,
+                                          institution.active ===
+                                            false,
+                                        )
+                                      }
+                                      disabled={
+                                        updateInstitutionStatusMutation.isPending
+                                      }
+                                      className={
                                         institution.active ===
-                                          false,
-                                      )
-                                    }
-                                    disabled={
-                                      updateInstitutionStatusMutation.isPending
-                                    }
-                                    className={
-                                      institution.active ===
-                                      false
-                                        ? 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
-                                        : 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
-                                    }
-                                  >
-                                    {institution.active === false ? (
-                                      <CheckCircle2
+                                        false
+                                          ? 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
+                                          : 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
+                                      }
+                                    >
+                                      {institution.active === false ? (
+                                        <CheckCircle2
+                                          className="h-4 w-4"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <PauseCircle
+                                          className="h-4 w-4"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+                                    </IconActionButton>
+                                    <IconActionButton
+                                      label={`Excluir ${institution.name}`}
+                                      onClick={() =>
+                                        void deleteInstitutionFromAccessDialog(
+                                          institution,
+                                        )
+                                      }
+                                      disabled={
+                                        deleteInstitutionMutation.isPending
+                                      }
+                                      className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
+                                    >
+                                      <Trash2
                                         className="h-4 w-4"
                                         aria-hidden="true"
                                       />
-                                    ) : (
-                                      <PauseCircle
-                                        className="h-4 w-4"
-                                        aria-hidden="true"
-                                      />
-                                    )}
-                                  </IconActionButton>
+                                    </IconActionButton>
+                                  </>
                                 )}
                               </div>
                             );
