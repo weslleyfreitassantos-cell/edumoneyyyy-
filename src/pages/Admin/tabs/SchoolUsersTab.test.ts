@@ -18,6 +18,7 @@ import {
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 
 vi.mock('../../../contexts/AuthContext', () => ({
@@ -30,6 +31,10 @@ vi.mock('../../../hooks/useCurrentInstitution', () => ({
 
 vi.mock('../../../hooks/useSchoolUsers', () => ({
   useSchoolUsers: vi.fn(),
+}));
+
+vi.mock('../../../hooks/useSchoolUserManagement', () => ({
+  useManageSchoolUser: vi.fn(),
 }));
 
 vi.mock(
@@ -52,6 +57,9 @@ const mockedUseCurrentInstitution = vi.mocked(
 );
 const mockedUseSchoolUsers = vi.mocked(
   useSchoolUsers,
+);
+const mockedUseManageSchoolUser = vi.mocked(
+  useManageSchoolUser,
 );
 const mockedUnifiedUserInvitePreview =
   vi.mocked(UnifiedUserInvitePreview);
@@ -161,6 +169,11 @@ function mockTabState({
     isError: false,
     error: null,
   } as ReturnType<typeof useSchoolUsers>);
+
+  mockedUseManageSchoolUser.mockReturnValue({
+    mutate: vi.fn(),
+    isPending: false,
+  } as unknown as ReturnType<typeof useManageSchoolUser>);
 }
 
 beforeEach(() => {
@@ -242,6 +255,21 @@ describe('SchoolUsersTab integration', () => {
         hasActiveInstitution: true,
       }),
     );
+  });
+
+  it('mostra acoes de editar e excluir usuarios', () => {
+    render(createElement(SchoolUsersTab));
+
+    expect(
+      screen.getByRole('button', {
+        name: /Editar Ana Admin/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /Excluir Ana Admin/i,
+      }),
+    ).toBeTruthy();
   });
 
 

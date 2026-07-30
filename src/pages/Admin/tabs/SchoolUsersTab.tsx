@@ -5,11 +5,15 @@ import {
 } from 'react';
 
 import {
+  Edit3,
+  Loader2,
   PlusCircle,
   Search,
+  Trash2,
   UserRoundCheck,
   UserRoundX,
   Users,
+  X,
 } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -17,6 +21,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
+import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 
 import {
   CURRENT_DATABASE_ROLES,
@@ -30,6 +35,11 @@ import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
 type RoleFilter =
   | 'ALL'
   | CurrentDatabaseRole;
+
+type EditableSchoolRole = Exclude<
+  CurrentDatabaseRole,
+  'ADMIN'
+>;
 
 export const schoolUserRoleLabels: Record<
   CurrentDatabaseRole,
@@ -63,6 +73,17 @@ const filterOptions: {
     value: 'GUARDIAN',
     label: 'Responsáveis',
   },
+];
+
+const editableRoleOptions: {
+  value: EditableSchoolRole;
+  label: string;
+}[] = [
+  { value: 'DIRECTOR', label: 'Direcao' },
+  { value: 'SECRETARY', label: 'Secretaria' },
+  { value: 'TEACHER', label: 'Professor' },
+  { value: 'STUDENT', label: 'Aluno' },
+  { value: 'GUARDIAN', label: 'Responsavel' },
 ];
 
 export interface SchoolUserSummary {
@@ -253,8 +274,14 @@ function SummaryCard({
 
 function SchoolUsersTable({
   users,
+  onEdit,
+  onDelete,
+  isBusy,
 }: {
   users: SchoolUserRow[];
+  onEdit: (user: SchoolUserRow) => void;
+  onDelete: (user: SchoolUserRow) => void;
+  isBusy: boolean;
 }) {
   return (
     <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
@@ -284,6 +311,10 @@ function SchoolUsersTable({
 
               <th className="px-4 py-3 text-left font-medium text-gray-700">
                 Perfil
+              </th>
+
+              <th className="px-4 py-3 text-right font-medium text-gray-700">
+                Acoes
               </th>
             </tr>
           </thead>
@@ -331,10 +362,208 @@ function SchoolUsersTable({
                     }
                   />
                 </td>
+
+                <td className="px-4 py-3">
+                  <div className="flex justify-end gap-2">
+                    <button
+                      type="button"
+                      title="Editar usuario"
+                      aria-label={`Editar ${
+                        user.profile?.full_name ??
+                        'usuario'
+                      }`}
+                      disabled={isBusy}
+                      onClick={() => onEdit(user)}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-blue-200 text-blue-700 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <Edit3
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    </button>
+
+                    <button
+                      type="button"
+                      title="Excluir usuario"
+                      aria-label={`Excluir ${
+                        user.profile?.full_name ??
+                        'usuario'
+                      }`}
+                      disabled={isBusy}
+                      onClick={() => onDelete(user)}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-red-200 text-red-700 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <Trash2
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+    </div>
+  );
+}
+
+function SchoolUserEditDialog({
+  user,
+  onClose,
+  onSubmit,
+  isSubmitting,
+}: {
+  user: SchoolUserRow;
+  onClose: () => void;
+  onSubmit: (input: {
+    fullName: string;
+    role: EditableSchoolRole;
+    password: string;
+  }) => void;
+  isSubmitting: boolean;
+}) {
+  const [fullName, setFullName] = useState(
+    user.profile?.full_name ?? '',
+  );
+  const [role, setRole] = useState<EditableSchoolRole>(
+    user.role === 'ADMIN' ? 'DIRECTOR' : user.role,
+  );
+  const [password, setPassword] =
+    useState('');
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="school-user-edit-title"
+    >
+      <div className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl dark:bg-slate-900">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3
+              id="school-user-edit-title"
+              className="text-lg font-bold text-[#181c20] dark:text-white"
+            >
+              Editar usuario
+            </h3>
+            <p className="mt-1 text-sm text-gray-600 dark:text-slate-300">
+              Atualize dados de acesso sem depender do e-mail de convite.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+            aria-label="Fechar"
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="mt-5 space-y-4">
+          <div>
+            <label
+              htmlFor="school-user-full-name"
+              className="text-sm font-semibold text-gray-700 dark:text-slate-200"
+            >
+              Nome completo
+            </label>
+            <input
+              id="school-user-full-name"
+              value={fullName}
+              onChange={(event) =>
+                setFullName(event.target.value)
+              }
+              className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="school-user-role"
+              className="text-sm font-semibold text-gray-700 dark:text-slate-200"
+            >
+              Papel
+            </label>
+            <select
+              id="school-user-role"
+              value={role}
+              onChange={(event) =>
+                setRole(
+                  event.target
+                    .value as EditableSchoolRole,
+                )
+              }
+              className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            >
+              {editableRoleOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label
+              htmlFor="school-user-password"
+              className="text-sm font-semibold text-gray-700 dark:text-slate-200"
+            >
+              Nova senha
+            </label>
+            <input
+              id="school-user-password"
+              type="password"
+              value={password}
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
+              placeholder="Deixe vazio para nao alterar"
+              className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            />
+            <p className="mt-1 text-xs text-gray-500 dark:text-slate-400">
+              Minimo de 8 caracteres.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            disabled={isSubmitting}
+            onClick={() =>
+              onSubmit({
+                fullName,
+                role,
+                password,
+              })
+            }
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {isSubmitting && (
+              <Loader2
+                className="h-4 w-4 animate-spin"
+                aria-hidden="true"
+              />
+            )}
+            Salvar
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -379,12 +608,21 @@ export default function SchoolUsersTab() {
 
   const usersQuery =
     useSchoolUsers(institutionId);
+  const manageUserMutation =
+    useManageSchoolUser();
 
   const [selectedRole, setSelectedRole] =
     useState<RoleFilter>('ALL');
 
   const [searchTerm, setSearchTerm] =
     useState('');
+  const [editingUser, setEditingUser] =
+    useState<SchoolUserRow | null>(null);
+  const [feedback, setFeedback] =
+    useState<{
+      type: 'success' | 'error';
+      message: string;
+    } | null>(null);
 
   const users = usersQuery.data ?? [];
 
@@ -402,6 +640,90 @@ export default function SchoolUsersTab() {
       ),
     [searchTerm, selectedRole, users],
   );
+
+  const isManaging =
+    manageUserMutation.isPending;
+
+  function handleEditSubmit(input: {
+    fullName: string;
+    role: EditableSchoolRole;
+    password: string;
+  }) {
+    if (!editingUser || !institutionId) {
+      return;
+    }
+
+    const fullName = input.fullName.trim();
+    const password = input.password.trim();
+
+    manageUserMutation.mutate(
+      {
+        action: 'update',
+        institutionId,
+        membershipId: editingUser.id,
+        fullName,
+        role: input.role,
+        ...(password ? { password } : {}),
+      },
+      {
+        onSuccess: (result) => {
+          setFeedback({
+            type: 'success',
+            message: result.message,
+          });
+          setEditingUser(null);
+        },
+        onError: (error) => {
+          setFeedback({
+            type: 'error',
+            message: getErrorMessage(error),
+          });
+        },
+      },
+    );
+  }
+
+  function handleDeleteUser(user: SchoolUserRow) {
+    if (!institutionId || isManaging) {
+      return;
+    }
+
+    const name =
+      user.profile?.full_name ??
+      user.profile?.email ??
+      'este usuario';
+
+    const confirmed = window.confirm(
+      `Excluir ${name}? Esta acao remove o vinculo da escola e pode remover o acesso do usuario se ele nao tiver outros vinculos.`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    manageUserMutation.mutate(
+      {
+        action: 'delete',
+        institutionId,
+        membershipId: user.id,
+        confirmation: 'EXCLUIR USUARIO',
+      },
+      {
+        onSuccess: (result) => {
+          setFeedback({
+            type: 'success',
+            message: result.message,
+          });
+        },
+        onError: (error) => {
+          setFeedback({
+            type: 'error',
+            message: getErrorMessage(error),
+          });
+        },
+      },
+    );
+  }
 
   if (institutionQuery.isLoading) {
     return (
@@ -426,6 +748,18 @@ export default function SchoolUsersTab() {
 
   return (
     <div className="space-y-5">
+      {feedback && (
+        <div
+          role="alert"
+          className={`rounded-xl border p-4 text-sm ${
+            feedback.type === 'success'
+              ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+              : 'border-red-200 bg-red-50 text-red-700'
+          }`}
+        >
+          {feedback.message}
+        </div>
+      )}
 
       <UnifiedUserInvitePreview
         institutionId={institutionId}
@@ -586,9 +920,21 @@ export default function SchoolUsersTab() {
         ) : (
           <SchoolUsersTable
             users={filteredUsers}
+            onEdit={setEditingUser}
+            onDelete={handleDeleteUser}
+            isBusy={isManaging}
           />
         )}
       </section>
+
+      {editingUser && (
+        <SchoolUserEditDialog
+          user={editingUser}
+          onClose={() => setEditingUser(null)}
+          onSubmit={handleEditSubmit}
+          isSubmitting={isManaging}
+        />
+      )}
     </div>
   );
 }
