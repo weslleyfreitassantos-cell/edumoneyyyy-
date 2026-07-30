@@ -201,7 +201,7 @@ export default function SetPassword() {
 
   if (isChecking) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
         <AuthStatusPanel
           icon={Loader2}
           title="Validando identidade do convite..."
@@ -213,7 +213,7 @@ export default function SetPassword() {
 
   if (!inviteContext && !successMessage) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
         <AuthStatusPanel
           icon={ShieldAlert}
           variant="error"
@@ -233,7 +233,7 @@ export default function SetPassword() {
 
   if (successMessage) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
         <AuthStatusPanel
           icon={CheckCircle2}
           variant="success"
@@ -245,11 +245,11 @@ export default function SetPassword() {
   }
 
   return (
-    <AuthShell>
+    <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
       <AuthPageHeader
         icon={KeyRound}
         title="Defina sua senha"
-        description="Crie a senha que sera utilizada para acessar o EduManager Pro."
+        description="Crie a senha que sera utilizada para acessar sua instituicao."
       />
 
       <div className="mb-6 rounded-lg border border-[#dce1ff] bg-[#f4f6ff] px-4 py-3 text-sm leading-5 text-[#264191]">
@@ -298,6 +298,11 @@ export default function SetPassword() {
           showLabel="Mostrar confirmacao da senha"
           hideLabel="Ocultar confirmacao da senha"
         />
+
+        <p className="rounded-lg bg-[#f3f4f5] px-3 py-2 text-sm leading-5 text-[#444651] dark:bg-[#101b31] dark:text-[#c9d4e8]">
+          Use no minimo 8 caracteres, com letra maiuscula,
+          letra minuscula, numero e caractere especial.
+        </p>
 
         <AuthButton
           type="submit"
