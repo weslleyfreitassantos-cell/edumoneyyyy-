@@ -28,4 +28,10 @@ describe('manage-school-user', () => {
     expect(source).toContain('remainingMemberships');
     expect(source).toContain('authUserDeleted');
   });
+
+  it('handles browser preflight requests with CORS headers', () => {
+    expect(source).toContain('corsHeaders');
+    expect(source).toContain('request.method === "OPTIONS"');
+    expect(source).toContain('access-control-allow-origin');
+  });
 });

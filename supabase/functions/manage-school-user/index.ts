@@ -68,6 +68,13 @@ const requestSchema = z.discriminatedUnion("action", [
 
 type RequestData = z.infer<typeof requestSchema>;
 
+const corsHeaders = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "POST, OPTIONS",
+  "access-control-allow-headers":
+    "authorization, x-client-info, apikey, content-type",
+};
+
 function jsonError(error: ManageSchoolUserError): Response {
   return Response.json(
     {
@@ -76,8 +83,17 @@ function jsonError(error: ManageSchoolUserError): Response {
       message: error.message,
       ...(error.fieldErrors ? { fieldErrors: error.fieldErrors } : {}),
     },
-    { status: error.status },
+    {
+      status: error.status,
+      headers: corsHeaders,
+    },
   );
+}
+
+function jsonSuccess(body: Record<string, unknown>): Response {
+  return Response.json(body, {
+    headers: corsHeaders,
+  });
 }
 
 function toFieldErrors(error: z.ZodError): Record<string, string> {
@@ -327,7 +343,7 @@ async function handleUpdate(
     }
   }
 
-  return Response.json({
+  return jsonSuccess({
     success: true,
     action: "update",
     membershipId: membership.id,
@@ -386,7 +402,7 @@ async function handleDelete(
     authUserDeleted = true;
   }
 
-  return Response.json({
+  return jsonSuccess({
     success: true,
     action: "delete",
     membershipId: membership.id,
@@ -402,6 +418,13 @@ export default {
   fetch: withSupabase<Database>(
     { auth: "user" },
     async (request, ctx) => {
+      if (request.method === "OPTIONS") {
+        return new Response("ok", {
+          status: 200,
+          headers: corsHeaders,
+        });
+      }
+
       if (request.method !== "POST") {
         return jsonError(
           new ManageSchoolUserError({
