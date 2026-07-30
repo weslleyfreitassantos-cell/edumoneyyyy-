@@ -1,4 +1,4 @@
-import {
+﻿import {
   Building2,
   DoorOpen,
   Loader2,
@@ -329,7 +329,7 @@ export default function AccountPage() {
               </h1>
             </div>
             <p className="mt-1 text-sm text-[#727785]">
-              Conta {getAccountStatusLabel(account.status)} ·{' '}
+              Conta {getAccountStatusLabel(account.status)} Â·{' '}
               {usedLicenses}/{limit}{' '}
               instituições usadas
             </p>
@@ -618,3 +618,4 @@ export default function AccountPage() {
     </div>
   );
 }
+

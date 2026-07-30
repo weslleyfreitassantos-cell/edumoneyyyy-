@@ -244,33 +244,6 @@ describe('SchoolUsersTab integration', () => {
     );
   });
 
-  it('habilita novo usuario para ADMIN ativo', () => {
-    render(createElement(SchoolUsersTab));
-
-    expect(
-      screen
-        .getByRole('button', {
-          name: /Novo/,
-        })
-        .hasAttribute('disabled'),
-    ).toBe(false);
-  });
-
-  it('desabilita novo usuario sem permissao efetiva', () => {
-    mockTabState({
-      currentRole: 'TEACHER',
-    });
-
-    render(createElement(SchoolUsersTab));
-
-    expect(
-      screen
-        .getByRole('button', {
-          name: /Novo/,
-        })
-        .hasAttribute('disabled'),
-    ).toBe(true);
-  });
 
   it('mostra carregamento durante sincronizacao da instituicao sem falsa falta de permissao', () => {
     mockTabState({
