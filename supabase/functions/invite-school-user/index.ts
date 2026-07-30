@@ -177,6 +177,13 @@ function isEmailDeliveryError(message: string | undefined): boolean {
     normalized.includes("send");
 }
 
+function isRateLimitError(message: string | undefined): boolean {
+  const normalized = message?.toLowerCase() ?? "";
+  return normalized.includes("rate") ||
+    normalized.includes("limit") ||
+    normalized.includes("too many");
+}
+
 function toPostgresCode(error: unknown): string | null {
   if (
     typeof error === "object" &&
@@ -202,6 +209,50 @@ function toErrorMessage(error: unknown): string {
   }
 
   return "";
+}
+
+function toAuthErrorStatus(error: unknown): number | null {
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "status" in error &&
+    typeof error.status === "number"
+  ) {
+    return error.status;
+  }
+
+  return null;
+}
+
+function toAuthErrorCode(error: unknown): string | null {
+  if (
+    typeof error === "object" &&
+    error !== null &&
+    "code" in error &&
+    typeof error.code === "string"
+  ) {
+    return error.code;
+  }
+
+  return null;
+}
+
+function inviteDeliveryErrorFromAuthError(error: unknown): InviteError {
+  const message = toErrorMessage(error);
+
+  if (isRateLimitError(message)) {
+    return new InviteError({
+      status: 422,
+      code: "INVITE_RATE_LIMITED",
+      message: "Limite temporario de convites atingido. Aguarde alguns minutos e tente novamente.",
+    });
+  }
+
+  return new InviteError({
+    status: 502,
+    code: "INVITE_EMAIL_DELIVERY_FAILED",
+    message: "Nao foi possivel enviar o e-mail de convite agora. Verifique a configuracao de e-mail e tente novamente.",
+  });
 }
 
 function toPublicError(error: unknown): InviteError {
@@ -237,6 +288,14 @@ function toPublicError(error: unknown): InviteError {
   }
 
   const message = toErrorMessage(error);
+  if (isRateLimitError(message)) {
+    return new InviteError({
+      status: 422,
+      code: "INVITE_RATE_LIMITED",
+      message: "Limite temporario de convites atingido. Aguarde alguns minutos e tente novamente.",
+    });
+  }
+
   if (isDuplicateAuthError(message)) {
     return new InviteError({
       status: 409,
@@ -468,11 +527,17 @@ export default {
             ),
           );
         }
-        throw new InviteError({
-          status: 502,
-          code: "INVITE_EMAIL_DELIVERY_FAILED",
-          message: "Nao foi possivel enviar o convite agora. Tente novamente em instantes.",
+        console.error("Falha no envio do convite escolar:", {
+          requestId,
+          authStatus: toAuthErrorStatus(invitationError),
+          authCode: toAuthErrorCode(invitationError),
+          category: isRateLimitError(invitationError?.message)
+            ? "rate_limit"
+            : isEmailDeliveryError(invitationError?.message)
+              ? "email_delivery"
+              : "auth_invite",
         });
+        throw inviteDeliveryErrorFromAuthError(invitationError);
       }
 
       const profileId = invitationData.user.id;
