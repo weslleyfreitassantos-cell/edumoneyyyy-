@@ -1,7 +1,11 @@
 import {
   Building2,
+  DoorOpen,
   Loader2,
+  PauseCircle,
+  PlayCircle,
   Plus,
+  Trash2,
 } from 'lucide-react';
 import {
   useState,
@@ -18,7 +22,9 @@ import {
 } from '../../contexts/InstitutionContext';
 import {
   useCreateInstitution,
+  useDeleteInstitution,
   useOwnedAccount,
+  useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import {
   useAccountBranding,
@@ -79,6 +85,9 @@ export default function AccountPage() {
   const navigate = useNavigate();
   const accountQuery = useOwnedAccount(profile?.id);
   const createInstitution = useCreateInstitution(profile?.id);
+  const updateInstitutionStatus =
+    useUpdateInstitutionStatus();
+  const deleteInstitution = useDeleteInstitution();
   const accountId = accountQuery.data?.id;
   const accountBrandingQuery = useAccountBranding(accountId);
   const saveAccountBranding = useSaveAccountBranding(
@@ -96,11 +105,11 @@ export default function AccountPage() {
   >(null);
 
   const account = accountQuery.data;
-  const activeCount =
-    account?.activeInstitutionCount ?? 0;
+  const usedLicenses =
+    account?.institutions.length ?? 0;
   const limit = account?.institutionLimit ?? 0;
   const remainingSlots = Math.max(
-    limit - activeCount,
+    limit - usedLicenses,
     0,
   );
   const canCreate =
@@ -205,6 +214,76 @@ export default function AccountPage() {
     }
   }
 
+  async function handleToggleInstitutionStatus(
+    institutionId: string,
+    active: boolean,
+  ): Promise<void> {
+    setFeedback(null);
+
+    try {
+      await updateInstitutionStatus.mutateAsync({
+        institutionId,
+        active,
+      });
+
+      setFeedback({
+        type: 'success',
+        message: active
+          ? 'Instituição reativada.'
+          : 'Instituição suspensa. A licença continua ocupada.',
+      });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getErrorMessage(error),
+      });
+    }
+  }
+
+  async function handleDeleteInstitution(
+    institutionId: string,
+    institutionName: string,
+  ): Promise<void> {
+    if (!account) {
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Excluir definitivamente a instituição "${institutionName}"? Esta ação libera uma licença e não pode ser desfeita.`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setFeedback(null);
+
+    try {
+      await deleteInstitution.mutateAsync({
+        accountId: account.id,
+        institutionId,
+      });
+
+      if (
+        institutionId ===
+        institutionContext.currentInstitutionId
+      ) {
+        institutionContext.clearCurrentInstitutionSelection();
+      }
+
+      setFeedback({
+        type: 'success',
+        message:
+          'Instituição excluída. A licença foi liberada.',
+      });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getErrorMessage(error),
+      });
+    }
+  }
+
   if (accountQuery.isLoading) {
     return (
       <div className="grid min-h-screen place-items-center bg-slate-50">
@@ -251,8 +330,8 @@ export default function AccountPage() {
             </div>
             <p className="mt-1 text-sm text-[#727785]">
               Conta {getAccountStatusLabel(account.status)} ·{' '}
-              {activeCount}/{limit}{' '}
-              instituicoes usadas
+              {usedLicenses}/{limit}{' '}
+              instituições usadas
             </p>
           </div>
         </header>
@@ -322,7 +401,7 @@ export default function AccountPage() {
           </article>
           <article className="rounded-lg border border-[#dfe3e8] bg-white p-4">
             <p className="text-xs font-semibold text-[#727785]">
-              Slots restantes
+              Licenças restantes
             </p>
             <p className="mt-2 text-xl font-bold text-[#181c20]">
               {remainingSlots}
@@ -468,11 +547,64 @@ export default function AccountPage() {
                             true,
                           )
                         }
-                        className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-default disabled:bg-[#d8deea] disabled:text-[#414754]"
+                        aria-label={
+                          isCurrentInstitution
+                            ? 'Instituicao selecionada'
+                            : `Entrar em ${institution.name}`
+                        }
+                        title={
+                          isCurrentInstitution
+                            ? 'Selecionada'
+                            : 'Entrar'
+                        }
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#005bbf] text-white hover:bg-[#004a9f] disabled:cursor-default disabled:bg-[#d8deea] disabled:text-[#414754]"
                       >
-                        {isCurrentInstitution
-                          ? 'Selecionada'
-                          : 'Entrar'}
+                        <DoorOpen className="h-4 w-4" />
+                        <span className="sr-only">
+                          {isCurrentInstitution
+                            ? 'Selecionada'
+                            : 'Entrar'}
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        disabled={
+                          updateInstitutionStatus.isPending
+                        }
+                        onClick={() =>
+                          void handleToggleInstitutionStatus(
+                            institution.id,
+                            institution.active === false,
+                          )
+                        }
+                        aria-label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institution.name}`}
+                        title={
+                          institution.active === false
+                            ? 'Reativar'
+                            : 'Suspender'
+                        }
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-orange-300 text-orange-700 hover:bg-orange-50 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        {institution.active === false ? (
+                          <PlayCircle className="h-4 w-4" />
+                        ) : (
+                          <PauseCircle className="h-4 w-4" />
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        disabled={deleteInstitution.isPending}
+                        onClick={() =>
+                          void handleDeleteInstitution(
+                            institution.id,
+                            institution.name,
+                          )
+                        }
+                        aria-label={`Excluir ${institution.name}`}
+                        title="Excluir"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-300 text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        <Trash2 className="h-4 w-4" />
                       </button>
                     </div>
                   </div>
