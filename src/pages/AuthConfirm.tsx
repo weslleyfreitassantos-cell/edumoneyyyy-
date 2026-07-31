@@ -228,7 +228,7 @@ export default function AuthConfirm() {
 
   if (isProcessing) {
     return (
-      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
+      <AuthShell layoutVariant="login" heroVariant="default" showBrand={false}>
         <AuthStatusPanel
           icon={Loader2}
           title="Validando convite de acesso..."
@@ -240,7 +240,7 @@ export default function AuthConfirm() {
 
   if (error) {
     return (
-      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
+      <AuthShell layoutVariant="login" heroVariant="default" showBrand={false}>
         <AuthStatusPanel
           icon={ShieldAlert}
           variant="error"
