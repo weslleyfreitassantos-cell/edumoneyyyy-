@@ -27,6 +27,19 @@ vi.mock("../contexts/ThemeContext", () => ({
   useThemePreference: () => ({ theme: "light" }),
 }));
 
+vi.mock("../hooks/useBranding", () => ({
+  useResolvedBranding: () => ({
+    data: {
+      displayName: "EduManager Pro",
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: "#1e3a8a",
+      secondaryColor: "#6ffbbe",
+    },
+    isLoading: false,
+  }),
+}));
+
 describe("SetPassword", () => {
   const mockNavigate = vi.fn();
 
