@@ -12,7 +12,7 @@ export interface UpdateSchoolUserPayload {
   institutionId: string;
   membershipId: string;
   fullName?: string;
-  role?: Exclude<CurrentDatabaseRole, 'ADMIN'>;
+  role?: CurrentDatabaseRole;
   password?: string;
 }
 

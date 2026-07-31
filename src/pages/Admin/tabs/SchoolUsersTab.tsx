@@ -37,10 +37,7 @@ type RoleFilter =
   | 'ALL'
   | CurrentDatabaseRole;
 
-type EditableSchoolRole = Exclude<
-  CurrentDatabaseRole,
-  'ADMIN'
->;
+type EditableSchoolRole = CurrentDatabaseRole;
 
 export const schoolUserRoleLabels: Record<
   CurrentDatabaseRole,
@@ -80,11 +77,12 @@ const editableRoleOptions: {
   value: EditableSchoolRole;
   label: string;
 }[] = [
-  { value: 'DIRECTOR', label: 'Direcao' },
+  { value: 'ADMIN', label: 'Administração' },
+  { value: 'DIRECTOR', label: 'Direção' },
   { value: 'SECRETARY', label: 'Secretaria' },
   { value: 'TEACHER', label: 'Professor' },
   { value: 'STUDENT', label: 'Aluno' },
-  { value: 'GUARDIAN', label: 'Responsavel' },
+  { value: 'GUARDIAN', label: 'Responsável' },
 ];
 
 export interface SchoolUserSummary {
@@ -428,11 +426,24 @@ function SchoolUserEditDialog({
   const [fullName, setFullName] = useState(
     user.profile?.full_name ?? '',
   );
-  const [role, setRole] = useState<EditableSchoolRole>(
-    user.role === 'ADMIN' ? 'DIRECTOR' : user.role,
-  );
-  const [password, setPassword] =
-    useState('');
+  const [role, setRole] = useState<EditableSchoolRole>(user.role);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+
+  function handleSubmit() {
+    const trimmedPassword = password.trim();
+    if (trimmedPassword.length > 0 && trimmedPassword.length < 8) {
+      setPasswordError('A nova senha deve conter pelo menos 8 caracteres.');
+      return;
+    }
+
+    setPasswordError(null);
+    onSubmit({
+      fullName,
+      role,
+      password: trimmedPassword,
+    });
+  }
 
   return (
     <div
@@ -523,15 +534,22 @@ function SchoolUserEditDialog({
               id="school-user-password"
               type="password"
               value={password}
-              onChange={(event) =>
-                setPassword(event.target.value)
-              }
+              onChange={(event) => {
+                setPassword(event.target.value);
+                if (passwordError) setPasswordError(null);
+              }}
               placeholder="Deixe vazio para nao alterar"
               className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             />
-            <p className="mt-1 text-xs text-gray-500 dark:text-slate-400">
-              Minimo de 8 caracteres.
-            </p>
+            {passwordError ? (
+              <p className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
+                {passwordError}
+              </p>
+            ) : (
+              <p className="mt-1 text-xs text-gray-500 dark:text-slate-400">
+                Minimo de 8 caracteres.
+              </p>
+            )}
           </div>
         </div>
 
@@ -547,13 +565,7 @@ function SchoolUserEditDialog({
           <button
             type="button"
             disabled={isSubmitting}
-            onClick={() =>
-              onSubmit({
-                fullName,
-                role,
-                password,
-              })
-            }
+            onClick={handleSubmit}
             className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {isSubmitting && (
@@ -668,15 +680,29 @@ export default function SchoolUsersTab() {
 
     const fullName = input.fullName.trim();
     const password = input.password.trim();
+    const originalName = editingUser.profile?.full_name ?? '';
+
+    const hasNameChanged = fullName !== '' && fullName !== originalName;
+    const hasRoleChanged = input.role !== editingUser.role;
+    const hasPassword = Boolean(password);
+
+    if (!hasNameChanged && !hasRoleChanged && !hasPassword) {
+      setFeedback({
+        type: 'error',
+        message: 'Nenhum dado foi alterado.',
+      });
+      setEditingUser(null);
+      return;
+    }
 
     manageUserMutation.mutate(
       {
         action: 'update',
         institutionId,
         membershipId: editingUser.id,
-        fullName,
-        role: input.role,
-        ...(password ? { password } : {}),
+        ...(hasNameChanged ? { fullName } : {}),
+        ...(hasRoleChanged ? { role: input.role } : {}),
+        ...(hasPassword ? { password } : {}),
       },
       {
         onSuccess: (result) => {

@@ -42,6 +42,7 @@ class ManageSchoolUserError extends Error {
 }
 
 const editableRoleSchema = z.enum([
+  "ADMIN",
   "DIRECTOR",
   "SECRETARY",
   "TEACHER",
