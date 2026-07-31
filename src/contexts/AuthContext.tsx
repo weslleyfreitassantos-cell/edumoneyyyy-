@@ -202,7 +202,8 @@ async function assertActiveAccountAccess(
         ? institution.accounts[0]
         : institution.accounts;
 
-      return getAccountStatusFromRelation(account);
+      const status = getAccountStatusFromRelation(account);
+      return status ?? 'ACTIVE';
     })
     .filter((status): status is string => Boolean(status));
 
