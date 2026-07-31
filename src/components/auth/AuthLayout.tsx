@@ -109,7 +109,7 @@ export function AuthShell({
 
     if (!showHero) {
       return (
-        <div className="relative min-h-dvh font-sans flex flex-col items-center justify-center px-4 py-8 text-[#111]" style={{ backgroundImage: 'url(/media/ff2.png)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#eef3fc' }}>
+        <div className="relative min-h-dvh font-sans flex flex-col items-center justify-center px-4 py-8 text-[#111]" style={{ backgroundImage: 'image-set(url(/media/ff2-optimized.webp) type("image/webp"), url(/media/ff2.png) type("image/png"))', backgroundSize: 'cover', backgroundPosition: 'center', backgroundColor: '#eef3fc' }}>
           <div className="w-full max-w-[420px]">
             <div className={`rounded-2xl border ${theme === 'dark' ? 'border-[#235bbe]/15 bg-[#0b1430]/95' : 'border-[#c7d9f8] bg-white'} px-6 py-8 shadow-sm sm:px-8 sm:py-10 ${contentClassName}`}>
               {children}
