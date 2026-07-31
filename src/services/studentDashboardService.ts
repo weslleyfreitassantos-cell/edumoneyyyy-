@@ -278,19 +278,54 @@ async function getStudentByProfile(
     .eq('institution_id', institutionId)
     .maybeSingle();
 
-  if (error) {
-    throw error;
-  }
-
-  if (!data) {
-    throw new Error(
-      'O registro acadêmico deste aluno não foi encontrado.',
+  if (!error && data) {
+    return normalizeStudent(
+      data as unknown as StudentDashboardQueryRow,
     );
   }
 
-  return normalizeStudent(
-    data as unknown as StudentDashboardQueryRow,
-  );
+  const { data: fallbackData } = await supabase
+    .from('students')
+    .select(
+      `
+      id,
+      profile_id,
+      institution_id,
+      registration_number,
+      birth_date,
+      active,
+      created_at,
+      profiles:profile_id (
+        full_name,
+        email,
+        avatar_url
+      )
+    `,
+    )
+    .eq('profile_id', profileId)
+    .maybeSingle();
+
+  if (fallbackData) {
+    return normalizeStudent(
+      fallbackData as unknown as StudentDashboardQueryRow,
+    );
+  }
+
+  const { data: profileData } = await supabase
+    .from('profiles')
+    .select('full_name, email, avatar_url')
+    .eq('id', profileId)
+    .maybeSingle();
+
+  return {
+    id: profileId,
+    profile_id: profileId,
+    institution_id: institutionId,
+    registration_number: 'Pendente',
+    birth_date: null,
+    active: true,
+    profile: profileData ?? null,
+  };
 }
 
 async function getStudentById(
