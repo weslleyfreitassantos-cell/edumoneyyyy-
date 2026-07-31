@@ -66,6 +66,35 @@ describe("AuthConfirm", () => {
     });
   });
 
+  it("should resume set password when invite context and session are still valid", async () => {
+    window.location.hash = "";
+    sessionStorage.setItem(
+      "invite_context",
+      JSON.stringify({
+        userId: "user-123",
+        email: "test@example.com",
+        verifiedAt: Date.now(),
+        purpose: "invite",
+      })
+    );
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/set-password", { replace: true });
+      expect(supabase.auth.signOut).not.toHaveBeenCalled();
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
+    });
+  });
+
   it("should show error if type is not invite", async () => {
     window.location.hash = "#access_token=123&refresh_token=456&type=recovery";
 
