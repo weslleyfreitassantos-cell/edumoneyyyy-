@@ -8,23 +8,15 @@ import {
 import {
   ArrowLeft,
   CheckCircle2,
-  KeyRound,
+  Eye,
+  EyeOff,
   Loader2,
+  Lock,
   Save,
   ShieldAlert,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import {
-  AuthAlert,
-  AuthButton,
-  AuthPageHeader,
-  AuthPasswordInput,
-  AuthShell,
-  AuthStatusPanel,
-  authPlainLinkClass,
-  authPrimaryActionLinkClass,
-  authSecondaryActionClass,
-} from '../components/auth/AuthLayout';
+import { AuthShell } from '../components/auth/AuthLayout';
 import { useResolvedBranding } from '../hooks/useBranding';
 import { supabase } from '../lib/supabaseClient';
 import { validatePasswordConfirmation } from '../schemas/authSchemas';
@@ -341,22 +333,27 @@ export default function ResetPassword() {
   const footer = (
     <div className="space-y-1">
       <p className="font-medium text-slate-700 dark:text-slate-300">
-        Educacao que transforma. Tecnologia que aproxima.
+        Educação que transforma. Tecnologia que aproxima.
       </p>
       <p className="text-slate-500 dark:text-slate-400">
-        2026 {displayName}. Todos os direitos reservados.
+        © 2026 {displayName}. Todos os direitos reservados.
       </p>
     </div>
   );
 
   const brandHeader = (
-    <div className="mb-4 flex flex-col items-center">
+    <div className="login-brand-block mb-3 flex flex-col items-center">
       <div className="flex min-h-[36px] items-center justify-center">
-        {branding.logoUrl ? (
+        {brandingQuery.isLoading ? (
+          <Loader2
+            className="h-5 w-5 animate-spin text-slate-400"
+            aria-label="Carregando identidade visual"
+          />
+        ) : branding.logoUrl ? (
           <img
             src={branding.logoUrl}
-            alt={`Logo de ${displayName}`}
-            className="max-h-[120px] max-w-[250px] object-contain sm:max-h-[140px] sm:max-w-[290px]"
+            alt={`Logo de ${branding.displayName ?? 'identidade visual'}`}
+            className="max-h-[140px] max-w-[270px] object-contain sm:max-h-[160px] sm:max-w-[310px]"
           />
         ) : (
           <div
@@ -436,7 +433,6 @@ export default function ResetPassword() {
         }
       } catch (error) {
         clearRecoveryContext();
-        await signOutLocal();
 
         if (active && !eventRecoveryAcceptedRef.current) {
           setRecoveryContext(null);
@@ -526,11 +522,24 @@ export default function ResetPassword() {
         showBrand={false}
         footer={footer}
       >
-        <AuthStatusPanel
-          icon={Loader2}
-          title="Validando link de recuperacao..."
-          description="Aguarde enquanto confirmamos a sessao temporaria de redefinicao."
-        />
+        <div style={brandStyle}>
+          <div className="login-brand-block mb-3 flex flex-col items-center">
+            <div className="flex min-h-[36px] items-center justify-center">
+              <Loader2
+                className="h-6 w-6 animate-spin text-slate-400"
+                aria-label="Validando link de recuperação"
+              />
+            </div>
+            <div className="mt-2 text-center">
+              <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+                Validando link de recuperação...
+              </h1>
+              <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
+                Aguarde enquanto confirmamos a sessão temporária de redefinição.
+              </p>
+            </div>
+          </div>
+        </div>
       </AuthShell>
     );
   }
@@ -543,19 +552,32 @@ export default function ResetPassword() {
         showBrand={false}
         footer={footer}
       >
-        <AuthStatusPanel
-          icon={CheckCircle2}
-          variant="success"
-          title="Senha atualizada com sucesso"
-          description="Agora voce pode entrar usando sua nova senha."
-        >
+        <div style={brandStyle}>
+          {brandHeader}
+
+          <div className="mb-4 text-center">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
+              <CheckCircle2 className="h-6 w-6" aria-hidden="true" />
+            </div>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white">
+              Senha atualizada com sucesso
+            </h2>
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+              Agora voce pode entrar usando sua nova senha.
+            </p>
+          </div>
+
           <Link
             to="/login"
-            className={authPrimaryActionLinkClass}
+            className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+            }}
           >
             Ir para o login
           </Link>
-        </AuthStatusPanel>
+        </div>
       </AuthShell>
     );
   }
@@ -568,30 +590,41 @@ export default function ResetPassword() {
         showBrand={false}
         footer={footer}
       >
-        <AuthStatusPanel
-          icon={ShieldAlert}
-          variant="error"
-          title="Link de recuperacao invalido"
-          description={
-            pageError ??
-            'Sessao de recuperacao ausente. Solicite um novo link.'
-          }
-        >
-          <div className="grid gap-3 sm:grid-cols-2">
+        <div style={brandStyle}>
+          {brandHeader}
+
+          <div className="mb-4 text-center">
+            <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-red-600 dark:bg-red-950/60 dark:text-red-400">
+              <ShieldAlert className="h-6 w-6" aria-hidden="true" />
+            </div>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white">
+              Link de recuperação inválido
+            </h2>
+            <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+              {pageError ??
+                'Sessao de recuperacao ausente. Solicite um novo link.'}
+            </p>
+          </div>
+
+          <div className="space-y-2">
             <Link
               to="/forgot-password"
-              className={authPrimaryActionLinkClass}
+              className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20"
+              style={{
+                backgroundImage:
+                  'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+              }}
             >
               Solicitar novo link
             </Link>
             <Link
               to="/login"
-              className={authSecondaryActionClass}
+              className="inline-flex h-[44px] w-full items-center justify-center rounded-xl border border-slate-300 bg-white text-xs font-semibold text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
             >
               Voltar ao login
             </Link>
           </div>
-        </AuthStatusPanel>
+        </div>
       </AuthShell>
     );
   }
@@ -606,85 +639,179 @@ export default function ResetPassword() {
       <div style={brandStyle}>
         {brandHeader}
 
-        <AuthPageHeader
-          icon={KeyRound}
-          title="Definir nova senha"
-          description="Use pelo menos 8 caracteres para atualizar sua senha com seguranca."
-        />
+        <div className="mt-2 mb-3 text-center">
+          <h1 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+            Definir nova senha
+          </h1>
+          <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-400">
+            Use pelo menos 8 caracteres para atualizar sua senha com segurança.
+          </p>
+        </div>
 
-        <div className="mb-6 rounded-lg border border-[#dce1ff] bg-[#f4f6ff] px-4 py-3 text-sm leading-5 text-[#264191] dark:border-[#334155] dark:bg-[#111c2e] dark:text-[#dbeafe]">
+        <div className="mb-3 rounded-xl border border-blue-100 bg-blue-50/70 p-2.5 text-center text-xs text-blue-900 dark:border-blue-900/40 dark:bg-blue-950/40 dark:text-blue-200">
           Redefinindo senha para:{' '}
-          <strong>{recoveryContext.email}</strong>
+          <strong className="font-semibold">{recoveryContext.email}</strong>
         </div>
 
         <form
           onSubmit={(event) => void handleSubmit(event)}
           noValidate
-          className="space-y-5"
+          className="space-y-3"
         >
           {formError && (
-            <AuthAlert variant="error">{formError}</AuthAlert>
+            <div
+              role="alert"
+              className="rounded-xl border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-300"
+            >
+              {formError}
+            </div>
           )}
 
-          <AuthPasswordInput
-            id="recovery-password"
-            label="Nova senha"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete="new-password"
-            minLength={8}
-            required
-            isVisible={showPassword}
-            onToggleVisibility={() =>
-              setShowPassword((current) => !current)
-            }
-            showLabel="Mostrar nova senha"
-            hideLabel="Ocultar nova senha"
-          />
+          <div className="space-y-1">
+            <label
+              htmlFor="recovery-password"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
+            >
+              Nova senha
+            </label>
+            <div className="relative">
+              <Lock
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+                aria-hidden="true"
+              />
+              <input
+                id="recovery-password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                required
+                minLength={8}
+                autoComplete="new-password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                placeholder="********"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-11 pr-12 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
+              />
+              <button
+                type="button"
+                aria-label={
+                  showPassword ? 'Ocultar nova senha' : 'Mostrar nova senha'
+                }
+                aria-pressed={showPassword}
+                onClick={() =>
+                  setShowPassword((current) => !current)
+                }
+                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+              >
+                {showPassword ? (
+                  <EyeOff
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Eye
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
 
-          <AuthPasswordInput
-            id="recovery-password-confirmation"
-            label="Confirmar nova senha"
-            value={passwordConfirmation}
-            onChange={(event) =>
-              setPasswordConfirmation(event.target.value)
-            }
-            autoComplete="new-password"
-            minLength={8}
-            required
-            isVisible={showPasswordConfirmation}
-            onToggleVisibility={() =>
-              setShowPasswordConfirmation((current) => !current)
-            }
-            showLabel="Mostrar confirmacao da senha"
-            hideLabel="Ocultar confirmacao da senha"
-          />
+          <div className="space-y-1">
+            <label
+              htmlFor="recovery-password-confirmation"
+              className="block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400"
+            >
+              Confirmar nova senha
+            </label>
+            <div className="relative">
+              <Lock
+                className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 dark:text-slate-500"
+                aria-hidden="true"
+              />
+              <input
+                id="recovery-password-confirmation"
+                name="passwordConfirmation"
+                type={showPasswordConfirmation ? 'text' : 'password'}
+                required
+                minLength={8}
+                autoComplete="new-password"
+                value={passwordConfirmation}
+                onChange={(event) =>
+                  setPasswordConfirmation(event.target.value)
+                }
+                placeholder="********"
+                className="h-[48px] w-full rounded-xl border border-slate-300 bg-white px-11 pr-12 text-sm text-slate-900 shadow-sm outline-none transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 dark:border-slate-700 dark:bg-[#111c2e] dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:border-blue-500 dark:focus:ring-white/20 caret-blue-500 selection:bg-blue-500/30 dark:selection:bg-blue-400/30"
+              />
+              <button
+                type="button"
+                aria-label={
+                  showPasswordConfirmation
+                    ? 'Ocultar confirmacao da senha'
+                    : 'Mostrar confirmacao da senha'
+                }
+                aria-pressed={showPasswordConfirmation}
+                onClick={() =>
+                  setShowPasswordConfirmation((current) => !current)
+                }
+                className="absolute right-3 top-1/2 inline-flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:hover:bg-slate-800 dark:hover:text-slate-200"
+              >
+                {showPasswordConfirmation ? (
+                  <EyeOff
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Eye
+                    className="h-5 w-5"
+                    aria-hidden="true"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
 
-          <p className="rounded-lg bg-[#f3f4f5] px-3 py-2 text-xs leading-5 text-[#444651] dark:bg-[#111827] dark:text-[#cbd5e1]">
+          <p className="rounded-lg bg-slate-100 px-3 py-2 text-xs leading-5 text-slate-600 dark:bg-slate-900 dark:text-slate-400">
             Criterio de senha: minimo de 8 caracteres.
           </p>
 
-          <AuthButton
+          <button
             type="submit"
-            loading={isSubmitting}
-            icon={Save}
+            disabled={isSubmitting}
+            aria-live="polite"
+            className="inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white shadow-md transition hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-blue-600/20 disabled:cursor-not-allowed disabled:opacity-70"
+            style={{
+              backgroundImage:
+                'linear-gradient(90deg, var(--brand-primary), var(--brand-secondary))',
+            }}
           >
+            {isSubmitting ? (
+              <Loader2
+                className="h-5 w-5 animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <Save
+                className="h-5 w-5"
+                aria-hidden="true"
+              />
+            )}
             {isSubmitting ? 'Atualizando...' : 'Atualizar senha'}
-          </AuthButton>
-        </form>
+          </button>
 
-        <div className="mt-6 border-t border-[#c5c5d3] pt-6 text-center dark:border-[#334155]">
-          <Link
-            to="/login"
-            className={authPlainLinkClass}
-          >
-            <ArrowLeft
-              className="h-4 w-4"
-              aria-hidden="true"
-            />
-            Voltar para o login
-          </Link>
-        </div>
+          <div className="flex justify-center pt-1">
+            <Link
+              to="/login"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 underline-offset-4 transition hover:text-blue-700 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-600/20 dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              <ArrowLeft
+                className="h-3.5 w-3.5"
+                aria-hidden="true"
+              />
+              Voltar para o login
+            </Link>
+          </div>
+        </form>
       </div>
     </AuthShell>
   );
