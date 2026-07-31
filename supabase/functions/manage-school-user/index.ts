@@ -333,7 +333,10 @@ async function handleUpdate(
   if (input.password) {
     const { error } = await ctx.supabaseAdmin.auth.admin.updateUserById(
       membership.profile_id,
-      { password: input.password },
+      {
+        password: input.password,
+        email_confirm: true,
+      },
     );
     if (error) {
       throw new ManageSchoolUserError({
