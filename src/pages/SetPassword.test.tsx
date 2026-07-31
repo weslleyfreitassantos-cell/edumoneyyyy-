@@ -162,7 +162,7 @@ describe("SetPassword", () => {
     });
   });
 
-  it("should explain when password is missing uppercase letter", async () => {
+  it("should accept any password with at least 8 characters", async () => {
     sessionStorage.setItem(
       "invite_context",
       JSON.stringify({
@@ -177,6 +177,8 @@ describe("SetPassword", () => {
       data: { user: { id: "user-123", email: "test@example.com" } },
       error: null,
     });
+    (supabase.auth.updateUser as any).mockResolvedValue({ error: null });
+    (supabase.auth.signOut as any).mockResolvedValue({});
 
     render(
       <MemoryRouter>
@@ -189,20 +191,19 @@ describe("SetPassword", () => {
     });
 
     fireEvent.change(screen.getByLabelText(/Nova senha/i), {
-      target: { value: "12345678p@" },
+      target: { value: "12345678" },
     });
     fireEvent.change(screen.getByLabelText(/Confirme a senha/i), {
-      target: { value: "12345678p@" },
+      target: { value: "12345678" },
     });
 
     fireEvent.click(screen.getByRole("button", { name: /Definir senha e acessar/i }));
 
     await waitFor(() => {
-      expect(
-        screen.getByText(/pelo menos uma letra maiuscula/i)
-      ).toBeDefined();
+      expect(supabase.auth.updateUser).toHaveBeenCalledWith({
+        password: "12345678",
+      });
     });
-    expect(supabase.auth.updateUser).not.toHaveBeenCalled();
   });
 
   it("should not expose internal update errors", async () => {

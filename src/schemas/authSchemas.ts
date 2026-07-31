@@ -8,14 +8,7 @@ export const authEmailSchema = z
 
 export const authPasswordSchema = z
   .string()
-  .min(8, 'A senha deve possuir pelo menos 8 caracteres.')
-  .regex(/[a-z]/, 'A senha deve possuir pelo menos uma letra minuscula.')
-  .regex(/[A-Z]/, 'A senha deve possuir pelo menos uma letra maiuscula.')
-  .regex(/[0-9]/, 'A senha deve possuir pelo menos um numero.')
-  .regex(
-    /[^A-Za-z0-9]/,
-    'A senha deve possuir pelo menos um caractere especial.',
-  );
+  .min(8, 'A senha deve possuir pelo menos 8 caracteres.');
 
 export function validatePasswordConfirmation(
   password: string,
