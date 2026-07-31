@@ -104,6 +104,22 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
   };
 }
 
+async function hasCurrentInviteSession(
+  context: InviteContext,
+): Promise<boolean> {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  return Boolean(
+    !error &&
+      user &&
+      user.id === context.userId &&
+      user.email === context.email,
+  );
+}
+
 export default function AuthConfirm() {
   const navigate = useNavigate();
   const processingRef = useRef(false);
@@ -117,7 +133,24 @@ export default function AuthConfirm() {
 
     async function confirmInvite() {
       try {
-        const confirmation = getInviteConfirmationFromUrl();
+        let confirmation: InviteConfirmation | null = null;
+
+        try {
+          confirmation = getInviteConfirmationFromUrl();
+        } catch (inviteError) {
+          const existingContext = getInviteContext();
+
+          if (
+            existingContext &&
+            (await hasCurrentInviteSession(existingContext))
+          ) {
+            clearInviteTokensFromUrl();
+            navigate('/set-password', { replace: true });
+            return;
+          }
+
+          throw inviteError;
+        }
 
         clearInviteContext();
 
@@ -195,7 +228,7 @@ export default function AuthConfirm() {
 
   if (isProcessing) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
         <AuthStatusPanel
           icon={Loader2}
           title="Validando convite de acesso..."
@@ -207,7 +240,7 @@ export default function AuthConfirm() {
 
   if (error) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="video" showBrand={false}>
         <AuthStatusPanel
           icon={ShieldAlert}
           variant="error"
