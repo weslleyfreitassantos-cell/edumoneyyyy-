@@ -24,6 +24,9 @@ export interface AccountInstitutionSummary {
   account_id: string | null;
   logoUrl: string | null;
   publicSlug: string | null;
+  suspendedByProfileId?: string | null;
+  suspendedByScope?: 'PLATFORM' | 'ACCOUNT' | null;
+  suspendedAt?: string | null;
 }
 
 export interface AccountSummaryRow {
@@ -148,6 +151,7 @@ export interface UpdateInstitutionStatusResponse {
   success: true;
   institutionId: string;
   active: boolean;
+  suspendedByScope: 'PLATFORM' | 'ACCOUNT' | null;
   currentInstitutionCount: number;
   institutionLimit: number;
   remainingSlots: number;
@@ -178,8 +182,20 @@ interface AccountQueryRow {
     | AccountOwnerSummary[]
     | null;
   institutions:
-    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })
-    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })[]
+    | (AccountInstitutionSummary & {
+        logo_url: string | null;
+        public_slug: string | null;
+        suspended_by_profile_id: string | null;
+        suspended_by_scope: string | null;
+        suspended_at: string | null;
+      })
+    | (AccountInstitutionSummary & {
+        logo_url: string | null;
+        public_slug: string | null;
+        suspended_by_profile_id: string | null;
+        suspended_by_scope: string | null;
+        suspended_at: string | null;
+      })[]
     | null;
 }
 
@@ -260,14 +276,25 @@ function normalizeStatus(
 function normalizeAccountRow(
   row: AccountQueryRow,
 ): AccountSummaryRow {
-  const institutions = normalizeRelationList(row.institutions).map((inst) => ({
-    id: inst.id,
-    name: inst.name,
-    active: inst.active,
-    account_id: inst.account_id,
-    logoUrl: inst.logo_url ?? null,
-    publicSlug: inst.public_slug ?? null,
-  })).sort((first, second) =>
+  const institutions = normalizeRelationList(row.institutions).map((inst) => {
+    const suspendedByScope: AccountInstitutionSummary['suspendedByScope'] =
+      inst.suspended_by_scope === 'PLATFORM' ||
+      inst.suspended_by_scope === 'ACCOUNT'
+        ? inst.suspended_by_scope
+        : null;
+
+    return {
+      id: inst.id,
+      name: inst.name,
+      active: inst.active,
+      account_id: inst.account_id,
+      logoUrl: inst.logo_url ?? null,
+      publicSlug: inst.public_slug ?? null,
+      suspendedByProfileId: inst.suspended_by_profile_id ?? null,
+      suspendedByScope,
+      suspendedAt: inst.suspended_at ?? null,
+    };
+  }).sort((first, second) =>
     first.name.localeCompare(second.name, 'pt-BR'),
   );
 
@@ -525,6 +552,11 @@ function assertUpdateInstitutionStatusResponse(
     success: requireTrue(value, 'success'),
     institutionId: requireString(value, 'institutionId'),
     active: requireBoolean(value, 'active'),
+    suspendedByScope:
+      value.suspendedByScope === 'PLATFORM' ||
+      value.suspendedByScope === 'ACCOUNT'
+        ? value.suspendedByScope
+        : null,
     currentInstitutionCount: requireNumber(
       value,
       'currentInstitutionCount',
@@ -678,7 +710,10 @@ export const accountService = {
           active,
           account_id,
           logo_url,
-          public_slug
+          public_slug,
+          suspended_by_profile_id,
+          suspended_by_scope,
+          suspended_at
         )
       `,
       )
@@ -719,7 +754,10 @@ export const accountService = {
           active,
           account_id,
           logo_url,
-          public_slug
+          public_slug,
+          suspended_by_profile_id,
+          suspended_by_scope,
+          suspended_at
         )
       `,
       )

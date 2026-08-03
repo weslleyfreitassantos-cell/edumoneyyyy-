@@ -33,6 +33,7 @@ import {
   useSaveAccountBranding,
 } from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
+import { AccountServiceError } from '../../services/accountService';
 
 interface InstitutionFormState {
   name: string;
@@ -233,9 +234,15 @@ export default function AccountPage() {
           : 'Instituição suspensa. A licença continua ocupada.',
       });
     } catch (error) {
+      const message = getErrorMessage(error);
+
       setFeedback({
         type: 'error',
-        message: getErrorMessage(error),
+        message:
+          error instanceof AccountServiceError &&
+          error.code === 'INSTITUTION_SUSPENDED_BY_PLATFORM'
+            ? 'Esta instituição foi suspensa pela plataforma.'
+            : message,
       });
     }
   }

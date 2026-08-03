@@ -78,9 +78,12 @@ function getUnknownErrorMessage(error: unknown): string {
 }
 
 function isInstitutionLimitReachedError(error: unknown): boolean {
-  return getUnknownErrorMessage(error)
-    .toLowerCase()
-    .includes("institution limit reached");
+  const message = getUnknownErrorMessage(error).toLowerCase();
+
+  return (
+    message.includes("institution limit reached") ||
+    message.includes("used institutions")
+  );
 }
 
 export default {
@@ -167,7 +170,9 @@ export default {
           error: institutionError,
         } = await ctx.supabaseAdmin
           .from("institutions")
-          .select("id, name, active, account_id")
+          .select(
+            "id, name, active, account_id, suspended_by_profile_id, suspended_by_scope, suspended_at",
+          )
           .eq("id", input.institutionId)
           .maybeSingle();
 
@@ -235,59 +240,69 @@ export default {
               count: "exact",
               head: true,
             })
-            .eq("account_id", account.id)
-            .eq("active", true);
+            .eq("account_id", account.id);
 
         if (countError) {
           throw countError;
         }
 
-        const activeInstitutionCount = count ?? 0;
+        const usedInstitutionCount = count ?? 0;
         const isCurrentlyActive =
           institution.active !== false;
 
         if (
           input.active &&
           !isCurrentlyActive &&
-          activeInstitutionCount >= account.institution_limit
+          institution.suspended_by_scope === "PLATFORM" &&
+          !isSuperAdmin
         ) {
           throw new InstitutionStatusError({
-            status: 409,
-            code: "INSTITUTION_LIMIT_REACHED",
+            status: 403,
+            code: "INSTITUTION_SUSPENDED_BY_PLATFORM",
             message:
-              "A conta atingiu o limite de instituicoes ativas.",
+              "Esta instituicao foi suspensa pela plataforma.",
           });
         }
+
+        const suspensionUpdate = input.active
+          ? {
+              suspended_by_profile_id: null,
+              suspended_by_scope: null,
+              suspended_at: null,
+            }
+          : {
+              suspended_by_profile_id: requester.id,
+              suspended_by_scope: isSuperAdmin
+                ? "PLATFORM"
+                : "ACCOUNT",
+              suspended_at: new Date().toISOString(),
+            };
 
         const { data: updatedInstitution, error: updateError } =
           await ctx.supabaseAdmin
             .from("institutions")
             .update({
               active: input.active,
+              ...suspensionUpdate,
             })
             .eq("id", institution.id)
-            .select("id, active")
+            .select("id, active, suspended_by_scope")
             .single();
 
         if (updateError) {
           throw updateError;
         }
 
-        const nextActiveCount =
-          input.active && !isCurrentlyActive
-            ? activeInstitutionCount + 1
-            : !input.active && isCurrentlyActive
-              ? activeInstitutionCount - 1
-              : activeInstitutionCount;
-
         return Response.json({
           success: true,
           institutionId: updatedInstitution.id,
           active: updatedInstitution.active === true,
-          currentInstitutionCount: nextActiveCount,
+          suspendedByScope:
+            updatedInstitution.suspended_by_scope ?? null,
+          currentInstitutionCount: usedInstitutionCount,
           institutionLimit: account.institution_limit,
           remainingSlots:
-            account.institution_limit - nextActiveCount,
+            account.institution_limit - usedInstitutionCount,
         });
       } catch (error) {
         console.error(
@@ -305,7 +320,7 @@ export default {
               status: 409,
               code: "INSTITUTION_LIMIT_REACHED",
               message:
-                "A conta atingiu o limite de instituicoes ativas.",
+                "A conta atingiu o limite de instituicoes.",
             }),
           );
         }

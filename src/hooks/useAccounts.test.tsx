@@ -244,6 +244,7 @@ describe('account mutations', () => {
       success: true,
       institutionId: 'institution-1',
       active: false,
+      suspendedByScope: 'ACCOUNT',
       currentInstitutionCount: 1,
       institutionLimit: 3,
       remainingSlots: 2,

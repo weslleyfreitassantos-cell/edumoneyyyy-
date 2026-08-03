@@ -354,6 +354,9 @@ export type Database = {
           logo_url: string | null
           name: string
           phone: string | null
+          suspended_at: string | null
+          suspended_by_profile_id: string | null
+          suspended_by_scope: string | null
           updated_at: string | null
         }
         Insert: {
@@ -367,6 +370,9 @@ export type Database = {
           logo_url?: string | null
           name: string
           phone?: string | null
+          suspended_at?: string | null
+          suspended_by_profile_id?: string | null
+          suspended_by_scope?: string | null
           updated_at?: string | null
         }
         Update: {
@@ -380,6 +386,9 @@ export type Database = {
           logo_url?: string | null
           name?: string
           phone?: string | null
+          suspended_at?: string | null
+          suspended_by_profile_id?: string | null
+          suspended_by_scope?: string | null
           updated_at?: string | null
         }
         Relationships: [

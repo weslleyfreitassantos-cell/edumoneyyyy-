@@ -27,6 +27,7 @@ import {
   useOwnedAccount,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
+import { AccountServiceError } from '../../services/accountService';
 import AccountPage from './AccountPage';
 
 const routerMock = vi.hoisted(() => ({
@@ -191,6 +192,7 @@ beforeEach(() => {
     currentInstitutionCount: 1,
     institutionLimit: 3,
     remainingSlots: 1,
+    suspendedByScope: 'ACCOUNT',
   });
   mockedUseUpdateInstitutionStatus.mockReturnValue({
     mutateAsync: updateInstitutionStatus,
@@ -341,6 +343,7 @@ describe('AccountPage', () => {
             account_id: 'account-1',
             logoUrl: null,
             publicSlug: null,
+            suspendedByScope: null,
           },
           {
             id: 'institution-2',
@@ -349,6 +352,7 @@ describe('AccountPage', () => {
             account_id: 'account-1',
             logoUrl: null,
             publicSlug: null,
+            suspendedByScope: 'ACCOUNT',
           },
         ],
       },
@@ -393,6 +397,67 @@ describe('AccountPage', () => {
       });
       expect(
         screen.getByText(/A licença foi liberada/i),
+      ).toBeTruthy();
+    });
+  });
+
+  it('bloqueia reativacao de instituicao suspensa pela plataforma', async () => {
+    updateInstitutionStatus.mockRejectedValue(
+      new AccountServiceError(
+        'Esta instituicao foi suspensa pela plataforma.',
+        'INSTITUTION_SUSPENDED_BY_PLATFORM',
+      ),
+    );
+
+    mockedUseOwnedAccount.mockReturnValue({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 2,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: false,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+            suspendedByScope: 'PLATFORM',
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Reativar Escola Sol/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(updateInstitutionStatus).toHaveBeenCalledWith({
+        institutionId: 'institution-1',
+        active: true,
+      });
+      expect(
+        screen.getByText(
+          /Esta instituição foi suspensa pela plataforma/i,
+        ),
       ).toBeTruthy();
     });
   });

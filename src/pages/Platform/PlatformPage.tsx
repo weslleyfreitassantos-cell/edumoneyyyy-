@@ -126,11 +126,15 @@ function getPlatformErrorMessage(error: unknown): string {
       error.code ===
       'INSTITUTION_LIMIT_BELOW_ACTIVE_INSTITUTIONS'
     ) {
-      return 'O limite não pode ficar abaixo da quantidade de instituições ativas. Suspenda uma instituição antes de reduzir o limite.';
+      return 'O limite nao pode ficar abaixo da quantidade de licencas em uso. Exclua definitivamente uma instituicao antes de reduzir.';
     }
 
     if (error.code === 'INSTITUTION_LIMIT_REACHED') {
-      return 'A conta atingiu o limite de instituições ativas. Aumente o limite antes de reativar esta escola.';
+      return 'A conta atingiu o limite de instituicoes.';
+    }
+
+    if (error.code === 'INSTITUTION_SUSPENDED_BY_PLATFORM') {
+      return 'Esta instituição foi suspensa pela plataforma.';
     }
 
     if (error.code === 'PROFILE_INACTIVE') {
@@ -992,7 +996,7 @@ export default function PlatformPage() {
         type: 'error',
         message:
           account.activeInstitutionCount > 0
-            ? `O limite mínimo para ${account.name} é ${minimumLimit}, pois há ${account.activeInstitutionCount} instituições ativas. Suspenda instituições antes de reduzir.`
+            ? `O limite minimo para ${account.name} e ${minimumLimit}, pois ha ${account.activeInstitutionCount} licencas em uso. Exclua definitivamente instituicoes antes de reduzir.`
             : 'Informe um limite maior que zero.',
       });
       return;
@@ -1066,10 +1070,11 @@ export default function PlatformPage() {
     const previousDialog = institutionAccessDialog;
 
     try {
-      await updateInstitutionStatusMutation.mutateAsync({
-        institutionId: institution.id,
-        active,
-      });
+      const result =
+        await updateInstitutionStatusMutation.mutateAsync({
+          institutionId: institution.id,
+          active,
+        });
 
       setInstitutionAccessDialog((current) =>
         current
@@ -1082,6 +1087,8 @@ export default function PlatformPage() {
                     ? {
                         ...item,
                         active,
+                        suspendedByScope:
+                          result.suspendedByScope,
                       }
                     : item,
                 ),
@@ -1095,7 +1102,7 @@ export default function PlatformPage() {
         type: 'success',
         message: active
           ? `${institution.name} reativada. Histórico acadêmico preservado.`
-          : `${institution.name} suspensa. Histórico acadêmico preservado.`,
+          : `${institution.name} suspensa. A licenca continua ocupada.`,
       });
     } catch (error) {
       setInstitutionAccessDialog(previousDialog);

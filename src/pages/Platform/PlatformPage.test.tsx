@@ -349,6 +349,7 @@ describe('PlatformPage', () => {
       currentInstitutionCount: 1,
       institutionLimit: 3,
       remainingSlots: 2,
+      suspendedByScope: 'PLATFORM',
     });
     hookMock.deleteInstitutionMutateAsync.mockResolvedValue({
       success: true,
@@ -872,7 +873,7 @@ describe('PlatformPage', () => {
     });
   });
 
-  it('bloqueia limite abaixo das instituicoes ativas', () => {
+  it('bloqueia limite abaixo das licencas em uso', () => {
     renderPage();
 
     fireEvent.change(
@@ -889,11 +890,11 @@ describe('PlatformPage', () => {
 
     expect(hookMock.updateMutateAsync).not.toHaveBeenCalled();
     expect(screen.getByRole('alert').textContent).toMatch(
-      /limite m.nimo.*2.*institui..es ativas/i,
+      /limite m.nimo.*2.*licen.as em uso/i,
     );
   });
 
-  it('suspende e reativa instituicao preservando historico', async () => {
+  it('suspende e reativa instituicao atualizando o modal', async () => {
     renderPage();
 
     fireEvent.click(
@@ -921,7 +922,7 @@ describe('PlatformPage', () => {
         }),
       ).toBeDefined();
       expect(
-        screen.getByText(/Hist.rico acad.mico preservado/i),
+        screen.getByText(/licen.a continua ocupada/i),
       ).toBeDefined();
     });
 
