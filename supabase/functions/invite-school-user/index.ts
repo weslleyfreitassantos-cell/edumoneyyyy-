@@ -40,6 +40,7 @@ interface ExistingProfile {
 
 interface InstitutionRecord {
   id: string;
+  name: string;
   active: boolean | null;
   account_id: string | null;
 }
@@ -390,7 +391,7 @@ export default {
 
       const { data: institution, error: institutionError } = await ctx.supabaseAdmin
         .from("institutions")
-        .select("id, active, account_id")
+        .select("id, name, active, account_id")
         .eq("id", input.institutionId)
         .maybeSingle();
 
@@ -513,7 +514,13 @@ export default {
       const { data: invitationData, error: invitationError } = await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
         input.email,
         {
-          data: { full_name: input.fullName, role: input.role },
+          data: {
+            full_name: input.fullName,
+            role: input.role,
+            invited_role: input.role,
+            institution_id: activeInstitution.id,
+            institution_name: activeInstitution.name,
+          },
           redirectTo: getAppUrl() + '/auth/confirm',
         }
       );
