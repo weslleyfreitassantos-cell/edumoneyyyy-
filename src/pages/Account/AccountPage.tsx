@@ -1,4 +1,4 @@
-﻿import {
+import {
   Building2,
   DoorOpen,
   Loader2,
@@ -20,6 +20,7 @@ import {
   useInstitution,
   type SelectInstitutionResult,
 } from '../../contexts/InstitutionContext';
+import { InstitutionSubdomainSection } from '../../components/account/InstitutionSubdomainSection';
 import {
   useCreateInstitution,
   useDeleteInstitution,
@@ -499,6 +500,15 @@ export default function AccountPage() {
             Criar instituicao
           </button>
         </form>
+
+        {institutionContext.currentInstitution && (
+          <InstitutionSubdomainSection
+            institutionId={institutionContext.currentInstitution.id}
+            institutionName={institutionContext.currentInstitution.name}
+            currentSubdomain={institutionContext.currentInstitution.subdomain ?? null}
+            userRole={institutionContext.currentRole ?? profile?.role ?? ''}
+          />
+        )}
 
         <section className="rounded-lg border border-[#dfe3e8] bg-white">
           <div className="border-b border-[#dfe3e8] p-5">

@@ -8,6 +8,7 @@ import type {
 export interface InstitutionSummary {
   id: string;
   name: string;
+  subdomain?: string | null;
   active: boolean | null;
   account_id: string | null;
 }
@@ -42,6 +43,7 @@ export interface UserInstitution {
 interface InstitutionRelation {
   id: string;
   name: string;
+  subdomain?: string | null;
   active: boolean | null;
   account_id: string | null;
   accounts?: AccountSummary | AccountSummary[] | null;
@@ -115,6 +117,7 @@ function normalizeInstitution(
   return {
     id: institution.id,
     name: institution.name,
+    subdomain: institution.subdomain ?? null,
     active: institution.active ?? true,
     account_id: institution.account_id ?? null,
   };
@@ -348,6 +351,7 @@ export const institutionService = {
             institutions (
               id,
               name,
+              subdomain,
               active,
               account_id
             )
@@ -366,6 +370,7 @@ export const institutionService = {
             institutions:institution_id!inner (
               id,
               name,
+              subdomain,
               active,
               account_id,
               accounts:account_id (
@@ -422,3 +427,74 @@ export const institutionService = {
     );
   },
 };
+
+export async function updateInstitutionSubdomain({
+  institutionId,
+  subdomain,
+  userRole,
+}: {
+  institutionId: string;
+  subdomain: string;
+  userRole: string;
+}): Promise<InstitutionSummary> {
+  if (userRole !== 'DIRECTOR') {
+    throw new Error('Apenas o diretor da instituição pode definir ou alterar o subdomínio.');
+  }
+
+  const { validateSubdomain, normalizeSubdomain } = await import('../lib/subdomain');
+  const validation = validateSubdomain(subdomain);
+  if (!validation.valid) {
+    throw new Error(validation.error || 'Subdomínio inválido.');
+  }
+
+  const normalized = normalizeSubdomain(subdomain);
+
+  const { data: existing, error: checkError } = await supabase
+    .from('institutions')
+    .select('id')
+    .eq('subdomain', normalized)
+    .neq('id', institutionId)
+    .maybeSingle();
+
+  if (checkError) {
+    throw new Error('Erro ao verificar disponibilidade do subdomínio.');
+  }
+
+  if (existing) {
+    throw new Error('Este subdomínio já está em uso por outra instituição.');
+  }
+
+  const { data, error } = await supabase
+    .from('institutions')
+    .update({ subdomain: normalized, updated_at: new Date().toISOString() })
+    .eq('id', institutionId)
+    .select('id, name, subdomain, active, account_id')
+    .single();
+
+  if (error || !data) {
+    throw new Error(error?.message || 'Falha ao atualizar o subdomínio da instituição.');
+  }
+
+  return data;
+}
+
+export async function fetchInstitutionBySubdomain(
+  subdomain: string,
+): Promise<InstitutionSummary | null> {
+  const { normalizeSubdomain } = await import('../lib/subdomain');
+  const normalized = normalizeSubdomain(subdomain);
+  if (!normalized) return null;
+
+  const { data, error } = await supabase
+    .from('institutions')
+    .select('id, name, subdomain, active, account_id')
+    .eq('subdomain', normalized)
+    .eq('active', true)
+    .maybeSingle();
+
+  if (error || !data) {
+    return null;
+  }
+
+  return data;
+}

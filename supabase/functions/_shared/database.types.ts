@@ -1,4 +1,4 @@
-﻿export type Json =
+export type Json =
   | string
   | number
   | boolean
@@ -354,6 +354,7 @@ export type Database = {
           logo_url: string | null
           name: string
           phone: string | null
+          subdomain: string | null
           suspended_at: string | null
           suspended_by_profile_id: string | null
           suspended_by_scope: string | null
@@ -370,6 +371,7 @@ export type Database = {
           logo_url?: string | null
           name: string
           phone?: string | null
+          subdomain?: string | null
           suspended_at?: string | null
           suspended_by_profile_id?: string | null
           suspended_by_scope?: string | null
@@ -386,6 +388,7 @@ export type Database = {
           logo_url?: string | null
           name?: string
           phone?: string | null
+          subdomain?: string | null
           suspended_at?: string | null
           suspended_by_profile_id?: string | null
           suspended_by_scope?: string | null

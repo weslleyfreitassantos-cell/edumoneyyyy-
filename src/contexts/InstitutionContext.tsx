@@ -12,11 +12,13 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from './AuthContext';
 import { useUserInstitutions } from '../hooks/useUserInstitutions';
-import type {
-  InstitutionSummary,
-  UserInstitution,
-  UserInstitutionMembership,
+import {
+  fetchInstitutionBySubdomain,
+  type InstitutionSummary,
+  type UserInstitution,
+  type UserInstitutionMembership,
 } from '../services/institutionService';
+import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
 
 export type SelectInstitutionResult =
   | {
@@ -89,13 +91,38 @@ function writeStoredInstitutionId(
 function removeStoredInstitutionId(
   profileId: string,
 ): void {
-  if (typeof window === 'undefined') {
-    return;
-  }
-
   window.localStorage.removeItem(
     getStorageKey(profileId),
   );
+}
+
+export function extractSubdomainFromHostname(hostname: string): string | null {
+  if (!hostname) return null;
+  const parts = hostname.toLowerCase().split(':')[0].split('.');
+
+  if (
+    hostname.includes('localhost') ||
+    hostname.includes('127.0.0.1')
+  ) {
+    if (parts.length >= 2 && parts[0] !== 'localhost' && parts[0] !== '127') {
+      const sub = parts[0];
+      if (!['admin', 'app', 'api', 'www', 'localhost'].includes(sub)) {
+        return sub;
+      }
+    }
+    return null;
+  }
+
+  if (hostname.endsWith('grupotec.dev.br')) {
+    if (parts.length >= 3) {
+      const sub = parts[0];
+      if (sub !== 'www' && sub !== 'grupotec' && sub !== 'admin' && sub !== 'app' && sub !== 'api') {
+        return sub;
+      }
+    }
+  }
+
+  return null;
 }
 
 function findInstitutionLink(
@@ -163,6 +190,20 @@ export function InstitutionProvider({
       setCurrentInstitutionIdState(null);
       removeStoredInstitutionId(profile.id);
       return;
+    }
+
+    const currentHostname = typeof window !== 'undefined' ? window.location.hostname : '';
+    const activeSubdomain = extractSubdomainFromHostname(currentHostname);
+
+    if (activeSubdomain) {
+      const subdomainMatch = institutions.find(
+        (item) => item.institution.subdomain === activeSubdomain
+      );
+      if (subdomainMatch) {
+        setCurrentInstitutionIdState(subdomainMatch.institution.id);
+        writeStoredInstitutionId(profile.id, subdomainMatch.institution.id);
+        return;
+      }
     }
 
     if (institutions.length === 1) {
@@ -465,6 +506,45 @@ export function InstitutionProvider({
         setCurrentInstitutionId,
       ],
     );
+
+  const [subdomainNotFound, setSubdomainNotFound] = useState(false);
+  const [targetSubdomain, setTargetSubdomain] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const extracted = extractSubdomainFromHostname(window.location.hostname);
+    setTargetSubdomain(extracted);
+  }, []);
+
+  useEffect(() => {
+    if (!targetSubdomain) {
+      setSubdomainNotFound(false);
+      return;
+    }
+
+    let isMounted = true;
+
+    async function checkSubdomain() {
+      const inst = await fetchInstitutionBySubdomain(targetSubdomain!);
+      if (!isMounted) return;
+
+      if (!inst || inst.active === false) {
+        setSubdomainNotFound(true);
+      } else {
+        setSubdomainNotFound(false);
+      }
+    }
+
+    void checkSubdomain();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [targetSubdomain]);
+
+  if (subdomainNotFound && targetSubdomain) {
+    return <SubdomainNotFoundPage subdomain={targetSubdomain} />;
+  }
 
   return (
     <InstitutionContext.Provider value={value}>
