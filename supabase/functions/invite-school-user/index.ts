@@ -42,6 +42,7 @@ interface InstitutionRecord {
   id: string;
   active: boolean | null;
   account_id: string | null;
+  subdomain?: string | null;
 }
 
 interface AccountRecord {
@@ -390,7 +391,7 @@ export default {
 
       const { data: institution, error: institutionError } = await ctx.supabaseAdmin
         .from("institutions")
-        .select("id, active, account_id")
+        .select("id, active, account_id, subdomain")
         .eq("id", input.institutionId)
         .maybeSingle();
 
@@ -510,11 +511,27 @@ export default {
       const invitationSent = true;
       const reusedExistingUser = false;
 
+      let inviteRedirectUrl = getAppUrl() + '/auth/confirm';
+      if (activeInstitution.subdomain) {
+        try {
+          const appUrl = getAppUrl();
+          const urlObj = new URL(appUrl);
+          if (urlObj.hostname.endsWith('grupotec.dev.br')) {
+            urlObj.hostname = `${activeInstitution.subdomain}.grupotec.dev.br`;
+            inviteRedirectUrl = `${urlObj.origin}/auth/confirm`;
+          } else {
+            inviteRedirectUrl = `https://${activeInstitution.subdomain}.grupotec.dev.br/auth/confirm`;
+          }
+        } catch {
+          inviteRedirectUrl = `https://${activeInstitution.subdomain}.grupotec.dev.br/auth/confirm`;
+        }
+      }
+
       const { data: invitationData, error: invitationError } = await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
         input.email,
         {
           data: { full_name: input.fullName, role: input.role },
-          redirectTo: getAppUrl() + '/auth/confirm',
+          redirectTo: inviteRedirectUrl,
         }
       );
 
