@@ -218,10 +218,6 @@ function normalizeMembershipInstitution(
         }
       : null;
 
-  if (institution.account_id !== null && !account) {
-    return null;
-  }
-
   if (
     account !== null &&
     account.status !== 'ACTIVE'

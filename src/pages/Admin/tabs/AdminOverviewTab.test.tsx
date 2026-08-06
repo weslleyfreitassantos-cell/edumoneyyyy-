@@ -128,8 +128,8 @@ afterEach(() => {
   cleanup();
 });
 
-describe('AdminOverviewTab setup checklist', () => {
-  it('mostra etapas concluidas e pendentes usando dados reais', () => {
+describe('AdminOverviewTab', () => {
+  it('renderiza metricas e ano letivo atual', () => {
     render(
       <AdminOverviewTab
         availableModuleIds={[
@@ -143,60 +143,12 @@ describe('AdminOverviewTab setup checklist', () => {
       />,
     );
 
-    const checklist = screen
-      .getByText(/configura..o inicial da escola/i)
-      .closest('article');
-
-    expect(checklist).toBeTruthy();
+    expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
+    expect(screen.getByText(/professores ativos/i)).toBeTruthy();
+    expect(screen.getByText(/ano letivo atual/i)).toBeTruthy();
+    expect(screen.getByText('2026')).toBeTruthy();
     expect(
-      within(checklist!).getByText(
-        /institui..o selecionada/i,
-      ),
-    ).toBeTruthy();
-    expect(
-      within(checklist!).getByText(
-        /criar ano letivo/i,
-      ),
-    ).toBeTruthy();
-    expect(
-      within(checklist!).getByText(
-        /adicionar disciplinas/i,
-      ),
-    ).toBeTruthy();
-    expect(
-      within(checklist!).getAllByText(
-        /conclu.do/i,
-      ).length,
-    ).toBeGreaterThan(0);
-    expect(
-      within(checklist!).getAllByText(
-        /pendente/i,
-      ).length,
-    ).toBeGreaterThan(0);
-  });
-
-  it('abre o modulo correspondente de uma etapa incompleta', () => {
-    const onNavigateToModule = vi.fn();
-
-    render(
-      <AdminOverviewTab
-        availableModuleIds={[
-          'subjects',
-        ]}
-        onNavigateToModule={
-          onNavigateToModule
-        }
-      />,
-    );
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /adicionar disciplinas/i,
-      }),
-    );
-
-    expect(onNavigateToModule).toHaveBeenCalledWith(
-      'subjects',
-    );
+      screen.queryByText(/configura..o inicial da escola/i),
+    ).toBeNull();
   });
 });

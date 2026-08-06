@@ -318,11 +318,6 @@ export default function AdminOverviewTab({
 
   return (
     <div className="space-y-6">
-      <SetupChecklist
-        items={setupItems}
-        availableModuleIds={availableModuleIds}
-        onNavigateToModule={onNavigateToModule}
-      />
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard

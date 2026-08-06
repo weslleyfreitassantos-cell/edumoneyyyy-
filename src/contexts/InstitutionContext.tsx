@@ -12,10 +12,13 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from './AuthContext';
 import { useUserInstitutions } from '../hooks/useUserInstitutions';
-import type {
-  InstitutionSummary,
-  UserInstitution,
-  UserInstitutionMembership,
+import { extractSubdomainFromHostname } from '../lib/subdomain';
+import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
+import {
+  fetchInstitutionBySubdomain,
+  type InstitutionSummary,
+  type UserInstitution,
+  type UserInstitutionMembership,
 } from '../services/institutionService';
 
 export type SelectInstitutionResult =
@@ -149,6 +152,30 @@ export function InstitutionProvider({
   ] = useState(false);
   const selectionRequestRef = useRef(0);
 
+  const [subdomainNotFound, setSubdomainNotFound] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const hostnameSubdomain = extractSubdomainFromHostname(window.location.hostname);
+    if (!hostnameSubdomain) return;
+
+    let isMounted = true;
+    fetchInstitutionBySubdomain(hostnameSubdomain)
+      .then((inst) => {
+        if (!isMounted) return;
+        if (!inst) {
+          setSubdomainNotFound(true);
+        }
+      })
+      .catch(() => {
+        if (isMounted) setSubdomainNotFound(true);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   useEffect(() => {
     if (!profile?.id) {
       setCurrentInstitutionIdState(null);
@@ -163,6 +190,24 @@ export function InstitutionProvider({
       setCurrentInstitutionIdState(null);
       removeStoredInstitutionId(profile.id);
       return;
+    }
+
+    // Resolucao especifica para DIRECTOR: resolvida obrigatoriamente pela membership ativa
+    if (profile.role === 'DIRECTOR') {
+      const directorLink =
+        institutions.find(
+          (link) =>
+            link.membership?.role === 'DIRECTOR' &&
+            link.membership?.active === true,
+        ) ?? institutions[0];
+
+      if (directorLink) {
+        if (currentInstitutionId !== directorLink.institution.id) {
+          setCurrentInstitutionIdState(directorLink.institution.id);
+          writeStoredInstitutionId(profile.id, directorLink.institution.id);
+        }
+        return;
+      }
     }
 
     if (institutions.length === 1) {
@@ -214,6 +259,7 @@ export function InstitutionProvider({
     institutions,
     institutionsQuery.isLoading,
     profile?.id,
+    profile?.role,
   ]);
 
   const selectedInstitutionLink = useMemo(
@@ -465,6 +511,10 @@ export function InstitutionProvider({
         setCurrentInstitutionId,
       ],
     );
+
+  if (subdomainNotFound) {
+    return <SubdomainNotFoundPage />;
+  }
 
   return (
     <InstitutionContext.Provider value={value}>

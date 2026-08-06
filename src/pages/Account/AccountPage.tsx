@@ -367,29 +367,7 @@ export default function AccountPage() {
           </div>
         )}
 
-        <BrandingEditor
-          title="Identidade da conta"
-          description="Esta identidade sera exibida somente nos dominios ativos vinculados a esta conta."
-          branding={accountBrandingQuery.data}
-          isLoading={accountBrandingQuery.isLoading}
-          isSaving={saveAccountBranding.isPending}
-          onSave={(input) =>
-            saveAccountBranding
-              .mutateAsync(input)
-              .then(() => undefined)
-          }
-        />
 
-        <AccountDomainSection
-          domains={accountDomainsQuery.data ?? []}
-          isLoading={accountDomainsQuery.isLoading}
-          isRequesting={requestAccountDomain.isPending}
-          onRequestDomain={(hostname) =>
-            requestAccountDomain
-              .mutateAsync(hostname)
-              .then(() => undefined)
-          }
-        />
 
         <section className="grid gap-3 md:grid-cols-3">
           <article className="rounded-lg border border-[#dfe3e8] bg-white p-4">
