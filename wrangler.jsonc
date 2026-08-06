@@ -1,9 +1,23 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "edumoneyyyy",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-07-17",
+
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "not_found_handling": "single-page-application"
-  }
+  },
+
+  "routes": [
+    {
+      "pattern": "grupotec.dev.br",
+      "custom_domain": true
+    },
+    {
+      "pattern": "*.grupotec.dev.br/*",
+      "zone_name": "grupotec.dev.br"
+    }
+  ]
 }
