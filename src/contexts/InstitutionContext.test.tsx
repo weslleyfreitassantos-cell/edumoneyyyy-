@@ -35,6 +35,7 @@ import type {
 import type { User } from '../types';
 import { useAuth } from './AuthContext';
 import {
+  extractSubdomainFromHostname,
   InstitutionProvider,
   useInstitution,
 } from './InstitutionContext';
@@ -468,5 +469,25 @@ describe('InstitutionContext', () => {
     expect(
       mockedInstitutionService.listForProfile,
     ).toHaveBeenCalledTimes(2);
+  });
+
+  describe('extractSubdomainFromHostname', () => {
+    it('extrai subdomínio em produção *.grupotec.dev.br', () => {
+      expect(extractSubdomainFromHostname('diretorcolocou.grupotec.dev.br')).toBe('diretorcolocou');
+      expect(extractSubdomainFromHostname('escola-modelo.grupotec.dev.br')).toBe('escola-modelo');
+    });
+
+    it('ignora domínios principais e reservados em produção', () => {
+      expect(extractSubdomainFromHostname('grupotec.dev.br')).toBeNull();
+      expect(extractSubdomainFromHostname('www.grupotec.dev.br')).toBeNull();
+      expect(extractSubdomainFromHostname('admin.grupotec.dev.br')).toBeNull();
+      expect(extractSubdomainFromHostname('app.grupotec.dev.br')).toBeNull();
+      expect(extractSubdomainFromHostname('api.grupotec.dev.br')).toBeNull();
+    });
+
+    it('extrai subdomínio em ambiente local', () => {
+      expect(extractSubdomainFromHostname('tecescola.localhost:3000')).toBe('tecescola');
+      expect(extractSubdomainFromHostname('localhost:3000')).toBeNull();
+    });
   });
 });
