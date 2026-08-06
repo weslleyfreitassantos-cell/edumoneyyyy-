@@ -6,46 +6,37 @@ import { useInstitution } from '../../contexts/InstitutionContext';
 import { useAuth } from '../../contexts/AuthContext';
 
 interface AdminInstitutionSubdomainSectionProps {
-  institutions: InstitutionSummary[];
+  institution?: InstitutionSummary | null;
 }
 
 export function AdminInstitutionSubdomainSection({
-  institutions,
-}: AdminInstitutionSubdomainSectionProps) {
+  institution,
+}: AdminInstitutionSubdomainSectionProps = {}) {
   const { profile } = useAuth();
-  const { refresh } = useInstitution();
+  const { currentInstitution: contextInstitution, refresh } = useInstitution();
 
-  const [selectedInstitutionId, setSelectedInstitutionId] = useState<string>(
-    institutions[0]?.id || ''
-  );
+  const activeInstitution = institution !== undefined ? institution : contextInstitution;
+
   const [subdomainInput, setSubdomainInput] = useState<string>('');
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const selectedInstitution = institutions.find(
-    (inst) => inst.id === selectedInstitutionId
-  );
-
   useEffect(() => {
-    if (institutions.length > 0 && !selectedInstitutionId) {
-      setSelectedInstitutionId(institutions[0].id);
+    if (activeInstitution) {
+      setSubdomainInput(activeInstitution.subdomain || '');
+    } else {
+      setSubdomainInput('');
     }
-  }, [institutions, selectedInstitutionId]);
-
-  useEffect(() => {
-    if (selectedInstitution) {
-      setSubdomainInput(selectedInstitution.subdomain || '');
-      setError(null);
-      setSuccessMessage(null);
-    }
-  }, [selectedInstitutionId, selectedInstitution]);
-
-  const handleSuggest = () => {
-    if (!selectedInstitution) return;
     setError(null);
     setSuccessMessage(null);
-    const suggestion = suggestSubdomain(selectedInstitution.name);
+  }, [activeInstitution?.id, activeInstitution?.subdomain]);
+
+  const handleSuggest = () => {
+    if (!activeInstitution) return;
+    setError(null);
+    setSuccessMessage(null);
+    const suggestion = suggestSubdomain(activeInstitution.name);
     setSubdomainInput(suggestion);
   };
 
@@ -54,10 +45,12 @@ export function AdminInstitutionSubdomainSection({
     setError(null);
     setSuccessMessage(null);
 
-    if (!selectedInstitutionId || !selectedInstitution) {
-      setError('Selecione uma instituição.');
+    if (!activeInstitution?.id) {
+      setError('Nenhuma instituição selecionada.');
       return;
     }
+
+    const targetInstitutionId = activeInstitution.id;
 
     if (!profile?.id) {
       setError('Usuário não autenticado.');
@@ -73,7 +66,7 @@ export function AdminInstitutionSubdomainSection({
     try {
       setIsSaving(true);
       const updated = await updateInstitutionSubdomain({
-        institutionId: selectedInstitutionId,
+        institutionId: targetInstitutionId,
         subdomain: subdomainInput,
         profileId: profile.id,
         userRole: 'ADMIN',
@@ -90,8 +83,30 @@ export function AdminInstitutionSubdomainSection({
     }
   };
 
-  if (institutions.length === 0) {
-    return null;
+  if (!activeInstitution) {
+    return (
+      <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 dark:bg-blue-950/50 dark:text-blue-400">
+            <Globe className="h-5 w-5" />
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+              Gerenciamento de Subdomínio (Administrador)
+            </h3>
+          </div>
+        </div>
+
+        <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-800/50">
+          <p className="font-medium text-slate-900 dark:text-white">
+            Nenhuma instituição selecionada.
+          </p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            Selecione uma instituição na seção Instituições para gerenciar seu subdomínio.
+          </p>
+        </div>
+      </div>
+    );
   }
 
   const previewUrl = subdomainInput.trim()
@@ -109,34 +124,36 @@ export function AdminInstitutionSubdomainSection({
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
               Gerenciamento de Subdomínio (Administrador)
             </h3>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
-              Selecione uma instituição da sua conta e defina seu endereço exclusivo de acesso.
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Para gerenciar outra instituição, selecione-a na seção Instituições.
             </p>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Instituição atual
+          </span>
+          <p className="mt-0.5 text-base font-semibold text-slate-900 dark:text-white">
+            {activeInstitution.name}
+          </p>
+        </div>
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+            Status
+          </span>
+          <p className="mt-0.5 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+            {activeInstitution.active === false ? 'Inativa' : 'Ativa'}
+          </p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
           <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-            Instituição selecionada
-          </label>
-          <select
-            value={selectedInstitutionId}
-            onChange={(e) => setSelectedInstitutionId(e.target.value)}
-            className="mt-1.5 w-full max-w-md rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-slate-700 dark:bg-slate-800 dark:text-white"
-          >
-            {institutions.map((inst) => (
-              <option key={inst.id} value={inst.id}>
-                {inst.name} {inst.subdomain ? `(${inst.subdomain})` : '(Sem subdomínio)'}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
-            Endereço da escola
+            Endereço da instituição
           </label>
           <div className="mt-1.5 flex flex-wrap items-center gap-2">
             <div className="flex items-center rounded-lg border border-slate-300 bg-slate-50 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 dark:border-slate-700 dark:bg-slate-800">
@@ -150,7 +167,7 @@ export function AdminInstitutionSubdomainSection({
                   setSubdomainInput(e.target.value.toLowerCase().trim());
                 }}
                 disabled={isSaving}
-                placeholder={selectedInstitution ? suggestSubdomain(selectedInstitution.name) : 'escolamodelo'}
+                placeholder={suggestSubdomain(activeInstitution.name)}
                 className="w-48 bg-transparent px-2 py-2 text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none dark:text-white disabled:cursor-not-allowed disabled:opacity-60"
               />
               <span className="pr-3 text-sm font-semibold text-slate-500 dark:text-slate-400">
@@ -168,11 +185,16 @@ export function AdminInstitutionSubdomainSection({
               Usar sugestão
             </button>
           </div>
+          {!activeInstitution.subdomain && !subdomainInput && (
+            <p className="mt-1.5 text-xs font-medium text-amber-600 dark:text-amber-400">
+              Esta instituição ainda não possui subdomínio.
+            </p>
+          )}
         </div>
 
         <div className="rounded-lg bg-slate-50 p-3 dark:bg-slate-800/60">
           <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-            Prévia do Endereço:
+            Prévia
           </span>
           <p className="mt-0.5 text-sm font-medium text-blue-600 dark:text-blue-400">
             {previewUrl}

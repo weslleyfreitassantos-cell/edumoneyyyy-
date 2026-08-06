@@ -502,8 +502,8 @@ export default function AccountPage() {
           </button>
         </form>
 
-        {(profile?.role === 'ADMIN' || Boolean(account)) && account?.institutions && (
-          <AdminInstitutionSubdomainSection institutions={account.institutions} />
+        {(profile?.role === 'ADMIN' || Boolean(account)) && (
+          <AdminInstitutionSubdomainSection />
         )}
 
         {(profile?.role === 'DIRECTOR' || institutionContext.currentRole === 'DIRECTOR') && institutionContext.currentInstitution && (
