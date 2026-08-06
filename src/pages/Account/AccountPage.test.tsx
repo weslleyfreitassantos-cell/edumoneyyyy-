@@ -310,11 +310,11 @@ describe('AccountPage', () => {
       }),
     ).toBeTruthy();
     expect(
-      screen.getByRole('heading', {
+      screen.queryByRole('heading', {
         name: /Identidade da conta/i,
       }),
-    ).toBeTruthy();
-    expect(screen.getByText('sol.example.com')).toBeTruthy();
+    ).toBeNull();
+    expect(screen.queryByText('sol.example.com')).toBeNull();
   });
 
   it('suspender nao libera licenca e excluir remove a instituicao', async () => {

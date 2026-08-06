@@ -109,3 +109,20 @@ export function suggestSubdomain(institutionName: string): string {
   }
   return 'escola';
 }
+
+/**
+ * Extracts a custom institution subdomain prefix from a hostname (e.g. escolamodelo.grupotec.dev.br -> escolamodelo).
+ */
+export function extractSubdomainFromHostname(hostname: string): string | null {
+  if (!hostname) return null;
+  const lower = hostname.toLowerCase().trim();
+  if (lower === 'localhost' || lower === '127.0.0.1') return null;
+
+  if (lower.endsWith('.grupotec.dev.br')) {
+    const prefix = lower.replace(/\.grupotec\.dev\.br$/, '');
+    if (prefix && !RESERVED_SUBDOMAINS.has(prefix) && !prefix.includes('.')) {
+      return prefix;
+    }
+  }
+  return null;
+}
