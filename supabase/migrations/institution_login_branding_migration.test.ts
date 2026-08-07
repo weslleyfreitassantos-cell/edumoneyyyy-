@@ -7,7 +7,7 @@ describe('Institution Login Branding Migration Audit', () => {
     process.cwd(),
     'supabase',
     'migrations',
-    '20260808000100_institution_login_branding.sql',
+    '20260807165500_institution_login_branding.sql',
   );
   const migrationSql = fs.readFileSync(migrationPath, 'utf8');
 
@@ -27,17 +27,43 @@ describe('Institution Login Branding Migration Audit', () => {
     expect(migrationSql).toMatch(/to authenticated/i);
   });
 
-  it('protege escrita de institutions com membership DIRECTOR ativa', () => {
+  it('nao libera UPDATE generico em institutions para DIRECTOR', () => {
     expect(migrationSql).toMatch(
       /create policy institutions_update_branding_policy/i,
     );
-    expect(migrationSql).toMatch(/from public\.memberships as membership/i);
-    expect(migrationSql).toMatch(/membership\.profile_id = auth\.uid\(\)/i);
+    const policySql = migrationSql.match(
+      /create policy institutions_update_branding_policy[\s\S]*?with check \([\s\S]*?\);/i,
+    )?.[0] ?? '';
+
+    expect(policySql).toMatch(/public\.is_platform_super_admin\(\)/i);
+    expect(policySql).toMatch(/public\.owns_account\(account_id\)/i);
+    expect(policySql).not.toMatch(/DIRECTOR/i);
+    expect(policySql).not.toMatch(/public\.memberships/i);
+  });
+
+  it('cria RPC autenticada especifica para DIRECTOR atualizar somente branding', () => {
     expect(migrationSql).toMatch(
-      /membership\.institution_id = institutions\.id/i,
+      /create or replace function public\.update_institution_login_branding/i,
     );
+    expect(migrationSql).toMatch(/target_institution_id uuid/i);
+    expect(migrationSql).toMatch(/new_login_display_name text/i);
+    expect(migrationSql).toMatch(/new_logo_url text/i);
+    expect(migrationSql).toMatch(/new_favicon_url text/i);
+    expect(migrationSql).toMatch(/new_primary_color text/i);
+    expect(migrationSql).toMatch(/new_secondary_color text/i);
+    expect(migrationSql).toMatch(/membership\.profile_id = auth\.uid\(\)/i);
+    expect(migrationSql).toMatch(/membership\.institution_id = target_institution_id/i);
     expect(migrationSql).toMatch(/membership\.role = 'DIRECTOR'/i);
-    expect(migrationSql).toMatch(/membership\.active is true/i);
+    expect(migrationSql).toMatch(/update public\.institutions as inst/i);
+    expect(migrationSql).not.toMatch(/set\s+subdomain\s*=/i);
+    expect(migrationSql).not.toMatch(/set\s+active\s*=/i);
+    expect(migrationSql).not.toMatch(/set\s+account_id\s*=/i);
+    expect(migrationSql).toMatch(
+      /revoke all on function public\.update_institution_login_branding/i,
+    );
+    expect(migrationSql).toMatch(
+      /grant execute on function public\.update_institution_login_branding/i,
+    );
   });
 
   it('protege storage de logo e favicon por pasta da institution do DIRECTOR', () => {
@@ -107,12 +133,15 @@ describe('Institution Login Branding Migration Audit', () => {
   });
 
   it('nao expoe account_id, owner_profile_id, institution_limit ou dados privados na assinatura publica', () => {
-    const returnsTable = migrationSql.match(
+    const publicRpc = migrationSql.match(
+      /create or replace function public\.resolve_public_institution_by_subdomain[\s\S]*?revoke all on function public\.resolve_public_institution_by_subdomain/i,
+    )?.[0] ?? '';
+    const returnsTable = publicRpc.match(
       /returns table \(([\s\S]*?)\)\s*language/i,
     )?.[1] ?? '';
 
     expect(returnsTable).not.toMatch(/account_id/i);
-    expect(migrationSql).not.toMatch(/owner_profile_id/i);
-    expect(migrationSql).not.toMatch(/institution_limit/i);
+    expect(publicRpc).not.toMatch(/owner_profile_id/i);
+    expect(publicRpc).not.toMatch(/institution_limit/i);
   });
 });

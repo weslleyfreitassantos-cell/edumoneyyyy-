@@ -538,7 +538,6 @@ export async function updateInstitutionSubdomain({
  */
 export async function updateInstitutionBranding({
   institutionId,
-  profileId,
   login_display_name,
   logo_url,
   favicon_url,
@@ -546,57 +545,39 @@ export async function updateInstitutionBranding({
   secondary_color,
 }: {
   institutionId: string;
-  profileId: string;
+  profileId?: string;
   login_display_name?: string | null;
   logo_url?: string | null;
   favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
 }): Promise<InstitutionSummary> {
-  const { data: membership, error: memErr } = await supabase
-    .from('memberships')
-    .select('id, role, active, institution_id')
-    .eq('profile_id', profileId)
-    .eq('institution_id', institutionId)
-    .eq('role', 'DIRECTOR')
-    .eq('active', true)
-    .maybeSingle();
+  const { data, error } = await supabase.rpc(
+    'update_institution_login_branding',
+    {
+      target_institution_id: institutionId,
+      new_login_display_name: login_display_name ?? null,
+      set_login_display_name: login_display_name !== undefined,
+      new_logo_url: logo_url ?? null,
+      set_logo_url: logo_url !== undefined,
+      new_favicon_url: favicon_url ?? null,
+      set_favicon_url: favicon_url !== undefined,
+      new_primary_color: primary_color ?? null,
+      set_primary_color: primary_color !== undefined,
+      new_secondary_color: secondary_color ?? null,
+      set_secondary_color: secondary_color !== undefined,
+    },
+  );
 
-  if (memErr || !membership) {
-    throw new Error('Apenas um Diretor com membership ativa pode alterar a identidade visual da instituição.');
+  const rows = Array.isArray(data) ? data : data ? [data] : [];
+  const row = rows[0] as InstitutionSummary | undefined;
+
+  if (error || !row) {
+    throw new Error(error?.message || 'Falha ao atualizar a identidade visual da instituicao.');
   }
 
-  const updateData: {
-    login_display_name?: string | null;
-    logo_url?: string | null;
-    favicon_url?: string | null;
-    primary_color?: string | null;
-    secondary_color?: string | null;
-    updated_at: string;
-  } = {
-    updated_at: new Date().toISOString(),
-  };
-
-  if (login_display_name !== undefined) updateData.login_display_name = login_display_name;
-  if (logo_url !== undefined) updateData.logo_url = logo_url;
-  if (favicon_url !== undefined) updateData.favicon_url = favicon_url;
-  if (primary_color !== undefined) updateData.primary_color = primary_color;
-  if (secondary_color !== undefined) updateData.secondary_color = secondary_color;
-
-  const { data, error } = await supabase
-    .from('institutions')
-    .update(updateData)
-    .eq('id', institutionId)
-    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, primary_color, secondary_color, active, account_id')
-    .single();
-
-  if (error || !data) {
-    throw new Error(error?.message || 'Falha ao atualizar a identidade visual da instituição.');
-  }
-
-  return data;
+  return row;
 }
-
 export interface ResolveInstitutionResult {
   institution: InstitutionSummary | null;
   error: Error | null;

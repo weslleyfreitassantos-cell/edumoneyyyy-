@@ -82,37 +82,42 @@ async function updateInstitutionBranding(
   publicSlug: string,
   faviconUrl?: string | null,
 ): Promise<InstitutionBranding> {
-  const updatePayload: Record<string, unknown> = {
-    public_slug: publicSlug,
-    updated_at: new Date().toISOString(),
-  };
+  const { data, error } = await supabase.rpc(
+    'update_institution_login_branding',
+    {
+      target_institution_id: institutionId,
+      new_login_display_name: null,
+      set_login_display_name: false,
+      new_logo_url: logoUrl ?? null,
+      set_logo_url: logoUrl !== undefined,
+      new_favicon_url: faviconUrl ?? null,
+      set_favicon_url: faviconUrl !== undefined,
+      new_primary_color: null,
+      set_primary_color: false,
+      new_secondary_color: null,
+      set_secondary_color: false,
+    },
+  );
 
-  if (logoUrl !== undefined) {
-    updatePayload.logo_url = logoUrl;
-  }
-
-  if (faviconUrl !== undefined) {
-    updatePayload.favicon_url = faviconUrl;
-  }
-
-  const { data, error } = await supabase
-    .from('institutions')
-    .update(updatePayload)
-    .eq('id', institutionId)
-    .select('id, name, logo_url, favicon_url, public_slug')
-    .maybeSingle();
+  const rows = Array.isArray(data) ? data : data ? [data] : [];
+  const row = rows[0]
+    ? {
+        ...(rows[0] as BrandingRow),
+        public_slug: publicSlug,
+      }
+    : null;
 
   if (error) {
     throw error;
   }
 
-  if (!data) {
+  if (!row) {
     throw new Error(
       'Nenhum registro de identidade visual foi atualizado. Verifique suas permissoes.',
     );
   }
 
-  return normalizeBrandingRow(data as BrandingRow);
+  return normalizeBrandingRow(row);
 }
 
 function resolvePublicSlug(

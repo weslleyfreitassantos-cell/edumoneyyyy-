@@ -22,27 +22,142 @@ to authenticated
 using (
   public.is_platform_super_admin()
   or public.owns_account(account_id)
-  or exists (
-    select 1
-    from public.memberships as membership
-    where membership.profile_id = auth.uid()
-      and membership.institution_id = institutions.id
-      and membership.role = 'DIRECTOR'
-      and membership.active is true
-  )
 )
 with check (
   public.is_platform_super_admin()
   or public.owns_account(account_id)
-  or exists (
+);
+
+create or replace function public.update_institution_login_branding(
+  target_institution_id uuid,
+  new_login_display_name text default null,
+  set_login_display_name boolean default false,
+  new_logo_url text default null,
+  set_logo_url boolean default false,
+  new_favicon_url text default null,
+  set_favicon_url boolean default false,
+  new_primary_color text default null,
+  set_primary_color boolean default false,
+  new_secondary_color text default null,
+  set_secondary_color boolean default false
+)
+returns table (
+  id uuid,
+  name text,
+  subdomain text,
+  login_display_name text,
+  logo_url text,
+  favicon_url text,
+  primary_color text,
+  secondary_color text,
+  active boolean,
+  account_id uuid
+)
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if target_institution_id is null then
+    raise exception 'Instituicao nao encontrada.'
+      using errcode = '22023';
+  end if;
+
+  if not exists (
     select 1
     from public.memberships as membership
     where membership.profile_id = auth.uid()
-      and membership.institution_id = institutions.id
+      and membership.institution_id = target_institution_id
       and membership.role = 'DIRECTOR'
       and membership.active is true
-  )
-);
+  ) then
+    raise exception 'Apenas um Diretor com membership ativa pode alterar a identidade visual da instituicao.'
+      using errcode = '42501';
+  end if;
+
+  if set_primary_color
+      and new_primary_color is not null
+      and new_primary_color !~ '^#[0-9A-Fa-f]{6}$' then
+    raise exception 'Cor principal invalida.'
+      using errcode = '22023';
+  end if;
+
+  if set_secondary_color
+      and new_secondary_color is not null
+      and new_secondary_color !~ '^#[0-9A-Fa-f]{6}$' then
+    raise exception 'Cor secundaria invalida.'
+      using errcode = '22023';
+  end if;
+
+  return query
+  update public.institutions as inst
+  set
+    login_display_name = case
+      when set_login_display_name then nullif(trim(new_login_display_name), '')
+      else inst.login_display_name
+    end,
+    logo_url = case
+      when set_logo_url then new_logo_url
+      else inst.logo_url
+    end,
+    favicon_url = case
+      when set_favicon_url then new_favicon_url
+      else inst.favicon_url
+    end,
+    primary_color = case
+      when set_primary_color then new_primary_color
+      else inst.primary_color
+    end,
+    secondary_color = case
+      when set_secondary_color then new_secondary_color
+      else inst.secondary_color
+    end,
+    updated_at = now()
+  where inst.id = target_institution_id
+    and inst.active is true
+  returning
+    inst.id,
+    inst.name,
+    inst.subdomain,
+    inst.login_display_name,
+    inst.logo_url,
+    inst.favicon_url,
+    inst.primary_color,
+    inst.secondary_color,
+    inst.active,
+    inst.account_id;
+end;
+$$;
+
+revoke all on function public.update_institution_login_branding(
+  uuid,
+  text,
+  boolean,
+  text,
+  boolean,
+  text,
+  boolean,
+  text,
+  boolean,
+  text,
+  boolean
+)
+from public, anon, authenticated;
+
+grant execute on function public.update_institution_login_branding(
+  uuid,
+  text,
+  boolean,
+  text,
+  boolean,
+  text,
+  boolean,
+  text,
+  boolean,
+  text,
+  boolean
+)
+to authenticated, service_role;
 
 create or replace function public.can_director_write_institution_branding_object(
   object_name text,
