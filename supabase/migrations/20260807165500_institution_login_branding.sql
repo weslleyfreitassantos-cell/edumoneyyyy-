@@ -213,11 +213,13 @@ begin
       return false;
     end if;
 
-    if metadata_size > case
+    if metadata_size > (
+      case
       when asset_kind = 'logo' then 2 * 1024 * 1024
       when asset_kind = 'favicon' then 512 * 1024
       else 0
-    end then
+      end
+    ) then
       return false;
     end if;
   end if;
@@ -281,6 +283,8 @@ grant execute on function public.can_director_write_institution_branding_object(
 
 -- Recreate the RPC to include login_display_name and favicon_url in the public return set.
 -- Preserves SECURITY DEFINER, search_path = '', schema-qualified tables, and all existing filters.
+drop function if exists public.resolve_public_institution_by_subdomain(text);
+
 create or replace function public.resolve_public_institution_by_subdomain(target_subdomain text)
 returns table (
   id uuid,
