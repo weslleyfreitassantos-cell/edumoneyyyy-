@@ -26,6 +26,7 @@ export const RESERVED_SUBDOMAINS = new Set([
   'status',
   'suporte',
   'support',
+  'tecescola',
   'terms',
   'test',
   'www',
@@ -110,19 +111,79 @@ export function suggestSubdomain(institutionName: string): string {
   return 'escola';
 }
 
+export type HostResolution =
+  | {
+      type: 'platform';
+      hostname: string;
+    }
+  | {
+      type: 'institution';
+      hostname: string;
+      subdomain: string;
+    }
+  | {
+      type: 'development';
+      hostname: string;
+    }
+  | {
+      type: 'invalid';
+      hostname: string;
+    };
+
+/**
+ * Classifies a hostname into platform, institution, development, or invalid.
+ */
+export function classifyHostname(hostname: string): HostResolution {
+  if (!hostname) {
+    return { type: 'invalid', hostname: '' };
+  }
+
+  const cleanHost = hostname.toLowerCase().trim().split(':')[0];
+
+  if (
+    cleanHost === 'localhost' ||
+    cleanHost === '127.0.0.1' ||
+    cleanHost.endsWith('.workers.dev')
+  ) {
+    return { type: 'development', hostname: cleanHost };
+  }
+
+  if (
+    cleanHost === 'grupotec.dev.br' ||
+    cleanHost === 'tecescola.grupotec.dev.br'
+  ) {
+    return { type: 'platform', hostname: cleanHost };
+  }
+
+  if (cleanHost.endsWith('.grupotec.dev.br')) {
+    const prefix = cleanHost.slice(0, -'.grupotec.dev.br'.length);
+
+    if (!prefix || prefix.includes('.')) {
+      return { type: 'invalid', hostname: cleanHost };
+    }
+
+    const validation = validateSubdomain(prefix);
+    if (!validation.valid) {
+      return { type: 'invalid', hostname: cleanHost };
+    }
+
+    return {
+      type: 'institution',
+      hostname: cleanHost,
+      subdomain: prefix,
+    };
+  }
+
+  return { type: 'invalid', hostname: cleanHost };
+}
+
 /**
  * Extracts a custom institution subdomain prefix from a hostname (e.g. escolamodelo.grupotec.dev.br -> escolamodelo).
  */
 export function extractSubdomainFromHostname(hostname: string): string | null {
-  if (!hostname) return null;
-  const lower = hostname.toLowerCase().trim();
-  if (lower === 'localhost' || lower === '127.0.0.1') return null;
-
-  if (lower.endsWith('.grupotec.dev.br')) {
-    const prefix = lower.replace(/\.grupotec\.dev\.br$/, '');
-    if (prefix && !RESERVED_SUBDOMAINS.has(prefix) && !prefix.includes('.')) {
-      return prefix;
-    }
+  const resolution = classifyHostname(hostname);
+  if (resolution.type === 'institution') {
+    return resolution.subdomain;
   }
   return null;
 }
