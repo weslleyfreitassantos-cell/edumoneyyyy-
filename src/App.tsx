@@ -23,7 +23,10 @@ import {
   useAuth,
 } from './contexts/AuthContext';
 
-import { InstitutionProvider } from './contexts/InstitutionContext';
+import {
+  InstitutionProvider,
+  useInstitution,
+} from './contexts/InstitutionContext';
 
 import { ThemeProvider } from './contexts/ThemeContext';
 
@@ -105,6 +108,15 @@ const ParentDashboard = lazy(
     import(
       './components/ParentDashboard'
     ),
+);
+
+const DirectorLoginBrandingPage = lazy(
+  () =>
+    import(
+      './pages/DirectorLoginBrandingPage'
+    ).then((module) => ({
+      default: module.DirectorLoginBrandingPage,
+    })),
 );
 
 const queryClient = new QueryClient({
@@ -285,6 +297,29 @@ function DashboardContent() {
   return <>{renderDashboard(currentRole)}</>;
 }
 
+export function DirectorLoginBrandingRoute() {
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return (
+      <main className="grid min-h-screen place-items-center">
+        <p>Carregando...</p>
+      </main>
+    );
+  }
+
+  if (currentRole !== 'DIRECTOR') {
+    return (
+      <Navigate
+        to="/unauthorized"
+        replace
+      />
+    );
+  }
+
+  return <DirectorLoginBrandingPage />;
+}
+
 function AppRoutes() {
   return (
     <Routes>
@@ -324,6 +359,17 @@ function AppRoutes() {
           <ProtectedRoute>
             <AppShell>
               <DashboardContent />
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/personalizar-login"
+        element={
+          <ProtectedRoute>
+            <AppShell>
+              <DirectorLoginBrandingRoute />
             </AppShell>
           </ProtectedRoute>
         }

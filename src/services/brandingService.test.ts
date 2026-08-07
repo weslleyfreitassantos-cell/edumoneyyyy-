@@ -161,6 +161,98 @@ describe('brandingService', () => {
     expect(getPublicUrl).toHaveBeenCalledWith(generatedFaviconPath);
   });
 
+  it('resolve branding institucional pelo subdominio publico', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [
+        {
+          id: 'institution-1',
+          name: 'Escola Luz',
+          subdomain: 'escola-luz',
+          login_display_name: 'Luz Colegio',
+          logo_url: 'https://cdn.example.com/escola-luz/logo.png',
+          favicon_url:
+            'https://cdn.example.com/escola-luz/favicon.png',
+          primary_color: '#123456',
+          secondary_color: '#abcdef',
+        },
+      ],
+      error: null,
+    } as never);
+
+    const result =
+      await brandingService.resolveForHostname(
+        'escola-luz.grupotec.dev.br',
+      );
+
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'resolve_public_institution_by_subdomain',
+      { target_subdomain: 'escola-luz' },
+    );
+    expect(result).toEqual({
+      scope: 'INSTITUTION',
+      displayName: 'Luz Colegio',
+      logoUrl: 'https://cdn.example.com/escola-luz/logo.png',
+      faviconUrl:
+        'https://cdn.example.com/escola-luz/favicon.png',
+      primaryColor: '#123456',
+      secondaryColor: '#abcdef',
+    });
+  });
+
+  it('usa branding da plataforma para hosts oficiais da plataforma', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [
+        {
+          scope: 'GLOBAL',
+          display_name: 'GrupoTec',
+          logo_path: null,
+          favicon_path: null,
+          primary_color: '#005bbf',
+          secondary_color: '#6ffbbe',
+        },
+      ],
+      error: null,
+    } as never);
+
+    await brandingService.resolveForHostname('grupotec.dev.br');
+    await brandingService.resolveForHostname(
+      'tecescola.grupotec.dev.br',
+    );
+
+    expect(supabase.rpc).toHaveBeenNthCalledWith(
+      1,
+      'resolve_public_branding',
+      { hostname: 'grupotec.dev.br' },
+    );
+    expect(supabase.rpc).toHaveBeenNthCalledWith(
+      2,
+      'resolve_public_branding',
+      { hostname: 'tecescola.grupotec.dev.br' },
+    );
+  });
+
+  it('nao faz fallback para outra escola quando subdominio institucional inexiste', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [],
+      error: null,
+    } as never);
+
+    const result =
+      await brandingService.resolveForHostname(
+        'teste-inexistente-987654.grupotec.dev.br',
+      );
+
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'resolve_public_institution_by_subdomain',
+      { target_subdomain: 'teste-inexistente-987654' },
+    );
+    expect(result).toMatchObject({
+      scope: 'FALLBACK',
+      displayName: null,
+      logoUrl: null,
+    });
+  });
+
   it('ignora paths invalidos retornados pela RPC publica', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [

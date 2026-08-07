@@ -21,7 +21,6 @@ import {
   type SelectInstitutionResult,
 } from '../../contexts/InstitutionContext';
 import { AdminInstitutionSubdomainSection } from '../../components/account/AdminInstitutionSubdomainSection';
-import { DirectorInstitutionBrandingSection } from '../../components/account/DirectorInstitutionBrandingSection';
 import {
   useCreateInstitution,
   useDeleteInstitution,
@@ -482,17 +481,6 @@ export default function AccountPage() {
 
         {(profile?.role === 'ADMIN' || Boolean(account)) && (
           <AdminInstitutionSubdomainSection />
-        )}
-
-        {(profile?.role === 'DIRECTOR' || institutionContext.currentRole === 'DIRECTOR') && institutionContext.currentInstitution && (
-          <DirectorInstitutionBrandingSection
-            institutionId={institutionContext.currentInstitution.id}
-            institutionName={institutionContext.currentInstitution.name}
-            currentSubdomain={institutionContext.currentInstitution.subdomain ?? null}
-            currentLogoUrl={institutionContext.currentInstitution.logo_url ?? null}
-            currentPrimaryColor={institutionContext.currentInstitution.primary_color ?? null}
-            currentSecondaryColor={institutionContext.currentInstitution.secondary_color ?? null}
-          />
         )}
 
         <section className="rounded-lg border border-[#dfe3e8] bg-white">

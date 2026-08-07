@@ -375,6 +375,58 @@ describe('Sidebar', () => {
 });
 
 describe('sidebar navigation helpers', () => {
+  it('mostra Personalizar login somente para DIRECTOR', () => {
+    const roles = [
+      {
+        profileRole: 'ADMIN',
+        userRole: 'admin',
+        currentInstitutionRole: 'ADMIN',
+      },
+      {
+        profileRole: 'TEACHER',
+        userRole: 'teacher',
+        currentInstitutionRole: 'TEACHER',
+      },
+      {
+        profileRole: 'STUDENT',
+        userRole: 'student',
+        currentInstitutionRole: 'STUDENT',
+      },
+      {
+        profileRole: 'GUARDIAN',
+        userRole: 'parent',
+        currentInstitutionRole: 'GUARDIAN',
+      },
+    ] as const;
+
+    const directorItems = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentUserRole: 'director',
+      pathname: '/dashboard',
+    });
+
+    expect(
+      directorItems.map((item) => item.id),
+    ).toContain('personalize-login');
+
+    for (const role of roles) {
+      const items = getSidebarNavigationItems({
+        profile: {
+          ...baseProfile,
+          role: role.profileRole,
+        },
+        currentInstitutionRole: role.currentInstitutionRole,
+        currentUserRole: role.userRole,
+        pathname: '/dashboard',
+      });
+
+      expect(
+        items.map((item) => item.id),
+      ).not.toContain('personalize-login');
+    }
+  });
+
   it('usa a matriz existente de permissoes para liberar modulos administrativos', () => {
     const items = getSidebarNavigationItems({
       profile: {

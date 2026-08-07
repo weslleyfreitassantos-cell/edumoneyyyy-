@@ -9,7 +9,9 @@ export interface InstitutionSummary {
   id: string;
   name: string;
   subdomain?: string | null;
+  login_display_name?: string | null;
   logo_url?: string | null;
+  favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
   active: boolean | null;
@@ -47,7 +49,9 @@ interface InstitutionRelation {
   id: string;
   name: string;
   subdomain?: string | null;
+  login_display_name?: string | null;
   logo_url?: string | null;
+  favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
   active: boolean | null;
@@ -124,7 +128,9 @@ function normalizeInstitution(
     id: institution.id,
     name: institution.name,
     subdomain: institution.subdomain ?? null,
+    login_display_name: institution.login_display_name ?? null,
     logo_url: institution.logo_url ?? null,
+    favicon_url: institution.favicon_url ?? null,
     primary_color: institution.primary_color ?? null,
     secondary_color: institution.secondary_color ?? null,
     active: institution.active ?? true,
@@ -357,7 +363,9 @@ export const institutionService = {
               id,
               name,
               subdomain,
+              login_display_name,
               logo_url,
+              favicon_url,
               primary_color,
               secondary_color,
               active,
@@ -379,7 +387,9 @@ export const institutionService = {
               id,
               name,
               subdomain,
+              login_display_name,
               logo_url,
+              favicon_url,
               primary_color,
               secondary_color,
               active,
@@ -511,7 +521,7 @@ export async function updateInstitutionSubdomain({
     .from('institutions')
     .update({ subdomain: normalized, updated_at: new Date().toISOString() })
     .eq('id', institutionId)
-    .select('id, name, subdomain, logo_url, primary_color, secondary_color, active, account_id')
+    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, primary_color, secondary_color, active, account_id')
     .single();
 
   if (error || !data) {
@@ -529,13 +539,17 @@ export async function updateInstitutionSubdomain({
 export async function updateInstitutionBranding({
   institutionId,
   profileId,
+  login_display_name,
   logo_url,
+  favicon_url,
   primary_color,
   secondary_color,
 }: {
   institutionId: string;
   profileId: string;
+  login_display_name?: string | null;
   logo_url?: string | null;
+  favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
 }): Promise<InstitutionSummary> {
@@ -553,7 +567,9 @@ export async function updateInstitutionBranding({
   }
 
   const updateData: {
+    login_display_name?: string | null;
     logo_url?: string | null;
+    favicon_url?: string | null;
     primary_color?: string | null;
     secondary_color?: string | null;
     updated_at: string;
@@ -561,7 +577,9 @@ export async function updateInstitutionBranding({
     updated_at: new Date().toISOString(),
   };
 
+  if (login_display_name !== undefined) updateData.login_display_name = login_display_name;
   if (logo_url !== undefined) updateData.logo_url = logo_url;
+  if (favicon_url !== undefined) updateData.favicon_url = favicon_url;
   if (primary_color !== undefined) updateData.primary_color = primary_color;
   if (secondary_color !== undefined) updateData.secondary_color = secondary_color;
 
@@ -569,7 +587,7 @@ export async function updateInstitutionBranding({
     .from('institutions')
     .update(updateData)
     .eq('id', institutionId)
-    .select('id, name, subdomain, logo_url, primary_color, secondary_color, active, account_id')
+    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, primary_color, secondary_color, active, account_id')
     .single();
 
   if (error || !data) {
@@ -610,7 +628,9 @@ export async function resolveInstitutionBySubdomain(
             id: row.id,
             name: row.name,
             subdomain: row.subdomain ?? null,
+            login_display_name: row.login_display_name ?? null,
             logo_url: row.logo_url ?? null,
+            favicon_url: row.favicon_url ?? null,
             primary_color: row.primary_color ?? null,
             secondary_color: row.secondary_color ?? null,
             active: true,
@@ -635,7 +655,9 @@ export async function resolveInstitutionBySubdomain(
       id,
       name,
       subdomain,
+      login_display_name,
       logo_url,
+      favicon_url,
       primary_color,
       secondary_color,
       active,
@@ -672,7 +694,9 @@ export async function resolveInstitutionBySubdomain(
     id: data.id,
     name: data.name,
     subdomain: data.subdomain ?? null,
+    login_display_name: data.login_display_name ?? null,
     logo_url: data.logo_url ?? null,
+    favicon_url: data.favicon_url ?? null,
     primary_color: data.primary_color ?? null,
     secondary_color: data.secondary_color ?? null,
     active: data.active ?? true,

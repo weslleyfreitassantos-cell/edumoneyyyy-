@@ -26,7 +26,9 @@ describe('Institution Service Authorization & Security', () => {
             id: 'inst-rpc-1',
             name: 'Escola Luz Publica',
             subdomain: 'escolaluz',
+            login_display_name: 'Login Luz',
             logo_url: 'https://cdn.example.com/logo.png',
+            favicon_url: 'https://cdn.example.com/favicon.png',
             primary_color: '#005bbf',
             secondary_color: '#6ffbbe',
           },
@@ -40,7 +42,9 @@ describe('Institution Service Authorization & Security', () => {
         id: 'inst-rpc-1',
         name: 'Escola Luz Publica',
         subdomain: 'escolaluz',
+        login_display_name: 'Login Luz',
         logo_url: 'https://cdn.example.com/logo.png',
+        favicon_url: 'https://cdn.example.com/favicon.png',
         primary_color: '#005bbf',
         secondary_color: '#6ffbbe',
         active: true,
@@ -86,7 +90,9 @@ describe('Institution Service Authorization & Security', () => {
         id: 'inst-1',
         name: 'Escola Luz',
         subdomain: 'escolaluz',
+        login_display_name: null,
         logo_url: null,
+        favicon_url: null,
         primary_color: null,
         secondary_color: null,
         active: true,
@@ -384,6 +390,86 @@ describe('Institution Service Authorization & Security', () => {
           logo_url: 'https://cdn.example.co/hack.png',
         })
       ).rejects.toThrow(/Apenas um Diretor com membership ativa/i);
+    });
+
+    it('salva branding por institution.id e nao por subdomain', async () => {
+      const institutionEq = vi.fn().mockReturnThis();
+      const update = vi.fn().mockReturnValue({
+        eq: institutionEq,
+        select: vi.fn().mockReturnThis(),
+        single: vi.fn().mockResolvedValue({
+          data: {
+            id: 'inst-1',
+            name: 'Escola Modelo',
+            subdomain: 'escola-modelo',
+            login_display_name: 'Login Escola',
+            logo_url: 'https://cdn.example.co/logo.png',
+            favicon_url: 'https://cdn.example.co/favicon.png',
+            primary_color: '#005bbf',
+            secondary_color: '#ff9900',
+            active: true,
+            account_id: 'acc-1',
+          },
+          error: null,
+        }),
+      });
+
+      vi.mocked(supabase.from).mockImplementation((table: string) => {
+        if (table === 'memberships') {
+          return {
+            select: vi.fn().mockReturnValue({
+              eq: vi.fn().mockReturnValue({
+                eq: vi.fn().mockReturnValue({
+                  eq: vi.fn().mockReturnValue({
+                    eq: vi.fn().mockReturnValue({
+                      maybeSingle: vi.fn().mockResolvedValue({
+                        data: {
+                          id: 'mem-1',
+                          role: 'DIRECTOR',
+                          active: true,
+                          institution_id: 'inst-1',
+                        },
+                        error: null,
+                      }),
+                    }),
+                  }),
+                }),
+              }),
+            }),
+          } as never;
+        }
+
+        if (table === 'institutions') {
+          return { update } as never;
+        }
+
+        return {} as never;
+      });
+
+      await updateInstitutionBranding({
+        institutionId: 'inst-1',
+        profileId: 'director-profile-1',
+        login_display_name: 'Login Escola',
+        logo_url: 'https://cdn.example.co/logo.png',
+        favicon_url: 'https://cdn.example.co/favicon.png',
+        primary_color: '#005bbf',
+        secondary_color: '#ff9900',
+      });
+
+      expect(update).toHaveBeenCalledWith(
+        expect.objectContaining({
+          login_display_name: 'Login Escola',
+          logo_url: 'https://cdn.example.co/logo.png',
+          favicon_url: 'https://cdn.example.co/favicon.png',
+          primary_color: '#005bbf',
+          secondary_color: '#ff9900',
+        }),
+      );
+      expect(institutionEq).toHaveBeenCalledWith('id', 'inst-1');
+      expect(institutionEq).not.toHaveBeenCalledWith(
+        'subdomain',
+        expect.any(String),
+      );
     });
   });
 });
