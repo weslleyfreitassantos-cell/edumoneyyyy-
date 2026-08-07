@@ -39,7 +39,7 @@ describe('Subdomain Utilities', () => {
     });
 
     it('rejeita nomes reservados solicitados na especificação', () => {
-      const testReserved = ['admin', 'api', 'app', 'auth', 'login', 'dashboard', 'www', 'mail', 'send', 'resend', 'smtp', 'support', 'suporte', 'assets', 'static', 'grupotec'];
+      const testReserved = ['admin', 'api', 'app', 'auth', 'login', 'dashboard', 'www', 'mail', 'send', 'resend', 'smtp', 'support', 'suporte', 'assets', 'static', 'grupotec', 'tecescola'];
       for (const reserved of testReserved) {
         const result = validateSubdomain(reserved);
         expect(result.valid).toBe(false);
@@ -70,6 +70,13 @@ describe('Subdomain Utilities', () => {
       expect(classifyHostname('grupotec.dev.br')).toEqual({
         type: 'platform',
         hostname: 'grupotec.dev.br',
+      });
+    });
+
+    it('classifica tecescola.grupotec.dev.br como plataforma oficial', () => {
+      expect(classifyHostname('tecescola.grupotec.dev.br')).toEqual({
+        type: 'platform',
+        hostname: 'tecescola.grupotec.dev.br',
       });
     });
 

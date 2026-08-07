@@ -1,5 +1,21 @@
--- Migration: Public Institution Subdomain Resolver RPC
+-- Migration: Public Institution Subdomain Resolver RPC & Server-side Reserved Constraint
 -- Safely resolves public institution identity by subdomain for both anon and authenticated roles.
+-- Enforces server-side constraint on reserved subdomains including 'tecescola'.
+
+alter table public.institutions
+  drop constraint if exists institutions_subdomain_not_reserved_check;
+
+alter table public.institutions
+  add constraint institutions_subdomain_not_reserved_check
+  check (
+    subdomain is null
+    or lower(trim(subdomain)) not in (
+      'admin', 'api', 'app', 'assets', 'auth', 'blog', 'cdn', 'dashboard',
+      'dev', 'docs', 'grupotec', 'help', 'login', 'mail', 'media', 'platform',
+      'portal', 'privacy', 'resend', 'root', 'send', 'smtp', 'staging',
+      'static', 'status', 'suporte', 'support', 'tecescola', 'terms', 'test', 'www'
+    )
+  );
 
 create or replace function public.resolve_public_institution_by_subdomain(target_subdomain text)
 returns table (
@@ -19,7 +35,12 @@ declare
   clean_subdomain text;
 begin
   clean_subdomain := lower(trim(target_subdomain));
-  if clean_subdomain = '' then
+  if clean_subdomain = '' or clean_subdomain in (
+    'admin', 'api', 'app', 'assets', 'auth', 'blog', 'cdn', 'dashboard',
+    'dev', 'docs', 'grupotec', 'help', 'login', 'mail', 'media', 'platform',
+    'portal', 'privacy', 'resend', 'root', 'send', 'smtp', 'staging',
+    'static', 'status', 'suporte', 'support', 'tecescola', 'terms', 'test', 'www'
+  ) then
     return;
   end if;
 

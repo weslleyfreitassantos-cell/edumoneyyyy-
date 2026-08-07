@@ -39,4 +39,9 @@ describe('Public Institution Subdomain Resolver Migration Audit', () => {
     expect(migrationSql).not.toMatch(/owner_profile_id/i);
     expect(migrationSql).not.toMatch(/institution_limit/i);
   });
+
+  it('protege o banco com constraint de subdomínios reservados incluindo tecescola', () => {
+    expect(migrationSql).toMatch(/institutions_subdomain_not_reserved_check/i);
+    expect(migrationSql).toMatch(/'tecescola'/i);
+  });
 });

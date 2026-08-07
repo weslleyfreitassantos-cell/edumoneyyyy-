@@ -475,6 +475,19 @@ describe('InstitutionContext', () => {
   });
 
   describe('Requisitos Obrigatórios de Subdomínio, Autorização e Ausência de Fallback', () => {
+    it('hostname oficial tecescola.grupotec.dev.br -> classificado como plataforma, não chama resolveInstitutionBySubdomain nem exibe not-found', async () => {
+      mockedInstitutionService.listForProfile.mockResolvedValue([ownedInstitution]);
+
+      renderWithProvider(<ContextStatus />, 'tecescola.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByTestId('resolution-state').textContent).toBe('platform');
+      });
+
+      expect(mockedResolveInstitutionBySubdomain).not.toHaveBeenCalled();
+      expect(screen.queryByText('Instituição não encontrada ou indisponível.')).toBeNull();
+    });
+
     it('subdomínio cadastrado + instituição ativa -> carrega escola', async () => {
       mockedResolveInstitutionBySubdomain.mockResolvedValue({
         institution: {

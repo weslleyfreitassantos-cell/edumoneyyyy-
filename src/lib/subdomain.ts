@@ -26,6 +26,7 @@ export const RESERVED_SUBDOMAINS = new Set([
   'status',
   'suporte',
   'support',
+  'tecescola',
   'terms',
   'test',
   'www',
@@ -147,7 +148,10 @@ export function classifyHostname(hostname: string): HostResolution {
     return { type: 'development', hostname: cleanHost };
   }
 
-  if (cleanHost === 'grupotec.dev.br') {
+  if (
+    cleanHost === 'grupotec.dev.br' ||
+    cleanHost === 'tecescola.grupotec.dev.br'
+  ) {
     return { type: 'platform', hostname: cleanHost };
   }
 
