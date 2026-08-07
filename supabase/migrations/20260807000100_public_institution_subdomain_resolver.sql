@@ -8,9 +8,7 @@ returns table (
   subdomain text,
   logo_url text,
   primary_color text,
-  secondary_color text,
-  active boolean,
-  account_id uuid
+  secondary_color text
 )
 language plpgsql
 stable
@@ -32,9 +30,7 @@ begin
     inst.subdomain,
     inst.logo_url,
     inst.primary_color,
-    inst.secondary_color,
-    inst.active,
-    inst.account_id
+    inst.secondary_color
   from public.institutions as inst
   left join public.accounts as acc
     on acc.id = inst.account_id
@@ -49,4 +45,4 @@ revoke all on function public.resolve_public_institution_by_subdomain(text)
   from public, anon, authenticated;
 
 grant execute on function public.resolve_public_institution_by_subdomain(text)
-  to anon, authenticated, service_role;
+  to anon, authenticated;

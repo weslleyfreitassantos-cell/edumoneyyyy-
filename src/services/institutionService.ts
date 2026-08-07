@@ -613,8 +613,8 @@ export async function resolveInstitutionBySubdomain(
             logo_url: row.logo_url ?? null,
             primary_color: row.primary_color ?? null,
             secondary_color: row.secondary_color ?? null,
-            active: row.active ?? true,
-            account_id: row.account_id ?? null,
+            active: true,
+            account_id: null,
           },
           error: null,
         };

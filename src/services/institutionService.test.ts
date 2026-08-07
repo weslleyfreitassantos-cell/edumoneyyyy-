@@ -29,8 +29,6 @@ describe('Institution Service Authorization & Security', () => {
             logo_url: 'https://cdn.example.com/logo.png',
             primary_color: '#005bbf',
             secondary_color: '#6ffbbe',
-            active: true,
-            account_id: 'acc-1',
           },
         ],
         error: null,
@@ -46,7 +44,7 @@ describe('Institution Service Authorization & Security', () => {
         primary_color: '#005bbf',
         secondary_color: '#6ffbbe',
         active: true,
-        account_id: 'acc-1',
+        account_id: null,
       });
     });
 
