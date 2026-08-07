@@ -17,9 +17,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthShell } from '../components/auth/AuthLayout';
 import { useResolvedBranding } from '../hooks/useBranding';
-import {
-  FALLBACK_BRANDING,
-} from '../services/brandingService';
+import { FALLBACK_BRANDING } from '../services/brandingService';
 import { applyDocumentBranding } from '../services/documentBranding';
 
 function getLoginErrorMessage(error: unknown): string {

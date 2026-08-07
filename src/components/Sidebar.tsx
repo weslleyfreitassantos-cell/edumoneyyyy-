@@ -6,6 +6,7 @@ import {
   GraduationCap,
   LayoutDashboard,
   LogOut,
+  Palette,
   School,
   ShieldCheck,
   UserCircle2,
@@ -125,6 +126,15 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
       'student',
       'parent',
     ],
+  },
+  {
+    id: 'personalize-login',
+    label: 'Personalizar login',
+    path: '/personalizar-login',
+    section: 'personal',
+    icon: Palette,
+    roles: ['director'],
+    activePaths: ['/personalizar-login'],
   },
 ];
 

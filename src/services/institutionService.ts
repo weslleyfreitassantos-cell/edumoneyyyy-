@@ -9,7 +9,9 @@ export interface InstitutionSummary {
   id: string;
   name: string;
   subdomain?: string | null;
+  login_display_name?: string | null;
   logo_url?: string | null;
+  favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
   active: boolean | null;
@@ -47,7 +49,9 @@ interface InstitutionRelation {
   id: string;
   name: string;
   subdomain?: string | null;
+  login_display_name?: string | null;
   logo_url?: string | null;
+  favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
   active: boolean | null;
@@ -124,7 +128,9 @@ function normalizeInstitution(
     id: institution.id,
     name: institution.name,
     subdomain: institution.subdomain ?? null,
+    login_display_name: institution.login_display_name ?? null,
     logo_url: institution.logo_url ?? null,
+    favicon_url: institution.favicon_url ?? null,
     primary_color: institution.primary_color ?? null,
     secondary_color: institution.secondary_color ?? null,
     active: institution.active ?? true,
@@ -357,7 +363,9 @@ export const institutionService = {
               id,
               name,
               subdomain,
+              login_display_name,
               logo_url,
+              favicon_url,
               primary_color,
               secondary_color,
               active,
@@ -379,7 +387,9 @@ export const institutionService = {
               id,
               name,
               subdomain,
+              login_display_name,
               logo_url,
+              favicon_url,
               primary_color,
               secondary_color,
               active,
@@ -511,7 +521,7 @@ export async function updateInstitutionSubdomain({
     .from('institutions')
     .update({ subdomain: normalized, updated_at: new Date().toISOString() })
     .eq('id', institutionId)
-    .select('id, name, subdomain, logo_url, primary_color, secondary_color, active, account_id')
+    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, primary_color, secondary_color, active, account_id')
     .single();
 
   if (error || !data) {
@@ -528,57 +538,46 @@ export async function updateInstitutionSubdomain({
  */
 export async function updateInstitutionBranding({
   institutionId,
-  profileId,
+  login_display_name,
   logo_url,
+  favicon_url,
   primary_color,
   secondary_color,
 }: {
   institutionId: string;
-  profileId: string;
+  profileId?: string;
+  login_display_name?: string | null;
   logo_url?: string | null;
+  favicon_url?: string | null;
   primary_color?: string | null;
   secondary_color?: string | null;
 }): Promise<InstitutionSummary> {
-  const { data: membership, error: memErr } = await supabase
-    .from('memberships')
-    .select('id, role, active, institution_id')
-    .eq('profile_id', profileId)
-    .eq('institution_id', institutionId)
-    .eq('role', 'DIRECTOR')
-    .eq('active', true)
-    .maybeSingle();
+  const { data, error } = await supabase.rpc(
+    'update_institution_login_branding',
+    {
+      target_institution_id: institutionId,
+      new_login_display_name: login_display_name ?? null,
+      set_login_display_name: login_display_name !== undefined,
+      new_logo_url: logo_url ?? null,
+      set_logo_url: logo_url !== undefined,
+      new_favicon_url: favicon_url ?? null,
+      set_favicon_url: favicon_url !== undefined,
+      new_primary_color: primary_color ?? null,
+      set_primary_color: primary_color !== undefined,
+      new_secondary_color: secondary_color ?? null,
+      set_secondary_color: secondary_color !== undefined,
+    },
+  );
 
-  if (memErr || !membership) {
-    throw new Error('Apenas um Diretor com membership ativa pode alterar a identidade visual da instituição.');
+  const rows = Array.isArray(data) ? data : data ? [data] : [];
+  const row = rows[0] as InstitutionSummary | undefined;
+
+  if (error || !row) {
+    throw new Error(error?.message || 'Falha ao atualizar a identidade visual da instituicao.');
   }
 
-  const updateData: {
-    logo_url?: string | null;
-    primary_color?: string | null;
-    secondary_color?: string | null;
-    updated_at: string;
-  } = {
-    updated_at: new Date().toISOString(),
-  };
-
-  if (logo_url !== undefined) updateData.logo_url = logo_url;
-  if (primary_color !== undefined) updateData.primary_color = primary_color;
-  if (secondary_color !== undefined) updateData.secondary_color = secondary_color;
-
-  const { data, error } = await supabase
-    .from('institutions')
-    .update(updateData)
-    .eq('id', institutionId)
-    .select('id, name, subdomain, logo_url, primary_color, secondary_color, active, account_id')
-    .single();
-
-  if (error || !data) {
-    throw new Error(error?.message || 'Falha ao atualizar a identidade visual da instituição.');
-  }
-
-  return data;
+  return row;
 }
-
 export interface ResolveInstitutionResult {
   institution: InstitutionSummary | null;
   error: Error | null;
@@ -610,7 +609,9 @@ export async function resolveInstitutionBySubdomain(
             id: row.id,
             name: row.name,
             subdomain: row.subdomain ?? null,
+            login_display_name: row.login_display_name ?? null,
             logo_url: row.logo_url ?? null,
+            favicon_url: row.favicon_url ?? null,
             primary_color: row.primary_color ?? null,
             secondary_color: row.secondary_color ?? null,
             active: true,
@@ -635,7 +636,9 @@ export async function resolveInstitutionBySubdomain(
       id,
       name,
       subdomain,
+      login_display_name,
       logo_url,
+      favicon_url,
       primary_color,
       secondary_color,
       active,
@@ -672,7 +675,9 @@ export async function resolveInstitutionBySubdomain(
     id: data.id,
     name: data.name,
     subdomain: data.subdomain ?? null,
+    login_display_name: data.login_display_name ?? null,
     logo_url: data.logo_url ?? null,
+    favicon_url: data.favicon_url ?? null,
     primary_color: data.primary_color ?? null,
     secondary_color: data.secondary_color ?? null,
     active: data.active ?? true,

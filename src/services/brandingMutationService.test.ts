@@ -11,6 +11,7 @@ import { brandingMutationService } from './brandingMutationService';
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
+    rpc: vi.fn(),
     from: vi.fn(),
     storage: {
       from: vi.fn(),
@@ -43,21 +44,15 @@ describe('brandingMutationService', () => {
       getPublicUrl,
     } as never);
 
-    const maybeSingle = vi.fn().mockResolvedValue({
+    vi.mocked(supabase.rpc).mockResolvedValue({
       data: {
         id: 'institution-1',
         name: 'Escola Centro',
         logo_url:
           'https://storage.example.com/institution-1/logo.png?v=123456',
-        public_slug: 'escola-centro',
       },
       error: null,
-    });
-    const select = vi.fn().mockReturnValue({ maybeSingle });
-    const eq = vi.fn().mockReturnValue({ select });
-    const update = vi.fn().mockReturnValue({ eq });
-
-    vi.mocked(supabase.from).mockReturnValue({ update } as never);
+    } as never);
 
     const result = await brandingMutationService.saveLogo({
       institutionId: 'institution-1',
@@ -73,13 +68,17 @@ describe('brandingMutationService', () => {
       expect.any(File),
       expect.objectContaining({ upsert: true }),
     );
-    expect(update).toHaveBeenCalledWith(
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'update_institution_login_branding',
       expect.objectContaining({
-        logo_url:
+        target_institution_id: 'institution-1',
+        new_logo_url:
           'https://storage.example.com/institution-1/logo.png?v=123456',
-        public_slug: 'escola-centro',
+        set_logo_url: true,
+        set_favicon_url: false,
       }),
     );
+    expect(supabase.from).not.toHaveBeenCalled();
     expect(result.logoUrl).toContain('?v=123456');
   });
 
@@ -97,15 +96,10 @@ describe('brandingMutationService', () => {
       getPublicUrl,
     } as never);
 
-    const maybeSingle = vi.fn().mockResolvedValue({
+    vi.mocked(supabase.rpc).mockResolvedValue({
       data: null,
       error: null,
-    });
-    const select = vi.fn().mockReturnValue({ maybeSingle });
-    const eq = vi.fn().mockReturnValue({ select });
-    const update = vi.fn().mockReturnValue({ eq });
-
-    vi.mocked(supabase.from).mockReturnValue({ update } as never);
+    } as never);
 
     await expect(
       brandingMutationService.saveLogo({
