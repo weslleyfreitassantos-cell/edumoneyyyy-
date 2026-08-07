@@ -12,22 +12,6 @@ grant update (login_display_name, favicon_url, updated_at)
   on table public.institutions
   to authenticated;
 
-drop policy if exists institutions_update_branding_policy
-  on public.institutions;
-
-create policy institutions_update_branding_policy
-on public.institutions
-for update
-to authenticated
-using (
-  public.is_platform_super_admin()
-  or public.owns_account(account_id)
-)
-with check (
-  public.is_platform_super_admin()
-  or public.owns_account(account_id)
-);
-
 create or replace function public.update_institution_login_branding(
   target_institution_id uuid,
   new_login_display_name text default null,

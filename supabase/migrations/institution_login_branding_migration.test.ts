@@ -27,18 +27,13 @@ describe('Institution Login Branding Migration Audit', () => {
     expect(migrationSql).toMatch(/to authenticated/i);
   });
 
-  it('nao libera UPDATE generico em institutions para DIRECTOR', () => {
-    expect(migrationSql).toMatch(
+  it('mantem compatibilidade e nao altera a policy generica de update', () => {
+    expect(migrationSql).not.toMatch(
+      /drop policy if exists institutions_update_branding_policy/i,
+    );
+    expect(migrationSql).not.toMatch(
       /create policy institutions_update_branding_policy/i,
     );
-    const policySql = migrationSql.match(
-      /create policy institutions_update_branding_policy[\s\S]*?with check \([\s\S]*?\);/i,
-    )?.[0] ?? '';
-
-    expect(policySql).toMatch(/public\.is_platform_super_admin\(\)/i);
-    expect(policySql).toMatch(/public\.owns_account\(account_id\)/i);
-    expect(policySql).not.toMatch(/DIRECTOR/i);
-    expect(policySql).not.toMatch(/public\.memberships/i);
   });
 
   it('cria RPC autenticada especifica para DIRECTOR atualizar somente branding', () => {
