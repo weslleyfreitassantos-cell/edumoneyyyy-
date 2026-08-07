@@ -28,6 +28,7 @@ import AccountPage from '../pages/Account/AccountPage';
 import { accountService } from '../services/accountService';
 import {
   institutionService,
+  resolveInstitutionBySubdomain,
 } from '../services/institutionService';
 import type {
   UserInstitution,
@@ -47,6 +48,7 @@ vi.mock('../services/institutionService', () => ({
   institutionService: {
     listForProfile: vi.fn(),
   },
+  resolveInstitutionBySubdomain: vi.fn(),
 }));
 
 vi.mock('../services/accountService', () => ({
@@ -70,6 +72,8 @@ const mockedInstitutionService =
   vi.mocked(institutionService);
 const mockedAccountService =
   vi.mocked(accountService);
+const mockedResolveInstitutionBySubdomain =
+  vi.mocked(resolveInstitutionBySubdomain);
 
 const profile = {
   id: 'profile-1',
@@ -230,13 +234,13 @@ function ContextStatus() {
   );
 }
 
-function renderWithProvider(children: ReactNode) {
+function renderWithProvider(children: ReactNode, hostnameOverride?: string) {
   const queryClient = createQueryClient();
 
   render(
     <MemoryRouter>
       <QueryClientProvider client={queryClient}>
-        <InstitutionProvider>
+        <InstitutionProvider hostnameOverride={hostnameOverride}>
           {children}
         </InstitutionProvider>
       </QueryClientProvider>
@@ -468,5 +472,123 @@ describe('InstitutionContext', () => {
     expect(
       mockedInstitutionService.listForProfile,
     ).toHaveBeenCalledTimes(2);
+  });
+
+  describe('Requisitos Obrigatórios de Subdomínio, Autorização e Ausência de Fallback', () => {
+    it('subdomínio cadastrado + instituição ativa -> carrega escola', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'inst-luz',
+          name: 'Escola Luz',
+          subdomain: 'escolaluz',
+          active: true,
+          account_id: 'acc-1',
+        },
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([
+        {
+          membership: { id: 'mem-1', institution_id: 'inst-luz', role: 'DIRECTOR', active: true },
+          institution: { id: 'inst-luz', name: 'Escola Luz', subdomain: 'escolaluz', active: true, account_id: 'acc-1' },
+          account: null,
+          accessSource: 'membership',
+          effectiveRole: 'DIRECTOR',
+        },
+      ]);
+
+      renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByTestId('account-current-id').textContent).toBe('inst-luz');
+      });
+    });
+
+    it('subdomínio inexistente, inativo, conta suspensa/cancelada ou reservado -> exibe not-found', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: null,
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([ownedInstitution]);
+
+      renderWithProvider(<ContextStatus />, 'inexistente.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Instituição não encontrada ou indisponível.')).toBeTruthy();
+      });
+      expect(screen.queryByTestId('account-current-id')).toBeNull();
+    });
+
+    it('erro no Supabase -> exibe tela de erro sem transformar em not-found', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: null,
+        error: new Error('PGRST 500 Network failure'),
+      });
+
+      renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Não foi possível carregar a instituição.')).toBeTruthy();
+      });
+    });
+
+    it('DIRECTOR da Escola Luz tentando acessar escolatv.grupotec.dev.br -> exibe forbidden sem fallback para Escola Luz', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'inst-tv',
+          name: 'Escola TV',
+          subdomain: 'escolatv',
+          active: true,
+          account_id: 'acc-2',
+        },
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([
+        {
+          membership: { id: 'mem-1', institution_id: 'inst-luz', role: 'DIRECTOR', active: true },
+          institution: { id: 'inst-luz', name: 'Escola Luz', subdomain: 'escolaluz', active: true, account_id: 'acc-1' },
+          account: null,
+          accessSource: 'membership',
+          effectiveRole: 'DIRECTOR',
+        },
+      ]);
+
+      renderWithProvider(<ContextStatus />, 'escolatv.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Acesso não autorizado a esta instituição.')).toBeTruthy();
+      });
+      expect(screen.queryByTestId('account-current-id')).toBeNull();
+    });
+
+    it('localStorage aponta para Escola Luz mas hostname = escolatv.grupotec.dev.br -> NÃO carregar Escola Luz', async () => {
+      window.localStorage.setItem('edumanager.currentInstitutionId.profile-1', 'inst-luz');
+
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'inst-tv',
+          name: 'Escola TV',
+          subdomain: 'escolatv',
+          active: true,
+          account_id: 'acc-2',
+        },
+        error: null,
+      });
+      mockedInstitutionService.listForProfile.mockResolvedValue([
+        {
+          membership: { id: 'mem-1', institution_id: 'inst-luz', role: 'DIRECTOR', active: true },
+          institution: { id: 'inst-luz', name: 'Escola Luz', subdomain: 'escolaluz', active: true, account_id: 'acc-1' },
+          account: null,
+          accessSource: 'membership',
+          effectiveRole: 'DIRECTOR',
+        },
+      ]);
+
+      renderWithProvider(<ContextStatus />, 'escolatv.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Acesso não autorizado a esta instituição.')).toBeTruthy();
+      });
+      expect(screen.queryByTestId('account-current-id')).toBeNull();
+    });
   });
 });

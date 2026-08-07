@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  classifyHostname,
   normalizeSubdomain,
   RESERVED_SUBDOMAINS,
   suggestSubdomain,
@@ -61,6 +62,77 @@ describe('Subdomain Utilities', () => {
 
     it('retorna fallback se o nome for muito curto', () => {
       expect(suggestSubdomain('A')).toBe('escola');
+    });
+  });
+
+  describe('classifyHostname', () => {
+    it('classifica grupotec.dev.br como plataforma', () => {
+      expect(classifyHostname('grupotec.dev.br')).toEqual({
+        type: 'platform',
+        hostname: 'grupotec.dev.br',
+      });
+    });
+
+    it('classifica escolaluz.grupotec.dev.br como instituicao com subdominio escolaluz', () => {
+      expect(classifyHostname('escolaluz.grupotec.dev.br')).toEqual({
+        type: 'institution',
+        hostname: 'escolaluz.grupotec.dev.br',
+        subdomain: 'escolaluz',
+      });
+    });
+
+    it('classifica escola-luz.grupotec.dev.br como instituicao com subdominio escola-luz', () => {
+      expect(classifyHostname('escola-luz.grupotec.dev.br')).toEqual({
+        type: 'institution',
+        hostname: 'escola-luz.grupotec.dev.br',
+        subdomain: 'escola-luz',
+      });
+    });
+
+    it('rejeita hostnames com multiplos subdominios como foo.bar.grupotec.dev.br', () => {
+      expect(classifyHostname('foo.bar.grupotec.dev.br')).toEqual({
+        type: 'invalid',
+        hostname: 'foo.bar.grupotec.dev.br',
+      });
+    });
+
+    it('rejeita dominios maliciosos ou falsos sufixos como grupotec.dev.br.evil.com', () => {
+      expect(classifyHostname('grupotec.dev.br.evil.com')).toEqual({
+        type: 'invalid',
+        hostname: 'grupotec.dev.br.evil.com',
+      });
+    });
+
+    it('rejeita subdominios reservados como www.grupotec.dev.br', () => {
+      expect(classifyHostname('www.grupotec.dev.br')).toEqual({
+        type: 'invalid',
+        hostname: 'www.grupotec.dev.br',
+      });
+    });
+
+    it('classifica localhost como ambiente de desenvolvimento', () => {
+      expect(classifyHostname('localhost')).toEqual({
+        type: 'development',
+        hostname: 'localhost',
+      });
+      expect(classifyHostname('localhost:3000')).toEqual({
+        type: 'development',
+        hostname: 'localhost',
+      });
+    });
+
+    it('classifica 127.0.0.1 como ambiente de desenvolvimento', () => {
+      expect(classifyHostname('127.0.0.1')).toEqual({
+        type: 'development',
+        hostname: '127.0.0.1',
+      });
+    });
+
+    it('classifica edumoneyyyy.workers.dev como ambiente de desenvolvimento/preview', () => {
+      expect(classifyHostname('edumoneyyyy.workers.dev')).toEqual({
+        type: 'development',
+        hostname: 'edumoneyyyy.workers.dev',
+      });
     });
   });
 });

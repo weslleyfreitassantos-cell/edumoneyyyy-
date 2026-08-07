@@ -12,14 +12,24 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from './AuthContext';
 import { useUserInstitutions } from '../hooks/useUserInstitutions';
-import { extractSubdomainFromHostname } from '../lib/subdomain';
+import { classifyHostname, type HostResolution } from '../lib/subdomain';
 import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
+import { SubdomainForbiddenPage } from '../components/SubdomainForbiddenPage';
+import { SubdomainErrorPage } from '../components/SubdomainErrorPage';
 import {
-  fetchInstitutionBySubdomain,
+  resolveInstitutionBySubdomain,
   type InstitutionSummary,
   type UserInstitution,
   type UserInstitutionMembership,
 } from '../services/institutionService';
+
+export type InstitutionResolutionState =
+  | 'loading'
+  | 'platform'
+  | 'resolved'
+  | 'not-found'
+  | 'forbidden'
+  | 'error';
 
 export type SelectInstitutionResult =
   | {
@@ -41,6 +51,7 @@ interface InstitutionContextType {
   currentMembership: UserInstitutionMembership | null;
   currentInstitutionId: string | null;
   currentRole: string | null;
+  resolutionState?: InstitutionResolutionState;
   isLoading: boolean;
   isSwitchingInstitution: boolean;
   error: Error | null;
@@ -128,57 +139,131 @@ function queryKeyContainsInstitution(
   );
 }
 
+export interface InstitutionProviderProps {
+  children: ReactNode;
+  hostnameOverride?: string;
+}
+
 export function InstitutionProvider({
   children,
-}: {
-  children: ReactNode;
-}) {
+  hostnameOverride,
+}: InstitutionProviderProps) {
   const { profile } = useAuth();
   const queryClient = useQueryClient();
 
-  const institutionsQuery =
-    useUserInstitutions(profile?.id, profile?.platform_role);
+  const hostname =
+    hostnameOverride ??
+    (typeof window !== 'undefined' ? window.location.hostname : '');
 
-  const institutions =
-    institutionsQuery.data ?? [];
+  const hostResolution: HostResolution = useMemo(
+    () => classifyHostname(hostname),
+    [hostname],
+  );
 
-  const [
-    currentInstitutionId,
-    setCurrentInstitutionIdState,
-  ] = useState<string | null>(null);
-  const [
-    isSwitchingInstitution,
-    setIsSwitchingInstitution,
-  ] = useState(false);
-  const selectionRequestRef = useRef(0);
-
-  const [subdomainNotFound, setSubdomainNotFound] = useState(false);
+  const [subdomainInstitution, setSubdomainInstitution] =
+    useState<InstitutionSummary | null>(null);
+  const [subdomainStatus, setSubdomainStatus] = useState<
+    'idle' | 'loading' | 'resolved' | 'not-found' | 'error'
+  >('idle');
+  const [subdomainError, setSubdomainError] = useState<Error | null>(null);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const hostnameSubdomain = extractSubdomainFromHostname(window.location.hostname);
-    if (!hostnameSubdomain) return;
+    if (hostResolution.type !== 'institution') {
+      setSubdomainInstitution(null);
+      setSubdomainError(null);
+      if (hostResolution.type === 'invalid') {
+        setSubdomainStatus('not-found');
+      } else {
+        setSubdomainStatus('idle');
+      }
+      return;
+    }
 
     let isMounted = true;
-    fetchInstitutionBySubdomain(hostnameSubdomain)
-      .then((inst) => {
+    setSubdomainStatus('loading');
+    setSubdomainError(null);
+
+    resolveInstitutionBySubdomain(hostResolution.subdomain)
+      .then((res) => {
         if (!isMounted) return;
-        if (!inst) {
-          setSubdomainNotFound(true);
+        if (res.error) {
+          setSubdomainError(res.error);
+          setSubdomainStatus('error');
+          setSubdomainInstitution(null);
+        } else if (!res.institution) {
+          setSubdomainStatus('not-found');
+          setSubdomainInstitution(null);
+        } else {
+          setSubdomainInstitution(res.institution);
+          setSubdomainStatus('resolved');
         }
       })
-      .catch(() => {
-        if (isMounted) setSubdomainNotFound(true);
+      .catch((err) => {
+        if (!isMounted) return;
+        setSubdomainError(
+          err instanceof Error ? err : new Error('Falha na resolução do subdomínio.'),
+        );
+        setSubdomainStatus('error');
+        setSubdomainInstitution(null);
       });
 
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [hostResolution]);
+
+  const institutionsQuery = useUserInstitutions(
+    profile?.id,
+    profile?.platform_role,
+  );
+
+  const institutions = institutionsQuery.data ?? [];
+
+  const [platformInstitutionId, setPlatformInstitutionId] = useState<string | null>(null);
+  const [isSwitchingInstitution, setIsSwitchingInstitution] = useState(false);
+  const selectionRequestRef = useRef(0);
+
+  const resolutionState: InstitutionResolutionState = useMemo(() => {
+    if (hostResolution.type === 'invalid') return 'not-found';
+
+    if (hostResolution.type === 'institution') {
+      if (subdomainStatus === 'loading') return 'loading';
+      if (subdomainStatus === 'error') return 'error';
+      if (subdomainStatus === 'not-found' || !subdomainInstitution)
+        return 'not-found';
+
+      if (profile?.id) {
+        if (institutionsQuery.isLoading) return 'loading';
+        const matched = institutions.find(
+          (link) => link.institution.id === subdomainInstitution.id,
+        );
+        if (!matched) return 'forbidden';
+        return 'resolved';
+      }
+
+      return 'resolved';
+    }
+
+    return 'platform';
+  }, [
+    hostResolution.type,
+    subdomainStatus,
+    subdomainInstitution,
+    profile?.id,
+    institutionsQuery.isLoading,
+    institutions,
+  ]);
 
   useEffect(() => {
+    if (
+      hostResolution.type === 'institution' ||
+      hostResolution.type === 'invalid'
+    ) {
+      return;
+    }
+
     if (!profile?.id) {
-      setCurrentInstitutionIdState(null);
+      setPlatformInstitutionId(null);
       return;
     }
 
@@ -187,12 +272,11 @@ export function InstitutionProvider({
     }
 
     if (institutions.length === 0) {
-      setCurrentInstitutionIdState(null);
+      setPlatformInstitutionId(null);
       removeStoredInstitutionId(profile.id);
       return;
     }
 
-    // Resolucao especifica para DIRECTOR: resolvida obrigatoriamente pela membership ativa
     if (profile.role === 'DIRECTOR') {
       const directorLink =
         institutions.find(
@@ -202,9 +286,12 @@ export function InstitutionProvider({
         ) ?? institutions[0];
 
       if (directorLink) {
-        if (currentInstitutionId !== directorLink.institution.id) {
-          setCurrentInstitutionIdState(directorLink.institution.id);
-          writeStoredInstitutionId(profile.id, directorLink.institution.id);
+        if (platformInstitutionId !== directorLink.institution.id) {
+          setPlatformInstitutionId(directorLink.institution.id);
+          writeStoredInstitutionId(
+            profile.id,
+            directorLink.institution.id,
+          );
         }
         return;
       }
@@ -214,62 +301,81 @@ export function InstitutionProvider({
       const onlyInstitutionId =
         institutions[0].institution.id;
 
-      setCurrentInstitutionIdState(
-        onlyInstitutionId,
-      );
-      writeStoredInstitutionId(
-        profile.id,
-        onlyInstitutionId,
-      );
+      setPlatformInstitutionId(onlyInstitutionId);
+      writeStoredInstitutionId(profile.id, onlyInstitutionId);
       return;
     }
 
-    const currentSelectionStillExists =
-      findInstitutionLink(
-        institutions,
-        currentInstitutionId,
-      );
+    const currentSelectionStillExists = findInstitutionLink(
+      institutions,
+      platformInstitutionId,
+    );
 
     if (currentSelectionStillExists) {
       return;
     }
 
-    const storedInstitutionId =
-      readStoredInstitutionId(profile.id);
-
-    const storedSelectionStillExists =
-      findInstitutionLink(
-        institutions,
-        storedInstitutionId,
-      );
+    const storedInstitutionId = readStoredInstitutionId(profile.id);
+    const storedSelectionStillExists = findInstitutionLink(
+      institutions,
+      storedInstitutionId,
+    );
 
     const nextInstitutionId =
       storedSelectionStillExists?.institution.id ??
       institutions[0].institution.id;
 
-    setCurrentInstitutionIdState(
-      nextInstitutionId,
-    );
-    writeStoredInstitutionId(
-      profile.id,
-      nextInstitutionId,
-    );
+    setPlatformInstitutionId(nextInstitutionId);
+    writeStoredInstitutionId(profile.id, nextInstitutionId);
   }, [
-    currentInstitutionId,
+    hostResolution.type,
+    platformInstitutionId,
     institutions,
     institutionsQuery.isLoading,
     profile?.id,
     profile?.role,
   ]);
 
-  const selectedInstitutionLink = useMemo(
-    () =>
-      findInstitutionLink(
-        institutions,
-        currentInstitutionId,
-      ),
-    [currentInstitutionId, institutions],
-  );
+  const activeLink = useMemo(() => {
+    if (hostResolution.type === 'institution') {
+      if (!subdomainInstitution) return null;
+      return (
+        institutions.find(
+          (link) => link.institution.id === subdomainInstitution.id,
+        ) ?? null
+      );
+    }
+
+    return findInstitutionLink(institutions, platformInstitutionId);
+  }, [
+    hostResolution.type,
+    subdomainInstitution,
+    institutions,
+    platformInstitutionId,
+  ]);
+
+  const currentInstitution = useMemo(() => {
+    if (hostResolution.type === 'institution') {
+      if (activeLink) return activeLink.institution;
+      return subdomainInstitution;
+    }
+    return activeLink?.institution ?? null;
+  }, [hostResolution.type, activeLink, subdomainInstitution]);
+
+  const currentMembership = activeLink?.membership ?? null;
+
+  const currentInstitutionId = useMemo(() => {
+    if (hostResolution.type === 'institution') {
+      if (activeLink) return activeLink.institution.id;
+      if (resolutionState === 'resolved' && subdomainInstitution) {
+        return subdomainInstitution.id;
+      }
+      return null;
+    }
+    return activeLink?.institution.id ?? null;
+  }, [hostResolution.type, activeLink, resolutionState, subdomainInstitution]);
+
+  const currentRole = activeLink?.effectiveRole ?? null;
 
   const selectAuthorizedInstitution = useCallback(
     async (
@@ -285,11 +391,10 @@ export function InstitutionProvider({
         };
       }
 
-      const nextSelection =
-        findInstitutionLink(
-          authorizedInstitutions,
-          institutionId,
-        );
+      const nextSelection = findInstitutionLink(
+        authorizedInstitutions,
+        institutionId,
+      );
 
       if (!nextSelection) {
         return {
@@ -300,24 +405,15 @@ export function InstitutionProvider({
         };
       }
 
-      const previousInstitutionId =
-        currentInstitutionId;
+      const previousInstitutionId = currentInstitutionId;
 
-      setCurrentInstitutionIdState(
-        institutionId,
-      );
-      writeStoredInstitutionId(
-        profile.id,
-        institutionId,
-      );
+      setPlatformInstitutionId(institutionId);
+      writeStoredInstitutionId(profile.id, institutionId);
 
       const institutionIds = [
         previousInstitutionId,
         institutionId,
-      ].filter(
-        (value): value is string =>
-          Boolean(value),
-      );
+      ].filter((value): value is string => Boolean(value));
 
       await queryClient.cancelQueries({
         predicate: (query) =>
@@ -353,11 +449,7 @@ export function InstitutionProvider({
         institutionId,
       };
     },
-    [
-      currentInstitutionId,
-      profile?.id,
-      queryClient,
-    ],
+    [currentInstitutionId, profile?.id, queryClient],
   );
 
   const setCurrentInstitutionId = useCallback(
@@ -369,8 +461,7 @@ export function InstitutionProvider({
         } as const;
       }
 
-      const requestId =
-        selectionRequestRef.current + 1;
+      const requestId = selectionRequestRef.current + 1;
       selectionRequestRef.current = requestId;
       setIsSwitchingInstitution(true);
 
@@ -414,9 +505,7 @@ export function InstitutionProvider({
           };
         }
 
-        if (
-          selectionRequestRef.current !== requestId
-        ) {
+        if (selectionRequestRef.current !== requestId) {
           return {
             success: false,
             reason: 'NOT_FOUND',
@@ -441,9 +530,7 @@ export function InstitutionProvider({
           refreshedInstitutions.data ?? [],
         );
       } finally {
-        if (
-          selectionRequestRef.current === requestId
-        ) {
+        if (selectionRequestRef.current === requestId) {
           setIsSwitchingInstitution(false);
         }
       }
@@ -456,64 +543,81 @@ export function InstitutionProvider({
     ],
   );
 
-  const clearCurrentInstitutionSelection =
-    useCallback(() => {
-      if (profile?.id) {
-        removeStoredInstitutionId(profile.id);
-      }
+  const clearCurrentInstitutionSelection = useCallback(() => {
+    if (profile?.id) {
+      removeStoredInstitutionId(profile.id);
+    }
+    setPlatformInstitutionId(null);
+  }, [profile?.id]);
 
-      setCurrentInstitutionIdState(null);
-    }, [profile?.id]);
-
-  const value =
-    useMemo<InstitutionContextType>(
-      () => ({
-        institutions,
-        currentInstitution:
-          selectedInstitutionLink?.institution ??
-          null,
-        currentMembership:
-          selectedInstitutionLink?.membership ??
-          null,
-        currentInstitutionId:
-          selectedInstitutionLink?.institution.id ??
-          null,
-        currentRole:
-          selectedInstitutionLink?.effectiveRole ??
-          null,
-        isLoading:
-          Boolean(profile?.id) &&
+  const value = useMemo<InstitutionContextType>(
+    () => ({
+      institutions,
+      currentInstitution,
+      currentMembership,
+      currentInstitutionId,
+      currentRole,
+      resolutionState,
+      isLoading:
+        resolutionState === 'loading' ||
+        (Boolean(profile?.id) &&
           (isSwitchingInstitution ||
             institutionsQuery.isLoading ||
-            (institutionsQuery.isFetching &&
-              !selectedInstitutionLink)),
-        isSwitchingInstitution,
-        error:
-          institutionsQuery.error instanceof Error
-            ? institutionsQuery.error
-            : null,
-        hasMultipleInstitutions:
-          institutions.length > 1,
-        setCurrentInstitutionId,
-        clearCurrentInstitutionSelection,
-        refresh: institutionsQuery.refetch,
-      }),
-      [
-        clearCurrentInstitutionSelection,
-        institutions,
-        institutionsQuery.error,
-        institutionsQuery.isFetching,
-        institutionsQuery.isLoading,
-        institutionsQuery.refetch,
-        isSwitchingInstitution,
-        profile?.id,
-        selectedInstitutionLink,
-        setCurrentInstitutionId,
-      ],
-    );
+            (institutionsQuery.isFetching && !activeLink))),
+      isSwitchingInstitution,
+      error:
+        subdomainError ??
+        (institutionsQuery.error instanceof Error
+          ? institutionsQuery.error
+          : null),
+      hasMultipleInstitutions: institutions.length > 1,
+      setCurrentInstitutionId,
+      clearCurrentInstitutionSelection,
+      refresh: institutionsQuery.refetch,
+    }),
+    [
+      activeLink,
+      clearCurrentInstitutionSelection,
+      currentInstitution,
+      currentInstitutionId,
+      currentMembership,
+      currentRole,
+      institutions,
+      institutionsQuery.error,
+      institutionsQuery.isFetching,
+      institutionsQuery.isLoading,
+      institutionsQuery.refetch,
+      isSwitchingInstitution,
+      profile?.id,
+      resolutionState,
+      setCurrentInstitutionId,
+      subdomainError,
+    ],
+  );
 
-  if (subdomainNotFound) {
+  if (resolutionState === 'loading') {
+    return (
+      <main className="grid min-h-screen place-items-center bg-slate-50 dark:bg-slate-900">
+        <div role="status" className="text-center">
+          <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600 dark:border-slate-800 dark:border-t-blue-400" />
+          <p className="mt-4 text-sm font-medium text-slate-600 dark:text-slate-400">
+            Carregando instituição...
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  if (resolutionState === 'not-found') {
     return <SubdomainNotFoundPage />;
+  }
+
+  if (resolutionState === 'forbidden') {
+    return <SubdomainForbiddenPage />;
+  }
+
+  if (resolutionState === 'error') {
+    return <SubdomainErrorPage />;
   }
 
   return (

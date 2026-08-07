@@ -2,6 +2,7 @@ import { describe, expect, it, vi, beforeEach } from 'vitest';
 import {
   updateInstitutionSubdomain,
   updateInstitutionBranding,
+  resolveInstitutionBySubdomain,
 } from './institutionService';
 import { supabase } from '../lib/supabaseClient';
 
@@ -16,7 +17,124 @@ describe('Institution Service Authorization & Security', () => {
     vi.clearAllMocks();
   });
 
+  describe('resolveInstitutionBySubdomain', () => {
+    it('retorna instituicao quando subdominio existe, instituicao ativa e conta ativa', async () => {
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: {
+                  id: 'inst-1',
+                  name: 'Escola Luz',
+                  subdomain: 'escolaluz',
+                  active: true,
+                  account_id: 'acc-1',
+                  accounts: { id: 'acc-1', status: 'ACTIVE' },
+                },
+                error: null,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('escolaluz');
+      expect(res.error).toBeNull();
+      expect(res.institution).toEqual({
+        id: 'inst-1',
+        name: 'Escola Luz',
+        subdomain: 'escolaluz',
+        logo_url: null,
+        primary_color: null,
+        secondary_color: null,
+        active: true,
+        account_id: 'acc-1',
+      });
+    });
+
+    it('retorna null sem erro para subdominio inexistente', async () => {
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: null,
+                error: null,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('inexistente');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+    });
+
+    it('retorna null sem erro quando a conta associada esta SUSPENDED ou CANCELED', async () => {
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: {
+                  id: 'inst-1',
+                  name: 'Escola Suspensa',
+                  subdomain: 'escolasuspensa',
+                  active: true,
+                  account_id: 'acc-1',
+                  accounts: { id: 'acc-1', status: 'SUSPENDED' },
+                },
+                error: null,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('escolasuspensa');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+    });
+
+    it('retorna null sem erro para subdominios reservados sem consultar o banco', async () => {
+      const mockFrom = vi.fn();
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('admin');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+      expect(mockFrom).not.toHaveBeenCalled();
+    });
+
+    it('preserva erro do Supabase sem transformar em null', async () => {
+      const dbError = new Error('Database error 500');
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: null,
+                error: dbError,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('escolaluz');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBe(dbError);
+    });
+  });
+
   describe('updateInstitutionSubdomain (Operação 1 - ADMIN)', () => {
+
     it('permite que o ADMIN altere o subdomínio de uma instituição de sua própria conta', async () => {
       const mockFrom = vi.fn().mockImplementation((table: string) => {
         if (table === 'institutions') {

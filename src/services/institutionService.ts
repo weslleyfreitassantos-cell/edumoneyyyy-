@@ -579,23 +579,79 @@ export async function updateInstitutionBranding({
   return data;
 }
 
-export async function fetchInstitutionBySubdomain(
+export interface ResolveInstitutionResult {
+  institution: InstitutionSummary | null;
+  error: Error | null;
+}
+
+export async function resolveInstitutionBySubdomain(
   subdomain: string,
-): Promise<InstitutionSummary | null> {
-  const { normalizeSubdomain } = await import('../lib/subdomain');
+): Promise<ResolveInstitutionResult> {
+  const { validateSubdomain, normalizeSubdomain } = await import('../lib/subdomain');
+  const validation = validateSubdomain(subdomain);
+  if (!validation.valid) {
+    return { institution: null, error: null };
+  }
+
   const normalized = normalizeSubdomain(subdomain);
-  if (!normalized) return null;
 
   const { data, error } = await supabase
     .from('institutions')
-    .select('id, name, subdomain, logo_url, primary_color, secondary_color, active, account_id')
+    .select(
+      `
+      id,
+      name,
+      subdomain,
+      logo_url,
+      primary_color,
+      secondary_color,
+      active,
+      account_id,
+      accounts:account_id (
+        id,
+        status
+      )
+    `,
+    )
     .eq('subdomain', normalized)
     .eq('active', true)
     .maybeSingle();
 
-  if (error || !data) {
-    return null;
+  if (error) {
+    return { institution: null, error };
   }
 
-  return data;
+  if (!data) {
+    return { institution: null, error: null };
+  }
+
+  if (data.account_id) {
+    const accountRelation = normalizeRelation(
+      (data as unknown as { accounts?: AccountSummary | AccountSummary[] | null }).accounts,
+    );
+
+    if (!accountRelation || accountRelation.status !== 'ACTIVE') {
+      return { institution: null, error: null };
+    }
+  }
+
+  const institution: InstitutionSummary = {
+    id: data.id,
+    name: data.name,
+    subdomain: data.subdomain ?? null,
+    logo_url: data.logo_url ?? null,
+    primary_color: data.primary_color ?? null,
+    secondary_color: data.secondary_color ?? null,
+    active: data.active ?? true,
+    account_id: data.account_id ?? null,
+  };
+
+  return { institution, error: null };
+}
+
+export async function fetchInstitutionBySubdomain(
+  subdomain: string,
+): Promise<InstitutionSummary | null> {
+  const result = await resolveInstitutionBySubdomain(subdomain);
+  return result.institution;
 }
