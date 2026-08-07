@@ -129,7 +129,7 @@ afterEach(() => {
 });
 
 describe('AdminOverviewTab', () => {
-  it('renderiza metricas e ano letivo atual', () => {
+  it('renderiza apenas os cards de métricas e não exibe o resumo acadêmico', () => {
     render(
       <AdminOverviewTab
         availableModuleIds={[
@@ -145,10 +145,13 @@ describe('AdminOverviewTab', () => {
 
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
     expect(screen.getByText(/professores ativos/i)).toBeTruthy();
-    expect(screen.getByText(/ano letivo atual/i)).toBeTruthy();
-    expect(screen.getByText('2026')).toBeTruthy();
-    expect(
-      screen.queryByText(/configura..o inicial da escola/i),
-    ).toBeNull();
+    expect(screen.getByText(/turmas ativas/i)).toBeTruthy();
+
+    expect(screen.queryByText(/ano letivo atual/i)).toBeNull();
+    expect(screen.queryByText(/período atual/i)).toBeNull();
+    expect(screen.queryByText(/pendências acadêmicas/i)).toBeNull();
+    expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
+    expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
+    expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
   });
 });
