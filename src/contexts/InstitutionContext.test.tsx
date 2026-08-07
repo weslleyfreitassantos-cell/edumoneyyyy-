@@ -227,10 +227,15 @@ function ContextStatus() {
   const institutionContext = useInstitution();
 
   return (
-    <output data-testid="account-current-id">
-      {institutionContext.currentInstitutionId ??
-        'none'}
-    </output>
+    <>
+      <output data-testid="account-current-id">
+        {institutionContext.currentInstitutionId ??
+          'none'}
+      </output>
+      <output data-testid="resolution-state">
+        {institutionContext.resolutionState ?? 'none'}
+      </output>
+    </>
   );
 }
 
