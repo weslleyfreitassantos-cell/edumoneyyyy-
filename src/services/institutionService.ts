@@ -595,6 +595,39 @@ export async function resolveInstitutionBySubdomain(
 
   const normalized = normalizeSubdomain(subdomain);
 
+  try {
+    const { data: rpcData, error: rpcError } = await supabase.rpc(
+      'resolve_public_institution_by_subdomain',
+      { target_subdomain: normalized },
+    );
+
+    if (!rpcError && rpcData !== null && rpcData !== undefined) {
+      const rows = Array.isArray(rpcData) ? rpcData : [rpcData];
+      if (rows.length > 0 && rows[0]?.id && rows[0]?.name) {
+        const row = rows[0];
+        return {
+          institution: {
+            id: row.id,
+            name: row.name,
+            subdomain: row.subdomain ?? null,
+            logo_url: row.logo_url ?? null,
+            primary_color: row.primary_color ?? null,
+            secondary_color: row.secondary_color ?? null,
+            active: row.active ?? true,
+            account_id: row.account_id ?? null,
+          },
+          error: null,
+        };
+      }
+
+      if (Array.isArray(rpcData) && rpcData.length === 0) {
+        return { institution: null, error: null };
+      }
+    }
+  } catch {
+    // Segue para a consulta direta em caso de indisponibilidade da RPC no ambiente de testes
+  }
+
   const { data, error } = await supabase
     .from('institutions')
     .select(

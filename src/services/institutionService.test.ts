@@ -9,6 +9,7 @@ import { supabase } from '../lib/supabaseClient';
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     from: vi.fn(),
+    rpc: vi.fn(),
   },
 }));
 
@@ -18,6 +19,47 @@ describe('Institution Service Authorization & Security', () => {
   });
 
   describe('resolveInstitutionBySubdomain', () => {
+    it('resolve via RPC publica quando disponivel', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
+        data: [
+          {
+            id: 'inst-rpc-1',
+            name: 'Escola Luz Publica',
+            subdomain: 'escolaluz',
+            logo_url: 'https://cdn.example.com/logo.png',
+            primary_color: '#005bbf',
+            secondary_color: '#6ffbbe',
+            active: true,
+            account_id: 'acc-1',
+          },
+        ],
+        error: null,
+      } as never);
+
+      const res = await resolveInstitutionBySubdomain('escolaluz');
+      expect(res.error).toBeNull();
+      expect(res.institution).toEqual({
+        id: 'inst-rpc-1',
+        name: 'Escola Luz Publica',
+        subdomain: 'escolaluz',
+        logo_url: 'https://cdn.example.com/logo.png',
+        primary_color: '#005bbf',
+        secondary_color: '#6ffbbe',
+        active: true,
+        account_id: 'acc-1',
+      });
+    });
+
+    it('retorna null sem erro quando RPC retorna array vazio', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
+        data: [],
+        error: null,
+      } as never);
+
+      const res = await resolveInstitutionBySubdomain('inexistente');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+    });
     it('retorna instituicao quando subdominio existe, instituicao ativa e conta ativa', async () => {
       const mockFrom = vi.fn().mockReturnValue({
         select: vi.fn().mockReturnValue({

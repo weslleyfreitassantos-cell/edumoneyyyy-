@@ -591,4 +591,63 @@ describe('InstitutionContext', () => {
       expect(screen.queryByTestId('account-current-id')).toBeNull();
     });
   });
+
+  describe('Cenários Públicos sem Sessão Autenticada (Deslogado)', () => {
+    beforeEach(() => {
+      mockedUseAuth.mockReturnValue({
+        user: null,
+        profile: null,
+        loading: false,
+        signIn: vi.fn(async () => undefined),
+        signOut: vi.fn(async () => undefined),
+      });
+    });
+
+    it('sem sessão, hostname = escolaluz.grupotec.dev.br, instituição ativa e conta ACTIVE -> resolução retorna Escola Luz', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: {
+          id: 'inst-luz',
+          name: 'Escola Luz',
+          subdomain: 'escolaluz',
+          active: true,
+          account_id: 'acc-1',
+        },
+        error: null,
+      });
+
+      renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByTestId('account-current-id').textContent).toBe('inst-luz');
+      });
+    });
+
+    it('sem sessão, subdomínio inexistente -> not-found', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: null,
+        error: null,
+      });
+
+      renderWithProvider(<ContextStatus />, 'inexistente.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Instituição não encontrada ou indisponível.')).toBeTruthy();
+      });
+      expect(screen.queryByTestId('account-current-id')).toBeNull();
+    });
+
+    it('sem sessão, erro real da API -> error', async () => {
+      mockedResolveInstitutionBySubdomain.mockResolvedValue({
+        institution: null,
+        error: new Error('PostgREST 500 Connection error'),
+      });
+
+      renderWithProvider(<ContextStatus />, 'escolaluz.grupotec.dev.br');
+
+      await waitFor(() => {
+        expect(screen.getByText('Não foi possível carregar a instituição.')).toBeTruthy();
+      });
+      expect(screen.queryByTestId('account-current-id')).toBeNull();
+    });
+  });
 });
