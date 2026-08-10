@@ -13,6 +13,7 @@ import { applyDocumentBranding } from '../services/documentBranding';
 import { type CSSProperties, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { authEmailSchema } from '../schemas/authSchemas';
+import { buildApplicationUrl } from '../lib/origins';
 
 const genericSuccessMessage =
   'Se o e-mail estiver cadastrado, enviaremos as instrucoes para redefinir sua senha.';
@@ -35,7 +36,10 @@ function getErrorMessage(error: unknown): string {
 }
 
 function getRecoveryRedirectUrl(): string {
-  return `${window.location.origin}/auth/reset-password`;
+  return buildApplicationUrl(
+    '/auth/reset-password',
+    window.location.origin,
+  );
 }
 
 function getRequestErrorMessage(error: unknown): string {
