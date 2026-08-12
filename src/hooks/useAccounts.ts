@@ -20,6 +20,8 @@ import {
   type DeleteInstitutionResponse,
   type RestoreClientAccountInput,
   type RestoreClientAccountResponse,
+  type UpdateInstitutionNameInput,
+  type UpdateInstitutionNameResponse,
   type UpdateInstitutionStatusInput,
   type UpdateInstitutionStatusResponse,
   type UpdateClientAccountInput,
@@ -227,12 +229,35 @@ export function useUpdateInstitutionStatus() {
   const queryClient = useQueryClient();
 
   return useMutation<
-    UpdateInstitutionStatusResponse,
-    Error,
-    UpdateInstitutionStatusInput
+  UpdateInstitutionStatusResponse,
+  Error,
+  UpdateInstitutionStatusInput
   >({
     mutationFn: (input) =>
       accountService.updateInstitutionStatus(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
+    },
+  });
+}
+
+export function useUpdateInstitutionName() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    UpdateInstitutionNameResponse,
+    Error,
+    UpdateInstitutionNameInput
+  >({
+    mutationFn: (input) =>
+      accountService.updateInstitutionName(input),
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({

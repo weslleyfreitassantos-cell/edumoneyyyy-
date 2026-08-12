@@ -1,16 +1,31 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { supabase } from '../lib/supabaseClient';
 import { accountService, AccountServiceError } from './accountService';
+
+const queryBuilder = vi.hoisted(() => ({
+  update: vi.fn(),
+  eq: vi.fn(),
+  select: vi.fn(),
+  single: vi.fn(),
+}));
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     functions: {
       invoke: vi.fn(),
     },
+    from: vi.fn(() => queryBuilder),
   },
 }));
 
 describe('accountService', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    queryBuilder.update.mockReturnValue(queryBuilder);
+    queryBuilder.eq.mockReturnValue(queryBuilder);
+    queryBuilder.select.mockReturnValue(queryBuilder);
+  });
+
   it('normalizando respostas validas', async () => {
     vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
       data: {
@@ -104,5 +119,60 @@ describe('accountService', () => {
     expect(response.status).toBe('CANCELED');
     expect(response.auditEventId).toBe('event-1');
     expect(response.statusChanged).toBe(true);
+  });
+
+  it('atualiza somente o nome da instituicao usando id e account_id', async () => {
+    queryBuilder.single.mockResolvedValueOnce({
+      data: {
+        id: 'institution-1',
+        account_id: 'account-1',
+        name: 'Colegio Luz',
+      },
+      error: null,
+    });
+
+    const response =
+      await accountService.updateInstitutionName({
+        accountId: 'account-1',
+        institutionId: 'institution-1',
+        name: '  Colegio Luz  ',
+      });
+
+    expect(supabase.from).toHaveBeenCalledWith(
+      'institutions',
+    );
+    expect(queryBuilder.update).toHaveBeenCalledWith({
+      name: 'Colegio Luz',
+      updated_at: expect.any(String),
+    });
+    expect(queryBuilder.eq).toHaveBeenCalledWith(
+      'id',
+      'institution-1',
+    );
+    expect(queryBuilder.eq).toHaveBeenCalledWith(
+      'account_id',
+      'account-1',
+    );
+    expect(queryBuilder.select).toHaveBeenCalledWith(
+      'id, account_id, name',
+    );
+    expect(response).toEqual({
+      success: true,
+      institutionId: 'institution-1',
+      accountId: 'account-1',
+      name: 'Colegio Luz',
+    });
+  });
+
+  it('rejeita nome vazio antes de chamar o banco', async () => {
+    await expect(
+      accountService.updateInstitutionName({
+        accountId: 'account-1',
+        institutionId: 'institution-1',
+        name: '    ',
+      }),
+    ).rejects.toThrow(AccountServiceError);
+
+    expect(supabase.from).not.toHaveBeenCalled();
   });
 });

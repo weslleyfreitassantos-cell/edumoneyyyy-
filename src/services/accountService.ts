@@ -147,6 +147,19 @@ export interface UpdateInstitutionStatusInput {
   active: boolean;
 }
 
+export interface UpdateInstitutionNameInput {
+  accountId: string;
+  institutionId: string;
+  name: string;
+}
+
+export interface UpdateInstitutionNameResponse {
+  success: true;
+  institutionId: string;
+  accountId: string;
+  name: string;
+}
+
 export interface UpdateInstitutionStatusResponse {
   success: true;
   institutionId: string;
@@ -896,6 +909,48 @@ export const accountService = {
     }
 
     return assertUpdateInstitutionStatusResponse(data);
+  },
+
+  async updateInstitutionName(
+    input: UpdateInstitutionNameInput,
+  ): Promise<UpdateInstitutionNameResponse> {
+    const normalizedName = input.name.trim();
+
+    if (!normalizedName) {
+      throw new AccountServiceError(
+        'Informe o nome da instituicao.',
+        'INVALID_INSTITUTION_NAME',
+      );
+    }
+
+    const { data, error } = await supabase
+      .from('institutions')
+      .update({
+        name: normalizedName,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', input.institutionId)
+      .eq('account_id', input.accountId)
+      .select('id, account_id, name')
+      .single();
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data) {
+      throw new AccountServiceError(
+        'Instituicao nao encontrada ou sem permissao para alterar.',
+        'INSTITUTION_NOT_FOUND',
+      );
+    }
+
+    return {
+      success: true,
+      institutionId: data.id,
+      accountId: data.account_id,
+      name: data.name,
+    };
   },
 
   async deleteInstitution(
