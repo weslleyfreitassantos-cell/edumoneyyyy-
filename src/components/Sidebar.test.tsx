@@ -138,6 +138,20 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
+  it('remove alunos, professores e responsaveis do menu lateral', () => {
+    renderSidebar();
+
+    expect(
+      screen.queryByRole('link', { name: /^alunos$/i }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', { name: /^professores$/i }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', { name: /^respons.veis$/i }),
+    ).toBeNull();
+  });
+
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
     renderSidebar({
       route: '/platform',
