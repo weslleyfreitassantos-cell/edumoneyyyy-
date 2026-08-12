@@ -195,7 +195,6 @@ beforeEach(() => {
   updateInstitutionName.mockResolvedValue({
     success: true,
     institutionId: 'institution-1',
-    accountId: 'account-1',
     name: 'Colegio Sol',
   });
   mockedUseUpdateInstitutionName.mockReturnValue({
@@ -635,7 +634,6 @@ describe('AccountPage', () => {
 
     await waitFor(() => {
       expect(updateInstitutionName).toHaveBeenCalledWith({
-        accountId: 'account-1',
         institutionId: 'institution-2',
         name: 'Colegio TV',
       });
@@ -847,7 +845,6 @@ describe('AccountPage', () => {
 
     await waitFor(() => {
       expect(updateInstitutionName).toHaveBeenCalledWith({
-        accountId: 'account-1',
         institutionId: 'institution-2',
         name: 'Colegio Luz',
       });

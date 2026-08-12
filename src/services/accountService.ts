@@ -148,7 +148,6 @@ export interface UpdateInstitutionStatusInput {
 }
 
 export interface UpdateInstitutionNameInput {
-  accountId: string;
   institutionId: string;
   name: string;
 }
@@ -156,7 +155,6 @@ export interface UpdateInstitutionNameInput {
 export interface UpdateInstitutionNameResponse {
   success: true;
   institutionId: string;
-  accountId: string;
   name: string;
 }
 
@@ -923,22 +921,25 @@ export const accountService = {
       );
     }
 
-    const { data, error } = await supabase
-      .from('institutions')
-      .update({
-        name: normalizedName,
-        updated_at: new Date().toISOString(),
-      })
-      .eq('id', input.institutionId)
-      .eq('account_id', input.accountId)
-      .select('id, account_id, name')
-      .single();
+    const { data, error } = await supabase.rpc(
+      'update_admin_institution_name',
+      {
+        target_institution_id: input.institutionId,
+        new_name: normalizedName,
+      },
+    );
 
     if (error) {
       throw error;
     }
 
-    if (!data) {
+    const row = Array.isArray(data) ? data[0] : null;
+
+    if (
+      !isRecord(row) ||
+      typeof row.id !== 'string' ||
+      typeof row.name !== 'string'
+    ) {
       throw new AccountServiceError(
         'Instituicao nao encontrada ou sem permissao para alterar.',
         'INSTITUTION_NOT_FOUND',
@@ -947,9 +948,8 @@ export const accountService = {
 
     return {
       success: true,
-      institutionId: data.id,
-      accountId: data.account_id,
-      name: data.name,
+      institutionId: row.id,
+      name: row.name,
     };
   },
 
