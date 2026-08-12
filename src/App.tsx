@@ -294,6 +294,18 @@ function DashboardContent() {
     );
   }
 
+  if (
+    currentRole === 'director' ||
+    currentRole === 'secretary'
+  ) {
+    return (
+      <Navigate
+        to="/admin?module=overview"
+        replace
+      />
+    );
+  }
+
   return <>{renderDashboard(currentRole)}</>;
 }
 

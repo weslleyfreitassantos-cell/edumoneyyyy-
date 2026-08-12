@@ -212,6 +212,14 @@ export function getSidebarNavigationItems({
   return baseNavigationItems
     .filter((item) => {
       if (
+        item.id === 'dashboard' &&
+        (currentUserRole === 'director' ||
+          currentUserRole === 'secretary')
+      ) {
+        return false;
+      }
+
+      if (
         item.roles &&
         !item.roles.includes(currentUserRole)
       ) {
