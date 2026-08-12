@@ -12,10 +12,6 @@
 
   "routes": [
     {
-      "pattern": "grupotec.dev.br",
-      "custom_domain": true
-    },
-    {
       "pattern": "*.grupotec.dev.br/*",
       "zone_name": "grupotec.dev.br"
     }
