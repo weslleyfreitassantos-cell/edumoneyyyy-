@@ -14,6 +14,7 @@ vi.mock('../lib/supabaseClient', () => ({
     functions: {
       invoke: vi.fn(),
     },
+    rpc: vi.fn(),
     from: vi.fn(() => queryBuilder),
   },
 }));
@@ -121,45 +122,32 @@ describe('accountService', () => {
     expect(response.statusChanged).toBe(true);
   });
 
-  it('atualiza somente o nome da instituicao usando id e account_id', async () => {
-    queryBuilder.single.mockResolvedValueOnce({
-      data: {
-        id: 'institution-1',
-        account_id: 'account-1',
-        name: 'Colegio Luz',
-      },
+  it('atualiza somente o nome da instituicao usando a RPC e o id', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValueOnce({
+      data: [{ id: 'institution-1', name: 'Colegio Luz' }],
       error: null,
+      count: null,
+      status: 200,
+      statusText: 'OK',
+      success: true,
     });
 
     const response =
       await accountService.updateInstitutionName({
-        accountId: 'account-1',
         institutionId: 'institution-1',
         name: '  Colegio Luz  ',
       });
 
-    expect(supabase.from).toHaveBeenCalledWith(
-      'institutions',
-    );
-    expect(queryBuilder.update).toHaveBeenCalledWith({
-      name: 'Colegio Luz',
-      updated_at: expect.any(String),
-    });
-    expect(queryBuilder.eq).toHaveBeenCalledWith(
-      'id',
-      'institution-1',
-    );
-    expect(queryBuilder.eq).toHaveBeenCalledWith(
-      'account_id',
-      'account-1',
-    );
-    expect(queryBuilder.select).toHaveBeenCalledWith(
-      'id, account_id, name',
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'update_admin_institution_name',
+      {
+        target_institution_id: 'institution-1',
+        new_name: 'Colegio Luz',
+      },
     );
     expect(response).toEqual({
       success: true,
       institutionId: 'institution-1',
-      accountId: 'account-1',
       name: 'Colegio Luz',
     });
   });
@@ -167,12 +155,12 @@ describe('accountService', () => {
   it('rejeita nome vazio antes de chamar o banco', async () => {
     await expect(
       accountService.updateInstitutionName({
-        accountId: 'account-1',
         institutionId: 'institution-1',
         name: '    ',
       }),
     ).rejects.toThrow(AccountServiceError);
 
     expect(supabase.from).not.toHaveBeenCalled();
+    expect(supabase.rpc).not.toHaveBeenCalled();
   });
 });

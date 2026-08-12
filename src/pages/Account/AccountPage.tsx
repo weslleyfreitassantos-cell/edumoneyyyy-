@@ -303,7 +303,6 @@ export default function AccountPage() {
 
     try {
       await updateInstitutionName.mutateAsync({
-        accountId: account.id,
         institutionId: editingInstitution.id,
         name: normalizedName,
       });

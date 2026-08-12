@@ -292,7 +292,6 @@ describe('account mutations', () => {
 
     mockedAccountService.updateInstitutionName.mockResolvedValue({
       success: true,
-      accountId: 'account-1',
       institutionId: 'institution-1',
       name: 'Colegio Sol',
     });
@@ -314,7 +313,6 @@ describe('account mutations', () => {
 
     await act(async () => {
       await result.current.mutateAsync({
-        accountId: 'account-1',
         institutionId: 'institution-1',
         name: 'Colegio Sol',
       });
@@ -323,7 +321,6 @@ describe('account mutations', () => {
     expect(
       mockedAccountService.updateInstitutionName,
     ).toHaveBeenCalledWith({
-      accountId: 'account-1',
       institutionId: 'institution-1',
       name: 'Colegio Sol',
     });
