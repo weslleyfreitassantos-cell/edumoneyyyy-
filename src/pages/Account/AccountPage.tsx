@@ -3,6 +3,7 @@ import {
   DoorOpen,
   Loader2,
   PauseCircle,
+  Pencil,
   PlayCircle,
   Plus,
   Trash2,
@@ -25,6 +26,7 @@ import {
   useCreateInstitution,
   useDeleteInstitution,
   useOwnedAccount,
+  useUpdateInstitutionName,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import {
@@ -51,6 +53,11 @@ const initialForm: InstitutionFormState = {
   phone: '',
   address: '',
 };
+
+interface InstitutionEditState {
+  id: string;
+  name: string;
+}
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
@@ -87,6 +94,8 @@ export default function AccountPage() {
   const navigate = useNavigate();
   const accountQuery = useOwnedAccount(profile?.id);
   const createInstitution = useCreateInstitution(profile?.id);
+  const updateInstitutionName =
+    useUpdateInstitutionName();
   const updateInstitutionStatus =
     useUpdateInstitutionStatus();
   const deleteInstitution = useDeleteInstitution();
@@ -105,8 +114,17 @@ export default function AccountPage() {
   const [feedback, setFeedback] = useState<
     { type: 'success' | 'error'; message: string } | null
   >(null);
+  const [editingInstitution, setEditingInstitution] =
+    useState<InstitutionEditState | null>(null);
+  const [editInstitutionName, setEditInstitutionName] =
+    useState('');
+  const [editInstitutionError, setEditInstitutionError] =
+    useState<string | null>(null);
+  const [editedInstitutionNames, setEditedInstitutionNames] =
+    useState<Record<string, string>>({});
 
   const account = accountQuery.data;
+  const canEditInstitutions = profile?.role === 'ADMIN';
   const usedLicenses =
     account?.institutions.length ?? 0;
   const limit = account?.institutionLimit ?? 0;
@@ -245,6 +263,70 @@ export default function AccountPage() {
             ? 'Esta instituição foi suspensa pela plataforma.'
             : message,
       });
+    }
+  }
+
+  function openEditInstitutionDialog(
+    institution: InstitutionEditState,
+  ): void {
+    setFeedback(null);
+    setEditInstitutionError(null);
+    setEditingInstitution(institution);
+    setEditInstitutionName(institution.name);
+  }
+
+  function closeEditInstitutionDialog(): void {
+    setEditingInstitution(null);
+    setEditInstitutionName('');
+    setEditInstitutionError(null);
+  }
+
+  async function handleEditInstitutionName(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+
+    if (!account || !editingInstitution) {
+      return;
+    }
+
+    const normalizedName = editInstitutionName.trim();
+
+    if (!normalizedName) {
+      setEditInstitutionError(
+        'Informe o nome da instituicao.',
+      );
+      return;
+    }
+
+    setEditInstitutionError(null);
+
+    try {
+      await updateInstitutionName.mutateAsync({
+        accountId: account.id,
+        institutionId: editingInstitution.id,
+        name: normalizedName,
+      });
+
+      setEditedInstitutionNames((current) => ({
+        ...current,
+        [editingInstitution.id]: normalizedName,
+      }));
+
+      if (
+        editingInstitution.id ===
+        institutionContext.currentInstitutionId
+      ) {
+        await institutionContext.refresh();
+      }
+
+      closeEditInstitutionDialog();
+      setFeedback({
+        type: 'success',
+        message: 'Nome da instituicao atualizado.',
+      });
+    } catch (error) {
+      setEditInstitutionError(getErrorMessage(error));
     }
   }
 
@@ -499,6 +581,9 @@ export default function AccountPage() {
                 const isCurrentInstitution =
                   institution.id ===
                   institutionContext.currentInstitutionId;
+                const institutionName =
+                  editedInstitutionNames[institution.id] ??
+                  institution.name;
 
                 return (
                 <div
@@ -513,7 +598,7 @@ export default function AccountPage() {
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
                         <p className="font-semibold text-[#181c20] dark:text-[#f8fafc]">
-                          {institution.name}
+                          {institutionName}
                         </p>
                         {isCurrentInstitution && (
                           <span className="rounded-full bg-[#dce8ff] px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#b7c8ff] dark:bg-[#0f2f63] dark:text-[#dbeafe] dark:ring-[#60a5fa]/40">
@@ -540,7 +625,7 @@ export default function AccountPage() {
                         aria-label={
                           isCurrentInstitution
                             ? 'Instituicao selecionada'
-                            : `Entrar em ${institution.name}`
+                            : `Entrar em ${institutionName}`
                         }
                         title={
                           isCurrentInstitution
@@ -556,6 +641,22 @@ export default function AccountPage() {
                             : 'Entrar'}
                         </span>
                       </button>
+                      {canEditInstitutions && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openEditInstitutionDialog({
+                              id: institution.id,
+                              name: institutionName,
+                            })
+                          }
+                          aria-label={`Editar instituicao ${institutionName}`}
+                          title="Editar instituicao"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-blue-300 text-blue-700 hover:bg-blue-50"
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </button>
+                      )}
                       <button
                         type="button"
                         disabled={
@@ -567,7 +668,7 @@ export default function AccountPage() {
                             institution.active === false,
                           )
                         }
-                        aria-label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institution.name}`}
+                        aria-label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institutionName}`}
                         title={
                           institution.active === false
                             ? 'Reativar'
@@ -587,10 +688,10 @@ export default function AccountPage() {
                         onClick={() =>
                           void handleDeleteInstitution(
                             institution.id,
-                            institution.name,
+                            institutionName,
                           )
                         }
-                        aria-label={`Excluir ${institution.name}`}
+                        aria-label={`Excluir ${institutionName}`}
                         title="Excluir"
                         className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-300 text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
                       >
@@ -605,6 +706,70 @@ export default function AccountPage() {
           )}
         </section>
       </div>
+
+      {editingInstitution && (
+        <div
+          role="presentation"
+          className="fixed inset-0 z-50 grid place-items-center bg-slate-950/50 p-4"
+        >
+          <form
+            onSubmit={(event) =>
+              void handleEditInstitutionName(event)
+            }
+            aria-label="Editar instituicao"
+            className="w-full max-w-md rounded-lg border border-[#dfe3e8] bg-white p-5 shadow-xl"
+          >
+            <div>
+              <h2 className="text-lg font-bold text-[#181c20]">
+                Editar instituicao
+              </h2>
+              <p className="mt-1 text-sm text-[#727785]">
+                Altere somente o nome exibido da escola.
+              </p>
+            </div>
+
+            {editInstitutionError && (
+              <div
+                role="alert"
+                className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+              >
+                {editInstitutionError}
+              </div>
+            )}
+
+            <label className="mt-4 block text-sm font-semibold text-[#414754]">
+              Nome da instituicao
+              <input
+                value={editInstitutionName}
+                onChange={(event) =>
+                  setEditInstitutionName(event.target.value)
+                }
+                className="mt-2 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+              />
+            </label>
+
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={closeEditInstitutionDialog}
+                className="rounded-lg border border-[#dfe3e8] px-4 py-2 text-sm font-semibold text-[#414754] hover:bg-slate-50"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={updateInstitutionName.isPending}
+                className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-not-allowed disabled:bg-gray-300"
+              >
+                {updateInstitutionName.isPending && (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                )}
+                Salvar alteracoes
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }

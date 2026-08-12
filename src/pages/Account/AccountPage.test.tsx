@@ -5,6 +5,7 @@ import {
   fireEvent,
   render,
   screen,
+  within,
   waitFor,
 } from '@testing-library/react';
 import {
@@ -25,6 +26,7 @@ import {
   useCreateInstitution,
   useDeleteInstitution,
   useOwnedAccount,
+  useUpdateInstitutionName,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import { AccountServiceError } from '../../services/accountService';
@@ -57,6 +59,7 @@ vi.mock('../../contexts/InstitutionContext', () => ({
 vi.mock('../../hooks/useAccounts', () => ({
   useOwnedAccount: vi.fn(),
   useCreateInstitution: vi.fn(),
+  useUpdateInstitutionName: vi.fn(),
   useUpdateInstitutionStatus: vi.fn(),
   useDeleteInstitution: vi.fn(),
 }));
@@ -88,6 +91,9 @@ const mockedUseOwnedAccount =
   vi.mocked(useOwnedAccount);
 const mockedUseCreateInstitution =
   vi.mocked(useCreateInstitution);
+const mockedUseUpdateInstitutionName = vi.mocked(
+  useUpdateInstitutionName,
+);
 const mockedUseUpdateInstitutionStatus = vi.mocked(
   useUpdateInstitutionStatus,
 );
@@ -96,6 +102,7 @@ const mockedUseDeleteInstitution = vi.mocked(
 );
 
 const createInstitution = vi.fn();
+const updateInstitutionName = vi.fn();
 const updateInstitutionStatus = vi.fn();
 const deleteInstitution = vi.fn();
 const setCurrentInstitutionId = vi.fn();
@@ -183,6 +190,19 @@ beforeEach(() => {
     isPending: false,
   } as unknown as ReturnType<
     typeof useCreateInstitution
+  >);
+
+  updateInstitutionName.mockResolvedValue({
+    success: true,
+    institutionId: 'institution-1',
+    accountId: 'account-1',
+    name: 'Colegio Sol',
+  });
+  mockedUseUpdateInstitutionName.mockReturnValue({
+    mutateAsync: updateInstitutionName,
+    isPending: false,
+  } as unknown as ReturnType<
+    typeof useUpdateInstitutionName
   >);
 
   updateInstitutionStatus.mockResolvedValue({
@@ -510,6 +530,384 @@ describe('AccountPage', () => {
         '/admin',
       );
     });
+  });
+
+  it('ADMIN edita o nome da instituicao usando o institution.id e preserva a selecao', async () => {
+    mockedUseInstitution.mockReturnValue({
+      institutions: [],
+      currentInstitution: {
+        id: 'institution-2',
+        name: 'Escola TV',
+        active: true,
+        account_id: 'account-1',
+      },
+      currentMembership: null,
+      currentInstitutionId: 'institution-2',
+      currentRole: 'ADMIN',
+      isLoading: false,
+      isSwitchingInstitution: false,
+      error: null,
+      hasMultipleInstitutions: true,
+      setCurrentInstitutionId,
+      clearCurrentInstitutionSelection,
+      refresh: vi.fn(async () => undefined),
+    });
+
+    mockedUseOwnedAccount.mockReturnValue({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 2,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: 'sol',
+          },
+          {
+            id: 'institution-2',
+            name: 'Escola TV',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: 'tv',
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    expect(
+      screen.getByRole('button', {
+        name: /Editar instituicao Escola Sol/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /Editar instituicao Escola TV/i,
+      }),
+    ).toBeTruthy();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Editar instituicao Escola TV/i,
+      }),
+    );
+
+    const editForm = screen.getByRole('form', {
+      name: /Editar instituicao/i,
+    });
+
+    expect(editForm).toBeTruthy();
+
+    const nameInput = within(editForm).getByLabelText(
+      /Nome da instituicao/i,
+    );
+
+    expect(nameInput).toHaveProperty('value', 'Escola TV');
+
+    fireEvent.change(nameInput, {
+      target: { value: '   Colegio TV   ' },
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Salvar alteracoes/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(updateInstitutionName).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        institutionId: 'institution-2',
+        name: 'Colegio TV',
+      });
+      expect(screen.getByText('Colegio TV')).toBeTruthy();
+      expect(
+        screen.getAllByText('Selecionada').length,
+      ).toBeGreaterThan(0);
+      expect(
+        screen.queryByRole('form', {
+          name: /Editar instituicao/i,
+        }),
+      ).toBeNull();
+    });
+
+    const savedPayload =
+      updateInstitutionName.mock.calls[0]?.[0];
+    expect(savedPayload).not.toHaveProperty('subdomain');
+    expect(savedPayload).not.toHaveProperty('active');
+    expect(savedPayload).not.toHaveProperty('account_id');
+  });
+
+  it('rejeita nome vazio sem chamar backend', async () => {
+    mockedUseOwnedAccount.mockReturnValueOnce({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Editar instituicao Escola Sol/i,
+      }),
+    );
+    const editForm = screen.getByRole('form', {
+      name: /Editar instituicao/i,
+    });
+    fireEvent.change(
+      within(editForm).getByLabelText(/Nome da instituicao/i),
+      { target: { value: '     ' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Salvar alteracoes/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Informe o nome da instituicao/i),
+      ).toBeTruthy();
+      expect(updateInstitutionName).not.toHaveBeenCalled();
+    });
+  });
+
+  it('mantem modal aberto quando o backend falha', async () => {
+    updateInstitutionName.mockRejectedValueOnce(
+      new Error('Falha ao atualizar.'),
+    );
+
+    mockedUseOwnedAccount.mockReturnValueOnce({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Editar instituicao Escola Sol/i,
+      }),
+    );
+    const editForm = screen.getByRole('form', {
+      name: /Editar instituicao/i,
+    });
+    fireEvent.change(
+      within(editForm).getByLabelText(/Nome da instituicao/i),
+      { target: { value: 'Colegio Sol' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Salvar alteracoes/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(/Falha ao atualizar/i),
+      ).toBeTruthy();
+      expect(
+        screen.getByRole('form', {
+          name: /Editar instituicao/i,
+        }),
+      ).toBeTruthy();
+    });
+  });
+
+  it('usa o id da instituicao clicada ao editar outra escola', async () => {
+    mockedUseOwnedAccount.mockReturnValueOnce({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 2,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+          {
+            id: 'institution-2',
+            name: 'Escola Luz',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Editar instituicao Escola Luz/i,
+      }),
+    );
+    const editForm = screen.getByRole('form', {
+      name: /Editar instituicao/i,
+    });
+    fireEvent.change(
+      within(editForm).getByLabelText(/Nome da instituicao/i),
+      { target: { value: 'Colegio Luz' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Salvar alteracoes/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(updateInstitutionName).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        institutionId: 'institution-2',
+        name: 'Colegio Luz',
+      });
+    });
+  });
+
+  it('nao mostra o controle de editar para outro papel', () => {
+    mockedUseAuth.mockReturnValueOnce({
+      user: null,
+      profile: {
+        id: 'profile-2',
+        full_name: 'Dina Diretora',
+        email: 'diretora@escola.com',
+        role: 'DIRECTOR',
+        platform_role: 'USER',
+        avatar_url: null,
+      },
+      loading: false,
+      signIn: vi.fn(async () => undefined),
+      signOut: vi.fn(async () => undefined),
+    });
+
+    mockedUseOwnedAccount.mockReturnValueOnce({
+      data: {
+        id: 'account-1',
+        name: 'Conta Sol',
+        status: 'ACTIVE',
+        institutionLimit: 3,
+        activeInstitutionCount: 1,
+        owner: {
+          id: 'profile-1',
+          full_name: 'Ana Admin',
+          email: 'ana@escola.com',
+          role: 'ADMIN',
+          platform_role: 'USER',
+          active: true,
+        },
+        institutions: [
+          {
+            id: 'institution-1',
+            name: 'Escola Sol',
+            active: true,
+            account_id: 'account-1',
+            logoUrl: null,
+            publicSlug: null,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useOwnedAccount>);
+
+    renderPage();
+
+    expect(
+      screen.queryByRole('button', {
+        name: /Editar instituicao/i,
+      }),
+    ).toBeNull();
   });
 
   it('seleciona a instituicao criada usando o id retornado antes de mostrar sucesso', async () => {
