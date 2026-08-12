@@ -288,6 +288,14 @@ export function getSidebarAdminModules({
     });
 
   return ADMIN_MODULES.filter((module) => {
+    if (
+      ['students', 'teachers', 'guardians'].includes(
+        module.id,
+      )
+    ) {
+      return false;
+    }
+
     if (profile.role === 'ADMIN' || currentUserRole === 'admin') {
       if (['attendance', 'grades', 'term-closing'].includes(module.id)) {
         return false;
