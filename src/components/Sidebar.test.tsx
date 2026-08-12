@@ -194,6 +194,11 @@ describe('Sidebar', () => {
         name: /pol.tica acad.mica/i,
       }),
     ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /dashboard/i,
+      }),
+    ).toBeNull();
   });
 
   it('nao mostra modulos sem permissao para SECRETARY', () => {
@@ -447,9 +452,7 @@ describe('sidebar navigation helpers', () => {
       pathname: '/admin',
     });
 
-    expect(items.map((item) => item.id)).toEqual([
-      'dashboard',
-    ]);
+    expect(items.map((item) => item.id)).toEqual([]);
     expect(
       modules.map((module) => module.id),
     ).toContain('enrollments');
