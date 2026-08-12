@@ -17,6 +17,7 @@ export const schoolUserKeys = {
 
 export function useSchoolUsers(
   institutionId: string,
+  enabled = true,
 ) {
   return useQuery<SchoolUserRow[]>({
     queryKey:
@@ -25,6 +26,6 @@ export function useSchoolUsers(
     queryFn: () =>
       schoolUserService.list(institutionId),
 
-    enabled: Boolean(institutionId),
+    enabled: Boolean(institutionId) && enabled,
   });
 }

@@ -23,15 +23,26 @@ export interface DeleteSchoolUserPayload {
   confirmation: 'EXCLUIR USUARIO';
 }
 
+export interface LinkGuardianPayload {
+  action: 'link_guardian';
+  institutionId: string;
+  guardianProfileId: string;
+  studentId: string;
+  relationship: string;
+  isPrimary: boolean;
+}
+
 export type ManageSchoolUserPayload =
   | UpdateSchoolUserPayload
-  | DeleteSchoolUserPayload;
+  | DeleteSchoolUserPayload
+  | LinkGuardianPayload;
 
 export interface ManageSchoolUserResponse {
   success: true;
-  action: 'update' | 'delete';
+  action: 'update' | 'delete' | 'link_guardian';
   membershipId: string;
   profileId: string;
+  guardianshipId?: string;
   authUserDeleted?: boolean;
   message: string;
 }

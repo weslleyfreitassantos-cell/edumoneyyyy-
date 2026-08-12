@@ -65,6 +65,14 @@ const requestSchema = z.discriminatedUnion("action", [
     membershipId: z.guid(),
     confirmation: z.literal("EXCLUIR USUARIO"),
   }).strict(),
+  z.object({
+    action: z.literal("link_guardian"),
+    institutionId: z.guid(),
+    guardianProfileId: z.guid(),
+    studentId: z.guid(),
+    relationship: z.string().trim().min(2).max(40),
+    isPrimary: z.boolean().default(false),
+  }).strict(),
 ]);
 
 type RequestData = z.infer<typeof requestSchema>;
@@ -137,6 +145,13 @@ function toPublicError(error: unknown): ManageSchoolUserError {
       message: "Seu acesso atual nao permite concluir esta acao.",
     });
   }
+  if (code === "23505") {
+    return new ManageSchoolUserError({
+      status: 409,
+      code: "GUARDIANSHIP_ALREADY_EXISTS",
+      message: "Este responsavel ja esta vinculado a este aluno.",
+    });
+  }
 
   return new ManageSchoolUserError({
     status: 500,
@@ -149,6 +164,7 @@ async function getAuthorizedContext(
   ctx: SupabaseFunctionContext,
   requesterId: string,
   institutionId: string,
+  options: { allowOperationalManager?: boolean } = {},
 ) {
   const { data: requester, error: requesterError } =
     await ctx.supabaseAdmin
@@ -214,7 +230,18 @@ async function getAuthorizedContext(
       membership.active === true && membership.role === "ADMIN",
   );
 
-  if (!isSuperAdmin && !isAccountOwner && !isLocalAdmin) {
+  const isOperationalManager = (memberships ?? []).some(
+    (membership) =>
+      membership.active === true &&
+      (membership.role === "DIRECTOR" || membership.role === "SECRETARY"),
+  );
+
+  if (
+    !isSuperAdmin &&
+    !isAccountOwner &&
+    !isLocalAdmin &&
+    !(options.allowOperationalManager && isOperationalManager)
+  ) {
     throw new ManageSchoolUserError({
       status: 403,
       code: "ADMIN_REQUIRED",
@@ -418,6 +445,152 @@ async function handleDelete(
   });
 }
 
+async function handleLinkGuardian(
+  ctx: SupabaseFunctionContext,
+  input: Extract<RequestData, { action: "link_guardian" }>,
+) {
+  const { data: guardianMembership, error: guardianMembershipError } =
+    await ctx.supabaseAdmin
+      .from("memberships")
+      .select("id, profile_id, role, active")
+      .eq("profile_id", input.guardianProfileId)
+      .eq("institution_id", input.institutionId)
+      .eq("role", "GUARDIAN")
+      .eq("active", true)
+      .maybeSingle();
+
+  if (guardianMembershipError) throw guardianMembershipError;
+  if (!guardianMembership) {
+    throw new ManageSchoolUserError({
+      status: 404,
+      code: "GUARDIAN_NOT_FOUND",
+      message: "Responsavel ativo nao encontrado nesta instituicao.",
+    });
+  }
+
+  const { data: guardianProfile, error: guardianProfileError } =
+    await ctx.supabaseAdmin
+      .from("profiles")
+      .select("id, active")
+      .eq("id", input.guardianProfileId)
+      .maybeSingle();
+
+  if (guardianProfileError) throw guardianProfileError;
+  if (!guardianProfile || guardianProfile.active !== true) {
+    throw new ManageSchoolUserError({
+      status: 404,
+      code: "GUARDIAN_NOT_FOUND",
+      message: "Responsavel ativo nao encontrado nesta instituicao.",
+    });
+  }
+
+  const { data: student, error: studentError } =
+    await ctx.supabaseAdmin
+      .from("students")
+      .select("id, institution_id, active")
+      .eq("id", input.studentId)
+      .maybeSingle();
+
+  if (studentError) throw studentError;
+  if (!student || student.institution_id !== input.institutionId) {
+    throw new ManageSchoolUserError({
+      status: 404,
+      code: "STUDENT_OUTSIDE_INSTITUTION",
+      message: "Aluno nao pertence a instituicao selecionada.",
+    });
+  }
+  if (student.active !== true) {
+    throw new ManageSchoolUserError({
+      status: 409,
+      code: "STUDENT_INACTIVE",
+      message: "Nao e possivel vincular responsavel a um aluno inativo.",
+    });
+  }
+
+  const { data: existingLinks, error: existingLinksError } =
+    await ctx.supabaseAdmin
+      .from("guardianships")
+      .select("id, active")
+      .eq("guardian_profile_id", input.guardianProfileId)
+      .eq("student_id", input.studentId)
+      .limit(10);
+
+  if (existingLinksError) throw existingLinksError;
+
+  const links = (existingLinks ?? []) as Array<{
+    id: string;
+    active: boolean | null;
+  }>;
+  const activeLink = links.find((link) => link.active === true);
+  if (activeLink) {
+    throw new ManageSchoolUserError({
+      status: 409,
+      code: "GUARDIANSHIP_ALREADY_EXISTS",
+      message: "Este responsavel ja esta vinculado a este aluno.",
+    });
+  }
+  if (links.length > 1) {
+    throw new ManageSchoolUserError({
+      status: 409,
+      code: "GUARDIANSHIP_DATA_CONFLICT",
+      message: "Nao foi possivel corrigir automaticamente os vinculos duplicados.",
+    });
+  }
+
+  if (input.isPrimary) {
+    const { error: clearPrimaryError } = await ctx.supabaseAdmin
+      .from("guardianships")
+      .update({ is_primary: false })
+      .eq("student_id", input.studentId)
+      .eq("active", true);
+
+    if (clearPrimaryError) throw clearPrimaryError;
+  }
+
+  let guardianshipId: string;
+  const existingInactiveLink = links[0];
+
+  if (existingInactiveLink) {
+    const { data: restoredLink, error: restoreError } = await ctx.supabaseAdmin
+      .from("guardianships")
+      .update({
+        relationship: input.relationship,
+        is_primary: input.isPrimary,
+        active: true,
+      })
+      .eq("id", existingInactiveLink.id)
+      .select("id")
+      .single();
+
+    if (restoreError || !restoredLink) throw restoreError ?? new Error("Nao foi possivel reativar o vinculo.");
+    guardianshipId = restoredLink.id;
+  } else {
+    const { data: createdLink, error: createError } = await ctx.supabaseAdmin
+      .from("guardianships")
+      .insert({
+        guardian_profile_id: input.guardianProfileId,
+        student_id: input.studentId,
+        relationship: input.relationship,
+        is_primary: input.isPrimary,
+        active: true,
+      })
+      .select("id")
+      .single();
+
+    if (createError || !createdLink) throw createError ?? new Error("Nao foi possivel criar o vinculo.");
+    guardianshipId = createdLink.id;
+  }
+
+  return jsonSuccess({
+    success: true,
+    action: "link_guardian",
+    membershipId: guardianMembership.id,
+    profileId: input.guardianProfileId,
+    guardianshipId,
+    message: "Responsavel vinculado ao aluno com sucesso.",
+  });
+}
+
 const authenticatedFetch = withSupabase<Database>(
   { auth: "user" },
   async (request, ctx) => {
@@ -473,11 +646,20 @@ const authenticatedFetch = withSupabase<Database>(
           });
         }
 
-        await getAuthorizedContext(ctx, user.id, input.institutionId);
+        await getAuthorizedContext(
+          ctx,
+          user.id,
+          input.institutionId,
+          { allowOperationalManager: input.action === "link_guardian" },
+        );
 
-        return input.action === "update"
-          ? await handleUpdate(ctx, user.id, input)
-          : await handleDelete(ctx, user.id, input);
+        if (input.action === "update") {
+          return await handleUpdate(ctx, user.id, input);
+        }
+        if (input.action === "delete") {
+          return await handleDelete(ctx, user.id, input);
+        }
+        return await handleLinkGuardian(ctx, input);
       } catch (error) {
         console.error("Erro ao gerenciar usuario escolar:", {
           error,
