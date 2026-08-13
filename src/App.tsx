@@ -119,6 +119,10 @@ const DirectorLoginBrandingPage = lazy(
     })),
 );
 
+const CamerasPage = lazy(
+  () => import('./pages/Cameras/CamerasPage'),
+);
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -332,6 +336,20 @@ export function DirectorLoginBrandingRoute() {
   return <DirectorLoginBrandingPage />;
 }
 
+function DirectorCamerasRoute() {
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return <PageLoading />;
+  }
+
+  if (currentRole !== 'DIRECTOR') {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <CamerasPage />;
+}
+
 function AppRoutes() {
   return (
     <Routes>
@@ -382,6 +400,17 @@ function AppRoutes() {
           <ProtectedRoute>
             <AppShell>
               <DirectorLoginBrandingRoute />
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/cameras"
+        element={
+          <ProtectedRoute>
+            <AppShell>
+              <DirectorCamerasRoute />
             </AppShell>
           </ProtectedRoute>
         }

@@ -65,6 +65,7 @@ export const SYSTEM_PERMISSIONS = [
   'view_own_classes',
   'view_own_student_data',
   'view_linked_students',
+  'view_live_cameras',
 ] as const;
 
 export type SystemPermission =
@@ -90,6 +91,7 @@ const DIRECTOR_PERMISSIONS = [
   'manage_assignments',
   'view_school_dashboard',
   'view_reports',
+  'view_live_cameras',
 ] as const satisfies readonly SystemPermission[];
 
 export const CURRENT_ROLE_PERMISSIONS = {

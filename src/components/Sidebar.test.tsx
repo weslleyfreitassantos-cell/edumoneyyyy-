@@ -474,4 +474,24 @@ describe('sidebar navigation helpers', () => {
       modules.map((module) => module.id),
     ).not.toContain('subjects');
   });
+
+  it('mostra cameras ao vivo somente para DIRECTOR', () => {
+    const directorItems = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentUserRole: 'director',
+      pathname: '/cameras',
+    });
+    expect(directorItems.map((item) => item.id)).toContain('cameras');
+
+    for (const role of ['ADMIN', 'SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN'] as const) {
+      const items = getSidebarNavigationItems({
+        profile: { ...baseProfile, role },
+        currentInstitutionRole: role,
+        currentUserRole: role === 'GUARDIAN' ? 'parent' : role.toLowerCase() as User['role'],
+        pathname: '/dashboard',
+      });
+      expect(items.map((item) => item.id)).not.toContain('cameras');
+    }
+  });
 });

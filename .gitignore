@@ -2,6 +2,11 @@ node_modules/
 build/
 dist/
 coverage/
+.camera-lab/
+scripts/cameras/.camera-lab/
+*.mp4
+*.mkv
+*.tsm
 .DS_Store
 *.log
 .env*

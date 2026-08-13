@@ -146,6 +146,13 @@ export function getRouteVisualContext(
     };
   }
 
+  if (normalizedPath.startsWith('/cameras')) {
+    return {
+      section: 'Instituição',
+      title: 'Câmeras ao vivo',
+    };
+  }
+
   if (normalizedPath.startsWith('/dashboard')) {
     if (role === 'super_admin') {
       return {
