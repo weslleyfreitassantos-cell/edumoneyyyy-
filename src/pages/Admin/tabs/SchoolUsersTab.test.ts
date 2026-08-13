@@ -3,6 +3,7 @@
 import { createElement } from 'react';
 import {
   cleanup,
+  fireEvent,
   render,
   screen,
 } from '@testing-library/react';
@@ -270,6 +271,34 @@ describe('SchoolUsersTab integration', () => {
         name: /Excluir Ana Admin/i,
       }),
     ).toBeTruthy();
+  });
+
+  it('envia a nova senha no payload da funcao depois da confirmacao na UI', () => {
+    const mutate = vi.fn();
+    mockedUseManageSchoolUser.mockReturnValue({
+      mutate,
+      isPending: false,
+    } as unknown as ReturnType<typeof useManageSchoolUser>);
+
+    render(createElement(SchoolUsersTab));
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /Editar Ana Admin/i }),
+    );
+    fireEvent.change(screen.getByLabelText('Nova senha'), {
+      target: { value: 'NovaSenha123' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar' }));
+
+    expect(mutate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        action: 'update',
+        institutionId: 'institution-1',
+        membershipId: 'membership-1',
+        password: 'NovaSenha123',
+      }),
+      expect.any(Object),
+    );
   });
 
 

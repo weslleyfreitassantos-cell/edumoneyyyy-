@@ -7,6 +7,11 @@ import {
   getUpdateAuthorizationDecision,
   type UpdateAuthorizationContext,
 } from "./authorization.ts";
+import {
+  redactAuthError,
+  updateAuthUserPassword,
+  type PasswordUpdateFailureCode,
+} from "./password-update.ts";
 
 type UserRole = Database["public"]["Enums"]["user_role"];
 type SupabaseFunctionContext = {
@@ -261,6 +266,17 @@ async function getAuthorizedContext(
   };
 }
 
+function toSafeErrorLog(error: unknown): Record<string, unknown> {
+  if (error instanceof ManageSchoolUserError) {
+    return {
+      status: error.status,
+      code: error.code,
+    };
+  }
+
+  return redactAuthError(error);
+}
+
 async function getTargetMembership(
   ctx: SupabaseFunctionContext,
   input: Pick<RequestData, "institutionId" | "membershipId">,
@@ -300,11 +316,18 @@ async function assertTargetCanBeManaged(
   const { data: targetProfile, error: profileError } =
     await ctx.supabaseAdmin
       .from("profiles")
-      .select("platform_role")
+      .select("id, platform_role")
       .eq("id", targetProfileId)
       .maybeSingle();
 
   if (profileError) throw profileError;
+  if (!targetProfile || targetProfile.id !== targetProfileId) {
+    throw new ManageSchoolUserError({
+      status: 404,
+      code: "TARGET_PROFILE_NOT_FOUND",
+      message: "Perfil do usuario nao encontrado.",
+    });
+  }
   if (targetProfile?.platform_role === "SUPER_ADMIN") {
     throw new ManageSchoolUserError({
       status: 403,
@@ -335,6 +358,7 @@ async function handleUpdate(
   requesterId: string,
   input: Extract<RequestData, { action: "update" }>,
   authorization: UpdateAuthorizationContext,
+  requestId: string,
 ) {
   const membership = await getTargetMembership(ctx, input);
   await assertTargetCanBeManaged(ctx, requesterId, membership.profile_id);
@@ -431,28 +455,69 @@ async function handleUpdate(
   }
 
   if (input.password) {
-    const { error } = await ctx.supabaseAdmin.auth.admin.updateUserById(
+    const passwordResult = await updateAuthUserPassword(
+      ctx.supabaseAdmin,
       membership.profile_id,
-      {
-        password: input.password,
-        email_confirm: true,
-      },
+      input.password,
     );
-    if (error) {
+
+    if (!passwordResult.ok) {
+      console.error("Falha ao atualizar senha escolar:", {
+        request_id: requestId,
+        target_auth_user_id: membership.profile_id,
+        failure_code: passwordResult.code,
+        ...passwordResult.diagnostic,
+      });
+
+      const publicErrorByCode: Record<PasswordUpdateFailureCode, ManageSchoolUserError> = {
+        AUTH_USER_LOOKUP_FAILED: new ManageSchoolUserError({
+          status: 502,
+          code: "AUTH_USER_LOOKUP_FAILED",
+          message: "Nao foi possivel validar o acesso deste usuario.",
+        }),
+        AUTH_USER_NOT_FOUND: new ManageSchoolUserError({
+          status: 409,
+          code: "AUTH_USER_NOT_FOUND",
+          message: "O usuario ainda nao possui uma conta de acesso valida.",
+        }),
+        AUTH_USER_ID_MISMATCH: new ManageSchoolUserError({
+          status: 409,
+          code: "AUTH_USER_ID_MISMATCH",
+          message: "Nao foi possivel confirmar a identidade do usuario.",
+        }),
+        PASSWORD_UPDATE_FAILED: new ManageSchoolUserError({
+          status: 422,
+          code: "PASSWORD_UPDATE_FAILED",
+          message: "Nao foi possivel definir a senha informada.",
+        }),
+        PASSWORD_UPDATE_RESPONSE_INVALID: new ManageSchoolUserError({
+          status: 502,
+          code: "PASSWORD_UPDATE_RESPONSE_INVALID",
+          message: "Nao foi possivel confirmar a alteracao da senha.",
+        }),
+      };
+
       throw new ManageSchoolUserError({
-        status: 422,
-        code: "PASSWORD_UPDATE_FAILED",
-        message: "Nao foi possivel definir a senha informada.",
+        status: publicErrorByCode[passwordResult.code].status,
+        code: publicErrorByCode[passwordResult.code].code,
+        message: publicErrorByCode[passwordResult.code].message,
       });
     }
   }
+
+  const passwordOnly =
+    input.password !== undefined &&
+    input.fullName === undefined &&
+    input.role === undefined;
 
   return jsonSuccess({
     success: true,
     action: "update",
     membershipId: membership.id,
     profileId: membership.profile_id,
-    message: "Usuario atualizado com sucesso.",
+    message: passwordOnly
+      ? "Senha redefinida com sucesso."
+      : "Usuario atualizado com sucesso.",
   });
 }
 
@@ -704,6 +769,7 @@ const authenticatedFetch = withSupabase<Database>(
       }
 
       const input = validation.data;
+      const requestId = crypto.randomUUID();
 
       try {
         const {
@@ -731,7 +797,13 @@ const authenticatedFetch = withSupabase<Database>(
         );
 
         if (input.action === "update") {
-          return await handleUpdate(ctx, user.id, input, authorization);
+          return await handleUpdate(
+            ctx,
+            user.id,
+            input,
+            authorization,
+            requestId,
+          );
         }
         if (input.action === "delete") {
           return await handleDelete(ctx, user.id, input);
@@ -739,7 +811,8 @@ const authenticatedFetch = withSupabase<Database>(
         return await handleLinkGuardian(ctx, input);
       } catch (error) {
         console.error("Erro ao gerenciar usuario escolar:", {
-          error,
+          request_id: requestId,
+          error: toSafeErrorLog(error),
         });
         return jsonError(toPublicError(error));
       }
