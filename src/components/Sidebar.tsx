@@ -9,6 +9,7 @@ import {
   Palette,
   School,
   ShieldCheck,
+  Video,
   UserCircle2,
   X,
 } from 'lucide-react';
@@ -41,6 +42,7 @@ import {
   hasAnyPermission,
   hasPermission,
 } from '../lib/permissions';
+import { mapDatabaseRole } from '../lib/roles';
 import type { User } from '../types';
 
 type NavigationSection =
@@ -136,6 +138,16 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     roles: ['director'],
     activePaths: ['/personalizar-login'],
   },
+  {
+    id: 'cameras',
+    label: 'Câmeras ao vivo',
+    path: '/cameras',
+    section: 'school',
+    icon: Video,
+    permissions: ['view_live_cameras'],
+    roles: ['director'],
+    activePaths: ['/cameras'],
+  },
 ];
 
 function getInitials(name: string): string {
@@ -208,6 +220,10 @@ export function getSidebarNavigationItems({
     });
   const isPlatformSuperAdmin =
     profile.platform_role === 'SUPER_ADMIN';
+  const effectiveNavigationRole =
+    isPlatformSuperAdmin
+      ? currentUserRole
+      : mapDatabaseRole(effectiveRole ?? '') ?? currentUserRole;
 
   return baseNavigationItems
     .filter((item) => {
@@ -221,7 +237,7 @@ export function getSidebarNavigationItems({
 
       if (
         item.roles &&
-        !item.roles.includes(currentUserRole)
+        !item.roles.includes(effectiveNavigationRole)
       ) {
         return false;
       }
