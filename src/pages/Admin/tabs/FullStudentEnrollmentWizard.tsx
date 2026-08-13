@@ -24,6 +24,7 @@ interface FullStudentEnrollmentWizardProps {
   classes: ClassRow[];
   onClose: () => void;
   onCompleted: () => void;
+  onUseExistingStudent: (studentId: string) => void;
 }
 
 const steps = [
@@ -47,6 +48,7 @@ const documentTypes = [
   'Carteira de vacinacao',
   'Laudo ou relatorio',
   'Foto 3x4',
+  'Outros',
 ];
 
 function emptyDocuments(): StudentDocumentDraft[] {
@@ -170,6 +172,7 @@ export default function FullStudentEnrollmentWizard({
   classes,
   onClose,
   onCompleted,
+  onUseExistingStudent,
 }: FullStudentEnrollmentWizardProps) {
   const activeYears = useMemo(
     () => years.filter((year) => year.active),
@@ -329,6 +332,9 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function continueAfterDuplicateCheck() {
+    if (!window.confirm('O cadastro pode ser do mesmo aluno. Deseja continuar criando um novo cadastro?')) {
+      return;
+    }
     setDuplicates([]);
     setError(null);
     setStep(1);
@@ -406,17 +412,24 @@ export default function FullStudentEnrollmentWizard({
     return (
       <div className="space-y-4">
         <p className="text-sm text-slate-600">Associe um ou mais responsaveis. O principal sera usado como contato prioritario.</p>
-        {draft.guardians.map((guardian, index) => (
-          <div key={`${index}-${guardian.profile_id}`} className="rounded-lg border border-slate-200 p-4">
-            <div className="mb-3 flex items-center justify-between gap-3"><strong className="text-sm text-slate-800">Responsavel {index + 1}</strong>{draft.guardians.length > 1 ? <button type="button" className="text-sm text-red-600" onClick={() => removeGuardian(index)}>Remover</button> : null}</div>
-            <div className="grid gap-3 md:grid-cols-2">
-              <Field label="Origem"><select className={inputClass} value={guardian.mode} onChange={(event) => updateGuardian(index, { mode: event.target.value as GuardianDraft['mode'], profile_id: '' })}><option value="existing">Responsavel ja cadastrado</option><option value="new">Novo responsavel</option></select></Field>
-              {guardian.mode === 'existing' ? <Field label="Responsavel"><select className={inputClass} value={guardian.profile_id} onChange={(event) => updateGuardian(index, { profile_id: event.target.value })}><option value="">Selecione</option>{guardians.map((user) => <option key={user.profile_id} value={user.profile_id}>{user.profile?.full_name ?? user.profile?.email}</option>)}</select></Field> : <><Field label="Nome completo *"><input className={inputClass} value={guardian.full_name} onChange={(event) => updateGuardian(index, { full_name: event.target.value })} /></Field><Field label="E-mail *"><input type="email" className={inputClass} value={guardian.email} onChange={(event) => updateGuardian(index, { email: event.target.value })} /></Field><Field label="Telefone"><input className={inputClass} value={guardian.phone} onChange={(event) => updateGuardian(index, { phone: event.target.value })} /></Field></>}
-              <Field label="Parentesco *"><input className={inputClass} value={guardian.relationship} onChange={(event) => updateGuardian(index, { relationship: event.target.value })} placeholder="Mae, pai, avo..." /></Field>
+        {draft.guardians.map((guardian, index) => {
+          const matchingGuardian = guardian.mode === 'new'
+            ? guardians.find((user) => user.profile?.email?.trim().toLowerCase() === guardian.email.trim().toLowerCase())
+            : undefined;
+
+          return (
+            <div key={`${index}-${guardian.profile_id}`} className="rounded-lg border border-slate-200 p-4">
+              <div className="mb-3 flex items-center justify-between gap-3"><strong className="text-sm text-slate-800">Responsavel {index + 1}</strong>{draft.guardians.length > 1 ? <button type="button" className="text-sm text-red-600" onClick={() => removeGuardian(index)}>Remover</button> : null}</div>
+              <div className="grid gap-3 md:grid-cols-2">
+                <Field label="Origem"><select className={inputClass} value={guardian.mode} onChange={(event) => updateGuardian(index, { mode: event.target.value as GuardianDraft['mode'], profile_id: '' })}><option value="existing">Responsavel ja cadastrado</option><option value="new">Novo responsavel</option></select></Field>
+                {guardian.mode === 'existing' ? <Field label="Responsavel"><select className={inputClass} value={guardian.profile_id} onChange={(event) => updateGuardian(index, { profile_id: event.target.value })}><option value="">Selecione</option>{guardians.map((user) => <option key={user.profile_id} value={user.profile_id}>{user.profile?.full_name ?? user.profile?.email}</option>)}</select></Field> : <><Field label="Nome completo *"><input className={inputClass} value={guardian.full_name} onChange={(event) => updateGuardian(index, { full_name: event.target.value })} /></Field><Field label="E-mail *"><input type="email" className={inputClass} value={guardian.email} onChange={(event) => updateGuardian(index, { email: event.target.value })} /></Field><Field label="Telefone"><input className={inputClass} value={guardian.phone} onChange={(event) => updateGuardian(index, { phone: event.target.value })} /></Field></>}
+                <Field label="Parentesco *"><input className={inputClass} value={guardian.relationship} onChange={(event) => updateGuardian(index, { relationship: event.target.value })} placeholder="Mae, pai, avo..." /></Field>
+              </div>
+              {matchingGuardian ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><p>Ja existe um responsavel com este e-mail: <strong>{matchingGuardian.profile?.full_name ?? matchingGuardian.profile?.email}</strong>.</p><button type="button" className="mt-2 rounded-lg border border-amber-700 px-3 py-2 font-semibold" onClick={() => updateGuardian(index, { mode: 'existing', profile_id: matchingGuardian.profile_id })}>Usar cadastro existente</button></div> : null}
+              <label className="mt-3 flex items-center gap-2 text-sm text-slate-700"><input type="radio" name="primary-guardian" checked={guardian.is_primary} onChange={() => setPrimaryGuardian(index)} /> Responsavel principal</label>
             </div>
-            <label className="mt-3 flex items-center gap-2 text-sm text-slate-700"><input type="radio" name="primary-guardian" checked={guardian.is_primary} onChange={() => setPrimaryGuardian(index)} /> Responsavel principal</label>
-          </div>
-        ))}
+          );
+        })}
         <button type="button" className="rounded-lg border border-blue-600 px-3 py-2 text-sm font-semibold text-blue-700" onClick={addGuardian}>+ Adicionar responsavel</button>
       </div>
     );
@@ -465,7 +478,7 @@ export default function FullStudentEnrollmentWizard({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label="Matricula completa de aluno">
       <div className="flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
         <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Novo aluno</p><h2 className="mt-1 text-xl font-bold text-slate-900">Matricula completa</h2><p className="mt-1 text-sm text-slate-600">Cadastro detalhado com vinculos, documentos e revisao antes de confirmar.</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700" onClick={onClose} aria-label="Fechar">X</button></div>
-        <div className="overflow-y-auto px-5 py-4"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-500'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><strong>Possiveis duplicidades</strong>{duplicates.map((candidate) => <p key={candidate.id} className="mt-1">{candidate.full_name} - matricula {candidate.registration_number} - {candidate.birth_date}</p>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
+        <div className="overflow-y-auto px-5 py-4"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-500'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><strong>Possiveis duplicidades</strong>{duplicates.map((candidate) => <div key={candidate.id} className="mt-2 rounded-lg border border-amber-300 bg-white/70 p-3"><p className="font-semibold">{candidate.full_name}</p><p className="mt-1">Matricula {candidate.registration_number} - {candidate.birth_date}</p><button type="button" className="mt-2 rounded-lg border border-blue-600 px-3 py-2 font-semibold text-blue-700" onClick={() => onUseExistingStudent(candidate.id)}>Usar este cadastro</button></div>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
         <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={step === 0 ? onClose : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates}>{isCheckingDuplicates ? 'Verificando...' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending}>{createMutation.isPending ? 'Salvando...' : 'Confirmar matricula'}</button>}</div></div>
       </div>
     </div>

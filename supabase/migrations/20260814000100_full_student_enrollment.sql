@@ -12,7 +12,6 @@ create table if not exists public.student_registration_details (
   birthplace text,
   birth_state text,
   sex text,
-  phone text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -208,14 +207,13 @@ begin
   insert into public.student_registration_details (
     student_id, institution_id, social_name, rg, rg_issuing_authority,
     rg_state, birth_certificate, nationality, birthplace, birth_state,
-    sex, phone, updated_at
+    sex, updated_at
   ) values (
     v_student_id, v_institution_id, nullif(p_payload->'identity'->>'social_name', ''),
     nullif(p_payload->'identity'->>'rg', ''), nullif(p_payload->'identity'->>'rg_issuing_authority', ''),
     nullif(p_payload->'identity'->>'rg_state', ''), nullif(p_payload->'identity'->>'birth_certificate', ''),
     nullif(p_payload->'identity'->>'nationality', ''), nullif(p_payload->'identity'->>'birthplace', ''),
-    nullif(p_payload->'identity'->>'birth_state', ''), nullif(p_payload->identity->>'sex', ''),
-    nullif(p_payload->identity->>'phone', ''), now()
+    nullif(p_payload->'identity'->>'birth_state', ''), nullif(p_payload->'identity'->>'sex', ''), now()
   )
   on conflict (student_id) do update set
     institution_id = excluded.institution_id,
@@ -228,7 +226,6 @@ begin
     birthplace = excluded.birthplace,
     birth_state = excluded.birth_state,
     sex = excluded.sex,
-    phone = excluded.phone,
     updated_at = now();
 
   insert into public.student_addresses (
@@ -366,9 +363,10 @@ begin
   end if;
 
   insert into public.enrollments (
-    student_id, class_id, academic_year_id, status, active
+    student_id, class_id, academic_year_id, status, enrolled_at, active
   ) values (
-    v_student_id, v_class_id, v_academic_year_id, 'ACTIVE', true
+    v_student_id, v_class_id, v_academic_year_id, 'ACTIVE',
+    coalesce(nullif(p_payload->>'enrolled_at', '')::timestamptz, now()), true
   ) returning id into v_enrollment_id;
 
   return jsonb_build_object(

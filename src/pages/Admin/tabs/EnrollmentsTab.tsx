@@ -445,7 +445,7 @@ export default function EnrollmentsTab() {
     setFeedbackMessage(null);
   }
 
-  function openCreateModal(): void {
+  function openCreateModal(existingStudentId = ''): void {
     resetMessages();
     setEditingEnrollment(null);
     setTransferEnrollment(null);
@@ -469,7 +469,7 @@ export default function EnrollmentsTab() {
       );
 
     setFormData({
-      student_id: '',
+      student_id: existingStudentId,
       academic_year_id:
         firstClass?.academic_year_id ??
         firstYear,
@@ -1820,6 +1820,10 @@ export default function EnrollmentsTab() {
           years={years}
           classes={classes}
           onClose={() => setIsFullWizardOpen(false)}
+          onUseExistingStudent={(studentId) => {
+            setIsFullWizardOpen(false);
+            openCreateModal(studentId);
+          }}
           onCompleted={() => {
             setIsFullWizardOpen(false);
             setFeedbackMessage(

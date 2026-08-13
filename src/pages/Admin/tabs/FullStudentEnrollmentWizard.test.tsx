@@ -21,6 +21,7 @@ import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 const mocks = vi.hoisted(() => ({
   create: vi.fn(),
   findDuplicates: vi.fn(),
+  useExisting: vi.fn(),
 }));
 
 vi.mock('../../../hooks/useSchoolUsers', () => ({
@@ -98,6 +99,7 @@ function renderWizard() {
       classes={classes}
       onClose={vi.fn()}
       onCompleted={vi.fn()}
+      onUseExistingStudent={mocks.useExisting}
     />,
   );
 }
@@ -110,6 +112,7 @@ describe('FullStudentEnrollmentWizard', () => {
   beforeEach(() => {
     mocks.create.mockReset();
     mocks.findDuplicates.mockReset();
+    mocks.useExisting.mockReset();
     mocks.findDuplicates.mockResolvedValue([]);
   });
 
@@ -140,6 +143,8 @@ describe('FullStudentEnrollmentWizard', () => {
     await waitFor(() => {
       expect(screen.getByText('Possiveis duplicidades')).toBeTruthy();
     });
+    fireEvent.click(screen.getByRole('button', { name: 'Usar este cadastro' }));
+    expect(mocks.useExisting).toHaveBeenCalledWith('student-1');
     expect(mocks.create).not.toHaveBeenCalled();
   });
 
