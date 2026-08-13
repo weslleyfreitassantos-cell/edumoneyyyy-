@@ -3,6 +3,10 @@ import { withSupabase } from "@supabase/server";
 import { z } from "zod";
 
 import type { Database } from "../_shared/database.types.ts";
+import {
+  getUpdateAuthorizationDecision,
+  type UpdateAuthorizationContext,
+} from "./authorization.ts";
 
 type UserRole = Database["public"]["Enums"]["user_role"];
 type SupabaseFunctionContext = {
@@ -330,30 +334,23 @@ async function handleUpdate(
   ctx: SupabaseFunctionContext,
   requesterId: string,
   input: Extract<RequestData, { action: "update" }>,
+  authorization: UpdateAuthorizationContext,
 ) {
   const membership = await getTargetMembership(ctx, input);
   await assertTargetCanBeManaged(ctx, requesterId, membership.profile_id);
 
-  if (membership.active !== true) {
-    throw new ManageSchoolUserError({
-      status: 403,
-      code: "TARGET_MEMBERSHIP_INACTIVE",
-      message: "Nao e possivel gerenciar uma membership inativa.",
-    });
-  }
+  const operationalManagerOnly =
+    authorization.isOperationalManager &&
+    !authorization.isSuperAdmin &&
+    !authorization.isAccountOwner &&
+    !authorization.isLocalAdmin;
+  let studentActive: boolean | null | undefined;
 
   if (
-    membership.role !== "STUDENT" &&
-    input.password !== undefined
+    operationalManagerOnly &&
+    input.password !== undefined &&
+    membership.role === "STUDENT"
   ) {
-    throw new ManageSchoolUserError({
-      status: 403,
-      code: "TARGET_ROLE_NOT_ALLOWED",
-      message: "Somente alunos podem ter a senha redefinida por esta tela.",
-    });
-  }
-
-  if (membership.role === "STUDENT" && input.password !== undefined) {
     const { data: student, error: studentError } = await ctx.supabaseAdmin
       .from("students")
       .select("id, active")
@@ -362,13 +359,45 @@ async function handleUpdate(
       .maybeSingle();
 
     if (studentError) throw studentError;
-    if (!student || student.active !== true) {
-      throw new ManageSchoolUserError({
+    studentActive = student?.active ?? null;
+  }
+
+  const authorizationDecision = getUpdateAuthorizationDecision(
+    authorization,
+    {
+      targetRole: membership.role,
+      targetMembershipActive: membership.active,
+      studentActive,
+      hasPassword: input.password !== undefined,
+      hasFullName: input.fullName !== undefined,
+      hasRole: input.role !== undefined,
+    },
+  );
+
+  if (!authorizationDecision.allowed) {
+    const errorByCode: Record<NonNullable<typeof authorizationDecision.code>, ManageSchoolUserError> = {
+      DIRECTOR_PASSWORD_ONLY: new ManageSchoolUserError({
+        status: 403,
+        code: "DIRECTOR_PASSWORD_ONLY",
+        message: "Este papel pode redefinir somente a senha do aluno.",
+      }),
+      TARGET_MEMBERSHIP_INACTIVE: new ManageSchoolUserError({
+        status: 403,
+        code: "TARGET_MEMBERSHIP_INACTIVE",
+        message: "Nao e possivel gerenciar uma membership inativa.",
+      }),
+      TARGET_ROLE_NOT_ALLOWED: new ManageSchoolUserError({
+        status: 403,
+        code: "TARGET_ROLE_NOT_ALLOWED",
+        message: "Somente alunos podem ter a senha redefinida por esta tela.",
+      }),
+      STUDENT_INACTIVE: new ManageSchoolUserError({
         status: 403,
         code: "STUDENT_INACTIVE",
         message: "Nao e possivel redefinir a senha de um aluno inativo.",
-      });
-    }
+      }),
+    };
+    throw errorByCode[authorizationDecision.code!];
   }
 
   if (!input.fullName && !input.role && !input.password) {
@@ -702,22 +731,7 @@ const authenticatedFetch = withSupabase<Database>(
         );
 
         if (input.action === "update") {
-          if (
-            authorization.isOperationalManager &&
-            !authorization.isSuperAdmin &&
-            !authorization.isAccountOwner &&
-            !authorization.isLocalAdmin &&
-            (input.password === undefined ||
-              input.fullName !== undefined ||
-              input.role !== undefined)
-          ) {
-            throw new ManageSchoolUserError({
-              status: 403,
-              code: "DIRECTOR_PASSWORD_ONLY",
-              message: "Este papel pode redefinir somente a senha do aluno.",
-            });
-          }
-          return await handleUpdate(ctx, user.id, input);
+          return await handleUpdate(ctx, user.id, input, authorization);
         }
         if (input.action === "delete") {
           return await handleDelete(ctx, user.id, input);

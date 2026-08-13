@@ -25,12 +25,9 @@ describe('manage-school-user', () => {
   });
 
   it('permite reset de senha por gestor operacional somente para STUDENT', () => {
-    expect(source).toContain('DIRECTOR_PASSWORD_ONLY');
-    expect(source).toContain('TARGET_ROLE_NOT_ALLOWED');
-    expect(source).toContain('TARGET_MEMBERSHIP_INACTIVE');
-    expect(source).toContain('STUDENT_INACTIVE');
+    expect(source).toContain('getUpdateAuthorizationDecision');
+    expect(source).toContain('authorization: UpdateAuthorizationContext');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
-    expect(source).toMatch(/membership\.role\s*!==\s*"STUDENT"/);
   });
 
   it('deletes auth users only after removing the final membership', () => {
