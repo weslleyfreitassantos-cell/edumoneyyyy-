@@ -19,6 +19,7 @@ import {
   useCreateEnrollment,
   useEnrollments,
   useTransferEnrollment,
+  useUpdateEnrollment,
   useUpdateEnrollmentStatus,
 } from '../../../hooks/useEnrollments';
 
@@ -29,6 +30,7 @@ import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 import {
   guardianLinkSchema,
   enrollmentSchema,
+  enrollmentUpdateSchema,
   enrollmentStatusUpdateSchema,
   enrollmentTransferSchema,
 } from '../../../schemas/adminSchemas';
@@ -43,6 +45,9 @@ interface EnrollmentDraft {
   student_id: string;
   academic_year_id: string;
   class_id: string;
+  guardian_profile_id: string;
+  guardian_relationship: string;
+  guardian_is_primary: boolean;
 }
 
 interface GuardianLinkDraft {
@@ -60,6 +65,9 @@ const emptyDraft: EnrollmentDraft = {
   student_id: '',
   academic_year_id: '',
   class_id: '',
+  guardian_profile_id: '',
+  guardian_relationship: '',
+  guardian_is_primary: false,
 };
 
 const emptyGuardianLinkDraft: GuardianLinkDraft = {
@@ -193,6 +201,9 @@ export default function EnrollmentsTab() {
   const statusMutation =
     useUpdateEnrollmentStatus();
 
+  const updateMutation =
+    useUpdateEnrollment();
+
   const manageSchoolUserMutation =
     useManageSchoolUser();
 
@@ -210,13 +221,16 @@ export default function EnrollmentsTab() {
   const [guardianLinkError, setGuardianLinkError] =
     useState<string | null>(null);
 
-  const schoolUsersQuery = useSchoolUsers(
-    institutionId,
-    isGuardianLinkModalOpen,
-  );
-
   const [isModalOpen, setIsModalOpen] =
     useState(false);
+
+  const [editingEnrollment, setEditingEnrollment] =
+    useState<EnrollmentRow | null>(null);
+
+  const schoolUsersQuery = useSchoolUsers(
+    institutionId,
+    isModalOpen || isGuardianLinkModalOpen,
+  );
 
   const [
     transferEnrollment,
@@ -363,8 +377,10 @@ export default function EnrollmentsTab() {
 
   const isSubmitting =
     createMutation.isPending ||
+    updateMutation.isPending ||
     transferMutation.isPending ||
-    statusMutation.isPending;
+    statusMutation.isPending ||
+    manageSchoolUserMutation.isPending;
 
   const columns: Column<EnrollmentRow>[] = [
     {
@@ -424,6 +440,7 @@ export default function EnrollmentsTab() {
 
   function openCreateModal(): void {
     resetMessages();
+    setEditingEnrollment(null);
     setTransferEnrollment(null);
     setTransferClassId('');
 
@@ -450,8 +467,28 @@ export default function EnrollmentsTab() {
         firstClass?.academic_year_id ??
         firstYear,
       class_id: firstClass?.id ?? '',
+      guardian_profile_id: '',
+      guardian_relationship: '',
+      guardian_is_primary: false,
     });
 
+    setIsModalOpen(true);
+  }
+
+  function openEditModal(
+    enrollment: EnrollmentRow,
+  ): void {
+    resetMessages();
+    setTransferEnrollment(null);
+    setEditingEnrollment(enrollment);
+    setFormData({
+      student_id: enrollment.student_id,
+      academic_year_id: enrollment.academic_year_id,
+      class_id: enrollment.class_id,
+      guardian_profile_id: '',
+      guardian_relationship: '',
+      guardian_is_primary: false,
+    });
     setIsModalOpen(true);
   }
 
@@ -466,6 +503,7 @@ export default function EnrollmentsTab() {
 
   function closeModal(): void {
     setIsModalOpen(false);
+    setEditingEnrollment(null);
     setTransferEnrollment(null);
     setTransferClassId('');
     setFormData({ ...emptyDraft });
@@ -477,6 +515,21 @@ export default function EnrollmentsTab() {
       return;
     }
 
+    setGuardianLinkDraft({
+      ...emptyGuardianLinkDraft,
+    });
+    setGuardianLinkError(null);
+    setIsGuardianLinkModalOpen(true);
+  }
+
+  function openGuardianLinkForEnrollment(
+    enrollment: EnrollmentRow,
+  ): void {
+    resetMessages();
+    setPendingGuardianLink({
+      student_id: enrollment.student_id,
+      student_name: enrollment.student_name,
+    });
     setGuardianLinkDraft({
       ...emptyGuardianLinkDraft,
     });
@@ -545,6 +598,39 @@ export default function EnrollmentsTab() {
       return;
     }
 
+    if (editingEnrollment) {
+      const editResult =
+        enrollmentUpdateSchema.safeParse({
+          academic_year_id:
+            formData.academic_year_id,
+          class_id: formData.class_id,
+        });
+
+      if (!editResult.success) {
+        setModalError(
+          editResult.error.issues[0]?.message ??
+            'Dados inválidos.',
+        );
+        return;
+      }
+
+      try {
+        await updateMutation.mutateAsync({
+          id: editingEnrollment.id,
+          institutionId,
+          data: editResult.data,
+        });
+        closeModal();
+        setFeedbackMessage(
+          'Matrícula atualizada com sucesso.',
+        );
+      } catch (error) {
+        setModalError(getErrorMessage(error));
+      }
+
+      return;
+    }
+
     const result = enrollmentSchema.safeParse({
       institution_id: institutionId,
       student_id: formData.student_id,
@@ -563,23 +649,91 @@ export default function EnrollmentsTab() {
       return;
     }
 
+    const guardianProfileId =
+      formData.guardian_profile_id.trim();
+
+    if (guardianProfileId) {
+      const guardianResult =
+        guardianLinkSchema.safeParse({
+          student_id: result.data.student_id,
+          relationship:
+            formData.guardian_relationship,
+          is_primary:
+            formData.guardian_is_primary,
+        });
+
+      if (!guardianResult.success) {
+        setModalError(
+          guardianResult.error.issues[0]?.message ??
+            'Informe os dados do responsável.',
+        );
+        return;
+      }
+    }
+
+    const studentName =
+      activeStudents.find(
+        (student) =>
+          student.id === result.data.student_id,
+      )?.profiles?.full_name ??
+      'Aluno matriculado';
+
+    let enrollmentCreated = false;
+
     try {
       await createMutation.mutateAsync(
         result.data,
       );
+      enrollmentCreated = true;
+
+      if (guardianProfileId) {
+        await manageSchoolUserMutation.mutateAsync({
+          action: 'link_guardian',
+          institutionId,
+          guardianProfileId,
+          studentId: result.data.student_id,
+          relationship:
+            formData.guardian_relationship.trim(),
+          isPrimary:
+            formData.guardian_is_primary,
+        });
+      }
 
       closeModal();
-      setPendingGuardianLink({
-        student_id: result.data.student_id,
-        student_name:
-          activeStudents.find(
-            (student) =>
-              student.id === result.data.student_id,
-          )?.profiles?.full_name ??
-          'Aluno matriculado',
-      });
-      setFeedbackMessage(null);
+      setPendingGuardianLink(
+        guardianProfileId
+          ? null
+          : {
+              student_id: result.data.student_id,
+              student_name: studentName,
+            },
+      );
+      setFeedbackMessage(
+        guardianProfileId
+          ? 'Matrícula e responsável vinculados com sucesso.'
+          : null,
+      );
     } catch (error) {
+      if (enrollmentCreated && guardianProfileId) {
+        closeModal();
+        setPendingGuardianLink({
+          student_id: result.data.student_id,
+          student_name: studentName,
+        });
+        setGuardianLinkDraft({
+          guardian_profile_id: guardianProfileId,
+          relationship:
+            formData.guardian_relationship,
+          is_primary:
+            formData.guardian_is_primary,
+        });
+        setGuardianLinkError(
+          `Matrícula criada, mas não foi possível vincular o responsável: ${getErrorMessage(error)}`,
+        );
+        setIsGuardianLinkModalOpen(true);
+        return;
+      }
+
       setModalError(
         getErrorMessage(error),
       );
@@ -920,16 +1074,35 @@ export default function EnrollmentsTab() {
         onAdd={openCreateModal}
         emptyMessage="Nenhuma matrícula encontrada para os filtros selecionados."
         renderActions={(enrollment) => {
+          const isLinking =
+            manageSchoolUserMutation.isPending &&
+            pendingGuardianLink?.student_id ===
+              enrollment.student_id;
           const isChanging =
-            isSubmitting &&
-            (statusMutation.variables?.id ===
-              enrollment.id ||
+            (statusMutation.isPending &&
+              statusMutation.variables?.id ===
+                enrollment.id) ||
+            (transferMutation.isPending &&
               transferMutation.variables?.data
                 .enrollment_id ===
-                enrollment.id);
+                enrollment.id) ||
+            isLinking;
 
           return (
             <div className="flex flex-wrap items-center gap-3">
+              {enrollment.active && (
+                <button
+                  type="button"
+                  disabled={isChanging}
+                  onClick={() =>
+                    openEditModal(enrollment)
+                  }
+                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                >
+                  Editar
+                </button>
+              )}
+
               {enrollment.active && (
                 <button
                   type="button"
@@ -942,6 +1115,21 @@ export default function EnrollmentsTab() {
                   className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
                 >
                   Transferir
+                </button>
+              )}
+
+              {enrollment.active && (
+                <button
+                  type="button"
+                  disabled={isChanging}
+                  onClick={() =>
+                    openGuardianLinkForEnrollment(
+                      enrollment,
+                    )
+                  }
+                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                >
+                  Vincular responsável
                 </button>
               )}
 
@@ -997,7 +1185,9 @@ export default function EnrollmentsTab() {
               id="enrollment-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
             >
-              Nova matrícula
+              {editingEnrollment
+                ? 'Editar matrícula'
+                : 'Nova matrícula'}
             </h3>
 
             <form
@@ -1036,6 +1226,10 @@ export default function EnrollmentsTab() {
                   }
                   className="mt-1 w-full rounded-lg border px-3 py-2"
                   required
+                  disabled={
+                    Boolean(editingEnrollment) ||
+                    isSubmitting
+                  }
                 >
                   <option value="">
                     Selecione
@@ -1137,11 +1331,114 @@ export default function EnrollmentsTab() {
                 </div>
               </div>
 
+              <fieldset className="rounded-lg border border-gray-200 p-3">
+                <legend className="px-1 text-sm font-medium text-gray-700">
+                  Responsável (opcional)
+                </legend>
+                <p className="mb-3 text-xs text-gray-500">
+                  Selecione um responsável já cadastrado para vincular ao aluno.
+                  Você também poderá fazer isso depois.
+                </p>
+                <label
+                  htmlFor="enrollment-guardian"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Responsável
+                </label>
+                <select
+                  id="enrollment-guardian"
+                  value={formData.guardian_profile_id}
+                  onChange={(event) =>
+                    setFormData((current) => ({
+                      ...current,
+                      guardian_profile_id:
+                        event.target.value,
+                    }))
+                  }
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                  disabled={
+                    schoolUsersQuery.isLoading ||
+                    isSubmitting
+                  }
+                >
+                  <option value="">
+                    {schoolUsersQuery.isLoading
+                      ? 'Carregando responsáveis...'
+                      : 'Nenhum agora'}
+                  </option>
+                  {activeGuardians.map((guardian) => (
+                    <option
+                      key={guardian.profile_id}
+                      value={guardian.profile_id}
+                    >
+                      {guardian.profile?.full_name ??
+                        guardian.profile?.email ??
+                        'Responsável'}
+                      {guardian.profile?.email
+                        ? ` (${guardian.profile.email})`
+                        : ''}
+                    </option>
+                  ))}
+                </select>
+
+                {formData.guardian_profile_id && (
+                  <>
+                    <label
+                      htmlFor="enrollment-guardian-relationship"
+                      className="mt-3 block text-sm font-medium text-gray-700"
+                    >
+                      Parentesco
+                    </label>
+                    <input
+                      id="enrollment-guardian-relationship"
+                      value={
+                        formData.guardian_relationship
+                      }
+                      onChange={(event) =>
+                        setFormData((current) => ({
+                          ...current,
+                          guardian_relationship:
+                            event.target.value,
+                        }))
+                      }
+                      className="mt-1 w-full rounded-lg border px-3 py-2"
+                      placeholder="Mãe, pai, avó, tutor..."
+                      required
+                      disabled={isSubmitting}
+                    />
+                    <label className="mt-3 flex items-center gap-2 text-sm text-gray-700">
+                      <input
+                        type="checkbox"
+                        checked={
+                          formData.guardian_is_primary
+                        }
+                        onChange={(event) =>
+                          setFormData((current) => ({
+                            ...current,
+                            guardian_is_primary:
+                              event.target.checked,
+                          }))
+                        }
+                        disabled={isSubmitting}
+                      />
+                      Responsável principal
+                    </label>
+                  </>
+                )}
+
+                {!schoolUsersQuery.isLoading &&
+                  activeGuardians.length === 0 && (
+                    <p className="mt-2 text-xs text-gray-500">
+                      Nenhum responsável ativo encontrado. Cadastre o responsável em Usuários da Escola primeiro.
+                    </p>
+                  )}
+              </fieldset>
+
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={closeModal}
-                  disabled={createMutation.isPending}
+                  disabled={isSubmitting}
                   className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
                 >
                   Cancelar
@@ -1149,12 +1446,14 @@ export default function EnrollmentsTab() {
 
                 <button
                   type="submit"
-                  disabled={createMutation.isPending}
+                  disabled={isSubmitting}
                   className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {createMutation.isPending
+                  {isSubmitting
                     ? 'Salvando...'
-                    : 'Salvar'}
+                    : editingEnrollment
+                      ? 'Salvar alterações'
+                      : 'Salvar'}
                 </button>
               </div>
             </form>

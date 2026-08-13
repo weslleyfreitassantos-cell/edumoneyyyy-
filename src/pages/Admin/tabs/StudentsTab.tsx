@@ -12,6 +12,9 @@ import {
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
+import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
+import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
+
 import {
   useCreateStudent,
   useSetStudentActive,
@@ -20,6 +23,7 @@ import {
 } from '../../../hooks/useStudents';
 
 import {
+  guardianLinkSchema,
   studentSchema,
   studentUpdateSchema,
 } from '../../../schemas/adminSchemas';
@@ -32,6 +36,18 @@ interface StudentDraft {
   birth_date: string;
   cpf: string;
 }
+
+interface GuardianLinkDraft {
+  guardian_profile_id: string;
+  relationship: string;
+  is_primary: boolean;
+}
+
+const emptyGuardianLinkDraft: GuardianLinkDraft = {
+  guardian_profile_id: '',
+  relationship: '',
+  is_primary: false,
+};
 
 const emptyDraft: StudentDraft = {
   full_name: '',
@@ -123,9 +139,109 @@ export default function StudentsTab() {
   const statusMutation =
     useSetStudentActive();
 
+  const manageSchoolUserMutation =
+    useManageSchoolUser();
+
+  const [guardianStudent, setGuardianStudent] =
+    useState<StudentRow | null>(null);
+
+  const [guardianLinkDraft, setGuardianLinkDraft] =
+    useState<GuardianLinkDraft>({
+      ...emptyGuardianLinkDraft,
+    });
+
+  const [guardianLinkError, setGuardianLinkError] =
+    useState<string | null>(null);
+
+  const schoolUsersQuery = useSchoolUsers(
+    institutionId,
+    Boolean(guardianStudent),
+  );
+
+  const activeGuardians =
+    (schoolUsersQuery.data ?? []).filter(
+      (user) =>
+        user.role === 'GUARDIAN' &&
+        user.active &&
+        user.profile?.active !== false,
+    );
+
   const isSubmitting =
     createMutation.isPending ||
     updateMutation.isPending;
+
+  function openGuardianLinkModal(
+    student: StudentRow,
+  ): void {
+    resetMessages();
+    setGuardianStudent(student);
+    setGuardianLinkDraft({
+      ...emptyGuardianLinkDraft,
+    });
+    setGuardianLinkError(null);
+  }
+
+  function closeGuardianLinkModal(): void {
+    setGuardianStudent(null);
+    setGuardianLinkDraft({
+      ...emptyGuardianLinkDraft,
+    });
+    setGuardianLinkError(null);
+  }
+
+  async function handleLinkGuardian(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+
+    if (!guardianStudent || !institutionId) {
+      return;
+    }
+
+    const result = guardianLinkSchema.safeParse({
+      student_id: guardianStudent.id,
+      relationship: guardianLinkDraft.relationship,
+      is_primary: guardianLinkDraft.is_primary,
+    });
+
+    if (!result.success) {
+      setGuardianLinkError(
+        result.error.issues[0]?.message ??
+          'Informe os dados do responsável.',
+      );
+      return;
+    }
+
+    if (!guardianLinkDraft.guardian_profile_id) {
+      setGuardianLinkError(
+        'Selecione um responsável ativo.',
+      );
+      return;
+    }
+
+    setGuardianLinkError(null);
+
+    try {
+      await manageSchoolUserMutation.mutateAsync({
+        action: 'link_guardian',
+        institutionId,
+        guardianProfileId:
+          guardianLinkDraft.guardian_profile_id,
+        studentId: guardianStudent.id,
+        relationship: result.data.relationship,
+        isPrimary: result.data.is_primary,
+      });
+
+      closeGuardianLinkModal();
+      setFeedbackMessage(
+        'Responsável vinculado ao aluno com sucesso.',
+      );
+    } catch (error) {
+      setGuardianLinkError(
+        getErrorMessage(error),
+      );
+    }
+  }
 
   const columns: Column<StudentRow>[] = [
     {
@@ -390,6 +506,19 @@ export default function StudentsTab() {
 
           return (
             <div className="flex items-center gap-3">
+              {student.active && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    openGuardianLinkModal(student)
+                  }
+                  disabled={manageSchoolUserMutation.isPending}
+                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                >
+                  Vincular responsável
+                </button>
+              )}
+
               <button
                 type="button"
                 onClick={() =>
@@ -627,6 +756,159 @@ export default function StudentsTab() {
                     : editingStudent
                       ? 'Salvar alterações'
                       : 'Cadastrar e enviar convite'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {guardianStudent && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="student-guardian-modal-title"
+        >
+          <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+            <h3
+              id="student-guardian-modal-title"
+              className="mb-1 text-lg font-bold text-[#181c20]"
+            >
+              Vincular responsável
+            </h3>
+            <p className="mb-4 text-sm text-[#727785]">
+              Aluno:{' '}
+              <strong>
+                {getStudentName(guardianStudent)}
+              </strong>
+            </p>
+
+            <form
+              onSubmit={(event) =>
+                void handleLinkGuardian(event)
+              }
+              className="space-y-4"
+            >
+              {guardianLinkError && (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+                >
+                  {guardianLinkError}
+                </div>
+              )}
+
+              <div>
+                <label
+                  htmlFor="student-guardian"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Responsável existente
+                </label>
+                <select
+                  id="student-guardian"
+                  value={guardianLinkDraft.guardian_profile_id}
+                  onChange={(event) =>
+                    setGuardianLinkDraft((current) => ({
+                      ...current,
+                      guardian_profile_id:
+                        event.target.value,
+                    }))
+                  }
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                  required
+                  disabled={
+                    schoolUsersQuery.isLoading ||
+                    manageSchoolUserMutation.isPending
+                  }
+                >
+                  <option value="">
+                    {schoolUsersQuery.isLoading
+                      ? 'Carregando responsáveis...'
+                      : 'Selecione'}
+                  </option>
+                  {activeGuardians.map((guardian) => (
+                    <option
+                      key={guardian.profile_id}
+                      value={guardian.profile_id}
+                    >
+                      {guardian.profile?.full_name ??
+                        guardian.profile?.email ??
+                        'Responsável'}
+                      {guardian.profile?.email
+                        ? ` (${guardian.profile.email})`
+                        : ''}
+                    </option>
+                  ))}
+                </select>
+                {!schoolUsersQuery.isLoading &&
+                  activeGuardians.length === 0 && (
+                    <p className="mt-1 text-xs text-gray-500">
+                      Nenhum responsável ativo encontrado. Cadastre-o em Usuários da Escola primeiro.
+                    </p>
+                  )}
+              </div>
+
+              <div>
+                <label
+                  htmlFor="student-guardian-relationship"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Parentesco
+                </label>
+                <input
+                  id="student-guardian-relationship"
+                  value={guardianLinkDraft.relationship}
+                  onChange={(event) =>
+                    setGuardianLinkDraft((current) => ({
+                      ...current,
+                      relationship: event.target.value,
+                    }))
+                  }
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                  placeholder="Mãe, pai, avó, tutor..."
+                  required
+                  disabled={manageSchoolUserMutation.isPending}
+                />
+              </div>
+
+              <label className="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  checked={guardianLinkDraft.is_primary}
+                  onChange={(event) =>
+                    setGuardianLinkDraft((current) => ({
+                      ...current,
+                      is_primary: event.target.checked,
+                    }))
+                  }
+                  disabled={manageSchoolUserMutation.isPending}
+                />
+                Responsável principal
+              </label>
+
+              <div className="flex justify-end gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={closeGuardianLinkModal}
+                  disabled={manageSchoolUserMutation.isPending}
+                  className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={
+                    manageSchoolUserMutation.isPending ||
+                    schoolUsersQuery.isLoading ||
+                    activeGuardians.length === 0
+                  }
+                  className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {manageSchoolUserMutation.isPending
+                    ? 'Vinculando...'
+                    : 'Vincular responsável'}
                 </button>
               </div>
             </form>

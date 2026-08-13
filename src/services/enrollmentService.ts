@@ -2,9 +2,11 @@ import { supabase } from '../lib/supabaseClient';
 
 import {
   enrollmentSchema,
+  enrollmentUpdateSchema,
   enrollmentStatusUpdateSchema,
   enrollmentTransferSchema,
   type EnrollmentFormData,
+  type EnrollmentUpdateData,
   type EnrollmentStatusUpdateData,
   type EnrollmentTransferData,
 } from '../schemas/adminSchemas';
@@ -759,6 +761,72 @@ export const enrollmentService = {
         .eq('id', current.id);
 
       throw insertError;
+    }
+  },
+
+  async update(
+    enrollmentId: string,
+    institutionId: string,
+    input: EnrollmentUpdateData,
+  ): Promise<void> {
+    const data =
+      enrollmentUpdateSchema.parse(input);
+
+    const current =
+      await getEnrollmentForInstitution(
+        enrollmentId,
+        institutionId,
+      );
+
+    if (!isActive(current.active)) {
+      throw new Error(
+        'Apenas matrículas ativas podem ser editadas.',
+      );
+    }
+
+    await assertStudentForInstitution(
+      current.student_id,
+      institutionId,
+    );
+
+    const targetClass =
+      await getClassForInstitution(
+        data.class_id,
+        institutionId,
+      );
+
+    if (
+      targetClass.academic_year_id !==
+      data.academic_year_id
+    ) {
+      throw new Error(
+        'A turma selecionada não pertence ao ano letivo informado.',
+      );
+    }
+
+    await assertNoActiveEnrollmentForYear(
+      current.student_id,
+      data.academic_year_id,
+      current.id,
+    );
+
+    await assertClassCapacityAvailable(
+      targetClass.id,
+      targetClass.capacity,
+      current.id,
+    );
+
+    const { error } = await supabase
+      .from('enrollments')
+      .update({
+        class_id: data.class_id,
+        academic_year_id:
+          data.academic_year_id,
+      })
+      .eq('id', current.id);
+
+    if (error) {
+      throw error;
     }
   },
 

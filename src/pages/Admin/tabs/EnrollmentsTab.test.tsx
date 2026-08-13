@@ -17,10 +17,13 @@ import {
 } from 'vitest';
 
 import EnrollmentsTab from './EnrollmentsTab';
+import type { EnrollmentRow } from '../../../services/enrollmentService';
 
 const mocks = vi.hoisted(() => ({
   createEnrollment: vi.fn(),
+  updateEnrollment: vi.fn(),
   manageSchoolUser: vi.fn(),
+  enrollments: [] as EnrollmentRow[],
 }));
 
 vi.mock('../../../contexts/AuthContext', () => ({
@@ -110,7 +113,7 @@ vi.mock('../../../hooks/useStudents', () => ({
 
 vi.mock('../../../hooks/useEnrollments', () => ({
   useEnrollments: () => ({
-    data: [],
+    data: mocks.enrollments,
     isLoading: false,
     isError: false,
     error: null,
@@ -121,6 +124,11 @@ vi.mock('../../../hooks/useEnrollments', () => ({
   }),
   useTransferEnrollment: () => ({
     mutateAsync: vi.fn(),
+    isPending: false,
+    variables: undefined,
+  }),
+  useUpdateEnrollment: () => ({
+    mutateAsync: mocks.updateEnrollment,
     isPending: false,
     variables: undefined,
   }),
@@ -225,6 +233,7 @@ function clickGuardianLinkButton(): void {
 
 describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
   beforeEach(() => {
+    mocks.enrollments = [];
     mocks.createEnrollment.mockResolvedValue({
       id: 'enrollment-1',
     });
@@ -241,6 +250,161 @@ describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
   afterEach(() => {
     cleanup();
     vi.clearAllMocks();
+  });
+
+  it('permite selecionar e vincular responsavel na mesma janela da matricula', async () => {
+    render(<EnrollmentsTab />);
+    openEnrollmentModal();
+
+    fireEvent.change(
+      screen.getByLabelText('Aluno'),
+      { target: { value: '00000000-0000-0000-0000-000000000004' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText('Responsável'),
+      { target: { value: '00000000-0000-0000-0000-000000000005' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText('Parentesco'),
+      { target: { value: 'Mãe' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Salvar' }),
+    );
+
+    await waitFor(() => {
+      expect(mocks.manageSchoolUser).toHaveBeenCalledWith({
+        action: 'link_guardian',
+        institutionId: '00000000-0000-0000-0000-000000000001',
+        guardianProfileId: '00000000-0000-0000-0000-000000000005',
+        studentId: '00000000-0000-0000-0000-000000000004',
+        relationship: 'Mãe',
+        isPrimary: false,
+      });
+    });
+    expect(
+      screen.getByText(
+        'Matrícula e responsável vinculados com sucesso.',
+      ),
+    ).toBeTruthy();
+  });
+
+  it('permite vincular responsavel em uma matricula ja existente', async () => {
+    mocks.enrollments = [
+      {
+        id: 'enrollment-existing',
+        student_id: '00000000-0000-0000-0000-000000000004',
+        class_id: '00000000-0000-0000-0000-000000000003',
+        academic_year_id: '00000000-0000-0000-0000-000000000002',
+        status: 'ACTIVE',
+        status_label: 'Ativa',
+        active: true,
+        student_name: 'Ieti',
+        student_registration_number: '20260001',
+        student_active: true,
+        class_name: 'Sala 1',
+        class_grade_level: '4º',
+        class_shift: 'Matutino',
+        class_capacity: 30,
+        class_active: true,
+        academic_year_name: '2026',
+        active_enrollments_in_class: 1,
+        has_capacity_available: true,
+      },
+    ];
+
+    render(<EnrollmentsTab />);
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Vincular responsável',
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText('Responsável existente'),
+      { target: { value: '00000000-0000-0000-0000-000000000005' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText('Parentesco'),
+      { target: { value: 'Pai' } },
+    );
+    fireEvent.click(
+      screen
+        .getByRole('dialog', {
+          name: 'Vincular responsável',
+        })
+        .querySelector('button[type="submit"]') as HTMLButtonElement,
+    );
+
+    await waitFor(() => {
+      expect(mocks.manageSchoolUser).toHaveBeenCalledWith({
+        action: 'link_guardian',
+        institutionId: '00000000-0000-0000-0000-000000000001',
+        guardianProfileId: '00000000-0000-0000-0000-000000000005',
+        studentId: '00000000-0000-0000-0000-000000000004',
+        relationship: 'Pai',
+        isPrimary: false,
+      });
+    });
+  });
+
+  it('permite editar o ano e a turma de uma matrícula ativa', async () => {
+    mocks.enrollments = [
+      {
+        id: 'enrollment-existing',
+        student_id: '00000000-0000-0000-0000-000000000004',
+        class_id: '00000000-0000-0000-0000-000000000003',
+        academic_year_id: '00000000-0000-0000-0000-000000000002',
+        status: 'ACTIVE',
+        status_label: 'Ativa',
+        active: true,
+        student_name: 'Ieti',
+        student_registration_number: '20260001',
+        student_active: true,
+        class_name: 'Sala 1',
+        class_grade_level: '4º',
+        class_shift: 'Matutino',
+        class_capacity: 30,
+        class_active: true,
+        academic_year_name: '2026',
+        active_enrollments_in_class: 1,
+        has_capacity_available: true,
+      },
+    ];
+    mocks.updateEnrollment.mockResolvedValueOnce(undefined);
+
+    render(<EnrollmentsTab />);
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Editar' }),
+    );
+
+    expect(
+      screen.getByRole('heading', {
+        name: 'Editar matrícula',
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByLabelText('Aluno'),
+    ).toHaveProperty('disabled', true);
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Salvar alterações',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(mocks.updateEnrollment).toHaveBeenCalledWith({
+        id: 'enrollment-existing',
+        institutionId:
+          '00000000-0000-0000-0000-000000000001',
+        data: {
+          academic_year_id:
+            '00000000-0000-0000-0000-000000000002',
+          class_id:
+            '00000000-0000-0000-0000-000000000003',
+        },
+      });
+    });
   });
 
   it('cria a matrícula sem inserir dados de responsável', async () => {

@@ -446,6 +446,18 @@ export const enrollmentSchema = z
     }
   });
 
+export const enrollmentUpdateSchema = z
+  .object({
+    class_id: z.guid(
+      'Turma é obrigatória',
+    ),
+
+    academic_year_id: z.guid(
+      'Ano letivo é obrigatório',
+    ),
+  })
+  .strict();
+
 export const enrollmentTransferSchema = z
   .object({
     enrollment_id: z.guid(
@@ -557,6 +569,9 @@ export type SubjectUpdateData =
 
 export type EnrollmentFormData =
   z.infer<typeof enrollmentSchema>;
+
+export type EnrollmentUpdateData =
+  z.infer<typeof enrollmentUpdateSchema>;
 
 export type EnrollmentTransferData =
   z.infer<
