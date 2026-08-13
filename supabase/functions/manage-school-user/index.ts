@@ -248,6 +248,13 @@ async function getAuthorizedContext(
       message: "Apenas administradores podem gerenciar usuarios da escola.",
     });
   }
+
+  return {
+    isSuperAdmin,
+    isAccountOwner,
+    isLocalAdmin,
+    isOperationalManager,
+  };
 }
 
 async function getTargetMembership(
@@ -326,6 +333,43 @@ async function handleUpdate(
 ) {
   const membership = await getTargetMembership(ctx, input);
   await assertTargetCanBeManaged(ctx, requesterId, membership.profile_id);
+
+  if (membership.active !== true) {
+    throw new ManageSchoolUserError({
+      status: 403,
+      code: "TARGET_MEMBERSHIP_INACTIVE",
+      message: "Nao e possivel gerenciar uma membership inativa.",
+    });
+  }
+
+  if (
+    membership.role !== "STUDENT" &&
+    input.password !== undefined
+  ) {
+    throw new ManageSchoolUserError({
+      status: 403,
+      code: "TARGET_ROLE_NOT_ALLOWED",
+      message: "Somente alunos podem ter a senha redefinida por esta tela.",
+    });
+  }
+
+  if (membership.role === "STUDENT" && input.password !== undefined) {
+    const { data: student, error: studentError } = await ctx.supabaseAdmin
+      .from("students")
+      .select("id, active")
+      .eq("profile_id", membership.profile_id)
+      .eq("institution_id", input.institutionId)
+      .maybeSingle();
+
+    if (studentError) throw studentError;
+    if (!student || student.active !== true) {
+      throw new ManageSchoolUserError({
+        status: 403,
+        code: "STUDENT_INACTIVE",
+        message: "Nao e possivel redefinir a senha de um aluno inativo.",
+      });
+    }
+  }
 
   if (!input.fullName && !input.role && !input.password) {
     throw new ManageSchoolUserError({
@@ -646,14 +690,33 @@ const authenticatedFetch = withSupabase<Database>(
           });
         }
 
-        await getAuthorizedContext(
+        const authorization = await getAuthorizedContext(
           ctx,
           user.id,
           input.institutionId,
-          { allowOperationalManager: input.action === "link_guardian" },
+          {
+            allowOperationalManager:
+              input.action === "link_guardian" ||
+              (input.action === "update" && input.password !== undefined),
+          },
         );
 
         if (input.action === "update") {
+          if (
+            authorization.isOperationalManager &&
+            !authorization.isSuperAdmin &&
+            !authorization.isAccountOwner &&
+            !authorization.isLocalAdmin &&
+            (input.password === undefined ||
+              input.fullName !== undefined ||
+              input.role !== undefined)
+          ) {
+            throw new ManageSchoolUserError({
+              status: 403,
+              code: "DIRECTOR_PASSWORD_ONLY",
+              message: "Este papel pode redefinir somente a senha do aluno.",
+            });
+          }
           return await handleUpdate(ctx, user.id, input);
         }
         if (input.action === "delete") {
