@@ -19,6 +19,7 @@ import {
   useCreateEnrollment,
   useEnrollments,
   useTransferEnrollment,
+  useUpdateEnrollment,
   useUpdateEnrollmentStatus,
 } from '../../../hooks/useEnrollments';
 
@@ -29,6 +30,7 @@ import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 import {
   guardianLinkSchema,
   enrollmentSchema,
+  enrollmentUpdateSchema,
   enrollmentStatusUpdateSchema,
   enrollmentTransferSchema,
 } from '../../../schemas/adminSchemas';
@@ -199,6 +201,9 @@ export default function EnrollmentsTab() {
   const statusMutation =
     useUpdateEnrollmentStatus();
 
+  const updateMutation =
+    useUpdateEnrollment();
+
   const manageSchoolUserMutation =
     useManageSchoolUser();
 
@@ -218,6 +223,9 @@ export default function EnrollmentsTab() {
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
+
+  const [editingEnrollment, setEditingEnrollment] =
+    useState<EnrollmentRow | null>(null);
 
   const schoolUsersQuery = useSchoolUsers(
     institutionId,
@@ -369,6 +377,7 @@ export default function EnrollmentsTab() {
 
   const isSubmitting =
     createMutation.isPending ||
+    updateMutation.isPending ||
     transferMutation.isPending ||
     statusMutation.isPending ||
     manageSchoolUserMutation.isPending;
@@ -431,6 +440,7 @@ export default function EnrollmentsTab() {
 
   function openCreateModal(): void {
     resetMessages();
+    setEditingEnrollment(null);
     setTransferEnrollment(null);
     setTransferClassId('');
 
@@ -465,6 +475,23 @@ export default function EnrollmentsTab() {
     setIsModalOpen(true);
   }
 
+  function openEditModal(
+    enrollment: EnrollmentRow,
+  ): void {
+    resetMessages();
+    setTransferEnrollment(null);
+    setEditingEnrollment(enrollment);
+    setFormData({
+      student_id: enrollment.student_id,
+      academic_year_id: enrollment.academic_year_id,
+      class_id: enrollment.class_id,
+      guardian_profile_id: '',
+      guardian_relationship: '',
+      guardian_is_primary: false,
+    });
+    setIsModalOpen(true);
+  }
+
   function openTransferModal(
     enrollment: EnrollmentRow,
   ): void {
@@ -476,6 +503,7 @@ export default function EnrollmentsTab() {
 
   function closeModal(): void {
     setIsModalOpen(false);
+    setEditingEnrollment(null);
     setTransferEnrollment(null);
     setTransferClassId('');
     setFormData({ ...emptyDraft });
@@ -567,6 +595,39 @@ export default function EnrollmentsTab() {
       setModalError(
         'A instituição não foi carregada.',
       );
+      return;
+    }
+
+    if (editingEnrollment) {
+      const editResult =
+        enrollmentUpdateSchema.safeParse({
+          academic_year_id:
+            formData.academic_year_id,
+          class_id: formData.class_id,
+        });
+
+      if (!editResult.success) {
+        setModalError(
+          editResult.error.issues[0]?.message ??
+            'Dados inválidos.',
+        );
+        return;
+      }
+
+      try {
+        await updateMutation.mutateAsync({
+          id: editingEnrollment.id,
+          institutionId,
+          data: editResult.data,
+        });
+        closeModal();
+        setFeedbackMessage(
+          'Matrícula atualizada com sucesso.',
+        );
+      } catch (error) {
+        setModalError(getErrorMessage(error));
+      }
+
       return;
     }
 
@@ -1034,6 +1095,19 @@ export default function EnrollmentsTab() {
                   type="button"
                   disabled={isChanging}
                   onClick={() =>
+                    openEditModal(enrollment)
+                  }
+                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                >
+                  Editar
+                </button>
+              )}
+
+              {enrollment.active && (
+                <button
+                  type="button"
+                  disabled={isChanging}
+                  onClick={() =>
                     openTransferModal(
                       enrollment,
                     )
@@ -1111,7 +1185,9 @@ export default function EnrollmentsTab() {
               id="enrollment-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
             >
-              Nova matrícula
+              {editingEnrollment
+                ? 'Editar matrícula'
+                : 'Nova matrícula'}
             </h3>
 
             <form
@@ -1150,6 +1226,10 @@ export default function EnrollmentsTab() {
                   }
                   className="mt-1 w-full rounded-lg border px-3 py-2"
                   required
+                  disabled={
+                    Boolean(editingEnrollment) ||
+                    isSubmitting
+                  }
                 >
                   <option value="">
                     Selecione
@@ -1369,9 +1449,11 @@ export default function EnrollmentsTab() {
                   disabled={isSubmitting}
                   className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {createMutation.isPending
+                  {isSubmitting
                     ? 'Salvando...'
-                    : 'Salvar'}
+                    : editingEnrollment
+                      ? 'Salvar alterações'
+                      : 'Salvar'}
                 </button>
               </div>
             </form>
