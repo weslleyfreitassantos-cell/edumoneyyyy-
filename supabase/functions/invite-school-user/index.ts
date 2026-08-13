@@ -80,6 +80,7 @@ const requestSchema = z.object({
   role: targetRoleSchema,
   fullName: z.string().trim().transform((value) => value.replace(/\s+/g, " ")).pipe(z.string().min(3, "Nome obrigatorio").max(120, "Nome muito longo")),
   email: z.string().trim().toLowerCase().email("E-mail invalido"),
+  phone: z.string().trim().max(40, "Telefone muito longo").optional(),
   student: studentPayloadSchema.optional(),
   guardian: guardianPayloadSchema.optional(),
 }).strict().superRefine((value, context) => {
@@ -131,6 +132,7 @@ function toFieldName(issuePath: PropertyKey[]): string {
   if (path === "institutionId") return "institutionId";
   if (path === "fullName") return "fullName";
   if (path === "email") return "email";
+  if (path === "phone") return "phone";
   if (path === "role") return "target";
   if (path.startsWith("student.birthDate")) return "birthDate";
   if (path.startsWith("student.cpf")) return "cpf";
@@ -563,7 +565,7 @@ export default {
       // EXECUTE PUBLIC SCHEMA INSERTS
       const { error: profileInsertError } = await ctx.supabaseAdmin
         .from("profiles")
-        .insert({ id: profileId, full_name: input.fullName, email: input.email, role: input.role, platform_role: "USER", avatar_url: null, active: true });
+        .insert({ id: profileId, full_name: input.fullName, email: input.email, phone: input.phone ?? null, role: input.role, platform_role: "USER", avatar_url: null, active: true });
       if (profileInsertError) throw profileInsertError;
 
       let studentResult: { id: string; registrationNumber: string; } | undefined;
