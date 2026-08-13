@@ -24,6 +24,12 @@ describe('manage-school-user', () => {
     expect(source).toContain('SUPER_ADMIN_PROTECTED');
   });
 
+  it('permite reset de senha por gestor operacional somente para STUDENT', () => {
+    expect(source).toContain('getUpdateAuthorizationDecision');
+    expect(source).toContain('authorization: UpdateAuthorizationContext');
+    expect(source).toContain('.eq("institution_id", input.institutionId)');
+  });
+
   it('deletes auth users only after removing the final membership', () => {
     expect(source).toContain('remainingMemberships');
     expect(source).toContain('authUserDeleted');
