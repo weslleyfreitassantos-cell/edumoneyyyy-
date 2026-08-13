@@ -9,6 +9,7 @@ import {
   type IdentityConflict,
 } from "../_shared/identity-protection.ts";
 import type { Database as GeneratedDatabase } from "../_shared/database.types.ts";
+import { buildInviteRedirectUrl } from "./invite-redirect.ts";
 
 type GeneratedPublicSchema = GeneratedDatabase["public"];
 type GeneratedTables = GeneratedPublicSchema["Tables"];
@@ -513,21 +514,17 @@ export default {
       const invitationSent = true;
       const reusedExistingUser = false;
 
-      let inviteRedirectUrl = getAppUrl() + '/auth/confirm';
-      if (activeInstitution.subdomain) {
-        try {
-          const appUrl = getAppUrl();
-          const urlObj = new URL(appUrl);
-          if (urlObj.hostname.endsWith('grupotec.dev.br')) {
-            urlObj.hostname = `${activeInstitution.subdomain}.grupotec.dev.br`;
-            inviteRedirectUrl = `${urlObj.origin}/auth/confirm`;
-          } else {
-            inviteRedirectUrl = `https://${activeInstitution.subdomain}.grupotec.dev.br/auth/confirm`;
-          }
-        } catch {
-          inviteRedirectUrl = `https://${activeInstitution.subdomain}.grupotec.dev.br/auth/confirm`;
-        }
-      }
+      const inviteRedirectUrl = buildInviteRedirectUrl(
+        getAppUrl(),
+        activeInstitution.subdomain,
+      );
+      const inviteRedirect = new URL(inviteRedirectUrl);
+      console.info("Redirect de convite calculado:", {
+        requestId,
+        institutionSubdomain: activeInstitution.subdomain ?? null,
+        inviteRedirectHost: inviteRedirect.host,
+        inviteRedirectPath: inviteRedirect.pathname,
+      });
 
       const { data: invitationData, error: invitationError } = await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
         input.email,

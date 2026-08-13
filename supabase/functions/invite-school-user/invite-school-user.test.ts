@@ -5,6 +5,10 @@ const source = readFileSync(
   new URL('./index.ts', import.meta.url),
   'utf8',
 );
+const redirectSource = readFileSync(
+  new URL('./invite-redirect.ts', import.meta.url),
+  'utf8',
+);
 
 describe('invite-school-user', () => {
   it('rejects missing APP_URL', () => {
@@ -20,7 +24,10 @@ describe('invite-school-user', () => {
 
   it('builds redirectTo from APP_URL + /auth/confirm', () => {
     expect(source).toContain('redirectTo');
-    expect(source).toContain('/auth/confirm');
+    expect(redirectSource).toContain('/auth/confirm');
+    expect(source).toContain('buildInviteRedirectUrl');
+    expect(source).toContain('inviteRedirectHost');
+    expect(source).toContain('inviteRedirectPath');
   });
 
   it('authorizes by account ownership or active membership role', () => {
