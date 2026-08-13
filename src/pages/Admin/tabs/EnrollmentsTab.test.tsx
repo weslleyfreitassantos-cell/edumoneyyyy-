@@ -192,10 +192,22 @@ vi.mock('../../../hooks/useSchoolUserManagement', () => ({
   }),
 }));
 
+vi.mock('../../../hooks/useFullStudentEnrollment', () => ({
+  useCreateFullStudentEnrollment: () => ({
+    mutateAsync: vi.fn(),
+    isPending: false,
+  }),
+}));
+
 function openEnrollmentModal(): void {
   fireEvent.click(
     screen.getByRole('button', {
       name: '+ Nova matrícula',
+    }),
+  );
+  fireEvent.click(
+    screen.getByRole('button', {
+      name: /Aluno ja cadastrado/,
     }),
   );
 }
@@ -250,6 +262,19 @@ describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
   afterEach(() => {
     cleanup();
     vi.clearAllMocks();
+  });
+
+  it('oferece a escolha entre aluno existente e aluno novo', () => {
+    render(<EnrollmentsTab />);
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Nova matr/,
+      }),
+    );
+
+    expect(screen.getByRole('button', { name: /Aluno ja cadastrado/ })).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /Aluno novo/ }));
+    expect(screen.getByRole('dialog', { name: 'Matricula completa de aluno' })).toBeTruthy();
   });
 
   it('permite selecionar e vincular responsavel na mesma janela da matricula', async () => {

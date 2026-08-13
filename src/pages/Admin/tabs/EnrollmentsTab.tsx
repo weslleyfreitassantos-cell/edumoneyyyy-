@@ -14,6 +14,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 
 import {
   useCreateEnrollment,
@@ -222,6 +223,12 @@ export default function EnrollmentsTab() {
     useState<string | null>(null);
 
   const [isModalOpen, setIsModalOpen] =
+    useState(false);
+
+  const [isEnrollmentStartOpen, setIsEnrollmentStartOpen] =
+    useState(false);
+
+  const [isFullWizardOpen, setIsFullWizardOpen] =
     useState(false);
 
   const [editingEnrollment, setEditingEnrollment] =
@@ -473,6 +480,17 @@ export default function EnrollmentsTab() {
     });
 
     setIsModalOpen(true);
+  }
+
+  function openEnrollmentStart(): void {
+    resetMessages();
+    setIsEnrollmentStartOpen(true);
+  }
+
+  function openFullWizard(): void {
+    resetMessages();
+    setIsEnrollmentStartOpen(false);
+    setIsFullWizardOpen(true);
   }
 
   function openEditModal(
@@ -1071,7 +1089,7 @@ export default function EnrollmentsTab() {
           classesQuery.isLoading ||
           yearsQuery.isLoading
         }
-        onAdd={openCreateModal}
+        onAdd={openEnrollmentStart}
         emptyMessage="Nenhuma matrícula encontrada para os filtros selecionados."
         renderActions={(enrollment) => {
           const isLinking =
@@ -1172,6 +1190,77 @@ export default function EnrollmentsTab() {
           );
         }}
       />
+
+      {isEnrollmentStartOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="enrollment-start-title"
+        >
+          <div className="w-full max-w-2xl rounded-xl bg-white p-6 shadow-xl">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3
+                  id="enrollment-start-title"
+                  className="text-lg font-bold text-[#181c20]"
+                >
+                  Como deseja iniciar a matricula?
+                </h3>
+                <p className="mt-1 text-sm text-[#727785]">
+                  Escolha o caminho que corresponde ao cadastro do aluno.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsEnrollmentStartOpen(false)}
+                className="rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#727785]"
+                aria-label="Fechar"
+              >
+                X
+              </button>
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEnrollmentStartOpen(false);
+                  openCreateModal();
+                }}
+                className="rounded-xl border border-[#dfe3e8] p-5 text-left transition hover:border-[#005bbf] hover:bg-blue-50"
+              >
+                <strong className="block text-base text-[#181c20]">
+                  Aluno ja cadastrado
+                </strong>
+                <span className="mt-2 block text-sm text-[#727785]">
+                  Use a matricula rapida e associe um responsavel existente, se necessario.
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={openFullWizard}
+                className="rounded-xl border border-blue-200 bg-blue-50 p-5 text-left transition hover:border-[#005bbf]"
+              >
+                <strong className="block text-base text-[#181c20]">
+                  Aluno novo
+                </strong>
+                <span className="mt-2 block text-sm text-[#727785]">
+                  Preencha o cadastro completo, responsaveis, documentos e dados escolares.
+                </span>
+              </button>
+            </div>
+            <div className="mt-5 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setIsEnrollmentStartOpen(false)}
+                className="rounded-lg border border-[#dfe3e8] px-4 py-2 text-sm font-medium text-[#727785]"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {isModalOpen && (
         <div
@@ -1723,6 +1812,21 @@ export default function EnrollmentsTab() {
             </form>
           </div>
         </div>
+      )}
+
+      {isFullWizardOpen && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={years}
+          classes={classes}
+          onClose={() => setIsFullWizardOpen(false)}
+          onCompleted={() => {
+            setIsFullWizardOpen(false);
+            setFeedbackMessage(
+              'Cadastro completo e matricula realizados com sucesso.',
+            );
+          }}
+        />
       )}
     </div>
   );

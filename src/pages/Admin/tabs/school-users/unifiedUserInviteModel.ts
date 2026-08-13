@@ -132,6 +132,7 @@ export interface UnifiedUserInvitePayload {
   role: UnifiedUserInviteRole;
   fullName: string;
   email: string;
+  phone?: string;
   student?: {
     birthDate: string;
     cpf?: string;
