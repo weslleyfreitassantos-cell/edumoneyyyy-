@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const sql = readFileSync(resolve(process.cwd(), 'supabase/migrations/20260814000100_camera_gateway_runtime.sql'), 'utf8');
+const sql = readFileSync(resolve(process.cwd(), 'supabase/migrations/20260814000200_camera_gateway_runtime.sql'), 'utf8');
 
 describe('camera gateway runtime migration', () => {
   it('cria sessao temporaria e expira em 180 segundos', () => {
