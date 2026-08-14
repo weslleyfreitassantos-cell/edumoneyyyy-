@@ -8,10 +8,17 @@ describe('cameraValidation', () => {
     expect(isSafeCameraHost('nvr.escola.local')).toBe(true);
   });
 
-  it('rejeita URLs, loopback e endpoint de metadata', () => {
+  it('aceita hosts locais e rejeita URLs e endpoints inseguros', () => {
     expect(isSafeCameraHost('rtsp://192.168.1.50/live')).toBe(false);
-    expect(isSafeCameraHost('127.0.0.1')).toBe(false);
+    expect(isSafeCameraHost('127.0.0.1')).toBe(true);
+    expect(isSafeCameraHost('localhost')).toBe(true);
+    expect(isSafeCameraHost('::1')).toBe(true);
     expect(isSafeCameraHost('169.254.169.254')).toBe(false);
+    expect(isSafeCameraHost('0.0.0.0')).toBe(false);
+  });
+
+  it('permite cadastrar câmera no host local do gateway', () => {
+    expect(validateCameraInput({ name: 'Entrada', host: '127.0.0.1', port: 8554, deviceType: 'IP_CAMERA', channel: null })).toBeNull();
   });
 
   it('exige canal quando o dispositivo é NVR', () => {

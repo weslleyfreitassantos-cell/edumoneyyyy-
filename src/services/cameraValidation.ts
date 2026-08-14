@@ -14,8 +14,7 @@ export function isSafeCameraHost(host: string): boolean {
 
   const normalized = value.toLowerCase();
   if (
-    ['localhost', '::1', '::', '0.0.0.0'].includes(normalized) ||
-    /(^|\.)127\./.test(normalized) ||
+    ['::', '0.0.0.0'].includes(normalized) ||
     /(^|\.)169\.254\./.test(normalized)
   ) {
     return false;
