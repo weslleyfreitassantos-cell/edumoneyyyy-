@@ -41,11 +41,15 @@ describe("school access helpers", () => {
       password: "A1!strong-password",
     });
 
-    expect(email.subject).toContain("Escola <Luz>");
+    expect(email.subject).toBe("Seu acesso está pronto | Escola <Luz>");
     expect(email.html).toContain("&lt;Maria&gt;");
     expect(email.html).toContain("A1!strong-password");
     expect(email.html).toContain("Responsável");
     expect(email.html).toContain("https://escola-luz.grupotec.dev.br/login");
+    expect(email.html).toContain("Seja bem-vindo(a)!");
+    expect(email.html).toContain("Senha de acesso");
+    expect(email.html).toContain("Acessar meu ambiente");
+    expect(email.html).toContain(">Escola &lt;Luz&gt;</p>");
     expect(email.html).not.toContain("generated_password");
   });
 
@@ -58,9 +62,40 @@ describe("school access helpers", () => {
       loginUrl: "https://escola-luz.grupotec.dev.br/login",
     });
 
+    expect(email.subject).toBe("Novo acesso disponível | Escola Luz");
+    expect(email.html).toContain("Seja bem-vindo(a)!");
     expect(email.html).toContain("senha atual");
     expect(email.html).not.toContain("Senha de acesso");
+    expect(email.html).not.toContain("A1!strong-password");
     expect(getSchoolAccessRoleLabel("TEACHER")).toBe("Professor(a)");
+  });
+
+  it.each([
+    "SESI",
+    "Escola Luz",
+    "Colégio São José",
+    "Objetivo",
+  ])("keeps the institution name isolated for %s", (institutionName) => {
+    const email = buildSchoolAccessEmail({
+      recipientName: "Samuel",
+      recipientEmail: "samuel@example.com",
+      institutionName,
+      role: "TEACHER",
+      loginUrl: "https://sesi.grupotec.dev.br/login",
+      password: "A1!strong-password",
+    });
+
+    const buttonIndex = email.html.indexOf("Acessar meu ambiente");
+    const institutionIndex = email.html.indexOf(`>${institutionName}</p>`);
+
+    expect(email.html).toContain("Seja bem-vindo(a)!");
+    expect(email.html).toContain(institutionName);
+    expect(buttonIndex).toBeGreaterThanOrEqual(0);
+    expect(institutionIndex).toBeGreaterThan(buttonIndex);
+    expect(email.html).not.toContain(`Acessar ${institutionName}`);
+    expect(email.html).not.toContain(`Seu acesso à ${institutionName}`);
+    expect(email.html).not.toContain(`Seu acesso ao ${institutionName}`);
+    expect(email.html).not.toContain(`Seu acesso a ${institutionName}`);
   });
 
   it.each([

@@ -196,8 +196,8 @@ export function buildSchoolAccessEmail({
   const safeLoginUrl = escapeHtml(loginUrl);
   const hasPassword = typeof password === "string" && password.length > 0;
   const subject = hasPassword
-    ? `Seu acesso à ${safeDisplayName} está pronto`
-    : `Novo acesso adicionado à ${safeDisplayName}`;
+    ? `Seu acesso está pronto | ${safeDisplayName}`
+    : `Novo acesso disponível | ${safeDisplayName}`;
   const credentialBlock = hasPassword
     ? `
       <tr>
@@ -228,14 +228,16 @@ export function buildSchoolAccessEmail({
           <tr><td align="center" style="padding:24px;background:${safePrimaryColor};">${logoBlock}</td></tr>
           <tr><td style="padding:32px 28px;">
             <p style="margin:0 0 12px;font-size:16px;line-height:24px;">Olá, ${escapeHtml(recipientName)}.</p>
-            <h1 style="margin:0 0 12px;font-size:24px;line-height:32px;color:${safePrimaryColor};">Seu acesso à ${escapeHtml(safeDisplayName)} está pronto.</h1>
+            <h1 style="margin:0 0 12px;font-size:24px;line-height:32px;color:${safePrimaryColor};">Seja bem-vindo(a)!</h1>
+            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Seu acesso ao ambiente digital está pronto.</p>
             <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Seu perfil é <strong>${escapeHtml(getSchoolAccessRoleLabel(role))}</strong>.</p>
             <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
               <tr><td style="padding:0 0 4px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;">Usuário</td></tr>
               <tr><td style="padding:0 0 12px;color:#0f172a;font-size:16px;font-weight:700;">${escapeHtml(recipientEmail)}</td></tr>
               ${credentialBlock}
             </table>
-            <p style="margin:24px 0;text-align:center;"><a href="${safeLoginUrl}" style="display:inline-block;padding:13px 22px;background:${safeSecondaryColor};color:#0f172a;text-decoration:none;font-weight:700;border-radius:8px;">Acessar ${escapeHtml(safeDisplayName)}</a></p>
+            <p style="margin:24px 0 12px;text-align:center;"><a href="${safeLoginUrl}" style="display:inline-block;padding:13px 22px;background:${safeSecondaryColor};color:#0f172a;text-decoration:none;font-weight:700;border-radius:8px;">Acessar meu ambiente</a></p>
+            <p style="margin:0 0 24px;text-align:center;font-size:17px;line-height:1.5;font-weight:700;color:#123d8d;">${escapeHtml(safeDisplayName)}</p>
             <p style="margin:0 0 12px;font-size:13px;line-height:20px;color:#475569;word-break:break-all;">${safeLoginUrl}</p>
             <p style="margin:0;font-size:13px;line-height:20px;color:#64748b;">${passwordRecommendation}</p>
             <p style="margin:10px 0 0;font-size:13px;line-height:20px;color:#64748b;">Não compartilhe sua senha com outras pessoas.</p>
