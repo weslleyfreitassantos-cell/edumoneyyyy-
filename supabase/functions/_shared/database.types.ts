@@ -883,9 +883,81 @@ export type Database = {
         Args: { target_institution_id: string }
         Returns: string
       }
+      accept_camera_gateway_request: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: boolean
+      }
       is_institution_admin: {
         Args: { target_institution_id: string }
         Returns: boolean
+      }
+      pair_camera_gateway_runtime: {
+        Args: { gateway_local_url: string; target_pairing_code: string }
+        Returns: {
+          gateway_id: string
+          institution_id: string
+          gateway_token: string
+          local_base_url: string | null
+          paired_at: string
+        }[]
+      }
+      heartbeat_camera_gateway_runtime: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: boolean
+      }
+      sync_camera_gateway_runtime: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: {
+          id: string
+          institution_id: string
+          name: string
+          host: string
+          port: number
+          protocol: "ONVIF" | "RTSP"
+          channel: number | null
+          stream_profile: "MAIN" | "SUB"
+          active: boolean
+        }[]
+      }
+      create_camera_stream_session: {
+        Args: { target_camera_id: string }
+        Returns: {
+          session_id: string
+          protocol: string
+          playback_url: string | null
+          expires_at: string
+        }[]
+      }
+      redeem_camera_stream_session: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_session_id: string
+          target_session_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: {
+          camera_id: string
+          institution_id: string
+          stream_path: string
+          expires_at: string
+        }[]
       }
     }
     Enums: {

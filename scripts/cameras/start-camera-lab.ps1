@@ -4,6 +4,7 @@ param(
   [string]$Mode = 'testpattern',
   [string]$InputPath,
   [int]$WebcamIndex = 0,
+  [string]$WebcamName,
   [string]$StreamName = 'camera-1',
   [int]$RtspPort = 8554
 )
@@ -48,7 +49,22 @@ switch ($Mode) {
     if (-not $InputPath -or -not (Test-Path -LiteralPath $InputPath)) { throw 'Informe -InputPath para o modo file.' }
     $args = @('-hide_banner', '-loglevel', 'warning', '-stream_loop', '-1', '-re', '-i', $InputPath, '-an')
   }
-  'webcam' { $args = @('-hide_banner', '-loglevel', 'warning', '-f', 'dshow', '-i', "video=$WebcamIndex", '-an') }
+  'webcam' {
+    if ([string]::IsNullOrWhiteSpace($WebcamName)) {
+      $previousErrorAction = $ErrorActionPreference
+      $ErrorActionPreference = 'Continue'
+      $deviceListing = (& $ffmpeg.Source -hide_banner -list_devices true -f dshow -i dummy 2>&1 | Out-String)
+      $ErrorActionPreference = $previousErrorAction
+      $videoDevices = [regex]::Matches($deviceListing, '"([^"]+)"\s+\(video\)') |
+        ForEach-Object { $_.Groups[1].Value } |
+        Select-Object -Unique
+      if ($WebcamIndex -lt 0 -or $WebcamIndex -ge $videoDevices.Count) {
+        throw "WebcamIndex fora do intervalo. Dispositivos de video encontrados: $($videoDevices.Count)."
+      }
+      $WebcamName = $videoDevices[$WebcamIndex]
+    }
+    $args = @('-hide_banner', '-loglevel', 'warning', '-f', 'dshow', '-i', "`"video=$WebcamName`"", '-an')
+  }
 }
 $args += @('-c:v', 'libx264', '-preset', 'ultrafast', '-tune', 'zerolatency', '-pix_fmt', 'yuv420p', '-f', 'rtsp', "rtsp://127.0.0.1:$RtspPort/$StreamName")
 

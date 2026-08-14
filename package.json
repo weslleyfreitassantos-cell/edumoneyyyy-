@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
     "build": "vite build",
+    "camera-gateway": "node --experimental-strip-types camera-gateway/src/cli.ts",
     "preview": "vite preview",
     "clean": "node -e \"import('node:fs').then(fs => fs.rmSync('dist', { recursive: true, force: true }))\"",
     "lint": "npm run typecheck",
@@ -17,6 +18,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.110.2",
     "@tanstack/react-query": "^5.101.2",
+    "hls.js": "^1.7.0",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "react": "^19.0.1",

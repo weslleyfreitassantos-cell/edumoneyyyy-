@@ -53,6 +53,13 @@ export interface CameraGateway {
   lastSeenAt: string | null;
 }
 
+export interface CameraStreamSession {
+  sessionId: string;
+  protocol: 'HLS';
+  playbackUrl: string | null;
+  expiresAt: string;
+}
+
 export class CameraServiceError extends Error {
   readonly code: string | undefined;
 
@@ -184,6 +191,20 @@ export const cameraService = {
     return {
       gatewayStatus: (row?.gateway_status as CameraGatewayStatus | undefined) ?? 'UNKNOWN',
       message: String(row?.message ?? 'Gateway não conectado.'),
+    };
+  },
+
+  async createStreamSession(cameraId: string): Promise<CameraStreamSession> {
+    const rows = await invoke<Record<string, unknown>[]>('create_camera_stream_session', {
+      target_camera_id: cameraId,
+    });
+    const row = rows?.[0];
+    if (!row?.session_id || !row.expires_at) throw new CameraServiceError('Nao foi possivel criar a sessao temporaria da camera.');
+    return {
+      sessionId: String(row.session_id),
+      protocol: 'HLS',
+      playbackUrl: row.playback_url ? String(row.playback_url) : null,
+      expiresAt: String(row.expires_at),
     };
   },
 
