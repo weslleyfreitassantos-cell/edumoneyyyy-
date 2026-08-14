@@ -36,7 +36,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'profile',
       'membership',
       'student record',
-      'convite/senha, quando aplicavel',
+      'acesso e senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -52,7 +52,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     futureRecords: [
       'profile',
       'membership',
-      'convite/senha, quando aplicavel',
+      'acesso e senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -69,7 +69,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'profile',
       'membership',
       'guardianship',
-      'convite/senha, quando aplicavel',
+      'acesso e senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -85,7 +85,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     futureRecords: [
       'profile',
       'membership',
-      'convite/senha',
+      'acesso e senha',
     ],
     isPlanned: false,
   },
@@ -101,7 +101,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     futureRecords: [
       'profile',
       'membership',
-      'convite/senha',
+      'acesso e senha',
     ],
     isPlanned: false,
   },
@@ -270,7 +270,7 @@ export function buildUnifiedUserInvitePayload(
 
   if (!isUnifiedInviteRole(input.target)) {
     fieldErrors.target =
-      'Este papel nao pode receber convite.';
+      'Este papel nao pode receber acesso.';
   } else if (
     !canInviteTarget(input.currentRole, input.target)
   ) {

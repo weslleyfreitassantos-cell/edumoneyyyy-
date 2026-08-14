@@ -400,7 +400,7 @@ export default function StudentsTab() {
       closeModal();
 
       setFeedbackMessage(
-        `Aluno cadastrado com sucesso. RA gerado: ${createdStudent.registration_number}. O convite foi enviado para ${createdStudent.email}.`,
+        `Aluno cadastrado com sucesso. RA gerado: ${createdStudent.registration_number}. As credenciais foram enviadas para ${createdStudent.email}.`,
       );
     } catch (error) {
       setModalError(

@@ -97,7 +97,7 @@ beforeEach(() => {
 });
 
 describe('UnifiedUserInvitePreview', () => {
-  it('renderiza formulario real de convite', () => {
+  it('renderiza formulario real de acesso', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -121,7 +121,7 @@ describe('UnifiedUserInvitePreview', () => {
     expect(
       screen
         .getByRole('button', {
-          name: /Enviar convite/,
+          name: /Criar e enviar acesso/,
         })
         .hasAttribute('disabled'),
     ).toBe(true);
@@ -158,7 +158,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar convite/,
+        name: /Criar e enviar acesso/,
       }),
     );
 
@@ -214,7 +214,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar convite/,
+        name: /Criar e enviar acesso/,
       }),
     );
 
@@ -231,7 +231,7 @@ describe('UnifiedUserInvitePreview', () => {
       ).toBeTruthy();
       expect(
         screen.getByRole('button', {
-          name: /Enviar convite/,
+          name: /Criar e enviar acesso/,
         }).hasAttribute('disabled'),
       ).toBe(false);
     });
@@ -285,7 +285,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar convite/,
+        name: /Criar e enviar acesso/,
       }),
     );
 

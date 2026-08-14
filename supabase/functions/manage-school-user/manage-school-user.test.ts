@@ -10,6 +10,9 @@ describe('manage-school-user', () => {
   it('uses a server-side auth admin API for password and delete actions', () => {
     expect(source).toContain('auth.admin.updateUserById');
     expect(source).toContain('auth.admin.deleteUser');
+    expect(source).toContain('action: z.literal("generate_access")');
+    expect(source).toContain('generateSecurePassword');
+    expect(source).toContain('ACCESS_PASSWORD_UPDATED_EMAIL_FAILED');
   });
 
   it('requires admin ownership or SUPER_ADMIN before changing users', () => {
@@ -33,6 +36,12 @@ describe('manage-school-user', () => {
   it('deletes auth users only after removing the final membership', () => {
     expect(source).toContain('remainingMemberships');
     expect(source).toContain('authUserDeleted');
+  });
+
+  it('does not return a generated password to the browser', () => {
+    expect(source).not.toContain('password: password');
+    expect(source).not.toContain('generated_password');
+    expect(source).toContain('Nova senha de acesso gerada e enviada por e-mail.');
   });
 
   it('handles browser preflight requests with CORS headers', () => {

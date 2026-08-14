@@ -32,14 +32,22 @@ export interface LinkGuardianPayload {
   isPrimary: boolean;
 }
 
+export interface GenerateAccessPayload {
+  action: 'generate_access';
+  institutionId: string;
+  membershipId: string;
+  confirmation: 'GERAR NOVA SENHA';
+}
+
 export type ManageSchoolUserPayload =
   | UpdateSchoolUserPayload
   | DeleteSchoolUserPayload
-  | LinkGuardianPayload;
+  | LinkGuardianPayload
+  | GenerateAccessPayload;
 
 export interface ManageSchoolUserResponse {
   success: true;
-  action: 'update' | 'delete' | 'link_guardian';
+  action: 'update' | 'delete' | 'link_guardian' | 'generate_access';
   membershipId: string;
   profileId: string;
   guardianshipId?: string;

@@ -228,7 +228,7 @@ export default function TeachersTab() {
       closeModal();
 
       setFeedbackMessage(
-        `Professor ${createdTeacher.full_name} cadastrado com sucesso. O convite foi enviado para ${createdTeacher.email}.`,
+        `Professor ${createdTeacher.full_name} cadastrado com sucesso. As credenciais foram enviadas para ${createdTeacher.email}.`,
       );
     } catch (error) {
       setModalError(

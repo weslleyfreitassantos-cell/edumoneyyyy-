@@ -652,7 +652,7 @@ export default function GuardiansTab() {
                 >
                   {createMutation.isPending
                     ? 'Salvando...'
-                    : 'Salvar e enviar convite'}
+                    : 'Salvar e enviar acesso'}
                 </button>
               </div>
             </form>
