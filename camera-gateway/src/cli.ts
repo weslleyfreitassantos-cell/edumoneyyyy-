@@ -8,6 +8,7 @@ import {
   readGatewayConfig,
   removeGatewayConfig,
   validateLocalBaseUrl,
+  listenHostForLocalBaseUrl,
   validateSupabaseUrl,
   writeGatewayConfig,
   runtimePidPath,
@@ -91,7 +92,7 @@ async function start(args: string[]): Promise<void> {
   const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
   await new Promise<void>((resolve, reject) => {
     server.once('error', reject);
-    server.listen(port, '127.0.0.1', () => resolve());
+    server.listen(port, listenHostForLocalBaseUrl(config.localBaseUrl), () => resolve());
   });
   await runtime.start();
   await mkdir(dirname(runtimePidPath()), { recursive: true });

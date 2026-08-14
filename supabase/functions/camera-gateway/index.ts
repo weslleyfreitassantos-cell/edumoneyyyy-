@@ -56,6 +56,24 @@ function timestampField(body: JsonRecord, key: string): string | null {
   return Number.isFinite(timestamp) ? value : null;
 }
 
+function localUrlField(body: JsonRecord, key: string): string | null {
+  const value = textField(body, key, 253);
+  if (!value) return null;
+  try {
+    const parsed = new URL(value);
+    const hostname = parsed.hostname.toLowerCase();
+    const octets = hostname.split('.').map(Number);
+    const privateIpv4 = octets.length === 4
+      && octets.every((octet) => Number.isInteger(octet) && octet >= 0 && octet <= 255)
+      && (octets[0] === 10 || (octets[0] === 172 && octets[1] >= 16 && octets[1] <= 31) || (octets[0] === 192 && octets[1] === 168));
+    const localHost = hostname === 'localhost' || hostname === '127.0.0.1' || privateIpv4 || hostname.endsWith('.local');
+    if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password || parsed.pathname !== '/' || parsed.search || parsed.hash || !localHost) return null;
+    return value.replace(/\/$/, '');
+  } catch {
+    return null;
+  }
+}
+
 function actionField(body: JsonRecord): Action | null {
   const value = body.action;
   return value === "pair" || value === "heartbeat" || value === "sync" || value === "redeem_stream_session"
@@ -82,7 +100,7 @@ async function run(request: Request): Promise<Response> {
   try {
     if (action === "pair") {
       const pairingCode = textField(body, "pairing_code", 64);
-      const localBaseUrl = textField(body, "local_base_url", 253);
+      const localBaseUrl = localUrlField(body, "local_base_url");
       if (!pairingCode || !localBaseUrl) return errorResponse(400, "INVALID_PAYLOAD", "Codigo ou URL local invalida.");
       const { data, error } = await admin.rpc("pair_camera_gateway_runtime", {
         target_pairing_code: pairingCode,

@@ -26,12 +26,34 @@ function ensureUrl(value: string, label: string): URL {
   return parsed;
 }
 
+function isPrivateIpv4(hostname: string): boolean {
+  const octets = hostname.split('.').map(Number);
+  if (octets.length !== 4 || octets.some((octet) => !Number.isInteger(octet) || octet < 0 || octet > 255)) return false;
+  return octets[0] === 10
+    || (octets[0] === 172 && octets[1] >= 16 && octets[1] <= 31)
+    || (octets[0] === 192 && octets[1] === 168);
+}
+
+function isLocalHost(hostname: string): boolean {
+  const normalized = hostname.toLowerCase();
+  return normalized === 'localhost'
+    || normalized === '127.0.0.1'
+    || isPrivateIpv4(normalized)
+    || normalized.endsWith('.local');
+}
+
 export function validateLocalBaseUrl(value: string): string {
   const parsed = ensureUrl(value, 'URL local');
+  if (!isLocalHost(parsed.hostname)) throw new Error('URL local deve apontar para localhost ou uma rede privada.');
   if (parsed.pathname !== '/' || parsed.search || parsed.hash) {
     throw new Error('URL local deve apontar para a raiz e nao conter query.');
   }
   return value.replace(/\/$/, '');
+}
+
+export function listenHostForLocalBaseUrl(value: string): string {
+  const parsed = new URL(validateLocalBaseUrl(value));
+  return parsed.hostname === 'localhost' || parsed.hostname === '127.0.0.1' ? '127.0.0.1' : '0.0.0.0';
 }
 
 export function validateSupabaseUrl(value: string): string {

@@ -13,7 +13,7 @@ O token do gateway e as configuracoes de camera nunca entram no bundle React. Se
 
 ## Modos
 
-- Local: o browser e o gateway precisam estar na mesma rede. O HLS local e permitido somente para loopback/RFC1918.
+- Local: o browser e o gateway precisam estar na mesma rede. Use `--local-url http://IP-PRIVADO:8787` para acesso por outro dispositivo; o gateway faz bind apenas em loopback ou interfaces locais.
 - Remoto: ainda nao implementado. A interface deve mostrar relay remoto indisponivel, sem fingir que existe video.
 
 ## Laboratorio
