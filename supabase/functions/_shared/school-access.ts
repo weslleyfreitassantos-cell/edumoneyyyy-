@@ -252,7 +252,7 @@ export function buildSchoolAccessEmail({
 export async function sendSchoolAccessEmail(
   input: SchoolAccessEmailInput,
 ): Promise<void> {
-  const apiKey = Deno.env.get("RESEND_API_KEY")?.trim();
+  const apiKey = Deno.env.get("resendsenha")?.trim();
   const from = Deno.env.get("EMAIL_FROM")?.trim();
 
   if (!apiKey || !from) {
