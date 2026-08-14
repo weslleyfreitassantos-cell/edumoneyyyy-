@@ -71,7 +71,7 @@ export function validateMediaMtxRtspUrl(value: string): string {
   } catch {
     throw new Error('URL RTSP do MediaMTX invalida.');
   }
-  if (parsed.protocol !== 'rtsp:' || parsed.username || parsed.password || parsed.pathname !== '/' || parsed.search || parsed.hash) {
+  if (parsed.protocol !== 'rtsp:' || parsed.username || parsed.password || !['', '/'].includes(parsed.pathname) || parsed.search || parsed.hash) {
     throw new Error('URL RTSP do MediaMTX deve ser uma raiz sem credenciais.');
   }
   return value.replace(/\/$/, '');

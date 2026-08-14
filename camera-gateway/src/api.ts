@@ -14,6 +14,7 @@ export interface GatewayCloudApi {
 
 interface GatewayResponse {
   success?: boolean;
+  code?: string;
   error?: string;
   message?: string;
   gateway_id?: string;
@@ -27,6 +28,18 @@ interface GatewayResponse {
   expires_at?: string;
 }
 
+export class GatewayApiError extends Error {
+  readonly status: number;
+  readonly code: string | undefined;
+
+  constructor(message: string, status: number, code?: string) {
+    super(message);
+    this.name = 'GatewayApiError';
+    this.status = status;
+    this.code = code;
+  }
+}
+
 function safeError(status: number, body: GatewayResponse | null): Error {
   const messages: Record<string, string> = {
     INVALID_PAYLOAD: 'Os dados do gateway sao invalidos.',
@@ -34,12 +47,40 @@ function safeError(status: number, body: GatewayResponse | null): Error {
     GATEWAY_REJECTED: 'O gateway nao esta autorizado.',
     SESSION_REJECTED: 'A sessao da camera e invalida ou expirou.',
   };
-  const message = typeof body?.error === 'string' && messages[body.error]
-    ? messages[body.error]
+  const code = body?.code ?? body?.error;
+  const message = typeof code === 'string' && messages[code]
+    ? messages[code]
     : status >= 500
       ? 'O servico do gateway esta indisponivel.'
       : 'Falha na comunicacao com o servico do gateway.';
-  return new Error(`${message} (HTTP ${status})`);
+  return new GatewayApiError(`${message} (HTTP ${status})`, status, code);
+}
+
+function normalizeCamera(value: unknown): CameraConfig | null {
+  if (!value || typeof value !== 'object') return null;
+  const row = value as Record<string, unknown>;
+  const id = row.id ?? row.camera_id;
+  const institutionId = row.institutionId ?? row.institution_id;
+  const name = row.name;
+  const host = row.host;
+  const port = row.port;
+  const protocol = row.protocol;
+  const streamProfile = row.streamProfile ?? row.stream_profile;
+  if (typeof id !== 'string' || typeof institutionId !== 'string' || typeof name !== 'string'
+    || typeof host !== 'string' || typeof port !== 'number'
+    || (protocol !== 'RTSP' && protocol !== 'ONVIF')
+    || (streamProfile !== 'MAIN' && streamProfile !== 'SUB')) return null;
+  return {
+    id,
+    institutionId,
+    name,
+    host,
+    port,
+    protocol,
+    channel: typeof row.channel === 'number' ? row.channel : null,
+    streamProfile,
+    active: row.active === true,
+  };
 }
 
 export class SupabaseGatewayApi implements GatewayCloudApi {
@@ -103,7 +144,7 @@ export class SupabaseGatewayApi implements GatewayCloudApi {
 
   async sync(config: GatewayConfig): Promise<CameraConfig[]> {
     const response = await this.request('sync', { gateway_id: config.gatewayId, ...this.requestEnvelope() }, config.gatewayToken);
-    return response.cameras ?? [];
+    return (response.cameras ?? []).map(normalizeCamera).filter((camera): camera is CameraConfig => camera !== null);
   }
 
   async redeemStreamSession(config: GatewayConfig, sessionId: string, sessionToken: string): Promise<StreamSessionAuthorization> {

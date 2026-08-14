@@ -121,7 +121,14 @@ async function status(): Promise<void> {
     } catch {
       runtime = { running: false };
     }
-    console.log(JSON.stringify({ paired: true, gatewayId: config.gatewayId, institutionId: config.institutionId, configPath: defaultConfigPath(), runtime }, null, 2));
+    const snapshot = runtime.status as Record<string, unknown> | undefined;
+    console.log(JSON.stringify({
+      paired: snapshot?.paired !== false,
+      gatewayId: config.gatewayId,
+      institutionId: config.institutionId,
+      configPath: defaultConfigPath(),
+      runtime,
+    }, null, 2));
   } catch {
     console.log(JSON.stringify({ paired: false, configPath: defaultConfigPath() }, null, 2));
   }

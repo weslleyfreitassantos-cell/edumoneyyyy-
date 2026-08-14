@@ -1,4 +1,4 @@
-import type { GatewayCloudApi } from './api.ts';
+import { GatewayApiError, type GatewayCloudApi } from './api.ts';
 import type { CameraPublisher, CameraSourceOverride } from './publisher.ts';
 import type {
   CameraConfig,
@@ -22,6 +22,10 @@ export interface GatewayRuntimeOptions {
   probe?: (ffprobePath: string, url: string) => Promise<CameraProbeResult>;
 }
 
+function isRevocationError(error: unknown): boolean {
+  return error instanceof GatewayApiError && (error.code === 'GATEWAY_REJECTED' || error.code === 'UNAUTHENTICATED');
+}
+
 export class GatewayRuntime {
   private readonly cameras = new Map<string, CameraConfig>();
   private readonly sessions = new Map<string, SessionState>();
@@ -30,6 +34,7 @@ export class GatewayRuntime {
   private lastHeartbeatAt: string | null = null;
   private lastSyncAt: string | null = null;
   private lastError: string | null = null;
+  private revoked = false;
   private running = false;
   private readonly options: GatewayRuntimeOptions;
 
@@ -38,10 +43,11 @@ export class GatewayRuntime {
   }
 
   async start(): Promise<void> {
-    if (this.running) return;
+    if (this.running || this.revoked) return;
     this.running = true;
     await this.syncNow();
     await this.heartbeatNow();
+    if (this.revoked) return;
     this.heartbeatTimer = setInterval(() => void this.heartbeatNow(), 25_000);
     this.syncTimer = setInterval(() => void this.syncNow(), 30_000);
   }
@@ -55,17 +61,34 @@ export class GatewayRuntime {
     this.running = false;
   }
 
+  private markRevoked(): void {
+    this.revoked = true;
+    this.lastError = 'Gateway revogado.';
+    if (this.heartbeatTimer) clearInterval(this.heartbeatTimer);
+    if (this.syncTimer) clearInterval(this.syncTimer);
+    this.heartbeatTimer = null;
+    this.syncTimer = null;
+    this.options.publisher.stopAll();
+    this.running = false;
+  }
+
   async heartbeatNow(): Promise<void> {
+    if (this.revoked) return;
     try {
       await this.options.api.heartbeat(this.options.config);
       this.lastHeartbeatAt = new Date().toISOString();
       this.lastError = null;
-    } catch {
+    } catch (error) {
+      if (isRevocationError(error)) {
+        this.markRevoked();
+        return;
+      }
       this.lastError = 'Heartbeat indisponivel.';
     }
   }
 
   async syncNow(): Promise<void> {
+    if (this.revoked) return;
     try {
       const cameras = await this.options.api.sync(this.options.config);
       this.cameras.clear();
@@ -75,7 +98,11 @@ export class GatewayRuntime {
       }
       this.lastSyncAt = new Date().toISOString();
       this.lastError = null;
-    } catch {
+    } catch (error) {
+      if (isRevocationError(error)) {
+        this.markRevoked();
+        return;
+      }
       this.lastError = 'Sincronizacao de cameras indisponivel.';
     }
   }
@@ -97,9 +124,16 @@ export class GatewayRuntime {
   }
 
   async authorizeStream(sessionId: string, sessionToken: string): Promise<SessionState> {
+    if (this.revoked) throw new Error('Gateway revogado.');
     const current = this.sessions.get(sessionId);
     if (current && new Date(current.expiresAt).getTime() > Date.now()) return current;
-    const authorization = await this.options.api.redeemStreamSession(this.options.config, sessionId, sessionToken);
+    let authorization: StreamSessionAuthorization;
+    try {
+      authorization = await this.options.api.redeemStreamSession(this.options.config, sessionId, sessionToken);
+    } catch (error) {
+      if (isRevocationError(error)) this.markRevoked();
+      throw error;
+    }
     if (authorization.institutionId !== this.options.config.institutionId) throw new Error('Sessao de outra instituicao rejeitada.');
     if (!this.cameras.has(authorization.cameraId)) throw new Error('Camera da sessao nao esta sincronizada.');
     if (!Number.isFinite(Date.parse(authorization.expiresAt)) || Date.parse(authorization.expiresAt) <= Date.now()) {
@@ -122,7 +156,8 @@ export class GatewayRuntime {
     return {
       gatewayId: this.options.config.gatewayId,
       institutionId: this.options.config.institutionId,
-      paired: true,
+      paired: !this.revoked,
+      state: this.revoked ? 'REVOKED' : 'PAIRED',
       running: this.running,
       lastHeartbeatAt: this.lastHeartbeatAt,
       lastSyncAt: this.lastSyncAt,

@@ -1,4 +1,5 @@
 export type CameraGatewayStatus = 'ONLINE' | 'OFFLINE' | 'UNKNOWN';
+export type GatewayRuntimeState = 'PAIRED' | 'REVOKED';
 
 export interface GatewayConfig {
   supabaseUrl: string;
@@ -42,6 +43,7 @@ export interface GatewayStatusSnapshot {
   gatewayId: string | null;
   institutionId: string | null;
   paired: boolean;
+  state: GatewayRuntimeState;
   running: boolean;
   lastHeartbeatAt: string | null;
   lastSyncAt: string | null;

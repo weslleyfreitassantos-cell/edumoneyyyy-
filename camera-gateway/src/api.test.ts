@@ -35,12 +35,37 @@ describe('Supabase gateway API', () => {
   });
 
   it('converte pareamento rejeitado sem expor detalhes do backend', async () => {
-    vi.stubGlobal('fetch', vi.fn(async (_input: RequestInfo | URL, _init?: RequestInit) => new Response(JSON.stringify({ success: false, error: 'PAIRING_REJECTED', message: 'internal detail' }), { status: 403 })));
+    vi.stubGlobal('fetch', vi.fn(async (_input: RequestInfo | URL, _init?: RequestInit) => new Response(JSON.stringify({ success: false, code: 'PAIRING_REJECTED', message: 'internal detail' }), { status: 403 })));
     const api = new SupabaseGatewayApi(config.supabaseUrl, config.supabaseAnonKey);
 
     const error = await api.pair('expired-code', config.localBaseUrl).catch((caught: unknown) => caught);
     expect(error).toBeInstanceOf(Error);
     expect((error as Error).message).toMatch(/HTTP 403/);
     expect((error as Error).message).not.toContain('internal detail');
+  });
+
+  it('preserva o codigo de rejeicao sem expor detalhes internos', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ success: false, code: 'GATEWAY_REJECTED', message: 'token hash detail' }), { status: 401 })));
+    const api = new SupabaseGatewayApi(config.supabaseUrl, config.supabaseAnonKey);
+
+    const error = await api.heartbeat(config).catch((caught: unknown) => caught);
+    expect(error).toMatchObject({ name: 'GatewayApiError', status: 401, code: 'GATEWAY_REJECTED' });
+    expect((error as Error).message).toContain('nao esta autorizado');
+    expect((error as Error).message).not.toContain('token hash detail');
+  });
+
+  it('normaliza a resposta snake_case da RPC de sincronizacao', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({
+      success: true,
+      cameras: [{
+        id: 'camera-a', institution_id: config.institutionId, name: 'Entrada', host: '127.0.0.1', port: 8554,
+        protocol: 'RTSP', channel: null, stream_profile: 'SUB', active: true,
+      }],
+    }), { status: 200 })));
+    const api = new SupabaseGatewayApi(config.supabaseUrl, config.supabaseAnonKey);
+
+    await expect(api.sync(config)).resolves.toEqual([expect.objectContaining({
+      id: 'camera-a', institutionId: config.institutionId, streamProfile: 'SUB', active: true,
+    })]);
   });
 });

@@ -18,7 +18,10 @@ if (-not $ffmpeg -or -not $ffprobe) { throw 'FFmpeg e FFprobe precisam estar no 
 if (-not $MediaMtxPath) { $MediaMtxPath = Join-Path $env:LOCALAPPDATA 'EduManager\camera-lab\mediamtx.exe' }
 if (-not (Test-Path -LiteralPath $MediaMtxPath)) { throw 'MediaMTX nao encontrado. Informe -MediaMtxPath ou MEDIAMTX_PATH.' }
 
+$previousErrorAction = $ErrorActionPreference
+$ErrorActionPreference = 'Continue'
 $deviceListing = (& $ffmpeg -hide_banner -list_devices true -f dshow -i dummy 2>&1 | Out-String)
+$ErrorActionPreference = $previousErrorAction
 if ([string]::IsNullOrWhiteSpace($WebcamName)) {
   $videoDevices = [regex]::Matches($deviceListing, '"([^"]+)"\s+\(video\)') |
     ForEach-Object { $_.Groups[1].Value } |
@@ -41,7 +44,7 @@ if (-not $mediaMtx) {
   Start-Sleep -Seconds 2
 }
 
-$ffmpegArgs = @('-hide_banner', '-loglevel', 'warning', '-f', 'dshow', '-video_size', '640x480', '-framerate', '30', '-i', "video=$WebcamName", '-an', '-c:v', 'libx264', '-preset', 'ultrafast', '-tune', 'zerolatency', '-pix_fmt', 'yuv420p', '-f', 'rtsp', "rtsp://127.0.0.1:8554/$StreamPath")
+$ffmpegArgs = @('-hide_banner', '-loglevel', 'warning', '-f', 'dshow', '-video_size', '640x480', '-framerate', '30', '-i', "`"video=$WebcamName`"", '-an', '-c:v', 'libx264', '-preset', 'ultrafast', '-tune', 'zerolatency', '-pix_fmt', 'yuv420p', '-f', 'rtsp', "rtsp://127.0.0.1:8554/$StreamPath")
 $publisher = Start-Process -FilePath $ffmpeg -ArgumentList $ffmpegArgs -WorkingDirectory $stateDir -WindowStyle Hidden -PassThru
 $publisher.Id | Set-Content -Path (Join-Path $stateDir 'ffmpeg.pid') -Encoding ascii
 Write-Host "MediaMTX ONLINE: PID $($mediaMtx.Id)"

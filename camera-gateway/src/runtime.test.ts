@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import type { GatewayCloudApi } from './api.ts';
+import { GatewayApiError } from './api.ts';
 import type { CameraPublisher } from './publisher.ts';
 import { GatewayRuntime } from './runtime.ts';
 import type { CameraConfig, GatewayConfig } from './types.ts';
@@ -82,6 +83,18 @@ describe('GatewayRuntime', () => {
     const { runtime } = createRuntime({ heartbeat: vi.fn(async () => { throw new Error('offline'); }) });
     await runtime.heartbeatNow();
     expect(runtime.status().error).toBe('Heartbeat indisponivel.');
+  });
+
+  it('interrompe acesso e marca o gateway como revogado quando o backend rejeita o token', async () => {
+    const { runtime, publisher } = createRuntime({
+      heartbeat: vi.fn(async () => { throw new GatewayApiError('rejected', 401, 'GATEWAY_REJECTED'); }),
+    });
+    await runtime.start();
+    await runtime.heartbeatNow();
+    expect(runtime.status()).toMatchObject({ paired: false, state: 'REVOKED', running: false, error: 'Gateway revogado.' });
+    expect(publisher.stopAll).toHaveBeenCalled();
+    await runtime.heartbeatNow();
+    expect((runtime.status().state)).toBe('REVOKED');
   });
 
   it('rejeita sessao expirada antes de publicar', async () => {
