@@ -42,4 +42,26 @@ describe('cameraService', () => {
     await expect(cameraService.list('institution-1')).rejects.toThrow(/permissão/i);
     await expect(cameraService.list('institution-1')).rejects.not.toThrow(/internal database/i);
   });
+
+  it('lista gateways independentemente da quantidade de cameras', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{
+        gateway_id: 'gateway-1',
+        gateway_name: 'Gateway principal',
+        gateway_status: 'ONLINE',
+        gateway_last_seen_at: '2026-08-14T21:46:18.758Z',
+      }],
+      error: null,
+    } as never);
+
+    await expect(cameraService.listGateways('institution-1')).resolves.toEqual([{
+      id: 'gateway-1',
+      name: 'Gateway principal',
+      status: 'ONLINE',
+      lastSeenAt: '2026-08-14T21:46:18.758Z',
+    }]);
+    expect(supabase.rpc).toHaveBeenCalledWith('list_director_camera_gateways', {
+      target_institution_id: 'institution-1',
+    });
+  });
 });

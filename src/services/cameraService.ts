@@ -118,6 +118,18 @@ export const cameraService = {
     return (rows ?? []).map(normalize);
   },
 
+  async listGateways(institutionId: string): Promise<CameraGateway[]> {
+    const rows = await invoke<Record<string, unknown>[]>('list_director_camera_gateways', {
+      target_institution_id: institutionId,
+    });
+    return (rows ?? []).map((row) => ({
+      id: String(row.gateway_id),
+      name: String(row.gateway_name ?? ''),
+      status: (row.gateway_status as CameraGatewayStatus | null) ?? 'UNKNOWN',
+      lastSeenAt: row.gateway_last_seen_at ? String(row.gateway_last_seen_at) : null,
+    }));
+  },
+
   async create(input: CameraMutationInput): Promise<string> {
     return invoke<string>('create_director_camera', {
       target_institution_id: input.institutionId,
