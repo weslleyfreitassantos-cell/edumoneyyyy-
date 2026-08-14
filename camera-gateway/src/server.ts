@@ -51,6 +51,27 @@ function rewriteManifest(manifest: string, sessionId: string, token: string): st
   }).join('\n');
 }
 
+const UPSTREAM_RETRY_ATTEMPTS = 40;
+const UPSTREAM_RETRY_DELAY_MS = 250;
+
+async function fetchUpstreamWithRetry(url: string): Promise<Response> {
+  const retryableStatuses = new Set([404, 502, 503, 504]);
+  let lastResponse: Response | null = null;
+
+  for (let attempt = 0; attempt < UPSTREAM_RETRY_ATTEMPTS; attempt += 1) {
+    try {
+      const upstream = await fetch(url);
+      if (upstream.ok || !retryableStatuses.has(upstream.status) || attempt === UPSTREAM_RETRY_ATTEMPTS - 1) return upstream;
+      lastResponse = upstream;
+    } catch (error) {
+      if (attempt === UPSTREAM_RETRY_ATTEMPTS - 1) throw error;
+    }
+    await new Promise((resolve) => setTimeout(resolve, UPSTREAM_RETRY_DELAY_MS));
+  }
+
+  return lastResponse ?? new Response(null, { status: 502 });
+}
+
 export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: string) {
   return createServer(async (request, response) => {
     headers(request, response);
@@ -83,7 +104,7 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
     try {
       const session = await runtime.authorizeStream(sessionId, token);
       const streamPath = runtime.getCameraStreamPath(session);
-      const upstream = await fetch(`${mediaMtxHlsUrl.replace(/\/$/, '')}/${streamPath}/${resource}`);
+      const upstream = await fetchUpstreamWithRetry(`${mediaMtxHlsUrl.replace(/\/$/, '')}/${streamPath}/${resource}`);
       if (!upstream.ok) {
         json(response, 502, { error: 'Stream local indisponivel.' });
         return;

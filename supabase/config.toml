@@ -6,6 +6,7 @@ project_id = "edumoneyyyy-"
 
 [functions.camera-gateway]
 verify_jwt = false
+import_map = "./functions/camera-gateway/deno.json"
 
 [api]
 enabled = true

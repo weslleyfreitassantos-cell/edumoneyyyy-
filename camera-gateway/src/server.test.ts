@@ -50,6 +50,40 @@ describe('gateway HLS proxy', () => {
     expect(upstreamFetch).toHaveBeenCalledWith('http://127.0.0.1:8888/camera-a/index.m3u8');
   });
 
+  it('aguarda a playlist quando o MediaMTX ainda esta preparando o stream', async () => {
+    let attempts = 0;
+    const clientFetch = globalThis.fetch;
+    const upstreamFetch = vi.fn(async () => {
+      attempts += 1;
+      if (attempts < 3) return new Response('not ready', { status: 404 });
+      return new Response('#EXTM3U\nsegment.ts\n', {
+        status: 200,
+        headers: { 'content-type': 'application/vnd.apple.mpegurl' },
+      });
+    });
+    vi.stubGlobal('fetch', upstreamFetch);
+    const api: GatewayCloudApi = {
+      pair: vi.fn(),
+      heartbeat: vi.fn(async () => undefined),
+      sync: vi.fn(async () => [camera]),
+      redeemStreamSession: vi.fn(async () => ({
+        cameraId: camera.id, institutionId: camera.institutionId, streamPath: 'camera-a',
+        expiresAt: new Date(Date.now() + 60_000).toISOString(),
+      })),
+    };
+    const publisher: CameraPublisher = { start: vi.fn(async () => 'camera-a'), stop: vi.fn(), stopAll: vi.fn() };
+    const runtime = new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe' });
+    await runtime.syncNow();
+    const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('Porta de teste indisponivel.');
+    const response = await clientFetch(`http://127.0.0.1:${address.port}/stream/session-a/index.m3u8?token=session-token`);
+    server.close();
+    expect(response.status).toBe(200);
+    expect(attempts).toBe(3);
+  });
+
   it('aceita preflight somente para origem explicitamente configurada', async () => {
     const previousOrigins = process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS;
     process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = 'http://192.168.1.108:3000';
