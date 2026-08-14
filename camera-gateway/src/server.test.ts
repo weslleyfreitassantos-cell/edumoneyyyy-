@@ -49,4 +49,39 @@ describe('gateway HLS proxy', () => {
     expect(body).toContain('/stream/session-a/video1_stream.m3u8?token=session-token');
     expect(upstreamFetch).toHaveBeenCalledWith('http://127.0.0.1:8888/camera-a/index.m3u8');
   });
+
+  it('aceita preflight somente para origem explicitamente configurada', async () => {
+    const previousOrigins = process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS;
+    process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = 'http://192.168.1.108:3000';
+    const api: GatewayCloudApi = {
+      pair: vi.fn(),
+      heartbeat: vi.fn(async () => undefined),
+      sync: vi.fn(async () => []),
+      redeemStreamSession: vi.fn(),
+    };
+    const publisher: CameraPublisher = { start: vi.fn(async () => 'camera-a'), stop: vi.fn(), stopAll: vi.fn() };
+    const runtime = new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe' });
+    const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('Porta de teste indisponivel.');
+
+    try {
+      const allowed = await fetch(`http://127.0.0.1:${address.port}/stream/session/index.m3u8`, {
+        method: 'OPTIONS',
+        headers: { Origin: 'http://192.168.1.108:3000' },
+      });
+      const rejected = await fetch(`http://127.0.0.1:${address.port}/stream/session/index.m3u8`, {
+        method: 'OPTIONS',
+        headers: { Origin: 'http://192.168.1.109:3000' },
+      });
+      expect(allowed.status).toBe(204);
+      expect(allowed.headers.get('access-control-allow-origin')).toBe('http://192.168.1.108:3000');
+      expect(rejected.status).toBe(403);
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      if (previousOrigins === undefined) delete process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS;
+      else process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = previousOrigins;
+    }
+  });
 });

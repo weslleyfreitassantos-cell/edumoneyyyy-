@@ -4,7 +4,8 @@ param(
   [string]$WebcamName,
   [int]$WebcamIndex = 0,
   [string]$StreamPath = 'camera1',
-  [string]$LabCameraId = 'camera-1'
+  [string]$LabCameraId = 'camera-1',
+  [string]$AllowedOrigins = $env:CAMERA_GATEWAY_ALLOWED_ORIGINS
 )
 
 $ErrorActionPreference = 'Stop'
@@ -50,5 +51,7 @@ Start-Sleep -Seconds 2
 $probeOutput = & $ffprobe -v error -rtsp_transport tcp -show_entries stream=codec_type,codec_name,width,height,r_frame_rate -of json "rtsp://127.0.0.1:8554/$StreamPath" 2>&1
 if ($LASTEXITCODE -ne 0) { throw 'RTSP TEST: FAIL. FFprobe nao conseguiu ler a webcam publicada.' }
 Write-Host 'RTSP TEST: PASS'
-& "$PSScriptRoot\gateway-start.ps1" -LabCameraId $LabCameraId -LabRtspUrl "rtsp://127.0.0.1:8554/$StreamPath" -LabStreamPath $StreamPath
+$gatewayArgs = @{ LabCameraId = $LabCameraId; LabRtspUrl = "rtsp://127.0.0.1:8554/$StreamPath"; LabStreamPath = $StreamPath }
+if ($AllowedOrigins) { $gatewayArgs.AllowedOrigins = $AllowedOrigins }
+& "$PSScriptRoot\gateway-start.ps1" @gatewayArgs
 & "$PSScriptRoot\gateway-status.ps1"

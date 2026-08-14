@@ -14,6 +14,7 @@ O token do gateway e as configuracoes de camera nunca entram no bundle React. Se
 ## Modos
 
 - Local: o browser e o gateway precisam estar na mesma rede. Use `--local-url http://IP-PRIVADO:8787` para acesso por outro dispositivo; o gateway faz bind apenas em loopback ou interfaces locais.
+- Para o proxy HLS no navegador, informe as origens permitidas, por exemplo `--allowed-origin http://192.168.1.108:3000` ou defina `CAMERA_GATEWAY_ALLOWED_ORIGINS`. Nunca use `*`.
 - Remoto: ainda nao implementado. A interface deve mostrar relay remoto indisponivel, sem fingir que existe video.
 
 ## Laboratorio

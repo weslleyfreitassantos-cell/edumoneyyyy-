@@ -40,7 +40,7 @@ function findBinary(name: string): string {
 
 function printUsage(): void {
   console.log('camera-gateway pair --code CODE --supabase-url URL --anon-key KEY');
-  console.log('camera-gateway start [--port 8787] [--lab-camera-id ID] [--lab-rtsp-url URL]');
+  console.log('camera-gateway start [--port 8787] [--allowed-origin ORIGIN[,ORIGIN]] [--lab-camera-id ID] [--lab-rtsp-url URL]');
   console.log('camera-gateway status');
   console.log('camera-gateway test-camera CAMERA_ID');
   console.log('camera-gateway logout');
@@ -89,6 +89,8 @@ async function start(args: string[]): Promise<void> {
   const runtime = createRuntime(config, args);
   const port = Number(option(args, '--port', '8787'));
   if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('Porta local invalida.');
+  const allowedOrigins = option(args, '--allowed-origin');
+  if (allowedOrigins) process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = allowedOrigins;
   const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
   await new Promise<void>((resolve, reject) => {
     server.once('error', reject);

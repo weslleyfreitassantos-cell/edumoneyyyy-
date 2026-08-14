@@ -33,6 +33,8 @@ O gateway publica fontes RTSP autorizadas em um caminho interno do MediaMTX e of
 
 Chrome usa `hls.js`; Safari pode usar HLS nativo. O modo local requer browser e gateway na mesma rede. O relay remoto ainda nao existe e a interface deve informar isso, sem exibir falso video.
 
+Quando o frontend for aberto pelo IP da LAN, iniciar o gateway com uma origem explicitamente permitida, por exemplo `npm run camera-gateway -- start --allowed-origin http://192.168.1.108:3000`. O proxy nao aceita `*`.
+
 ## Laboratorio Windows
 
 ```powershell
