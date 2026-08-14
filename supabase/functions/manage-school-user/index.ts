@@ -11,6 +11,7 @@ import {
   type SchoolAccessRole,
 } from "../_shared/school-access.ts";
 import {
+  getDeleteAuthorizationDecision,
   getUpdateAuthorizationDecision,
   type UpdateAuthorizationContext,
 } from "./authorization.ts";
@@ -185,7 +186,10 @@ async function getAuthorizedContext(
   ctx: SupabaseFunctionContext,
   requesterId: string,
   institutionId: string,
-  options: { allowOperationalManager?: boolean } = {},
+  options: {
+    allowOperationalManager?: boolean;
+    allowDirectorDelete?: boolean;
+  } = {},
 ) {
   const { data: requester, error: requesterError } =
     await ctx.supabaseAdmin
@@ -256,12 +260,17 @@ async function getAuthorizedContext(
       membership.active === true &&
       (membership.role === "DIRECTOR" || membership.role === "SECRETARY"),
   );
+  const isDirector = (memberships ?? []).some(
+    (membership) =>
+      membership.active === true && membership.role === "DIRECTOR",
+  );
 
   if (
     !isSuperAdmin &&
     !isAccountOwner &&
     !isLocalAdmin &&
-    !(options.allowOperationalManager && isOperationalManager)
+    !(options.allowOperationalManager && isOperationalManager) &&
+    !(options.allowDirectorDelete && isDirector)
   ) {
     throw new ManageSchoolUserError({
       status: 403,
@@ -275,12 +284,14 @@ async function getAuthorizedContext(
     isAccountOwner,
     isLocalAdmin,
     isOperationalManager,
+    isDirector,
   };
 }
 
 async function getTargetMembership(
   ctx: SupabaseFunctionContext,
   input: MembershipLookupInput,
+  options: { notFoundError?: ManageSchoolUserError } = {},
 ) {
   const { data: membership, error: membershipError } =
     await ctx.supabaseAdmin
@@ -292,7 +303,7 @@ async function getTargetMembership(
 
   if (membershipError) throw membershipError;
   if (!membership) {
-    throw new ManageSchoolUserError({
+    throw options.notFoundError ?? new ManageSchoolUserError({
       status: 404,
       code: "MEMBERSHIP_NOT_FOUND",
       message: "Usuario nao encontrado nesta escola.",
@@ -477,20 +488,225 @@ async function handleDelete(
   ctx: SupabaseFunctionContext,
   requesterId: string,
   input: Extract<RequestData, { action: "delete" }>,
+  authorization: UpdateAuthorizationContext,
 ) {
-  const membership = await getTargetMembership(ctx, input);
-  await assertTargetCanBeManaged(ctx, requesterId, membership.profile_id);
+  const membership = await getTargetMembership(
+    ctx,
+    input,
+    authorization.isDirector
+      ? {
+          notFoundError: new ManageSchoolUserError({
+            status: 403,
+            code: "TARGET_OUTSIDE_INSTITUTION",
+            message: "O usuario selecionado nao pertence a sua instituicao.",
+          }),
+        }
+      : {},
+  );
 
-  await ctx.supabaseAdmin
-    .from("guardianships")
-    .delete()
-    .eq("guardian_profile_id", membership.profile_id);
+  const { data: targetProfile, error: targetProfileError } =
+    await ctx.supabaseAdmin
+      .from("profiles")
+      .select("platform_role")
+      .eq("id", membership.profile_id)
+      .maybeSingle();
 
-  await ctx.supabaseAdmin
-    .from("students")
-    .delete()
-    .eq("profile_id", membership.profile_id)
-    .eq("institution_id", input.institutionId);
+  if (targetProfileError) throw targetProfileError;
+
+  const { data: targetAccount, error: targetAccountError } =
+    await ctx.supabaseAdmin
+      .from("accounts")
+      .select("id")
+      .eq("owner_profile_id", membership.profile_id)
+      .maybeSingle();
+
+  if (targetAccountError) throw targetAccountError;
+
+  const authorizationDecision = getDeleteAuthorizationDecision(
+    authorization,
+    {
+      targetFoundInInstitution: true,
+      requesterId,
+      targetProfileId: membership.profile_id,
+      targetPlatformRole: targetProfile?.platform_role ?? null,
+      targetIsAccountOwner: Boolean(targetAccount),
+    },
+  );
+
+  if (!authorizationDecision.allowed) {
+    const errorByCode: Record<
+      NonNullable<typeof authorizationDecision.code>,
+      ManageSchoolUserError
+    > = {
+      TARGET_OUTSIDE_INSTITUTION: new ManageSchoolUserError({
+        status: 403,
+        code: "TARGET_OUTSIDE_INSTITUTION",
+        message: "O usuario selecionado nao pertence a sua instituicao.",
+      }),
+      SELF_MANAGEMENT_BLOCKED: new ManageSchoolUserError({
+        status: 409,
+        code: "SELF_MANAGEMENT_BLOCKED",
+        message: "Use Minha conta para alterar seu proprio acesso.",
+      }),
+      SUPER_ADMIN_PROTECTED: new ManageSchoolUserError({
+        status: 403,
+        code: "SUPER_ADMIN_PROTECTED",
+        message: "SUPER_ADMIN nao pode ser alterado por esta tela.",
+      }),
+      ACCOUNT_OWNER_PROTECTED: new ManageSchoolUserError({
+        status: 409,
+        code: "ACCOUNT_OWNER_PROTECTED",
+        message: "O administrador dono da conta deve ser alterado pela Plataforma.",
+      }),
+      DIRECTOR_REQUIRED: new ManageSchoolUserError({
+        status: 403,
+        code: "DIRECTOR_REQUIRED",
+        message: "Apenas administradores autorizados podem remover usuarios.",
+      }),
+    };
+    throw errorByCode[authorizationDecision.code!];
+  }
+
+  const { data: ownStudents, error: ownStudentsError } =
+    await ctx.supabaseAdmin
+      .from("students")
+      .select("id")
+      .eq("profile_id", membership.profile_id)
+      .eq("institution_id", input.institutionId);
+
+  if (ownStudentsError) throw ownStudentsError;
+
+  const ownStudentIds = (ownStudents ?? []).map((student) => student.id);
+
+  if (ownStudentIds.length > 0) {
+    const { count: enrollmentCount, error: enrollmentError } =
+      await ctx.supabaseAdmin
+        .from("enrollments")
+        .select("id", { count: "exact", head: true })
+        .in("student_id", ownStudentIds);
+
+    if (enrollmentError) throw enrollmentError;
+    if ((enrollmentCount ?? 0) > 0) {
+      throw new ManageSchoolUserError({
+        status: 409,
+        code: "USER_HAS_RELATED_RECORDS",
+        message:
+          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+      });
+    }
+
+    const { count: gradeCount, error: gradeError } = await ctx.supabaseAdmin
+      .from("grades")
+      .select("id", { count: "exact", head: true })
+      .in("student_id", ownStudentIds);
+
+    if (gradeError) throw gradeError;
+    if ((gradeCount ?? 0) > 0) {
+      throw new ManageSchoolUserError({
+        status: 409,
+        code: "USER_HAS_RELATED_RECORDS",
+        message:
+          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+      });
+    }
+
+    const { count: attendanceCount, error: attendanceError } =
+      await ctx.supabaseAdmin
+        .from("attendance_records")
+        .select("id", { count: "exact", head: true })
+        .in("student_id", ownStudentIds);
+
+    if (attendanceError) throw attendanceError;
+    if ((attendanceCount ?? 0) > 0) {
+      throw new ManageSchoolUserError({
+        status: 409,
+        code: "USER_HAS_RELATED_RECORDS",
+        message:
+          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+      });
+    }
+
+    const { count: termResultCount, error: termResultError } =
+      await ctx.supabaseAdmin
+        .from("student_term_results")
+        .select("id", { count: "exact", head: true })
+        .in("student_id", ownStudentIds);
+
+    if (termResultError) throw termResultError;
+    if ((termResultCount ?? 0) > 0) {
+      throw new ManageSchoolUserError({
+        status: 409,
+        code: "USER_HAS_RELATED_RECORDS",
+        message:
+          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+      });
+    }
+  }
+
+  const { data: guardianLinks, error: guardianLinksError } =
+    await ctx.supabaseAdmin
+      .from("guardianships")
+      .select("id, student_id")
+      .eq("guardian_profile_id", membership.profile_id);
+
+  if (guardianLinksError) throw guardianLinksError;
+
+  const guardianStudentIds = (guardianLinks ?? []).map(
+    (link) => link.student_id,
+  );
+  let scopedGuardianLinkIds: string[] = [];
+
+  if (ownStudentIds.length > 0) {
+    const { data: studentGuardianLinks, error: studentGuardianLinksError } =
+      await ctx.supabaseAdmin
+        .from("guardianships")
+        .select("id")
+        .in("student_id", ownStudentIds);
+
+    if (studentGuardianLinksError) throw studentGuardianLinksError;
+    scopedGuardianLinkIds = (studentGuardianLinks ?? []).map(
+      (link) => link.id,
+    );
+  }
+
+  if (guardianStudentIds.length > 0) {
+    const { data: scopedStudents, error: scopedStudentsError } =
+      await ctx.supabaseAdmin
+        .from("students")
+        .select("id")
+        .eq("institution_id", input.institutionId)
+        .in("id", guardianStudentIds);
+
+    if (scopedStudentsError) throw scopedStudentsError;
+
+    const scopedStudentIds = new Set(
+      (scopedStudents ?? []).map((student) => student.id),
+    );
+    scopedGuardianLinkIds = scopedGuardianLinkIds.concat(
+      (guardianLinks ?? [])
+        .filter((link) => scopedStudentIds.has(link.student_id))
+        .map((link) => link.id),
+    );
+  }
+
+  const uniqueGuardianLinkIds = [...new Set(scopedGuardianLinkIds)];
+  if (uniqueGuardianLinkIds.length > 0) {
+    const { error: guardianshipDeleteError } = await ctx.supabaseAdmin
+      .from("guardianships")
+      .delete()
+      .in("id", uniqueGuardianLinkIds);
+
+    if (guardianshipDeleteError) throw guardianshipDeleteError;
+  }
+
+  if (ownStudentIds.length > 0) {
+    const { error: studentDeleteError } = await ctx.supabaseAdmin
+      .from("students")
+      .delete()
+      .in("id", ownStudentIds);
+
+    if (studentDeleteError) throw studentDeleteError;
+  }
 
   const { error: membershipDeleteError } = await ctx.supabaseAdmin
     .from("memberships")
@@ -847,6 +1063,7 @@ const authenticatedFetch = withSupabase<Database>(
             allowOperationalManager:
               input.action === "link_guardian" ||
               (input.action === "update" && input.password !== undefined),
+            allowDirectorDelete: input.action === "delete",
           },
         );
 
@@ -854,7 +1071,7 @@ const authenticatedFetch = withSupabase<Database>(
           return await handleUpdate(ctx, user.id, input, authorization);
         }
         if (input.action === "delete") {
-          return await handleDelete(ctx, user.id, input);
+          return await handleDelete(ctx, user.id, input, authorization);
         }
         if (input.action === "generate_access") {
           return await handleGenerateAccess(ctx, user.id, input);
