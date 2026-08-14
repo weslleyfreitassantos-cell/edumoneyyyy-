@@ -10,6 +10,11 @@ export const directorCameraKeys = {
   list: (institutionId: string | undefined) => [...directorCameraKeys.all, institutionId ?? 'none'] as const,
 };
 
+export const directorGatewayKeys = {
+  all: ['director-camera-gateways'] as const,
+  list: (institutionId: string | undefined) => [...directorGatewayKeys.all, institutionId ?? 'none'] as const,
+};
+
 export function useDirectorCameras(institutionId: string | null) {
   return useQuery({
     queryKey: directorCameraKeys.list(institutionId ?? undefined),
@@ -17,6 +22,18 @@ export function useDirectorCameras(institutionId: string | null) {
     enabled: Boolean(institutionId),
     staleTime: 15_000,
     refetchInterval: 30_000,
+  });
+}
+
+export function useDirectorCameraGateways(institutionId: string | null) {
+  return useQuery({
+    queryKey: directorGatewayKeys.list(institutionId ?? undefined),
+    queryFn: () => cameraService.listGateways(institutionId as string),
+    enabled: Boolean(institutionId),
+    staleTime: 0,
+    refetchInterval: 10_000,
+    refetchIntervalInBackground: true,
+    refetchOnWindowFocus: true,
   });
 }
 
