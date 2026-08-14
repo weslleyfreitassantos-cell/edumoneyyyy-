@@ -7,6 +7,7 @@ import {
 
 import {
   Edit3,
+  KeyRound,
   Loader2,
   PlusCircle,
   Search,
@@ -275,11 +276,13 @@ function SchoolUsersTable({
   users,
   onEdit,
   onDelete,
+  onGenerateAccess,
   isBusy,
 }: {
   users: SchoolUserRow[];
   onEdit: (user: SchoolUserRow) => void;
   onDelete: (user: SchoolUserRow) => void;
+  onGenerateAccess: (user: SchoolUserRow) => void;
   isBusy: boolean;
 }) {
   return (
@@ -364,6 +367,23 @@ function SchoolUsersTable({
 
                 <td className="px-4 py-3">
                   <div className="flex justify-end gap-2">
+                    <button
+                      type="button"
+                      title="Gerar nova senha de acesso"
+                      aria-label={`Gerar nova senha de acesso para ${
+                        user.profile?.full_name ??
+                        'usuario'
+                      }`}
+                      disabled={isBusy}
+                      onClick={() => onGenerateAccess(user)}
+                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-amber-200 text-amber-700 transition hover:bg-amber-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <KeyRound
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    </button>
+
                     <button
                       type="button"
                       title="Editar usuario"
@@ -764,6 +784,47 @@ export default function SchoolUsersTab() {
     );
   }
 
+  function handleGenerateAccess(user: SchoolUserRow) {
+    if (!institutionId || isManaging) {
+      return;
+    }
+
+    const name =
+      user.profile?.full_name ??
+      user.profile?.email ??
+      'este usuario';
+    const confirmed = window.confirm(
+      `A senha atual de ${name} deixara de funcionar. Deseja gerar uma nova senha de acesso?`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    manageUserMutation.mutate(
+      {
+        action: 'generate_access',
+        institutionId,
+        membershipId: user.id,
+        confirmation: 'GERAR NOVA SENHA',
+      },
+      {
+        onSuccess: (result) => {
+          setFeedback({
+            type: 'success',
+            message: result.message,
+          });
+        },
+        onError: (error) => {
+          setFeedback({
+            type: 'error',
+            message: getErrorMessage(error),
+          });
+        },
+      },
+    );
+  }
+
   if (institutionQuery.isLoading) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
@@ -961,6 +1022,7 @@ export default function SchoolUsersTab() {
             users={filteredUsers}
             onEdit={setEditingUser}
             onDelete={handleDeleteUser}
+            onGenerateAccess={handleGenerateAccess}
             isBusy={isManaging}
           />
         )}

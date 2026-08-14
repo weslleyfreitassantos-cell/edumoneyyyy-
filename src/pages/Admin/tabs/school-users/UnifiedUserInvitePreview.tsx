@@ -75,13 +75,13 @@ function getTargetNote(
 ): string {
   switch (target) {
     case 'STUDENT':
-      return 'Cria usuario, profile, membership STUDENT e registro em students. O RA continua gerado pelo banco.';
+      return 'Cria usuario, profile, membership STUDENT e registro em students. O RA continua gerado pelo banco e as credenciais sao enviadas por e-mail.';
     case 'TEACHER':
-      return 'Cria usuario, profile e membership TEACHER. Atribuicoes academicas seguem em fluxo separado.';
+      return 'Cria usuario, profile e membership TEACHER e envia as credenciais por e-mail. Atribuicoes academicas seguem em fluxo separado.';
     case 'GUARDIAN':
-      return 'Cria usuario, profile, membership GUARDIAN e vinculo guardianships com aluno da escola ativa.';
+      return 'Cria usuario, profile, membership GUARDIAN, vinculo guardianships e envia as credenciais por e-mail.';
     case 'DIRECTOR':
-      return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode convidar diretor.';
+      return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode criar este acesso.';
     case 'SECRETARY':
       return 'Cria usuario, profile e membership SECRETARY para operacao institucional.';
   }
@@ -331,7 +331,7 @@ export default function UnifiedUserInvitePreview({
       setFeedback({
         type: 'error',
         message:
-          'Nao foi possivel enviar o convite.',
+          'Nao foi possivel criar e enviar o acesso.',
       });
     }
   }
@@ -360,7 +360,7 @@ export default function UnifiedUserInvitePreview({
           role="alert"
           className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700"
         >
-          Selecione uma escola ativa para enviar convites.
+          Selecione uma escola ativa para criar acessos.
         </div>
       )}
 
@@ -744,7 +744,7 @@ export default function UnifiedUserInvitePreview({
             )}
             {inviteMutation.isPending
               ? 'Enviando...'
-              : 'Enviar convite'}
+              : 'Criar e enviar acesso'}
           </button>
         </div>
       </form>
