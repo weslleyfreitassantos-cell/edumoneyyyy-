@@ -229,8 +229,7 @@ export function buildSchoolAccessEmail({
           <tr><td style="padding:32px 28px;">
             <p style="margin:0 0 12px;font-size:16px;line-height:24px;">Olá, ${escapeHtml(recipientName)}.</p>
             <h1 style="margin:0 0 12px;font-size:24px;line-height:32px;color:${safePrimaryColor};">Seja bem-vindo(a)!</h1>
-            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Seu acesso ao ambiente digital está pronto.</p>
-            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Seu perfil é <strong>${escapeHtml(getSchoolAccessRoleLabel(role))}</strong>.</p>
+            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Seu acesso ao ambiente digital está pronto.</p>            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Seu perfil é <strong>${escapeHtml(getSchoolAccessRoleLabel(role))}</strong>.</p>
             <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
               <tr><td style="padding:0 0 4px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;">Usuário</td></tr>
               <tr><td style="padding:0 0 12px;color:#0f172a;font-size:16px;font-weight:700;">${escapeHtml(recipientEmail)}</td></tr>
