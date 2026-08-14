@@ -104,6 +104,22 @@ function normalize(row: Record<string, unknown>): DirectorCamera {
   };
 }
 
+function cameraRpcFields(input: CameraMutationInput): Record<string, unknown> {
+  return {
+    camera_name: input.name.trim(),
+    camera_location: input.location.trim(),
+    camera_manufacturer: input.manufacturer.trim(),
+    camera_model: input.model.trim(),
+    camera_device_type: input.deviceType,
+    camera_protocol: input.protocol,
+    camera_host: input.host.trim(),
+    camera_port: Number(input.port),
+    camera_channel: input.deviceType === 'NVR' ? input.channel : null,
+    camera_stream_profile: input.streamProfile,
+    camera_gateway_id: input.gatewayId?.trim() || null,
+  };
+}
+
 async function invoke<T>(name: string, args: Record<string, unknown>): Promise<T> {
   const { data, error } = await supabase.rpc(name, args);
   if (error) throw serviceError(error);
@@ -132,35 +148,15 @@ export const cameraService = {
 
   async create(input: CameraMutationInput): Promise<string> {
     return invoke<string>('create_director_camera', {
-      target_institution_id: input.institutionId,
-      camera_name: input.name,
-      camera_location: input.location,
-      camera_manufacturer: input.manufacturer,
-      camera_model: input.model,
-      camera_device_type: input.deviceType,
-      camera_protocol: input.protocol,
-      camera_host: input.host,
-      camera_port: input.port,
-      camera_channel: input.channel,
-      camera_stream_profile: input.streamProfile,
-      camera_gateway_id: input.gatewayId,
+      target_institution_id: input.institutionId.trim(),
+      ...cameraRpcFields(input),
     });
   },
 
   async update(cameraId: string, input: CameraMutationInput): Promise<boolean> {
     return invoke<boolean>('update_director_camera', {
       target_camera_id: cameraId,
-      camera_name: input.name,
-      camera_location: input.location,
-      camera_manufacturer: input.manufacturer,
-      camera_model: input.model,
-      camera_device_type: input.deviceType,
-      camera_protocol: input.protocol,
-      camera_host: input.host,
-      camera_port: input.port,
-      camera_channel: input.channel,
-      camera_stream_profile: input.streamProfile,
-      camera_gateway_id: input.gatewayId,
+      ...cameraRpcFields(input),
       camera_active: input.active ?? true,
     });
   },

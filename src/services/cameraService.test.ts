@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { supabase } from '../lib/supabaseClient';
-import { cameraService } from './cameraService';
+import { cameraService, type CameraMutationInput } from './cameraService';
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: { rpc: vi.fn() },
@@ -62,6 +62,42 @@ describe('cameraService', () => {
     }]);
     expect(supabase.rpc).toHaveBeenCalledWith('list_director_camera_gateways', {
       target_institution_id: 'institution-1',
+    });
+  });
+
+  it('normaliza o payload antes de criar a câmera no RPC', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({ data: 'camera-1', error: null } as never);
+
+    const input: CameraMutationInput = {
+      institutionId: ' institution-1 ',
+      name: ' Entrada ',
+      location: ' Sala ',
+      manufacturer: ' Outro ',
+      model: ' LifeCam ',
+      deviceType: 'IP_CAMERA',
+      protocol: 'RTSP',
+      host: ' 127.0.0.1 ',
+      port: 8554,
+      channel: 1,
+      streamProfile: 'MAIN',
+      gatewayId: ' gateway-1 ',
+    };
+
+    await cameraService.create(input);
+
+    expect(supabase.rpc).toHaveBeenCalledWith('create_director_camera', {
+      target_institution_id: 'institution-1',
+      camera_name: 'Entrada',
+      camera_location: 'Sala',
+      camera_manufacturer: 'Outro',
+      camera_model: 'LifeCam',
+      camera_device_type: 'IP_CAMERA',
+      camera_protocol: 'RTSP',
+      camera_host: '127.0.0.1',
+      camera_port: 8554,
+      camera_channel: null,
+      camera_stream_profile: 'MAIN',
+      camera_gateway_id: 'gateway-1',
     });
   });
 });
