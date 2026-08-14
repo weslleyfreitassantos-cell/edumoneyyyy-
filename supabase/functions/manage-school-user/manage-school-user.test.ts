@@ -33,6 +33,21 @@ describe('manage-school-user', () => {
     expect(source).toContain('.eq("institution_id", input.institutionId)');
   });
 
+  it('autoriza DELETE de DIRECTOR somente com membership ativo da instituicao alvo', () => {
+    expect(source).toContain('allowDirectorDelete: input.action === "delete"');
+    expect(source).toContain('const isDirector =');
+    expect(source).toContain('TARGET_OUTSIDE_INSTITUTION');
+    expect(source).toContain('.eq("institution_id", input.institutionId)');
+  });
+
+  it('protege historico academico e limita vinculos de guardianship ao tenant', () => {
+    expect(source).toContain('USER_HAS_RELATED_RECORDS');
+    expect(source).toContain('.in("student_id", ownStudentIds)');
+    expect(source).toContain('.from("student_term_results")');
+    expect(source).toContain('.eq("institution_id", input.institutionId)');
+    expect(source).toContain('.eq("id", membership.id)');
+  });
+
   it('deletes auth users only after removing the final membership', () => {
     expect(source).toContain('remainingMemberships');
     expect(source).toContain('authUserDeleted');
