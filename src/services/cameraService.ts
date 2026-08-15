@@ -1,6 +1,7 @@
 import { supabase } from '../lib/supabaseClient';
 
 export type CameraGatewayStatus = 'ONLINE' | 'OFFLINE' | 'UNKNOWN';
+export type CameraRelayStatus = 'ONLINE' | 'OFFLINE' | 'UNKNOWN';
 export type CameraDeviceType = 'IP_CAMERA' | 'NVR';
 export type CameraProtocol = 'ONVIF' | 'RTSP';
 export type CameraStreamProfile = 'MAIN' | 'SUB';
@@ -51,6 +52,9 @@ export interface CameraGateway {
   name: string;
   status: CameraGatewayStatus;
   lastSeenAt: string | null;
+  relayStatus: CameraRelayStatus;
+  relayLastSeenAt: string | null;
+  relayConfigured: boolean;
 }
 
 export interface CameraStreamSession {
@@ -76,20 +80,6 @@ function serviceError(error: { message?: string; code?: string } | null): Camera
   if (code === '22023') return new CameraServiceError('Revise os dados da câmera e tente novamente.', code);
   if (code === '23503') return new CameraServiceError('O gateway selecionado não pertence a esta instituição.', code);
   return new CameraServiceError('Não foi possível concluir a ação da câmera agora.', code);
-}
-
-function normalizeBrowserPlaybackUrl(playbackUrl: string | null): string | null {
-  if (!playbackUrl) return null;
-
-  try {
-    const parsed = new URL(playbackUrl);
-    if (parsed.protocol === 'http:' && parsed.hostname === '127.0.0.1') {
-      parsed.hostname = 'localhost';
-    }
-    return parsed.toString();
-  } catch {
-    return playbackUrl;
-  }
 }
 
 function normalize(row: Record<string, unknown>): DirectorCamera {
@@ -149,14 +139,25 @@ export const cameraService = {
   },
 
   async listGateways(institutionId: string): Promise<CameraGateway[]> {
-    const rows = await invoke<Record<string, unknown>[]>('list_director_camera_gateways', {
-      target_institution_id: institutionId,
-    });
+    let rows: Record<string, unknown>[];
+    try {
+      rows = await invoke<Record<string, unknown>[]>('list_director_camera_gateways_v2', {
+        target_institution_id: institutionId,
+      });
+    } catch (error) {
+      if (!(error instanceof CameraServiceError) || error.code !== 'PGRST202') throw error;
+      rows = await invoke<Record<string, unknown>[]>('list_director_camera_gateways', {
+        target_institution_id: institutionId,
+      });
+    }
     return (rows ?? []).map((row) => ({
       id: String(row.gateway_id),
       name: String(row.gateway_name ?? ''),
       status: (row.gateway_status as CameraGatewayStatus | null) ?? 'UNKNOWN',
       lastSeenAt: row.gateway_last_seen_at ? String(row.gateway_last_seen_at) : null,
+      relayStatus: (row.relay_status as CameraRelayStatus | null) ?? 'UNKNOWN',
+      relayLastSeenAt: row.relay_last_seen_at ? String(row.relay_last_seen_at) : null,
+      relayConfigured: row.relay_configured === true,
     }));
   },
 
@@ -200,6 +201,9 @@ export const cameraService = {
       name,
       status: 'UNKNOWN',
       lastSeenAt: null,
+      relayStatus: 'UNKNOWN',
+      relayLastSeenAt: null,
+      relayConfigured: false,
       pairingCode: String(row.pairing_code),
       pairingExpiresAt: String(row.pairing_expires_at),
     };
@@ -225,7 +229,7 @@ export const cameraService = {
     return {
       sessionId: String(row.session_id),
       protocol: 'HLS',
-      playbackUrl: normalizeBrowserPlaybackUrl(row.playback_url ? String(row.playback_url) : null),
+      playbackUrl: row.playback_url ? String(row.playback_url) : null,
       expiresAt: String(row.expires_at),
     };
   },

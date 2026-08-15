@@ -8,6 +8,8 @@ import type {
 export interface GatewayCloudApi {
   pair(pairingCode: string, localBaseUrl: string): Promise<PairResponse>;
   heartbeat(config: GatewayConfig): Promise<void>;
+  relayHeartbeat(config: GatewayConfig, relayBaseUrl: string): Promise<void>;
+  provisionRelay(config: GatewayConfig): Promise<{ relayBaseUrl: string; tunnelId: string; tunnelToken: string }>;
   sync(config: GatewayConfig): Promise<CameraConfig[]>;
   redeemStreamSession(config: GatewayConfig, sessionId: string, sessionToken: string): Promise<StreamSessionAuthorization>;
 }
@@ -21,6 +23,9 @@ interface GatewayResponse {
   institution_id?: string;
   gateway_token?: string;
   local_base_url?: string;
+  relay_base_url?: string;
+  tunnel_id?: string;
+  tunnel_token?: string;
   paired_at?: string;
   cameras?: CameraConfig[];
   camera_id?: string;
@@ -46,6 +51,8 @@ function safeError(status: number, body: GatewayResponse | null): Error {
     PAIRING_REJECTED: 'O codigo de pareamento e invalido ou expirou.',
     GATEWAY_REJECTED: 'O gateway nao esta autorizado.',
     SESSION_REJECTED: 'A sessao da camera e invalida ou expirou.',
+    RELAY_REJECTED: 'O relay HTTPS nao esta autorizado.',
+    RELAY_INVALID: 'A URL do relay HTTPS e invalida.',
   };
   const code = body?.code ?? body?.error;
   const message = typeof code === 'string' && messages[code]
@@ -134,12 +141,33 @@ export class SupabaseGatewayApi implements GatewayCloudApi {
       institutionId: response.institution_id,
       gatewayToken: response.gateway_token,
       localBaseUrl: response.local_base_url ?? localBaseUrl,
+      relayBaseUrl: response.relay_base_url ?? null,
       pairedAt: response.paired_at ?? new Date().toISOString(),
     };
   }
 
   async heartbeat(config: GatewayConfig): Promise<void> {
     await this.request('heartbeat', { gateway_id: config.gatewayId, ...this.requestEnvelope() }, config.gatewayToken);
+  }
+
+  async relayHeartbeat(config: GatewayConfig, relayBaseUrl: string): Promise<void> {
+    await this.request('relay_heartbeat', {
+      gateway_id: config.gatewayId,
+      relay_base_url: relayBaseUrl,
+      ...this.requestEnvelope(),
+    }, config.gatewayToken);
+  }
+
+  async provisionRelay(config: GatewayConfig): Promise<{ relayBaseUrl: string; tunnelId: string; tunnelToken: string }> {
+    const response = await this.request('provision_relay', { gateway_id: config.gatewayId, ...this.requestEnvelope() }, config.gatewayToken);
+    if (!response.relay_base_url || !response.tunnel_id || !response.tunnel_token) {
+      throw new Error('Resposta de provisionamento do relay incompleta.');
+    }
+    return {
+      relayBaseUrl: response.relay_base_url,
+      tunnelId: response.tunnel_id,
+      tunnelToken: response.tunnel_token,
+    };
   }
 
   async sync(config: GatewayConfig): Promise<CameraConfig[]> {

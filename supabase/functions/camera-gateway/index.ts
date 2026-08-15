@@ -1,7 +1,7 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.110.2";
 
-type Action = "pair" | "heartbeat" | "sync" | "redeem_stream_session";
+type Action = "pair" | "heartbeat" | "relay_heartbeat" | "provision_relay" | "sync" | "redeem_stream_session";
 type JsonRecord = Record<string, unknown>;
 
 const supabaseUrl = Deno.env.get("SUPABASE_URL");
@@ -74,11 +74,141 @@ function localUrlField(body: JsonRecord, key: string): string | null {
   }
 }
 
+function relayUrlField(body: JsonRecord, key: string): string | null {
+  const value = textField(body, key, 253);
+  if (!value) return null;
+  try {
+    const parsed = new URL(value);
+    const hostname = parsed.hostname.toLowerCase();
+    if (parsed.protocol !== "https:"
+      || parsed.username
+      || parsed.password
+      || parsed.pathname !== "/"
+      || parsed.search
+      || parsed.hash
+      || !/^gw-[0-9a-f]{16}\.cameras\.grupotec\.dev\.br$/i.test(hostname)) return null;
+    return value.replace(/\/$/, "");
+  } catch {
+    return null;
+  }
+}
+
 function actionField(body: JsonRecord): Action | null {
   const value = body.action;
-  return value === "pair" || value === "heartbeat" || value === "sync" || value === "redeem_stream_session"
+  return value === "pair" || value === "heartbeat" || value === "relay_heartbeat" || value === "provision_relay" || value === "sync" || value === "redeem_stream_session"
     ? value
     : null;
+}
+
+function cloudflareConfig(): { accountId: string; zoneId: string; apiToken: string } {
+  const accountId = Deno.env.get("CLOUDFLARE_ACCOUNT_ID");
+  const zoneId = Deno.env.get("CLOUDFLARE_ZONE_ID");
+  const apiToken = Deno.env.get("CLOUDFLARE_API_TOKEN");
+  if (!accountId || !zoneId || !apiToken) throw new Error("Cloudflare relay is not configured.");
+  return { accountId, zoneId, apiToken };
+}
+
+async function cloudflareRequest(path: string, init: RequestInit = {}): Promise<unknown> {
+  const { apiToken } = cloudflareConfig();
+  const requestHeaders = new Headers(init.headers);
+  requestHeaders.set("authorization", `Bearer ${apiToken}`);
+  requestHeaders.set("content-type", "application/json");
+  const response = await fetch(`https://api.cloudflare.com/client/v4${path}`, {
+    ...init,
+    headers: requestHeaders,
+  });
+  let body: JsonRecord;
+  try {
+    body = await response.json() as JsonRecord;
+  } catch {
+    throw new Error("Cloudflare relay returned invalid response.");
+  }
+  if (!response.ok || body.success !== true || body.result === undefined) {
+    throw new Error("Cloudflare relay request failed.");
+  }
+  return body.result;
+}
+
+function tunnelSecret(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(32));
+  let binary = "";
+  for (const byte of bytes) binary += String.fromCharCode(byte);
+  return btoa(binary);
+}
+
+async function ensureRelayDns(zoneId: string, hostname: string, tunnelId: string): Promise<void> {
+  const existing = await cloudflareRequest(`/zones/${zoneId}/dns_records?type=CNAME&name=${encodeURIComponent(hostname)}`);
+  const records = Array.isArray(existing) ? existing : [];
+  const payload = JSON.stringify({
+    type: "CNAME",
+    name: hostname,
+    content: `${tunnelId}.cfargotunnel.com`,
+    proxied: true,
+    ttl: 1,
+  });
+  if (records.length > 0 && records[0] && typeof records[0] === "object" && typeof (records[0] as JsonRecord).id === "string") {
+    await cloudflareRequest(`/zones/${zoneId}/dns_records/${(records[0] as JsonRecord).id}`, { method: "PUT", body: payload });
+    return;
+  }
+  await cloudflareRequest(`/zones/${zoneId}/dns_records`, { method: "POST", body: payload });
+}
+
+async function provisionRelay(
+  gatewayId: string,
+  gatewayToken: string,
+  requestId: string,
+  requestExpiresAt: string,
+): Promise<Response> {
+  const identityResult = await admin.rpc("get_camera_gateway_relay_identity", {
+    target_gateway_id: gatewayId,
+    target_gateway_token: gatewayToken,
+    target_request_id: requestId,
+    target_request_expires_at: requestExpiresAt,
+  });
+  if (identityResult.error) return errorResponse(401, "RELAY_REJECTED", "Gateway nao autorizado.");
+  const identity = Array.isArray(identityResult.data) ? identityResult.data[0] as JsonRecord | undefined : undefined;
+  if (!identity?.public_id || !identity.relay_hostname) return errorResponse(403, "RELAY_REJECTED", "Identidade do relay indisponivel.");
+
+  const { accountId, zoneId } = cloudflareConfig();
+  let tunnelId = typeof identity.tunnel_id === "string" ? identity.tunnel_id : null;
+  if (!tunnelId) {
+    const created = await cloudflareRequest(`/accounts/${accountId}/cfd_tunnel`, {
+      method: "POST",
+      body: JSON.stringify({
+        name: `edumanager-${identity.public_id}`,
+        config_src: "cloudflare",
+        tunnel_secret: tunnelSecret(),
+      }),
+    });
+    if (!created || typeof created !== "object" || typeof (created as JsonRecord).id !== "string") {
+      throw new Error("Cloudflare tunnel response is invalid.");
+    }
+    tunnelId = (created as JsonRecord).id as string;
+  }
+
+  const hostname = String(identity.relay_hostname).toLowerCase();
+  const relayBaseUrl = `https://${hostname}`;
+  await cloudflareRequest(`/accounts/${accountId}/cfd_tunnel/${tunnelId}/configurations`, {
+    method: "PUT",
+    body: JSON.stringify({ config: { ingress: [
+      { hostname, path: "/stream/.*", service: "http://127.0.0.1:8787" },
+      { service: "http_status:404" },
+    ] } }),
+  });
+  await ensureRelayDns(zoneId, hostname, tunnelId);
+  const tokenResult = await cloudflareRequest(`/accounts/${accountId}/cfd_tunnel/${tunnelId}/token`);
+  if (typeof tokenResult !== "string" || tokenResult.length < 32) throw new Error("Cloudflare tunnel token is invalid.");
+
+  const saved = await admin.rpc("save_camera_gateway_relay", {
+    target_gateway_id: gatewayId,
+    target_gateway_token: gatewayToken,
+    target_tunnel_id: tunnelId,
+    target_relay_base_url: relayBaseUrl,
+    target_request_id: crypto.randomUUID(),
+    target_request_expires_at: new Date(Date.now() + 60_000).toISOString(),
+  });
+  if (saved.error) throw saved.error;
+  return response({ success: true, relay_base_url: relayBaseUrl, tunnel_id: tunnelId, tunnel_token: tokenResult });
 }
 
 async function run(request: Request): Promise<Response> {
@@ -132,6 +262,15 @@ async function run(request: Request): Promise<Response> {
     const requestExpiresAt = timestampField(body, "expires_at");
     if (!requestNonce || !requestExpiresAt) return errorResponse(400, "INVALID_PAYLOAD", "Requisicao de gateway invalida.");
 
+    if (action === "provision_relay") {
+      try {
+        return await provisionRelay(gatewayId, gatewayToken, requestNonce, requestExpiresAt);
+      } catch (error) {
+        console.error(JSON.stringify({ request_id: id, action, code: "RELAY_PROVISION_FAILED" }));
+        return errorResponse(502, "RELAY_PROVISION_FAILED", "Nao foi possivel preparar o relay HTTPS agora.");
+      }
+    }
+
     if (action === "heartbeat") {
       const { error } = await admin.rpc("heartbeat_camera_gateway_runtime", {
         target_gateway_id: gatewayId,
@@ -141,6 +280,23 @@ async function run(request: Request): Promise<Response> {
       });
       if (error) return errorResponse(401, "GATEWAY_REJECTED", "Gateway nao autorizado.");
       return response({ success: true });
+    }
+
+    if (action === "relay_heartbeat") {
+      const relayBaseUrl = relayUrlField(body, "relay_base_url");
+      if (!relayBaseUrl) return errorResponse(400, "RELAY_INVALID", "URL do relay HTTPS invalida.");
+      const { error } = await admin.rpc("register_camera_gateway_relay", {
+        target_gateway_id: gatewayId,
+        target_gateway_token: gatewayToken,
+        target_relay_base_url: relayBaseUrl,
+        target_request_id: requestNonce,
+        target_request_expires_at: requestExpiresAt,
+      });
+      if (error) {
+        if (error.code === "22023") return errorResponse(400, "RELAY_INVALID", "URL do relay HTTPS invalida.");
+        return errorResponse(401, "RELAY_REJECTED", "O relay HTTPS nao esta autorizado.");
+      }
+      return response({ success: true, relay_base_url: relayBaseUrl });
     }
 
     if (action === "sync") {

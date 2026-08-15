@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { listenHostForLocalBaseUrl, validateLocalBaseUrl, validateMediaMtxRtspUrl } from './config.ts';
+import { listenHostForLocalBaseUrl, validateLocalBaseUrl, validateMediaMtxRtspUrl, validateRelayBaseUrl } from './config.ts';
 
 describe('gateway local URL', () => {
   it('aceita loopback e LAN privada', () => {
@@ -15,5 +15,11 @@ describe('gateway local URL', () => {
 
   it('aceita a raiz RTSP do MediaMTX sem barra final', () => {
     expect(validateMediaMtxRtspUrl('rtsp://127.0.0.1:8554')).toBe('rtsp://127.0.0.1:8554');
+  });
+
+  it('aceita somente hostname HTTPS do relay controlado', () => {
+    expect(validateRelayBaseUrl('https://gw-0123456789abcdef.cameras.grupotec.dev.br/')).toBe('https://gw-0123456789abcdef.cameras.grupotec.dev.br');
+    expect(() => validateRelayBaseUrl('http://gw-0123456789abcdef.cameras.grupotec.dev.br')).toThrow(/HTTPS/i);
+    expect(() => validateRelayBaseUrl('https://example.com')).toThrow(/dominio/i);
   });
 });

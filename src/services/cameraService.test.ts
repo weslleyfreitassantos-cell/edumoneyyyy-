@@ -59,8 +59,27 @@ describe('cameraService', () => {
       name: 'Gateway principal',
       status: 'ONLINE',
       lastSeenAt: '2026-08-14T21:46:18.758Z',
+      relayStatus: 'UNKNOWN',
+      relayLastSeenAt: null,
+      relayConfigured: false,
     }]);
-    expect(supabase.rpc).toHaveBeenCalledWith('list_director_camera_gateways', {
+    expect(supabase.rpc).toHaveBeenCalledWith('list_director_camera_gateways_v2', {
+      target_institution_id: 'institution-1',
+    });
+  });
+
+  it('mantem compatibilidade enquanto a RPC de relay ainda nao foi aplicada', async () => {
+    vi.mocked(supabase.rpc)
+      .mockResolvedValueOnce({ data: null, error: { code: 'PGRST202', message: 'function not found' } } as never)
+      .mockResolvedValueOnce({
+        data: [{ gateway_id: 'gateway-1', gateway_name: 'Gateway local', gateway_status: 'ONLINE', gateway_last_seen_at: null }],
+        error: null,
+      } as never);
+
+    await expect(cameraService.listGateways('institution-1')).resolves.toEqual([expect.objectContaining({
+      id: 'gateway-1', relayConfigured: false, relayStatus: 'UNKNOWN',
+    })]);
+    expect(supabase.rpc).toHaveBeenNthCalledWith(2, 'list_director_camera_gateways', {
       target_institution_id: 'institution-1',
     });
   });
@@ -101,18 +120,18 @@ describe('cameraService', () => {
     });
   });
 
-  it('normaliza o endpoint local do gateway para o navegador em uma pagina HTTPS', async () => {
+  it('preserva URL HTTPS do relay remoto sem expor dados de camera', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [{
         session_id: 'session-1',
-        playback_url: 'http://127.0.0.1:8787/stream/session-1/index.m3u8?token=opaque',
+        playback_url: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
         expires_at: '2026-08-15T23:00:00.000Z',
       }],
       error: null,
     } as never);
 
     await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
-      playbackUrl: 'http://localhost:8787/stream/session-1/index.m3u8?token=opaque',
+      playbackUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
     });
   });
 });

@@ -33,6 +33,9 @@ export class GatewayRuntime {
   private syncTimer: NodeJS.Timeout | null = null;
   private lastHeartbeatAt: string | null = null;
   private lastSyncAt: string | null = null;
+  private lastRelayHeartbeatAt: string | null = null;
+  private relayError: string | null = null;
+  private relayOnline = false;
   private lastError: string | null = null;
   private revoked = false;
   private running = false;
@@ -77,6 +80,20 @@ export class GatewayRuntime {
     try {
       await this.options.api.heartbeat(this.options.config);
       this.lastHeartbeatAt = new Date().toISOString();
+      if (this.options.config.relayBaseUrl) {
+        try {
+          await this.options.api.relayHeartbeat(this.options.config, this.options.config.relayBaseUrl);
+          this.lastRelayHeartbeatAt = new Date().toISOString();
+          this.relayOnline = true;
+          this.relayError = null;
+        } catch {
+          this.relayOnline = false;
+          this.relayError = 'Relay HTTPS indisponivel.';
+        }
+      } else {
+        this.relayOnline = false;
+        this.relayError = null;
+      }
       this.lastError = null;
     } catch (error) {
       if (isRevocationError(error)) {
@@ -161,6 +178,10 @@ export class GatewayRuntime {
       running: this.running,
       lastHeartbeatAt: this.lastHeartbeatAt,
       lastSyncAt: this.lastSyncAt,
+      relayConfigured: Boolean(this.options.config.relayBaseUrl),
+      relayOnline: this.relayOnline,
+      lastRelayHeartbeatAt: this.lastRelayHeartbeatAt,
+      relayError: this.relayError,
       cameraCount: this.cameras.size,
       error: this.lastError,
     };

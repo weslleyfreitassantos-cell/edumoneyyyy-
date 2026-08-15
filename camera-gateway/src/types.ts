@@ -1,4 +1,5 @@
 export type CameraGatewayStatus = 'ONLINE' | 'OFFLINE' | 'UNKNOWN';
+export type CameraRelayStatus = 'ONLINE' | 'OFFLINE' | 'UNKNOWN';
 export type GatewayRuntimeState = 'PAIRED' | 'REVOKED';
 
 export interface GatewayConfig {
@@ -8,6 +9,7 @@ export interface GatewayConfig {
   institutionId: string;
   gatewayToken: string;
   localBaseUrl: string;
+  relayBaseUrl: string | null;
   mediaMtxHlsUrl: string;
   mediaMtxRtspUrl: string;
   pairedAt: string;
@@ -17,6 +19,7 @@ export interface PairResponse {
   institutionId: string;
   gatewayToken: string;
   localBaseUrl: string;
+  relayBaseUrl: string | null;
   pairedAt: string;
 }
 
@@ -47,6 +50,10 @@ export interface GatewayStatusSnapshot {
   running: boolean;
   lastHeartbeatAt: string | null;
   lastSyncAt: string | null;
+  relayConfigured: boolean;
+  relayOnline: boolean;
+  lastRelayHeartbeatAt: string | null;
+  relayError: string | null;
   cameraCount: number;
   error: string | null;
 }

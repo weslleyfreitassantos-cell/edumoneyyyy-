@@ -13,6 +13,10 @@ export function runtimePidPath(): string {
   return join(dirname(defaultConfigPath()), 'gateway.pid');
 }
 
+export function defaultTunnelTokenPath(): string {
+  return join(dirname(defaultConfigPath()), 'cloudflared-tunnel.token');
+}
+
 function ensureUrl(value: string, label: string): URL {
   let parsed: URL;
   try {
@@ -47,6 +51,17 @@ export function validateLocalBaseUrl(value: string): string {
   if (!isLocalHost(parsed.hostname)) throw new Error('URL local deve apontar para localhost ou uma rede privada.');
   if (parsed.pathname !== '/' || parsed.search || parsed.hash) {
     throw new Error('URL local deve apontar para a raiz e nao conter query.');
+  }
+  return value.replace(/\/$/, '');
+}
+
+export function validateRelayBaseUrl(value: string): string {
+  const parsed = ensureUrl(value, 'URL do relay HTTPS');
+  if (parsed.protocol !== 'https:' || parsed.pathname !== '/' || parsed.search || parsed.hash) {
+    throw new Error('URL do relay HTTPS deve ser uma raiz HTTPS sem query.');
+  }
+  if (!parsed.hostname.toLowerCase().endsWith('.cameras.grupotec.dev.br')) {
+    throw new Error('URL do relay HTTPS deve usar o dominio cameras.grupotec.dev.br.');
   }
   return value.replace(/\/$/, '');
 }
@@ -106,6 +121,7 @@ export async function readGatewayConfig(path = defaultConfigPath()): Promise<Gat
     institutionId: config.institutionId as string,
     gatewayToken: config.gatewayToken as string,
     localBaseUrl: validateLocalBaseUrl(config.localBaseUrl as string),
+    relayBaseUrl: typeof config.relayBaseUrl === 'string' ? validateRelayBaseUrl(config.relayBaseUrl) : null,
     mediaMtxHlsUrl: typeof config.mediaMtxHlsUrl === 'string' ? validateLocalBaseUrl(config.mediaMtxHlsUrl) : 'http://127.0.0.1:8888',
     mediaMtxRtspUrl: typeof config.mediaMtxRtspUrl === 'string' ? validateMediaMtxRtspUrl(config.mediaMtxRtspUrl) : 'rtsp://127.0.0.1:8554',
     pairedAt: config.pairedAt as string,
@@ -117,6 +133,7 @@ export async function writeGatewayConfig(config: GatewayConfig, path = defaultCo
     ...config,
     supabaseUrl: validateSupabaseUrl(config.supabaseUrl),
     localBaseUrl: validateLocalBaseUrl(config.localBaseUrl),
+    relayBaseUrl: config.relayBaseUrl ? validateRelayBaseUrl(config.relayBaseUrl) : null,
     mediaMtxHlsUrl: validateLocalBaseUrl(config.mediaMtxHlsUrl),
     mediaMtxRtspUrl: validateMediaMtxRtspUrl(config.mediaMtxRtspUrl),
   };
@@ -125,6 +142,12 @@ export async function writeGatewayConfig(config: GatewayConfig, path = defaultCo
   const temporaryPath = `${path}.tmp-${process.pid}`;
   await writeFile(temporaryPath, `${JSON.stringify(normalized, null, 2)}\n`, { encoding: 'utf8', mode: 0o600 });
   await rename(temporaryPath, path);
+}
+
+export async function writeCloudflaredTunnelToken(token: string, path = defaultTunnelTokenPath()): Promise<void> {
+  if (!token || token.length < 32 || /[\r\n]/.test(token)) throw new Error('Token do tunnel invalido.');
+  await mkdir(dirname(path), { recursive: true });
+  await writeFile(path, `${token}\n`, { encoding: 'utf8', mode: 0o600 });
 }
 
 export async function removeGatewayConfig(path = defaultConfigPath()): Promise<void> {
