@@ -212,6 +212,34 @@ function PageLoading() {
   );
 }
 
+function AuthenticatedPageLoading() {
+  return (
+    <main
+      id="app-main-content"
+      className="min-w-0 flex-1 bg-[#f3f6fb] p-4 sm:p-6 dark:bg-slate-950"
+    >
+      <div
+        role="status"
+        className="grid min-h-48 place-items-center rounded-2xl border border-slate-200 bg-white text-sm font-medium text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400"
+      >
+        Carregando conteúdo...
+      </div>
+    </main>
+  );
+}
+
+function AuthenticatedRouteContent({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  return (
+    <Suspense fallback={<AuthenticatedPageLoading />}>
+      {children}
+    </Suspense>
+  );
+}
+
 function renderDashboard(
   role: UserRole,
 ): ReactNode {
@@ -389,7 +417,9 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <AppShell>
-              <DashboardContent />
+              <AuthenticatedRouteContent>
+                <DashboardContent />
+              </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>
         }
@@ -400,7 +430,9 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <AppShell>
-              <DirectorLoginBrandingRoute />
+              <AuthenticatedRouteContent>
+                <DirectorLoginBrandingRoute />
+              </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>
         }
@@ -411,7 +443,9 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <AppShell>
-              <DirectorCamerasRoute />
+              <AuthenticatedRouteContent>
+                <DirectorCamerasRoute />
+              </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>
         }
@@ -429,7 +463,9 @@ function AppRoutes() {
             allowedPlatformRoles={['SUPER_ADMIN']}
           >
             <AppShell>
-              <AdminPage />
+              <AuthenticatedRouteContent>
+                <AdminPage />
+              </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>
         }
@@ -444,7 +480,9 @@ function AppRoutes() {
             ]}
           >
             <AppShell>
-              <PlatformPage />
+              <AuthenticatedRouteContent>
+                <PlatformPage />
+              </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>
         }
@@ -455,7 +493,9 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <AppShell>
-              <AccountPage />
+              <AuthenticatedRouteContent>
+                <AccountPage />
+              </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>
         }
