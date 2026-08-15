@@ -156,6 +156,12 @@ export class GatewayRuntime {
     const camera = this.cameras.get(cameraId);
     if (!camera) throw new Error('Camera nao pertence a instituicao pareada.');
     const override = this.options.labSource?.cameraId === cameraId ? this.options.labSource : undefined;
+    // O laboratorio ja publica a webcam diretamente no destino do MediaMTX.
+    // Iniciar outro FFmpeg no mesmo caminho derruba o publicador existente.
+    if (override?.streamPath) {
+      const destination = `${this.options.config.mediaMtxRtspUrl.replace(/\/$/, '')}/${override.streamPath}`;
+      if (override.rtspUrl.replace(/\/$/, '') === destination) return override.streamPath;
+    }
     return this.options.publisher.start(camera, override);
   }
 

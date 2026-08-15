@@ -93,6 +93,20 @@ describe('GatewayRuntime', () => {
     expect(publisher.start).toHaveBeenCalledTimes(1);
   });
 
+  it('nao inicia um segundo publisher quando o laboratorio ja publica o destino', async () => {
+    const { runtime, publisher } = createRuntime({}, {
+      labSource: {
+        cameraId: cameraA.id,
+        rtspUrl: 'rtsp://127.0.0.1:8554/camera1',
+        streamPath: 'camera1',
+      },
+    });
+    await runtime.syncNow();
+
+    await expect(runtime.authorizeStream('lab-session', 'lab-token')).resolves.toMatchObject({ cameraId: cameraA.id });
+    expect(publisher.start).not.toHaveBeenCalled();
+  });
+
   it('nao reutiliza uma sessao em cache com token diferente', async () => {
     const redeemStreamSession = vi.fn(async (_config: GatewayConfig, _sessionId: string, sessionToken: string) => {
       if (sessionToken !== 'token-a') throw new Error('sessao adulterada');
