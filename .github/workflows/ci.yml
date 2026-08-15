@@ -43,6 +43,7 @@ jobs:
             restore-client-account
             delete-client-account
             invite-school-user
+            camera-gateway
           )
 
           for function_name in "${functions[@]}"; do
