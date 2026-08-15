@@ -20,10 +20,21 @@ export interface GatewayRuntimeOptions {
   ffprobePath: string;
   labSource?: CameraSourceOverride;
   probe?: (ffprobePath: string, url: string) => Promise<CameraProbeResult>;
+  probeRelay?: (relayBaseUrl: string) => Promise<void>;
 }
 
 function isRevocationError(error: unknown): boolean {
   return error instanceof GatewayApiError && (error.code === 'GATEWAY_REJECTED' || error.code === 'UNAUTHENTICATED');
+}
+
+async function probeRelayUrl(relayBaseUrl: string): Promise<void> {
+  const response = await fetch(`${relayBaseUrl}/health`, {
+    headers: { accept: 'application/json' },
+    signal: AbortSignal.timeout(5_000),
+  });
+  if (!response.ok) throw new Error('Relay health check failed.');
+  const body = await response.json() as { gatewayOnline?: unknown };
+  if (body.gatewayOnline !== true) throw new Error('Gateway relay is not online.');
 }
 
 export class GatewayRuntime {
@@ -82,6 +93,7 @@ export class GatewayRuntime {
       this.lastHeartbeatAt = new Date().toISOString();
       if (this.options.config.relayBaseUrl) {
         try {
+          await (this.options.probeRelay ?? probeRelayUrl)(this.options.config.relayBaseUrl);
           await this.options.api.relayHeartbeat(this.options.config, this.options.config.relayBaseUrl);
           this.lastRelayHeartbeatAt = new Date().toISOString();
           this.relayOnline = true;
@@ -167,6 +179,13 @@ export class GatewayRuntime {
     if (override?.streamPath) return override.streamPath;
     if (!/^[a-zA-Z0-9_-]+$/.test(session.streamPath)) throw new Error('Caminho de stream invalido.');
     return session.streamPath;
+  }
+
+  health(): { gatewayOnline: boolean; relayOnline: boolean } {
+    return {
+      gatewayOnline: !this.revoked && this.running,
+      relayOnline: this.relayOnline,
+    };
   }
 
   status(): GatewayStatusSnapshot {

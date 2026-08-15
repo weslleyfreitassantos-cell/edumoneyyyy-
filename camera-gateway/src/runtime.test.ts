@@ -44,7 +44,18 @@ function createRuntime(apiOverrides: Partial<GatewayCloudApi> = {}, runtimeOverr
     stop: vi.fn(),
     stopAll: vi.fn(),
   };
-  return { runtime: new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe', ...runtimeOverrides }), api, publisher };
+  return {
+    runtime: new GatewayRuntime({
+      config,
+      api,
+      publisher,
+      ffprobePath: 'ffprobe',
+      probeRelay: vi.fn(async () => undefined),
+      ...runtimeOverrides,
+    }),
+    api,
+    publisher,
+  };
 }
 
 describe('GatewayRuntime', () => {
@@ -99,6 +110,15 @@ describe('GatewayRuntime', () => {
     const { runtime } = createRuntime({ relayHeartbeat: vi.fn(async () => { throw new Error('relay offline'); }) });
     await runtime.heartbeatNow();
     expect(runtime.status()).toMatchObject({ relayConfigured: true, relayOnline: false, relayError: 'Relay HTTPS indisponivel.', error: null });
+  });
+
+  it('nao envia heartbeat do relay quando o hostname HTTPS nao alcança o gateway', async () => {
+    const { runtime, api } = createRuntime({}, {
+      probeRelay: vi.fn(async () => { throw new Error('tunnel offline'); }),
+    });
+    await runtime.heartbeatNow();
+    expect(api.relayHeartbeat).not.toHaveBeenCalled();
+    expect(runtime.health()).toMatchObject({ gatewayOnline: false, relayOnline: false });
   });
 
   it('interrompe acesso e marca o gateway como revogado quando o backend rejeita o token', async () => {

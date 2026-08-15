@@ -191,6 +191,7 @@ async function provisionRelay(
   await cloudflareRequest(`/accounts/${accountId}/cfd_tunnel/${tunnelId}/configurations`, {
     method: "PUT",
     body: JSON.stringify({ config: { ingress: [
+      { hostname, path: "/health", service: "http://127.0.0.1:8787" },
       { hostname, path: "/stream/.*", service: "http://127.0.0.1:8787" },
       { service: "http_status:404" },
     ] } }),
