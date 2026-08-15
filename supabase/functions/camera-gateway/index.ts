@@ -1,5 +1,5 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
-import { createClient } from "npm:@supabase/supabase-js@2.110.2";
+import { createClient } from "@supabase/supabase-js";
 
 type Action = "pair" | "heartbeat" | "relay_heartbeat" | "provision_relay" | "sync" | "redeem_stream_session";
 type JsonRecord = Record<string, unknown>;
@@ -266,7 +266,7 @@ async function run(request: Request): Promise<Response> {
     if (action === "provision_relay") {
       try {
         return await provisionRelay(gatewayId, gatewayToken, requestNonce, requestExpiresAt);
-      } catch (error) {
+      } catch {
         console.error(JSON.stringify({ request_id: id, action, code: "RELAY_PROVISION_FAILED" }));
         return errorResponse(502, "RELAY_PROVISION_FAILED", "Nao foi possivel preparar o relay HTTPS agora.");
       }
@@ -334,7 +334,7 @@ async function run(request: Request): Promise<Response> {
       stream_path: session.stream_path,
       expires_at: session.expires_at,
     });
-  } catch (error) {
+  } catch {
     console.error(JSON.stringify({ request_id: id, action, code: "INTERNAL_ERROR" }));
     return errorResponse(500, "INTERNAL_ERROR", "Nao foi possivel concluir a operacao do gateway.");
   }
