@@ -13,7 +13,7 @@
 
   "routes": [
     {
-      "pattern": "*.grupotec.dev.br/*",
+      "pattern": "tecescola.grupotec.dev.br/*",
       "zone_name": "grupotec.dev.br"
     }
   ]

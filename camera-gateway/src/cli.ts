@@ -98,7 +98,7 @@ function startCloudflared(args: string[], relayBaseUrl: string | null): ChildPro
     return null;
   }
   const binary = option(args, '--cloudflared-path', process.env.CLOUDFLARED_PATH) ?? findBinary('cloudflared');
-  const child = spawn(binary, ['tunnel', 'run', '--no-autoupdate', '--token-file', tokenFile], {
+  const child = spawn(binary, ['tunnel', '--no-autoupdate', 'run', '--token-file', tokenFile], {
     stdio: ['ignore', 'ignore', 'ignore'],
     windowsHide: true,
   });
