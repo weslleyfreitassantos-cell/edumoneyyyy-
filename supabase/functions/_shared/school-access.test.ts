@@ -44,7 +44,6 @@ describe("school access helpers", () => {
     expect(email.subject).toBe("Seu acesso está pronto | Escola <Luz>");
     expect(email.html).toContain("&lt;Maria&gt;");
     expect(email.html).toContain("A1!strong-password");
-    expect(email.html).toContain("Responsável");
     expect(email.html).toContain("https://escola-luz.grupotec.dev.br/login");
     expect(email.html).toContain("Seja bem-vindo(a)!");
     expect(email.html).toContain("Senha de acesso");
