@@ -21,6 +21,7 @@ import {
   useSetDirectorCameraActive,
   useUpdateDirectorCamera,
 } from '../../hooks/useDirectorCameras';
+import { initialCameraForm } from './cameraForm';
 
 type CameraFilter = 'ALL' | 'ONLINE' | 'OFFLINE' | 'UNKNOWN';
 
@@ -33,26 +34,8 @@ interface CameraFormProps {
   gateways: CameraGateway[];
 }
 
-function initialForm(camera: DirectorCamera | null, gatewayIdOverride: string | null | undefined, gateways: CameraGateway[]): CameraMutationInput {
-  return {
-    institutionId: camera?.institutionId ?? '',
-    name: camera?.name ?? '',
-    location: camera?.location ?? '',
-    manufacturer: camera?.manufacturer ?? '',
-    model: camera?.model ?? '',
-    deviceType: camera?.deviceType ?? 'IP_CAMERA',
-    protocol: camera?.protocol ?? 'ONVIF',
-    host: camera?.host ?? '',
-    port: camera?.port ?? 554,
-    channel: camera?.channel ?? null,
-    streamProfile: camera?.streamProfile ?? 'SUB',
-    gatewayId: camera?.gatewayId ?? gatewayIdOverride ?? gateways[0]?.id ?? null,
-    active: camera?.active ?? true,
-  };
-}
-
 function CameraForm({ institutionId, camera, gatewayIdOverride, onClose, onSaved, gateways }: CameraFormProps) {
-  const [form, setForm] = useState(() => initialForm(camera, gatewayIdOverride, gateways));
+  const [form, setForm] = useState(() => initialCameraForm(camera, institutionId, gatewayIdOverride, gateways));
   const [error, setError] = useState<string | null>(null);
   const create = useCreateDirectorCamera(institutionId);
   const update = useUpdateDirectorCamera(institutionId);
