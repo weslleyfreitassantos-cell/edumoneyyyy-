@@ -28,6 +28,15 @@ function json(response: ServerResponse, status: number, value: unknown): void {
   response.end(JSON.stringify(value));
 }
 
+async function isMediaMtxReachable(mediaMtxHlsUrl: string): Promise<boolean> {
+  try {
+    await fetch(mediaMtxHlsUrl, { method: 'HEAD', signal: AbortSignal.timeout(1_500) });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function safeResource(value: string): string | null {
   let decoded: string;
   try {
@@ -82,7 +91,13 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
     }
     const requestUrl = new URL(request.url ?? '/', 'http://127.0.0.1');
     if (request.method === 'GET' && requestUrl.pathname === '/health') {
-      json(response, 200, { ok: true, status: runtime.status() });
+      const health = runtime.health();
+      json(response, 200, {
+        ok: health.gatewayOnline,
+        gatewayOnline: health.gatewayOnline,
+        relayOnline: health.relayOnline,
+        mediaMtxReachable: await isMediaMtxReachable(mediaMtxHlsUrl),
+      });
       return;
     }
     if (request.method === 'GET' && requestUrl.pathname === '/status') {

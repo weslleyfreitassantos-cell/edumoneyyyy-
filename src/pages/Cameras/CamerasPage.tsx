@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { Camera, CheckCircle2, Edit3, Gauge, Plus, Power, Radio, RefreshCw, Server, Trash2, WifiOff, X } from 'lucide-react';
 
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { CameraPlayer } from '../../components/cameras/CameraPlayer';
+import { CameraPlayer, isSafeBrowserStream } from '../../components/cameras/CameraPlayer';
 import {
   cameraService,
   type CameraDeviceType,
@@ -203,7 +203,7 @@ export function CamerasPage() {
     setError(null);
     try {
       const session = await cameraService.createStreamSession(camera.id);
-      setStreamUrl(session.playbackUrl);
+      setStreamUrl(isSafeBrowserStream(session.playbackUrl) ? session.playbackUrl : null);
       setPlayerCameraState(camera);
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : 'Nao foi possivel iniciar a sessao da camera.');

@@ -125,4 +125,35 @@ describe('gateway HLS proxy', () => {
       else process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = previousOrigins;
     }
   });
+
+  it('expõe health sanitizado sem identificadores internos', async () => {
+    const clientFetch = globalThis.fetch;
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(null, { status: 204 })));
+    const api: GatewayCloudApi = {
+      pair: vi.fn(),
+      heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
+      sync: vi.fn(async () => []),
+      redeemStreamSession: vi.fn(),
+    };
+    const publisher: CameraPublisher = { start: vi.fn(async () => 'camera-a'), stop: vi.fn(), stopAll: vi.fn() };
+    const runtime = new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe' });
+    const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('Porta de teste indisponivel.');
+    try {
+      const response = await clientFetch(`http://127.0.0.1:${address.port}/health`);
+      const body = await response.json() as Record<string, unknown>;
+      expect(response.status).toBe(200);
+      expect(body).toMatchObject({ ok: false, gatewayOnline: false, relayOnline: false, mediaMtxReachable: true });
+      expect(body).not.toHaveProperty('gatewayId');
+      expect(body).not.toHaveProperty('institutionId');
+      expect(body).not.toHaveProperty('status');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      vi.stubGlobal('fetch', clientFetch);
+    }
+  });
 });
