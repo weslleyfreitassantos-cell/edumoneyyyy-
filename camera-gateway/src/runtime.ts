@@ -1,3 +1,5 @@
+import { createHash } from 'node:crypto';
+
 import { GatewayApiError, type GatewayCloudApi } from './api.ts';
 import type { CameraPublisher, CameraSourceOverride } from './publisher.ts';
 import type {
@@ -11,6 +13,11 @@ import { probeRtsp } from './rtsp.ts';
 
 interface SessionState extends StreamSessionAuthorization {
   sessionId: string;
+  sessionTokenHash: string;
+}
+
+function sessionTokenHash(sessionToken: string): string {
+  return createHash('sha256').update(sessionToken).digest('hex');
 }
 
 export interface GatewayRuntimeOptions {
@@ -155,7 +162,9 @@ export class GatewayRuntime {
   async authorizeStream(sessionId: string, sessionToken: string): Promise<SessionState> {
     if (this.revoked) throw new Error('Gateway revogado.');
     const current = this.sessions.get(sessionId);
-    if (current && new Date(current.expiresAt).getTime() > Date.now()) return current;
+    if (current
+      && current.sessionTokenHash === sessionTokenHash(sessionToken)
+      && new Date(current.expiresAt).getTime() > Date.now()) return current;
     let authorization: StreamSessionAuthorization;
     try {
       authorization = await this.options.api.redeemStreamSession(this.options.config, sessionId, sessionToken);
@@ -168,7 +177,7 @@ export class GatewayRuntime {
     if (!Number.isFinite(Date.parse(authorization.expiresAt)) || Date.parse(authorization.expiresAt) <= Date.now()) {
       throw new Error('Sessao de stream expirada.');
     }
-    const session = { sessionId, ...authorization };
+    const session = { sessionId, ...authorization, sessionTokenHash: sessionTokenHash(sessionToken) };
     this.sessions.set(sessionId, session);
     await this.ensurePublisher(authorization.cameraId);
     return session;
