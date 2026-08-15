@@ -397,12 +397,10 @@ async function main(): Promise<void> {
     assert.equal(tenantBTest.code, 0, 'tenant B camera test failed');
     const tenantBForeignCamera = await runCli(['test-camera', cameraId], envB, 30_000);
     assert.notEqual(tenantBForeignCamera.code, 0, 'gateway B accepted camera A');
-    const gatewayAStatus = JSON.parse((await runCli(['status'], env)).stdout) as Record<string, unknown>;
-    const gatewayBStatus = JSON.parse((await runCli(['status'], envB)).stdout) as Record<string, unknown>;
-    const gatewayAHealth = (gatewayAStatus.runtime as Record<string, unknown>).status as Record<string, unknown>;
-    const gatewayBHealth = (gatewayBStatus.runtime as Record<string, unknown>).status as Record<string, unknown>;
-    assert.equal(gatewayAHealth.cameraCount, 1, 'gateway A received a foreign camera');
-    assert.equal(gatewayBHealth.cameraCount, 1, 'gateway B received a foreign camera');
+    const gatewayAStatus = await fetch(`${localUrl}/status`).then((response) => response.json()) as Record<string, unknown>;
+    const gatewayBStatus = await fetch(`${localUrlB}/status`).then((response) => response.json()) as Record<string, unknown>;
+    assert.equal(gatewayAStatus.cameraCount, 1, 'gateway A received a foreign camera');
+    assert.equal(gatewayBStatus.cameraCount, 1, 'gateway B received a foreign camera');
     const foreignStream = await fetch(`${localUrl}/stream/foreign-session/index.m3u8?token=foreign-session`);
     assert.equal(foreignStream.status, 403, 'gateway A accepted a stream session from institution B');
     assert.equal(state.pairRequests, 4, 'unexpected multi-tenant pair request count');
@@ -415,8 +413,7 @@ async function main(): Promise<void> {
     state.revokedGateways.add(gatewayId);
     const rejectedBefore = state.rejected;
     await waitFor(() => state.rejected > rejectedBefore, 35_000);
-    const revokedHealth = await health(gatewayPort);
-    const revokedStatus = revokedHealth.status as Record<string, unknown>;
+    const revokedStatus = await fetch(`${localUrl}/status`).then((response) => response.json()) as Record<string, unknown>;
     assert.equal(revokedStatus.state, 'REVOKED', 'gateway did not enter REVOKED state');
     assert.equal(revokedStatus.paired, false, 'revoked gateway remained paired');
     assert.equal(revokedStatus.running, false, 'revoked gateway remained running');

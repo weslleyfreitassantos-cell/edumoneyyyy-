@@ -23,6 +23,7 @@ describe('CameraPlayer', () => {
 
   it('recusa relay HTTP quando a aplicação está em HTTPS', () => {
     expect(isSafeBrowserStream('http://127.0.0.1:8787/stream/session/index.m3u8', 'https:')).toBe(false);
-    expect(isSafeBrowserStream('https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session/index.m3u8', 'https:')).toBe(true);
+    expect(isSafeBrowserStream('https://camera-gw-0123456789abcdef.grupotec.dev.br/stream/session/index.m3u8', 'https:')).toBe(true);
+    expect(isSafeBrowserStream('https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session/index.m3u8', 'https:')).toBe(false);
   });
 });

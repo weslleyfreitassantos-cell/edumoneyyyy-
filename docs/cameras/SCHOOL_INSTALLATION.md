@@ -64,7 +64,7 @@ O painel deve mostrar duas condicoes independentes:
 - **Relay HTTPS**: tunnel conectado e com heartbeat recente.
 
 Somente quando ambas estiverem online a sessao HLS remota recebe uma URL
-`https://gw-...cameras.grupotec.dev.br/...`. Se o relay estiver offline, o
+`https://camera-gw-...grupotec.dev.br/...`. Se o relay estiver offline, o
 painel mostra o estado indisponivel e nao tenta carregar `http://localhost`.
 
 ## Teste minimo

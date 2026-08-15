@@ -18,7 +18,7 @@ describe('Worker script', () => {
     expect(response.status).toBe(200);
     expect(await response.text()).toBe('asset');
     expect(response.headers.get('content-security-policy')).not.toContain('http:');
-    expect(response.headers.get('content-security-policy')).toContain('https://*.cameras.grupotec.dev.br');
+    expect(response.headers.get('content-security-policy')).toContain('https://*.grupotec.dev.br');
     expect(response.headers.get('x-content-type-options')).toBe('nosniff');
   });
 });

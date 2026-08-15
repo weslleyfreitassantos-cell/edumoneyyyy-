@@ -9,7 +9,7 @@ import type { CameraConfig, GatewayConfig } from './types.ts';
 const config: GatewayConfig = {
   supabaseUrl: 'http://127.0.0.1:54321', supabaseAnonKey: 'public-key', gatewayId: 'gateway-a',
   institutionId: 'institution-a', gatewayToken: 'gateway-token', localBaseUrl: 'http://127.0.0.1:8787',
-  relayBaseUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br',
+  relayBaseUrl: 'https://camera-gw-0123456789abcdef.grupotec.dev.br',
   mediaMtxHlsUrl: 'http://127.0.0.1:8888', mediaMtxRtspUrl: 'rtsp://127.0.0.1:8554', pairedAt: new Date().toISOString(),
 };
 const camera: CameraConfig = {

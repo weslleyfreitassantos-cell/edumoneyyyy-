@@ -31,8 +31,8 @@ Inicie o processo permitindo somente a origem HTTPS publicada:
 npm run camera-gateway -- start --allowed-origin https://tecescola.grupotec.dev.br
 ```
 
-O relay usa um hostname como
-`https://gw-<public-id>.cameras.grupotec.dev.br`. A URL de playback so e emitida
+O relay usa um hostname de primeiro nivel como
+`https://camera-gw-<public-id>.grupotec.dev.br`. A URL de playback so e emitida
 quando o gateway local e o relay estao online; sem relay configurado, uma pagina
 HTTPS nao recebe URL `localhost` ou HTTP. O campo **Gateway** indica a conexao
 local e **Relay HTTPS** indica a conexao remota separadamente.

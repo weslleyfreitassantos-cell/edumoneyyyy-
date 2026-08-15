@@ -124,14 +124,14 @@ describe('cameraService', () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
       data: [{
         session_id: 'session-1',
-        playback_url: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+        playback_url: 'https://camera-gw-0123456789abcdef.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
         expires_at: '2026-08-15T23:00:00.000Z',
       }],
       error: null,
     } as never);
 
     await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
-      playbackUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+      playbackUrl: 'https://camera-gw-0123456789abcdef.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
     });
   });
 });

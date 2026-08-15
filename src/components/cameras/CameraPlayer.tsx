@@ -15,7 +15,7 @@ export function isSafeBrowserStream(url: string | null | undefined, pageProtocol
   try {
     const parsed = new URL(url);
     if (parsed.username || parsed.password) return false;
-    if (parsed.protocol === 'https:') return true;
+    if (parsed.protocol === 'https:') return /^camera-gw-[0-9a-f]{16}\.grupotec\.dev\.br$/i.test(parsed.hostname);
     if (parsed.protocol !== 'http:') return false;
     if (pageProtocol === 'https:') return false;
     return parsed.hostname === 'localhost'

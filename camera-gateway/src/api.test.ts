@@ -10,7 +10,7 @@ const config: GatewayConfig = {
   institutionId: '22222222-2222-4222-8222-222222222222',
   gatewayToken: 'gateway-token',
   localBaseUrl: 'http://127.0.0.1:8787',
-  relayBaseUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br',
+  relayBaseUrl: 'https://camera-gw-0123456789abcdef.grupotec.dev.br',
   mediaMtxHlsUrl: 'http://127.0.0.1:8888',
   mediaMtxRtspUrl: 'rtsp://127.0.0.1:8554',
   pairedAt: new Date().toISOString(),
@@ -73,7 +73,7 @@ describe('Supabase gateway API', () => {
   it('recebe o relay HTTPS sem registrar o token no request', async () => {
     const fetchMock = vi.fn(async () => new Response(JSON.stringify({
       success: true,
-      relay_base_url: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br',
+      relay_base_url: 'https://camera-gw-0123456789abcdef.grupotec.dev.br',
       tunnel_id: '33333333-3333-4333-8333-333333333333',
       tunnel_token: 'tunnel-token-kept-in-local-file',
     }), { status: 200 }));
@@ -81,7 +81,7 @@ describe('Supabase gateway API', () => {
     const api = new SupabaseGatewayApi(config.supabaseUrl, config.supabaseAnonKey);
 
     await expect(api.provisionRelay(config)).resolves.toMatchObject({
-      relayBaseUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br',
+      relayBaseUrl: 'https://camera-gw-0123456789abcdef.grupotec.dev.br',
       tunnelId: '33333333-3333-4333-8333-333333333333',
     });
     const body = JSON.parse(String(fetchMock.mock.calls[0]?.[1]?.body)) as Record<string, unknown>;
