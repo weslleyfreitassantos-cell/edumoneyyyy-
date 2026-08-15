@@ -78,6 +78,20 @@ function serviceError(error: { message?: string; code?: string } | null): Camera
   return new CameraServiceError('Não foi possível concluir a ação da câmera agora.', code);
 }
 
+function normalizeBrowserPlaybackUrl(playbackUrl: string | null): string | null {
+  if (!playbackUrl) return null;
+
+  try {
+    const parsed = new URL(playbackUrl);
+    if (parsed.protocol === 'http:' && parsed.hostname === '127.0.0.1') {
+      parsed.hostname = 'localhost';
+    }
+    return parsed.toString();
+  } catch {
+    return playbackUrl;
+  }
+}
+
 function normalize(row: Record<string, unknown>): DirectorCamera {
   return {
     id: String(row.id),
@@ -211,7 +225,7 @@ export const cameraService = {
     return {
       sessionId: String(row.session_id),
       protocol: 'HLS',
-      playbackUrl: row.playback_url ? String(row.playback_url) : null,
+      playbackUrl: normalizeBrowserPlaybackUrl(row.playback_url ? String(row.playback_url) : null),
       expiresAt: String(row.expires_at),
     };
   },

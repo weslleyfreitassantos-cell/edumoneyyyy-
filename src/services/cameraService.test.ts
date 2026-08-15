@@ -100,4 +100,19 @@ describe('cameraService', () => {
       camera_gateway_id: 'gateway-1',
     });
   });
+
+  it('normaliza o endpoint local do gateway para o navegador em uma pagina HTTPS', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{
+        session_id: 'session-1',
+        playback_url: 'http://127.0.0.1:8787/stream/session-1/index.m3u8?token=opaque',
+        expires_at: '2026-08-15T23:00:00.000Z',
+      }],
+      error: null,
+    } as never);
+
+    await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
+      playbackUrl: 'http://localhost:8787/stream/session-1/index.m3u8?token=opaque',
+    });
+  });
 });
