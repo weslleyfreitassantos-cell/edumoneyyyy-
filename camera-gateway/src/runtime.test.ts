@@ -93,6 +93,23 @@ describe('GatewayRuntime', () => {
     expect(publisher.start).toHaveBeenCalledTimes(1);
   });
 
+  it('nao reutiliza uma sessao em cache com token diferente', async () => {
+    const redeemStreamSession = vi.fn(async (_config: GatewayConfig, _sessionId: string, sessionToken: string) => {
+      if (sessionToken !== 'token-a') throw new Error('sessao adulterada');
+      return {
+        cameraId: cameraA.id,
+        institutionId: cameraA.institutionId,
+        streamPath: 'camera-a',
+        expiresAt: new Date(Date.now() + 60_000).toISOString(),
+      };
+    });
+    const { runtime, api } = createRuntime({ redeemStreamSession });
+    await runtime.syncNow();
+    await runtime.authorizeStream('session-a', 'token-a');
+    await expect(runtime.authorizeStream('session-a', 'token-b')).rejects.toThrow(/adulterada/i);
+    expect(api.redeemStreamSession).toHaveBeenCalledTimes(2);
+  });
+
   it('informa gateway offline quando heartbeat falha', async () => {
     const { runtime } = createRuntime({ heartbeat: vi.fn(async () => { throw new Error('offline'); }) });
     await runtime.heartbeatNow();
