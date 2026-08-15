@@ -1,16 +1,19 @@
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawn, type ChildProcess } from 'node:child_process';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
 
 import { SupabaseGatewayApi } from './api.ts';
 import {
   defaultConfigPath,
+  defaultTunnelTokenPath,
   readGatewayConfig,
   removeGatewayConfig,
   validateLocalBaseUrl,
+  validateRelayBaseUrl,
   listenHostForLocalBaseUrl,
   validateSupabaseUrl,
   writeGatewayConfig,
+  writeCloudflaredTunnelToken,
   runtimePidPath,
 } from './config.ts';
 import { FfmpegCameraPublisher } from './publisher.ts';
@@ -40,8 +43,9 @@ function findBinary(name: string): string {
 
 function printUsage(): void {
   console.log('camera-gateway pair --code CODE --supabase-url URL --anon-key KEY');
-  console.log('camera-gateway start [--port 8787] [--allowed-origin ORIGIN[,ORIGIN]] [--lab-camera-id ID] [--lab-rtsp-url URL]');
+  console.log('camera-gateway start [--port 8787] [--relay-url HTTPS_URL] [--cloudflared-token-file PATH] [--allowed-origin ORIGIN[,ORIGIN]]');
   console.log('camera-gateway status');
+  console.log('camera-gateway provision-relay');
   console.log('camera-gateway test-camera CAMERA_ID');
   console.log('camera-gateway logout');
 }
@@ -52,6 +56,7 @@ async function pair(args: string[]): Promise<void> {
   const anonKey = option(args, '--anon-key', process.env.SUPABASE_ANON_KEY);
   if (!anonKey) throw new Error('Informe --anon-key ou SUPABASE_ANON_KEY.');
   const localBaseUrl = validateLocalBaseUrl(option(args, '--local-url', 'http://127.0.0.1:8787') as string);
+  const relayBaseUrl = option(args, '--relay-url') ? validateRelayBaseUrl(option(args, '--relay-url') as string) : null;
   const api = new SupabaseGatewayApi(supabaseUrl, anonKey);
   const result = await api.pair(code, localBaseUrl);
   const config: GatewayConfig = {
@@ -61,6 +66,7 @@ async function pair(args: string[]): Promise<void> {
     institutionId: result.institutionId,
     gatewayToken: result.gatewayToken,
     localBaseUrl: result.localBaseUrl,
+    relayBaseUrl,
     mediaMtxHlsUrl: option(args, '--media-hls-url', 'http://127.0.0.1:8888') as string,
     mediaMtxRtspUrl: option(args, '--media-rtsp-url', 'rtsp://127.0.0.1:8554') as string,
     pairedAt: result.pairedAt,
@@ -84,31 +90,74 @@ function createRuntime(config: GatewayConfig, args: string[]): GatewayRuntime {
   });
 }
 
+function startCloudflared(args: string[], relayBaseUrl: string | null): ChildProcess | null {
+  if (!relayBaseUrl) return null;
+  const tokenFile = option(args, '--cloudflared-token-file', process.env.CLOUDFLARED_TUNNEL_TOKEN_FILE ?? defaultTunnelTokenPath());
+  if (!tokenFile) {
+    console.log('Relay HTTPS configurado, mas cloudflared nao foi iniciado: informe --cloudflared-token-file.');
+    return null;
+  }
+  const binary = option(args, '--cloudflared-path', process.env.CLOUDFLARED_PATH) ?? findBinary('cloudflared');
+  const child = spawn(binary, ['tunnel', 'run', '--no-autoupdate', '--token-file', tokenFile], {
+    stdio: ['ignore', 'ignore', 'ignore'],
+    windowsHide: true,
+  });
+  child.on('error', () => undefined);
+  return child;
+}
+
 async function start(args: string[]): Promise<void> {
-  const config = await readGatewayConfig();
-  const runtime = createRuntime(config, args);
+  const storedConfig = await readGatewayConfig();
+  const relayOverride = option(args, '--relay-url');
+  let config = relayOverride
+    ? { ...storedConfig, relayBaseUrl: validateRelayBaseUrl(relayOverride) }
+    : storedConfig;
   const port = Number(option(args, '--port', '8787'));
   if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('Porta local invalida.');
   const allowedOrigins = option(args, '--allowed-origin');
   if (allowedOrigins) process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = allowedOrigins;
+  if (!relayOverride && !config.relayBaseUrl) {
+    try {
+      const provisioned = await new SupabaseGatewayApi(config.supabaseUrl, config.supabaseAnonKey).provisionRelay(config);
+      config = { ...config, relayBaseUrl: validateRelayBaseUrl(provisioned.relayBaseUrl) };
+      await writeGatewayConfig(config);
+      await writeCloudflaredTunnelToken(provisioned.tunnelToken);
+      console.log(`Relay HTTPS preparado: ${config.relayBaseUrl}`);
+    } catch {
+      console.log('Relay HTTPS ainda nao foi preparado. O gateway continuara apenas no modo local.');
+    }
+  }
+  const runtime = createRuntime(config, args);
   const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
   await new Promise<void>((resolve, reject) => {
     server.once('error', reject);
     server.listen(port, listenHostForLocalBaseUrl(config.localBaseUrl), () => resolve());
   });
+  const cloudflared = startCloudflared(args, config.relayBaseUrl);
   await runtime.start();
   await mkdir(dirname(runtimePidPath()), { recursive: true });
   await writeFile(runtimePidPath(), `${process.pid}\n`, { encoding: 'ascii', mode: 0o600 });
   console.log(`Gateway ativo em ${config.localBaseUrl}`);
-  console.log('Modo remoto: relay remoto nao configurado.');
+  console.log(config.relayBaseUrl ? `Relay HTTPS ativo em ${config.relayBaseUrl}` : 'Modo remoto: relay HTTPS nao configurado.');
   const stop = () => {
     runtime.stop();
+    cloudflared?.kill();
     server.close();
     void writeFile(runtimePidPath(), '', { encoding: 'ascii' });
   };
   process.once('SIGINT', stop);
   process.once('SIGTERM', stop);
   await new Promise<void>(() => undefined);
+}
+
+async function provisionRelay(): Promise<void> {
+  const config = await readGatewayConfig();
+  const provisioned = await new SupabaseGatewayApi(config.supabaseUrl, config.supabaseAnonKey).provisionRelay(config);
+  const relayBaseUrl = validateRelayBaseUrl(provisioned.relayBaseUrl);
+  await writeGatewayConfig({ ...config, relayBaseUrl });
+  await writeCloudflaredTunnelToken(provisioned.tunnelToken);
+  console.log(`Relay HTTPS preparado: ${relayBaseUrl}`);
+  console.log(`Token salvo em: ${defaultTunnelTokenPath()}`);
 }
 
 async function status(): Promise<void> {
@@ -153,6 +202,7 @@ async function main(): Promise<void> {
   if (command === 'pair') return pair(args);
   if (command === 'start') return start(args);
   if (command === 'status') return status();
+  if (command === 'provision-relay') return provisionRelay();
   if (command === 'test-camera') return testCamera([args[0] ? 'camera-id' : '', args[0] ?? '', ...args.slice(1)]);
   if (command === 'logout') {
     await removeGatewayConfig();

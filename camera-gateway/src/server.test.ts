@@ -9,6 +9,7 @@ import type { CameraConfig, GatewayConfig } from './types.ts';
 const config: GatewayConfig = {
   supabaseUrl: 'http://127.0.0.1:54321', supabaseAnonKey: 'public-key', gatewayId: 'gateway-a',
   institutionId: 'institution-a', gatewayToken: 'gateway-token', localBaseUrl: 'http://127.0.0.1:8787',
+  relayBaseUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br',
   mediaMtxHlsUrl: 'http://127.0.0.1:8888', mediaMtxRtspUrl: 'rtsp://127.0.0.1:8554', pairedAt: new Date().toISOString(),
 };
 const camera: CameraConfig = {
@@ -29,6 +30,8 @@ describe('gateway HLS proxy', () => {
     const api: GatewayCloudApi = {
       pair: vi.fn(),
       heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
       sync: vi.fn(async () => [camera]),
       redeemStreamSession: vi.fn(async () => ({
         cameraId: camera.id, institutionId: camera.institutionId, streamPath: 'camera-a',
@@ -65,6 +68,8 @@ describe('gateway HLS proxy', () => {
     const api: GatewayCloudApi = {
       pair: vi.fn(),
       heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
       sync: vi.fn(async () => [camera]),
       redeemStreamSession: vi.fn(async () => ({
         cameraId: camera.id, institutionId: camera.institutionId, streamPath: 'camera-a',
@@ -90,6 +95,8 @@ describe('gateway HLS proxy', () => {
     const api: GatewayCloudApi = {
       pair: vi.fn(),
       heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
       sync: vi.fn(async () => []),
       redeemStreamSession: vi.fn(),
     };

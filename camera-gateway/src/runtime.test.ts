@@ -13,6 +13,7 @@ const config: GatewayConfig = {
   institutionId: 'institution-a',
   gatewayToken: 'gateway-token',
   localBaseUrl: 'http://127.0.0.1:8787',
+  relayBaseUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br',
   mediaMtxHlsUrl: 'http://127.0.0.1:8888',
   mediaMtxRtspUrl: 'rtsp://127.0.0.1:8554',
   pairedAt: new Date().toISOString(),
@@ -27,6 +28,8 @@ function createRuntime(apiOverrides: Partial<GatewayCloudApi> = {}, runtimeOverr
   const api: GatewayCloudApi = {
     pair: vi.fn(),
     heartbeat: vi.fn(async () => undefined),
+    relayHeartbeat: vi.fn(async () => undefined),
+    provisionRelay: vi.fn(),
     sync: vi.fn(async () => [cameraA]),
     redeemStreamSession: vi.fn(async () => ({
       cameraId: cameraA.id,
@@ -83,6 +86,19 @@ describe('GatewayRuntime', () => {
     const { runtime } = createRuntime({ heartbeat: vi.fn(async () => { throw new Error('offline'); }) });
     await runtime.heartbeatNow();
     expect(runtime.status().error).toBe('Heartbeat indisponivel.');
+  });
+
+  it('registra o heartbeat do relay HTTPS sem esconder falha do gateway local', async () => {
+    const { runtime, api } = createRuntime();
+    await runtime.heartbeatNow();
+    expect(api.relayHeartbeat).toHaveBeenCalledWith(config, config.relayBaseUrl);
+    expect(runtime.status()).toMatchObject({ relayConfigured: true, relayOnline: true });
+  });
+
+  it('mantem o gateway local saudavel quando somente o relay falha', async () => {
+    const { runtime } = createRuntime({ relayHeartbeat: vi.fn(async () => { throw new Error('relay offline'); }) });
+    await runtime.heartbeatNow();
+    expect(runtime.status()).toMatchObject({ relayConfigured: true, relayOnline: false, relayError: 'Relay HTTPS indisponivel.', error: null });
   });
 
   it('interrompe acesso e marca o gateway como revogado quando o backend rejeita o token', async () => {

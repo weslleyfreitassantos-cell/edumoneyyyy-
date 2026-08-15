@@ -3,7 +3,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
-import { CameraPlayer } from './CameraPlayer';
+import { CameraPlayer, isSafeBrowserStream } from './CameraPlayer';
 
 const camera = {
   id: 'camera-1', institutionId: 'institution-1', gatewayId: 'gateway-1', gatewayName: 'Gateway',
@@ -19,5 +19,10 @@ describe('CameraPlayer', () => {
     expect(screen.queryByRole('video')).toBeNull();
     expect(screen.getByText(/sem áudio, gravação ou download/i)).toBeTruthy();
     expect(screen.getByText(/stream ainda não disponível/i)).toBeTruthy();
+  });
+
+  it('recusa relay HTTP quando a aplicação está em HTTPS', () => {
+    expect(isSafeBrowserStream('http://127.0.0.1:8787/stream/session/index.m3u8', 'https:')).toBe(false);
+    expect(isSafeBrowserStream('https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session/index.m3u8', 'https:')).toBe(true);
   });
 });

@@ -19,7 +19,11 @@ O gateway chama a Edge Function `camera-gateway` com a acao `pair`. A funcao usa
 - `test-camera ID`: usa FFprobe com RTSP/TCP e retorna codec, dimensoes, FPS e audio;
 - `logout`: remove a configuracao local e o token do gateway.
 
-As acoes cloud sao `pair`, `heartbeat`, `sync` e `redeem_stream_session`. Todas as acoes autenticadas usam `Authorization: Bearer <gateway-token>`, um `request_id` unico e uma expiracao curta. O banco rejeita token invalido, request expirado e replay do mesmo request.
+As acoes cloud sao `pair`, `heartbeat`, `relay_heartbeat`, `provision_relay`,
+`sync` e `redeem_stream_session`. Todas as acoes autenticadas usam
+`Authorization: Bearer <gateway-token>`, um `request_id` unico e uma expiracao
+curta. O banco rejeita token invalido, request expirado e replay do mesmo
+request.
 
 ## Stream local
 
@@ -31,9 +35,33 @@ O gateway publica fontes RTSP autorizadas em um caminho interno do MediaMTX e of
 - revalida a sessao no backend e respeita o TTL;
 - reescreve playlists e segmentos sem entregar RTSP ao React.
 
-Chrome usa `hls.js`; Safari pode usar HLS nativo. O modo local requer browser e gateway na mesma rede. O relay remoto ainda nao existe e a interface deve informar isso, sem exibir falso video.
+Chrome usa `hls.js`; Safari pode usar HLS nativo. O modo local requer browser e
+gateway na mesma rede. Em producao, o relay remoto usa HTTPS e a interface nao
+exibe video enquanto o relay nao estiver online.
 
-Quando o frontend for aberto pelo IP da LAN, iniciar o gateway com uma origem explicitamente permitida, por exemplo `npm run camera-gateway -- start --allowed-origin http://192.168.1.108:3000`. O proxy nao aceita `*`.
+Quando o frontend for aberto pelo IP da LAN, iniciar o gateway com uma origem
+explicitamente permitida, por exemplo `npm run camera-gateway -- start
+--allowed-origin http://192.168.1.108:3000`. O proxy nao aceita `*`.
+
+## Operacao remota por escola
+
+O relay remoto e individual por gateway. O operador pode preparar o tunnel com:
+
+```powershell
+npm run camera-gateway -- provision-relay
+```
+
+Em seguida, o `start` inicia o `cloudflared` usando o token salvo localmente:
+
+```powershell
+npm run camera-gateway -- start --allowed-origin https://DOMINIO-PUBLICADO
+```
+
+O `cloudflared` faz somente conexao de saida para a Cloudflare e encaminha o
+hostname HTTPS do gateway para `127.0.0.1:8787`. O processo local continua
+protegendo as rotas por sessao curta, origem permitida, gateway pareado e
+instituicao. Nunca configure o frontend para apontar para `localhost` quando a
+pagina estiver em HTTPS.
 
 ## Laboratorio Windows
 

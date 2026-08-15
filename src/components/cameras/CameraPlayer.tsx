@@ -10,13 +10,14 @@ interface CameraPlayerProps {
   onClose: () => void;
 }
 
-function isSafeBrowserStream(url: string | null | undefined): boolean {
+export function isSafeBrowserStream(url: string | null | undefined, pageProtocol = typeof window === 'undefined' ? 'https:' : window.location.protocol): boolean {
   if (!url) return false;
   try {
     const parsed = new URL(url);
     if (parsed.username || parsed.password) return false;
     if (parsed.protocol === 'https:') return true;
     if (parsed.protocol !== 'http:') return false;
+    if (pageProtocol === 'https:') return false;
     return parsed.hostname === 'localhost'
       || parsed.hostname === '127.0.0.1'
       || /^10\.(?:\d{1,3}\.){2}\d{1,3}$/.test(parsed.hostname)

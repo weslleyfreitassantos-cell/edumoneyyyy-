@@ -15,7 +15,30 @@ O token do gateway e as configuracoes de camera nunca entram no bundle React. Se
 
 - Local: o browser e o gateway precisam estar na mesma rede. Use `--local-url http://IP-PRIVADO:8787` para acesso por outro dispositivo; o gateway faz bind apenas em loopback ou interfaces locais.
 - Para o proxy HLS no navegador, informe as origens permitidas, por exemplo `--allowed-origin http://192.168.1.108:3000` ou defina `CAMERA_GATEWAY_ALLOWED_ORIGINS`. Nunca use `*`.
-- Remoto: ainda nao implementado. A interface deve mostrar relay remoto indisponivel, sem fingir que existe video.
+- Remoto: use o relay HTTPS provisionado para o gateway. O processo local abre a conexao de saida com `cloudflared`; nenhuma porta do roteador precisa ser publicada.
+
+## Relay HTTPS remoto
+
+Depois do pareamento, execute `npm run camera-gateway -- provision-relay` uma vez
+no computador da escola. O comando conversa com a Edge Function autenticada,
+cria ou reutiliza o tunnel individual do gateway, grava o token do tunnel em
+`%APPDATA%\EduManager\camera-gateway\cloudflared-tunnel.token` e nunca imprime o
+token.
+
+Inicie o processo permitindo somente a origem HTTPS publicada:
+
+```powershell
+npm run camera-gateway -- start --allowed-origin https://tecescola.grupotec.dev.br
+```
+
+O relay usa um hostname como
+`https://gw-<public-id>.cameras.grupotec.dev.br`. A URL de playback so e emitida
+quando o gateway local e o relay estao online; sem relay configurado, uma pagina
+HTTPS nao recebe URL `localhost` ou HTTP. O campo **Gateway** indica a conexao
+local e **Relay HTTPS** indica a conexao remota separadamente.
+
+O token Cloudflare e segredo operacional do gateway. Nao o coloque no frontend,
+em `localStorage`, em URL, em logs ou no repositorio.
 
 ## Laboratorio
 
