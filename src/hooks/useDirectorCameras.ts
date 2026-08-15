@@ -20,7 +20,7 @@ export function useDirectorCameras(institutionId: string | null) {
     queryKey: directorCameraKeys.list(institutionId ?? undefined),
     queryFn: () => cameraService.list(institutionId as string),
     enabled: Boolean(institutionId),
-    staleTime: 15_000,
+    staleTime: 1000 * 60,
     refetchInterval: 30_000,
   });
 }
@@ -30,7 +30,7 @@ export function useDirectorCameraGateways(institutionId: string | null) {
     queryKey: directorGatewayKeys.list(institutionId ?? undefined),
     queryFn: () => cameraService.listGateways(institutionId as string),
     enabled: Boolean(institutionId),
-    staleTime: 0,
+    staleTime: 1000 * 30,
     refetchInterval: 10_000,
     refetchIntervalInBackground: true,
     refetchOnWindowFocus: true,
