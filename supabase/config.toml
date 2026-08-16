@@ -429,6 +429,12 @@ verify_jwt = true
 import_map = "./functions/manage-school-user/deno.json"
 entrypoint = "./functions/manage-school-user/index.ts"
 
+[functions.camera-turn-credentials]
+enabled = true
+verify_jwt = true
+import_map = "./functions/camera-turn-credentials/deno.json"
+entrypoint = "./functions/camera-turn-credentials/index.ts"
+
 [functions.create-client-account]
 enabled = true
 verify_jwt = true

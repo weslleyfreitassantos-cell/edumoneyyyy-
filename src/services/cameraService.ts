@@ -133,6 +133,33 @@ async function invoke<T>(name: string, args: Record<string, unknown>): Promise<T
   return data as T;
 }
 
+function normalizeIceServers(value: unknown): RTCIceServer[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    if (!entry || typeof entry !== 'object') return [];
+    const source = entry as Record<string, unknown>;
+    const rawUrls = Array.isArray(source.urls) ? source.urls : [source.urls];
+    const urls = rawUrls.filter((url): url is string => typeof url === 'string' && !/:53(?:\?|$)/.test(url));
+    if (urls.length === 0) return [];
+    const server: RTCIceServer = { urls };
+    if (typeof source.username === 'string') server.username = source.username;
+    if (typeof source.credential === 'string') server.credential = source.credential;
+    return [server];
+  });
+}
+
+async function loadTurnIceServers(cameraId: string, sessionId: string): Promise<RTCIceServer[]> {
+  try {
+    const { data, error } = await supabase.functions.invoke('camera-turn-credentials', {
+      body: { camera_id: cameraId, session_id: sessionId },
+    });
+    if (error) return [];
+    return normalizeIceServers(data && typeof data === 'object' ? (data as Record<string, unknown>).iceServers : null);
+  } catch {
+    return [];
+  }
+}
+
 export const cameraService = {
   async list(institutionId: string): Promise<DirectorCamera[]> {
     const rows = await invoke<Record<string, unknown>[]>('list_director_cameras', {
@@ -233,16 +260,15 @@ export const cameraService = {
     const webrtcUrl = row.webrtc_url
       ? String(row.webrtc_url)
       : hlsUrl?.replace(/\/index\.m3u8(?=\?|$)/i, '/whep') ?? null;
-    const iceServers = Array.isArray(row.ice_servers)
-      ? row.ice_servers.filter((server): server is RTCIceServer => Boolean(server && typeof server === 'object'))
-      : [];
+    const iceServers = normalizeIceServers(row.ice_servers);
+    const turnIceServers = await loadTurnIceServers(String(row.camera_id ?? cameraId), String(row.session_id));
     return {
       sessionId: String(row.session_id),
       protocol: webrtcUrl ? 'WEBRTC' : 'HLS',
       playbackUrl: hlsUrl,
       webrtcUrl,
       hlsUrl,
-      iceServers,
+      iceServers: turnIceServers.length > 0 ? turnIceServers : iceServers,
       expiresAt: String(row.expires_at),
     };
   },
