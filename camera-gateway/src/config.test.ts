@@ -18,7 +18,8 @@ describe('gateway local URL', () => {
   });
 
   it('aceita somente hostname HTTPS do relay controlado', () => {
-    expect(validateRelayBaseUrl('https://gw-0123456789abcdef.cameras.grupotec.dev.br/')).toBe('https://gw-0123456789abcdef.cameras.grupotec.dev.br');
+    expect(validateRelayBaseUrl('https://camera-gw-0123456789abcdef.grupotec.dev.br/')).toBe('https://camera-gw-0123456789abcdef.grupotec.dev.br');
+    expect(() => validateRelayBaseUrl('https://gw-0123456789abcdef.cameras.grupotec.dev.br/')).toThrow(/dominio/i);
     expect(() => validateRelayBaseUrl('http://gw-0123456789abcdef.cameras.grupotec.dev.br')).toThrow(/HTTPS/i);
     expect(() => validateRelayBaseUrl('https://example.com')).toThrow(/dominio/i);
   });

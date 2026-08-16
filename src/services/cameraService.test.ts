@@ -131,7 +131,10 @@ describe('cameraService', () => {
     } as never);
 
     await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
+      protocol: 'WEBRTC',
       playbackUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+      hlsUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+      webrtcUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/whep?token=opaque',
     });
   });
 });

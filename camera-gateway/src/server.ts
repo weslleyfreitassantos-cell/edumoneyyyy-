@@ -1,4 +1,5 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
+import { createHash } from 'node:crypto';
 
 import type { GatewayRuntime } from './runtime.ts';
 
@@ -15,11 +16,28 @@ function headers(request: IncomingMessage, response: ServerResponse): void {
   const origin = allowedOrigin(request.headers.origin);
   if (origin) {
     response.setHeader('access-control-allow-origin', origin);
-    response.setHeader('access-control-allow-headers', 'content-type');
-    response.setHeader('access-control-allow-methods', 'GET, OPTIONS');
+    response.setHeader('access-control-allow-headers', 'accept, content-type, if-match');
+    response.setHeader('access-control-allow-methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+    response.setHeader('access-control-expose-headers', 'location, etag');
     response.setHeader('vary', 'Origin');
   }
   response.setHeader('cache-control', 'no-store');
+}
+
+function streamSessionKey(sessionId: string, token: string): string {
+  return `${sessionId}:${createHash('sha256').update(token).digest('hex')}`;
+}
+
+async function readBody(request: IncomingMessage, maxBytes = 2_000_000): Promise<Buffer> {
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const chunk of request) {
+    const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
+    size += buffer.length;
+    if (size > maxBytes) throw new Error('WHEP payload too large.');
+    chunks.push(buffer);
+  }
+  return Buffer.concat(chunks);
 }
 
 function json(response: ServerResponse, status: number, value: unknown): void {
@@ -81,7 +99,8 @@ async function fetchUpstreamWithRetry(url: string): Promise<Response> {
   return lastResponse ?? new Response(null, { status: 502 });
 }
 
-export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: string) {
+export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: string, mediaMtxWebrtcUrl = 'http://127.0.0.1:8889') {
+  const whepSessions = new Map<string, string>();
   return createServer(async (request, response) => {
     headers(request, response);
     if (request.method === 'OPTIONS') {
@@ -105,7 +124,7 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
       return;
     }
     const match = requestUrl.pathname.match(/^\/stream\/([^/]+)\/([^/]+)$/);
-    if (request.method !== 'GET' || !match) {
+    if (!match || !['GET', 'POST', 'PATCH', 'DELETE'].includes(request.method ?? '')) {
       json(response, 404, { error: 'Rota nao encontrada.' });
       return;
     }
@@ -118,6 +137,45 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
     }
     try {
       const session = await runtime.authorizeStream(sessionId, token);
+      if (resource === 'whep') {
+        if (request.method === 'GET') {
+          json(response, 405, { error: 'WHEP requer uma negociacao WebRTC.' });
+          return;
+        }
+        const key = streamSessionKey(sessionId, token);
+        const baseUrl = `${mediaMtxWebrtcUrl.replace(/\/$/, '')}/${runtime.getCameraStreamPath(session)}/whep`;
+        const storedLocation = whepSessions.get(key);
+        const upstreamUrl = request.method === 'POST' ? baseUrl : (storedLocation ?? baseUrl);
+        const body = request.method === 'POST' || request.method === 'PATCH' ? await readBody(request) : undefined;
+        const upstream = await fetch(upstreamUrl, {
+          method: request.method,
+          headers: {
+            accept: request.headers.accept ?? 'application/sdp',
+            ...(request.headers['content-type'] ? { 'content-type': request.headers['content-type'] } : {}),
+            ...(request.headers['if-match'] ? { 'if-match': request.headers['if-match'] } : {}),
+          },
+          body,
+        });
+        const location = upstream.headers.get('location');
+        if (request.method === 'POST' && upstream.ok) {
+          whepSessions.set(key, location ? new URL(location, upstreamUrl).toString() : upstreamUrl);
+          response.setHeader('location', `/stream/${encodeURIComponent(sessionId)}/whep?token=${encodeURIComponent(token)}`);
+        } else if (location) {
+          response.setHeader('location', `/stream/${encodeURIComponent(sessionId)}/whep?token=${encodeURIComponent(token)}`);
+        }
+        const contentType = upstream.headers.get('content-type');
+        if (contentType) response.setHeader('content-type', contentType);
+        const etag = upstream.headers.get('etag');
+        if (etag) response.setHeader('etag', etag);
+        response.statusCode = upstream.status;
+        response.end(Buffer.from(await upstream.arrayBuffer()));
+        if (request.method === 'DELETE') whepSessions.delete(key);
+        return;
+      }
+      if (request.method !== 'GET') {
+        json(response, 405, { error: 'Metodo nao permitido.' });
+        return;
+      }
       const streamPath = runtime.getCameraStreamPath(session);
       const upstream = await fetchUpstreamWithRetry(`${mediaMtxHlsUrl.replace(/\/$/, '')}/${streamPath}/${resource}`);
       if (!upstream.ok) {

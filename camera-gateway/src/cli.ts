@@ -68,6 +68,7 @@ async function pair(args: string[]): Promise<void> {
     localBaseUrl: result.localBaseUrl,
     relayBaseUrl,
     mediaMtxHlsUrl: option(args, '--media-hls-url', 'http://127.0.0.1:8888') as string,
+    mediaMtxWebrtcUrl: option(args, '--media-webrtc-url', 'http://127.0.0.1:8889') as string,
     mediaMtxRtspUrl: option(args, '--media-rtsp-url', 'rtsp://127.0.0.1:8554') as string,
     pairedAt: result.pairedAt,
   };
@@ -98,7 +99,7 @@ function startCloudflared(args: string[], relayBaseUrl: string | null): ChildPro
     return null;
   }
   const binary = option(args, '--cloudflared-path', process.env.CLOUDFLARED_PATH) ?? findBinary('cloudflared');
-  const child = spawn(binary, ['tunnel', 'run', '--no-autoupdate', '--token-file', tokenFile], {
+  const child = spawn(binary, ['tunnel', '--no-autoupdate', 'run', '--token-file', tokenFile], {
     stdio: ['ignore', 'ignore', 'ignore'],
     windowsHide: true,
   });
@@ -128,7 +129,7 @@ async function start(args: string[]): Promise<void> {
     }
   }
   const runtime = createRuntime(config, args);
-  const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
+  const server = createGatewayServer(runtime, config.mediaMtxHlsUrl, config.mediaMtxWebrtcUrl);
   await new Promise<void>((resolve, reject) => {
     server.once('error', reject);
     server.listen(port, listenHostForLocalBaseUrl(config.localBaseUrl), () => resolve());

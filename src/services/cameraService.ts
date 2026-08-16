@@ -59,8 +59,11 @@ export interface CameraGateway {
 
 export interface CameraStreamSession {
   sessionId: string;
-  protocol: 'HLS';
+  protocol: 'WEBRTC' | 'HLS';
   playbackUrl: string | null;
+  webrtcUrl: string | null;
+  hlsUrl: string | null;
+  iceServers: RTCIceServer[];
   expiresAt: string;
 }
 
@@ -226,10 +229,20 @@ export const cameraService = {
     });
     const row = rows?.[0];
     if (!row?.session_id || !row.expires_at) throw new CameraServiceError('Nao foi possivel criar a sessao temporaria da camera.');
+    const hlsUrl = row.hls_url ? String(row.hls_url) : row.playback_url ? String(row.playback_url) : null;
+    const webrtcUrl = row.webrtc_url
+      ? String(row.webrtc_url)
+      : hlsUrl?.replace(/\/index\.m3u8(?=\?|$)/i, '/whep') ?? null;
+    const iceServers = Array.isArray(row.ice_servers)
+      ? row.ice_servers.filter((server): server is RTCIceServer => Boolean(server && typeof server === 'object'))
+      : [];
     return {
       sessionId: String(row.session_id),
-      protocol: 'HLS',
-      playbackUrl: row.playback_url ? String(row.playback_url) : null,
+      protocol: webrtcUrl ? 'WEBRTC' : 'HLS',
+      playbackUrl: hlsUrl,
+      webrtcUrl,
+      hlsUrl,
+      iceServers,
       expiresAt: String(row.expires_at),
     };
   },

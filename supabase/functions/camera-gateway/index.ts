@@ -86,7 +86,7 @@ function relayUrlField(body: JsonRecord, key: string): string | null {
       || parsed.pathname !== "/"
       || parsed.search
       || parsed.hash
-      || !/^gw-[0-9a-f]{16}\.cameras\.grupotec\.dev\.br$/i.test(hostname)) return null;
+      || !/^camera-gw-[0-9a-f]{16}\.grupotec\.dev\.br$/i.test(hostname)) return null;
     return value.replace(/\/$/, "");
   } catch {
     return null;
