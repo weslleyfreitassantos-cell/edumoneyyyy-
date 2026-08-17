@@ -22,6 +22,7 @@ import {
 } from '../../services/attendanceService';
 import {
   ATTENDANCE_STATUS_LABELS,
+  formatAttendanceDate,
   getTodayDateInputValue,
 } from './attendanceDisplay';
 
@@ -73,6 +74,11 @@ export default function TeacherAttendancePanel({
     );
 
   const offerings = offeringsQuery.data ?? [];
+  const selectedOffering = offerings.find(
+    (offering) => offering.id === selectedOfferingId,
+  );
+  const termStartDate = selectedOffering?.termStartDate ?? null;
+  const termEndDate = selectedOffering?.termEndDate ?? null;
 
   useEffect(() => {
     if (
@@ -298,8 +304,11 @@ export default function TeacherAttendancePanel({
                 />
                 <input
                   id="attendance-date"
+                  lang="pt-BR"
                   type="date"
                   value={sessionDate}
+                  min={termStartDate ?? undefined}
+                  max={termEndDate ?? undefined}
                   onChange={(event) => {
                     setSessionDate(event.target.value);
                     setSuccessMessage('');
@@ -307,6 +316,13 @@ export default function TeacherAttendancePanel({
                   className="w-full bg-transparent text-sm text-[#181c20] outline-none"
                 />
               </div>
+              {termStartDate && termEndDate && (
+                <p className="mt-1 text-xs text-[#727785]">
+                  Período permitido:{' '}
+                  {formatAttendanceDate(termStartDate)} a{' '}
+                  {formatAttendanceDate(termEndDate)}.
+                </p>
+              )}
             </div>
 
             <button
