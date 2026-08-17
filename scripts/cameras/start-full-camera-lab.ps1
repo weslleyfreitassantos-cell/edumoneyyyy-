@@ -5,6 +5,7 @@ param(
   [int]$WebcamIndex = 0,
   [string]$StreamPath = 'camera1',
   [string]$LabCameraId = 'camera-1',
+  [string]$LabStreamPath,
   [string]$AllowedOrigins = $env:CAMERA_GATEWAY_ALLOWED_ORIGINS
 )
 
@@ -17,6 +18,7 @@ if (-not $ffmpeg -or -not $ffprobe) { throw 'FFmpeg e FFprobe precisam estar no 
 
 if (-not $MediaMtxPath) { $MediaMtxPath = Join-Path $env:LOCALAPPDATA 'EduManager\camera-lab\mediamtx.exe' }
 if (-not (Test-Path -LiteralPath $MediaMtxPath)) { throw 'MediaMTX nao encontrado. Informe -MediaMtxPath ou MEDIAMTX_PATH.' }
+if ([string]::IsNullOrWhiteSpace($LabStreamPath)) { $LabStreamPath = "camera-$LabCameraId" }
 
 $previousErrorAction = $ErrorActionPreference
 $ErrorActionPreference = 'Continue'
@@ -54,7 +56,7 @@ Start-Sleep -Seconds 2
 $probeOutput = & $ffprobe -v error -rtsp_transport tcp -show_entries stream=codec_type,codec_name,width,height,r_frame_rate -of json "rtsp://127.0.0.1:8554/$StreamPath" 2>&1
 if ($LASTEXITCODE -ne 0) { throw 'RTSP TEST: FAIL. FFprobe nao conseguiu ler a webcam publicada.' }
 Write-Host 'RTSP TEST: PASS'
-$gatewayArgs = @{ LabCameraId = $LabCameraId; LabRtspUrl = "rtsp://127.0.0.1:8554/$StreamPath"; LabStreamPath = $StreamPath }
+$gatewayArgs = @{ LabCameraId = $LabCameraId; LabRtspUrl = "rtsp://127.0.0.1:8554/$StreamPath"; LabStreamPath = $LabStreamPath }
 if ($AllowedOrigins) { $gatewayArgs.AllowedOrigins = $AllowedOrigins }
 & "$PSScriptRoot\gateway-start.ps1" @gatewayArgs
 & "$PSScriptRoot\gateway-status.ps1"
