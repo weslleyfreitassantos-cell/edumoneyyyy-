@@ -429,6 +429,26 @@ async function assertTeacherForInstitution(
   }
 }
 
+async function assertTeacherSubjectAuthorized(
+  teacherProfileId: string,
+  subjectId: string,
+  institutionId: string,
+): Promise<void> {
+  const { data, error } = await supabase
+    .from('teacher_subjects')
+    .select('id')
+    .eq('institution_id', institutionId)
+    .eq('teacher_profile_id', teacherProfileId)
+    .eq('subject_id', subjectId)
+    .eq('active', true)
+    .maybeSingle();
+
+  if (error) throw error;
+  if (!data) {
+    throw new Error('TEACHER_SUBJECT_NOT_AUTHORIZED');
+  }
+}
+
 async function assertNoDuplicateActiveOffering(
   input: {
     class_id: string;
@@ -553,6 +573,11 @@ async function validateOfferingInput(
     ),
     assertTeacherForInstitution(
       input.teacher_profile_id,
+      institutionId,
+    ),
+    assertTeacherSubjectAuthorized(
+      input.teacher_profile_id,
+      input.subject_id,
       institutionId,
     ),
   ]);

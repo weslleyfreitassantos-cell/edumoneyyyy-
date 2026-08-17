@@ -29,6 +29,7 @@ import { useClasses } from '../../../hooks/useClasses';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useSubjects } from '../../../hooks/useSubjects';
 import { useTeachers } from '../../../hooks/useTeachers';
+import { useCreateWholeYearAssignment } from '../../../hooks/useAcademicAutomation';
 
 import {
   subjectOfferingSchema,
@@ -66,6 +67,9 @@ function getErrorMessage(
     if (error.message.includes('CURRICULUM_COMPONENT_REQUIRED')) {
       return 'Adicione esta disciplina à matriz curricular da turma antes de atribuir um professor.';
     }
+    if (error.message.includes('TEACHER_SUBJECT_NOT_AUTHORIZED')) {
+      return 'Este professor nao esta habilitado para lecionar esta disciplina.';
+    }
     return error.message;
   }
 
@@ -78,6 +82,9 @@ function getErrorMessage(
     const msg = (error as Record<string, unknown>).message as string;
     if (msg.includes('CURRICULUM_COMPONENT_REQUIRED')) {
       return 'Adicione esta disciplina à matriz curricular da turma antes de atribuir um professor.';
+    }
+    if (msg.includes('TEACHER_SUBJECT_NOT_AUTHORIZED')) {
+      return 'Este professor nao esta habilitado para lecionar esta disciplina.';
     }
     return msg;
   }
@@ -138,6 +145,9 @@ export default function AssignmentsTab() {
   const statusMutation =
     useSetAssignmentActive();
 
+  const wholeYearMutation =
+    useCreateWholeYearAssignment();
+
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
@@ -150,6 +160,9 @@ export default function AssignmentsTab() {
     useState<AssignmentDraft>({
       ...emptyDraft,
     });
+
+  const [assignmentScope, setAssignmentScope] =
+    useState<'TERM' | 'YEAR'>('TERM');
 
   const [
     teacherFilter,
@@ -377,7 +390,8 @@ export default function AssignmentsTab() {
 
   const isSubmitting =
     createMutation.isPending ||
-    updateMutation.isPending;
+    updateMutation.isPending ||
+    wholeYearMutation.isPending;
 
   const columns: Column<AssignmentRow>[] = [
     {
@@ -468,6 +482,7 @@ export default function AssignmentsTab() {
   function openCreateModal(): void {
     resetMessages();
     setEditingAssignment(null);
+    setAssignmentScope('TERM');
 
     const classId =
       activeClasses[0]?.id ?? '';
@@ -491,6 +506,7 @@ export default function AssignmentsTab() {
   ): void {
     resetMessages();
     setEditingAssignment(assignment);
+    setAssignmentScope('TERM');
     setFormData({
       class_id: assignment.class_id,
       subject_id: assignment.subject_id,
@@ -574,9 +590,22 @@ export default function AssignmentsTab() {
           return;
         }
 
-        await createMutation.mutateAsync(
-          result.data,
-        );
+        if (assignmentScope === 'YEAR') {
+          const classRecord = classes.find((item) => item.id === result.data.class_id);
+          if (!classRecord) {
+            setModalError('Turma nao encontrada.');
+            return;
+          }
+          await wholeYearMutation.mutateAsync({
+            institution_id: institutionId,
+            class_id: result.data.class_id,
+            subject_id: result.data.subject_id,
+            teacher_profile_id: result.data.teacher_profile_id,
+            academic_year_id: classRecord.academic_year_id,
+          });
+        } else {
+          await createMutation.mutateAsync(result.data);
+        }
 
         setFeedbackMessage(
           'Atribuição criada com sucesso.',
@@ -910,6 +939,17 @@ export default function AssignmentsTab() {
                 >
                   {modalError}
                 </div>
+              )}
+
+              {!editingAssignment && (
+                <fieldset className="rounded-lg border border-blue-100 bg-blue-50 p-3">
+                  <legend className="px-1 text-sm font-semibold text-gray-700">Periodo da atribuicao</legend>
+                  <div className="mt-2 flex flex-wrap gap-4 text-sm">
+                    <label className="flex items-center gap-2"><input type="radio" name="assignment-scope" checked={assignmentScope === 'YEAR'} onChange={() => setAssignmentScope('YEAR')} /> Ano letivo inteiro</label>
+                    <label className="flex items-center gap-2"><input type="radio" name="assignment-scope" checked={assignmentScope === 'TERM'} onChange={() => setAssignmentScope('TERM')} /> Periodo especifico</label>
+                  </div>
+                  {assignmentScope === 'YEAR' && <p className="mt-2 text-xs text-blue-800">O sistema criara uma atribuicao por periodo ativo, sem duplicar as que ja existem.</p>}
+                </fieldset>
               )}
 
               <div className="grid gap-4 sm:grid-cols-2">

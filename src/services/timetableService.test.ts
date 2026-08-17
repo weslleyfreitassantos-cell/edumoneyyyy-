@@ -257,17 +257,17 @@ describe('timetableService.createEntry', () => {
 
 describe('timetableService.buildGrid', () => {
   const entry1: TimetableEntryRow = {
-    id: 'e1', institution_id: UUID, subject_offering_id: UUID, room_id: UUID, room_name: 'Sala 01',
+    id: 'e1', institution_id: UUID, subject_offering_id: UUID, class_id: 'class-1', academic_year_id: 'year-1', term_id: 'term-1', subject_id: 'subject-1', teacher_profile_id: 'teacher-1', room_id: UUID, room_name: 'Sala 01',
     day_of_week: 2, day_label: 'Terça', start_time: '07:00', end_time: '07:50',
     active: true, class_name: '1A', subject_name: 'Português', teacher_name: 'Prof Silva',
   };
   const entry2: TimetableEntryRow = {
-    id: 'e2', institution_id: UUID, subject_offering_id: UUID, room_id: null, room_name: null,
+    id: 'e2', institution_id: UUID, subject_offering_id: UUID, class_id: 'class-1', academic_year_id: 'year-1', term_id: 'term-1', subject_id: 'subject-2', teacher_profile_id: 'teacher-2', room_id: null, room_name: null,
     day_of_week: 2, day_label: 'Terça', start_time: '07:50', end_time: '08:40',
     active: true, class_name: '1A', subject_name: 'Matemática', teacher_name: 'Prof Souza',
   };
   const entry3: TimetableEntryRow = {
-    id: 'e3', institution_id: UUID, subject_offering_id: UUID, room_id: null, room_name: null,
+    id: 'e3', institution_id: UUID, subject_offering_id: UUID, class_id: 'class-1', academic_year_id: 'year-1', term_id: 'term-1', subject_id: 'subject-1', teacher_profile_id: 'teacher-1', room_id: null, room_name: null,
     day_of_week: 3, day_label: 'Quarta', start_time: '07:00', end_time: '07:50',
     active: true, class_name: '1A', subject_name: 'Português', teacher_name: 'Prof Silva',
   };
