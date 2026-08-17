@@ -9,6 +9,7 @@ type IceServer = {
 };
 
 const TURN_CREDENTIAL_TTL_SECONDS = 30 * 60;
+const TURN_PROVIDER_ENDPOINT = "https://rtc.live.cloudflare.com/v1/turn/keys/:turn-key-id/credentials/generate-ice-servers";
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const WORKER_ORIGIN = "https://edumoneyyyy.weslleyfreitassantos.workers.dev";
 
@@ -95,25 +96,104 @@ function normalizeIceServers(value: unknown): IceServer[] {
   });
 }
 
+type TurnProviderFailureKind =
+  | "NETWORK_ERROR"
+  | "INVALID_RESPONSE"
+  | "CLOUDFLARE_AUTHENTICATION"
+  | "CLOUDFLARE_TURN_KEY_NOT_FOUND"
+  | "CLOUDFLARE_INVALID_REQUEST"
+  | "CLOUDFLARE_PROVIDER_ERROR"
+  | "CLOUDFLARE_REJECTED";
+
+class TurnProviderError extends Error {
+  constructor(
+    readonly kind: TurnProviderFailureKind,
+    readonly status: number | null,
+    readonly providerCode: string | null,
+    message: string,
+  ) {
+    super(message);
+  }
+}
+
+function sanitizeProviderString(value: unknown): string | null {
+  if (typeof value !== "string" || value.length === 0) return null;
+  return value
+    .replace(/bearer\s+\S+/gi, "Bearer [redacted]")
+    .replace(/(token|secret|key|credential)\s*[:=]\s*\S+/gi, "$1=[redacted]")
+    .slice(0, 240);
+}
+
+function providerMessage(payload: JsonRecord): string | null {
+  for (const key of ["message", "error", "detail"]) {
+    const value = sanitizeProviderString(payload[key]);
+    if (value) return value;
+  }
+  return null;
+}
+
+function providerFailureKind(status: number): TurnProviderFailureKind {
+  if (status === 401 || status === 403) return "CLOUDFLARE_AUTHENTICATION";
+  if (status === 404) return "CLOUDFLARE_TURN_KEY_NOT_FOUND";
+  if (status === 400 || status === 422) return "CLOUDFLARE_INVALID_REQUEST";
+  if (status >= 500) return "CLOUDFLARE_PROVIDER_ERROR";
+  return "CLOUDFLARE_REJECTED";
+}
+
 async function generateTurnCredentials(turnKeyId: string, apiToken: string): Promise<IceServer[]> {
-  const response = await fetch(
-    `https://rtc.live.cloudflare.com/v1/turn/keys/${encodeURIComponent(turnKeyId)}/credentials/generate-ice-servers`,
-    {
+  const endpoint = `https://rtc.live.cloudflare.com/v1/turn/keys/${encodeURIComponent(turnKeyId)}/credentials/generate-ice-servers`;
+  let response: Response;
+  try {
+    response = await fetch(endpoint, {
       method: "POST",
       headers: { authorization: `Bearer ${apiToken}`, "content-type": "application/json" },
       body: JSON.stringify({ ttl: TURN_CREDENTIAL_TTL_SECONDS }),
-    },
-  );
+    });
+  } catch {
+    throw new TurnProviderError("NETWORK_ERROR", null, null, "TURN provider request failed.");
+  }
   let payload: JsonRecord;
   try {
     payload = await response.json() as JsonRecord;
   } catch {
-    throw new Error("TURN provider returned invalid JSON.");
+    throw new TurnProviderError("INVALID_RESPONSE", response.status, null, "TURN provider returned invalid JSON.");
   }
-  if (!response.ok) throw new Error("TURN provider rejected the credential request.");
+  if (!response.ok) {
+    throw new TurnProviderError(
+      providerFailureKind(response.status),
+      response.status,
+      sanitizeProviderString(payload.code),
+      providerMessage(payload) ?? "TURN provider rejected the credential request.",
+    );
+  }
   const iceServers = normalizeIceServers(payload.iceServers);
-  if (iceServers.length === 0) throw new Error("TURN provider returned no usable ICE servers.");
+  if (iceServers.length === 0) {
+    throw new TurnProviderError("INVALID_RESPONSE", response.status, null, "TURN provider returned no usable ICE servers.");
+  }
   return iceServers;
+}
+
+function logTurnProviderFailure(
+  requestIdValue: string,
+  error: unknown,
+  turnKeyId: string,
+): void {
+  const failure = error instanceof TurnProviderError
+    ? error
+    : new TurnProviderError("INVALID_RESPONSE", null, null, "Unexpected TURN provider failure.");
+  console.error(JSON.stringify({
+    request_id: requestIdValue,
+    code: "TURN_CREDENTIALS_FAILED",
+    provider_kind: failure.kind,
+    provider_status: failure.status,
+    provider_code: failure.providerCode,
+    provider_message: sanitizeProviderString(failure.message),
+    endpoint: TURN_PROVIDER_ENDPOINT,
+    authorization_sent: true,
+    secret_key_id_present: turnKeyId.length > 0,
+    secret_key_id_length: turnKeyId.length,
+    secret_token_present: true,
+  }));
 }
 
 async function run(request: Request): Promise<Response> {
@@ -154,7 +234,14 @@ async function run(request: Request): Promise<Response> {
     const turnKeyId = Deno.env.get("CLOUDFLARE_TURN_KEY_ID");
     const turnApiToken = Deno.env.get("CLOUDFLARE_TURN_API_TOKEN");
     if (!turnKeyId || !turnApiToken) {
-      console.error(JSON.stringify({ request_id: id, code: "TURN_NOT_CONFIGURED" }));
+      console.error(JSON.stringify({
+        request_id: id,
+        code: "TURN_NOT_CONFIGURED",
+        endpoint: TURN_PROVIDER_ENDPOINT,
+        authorization_sent: false,
+        secret_key_id_present: Boolean(turnKeyId),
+        secret_token_present: Boolean(turnApiToken),
+      }));
       return errorResponse(request, 503, "TURN_NOT_CONFIGURED", "A conectividade remota de baixa latencia ainda nao esta configurada.");
     }
     const iceServers = await generateTurnCredentials(turnKeyId, turnApiToken);
@@ -163,8 +250,9 @@ async function run(request: Request): Promise<Response> {
       iceServers,
       expiresAt: new Date(Date.now() + TURN_CREDENTIAL_TTL_SECONDS * 1000).toISOString(),
     });
-  } catch {
-    console.error(JSON.stringify({ request_id: id, code: "TURN_CREDENTIALS_FAILED" }));
+  } catch (error) {
+    const turnKeyId = Deno.env.get("CLOUDFLARE_TURN_KEY_ID") ?? "";
+    logTurnProviderFailure(id, error, turnKeyId);
     return errorResponse(request, 502, "TURN_CREDENTIALS_FAILED", "Nao foi possivel preparar a conectividade remota agora.");
   }
 }
