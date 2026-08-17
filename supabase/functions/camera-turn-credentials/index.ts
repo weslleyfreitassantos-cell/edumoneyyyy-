@@ -231,8 +231,8 @@ async function run(request: Request): Promise<Response> {
     if (sessionError) throw sessionError;
     if (!session) return errorResponse(request, 403, "SESSION_REJECTED", "Sessao de camera invalida ou expirada.");
 
-    const turnKeyId = Deno.env.get("CLOUDFLARE_TURN_KEY_ID");
-    const turnApiToken = Deno.env.get("CLOUDFLARE_TURN_API_TOKEN");
+    const turnKeyId = Deno.env.get("CLOUDFLARE_TURN_KEY_ID")?.trim();
+    const turnApiToken = Deno.env.get("CLOUDFLARE_TURN_API_TOKEN")?.trim();
     if (!turnKeyId || !turnApiToken) {
       console.error(JSON.stringify({
         request_id: id,
