@@ -262,13 +262,15 @@ export const cameraService = {
       : hlsUrl?.replace(/\/index\.m3u8(?=\?|$)/i, '/whep') ?? null;
     const iceServers = normalizeIceServers(row.ice_servers);
     const turnIceServers = await loadTurnIceServers(String(row.camera_id ?? cameraId), String(row.session_id));
+    const selectedIceServers = turnIceServers.length > 0 ? turnIceServers : iceServers;
+    const webRtcAvailable = Boolean(webrtcUrl && selectedIceServers.length > 0);
     return {
       sessionId: String(row.session_id),
-      protocol: webrtcUrl ? 'WEBRTC' : 'HLS',
+      protocol: webRtcAvailable ? 'WEBRTC' : 'HLS',
       playbackUrl: hlsUrl,
-      webrtcUrl,
+      webrtcUrl: webRtcAvailable ? webrtcUrl : null,
       hlsUrl,
-      iceServers: turnIceServers.length > 0 ? turnIceServers : iceServers,
+      iceServers: selectedIceServers,
       expiresAt: String(row.expires_at),
     };
   },
