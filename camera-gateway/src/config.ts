@@ -60,10 +60,23 @@ export function validateRelayBaseUrl(value: string): string {
   if (parsed.protocol !== 'https:' || parsed.pathname !== '/' || parsed.search || parsed.hash) {
     throw new Error('URL do relay HTTPS deve ser uma raiz HTTPS sem query.');
   }
-  if (!parsed.hostname.toLowerCase().endsWith('.cameras.grupotec.dev.br')) {
-    throw new Error('URL do relay HTTPS deve usar o dominio cameras.grupotec.dev.br.');
+  if (!/^camera-gw-[0-9a-f]{16}\.grupotec\.dev\.br$/i.test(parsed.hostname)) {
+    throw new Error('URL do relay HTTPS deve usar o dominio camera-gw controlado.');
   }
   return value.replace(/\/$/, '');
+}
+
+function isLegacyRelayBaseUrl(value: string): boolean {
+  try {
+    const parsed = new URL(value);
+    return parsed.protocol === 'https:'
+      && parsed.pathname === '/'
+      && !parsed.search
+      && !parsed.hash
+      && /^gw-[0-9a-f]{16}\.cameras\.grupotec\.dev\.br$/i.test(parsed.hostname);
+  } catch {
+    return false;
+  }
 }
 
 export function listenHostForLocalBaseUrl(value: string): string {
@@ -121,8 +134,11 @@ export async function readGatewayConfig(path = defaultConfigPath()): Promise<Gat
     institutionId: config.institutionId as string,
     gatewayToken: config.gatewayToken as string,
     localBaseUrl: validateLocalBaseUrl(config.localBaseUrl as string),
-    relayBaseUrl: typeof config.relayBaseUrl === 'string' ? validateRelayBaseUrl(config.relayBaseUrl) : null,
+    relayBaseUrl: typeof config.relayBaseUrl === 'string'
+      ? isLegacyRelayBaseUrl(config.relayBaseUrl) ? null : validateRelayBaseUrl(config.relayBaseUrl)
+      : null,
     mediaMtxHlsUrl: typeof config.mediaMtxHlsUrl === 'string' ? validateLocalBaseUrl(config.mediaMtxHlsUrl) : 'http://127.0.0.1:8888',
+    mediaMtxWebrtcUrl: typeof config.mediaMtxWebrtcUrl === 'string' ? validateLocalBaseUrl(config.mediaMtxWebrtcUrl) : 'http://127.0.0.1:8889',
     mediaMtxRtspUrl: typeof config.mediaMtxRtspUrl === 'string' ? validateMediaMtxRtspUrl(config.mediaMtxRtspUrl) : 'rtsp://127.0.0.1:8554',
     pairedAt: config.pairedAt as string,
   };
@@ -135,6 +151,7 @@ export async function writeGatewayConfig(config: GatewayConfig, path = defaultCo
     localBaseUrl: validateLocalBaseUrl(config.localBaseUrl),
     relayBaseUrl: config.relayBaseUrl ? validateRelayBaseUrl(config.relayBaseUrl) : null,
     mediaMtxHlsUrl: validateLocalBaseUrl(config.mediaMtxHlsUrl),
+    mediaMtxWebrtcUrl: validateLocalBaseUrl(config.mediaMtxWebrtcUrl ?? 'http://127.0.0.1:8889'),
     mediaMtxRtspUrl: validateMediaMtxRtspUrl(config.mediaMtxRtspUrl),
   };
   const directory = dirname(path);

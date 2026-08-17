@@ -11,6 +11,7 @@ export interface GatewayConfig {
   localBaseUrl: string;
   relayBaseUrl: string | null;
   mediaMtxHlsUrl: string;
+  mediaMtxWebrtcUrl?: string;
   mediaMtxRtspUrl: string;
   pairedAt: string;
 }

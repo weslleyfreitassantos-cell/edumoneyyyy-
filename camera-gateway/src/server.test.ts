@@ -89,6 +89,67 @@ describe('gateway HLS proxy', () => {
     expect(attempts).toBe(3);
   });
 
+  it('encaminha a negociacao WHEP sem expor o endpoint local do MediaMTX', async () => {
+    const clientFetch = globalThis.fetch;
+    const upstreamFetch = vi.fn(async (_url: string, init?: RequestInit) => {
+      if (init?.method === 'DELETE') return new Response(null, { status: 204 });
+      return new Response('v=0\r\nanswer', {
+        status: 201,
+        headers: {
+          'content-type': 'application/sdp',
+          location: 'http://127.0.0.1:8889/camera-a/whep/session-1',
+        },
+      });
+    });
+    vi.stubGlobal('fetch', upstreamFetch);
+    const api: GatewayCloudApi = {
+      pair: vi.fn(),
+      heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
+      sync: vi.fn(async () => [camera]),
+      redeemStreamSession: vi.fn(async () => ({
+        cameraId: camera.id, institutionId: camera.institutionId, streamPath: 'camera-a',
+        expiresAt: new Date(Date.now() + 60_000).toISOString(),
+      })),
+    };
+    const publisher: CameraPublisher = { start: vi.fn(async () => 'camera-a'), stop: vi.fn(), stopAll: vi.fn() };
+    const runtime = new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe' });
+    await runtime.syncNow();
+    const server = createGatewayServer(runtime, config.mediaMtxHlsUrl, 'http://127.0.0.1:8889');
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('Porta de teste indisponivel.');
+    const baseUrl = `http://127.0.0.1:${address.port}/stream/session-a/whep?token=session-token`;
+    try {
+      const created = await clientFetch(baseUrl, {
+        method: 'POST',
+        headers: { 'content-type': 'application/sdp' },
+        body: 'v=0\r\no=offer',
+      });
+      expect(created.status).toBe(201);
+      expect(created.headers.get('content-type')).toBe('application/sdp');
+      expect(created.headers.get('location')).toBe('/stream/session-a/whep?token=session-token');
+      expect(await created.text()).toContain('answer');
+
+      const removed = await clientFetch(baseUrl, { method: 'DELETE' });
+      expect(removed.status).toBe(204);
+      expect(upstreamFetch).toHaveBeenNthCalledWith(
+        1,
+        'http://127.0.0.1:8889/camera-a/whep',
+        expect.objectContaining({ method: 'POST', body: expect.any(Buffer) }),
+      );
+      expect(upstreamFetch).toHaveBeenNthCalledWith(
+        2,
+        'http://127.0.0.1:8889/camera-a/whep/session-1',
+        expect.objectContaining({ method: 'DELETE' }),
+      );
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      vi.stubGlobal('fetch', clientFetch);
+    }
+  });
+
   it('aceita preflight somente para origem explicitamente configurada', async () => {
     const previousOrigins = process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS;
     process.env.CAMERA_GATEWAY_ALLOWED_ORIGINS = 'http://192.168.1.108:3000';

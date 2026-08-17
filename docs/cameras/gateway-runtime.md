@@ -27,17 +27,45 @@ request.
 
 ## Stream local
 
-O gateway publica fontes RTSP autorizadas em um caminho interno do MediaMTX e oferece um proxy HLS local com sessao temporaria. O proxy:
+O gateway publica fontes RTSP autorizadas em um caminho interno do MediaMTX e oferece
+proxies WebRTC/WHEP e HLS com sessao temporaria. O WebRTC e tentado primeiro para
+baixa latencia; o HLS permanece como fallback automatico. O proxy:
 
 - aceita somente origens locais configuradas;
 - nao aceita caminho upstream vindo do browser;
 - nao aceita URL com usuario ou senha;
 - revalida a sessao no backend e respeita o TTL;
 - reescreve playlists e segmentos sem entregar RTSP ao React.
+- encaminha a negociacao WHEP com `POST`, `PATCH` e `DELETE` sem expor a porta 8889;
+- mantem o token temporario da sessao para WebRTC e HLS no mesmo escopo da camera.
 
-Chrome usa `hls.js`; Safari pode usar HLS nativo. O modo local requer browser e
+MediaMTX usa `:8889` para WHEP e `:8888` para HLS. Chrome, Edge e Safari tentam
+WebRTC quando o navegador oferece `RTCPeerConnection`; se ICE, WHEP ou a rede
+falharem, o player usa `hls.js` ou HLS nativo. O modo local requer browser e
 gateway na mesma rede. Em producao, o relay remoto usa HTTPS e a interface nao
 exibe video enquanto o relay nao estiver online.
+
+O relay deve receber a origem da aplicacao em `CAMERA_GATEWAY_ALLOWED_ORIGINS`.
+Em producao, use somente a origem HTTPS publicada, por exemplo
+`https://tecescola.grupotec.dev.br`; nunca use `*`. O browser fala apenas com o
+relay HTTPS. As portas locais `8554`, `8888` e `8889` ficam restritas ao gateway.
+
+WebRTC remoto pode precisar de STUN/TURN para atravessar NAT. Credenciais TURN,
+quando adicionadas, devem ser temporarias e entregues pela sessao autenticada;
+nenhum segredo permanente deve ir para o frontend. O Cloudflare Tunnel transporta
+o controle HTTPS do relay, mas nao substitui TURN para a midia WebRTC.
+
+### TURN gerenciado
+
+A Edge Function `camera-turn-credentials` valida o usuario e a sessao temporaria
+da camera antes de pedir credenciais de curta duracao ao Cloudflare Realtime TURN.
+Ela filtra endpoints alternativos que usam a porta 53 e retorna somente `iceServers`
+temporarios ao navegador. O backend precisa dos secrets `CLOUDFLARE_TURN_KEY_ID`
+e `CLOUDFLARE_TURN_API_TOKEN`; eles nao podem ser adicionados ao `.env` do frontend,
+ao bundle ou ao gateway local. O API token do Cloudflare deve ter apenas a
+permissao necessaria para gerar credenciais TURN. Sem esses secrets, o player
+continua usando HLS e informa que a conectividade remota WebRTC ainda nao esta
+configurada.
 
 Quando o frontend for aberto pelo IP da LAN, iniciar o gateway com uma origem
 explicitamente permitida, por exemplo `npm run camera-gateway -- start

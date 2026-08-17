@@ -59,8 +59,11 @@ export interface CameraGateway {
 
 export interface CameraStreamSession {
   sessionId: string;
-  protocol: 'HLS';
+  protocol: 'WEBRTC' | 'HLS';
   playbackUrl: string | null;
+  webrtcUrl: string | null;
+  hlsUrl: string | null;
+  iceServers: RTCIceServer[];
   expiresAt: string;
 }
 
@@ -128,6 +131,33 @@ async function invoke<T>(name: string, args: Record<string, unknown>): Promise<T
   const { data, error } = await supabase.rpc(name, args);
   if (error) throw serviceError(error);
   return data as T;
+}
+
+function normalizeIceServers(value: unknown): RTCIceServer[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    if (!entry || typeof entry !== 'object') return [];
+    const source = entry as Record<string, unknown>;
+    const rawUrls = Array.isArray(source.urls) ? source.urls : [source.urls];
+    const urls = rawUrls.filter((url): url is string => typeof url === 'string' && !/:53(?:\?|$)/.test(url));
+    if (urls.length === 0) return [];
+    const server: RTCIceServer = { urls };
+    if (typeof source.username === 'string') server.username = source.username;
+    if (typeof source.credential === 'string') server.credential = source.credential;
+    return [server];
+  });
+}
+
+async function loadTurnIceServers(cameraId: string, sessionId: string): Promise<RTCIceServer[]> {
+  try {
+    const { data, error } = await supabase.functions.invoke('camera-turn-credentials', {
+      body: { camera_id: cameraId, session_id: sessionId },
+    });
+    if (error) return [];
+    return normalizeIceServers(data && typeof data === 'object' ? (data as Record<string, unknown>).iceServers : null);
+  } catch {
+    return [];
+  }
 }
 
 export const cameraService = {
@@ -226,10 +256,19 @@ export const cameraService = {
     });
     const row = rows?.[0];
     if (!row?.session_id || !row.expires_at) throw new CameraServiceError('Nao foi possivel criar a sessao temporaria da camera.');
+    const hlsUrl = row.hls_url ? String(row.hls_url) : row.playback_url ? String(row.playback_url) : null;
+    const webrtcUrl = row.webrtc_url
+      ? String(row.webrtc_url)
+      : hlsUrl?.replace(/\/index\.m3u8(?=\?|$)/i, '/whep') ?? null;
+    const iceServers = normalizeIceServers(row.ice_servers);
+    const turnIceServers = await loadTurnIceServers(String(row.camera_id ?? cameraId), String(row.session_id));
     return {
       sessionId: String(row.session_id),
-      protocol: 'HLS',
-      playbackUrl: row.playback_url ? String(row.playback_url) : null,
+      protocol: webrtcUrl ? 'WEBRTC' : 'HLS',
+      playbackUrl: hlsUrl,
+      webrtcUrl,
+      hlsUrl,
+      iceServers: turnIceServers.length > 0 ? turnIceServers : iceServers,
       expiresAt: String(row.expires_at),
     };
   },

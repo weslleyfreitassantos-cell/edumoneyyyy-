@@ -4,11 +4,14 @@ import { supabase } from '../lib/supabaseClient';
 import { cameraService, type CameraMutationInput } from './cameraService';
 
 vi.mock('../lib/supabaseClient', () => ({
-  supabase: { rpc: vi.fn() },
+  supabase: { rpc: vi.fn(), functions: { invoke: vi.fn() } },
 }));
 
 describe('cameraService', () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(supabase.functions.invoke).mockResolvedValue({ data: null, error: null } as never);
+  });
 
   it('lista apenas o contrato seguro retornado pela RPC', async () => {
     vi.mocked(supabase.rpc).mockResolvedValue({
@@ -131,7 +134,43 @@ describe('cameraService', () => {
     } as never);
 
     await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
+      protocol: 'WEBRTC',
       playbackUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+      hlsUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+      webrtcUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/whep?token=opaque',
+    });
+  });
+
+  it('usa credenciais TURN temporarias sem deixar a falha do TURN bloquear HLS', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{
+        session_id: 'session-1',
+        camera_id: 'camera-1',
+        playback_url: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
+        expires_at: '2026-08-15T23:00:00.000Z',
+      }],
+      error: null,
+    } as never);
+    vi.mocked(supabase.functions.invoke).mockResolvedValue({
+      data: {
+        iceServers: [{
+          urls: ['turn:turn.cloudflare.com:3478?transport=udp', 'turn:turn.cloudflare.com:53?transport=udp'],
+          username: 'temporary-user',
+          credential: 'temporary-credential',
+        }],
+      },
+      error: null,
+    } as never);
+
+    await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
+      iceServers: [{
+        urls: ['turn:turn.cloudflare.com:3478?transport=udp'],
+        username: 'temporary-user',
+        credential: 'temporary-credential',
+      }],
+    });
+    expect(supabase.functions.invoke).toHaveBeenCalledWith('camera-turn-credentials', {
+      body: { camera_id: 'camera-1', session_id: 'session-1' },
     });
   });
 });
