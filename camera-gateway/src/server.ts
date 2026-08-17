@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { createHash } from 'node:crypto';
 
-import type { GatewayRuntime } from './runtime.ts';
+import { StreamAuthorizationError, StreamPublisherError, type GatewayRuntime } from './runtime.ts';
 
 function allowedOrigin(origin: string | undefined): string | null {
   if (!origin) return null;
@@ -156,6 +156,15 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
           },
           body,
         });
+        console.log(JSON.stringify({
+          event: 'stream_whep_upstream',
+          method: request.method,
+          status: upstream.status,
+          ok: upstream.ok,
+          sessionId,
+          cameraId: session.cameraId,
+          streamPath: runtime.getCameraStreamPath(session),
+        }));
         const location = upstream.headers.get('location');
         if (request.method === 'POST' && upstream.ok) {
           whepSessions.set(key, location ? new URL(location, upstreamUrl).toString() : upstreamUrl);
@@ -178,6 +187,15 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
       }
       const streamPath = runtime.getCameraStreamPath(session);
       const upstream = await fetchUpstreamWithRetry(`${mediaMtxHlsUrl.replace(/\/$/, '')}/${streamPath}/${resource}`);
+      console.log(JSON.stringify({
+        event: 'stream_hls_upstream',
+        resource,
+        status: upstream.status,
+        ok: upstream.ok,
+        sessionId,
+        cameraId: session.cameraId,
+        streamPath,
+      }));
       if (!upstream.ok) {
         json(response, 502, { error: 'Stream local indisponivel.' });
         return;
@@ -190,7 +208,20 @@ export function createGatewayServer(runtime: GatewayRuntime, mediaMtxHlsUrl: str
       } else {
         response.end(Buffer.from(await upstream.arrayBuffer()));
       }
-    } catch {
+    } catch (error) {
+      const diagnostic = error instanceof StreamPublisherError || error instanceof StreamAuthorizationError
+        ? error.diagnostic
+        : {
+          reasonCode: 'UNKNOWN_AUTHORIZATION_ERROR' as const,
+          sessionId,
+          gatewayId: runtime.status().gatewayId ?? 'unknown',
+          gatewayInstitutionId: runtime.status().institutionId ?? 'unknown',
+          gatewayNow: new Date().toISOString(),
+        };
+      console.error(JSON.stringify({
+        event: error instanceof StreamPublisherError ? 'stream_publisher_failed' : 'stream_authorization_failed',
+        ...diagnostic,
+      }));
       json(response, 403, { error: 'Sessao de stream recusada.' });
     }
   });

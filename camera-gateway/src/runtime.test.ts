@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import type { GatewayCloudApi } from './api.ts';
 import { GatewayApiError } from './api.ts';
-import type { CameraPublisher } from './publisher.ts';
+import { PublisherStartError, type CameraPublisher } from './publisher.ts';
 import { GatewayRuntime } from './runtime.ts';
 import type { CameraConfig, GatewayConfig } from './types.ts';
 
@@ -78,7 +78,9 @@ describe('GatewayRuntime', () => {
       })),
     });
     await runtime.syncNow();
-    await expect(runtime.authorizeStream('session-a', 'session-token')).rejects.toThrow(/instituicao/i);
+    await expect(runtime.authorizeStream('session-a', 'session-token')).rejects.toMatchObject({
+      diagnostic: expect.objectContaining({ reasonCode: 'INSTITUTION_MISMATCH' }),
+    });
     expect(publisher.start).not.toHaveBeenCalled();
   });
 
@@ -91,6 +93,39 @@ describe('GatewayRuntime', () => {
     expect(second.sessionId).toBe('session-a');
     expect(api.redeemStreamSession).toHaveBeenCalledTimes(1);
     expect(publisher.start).toHaveBeenCalledTimes(1);
+  });
+
+  it('separa falha do publisher da autorizacao da sessao', async () => {
+    const publisherError = new PublisherStartError('FFmpeg encerrou ao publicar a camera.', {
+      reasonCode: 'PUBLISHER_RTSP_UNREACHABLE',
+      cameraId: cameraA.id,
+      streamPath: 'camera1',
+      sourceProtocol: 'RTSP',
+      sourceHost: '127.0.0.1',
+      sourcePort: 8554,
+      sourcePath: '/camera1',
+      stage: 'await_process_start',
+      exitCode: 1,
+      stderr: 'method DESCRIBE failed: 404',
+      durationMs: 42,
+    });
+    const publisher: CameraPublisher = {
+      start: vi.fn(async () => { throw publisherError; }),
+      stop: vi.fn(),
+      stopAll: vi.fn(),
+    };
+    const { runtime } = createRuntime({}, { publisher });
+    await runtime.syncNow();
+    await expect(runtime.authorizeStream('publisher-session', 'session-token')).rejects.toMatchObject({
+      name: 'StreamPublisherError',
+      diagnostic: expect.objectContaining({
+        reasonCode: 'PUBLISHER_RTSP_UNREACHABLE',
+        sessionId: 'publisher-session',
+        streamPath: 'camera1',
+        stage: 'await_process_start',
+        exitCode: 1,
+      }),
+    });
   });
 
   it('nao reutiliza uma sessao em cache com token diferente', async () => {
@@ -106,7 +141,9 @@ describe('GatewayRuntime', () => {
     const { runtime, api } = createRuntime({ redeemStreamSession });
     await runtime.syncNow();
     await runtime.authorizeStream('session-a', 'token-a');
-    await expect(runtime.authorizeStream('session-a', 'token-b')).rejects.toThrow(/adulterada/i);
+    await expect(runtime.authorizeStream('session-a', 'token-b')).rejects.toMatchObject({
+      diagnostic: expect.objectContaining({ reasonCode: 'TOKEN_HASH_MISMATCH' }),
+    });
     expect(api.redeemStreamSession).toHaveBeenCalledTimes(2);
   });
 
@@ -160,8 +197,20 @@ describe('GatewayRuntime', () => {
       })),
     });
     await runtime.syncNow();
-    await expect(runtime.authorizeStream('expired', 'token')).rejects.toThrow(/expirada/i);
+    await expect(runtime.authorizeStream('expired', 'token')).rejects.toMatchObject({
+      diagnostic: expect.objectContaining({ reasonCode: 'SESSION_EXPIRED' }),
+    });
     expect(publisher.start).not.toHaveBeenCalled();
+  });
+
+  it('classifica rejeicao do RPC sem registrar credenciais', async () => {
+    const { runtime } = createRuntime({
+      redeemStreamSession: vi.fn(async () => { throw new Error('rejeitado'); }),
+    });
+    await runtime.syncNow();
+    await expect(runtime.authorizeStream('new-session', 'secret-token')).rejects.toMatchObject({
+      diagnostic: expect.objectContaining({ reasonCode: 'REDEEM_RPC_REJECTED', sessionId: 'new-session' }),
+    });
   });
 
   it('testa camera offline sem expor a URL', async () => {

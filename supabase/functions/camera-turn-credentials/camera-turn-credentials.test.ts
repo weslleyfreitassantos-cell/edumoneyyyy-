@@ -29,6 +29,11 @@ describe('camera-turn-credentials', () => {
   it('never returns provider errors or secrets to the client', () => {
     expect(source).toContain('TURN_CREDENTIALS_FAILED');
     expect(source).toContain('TURN_NOT_CONFIGURED');
+    expect(source).toContain('provider_status');
+    expect(source).toContain('provider_kind');
+    expect(source).toContain('authorization_sent');
+    expect(source).toContain('secret_token_present');
+    expect(source).toContain('TURN_PROVIDER_ENDPOINT');
     expect(source).not.toContain('apiToken: turnApiToken');
     expect(source).not.toContain('return json(request, { apiToken');
   });

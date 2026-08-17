@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import type { GatewayCloudApi } from './api.ts';
-import type { CameraPublisher } from './publisher.ts';
+import { PublisherStartError, type CameraPublisher } from './publisher.ts';
 import { GatewayRuntime } from './runtime.ts';
 import { createGatewayServer } from './server.ts';
 import type { CameraConfig, GatewayConfig } from './types.ts';
@@ -19,6 +19,100 @@ const camera: CameraConfig = {
 
 describe('gateway HLS proxy', () => {
   afterEach(() => vi.unstubAllGlobals());
+
+  it('registra somente o motivo sanitizado quando a autorizacao da sessao falha', async () => {
+    const clientFetch = globalThis.fetch;
+    const errorLog = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const api: GatewayCloudApi = {
+      pair: vi.fn(),
+      heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
+      sync: vi.fn(async () => [camera]),
+      redeemStreamSession: vi.fn(async () => { throw new Error('rejected'); }),
+    };
+    const publisher: CameraPublisher = { start: vi.fn(async () => 'camera-a'), stop: vi.fn(), stopAll: vi.fn() };
+    const runtime = new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe' });
+    await runtime.syncNow();
+    const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('Porta de teste indisponivel.');
+    try {
+      const response = await clientFetch(`http://127.0.0.1:${address.port}/stream/session-a/whep?token=secret-token`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/sdp' },
+        body: 'v=0\\r\\no=offer',
+      });
+      expect(response.status).toBe(403);
+      const log = errorLog.mock.calls.map(([value]) => String(value)).join('\\n');
+      expect(log).toContain('REDEEM_RPC_REJECTED');
+      expect(log).toContain('session-a');
+      expect(log).not.toContain('secret-token');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      errorLog.mockRestore();
+      vi.stubGlobal('fetch', clientFetch);
+    }
+  });
+
+  it('registra falha do publisher separada da autorizacao', async () => {
+    const clientFetch = globalThis.fetch;
+    const errorLog = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const api: GatewayCloudApi = {
+      pair: vi.fn(),
+      heartbeat: vi.fn(async () => undefined),
+      relayHeartbeat: vi.fn(async () => undefined),
+      provisionRelay: vi.fn(),
+      sync: vi.fn(async () => [camera]),
+      redeemStreamSession: vi.fn(async () => ({
+        cameraId: camera.id, institutionId: camera.institutionId, streamPath: 'camera-a',
+        expiresAt: new Date(Date.now() + 60_000).toISOString(),
+      })),
+    };
+    const publisher: CameraPublisher = {
+      start: vi.fn(async () => {
+        throw new PublisherStartError('FFmpeg encerrou ao publicar a camera.', {
+          reasonCode: 'PUBLISHER_RTSP_UNREACHABLE',
+          cameraId: camera.id,
+          streamPath: 'camera-a',
+          sourceProtocol: 'RTSP',
+          sourceHost: '127.0.0.1',
+          sourcePort: 8554,
+          sourcePath: '/camera-a',
+          stage: 'await_process_start',
+          exitCode: 1,
+          stderr: 'method DESCRIBE failed: 404',
+          durationMs: 20,
+        });
+      }),
+      stop: vi.fn(),
+      stopAll: vi.fn(),
+    };
+    const runtime = new GatewayRuntime({ config, api, publisher, ffprobePath: 'ffprobe' });
+    await runtime.syncNow();
+    const server = createGatewayServer(runtime, config.mediaMtxHlsUrl);
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const address = server.address();
+    if (!address || typeof address === 'string') throw new Error('Porta de teste indisponivel.');
+    try {
+      const response = await clientFetch(`http://127.0.0.1:${address.port}/stream/session-a/whep?token=session-token`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/sdp' },
+        body: 'v=0\\r\\no=offer',
+      });
+      expect(response.status).toBe(403);
+      const log = errorLog.mock.calls.map(([value]) => String(value)).join('\\n');
+      expect(log).toContain('stream_publisher_failed');
+      expect(log).toContain('PUBLISHER_RTSP_UNREACHABLE');
+      expect(log).toContain('camera-a');
+      expect(log).not.toContain('session-token');
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+      errorLog.mockRestore();
+      vi.stubGlobal('fetch', clientFetch);
+    }
+  });
 
   it('revalida a sessao e reescreve os recursos da playlist', async () => {
     const clientFetch = globalThis.fetch;
