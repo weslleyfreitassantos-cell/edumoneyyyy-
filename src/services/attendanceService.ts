@@ -414,6 +414,16 @@ function getDateEndTimestamp(sessionDate: string): number {
   return new Date(`${sessionDate}T23:59:59.999Z`).getTime();
 }
 
+function formatDateForAttendanceMessage(value: string): string {
+  const [year, month, day] = value.split('-');
+
+  if (!year || !month || !day) {
+    return value;
+  }
+
+  return `${day}/${month}/${year}`;
+}
+
 export function isEnrollmentValidForAttendanceDate(
   enrollment: {
     active: boolean | null | undefined;
@@ -748,7 +758,7 @@ async function getValidStudentsForOfferingDate(
     if (sessionTime < startTime || sessionTime > endTime) {
       throw new AttendanceServiceError(
         'ATTENDANCE_FORBIDDEN',
-        `A data da chamada deve estar entre ${offering.termStartDate} e ${offering.termEndDate}`,
+        `A data da chamada deve estar entre ${formatDateForAttendanceMessage(offering.termStartDate)} e ${formatDateForAttendanceMessage(offering.termEndDate)}. Atualize o período letivo ou escolha uma data dentro desse intervalo.`,
       );
     }
   }
@@ -1281,6 +1291,8 @@ export const attendanceService = {
           id,
           academic_year_id,
           name,
+          start_date,
+          end_date,
           active
         )
       `,
