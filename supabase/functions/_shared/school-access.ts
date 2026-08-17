@@ -137,6 +137,22 @@ export function sanitizeHexColor(
     : fallback;
 }
 
+export function getContrastTextColor(backgroundColor: string): string {
+  const safeColor = sanitizeHexColor(backgroundColor, DEFAULT_PRIMARY_COLOR);
+  const channels = [0, 2, 4].map((offset) =>
+    Number.parseInt(safeColor.slice(offset + 1, offset + 3), 16) / 255
+  );
+  const luminance = channels.reduce((total, channel, index) => {
+    const linearChannel = channel <= 0.03928
+      ? channel / 12.92
+      : ((channel + 0.055) / 1.055) ** 2.4;
+
+    return total + linearChannel * [0.2126, 0.7152, 0.0722][index];
+  }, 0);
+
+  return luminance > 0.179 ? "#0f172a" : "#ffffff";
+}
+
 function escapeHtml(value: string): string {
   return value.replace(/[&<>"']/g, (character) => {
     const entities: Record<string, string> = {
@@ -192,6 +208,8 @@ export function buildSchoolAccessEmail({
   const safeDisplayName = (displayName?.trim() || institutionName.trim());
   const safePrimaryColor = sanitizeHexColor(primaryColor, DEFAULT_PRIMARY_COLOR);
   const safeSecondaryColor = sanitizeHexColor(secondaryColor, DEFAULT_SECONDARY_COLOR);
+  const primaryContrastText = getContrastTextColor(safePrimaryColor);
+  const secondaryContrastText = getContrastTextColor(safeSecondaryColor);
   const safeLogoUrl = safeAssetUrl(logoUrl);
   const safeLoginUrl = escapeHtml(loginUrl);
   const hasPassword = typeof password === "string" && password.length > 0;
@@ -212,7 +230,7 @@ export function buildSchoolAccessEmail({
       </tr>`;
   const logoBlock = safeLogoUrl
     ? `<img src="${escapeHtml(safeLogoUrl)}" alt="Logo de ${escapeHtml(safeDisplayName)}" width="180" style="display:block;max-width:180px;height:auto;margin:0 auto;border:0;">`
-    : `<div style="font-size:22px;font-weight:700;color:#ffffff;">${escapeHtml(safeDisplayName)}</div>`;
+    : `<div style="font-size:22px;font-weight:700;color:${primaryContrastText};">${escapeHtml(safeDisplayName)}</div>`;
   const passwordRecommendation = hasPassword
     ? "Por segurança, recomendamos que você altere sua senha após o primeiro acesso."
     : "Se você não reconhece este acesso, entre em contato com a instituição.";
@@ -225,7 +243,7 @@ export function buildSchoolAccessEmail({
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#f1f5f9;padding:24px 12px;">
       <tr><td align="center">
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:620px;background:#ffffff;border-radius:12px;overflow:hidden;">
-          <tr><td align="center" style="padding:24px;background:${safePrimaryColor};">${logoBlock}</td></tr>
+          <tr><td align="center" style="padding:24px;background:${safePrimaryColor};color:${primaryContrastText};">${logoBlock}</td></tr>
           <tr><td style="padding:32px 28px;">
             <p style="margin:0 0 12px;font-size:16px;line-height:24px;">Olá, ${escapeHtml(recipientName)}.</p>
             <h1 style="margin:0 0 12px;font-size:24px;line-height:32px;color:${safePrimaryColor};">Seja bem-vindo(a)!</h1>
@@ -235,8 +253,8 @@ export function buildSchoolAccessEmail({
               <tr><td style="padding:0 0 12px;color:#0f172a;font-size:16px;font-weight:700;">${escapeHtml(recipientEmail)}</td></tr>
               ${credentialBlock}
             </table>
-            <p style="margin:24px 0 12px;text-align:center;"><a href="${safeLoginUrl}" style="display:inline-block;padding:13px 22px;background:${safeSecondaryColor};color:#0f172a;text-decoration:none;font-weight:700;border-radius:8px;">Acessar meu ambiente</a></p>
-            <p style="margin:0 0 24px;text-align:center;font-size:17px;line-height:1.5;font-weight:700;color:#123d8d;">${escapeHtml(safeDisplayName)}</p>
+            <p style="margin:24px 0 12px;text-align:center;"><a href="${safeLoginUrl}" style="display:inline-block;padding:13px 22px;background:${safeSecondaryColor};color:${secondaryContrastText};text-decoration:none;font-weight:700;border-radius:8px;">Acessar meu ambiente</a></p>
+            <p style="margin:0 0 24px;text-align:center;font-size:17px;line-height:1.5;font-weight:700;color:${safePrimaryColor};">${escapeHtml(safeDisplayName)}</p>
             <p style="margin:0 0 12px;font-size:13px;line-height:20px;color:#475569;word-break:break-all;">${safeLoginUrl}</p>
             <p style="margin:0;font-size:13px;line-height:20px;color:#64748b;">${passwordRecommendation}</p>
             <p style="margin:10px 0 0;font-size:13px;line-height:20px;color:#64748b;">Não compartilhe sua senha com outras pessoas.</p>
