@@ -134,10 +134,10 @@ describe('cameraService', () => {
     } as never);
 
     await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
-      protocol: 'WEBRTC',
+      protocol: 'HLS',
       playbackUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
       hlsUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/index.m3u8?token=opaque',
-      webrtcUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/whep?token=opaque',
+      webrtcUrl: null,
     });
   });
 
@@ -163,6 +163,8 @@ describe('cameraService', () => {
     } as never);
 
     await expect(cameraService.createStreamSession('camera-1')).resolves.toMatchObject({
+      protocol: 'WEBRTC',
+      webrtcUrl: 'https://gw-0123456789abcdef.cameras.grupotec.dev.br/stream/session-1/whep?token=opaque',
       iceServers: [{
         urls: ['turn:turn.cloudflare.com:3478?transport=udp'],
         username: 'temporary-user',
