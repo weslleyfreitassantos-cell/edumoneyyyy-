@@ -17,6 +17,9 @@ import {
   useSetTeacherActive,
   useTeachers,
 } from '../../../hooks/useTeachers';
+import { useSubjects } from '../../../hooks/useSubjects';
+import { useSaveTeacherAcademicSettings } from '../../../hooks/useAcademicAutomation';
+import TeacherAcademicSettings from '../../../components/academic/TeacherAcademicSettings';
 
 import { teacherSchema } from '../../../schemas/adminSchemas';
 
@@ -25,11 +28,15 @@ import type { TeacherRow } from '../../../services/teacherService';
 interface TeacherDraft {
   full_name: string;
   email: string;
+  subject_ids: string[];
+  primary_subject_id: string;
 }
 
 const emptyDraft: TeacherDraft = {
   full_name: '',
   email: '',
+  subject_ids: [],
+  primary_subject_id: '',
 };
 
 function getErrorMessage(
@@ -93,12 +100,15 @@ export default function TeachersTab() {
 
   const teachersQuery =
     useTeachers(institutionId);
+  const subjectsQuery = useSubjects(institutionId);
 
   const createMutation =
     useCreateTeacher();
 
   const statusMutation =
     useSetTeacherActive();
+  const academicSettingsMutation =
+    useSaveTeacherAcademicSettings();
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
@@ -107,6 +117,14 @@ export default function TeachersTab() {
     useState<TeacherDraft>({
       ...emptyDraft,
     });
+
+  const [settingsTeacher, setSettingsTeacher] =
+    useState<{
+      profileId: string;
+      name: string;
+      subjectIds?: string[];
+      primarySubjectId?: string;
+    } | null>(null);
 
   const [
     modalError,
@@ -225,7 +243,23 @@ export default function TeachersTab() {
           result.data,
         );
 
+      await academicSettingsMutation.mutateAsync({
+        institution_id: institutionId,
+        teacher_profile_id: createdTeacher.profile_id,
+        subject_ids: formData.subject_ids,
+        primary_subject_id:
+          formData.primary_subject_id || undefined,
+        availability: [],
+      });
+
       closeModal();
+
+      setSettingsTeacher({
+        profileId: createdTeacher.profile_id,
+        name: createdTeacher.full_name,
+        subjectIds: formData.subject_ids,
+        primarySubjectId: formData.primary_subject_id,
+      });
 
       setFeedbackMessage(
         `Professor ${createdTeacher.full_name} cadastrado com sucesso. As credenciais foram enviadas para ${createdTeacher.email}.`,
@@ -333,26 +367,27 @@ export default function TeachersTab() {
               teacher.id;
 
           return (
-            <button
-              type="button"
-              onClick={() =>
-                void handleToggleStatus(
-                  teacher,
-                )
-              }
-              disabled={isChangingStatus}
-              className={
-                teacher.active
-                  ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                  : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
-              }
-            >
-              {isChangingStatus
-                ? 'Salvando...'
-                : teacher.active
-                  ? 'Desativar'
-                  : 'Reativar'}
-            </button>
+            <div className="flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setSettingsTeacher({ profileId: teacher.profile_id, name: getTeacherName(teacher) })}
+                className="font-medium text-blue-600 hover:text-blue-800"
+              >
+                Disciplinas e disponibilidade
+              </button>
+              <button
+                type="button"
+                onClick={() => void handleToggleStatus(teacher)}
+                disabled={isChangingStatus}
+                className={
+                  teacher.active
+                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
+                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                }
+              >
+                {isChangingStatus ? 'Salvando...' : teacher.active ? 'Desativar' : 'Reativar'}
+              </button>
+            </div>
           );
         }}
       />
@@ -415,6 +450,49 @@ export default function TeachersTab() {
               </div>
 
               <div>
+                <p className="block text-sm font-medium text-gray-700">
+                  Disciplinas que pode lecionar
+                </p>
+                <div className="mt-2 grid max-h-40 gap-2 overflow-y-auto rounded-lg border p-3 sm:grid-cols-2">
+                  {(subjectsQuery.data ?? [])
+                    .filter((subject) => subject.active)
+                    .map((subject) => (
+                      <label key={subject.id} className="flex items-center gap-2 text-sm">
+                        <input
+                          type="checkbox"
+                          checked={formData.subject_ids.includes(subject.id)}
+                          onChange={() =>
+                            setFormData((current) => ({
+                              ...current,
+                              subject_ids: current.subject_ids.includes(subject.id)
+                                ? current.subject_ids.filter((id) => id !== subject.id)
+                                : [...current.subject_ids, subject.id],
+                              primary_subject_id: current.primary_subject_id === subject.id
+                                ? ''
+                                : current.primary_subject_id,
+                            }))
+                          }
+                        />
+                        <span>{subject.name}</span>
+                        {formData.subject_ids.includes(subject.id) && (
+                          <button
+                            type="button"
+                            className="ml-auto text-xs text-blue-700"
+                            onClick={() => setFormData((current) => ({ ...current, primary_subject_id: subject.id }))}
+                          >
+                            {formData.primary_subject_id === subject.id ? 'Principal' : 'Definir principal'}
+                          </button>
+                        )}
+                      </label>
+                    ))}
+                  {subjectsQuery.data?.length === 0 && (
+                    <p className="text-xs text-gray-500">Cadastre disciplinas antes de vincular habilidades.</p>
+                  )}
+                </div>
+                <p className="mt-1 text-xs text-gray-500">A disponibilidade semanal e configurada no proximo passo.</p>
+              </div>
+
+              <div>
                 <label
                   htmlFor="teacher-email"
                   className="block text-sm font-medium text-gray-700"
@@ -472,6 +550,17 @@ export default function TeachersTab() {
             </form>
           </div>
         </div>
+      )}
+
+      {settingsTeacher && (
+        <TeacherAcademicSettings
+          institutionId={institutionId}
+          teacherProfileId={settingsTeacher.profileId}
+          teacherName={settingsTeacher.name}
+          initialSubjectIds={settingsTeacher.subjectIds}
+          initialPrimarySubjectId={settingsTeacher.primarySubjectId}
+          onClose={() => setSettingsTeacher(null)}
+        />
       )}
     </div>
   );

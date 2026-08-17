@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { DataTable, type Column } from '../../../components/DataTable';
+import CurriculumTemplatePanel from '../../../components/academic/CurriculumTemplatePanel';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -105,6 +106,7 @@ export default function CurriculumTab() {
   }, [searchParams]);
   const [pageError, setPageError] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+  const [isTemplatePanelOpen, setIsTemplatePanelOpen] = useState(false);
 
   const [teachersCache, setTeachersCache] = useState<Record<string, TeachersByTerm>>({});
 
@@ -415,6 +417,7 @@ export default function CurriculumTab() {
         columns={columns}
         isLoading={curriculumQuery.isLoading || classesQuery.isLoading || subjectsQuery.isLoading}
         onAdd={openCreateModal}
+        extraHeaderActions={<button type="button" onClick={() => setIsTemplatePanelOpen(true)} className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50">Modelos de matriz</button>}
         emptyMessage="Nenhum item encontrado para os filtros selecionados."
         renderActions={(item) => {
           const isChangingStatus = statusMutation.isPending && statusMutation.variables?.id === item.id;
@@ -571,6 +574,8 @@ export default function CurriculumTab() {
           </div>
         </div>
       )}
+
+      {isTemplatePanelOpen && <CurriculumTemplatePanel institutionId={institutionId} subjects={subjects} classes={classes} onClose={() => setIsTemplatePanelOpen(false)} />}
     </div>
   );
 }

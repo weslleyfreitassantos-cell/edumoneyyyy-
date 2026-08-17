@@ -276,7 +276,7 @@ describe('TimetableTab', () => {
     fireEvent.click(buttons[0]);
 
     const turmaSelects = screen.getAllByLabelText('Turma');
-    fireEvent.change(turmaSelects[1], { target: { value: '1A' } });
+    fireEvent.change(turmaSelects[1], { target: { value: 'class-1' } });
     fireEvent.change(screen.getByLabelText(/disciplina \/ professor \/ período/i), { target: { value: OFFERING_1_UUID } });
     fireEvent.change(screen.getByLabelText('Dia'), { target: { value: '2' } });
     fireEvent.click(screen.getAllByText('Salvar')[0]);
