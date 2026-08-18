@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 
 import { GatewayApiError, type GatewayCloudApi } from './api.ts';
-import type { CameraPublisher, CameraSourceOverride } from './publisher.ts';
+import { PublisherStartError, type CameraPublisher, type CameraSourceOverride, type PublisherDiagnostic, type PublisherReasonCode } from './publisher.ts';
 import type {
   CameraConfig,
   CameraProbeResult,
@@ -14,6 +14,57 @@ import { probeRtsp } from './rtsp.ts';
 interface SessionState extends StreamSessionAuthorization {
   sessionId: string;
   sessionTokenHash: string;
+}
+
+export type StreamAuthorizationReasonCode =
+  | 'SESSION_NOT_FOUND'
+  | 'SESSION_EXPIRED'
+  | 'TOKEN_HASH_MISMATCH'
+  | 'CAMERA_NOT_SYNCED'
+  | 'CAMERA_INACTIVE'
+  | 'INSTITUTION_MISMATCH'
+  | 'REDEEM_RPC_REJECTED'
+  | 'UNKNOWN_AUTHORIZATION_ERROR';
+
+export interface StreamAuthorizationDiagnostic {
+  reasonCode: StreamAuthorizationReasonCode;
+  sessionId: string;
+  gatewayId: string;
+  gatewayInstitutionId: string;
+  cameraId?: string;
+  cameraInstitutionId?: string;
+  expiresAt?: string;
+  gatewayNow: string;
+}
+
+export class StreamAuthorizationError extends Error {
+  readonly diagnostic: StreamAuthorizationDiagnostic;
+
+  constructor(message: string, diagnostic: StreamAuthorizationDiagnostic) {
+    super(message);
+    this.name = 'StreamAuthorizationError';
+    this.diagnostic = diagnostic;
+  }
+}
+
+export interface StreamPublisherDiagnostic extends PublisherDiagnostic {
+  sessionId: string;
+  gatewayId: string;
+  gatewayInstitutionId: string;
+  cameraInstitutionId: string;
+  labOverrideMatched: boolean;
+  expiresAt: string;
+  gatewayNow: string;
+}
+
+export class StreamPublisherError extends Error {
+  readonly diagnostic: StreamPublisherDiagnostic;
+
+  constructor(message: string, diagnostic: StreamPublisherDiagnostic) {
+    super(message);
+    this.name = 'StreamPublisherError';
+    this.diagnostic = diagnostic;
+  }
 }
 
 function sessionTokenHash(sessionToken: string): string {
@@ -42,6 +93,10 @@ async function probeRelayUrl(relayBaseUrl: string): Promise<void> {
   if (!response.ok) throw new Error('Relay health check failed.');
   const body = await response.json() as { gatewayOnline?: unknown };
   if (body.gatewayOnline !== true) throw new Error('Gateway relay is not online.');
+}
+
+function matchesLabCamera(override: CameraSourceOverride | undefined, cameraId: string): boolean {
+  return Boolean(override && override.cameraId.trim().toLowerCase() === cameraId.trim().toLowerCase());
 }
 
 export class GatewayRuntime {
@@ -146,7 +201,7 @@ export class GatewayRuntime {
   async testCamera(cameraId: string): Promise<CameraProbeResult> {
     const camera = this.cameras.get(cameraId);
     if (!camera) throw new Error('Camera nao pertence a instituicao pareada.');
-    const source = this.options.labSource?.cameraId === cameraId
+    const source = matchesLabCamera(this.options.labSource, cameraId)
       ? this.options.labSource.rtspUrl
       : `rtsp://${camera.host}:${camera.port}`;
     return (this.options.probe ?? probeRtsp)(this.options.ffprobePath, source);
@@ -155,36 +210,106 @@ export class GatewayRuntime {
   async ensurePublisher(cameraId: string): Promise<string> {
     const camera = this.cameras.get(cameraId);
     if (!camera) throw new Error('Camera nao pertence a instituicao pareada.');
-    const override = this.options.labSource?.cameraId === cameraId ? this.options.labSource : undefined;
+    const override = matchesLabCamera(this.options.labSource, cameraId) ? this.options.labSource : undefined;
     return this.options.publisher.start(camera, override);
   }
 
   async authorizeStream(sessionId: string, sessionToken: string): Promise<SessionState> {
     if (this.revoked) throw new Error('Gateway revogado.');
     const current = this.sessions.get(sessionId);
-    if (current
-      && current.sessionTokenHash === sessionTokenHash(sessionToken)
-      && new Date(current.expiresAt).getTime() > Date.now()) return current;
+    const gatewayNow = new Date().toISOString();
+    const tokenMatchesCache = current?.sessionTokenHash === sessionTokenHash(sessionToken);
+    if (current && tokenMatchesCache && new Date(current.expiresAt).getTime() > Date.now()) return current;
+    const cachedTokenMismatch = Boolean(current && !tokenMatchesCache);
+    const cachedSessionExpired = Boolean(current && new Date(current.expiresAt).getTime() <= Date.now());
     let authorization: StreamSessionAuthorization;
     try {
       authorization = await this.options.api.redeemStreamSession(this.options.config, sessionId, sessionToken);
     } catch (error) {
       if (isRevocationError(error)) this.markRevoked();
-      throw error;
+      throw new StreamAuthorizationError('Sessao de stream rejeitada.', {
+        reasonCode: cachedTokenMismatch
+          ? 'TOKEN_HASH_MISMATCH'
+          : cachedSessionExpired
+            ? 'SESSION_EXPIRED'
+            : 'REDEEM_RPC_REJECTED',
+        sessionId,
+        gatewayId: this.options.config.gatewayId,
+        gatewayInstitutionId: this.options.config.institutionId,
+        expiresAt: current?.expiresAt,
+        gatewayNow,
+      });
     }
-    if (authorization.institutionId !== this.options.config.institutionId) throw new Error('Sessao de outra instituicao rejeitada.');
-    if (!this.cameras.has(authorization.cameraId)) throw new Error('Camera da sessao nao esta sincronizada.');
+    if (authorization.institutionId !== this.options.config.institutionId) {
+      throw new StreamAuthorizationError('Sessao de outra instituicao rejeitada.', {
+        reasonCode: 'INSTITUTION_MISMATCH',
+        sessionId,
+        gatewayId: this.options.config.gatewayId,
+        gatewayInstitutionId: this.options.config.institutionId,
+        cameraId: authorization.cameraId,
+        cameraInstitutionId: authorization.institutionId,
+        expiresAt: authorization.expiresAt,
+        gatewayNow,
+      });
+    }
+    if (!this.cameras.has(authorization.cameraId)) {
+      throw new StreamAuthorizationError('Camera da sessao nao esta sincronizada.', {
+        reasonCode: 'CAMERA_NOT_SYNCED',
+        sessionId,
+        gatewayId: this.options.config.gatewayId,
+        gatewayInstitutionId: this.options.config.institutionId,
+        cameraId: authorization.cameraId,
+        cameraInstitutionId: authorization.institutionId,
+        expiresAt: authorization.expiresAt,
+        gatewayNow,
+      });
+    }
     if (!Number.isFinite(Date.parse(authorization.expiresAt)) || Date.parse(authorization.expiresAt) <= Date.now()) {
-      throw new Error('Sessao de stream expirada.');
+      throw new StreamAuthorizationError('Sessao de stream expirada.', {
+        reasonCode: 'SESSION_EXPIRED',
+        sessionId,
+        gatewayId: this.options.config.gatewayId,
+        gatewayInstitutionId: this.options.config.institutionId,
+        cameraId: authorization.cameraId,
+        cameraInstitutionId: authorization.institutionId,
+        expiresAt: authorization.expiresAt,
+        gatewayNow,
+      });
     }
     const session = { sessionId, ...authorization, sessionTokenHash: sessionTokenHash(sessionToken) };
     this.sessions.set(sessionId, session);
-    await this.ensurePublisher(authorization.cameraId);
+    try {
+      await this.ensurePublisher(authorization.cameraId);
+    } catch (error) {
+      const publisherDiagnostic: PublisherDiagnostic = error instanceof PublisherStartError
+        ? error.diagnostic
+        : {
+          reasonCode: 'UNKNOWN_PUBLISHER_ERROR' as PublisherReasonCode,
+          cameraId: authorization.cameraId,
+          streamPath: authorization.streamPath,
+          sourceProtocol: 'UNKNOWN',
+          sourceHost: 'unknown',
+          sourcePort: null,
+          sourcePath: 'unknown',
+          stage: 'await_process_start',
+          durationMs: 0,
+        };
+      throw new StreamPublisherError('Nao foi possivel preparar a camera.', {
+        ...publisherDiagnostic,
+        sessionId,
+        gatewayId: this.options.config.gatewayId,
+        gatewayInstitutionId: this.options.config.institutionId,
+        cameraInstitutionId: authorization.institutionId,
+        labOverrideMatched: matchesLabCamera(this.options.labSource, authorization.cameraId),
+        expiresAt: authorization.expiresAt,
+        gatewayNow,
+      });
+    }
     return session;
   }
 
   getCameraStreamPath(session: SessionState): string {
-    const override = this.options.labSource?.cameraId === session.cameraId ? this.options.labSource : undefined;
+    const override = matchesLabCamera(this.options.labSource, session.cameraId) ? this.options.labSource : undefined;
     if (override?.streamPath) return override.streamPath;
     if (!/^[a-zA-Z0-9_-]+$/.test(session.streamPath)) throw new Error('Caminho de stream invalido.');
     return session.streamPath;
