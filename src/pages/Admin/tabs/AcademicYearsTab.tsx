@@ -30,6 +30,12 @@ import {
   termSchema,
   termUpdateSchema,
 } from '../../../schemas/adminSchemas';
+import {
+  academicAutomationService,
+  suggestPeriods,
+  type PeriodDraft,
+  type PeriodModel,
+} from '../../../services/academicAutomationService';
 
 import type {
   AcademicYearRow,
@@ -49,6 +55,8 @@ interface TermDraft {
   end_date: string;
   active: boolean;
 }
+
+type AssistedPeriodModel = Exclude<PeriodModel, 'CUSTOM'> | 'CUSTOM';
 
 const emptyAcademicYearDraft: AcademicYearDraft = {
   name: '',
@@ -147,6 +155,17 @@ export default function AcademicYearsTab() {
   const updateTermMutation = useUpdateTerm();
   const termStatusMutation =
     useSetTermActive();
+
+  const [periodModel, setPeriodModel] =
+    useState<AssistedPeriodModel>('BIMESTERS_4');
+  const [periodDrafts, setPeriodDrafts] =
+    useState<PeriodDraft[]>([]);
+  const [sourceYearId, setSourceYearId] =
+    useState('');
+  const [copyTeachers, setCopyTeachers] =
+    useState(false);
+  const [copyRooms, setCopyRooms] =
+    useState(true);
 
   const [
     selectedYearId,
@@ -300,6 +319,11 @@ export default function AcademicYearsTab() {
     setYearDraft({
       ...emptyAcademicYearDraft,
     });
+    setPeriodModel('BIMESTERS_4');
+    setPeriodDrafts([]);
+    setSourceYearId('');
+    setCopyTeachers(false);
+    setCopyRooms(true);
     setIsYearModalOpen(true);
   }
 
@@ -314,6 +338,7 @@ export default function AcademicYearsTab() {
       end_date: year.end_date,
       active: year.active,
     });
+    setPeriodDrafts([]);
     setIsYearModalOpen(true);
   }
 
@@ -349,7 +374,20 @@ export default function AcademicYearsTab() {
     setTermDraft({
       ...emptyTermDraft,
     });
+    setPeriodDrafts([]);
     setModalError(null);
+  }
+
+  function suggestAssistedPeriods(): void {
+    if (!yearDraft.start_date || !yearDraft.end_date || periodModel === 'CUSTOM') {
+      return;
+    }
+    try {
+      setPeriodDrafts(suggestPeriods(yearDraft.start_date, yearDraft.end_date, periodModel));
+      setModalError(null);
+    } catch (error) {
+      setModalError(getErrorMessage(error));
+    }
   }
 
   async function handleYearSubmit(
@@ -406,12 +444,24 @@ export default function AcademicYearsTab() {
           return;
         }
 
-        await createYearMutation.mutateAsync(
-          result.data,
-        );
+        const created = periodDrafts.length > 0
+          ? await academicAutomationService.createAcademicYearWithTerms({ ...result.data, periods: periodDrafts })
+          : await createYearMutation.mutateAsync(result.data).then((year) => ({ year_id: year.id, term_count: 0 }));
+
+        if (sourceYearId) {
+          await academicAutomationService.copyPreviousYear({
+            institution_id: institutionId,
+            source_year_id: sourceYearId,
+            target_year_id: created.year_id,
+            copy_teachers: copyTeachers,
+            copy_rooms: copyRooms,
+          });
+        }
 
         setFeedbackMessage(
-          'Ano letivo criado com sucesso.',
+          periodDrafts.length > 0
+            ? `Ano letivo criado com ${created.term_count} periodo(s).`
+            : 'Ano letivo criado com sucesso.',
         );
       }
 
@@ -1041,6 +1091,55 @@ export default function AcademicYearsTab() {
                 />
                 Ativo
               </label>
+
+              {!editingYear && (
+                <>
+                  <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
+                      <div className="flex-1">
+                        <label htmlFor="academic-period-model" className="block text-sm font-medium text-gray-700">Modelo de periodos</label>
+                        <select id="academic-period-model" value={periodModel} onChange={(event) => { setPeriodModel(event.target.value as AssistedPeriodModel); setPeriodDrafts([]); }} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
+                          <option value="BIMESTERS_4">4 bimestres</option>
+                          <option value="TRIMESTERS_3">3 trimestres</option>
+                          <option value="SEMESTERS_2">2 semestres</option>
+                          <option value="CUSTOM">Personalizado</option>
+                        </select>
+                      </div>
+                      <button type="button" onClick={suggestAssistedPeriods} disabled={periodModel === 'CUSTOM' || !yearDraft.start_date || !yearDraft.end_date} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 disabled:opacity-50">Sugerir periodos</button>
+                      {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => [...current, { name: `${current.length + 1} periodo`, start_date: yearDraft.start_date, end_date: yearDraft.end_date, active: true }])} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700">Adicionar periodo</button>}
+                    </div>
+                    <p className="mt-2 text-xs text-blue-800">As datas sao apenas uma sugestao e podem ser revisadas antes de salvar.</p>
+                  </div>
+
+                  {periodDrafts.length > 0 && (
+                    <div className="space-y-2 rounded-lg border p-3">
+                      <p className="text-sm font-semibold text-gray-700">Revise os periodos</p>
+                      {periodDrafts.map((period, index) => (
+                        <div key={`${period.name}-${index}`} className="grid gap-2 sm:grid-cols-[1fr_1fr_1fr_auto]">
+                          <input aria-label={`Nome do periodo ${index + 1}`} value={period.name} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, name: event.target.value } : item))} className="rounded-lg border px-3 py-2 text-sm" />
+                          <input aria-label={`Inicio do periodo ${index + 1}`} type="date" value={period.start_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_date: event.target.value } : item))} className="rounded-lg border px-3 py-2 text-sm" />
+                          <input aria-label={`Fim do periodo ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="rounded-lg border px-3 py-2 text-sm" />
+                          {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="rounded-lg border border-red-200 px-3 py-2 text-sm text-red-700">Remover</button>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="rounded-lg border p-3">
+                    <label htmlFor="academic-source-year" className="block text-sm font-medium text-gray-700">Usar ano anterior como modelo (opcional)</label>
+                    <select id="academic-source-year" value={sourceYearId} onChange={(event) => setSourceYearId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
+                      <option value="">Criar do zero</option>
+                      {years.filter((year) => year.id !== editingYear?.id).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+                    </select>
+                    {sourceYearId && <div className="mt-2 space-y-2 text-xs text-gray-600">
+                      <label className="flex items-center gap-2"><input type="checkbox" checked readOnly /> Estrutura das turmas e matriz curricular</label>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horarios padrao</label>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuicoes de professores qualificadas (sugestao)</label>
+                      <p>Alunos, matriculas, notas e frequencia nunca sao copiados.</p>
+                    </div>}
+                  </div>
+                </>
+              )}
 
               <div className="flex justify-end gap-2 pt-2">
                 <button

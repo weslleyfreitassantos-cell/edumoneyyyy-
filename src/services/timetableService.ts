@@ -63,11 +63,14 @@ interface TimetableEntryQueryRow {
   updated_at: string | null;
   subject_offerings: {
     class_id: string;
+    subject_id: string;
     teacher_profile_id: string;
-    classes: { name: string } | { name: string }[] | null;
+    term_id: string;
+    classes: { name: string; academic_year_id: string } | { name: string; academic_year_id: string }[] | null;
     subjects: { name: string } | { name: string }[] | null;
     profiles: { full_name: string } | { full_name: string }[] | null;
-  } | { class_id: string; teacher_profile_id: string; classes: { name: string } | { name: string }[] | null; subjects: { name: string } | { name: string }[] | null; profiles: { full_name: string } | { full_name: string }[] | null }[] | null;
+    terms: { academic_year_id: string } | { academic_year_id: string }[] | null;
+  } | { class_id: string; subject_id: string; teacher_profile_id: string; term_id: string; classes: { name: string; academic_year_id: string } | { name: string; academic_year_id: string }[] | null; subjects: { name: string } | { name: string }[] | null; profiles: { full_name: string } | { full_name: string }[] | null; terms: { academic_year_id: string } | { academic_year_id: string }[] | null }[] | null;
   rooms: { name: string } | { name: string }[] | null;
 }
 
@@ -75,6 +78,11 @@ export interface TimetableEntryRow {
   id: string;
   institution_id: string;
   subject_offering_id: string;
+  class_id: string;
+  academic_year_id: string;
+  term_id: string;
+  subject_id: string;
+  teacher_profile_id: string;
   room_id: string | null;
   room_name: string | null;
   day_of_week: number;
@@ -122,6 +130,11 @@ function normalizeEntry(row: TimetableEntryQueryRow): TimetableEntryRow {
     id: row.id,
     institution_id: row.institution_id,
     subject_offering_id: row.subject_offering_id,
+    class_id: offering?.class_id ?? '',
+    academic_year_id: normalizeRelation(offering?.terms)?.academic_year_id ?? normalizeRelation(offering?.classes)?.academic_year_id ?? '',
+    term_id: offering?.term_id ?? '',
+    subject_id: offering?.subject_id ?? '',
+    teacher_profile_id: offering?.teacher_profile_id ?? '',
     room_id: row.room_id,
     room_name: roomRel?.name ?? null,
     day_of_week: row.day_of_week,
@@ -186,10 +199,13 @@ const entrySelect = `
   updated_at,
   subject_offerings:subject_offering_id (
     class_id,
+    subject_id,
     teacher_profile_id,
-    classes:class_id (name),
+    term_id,
+    classes:class_id (name, academic_year_id),
     subjects:subject_id (name),
-    profiles:teacher_profile_id (full_name)
+    profiles:teacher_profile_id (full_name),
+    terms:term_id (academic_year_id)
   ),
   rooms:room_id (name)
 `;

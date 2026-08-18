@@ -8,6 +8,7 @@ import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableE
 import { timetableService, DAYS_OF_WEEK, dayLabel, type TimetableEntryRow, type RoomRow, type TimetableGrid } from '../../../services/timetableService';
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
 import { DataTable, type Column } from '../../../components/DataTable';
+import TimetableAutomationPanel from '../../../components/academic/TimetableAutomationPanel';
 
 interface RoomDraft {
   name: string;
@@ -27,7 +28,7 @@ interface EntryDraft {
 const emptyRoomDraft: RoomDraft = { name: '', code: '', capacity: '' };
 const emptyEntryDraft: EntryDraft = { class_id: '', subject_offering_id: '', room_id: '', day_of_week: '1', start_time: '07:00', end_time: '07:50' };
 
-type SubView = 'grid' | 'rooms';
+type SubView = 'grid' | 'rooms' | 'automation';
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
@@ -114,6 +115,9 @@ export default function TimetableTab() {
 
   const [subView, setSubView] = useState<SubView>('grid');
   const [classFilter, setClassFilter] = useState('all');
+  const [yearFilter, setYearFilter] = useState('all');
+  const [termFilter, setTermFilter] = useState('all');
+  const [teacherFilter, setTeacherFilter] = useState('all');
   const [dayFilter, setDayFilter] = useState('all');
 
   // Entry modal state
@@ -134,14 +138,18 @@ export default function TimetableTab() {
   const assignments = assignmentsQuery.data ?? [];
   const rooms = roomsQuery.data ?? [];
   const entries = entriesQuery.data ?? [];
+  const teachers = useMemo(() => Array.from(new Map(assignments.filter((assignment) => assignment.active).map((assignment) => [assignment.teacher_profile_id, { profile_id: assignment.teacher_profile_id, name: assignment.teacher_name }])).values()), [assignments]);
 
   const filteredEntries = useMemo(() => {
     return entries.filter((e) => {
-      if (classFilter !== 'all' && e.class_name !== classes.find((c) => c.id === classFilter)?.name) return false;
+      if (yearFilter !== 'all' && e.academic_year_id !== yearFilter) return false;
+      if (termFilter !== 'all' && e.term_id !== termFilter) return false;
+      if (classFilter !== 'all' && e.class_id !== classFilter) return false;
+      if (teacherFilter !== 'all' && e.teacher_profile_id !== teacherFilter) return false;
       if (dayFilter !== 'all' && e.day_of_week !== Number(dayFilter)) return false;
       return true;
     });
-  }, [entries, classFilter, dayFilter, classes]);
+  }, [entries, classFilter, dayFilter, teacherFilter, termFilter, yearFilter]);
 
   const grid = useMemo(() => timetableService.buildGrid(filteredEntries), [filteredEntries]);
 
@@ -150,16 +158,14 @@ export default function TimetableTab() {
     const map = new Map<string, typeof assignments>();
     for (const a of assignments) {
       if (!a.active) continue;
-      const list = map.get(a.class_name) ?? [];
+      const list = map.get(a.class_id) ?? [];
       list.push(a);
-      map.set(a.class_name, list);
+      map.set(a.class_id, list);
     }
     return map;
   }, [assignments]);
 
-  const classNames: string[] = useMemo(() => {
-    return Array.from(assignmentsByClass.keys()).sort((a: string, b: string) => a.localeCompare(b, 'pt-BR'));
-  }, [assignmentsByClass]);
+  const classOptions = useMemo(() => classes.filter((classRecord) => assignmentsByClass.has(classRecord.id)).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')), [assignmentsByClass, classes]);
 
   const filteredAssignments = useMemo(() => {
     if (!entryDraft.class_id) return [];
@@ -219,7 +225,7 @@ export default function TimetableTab() {
     resetMessages();
     setEditingEntry(entry);
     setEntryDraft({
-      class_id: entry.class_name,
+      class_id: entry.class_id,
       subject_offering_id: entry.subject_offering_id,
       room_id: entry.room_id ?? '',
       day_of_week: String(entry.day_of_week),
@@ -358,12 +364,35 @@ export default function TimetableTab() {
         >
           Salas
         </button>
+        <button
+          type="button"
+          onClick={() => setSubView('automation')}
+          className={`rounded-t-lg px-4 py-2 text-sm font-medium ${subView === 'automation' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf]' : 'text-gray-500 hover:text-gray-700'}`}
+        >
+          Automacao
+        </button>
       </div>
+
+      {subView === 'automation' && <TimetableAutomationPanel institutionId={institutionId} createdBy={profile?.id ?? ''} />}
 
       {subView === 'grid' && (
         <>
           {/* Filters */}
-          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:items-end">
+          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:flex-wrap sm:items-end">
+            <div>
+              <label htmlFor="tt-year-filter" className="block text-sm font-medium text-gray-700">Ano letivo</label>
+              <select id="tt-year-filter" value={yearFilter} onChange={(e) => { setYearFilter(e.target.value); setTermFilter('all'); }} className="mt-1 rounded-lg border px-3 py-2 text-sm">
+                <option value="all">Todos</option>
+                {years.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="tt-term-filter" className="block text-sm font-medium text-gray-700">Periodo</label>
+              <select id="tt-term-filter" value={termFilter} onChange={(e) => setTermFilter(e.target.value)} className="mt-1 rounded-lg border px-3 py-2 text-sm">
+                <option value="all">Todos</option>
+                {years.flatMap((year) => year.terms.filter((term) => yearFilter === 'all' || year.id === yearFilter).map((term) => <option key={term.id} value={term.id}>{term.name} - {year.name}</option>))}
+              </select>
+            </div>
             <div>
               <label htmlFor="tt-class-filter" className="block text-sm font-medium text-gray-700">Turma</label>
               <select
@@ -373,9 +402,17 @@ export default function TimetableTab() {
                 className="mt-1 rounded-lg border px-3 py-2 text-sm"
               >
                 <option value="all">Todas</option>
-                {classes.filter((c) => c.active).map((c) => (
+                {classes.filter((c) => c.active && (yearFilter === 'all' || c.academic_year_id === yearFilter)).map((c) => (
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700">Professor</label>
+              <select id="tt-teacher-filter" value={teacherFilter} onChange={(e) => setTeacherFilter(e.target.value)} className="mt-1 rounded-lg border px-3 py-2 text-sm">
+                <option value="all">Todos</option>
+                {teachers.filter((teacher) => teacher.active).map((teacher) => <option key={teacher.profile_id} value={teacher.profile_id}>{teacher.profiles?.full_name ?? teacher.profile_id}</option>)}
               </select>
             </div>
 
@@ -446,7 +483,7 @@ export default function TimetableTab() {
                 <label htmlFor="entry-class" className="block text-sm font-medium text-gray-700">Turma</label>
                 <select
                   id="entry-class"
-                  value={editingEntry ? editingEntry.class_name : entryDraft.class_id}
+                  value={editingEntry ? editingEntry.class_id : entryDraft.class_id}
                   onChange={(e) => {
                     setEntryDraft((curr) => ({ ...curr, class_id: e.target.value, subject_offering_id: '' }));
                   }}
@@ -455,8 +492,8 @@ export default function TimetableTab() {
                   required
                 >
                   <option value="">Selecione</option>
-                  {classNames.map((name) => (
-                    <option key={name} value={name}>{name}</option>
+                  {classOptions.map((classRecord) => (
+                    <option key={classRecord.id} value={classRecord.id}>{classRecord.name}</option>
                   ))}
                 </select>
               </div>
