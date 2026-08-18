@@ -200,7 +200,25 @@ export default function AcademicYearsTab() {
     setFeedbackMessage,
   ] = useState<string | null>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   const years = yearsQuery.data ?? [];
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const syncViewport = () => setIsMobile(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener?.('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener?.('change', syncViewport);
+    };
+  }, []);
 
   useEffect(() => {
     if (
@@ -657,9 +675,9 @@ export default function AcademicYearsTab() {
         }}
       />
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white shadow">
+      <section className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow">
         <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+          <div className="min-w-0">
             <h3 className="font-bold text-[#181c20]">
               Períodos
             </h3>
@@ -675,14 +693,15 @@ export default function AcademicYearsTab() {
             type="button"
             onClick={openCreateTermModal}
             disabled={!selectedYear}
-            className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           >
             + Novo período
           </button>
         </div>
 
         {selectedYear ? (
-          <div className="overflow-x-auto">
+          <>
+            {!isMobile && <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-gray-50">
                 <tr>
@@ -798,7 +817,102 @@ export default function AcademicYearsTab() {
                 )}
               </tbody>
             </table>
-          </div>
+            </div>}
+
+            {isMobile && <div className="divide-y divide-[#dfe3e8]">
+            {selectedYear.terms.length === 0 ? (
+              <div className="px-4 py-8 text-center text-sm text-gray-500">
+                Nenhum período cadastrado para este ano letivo.
+              </div>
+            ) : (
+              selectedYear.terms.map((term) => {
+                const isChangingStatus =
+                  termStatusMutation.isPending &&
+                  termStatusMutation.variables?.id === term.id;
+
+                return (
+                  <article key={term.id} className="space-y-4 p-4">
+                    <dl className="grid gap-3 text-sm">
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Período
+                        </dt>
+                        <dd className="mt-1 break-words font-semibold text-[#181c20]">
+                          {term.name}
+                          {term.active &&
+                            isCurrentRange(
+                              term.start_date,
+                              term.end_date,
+                            ) && (
+                              <span className="ml-2 text-xs font-medium text-[#005bbf]">
+                                Período atual
+                              </span>
+                            )}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Início
+                        </dt>
+                        <dd className="mt-1 text-[#181c20]">
+                          {formatDate(term.start_date)}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Fim
+                        </dt>
+                        <dd className="mt-1 text-[#181c20]">
+                          {formatDate(term.end_date)}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Status
+                        </dt>
+                        <dd className="mt-1">
+                          <StatusBadge active={term.active} />
+                        </dd>
+                      </div>
+                    </dl>
+
+                    <div className="border-t border-[#dfe3e8] pt-3">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        Ações
+                      </p>
+                      <div className="flex flex-wrap items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => openEditTermModal(term)}
+                          className="font-medium text-blue-600 hover:text-blue-800"
+                        >
+                          Editar
+                        </button>
+
+                        <button
+                          type="button"
+                          disabled={isChangingStatus}
+                          onClick={() => void handleTermStatus(term)}
+                          className={
+                            term.active
+                              ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
+                              : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                          }
+                        >
+                          {isChangingStatus
+                            ? 'Salvando...'
+                            : term.active
+                              ? 'Desativar'
+                              : 'Reativar'}
+                        </button>
+                      </div>
+                    </div>
+                  </article>
+                );
+              })
+            )}
+            </div>}
+          </>
         ) : (
           <div className="p-8 text-center text-sm text-gray-500">
             Cadastre um ano letivo para criar períodos.
