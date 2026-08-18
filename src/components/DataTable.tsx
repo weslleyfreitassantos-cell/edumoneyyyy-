@@ -1,5 +1,7 @@
 ﻿import type { ReactNode } from 'react';
 
+import { useEffect, useState } from 'react';
+
 export interface Column<T> {
   id?: string;
   key: keyof T;
@@ -34,6 +36,24 @@ export function DataTable<T extends { id: string }>({
   extraHeaderActions,
   emptyMessage = 'Nenhum registro encontrado.',
 }: DataTableProps<T>) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const syncViewport = () => setIsMobile(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener?.('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener?.('change', syncViewport);
+    };
+  }, []);
+
   const hasActions = Boolean(
     onEdit ||
     onDelete ||
@@ -49,9 +69,9 @@ export function DataTable<T extends { id: string }>({
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
-      <div className="flex items-center justify-between border-b p-4">
-        <h3 className="font-bold text-[#181c20]">
+    <div className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
+      <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center sm:justify-between">
+        <h3 className="min-w-0 font-bold text-[#181c20]">
           {title}
         </h3>
 
@@ -72,7 +92,7 @@ export function DataTable<T extends { id: string }>({
         )}
       </div>
 
-      <div className="overflow-x-auto">
+      {!isMobile && <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead className="bg-gray-50">
             <tr>
@@ -172,7 +192,67 @@ export function DataTable<T extends { id: string }>({
             )}
           </tbody>
         </table>
-      </div>
+      </div>}
+
+      {isMobile && <div className="divide-y divide-[#dfe3e8]">
+        {data.length === 0 ? (
+          <div className="px-4 py-8 text-center text-sm text-gray-500">
+            {emptyMessage}
+          </div>
+        ) : (
+          data.map((row) => (
+            <article key={row.id} className="min-w-0 space-y-4 p-4">
+              <dl className="grid min-w-0 gap-3">
+                {columns.map((column) => (
+                  <div key={column.id ?? String(column.key)} className="min-w-0">
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      {column.label}
+                    </dt>
+                    <dd className="mt-1 break-words text-sm text-[#181c20]">
+                      {column.render
+                        ? column.render(row[column.key], row)
+                        : String(row[column.key] ?? '')}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+
+              {hasActions && (
+                <div className="border-t border-[#dfe3e8] pt-3">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                    Ações
+                  </p>
+                  {renderActions ? (
+                    renderActions(row)
+                  ) : (
+                    <div className="flex flex-wrap items-center gap-3">
+                      {onEdit && (
+                        <button
+                          type="button"
+                          onClick={() => onEdit(row)}
+                          className="font-medium text-blue-600 hover:text-blue-800"
+                        >
+                          Editar
+                        </button>
+                      )}
+
+                      {onDelete && (
+                        <button
+                          type="button"
+                          onClick={() => onDelete(row)}
+                          className="font-medium text-red-600 hover:text-red-800"
+                        >
+                          Excluir
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </article>
+          ))
+        )}
+      </div>}
     </div>
   );
 }

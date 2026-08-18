@@ -154,6 +154,14 @@ html.dark #app-authenticated-container [class~="bg-[#dce1ff]"] {
   background-color: #243449;
 }
 
+html.dark #app-authenticated-container .bg-blue-50 {
+  background-color: #1e3a5f;
+}
+
+html.dark #app-authenticated-container .bg-blue-100:hover {
+  background-color: #285078;
+}
+
 html.dark #app-authenticated-container [class~="text-[#181c20]"],
 html.dark #app-authenticated-container [class~="text-[#191c1d]"],
 html.dark #app-authenticated-container .text-gray-700,
@@ -187,6 +195,10 @@ html.dark #app-authenticated-container [class~="border-[#e4e8f1]"],
 html.dark #app-authenticated-container .border-gray-200,
 html.dark #app-authenticated-container .border-gray-300 {
   border-color: #334155;
+}
+
+html.dark #app-authenticated-container .border-blue-200 {
+  border-color: #4d78aa;
 }
 
 html.dark #app-authenticated-container input,
