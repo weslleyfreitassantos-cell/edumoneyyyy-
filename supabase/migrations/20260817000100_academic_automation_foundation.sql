@@ -302,17 +302,17 @@ language plpgsql
 security definer
 set search_path = ''
 as $$
-declare teacher_profile_id uuid;
+declare target_teacher_profile_id uuid;
 begin
   if new.active is not true then return new; end if;
-  select so.teacher_profile_id into teacher_profile_id
+  select so.teacher_profile_id into target_teacher_profile_id
   from public.subject_offerings so where so.id = new.subject_offering_id;
 
   if exists (
     select 1
     from public.timetable_entries entry
     join public.subject_offerings offering on offering.id = entry.subject_offering_id
-    where offering.teacher_profile_id = teacher_profile_id
+    where offering.teacher_profile_id = target_teacher_profile_id
       and entry.day_of_week = new.day_of_week
       and entry.active is true
       and entry.id is distinct from new.id
@@ -332,17 +332,17 @@ language plpgsql
 security definer
 set search_path = ''
 as $$
-declare class_id uuid;
+declare target_class_id uuid;
 begin
   if new.active is not true then return new; end if;
-  select so.class_id into class_id
+  select so.class_id into target_class_id
   from public.subject_offerings so where so.id = new.subject_offering_id;
 
   if exists (
     select 1
     from public.timetable_entries entry
     join public.subject_offerings offering on offering.id = entry.subject_offering_id
-    where offering.class_id = class_id
+    where offering.class_id = target_class_id
       and entry.day_of_week = new.day_of_week
       and entry.active is true
       and entry.id is distinct from new.id

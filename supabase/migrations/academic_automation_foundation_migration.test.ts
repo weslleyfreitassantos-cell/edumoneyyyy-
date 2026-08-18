@@ -24,6 +24,15 @@ describe('academic automation migrations', () => {
     expect(foundation).toContain('set search_path = \'\'');
   });
 
+  it('keeps timetable conflict trigger variables distinct from column names', () => {
+    expect(foundation).toContain('declare target_teacher_profile_id uuid');
+    expect(foundation).toContain('declare target_class_id uuid');
+    expect(foundation).toContain('offering.teacher_profile_id = target_teacher_profile_id');
+    expect(foundation).toContain('offering.class_id = target_class_id');
+    expect(foundation).not.toContain('declare teacher_profile_id uuid');
+    expect(foundation).not.toContain('declare class_id uuid');
+  });
+
   it('copies structure without students and validates publication server-side', () => {
     expect(copy).toContain('copy_academic_year_structure');
     expect(copy).toContain('class_curriculum_items');
