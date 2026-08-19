@@ -53,6 +53,8 @@ interface AcademicYearRow {
 interface TermRow {
   id: string;
   academic_year_id: string;
+  start_date: string;
+  end_date: string;
   active: boolean | null;
 }
 
@@ -71,17 +73,26 @@ interface CurriculumRow {
 
 interface TimeSlotRow {
   shift: string;
+  day_of_week: number;
+  start_time: string;
+  end_time: string;
   active: boolean | null;
 }
 
 interface VersionRow {
   id: string;
+  status?: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
+  created_at?: string;
   published_at: string | null;
 }
 
 interface VersionEntryRow {
   class_id: string;
-  subject_offering_id?: string;
+  term_id: string;
+  subject_offering_id: string;
+  day_of_week: number;
+  start_time: string;
+  end_time: string;
   active: boolean | null;
 }
 
@@ -93,8 +104,171 @@ interface OfferingRow {
   active: boolean | null;
 }
 
+interface TimetableCandidate {
+  version: VersionRow;
+  entries: VersionEntryRow[];
+}
+
+interface TimetableStructuralState {
+  complete: boolean;
+  completeClassIds: Set<string>;
+}
+
 function isActive(value: boolean | null | undefined): boolean {
   return value !== false;
+}
+
+function timeToMinutes(value: string): number {
+  const [hours, minutes] = value.slice(0, 5).split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function timesOverlap(left: VersionEntryRow, right: VersionEntryRow): boolean {
+  return (
+    timeToMinutes(left.start_time) < timeToMinutes(right.end_time) &&
+    timeToMinutes(right.start_time) < timeToMinutes(left.end_time)
+  );
+}
+
+function termsOverlap(left: TermRow, right: TermRow): boolean {
+  return left.start_date <= right.end_date && right.start_date <= left.end_date;
+}
+
+function evaluateTimetableStructure({
+  version,
+  entries,
+  activeClasses,
+  activeCurriculum,
+  activeTerms,
+  offerings,
+  timeSlots,
+}: {
+  version: VersionRow;
+  entries: VersionEntryRow[];
+  activeClasses: ClassRow[];
+  activeCurriculum: CurriculumRow[];
+  activeTerms: TermRow[];
+  offerings: OfferingRow[];
+  timeSlots: TimeSlotRow[];
+}): TimetableStructuralState {
+  const activeEntries = entries.filter((entry) => isActive(entry.active));
+  const activeTermIds = new Set(activeTerms.map((term) => term.id));
+  const activeOfferings = offerings.filter(
+    (offering) =>
+      isActive(offering.active) && activeTermIds.has(offering.term_id),
+  );
+  const offeringById = new Map(
+    activeOfferings.map((offering) => [offering.id, offering]),
+  );
+  const entriesByOffering = new Map<string, number>();
+
+  for (const entry of activeEntries) {
+    entriesByOffering.set(
+      entry.subject_offering_id,
+      (entriesByOffering.get(entry.subject_offering_id) ?? 0) + 1,
+    );
+  }
+
+  const completeClassIds = new Set(
+    activeClasses
+      .filter((classRecord) => {
+        const classCurriculum = activeCurriculum.filter(
+          (item) =>
+            item.class_id === classRecord.id && item.weekly_lessons > 0,
+        );
+        return (
+          classCurriculum.length > 0 &&
+          classCurriculum.every((item) => {
+            const itemOfferings = activeOfferings.filter(
+              (offering) =>
+                offering.class_id === item.class_id &&
+                offering.subject_id === item.subject_id,
+            );
+            return (
+              itemOfferings.length > 0 &&
+              itemOfferings.every(
+                (offering) =>
+                  (entriesByOffering.get(offering.id) ?? 0) ===
+                  item.weekly_lessons,
+              )
+            );
+          })
+        );
+      })
+      .map((classRecord) => classRecord.id),
+  );
+
+  const slotShifts = new Set(
+    timeSlots
+      .filter((slot) => isActive(slot.active))
+      .map((slot) => slot.shift.trim()),
+  );
+  const classesHaveSlots = activeClasses.every((classRecord) =>
+    slotShifts.has(classRecord.shift?.trim() ?? ''),
+  );
+  const termsById = new Map(activeTerms.map((term) => [term.id, term]));
+  const classesById = new Map(
+    activeClasses.map((classRecord) => [classRecord.id, classRecord]),
+  );
+
+  const entriesHaveValidScopeAndSlots = activeEntries.every((entry) => {
+    const classRecord = classesById.get(entry.class_id);
+    const offering = offeringById.get(entry.subject_offering_id);
+    const term = termsById.get(entry.term_id);
+    if (
+      !classRecord ||
+      !offering ||
+      !term ||
+      offering.class_id !== entry.class_id ||
+      offering.term_id !== entry.term_id
+    ) {
+      return false;
+    }
+
+    return timeSlots.some(
+      (slot) =>
+        isActive(slot.active) &&
+        slot.shift.trim() === (classRecord.shift?.trim() ?? '') &&
+        slot.day_of_week === entry.day_of_week &&
+        timeToMinutes(slot.start_time) <= timeToMinutes(entry.start_time) &&
+        timeToMinutes(slot.end_time) >= timeToMinutes(entry.end_time),
+    );
+  });
+
+  let hasClassConflict = false;
+  for (let leftIndex = 0; leftIndex < activeEntries.length; leftIndex += 1) {
+    for (
+      let rightIndex = leftIndex + 1;
+      rightIndex < activeEntries.length;
+      rightIndex += 1
+    ) {
+      const left = activeEntries[leftIndex];
+      const right = activeEntries[rightIndex];
+      if (
+        left.class_id !== right.class_id ||
+        left.day_of_week !== right.day_of_week ||
+        !timesOverlap(left, right)
+      ) {
+        continue;
+      }
+      const leftTerm = termsById.get(left.term_id);
+      const rightTerm = termsById.get(right.term_id);
+      if (leftTerm && rightTerm && termsOverlap(leftTerm, rightTerm)) {
+        hasClassConflict = true;
+      }
+    }
+  }
+
+  return {
+    complete:
+      version.id.length > 0 &&
+      activeClasses.length > 0 &&
+      classesHaveSlots &&
+      completeClassIds.size === activeClasses.length &&
+      entriesHaveValidScopeAndSlots &&
+      !hasClassConflict,
+    completeClassIds,
+  };
 }
 
 function pickAcademicYear(
@@ -143,6 +317,7 @@ export function buildSchoolSetupReadiness({
   timeSlots,
   publishedVersion,
   publishedEntries,
+  timetableCandidates = [],
   offerings = [],
 }: {
   institutionId: string;
@@ -155,6 +330,7 @@ export function buildSchoolSetupReadiness({
   timeSlots: TimeSlotRow[];
   publishedVersion: VersionRow | null;
   publishedEntries: VersionEntryRow[];
+  timetableCandidates?: TimetableCandidate[];
   offerings?: OfferingRow[];
 }): SchoolSetupReadiness {
   const activeClasses = classes.filter((classRecord) =>
@@ -168,38 +344,34 @@ export function buildSchoolSetupReadiness({
       .filter((item) => item.weekly_lessons > 0)
       .map((item) => item.class_id),
   );
-  const activeOfferings = offerings.filter((offering) => isActive(offering.active));
-  const publishedEntriesByOffering = new Map<string, number>();
-  for (const entry of publishedEntries) {
-    if (!isActive(entry.active) || !entry.subject_offering_id) continue;
-    const current = publishedEntriesByOffering.get(entry.subject_offering_id) ?? 0;
-    publishedEntriesByOffering.set(entry.subject_offering_id, current + 1);
-  }
-  const workloadCompleteClassIds = new Set(
-    activeClasses
-      .filter((classRecord) => {
-        const classCurriculum = activeCurriculum.filter(
-          (item) => item.class_id === classRecord.id && item.weekly_lessons > 0,
-        );
-        return classCurriculum.length > 0 && classCurriculum.every((item) => {
-          const itemOfferings = activeOfferings.filter(
-            (offering) =>
-              offering.class_id === item.class_id &&
-              offering.subject_id === item.subject_id,
-          );
-          return itemOfferings.length > 0 && itemOfferings.every(
-            (offering) =>
-              (publishedEntriesByOffering.get(offering.id) ?? 0) >= item.weekly_lessons,
-          );
-        });
+  const candidates = [
+    ...timetableCandidates,
+    ...(publishedVersion
+      ? [{ version: publishedVersion, entries: publishedEntries }]
+      : []),
+  ];
+  const structuralCandidate = candidates.find((candidate) =>
+    evaluateTimetableStructure({
+      version: candidate.version,
+      entries: candidate.entries,
+      activeClasses,
+      activeCurriculum,
+      activeTerms: terms.filter((term) => isActive(term.active)),
+      offerings,
+      timeSlots,
+    }).complete,
+  );
+  const timetableState = structuralCandidate
+    ? evaluateTimetableStructure({
+        version: structuralCandidate.version,
+        entries: structuralCandidate.entries,
+        activeClasses,
+        activeCurriculum,
+        activeTerms: terms.filter((term) => isActive(term.active)),
+        offerings,
+        timeSlots,
       })
-      .map((classRecord) => classRecord.id),
-  );
-  const slotShifts = new Set(
-    timeSlots
-      .filter((slot) => isActive(slot.active))
-      .map((slot) => slot.shift),
-  );
+    : { complete: false, completeClassIds: new Set<string>() };
 
   const completed = {
     'academic-year': academicYear !== null,
@@ -219,12 +391,7 @@ export function buildSchoolSetupReadiness({
         curriculumClassIds.has(classRecord.id),
       ),
     timetable:
-      activeClasses.length > 0 &&
-      activeClasses.every((classRecord) =>
-        slotShifts.has(classRecord.shift?.trim() ?? ''),
-      ) &&
-      publishedVersion !== null &&
-      activeClasses.every((classRecord) => workloadCompleteClassIds.has(classRecord.id)),
+      timetableState.complete,
   } satisfies Record<SchoolSetupStepId, boolean>;
 
   const labels: Record<SchoolSetupStepId, string> = {
@@ -261,9 +428,11 @@ export function buildSchoolSetupReadiness({
       subjectCount: subjects.length,
       classCount: activeClasses.length,
       curriculumClassCount: curriculumClassIds.size,
-      timetableClassCount: workloadCompleteClassIds.size,
+      timetableClassCount: timetableState.completeClassIds.size,
     },
-    publishedVersionId: publishedVersion?.id ?? null,
+    publishedVersionId:
+      candidates.find((candidate) => candidate.version.status === 'PUBLISHED')
+        ?.version.id ?? publishedVersion?.id ?? null,
   };
 }
 
@@ -310,8 +479,8 @@ export const schoolSetupService = {
       offeringsResult,
     ] = await Promise.all([
       supabase
-        .from('terms')
-        .select('id, academic_year_id, active')
+      .from('terms')
+        .select('id, academic_year_id, start_date, end_date, active')
         .eq('academic_year_id', academicYear.id),
       supabase
         .from('subjects')
@@ -335,16 +504,15 @@ export const schoolSetupService = {
         .eq('institution_id', institutionId),
       supabase
         .from('school_time_slots')
-        .select('shift, active')
+        .select('shift, day_of_week, start_time, end_time, active')
         .eq('institution_id', institutionId),
       supabase
         .from('timetable_versions')
-        .select('id, published_at')
+        .select('id, status, created_at, published_at')
         .eq('institution_id', institutionId)
         .eq('academic_year_id', academicYear.id)
-        .eq('status', 'PUBLISHED')
-        .order('published_at', { ascending: false })
-        .limit(1),
+        .in('status', ['DRAFT', 'PUBLISHED'])
+        .order('created_at', { ascending: false }),
       supabase
         .from('subject_offerings')
         .select('id, class_id, subject_id, term_id, active, classes!inner(institution_id, academic_year_id)')
@@ -365,19 +533,25 @@ export const schoolSetupService = {
     const failed = results.find((result) => result.error);
     if (failed?.error) throw failed.error;
 
-    const publishedVersion =
-      ((versionsResult.data ?? [])[0] as VersionRow | undefined) ?? null;
-    let publishedEntries: VersionEntryRow[] = [];
-
-    if (publishedVersion) {
-      const entriesResult = await supabase
-      .from('timetable_version_entries')
-        .select('class_id, subject_offering_id, active')
-        .eq('version_id', publishedVersion.id);
-
-      if (entriesResult.error) throw entriesResult.error;
-      publishedEntries = (entriesResult.data ?? []) as VersionEntryRow[];
-    }
+    const versions = (versionsResult.data ?? []) as VersionRow[];
+    const timetableCandidates = await Promise.all(
+      versions.map(async (version) => {
+        const entriesResult = await supabase
+          .from('timetable_version_entries')
+          .select(
+            'class_id, term_id, subject_offering_id, day_of_week, start_time, end_time, active',
+          )
+          .eq('version_id', version.id);
+        if (entriesResult.error) throw entriesResult.error;
+        return {
+          version,
+          entries: (entriesResult.data ?? []) as VersionEntryRow[],
+        };
+      }),
+    );
+    const publishedCandidate = timetableCandidates.find(
+      (candidate) => candidate.version.status === 'PUBLISHED',
+    );
 
     return buildSchoolSetupReadiness({
       institutionId,
@@ -388,8 +562,9 @@ export const schoolSetupService = {
       classes: (classesResult.data ?? []) as ClassRow[],
       curriculum: (curriculumResult.data ?? []) as CurriculumRow[],
       timeSlots: (slotsResult.data ?? []) as TimeSlotRow[],
-      publishedVersion,
-      publishedEntries,
+      publishedVersion: publishedCandidate?.version ?? null,
+      publishedEntries: publishedCandidate?.entries ?? [],
+      timetableCandidates,
       offerings: (offeringsResult.data ?? []) as OfferingRow[],
     });
   },

@@ -26,12 +26,16 @@ describe('academic automation migrations', () => {
 
   it('copies structure without students and validates publication server-side', () => {
     expect(copy).toContain('copy_academic_year_structure');
+    expect(copy).toContain('p_copy_rooms boolean default true');
+    expect(copy).not.toMatch(/^\s*select\s+public\.copy_academic_year_structure\(/im);
     expect(copy).toContain('class_curriculum_items');
     expect(copy).not.toContain('insert into public.enrollments');
+    expect(publication).toContain('timetable_version_entries_validate_scope');
     expect(publication).toContain('TEACHER_SUBJECT_NOT_AUTHORIZED');
     expect(publication).toContain('TEACHER_NOT_AVAILABLE');
     expect(publication).toContain('WEEKLY_LESSONS_MISMATCH');
     expect(publication).toContain('TIMETABLE_VERSION_CONFLICT');
     expect(publication).toContain('ARCHIVED');
+    expect(publication).not.toMatch(/^\s*select\s+public\.publish_timetable_version\(/im);
   });
 });
