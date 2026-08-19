@@ -43,6 +43,7 @@ jobs:
             restore-client-account
             delete-client-account
             invite-school-user
+            send-school-email
             camera-gateway
           )
 

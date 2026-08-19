@@ -61,6 +61,7 @@ export const SYSTEM_PERMISSIONS = [
   'manage_academic_structure',
   'manage_assignments',
   'view_school_dashboard',
+  'send_school_email',
   'view_reports',
   'view_own_classes',
   'view_own_student_data',
@@ -90,6 +91,7 @@ const DIRECTOR_PERMISSIONS = [
   'manage_academic_structure',
   'manage_assignments',
   'view_school_dashboard',
+  'send_school_email',
   'view_reports',
   'view_live_cameras',
 ] as const satisfies readonly SystemPermission[];
@@ -105,6 +107,7 @@ export const CURRENT_ROLE_PERMISSIONS = {
     'manage_guardians',
     'manage_teachers',
     'manage_enrollments',
+    'send_school_email',
     'view_school_dashboard',
   ],
 

@@ -10,6 +10,7 @@ export type AdminModuleId =
   | 'students'
   | 'teachers'
   | 'guardians'
+  | 'email'
   | 'academic-years'
   | 'classes'
   | 'subjects'
@@ -23,6 +24,7 @@ export type AdminModuleId =
 export type AdminNavigationGroupId =
   | 'start'
   | 'people'
+  | 'communication'
   | 'school-structure'
   | 'academic-operation';
 
@@ -52,6 +54,10 @@ export const ADMIN_NAVIGATION_GROUPS: AdminNavigationGroup[] = [
   {
     id: 'people',
     label: 'Pessoas',
+  },
+  {
+    id: 'communication',
+    label: 'Comunicação',
   },
   {
     id: 'school-structure',
@@ -104,6 +110,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_guardians',
     href: moduleHref('guardians'),
+  },
+  {
+    id: 'email',
+    label: 'E-mail',
+    groupId: 'communication',
+    permission: 'send_school_email',
+    href: moduleHref('email'),
   },
   {
     id: 'academic-years',

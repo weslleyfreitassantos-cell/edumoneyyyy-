@@ -153,7 +153,7 @@ export function getContrastTextColor(backgroundColor: string): string {
   return luminance > 0.179 ? "#0f172a" : "#ffffff";
 }
 
-function escapeHtml(value: string): string {
+export function escapeHtml(value: string): string {
   return value.replace(/[&<>"']/g, (character) => {
     const entities: Record<string, string> = {
       "&": "&amp;",
@@ -167,7 +167,7 @@ function escapeHtml(value: string): string {
   });
 }
 
-function safeAssetUrl(value: string | null | undefined): string | null {
+export function safeAssetUrl(value: string | null | undefined): string | null {
   if (!value) return null;
 
   try {

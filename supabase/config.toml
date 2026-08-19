@@ -470,3 +470,9 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/restore-client-account/deno.json"
 entrypoint = "./functions/restore-client-account/index.ts"
+
+[functions.send-school-email]
+enabled = true
+verify_jwt = true
+import_map = "./functions/send-school-email/deno.json"
+entrypoint = "./functions/send-school-email/index.ts"

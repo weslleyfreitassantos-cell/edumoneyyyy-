@@ -36,6 +36,7 @@ import SchoolUsersTab from './tabs/SchoolUsersTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
+import EmailTab from './tabs/EmailTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -192,6 +193,8 @@ export default function AdminPage() {
         return <TeachersTab />;
       case 'guardians':
         return <GuardiansTab />;
+      case 'email':
+        return <EmailTab />;
       case 'academic-policies':
         return (
           <AcademicPolicyPanel
