@@ -209,6 +209,18 @@ describe('getRouteVisualContext', () => {
       section: 'Família',
       title: 'Dependentes e boletins',
     });
+    expect(
+      getRouteVisualContext('/terminais', 'director'),
+    ).toEqual({
+      section: 'Instituição',
+      title: 'Terminais',
+    });
+    expect(
+      getRouteVisualContext('/email', 'director'),
+    ).toEqual({
+      section: 'Comunicação',
+      title: 'E-mail',
+    });
   });
 });
 

@@ -37,6 +37,7 @@ import {
   mapDatabaseRole,
   mapPlatformRole,
 } from './lib/roles';
+import { hasEffectivePermission } from './lib/permissions';
 
 import type { UserRole } from './types';
 
@@ -121,6 +122,14 @@ const DirectorLoginBrandingPage = lazy(
 
 const CamerasPage = lazy(
   () => import('./pages/Cameras/CamerasPage'),
+);
+
+const EmailTab = lazy(
+  () => import('./pages/Admin/tabs/EmailTab'),
+);
+
+const TerminalsPage = lazy(
+  () => import('./pages/Terminals/TerminalsPage'),
 );
 
 const queryClient = new QueryClient({
@@ -379,6 +388,52 @@ function DirectorCamerasRoute() {
   return <CamerasPage />;
 }
 
+function InstitutionEmailRoute() {
+  const { profile } = useAuth();
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return <PageLoading />;
+  }
+
+  if (
+    !profile ||
+    !hasEffectivePermission({
+      platformRole: profile.platform_role,
+      membershipRole: currentRole,
+      profileRole: profile.role,
+      permission: 'send_school_email',
+    })
+  ) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <EmailTab />;
+}
+
+function InstitutionTerminalsRoute() {
+  const { profile } = useAuth();
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return <PageLoading />;
+  }
+
+  if (
+    !profile ||
+    !hasEffectivePermission({
+      platformRole: profile.platform_role,
+      membershipRole: currentRole,
+      profileRole: profile.role,
+      permission: 'view_school_dashboard',
+    })
+  ) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <TerminalsPage />;
+}
+
 function AppRoutes() {
   return (
     <Routes>
@@ -445,6 +500,41 @@ function AppRoutes() {
             <AppShell>
               <AuthenticatedRouteContent>
                 <DirectorCamerasRoute />
+              </AuthenticatedRouteContent>
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/email"
+        element={
+          <ProtectedRoute
+            allowedRoles={['DIRECTOR', 'SECRETARY']}
+          >
+            <AppShell>
+              <AuthenticatedRouteContent>
+                <InstitutionEmailRoute />
+              </AuthenticatedRouteContent>
+            </AppShell>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/terminais"
+        element={
+          <ProtectedRoute
+            allowedRoles={[
+              'ADMIN',
+              'DIRECTOR',
+              'SECRETARY',
+            ]}
+            allowedPlatformRoles={['SUPER_ADMIN']}
+          >
+            <AppShell>
+              <AuthenticatedRouteContent>
+                <InstitutionTerminalsRoute />
               </AuthenticatedRouteContent>
             </AppShell>
           </ProtectedRoute>

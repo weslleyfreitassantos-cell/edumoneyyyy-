@@ -215,6 +215,56 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
+  it('ordena Terminais, E-mail e Administração sem duplicar E-mail', () => {
+    renderSidebar({
+      route: '/admin?module=overview',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    const navigation = screen.getByRole('navigation', {
+      name: 'Menu principal',
+    });
+    const labels = Array.from(
+      navigation.querySelectorAll('a'),
+    ).map((link) => link.textContent?.trim());
+
+    expect(labels.filter((label) => label === 'Terminais')).toHaveLength(1);
+    expect(labels.filter((label) => label === 'E-mail')).toHaveLength(1);
+    expect(labels.indexOf('Terminais')).toBeLessThan(labels.indexOf('E-mail'));
+    expect(labels.indexOf('E-mail')).toBeLessThan(labels.indexOf('Administração'));
+  });
+
+  it('marca Terminais e E-mail como ativos nas rotas próprias', () => {
+    renderSidebar({
+      route: '/terminais',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.getByRole('link', { name: 'Terminais' }).getAttribute('aria-current'),
+    ).toBe('page');
+
+    cleanup();
+
+    renderSidebar({
+      route: '/email',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    expect(
+      screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),
+    ).toBe('page');
+    expect(
+      screen.getByRole('link', { name: /^Administração$/i }).getAttribute('aria-current'),
+    ).not.toBe('page');
+  });
+
   it('nao mostra modulos sem permissao para SECRETARY', () => {
     renderSidebar({
       route: '/admin?module=enrollments',
@@ -466,7 +516,10 @@ describe('sidebar navigation helpers', () => {
       pathname: '/admin',
     });
 
-    expect(items.map((item) => item.id)).toEqual([]);
+    expect(items.map((item) => item.id)).toEqual([
+      'terminals',
+      'email',
+    ]);
     expect(
       modules.map((module) => module.id),
     ).toContain('enrollments');
@@ -492,6 +545,24 @@ describe('sidebar navigation helpers', () => {
         pathname: '/dashboard',
       });
       expect(items.map((item) => item.id)).not.toContain('cameras');
+    }
+  });
+
+  it('mantem Terminais e E-mail fora do acesso de TEACHER, STUDENT e GUARDIAN', () => {
+    for (const [profileRole, currentUserRole] of [
+      ['TEACHER', 'teacher'],
+      ['STUDENT', 'student'],
+      ['GUARDIAN', 'parent'],
+    ] as const) {
+      const items = getSidebarNavigationItems({
+        profile: { ...baseProfile, role: profileRole },
+        currentInstitutionRole: profileRole,
+        currentUserRole,
+        pathname: '/dashboard',
+      });
+
+      expect(items.map((item) => item.id)).not.toContain('terminals');
+      expect(items.map((item) => item.id)).not.toContain('email');
     }
   });
 });

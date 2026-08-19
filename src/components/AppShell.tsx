@@ -153,6 +153,20 @@ export function getRouteVisualContext(
     };
   }
 
+  if (normalizedPath.startsWith('/terminais')) {
+    return {
+      section: 'Instituição',
+      title: 'Terminais',
+    };
+  }
+
+  if (normalizedPath.startsWith('/email')) {
+    return {
+      section: 'Comunicação',
+      title: 'E-mail',
+    };
+  }
+
   if (normalizedPath.startsWith('/dashboard')) {
     if (role === 'super_admin') {
       return {

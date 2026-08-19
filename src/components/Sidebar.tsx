@@ -6,6 +6,8 @@ import {
   GraduationCap,
   LayoutDashboard,
   LogOut,
+  Mail,
+  MonitorCog,
   Palette,
   School,
   ShieldCheck,
@@ -148,6 +150,24 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     roles: ['director'],
     activePaths: ['/cameras'],
   },
+  {
+    id: 'terminals',
+    label: 'Terminais',
+    path: '/terminais',
+    section: 'school',
+    icon: MonitorCog,
+    permissions: ['view_school_dashboard'],
+    activePaths: ['/terminais'],
+  },
+  {
+    id: 'email',
+    label: 'E-mail',
+    path: '/email',
+    section: 'school',
+    icon: Mail,
+    permissions: ['send_school_email'],
+    activePaths: ['/email'],
+  },
 ];
 
 function getInitials(name: string): string {
@@ -228,6 +248,14 @@ export function getSidebarNavigationItems({
   return baseNavigationItems
     .filter((item) => {
       if (
+        item.id === 'terminals' &&
+        isPlatformSuperAdmin &&
+        !isAdminPath(pathname)
+      ) {
+        return false;
+      }
+
+      if (
         item.id === 'dashboard' &&
         (currentUserRole === 'director' ||
           currentUserRole === 'secretary')
@@ -304,6 +332,10 @@ export function getSidebarAdminModules({
     });
 
   return ADMIN_MODULES.filter((module) => {
+    if (module.id === 'email') {
+      return false;
+    }
+
     if (
       ['students', 'teachers', 'guardians'].includes(
         module.id,
