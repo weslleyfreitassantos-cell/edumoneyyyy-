@@ -8,6 +8,7 @@ interface Env {
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
+  "frame-src 'self' https://admin.in9midia.com",
   "base-uri 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
