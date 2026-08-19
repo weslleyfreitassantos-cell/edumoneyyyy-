@@ -29,8 +29,9 @@ describe('Worker script', () => {
 
     expect(contentSecurityPolicy).not.toContain('http:');
     expect(contentSecurityPolicy).toContain(
-      "frame-src 'self' https://admin.in9midia.com",
+      "frame-src 'self' https://admin.in9midia.com https://tvescola.grupotec.dev.br",
     );
+    expect(contentSecurityPolicy).toContain('https://tvescola.grupotec.dev.br');
     expect(contentSecurityPolicy).not.toContain('frame-src *');
     expect(contentSecurityPolicy).not.toContain('*.in9midia.com');
 

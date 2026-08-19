@@ -18,7 +18,7 @@ const NEONEWS_ORIGIN = `https://${NEONEWS_HOSTNAME}`;
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "frame-src 'self' https://admin.in9midia.com",
+  "frame-src 'self' https://admin.in9midia.com https://tvescola.grupotec.dev.br",
   "base-uri 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",

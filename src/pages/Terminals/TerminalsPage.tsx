@@ -2,7 +2,7 @@ import { ExternalLink, MonitorCog } from 'lucide-react';
 import { useState } from 'react';
 
 export const TERMINALS_URL =
-  'https://admin.in9midia.com/neonews/logon.jsp?sys=NEC&msgKey=';
+  'https://tvescola.grupotec.dev.br/neonews/logon.jsp?sys=NEC&msgKey=';
 
 type FrameState = 'loading' | 'loaded' | 'blocked';
 

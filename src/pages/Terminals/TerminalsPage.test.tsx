@@ -15,6 +15,9 @@ describe('TerminalsPage', () => {
 
     const iframe = screen.getByTitle('Terminais');
 
+    expect(TERMINALS_URL).toBe(
+      'https://tvescola.grupotec.dev.br/neonews/logon.jsp?sys=NEC&msgKey=',
+    );
     expect(iframe.getAttribute('src')).toBe(TERMINALS_URL);
     expect(iframe.getAttribute('referrerpolicy')).toBe(
       'strict-origin-when-cross-origin',
@@ -44,15 +47,13 @@ describe('TerminalsPage', () => {
         'Não foi possível carregar o sistema Terminais dentro desta página.',
       ),
     ).toBeDefined();
-    expect(
-      screen.getByRole('link', {
-        name: /abrir terminais em nova aba/i,
-      }).getAttribute('target'),
-    ).toBe('_blank');
-    expect(
-      screen.getByRole('link', {
-        name: /abrir terminais em nova aba/i,
-      }).getAttribute('rel'),
-    ).toBe('noopener noreferrer');
+    const fallbackLink = screen.getByRole('link', {
+      name: /abrir terminais em nova aba/i,
+    });
+
+    expect(fallbackLink.getAttribute('href')).toBe(TERMINALS_URL);
+    expect(fallbackLink.getAttribute('target')).toBe('_blank');
+    expect(fallbackLink.getAttribute('rel')).toBe('noopener noreferrer');
+    expect(document.querySelector('iframe[src*="admin.in9midia.com"]')).toBeNull();
   });
 });
