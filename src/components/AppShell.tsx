@@ -27,7 +27,6 @@ import type {
 } from '../types';
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
-import { useSchoolSetupSidebarVisibility } from '../hooks/useSchoolSetupSidebarVisibility';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
@@ -147,13 +146,6 @@ export function getRouteVisualContext(
     };
   }
 
-  if (normalizedPath.startsWith('/configurar-escola')) {
-    return {
-      section: 'Administração',
-      title: 'Configurar escola',
-    };
-  }
-
   if (normalizedPath.startsWith('/cameras')) {
     return {
       section: 'Instituição',
@@ -236,12 +228,6 @@ export default function AppShell({
     useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
-  const schoolSetupConfigured = useSchoolSetupSidebarVisibility(
-    institutionContext.currentInstitutionId,
-    profile?.platform_role !== 'SUPER_ADMIN' &&
-      ['ADMIN', 'DIRECTOR', 'SECRETARY'].includes(profile?.role ?? '') &&
-      !location.pathname.startsWith('/platform'),
-  );
   const { theme, toggleTheme } = useThemePreference();
   const branding = useHostBranding();
 
@@ -547,7 +533,6 @@ export default function AppShell({
         currentInstitutionRole={
           institutionContext.currentRole
         }
-        schoolSetupConfigured={schoolSetupConfigured}
         isDesktopHidden={isSidebarHidden}
         isMobileOpen={isMobileSidebarOpen}
         isLoggingOut={isLoggingOut}

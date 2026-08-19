@@ -75,10 +75,6 @@ const AdminPage = lazy(
   () => import('./pages/Admin/AdminPage'),
 );
 
-const SchoolSetupPage = lazy(
-  () => import('./pages/SchoolSetupPage'),
-);
-
 const PlatformPage = lazy(
   () => import('./pages/Platform/PlatformPage'),
 );
@@ -566,17 +562,7 @@ function AppRoutes() {
 
       <Route
         path="/configurar-escola/*"
-        element={
-          <ProtectedRoute
-            allowedRoles={['ADMIN', 'DIRECTOR', 'SECRETARY']}
-          >
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <SchoolSetupPage />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
+        element={<Navigate to="/admin?module=overview" replace />}
       />
 
       <Route

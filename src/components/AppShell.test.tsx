@@ -52,10 +52,6 @@ vi.mock('../hooks/useBranding', () => ({
   }),
 }));
 
-vi.mock('../hooks/useSchoolSetupSidebarVisibility', () => ({
-  useSchoolSetupSidebarVisibility: vi.fn(() => false),
-}));
-
 vi.mock('./InstitutionSwitcher', () => ({
   default: () => <div>Seletor global</div>,
 }));
