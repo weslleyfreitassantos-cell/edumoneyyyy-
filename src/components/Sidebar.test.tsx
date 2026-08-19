@@ -136,6 +136,9 @@ describe('Sidebar', () => {
         name: /plataforma/i,
       }),
     ).toBeNull();
+    expect(
+      screen.queryByRole('link', { name: 'Terminais' }),
+    ).toBeNull();
   });
 
   it('remove alunos, professores e responsaveis do menu lateral', () => {

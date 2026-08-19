@@ -168,6 +168,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     section: 'school',
     icon: MonitorCog,
     permissions: ['view_school_dashboard'],
+    roles: ['director', 'secretary', 'super_admin'],
     activePaths: ['/terminais'],
   },
   {
