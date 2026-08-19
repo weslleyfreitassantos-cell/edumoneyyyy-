@@ -8,7 +8,7 @@ type FrameState = 'loading' | 'loaded' | 'blocked';
 
 export function TerminalsFallback() {
   return (
-    <div className="grid min-h-[620px] place-items-center p-6 text-center">
+    <div className="grid h-full min-h-0 place-items-center p-6 text-center">
       <div className="max-w-md">
         <MonitorCog className="mx-auto h-10 w-10 text-[#667085]" aria-hidden="true" />
         <h2 className="mt-4 text-lg font-extrabold text-[#181c20]">
@@ -33,25 +33,8 @@ export default function TerminalsPage() {
     useState<FrameState>('loading');
 
   return (
-    <section className="flex min-h-[calc(100dvh-9rem)] flex-col gap-4">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 text-[#005bbf]">
-            <MonitorCog className="h-5 w-5" aria-hidden="true" />
-            <span className="text-xs font-bold uppercase tracking-[0.18em]">
-              Instituição
-            </span>
-          </div>
-          <h1 className="mt-2 text-2xl font-extrabold text-[#181c20]">
-            Terminais
-          </h1>
-          <p className="mt-2 text-sm text-[#667085]">
-            Acesse o sistema de terminais diretamente pelo ambiente da instituição.
-          </p>
-        </div>
-      </div>
-
-      <div className="relative min-h-[620px] flex-1 overflow-hidden rounded-xl border border-[#d8deea] bg-white shadow-sm">
+    <section className="flex h-full min-h-0 flex-col">
+      <div className="relative h-full min-h-0 flex-1 overflow-hidden border border-[#d8deea] bg-white shadow-sm">
         {frameState === 'loading' ? (
           <div
             role="status"
@@ -74,7 +57,7 @@ export default function TerminalsPage() {
             referrerPolicy="strict-origin-when-cross-origin"
             onLoad={() => setFrameState('loaded')}
             onError={() => setFrameState('blocked')}
-            className="h-full min-h-[620px] w-full border-0 bg-white"
+            className="h-full min-h-0 w-full border-0 bg-white"
           />
         )}
       </div>

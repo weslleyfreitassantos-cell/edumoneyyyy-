@@ -212,8 +212,8 @@ describe('getRouteVisualContext', () => {
     expect(
       getRouteVisualContext('/terminais', 'director'),
     ).toEqual({
-      section: 'Instituição',
-      title: 'Terminais',
+      section: '',
+      title: '',
     });
     expect(
       getRouteVisualContext('/email', 'director'),

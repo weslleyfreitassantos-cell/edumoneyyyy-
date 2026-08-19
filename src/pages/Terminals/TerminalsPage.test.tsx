@@ -19,6 +19,14 @@ describe('TerminalsPage', () => {
     expect(iframe.getAttribute('referrerpolicy')).toBe(
       'strict-origin-when-cross-origin',
     );
+    expect(screen.queryByText('Instituição')).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Terminais' })).toBeNull();
+    expect(
+      screen.queryByText(
+        'Acesse o sistema de terminais diretamente pelo ambiente da instituição.',
+      ),
+    ).toBeNull();
+    expect(iframe.className).toContain('h-full');
     expect(screen.getByRole('status').textContent).toContain(
       'Carregando Terminais...',
     );

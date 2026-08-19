@@ -155,8 +155,8 @@ export function getRouteVisualContext(
 
   if (normalizedPath.startsWith('/terminais')) {
     return {
-      section: 'Instituição',
-      title: 'Terminais',
+      section: '',
+      title: '',
     };
   }
 
@@ -583,9 +583,19 @@ export default function AppShell({
         <main
           id="app-main-content"
           tabIndex={-1}
-          className="min-w-0 flex-1 overflow-x-hidden px-4 py-5 outline-none sm:px-5 lg:px-6 lg:py-6 xl:px-8"
+          className={`min-w-0 flex-1 overflow-x-hidden outline-none ${
+            location.pathname.startsWith('/terminais')
+              ? 'p-0'
+              : 'px-4 py-5 sm:px-5 lg:px-6 lg:py-6 xl:px-8'
+          }`}
         >
-          <div className="mx-auto w-full max-w-none">
+          <div
+            className={`mx-auto w-full max-w-none ${
+              location.pathname.startsWith('/terminais')
+                ? 'h-full'
+                : ''
+            }`}
+          >
             {children}
           </div>
         </main>
