@@ -548,6 +548,23 @@ describe('sidebar navigation helpers', () => {
     }
   });
 
+  it('oculta Configurar escola quando a instituição está CONFIGURED', () => {
+    const items = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentInstitutionRole: 'DIRECTOR',
+      currentUserRole: 'director',
+      pathname: '/dashboard',
+      schoolSetupConfigured: true,
+    });
+
+    expect(items.map((item) => item.id)).not.toContain('school-setup');
+    expect(items.map((item) => item.id)).toContain('terminals');
+    expect(items.map((item) => item.id)).toContain('email');
+  });
+
   it('mantem Terminais e E-mail fora do acesso de TEACHER, STUDENT e GUARDIAN', () => {
     for (const [profileRole, currentUserRole] of [
       ['TEACHER', 'teacher'],

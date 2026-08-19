@@ -69,6 +69,7 @@ interface SidebarProps {
   profile: Profile;
   branding: PublicBranding;
   currentInstitutionRole: string | null;
+  schoolSetupConfigured?: boolean;
   isDesktopHidden: boolean;
   isMobileOpen: boolean;
   isLoggingOut: boolean;
@@ -151,6 +152,16 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     activePaths: ['/cameras'],
   },
   {
+    id: 'school-setup',
+    label: 'Configurar escola',
+    path: '/configurar-escola',
+    section: 'school',
+    icon: School,
+    permissions: ['manage_academic_structure'],
+    roles: ['admin', 'director', 'secretary'],
+    activePaths: ['/configurar-escola'],
+  },
+  {
     id: 'terminals',
     label: 'Terminais',
     path: '/terminais',
@@ -227,11 +238,13 @@ export function getSidebarNavigationItems({
   currentInstitutionRole,
   currentUserRole,
   pathname = '',
+  schoolSetupConfigured = false,
 }: {
   profile: Profile;
   currentInstitutionRole: string | null;
   currentUserRole: User['role'];
   pathname?: string;
+  schoolSetupConfigured?: boolean;
 }): SidebarNavigationItem[] {
   const effectiveRole =
     getSidebarEffectiveRole({
@@ -252,6 +265,10 @@ export function getSidebarNavigationItems({
         isPlatformSuperAdmin &&
         !isAdminPath(pathname)
       ) {
+        return false;
+      }
+
+      if (item.id === 'school-setup' && schoolSetupConfigured) {
         return false;
       }
 
@@ -362,6 +379,7 @@ export default function Sidebar({
   profile,
   branding,
   currentInstitutionRole,
+  schoolSetupConfigured,
   isDesktopHidden,
   isMobileOpen,
   isLoggingOut,
@@ -379,6 +397,7 @@ export default function Sidebar({
     currentInstitutionRole,
     currentUserRole: currentUser.role,
     pathname: location.pathname,
+    schoolSetupConfigured,
   });
   const adminModules = getSidebarAdminModules({
     profile,
