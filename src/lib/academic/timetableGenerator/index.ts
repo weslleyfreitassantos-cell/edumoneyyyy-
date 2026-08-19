@@ -105,7 +105,7 @@ export interface GeneratorDiagnostic {
 
 export interface TimetableGeneratorResult {
   valid: boolean;
-  status: 'VALID' | 'UNSATISFIED';
+  status: 'VALID' | 'UNSATISFIED' | 'INVALID';
   entries: GeneratorEntry[];
   hardConflicts: number;
   score: number;
@@ -168,10 +168,19 @@ function occupiedBy(entry: GeneratorEntry, candidate: Candidate, demand: Demand,
 }
 
 function hasTeacherAvailability(input: TimetableGeneratorInput, demand: Demand, slot: GeneratorTimeSlot): boolean {
-  return input.teacherAvailability.some((availability) =>
+  const teacherAvailability = input.teacherAvailability.filter(
+    (availability) =>
+      availability.institutionId === input.institutionId &&
+      availability.teacherProfileId === demand.offering.teacherProfileId,
+  );
+
+  // Availability is an operational constraint when it has been configured
+  // for the teacher. An empty configuration must not block the structural
+  // onboarding draft.
+  if (teacherAvailability.length === 0) return true;
+
+  return teacherAvailability.some((availability) =>
     availability.active &&
-    availability.institutionId === input.institutionId &&
-    availability.teacherProfileId === demand.offering.teacherProfileId &&
     availability.dayOfWeek === slot.dayOfWeek &&
     timeToMinutes(availability.startTime) <= timeToMinutes(slot.startTime) &&
     timeToMinutes(availability.endTime) >= timeToMinutes(slot.endTime),
@@ -229,6 +238,33 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   const curriculumByKey = new Map(input.curriculumItems.map((item) => [`${item.classId}:${item.subjectId}`, item]));
   const demands: Demand[] = [];
 
+  for (const classRecord of classes.values()) {
+    for (const curriculum of input.curriculumItems.filter((item) => item.classId === classRecord.id && item.weeklyLessons > 0)) {
+      for (const term of terms.values()) {
+        if (!selectedTermIds.has(term.id)) continue;
+        const offering = offerings.find(
+          (item) =>
+            item.classId === classRecord.id &&
+            item.subjectId === curriculum.subjectId &&
+            item.termId === term.id,
+        );
+
+        if (!offering) {
+          diagnostics.push({
+            code: 'OFFERING_REQUIRED',
+            message: `${classRecord.name}: a matéria ${curriculum.subjectId} precisa de uma atribuição antes da publicação.`,
+            classId: classRecord.id,
+            subjectId: curriculum.subjectId,
+            suggestions: [
+              'Atribua um professor à matéria em Matérias das turmas.',
+              'Mantenha a grade como estrutura até a atribuição ser concluída.',
+            ],
+          });
+        }
+      }
+    }
+  }
+
   for (const offering of offerings) {
     const curriculum = curriculumByKey.get(`${offering.classId}:${offering.subjectId}`);
     const classRecord = classes.get(offering.classId);
@@ -237,12 +273,32 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       diagnostics.push({ code: 'CURRICULUM_OR_SCOPE_MISMATCH', message: `Offering ${offering.id} is outside the selected class, curriculum or academic year.`, suggestions: ['Apply a curriculum item to the class.', 'Review the offering and academic year.'] });
       continue;
     }
-    const qualified = input.teacherSubjects.some((skill) => skill.active && skill.institutionId === input.institutionId && skill.teacherProfileId === offering.teacherProfileId && skill.subjectId === offering.subjectId);
+    const teacherSkills = input.teacherSubjects.filter(
+      (skill) =>
+        skill.institutionId === input.institutionId &&
+        skill.teacherProfileId === offering.teacherProfileId,
+    );
+    const qualified =
+      teacherSkills.length === 0 ||
+      teacherSkills.some(
+        (skill) =>
+          skill.active &&
+          skill.subjectId === offering.subjectId,
+      );
     if (!qualified) {
       diagnostics.push({ code: 'TEACHER_SUBJECT_NOT_AUTHORIZED', message: `${offering.teacherProfileId} is not enabled for subject ${offering.subjectId}.`, classId: offering.classId, subjectId: offering.subjectId, teacherProfileId: offering.teacherProfileId, suggestions: ['Enable the subject for this teacher.', 'Choose another qualified teacher.'] });
       continue;
     }
-    for (let occurrence = 0; occurrence < curriculum.weeklyLessons; occurrence += 1) {
+    const lockedCount = (input.lockedEntries ?? []).filter(
+      (entry) =>
+        entry.institutionId === input.institutionId &&
+        entry.academicYearId === input.academicYearId &&
+        entry.termId === offering.termId &&
+        entry.subjectOfferingId === offering.id &&
+        entry.locked,
+    ).length;
+    const remainingLessons = Math.max(0, curriculum.weeklyLessons - lockedCount);
+    for (let occurrence = 0; occurrence < remainingLessons; occurrence += 1) {
       demands.push({ classRecord, curriculum, offering, term, occurrence });
     }
   }
@@ -286,7 +342,8 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
 
   const penalties = calculatePenalties(entries);
   const hardConflicts = diagnostics.length;
-  return { valid: hardConflicts === 0, status: hardConflicts === 0 ? 'VALID' : 'UNSATISFIED', entries, hardConflicts, score: Math.max(0, 100 - penalties.teacherGaps - penalties.sameSubjectSameDay * 2 - penalties.roomChanges), penalties, diagnostics, seed };
+  const invalid = diagnostics.some((diagnostic) => diagnostic.code === 'LOCKED_ENTRY_CONFLICT');
+  return { valid: hardConflicts === 0, status: hardConflicts === 0 ? 'VALID' : invalid ? 'INVALID' : 'UNSATISFIED', entries, hardConflicts, score: Math.max(0, 100 - penalties.teacherGaps - penalties.sameSubjectSameDay * 2 - penalties.roomChanges), penalties, diagnostics, seed };
 }
 
 export function timetableTermsOverlap(left: GeneratorTerm, right: GeneratorTerm): boolean {

@@ -164,9 +164,35 @@ export const academicAutomationService = {
   },
 
   async upsertTimeSlots(input: { institution_id: string; shift: string; slots: Array<{ day_of_week: number; slot_number: number; start_time: string; end_time: string }> }): Promise<void> {
+    const positions = new Set<string>();
     for (const slot of input.slots) {
       if (slot.start_time >= slot.end_time) throw new Error('O horario final deve ser posterior ao inicial.');
+      const position = `${slot.day_of_week}:${slot.slot_number}`;
+      if (positions.has(position)) throw new Error('Não é possível repetir a posição de um horário no mesmo dia.');
+      positions.add(position);
     }
+
+    const { data: existingSlots, error: existingError } = await supabase
+      .from('school_time_slots')
+      .select('id, day_of_week, slot_number')
+      .eq('institution_id', input.institution_id)
+      .eq('shift', input.shift)
+      .eq('active', true);
+    if (existingError) throw existingError;
+
+    const staleIds = (existingSlots ?? [])
+      .filter((slot) => !positions.has(`${slot.day_of_week}:${slot.slot_number}`))
+      .map((slot) => slot.id);
+    if (staleIds.length > 0) {
+      const { error: deactivateError } = await supabase
+        .from('school_time_slots')
+        .update({ active: false })
+        .eq('institution_id', input.institution_id)
+        .eq('shift', input.shift)
+        .in('id', staleIds);
+      if (deactivateError) throw deactivateError;
+    }
+
     const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: input.shift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
     if (error) throw error;
   },

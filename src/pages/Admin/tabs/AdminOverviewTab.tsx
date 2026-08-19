@@ -13,6 +13,7 @@ import {
 import { useAuth } from '../../../contexts/AuthContext';
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import SchoolSetupProgress from '../../../components/academic/SchoolSetupProgress';
 import type { AdminModuleId } from '../adminNavigation';
 
 function getErrorMessage(error: unknown): string {
@@ -108,6 +109,7 @@ export default function AdminOverviewTab({
 
   return (
     <div className="space-y-6">
+      <SchoolSetupProgress institutionId={institutionId} />
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard
           label="Alunos ativos"

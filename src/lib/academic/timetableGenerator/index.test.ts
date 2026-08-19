@@ -50,6 +50,33 @@ describe('timetable generator', () => {
     expect(timetableEntriesConflict(result.entries[0]!, { ...result.entries[0]!, dayOfWeek: 2 }, new Map(baseInput.terms.map((term) => [term.id, term])))).toBe(false);
   });
 
+  it('does not duplicate workload during regeneration', () => {
+    const locked = {
+      ...baseInput,
+      lockedEntries: [{
+        institutionId: 'institution-a',
+        academicYearId: 'year-2027',
+        termId: 'term-1',
+        classId: 'class-a',
+        subjectOfferingId: 'offering-math',
+        teacherProfileId: 'teacher-a',
+        subjectId: 'math',
+        roomId: 'room-a',
+        dayOfWeek: 1,
+        startTime: '07:00',
+        endTime: '07:50',
+        locked: true,
+      }],
+    };
+
+    const result = generateTimetable(locked);
+
+    expect(result.valid).toBe(true);
+    expect(result.entries).toHaveLength(2);
+    expect(new Set(result.entries.map((entry) => `${entry.subjectOfferingId}:${entry.dayOfWeek}:${entry.startTime}`)).size).toBe(2);
+    expect(result.entries.some((entry) => entry.locked && entry.dayOfWeek === 1)).toBe(true);
+  });
+
   it('does not treat equal weekly times in non-overlapping terms as a conflict', () => {
     const terms = new Map([
       ['term-1', { id: 'term-1', academicYearId: 'year-2027', startDate: '2027-02-01', endDate: '2027-04-30' }],
@@ -67,8 +94,65 @@ describe('timetable generator', () => {
     expect(timetableEntriesConflict(left, right, terms)).toBe(true);
   });
 
-  it('rejects a teacher without the requested subject skill', () => {
+  it('marks an internal conflict between fixed entries as INVALID', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      curriculumItems: [],
+      subjectOfferings: [],
+      lockedEntries: [
+        {
+          institutionId: 'institution-a',
+          academicYearId: 'year-2027',
+          termId: 'term-1',
+          classId: 'class-a',
+          subjectOfferingId: 'offering-math',
+          teacherProfileId: 'teacher-a',
+          subjectId: 'math',
+          roomId: 'room-a',
+          dayOfWeek: 1,
+          startTime: '07:00',
+          endTime: '07:50',
+          locked: true,
+        },
+        {
+          institutionId: 'institution-a',
+          academicYearId: 'year-2027',
+          termId: 'term-1',
+          classId: 'class-a',
+          subjectOfferingId: 'offering-other',
+          teacherProfileId: 'teacher-b',
+          subjectId: 'portuguese',
+          roomId: 'room-a',
+          dayOfWeek: 1,
+          startTime: '07:00',
+          endTime: '07:50',
+          locked: true,
+        },
+      ],
+    });
+
+    expect(result.valid).toBe(false);
+    expect(result.status).toBe('INVALID');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'LOCKED_ENTRY_CONFLICT')).toBe(true);
+  });
+
+  it('does not block the structural draft before teacher skills are configured', () => {
     const result = generateTimetable({ ...baseInput, teacherSubjects: [] });
+    expect(result.status).toBe('VALID');
+    expect(result.entries).toHaveLength(2);
+  });
+
+  it('blocks an explicitly configured teacher without the requested subject skill', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      teacherSubjects: [{
+        institutionId: 'institution-a',
+        teacherProfileId: 'teacher-a',
+        subjectId: 'portuguese',
+        active: true,
+      }],
+    });
+
     expect(result.status).toBe('UNSATISFIED');
     expect(result.diagnostics[0]?.code).toBe('TEACHER_SUBJECT_NOT_AUTHORIZED');
   });

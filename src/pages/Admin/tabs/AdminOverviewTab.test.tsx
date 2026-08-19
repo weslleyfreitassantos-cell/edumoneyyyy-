@@ -25,6 +25,7 @@ import {
 import {
   useCurrentInstitution,
 } from '../../../hooks/useCurrentInstitution';
+import { useSchoolSetupReadiness } from '../../../hooks/useSchoolSetupReadiness';
 
 import AdminOverviewTab from './AdminOverviewTab';
 
@@ -40,12 +41,19 @@ vi.mock('../../../hooks/useAdminOverview', () => ({
   useAdminOverview: vi.fn(),
 }));
 
+vi.mock('../../../hooks/useSchoolSetupReadiness', () => ({
+  useSchoolSetupReadiness: vi.fn(),
+}));
+
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseCurrentInstitution = vi.mocked(
   useCurrentInstitution,
 );
 const mockedUseAdminOverview = vi.mocked(
   useAdminOverview,
+);
+const mockedUseSchoolSetupReadiness = vi.mocked(
+  useSchoolSetupReadiness,
 );
 
 const overviewData = {
@@ -117,6 +125,31 @@ function mockOverviewState() {
     isError: false,
     error: null,
   } as ReturnType<typeof useAdminOverview>);
+
+  mockedUseSchoolSetupReadiness.mockReturnValue({
+    data: {
+      institutionId: 'institution-1',
+      steps: [],
+      completedCount: 7,
+      totalCount: 7,
+      progress: 100,
+      configured: true,
+      status: 'CONFIGURED',
+      nextStepId: null,
+      review: {
+        academicYearName: '2026',
+        termCount: 4,
+        subjectCount: 8,
+        classCount: 3,
+        curriculumClassCount: 3,
+        timetableClassCount: 3,
+      },
+      publishedVersionId: 'version-1',
+    },
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as ReturnType<typeof useSchoolSetupReadiness>);
 }
 
 beforeEach(() => {
@@ -129,7 +162,7 @@ afterEach(() => {
 });
 
 describe('AdminOverviewTab', () => {
-  it('renderiza apenas os cards de métricas e não exibe o resumo acadêmico', () => {
+  it('renderiza os cards de métricas e a revisão quando a escola está configurada', () => {
     render(
       <AdminOverviewTab
         availableModuleIds={[
@@ -147,8 +180,8 @@ describe('AdminOverviewTab', () => {
     expect(screen.getByText(/professores ativos/i)).toBeTruthy();
     expect(screen.getByText(/turmas ativas/i)).toBeTruthy();
 
-    expect(screen.queryByText(/ano letivo atual/i)).toBeNull();
-    expect(screen.queryByText(/período atual/i)).toBeNull();
+    expect(screen.getByText(/revisão da escola/i)).toBeTruthy();
+    expect(screen.getByText(/escola configurada/i)).toBeTruthy();
     expect(screen.queryByText(/pendências acadêmicas/i)).toBeNull();
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();

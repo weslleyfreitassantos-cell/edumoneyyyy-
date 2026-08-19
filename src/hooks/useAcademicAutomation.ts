@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
-import { timetableAutomationService, type TimetableVersionRow } from '../services/timetableAutomationService';
+import { timetableAutomationService, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
 
 export const academicAutomationKeys = {
   all: ['academic-automation'] as const,
@@ -9,6 +9,7 @@ export const academicAutomationKeys = {
   teacherAvailability: (institutionId: string, teacherProfileId: string) => [...academicAutomationKeys.all, 'teacher-availability', institutionId, teacherProfileId] as const,
   timeSlots: (institutionId: string, shift?: string) => [...academicAutomationKeys.all, 'time-slots', institutionId, shift ?? 'all'] as const,
   timetableVersions: (institutionId: string, academicYearId?: string) => [...academicAutomationKeys.all, 'timetable-versions', institutionId, academicYearId ?? 'all'] as const,
+  timetableVersionEntries: (institutionId: string, versionId: string) => [...academicAutomationKeys.all, 'timetable-version-entries', institutionId, versionId] as const,
 };
 
 export function useTeacherSubjects(institutionId: string, teacherProfileId: string) {
@@ -119,7 +120,10 @@ export function useSaveSchoolTimeSlots() {
   return useMutation({
     mutationFn: academicAutomationService.upsertTimeSlots,
     onSuccess: async (_result, variables) => {
-      await queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timeSlots(variables.institution_id, variables.shift) });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timeSlots(variables.institution_id, variables.shift) }),
+        queryClient.invalidateQueries({ queryKey: ['school-setup-readiness', variables.institution_id] }),
+      ]);
     },
   });
 }
@@ -137,7 +141,10 @@ export function useGenerateTimetableDraft() {
   return useMutation({
     mutationFn: timetableAutomationService.generateDraft,
     onSuccess: async (_result, variables) => {
-      await queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
+        queryClient.invalidateQueries({ queryKey: ['school-setup-readiness', variables.institutionId] }),
+      ]);
     },
   });
 }
@@ -150,7 +157,35 @@ export function usePublishTimetableVersion() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
         queryClient.invalidateQueries({ queryKey: ['timetable', 'entries', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['school-setup-readiness', variables.institutionId] }),
       ]);
+    },
+  });
+}
+
+export function useTimetableVersionEntries(
+  institutionId: string,
+  versionId: string,
+) {
+  return useQuery<TimetableVersionEntryRow[]>({
+    queryKey: academicAutomationKeys.timetableVersionEntries(institutionId, versionId),
+    queryFn: () => timetableAutomationService.listVersionEntries(versionId, institutionId),
+    enabled: Boolean(institutionId && versionId),
+  });
+}
+
+export function useUpdateTimetableVersionEntry() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: timetableAutomationService.updateVersionEntry,
+    onSuccess: async (_result, variables) => {
+      await queryClient.invalidateQueries({
+        queryKey: academicAutomationKeys.timetableVersionEntries(
+          variables.institutionId,
+          variables.versionId,
+        ),
+      });
     },
   });
 }

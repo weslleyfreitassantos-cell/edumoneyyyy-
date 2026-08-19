@@ -1,4 +1,5 @@
 import { useMemo, useState, type FormEvent } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
@@ -113,7 +114,10 @@ export default function TimetableTab() {
   const updateRoomMutation = useUpdateRoom();
   const setRoomActiveMutation = useSetRoomActive();
 
-  const [subView, setSubView] = useState<SubView>('grid');
+  const [searchParams] = useSearchParams();
+  const [subView, setSubView] = useState<SubView>(() => (
+    searchParams.get('view') === 'automation' ? 'automation' : 'grid'
+  ));
   const [classFilter, setClassFilter] = useState('all');
   const [yearFilter, setYearFilter] = useState('all');
   const [termFilter, setTermFilter] = useState('all');
