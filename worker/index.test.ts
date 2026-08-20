@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import worker, {
   proxyTvescolaRequest,
+  patchNeoNewsWfr,
   rewriteNeoNewsLocation,
   rewriteNeoNewsSetCookie,
 } from './index';
@@ -159,5 +160,95 @@ describe('Worker script', () => {
 
     expect(assets.fetch).toHaveBeenCalledWith(request);
     expect(await response.text()).toBe('asset');
+  });
+
+  it('protege apenas o acesso cross-origin conhecido do bootstrap do wfr.js', () => {
+    const source = [
+      'window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID;',
+      'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
+      '\twindow._JQUERY_WINDOW_DIV_ID = "";',
+      '\twindow._JQUERY_WINDOW_OPENER = "";',
+      '}',
+    ].join('\n');
+
+    const patched = patchNeoNewsWfr(source);
+
+    expect(patched).not.toBe(source);
+    expect((patched.match(/try \{/g) ?? []).length).toBe(1);
+    expect(patched).toContain('} catch (e) {');
+  });
+
+  it('mantem o wfr.js intacto quando o marker esperado nao existe', () => {
+    const source = 'window.parent._JQUERY_WINDOW_DIV_ID;';
+    expect(patchNeoNewsWfr(source)).toBe(source);
+  });
+
+  it('mantem o body de wfr.js sem marker quando passa pelo proxy', async () => {
+    const source = 'window.parent._JQUERY_WINDOW_DIV_ID;';
+    const upstreamFetch = vi.fn().mockResolvedValue(
+      new Response(source, {
+        status: 200,
+        headers: { 'content-type': 'application/javascript' },
+      }),
+    );
+
+    const response = await proxyTvescolaRequest(
+      new Request('https://tvescola.grupotec.dev.br/neonews/wfr.js'),
+      upstreamFetch,
+    );
+
+    expect(await response.text()).toBe(source);
+  });
+
+  it('mantem JS diferente de wfr.js intacto', async () => {
+    const source = 'window.parent._JQUERY_WINDOW_DIV_ID;';
+    const upstreamFetch = vi.fn().mockResolvedValue(
+      new Response(source, {
+        status: 200,
+        headers: { 'content-type': 'application/javascript' },
+      }),
+    );
+
+    const response = await proxyTvescolaRequest(
+      new Request('https://tvescola.grupotec.dev.br/neonews/app.js'),
+      upstreamFetch,
+    );
+
+    expect(await response.text()).toBe(source);
+  });
+
+  it('remove headers invalidos quando wfr.js e alterado', async () => {
+    const source = [
+      'window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID;',
+      'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
+      '\twindow._JQUERY_WINDOW_DIV_ID = "";',
+      '\twindow._JQUERY_WINDOW_OPENER = "";',
+      '}',
+    ].join('\n');
+    const upstreamFetch = vi.fn().mockResolvedValue(
+      new Response(source, {
+        status: 200,
+        headers: {
+          'content-type': 'application/javascript',
+          'content-length': String(source.length),
+          'content-encoding': 'br',
+          etag: 'abc',
+          'content-md5': 'def',
+          'set-cookie': 'SESSION=1; Path=/neonews/; Secure',
+        },
+      }),
+    );
+
+    const response = await proxyTvescolaRequest(
+      new Request('https://tvescola.grupotec.dev.br/neonews/wfr.js'),
+      upstreamFetch,
+    );
+
+    expect(await response.text()).not.toBe(source);
+    expect(response.headers.get('content-length')).toBeNull();
+    expect(response.headers.get('content-encoding')).toBeNull();
+    expect(response.headers.get('etag')).toBeNull();
+    expect(response.headers.get('content-md5')).toBeNull();
+    expect(response.headers.get('set-cookie')).toContain('SESSION=1');
   });
 });

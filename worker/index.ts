@@ -15,6 +15,9 @@ const TVESCOLA_HOSTNAME = 'tvescola.grupotec.dev.br';
 const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
 const NEONEWS_ORIGIN = `https://${NEONEWS_HOSTNAME}`;
+const WFR_PATHNAME = '/neonews/wfr.js';
+const WFR_PARENT_DIV_MARKER =
+  'window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID';
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
@@ -159,6 +162,59 @@ function rewriteResponseHeaders(response: Response): Headers {
   return headers;
 }
 
+export function patchNeoNewsWfr(source: string): string {
+  const originalBlock = [
+    'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
+    '\twindow._JQUERY_WINDOW_DIV_ID = "";',
+    '\twindow._JQUERY_WINDOW_OPENER = "";',
+    '}',
+  ].join('\n');
+  const protectedBlock = [
+    'try {',
+    '\t' + originalBlock.replace(/\n/g, '\n\t'),
+    '} catch (e) {',
+    '\t// The outer embed host may be cross-origin.',
+    '}',
+  ].join('\n');
+
+  if (
+    source.indexOf(WFR_PARENT_DIV_MARKER) === -1 ||
+    source.indexOf(originalBlock) === -1 ||
+    source.indexOf(originalBlock) !== source.lastIndexOf(originalBlock)
+  ) {
+    return source;
+  }
+
+  return source.replace(originalBlock, protectedBlock);
+}
+
+function isJavaScriptResponse(response: Response): boolean {
+  return /(?:java|ecma)script/i.test(
+    response.headers.get('content-type') ?? '',
+  );
+}
+
+function createModifiedResponse(response: Response, body: string): Response {
+  const headers = rewriteResponseHeaders(response);
+  headers.delete('content-length');
+  headers.delete('content-encoding');
+  headers.delete('etag');
+  headers.delete('content-md5');
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers,
+  });
+}
+
+function createTextResponse(response: Response, body: string): Response {
+  return new Response(body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: rewriteResponseHeaders(response),
+  });
+}
+
 export async function proxyTvescolaRequest(
   request: Request,
   fetcher: Fetcher = fetch,
@@ -176,6 +232,20 @@ export async function proxyTvescolaRequest(
   }
 
   const upstreamResponse = await fetcher(target.toString(), init);
+
+  if (
+    new URL(request.url).pathname === WFR_PATHNAME &&
+    upstreamResponse.status === 200 &&
+    isJavaScriptResponse(upstreamResponse)
+  ) {
+    const source = await upstreamResponse.text();
+    const patchedSource = patchNeoNewsWfr(source);
+    if (patchedSource !== source) {
+      return createModifiedResponse(upstreamResponse, patchedSource);
+    }
+
+    return createTextResponse(upstreamResponse, source);
+  }
 
   return new Response(upstreamResponse.body, {
     status: upstreamResponse.status,
