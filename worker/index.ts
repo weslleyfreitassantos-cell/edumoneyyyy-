@@ -16,8 +16,6 @@ const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
 const NEONEWS_ORIGIN = `https://${NEONEWS_HOSTNAME}`;
 const WFR_PATHNAME = '/neonews/wfr.js';
-const WFR_PARENT_DIV_MARKER =
-  'window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID';
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
@@ -163,29 +161,127 @@ function rewriteResponseHeaders(response: Response): Headers {
 }
 
 export function patchNeoNewsWfr(source: string): string {
-  const originalBlock = [
+  const divBlock = [
     'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
     '\twindow._JQUERY_WINDOW_DIV_ID = "";',
     '\twindow._JQUERY_WINDOW_OPENER = "";',
     '}',
   ].join('\n');
-  const protectedBlock = [
+  const controllerBlock = [
+    'function _JQUERY_WINDOW_FIND_CONTROLLER() {',
+    '\tvar p = window;',
+    '\tvar i = 0;',
+    '\twhile (p) {',
+    '\t  i++;',
+    '\t  if (p._JQUERY_WINDOW_CONTROLLER) {',
+    '\t    break;',
+    '\t  }',
+    '\t  ',
+    '\t  p = p._JQUERY_WINDOW_PARENT;',
+    '\t  ',
+    '\t  if (i > 50) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t}',
+    '\t',
+    '\treturn p;',
+    '}',
+  ].join('\n');
+  const topBlock = [
+    'function _JQUERY_WINDOW_FIND_TOP() {',
+    '\tvar x = window;',
+    '\tvar p = window;',
+    '\tvar i = 0;',
+    '\twhile (p.parent && !p._NULL_PARENT) {',
+    '\t  i++;',
+    '',
+    '\t  p = p.parent;',
+    '',
+    '\t  if (i > 50) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t}',
+    '',
+    '\treturn p;',
+    '}',
+  ].join('\n');
+  const protectedDivBlock = [
     'try {',
-    '\t' + originalBlock.replace(/\n/g, '\n\t'),
+    '\t' + divBlock.replace(/\n/g, '\n\t'),
     '} catch (e) {',
     '\t// The outer embed host may be cross-origin.',
     '}',
   ].join('\n');
+  const protectedControllerBlock = [
+    'function _JQUERY_WINDOW_FIND_CONTROLLER() {',
+    '\tvar p = window;',
+    '\tvar i = 0;',
+    '\twhile (p) {',
+    '\t  i++;',
+    '\t  try {',
+    '\t    if (p._JQUERY_WINDOW_CONTROLLER) {',
+    '\t      break;',
+    '\t    }',
+    '\t    p = p._JQUERY_WINDOW_PARENT;',
+    '\t  } catch (e) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t  ',
+    '\t  if (i > 50) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t}',
+    '\t',
+    '\treturn p;',
+    '}',
+  ].join('\n');
+  const protectedTopBlock = [
+    'function _JQUERY_WINDOW_FIND_TOP() {',
+    '\tvar x = window;',
+    '\tvar p = window;',
+    '\tvar i = 0;',
+    '\twhile (p.parent && !p._NULL_PARENT) {',
+    '\t  i++;',
+    '',
+    '\t  var candidateParent;',
+    '\t  try {',
+    '\t    candidateParent = p.parent;',
+    '\t    candidateParent._NULL_PARENT;',
+    '\t  } catch (e) {',
+    '\t    break;',
+    '\t  }',
+    '',
+    '\t  p = candidateParent;',
+    '',
+    '\t  if (i > 50) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t}',
+    '',
+    '\treturn p;',
+    '}',
+  ].join('\n');
+
+  const count = (block: string) =>
+    source.split(block).length - 1;
 
   if (
-    source.indexOf(WFR_PARENT_DIV_MARKER) === -1 ||
-    source.indexOf(originalBlock) === -1 ||
-    source.indexOf(originalBlock) !== source.lastIndexOf(originalBlock)
+    count(divBlock) !== 1 ||
+    count(controllerBlock) !== 1 ||
+    count(topBlock) !== 1
   ) {
     return source;
   }
 
-  return source.replace(originalBlock, protectedBlock);
+  return source
+    .replace(divBlock, protectedDivBlock)
+    .replace(controllerBlock, protectedControllerBlock)
+    .replace(topBlock, protectedTopBlock);
 }
 
 function isJavaScriptResponse(response: Response): boolean {

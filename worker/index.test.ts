@@ -10,6 +10,55 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
+const validWfrSource = [
+  [
+    'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
+    '\twindow._JQUERY_WINDOW_DIV_ID = "";',
+    '\twindow._JQUERY_WINDOW_OPENER = "";',
+    '}',
+  ].join('\n'),
+  [
+    'function _JQUERY_WINDOW_FIND_CONTROLLER() {',
+    '\tvar p = window;',
+    '\tvar i = 0;',
+    '\twhile (p) {',
+    '\t  i++;',
+    '\t  if (p._JQUERY_WINDOW_CONTROLLER) {',
+    '\t    break;',
+    '\t  }',
+    '\t  ',
+    '\t  p = p._JQUERY_WINDOW_PARENT;',
+    '\t  ',
+    '\t  if (i > 50) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t}',
+    '\t',
+    '\treturn p;',
+    '}',
+  ].join('\n'),
+  [
+    'function _JQUERY_WINDOW_FIND_TOP() {',
+    '\tvar x = window;',
+    '\tvar p = window;',
+    '\tvar i = 0;',
+    '\twhile (p.parent && !p._NULL_PARENT) {',
+    '\t  i++;',
+    '',
+    '\t  p = p.parent;',
+    '',
+    '\t  if (i > 50) {',
+    '\t    p = null;',
+    '\t    break;',
+    '\t  }',
+    '\t}',
+    '',
+    '\treturn p;',
+    '}',
+  ].join('\n'),
+].join('\n');
+
 describe('Worker script', () => {
   it('delega hosts normais para o binding ASSETS', async () => {
     const expectedResponse = new Response('asset', { headers: { 'content-type': 'text/html' } });
@@ -163,24 +212,22 @@ describe('Worker script', () => {
   });
 
   it('protege apenas o acesso cross-origin conhecido do bootstrap do wfr.js', () => {
-    const source = [
-      'window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID;',
-      'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
-      '\twindow._JQUERY_WINDOW_DIV_ID = "";',
-      '\twindow._JQUERY_WINDOW_OPENER = "";',
-      '}',
-    ].join('\n');
+    const patched = patchNeoNewsWfr(validWfrSource);
 
-    const patched = patchNeoNewsWfr(source);
-
-    expect(patched).not.toBe(source);
-    expect((patched.match(/try \{/g) ?? []).length).toBe(1);
-    expect(patched).toContain('} catch (e) {');
+    expect(patched).not.toBe(validWfrSource);
+    expect((patched.match(/try \{/g) ?? []).length).toBe(3);
+    expect(patched).toContain('candidateParent._NULL_PARENT;');
+    expect(patched).toContain('p = null;');
   });
 
   it('mantem o wfr.js intacto quando o marker esperado nao existe', () => {
     const source = 'window.parent._JQUERY_WINDOW_DIV_ID;';
     expect(patchNeoNewsWfr(source)).toBe(source);
+  });
+
+  it('mantem a fonte intacta quando qualquer bloco conhecido esta duplicado', () => {
+    const duplicated = `${validWfrSource}\n${validWfrSource}`;
+    expect(patchNeoNewsWfr(duplicated)).toBe(duplicated);
   });
 
   it('mantem o body de wfr.js sem marker quando passa pelo proxy', async () => {
@@ -217,14 +264,24 @@ describe('Worker script', () => {
     expect(await response.text()).toBe(source);
   });
 
+  it('mantem wfr.js intacto quando Content-Type nao e JavaScript', async () => {
+    const upstreamFetch = vi.fn().mockResolvedValue(
+      new Response(validWfrSource, {
+        status: 200,
+        headers: { 'content-type': 'text/plain' },
+      }),
+    );
+
+    const response = await proxyTvescolaRequest(
+      new Request('https://tvescola.grupotec.dev.br/neonews/wfr.js'),
+      upstreamFetch,
+    );
+
+    expect(await response.text()).toBe(validWfrSource);
+  });
+
   it('remove headers invalidos quando wfr.js e alterado', async () => {
-    const source = [
-      'window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID;',
-      'if (window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID && window._JQUERY_WINDOW_PARENT._JQUERY_WINDOW_DIV_ID == window._JQUERY_WINDOW_DIV_ID) {',
-      '\twindow._JQUERY_WINDOW_DIV_ID = "";',
-      '\twindow._JQUERY_WINDOW_OPENER = "";',
-      '}',
-    ].join('\n');
+    const source = validWfrSource;
     const upstreamFetch = vi.fn().mockResolvedValue(
       new Response(source, {
         status: 200,
