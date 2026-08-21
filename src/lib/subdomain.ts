@@ -187,3 +187,39 @@ export function extractSubdomainFromHostname(hostname: string): string | null {
   }
   return null;
 }
+
+export const PLATFORM_ORIGIN = 'https://tecescola.grupotec.dev.br';
+
+/**
+ * Builds the public origin for an institution after validating its prefix.
+ */
+export function getInstitutionOrigin(
+  subdomain: string | null | undefined,
+): string | null {
+  const normalized = subdomain?.trim().toLowerCase() ?? '';
+  if (!validateSubdomain(normalized).valid) {
+    return null;
+  }
+
+  return `https://${normalized}.grupotec.dev.br`;
+}
+
+/**
+ * Returns a cross-origin entry URL only when the current page is already on a
+ * tenant hostname. Platform hosts can switch institutions in-place.
+ */
+export function getInstitutionEntryUrl(
+  currentHostname: string,
+  targetSubdomain: string | null | undefined,
+): string | null {
+  if (classifyHostname(currentHostname).type !== 'institution') {
+    return null;
+  }
+
+  const targetOrigin = getInstitutionOrigin(targetSubdomain);
+  if (targetOrigin) {
+    return `${targetOrigin}/admin`;
+  }
+
+  return `${PLATFORM_ORIGIN}/account`;
+}

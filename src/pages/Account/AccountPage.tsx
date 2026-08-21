@@ -36,7 +36,11 @@ import {
   useSaveAccountBranding,
 } from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
-import { AccountServiceError } from '../../services/accountService';
+import { getInstitutionEntryUrl } from '../../lib/subdomain';
+import {
+  AccountServiceError,
+  type AccountInstitutionSummary,
+} from '../../services/accountService';
 
 interface InstitutionFormState {
   name: string;
@@ -196,17 +200,27 @@ export default function AccountPage() {
   }
 
   async function handleSelectInstitution(
-    institutionId: string,
+    institution: AccountInstitutionSummary,
     shouldNavigate = false,
   ): Promise<void> {
     try {
       const selectionResult =
         await institutionContext.setCurrentInstitutionId(
-          institutionId,
+          institution.id,
         );
 
       if (selectionResult.success === true) {
         if (shouldNavigate) {
+          const entryUrl = getInstitutionEntryUrl(
+            window.location.hostname,
+            institution.subdomain,
+          );
+
+          if (entryUrl) {
+            window.location.assign(entryUrl);
+            return;
+          }
+
           navigate('/admin');
           return;
         }
@@ -617,7 +631,7 @@ export default function AccountPage() {
                         disabled={isCurrentInstitution}
                         onClick={() =>
                           void handleSelectInstitution(
-                            institution.id,
+                            institution,
                             true,
                           )
                         }

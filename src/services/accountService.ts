@@ -20,6 +20,7 @@ export interface AccountOwnerSummary {
 export interface AccountInstitutionSummary {
   id: string;
   name: string;
+  subdomain?: string | null;
   active: boolean | null;
   account_id: string | null;
   logoUrl: string | null;
@@ -297,6 +298,7 @@ function normalizeAccountRow(
     return {
       id: inst.id,
       name: inst.name,
+      subdomain: inst.subdomain ?? null,
       active: inst.active,
       account_id: inst.account_id,
       logoUrl: inst.logo_url ?? null,
@@ -718,6 +720,7 @@ export const accountService = {
         institutions (
           id,
           name,
+          subdomain,
           active,
           account_id,
           logo_url,
@@ -762,6 +765,7 @@ export const accountService = {
         institutions (
           id,
           name,
+          subdomain,
           active,
           account_id,
           logo_url,

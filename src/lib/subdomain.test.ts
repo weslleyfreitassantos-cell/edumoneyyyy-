@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
   classifyHostname,
+  getInstitutionEntryUrl,
+  getInstitutionOrigin,
   normalizeSubdomain,
+  PLATFORM_ORIGIN,
   RESERVED_SUBDOMAINS,
   suggestSubdomain,
   validateSubdomain,
@@ -140,6 +143,30 @@ describe('Subdomain Utilities', () => {
         type: 'development',
         hostname: 'edumoneyyyy.workers.dev',
       });
+    });
+  });
+
+  describe('navegacao entre tenants', () => {
+    it('gera o destino do tenant quando a origem atual e um tenant', () => {
+      expect(
+        getInstitutionEntryUrl('sesi.grupotec.dev.br', 'escola-tv'),
+      ).toBe('https://escola-tv.grupotec.dev.br/admin');
+    });
+
+    it('envia instituicao sem subdominio para a conta da plataforma', () => {
+      expect(
+        getInstitutionEntryUrl('sesi.grupotec.dev.br', null),
+      ).toBe(`${PLATFORM_ORIGIN}/account`);
+    });
+
+    it('nao altera a navegacao interna quando a origem ja e plataforma', () => {
+      expect(
+        getInstitutionEntryUrl('tecescola.grupotec.dev.br', 'escola-tv'),
+      ).toBeNull();
+    });
+
+    it('rejeita subdominio invalido antes de montar o hostname', () => {
+      expect(getInstitutionOrigin('https://evil.example.com')).toBeNull();
     });
   });
 });
