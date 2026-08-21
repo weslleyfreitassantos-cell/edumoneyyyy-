@@ -3,6 +3,7 @@
 import { createElement } from 'react';
 import {
   cleanup,
+  fireEvent,
   render,
   screen,
 } from '@testing-library/react';
@@ -270,6 +271,24 @@ describe('SchoolUsersTab integration', () => {
         name: /Excluir Ana Admin/i,
       }),
     ).toBeTruthy();
+  });
+
+  it('remove a geracao de senha aleatoria e mantem a senha manual na edicao', () => {
+    render(createElement(SchoolUsersTab));
+
+    expect(
+      screen.queryByRole('button', {
+        name: /Gerar nova senha de acesso/i,
+      }),
+    ).toBeNull();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Editar Ana Admin/i,
+      }),
+    );
+
+    expect(screen.getByLabelText('Nova senha')).toBeTruthy();
   });
 
 

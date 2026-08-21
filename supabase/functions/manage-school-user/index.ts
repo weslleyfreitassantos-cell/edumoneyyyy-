@@ -5,12 +5,6 @@ import { z } from "zod";
 
 import type { Database } from "../_shared/database.types.ts";
 import {
-  buildInstitutionLoginUrl,
-  generateSecurePassword,
-  sendSchoolAccessEmail,
-  type SchoolAccessRole,
-} from "../_shared/school-access.ts";
-import {
   getDeleteAuthorizationDecision,
   getUpdateAuthorizationDecision,
   type UpdateAuthorizationContext,
@@ -88,12 +82,6 @@ const requestSchema = z.discriminatedUnion("action", [
     studentId: z.guid(),
     relationship: z.string().trim().min(2).max(40),
     isPrimary: z.boolean().default(false),
-  }).strict(),
-  z.object({
-    action: z.literal("generate_access"),
-    institutionId: z.guid(),
-    membershipId: z.guid(),
-    confirmation: z.literal("GERAR NOVA SENHA"),
   }).strict(),
 ]);
 
@@ -897,109 +885,6 @@ async function handleLinkGuardian(
   });
 }
 
-async function handleGenerateAccess(
-  ctx: SupabaseFunctionContext,
-  requesterId: string,
-  input: Extract<RequestData, { action: "generate_access" }>,
-) {
-  const membership = await getTargetMembership(ctx, input);
-  await assertTargetCanBeManaged(ctx, requesterId, membership.profile_id);
-
-  const { data: targetProfile, error: targetProfileError } = await ctx.supabaseAdmin
-    .from("profiles")
-    .select("id, full_name, email, active")
-    .eq("id", membership.profile_id)
-    .maybeSingle();
-
-  if (targetProfileError) throw targetProfileError;
-  if (!targetProfile || targetProfile.active !== true) {
-    throw new ManageSchoolUserError({
-      status: 409,
-      code: "TARGET_PROFILE_INACTIVE",
-      message: "O perfil selecionado esta desativado.",
-    });
-  }
-
-  const { data: institution, error: institutionError } = await ctx.supabaseAdmin
-    .from("institutions")
-    .select("id, name, active, account_id, subdomain, logo_url, login_display_name, primary_color, secondary_color")
-    .eq("id", input.institutionId)
-    .maybeSingle();
-
-  if (institutionError) throw institutionError;
-  if (!institution || institution.active !== true) {
-    throw new ManageSchoolUserError({
-      status: 404,
-      code: "INSTITUTION_NOT_FOUND",
-      message: "Instituicao ativa nao encontrada.",
-    });
-  }
-
-  if (institution.account_id) {
-    const { data: account, error: accountError } = await ctx.supabaseAdmin
-      .from("accounts")
-      .select("status")
-      .eq("id", institution.account_id)
-      .maybeSingle();
-
-    if (accountError) throw accountError;
-    if (!account || account.status !== "ACTIVE") {
-      throw new ManageSchoolUserError({
-        status: 409,
-        code: "ACCOUNT_NOT_ACTIVE",
-        message: "Conta suspensa ou cancelada nao permite gerar acessos.",
-      });
-    }
-  }
-
-  const loginUrl = buildInstitutionLoginUrl(institution.subdomain);
-  const password = generateSecurePassword();
-  const { error: passwordError } = await ctx.supabaseAdmin.auth.admin.updateUserById(
-    membership.profile_id,
-    {
-      password,
-      email_confirm: true,
-    },
-  );
-
-  if (passwordError) {
-    throw new ManageSchoolUserError({
-      status: 422,
-      code: "PASSWORD_UPDATE_FAILED",
-      message: "Nao foi possivel gerar uma nova senha de acesso.",
-    });
-  }
-
-  try {
-    await sendSchoolAccessEmail({
-      recipientName: targetProfile.full_name,
-      recipientEmail: targetProfile.email,
-      institutionName: institution.name,
-      displayName: institution.login_display_name,
-      logoUrl: institution.logo_url,
-      primaryColor: institution.primary_color,
-      secondaryColor: institution.secondary_color,
-      role: membership.role as SchoolAccessRole,
-      loginUrl,
-      password,
-    });
-  } catch {
-    throw new ManageSchoolUserError({
-      status: 502,
-      code: "ACCESS_PASSWORD_UPDATED_EMAIL_FAILED",
-      message: "A senha foi atualizada, mas nao foi possivel enviar o novo e-mail de acesso.",
-    });
-  }
-
-  return jsonSuccess({
-    success: true,
-    action: "generate_access",
-    membershipId: membership.id,
-    profileId: membership.profile_id,
-    message: "Nova senha de acesso gerada e enviada por e-mail.",
-  });
-}
-
 const authenticatedFetch = withSupabase<Database>(
   { auth: "user" },
   async (request, ctx) => {
@@ -1072,9 +957,6 @@ const authenticatedFetch = withSupabase<Database>(
         }
         if (input.action === "delete") {
           return await handleDelete(ctx, user.id, input, authorization);
-        }
-        if (input.action === "generate_access") {
-          return await handleGenerateAccess(ctx, user.id, input);
         }
         return await handleLinkGuardian(ctx, input);
       } catch (error) {

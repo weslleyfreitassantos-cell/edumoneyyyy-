@@ -298,7 +298,7 @@ function toPublicError(error: unknown): InviteError {
       status: 502,
       code: "ACCESS_CREATED_EMAIL_FAILED",
       message:
-        "O acesso foi criado, mas nao foi possivel enviar o e-mail. Use a opcao Gerar nova senha de acesso para tentar novamente.",
+        "O acesso foi criado, mas nao foi possivel enviar o e-mail de acesso. Defina uma senha manualmente na edicao do usuario e comunique o acesso por um canal seguro.",
     });
   }
 
@@ -909,7 +909,7 @@ export default {
           status: 502,
           code: "ACCESS_CREATED_EMAIL_FAILED",
           message:
-            "O acesso foi criado, mas nao foi possivel enviar o e-mail. Use a opcao Gerar nova senha de acesso para tentar novamente.",
+            "O acesso foi criado, mas nao foi possivel enviar o e-mail de acesso. Defina uma senha manualmente na edicao do usuario e comunique o acesso por um canal seguro.",
           requestId,
           extra: {
             accessCreated: true,

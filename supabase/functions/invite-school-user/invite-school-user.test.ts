@@ -29,6 +29,7 @@ describe('invite-school-user', () => {
     expect(source).not.toContain('temporary_password');
     expect(source).toContain('generatedPassword ? { password: generatedPassword }');
     expect(source).toContain('ACCESS_CREATED_EMAIL_FAILED');
+    expect(source).not.toContain('Gerar nova senha de acesso');
   });
 
   it('authorizes by account ownership or active membership role', () => {
