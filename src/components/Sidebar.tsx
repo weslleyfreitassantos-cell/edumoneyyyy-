@@ -4,6 +4,7 @@ import type {
 import {
   Building2,
   BookOpen,
+  BadgeCheck,
   CalendarDays,
   ClipboardCheck,
   ClipboardList,
@@ -123,7 +124,7 @@ const adminModuleIcons: Record<
   enrollments: ClipboardCheck,
   assignments: ListChecks,
   attendance: ClipboardList,
-  grades: FileCheck2,
+  grades: BadgeCheck,
   'term-closing': FileCheck2,
   'academic-policies': ShieldCheck,
 };
