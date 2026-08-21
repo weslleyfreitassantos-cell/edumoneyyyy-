@@ -152,7 +152,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
   {
     id: 'terminals',
-    label: 'Terminais',
+    label: 'TV Escola',
     path: '/terminais',
     section: 'school',
     icon: MonitorCog,
