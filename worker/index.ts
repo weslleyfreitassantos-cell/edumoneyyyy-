@@ -13,6 +13,7 @@ type Fetcher = (
 
 const TVESCOLA_HOSTNAME = 'tvescola.grupotec.dev.br';
 const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
+const TECESCOLA_HOSTNAME = 'tecescola.grupotec.dev.br';
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
 const NEONEWS_ORIGIN = `https://${NEONEWS_HOSTNAME}`;
 const WFR_PATHNAME = '/neonews/wfr.js';
@@ -52,7 +53,10 @@ function buildNeoNewsUrl(requestUrl: string): URL {
   return target;
 }
 
-function rewriteRequestHeaders(request: Request): Headers {
+function rewriteRequestHeaders(
+  request: Request,
+  publicOrigin: string,
+): Headers {
   const headers = new Headers(request.headers);
 
   for (const header of [
@@ -68,7 +72,7 @@ function rewriteRequestHeaders(request: Request): Headers {
     headers.delete(header);
   }
 
-  if (headers.get('origin') === TVESCOLA_ORIGIN) {
+  if (headers.get('origin') === publicOrigin) {
     headers.set('origin', NEONEWS_ORIGIN);
   }
 
@@ -76,7 +80,7 @@ function rewriteRequestHeaders(request: Request): Headers {
   if (referer) {
     try {
       const refererUrl = new URL(referer);
-      if (refererUrl.hostname.toLowerCase() === TVESCOLA_HOSTNAME) {
+      if (refererUrl.origin === publicOrigin) {
         refererUrl.protocol = 'https:';
         refererUrl.hostname = NEONEWS_HOSTNAME;
         refererUrl.port = '';
@@ -90,7 +94,10 @@ function rewriteRequestHeaders(request: Request): Headers {
   return headers;
 }
 
-export function rewriteNeoNewsLocation(location: string): string {
+export function rewriteNeoNewsLocation(
+  location: string,
+  publicOrigin = TVESCOLA_ORIGIN,
+): string {
   try {
     const target = new URL(location, `${NEONEWS_ORIGIN}/`);
 
@@ -99,7 +106,7 @@ export function rewriteNeoNewsLocation(location: string): string {
     }
 
     target.protocol = 'https:';
-    target.hostname = TVESCOLA_HOSTNAME;
+    target.hostname = new URL(publicOrigin).hostname;
     target.port = '';
     return target.toString();
   } catch {
@@ -141,12 +148,18 @@ function getSetCookieValues(headers: Headers): string[] {
   return value ? [value] : [];
 }
 
-function rewriteResponseHeaders(response: Response): Headers {
+function rewriteResponseHeaders(
+  response: Response,
+  publicOrigin = TVESCOLA_ORIGIN,
+): Headers {
   const headers = new Headers(response.headers);
 
   const location = headers.get('location');
   if (location) {
-    headers.set('location', rewriteNeoNewsLocation(location));
+    headers.set(
+      'location',
+      rewriteNeoNewsLocation(location, publicOrigin),
+    );
   }
 
   const setCookies = getSetCookieValues(response.headers);
@@ -290,8 +303,12 @@ function isJavaScriptResponse(response: Response): boolean {
   );
 }
 
-function createModifiedResponse(response: Response, body: string): Response {
-  const headers = rewriteResponseHeaders(response);
+function createModifiedResponse(
+  response: Response,
+  body: string,
+  publicOrigin: string,
+): Response {
+  const headers = rewriteResponseHeaders(response, publicOrigin);
   headers.delete('content-length');
   headers.delete('content-encoding');
   headers.delete('etag');
@@ -303,11 +320,15 @@ function createModifiedResponse(response: Response, body: string): Response {
   });
 }
 
-function createTextResponse(response: Response, body: string): Response {
+function createTextResponse(
+  response: Response,
+  body: string,
+  publicOrigin: string,
+): Response {
   return new Response(body, {
     status: response.status,
     statusText: response.statusText,
-    headers: rewriteResponseHeaders(response),
+    headers: rewriteResponseHeaders(response, publicOrigin),
   });
 }
 
@@ -316,9 +337,10 @@ export async function proxyTvescolaRequest(
   fetcher: Fetcher = fetch,
 ): Promise<Response> {
   const target = buildNeoNewsUrl(request.url);
+  const publicOrigin = new URL(request.url).origin;
   const init: RequestInit & { duplex?: 'half' } = {
     method: request.method,
-    headers: rewriteRequestHeaders(request),
+    headers: rewriteRequestHeaders(request, publicOrigin),
     redirect: 'manual',
   };
 
@@ -337,16 +359,27 @@ export async function proxyTvescolaRequest(
     const source = await upstreamResponse.text();
     const patchedSource = patchNeoNewsWfr(source);
     if (patchedSource !== source) {
-      return createModifiedResponse(upstreamResponse, patchedSource);
+      return createModifiedResponse(
+        upstreamResponse,
+        patchedSource,
+        publicOrigin,
+      );
     }
 
-    return createTextResponse(upstreamResponse, source);
+    return createTextResponse(
+      upstreamResponse,
+      source,
+      publicOrigin,
+    );
   }
 
   return new Response(upstreamResponse.body, {
     status: upstreamResponse.status,
     statusText: upstreamResponse.statusText,
-    headers: rewriteResponseHeaders(upstreamResponse),
+    headers: rewriteResponseHeaders(
+      upstreamResponse,
+      publicOrigin,
+    ),
   });
 }
 
@@ -354,7 +387,12 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const hostname = new URL(request.url).hostname.toLowerCase();
 
-    if (hostname === TVESCOLA_HOSTNAME) {
+    const pathname = new URL(request.url).pathname;
+    if (
+      hostname === TVESCOLA_HOSTNAME ||
+      (hostname === TECESCOLA_HOSTNAME &&
+        pathname.startsWith('/neonews/'))
+    ) {
       return proxyTvescolaRequest(request);
     }
 

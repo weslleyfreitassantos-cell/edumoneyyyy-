@@ -137,7 +137,7 @@ describe('Sidebar', () => {
       }),
     ).toBeNull();
     expect(
-      screen.queryByRole('link', { name: 'Terminais' }),
+      screen.queryByRole('link', { name: 'TV Escola' }),
     ).toBeNull();
   });
 
@@ -218,7 +218,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('ordena Terminais, E-mail e Administração sem duplicar E-mail', () => {
+  it('ordena TV Escola, E-mail e Administração sem duplicar E-mail', () => {
     renderSidebar({
       route: '/admin?module=overview',
       profile: directorProfile(),
@@ -233,13 +233,13 @@ describe('Sidebar', () => {
       navigation.querySelectorAll('a'),
     ).map((link) => link.textContent?.trim());
 
-    expect(labels.filter((label) => label === 'Terminais')).toHaveLength(1);
+    expect(labels.filter((label) => label === 'TV Escola')).toHaveLength(1);
     expect(labels.filter((label) => label === 'E-mail')).toHaveLength(1);
-    expect(labels.indexOf('Terminais')).toBeLessThan(labels.indexOf('E-mail'));
+    expect(labels.indexOf('TV Escola')).toBeLessThan(labels.indexOf('E-mail'));
     expect(labels.indexOf('E-mail')).toBeLessThan(labels.indexOf('Administração'));
   });
 
-  it('marca Terminais e E-mail como ativos nas rotas próprias', () => {
+  it('marca TV Escola e E-mail como ativos nas rotas próprias', () => {
     renderSidebar({
       route: '/terminais',
       profile: directorProfile(),
@@ -248,7 +248,7 @@ describe('Sidebar', () => {
     });
 
     expect(
-      screen.getByRole('link', { name: 'Terminais' }).getAttribute('aria-current'),
+      screen.getByRole('link', { name: 'TV Escola' }).getAttribute('aria-current'),
     ).toBe('page');
 
     cleanup();
@@ -551,7 +551,7 @@ describe('sidebar navigation helpers', () => {
     }
   });
 
-  it('mantem Terminais e E-mail fora do acesso de TEACHER, STUDENT e GUARDIAN', () => {
+  it('mantem TV Escola e E-mail fora do acesso de TEACHER, STUDENT e GUARDIAN', () => {
     for (const [profileRole, currentUserRole] of [
       ['TEACHER', 'teacher'],
       ['STUDENT', 'student'],

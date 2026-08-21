@@ -13,25 +13,25 @@ describe('TerminalsPage', () => {
   it('renderiza o sistema externo no iframe correto', () => {
     render(<TerminalsPage />);
 
-    const iframe = screen.getByTitle('Terminais');
+    const iframe = screen.getByTitle('TV Escola');
 
     expect(TERMINALS_URL).toBe(
-      'https://tvescola.grupotec.dev.br/neonews/logon.jsp?sys=NEC&msgKey=',
+      '/neonews/logon.jsp?sys=NEC&msgKey=',
     );
     expect(iframe.getAttribute('src')).toBe(TERMINALS_URL);
     expect(iframe.getAttribute('referrerpolicy')).toBe(
       'strict-origin-when-cross-origin',
     );
     expect(screen.queryByText('Instituição')).toBeNull();
-    expect(screen.queryByRole('heading', { name: 'Terminais' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'TV Escola' })).toBeNull();
     expect(
       screen.queryByText(
-        'Acesse o sistema de terminais diretamente pelo ambiente da instituição.',
+        'Acesse o sistema de TV Escola diretamente pelo ambiente da instituição.',
       ),
     ).toBeNull();
     expect(iframe.className).toContain('h-full');
     expect(screen.getByRole('status').textContent).toContain(
-      'Carregando Terminais...',
+      'Carregando TV Escola...',
     );
 
     fireEvent.load(iframe);
@@ -44,11 +44,11 @@ describe('TerminalsPage', () => {
 
     expect(
       screen.getByText(
-        'Não foi possível carregar o sistema Terminais dentro desta página.',
+        'Não foi possível carregar o sistema TV Escola dentro desta página.',
       ),
     ).toBeDefined();
     const fallbackLink = screen.getByRole('link', {
-      name: /abrir terminais em nova aba/i,
+      name: /abrir tv escola em nova aba/i,
     });
 
     expect(fallbackLink.getAttribute('href')).toBe(TERMINALS_URL);

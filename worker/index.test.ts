@@ -153,6 +153,45 @@ describe('Worker script', () => {
     );
   });
 
+  it('proxyfica o caminho same-origin de tecescola para o NeoNews', async () => {
+    const upstreamFetch = vi.fn().mockResolvedValue(new Response('ok'));
+    const request = new Request(
+      'https://tecescola.grupotec.dev.br/neonews/session',
+      {
+        method: 'POST',
+        headers: {
+          origin: 'https://tecescola.grupotec.dev.br',
+          referer: 'https://tecescola.grupotec.dev.br/neonews/logon.jsp',
+        },
+        body: 'field=value',
+      },
+    );
+
+    await proxyTvescolaRequest(request, upstreamFetch);
+
+    expect(upstreamFetch.mock.calls[0][0]).toBe(
+      'https://admin.in9midia.com/neonews/session',
+    );
+    const headers = new Headers(
+      (upstreamFetch.mock.calls[0][1] as RequestInit).headers,
+    );
+    expect(headers.get('origin')).toBe('https://admin.in9midia.com');
+    expect(headers.get('referer')).toBe(
+      'https://admin.in9midia.com/neonews/logon.jsp',
+    );
+  });
+
+  it('reescreve redirects do NeoNews de volta para o host same-origin', () => {
+    expect(
+      rewriteNeoNewsLocation(
+        'https://admin.in9midia.com/neonews/home.jsp?a=1',
+        'https://tecescola.grupotec.dev.br',
+      ),
+    ).toBe(
+      'https://tecescola.grupotec.dev.br/neonews/home.jsp?a=1',
+    );
+  });
+
   it('reescreve redirects absolutos do NeoNews para tvescola', () => {
     expect(
       rewriteNeoNewsLocation(

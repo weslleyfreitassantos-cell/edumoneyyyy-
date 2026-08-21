@@ -2,7 +2,7 @@ import { ExternalLink, MonitorCog } from 'lucide-react';
 import { useState } from 'react';
 
 export const TERMINALS_URL =
-  'https://tvescola.grupotec.dev.br/neonews/logon.jsp?sys=NEC&msgKey=';
+  '/neonews/logon.jsp?sys=NEC&msgKey=';
 
 type FrameState = 'loading' | 'loaded' | 'blocked';
 
@@ -12,7 +12,7 @@ export function TerminalsFallback() {
       <div className="max-w-md">
         <MonitorCog className="mx-auto h-10 w-10 text-[#667085]" aria-hidden="true" />
         <h2 className="mt-4 text-lg font-extrabold text-[#181c20]">
-          Não foi possível carregar o sistema Terminais dentro desta página.
+          Não foi possível carregar o sistema TV Escola dentro desta página.
         </h2>
         <a
           href={TERMINALS_URL}
@@ -21,7 +21,7 @@ export function TerminalsFallback() {
           className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2.5 text-sm font-bold text-white hover:bg-[#004a9b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
         >
           <ExternalLink className="h-4 w-4" aria-hidden="true" />
-          Abrir Terminais em nova aba
+          Abrir TV Escola em nova aba
         </a>
       </div>
     </div>
@@ -44,7 +44,7 @@ export default function TerminalsPage() {
               className="h-4 w-4 animate-spin rounded-full border-2 border-[#cfd6e2] border-t-[#005bbf]"
               aria-hidden="true"
             />
-            Carregando Terminais...
+            Carregando TV Escola...
           </div>
         ) : null}
 
@@ -53,7 +53,7 @@ export default function TerminalsPage() {
         ) : (
           <iframe
             src={TERMINALS_URL}
-            title="Terminais"
+            title="TV Escola"
             referrerPolicy="strict-origin-when-cross-origin"
             onLoad={() => setFrameState('loaded')}
             onError={() => setFrameState('blocked')}
