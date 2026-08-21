@@ -17,12 +17,12 @@ describe("institution-sso-handoff", () => {
     expect(source).toContain('account.status !== "ACTIVE"');
   });
 
-  it("deriva o destino pelo registro da instituição e limita o host", () => {
+  it("retorna ao callback oficial e preserva a instituição selecionada", () => {
     expect(source).toContain('.from("institutions")');
-    expect(source).toContain('select("id, account_id, subdomain, active")');
-    expect(source).toContain('https://${normalized}.grupotec.dev.br');
+    expect(source).toContain('select("id, account_id, active")');
+    expect(source).toContain('callback.searchParams.set("institutionId", institutionId)');
     expect(source).toContain('PLATFORM_ORIGIN');
-    expect(source).toContain('returnPath: "/admin"');
+    expect(source).toContain('callback.searchParams.set("returnTo", "/admin")');
   });
 
   it("usa link magiclink de uso único e não devolve tokens de sessão", () => {
@@ -32,6 +32,12 @@ describe("institution-sso-handoff", () => {
     expect(source).not.toContain('access_token');
     expect(source).not.toContain('refresh_token');
     expect(source).not.toContain('service_role');
+  });
+
+  it("rejeita fallback para um Site URL legado ou callback não permitido", () => {
+    expect(source).toContain('getActionLinkRedirect(generatedLink.properties.action_link)');
+    expect(source).toContain('SSO_REDIRECT_NOT_ALLOWED');
+    expect(source).toContain('expectedOrigin: PLATFORM_ORIGIN');
   });
 
   it("responde sem cache e suporta preflight", () => {

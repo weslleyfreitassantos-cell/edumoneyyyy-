@@ -5,18 +5,6 @@ import { z } from "zod";
 import type { Database } from "../_shared/database.types.ts";
 
 const PLATFORM_ORIGIN = "https://tecescola.grupotec.dev.br";
-const RESERVED_SUBDOMAINS = new Set([
-  "admin",
-  "api",
-  "app",
-  "auth",
-  "dashboard",
-  "grupotec",
-  "login",
-  "platform",
-  "tecescola",
-  "www",
-]);
 
 class SsoHandoffError extends Error {
   status: number;
@@ -60,39 +48,28 @@ function jsonSuccess(actionLink: string): Response {
   );
 }
 
-function isValidInstitutionSubdomain(value: string): boolean {
-  return (
-    value.length >= 3 &&
-    value.length <= 63 &&
-    !RESERVED_SUBDOMAINS.has(value) &&
-    /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value)
+function getRedirectTo(institutionId: string): string {
+  const callback = new URL(
+    `${PLATFORM_ORIGIN}/auth/confirm`,
   );
+  callback.searchParams.set("handoff", "sso");
+  callback.searchParams.set("returnTo", "/admin");
+  callback.searchParams.set("institutionId", institutionId);
+  return callback.toString();
 }
 
-function getRedirectTarget(subdomain: string | null): {
-  origin: string;
-  returnPath: "/admin" | "/account";
-} {
-  if (!subdomain) {
-    return {
-      origin: PLATFORM_ORIGIN,
-      returnPath: "/account",
-    };
-  }
-
-  const normalized = subdomain.trim().toLowerCase();
-  if (!isValidInstitutionSubdomain(normalized)) {
-    throw new SsoHandoffError(
-      409,
-      "INSTITUTION_SUBDOMAIN_INVALID",
-      "A instituição não possui um subdomínio válido para acesso.",
+function getActionLinkRedirect(
+  actionLink: string,
+): string | null {
+  try {
+    const actionUrl = new URL(actionLink);
+    return (
+      actionUrl.searchParams.get("redirect_to") ??
+      actionUrl.searchParams.get("redirectTo")
     );
+  } catch {
+    return null;
   }
-
-  return {
-    origin: `https://${normalized}.grupotec.dev.br`,
-    returnPath: "/admin",
-  };
 }
 
 const authenticatedFetch = withSupabase<Database>(
@@ -165,7 +142,7 @@ const authenticatedFetch = withSupabase<Database>(
       const { data: institution, error: institutionError } =
         await ctx.supabaseAdmin
           .from("institutions")
-          .select("id, account_id, subdomain, active")
+          .select("id, account_id, active")
           .eq("id", validation.data.institutionId)
           .maybeSingle();
 
@@ -198,8 +175,7 @@ const authenticatedFetch = withSupabase<Database>(
         );
       }
 
-      const target = getRedirectTarget(institution.subdomain);
-      const redirectTo = `${target.origin}/auth/confirm?handoff=sso&returnTo=${encodeURIComponent(target.returnPath)}`;
+      const redirectTo = getRedirectTo(institution.id);
       const { data: generatedLink, error: linkError } =
         await ctx.supabaseAdmin.auth.admin.generateLink({
           type: "magiclink",
@@ -217,6 +193,22 @@ const authenticatedFetch = withSupabase<Database>(
           502,
           "SSO_LINK_GENERATION_FAILED",
           "Não foi possível preparar a troca segura de instituição.",
+        );
+      }
+
+      if (
+        getActionLinkRedirect(generatedLink.properties.action_link) !==
+          redirectTo
+      ) {
+        console.error("O Supabase não aceitou o callback SSO configurado.", {
+          code: "SSO_REDIRECT_NOT_ALLOWED",
+          expectedOrigin: PLATFORM_ORIGIN,
+          expectedPath: "/auth/confirm",
+        });
+        throw new SsoHandoffError(
+          502,
+          "SSO_REDIRECT_NOT_ALLOWED",
+          "A troca de instituição ainda não está configurada para este ambiente.",
         );
       }
 

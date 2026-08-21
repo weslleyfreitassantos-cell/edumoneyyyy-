@@ -112,7 +112,7 @@ describe("AuthConfirm", () => {
 
   it("should establish an SSO session and return to the requested area", async () => {
     window.location.hash = "#access_token=acc123&refresh_token=ref456&type=magiclink";
-    window.location.search = "?handoff=sso&returnTo=%2Faccount";
+    window.location.search = "?handoff=sso&returnTo=%2Faccount&institutionId=11111111-1111-4111-8111-111111111111";
 
     (supabase.auth.signOut as any).mockResolvedValue({});
     (supabase.auth.setSession as any).mockResolvedValue({ error: null });
@@ -135,6 +135,11 @@ describe("AuthConfirm", () => {
       expect(mockNavigate).toHaveBeenCalledWith('/account', {
         replace: true,
       });
+      expect(
+        window.localStorage.getItem(
+          'edumanager.currentInstitutionId.user-123',
+        ),
+      ).toBe('11111111-1111-4111-8111-111111111111');
       expect(sessionStorage.getItem("invite_context")).toBeNull();
     });
   });

@@ -114,12 +114,36 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
   };
 }
 
-function getSsoReturnPath(): '/admin' | '/account' {
-  const returnTo = new URLSearchParams(window.location.search).get(
-    'returnTo',
-  );
+function getSsoContext(): {
+  returnPath: '/admin' | '/account';
+  institutionId: string | null;
+} {
+  const searchParams = new URLSearchParams(window.location.search);
+  const returnTo = searchParams.get('returnTo');
+  const institutionId = searchParams.get('institutionId');
 
-  return returnTo === '/account' ? '/account' : '/admin';
+  return {
+    returnPath: returnTo === '/account' ? '/account' : '/admin',
+    institutionId:
+      institutionId &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+        institutionId,
+      )
+        ? institutionId
+        : null,
+  };
+}
+
+function saveSsoInstitutionSelection(
+  userId: string,
+  institutionId: string | null,
+): void {
+  if (!institutionId) return;
+
+  window.localStorage.setItem(
+    `edumanager.currentInstitutionId.${userId}`,
+    institutionId,
+  );
 }
 
 async function hasCurrentInviteSession(
@@ -206,9 +230,22 @@ export default function AuthConfirm() {
         }
 
         if (confirmation.flow === 'sso') {
-          const ssoReturnPath = getSsoReturnPath();
+          const ssoContext = getSsoContext();
+          const {
+            data: { user },
+            error: userError,
+          } = await supabase.auth.getUser();
+
+          if (userError || !user) {
+            throw new Error('Falha ao restaurar a sessão administrativa.');
+          }
+
+          saveSsoInstitutionSelection(
+            user.id,
+            ssoContext.institutionId,
+          );
           clearInviteTokensFromUrl();
-          navigate(ssoReturnPath, { replace: true });
+          navigate(ssoContext.returnPath, { replace: true });
           return;
         }
 
