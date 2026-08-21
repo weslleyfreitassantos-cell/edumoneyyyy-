@@ -13,7 +13,7 @@ type Fetcher = (
 
 const TVESCOLA_HOSTNAME = 'tvescola.grupotec.dev.br';
 const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
-const TECESCOLA_HOSTNAME = 'tecescola.grupotec.dev.br';
+const GRUPOTEC_ROOT_DOMAIN = 'grupotec.dev.br';
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
 const NEONEWS_ORIGIN = `https://${NEONEWS_HOSTNAME}`;
 const WFR_PATHNAME = '/neonews/wfr.js';
@@ -41,6 +41,28 @@ function withSecurityHeaders(response: Response): Response {
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+}
+
+function isGrupotecSubdomain(hostname: string): boolean {
+  const suffix = `.${GRUPOTEC_ROOT_DOMAIN}`;
+  return (
+    hostname.endsWith(suffix) &&
+    hostname.slice(0, -suffix.length).length > 0 &&
+    !hostname.slice(0, -suffix.length).includes('.')
+  );
+}
+
+export function shouldProxyNeoNewsRequest(
+  hostname: string,
+  pathname: string,
+): boolean {
+  const normalizedHostname = hostname.toLowerCase();
+
+  return (
+    normalizedHostname === TVESCOLA_HOSTNAME ||
+    (pathname.startsWith('/neonews/') &&
+      isGrupotecSubdomain(normalizedHostname))
+  );
 }
 
 function buildNeoNewsUrl(requestUrl: string): URL {
@@ -388,11 +410,7 @@ export default {
     const hostname = new URL(request.url).hostname.toLowerCase();
 
     const pathname = new URL(request.url).pathname;
-    if (
-      hostname === TVESCOLA_HOSTNAME ||
-      (hostname === TECESCOLA_HOSTNAME &&
-        pathname.startsWith('/neonews/'))
-    ) {
+    if (shouldProxyNeoNewsRequest(hostname, pathname)) {
       return proxyTvescolaRequest(request);
     }
 

@@ -4,6 +4,7 @@ import worker, {
   patchNeoNewsWfr,
   rewriteNeoNewsLocation,
   rewriteNeoNewsSetCookie,
+  shouldProxyNeoNewsRequest,
 } from './index';
 
 afterEach(() => {
@@ -103,6 +104,27 @@ describe('Worker script', () => {
     }
 
     expect(response.headers.get('x-content-type-options')).toBe('nosniff');
+  });
+
+  it('proxyfica NeoNews no caminho same-origin de qualquer tenant', () => {
+    expect(
+      shouldProxyNeoNewsRequest(
+        'sesi.grupotec.dev.br',
+        '/neonews/logon.jsp',
+      ),
+    ).toBe(true);
+    expect(
+      shouldProxyNeoNewsRequest(
+        'tecescola.grupotec.dev.br',
+        '/neonews/logon.jsp',
+      ),
+    ).toBe(true);
+    expect(
+      shouldProxyNeoNewsRequest('sesi.grupotec.dev.br', '/dashboard'),
+    ).toBe(false);
+    expect(
+      shouldProxyNeoNewsRequest('foo.tvescola.grupotec.dev.br', '/neonews/'),
+    ).toBe(false);
   });
 
   it('proxyfica tvescola para admin.in9midia.com preservando path e query', async () => {
