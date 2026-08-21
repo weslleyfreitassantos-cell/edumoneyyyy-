@@ -73,7 +73,7 @@ export function suggestPeriods(startDate: string, endDate: string, model: Exclud
   return Array.from({ length: count }, (_, index) => {
     const periodStart = new Date(start.getTime() + Math.floor((totalDays * index) / count) * 86_400_000);
     const periodEnd = new Date(start.getTime() + (Math.floor((totalDays * (index + 1)) / count) - 1) * 86_400_000);
-    return { name: `${index + 1}${model === 'BIMESTERS_4' ? 'o Bimestre' : model === 'TRIMESTERS_3' ? 'o Trimestre' : 'o Semestre'}`, start_date: isoDate(periodStart), end_date: isoDate(periodEnd), active: true };
+    return { name: `${index + 1}º ${model === 'BIMESTERS_4' ? 'Bimestre' : model === 'TRIMESTERS_3' ? 'Trimestre' : 'Semestre'}`, start_date: isoDate(periodStart), end_date: isoDate(periodEnd), active: true };
   });
 }
 

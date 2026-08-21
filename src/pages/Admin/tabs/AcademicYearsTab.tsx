@@ -101,6 +101,20 @@ function formatDate(value: string): string {
   return `${day}/${month}/${year}`;
 }
 
+function formatPeriodName(value: string): string {
+  const match = value.match(
+    /^(\d+)\s*o\s+(bimestre|trimestre|semestre|per[ií]odo)$/i,
+  );
+
+  if (!match) {
+    return value;
+  }
+
+  const unit = match[2].toLowerCase();
+
+  return `${match[1]}º ${unit.charAt(0).toUpperCase()}${unit.slice(1)}`;
+}
+
 function isCurrentRange(
   startDate: string,
   endDate: string,
@@ -355,7 +369,7 @@ export default function AcademicYearsTab() {
     resetMessages();
     setEditingTerm(term);
     setTermDraft({
-      name: term.name,
+      name: formatPeriodName(term.name),
       start_date: term.start_date,
       end_date: term.end_date,
       active: term.active,
@@ -596,7 +610,7 @@ export default function AcademicYearsTab() {
 
     if (
       !window.confirm(
-        `Deseja ${action} o período ${term.name}?`,
+        `Deseja ${action} o período ${formatPeriodName(term.name)}?`,
       )
     ) {
       return;
@@ -798,7 +812,7 @@ export default function AcademicYearsTab() {
                         <td className="px-4 py-3">
                           <div>
                             <p className="font-semibold text-[#181c20]">
-                              {term.name}
+                              {formatPeriodName(term.name)}
                             </p>
 
                             {term.active &&
@@ -888,7 +902,7 @@ export default function AcademicYearsTab() {
                           Período
                         </dt>
                         <dd className="mt-1 break-words font-semibold text-[#181c20]">
-                          {term.name}
+                          {formatPeriodName(term.name)}
                           {term.active &&
                             isCurrentRange(
                               term.start_date,
@@ -977,7 +991,7 @@ export default function AcademicYearsTab() {
           aria-modal="true"
           aria-labelledby="academic-year-modal-title"
         >
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+          <div className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
             <h3
               id="academic-year-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
@@ -1097,7 +1111,7 @@ export default function AcademicYearsTab() {
                   <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
                       <div className="flex-1">
-                        <label htmlFor="academic-period-model" className="block text-sm font-medium text-gray-700">Modelo de periodos</label>
+                        <label htmlFor="academic-period-model" className="block text-sm font-medium text-gray-700">Modelo de períodos</label>
                         <select id="academic-period-model" value={periodModel} onChange={(event) => { setPeriodModel(event.target.value as AssistedPeriodModel); setPeriodDrafts([]); }} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
                           <option value="BIMESTERS_4">4 bimestres</option>
                           <option value="TRIMESTERS_3">3 trimestres</option>
@@ -1105,21 +1119,39 @@ export default function AcademicYearsTab() {
                           <option value="CUSTOM">Personalizado</option>
                         </select>
                       </div>
-                      <button type="button" onClick={suggestAssistedPeriods} disabled={periodModel === 'CUSTOM' || !yearDraft.start_date || !yearDraft.end_date} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 disabled:opacity-50">Sugerir periodos</button>
-                      {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => [...current, { name: `${current.length + 1} periodo`, start_date: yearDraft.start_date, end_date: yearDraft.end_date, active: true }])} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700">Adicionar periodo</button>}
+                      <button type="button" onClick={suggestAssistedPeriods} disabled={periodModel === 'CUSTOM' || !yearDraft.start_date || !yearDraft.end_date} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 disabled:opacity-50">Sugerir períodos</button>
+                      {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => [...current, { name: `${current.length + 1}º Período`, start_date: yearDraft.start_date, end_date: yearDraft.end_date, active: true }])} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700">Adicionar período</button>}
                     </div>
-                    <p className="mt-2 text-xs text-blue-800">As datas sao apenas uma sugestao e podem ser revisadas antes de salvar.</p>
+                    <p className="mt-2 text-xs text-blue-800">As datas são apenas uma sugestão e podem ser revisadas antes de salvar.</p>
                   </div>
 
                   {periodDrafts.length > 0 && (
-                    <div className="space-y-2 rounded-lg border p-3">
-                      <p className="text-sm font-semibold text-gray-700">Revise os periodos</p>
+                    <div className="space-y-3 rounded-lg border border-gray-200 bg-gray-50/50 p-3">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-sm font-semibold text-gray-700">Revise os períodos</p>
+                        <span className="text-xs font-medium text-gray-500">{periodDrafts.length} períodos</span>
+                      </div>
+                      <div className="hidden grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-gray-500 sm:grid">
+                        <span>Período</span>
+                        <span>Início</span>
+                        <span>Fim</span>
+                        {periodModel === 'CUSTOM' && <span className="sr-only">Ações</span>}
+                      </div>
                       {periodDrafts.map((period, index) => (
-                        <div key={`${period.name}-${index}`} className="grid gap-2 sm:grid-cols-[1fr_1fr_1fr_auto]">
-                          <input aria-label={`Nome do periodo ${index + 1}`} value={period.name} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, name: event.target.value } : item))} className="rounded-lg border px-3 py-2 text-sm" />
-                          <input aria-label={`Inicio do periodo ${index + 1}`} type="date" value={period.start_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_date: event.target.value } : item))} className="rounded-lg border px-3 py-2 text-sm" />
-                          <input aria-label={`Fim do periodo ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="rounded-lg border px-3 py-2 text-sm" />
-                          {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="rounded-lg border border-red-200 px-3 py-2 text-sm text-red-700">Remover</button>}
+                        <div key={`${period.name}-${index}`} className="grid min-w-0 gap-2 rounded-lg border border-gray-200 bg-white p-2 sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] sm:border-0 sm:bg-transparent sm:p-0">
+                          <label className="min-w-0">
+                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Período</span>
+                            <input aria-label={`Nome do período ${index + 1}`} value={period.name} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, name: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                          </label>
+                          <label className="min-w-0">
+                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Início</span>
+                            <input aria-label={`Início do período ${index + 1}`} type="date" value={period.start_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                          </label>
+                          <label className="min-w-0">
+                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Fim</span>
+                            <input aria-label={`Fim do período ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                          </label>
+                          {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="self-end rounded-lg border border-red-200 px-3 py-2 text-sm text-red-700 sm:self-stretch">Remover</button>}
                         </div>
                       ))}
                     </div>
