@@ -2,6 +2,8 @@ import {
   Component,
   lazy,
   Suspense,
+  useEffect,
+  useState,
   type ErrorInfo,
   type ReactNode,
 } from 'react';
@@ -9,8 +11,10 @@ import {
 import {
   BrowserRouter,
   Navigate,
+  Outlet,
   Route,
   Routes,
+  useLocation,
 } from 'react-router-dom';
 
 import {
@@ -411,9 +415,17 @@ function InstitutionEmailRoute() {
   return <EmailTab />;
 }
 
-function InstitutionTerminalsRoute() {
+function InstitutionTerminalsRoute({
+  active = true,
+}: {
+  active?: boolean;
+}) {
   const { profile } = useAuth();
   const { currentRole, isLoading } = useInstitution();
+
+  if (!active) {
+    return <TerminalsPage />;
+  }
 
   if (isLoading) {
     return <PageLoading />;
@@ -432,6 +444,42 @@ function InstitutionTerminalsRoute() {
   }
 
   return <TerminalsPage />;
+}
+
+function PersistentTerminalsView() {
+  const { pathname } = useLocation();
+  const isActive = pathname.startsWith('/terminais');
+  const [hasVisited, setHasVisited] = useState(isActive);
+
+  useEffect(() => {
+    if (isActive) {
+      setHasVisited(true);
+    }
+  }, [isActive]);
+
+  if (!hasVisited) {
+    return null;
+  }
+
+  return (
+    <div
+      className={isActive ? 'h-full' : 'hidden'}
+      aria-hidden={!isActive}
+    >
+      <InstitutionTerminalsRoute active={isActive} />
+    </div>
+  );
+}
+
+function AuthenticatedShellLayout() {
+  return (
+    <ProtectedRoute>
+      <AppShell>
+        <PersistentTerminalsView />
+        <Outlet />
+      </AppShell>
+    </ProtectedRoute>
+  );
 }
 
 function AppRoutes() {
@@ -468,132 +516,94 @@ function AppRoutes() {
       />
 
       <Route
-        path="/dashboard/*"
-        element={
-          <ProtectedRoute>
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <DashboardContent />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/personalizar-login"
-        element={
-          <ProtectedRoute>
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <DirectorLoginBrandingRoute />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/cameras"
-        element={
-          <ProtectedRoute>
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <DirectorCamerasRoute />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/email"
-        element={
-          <ProtectedRoute
-            allowedRoles={['DIRECTOR', 'SECRETARY']}
-          >
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <InstitutionEmailRoute />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/terminais"
-        element={
-          <ProtectedRoute
-            allowedRoles={[
-              'DIRECTOR',
-              'SECRETARY',
-            ]}
-            allowedPlatformRoles={['SUPER_ADMIN']}
-          >
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <InstitutionTerminalsRoute />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
-        path="/admin/*"
-        element={
-          <ProtectedRoute
-            allowedRoles={[
-              'ADMIN',
-              'DIRECTOR',
-              'SECRETARY',
-            ]}
-            allowedPlatformRoles={['SUPER_ADMIN']}
-          >
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <AdminPage />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
-
-      <Route
         path="/configurar-escola/*"
         element={<Navigate to="/admin?module=overview" replace />}
       />
 
-      <Route
-        path="/platform/*"
-        element={
-          <ProtectedRoute
-            allowedPlatformRoles={[
-              'SUPER_ADMIN',
-            ]}
-          >
-            <AppShell>
+      <Route element={<AuthenticatedShellLayout />}>
+        <Route
+          path="/dashboard/*"
+          element={
+            <AuthenticatedRouteContent>
+              <DashboardContent />
+            </AuthenticatedRouteContent>
+          }
+        />
+
+        <Route
+          path="/personalizar-login"
+          element={
+            <AuthenticatedRouteContent>
+              <DirectorLoginBrandingRoute />
+            </AuthenticatedRouteContent>
+          }
+        />
+
+        <Route
+          path="/cameras"
+          element={
+            <AuthenticatedRouteContent>
+              <DirectorCamerasRoute />
+            </AuthenticatedRouteContent>
+          }
+        />
+
+        <Route
+          path="/email"
+          element={
+            <AuthenticatedRouteContent>
+              <InstitutionEmailRoute />
+            </AuthenticatedRouteContent>
+          }
+        />
+
+        <Route
+          path="/terminais"
+          element={<div className="hidden" />}
+        />
+
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute
+              allowedRoles={[
+                'ADMIN',
+                'DIRECTOR',
+                'SECRETARY',
+              ]}
+              allowedPlatformRoles={['SUPER_ADMIN']}
+            >
+              <AuthenticatedRouteContent>
+                <AdminPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/platform/*"
+          element={
+            <ProtectedRoute
+              allowedPlatformRoles={[
+                'SUPER_ADMIN',
+              ]}
+            >
               <AuthenticatedRouteContent>
                 <PlatformPage />
               </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
+            </ProtectedRoute>
+          }
+        />
 
-      <Route
-        path="/account/*"
-        element={
-          <ProtectedRoute>
-            <AppShell>
-              <AuthenticatedRouteContent>
-                <AccountPage />
-              </AuthenticatedRouteContent>
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/account/*"
+          element={
+            <AuthenticatedRouteContent>
+              <AccountPage />
+            </AuthenticatedRouteContent>
+          }
+        />
+      </Route>
 
       <Route
         path="/"
