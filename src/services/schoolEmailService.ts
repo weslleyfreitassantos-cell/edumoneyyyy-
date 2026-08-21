@@ -7,6 +7,8 @@ export const SCHOOL_EMAIL_AUDIENCES = [
   'SELECTED',
 ] as const;
 
+const recipientCache = new Map<string, SchoolEmailRecipient[]>();
+
 export type SchoolEmailAudience =
   (typeof SCHOOL_EMAIL_AUDIENCES)[number];
 
@@ -105,6 +107,12 @@ function asNumber(value: unknown): number {
 }
 
 export const schoolEmailService = {
+  getCachedRecipients(
+    institutionId: string,
+  ): SchoolEmailRecipient[] | null {
+    return recipientCache.get(institutionId) ?? null;
+  },
+
   async listRecipients(
     institutionId: string,
   ): Promise<SchoolEmailRecipient[]> {
@@ -113,9 +121,11 @@ export const schoolEmailService = {
       institutionId,
     });
 
-    return Array.isArray(data.recipients)
+    const recipients = Array.isArray(data.recipients)
       ? data.recipients as SchoolEmailRecipient[]
       : [];
+    recipientCache.set(institutionId, recipients);
+    return recipients;
   },
 
   async preview(

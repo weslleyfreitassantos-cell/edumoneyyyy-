@@ -1,10 +1,30 @@
 import { ExternalLink, MonitorCog } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const TERMINALS_URL =
   '/neonews/logon.jsp?sys=NEC&msgKey=';
 
 type FrameState = 'loading' | 'loaded' | 'blocked';
+
+let persistentFrame: HTMLIFrameElement | null = null;
+let parkingHost: HTMLDivElement | null = null;
+
+function getParkingHost(): HTMLDivElement {
+  if (parkingHost) return parkingHost;
+
+  parkingHost = document.createElement('div');
+  parkingHost.setAttribute('aria-hidden', 'true');
+  parkingHost.style.position = 'fixed';
+  parkingHost.style.left = '-1px';
+  parkingHost.style.top = '-1px';
+  parkingHost.style.width = '1px';
+  parkingHost.style.height = '1px';
+  parkingHost.style.overflow = 'hidden';
+  parkingHost.style.opacity = '0';
+  parkingHost.style.pointerEvents = 'none';
+  document.body.appendChild(parkingHost);
+  return parkingHost;
+}
 
 export function TerminalsFallback() {
   return (
@@ -30,7 +50,44 @@ export function TerminalsFallback() {
 
 export default function TerminalsPage() {
   const [frameState, setFrameState] =
-    useState<FrameState>('loading');
+    useState<FrameState>(() =>
+      (persistentFrame?.dataset.frameState as FrameState | undefined) ?? 'loading',
+    );
+  const frameContainerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const container = frameContainerRef.current;
+    if (!container) return undefined;
+
+    if (!persistentFrame) {
+      persistentFrame = document.createElement('iframe');
+      persistentFrame.src = TERMINALS_URL;
+      persistentFrame.title = 'TV Escola';
+      persistentFrame.setAttribute(
+        'referrerpolicy',
+        'strict-origin-when-cross-origin',
+      );
+      persistentFrame.className = 'h-full min-h-0 w-full border-0 bg-white';
+      persistentFrame.addEventListener('load', () => {
+        if (!persistentFrame) return;
+        persistentFrame.dataset.frameState = 'loaded';
+        setFrameState('loaded');
+      });
+      persistentFrame.addEventListener('error', () => {
+        if (!persistentFrame) return;
+        persistentFrame.dataset.frameState = 'blocked';
+        setFrameState('blocked');
+      });
+    }
+
+    container.appendChild(persistentFrame);
+
+    return () => {
+      if (persistentFrame) {
+        getParkingHost().appendChild(persistentFrame);
+      }
+    };
+  }, []);
 
   return (
     <section className="flex h-full min-h-0 flex-col">
@@ -51,13 +108,9 @@ export default function TerminalsPage() {
         {frameState === 'blocked' ? (
           <TerminalsFallback />
         ) : (
-          <iframe
-            src={TERMINALS_URL}
-            title="TV Escola"
-            referrerPolicy="strict-origin-when-cross-origin"
-            onLoad={() => setFrameState('loaded')}
-            onError={() => setFrameState('blocked')}
-            className="h-full min-h-0 w-full border-0 bg-white"
+          <div
+            ref={frameContainerRef}
+            className="h-full min-h-0 w-full"
           />
         )}
       </div>

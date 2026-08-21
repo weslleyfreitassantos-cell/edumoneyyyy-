@@ -112,7 +112,14 @@ export default function EmailTab() {
     }
 
     let active = true;
-    setIsLoadingRecipients(true);
+    const cachedRecipients = schoolEmailService.getCachedRecipients?.(institutionId) ?? null;
+
+    if (cachedRecipients) {
+      setRecipients(cachedRecipients);
+      setIsLoadingRecipients(false);
+    } else {
+      setIsLoadingRecipients(true);
+    }
     setRecipientError(null);
 
     schoolEmailService.listRecipients(institutionId)

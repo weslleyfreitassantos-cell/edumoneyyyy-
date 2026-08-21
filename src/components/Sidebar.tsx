@@ -223,6 +223,10 @@ function isAdminPath(pathname: string): boolean {
   );
 }
 
+function preloadEmailPage(): void {
+  void import('../pages/Admin/tabs/EmailTab');
+}
+
 export function getSidebarNavigationItems({
   profile,
   currentInstitutionRole,
@@ -640,6 +644,16 @@ export default function Sidebar({
                         key={item.id}
                         to={item.path}
                         onClick={onCloseMobile}
+                        onMouseEnter={
+                          item.id === 'email'
+                            ? preloadEmailPage
+                            : undefined
+                        }
+                        onFocus={
+                          item.id === 'email'
+                            ? preloadEmailPage
+                            : undefined
+                        }
                         aria-current={
                           isActive
                             ? 'page'
