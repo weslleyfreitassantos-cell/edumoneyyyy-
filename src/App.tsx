@@ -3,6 +3,7 @@ import {
   lazy,
   Suspense,
   useEffect,
+  useRef,
   useState,
   type ErrorInfo,
   type ReactNode,
@@ -422,12 +423,17 @@ function InstitutionTerminalsRoute({
 }) {
   const { profile } = useAuth();
   const { currentRole, isLoading } = useInstitution();
+  const hasResolvedAccess = useRef(false);
 
   if (!active) {
     return <TerminalsPage />;
   }
 
   if (isLoading) {
+    if (hasResolvedAccess.current) {
+      return <TerminalsPage />;
+    }
+
     return <PageLoading />;
   }
 
@@ -443,6 +449,7 @@ function InstitutionTerminalsRoute({
     return <Navigate to="/unauthorized" replace />;
   }
 
+  hasResolvedAccess.current = true;
   return <TerminalsPage />;
 }
 
