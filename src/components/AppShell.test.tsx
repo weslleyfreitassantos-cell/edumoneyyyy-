@@ -644,7 +644,7 @@ describe('AppShell', () => {
     fireEvent.click(getMobileMenuButton());
     fireEvent.click(
       screen.getByRole('link', {
-        name: /administra/i,
+        name: /vis.o geral/i,
       }),
     );
 
@@ -695,12 +695,15 @@ describe('AppShell', () => {
     });
   });
 
-  it('mantem Administracao na navegacao lateral', () => {
+  it('mantem visao geral na navegacao lateral sem item administracao duplicado', () => {
     renderShell('/account');
 
     expect(
-      screen.getByRole('link', { name: /administra/i }),
+      screen.getByRole('link', { name: /vis.o geral/i }),
     ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', { name: /administra/i }),
+    ).toBeNull();
   });
 
   it('conecta Minha conta às ações do perfil autenticado', async () => {

@@ -113,7 +113,7 @@ afterEach(() => {
 });
 
 describe('Sidebar', () => {
-  it('renderiza rotas reais do ADMIN e marca administracao como area ativa', () => {
+  it('renderiza rotas reais do ADMIN e marca visao geral como area ativa', () => {
     renderSidebar();
 
     expect(
@@ -122,10 +122,10 @@ describe('Sidebar', () => {
       }),
     ).toBeTruthy();
     expect(
-      screen.getByRole('link', {
+      screen.queryByRole('link', {
         name: /administra..o/i,
       }),
-    ).toBeTruthy();
+    ).toBeNull();
     expect(
       screen.getByRole('link', {
         name: /vis.o geral/i,
@@ -218,7 +218,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('ordena TV Escola, E-mail e Administração sem duplicar E-mail', () => {
+  it('mantem TV Escola, E-mail e os modulos administrativos sem item duplicado', () => {
     renderSidebar({
       route: '/admin?module=overview',
       profile: directorProfile(),
@@ -236,7 +236,8 @@ describe('Sidebar', () => {
     expect(labels.filter((label) => label === 'TV Escola')).toHaveLength(1);
     expect(labels.filter((label) => label === 'E-mail')).toHaveLength(1);
     expect(labels.indexOf('TV Escola')).toBeLessThan(labels.indexOf('E-mail'));
-    expect(labels.indexOf('E-mail')).toBeLessThan(labels.indexOf('Administração'));
+    expect(labels).toContain('Visão geral');
+    expect(labels).not.toContain('Administração');
   });
 
   it('marca TV Escola e E-mail como ativos nas rotas próprias', () => {
@@ -264,8 +265,8 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),
     ).toBe('page');
     expect(
-      screen.getByRole('link', { name: /^Administração$/i }).getAttribute('aria-current'),
-    ).not.toBe('page');
+      screen.queryByRole('link', { name: /^Administração$/i }),
+    ).toBeNull();
   });
 
   it('nao mostra modulos sem permissao para SECRETARY', () => {

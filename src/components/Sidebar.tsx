@@ -9,7 +9,6 @@ import {
   Mail,
   MonitorCog,
   Palette,
-  School,
   ShieldCheck,
   Video,
   UserCircle2,
@@ -405,8 +404,6 @@ export default function Sidebar({
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl
       : null;
-  const isSuperAdmin =
-    profile.platform_role === 'SUPER_ADMIN';
   const adminSearchParams =
     new URLSearchParams(location.search);
   const requestedAdminModule =
@@ -475,40 +472,6 @@ export default function Sidebar({
     return (
       <div className="mb-5 last:mb-0">
         <div className="space-y-3">
-          {!isSuperAdmin && (
-            <Link
-              to="/admin?module=overview"
-              onClick={onCloseMobile}
-              className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
-                adminRouteActive
-                  ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
-                  : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
-              }`}
-            >
-              <span
-                className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
-                  adminRouteActive
-                    ? 'bg-[#005bbf]'
-                    : 'bg-transparent'
-                }`}
-                aria-hidden="true"
-              />
-
-              <School
-                className={`h-5 w-5 shrink-0 ${
-                  adminRouteActive
-                    ? 'text-[#005bbf]'
-                    : 'text-[#667085]'
-                }`}
-                aria-hidden="true"
-              />
-
-              <span className="min-w-0 truncate">
-                Administração
-              </span>
-            </Link>
-          )}
-
           {adminModuleGroups.map((group) => (
             <div key={group.id}>
               <div className="space-y-1">
