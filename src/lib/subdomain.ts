@@ -190,6 +190,65 @@ export function extractSubdomainFromHostname(hostname: string): string | null {
 
 export const PLATFORM_ORIGIN = 'https://tecescola.grupotec.dev.br';
 
+const SSO_INSTITUTION_COOKIE = 'edumanager.ssoInstitutionId';
+const UUID_PATTERN =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function isValidUuid(value: string | null): value is string {
+  return Boolean(value && UUID_PATTERN.test(value));
+}
+
+/**
+ * Stores only the selected institution id while an ADMIN crosses tenant hosts.
+ * The cookie is short-lived and never contains an auth token.
+ */
+export function setInstitutionSsoSelectionCookie(
+  institutionId: string,
+): void {
+  if (typeof document === 'undefined' || !UUID_PATTERN.test(institutionId)) {
+    return;
+  }
+
+  const isSecure =
+    typeof window !== 'undefined' &&
+    window.location.protocol === 'https:';
+  const host =
+    typeof window !== 'undefined' ? window.location.hostname : '';
+  const isProductionHost =
+    host === 'grupotec.dev.br' ||
+    host.endsWith('.grupotec.dev.br');
+  const domain = isProductionHost
+    ? ' Domain=.grupotec.dev.br;'
+    : '';
+  const secure = isSecure ? ' Secure;' : '';
+
+  document.cookie =
+    `${SSO_INSTITUTION_COOKIE}=${encodeURIComponent(institutionId)};${domain} Path=/; Max-Age=300; SameSite=Lax;${secure}`;
+}
+
+export function getInstitutionSsoSelectionCookie(): string | null {
+  if (typeof document === 'undefined') return null;
+
+  const cookie = document.cookie
+    .split('; ')
+    .find((item) => item.startsWith(`${SSO_INSTITUTION_COOKIE}=`));
+  if (!cookie) return null;
+
+  const value = decodeURIComponent(
+    cookie.slice(SSO_INSTITUTION_COOKIE.length + 1),
+  );
+  return isValidUuid(value) ? value : null;
+}
+
+export function clearInstitutionSsoSelectionCookie(): void {
+  if (typeof document === 'undefined') return;
+
+  document.cookie =
+    `${SSO_INSTITUTION_COOKIE}=; Domain=.grupotec.dev.br; Path=/; Max-Age=0; SameSite=Lax;`;
+  document.cookie =
+    `${SSO_INSTITUTION_COOKIE}=; Path=/; Max-Age=0; SameSite=Lax;`;
+}
+
 /**
  * Builds the public origin for an institution after validating its prefix.
  */

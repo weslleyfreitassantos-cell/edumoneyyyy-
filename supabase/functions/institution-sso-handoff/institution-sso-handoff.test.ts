@@ -20,9 +20,8 @@ describe("institution-sso-handoff", () => {
   it("retorna ao callback oficial e preserva a instituição selecionada", () => {
     expect(source).toContain('.from("institutions")');
     expect(source).toContain('select("id, account_id, active")');
-    expect(source).toContain('callback.searchParams.set("institutionId", institutionId)');
+    expect(source).toContain('return `${PLATFORM_ORIGIN}/auth/confirm`');
     expect(source).toContain('PLATFORM_ORIGIN');
-    expect(source).toContain('callback.searchParams.set("returnTo", "/admin")');
   });
 
   it("usa link magiclink de uso único e não devolve tokens de sessão", () => {
@@ -38,7 +37,6 @@ describe("institution-sso-handoff", () => {
     expect(source).toContain('hasExpectedSsoRedirect(');
     expect(source).toContain('actualUrl.origin === expectedUrl.origin');
     expect(source).toContain('actualUrl.pathname === expectedUrl.pathname');
-    expect(source).toContain('actualUrl.searchParams.get("institutionId")');
     expect(source).toContain('SSO_REDIRECT_NOT_ALLOWED');
     expect(source).toContain('expectedOrigin: PLATFORM_ORIGIN');
   });

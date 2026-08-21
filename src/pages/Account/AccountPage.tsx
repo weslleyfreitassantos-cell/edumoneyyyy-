@@ -36,7 +36,11 @@ import {
   useSaveAccountBranding,
 } from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
-import { getInstitutionEntryUrl } from '../../lib/subdomain';
+import {
+  clearInstitutionSsoSelectionCookie,
+  getInstitutionEntryUrl,
+  setInstitutionSsoSelectionCookie,
+} from '../../lib/subdomain';
 import {
   AccountServiceError,
   createInstitutionSsoHandoff,
@@ -218,9 +222,13 @@ export default function AccountPage() {
           );
 
           if (entryUrl) {
+            setInstitutionSsoSelectionCookie(institution.id);
             const actionLink =
-              await createInstitutionSsoHandoff(
-                institution.id,
+              await createInstitutionSsoHandoff(institution.id).catch(
+                (error) => {
+                  clearInstitutionSsoSelectionCookie();
+                  throw error;
+                },
               );
             window.location.assign(actionLink);
             return;

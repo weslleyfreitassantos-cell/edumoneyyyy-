@@ -10,6 +10,10 @@ import {
   authPrimaryActionLinkClass,
 } from '../components/auth/AuthLayout';
 import { supabase } from '../lib/supabaseClient';
+import {
+  clearInstitutionSsoSelectionCookie,
+  getInstitutionSsoSelectionCookie,
+} from '../lib/subdomain';
 
 export interface InviteContext {
   userId: string;
@@ -77,7 +81,9 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
   const tokenHash = searchParams.get('token_hash');
   const code = searchParams.get('code');
   const type = hashParams.get('type') ?? searchParams.get('type');
-  const isSsoHandoff = searchParams.get('handoff') === 'sso';
+  const isSsoHandoff =
+    searchParams.get('handoff') === 'sso' ||
+    type === 'magiclink';
 
   if ((!accessToken || !refreshToken) && !tokenHash && !code) {
     throw new Error('Link de convite inválido ou ausente.');
@@ -120,7 +126,9 @@ function getSsoContext(): {
 } {
   const searchParams = new URLSearchParams(window.location.search);
   const returnTo = searchParams.get('returnTo');
-  const institutionId = searchParams.get('institutionId');
+  const institutionId =
+    searchParams.get('institutionId') ??
+    getInstitutionSsoSelectionCookie();
 
   return {
     returnPath: returnTo === '/account' ? '/account' : '/admin',
@@ -244,6 +252,7 @@ export default function AuthConfirm() {
             user.id,
             ssoContext.institutionId,
           );
+          clearInstitutionSsoSelectionCookie();
           clearInviteTokensFromUrl();
           navigate(ssoContext.returnPath, { replace: true });
           return;

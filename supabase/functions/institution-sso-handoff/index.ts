@@ -48,14 +48,8 @@ function jsonSuccess(actionLink: string): Response {
   );
 }
 
-function getRedirectTo(institutionId: string): string {
-  const callback = new URL(
-    `${PLATFORM_ORIGIN}/auth/confirm`,
-  );
-  callback.searchParams.set("handoff", "sso");
-  callback.searchParams.set("returnTo", "/admin");
-  callback.searchParams.set("institutionId", institutionId);
-  return callback.toString();
+function getRedirectTo(): string {
+  return `${PLATFORM_ORIGIN}/auth/confirm`;
 }
 
 function getActionLinkRedirect(
@@ -85,11 +79,7 @@ function hasExpectedSsoRedirect(
 
     return (
       actualUrl.origin === expectedUrl.origin &&
-      actualUrl.pathname === expectedUrl.pathname &&
-      actualUrl.searchParams.get("handoff") === "sso" &&
-      actualUrl.searchParams.get("returnTo") === "/admin" &&
-      actualUrl.searchParams.get("institutionId") ===
-        expectedUrl.searchParams.get("institutionId")
+      actualUrl.pathname === expectedUrl.pathname
     );
   } catch {
     return false;
@@ -199,7 +189,7 @@ const authenticatedFetch = withSupabase<Database>(
         );
       }
 
-      const redirectTo = getRedirectTo(institution.id);
+      const redirectTo = getRedirectTo();
       const { data: generatedLink, error: linkError } =
         await ctx.supabaseAdmin.auth.admin.generateLink({
           type: "magiclink",
