@@ -116,6 +116,31 @@ export function useUpdateAcademicYear() {
   });
 }
 
+export function useDeleteAcademicYear() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      institutionId,
+    }: {
+      id: string;
+      institutionId: string;
+    }) =>
+      academicStructureService.deleteAcademicYear(
+        id,
+        institutionId,
+      ),
+
+    onSuccess: async (_result, variables) => {
+      await invalidateAcademicStructure(
+        queryClient,
+        variables.institutionId,
+      );
+    },
+  });
+}
+
 export function useSetAcademicYearActive() {
   const queryClient = useQueryClient();
 

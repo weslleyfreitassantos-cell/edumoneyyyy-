@@ -310,6 +310,29 @@ export const academicStructureService = {
     }
   },
 
+  async deleteAcademicYear(
+    id: string,
+    institutionId: string,
+  ): Promise<void> {
+    await getAcademicYearOrThrow(id, institutionId);
+
+    const { error } = await supabase
+      .from('academic_years')
+      .delete()
+      .eq('id', id)
+      .eq('institution_id', institutionId);
+
+    if (error) {
+      if (error.code === '23503') {
+        throw new Error(
+          'Não é possível excluir este ano letivo porque existem períodos ou dados acadêmicos vinculados a ele.',
+        );
+      }
+
+      throw error;
+    }
+  },
+
   async setAcademicYearActive(
     id: string,
     institutionId: string,

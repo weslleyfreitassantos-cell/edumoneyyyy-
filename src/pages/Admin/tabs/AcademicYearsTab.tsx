@@ -1,9 +1,14 @@
 import {
   useEffect,
   useMemo,
+  useRef,
   useState,
   type FormEvent,
 } from 'react';
+
+import {
+  LoaderCircle,
+} from 'lucide-react';
 
 import {
   DataTable,
@@ -16,6 +21,7 @@ import {
   useAcademicYears,
   useCreateAcademicYear,
   useCreateTerm,
+  useDeleteAcademicYear,
   useSetAcademicYearActive,
   useSetTermActive,
   useUpdateAcademicYear,
@@ -162,6 +168,9 @@ export default function AcademicYearsTab() {
   const updateYearMutation =
     useUpdateAcademicYear();
 
+  const deleteYearMutation =
+    useDeleteAcademicYear();
+
   const yearStatusMutation =
     useSetAcademicYearActive();
 
@@ -234,6 +243,9 @@ export default function AcademicYearsTab() {
   ] = useState<string | null>(null);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isYearSubmitting, setIsYearSubmitting] =
+    useState(false);
+  const yearSubmitLockRef = useRef(false);
 
   const years = yearsQuery.data ?? [];
 
@@ -272,7 +284,12 @@ export default function AcademicYearsTab() {
     [selectedYearId, years],
   );
 
+  const isYearBusy =
+    isYearSubmitting ||
+    deleteYearMutation.isPending;
+
   const isSubmitting =
+    isYearBusy ||
     createYearMutation.isPending ||
     updateYearMutation.isPending ||
     createTermMutation.isPending ||
@@ -408,14 +425,26 @@ export default function AcademicYearsTab() {
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
     event.preventDefault();
-    setModalError(null);
+
+    if (
+      isYearSubmitting ||
+      yearSubmitLockRef.current
+    ) {
+      return;
+    }
+
+    yearSubmitLockRef.current = true;
 
     if (!institutionId) {
+      yearSubmitLockRef.current = false;
       setModalError(
         'A instituição não foi carregada.',
       );
       return;
     }
+
+    setIsYearSubmitting(true);
+    setModalError(null);
 
     try {
       if (editingYear) {
@@ -479,6 +508,42 @@ export default function AcademicYearsTab() {
         );
       }
 
+      closeModals();
+    } catch (error) {
+      setModalError(
+        getErrorMessage(error),
+      );
+    } finally {
+      yearSubmitLockRef.current = false;
+      setIsYearSubmitting(false);
+    }
+  }
+
+  async function handleDeleteYear(): Promise<void> {
+    if (!editingYear || !institutionId || deleteYearMutation.isPending) {
+      return;
+    }
+
+    if (
+      !window.confirm(
+        `Excluir o ano letivo ${editingYear.name}? Esta ação não pode ser desfeita.`,
+      )
+    ) {
+      return;
+    }
+
+    setModalError(null);
+    setFeedbackMessage(null);
+
+    try {
+      await deleteYearMutation.mutateAsync({
+        id: editingYear.id,
+        institutionId,
+      });
+
+      setFeedbackMessage(
+        'Ano letivo excluído com sucesso.',
+      );
       closeModals();
     } catch (error) {
       setModalError(
@@ -1016,6 +1081,40 @@ export default function AcademicYearsTab() {
                 </div>
               )}
 
+              {isYearBusy && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3 text-sm text-blue-800"
+                >
+                  <div className="flex items-center gap-2 font-semibold">
+                    <LoaderCircle
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                    {deleteYearMutation.isPending
+                      ? 'Excluindo ano letivo...'
+                      : editingYear
+                        ? 'Salvando alterações...'
+                        : 'Criando ano letivo...'}
+                  </div>
+                  <div
+                    role="progressbar"
+                    aria-label={
+                      deleteYearMutation.isPending
+                        ? 'Excluindo ano letivo'
+                        : 'Salvando ano letivo'
+                    }
+                    className="mt-2 h-2 overflow-hidden rounded-full bg-blue-100"
+                  >
+                    <div className="h-full w-1/3 animate-pulse rounded-full bg-[#005bbf]" />
+                  </div>
+                  <p className="mt-2 text-xs">
+                    Aguarde a conclusão para evitar o envio duplicado.
+                  </p>
+                </div>
+              )}
+
               <div>
                 <label
                   htmlFor="academic-year-name"
@@ -1173,25 +1272,40 @@ export default function AcademicYearsTab() {
                 </>
               )}
 
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={closeModals}
-                  disabled={isSubmitting}
-                  className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
-                >
-                  Cancelar
-                </button>
+              <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  {editingYear && (
+                    <button
+                      type="button"
+                      onClick={() => void handleDeleteYear()}
+                      disabled={isSubmitting}
+                      className="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      Excluir ano letivo
+                    </button>
+                  )}
+                </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {isSubmitting
-                    ? 'Salvando...'
-                    : 'Salvar'}
-                </button>
+                <div className="flex justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={closeModals}
+                    disabled={isSubmitting}
+                    className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+                  >
+                    Cancelar
+                  </button>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isSubmitting
+                      ? 'Salvando...'
+                      : 'Salvar'}
+                  </button>
+                </div>
               </div>
             </form>
           </div>
