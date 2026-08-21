@@ -152,6 +152,8 @@ const queryClient = new QueryClient({
   },
 });
 
+const resolvedTerminalsAccessProfiles = new Set<string>();
+
 class AppErrorBoundary extends Component<
   { children: ReactNode },
   { hasError: boolean }
@@ -424,13 +426,16 @@ function InstitutionTerminalsRoute({
   const { profile } = useAuth();
   const { currentRole, isLoading } = useInstitution();
   const hasResolvedAccess = useRef(false);
+  const profileAccessWasResolved = Boolean(
+    profile?.id && resolvedTerminalsAccessProfiles.has(profile.id),
+  );
 
   if (!active) {
     return <TerminalsPage />;
   }
 
   if (isLoading) {
-    if (hasResolvedAccess.current) {
+    if (hasResolvedAccess.current || profileAccessWasResolved) {
       return <TerminalsPage />;
     }
 
@@ -450,6 +455,9 @@ function InstitutionTerminalsRoute({
   }
 
   hasResolvedAccess.current = true;
+  if (profile?.id) {
+    resolvedTerminalsAccessProfiles.add(profile.id);
+  }
   return <TerminalsPage />;
 }
 
@@ -470,7 +478,11 @@ function PersistentTerminalsView() {
 
   return (
     <div
-      className={isActive ? 'h-full' : 'hidden'}
+      className={
+        isActive
+          ? 'h-full'
+          : 'pointer-events-none fixed left-[-10000px] top-0 z-[-1] h-screen w-screen opacity-0'
+      }
       aria-hidden={!isActive}
     >
       <InstitutionTerminalsRoute active={isActive} />
