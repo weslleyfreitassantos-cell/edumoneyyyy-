@@ -564,9 +564,15 @@ export default function Sidebar({
             aria-label={brandName}
           >
             <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl text-white shadow-sm"
+              className={`flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden text-white ${
+                brandLogoUrl
+                  ? 'rounded-lg bg-transparent shadow-none'
+                  : 'rounded-xl shadow-sm'
+              }`}
               style={{
-                backgroundColor: 'var(--brand-primary)',
+                backgroundColor: brandLogoUrl
+                  ? 'transparent'
+                  : 'var(--brand-primary)',
               }}
             >
               {brandLogoUrl ? (
