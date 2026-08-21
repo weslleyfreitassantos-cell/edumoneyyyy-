@@ -43,6 +43,9 @@ export function useUserInstitutions(
     },
 
     enabled: Boolean(profileId),
+    // Keep the last resolved institution list visible while a background
+    // refetch is in progress (for example after returning to the tab).
+    placeholderData: (previousData) => previousData,
     staleTime: 1000 * 60 * 10,
   });
 }

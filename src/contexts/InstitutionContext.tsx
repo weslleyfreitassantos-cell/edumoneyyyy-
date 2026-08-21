@@ -233,7 +233,8 @@ export function InstitutionProvider({
         return 'not-found';
 
       if (profile?.id) {
-        if (institutionsQuery.isLoading) return 'loading';
+        if (institutionsQuery.isLoading && institutions.length === 0)
+          return 'loading';
         const matched = institutions.find(
           (link) => link.institution.id === subdomainInstitution.id,
         );
@@ -562,7 +563,7 @@ export function InstitutionProvider({
         resolutionState === 'loading' ||
         (Boolean(profile?.id) &&
           (isSwitchingInstitution ||
-            institutionsQuery.isLoading ||
+            (institutionsQuery.isLoading && institutions.length === 0) ||
             (institutionsQuery.isFetching && !activeLink))),
       isSwitchingInstitution,
       error:
