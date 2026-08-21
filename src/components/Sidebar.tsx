@@ -3,13 +3,22 @@ import type {
 } from 'lucide-react';
 import {
   Building2,
+  BookOpen,
+  CalendarDays,
+  ClipboardCheck,
+  ClipboardList,
+  Clock3,
+  FileCheck2,
   GraduationCap,
   LayoutDashboard,
+  ListChecks,
   LogOut,
   Mail,
   MonitorCog,
   Palette,
+  School,
   ShieldCheck,
+  Users,
   Video,
   UserCircle2,
   X,
@@ -33,6 +42,7 @@ import {
   DEFAULT_ADMIN_MODULE_ID,
   groupAdminModules,
   isAdminModuleId,
+  type AdminModuleId,
   type AdminModuleDefinition,
 } from '../pages/Admin/adminNavigation';
 import type {
@@ -94,6 +104,29 @@ const hiddenSectionLabels: readonly NavigationSection[] = [
   'school',
   'personal',
 ];
+
+const adminModuleIcons: Record<
+  AdminModuleId,
+  LucideIcon
+> = {
+  overview: LayoutDashboard,
+  'school-users': Users,
+  students: GraduationCap,
+  teachers: Users,
+  guardians: Users,
+  email: Mail,
+  'academic-years': CalendarDays,
+  subjects: BookOpen,
+  classes: School,
+  curriculum: ClipboardList,
+  timetable: Clock3,
+  enrollments: ClipboardCheck,
+  assignments: ListChecks,
+  attendance: ClipboardList,
+  grades: FileCheck2,
+  'term-closing': FileCheck2,
+  'academic-policies': ShieldCheck,
+};
 
 const baseNavigationItems: readonly SidebarNavigationItem[] = [
   {
@@ -434,6 +467,7 @@ export default function Sidebar({
     const isActive =
       adminRouteActive &&
       activeAdminModule?.id === module.id;
+    const Icon = adminModuleIcons[module.id];
 
     return (
       <Link
@@ -443,17 +477,17 @@ export default function Sidebar({
         aria-current={
           isActive ? 'page' : undefined
         }
-        className={`group relative flex min-h-9 items-center rounded-lg py-2 pl-9 pr-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
+        className={`group relative flex min-h-9 items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
           isActive
             ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
             : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
         }`}
       >
-        <span
-          className={`absolute left-5 top-3 h-2 w-2 rounded-full ${
+        <Icon
+          className={`h-4 w-4 shrink-0 ${
             isActive
-              ? 'bg-[#005bbf]'
-              : 'bg-[#a8b3c7]'
+              ? 'text-[#005bbf]'
+              : 'text-[#7b879d]'
           }`}
           aria-hidden="true"
         />
@@ -470,8 +504,8 @@ export default function Sidebar({
     }
 
     return (
-      <div className="mb-5 last:mb-0">
-        <div className="space-y-3">
+      <div className="mb-3 last:mb-0">
+        <div className="space-y-1">
           {adminModuleGroups.map((group) => (
             <div key={group.id}>
               <div className="space-y-1">
@@ -581,7 +615,7 @@ export default function Sidebar({
         </div>
 
         <nav
-          className="min-h-0 flex-1 overflow-y-auto px-3 py-4"
+          className="min-h-0 flex-1 overflow-y-auto px-3 py-3"
           aria-label="Menu principal"
         >
           {groupedSections.map((section) => {
@@ -592,7 +626,7 @@ export default function Sidebar({
             return (
               <div
                 key={section}
-                className="mb-5 last:mb-0"
+                className="mb-3 last:mb-0"
               >
                 {hiddenSectionLabels.includes(section) ? null : (
                   <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
