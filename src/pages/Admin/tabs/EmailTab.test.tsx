@@ -40,6 +40,7 @@ vi.mock('../../../services/schoolEmailService', async () => {
 const recipients: SchoolEmailRecipient[] = [
   { id: 'STUDENT:student-1', kind: 'STUDENT', name: 'Ana Silva', email: 'ana@example.com' },
   { id: 'GUARDIAN:guardian-1', kind: 'GUARDIAN', name: 'Bruno Silva', email: 'bruno@example.com' },
+  { id: 'TEACHER:teacher-1', kind: 'TEACHER', name: 'Carla Souza', email: 'carla@example.com' },
   { id: 'STUDENT:student-2', kind: 'STUDENT', name: 'Sem E-mail', email: null },
 ];
 
@@ -117,6 +118,15 @@ describe('EmailTab', () => {
     expect(payload.audience).toBe('SELECTED');
     expect(payload.selectedRecipientIds).toEqual(['GUARDIAN:guardian-1']);
     expect(payload).not.toHaveProperty('emails');
+  });
+
+  it('oferece todos os professores como destinatários', async () => {
+    render(<EmailTab />);
+
+    await screen.findByLabelText('Assunto *');
+    fireEvent.click(screen.getByLabelText('Todos os professores'));
+
+    expect(screen.getByText('1 destinatário(s)')).toBeDefined();
   });
 
   it('mantém a confirmação até o envio explícito', async () => {

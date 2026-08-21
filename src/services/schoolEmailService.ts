@@ -4,6 +4,8 @@ export const SCHOOL_EMAIL_AUDIENCES = [
   'STUDENTS',
   'GUARDIANS',
   'STUDENTS_AND_GUARDIANS',
+  'TEACHERS',
+  'STUDENTS_GUARDIANS_AND_TEACHERS',
   'SELECTED',
 ] as const;
 
@@ -14,7 +16,7 @@ export type SchoolEmailAudience =
 
 export interface SchoolEmailRecipient {
   id: string;
-  kind: 'STUDENT' | 'GUARDIAN';
+  kind: 'STUDENT' | 'GUARDIAN' | 'TEACHER';
   name: string;
   email: string | null;
 }

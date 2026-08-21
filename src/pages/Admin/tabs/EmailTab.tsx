@@ -33,6 +33,8 @@ const audienceLabels: Record<SchoolEmailAudience, string> = {
   STUDENTS: 'Todos os alunos',
   GUARDIANS: 'Todos os responsáveis',
   STUDENTS_AND_GUARDIANS: 'Alunos e responsáveis',
+  TEACHERS: 'Todos os professores',
+  STUDENTS_GUARDIANS_AND_TEACHERS: 'Alunos, responsáveis e professores',
   SELECTED: 'Pessoas específicas',
 };
 
@@ -75,6 +77,18 @@ function getAudienceRecipients(
 
   if (audience === 'GUARDIANS') {
     return recipients.filter((recipient) => recipient.kind === 'GUARDIAN');
+  }
+
+  if (audience === 'TEACHERS') {
+    return recipients.filter((recipient) => recipient.kind === 'TEACHER');
+  }
+
+  if (audience === 'STUDENTS_AND_GUARDIANS') {
+    return uniqueByEmail(
+      recipients.filter((recipient) =>
+        recipient.kind === 'STUDENT' || recipient.kind === 'GUARDIAN',
+      ),
+    );
   }
 
   return uniqueByEmail(recipients);
