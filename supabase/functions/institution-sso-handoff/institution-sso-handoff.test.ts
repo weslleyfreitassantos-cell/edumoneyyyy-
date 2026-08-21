@@ -35,7 +35,10 @@ describe("institution-sso-handoff", () => {
   });
 
   it("rejeita fallback para um Site URL legado ou callback não permitido", () => {
-    expect(source).toContain('getActionLinkRedirect(generatedLink.properties.action_link)');
+    expect(source).toContain('hasExpectedSsoRedirect(');
+    expect(source).toContain('actualUrl.origin === expectedUrl.origin');
+    expect(source).toContain('actualUrl.pathname === expectedUrl.pathname');
+    expect(source).toContain('actualUrl.searchParams.get("institutionId")');
     expect(source).toContain('SSO_REDIRECT_NOT_ALLOWED');
     expect(source).toContain('expectedOrigin: PLATFORM_ORIGIN');
   });

@@ -72,6 +72,30 @@ function getActionLinkRedirect(
   }
 }
 
+function hasExpectedSsoRedirect(
+  actionLink: string,
+  expectedRedirectTo: string,
+): boolean {
+  const actualRedirect = getActionLinkRedirect(actionLink);
+  if (!actualRedirect) return false;
+
+  try {
+    const actualUrl = new URL(actualRedirect);
+    const expectedUrl = new URL(expectedRedirectTo);
+
+    return (
+      actualUrl.origin === expectedUrl.origin &&
+      actualUrl.pathname === expectedUrl.pathname &&
+      actualUrl.searchParams.get("handoff") === "sso" &&
+      actualUrl.searchParams.get("returnTo") === "/admin" &&
+      actualUrl.searchParams.get("institutionId") ===
+        expectedUrl.searchParams.get("institutionId")
+    );
+  } catch {
+    return false;
+  }
+}
+
 const authenticatedFetch = withSupabase<Database>(
   { auth: "user" },
   async (request, ctx) => {
@@ -197,8 +221,10 @@ const authenticatedFetch = withSupabase<Database>(
       }
 
       if (
-        getActionLinkRedirect(generatedLink.properties.action_link) !==
-          redirectTo
+        !hasExpectedSsoRedirect(
+          generatedLink.properties.action_link,
+          redirectTo,
+        )
       ) {
         console.error("O Supabase não aceitou o callback SSO configurado.", {
           code: "SSO_REDIRECT_NOT_ALLOWED",
