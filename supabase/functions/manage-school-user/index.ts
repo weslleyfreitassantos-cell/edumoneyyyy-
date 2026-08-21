@@ -567,22 +567,6 @@ async function handleDelete(
   const ownStudentIds = (ownStudents ?? []).map((student) => student.id);
 
   if (ownStudentIds.length > 0) {
-    const { count: enrollmentCount, error: enrollmentError } =
-      await ctx.supabaseAdmin
-        .from("enrollments")
-        .select("id", { count: "exact", head: true })
-        .in("student_id", ownStudentIds);
-
-    if (enrollmentError) throw enrollmentError;
-    if ((enrollmentCount ?? 0) > 0) {
-      throw new ManageSchoolUserError({
-        status: 409,
-        code: "USER_HAS_RELATED_RECORDS",
-        message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
-      });
-    }
-
     const { count: gradeCount, error: gradeError } = await ctx.supabaseAdmin
       .from("grades")
       .select("id", { count: "exact", head: true })
@@ -688,6 +672,13 @@ async function handleDelete(
   }
 
   if (ownStudentIds.length > 0) {
+    const { error: enrollmentDeleteError } = await ctx.supabaseAdmin
+      .from("enrollments")
+      .delete()
+      .in("student_id", ownStudentIds);
+
+    if (enrollmentDeleteError) throw enrollmentDeleteError;
+
     const { error: studentDeleteError } = await ctx.supabaseAdmin
       .from("students")
       .delete()

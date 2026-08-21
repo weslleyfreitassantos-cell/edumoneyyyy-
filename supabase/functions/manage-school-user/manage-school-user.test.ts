@@ -45,6 +45,12 @@ describe('manage-school-user', () => {
     expect(source).toContain('.eq("id", membership.id)');
   });
 
+  it('remove matriculas sem historico antes de excluir o aluno', () => {
+    expect(source).toContain('.from("enrollments")');
+    expect(source).toContain('.delete()');
+    expect(source).not.toContain('enrollmentCount');
+  });
+
   it('deletes auth users only after removing the final membership', () => {
     expect(source).toContain('remainingMemberships');
     expect(source).toContain('authUserDeleted');
