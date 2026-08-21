@@ -13,8 +13,10 @@ type Audience =
   | "STUDENTS"
   | "GUARDIANS"
   | "STUDENTS_AND_GUARDIANS"
+  | "TEACHERS"
+  | "STUDENTS_GUARDIANS_AND_TEACHERS"
   | "SELECTED";
-type RecipientKind = "STUDENT" | "GUARDIAN";
+type RecipientKind = "STUDENT" | "GUARDIAN" | "TEACHER";
 
 interface InstitutionRecord {
   id: string;
@@ -57,6 +59,15 @@ interface GuardianQueryRow {
     | null;
 }
 
+interface TeacherQueryRow {
+  profile_id: string;
+  active: boolean | null;
+  profiles:
+    | { full_name: string; email: string | null; active: boolean | null }
+    | { full_name: string; email: string | null; active: boolean | null }[]
+    | null;
+}
+
 interface AuthorizedContext {
   requesterId: string;
   institution: InstitutionRecord;
@@ -66,6 +77,8 @@ const audienceSchema = z.enum([
   "STUDENTS",
   "GUARDIANS",
   "STUDENTS_AND_GUARDIANS",
+  "TEACHERS",
+  "STUDENTS_GUARDIANS_AND_TEACHERS",
   "SELECTED",
 ]);
 
@@ -230,7 +243,7 @@ function addRecipient(
     map.set(id, {
       id,
       kind,
-      name: profile.full_name.trim() || (kind === "STUDENT" ? "Aluno" : "Responsavel"),
+      name: profile.full_name.trim() || (kind === "STUDENT" ? "Aluno" : kind === "GUARDIAN" ? "Responsavel" : "Professor"),
       email,
     });
     return;
@@ -281,6 +294,24 @@ async function listRecipients(
     );
   }
 
+  const { data: teacherData, error: teacherError } = await supabase
+    .from("memberships")
+    .select("profile_id, active, profiles:profile_id(full_name, email, active)")
+    .eq("institution_id", institutionId)
+    .eq("role", "TEACHER")
+    .eq("active", true);
+
+  if (teacherError) throw teacherError;
+
+  for (const row of (teacherData ?? []) as unknown as TeacherQueryRow[]) {
+    addRecipient(
+      recipients,
+      "TEACHER",
+      row.profile_id,
+      normalizeRelation(row.profiles),
+    );
+  }
+
   return Array.from(recipients.values()).sort((first, second) =>
     first.name.localeCompare(second.name, "pt-BR"),
   );
@@ -312,6 +343,18 @@ function selectAudience(
 
   if (audience === "GUARDIANS") {
     return recipients.filter((recipient) => recipient.kind === "GUARDIAN");
+  }
+
+  if (audience === "TEACHERS") {
+    return recipients.filter((recipient) => recipient.kind === "TEACHER");
+  }
+
+  if (audience === "STUDENTS_AND_GUARDIANS") {
+    return deduplicateByEmail(
+      recipients.filter((recipient) =>
+        recipient.kind === "STUDENT" || recipient.kind === "GUARDIAN",
+      ),
+    );
   }
 
   return deduplicateByEmail(recipients);
