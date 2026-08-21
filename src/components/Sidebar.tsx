@@ -504,7 +504,7 @@ export default function Sidebar({
     }
 
     return (
-      <div className="mb-3 last:mb-0">
+      <div className="mb-1 last:mb-0">
         <div className="space-y-1">
           {adminModuleGroups.map((group) => (
             <div key={group.id}>
@@ -626,7 +626,7 @@ export default function Sidebar({
             return (
               <div
                 key={section}
-                className="mb-3 last:mb-0"
+                className="mb-1 last:mb-0"
               >
                 {hiddenSectionLabels.includes(section) ? null : (
                   <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
@@ -662,7 +662,7 @@ export default function Sidebar({
                             ? 'page'
                             : undefined
                         }
-                        className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
+                        className={`group relative flex min-h-9 items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
                           isActive
                             ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
                             : 'text-[#414754] hover:bg-white hover:text-[#181c20] focus-visible:bg-white'
