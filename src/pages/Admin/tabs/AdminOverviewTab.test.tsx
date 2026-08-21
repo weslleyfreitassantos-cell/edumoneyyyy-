@@ -26,6 +26,7 @@ import {
   useCurrentInstitution,
 } from '../../../hooks/useCurrentInstitution';
 import { useSchoolSetupReadiness } from '../../../hooks/useSchoolSetupReadiness';
+import type { DatabaseRole } from '../../../lib/roles';
 
 import AdminOverviewTab from './AdminOverviewTab';
 
@@ -78,14 +79,20 @@ const overviewData = {
   warnings: [],
 };
 
-function mockOverviewState() {
+function mockOverviewState({
+  profileRole = 'DIRECTOR',
+  currentRole = profileRole,
+}: {
+  profileRole?: DatabaseRole;
+  currentRole?: DatabaseRole | null;
+} = {}) {
   mockedUseAuth.mockReturnValue({
     user: null,
     profile: {
       id: 'profile-1',
       full_name: 'Ana Admin',
       email: 'ana@example.com',
-      role: 'DIRECTOR',
+      role: profileRole,
       platform_role: 'USER',
       avatar_url: null,
     },
@@ -111,7 +118,7 @@ function mockOverviewState() {
     },
     currentMembership: null,
     currentInstitutionId: 'institution-1',
-    currentRole: 'DIRECTOR',
+    currentRole,
     isLoading: false,
     isError: false,
     error: null,
@@ -186,5 +193,21 @@ describe('AdminOverviewTab', () => {
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
+  });
+
+  it('oculta a configuração acadêmica para ADMIN', () => {
+    mockOverviewState({
+      profileRole: 'ADMIN',
+      currentRole: 'ADMIN',
+    });
+
+    render(<AdminOverviewTab />);
+
+    expect(
+      screen.queryByRole('region', {
+        name: /configuração da escola/i,
+      }),
+    ).toBeNull();
+    expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
   });
 });

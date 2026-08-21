@@ -77,6 +77,9 @@ export default function AdminOverviewTab({
   const institutionQuery = useCurrentInstitution(profile?.id);
 
   const institutionId = institutionQuery.data ?? '';
+  const isAdmin =
+    profile?.role === 'ADMIN' ||
+    institutionQuery.currentRole === 'ADMIN';
 
   const overviewQuery = useAdminOverview(institutionId);
 
@@ -109,7 +112,9 @@ export default function AdminOverviewTab({
 
   return (
     <div className="space-y-6">
-      <SchoolSetupProgress institutionId={institutionId} />
+      {!isAdmin && (
+        <SchoolSetupProgress institutionId={institutionId} />
+      )}
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard
           label="Alunos ativos"
