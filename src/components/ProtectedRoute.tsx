@@ -20,7 +20,9 @@ export function ProtectedRoute({
 }: ProtectedRouteProps) {
   const { user, profile, loading } = useAuth();
 
-  if (loading) {
+  // Token refreshes can briefly set loading while the authenticated shell
+  // is still valid. Keep the current screen mounted in that case.
+  if (loading && (!user || !profile)) {
     return (
       <main className="min-h-screen grid place-items-center">
         <p>Carregando...</p>
