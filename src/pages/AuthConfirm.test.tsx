@@ -110,6 +110,35 @@ describe("AuthConfirm", () => {
     });
   });
 
+  it("should establish an SSO session and return to the requested area", async () => {
+    window.location.hash = "#access_token=acc123&refresh_token=ref456&type=magiclink";
+    window.location.search = "?handoff=sso&returnTo=%2Faccount";
+
+    (supabase.auth.signOut as any).mockResolvedValue({});
+    (supabase.auth.setSession as any).mockResolvedValue({ error: null });
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "admin@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>,
+    );
+
+    await waitFor(() => {
+      expect(supabase.auth.setSession).toHaveBeenCalledWith({
+        access_token: "acc123",
+        refresh_token: "ref456",
+      });
+      expect(mockNavigate).toHaveBeenCalledWith('/account', {
+        replace: true,
+      });
+      expect(sessionStorage.getItem("invite_context")).toBeNull();
+    });
+  });
+
   it("should clear session and set new session with valid tokens", async () => {
     window.location.hash = "#access_token=acc123&refresh_token=ref456&type=invite";
 

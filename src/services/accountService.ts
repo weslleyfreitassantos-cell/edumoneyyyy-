@@ -470,6 +470,40 @@ function assertCreateAccountResponse(
   };
 }
 
+function assertInstitutionSsoHandoffResponse(
+  value: unknown,
+): string {
+  if (
+    !isRecord(value) ||
+    value.success !== true ||
+    typeof value.actionLink !== 'string' ||
+    !value.actionLink.startsWith('https://')
+  ) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return value.actionLink;
+}
+
+export async function createInstitutionSsoHandoff(
+  institutionId: string,
+): Promise<string> {
+  const { data, error } =
+    await supabase.functions.invoke(
+      'institution-sso-handoff',
+      { body: { institutionId } },
+    );
+
+  if (error) {
+    throw await getFunctionError(error);
+  }
+
+  return assertInstitutionSsoHandoffResponse(data);
+}
+
 function assertUpdateAccountResponse(
   value: unknown,
 ): UpdateClientAccountResponse {

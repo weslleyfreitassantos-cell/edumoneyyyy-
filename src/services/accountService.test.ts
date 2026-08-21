@@ -1,6 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { supabase } from '../lib/supabaseClient';
-import { accountService, AccountServiceError } from './accountService';
+import {
+  accountService,
+  AccountServiceError,
+  createInstitutionSsoHandoff,
+} from './accountService';
 
 const queryBuilder = vi.hoisted(() => ({
   update: vi.fn(),
@@ -25,6 +29,25 @@ describe('accountService', () => {
     queryBuilder.update.mockReturnValue(queryBuilder);
     queryBuilder.eq.mockReturnValue(queryBuilder);
     queryBuilder.select.mockReturnValue(queryBuilder);
+  });
+
+  it('inicia o handoff SSO sem expor tokens de sessão', async () => {
+    vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
+      data: {
+        success: true,
+        actionLink: 'https://auth.example.com/verify?token=opaque',
+      },
+      error: null,
+    } as never);
+
+    await expect(
+      createInstitutionSsoHandoff('institution-1'),
+    ).resolves.toBe('https://auth.example.com/verify?token=opaque');
+
+    expect(supabase.functions.invoke).toHaveBeenCalledWith(
+      'institution-sso-handoff',
+      { body: { institutionId: 'institution-1' } },
+    );
   });
 
   it('normalizando respostas validas', async () => {

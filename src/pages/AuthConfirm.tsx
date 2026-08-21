@@ -56,14 +56,17 @@ type InviteConfirmation =
       kind: 'session';
       accessToken: string;
       refreshToken: string;
+      flow: 'invite' | 'sso';
     }
   | {
       kind: 'code';
       code: string;
+      flow: 'invite';
     }
   | {
       kind: 'otp';
       tokenHash: string;
+      flow: 'invite';
     };
 
 function getInviteConfirmationFromUrl(): InviteConfirmation {
@@ -74,12 +77,16 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
   const tokenHash = searchParams.get('token_hash');
   const code = searchParams.get('code');
   const type = hashParams.get('type') ?? searchParams.get('type');
+  const isSsoHandoff = searchParams.get('handoff') === 'sso';
 
   if ((!accessToken || !refreshToken) && !tokenHash && !code) {
     throw new Error('Link de convite inválido ou ausente.');
   }
 
-  if (type && type !== 'invite') {
+  if (
+    (isSsoHandoff && type !== 'magiclink') ||
+    (!isSsoHandoff && type && type !== 'invite')
+  ) {
     throw new Error('Tipo de confirmação inválido.');
   }
 
@@ -88,6 +95,7 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
       kind: 'session',
       accessToken,
       refreshToken,
+      flow: isSsoHandoff ? 'sso' : 'invite',
     };
   }
 
@@ -95,13 +103,23 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
     return {
       kind: 'code',
       code,
+      flow: 'invite',
     };
   }
 
   return {
     kind: 'otp',
     tokenHash: tokenHash!,
+    flow: 'invite',
   };
+}
+
+function getSsoReturnPath(): '/admin' | '/account' {
+  const returnTo = new URLSearchParams(window.location.search).get(
+    'returnTo',
+  );
+
+  return returnTo === '/account' ? '/account' : '/admin';
 }
 
 async function hasCurrentInviteSession(
@@ -185,6 +203,13 @@ export default function AuthConfirm() {
           if (verificationError) {
             throw new Error('Convite inválido, expirado ou já utilizado.');
           }
+        }
+
+        if (confirmation.flow === 'sso') {
+          const ssoReturnPath = getSsoReturnPath();
+          clearInviteTokensFromUrl();
+          navigate(ssoReturnPath, { replace: true });
+          return;
         }
 
         const {

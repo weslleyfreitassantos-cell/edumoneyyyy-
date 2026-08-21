@@ -39,6 +39,7 @@ import { getAccountStatusLabel } from '../../lib/statusLabels';
 import { getInstitutionEntryUrl } from '../../lib/subdomain';
 import {
   AccountServiceError,
+  createInstitutionSsoHandoff,
   type AccountInstitutionSummary,
 } from '../../services/accountService';
 
@@ -217,7 +218,11 @@ export default function AccountPage() {
           );
 
           if (entryUrl) {
-            window.location.assign(entryUrl);
+            const actionLink =
+              await createInstitutionSsoHandoff(
+                institution.id,
+              );
+            window.location.assign(actionLink);
             return;
           }
 
