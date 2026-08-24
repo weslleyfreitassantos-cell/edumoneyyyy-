@@ -156,4 +156,17 @@ describe('timetable generator', () => {
     expect(result.status).toBe('UNSATISFIED');
     expect(result.diagnostics[0]?.code).toBe('TEACHER_SUBJECT_NOT_AUTHORIZED');
   });
+
+  it('prioritizes the room explicitly assigned to the class', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      rooms: [
+        { id: 'shared-room', institutionId: 'institution-a', active: true },
+        { id: 'class-room', institutionId: 'institution-a', classId: 'class-a', active: true },
+      ],
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries.every((entry) => entry.roomId === 'class-room')).toBe(true);
+  });
 });

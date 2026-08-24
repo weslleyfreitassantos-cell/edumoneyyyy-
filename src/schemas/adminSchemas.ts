@@ -613,6 +613,11 @@ const roomFields = {
     .max(500, 'Capacidade deve ser menor ou igual a 500')
     .optional(),
 
+  class_id: z.preprocess(
+    (value) => value === '' ? null : value,
+    z.guid('Turma da sala inválida').nullable().optional(),
+  ),
+
   active: z.boolean().default(true),
 };
 

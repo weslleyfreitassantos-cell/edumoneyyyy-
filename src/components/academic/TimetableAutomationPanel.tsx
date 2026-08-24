@@ -37,6 +37,13 @@ function formatTime(value: string): string {
   return value.slice(0, 5);
 }
 
+function summarizeDiagnostics(diagnostics: Array<{ code: string; message: string }>): string {
+  const unique = [...new Map(diagnostics.map((diagnostic) => [`${diagnostic.code}:${diagnostic.message}`, diagnostic])).values()];
+  const visible = unique.slice(0, 8).map((diagnostic) => diagnostic.message).join(' ');
+  const remaining = unique.length - Math.min(unique.length, 8);
+  return remaining > 0 ? `${visible} E mais ${remaining} pendência(s).` : visible;
+}
+
 function VersionReview({
   entries,
   onEdit,
@@ -179,16 +186,24 @@ export default function TimetableAutomationPanel({
         const requiresAssignments = result.diagnostics.some(
           (diagnostic) => diagnostic.code === 'OFFERING_REQUIRED',
         );
+        const preparation = [
+          result.automaticAssignmentsCreated > 0 ? `${result.automaticAssignmentsCreated} atribuição(ões) criada(s)` : '',
+          result.automaticRoomsCreated > 0 ? `${result.automaticRoomsCreated} sala(s) criada(s)` : '',
+          result.automaticSlotsCreated > 0 ? `${result.automaticSlotsCreated} horário(s) padrão criado(s)` : '',
+        ].filter(Boolean).join(', ');
         setError(
-          `Não foi possível montar a grade automaticamente. ${requiresAssignments ? 'A grade estrutural pode ser revisada após as atribuições; neste modelo, a publicação exige professor por matéria. ' : ''}${result.diagnostics
-            .map((diagnostic) => diagnostic.message)
-            .join(' ')}`,
+          `Não foi possível montar a grade automaticamente.${preparation ? ` Preparação automática: ${preparation}.` : ''} ${requiresAssignments ? 'A publicação exige professor por matéria. ' : ''}${summarizeDiagnostics(result.diagnostics)}`,
         );
         return;
       }
       setReviewVersionId(result.versionId ?? '');
+      const preparation = [
+        result.automaticAssignmentsCreated > 0 ? `${result.automaticAssignmentsCreated} atribuição(ões)` : '',
+        result.automaticRoomsCreated > 0 ? `${result.automaticRoomsCreated} sala(s)` : '',
+        result.automaticSlotsCreated > 0 ? `${result.automaticSlotsCreated} horário(s) padrão` : '',
+      ].filter(Boolean).join(', ');
       setMessage(
-        `Grade gerada em rascunho: ${result.entries.length} aulas alocadas. Revise antes de publicar.`,
+        `Grade gerada em rascunho: ${result.entries.length} aulas alocadas. ${preparation ? `Preparação automática: ${preparation}. ` : ''}Revise antes de publicar.`,
       );
     } catch (generationError) {
       setError(getErrorMessage(generationError));

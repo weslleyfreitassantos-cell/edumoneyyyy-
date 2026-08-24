@@ -15,6 +15,7 @@ interface RoomDraft {
   name: string;
   code: string;
   capacity: string;
+  class_id: string;
 }
 
 interface EntryDraft {
@@ -26,7 +27,7 @@ interface EntryDraft {
   end_time: string;
 }
 
-const emptyRoomDraft: RoomDraft = { name: '', code: '', capacity: '' };
+const emptyRoomDraft: RoomDraft = { name: '', code: '', capacity: '', class_id: '' };
 const emptyEntryDraft: EntryDraft = { class_id: '', subject_offering_id: '', room_id: '', day_of_week: '1', start_time: '07:00', end_time: '07:50' };
 
 type SubView = 'grid' | 'rooms' | 'automation';
@@ -271,6 +272,7 @@ export default function TimetableTab() {
       name: roomDraft.name,
       code: roomDraft.code || undefined,
       capacity: roomDraft.capacity ? Number(roomDraft.capacity) : undefined,
+      class_id: roomDraft.class_id || undefined,
       active: true,
     };
 
@@ -279,7 +281,7 @@ export default function TimetableTab() {
 
     try {
       if (editingRoom) {
-        await updateRoomMutation.mutateAsync({ id: editingRoom.id, institutionId, data: { name: result.data.name, code: result.data.code, capacity: result.data.capacity, active: editingRoom.active } });
+        await updateRoomMutation.mutateAsync({ id: editingRoom.id, institutionId, data: { name: result.data.name, code: result.data.code, capacity: result.data.capacity, class_id: result.data.class_id, active: editingRoom.active } });
         setFeedbackMessage('Sala atualizada.');
       } else {
         await createRoomMutation.mutateAsync(result.data);
@@ -301,7 +303,7 @@ export default function TimetableTab() {
   function openEditRoomModal(room: RoomRow): void {
     resetMessages();
     setEditingRoom(room);
-    setRoomDraft({ name: room.name, code: room.code ?? '', capacity: room.capacity ? String(room.capacity) : '' });
+    setRoomDraft({ name: room.name, code: room.code ?? '', capacity: room.capacity ? String(room.capacity) : '', class_id: room.class_id ?? '' });
     setIsRoomModalOpen(true);
   }
 
@@ -327,6 +329,7 @@ export default function TimetableTab() {
     { key: 'name', label: 'Nome' },
     { key: 'code', label: 'Código', render: (_v, r) => r.code ?? '—' },
     { key: 'capacity', label: 'Capacidade', render: (_v, r) => r.capacity ? String(r.capacity) : '—' },
+    { key: 'class_name', label: 'Turma', render: (_v, r) => r.class_name ?? 'Compartilhada' },
     {
       key: 'active',
       label: 'Status',
@@ -632,6 +635,22 @@ export default function TimetableTab() {
                   onChange={(e) => setRoomDraft((curr) => ({ ...curr, capacity: e.target.value }))}
                   className="mt-1 w-full rounded-lg border px-3 py-2"
                 />
+              </div>
+
+              <div>
+                <label htmlFor="room-class" className="block text-sm font-medium text-gray-700">Turma vinculada (opcional)</label>
+                <select
+                  id="room-class"
+                  value={roomDraft.class_id}
+                  onChange={(e) => setRoomDraft((curr) => ({ ...curr, class_id: e.target.value }))}
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                >
+                  <option value="">Sala compartilhada</option>
+                  {classes.filter((classRecord) => classRecord.active).sort((left, right) => left.name.localeCompare(right.name, 'pt-BR')).map((classRecord) => (
+                    <option key={classRecord.id} value={classRecord.id}>{classRecord.name}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-xs text-gray-500">A geração automática prioriza esta sala para a turma selecionada.</p>
               </div>
 
               <div className="flex justify-end gap-2 pt-2">

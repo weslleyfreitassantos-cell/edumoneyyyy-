@@ -245,6 +245,7 @@ describe('TimetableTab', () => {
     fireEvent.click(screen.getByText('Salas'));
     fireEvent.click(screen.getByText(/Adicionar sala/i));
     expect(screen.getByLabelText(/nome da sala/i)).toBeTruthy();
+    expect(screen.getByLabelText(/turma vinculada/i)).toBeTruthy();
   });
 
   it('mostra mensagem amigavel em erro RLS ao criar sala', async () => {

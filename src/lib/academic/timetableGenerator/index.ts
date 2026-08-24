@@ -59,6 +59,7 @@ export interface GeneratorTimeSlot {
 export interface GeneratorRoom {
   id: string;
   institutionId: string;
+  classId?: string | null;
   active: boolean;
 }
 
@@ -91,6 +92,7 @@ export interface TimetableGeneratorInput {
   schoolTimeSlots: GeneratorTimeSlot[];
   rooms: GeneratorRoom[];
   lockedEntries?: GeneratorEntry[];
+  subjectLabels?: Record<string, string>;
   seed?: string;
 }
 
@@ -190,15 +192,18 @@ function hasTeacherAvailability(input: TimetableGeneratorInput, demand: Demand, 
 function candidateRooms(input: TimetableGeneratorInput, entries: GeneratorEntry[], demand: Demand, candidate: Candidate, terms: Map<string, GeneratorTerm>): string[] {
   const rooms = input.rooms.filter((room) => room.active && room.institutionId === input.institutionId);
   if (rooms.length === 0) return [null as unknown as string];
-  return rooms
+  const assignedRooms = rooms.filter((room) => room.classId === demand.classRecord.id);
+  const availableRooms = assignedRooms.length > 0 ? assignedRooms : rooms;
+  return availableRooms
     .filter((room) => !entries.some((entry) => entry.roomId === room.id && occupiedBy(entry, candidate, demand, terms)))
     .map((room) => room.id);
 }
 
 function buildDiagnostics(input: TimetableGeneratorInput, demand: Demand, reason: string): GeneratorDiagnostic {
+  const subjectLabel = input.subjectLabels?.[demand.curriculum.subjectId] ?? demand.curriculum.subjectId;
   return {
     code: 'UNSATISFIED',
-    message: `${demand.classRecord.name}: subject ${demand.curriculum.subjectId} requires ${demand.curriculum.weeklyLessons} lessons; ${reason}`,
+    message: `${demand.classRecord.name}: ${subjectLabel} precisa de ${demand.curriculum.weeklyLessons} aulas; ${reason}`,
     classId: demand.classRecord.id,
     subjectId: demand.curriculum.subjectId,
     teacherProfileId: demand.offering.teacherProfileId,
@@ -250,9 +255,10 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
         );
 
         if (!offering) {
+          const subjectLabel = input.subjectLabels?.[curriculum.subjectId] ?? curriculum.subjectId;
           diagnostics.push({
             code: 'OFFERING_REQUIRED',
-            message: `${classRecord.name}: a matéria ${curriculum.subjectId} precisa de uma atribuição antes da publicação.`,
+            message: `${classRecord.name}: a matéria ${subjectLabel} precisa de uma atribuição antes da publicação.`,
             classId: classRecord.id,
             subjectId: curriculum.subjectId,
             suggestions: [

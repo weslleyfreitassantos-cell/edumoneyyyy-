@@ -45,7 +45,13 @@ export interface RoomRow {
   name: string;
   code: string | null;
   capacity: number | null;
+  class_id: string | null;
+  class_name: string | null;
   active: boolean;
+}
+
+interface RoomQueryRow extends RoomRow {
+  classes: { name: string } | { name: string }[] | null;
 }
 
 // --- Timetable Entry Types ---
@@ -216,12 +222,21 @@ export const timetableService = {
   async listRooms(institutionId: string): Promise<RoomRow[]> {
     const { data, error } = await supabase
       .from('rooms')
-      .select('*')
+      .select('id, institution_id, name, code, capacity, class_id, active, classes:class_id(name)')
       .eq('institution_id', institutionId)
       .order('name', { ascending: true });
 
     if (error) throw mapTimetableError(error);
-    return (data ?? []) as unknown as RoomRow[];
+    return ((data ?? []) as unknown as RoomQueryRow[]).map((room) => ({
+      id: room.id,
+      institution_id: room.institution_id,
+      name: room.name,
+      code: room.code,
+      capacity: room.capacity,
+      class_id: room.class_id ?? null,
+      class_name: normalizeRelation(room.classes)?.name ?? null,
+      active: room.active,
+    }));
   },
 
   async createRoom(input: RoomFormData): Promise<RoomRow> {
