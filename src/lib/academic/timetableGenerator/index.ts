@@ -1,3 +1,5 @@
+import { normalizeAcademicShift } from './automaticPreparation';
+
 export interface GeneratorTerm {
   id: string;
   academicYearId: string;
@@ -321,15 +323,17 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   }
 
   const rankedDemands = demands.map((demand) => {
-    const possible = allSlots.filter((slot) => demand.classRecord.shift === null || slot.shift === demand.classRecord.shift).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
+    const classShift = demand.classRecord.shift === null ? null : normalizeAcademicShift(demand.classRecord.shift);
+    const possible = allSlots.filter((slot) => classShift === null || normalizeAcademicShift(slot.shift) === classShift).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
     return { demand, possibleCount: possible.length };
   }).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
 
   for (const ranked of rankedDemands) {
     const demand = ranked.demand;
+    const classShift = demand.classRecord.shift === null ? null : normalizeAcademicShift(demand.classRecord.shift);
     const candidates: Candidate[] = [];
     for (const slot of allSlots) {
-      if (demand.classRecord.shift !== null && slot.shift !== demand.classRecord.shift) continue;
+      if (classShift !== null && normalizeAcademicShift(slot.shift) !== classShift) continue;
       if (timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) < demand.curriculum.lessonDurationMinutes) continue;
       if (!hasTeacherAvailability(input, demand, slot)) continue;
       if (entries.some((entry) => entry.classId === demand.classRecord.id && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;

@@ -66,7 +66,7 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
   ],
 };
 
-function normalizeShift(shift: string): string {
+export function normalizeAcademicShift(shift: string): string {
   const normalized = shift.trim().toLocaleUpperCase('pt-BR');
   if (normalized.includes('INTEGRAL')) return 'INTEGRAL';
   if (normalized.includes('VESPERT') || normalized.includes('TARDE')) return 'VESPERTINO';
@@ -139,7 +139,7 @@ export function buildDefaultTimeSlots(shifts: string[]): AutomaticTimeSlot[] {
   const slots: AutomaticTimeSlot[] = [];
 
   for (const shift of effectiveShifts) {
-    const normalizedShift = normalizeShift(shift);
+    const normalizedShift = normalizeAcademicShift(shift);
     const times = STANDARD_SLOT_TIMES[normalizedShift] ?? STANDARD_SLOT_TIMES.MATUTINO;
     for (let day = 1; day <= 5; day += 1) {
       times.forEach(([start_time, end_time], index) => {

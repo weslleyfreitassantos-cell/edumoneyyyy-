@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 import { generateTimetable, type TimetableGeneratorResult } from '../lib/academic/timetableGenerator';
 import {
   buildDefaultTimeSlots,
+  normalizeAcademicShift,
   planAutomaticAssignments,
 } from '../lib/academic/timetableGenerator/automaticPreparation';
 
@@ -146,13 +147,13 @@ async function prepareAutomaticTimeSlots(input: {
   classes: Array<{ shift: string | null }>;
   slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>;
 }): Promise<{ slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>; created: number }> {
-  const requiredShifts = [...new Set(input.classes.map((classRecord) => classRecord.shift?.trim() || 'MATUTINO'))];
-  const configuredShifts = new Set(input.slots.map((slot) => slot.shift));
+  const requiredShifts = [...new Set(input.classes.map((classRecord) => normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')))];
+  const configuredShifts = new Set(input.slots.map((slot) => normalizeAcademicShift(slot.shift)));
   const missingShifts = requiredShifts.filter((shift) => !configuredShifts.has(shift));
   const defaults = buildDefaultTimeSlots(missingShifts);
   if (defaults.length === 0) return { slots: input.slots, created: 0 };
 
-  const { error } = await supabase.from('school_time_slots').insert(defaults.map((slot) => ({
+  const { error } = await supabase.from('school_time_slots').upsert(defaults.map((slot) => ({
     institution_id: input.institutionId,
     shift: slot.shift,
     day_of_week: slot.day_of_week,
@@ -160,7 +161,7 @@ async function prepareAutomaticTimeSlots(input: {
     start_time: slot.start_time,
     end_time: slot.end_time,
     active: true,
-  })));
+  })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
   if (error) throw error;
 
   const generatedRows = defaults.map((slot, index) => ({

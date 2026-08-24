@@ -169,4 +169,14 @@ describe('timetable generator', () => {
     expect(result.valid).toBe(true);
     expect(result.entries.every((entry) => entry.roomId === 'class-room')).toBe(true);
   });
+
+  it('matches equivalent shift labels such as Manhã and MATUTINO', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], shift: 'Manhã' }],
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries).toHaveLength(2);
+  });
 });
