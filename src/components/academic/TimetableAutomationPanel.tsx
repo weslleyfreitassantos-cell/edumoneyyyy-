@@ -56,12 +56,13 @@ function VersionReview({
   const classes = useMemo(() => {
     const grouped = new Map<string, TimetableVersionEntryRow[]>();
     for (const entry of entries.filter((item) => item.active)) {
-      const current = grouped.get(entry.class_id) ?? [];
+      const current = grouped.get(`${entry.class_id}:${entry.term_id}`) ?? [];
       current.push(entry);
-      grouped.set(entry.class_id, current);
+      grouped.set(`${entry.class_id}:${entry.term_id}`, current);
     }
     return Array.from(grouped.values()).map((classEntries) => ({
       name: classEntries[0]?.class_name ?? 'Turma',
+      termName: classEntries[0]?.term_name ?? 'Período',
       entries: classEntries.sort(
         (left, right) =>
           left.day_of_week - right.day_of_week ||
@@ -81,9 +82,9 @@ function VersionReview({
   return (
     <div className="space-y-4" data-testid="timetable-draft-review">
       {classes.map((classGroup) => (
-        <section key={classGroup.name} className="rounded-lg border border-[#e4e8f1]">
+        <section key={`${classGroup.name}:${classGroup.termName}`} className="rounded-lg border border-[#e4e8f1]">
           <h5 className="border-b border-[#e4e8f1] px-4 py-3 font-bold text-[#181c20]">
-            {classGroup.name}
+            {classGroup.name} <span className="font-normal text-[#667085]">· {classGroup.termName}</span>
           </h5>
           <div className="grid gap-3 p-4 md:grid-cols-2 lg:grid-cols-3">
             {Array.from(new Set<number>(classGroup.entries.map((entry) => entry.day_of_week))).map((day) => (

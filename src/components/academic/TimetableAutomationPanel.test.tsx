@@ -104,7 +104,7 @@ describe('TimetableAutomationPanel', () => {
       error: null,
     } as never);
     vi.mocked(useTimetableVersionEntries).mockReturnValue({
-      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
+      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', term_name: '1º Bimestre', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
       isLoading: false,
       isError: false,
       error: null,
@@ -116,6 +116,31 @@ describe('TimetableAutomationPanel', () => {
 
     expect(screen.getByText('Bloqueado/Fixo: preservar ao regenerar')).toBeTruthy();
     expect(screen.getByRole('checkbox')).toBeTruthy();
+  });
+
+  it('separa a revisão por período quando os horários semanais se repetem', () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useTimetableVersionEntries).mockReturnValue({
+      data: [
+        { id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', term_name: '1º Bimestre', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true },
+        { id: 'entry-2', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-2', class_id: 'class-1', class_name: '1A', term_name: '2º Bimestre', subject_offering_id: 'offering-2', subject_name: 'Matemática', teacher_profile_id: 'teacher-2', teacher_name: 'Professor Bruno', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true },
+      ],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
+
+    expect(screen.getByRole('heading', { name: /1A.*1º Bimestre/ })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: /1A.*2º Bimestre/ })).toBeTruthy();
+    expect(screen.getAllByText(/07:00/)).toHaveLength(2);
   });
 
   it('mostra o bloqueio e os diagnósticos quando a geração é UNSAT', async () => {

@@ -25,6 +25,7 @@ export interface TimetableVersionEntryRow {
   term_id: string;
   class_id: string;
   class_name: string;
+  term_name: string;
   subject_offering_id: string;
   subject_name: string;
   teacher_profile_id: string;
@@ -88,7 +89,8 @@ async function listActiveOfferingsForReview(institutionId: string) {
         term_id,
         classes:class_id!inner (name, institution_id),
         subjects:subject_id (name),
-        profiles:teacher_profile_id (full_name)
+        profiles:teacher_profile_id (full_name),
+        terms:term_id (name)
       `)
       .eq('classes.institution_id', institutionId)
       .eq('active', true)
@@ -280,9 +282,11 @@ export const timetableAutomationService = {
         const classRelation = first(row.classes) as { name?: string } | null;
         const subjectRelation = first(row.subjects) as { name?: string } | null;
         const teacherRelation = first(row.profiles) as { full_name?: string } | null;
+        const termRelation = first(row.terms) as { name?: string } | null;
 
         return [String(row.id), {
           className: classRelation?.name ?? 'Turma',
+          termName: termRelation?.name ?? 'Período',
           subjectName: subjectRelation?.name ?? 'Matéria',
           teacherProfileId: String(row.teacher_profile_id ?? ''),
           teacherName: teacherRelation?.full_name ?? null,
@@ -301,6 +305,7 @@ export const timetableAutomationService = {
         term_id: String(row.term_id),
         class_id: String(row.class_id),
         class_name: offering?.className ?? 'Turma',
+        term_name: offering?.termName ?? 'Período',
         subject_offering_id: String(row.subject_offering_id),
         subject_name: offering?.subjectName ?? 'Matéria',
         teacher_profile_id: offering?.teacherProfileId ?? '',
