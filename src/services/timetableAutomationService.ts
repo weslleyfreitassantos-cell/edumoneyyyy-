@@ -235,9 +235,6 @@ export const timetableAutomationService = {
         `)
         .eq('version_id', versionId)
         .eq('institution_id', institutionId)
-        .order('class_id')
-        .order('day_of_week')
-        .order('start_time')
         .range(offset, offset + pageSize - 1);
 
       if (error) throw error;
@@ -245,7 +242,7 @@ export const timetableAutomationService = {
       if (!data || data.length < pageSize) break;
     }
 
-    return rows.map((row) => {
+    const entries = rows.map((row) => {
       const classRelation = row.classes as { name?: string } | { name?: string }[] | null;
       const offeringRelation = row.subject_offerings as {
         teacher_profile_id?: string;
@@ -283,6 +280,13 @@ export const timetableAutomationService = {
         active: row.active !== false,
       };
     });
+
+    return entries.sort(
+      (left, right) =>
+        left.class_id.localeCompare(right.class_id) ||
+        left.day_of_week - right.day_of_week ||
+        left.start_time.localeCompare(right.start_time),
+    );
   },
 
   async updateVersionEntry(input: {
