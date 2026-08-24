@@ -18,7 +18,9 @@ import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 
 import {
   useClasses,
+  useClassDeletionImpact,
   useCreateClass,
+  useDeleteClass,
   useSetClassActive,
   useUpdateClass,
 } from '../../../hooks/useClasses';
@@ -30,7 +32,10 @@ import {
   classUpdateSchema,
 } from '../../../schemas/adminSchemas';
 
-import type { ClassRow } from '../../../services/classService';
+import {
+  buildClassDeletionBlockedMessage,
+  type ClassRow,
+} from '../../../services/classService';
 
 interface ClassDraft {
   name: string;
@@ -129,6 +134,9 @@ export default function ClassesTab() {
   const statusMutation =
     useSetClassActive();
 
+  const deleteMutation =
+    useDeleteClass();
+
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
@@ -139,6 +147,14 @@ export default function ClassesTab() {
     editingClass,
     setEditingClass,
   ] = useState<ClassRow | null>(null);
+
+  const [deletionCheckClassId, setDeletionCheckClassId] =
+    useState<string | null>(null);
+
+  const deletionImpactQuery = useClassDeletionImpact(
+    institutionId,
+    deletionCheckClassId,
+  );
 
   const [formData, setFormData] =
     useState<ClassDraft>({
@@ -198,7 +214,8 @@ export default function ClassesTab() {
 
   const isSubmitting =
     createMutation.isPending ||
-    updateMutation.isPending;
+    updateMutation.isPending ||
+    deleteMutation.isPending;
 
   const columns: Column<ClassRow>[] = [
     {
@@ -258,6 +275,7 @@ export default function ClassesTab() {
   function openCreateModal(): void {
     resetMessages();
     setEditingClass(null);
+    setDeletionCheckClassId(null);
     setFormData({
       ...emptyDraft,
       academic_year_id:
@@ -271,6 +289,7 @@ export default function ClassesTab() {
   ): void {
     resetMessages();
     setEditingClass(classRecord);
+    setDeletionCheckClassId(classRecord.id);
     setFormData({
       name: classRecord.name,
       academic_year_id:
@@ -289,6 +308,7 @@ export default function ClassesTab() {
   function closeModal(): void {
     setIsModalOpen(false);
     setEditingClass(null);
+    setDeletionCheckClassId(null);
     setFormData({
       ...emptyDraft,
     });
@@ -417,6 +437,48 @@ export default function ClassesTab() {
       setPageError(
         getErrorMessage(error),
       );
+    }
+  }
+
+  async function handleDeleteClass(): Promise<void> {
+    if (!editingClass) {
+      return;
+    }
+
+    if (deletionImpactQuery.isLoading) {
+      return;
+    }
+
+    if (deletionImpactQuery.isError) {
+      setModalError(getErrorMessage(deletionImpactQuery.error));
+      return;
+    }
+
+    const impact = deletionImpactQuery.data;
+    if (!impact) {
+      setModalError('Não foi possível verificar os vínculos desta turma.');
+      return;
+    }
+
+    const blockedMessage = buildClassDeletionBlockedMessage(impact);
+    if (blockedMessage) {
+      setModalError(blockedMessage);
+      return;
+    }
+
+    if (!window.confirm(`Excluir a turma ${editingClass.name}? Esta ação não pode ser desfeita.`)) {
+      return;
+    }
+
+    try {
+      await deleteMutation.mutateAsync({
+        id: editingClass.id,
+        institutionId,
+      });
+      setFeedbackMessage('Turma excluída com sucesso.');
+      closeModal();
+    } catch (error) {
+      setModalError(getErrorMessage(error));
     }
   }
 
@@ -789,7 +851,44 @@ export default function ClassesTab() {
                 Ativa
               </label>
 
-              <div className="flex justify-end gap-2 pt-2">
+              {editingClass && (
+                <div
+                  className={
+                    deletionImpactQuery.isError ||
+                    (deletionImpactQuery.data?.totalLinkedRecords ?? 0) > 0
+                      ? 'rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-sm text-amber-900'
+                      : 'rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-gray-700'
+                  }
+                  role={
+                    deletionImpactQuery.isError ||
+                    (deletionImpactQuery.data?.totalLinkedRecords ?? 0) > 0
+                      ? 'alert'
+                      : undefined
+                  }
+                >
+                  {deletionImpactQuery.isLoading && 'Verificando vínculos da turma...'}
+                  {deletionImpactQuery.isError && 'Não foi possível verificar os vínculos antes da exclusão.'}
+                  {!deletionImpactQuery.isLoading && !deletionImpactQuery.isError && deletionImpactQuery.data && (
+                    deletionImpactQuery.data.totalLinkedRecords > 0
+                      ? buildClassDeletionBlockedMessage(deletionImpactQuery.data)
+                      : 'Nenhum vínculo acadêmico encontrado. A exclusão física está disponível.'
+                  )}
+                </div>
+              )}
+
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+                {editingClass && (
+                  <button
+                    type="button"
+                    onClick={() => void handleDeleteClass()}
+                    disabled={isSubmitting || deletionImpactQuery.isLoading || deletionImpactQuery.isError}
+                    className="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {deleteMutation.isPending ? 'Excluindo...' : 'Excluir turma'}
+                  </button>
+                )}
+
+                <div className="ml-auto flex gap-2">
                 <button
                   type="button"
                   onClick={closeModal}
@@ -808,6 +907,7 @@ export default function ClassesTab() {
                     ? 'Salvando...'
                     : 'Salvar'}
                 </button>
+                </div>
               </div>
             </form>
           </div>

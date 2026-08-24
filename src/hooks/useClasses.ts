@@ -8,6 +8,7 @@ import { adminOverviewKeys } from './useAdminOverview';
 
 import {
   classService,
+  type ClassDeletionImpact,
   type ClassRow,
 } from '../services/classService';
 
@@ -24,6 +25,9 @@ export const classKeys = {
       ...classKeys.all,
       institutionId,
     ] as const,
+
+  deletionImpact: (institutionId: string, classId: string) =>
+    [...classKeys.all, 'deletion-impact', institutionId, classId] as const,
 };
 
 function invalidateClasses(
@@ -55,6 +59,17 @@ export function useClasses(
     queryFn: () =>
       classService.list(institutionId),
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useClassDeletionImpact(
+  institutionId: string,
+  classId: string | null,
+) {
+  return useQuery<ClassDeletionImpact>({
+    queryKey: classKeys.deletionImpact(institutionId, classId ?? 'none'),
+    queryFn: () => classService.getDeletionImpact(classId as string, institutionId),
+    enabled: Boolean(institutionId && classId),
   });
 }
 
@@ -126,6 +141,26 @@ export function useSetClassActive() {
         queryClient,
         variables.institutionId,
       );
+    },
+  });
+}
+
+export function useDeleteClass() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      institutionId,
+    }: {
+      id: string;
+      institutionId: string;
+    }) => classService.delete(id, institutionId),
+    onSuccess: async (_result, variables) => {
+      await invalidateClasses(queryClient, variables.institutionId);
+      await queryClient.removeQueries({
+        queryKey: classKeys.deletionImpact(variables.institutionId, variables.id),
+      });
     },
   });
 }
