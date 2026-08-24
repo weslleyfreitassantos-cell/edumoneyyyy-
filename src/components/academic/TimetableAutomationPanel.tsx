@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
   useGenerateTimetableDraft,
+  useDeleteTimetableVersion,
   usePublishTimetableVersion,
   useSaveSchoolTimeSlots,
   useSchoolTimeSlots,
@@ -138,6 +139,7 @@ export default function TimetableAutomationPanel({
   const selectedYearId = academicYearId || years[0]?.id || '';
   const versionsQuery = useTimetableVersions(institutionId, selectedYearId);
   const generateMutation = useGenerateTimetableDraft();
+  const deleteMutation = useDeleteTimetableVersion();
   const publishMutation = usePublishTimetableVersion();
   const updateEntryMutation = useUpdateTimetableVersionEntry();
   const [reviewVersionId, setReviewVersionId] = useState('');
@@ -224,6 +226,25 @@ export default function TimetableAutomationPanel({
           ? 'A grade estrutural está pronta, mas algumas aulas precisam de professor e disponibilidade antes da publicação.'
           : publishMessage,
       );
+    }
+  }
+
+  async function removeVersion(version: { id: string; name: string; status: string }): Promise<void> {
+    if (version.status !== 'DRAFT') return;
+    if (!window.confirm(`Excluir a grade "${version.name}"? Todas as aulas deste rascunho serão removidas.`)) return;
+
+    setMessage(null);
+    setError(null);
+    try {
+      await deleteMutation.mutateAsync({ versionId: version.id, institutionId, academicYearId: selectedYearId });
+      if (reviewVersionId === version.id) {
+        setReviewVersionId('');
+        setEditingEntry(null);
+        setEntryDraft(null);
+      }
+      setMessage('Grade removida.');
+    } catch (deleteError) {
+      setError(getErrorMessage(deleteError));
     }
   }
 
@@ -371,6 +392,7 @@ export default function TimetableAutomationPanel({
                     {version.status === 'DRAFT' && <>
                       <button type="button" onClick={() => void generate(version.id)} disabled={generateMutation.isPending} className="font-semibold text-blue-700 disabled:opacity-50">Regenerar grade</button>
                       <button type="button" onClick={() => void publish(version.id)} disabled={publishMutation.isPending} className="font-semibold text-emerald-700 disabled:opacity-50">Publicar grade</button>
+                      <button type="button" onClick={() => void removeVersion(version)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50" aria-label={`Excluir grade ${version.name}`}>Excluir grade</button>
                     </>}
                   </div></td>
                 </tr>

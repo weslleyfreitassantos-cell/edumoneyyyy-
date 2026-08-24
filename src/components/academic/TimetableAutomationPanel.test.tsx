@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
   useGenerateTimetableDraft,
+  useDeleteTimetableVersion,
   usePublishTimetableVersion,
   useSaveSchoolTimeSlots,
   useSchoolTimeSlots,
@@ -22,6 +23,7 @@ vi.mock('../../hooks/useAcademicStructure', () => ({
 
 vi.mock('../../hooks/useAcademicAutomation', () => ({
   useGenerateTimetableDraft: vi.fn(),
+  useDeleteTimetableVersion: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
   useSaveSchoolTimeSlots: vi.fn(),
   useSchoolTimeSlots: vi.fn(),
@@ -32,6 +34,7 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
 
 const slotMutation = { mutateAsync: vi.fn(), isPending: false };
 const generateMutation = { mutateAsync: vi.fn(), isPending: false };
+const deleteMutation = { mutateAsync: vi.fn(), isPending: false };
 const publishMutation = { mutateAsync: vi.fn(), isPending: false };
 const updateEntryMutation = { mutateAsync: vi.fn(), isPending: false };
 
@@ -62,6 +65,7 @@ function mockDefaults() {
   } as never);
   vi.mocked(useSaveSchoolTimeSlots).mockReturnValue(slotMutation as never);
   vi.mocked(useGenerateTimetableDraft).mockReturnValue(generateMutation as never);
+  vi.mocked(useDeleteTimetableVersion).mockReturnValue(deleteMutation as never);
   vi.mocked(usePublishTimetableVersion).mockReturnValue(publishMutation as never);
   vi.mocked(useUpdateTimetableVersionEntry).mockReturnValue(updateEntryMutation as never);
 }
@@ -73,6 +77,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  vi.restoreAllMocks();
 });
 
 describe('TimetableAutomationPanel', () => {
@@ -93,6 +98,27 @@ describe('TimetableAutomationPanel', () => {
         shift: 'MATUTINO',
         slots: [expect.objectContaining({ day_of_week: 1 })],
       }));
+    });
+  });
+
+  it('permite excluir uma grade em rascunho após confirmação', async () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Excluir grade Proposta' }));
+
+    await waitFor(() => {
+      expect(deleteMutation.mutateAsync).toHaveBeenCalledWith({
+        versionId: 'version-1',
+        institutionId: 'institution-1',
+        academicYearId: 'year-1',
+      });
     });
   });
 

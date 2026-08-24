@@ -476,4 +476,17 @@ export const timetableAutomationService = {
     const { error } = await supabase.rpc('publish_timetable_version', { p_version_id: versionId });
     if (error) throw error;
   },
+
+  async deleteVersion(versionId: string): Promise<void> {
+    const { error } = await supabase.rpc('delete_timetable_draft', { p_version_id: versionId });
+    if (!error) return;
+
+    if (error.code === '42501' || /forbidden|permission denied/i.test(error.message)) {
+      throw new Error('Você não tem permissão para remover esta grade.');
+    }
+    if (/TIMETABLE_VERSION_NOT_DRAFT/i.test(error.message)) {
+      throw new Error('Somente grades em rascunho podem ser removidas.');
+    }
+    throw new Error('Não foi possível remover a grade.');
+  },
 };
