@@ -315,6 +315,7 @@ export default function TimetableAutomationPanel({
                 <option value="MATUTINO">Manhã</option>
                 <option value="VESPERTINO">Tarde</option>
                 <option value="NOTURNO">Noite</option>
+                <option value="INTEGRAL">Integral</option>
               </select>
             </label>
             <button

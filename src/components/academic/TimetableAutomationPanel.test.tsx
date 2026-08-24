@@ -81,6 +81,7 @@ describe('TimetableAutomationPanel', () => {
 
     expect(screen.getByText('Quais horários sua escola utiliza?')).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Gerar grade automaticamente' })).toBeTruthy();
+    expect(screen.getByRole('option', { name: 'Integral' })).toBeTruthy();
 
     fireEvent.click(screen.getByRole('button', { name: /adicionar horário/i }));
     expect(screen.getByLabelText('Dia do horário 1')).toBeTruthy();
