@@ -183,6 +183,8 @@ const offeringSelect = `
   )
 `;
 
+const OFFERINGS_PAGE_SIZE = 1000;
+
 function normalizeRelation<T>(
   relation: T | T[] | null,
 ): T | null {
@@ -603,20 +605,38 @@ export const assignmentService = {
   async list(
     institutionId: string,
   ): Promise<AssignmentRow[]> {
-    const { data, error } = await supabase
-      .from('subject_offerings')
-      .select(offeringSelect)
-      .order('created_at', {
-        ascending: false,
-      });
+    const rows: OfferingQueryRow[] = [];
 
-    if (error) {
-      throw error;
+    for (
+      let offset = 0;
+      ;
+      offset += OFFERINGS_PAGE_SIZE
+    ) {
+      const { data, error } = await supabase
+        .from('subject_offerings')
+        .select(offeringSelect)
+        .order('created_at', {
+          ascending: false,
+        })
+        .range(
+          offset,
+          offset + OFFERINGS_PAGE_SIZE - 1,
+        );
+
+      if (error) {
+        throw error;
+      }
+
+      rows.push(
+        ...((data ?? []) as unknown as OfferingQueryRow[]),
+      );
+
+      if (!data || data.length < OFFERINGS_PAGE_SIZE) {
+        break;
+      }
     }
 
-    return (
-      (data ?? []) as unknown as OfferingQueryRow[]
-    )
+    return rows
       .map((row) =>
         normalizeOffering(row, institutionId),
       )

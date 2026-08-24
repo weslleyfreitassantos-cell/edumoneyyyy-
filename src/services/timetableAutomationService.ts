@@ -45,13 +45,31 @@ export interface GeneratedDraft extends TimetableGeneratorResult {
 }
 
 async function listActiveOfferings(institutionId: string) {
-  const { data, error } = await supabase
-    .from('subject_offerings')
-    .select('id, class_id, subject_id, teacher_profile_id, term_id, classes!inner(institution_id)')
-    .eq('classes.institution_id', institutionId)
-    .eq('active', true);
-  if (error) throw error;
-  return data ?? [];
+  const pageSize = 1000;
+  const offerings: Array<{
+    id: string;
+    class_id: string;
+    subject_id: string;
+    teacher_profile_id: string;
+    term_id: string;
+  }> = [];
+
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await supabase
+      .from('subject_offerings')
+      .select('id, class_id, subject_id, teacher_profile_id, term_id, classes!inner(institution_id)')
+      .eq('classes.institution_id', institutionId)
+      .eq('active', true)
+      .range(offset, offset + pageSize - 1);
+
+    if (error) throw error;
+
+    offerings.push(...(data ?? []));
+
+    if (!data || data.length < pageSize) break;
+  }
+
+  return offerings;
 }
 
 async function prepareAutomaticAssignments(input: {
