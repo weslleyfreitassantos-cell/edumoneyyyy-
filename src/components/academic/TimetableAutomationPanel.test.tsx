@@ -132,4 +132,24 @@ describe('TimetableAutomationPanel', () => {
     expect(alert.textContent).toMatch(/não foi possível montar a grade/i);
     expect(alert.textContent).toMatch(/precisa de mais horários/i);
   });
+
+  it('explica quando a publicação é bloqueada por falta de disponibilidade docente', async () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    publishMutation.mutateAsync.mockRejectedValue({
+      code: 'P0001',
+      message: 'TEACHER_NOT_AVAILABLE',
+    });
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Publicar grade' }));
+
+    const alert = await screen.findByRole('alert');
+    expect(alert.textContent).toMatch(/disponibilidade semanal cadastrada/i);
+    expect(alert.textContent).toMatch(/Usuários > Professores/i);
+  });
 });

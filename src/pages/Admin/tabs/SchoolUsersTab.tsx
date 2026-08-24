@@ -6,6 +6,8 @@ import {
 } from 'react';
 
 import {
+  ChevronLeft,
+  ChevronRight,
   Edit3,
   Loader2,
   PlusCircle,
@@ -85,6 +87,8 @@ const editableRoleOptions: {
   { value: 'GUARDIAN', label: 'Responsável' },
 ];
 
+const SCHOOL_USERS_PAGE_SIZE = 10;
+
 export interface SchoolUserSummary {
   total: number;
   active: number;
@@ -119,6 +123,12 @@ function normalizeSearchValue(
     .replace(/[\u0300-\u036f]/g, '')
     .trim()
     .toLowerCase();
+}
+
+function normalizeCpfValue(
+  value: string,
+): string {
+  return value.replace(/\D/g, '');
 }
 
 function formatDate(
@@ -172,8 +182,17 @@ export function filterSchoolUsers(
       .map(normalizeSearchValue)
       .join(' ');
 
-    return searchableText.includes(
-      normalizedTerm,
+    const normalizedCpf = normalizeCpfValue(
+      user.cpf ?? '',
+    );
+    const normalizedTermDigits = normalizeCpfValue(
+      searchTerm,
+    );
+
+    return (
+      searchableText.includes(normalizedTerm) ||
+      (normalizedTermDigits.length > 0 &&
+        normalizedCpf.includes(normalizedTermDigits))
     );
   });
 }
@@ -284,9 +303,9 @@ function SchoolUsersTable({
 }) {
   return (
     <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50">
+      <div className="max-h-[520px] overflow-auto">
+        <table className="min-w-[920px] w-full text-sm">
+          <thead className="sticky top-0 z-10 bg-gray-50 shadow-[0_1px_0_#dfe3e8]">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-gray-700">
                 Nome
@@ -603,7 +622,7 @@ function EmptyState({
         {!hasInstitution
           ? 'Selecione uma escola ativa para visualizar os usuários vinculados a ela.'
           : hasUsers
-          ? 'Ajuste a busca ou os filtros para localizar usuários por nome, e-mail ou papel.'
+          ? 'Ajuste a busca ou os filtros para localizar usuários por nome, e-mail, CPF ou papel.'
           : 'Quando houver vínculos ativos ou inativos em memberships para esta instituição, eles aparecerão nesta tela somente leitura.'}
       </p>
     </div>
@@ -629,6 +648,8 @@ export default function SchoolUsersTab() {
 
   const [searchTerm, setSearchTerm] =
     useState('');
+  const [currentPage, setCurrentPage] =
+    useState(1);
   const [editingUser, setEditingUser] =
     useState<SchoolUserRow | null>(null);
   const [feedback, setFeedback] =
@@ -664,6 +685,32 @@ export default function SchoolUsersTab() {
         searchTerm,
       ),
     [searchTerm, selectedRole, users],
+  );
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(
+      filteredUsers.length /
+        SCHOOL_USERS_PAGE_SIZE,
+    ),
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedRole]);
+
+  useEffect(() => {
+    setCurrentPage((page) =>
+      Math.min(page, totalPages),
+    );
+  }, [totalPages]);
+
+  const pageStart =
+    (currentPage - 1) *
+    SCHOOL_USERS_PAGE_SIZE;
+  const paginatedUsers = filteredUsers.slice(
+    pageStart,
+    pageStart + SCHOOL_USERS_PAGE_SIZE,
   );
 
   const isManaging =
@@ -901,7 +948,7 @@ export default function SchoolUsersTab() {
                     event.target.value,
                   )
                 }
-                placeholder="Nome, e-mail ou papel"
+                placeholder="Nome, e-mail, CPF ou papel"
                 className="w-full rounded-lg border border-[#dfe3e8] bg-white py-2 pl-9 pr-3 text-sm text-[#181c20] outline-none transition-colors placeholder:text-gray-400 focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
               />
             </div>
@@ -958,11 +1005,68 @@ export default function SchoolUsersTab() {
           />
         ) : (
           <SchoolUsersTable
-            users={filteredUsers}
+            users={paginatedUsers}
             onEdit={setEditingUser}
             onDelete={handleDeleteUser}
             isBusy={isManaging}
           />
+        )}
+
+        {filteredUsers.length > SCHOOL_USERS_PAGE_SIZE && (
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600">
+            <span>
+              Mostrando {pageStart + 1}–
+              {Math.min(
+                pageStart + SCHOOL_USERS_PAGE_SIZE,
+                filteredUsers.length,
+              )}{' '}
+              de {filteredUsers.length}
+            </span>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Página anterior"
+                title="Página anterior"
+                disabled={currentPage === 1}
+                onClick={() =>
+                  setCurrentPage((page) =>
+                    Math.max(1, page - 1),
+                  )
+                }
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <ChevronLeft
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                />
+                Anterior
+              </button>
+
+              <span className="whitespace-nowrap font-medium text-gray-700">
+                Página {currentPage} de {totalPages}
+              </span>
+
+              <button
+                type="button"
+                aria-label="Próxima página"
+                title="Próxima página"
+                disabled={currentPage === totalPages}
+                onClick={() =>
+                  setCurrentPage((page) =>
+                    Math.min(totalPages, page + 1),
+                  )
+                }
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Próxima
+                <ChevronRight
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+          </div>
         )}
       </section>
 

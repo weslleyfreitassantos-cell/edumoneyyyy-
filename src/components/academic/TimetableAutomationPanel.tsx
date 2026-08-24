@@ -29,8 +29,62 @@ interface EntryDraft {
 const DAY_LABELS = ['', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  return 'Não foi possível concluir a operação.';
+  const details = readErrorDetails(error);
+  const values = [details.code, details.message, details.details, details.hint]
+    .filter((value): value is string => Boolean(value))
+    .map((value) => value.toUpperCase());
+
+  if (values.some((value) => value.includes('TEACHER_NOT_AVAILABLE'))) {
+    return 'A publicação foi bloqueada porque há aulas em horários sem disponibilidade semanal cadastrada para os professores. Abra Usuários > Professores, configure a disponibilidade de cada professor e salve antes de publicar novamente.';
+  }
+  if (values.some((value) => value.includes('TEACHER_SUBJECT_NOT_AUTHORIZED'))) {
+    return 'A publicação foi bloqueada porque há professor atribuído a uma disciplina que ele não está habilitado para lecionar. Revise as atribuições dos professores.';
+  }
+  if (values.some((value) => value.includes('SCHOOL_TIME_SLOT_NOT_CONFIGURED'))) {
+    return 'A publicação foi bloqueada porque há aulas sem horário escolar configurado para o turno da turma. Cadastre os horários da escola e tente novamente.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_CONFLICT'))) {
+    return 'A publicação foi bloqueada porque existem conflitos de professor, turma ou sala na grade. Revise os horários antes de publicar.';
+  }
+  if (values.some((value) => value.includes('WEEKLY_LESSONS_MISMATCH'))) {
+    return 'A publicação foi bloqueada porque a quantidade de aulas não corresponde à matriz curricular. Revise a carga semanal das disciplinas.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_NOT_DRAFT'))) {
+    return 'Esta grade não está mais em rascunho e não pode ser publicada novamente.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_SCOPE_MISMATCH'))) {
+    return 'A publicação foi bloqueada porque a grade contém dados de outra instituição ou ano letivo. Gere uma nova grade para o contexto atual.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_FORBIDDEN'))) {
+    return 'Você não tem permissão para publicar esta grade.';
+  }
+
+  return details.message ?? 'Não foi possível concluir a operação.';
+}
+
+function readErrorDetails(error: unknown): {
+  code: string | null;
+  message: string | null;
+  details: string | null;
+  hint: string | null;
+} {
+  if (error instanceof Error) {
+    return { code: null, message: error.message, details: null, hint: null };
+  }
+  if (typeof error === 'string') {
+    return { code: null, message: error, details: null, hint: null };
+  }
+  if (!error || typeof error !== 'object') {
+    return { code: null, message: null, details: null, hint: null };
+  }
+
+  const record = error as Record<string, unknown>;
+  return {
+    code: typeof record.code === 'string' ? record.code : null,
+    message: typeof record.message === 'string' ? record.message : null,
+    details: typeof record.details === 'string' ? record.details : null,
+    hint: typeof record.hint === 'string' ? record.hint : null,
+  };
 }
 
 function formatTime(value: string): string {
@@ -217,12 +271,7 @@ export default function TimetableAutomationPanel({
       await publishMutation.mutateAsync({ versionId, institutionId, academicYearId: selectedYearId });
       setMessage('Grade publicada com validação server-side.');
     } catch (publishError) {
-      const publishMessage = getErrorMessage(publishError);
-      setError(
-        publishMessage.includes('TEACHER_')
-          ? 'A grade estrutural está pronta, mas algumas aulas precisam de professor e disponibilidade antes da publicação.'
-          : publishMessage,
-      );
+      setError(getErrorMessage(publishError));
     }
   }
 

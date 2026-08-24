@@ -109,7 +109,7 @@ function formatDate(value: string): string {
 
 function formatPeriodName(value: string): string {
   const match = value.match(
-    /^(\d+)\s*o\s+(bimestre|trimestre|semestre|per[ií]odo)$/i,
+    /^(\d+)\s*(?:º|°|o)?\s+(bimestre|trimestre|semestre|per[ií]odo)$/i,
   );
 
   if (!match) {
