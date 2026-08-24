@@ -138,6 +138,9 @@ describe('TimetableAutomationPanel', () => {
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
     fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
+    expect(screen.getByRole('columnheader', { name: 'Horário' })).toBeTruthy();
+    expect(screen.getByRole('columnheader', { name: 'Segunda' })).toBeTruthy();
+    expect(screen.getByRole('columnheader', { name: 'Sexta' })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: /07:00 Português/i }));
 
     expect(screen.getByText('Bloqueado/Fixo: preservar ao regenerar')).toBeTruthy();
@@ -166,7 +169,7 @@ describe('TimetableAutomationPanel', () => {
 
     expect(screen.getByRole('heading', { name: /1A.*1º Bimestre/ })).toBeTruthy();
     expect(screen.getByRole('heading', { name: /1A.*2º Bimestre/ })).toBeTruthy();
-    expect(screen.getAllByText(/07:00/)).toHaveLength(2);
+    expect(screen.getAllByRole('button', { name: /07:00/ })).toHaveLength(2);
   });
 
   it('mostra o bloqueio e os diagnósticos quando a geração é UNSAT', async () => {

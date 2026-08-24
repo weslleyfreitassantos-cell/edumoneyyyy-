@@ -64,6 +64,14 @@ function VersionReview({
     return Array.from(grouped.values()).map((classEntries) => ({
       name: classEntries[0]?.class_name ?? 'Turma',
       termName: classEntries[0]?.term_name ?? 'Período',
+      timeRows: Array.from(
+        new Map(
+          classEntries.map((entry) => [
+            `${entry.start_time}:${entry.end_time}`,
+            { startTime: entry.start_time, endTime: entry.end_time },
+          ]),
+        ).values(),
+      ).sort((left, right) => left.startTime.localeCompare(right.startTime)),
       entries: classEntries.sort(
         (left, right) =>
           left.day_of_week - right.day_of_week ||
@@ -87,38 +95,69 @@ function VersionReview({
           <h5 className="border-b border-[#e4e8f1] px-4 py-3 font-bold text-[#181c20]">
             {classGroup.name} <span className="font-normal text-[#667085]">· {classGroup.termName}</span>
           </h5>
-          <div className="grid gap-3 p-4 md:grid-cols-2 lg:grid-cols-3">
-            {Array.from(new Set<number>(classGroup.entries.map((entry) => entry.day_of_week))).map((day) => (
-              <div key={day}>
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
-                  {DAY_LABELS[day]}
-                </p>
-                <div className="mt-2 space-y-2">
-                  {classGroup.entries
-                    .filter((entry) => entry.day_of_week === day)
-                    .map((entry) => (
-                      <div
-                        key={entry.id}
-                        role={editable ? 'button' : undefined}
-                        tabIndex={editable ? 0 : undefined}
-                        onClick={editable ? () => onEdit(entry) : undefined}
-                        onKeyDown={editable ? (event) => {
-                          if (event.key === 'Enter' || event.key === ' ') onEdit(entry);
-                        } : undefined}
-                        className={`block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs ${editable ? 'cursor-pointer hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : ''}`}
-                      >
-                        <span className="font-bold text-[#181c20]">
-                          {formatTime(entry.start_time)} {entry.subject_name}
-                        </span>
-                        <span className="mt-1 block text-[#667085]">
-                          {entry.teacher_name ?? 'Professor pendente'}
-                          {entry.locked ? ' · Fixo' : ''}
-                        </span>
-                      </div>
-                    ))}
-                </div>
-              </div>
-            ))}
+          <div className="overflow-x-auto p-4">
+            <table className="w-full min-w-[980px] table-fixed border-collapse text-left">
+              <thead>
+                <tr>
+                  <th className="w-32 border border-[#e4e8f1] bg-slate-50 px-3 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
+                    Horário
+                  </th>
+                  {[1, 2, 3, 4, 5].map((day) => (
+                    <th key={day} className="border border-[#e4e8f1] bg-slate-50 px-3 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
+                      {DAY_LABELS[day]}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {classGroup.timeRows.map((timeRow) => (
+                  <tr key={`${timeRow.startTime}:${timeRow.endTime}`}>
+                    <th className="w-32 border border-[#e4e8f1] bg-slate-50 px-3 py-3 align-top text-xs font-bold whitespace-nowrap text-[#344054]">
+                      {formatTime(timeRow.startTime)}
+                      <span className="mt-1 block font-normal text-[#667085]">até {formatTime(timeRow.endTime)}</span>
+                    </th>
+                    {[1, 2, 3, 4, 5].map((day) => {
+                      const cellEntries = classGroup.entries.filter(
+                        (entry) =>
+                          entry.day_of_week === day &&
+                          entry.start_time === timeRow.startTime &&
+                          entry.end_time === timeRow.endTime,
+                      );
+                      return (
+                        <td key={day} className="h-24 border border-[#e4e8f1] bg-white p-2 align-top">
+                          {cellEntries.length > 0 ? (
+                            <div className="space-y-2">
+                              {cellEntries.map((entry) => (
+                                <div
+                                  key={entry.id}
+                                  role={editable ? 'button' : undefined}
+                                  tabIndex={editable ? 0 : undefined}
+                                  onClick={editable ? () => onEdit(entry) : undefined}
+                                  onKeyDown={editable ? (event) => {
+                                    if (event.key === 'Enter' || event.key === ' ') onEdit(entry);
+                                  } : undefined}
+                                  className={`block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs ${editable ? 'cursor-pointer hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : ''}`}
+                                >
+                                  <span className="font-bold text-[#181c20]">
+                                    {formatTime(entry.start_time)} {entry.subject_name}
+                                  </span>
+                                  <span className="mt-1 block text-[#667085]">
+                                    {entry.teacher_name ?? 'Professor pendente'}
+                                    {entry.locked ? ' · Fixo' : ''}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <span className="text-sm text-[#98a2b3]">—</span>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </section>
       ))}
