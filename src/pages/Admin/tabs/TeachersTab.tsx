@@ -1,4 +1,5 @@
 import {
+  useMemo,
   useState,
   type FormEvent,
 } from 'react';
@@ -141,6 +142,29 @@ export default function TeachersTab() {
     setFeedbackMessage,
   ] = useState<string | null>(null);
 
+  const subjectCoverage = useMemo(() => {
+    const activeTeachers = (teachersQuery.data ?? []).filter(
+      (teacher) => teacher.active && teacher.profiles?.active !== false,
+    );
+    const teacherCountBySubject = new Map<string, number>();
+
+    for (const teacher of activeTeachers) {
+      for (const subject of teacher.subjects) {
+        teacherCountBySubject.set(
+          subject.id,
+          (teacherCountBySubject.get(subject.id) ?? 0) + 1,
+        );
+      }
+    }
+
+    return (subjectsQuery.data ?? [])
+      .filter((subject) => subject.active)
+      .map((subject) => ({
+        ...subject,
+        teacherCount: teacherCountBySubject.get(subject.id) ?? 0,
+      }));
+  }, [subjectsQuery.data, teachersQuery.data]);
+
   const columns: Column<TeacherRow>[] = [
     {
       id: 'teacher-name',
@@ -156,6 +180,26 @@ export default function TeachersTab() {
       label: 'E-mail',
       render: (_value, row) =>
         row.profiles?.email ?? '—',
+    },
+    {
+      key: 'subjects',
+      label: 'Disciplinas vinculadas',
+      render: (_value, row) => (
+        row.subjects.length > 0 ? (
+          <div className="flex max-w-xs flex-wrap gap-1">
+            {row.subjects.map((subject) => (
+              <span
+                key={subject.id}
+                className="rounded-full bg-blue-50 px-2 py-1 text-xs text-blue-800"
+              >
+                {subject.name}{subject.primary ? ' · principal' : ''}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <span className="text-xs text-amber-700">Nenhuma vinculada</span>
+        )
+      ),
     },
     {
       key: 'joined_at',
@@ -217,6 +261,13 @@ export default function TeachersTab() {
     if (!institutionId) {
       setModalError(
         'A instituição não foi carregada.',
+      );
+      return;
+    }
+
+    if (formData.subject_ids.length === 0) {
+      setModalError(
+        'Selecione pelo menos uma disciplina para vincular ao professor.',
       );
       return;
     }
@@ -340,16 +391,42 @@ export default function TeachersTab() {
       )}
 
       {(pageError ||
-        teachersQuery.isError) && (
+        teachersQuery.isError ||
+        subjectsQuery.isError) && (
         <div
           role="alert"
           className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
         >
           {pageError ??
             getErrorMessage(
-              teachersQuery.error,
+              teachersQuery.error ??
+                subjectsQuery.error,
             )}
         </div>
+      )}
+
+      {subjectCoverage.length > 0 && (
+        <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h3 className="font-bold text-[#181c20]">Cobertura das disciplinas</h3>
+              <p className="mt-1 text-sm text-gray-500">Cada disciplina precisa de pelo menos um professor ativo vinculado.</p>
+            </div>
+            <span className="text-sm text-gray-600">
+              {subjectCoverage.filter((subject) => subject.teacherCount > 0).length}/{subjectCoverage.length} cobertas
+            </span>
+          </div>
+          <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {subjectCoverage.map((subject) => (
+              <div key={subject.id} className="flex items-center justify-between gap-3 rounded-lg border border-gray-100 px-3 py-2 text-sm">
+                <span className="min-w-0 truncate text-gray-800">{subject.name}</span>
+                <span className={subject.teacherCount > 0 ? 'shrink-0 text-xs font-semibold text-green-700' : 'shrink-0 text-xs font-semibold text-amber-700'}>
+                  {subject.teacherCount > 0 ? `${subject.teacherCount} professor(es)` : 'Sem professor'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
       )}
 
       <DataTable
@@ -450,9 +527,14 @@ export default function TeachersTab() {
               </div>
 
               <div>
-                <p className="block text-sm font-medium text-gray-700">
-                  Disciplinas que pode lecionar
-                </p>
+                <div className="flex items-center justify-between gap-3">
+                  <p className="block text-sm font-medium text-gray-700">
+                    Disciplinas vinculadas ao professor
+                  </p>
+                  <span className="text-xs text-gray-500">
+                    {formData.subject_ids.length} selecionada(s)
+                  </span>
+                </div>
                 <div className="mt-2 grid max-h-40 gap-2 overflow-y-auto rounded-lg border p-3 sm:grid-cols-2">
                   {(subjectsQuery.data ?? [])
                     .filter((subject) => subject.active)

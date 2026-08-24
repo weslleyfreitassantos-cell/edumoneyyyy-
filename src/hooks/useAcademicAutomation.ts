@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
+import { classAutomationService } from '../services/classAutomationService';
 import { timetableAutomationService, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
 
 export const academicAutomationKeys = {
@@ -111,6 +112,22 @@ export function useApplyCurriculumTemplate() {
     mutationFn: academicAutomationService.applyCurriculumTemplate,
     onSuccess: async (_result, variables) => {
       await queryClient.invalidateQueries({ queryKey: ['curriculum', variables.institution_id] });
+    },
+  });
+}
+
+export function useCreateClassBatch() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: classAutomationService.createBatch,
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['classes', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['curriculum', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['assignments', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['admin-overview', variables.institutionId] }),
+      ]);
     },
   });
 }

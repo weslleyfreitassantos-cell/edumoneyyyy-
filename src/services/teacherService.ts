@@ -13,6 +13,12 @@ export interface TeacherProfileSummary {
   active: boolean | null;
 }
 
+export interface TeacherSubjectSummary {
+  id: string;
+  name: string;
+  primary: boolean;
+}
+
 export interface TeacherRow {
   id: string;
   profile_id: string;
@@ -20,6 +26,7 @@ export interface TeacherRow {
   active: boolean;
   joined_at?: string;
   profiles: TeacherProfileSummary | null;
+  subjects: TeacherSubjectSummary[];
 }
 
 interface TeacherQueryRow {
@@ -83,6 +90,58 @@ export const teacherService = {
       throw error;
     }
 
+    const { data: links, error: linksError } = await supabase
+      .from('teacher_subjects')
+      .select('teacher_profile_id, subject_id, primary_subject')
+      .eq('institution_id', institutionId)
+      .eq('active', true);
+
+    if (linksError) {
+      throw linksError;
+    }
+
+    const subjectIds = [
+      ...new Set(
+        (links ?? []).map((link) => String(link.subject_id)),
+      ),
+    ];
+
+    const subjectsById = new Map<string, { id: string; name: string }>();
+
+    if (subjectIds.length > 0) {
+      const { data: subjects, error: subjectsError } = await supabase
+        .from('subjects')
+        .select('id, name')
+        .eq('institution_id', institutionId)
+        .in('id', subjectIds);
+
+      if (subjectsError) {
+        throw subjectsError;
+      }
+
+      for (const subject of subjects ?? []) {
+        subjectsById.set(String(subject.id), {
+          id: String(subject.id),
+          name: String(subject.name),
+        });
+      }
+    }
+
+    const subjectsByTeacher = new Map<string, TeacherSubjectSummary[]>();
+
+    for (const link of links ?? []) {
+      const subject = subjectsById.get(String(link.subject_id));
+      if (!subject) continue;
+
+      const teacherSubjects = subjectsByTeacher.get(String(link.teacher_profile_id)) ?? [];
+      teacherSubjects.push({
+        id: subject.id,
+        name: subject.name,
+        primary: link.primary_subject === true,
+      });
+      subjectsByTeacher.set(String(link.teacher_profile_id), teacherSubjects);
+    }
+
     const rows =
       (data ??
         []) as unknown as TeacherQueryRow[];
@@ -99,6 +158,10 @@ export const teacherService = {
         normalizeTeacherProfile(
           row.profiles,
         ),
+      subjects: (subjectsByTeacher.get(row.profile_id) ?? []).sort((left, right) => {
+        if (left.primary !== right.primary) return left.primary ? -1 : 1;
+        return left.name.localeCompare(right.name, 'pt-BR');
+      }),
     }));
   },
 

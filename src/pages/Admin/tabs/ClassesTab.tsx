@@ -10,6 +10,7 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import ClassAutomationPanel from '../../../components/academic/ClassAutomationPanel';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -129,6 +130,9 @@ export default function ClassesTab() {
     useSetClassActive();
 
   const [isModalOpen, setIsModalOpen] =
+    useState(false);
+
+  const [isAutomationOpen, setIsAutomationOpen] =
     useState(false);
 
   const [
@@ -517,6 +521,15 @@ export default function ClassesTab() {
       <DataTable
         title="Turmas"
         addLabel="Nova turma"
+        extraHeaderActions={(
+          <button
+            type="button"
+            onClick={() => setIsAutomationOpen(true)}
+            className="rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-medium text-[#005bbf] transition-colors hover:bg-blue-50"
+          >
+            Automatizar turmas
+          </button>
+        )}
         data={filteredClasses}
         columns={columns}
         isLoading={
@@ -579,6 +592,17 @@ export default function ClassesTab() {
           );
         }}
       />
+
+      {isAutomationOpen && (
+        <ClassAutomationPanel
+          institutionId={institutionId}
+          onClose={() => setIsAutomationOpen(false)}
+          onCompleted={(message) => {
+            setFeedbackMessage(message);
+            setPageError(null);
+          }}
+        />
+      )}
 
       {isModalOpen && (
         <div
