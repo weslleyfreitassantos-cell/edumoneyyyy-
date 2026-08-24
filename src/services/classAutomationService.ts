@@ -20,6 +20,82 @@ export interface ClassBatchResult {
   uncoveredSubjects: string[];
 }
 
+export interface EducationPresetGrade {
+  key: string;
+  label: string;
+  baseName: string;
+  gradeLevel: string;
+  stage: string;
+  defaultClassCount: number;
+}
+
+export interface EducationPresetInput {
+  institutionId: string;
+  academicYearId: string;
+  classCounts: Record<string, number>;
+  shift?: string;
+  capacity: number;
+  templateId?: string;
+  assignTeachers: boolean;
+}
+
+export const EDUCATION_PRESET_GRADES: EducationPresetGrade[] = [
+  ...Array.from({ length: 5 }, (_, index) => ({
+    key: `fundamental-${index + 1}`,
+    label: `${index + 1}º ano`,
+    baseName: `${index + 1}º ano`,
+    gradeLevel: String(index + 1),
+    stage: 'Ensino Fundamental - anos iniciais',
+    defaultClassCount: 2,
+  })),
+  ...Array.from({ length: 4 }, (_, index) => ({
+    key: `fundamental-${index + 6}`,
+    label: `${index + 6}º ano`,
+    baseName: `${index + 6}º ano`,
+    gradeLevel: String(index + 6),
+    stage: 'Ensino Fundamental - anos finais',
+    defaultClassCount: 2,
+  })),
+  ...Array.from({ length: 3 }, (_, index) => ({
+    key: `medio-${index + 1}`,
+    label: `${index + 1}ª série do Ensino Médio`,
+    baseName: `${index + 1}ª série EM`,
+    gradeLevel: `${index + 1}º EM`,
+    stage: 'Ensino Médio',
+    defaultClassCount: 2,
+  })),
+];
+
+export interface EducationPresetClassDefinition {
+  grade: EducationPresetGrade;
+  count: number;
+  names: string[];
+}
+
+export function buildEducationPresetClassDefinitions(
+  classCounts: Record<string, number>,
+): EducationPresetClassDefinition[] {
+  const definitions = EDUCATION_PRESET_GRADES.map((grade) => {
+    const count = classCounts[grade.key] ?? grade.defaultClassCount;
+
+    if (!Number.isInteger(count) || count < 0 || count > 26) {
+      throw new Error(`A quantidade de turmas para ${grade.label} deve estar entre 0 e 26.`);
+    }
+
+    return {
+      grade,
+      count,
+      names: count > 0 ? buildClassBatchNames(grade.baseName, count) : [],
+    };
+  });
+
+  if (definitions.every((definition) => definition.count === 0)) {
+    throw new Error('Informe pelo menos uma turma no preset escolar.');
+  }
+
+  return definitions;
+}
+
 interface TemplateItemRow {
   subject_id: string;
   weekly_lessons: number;
@@ -307,6 +383,42 @@ export const classAutomationService = {
       }
     }
 
+    return result;
+  },
+
+  async createEducationPreset(input: EducationPresetInput): Promise<ClassBatchResult> {
+    const definitions = buildEducationPresetClassDefinitions(input.classCounts);
+    const result: ClassBatchResult = {
+      createdClassIds: [],
+      createdClassNames: [],
+      curriculumItemsApplied: 0,
+      assignmentsCreated: 0,
+      uncoveredSubjects: [],
+    };
+
+    for (const definition of definitions) {
+      if (definition.count === 0) continue;
+
+      const batch = await this.createBatch({
+        institutionId: input.institutionId,
+        academicYearId: input.academicYearId,
+        baseName: definition.grade.baseName,
+        count: definition.count,
+        gradeLevel: definition.grade.gradeLevel,
+        shift: input.shift,
+        capacity: input.capacity,
+        templateId: input.templateId,
+        assignTeachers: input.assignTeachers,
+      });
+
+      result.createdClassIds.push(...batch.createdClassIds);
+      result.createdClassNames.push(...batch.createdClassNames);
+      result.curriculumItemsApplied += batch.curriculumItemsApplied;
+      result.assignmentsCreated += batch.assignmentsCreated;
+      result.uncoveredSubjects.push(...batch.uncoveredSubjects);
+    }
+
+    result.uncoveredSubjects = [...new Set(result.uncoveredSubjects)];
     return result;
   },
 };

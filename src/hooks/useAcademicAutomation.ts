@@ -132,6 +132,22 @@ export function useCreateClassBatch() {
   });
 }
 
+export function useCreateEducationPreset() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: classAutomationService.createEducationPreset,
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['classes', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['curriculum', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['assignments', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: ['admin-overview', variables.institutionId] }),
+      ]);
+    },
+  });
+}
+
 export function useSaveSchoolTimeSlots() {
   const queryClient = useQueryClient();
   return useMutation({
