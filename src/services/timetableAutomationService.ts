@@ -206,38 +206,46 @@ export const timetableAutomationService = {
     versionId: string,
     institutionId: string,
   ): Promise<TimetableVersionEntryRow[]> {
-    const { data, error } = await supabase
-      .from('timetable_version_entries')
-      .select(`
-        id,
-        version_id,
-        institution_id,
-        academic_year_id,
-        term_id,
-        class_id,
-        subject_offering_id,
-        room_id,
-        day_of_week,
-        start_time,
-        end_time,
-        locked,
-        active,
-        classes:class_id (name),
-        subject_offerings:subject_offering_id (
-          teacher_profile_id,
-          subjects:subject_id (name),
-          profiles:teacher_profile_id (full_name)
-        )
-      `)
-      .eq('version_id', versionId)
-      .eq('institution_id', institutionId)
-      .order('class_id')
-      .order('day_of_week')
-      .order('start_time');
+    const pageSize = 500;
+    const rows: Array<Record<string, unknown>> = [];
 
-    if (error) throw error;
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await supabase
+        .from('timetable_version_entries')
+        .select(`
+          id,
+          version_id,
+          institution_id,
+          academic_year_id,
+          term_id,
+          class_id,
+          subject_offering_id,
+          room_id,
+          day_of_week,
+          start_time,
+          end_time,
+          locked,
+          active,
+          classes:class_id (name),
+          subject_offerings:subject_offering_id (
+            teacher_profile_id,
+            subjects:subject_id (name),
+            profiles:teacher_profile_id (full_name)
+          )
+        `)
+        .eq('version_id', versionId)
+        .eq('institution_id', institutionId)
+        .order('class_id')
+        .order('day_of_week')
+        .order('start_time')
+        .range(offset, offset + pageSize - 1);
 
-    return ((data ?? []) as Array<Record<string, unknown>>).map((row) => {
+      if (error) throw error;
+      rows.push(...((data ?? []) as Array<Record<string, unknown>>));
+      if (!data || data.length < pageSize) break;
+    }
+
+    return rows.map((row) => {
       const classRelation = row.classes as { name?: string } | { name?: string }[] | null;
       const offeringRelation = row.subject_offerings as {
         teacher_profile_id?: string;
