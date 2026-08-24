@@ -73,6 +73,35 @@ async function listActiveOfferings(institutionId: string) {
   return offerings;
 }
 
+async function listActiveOfferingsForReview(institutionId: string) {
+  const pageSize = 1000;
+  const offerings: Array<Record<string, unknown>> = [];
+
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await supabase
+      .from('subject_offerings')
+      .select(`
+        id,
+        class_id,
+        subject_id,
+        teacher_profile_id,
+        term_id,
+        classes:class_id!inner (name, institution_id),
+        subjects:subject_id (name),
+        profiles:teacher_profile_id (full_name)
+      `)
+      .eq('classes.institution_id', institutionId)
+      .eq('active', true)
+      .range(offset, offset + pageSize - 1);
+
+    if (error) throw error;
+    offerings.push(...((data ?? []) as Array<Record<string, unknown>>));
+    if (!data || data.length < pageSize) break;
+  }
+
+  return offerings;
+}
+
 async function prepareAutomaticAssignments(input: {
   institutionId: string;
   academicYearId: string;
@@ -226,13 +255,7 @@ export const timetableAutomationService = {
           start_time,
           end_time,
           locked,
-          active,
-          classes:class_id (name),
-          subject_offerings:subject_offering_id (
-            teacher_profile_id,
-            subjects:subject_id (name),
-            profiles:teacher_profile_id (full_name)
-          )
+          active
         `)
         .eq('version_id', versionId)
         .eq('institution_id', institutionId);
@@ -249,23 +272,26 @@ export const timetableAutomationService = {
       lastId = String(data[data.length - 1].id);
     }
 
+    const offeringRows = await listActiveOfferingsForReview(institutionId);
+    const offeringsById = new Map(
+      offeringRows.map((row) => {
+        const first = <T,>(value: T | T[] | null | undefined): T | null =>
+          Array.isArray(value) ? value[0] ?? null : value ?? null;
+        const classRelation = first(row.classes) as { name?: string } | null;
+        const subjectRelation = first(row.subjects) as { name?: string } | null;
+        const teacherRelation = first(row.profiles) as { full_name?: string } | null;
+
+        return [String(row.id), {
+          className: classRelation?.name ?? 'Turma',
+          subjectName: subjectRelation?.name ?? 'Matéria',
+          teacherProfileId: String(row.teacher_profile_id ?? ''),
+          teacherName: teacherRelation?.full_name ?? null,
+        }];
+      }),
+    );
+
     const entries = rows.map((row) => {
-      const classRelation = row.classes as { name?: string } | { name?: string }[] | null;
-      const offeringRelation = row.subject_offerings as {
-        teacher_profile_id?: string;
-        subjects?: { name?: string } | { name?: string }[] | null;
-        profiles?: { full_name?: string } | { full_name?: string }[] | null;
-      } | {
-        teacher_profile_id?: string;
-        subjects?: { name?: string } | { name?: string }[] | null;
-        profiles?: { full_name?: string } | { full_name?: string }[] | null;
-      }[] | null;
-      const first = <T,>(value: T | T[] | null | undefined): T | null =>
-        Array.isArray(value) ? value[0] ?? null : value ?? null;
-      const className = first(classRelation)?.name ?? 'Turma';
-      const offering = first(offeringRelation);
-      const subject = first(offering?.subjects);
-      const teacher = first(offering?.profiles);
+      const offering = offeringsById.get(String(row.subject_offering_id));
 
       return {
         id: String(row.id),
@@ -274,11 +300,11 @@ export const timetableAutomationService = {
         academic_year_id: String(row.academic_year_id),
         term_id: String(row.term_id),
         class_id: String(row.class_id),
-        class_name: className,
+        class_name: offering?.className ?? 'Turma',
         subject_offering_id: String(row.subject_offering_id),
-        subject_name: subject?.name ?? 'Matéria',
-        teacher_profile_id: offering?.teacher_profile_id ?? '',
-        teacher_name: teacher?.full_name ?? null,
+        subject_name: offering?.subjectName ?? 'Matéria',
+        teacher_profile_id: offering?.teacherProfileId ?? '',
+        teacher_name: offering?.teacherName ?? null,
         room_id: row.room_id ? String(row.room_id) : null,
         day_of_week: Number(row.day_of_week),
         start_time: String(row.start_time),
