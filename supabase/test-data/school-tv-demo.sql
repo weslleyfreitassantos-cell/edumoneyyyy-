@@ -215,13 +215,46 @@ create temporary table school_tv_demo_users (
   class_id uuid
 ) on commit drop;
 
+-- Create a QA teacher pool sized for the current weekly demand. The divisor of
+-- 25 keeps the fixture schedulable even when classes use five daily slots.
 insert into school_tv_demo_users (email, full_name, role, subject_code)
 select
-  'qa.professor.' || lower(s.code) || '@school-tv.test',
-  'Professor QA - ' || s.name,
+  'qa.professor.' || lower(s.code) || '.' || lpad(teacher_number.value::text, 2, '0') || '@school-tv.test',
+  'Professor QA ' || lpad(teacher_number.value::text, 2, '0') || ' - ' || s.name,
   'TEACHER'::public.user_role,
   s.code
 from public.subjects s
+join (
+  with class_subject_load as (
+    select
+      c.id as class_id,
+      item.subject_id,
+      max(item.weekly_lessons) as weekly_lessons
+    from public.classes c
+    join public.curriculum_templates template
+      on template.institution_id = c.institution_id
+     and (
+       (c.grade_level between '1' and '5' and template.name = 'QA - Ensino Fundamental I')
+       or (c.grade_level between '6' and '9' and template.name = 'QA - Ensino Fundamental II')
+       or (c.grade_level in ('1º EM', '2º EM', '3º EM') and template.name = 'QA - Ensino Médio')
+     )
+     and template.active is true
+    join public.curriculum_template_items item
+      on item.template_id = template.id
+     and item.institution_id = c.institution_id
+     and item.active is true
+    where c.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
+      and c.active is true
+    group by c.id, item.subject_id
+  )
+  select
+    subject_id,
+    greatest(2, ceil(sum(weekly_lessons)::numeric / 25)::integer) as teacher_count
+  from class_subject_load
+  group by subject_id
+) as subject_demand
+  on subject_demand.subject_id = s.id
+cross join lateral generate_series(1, subject_demand.teacher_count) as teacher_number(value)
 where s.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
   and s.active is true;
 
@@ -445,38 +478,96 @@ where u.role = 'STUDENT'
       and existing_enrollment.academic_year_id = y.id
   );
 
+create temporary table school_tv_demo_teacher_assignments (
+  class_id uuid not null,
+  subject_id uuid not null,
+  teacher_profile_id uuid not null,
+  primary key (class_id, subject_id)
+) on commit drop;
+
+with teacher_pool as (
+  select
+    s.id as subject_id,
+    md5(u.email)::uuid as teacher_profile_id,
+    row_number() over (partition by s.id order by u.email) - 1 as teacher_index,
+    count(*) over (partition by s.id) as teacher_count
+  from school_tv_demo_users u
+  join public.subjects s
+    on s.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
+   and s.code = u.subject_code
+  where u.role = 'TEACHER'::public.user_role
+), class_subject_pairs as (
+  select distinct
+    item.class_id,
+    item.subject_id
+  from public.class_curriculum_items item
+  join public.classes c
+    on c.id = item.class_id
+   and c.institution_id = item.institution_id
+   and c.active is true
+  where item.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
+    and item.active is true
+), ranked_pairs as (
+  select
+    class_id,
+    subject_id,
+    row_number() over (partition by subject_id order by class_id) - 1 as assignment_index
+  from class_subject_pairs
+)
+insert into school_tv_demo_teacher_assignments (class_id, subject_id, teacher_profile_id)
+select
+  ranked.class_id,
+  ranked.subject_id,
+  pool.teacher_profile_id
+from ranked_pairs ranked
+join teacher_pool pool
+  on pool.subject_id = ranked.subject_id
+ and pool.teacher_index = mod(ranked.assignment_index, pool.teacher_count);
+
+create temporary table school_tv_demo_target_offerings on commit drop as
+select
+  assignment.subject_id,
+  assignment.class_id,
+  assignment.teacher_profile_id,
+  term.id as term_id
+from school_tv_demo_teacher_assignments assignment
+join public.classes class_record
+  on class_record.id = assignment.class_id
+join public.terms term
+  on term.academic_year_id = class_record.academic_year_id
+ and term.active is true;
+
+-- Rebalance only synthetic QA assignments. Real/manual teacher choices remain intact.
+update public.subject_offerings offering
+set teacher_profile_id = target.teacher_profile_id,
+    updated_at = now()
+from school_tv_demo_target_offerings target
+where offering.class_id = target.class_id
+  and offering.subject_id = target.subject_id
+  and offering.term_id = target.term_id
+  and offering.active is true
+  and offering.teacher_profile_id in (
+    select profile.id
+    from public.profiles profile
+    where profile.email like 'qa.professor.%@school-tv.test'
+  );
+
 insert into public.subject_offerings (subject_id, class_id, teacher_profile_id, term_id, active)
 select
-  item.subject_id,
-  item.class_id,
-  teacher_subject.teacher_profile_id,
-  term.id,
+  target.subject_id,
+  target.class_id,
+  target.teacher_profile_id,
+  target.term_id,
   true
-from public.class_curriculum_items item
-join public.teacher_subjects teacher_subject
-  on teacher_subject.institution_id = item.institution_id
- and teacher_subject.subject_id = item.subject_id
- and teacher_subject.active is true
-join public.terms term
-  on term.academic_year_id = (
-    select y.id
-    from public.academic_years y
-    where y.institution_id = item.institution_id
-      and lower(trim(y.name)) = 'primeiro ano'
-    order by y.start_date desc
-    limit 1
-  )
- and term.active is true
-where item.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
-  and not exists (
-    select 1
-    from public.subject_offerings existing_offering
-    where existing_offering.subject_id = item.subject_id
-      and existing_offering.class_id = item.class_id
-      and existing_offering.teacher_profile_id = teacher_subject.teacher_profile_id
-      and existing_offering.term_id = term.id
-      and existing_offering.active is true
-  );
+from school_tv_demo_target_offerings target
+where not exists (
+  select 1
+  from public.subject_offerings existing_offering
+  where existing_offering.subject_id = target.subject_id
+    and existing_offering.class_id = target.class_id
+    and existing_offering.term_id = target.term_id
+    and existing_offering.active is true
+);
 
 commit;
 
