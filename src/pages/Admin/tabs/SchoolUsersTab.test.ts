@@ -340,6 +340,8 @@ describe('SchoolUsersTab integration', () => {
 
     expect(screen.getByText('Página 1 de 2')).toBeTruthy();
     expect(screen.getByText('Aluno 01')).toBeTruthy();
+    expect(screen.getByText('Aluno 06')).toBeTruthy();
+    expect(screen.queryByText('Aluno 07')).toBeNull();
     expect(screen.queryByText('Aluno 11')).toBeNull();
 
     fireEvent.click(

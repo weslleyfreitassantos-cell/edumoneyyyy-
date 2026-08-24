@@ -87,7 +87,7 @@ const editableRoleOptions: {
   { value: 'GUARDIAN', label: 'Responsável' },
 ];
 
-const SCHOOL_USERS_PAGE_SIZE = 10;
+const SCHOOL_USERS_PAGE_SIZE = 6;
 
 export interface SchoolUserSummary {
   total: number;
@@ -303,9 +303,9 @@ function SchoolUsersTable({
 }) {
   return (
     <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
-      <div className="max-h-[520px] overflow-auto">
+      <div className="overflow-x-auto">
         <table className="min-w-[920px] w-full text-sm">
-          <thead className="sticky top-0 z-10 bg-gray-50 shadow-[0_1px_0_#dfe3e8]">
+          <thead className="bg-gray-50">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-gray-700">
                 Nome
