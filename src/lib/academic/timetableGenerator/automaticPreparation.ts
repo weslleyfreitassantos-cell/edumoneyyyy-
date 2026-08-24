@@ -39,6 +39,9 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
     ['08:50', '09:40'],
     ['09:40', '10:30'],
     ['10:50', '11:40'],
+    ['11:40', '12:30'],
+    ['13:00', '13:50'],
+    ['13:50', '14:40'],
   ],
   VESPERTINO: [
     ['13:00', '13:50'],
@@ -46,6 +49,9 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
     ['14:50', '15:40'],
     ['15:40', '16:30'],
     ['16:50', '17:40'],
+    ['17:40', '18:30'],
+    ['18:50', '19:40'],
+    ['19:40', '20:30'],
   ],
   NOTURNO: [
     ['18:30', '19:20'],
@@ -133,7 +139,10 @@ export function planAutomaticAssignments(input: AutomaticAssignmentInput): Autom
   return { assignments, unassigned };
 }
 
-export function buildDefaultTimeSlots(shifts: string[]): AutomaticTimeSlot[] {
+export function buildDefaultTimeSlots(
+  shifts: string[],
+  slotsPerDayByShift: Record<string, number> = {},
+): AutomaticTimeSlot[] {
   const uniqueShifts = [...new Set(shifts.map((shift) => shift.trim()).filter(Boolean))];
   const effectiveShifts = uniqueShifts.length > 0 ? uniqueShifts : ['MATUTINO'];
   const slots: AutomaticTimeSlot[] = [];
@@ -141,8 +150,9 @@ export function buildDefaultTimeSlots(shifts: string[]): AutomaticTimeSlot[] {
   for (const shift of effectiveShifts) {
     const normalizedShift = normalizeAcademicShift(shift);
     const times = STANDARD_SLOT_TIMES[normalizedShift] ?? STANDARD_SLOT_TIMES.MATUTINO;
+    const requestedSlots = slotsPerDayByShift[normalizedShift] ?? times.length;
     for (let day = 1; day <= 5; day += 1) {
-      times.forEach(([start_time, end_time], index) => {
+      times.slice(0, requestedSlots).forEach(([start_time, end_time], index) => {
         slots.push({
           shift,
           day_of_week: day,

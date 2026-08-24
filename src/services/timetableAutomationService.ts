@@ -144,13 +144,29 @@ async function prepareAutomaticRooms(input: {
 
 async function prepareAutomaticTimeSlots(input: {
   institutionId: string;
-  classes: Array<{ shift: string | null }>;
+  classes: Array<{ id: string; shift: string | null }>;
+  curriculumItems: Array<{ class_id: string; weekly_lessons: number }>;
   slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>;
 }): Promise<{ slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>; created: number }> {
   const requiredShifts = [...new Set(input.classes.map((classRecord) => normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')))];
-  const configuredShifts = new Set(input.slots.map((slot) => normalizeAcademicShift(slot.shift)));
-  const missingShifts = requiredShifts.filter((shift) => !configuredShifts.has(shift));
-  const defaults = buildDefaultTimeSlots(missingShifts);
+  const classShifts = new Map(input.classes.map((classRecord) => [classRecord.id, normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')]));
+  const weeklyLoadByShift = new Map<string, number>();
+  for (const [classId, shift] of classShifts) {
+    const weeklyLoad = input.curriculumItems
+      .filter((item) => item.class_id === classId)
+      .reduce((total, item) => total + Math.max(0, item.weekly_lessons), 0);
+    weeklyLoadByShift.set(shift, Math.max(weeklyLoadByShift.get(shift) ?? 0, weeklyLoad));
+  }
+  const slotsPerDayByShift = Object.fromEntries(requiredShifts.map((shift) => [
+    shift,
+    Math.max(
+      shift === 'INTEGRAL' ? 8 : 5,
+      Math.ceil((weeklyLoadByShift.get(shift) ?? 0) / 5),
+    ),
+  ]));
+  const targetSlots = buildDefaultTimeSlots(requiredShifts, slotsPerDayByShift);
+  const existingPositions = new Set(input.slots.map((slot) => `${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
+  const defaults = targetSlots.filter((slot) => !existingPositions.has(`${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
   if (defaults.length === 0) return { slots: input.slots, created: 0 };
 
   const { error } = await supabase.from('school_time_slots').upsert(defaults.map((slot) => ({
@@ -339,6 +355,7 @@ export const timetableAutomationService = {
     const automaticSlots = await prepareAutomaticTimeSlots({
       institutionId: input.institutionId,
       classes,
+      curriculumItems,
       slots: slotsResult.data ?? [],
     });
 

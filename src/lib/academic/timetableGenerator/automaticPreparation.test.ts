@@ -37,9 +37,12 @@ describe('automatic timetable preparation', () => {
 
   it('creates standard slots for custom and integral shifts', () => {
     const slots = buildDefaultTimeSlots(['Integral', 'Noturno']);
+    const expandedMorning = buildDefaultTimeSlots(['MATUTINO'], { MATUTINO: 8 });
 
     expect(slots.filter((slot) => slot.shift === 'Integral')).toHaveLength(40);
     expect(slots.filter((slot) => slot.shift === 'Noturno')).toHaveLength(25);
     expect(slots[0]).toMatchObject({ shift: 'Integral', day_of_week: 1, start_time: '07:00' });
+    expect(expandedMorning).toHaveLength(40);
+    expect(expandedMorning.at(-1)).toMatchObject({ day_of_week: 5, slot_number: 8, end_time: '14:40' });
   });
 });
