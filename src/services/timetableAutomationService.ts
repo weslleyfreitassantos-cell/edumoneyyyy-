@@ -208,9 +208,10 @@ export const timetableAutomationService = {
   ): Promise<TimetableVersionEntryRow[]> {
     const pageSize = 500;
     const rows: Array<Record<string, unknown>> = [];
+    let lastId: string | null = null;
 
-    for (let offset = 0; ; offset += pageSize) {
-      const { data, error } = await supabase
+    for (;;) {
+      let query = supabase
         .from('timetable_version_entries')
         .select(`
           id,
@@ -234,12 +235,18 @@ export const timetableAutomationService = {
           )
         `)
         .eq('version_id', versionId)
-        .eq('institution_id', institutionId)
-        .range(offset, offset + pageSize - 1);
+        .eq('institution_id', institutionId);
+
+      if (lastId) query = query.gt('id', lastId);
+
+      const { data, error } = await query
+        .order('id')
+        .limit(pageSize);
 
       if (error) throw error;
       rows.push(...((data ?? []) as Array<Record<string, unknown>>));
       if (!data || data.length < pageSize) break;
+      lastId = String(data[data.length - 1].id);
     }
 
     const entries = rows.map((row) => {
