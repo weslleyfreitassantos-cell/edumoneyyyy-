@@ -370,7 +370,7 @@ export const timetableAutomationService = {
     if (error) throw error;
   },
 
-  async generateDraft(input: { institutionId: string; academicYearId: string; createdBy: string; seed?: string; name?: string; sourceVersionId?: string }): Promise<GeneratedDraft> {
+  async generateDraft(input: { institutionId: string; academicYearId: string; createdBy: string; shift?: string; seed?: string; name?: string; sourceVersionId?: string }): Promise<GeneratedDraft> {
     const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult] = await Promise.all([
       supabase.from('terms').select('id, academic_year_id, start_date, end_date').eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('classes').select('id, institution_id, academic_year_id, name, shift').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
@@ -385,7 +385,15 @@ export const timetableAutomationService = {
     const failed = [termsResult, classesResult, curriculumResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
     if (failed?.error) throw failed.error;
 
-    const classes = classesResult.data ?? [];
+    const selectedShift = input.shift && input.shift !== 'TODOS'
+      ? normalizeAcademicShift(input.shift)
+      : null;
+    const classes = (classesResult.data ?? []).filter((classRecord) =>
+      !selectedShift || normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO') === selectedShift,
+    );
+    if (classes.length === 0) {
+      throw new Error('Nenhuma turma encontrada para o turno selecionado.');
+    }
     const curriculumItems = curriculumResult.data ?? [];
     const termIds = (termsResult.data ?? []).map((term) => term.id);
     const automaticAssignments = await prepareAutomaticAssignments({
@@ -411,13 +419,15 @@ export const timetableAutomationService = {
 
     let lockedEntries = undefined;
     if (input.sourceVersionId) {
-      const lockedResult = await supabase
+      let lockedQuery = supabase
         .from('timetable_version_entries')
         .select('institution_id, academic_year_id, term_id, class_id, subject_offering_id, room_id, day_of_week, start_time, end_time, locked, subject_offerings:subject_offering_id(subject_id, teacher_profile_id)')
         .eq('version_id', input.sourceVersionId)
         .eq('institution_id', input.institutionId)
         .eq('locked', true)
         .eq('active', true);
+      if (selectedShift) lockedQuery = lockedQuery.in('class_id', classes.map((classRecord) => classRecord.id));
+      const lockedResult = await lockedQuery;
 
       if (lockedResult.error) throw lockedResult.error;
       lockedEntries = (lockedResult.data ?? []).map((entry) => {

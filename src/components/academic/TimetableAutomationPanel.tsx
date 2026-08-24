@@ -5,20 +5,11 @@ import {
   useGenerateTimetableDraft,
   useDeleteTimetableVersion,
   usePublishTimetableVersion,
-  useSaveSchoolTimeSlots,
-  useSchoolTimeSlots,
   useTimetableVersionEntries,
   useTimetableVersions,
   useUpdateTimetableVersionEntry,
 } from '../../hooks/useAcademicAutomation';
 import type { TimetableVersionEntryRow } from '../../services/timetableAutomationService';
-
-interface SlotDraft {
-  day_of_week: number;
-  slot_number: number;
-  start_time: string;
-  end_time: string;
-}
 
 interface EntryDraft {
   day_of_week: number;
@@ -128,15 +119,23 @@ function VersionReview({
                           {cellEntries.length > 0 ? (
                             <div className="space-y-2">
                               {cellEntries.map((entry) => (
-                                <div
+                                editable ? <button
+                                  type="button"
                                   key={entry.id}
-                                  role={editable ? 'button' : undefined}
-                                  tabIndex={editable ? 0 : undefined}
-                                  onClick={editable ? () => onEdit(entry) : undefined}
-                                  onKeyDown={editable ? (event) => {
-                                    if (event.key === 'Enter' || event.key === ' ') onEdit(entry);
-                                  } : undefined}
-                                  className={`block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs ${editable ? 'cursor-pointer hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : ''}`}
+                                  aria-label={`Editar ${entry.subject_name} às ${formatTime(entry.start_time)}`}
+                                  onClick={() => onEdit(entry)}
+                                  className="block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]"
+                                >
+                                  <span className="font-bold text-[#181c20]">
+                                    {formatTime(entry.start_time)} {entry.subject_name}
+                                  </span>
+                                  <span className="mt-1 block text-[#667085]">
+                                    {entry.teacher_name ?? 'Professor pendente'}
+                                    {entry.locked ? ' · Fixo' : ''}
+                                  </span>
+                                </button> : <div
+                                  key={entry.id}
+                                  className="block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs"
                                 >
                                   <span className="font-bold text-[#181c20]">
                                     {formatTime(entry.start_time)} {entry.subject_name}
@@ -186,23 +185,9 @@ export default function TimetableAutomationPanel({
   const [editingEntry, setEditingEntry] = useState<TimetableVersionEntryRow | null>(null);
   const [entryDraft, setEntryDraft] = useState<EntryDraft | null>(null);
 
-  const [shift, setShift] = useState('MATUTINO');
-  const slotsQuery = useSchoolTimeSlots(institutionId, shift);
-  const saveSlotsMutation = useSaveSchoolTimeSlots();
-  const [slots, setSlots] = useState<SlotDraft[]>([]);
+  const [generationShift, setGenerationShift] = useState('TODOS');
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setSlots(
-      (slotsQuery.data ?? []).map((slot) => ({
-        day_of_week: slot.day_of_week,
-        slot_number: slot.slot_number,
-        start_time: formatTime(slot.start_time),
-        end_time: formatTime(slot.end_time),
-      })),
-    );
-  }, [slotsQuery.data]);
 
   useEffect(() => {
     if (
@@ -221,6 +206,7 @@ export default function TimetableAutomationPanel({
         institutionId,
         academicYearId: selectedYearId,
         createdBy,
+        shift: generationShift,
         sourceVersionId,
         seed: `${institutionId}:${selectedYearId}`,
       });
@@ -287,16 +273,6 @@ export default function TimetableAutomationPanel({
     }
   }
 
-  async function saveSlots(): Promise<void> {
-    setError(null);
-    try {
-      await saveSlotsMutation.mutateAsync({ institution_id: institutionId, shift, slots });
-      setMessage('Horários da escola salvos.');
-    } catch (saveError) {
-      setError(getErrorMessage(saveError));
-    }
-  }
-
   function openEntryEditor(entry: TimetableVersionEntryRow): void {
     setEditingEntry(entry);
     setEntryDraft({
@@ -335,7 +311,7 @@ export default function TimetableAutomationPanel({
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Grade horária</p>
           <h3 className="mt-1 text-lg font-bold text-[#181c20]">Quais horários sua escola utiliza?</h3>
-          <p className="mt-1 text-sm text-[#667085]">Configure os slots por turno, gere um rascunho e revise por turma antes da publicação.</p>
+          <p className="mt-1 text-sm text-[#667085]">Escolha o turno, gere os horários automaticamente e revise cada aula antes da publicação.</p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
           <label className="text-sm font-semibold text-[#344054]">
@@ -347,6 +323,21 @@ export default function TimetableAutomationPanel({
               className="mt-1 block rounded-lg border border-[#d8deea] px-3 py-2 text-sm"
             >
               {years.map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+            </select>
+          </label>
+          <label className="text-sm font-semibold text-[#344054]">
+            Turno do gerador
+            <select
+              aria-label="Turno do gerador"
+              value={generationShift}
+              onChange={(event) => setGenerationShift(event.target.value)}
+              className="mt-1 block rounded-lg border border-[#d8deea] px-3 py-2 text-sm"
+            >
+              <option value="TODOS">Todos os turnos</option>
+              <option value="MATUTINO">Manhã</option>
+              <option value="VESPERTINO">Tarde</option>
+              <option value="NOTURNO">Noite</option>
+              <option value="INTEGRAL">Integral</option>
             </select>
           </label>
           <button
@@ -362,55 +353,6 @@ export default function TimetableAutomationPanel({
 
       {message && <div role="status" className="rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">{message}</div>}
       {error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
-
-      <section className="rounded-lg border border-[#e4e8f1] p-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h4 className="font-semibold text-[#181c20]">Horários da escola</h4>
-            <p className="text-xs text-[#667085]">Intervalos não são aulas. Cada turma usará somente o turno compatível.</p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <label className="text-sm font-semibold text-[#344054]">
-              Turno
-              <select aria-label="Turno dos horários" value={shift} onChange={(event) => setShift(event.target.value)} className="ml-2 rounded-lg border border-[#d8deea] px-3 py-2 text-sm font-normal">
-                <option value="MATUTINO">Manhã</option>
-                <option value="VESPERTINO">Tarde</option>
-                <option value="NOTURNO">Noite</option>
-                <option value="INTEGRAL">Integral</option>
-              </select>
-            </label>
-            <button
-              type="button"
-              onClick={() => setSlots((current) => [...current, { day_of_week: 1, slot_number: current.length + 1, start_time: '07:00', end_time: '07:50' }])}
-              className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
-            >
-              + Adicionar horário
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-3 space-y-2">
-          {slots.map((slot, index) => (
-            <div key={`${slot.day_of_week}-${slot.slot_number}-${index}`} className="grid gap-2 sm:grid-cols-[1fr_1fr_1fr_auto]">
-              <select
-                aria-label={`Dia do horário ${index + 1}`}
-                value={slot.day_of_week}
-                onChange={(event) => setSlots((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, day_of_week: Number(event.target.value) } : item))}
-                className="rounded-lg border border-[#d8deea] px-3 py-2 text-sm"
-              >
-                {DAY_LABELS.slice(1).map((label, dayIndex) => <option key={label} value={dayIndex + 1}>{label}</option>)}
-              </select>
-              <input aria-label={`Início do horário ${index + 1}`} type="time" value={slot.start_time} onChange={(event) => setSlots((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_time: event.target.value } : item))} className="rounded-lg border border-[#d8deea] px-3 py-2 text-sm" />
-              <input aria-label={`Fim do horário ${index + 1}`} type="time" value={slot.end_time} onChange={(event) => setSlots((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_time: event.target.value } : item))} className="rounded-lg border border-[#d8deea] px-3 py-2 text-sm" />
-              <button type="button" onClick={() => setSlots((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Remover</button>
-            </div>
-          ))}
-          {slots.length === 0 && <p className="rounded-lg bg-slate-50 px-3 py-3 text-sm text-[#667085]">Nenhum horário cadastrado para este turno.</p>}
-        </div>
-        <button type="button" onClick={() => void saveSlots()} disabled={saveSlotsMutation.isPending} className="mt-3 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white disabled:opacity-50">
-          {saveSlotsMutation.isPending ? 'Salvando...' : 'Salvar horários'}
-        </button>
-      </section>
 
       <section>
         <div>

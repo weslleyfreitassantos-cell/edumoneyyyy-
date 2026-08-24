@@ -8,8 +8,6 @@ import {
   useGenerateTimetableDraft,
   useDeleteTimetableVersion,
   usePublishTimetableVersion,
-  useSaveSchoolTimeSlots,
-  useSchoolTimeSlots,
   useTimetableVersionEntries,
   useTimetableVersions,
   useUpdateTimetableVersionEntry,
@@ -25,14 +23,11 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
   useGenerateTimetableDraft: vi.fn(),
   useDeleteTimetableVersion: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
-  useSaveSchoolTimeSlots: vi.fn(),
-  useSchoolTimeSlots: vi.fn(),
   useTimetableVersionEntries: vi.fn(),
   useTimetableVersions: vi.fn(),
   useUpdateTimetableVersionEntry: vi.fn(),
 }));
 
-const slotMutation = { mutateAsync: vi.fn(), isPending: false };
 const generateMutation = { mutateAsync: vi.fn(), isPending: false };
 const deleteMutation = { mutateAsync: vi.fn(), isPending: false };
 const publishMutation = { mutateAsync: vi.fn(), isPending: false };
@@ -41,12 +36,6 @@ const updateEntryMutation = { mutateAsync: vi.fn(), isPending: false };
 function mockDefaults() {
   vi.mocked(useAcademicYears).mockReturnValue({
     data: [{ id: 'year-1', name: '2026', start_date: '2026-01-01', end_date: '2026-12-31', active: true, terms: [] }],
-    isLoading: false,
-    isError: false,
-    error: null,
-  } as never);
-  vi.mocked(useSchoolTimeSlots).mockReturnValue({
-    data: [],
     isLoading: false,
     isError: false,
     error: null,
@@ -63,7 +52,6 @@ function mockDefaults() {
     isError: false,
     error: null,
   } as never);
-  vi.mocked(useSaveSchoolTimeSlots).mockReturnValue(slotMutation as never);
   vi.mocked(useGenerateTimetableDraft).mockReturnValue(generateMutation as never);
   vi.mocked(useDeleteTimetableVersion).mockReturnValue(deleteMutation as never);
   vi.mocked(usePublishTimetableVersion).mockReturnValue(publishMutation as never);
@@ -81,22 +69,26 @@ afterEach(() => {
 });
 
 describe('TimetableAutomationPanel', () => {
-  it('configura os horários e oferece a geração automática', async () => {
+  it('conecta o turno ao gerador sem exibir o editor manual de horários', async () => {
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
 
     expect(screen.getByText('Quais horários sua escola utiliza?')).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Gerar grade automaticamente' })).toBeTruthy();
+    expect((screen.getByRole('combobox', { name: 'Turno do gerador' }) as HTMLSelectElement).value).toBe('TODOS');
     expect(screen.getByRole('option', { name: 'Integral' })).toBeTruthy();
+    expect(screen.queryByText('Horários da escola')).toBeNull();
 
-    fireEvent.click(screen.getByRole('button', { name: /adicionar horário/i }));
-    expect(screen.getByLabelText('Dia do horário 1')).toBeTruthy();
+    generateMutation.mutateAsync.mockResolvedValue({
+      valid: false,
+      entries: [],
+      diagnostics: [],
+    });
+    fireEvent.change(screen.getByRole('combobox', { name: 'Turno do gerador' }), { target: { value: 'MATUTINO' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade automaticamente' }));
 
-    fireEvent.click(screen.getByRole('button', { name: 'Salvar horários' }));
     await waitFor(() => {
-      expect(slotMutation.mutateAsync).toHaveBeenCalledWith(expect.objectContaining({
-        institution_id: 'institution-1',
+      expect(generateMutation.mutateAsync).toHaveBeenCalledWith(expect.objectContaining({
         shift: 'MATUTINO',
-        slots: [expect.objectContaining({ day_of_week: 1 })],
       }));
     });
   });
@@ -141,7 +133,7 @@ describe('TimetableAutomationPanel', () => {
     expect(screen.getByRole('columnheader', { name: 'Horário' })).toBeTruthy();
     expect(screen.getByRole('columnheader', { name: 'Segunda' })).toBeTruthy();
     expect(screen.getByRole('columnheader', { name: 'Sexta' })).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: /07:00 Português/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Editar Português às 07:00/i }));
 
     expect(screen.getByText('Bloqueado/Fixo: preservar ao regenerar')).toBeTruthy();
     expect(screen.getByRole('checkbox')).toBeTruthy();
