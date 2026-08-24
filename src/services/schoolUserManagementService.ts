@@ -32,14 +32,24 @@ export interface LinkGuardianPayload {
   isPrimary: boolean;
 }
 
+export interface UpdateStudentIdentityPayload {
+  action: 'update_student_identity';
+  institutionId: string;
+  studentId: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+}
+
 export type ManageSchoolUserPayload =
   | UpdateSchoolUserPayload
   | DeleteSchoolUserPayload
-  | LinkGuardianPayload;
+  | LinkGuardianPayload
+  | UpdateStudentIdentityPayload;
 
 export interface ManageSchoolUserResponse {
   success: true;
-  action: 'update' | 'delete' | 'link_guardian';
+  action: 'update' | 'delete' | 'link_guardian' | 'update_student_identity';
   membershipId: string;
   profileId: string;
   guardianshipId?: string;

@@ -11,6 +11,8 @@ import {
 } from '../../../components/DataTable';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { useAcademicYears } from '../../../hooks/useAcademicStructure';
+import { useClasses } from '../../../hooks/useClasses';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
@@ -29,6 +31,7 @@ import {
 } from '../../../schemas/adminSchemas';
 
 import type { StudentRow } from '../../../services/studentService';
+import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 
 interface StudentDraft {
   full_name: string;
@@ -102,8 +105,17 @@ export default function StudentsTab() {
   const studentsQuery =
     useStudents(institutionId);
 
+  const yearsQuery =
+    useAcademicYears(institutionId);
+
+  const classesQuery =
+    useClasses(institutionId);
+
   const [isModalOpen, setIsModalOpen] =
     useState(false);
+
+  const [fullEditStudentId, setFullEditStudentId] =
+    useState<string | null>(null);
 
   const [
     editingStudent,
@@ -307,17 +319,8 @@ export default function StudentsTab() {
     student: StudentRow,
   ): void {
     resetMessages();
-    setEditingStudent(student);
-
-    setFormData({
-      full_name:
-        student.profiles?.full_name ?? '',
-      email: student.profiles?.email ?? '',
-      birth_date: student.birth_date,
-      cpf: student.cpf ?? '',
-    });
-
-    setIsModalOpen(true);
+    setEditingStudent(null);
+    setFullEditStudentId(student.id);
   }
 
   function closeModal(): void {
@@ -553,6 +556,22 @@ export default function StudentsTab() {
           );
         }}
       />
+
+      {fullEditStudentId && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={yearsQuery.data ?? []}
+          classes={classesQuery.data ?? []}
+          mode="edit"
+          studentId={fullEditStudentId}
+          onClose={() => setFullEditStudentId(null)}
+          onUseExistingStudent={() => undefined}
+          onCompleted={() => {
+            setFullEditStudentId(null);
+            setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
+          }}
+        />
+      )}
 
       {isModalOpen && (
         <div

@@ -1,6 +1,7 @@
 import { supabase } from '../lib/supabaseClient';
 
 import { schoolUserInviteService } from './schoolUserInviteService';
+import { schoolUserManagementService } from './schoolUserManagementService';
 
 export interface FullStudentIdentity {
   full_name: string;
@@ -104,6 +105,25 @@ export interface FullEnrollmentResult {
   documents_pending: number;
 }
 
+export interface StudentEditorData {
+  studentId: string;
+  enrollmentId: string | null;
+  draft: FullStudentEnrollmentDraft;
+}
+
+const editorDocumentTypes = [
+  'Certidao de nascimento',
+  'RG',
+  'CPF',
+  'Comprovante de endereco',
+  'Historico escolar',
+  'Declaracao de transferencia',
+  'Carteira de vacinacao',
+  'Laudo ou relatorio',
+  'Foto 3x4',
+  'Outros',
+];
+
 export class FullStudentEnrollmentError extends Error {
   studentId?: string;
   guardianProfileIds: Record<number, string>;
@@ -133,6 +153,202 @@ function normalize(value: string): string {
 function clean(value: string): string | undefined {
   const trimmed = value.trim();
   return trimmed ? trimmed : undefined;
+}
+
+function relationOne<T>(value: T | T[] | null): T | null {
+  return Array.isArray(value) ? value[0] ?? null : value;
+}
+
+function textValue(value: unknown, fallback = ''): string {
+  return typeof value === 'string' ? value : fallback;
+}
+
+function dateValue(value: unknown): string {
+  return textValue(value).slice(0, 10);
+}
+
+function emptyEditorDocuments(
+  rows: Array<{ document_type: string; status: StudentDocumentStatus; notes: string | null }>,
+): StudentDocumentDraft[] {
+  const byType = new Map(rows.map((row) => [row.document_type, row]));
+  return editorDocumentTypes.map((documentType) => {
+    const row = byType.get(documentType);
+    return {
+      document_type: documentType,
+      status: row?.status ?? 'PENDING',
+      notes: row?.notes ?? '',
+    };
+  });
+}
+
+export async function getFullStudentEditorData(
+  institutionId: string,
+  studentId: string,
+): Promise<StudentEditorData> {
+  const [studentResult, detailsResult, addressResult, previousResult, healthResult, documentsResult, guardiansResult, enrollmentResult] = await Promise.all([
+    supabase
+      .from('students')
+      .select('id, profile_id, birth_date, cpf, profiles:profile_id(full_name, email, phone)')
+      .eq('id', studentId)
+      .eq('institution_id', institutionId)
+      .maybeSingle(),
+    supabase
+      .from('student_registration_details')
+      .select('social_name, rg, rg_issuing_authority, rg_state, birth_certificate, nationality, birthplace, birth_state, sex')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .maybeSingle(),
+    supabase
+      .from('student_addresses')
+      .select('postal_code, street, number, complement, neighborhood, city, state, rural_zone')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .maybeSingle(),
+    supabase
+      .from('student_previous_schooling')
+      .select('origin_school, origin_network, city, state, last_grade, origin_year, status, observations, history_delivered, transfer_declaration')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .maybeSingle(),
+    supabase
+      .from('student_health_information')
+      .select('allergies, health_conditions, emergency_medication, disability, autism, giftedness, needs_special_education, school_care_notes')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .maybeSingle(),
+    supabase
+      .from('student_documents')
+      .select('document_type, status, notes')
+      .eq('student_id', studentId)
+      .eq('institution_id', institutionId)
+      .order('document_type'),
+    supabase
+      .from('guardianships')
+      .select('guardian_profile_id, relationship, is_primary, active, profiles:guardian_profile_id(full_name, email, phone)')
+      .eq('student_id', studentId)
+      .eq('active', true)
+      .order('created_at'),
+    supabase
+      .from('enrollments')
+      .select('id, academic_year_id, class_id, enrolled_at, active')
+      .eq('student_id', studentId)
+      .eq('active', true)
+      .order('created_at', { ascending: false })
+      .limit(1)
+      .maybeSingle(),
+  ]);
+
+  const results = [
+    studentResult,
+    detailsResult,
+    addressResult,
+    previousResult,
+    healthResult,
+    documentsResult,
+    guardiansResult,
+    enrollmentResult,
+  ];
+  const failed = results.find((result) => result.error);
+  if (failed?.error) throw failed.error;
+
+  const student = studentResult.data as unknown as {
+    id: string;
+    birth_date: string | null;
+    cpf: string | null;
+    profiles: { full_name: string; email: string; phone: string | null } | { full_name: string; email: string; phone: string | null }[] | null;
+  } | null;
+  if (!student) {
+    throw new Error('Aluno nao encontrado na instituicao ativa.');
+  }
+
+  const details = detailsResult.data as unknown as Record<string, unknown> | null;
+  const address = addressResult.data as unknown as Record<string, unknown> | null;
+  const previous = previousResult.data as unknown as Record<string, unknown> | null;
+  const health = healthResult.data as unknown as Record<string, unknown> | null;
+  const enrollment = enrollmentResult.data as unknown as { id: string; academic_year_id: string; class_id: string; enrolled_at: string | null } | null;
+  const profile = relationOne(student.profiles);
+  const guardianRows = (guardiansResult.data ?? []) as unknown as Array<{
+    guardian_profile_id: string;
+    relationship: string;
+    is_primary: boolean;
+    profiles: { full_name: string; email: string; phone: string | null } | { full_name: string; email: string; phone: string | null }[] | null;
+  }>;
+  const documentRows = (documentsResult.data ?? []) as unknown as Array<{
+    document_type: string;
+    status: StudentDocumentStatus;
+    notes: string | null;
+  }>;
+
+  return {
+    studentId: student.id,
+    enrollmentId: enrollment?.id ?? null,
+    draft: {
+      identity: {
+        full_name: profile?.full_name ?? '',
+        email: profile?.email ?? '',
+        birth_date: dateValue(student.birth_date),
+        cpf: student.cpf ?? '',
+        social_name: textValue(details?.social_name),
+        rg: textValue(details?.rg),
+        rg_issuing_authority: textValue(details?.rg_issuing_authority),
+        rg_state: textValue(details?.rg_state),
+        birth_certificate: textValue(details?.birth_certificate),
+        nationality: textValue(details?.nationality, 'Brasileira'),
+        birthplace: textValue(details?.birthplace),
+        birth_state: textValue(details?.birth_state),
+        sex: textValue(details?.sex),
+        phone: profile?.phone ?? '',
+      },
+      address: {
+        postal_code: textValue(address?.postal_code),
+        street: textValue(address?.street),
+        number: textValue(address?.number),
+        complement: textValue(address?.complement),
+        neighborhood: textValue(address?.neighborhood),
+        city: textValue(address?.city),
+        state: textValue(address?.state),
+        rural_zone: address?.rural_zone === true,
+      },
+      guardians: guardianRows.map((guardian) => {
+        const guardianProfile = relationOne(guardian.profiles);
+        return {
+          mode: 'existing' as const,
+          profile_id: guardian.guardian_profile_id,
+          full_name: guardianProfile?.full_name ?? '',
+          email: guardianProfile?.email ?? '',
+          phone: guardianProfile?.phone ?? '',
+          relationship: guardian.relationship,
+          is_primary: guardian.is_primary,
+        };
+      }),
+      previous_schooling: {
+        origin_school: textValue(previous?.origin_school),
+        origin_network: textValue(previous?.origin_network),
+        city: textValue(previous?.city),
+        state: textValue(previous?.state),
+        last_grade: textValue(previous?.last_grade),
+        origin_year: previous?.origin_year == null ? '' : String(previous.origin_year),
+        status: textValue(previous?.status),
+        observations: textValue(previous?.observations),
+        history_delivered: previous?.history_delivered === true,
+        transfer_declaration: previous?.transfer_declaration === true,
+      },
+      health: {
+        allergies: textValue(health?.allergies),
+        health_conditions: textValue(health?.health_conditions),
+        emergency_medication: textValue(health?.emergency_medication),
+        disability: textValue(health?.disability),
+        autism: health?.autism === true,
+        giftedness: health?.giftedness === true,
+        needs_special_education: health?.needs_special_education === true,
+        school_care_notes: textValue(health?.school_care_notes),
+      },
+      documents: emptyEditorDocuments(documentRows),
+      academic_year_id: enrollment?.academic_year_id ?? '',
+      class_id: enrollment?.class_id ?? '',
+      enrolled_at: dateValue(enrollment?.enrolled_at) || new Date().toISOString().slice(0, 10),
+    },
+  };
 }
 
 export async function findDuplicateStudentCandidates(
@@ -200,10 +416,12 @@ function toRpcPayload(
   institutionId: string,
   draft: FullStudentEnrollmentDraft,
   studentId: string,
+  enrollmentId?: string | null,
 ): Record<string, unknown> {
   return {
     institution_id: institutionId,
     student_id: studentId,
+    enrollment_id: enrollmentId ?? null,
     academic_year_id: draft.academic_year_id,
     class_id: draft.class_id,
     enrolled_at: draft.enrolled_at,
@@ -328,4 +546,64 @@ export async function createFullStudentEnrollment(
       },
     );
   }
+}
+
+export async function updateFullStudentEnrollment(
+  institutionId: string,
+  studentId: string,
+  enrollmentId: string | null,
+  draft: FullStudentEnrollmentDraft,
+): Promise<void> {
+  await schoolUserManagementService.manage({
+    action: 'update_student_identity',
+    institutionId,
+    studentId,
+    fullName: draft.identity.full_name,
+    email: draft.identity.email,
+    phone: draft.identity.phone || null,
+  });
+
+  const guardianProfileIds: Record<number, string> = {};
+  for (const [index, guardian] of draft.guardians.entries()) {
+    if (guardian.profile_id) {
+      guardianProfileIds[index] = guardian.profile_id;
+      continue;
+    }
+
+    const createdGuardian = await schoolUserInviteService.invite({
+      institutionId,
+      role: 'GUARDIAN',
+      fullName: guardian.full_name,
+      email: guardian.email,
+      phone: clean(guardian.phone),
+      guardian: {
+        studentId,
+        relationship: guardian.relationship,
+      },
+    });
+    guardianProfileIds[index] = createdGuardian.profileId;
+  }
+
+  const payload = toRpcPayload(
+    institutionId,
+    {
+      ...draft,
+      guardians: draft.guardians.map((guardian, index) => ({
+        ...guardian,
+        profile_id: guardian.profile_id || guardianProfileIds[index] || '',
+      })),
+    },
+    studentId,
+    enrollmentId,
+  );
+
+  const { error } = await supabase.rpc(
+    'update_full_student_enrollment_bundle',
+    { p_payload: payload },
+  );
+
+  if (error) {
+    throw error;
+  }
+
 }

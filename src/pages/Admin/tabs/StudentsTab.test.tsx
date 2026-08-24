@@ -34,6 +34,24 @@ vi.mock('../../../hooks/useCurrentInstitution', () => ({
   }),
 }));
 
+vi.mock('../../../hooks/useAcademicStructure', () => ({
+  useAcademicYears: () => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  }),
+}));
+
+vi.mock('../../../hooks/useClasses', () => ({
+  useClasses: () => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  }),
+}));
+
 vi.mock('../../../hooks/useStudents', () => ({
   useStudents: () => ({
     data: [

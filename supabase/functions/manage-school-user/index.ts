@@ -70,6 +70,14 @@ const requestSchema = z.discriminatedUnion("action", [
     password: z.string().min(8).max(72).optional(),
   }).strict(),
   z.object({
+    action: z.literal("update_student_identity"),
+    institutionId: z.guid(),
+    studentId: z.guid(),
+    fullName: z.string().trim().min(3).max(120),
+    email: z.string().trim().toLowerCase().email(),
+    phone: z.string().trim().max(40).nullable().optional(),
+  }).strict(),
+  z.object({
     action: z.literal("delete"),
     institutionId: z.guid(),
     membershipId: z.guid(),
@@ -469,6 +477,100 @@ async function handleUpdate(
     membershipId: membership.id,
     profileId: membership.profile_id,
     message: "Usuario atualizado com sucesso.",
+  });
+}
+
+async function handleUpdateStudentIdentity(
+  ctx: SupabaseFunctionContext,
+  requesterId: string,
+  input: Extract<RequestData, { action: "update_student_identity" }>,
+) {
+  const { data: student, error: studentError } = await ctx.supabaseAdmin
+    .from("students")
+    .select("id, profile_id, institution_id")
+    .eq("id", input.studentId)
+    .eq("institution_id", input.institutionId)
+    .maybeSingle();
+
+  if (studentError) throw studentError;
+  if (!student) {
+    throw new ManageSchoolUserError({
+      status: 404,
+      code: "STUDENT_NOT_FOUND",
+      message: "Aluno nao encontrado nesta instituicao.",
+    });
+  }
+
+  await assertTargetCanBeManaged(ctx, requesterId, student.profile_id);
+
+  const { data: existingProfile, error: existingProfileError } = await ctx.supabaseAdmin
+    .from("profiles")
+    .select("email")
+    .eq("id", student.profile_id)
+    .maybeSingle();
+
+  if (existingProfileError) throw existingProfileError;
+
+  const { data: emailOwner, error: emailOwnerError } = await ctx.supabaseAdmin
+    .from("profiles")
+    .select("id")
+    .eq("email", input.email)
+    .neq("id", student.profile_id)
+    .maybeSingle();
+
+  if (emailOwnerError) throw emailOwnerError;
+  if (emailOwner) {
+    throw new ManageSchoolUserError({
+      status: 409,
+      code: "EMAIL_ALREADY_IN_USE",
+      message: "Este e-mail ja esta cadastrado.",
+      fieldErrors: { email: "Este e-mail ja esta cadastrado." },
+    });
+  }
+
+  const previousEmail = existingProfile?.email ?? input.email;
+  let authEmailChanged = false;
+
+  if (previousEmail.toLowerCase() !== input.email) {
+    const { error: authError } = await ctx.supabaseAdmin.auth.admin.updateUserById(
+      student.profile_id,
+      { email: input.email, email_confirm: true },
+    );
+    if (authError) {
+      throw new ManageSchoolUserError({
+        status: 422,
+        code: "EMAIL_UPDATE_FAILED",
+        message: "Nao foi possivel atualizar o e-mail do aluno.",
+      });
+    }
+    authEmailChanged = true;
+  }
+
+  const { error: profileError } = await ctx.supabaseAdmin
+    .from("profiles")
+    .update({
+      full_name: input.fullName,
+      email: input.email,
+      phone: input.phone ?? null,
+    })
+    .eq("id", student.profile_id);
+
+  if (profileError) {
+    if (authEmailChanged) {
+      await ctx.supabaseAdmin.auth.admin.updateUserById(
+        student.profile_id,
+        { email: previousEmail, email_confirm: true },
+      );
+    }
+    throw profileError;
+  }
+
+  return jsonSuccess({
+    success: true,
+    action: "update_student_identity",
+    membershipId: "",
+    profileId: student.profile_id,
+    message: "Identidade do aluno atualizada com sucesso.",
   });
 }
 
@@ -938,13 +1040,17 @@ const authenticatedFetch = withSupabase<Database>(
           {
             allowOperationalManager:
               input.action === "link_guardian" ||
-              (input.action === "update" && input.password !== undefined),
+              (input.action === "update" && input.password !== undefined) ||
+              input.action === "update_student_identity",
             allowDirectorDelete: input.action === "delete",
           },
         );
 
         if (input.action === "update") {
           return await handleUpdate(ctx, user.id, input, authorization);
+        }
+        if (input.action === "update_student_identity") {
+          return await handleUpdateStudentIdentity(ctx, user.id, input);
         }
         if (input.action === "delete") {
           return await handleDelete(ctx, user.id, input, authorization);

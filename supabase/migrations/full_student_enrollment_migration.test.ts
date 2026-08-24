@@ -6,6 +6,11 @@ const migration = readFileSync(
   'utf8',
 );
 
+const updateMigration = readFileSync(
+  new URL('./20260824000100_update_full_student_enrollment.sql', import.meta.url),
+  'utf8',
+);
+
 describe('full student enrollment migration', () => {
   it('cria os registros complementares da matricula', () => {
     expect(migration).toContain('create table if not exists public.student_registration_details');
@@ -33,5 +38,14 @@ describe('full student enrollment migration', () => {
     expect(migration.toLowerCase()).not.toContain('drop table');
     expect(migration.toLowerCase()).not.toContain('db push');
     expect(migration.toLowerCase()).not.toContain('functions deploy');
+  });
+
+  it('disponibiliza uma atualizacao completa sem recriar a matricula', () => {
+    expect(updateMigration).toContain('create or replace function public.update_full_student_enrollment_bundle');
+    expect(updateMigration).toContain('update public.students');
+    expect(updateMigration).toContain('update public.enrollments');
+    expect(updateMigration).toContain('grant execute on function public.update_full_student_enrollment_bundle(jsonb) to authenticated');
+    expect(updateMigration).not.toContain('insert into public.enrollments');
+    expect(updateMigration).not.toContain('Associe pelo menos um responsavel ao aluno.');
   });
 });
