@@ -135,6 +135,8 @@ interface Candidate {
   roomId: string | null;
 }
 
+const MAX_CONSECUTIVE_SUBJECT_LESSONS = 2;
+
 function timeToMinutes(value: string): number {
   const [hours, minutes] = value.slice(0, 5).split(':').map(Number);
   return hours * 60 + minutes;
@@ -201,6 +203,69 @@ function candidateRooms(input: TimetableGeneratorInput, entries: GeneratorEntry[
     .map((room) => room.id);
 }
 
+function exceedsConsecutiveSubjectLimit(
+  input: TimetableGeneratorInput,
+  entries: GeneratorEntry[],
+  demand: Demand,
+  slot: GeneratorTimeSlot,
+  terms: Map<string, GeneratorTerm>,
+): boolean {
+  const compatibleSlots = input.schoolTimeSlots
+    .filter(
+      (schoolSlot) =>
+        schoolSlot.active &&
+        schoolSlot.institutionId === input.institutionId &&
+        schoolSlot.dayOfWeek === slot.dayOfWeek &&
+        normalizeAcademicShift(schoolSlot.shift) === normalizeAcademicShift(slot.shift),
+    )
+    .sort((left, right) => left.slotNumber - right.slotNumber);
+  const subjectSlots = new Set<number>([slot.slotNumber]);
+
+  for (const entry of entries) {
+    if (
+      entry.classId !== demand.classRecord.id ||
+      entry.subjectId !== demand.curriculum.subjectId ||
+      entry.dayOfWeek !== slot.dayOfWeek
+    ) {
+      continue;
+    }
+
+    const existingTerm = terms.get(entry.termId);
+    if (!existingTerm || !termsOverlap(existingTerm, demand.term)) continue;
+
+    const matchingSlot = compatibleSlots.find(
+      (schoolSlot) =>
+        schoolSlot.startTime === entry.startTime &&
+        schoolSlot.endTime === entry.endTime,
+    );
+    if (matchingSlot) subjectSlots.add(matchingSlot.slotNumber);
+  }
+
+  let consecutiveLessons = 1;
+  for (let slotNumber = slot.slotNumber - 1; subjectSlots.has(slotNumber); slotNumber -= 1) {
+    consecutiveLessons += 1;
+  }
+  for (let slotNumber = slot.slotNumber + 1; subjectSlots.has(slotNumber); slotNumber += 1) {
+    consecutiveLessons += 1;
+  }
+
+  return consecutiveLessons > MAX_CONSECUTIVE_SUBJECT_LESSONS;
+}
+
+function classDayLoad(
+  entries: GeneratorEntry[],
+  demand: Demand,
+  dayOfWeek: number,
+  terms: Map<string, GeneratorTerm>,
+): number {
+  return entries.filter((entry) => {
+    const existingTerm = terms.get(entry.termId);
+    return entry.classId === demand.classRecord.id &&
+      entry.dayOfWeek === dayOfWeek &&
+      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
+  }).length;
+}
+
 function buildDiagnostics(input: TimetableGeneratorInput, demand: Demand, reason: string): GeneratorDiagnostic {
   const subjectLabel = input.subjectLabels?.[demand.curriculum.subjectId] ?? demand.curriculum.subjectId;
   return {
@@ -209,7 +274,7 @@ function buildDiagnostics(input: TimetableGeneratorInput, demand: Demand, reason
     classId: demand.classRecord.id,
     subjectId: demand.curriculum.subjectId,
     teacherProfileId: demand.offering.teacherProfileId,
-    suggestions: ['Expand teacher availability.', 'Add or adjust school time slots.', 'Review the teacher assignment or weekly workload.'],
+    suggestions: ['Expand teacher availability.', 'Add or adjust school time slots.', 'Distribute the subject across different periods; no more than two consecutive lessons are allowed.', 'Review the teacher assignment or weekly workload.'],
   };
 }
 
@@ -332,19 +397,38 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
     const demand = ranked.demand;
     const classShift = demand.classRecord.shift === null ? null : normalizeAcademicShift(demand.classRecord.shift);
     const candidates: Candidate[] = [];
+    let blockedByConsecutiveSubjectLimit = false;
     for (const slot of allSlots) {
       if (classShift !== null && normalizeAcademicShift(slot.shift) !== classShift) continue;
       if (timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) < demand.curriculum.lessonDurationMinutes) continue;
       if (!hasTeacherAvailability(input, demand, slot)) continue;
       if (entries.some((entry) => entry.classId === demand.classRecord.id && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
       if (entries.some((entry) => entry.teacherProfileId === demand.offering.teacherProfileId && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
+      if (exceedsConsecutiveSubjectLimit(input, entries, demand, slot, terms)) {
+        blockedByConsecutiveSubjectLimit = true;
+        continue;
+      }
       const roomIds = candidateRooms(input, entries, demand, { slot, roomId: null }, terms);
       for (const roomId of roomIds) candidates.push({ slot, roomId: roomId === (null as unknown as string) ? null : roomId });
     }
-    candidates.sort((left, right) => left.slot.dayOfWeek - right.slot.dayOfWeek || left.slot.slotNumber - right.slot.slotNumber || compareIds(left.roomId ?? '', right.roomId ?? '', seed));
+    candidates.sort((left, right) =>
+      classDayLoad(entries, demand, left.slot.dayOfWeek, terms) -
+        classDayLoad(entries, demand, right.slot.dayOfWeek, terms) ||
+      left.slot.dayOfWeek - right.slot.dayOfWeek ||
+      left.slot.slotNumber - right.slot.slotNumber ||
+      compareIds(left.roomId ?? '', right.roomId ?? '', seed),
+    );
     const chosen = candidates[0];
     if (!chosen) {
-      diagnostics.push(buildDiagnostics(input, demand, ranked.possibleCount === 0 ? 'no compatible slot is available' : 'all compatible slots are occupied'));
+      diagnostics.push(buildDiagnostics(
+        input,
+        demand,
+        blockedByConsecutiveSubjectLimit
+          ? 'the subject cannot be scheduled more than two lessons consecutively'
+          : ranked.possibleCount === 0
+            ? 'no compatible slot is available'
+            : 'all compatible slots are occupied',
+      ));
       continue;
     }
     entries.push({ institutionId: input.institutionId, academicYearId: input.academicYearId, termId: demand.term.id, classId: demand.classRecord.id, subjectOfferingId: demand.offering.id, teacherProfileId: demand.offering.teacherProfileId, subjectId: demand.offering.subjectId, roomId: chosen.roomId, dayOfWeek: chosen.slot.dayOfWeek, startTime: chosen.slot.startTime, endTime: chosen.slot.endTime, locked: false });

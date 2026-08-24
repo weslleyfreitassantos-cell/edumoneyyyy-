@@ -43,6 +43,75 @@ describe('timetable generator', () => {
     expect(result.entries.length).toBeLessThan(5);
   });
 
+  it('does not schedule more than two consecutive lessons of the same subject', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 3 }],
+      schoolTimeSlots: [
+        { dayOfWeek: 1, slotNumber: 1 },
+        { dayOfWeek: 1, slotNumber: 2 },
+        { dayOfWeek: 1, slotNumber: 3 },
+        { dayOfWeek: 2, slotNumber: 1 },
+      ].map(({ dayOfWeek, slotNumber }) => ({
+        id: `slot-${dayOfWeek}-${slotNumber}`,
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek,
+        slotNumber,
+        startTime: `${String(6 + slotNumber).padStart(2, '0')}:00`,
+        endTime: `${String(6 + slotNumber).padStart(2, '0')}:50`,
+        active: true,
+      })),
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries).toHaveLength(3);
+    expect(result.entries.filter((entry) => entry.dayOfWeek === 1)).toHaveLength(2);
+    expect(result.entries.some((entry) => entry.dayOfWeek !== 1)).toBe(true);
+  });
+
+  it('distributes a sufficient weekly workload across Monday to Friday', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        id: `slot-${dayOfWeek}`,
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek,
+        slotNumber: 1,
+        startTime: '07:00',
+        endTime: '07:50',
+        active: true,
+      })),
+    });
+
+    expect(result.valid).toBe(true);
+    expect(new Set(result.entries.map((entry) => entry.dayOfWeek))).toEqual(new Set([1, 2, 3, 4, 5]));
+  });
+
+  it('reports when the consecutive subject limit makes the workload impossible', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 3 }],
+      schoolTimeSlots: [1, 2, 3].map((slotNumber) => ({
+        id: `slot-${slotNumber}`,
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek: 1,
+        slotNumber,
+        startTime: `${String(6 + slotNumber).padStart(2, '0')}:00`,
+        endTime: `${String(6 + slotNumber).padStart(2, '0')}:50`,
+        active: true,
+      })),
+      teacherAvailability: [{ ...baseInput.teacherAvailability[0], dayOfWeek: 1 }],
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.entries).toHaveLength(2);
+    expect(result.diagnostics.some((diagnostic) => diagnostic.message.includes('two lessons consecutively'))).toBe(true);
+  });
+
   it('preserves locked entries and prevents teacher/class/room collisions', () => {
     const locked = { ...baseInput, curriculumItems: [], subjectOfferings: [], lockedEntries: [{ institutionId: 'institution-a', academicYearId: 'year-2027', termId: 'term-1', classId: 'class-a', subjectOfferingId: 'offering-math', teacherProfileId: 'teacher-a', subjectId: 'math', roomId: 'room-a', dayOfWeek: 1, startTime: '07:00', endTime: '07:50', locked: true }] };
     const result = generateTimetable(locked);
