@@ -1,5 +1,9 @@
 import { supabase } from '../lib/supabaseClient';
-import { generateTimetable, type TimetableGeneratorResult } from '../lib/academic/timetableGenerator';
+import {
+  generateTimetable,
+  type GeneratorDiagnostic,
+  type TimetableGeneratorResult,
+} from '../lib/academic/timetableGenerator';
 import {
   buildDefaultTimeSlots,
   normalizeAcademicShift,
@@ -43,6 +47,81 @@ export interface GeneratedDraft extends TimetableGeneratorResult {
   automaticRoomsCreated: number;
   automaticSlotsCreated: number;
   automaticUnassigned: number;
+}
+
+function buildSetupDiagnostics(input: {
+  termIds: string[];
+  classes: Array<{ id: string; name: string; shift: string | null }>;
+  curriculumItems: Array<{ class_id: string; weekly_lessons: number }>;
+}): GeneratorDiagnostic[] {
+  const diagnostics: GeneratorDiagnostic[] = [];
+
+  if (input.termIds.length === 0) {
+    diagnostics.push({
+      code: 'SETUP_TERMS_REQUIRED',
+      message: 'Cadastre pelo menos um período ativo no ano letivo antes de gerar a grade.',
+      suggestions: ['Abra Ano letivo > Períodos e cadastre os bimestres, trimestres ou semestres.'],
+    });
+  }
+
+  if (input.classes.length === 0) {
+    diagnostics.push({
+      code: 'SETUP_CLASSES_REQUIRED',
+      message: 'Cadastre pelo menos uma turma ativa no ano letivo antes de gerar a grade.',
+      suggestions: ['Abra Turmas e crie as turmas do ano letivo selecionado.'],
+    });
+  }
+
+  const activeCurriculumItems = input.curriculumItems.filter((item) => item.weekly_lessons > 0);
+  if (activeCurriculumItems.length === 0) {
+    diagnostics.push({
+      code: 'SETUP_CURRICULUM_REQUIRED',
+      message: 'Configure a matriz curricular das turmas antes de gerar a grade.',
+      suggestions: ['Abra Matriz curricular e informe as matérias e a carga semanal de cada turma.'],
+    });
+  }
+
+  for (const classRecord of input.classes) {
+    if (!classRecord.shift?.trim()) {
+      diagnostics.push({
+        code: 'SETUP_CLASS_SHIFT_REQUIRED',
+        message: `A turma ${classRecord.name} está sem turno definido.`,
+        classId: classRecord.id,
+        suggestions: ['Edite a turma e selecione Manhã, Tarde, Noite ou Integral.'],
+      });
+    }
+
+    if (!activeCurriculumItems.some((item) => item.class_id === classRecord.id)) {
+      diagnostics.push({
+        code: 'SETUP_CLASS_CURRICULUM_REQUIRED',
+        message: `A turma ${classRecord.name} ainda não possui matérias com carga semanal.`,
+        classId: classRecord.id,
+        suggestions: ['Aplique uma matriz curricular ou cadastre as matérias da turma.'],
+      });
+    }
+  }
+
+  return diagnostics;
+}
+
+function buildInvalidDraft(
+  diagnostics: GeneratorDiagnostic[],
+  seed: string,
+): GeneratedDraft {
+  return {
+    valid: false,
+    status: 'UNSATISFIED',
+    entries: [],
+    hardConflicts: diagnostics.length,
+    score: 0,
+    penalties: { teacherGaps: 0, sameSubjectSameDay: 0, roomChanges: 0 },
+    diagnostics,
+    seed,
+    automaticAssignmentsCreated: 0,
+    automaticRoomsCreated: 0,
+    automaticSlotsCreated: 0,
+    automaticUnassigned: 0,
+  };
 }
 
 async function listActiveOfferings(institutionId: string) {
@@ -148,7 +227,7 @@ async function prepareAutomaticTimeSlots(input: {
   curriculumItems: Array<{ class_id: string; weekly_lessons: number }>;
   slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>;
 }): Promise<{ slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>; created: number }> {
-  const requiredShifts = [...new Set(input.classes.map((classRecord) => normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')))];
+  const requiredShifts = [...new Set(input.classes.map((classRecord) => classRecord.shift?.trim() || 'MATUTINO'))];
   const classShifts = new Map(input.classes.map((classRecord) => [classRecord.id, normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')]));
   const weeklyLoadByShift = new Map<string, number>();
   for (const [classId, shift] of classShifts) {
@@ -165,8 +244,8 @@ async function prepareAutomaticTimeSlots(input: {
     ),
   ]));
   const targetSlots = buildDefaultTimeSlots(requiredShifts, slotsPerDayByShift);
-  const existingPositions = new Set(input.slots.map((slot) => `${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
-  const defaults = targetSlots.filter((slot) => !existingPositions.has(`${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
+  const existingPositions = new Set(input.slots.map((slot) => `${slot.shift.trim()}:${slot.day_of_week}:${slot.slot_number}`));
+  const defaults = targetSlots.filter((slot) => !existingPositions.has(`${slot.shift.trim()}:${slot.day_of_week}:${slot.slot_number}`));
   if (defaults.length === 0) return { slots: input.slots, created: 0 };
 
   const { error } = await supabase.from('school_time_slots').upsert(defaults.map((slot) => ({
@@ -338,6 +417,14 @@ export const timetableAutomationService = {
     const classes = classesResult.data ?? [];
     const curriculumItems = curriculumResult.data ?? [];
     const termIds = (termsResult.data ?? []).map((term) => term.id);
+    const seed = input.seed ?? `${input.institutionId}:${input.academicYearId}`;
+    const setupDiagnostics = buildSetupDiagnostics({
+      termIds,
+      classes: classes.map((classRecord) => ({ id: classRecord.id, name: classRecord.name, shift: classRecord.shift })),
+      curriculumItems: curriculumItems.map((item) => ({ class_id: item.class_id, weekly_lessons: item.weekly_lessons })),
+    });
+    if (setupDiagnostics.length > 0) return buildInvalidDraft(setupDiagnostics, seed);
+
     const automaticAssignments = await prepareAutomaticAssignments({
       institutionId: input.institutionId,
       academicYearId: input.academicYearId,
@@ -404,7 +491,7 @@ export const timetableAutomationService = {
       rooms: automaticRooms.rooms.map((item) => ({ id: item.id, institutionId: item.institution_id, classId: item.class_id, active: item.active })),
       subjectLabels: Object.fromEntries((subjectsResult.data ?? []).map((subject) => [subject.id, subject.name])),
       lockedEntries,
-      seed: input.seed,
+      seed,
     });
     const preparedResult = {
       ...result,

@@ -179,4 +179,20 @@ describe('timetable generator', () => {
     expect(result.valid).toBe(true);
     expect(result.entries).toHaveLength(2);
   });
+
+  it('prioritizes slots that use the exact shift label of the class', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], shift: 'Manhã' }],
+      schoolTimeSlots: [
+        { ...baseInput.schoolTimeSlots[0], dayOfWeek: 1, shift: 'MATUTINO' },
+        { ...baseInput.schoolTimeSlots[1], dayOfWeek: 2, shift: 'MATUTINO' },
+        { ...baseInput.schoolTimeSlots[0], id: 'raw-slot-1', dayOfWeek: 1, shift: 'Manhã' },
+        { ...baseInput.schoolTimeSlots[1], id: 'raw-slot-2', dayOfWeek: 2, shift: 'Manhã' },
+      ],
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries.map((entry) => entry.dayOfWeek)).toEqual([1, 2]);
+  });
 });

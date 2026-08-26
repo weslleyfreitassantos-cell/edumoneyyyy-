@@ -34,6 +34,16 @@ function getErrorMessage(error: unknown): string {
     .filter((value): value is string => Boolean(value))
     .map((value) => value.toUpperCase());
 
+  if (values.some((value) => value.includes('INSTITUTION_OPERATION_FORBIDDEN'))) {
+    return 'Seu perfil não tem permissão para preparar ou publicar a grade desta instituição.';
+  }
+  if (values.some((value) => value.includes('CLASS_SCOPE_MISMATCH') || value.includes('SUBJECT_SCOPE_MISMATCH'))) {
+    return 'A configuração contém uma turma ou matéria de outra instituição. Atualize os dados e tente novamente.';
+  }
+  if (values.some((value) => value.includes('23505') || value.includes('DUPLICATE KEY'))) {
+    return 'Já existe uma configuração igual para este ano letivo. Atualize a lista antes de gerar novamente.';
+  }
+
   if (values.some((value) => value.includes('TEACHER_NOT_AVAILABLE'))) {
     return 'A publicação foi bloqueada porque há aulas em horários sem disponibilidade semanal cadastrada para os professores. Abra Usuários > Professores, configure a disponibilidade de cada professor e salve antes de publicar novamente.';
   }
@@ -93,9 +103,34 @@ function formatTime(value: string): string {
 
 function summarizeDiagnostics(diagnostics: Array<{ code: string; message: string }>): string {
   const unique = [...new Map(diagnostics.map((diagnostic) => [`${diagnostic.code}:${diagnostic.message}`, diagnostic])).values()];
-  const visible = unique.slice(0, 8).map((diagnostic) => diagnostic.message).join(' ');
+  const visible = unique.slice(0, 8).map(formatDiagnostic).join(' ');
   const remaining = unique.length - Math.min(unique.length, 8);
   return remaining > 0 ? `${visible} E mais ${remaining} pendência(s).` : visible;
+}
+
+function formatDiagnostic(diagnostic: { code: string; message: string }): string {
+  switch (diagnostic.code) {
+    case 'SETUP_TERMS_REQUIRED':
+      return 'Cadastre os períodos do ano letivo antes de gerar a grade.';
+    case 'SETUP_CLASSES_REQUIRED':
+      return 'Cadastre as turmas do ano letivo antes de gerar a grade.';
+    case 'SETUP_CURRICULUM_REQUIRED':
+      return 'Configure a matriz curricular antes de gerar a grade.';
+    case 'SETUP_CLASS_SHIFT_REQUIRED':
+      return `${diagnostic.message} Informe o turno da turma.`;
+    case 'SETUP_CLASS_CURRICULUM_REQUIRED':
+      return `${diagnostic.message} Configure suas matérias.`;
+    case 'UNSATISFIED':
+      return diagnostic.message
+        .replace('no compatible slot is available', 'não há horários compatíveis suficientes')
+        .replace('all compatible slots are occupied', 'todos os horários compatíveis já estão ocupados');
+    case 'TEACHER_SUBJECT_NOT_AUTHORIZED':
+      return 'Há uma atribuição com professor não habilitado para a matéria. Revise as atribuições.';
+    case 'CURRICULUM_OR_SCOPE_MISMATCH':
+      return 'Há uma atribuição fora da turma, matriz curricular ou ano letivo selecionado.';
+    default:
+      return diagnostic.message;
+  }
 }
 
 function VersionReview({
@@ -228,6 +263,10 @@ export default function TimetableAutomationPanel({
   async function generate(sourceVersionId?: string): Promise<void> {
     setMessage(null);
     setError(null);
+    if (!sourceVersionId && (versionsQuery.data ?? []).some((version) => version.status === 'DRAFT')) {
+      const shouldContinue = window.confirm('Já existe uma grade em rascunho para este ano. Deseja gerar uma nova proposta?');
+      if (!shouldContinue) return;
+    }
     try {
       const result = await generateMutation.mutateAsync({
         institutionId,
@@ -244,6 +283,7 @@ export default function TimetableAutomationPanel({
           result.automaticAssignmentsCreated > 0 ? `${result.automaticAssignmentsCreated} atribuição(ões) criada(s)` : '',
           result.automaticRoomsCreated > 0 ? `${result.automaticRoomsCreated} sala(s) criada(s)` : '',
           result.automaticSlotsCreated > 0 ? `${result.automaticSlotsCreated} horário(s) padrão criado(s)` : '',
+          result.automaticUnassigned > 0 ? `${result.automaticUnassigned} pendência(s) de professor` : '',
         ].filter(Boolean).join(', ');
         setError(
           `Não foi possível montar a grade automaticamente.${preparation ? ` Preparação automática: ${preparation}.` : ''} ${requiresAssignments ? 'A publicação exige professor por matéria. ' : ''}${summarizeDiagnostics(result.diagnostics)}`,
@@ -255,6 +295,7 @@ export default function TimetableAutomationPanel({
         result.automaticAssignmentsCreated > 0 ? `${result.automaticAssignmentsCreated} atribuição(ões)` : '',
         result.automaticRoomsCreated > 0 ? `${result.automaticRoomsCreated} sala(s)` : '',
         result.automaticSlotsCreated > 0 ? `${result.automaticSlotsCreated} horário(s) padrão` : '',
+        result.automaticUnassigned > 0 ? `${result.automaticUnassigned} pendência(s) de professor` : '',
       ].filter(Boolean).join(', ');
       setMessage(
         `Grade gerada em rascunho: ${result.entries.length} aulas alocadas. ${preparation ? `Preparação automática: ${preparation}. ` : ''}Revise antes de publicar.`,
@@ -350,6 +391,8 @@ export default function TimetableAutomationPanel({
 
       {message && <div role="status" className="rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">{message}</div>}
       {error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
+      {!yearsQuery.isLoading && !yearsQuery.isError && years.length === 0 && <div role="alert" className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">Cadastre um ano letivo antes de configurar a grade.</div>}
+      {yearsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os anos letivos. Atualize a página e tente novamente.</div>}
 
       <section className="rounded-lg border border-[#e4e8f1] p-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -393,7 +436,8 @@ export default function TimetableAutomationPanel({
               <button type="button" onClick={() => setSlots((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Remover</button>
             </div>
           ))}
-          {slots.length === 0 && <p className="rounded-lg bg-slate-50 px-3 py-3 text-sm text-[#667085]">Nenhum horário cadastrado para este turno.</p>}
+          {slotsQuery.isError && <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-3 text-sm text-red-700">Não foi possível carregar os horários deste turno.</p>}
+          {slots.length === 0 && !slotsQuery.isError && <p className="rounded-lg bg-slate-50 px-3 py-3 text-sm text-[#667085]">Nenhum horário cadastrado para este turno. A geração poderá sugerir horários padrão.</p>}
         </div>
         <button type="button" onClick={() => void saveSlots()} disabled={saveSlotsMutation.isPending} className="mt-3 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white disabled:opacity-50">
           {saveSlotsMutation.isPending ? 'Salvando...' : 'Salvar horários'}

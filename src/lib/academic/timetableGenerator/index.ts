@@ -191,6 +191,16 @@ function hasTeacherAvailability(input: TimetableGeneratorInput, demand: Demand, 
   );
 }
 
+function slotsForClass(allSlots: GeneratorTimeSlot[], classRecord: GeneratorClass): GeneratorTimeSlot[] {
+  const normalizedClassShift = classRecord.shift === null ? null : normalizeAcademicShift(classRecord.shift);
+  const matchingSlots = allSlots.filter((slot) => normalizedClassShift === null || normalizeAcademicShift(slot.shift) === normalizedClassShift);
+  if (!classRecord.shift) return matchingSlots;
+
+  const exactShift = classRecord.shift.trim();
+  const exactSlots = matchingSlots.filter((slot) => slot.shift.trim() === exactShift);
+  return exactSlots.length > 0 ? exactSlots : matchingSlots;
+}
+
 function candidateRooms(input: TimetableGeneratorInput, entries: GeneratorEntry[], demand: Demand, candidate: Candidate, terms: Map<string, GeneratorTerm>): string[] {
   const rooms = input.rooms.filter((room) => room.active && room.institutionId === input.institutionId);
   if (rooms.length === 0) return [null as unknown as string];
@@ -323,17 +333,14 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   }
 
   const rankedDemands = demands.map((demand) => {
-    const classShift = demand.classRecord.shift === null ? null : normalizeAcademicShift(demand.classRecord.shift);
-    const possible = allSlots.filter((slot) => classShift === null || normalizeAcademicShift(slot.shift) === classShift).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
+    const possible = slotsForClass(allSlots, demand.classRecord).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
     return { demand, possibleCount: possible.length };
   }).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
 
   for (const ranked of rankedDemands) {
     const demand = ranked.demand;
-    const classShift = demand.classRecord.shift === null ? null : normalizeAcademicShift(demand.classRecord.shift);
     const candidates: Candidate[] = [];
-    for (const slot of allSlots) {
-      if (classShift !== null && normalizeAcademicShift(slot.shift) !== classShift) continue;
+    for (const slot of slotsForClass(allSlots, demand.classRecord)) {
       if (timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) < demand.curriculum.lessonDurationMinutes) continue;
       if (!hasTeacherAvailability(input, demand, slot)) continue;
       if (entries.some((entry) => entry.classId === demand.classRecord.id && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
