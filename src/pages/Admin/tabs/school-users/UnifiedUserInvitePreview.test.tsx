@@ -51,6 +51,11 @@ vi.mock('../../../../hooks/useAcademicAutomation', () => ({
     isPending: false,
     mutateAsync: saveAcademicMutateAsync,
   }),
+  useSchoolTimeSlots: () => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+  }),
 }));
 
 vi.mock('../../../../hooks/useSubjects', () => ({

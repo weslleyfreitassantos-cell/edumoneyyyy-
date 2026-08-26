@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { useSubjects } from '../../hooks/useSubjects';
-import { useSaveTeacherAcademicSettings, useTeacherAvailability, useTeacherSubjects } from '../../hooks/useAcademicAutomation';
+import {
+  useSaveTeacherAcademicSettings,
+  useSchoolTimeSlots,
+  useTeacherAvailability,
+  useTeacherSubjects,
+} from '../../hooks/useAcademicAutomation';
+import { suggestTeacherAvailabilityFromSchoolSlots } from '../../services/academicAutomationService';
 
 const DAY_LABELS: Record<number, string> = { 1: 'Segunda', 2: 'Terca', 3: 'Quarta', 4: 'Quinta', 5: 'Sexta', 6: 'Sabado' };
 
@@ -26,6 +32,7 @@ export default function TeacherAcademicSettings({ institutionId, teacherProfileI
   const subjectsQuery = useSubjects(institutionId);
   const subjectQuery = useTeacherSubjects(institutionId, teacherProfileId);
   const availabilityQuery = useTeacherAvailability(institutionId, teacherProfileId);
+  const schoolTimeSlotsQuery = useSchoolTimeSlots(institutionId);
   const saveMutation = useSaveTeacherAcademicSettings();
   const [subjectIds, setSubjectIds] = useState<string[]>(initialSubjectIds ?? []);
   const [primarySubjectId, setPrimarySubjectId] = useState(initialPrimarySubjectId ?? '');
@@ -54,6 +61,19 @@ export default function TeacherAcademicSettings({ institutionId, teacherProfileI
 
   function addAvailability(): void {
     setAvailability((current) => [...current, { day_of_week: 1, start_time: '07:00', end_time: '12:00' }]);
+  }
+
+  function suggestAvailability(): void {
+    const suggestions = suggestTeacherAvailabilityFromSchoolSlots(schoolTimeSlotsQuery.data ?? []);
+    if (suggestions.length === 0) {
+      setError('Cadastre os horários da escola antes de sugerir a disponibilidade.');
+      return;
+    }
+    if (availability.length > 0 && !window.confirm('Substituir as janelas atuais pelos horários ativos da escola? Você poderá revisar antes de salvar.')) {
+      return;
+    }
+    setAvailability(suggestions);
+    setError(null);
   }
 
   async function save(): Promise<void> {
@@ -100,9 +120,19 @@ export default function TeacherAcademicSettings({ institutionId, teacherProfileI
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-semibold text-[#181c20]">Disponibilidade semanal</h4>
-              <p className="text-xs text-gray-500">Adicione janelas personalizadas; intervalos sobrepostos sao rejeitados.</p>
+              <p className="text-xs text-gray-500">Use os horários ativos da escola como base e ajuste as janelas para a realidade do professor.</p>
             </div>
-            <button type="button" onClick={addAvailability} className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50">Adicionar janela</button>
+            <div className="flex flex-wrap justify-end gap-2">
+              <button
+                type="button"
+                onClick={suggestAvailability}
+                disabled={schoolTimeSlotsQuery.isLoading || schoolTimeSlotsQuery.isError || schoolTimeSlotsQuery.data?.length === 0}
+                className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Usar horários da escola
+              </button>
+              <button type="button" onClick={addAvailability} className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50">Adicionar janela</button>
+            </div>
           </div>
           <div className="mt-3 space-y-2">
             {availability.map((window, index) => (

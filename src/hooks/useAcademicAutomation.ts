@@ -45,6 +45,21 @@ export function useSaveTeacherAcademicSettings() {
   });
 }
 
+export function useSaveTeacherAvailability() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: academicAutomationService.replaceTeacherAvailability,
+    onSuccess: async (_result, variables) => {
+      await queryClient.invalidateQueries({
+        queryKey: academicAutomationKeys.teacherAvailability(
+          variables.institution_id,
+          variables.teacher_profile_id,
+        ),
+      });
+    },
+  });
+}
+
 export function useCreateAcademicYearWithTerms() {
   const queryClient = useQueryClient();
   return useMutation({

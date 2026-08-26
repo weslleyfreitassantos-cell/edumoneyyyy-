@@ -505,7 +505,7 @@ export default function StudentDashboard() {
               aria-hidden="true"
             />
           }
-          label="Disciplinas ativas"
+          label="Disciplinas do período atual"
           value={offerings.length}
         />
       </section>
@@ -630,13 +630,13 @@ export default function StudentDashboard() {
             aria-hidden="true"
           />
           <h2 className="text-lg font-bold text-[#181c20]">
-            Disciplinas e professores
+            Disciplinas e professores do período atual
           </h2>
         </div>
 
         {offerings.length === 0 ? (
           <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-8 text-center text-sm text-[#727785]">
-            Nenhuma disciplina ativa encontrada para a turma atual.
+            Nenhuma disciplina encontrada para o período atual.
           </div>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

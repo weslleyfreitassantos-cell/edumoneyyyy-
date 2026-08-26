@@ -14,13 +14,17 @@ import {
 } from 'react';
 
 import { useInviteSchoolUser } from '../../../../hooks/useSchoolUserInvites';
-import { useSaveTeacherAcademicSettings } from '../../../../hooks/useAcademicAutomation';
+import {
+  useSaveTeacherAcademicSettings,
+  useSchoolTimeSlots,
+} from '../../../../hooks/useAcademicAutomation';
 import { useStudents } from '../../../../hooks/useStudents';
 import { useSubjects } from '../../../../hooks/useSubjects';
 import { hasEffectivePermission } from '../../../../lib/permissions';
 import {
   SchoolUserInviteServiceError,
 } from '../../../../services/schoolUserInviteService';
+import { suggestTeacherAvailabilityFromSchoolSlots } from '../../../../services/academicAutomationService';
 import {
   buildUnifiedUserInvitePayload,
   canInviteTarget,
@@ -147,6 +151,7 @@ export default function UnifiedUserInvitePreview({
 
   const inviteMutation = useInviteSchoolUser();
   const subjectsQuery = useSubjects(institutionId ?? '');
+  const schoolTimeSlotsQuery = useSchoolTimeSlots(institutionId ?? '');
   const teacherAcademicMutation =
     useSaveTeacherAcademicSettings();
   const studentsQuery = useStudents(
@@ -337,6 +342,19 @@ export default function UnifiedUserInvitePreview({
         end_time: '12:00',
       },
     ]);
+  }
+
+  function suggestTeacherAvailability(): void {
+    const suggestions = suggestTeacherAvailabilityFromSchoolSlots(schoolTimeSlotsQuery.data ?? []);
+    if (suggestions.length === 0) {
+      setTeacherAcademicError('Cadastre os horários da escola antes de usar esta sugestão.');
+      return;
+    }
+    if (teacherAvailability.length > 0 && !window.confirm('Substituir as janelas atuais pelos horários ativos da escola? Você poderá revisar antes de concluir o cadastro.')) {
+      return;
+    }
+    setTeacherAvailability(suggestions);
+    setTeacherAcademicError(null);
   }
 
   async function handleSubmit(
@@ -790,13 +808,23 @@ export default function UnifiedUserInvitePreview({
                         Cadastre janelas que cubram os horários da escola usados pela grade.
                       </p>
                     </div>
-                    <button
-                      type="button"
-                      onClick={addTeacherAvailability}
-                      className="shrink-0 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50"
-                    >
-                      + Adicionar janela
-                    </button>
+                    <div className="flex flex-wrap justify-end gap-2">
+                      <button
+                        type="button"
+                        onClick={suggestTeacherAvailability}
+                        disabled={schoolTimeSlotsQuery.isLoading || schoolTimeSlotsQuery.isError || schoolTimeSlotsQuery.data?.length === 0}
+                        className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        Usar horários da escola
+                      </button>
+                      <button
+                        type="button"
+                        onClick={addTeacherAvailability}
+                        className="shrink-0 rounded-lg border border-blue-200 bg-white px-3 py-2 text-xs font-semibold text-blue-700 hover:bg-blue-50"
+                      >
+                        + Adicionar janela
+                      </button>
+                    </div>
                   </div>
                   <div className="mt-3 space-y-2">
                     {teacherAvailability.map((window, index) => (

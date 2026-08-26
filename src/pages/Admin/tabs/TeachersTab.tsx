@@ -19,8 +19,13 @@ import {
   useTeachers,
 } from '../../../hooks/useTeachers';
 import { useSubjects } from '../../../hooks/useSubjects';
-import { useSaveTeacherAcademicSettings } from '../../../hooks/useAcademicAutomation';
+import {
+  useSaveTeacherAcademicSettings,
+  useSaveTeacherAvailability,
+  useSchoolTimeSlots,
+} from '../../../hooks/useAcademicAutomation';
 import TeacherAcademicSettings from '../../../components/academic/TeacherAcademicSettings';
+import { suggestTeacherAvailabilityFromSchoolSlots } from '../../../services/academicAutomationService';
 
 import { teacherSchema } from '../../../schemas/adminSchemas';
 
@@ -110,6 +115,10 @@ export default function TeachersTab() {
     useSetTeacherActive();
   const academicSettingsMutation =
     useSaveTeacherAcademicSettings();
+  const availabilityMutation =
+    useSaveTeacherAvailability();
+  const schoolTimeSlotsQuery =
+    useSchoolTimeSlots(institutionId);
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
@@ -361,6 +370,47 @@ export default function TeachersTab() {
     }
   }
 
+  async function handleApplySchoolAvailability(): Promise<void> {
+    resetMessages();
+    const activeTeachers = (teachersQuery.data ?? []).filter(
+      (teacher) => teacher.active && teacher.profiles?.active !== false,
+    );
+    const suggestions = suggestTeacherAvailabilityFromSchoolSlots(
+      schoolTimeSlotsQuery.data ?? [],
+    );
+
+    if (activeTeachers.length === 0) {
+      setPageError('Nenhum professor ativo encontrado nesta instituição.');
+      return;
+    }
+    if (suggestions.length === 0) {
+      setPageError('Cadastre os horários da escola antes de aplicar a disponibilidade.');
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Aplicar os horários ativos da escola a ${activeTeachers.length} professor(es)? A disponibilidade atual será substituída; depois você poderá ajustar exceções individualmente.`,
+    );
+    if (!confirmed) return;
+
+    let updatedCount = 0;
+    try {
+      for (const teacher of activeTeachers) {
+        await availabilityMutation.mutateAsync({
+          institution_id: institutionId,
+          teacher_profile_id: teacher.profile_id,
+          availability: suggestions,
+        });
+        updatedCount += 1;
+      }
+      setFeedbackMessage(`Disponibilidade aplicada a ${updatedCount} professor(es). Revise as exceções antes de publicar a grade.`);
+    } catch (error) {
+      setPageError(
+        `A aplicação foi interrompida após ${updatedCount} professor(es). ${getErrorMessage(error)}`,
+      );
+    }
+  }
+
   if (institutionQuery.isLoading) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
@@ -428,6 +478,31 @@ export default function TeachersTab() {
           </div>
         </section>
       )}
+
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 className="font-bold text-[#181c20]">Disponibilidade dos professores</h3>
+            <p className="mt-1 text-sm text-gray-500">Preencha em lote com os horários ativos da escola e ajuste apenas quem tiver uma jornada diferente.</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => void handleApplySchoolAvailability()}
+            disabled={
+              availabilityMutation.isPending ||
+              schoolTimeSlotsQuery.isLoading ||
+              schoolTimeSlotsQuery.isError ||
+              schoolTimeSlotsQuery.data?.length === 0 ||
+              teachersQuery.isLoading
+            }
+            className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {availabilityMutation.isPending ? 'Aplicando...' : 'Aplicar aos professores ativos'}
+          </button>
+        </div>
+        {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível carregar os horários da escola.</p>}
+        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-amber-700">Cadastre pelo menos um horário da escola para habilitar o preenchimento em lote.</p>}
+      </section>
 
       <DataTable
         title="Professores"

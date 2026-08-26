@@ -39,6 +39,48 @@ export interface SchoolTimeSlotRow {
   active: boolean;
 }
 
+export type TeacherAvailabilityDraft = Pick<
+  TeacherAvailabilityRow,
+  'day_of_week' | 'start_time' | 'end_time'
+>;
+
+/**
+ * Converts the school's active lesson slots into editable teacher windows.
+ * Adjacent slots are merged while recesses and shift changes remain visible.
+ */
+export function suggestTeacherAvailabilityFromSchoolSlots(
+  slots: Array<Pick<SchoolTimeSlotRow, 'day_of_week' | 'start_time' | 'end_time' | 'active'>>,
+): TeacherAvailabilityDraft[] {
+  const normalized = slots
+    .filter((slot) => slot.active && slot.start_time.slice(0, 5) < slot.end_time.slice(0, 5))
+    .map((slot) => ({
+      day_of_week: slot.day_of_week,
+      start_time: slot.start_time.slice(0, 5),
+      end_time: slot.end_time.slice(0, 5),
+    }))
+    .sort((left, right) =>
+      left.day_of_week - right.day_of_week ||
+      left.start_time.localeCompare(right.start_time) ||
+      left.end_time.localeCompare(right.end_time),
+    );
+
+  const suggestions: TeacherAvailabilityDraft[] = [];
+  for (const window of normalized) {
+    const previous = suggestions[suggestions.length - 1];
+    if (
+      previous &&
+      previous.day_of_week === window.day_of_week &&
+      window.start_time <= previous.end_time
+    ) {
+      if (window.end_time > previous.end_time) previous.end_time = window.end_time;
+      continue;
+    }
+    suggestions.push({ ...window });
+  }
+
+  return suggestions;
+}
+
 export interface CurriculumTemplateRow {
   id: string;
   institution_id: string;
