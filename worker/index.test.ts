@@ -127,7 +127,7 @@ describe('Worker script', () => {
     ).toBe(false);
   });
 
-  it('proxyfica tvescola para admin.in9midia.com preservando path e query', async () => {
+  it('proxyfica mantendo o host publico do NeoNews e preservando path e query', async () => {
     const upstreamFetch = vi.fn().mockResolvedValue(
       new Response('neonews', { status: 200 }),
     );
@@ -139,7 +139,7 @@ describe('Worker script', () => {
 
     expect(upstreamFetch).toHaveBeenCalledTimes(1);
     expect(upstreamFetch.mock.calls[0][0]).toBe(
-      'https://admin.in9midia.com/neonews/logon.jsp?sys=NEC&msgKey=',
+      'https://tvescola.grupotec.dev.br/neonews/logon.jsp?sys=NEC&msgKey=',
     );
     expect(upstreamFetch.mock.calls[0][1]).toMatchObject({
       method: 'GET',
@@ -169,9 +169,9 @@ describe('Worker script', () => {
     const headers = new Headers(init.headers);
 
     expect(init.method).toBe('POST');
-    expect(headers.get('origin')).toBe('https://admin.in9midia.com');
+    expect(headers.get('origin')).toBe('https://tvescola.grupotec.dev.br');
     expect(headers.get('referer')).toBe(
-      'https://admin.in9midia.com/neonews/logon.jsp',
+      'https://tvescola.grupotec.dev.br/neonews/logon.jsp',
     );
   });
 
@@ -192,21 +192,21 @@ describe('Worker script', () => {
     await proxyTvescolaRequest(request, upstreamFetch);
 
     expect(upstreamFetch.mock.calls[0][0]).toBe(
-      'https://admin.in9midia.com/neonews/session',
+      'https://tvescola.grupotec.dev.br/neonews/session',
     );
     const headers = new Headers(
       (upstreamFetch.mock.calls[0][1] as RequestInit).headers,
     );
-    expect(headers.get('origin')).toBe('https://admin.in9midia.com');
+    expect(headers.get('origin')).toBe('https://tvescola.grupotec.dev.br');
     expect(headers.get('referer')).toBe(
-      'https://admin.in9midia.com/neonews/logon.jsp',
+      'https://tvescola.grupotec.dev.br/neonews/logon.jsp',
     );
   });
 
   it('reescreve redirects do NeoNews de volta para o host same-origin', () => {
     expect(
       rewriteNeoNewsLocation(
-        'https://admin.in9midia.com/neonews/home.jsp?a=1',
+        'https://tvescola.grupotec.dev.br/neonews/home.jsp?a=1',
         'https://tecescola.grupotec.dev.br',
       ),
     ).toBe(
@@ -239,7 +239,7 @@ describe('Worker script', () => {
 
     expect(
       rewriteNeoNewsSetCookie(
-        'NEO=1; Domain=admin.in9midia.com; Path=/neonews; Secure',
+        'NEO=1; Domain=tvescola.grupotec.dev.br; Path=/neonews; Secure',
       ),
     ).toBe('NEO=1; Path=/neonews; Secure');
   });
@@ -253,7 +253,7 @@ describe('Worker script', () => {
     await proxyTvescolaRequest(request, upstreamFetch);
 
     expect(upstreamFetch.mock.calls[0][0]).toBe(
-      'https://admin.in9midia.com/neonews/?url=https://evil.example',
+      'https://tvescola.grupotec.dev.br/neonews/?url=https://evil.example',
     );
   });
 
