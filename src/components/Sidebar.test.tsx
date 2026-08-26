@@ -448,6 +448,36 @@ describe('Sidebar', () => {
 });
 
 describe('sidebar navigation helpers', () => {
+  it('mostra a grade de horario somente no menu do aluno', () => {
+    const studentItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'STUDENT',
+      },
+      currentInstitutionRole: 'STUDENT',
+      currentUserRole: 'student',
+      pathname: '/dashboard/timetable',
+    });
+
+    const timetableItem = studentItems.find(
+      (item) => item.id === 'student-timetable',
+    );
+
+    expect(timetableItem?.label).toBe('Grade de horário');
+    expect(timetableItem?.path).toBe('/dashboard/timetable');
+
+    const directorItems = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentUserRole: 'director',
+      pathname: '/dashboard',
+    });
+
+    expect(
+      directorItems.map((item) => item.id),
+    ).not.toContain('student-timetable');
+  });
+
   it('mostra Personalizar login somente para DIRECTOR', () => {
     const roles = [
       {

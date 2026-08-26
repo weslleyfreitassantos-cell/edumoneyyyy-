@@ -17,6 +17,7 @@ export const timetableKeys = {
   all: ['timetable'] as const,
   rooms: (institutionId: string) => [...timetableKeys.all, 'rooms', institutionId] as const,
   entries: (institutionId: string) => [...timetableKeys.all, 'entries', institutionId] as const,
+  classEntries: (institutionId: string, classId: string) => [...timetableKeys.entries(institutionId), 'class', classId] as const,
 };
 
 function invalidateTimetable(
@@ -94,6 +95,29 @@ export function useTimetableEntries(institutionId: string) {
     queryKey: timetableKeys.entries(institutionId),
     queryFn: () => timetableService.listEntries(institutionId),
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useStudentTimetable(
+  institutionId: string | undefined,
+  classId: string | undefined,
+) {
+  return useQuery<TimetableEntryRow[]>({
+    queryKey: timetableKeys.classEntries(
+      institutionId ?? '',
+      classId ?? '',
+    ),
+    queryFn: () => {
+      if (!institutionId || !classId) {
+        throw new Error('A turma do aluno não foi informada.');
+      }
+
+      return timetableService.listByClass(
+        institutionId,
+        classId,
+      );
+    },
+    enabled: Boolean(institutionId && classId),
   });
 }
 

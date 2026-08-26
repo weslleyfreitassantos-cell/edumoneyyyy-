@@ -200,6 +200,13 @@ export function getRouteVisualContext(
     }
 
     if (role === 'student') {
+      if (normalizedPath === '/dashboard/timetable') {
+        return {
+          section: 'Acadêmico',
+          title: 'Grade de horário',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do aluno',

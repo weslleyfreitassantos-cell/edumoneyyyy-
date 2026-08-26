@@ -6,6 +6,7 @@ import {
   BookOpen,
   BadgeCheck,
   CalendarDays,
+  CalendarClock,
   ClipboardCheck,
   ClipboardList,
   Clock3,
@@ -71,6 +72,7 @@ export interface SidebarNavigationItem {
   icon: LucideIcon;
   permissions?: readonly SystemPermission[];
   activePaths?: readonly string[];
+  exactActivePath?: boolean;
   roles?: readonly User['role'][];
 }
 
@@ -163,6 +165,18 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
       'student',
       'parent',
     ],
+    activePaths: ['/dashboard'],
+    exactActivePath: true,
+  },
+  {
+    id: 'student-timetable',
+    label: 'Grade de horário',
+    path: '/dashboard/timetable',
+    section: 'personal',
+    icon: CalendarClock,
+    roles: ['student'],
+    activePaths: ['/dashboard/timetable'],
+    exactActivePath: true,
   },
   {
     id: 'personalize-login',
@@ -229,10 +243,9 @@ function isActivePath(
       return pathname === path;
     }
 
-    return (
-      pathname === path ||
-      pathname.startsWith(`${path}/`)
-    );
+    return item.exactActivePath
+      ? pathname === path
+      : pathname === path || pathname.startsWith(`${path}/`);
   });
 }
 
