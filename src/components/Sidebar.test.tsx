@@ -560,6 +560,9 @@ describe('sidebar navigation helpers', () => {
     expect(
       modules.map((module) => module.id),
     ).not.toContain('subjects');
+    expect(
+      modules.map((module) => module.id),
+    ).toContain('teachers');
   });
 
   it('mostra cameras ao vivo somente para DIRECTOR', () => {

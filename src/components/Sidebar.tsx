@@ -388,7 +388,7 @@ export function getSidebarAdminModules({
     }
 
     if (
-      ['students', 'teachers', 'guardians'].includes(
+      ['students', 'guardians'].includes(
         module.id,
       )
     ) {
