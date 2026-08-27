@@ -463,8 +463,8 @@ export default function Sidebar({
   const location = useLocation();
   const [brandLogoFailed, setBrandLogoFailed] =
     useState(false);
-  const [collapsedAdminGroups, setCollapsedAdminGroups] =
-    useState<Partial<Record<AdminNavigationGroupId, boolean>>>({});
+  const [openAdminGroupId, setOpenAdminGroupId] =
+    useState<AdminNavigationGroupId | null>(null);
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
@@ -548,10 +548,9 @@ export default function Sidebar({
   function toggleAdminGroup(
     groupId: AdminNavigationGroupId,
   ): void {
-    setCollapsedAdminGroups((current) => ({
-      ...current,
-      [groupId]: !(current[groupId] ?? false),
-    }));
+    setOpenAdminGroupId((current) =>
+      current === groupId ? null : groupId,
+    );
   }
 
   function renderNavigationLink(
@@ -668,7 +667,7 @@ export default function Sidebar({
             const GroupIcon =
               adminNavigationGroupIcons[group.id];
             const isCollapsed =
-              collapsedAdminGroups[group.id] ?? false;
+              openAdminGroupId !== group.id;
             const childGroupId =
               `sidebar-admin-group-${group.id}`;
 

@@ -116,6 +116,10 @@ describe('Sidebar', () => {
   it('renderiza rotas reais do ADMIN e marca visao geral como area ativa', () => {
     renderSidebar();
 
+    fireEvent.click(
+      screen.getByRole('button', { name: /in.cio/i }),
+    );
+
     expect(
       screen.getByRole('link', {
         name: /conta/i,
@@ -194,6 +198,12 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
+
     expect(
       screen.getByRole('button', {
         name: /pessoas/i,
@@ -224,6 +234,13 @@ describe('Sidebar', () => {
         name: /disciplinas/i,
       }).getAttribute('aria-current'),
     ).toBe('page');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /administra..o/i,
+      }),
+    );
+
     expect(
       screen.getByRole('link', {
         name: /pol.tica acad.mica/i,
@@ -258,7 +275,7 @@ describe('Sidebar', () => {
     expect(labels).not.toContain('Administração');
   });
 
-  it('permite abrir e fechar os grupos do menu administrativo', () => {
+  it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
     renderSidebar({
       route: '/admin?module=subjects',
       profile: directorProfile(),
@@ -269,15 +286,12 @@ describe('Sidebar', () => {
     const group = screen.getByRole('button', {
       name: /configura..o acad.mica/i,
     });
-
-    expect(group.getAttribute('aria-expanded')).toBe('true');
-    expect(
-      screen.getByRole('link', { name: 'Salas' }),
-    ).toBeTruthy();
-
-    fireEvent.click(group);
+    const peopleGroup = screen.getByRole('button', {
+      name: /pessoas/i,
+    });
 
     expect(group.getAttribute('aria-expanded')).toBe('false');
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('false');
     expect(
       screen.queryByRole('link', { name: 'Salas' }),
     ).toBeNull();
@@ -285,9 +299,25 @@ describe('Sidebar', () => {
     fireEvent.click(group);
 
     expect(group.getAttribute('aria-expanded')).toBe('true');
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('false');
     expect(
       screen.getByRole('link', { name: 'Salas' }),
     ).toBeTruthy();
+
+    fireEvent.click(peopleGroup);
+
+    expect(group.getAttribute('aria-expanded')).toBe('false');
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('true');
+    expect(
+      screen.queryByRole('link', { name: 'Salas' }),
+    ).toBeNull();
+
+    fireEvent.click(peopleGroup);
+
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Salas' }),
+    ).toBeNull();
   });
 
   it('marca TV Escola e E-mail como ativos nas rotas próprias', () => {
@@ -297,6 +327,12 @@ describe('Sidebar', () => {
       currentUser: directorUser(),
       currentInstitutionRole: 'DIRECTOR',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
 
     expect(
       screen.getByRole('link', { name: 'TV Escola' }).getAttribute('aria-current'),
@@ -310,6 +346,12 @@ describe('Sidebar', () => {
       currentUser: directorUser(),
       currentInstitutionRole: 'DIRECTOR',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
 
     expect(
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),
@@ -333,6 +375,12 @@ describe('Sidebar', () => {
       },
       currentInstitutionRole: 'SECRETARY',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /opera..o escolar/i,
+      }),
+    );
 
     expect(
       screen.getByRole('link', {
@@ -359,6 +407,12 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
+
     expect(
       screen
         .getByRole('link', {
@@ -376,6 +430,12 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
       isMobileOpen: true,
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('link', {
@@ -400,6 +460,12 @@ describe('Sidebar', () => {
       },
       currentInstitutionRole: null,
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
 
     expect(
       screen
