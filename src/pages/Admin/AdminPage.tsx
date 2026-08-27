@@ -214,6 +214,8 @@ export default function AdminPage() {
         return <CurriculumTab />;
       case 'timetable':
         return <TimetableTab />;
+      case 'rooms':
+        return <TimetableTab />;
       case 'enrollments':
         return <EnrollmentsTab />;
       case 'assignments':

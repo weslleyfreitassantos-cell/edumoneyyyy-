@@ -194,13 +194,31 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
-    expect(screen.queryByText(/pessoas/i)).toBeNull();
     expect(
-      screen.queryByText(/estrutura escolar/i),
-    ).toBeNull();
+      screen.getByRole('button', {
+        name: /pessoas/i,
+      }),
+    ).toBeTruthy();
     expect(
-      screen.queryByText(/opera..o acad.mica/i),
-    ).toBeNull();
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /opera..o escolar/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /administra..o/i,
+      }),
+    ).toBeTruthy();
     expect(
       screen.getByRole('link', {
         name: /disciplinas/i,
@@ -238,6 +256,38 @@ describe('Sidebar', () => {
     expect(labels.indexOf('TV Escola')).toBeLessThan(labels.indexOf('E-mail'));
     expect(labels).toContain('Visão geral');
     expect(labels).not.toContain('Administração');
+  });
+
+  it('permite abrir e fechar os grupos do menu administrativo', () => {
+    renderSidebar({
+      route: '/admin?module=subjects',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    const group = screen.getByRole('button', {
+      name: /configura..o acad.mica/i,
+    });
+
+    expect(group.getAttribute('aria-expanded')).toBe('true');
+    expect(
+      screen.getByRole('link', { name: 'Salas' }),
+    ).toBeTruthy();
+
+    fireEvent.click(group);
+
+    expect(group.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Salas' }),
+    ).toBeNull();
+
+    fireEvent.click(group);
+
+    expect(group.getAttribute('aria-expanded')).toBe('true');
+    expect(
+      screen.getByRole('link', { name: 'Salas' }),
+    ).toBeTruthy();
   });
 
   it('marca TV Escola e E-mail como ativos nas rotas próprias', () => {
