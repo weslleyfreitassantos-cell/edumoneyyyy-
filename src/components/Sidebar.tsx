@@ -47,6 +47,7 @@ import {
   isAdminModuleId,
   type AdminModuleId,
   type AdminModuleDefinition,
+  type AdminNavigationGroupId,
 } from '../pages/Admin/adminNavigation';
 import type {
   SystemPermission,
@@ -131,6 +132,17 @@ const adminModuleIcons: Record<
   grades: BadgeCheck,
   'term-closing': FileCheck2,
   'academic-policies': ShieldCheck,
+};
+
+const adminNavigationGroupIcons: Record<
+  AdminNavigationGroupId,
+  LucideIcon
+> = {
+  start: LayoutDashboard,
+  people: Users,
+  communication: Mail,
+  'school-structure': School,
+  'academic-operation': ClipboardCheck,
 };
 
 const baseNavigationItems: readonly SidebarNavigationItem[] = [
@@ -522,15 +534,28 @@ export default function Sidebar({
     return (
       <div className="mb-1 last:mb-0">
         <div className="space-y-1">
-          {adminModuleGroups.map((group) => (
-            <div key={group.id}>
-              <div className="space-y-1">
-                {group.modules.map(
-                  renderAdminModuleLink,
-                )}
-              </div>
-            </div>
-          ))}
+          {adminModuleGroups.map((group) => {
+            const GroupIcon =
+              adminNavigationGroupIcons[group.id];
+
+            return (
+              <section key={group.id} className="mb-4 last:mb-0">
+                <div className="mb-2 flex items-center gap-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+                  <GroupIcon
+                    className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                    aria-hidden="true"
+                  />
+                  <span>{group.label}</span>
+                </div>
+
+                <div className="space-y-1 pl-1">
+                  {group.modules.map(
+                    renderAdminModuleLink,
+                  )}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
     );
