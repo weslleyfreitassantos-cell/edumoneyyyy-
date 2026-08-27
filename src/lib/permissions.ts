@@ -66,6 +66,8 @@ export const SYSTEM_PERMISSIONS = [
   'view_own_classes',
   'view_own_student_data',
   'view_linked_students',
+  'manage_finance',
+  'view_own_finance',
   'view_live_cameras',
 ] as const;
 
@@ -90,6 +92,7 @@ const DIRECTOR_PERMISSIONS = [
   'manage_enrollments',
   'manage_academic_structure',
   'manage_assignments',
+  'manage_finance',
   'view_school_dashboard',
   'send_school_email',
   'view_reports',
@@ -120,7 +123,8 @@ export const CURRENT_ROLE_PERMISSIONS = {
   ],
 
   GUARDIAN: [
-    'view_linked_students',
+  'view_linked_students',
+  'view_own_finance',
   ],
 } as const satisfies Record<
   CurrentDatabaseRole,
