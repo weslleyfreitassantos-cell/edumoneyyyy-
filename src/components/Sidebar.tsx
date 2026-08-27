@@ -25,7 +25,6 @@ import {
   Users,
   Video,
   WalletCards,
-  UserCircle2,
   X,
 } from 'lucide-react';
 import type {
@@ -256,18 +255,6 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
 ];
 
-function getInitials(name: string): string {
-  const initials = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join('');
-
-  return initials || 'U';
-}
-
 function isActivePath(
   pathname: string,
   item: SidebarNavigationItem,
@@ -479,6 +466,9 @@ export default function Sidebar({
   });
   const adminModuleGroups =
     groupAdminModules(adminModules);
+  const overviewAdminModule = adminModules.find(
+    (module) => module.id === 'overview',
+  );
   const adminMenuGroups = ADMIN_NAVIGATION_GROUPS.map(
     (group) => ({
       ...group,
@@ -491,12 +481,14 @@ export default function Sidebar({
           baseAdminNavigationGroupByItemId[
             item.id
           ] === group.id,
-      ).sort(
+        ).sort(
         (left, right) =>
           (adminNavigationItemOrder[left.id] ?? 99) -
           (adminNavigationItemOrder[right.id] ?? 99),
       ),
     }),
+  ).filter(
+    (group) => group.id !== 'start',
   ).filter(
     (group) =>
       group.modules.length > 0 ||
@@ -514,7 +506,6 @@ export default function Sidebar({
         .map((item) => item.section),
     ),
   );
-  const initials = getInitials(currentUser.name);
   const brandName =
     branding.displayName?.trim() || 'EduManager Pro';
   const brandLogoUrl =
@@ -846,28 +837,18 @@ export default function Sidebar({
             );
           })}
 
+          {overviewAdminModule ? (
+            <div className="mb-4">
+              {renderAdminModuleLink(
+                overviewAdminModule,
+              )}
+            </div>
+          ) : null}
+
           {renderAdminModules()}
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">
-          <div className="mb-3 flex items-center gap-3 rounded-xl bg-white p-3 ring-1 ring-[#e4e8f1]">
-            <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f]"
-              aria-hidden="true"
-            >
-              {initials}
-            </span>
-
-            <span className="min-w-0">
-              <span className="block truncate text-sm font-bold text-[#181c20]">
-                {currentUser.name}
-              </span>
-              <span className="block truncate text-xs text-[#667085]">
-                {currentUser.subtitle}
-              </span>
-            </span>
-          </div>
-
           <div className="flex">
             <button
               type="button"
@@ -885,16 +866,6 @@ export default function Sidebar({
                   : 'Sair'}
               </span>
             </button>
-          </div>
-
-          <div className="mt-3 flex items-center gap-2 px-1 text-[11px] text-[#667085]">
-            <UserCircle2
-              className="h-3.5 w-3.5"
-              aria-hidden="true"
-            />
-            <span className="truncate">
-              {currentUser.email}
-            </span>
           </div>
         </div>
       </aside>

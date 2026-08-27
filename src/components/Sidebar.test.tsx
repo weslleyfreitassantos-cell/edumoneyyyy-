@@ -116,10 +116,6 @@ describe('Sidebar', () => {
   it('renderiza rotas reais do ADMIN e marca visao geral como area ativa', () => {
     renderSidebar();
 
-    fireEvent.click(
-      screen.getByRole('button', { name: /in.cio/i }),
-    );
-
     expect(
       screen.getByRole('link', {
         name: /conta/i,
@@ -142,6 +138,9 @@ describe('Sidebar', () => {
     ).toBeNull();
     expect(
       screen.queryByRole('link', { name: 'TV Escola' }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('button', { name: /in.cio/i }),
     ).toBeNull();
   });
 
@@ -537,7 +536,9 @@ describe('Sidebar', () => {
       }),
     ).toBeTruthy();
     expect(screen.getByText('EduManager Pro')).toBeTruthy();
-    expect(screen.getByText('ana@example.com')).toBeTruthy();
+    expect(screen.queryByText('Ana Silva')).toBeNull();
+    expect(screen.queryByText('Administrador')).toBeNull();
+    expect(screen.queryByText('ana@example.com')).toBeNull();
     expect(
       screen.queryByRole('button', {
         name: /recolher sidebar/i,
