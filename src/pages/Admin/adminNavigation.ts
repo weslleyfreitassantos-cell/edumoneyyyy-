@@ -19,7 +19,8 @@ export type AdminModuleId =
   | 'assignments'
   | 'term-closing'
   | 'academic-policies'
-  | 'timetable';
+  | 'timetable'
+  | 'finance';
 
 export type AdminNavigationGroupId =
   | 'start'
@@ -117,6 +118,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'communication',
     permission: 'send_school_email',
     href: moduleHref('email'),
+  },
+  {
+    id: 'finance',
+    label: 'Financeiro',
+    groupId: 'communication',
+    permission: 'manage_finance',
+    href: moduleHref('finance'),
   },
   {
     id: 'academic-years',

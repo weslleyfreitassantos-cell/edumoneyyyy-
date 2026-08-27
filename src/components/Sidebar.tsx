@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   Users,
   Video,
+  WalletCards,
   UserCircle2,
   X,
 } from 'lucide-react';
@@ -118,6 +119,7 @@ const adminModuleIcons: Record<
   teachers: Users,
   guardians: Users,
   email: Mail,
+  finance: WalletCards,
   'academic-years': CalendarDays,
   subjects: BookOpen,
   classes: School,
