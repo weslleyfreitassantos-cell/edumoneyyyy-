@@ -1,6 +1,7 @@
 import { supabase } from '../lib/supabaseClient';
 
 export const SCHOOL_SETUP_STEP_IDS = [
+  'login-branding',
   'academic-year',
   'terms',
   'subjects',
@@ -48,6 +49,14 @@ interface AcademicYearRow {
   start_date: string;
   end_date: string;
   active: boolean | null;
+}
+
+interface InstitutionBrandingRow {
+  login_display_name: string | null;
+  logo_url: string | null;
+  favicon_url: string | null;
+  primary_color: string | null;
+  secondary_color: string | null;
 }
 
 interface TermRow {
@@ -116,6 +125,18 @@ interface TimetableStructuralState {
 
 function isActive(value: boolean | null | undefined): boolean {
   return value !== false;
+}
+
+function hasLoginBranding(
+  branding: InstitutionBrandingRow | null,
+): boolean {
+  return Boolean(
+    branding?.login_display_name?.trim() ||
+      branding?.logo_url?.trim() ||
+      branding?.favicon_url?.trim() ||
+      branding?.primary_color?.trim() ||
+      branding?.secondary_color?.trim(),
+  );
 }
 
 function timeToMinutes(value: string): number {
@@ -290,6 +311,8 @@ function pickAcademicYear(
 
 function stepHref(stepId: SchoolSetupStepId): string {
   switch (stepId) {
+    case 'login-branding':
+      return '/personalizar-login';
     case 'academic-year':
     case 'terms':
       return '/admin?module=academic-years';
@@ -308,6 +331,7 @@ function stepHref(stepId: SchoolSetupStepId): string {
 
 export function buildSchoolSetupReadiness({
   institutionId,
+  loginBrandingConfigured,
   academicYear,
   terms,
   subjects,
@@ -321,6 +345,7 @@ export function buildSchoolSetupReadiness({
   offerings = [],
 }: {
   institutionId: string;
+  loginBrandingConfigured: boolean;
   academicYear: AcademicYearRow | null;
   terms: TermRow[];
   subjects: { id: string }[];
@@ -374,6 +399,7 @@ export function buildSchoolSetupReadiness({
     : { complete: false, completeClassIds: new Set<string>() };
 
   const completed = {
+    'login-branding': loginBrandingConfigured,
     'academic-year': academicYear !== null,
     terms:
       academicYear !== null &&
@@ -395,6 +421,7 @@ export function buildSchoolSetupReadiness({
   } satisfies Record<SchoolSetupStepId, boolean>;
 
   const labels: Record<SchoolSetupStepId, string> = {
+    'login-branding': 'Personalizar login',
     'academic-year': 'Ano letivo',
     terms: 'Períodos',
     subjects: 'Matérias',
@@ -440,13 +467,28 @@ export const schoolSetupService = {
   async getReadiness(
     institutionId: string,
   ): Promise<SchoolSetupReadiness> {
-    const { data: yearsData, error: yearsError } = await supabase
-      .from('academic_years')
-      .select('id, name, start_date, end_date, active')
-      .eq('institution_id', institutionId)
-      .order('start_date', { ascending: false });
+    const [yearsResult, brandingResult] = await Promise.all([
+      supabase
+        .from('academic_years')
+        .select('id, name, start_date, end_date, active')
+        .eq('institution_id', institutionId)
+        .order('start_date', { ascending: false }),
+      supabase
+        .from('institutions')
+        .select('login_display_name, logo_url, favicon_url, primary_color, secondary_color')
+        .eq('id', institutionId)
+        .maybeSingle(),
+    ]);
+
+    const { data: yearsData, error: yearsError } = yearsResult;
+    const { data: brandingData, error: brandingError } = brandingResult;
 
     if (yearsError) throw yearsError;
+    if (brandingError) throw brandingError;
+
+    const loginBrandingConfigured = hasLoginBranding(
+      (brandingData ?? null) as InstitutionBrandingRow | null,
+    );
 
     const academicYear = pickAcademicYear(
       (yearsData ?? []) as AcademicYearRow[],
@@ -455,6 +497,7 @@ export const schoolSetupService = {
     if (!academicYear) {
       return buildSchoolSetupReadiness({
         institutionId,
+        loginBrandingConfigured,
         academicYear: null,
         terms: [],
         subjects: [],
@@ -555,6 +598,7 @@ export const schoolSetupService = {
 
     return buildSchoolSetupReadiness({
       institutionId,
+      loginBrandingConfigured,
       academicYear,
       terms: (termsResult.data ?? []) as TermRow[],
       subjects: (subjectsResult.data ?? []) as { id: string }[],

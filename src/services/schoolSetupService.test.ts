@@ -7,6 +7,7 @@ import {
 
 const baseInput: Parameters<typeof buildSchoolSetupReadiness>[0] = {
   institutionId: 'institution-a',
+  loginBrandingConfigured: true,
   academicYear: {
     id: 'year-1',
     name: '2026',
@@ -47,6 +48,21 @@ function getStep(readiness: SchoolSetupReadiness, id: string) {
 }
 
 describe('school setup readiness', () => {
+  it('coloca Personalizar login como primeiro passo e direciona para a tela correta', () => {
+    const readiness = buildSchoolSetupReadiness({
+      ...baseInput,
+      loginBrandingConfigured: false,
+    });
+
+    expect(readiness.steps[0]).toEqual({
+      id: 'login-branding',
+      label: 'Personalizar login',
+      complete: false,
+      href: '/personalizar-login',
+    });
+    expect(readiness.nextStepId).toBe('login-branding');
+  });
+
   it('fica IN_PROGRESS sem grade publicada', () => {
     const readiness = buildSchoolSetupReadiness({
       ...baseInput,
