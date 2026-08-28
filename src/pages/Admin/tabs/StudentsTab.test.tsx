@@ -25,6 +25,14 @@ vi.mock('./EnrollmentsTab', () => ({
   ),
 }));
 
+vi.mock('./FullStudentEnrollmentWizard', () => ({
+  default: () => (
+    <div data-testid="full-student-enrollment-wizard">
+      Matrícula completa de aluno
+    </div>
+  ),
+}));
+
 const manageSchoolUser = vi.fn();
 
 vi.mock('../../../contexts/AuthContext', () => ({
@@ -203,5 +211,21 @@ describe('StudentsTab - vínculo de responsável', () => {
         name: /alunos/i,
       }).getAttribute('aria-selected'),
     ).toBe('false');
+  });
+
+  it('abre o cadastro completo ao criar um aluno', () => {
+    render(<StudentsTab />);
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /novo aluno/i,
+      }),
+    );
+
+    expect(
+      screen.getByTestId(
+        'full-student-enrollment-wizard',
+      ),
+    ).toBeTruthy();
   });
 });

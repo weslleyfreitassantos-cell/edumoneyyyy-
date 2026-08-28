@@ -28,17 +28,11 @@ import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 
 import {
-  useCreateStudent,
   useSetStudentActive,
   useStudents,
-  useUpdateStudent,
 } from '../../../hooks/useStudents';
 
-import {
-  guardianLinkSchema,
-  studentSchema,
-  studentUpdateSchema,
-} from '../../../schemas/adminSchemas';
+import { guardianLinkSchema } from '../../../schemas/adminSchemas';
 
 import type { StudentRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
@@ -47,13 +41,6 @@ import EnrollmentsTab from './EnrollmentsTab';
 export type StudentManagementView =
   | 'students'
   | 'enrollments';
-
-interface StudentDraft {
-  full_name: string;
-  email: string;
-  birth_date: string;
-  cpf: string;
-}
 
 interface GuardianLinkDraft {
   guardian_profile_id: string;
@@ -65,13 +52,6 @@ const emptyGuardianLinkDraft: GuardianLinkDraft = {
   guardian_profile_id: '',
   relationship: '',
   is_primary: false,
-};
-
-const emptyDraft: StudentDraft = {
-  full_name: '',
-  email: '',
-  birth_date: '',
-  cpf: '',
 };
 
 function getErrorMessage(error: unknown): string {
@@ -189,29 +169,14 @@ export default function StudentsTab() {
   const classesQuery =
     useClasses(institutionId);
 
-  const [isModalOpen, setIsModalOpen] =
-    useState(false);
-
   const [activeView, setActiveView] =
     useState<StudentManagementView>('students');
 
+  const [isFullWizardOpen, setIsFullWizardOpen] =
+    useState(false);
+
   const [fullEditStudentId, setFullEditStudentId] =
     useState<string | null>(null);
-
-  const [
-    editingStudent,
-    setEditingStudent,
-  ] = useState<StudentRow | null>(null);
-
-  const [formData, setFormData] =
-    useState<StudentDraft>({
-      ...emptyDraft,
-    });
-
-  const [
-    modalError,
-    setModalError,
-  ] = useState<string | null>(null);
 
   const [
     pageError,
@@ -222,12 +187,6 @@ export default function StudentsTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
-
-  const createMutation =
-    useCreateStudent();
-
-  const updateMutation =
-    useUpdateStudent();
 
   const statusMutation =
     useSetStudentActive();
@@ -258,10 +217,6 @@ export default function StudentsTab() {
         user.active &&
         user.profile?.active !== false,
     );
-
-  const isSubmitting =
-    createMutation.isPending ||
-    updateMutation.isPending;
 
   function openGuardianLinkModal(
     student: StudentRow,
@@ -382,115 +337,20 @@ export default function StudentsTab() {
   ];
 
   function resetMessages(): void {
-    setModalError(null);
     setPageError(null);
     setFeedbackMessage(null);
   }
 
-  function openCreateModal(): void {
+  function openFullWizard(): void {
     resetMessages();
-    setEditingStudent(null);
-    setFormData({
-      ...emptyDraft,
-    });
-    setIsModalOpen(true);
+    setIsFullWizardOpen(true);
   }
 
   function openEditModal(
     student: StudentRow,
   ): void {
     resetMessages();
-    setEditingStudent(null);
     setFullEditStudentId(student.id);
-  }
-
-  function closeModal(): void {
-    setIsModalOpen(false);
-    setEditingStudent(null);
-    setFormData({
-      ...emptyDraft,
-    });
-    setModalError(null);
-  }
-
-  async function handleSubmit(
-    event: FormEvent<HTMLFormElement>,
-  ): Promise<void> {
-    event.preventDefault();
-    setModalError(null);
-
-    if (!institutionId) {
-      setModalError(
-        'A instituição não foi carregada.',
-      );
-      return;
-    }
-
-    try {
-      if (editingStudent) {
-        const result =
-          studentUpdateSchema.safeParse({
-            birth_date: formData.birth_date,
-            cpf: formData.cpf,
-          });
-
-        if (!result.success) {
-          setModalError(
-            result.error.issues[0]
-              ?.message ??
-            'Dados inválidos.',
-          );
-          return;
-        }
-
-        await updateMutation.mutateAsync({
-          id: editingStudent.id,
-          institutionId,
-          data: result.data,
-        });
-
-        closeModal();
-
-        setFeedbackMessage(
-          'Aluno atualizado com sucesso.',
-        );
-
-        return;
-      }
-
-      const result =
-        studentSchema.safeParse({
-          institution_id: institutionId,
-          full_name: formData.full_name,
-          email: formData.email,
-          birth_date: formData.birth_date,
-          cpf: formData.cpf,
-        });
-
-      if (!result.success) {
-        setModalError(
-          result.error.issues[0]
-            ?.message ??
-          'Dados inválidos.',
-        );
-        return;
-      }
-
-      const createdStudent =
-        await createMutation.mutateAsync(
-          result.data,
-        );
-
-      closeModal();
-
-      setFeedbackMessage(
-        `Aluno cadastrado com sucesso. RA gerado: ${createdStudent.registration_number}. As credenciais foram enviadas para ${createdStudent.email}.`,
-      );
-    } catch (error) {
-      setModalError(
-        getErrorMessage(error),
-      );
-    }
   }
 
   async function handleToggleStatus(
@@ -599,7 +459,7 @@ export default function StudentsTab() {
         data={studentsQuery.data ?? []}
         columns={columns}
         isLoading={studentsQuery.isLoading}
-        onAdd={openCreateModal}
+        onAdd={openFullWizard}
         emptyMessage="Nenhum aluno cadastrado nesta instituição."
         renderActions={(student) => {
           const isChangingStatus =
@@ -657,6 +517,19 @@ export default function StudentsTab() {
         }}
       />
 
+      {isFullWizardOpen && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={yearsQuery.data ?? []}
+          classes={classesQuery.data ?? []}
+          onClose={() => setIsFullWizardOpen(false)}
+          onCompleted={() => {
+            setIsFullWizardOpen(false);
+            setFeedbackMessage('Cadastro completo e matrícula realizados com sucesso.');
+          }}
+        />
+      )}
+
       {fullEditStudentId && institutionId && (
         <FullStudentEnrollmentWizard
           institutionId={institutionId}
@@ -665,221 +538,11 @@ export default function StudentsTab() {
           mode="edit"
           studentId={fullEditStudentId}
           onClose={() => setFullEditStudentId(null)}
-          onUseExistingStudent={() => undefined}
           onCompleted={() => {
             setFullEditStudentId(null);
             setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
           }}
         />
-      )}
-
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="student-modal-title"
-        >
-          <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
-            <h3
-              id="student-modal-title"
-              className="mb-4 text-lg font-bold text-[#181c20]"
-            >
-              {editingStudent
-                ? 'Editar aluno'
-                : 'Novo aluno'}
-            </h3>
-
-            <form
-              onSubmit={(event) =>
-                void handleSubmit(event)
-              }
-              className="space-y-4"
-            >
-              {modalError && (
-                <div
-                  role="alert"
-                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
-                >
-                  {modalError}
-                </div>
-              )}
-
-              {editingStudent ? (
-                <>
-                  <div>
-                    <span className="block text-sm font-medium text-gray-700">
-                      Nome
-                    </span>
-
-                    <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
-                      {formData.full_name ||
-                        'Perfil indisponível'}
-                    </p>
-                  </div>
-
-                  <div>
-                    <span className="block text-sm font-medium text-gray-700">
-                      E-mail
-                    </span>
-
-                    <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
-                      {formData.email || '—'}
-                    </p>
-                  </div>
-
-                  <div>
-                    <span className="block text-sm font-medium text-gray-700">
-                      RA
-                    </span>
-
-                    <p className="mt-1 rounded-lg border bg-gray-50 px-3 py-2 text-sm text-gray-700">
-                      {
-                        editingStudent.registration_number
-                      }
-                    </p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div>
-                    <label
-                      htmlFor="student-full-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Nome completo
-                    </label>
-
-                    <input
-                      id="student-full-name"
-                      type="text"
-                      className="mt-1 w-full rounded-lg border px-3 py-2"
-                      value={formData.full_name}
-                      onChange={(event) =>
-                        setFormData(
-                          (current) => ({
-                            ...current,
-                            full_name:
-                              event.target.value,
-                          }),
-                        )
-                      }
-                      autoComplete="name"
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="student-email"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      E-mail
-                    </label>
-
-                    <input
-                      id="student-email"
-                      type="email"
-                      className="mt-1 w-full rounded-lg border px-3 py-2"
-                      value={formData.email}
-                      onChange={(event) =>
-                        setFormData(
-                          (current) => ({
-                            ...current,
-                            email:
-                              event.target.value,
-                          }),
-                        )
-                      }
-                      autoComplete="email"
-                      required
-                    />
-                  </div>
-
-                  <p className="rounded-lg bg-blue-50 px-3 py-2 text-xs leading-relaxed text-blue-700">
-                    O usuário, o vínculo acadêmico e o RA serão criados automaticamente. O aluno receberá um convite por e-mail para acessar o sistema.
-                  </p>
-                </>
-              )}
-
-              <div>
-                <label
-                  htmlFor="student-birth-date"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Data de nascimento
-                </label>
-
-                <input
-                  id="student-birth-date"
-                  type="date"
-                  className="mt-1 w-full rounded-lg border px-3 py-2"
-                  value={formData.birth_date}
-                  onChange={(event) =>
-                    setFormData(
-                      (current) => ({
-                        ...current,
-                        birth_date:
-                          event.target.value,
-                      }),
-                    )
-                  }
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="student-cpf"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  CPF (opcional)
-                </label>
-
-                <input
-                  id="student-cpf"
-                  type="text"
-                  className="mt-1 w-full rounded-lg border px-3 py-2"
-                  value={formData.cpf}
-                  onChange={(event) =>
-                    setFormData(
-                      (current) => ({
-                        ...current,
-                        cpf:
-                          event.target.value,
-                      }),
-                    )
-                  }
-                  placeholder="000.000.000-00"
-                  inputMode="numeric"
-                />
-              </div>
-
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  disabled={isSubmitting}
-                  className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
-                >
-                  Cancelar
-                </button>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {isSubmitting
-                    ? 'Salvando...'
-                    : editingStudent
-                      ? 'Salvar alterações'
-                      : 'Cadastrar e enviar convite'}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
       )}
 
       {guardianStudent && (
