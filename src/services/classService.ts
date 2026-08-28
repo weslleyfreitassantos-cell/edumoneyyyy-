@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 import {
   classSchema,
@@ -347,6 +348,12 @@ export const classService = {
       data.institution_id,
     );
 
+    const normalizedShift =
+      await academicShiftSettingsService.assertShiftEnabled(
+        data.institution_id,
+        data.shift,
+      );
+
     await assertUniqueClassName(
       data.institution_id,
       data.academic_year_id,
@@ -358,7 +365,7 @@ export const classService = {
       .insert({
         ...data,
         grade_level: data.grade_level ?? null,
-        shift: data.shift ?? null,
+        shift: normalizedShift,
       })
       .select(
         `
@@ -403,6 +410,12 @@ export const classService = {
       institutionId,
     );
 
+    const normalizedShift =
+      await academicShiftSettingsService.assertShiftEnabled(
+        institutionId,
+        data.shift,
+      );
+
     await assertUniqueClassName(
       institutionId,
       data.academic_year_id,
@@ -415,7 +428,7 @@ export const classService = {
       .update({
         ...data,
         grade_level: data.grade_level ?? null,
-        shift: data.shift ?? null,
+        shift: normalizedShift,
       })
       .eq('id', id)
       .eq('institution_id', institutionId);

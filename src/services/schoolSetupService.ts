@@ -1,4 +1,10 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  normalizeAcademicShift,
+  normalizeAcademicShifts,
+  toAcademicShift,
+} from '../lib/academic/academicShifts';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export const SCHOOL_SETUP_STEP_IDS = [
   'login-branding',
@@ -222,11 +228,12 @@ function evaluateTimetableStructure({
   const slotShifts = new Set(
     timeSlots
       .filter((slot) => isActive(slot.active))
-      .map((slot) => slot.shift.trim()),
+      .map((slot) => normalizeAcademicShift(slot.shift)),
   );
-  const classesHaveSlots = activeClasses.every((classRecord) =>
-    slotShifts.has(classRecord.shift?.trim() ?? ''),
-  );
+  const classesHaveSlots = activeClasses.every((classRecord) => {
+    const classShift = toAcademicShift(classRecord.shift);
+    return Boolean(classShift && slotShifts.has(classShift));
+  });
   const termsById = new Map(activeTerms.map((term) => [term.id, term]));
   const classesById = new Map(
     activeClasses.map((classRecord) => [classRecord.id, classRecord]),
@@ -246,10 +253,11 @@ function evaluateTimetableStructure({
       return false;
     }
 
-    return timeSlots.some(
+    const classShift = toAcademicShift(classRecord.shift);
+    return Boolean(classShift) && timeSlots.some(
       (slot) =>
         isActive(slot.active) &&
-        slot.shift.trim() === (classRecord.shift?.trim() ?? '') &&
+        normalizeAcademicShift(slot.shift) === classShift &&
         slot.day_of_week === entry.day_of_week &&
         timeToMinutes(slot.start_time) <= timeToMinutes(entry.start_time) &&
         timeToMinutes(slot.end_time) >= timeToMinutes(entry.end_time),
@@ -343,6 +351,7 @@ export function buildSchoolSetupReadiness({
   publishedEntries,
   timetableCandidates = [],
   offerings = [],
+  enabledShifts,
 }: {
   institutionId: string;
   loginBrandingConfigured: boolean;
@@ -357,10 +366,19 @@ export function buildSchoolSetupReadiness({
   publishedEntries: VersionEntryRow[];
   timetableCandidates?: TimetableCandidate[];
   offerings?: OfferingRow[];
+  enabledShifts?: readonly string[];
 }): SchoolSetupReadiness {
   const activeClasses = classes.filter((classRecord) =>
     isActive(classRecord.active),
   );
+  const configuredShifts = normalizeAcademicShifts(
+    enabledShifts ?? [
+      ...activeClasses.map((classRecord) => classRecord.shift),
+      ...timeSlots.map((slot) => slot.shift),
+    ],
+    [],
+  );
+  const enabledShiftSet = new Set(configuredShifts);
   const activeCurriculum = curriculum.filter((item) =>
     isActive(item.active),
   );
@@ -409,7 +427,10 @@ export function buildSchoolSetupReadiness({
     classes:
       activeClasses.length > 0 &&
       activeClasses.every(
-        (classRecord) => Boolean(classRecord.shift?.trim()),
+        (classRecord) => {
+          const shift = toAcademicShift(classRecord.shift);
+          return Boolean(shift && enabledShiftSet.has(shift));
+        },
       ),
     'class-subjects':
       activeClasses.length > 0 &&
@@ -595,6 +616,9 @@ export const schoolSetupService = {
     const publishedCandidate = timetableCandidates.find(
       (candidate) => candidate.version.status === 'PUBLISHED',
     );
+    const enabledShifts = await academicShiftSettingsService.getEnabledShifts(
+      institutionId,
+    );
 
     return buildSchoolSetupReadiness({
       institutionId,
@@ -610,6 +634,7 @@ export const schoolSetupService = {
       publishedEntries: publishedCandidate?.entries ?? [],
       timetableCandidates,
       offerings: (offeringsResult.data ?? []) as OfferingRow[],
+      enabledShifts,
     });
   },
 };

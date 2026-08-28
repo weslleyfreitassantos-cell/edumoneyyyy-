@@ -6,15 +6,22 @@ import {
 } from 'react';
 import {
   CheckCircle2,
+  Clock3,
   Save,
   Settings2,
 } from 'lucide-react';
 
 import {
   useAcademicPolicy,
+  useAcademicShiftSettings,
   useAcademicYears,
   useSaveAcademicPolicy,
+  useSaveAcademicShiftSettings,
 } from '../../hooks/useAcademicTermClosing';
+import {
+  ACADEMIC_SHIFT_OPTIONS,
+  type AcademicShift,
+} from '../../lib/academic/academicShifts';
 import {
   formatDate,
   getErrorMessage,
@@ -37,7 +44,11 @@ export default function AcademicPolicyPanel({
     useState('');
   const [decimalPlaces, setDecimalPlaces] =
     useState('1');
+  const [enabledShifts, setEnabledShifts] =
+    useState<AcademicShift[]>(['MATUTINO']);
   const [successMessage, setSuccessMessage] =
+    useState('');
+  const [shiftSuccessMessage, setShiftSuccessMessage] =
     useState('');
 
   useEffect(() => {
@@ -59,8 +70,18 @@ export default function AcademicPolicyPanel({
     institutionId,
     selectedYearId || undefined,
   );
+  const shiftSettingsQuery = useAcademicShiftSettings(
+    institutionId,
+  );
   const savePolicy = useSaveAcademicPolicy();
+  const saveShiftSettings = useSaveAcademicShiftSettings();
   const policy = policyQuery.data ?? null;
+
+  useEffect(() => {
+    if (shiftSettingsQuery.data) {
+      setEnabledShifts(shiftSettingsQuery.data);
+    }
+  }, [shiftSettingsQuery.data]);
 
   useEffect(() => {
     if (!policy) {
@@ -78,11 +99,37 @@ export default function AcademicPolicyPanel({
   }, [policy]);
 
   const isSaving = savePolicy.isPending;
+  const isShiftSaving = saveShiftSettings.isPending;
   const formDisabled =
     readOnly ||
     isSaving ||
     !institutionId ||
     !selectedYearId;
+
+  function toggleShift(shift: AcademicShift): void {
+    setShiftSuccessMessage('');
+    setEnabledShifts((current) =>
+      current.includes(shift)
+        ? current.filter((item) => item !== shift)
+        : [...current, shift],
+    );
+  }
+
+  async function handleShiftSubmit(): Promise<void> {
+    setShiftSuccessMessage('');
+
+    if (!institutionId || readOnly) return;
+
+    try {
+      await saveShiftSettings.mutateAsync({
+        institutionId,
+        enabledShifts,
+      });
+      setShiftSuccessMessage('Turnos da escola salvos.');
+    } catch {
+      // The mutation state renders the translated error without an unhandled rejection.
+    }
+  }
 
   async function handleSubmit(
     event: FormEvent<HTMLFormElement>,
@@ -134,6 +181,109 @@ export default function AcademicPolicyPanel({
           </div>
         )}
       </div>
+
+      <section className="mt-6 rounded-lg border border-blue-100 bg-blue-50/60 p-4">
+        <div className="flex items-start gap-3">
+          <Clock3
+            className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]"
+            aria-hidden="true"
+          />
+          <div>
+            <h3 className="text-sm font-bold text-[#181c20]">
+              Turnos utilizados pela escola
+            </h3>
+            <p className="mt-1 text-xs text-[#667085]">
+              Escolha os turnos permitidos para turmas e horários da escola.
+              Pelo menos um turno deve permanecer ativo.
+            </p>
+          </div>
+        </div>
+
+        {shiftSettingsQuery.isLoading ? (
+          <p className="mt-4 rounded-lg border border-dashed border-blue-200 bg-white p-3 text-sm text-[#667085]">
+            Carregando turnos configurados...
+          </p>
+        ) : shiftSettingsQuery.isError ? (
+          <div
+            role="alert"
+            className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+          >
+            Não foi possível carregar os turnos da escola.
+            A migração de configuração precisa estar aplicada antes do uso.
+          </div>
+        ) : (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {ACADEMIC_SHIFT_OPTIONS.map((option) => {
+              const checked = enabledShifts.includes(option.value);
+
+              return (
+                <label
+                  key={option.value}
+                  className={`flex cursor-pointer items-start gap-3 rounded-lg border bg-white p-3 transition-colors ${
+                    checked
+                      ? 'border-[#005bbf] ring-1 ring-[#005bbf]/20'
+                      : 'border-[#dfe3e8]'
+                  } ${readOnly ? 'cursor-default opacity-80' : ''}`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={checked}
+                    onChange={() => toggleShift(option.value)}
+                    disabled={readOnly || isShiftSaving}
+                    className="mt-1 h-4 w-4 accent-[#005bbf]"
+                  />
+                  <span>
+                    <span className="block text-sm font-semibold text-[#181c20]">
+                      {option.label}
+                    </span>
+                    <span className="mt-1 block text-xs text-[#667085]">
+                      {option.description}
+                    </span>
+                  </span>
+                </label>
+              );
+            })}
+          </div>
+        )}
+
+        {!readOnly && !shiftSettingsQuery.isError && (
+          <button
+            type="button"
+            onClick={() => void handleShiftSubmit()}
+            disabled={
+              shiftSettingsQuery.isLoading ||
+              isShiftSaving ||
+              enabledShifts.length === 0
+            }
+            className="mt-4 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#004a9c] disabled:cursor-not-allowed disabled:bg-gray-300"
+          >
+            <Save className="h-4 w-4" aria-hidden="true" />
+            {isShiftSaving ? 'Salvando turnos...' : 'Salvar turnos'}
+          </button>
+        )}
+
+        {readOnly && (
+          <p className="mt-4 rounded-lg border border-[#dfe3e8] bg-white p-3 text-sm text-[#727785]">
+            Seu perfil pode visualizar os turnos, mas não alterá-los.
+          </p>
+        )}
+
+        {saveShiftSettings.isError && (
+          <div
+            role="alert"
+            className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+          >
+            {getErrorMessage(saveShiftSettings.error)}
+          </div>
+        )}
+
+        {shiftSuccessMessage && (
+          <div className="mt-4 flex items-center gap-2 rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-700">
+            <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+            {shiftSuccessMessage}
+          </div>
+        )}
+      </section>
 
       {yearsQuery.isLoading ? (
         <div className="mt-6 rounded-lg border border-dashed border-[#c1c6d6] p-6 text-sm text-[#727785]">

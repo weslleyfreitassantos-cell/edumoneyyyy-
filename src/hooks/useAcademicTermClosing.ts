@@ -11,6 +11,10 @@ import {
   type SaveAcademicPolicyInput,
 } from '../services/academicPolicyService';
 import {
+  academicShiftSettingsService,
+} from '../services/academicShiftSettingsService';
+import type { AcademicShift } from '../lib/academic/academicShifts';
+import {
   reportCardService,
   type StudentReportCard,
 } from '../services/reportCardService';
@@ -41,6 +45,8 @@ export const academicKeys = {
       institutionId,
       academicYearId,
     ] as const,
+  shiftSettings: (institutionId: string | undefined) =>
+    [...academicKeys.all, 'shift-settings', institutionId] as const,
   teacherOfferings: (
     profileId: string | undefined,
     institutionId: string | undefined,
@@ -149,6 +155,55 @@ export function useSaveAcademicPolicy() {
     onSuccess: () => {
       void queryClient.invalidateQueries({
         queryKey: academicKeys.all,
+      });
+    },
+  });
+}
+
+export function useAcademicShiftSettings(
+  institutionId: string | undefined,
+) {
+  return useQuery<AcademicShift[]>({
+    queryKey: academicKeys.shiftSettings(institutionId),
+    queryFn: () => {
+      if (!institutionId) {
+        throw new Error(
+          'Instituicao obrigatoria para carregar os turnos.',
+        );
+      }
+
+      return academicShiftSettingsService.getEnabledShifts(
+        institutionId,
+      );
+    },
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60,
+  });
+}
+
+export function useSaveAcademicShiftSettings() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (input: {
+      institutionId: string;
+      enabledShifts: readonly AcademicShift[];
+    }) =>
+      academicShiftSettingsService.saveEnabledShifts(
+        input.institutionId,
+        input.enabledShifts,
+      ),
+    onSuccess: (_result, variables) => {
+      void queryClient.invalidateQueries({
+        queryKey: academicKeys.shiftSettings(
+          variables.institutionId,
+        ),
+      });
+      void queryClient.invalidateQueries({
+        queryKey: ['classes', variables.institutionId],
+      });
+      void queryClient.invalidateQueries({
+        queryKey: ['school-setup-readiness', variables.institutionId],
       });
     },
   });

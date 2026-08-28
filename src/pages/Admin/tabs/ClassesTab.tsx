@@ -15,6 +15,7 @@ import ClassAutomationPanel from '../../../components/academic/ClassAutomationPa
 import { useAuth } from '../../../contexts/AuthContext';
 
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
+import { useAcademicShiftSettings } from '../../../hooks/useAcademicTermClosing';
 
 import {
   useClasses,
@@ -36,6 +37,11 @@ import {
   buildClassDeletionBlockedMessage,
   type ClassRow,
 } from '../../../services/classService';
+import {
+  getAcademicShiftLabel,
+  toAcademicShift,
+  type AcademicShift,
+} from '../../../lib/academic/academicShifts';
 
 interface ClassDraft {
   name: string;
@@ -124,6 +130,12 @@ export default function ClassesTab() {
 
   const yearsQuery =
     useAcademicYears(institutionId);
+
+  const shiftSettingsQuery =
+    useAcademicShiftSettings(institutionId);
+
+  const enabledShifts: AcademicShift[] =
+    shiftSettingsQuery.data ?? ['MATUTINO'];
 
   const createMutation =
     useCreateClass();
@@ -280,6 +292,7 @@ export default function ClassesTab() {
       ...emptyDraft,
       academic_year_id:
         years[0]?.id ?? '',
+      shift: enabledShifts[0] ?? 'MATUTINO',
     });
     setIsModalOpen(true);
   }
@@ -296,7 +309,7 @@ export default function ClassesTab() {
         classRecord.academic_year_id,
       grade_level:
         classRecord.grade_level ?? '',
-      shift: classRecord.shift ?? '',
+      shift: toAcademicShift(classRecord.shift) ?? '',
       capacity: String(
         classRecord.capacity,
       ),
@@ -790,9 +803,8 @@ export default function ClassesTab() {
                   >
                     Turno
                   </label>
-                  <input
+                  <select
                     id="class-shift"
-                    type="text"
                     value={formData.shift}
                     onChange={(event) =>
                       setFormData(
@@ -804,7 +816,19 @@ export default function ClassesTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
-                  />
+                  >
+                    <option value="">Selecione</option>
+                    {enabledShifts.map((shift) => (
+                      <option key={shift} value={shift}>
+                        {getAcademicShiftLabel(shift)}
+                      </option>
+                    ))}
+                    {formData.shift && !enabledShifts.includes(formData.shift as typeof enabledShifts[number]) && (
+                      <option value={formData.shift}>
+                        {getAcademicShiftLabel(formData.shift)} (atual)
+                      </option>
+                    )}
+                  </select>
                 </div>
               </div>
 

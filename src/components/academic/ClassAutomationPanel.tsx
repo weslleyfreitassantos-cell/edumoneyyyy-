@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
+import { useAcademicShiftSettings } from '../../hooks/useAcademicTermClosing';
 import {
   useCreateClassBatch,
   useCreateEducationPreset,
@@ -11,6 +12,10 @@ import {
   buildEducationPresetClassDefinitions,
   EDUCATION_PRESET_GRADES,
 } from '../../services/classAutomationService';
+import {
+  getAcademicShiftLabel,
+  type AcademicShift,
+} from '../../lib/academic/academicShifts';
 
 interface ClassAutomationPanelProps {
   institutionId: string;
@@ -56,6 +61,7 @@ function getErrorMessage(error: unknown): string {
 
 export default function ClassAutomationPanel({ institutionId, onClose, onCompleted }: ClassAutomationPanelProps) {
   const yearsQuery = useAcademicYears(institutionId);
+  const shiftSettingsQuery = useAcademicShiftSettings(institutionId);
   const templatesQuery = useCurriculumTemplates(institutionId);
   const createMutation = useCreateClassBatch();
   const createPresetMutation = useCreateEducationPreset();
@@ -67,6 +73,8 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
   const [presetCounts, setPresetCounts] = useState<Record<string, string>>(defaultPresetCounts);
   const [error, setError] = useState<string | null>(null);
   const years = yearsQuery.data ?? [];
+  const enabledShifts: AcademicShift[] =
+    shiftSettingsQuery.data ?? ['MATUTINO'];
   const templates = templatesQuery.data ?? [];
   const isPending = createMutation.isPending || createPresetMutation.isPending;
 
@@ -78,6 +86,17 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
       }));
     }
   }, [formData.academicYearId, years]);
+
+  useEffect(() => {
+    if (enabledShifts.length === 0) return;
+
+    setFormData((current) =>
+      current.shift &&
+      enabledShifts.includes(current.shift as AcademicShift)
+        ? current
+        : { ...current, shift: enabledShifts[0] },
+    );
+  }, [shiftSettingsQuery.data]);
 
   const count = Number(formData.count);
   const previewNames = useMemo(() => {
@@ -250,7 +269,14 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
             </div>
             <div>
               <label htmlFor="class-automation-shift" className="block text-sm font-medium text-gray-700">Turno</label>
-              <input id="class-automation-shift" value={formData.shift} onChange={(event) => update('shift', event.target.value)} placeholder="Manhã" className="mt-1 w-full rounded-lg border px-3 py-2" />
+              <select id="class-automation-shift" value={formData.shift} onChange={(event) => update('shift', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2">
+                <option value="">Selecione</option>
+                {enabledShifts.map((shift) => (
+                  <option key={shift} value={shift}>
+                    {getAcademicShiftLabel(shift)}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label htmlFor="class-automation-capacity" className="block text-sm font-medium text-gray-700">Capacidade</label>

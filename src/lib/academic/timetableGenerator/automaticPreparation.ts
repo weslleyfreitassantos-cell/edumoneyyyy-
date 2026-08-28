@@ -4,6 +4,9 @@ import type {
   GeneratorOffering,
   GeneratorTeacherSubject,
 } from './index';
+import { normalizeAcademicShift } from '../academicShifts';
+
+export { normalizeAcademicShift } from '../academicShifts';
 
 export interface AutomaticAssignmentPlan {
   classId: string;
@@ -71,15 +74,6 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
     ['14:50', '15:40'],
   ],
 };
-
-export function normalizeAcademicShift(shift: string): string {
-  const normalized = shift.trim().toLocaleUpperCase('pt-BR');
-  if (normalized.includes('INTEGRAL')) return 'INTEGRAL';
-  if (normalized.includes('VESPERT') || normalized.includes('TARDE')) return 'VESPERTINO';
-  if (normalized.includes('NOTURN') || normalized.includes('NOITE')) return 'NOTURNO';
-  if (normalized.includes('MATUT') || normalized.includes('MANH')) return 'MATUTINO';
-  return normalized || 'MATUTINO';
-}
 
 function countTeacherLoad(
   teacherProfileId: string,
@@ -150,7 +144,9 @@ export function buildDefaultTimeSlots(
   for (const shift of effectiveShifts) {
     const normalizedShift = normalizeAcademicShift(shift);
     const times = STANDARD_SLOT_TIMES[normalizedShift] ?? STANDARD_SLOT_TIMES.MATUTINO;
-    const requestedSlots = slotsPerDayByShift[normalizedShift] ?? times.length;
+    const requestedSlots = slotsPerDayByShift[normalizedShift] ??
+      slotsPerDayByShift[shift] ??
+      times.length;
     for (let day = 1; day <= 5; day += 1) {
       times.slice(0, requestedSlots).forEach(([start_time, end_time], index) => {
         slots.push({

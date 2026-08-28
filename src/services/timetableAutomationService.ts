@@ -9,6 +9,8 @@ import {
   normalizeAcademicShift,
   planAutomaticAssignments,
 } from '../lib/academic/timetableGenerator/automaticPreparation';
+import { toAcademicShift } from '../lib/academic/academicShifts';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export interface TimetableVersionRow {
   id: string;
@@ -53,6 +55,7 @@ function buildSetupDiagnostics(input: {
   termIds: string[];
   classes: Array<{ id: string; name: string; shift: string | null }>;
   curriculumItems: Array<{ class_id: string; weekly_lessons: number }>;
+  enabledShifts: string[];
 }): GeneratorDiagnostic[] {
   const diagnostics: GeneratorDiagnostic[] = [];
 
@@ -89,6 +92,19 @@ function buildSetupDiagnostics(input: {
         classId: classRecord.id,
         suggestions: ['Edite a turma e selecione Manhã, Tarde, Noite ou Integral.'],
       });
+    } else {
+      const normalizedShift = toAcademicShift(classRecord.shift);
+      if (
+        !normalizedShift ||
+        !input.enabledShifts.includes(normalizedShift)
+      ) {
+        diagnostics.push({
+          code: 'SETUP_CLASS_SHIFT_NOT_CONFIGURED',
+          message: `A turma ${classRecord.name} usa um turno que não está habilitado na política acadêmica.`,
+          classId: classRecord.id,
+          suggestions: ['Edite a turma ou habilite este turno em Política acadêmica.'],
+        });
+      }
     }
 
     if (!activeCurriculumItems.some((item) => item.class_id === classRecord.id)) {
@@ -227,7 +243,7 @@ async function prepareAutomaticTimeSlots(input: {
   curriculumItems: Array<{ class_id: string; weekly_lessons: number }>;
   slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>;
 }): Promise<{ slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>; created: number }> {
-  const requiredShifts = [...new Set(input.classes.map((classRecord) => classRecord.shift?.trim() || 'MATUTINO'))];
+  const requiredShifts = [...new Set(input.classes.map((classRecord) => normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')))];
   const classShifts = new Map(input.classes.map((classRecord) => [classRecord.id, normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')]));
   const weeklyLoadByShift = new Map<string, number>();
   for (const [classId, shift] of classShifts) {
@@ -244,8 +260,8 @@ async function prepareAutomaticTimeSlots(input: {
     ),
   ]));
   const targetSlots = buildDefaultTimeSlots(requiredShifts, slotsPerDayByShift);
-  const existingPositions = new Set(input.slots.map((slot) => `${slot.shift.trim()}:${slot.day_of_week}:${slot.slot_number}`));
-  const defaults = targetSlots.filter((slot) => !existingPositions.has(`${slot.shift.trim()}:${slot.day_of_week}:${slot.slot_number}`));
+  const existingPositions = new Set(input.slots.map((slot) => `${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
+  const defaults = targetSlots.filter((slot) => !existingPositions.has(`${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
   if (defaults.length === 0) return { slots: input.slots, created: 0 };
 
   const { error } = await supabase.from('school_time_slots').upsert(defaults.map((slot) => ({
@@ -455,7 +471,7 @@ export const timetableAutomationService = {
   },
 
   async generateDraft(input: { institutionId: string; academicYearId: string; createdBy: string; seed?: string; name?: string; sourceVersionId?: string }): Promise<GeneratedDraft> {
-    const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult] = await Promise.all([
+    const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult, enabledShifts] = await Promise.all([
       supabase.from('terms').select('id, academic_year_id, start_date, end_date').eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('classes').select('id, institution_id, academic_year_id, name, shift').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, lesson_duration_minutes').eq('institution_id', input.institutionId).eq('active', true),
@@ -465,6 +481,7 @@ export const timetableAutomationService = {
       supabase.from('school_time_slots').select('id, institution_id, shift, day_of_week, slot_number, start_time, end_time, active').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('rooms').select('id, institution_id, active, class_id').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('subjects').select('id, name').eq('institution_id', input.institutionId),
+      academicShiftSettingsService.getEnabledShifts(input.institutionId),
     ]);
     const failed = [termsResult, classesResult, curriculumResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
     if (failed?.error) throw failed.error;
@@ -477,6 +494,7 @@ export const timetableAutomationService = {
       termIds,
       classes: classes.map((classRecord) => ({ id: classRecord.id, name: classRecord.name, shift: classRecord.shift })),
       curriculumItems: curriculumItems.map((item) => ({ class_id: item.class_id, weekly_lessons: item.weekly_lessons })),
+      enabledShifts,
     });
     if (setupDiagnostics.length > 0) return buildInvalidDraft(setupDiagnostics, seed);
 

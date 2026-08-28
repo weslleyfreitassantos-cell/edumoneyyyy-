@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
+import { useAcademicShiftSettings } from '../../hooks/useAcademicTermClosing';
 import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
@@ -12,6 +13,10 @@ import {
   useUpdateTimetableVersionEntry,
 } from '../../hooks/useAcademicAutomation';
 import type { TimetableVersionEntryRow } from '../../services/timetableAutomationService';
+import {
+  getAcademicShiftLabel,
+  type AcademicShift,
+} from '../../lib/academic/academicShifts';
 
 interface SlotDraft {
   day_of_week: number;
@@ -225,6 +230,7 @@ export default function TimetableAutomationPanel({
   createdBy: string;
 }) {
   const yearsQuery = useAcademicYears(institutionId);
+  const shiftSettingsQuery = useAcademicShiftSettings(institutionId);
   const years = yearsQuery.data ?? [];
   const [academicYearId, setAcademicYearId] = useState('');
   const selectedYearId = academicYearId || years[0]?.id || '';
@@ -240,6 +246,8 @@ export default function TimetableAutomationPanel({
   const [entryDraft, setEntryDraft] = useState<EntryDraft | null>(null);
 
   const [shift, setShift] = useState('MATUTINO');
+  const enabledShifts: AcademicShift[] =
+    shiftSettingsQuery.data ?? ['MATUTINO'];
   const slotsQuery = useSchoolTimeSlots(institutionId, shift);
   const saveSlotsMutation = useSaveSchoolTimeSlots();
   const [slots, setSlots] = useState<SlotDraft[]>([]);
@@ -256,6 +264,15 @@ export default function TimetableAutomationPanel({
       })),
     );
   }, [slotsQuery.data]);
+
+  useEffect(() => {
+    if (
+      enabledShifts.length > 0 &&
+      !enabledShifts.includes(shift as AcademicShift)
+    ) {
+      setShift(enabledShifts[0]);
+    }
+  }, [shiftSettingsQuery.data]);
 
   useEffect(() => {
     if (
@@ -422,6 +439,7 @@ export default function TimetableAutomationPanel({
       {error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
       {!yearsQuery.isLoading && !yearsQuery.isError && years.length === 0 && <div role="alert" className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">Cadastre um ano letivo antes de configurar a grade.</div>}
       {yearsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os anos letivos. Atualize a página e tente novamente.</div>}
+      {shiftSettingsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os turnos da escola. Configure a Política acadêmica e atualize a página.</div>}
 
       <section className="rounded-lg border border-[#e4e8f1] p-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -433,10 +451,11 @@ export default function TimetableAutomationPanel({
             <label className="text-sm font-semibold text-[#344054]">
               Turno
               <select aria-label="Turno dos horários" value={shift} onChange={(event) => setShift(event.target.value)} className="ml-2 rounded-lg border border-[#d8deea] px-3 py-2 text-sm font-normal">
-                <option value="MATUTINO">Manhã</option>
-                <option value="VESPERTINO">Tarde</option>
-                <option value="NOTURNO">Noite</option>
-                <option value="INTEGRAL">Integral</option>
+                {enabledShifts.map((availableShift) => (
+                  <option key={availableShift} value={availableShift}>
+                    {getAcademicShiftLabel(availableShift)}
+                  </option>
+                ))}
               </select>
             </label>
             <button

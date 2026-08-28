@@ -4,6 +4,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
+import { useAcademicShiftSettings } from '../../hooks/useAcademicTermClosing';
 import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
@@ -19,6 +20,10 @@ import TimetableAutomationPanel from './TimetableAutomationPanel';
 
 vi.mock('../../hooks/useAcademicStructure', () => ({
   useAcademicYears: vi.fn(),
+}));
+
+vi.mock('../../hooks/useAcademicTermClosing', () => ({
+  useAcademicShiftSettings: vi.fn(),
 }));
 
 vi.mock('../../hooks/useAcademicAutomation', () => ({
@@ -41,6 +46,12 @@ const updateEntryMutation = { mutateAsync: vi.fn(), isPending: false };
 function mockDefaults() {
   vi.mocked(useAcademicYears).mockReturnValue({
     data: [{ id: 'year-1', name: '2026', start_date: '2026-01-01', end_date: '2026-12-31', active: true, terms: [] }],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useAcademicShiftSettings).mockReturnValue({
+    data: ['MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO'],
     isLoading: false,
     isError: false,
     error: null,

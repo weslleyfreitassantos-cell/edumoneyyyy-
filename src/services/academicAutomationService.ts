@@ -1,4 +1,8 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  normalizeAcademicShift,
+} from '../lib/academic/academicShifts';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export type PeriodModel = 'BIMESTERS_4' | 'TRIMESTERS_3' | 'SEMESTERS_2' | 'CUSTOM';
 
@@ -198,14 +202,26 @@ export const academicAutomationService = {
   },
 
   async listTimeSlots(institutionId: string, shift?: string): Promise<SchoolTimeSlotRow[]> {
+    const normalizedShift = shift
+      ? await academicShiftSettingsService.assertShiftEnabled(institutionId, shift)
+      : null;
     let query = supabase.from('school_time_slots').select('*').eq('institution_id', institutionId).eq('active', true).order('day_of_week').order('slot_number');
-    if (shift) query = query.eq('shift', shift);
+    if (normalizedShift) query = query.eq('shift', normalizedShift);
     const { data, error } = await query;
     if (error) throw error;
-    return (data ?? []) as SchoolTimeSlotRow[];
+    return ((data ?? []) as SchoolTimeSlotRow[]).map((slot) => ({
+      ...slot,
+      shift: normalizeAcademicShift(slot.shift),
+    }));
   },
 
   async upsertTimeSlots(input: { institution_id: string; shift: string; slots: Array<{ day_of_week: number; slot_number: number; start_time: string; end_time: string }> }): Promise<void> {
+    const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+      input.institution_id,
+      input.shift,
+    );
+    if (!normalizedShift) throw new Error('Selecione um turno válido para os horários.');
+
     const positions = new Set<string>();
     for (const slot of input.slots) {
       if (slot.start_time >= slot.end_time) throw new Error('O horario final deve ser posterior ao inicial.');
@@ -218,7 +234,7 @@ export const academicAutomationService = {
       .from('school_time_slots')
       .select('id, day_of_week, slot_number')
       .eq('institution_id', input.institution_id)
-      .eq('shift', input.shift)
+      .eq('shift', normalizedShift)
       .eq('active', true);
     if (existingError) throw existingError;
 
@@ -230,12 +246,12 @@ export const academicAutomationService = {
         .from('school_time_slots')
         .update({ active: false })
         .eq('institution_id', input.institution_id)
-        .eq('shift', input.shift)
+        .eq('shift', normalizedShift)
         .in('id', staleIds);
       if (deactivateError) throw deactivateError;
     }
 
-    const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: input.shift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
+    const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: normalizedShift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
     if (error) throw error;
   },
 
