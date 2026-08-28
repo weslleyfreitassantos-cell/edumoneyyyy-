@@ -207,6 +207,44 @@ where y.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
       and c.name = grades.base_name || ' ' || chr(64 + letters.value)
   );
 
+create temporary table school_tv_demo_teacher_roster (
+  subject_code text not null,
+  teacher_number integer not null,
+  primary key (subject_code, teacher_number)
+) on commit drop;
+
+-- The pool is sized for the weekly demand of all 24 integral classes:
+-- four teachers for Portuguese and Mathematics, two for the heavier subjects,
+-- and one for subjects whose total demand fits a full teaching week.
+insert into school_tv_demo_teacher_roster (subject_code, teacher_number)
+select
+  teacher_data.subject_code,
+  teacher_number.value
+from (
+  values
+    ('LP', 4),
+    ('MAT', 4),
+    ('CIE', 2),
+    ('HIS', 2),
+    ('GEO', 2),
+    ('ART', 1),
+    ('EDF', 2),
+    ('ING', 2),
+    ('BIO', 1),
+    ('QUI', 1),
+    ('FIS', 1),
+    ('FIL', 1),
+    ('SOC', 1)
+) as teacher_data(subject_code, teacher_count)
+cross join lateral generate_series(1, teacher_data.teacher_count) as teacher_number(value)
+where exists (
+  select 1
+  from public.subjects s
+  where s.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
+    and s.code = teacher_data.subject_code
+    and s.active is true
+);
+
 create temporary table school_tv_demo_users (
   email text primary key,
   full_name text not null,
@@ -217,11 +255,19 @@ create temporary table school_tv_demo_users (
 
 insert into school_tv_demo_users (email, full_name, role, subject_code)
 select
-  'qa.professor.' || lower(s.code) || '@school-tv.test',
-  'Professor QA - ' || s.name,
+  case
+    when roster.teacher_number = 1 then 'qa.professor.' || lower(s.code) || '@school-tv.test'
+    else 'qa.professor.' || lower(s.code) || '.' || lpad(roster.teacher_number::text, 2, '0') || '@school-tv.test'
+  end,
+  case
+    when roster.teacher_number = 1 then 'Professor QA - ' || s.name
+    else 'Professor QA - ' || s.name || ' ' || lpad(roster.teacher_number::text, 2, '0')
+  end,
   'TEACHER'::public.user_role,
   s.code
 from public.subjects s
+join school_tv_demo_teacher_roster roster
+  on roster.subject_code = s.code
 where s.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
   and s.active is true;
 
@@ -350,6 +396,70 @@ where not exists (
     and existing_membership.role = u.role
 );
 
+insert into public.teacher_availability (
+  institution_id,
+  teacher_profile_id,
+  day_of_week,
+  start_time,
+  end_time,
+  active
+)
+select
+  '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid,
+  md5(u.email)::uuid,
+  school_day.day_of_week,
+  time '07:00',
+  time '15:40',
+  true
+from school_tv_demo_users u
+cross join (values (1), (2), (3), (4), (5)) as school_day(day_of_week)
+where u.role = 'TEACHER'::public.user_role
+  and not exists (
+    select 1
+    from public.teacher_availability existing_availability
+    where existing_availability.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
+      and existing_availability.teacher_profile_id = md5(u.email)::uuid
+      and existing_availability.day_of_week = school_day.day_of_week
+      and existing_availability.start_time = time '07:00'
+      and existing_availability.end_time = time '15:40'
+      and existing_availability.active is true
+  );
+
+insert into public.school_time_slots (
+  institution_id,
+  shift,
+  day_of_week,
+  slot_number,
+  start_time,
+  end_time,
+  active
+)
+select
+  '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid,
+  'Integral',
+  school_day.day_of_week,
+  school_slot.slot_number,
+  school_slot.start_time,
+  school_slot.end_time,
+  true
+from (values (1), (2), (3), (4), (5)) as school_day(day_of_week)
+cross join (
+  values
+    (1, time '07:00', time '07:50'),
+    (2, time '07:50', time '08:40'),
+    (3, time '08:50', time '09:40'),
+    (4, time '09:40', time '10:30'),
+    (5, time '10:50', time '11:40'),
+    (6, time '13:00', time '13:50'),
+    (7, time '13:50', time '14:40'),
+    (8, time '14:50', time '15:40')
+) as school_slot(slot_number, start_time, end_time)
+on conflict (institution_id, shift, day_of_week, slot_number) do update
+set start_time = excluded.start_time,
+    end_time = excluded.end_time,
+    active = true,
+    updated_at = now();
+
 insert into public.teacher_subjects (institution_id, teacher_profile_id, subject_id, primary_subject, active)
 select
   '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid,
@@ -445,38 +555,98 @@ where u.role = 'STUDENT'
       and existing_enrollment.academic_year_id = y.id
   );
 
-insert into public.subject_offerings (subject_id, class_id, teacher_profile_id, term_id, active)
+create temporary table school_tv_demo_offering_assignments (
+  subject_id uuid not null,
+  class_id uuid not null,
+  teacher_profile_id uuid not null,
+  term_id uuid not null,
+  primary key (subject_id, class_id, term_id)
+) on commit drop;
+
+-- Select exactly one teacher for each class/subject/term. The previous
+-- fixture joined every qualified teacher, which created duplicate demands.
+with teacher_pool as (
+  select
+    u.subject_code,
+    md5(u.email)::uuid as teacher_profile_id,
+    row_number() over (partition by u.subject_code order by u.email) - 1 as teacher_index,
+    count(*) over (partition by u.subject_code) as teacher_count
+  from school_tv_demo_users u
+  where u.role = 'TEACHER'::public.user_role
+), class_subjects as (
+  select
+    item.subject_id,
+    item.class_id,
+    s.code as subject_code,
+    row_number() over (partition by item.subject_id order by c.name, c.id) - 1 as assignment_index
+  from public.class_curriculum_items item
+  join public.classes c on c.id = item.class_id
+  join public.subjects s on s.id = item.subject_id
+  where item.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
+    and c.institution_id = item.institution_id
+    and c.active is true
+    and item.active is true
+)
+insert into school_tv_demo_offering_assignments (subject_id, class_id, teacher_profile_id, term_id)
 select
-  item.subject_id,
-  item.class_id,
-  teacher_subject.teacher_profile_id,
-  term.id,
-  true
-from public.class_curriculum_items item
-join public.teacher_subjects teacher_subject
-  on teacher_subject.institution_id = item.institution_id
- and teacher_subject.subject_id = item.subject_id
- and teacher_subject.active is true
+  class_subject.subject_id,
+  class_subject.class_id,
+  teacher_pool.teacher_profile_id,
+  term.id
+from class_subjects class_subject
+join teacher_pool
+  on teacher_pool.subject_code = class_subject.subject_code
+ and teacher_pool.teacher_index = class_subject.assignment_index % teacher_pool.teacher_count
 join public.terms term
   on term.academic_year_id = (
     select y.id
     from public.academic_years y
-    where y.institution_id = item.institution_id
+    where y.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
       and lower(trim(y.name)) = 'primeiro ano'
     order by y.start_date desc
     limit 1
   )
- and term.active is true
-where item.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
-  and not exists (
-    select 1
-    from public.subject_offerings existing_offering
-    where existing_offering.subject_id = item.subject_id
-      and existing_offering.class_id = item.class_id
-      and existing_offering.teacher_profile_id = teacher_subject.teacher_profile_id
-      and existing_offering.term_id = term.id
-      and existing_offering.active is true
-  );
+ and term.active is true;
+
+-- Repair an earlier run of this fixture without deleting referenced offerings.
+with ranked_offerings as (
+  select
+    existing_offering.id,
+    assignment.teacher_profile_id,
+    row_number() over (
+      partition by existing_offering.subject_id, existing_offering.class_id, existing_offering.term_id
+      order by existing_offering.created_at, existing_offering.id
+    ) as offering_number
+  from public.subject_offerings existing_offering
+  join school_tv_demo_offering_assignments assignment
+    on assignment.subject_id = existing_offering.subject_id
+   and assignment.class_id = existing_offering.class_id
+   and assignment.term_id = existing_offering.term_id
+  where existing_offering.active is true
+)
+update public.subject_offerings existing_offering
+set teacher_profile_id = ranked.teacher_profile_id,
+    active = (ranked.offering_number = 1),
+    updated_at = now()
+from ranked_offerings ranked
+where existing_offering.id = ranked.id;
+
+insert into public.subject_offerings (subject_id, class_id, teacher_profile_id, term_id, active)
+select
+  assignment.subject_id,
+  assignment.class_id,
+  assignment.teacher_profile_id,
+  assignment.term_id,
+  true
+from school_tv_demo_offering_assignments assignment
+where not exists (
+  select 1
+  from public.subject_offerings existing_offering
+  where existing_offering.subject_id = assignment.subject_id
+    and existing_offering.class_id = assignment.class_id
+    and existing_offering.term_id = assignment.term_id
+    and existing_offering.active is true
+);
 
 commit;
 
