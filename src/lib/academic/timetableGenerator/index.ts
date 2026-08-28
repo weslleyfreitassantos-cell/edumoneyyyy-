@@ -58,6 +58,16 @@ export interface GeneratorTimeSlot {
   active: boolean;
 }
 
+export interface GeneratorScheduleBreak {
+  institutionId: string;
+  shift: string;
+  dayOfWeek: number;
+  name: string;
+  startTime: string;
+  endTime: string;
+  active: boolean;
+}
+
 export interface GeneratorRoom {
   id: string;
   institutionId: string;
@@ -92,6 +102,7 @@ export interface TimetableGeneratorInput {
   teacherSubjects: GeneratorTeacherSubject[];
   teacherAvailability: GeneratorTeacherAvailability[];
   schoolTimeSlots: GeneratorTimeSlot[];
+  schoolScheduleBreaks?: GeneratorScheduleBreak[];
   rooms: GeneratorRoom[];
   lockedEntries?: GeneratorEntry[];
   subjectLabels?: Record<string, string>;
@@ -212,6 +223,43 @@ function slotsForClass(allSlots: GeneratorTimeSlot[], classRecord: GeneratorClas
   return exactSlots.length > 0 ? exactSlots : matchingSlots;
 }
 
+function slotOverlapsScheduleBreak(
+  slot: Pick<GeneratorTimeSlot, 'dayOfWeek' | 'startTime' | 'endTime'>,
+  classRecord: GeneratorClass,
+  breaks: GeneratorScheduleBreak[],
+): boolean {
+  if (!classRecord.shift) return false;
+  const normalizedShift = normalizeAcademicShift(classRecord.shift);
+  return breaks.some(
+    (scheduleBreak) =>
+      scheduleBreak.active &&
+      scheduleBreak.institutionId === classRecord.institutionId &&
+      normalizeAcademicShift(scheduleBreak.shift) === normalizedShift &&
+      scheduleBreak.dayOfWeek === slot.dayOfWeek &&
+      overlaps(
+        slot.startTime,
+        slot.endTime,
+        scheduleBreak.startTime,
+        scheduleBreak.endTime,
+      ),
+  );
+}
+
+function slotsAvailableForClass(
+  input: TimetableGeneratorInput,
+  allSlots: GeneratorTimeSlot[],
+  classRecord: GeneratorClass,
+): GeneratorTimeSlot[] {
+  return slotsForClass(allSlots, classRecord).filter(
+    (slot) =>
+      !slotOverlapsScheduleBreak(
+        slot,
+        classRecord,
+        input.schoolScheduleBreaks ?? [],
+      ),
+  );
+}
+
 function candidateRooms(input: TimetableGeneratorInput, entries: GeneratorEntry[], demand: Demand, candidate: Candidate, terms: Map<string, GeneratorTerm>): string[] {
   const rooms = input.rooms.filter((room) => room.active && room.institutionId === input.institutionId);
   if (rooms.length === 0) return [null as unknown as string];
@@ -276,6 +324,7 @@ function buildWeekdayCoverageDiagnostics(
     const expectedLessons = groupDemands.length + groupEntries.length;
     const capacityDays: number[] = [];
     const slotDays: number[] = [];
+    const breakDays: number[] = [];
     const teacherDays: number[] = [];
 
     if (expectedLessons < REQUIRED_SCHOOL_DAYS.length) {
@@ -289,9 +338,17 @@ function buildWeekdayCoverageDiagnostics(
     }
 
     for (const day of missingDays) {
-      const daySlotsByDemand = groupDemands.map((demand) => ({
+      const rawDaySlotsByDemand = groupDemands.map((demand) => ({
         demand,
         slots: slotsForClass(allSlots, demand.classRecord).filter(
+          (slot) =>
+            slot.dayOfWeek === day &&
+            timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes,
+        ),
+      }));
+      const daySlotsByDemand = groupDemands.map((demand) => ({
+        demand,
+        slots: slotsAvailableForClass(input, allSlots, demand.classRecord).filter(
           (slot) =>
             slot.dayOfWeek === day &&
             timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes,
@@ -300,7 +357,11 @@ function buildWeekdayCoverageDiagnostics(
       const daySlots = daySlotsByDemand.flatMap((item) => item.slots);
 
       if (daySlots.length === 0) {
-        slotDays.push(day);
+        if (rawDaySlotsByDemand.some((item) => item.slots.length > 0)) {
+          breakDays.push(day);
+        } else {
+          slotDays.push(day);
+        }
         continue;
       }
 
@@ -320,6 +381,14 @@ function buildWeekdayCoverageDiagnostics(
         message: `${classRecord.name} não cobre ${formatSchoolDays(slotDays)} porque não há horário escolar compatível cadastrado para esse turno.`,
         classId,
         suggestions: ['Cadastre pelo menos um horário escolar compatível em cada dia obrigatório.', 'Confira o turno configurado na turma.'],
+      });
+    }
+    if (breakDays.length > 0) {
+      diagnostics.push({
+        code: 'WEEKDAY_SCHEDULE_BREAK_REQUIRED',
+        message: `${classRecord.name} não cobre ${formatSchoolDays(breakDays)} porque os horários disponíveis estão bloqueados por intervalo ou almoço do turno.`,
+        classId,
+        suggestions: ['Revise os intervalos e o almoço em Política acadêmica.', 'Cadastre mais horários de aula fora desses bloqueios.'],
       });
     }
     if (teacherDays.length > 0) {
@@ -443,6 +512,20 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
 
   const entries: GeneratorEntry[] = [...(input.lockedEntries ?? [])].filter((entry) => entry.institutionId === input.institutionId && entry.academicYearId === input.academicYearId && selectedTermIds.has(entry.termId));
   const allSlots = input.schoolTimeSlots.filter((slot) => slot.active && slot.institutionId === input.institutionId);
+  for (const entry of entries) {
+    const classRecord = classes.get(entry.classId);
+    if (
+      classRecord &&
+      slotOverlapsScheduleBreak(entry, classRecord, input.schoolScheduleBreaks ?? [])
+    ) {
+      diagnostics.push({
+        code: 'LOCKED_ENTRY_DURING_SCHEDULE_BREAK',
+        message: `${classRecord.name} possui uma aula fixada durante um intervalo ou almoço configurado.`,
+        classId: entry.classId,
+        suggestions: ['Mova a aula fixada para fora do intervalo.', 'Revise os bloqueios em Política acadêmica.'],
+      });
+    }
+  }
   const coveredDays = new Map<string, Set<number>>();
   if (input.requireWeekdayCoverage) {
     for (const entry of entries) {
@@ -462,14 +545,14 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   }
 
   const rankedDemands = demands.map((demand) => {
-    const possible = slotsForClass(allSlots, demand.classRecord).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
+    const possible = slotsAvailableForClass(input, allSlots, demand.classRecord).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
     return { demand, possibleCount: possible.length };
   }).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
 
   for (const ranked of rankedDemands) {
     const demand = ranked.demand;
     const candidates: Candidate[] = [];
-    for (const slot of slotsForClass(allSlots, demand.classRecord)) {
+    for (const slot of slotsAvailableForClass(input, allSlots, demand.classRecord)) {
       if (timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) < demand.curriculum.lessonDurationMinutes) continue;
       if (!hasTeacherAvailability(input, demand, slot)) continue;
       if (entries.some((entry) => entry.classId === demand.classRecord.id && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
@@ -507,7 +590,7 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
 
   const penalties = calculatePenalties(entries);
   const hardConflicts = diagnostics.length;
-  const invalid = diagnostics.some((diagnostic) => diagnostic.code === 'LOCKED_ENTRY_CONFLICT');
+  const invalid = diagnostics.some((diagnostic) => diagnostic.code === 'LOCKED_ENTRY_CONFLICT' || diagnostic.code === 'LOCKED_ENTRY_DURING_SCHEDULE_BREAK');
   return { valid: hardConflicts === 0, status: hardConflicts === 0 ? 'VALID' : invalid ? 'INVALID' : 'UNSATISFIED', entries, hardConflicts, score: Math.max(0, 100 - penalties.teacherGaps - penalties.sameSubjectSameDay * 2 - penalties.roomChanges), penalties, diagnostics, seed };
 }
 

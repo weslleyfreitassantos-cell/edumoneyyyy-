@@ -7,21 +7,27 @@ import {
 import {
   CheckCircle2,
   Clock3,
+  Plus,
   Save,
   Settings2,
+  Trash2,
+  Utensils,
 } from 'lucide-react';
 
 import {
   useAcademicPolicy,
   useAcademicShiftSettings,
   useAcademicYears,
+  useSaveSchoolScheduleBreaks,
   useSaveAcademicPolicy,
   useSaveAcademicShiftSettings,
+  useSchoolScheduleBreaks,
 } from '../../hooks/useAcademicTermClosing';
 import {
   ACADEMIC_SHIFT_OPTIONS,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import type { SchoolScheduleBreakDraft } from '../../services/academicAutomationService';
 import {
   formatDate,
   getErrorMessage,
@@ -30,6 +36,54 @@ import {
 interface AcademicPolicyPanelProps {
   institutionId: string | undefined;
   readOnly?: boolean;
+}
+
+const BREAK_DAY_OPTIONS = [
+  { value: 1, label: 'Segunda' },
+  { value: 2, label: 'Terça' },
+  { value: 3, label: 'Quarta' },
+  { value: 4, label: 'Quinta' },
+  { value: 5, label: 'Sexta' },
+  { value: 6, label: 'Sábado' },
+] as const;
+
+const SUGGESTED_BREAKS: Record<AcademicShift, SchoolScheduleBreakDraft[]> = {
+  MATUTINO: [
+    { day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50' },
+  ],
+  VESPERTINO: [
+    { day_of_week: 1, name: 'Intervalo', start_time: '16:30', end_time: '16:50' },
+    { day_of_week: 1, name: 'Intervalo', start_time: '18:30', end_time: '18:50' },
+  ],
+  INTEGRAL: [
+    { day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50' },
+    { day_of_week: 1, name: 'Almoço', start_time: '11:40', end_time: '13:00' },
+    { day_of_week: 1, name: 'Intervalo', start_time: '14:40', end_time: '14:50' },
+  ],
+  NOTURNO: [
+    { day_of_week: 1, name: 'Intervalo', start_time: '20:10', end_time: '20:20' },
+    { day_of_week: 1, name: 'Intervalo', start_time: '22:00', end_time: '22:10' },
+  ],
+};
+
+function emptyBreaksByShift(): Record<AcademicShift, SchoolScheduleBreakDraft[]> {
+  return {
+    MATUTINO: [],
+    VESPERTINO: [],
+    INTEGRAL: [],
+    NOTURNO: [],
+  };
+}
+
+function copyBreaksToWeekdays(
+  breaks: SchoolScheduleBreakDraft[],
+): SchoolScheduleBreakDraft[] {
+  return breaks.flatMap((item) =>
+    BREAK_DAY_OPTIONS.slice(0, 5).map((day) => ({
+      ...item,
+      day_of_week: day.value,
+    })),
+  );
 }
 
 export default function AcademicPolicyPanel({
@@ -46,6 +100,9 @@ export default function AcademicPolicyPanel({
     useState('1');
   const [enabledShifts, setEnabledShifts] =
     useState<AcademicShift[]>(['MATUTINO']);
+  const [breaksByShift, setBreaksByShift] = useState<
+    Record<AcademicShift, SchoolScheduleBreakDraft[]>
+  >(emptyBreaksByShift);
   const [successMessage, setSuccessMessage] =
     useState('');
   const [shiftSuccessMessage, setShiftSuccessMessage] =
@@ -73,8 +130,10 @@ export default function AcademicPolicyPanel({
   const shiftSettingsQuery = useAcademicShiftSettings(
     institutionId,
   );
+  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
   const savePolicy = useSaveAcademicPolicy();
   const saveShiftSettings = useSaveAcademicShiftSettings();
+  const saveScheduleBreaks = useSaveSchoolScheduleBreaks();
   const policy = policyQuery.data ?? null;
 
   useEffect(() => {
@@ -82,6 +141,23 @@ export default function AcademicPolicyPanel({
       setEnabledShifts(shiftSettingsQuery.data);
     }
   }, [shiftSettingsQuery.data]);
+
+  useEffect(() => {
+    if (!scheduleBreaksQuery.data) return;
+
+    const next = emptyBreaksByShift();
+    for (const item of scheduleBreaksQuery.data) {
+      const shift = item.shift as AcademicShift;
+      if (!next[shift]) continue;
+      next[shift].push({
+        day_of_week: item.day_of_week,
+        name: item.name,
+        start_time: item.start_time.slice(0, 5),
+        end_time: item.end_time.slice(0, 5),
+      });
+    }
+    setBreaksByShift(next);
+  }, [scheduleBreaksQuery.data]);
 
   useEffect(() => {
     if (!policy) {
@@ -126,6 +202,63 @@ export default function AcademicPolicyPanel({
         enabledShifts,
       });
       setShiftSuccessMessage('Turnos da escola salvos.');
+    } catch {
+      // The mutation state renders the translated error without an unhandled rejection.
+    }
+  }
+
+  function updateBreak(
+    shift: AcademicShift,
+    index: number,
+    value: Partial<SchoolScheduleBreakDraft>,
+  ): void {
+    setBreaksByShift((current) => ({
+      ...current,
+      [shift]: current[shift].map((item, itemIndex) =>
+        itemIndex === index ? { ...item, ...value } : item,
+      ),
+    }));
+  }
+
+  function addBreak(shift: AcademicShift): void {
+    setBreaksByShift((current) => ({
+      ...current,
+      [shift]: [
+        ...current[shift],
+        {
+          day_of_week: 1,
+          name: 'Intervalo',
+          start_time: '10:30',
+          end_time: '10:50',
+        },
+      ],
+    }));
+  }
+
+  function removeBreak(shift: AcademicShift, index: number): void {
+    setBreaksByShift((current) => ({
+      ...current,
+      [shift]: current[shift].filter((_, itemIndex) => itemIndex !== index),
+    }));
+  }
+
+  function suggestBreaks(shift: AcademicShift): void {
+    setBreaksByShift((current) => ({
+      ...current,
+      [shift]: copyBreaksToWeekdays(SUGGESTED_BREAKS[shift]),
+    }));
+  }
+
+  async function handleBreakSubmit(shift: AcademicShift): Promise<void> {
+    if (!institutionId || readOnly) return;
+
+    try {
+      await saveScheduleBreaks.mutateAsync({
+        institution_id: institutionId,
+        shift,
+        breaks: breaksByShift[shift],
+      });
+      setShiftSuccessMessage('Intervalos e almoço salvos.');
     } catch {
       // The mutation state renders the translated error without an unhandled rejection.
     }
@@ -283,6 +416,202 @@ export default function AcademicPolicyPanel({
             {shiftSuccessMessage}
           </div>
         )}
+
+        <section className="mt-5 rounded-lg border border-[#dfe3e8] bg-white p-4">
+          <div className="flex items-start gap-3">
+            <Utensils
+              className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]"
+              aria-hidden="true"
+            />
+            <div>
+              <h3 className="text-sm font-bold text-[#181c20]">
+                Intervalos e almoço por turno
+              </h3>
+              <p className="mt-1 text-xs text-[#667085]">
+                Cadastre os bloqueios da rotina escolar. O gerador não marcará aulas dentro desses horários.
+              </p>
+            </div>
+          </div>
+
+          {scheduleBreaksQuery.isLoading ? (
+            <p className="mt-4 rounded-lg border border-dashed border-[#c1c6d6] p-3 text-sm text-[#667085]">
+              Carregando intervalos configurados...
+            </p>
+          ) : scheduleBreaksQuery.isError ? (
+            <div
+              role="alert"
+              className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+            >
+              Não foi possível carregar os intervalos. A migration de horários complementares precisa estar aplicada antes do uso.
+            </div>
+          ) : enabledShifts.length === 0 ? (
+            <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
+              Habilite pelo menos um turno para configurar a rotina.
+            </p>
+          ) : (
+            <div className="mt-4 space-y-4">
+              {enabledShifts.map((shift) => {
+                const option = ACADEMIC_SHIFT_OPTIONS.find(
+                  (item) => item.value === shift,
+                );
+                const shiftBreaks = breaksByShift[shift];
+                const savingThisShift =
+                  saveScheduleBreaks.isPending &&
+                  saveScheduleBreaks.variables?.shift === shift;
+
+                return (
+                  <div
+                    key={shift}
+                    className="rounded-lg border border-[#dfe3e8] p-3"
+                  >
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <h4 className="text-sm font-semibold text-[#181c20]">
+                          {option?.label ?? shift}
+                        </h4>
+                        <p className="text-xs text-[#667085]">
+                          {option?.description}
+                        </p>
+                      </div>
+                      {!readOnly && (
+                        <div className="flex flex-wrap gap-2">
+                          <button
+                            type="button"
+                            onClick={() => suggestBreaks(shift)}
+                            disabled={saveScheduleBreaks.isPending}
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-[#c1c6d6] px-3 py-2 text-xs font-semibold text-[#005bbf] hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-60"
+                          >
+                            <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
+                            Usar sugestão
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => addBreak(shift)}
+                            disabled={saveScheduleBreaks.isPending}
+                            className="inline-flex items-center gap-1.5 rounded-lg border border-[#c1c6d6] px-3 py-2 text-xs font-semibold text-[#005bbf] hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-60"
+                          >
+                            <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+                            Adicionar horário
+                          </button>
+                        </div>
+                      )}
+                    </div>
+
+                    {shiftBreaks.length === 0 ? (
+                      <p className="mt-3 rounded-lg border border-dashed border-[#c1c6d6] p-3 text-xs text-[#667085]">
+                        Nenhum intervalo cadastrado para este turno.
+                      </p>
+                    ) : (
+                      <div className="mt-3 space-y-2">
+                        {shiftBreaks.map((item, index) => (
+                          <div
+                            key={`${shift}-${index}`}
+                            className="grid gap-2 sm:grid-cols-[1.1fr_1.2fr_1fr_1fr_auto] sm:items-end"
+                          >
+                            <label className="text-xs font-semibold text-[#3d4652]">
+                              Dia
+                              <select
+                                value={item.day_of_week}
+                                onChange={(event) =>
+                                  updateBreak(shift, index, {
+                                    day_of_week: Number(event.target.value),
+                                  })
+                                }
+                                disabled={readOnly || saveScheduleBreaks.isPending}
+                                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
+                              >
+                                {BREAK_DAY_OPTIONS.map((day) => (
+                                  <option key={day.value} value={day.value}>
+                                    {day.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </label>
+                            <label className="text-xs font-semibold text-[#3d4652]">
+                              Tipo
+                              <input
+                                value={item.name}
+                                onChange={(event) =>
+                                  updateBreak(shift, index, {
+                                    name: event.target.value,
+                                  })
+                                }
+                                placeholder="Intervalo ou almoço"
+                                disabled={readOnly || saveScheduleBreaks.isPending}
+                                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
+                              />
+                            </label>
+                            <label className="text-xs font-semibold text-[#3d4652]">
+                              Início
+                              <input
+                                type="time"
+                                value={item.start_time}
+                                onChange={(event) =>
+                                  updateBreak(shift, index, {
+                                    start_time: event.target.value,
+                                  })
+                                }
+                                disabled={readOnly || saveScheduleBreaks.isPending}
+                                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
+                              />
+                            </label>
+                            <label className="text-xs font-semibold text-[#3d4652]">
+                              Fim
+                              <input
+                                type="time"
+                                value={item.end_time}
+                                onChange={(event) =>
+                                  updateBreak(shift, index, {
+                                    end_time: event.target.value,
+                                  })
+                                }
+                                disabled={readOnly || saveScheduleBreaks.isPending}
+                                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
+                              />
+                            </label>
+                            {!readOnly && (
+                              <button
+                                type="button"
+                                title="Remover horário"
+                                aria-label={`Remover intervalo ${index + 1} do turno ${option?.label ?? shift}`}
+                                onClick={() => removeBreak(shift, index)}
+                                disabled={saveScheduleBreaks.isPending}
+                                className="inline-flex h-10 items-center justify-center rounded-lg border border-red-200 px-3 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                              >
+                                <Trash2 className="h-4 w-4" aria-hidden="true" />
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {!readOnly && (
+                      <button
+                        type="button"
+                        onClick={() => void handleBreakSubmit(shift)}
+                        disabled={savingThisShift || saveScheduleBreaks.isPending}
+                        className="mt-3 inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-xs font-semibold text-white hover:bg-[#004a9c] disabled:cursor-not-allowed disabled:bg-gray-300"
+                      >
+                        <Save className="h-3.5 w-3.5" aria-hidden="true" />
+                        {savingThisShift ? 'Salvando...' : `Salvar ${option?.label ?? shift}`}
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {saveScheduleBreaks.isError && (
+            <div
+              role="alert"
+              className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+            >
+              {getErrorMessage(saveScheduleBreaks.error)}
+            </div>
+          )}
+        </section>
       </section>
 
       {yearsQuery.isLoading ? (

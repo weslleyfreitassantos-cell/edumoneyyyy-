@@ -6,7 +6,9 @@ import {
   useAcademicPolicy,
   useAcademicShiftSettings,
   useAcademicYears,
+  useSchoolScheduleBreaks,
   useSaveAcademicPolicy,
+  useSaveSchoolScheduleBreaks,
   useSaveAcademicShiftSettings,
 } from '../../hooks/useAcademicTermClosing';
 
@@ -21,8 +23,14 @@ describe('AcademicPolicyPanel', () => {
       isLoading: false,
       isError: false,
     });
+    (useSchoolScheduleBreaks as any).mockReturnValue({
+      data: [],
+      isLoading: false,
+      isError: false,
+    });
     (useSaveAcademicPolicy as any).mockReturnValue({ mutateAsync: vi.fn(), isPending: false });
     (useSaveAcademicShiftSettings as any).mockReturnValue({ mutateAsync: vi.fn(), isPending: false, isError: false });
+    (useSaveSchoolScheduleBreaks as any).mockReturnValue({ mutateAsync: vi.fn(), isPending: false, isError: false });
 
     // readOnly=true representa secretaria. O formulário deve estar desabilitado ou botão ausente.
     render(<AcademicPolicyPanel institutionId="inst-1" readOnly={true} />);

@@ -6,6 +6,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
+import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
 import { useStudentTimetable } from '../hooks/useTimetable';
 
@@ -17,6 +18,10 @@ vi.mock('../contexts/AuthContext', () => ({
 
 vi.mock('../hooks/useCurrentInstitution', () => ({
   useCurrentInstitution: vi.fn(),
+}));
+
+vi.mock('../hooks/useAcademicTermClosing', () => ({
+  useSchoolScheduleBreaks: vi.fn(),
 }));
 
 vi.mock('../hooks/useStudentDashboard', () => ({
@@ -123,6 +128,13 @@ function mockDefaultState() {
     isError: false,
     error: null,
   } as never);
+
+  vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+    data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
 }
 
 beforeEach(() => {
@@ -169,5 +181,23 @@ describe('StudentDashboard', () => {
         'A grade de horário da sua turma ainda não foi publicada.',
       ),
     ).toBeTruthy();
+  });
+
+  it('exibe o intervalo entre as aulas do aluno', () => {
+    vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+      data: [{ id: 'break-1', institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50', active: true }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard/timetable']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByTestId('timetable-break')).toBeTruthy();
+    expect(screen.getByText('Pausa escolar')).toBeTruthy();
   });
 });

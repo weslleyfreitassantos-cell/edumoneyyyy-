@@ -18,8 +18,10 @@ import { useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
+import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
 import { useStudentTimetable } from '../hooks/useTimetable';
+import { normalizeAcademicShift } from '../lib/academic/academicShifts';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 
 import type { StudentDashboardOffering } from '../services/studentDashboardService';
@@ -31,6 +33,7 @@ import {
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import StudentReportCard from './academic/StudentReportCard';
+import TimetableBreakMarker from './academic/TimetableBreakMarker';
 
 function getErrorMessage(
   error: unknown,
@@ -194,6 +197,7 @@ function StudentTimetableView({
   enrollment: {
     class_id: string;
     class_name: string;
+    shift: string | null;
     academic_year_name: string;
   } | null;
 }) {
@@ -201,6 +205,7 @@ function StudentTimetableView({
     institutionId,
     enrollment?.class_id,
   );
+  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
 
   if (!enrollment) {
     return (
@@ -241,6 +246,10 @@ function StudentTimetableView({
   const entries = (timetableQuery.data ?? []).filter(
     (entry) => entry.active,
   );
+  const classShift = enrollment.shift?.trim()
+    ? normalizeAcademicShift(enrollment.shift)
+    : null;
+  const scheduleBreaks = scheduleBreaksQuery.data ?? [];
 
   return (
     <motion.div
@@ -282,6 +291,27 @@ function StudentTimetableView({
             const dayEntries = entries.filter(
               (entry) => entry.day_of_week === day,
             );
+            const dayBreaks = scheduleBreaks.filter(
+              (scheduleBreak) =>
+                classShift !== null &&
+                scheduleBreak.active &&
+                scheduleBreak.day_of_week === day &&
+                normalizeAcademicShift(scheduleBreak.shift) === classShift,
+            );
+            const dayItems = [
+              ...dayEntries.map((entry) => ({
+                kind: 'lesson' as const,
+                startTime: entry.start_time,
+                entry,
+              })),
+              ...dayBreaks.map((scheduleBreak) => ({
+                kind: 'break' as const,
+                startTime: scheduleBreak.start_time,
+                scheduleBreak,
+              })),
+            ].sort((left, right) =>
+              left.startTime.localeCompare(right.startTime),
+            );
 
             return (
               <section
@@ -299,15 +329,19 @@ function StudentTimetableView({
                   </p>
                 </header>
 
-                {dayEntries.length === 0 ? (
+                {dayItems.length === 0 ? (
                   <p className="px-4 py-5 text-sm text-[#727785]">
                     Sem aulas neste dia.
                   </p>
                 ) : (
                   <div className="divide-y divide-[#edf0f5]">
-                    {dayEntries.map((entry) => (
-                      <div key={entry.id}>
-                        <TimetableEntryCard entry={entry} />
+                    {dayItems.map((item) => item.kind === 'break' ? (
+                      <div key={`break-${item.scheduleBreak.id}`} className="p-3">
+                        <TimetableBreakMarker scheduleBreak={item.scheduleBreak} />
+                      </div>
+                    ) : (
+                      <div key={item.entry.id}>
+                        <TimetableEntryCard entry={item.entry} />
                       </div>
                     ))}
                   </div>

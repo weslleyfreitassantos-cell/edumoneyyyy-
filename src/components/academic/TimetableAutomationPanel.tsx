@@ -1,7 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
-import { useAcademicShiftSettings } from '../../hooks/useAcademicTermClosing';
+import {
+  useAcademicShiftSettings,
+  useSchoolScheduleBreaks,
+} from '../../hooks/useAcademicTermClosing';
 import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
@@ -15,9 +18,12 @@ import {
 import type { TimetableVersionEntryRow } from '../../services/timetableAutomationService';
 import {
   getAcademicShiftLabel,
+  normalizeAcademicShift,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import type { SchoolScheduleBreakRow } from '../../services/academicAutomationService';
 import { REQUIRED_SCHOOL_DAYS } from '../../lib/academic/timetableGenerator';
+import TimetableBreakMarker from './TimetableBreakMarker';
 
 interface SlotDraft {
   day_of_week: number;
@@ -151,10 +157,12 @@ function formatDiagnostic(diagnostic: { code: string; message: string }): string
 
 function VersionReview({
   entries,
+  scheduleBreaks,
   onEdit,
   editable,
 }: {
   entries: TimetableVersionEntryRow[];
+  scheduleBreaks: SchoolScheduleBreakRow[];
   onEdit: (entry: TimetableVersionEntryRow) => void;
   editable: boolean;
 }) {
@@ -169,6 +177,7 @@ function VersionReview({
       key,
       name: classEntries[0]?.class_name ?? 'Turma',
       termName: classEntries[0]?.term_name ?? 'Período',
+      shift: classEntries[0]?.class_shift ?? null,
       entries: classEntries.sort(
         (left, right) =>
           left.day_of_week - right.day_of_week ||
@@ -199,35 +208,74 @@ function VersionReview({
             {[...new Set<number>([
               ...REQUIRED_SCHOOL_DAYS,
               ...classGroup.entries.map((entry) => entry.day_of_week),
+              ...scheduleBreaks
+                .filter((scheduleBreak) =>
+                  classGroup.shift &&
+                  normalizeAcademicShift(scheduleBreak.shift) ===
+                    normalizeAcademicShift(classGroup.shift),
+                )
+                .map((scheduleBreak) => scheduleBreak.day_of_week),
             ])].sort((left, right) => left - right).map((day) => (
               <div key={day}>
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
                   {DAY_LABELS[day]}
                 </p>
                 <div className="mt-2 space-y-2">
-                  {classGroup.entries
-                    .filter((entry) => entry.day_of_week === day)
-                    .map((entry) => (
+                  {[
+                    ...classGroup.entries
+                      .filter((entry) => entry.day_of_week === day)
+                      .map((entry) => ({
+                        kind: 'lesson' as const,
+                        startTime: entry.start_time,
+                        entry,
+                      })),
+                    ...scheduleBreaks
+                      .filter((scheduleBreak) =>
+                        classGroup.shift &&
+                        scheduleBreak.active &&
+                        scheduleBreak.day_of_week === day &&
+                        normalizeAcademicShift(scheduleBreak.shift) ===
+                          normalizeAcademicShift(classGroup.shift),
+                      )
+                      .map((scheduleBreak) => ({
+                        kind: 'break' as const,
+                        startTime: scheduleBreak.start_time,
+                        scheduleBreak,
+                      })),
+                  ]
+                    .sort((left, right) => left.startTime.localeCompare(right.startTime))
+                    .map((item) => item.kind === 'break' ? (
+                      <div key={`break-${item.scheduleBreak.id}`}>
+                        <TimetableBreakMarker scheduleBreak={item.scheduleBreak} />
+                      </div>
+                    ) : (
                       <div
-                        key={entry.id}
+                        key={item.entry.id}
                         role={editable ? 'button' : undefined}
                         tabIndex={editable ? 0 : undefined}
-                        onClick={editable ? () => onEdit(entry) : undefined}
+                        onClick={editable ? () => onEdit(item.entry) : undefined}
                         onKeyDown={editable ? (event) => {
-                          if (event.key === 'Enter' || event.key === ' ') onEdit(entry);
+                          if (event.key === 'Enter' || event.key === ' ') onEdit(item.entry);
                         } : undefined}
                         className={`block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs ${editable ? 'cursor-pointer hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]' : ''}`}
                       >
                         <span className="font-bold text-[#181c20]">
-                          {formatTime(entry.start_time)} {entry.subject_name}
+                          {formatTime(item.entry.start_time)} {item.entry.subject_name}
                         </span>
                         <span className="mt-1 block text-[#667085]">
-                          {entry.teacher_name ?? 'Professor pendente'}
-                          {entry.locked ? ' · Fixo' : ''}
+                          {item.entry.teacher_name ?? 'Professor pendente'}
+                          {item.entry.locked ? ' · Fixo' : ''}
                         </span>
                       </div>
                     ))}
-                  {classGroup.entries.every((entry) => entry.day_of_week !== day) && (
+                  {classGroup.entries.every((entry) => entry.day_of_week !== day) &&
+                    !scheduleBreaks.some((scheduleBreak) =>
+                      classGroup.shift &&
+                      scheduleBreak.active &&
+                      scheduleBreak.day_of_week === day &&
+                      normalizeAcademicShift(scheduleBreak.shift) ===
+                        normalizeAcademicShift(classGroup.shift),
+                    ) && (
                     <p className="rounded-md border border-dashed border-[#e4e8f1] p-2 text-xs text-[#98a2b3]">
                       Sem aulas geradas
                     </p>
@@ -251,6 +299,7 @@ export default function TimetableAutomationPanel({
 }) {
   const yearsQuery = useAcademicYears(institutionId);
   const shiftSettingsQuery = useAcademicShiftSettings(institutionId);
+  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
   const years = yearsQuery.data ?? [];
   const [academicYearId, setAcademicYearId] = useState('');
   const selectedYearId = academicYearId || years[0]?.id || '';
@@ -545,7 +594,7 @@ export default function TimetableAutomationPanel({
       {reviewVersionId && (
         <section className="space-y-4 border-t border-[#e4e8f1] pt-5">
           <div><h4 className="font-semibold text-[#181c20]">Revisar grade</h4><p className="text-sm text-[#667085]">Clique em uma aula para editar o horário ou marcá-la como fixa.</p></div>
-          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} />}
+          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} />}
         </section>
       )}
 

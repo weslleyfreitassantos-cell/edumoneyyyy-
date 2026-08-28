@@ -13,6 +13,11 @@ import {
 import {
   academicShiftSettingsService,
 } from '../services/academicShiftSettingsService';
+import {
+  academicAutomationService,
+  type SchoolScheduleBreakDraft,
+  type SchoolScheduleBreakRow,
+} from '../services/academicAutomationService';
 import type { AcademicShift } from '../lib/academic/academicShifts';
 import {
   reportCardService,
@@ -47,6 +52,8 @@ export const academicKeys = {
     ] as const,
   shiftSettings: (institutionId: string | undefined) =>
     [...academicKeys.all, 'shift-settings', institutionId] as const,
+  scheduleBreaks: (institutionId: string | undefined) =>
+    [...academicKeys.all, 'schedule-breaks', institutionId] as const,
   teacherOfferings: (
     profileId: string | undefined,
     institutionId: string | undefined,
@@ -205,6 +212,47 @@ export function useSaveAcademicShiftSettings() {
       void queryClient.invalidateQueries({
         queryKey: ['school-setup-readiness', variables.institutionId],
       });
+    },
+  });
+}
+
+export function useSchoolScheduleBreaks(
+  institutionId: string | undefined,
+) {
+  return useQuery<SchoolScheduleBreakRow[]>({
+    queryKey: academicKeys.scheduleBreaks(institutionId),
+    queryFn: () => {
+      if (!institutionId) {
+        throw new Error(
+          'Instituicao obrigatoria para carregar os intervalos.',
+        );
+      }
+
+      return academicAutomationService.listScheduleBreaks(institutionId);
+    },
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 60,
+  });
+}
+
+export function useSaveSchoolScheduleBreaks() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (input: {
+      institution_id: string;
+      shift: string;
+      breaks: SchoolScheduleBreakDraft[];
+    }) => academicAutomationService.replaceScheduleBreaks(input),
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: academicKeys.scheduleBreaks(variables.institution_id),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['academic-automation', 'time-slots', variables.institution_id],
+        }),
+      ]);
     },
   });
 }

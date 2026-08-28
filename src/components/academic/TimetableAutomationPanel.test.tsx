@@ -4,7 +4,10 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
-import { useAcademicShiftSettings } from '../../hooks/useAcademicTermClosing';
+import {
+  useAcademicShiftSettings,
+  useSchoolScheduleBreaks,
+} from '../../hooks/useAcademicTermClosing';
 import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
@@ -24,6 +27,7 @@ vi.mock('../../hooks/useAcademicStructure', () => ({
 
 vi.mock('../../hooks/useAcademicTermClosing', () => ({
   useAcademicShiftSettings: vi.fn(),
+  useSchoolScheduleBreaks: vi.fn(),
 }));
 
 vi.mock('../../hooks/useAcademicAutomation', () => ({
@@ -52,6 +56,12 @@ function mockDefaults() {
   } as never);
   vi.mocked(useAcademicShiftSettings).mockReturnValue({
     data: ['MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO'],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+    data: [],
     isLoading: false,
     isError: false,
     error: null,
@@ -146,6 +156,34 @@ describe('TimetableAutomationPanel', () => {
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/não foi possível montar a grade/i);
     expect(alert.textContent).toMatch(/precisa de mais horários/i);
+  });
+
+  it('exibe intervalos configurados na revisão sem tratá-los como aulas', () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useTimetableVersionEntries).mockReturnValue({
+      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', term_name: '1º Bimestre', class_id: 'class-1', class_name: '1A', class_shift: 'MATUTINO', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+      data: [{ id: 'break-1', institution_id: 'institution-1', shift: 'MATUTINO', day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50', active: true }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
+
+    expect(screen.getByTestId('timetable-break')).toBeTruthy();
+    expect(screen.getByText('Intervalo')).toBeTruthy();
+    expect(screen.getByText('Pausa escolar')).toBeTruthy();
   });
 
   it('explica quando a publicação é bloqueada por falta de disponibilidade docente', async () => {

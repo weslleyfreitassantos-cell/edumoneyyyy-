@@ -269,4 +269,48 @@ describe('timetable generator', () => {
     expect(result.valid).toBe(true);
     expect(result.entries.map((entry) => entry.dayOfWeek)).toEqual([1, 2]);
   });
+
+  it('does not allocate lessons inside a configured recess', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      schoolScheduleBreaks: [{
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek: 1,
+        name: 'Intervalo',
+        startTime: '07:00',
+        endTime: '07:50',
+        active: true,
+      }],
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries).toHaveLength(2);
+    expect(result.entries.every((entry) => entry.dayOfWeek !== 1)).toBe(true);
+  });
+
+  it('explains when weekday coverage is blocked by configured breaks', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `blocked-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+      schoolScheduleBreaks: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek,
+        name: 'Intervalo',
+        startTime: '07:00',
+        endTime: '07:50',
+        active: true,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_SCHEDULE_BREAK_REQUIRED')).toBe(true);
+  });
 });

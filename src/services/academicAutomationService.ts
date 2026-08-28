@@ -43,6 +43,22 @@ export interface SchoolTimeSlotRow {
   active: boolean;
 }
 
+export interface SchoolScheduleBreakRow {
+  id: string;
+  institution_id: string;
+  shift: string;
+  day_of_week: number;
+  name: string;
+  start_time: string;
+  end_time: string;
+  active: boolean;
+}
+
+export type SchoolScheduleBreakDraft = Pick<
+  SchoolScheduleBreakRow,
+  'day_of_week' | 'name' | 'start_time' | 'end_time'
+>;
+
 export type TeacherAvailabilityDraft = Pick<
   TeacherAvailabilityRow,
   'day_of_week' | 'start_time' | 'end_time'
@@ -253,6 +269,96 @@ export const academicAutomationService = {
 
     const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: normalizedShift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
     if (error) throw error;
+  },
+
+  async listScheduleBreaks(
+    institutionId: string,
+    shift?: string,
+  ): Promise<SchoolScheduleBreakRow[]> {
+    let query = supabase
+      .from('school_schedule_breaks')
+      .select('*')
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .order('shift')
+      .order('day_of_week')
+      .order('start_time');
+
+    if (shift) {
+      const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+        institutionId,
+        shift,
+      );
+      if (normalizedShift) query = query.eq('shift', normalizedShift);
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+    return (data ?? []) as SchoolScheduleBreakRow[];
+  },
+
+  async replaceScheduleBreaks(input: {
+    institution_id: string;
+    shift: string;
+    breaks: SchoolScheduleBreakDraft[];
+  }): Promise<SchoolScheduleBreakRow[]> {
+    const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+      input.institution_id,
+      input.shift,
+    );
+    if (!normalizedShift) {
+      throw new Error('Selecione um turno válido para os intervalos.');
+    }
+
+    const seen = new Set<string>();
+    for (const item of input.breaks) {
+      const name = item.name.trim();
+      if (!name) throw new Error('Informe o nome do intervalo.');
+      if (item.day_of_week < 1 || item.day_of_week > 6) {
+        throw new Error('Selecione um dia válido para o intervalo.');
+      }
+      if (item.start_time >= item.end_time) {
+        throw new Error('O horário final do intervalo deve ser posterior ao inicial.');
+      }
+      const duplicateKey = `${item.day_of_week}:${item.start_time}:${item.end_time}:${name.toLocaleLowerCase()}`;
+      if (seen.has(duplicateKey)) {
+        throw new Error('Não repita o mesmo intervalo no mesmo dia.');
+      }
+      seen.add(duplicateKey);
+    }
+
+    const ordered = [...input.breaks].sort(
+      (left, right) =>
+        left.day_of_week - right.day_of_week ||
+        left.start_time.localeCompare(right.start_time),
+    );
+    for (let index = 1; index < ordered.length; index += 1) {
+      const previous = ordered[index - 1];
+      const current = ordered[index];
+      if (
+        previous.day_of_week === current.day_of_week &&
+        previous.start_time < current.end_time &&
+        current.start_time < previous.end_time
+      ) {
+        throw new Error('Os intervalos do mesmo turno não podem se sobrepor.');
+      }
+    }
+
+    const { data, error } = await supabase.rpc(
+      'replace_school_schedule_breaks',
+      {
+        p_institution_id: input.institution_id,
+        p_shift: normalizedShift,
+        p_breaks: input.breaks.map((item) => ({
+          day_of_week: item.day_of_week,
+          name: item.name.trim(),
+          start_time: item.start_time,
+          end_time: item.end_time,
+        })),
+      },
+    );
+    if (error) throw error;
+    return (data ?? []) as SchoolScheduleBreakRow[];
   },
 
   async applyCurriculumTemplate(input: { institution_id: string; template_id: string; class_ids: string[] }): Promise<number> {
