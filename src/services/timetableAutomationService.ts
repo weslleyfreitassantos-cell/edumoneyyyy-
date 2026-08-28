@@ -287,27 +287,7 @@ export const timetableAutomationService = {
   ): Promise<TimetableVersionEntryRow[]> {
     const { data, error } = await supabase
       .from('timetable_version_entries')
-      .select(`
-        id,
-        version_id,
-        institution_id,
-        academic_year_id,
-        term_id,
-        class_id,
-        subject_offering_id,
-        room_id,
-        day_of_week,
-        start_time,
-        end_time,
-        locked,
-        active,
-        classes:class_id (name),
-        subject_offerings:subject_offering_id (
-          teacher_profile_id,
-          subjects:subject_id (name),
-          profiles:teacher_profile_id (full_name)
-        )
-      `)
+      .select('id, version_id, institution_id, academic_year_id, term_id, class_id, subject_offering_id, room_id, day_of_week, start_time, end_time, locked, active')
       .eq('version_id', versionId)
       .eq('institution_id', institutionId)
       .order('class_id')
@@ -316,24 +296,80 @@ export const timetableAutomationService = {
 
     if (error) throw error;
 
-    return ((data ?? []) as Array<Record<string, unknown>>).map((row) => {
-      const classRelation = row.classes as { name?: string } | { name?: string }[] | null;
-      const offeringRelation = row.subject_offerings as {
-        teacher_profile_id?: string;
-        subjects?: { name?: string } | { name?: string }[] | null;
-        profiles?: { full_name?: string } | { full_name?: string }[] | null;
-      } | {
-        teacher_profile_id?: string;
-        subjects?: { name?: string } | { name?: string }[] | null;
-        profiles?: { full_name?: string } | { full_name?: string }[] | null;
-      }[] | null;
-      const first = <T,>(value: T | T[] | null | undefined): T | null =>
-        Array.isArray(value) ? value[0] ?? null : value ?? null;
-      const className = first(classRelation)?.name ?? 'Turma';
-      const offering = first(offeringRelation);
-      const subject = first(offering?.subjects);
-      const teacher = first(offering?.profiles);
+    const rows = (data ?? []) as Array<{
+      id: string;
+      version_id: string;
+      institution_id: string;
+      academic_year_id: string;
+      term_id: string;
+      class_id: string;
+      subject_offering_id: string;
+      room_id: string | null;
+      day_of_week: number;
+      start_time: string;
+      end_time: string;
+      locked: boolean;
+      active: boolean;
+    }>;
+    const classIds = [...new Set(rows.map((row) => row.class_id))];
+    const offeringIds = [...new Set(rows.map((row) => row.subject_offering_id))];
 
+    const [classesResult, offeringsResult] = await Promise.all([
+      classIds.length > 0
+        ? supabase
+          .from('classes')
+          .select('id, name')
+          .eq('institution_id', institutionId)
+          .in('id', classIds)
+        : Promise.resolve({ data: [], error: null }),
+      offeringIds.length > 0
+        ? supabase
+          .from('subject_offerings')
+          .select('id, subject_id, teacher_profile_id')
+          .in('id', offeringIds)
+        : Promise.resolve({ data: [], error: null }),
+    ]);
+    if (classesResult.error) throw classesResult.error;
+    if (offeringsResult.error) throw offeringsResult.error;
+
+    const offerings = (offeringsResult.data ?? []) as Array<{
+      id: string;
+      subject_id: string;
+      teacher_profile_id: string;
+    }>;
+    const subjectIds = [...new Set(offerings.map((offering) => offering.subject_id))];
+    const teacherIds = [...new Set(offerings.map((offering) => offering.teacher_profile_id))];
+    const [subjectsResult, teachersResult] = await Promise.all([
+      subjectIds.length > 0
+        ? supabase
+          .from('subjects')
+          .select('id, name')
+          .eq('institution_id', institutionId)
+          .in('id', subjectIds)
+        : Promise.resolve({ data: [], error: null }),
+      teacherIds.length > 0
+        ? supabase
+          .from('profiles')
+          .select('id, full_name')
+          .in('id', teacherIds)
+        : Promise.resolve({ data: [], error: null }),
+    ]);
+    if (subjectsResult.error) throw subjectsResult.error;
+    if (teachersResult.error) throw teachersResult.error;
+
+    const classNames = new Map(
+      (classesResult.data ?? []).map((row) => [row.id, row.name]),
+    );
+    const subjectNames = new Map(
+      (subjectsResult.data ?? []).map((row) => [row.id, row.name]),
+    );
+    const teacherNames = new Map(
+      (teachersResult.data ?? []).map((row) => [row.id, row.full_name]),
+    );
+    const offeringsById = new Map(offerings.map((offering) => [offering.id, offering]));
+
+    return rows.map((row) => {
+      const offering = offeringsById.get(row.subject_offering_id);
       return {
         id: String(row.id),
         version_id: String(row.version_id),
@@ -341,11 +377,11 @@ export const timetableAutomationService = {
         academic_year_id: String(row.academic_year_id),
         term_id: String(row.term_id),
         class_id: String(row.class_id),
-        class_name: className,
+        class_name: classNames.get(row.class_id) ?? 'Turma',
         subject_offering_id: String(row.subject_offering_id),
-        subject_name: subject?.name ?? 'Matéria',
+        subject_name: subjectNames.get(offering?.subject_id ?? '') ?? 'Matéria',
         teacher_profile_id: offering?.teacher_profile_id ?? '',
-        teacher_name: teacher?.full_name ?? null,
+        teacher_name: teacherNames.get(offering?.teacher_profile_id ?? '') ?? null,
         room_id: row.room_id ? String(row.room_id) : null,
         day_of_week: Number(row.day_of_week),
         start_time: String(row.start_time),
@@ -396,6 +432,25 @@ export const timetableAutomationService = {
       .eq('version_id', input.versionId)
       .eq('institution_id', input.institutionId);
 
+    if (error) throw error;
+  },
+
+  async deleteVersion(versionId: string, institutionId: string): Promise<void> {
+    const { data: version, error: versionError } = await supabase
+      .from('timetable_versions')
+      .select('id, status')
+      .eq('id', versionId)
+      .eq('institution_id', institutionId)
+      .maybeSingle();
+    if (versionError) throw versionError;
+    if (!version) throw new Error('A proposta não foi encontrada. Atualize a lista e tente novamente.');
+    if (version.status !== 'DRAFT') {
+      throw new Error('Somente propostas em rascunho podem ser excluídas.');
+    }
+
+    const { error } = await supabase.rpc('delete_timetable_draft', {
+      p_version_id: versionId,
+    });
     if (error) throw error;
   },
 

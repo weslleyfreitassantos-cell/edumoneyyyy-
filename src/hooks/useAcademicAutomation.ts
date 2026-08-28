@@ -197,6 +197,20 @@ export function useGenerateTimetableDraft() {
   });
 }
 
+export function useDeleteTimetableVersion() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ versionId, institutionId }: { versionId: string; institutionId: string; academicYearId: string }) => timetableAutomationService.deleteVersion(versionId, institutionId),
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersionEntries(variables.institutionId, variables.versionId) }),
+      ]);
+    },
+  });
+}
+
 export function usePublishTimetableVersion() {
   const queryClient = useQueryClient();
   return useMutation({

@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
+  useDeleteTimetableVersion,
   useGenerateTimetableDraft,
   usePublishTimetableVersion,
   useSaveSchoolTimeSlots,
@@ -21,6 +22,7 @@ vi.mock('../../hooks/useAcademicStructure', () => ({
 }));
 
 vi.mock('../../hooks/useAcademicAutomation', () => ({
+  useDeleteTimetableVersion: vi.fn(),
   useGenerateTimetableDraft: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
   useSaveSchoolTimeSlots: vi.fn(),
@@ -32,6 +34,7 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
 
 const slotMutation = { mutateAsync: vi.fn(), isPending: false };
 const generateMutation = { mutateAsync: vi.fn(), isPending: false };
+const deleteMutation = { mutateAsync: vi.fn(), isPending: false };
 const publishMutation = { mutateAsync: vi.fn(), isPending: false };
 const updateEntryMutation = { mutateAsync: vi.fn(), isPending: false };
 
@@ -62,6 +65,7 @@ function mockDefaults() {
   } as never);
   vi.mocked(useSaveSchoolTimeSlots).mockReturnValue(slotMutation as never);
   vi.mocked(useGenerateTimetableDraft).mockReturnValue(generateMutation as never);
+  vi.mocked(useDeleteTimetableVersion).mockReturnValue(deleteMutation as never);
   vi.mocked(usePublishTimetableVersion).mockReturnValue(publishMutation as never);
   vi.mocked(useUpdateTimetableVersionEntry).mockReturnValue(updateEntryMutation as never);
 }
@@ -151,5 +155,29 @@ describe('TimetableAutomationPanel', () => {
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/disponibilidade semanal cadastrada/i);
     expect(alert.textContent).toMatch(/Usuários > Professores/i);
+  });
+
+  it('permite excluir uma proposta em rascunho', async () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
+    deleteMutation.mutateAsync.mockResolvedValue(undefined);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Excluir proposta' }));
+
+    await waitFor(() => {
+      expect(deleteMutation.mutateAsync).toHaveBeenCalledWith({
+        versionId: 'version-1',
+        institutionId: 'institution-1',
+        academicYearId: 'year-1',
+      });
+    });
+    expect((await screen.findByRole('status')).textContent).toContain('Proposta excluída.');
+    confirmSpy.mockRestore();
   });
 });

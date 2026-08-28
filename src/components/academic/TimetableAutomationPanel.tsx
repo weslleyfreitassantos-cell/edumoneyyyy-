@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
+  useDeleteTimetableVersion,
   useGenerateTimetableDraft,
   usePublishTimetableVersion,
   useSaveSchoolTimeSlots,
@@ -61,6 +62,9 @@ function getErrorMessage(error: unknown): string {
   }
   if (values.some((value) => value.includes('TIMETABLE_VERSION_NOT_DRAFT'))) {
     return 'Esta grade não está mais em rascunho e não pode ser publicada novamente.';
+  }
+  if (values.some((value) => value.includes('STATEMENT TIMEOUT') || value.includes('CANCELING STATEMENT'))) {
+    return 'A revisão demorou mais que o esperado. Tente abrir a proposta novamente.';
   }
   if (values.some((value) => value.includes('TIMETABLE_VERSION_SCOPE_MISMATCH'))) {
     return 'A publicação foi bloqueada porque a grade contém dados de outra instituição ou ano letivo. Gere uma nova grade para o contexto atual.';
@@ -225,7 +229,9 @@ export default function TimetableAutomationPanel({
   const [academicYearId, setAcademicYearId] = useState('');
   const selectedYearId = academicYearId || years[0]?.id || '';
   const versionsQuery = useTimetableVersions(institutionId, selectedYearId);
+  const versions = versionsQuery.data ?? [];
   const generateMutation = useGenerateTimetableDraft();
+  const deleteMutation = useDeleteTimetableVersion();
   const publishMutation = usePublishTimetableVersion();
   const updateEntryMutation = useUpdateTimetableVersionEntry();
   const [reviewVersionId, setReviewVersionId] = useState('');
@@ -316,6 +322,30 @@ export default function TimetableAutomationPanel({
     }
   }
 
+  async function removeVersion(versionId: string): Promise<void> {
+    const version = versions.find((item) => item.id === versionId);
+    if (!version || version.status !== 'DRAFT') return;
+    if (!window.confirm('Excluir esta proposta de grade? Esta ação não pode ser desfeita.')) return;
+
+    setMessage(null);
+    setError(null);
+    try {
+      await deleteMutation.mutateAsync({
+        versionId,
+        institutionId,
+        academicYearId: selectedYearId,
+      });
+      if (reviewVersionId === versionId) {
+        setReviewVersionId('');
+        setEditingEntry(null);
+        setEntryDraft(null);
+      }
+      setMessage('Proposta excluída.');
+    } catch (deleteError) {
+      setError(getErrorMessage(deleteError));
+    }
+  }
+
   async function saveSlots(): Promise<void> {
     setError(null);
     try {
@@ -355,7 +385,6 @@ export default function TimetableAutomationPanel({
     }
   }
 
-  const versions = versionsQuery.data ?? [];
   const reviewVersion = versions.find((version) => version.id === reviewVersionId);
 
   return (
@@ -463,6 +492,7 @@ export default function TimetableAutomationPanel({
                     {version.status === 'DRAFT' && <>
                       <button type="button" onClick={() => void generate(version.id)} disabled={generateMutation.isPending} className="font-semibold text-blue-700 disabled:opacity-50">Regenerar grade</button>
                       <button type="button" onClick={() => void publish(version.id)} disabled={publishMutation.isPending} className="font-semibold text-emerald-700 disabled:opacity-50">Publicar grade</button>
+                      <button type="button" onClick={() => void removeVersion(version.id)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50">Excluir proposta</button>
                     </>}
                   </div></td>
                 </tr>
