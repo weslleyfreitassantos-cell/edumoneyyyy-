@@ -144,14 +144,22 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('remove alunos, professores e responsaveis do menu lateral', () => {
-    renderSidebar();
+  it('mostra alunos dentro de Pessoas e deixa matriculas dentro de Alunos', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /pessoas/i }),
+    );
 
     expect(
-      screen.queryByRole('link', { name: /^alunos$/i }),
-    ).toBeNull();
+      screen.getByRole('link', { name: /^alunos$/i }),
+    ).toBeTruthy();
     expect(
-      screen.queryByRole('link', { name: /^professores$/i }),
+      screen.queryByRole('link', { name: /^matr.culas$/i }),
     ).toBeNull();
     expect(
       screen.queryByRole('link', { name: /^respons.veis$/i }),
@@ -362,7 +370,7 @@ describe('Sidebar', () => {
 
   it('nao mostra modulos sem permissao para SECRETARY', () => {
     renderSidebar({
-      route: '/admin?module=enrollments',
+      route: '/admin?module=students',
       profile: {
         ...baseProfile,
         role: 'SECRETARY',
@@ -376,16 +384,19 @@ describe('Sidebar', () => {
     });
 
     fireEvent.click(
-      screen.getByRole('button', {
-        name: /opera..o escolar/i,
-      }),
+      screen.getByRole('button', { name: /pessoas/i }),
     );
 
     expect(
       screen.getByRole('link', {
-        name: /matr.culas/i,
+        name: /alunos/i,
       }),
     ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /matr.culas/i,
+      }),
+    ).toBeNull();
     expect(
       screen.queryByRole('link', {
         name: /disciplinas/i,
@@ -396,6 +407,11 @@ describe('Sidebar', () => {
         name: /atribui..es/i,
       }),
     ).toBeNull();
+    expect(
+      screen.getByRole('button', {
+        name: /opera..o escolar/i,
+      }).getAttribute('aria-expanded'),
+    ).toBe('false');
   });
 
   it('clicar em Disciplinas aponta para /admin?module=subjects', () => {
@@ -673,7 +689,7 @@ describe('sidebar navigation helpers', () => {
     ]);
     expect(
       modules.map((module) => module.id),
-    ).toContain('enrollments');
+    ).not.toContain('enrollments');
     expect(
       modules.map((module) => module.id),
     ).not.toContain('subjects');

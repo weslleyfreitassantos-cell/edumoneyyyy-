@@ -42,6 +42,7 @@ export interface AdminModuleDefinition {
   groupId: AdminNavigationGroupId;
   permission: SystemPermission;
   href: string;
+  visibleInSidebar?: boolean;
 }
 
 export interface AdminModuleGroup
@@ -177,9 +178,10 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
   {
     id: 'enrollments',
     label: 'Matrículas',
-    groupId: 'school-operation',
+    groupId: 'people',
     permission: 'manage_enrollments',
     href: moduleHref('enrollments'),
+    visibleInSidebar: false,
   },
   {
     id: 'assignments',

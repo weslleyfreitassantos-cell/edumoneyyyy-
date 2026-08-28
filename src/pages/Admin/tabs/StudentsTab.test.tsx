@@ -17,6 +17,14 @@ import {
 
 import StudentsTab from './StudentsTab';
 
+vi.mock('./EnrollmentsTab', () => ({
+  default: () => (
+    <div data-testid="enrollments-tab">
+      Configuração de matrículas
+    </div>
+  ),
+}));
+
 const manageSchoolUser = vi.fn();
 
 vi.mock('../../../contexts/AuthContext', () => ({
@@ -28,6 +36,7 @@ vi.mock('../../../contexts/AuthContext', () => ({
 vi.mock('../../../hooks/useCurrentInstitution', () => ({
   useCurrentInstitution: () => ({
     data: '00000000-0000-0000-0000-000000000001',
+    currentRole: 'DIRECTOR',
     isLoading: false,
     isError: false,
     error: null,
@@ -175,5 +184,24 @@ describe('StudentsTab - vínculo de responsável', () => {
         'Responsável vinculado ao aluno com sucesso.',
       ),
     ).toBeTruthy();
+  });
+
+  it('abre a configuração de matrículas dentro de Alunos', () => {
+    render(<StudentsTab />);
+
+    fireEvent.click(
+      screen.getByRole('tab', {
+        name: /matrículas/i,
+      }),
+    );
+
+    expect(
+      screen.getByTestId('enrollments-tab'),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('tab', {
+        name: /alunos/i,
+      }).getAttribute('aria-selected'),
+    ).toBe('false');
   });
 });

@@ -408,15 +408,15 @@ export function getSidebarAdminModules({
     });
 
   return ADMIN_MODULES.filter((module) => {
+    if (module.visibleInSidebar === false) {
+      return false;
+    }
+
     if (module.id === 'email') {
       return false;
     }
 
-    if (
-      ['students', 'guardians'].includes(
-        module.id,
-      )
-    ) {
+    if (module.id === 'guardians') {
       return false;
     }
 

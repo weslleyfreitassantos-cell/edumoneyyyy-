@@ -3,6 +3,11 @@
   type FormEvent,
 } from 'react';
 
+import {
+  ClipboardCheck,
+  Users,
+} from 'lucide-react';
+
 import { useAuth } from '../../../contexts/AuthContext';
 
 import {
@@ -13,6 +18,11 @@ import {
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
+
+import {
+  hasPermission,
+  isCurrentDatabaseRole,
+} from '../../../lib/permissions';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
@@ -32,6 +42,11 @@ import {
 
 import type { StudentRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
+import EnrollmentsTab from './EnrollmentsTab';
+
+export type StudentManagementView =
+  | 'students'
+  | 'enrollments';
 
 interface StudentDraft {
   full_name: string;
@@ -93,6 +108,57 @@ function getStudentName(student: StudentRow): string {
   );
 }
 
+function StudentManagementNavigation({
+  activeView,
+  onChange,
+  canManageEnrollments,
+}: {
+  activeView: StudentManagementView;
+  onChange: (view: StudentManagementView) => void;
+  canManageEnrollments: boolean;
+}) {
+  return (
+    <nav aria-label="Gestão de alunos">
+      <div
+        className="inline-flex flex-wrap gap-1 rounded-lg border border-slate-200 bg-white p-1"
+        role="tablist"
+      >
+        <button
+          type="button"
+          role="tab"
+          aria-selected={activeView === 'students'}
+          onClick={() => onChange('students')}
+          className={
+            activeView === 'students'
+              ? 'inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700'
+              : 'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50'
+          }
+        >
+          <Users size={16} aria-hidden="true" />
+          Alunos
+        </button>
+
+        {canManageEnrollments && (
+          <button
+            type="button"
+            role="tab"
+            aria-selected={activeView === 'enrollments'}
+            onClick={() => onChange('enrollments')}
+            className={
+              activeView === 'enrollments'
+                ? 'inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700'
+                : 'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50'
+            }
+          >
+            <ClipboardCheck size={16} aria-hidden="true" />
+            Matrículas
+          </button>
+        )}
+      </div>
+    </nav>
+  );
+}
+
 export default function StudentsTab() {
   const { profile } = useAuth();
 
@@ -101,6 +167,18 @@ export default function StudentsTab() {
 
   const institutionId =
     institutionQuery.data ?? '';
+
+  const effectiveRole = isCurrentDatabaseRole(
+    institutionQuery.currentRole,
+  )
+    ? institutionQuery.currentRole
+    : null;
+
+  const canManageEnrollments = hasPermission(
+    profile?.platform_role,
+    effectiveRole,
+    'manage_enrollments',
+  );
 
   const studentsQuery =
     useStudents(institutionId);
@@ -113,6 +191,9 @@ export default function StudentsTab() {
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
+
+  const [activeView, setActiveView] =
+    useState<StudentManagementView>('students');
 
   const [fullEditStudentId, setFullEditStudentId] =
     useState<string | null>(null);
@@ -469,8 +550,27 @@ export default function StudentsTab() {
     );
   }
 
+  if (activeView === 'enrollments') {
+    return (
+      <div className="space-y-4">
+        <StudentManagementNavigation
+          activeView={activeView}
+          onChange={setActiveView}
+          canManageEnrollments={canManageEnrollments}
+        />
+        <EnrollmentsTab />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
+      <StudentManagementNavigation
+        activeView={activeView}
+        onChange={setActiveView}
+        canManageEnrollments={canManageEnrollments}
+      />
+
       {feedbackMessage && (
         <div
           role="status"
