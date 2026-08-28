@@ -194,6 +194,14 @@ export default function AdminPage() {
         return <TeachersTab />;
       case 'guardians':
         return <GuardiansTab />;
+      case 'secretaries':
+        return (
+          <SchoolUsersTab
+            fixedRole="SECRETARY"
+            inviteTargets={['SECRETARY']}
+            inviteHeading="Cadastro de secretaria"
+          />
+        );
       case 'email':
         return <EmailTab />;
       case 'finance':

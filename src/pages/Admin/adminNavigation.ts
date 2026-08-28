@@ -10,6 +10,7 @@ export type AdminModuleId =
   | 'students'
   | 'teachers'
   | 'guardians'
+  | 'secretaries'
   | 'email'
   | 'academic-years'
   | 'classes'
@@ -118,6 +119,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_guardians',
     href: moduleHref('guardians'),
+  },
+  {
+    id: 'secretaries',
+    label: 'Secretaria',
+    groupId: 'people',
+    permission: 'manage_school_users',
+    href: moduleHref('secretaries'),
   },
   {
     id: 'email',

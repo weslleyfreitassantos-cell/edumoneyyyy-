@@ -12,6 +12,7 @@ import {
   ClipboardCheck,
   ClipboardList,
   Clock3,
+  ContactRound,
   FileCheck2,
   GraduationCap,
   LayoutDashboard,
@@ -121,6 +122,7 @@ const adminModuleIcons: Record<
   students: GraduationCap,
   teachers: Users,
   guardians: Users,
+  secretaries: ContactRound,
   email: Mail,
   finance: WalletCards,
   'academic-years': CalendarDays,
@@ -413,10 +415,6 @@ export function getSidebarAdminModules({
     }
 
     if (module.id === 'email') {
-      return false;
-    }
-
-    if (module.id === 'guardians') {
       return false;
     }
 

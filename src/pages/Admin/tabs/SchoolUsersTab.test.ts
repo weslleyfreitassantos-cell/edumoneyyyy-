@@ -266,17 +266,30 @@ describe('SchoolUsersTab helpers', () => {
 });
 
 describe('SchoolUsersTab integration', () => {
-  it('passa a instituicao ativa para o cadastro unificado', () => {
+  it('remove o cadastro unificado da lista geral de usuarios', () => {
     render(createElement(SchoolUsersTab));
 
+    expect(mockedUnifiedUserInvitePreview).not.toHaveBeenCalled();
+  });
+
+  it('mantem o cadastro especifico quando a lista e restrita a um papel', () => {
+    render(
+      createElement(SchoolUsersTab, {
+        fixedRole: 'SECRETARY',
+        inviteTargets: ['SECRETARY'],
+        inviteHeading: 'Cadastro de secretaria',
+      }),
+    );
+
     expect(
-      mockedUnifiedUserInvitePreview.mock
-        .calls[0]?.[0],
+      mockedUnifiedUserInvitePreview.mock.calls[0]?.[0],
     ).toEqual(
       expect.objectContaining({
         institutionId: 'institution-1',
         currentRole: 'ADMIN',
         hasActiveInstitution: true,
+        allowedTargets: ['SECRETARY'],
+        heading: 'Cadastro de secretaria',
       }),
     );
   });

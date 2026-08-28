@@ -43,6 +43,8 @@ interface UnifiedUserInvitePreviewProps {
   profileRole: string | null | undefined;
   currentInstitutionName: string | null;
   hasActiveInstitution: boolean;
+  allowedTargets?: readonly UnifiedUserInviteTarget[];
+  heading?: string;
 }
 
 interface InviteFormState {
@@ -137,9 +139,13 @@ export default function UnifiedUserInvitePreview({
   profileRole,
   currentInstitutionName,
   hasActiveInstitution,
+  allowedTargets: allowedTargetsProp,
+  heading,
 }: UnifiedUserInvitePreviewProps) {
   const [selectedTarget, setSelectedTarget] =
-    useState<UnifiedUserInviteTarget>('STUDENT');
+    useState<UnifiedUserInviteTarget>(
+      allowedTargetsProp?.[0] ?? 'STUDENT',
+    );
   const [form, setForm] =
     useState<InviteFormState>(
       initialFormState,
@@ -172,13 +178,29 @@ export default function UnifiedUserInvitePreview({
       selectedTarget,
     );
 
-  const allowedTargets = useMemo(
+  const roleAllowedTargets = useMemo(
     () => getAllowedInviteTargets(currentRole),
     [currentRole],
   );
 
+  const allowedTargets = useMemo(() => {
+    if (!allowedTargetsProp) {
+      return roleAllowedTargets;
+    }
+
+    return roleAllowedTargets.filter((target) =>
+      allowedTargetsProp.includes(target),
+    );
+  }, [allowedTargetsProp, roleAllowedTargets]);
+
   const visibleOptions = useMemo(() => {
-    if (allowedTargets.length === 0) {
+    if (allowedTargetsProp) {
+      return UNIFIED_USER_INVITE_OPTIONS.filter((option) =>
+        allowedTargetsProp.includes(option.target),
+      );
+    }
+
+    if (roleAllowedTargets.length === 0) {
       return UNIFIED_USER_INVITE_OPTIONS;
     }
 
@@ -186,7 +208,7 @@ export default function UnifiedUserInvitePreview({
       (option) =>
         allowedTargets.includes(option.target),
     );
-  }, [allowedTargets]);
+  }, [allowedTargets, allowedTargetsProp, roleAllowedTargets]);
 
   const canManageSchoolUsers =
     hasEffectivePermission({
@@ -322,7 +344,9 @@ export default function UnifiedUserInvitePreview({
   }
 
   function resetForm(): void {
-    setSelectedTarget('STUDENT');
+    setSelectedTarget(
+      allowedTargetsProp?.[0] ?? 'STUDENT',
+    );
     setForm(initialFormState);
     setServerFieldErrors({});
     setFeedback(null);
@@ -472,7 +496,7 @@ export default function UnifiedUserInvitePreview({
               aria-hidden="true"
             />
             <h3 className="text-lg font-bold text-[#181c20]">
-              Cadastro unificado de usuarios
+              {heading ?? 'Cadastro unificado de usuarios'}
             </h3>
           </div>
         </div>
@@ -529,56 +553,67 @@ export default function UnifiedUserInvitePreview({
               Tipo de usuario
             </p>
 
-            <div className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {visibleOptions.map(
-                (option) => {
-                  const optionDisabled =
-                    inviteMutation.isPending ||
-                    !canManageSchoolUsers ||
-                    !hasActiveInstitution ||
-                    option.isPlanned ||
-                    !canInviteTarget(
-                      currentRole,
-                      option.target,
-                    );
+            {visibleOptions.length === 1 ? (
+              <div className="mt-2 rounded-lg border border-blue-100 bg-blue-50 p-3">
+                <span className="block text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
+                  {visibleOptions[0].label}
+                </span>
+                <span className="mt-1 block text-xs leading-relaxed text-[#727785] dark:text-[#cbd5e1]">
+                  {visibleOptions[0].description}
+                </span>
+              </div>
+            ) : (
+              <div className="mt-2 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                {visibleOptions.map(
+                  (option) => {
+                    const optionDisabled =
+                      inviteMutation.isPending ||
+                      !canManageSchoolUsers ||
+                      !hasActiveInstitution ||
+                      option.isPlanned ||
+                      !canInviteTarget(
+                        currentRole,
+                        option.target,
+                      );
 
-                  return (
-                    <button
-                      key={option.target}
-                      type="button"
-                      disabled={optionDisabled}
-                      onClick={() =>
-                        selectTarget(
-                          option.target,
-                        )
-                      }
-                      className={`min-h-[116px] rounded-lg border p-3 text-left transition-colors ${
-                        selectedTarget ===
-                        option.target
-                          ? 'border-[#005bbf] bg-[#e8f0ff] dark:border-[#60a5fa] dark:bg-[#1e3a5f]/80'
-                          : 'border-[#dfe3e8] bg-white hover:bg-gray-50 dark:border-[#334155] dark:bg-[#182235] dark:hover:bg-[#243247]'
-                      } ${
-                        optionDisabled
-                          ? 'cursor-not-allowed opacity-70'
-                          : ''
-                      }`}
-                    >
-                      <span className="block text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
-                        {option.label}
-                      </span>
-                      <span className="mt-1 block text-xs leading-relaxed text-[#727785] dark:text-[#cbd5e1]">
-                        {option.description}
-                      </span>
-                      {option.isPlanned && (
-                        <span className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-950/60 dark:text-amber-200">
-                          Em breve
+                    return (
+                      <button
+                        key={option.target}
+                        type="button"
+                        disabled={optionDisabled}
+                        onClick={() =>
+                          selectTarget(
+                            option.target,
+                          )
+                        }
+                        className={`min-h-[116px] rounded-lg border p-3 text-left transition-colors ${
+                          selectedTarget ===
+                          option.target
+                            ? 'border-[#005bbf] bg-[#e8f0ff] dark:border-[#60a5fa] dark:bg-[#1e3a5f]/80'
+                            : 'border-[#dfe3e8] bg-white hover:bg-gray-50 dark:border-[#334155] dark:bg-[#182235] dark:hover:bg-[#243247]'
+                        } ${
+                          optionDisabled
+                            ? 'cursor-not-allowed opacity-70'
+                            : ''
+                        }`}
+                      >
+                        <span className="block text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
+                          {option.label}
                         </span>
-                      )}
-                    </button>
-                  );
-                },
-              )}
-            </div>
+                        <span className="mt-1 block text-xs leading-relaxed text-[#727785] dark:text-[#cbd5e1]">
+                          {option.description}
+                        </span>
+                        {option.isPlanned && (
+                          <span className="mt-2 inline-flex rounded-full bg-amber-100 px-2 py-1 text-xs font-semibold text-amber-700 dark:bg-amber-950/60 dark:text-amber-200">
+                            Em breve
+                          </span>
+                        )}
+                      </button>
+                    );
+                  },
+                )}
+              </div>
+            )}
             <FieldError
               message={getFieldError(
                 fieldErrors,

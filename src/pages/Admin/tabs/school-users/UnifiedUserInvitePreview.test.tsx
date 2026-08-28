@@ -137,6 +137,24 @@ describe('UnifiedUserInvitePreview', () => {
     ).toBeTruthy();
   });
 
+  it('renderiza somente o cadastro especifico quando recebe um unico destino', () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        allowedTargets={['SECRETARY']}
+        heading="Cadastro de secretaria"
+      />,
+    );
+
+    expect(
+      screen.getByText('Cadastro de secretaria'),
+    ).toBeTruthy();
+    expect(screen.getByText('Secretaria')).toBeTruthy();
+    expect(
+      screen.queryByRole('button', { name: /^Aluno$/i }),
+    ).toBeNull();
+  });
+
   it('mantem envio desabilitado para formulario invalido', () => {
     render(
       <UnifiedUserInvitePreview

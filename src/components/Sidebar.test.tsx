@@ -144,7 +144,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('mostra alunos dentro de Pessoas e deixa matriculas dentro de Alunos', () => {
+  it('mostra os cadastros de pessoas como filhos do grupo Pessoas', () => {
     renderSidebar({
       profile: directorProfile(),
       currentUser: directorUser(),
@@ -162,8 +162,11 @@ describe('Sidebar', () => {
       screen.queryByRole('link', { name: /^matr.culas$/i }),
     ).toBeNull();
     expect(
-      screen.queryByRole('link', { name: /^respons.veis$/i }),
-    ).toBeNull();
+      screen.getByRole('link', { name: /^respons.veis$/i }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('link', { name: /^secretaria$/i }),
+    ).toBeTruthy();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -407,6 +410,11 @@ describe('Sidebar', () => {
         name: /atribui..es/i,
       }),
     ).toBeNull();
+    expect(
+      screen.getByRole('link', {
+        name: /secretaria/i,
+      }),
+    ).toBeTruthy();
     expect(
       screen.getByRole('button', {
         name: /opera..o escolar/i,

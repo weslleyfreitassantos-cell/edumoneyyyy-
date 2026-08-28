@@ -10,7 +10,6 @@ import {
   ChevronRight,
   Edit3,
   Loader2,
-  PlusCircle,
   Search,
   Trash2,
   UserRoundCheck,
@@ -34,12 +33,19 @@ import {
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
+import type { UnifiedUserInviteTarget } from './school-users/unifiedUserInviteModel';
 
 type RoleFilter =
   | 'ALL'
   | CurrentDatabaseRole;
 
 type EditableSchoolRole = CurrentDatabaseRole;
+
+export interface SchoolUsersTabProps {
+  fixedRole?: CurrentDatabaseRole;
+  inviteTargets?: readonly UnifiedUserInviteTarget[];
+  inviteHeading?: string;
+}
 
 export const schoolUserRoleLabels: Record<
   CurrentDatabaseRole,
@@ -629,7 +635,11 @@ function EmptyState({
   );
 }
 
-export default function SchoolUsersTab() {
+export default function SchoolUsersTab({
+  fixedRole,
+  inviteTargets,
+  inviteHeading,
+}: SchoolUsersTabProps = {}) {
   const { profile } = useAuth();
 
   const institutionQuery =
@@ -644,7 +654,7 @@ export default function SchoolUsersTab() {
     useManageSchoolUser();
 
   const [selectedRole, setSelectedRole] =
-    useState<RoleFilter>('ALL');
+    useState<RoleFilter>(fixedRole ?? 'ALL');
 
   const [searchTerm, setSearchTerm] =
     useState('');
@@ -672,6 +682,9 @@ export default function SchoolUsersTab() {
 
   const users = usersQuery.data ?? [];
 
+  const effectiveSelectedRole =
+    fixedRole ?? selectedRole;
+
   const summary = useMemo(
     () => getSchoolUserSummary(users),
     [users],
@@ -681,10 +694,10 @@ export default function SchoolUsersTab() {
     () =>
       filterSchoolUsers(
         users,
-        selectedRole,
+        effectiveSelectedRole,
         searchTerm,
       ),
-    [searchTerm, selectedRole, users],
+    [effectiveSelectedRole, searchTerm, users],
   );
 
   const totalPages = Math.max(
@@ -697,7 +710,7 @@ export default function SchoolUsersTab() {
 
   useEffect(() => {
     setCurrentPage(1);
-  }, [searchTerm, selectedRole]);
+  }, [effectiveSelectedRole, searchTerm]);
 
   useEffect(() => {
     setCurrentPage((page) =>
@@ -847,20 +860,24 @@ export default function SchoolUsersTab() {
         </div>
       )}
 
-      <UnifiedUserInvitePreview
-        institutionId={institutionId}
-        currentRole={
-          institutionQuery.currentRole
-        }
-        profileRole={profile?.role}
-        currentInstitutionName={
-          institutionQuery.currentInstitution
-            ?.name ?? null
-        }
-        hasActiveInstitution={Boolean(
-          institutionId,
-        )}
-      />
+      {inviteTargets ? (
+        <UnifiedUserInvitePreview
+          institutionId={institutionId}
+          currentRole={
+            institutionQuery.currentRole
+          }
+          profileRole={profile?.role}
+          currentInstitutionName={
+            institutionQuery.currentInstitution
+              ?.name ?? null
+          }
+          hasActiveInstitution={Boolean(
+            institutionId,
+          )}
+          allowedTargets={inviteTargets}
+          heading={inviteHeading}
+        />
+      ) : null}
 
       <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <SummaryCard
@@ -954,30 +971,36 @@ export default function SchoolUsersTab() {
             </div>
           </div>
 
-          <div
-            className="flex flex-wrap gap-2"
-            aria-label="Filtrar usuários por papel"
-          >
-            {filterOptions.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                aria-pressed={
-                  selectedRole === option.value
-                }
-                onClick={() =>
-                  setSelectedRole(option.value)
-                }
-                className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
-                  selectedRole === option.value
-                    ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
-                    : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
+          {!fixedRole ? (
+            <div
+              className="flex flex-wrap gap-2"
+              aria-label="Filtrar usuários por papel"
+            >
+              {filterOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  aria-pressed={
+                    selectedRole === option.value
+                  }
+                  onClick={() =>
+                    setSelectedRole(option.value)
+                  }
+                  className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
+                    selectedRole === option.value
+                      ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
+                      : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <span className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-medium text-[#005bbf]">
+              {schoolUserRoleLabels[fixedRole]}
+            </span>
+          )}
         </div>
 
         {usersQuery.isLoading ? (
