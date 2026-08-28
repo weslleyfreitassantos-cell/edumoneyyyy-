@@ -26,7 +26,14 @@ cross join (
     ('Química', 'QUI', 120),
     ('Física', 'FIS', 120),
     ('Filosofia', 'FIL', 80),
-    ('Sociologia', 'SOC', 80)
+    ('Sociologia', 'SOC', 80),
+    ('Leitura e Produção', 'LEI', 120),
+    ('Reforço', 'REF', 120),
+    ('Projetos Integradores', 'PROJ', 120),
+    ('Tecnologia Educacional', 'TEC', 120),
+    ('Educação Física Complementar', 'EDC', 80),
+    ('Oficinas', 'OFI', 120),
+    ('Estudos Orientados', 'EST', 80)
 ) as subject_data(name, code, workload)
 where i.id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
   and not exists (
@@ -148,7 +155,28 @@ cross join (
     ('QA - Ensino Médio', 'GEO', 2),
     ('QA - Ensino Médio', 'ING', 2),
     ('QA - Ensino Médio', 'FIL', 1),
-    ('QA - Ensino Médio', 'SOC', 1)
+    ('QA - Ensino Médio', 'SOC', 1),
+    ('QA - Ensino Fundamental I', 'LEI', 3),
+    ('QA - Ensino Fundamental I', 'REF', 3),
+    ('QA - Ensino Fundamental I', 'PROJ', 3),
+    ('QA - Ensino Fundamental I', 'TEC', 2),
+    ('QA - Ensino Fundamental I', 'EDC', 2),
+    ('QA - Ensino Fundamental I', 'OFI', 3),
+    ('QA - Ensino Fundamental I', 'EST', 2),
+    ('QA - Ensino Fundamental II', 'LEI', 3),
+    ('QA - Ensino Fundamental II', 'REF', 3),
+    ('QA - Ensino Fundamental II', 'PROJ', 3),
+    ('QA - Ensino Fundamental II', 'TEC', 3),
+    ('QA - Ensino Fundamental II', 'EDC', 2),
+    ('QA - Ensino Fundamental II', 'OFI', 3),
+    ('QA - Ensino Fundamental II', 'EST', 3),
+    ('QA - Ensino Médio', 'LEI', 3),
+    ('QA - Ensino Médio', 'REF', 3),
+    ('QA - Ensino Médio', 'PROJ', 3),
+    ('QA - Ensino Médio', 'TEC', 3),
+    ('QA - Ensino Médio', 'EDC', 2),
+    ('QA - Ensino Médio', 'OFI', 3),
+    ('QA - Ensino Médio', 'EST', 2)
 ) as item_data(template_name, subject_code, weekly_lessons)
 where t.institution_id = '0bd4ae6f-051a-4baf-b000-3953b1eb5874'::uuid
   and t.name = item_data.template_name
@@ -233,7 +261,14 @@ from (
     ('QUI', 2),
     ('FIS', 2),
     ('FIL', 2),
-    ('SOC', 2)
+    ('SOC', 2),
+    ('LEI', 3),
+    ('REF', 3),
+    ('PROJ', 3),
+    ('TEC', 3),
+    ('EDC', 3),
+    ('OFI', 3),
+    ('EST', 3)
 ) as teacher_data(subject_code, teacher_count)
 cross join lateral generate_series(1, teacher_data.teacher_count) as teacher_number(value)
 where exists (

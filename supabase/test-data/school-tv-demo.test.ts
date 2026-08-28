@@ -8,6 +8,9 @@ describe('Escola TV demo fixture', () => {
     expect(fixture).toContain("('LP', 5)");
     expect(fixture).toContain("('MAT', 5)");
     expect(fixture).toContain("('CIE', 3)");
+    expect(fixture).toContain("('LEI', 3)");
+    expect(fixture).toContain("('PROJ', 3)");
+    expect(fixture).toContain("('QA - Ensino Fundamental I', 'EST', 2)");
     expect(fixture).toContain("'Integral'");
     expect(fixture).toContain("time '07:00'");
     expect(fixture).toContain("time '15:40'");
