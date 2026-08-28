@@ -30,6 +30,80 @@ describe('timetable generator', () => {
     expect(first.entries).toEqual(second.entries);
   });
 
+  it('covers Monday through Friday when weekday coverage is required', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      teacherAvailability: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.teacherAvailability[0],
+        dayOfWeek,
+      })),
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `weekday-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries.map((entry) => entry.dayOfWeek).sort()).toEqual([1, 2, 3, 4, 5]);
+    expect(result.diagnostics).toHaveLength(0);
+  });
+
+  it('identifies missing school slots when weekday coverage is incomplete', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      schoolTimeSlots: [1, 2, 3].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `limited-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_SCHOOL_SLOT_REQUIRED')).toBe(true);
+  });
+
+  it('identifies teacher availability when school slots exist but days are unavailable', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      teacherAvailability: [{ ...baseInput.teacherAvailability[0], dayOfWeek: 1 }],
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `available-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_TEACHER_AVAILABILITY_REQUIRED')).toBe(true);
+  });
+
+  it('identifies insufficient weekly workload for five-day coverage', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 4 }],
+      teacherAvailability: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.teacherAvailability[0],
+        dayOfWeek,
+      })),
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `capacity-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_COVERAGE_CAPACITY_INSUFFICIENT')).toBe(true);
+  });
+
   it('returns an explanation instead of a partial valid result when availability is insufficient', () => {
     const result = generateTimetable({
       ...baseInput,

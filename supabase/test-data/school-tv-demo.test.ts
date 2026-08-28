@@ -5,9 +5,9 @@ const fixture = readFileSync(new URL('./school-tv-demo.sql', import.meta.url), '
 
 describe('Escola TV demo fixture', () => {
   it('models a complete integral school with a balanced teacher pool', () => {
-    expect(fixture).toContain("('LP', 4)");
-    expect(fixture).toContain("('MAT', 4)");
-    expect(fixture).toContain("('CIE', 2)");
+    expect(fixture).toContain("('LP', 5)");
+    expect(fixture).toContain("('MAT', 5)");
+    expect(fixture).toContain("('CIE', 3)");
     expect(fixture).toContain("'Integral'");
     expect(fixture).toContain("time '07:00'");
     expect(fixture).toContain("time '15:40'");

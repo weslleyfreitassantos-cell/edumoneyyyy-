@@ -29,6 +29,7 @@ export interface TimetableVersionEntryRow {
   institution_id: string;
   academic_year_id: string;
   term_id: string;
+  term_name: string;
   class_id: string;
   class_name: string;
   subject_offering_id: string;
@@ -329,8 +330,9 @@ export const timetableAutomationService = {
     }>;
     const classIds = [...new Set(rows.map((row) => row.class_id))];
     const offeringIds = [...new Set(rows.map((row) => row.subject_offering_id))];
+    const termIds = [...new Set(rows.map((row) => row.term_id))];
 
-    const [classesResult, offeringsResult] = await Promise.all([
+    const [classesResult, offeringsResult, termsResult] = await Promise.all([
       classIds.length > 0
         ? supabase
           .from('classes')
@@ -344,9 +346,16 @@ export const timetableAutomationService = {
           .select('id, subject_id, teacher_profile_id')
           .in('id', offeringIds)
         : Promise.resolve({ data: [], error: null }),
+      termIds.length > 0
+        ? supabase
+          .from('terms')
+          .select('id, name')
+          .in('id', termIds)
+        : Promise.resolve({ data: [], error: null }),
     ]);
     if (classesResult.error) throw classesResult.error;
     if (offeringsResult.error) throw offeringsResult.error;
+    if (termsResult.error) throw termsResult.error;
 
     const offerings = (offeringsResult.data ?? []) as Array<{
       id: string;
@@ -382,6 +391,9 @@ export const timetableAutomationService = {
     const teacherNames = new Map(
       (teachersResult.data ?? []).map((row) => [row.id, row.full_name]),
     );
+    const termNames = new Map(
+      (termsResult.data ?? []).map((row) => [row.id, row.name]),
+    );
     const offeringsById = new Map(offerings.map((offering) => [offering.id, offering]));
 
     return rows.map((row) => {
@@ -392,6 +404,7 @@ export const timetableAutomationService = {
         institution_id: String(row.institution_id),
         academic_year_id: String(row.academic_year_id),
         term_id: String(row.term_id),
+        term_name: termNames.get(row.term_id) ?? 'Período',
         class_id: String(row.class_id),
         class_name: classNames.get(row.class_id) ?? 'Turma',
         subject_offering_id: String(row.subject_offering_id),
@@ -564,6 +577,7 @@ export const timetableAutomationService = {
       rooms: automaticRooms.rooms.map((item) => ({ id: item.id, institutionId: item.institution_id, classId: item.class_id, active: item.active })),
       subjectLabels: Object.fromEntries((subjectsResult.data ?? []).map((subject) => [subject.id, subject.name])),
       lockedEntries,
+      requireWeekdayCoverage: true,
       seed,
     });
     const preparedResult = {

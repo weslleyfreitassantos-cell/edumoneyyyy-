@@ -17,6 +17,7 @@ import {
   getAcademicShiftLabel,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import { REQUIRED_SCHOOL_DAYS } from '../../lib/academic/timetableGenerator';
 
 interface SlotDraft {
   day_of_week: number;
@@ -137,6 +138,12 @@ function formatDiagnostic(diagnostic: { code: string; message: string }): string
       return 'Há uma atribuição com professor não habilitado para a matéria. Revise as atribuições.';
     case 'CURRICULUM_OR_SCOPE_MISMATCH':
       return 'Há uma atribuição fora da turma, matriz curricular ou ano letivo selecionado.';
+    case 'WEEKDAY_SCHOOL_SLOT_REQUIRED':
+      return `${diagnostic.message} Cadastre horários escolares para esses dias e turno.`;
+    case 'WEEKDAY_TEACHER_AVAILABILITY_REQUIRED':
+      return `${diagnostic.message} Ajuste a disponibilidade dos professores atribuídos.`;
+    case 'WEEKDAY_COVERAGE_CAPACITY_INSUFFICIENT':
+      return `${diagnostic.message} Revise a carga semanal, os slots e os conflitos.`;
     default:
       return diagnostic.message;
   }
@@ -154,12 +161,14 @@ function VersionReview({
   const classes = useMemo(() => {
     const grouped = new Map<string, TimetableVersionEntryRow[]>();
     for (const entry of entries.filter((item) => item.active)) {
-      const current = grouped.get(entry.class_id) ?? [];
+      const current = grouped.get(`${entry.class_id}:${entry.term_id}`) ?? [];
       current.push(entry);
-      grouped.set(entry.class_id, current);
+      grouped.set(`${entry.class_id}:${entry.term_id}`, current);
     }
-    return Array.from(grouped.values()).map((classEntries) => ({
+    return Array.from(grouped.entries()).map(([key, classEntries]) => ({
+      key,
       name: classEntries[0]?.class_name ?? 'Turma',
+      termName: classEntries[0]?.term_name ?? 'Período',
       entries: classEntries.sort(
         (left, right) =>
           left.day_of_week - right.day_of_week ||
@@ -179,12 +188,18 @@ function VersionReview({
   return (
     <div className="space-y-4" data-testid="timetable-draft-review">
       {classes.map((classGroup) => (
-        <section key={classGroup.name} className="rounded-lg border border-[#e4e8f1]">
-          <h5 className="border-b border-[#e4e8f1] px-4 py-3 font-bold text-[#181c20]">
-            {classGroup.name}
-          </h5>
+        <section key={classGroup.key} className="rounded-lg border border-[#e4e8f1]">
+          <div className="border-b border-[#e4e8f1] px-4 py-3">
+            <h5 className="font-bold text-[#181c20]">{classGroup.name}</h5>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-[#667085]">
+              {classGroup.termName}
+            </p>
+          </div>
           <div className="grid gap-3 p-4 md:grid-cols-2 lg:grid-cols-3">
-            {Array.from(new Set<number>(classGroup.entries.map((entry) => entry.day_of_week))).map((day) => (
+            {[...new Set<number>([
+              ...REQUIRED_SCHOOL_DAYS,
+              ...classGroup.entries.map((entry) => entry.day_of_week),
+            ])].sort((left, right) => left - right).map((day) => (
               <div key={day}>
                 <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
                   {DAY_LABELS[day]}
@@ -212,6 +227,11 @@ function VersionReview({
                         </span>
                       </div>
                     ))}
+                  {classGroup.entries.every((entry) => entry.day_of_week !== day) && (
+                    <p className="rounded-md border border-dashed border-[#e4e8f1] p-2 text-xs text-[#98a2b3]">
+                      Sem aulas geradas
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

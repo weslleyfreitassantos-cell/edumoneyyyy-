@@ -213,28 +213,27 @@ create temporary table school_tv_demo_teacher_roster (
   primary key (subject_code, teacher_number)
 ) on commit drop;
 
--- The pool is sized for the weekly demand of all 24 integral classes:
--- four teachers for Portuguese and Mathematics, two for the heavier subjects,
--- and one for subjects whose total demand fits a full teaching week.
+-- The pool is sized for the weekly demand of all 24 integral classes, with
+-- reserve teachers for the subjects that concentrate the most weekly lessons.
 insert into school_tv_demo_teacher_roster (subject_code, teacher_number)
 select
   teacher_data.subject_code,
   teacher_number.value
 from (
   values
-    ('LP', 4),
-    ('MAT', 4),
-    ('CIE', 2),
-    ('HIS', 2),
-    ('GEO', 2),
-    ('ART', 1),
-    ('EDF', 2),
-    ('ING', 2),
-    ('BIO', 1),
-    ('QUI', 1),
-    ('FIS', 1),
-    ('FIL', 1),
-    ('SOC', 1)
+    ('LP', 5),
+    ('MAT', 5),
+    ('CIE', 3),
+    ('HIS', 3),
+    ('GEO', 3),
+    ('ART', 2),
+    ('EDF', 3),
+    ('ING', 3),
+    ('BIO', 2),
+    ('QUI', 2),
+    ('FIS', 2),
+    ('FIL', 2),
+    ('SOC', 2)
 ) as teacher_data(subject_code, teacher_count)
 cross join lateral generate_series(1, teacher_data.teacher_count) as teacher_number(value)
 where exists (

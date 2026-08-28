@@ -75,13 +75,30 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
   ],
 };
 
-function countTeacherLoad(
+function countTeacherWeeklyLoad(
   teacherProfileId: string,
-  offerings: GeneratorOffering[],
+  input: AutomaticAssignmentInput,
   planned: AutomaticAssignmentPlan[],
 ): number {
-  return offerings.filter((offering) => offering.teacherProfileId === teacherProfileId).length +
-    planned.filter((assignment) => assignment.teacherProfileId === teacherProfileId).length;
+  const assignedKeys = new Set<string>();
+  for (const offering of input.subjectOfferings) {
+    if (offering.teacherProfileId === teacherProfileId) {
+      assignedKeys.add(`${offering.classId}:${offering.subjectId}`);
+    }
+  }
+  for (const assignment of planned) {
+    if (assignment.teacherProfileId === teacherProfileId) {
+      assignedKeys.add(`${assignment.classId}:${assignment.subjectId}`);
+    }
+  }
+
+  return [...assignedKeys].reduce((total, key) => {
+    const [classId, subjectId] = key.split(':');
+    const curriculum = input.curriculumItems.find(
+      (item) => item.classId === classId && item.subjectId === subjectId,
+    );
+    return total + (curriculum?.weeklyLessons ?? 0);
+  }, 0);
 }
 
 export function planAutomaticAssignments(input: AutomaticAssignmentInput): AutomaticAssignmentPlanResult {
@@ -113,8 +130,8 @@ export function planAutomaticAssignments(input: AutomaticAssignmentInput): Autom
       qualifiedTeacherIds.length === 0 || qualifiedTeacherIds.includes(offering.teacherProfileId),
     )?.teacherProfileId;
     const teacherProfileId = existingTeacherId ?? qualifiedTeacherIds.sort((left, right) =>
-      countTeacherLoad(left, input.subjectOfferings, assignments) -
-      countTeacherLoad(right, input.subjectOfferings, assignments) ||
+      countTeacherWeeklyLoad(left, input, assignments) -
+      countTeacherWeeklyLoad(right, input, assignments) ||
       left.localeCompare(right),
     )[0];
 
