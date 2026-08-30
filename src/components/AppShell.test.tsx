@@ -210,6 +210,12 @@ describe('getRouteVisualContext', () => {
       title: 'Dependentes e boletins',
     });
     expect(
+      getRouteVisualContext('/dashboard/timetable', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Grade de horário',
+    });
+    expect(
       getRouteVisualContext('/terminais', 'director'),
     ).toEqual({
       section: '',

@@ -45,6 +45,21 @@ export function useSaveTeacherAcademicSettings() {
   });
 }
 
+export function useSaveTeacherAvailability() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: academicAutomationService.replaceTeacherAvailability,
+    onSuccess: async (_result, variables) => {
+      await queryClient.invalidateQueries({
+        queryKey: academicAutomationKeys.teacherAvailability(
+          variables.institution_id,
+          variables.teacher_profile_id,
+        ),
+      });
+    },
+  });
+}
+
 export function useCreateAcademicYearWithTerms() {
   const queryClient = useQueryClient();
   return useMutation({
@@ -182,6 +197,20 @@ export function useGenerateTimetableDraft() {
   });
 }
 
+export function useDeleteTimetableVersion() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ versionId, institutionId }: { versionId: string; institutionId: string; academicYearId: string }) => timetableAutomationService.deleteVersion(versionId, institutionId),
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersionEntries(variables.institutionId, variables.versionId) }),
+      ]);
+    },
+  });
+}
+
 export function usePublishTimetableVersion() {
   const queryClient = useQueryClient();
   return useMutation({
@@ -204,19 +233,6 @@ export function useTimetableVersionEntries(
     queryKey: academicAutomationKeys.timetableVersionEntries(institutionId, versionId),
     queryFn: () => timetableAutomationService.listVersionEntries(versionId, institutionId),
     enabled: Boolean(institutionId && versionId),
-  });
-}
-
-export function useDeleteTimetableVersion() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: ({ versionId }: { versionId: string; institutionId: string; academicYearId: string }) => timetableAutomationService.deleteVersion(versionId),
-    onSuccess: async (_result, variables) => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
-        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersionEntries(variables.institutionId, variables.versionId) }),
-      ]);
-    },
   });
 }
 

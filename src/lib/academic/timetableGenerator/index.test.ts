@@ -30,6 +30,80 @@ describe('timetable generator', () => {
     expect(first.entries).toEqual(second.entries);
   });
 
+  it('covers Monday through Friday when weekday coverage is required', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      teacherAvailability: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.teacherAvailability[0],
+        dayOfWeek,
+      })),
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `weekday-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries.map((entry) => entry.dayOfWeek).sort()).toEqual([1, 2, 3, 4, 5]);
+    expect(result.diagnostics).toHaveLength(0);
+  });
+
+  it('identifies missing school slots when weekday coverage is incomplete', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      schoolTimeSlots: [1, 2, 3].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `limited-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_SCHOOL_SLOT_REQUIRED')).toBe(true);
+  });
+
+  it('identifies teacher availability when school slots exist but days are unavailable', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      teacherAvailability: [{ ...baseInput.teacherAvailability[0], dayOfWeek: 1 }],
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `available-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_TEACHER_AVAILABILITY_REQUIRED')).toBe(true);
+  });
+
+  it('identifies insufficient weekly workload for five-day coverage', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 4 }],
+      teacherAvailability: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.teacherAvailability[0],
+        dayOfWeek,
+      })),
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `capacity-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_COVERAGE_CAPACITY_INSUFFICIENT')).toBe(true);
+  });
+
   it('returns an explanation instead of a partial valid result when availability is insufficient', () => {
     const result = generateTimetable({
       ...baseInput,
@@ -247,5 +321,65 @@ describe('timetable generator', () => {
 
     expect(result.valid).toBe(true);
     expect(result.entries).toHaveLength(2);
+  });
+
+  it('prioritizes slots that use the exact shift label of the class', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      classes: [{ ...baseInput.classes[0], shift: 'Manhã' }],
+      schoolTimeSlots: [
+        { ...baseInput.schoolTimeSlots[0], dayOfWeek: 1, shift: 'MATUTINO' },
+        { ...baseInput.schoolTimeSlots[1], dayOfWeek: 2, shift: 'MATUTINO' },
+        { ...baseInput.schoolTimeSlots[0], id: 'raw-slot-1', dayOfWeek: 1, shift: 'Manhã' },
+        { ...baseInput.schoolTimeSlots[1], id: 'raw-slot-2', dayOfWeek: 2, shift: 'Manhã' },
+      ],
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries.map((entry) => entry.dayOfWeek)).toEqual([1, 2]);
+  });
+
+  it('does not allocate lessons inside a configured recess', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      schoolScheduleBreaks: [{
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek: 1,
+        name: 'Intervalo',
+        startTime: '07:00',
+        endTime: '07:50',
+        active: true,
+      }],
+    });
+
+    expect(result.valid).toBe(true);
+    expect(result.entries).toHaveLength(2);
+    expect(result.entries.every((entry) => entry.dayOfWeek !== 1)).toBe(true);
+  });
+
+  it('explains when weekday coverage is blocked by configured breaks', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      requireWeekdayCoverage: true,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 5 }],
+      schoolTimeSlots: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        ...baseInput.schoolTimeSlots[0],
+        id: `blocked-slot-${dayOfWeek}`,
+        dayOfWeek,
+      })),
+      schoolScheduleBreaks: [1, 2, 3, 4, 5].map((dayOfWeek) => ({
+        institutionId: 'institution-a',
+        shift: 'MATUTINO',
+        dayOfWeek,
+        name: 'Intervalo',
+        startTime: '07:00',
+        endTime: '07:50',
+        active: true,
+      })),
+    });
+
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKDAY_SCHEDULE_BREAK_REQUIRED')).toBe(true);
   });
 });

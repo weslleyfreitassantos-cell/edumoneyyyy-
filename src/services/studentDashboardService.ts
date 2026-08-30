@@ -74,6 +74,8 @@ interface TermRelation {
   id: string;
   academic_year_id: string;
   name: string;
+  start_date: string;
+  end_date: string;
   active: boolean | null;
 }
 
@@ -132,6 +134,8 @@ export interface StudentDashboardOffering {
   teacher_email: string;
   term_id: string;
   term_name: string;
+  term_start_date: string;
+  term_end_date: string;
 }
 
 export interface StudentDashboardData {
@@ -249,7 +253,43 @@ function normalizeOffering(
     teacher_email: teacher.email,
     term_id: row.term_id,
     term_name: term.name,
+    term_start_date: term.start_date,
+    term_end_date: term.end_date,
   };
+}
+
+export function filterStudentOfferingsToCurrentTerm(
+  offerings: readonly StudentDashboardOffering[],
+  today = new Date().toISOString().slice(0, 10),
+): StudentDashboardOffering[] {
+  if (offerings.length === 0) {
+    return [];
+  }
+
+  const currentOffering = offerings.find(
+    (offering) =>
+      offering.term_start_date <= today &&
+      today <= offering.term_end_date,
+  );
+
+  const fallbackOffering = [...offerings].sort(
+    (first, second) =>
+      first.term_start_date.localeCompare(
+        second.term_start_date,
+      ),
+  )[0];
+
+  const currentTermId =
+    currentOffering?.term_id ??
+    fallbackOffering?.term_id;
+
+  if (!currentTermId) {
+    return [];
+  }
+
+  return offerings.filter(
+    (offering) => offering.term_id === currentTermId,
+  );
 }
 
 async function getStudentByProfile(
@@ -463,6 +503,8 @@ async function getOfferings(
         id,
         academic_year_id,
         name,
+        start_date,
+        end_date,
         active
       )
     `,
@@ -474,7 +516,7 @@ async function getOfferings(
     throw error;
   }
 
-  return (
+  const normalizedOfferings = (
     (data ?? []) as unknown as OfferingQueryRow[]
   )
     .map((row) =>
@@ -490,12 +532,14 @@ async function getOfferings(
       ): offering is StudentDashboardOffering =>
         offering !== null,
     )
-    .sort((first, second) =>
+  return filterStudentOfferingsToCurrentTerm(
+    normalizedOfferings,
+  ).sort((first, second) =>
       first.subject_name.localeCompare(
         second.subject_name,
         'pt-BR',
       ),
-    );
+  );
 }
 
 async function getDashboardForStudent(

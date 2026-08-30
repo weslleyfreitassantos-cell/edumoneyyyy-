@@ -23,6 +23,7 @@ const mocks = vi.hoisted(() => ({
   createEnrollment: vi.fn(),
   updateEnrollment: vi.fn(),
   manageSchoolUser: vi.fn(),
+  updateFullStudentEnrollment: vi.fn(),
   enrollments: [] as EnrollmentRow[],
 }));
 
@@ -195,6 +196,16 @@ vi.mock('../../../hooks/useSchoolUserManagement', () => ({
 vi.mock('../../../hooks/useFullStudentEnrollment', () => ({
   useCreateFullStudentEnrollment: () => ({
     mutateAsync: vi.fn(),
+    isPending: false,
+  }),
+  useStudentEditorData: () => ({
+    data: null,
+    isLoading: false,
+    isError: false,
+    error: null,
+  }),
+  useUpdateFullStudentEnrollment: () => ({
+    mutateAsync: mocks.updateFullStudentEnrollment,
     isPending: false,
   }),
 }));
@@ -372,7 +383,7 @@ describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
     });
   });
 
-  it('permite editar o ano e a turma de uma matrícula ativa', async () => {
+  it('abre o editor completo do aluno a partir da matrícula ativa', async () => {
     mocks.enrollments = [
       {
         id: 'enrollment-existing',
@@ -404,32 +415,10 @@ describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
 
     expect(
       screen.getByRole('heading', {
-        name: 'Editar matrícula',
+        name: 'Editar cadastro completo',
       }),
     ).toBeTruthy();
-    expect(
-      screen.getByLabelText('Aluno'),
-    ).toHaveProperty('disabled', true);
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: 'Salvar alterações',
-      }),
-    );
-
-    await waitFor(() => {
-      expect(mocks.updateEnrollment).toHaveBeenCalledWith({
-        id: 'enrollment-existing',
-        institutionId:
-          '00000000-0000-0000-0000-000000000001',
-        data: {
-          academic_year_id:
-            '00000000-0000-0000-0000-000000000002',
-          class_id:
-            '00000000-0000-0000-0000-000000000003',
-        },
-      });
-    });
+    expect(mocks.updateEnrollment).not.toHaveBeenCalled();
   });
 
   it('cria a matrícula sem inserir dados de responsável', async () => {

@@ -116,9 +116,11 @@ export default function TimetableTab() {
   const setRoomActiveMutation = useSetRoomActive();
 
   const [searchParams] = useSearchParams();
-  const [subView, setSubView] = useState<SubView>(() => (
-    searchParams.get('view') === 'automation' ? 'automation' : 'grid'
-  ));
+  const [subView, setSubView] = useState<SubView>(() => {
+    const requestedView = searchParams.get('view');
+    if (requestedView === 'automation' || requestedView === 'rooms') return requestedView;
+    return 'grid';
+  });
   const [classFilter, setClassFilter] = useState('all');
   const [yearFilter, setYearFilter] = useState('all');
   const [termFilter, setTermFilter] = useState('all');
@@ -180,6 +182,7 @@ export default function TimetableTab() {
   const activeRooms = useMemo(() => rooms.filter((r) => r.active), [rooms]);
 
   const isEntrySubmitting = createEntryMutation.isPending;
+  const isRoomSubmitting = createRoomMutation.isPending || updateRoomMutation.isPending;
 
   function resetMessages(): void {
     setEntryError(null);
@@ -456,23 +459,42 @@ export default function TimetableTab() {
       )}
 
       {subView === 'rooms' && (
-        <DataTable
-          title="Salas"
-          addLabel="Adicionar sala"
-          data={rooms}
-          columns={roomColumns}
-          isLoading={roomsQuery.isLoading}
-          onAdd={openCreateRoomModal}
-          emptyMessage="Nenhuma sala cadastrada."
-          renderActions={(room) => (
-            <div className="flex items-center gap-3">
-              <button type="button" onClick={() => openEditRoomModal(room)} className="font-medium text-blue-600 hover:text-blue-800">Editar</button>
-              <button type="button" onClick={() => void handleToggleRoomActive(room)} className={room.active ? 'font-medium text-red-600 hover:text-red-800' : 'font-medium text-green-600 hover:text-green-800'}>
-                {room.active ? 'Desativar' : 'Reativar'}
-              </button>
+        <>
+          <section className="rounded-xl border border-blue-100 bg-blue-50 p-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">CONFIGURAÇÃO DAS SALAS</p>
+                <h2 className="mt-1 text-lg font-bold text-[#181c20]">Crie e organize as salas da escola</h2>
+                <p className="mt-1 max-w-3xl text-sm text-gray-700">
+                  Cadastre uma sala física e, se quiser, vincule-a a uma turma. Salas sem turma ficam compartilhadas e podem ser usadas em qualquer horário.
+                </p>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-blue-800">{rooms.length} sala(s) cadastrada(s)</span>
             </div>
-          )}
-        />
+            <div className="mt-3 flex flex-col gap-2 border-t border-blue-100 pt-3 text-sm text-gray-700 md:flex-row md:gap-6">
+              <p><strong className="text-[#181c20]">Criação manual:</strong> use o botão abaixo para escolher nome, código, capacidade e turma.</p>
+              <p><strong className="text-[#181c20]">Geração automática:</strong> ao gerar uma grade sem salas cadastradas, o sistema cria salas AUTO vinculadas às turmas.</p>
+            </div>
+          </section>
+
+          <DataTable
+            title="Salas"
+            addLabel="Criar sala manualmente"
+            data={rooms}
+            columns={roomColumns}
+            isLoading={roomsQuery.isLoading}
+            onAdd={openCreateRoomModal}
+            emptyMessage="Nenhuma sala cadastrada. Crie a primeira sala manualmente."
+            renderActions={(room) => (
+              <div className="flex items-center gap-3">
+                <button type="button" onClick={() => openEditRoomModal(room)} className="font-medium text-blue-600 hover:text-blue-800">Editar</button>
+                <button type="button" onClick={() => void handleToggleRoomActive(room)} className={room.active ? 'font-medium text-red-600 hover:text-red-800' : 'font-medium text-green-600 hover:text-green-800'}>
+                  {room.active ? 'Desativar' : 'Reativar'}
+                </button>
+              </div>
+            )}
+          />
+        </>
       )}
 
       {/* Entry Modal */}
@@ -592,9 +614,12 @@ export default function TimetableTab() {
       {isRoomModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" role="dialog" aria-modal="true" aria-labelledby="room-modal-title">
           <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
-            <h3 id="room-modal-title" className="mb-4 text-lg font-bold text-[#181c20]">
+            <h3 id="room-modal-title" className="text-lg font-bold text-[#181c20]">
               {editingRoom ? 'Editar sala' : 'Adicionar sala'}
             </h3>
+            <p className="mb-4 mt-1 text-sm text-gray-600">
+              {editingRoom ? 'Atualize os dados e o vínculo desta sala.' : 'Cadastre uma sala para usar na grade horária. O vínculo com a turma é opcional.'}
+            </p>
 
             <form onSubmit={(e) => void handleRoomSubmit(e)} className="space-y-4">
               {roomError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{roomError}</div>}
@@ -650,13 +675,13 @@ export default function TimetableTab() {
                     <option key={classRecord.id} value={classRecord.id}>{classRecord.name}</option>
                   ))}
                 </select>
-                <p className="mt-1 text-xs text-gray-500">A geração automática prioriza esta sala para a turma selecionada.</p>
+                <p className="mt-1 text-xs text-gray-500">Deixe como Sala compartilhada para disponibilizá-la em qualquer turma.</p>
               </div>
 
               <div className="flex justify-end gap-2 pt-2">
-                <button type="button" onClick={closeRoomModal} className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">Cancelar</button>
-                <button type="submit" className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]">
-                  {editingRoom ? 'Salvar' : 'Criar'}
+                <button type="button" onClick={closeRoomModal} disabled={isRoomSubmitting} className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50">Cancelar</button>
+                <button type="submit" disabled={isRoomSubmitting} className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50">
+                  {isRoomSubmitting ? 'Salvando...' : editingRoom ? 'Salvar' : 'Criar sala'}
                 </button>
               </div>
             </form>

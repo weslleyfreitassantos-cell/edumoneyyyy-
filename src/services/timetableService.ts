@@ -203,7 +203,7 @@ const entrySelect = `
   active,
   created_at,
   updated_at,
-  subject_offerings:subject_offering_id (
+  subject_offerings:subject_offering_id!inner (
     class_id,
     subject_id,
     teacher_profile_id,
@@ -341,6 +341,8 @@ export const timetableService = {
       .from('timetable_entries')
       .select(entrySelect)
       .eq('institution_id', institutionId)
+      .eq('active', true)
+      .eq('subject_offerings.class_id', classId)
       .order('day_of_week', { ascending: true })
       .order('start_time', { ascending: true });
 
@@ -349,7 +351,7 @@ export const timetableService = {
     return ((data ?? []) as unknown as TimetableEntryQueryRow[])
       .filter((row) => {
         const offering = normalizeRelation(row.subject_offerings);
-        return offering?.class_id === classId;
+        return row.active && offering?.class_id === classId;
       })
       .map(normalizeEntry);
   },

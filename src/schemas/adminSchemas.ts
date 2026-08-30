@@ -1,6 +1,10 @@
 import { z } from 'zod';
 
 import { UNIFIED_USER_INVITE_TARGETS } from '../pages/Admin/tabs/school-users/unifiedUserInviteModel';
+import {
+  ACADEMIC_SHIFT_VALUES,
+  toAcademicShift,
+} from '../lib/academic/academicShifts';
 
 const optionalCpfSchema = z.preprocess(
   (value) => {
@@ -294,7 +298,23 @@ const classFields = {
 
   grade_level: optionalTextSchema,
 
-  shift: optionalTextSchema,
+  shift: z.preprocess(
+    (value) => {
+      if (
+        typeof value === 'string' &&
+        value.trim() === ''
+      ) {
+        return undefined;
+      }
+
+      if (typeof value === 'string') {
+        return toAcademicShift(value) ?? value;
+      }
+
+      return value;
+    },
+    z.enum(ACADEMIC_SHIFT_VALUES).optional(),
+  ),
 
   capacity: z
     .number()

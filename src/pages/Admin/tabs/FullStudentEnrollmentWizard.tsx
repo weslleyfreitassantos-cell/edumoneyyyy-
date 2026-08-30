@@ -6,7 +6,11 @@ import {
 } from 'react';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
-import { useCreateFullStudentEnrollment } from '../../../hooks/useFullStudentEnrollment';
+import {
+  useCreateFullStudentEnrollment,
+  useStudentEditorData,
+  useUpdateFullStudentEnrollment,
+} from '../../../hooks/useFullStudentEnrollment';
 
 import type { AcademicYearRow } from '../../../services/academicStructureService';
 import type { ClassRow } from '../../../services/classService';
@@ -22,9 +26,11 @@ interface FullStudentEnrollmentWizardProps {
   institutionId: string;
   years: AcademicYearRow[];
   classes: ClassRow[];
+  mode?: 'create' | 'edit';
+  studentId?: string;
   onClose: () => void;
   onCompleted: () => void;
-  onUseExistingStudent: (studentId: string) => void;
+  onUseExistingStudent?: (studentId: string) => void;
 }
 
 const steps = [
@@ -170,10 +176,13 @@ export default function FullStudentEnrollmentWizard({
   institutionId,
   years,
   classes,
+  mode = 'create',
+  studentId,
   onClose,
   onCompleted,
   onUseExistingStudent,
 }: FullStudentEnrollmentWizardProps) {
+  const isEditMode = mode === 'edit';
   const activeYears = useMemo(
     () => years.filter((year) => year.active),
     [years],
@@ -188,15 +197,25 @@ export default function FullStudentEnrollmentWizard({
   );
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState<FullStudentEnrollmentDraft>(() =>
-    createDraft(firstYear, firstClass?.id ?? ''),
+    createDraft(
+      isEditMode ? '' : firstYear,
+      isEditMode ? '' : firstClass?.id ?? '',
+    ),
   );
   const [error, setError] = useState<string | null>(null);
   const [duplicates, setDuplicates] = useState<
     Awaited<ReturnType<typeof findDuplicateStudentCandidates>>
   >([]);
   const [createdStudentId, setCreatedStudentId] = useState<string>();
+  const [editEnrollmentId, setEditEnrollmentId] = useState<string | null>(null);
+  const [loadedEditStudentId, setLoadedEditStudentId] = useState<string | null>(null);
   const [isCheckingDuplicates, setIsCheckingDuplicates] = useState(false);
   const createMutation = useCreateFullStudentEnrollment();
+  const updateMutation = useUpdateFullStudentEnrollment();
+  const editorQuery = useStudentEditorData(
+    institutionId,
+    isEditMode ? studentId ?? null : null,
+  );
   const usersQuery = useSchoolUsers(institutionId, true);
 
   const guardians = useMemo(
@@ -211,14 +230,35 @@ export default function FullStudentEnrollmentWizard({
   );
 
   useEffect(() => {
-    if (!draft.academic_year_id && firstYear) {
+    if (!isEditMode && !draft.academic_year_id && firstYear) {
       setDraft((current) => ({
         ...current,
         academic_year_id: firstYear,
         class_id: firstClass?.id ?? '',
       }));
     }
-  }, [draft.academic_year_id, firstClass?.id, firstYear]);
+  }, [draft.academic_year_id, firstClass?.id, firstYear, isEditMode]);
+
+  useEffect(() => {
+    if (
+      !isEditMode ||
+      !studentId ||
+      !editorQuery.data ||
+      loadedEditStudentId === studentId
+    ) {
+      return;
+    }
+
+    setDraft(editorQuery.data.draft);
+    setEditEnrollmentId(editorQuery.data.enrollmentId);
+    setLoadedEditStudentId(studentId);
+    setError(null);
+  }, [
+    editorQuery.data,
+    isEditMode,
+    loadedEditStudentId,
+    studentId,
+  ]);
 
   function updateIdentity(
     field: keyof FullStudentEnrollmentDraft['identity'],
@@ -286,18 +326,20 @@ export default function FullStudentEnrollmentWizard({
       if (!/^\d{4}-\d{2}-\d{2}$/.test(draft.identity.birth_date)) return 'Informe a data de nascimento do aluno.';
     }
     if (step === 2) {
-      if (draft.guardians.length === 0) return 'Associe pelo menos um responsavel.';
+      if (!isEditMode && draft.guardians.length === 0) return 'Associe pelo menos um responsavel.';
       for (const guardian of draft.guardians) {
         if (guardian.mode === 'existing' && !guardian.profile_id) return 'Selecione o responsavel existente ou escolha Novo responsavel.';
         if (guardian.mode === 'new' && guardian.full_name.trim().length < 3) return 'Informe o nome do novo responsavel.';
         if (guardian.mode === 'new' && !/^\S+@\S+\.\S+$/.test(guardian.email.trim())) return 'Informe um e-mail valido para o novo responsavel.';
         if (guardian.relationship.trim().length < 2) return 'Informe o parentesco de cada responsavel.';
       }
-      if (!draft.guardians.some((guardian) => guardian.is_primary)) return 'Marque um responsavel principal.';
+      if (draft.guardians.length > 0 && !draft.guardians.some((guardian) => guardian.is_primary)) return 'Marque um responsavel principal.';
     }
     if (step === 6) {
-      if (!draft.academic_year_id) return 'Selecione o ano letivo.';
-      if (!draft.class_id) return 'Selecione a turma.';
+      if (!isEditMode || editEnrollmentId) {
+        if (!draft.academic_year_id) return 'Selecione o ano letivo.';
+        if (!draft.class_id) return 'Selecione a turma.';
+      }
     }
     return null;
   }
@@ -309,7 +351,7 @@ export default function FullStudentEnrollmentWizard({
       setError(validationError);
       return;
     }
-    if (step === 0) {
+    if (step === 0 && !isEditMode) {
       setIsCheckingDuplicates(true);
       try {
         const candidates = await findDuplicateStudentCandidates(
@@ -348,6 +390,27 @@ export default function FullStudentEnrollmentWizard({
       setStep(6);
       return;
     }
+
+    if (isEditMode) {
+      if (!studentId || !editorQuery.data) {
+        setError('Os dados do aluno ainda nao foram carregados.');
+        return;
+      }
+
+      try {
+        await updateMutation.mutateAsync({
+          institutionId,
+          studentId,
+          enrollmentId: editEnrollmentId,
+          draft,
+        });
+        onCompleted();
+      } catch (submitError) {
+        setError(submitError instanceof Error ? submitError.message : 'Nao foi possivel atualizar o cadastro completo do aluno.');
+      }
+      return;
+    }
+
     try {
       await createMutation.mutateAsync({
         institutionId,
@@ -474,12 +537,33 @@ export default function FullStudentEnrollmentWizard({
     return renderReview();
   }
 
+  if (isEditMode && editorQuery.isLoading) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label="Editar aluno">
+        <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-2xl">
+          <p className="text-sm font-semibold text-slate-800">Carregando dados completos do aluno...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isEditMode && editorQuery.isError) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label="Editar aluno">
+        <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-2xl">
+          <ErrorBox message={editorQuery.error instanceof Error ? editorQuery.error.message : 'Nao foi possivel carregar os dados do aluno.'} />
+          <div className="mt-4 flex justify-end"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={onClose}>Fechar</button></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label="Matricula completa de aluno">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label={isEditMode ? 'Editar aluno' : 'Matricula completa de aluno'}>
       <div className="flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
-        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Novo aluno</p><h2 className="mt-1 text-xl font-bold text-slate-900">Matricula completa</h2><p className="mt-1 text-sm text-slate-600">Cadastro detalhado com vinculos, documentos e revisao antes de confirmar.</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700" onClick={onClose} aria-label="Fechar">X</button></div>
-        <div className="overflow-y-auto px-5 py-4"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-500'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><strong>Possiveis duplicidades</strong>{duplicates.map((candidate) => <div key={candidate.id} className="mt-2 rounded-lg border border-amber-300 bg-white/70 p-3"><p className="font-semibold">{candidate.full_name}</p><p className="mt-1">Matricula {candidate.registration_number} - {candidate.birth_date}</p><button type="button" className="mt-2 rounded-lg border border-blue-600 px-3 py-2 font-semibold text-blue-700" onClick={() => onUseExistingStudent(candidate.id)}>Usar este cadastro</button></div>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={step === 0 ? onClose : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates}>{isCheckingDuplicates ? 'Verificando...' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending}>{createMutation.isPending ? 'Salvando...' : 'Confirmar matricula'}</button>}</div></div>
+        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{isEditMode ? 'Editar aluno' : 'Novo aluno'}</p><h2 className="mt-1 text-xl font-bold text-slate-900">{isEditMode ? 'Editar cadastro completo' : 'Matricula completa'}</h2><p className="mt-1 text-sm text-slate-600">{isEditMode ? 'Atualize todos os dados cadastrais, escolares e da matricula.' : 'Cadastro detalhado com vinculos, documentos e revisao antes de confirmar.'}</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700" onClick={onClose} aria-label="Fechar">X</button></div>
+        <div className="overflow-y-auto px-5 py-4"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-500'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><strong>Possiveis duplicidades</strong>{duplicates.map((candidate) => <div key={candidate.id} className="mt-2 rounded-lg border border-amber-300 bg-white/70 p-3"><p className="font-semibold">{candidate.full_name}</p><p className="mt-1">Matricula {candidate.registration_number} - {candidate.birth_date}</p>{onUseExistingStudent ? <button type="button" className="mt-2 rounded-lg border border-blue-600 px-3 py-2 font-semibold text-blue-700" onClick={() => onUseExistingStudent(candidate.id)}>Usar este cadastro</button> : null}</div>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={step === 0 ? onClose : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates}>{isCheckingDuplicates ? 'Verificando...' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending || updateMutation.isPending}>{createMutation.isPending || updateMutation.isPending ? 'Salvando...' : isEditMode ? 'Salvar alteracoes' : 'Confirmar matricula'}</button>}</div></div>
       </div>
     </div>
   );

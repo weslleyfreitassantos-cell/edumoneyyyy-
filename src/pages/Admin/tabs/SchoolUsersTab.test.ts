@@ -207,6 +207,29 @@ describe('SchoolUsersTab helpers', () => {
     ).toEqual(['membership-2']);
   });
 
+  it('filtra usuarios por CPF com ou sem pontuacao', () => {
+    const student = {
+      ...users[0],
+      cpf: '123.456.789-01',
+    };
+
+    expect(
+      filterSchoolUsers(
+        [student],
+        'ALL',
+        '12345678901',
+      ),
+    ).toHaveLength(1);
+
+    expect(
+      filterSchoolUsers(
+        [student],
+        'ALL',
+        '123.456.789',
+      ),
+    ).toHaveLength(1);
+  });
+
   it('filtra usuarios por label de papel', () => {
     expect(
       filterSchoolUsers(
@@ -243,17 +266,30 @@ describe('SchoolUsersTab helpers', () => {
 });
 
 describe('SchoolUsersTab integration', () => {
-  it('passa a instituicao ativa para o cadastro unificado', () => {
+  it('remove o cadastro unificado da lista geral de usuarios', () => {
     render(createElement(SchoolUsersTab));
 
+    expect(mockedUnifiedUserInvitePreview).not.toHaveBeenCalled();
+  });
+
+  it('mantem o cadastro especifico quando a lista e restrita a um papel', () => {
+    render(
+      createElement(SchoolUsersTab, {
+        fixedRole: 'SECRETARY',
+        inviteTargets: ['SECRETARY'],
+        inviteHeading: 'Cadastro de secretaria',
+      }),
+    );
+
     expect(
-      mockedUnifiedUserInvitePreview.mock
-        .calls[0]?.[0],
+      mockedUnifiedUserInvitePreview.mock.calls[0]?.[0],
     ).toEqual(
       expect.objectContaining({
         institutionId: 'institution-1',
         currentRole: 'ADMIN',
         hasActiveInstitution: true,
+        allowedTargets: ['SECRETARY'],
+        heading: 'Cadastro de secretaria',
       }),
     );
   });
@@ -289,6 +325,46 @@ describe('SchoolUsersTab integration', () => {
     );
 
     expect(screen.getByLabelText('Nova senha')).toBeTruthy();
+  });
+
+  it('limita a lista a dez usuarios por pagina e permite avancar', () => {
+    const manyUsers = Array.from(
+      { length: 11 },
+      (_, index) => ({
+        ...users[0],
+        id: `membership-${index + 10}`,
+        profile_id: `profile-${index + 10}`,
+        profile: {
+          ...users[0].profile,
+          full_name: `Aluno ${String(index + 1).padStart(2, '0')}`,
+          email: `aluno${index + 1}@escola.com`,
+        },
+      }),
+    );
+
+    mockedUseSchoolUsers.mockReturnValue({
+      data: manyUsers,
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolUsers>);
+
+    render(createElement(SchoolUsersTab));
+
+    expect(screen.getByText('Página 1 de 2')).toBeTruthy();
+    expect(screen.getByText('Aluno 01')).toBeTruthy();
+    expect(screen.getByText('Aluno 06')).toBeTruthy();
+    expect(screen.queryByText('Aluno 07')).toBeNull();
+    expect(screen.queryByText('Aluno 11')).toBeNull();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Próxima página',
+      }),
+    );
+
+    expect(screen.getByText('Página 2 de 2')).toBeTruthy();
+    expect(screen.getByText('Aluno 11')).toBeTruthy();
   });
 
 

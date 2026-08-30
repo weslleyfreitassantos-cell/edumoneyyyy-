@@ -15,7 +15,7 @@ const TVESCOLA_HOSTNAME = 'tvescola.grupotec.dev.br';
 const TVESCOLA_ORIGIN = `https://${TVESCOLA_HOSTNAME}`;
 const GRUPOTEC_ROOT_DOMAIN = 'grupotec.dev.br';
 const NEONEWS_HOSTNAME = 'admin.in9midia.com';
-const NEONEWS_ORIGIN = `https://${NEONEWS_HOSTNAME}`;
+const NEO_NEWS_UPSTREAM_ORIGIN = TVESCOLA_ORIGIN;
 const WFR_PATHNAME = '/neonews/wfr.js';
 
 const CONTENT_SECURITY_POLICY = [
@@ -68,7 +68,10 @@ export function shouldProxyNeoNewsRequest(
 function buildNeoNewsUrl(requestUrl: string): URL {
   const target = new URL(requestUrl);
   target.protocol = 'https:';
-  target.hostname = NEONEWS_HOSTNAME;
+  // NeoNews selects the saved login configuration from the Host header.
+  // tvescola is a CNAME to the NeoNews origin, so keeping it in the URL
+  // preserves that configuration while still letting the Worker proxy it.
+  target.hostname = TVESCOLA_HOSTNAME;
   target.port = '';
   target.username = '';
   target.password = '';
@@ -95,7 +98,7 @@ function rewriteRequestHeaders(
   }
 
   if (headers.get('origin') === publicOrigin) {
-    headers.set('origin', NEONEWS_ORIGIN);
+    headers.set('origin', NEO_NEWS_UPSTREAM_ORIGIN);
   }
 
   const referer = headers.get('referer');
@@ -104,7 +107,7 @@ function rewriteRequestHeaders(
       const refererUrl = new URL(referer);
       if (refererUrl.origin === publicOrigin) {
         refererUrl.protocol = 'https:';
-        refererUrl.hostname = NEONEWS_HOSTNAME;
+        refererUrl.hostname = TVESCOLA_HOSTNAME;
         refererUrl.port = '';
         headers.set('referer', refererUrl.toString());
       }
@@ -121,9 +124,13 @@ export function rewriteNeoNewsLocation(
   publicOrigin = TVESCOLA_ORIGIN,
 ): string {
   try {
-    const target = new URL(location, `${NEONEWS_ORIGIN}/`);
+    const target = new URL(location, `${NEO_NEWS_UPSTREAM_ORIGIN}/`);
 
-    if (target.hostname.toLowerCase() !== NEONEWS_HOSTNAME) {
+    const targetHostname = target.hostname.toLowerCase();
+    if (
+      targetHostname !== NEONEWS_HOSTNAME &&
+      targetHostname !== TVESCOLA_HOSTNAME
+    ) {
       return location;
     }
 
@@ -146,7 +153,8 @@ export function rewriteNeoNewsSetCookie(cookie: string): string {
         .toLowerCase();
 
       if (
-        NEONEWS_HOSTNAME === cookieDomain ||
+        (NEONEWS_HOSTNAME === cookieDomain ||
+          TVESCOLA_HOSTNAME === cookieDomain) ||
         NEONEWS_HOSTNAME.endsWith(`.${cookieDomain}`)
       ) {
         return '';

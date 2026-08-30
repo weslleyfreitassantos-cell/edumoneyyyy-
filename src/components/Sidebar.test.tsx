@@ -139,20 +139,34 @@ describe('Sidebar', () => {
     expect(
       screen.queryByRole('link', { name: 'TV Escola' }),
     ).toBeNull();
+    expect(
+      screen.queryByRole('button', { name: /in.cio/i }),
+    ).toBeNull();
   });
 
-  it('remove alunos, professores e responsaveis do menu lateral', () => {
-    renderSidebar();
+  it('mostra os cadastros de pessoas como filhos do grupo Pessoas', () => {
+    renderSidebar({
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /pessoas/i }),
+    );
 
     expect(
-      screen.queryByRole('link', { name: /^alunos$/i }),
+      screen.getByRole('link', { name: /^alunos$/i }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', { name: /^matr.culas$/i }),
     ).toBeNull();
     expect(
-      screen.queryByRole('link', { name: /^professores$/i }),
-    ).toBeNull();
+      screen.getByRole('link', { name: /^respons.veis$/i }),
+    ).toBeTruthy();
     expect(
-      screen.queryByRole('link', { name: /^respons.veis$/i }),
-    ).toBeNull();
+      screen.getByRole('link', { name: /^secretaria$/i }),
+    ).toBeTruthy();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -194,18 +208,49 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
-    expect(screen.queryByText(/pessoas/i)).toBeNull();
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
+
     expect(
-      screen.queryByText(/estrutura escolar/i),
-    ).toBeNull();
+      screen.getByRole('button', {
+        name: /pessoas/i,
+      }),
+    ).toBeTruthy();
     expect(
-      screen.queryByText(/opera..o acad.mica/i),
-    ).toBeNull();
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /opera..o escolar/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /administra..o/i,
+      }),
+    ).toBeTruthy();
     expect(
       screen.getByRole('link', {
         name: /disciplinas/i,
       }).getAttribute('aria-current'),
     ).toBe('page');
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /administra..o/i,
+      }),
+    );
+
     expect(
       screen.getByRole('link', {
         name: /pol.tica acad.mica/i,
@@ -240,6 +285,51 @@ describe('Sidebar', () => {
     expect(labels).not.toContain('Administração');
   });
 
+  it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
+    renderSidebar({
+      route: '/admin?module=subjects',
+      profile: directorProfile(),
+      currentUser: directorUser(),
+      currentInstitutionRole: 'DIRECTOR',
+    });
+
+    const group = screen.getByRole('button', {
+      name: /configura..o acad.mica/i,
+    });
+    const peopleGroup = screen.getByRole('button', {
+      name: /pessoas/i,
+    });
+
+    expect(group.getAttribute('aria-expanded')).toBe('false');
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Salas' }),
+    ).toBeNull();
+
+    fireEvent.click(group);
+
+    expect(group.getAttribute('aria-expanded')).toBe('true');
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.getByRole('link', { name: 'Salas' }),
+    ).toBeTruthy();
+
+    fireEvent.click(peopleGroup);
+
+    expect(group.getAttribute('aria-expanded')).toBe('false');
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('true');
+    expect(
+      screen.queryByRole('link', { name: 'Salas' }),
+    ).toBeNull();
+
+    fireEvent.click(peopleGroup);
+
+    expect(peopleGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(
+      screen.queryByRole('link', { name: 'Salas' }),
+    ).toBeNull();
+  });
+
   it('marca TV Escola e E-mail como ativos nas rotas próprias', () => {
     renderSidebar({
       route: '/terminais',
@@ -247,6 +337,12 @@ describe('Sidebar', () => {
       currentUser: directorUser(),
       currentInstitutionRole: 'DIRECTOR',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
 
     expect(
       screen.getByRole('link', { name: 'TV Escola' }).getAttribute('aria-current'),
@@ -261,6 +357,12 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
+
     expect(
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),
     ).toBe('page');
@@ -271,7 +373,7 @@ describe('Sidebar', () => {
 
   it('nao mostra modulos sem permissao para SECRETARY', () => {
     renderSidebar({
-      route: '/admin?module=enrollments',
+      route: '/admin?module=students',
       profile: {
         ...baseProfile,
         role: 'SECRETARY',
@@ -284,11 +386,20 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'SECRETARY',
     });
 
+    fireEvent.click(
+      screen.getByRole('button', { name: /pessoas/i }),
+    );
+
     expect(
       screen.getByRole('link', {
-        name: /matr.culas/i,
+        name: /alunos/i,
       }),
     ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /matr.culas/i,
+      }),
+    ).toBeNull();
     expect(
       screen.queryByRole('link', {
         name: /disciplinas/i,
@@ -299,6 +410,16 @@ describe('Sidebar', () => {
         name: /atribui..es/i,
       }),
     ).toBeNull();
+    expect(
+      screen.getByRole('link', {
+        name: /secretaria/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /opera..o escolar/i,
+      }).getAttribute('aria-expanded'),
+    ).toBe('false');
   });
 
   it('clicar em Disciplinas aponta para /admin?module=subjects', () => {
@@ -308,6 +429,12 @@ describe('Sidebar', () => {
       currentUser: directorUser(),
       currentInstitutionRole: 'DIRECTOR',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
 
     expect(
       screen
@@ -326,6 +453,12 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
       isMobileOpen: true,
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('link', {
@@ -350,6 +483,12 @@ describe('Sidebar', () => {
       },
       currentInstitutionRole: null,
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /configura..o acad.mica/i,
+      }),
+    );
 
     expect(
       screen
@@ -421,7 +560,9 @@ describe('Sidebar', () => {
       }),
     ).toBeTruthy();
     expect(screen.getByText('EduManager Pro')).toBeTruthy();
-    expect(screen.getByText('ana@example.com')).toBeTruthy();
+    expect(screen.queryByText('Ana Silva')).toBeNull();
+    expect(screen.queryByText('Administrador')).toBeNull();
+    expect(screen.queryByText('ana@example.com')).toBeNull();
     expect(
       screen.queryByRole('button', {
         name: /recolher sidebar/i,
@@ -448,6 +589,36 @@ describe('Sidebar', () => {
 });
 
 describe('sidebar navigation helpers', () => {
+  it('mostra a grade de horario somente no menu do aluno', () => {
+    const studentItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'STUDENT',
+      },
+      currentInstitutionRole: 'STUDENT',
+      currentUserRole: 'student',
+      pathname: '/dashboard/timetable',
+    });
+
+    const timetableItem = studentItems.find(
+      (item) => item.id === 'student-timetable',
+    );
+
+    expect(timetableItem?.label).toBe('Grade de horário');
+    expect(timetableItem?.path).toBe('/dashboard/timetable');
+
+    const directorItems = getSidebarNavigationItems({
+      profile: directorProfile(),
+      currentInstitutionRole: 'DIRECTOR',
+      currentUserRole: 'director',
+      pathname: '/dashboard',
+    });
+
+    expect(
+      directorItems.map((item) => item.id),
+    ).not.toContain('student-timetable');
+  });
+
   it('mostra Personalizar login somente para DIRECTOR', () => {
     const roles = [
       {
@@ -526,10 +697,13 @@ describe('sidebar navigation helpers', () => {
     ]);
     expect(
       modules.map((module) => module.id),
-    ).toContain('enrollments');
+    ).not.toContain('enrollments');
     expect(
       modules.map((module) => module.id),
     ).not.toContain('subjects');
+    expect(
+      modules.map((module) => module.id),
+    ).toContain('teachers');
   });
 
   it('mostra cameras ao vivo somente para DIRECTOR', () => {

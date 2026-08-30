@@ -2,14 +2,26 @@ import { useEffect, useMemo, useState } from 'react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
-  useGenerateTimetableDraft,
+  useAcademicShiftSettings,
+  useSchoolScheduleBreaks,
+} from '../../hooks/useAcademicTermClosing';
+import {
   useDeleteTimetableVersion,
+  useGenerateTimetableDraft,
   usePublishTimetableVersion,
   useTimetableVersionEntries,
   useTimetableVersions,
   useUpdateTimetableVersionEntry,
 } from '../../hooks/useAcademicAutomation';
 import type { TimetableVersionEntryRow } from '../../services/timetableAutomationService';
+import {
+  getAcademicShiftLabel,
+  normalizeAcademicShift,
+  type AcademicShift,
+} from '../../lib/academic/academicShifts';
+import type { SchoolScheduleBreakRow } from '../../services/academicAutomationService';
+import { REQUIRED_SCHOOL_DAYS } from '../../lib/academic/timetableGenerator';
+import TimetableBreakMarker from './TimetableBreakMarker';
 
 interface EntryDraft {
   day_of_week: number;
@@ -21,8 +33,75 @@ interface EntryDraft {
 const DAY_LABELS = ['', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  return 'Não foi possível concluir a operação.';
+  const details = readErrorDetails(error);
+  const values = [details.code, details.message, details.details, details.hint]
+    .filter((value): value is string => Boolean(value))
+    .map((value) => value.toUpperCase());
+
+  if (values.some((value) => value.includes('INSTITUTION_OPERATION_FORBIDDEN'))) {
+    return 'Seu perfil não tem permissão para preparar ou publicar a grade desta instituição.';
+  }
+  if (values.some((value) => value.includes('CLASS_SCOPE_MISMATCH') || value.includes('SUBJECT_SCOPE_MISMATCH'))) {
+    return 'A configuração contém uma turma ou matéria de outra instituição. Atualize os dados e tente novamente.';
+  }
+  if (values.some((value) => value.includes('23505') || value.includes('DUPLICATE KEY'))) {
+    return 'Já existe uma configuração igual para este ano letivo. Atualize a lista antes de gerar novamente.';
+  }
+
+  if (values.some((value) => value.includes('TEACHER_NOT_AVAILABLE'))) {
+    return 'A publicação foi bloqueada porque há aulas em horários sem disponibilidade semanal cadastrada para os professores. Abra Usuários > Professores, configure a disponibilidade de cada professor e salve antes de publicar novamente.';
+  }
+  if (values.some((value) => value.includes('TEACHER_SUBJECT_NOT_AUTHORIZED'))) {
+    return 'A publicação foi bloqueada porque há professor atribuído a uma disciplina que ele não está habilitado para lecionar. Revise as atribuições dos professores.';
+  }
+  if (values.some((value) => value.includes('SCHOOL_TIME_SLOT_NOT_CONFIGURED'))) {
+    return 'A publicação foi bloqueada porque há aulas sem horário escolar configurado para o turno da turma. Cadastre os horários da escola e tente novamente.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_CONFLICT'))) {
+    return 'A publicação foi bloqueada porque existem conflitos de professor, turma ou sala na grade. Revise os horários antes de publicar.';
+  }
+  if (values.some((value) => value.includes('WEEKLY_LESSONS_MISMATCH'))) {
+    return 'A publicação foi bloqueada porque a quantidade de aulas não corresponde à matriz curricular. Revise a carga semanal das disciplinas.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_NOT_DRAFT'))) {
+    return 'Esta grade não está mais em rascunho e não pode ser publicada novamente.';
+  }
+  if (values.some((value) => value.includes('STATEMENT TIMEOUT') || value.includes('CANCELING STATEMENT'))) {
+    return 'A revisão demorou mais que o esperado. Tente abrir a proposta novamente.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_SCOPE_MISMATCH'))) {
+    return 'A publicação foi bloqueada porque a grade contém dados de outra instituição ou ano letivo. Gere uma nova grade para o contexto atual.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_FORBIDDEN'))) {
+    return 'Você não tem permissão para publicar esta grade.';
+  }
+
+  return details.message ?? 'Não foi possível concluir a operação.';
+}
+
+function readErrorDetails(error: unknown): {
+  code: string | null;
+  message: string | null;
+  details: string | null;
+  hint: string | null;
+} {
+  if (error instanceof Error) {
+    return { code: null, message: error.message, details: null, hint: null };
+  }
+  if (typeof error === 'string') {
+    return { code: null, message: error, details: null, hint: null };
+  }
+  if (!error || typeof error !== 'object') {
+    return { code: null, message: null, details: null, hint: null };
+  }
+
+  const record = error as Record<string, unknown>;
+  return {
+    code: typeof record.code === 'string' ? record.code : null,
+    message: typeof record.message === 'string' ? record.message : null,
+    details: typeof record.details === 'string' ? record.details : null,
+    hint: typeof record.hint === 'string' ? record.hint : null,
+  };
 }
 
 function formatTime(value: string): string {
@@ -31,17 +110,50 @@ function formatTime(value: string): string {
 
 function summarizeDiagnostics(diagnostics: Array<{ code: string; message: string }>): string {
   const unique = [...new Map(diagnostics.map((diagnostic) => [`${diagnostic.code}:${diagnostic.message}`, diagnostic])).values()];
-  const visible = unique.slice(0, 8).map((diagnostic) => diagnostic.message).join(' ');
+  const visible = unique.slice(0, 8).map(formatDiagnostic).join(' ');
   const remaining = unique.length - Math.min(unique.length, 8);
   return remaining > 0 ? `${visible} E mais ${remaining} pendência(s).` : visible;
 }
 
+function formatDiagnostic(diagnostic: { code: string; message: string }): string {
+  switch (diagnostic.code) {
+    case 'SETUP_TERMS_REQUIRED':
+      return 'Cadastre os períodos do ano letivo antes de gerar a grade.';
+    case 'SETUP_CLASSES_REQUIRED':
+      return 'Cadastre as turmas do ano letivo antes de gerar a grade.';
+    case 'SETUP_CURRICULUM_REQUIRED':
+      return 'Configure a matriz curricular antes de gerar a grade.';
+    case 'SETUP_CLASS_SHIFT_REQUIRED':
+      return `${diagnostic.message} Informe o turno da turma.`;
+    case 'SETUP_CLASS_CURRICULUM_REQUIRED':
+      return `${diagnostic.message} Configure suas matérias.`;
+    case 'UNSATISFIED':
+      return diagnostic.message
+        .replace('no compatible slot is available', 'não há horários compatíveis suficientes')
+        .replace('all compatible slots are occupied', 'todos os horários compatíveis já estão ocupados');
+    case 'TEACHER_SUBJECT_NOT_AUTHORIZED':
+      return 'Há uma atribuição com professor não habilitado para a matéria. Revise as atribuições.';
+    case 'CURRICULUM_OR_SCOPE_MISMATCH':
+      return 'Há uma atribuição fora da turma, matriz curricular ou ano letivo selecionado.';
+    case 'WEEKDAY_SCHOOL_SLOT_REQUIRED':
+      return `${diagnostic.message} Cadastre horários escolares para esses dias e turno.`;
+    case 'WEEKDAY_TEACHER_AVAILABILITY_REQUIRED':
+      return `${diagnostic.message} Ajuste a disponibilidade dos professores atribuídos.`;
+    case 'WEEKDAY_COVERAGE_CAPACITY_INSUFFICIENT':
+      return `${diagnostic.message} Revise a carga semanal, os slots e os conflitos.`;
+    default:
+      return diagnostic.message;
+  }
+}
+
 function VersionReview({
   entries,
+  scheduleBreaks,
   onEdit,
   editable,
 }: {
   entries: TimetableVersionEntryRow[];
+  scheduleBreaks: SchoolScheduleBreakRow[];
   onEdit: (entry: TimetableVersionEntryRow) => void;
   editable: boolean;
 }) {
@@ -52,17 +164,11 @@ function VersionReview({
       current.push(entry);
       grouped.set(`${entry.class_id}:${entry.term_id}`, current);
     }
-    return Array.from(grouped.values()).map((classEntries) => ({
+    return Array.from(grouped.entries()).map(([key, classEntries]) => ({
+      key,
       name: classEntries[0]?.class_name ?? 'Turma',
       termName: classEntries[0]?.term_name ?? 'Período',
-      timeRows: Array.from(
-        new Map(
-          classEntries.map((entry) => [
-            `${entry.start_time}:${entry.end_time}`,
-            { startTime: entry.start_time, endTime: entry.end_time },
-          ]),
-        ).values(),
-      ).sort((left, right) => left.startTime.localeCompare(right.startTime)),
+      shift: classEntries[0]?.class_shift ?? null,
       entries: classEntries.sort(
         (left, right) =>
           left.day_of_week - right.day_of_week ||
@@ -82,81 +188,100 @@ function VersionReview({
   return (
     <div className="space-y-4" data-testid="timetable-draft-review">
       {classes.map((classGroup) => (
-        <section key={`${classGroup.name}:${classGroup.termName}`} className="rounded-lg border border-[#e4e8f1]">
-          <h5 className="border-b border-[#e4e8f1] px-4 py-3 font-bold text-[#181c20]">
-            {classGroup.name} <span className="font-normal text-[#667085]">· {classGroup.termName}</span>
-          </h5>
-          <div className="overflow-x-auto p-4">
-            <table className="w-full min-w-[980px] table-fixed border-collapse text-left">
-              <thead>
-                <tr>
-                  <th className="w-32 border border-[#e4e8f1] bg-slate-50 px-3 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
-                    Horário
-                  </th>
-                  {[1, 2, 3, 4, 5].map((day) => (
-                    <th key={day} className="border border-[#e4e8f1] bg-slate-50 px-3 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
-                      {DAY_LABELS[day]}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {classGroup.timeRows.map((timeRow) => (
-                  <tr key={`${timeRow.startTime}:${timeRow.endTime}`}>
-                    <th className="w-32 border border-[#e4e8f1] bg-slate-50 px-3 py-3 align-top text-xs font-bold whitespace-nowrap text-[#344054]">
-                      {formatTime(timeRow.startTime)}
-                      <span className="mt-1 block font-normal text-[#667085]">até {formatTime(timeRow.endTime)}</span>
-                    </th>
-                    {[1, 2, 3, 4, 5].map((day) => {
-                      const cellEntries = classGroup.entries.filter(
-                        (entry) =>
-                          entry.day_of_week === day &&
-                          entry.start_time === timeRow.startTime &&
-                          entry.end_time === timeRow.endTime,
-                      );
-                      return (
-                        <td key={day} className="h-24 border border-[#e4e8f1] bg-white p-2 align-top">
-                          {cellEntries.length > 0 ? (
-                            <div className="space-y-2">
-                              {cellEntries.map((entry) => (
-                                editable ? <button
-                                  type="button"
-                                  key={entry.id}
-                                  aria-label={`Editar ${entry.subject_name} às ${formatTime(entry.start_time)}`}
-                                  onClick={() => onEdit(entry)}
-                                  className="block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]"
-                                >
-                                  <span className="font-bold text-[#181c20]">
-                                    {formatTime(entry.start_time)} {entry.subject_name}
-                                  </span>
-                                  <span className="mt-1 block text-[#667085]">
-                                    {entry.teacher_name ?? 'Professor pendente'}
-                                    {entry.locked ? ' · Fixo' : ''}
-                                  </span>
-                                </button> : <div
-                                  key={entry.id}
-                                  className="block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs"
-                                >
-                                  <span className="font-bold text-[#181c20]">
-                                    {formatTime(entry.start_time)} {entry.subject_name}
-                                  </span>
-                                  <span className="mt-1 block text-[#667085]">
-                                    {entry.teacher_name ?? 'Professor pendente'}
-                                    {entry.locked ? ' · Fixo' : ''}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <span className="text-sm text-[#98a2b3]">—</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <section key={classGroup.key} className="rounded-lg border border-[#e4e8f1]">
+          <div className="border-b border-[#e4e8f1] px-4 py-3">
+            <h5 className="font-bold text-[#181c20]">{classGroup.name}</h5>
+            <p className="mt-1 text-xs font-semibold uppercase tracking-[0.1em] text-[#667085]">
+              {classGroup.termName}
+            </p>
+          </div>
+          <div className="grid gap-3 p-4 md:grid-cols-2 lg:grid-cols-3">
+            {[...new Set<number>([
+              ...REQUIRED_SCHOOL_DAYS,
+              ...classGroup.entries.map((entry) => entry.day_of_week),
+              ...scheduleBreaks
+                .filter((scheduleBreak) =>
+                  classGroup.shift &&
+                  normalizeAcademicShift(scheduleBreak.shift) ===
+                    normalizeAcademicShift(classGroup.shift),
+                )
+                .map((scheduleBreak) => scheduleBreak.day_of_week),
+            ])].sort((left, right) => left - right).map((day) => (
+              <div key={day}>
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#667085]">
+                  {DAY_LABELS[day]}
+                </p>
+                <div className="mt-2 space-y-2">
+                  {[
+                    ...classGroup.entries
+                      .filter((entry) => entry.day_of_week === day)
+                      .map((entry) => ({
+                        kind: 'lesson' as const,
+                        startTime: entry.start_time,
+                        entry,
+                      })),
+                    ...scheduleBreaks
+                      .filter((scheduleBreak) =>
+                        classGroup.shift &&
+                        scheduleBreak.active &&
+                        scheduleBreak.day_of_week === day &&
+                        normalizeAcademicShift(scheduleBreak.shift) ===
+                          normalizeAcademicShift(classGroup.shift),
+                      )
+                      .map((scheduleBreak) => ({
+                        kind: 'break' as const,
+                        startTime: scheduleBreak.start_time,
+                        scheduleBreak,
+                      })),
+                  ]
+                    .sort((left, right) => left.startTime.localeCompare(right.startTime))
+                    .map((item) => item.kind === 'break' ? (
+                      <div key={`break-${item.scheduleBreak.id}`}>
+                        <TimetableBreakMarker scheduleBreak={item.scheduleBreak} />
+                      </div>
+                    ) : (
+                      editable ? <button
+                        type="button"
+                        key={item.entry.id}
+                        aria-label={`Editar ${item.entry.subject_name} às ${formatTime(item.entry.start_time)}`}
+                        onClick={() => onEdit(item.entry)}
+                        className="block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]"
+                      >
+                        <span className="font-bold text-[#181c20]">
+                          {formatTime(item.entry.start_time)} {item.entry.subject_name}
+                        </span>
+                        <span className="mt-1 block text-[#667085]">
+                          {item.entry.teacher_name ?? 'Professor pendente'}
+                          {item.entry.locked ? ' · Fixo' : ''}
+                        </span>
+                      </button> : <div
+                        key={item.entry.id}
+                        className="block w-full rounded-md border border-blue-100 bg-blue-50 p-2 text-left text-xs"
+                      >
+                        <span className="font-bold text-[#181c20]">
+                          {formatTime(item.entry.start_time)} {item.entry.subject_name}
+                        </span>
+                        <span className="mt-1 block text-[#667085]">
+                          {item.entry.teacher_name ?? 'Professor pendente'}
+                          {item.entry.locked ? ' · Fixo' : ''}
+                        </span>
+                      </div>
+                    ))}
+                  {classGroup.entries.every((entry) => entry.day_of_week !== day) &&
+                    !scheduleBreaks.some((scheduleBreak) =>
+                      classGroup.shift &&
+                      scheduleBreak.active &&
+                      scheduleBreak.day_of_week === day &&
+                      normalizeAcademicShift(scheduleBreak.shift) ===
+                        normalizeAcademicShift(classGroup.shift),
+                    ) && (
+                    <p className="rounded-md border border-dashed border-[#e4e8f1] p-2 text-xs text-[#98a2b3]">
+                      Sem aulas geradas
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       ))}
@@ -172,10 +297,13 @@ export default function TimetableAutomationPanel({
   createdBy: string;
 }) {
   const yearsQuery = useAcademicYears(institutionId);
+  const shiftSettingsQuery = useAcademicShiftSettings(institutionId);
+  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
   const years = yearsQuery.data ?? [];
   const [academicYearId, setAcademicYearId] = useState('');
   const selectedYearId = academicYearId || years[0]?.id || '';
   const versionsQuery = useTimetableVersions(institutionId, selectedYearId);
+  const versions = versionsQuery.data ?? [];
   const generateMutation = useGenerateTimetableDraft();
   const deleteMutation = useDeleteTimetableVersion();
   const publishMutation = usePublishTimetableVersion();
@@ -186,6 +314,8 @@ export default function TimetableAutomationPanel({
   const [entryDraft, setEntryDraft] = useState<EntryDraft | null>(null);
 
   const [generationShift, setGenerationShift] = useState('TODOS');
+  const enabledShifts: AcademicShift[] =
+    shiftSettingsQuery.data ?? ['MATUTINO'];
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -201,6 +331,10 @@ export default function TimetableAutomationPanel({
   async function generate(sourceVersionId?: string): Promise<void> {
     setMessage(null);
     setError(null);
+    if (!sourceVersionId && (versionsQuery.data ?? []).some((version) => version.status === 'DRAFT')) {
+      const shouldContinue = window.confirm('Já existe uma grade em rascunho para este ano. Deseja gerar uma nova proposta?');
+      if (!shouldContinue) return;
+    }
     try {
       const result = await generateMutation.mutateAsync({
         institutionId,
@@ -218,6 +352,7 @@ export default function TimetableAutomationPanel({
           result.automaticAssignmentsCreated > 0 ? `${result.automaticAssignmentsCreated} atribuição(ões) criada(s)` : '',
           result.automaticRoomsCreated > 0 ? `${result.automaticRoomsCreated} sala(s) criada(s)` : '',
           result.automaticSlotsCreated > 0 ? `${result.automaticSlotsCreated} horário(s) padrão criado(s)` : '',
+          result.automaticUnassigned > 0 ? `${result.automaticUnassigned} pendência(s) de professor` : '',
         ].filter(Boolean).join(', ');
         setError(
           `Não foi possível montar a grade automaticamente.${preparation ? ` Preparação automática: ${preparation}.` : ''} ${requiresAssignments ? 'A publicação exige professor por matéria. ' : ''}${summarizeDiagnostics(result.diagnostics)}`,
@@ -229,6 +364,7 @@ export default function TimetableAutomationPanel({
         result.automaticAssignmentsCreated > 0 ? `${result.automaticAssignmentsCreated} atribuição(ões)` : '',
         result.automaticRoomsCreated > 0 ? `${result.automaticRoomsCreated} sala(s)` : '',
         result.automaticSlotsCreated > 0 ? `${result.automaticSlotsCreated} horário(s) padrão` : '',
+        result.automaticUnassigned > 0 ? `${result.automaticUnassigned} pendência(s) de professor` : '',
       ].filter(Boolean).join(', ');
       setMessage(
         `Grade gerada em rascunho: ${result.entries.length} aulas alocadas. ${preparation ? `Preparação automática: ${preparation}. ` : ''}Revise antes de publicar.`,
@@ -245,29 +381,29 @@ export default function TimetableAutomationPanel({
       await publishMutation.mutateAsync({ versionId, institutionId, academicYearId: selectedYearId });
       setMessage('Grade publicada com validação server-side.');
     } catch (publishError) {
-      const publishMessage = getErrorMessage(publishError);
-      setError(
-        publishMessage.includes('TEACHER_')
-          ? 'A grade estrutural está pronta, mas algumas aulas precisam de professor e disponibilidade antes da publicação.'
-          : publishMessage,
-      );
+      setError(getErrorMessage(publishError));
     }
   }
 
-  async function removeVersion(version: { id: string; name: string; status: string }): Promise<void> {
-    if (version.status !== 'DRAFT') return;
-    if (!window.confirm(`Excluir a grade "${version.name}"? Todas as aulas deste rascunho serão removidas.`)) return;
+  async function removeVersion(versionId: string): Promise<void> {
+    const version = versions.find((item) => item.id === versionId);
+    if (!version || version.status !== 'DRAFT') return;
+    if (!window.confirm('Excluir esta proposta de grade? Esta ação não pode ser desfeita.')) return;
 
     setMessage(null);
     setError(null);
     try {
-      await deleteMutation.mutateAsync({ versionId: version.id, institutionId, academicYearId: selectedYearId });
-      if (reviewVersionId === version.id) {
+      await deleteMutation.mutateAsync({
+        versionId,
+        institutionId,
+        academicYearId: selectedYearId,
+      });
+      if (reviewVersionId === versionId) {
         setReviewVersionId('');
         setEditingEntry(null);
         setEntryDraft(null);
       }
-      setMessage('Grade removida.');
+      setMessage('Proposta excluída.');
     } catch (deleteError) {
       setError(getErrorMessage(deleteError));
     }
@@ -302,7 +438,6 @@ export default function TimetableAutomationPanel({
     }
   }
 
-  const versions = versionsQuery.data ?? [];
   const reviewVersion = versions.find((version) => version.id === reviewVersionId);
 
   return (
@@ -334,10 +469,11 @@ export default function TimetableAutomationPanel({
               className="mt-1 block rounded-lg border border-[#d8deea] px-3 py-2 text-sm"
             >
               <option value="TODOS">Todos os turnos</option>
-              <option value="MATUTINO">Manhã</option>
-              <option value="VESPERTINO">Tarde</option>
-              <option value="NOTURNO">Noite</option>
-              <option value="INTEGRAL">Integral</option>
+              {enabledShifts.map((availableShift) => (
+                <option key={availableShift} value={availableShift}>
+                  {getAcademicShiftLabel(availableShift)}
+                </option>
+              ))}
             </select>
           </label>
           <button
@@ -353,6 +489,9 @@ export default function TimetableAutomationPanel({
 
       {message && <div role="status" className="rounded-lg border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-700">{message}</div>}
       {error && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
+      {!yearsQuery.isLoading && !yearsQuery.isError && years.length === 0 && <div role="alert" className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">Cadastre um ano letivo antes de configurar a grade.</div>}
+      {yearsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os anos letivos. Atualize a página e tente novamente.</div>}
+      {shiftSettingsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os turnos da escola. Configure a Política acadêmica e atualize a página.</div>}
 
       <section>
         <div>
@@ -373,7 +512,7 @@ export default function TimetableAutomationPanel({
                     {version.status === 'DRAFT' && <>
                       <button type="button" onClick={() => void generate(version.id)} disabled={generateMutation.isPending} className="font-semibold text-blue-700 disabled:opacity-50">Regenerar grade</button>
                       <button type="button" onClick={() => void publish(version.id)} disabled={publishMutation.isPending} className="font-semibold text-emerald-700 disabled:opacity-50">Publicar grade</button>
-                      <button type="button" onClick={() => void removeVersion(version)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50" aria-label={`Excluir grade ${version.name}`}>Excluir grade</button>
+                      <button type="button" onClick={() => void removeVersion(version.id)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50">Excluir proposta</button>
                     </>}
                   </div></td>
                 </tr>
@@ -387,7 +526,7 @@ export default function TimetableAutomationPanel({
       {reviewVersionId && (
         <section className="space-y-4 border-t border-[#e4e8f1] pt-5">
           <div><h4 className="font-semibold text-[#181c20]">Revisar grade</h4><p className="text-sm text-[#667085]">Clique em uma aula para editar o horário ou marcá-la como fixa.</p></div>
-          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} />}
+          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} />}
         </section>
       )}
 

@@ -1,6 +1,13 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  normalizeAcademicShift,
+  normalizeAcademicShifts,
+  toAcademicShift,
+} from '../lib/academic/academicShifts';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export const SCHOOL_SETUP_STEP_IDS = [
+  'login-branding',
   'academic-year',
   'terms',
   'subjects',
@@ -48,6 +55,14 @@ interface AcademicYearRow {
   start_date: string;
   end_date: string;
   active: boolean | null;
+}
+
+interface InstitutionBrandingRow {
+  login_display_name: string | null;
+  logo_url: string | null;
+  favicon_url: string | null;
+  primary_color: string | null;
+  secondary_color: string | null;
 }
 
 interface TermRow {
@@ -116,6 +131,18 @@ interface TimetableStructuralState {
 
 function isActive(value: boolean | null | undefined): boolean {
   return value !== false;
+}
+
+function hasLoginBranding(
+  branding: InstitutionBrandingRow | null,
+): boolean {
+  return Boolean(
+    branding?.login_display_name?.trim() ||
+      branding?.logo_url?.trim() ||
+      branding?.favicon_url?.trim() ||
+      branding?.primary_color?.trim() ||
+      branding?.secondary_color?.trim(),
+  );
 }
 
 function timeToMinutes(value: string): number {
@@ -201,11 +228,12 @@ function evaluateTimetableStructure({
   const slotShifts = new Set(
     timeSlots
       .filter((slot) => isActive(slot.active))
-      .map((slot) => slot.shift.trim()),
+      .map((slot) => normalizeAcademicShift(slot.shift)),
   );
-  const classesHaveSlots = activeClasses.every((classRecord) =>
-    slotShifts.has(classRecord.shift?.trim() ?? ''),
-  );
+  const classesHaveSlots = activeClasses.every((classRecord) => {
+    const classShift = toAcademicShift(classRecord.shift);
+    return Boolean(classShift && slotShifts.has(classShift));
+  });
   const termsById = new Map(activeTerms.map((term) => [term.id, term]));
   const classesById = new Map(
     activeClasses.map((classRecord) => [classRecord.id, classRecord]),
@@ -225,10 +253,11 @@ function evaluateTimetableStructure({
       return false;
     }
 
-    return timeSlots.some(
+    const classShift = toAcademicShift(classRecord.shift);
+    return Boolean(classShift) && timeSlots.some(
       (slot) =>
         isActive(slot.active) &&
-        slot.shift.trim() === (classRecord.shift?.trim() ?? '') &&
+        normalizeAcademicShift(slot.shift) === classShift &&
         slot.day_of_week === entry.day_of_week &&
         timeToMinutes(slot.start_time) <= timeToMinutes(entry.start_time) &&
         timeToMinutes(slot.end_time) >= timeToMinutes(entry.end_time),
@@ -290,6 +319,8 @@ function pickAcademicYear(
 
 function stepHref(stepId: SchoolSetupStepId): string {
   switch (stepId) {
+    case 'login-branding':
+      return '/personalizar-login';
     case 'academic-year':
     case 'terms':
       return '/admin?module=academic-years';
@@ -308,6 +339,7 @@ function stepHref(stepId: SchoolSetupStepId): string {
 
 export function buildSchoolSetupReadiness({
   institutionId,
+  loginBrandingConfigured,
   academicYear,
   terms,
   subjects,
@@ -319,8 +351,10 @@ export function buildSchoolSetupReadiness({
   publishedEntries,
   timetableCandidates = [],
   offerings = [],
+  enabledShifts,
 }: {
   institutionId: string;
+  loginBrandingConfigured: boolean;
   academicYear: AcademicYearRow | null;
   terms: TermRow[];
   subjects: { id: string }[];
@@ -332,10 +366,19 @@ export function buildSchoolSetupReadiness({
   publishedEntries: VersionEntryRow[];
   timetableCandidates?: TimetableCandidate[];
   offerings?: OfferingRow[];
+  enabledShifts?: readonly string[];
 }): SchoolSetupReadiness {
   const activeClasses = classes.filter((classRecord) =>
     isActive(classRecord.active),
   );
+  const configuredShifts = normalizeAcademicShifts(
+    enabledShifts ?? [
+      ...activeClasses.map((classRecord) => classRecord.shift),
+      ...timeSlots.map((slot) => slot.shift),
+    ],
+    [],
+  );
+  const enabledShiftSet = new Set(configuredShifts);
   const activeCurriculum = curriculum.filter((item) =>
     isActive(item.active),
   );
@@ -374,6 +417,7 @@ export function buildSchoolSetupReadiness({
     : { complete: false, completeClassIds: new Set<string>() };
 
   const completed = {
+    'login-branding': loginBrandingConfigured,
     'academic-year': academicYear !== null,
     terms:
       academicYear !== null &&
@@ -383,7 +427,10 @@ export function buildSchoolSetupReadiness({
     classes:
       activeClasses.length > 0 &&
       activeClasses.every(
-        (classRecord) => Boolean(classRecord.shift?.trim()),
+        (classRecord) => {
+          const shift = toAcademicShift(classRecord.shift);
+          return Boolean(shift && enabledShiftSet.has(shift));
+        },
       ),
     'class-subjects':
       activeClasses.length > 0 &&
@@ -395,6 +442,7 @@ export function buildSchoolSetupReadiness({
   } satisfies Record<SchoolSetupStepId, boolean>;
 
   const labels: Record<SchoolSetupStepId, string> = {
+    'login-branding': 'Personalizar login',
     'academic-year': 'Ano letivo',
     terms: 'Períodos',
     subjects: 'Matérias',
@@ -440,13 +488,28 @@ export const schoolSetupService = {
   async getReadiness(
     institutionId: string,
   ): Promise<SchoolSetupReadiness> {
-    const { data: yearsData, error: yearsError } = await supabase
-      .from('academic_years')
-      .select('id, name, start_date, end_date, active')
-      .eq('institution_id', institutionId)
-      .order('start_date', { ascending: false });
+    const [yearsResult, brandingResult] = await Promise.all([
+      supabase
+        .from('academic_years')
+        .select('id, name, start_date, end_date, active')
+        .eq('institution_id', institutionId)
+        .order('start_date', { ascending: false }),
+      supabase
+        .from('institutions')
+        .select('login_display_name, logo_url, favicon_url, primary_color, secondary_color')
+        .eq('id', institutionId)
+        .maybeSingle(),
+    ]);
+
+    const { data: yearsData, error: yearsError } = yearsResult;
+    const { data: brandingData, error: brandingError } = brandingResult;
 
     if (yearsError) throw yearsError;
+    if (brandingError) throw brandingError;
+
+    const loginBrandingConfigured = hasLoginBranding(
+      (brandingData ?? null) as InstitutionBrandingRow | null,
+    );
 
     const academicYear = pickAcademicYear(
       (yearsData ?? []) as AcademicYearRow[],
@@ -455,6 +518,7 @@ export const schoolSetupService = {
     if (!academicYear) {
       return buildSchoolSetupReadiness({
         institutionId,
+        loginBrandingConfigured,
         academicYear: null,
         terms: [],
         subjects: [],
@@ -552,9 +616,13 @@ export const schoolSetupService = {
     const publishedCandidate = timetableCandidates.find(
       (candidate) => candidate.version.status === 'PUBLISHED',
     );
+    const enabledShifts = await academicShiftSettingsService.getEnabledShifts(
+      institutionId,
+    );
 
     return buildSchoolSetupReadiness({
       institutionId,
+      loginBrandingConfigured,
       academicYear,
       terms: (termsResult.data ?? []) as TermRow[],
       subjects: (subjectsResult.data ?? []) as { id: string }[],
@@ -566,6 +634,7 @@ export const schoolSetupService = {
       publishedEntries: publishedCandidate?.entries ?? [],
       timetableCandidates,
       offerings: (offeringsResult.data ?? []) as OfferingRow[],
+      enabledShifts,
     });
   },
 };

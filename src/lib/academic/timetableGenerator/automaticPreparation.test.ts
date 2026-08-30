@@ -35,6 +35,34 @@ describe('automatic timetable preparation', () => {
     expect(result.unassigned).toEqual([{ classId: 'class-1', subjectId: 'science' }]);
   });
 
+  it('distributes new assignments by weekly workload instead of link count', () => {
+    const result = planAutomaticAssignments({
+      classes: [
+        { id: 'class-heavy', institutionId: 'institution-1', academicYearId: 'year-1', name: '1A', shift: 'INTEGRAL' },
+        { id: 'class-light', institutionId: 'institution-1', academicYearId: 'year-1', name: '2A', shift: 'INTEGRAL' },
+      ],
+      curriculumItems: [
+        { classId: 'class-heavy', subjectId: 'math', weeklyLessons: 5, lessonDurationMinutes: 50 },
+        { classId: 'class-light', subjectId: 'math', weeklyLessons: 2, lessonDurationMinutes: 50 },
+      ],
+      subjectOfferings: [{
+        id: 'offering-light',
+        institutionId: 'institution-1',
+        classId: 'class-light',
+        subjectId: 'math',
+        teacherProfileId: 'teacher-1',
+        termId: 'term-1',
+      }],
+      teacherSubjects: [
+        { institutionId: 'institution-1', teacherProfileId: 'teacher-1', subjectId: 'math', active: true },
+        { institutionId: 'institution-1', teacherProfileId: 'teacher-2', subjectId: 'math', active: true },
+      ],
+      termIds: ['term-1'],
+    });
+
+    expect(result.assignments).toEqual([{ classId: 'class-heavy', subjectId: 'math', teacherProfileId: 'teacher-2' }]);
+  });
+
   it('creates standard slots for custom and integral shifts', () => {
     const slots = buildDefaultTimeSlots(['Integral', 'Noturno']);
     const expandedMorning = buildDefaultTimeSlots(['MATUTINO'], { MATUTINO: 8 });

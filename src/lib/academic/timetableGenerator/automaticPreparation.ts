@@ -4,6 +4,9 @@ import type {
   GeneratorOffering,
   GeneratorTeacherSubject,
 } from './index';
+import { normalizeAcademicShift } from '../academicShifts';
+
+export { normalizeAcademicShift } from '../academicShifts';
 
 export interface AutomaticAssignmentPlan {
   classId: string;
@@ -72,22 +75,30 @@ const STANDARD_SLOT_TIMES: Record<string, Array<[string, string]>> = {
   ],
 };
 
-export function normalizeAcademicShift(shift: string): string {
-  const normalized = shift.trim().toLocaleUpperCase('pt-BR');
-  if (normalized.includes('INTEGRAL')) return 'INTEGRAL';
-  if (normalized.includes('VESPERT') || normalized.includes('TARDE')) return 'VESPERTINO';
-  if (normalized.includes('NOTURN') || normalized.includes('NOITE')) return 'NOTURNO';
-  if (normalized.includes('MATUT') || normalized.includes('MANH')) return 'MATUTINO';
-  return normalized || 'MATUTINO';
-}
-
-function countTeacherLoad(
+function countTeacherWeeklyLoad(
   teacherProfileId: string,
-  offerings: GeneratorOffering[],
+  input: AutomaticAssignmentInput,
   planned: AutomaticAssignmentPlan[],
 ): number {
-  return offerings.filter((offering) => offering.teacherProfileId === teacherProfileId).length +
-    planned.filter((assignment) => assignment.teacherProfileId === teacherProfileId).length;
+  const assignedKeys = new Set<string>();
+  for (const offering of input.subjectOfferings) {
+    if (offering.teacherProfileId === teacherProfileId) {
+      assignedKeys.add(`${offering.classId}:${offering.subjectId}`);
+    }
+  }
+  for (const assignment of planned) {
+    if (assignment.teacherProfileId === teacherProfileId) {
+      assignedKeys.add(`${assignment.classId}:${assignment.subjectId}`);
+    }
+  }
+
+  return [...assignedKeys].reduce((total, key) => {
+    const [classId, subjectId] = key.split(':');
+    const curriculum = input.curriculumItems.find(
+      (item) => item.classId === classId && item.subjectId === subjectId,
+    );
+    return total + (curriculum?.weeklyLessons ?? 0);
+  }, 0);
 }
 
 export function planAutomaticAssignments(input: AutomaticAssignmentInput): AutomaticAssignmentPlanResult {
@@ -119,8 +130,8 @@ export function planAutomaticAssignments(input: AutomaticAssignmentInput): Autom
       qualifiedTeacherIds.length === 0 || qualifiedTeacherIds.includes(offering.teacherProfileId),
     )?.teacherProfileId;
     const teacherProfileId = existingTeacherId ?? qualifiedTeacherIds.sort((left, right) =>
-      countTeacherLoad(left, input.subjectOfferings, assignments) -
-      countTeacherLoad(right, input.subjectOfferings, assignments) ||
+      countTeacherWeeklyLoad(left, input, assignments) -
+      countTeacherWeeklyLoad(right, input, assignments) ||
       left.localeCompare(right),
     )[0];
 
@@ -150,7 +161,9 @@ export function buildDefaultTimeSlots(
   for (const shift of effectiveShifts) {
     const normalizedShift = normalizeAcademicShift(shift);
     const times = STANDARD_SLOT_TIMES[normalizedShift] ?? STANDARD_SLOT_TIMES.MATUTINO;
-    const requestedSlots = slotsPerDayByShift[normalizedShift] ?? times.length;
+    const requestedSlots = slotsPerDayByShift[normalizedShift] ??
+      slotsPerDayByShift[shift] ??
+      times.length;
     for (let day = 1; day <= 5; day += 1) {
       times.slice(0, requestedSlots).forEach(([start_time, end_time], index) => {
         slots.push({

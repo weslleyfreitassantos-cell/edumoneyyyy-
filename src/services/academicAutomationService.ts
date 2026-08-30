@@ -1,4 +1,8 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  normalizeAcademicShift,
+} from '../lib/academic/academicShifts';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export type PeriodModel = 'BIMESTERS_4' | 'TRIMESTERS_3' | 'SEMESTERS_2' | 'CUSTOM';
 
@@ -37,6 +41,64 @@ export interface SchoolTimeSlotRow {
   start_time: string;
   end_time: string;
   active: boolean;
+}
+
+export interface SchoolScheduleBreakRow {
+  id: string;
+  institution_id: string;
+  shift: string;
+  day_of_week: number;
+  name: string;
+  start_time: string;
+  end_time: string;
+  active: boolean;
+}
+
+export type SchoolScheduleBreakDraft = Pick<
+  SchoolScheduleBreakRow,
+  'day_of_week' | 'name' | 'start_time' | 'end_time'
+>;
+
+export type TeacherAvailabilityDraft = Pick<
+  TeacherAvailabilityRow,
+  'day_of_week' | 'start_time' | 'end_time'
+>;
+
+/**
+ * Converts the school's active lesson slots into editable teacher windows.
+ * Adjacent slots are merged while recesses and shift changes remain visible.
+ */
+export function suggestTeacherAvailabilityFromSchoolSlots(
+  slots: Array<Pick<SchoolTimeSlotRow, 'day_of_week' | 'start_time' | 'end_time' | 'active'>>,
+): TeacherAvailabilityDraft[] {
+  const normalized = slots
+    .filter((slot) => slot.active && slot.start_time.slice(0, 5) < slot.end_time.slice(0, 5))
+    .map((slot) => ({
+      day_of_week: slot.day_of_week,
+      start_time: slot.start_time.slice(0, 5),
+      end_time: slot.end_time.slice(0, 5),
+    }))
+    .sort((left, right) =>
+      left.day_of_week - right.day_of_week ||
+      left.start_time.localeCompare(right.start_time) ||
+      left.end_time.localeCompare(right.end_time),
+    );
+
+  const suggestions: TeacherAvailabilityDraft[] = [];
+  for (const window of normalized) {
+    const previous = suggestions[suggestions.length - 1];
+    if (
+      previous &&
+      previous.day_of_week === window.day_of_week &&
+      window.start_time <= previous.end_time
+    ) {
+      if (window.end_time > previous.end_time) previous.end_time = window.end_time;
+      continue;
+    }
+    suggestions.push({ ...window });
+  }
+
+  return suggestions;
 }
 
 export interface CurriculumTemplateRow {
@@ -156,14 +218,26 @@ export const academicAutomationService = {
   },
 
   async listTimeSlots(institutionId: string, shift?: string): Promise<SchoolTimeSlotRow[]> {
+    const normalizedShift = shift
+      ? await academicShiftSettingsService.assertShiftEnabled(institutionId, shift)
+      : null;
     let query = supabase.from('school_time_slots').select('*').eq('institution_id', institutionId).eq('active', true).order('day_of_week').order('slot_number');
-    if (shift) query = query.eq('shift', shift);
+    if (normalizedShift) query = query.eq('shift', normalizedShift);
     const { data, error } = await query;
     if (error) throw error;
-    return (data ?? []) as SchoolTimeSlotRow[];
+    return ((data ?? []) as SchoolTimeSlotRow[]).map((slot) => ({
+      ...slot,
+      shift: normalizeAcademicShift(slot.shift),
+    }));
   },
 
   async upsertTimeSlots(input: { institution_id: string; shift: string; slots: Array<{ day_of_week: number; slot_number: number; start_time: string; end_time: string }> }): Promise<void> {
+    const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+      input.institution_id,
+      input.shift,
+    );
+    if (!normalizedShift) throw new Error('Selecione um turno válido para os horários.');
+
     const positions = new Set<string>();
     for (const slot of input.slots) {
       if (slot.start_time >= slot.end_time) throw new Error('O horario final deve ser posterior ao inicial.');
@@ -176,7 +250,7 @@ export const academicAutomationService = {
       .from('school_time_slots')
       .select('id, day_of_week, slot_number')
       .eq('institution_id', input.institution_id)
-      .eq('shift', input.shift)
+      .eq('shift', normalizedShift)
       .eq('active', true);
     if (existingError) throw existingError;
 
@@ -188,13 +262,103 @@ export const academicAutomationService = {
         .from('school_time_slots')
         .update({ active: false })
         .eq('institution_id', input.institution_id)
-        .eq('shift', input.shift)
+        .eq('shift', normalizedShift)
         .in('id', staleIds);
       if (deactivateError) throw deactivateError;
     }
 
-    const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: input.shift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
+    const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: normalizedShift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
     if (error) throw error;
+  },
+
+  async listScheduleBreaks(
+    institutionId: string,
+    shift?: string,
+  ): Promise<SchoolScheduleBreakRow[]> {
+    let query = supabase
+      .from('school_schedule_breaks')
+      .select('*')
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .order('shift')
+      .order('day_of_week')
+      .order('start_time');
+
+    if (shift) {
+      const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+        institutionId,
+        shift,
+      );
+      if (normalizedShift) query = query.eq('shift', normalizedShift);
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+    return (data ?? []) as SchoolScheduleBreakRow[];
+  },
+
+  async replaceScheduleBreaks(input: {
+    institution_id: string;
+    shift: string;
+    breaks: SchoolScheduleBreakDraft[];
+  }): Promise<SchoolScheduleBreakRow[]> {
+    const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+      input.institution_id,
+      input.shift,
+    );
+    if (!normalizedShift) {
+      throw new Error('Selecione um turno válido para os intervalos.');
+    }
+
+    const seen = new Set<string>();
+    for (const item of input.breaks) {
+      const name = item.name.trim();
+      if (!name) throw new Error('Informe o nome do intervalo.');
+      if (item.day_of_week < 1 || item.day_of_week > 6) {
+        throw new Error('Selecione um dia válido para o intervalo.');
+      }
+      if (item.start_time >= item.end_time) {
+        throw new Error('O horário final do intervalo deve ser posterior ao inicial.');
+      }
+      const duplicateKey = `${item.day_of_week}:${item.start_time}:${item.end_time}:${name.toLocaleLowerCase()}`;
+      if (seen.has(duplicateKey)) {
+        throw new Error('Não repita o mesmo intervalo no mesmo dia.');
+      }
+      seen.add(duplicateKey);
+    }
+
+    const ordered = [...input.breaks].sort(
+      (left, right) =>
+        left.day_of_week - right.day_of_week ||
+        left.start_time.localeCompare(right.start_time),
+    );
+    for (let index = 1; index < ordered.length; index += 1) {
+      const previous = ordered[index - 1];
+      const current = ordered[index];
+      if (
+        previous.day_of_week === current.day_of_week &&
+        previous.start_time < current.end_time &&
+        current.start_time < previous.end_time
+      ) {
+        throw new Error('Os intervalos do mesmo turno não podem se sobrepor.');
+      }
+    }
+
+    const { data, error } = await supabase.rpc(
+      'replace_school_schedule_breaks',
+      {
+        p_institution_id: input.institution_id,
+        p_shift: normalizedShift,
+        p_breaks: input.breaks.map((item) => ({
+          day_of_week: item.day_of_week,
+          name: item.name.trim(),
+          start_time: item.start_time,
+          end_time: item.end_time,
+        })),
+      },
+    );
+    if (error) throw error;
+    return (data ?? []) as SchoolScheduleBreakRow[];
   },
 
   async applyCurriculumTemplate(input: { institution_id: string; template_id: string; class_ids: string[] }): Promise<number> {

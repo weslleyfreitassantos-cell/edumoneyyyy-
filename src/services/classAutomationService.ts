@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export interface ClassBatchInput {
   institutionId: string;
@@ -241,6 +242,12 @@ export const classAutomationService = {
     if (academicYearError) throw academicYearError;
     if (!academicYear) throw new Error('Ano letivo não encontrado nesta instituição.');
 
+    const normalizedShift =
+      await academicShiftSettingsService.assertShiftEnabled(
+        input.institutionId,
+        input.shift,
+      );
+
     const { data: existingClasses, error: classesError } = await supabase
       .from('classes')
       .select('name')
@@ -295,7 +302,7 @@ export const classAutomationService = {
           academic_year_id: input.academicYearId,
           name,
           grade_level: input.gradeLevel?.trim() || null,
-          shift: input.shift?.trim() || null,
+          shift: normalizedShift,
           capacity: input.capacity,
           active: true,
         })),

@@ -34,6 +34,7 @@ const currentDirectory = dirname(
 );
 
 const mutateAsync = vi.fn();
+const saveAcademicMutateAsync = vi.fn();
 
 vi.mock(
   '../../../../hooks/useSchoolUserInvites',
@@ -44,6 +45,29 @@ vi.mock(
     }),
   }),
 );
+
+vi.mock('../../../../hooks/useAcademicAutomation', () => ({
+  useSaveTeacherAcademicSettings: () => ({
+    isPending: false,
+    mutateAsync: saveAcademicMutateAsync,
+  }),
+  useSchoolTimeSlots: () => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+  }),
+}));
+
+vi.mock('../../../../hooks/useSubjects', () => ({
+  useSubjects: () => ({
+    data: [
+      { id: 'subject-math', name: 'Matemática', active: true },
+      { id: 'subject-portuguese', name: 'Português', active: true },
+    ],
+    isLoading: false,
+    isError: false,
+  }),
+}));
 
 vi.mock('../../../../hooks/useStudents', () => ({
   useStudents: () => ({
@@ -79,6 +103,7 @@ afterEach(() => {
 
 beforeEach(() => {
   mutateAsync.mockReset();
+  saveAcademicMutateAsync.mockReset();
   mutateAsync.mockResolvedValue({
     success: true,
     userId:
@@ -94,6 +119,7 @@ beforeEach(() => {
     message:
       'Convite enviado e vinculo criado com sucesso.',
   });
+  saveAcademicMutateAsync.mockResolvedValue(undefined);
 });
 
 describe('UnifiedUserInvitePreview', () => {
@@ -109,6 +135,24 @@ describe('UnifiedUserInvitePreview', () => {
         'Cadastro unificado de usuarios',
       ),
     ).toBeTruthy();
+  });
+
+  it('renderiza somente o cadastro especifico quando recebe um unico destino', () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        allowedTargets={['SECRETARY']}
+        heading="Cadastro de secretaria"
+      />,
+    );
+
+    expect(
+      screen.getByText('Cadastro de secretaria'),
+    ).toBeTruthy();
+    expect(screen.getByText('Secretaria')).toBeTruthy();
+    expect(
+      screen.queryByRole('button', { name: /^Aluno$/i }),
+    ).toBeNull();
   });
 
   it('mantem envio desabilitado para formulario invalido', () => {
@@ -155,6 +199,12 @@ describe('UnifiedUserInvitePreview', () => {
         },
       },
     );
+    fireEvent.click(screen.getByLabelText('Matemática'));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Adicionar janela/,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('button', {
@@ -170,7 +220,50 @@ describe('UnifiedUserInvitePreview', () => {
         fullName: 'Professor Teste',
         email: 'professor@escola.com',
       });
+      expect(saveAcademicMutateAsync).toHaveBeenCalledWith({
+        institution_id:
+          defaultProps.institutionId,
+        teacher_profile_id:
+          '11111111-1111-4111-8111-111111111111',
+        subject_ids: ['subject-math'],
+        primary_subject_id: undefined,
+        availability: [{
+          day_of_week: 1,
+          start_time: '07:00',
+          end_time: '12:00',
+        }],
+      });
     });
+  });
+
+  it('exige disciplina e disponibilidade antes de criar professor', async () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Professor/,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Nome completo/),
+      { target: { value: 'Professor Sem Configuração' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/E-mail/),
+      { target: { value: 'sem-config@escola.com' } },
+    );
+
+    expect(
+      screen.getByText(/Selecione pelo menos uma disciplina/i),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: /Criar e enviar acesso/ }).hasAttribute('disabled'),
+    ).toBe(true);
+    expect(mutateAsync).not.toHaveBeenCalled();
   });
 
   it('mostra erro especifico de e-mail ja cadastrado sem limpar formulario', async () => {
@@ -210,6 +303,12 @@ describe('UnifiedUserInvitePreview', () => {
           value: 'professor@escola.com',
         },
       },
+    );
+    fireEvent.click(screen.getByLabelText('Matemática'));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Adicionar janela/,
+      }),
     );
 
     fireEvent.click(

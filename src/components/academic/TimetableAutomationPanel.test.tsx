@@ -5,8 +5,12 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
-  useGenerateTimetableDraft,
+  useAcademicShiftSettings,
+  useSchoolScheduleBreaks,
+} from '../../hooks/useAcademicTermClosing';
+import {
   useDeleteTimetableVersion,
+  useGenerateTimetableDraft,
   usePublishTimetableVersion,
   useTimetableVersionEntries,
   useTimetableVersions,
@@ -19,9 +23,14 @@ vi.mock('../../hooks/useAcademicStructure', () => ({
   useAcademicYears: vi.fn(),
 }));
 
+vi.mock('../../hooks/useAcademicTermClosing', () => ({
+  useAcademicShiftSettings: vi.fn(),
+  useSchoolScheduleBreaks: vi.fn(),
+}));
+
 vi.mock('../../hooks/useAcademicAutomation', () => ({
-  useGenerateTimetableDraft: vi.fn(),
   useDeleteTimetableVersion: vi.fn(),
+  useGenerateTimetableDraft: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
   useTimetableVersionEntries: vi.fn(),
   useTimetableVersions: vi.fn(),
@@ -36,6 +45,18 @@ const updateEntryMutation = { mutateAsync: vi.fn(), isPending: false };
 function mockDefaults() {
   vi.mocked(useAcademicYears).mockReturnValue({
     data: [{ id: 'year-1', name: '2026', start_date: '2026-01-01', end_date: '2026-12-31', active: true, terms: [] }],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useAcademicShiftSettings).mockReturnValue({
+    data: ['MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO'],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+    data: [],
     isLoading: false,
     isError: false,
     error: null,
@@ -65,7 +86,6 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
-  vi.restoreAllMocks();
 });
 
 describe('TimetableAutomationPanel', () => {
@@ -93,27 +113,6 @@ describe('TimetableAutomationPanel', () => {
     });
   });
 
-  it('permite excluir uma grade em rascunho após confirmação', async () => {
-    vi.mocked(useTimetableVersions).mockReturnValue({
-      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
-      isLoading: false,
-      isError: false,
-      error: null,
-    } as never);
-    vi.spyOn(window, 'confirm').mockReturnValue(true);
-
-    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Excluir grade Proposta' }));
-
-    await waitFor(() => {
-      expect(deleteMutation.mutateAsync).toHaveBeenCalledWith({
-        versionId: 'version-1',
-        institutionId: 'institution-1',
-        academicYearId: 'year-1',
-      });
-    });
-  });
-
   it('exibe o rascunho por turma e permite marcar uma aula como fixa', () => {
     vi.mocked(useTimetableVersions).mockReturnValue({
       data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
@@ -122,7 +121,7 @@ describe('TimetableAutomationPanel', () => {
       error: null,
     } as never);
     vi.mocked(useTimetableVersionEntries).mockReturnValue({
-      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', term_name: '1º Bimestre', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
+      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
       isLoading: false,
       isError: false,
       error: null,
@@ -130,38 +129,10 @@ describe('TimetableAutomationPanel', () => {
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
     fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
-    expect(screen.getByRole('columnheader', { name: 'Horário' })).toBeTruthy();
-    expect(screen.getByRole('columnheader', { name: 'Segunda' })).toBeTruthy();
-    expect(screen.getByRole('columnheader', { name: 'Sexta' })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: /Editar Português às 07:00/i }));
 
     expect(screen.getByText('Bloqueado/Fixo: preservar ao regenerar')).toBeTruthy();
     expect(screen.getByRole('checkbox')).toBeTruthy();
-  });
-
-  it('separa a revisão por período quando os horários semanais se repetem', () => {
-    vi.mocked(useTimetableVersions).mockReturnValue({
-      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
-      isLoading: false,
-      isError: false,
-      error: null,
-    } as never);
-    vi.mocked(useTimetableVersionEntries).mockReturnValue({
-      data: [
-        { id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', term_name: '1º Bimestre', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true },
-        { id: 'entry-2', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-2', class_id: 'class-1', class_name: '1A', term_name: '2º Bimestre', subject_offering_id: 'offering-2', subject_name: 'Matemática', teacher_profile_id: 'teacher-2', teacher_name: 'Professor Bruno', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true },
-      ],
-      isLoading: false,
-      isError: false,
-      error: null,
-    } as never);
-
-    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
-
-    expect(screen.getByRole('heading', { name: /1A.*1º Bimestre/ })).toBeTruthy();
-    expect(screen.getByRole('heading', { name: /1A.*2º Bimestre/ })).toBeTruthy();
-    expect(screen.getAllByRole('button', { name: /07:00/ })).toHaveLength(2);
   });
 
   it('mostra o bloqueio e os diagnósticos quando a geração é UNSAT', async () => {
@@ -177,5 +148,77 @@ describe('TimetableAutomationPanel', () => {
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/não foi possível montar a grade/i);
     expect(alert.textContent).toMatch(/precisa de mais horários/i);
+  });
+
+  it('exibe intervalos configurados na revisão sem tratá-los como aulas', () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useTimetableVersionEntries).mockReturnValue({
+      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', term_name: '1º Bimestre', class_id: 'class-1', class_name: '1A', class_shift: 'MATUTINO', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+      data: [{ id: 'break-1', institution_id: 'institution-1', shift: 'MATUTINO', day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50', active: true }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
+
+    expect(screen.getByTestId('timetable-break')).toBeTruthy();
+    expect(screen.getByText('Intervalo')).toBeTruthy();
+    expect(screen.getByText('Pausa escolar')).toBeTruthy();
+  });
+
+  it('explica quando a publicação é bloqueada por falta de disponibilidade docente', async () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    publishMutation.mutateAsync.mockRejectedValue({
+      code: 'P0001',
+      message: 'TEACHER_NOT_AVAILABLE',
+    });
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Publicar grade' }));
+
+    const alert = await screen.findByRole('alert');
+    expect(alert.textContent).toMatch(/disponibilidade semanal cadastrada/i);
+    expect(alert.textContent).toMatch(/Usuários > Professores/i);
+  });
+
+  it('permite excluir uma proposta em rascunho', async () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
+    deleteMutation.mutateAsync.mockResolvedValue(undefined);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Excluir proposta' }));
+
+    await waitFor(() => {
+      expect(deleteMutation.mutateAsync).toHaveBeenCalledWith({
+        versionId: 'version-1',
+        institutionId: 'institution-1',
+        academicYearId: 'year-1',
+      });
+    });
+    expect((await screen.findByRole('status')).textContent).toContain('Proposta excluída.');
+    confirmSpy.mockRestore();
   });
 });

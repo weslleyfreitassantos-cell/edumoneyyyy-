@@ -231,6 +231,9 @@ export default function EnrollmentsTab() {
   const [isFullWizardOpen, setIsFullWizardOpen] =
     useState(false);
 
+  const [fullEditStudentId, setFullEditStudentId] =
+    useState<string | null>(null);
+
   const [editingEnrollment, setEditingEnrollment] =
     useState<EnrollmentRow | null>(null);
 
@@ -498,16 +501,8 @@ export default function EnrollmentsTab() {
   ): void {
     resetMessages();
     setTransferEnrollment(null);
-    setEditingEnrollment(enrollment);
-    setFormData({
-      student_id: enrollment.student_id,
-      academic_year_id: enrollment.academic_year_id,
-      class_id: enrollment.class_id,
-      guardian_profile_id: '',
-      guardian_relationship: '',
-      guardian_is_primary: false,
-    });
-    setIsModalOpen(true);
+    setEditingEnrollment(null);
+    setFullEditStudentId(enrollment.student_id);
   }
 
   function openTransferModal(
@@ -1829,6 +1824,22 @@ export default function EnrollmentsTab() {
             setFeedbackMessage(
               'Cadastro completo e matricula realizados com sucesso.',
             );
+          }}
+        />
+      )}
+
+      {fullEditStudentId && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={years}
+          classes={classes}
+          mode="edit"
+          studentId={fullEditStudentId}
+          onClose={() => setFullEditStudentId(null)}
+          onUseExistingStudent={() => undefined}
+          onCompleted={() => {
+            setFullEditStudentId(null);
+            setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
           }}
         />
       )}

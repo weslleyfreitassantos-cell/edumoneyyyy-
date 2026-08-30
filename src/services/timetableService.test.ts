@@ -157,6 +157,45 @@ describe('timetableService.listEntries', () => {
   });
 });
 
+describe('timetableService.listByClass', () => {
+  it('mantem somente os horarios da turma solicitada', async () => {
+    const otherClassEntry = {
+      ...baseEntry,
+      id: 'other-entry',
+      subject_offerings: {
+        ...baseEntry.subject_offerings,
+        class_id: 'other-class',
+      },
+    };
+
+    const order = vi.fn(() => ({
+      order: vi.fn().mockResolvedValue({
+        data: [baseEntry, otherClassEntry],
+        error: null,
+      }),
+    }));
+    const classFilter = vi.fn(() => ({ order }));
+    const activeFilter = vi.fn(() => ({ eq: classFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    const result = await timetableService.listByClass(
+      UUID,
+      UUID,
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].class_id).toBe(UUID);
+    expect(institutionFilter).toHaveBeenCalledWith('institution_id', UUID);
+    expect(activeFilter).toHaveBeenCalledWith('active', true);
+    expect(classFilter).toHaveBeenCalledWith(
+      'subject_offerings.class_id',
+      UUID,
+    );
+  });
+});
+
 describe('timetableService.createEntry', () => {
   it('cria entrada com dados validos', async () => {
     const single = vi.fn().mockResolvedValue({ data: baseEntry, error: null });
