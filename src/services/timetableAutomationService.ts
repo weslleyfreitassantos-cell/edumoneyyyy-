@@ -230,6 +230,45 @@ async function listActiveOfferings(institutionId: string) {
   return offerings;
 }
 
+async function listTeacherAvailability(
+  institutionId: string,
+  activeOnly = false,
+) {
+  const pageSize = 1000;
+  const availability: Array<{
+    institution_id: string;
+    teacher_profile_id: string;
+    day_of_week: number;
+    start_time: string;
+    end_time: string;
+    active: boolean;
+  }> = [];
+
+  for (let offset = 0; ; offset += pageSize) {
+    let query = supabase
+      .from('teacher_availability')
+      .select('institution_id, teacher_profile_id, day_of_week, start_time, end_time, active')
+      .eq('institution_id', institutionId);
+
+    if (activeOnly) {
+      query = query.eq('active', true);
+    }
+
+    const { data, error } = await query.range(
+      offset,
+      offset + pageSize - 1,
+    );
+
+    if (error) throw error;
+
+    availability.push(...((data ?? []) as typeof availability));
+
+    if (!data || data.length < pageSize) break;
+  }
+
+  return availability;
+}
+
 async function prepareAutomaticAssignments(input: {
   institutionId: string;
   academicYearId: string;
@@ -431,7 +470,7 @@ export const timetableAutomationService = {
     academicYearId: string;
     shift?: string;
   }): Promise<TimetablePreparationReport> {
-    const [policy, termsResult, classesResult, enrollmentsResult, curriculumResult, offerings, skillsResult, availabilityResult, slotsResult, scheduleBreaks, roomsResult, enabledShifts] = await Promise.all([
+    const [policy, termsResult, classesResult, enrollmentsResult, curriculumResult, offerings, skillsResult, availability, slotsResult, scheduleBreaks, roomsResult, enabledShifts] = await Promise.all([
       academicPolicyService.getActivePolicy(input.institutionId, input.academicYearId),
       supabase.from('terms').select('id, active').eq('academic_year_id', input.academicYearId),
       supabase.from('classes').select('id, name, shift, capacity, active, academic_year_id').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId),
@@ -439,13 +478,13 @@ export const timetableAutomationService = {
       supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, active').eq('institution_id', input.institutionId),
       listActiveOfferings(input.institutionId),
       supabase.from('teacher_subjects').select('teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
-      supabase.from('teacher_availability').select('teacher_profile_id, day_of_week, start_time, end_time, active').eq('institution_id', input.institutionId),
+      listTeacherAvailability(input.institutionId),
       supabase.from('school_time_slots').select('shift, day_of_week, start_time, end_time, active').eq('institution_id', input.institutionId),
       listScheduleBreaksForGenerator(input.institutionId),
       supabase.from('rooms').select('id, class_id, capacity, active').eq('institution_id', input.institutionId),
       academicShiftSettingsService.getEnabledShifts(input.institutionId),
     ]);
-    const failed = [termsResult, classesResult, enrollmentsResult, curriculumResult, skillsResult, availabilityResult, slotsResult, roomsResult].find((result) => result.error);
+    const failed = [termsResult, classesResult, enrollmentsResult, curriculumResult, skillsResult, slotsResult, roomsResult].find((result) => result.error);
     if (failed?.error) throw failed.error;
 
     return buildTimetablePreparationReport({
@@ -460,7 +499,7 @@ export const timetableAutomationService = {
       curriculumItems: (curriculumResult.data ?? []) as Array<{ class_id: string; subject_id: string; weekly_lessons: number; active?: boolean | null }>,
       offerings: offerings.map((offering) => ({ ...offering, active: true })),
       teacherSubjects: (skillsResult.data ?? []) as Array<{ teacher_profile_id: string; subject_id: string; active?: boolean | null }>,
-      teacherAvailability: (availabilityResult.data ?? []) as Array<{ teacher_profile_id: string; day_of_week: number; start_time: string; end_time: string; active?: boolean | null }>,
+      teacherAvailability: availability,
       slots: (slotsResult.data ?? []) as Array<{ shift: string; day_of_week: number; start_time: string; end_time: string; active?: boolean | null }>,
       breaks: scheduleBreaks,
       rooms: (roomsResult.data ?? []) as Array<{ id: string; class_id?: string | null; capacity?: number | null; active?: boolean | null }>,
@@ -671,20 +710,20 @@ export const timetableAutomationService = {
       return buildInvalidDraft(preparationDiagnostics(preparationReport), seed);
     }
 
-    const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult, scheduleBreaks, enabledShifts] = await Promise.all([
+    const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availability, slotsResult, roomsResult, subjectsResult, scheduleBreaks, enabledShifts] = await Promise.all([
       supabase.from('terms').select('id, academic_year_id, start_date, end_date').eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('classes').select('id, institution_id, academic_year_id, name, shift, capacity').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, lesson_duration_minutes').eq('institution_id', input.institutionId).eq('active', true),
       listActiveOfferings(input.institutionId),
       supabase.from('teacher_subjects').select('institution_id, teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
-      supabase.from('teacher_availability').select('institution_id, teacher_profile_id, day_of_week, start_time, end_time, active').eq('institution_id', input.institutionId).eq('active', true),
+      listTeacherAvailability(input.institutionId, true),
       supabase.from('school_time_slots').select('id, institution_id, shift, day_of_week, slot_number, start_time, end_time, active').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('rooms').select('id, institution_id, active, class_id, capacity').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('subjects').select('id, name').eq('institution_id', input.institutionId),
       listScheduleBreaksForGenerator(input.institutionId),
       academicShiftSettingsService.getEnabledShifts(input.institutionId),
     ]);
-    const failed = [termsResult, classesResult, curriculumResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
+    const failed = [termsResult, classesResult, curriculumResult, skillsResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
     if (failed?.error) throw failed.error;
 
     const selectedShift = input.shift && input.shift !== 'TODOS'
@@ -785,7 +824,7 @@ export const timetableAutomationService = {
       curriculumItems: curriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
       subjectOfferings: automaticAssignments.offerings.map((item) => ({ id: item.id, institutionId: input.institutionId, classId: item.class_id, subjectId: item.subject_id, teacherProfileId: item.teacher_profile_id, termId: item.term_id })),
       teacherSubjects: (skillsResult.data ?? []).map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, subjectId: item.subject_id, active: item.active })),
-      teacherAvailability: (availabilityResult.data ?? []).map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, dayOfWeek: item.day_of_week, startTime: item.start_time, endTime: item.end_time, active: item.active })),
+      teacherAvailability: availability.map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, dayOfWeek: item.day_of_week, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       schoolTimeSlots: automaticSlots.slots.map((item) => ({ id: item.id, institutionId: item.institution_id, shift: item.shift, dayOfWeek: item.day_of_week, slotNumber: item.slot_number, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       schoolScheduleBreaks: scheduleBreaks.map((item): GeneratorScheduleBreak => ({ institutionId: item.institution_id, shift: item.shift, dayOfWeek: item.day_of_week, name: item.name, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       rooms: automaticRooms.rooms.map((item) => ({ id: item.id, institutionId: item.institution_id, classId: item.class_id, active: item.active, capacity: item.capacity })),
