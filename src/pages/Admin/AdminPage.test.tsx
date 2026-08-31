@@ -203,6 +203,14 @@ vi.mock('./tabs/AssignmentsTab', () => ({
   ),
 }));
 
+vi.mock('./tabs/AnnouncementsTab', () => ({
+  default: () => (
+    <div data-testid="announcements-tab">
+      Aba avisos
+    </div>
+  ),
+}));
+
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseCurrentInstitution = vi.mocked(
   useCurrentInstitution,

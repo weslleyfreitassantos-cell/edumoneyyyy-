@@ -27,6 +27,10 @@ import {
 } from '../../../hooks/useClasses';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import {
+  getPreferredAcademicYear,
+  sortAcademicYearsForSelection,
+} from '../../../lib/academicSelection';
 
 import {
   classSchema,
@@ -200,6 +204,11 @@ export default function ClassesTab() {
 
   const years = yearsQuery.data ?? [];
 
+  const yearOptions = useMemo(
+    () => sortAcademicYearsForSelection(years),
+    [years],
+  );
+
   const filteredClasses = useMemo(() => {
     const classes = classesQuery.data ?? [];
 
@@ -291,7 +300,7 @@ export default function ClassesTab() {
     setFormData({
       ...emptyDraft,
       academic_year_id:
-        years[0]?.id ?? '',
+        getPreferredAcademicYear(years)?.id ?? '',
       shift: enabledShifts[0] ?? 'MATUTINO',
     });
     setIsModalOpen(true);
@@ -760,7 +769,7 @@ export default function ClassesTab() {
                   <option value="">
                     Selecione
                   </option>
-                  {years.map((year) => (
+                  {yearOptions.map((year) => (
                     <option
                       key={year.id}
                       value={year.id}

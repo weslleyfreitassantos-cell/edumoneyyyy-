@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import SpreadsheetImportModal from './SpreadsheetImportModal';
 import type { AcademicYearRow } from '../services/academicStructureService';
 import type { ClassRow } from '../services/classService';
+import {
+  getPreferredAcademicYear,
+  sortAcademicYearsForSelection,
+} from '../lib/academicSelection';
 import {
   buildStudentImportPreviews,
   importStudents,
@@ -13,6 +17,7 @@ import {
   type ImportResult,
   type StudentImportPreviewData,
 } from '../services/userImportService';
+import type { ParsedSpreadsheet } from '../services/spreadsheetImportService';
 import {
   downloadSpreadsheetTemplate,
   readSpreadsheetFile,
@@ -63,7 +68,15 @@ function PreviewTable({ previews }: { previews: Array<ImportPreview<StudentImpor
 }
 
 export default function StudentSpreadsheetImportModal({ institutionId, years, classes, onClose, onImported }: StudentSpreadsheetImportModalProps) {
+  const yearOptions = useMemo(
+    () => sortAcademicYearsForSelection(years),
+    [years],
+  );
+  const [defaultAcademicYearId, setDefaultAcademicYearId] = useState(
+    () => getPreferredAcademicYear(years)?.id ?? '',
+  );
   const [fileName, setFileName] = useState('');
+  const [parsedSpreadsheet, setParsedSpreadsheet] = useState<ParsedSpreadsheet | null>(null);
   const [previews, setPreviews] = useState<Array<ImportPreview<StudentImportPreviewData>>>([]);
   const [unknownHeaders, setUnknownHeaders] = useState<string[]>([]);
   const [parseError, setParseError] = useState<string | null>(null);
@@ -72,6 +85,17 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
   const [progress, setProgress] = useState<ImportProgress | null>(null);
   const [result, setResult] = useState<ImportResult | null>(null);
 
+  useEffect(() => {
+    if (
+      defaultAcademicYearId &&
+      years.some((year) => year.id === defaultAcademicYearId && year.active)
+    ) {
+      return;
+    }
+
+    setDefaultAcademicYearId(getPreferredAcademicYear(years)?.id ?? '');
+  }, [defaultAcademicYearId, years]);
+
   async function handleFileSelected(file: File | undefined): Promise<void> {
     if (!file) return;
     setFileName(file.name);
@@ -79,10 +103,16 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
     setParseError(null);
     setPreviews([]);
     setUnknownHeaders([]);
+    setParsedSpreadsheet(null);
     setResult(null);
     try {
       const parsed = await readSpreadsheetFile(file);
-      const built = buildStudentImportPreviews(parsed, { years, classes });
+      const built = buildStudentImportPreviews(parsed, {
+        years,
+        classes,
+        defaultAcademicYearId,
+      });
+      setParsedSpreadsheet(parsed);
       setPreviews(built.previews);
       setUnknownHeaders(built.unknownHeaders);
     } catch (error) {
@@ -90,6 +120,21 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
     } finally {
       setIsParsing(false);
     }
+  }
+
+  function handleDefaultAcademicYearChange(academicYearId: string): void {
+    setDefaultAcademicYearId(academicYearId);
+    setResult(null);
+
+    if (!parsedSpreadsheet) return;
+
+    const built = buildStudentImportPreviews(parsedSpreadsheet, {
+      years,
+      classes,
+      defaultAcademicYearId: academicYearId,
+    });
+    setPreviews(built.previews);
+    setUnknownHeaders(built.unknownHeaders);
   }
 
   async function handleImport(): Promise<void> {
@@ -111,8 +156,9 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
     <SpreadsheetImportModal
       title="Importar alunos"
       description="Use uma planilha para cadastrar o aluno, os dados complementares, os responsáveis e a matrícula acadêmica pelo fluxo normal do sistema."
-      requiredFields="Nome completo, e-mail, data de nascimento, pelo menos um responsável, ano letivo e turma"
-      supportedFields={<><p><strong>Identidade:</strong> nome, e-mail, nascimento, CPF, nome social, RG, certidão, nacionalidade, naturalidade, sexo e telefone.</p><p className="mt-1"><strong>Endereço:</strong> CEP, logradouro, número, complemento, bairro, cidade, UF e zona rural.</p><p className="mt-1"><strong>Acadêmico:</strong> ano/turma por nome ou ID, data da matrícula e dados da escola de origem.</p><p className="mt-1"><strong>Responsáveis:</strong> até dois responsáveis novos ou IDs de perfis já existentes.</p><p className="mt-1"><strong>Saúde e documentos:</strong> campos de saúde e status/observações dos documentos. Arquivos físicos devem ser anexados depois.</p></>}
+      requiredFields="Nome completo, e-mail, data de nascimento e pelo menos um responsável. A turma será distribuída automaticamente pela série informada."
+      preUploadContent={<div className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-3 py-3"><label htmlFor="student-import-academic-year" className="block text-sm font-semibold text-slate-800">Ano letivo da importação</label><select id="student-import-academic-year" value={defaultAcademicYearId} onChange={(event) => handleDefaultAcademicYearChange(event.target.value)} className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm text-slate-800" disabled={yearOptions.filter((year) => year.active).length === 0}><option value="">Selecione o ano letivo</option>{yearOptions.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}</select><p className="mt-2 text-xs text-slate-600">Esse ano será usado quando a planilha deixar o campo “Ano letivo” vazio. Informe “Ano escolar / série” para distribuir entre as turmas correspondentes.</p></div>}
+      supportedFields={<><p><strong>Identidade:</strong> nome, e-mail, nascimento, CPF, nome social, RG, certidão, nacionalidade, naturalidade, sexo e telefone.</p><p className="mt-1"><strong>Endereço:</strong> CEP, logradouro, número, complemento, bairro, cidade, UF e zona rural.</p><p className="mt-1"><strong>Acadêmico:</strong> ano letivo (opcional quando definido acima), ano escolar/série, turma opcional, data da matrícula e dados da escola de origem.</p><p className="mt-1"><strong>Responsáveis:</strong> até dois responsáveis novos ou IDs de perfis já existentes.</p><p className="mt-1"><strong>Saúde e documentos:</strong> campos de saúde e status/observações dos documentos. Arquivos físicos devem ser anexados depois.</p></>}
       fileName={fileName}
       isParsing={isParsing}
       isImporting={isImporting}

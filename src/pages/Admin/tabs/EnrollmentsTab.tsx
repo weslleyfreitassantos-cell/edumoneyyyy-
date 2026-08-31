@@ -41,6 +41,13 @@ import type {
   EnrollmentRow,
   EnrollmentStatus,
 } from '../../../services/enrollmentService';
+import {
+  getActiveClassesForYear,
+  getPreferredAcademicYear,
+  getSuggestedClassId,
+  isClassAtCapacity,
+  sortAcademicYearsForSelection,
+} from '../../../lib/academicSelection';
 
 interface EnrollmentDraft {
   student_id: string;
@@ -328,14 +335,13 @@ export default function EnrollmentsTab() {
   );
 
   const classesForDraft = useMemo(
-    () =>
-      activeClasses.filter(
-        (classRecord) =>
-          !formData.academic_year_id ||
-          classRecord.academic_year_id ===
-            formData.academic_year_id,
-      ),
+    () => getActiveClassesForYear(activeClasses, formData.academic_year_id),
     [activeClasses, formData.academic_year_id],
+  );
+
+  const yearOptions = useMemo(
+    () => sortAcademicYearsForSelection(years),
+    [years],
   );
 
   const transferClassOptions = useMemo(() => {
@@ -454,29 +460,16 @@ export default function EnrollmentsTab() {
     setTransferEnrollment(null);
     setTransferClassId('');
 
-    const firstYear =
-      years.find((year) => year.active)?.id ??
-      years[0]?.id ??
-      '';
-
-    const firstClass =
-      activeClasses.find(
-        (classRecord) =>
-          classRecord.academic_year_id ===
-            firstYear &&
-          !isClassFull(classRecord),
-      ) ??
-      activeClasses.find(
-        (classRecord) =>
-          !isClassFull(classRecord),
-      );
+    const firstYear = getPreferredAcademicYear(years)?.id ?? '';
+    const firstYearClasses = getActiveClassesForYear(
+      activeClasses,
+      firstYear,
+    );
 
     setFormData({
       student_id: existingStudentId,
-      academic_year_id:
-        firstClass?.academic_year_id ??
-        firstYear,
-      class_id: firstClass?.id ?? '',
+      academic_year_id: firstYear,
+      class_id: getSuggestedClassId(firstYearClasses),
       guardian_profile_id: '',
       guardian_relationship: '',
       guardian_is_primary: false,
@@ -566,13 +559,9 @@ export default function EnrollmentsTab() {
   function handleYearChange(
     academicYearId: string,
   ): void {
-    const nextClass =
-      activeClasses.find(
-        (classRecord) =>
-          classRecord.academic_year_id ===
-            academicYearId &&
-          !isClassFull(classRecord),
-      )?.id ?? '';
+    const nextClass = getSuggestedClassId(
+      getActiveClassesForYear(activeClasses, academicYearId),
+    );
 
     setFormData((current) => ({
       ...current,
@@ -1356,7 +1345,7 @@ export default function EnrollmentsTab() {
                     <option value="">
                       Selecione
                     </option>
-                    {years
+                    {yearOptions
                       .filter((year) => year.active)
                       .map((year) => (
                         <option
@@ -1385,10 +1374,16 @@ export default function EnrollmentsTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
+                    disabled={
+                      !formData.academic_year_id ||
+                      classesForDraft.length === 0
+                    }
                     required
                   >
                     <option value="">
-                      Selecione
+                      {classesForDraft.length === 0
+                        ? 'Nenhuma turma disponível'
+                        : 'Selecione'}
                     </option>
                     {classesForDraft.map(
                       (classRecord) => {
@@ -1412,6 +1407,13 @@ export default function EnrollmentsTab() {
                       },
                     )}
                   </select>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {classesForDraft.length === 0
+                      ? 'Cadastre uma turma ativa neste ano letivo para continuar.'
+                      : classesForDraft.filter((classRecord) => !isClassAtCapacity(classRecord)).length > 1 && !formData.class_id
+                        ? 'Escolha a turma do aluno. O sistema não seleciona uma turma aleatória.'
+                        : 'As turmas são filtradas pelo ano letivo selecionado.'}
+                  </p>
                 </div>
               </div>
 

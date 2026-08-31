@@ -16,6 +16,7 @@ interface SpreadsheetImportModalProps {
   description: string;
   requiredFields: string;
   supportedFields: ReactNode;
+  preUploadContent?: ReactNode;
   fileName: string;
   isParsing: boolean;
   isImporting: boolean;
@@ -51,6 +52,7 @@ export default function SpreadsheetImportModal({
   description,
   requiredFields,
   supportedFields,
+  preUploadContent,
   fileName,
   isParsing,
   isImporting,
@@ -93,6 +95,7 @@ export default function SpreadsheetImportModal({
                   <Download size={16} aria-hidden="true" /> Baixar modelo
                 </button>
               </div>
+              {preUploadContent}
               <label className="mt-4 flex cursor-pointer items-center gap-3 rounded-lg border border-dashed border-blue-300 bg-white px-4 py-3 text-sm text-slate-700 hover:bg-blue-50">
                 <Upload size={18} className="text-blue-700" aria-hidden="true" />
                 <span className="min-w-0 flex-1 truncate">{fileName || 'Escolher arquivo .xlsx ou .xls'}</span>

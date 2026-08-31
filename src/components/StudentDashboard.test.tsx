@@ -32,6 +32,22 @@ vi.mock('../hooks/useTimetable', () => ({
   useStudentTimetable: vi.fn(),
 }));
 
+vi.mock('../hooks/useAnnouncements', () => ({
+  useAudienceAnnouncements: vi.fn(() => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
+vi.mock('../hooks/useRegistrationCompletion', () => ({
+  useStudentRegistrationCompletion: vi.fn(() => ({
+    data: undefined,
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
 vi.mock('./attendance/StudentAttendanceSummaryPanel', () => ({
   default: () => null,
 }));

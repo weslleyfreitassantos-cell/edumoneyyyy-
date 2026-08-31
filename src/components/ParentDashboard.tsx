@@ -16,11 +16,14 @@ import {
 import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useGuardianDashboard } from '../hooks/useGuardianDashboard';
+import { useAudienceAnnouncements } from '../hooks/useAnnouncements';
+import { useGuardianRegistrationCompletion } from '../hooks/useRegistrationCompletion';
 
 import type { GuardianStudentDashboard } from '../services/guardianDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import GuardianReportCard from './academic/GuardianReportCard';
+import DashboardAnnouncements from './DashboardAnnouncements';
 
 function getErrorMessage(
   error: unknown,
@@ -142,6 +145,15 @@ export default function ParentDashboard() {
       institutionQuery.data,
     );
 
+  const announcementsQuery = useAudienceAnnouncements(
+    institutionQuery.data,
+    'GUARDIANS',
+  );
+
+  const registrationQuery = useGuardianRegistrationCompletion(
+    profile?.id,
+  );
+
   const [
     selectedStudentId,
     setSelectedStudentId,
@@ -226,6 +238,14 @@ export default function ParentDashboard() {
           </div>
         </div>
       </section>
+
+      <DashboardAnnouncements
+        announcements={announcementsQuery.data ?? []}
+        registration={registrationQuery.data}
+        isLoading={announcementsQuery.isLoading}
+        isError={announcementsQuery.isError}
+        role="guardian"
+      />
 
       {students.length === 0 ? (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">

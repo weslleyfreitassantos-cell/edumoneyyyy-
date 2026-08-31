@@ -21,6 +21,8 @@ import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
 import { useStudentTimetable } from '../hooks/useTimetable';
+import { useAudienceAnnouncements } from '../hooks/useAnnouncements';
+import { useStudentRegistrationCompletion } from '../hooks/useRegistrationCompletion';
 import { normalizeAcademicShift } from '../lib/academic/academicShifts';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 
@@ -34,6 +36,7 @@ import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummary
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import StudentReportCard from './academic/StudentReportCard';
 import TimetableBreakMarker from './academic/TimetableBreakMarker';
+import DashboardAnnouncements from './DashboardAnnouncements';
 
 function getErrorMessage(
   error: unknown,
@@ -397,6 +400,16 @@ export default function StudentDashboard() {
       institutionQuery.data,
     );
 
+  const announcementsQuery = useAudienceAnnouncements(
+    institutionQuery.data,
+    'STUDENTS',
+  );
+
+  const registrationQuery = useStudentRegistrationCompletion(
+    dashboardQuery.data?.student.id,
+    institutionQuery.data,
+  );
+
   if (
     institutionQuery.isLoading ||
     dashboardQuery.isLoading
@@ -494,6 +507,14 @@ export default function StudentDashboard() {
           </div>
         </div>
       </section>
+
+      <DashboardAnnouncements
+        announcements={announcementsQuery.data ?? []}
+        registration={registrationQuery.data}
+        isLoading={announcementsQuery.isLoading}
+        isError={announcementsQuery.isError}
+        role="student"
+      />
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <DetailCard

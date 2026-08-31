@@ -29,6 +29,7 @@ import {
 } from '../../../hooks/useAcademicStructure';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 
 import {
   academicYearSchema,
@@ -272,7 +273,11 @@ export default function AcademicYearsTab() {
         (year) => year.id === selectedYearId,
       )
     ) {
-      setSelectedYearId(years[0]?.id ?? '');
+      setSelectedYearId(
+        getPreferredAcademicYear(years)?.id ??
+          years[0]?.id ??
+          '',
+      );
     }
   }, [selectedYearId, years]);
 

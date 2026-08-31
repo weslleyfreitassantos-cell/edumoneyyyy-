@@ -15,6 +15,13 @@ import {
 import type { AcademicYearRow } from '../../../services/academicStructureService';
 import type { ClassRow } from '../../../services/classService';
 import {
+  getActiveClassesForYear,
+  getPreferredAcademicYear,
+  getSuggestedClassId,
+  isClassAtCapacity,
+  sortAcademicYearsForSelection,
+} from '../../../lib/academicSelection';
+import {
   findDuplicateStudentCandidates,
   FullStudentEnrollmentError,
   type FullStudentEnrollmentDraft,
@@ -184,22 +191,23 @@ export default function FullStudentEnrollmentWizard({
 }: FullStudentEnrollmentWizardProps) {
   const isEditMode = mode === 'edit';
   const activeYears = useMemo(
-    () => years.filter((year) => year.active),
+    () => sortAcademicYearsForSelection(years).filter((year) => year.active),
     [years],
   );
   const activeClasses = useMemo(
     () => classes.filter((classRecord) => classRecord.active),
     [classes],
   );
-  const firstYear = activeYears[0]?.id ?? years[0]?.id ?? '';
-  const firstClass = activeClasses.find(
-    (classRecord) => classRecord.academic_year_id === firstYear,
+  const preferredYear = getPreferredAcademicYear(years);
+  const firstYear = preferredYear?.id ?? '';
+  const firstClassId = getSuggestedClassId(
+    getActiveClassesForYear(activeClasses, firstYear),
   );
   const [step, setStep] = useState(0);
   const [draft, setDraft] = useState<FullStudentEnrollmentDraft>(() =>
     createDraft(
       isEditMode ? '' : firstYear,
-      isEditMode ? '' : firstClass?.id ?? '',
+      isEditMode ? '' : firstClassId,
     ),
   );
   const [error, setError] = useState<string | null>(null);
@@ -234,10 +242,10 @@ export default function FullStudentEnrollmentWizard({
       setDraft((current) => ({
         ...current,
         academic_year_id: firstYear,
-        class_id: firstClass?.id ?? '',
+        class_id: firstClassId,
       }));
     }
-  }, [draft.academic_year_id, firstClass?.id, firstYear, isEditMode]);
+  }, [draft.academic_year_id, firstClassId, firstYear, isEditMode]);
 
   useEffect(() => {
     if (
@@ -515,8 +523,115 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function renderEnrollment() {
-    const availableClasses = activeClasses.filter((classRecord) => classRecord.academic_year_id === draft.academic_year_id);
-    return <div className="grid gap-4 md:grid-cols-2"><Field label="Ano letivo *"><select className={inputClass} value={draft.academic_year_id} onChange={(event) => setDraft((current) => ({ ...current, academic_year_id: event.target.value, class_id: activeClasses.find((classRecord) => classRecord.academic_year_id === event.target.value)?.id ?? '' }))}><option value="">Selecione</option>{years.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}</select></Field><Field label="Turma *"><select className={inputClass} value={draft.class_id} onChange={(event) => setDraft((current) => ({ ...current, class_id: event.target.value }))}><option value="">Selecione</option>{availableClasses.map((classRecord) => <option key={classRecord.id} value={classRecord.id}>{classRecord.name} ({classRecord.active_enrollments_count}/{classRecord.capacity || 'sem limite'})</option>)}</select></Field><Field label="Data da matricula"><input type="date" className={inputClass} value={draft.enrolled_at} onChange={(event) => setDraft((current) => ({ ...current, enrolled_at: event.target.value }))} /></Field><div className="rounded-lg bg-slate-50 p-3 text-sm text-slate-600">Status inicial: <strong>Ativa</strong>. Transferencia, cancelamento e conclusao continuam disponiveis no fluxo de matriculas.</div></div>;
+    const availableClasses = getActiveClassesForYear(
+      activeClasses,
+      draft.academic_year_id,
+    );
+    const classesWithSeats = availableClasses.filter(
+      (classRecord) => !isClassAtCapacity(classRecord),
+    );
+    const classHint = !draft.academic_year_id
+      ? 'Selecione o ano letivo para carregar as turmas.'
+      : availableClasses.length === 0
+        ? 'Nenhuma turma ativa cadastrada para este ano letivo.'
+        : classesWithSeats.length === 0
+          ? 'Todas as turmas deste ano estão lotadas.'
+          : classesWithSeats.length > 1 && !draft.class_id
+            ? 'Selecione uma das turmas disponíveis.'
+            : undefined;
+
+    return (
+      <div className="grid gap-4 md:grid-cols-2">
+        <Field
+          label="Ano letivo *"
+          hint="O ano vigente é sugerido automaticamente."
+        >
+          <select
+            className={inputClass}
+            value={draft.academic_year_id}
+            onChange={(event) => {
+              const academicYearId = event.target.value;
+              const nextClasses = getActiveClassesForYear(
+                activeClasses,
+                academicYearId,
+              );
+
+              setDraft((current) => ({
+                ...current,
+                academic_year_id: academicYearId,
+                class_id: getSuggestedClassId(nextClasses),
+              }));
+            }}
+          >
+            <option value="">Selecione</option>
+            {activeYears.map((year) => (
+              <option key={year.id} value={year.id}>
+                {year.name}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field label="Turma *" hint={classHint}>
+          <select
+            className={inputClass}
+            value={draft.class_id}
+            disabled={
+              !draft.academic_year_id ||
+              classesWithSeats.length === 0
+            }
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                class_id: event.target.value,
+              }))
+            }
+          >
+            <option value="">
+              {classesWithSeats.length === 0
+                ? 'Nenhuma turma disponível'
+                : 'Selecione a turma'}
+            </option>
+            {availableClasses.map((classRecord) => {
+              const full = isClassAtCapacity(classRecord);
+
+              return (
+                <option
+                  key={classRecord.id}
+                  value={classRecord.id}
+                  disabled={full}
+                >
+                  {classRecord.name}
+                  {classRecord.shift ? ` - ${classRecord.shift}` : ''}{' '}
+                  ({classRecord.active_enrollments_count}/
+                  {classRecord.capacity || 'sem limite'})
+                  {full ? ' - lotada' : ''}
+                </option>
+              );
+            })}
+          </select>
+        </Field>
+
+        <Field label="Data da matricula">
+          <input
+            type="date"
+            className={inputClass}
+            value={draft.enrolled_at}
+            onChange={(event) =>
+              setDraft((current) => ({
+                ...current,
+                enrolled_at: event.target.value,
+              }))
+            }
+          />
+        </Field>
+
+        <div className="rounded-lg bg-slate-50 p-3 text-sm text-slate-600">
+          Status inicial: <strong>Ativa</strong>. Transferencia, cancelamento e
+          conclusao continuam disponiveis no fluxo de matriculas.
+        </div>
+      </div>
+    );
   }
 
   function renderReview() {

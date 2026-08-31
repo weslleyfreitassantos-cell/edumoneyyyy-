@@ -10,6 +10,9 @@ import {
 
 const year = { id: 'year-2027', institution_id: 'institution-1', name: '2027', start_date: '2027-02-01', end_date: '2027-12-17', active: true, terms: [] } as AcademicYearRow;
 const schoolClass = { id: 'class-7a', institution_id: 'institution-1', academic_year_id: 'year-2027', academic_year_name: '2027', name: '7º A', grade_level: '7º', shift: 'INTEGRAL', capacity: 35, active: true, active_enrollments_count: 0, active_offerings_count: 0, active_curriculum_items_count: 0 } as ClassRow;
+const schoolClassAWithStudents = { ...schoolClass, active_enrollments_count: 8 } as ClassRow;
+const schoolClassB = { ...schoolClass, id: 'class-7b', name: '7º B', active_enrollments_count: 2 } as ClassRow;
+const schoolClassC = { ...schoolClass, id: 'class-7c', name: '7º C', active_enrollments_count: 2 } as ClassRow;
 const subjects = [
   { id: 'subject-mat', institution_id: 'institution-1', name: 'Matemática', code: 'MAT', workload: 5, active: true, active_offerings_count: 0 },
   { id: 'subject-fis', institution_id: 'institution-1', name: 'Física', code: 'FIS', workload: 2, active: true, active_offerings_count: 0 },
@@ -36,6 +39,68 @@ describe('userImportService', () => {
     expect(preview?.data.academic_year_id).toBe('year-2027');
     expect(preview?.data.class_id).toBe('class-7a');
     expect(preview?.data.documents).toHaveLength(10);
+  });
+
+  it('uses the default year and distributes students across matching classes', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Alunos',
+      headers: ['full_name', 'email', 'birth_date', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship', 'ano_escolar'],
+      rows: [1, 2, 3].map((index) => ({
+        rowNumber: index + 1,
+        values: {
+          full_name: `Aluno ${index}`,
+          email: `aluno${index}@example.com`,
+          birth_date: '31/08/2016',
+          guardian_1_full_name: 'Carlos Souza',
+          guardian_1_email: 'carlos@example.com',
+          guardian_1_relationship: 'Pai',
+          ano_escolar: '7º ano',
+        },
+      })),
+    }, {
+      years: [year],
+      classes: [schoolClassAWithStudents, schoolClassB, schoolClassC],
+      defaultAcademicYearId: year.id,
+    });
+
+    expect(result.previews.every((preview) => preview.errors.length === 0)).toBe(true);
+    expect(result.previews.map((preview) => preview.data.academic_year_id)).toEqual([
+      year.id,
+      year.id,
+      year.id,
+    ]);
+    expect(result.previews.map((preview) => preview.data.class_id)).toEqual([
+      schoolClassB.id,
+      schoolClassC.id,
+      schoolClassB.id,
+    ]);
+    expect(result.previews[0]?.warnings).toContain('Turma atribuída automaticamente: 7º B.');
+  });
+
+  it('asks for the school grade when multiple classes cannot be distinguished', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Alunos',
+      headers: ['full_name', 'email', 'birth_date', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship'],
+      rows: [{
+        rowNumber: 2,
+        values: {
+          full_name: 'Aluno sem série',
+          email: 'aluno@example.com',
+          birth_date: '31/08/2016',
+          guardian_1_full_name: 'Carlos Souza',
+          guardian_1_email: 'carlos@example.com',
+          guardian_1_relationship: 'Pai',
+        },
+      }],
+    }, {
+      years: [year],
+      classes: [schoolClass, schoolClassB],
+      defaultAcademicYearId: year.id,
+    });
+
+    expect(result.previews[0]?.errors).toContain(
+      'Informe o ano escolar/série para distribuir o aluno entre as turmas.',
+    );
   });
 
   it('requires a responsible and rejects unavailable teacher subjects or times', () => {

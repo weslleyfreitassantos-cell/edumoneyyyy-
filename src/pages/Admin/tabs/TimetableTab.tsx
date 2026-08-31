@@ -5,6 +5,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useAssignments } from '../../../hooks/useAssignments';
+import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableEntries, useCreateTimetableEntry, useUpdateTimetableEntry, useSetTimetableEntryActive } from '../../../hooks/useTimetable';
 import { timetableService, DAYS_OF_WEEK, dayLabel, type TimetableEntryRow, type RoomRow, type TimetableGrid } from '../../../services/timetableService';
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
@@ -150,7 +151,7 @@ export default function TimetableTab() {
 
   useEffect(() => {
     if (yearFilter !== 'all' || years.length === 0) return;
-    const activeYear = years.find((year) => year.active) ?? years[0];
+    const activeYear = getPreferredAcademicYear(years) ?? years[0];
     if (!activeYear) return;
     setYearFilter(activeYear.id);
     setTermFilter(activeYear.terms.find((term) => term.active)?.id ?? 'all');

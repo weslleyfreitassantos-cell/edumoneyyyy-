@@ -38,6 +38,7 @@ import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
 import EmailTab from './tabs/EmailTab';
 import FinanceTab from './tabs/FinanceTab';
+import AnnouncementsTab from './tabs/AnnouncementsTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -204,6 +205,8 @@ export default function AdminPage() {
         );
       case 'email':
         return <EmailTab />;
+      case 'announcements':
+        return <AnnouncementsTab />;
       case 'finance':
         return <FinanceTab />;
       case 'academic-policies':

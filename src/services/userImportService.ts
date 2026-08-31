@@ -1,4 +1,5 @@
 import type { AcademicYearRow } from './academicStructureService';
+import { getActiveClassesForYear } from '../lib/academicSelection';
 import {
   academicAutomationService,
   type TeacherAvailabilityRow,
@@ -74,7 +75,7 @@ export const STUDENT_IMPORT_HEADERS = [
   'Declaração de transferência entregue', 'Alergias', 'Condições de saúde',
   'Medicação de emergência', 'Deficiência', 'Autismo/TEA', 'Altas habilidades',
   'Necessita educação especial', 'Observações de cuidados', 'Ano letivo',
-  'ID do ano letivo', 'Turma', 'ID da turma', 'Data da matrícula',
+  'Ano escolar / série', 'ID do ano letivo', 'Turma', 'ID da turma', 'Data da matrícula',
   'Certidão de nascimento - Status', 'Certidão de nascimento - Observações',
   'RG - Status', 'RG - Observações', 'CPF - Status', 'CPF - Observações',
   'Comprovante de endereço - Status', 'Comprovante de endereço - Observações',
@@ -186,6 +187,67 @@ function resolveClass(
     ?? null;
 }
 
+function normalizeGradeLevel(valueToParse: string): string {
+  return normalize(valueToParse)
+    .replace(/[ºª°]/g, '')
+    .replace(/\b(ano|serie)\b/g, '')
+    .replace(/\s+/g, '');
+}
+
+function classesMatchGrade(
+  classRow: ClassRow,
+  gradeInput: string,
+): boolean {
+  const normalizedInput = normalizeGradeLevel(gradeInput);
+  const normalizedClass = normalizeGradeLevel(classRow.grade_level ?? '');
+
+  if (!normalizedInput || !normalizedClass) return false;
+  if (normalizedInput === normalizedClass) return true;
+
+  const inputNumber = normalizedInput.match(/^\d+/)?.[0];
+  const classNumber = normalizedClass.match(/^\d+/)?.[0];
+
+  return Boolean(
+    inputNumber &&
+      classNumber &&
+      inputNumber === classNumber &&
+      normalizedInput.replace(/^\d+/, '') === '',
+  );
+}
+
+function resolveAutomaticClass(
+  year: AcademicYearRow | null,
+  gradeInput: string,
+  classes: ClassRow[],
+  projectedEnrollments: Map<string, number>,
+): ClassRow | null {
+  if (!year) return null;
+
+  const classesForYear = getActiveClassesForYear(classes, year.id);
+  if (!gradeInput && classesForYear.length !== 1) return null;
+
+  const matchingClasses = gradeInput
+    ? classesForYear.filter((classRow) => classesMatchGrade(classRow, gradeInput))
+    : classesForYear;
+  const classesWithSeats = matchingClasses.filter((classRow) => {
+    const enrolled = projectedEnrollments.get(classRow.id) ?? classRow.active_enrollments_count;
+
+    return classRow.capacity <= 0 || enrolled < classRow.capacity;
+  });
+
+  return [...classesWithSeats].sort((left, right) => {
+    const leftCount = projectedEnrollments.get(left.id) ?? left.active_enrollments_count;
+    const rightCount = projectedEnrollments.get(right.id) ?? right.active_enrollments_count;
+
+    if (leftCount !== rightCount) return leftCount - rightCount;
+
+    return left.name.localeCompare(right.name, 'pt-BR', {
+      numeric: true,
+      sensitivity: 'base',
+    });
+  })[0] ?? null;
+}
+
 function resolveSubject(valueToParse: string, subjects: SubjectRow[]): SubjectRow | null {
   const input = normalize(valueToParse);
   return subjects.find((subject) => subject.id === valueToParse)
@@ -276,6 +338,7 @@ function studentKnownHeaders(): Set<string> {
     'historico_entregue', 'declaracao_transferencia', 'alergias', 'condicoes_saude',
     'medicacao_emergencia', 'deficiencia', 'tea', 'altas_habilidades',
     'educacao_especial', 'observacoes_cuidado', 'ano_letivo', 'ano', 'turma',
+    'grade_level', 'ano_escolar', 'ano_escolar_serie', 'serie', 'ano_do_aluno', 'ano_cursado',
     'data_matricula', 'ra', 'registration_number', 'arquivo_documento', 'foto',
     'responsavel_1_id_do_perfil', 'responsavel_1_nome_completo', 'responsavel_1_e_mail',
     'responsavel_1_principal', 'responsavel_2_id_do_perfil', 'responsavel_2_nome_completo',
@@ -307,8 +370,22 @@ function unknownHeaders(parsed: ParsedSpreadsheet, known: Set<string>): string[]
 
 export function buildStudentImportPreviews(
   parsed: ParsedSpreadsheet,
-  options: { years: AcademicYearRow[]; classes: ClassRow[] },
+  options: {
+    years: AcademicYearRow[];
+    classes: ClassRow[];
+    defaultAcademicYearId?: string;
+  },
 ): { previews: ImportPreview<StudentImportPreviewData>[]; unknownHeaders: string[] } {
+  const defaultAcademicYear = options.years.find(
+    (year) => year.id === options.defaultAcademicYearId,
+  ) ?? null;
+  const projectedEnrollments = new Map(
+    options.classes.map((classRow) => [
+      classRow.id,
+      classRow.active_enrollments_count,
+    ]),
+  );
+
   const previews = parsed.rows.map((row) => {
     const errors: string[] = [];
     const warnings: string[] = [];
@@ -317,16 +394,54 @@ export function buildStudentImportPreviews(
     const birthDate = dateOrError(value(row, ['birth_date', 'data_nascimento', 'nascimento']), 'Data de nascimento', errors, true);
     const yearInput = value(row, ['academic_year_id', 'academic_year', 'ano_letivo', 'ano', 'id_do_ano_letivo']);
     const classInput = value(row, ['class_id', 'class', 'turma', 'id_da_turma']);
-    const year = resolveYear(yearInput, options.years);
-    const classRow = resolveClass(classInput, year, options.classes);
+    const gradeInput = value(row, ['grade_level', 'ano_escolar', 'ano_escolar_serie', 'serie', 'ano_do_aluno', 'ano_cursado']);
+    const year = resolveYear(yearInput, options.years) ?? (yearInput ? null : defaultAcademicYear);
+    let classRow = resolveClass(classInput, year, options.classes);
+    const yearClasses = year ? getActiveClassesForYear(options.classes, year.id) : [];
+    const matchingGradeClasses = gradeInput
+      ? yearClasses.filter((item) => classesMatchGrade(item, gradeInput))
+      : yearClasses;
+
+    if (!classInput) {
+      classRow = resolveAutomaticClass(
+        year,
+        gradeInput,
+        options.classes,
+        projectedEnrollments,
+      );
+    }
 
     required(fullName, 'Nome completo', errors);
     required(email, 'E-mail', errors);
     if (email && !/^\S+@\S+\.\S+$/.test(email)) errors.push('E-mail inválido.');
-    if (yearInput && !year) errors.push('Ano letivo não encontrado nesta instituição.');
     if (classInput && !classRow) errors.push('Turma não encontrada para o ano letivo informado.');
-    if (!year) errors.push('Ano letivo é obrigatório (use o nome ou ID).');
-    if (!classRow) errors.push('Turma é obrigatória (use o nome ou ID).');
+    if (!year) {
+      errors.push(
+        yearInput
+          ? 'Ano letivo não encontrado nesta instituição.'
+          : 'Ano letivo é obrigatório ou selecione um ano padrão para a importação.',
+      );
+    }
+    if (!classInput && !classRow && year) {
+      if (!gradeInput && matchingGradeClasses.length > 1) {
+        errors.push('Informe o ano escolar/série para distribuir o aluno entre as turmas.');
+      } else if (matchingGradeClasses.length === 0) {
+        errors.push('Nenhuma turma ativa corresponde ao ano escolar informado.');
+      } else {
+        errors.push('Não há vagas nas turmas correspondentes ao ano escolar informado.');
+      }
+    }
+
+    if (!classInput && classRow) {
+      warnings.push(`Turma atribuída automaticamente: ${classRow.name}.`);
+    }
+
+    if (classRow) {
+      projectedEnrollments.set(
+        classRow.id,
+        (projectedEnrollments.get(classRow.id) ?? classRow.active_enrollments_count) + 1,
+      );
+    }
 
     const guardians = [1, 2].flatMap((index) => {
       const prefix = `guardian_${index}`;
@@ -518,7 +633,7 @@ export async function importTeachers(
 export const STUDENT_IMPORT_EXAMPLE: Record<string, string> = {
   'Nome completo': 'Ana Souza', 'E-mail': 'ana.souza@exemplo.com', 'Data de nascimento': '12/03/2016', CPF: '12345678900',
   'Responsável 1 - Nome completo': 'Carlos Souza', 'Responsável 1 - E-mail': 'carlos.souza@exemplo.com', 'Responsável 1 - Parentesco': 'Pai',
-  'Ano letivo': '2027', Turma: '7º A',
+  'Ano letivo': '2027', 'Ano escolar / série': '7º ano',
 };
 
 export const TEACHER_IMPORT_EXAMPLE: Record<string, string> = {
