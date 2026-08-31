@@ -280,24 +280,6 @@ function slotsAvailableForClass(
   );
 }
 
-function candidateRooms(input: TimetableGeneratorInput, entries: GeneratorEntry[], demand: Demand, candidate: Candidate, terms: Map<string, GeneratorTerm>): string[] {
-  const rooms = input.rooms.filter((room) => room.active && room.institutionId === input.institutionId);
-  if (rooms.length === 0) return input.requireRoomForGeneration ? [] : [null as unknown as string];
-  const assignedRooms = rooms.filter((room) => room.classId === demand.classRecord.id);
-  const availableRooms = assignedRooms.length > 0
-    ? assignedRooms
-    : input.allowSharedRooms === false
-      ? []
-      : rooms.filter((room) => !room.classId);
-  if (availableRooms.length === 0 && input.requireRoomForGeneration !== true) {
-    return [null as unknown as string];
-  }
-  return availableRooms
-    .filter((room) => room.capacity == null || demand.classRecord.studentCount == null || room.capacity >= demand.classRecord.studentCount)
-    .filter((room) => !entries.some((entry) => entry.roomId === room.id && occupiedBy(entry, candidate, demand, terms)))
-    .map((room) => room.id);
-}
-
 function exceedsConsecutiveSubjectLimit(
   input: TimetableGeneratorInput,
   entries: GeneratorEntry[],
@@ -345,61 +327,6 @@ function exceedsConsecutiveSubjectLimit(
   }
 
   return consecutiveLessons > (input.maxConsecutiveSubjectLessons ?? MAX_CONSECUTIVE_SUBJECT_LESSONS);
-}
-
-function classDayLoad(
-  entries: GeneratorEntry[],
-  demand: Demand,
-  dayOfWeek: number,
-  terms: Map<string, GeneratorTerm>,
-): number {
-  return entries.filter((entry) => {
-    const existingTerm = terms.get(entry.termId);
-    return entry.classId === demand.classRecord.id &&
-      entry.dayOfWeek === dayOfWeek &&
-      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
-  }).length;
-}
-
-function subjectDayLoad(
-  entries: GeneratorEntry[],
-  demand: Demand,
-  dayOfWeek: number,
-  terms: Map<string, GeneratorTerm>,
-): number {
-  return entries.filter((entry) => {
-    const existingTerm = terms.get(entry.termId);
-    return entry.classId === demand.classRecord.id &&
-      entry.subjectId === demand.curriculum.subjectId &&
-      entry.dayOfWeek === dayOfWeek &&
-      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
-  }).length;
-}
-
-function teacherDayLoad(
-  entries: GeneratorEntry[],
-  demand: Demand,
-  dayOfWeek: number,
-  terms: Map<string, GeneratorTerm>,
-): number {
-  return entries.filter((entry) => {
-    const existingTerm = terms.get(entry.termId);
-    return entry.teacherProfileId === demand.offering.teacherProfileId &&
-      entry.dayOfWeek === dayOfWeek &&
-      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
-  }).length;
-}
-
-function teacherWeekLoad(
-  entries: GeneratorEntry[],
-  demand: Demand,
-  terms: Map<string, GeneratorTerm>,
-): number {
-  return entries.filter((entry) => {
-    const existingTerm = terms.get(entry.termId);
-    return entry.teacherProfileId === demand.offering.teacherProfileId &&
-      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
-  }).length;
 }
 
 function buildDiagnostics(input: TimetableGeneratorInput, demand: Demand, reason: string): GeneratorDiagnostic {
@@ -678,7 +605,100 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   }
 
   const pendingDemands = [...demands];
+  const unscheduledDemands: Array<{
+    demand: Demand;
+    possibleCount: number;
+    blockedByConsecutiveSubjectLimit: boolean;
+  }> = [];
+  const entryDemands = new WeakMap<GeneratorEntry, Demand>();
+  type EntryIndex = Map<string, GeneratorEntry[]>;
+  const entriesByClassDay: EntryIndex = new Map();
+  const entriesByClassSubjectDay: EntryIndex = new Map();
+  const entriesByTeacherDay: EntryIndex = new Map();
+  const entriesByTeacher: EntryIndex = new Map();
+  const entriesByRoomDay: EntryIndex = new Map();
+
+  const addToIndex = (index: EntryIndex, key: string, entry: GeneratorEntry): void => {
+    const bucket = index.get(key) ?? [];
+    bucket.push(entry);
+    index.set(key, bucket);
+  };
+
+  const removeFromIndex = (index: EntryIndex, key: string, entry: GeneratorEntry): void => {
+    const bucket = index.get(key);
+    if (!bucket) return;
+    const entryIndex = bucket.indexOf(entry);
+    if (entryIndex >= 0) bucket.splice(entryIndex, 1);
+    if (bucket.length === 0) index.delete(key);
+  };
+
+  const indexEntry = (entry: GeneratorEntry): void => {
+    addToIndex(entriesByClassDay, `${entry.classId}:${entry.dayOfWeek}`, entry);
+    addToIndex(entriesByClassSubjectDay, `${entry.classId}:${entry.subjectId}:${entry.dayOfWeek}`, entry);
+    addToIndex(entriesByTeacherDay, `${entry.teacherProfileId}:${entry.dayOfWeek}`, entry);
+    addToIndex(entriesByTeacher, entry.teacherProfileId, entry);
+    if (entry.roomId !== null) addToIndex(entriesByRoomDay, `${entry.roomId}:${entry.dayOfWeek}`, entry);
+  };
+
+  const unindexEntry = (entry: GeneratorEntry): void => {
+    removeFromIndex(entriesByClassDay, `${entry.classId}:${entry.dayOfWeek}`, entry);
+    removeFromIndex(entriesByClassSubjectDay, `${entry.classId}:${entry.subjectId}:${entry.dayOfWeek}`, entry);
+    removeFromIndex(entriesByTeacherDay, `${entry.teacherProfileId}:${entry.dayOfWeek}`, entry);
+    removeFromIndex(entriesByTeacher, entry.teacherProfileId, entry);
+    if (entry.roomId !== null) removeFromIndex(entriesByRoomDay, `${entry.roomId}:${entry.dayOfWeek}`, entry);
+  };
+
+  const rebuildIndexes = (): void => {
+    entriesByClassDay.clear();
+    entriesByClassSubjectDay.clear();
+    entriesByTeacherDay.clear();
+    entriesByTeacher.clear();
+    entriesByRoomDay.clear();
+    entries.forEach(indexEntry);
+  };
+
+  const addEntry = (entry: GeneratorEntry): void => {
+    entries.push(entry);
+    indexEntry(entry);
+  };
+
+  const removeEntry = (entry: GeneratorEntry): void => {
+    const entryIndex = entries.indexOf(entry);
+    if (entryIndex < 0) return;
+    entries.splice(entryIndex, 1);
+    unindexEntry(entry);
+  };
+
+  entries.forEach(indexEntry);
   const requiredDays = schoolDays(input);
+
+  const overlappingEntries = (index: EntryIndex, key: string, demand: Demand): GeneratorEntry[] =>
+    (index.get(key) ?? []).filter((entry) => {
+      const existingTerm = terms.get(entry.termId);
+      return Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
+    });
+
+  const classDayEntries = (demand: Demand, dayOfWeek: number): GeneratorEntry[] =>
+    overlappingEntries(entriesByClassDay, `${demand.classRecord.id}:${dayOfWeek}`, demand);
+
+  const classSubjectDayEntries = (demand: Demand, dayOfWeek: number): GeneratorEntry[] =>
+    overlappingEntries(entriesByClassSubjectDay, `${demand.classRecord.id}:${demand.curriculum.subjectId}:${dayOfWeek}`, demand);
+
+  const teacherDayEntries = (demand: Demand, dayOfWeek: number): GeneratorEntry[] =>
+    overlappingEntries(entriesByTeacherDay, `${demand.offering.teacherProfileId}:${dayOfWeek}`, demand);
+
+  const teacherEntries = (demand: Demand): GeneratorEntry[] =>
+    overlappingEntries(entriesByTeacher, demand.offering.teacherProfileId, demand);
+
+  const roomDayEntries = (roomId: string, demand: Demand, dayOfWeek: number): GeneratorEntry[] =>
+    overlappingEntries(entriesByRoomDay, `${roomId}:${dayOfWeek}`, demand);
+
+  const classDayLoadIndexed = (demand: Demand, dayOfWeek: number): number => classDayEntries(demand, dayOfWeek).length;
+  const subjectDayLoadIndexed = (demand: Demand, dayOfWeek: number): number => classSubjectDayEntries(demand, dayOfWeek).length;
+  const teacherDayLoadIndexed = (demand: Demand, dayOfWeek: number): number => teacherDayEntries(demand, dayOfWeek).length;
+  const teacherWeekLoadIndexed = (demand: Demand): number => teacherEntries(demand).length;
+  const consecutiveSubjectLimitExceeded = (demand: Demand, slot: GeneratorTimeSlot): boolean =>
+    exceedsConsecutiveSubjectLimit(input, classSubjectDayEntries(demand, slot.dayOfWeek), demand, slot, terms);
 
   const findCandidates = (demand: Demand): { candidates: Candidate[]; possibleCount: number; blockedByConsecutiveSubjectLimit: boolean } => {
     const candidates: Candidate[] = [];
@@ -689,20 +709,153 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       .filter((slot) => hasTeacherAvailability(input, demand, slot));
 
     for (const slot of possible) {
-      if (entries.some((entry) => entry.classId === demand.classRecord.id && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
-      if (entries.some((entry) => entry.teacherProfileId === demand.offering.teacherProfileId && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
-      if (classDayLoad(entries, demand, slot.dayOfWeek, terms) >= (input.maxLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay)) continue;
-      if (subjectDayLoad(entries, demand, slot.dayOfWeek, terms) >= (input.maxSubjectLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay)) continue;
-      if (teacherDayLoad(entries, demand, slot.dayOfWeek, terms) >= (input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay)) continue;
-      if (teacherWeekLoad(entries, demand, terms) >= (input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek)) continue;
-      if (exceedsConsecutiveSubjectLimit(input, entries, demand, slot, terms)) {
+      if (candidateConflicts(demand, { slot, roomId: null }).length > 0) continue;
+      if (classDayLoadIndexed(demand, slot.dayOfWeek) >= (input.maxLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay)) continue;
+      if (subjectDayLoadIndexed(demand, slot.dayOfWeek) >= (input.maxSubjectLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay)) continue;
+      if (teacherDayLoadIndexed(demand, slot.dayOfWeek) >= (input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay)) continue;
+      if (teacherWeekLoadIndexed(demand) >= (input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek)) continue;
+      if (consecutiveSubjectLimitExceeded(demand, slot)) {
         blockedByConsecutiveSubjectLimit = true;
         continue;
       }
-      const roomIds = candidateRooms(input, entries, demand, { slot, roomId: null }, terms);
+      const roomIds = roomOptionsForDemand(demand, slot);
       for (const roomId of roomIds) candidates.push({ slot, roomId: roomId === (null as unknown as string) ? null : roomId });
     }
     return { candidates, possibleCount: possible.length, blockedByConsecutiveSubjectLimit };
+  };
+
+  const possibleSlotsForDemand = (demand: Demand): GeneratorTimeSlot[] =>
+    slotsAvailableForClass(input, allSlots, demand.classRecord)
+      .filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5))
+      .filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes)
+      .filter((slot) => hasTeacherAvailability(input, demand, slot));
+
+  const roomOptionsForDemand = (demand: Demand, slot?: GeneratorTimeSlot): Array<string | null> => {
+    const rooms = input.rooms.filter((room) => room.active && room.institutionId === input.institutionId);
+    if (rooms.length === 0) return input.requireRoomForGeneration ? [] : [null];
+    const assignedRooms = rooms.filter((room) => room.classId === demand.classRecord.id);
+    const availableRooms = assignedRooms.length > 0
+      ? assignedRooms
+      : input.allowSharedRooms === false
+        ? []
+        : rooms.filter((room) => !room.classId);
+    if (availableRooms.length === 0 && input.requireRoomForGeneration !== true) return [null];
+    return availableRooms
+      .filter((room) => room.capacity == null || demand.classRecord.studentCount == null || room.capacity >= demand.classRecord.studentCount)
+      .filter((room) => !slot || roomDayEntries(room.id, demand, slot.dayOfWeek).every((entry) => !occupiedBy(entry, { slot, roomId: room.id }, demand, terms)))
+      .map((room) => room.id);
+  };
+
+  const candidateConflicts = (demand: Demand, candidate: Candidate): GeneratorEntry[] =>
+    [...new Set([
+      ...classDayEntries(demand, candidate.slot.dayOfWeek),
+      ...teacherDayEntries(demand, candidate.slot.dayOfWeek),
+      ...(candidate.roomId === null ? [] : roomDayEntries(candidate.roomId, demand, candidate.slot.dayOfWeek)),
+    ])].filter((entry) =>
+      occupiedBy(entry, candidate, demand, terms) &&
+      (
+        entry.classId === demand.classRecord.id ||
+        entry.teacherProfileId === demand.offering.teacherProfileId ||
+        (candidate.roomId !== null && entry.roomId === candidate.roomId)
+      ),
+    );
+
+  const candidateFitsLimits = (demand: Demand, candidate: Candidate): boolean =>
+    classDayLoadIndexed(demand, candidate.slot.dayOfWeek) < (input.maxLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay) &&
+    subjectDayLoadIndexed(demand, candidate.slot.dayOfWeek) < (input.maxSubjectLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay) &&
+    teacherDayLoadIndexed(demand, candidate.slot.dayOfWeek) < (input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay) &&
+    teacherWeekLoadIndexed(demand) < (input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek) &&
+    !consecutiveSubjectLimitExceeded(demand, candidate.slot);
+
+  function demandKey(demand: Demand): string {
+    return `${demand.offering.id}:${demand.term.id}:${demand.occurrence}`;
+  }
+
+  function reservationKey(kind: 'class' | 'teacher' | 'room', id: string, demand: Demand, slot: GeneratorTimeSlot): string {
+    return `${kind}:${id}:${demand.term.id}:${slot.dayOfWeek}:${slot.startTime}:${slot.endTime}`;
+  }
+
+  const MAX_REPAIR_DEPTH = 8;
+  const MAX_REPAIR_ATTEMPTS = 20000;
+  let repairAttempts = 0;
+
+  const tryRepairDemand = (
+    demand: Demand,
+    depth: number,
+    trail: Set<string>,
+    reservations: Set<string>,
+  ): boolean => {
+    if (depth > MAX_REPAIR_DEPTH || repairAttempts >= MAX_REPAIR_ATTEMPTS) return false;
+    const currentKey = demandKey(demand);
+    if (trail.has(currentKey)) return false;
+
+    const nextTrail = new Set(trail).add(currentKey);
+    const possible = possibleSlotsForDemand(demand).sort((left, right) =>
+      classDayLoadIndexed(demand, left.dayOfWeek) - classDayLoadIndexed(demand, right.dayOfWeek) ||
+      left.dayOfWeek - right.dayOfWeek ||
+      left.slotNumber - right.slotNumber,
+    );
+
+    for (const slot of possible) {
+      for (const roomId of roomOptionsForDemand(demand)) {
+        repairAttempts += 1;
+        const candidate: Candidate = { slot, roomId };
+        if (
+          reservations.has(reservationKey('class', demand.classRecord.id, demand, slot)) ||
+          reservations.has(reservationKey('teacher', demand.offering.teacherProfileId, demand, slot)) ||
+          (roomId !== null && reservations.has(reservationKey('room', roomId, demand, slot)))
+        ) continue;
+
+        const conflicts = candidateConflicts(demand, candidate);
+        if (conflicts.some((entry) => entry.locked)) continue;
+        const movableConflicts = conflicts.filter((entry) => entryDemands.has(entry));
+        if (movableConflicts.length !== conflicts.length) continue;
+
+        const snapshot = [...entries];
+        for (const conflict of movableConflicts) {
+          removeEntry(conflict);
+        }
+
+        const nextReservations = new Set(reservations);
+        nextReservations.add(reservationKey('class', demand.classRecord.id, demand, slot));
+        nextReservations.add(reservationKey('teacher', demand.offering.teacherProfileId, demand, slot));
+        if (roomId !== null) nextReservations.add(reservationKey('room', roomId, demand, slot));
+
+        let repaired = true;
+        for (const conflict of movableConflicts) {
+          const conflictDemand = entryDemands.get(conflict);
+          if (!conflictDemand || !tryRepairDemand(conflictDemand, depth + 1, nextTrail, nextReservations)) {
+            repaired = false;
+            break;
+          }
+        }
+
+        if (repaired && candidateConflicts(demand, candidate).length === 0 && candidateFitsLimits(demand, candidate)) {
+          const entry: GeneratorEntry = {
+            institutionId: input.institutionId,
+            academicYearId: input.academicYearId,
+            termId: demand.term.id,
+            classId: demand.classRecord.id,
+            subjectOfferingId: demand.offering.id,
+            teacherProfileId: demand.offering.teacherProfileId,
+            subjectId: demand.offering.subjectId,
+            roomId,
+            dayOfWeek: slot.dayOfWeek,
+            startTime: slot.startTime,
+            endTime: slot.endTime,
+            locked: false,
+          };
+          addEntry(entry);
+          entryDemands.set(entry, demand);
+          return true;
+        }
+
+        entries.length = 0;
+        entries.push(...snapshot);
+        rebuildIndexes();
+      }
+    }
+    return false;
   };
 
   const dynamicRanking = pendingDemands.length <= 300;
@@ -714,7 +867,7 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
         .filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5))
         .filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes)
         .filter((slot) => hasTeacherAvailability(input, demand, slot)).length,
-    })).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
+    })).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || left.demand.classRecord.id.localeCompare(right.demand.classRecord.id) || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
 
   while (pendingDemands.length > 0) {
     // Re-rank smaller schedules after each allocation; larger schools use a
@@ -738,27 +891,33 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
         const rightFillsMissingDay = requiredDays.includes(right.slot.dayOfWeek) && !days.has(right.slot.dayOfWeek);
         if (leftFillsMissingDay !== rightFillsMissingDay) return leftFillsMissingDay ? -1 : 1;
       }
-      return classDayLoad(entries, demand, left.slot.dayOfWeek, terms) -
-        classDayLoad(entries, demand, right.slot.dayOfWeek, terms) ||
+      const seededTieBreak = dynamicRanking
+        ? 0
+        : compareIds(
+          `${demand.classRecord.id}:${demand.offering.teacherProfileId}:${left.slot.dayOfWeek}:${left.slot.slotNumber}`,
+          `${demand.classRecord.id}:${demand.offering.teacherProfileId}:${right.slot.dayOfWeek}:${right.slot.slotNumber}`,
+          seed,
+        );
+      return classDayLoadIndexed(demand, left.slot.dayOfWeek) -
+        classDayLoadIndexed(demand, right.slot.dayOfWeek) ||
+        seededTieBreak ||
         left.slot.dayOfWeek - right.slot.dayOfWeek ||
         left.slot.slotNumber - right.slot.slotNumber ||
         compareIds(left.roomId ?? '', right.roomId ?? '', seed);
     });
     const chosen = candidates[0];
     if (!chosen) {
-      diagnostics.push(buildDiagnostics(
-        input,
+      unscheduledDemands.push({
         demand,
-        rankedDemand.blockedByConsecutiveSubjectLimit
-          ? 'the subject cannot be scheduled more than two lessons consecutively'
-          : rankedDemand.possibleCount === 0
-            ? 'no compatible slot is available'
-            : 'all compatible slots are occupied',
-      ));
+        possibleCount: rankedDemand.possibleCount,
+        blockedByConsecutiveSubjectLimit: rankedDemand.blockedByConsecutiveSubjectLimit,
+      });
       pendingDemands.splice(pendingDemands.indexOf(demand), 1);
       continue;
     }
-    entries.push({ institutionId: input.institutionId, academicYearId: input.academicYearId, termId: demand.term.id, classId: demand.classRecord.id, subjectOfferingId: demand.offering.id, teacherProfileId: demand.offering.teacherProfileId, subjectId: demand.offering.subjectId, roomId: chosen.roomId, dayOfWeek: chosen.slot.dayOfWeek, startTime: chosen.slot.startTime, endTime: chosen.slot.endTime, locked: false });
+    const entry: GeneratorEntry = { institutionId: input.institutionId, academicYearId: input.academicYearId, termId: demand.term.id, classId: demand.classRecord.id, subjectOfferingId: demand.offering.id, teacherProfileId: demand.offering.teacherProfileId, subjectId: demand.offering.subjectId, roomId: chosen.roomId, dayOfWeek: chosen.slot.dayOfWeek, startTime: chosen.slot.startTime, endTime: chosen.slot.endTime, locked: false };
+    addEntry(entry);
+    entryDemands.set(entry, demand);
     if (input.requireWeekdayCoverage) {
       const key = `${demand.classRecord.id}:${demand.term.id}`;
       const days = coveredDays.get(key) ?? new Set<number>();
@@ -766,6 +925,20 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       coveredDays.set(key, days);
     }
     pendingDemands.splice(pendingDemands.indexOf(demand), 1);
+  }
+
+  for (const unscheduled of unscheduledDemands) {
+    const repaired = tryRepairDemand(unscheduled.demand, 0, new Set(), new Set());
+    if (repaired) continue;
+    diagnostics.push(buildDiagnostics(
+      input,
+      unscheduled.demand,
+      unscheduled.blockedByConsecutiveSubjectLimit
+        ? 'the subject cannot be scheduled more than two lessons consecutively'
+        : unscheduled.possibleCount === 0
+          ? 'no compatible slot is available'
+          : 'all compatible slots are occupied',
+    ));
   }
 
   if (input.requireWeekdayCoverage) {
