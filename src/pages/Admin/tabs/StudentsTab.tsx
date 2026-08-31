@@ -5,6 +5,7 @@
 
 import {
   ClipboardCheck,
+  Upload,
   Users,
 } from 'lucide-react';
 
@@ -37,6 +38,7 @@ import { guardianLinkSchema } from '../../../schemas/adminSchemas';
 import type { StudentRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 import EnrollmentsTab from './EnrollmentsTab';
+import StudentSpreadsheetImportModal from '../../../components/StudentSpreadsheetImportModal';
 
 export type StudentManagementView =
   | 'students'
@@ -173,6 +175,9 @@ export default function StudentsTab() {
     useState<StudentManagementView>('students');
 
   const [isFullWizardOpen, setIsFullWizardOpen] =
+    useState(false);
+
+  const [isSpreadsheetImportOpen, setIsSpreadsheetImportOpen] =
     useState(false);
 
   const [fullEditStudentId, setFullEditStudentId] =
@@ -456,6 +461,16 @@ export default function StudentsTab() {
       <DataTable
         title="Alunos"
         addLabel="Novo aluno"
+        extraHeaderActions={(
+          <button
+            type="button"
+            onClick={() => setIsSpreadsheetImportOpen(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+          >
+            <Upload size={16} aria-hidden="true" />
+            Importar Excel
+          </button>
+        )}
         data={studentsQuery.data ?? []}
         columns={columns}
         isLoading={studentsQuery.isLoading}
@@ -526,6 +541,21 @@ export default function StudentsTab() {
           onCompleted={() => {
             setIsFullWizardOpen(false);
             setFeedbackMessage('Cadastro completo e matrícula realizados com sucesso.');
+          }}
+        />
+      )}
+
+      {isSpreadsheetImportOpen && institutionId && (
+        <StudentSpreadsheetImportModal
+          institutionId={institutionId}
+          years={yearsQuery.data ?? []}
+          classes={classesQuery.data ?? []}
+          onClose={() => setIsSpreadsheetImportOpen(false)}
+          onImported={(result) => {
+            void studentsQuery.refetch();
+            setFeedbackMessage(
+              `${result.succeeded.length} aluno(s) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}`,
+            );
           }}
         />
       )}

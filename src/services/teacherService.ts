@@ -177,6 +177,7 @@ export const teacherService = {
         role: 'TEACHER',
         fullName: data.full_name,
         email: data.email,
+        phone: data.phone,
       });
 
     return {

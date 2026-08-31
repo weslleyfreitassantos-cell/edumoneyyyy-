@@ -8,6 +8,7 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import { Upload } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -26,6 +27,7 @@ import {
 } from '../../../hooks/useAcademicAutomation';
 import TeacherAcademicSettings from '../../../components/academic/TeacherAcademicSettings';
 import { suggestTeacherAvailabilityFromSchoolSlots } from '../../../services/academicAutomationService';
+import TeacherSpreadsheetImportModal from '../../../components/TeacherSpreadsheetImportModal';
 
 import { teacherSchema } from '../../../schemas/adminSchemas';
 
@@ -121,6 +123,9 @@ export default function TeachersTab() {
     useSchoolTimeSlots(institutionId);
 
   const [isModalOpen, setIsModalOpen] =
+    useState(false);
+
+  const [isSpreadsheetImportOpen, setIsSpreadsheetImportOpen] =
     useState(false);
 
   const [formData, setFormData] =
@@ -507,6 +512,16 @@ export default function TeachersTab() {
       <DataTable
         title="Professores"
         addLabel="Novo professor"
+        extraHeaderActions={(
+          <button
+            type="button"
+            onClick={() => setIsSpreadsheetImportOpen(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+          >
+            <Upload size={16} aria-hidden="true" />
+            Importar Excel
+          </button>
+        )}
         data={teachersQuery.data ?? []}
         columns={columns}
         isLoading={teachersQuery.isLoading}
@@ -543,6 +558,20 @@ export default function TeachersTab() {
           );
         }}
       />
+
+      {isSpreadsheetImportOpen && institutionId && (
+        <TeacherSpreadsheetImportModal
+          institutionId={institutionId}
+          subjects={subjectsQuery.data ?? []}
+          onClose={() => setIsSpreadsheetImportOpen(false)}
+          onImported={(result) => {
+            void teachersQuery.refetch();
+            setFeedbackMessage(
+              `${result.succeeded.length} professor(es) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}`,
+            );
+          }}
+        />
+      )}
 
       {isModalOpen && (
         <div

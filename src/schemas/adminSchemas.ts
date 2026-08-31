@@ -160,7 +160,10 @@ export const studentUpdateSchema = z
   .strict();
 
 export const teacherSchema = z
-  .object(personIdentityFields)
+  .object({
+    ...personIdentityFields,
+    phone: optionalTextSchema,
+  })
   .strict();
 
 export const guardianLinkSchema = z
