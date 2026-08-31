@@ -89,8 +89,8 @@ export default function TeacherSpreadsheetImportModal({ institutionId, subjects,
     <SpreadsheetImportModal
       title="Importar professores"
       description="Cadastre professores em lote e já vincule disciplinas e disponibilidade semanal para a geração da grade."
-      requiredFields="full_name, email, subjects/disciplinas"
-      supportedFields={<><p><strong>Cadastro:</strong> nome completo, e-mail e telefone.</p><p className="mt-1"><strong>Acadêmico:</strong> subjects/disciplinas por nome, código ou ID e primary_subject.</p><p className="mt-1"><strong>Disponibilidade:</strong> availability_1_day, availability_1_start e availability_1_end até a janela 10. Dias aceitos: Segunda a Sábado ou 1 a 6.</p><p className="mt-1">A importação usa o mesmo convite de acesso e as mesmas tabelas de disciplinas/disponibilidade do cadastro manual.</p></>}
+      requiredFields="Nome completo, e-mail e disciplinas"
+      supportedFields={<><p><strong>Cadastro:</strong> nome completo, e-mail e telefone.</p><p className="mt-1"><strong>Acadêmico:</strong> disciplinas por nome, código ou ID e disciplina principal.</p><p className="mt-1"><strong>Disponibilidade:</strong> até 10 janelas com dia, início e fim. Dias aceitos: Segunda a Sábado ou 1 a 6.</p><p className="mt-1">A importação usa o mesmo convite de acesso e as mesmas tabelas de disciplinas/disponibilidade do cadastro manual.</p></>}
       fileName={fileName}
       isParsing={isParsing}
       isImporting={isImporting}

@@ -60,32 +60,36 @@ export interface ImportResult {
 }
 
 export const STUDENT_IMPORT_HEADERS = [
-  'full_name', 'email', 'birth_date', 'cpf', 'social_name', 'rg',
-  'rg_issuing_authority', 'rg_state', 'birth_certificate', 'nationality',
-  'birthplace', 'birth_state', 'sex', 'phone', 'postal_code', 'street',
-  'number', 'complement', 'neighborhood', 'city', 'state', 'rural_zone',
-  'guardian_1_profile_id', 'guardian_1_full_name', 'guardian_1_email',
-  'guardian_1_phone', 'guardian_1_relationship', 'guardian_1_is_primary',
-  'guardian_2_profile_id', 'guardian_2_full_name', 'guardian_2_email',
-  'guardian_2_phone', 'guardian_2_relationship', 'guardian_2_is_primary',
-  'origin_school', 'origin_network', 'origin_city', 'origin_state',
-  'last_grade', 'origin_year', 'origin_status', 'origin_observations',
-  'history_delivered', 'transfer_declaration', 'allergies',
-  'health_conditions', 'emergency_medication', 'disability', 'autism',
-  'giftedness', 'needs_special_education', 'school_care_notes',
-  'academic_year', 'academic_year_id', 'class', 'class_id', 'enrolled_at',
-  ...[
-    'certidao_nascimento', 'rg_document', 'cpf_document',
-    'comprovante_endereco', 'historico_escolar', 'declaracao_transferencia',
-    'carteira_vacinacao', 'laudo_relatorio', 'foto_3x4', 'outros',
-  ].flatMap((key) => [`${key}_status`, `${key}_notes`]),
+  'Nome completo', 'E-mail', 'Data de nascimento', 'CPF', 'Nome social', 'RG',
+  'Órgão expedidor', 'UF do RG', 'Certidão de nascimento', 'Nacionalidade',
+  'Naturalidade', 'UF de nascimento', 'Sexo', 'Telefone', 'CEP', 'Logradouro',
+  'Número', 'Complemento', 'Bairro', 'Cidade', 'UF', 'Zona rural',
+  'Responsável 1 - ID do perfil', 'Responsável 1 - Nome completo',
+  'Responsável 1 - E-mail', 'Responsável 1 - Telefone', 'Responsável 1 - Parentesco',
+  'Responsável 1 - Principal', 'Responsável 2 - ID do perfil',
+  'Responsável 2 - Nome completo', 'Responsável 2 - E-mail', 'Responsável 2 - Telefone',
+  'Responsável 2 - Parentesco', 'Responsável 2 - Principal', 'Escola de origem',
+  'Rede de ensino de origem', 'Cidade de origem', 'UF de origem', 'Último ano cursado',
+  'Ano de origem', 'Status da origem', 'Observações da origem', 'Histórico escolar entregue',
+  'Declaração de transferência entregue', 'Alergias', 'Condições de saúde',
+  'Medicação de emergência', 'Deficiência', 'Autismo/TEA', 'Altas habilidades',
+  'Necessita educação especial', 'Observações de cuidados', 'Ano letivo',
+  'ID do ano letivo', 'Turma', 'ID da turma', 'Data da matrícula',
+  'Certidão de nascimento - Status', 'Certidão de nascimento - Observações',
+  'RG - Status', 'RG - Observações', 'CPF - Status', 'CPF - Observações',
+  'Comprovante de endereço - Status', 'Comprovante de endereço - Observações',
+  'Histórico escolar - Status', 'Histórico escolar - Observações',
+  'Declaração de transferência - Status', 'Declaração de transferência - Observações',
+  'Carteira de vacinação - Status', 'Carteira de vacinação - Observações',
+  'Laudo ou relatório - Status', 'Laudo ou relatório - Observações',
+  'Foto 3x4 - Status', 'Foto 3x4 - Observações', 'Outros - Status', 'Outros - Observações',
 ] as const;
 
 export const TEACHER_IMPORT_HEADERS = [
-  'full_name', 'email', 'phone', 'subjects', 'primary_subject',
+  'Nome completo', 'E-mail', 'Telefone', 'Disciplinas', 'Disciplina principal',
   ...Array.from({ length: 10 }, (_, index) => {
     const slot = index + 1;
-    return [`availability_${slot}_day`, `availability_${slot}_start`, `availability_${slot}_end`];
+    return [`Disponibilidade ${slot} - Dia`, `Disponibilidade ${slot} - Início`, `Disponibilidade ${slot} - Fim`];
   }).flat(),
 ] as const;
 
@@ -230,10 +234,22 @@ function documentStatus(valueToParse: string, label: string, errors: string[]): 
 }
 
 function buildDocuments(row: ParsedSpreadsheetRow, errors: string[]): FullStudentEnrollmentDraft['documents'] {
+  const documentPrefixes: Record<string, string[]> = {
+    certidao_nascimento: ['certidao_nascimento', 'certidao_de_nascimento'],
+    rg_document: ['rg_document', 'rg'],
+    cpf_document: ['cpf_document', 'cpf'],
+    comprovante_endereco: ['comprovante_endereco', 'comprovante_de_endereco'],
+    historico_escolar: ['historico_escolar'],
+    declaracao_transferencia: ['declaracao_transferencia'],
+    carteira_vacinacao: ['carteira_vacinacao'],
+    laudo_relatorio: ['laudo_relatorio', 'laudo_ou_relatorio'],
+    foto_3x4: ['foto_3x4'],
+    outros: ['outros'],
+  };
   return studentDocumentFields.map(({ type, key }) => ({
     document_type: type,
-    status: documentStatus(value(row, [`${key}_status`]), `${type} - status`, errors),
-    notes: value(row, [`${key}_notes`]),
+    status: documentStatus(value(row, (documentPrefixes[key] ?? [key]).flatMap((prefix) => [`${prefix}_status`])), `${type} - status`, errors),
+    notes: value(row, (documentPrefixes[key] ?? [key]).flatMap((prefix) => [`${prefix}_notes`, `${prefix}_observacoes`])),
   }));
 }
 
@@ -261,6 +277,15 @@ function studentKnownHeaders(): Set<string> {
     'medicacao_emergencia', 'deficiencia', 'tea', 'altas_habilidades',
     'educacao_especial', 'observacoes_cuidado', 'ano_letivo', 'ano', 'turma',
     'data_matricula', 'ra', 'registration_number', 'arquivo_documento', 'foto',
+    'responsavel_1_id_do_perfil', 'responsavel_1_nome_completo', 'responsavel_1_e_mail',
+    'responsavel_1_principal', 'responsavel_2_id_do_perfil', 'responsavel_2_nome_completo',
+    'responsavel_2_e_mail', 'responsavel_2_principal', 'uf_do_rg', 'uf_de_nascimento',
+    'cidade_de_origem', 'rede_de_ensino_de_origem', 'uf_de_origem', 'ultimo_ano_cursado',
+    'ano_de_origem', 'status_da_origem', 'observacoes_da_origem', 'historico_escolar_entregue',
+    'declaracao_de_transferencia_entregue', 'condicoes_de_saude', 'medicacao_de_emergencia',
+    'necessita_educacao_especial', 'observacoes_de_cuidados', 'id_do_ano_letivo', 'id_da_turma',
+    'autismo_tea', 'certidao_de_nascimento', 'comprovante_de_endereco', 'laudo_ou_relatorio',
+    'outros',
   ].map((header) => normalizeSpreadsheetHeader(header)));
 }
 
@@ -268,7 +293,7 @@ function teacherKnownHeaders(): Set<string> {
   return new Set([
     ...TEACHER_IMPORT_HEADERS,
     'nome', 'nome_completo', 'e_mail', 'telefone', 'disciplinas', 'materias',
-    'disciplina_principal', 'materia_principal',
+    'disciplina_principal', 'materia_principal', 'disponibilidade_1_dia',
     ...Array.from({ length: 10 }, (_, index) => {
       const slot = index + 1;
       return [`disponibilidade_${slot}_dia`, `disponibilidade_${slot}_inicio`, `disponibilidade_${slot}_fim`];
@@ -290,8 +315,8 @@ export function buildStudentImportPreviews(
     const fullName = value(row, ['full_name', 'nome_completo', 'nome']);
     const email = value(row, ['email', 'e_mail']);
     const birthDate = dateOrError(value(row, ['birth_date', 'data_nascimento', 'nascimento']), 'Data de nascimento', errors, true);
-    const yearInput = value(row, ['academic_year_id', 'academic_year', 'ano_letivo', 'ano']);
-    const classInput = value(row, ['class_id', 'class', 'turma']);
+    const yearInput = value(row, ['academic_year_id', 'academic_year', 'ano_letivo', 'ano', 'id_do_ano_letivo']);
+    const classInput = value(row, ['class_id', 'class', 'turma', 'id_da_turma']);
     const year = resolveYear(yearInput, options.years);
     const classRow = resolveClass(classInput, year, options.classes);
 
@@ -305,9 +330,9 @@ export function buildStudentImportPreviews(
 
     const guardians = [1, 2].flatMap((index) => {
       const prefix = `guardian_${index}`;
-      const profileId = value(row, [`${prefix}_profile_id`, `responsavel_${index}_profile_id`]);
-      const guardianName = value(row, [`${prefix}_full_name`, `${prefix}_name`, `responsavel_${index}_nome`]);
-      const guardianEmail = value(row, [`${prefix}_email`, `responsavel_${index}_email`]);
+      const profileId = value(row, [`${prefix}_profile_id`, `responsavel_${index}_profile_id`, `responsavel_${index}_id_do_perfil`]);
+      const guardianName = value(row, [`${prefix}_full_name`, `${prefix}_name`, `responsavel_${index}_nome`, `responsavel_${index}_nome_completo`]);
+      const guardianEmail = value(row, [`${prefix}_email`, `responsavel_${index}_email`, `responsavel_${index}_e_mail`]);
       const guardianPhone = value(row, [`${prefix}_phone`, `responsavel_${index}_telefone`]);
       const relationship = value(row, [`${prefix}_relationship`, `responsavel_${index}_parentesco`, `responsavel_${index}_relacao`]);
       const anyGuardianValue = Boolean(profileId || guardianName || guardianEmail || guardianPhone || relationship);
@@ -325,7 +350,7 @@ export function buildStudentImportPreviews(
         email: guardianEmail,
         phone: guardianPhone,
         relationship,
-        is_primary: parseOptionalBoolean(value(row, [`${prefix}_is_primary`]), `Responsável ${index}: principal`, errors) ?? index === 1,
+        is_primary: parseOptionalBoolean(value(row, [`${prefix}_is_primary`, `responsavel_${index}_principal`]), `Responsável ${index}: principal`, errors) ?? index === 1,
       }];
     });
     if (guardians.length === 0) errors.push('Informe pelo menos um responsável (ID de perfil existente ou dados para criar).');
@@ -338,11 +363,11 @@ export function buildStudentImportPreviews(
       social_name: value(row, ['social_name', 'nome_social']),
       rg: value(row, ['rg']),
       rg_issuing_authority: value(row, ['rg_issuing_authority', 'orgao_expedidor']),
-      rg_state: value(row, ['rg_state', 'uf_rg']),
-      birth_certificate: value(row, ['birth_certificate', 'certidao_nascimento']),
+      rg_state: value(row, ['rg_state', 'uf_rg', 'uf_do_rg']),
+      birth_certificate: value(row, ['birth_certificate', 'certidao_nascimento', 'certidao_de_nascimento']),
       nationality: value(row, ['nationality', 'nacionalidade']) || 'Brasileira',
       birthplace: value(row, ['birthplace', 'naturalidade']),
-      birth_state: value(row, ['birth_state', 'uf_nascimento']),
+      birth_state: value(row, ['birth_state', 'uf_nascimento', 'uf_de_nascimento']),
       sex: value(row, ['sex', 'sexo']),
       phone: value(row, ['phone', 'telefone']),
     };
@@ -357,24 +382,24 @@ export function buildStudentImportPreviews(
       },
       guardians,
       previous_schooling: {
-        origin_school: value(row, ['origin_school', 'escola_origem']), origin_network: value(row, ['origin_network', 'rede_origem']),
-        city: value(row, ['origin_city', 'cidade_origem']), state: value(row, ['origin_state', 'uf_origem']),
-        last_grade: value(row, ['last_grade', 'ultimo_ano']), origin_year: value(row, ['origin_year', 'ano_origem']),
-        status: value(row, ['origin_status', 'status_origem']), observations: value(row, ['origin_observations', 'observacoes_origem']),
-        history_delivered: parseBoolean(value(row, ['history_delivered', 'historico_entregue']), 'Histórico entregue', errors),
-        transfer_declaration: parseBoolean(value(row, ['transfer_declaration', 'declaracao_transferencia']), 'Declaração de transferência', errors),
+        origin_school: value(row, ['origin_school', 'escola_origem']), origin_network: value(row, ['origin_network', 'rede_origem', 'rede_de_ensino_de_origem']),
+        city: value(row, ['origin_city', 'cidade_origem', 'cidade_de_origem']), state: value(row, ['origin_state', 'uf_origem', 'uf_de_origem']),
+        last_grade: value(row, ['last_grade', 'ultimo_ano', 'ultimo_ano_cursado']), origin_year: value(row, ['origin_year', 'ano_origem', 'ano_de_origem']),
+        status: value(row, ['origin_status', 'status_origem', 'status_da_origem']), observations: value(row, ['origin_observations', 'observacoes_origem', 'observacoes_da_origem']),
+        history_delivered: parseBoolean(value(row, ['history_delivered', 'historico_entregue', 'historico_escolar_entregue']), 'Histórico entregue', errors),
+        transfer_declaration: parseBoolean(value(row, ['transfer_declaration', 'declaracao_transferencia', 'declaracao_de_transferencia_entregue']), 'Declaração de transferência', errors),
       },
       health: {
-        allergies: value(row, ['allergies', 'alergias']), health_conditions: value(row, ['health_conditions', 'condicoes_saude']),
-        emergency_medication: value(row, ['emergency_medication', 'medicacao_emergencia']), disability: value(row, ['disability', 'deficiencia']),
-        autism: parseBoolean(value(row, ['autism', 'tea']), 'Autismo/TEA', errors), giftedness: parseBoolean(value(row, ['giftedness', 'altas_habilidades']), 'Altas habilidades', errors),
-        needs_special_education: parseBoolean(value(row, ['needs_special_education', 'educacao_especial']), 'Educação especial', errors),
-        school_care_notes: value(row, ['school_care_notes', 'observacoes_cuidado']),
+        allergies: value(row, ['allergies', 'alergias']), health_conditions: value(row, ['health_conditions', 'condicoes_saude', 'condicoes_de_saude']),
+        emergency_medication: value(row, ['emergency_medication', 'medicacao_emergencia', 'medicacao_de_emergencia']), disability: value(row, ['disability', 'deficiencia']),
+        autism: parseBoolean(value(row, ['autism', 'tea', 'autismo_tea']), 'Autismo/TEA', errors), giftedness: parseBoolean(value(row, ['giftedness', 'altas_habilidades']), 'Altas habilidades', errors),
+        needs_special_education: parseBoolean(value(row, ['needs_special_education', 'educacao_especial', 'necessita_educacao_especial']), 'Educação especial', errors),
+        school_care_notes: value(row, ['school_care_notes', 'observacoes_cuidado', 'observacoes_de_cuidados']),
       },
       documents: buildDocuments(row, errors),
       academic_year_id: year?.id ?? '',
       class_id: classRow?.id ?? '',
-      enrolled_at: dateOrError(value(row, ['enrolled_at', 'data_matricula']) || new Date().toISOString().slice(0, 10), 'Data da matrícula', errors),
+      enrolled_at: dateOrError(value(row, ['enrolled_at', 'data_matricula', 'data_de_matricula']) || new Date().toISOString().slice(0, 10), 'Data da matrícula', errors),
     };
 
     if (hasAny(row, ['registration_number', 'ra'])) warnings.push('RA informado foi ignorado; o sistema gera o RA automaticamente.');
@@ -491,16 +516,16 @@ export async function importTeachers(
 }
 
 export const STUDENT_IMPORT_EXAMPLE: Record<string, string> = {
-  full_name: 'Ana Souza', email: 'ana.souza@exemplo.com', birth_date: '2016-03-12', cpf: '12345678900',
-  guardian_1_full_name: 'Carlos Souza', guardian_1_email: 'carlos.souza@exemplo.com', guardian_1_relationship: 'Pai',
-  academic_year: '2027', class: '7º A',
+  'Nome completo': 'Ana Souza', 'E-mail': 'ana.souza@exemplo.com', 'Data de nascimento': '12/03/2016', CPF: '12345678900',
+  'Responsável 1 - Nome completo': 'Carlos Souza', 'Responsável 1 - E-mail': 'carlos.souza@exemplo.com', 'Responsável 1 - Parentesco': 'Pai',
+  'Ano letivo': '2027', Turma: '7º A',
 };
 
 export const TEACHER_IMPORT_EXAMPLE: Record<string, string> = {
-  full_name: 'João Silva', email: 'joao.silva@exemplo.com', phone: '(71) 99999-0000',
-  subjects: 'Matemática; Física', primary_subject: 'Matemática',
-  availability_1_day: 'Segunda', availability_1_start: '07:00', availability_1_end: '12:00',
-  availability_2_day: 'Terça', availability_2_start: '07:00', availability_2_end: '12:00',
+  'Nome completo': 'João Silva', 'E-mail': 'joao.silva@exemplo.com', Telefone: '(71) 99999-0000',
+  Disciplinas: 'Matemática; Física', 'Disciplina principal': 'Matemática',
+  'Disponibilidade 1 - Dia': 'Segunda', 'Disponibilidade 1 - Início': '07:00', 'Disponibilidade 1 - Fim': '12:00',
+  'Disponibilidade 2 - Dia': 'Terça', 'Disponibilidade 2 - Início': '07:00', 'Disponibilidade 2 - Fim': '12:00',
 };
 
 export async function ensureSubjectsForTeacherImport(institutionId: string): Promise<SubjectRow[]> {

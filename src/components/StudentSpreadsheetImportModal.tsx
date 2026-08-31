@@ -111,7 +111,7 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
     <SpreadsheetImportModal
       title="Importar alunos"
       description="Use uma planilha para cadastrar o aluno, os dados complementares, os responsáveis e a matrícula acadêmica pelo fluxo normal do sistema."
-      requiredFields="full_name, email, birth_date, pelo menos um responsável, academic_year e class"
+      requiredFields="Nome completo, e-mail, data de nascimento, pelo menos um responsável, ano letivo e turma"
       supportedFields={<><p><strong>Identidade:</strong> nome, e-mail, nascimento, CPF, nome social, RG, certidão, nacionalidade, naturalidade, sexo e telefone.</p><p className="mt-1"><strong>Endereço:</strong> CEP, logradouro, número, complemento, bairro, cidade, UF e zona rural.</p><p className="mt-1"><strong>Acadêmico:</strong> ano/turma por nome ou ID, data da matrícula e dados da escola de origem.</p><p className="mt-1"><strong>Responsáveis:</strong> até dois responsáveis novos ou IDs de perfis já existentes.</p><p className="mt-1"><strong>Saúde e documentos:</strong> campos de saúde e status/observações dos documentos. Arquivos físicos devem ser anexados depois.</p></>}
       fileName={fileName}
       isParsing={isParsing}

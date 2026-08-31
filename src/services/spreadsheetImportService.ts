@@ -124,7 +124,10 @@ export async function downloadSpreadsheetTemplate(
   exampleRow: Record<string, string>,
 ): Promise<void> {
   const XLSX = await import('xlsx');
-  const worksheet = XLSX.utils.json_to_sheet([exampleRow], { header: [...headers] });
+  const worksheet = XLSX.utils.aoa_to_sheet([
+    [...headers],
+    headers.map((header) => exampleRow[header] ?? ''),
+  ]);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, 'Importação');
   XLSX.writeFile(workbook, fileName);
