@@ -7,7 +7,7 @@ const migration = readFileSync(
 );
 
 const updateMigration = readFileSync(
-  new URL('./20260824000100_update_full_student_enrollment.sql', import.meta.url),
+  new URL('./20260830000200_update_full_student_enrollment.sql', import.meta.url),
   'utf8',
 );
 

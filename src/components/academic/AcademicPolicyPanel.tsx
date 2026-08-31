@@ -27,6 +27,10 @@ import {
   ACADEMIC_SHIFT_OPTIONS,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import {
+  DEFAULT_TIMETABLE_POLICY,
+  type TimetablePolicySettings,
+} from '../../lib/academic/timetablePolicy';
 import type { SchoolScheduleBreakDraft } from '../../services/academicAutomationService';
 import {
   formatDate,
@@ -100,6 +104,8 @@ export default function AcademicPolicyPanel({
     useState('1');
   const [enabledShifts, setEnabledShifts] =
     useState<AcademicShift[]>(['MATUTINO']);
+  const [timetableSettings, setTimetableSettings] =
+    useState<TimetablePolicySettings>(DEFAULT_TIMETABLE_POLICY);
   const [breaksByShift, setBreaksByShift] = useState<
     Record<AcademicShift, SchoolScheduleBreakDraft[]>
   >(emptyBreaksByShift);
@@ -164,6 +170,7 @@ export default function AcademicPolicyPanel({
       setMinimumGrade('');
       setMinimumAttendance('');
       setDecimalPlaces('1');
+      setTimetableSettings(DEFAULT_TIMETABLE_POLICY);
       return;
     }
 
@@ -172,6 +179,7 @@ export default function AcademicPolicyPanel({
       String(policy.minimumAttendancePercentage),
     );
     setDecimalPlaces(String(policy.decimalPlaces));
+    setTimetableSettings(policy.timetable);
   }, [policy]);
 
   const isSaving = savePolicy.isPending;
@@ -282,6 +290,7 @@ export default function AcademicPolicyPanel({
         minimumAttendance,
       ),
       decimalPlaces: Number(decimalPlaces),
+      timetable: timetableSettings,
     });
 
     setSuccessMessage('Politica academica salva.');
@@ -301,7 +310,7 @@ export default function AcademicPolicyPanel({
             </h2>
           </div>
           <p className="mt-1 text-sm text-[#727785]">
-            Regras percentuais usadas no fechamento de periodo.
+            Regras de fechamento, turnos e capacidade usadas na rotina academica.
           </p>
         </div>
 
@@ -718,6 +727,100 @@ export default function AcademicPolicyPanel({
               className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#181c20] disabled:bg-gray-50"
             />
           </div>
+
+          <section className="lg:col-span-5 rounded-lg border border-[#dfe3e8] bg-slate-50 p-4">
+            <div>
+              <h3 className="text-sm font-bold text-[#181c20]">
+                Regras da grade horaria
+              </h3>
+              <p className="mt-1 text-xs text-[#667085]">
+                Estas regras orientam a preparacao, a geracao e a publicacao da grade.
+              </p>
+            </div>
+
+            <fieldset className="mt-4">
+              <legend className="text-xs font-semibold text-[#3d4652]">
+                Dias letivos
+              </legend>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {BREAK_DAY_OPTIONS.map((day) => {
+                  const checked = timetableSettings.schoolDays.includes(day.value);
+                  return (
+                    <label
+                      key={day.value}
+                      className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-xs font-semibold text-[#344054]"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => setTimetableSettings((current) => ({
+                          ...current,
+                          schoolDays: checked
+                            ? current.schoolDays.length > 1
+                              ? current.schoolDays.filter((item) => item !== day.value)
+                              : current.schoolDays
+                            : [...current.schoolDays, day.value].sort((left, right) => left - right),
+                        }))}
+                        disabled={formDisabled || (checked && timetableSettings.schoolDays.length === 1)}
+                        className="h-4 w-4 accent-[#005bbf]"
+                      />
+                      {day.label}
+                    </label>
+                  );
+                })}
+              </div>
+            </fieldset>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {([
+                ['defaultLessonDurationMinutes', 'Duracao padrao da aula (min)', 15, 180],
+                ['maxLessonsPerDay', 'Maximo de aulas por turma/dia', 1, 30],
+                ['maxTeacherLessonsPerDay', 'Maximo de aulas por professor/dia', 1, 30],
+                ['maxTeacherLessonsPerWeek', 'Maximo de aulas por professor/semana', 1, 180],
+                ['maxConsecutiveSubjectLessons', 'Maximo consecutivo da mesma materia', 1, 6],
+                ['maxSubjectLessonsPerDay', 'Maximo da mesma materia/dia', 1, 12],
+              ] as const).map(([field, label, min, max]) => (
+                <label key={field} className="text-xs font-semibold text-[#3d4652]">
+                  {label}
+                  <input
+                    type="number"
+                    min={min}
+                    max={max}
+                    step="1"
+                    value={timetableSettings[field]}
+                    onChange={(event) => setTimetableSettings((current) => ({
+                      ...current,
+                      [field]: Number(event.target.value),
+                    }))}
+                    disabled={formDisabled}
+                    className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
+                  />
+                </label>
+              ))}
+            </div>
+
+            <div className="mt-4 grid gap-2 sm:grid-cols-3">
+              {([
+                ['requireTeacherAvailability', 'Exigir disponibilidade do professor'],
+                ['requireRoomForGeneration', 'Exigir sala para gerar'],
+                ['allowSharedRooms', 'Permitir salas compartilhadas'],
+              ] as const).map(([field, label]) => (
+                <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054]">
+                  <input
+                    type="checkbox"
+                    checked={timetableSettings[field]}
+                    onChange={(event) => setTimetableSettings((current) => ({
+                      ...current,
+                      [field]: event.target.checked,
+                    }))}
+                    disabled={formDisabled}
+                    className="mt-0.5 h-4 w-4 accent-[#005bbf]"
+                  />
+                  {label}
+                </label>
+              ))}
+            </div>
+          </section>
 
           <div className="lg:col-span-5">
             {!policyQuery.isLoading && !policy && (

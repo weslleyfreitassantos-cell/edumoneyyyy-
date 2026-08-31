@@ -12,6 +12,7 @@ import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
   usePublishTimetableVersion,
+  useTimetablePreparation,
   useTimetableVersionEntries,
   useTimetableVersions,
   useUpdateTimetableVersionEntry,
@@ -32,6 +33,7 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
   useDeleteTimetableVersion: vi.fn(),
   useGenerateTimetableDraft: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
+  useTimetablePreparation: vi.fn(),
   useTimetableVersionEntries: vi.fn(),
   useTimetableVersions: vi.fn(),
   useUpdateTimetableVersionEntry: vi.fn(),
@@ -66,6 +68,20 @@ function mockDefaults() {
     isLoading: false,
     isError: false,
     error: null,
+  } as never);
+  vi.mocked(useTimetablePreparation).mockReturnValue({
+    data: {
+      ready: true,
+      policy: { schoolDays: [1, 2, 3, 4, 5] },
+      blockers: [],
+      warnings: [],
+      totals: { classes: 0, students: 0, rooms: 0, slots: 0 },
+    },
+    isLoading: false,
+    isFetching: false,
+    isError: false,
+    error: null,
+    refetch: vi.fn(),
   } as never);
   vi.mocked(useTimetableVersionEntries).mockReturnValue({
     data: [],

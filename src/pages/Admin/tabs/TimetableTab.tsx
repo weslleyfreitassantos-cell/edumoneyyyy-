@@ -1,11 +1,11 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useAssignments } from '../../../hooks/useAssignments';
-import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableEntries, useCreateTimetableEntry, useSetTimetableEntryActive } from '../../../hooks/useTimetable';
+import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableEntries, useCreateTimetableEntry, useUpdateTimetableEntry, useSetTimetableEntryActive } from '../../../hooks/useTimetable';
 import { timetableService, DAYS_OF_WEEK, dayLabel, type TimetableEntryRow, type RoomRow, type TimetableGrid } from '../../../services/timetableService';
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
 import { DataTable, type Column } from '../../../components/DataTable';
@@ -110,6 +110,7 @@ export default function TimetableTab() {
   const entriesQuery = useTimetableEntries(institutionId);
 
   const createEntryMutation = useCreateTimetableEntry();
+  const updateEntryMutation = useUpdateTimetableEntry();
   const setEntryActiveMutation = useSetTimetableEntryActive();
   const createRoomMutation = useCreateRoom();
   const updateRoomMutation = useUpdateRoom();
@@ -147,10 +148,18 @@ export default function TimetableTab() {
   const entries = entriesQuery.data ?? [];
   const teachers = useMemo(() => Array.from(new Map(assignments.filter((assignment) => assignment.active).map((assignment) => [assignment.teacher_profile_id, { profile_id: assignment.teacher_profile_id, name: assignment.teacher_name }])).values()), [assignments]);
 
+  useEffect(() => {
+    if (yearFilter !== 'all' || years.length === 0) return;
+    const activeYear = years.find((year) => year.active) ?? years[0];
+    if (!activeYear) return;
+    setYearFilter(activeYear.id);
+    setTermFilter(activeYear.terms.find((term) => term.active)?.id ?? 'all');
+  }, [yearFilter, years]);
+
   const filteredEntries = useMemo(() => {
     return entries.filter((e) => {
-      if (yearFilter !== 'all' && e.academic_year_id !== yearFilter) return false;
-      if (termFilter !== 'all' && e.term_id !== termFilter) return false;
+      if (yearFilter !== 'all' && e.academic_year_id && e.academic_year_id !== yearFilter) return false;
+      if (termFilter !== 'all' && e.term_id && e.term_id !== termFilter) return false;
       if (classFilter !== 'all' && e.class_id !== classFilter) return false;
       if (teacherFilter !== 'all' && e.teacher_profile_id !== teacherFilter) return false;
       if (dayFilter !== 'all' && e.day_of_week !== Number(dayFilter)) return false;
@@ -181,7 +190,7 @@ export default function TimetableTab() {
 
   const activeRooms = useMemo(() => rooms.filter((r) => r.active), [rooms]);
 
-  const isEntrySubmitting = createEntryMutation.isPending;
+  const isEntrySubmitting = createEntryMutation.isPending || updateEntryMutation.isPending;
   const isRoomSubmitting = createRoomMutation.isPending || updateRoomMutation.isPending;
 
   function resetMessages(): void {
@@ -211,6 +220,11 @@ export default function TimetableTab() {
 
     try {
       if (editingEntry) {
+        await updateEntryMutation.mutateAsync({
+          id: editingEntry.id,
+          institutionId,
+          data: result.data,
+        });
         setFeedbackMessage('Horário atualizado.');
       } else {
         await createEntryMutation.mutateAsync(result.data);

@@ -10,6 +10,7 @@ import {
   useGenerateTimetableDraft,
   usePublishTimetableVersion,
   useTimetableVersionEntries,
+  useTimetablePreparation,
   useTimetableVersions,
   useUpdateTimetableVersionEntry,
 } from '../../hooks/useAcademicAutomation';
@@ -59,6 +60,33 @@ function getErrorMessage(error: unknown): string {
   }
   if (values.some((value) => value.includes('TIMETABLE_VERSION_CONFLICT'))) {
     return 'A publicação foi bloqueada porque existem conflitos de professor, turma ou sala na grade. Revise os horários antes de publicar.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_DAY_NOT_CONFIGURED'))) {
+    return 'A publicação foi bloqueada porque há aulas em um dia que não está configurado como letivo.';
+  }
+  if (values.some((value) => value.includes('ROOM_REQUIRED'))) {
+    return 'A publicação foi bloqueada porque a política exige uma sala para cada aula.';
+  }
+  if (values.some((value) => value.includes('ROOM_NOT_ASSIGNED_TO_CLASS'))) {
+    return 'A publicação foi bloqueada porque uma sala exclusiva está vinculada a outra turma.';
+  }
+  if (values.some((value) => value.includes('CLASS_DAILY_LESSONS_LIMIT'))) {
+    return 'A publicação foi bloqueada porque uma turma ultrapassa o limite diário de aulas da política acadêmica.';
+  }
+  if (values.some((value) => value.includes('SUBJECT_DAILY_LESSONS_LIMIT'))) {
+    return 'A publicação foi bloqueada porque uma matéria ultrapassa o limite diário configurado para a turma.';
+  }
+  if (values.some((value) => value.includes('CONSECUTIVE_SUBJECT_LESSONS_LIMIT'))) {
+    return 'A publicação foi bloqueada porque uma matéria aparece em aulas consecutivas além do limite configurado.';
+  }
+  if (values.some((value) => value.includes('TEACHER_DAILY_LESSONS_LIMIT'))) {
+    return 'A publicação foi bloqueada porque um professor ultrapassa o limite diário configurado.';
+  }
+  if (values.some((value) => value.includes('TEACHER_WEEKLY_LESSONS_LIMIT'))) {
+    return 'A publicação foi bloqueada porque um professor ultrapassa a carga semanal configurada.';
+  }
+  if (values.some((value) => value.includes('TIMETABLE_VERSION_SHIFT_MISMATCH'))) {
+    return 'A publicação foi bloqueada porque a proposta contém uma turma de turno diferente do turno selecionado.';
   }
   if (values.some((value) => value.includes('WEEKLY_LESSONS_MISMATCH'))) {
     return 'A publicação foi bloqueada porque a quantidade de aulas não corresponde à matriz curricular. Revise a carga semanal das disciplinas.';
@@ -151,11 +179,13 @@ function VersionReview({
   scheduleBreaks,
   onEdit,
   editable,
+  schoolDays,
 }: {
   entries: TimetableVersionEntryRow[];
   scheduleBreaks: SchoolScheduleBreakRow[];
   onEdit: (entry: TimetableVersionEntryRow) => void;
   editable: boolean;
+  schoolDays?: number[];
 }) {
   const classes = useMemo(() => {
     const grouped = new Map<string, TimetableVersionEntryRow[]>();
@@ -197,7 +227,7 @@ function VersionReview({
           </div>
           <div className="grid gap-3 p-4 md:grid-cols-2 lg:grid-cols-3">
             {[...new Set<number>([
-              ...REQUIRED_SCHOOL_DAYS,
+              ...(schoolDays ?? REQUIRED_SCHOOL_DAYS),
               ...classGroup.entries.map((entry) => entry.day_of_week),
               ...scheduleBreaks
                 .filter((scheduleBreak) =>
@@ -314,6 +344,7 @@ export default function TimetableAutomationPanel({
   const [entryDraft, setEntryDraft] = useState<EntryDraft | null>(null);
 
   const [generationShift, setGenerationShift] = useState('TODOS');
+  const preparationQuery = useTimetablePreparation(institutionId, selectedYearId, generationShift);
   const enabledShifts: AcademicShift[] =
     shiftSettingsQuery.data ?? ['MATUTINO'];
   const [message, setMessage] = useState<string | null>(null);
@@ -331,6 +362,10 @@ export default function TimetableAutomationPanel({
   async function generate(sourceVersionId?: string): Promise<void> {
     setMessage(null);
     setError(null);
+    if (preparationQuery.data && !preparationQuery.data.ready) {
+      setError('Resolva os bloqueios da preparação da grade antes de gerar.');
+      return;
+    }
     if (!sourceVersionId && (versionsQuery.data ?? []).some((version) => version.status === 'DRAFT')) {
       const shouldContinue = window.confirm('Já existe uma grade em rascunho para este ano. Deseja gerar uma nova proposta?');
       if (!shouldContinue) return;
@@ -479,7 +514,7 @@ export default function TimetableAutomationPanel({
           <button
             type="button"
             onClick={() => void generate()}
-            disabled={!selectedYearId || generateMutation.isPending}
+            disabled={!selectedYearId || generateMutation.isPending || preparationQuery.isLoading || preparationQuery.isFetching || preparationQuery.isError || Boolean(preparationQuery.data && !preparationQuery.data.ready)}
             className="min-h-10 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {generateMutation.isPending ? 'Gerando...' : 'Gerar grade automaticamente'}
@@ -493,6 +528,60 @@ export default function TimetableAutomationPanel({
       {yearsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os anos letivos. Atualize a página e tente novamente.</div>}
       {shiftSettingsQuery.isError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">Não foi possível carregar os turnos da escola. Configure a Política acadêmica e atualize a página.</div>}
 
+      {selectedYearId && (
+        <section className="rounded-lg border border-[#d8deea] bg-slate-50 p-4">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h4 className="font-semibold text-[#181c20]">Preparação da grade</h4>
+              <p className="text-xs text-[#667085]">Confira a capacidade antes de criar a proposta.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void preparationQuery.refetch()}
+              disabled={preparationQuery.isFetching}
+              className="self-start rounded-lg border border-[#c1c6d6] bg-white px-3 py-2 text-xs font-semibold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50"
+            >
+              {preparationQuery.isFetching ? 'Atualizando...' : 'Atualizar preparação'}
+            </button>
+          </div>
+
+          {preparationQuery.isLoading ? (
+            <p className="mt-3 text-sm text-[#667085]">Calculando alunos, salas, professores e horários...</p>
+          ) : preparationQuery.isError ? (
+            <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível calcular a preparação. Atualize a página e tente novamente.</p>
+          ) : preparationQuery.data ? (
+            <>
+              <div className="mt-3 grid gap-2 text-xs sm:grid-cols-4">
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.classes}</strong> turma(s)</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.students}</strong> aluno(s)</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.rooms}</strong> sala(s) ativa(s)</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.slots}</strong> horário(s) cadastrado(s)</div>
+              </div>
+              {preparationQuery.data.blockers.length > 0 && (
+                <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+                  <strong>Geração bloqueada</strong>
+                  <ul className="mt-2 list-disc space-y-1 pl-5">
+                    {preparationQuery.data.blockers.slice(0, 8).map((blocker) => <li key={`${blocker.code}:${blocker.message}`}>{blocker.message} {blocker.action}</li>)}
+                  </ul>
+                  {preparationQuery.data.blockers.length > 8 && <p className="mt-2">E mais {preparationQuery.data.blockers.length - 8} bloqueio(s).</p>}
+                </div>
+              )}
+              {preparationQuery.data.warnings.length > 0 && (
+                <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+                  <strong>Atenção antes de publicar</strong>
+                  <ul className="mt-2 list-disc space-y-1 pl-5">
+                    {preparationQuery.data.warnings.slice(0, 5).map((warning) => <li key={`${warning.code}:${warning.message}`}>{warning.message}</li>)}
+                  </ul>
+                </div>
+              )}
+              {preparationQuery.data.ready && preparationQuery.data.blockers.length === 0 && (
+                <p className="mt-3 text-sm font-semibold text-emerald-700">Preparação concluída. A geração pode ser iniciada.</p>
+              )}
+            </>
+          ) : null}
+        </section>
+      )}
+
       <section>
         <div>
           <h4 className="font-semibold text-[#181c20]">Grades geradas</h4>
@@ -500,12 +589,13 @@ export default function TimetableAutomationPanel({
         </div>
         <div className="mt-3 overflow-x-auto rounded-lg border border-[#e4e8f1]">
           <table className="w-full min-w-[640px] text-sm">
-            <thead className="bg-slate-50 text-left text-xs uppercase tracking-[0.08em] text-[#667085]"><tr><th className="px-3 py-2">Versão</th><th className="px-3 py-2">Status</th><th className="px-3 py-2">Origem</th><th className="px-3 py-2">Ações</th></tr></thead>
+            <thead className="bg-slate-50 text-left text-xs uppercase tracking-[0.08em] text-[#667085]"><tr><th className="px-3 py-2">Versão</th><th className="px-3 py-2">Status</th><th className="px-3 py-2">Turno</th><th className="px-3 py-2">Origem</th><th className="px-3 py-2">Ações</th></tr></thead>
             <tbody>
               {versions.map((version) => (
                 <tr key={version.id} className="border-t border-[#e4e8f1]">
                   <td className="px-3 py-2 font-semibold text-[#181c20]">{version.name}</td>
                   <td className="px-3 py-2">{version.status}</td>
+                  <td className="px-3 py-2">{version.generation_shift === 'TODOS' || !version.generation_shift ? 'Todos' : getAcademicShiftLabel(version.generation_shift)}</td>
                   <td className="px-3 py-2">{version.generation_source}</td>
                   <td className="px-3 py-2"><div className="flex flex-wrap gap-3">
                     <button type="button" onClick={() => setReviewVersionId(version.id)} className="font-semibold text-blue-700 hover:text-blue-900">Revisar grade</button>
@@ -517,7 +607,7 @@ export default function TimetableAutomationPanel({
                   </div></td>
                 </tr>
               ))}
-              {versions.length === 0 && <tr><td colSpan={4} className="px-3 py-6 text-center text-[#667085]">Nenhuma grade foi gerada para este ano.</td></tr>}
+              {versions.length === 0 && <tr><td colSpan={5} className="px-3 py-6 text-center text-[#667085]">Nenhuma grade foi gerada para este ano.</td></tr>}
             </tbody>
           </table>
         </div>
@@ -526,7 +616,7 @@ export default function TimetableAutomationPanel({
       {reviewVersionId && (
         <section className="space-y-4 border-t border-[#e4e8f1] pt-5">
           <div><h4 className="font-semibold text-[#181c20]">Revisar grade</h4><p className="text-sm text-[#667085]">Clique em uma aula para editar o horário ou marcá-la como fixa.</p></div>
-          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} />}
+          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} schoolDays={preparationQuery.data?.policy.schoolDays} />}
         </section>
       )}
 

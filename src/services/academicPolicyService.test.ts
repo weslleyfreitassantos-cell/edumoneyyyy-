@@ -65,6 +65,18 @@ describe('academicPolicyService', () => {
         active: true,
         createdAt: '2023-01-01',
         updatedAt: '2023-01-01',
+        timetable: {
+          schoolDays: [1, 2, 3, 4, 5],
+          defaultLessonDurationMinutes: 50,
+          maxLessonsPerDay: 8,
+          maxTeacherLessonsPerDay: 8,
+          maxTeacherLessonsPerWeek: 40,
+          maxConsecutiveSubjectLessons: 2,
+          maxSubjectLessonsPerDay: 5,
+          requireTeacherAvailability: true,
+          requireRoomForGeneration: false,
+          allowSharedRooms: true,
+        },
       });
     });
   });

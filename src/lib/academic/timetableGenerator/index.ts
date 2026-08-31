@@ -1,4 +1,7 @@
 import { normalizeAcademicShift } from './automaticPreparation';
+import {
+  DEFAULT_TIMETABLE_POLICY,
+} from '../timetablePolicy';
 
 export interface GeneratorTerm {
   id: string;
@@ -13,6 +16,7 @@ export interface GeneratorClass {
   academicYearId: string;
   name: string;
   shift: string | null;
+  studentCount?: number;
 }
 
 export interface GeneratorCurriculumItem {
@@ -73,6 +77,7 @@ export interface GeneratorRoom {
   institutionId: string;
   classId?: string | null;
   active: boolean;
+  capacity?: number | null;
 }
 
 export interface GeneratorEntry {
@@ -107,6 +112,15 @@ export interface TimetableGeneratorInput {
   lockedEntries?: GeneratorEntry[];
   subjectLabels?: Record<string, string>;
   requireWeekdayCoverage?: boolean;
+  schoolDays?: number[];
+  maxLessonsPerDay?: number;
+  maxTeacherLessonsPerDay?: number;
+  maxTeacherLessonsPerWeek?: number;
+  maxConsecutiveSubjectLessons?: number;
+  maxSubjectLessonsPerDay?: number;
+  requireTeacherAvailability?: boolean;
+  requireRoomForGeneration?: boolean;
+  allowSharedRooms?: boolean;
   seed?: string;
 }
 
@@ -202,10 +216,9 @@ function hasTeacherAvailability(input: TimetableGeneratorInput, demand: Demand, 
       availability.teacherProfileId === demand.offering.teacherProfileId,
   );
 
-  // Availability is an operational constraint when it has been configured
-  // for the teacher. An empty configuration must not block the structural
-  // onboarding draft.
-  if (teacherAvailability.length === 0) return true;
+  if (teacherAvailability.length === 0) {
+    return input.requireTeacherAvailability !== true;
+  }
 
   return teacherAvailability.some((availability) =>
     availability.active &&
@@ -223,6 +236,11 @@ function slotsForClass(allSlots: GeneratorTimeSlot[], classRecord: GeneratorClas
   const exactShift = classRecord.shift.trim();
   const exactSlots = matchingSlots.filter((slot) => slot.shift.trim() === exactShift);
   return exactSlots.length > 0 ? exactSlots : matchingSlots;
+}
+
+function schoolDays(input: TimetableGeneratorInput): number[] {
+  const configured = input.schoolDays?.filter((day) => Number.isInteger(day) && day >= 1 && day <= 6);
+  return configured && configured.length > 0 ? configured : DEFAULT_TIMETABLE_POLICY.schoolDays;
 }
 
 function slotOverlapsScheduleBreak(
@@ -264,10 +282,18 @@ function slotsAvailableForClass(
 
 function candidateRooms(input: TimetableGeneratorInput, entries: GeneratorEntry[], demand: Demand, candidate: Candidate, terms: Map<string, GeneratorTerm>): string[] {
   const rooms = input.rooms.filter((room) => room.active && room.institutionId === input.institutionId);
-  if (rooms.length === 0) return [null as unknown as string];
+  if (rooms.length === 0) return input.requireRoomForGeneration ? [] : [null as unknown as string];
   const assignedRooms = rooms.filter((room) => room.classId === demand.classRecord.id);
-  const availableRooms = assignedRooms.length > 0 ? assignedRooms : rooms;
+  const availableRooms = assignedRooms.length > 0
+    ? assignedRooms
+    : input.allowSharedRooms === false
+      ? []
+      : rooms.filter((room) => !room.classId);
+  if (availableRooms.length === 0 && input.requireRoomForGeneration !== true) {
+    return [null as unknown as string];
+  }
   return availableRooms
+    .filter((room) => room.capacity == null || demand.classRecord.studentCount == null || room.capacity >= demand.classRecord.studentCount)
     .filter((room) => !entries.some((entry) => entry.roomId === room.id && occupiedBy(entry, candidate, demand, terms)))
     .map((room) => room.id);
 }
@@ -318,7 +344,7 @@ function exceedsConsecutiveSubjectLimit(
     consecutiveLessons += 1;
   }
 
-  return consecutiveLessons > MAX_CONSECUTIVE_SUBJECT_LESSONS;
+  return consecutiveLessons > (input.maxConsecutiveSubjectLessons ?? MAX_CONSECUTIVE_SUBJECT_LESSONS);
 }
 
 function classDayLoad(
@@ -331,6 +357,47 @@ function classDayLoad(
     const existingTerm = terms.get(entry.termId);
     return entry.classId === demand.classRecord.id &&
       entry.dayOfWeek === dayOfWeek &&
+      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
+  }).length;
+}
+
+function subjectDayLoad(
+  entries: GeneratorEntry[],
+  demand: Demand,
+  dayOfWeek: number,
+  terms: Map<string, GeneratorTerm>,
+): number {
+  return entries.filter((entry) => {
+    const existingTerm = terms.get(entry.termId);
+    return entry.classId === demand.classRecord.id &&
+      entry.subjectId === demand.curriculum.subjectId &&
+      entry.dayOfWeek === dayOfWeek &&
+      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
+  }).length;
+}
+
+function teacherDayLoad(
+  entries: GeneratorEntry[],
+  demand: Demand,
+  dayOfWeek: number,
+  terms: Map<string, GeneratorTerm>,
+): number {
+  return entries.filter((entry) => {
+    const existingTerm = terms.get(entry.termId);
+    return entry.teacherProfileId === demand.offering.teacherProfileId &&
+      entry.dayOfWeek === dayOfWeek &&
+      Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
+  }).length;
+}
+
+function teacherWeekLoad(
+  entries: GeneratorEntry[],
+  demand: Demand,
+  terms: Map<string, GeneratorTerm>,
+): number {
+  return entries.filter((entry) => {
+    const existingTerm = terms.get(entry.termId);
+    return entry.teacherProfileId === demand.offering.teacherProfileId &&
       Boolean(existingTerm && termsOverlap(existingTerm, demand.term));
   }).length;
 }
@@ -363,6 +430,7 @@ function buildWeekdayCoverageDiagnostics(
 ): GeneratorDiagnostic[] {
   const diagnostics: GeneratorDiagnostic[] = [];
   const groups = new Set<string>();
+  const requiredDays = schoolDays(input);
 
   for (const demand of demands) {
     groups.add(`${demand.classRecord.id}:${demand.term.id}`);
@@ -383,7 +451,7 @@ function buildWeekdayCoverageDiagnostics(
       (entry) => entry.classId === classId && entry.termId === termId,
     );
     const coveredDays = new Set(groupEntries.map((entry) => entry.dayOfWeek));
-    const missingDays = REQUIRED_SCHOOL_DAYS.filter((day) => !coveredDays.has(day));
+    const missingDays = requiredDays.filter((day) => !coveredDays.has(day));
     if (missingDays.length === 0) continue;
 
     const expectedLessons = groupDemands.length + groupEntries.length;
@@ -392,12 +460,12 @@ function buildWeekdayCoverageDiagnostics(
     const breakDays: number[] = [];
     const teacherDays: number[] = [];
 
-    if (expectedLessons < REQUIRED_SCHOOL_DAYS.length) {
+    if (expectedLessons < requiredDays.length) {
       diagnostics.push({
         code: 'WEEKDAY_COVERAGE_CAPACITY_INSUFFICIENT',
-        message: `${classRecord.name} não cobre ${formatSchoolDays(missingDays)} porque a carga semanal tem apenas ${expectedLessons} aula(s), menos que os cinco dias obrigatórios.`,
+        message: `${classRecord.name} não cobre ${formatSchoolDays(missingDays)} porque a carga semanal tem apenas ${expectedLessons} aula(s), menos que os ${requiredDays.length} dias configurados.`,
         classId,
-        suggestions: ['Confira a carga semanal da matriz curricular.', 'Distribua pelo menos uma aula em cada dia obrigatório.'],
+        suggestions: ['Confira a carga semanal da matriz curricular.', 'Distribua pelo menos uma aula em cada dia letivo configurado.'],
       });
       continue;
     }
@@ -445,7 +513,7 @@ function buildWeekdayCoverageDiagnostics(
         code: 'WEEKDAY_SCHOOL_SLOT_REQUIRED',
         message: `${classRecord.name} não cobre ${formatSchoolDays(slotDays)} porque não há horário escolar compatível cadastrado para esse turno.`,
         classId,
-        suggestions: ['Cadastre pelo menos um horário escolar compatível em cada dia obrigatório.', 'Confira o turno configurado na turma.'],
+        suggestions: ['Cadastre pelo menos um horário escolar compatível em cada dia letivo.', 'Confira o turno configurado na turma.'],
       });
     }
     if (breakDays.length > 0) {
@@ -576,7 +644,7 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   }
 
   const entries: GeneratorEntry[] = [...(input.lockedEntries ?? [])].filter((entry) => entry.institutionId === input.institutionId && entry.academicYearId === input.academicYearId && selectedTermIds.has(entry.termId));
-  const allSlots = input.schoolTimeSlots.filter((slot) => slot.active && slot.institutionId === input.institutionId);
+  const allSlots = input.schoolTimeSlots.filter((slot) => slot.active && slot.institutionId === input.institutionId && schoolDays(input).includes(slot.dayOfWeek));
   for (const entry of entries) {
     const classRecord = classes.get(entry.classId);
     if (
@@ -609,20 +677,24 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
     }
   }
 
-  const rankedDemands = demands.map((demand) => {
-    const possible = slotsAvailableForClass(input, allSlots, demand.classRecord).filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5)).filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes).filter((slot) => hasTeacherAvailability(input, demand, slot));
-    return { demand, possibleCount: possible.length };
-  }).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
+  const pendingDemands = [...demands];
+  const requiredDays = schoolDays(input);
 
-  for (const ranked of rankedDemands) {
-    const demand = ranked.demand;
+  const findCandidates = (demand: Demand): { candidates: Candidate[]; possibleCount: number; blockedByConsecutiveSubjectLimit: boolean } => {
     const candidates: Candidate[] = [];
     let blockedByConsecutiveSubjectLimit = false;
-    for (const slot of slotsAvailableForClass(input, allSlots, demand.classRecord)) {
-      if (timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) < demand.curriculum.lessonDurationMinutes) continue;
-      if (!hasTeacherAvailability(input, demand, slot)) continue;
+    const possible = slotsAvailableForClass(input, allSlots, demand.classRecord)
+      .filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5))
+      .filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes)
+      .filter((slot) => hasTeacherAvailability(input, demand, slot));
+
+    for (const slot of possible) {
       if (entries.some((entry) => entry.classId === demand.classRecord.id && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
       if (entries.some((entry) => entry.teacherProfileId === demand.offering.teacherProfileId && occupiedBy(entry, { slot, roomId: null }, demand, terms))) continue;
+      if (classDayLoad(entries, demand, slot.dayOfWeek, terms) >= (input.maxLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay)) continue;
+      if (subjectDayLoad(entries, demand, slot.dayOfWeek, terms) >= (input.maxSubjectLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay)) continue;
+      if (teacherDayLoad(entries, demand, slot.dayOfWeek, terms) >= (input.maxTeacherLessonsPerDay ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay)) continue;
+      if (teacherWeekLoad(entries, demand, terms) >= (input.maxTeacherLessonsPerWeek ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek)) continue;
       if (exceedsConsecutiveSubjectLimit(input, entries, demand, slot, terms)) {
         blockedByConsecutiveSubjectLimit = true;
         continue;
@@ -630,12 +702,40 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       const roomIds = candidateRooms(input, entries, demand, { slot, roomId: null }, terms);
       for (const roomId of roomIds) candidates.push({ slot, roomId: roomId === (null as unknown as string) ? null : roomId });
     }
+    return { candidates, possibleCount: possible.length, blockedByConsecutiveSubjectLimit };
+  };
+
+  const dynamicRanking = pendingDemands.length <= 300;
+  const staticOrder = dynamicRanking
+    ? null
+    : pendingDemands.map((demand) => ({
+      demand,
+      possibleCount: slotsAvailableForClass(input, allSlots, demand.classRecord)
+        .filter((slot) => slot.endTime.slice(0, 5) > slot.startTime.slice(0, 5))
+        .filter((slot) => timeToMinutes(slot.endTime) - timeToMinutes(slot.startTime) >= demand.curriculum.lessonDurationMinutes)
+        .filter((slot) => hasTeacherAvailability(input, demand, slot)).length,
+    })).sort((left, right) => left.possibleCount - right.possibleCount || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence);
+
+  while (pendingDemands.length > 0) {
+    // Re-rank smaller schedules after each allocation; larger schools use a
+    // stable scarcity order to keep generation responsive.
+    const rankedDemand = dynamicRanking
+      ? pendingDemands
+        .map((demand) => ({ demand, ...findCandidates(demand) }))
+        .sort((left, right) => left.candidates.length - right.candidates.length || right.demand.curriculum.weeklyLessons - left.demand.curriculum.weeklyLessons || compareIds(left.demand.offering.id, right.demand.offering.id, seed) || left.demand.occurrence - right.demand.occurrence)[0]
+      : (() => {
+        const next = staticOrder?.find((item) => pendingDemands.includes(item.demand));
+        return next ? { demand: next.demand, ...findCandidates(next.demand) } : undefined;
+      })();
+    if (!rankedDemand) break;
+    const demand = rankedDemand.demand;
+    const candidates = rankedDemand.candidates;
     candidates.sort((left, right) => {
       if (input.requireWeekdayCoverage) {
         const key = `${demand.classRecord.id}:${demand.term.id}`;
         const days = coveredDays.get(key) ?? new Set<number>();
-        const leftFillsMissingDay = REQUIRED_SCHOOL_DAYS.includes(left.slot.dayOfWeek as (typeof REQUIRED_SCHOOL_DAYS)[number]) && !days.has(left.slot.dayOfWeek);
-        const rightFillsMissingDay = REQUIRED_SCHOOL_DAYS.includes(right.slot.dayOfWeek as (typeof REQUIRED_SCHOOL_DAYS)[number]) && !days.has(right.slot.dayOfWeek);
+        const leftFillsMissingDay = requiredDays.includes(left.slot.dayOfWeek) && !days.has(left.slot.dayOfWeek);
+        const rightFillsMissingDay = requiredDays.includes(right.slot.dayOfWeek) && !days.has(right.slot.dayOfWeek);
         if (leftFillsMissingDay !== rightFillsMissingDay) return leftFillsMissingDay ? -1 : 1;
       }
       return classDayLoad(entries, demand, left.slot.dayOfWeek, terms) -
@@ -649,12 +749,13 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       diagnostics.push(buildDiagnostics(
         input,
         demand,
-        blockedByConsecutiveSubjectLimit
+        rankedDemand.blockedByConsecutiveSubjectLimit
           ? 'the subject cannot be scheduled more than two lessons consecutively'
-          : ranked.possibleCount === 0
+          : rankedDemand.possibleCount === 0
             ? 'no compatible slot is available'
             : 'all compatible slots are occupied',
       ));
+      pendingDemands.splice(pendingDemands.indexOf(demand), 1);
       continue;
     }
     entries.push({ institutionId: input.institutionId, academicYearId: input.academicYearId, termId: demand.term.id, classId: demand.classRecord.id, subjectOfferingId: demand.offering.id, teacherProfileId: demand.offering.teacherProfileId, subjectId: demand.offering.subjectId, roomId: chosen.roomId, dayOfWeek: chosen.slot.dayOfWeek, startTime: chosen.slot.startTime, endTime: chosen.slot.endTime, locked: false });
@@ -664,6 +765,7 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
       days.add(chosen.slot.dayOfWeek);
       coveredDays.set(key, days);
     }
+    pendingDemands.splice(pendingDemands.indexOf(demand), 1);
   }
 
   if (input.requireWeekdayCoverage) {

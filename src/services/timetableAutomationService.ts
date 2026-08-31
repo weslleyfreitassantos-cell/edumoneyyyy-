@@ -11,6 +11,12 @@ import {
   planAutomaticAssignments,
 } from '../lib/academic/timetableGenerator/automaticPreparation';
 import { toAcademicShift } from '../lib/academic/academicShifts';
+import {
+  buildTimetablePreparationReport,
+  type TimetablePreparationReport,
+} from '../lib/academic/timetablePreparation';
+import type { TimetablePolicySettings } from '../lib/academic/timetablePolicy';
+import { academicPolicyService } from './academicPolicyService';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export interface TimetableVersionRow {
@@ -20,6 +26,7 @@ export interface TimetableVersionRow {
   name: string;
   status: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
   generation_source: string;
+  generation_shift?: string | null;
   created_at: string;
   published_at: string | null;
 }
@@ -53,6 +60,8 @@ export interface GeneratedDraft extends TimetableGeneratorResult {
   automaticSlotsCreated: number;
   automaticUnassigned: number;
 }
+
+export type { TimetablePreparationReport };
 
 function buildSetupDiagnostics(input: {
   termIds: string[];
@@ -143,6 +152,15 @@ function buildInvalidDraft(
   };
 }
 
+function preparationDiagnostics(report: TimetablePreparationReport): GeneratorDiagnostic[] {
+  return report.blockers.map((blocker) => ({
+    code: blocker.code,
+    message: blocker.message,
+    classId: report.classes.find((classRecord) => blocker.message.startsWith(classRecord.name))?.id,
+    suggestions: [blocker.action],
+  }));
+}
+
 function timeToMinutes(value: string): number {
   const [hours, minutes] = value.slice(0, 5).split(':').map(Number);
   return hours * 60 + minutes;
@@ -220,7 +238,7 @@ async function prepareAutomaticAssignments(input: {
   offerings: Array<{ id: string; class_id: string; subject_id: string; teacher_profile_id: string; term_id: string }>;
   teacherSubjects: Array<{ institution_id: string; teacher_profile_id: string; subject_id: string; active: boolean }>;
   termIds: string[];
-}): Promise<{ offerings: Array<{ id: string; class_id: string; subject_id: string; teacher_profile_id: string; term_id: string }>; created: number; unassigned: number }> {
+}): Promise<{ offerings: Array<{ id: string; class_id: string; subject_id: string; teacher_profile_id: string; term_id: string }>; created: number; unassigned: number; createdOfferingIds: string[] }> {
   const plan = planAutomaticAssignments({
     classes: input.classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift })),
     curriculumItems: input.curriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
@@ -242,24 +260,36 @@ async function prepareAutomaticAssignments(input: {
     created += Number(data ?? 0);
   }
 
+  const offerings = created > 0 ? await listActiveOfferings(input.institutionId) : input.offerings;
+  const existingOfferingIds = new Set(input.offerings.map((offering) => offering.id));
   return {
-    offerings: created > 0 ? await listActiveOfferings(input.institutionId) : input.offerings,
+    offerings,
     created,
     unassigned: plan.unassigned.length,
+    createdOfferingIds: offerings.filter((offering) => !existingOfferingIds.has(offering.id)).map((offering) => offering.id),
   };
 }
 
 async function prepareAutomaticRooms(input: {
   institutionId: string;
   classes: Array<{ id: string; name: string; capacity?: number | null }>;
-  rooms: Array<{ id: string; institution_id: string; active: boolean; class_id?: string | null }>;
-}): Promise<{ rooms: Array<{ id: string; institution_id: string; active: boolean; class_id?: string | null }>; created: number }> {
-  if (input.rooms.length > 0 || input.classes.length === 0) return { rooms: input.rooms, created: 0 };
+  rooms: Array<{ id: string; institution_id: string; active: boolean; class_id?: string | null; capacity?: number | null }>;
+  requireRoomForGeneration: boolean;
+  allowSharedRooms: boolean;
+}): Promise<{ rooms: Array<{ id: string; institution_id: string; active: boolean; class_id?: string | null; capacity?: number | null }>; created: number; createdRoomIds: string[] }> {
+  if (input.classes.length === 0 || (!input.requireRoomForGeneration && input.rooms.length > 0)) return { rooms: input.rooms, created: 0, createdRoomIds: [] };
 
-  const roomPayload = input.classes.map((classRecord, index) => ({
+  const assignedClassIds = new Set(input.rooms.filter((room) => room.class_id).map((room) => room.class_id));
+  const hasSharedRoom = input.rooms.some((room) => !room.class_id);
+  const classesToCreate = input.classes.filter((classRecord) =>
+    !assignedClassIds.has(classRecord.id) && (!input.allowSharedRooms || !hasSharedRoom),
+  );
+  if (classesToCreate.length === 0) return { rooms: input.rooms, created: 0, createdRoomIds: [] };
+
+  const roomPayload = classesToCreate.map((classRecord, index) => ({
     institution_id: input.institutionId,
-    name: `Sala ${String(index + 1).padStart(2, '0')}`,
-    code: `AUTO-${String(index + 1).padStart(2, '0')}`,
+    name: `Sala ${String(input.rooms.length + index + 1).padStart(2, '0')}`,
+    code: `AUTO-${String(input.rooms.length + index + 1).padStart(2, '0')}`,
     capacity: classRecord.capacity ?? null,
     class_id: classRecord.id,
     active: true,
@@ -267,17 +297,19 @@ async function prepareAutomaticRooms(input: {
   const { data, error } = await supabase
     .from('rooms')
     .insert(roomPayload)
-    .select('id, institution_id, active, class_id');
+    .select('id, institution_id, active, class_id, capacity');
   if (error) throw error;
 
   return {
-    rooms: (data ?? []).map((room) => ({
+    rooms: [...input.rooms, ...(data ?? []).map((room) => ({
       id: room.id,
       institution_id: room.institution_id,
       active: room.active,
       class_id: room.class_id,
-    })),
+      capacity: room.capacity,
+    }))],
     created: data?.length ?? 0,
+    createdRoomIds: (data ?? []).map((room) => room.id),
   };
 }
 
@@ -285,9 +317,10 @@ async function prepareAutomaticTimeSlots(input: {
   institutionId: string;
   classes: Array<{ id: string; shift: string | null }>;
   curriculumItems: Array<{ class_id: string; weekly_lessons: number }>;
+  schoolDays: number[];
   slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>;
   breaks: Array<{ shift: string; day_of_week: number; start_time: string; end_time: string; active: boolean }>;
-}): Promise<{ slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>; created: number }> {
+}): Promise<{ slots: Array<{ id: string; institution_id: string; shift: string; day_of_week: number; slot_number: number; start_time: string; end_time: string; active: boolean }>; created: number; createdSlotIds: string[] }> {
   const requiredShifts = [...new Set(input.classes.map((classRecord) => normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')))];
   const classShifts = new Map(input.classes.map((classRecord) => [classRecord.id, normalizeAcademicShift(classRecord.shift?.trim() || 'MATUTINO')]));
   const weeklyLoadByShift = new Map<string, number>();
@@ -301,10 +334,10 @@ async function prepareAutomaticTimeSlots(input: {
     shift,
     Math.max(
       shift === 'INTEGRAL' ? 8 : 5,
-      Math.ceil((weeklyLoadByShift.get(shift) ?? 0) / 5),
+      Math.ceil((weeklyLoadByShift.get(shift) ?? 0) / Math.max(1, input.schoolDays.length)),
     ),
   ]));
-  const targetSlots = buildDefaultTimeSlots(requiredShifts, slotsPerDayByShift).filter(
+  const targetSlots = buildDefaultTimeSlots(requiredShifts, slotsPerDayByShift, input.schoolDays).filter(
     (slot) =>
       !input.breaks.some(
         (scheduleBreak) =>
@@ -321,9 +354,9 @@ async function prepareAutomaticTimeSlots(input: {
   );
   const existingPositions = new Set(input.slots.map((slot) => `${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
   const defaults = targetSlots.filter((slot) => !existingPositions.has(`${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`));
-  if (defaults.length === 0) return { slots: input.slots, created: 0 };
+  if (defaults.length === 0) return { slots: input.slots, created: 0, createdSlotIds: [] };
 
-  const { error } = await supabase.from('school_time_slots').upsert(defaults.map((slot) => ({
+  const { data: savedRows, error } = await supabase.from('school_time_slots').upsert(defaults.map((slot) => ({
     institution_id: input.institutionId,
     shift: slot.shift,
     day_of_week: slot.day_of_week,
@@ -331,10 +364,14 @@ async function prepareAutomaticTimeSlots(input: {
     start_time: slot.start_time,
     end_time: slot.end_time,
     active: true,
-  })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
+  })), { onConflict: 'institution_id,shift,day_of_week,slot_number' }).select('id, institution_id, shift, day_of_week, slot_number, start_time, end_time, active');
   if (error) throw error;
 
-  const generatedRows = defaults.map((slot, index) => ({
+  const rowsByPosition = new Map((savedRows ?? []).map((row) => [
+    `${normalizeAcademicShift(row.shift)}:${row.day_of_week}:${row.slot_number}`,
+    row,
+  ]));
+  const generatedRows = defaults.map((slot, index) => rowsByPosition.get(`${normalizeAcademicShift(slot.shift)}:${slot.day_of_week}:${slot.slot_number}`) ?? {
     id: `automatic-${slot.shift}-${slot.day_of_week}-${index + 1}`,
     institution_id: input.institutionId,
     shift: slot.shift,
@@ -343,13 +380,95 @@ async function prepareAutomaticTimeSlots(input: {
     start_time: slot.start_time,
     end_time: slot.end_time,
     active: true,
-  }));
-  return { slots: [...input.slots, ...generatedRows], created: generatedRows.length };
+  });
+  const savedIds = (savedRows ?? []).map((row) => row.id);
+  return { slots: [...input.slots, ...generatedRows], created: generatedRows.length, createdSlotIds: savedIds };
+}
+
+async function rollbackAutomaticPreparation(input: {
+  institutionId: string;
+  offeringIds: string[];
+  roomIds: string[];
+  slotIds: string[];
+}): Promise<void> {
+  const operations: Promise<unknown>[] = [];
+  if (input.offeringIds.length > 0) {
+    operations.push(Promise.resolve(
+      supabase
+        .from('subject_offerings')
+        .update({ active: false })
+        .in('id', input.offeringIds),
+    ));
+  }
+  if (input.roomIds.length > 0) {
+    operations.push(Promise.resolve(
+      supabase
+        .from('rooms')
+        .update({ active: false })
+        .eq('institution_id', input.institutionId)
+        .in('id', input.roomIds),
+    ));
+  }
+  if (input.slotIds.length > 0) {
+    operations.push(Promise.resolve(
+      supabase
+        .from('school_time_slots')
+        .update({ active: false })
+        .eq('institution_id', input.institutionId)
+        .in('id', input.slotIds),
+    ));
+  }
+  const results = await Promise.all(operations);
+  const failed = results.find((result) => result && typeof result === 'object' && 'error' in result && result.error);
+  if (failed && typeof failed === 'object' && 'error' in failed && failed.error) {
+    throw failed.error;
+  }
 }
 
 export const timetableAutomationService = {
+  async getPreparationReport(input: {
+    institutionId: string;
+    academicYearId: string;
+    shift?: string;
+  }): Promise<TimetablePreparationReport> {
+    const [policy, termsResult, classesResult, enrollmentsResult, curriculumResult, offerings, skillsResult, availabilityResult, slotsResult, scheduleBreaks, roomsResult, enabledShifts] = await Promise.all([
+      academicPolicyService.getActivePolicy(input.institutionId, input.academicYearId),
+      supabase.from('terms').select('id, active').eq('academic_year_id', input.academicYearId),
+      supabase.from('classes').select('id, name, shift, capacity, active, academic_year_id').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId),
+      supabase.from('enrollments').select('class_id, academic_year_id, active, status').eq('academic_year_id', input.academicYearId),
+      supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, active').eq('institution_id', input.institutionId),
+      listActiveOfferings(input.institutionId),
+      supabase.from('teacher_subjects').select('teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
+      supabase.from('teacher_availability').select('teacher_profile_id, day_of_week, start_time, end_time, active').eq('institution_id', input.institutionId),
+      supabase.from('school_time_slots').select('shift, day_of_week, start_time, end_time, active').eq('institution_id', input.institutionId),
+      listScheduleBreaksForGenerator(input.institutionId),
+      supabase.from('rooms').select('id, class_id, capacity, active').eq('institution_id', input.institutionId),
+      academicShiftSettingsService.getEnabledShifts(input.institutionId),
+    ]);
+    const failed = [termsResult, classesResult, enrollmentsResult, curriculumResult, skillsResult, availabilityResult, slotsResult, roomsResult].find((result) => result.error);
+    if (failed?.error) throw failed.error;
+
+    return buildTimetablePreparationReport({
+      institutionId: input.institutionId,
+      academicYearId: input.academicYearId,
+      shift: input.shift,
+      policy: policy?.timetable as Partial<TimetablePolicySettings> | undefined,
+      enabledShifts,
+      terms: (termsResult.data ?? []) as Array<{ id: string; active?: boolean | null }>,
+      classes: (classesResult.data ?? []) as Array<{ id: string; name: string; shift: string | null; capacity: number; active?: boolean | null; academic_year_id?: string }>,
+      enrollments: (enrollmentsResult.data ?? []) as Array<{ class_id: string; academic_year_id: string; active?: boolean | null; status?: string | null }>,
+      curriculumItems: (curriculumResult.data ?? []) as Array<{ class_id: string; subject_id: string; weekly_lessons: number; active?: boolean | null }>,
+      offerings: offerings.map((offering) => ({ ...offering, active: true })),
+      teacherSubjects: (skillsResult.data ?? []) as Array<{ teacher_profile_id: string; subject_id: string; active?: boolean | null }>,
+      teacherAvailability: (availabilityResult.data ?? []) as Array<{ teacher_profile_id: string; day_of_week: number; start_time: string; end_time: string; active?: boolean | null }>,
+      slots: (slotsResult.data ?? []) as Array<{ shift: string; day_of_week: number; start_time: string; end_time: string; active?: boolean | null }>,
+      breaks: scheduleBreaks,
+      rooms: (roomsResult.data ?? []) as Array<{ id: string; class_id?: string | null; capacity?: number | null; active?: boolean | null }>,
+    });
+  },
+
   async listVersions(institutionId: string, academicYearId?: string): Promise<TimetableVersionRow[]> {
-    let query = supabase.from('timetable_versions').select('id, institution_id, academic_year_id, name, status, generation_source, created_at, published_at').eq('institution_id', institutionId).order('created_at', { ascending: false });
+    let query = supabase.from('timetable_versions').select('id, institution_id, academic_year_id, name, status, generation_source, generation_shift, created_at, published_at').eq('institution_id', institutionId).order('created_at', { ascending: false });
     if (academicYearId) query = query.eq('academic_year_id', academicYearId);
     const { data, error } = await query;
     if (error) throw error;
@@ -546,15 +665,21 @@ export const timetableAutomationService = {
   },
 
   async generateDraft(input: { institutionId: string; academicYearId: string; createdBy: string; shift?: string; seed?: string; name?: string; sourceVersionId?: string }): Promise<GeneratedDraft> {
+    const preparationReport = await this.getPreparationReport(input);
+    const seed = input.seed ?? `${input.institutionId}:${input.academicYearId}`;
+    if (!preparationReport.ready) {
+      return buildInvalidDraft(preparationDiagnostics(preparationReport), seed);
+    }
+
     const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availabilityResult, slotsResult, roomsResult, subjectsResult, scheduleBreaks, enabledShifts] = await Promise.all([
       supabase.from('terms').select('id, academic_year_id, start_date, end_date').eq('academic_year_id', input.academicYearId).eq('active', true),
-      supabase.from('classes').select('id, institution_id, academic_year_id, name, shift').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
+      supabase.from('classes').select('id, institution_id, academic_year_id, name, shift, capacity').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, lesson_duration_minutes').eq('institution_id', input.institutionId).eq('active', true),
       listActiveOfferings(input.institutionId),
       supabase.from('teacher_subjects').select('institution_id, teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
       supabase.from('teacher_availability').select('institution_id, teacher_profile_id, day_of_week, start_time, end_time, active').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('school_time_slots').select('id, institution_id, shift, day_of_week, slot_number, start_time, end_time, active').eq('institution_id', input.institutionId).eq('active', true),
-      supabase.from('rooms').select('id, institution_id, active, class_id').eq('institution_id', input.institutionId).eq('active', true),
+      supabase.from('rooms').select('id, institution_id, active, class_id, capacity').eq('institution_id', input.institutionId).eq('active', true),
       supabase.from('subjects').select('id, name').eq('institution_id', input.institutionId),
       listScheduleBreaksForGenerator(input.institutionId),
       academicShiftSettingsService.getEnabledShifts(input.institutionId),
@@ -573,7 +698,6 @@ export const timetableAutomationService = {
     }
     const curriculumItems = curriculumResult.data ?? [];
     const termIds = (termsResult.data ?? []).map((term) => term.id);
-    const seed = input.seed ?? `${input.institutionId}:${input.academicYearId}`;
     const setupDiagnostics = buildSetupDiagnostics({
       termIds,
       classes: classes.map((classRecord) => ({ id: classRecord.id, name: classRecord.name, shift: classRecord.shift })),
@@ -582,6 +706,13 @@ export const timetableAutomationService = {
     });
     if (setupDiagnostics.length > 0) return buildInvalidDraft(setupDiagnostics, seed);
 
+    const rollbackState = {
+      offeringIds: [] as string[],
+      roomIds: [] as string[],
+      slotIds: [] as string[],
+    };
+
+    try {
     const automaticAssignments = await prepareAutomaticAssignments({
       institutionId: input.institutionId,
       academicYearId: input.academicYearId,
@@ -591,18 +722,24 @@ export const timetableAutomationService = {
       teacherSubjects: skillsResult.data ?? [],
       termIds,
     });
+    rollbackState.offeringIds = automaticAssignments.createdOfferingIds;
     const automaticRooms = await prepareAutomaticRooms({
       institutionId: input.institutionId,
-      classes: classes.map((classRecord) => ({ id: classRecord.id, name: classRecord.name, capacity: null })),
+      classes: classes.map((classRecord) => ({ id: classRecord.id, name: classRecord.name, capacity: classRecord.capacity })),
       rooms: roomsResult.data ?? [],
+      requireRoomForGeneration: preparationReport.policy.requireRoomForGeneration,
+      allowSharedRooms: preparationReport.policy.allowSharedRooms,
     });
+    rollbackState.roomIds = automaticRooms.createdRoomIds;
     const automaticSlots = await prepareAutomaticTimeSlots({
       institutionId: input.institutionId,
       classes,
       curriculumItems,
       slots: slotsResult.data ?? [],
+      schoolDays: preparationReport.policy.schoolDays,
       breaks: scheduleBreaks,
     });
+    rollbackState.slotIds = automaticSlots.createdSlotIds;
 
     let lockedEntries = undefined;
     if (input.sourceVersionId) {
@@ -644,17 +781,26 @@ export const timetableAutomationService = {
       institutionId: input.institutionId,
       academicYearId: input.academicYearId,
       terms: (termsResult.data ?? []).map((term) => ({ id: term.id, academicYearId: term.academic_year_id, startDate: term.start_date, endDate: term.end_date })),
-      classes: classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift })),
+      classes: classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift, studentCount: preparationReport.classes.find((classRecord) => classRecord.id === item.id)?.students ?? 0 })),
       curriculumItems: curriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
       subjectOfferings: automaticAssignments.offerings.map((item) => ({ id: item.id, institutionId: input.institutionId, classId: item.class_id, subjectId: item.subject_id, teacherProfileId: item.teacher_profile_id, termId: item.term_id })),
       teacherSubjects: (skillsResult.data ?? []).map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, subjectId: item.subject_id, active: item.active })),
       teacherAvailability: (availabilityResult.data ?? []).map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, dayOfWeek: item.day_of_week, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       schoolTimeSlots: automaticSlots.slots.map((item) => ({ id: item.id, institutionId: item.institution_id, shift: item.shift, dayOfWeek: item.day_of_week, slotNumber: item.slot_number, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       schoolScheduleBreaks: scheduleBreaks.map((item): GeneratorScheduleBreak => ({ institutionId: item.institution_id, shift: item.shift, dayOfWeek: item.day_of_week, name: item.name, startTime: item.start_time, endTime: item.end_time, active: item.active })),
-      rooms: automaticRooms.rooms.map((item) => ({ id: item.id, institutionId: item.institution_id, classId: item.class_id, active: item.active })),
+      rooms: automaticRooms.rooms.map((item) => ({ id: item.id, institutionId: item.institution_id, classId: item.class_id, active: item.active, capacity: item.capacity })),
       subjectLabels: Object.fromEntries((subjectsResult.data ?? []).map((subject) => [subject.id, subject.name])),
       lockedEntries,
       requireWeekdayCoverage: true,
+      schoolDays: preparationReport.policy.schoolDays,
+      maxLessonsPerDay: preparationReport.policy.maxLessonsPerDay,
+      maxTeacherLessonsPerDay: preparationReport.policy.maxTeacherLessonsPerDay,
+      maxTeacherLessonsPerWeek: preparationReport.policy.maxTeacherLessonsPerWeek,
+      maxConsecutiveSubjectLessons: preparationReport.policy.maxConsecutiveSubjectLessons,
+      maxSubjectLessonsPerDay: preparationReport.policy.maxSubjectLessonsPerDay,
+      requireTeacherAvailability: preparationReport.policy.requireTeacherAvailability,
+      requireRoomForGeneration: preparationReport.policy.requireRoomForGeneration,
+      allowSharedRooms: preparationReport.policy.allowSharedRooms,
       seed,
     });
     const preparedResult = {
@@ -664,13 +810,20 @@ export const timetableAutomationService = {
       automaticSlotsCreated: automaticSlots.created,
       automaticUnassigned: automaticAssignments.unassigned,
     };
-    if (!result.valid) return preparedResult;
+    if (!result.valid) {
+      await rollbackAutomaticPreparation({ institutionId: input.institutionId, ...rollbackState });
+      return preparedResult;
+    }
 
-    const { data: version, error: versionError } = await supabase.from('timetable_versions').insert({ institution_id: input.institutionId, academic_year_id: input.academicYearId, name: input.name ?? `Proposta ${new Date().toLocaleDateString('pt-BR')}`, status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_by: input.createdBy, source_version_id: input.sourceVersionId ?? null }).select('id').single();
+    const { data: version, error: versionError } = await supabase.from('timetable_versions').insert({ institution_id: input.institutionId, academic_year_id: input.academicYearId, name: input.name ?? `Proposta ${new Date().toLocaleDateString('pt-BR')}`, status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', generation_shift: input.shift && input.shift !== 'TODOS' ? normalizeAcademicShift(input.shift) : 'TODOS', created_by: input.createdBy, source_version_id: input.sourceVersionId ?? null }).select('id').single();
     if (versionError) throw versionError;
     const { error: entriesError } = await supabase.from('timetable_version_entries').insert(result.entries.map((entry) => ({ version_id: version.id, institution_id: entry.institutionId, academic_year_id: entry.academicYearId, term_id: entry.termId, class_id: entry.classId, subject_offering_id: entry.subjectOfferingId, room_id: entry.roomId, day_of_week: entry.dayOfWeek, start_time: entry.startTime, end_time: entry.endTime, locked: entry.locked, active: true })));
     if (entriesError) throw entriesError;
     return { ...preparedResult, versionId: version.id };
+    } catch (error) {
+      await rollbackAutomaticPreparation({ institutionId: input.institutionId, ...rollbackState });
+      throw error;
+    }
   },
 
   async publishVersion(versionId: string): Promise<void> {

@@ -3,6 +3,11 @@ import {
   validateAcademicPolicyRule,
   type AcademicPolicyRule,
 } from './academicCalculations';
+import {
+  DEFAULT_TIMETABLE_POLICY,
+  normalizeTimetablePolicy,
+  type TimetablePolicySettings,
+} from '../lib/academic/timetablePolicy';
 
 export type AcademicPolicyServiceErrorCode =
   | 'ACADEMIC_POLICY_NOT_CONFIGURED'
@@ -62,6 +67,16 @@ interface AcademicPolicyRow {
   active: boolean | null;
   created_at: string;
   updated_at: string;
+  school_days?: number[] | null;
+  default_lesson_duration_minutes?: number | null;
+  max_lessons_per_day?: number | null;
+  max_teacher_lessons_per_day?: number | null;
+  max_teacher_lessons_per_week?: number | null;
+  max_consecutive_subject_lessons?: number | null;
+  max_subject_lessons_per_day?: number | null;
+  require_teacher_availability?: boolean | null;
+  require_room_for_generation?: boolean | null;
+  allow_shared_rooms?: boolean | null;
 }
 
 export interface AcademicTermOption {
@@ -91,12 +106,14 @@ export interface AcademicPolicy
   active: boolean;
   createdAt: string;
   updatedAt: string;
+  timetable: TimetablePolicySettings;
 }
 
 export interface SaveAcademicPolicyInput
   extends AcademicPolicyRule {
   institutionId: string;
   academicYearId: string;
+  timetable?: Partial<TimetablePolicySettings>;
 }
 
 function normalizeRelation<T>(
@@ -189,6 +206,18 @@ function normalizePolicy(
     active: isActive(row.active),
     createdAt: row.created_at,
     updatedAt: row.updated_at,
+    timetable: normalizeTimetablePolicy({
+      schoolDays: row.school_days ?? DEFAULT_TIMETABLE_POLICY.schoolDays,
+      defaultLessonDurationMinutes: row.default_lesson_duration_minutes ?? DEFAULT_TIMETABLE_POLICY.defaultLessonDurationMinutes,
+      maxLessonsPerDay: row.max_lessons_per_day ?? DEFAULT_TIMETABLE_POLICY.maxLessonsPerDay,
+      maxTeacherLessonsPerDay: row.max_teacher_lessons_per_day ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerDay,
+      maxTeacherLessonsPerWeek: row.max_teacher_lessons_per_week ?? DEFAULT_TIMETABLE_POLICY.maxTeacherLessonsPerWeek,
+      maxConsecutiveSubjectLessons: row.max_consecutive_subject_lessons ?? DEFAULT_TIMETABLE_POLICY.maxConsecutiveSubjectLessons,
+      maxSubjectLessonsPerDay: row.max_subject_lessons_per_day ?? DEFAULT_TIMETABLE_POLICY.maxSubjectLessonsPerDay,
+      requireTeacherAvailability: row.require_teacher_availability ?? DEFAULT_TIMETABLE_POLICY.requireTeacherAvailability,
+      requireRoomForGeneration: row.require_room_for_generation ?? DEFAULT_TIMETABLE_POLICY.requireRoomForGeneration,
+      allowSharedRooms: row.allow_shared_rooms ?? DEFAULT_TIMETABLE_POLICY.allowSharedRooms,
+    }),
   };
 }
 
@@ -203,6 +232,53 @@ function assertPolicyInput(
       message:
         'Instituicao e ano letivo sao obrigatorios.',
     });
+  }
+
+  const timetable = normalizeTimetablePolicy(input.timetable);
+  const rawSchoolDays = input.timetable?.schoolDays;
+  if (
+    rawSchoolDays &&
+    (rawSchoolDays.length === 0 || rawSchoolDays.some((day) => !Number.isInteger(day) || day < 1 || day > 6))
+  ) {
+    issues.push({
+      code: 'ACADEMIC_POLICY_GRADE_INVALID',
+      message: 'Os dias letivos devem estar entre segunda e sabado.',
+    });
+  }
+  if (timetable.schoolDays.length === 0) {
+    issues.push({
+      code: 'ACADEMIC_POLICY_GRADE_INVALID',
+      message: 'Configure pelo menos um dia letivo para a grade horaria.',
+    });
+  }
+
+  if (
+    timetable.maxConsecutiveSubjectLessons > timetable.maxLessonsPerDay ||
+    timetable.maxSubjectLessonsPerDay > timetable.maxLessonsPerDay ||
+    timetable.maxTeacherLessonsPerDay > timetable.maxLessonsPerDay
+  ) {
+    issues.push({
+      code: 'ACADEMIC_POLICY_GRADE_INVALID',
+      message: 'Os limites diarios da grade nao podem ultrapassar o maximo de aulas por dia.',
+    });
+  }
+
+  const numericRanges: Array<[keyof TimetablePolicySettings, number, number]> = [
+    ['defaultLessonDurationMinutes', 15, 180],
+    ['maxLessonsPerDay', 1, 30],
+    ['maxTeacherLessonsPerDay', 1, 30],
+    ['maxTeacherLessonsPerWeek', 1, 180],
+    ['maxConsecutiveSubjectLessons', 1, 6],
+    ['maxSubjectLessonsPerDay', 1, 12],
+  ];
+  for (const [field, minimum, maximum] of numericRanges) {
+    const value = input.timetable?.[field];
+    if (value !== undefined && (typeof value !== 'number' || !Number.isInteger(value) || value < minimum || value > maximum)) {
+      issues.push({
+        code: 'ACADEMIC_POLICY_GRADE_INVALID',
+        message: `O campo ${String(field)} deve ser um inteiro entre ${minimum} e ${maximum}.`,
+      });
+    }
   }
 
   if (issues.length > 0) {
@@ -268,6 +344,16 @@ export const academicPolicyService = {
         minimum_grade_percentage,
         minimum_attendance_percentage,
         decimal_places,
+        school_days,
+        default_lesson_duration_minutes,
+        max_lessons_per_day,
+        max_teacher_lessons_per_day,
+        max_teacher_lessons_per_week,
+        max_consecutive_subject_lessons,
+        max_subject_lessons_per_day,
+        require_teacher_availability,
+        require_room_for_generation,
+        allow_shared_rooms,
         active,
         created_at,
         updated_at
@@ -301,6 +387,10 @@ export const academicPolicyService = {
       input.institutionId,
       input.academicYearId,
     );
+    const timetable = normalizeTimetablePolicy({
+      ...current?.timetable,
+      ...input.timetable,
+    });
 
     const payload = {
       institution_id: input.institutionId,
@@ -310,6 +400,16 @@ export const academicPolicyService = {
       minimum_attendance_percentage:
         input.minimumAttendancePercentage,
       decimal_places: input.decimalPlaces,
+      school_days: timetable.schoolDays,
+      default_lesson_duration_minutes: timetable.defaultLessonDurationMinutes,
+      max_lessons_per_day: timetable.maxLessonsPerDay,
+      max_teacher_lessons_per_day: timetable.maxTeacherLessonsPerDay,
+      max_teacher_lessons_per_week: timetable.maxTeacherLessonsPerWeek,
+      max_consecutive_subject_lessons: timetable.maxConsecutiveSubjectLessons,
+      max_subject_lessons_per_day: timetable.maxSubjectLessonsPerDay,
+      require_teacher_availability: timetable.requireTeacherAvailability,
+      require_room_for_generation: timetable.requireRoomForGeneration,
+      allow_shared_rooms: timetable.allowSharedRooms,
       active: true,
     };
 
@@ -331,6 +431,16 @@ export const academicPolicyService = {
         minimum_grade_percentage,
         minimum_attendance_percentage,
         decimal_places,
+        school_days,
+        default_lesson_duration_minutes,
+        max_lessons_per_day,
+        max_teacher_lessons_per_day,
+        max_teacher_lessons_per_week,
+        max_consecutive_subject_lessons,
+        max_subject_lessons_per_day,
+        require_teacher_availability,
+        require_room_for_generation,
+        allow_shared_rooms,
         active,
         created_at,
         updated_at
