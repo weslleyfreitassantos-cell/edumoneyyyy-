@@ -57,6 +57,15 @@ export default function DashboardAnnouncements({
                   </li>
                 ))}
               </ul>
+              {(role === 'student' || role === 'guardian') && (
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new Event('open-self-registration'))}
+                  className="mt-4 inline-flex h-10 items-center justify-center rounded-lg bg-[#005bbf] px-4 text-sm font-bold text-white outline-none transition hover:bg-[#004a9f] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                >
+                  Atualizar meu cadastro
+                </button>
+              )}
               <p className="mt-4 text-sm font-semibold text-amber-800">
                 Para concluir os itens acadêmicos, procure a secretaria da escola.
               </p>

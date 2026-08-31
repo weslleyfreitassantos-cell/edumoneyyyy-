@@ -231,7 +231,11 @@ export default function AppShell({
   children,
 }: AppShellProps) {
   const { profile, signOut } = useAuth();
-  const { updateProfileName, updatePassword } =
+  const {
+    updateProfileName,
+    updateSelfRegistration,
+    updatePassword,
+  } =
     useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
@@ -579,6 +583,7 @@ export default function AppShell({
             void handleLogout();
           }}
           onUpdateProfileName={updateProfileName}
+          onUpdateSelfRegistration={updateSelfRegistration}
           onUpdatePassword={updatePassword}
           theme={theme}
           onToggleTheme={toggleTheme}

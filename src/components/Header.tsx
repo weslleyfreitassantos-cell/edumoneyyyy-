@@ -16,6 +16,7 @@ import {
 
 import AccountSettingsModal from './AccountSettingsModal';
 import type { ThemePreference } from '../contexts/ThemeContext';
+import type { SelfRegistrationUpdate } from '../services/selfRegistrationService';
 import type { User } from '../types';
 
 interface HeaderProps {
@@ -31,6 +32,7 @@ interface HeaderProps {
   onToggleSidebar: () => void;
   onLogout: () => void;
   onUpdateProfileName: (fullName: string) => Promise<void>;
+  onUpdateSelfRegistration?: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   theme: ThemePreference;
   onToggleTheme: () => void;
@@ -62,6 +64,7 @@ export default function Header({
   onToggleSidebar,
   onLogout,
   onUpdateProfileName,
+  onUpdateSelfRegistration = async () => undefined,
   onUpdatePassword,
   theme,
   onToggleTheme,
@@ -127,6 +130,26 @@ export default function Header({
       );
     };
   }, [isUserMenuOpen]);
+
+  useEffect(() => {
+    function handleOpenSelfRegistration() {
+      setIsUserMenuOpen(false);
+      setAccountFeedback(null);
+      setIsAccountModalOpen(true);
+    }
+
+    window.addEventListener(
+      'open-self-registration',
+      handleOpenSelfRegistration,
+    );
+
+    return () => {
+      window.removeEventListener(
+        'open-self-registration',
+        handleOpenSelfRegistration,
+      );
+    };
+  }, []);
 
   function handleLogout(): void {
     setIsUserMenuOpen(false);
@@ -346,8 +369,10 @@ export default function Header({
           returnFocusRef={userMenuButtonRef}
           onClose={() => setIsAccountModalOpen(false)}
           onUpdateName={onUpdateProfileName}
+          onUpdateSelfRegistration={onUpdateSelfRegistration}
           onUpdatePassword={onUpdatePassword}
           onSuccess={setAccountFeedback}
+          currentRole={currentUser.role}
         />
       )}
 

@@ -22,6 +22,10 @@ import {
   updateCurrentPassword,
   updateCurrentProfile,
 } from '../services/profileService';
+import {
+  selfRegistrationService,
+  type SelfRegistrationUpdate,
+} from '../services/selfRegistrationService';
 
 export interface Profile {
   id: string;
@@ -30,6 +34,7 @@ export interface Profile {
   role: DatabaseRole;
   platform_role: PlatformRole;
   avatar_url: string | null;
+  phone?: string | null;
 }
 
 interface AuthContextType {
@@ -42,6 +47,7 @@ interface AuthContextType {
 
 interface AuthProfileActionsContextType {
   updateProfileName: (fullName: string) => Promise<void>;
+  updateSelfRegistration: (input: SelfRegistrationUpdate) => Promise<void>;
   updatePassword: (newPassword: string) => Promise<void>;
 }
 
@@ -82,7 +88,7 @@ const AuthProfileActionsContext = createContext<
 async function loadProfile(userId: string): Promise<Profile> {
   const { data, error } = await supabase
     .from('profiles')
-    .select('id, full_name, email, role, platform_role, avatar_url, active')
+    .select('id, full_name, email, role, platform_role, avatar_url, phone, active')
     .eq('id', userId)
     .single();
 
@@ -124,6 +130,7 @@ async function loadProfile(userId: string): Promise<Profile> {
     role: data.role,
     platform_role: platformRole,
     avatar_url: data.avatar_url ?? null,
+    phone: data.phone ?? null,
   };
 }
 
@@ -501,6 +508,58 @@ export function AuthProvider({
     [],
   );
 
+  const updateSelfRegistration = useCallback(
+    async (input: SelfRegistrationUpdate): Promise<void> => {
+      const currentProfile = profileRef.current;
+
+      if (!currentProfile) {
+        throw new ProfileServiceError(
+          'SESSION_EXPIRED',
+          'Sessão expirada.',
+        );
+      }
+
+      if (
+        (input.role === 'STUDENT' && currentProfile.role !== 'STUDENT') ||
+        (input.role === 'GUARDIAN' && currentProfile.role !== 'GUARDIAN')
+      ) {
+        throw new ProfileServiceError(
+          'PROFILE_UPDATE_FAILED',
+          'Perfil incompatível com a atualização.',
+        );
+      }
+
+      const updated = await selfRegistrationService.update(input);
+      const latestProfile = profileRef.current;
+
+      if (
+        !latestProfile ||
+        updated.profile.email !== latestProfile.email ||
+        updated.profile.fullName.length === 0
+      ) {
+        throw new ProfileServiceError(
+          'PROFILE_UPDATE_FAILED',
+          'Perfil atualizado não corresponde ao usuário atual.',
+        );
+      }
+
+      setProfileState({
+        ...latestProfile,
+        full_name: updated.profile.fullName,
+        phone: updated.profile.phone,
+      });
+
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['profile'] }),
+        queryClient.invalidateQueries({ queryKey: ['student-dashboard'] }),
+        queryClient.invalidateQueries({ queryKey: ['guardian-dashboard'] }),
+        queryClient.invalidateQueries({ queryKey: ['student-registration-completion'] }),
+        queryClient.invalidateQueries({ queryKey: ['guardian-registration-completion'] }),
+      ]);
+    },
+    [queryClient, setProfileState],
+  );
+
   return (
     <AuthContext.Provider
       value={{
@@ -514,6 +573,7 @@ export function AuthProvider({
       <AuthProfileActionsContext.Provider
         value={{
           updateProfileName,
+          updateSelfRegistration,
           updatePassword,
         }}
       >

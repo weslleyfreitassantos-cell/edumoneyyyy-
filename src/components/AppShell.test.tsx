@@ -133,6 +133,7 @@ function mockContexts(
 
   mockedUseAuthProfileActions.mockReturnValue({
     updateProfileName,
+    updateSelfRegistration: vi.fn(async () => undefined),
     updatePassword,
   });
 
