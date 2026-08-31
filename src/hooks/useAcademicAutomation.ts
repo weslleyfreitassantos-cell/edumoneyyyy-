@@ -216,7 +216,8 @@ export function useTimetablePreparation(
 export function useGenerateTimetableDraft() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: timetableAutomationService.generateDraft,
+    // Keep the service context because generateDraft calls getPreparationReport through this.
+    mutationFn: (input: Parameters<typeof timetableAutomationService.generateDraft>[0]) => timetableAutomationService.generateDraft(input),
     onSuccess: async (_result, variables) => {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
