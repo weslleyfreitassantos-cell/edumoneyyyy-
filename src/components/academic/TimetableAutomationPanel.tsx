@@ -598,7 +598,7 @@ export default function TimetableAutomationPanel({
                   <td className="px-3 py-2">{version.generation_shift === 'TODOS' || !version.generation_shift ? 'Todos' : getAcademicShiftLabel(version.generation_shift)}</td>
                   <td className="px-3 py-2">{version.generation_source}</td>
                   <td className="px-3 py-2"><div className="flex flex-wrap gap-3">
-                    <button type="button" onClick={() => setReviewVersionId(version.id)} className="font-semibold text-blue-700 hover:text-blue-900">Revisar grade</button>
+                    <button type="button" onClick={() => { setError(null); setReviewVersionId(version.id); }} className="font-semibold text-blue-700 hover:text-blue-900">Revisar grade</button>
                     {version.status === 'DRAFT' && <>
                       <button type="button" onClick={() => void generate(version.id)} disabled={generateMutation.isPending} className="font-semibold text-blue-700 disabled:opacity-50">Regenerar grade</button>
                       <button type="button" onClick={() => void publish(version.id)} disabled={publishMutation.isPending} className="font-semibold text-emerald-700 disabled:opacity-50">Publicar grade</button>
