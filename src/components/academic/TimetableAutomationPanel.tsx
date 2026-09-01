@@ -33,7 +33,9 @@ interface EntryDraft {
 
 const DAY_LABELS = ['', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
 
-function getErrorMessage(error: unknown): string {
+type TimetableOperation = 'general' | 'publish' | 'review';
+
+function getErrorMessage(error: unknown, operation: TimetableOperation = 'general'): string {
   const details = readErrorDetails(error);
   const values = [details.code, details.message, details.details, details.hint]
     .filter((value): value is string => Boolean(value))
@@ -95,7 +97,13 @@ function getErrorMessage(error: unknown): string {
     return 'Esta grade não está mais em rascunho e não pode ser publicada novamente.';
   }
   if (values.some((value) => value.includes('STATEMENT TIMEOUT') || value.includes('CANCELING STATEMENT'))) {
-    return 'A revisão demorou mais que o esperado. Tente abrir a proposta novamente.';
+    if (operation === 'publish') {
+      return 'A publicação demorou mais que o esperado. Tente publicar novamente.';
+    }
+    if (operation === 'review') {
+      return 'A revisão demorou mais que o esperado. Tente abrir a proposta novamente.';
+    }
+    return 'A operação demorou mais que o esperado. Tente novamente.';
   }
   if (values.some((value) => value.includes('TIMETABLE_VERSION_SCOPE_MISMATCH'))) {
     return 'A publicação foi bloqueada porque a grade contém dados de outra instituição ou ano letivo. Gere uma nova grade para o contexto atual.';
@@ -416,7 +424,7 @@ export default function TimetableAutomationPanel({
       await publishMutation.mutateAsync({ versionId, institutionId, academicYearId: selectedYearId });
       setMessage('Grade publicada com validação server-side.');
     } catch (publishError) {
-      setError(getErrorMessage(publishError));
+      setError(getErrorMessage(publishError, 'publish'));
     }
   }
 
@@ -616,7 +624,7 @@ export default function TimetableAutomationPanel({
       {reviewVersionId && (
         <section className="space-y-4 border-t border-[#e4e8f1] pt-5">
           <div><h4 className="font-semibold text-[#181c20]">Revisar grade</h4><p className="text-sm text-[#667085]">Clique em uma aula para editar o horário ou marcá-la como fixa.</p></div>
-          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error)}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} schoolDays={preparationQuery.data?.policy.schoolDays} />}
+          {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error, 'review')}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} schoolDays={preparationQuery.data?.policy.schoolDays} />}
         </section>
       )}
 
