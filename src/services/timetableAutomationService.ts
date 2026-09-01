@@ -518,18 +518,8 @@ export const timetableAutomationService = {
     versionId: string,
     institutionId: string,
   ): Promise<TimetableVersionEntryRow[]> {
-    const { data, error } = await supabase
-      .from('timetable_version_entries')
-      .select('id, version_id, institution_id, academic_year_id, term_id, class_id, subject_offering_id, room_id, day_of_week, start_time, end_time, locked, active')
-      .eq('version_id', versionId)
-      .eq('institution_id', institutionId)
-      .order('class_id')
-      .order('day_of_week')
-      .order('start_time');
-
-    if (error) throw error;
-
-    const rows = (data ?? []) as Array<{
+    const pageSize = 500;
+    const rows: Array<{
       id: string;
       version_id: string;
       institution_id: string;
@@ -543,7 +533,41 @@ export const timetableAutomationService = {
       end_time: string;
       locked: boolean;
       active: boolean;
-    }>;
+    }> = [];
+
+    for (let offset = 0; ; offset += pageSize) {
+      const { data, error } = await supabase
+        .from('timetable_version_entries')
+        .select('id, version_id, institution_id, academic_year_id, term_id, class_id, subject_offering_id, room_id, day_of_week, start_time, end_time, locked, active')
+        .eq('version_id', versionId)
+        .eq('institution_id', institutionId)
+        .eq('active', true)
+        .order('class_id')
+        .order('day_of_week')
+        .order('start_time')
+        .order('id')
+        .range(offset, offset + pageSize - 1);
+
+      if (error) throw error;
+      rows.push(...((data ?? []) as Array<{
+        id: string;
+        version_id: string;
+        institution_id: string;
+        academic_year_id: string;
+        term_id: string;
+        class_id: string;
+        subject_offering_id: string;
+        room_id: string | null;
+        day_of_week: number;
+        start_time: string;
+        end_time: string;
+        locked: boolean;
+        active: boolean;
+      }>));
+
+      if (!data || data.length < pageSize) break;
+    }
+
     const classIds = [...new Set(rows.map((row) => row.class_id))];
     const offeringIds = [...new Set(rows.map((row) => row.subject_offering_id))];
     const termIds = [...new Set(rows.map((row) => row.term_id))];
