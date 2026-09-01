@@ -30,6 +30,17 @@ describe('timetable generator', () => {
     expect(first.entries).toEqual(second.entries);
   });
 
+  it('reports a weekly workload mismatch instead of returning a partial schedule as valid', () => {
+    const result = generateTimetable({
+      ...baseInput,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], weeklyLessons: 4 }],
+    });
+
+    expect(result.valid).toBe(false);
+    expect(result.status).toBe('UNSATISFIED');
+    expect(result.diagnostics.some((diagnostic) => diagnostic.code === 'WEEKLY_LESSONS_MISMATCH')).toBe(true);
+  });
+
   it('covers Monday through Friday when weekday coverage is required', () => {
     const result = generateTimetable({
       ...baseInput,

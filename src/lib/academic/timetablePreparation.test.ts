@@ -57,6 +57,29 @@ describe('buildTimetablePreparationReport', () => {
     expect(report.blockers.some((item) => item.code === 'TEACHER_COVERAGE_MISSING')).toBe(true);
   });
 
+  it('bloqueia uma atribuição cujo professor não possui a habilitação da matéria', () => {
+    const report = buildTimetablePreparationReport({
+      ...baseInput,
+      offerings: [{ ...baseInput.offerings[0], teacher_profile_id: 'teacher-without-subject' }],
+    });
+
+    expect(report.ready).toBe(false);
+    expect(report.blockers.some((item) => item.code === 'TEACHER_SUBJECT_NOT_AUTHORIZED')).toBe(true);
+  });
+
+  it('trata matéria complementar sem professor como aviso e não como bloqueio', () => {
+    const report = buildTimetablePreparationReport({
+      ...baseInput,
+      curriculumItems: [{ ...baseInput.curriculumItems[0], is_complementary: true }],
+      offerings: [],
+      teacherSubjects: [],
+    });
+
+    expect(report.ready).toBe(true);
+    expect(report.blockers).toHaveLength(0);
+    expect(report.warnings.some((item) => item.code === 'COMPLEMENTARY_TEACHER_MISSING')).toBe(true);
+  });
+
   it('permite geração sem disponibilidade quando a política desliga essa exigência', () => {
     const report = buildTimetablePreparationReport({
       ...baseInput,

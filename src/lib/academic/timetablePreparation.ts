@@ -35,7 +35,7 @@ export interface TimetablePreparationInput {
   terms: Array<{ id: string; active?: boolean | null }>;
   classes: Array<{ id: string; name: string; shift: string | null; capacity: number; active?: boolean | null; academic_year_id?: string }>;
   enrollments: Array<{ class_id: string; academic_year_id: string; active?: boolean | null; status?: string | null }>;
-  curriculumItems: Array<{ class_id: string; subject_id: string; weekly_lessons: number; active?: boolean | null }>;
+  curriculumItems: Array<{ class_id: string; subject_id: string; weekly_lessons: number; is_complementary?: boolean | null; active?: boolean | null }>;
   offerings: Array<{ class_id: string; subject_id: string; teacher_profile_id: string; term_id: string; active?: boolean | null }>;
   teacherSubjects: Array<{ teacher_profile_id: string; subject_id: string; active?: boolean | null }>;
   teacherAvailability: Array<{ teacher_profile_id: string; day_of_week: number; start_time: string; end_time: string; active?: boolean | null }>;
@@ -126,6 +126,7 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
     activeTerms.some((term) => term.id === offering.term_id),
   );
   const activeSkills = input.teacherSubjects.filter((skill) => isActive(skill.active));
+  const qualifiedSubjectIds = new Set(activeSkills.map((skill) => skill.subject_id));
   const activeRooms = input.rooms.filter((room) => isActive(room.active));
   const enabledShifts = input.enabledShifts?.map((shift) => normalizeAcademicShift(shift)) ?? null;
   const sharedRooms = activeRooms.filter((room) => !room.class_id);
@@ -140,7 +141,8 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
 
   const classSummaries = classes.map((classRecord): PreparationClassSummary => {
     const classCurriculum = activeCurriculum.filter((item) => item.class_id === classRecord.id);
-    const weeklyLessons = classCurriculum.reduce((total, item) => total + item.weekly_lessons, 0);
+    const generationCurriculum = classCurriculum.filter((item) => !item.is_complementary || qualifiedSubjectIds.has(item.subject_id));
+    const weeklyLessons = generationCurriculum.reduce((total, item) => total + item.weekly_lessons, 0);
     const students = input.enrollments.filter((enrollment) =>
       enrollment.class_id === classRecord.id &&
       enrollment.academic_year_id === input.academicYearId &&
@@ -182,7 +184,22 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
       const offerings = activeOfferings.filter((offering) => offering.class_id === classRecord.id && offering.subject_id === curriculum.subject_id);
       const qualifiedTeachers = [...new Set(activeSkills.filter((skill) => skill.subject_id === curriculum.subject_id).map((skill) => skill.teacher_profile_id))];
       if (qualifiedTeachers.length === 0) {
+        if (curriculum.is_complementary) {
+          classIssues.push(issue('COMPLEMENTARY_TEACHER_MISSING', 'WARNING', `${classRecord.name} possui a matéria complementar ${curriculum.subject_id} sem professor qualificado; ela ficará fora da geração.`, 'Vincule um professor habilitado se essa matéria precisar entrar na grade.'));
+          continue;
+        }
         classIssues.push(issue('TEACHER_COVERAGE_MISSING', 'BLOCKER', `${classRecord.name} não possui professor vinculado à matéria ${curriculum.subject_id}.`, 'Vincule um professor à matéria em Usuários > Professores.'));
+        continue;
+      }
+      const qualifiedTeacherIds = new Set(qualifiedTeachers);
+      const invalidOffering = offerings.find((offering) => !qualifiedTeacherIds.has(offering.teacher_profile_id));
+      if (invalidOffering) {
+        classIssues.push(issue(
+          'TEACHER_SUBJECT_NOT_AUTHORIZED',
+          'BLOCKER',
+          `${classRecord.name} possui uma atribuição da matéria ${curriculum.subject_id} com professor não habilitado.`,
+          'Habilite a matéria para o professor ou troque o professor da atribuição.',
+        ));
         continue;
       }
       if (offerings.length < activeTerms.length) {
@@ -192,19 +209,22 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
         const teacherIds = offerings.length > 0
           ? [...new Set(offerings.map((offering) => offering.teacher_profile_id))]
           : qualifiedTeachers;
-        const available = teacherIds.some((teacherId) =>
+        const availableSlotCount = (teacherId: string) => compatibleSlots.filter((slot) =>
           input.teacherAvailability.some((availability) =>
             isActive(availability.active) &&
             availability.teacher_profile_id === teacherId &&
-            compatibleSlots.some((slot) =>
-              slot.day_of_week === availability.day_of_week &&
-              timeToMinutes(availability.start_time) <= timeToMinutes(slot.start_time) &&
-              timeToMinutes(availability.end_time) >= timeToMinutes(slot.end_time),
-            ),
+            availability.day_of_week === slot.day_of_week &&
+            timeToMinutes(availability.start_time) <= timeToMinutes(slot.start_time) &&
+            timeToMinutes(availability.end_time) >= timeToMinutes(slot.end_time),
           ),
-        );
-        if (!available) {
+        ).length;
+        const teacherAvailabilityCounts = teacherIds.map((teacherId) => availableSlotCount(teacherId));
+        if (teacherAvailabilityCounts.length === 0 || teacherAvailabilityCounts.every((count) => count === 0)) {
           classIssues.push(issue('TEACHER_AVAILABILITY_MISSING', 'BLOCKER', `${classRecord.name} não possui disponibilidade compatível para a matéria ${curriculum.subject_id}.`, 'Cadastre a disponibilidade semanal do professor.'));
+        } else if (compatibleSlots.length >= weeklyLessons && (offerings.length > 0
+          ? teacherAvailabilityCounts.some((count) => count < weeklyLessons)
+          : teacherAvailabilityCounts.every((count) => count < weeklyLessons))) {
+          classIssues.push(issue('TEACHER_AVAILABILITY_CAPACITY', 'BLOCKER', `${classRecord.name} não possui disponibilidade suficiente para cumprir as ${weeklyLessons} aulas semanais da matéria ${curriculum.subject_id}.`, 'Amplie a disponibilidade do professor ou distribua a matéria entre mais professores.'));
         }
       }
     }
@@ -233,6 +253,7 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
   for (const offering of activeOfferings) {
     const curriculum = activeCurriculum.find((item) => item.class_id === offering.class_id && item.subject_id === offering.subject_id);
     if (!curriculum) continue;
+    if (curriculum.is_complementary && !qualifiedSubjectIds.has(curriculum.subject_id)) continue;
     const assignmentKey = `${offering.class_id}:${offering.subject_id}:${offering.teacher_profile_id}`;
     if (countedTeacherAssignments.has(assignmentKey)) continue;
     countedTeacherAssignments.add(assignmentKey);

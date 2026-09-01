@@ -475,7 +475,7 @@ export const timetableAutomationService = {
       supabase.from('terms').select('id, active').eq('academic_year_id', input.academicYearId),
       supabase.from('classes').select('id, name, shift, capacity, active, academic_year_id').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId),
       supabase.from('enrollments').select('class_id, academic_year_id, active, status').eq('academic_year_id', input.academicYearId),
-      supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, active').eq('institution_id', input.institutionId),
+      supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, is_complementary, active').eq('institution_id', input.institutionId),
       listActiveOfferings(input.institutionId),
       supabase.from('teacher_subjects').select('teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
       listTeacherAvailability(input.institutionId),
@@ -496,7 +496,7 @@ export const timetableAutomationService = {
       terms: (termsResult.data ?? []) as Array<{ id: string; active?: boolean | null }>,
       classes: (classesResult.data ?? []) as Array<{ id: string; name: string; shift: string | null; capacity: number; active?: boolean | null; academic_year_id?: string }>,
       enrollments: (enrollmentsResult.data ?? []) as Array<{ class_id: string; academic_year_id: string; active?: boolean | null; status?: string | null }>,
-      curriculumItems: (curriculumResult.data ?? []) as Array<{ class_id: string; subject_id: string; weekly_lessons: number; active?: boolean | null }>,
+      curriculumItems: (curriculumResult.data ?? []) as Array<{ class_id: string; subject_id: string; weekly_lessons: number; is_complementary?: boolean | null; active?: boolean | null }>,
       offerings: offerings.map((offering) => ({ ...offering, active: true })),
       teacherSubjects: (skillsResult.data ?? []) as Array<{ teacher_profile_id: string; subject_id: string; active?: boolean | null }>,
       teacherAvailability: availability,
@@ -713,7 +713,7 @@ export const timetableAutomationService = {
     const [termsResult, classesResult, curriculumResult, offeringsResult, skillsResult, availability, slotsResult, roomsResult, subjectsResult, scheduleBreaks, enabledShifts] = await Promise.all([
       supabase.from('terms').select('id, academic_year_id, start_date, end_date').eq('academic_year_id', input.academicYearId).eq('active', true),
       supabase.from('classes').select('id, institution_id, academic_year_id, name, shift, capacity').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId).eq('active', true),
-      supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, lesson_duration_minutes').eq('institution_id', input.institutionId).eq('active', true),
+      supabase.from('class_curriculum_items').select('class_id, subject_id, weekly_lessons, lesson_duration_minutes, is_complementary').eq('institution_id', input.institutionId).eq('active', true),
       listActiveOfferings(input.institutionId),
       supabase.from('teacher_subjects').select('institution_id, teacher_profile_id, subject_id, active').eq('institution_id', input.institutionId),
       listTeacherAvailability(input.institutionId, true),
@@ -736,11 +736,19 @@ export const timetableAutomationService = {
       throw new Error('Nenhuma turma encontrada para o turno selecionado.');
     }
     const curriculumItems = curriculumResult.data ?? [];
+    const qualifiedSubjectIds = new Set(
+      (skillsResult.data ?? [])
+        .filter((skill) => skill.active !== false)
+        .map((skill) => skill.subject_id),
+    );
+    const generationCurriculumItems = curriculumItems.filter(
+      (item) => !item.is_complementary || qualifiedSubjectIds.has(item.subject_id),
+    );
     const termIds = (termsResult.data ?? []).map((term) => term.id);
     const setupDiagnostics = buildSetupDiagnostics({
       termIds,
       classes: classes.map((classRecord) => ({ id: classRecord.id, name: classRecord.name, shift: classRecord.shift })),
-      curriculumItems: curriculumItems.map((item) => ({ class_id: item.class_id, weekly_lessons: item.weekly_lessons })),
+      curriculumItems: generationCurriculumItems.map((item) => ({ class_id: item.class_id, weekly_lessons: item.weekly_lessons })),
       enabledShifts,
     });
     if (setupDiagnostics.length > 0) return buildInvalidDraft(setupDiagnostics, seed);
@@ -756,7 +764,7 @@ export const timetableAutomationService = {
       institutionId: input.institutionId,
       academicYearId: input.academicYearId,
       classes,
-      curriculumItems,
+      curriculumItems: generationCurriculumItems,
       offerings: offeringsResult,
       teacherSubjects: skillsResult.data ?? [],
       termIds,
@@ -773,7 +781,7 @@ export const timetableAutomationService = {
     const automaticSlots = await prepareAutomaticTimeSlots({
       institutionId: input.institutionId,
       classes,
-      curriculumItems,
+      curriculumItems: generationCurriculumItems,
       slots: slotsResult.data ?? [],
       schoolDays: preparationReport.policy.schoolDays,
       breaks: scheduleBreaks,
@@ -821,8 +829,10 @@ export const timetableAutomationService = {
       academicYearId: input.academicYearId,
       terms: (termsResult.data ?? []).map((term) => ({ id: term.id, academicYearId: term.academic_year_id, startDate: term.start_date, endDate: term.end_date })),
       classes: classes.map((item) => ({ id: item.id, institutionId: item.institution_id, academicYearId: item.academic_year_id, name: item.name, shift: item.shift, studentCount: preparationReport.classes.find((classRecord) => classRecord.id === item.id)?.students ?? 0 })),
-      curriculumItems: curriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
-      subjectOfferings: automaticAssignments.offerings.map((item) => ({ id: item.id, institutionId: input.institutionId, classId: item.class_id, subjectId: item.subject_id, teacherProfileId: item.teacher_profile_id, termId: item.term_id })),
+      curriculumItems: generationCurriculumItems.map((item) => ({ classId: item.class_id, subjectId: item.subject_id, weeklyLessons: item.weekly_lessons, lessonDurationMinutes: item.lesson_duration_minutes })),
+      subjectOfferings: automaticAssignments.offerings
+        .filter((item) => generationCurriculumItems.some((curriculum) => curriculum.class_id === item.class_id && curriculum.subject_id === item.subject_id))
+        .map((item) => ({ id: item.id, institutionId: input.institutionId, classId: item.class_id, subjectId: item.subject_id, teacherProfileId: item.teacher_profile_id, termId: item.term_id })),
       teacherSubjects: (skillsResult.data ?? []).map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, subjectId: item.subject_id, active: item.active })),
       teacherAvailability: availability.map((item) => ({ institutionId: item.institution_id, teacherProfileId: item.teacher_profile_id, dayOfWeek: item.day_of_week, startTime: item.start_time, endTime: item.end_time, active: item.active })),
       schoolTimeSlots: automaticSlots.slots.map((item) => ({ id: item.id, institutionId: item.institution_id, shift: item.shift, dayOfWeek: item.day_of_week, slotNumber: item.slot_number, startTime: item.start_time, endTime: item.end_time, active: item.active })),

@@ -472,6 +472,47 @@ function buildWeekdayCoverageDiagnostics(
   return diagnostics;
 }
 
+function buildWeeklyWorkloadDiagnostics(
+  input: TimetableGeneratorInput,
+  classes: Map<string, GeneratorClass>,
+  terms: Map<string, GeneratorTerm>,
+  offerings: GeneratorOffering[],
+  curriculumByKey: Map<string, GeneratorCurriculumItem>,
+  entries: GeneratorEntry[],
+): GeneratorDiagnostic[] {
+  const diagnostics: GeneratorDiagnostic[] = [];
+
+  for (const offering of offerings) {
+    const classRecord = classes.get(offering.classId);
+    const term = terms.get(offering.termId);
+    const curriculum = curriculumByKey.get(`${offering.classId}:${offering.subjectId}`);
+    if (!classRecord || !term || !curriculum) continue;
+
+    const generatedLessons = entries.filter(
+      (entry) =>
+        entry.subjectOfferingId === offering.id &&
+        entry.termId === offering.termId,
+    ).length;
+    if (generatedLessons === curriculum.weeklyLessons) continue;
+
+    const subjectLabel = input.subjectLabels?.[offering.subjectId] ?? offering.subjectId;
+    diagnostics.push({
+      code: 'WEEKLY_LESSONS_MISMATCH',
+      message: `${classRecord.name}: ${subjectLabel} ficou com ${generatedLessons} de ${curriculum.weeklyLessons} aulas no período.`,
+      classId: classRecord.id,
+      subjectId: offering.subjectId,
+      teacherProfileId: offering.teacherProfileId,
+      suggestions: [
+        'Revise a carga semanal da matriz curricular.',
+        'Amplie a disponibilidade do professor ou os horários do turno.',
+        'Gere uma nova proposta depois de corrigir a configuração.',
+      ],
+    });
+  }
+
+  return diagnostics;
+}
+
 function calculatePenalties(entries: GeneratorEntry[]): TimetableGeneratorResult['penalties'] {
   const sameSubjectDays = new Set<string>();
   let sameSubjectSameDay = 0;
@@ -944,6 +985,7 @@ export function generateTimetable(input: TimetableGeneratorInput): TimetableGene
   if (input.requireWeekdayCoverage) {
     diagnostics.push(...buildWeekdayCoverageDiagnostics(input, classes, demands, entries, allSlots));
   }
+  diagnostics.push(...buildWeeklyWorkloadDiagnostics(input, classes, terms, offerings, curriculumByKey, entries));
 
   const penalties = calculatePenalties(entries);
   const hardConflicts = diagnostics.length;
