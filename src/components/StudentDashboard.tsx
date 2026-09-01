@@ -195,6 +195,7 @@ function LoadingState() {
 function StudentTimetableView({
   institutionId,
   enrollment,
+  currentTermId,
 }: {
   institutionId: string;
   enrollment: {
@@ -203,10 +204,12 @@ function StudentTimetableView({
     shift: string | null;
     academic_year_name: string;
   } | null;
+  currentTermId?: string;
 }) {
   const timetableQuery = useStudentTimetable(
     institutionId,
     enrollment?.class_id,
+    currentTermId,
   );
   const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
 
@@ -462,6 +465,7 @@ export default function StudentDashboard() {
       <StudentTimetableView
         institutionId={institutionQuery.data}
         enrollment={activeEnrollment}
+        currentTermId={offerings[0]?.term_id}
       />
     );
   }

@@ -17,7 +17,7 @@ export const timetableKeys = {
   all: ['timetable'] as const,
   rooms: (institutionId: string) => [...timetableKeys.all, 'rooms', institutionId] as const,
   entries: (institutionId: string) => [...timetableKeys.all, 'entries', institutionId] as const,
-  classEntries: (institutionId: string, classId: string) => [...timetableKeys.entries(institutionId), 'class', classId] as const,
+  classEntries: (institutionId: string, classId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'class', classId, termId ?? 'current'] as const,
 };
 
 function invalidateTimetable(
@@ -101,11 +101,13 @@ export function useTimetableEntries(institutionId: string) {
 export function useStudentTimetable(
   institutionId: string | undefined,
   classId: string | undefined,
+  termId?: string,
 ) {
   return useQuery<TimetableEntryRow[]>({
     queryKey: timetableKeys.classEntries(
       institutionId ?? '',
       classId ?? '',
+      termId,
     ),
     queryFn: () => {
       if (!institutionId || !classId) {
@@ -115,6 +117,7 @@ export function useStudentTimetable(
       return timetableService.listByClass(
         institutionId,
         classId,
+        termId,
       );
     },
     enabled: Boolean(institutionId && classId),

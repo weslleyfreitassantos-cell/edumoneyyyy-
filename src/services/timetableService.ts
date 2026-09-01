@@ -336,13 +336,19 @@ export const timetableService = {
     if (error) throw mapTimetableError(error);
   },
 
-  async listByClass(institutionId: string, classId: string): Promise<TimetableEntryRow[]> {
-    const { data, error } = await supabase
+  async listByClass(institutionId: string, classId: string, termId?: string): Promise<TimetableEntryRow[]> {
+    let query = supabase
       .from('timetable_entries')
       .select(entrySelect)
       .eq('institution_id', institutionId)
       .eq('active', true)
-      .eq('subject_offerings.class_id', classId)
+      .eq('subject_offerings.class_id', classId);
+
+    if (termId) {
+      query = query.eq('term_id', termId);
+    }
+
+    const { data, error } = await query
       .order('day_of_week', { ascending: true })
       .order('start_time', { ascending: true });
 

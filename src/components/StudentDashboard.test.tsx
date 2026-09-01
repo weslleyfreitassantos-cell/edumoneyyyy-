@@ -175,7 +175,7 @@ describe('StudentDashboard', () => {
     expect(screen.getByText('Matemática')).toBeTruthy();
     expect(screen.getByText('07:00')).toBeTruthy();
     expect(screen.getByText('Prof. João')).toBeTruthy();
-    expect(useStudentTimetable).toHaveBeenCalledWith(institutionId, classId);
+    expect(useStudentTimetable).toHaveBeenCalledWith(institutionId, classId, undefined);
   });
 
   it('informa quando a turma ainda não tem grade publicada', () => {

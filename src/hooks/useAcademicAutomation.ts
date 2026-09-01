@@ -237,6 +237,7 @@ export function useDeleteTimetableVersion() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersionEntries(variables.institutionId, variables.versionId) }),
+        queryClient.invalidateQueries({ queryKey: ['timetable', 'entries', variables.institutionId] }),
       ]);
     },
   });

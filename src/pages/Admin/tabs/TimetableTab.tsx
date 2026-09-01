@@ -8,6 +8,7 @@ import { useAssignments } from '../../../hooks/useAssignments';
 import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableEntries, useCreateTimetableEntry, useUpdateTimetableEntry, useSetTimetableEntryActive } from '../../../hooks/useTimetable';
 import { timetableService, DAYS_OF_WEEK, dayLabel, type TimetableEntryRow, type RoomRow, type TimetableGrid } from '../../../services/timetableService';
+import type { AcademicYearRow } from '../../../services/academicStructureService';
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
 import { DataTable, type Column } from '../../../components/DataTable';
 import TimetableAutomationPanel from '../../../components/academic/TimetableAutomationPanel';
@@ -37,6 +38,17 @@ function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
   if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as Record<string, unknown>).message === 'string') return (error as Record<string, unknown>).message as string;
   return 'Não foi possível concluir a operação.';
+}
+
+function getPreferredTermId(year: AcademicYearRow | undefined): string {
+  if (!year) return 'all';
+
+  const activeTerms = year.terms.filter((term) => term.active);
+  if (activeTerms.length === 0) return 'all';
+
+  const today = new Date().toISOString().slice(0, 10);
+  return activeTerms.find((term) => term.start_date <= today && today <= term.end_date)?.id
+    ?? activeTerms[0].id;
 }
 
 function TimetableView({ grid, onEdit }: { grid: TimetableGrid; onEdit: (e: TimetableEntryRow) => void }) {
@@ -154,7 +166,7 @@ export default function TimetableTab() {
     const activeYear = getPreferredAcademicYear(years) ?? years[0];
     if (!activeYear) return;
     setYearFilter(activeYear.id);
-    setTermFilter(activeYear.terms.find((term) => term.active)?.id ?? 'all');
+    setTermFilter(getPreferredTermId(activeYear));
   }, [yearFilter, years]);
 
   const filteredEntries = useMemo(() => {

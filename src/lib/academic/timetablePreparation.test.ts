@@ -9,6 +9,7 @@ const baseInput = {
   classes: [{ id: 'class-1', name: '1A', shift: 'MATUTINO', capacity: 30, active: true, academic_year_id: 'year-1' }],
   enrollments: [],
   curriculumItems: [{ class_id: 'class-1', subject_id: 'subject-1', weekly_lessons: 5, active: true }],
+  subjectNames: { 'subject-1': 'Matemática' },
   offerings: [{ class_id: 'class-1', subject_id: 'subject-1', teacher_profile_id: 'teacher-1', term_id: 'term-1', active: true }],
   teacherSubjects: [{ teacher_profile_id: 'teacher-1', subject_id: 'subject-1', active: true }],
   teacherAvailability: [{ teacher_profile_id: 'teacher-1', day_of_week: 1, start_time: '07:00', end_time: '12:00', active: true }],
@@ -78,6 +79,22 @@ describe('buildTimetablePreparationReport', () => {
     expect(report.ready).toBe(true);
     expect(report.blockers).toHaveLength(0);
     expect(report.warnings.some((item) => item.code === 'COMPLEMENTARY_TEACHER_MISSING')).toBe(true);
+    expect(report.warnings.find((item) => item.code === 'COMPLEMENTARY_TEACHER_MISSING')?.message).toContain('Matemática');
+    expect(report.warnings.find((item) => item.code === 'COMPLEMENTARY_TEACHER_MISSING')?.message).not.toContain('subject-1');
+  });
+
+  it('não exibe o identificador técnico quando a disciplina não está no catálogo', () => {
+    const report = buildTimetablePreparationReport({
+      ...baseInput,
+      subjectNames: {},
+      curriculumItems: [{ ...baseInput.curriculumItems[0], is_complementary: true }],
+      offerings: [],
+      teacherSubjects: [],
+    });
+
+    const warning = report.warnings.find((item) => item.code === 'COMPLEMENTARY_TEACHER_MISSING');
+    expect(warning?.message).toContain('disciplina não identificada');
+    expect(warning?.message).not.toContain('subject-1');
   });
 
   it('permite geração sem disponibilidade quando a política desliga essa exigência', () => {

@@ -36,6 +36,7 @@ export interface TimetablePreparationInput {
   classes: Array<{ id: string; name: string; shift: string | null; capacity: number; active?: boolean | null; academic_year_id?: string }>;
   enrollments: Array<{ class_id: string; academic_year_id: string; active?: boolean | null; status?: string | null }>;
   curriculumItems: Array<{ class_id: string; subject_id: string; weekly_lessons: number; is_complementary?: boolean | null; active?: boolean | null }>;
+  subjectNames?: Record<string, string>;
   offerings: Array<{ class_id: string; subject_id: string; teacher_profile_id: string; term_id: string; active?: boolean | null }>;
   teacherSubjects: Array<{ teacher_profile_id: string; subject_id: string; active?: boolean | null }>;
   teacherAvailability: Array<{ teacher_profile_id: string; day_of_week: number; start_time: string; end_time: string; active?: boolean | null }>;
@@ -87,6 +88,11 @@ function isActiveEnrollment(enrollment: TimetablePreparationInput['enrollments']
 
 function issue(code: string, severity: PreparationIssueSeverity, message: string, action: string): PreparationIssue {
   return { code, severity, message, action };
+}
+
+function displaySubjectName(input: TimetablePreparationInput, subjectId: string): string {
+  const name = input.subjectNames?.[subjectId]?.trim();
+  return name || 'disciplina não identificada';
 }
 
 function compatibleSlotsForClass(
@@ -181,14 +187,15 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
     }
 
     for (const curriculum of classCurriculum) {
+      const subjectName = displaySubjectName(input, curriculum.subject_id);
       const offerings = activeOfferings.filter((offering) => offering.class_id === classRecord.id && offering.subject_id === curriculum.subject_id);
       const qualifiedTeachers = [...new Set(activeSkills.filter((skill) => skill.subject_id === curriculum.subject_id).map((skill) => skill.teacher_profile_id))];
       if (qualifiedTeachers.length === 0) {
         if (curriculum.is_complementary) {
-          classIssues.push(issue('COMPLEMENTARY_TEACHER_MISSING', 'WARNING', `${classRecord.name} possui a matéria complementar ${curriculum.subject_id} sem professor qualificado; ela ficará fora da geração.`, 'Vincule um professor habilitado se essa matéria precisar entrar na grade.'));
+          classIssues.push(issue('COMPLEMENTARY_TEACHER_MISSING', 'WARNING', `${classRecord.name} possui a matéria complementar ${subjectName} sem professor qualificado; ela ficará fora da geração.`, 'Vincule um professor habilitado se essa matéria precisar entrar na grade.'));
           continue;
         }
-        classIssues.push(issue('TEACHER_COVERAGE_MISSING', 'BLOCKER', `${classRecord.name} não possui professor vinculado à matéria ${curriculum.subject_id}.`, 'Vincule um professor à matéria em Usuários > Professores.'));
+        classIssues.push(issue('TEACHER_COVERAGE_MISSING', 'BLOCKER', `${classRecord.name} não possui professor vinculado à matéria ${subjectName}.`, 'Vincule um professor à matéria em Usuários > Professores.'));
         continue;
       }
       const qualifiedTeacherIds = new Set(qualifiedTeachers);
@@ -197,7 +204,7 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
         classIssues.push(issue(
           'TEACHER_SUBJECT_NOT_AUTHORIZED',
           'BLOCKER',
-          `${classRecord.name} possui uma atribuição da matéria ${curriculum.subject_id} com professor não habilitado.`,
+          `${classRecord.name} possui uma atribuição da matéria ${subjectName} com professor não habilitado.`,
           'Habilite a matéria para o professor ou troque o professor da atribuição.',
         ));
         continue;
@@ -220,11 +227,11 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
         ).length;
         const teacherAvailabilityCounts = teacherIds.map((teacherId) => availableSlotCount(teacherId));
         if (teacherAvailabilityCounts.length === 0 || teacherAvailabilityCounts.every((count) => count === 0)) {
-          classIssues.push(issue('TEACHER_AVAILABILITY_MISSING', 'BLOCKER', `${classRecord.name} não possui disponibilidade compatível para a matéria ${curriculum.subject_id}.`, 'Cadastre a disponibilidade semanal do professor.'));
+          classIssues.push(issue('TEACHER_AVAILABILITY_MISSING', 'BLOCKER', `${classRecord.name} não possui disponibilidade compatível para a matéria ${subjectName}.`, 'Cadastre a disponibilidade semanal do professor.'));
         } else if (compatibleSlots.length >= weeklyLessons && (offerings.length > 0
           ? teacherAvailabilityCounts.some((count) => count < weeklyLessons)
           : teacherAvailabilityCounts.every((count) => count < weeklyLessons))) {
-          classIssues.push(issue('TEACHER_AVAILABILITY_CAPACITY', 'BLOCKER', `${classRecord.name} não possui disponibilidade suficiente para cumprir as ${weeklyLessons} aulas semanais da matéria ${curriculum.subject_id}.`, 'Amplie a disponibilidade do professor ou distribua a matéria entre mais professores.'));
+          classIssues.push(issue('TEACHER_AVAILABILITY_CAPACITY', 'BLOCKER', `${classRecord.name} não possui disponibilidade suficiente para cumprir as ${weeklyLessons} aulas semanais da matéria ${subjectName}.`, 'Amplie a disponibilidade do professor ou distribua a matéria entre mais professores.'));
         }
       }
     }

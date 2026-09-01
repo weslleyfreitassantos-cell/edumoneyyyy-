@@ -430,8 +430,13 @@ export default function TimetableAutomationPanel({
 
   async function removeVersion(versionId: string): Promise<void> {
     const version = versions.find((item) => item.id === versionId);
-    if (!version || version.status !== 'DRAFT') return;
-    if (!window.confirm('Excluir esta proposta de grade? Esta ação não pode ser desfeita.')) return;
+    if (!version || (version.status !== 'DRAFT' && version.status !== 'PUBLISHED')) return;
+
+    const isPublished = version.status === 'PUBLISHED';
+    const confirmation = isPublished
+      ? 'Excluir a grade publicada? Ela deixará de aparecer para alunos e responsáveis. Esta ação não pode ser desfeita.'
+      : 'Excluir esta proposta de grade? Esta ação não pode ser desfeita.';
+    if (!window.confirm(confirmation)) return;
 
     setMessage(null);
     setError(null);
@@ -446,7 +451,7 @@ export default function TimetableAutomationPanel({
         setEditingEntry(null);
         setEntryDraft(null);
       }
-      setMessage('Proposta excluída.');
+      setMessage(isPublished ? 'Grade publicada removida.' : 'Proposta excluída.');
     } catch (deleteError) {
       setError(getErrorMessage(deleteError));
     }
@@ -610,8 +615,8 @@ export default function TimetableAutomationPanel({
                     {version.status === 'DRAFT' && <>
                       <button type="button" onClick={() => void generate(version.id)} disabled={generateMutation.isPending} className="font-semibold text-blue-700 disabled:opacity-50">Regenerar grade</button>
                       <button type="button" onClick={() => void publish(version.id)} disabled={publishMutation.isPending} className="font-semibold text-emerald-700 disabled:opacity-50">Publicar grade</button>
-                      <button type="button" onClick={() => void removeVersion(version.id)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50">Excluir proposta</button>
                     </>}
+                    {(version.status === 'DRAFT' || version.status === 'PUBLISHED') && <button type="button" onClick={() => void removeVersion(version.id)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50">{version.status === 'PUBLISHED' ? 'Excluir grade' : 'Excluir proposta'}</button>}
                   </div></td>
                 </tr>
               ))}

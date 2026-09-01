@@ -194,6 +194,26 @@ describe('timetableService.listByClass', () => {
       UUID,
     );
   });
+
+  it('limita a grade da turma ao periodo informado', async () => {
+    const eq3 = vi.fn(() => ({
+      order: vi.fn(() => ({
+        order: vi.fn().mockResolvedValue({
+          data: [baseEntry],
+          error: null,
+        }),
+      })),
+    }));
+    const classFilter = vi.fn(() => ({ eq: eq3 }));
+    const activeFilter = vi.fn(() => ({ eq: classFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    await timetableService.listByClass(UUID, UUID, 'term-current');
+
+    expect(eq3).toHaveBeenCalledWith('term_id', 'term-current');
+  });
 });
 
 describe('timetableService.createEntry', () => {

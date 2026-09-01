@@ -480,7 +480,7 @@ export const timetableAutomationService = {
     academicYearId: string;
     shift?: string;
   }): Promise<TimetablePreparationReport> {
-    const [policy, termsResult, classesResult, enrollmentsResult, curriculumResult, offerings, skillsResult, availability, slotsResult, scheduleBreaks, roomsResult, enabledShifts] = await Promise.all([
+    const [policy, termsResult, classesResult, enrollmentsResult, curriculumResult, offerings, skillsResult, availability, slotsResult, scheduleBreaks, roomsResult, enabledShifts, subjectsResult] = await Promise.all([
       academicPolicyService.getActivePolicy(input.institutionId, input.academicYearId),
       supabase.from('terms').select('id, active').eq('academic_year_id', input.academicYearId),
       supabase.from('classes').select('id, name, shift, capacity, active, academic_year_id').eq('institution_id', input.institutionId).eq('academic_year_id', input.academicYearId),
@@ -493,8 +493,9 @@ export const timetableAutomationService = {
       listScheduleBreaksForGenerator(input.institutionId),
       supabase.from('rooms').select('id, class_id, capacity, active').eq('institution_id', input.institutionId),
       academicShiftSettingsService.getEnabledShifts(input.institutionId),
+      supabase.from('subjects').select('id, name').eq('institution_id', input.institutionId),
     ]);
-    const failed = [termsResult, classesResult, enrollmentsResult, curriculumResult, skillsResult, slotsResult, roomsResult].find((result) => result.error);
+    const failed = [termsResult, classesResult, enrollmentsResult, curriculumResult, skillsResult, slotsResult, roomsResult, subjectsResult].find((result) => result.error);
     if (failed?.error) throw failed.error;
 
     return buildTimetablePreparationReport({
@@ -507,6 +508,9 @@ export const timetableAutomationService = {
       classes: (classesResult.data ?? []) as Array<{ id: string; name: string; shift: string | null; capacity: number; active?: boolean | null; academic_year_id?: string }>,
       enrollments: (enrollmentsResult.data ?? []) as Array<{ class_id: string; academic_year_id: string; active?: boolean | null; status?: string | null }>,
       curriculumItems: (curriculumResult.data ?? []) as Array<{ class_id: string; subject_id: string; weekly_lessons: number; is_complementary?: boolean | null; active?: boolean | null }>,
+      subjectNames: Object.fromEntries(
+        ((subjectsResult.data ?? []) as Array<{ id: string; name: string | null }>).map((subject) => [subject.id, subject.name ?? '']),
+      ),
       offerings: offerings.map((offering) => ({ ...offering, active: true })),
       teacherSubjects: (skillsResult.data ?? []) as Array<{ teacher_profile_id: string; subject_id: string; active?: boolean | null }>,
       teacherAvailability: availability,
@@ -731,13 +735,17 @@ export const timetableAutomationService = {
       .maybeSingle();
     if (versionError) throw versionError;
     if (!version) throw new Error('A proposta não foi encontrada. Atualize a lista e tente novamente.');
-    if (version.status !== 'DRAFT') {
-      throw new Error('Somente propostas em rascunho podem ser excluídas.');
+    if (version.status === 'ARCHIVED') {
+      throw new Error('Somente grades em rascunho ou publicadas podem ser excluídas.');
     }
 
-    const { error } = await supabase.rpc('delete_timetable_draft', {
-      p_version_id: versionId,
-    });
+    const { error } = version.status === 'PUBLISHED'
+      ? await supabase.rpc('delete_timetable_version', {
+        p_version_id: versionId,
+      })
+      : await supabase.rpc('delete_timetable_draft', {
+        p_version_id: versionId,
+      });
     if (error) throw error;
   },
 
