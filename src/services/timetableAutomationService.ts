@@ -63,6 +63,16 @@ export interface GeneratedDraft extends TimetableGeneratorResult {
 
 export type { TimetablePreparationReport };
 
+const MAX_IDS_PER_IN_QUERY = 100;
+
+function chunkValues<T>(values: T[], size: number): T[][] {
+  const chunks: T[][] = [];
+  for (let index = 0; index < values.length; index += size) {
+    chunks.push(values.slice(index, index + size));
+  }
+  return chunks;
+}
+
 function buildSetupDiagnostics(input: {
   termIds: string[];
   classes: Array<{ id: string; name: string; shift: string | null }>;
@@ -572,19 +582,13 @@ export const timetableAutomationService = {
     const offeringIds = [...new Set(rows.map((row) => row.subject_offering_id))];
     const termIds = [...new Set(rows.map((row) => row.term_id))];
 
-    const [classesResult, offeringsResult, termsResult] = await Promise.all([
+    const [classesResult, termsResult] = await Promise.all([
       classIds.length > 0
         ? supabase
           .from('classes')
           .select('id, name, shift')
           .eq('institution_id', institutionId)
           .in('id', classIds)
-        : Promise.resolve({ data: [], error: null }),
-      offeringIds.length > 0
-        ? supabase
-          .from('subject_offerings')
-          .select('id, subject_id, teacher_profile_id')
-          .in('id', offeringIds)
         : Promise.resolve({ data: [], error: null }),
       termIds.length > 0
         ? supabase
@@ -594,10 +598,20 @@ export const timetableAutomationService = {
         : Promise.resolve({ data: [], error: null }),
     ]);
     if (classesResult.error) throw classesResult.error;
-    if (offeringsResult.error) throw offeringsResult.error;
     if (termsResult.error) throw termsResult.error;
 
-    const offerings = (offeringsResult.data ?? []) as Array<{
+    const offeringsResults = await Promise.all(
+      chunkValues(offeringIds, MAX_IDS_PER_IN_QUERY).map((ids) =>
+        supabase
+          .from('subject_offerings')
+          .select('id, subject_id, teacher_profile_id')
+          .in('id', ids),
+      ),
+    );
+    const offeringsError = offeringsResults.find((result) => result.error)?.error;
+    if (offeringsError) throw offeringsError;
+
+    const offerings = offeringsResults.flatMap((result) => result.data ?? []) as Array<{
       id: string;
       subject_id: string;
       teacher_profile_id: string;
