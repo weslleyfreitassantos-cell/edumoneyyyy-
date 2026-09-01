@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useMemo,
   useState,
   type FormEvent,
@@ -8,6 +9,11 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
 import { Upload } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -46,6 +52,8 @@ const emptyDraft: TeacherDraft = {
   subject_ids: [],
   primary_subject_id: '',
 };
+
+const TEACHERS_PAGE_SIZE = 6;
 
 function getErrorMessage(
   error: unknown,
@@ -125,6 +133,9 @@ export default function TeachersTab() {
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [isSpreadsheetImportOpen, setIsSpreadsheetImportOpen] =
     useState(false);
 
@@ -178,6 +189,41 @@ export default function TeachersTab() {
         teacherCount: teacherCountBySubject.get(subject.id) ?? 0,
       }));
   }, [subjectsQuery.data, teachersQuery.data]);
+
+  const teachers = teachersQuery.data ?? [];
+  const filteredTeachers = useMemo(() => {
+    const query = normalizeListSearch(searchTerm);
+
+    if (!query) {
+      return teachers;
+    }
+
+    return teachers.filter((teacher) =>
+      normalizeListSearch([
+        teacher.profiles?.full_name,
+        teacher.profiles?.email,
+        ...teacher.subjects.map((subject) => subject.name),
+      ].filter(Boolean).join(' ')).includes(query),
+    );
+  }, [searchTerm, teachers]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredTeachers.length / TEACHERS_PAGE_SIZE),
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
+  const paginatedTeachers = filteredTeachers.slice(
+    (currentPage - 1) * TEACHERS_PAGE_SIZE,
+    currentPage * TEACHERS_PAGE_SIZE,
+  );
 
   const columns: Column<TeacherRow>[] = [
     {
@@ -509,6 +555,14 @@ export default function TeachersTab() {
         {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-amber-700">Cadastre pelo menos um horário da escola para habilitar o preenchimento em lote.</p>}
       </section>
 
+      <ListSearch
+        id="teachers-search"
+        label="Buscar professor"
+        placeholder="Nome, e-mail ou disciplina"
+        value={searchTerm}
+        onChange={setSearchTerm}
+      />
+
       <DataTable
         title="Professores"
         addLabel="Novo professor"
@@ -522,11 +576,15 @@ export default function TeachersTab() {
             Importar Excel
           </button>
         )}
-        data={teachersQuery.data ?? []}
+        data={paginatedTeachers}
         columns={columns}
         isLoading={teachersQuery.isLoading}
         onAdd={openCreateModal}
-        emptyMessage="Nenhum professor cadastrado nesta instituição."
+        emptyMessage={
+          filteredTeachers.length === 0 && teachers.length > 0
+            ? 'Nenhum professor encontrado.'
+            : 'Nenhum professor cadastrado nesta instituição.'
+        }
         renderActions={(teacher) => {
           const isChangingStatus =
             statusMutation.isPending &&
@@ -557,6 +615,13 @@ export default function TeachersTab() {
             </div>
           );
         }}
+      />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={TEACHERS_PAGE_SIZE}
+        totalItems={filteredTeachers.length}
+        onPageChange={setCurrentPage}
       />
 
       {isSpreadsheetImportOpen && institutionId && (

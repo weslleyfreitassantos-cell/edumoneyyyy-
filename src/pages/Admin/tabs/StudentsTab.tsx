@@ -1,4 +1,6 @@
 ﻿import {
+  useEffect,
+  useMemo,
   useState,
   type FormEvent,
 } from 'react';
@@ -15,6 +17,12 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
@@ -55,6 +63,8 @@ const emptyGuardianLinkDraft: GuardianLinkDraft = {
   relationship: '',
   is_primary: false,
 };
+
+const STUDENTS_PAGE_SIZE = 6;
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
@@ -174,6 +184,9 @@ export default function StudentsTab() {
   const [activeView, setActiveView] =
     useState<StudentManagementView>('students');
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [isFullWizardOpen, setIsFullWizardOpen] =
     useState(false);
 
@@ -222,6 +235,42 @@ export default function StudentsTab() {
         user.active &&
         user.profile?.active !== false,
     );
+
+  const students = studentsQuery.data ?? [];
+  const filteredStudents = useMemo(() => {
+    const query = normalizeListSearch(searchTerm);
+
+    if (!query) {
+      return students;
+    }
+
+    return students.filter((student) =>
+      normalizeListSearch([
+        student.registration_number,
+        student.profiles?.full_name,
+        student.profiles?.email,
+        student.cpf,
+      ].filter(Boolean).join(' ')).includes(query),
+    );
+  }, [searchTerm, students]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredStudents.length / STUDENTS_PAGE_SIZE),
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
+  const paginatedStudents = filteredStudents.slice(
+    (currentPage - 1) * STUDENTS_PAGE_SIZE,
+    currentPage * STUDENTS_PAGE_SIZE,
+  );
 
   function openGuardianLinkModal(
     student: StudentRow,
@@ -458,6 +507,14 @@ export default function StudentsTab() {
           </div>
         )}
 
+      <ListSearch
+        id="students-search"
+        label="Buscar aluno"
+        placeholder="Nome, e-mail, RA ou CPF"
+        value={searchTerm}
+        onChange={setSearchTerm}
+      />
+
       <DataTable
         title="Alunos"
         addLabel="Novo aluno"
@@ -471,11 +528,15 @@ export default function StudentsTab() {
             Importar Excel
           </button>
         )}
-        data={studentsQuery.data ?? []}
+        data={paginatedStudents}
         columns={columns}
         isLoading={studentsQuery.isLoading}
         onAdd={openFullWizard}
-        emptyMessage="Nenhum aluno cadastrado nesta instituição."
+        emptyMessage={
+          filteredStudents.length === 0 && students.length > 0
+            ? 'Nenhum aluno encontrado.'
+            : 'Nenhum aluno cadastrado nesta instituição.'
+        }
         renderActions={(student) => {
           const isChangingStatus =
             statusMutation.isPending &&
@@ -530,6 +591,13 @@ export default function StudentsTab() {
             </div>
           );
         }}
+      />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={STUDENTS_PAGE_SIZE}
+        totalItems={filteredStudents.length}
+        onPageChange={setCurrentPage}
       />
 
       {isFullWizardOpen && institutionId && (

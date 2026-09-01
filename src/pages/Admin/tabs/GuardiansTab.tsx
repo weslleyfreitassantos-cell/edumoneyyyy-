@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useState,
   type FormEvent,
 } from 'react';
@@ -7,6 +8,12 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -50,6 +57,8 @@ const emptyDraft: GuardianDraft = {
   email: '',
   student_links: [{ ...emptyLinkDraft }],
 };
+
+const GUARDIANS_PAGE_SIZE = 6;
 
 function getErrorMessage(
   error: unknown,
@@ -100,6 +109,9 @@ export default function GuardiansTab() {
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [formData, setFormData] =
     useState<GuardianDraft>({
       ...emptyDraft,
@@ -120,6 +132,43 @@ export default function GuardiansTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
+
+  const guardians = guardiansQuery.data ?? [];
+  const filteredGuardians = guardians.filter((guardian) => {
+    const query = normalizeListSearch(searchTerm);
+
+    if (!query) {
+      return true;
+    }
+
+    return normalizeListSearch([
+      guardian.full_name,
+      guardian.email,
+      ...guardian.links.flatMap((link) => [
+        link.student_name,
+        link.registration_number,
+        link.relationship,
+      ]),
+    ].filter(Boolean).join(' ')).includes(query);
+  });
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredGuardians.length / GUARDIANS_PAGE_SIZE),
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
+  const paginatedGuardians = filteredGuardians.slice(
+    (currentPage - 1) * GUARDIANS_PAGE_SIZE,
+    currentPage * GUARDIANS_PAGE_SIZE,
+  );
 
   const columns: Column<GuardianRow>[] = [
     {
@@ -394,17 +443,29 @@ export default function GuardiansTab() {
         </div>
       )}
 
+      <ListSearch
+        id="guardians-search"
+        label="Buscar responsável"
+        placeholder="Nome, e-mail ou aluno vinculado"
+        value={searchTerm}
+        onChange={setSearchTerm}
+      />
+
       <DataTable
         title="Responsáveis"
         addLabel="Novo responsável"
-        data={guardiansQuery.data ?? []}
+        data={paginatedGuardians}
         columns={columns}
         isLoading={
           guardiansQuery.isLoading ||
           studentsQuery.isLoading
         }
         onAdd={openCreateModal}
-        emptyMessage="Nenhum responsável vinculado aos alunos desta instituição."
+        emptyMessage={
+          filteredGuardians.length === 0 && guardians.length > 0
+            ? 'Nenhum responsável encontrado.'
+            : 'Nenhum responsável vinculado aos alunos desta instituição.'
+        }
         renderActions={(guardian) => (
           <button
             type="button"
@@ -416,6 +477,13 @@ export default function GuardiansTab() {
             Adicionar vínculo
           </button>
         )}
+      />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={GUARDIANS_PAGE_SIZE}
+        totalItems={filteredGuardians.length}
+        onPageChange={setCurrentPage}
       />
 
       {isModalOpen && (
