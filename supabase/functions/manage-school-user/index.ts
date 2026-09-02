@@ -512,14 +512,19 @@ async function handleUpdateStudentIdentity(
 
   if (existingProfileError) throw existingProfileError;
 
-  const { data: emailOwner, error: emailOwnerError } = await ctx.supabaseAdmin
+  const { data: emailOwners, error: emailOwnerError } = await ctx.supabaseAdmin
     .from("profiles")
-    .select("id")
-    .eq("email", input.email)
+    .select("id, email")
+    .ilike("email", input.email)
     .neq("id", student.profile_id)
-    .maybeSingle();
+    .limit(10);
 
   if (emailOwnerError) throw emailOwnerError;
+  const emailOwner = (emailOwners ?? []).find(
+    (profile: { id: string; email: string | null }) =>
+      profile.email?.trim().toLowerCase() === input.email,
+  );
+
   if (emailOwner) {
     throw new ManageSchoolUserError({
       status: 409,

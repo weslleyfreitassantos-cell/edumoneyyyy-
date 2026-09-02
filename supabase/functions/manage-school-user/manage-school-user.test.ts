@@ -37,6 +37,12 @@ describe('manage-school-user', () => {
     expect(source).toContain('.eq("institution_id", input.institutionId)');
   });
 
+  it('rejeita e-mail já usado mesmo quando a capitalização é diferente', () => {
+    expect(source).toContain('.ilike("email", input.email)');
+    expect(source).toContain('profile.email?.trim().toLowerCase() === input.email');
+    expect(source).toContain('code: "EMAIL_ALREADY_IN_USE"');
+  });
+
   it('protege historico academico e limita vinculos de guardianship ao tenant', () => {
     expect(source).toContain('USER_HAS_RELATED_RECORDS');
     expect(source).toContain('.in("student_id", ownStudentIds)');
