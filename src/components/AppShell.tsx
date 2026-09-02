@@ -445,6 +445,9 @@ export default function AppShell({
 
   const currentRole =
     mapPlatformRole(profile.platform_role) ??
+    mapDatabaseRole(
+      institutionContext.currentRole ?? '',
+    ) ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {

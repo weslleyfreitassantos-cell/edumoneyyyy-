@@ -113,6 +113,36 @@ function isAccountStatus(
   ].includes(value);
 }
 
+const institutionRolePriority: Record<
+  CurrentDatabaseRole,
+  number
+> = {
+  ADMIN: 600,
+  DIRECTOR: 500,
+  SECRETARY: 400,
+  TEACHER: 300,
+  GUARDIAN: 200,
+  STUDENT: 100,
+};
+
+function shouldPreferInstitutionAccess(
+  candidate: UserInstitution,
+  current: UserInstitution,
+): boolean {
+  if (current.accessSource === 'account_owner') {
+    return false;
+  }
+
+  return (
+    institutionRolePriority[
+      candidate.effectiveRole
+    ] >
+    institutionRolePriority[
+      current.effectiveRole
+    ]
+  );
+}
+
 function normalizeInstitution(
   institution: InstitutionRelation | null,
 ): InstitutionSummary | null {
@@ -427,7 +457,18 @@ export const institutionService = {
       const item =
         normalizeMembershipInstitution(row);
 
-      if (!item || institutions.has(item.institution.id)) {
+      if (!item) {
+        continue;
+      }
+
+      const current = institutions.get(
+        item.institution.id,
+      );
+
+      if (
+        current &&
+        !shouldPreferInstitutionAccess(item, current)
+      ) {
         continue;
       }
 

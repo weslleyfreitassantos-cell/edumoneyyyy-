@@ -503,6 +503,29 @@ describe('AppShell', () => {
     ).toBeNull();
   });
 
+  it('usa o papel do vínculo da instituição selecionada', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'STUDENT',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderShell('/dashboard');
+
+    expect(
+      screen.getByRole('link', {
+        name: /visão geral/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /^dashboard$/i,
+      }),
+    ).toBeNull();
+  });
+
   it('abre e fecha o drawer mobile pelo botao com foco restaurado', async () => {
     renderShell('/dashboard');
 

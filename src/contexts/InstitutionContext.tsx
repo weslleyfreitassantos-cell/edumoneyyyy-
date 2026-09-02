@@ -639,3 +639,7 @@ export function useInstitution(): InstitutionContextType {
 
   return context;
 }
+
+export function useOptionalInstitution(): InstitutionContextType | null {
+  return useContext(InstitutionContext);
+}

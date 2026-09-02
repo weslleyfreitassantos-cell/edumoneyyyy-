@@ -46,12 +46,12 @@ describe('invite-school-user', () => {
     expect(source).toContain('role: input.role');
   });
 
-  it('reuses existing users and avoids duplicated links', () => {
+  it('rejects an email already registered instead of reusing the user', () => {
     expect(source).toContain('listUsers');
-    expect(source).toContain('reusedExistingUser');
-    expect(source).toContain('getOrCreateMembership');
-    expect(source).toContain('getOrCreateGuardianship');
-    expect(source).toContain('getOrCreateStudent');
+    expect(source).toContain('if (existingAuthUser || existingProfile)');
+    expect(source).toContain('code: "EMAIL_ALREADY_REGISTERED"');
+    expect(source).toContain('Este e-mail ja esta cadastrado.');
+    expect(source).not.toContain('if (reusedExistingUser)');
   });
 
   it('has a bounded per-requester rate limit', () => {

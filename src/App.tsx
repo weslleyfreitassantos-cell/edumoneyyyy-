@@ -320,6 +320,8 @@ function InvalidRolePage({
 
 function DashboardContent() {
   const { profile, signOut } = useAuth();
+  const { currentRole: institutionRole } =
+    useInstitution();
 
   if (!profile) {
     return (
@@ -332,6 +334,7 @@ function DashboardContent() {
 
   const currentRole =
     mapPlatformRole(profile.platform_role) ??
+    mapDatabaseRole(institutionRole ?? '') ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {

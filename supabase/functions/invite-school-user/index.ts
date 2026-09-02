@@ -726,7 +726,6 @@ export default {
       const existingProfile = ((existingProfileData ?? []) as ExistingProfile[]).find(
         (profile) => normalizeEmail(profile.email) === input.email,
       ) ?? null;
-      const reusedExistingUser = Boolean(existingAuthUser || existingProfile);
 
       if (existingProfile?.platform_role === "SUPER_ADMIN") {
         throw new InviteError({
@@ -766,71 +765,60 @@ export default {
         }
       }
 
+      if (existingAuthUser || existingProfile) {
+        throw new InviteError({
+          status: 409,
+          code: "EMAIL_ALREADY_REGISTERED",
+          message: "Ja existe um usuario cadastrado com este e-mail.",
+          fieldErrors: { email: "Este e-mail ja esta cadastrado." },
+        });
+      }
+
       let generatedPassword: string | undefined;
       let profileId: string;
 
-      if (reusedExistingUser) {
-        profileId = existingProfile?.id ?? existingAuthUser!.id;
-        if (!existingProfile) {
-          const { error: profileInsertError } = await ctx.supabaseAdmin
-            .from("profiles")
-            .insert({
-              id: profileId,
-              full_name: input.fullName,
-              email: input.email,
-              phone: input.phone ?? null,
-              role: input.role,
-              platform_role: "USER",
-              avatar_url: null,
-              active: true,
-            });
-          if (profileInsertError) throw profileInsertError;
-          rollback.createdProfileId = profileId;
-        }
-      } else {
-        generatedPassword = generateSecurePassword();
-        const { data: createdAuth, error: createAuthError } = await ctx.supabaseAdmin.auth.admin.createUser({
-          email: input.email,
-          password: generatedPassword,
-          email_confirm: true,
-          user_metadata: {
-            full_name: input.fullName,
-            role: input.role,
-            institution_id: activeInstitution.id,
-            institution_name: activeInstitution.name,
-          },
-        });
+      generatedPassword = generateSecurePassword();
+      const { data: createdAuth, error: createAuthError } = await ctx.supabaseAdmin.auth.admin.createUser({
+        email: input.email,
+        password: generatedPassword,
+        email_confirm: true,
+        user_metadata: {
+          full_name: input.fullName,
+          role: input.role,
+          institution_id: activeInstitution.id,
+          institution_name: activeInstitution.name,
+        },
+      });
 
-        if (createAuthError || !createdAuth.user) {
-          if (isDuplicateAuthError(createAuthError?.message)) {
-            throw new InviteError({
-              status: 409,
-              code: "AUTH_USER_ALREADY_EXISTS",
-              message: "Ja existe um usuario cadastrado com este e-mail.",
-              fieldErrors: { email: "E-mail ja cadastrado." },
-            });
-          }
-          throw createAuthError ?? new Error("Nao foi possivel criar o usuario de autenticacao.");
-        }
-
-        profileId = createdAuth.user.id;
-        rollback.createdAuthUserId = profileId;
-
-        const { error: profileInsertError } = await ctx.supabaseAdmin
-          .from("profiles")
-          .insert({
-            id: profileId,
-            full_name: input.fullName,
-            email: input.email,
-            phone: input.phone ?? null,
-            role: input.role,
-            platform_role: "USER",
-            avatar_url: null,
-            active: true,
+      if (createAuthError || !createdAuth.user) {
+        if (isDuplicateAuthError(createAuthError?.message)) {
+          throw new InviteError({
+            status: 409,
+            code: "EMAIL_ALREADY_REGISTERED",
+            message: "Ja existe um usuario cadastrado com este e-mail.",
+            fieldErrors: { email: "Este e-mail ja esta cadastrado." },
           });
-        if (profileInsertError) throw profileInsertError;
-        rollback.createdProfileId = profileId;
+        }
+        throw createAuthError ?? new Error("Nao foi possivel criar o usuario de autenticacao.");
       }
+
+      profileId = createdAuth.user.id;
+      rollback.createdAuthUserId = profileId;
+
+      const { error: profileInsertError } = await ctx.supabaseAdmin
+        .from("profiles")
+        .insert({
+          id: profileId,
+          full_name: input.fullName,
+          email: input.email,
+          phone: input.phone ?? null,
+          role: input.role,
+          platform_role: "USER",
+          avatar_url: null,
+          active: true,
+        });
+      if (profileInsertError) throw profileInsertError;
+      rollback.createdProfileId = profileId;
 
       const membershipId = await getOrCreateMembership(
         ctx.supabaseAdmin,
@@ -916,7 +904,7 @@ export default {
             profileId,
             membershipId,
             email: input.email,
-            reusedExistingUser,
+            reusedExistingUser: false,
             providerCode: publicEmailError.code,
           },
         });
@@ -934,10 +922,8 @@ export default {
           ...(studentResult ? { student: studentResult } : {}),
           ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
           invitationSent: true,
-          reusedExistingUser,
-          message: reusedExistingUser
-            ? "Novo acesso adicionado e e-mail enviado com sua senha atual."
-            : "Acesso criado e credenciais enviadas por e-mail.",
+          reusedExistingUser: false,
+          message: "Acesso criado e credenciais enviadas por e-mail.",
         },
         { status: 201 },
       );
