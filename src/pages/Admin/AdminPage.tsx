@@ -30,7 +30,6 @@ import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
 import CurriculumTab from './tabs/CurriculumTab';
 import TimetableTab from './tabs/TimetableTab';
-import EnrollmentsTab from './tabs/EnrollmentsTab';
 import GuardiansTab from './tabs/GuardiansTab';
 import SchoolUsersTab from './tabs/SchoolUsersTab';
 import StudentsTab from './tabs/StudentsTab';
@@ -228,7 +227,7 @@ export default function AdminPage() {
       case 'rooms':
         return <TimetableTab />;
       case 'enrollments':
-        return <EnrollmentsTab />;
+        return <StudentsTab />;
       case 'assignments':
         return <AssignmentsTab />;
       default:

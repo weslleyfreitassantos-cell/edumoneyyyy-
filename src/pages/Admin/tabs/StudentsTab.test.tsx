@@ -17,14 +17,6 @@ import {
 
 import StudentsTab from './StudentsTab';
 
-vi.mock('./EnrollmentsTab', () => ({
-  default: () => (
-    <div data-testid="enrollments-tab">
-      Configuração de matrículas
-    </div>
-  ),
-}));
-
 vi.mock('./FullStudentEnrollmentWizard', () => ({
   default: () => (
     <div data-testid="full-student-enrollment-wizard">
@@ -63,6 +55,38 @@ vi.mock('../../../hooks/useAcademicStructure', () => ({
 vi.mock('../../../hooks/useClasses', () => ({
   useClasses: () => ({
     data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  }),
+}));
+
+vi.mock('../../../hooks/useEnrollments', () => ({
+  useEnrollments: () => ({
+    data: [
+      {
+        id: 'enrollment-1',
+        student_id: '00000000-0000-0000-0000-000000000004',
+        class_id: 'class-1',
+        academic_year_id: 'year-1',
+        status: 'ACTIVE',
+        status_label: 'Ativa',
+        active: true,
+        enrolled_at: '2026-01-10',
+        created_at: '2026-01-10',
+        student_name: 'Ieti',
+        student_registration_number: '20260001',
+        student_active: true,
+        class_name: '1ª série EM B',
+        class_grade_level: '1º EM',
+        class_shift: 'Integral',
+        class_capacity: 35,
+        class_active: true,
+        academic_year_name: 'primeiro ano',
+        active_enrollments_in_class: 1,
+        has_capacity_available: true,
+      },
+    ],
     isLoading: false,
     isError: false,
     error: null,
@@ -194,23 +218,13 @@ describe('StudentsTab - vínculo de responsável', () => {
     ).toBeTruthy();
   });
 
-  it('abre a configuração de matrículas dentro de Alunos', () => {
+  it('exibe a matrícula atual na mesma lista de alunos', () => {
     render(<StudentsTab />);
 
-    fireEvent.click(
-      screen.getByRole('tab', {
-        name: /matrículas/i,
-      }),
-    );
-
-    expect(
-      screen.getByTestId('enrollments-tab'),
-    ).toBeTruthy();
-    expect(
-      screen.getByRole('tab', {
-        name: /alunos/i,
-      }).getAttribute('aria-selected'),
-    ).toBe('false');
+    expect(screen.queryByRole('tab', { name: /matrículas/i })).toBeNull();
+    expect(screen.getByText('Matrícula atual')).toBeTruthy();
+    expect(screen.getByText('1ª série EM B')).toBeTruthy();
+    expect(screen.getByText('primeiro ano • Integral')).toBeTruthy();
   });
 
   it('abre o cadastro completo ao criar um aluno', () => {

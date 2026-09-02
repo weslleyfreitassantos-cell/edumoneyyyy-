@@ -179,14 +179,6 @@ vi.mock('./tabs/SubjectsTab', () => ({
   ),
 }));
 
-vi.mock('./tabs/EnrollmentsTab', () => ({
-  default: () => (
-    <div data-testid="enrollments-tab">
-      Aba matriculas
-    </div>
-  ),
-}));
-
 vi.mock('./tabs/CurriculumTab', () => ({
   default: () => (
     <div data-testid="curriculum-tab">
@@ -473,7 +465,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=enrollments');
 
     expect(
-      screen.getByTestId('enrollments-tab'),
+      screen.getByTestId('students-tab'),
     ).toBeTruthy();
 
     cleanup();

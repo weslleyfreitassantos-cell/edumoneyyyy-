@@ -6,9 +6,7 @@
 } from 'react';
 
 import {
-  ClipboardCheck,
   Upload,
-  Users,
 } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -28,13 +26,12 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 
-import {
-  hasPermission,
-  isCurrentDatabaseRole,
-} from '../../../lib/permissions';
-
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
+
+import {
+  useEnrollments,
+} from '../../../hooks/useEnrollments';
 
 import {
   useSetStudentActive,
@@ -43,14 +40,10 @@ import {
 
 import { guardianLinkSchema } from '../../../schemas/adminSchemas';
 
+import type { EnrollmentRow } from '../../../services/enrollmentService';
 import type { StudentRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
-import EnrollmentsTab from './EnrollmentsTab';
 import StudentSpreadsheetImportModal from '../../../components/StudentSpreadsheetImportModal';
-
-export type StudentManagementView =
-  | 'students'
-  | 'enrollments';
 
 interface GuardianLinkDraft {
   guardian_profile_id: string;
@@ -100,55 +93,32 @@ function getStudentName(student: StudentRow): string {
   );
 }
 
-function StudentManagementNavigation({
-  activeView,
-  onChange,
-  canManageEnrollments,
-}: {
-  activeView: StudentManagementView;
-  onChange: (view: StudentManagementView) => void;
-  canManageEnrollments: boolean;
-}) {
-  return (
-    <nav aria-label="Gestão de alunos">
-      <div
-        className="inline-flex flex-wrap gap-1 rounded-lg border border-slate-200 bg-white p-1"
-        role="tablist"
-      >
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeView === 'students'}
-          onClick={() => onChange('students')}
-          className={
-            activeView === 'students'
-              ? 'inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700'
-              : 'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50'
-          }
-        >
-          <Users size={16} aria-hidden="true" />
-          Alunos
-        </button>
+function getCurrentEnrollmentByStudent(
+  enrollments: EnrollmentRow[],
+): Map<string, EnrollmentRow> {
+  const currentByStudent = new Map<string, EnrollmentRow>();
 
-        {canManageEnrollments && (
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === 'enrollments'}
-            onClick={() => onChange('enrollments')}
-            className={
-              activeView === 'enrollments'
-                ? 'inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700'
-                : 'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50'
-            }
-          >
-            <ClipboardCheck size={16} aria-hidden="true" />
-            Matrículas
-          </button>
-        )}
-      </div>
-    </nav>
-  );
+  for (const enrollment of enrollments) {
+    const current = currentByStudent.get(enrollment.student_id);
+    if (!current) {
+      currentByStudent.set(enrollment.student_id, enrollment);
+      continue;
+    }
+
+    const shouldReplace = enrollment.active && !current.active;
+    const enrollmentDate = enrollment.enrolled_at ?? enrollment.created_at ?? '';
+    const currentDate = current.enrolled_at ?? current.created_at ?? '';
+
+    if (
+      shouldReplace ||
+      (enrollment.active === current.active &&
+        enrollmentDate > currentDate)
+    ) {
+      currentByStudent.set(enrollment.student_id, enrollment);
+    }
+  }
+
+  return currentByStudent;
 }
 
 export default function StudentsTab() {
@@ -160,29 +130,17 @@ export default function StudentsTab() {
   const institutionId =
     institutionQuery.data ?? '';
 
-  const effectiveRole = isCurrentDatabaseRole(
-    institutionQuery.currentRole,
-  )
-    ? institutionQuery.currentRole
-    : null;
-
-  const canManageEnrollments = hasPermission(
-    profile?.platform_role,
-    effectiveRole,
-    'manage_enrollments',
-  );
-
   const studentsQuery =
     useStudents(institutionId);
+
+  const enrollmentsQuery =
+    useEnrollments(institutionId);
 
   const yearsQuery =
     useAcademicYears(institutionId);
 
   const classesQuery =
     useClasses(institutionId);
-
-  const [activeView, setActiveView] =
-    useState<StudentManagementView>('students');
 
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -237,6 +195,10 @@ export default function StudentsTab() {
     );
 
   const students = studentsQuery.data ?? [];
+  const currentEnrollmentByStudent = useMemo(
+    () => getCurrentEnrollmentByStudent(enrollmentsQuery.data ?? []),
+    [enrollmentsQuery.data],
+  );
   const filteredStudents = useMemo(() => {
     const query = normalizeListSearch(searchTerm);
 
@@ -250,9 +212,12 @@ export default function StudentsTab() {
         student.profiles?.full_name,
         student.profiles?.email,
         student.cpf,
+        currentEnrollmentByStudent.get(student.id)?.class_name,
+        currentEnrollmentByStudent.get(student.id)?.academic_year_name,
+        currentEnrollmentByStudent.get(student.id)?.status_label,
       ].filter(Boolean).join(' ')).includes(query),
     );
-  }, [searchTerm, students]);
+  }, [currentEnrollmentByStudent, searchTerm, students]);
 
   const totalPages = Math.max(
     1,
@@ -366,6 +331,43 @@ export default function StudentsTab() {
         row.profiles?.email ?? '—',
     },
     {
+      id: 'student-enrollment',
+      key: 'id',
+      label: 'Matrícula atual',
+      render: (_value, row) => {
+        const enrollment = currentEnrollmentByStudent.get(row.id);
+
+        if (!enrollment) {
+          return (
+            <span className="text-xs text-amber-700">
+              Não matriculado
+            </span>
+          );
+        }
+
+        return (
+          <div className="min-w-[150px]">
+            <p className="font-medium text-[#181c20]">
+              {enrollment.class_name}
+            </p>
+            <p className="mt-1 text-xs text-[#727785]">
+              {enrollment.academic_year_name}
+              {enrollment.class_shift
+                ? ` • ${enrollment.class_shift}`
+                : ''}
+            </p>
+            <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${
+              enrollment.active
+                ? 'bg-green-100 text-green-700'
+                : 'bg-gray-100 text-gray-600'
+            }`}>
+              {enrollment.status_label}
+            </span>
+          </div>
+        );
+      },
+    },
+    {
       key: 'birth_date',
       label: 'Data de nascimento',
       render: (value) =>
@@ -464,27 +466,8 @@ export default function StudentsTab() {
     );
   }
 
-  if (activeView === 'enrollments') {
-    return (
-      <div className="space-y-4">
-        <StudentManagementNavigation
-          activeView={activeView}
-          onChange={setActiveView}
-          canManageEnrollments={canManageEnrollments}
-        />
-        <EnrollmentsTab />
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-4">
-      <StudentManagementNavigation
-        activeView={activeView}
-        onChange={setActiveView}
-        canManageEnrollments={canManageEnrollments}
-      />
-
       {feedbackMessage && (
         <div
           role="status"
@@ -495,14 +478,16 @@ export default function StudentsTab() {
       )}
 
       {(pageError ||
-        studentsQuery.isError) && (
+        studentsQuery.isError ||
+        enrollmentsQuery.isError) && (
           <div
             role="alert"
             className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
           >
             {pageError ??
               getErrorMessage(
-                studentsQuery.error,
+                studentsQuery.error ??
+                  enrollmentsQuery.error,
               )}
           </div>
         )}
@@ -530,7 +515,10 @@ export default function StudentsTab() {
         )}
         data={paginatedStudents}
         columns={columns}
-        isLoading={studentsQuery.isLoading}
+        isLoading={
+          studentsQuery.isLoading ||
+          enrollmentsQuery.isLoading
+        }
         onAdd={openFullWizard}
         emptyMessage={
           filteredStudents.length === 0 && students.length > 0
@@ -621,6 +609,7 @@ export default function StudentsTab() {
           onClose={() => setIsSpreadsheetImportOpen(false)}
           onImported={(result) => {
             void studentsQuery.refetch();
+            void enrollmentsQuery.refetch();
             setFeedbackMessage(
               `${result.succeeded.length} aluno(s) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}`,
             );
