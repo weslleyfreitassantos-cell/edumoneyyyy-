@@ -16,7 +16,7 @@ import {
 type UserRole = Database["public"]["Enums"]["user_role"];
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  "DIRECTOR" | "TEACHER" | "STUDENT" | "GUARDIAN"
 >;
 type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
@@ -61,7 +61,6 @@ interface RollbackState {
 
 const targetRoleSchema = z.enum([
   "DIRECTOR",
-  "SECRETARY",
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
@@ -345,10 +344,10 @@ function toPublicError(error: unknown): InviteError {
 
 function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[] {
   if (requesterRole === "ADMIN") {
-    return ["DIRECTOR", "SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"];
   }
   if (requesterRole === "DIRECTOR") {
-    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["TEACHER", "STUDENT", "GUARDIAN"];
   }
   return ["STUDENT", "GUARDIAN"];
 }
@@ -678,9 +677,9 @@ export default {
         (membership: { active: boolean | null }) => membership.active === true,
       );
       const isAccountOwner = account?.owner_profile_id === user.id;
-      const legacyAdminMembership = activeInstitution.account_id === null
-        ? activeMemberships.find((membership: { role: string }) => membership.role === "ADMIN")
-        : null;
+      const adminMembership = activeMemberships.find(
+        (membership: { role: string }) => membership.role === "ADMIN",
+      );
       const directorMembership = activeMemberships.find(
         (membership: { role: string }) => membership.role === "DIRECTOR",
       );
@@ -689,7 +688,7 @@ export default {
       );
       const requesterRole: RequesterInviteRole | null = isSuperAdmin
         ? "ADMIN"
-        : isAccountOwner || legacyAdminMembership
+        : isAccountOwner || adminMembership
           ? "ADMIN"
           : directorMembership
             ? "DIRECTOR"

@@ -12,14 +12,12 @@ import {
   ClipboardCheck,
   ClipboardList,
   Clock3,
-  ContactRound,
   FileCheck2,
   GraduationCap,
   LayoutDashboard,
   ListChecks,
   LogOut,
   Mail,
-  Megaphone,
   MonitorCog,
   Palette,
   School,
@@ -48,6 +46,7 @@ import {
   ADMIN_NAVIGATION_GROUPS,
   DEFAULT_ADMIN_MODULE_ID,
   groupAdminModules,
+  isAdminModuleAvailable,
   isAdminModuleId,
   type AdminModuleId,
   type AdminModuleDefinition,
@@ -123,9 +122,7 @@ const adminModuleIcons: Record<
   students: GraduationCap,
   teachers: Users,
   guardians: Users,
-  secretaries: ContactRound,
-  email: Mail,
-  announcements: Megaphone,
+  directors: BadgeCheck,
   finance: WalletCards,
   'academic-years': CalendarDays,
   subjects: BookOpen,
@@ -149,7 +146,6 @@ const adminNavigationGroupIcons: Record<
   people: Users,
   'academic-configuration': School,
   'school-operation': ClipboardCheck,
-  'communication-resources': MonitorCog,
   administration: ShieldCheck,
 };
 
@@ -157,9 +153,6 @@ const baseAdminNavigationGroupByItemId: Partial<
   Record<string, AdminNavigationGroupId>
 > = {
   'personalize-login': 'administration',
-  cameras: 'communication-resources',
-  terminals: 'communication-resources',
-  email: 'communication-resources',
 };
 
 const adminNavigationItemOrder: Record<
@@ -416,7 +409,12 @@ export function getSidebarAdminModules({
       return false;
     }
 
-    if (module.id === 'email') {
+    if (
+      !isAdminModuleAvailable(
+        module,
+        effectiveRole,
+      )
+    ) {
       return false;
     }
 

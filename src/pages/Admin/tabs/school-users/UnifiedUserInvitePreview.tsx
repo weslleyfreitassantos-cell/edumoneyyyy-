@@ -105,8 +105,6 @@ function getTargetNote(
       return 'Cria usuario, profile, membership GUARDIAN, vinculo guardianships e envia as credenciais por e-mail.';
     case 'DIRECTOR':
       return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode criar este acesso.';
-    case 'SECRETARY':
-      return 'Cria usuario, profile e membership SECRETARY para operacao institucional.';
   }
 }
 
@@ -449,7 +447,9 @@ export default function UnifiedUserInvitePreview({
         selectedTarget === 'TEACHER'
           ? `${result.message} Disciplinas e disponibilidade salvas.`
           : result.message;
-      setSelectedTarget('STUDENT');
+      setSelectedTarget(
+        allowedTargetsProp?.[0] ?? 'STUDENT',
+      );
       setForm(initialFormState);
       setServerFieldErrors({});
       setTeacherSubjectIds([]);
@@ -931,12 +931,6 @@ export default function UnifiedUserInvitePreview({
             {selectedTarget === 'DIRECTOR' && (
               <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
                 Diretor so pode ser convidado por ADMIN da conta.
-              </p>
-            )}
-
-            {selectedTarget === 'SECRETARY' && (
-              <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
-                Secretaria recebe acesso operacional para cadastros e matriculas da instituicao.
               </p>
             )}
 

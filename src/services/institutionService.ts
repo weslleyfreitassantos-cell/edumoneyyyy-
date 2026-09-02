@@ -231,13 +231,6 @@ function normalizeMembershipInstitution(
     return null;
   }
 
-  if (
-    row.role === 'ADMIN' &&
-    institution.account_id !== null
-  ) {
-    return null;
-  }
-
   const role =
     row.role === 'ADMIN' ||
     row.role === 'DIRECTOR' ||
@@ -262,7 +255,8 @@ function normalizeMembershipInstitution(
     institution,
     account,
     accessSource:
-      row.role === 'ADMIN'
+      row.role === 'ADMIN' &&
+      institution.account_id === null
         ? 'legacy_admin_membership'
         : 'membership',
     effectiveRole: role,

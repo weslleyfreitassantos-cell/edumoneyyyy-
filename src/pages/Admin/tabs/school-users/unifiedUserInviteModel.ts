@@ -3,7 +3,6 @@ export const UNIFIED_USER_INVITE_TARGETS = [
   'TEACHER',
   'GUARDIAN',
   'DIRECTOR',
-  'SECRETARY',
 ] as const;
 
 export type UnifiedUserInviteTarget =
@@ -79,22 +78,6 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     description:
       'Administrador institucional com membership DIRECTOR.',
     rolePreview: 'DIRECTOR',
-    availabilityStatuses: [
-      'available_now',
-    ],
-    futureRecords: [
-      'profile',
-      'membership',
-      'acesso e senha',
-    ],
-    isPlanned: false,
-  },
-  {
-    target: 'SECRETARY',
-    label: 'Secretaria',
-    description:
-      'Operacao institucional para cadastros, responsaveis e matriculas.',
-    rolePreview: 'SECRETARY',
     availabilityStatuses: [
       'available_now',
     ],
@@ -209,7 +192,6 @@ export function getAllowedInviteTargets(
   if (currentRole === 'ADMIN') {
     return [
       'DIRECTOR',
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
@@ -218,7 +200,6 @@ export function getAllowedInviteTargets(
 
   if (currentRole === 'DIRECTOR') {
     return [
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',

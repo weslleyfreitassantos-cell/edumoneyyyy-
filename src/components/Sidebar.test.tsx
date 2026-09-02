@@ -165,8 +165,28 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^respons.veis$/i }),
     ).toBeTruthy();
     expect(
-      screen.getByRole('link', { name: /^secretaria$/i }),
-    ).toBeTruthy();
+      screen.queryByRole('link', { name: /^secretaria$/i }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', { name: /^diretores$/i }),
+    ).toBeNull();
+  });
+
+  it('mostra Diretores em Pessoas somente para ADMIN', () => {
+    renderSidebar();
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /pessoas/i }),
+    );
+
+    expect(
+      screen
+        .getByRole('link', { name: /^diretores$/i })
+        .getAttribute('href'),
+    ).toBe('/admin?module=directors');
+    expect(
+      screen.queryByRole('link', { name: /^secretaria$/i }),
+    ).toBeNull();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -230,10 +250,10 @@ describe('Sidebar', () => {
       }),
     ).toBeTruthy();
     expect(
-      screen.getByRole('button', {
+      screen.queryByRole('button', {
         name: /comunica..o e recursos/i,
       }),
-    ).toBeTruthy();
+    ).toBeNull();
     expect(
       screen.getByRole('button', {
         name: /administra..o/i,
@@ -338,12 +358,6 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /comunica..o e recursos/i,
-      }),
-    );
-
     expect(
       screen.getByRole('link', { name: 'TV Escola' }).getAttribute('aria-current'),
     ).toBe('page');
@@ -356,12 +370,6 @@ describe('Sidebar', () => {
       currentUser: directorUser(),
       currentInstitutionRole: 'DIRECTOR',
     });
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /comunica..o e recursos/i,
-      }),
-    );
 
     expect(
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),
@@ -411,10 +419,15 @@ describe('Sidebar', () => {
       }),
     ).toBeNull();
     expect(
-      screen.getByRole('link', {
+      screen.queryByRole('link', {
         name: /secretaria/i,
       }),
-    ).toBeTruthy();
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', {
+        name: /administrador/i,
+      }),
+    ).toBeNull();
     expect(
       screen.getByRole('button', {
         name: /opera..o escolar/i,

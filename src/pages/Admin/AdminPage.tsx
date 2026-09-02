@@ -21,6 +21,7 @@ import {
 import {
   ADMIN_MODULES,
   DEFAULT_ADMIN_MODULE_ID,
+  isAdminModuleAvailable,
   isAdminModuleId,
   type AdminModuleId,
 } from './adminNavigation';
@@ -35,9 +36,7 @@ import SchoolUsersTab from './tabs/SchoolUsersTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
-import EmailTab from './tabs/EmailTab';
 import FinanceTab from './tabs/FinanceTab';
-import AnnouncementsTab from './tabs/AnnouncementsTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -72,8 +71,12 @@ export default function AdminPage() {
 
   const modules = useMemo(
     () =>
-      ADMIN_MODULES.filter((module) =>
-        can(module.permission),
+      ADMIN_MODULES.filter(
+        (module) =>
+          isAdminModuleAvailable(
+            module,
+            institutionQuery.currentRole,
+          ) && can(module.permission),
       ),
     [
       profile?.platform_role,
@@ -194,18 +197,14 @@ export default function AdminPage() {
         return <TeachersTab />;
       case 'guardians':
         return <GuardiansTab />;
-      case 'secretaries':
+      case 'directors':
         return (
           <SchoolUsersTab
-            fixedRole="SECRETARY"
-            inviteTargets={['SECRETARY']}
-            inviteHeading="Cadastro de secretaria"
+            fixedRole="DIRECTOR"
+            inviteTargets={['DIRECTOR']}
+            inviteHeading="Cadastro de diretor"
           />
         );
-      case 'email':
-        return <EmailTab />;
-      case 'announcements':
-        return <AnnouncementsTab />;
       case 'finance':
         return <FinanceTab />;
       case 'academic-policies':

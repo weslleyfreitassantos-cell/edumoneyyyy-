@@ -78,6 +78,16 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "DIRECTOR_PASSWORD_ONLY" });
   });
 
+  it("bloqueia diretor de atribuir ADMIN a outro usuario", () => {
+    expect(
+      getUpdateAuthorizationDecision(operationalManager, {
+        ...activeStudentReset,
+        requestedRole: "ADMIN",
+        hasRole: true,
+      }),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
   it("bloqueia password combinado com fullName", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {

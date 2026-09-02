@@ -40,6 +40,12 @@ describe('invite-school-user', () => {
     expect(source).toContain('secretaryMembership');
   });
 
+  it('allows an ADMIN to create a director only in the selected institution', () => {
+    expect(source).toContain('["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"]');
+    expect(source).toContain('.eq("institution_id", input.institutionId)');
+    expect(source).toContain('role: input.role');
+  });
+
   it('reuses existing users and avoids duplicated links', () => {
     expect(source).toContain('listUsers');
     expect(source).toContain('reusedExistingUser');

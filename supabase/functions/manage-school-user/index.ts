@@ -390,6 +390,7 @@ async function handleUpdate(
     authorization,
     {
       targetRole: membership.role,
+      requestedRole: input.role,
       targetMembershipActive: membership.active,
       studentActive,
       hasPassword: input.password !== undefined,

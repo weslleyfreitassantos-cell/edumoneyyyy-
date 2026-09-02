@@ -344,6 +344,28 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
+  it('renderiza o cadastro de Diretor somente para ADMIN', () => {
+    renderAdminPage('/admin?module=directors');
+
+    expect(
+      screen.getByTestId('school-users-tab'),
+    ).toBeTruthy();
+
+    cleanup();
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+    renderAdminPage('/admin?module=directors');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
+  });
+
   it('mantem modulo ao recarregar com a mesma URL', () => {
     mockAdminState({
       profile: {

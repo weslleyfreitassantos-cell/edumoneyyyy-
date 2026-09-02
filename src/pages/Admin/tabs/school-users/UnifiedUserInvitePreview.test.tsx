@@ -141,15 +141,15 @@ describe('UnifiedUserInvitePreview', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
-        allowedTargets={['SECRETARY']}
-        heading="Cadastro de secretaria"
+        allowedTargets={['DIRECTOR']}
+        heading="Cadastro de diretor"
       />,
     );
 
     expect(
-      screen.getByText('Cadastro de secretaria'),
+      screen.getByText('Cadastro de diretor'),
     ).toBeTruthy();
-    expect(screen.getByText('Secretaria')).toBeTruthy();
+    expect(screen.getByText('Diretor')).toBeTruthy();
     expect(
       screen.queryByRole('button', { name: /^Aluno$/i }),
     ).toBeNull();
@@ -404,7 +404,7 @@ describe('UnifiedUserInvitePreview', () => {
     });
   });
 
-  it('habilita secretaria como role real para ADMIN', () => {
+  it('habilita diretor como role real para ADMIN', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -414,7 +414,7 @@ describe('UnifiedUserInvitePreview', () => {
     expect(
       screen
         .getByRole('button', {
-          name: /Secret/,
+          name: /^Diretor/,
         })
         .hasAttribute('disabled'),
     ).toBe(false);
@@ -435,7 +435,7 @@ describe('UnifiedUserInvitePreview', () => {
     ).toBeNull();
     expect(
       screen.getByRole('button', {
-        name: /Secret/,
+        name: /Professor/,
       }),
     ).toBeTruthy();
   });

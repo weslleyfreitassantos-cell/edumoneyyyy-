@@ -8,6 +8,7 @@ export interface UpdateAuthorizationContext {
 
 export interface UpdateAuthorizationInput {
   targetRole: string;
+  requestedRole?: string;
   targetMembershipActive: boolean | null;
   studentActive: boolean | null | undefined;
   hasPassword: boolean;
@@ -89,6 +90,15 @@ export function getUpdateAuthorizationDecision(
   authorization: UpdateAuthorizationContext,
   input: UpdateAuthorizationInput,
 ): UpdateAuthorizationDecision {
+  if (
+    input.requestedRole === "ADMIN" &&
+    !authorization.isSuperAdmin &&
+    !authorization.isAccountOwner &&
+    !authorization.isLocalAdmin
+  ) {
+    return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
+  }
+
   if (!isOperationalManagerOnly(authorization)) {
     return { allowed: true };
   }
