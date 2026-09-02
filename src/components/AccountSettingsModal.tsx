@@ -22,6 +22,7 @@ import {
   type SelfRegistrationUpdate,
   type StudentSelfRegistration,
 } from '../services/selfRegistrationService';
+import { ProfileServiceError } from '../services/profileService';
 import type { User } from '../types';
 
 interface AccountSettingsModalProps {
@@ -57,6 +58,17 @@ function getOperationErrorMessage(
 
   if (operation === 'registration') {
     return 'Não foi possível atualizar seu cadastro.';
+  }
+
+  if (
+    operation === 'password' &&
+    error instanceof ProfileServiceError &&
+    (
+      error.code === 'PASSWORD_REUSED' ||
+      error.code === 'PASSWORD_POLICY_FAILED'
+    )
+  ) {
+    return error.message;
   }
 
   return operation === 'name'
