@@ -362,6 +362,36 @@ export const timetableService = {
       .map(normalizeEntry);
   },
 
+  async listByTeacher(
+    institutionId: string,
+    teacherProfileId: string,
+    termId?: string,
+  ): Promise<TimetableEntryRow[]> {
+    let query = supabase
+      .from('timetable_entries')
+      .select(entrySelect)
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .eq('subject_offerings.teacher_profile_id', teacherProfileId);
+
+    if (termId) {
+      query = query.eq('term_id', termId);
+    }
+
+    const { data, error } = await query
+      .order('day_of_week', { ascending: true })
+      .order('start_time', { ascending: true });
+
+    if (error) throw mapTimetableError(error);
+
+    return ((data ?? []) as unknown as TimetableEntryQueryRow[])
+      .filter((row) => {
+        const offering = normalizeRelation(row.subject_offerings);
+        return row.active && offering?.teacher_profile_id === teacherProfileId;
+      })
+      .map(normalizeEntry);
+  },
+
   // ==================== GRID ====================
 
   buildGrid(entries: TimetableEntryRow[]): TimetableGrid {

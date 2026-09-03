@@ -18,6 +18,7 @@ export const timetableKeys = {
   rooms: (institutionId: string) => [...timetableKeys.all, 'rooms', institutionId] as const,
   entries: (institutionId: string) => [...timetableKeys.all, 'entries', institutionId] as const,
   classEntries: (institutionId: string, classId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'class', classId, termId ?? 'current'] as const,
+  teacherEntries: (institutionId: string, teacherProfileId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'teacher', teacherProfileId, termId ?? 'current'] as const,
 };
 
 function invalidateTimetable(
@@ -121,6 +122,32 @@ export function useStudentTimetable(
       );
     },
     enabled: Boolean(institutionId && classId),
+  });
+}
+
+export function useTeacherTimetable(
+  institutionId: string | undefined,
+  teacherProfileId: string | undefined,
+  termId?: string,
+) {
+  return useQuery<TimetableEntryRow[]>({
+    queryKey: timetableKeys.teacherEntries(
+      institutionId ?? '',
+      teacherProfileId ?? '',
+      termId,
+    ),
+    queryFn: () => {
+      if (!institutionId || !teacherProfileId) {
+        throw new Error('O professor não foi informado.');
+      }
+
+      return timetableService.listByTeacher(
+        institutionId,
+        teacherProfileId,
+        termId,
+      );
+    },
+    enabled: Boolean(institutionId && teacherProfileId),
   });
 }
 

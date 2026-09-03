@@ -27,15 +27,10 @@ import { normalizeAcademicShift } from '../lib/academic/academicShifts';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 
 import type { StudentDashboardOffering } from '../services/studentDashboardService';
-import {
-  DAYS_OF_WEEK,
-  dayLabel,
-  type TimetableEntryRow,
-} from '../services/timetableService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import StudentReportCard from './academic/StudentReportCard';
-import TimetableBreakMarker from './academic/TimetableBreakMarker';
+import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
 
 function getErrorMessage(
@@ -292,101 +287,19 @@ function StudentTimetableView({
           A grade de horário da sua turma ainda não foi publicada.
         </div>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {DAYS_OF_WEEK.map((day) => {
-            const dayEntries = entries.filter(
-              (entry) => entry.day_of_week === day,
-            );
-            const dayBreaks = scheduleBreaks.filter(
+        <WeeklyTimetableGrid
+          entries={entries}
+          scheduleBreaks={scheduleBreaks
+            .filter(
               (scheduleBreak) =>
                 classShift !== null &&
                 scheduleBreak.active &&
-                scheduleBreak.day_of_week === day &&
                 normalizeAcademicShift(scheduleBreak.shift) === classShift,
-            );
-            const dayItems = [
-              ...dayEntries.map((entry) => ({
-                kind: 'lesson' as const,
-                startTime: entry.start_time,
-                entry,
-              })),
-              ...dayBreaks.map((scheduleBreak) => ({
-                kind: 'break' as const,
-                startTime: scheduleBreak.start_time,
-                scheduleBreak,
-              })),
-            ].sort((left, right) =>
-              left.startTime.localeCompare(right.startTime),
-            );
-
-            return (
-              <section
-                key={day}
-                className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow-sm"
-              >
-                <header className="border-b border-[#dfe3e8] bg-[#f8faff] px-4 py-3">
-                  <h2 className="text-sm font-bold text-[#181c20]">
-                    {dayLabel(day)}
-                  </h2>
-                  <p className="mt-0.5 text-xs text-[#727785]">
-                    {dayEntries.length === 1
-                      ? '1 aula'
-                      : `${dayEntries.length} aulas`}
-                  </p>
-                </header>
-
-                {dayItems.length === 0 ? (
-                  <p className="px-4 py-5 text-sm text-[#727785]">
-                    Sem aulas neste dia.
-                  </p>
-                ) : (
-                  <div className="divide-y divide-[#edf0f5]">
-                    {dayItems.map((item) => item.kind === 'break' ? (
-                      <div key={`break-${item.scheduleBreak.id}`} className="p-3">
-                        <TimetableBreakMarker scheduleBreak={item.scheduleBreak} />
-                      </div>
-                    ) : (
-                      <div key={item.entry.id}>
-                        <TimetableEntryCard entry={item.entry} />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </section>
-            );
-          })}
-        </div>
+            )}
+          audience="student"
+        />
       )}
     </motion.div>
-  );
-}
-
-function TimetableEntryCard({
-  entry,
-}: {
-  entry: TimetableEntryRow;
-}) {
-  return (
-    <article className="flex gap-3 px-4 py-4">
-      <div className="w-24 shrink-0 text-xs font-bold text-[#005bbf]">
-        <time>{entry.start_time}</time>
-        <span className="mx-1 text-[#9aa3b2]">-</span>
-        <time>{entry.end_time}</time>
-      </div>
-      <div className="min-w-0">
-        <h3 className="truncate text-sm font-bold text-[#181c20]">
-          {entry.subject_name || 'Disciplina'}
-        </h3>
-        <p className="mt-1 truncate text-xs text-[#727785]">
-          {entry.teacher_name ?? 'Professor não informado'}
-        </p>
-        {entry.room_name && (
-          <p className="mt-1 truncate text-xs text-[#727785]">
-            {entry.room_name}
-          </p>
-        )}
-      </div>
-    </article>
   );
 }
 

@@ -217,6 +217,12 @@ describe('getRouteVisualContext', () => {
       title: 'Grade de horário',
     });
     expect(
+      getRouteVisualContext('/dashboard/timetable', 'teacher'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Grade de horário',
+    });
+    expect(
       getRouteVisualContext('/terminais', 'director'),
     ).toEqual({
       section: '',

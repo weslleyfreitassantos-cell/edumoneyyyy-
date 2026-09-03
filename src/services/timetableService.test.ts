@@ -216,6 +216,63 @@ describe('timetableService.listByClass', () => {
   });
 });
 
+describe('timetableService.listByTeacher', () => {
+  it('mantem somente os horarios do professor solicitado', async () => {
+    const otherTeacherEntry = {
+      ...baseEntry,
+      id: 'other-entry',
+      subject_offerings: {
+        ...baseEntry.subject_offerings,
+        teacher_profile_id: 'other-teacher',
+      },
+    };
+
+    const order = vi.fn(() => ({
+      order: vi.fn().mockResolvedValue({
+        data: [baseEntry, otherTeacherEntry],
+        error: null,
+      }),
+    }));
+    const teacherFilter = vi.fn(() => ({ order }));
+    const activeFilter = vi.fn(() => ({ eq: teacherFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    const result = await timetableService.listByTeacher(
+      UUID,
+      UUID,
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].teacher_profile_id).toBe(UUID);
+    expect(teacherFilter).toHaveBeenCalledWith(
+      'subject_offerings.teacher_profile_id',
+      UUID,
+    );
+  });
+
+  it('limita a grade do professor ao periodo informado', async () => {
+    const eq3 = vi.fn(() => ({
+      order: vi.fn(() => ({
+        order: vi.fn().mockResolvedValue({
+          data: [baseEntry],
+          error: null,
+        }),
+      })),
+    }));
+    const teacherFilter = vi.fn(() => ({ eq: eq3 }));
+    const activeFilter = vi.fn(() => ({ eq: teacherFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    await timetableService.listByTeacher(UUID, UUID, 'term-current');
+
+    expect(eq3).toHaveBeenCalledWith('term_id', 'term-current');
+  });
+});
+
 describe('timetableService.createEntry', () => {
   it('cria entrada com dados validos', async () => {
     const single = vi.fn().mockResolvedValue({ data: baseEntry, error: null });

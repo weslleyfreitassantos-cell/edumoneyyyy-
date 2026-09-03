@@ -602,7 +602,7 @@ describe('Sidebar', () => {
 });
 
 describe('sidebar navigation helpers', () => {
-  it('mostra a grade de horario somente no menu do aluno', () => {
+  it('mostra a grade de horario no menu do aluno e do professor', () => {
     const studentItems = getSidebarNavigationItems({
       profile: {
         ...baseProfile,
@@ -619,6 +619,20 @@ describe('sidebar navigation helpers', () => {
 
     expect(timetableItem?.label).toBe('Grade de horário');
     expect(timetableItem?.path).toBe('/dashboard/timetable');
+
+    const teacherItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'TEACHER',
+      },
+      currentInstitutionRole: 'TEACHER',
+      currentUserRole: 'teacher',
+      pathname: '/dashboard/timetable',
+    });
+
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toContain('student-timetable');
 
     const directorItems = getSidebarNavigationItems({
       profile: directorProfile(),

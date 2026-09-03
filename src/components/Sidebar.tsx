@@ -208,7 +208,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     path: '/dashboard/timetable',
     section: 'personal',
     icon: CalendarClock,
-    roles: ['student'],
+    roles: ['student', 'teacher'],
     activePaths: ['/dashboard/timetable'],
     exactActivePath: true,
   },

@@ -9,6 +9,8 @@ import {
   Users,
 } from 'lucide-react';
 
+import { useLocation } from 'react-router-dom';
+
 import { useAuth } from '../contexts/AuthContext';
 
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
@@ -19,6 +21,7 @@ import type { TeacherOffering } from '../services/teacherDashboardService';
 import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
 import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
+import TeacherTimetableView from './TeacherTimetableView';
 
 function getErrorMessage(
   error: unknown,
@@ -111,6 +114,7 @@ function LoadingState() {
 
 export default function TeacherDashboard() {
   const { profile } = useAuth();
+  const location = useLocation();
 
   const institutionQuery =
     useCurrentInstitution(profile?.id);
@@ -161,6 +165,19 @@ export default function TeacherDashboard() {
       <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
         Os dados acadêmicos do professor ainda não estão disponíveis.
       </div>
+    );
+  }
+
+  if (location.pathname === '/dashboard/timetable') {
+    return (
+      <TeacherTimetableView
+        institutionId={institutionQuery.data}
+        teacherProfileId={profile.id}
+        termId={dashboard.offerings[0]?.termId}
+        shifts={dashboard.offerings.map(
+          (offering) => offering.shift,
+        )}
+      />
     );
   }
 
