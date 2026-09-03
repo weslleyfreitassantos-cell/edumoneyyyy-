@@ -261,8 +261,19 @@ export const adminOverviewService = {
       supabase
         .from('terms')
         .select(
-          'id, name, academic_year_id, start_date, end_date, active',
+          `
+          id,
+          name,
+          academic_year_id,
+          start_date,
+          end_date,
+          active,
+          academic_years:academic_year_id!inner (
+            institution_id
+          )
+        `,
         )
+        .eq('academic_years.institution_id', institutionId)
         .order('start_date', {
           ascending: true,
         }),
@@ -279,7 +290,16 @@ export const adminOverviewService = {
 
       supabase
         .from('enrollments')
-        .select('id, student_id, class_id, active'),
+        .select(`
+          id,
+          student_id,
+          class_id,
+          active,
+          classes:class_id!inner (
+            institution_id
+          )
+        `)
+        .eq('classes.institution_id', institutionId),
 
       supabase
         .from('guardianships')
@@ -288,11 +308,12 @@ export const adminOverviewService = {
           id,
           guardian_profile_id,
           active,
-          students:student_id (
+          students:student_id!inner (
             institution_id
           )
         `,
-        ),
+        )
+        .eq('students.institution_id', institutionId),
 
       supabase
         .from('subject_offerings')
@@ -303,16 +324,18 @@ export const adminOverviewService = {
           subject_id,
           teacher_profile_id,
           active,
-          classes:class_id (
+          classes:class_id!inner (
             institution_id,
             name
           ),
-          subjects:subject_id (
+          subjects:subject_id!inner (
             institution_id,
             name
           )
         `,
-        ),
+        )
+        .eq('classes.institution_id', institutionId)
+        .eq('subjects.institution_id', institutionId),
 
       supabase
         .from('class_curriculum_items')
