@@ -5,7 +5,8 @@ interface StudentSummaryRow {
   active: boolean | null;
 }
 
-interface ProfileNameRelation {
+interface ProfileSummaryRow {
+  id: string;
   full_name: string;
 }
 
@@ -13,7 +14,6 @@ interface MembershipSummaryRow {
   profile_id: string;
   role: string;
   active: boolean | null;
-  profiles: ProfileNameRelation | ProfileNameRelation[] | null;
 }
 
 interface AcademicYearSummaryRow {
@@ -52,28 +52,11 @@ interface EnrollmentSummaryRow {
   active: boolean | null;
 }
 
-interface StudentInstitutionRelation {
-  institution_id: string;
-}
-
 interface GuardianshipSummaryRow {
   id: string;
+  student_id: string;
   guardian_profile_id: string;
   active: boolean | null;
-  students:
-    | StudentInstitutionRelation
-    | StudentInstitutionRelation[]
-    | null;
-}
-
-interface OfferingClassRelation {
-  institution_id: string;
-  name: string;
-}
-
-interface OfferingSubjectRelation {
-  institution_id: string;
-  name: string;
 }
 
 interface CurriculumSummaryRow {
@@ -82,10 +65,6 @@ interface CurriculumSummaryRow {
   subject_id: string;
   active: boolean | null;
   needs_review: boolean;
-  classes:
-    | { institution_id: string; name: string }
-    | { institution_id: string; name: string }[]
-    | null;
 }
 
 interface OfferingSummaryRow {
@@ -94,14 +73,6 @@ interface OfferingSummaryRow {
   subject_id: string;
   teacher_profile_id: string;
   active: boolean | null;
-  classes:
-    | OfferingClassRelation
-    | OfferingClassRelation[]
-    | null;
-  subjects:
-    | OfferingSubjectRelation
-    | OfferingSubjectRelation[]
-    | null;
 }
 
 export interface AdminOverviewWarning {
@@ -127,16 +98,6 @@ export interface AdminOverviewData {
   currentAcademicYear: AcademicYearSummaryRow | null;
   currentTerm: TermSummaryRow | null;
   warnings: AdminOverviewWarning[];
-}
-
-function normalizeRelation<T>(
-  relation: T | T[] | null,
-): T | null {
-  if (Array.isArray(relation)) {
-    return relation[0] ?? null;
-  }
-
-  return relation;
 }
 
 function isActive(
@@ -204,12 +165,9 @@ function pickCurrentTerm(
 
 function getProfileName(
   membership: MembershipSummaryRow,
+  profileNames: Map<string, string>,
 ): string {
-  const profile = normalizeRelation(
-    membership.profiles,
-  );
-
-  return profile?.full_name ?? 'Professor';
+  return profileNames.get(membership.profile_id) ?? 'Professor';
 }
 
 export const adminOverviewService = {
@@ -220,12 +178,8 @@ export const adminOverviewService = {
       studentsResult,
       membershipsResult,
       academicYearsResult,
-      termsResult,
       classesResult,
       subjectsResult,
-      enrollmentsResult,
-      guardianshipsResult,
-      offeringsResult,
       curriculumResult,
     ] = await Promise.all([
       supabase
@@ -235,16 +189,7 @@ export const adminOverviewService = {
 
       supabase
         .from('memberships')
-        .select(
-          `
-          profile_id,
-          role,
-          active,
-          profiles:profile_id (
-            full_name
-          )
-        `,
-        )
+        .select('profile_id, role, active')
         .eq('institution_id', institutionId)
         .in('role', ['TEACHER', 'GUARDIAN']),
 
@@ -259,26 +204,6 @@ export const adminOverviewService = {
         }),
 
       supabase
-        .from('terms')
-        .select(
-          `
-          id,
-          name,
-          academic_year_id,
-          start_date,
-          end_date,
-          active,
-          academic_years:academic_year_id!inner (
-            institution_id
-          )
-        `,
-        )
-        .eq('academic_years.institution_id', institutionId)
-        .order('start_date', {
-          ascending: true,
-        }),
-
-      supabase
         .from('classes')
         .select('id, name, active')
         .eq('institution_id', institutionId),
@@ -289,55 +214,6 @@ export const adminOverviewService = {
         .eq('institution_id', institutionId),
 
       supabase
-        .from('enrollments')
-        .select(`
-          id,
-          student_id,
-          class_id,
-          active,
-          classes:class_id!inner (
-            institution_id
-          )
-        `)
-        .eq('classes.institution_id', institutionId),
-
-      supabase
-        .from('guardianships')
-        .select(
-          `
-          id,
-          guardian_profile_id,
-          active,
-          students:student_id!inner (
-            institution_id
-          )
-        `,
-        )
-        .eq('students.institution_id', institutionId),
-
-      supabase
-        .from('subject_offerings')
-        .select(
-          `
-          id,
-          class_id,
-          subject_id,
-          teacher_profile_id,
-          active,
-          classes:class_id!inner (
-            institution_id,
-            name
-          ),
-          subjects:subject_id!inner (
-            institution_id,
-            name
-          )
-        `,
-        )
-        .eq('classes.institution_id', institutionId)
-        .eq('subjects.institution_id', institutionId),
-
-      supabase
         .from('class_curriculum_items')
         .select(
           `
@@ -345,11 +221,7 @@ export const adminOverviewService = {
           class_id,
           subject_id,
           active,
-          needs_review,
-          classes:class_id (
-            institution_id,
-            name
-          )
+          needs_review
         `,
         )
         .eq('institution_id', institutionId),
@@ -359,16 +231,12 @@ export const adminOverviewService = {
       studentsResult.error,
       membershipsResult.error,
       academicYearsResult.error,
-      termsResult.error,
       classesResult.error,
       subjectsResult.error,
-      enrollmentsResult.error,
-      guardianshipsResult.error,
-      offeringsResult.error,
       curriculumResult.error,
     ].filter(Boolean);
 
-    if (queryErrors[0]) {
+    if (queryErrors.length > 0) {
       throw queryErrors[0];
     }
 
@@ -384,10 +252,6 @@ export const adminOverviewService = {
       (academicYearsResult.data ??
         []) as AcademicYearSummaryRow[];
 
-    const terms =
-      (termsResult.data ??
-        []) as TermSummaryRow[];
-
     const classes =
       (classesResult.data ??
         []) as ClassSummaryRow[];
@@ -396,29 +260,92 @@ export const adminOverviewService = {
       (subjectsResult.data ??
         []) as SubjectSummaryRow[];
 
-    const enrollments =
-      (enrollmentsResult.data ??
-        []) as EnrollmentSummaryRow[];
-
-    const guardianships =
-      (guardianshipsResult.data ??
-        []) as unknown as GuardianshipSummaryRow[];
-
-    const offerings =
-      (offeringsResult.data ??
-        []) as unknown as OfferingSummaryRow[];
-
     const curriculumItems =
       (curriculumResult.data ??
         []) as unknown as CurriculumSummaryRow[];
 
-    const classIds = new Set(
-      classes.map((classRecord) => classRecord.id),
-    );
-
     const studentIds = new Set(
       students.map((student) => student.id),
     );
+    const classIds = new Set(
+      classes.map((classRecord) => classRecord.id),
+    );
+    const subjectIds = new Set(
+      subjects.map((subject) => subject.id),
+    );
+    const academicYearIds = academicYears.map((year) => year.id);
+    const profileIds = memberships.map(
+      (membership) => membership.profile_id,
+    );
+
+    // These tables do not carry institution_id. Resolve the tenant through
+    // already-scoped IDs instead of asking PostgREST to build nested joins
+    // under the row-level security policies.
+    const [
+      profilesResult,
+      termsResult,
+      enrollmentsResult,
+      guardianshipsResult,
+      offeringsResult,
+    ] = await Promise.all([
+      profileIds.length > 0
+        ? supabase
+            .from('profiles')
+            .select('id, full_name')
+            .in('id', profileIds)
+        : Promise.resolve({ data: [], error: null }),
+      academicYearIds.length > 0
+        ? supabase
+            .from('terms')
+            .select('id, name, academic_year_id, start_date, end_date, active')
+            .in('academic_year_id', academicYearIds)
+            .order('start_date', { ascending: true })
+        : Promise.resolve({ data: [], error: null }),
+      classIds.size > 0 && studentIds.size > 0
+        ? supabase
+            .from('enrollments')
+            .select('id, student_id, class_id, active')
+            .in('class_id', Array.from(classIds))
+            .in('student_id', Array.from(studentIds))
+        : Promise.resolve({ data: [], error: null }),
+      studentIds.size > 0
+        ? supabase
+            .from('guardianships')
+            .select('id, guardian_profile_id, active, student_id')
+            .in('student_id', Array.from(studentIds))
+        : Promise.resolve({ data: [], error: null }),
+      classIds.size > 0 && subjectIds.size > 0
+        ? supabase
+            .from('subject_offerings')
+            .select('id, class_id, subject_id, teacher_profile_id, active')
+            .in('class_id', Array.from(classIds))
+            .in('subject_id', Array.from(subjectIds))
+        : Promise.resolve({ data: [], error: null }),
+    ]);
+
+    const dependentQueryErrors = [
+      profilesResult.error,
+      termsResult.error,
+      enrollmentsResult.error,
+      guardianshipsResult.error,
+      offeringsResult.error,
+    ].filter(Boolean);
+
+    if (dependentQueryErrors.length > 0) {
+      throw dependentQueryErrors[0];
+    }
+
+    const profiles = (profilesResult.data ?? []) as ProfileSummaryRow[];
+    const profileNames = new Map(
+      profiles.map((profile) => [profile.id, profile.full_name]),
+    );
+    const terms = (termsResult.data ?? []) as TermSummaryRow[];
+    const enrollments =
+      (enrollmentsResult.data ?? []) as EnrollmentSummaryRow[];
+    const guardianships =
+      (guardianshipsResult.data ?? []) as GuardianshipSummaryRow[];
+    const offerings =
+      (offeringsResult.data ?? []) as OfferingSummaryRow[];
 
     const activeEnrollments = enrollments.filter(
       (enrollment) =>
@@ -428,21 +355,9 @@ export const adminOverviewService = {
     );
 
     const institutionOfferings = offerings.filter(
-      (offering) => {
-        const classRecord = normalizeRelation(
-          offering.classes,
-        );
-        const subject = normalizeRelation(
-          offering.subjects,
-        );
-
-        return (
-          classRecord?.institution_id ===
-            institutionId &&
-          subject?.institution_id ===
-            institutionId
-        );
-      },
+      (offering) =>
+        classIds.has(offering.class_id) &&
+        subjectIds.has(offering.subject_id),
     );
 
     const activeOfferings =
@@ -453,14 +368,9 @@ export const adminOverviewService = {
     const activeGuardianProfiles = new Set(
       guardianships
         .filter((guardianship) => {
-          const student = normalizeRelation(
-            guardianship.students,
-          );
-
           return (
             isActive(guardianship.active) &&
-            student?.institution_id ===
-              institutionId
+            studentIds.has(guardianship.student_id)
           );
         })
         .map(
@@ -572,7 +482,7 @@ export const adminOverviewService = {
         warnings.push({
           id: `teacher-without-offering-${teacher.profile_id}`,
           title: 'Professor sem atribuição',
-          description: `${getProfileName(teacher)} ainda não foi vinculado a uma disciplina/turma.`,
+          description: `${getProfileName(teacher, profileNames)} ainda não foi vinculado a uma disciplina/turma.`,
           severity: 'info',
         });
       }
@@ -602,10 +512,9 @@ export const adminOverviewService = {
       }
     }
 
-    const institutionCurriculumItems = curriculumItems.filter((item) => {
-      const classRecord = normalizeRelation(item.classes);
-      return classRecord?.institution_id === institutionId;
-    });
+    const institutionCurriculumItems = curriculumItems.filter((item) =>
+      classIds.has(item.class_id),
+    );
 
     const activeCurriculumItems = institutionCurriculumItems.filter(
       (item) => isActive(item.active),
