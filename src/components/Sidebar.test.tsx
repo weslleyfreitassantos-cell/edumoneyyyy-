@@ -250,10 +250,10 @@ describe('Sidebar', () => {
       }),
     ).toBeTruthy();
     expect(
-      screen.queryByRole('button', {
+      screen.getByRole('button', {
         name: /comunica..o e recursos/i,
       }),
-    ).toBeNull();
+    ).toBeTruthy();
     expect(
       screen.getByRole('button', {
         name: /administra..o/i,
@@ -283,7 +283,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('mantem TV Escola, E-mail e os modulos administrativos sem item duplicado', () => {
+  it('mantem os recursos de comunicacao em um grupo sem itens duplicados', () => {
     renderSidebar({
       route: '/admin?module=overview',
       profile: directorProfile(),
@@ -298,11 +298,22 @@ describe('Sidebar', () => {
       navigation.querySelectorAll('a'),
     ).map((link) => link.textContent?.trim());
 
-    expect(labels.filter((label) => label === 'TV Escola')).toHaveLength(1);
-    expect(labels.filter((label) => label === 'E-mail')).toHaveLength(1);
-    expect(labels.indexOf('TV Escola')).toBeLessThan(labels.indexOf('E-mail'));
+    const communicationGroup = screen.getByRole('button', {
+      name: /comunica..o e recursos/i,
+    });
+
+    expect(communicationGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('link', { name: 'TV Escola' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'E-mail' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Câmeras ao vivo' })).toBeNull();
     expect(labels).toContain('Visão geral');
     expect(labels).not.toContain('Administração');
+
+    fireEvent.click(communicationGroup);
+
+    expect(screen.getByRole('link', { name: 'Câmeras ao vivo' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'TV Escola' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'E-mail' })).toBeTruthy();
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
@@ -358,6 +369,12 @@ describe('Sidebar', () => {
       currentInstitutionRole: 'DIRECTOR',
     });
 
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
+
     expect(
       screen.getByRole('link', { name: 'TV Escola' }).getAttribute('aria-current'),
     ).toBe('page');
@@ -370,6 +387,12 @@ describe('Sidebar', () => {
       currentUser: directorUser(),
       currentInstitutionRole: 'DIRECTOR',
     });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /comunica..o e recursos/i,
+      }),
+    );
 
     expect(
       screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),

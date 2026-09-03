@@ -29,6 +29,7 @@ export type AdminNavigationGroupId =
   | 'people'
   | 'academic-configuration'
   | 'school-operation'
+  | 'communication-resources'
   | 'administration';
 
 export interface AdminNavigationGroup {
@@ -67,6 +68,10 @@ export const ADMIN_NAVIGATION_GROUPS: AdminNavigationGroup[] = [
   {
     id: 'school-operation',
     label: 'Operação escolar',
+  },
+  {
+    id: 'communication-resources',
+    label: 'Comunicação e recursos',
   },
   {
     id: 'administration',

@@ -146,12 +146,16 @@ const adminNavigationGroupIcons: Record<
   people: Users,
   'academic-configuration': School,
   'school-operation': ClipboardCheck,
+  'communication-resources': MonitorCog,
   administration: ShieldCheck,
 };
 
 const baseAdminNavigationGroupByItemId: Partial<
   Record<string, AdminNavigationGroupId>
 > = {
+  cameras: 'communication-resources',
+  terminals: 'communication-resources',
+  email: 'communication-resources',
   'personalize-login': 'administration',
 };
 
