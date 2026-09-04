@@ -5,6 +5,7 @@ import worker, {
   rewriteNeoNewsLocation,
   rewriteNeoNewsSetCookie,
   shouldProxyNeoNewsRequest,
+  isDocumentRequest,
 } from './index';
 
 afterEach(() => {
@@ -73,7 +74,9 @@ describe('Worker script', () => {
       ASSETS: assets,
     });
 
-    expect(assets.fetch).toHaveBeenCalledWith(request);
+    const assetRequest = assets.fetch.mock.calls[0][0] as Request;
+    expect(assetRequest.url).toBe(request.url);
+    expect(assetRequest.headers.get('cache-control')).toBe('no-cache');
     expect(response.status).toBe(200);
     expect(await response.text()).toBe('asset');
     const contentSecurityPolicy = response.headers.get('content-security-policy');
@@ -104,6 +107,27 @@ describe('Worker script', () => {
     }
 
     expect(response.headers.get('x-content-type-options')).toBe('nosniff');
+    expect(response.headers.get('cache-control')).toBe(
+      'no-store, no-cache, must-revalidate',
+    );
+  });
+
+  it('revalida apenas documentos HTML, preservando cache de assets versionados', () => {
+    expect(
+      isDocumentRequest(new Request('https://tecescola.grupotec.dev.br/')),
+    ).toBe(true);
+    expect(
+      isDocumentRequest(
+        new Request('https://tecescola.grupotec.dev.br/admin?module=academic-policies', {
+          headers: { Accept: 'text/html,application/xhtml+xml' },
+        }),
+      ),
+    ).toBe(true);
+    expect(
+      isDocumentRequest(
+        new Request('https://tecescola.grupotec.dev.br/assets/index-123.js'),
+      ),
+    ).toBe(false);
   });
 
   it('proxyfica NeoNews no caminho same-origin de qualquer tenant', () => {
@@ -268,7 +292,9 @@ describe('Worker script', () => {
 
     const response = await worker.fetch(request, { ASSETS: assets });
 
-    expect(assets.fetch).toHaveBeenCalledWith(request);
+    const assetRequest = assets.fetch.mock.calls[0][0] as Request;
+    expect(assetRequest.url).toBe(request.url);
+    expect(assetRequest.headers.get('cache-control')).toBe('no-cache');
     expect(await response.text()).toBe('asset');
   });
 

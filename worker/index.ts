@@ -40,7 +40,42 @@ function withSecurityHeaders(response: Response): Response {
   headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   headers.set('X-Content-Type-Options', 'nosniff');
   headers.set('X-Frame-Options', 'DENY');
+
+  if (/text\/html/i.test(headers.get('content-type') ?? '')) {
+    headers.set('Cache-Control', 'no-store, no-cache, must-revalidate');
+    headers.set('Pragma', 'no-cache');
+    headers.set('Expires', '0');
+  }
+
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
+}
+
+export function isDocumentRequest(request: Request): boolean {
+  if (request.method !== 'GET' && request.method !== 'HEAD') {
+    return false;
+  }
+
+  const url = new URL(request.url);
+  const acceptsHtml = request.headers.get('accept')?.includes('text/html') ?? false;
+  const isStaticAsset = /\.[a-z0-9]+$/i.test(url.pathname);
+
+  return (
+    url.pathname === '/' ||
+    url.pathname === '/index.html' ||
+    acceptsHtml ||
+    !isStaticAsset
+  );
+}
+
+function createAssetRequest(request: Request): Request {
+  if (!isDocumentRequest(request)) {
+    return request;
+  }
+
+  const headers = new Headers(request.headers);
+  headers.set('Cache-Control', 'no-cache');
+  headers.set('Pragma', 'no-cache');
+  return new Request(request, { headers });
 }
 
 function isGrupotecSubdomain(hostname: string): boolean {
@@ -422,6 +457,8 @@ export default {
       return proxyTvescolaRequest(request);
     }
 
-    return withSecurityHeaders(await env.ASSETS.fetch(request));
+    return withSecurityHeaders(
+      await env.ASSETS.fetch(createAssetRequest(request)),
+    );
   },
 };
