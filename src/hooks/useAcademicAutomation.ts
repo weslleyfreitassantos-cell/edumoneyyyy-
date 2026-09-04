@@ -127,6 +127,18 @@ export function useCreateCurriculumTemplate() {
   });
 }
 
+export function useDeleteCurriculumTemplate() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: academicAutomationService.deleteCurriculumTemplate,
+    onSuccess: async (_result, variables) => {
+      await queryClient.invalidateQueries({
+        queryKey: [...academicAutomationKeys.all, 'curriculum-templates', variables.institution_id],
+      });
+    },
+  });
+}
+
 export function useApplyCurriculumTemplate() {
   const queryClient = useQueryClient();
   return useMutation({

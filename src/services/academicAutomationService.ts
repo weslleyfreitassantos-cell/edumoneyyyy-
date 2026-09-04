@@ -373,8 +373,27 @@ export const academicAutomationService = {
     return (data ?? []) as CurriculumTemplateRow[];
   },
 
+  async deleteCurriculumTemplate(input: { institution_id: string; template_id: string }): Promise<void> {
+    const { error } = await supabase
+      .from('curriculum_templates')
+      .delete()
+      .eq('id', input.template_id)
+      .eq('institution_id', input.institution_id);
+    if (error) throw error;
+  },
+
   async createCurriculumTemplate(input: { institution_id: string; name: string; grade_level?: string; stage?: string; items: Array<{ subject_id: string; weekly_lessons: number; lesson_duration_minutes: number }> }): Promise<CurriculumTemplateRow> {
     if (!input.name.trim() || input.items.length === 0) throw new Error('O modelo precisa de nome e pelo menos uma disciplina.');
+    if (input.items.some((item) =>
+      !Number.isInteger(item.weekly_lessons) ||
+      item.weekly_lessons < 1 ||
+      item.weekly_lessons > 20 ||
+      !Number.isInteger(item.lesson_duration_minutes) ||
+      item.lesson_duration_minutes < 15 ||
+      item.lesson_duration_minutes > 180
+    )) {
+      throw new Error('A quantidade de aulas deve estar entre 1 e 20, e a duração entre 15 e 180 minutos.');
+    }
     const { data: template, error: templateError } = await supabase.from('curriculum_templates').insert({ institution_id: input.institution_id, name: input.name.trim(), grade_level: input.grade_level?.trim() || null, stage: input.stage?.trim() || null, active: true }).select('id, institution_id, name, grade_level, stage, active').single();
     if (templateError) throw templateError;
     const { error: itemsError } = await supabase.from('curriculum_template_items').insert(input.items.map((item) => ({ institution_id: input.institution_id, template_id: template.id, ...item, active: true })));
