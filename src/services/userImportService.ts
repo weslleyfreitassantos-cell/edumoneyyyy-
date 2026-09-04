@@ -391,7 +391,7 @@ export function buildStudentImportPreviews(
     const warnings: string[] = [];
     const fullName = value(row, ['full_name', 'nome_completo', 'nome']);
     const email = value(row, ['email', 'e_mail']);
-    const birthDate = dateOrError(value(row, ['birth_date', 'data_nascimento', 'nascimento']), 'Data de nascimento', errors, true);
+    const birthDate = dateOrError(value(row, ['birth_date', 'data_nascimento', 'data_de_nascimento', 'nascimento']), 'Data de nascimento', errors, true);
     const yearInput = value(row, ['academic_year_id', 'academic_year', 'ano_letivo', 'ano', 'id_do_ano_letivo']);
     const classInput = value(row, ['class_id', 'class', 'turma', 'id_da_turma']);
     const gradeInput = value(row, ['grade_level', 'ano_escolar', 'ano_escolar_serie', 'serie', 'ano_do_aluno', 'ano_cursado']);
@@ -514,7 +514,7 @@ export function buildStudentImportPreviews(
       documents: buildDocuments(row, errors),
       academic_year_id: year?.id ?? '',
       class_id: classRow?.id ?? '',
-      enrolled_at: dateOrError(value(row, ['enrolled_at', 'data_matricula', 'data_de_matricula']) || new Date().toISOString().slice(0, 10), 'Data da matrícula', errors),
+      enrolled_at: dateOrError(value(row, ['enrolled_at', 'data_matricula', 'data_da_matricula', 'data_de_matricula']) || new Date().toISOString().slice(0, 10), 'Data da matrícula', errors),
     };
 
     if (hasAny(row, ['registration_number', 'ra'])) warnings.push('RA informado foi ignorado; o sistema gera o RA automaticamente.');

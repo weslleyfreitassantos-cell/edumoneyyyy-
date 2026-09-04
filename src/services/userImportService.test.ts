@@ -41,6 +41,36 @@ describe('userImportService', () => {
     expect(preview?.data.documents).toHaveLength(10);
   });
 
+  it('reads the official spreadsheet names for birth and enrollment dates', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Importação',
+      headers: [
+        'Nome completo', 'E-mail', 'Data de nascimento',
+        'Responsável 1 - Nome completo', 'Responsável 1 - E-mail',
+        'Responsável 1 - Parentesco', 'Ano letivo', 'Ano escolar / série',
+        'Data da matrícula',
+      ],
+      rows: [{
+        rowNumber: 2,
+        values: {
+          nome_completo: 'Aluno Oficial',
+          e_mail: 'oficial@example.com',
+          data_de_nascimento: '01/01/2010',
+          responsavel_1_nome_completo: 'Responsável Oficial',
+          responsavel_1_e_mail: 'responsavel@example.com',
+          responsavel_1_parentesco: 'Pai',
+          ano_letivo: '2027',
+          ano_escolar_serie: '7º ano',
+          data_da_matricula: '01/02/2027',
+        },
+      }],
+    }, { years: [year], classes: [schoolClass] });
+
+    expect(result.previews[0]?.errors).toEqual([]);
+    expect(result.previews[0]?.data.identity.birth_date).toBe('2010-01-01');
+    expect(result.previews[0]?.data.enrolled_at).toBe('2027-02-01');
+  });
+
   it('uses the default year and distributes students across matching classes', () => {
     const result = buildStudentImportPreviews({
       sheetName: 'Alunos',
