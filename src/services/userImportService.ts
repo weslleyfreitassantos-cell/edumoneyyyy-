@@ -60,6 +60,8 @@ export interface ImportResult {
   failed: ImportFailure[];
 }
 
+const STUDENT_IMPORT_CONCURRENCY = 3;
+
 export const STUDENT_IMPORT_HEADERS = [
   'Nome completo', 'E-mail', 'Data de nascimento', 'CPF', 'Nome social', 'RG',
   'Órgão expedidor', 'UF do RG', 'Certidão de nascimento', 'Nacionalidade',
@@ -594,17 +596,29 @@ export async function importStudents(
   previews: Array<ImportPreview<StudentImportPreviewData>>,
   onProgress?: (progress: ImportProgress) => void,
 ): Promise<ImportResult> {
+  const concurrency = Math.min(STUDENT_IMPORT_CONCURRENCY, previews.length);
   const result: ImportResult = { succeeded: [], failed: [] };
-  for (let index = 0; index < previews.length; index += 1) {
-    const preview = previews[index];
-    onProgress?.({ current: index + 1, total: previews.length, rowNumber: preview.rowNumber, label: preview.label });
-    try {
-      await createFullStudentEnrollment(institutionId, preview.data);
-      result.succeeded.push({ rowNumber: preview.rowNumber, label: preview.label });
-    } catch (error) {
-      result.failed.push({ rowNumber: preview.rowNumber, label: preview.label, message: error instanceof Error ? error.message : 'Não foi possível importar o aluno.' });
+
+  let nextIndex = 0;
+  async function importWorker(): Promise<void> {
+    while (nextIndex < previews.length) {
+      const index = nextIndex;
+      nextIndex += 1;
+      const preview = previews[index];
+      onProgress?.({ current: index + 1, total: previews.length, rowNumber: preview.rowNumber, label: preview.label });
+      try {
+        // Each row remains sequential, while a small pool shortens the total wait time.
+        await createFullStudentEnrollment(institutionId, preview.data);
+        result.succeeded.push({ rowNumber: preview.rowNumber, label: preview.label });
+      } catch (error) {
+        result.failed.push({ rowNumber: preview.rowNumber, label: preview.label, message: error instanceof Error ? error.message : 'Não foi possível importar o aluno.' });
+      }
     }
   }
+
+  await Promise.all(Array.from({ length: concurrency }, () => importWorker()));
+  result.succeeded.sort((left, right) => left.rowNumber - right.rowNumber);
+  result.failed.sort((left, right) => left.rowNumber - right.rowNumber);
   return result;
 }
 

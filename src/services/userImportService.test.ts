@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import type { AcademicYearRow } from './academicStructureService';
 import type { ClassRow } from './classService';
@@ -6,7 +6,16 @@ import type { SubjectRow } from './subjectService';
 import {
   buildStudentImportPreviews,
   buildTeacherImportPreviews,
+  importStudents,
+  type ImportPreview,
+  type StudentImportPreviewData,
 } from './userImportService';
+
+import { createFullStudentEnrollment } from './fullStudentEnrollmentService';
+
+vi.mock('./fullStudentEnrollmentService', () => ({
+  createFullStudentEnrollment: vi.fn(),
+}));
 
 const year = { id: 'year-2027', institution_id: 'institution-1', name: '2027', start_date: '2027-02-01', end_date: '2027-12-17', active: true, terms: [] } as AcademicYearRow;
 const schoolClass = { id: 'class-7a', institution_id: 'institution-1', academic_year_id: 'year-2027', academic_year_name: '2027', name: '7º A', grade_level: '7º', shift: 'INTEGRAL', capacity: 35, active: true, active_enrollments_count: 0, active_offerings_count: 0, active_curriculum_items_count: 0 } as ClassRow;
@@ -185,5 +194,33 @@ describe('userImportService', () => {
     expect(result.previews[0]?.errors).toEqual([]);
     expect(result.previews[0]?.data.subject_ids).toEqual(['subject-mat', 'subject-fis']);
     expect(result.previews[0]?.data.availability[0]).toEqual({ day_of_week: 1, start_time: '07:00', end_time: '12:00' });
+  });
+
+  it('imports students with bounded concurrency and preserves result order', async () => {
+    let active = 0;
+    let maximumActive = 0;
+    vi.mocked(createFullStudentEnrollment).mockImplementation(async () => {
+      active += 1;
+      maximumActive = Math.max(maximumActive, active);
+      await new Promise((resolve) => setTimeout(resolve, 5));
+      active -= 1;
+      return { student_id: 'student-1', enrollment_id: 'enrollment-1', guardian_profile_ids: [], documents_pending: 0 };
+    });
+
+    const previews = Array.from({ length: 7 }, (_, index) => ({
+      rowNumber: index + 2,
+      label: `Aluno ${index + 1}`,
+      data: {} as StudentImportPreviewData,
+      errors: [],
+      warnings: [],
+    })) satisfies Array<ImportPreview<StudentImportPreviewData>>;
+    const progress: number[] = [];
+
+    const result = await importStudents('institution-1', previews, (item) => progress.push(item.current));
+
+    expect(maximumActive).toBe(3);
+    expect(result.failed).toEqual([]);
+    expect(result.succeeded.map((item) => item.rowNumber)).toEqual([2, 3, 4, 5, 6, 7, 8]);
+    expect(progress).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 });
