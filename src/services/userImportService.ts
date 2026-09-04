@@ -132,21 +132,34 @@ function required(valueToCheck: string, label: string, errors: string[]): void {
   if (!valueToCheck.trim()) errors.push(`${label} é obrigatório.`);
 }
 
+function toIsoDate(year: number, month: number, day: number): string | null {
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (
+    Number.isNaN(date.getTime())
+    || date.getUTCFullYear() !== year
+    || date.getUTCMonth() !== month - 1
+    || date.getUTCDate() !== day
+  ) return null;
+  return date.toISOString().slice(0, 10);
+}
+
 function parseDate(valueToParse: string): string | null {
   const input = valueToParse.trim();
   if (!input) return null;
-  if (/^\d{4}-\d{2}-\d{2}$/.test(input)) return input;
 
-  const brazilian = input.match(/^(\d{1,2})[/.\-](\d{1,2})[/.\-](\d{4})$/);
+  const iso = input.match(/^(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})(?:[T\s].*)?$/);
+  if (iso) return toIsoDate(Number(iso[1]), Number(iso[2]), Number(iso[3]));
+
+  const brazilian = input.match(/^(\d{1,2})[/\.\-](\d{1,2})[/\.\-](\d{4})(?:[T\s].*)?$/);
   if (brazilian) {
     const [, day, month, year] = brazilian;
-    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    return toIsoDate(Number(year), Number(month), Number(day));
   }
 
   const serial = Number(input);
   if (Number.isInteger(serial) && serial >= 1 && serial <= 100000) {
     const date = new Date(Date.UTC(1899, 11, 30) + serial * 86400000);
-    return date.toISOString().slice(0, 10);
+    return Number.isNaN(date.getTime()) ? null : date.toISOString().slice(0, 10);
   }
   return null;
 }

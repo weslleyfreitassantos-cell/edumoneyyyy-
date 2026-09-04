@@ -71,6 +71,33 @@ describe('userImportService', () => {
     expect(result.previews[0]?.data.enrolled_at).toBe('2027-02-01');
   });
 
+  it('accepts Excel date text with a time suffix', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Importação',
+      headers: [
+        'Nome completo', 'E-mail', 'Data de nascimento',
+        'Responsável 1 - Nome completo', 'Responsável 1 - E-mail',
+        'Responsável 1 - Parentesco', 'Ano letivo', 'Ano escolar / série',
+      ],
+      rows: [{
+        rowNumber: 2,
+        values: {
+          nome_completo: 'Aluno Excel',
+          e_mail: 'excel@example.com',
+          data_de_nascimento: '2010-01-01 00:00:00',
+          responsavel_1_nome_completo: 'Responsável Excel',
+          responsavel_1_e_mail: 'responsavel-excel@example.com',
+          responsavel_1_parentesco: 'Pai',
+          ano_letivo: '2027',
+          ano_escolar_serie: '7º ano',
+        },
+      }],
+    }, { years: [year], classes: [schoolClass] });
+
+    expect(result.previews[0]?.errors).toEqual([]);
+    expect(result.previews[0]?.data.identity.birth_date).toBe('2010-01-01');
+  });
+
   it('uses the default year and distributes students across matching classes', () => {
     const result = buildStudentImportPreviews({
       sheetName: 'Alunos',
