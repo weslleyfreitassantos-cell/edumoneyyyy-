@@ -193,6 +193,40 @@ describe('CurriculumTab', () => {
     expect(classSelect).toBeTruthy();
   });
 
+  it('busca por turma ou disciplina', () => {
+    renderTab();
+    fireEvent.change(screen.getByLabelText(/buscar na matriz/i), {
+      target: { value: 'matemática' },
+    });
+
+    expect(screen.getByText('Matemática')).toBeTruthy();
+    expect(screen.queryByText('Português')).toBeNull();
+  });
+
+  it('limita a matriz e permite navegar entre páginas', () => {
+    vi.mocked(useCurriculum).mockReturnValue({
+      data: Array.from({ length: 11 }, (_, index) => ({
+        ...baseItems[0],
+        id: `item-${index + 1}`,
+        subject_id: `subj-${index + 1}`,
+        subject_name: `Disciplina ${index + 1}`,
+      })),
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    renderTab();
+
+    expect(screen.getByText('Mostrando 1–10 de 11')).toBeTruthy();
+    expect(screen.queryByText('Disciplina 11')).toBeNull();
+
+    fireEvent.click(screen.getByLabelText('Próxima página'));
+
+    expect(screen.getByText('Página 2 de 2')).toBeTruthy();
+    expect(screen.getByText('Disciplina 11')).toBeTruthy();
+  });
+
   it('abre modal de criacao ao clicar em Adicionar', () => {
     renderTab();
     fireEvent.click(screen.getByText(/Adicionar disciplina/i));

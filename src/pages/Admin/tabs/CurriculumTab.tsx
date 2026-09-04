@@ -3,6 +3,11 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { DataTable, type Column } from '../../../components/DataTable';
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
 import CurriculumTemplatePanel from '../../../components/academic/CurriculumTemplatePanel';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -44,6 +49,8 @@ const emptyDraft: ItemDraft = {
   weekly_lessons: '2',
   lesson_duration_minutes: '50',
 };
+
+const CURRICULUM_PAGE_SIZE = 10;
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
@@ -98,12 +105,19 @@ export default function CurriculumTab() {
 
   const [yearFilter, setYearFilter] = useState('all');
   const [classFilter, setClassFilter] = useState('all');
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const [modalError, setModalError] = useState<string | null>(null);
 
   useEffect(() => {
     const classId = searchParams.get('classId');
     if (classId) setClassFilter(classId);
   }, [searchParams]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [yearFilter, classFilter, search]);
+
   const [pageError, setPageError] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
   const [isTemplatePanelOpen, setIsTemplatePanelOpen] = useState(false);
@@ -116,12 +130,31 @@ export default function CurriculumTab() {
 
   const filteredItems = useMemo(() => {
     const items = curriculumQuery.data ?? [];
+    const normalizedSearch = normalizeListSearch(search);
     return items.filter((item) => {
       const matchesYear = yearFilter === 'all' || item.academic_year_id === yearFilter;
       const matchesClass = classFilter === 'all' || item.class_id === classFilter;
-      return matchesYear && matchesClass;
+      const matchesSearch = !normalizedSearch || [
+        item.class_name,
+        item.subject_name,
+        item.subject_code,
+      ].some((value) => normalizeListSearch(value ?? '').includes(normalizedSearch));
+      return matchesYear && matchesClass && matchesSearch;
     });
-  }, [curriculumQuery.data, yearFilter, classFilter]);
+  }, [curriculumQuery.data, yearFilter, classFilter, search]);
+
+  const paginatedItems = useMemo(() => {
+    const start = (page - 1) * CURRICULUM_PAGE_SIZE;
+    return filteredItems.slice(start, start + CURRICULUM_PAGE_SIZE);
+  }, [filteredItems, page]);
+
+  useEffect(() => {
+    const totalPages = Math.max(
+      1,
+      Math.ceil(filteredItems.length / CURRICULUM_PAGE_SIZE),
+    );
+    setPage((currentPage) => Math.min(currentPage, totalPages));
+  }, [filteredItems.length]);
 
   const totalWeeklyMinutes = useMemo(() => {
     return filteredItems.reduce((sum, item) => sum + item.weekly_minutes, 0);
@@ -363,7 +396,15 @@ export default function CurriculumTab() {
         </div>
       )}
 
-      <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:items-end">
+      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 md:grid-cols-4 md:items-end">
+        <ListSearch
+          id="curriculum-search"
+          label="Buscar na matriz"
+          placeholder="Turma ou disciplina"
+          value={search}
+          onChange={setSearch}
+        />
+
         <div>
           <label htmlFor="curriculum-year-filter" className="block text-sm font-medium text-gray-700">
             Ano letivo
@@ -400,6 +441,10 @@ export default function CurriculumTab() {
             ))}
           </select>
         </div>
+
+        <p className="text-sm text-[#667085] md:pb-2">
+          {filteredItems.length} item(ns) encontrado(s)
+        </p>
       </section>
 
       {filteredItems.length > 0 && (
@@ -413,7 +458,7 @@ export default function CurriculumTab() {
       <DataTable
         title="Matriz curricular"
         addLabel="Adicionar disciplina"
-        data={filteredItems}
+        data={paginatedItems}
         columns={columns}
         isLoading={curriculumQuery.isLoading || classesQuery.isLoading || subjectsQuery.isLoading}
         onAdd={openCreateModal}
@@ -459,6 +504,13 @@ export default function CurriculumTab() {
             </div>
           );
         }}
+      />
+
+      <ListPagination
+        page={page}
+        pageSize={CURRICULUM_PAGE_SIZE}
+        totalItems={filteredItems.length}
+        onPageChange={setPage}
       />
 
       {isModalOpen && (
