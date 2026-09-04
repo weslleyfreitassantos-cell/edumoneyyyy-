@@ -289,7 +289,7 @@ async function createOwnerProfile(
 
   const { error: profileError } = await ctx.supabaseAdmin
     .from("profiles")
-    .insert({
+    .upsert({
       id: profileId,
       full_name: input.adminFullName,
       email: normalizedEmail,
@@ -297,7 +297,7 @@ async function createOwnerProfile(
       platform_role: "USER",
       avatar_url: null,
       active: true,
-    });
+    }, { onConflict: "id" });
 
   if (profileError) {
     throw profileError;
