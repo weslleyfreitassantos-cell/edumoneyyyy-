@@ -51,26 +51,32 @@ const BREAK_DAY_OPTIONS = [
   { value: 6, label: 'Sábado' },
 ] as const;
 
-const SUGGESTED_BREAKS: Record<AcademicShift, SchoolScheduleBreakDraft[]> = {
+type WeeklyBreakDraft = Omit<SchoolScheduleBreakDraft, 'day_of_week'> & {
+  days_of_week: number[];
+};
+
+const WEEKDAYS = BREAK_DAY_OPTIONS.slice(0, 5).map((day) => day.value);
+
+const SUGGESTED_BREAKS: Record<AcademicShift, WeeklyBreakDraft[]> = {
   MATUTINO: [
-    { day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '10:30', end_time: '10:50' },
   ],
   VESPERTINO: [
-    { day_of_week: 1, name: 'Intervalo', start_time: '16:30', end_time: '16:50' },
-    { day_of_week: 1, name: 'Intervalo', start_time: '18:30', end_time: '18:50' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '16:30', end_time: '16:50' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '18:30', end_time: '18:50' },
   ],
   INTEGRAL: [
-    { day_of_week: 1, name: 'Intervalo', start_time: '10:30', end_time: '10:50' },
-    { day_of_week: 1, name: 'Almoço', start_time: '11:40', end_time: '13:00' },
-    { day_of_week: 1, name: 'Intervalo', start_time: '14:40', end_time: '14:50' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '10:30', end_time: '10:50' },
+    { days_of_week: WEEKDAYS, name: 'Almoço', start_time: '11:40', end_time: '13:00' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '14:40', end_time: '14:50' },
   ],
   NOTURNO: [
-    { day_of_week: 1, name: 'Intervalo', start_time: '20:10', end_time: '20:20' },
-    { day_of_week: 1, name: 'Intervalo', start_time: '22:00', end_time: '22:10' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '20:10', end_time: '20:20' },
+    { days_of_week: WEEKDAYS, name: 'Intervalo', start_time: '22:00', end_time: '22:10' },
   ],
 };
 
-function emptyBreaksByShift(): Record<AcademicShift, SchoolScheduleBreakDraft[]> {
+function emptyBreaksByShift(): Record<AcademicShift, WeeklyBreakDraft[]> {
   return {
     MATUTINO: [],
     VESPERTINO: [],
@@ -79,15 +85,59 @@ function emptyBreaksByShift(): Record<AcademicShift, SchoolScheduleBreakDraft[]>
   };
 }
 
-function copyBreaksToWeekdays(
+function groupBreaksBySchedule(
   breaks: SchoolScheduleBreakDraft[],
-): SchoolScheduleBreakDraft[] {
-  return breaks.flatMap((item) =>
-    BREAK_DAY_OPTIONS.slice(0, 5).map((day) => ({
-      ...item,
-      day_of_week: day.value,
-    })),
+): WeeklyBreakDraft[] {
+  const grouped = new Map<string, WeeklyBreakDraft>();
+
+  for (const item of breaks) {
+    const startTime = item.start_time.slice(0, 5);
+    const endTime = item.end_time.slice(0, 5);
+    const name = item.name.trim();
+    const key = `${name.toLocaleLowerCase()}:${startTime}:${endTime}`;
+    const current = grouped.get(key);
+
+    if (current) {
+      if (!current.days_of_week.includes(item.day_of_week)) {
+        current.days_of_week = [...current.days_of_week, item.day_of_week].sort(
+          (left, right) => left - right,
+        );
+      }
+      continue;
+    }
+
+    grouped.set(key, {
+      days_of_week: [item.day_of_week],
+      name,
+      start_time: startTime,
+      end_time: endTime,
+    });
+  }
+
+  return [...grouped.values()].sort(
+    (left, right) =>
+      (left.days_of_week[0] ?? 0) - (right.days_of_week[0] ?? 0) ||
+      left.start_time.localeCompare(right.start_time),
   );
+}
+
+function expandWeeklyBreaks(
+  breaks: WeeklyBreakDraft[],
+): SchoolScheduleBreakDraft[] {
+  return breaks
+    .flatMap((item) =>
+      item.days_of_week.map((day_of_week) => ({
+        day_of_week,
+        name: item.name,
+        start_time: item.start_time,
+        end_time: item.end_time,
+      })),
+    )
+    .sort(
+      (left, right) =>
+        left.day_of_week - right.day_of_week ||
+        left.start_time.localeCompare(right.start_time),
+    );
 }
 
 export default function AcademicPolicyPanel({
@@ -107,11 +157,13 @@ export default function AcademicPolicyPanel({
   const [timetableSettings, setTimetableSettings] =
     useState<TimetablePolicySettings>(DEFAULT_TIMETABLE_POLICY);
   const [breaksByShift, setBreaksByShift] = useState<
-    Record<AcademicShift, SchoolScheduleBreakDraft[]>
+    Record<AcademicShift, WeeklyBreakDraft[]>
   >(emptyBreaksByShift);
   const [successMessage, setSuccessMessage] =
     useState('');
   const [shiftSuccessMessage, setShiftSuccessMessage] =
+    useState('');
+  const [breakValidationMessage, setBreakValidationMessage] =
     useState('');
 
   useEffect(() => {
@@ -152,15 +204,17 @@ export default function AcademicPolicyPanel({
     if (!scheduleBreaksQuery.data) return;
 
     const next = emptyBreaksByShift();
-    for (const item of scheduleBreaksQuery.data) {
-      const shift = item.shift as AcademicShift;
-      if (!next[shift]) continue;
-      next[shift].push({
-        day_of_week: item.day_of_week,
-        name: item.name,
-        start_time: item.start_time.slice(0, 5),
-        end_time: item.end_time.slice(0, 5),
-      });
+    for (const option of ACADEMIC_SHIFT_OPTIONS) {
+      next[option.value] = groupBreaksBySchedule(
+        scheduleBreaksQuery.data
+          .filter((item) => item.shift === option.value)
+          .map((item) => ({
+            day_of_week: item.day_of_week,
+            name: item.name,
+            start_time: item.start_time,
+            end_time: item.end_time,
+          })),
+      );
     }
     setBreaksByShift(next);
   }, [scheduleBreaksQuery.data]);
@@ -218,8 +272,9 @@ export default function AcademicPolicyPanel({
   function updateBreak(
     shift: AcademicShift,
     index: number,
-    value: Partial<SchoolScheduleBreakDraft>,
+    value: Partial<WeeklyBreakDraft>,
   ): void {
+    setBreakValidationMessage('');
     setBreaksByShift((current) => ({
       ...current,
       [shift]: current[shift].map((item, itemIndex) =>
@@ -228,13 +283,36 @@ export default function AcademicPolicyPanel({
     }));
   }
 
+  function toggleBreakDay(
+    shift: AcademicShift,
+    index: number,
+    dayOfWeek: number,
+  ): void {
+    setBreakValidationMessage('');
+    setBreaksByShift((current) => ({
+      ...current,
+      [shift]: current[shift].map((item, itemIndex) => {
+        if (itemIndex !== index) return item;
+
+        const days_of_week = item.days_of_week.includes(dayOfWeek)
+          ? item.days_of_week.filter((day) => day !== dayOfWeek)
+          : [...item.days_of_week, dayOfWeek].sort(
+              (left, right) => left - right,
+            );
+
+        return { ...item, days_of_week };
+      }),
+    }));
+  }
+
   function addBreak(shift: AcademicShift): void {
+    setBreakValidationMessage('');
     setBreaksByShift((current) => ({
       ...current,
       [shift]: [
         ...current[shift],
         {
-          day_of_week: 1,
+          days_of_week: [...WEEKDAYS],
           name: 'Intervalo',
           start_time: '10:30',
           end_time: '10:50',
@@ -244,6 +322,7 @@ export default function AcademicPolicyPanel({
   }
 
   function removeBreak(shift: AcademicShift, index: number): void {
+    setBreakValidationMessage('');
     setBreaksByShift((current) => ({
       ...current,
       [shift]: current[shift].filter((_, itemIndex) => itemIndex !== index),
@@ -251,20 +330,32 @@ export default function AcademicPolicyPanel({
   }
 
   function suggestBreaks(shift: AcademicShift): void {
+    setBreakValidationMessage('');
     setBreaksByShift((current) => ({
       ...current,
-      [shift]: copyBreaksToWeekdays(SUGGESTED_BREAKS[shift]),
+      [shift]: SUGGESTED_BREAKS[shift].map((item) => ({
+        ...item,
+        days_of_week: [...item.days_of_week],
+      })),
     }));
   }
 
   async function handleBreakSubmit(shift: AcademicShift): Promise<void> {
     if (!institutionId || readOnly) return;
+    setBreakValidationMessage('');
+
+    if (breaksByShift[shift].some((item) => item.days_of_week.length === 0)) {
+      setBreakValidationMessage(
+        'Selecione pelo menos um dia da semana para cada intervalo.',
+      );
+      return;
+    }
 
     try {
       await saveScheduleBreaks.mutateAsync({
         institution_id: institutionId,
         shift,
-        breaks: breaksByShift[shift],
+        breaks: expandWeeklyBreaks(breaksByShift[shift]),
       });
       setShiftSuccessMessage('Intervalos e almoço salvos.');
     } catch {
@@ -515,27 +606,40 @@ export default function AcademicPolicyPanel({
                         {shiftBreaks.map((item, index) => (
                           <div
                             key={`${shift}-${index}`}
-                            className="grid gap-2 sm:grid-cols-[1.1fr_1.2fr_1fr_1fr_auto] sm:items-end"
+                            className="grid gap-3 rounded-lg border border-[#edf0f4] bg-[#fbfcfe] p-3 lg:grid-cols-[minmax(300px,1.5fr)_minmax(170px,1fr)_minmax(150px,.8fr)_minmax(150px,.8fr)_auto] lg:items-end"
                           >
-                            <label className="text-xs font-semibold text-[#3d4652]">
-                              Dia
-                              <select
-                                value={item.day_of_week}
-                                onChange={(event) =>
-                                  updateBreak(shift, index, {
-                                    day_of_week: Number(event.target.value),
-                                  })
-                                }
-                                disabled={readOnly || saveScheduleBreaks.isPending}
-                                className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
-                              >
-                                {BREAK_DAY_OPTIONS.map((day) => (
-                                  <option key={day.value} value={day.value}>
-                                    {day.label}
-                                  </option>
-                                ))}
-                              </select>
-                            </label>
+                            <fieldset>
+                              <legend className="text-xs font-semibold text-[#3d4652]">
+                                Dias da semana
+                              </legend>
+                              <div className="mt-1 flex flex-wrap gap-1.5">
+                                {BREAK_DAY_OPTIONS.map((day) => {
+                                  const checked = item.days_of_week.includes(day.value);
+                                  return (
+                                    <label
+                                      key={day.value}
+                                      className={`inline-flex cursor-pointer items-center gap-1.5 rounded-md border px-2 py-1.5 text-xs font-semibold transition-colors ${
+                                        checked
+                                          ? 'border-[#8db9ed] bg-blue-50 text-[#005bbf]'
+                                          : 'border-[#dfe3e8] bg-white text-[#667085]'
+                                      } ${readOnly ? 'cursor-default opacity-80' : ''}`}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        checked={checked}
+                                        onChange={() =>
+                                          toggleBreakDay(shift, index, day.value)
+                                        }
+                                        aria-label={`${day.label} para o intervalo ${index + 1}`}
+                                        disabled={readOnly || saveScheduleBreaks.isPending}
+                                        className="h-3.5 w-3.5 accent-[#005bbf]"
+                                      />
+                                      {day.label}
+                                    </label>
+                                  );
+                                })}
+                              </div>
+                            </fieldset>
                             <label className="text-xs font-semibold text-[#3d4652]">
                               Tipo
                               <input
@@ -595,6 +699,12 @@ export default function AcademicPolicyPanel({
                       </div>
                     )}
 
+                    {shiftBreaks.length > 0 && (
+                      <p className="mt-2 text-xs text-[#667085]">
+                        Cada linha se repete nos dias selecionados. Para um dia diferente, crie outra linha.
+                      </p>
+                    )}
+
                     {!readOnly && (
                       <button
                         type="button"
@@ -618,6 +728,14 @@ export default function AcademicPolicyPanel({
               className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
             >
               {getErrorMessage(saveScheduleBreaks.error)}
+            </div>
+          )}
+          {breakValidationMessage && (
+            <div
+              role="alert"
+              className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700"
+            >
+              {breakValidationMessage}
             </div>
           )}
         </section>
