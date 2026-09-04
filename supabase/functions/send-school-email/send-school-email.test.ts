@@ -24,11 +24,20 @@ describe("send-school-email", () => {
   });
 
   it("uses the configured Resend secret and bounded sequential batches", () => {
-    expect(source).toContain('Deno.env.get("resendsenha")');
+    expect(source).toContain("getResendApiKey");
+    expect(source).toContain("RESEND_RATE_LIMITED");
     expect(source).toContain('Deno.env.get("EMAIL_FROM")');
     expect(source).toContain("offset += 100");
     expect(source).toContain('https://api.resend.com/emails/batch');
     expect(source).not.toContain("Promise.all");
+  });
+
+  it("returns a semantic failure instead of reporting success after provider errors", () => {
+    expect(source).toContain("readResendFailure(response)");
+    expect(source).toContain("createResendNetworkFailure(error)");
+    expect(source).toContain("providerFailure");
+    expect(source).toContain("success: false");
+    expect(source).toContain("recipientCount: selectedRecipients.length");
   });
 
   it("never accepts an arbitrary email list or logs message content", () => {

@@ -140,6 +140,19 @@ function getPlatformErrorMessage(error: unknown): string {
     if (error.code === 'PROFILE_INACTIVE') {
       return 'Seu usuário está desativado e não pode executar esta operação.';
     }
+
+    if (error.code === 'AUTH_RATE_LIMITED') {
+      return 'O serviço de convites atingiu temporariamente o limite. Tente novamente mais tarde.';
+    }
+
+    if (
+      error.code === 'AUTH_SMTP_CONFIGURATION_ERROR' ||
+      error.code === 'AUTH_EMAIL_PROVIDER_REJECTED' ||
+      error.code === 'AUTH_INVITE_EMAIL_FAILED' ||
+      error.code === 'AUTH_UNKNOWN_INVITE_ERROR'
+    ) {
+      return 'Não foi possível enviar o convite por e-mail. Verifique a configuração de e-mail ou contate o administrador.';
+    }
   }
 
   return getErrorMessage(error);

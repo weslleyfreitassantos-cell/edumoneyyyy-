@@ -27,4 +27,13 @@ describe('create-client-account', () => {
     expect(source).toContain('SUPER_ADMIN_REQUIRED');
     expect(source).toContain('platform_role');
   });
+
+  it('classifies Auth invitation failures without exposing provider secrets', () => {
+    expect(source).toContain('classifyAuthInviteError');
+    expect(source).toContain('failure.code');
+    expect(source).toContain('failure.status');
+    expect(source).toContain('diagnosticMessage');
+    expect(source).toContain('providerCode');
+    expect(source).not.toContain('console.error("Falha ao criar conta", error)');
+  });
 });

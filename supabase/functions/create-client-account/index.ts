@@ -9,6 +9,7 @@ import {
   type ExistingIdentityProfile,
   type IdentityConflict,
 } from "../_shared/identity-protection.ts";
+import { classifyAuthInviteError } from "../_shared/auth-invite.ts";
 import type { Database } from "../_shared/database.types.ts";
 
 interface RollbackState {
@@ -283,10 +284,22 @@ async function createOwnerProfile(
       );
     }
 
-    throw new Error(
-      invitationError?.message ??
-        "Nao foi possivel convidar o ADMIN.",
+    const failure = classifyAuthInviteError(
+      invitationError ??
+        new Error("Supabase Auth nao retornou o usuario convidado."),
     );
+    console.error("Falha no convite do administrador", {
+      status: failure.status,
+      code: failure.code,
+      name: failure.name,
+      providerCode: failure.providerCode,
+      message: failure.diagnosticMessage,
+    });
+    throw new AccountError({
+      status: failure.status,
+      code: failure.code,
+      message: failure.publicMessage,
+    });
   }
 
   const profileId = invitationData.user.id;
@@ -406,7 +419,10 @@ export default {
           { status: 201 },
         );
       } catch (error) {
-        console.error("Erro ao criar conta:", error);
+        console.error("Erro ao criar conta:", {
+          code: error instanceof AccountError ? error.code : "INTERNAL_ERROR",
+          status: error instanceof AccountError ? error.status : 500,
+        });
 
         if (rollback.createdAuthUserId) {
           try {
@@ -421,7 +437,7 @@ export default {
           } catch (cleanupError) {
             console.error(
               "Erro no cleanup da conta:",
-              cleanupError,
+              { code: "CLEANUP_FAILED" },
             );
           }
         }

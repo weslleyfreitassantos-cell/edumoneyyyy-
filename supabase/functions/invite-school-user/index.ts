@@ -926,7 +926,10 @@ export default {
             membershipId,
             email: input.email,
             reusedExistingUser: false,
-            providerCode: publicEmailError.code,
+            providerCode:
+              emailError instanceof SchoolAccessEmailError
+                ? emailError.code
+                : publicEmailError.code,
           },
         });
       }

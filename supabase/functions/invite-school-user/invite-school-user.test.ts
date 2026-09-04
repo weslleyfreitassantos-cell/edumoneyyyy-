@@ -79,4 +79,9 @@ describe('invite-school-user', () => {
     expect(source).toContain('ACCESS_CREATED_EMAIL_FAILED');
     expect(source).toContain('requestId');
   });
+
+  it('preserves the semantic provider error code in email delivery failures', () => {
+    expect(source).toContain('emailError.code');
+    expect(source).toContain('providerCode:');
+  });
 });

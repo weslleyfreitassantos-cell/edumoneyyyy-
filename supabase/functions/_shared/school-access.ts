@@ -1,3 +1,9 @@
+import {
+  createResendNetworkFailure,
+  getResendApiKey,
+  readResendFailure,
+} from "./resend.ts";
+
 export type SchoolAccessRole =
   | "ADMIN"
   | "DIRECTOR"
@@ -271,7 +277,7 @@ export function buildSchoolAccessEmail({
 export async function sendSchoolAccessEmail(
   input: SchoolAccessEmailInput,
 ): Promise<void> {
-  const apiKey = Deno.env.get("resendsenha")?.trim();
+  const apiKey = getResendApiKey((name) => Deno.env.get(name));
   const from = Deno.env.get("EMAIL_FROM")?.trim();
 
   if (!apiKey || !from) {
@@ -282,24 +288,51 @@ export async function sendSchoolAccessEmail(
   }
 
   const { subject, html } = buildSchoolAccessEmail(input);
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [input.recipientEmail],
-      subject,
-      html,
-    }),
-  });
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from,
+        to: [input.recipientEmail],
+        subject,
+        html,
+      }),
+    });
 
-  if (!response.ok) {
+    if (!response.ok) {
+      const failure = await readResendFailure(response);
+      console.error("Resend access email failed", {
+        status: failure.status,
+        statusText: failure.statusText,
+        code: failure.code,
+        providerCode: failure.providerCode,
+        message: failure.message,
+      });
+      throw new SchoolAccessEmailError(
+        failure.code,
+        failure.publicMessage,
+      );
+    }
+  } catch (error) {
+    if (error instanceof SchoolAccessEmailError) {
+      throw error;
+    }
+
+    const failure = createResendNetworkFailure(error);
+    console.error("Resend access email request failed", {
+      status: failure.status,
+      statusText: failure.statusText,
+      code: failure.code,
+      providerCode: failure.providerCode,
+      message: failure.message,
+    });
     throw new SchoolAccessEmailError(
-      "EMAIL_DELIVERY_FAILED",
-      "Não foi possível enviar o e-mail de acesso.",
+      failure.code,
+      failure.publicMessage,
     );
   }
 }

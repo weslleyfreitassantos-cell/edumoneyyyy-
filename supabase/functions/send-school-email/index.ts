@@ -8,6 +8,12 @@ import {
   buildInstitutionMessageEmail,
   type InstitutionMessageEmail,
 } from "../_shared/institution-email.ts";
+import {
+  createResendNetworkFailure,
+  getResendApiKey,
+  readResendFailure,
+  type ResendFailure,
+} from "../_shared/resend.ts";
 
 type Audience =
   | "STUDENTS"
@@ -110,12 +116,19 @@ type ContentData = z.infer<typeof contentSchema>;
 class EmailFunctionError extends Error {
   status: number;
   code: string;
+  extra?: Record<string, unknown>;
 
-  constructor(status: number, code: string, message: string) {
+  constructor(
+    status: number,
+    code: string,
+    message: string,
+    extra?: Record<string, unknown>,
+  ) {
     super(message);
     this.name = "EmailFunctionError";
     this.status = status;
     this.code = code;
+    this.extra = extra;
   }
 }
 
@@ -125,6 +138,7 @@ function jsonError(
   message: string,
   requestId: string,
   fieldErrors?: Record<string, string>,
+  extra?: Record<string, unknown>,
 ): Response {
   return Response.json(
     {
@@ -133,6 +147,7 @@ function jsonError(
       message,
       requestId,
       ...(fieldErrors ? { fieldErrors } : {}),
+      ...(extra ?? {}),
     },
     { status },
   );
@@ -396,8 +411,12 @@ async function sendBatches(
   recipients: Recipient[],
   content: ContentData,
   institution: InstitutionRecord,
-): Promise<{ sentCount: number; failedCount: number }> {
-  const apiKey = Deno.env.get("resendsenha");
+): Promise<{
+  sentCount: number;
+  failedCount: number;
+  providerFailure: ResendFailure | null;
+}> {
+  const apiKey = getResendApiKey((name) => Deno.env.get(name));
   const from = Deno.env.get("EMAIL_FROM");
 
   if (!apiKey || !from) {
@@ -410,6 +429,7 @@ async function sendBatches(
 
   let sentCount = 0;
   let failedCount = 0;
+  let providerFailure: ResendFailure | null = null;
   const recipientsWithEmail = recipients.filter((recipient) => recipient.email);
 
   for (let offset = 0; offset < recipientsWithEmail.length; offset += 100) {
@@ -434,21 +454,49 @@ async function sendBatches(
       });
 
       if (!response.ok) {
+        const failure = await readResendFailure(response);
+        providerFailure ??= failure;
         failedCount += batch.length;
+        console.error("Resend batch failed", {
+          status: failure.status,
+          statusText: failure.statusText,
+          code: failure.code,
+          providerCode: failure.providerCode,
+          message: failure.message,
+        });
       } else {
         sentCount += batch.length;
       }
-    } catch {
+    } catch (error) {
+      const failure = createResendNetworkFailure(error);
+      providerFailure ??= failure;
       failedCount += batch.length;
+      console.error("Resend batch request failed", {
+        status: failure.status,
+        statusText: failure.statusText,
+        code: failure.code,
+        providerCode: failure.providerCode,
+        message: failure.message,
+      });
     }
   }
 
-  return { sentCount, failedCount };
+  return { sentCount, failedCount, providerFailure };
 }
 
-function getErrorDetails(error: unknown): { status: number; code: string; message: string } {
+function getErrorDetails(error: unknown): {
+  status: number;
+  code: string;
+  message: string;
+  extra?: Record<string, unknown>;
+} {
   if (error instanceof EmailFunctionError) {
-    return { status: error.status, code: error.code, message: error.message };
+    return {
+      status: error.status,
+      code: error.code,
+      message: error.message,
+      extra: error.extra,
+    };
   }
 
   if (typeof error === "object" && error !== null && "code" in error && error.code === "23503") {
@@ -533,6 +581,19 @@ export default {
         authorized.institution,
       );
 
+      if (result.providerFailure) {
+        throw new EmailFunctionError(
+          result.providerFailure.code === "RESEND_RATE_LIMITED" ? 429 : 502,
+          result.providerFailure.code,
+          result.providerFailure.publicMessage,
+          {
+            recipientCount: selectedRecipients.length,
+            sentCount: result.sentCount,
+            failedCount: result.failedCount,
+          },
+        );
+      }
+
       return Response.json({
         success: true,
         recipientCount: selectedRecipients.length,
@@ -544,8 +605,16 @@ export default {
       console.error("Falha no e-mail institucional", {
         requestId,
         code: details.code,
+        ...(details.extra ?? {}),
       });
-      return jsonError(details.status, details.code, details.message, requestId);
+      return jsonError(
+        details.status,
+        details.code,
+        details.message,
+        requestId,
+        undefined,
+        details.extra,
+      );
     }
   }),
 };
