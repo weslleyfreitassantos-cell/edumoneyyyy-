@@ -430,7 +430,10 @@ export default {
           new AccountError({
             status: 500,
             code: "INTERNAL_ERROR",
-            message: "Nao foi possivel criar a conta.",
+            message:
+              error instanceof Error && error.message
+                ? `Nao foi possivel criar a conta: ${error.message}`
+                : "Nao foi possivel criar a conta.",
           }),
         );
       }
