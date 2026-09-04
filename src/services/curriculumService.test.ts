@@ -164,6 +164,33 @@ describe('curriculumService.setActive', () => {
   });
 });
 
+describe('curriculumService.delete', () => {
+  it('exclui o item da matriz dentro da instituicao', async () => {
+    const eq2 = vi.fn().mockResolvedValue({ data: null, error: null });
+    const eq1 = vi.fn().mockReturnValue({ eq: eq2 });
+    const deleteMethod = vi.fn().mockReturnValue({ eq: eq1 });
+    vi.mocked(supabase.from).mockReturnValue({ delete: deleteMethod } as never);
+
+    await curriculumService.delete(UUID, UUID);
+
+    expect(deleteMethod).toHaveBeenCalled();
+    expect(eq1).toHaveBeenCalledWith('id', UUID);
+    expect(eq2).toHaveBeenCalledWith('institution_id', UUID);
+  });
+
+  it('rejeita exclusao quando ha atribuicoes ativas', async () => {
+    const err = new Error('CURRICULUM_COMPONENT_HAS_ACTIVE_OFFERINGS');
+    const eq2 = vi.fn().mockResolvedValue({ data: null, error: err });
+    const eq1 = vi.fn().mockReturnValue({ eq: eq2 });
+    const deleteMethod = vi.fn().mockReturnValue({ eq: eq1 });
+    vi.mocked(supabase.from).mockReturnValue({ delete: deleteMethod } as never);
+
+    await expect(curriculumService.delete(UUID, UUID)).rejects.toThrow(
+      'Desative primeiro as atribuições ativas desta disciplina.',
+    );
+  });
+});
+
 describe('curriculum schemas', () => {
   it('valida curriculumCreateSchema', () => {
     const result = curriculumCreateSchema.safeParse({

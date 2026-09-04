@@ -64,6 +64,17 @@ export function useUpdateCurriculumItem() {
   });
 }
 
+export function useDeleteCurriculumItem() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, institutionId }: { id: string; institutionId: string }) =>
+      curriculumService.delete(id, institutionId),
+    onSuccess: async (_result, variables) => {
+      await invalidateCurriculum(queryClient, variables.institutionId);
+    },
+  });
+}
+
 export function useSetCurriculumItemActive() {
   const queryClient = useQueryClient();
   return useMutation({

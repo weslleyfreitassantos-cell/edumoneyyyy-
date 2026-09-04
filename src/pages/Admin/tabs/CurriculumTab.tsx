@@ -18,8 +18,8 @@ import { useSubjects } from '../../../hooks/useSubjects';
 import {
   useCurriculum,
   useCreateCurriculumItem,
+  useDeleteCurriculumItem,
   useUpdateCurriculumItem,
-  useSetCurriculumItemActive,
 } from '../../../hooks/useCurriculum';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -96,8 +96,8 @@ export default function CurriculumTab() {
   const curriculumQuery = useCurriculum(institutionId);
 
   const createMutation = useCreateCurriculumItem();
+  const deleteMutation = useDeleteCurriculumItem();
   const updateMutation = useUpdateCurriculumItem();
-  const statusMutation = useSetCurriculumItemActive();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<CurriculumItemRow | null>(null);
@@ -345,18 +345,15 @@ export default function CurriculumTab() {
     }
   }
 
-  async function handleToggleStatus(item: CurriculumItemRow): Promise<void> {
-    const nextActive = !item.active;
-    const action = nextActive ? 'reativar' : 'desativar';
-
-    if (!window.confirm(`Deseja ${action} o item da matriz para a disciplina ${item.subject_name}?`)) return;
+  async function handleDelete(item: CurriculumItemRow): Promise<void> {
+    if (!window.confirm(`Excluir definitivamente a disciplina ${item.subject_name} da turma ${item.class_name}?`)) return;
 
     setPageError(null);
     setFeedbackMessage(null);
 
     try {
-      await statusMutation.mutateAsync({ id: item.id, institutionId, active: nextActive });
-      setFeedbackMessage(nextActive ? 'Item reativado.' : 'Item desativado.');
+      await deleteMutation.mutateAsync({ id: item.id, institutionId });
+      setFeedbackMessage('Item da matriz excluído com sucesso.');
     } catch (error) {
       setPageError(getErrorMessage(error));
     }
@@ -465,7 +462,7 @@ export default function CurriculumTab() {
         extraHeaderActions={<button type="button" onClick={() => setIsTemplatePanelOpen(true)} className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50">Modelos de matriz</button>}
         emptyMessage="Nenhum item encontrado para os filtros selecionados."
         renderActions={(item) => {
-          const isChangingStatus = statusMutation.isPending && statusMutation.variables?.id === item.id;
+          const isDeleting = deleteMutation.isPending && deleteMutation.variables?.id === item.id;
 
           return (
             <div className="flex flex-wrap items-center gap-3">
@@ -491,15 +488,11 @@ export default function CurriculumTab() {
               </button>
               <button
                 type="button"
-                disabled={isChangingStatus}
-                onClick={() => void handleToggleStatus(item)}
-                className={
-                  item.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
-                }
+                disabled={isDeleting}
+                onClick={() => void handleDelete(item)}
+                className="font-medium text-red-600 hover:text-red-800 disabled:opacity-50"
               >
-                {isChangingStatus ? 'Salvando...' : item.active ? 'Desativar' : 'Reativar'}
+                {isDeleting ? 'Excluindo...' : 'Excluir'}
               </button>
             </div>
           );

@@ -25,7 +25,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useSubjects } from '../../../hooks/useSubjects';
-import { useCurriculum } from '../../../hooks/useCurriculum';
+import { useCurriculum, useDeleteCurriculumItem } from '../../../hooks/useCurriculum';
 
 vi.mock('../../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
@@ -50,6 +50,7 @@ vi.mock('../../../hooks/useSubjects', () => ({
 vi.mock('../../../hooks/useCurriculum', () => ({
   useCurriculum: vi.fn(),
   useCreateCurriculumItem: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
+  useDeleteCurriculumItem: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
   useUpdateCurriculumItem: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
   useSetCurriculumItemActive: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
 }));
@@ -237,6 +238,24 @@ describe('CurriculumTab', () => {
     renderTab();
     const buttons = screen.getAllByText('Atribuições');
     expect(buttons.length).toBeGreaterThanOrEqual(1);
+  });
+
+  it('exclui o item depois de confirmar', () => {
+    const mutateAsync = vi.fn().mockResolvedValue(undefined);
+    vi.mocked(useDeleteCurriculumItem).mockReturnValue({
+      mutateAsync,
+      isPending: false,
+    } as never);
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    renderTab();
+    fireEvent.click(screen.getAllByText('Excluir')[0]);
+
+    expect(confirmSpy).toHaveBeenCalledWith(
+      'Excluir definitivamente a disciplina Português da turma 1A?',
+    );
+    expect(mutateAsync).toHaveBeenCalledWith({ id: 'item-1', institutionId: 'inst-1' });
+    confirmSpy.mockRestore();
   });
 
   it('pre-classifica classId da URL', () => {

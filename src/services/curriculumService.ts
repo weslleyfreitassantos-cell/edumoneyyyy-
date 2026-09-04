@@ -128,6 +128,9 @@ function mapCurriculumError(error: unknown): Error {
     if (msg.includes('CURRICULUM_COMPONENT_HAS_ACTIVE_OFFERINGS')) {
       return new Error('Desative primeiro as atribuições ativas desta disciplina.');
     }
+    if (msg.includes('CURRICULUM_COMPONENT_HAS_ACTIVE_TIMETABLE_ENTRIES')) {
+      return new Error('Remova primeiro as aulas publicadas desta disciplina.');
+    }
     if (msg.includes('class_curriculum_items_class_subject_unique') || msg.includes('duplicate key')) {
       return new Error('A disciplina já está presente na matriz desta turma.');
     }
@@ -190,6 +193,15 @@ export const curriculumService = {
     const { error } = await supabase
       .from('class_curriculum_items')
       .update({ ...data, needs_review: false })
+      .eq('id', id)
+      .eq('institution_id', institutionId);
+    if (error) throw mapCurriculumError(error);
+  },
+
+  async delete(id: string, institutionId: string): Promise<void> {
+    const { error } = await supabase
+      .from('class_curriculum_items')
+      .delete()
       .eq('id', id)
       .eq('institution_id', institutionId);
     if (error) throw mapCurriculumError(error);
