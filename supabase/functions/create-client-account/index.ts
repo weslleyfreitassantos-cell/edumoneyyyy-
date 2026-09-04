@@ -91,18 +91,12 @@ function isLocalhostUrl(url: string): boolean {
   return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(url);
 }
 
-function getAppUrl(): string {
+function getAppUrl(requestUrl: string): string {
   const appUrl = Deno.env.get("APP_URL")?.replace(/\/+$/, "");
 
-  if (!appUrl) {
-    throw new AccountError({
-      status: 500,
-      code: "MISSING_APP_URL",
-      message: "A URL da aplicacao nao foi configurada.",
-    });
-  }
+  const resolvedUrl = appUrl || new URL(requestUrl).origin;
 
-  if (isLocalhostUrl(appUrl)) {
+  if (isLocalhostUrl(resolvedUrl)) {
     throw new AccountError({
       status: 500,
       code: "LOCALHOST_APP_URL",
@@ -110,7 +104,7 @@ function getAppUrl(): string {
     });
   }
 
-  return appUrl;
+  return resolvedUrl;
 }
 
 function isDuplicateAuthError(message: string | undefined): boolean {
@@ -232,6 +226,7 @@ async function createOwnerProfile(
   >[1],
   input: RequestData,
   rollback: RollbackState,
+  requestUrl: string,
 ): Promise<{
   profileId: string;
   invitationSent: boolean;
@@ -259,7 +254,7 @@ async function createOwnerProfile(
     }
   }
 
-  const inviteRedirectUrl = `${getAppUrl()}/auth/confirm`;
+  const inviteRedirectUrl = `${getAppUrl(requestUrl)}/auth/confirm`;
 
   const { data: invitationData, error: invitationError } =
     await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
@@ -369,6 +364,7 @@ export default {
           ctx,
           validation.data,
           rollback,
+          request.url,
         );
 
         const { data: account, error: accountError } =
