@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { buildApplicationUrl } from '../lib/origins';
 
 export interface PublicInstitutionBranding {
   name: string;
@@ -70,14 +71,10 @@ export function buildInstitutionLoginUrl(
     publicSlug,
   )}`;
 
-  if (
-    typeof window === 'undefined' ||
-    !window.location?.origin
-  ) {
-    return path;
-  }
-
-  return `${window.location.origin}${path}`;
+  return buildApplicationUrl(
+    path,
+    typeof window === 'undefined' ? undefined : window.location?.origin,
+  );
 }
 
 export const brandingPublicService = {

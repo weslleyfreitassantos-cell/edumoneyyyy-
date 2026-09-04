@@ -138,7 +138,7 @@ describe('ForgotPassword', () => {
         supabase.auth.resetPasswordForEmail,
       ).toHaveBeenCalledWith('usuario@example.com', {
         redirectTo:
-          'https://app.example.com/auth/reset-password',
+          'https://tecescola.grupotec.dev.br/auth/reset-password',
       });
       expect(
         screen.getByText(
