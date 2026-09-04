@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   RESEND_FAILURE_CODES,
@@ -6,6 +6,7 @@ import {
   createResendFailure,
   getResendApiKey,
   parseProviderErrorBody,
+  sendResendEmail,
 } from "./resend.ts";
 
 describe("resend helpers", () => {
@@ -62,5 +63,60 @@ describe("resend helpers", () => {
 
     expect(failure.code).toBe(RESEND_FAILURE_CODES.SENDER_NOT_ALLOWED);
     expect(failure.publicMessage).not.toContain("sender rejected");
+  });
+
+  it.each([
+    [429, RESEND_FAILURE_CODES.RATE_LIMITED, "rate limit"],
+    [500, RESEND_FAILURE_CODES.PROVIDER_ERROR, "provider failure"],
+  ])("mantém %s como falha de entrega sem lançar", async (status, code, message) => {
+    const previousFetch = globalThis.fetch;
+    globalThis.fetch = vi.fn(async () =>
+      new Response(JSON.stringify({ message }), {
+        status,
+        headers: { "content-type": "application/json" },
+      }),
+    );
+
+    try {
+      const result = await sendResendEmail(
+        {
+          to: "admin@example.com",
+          from: "noreply@example.com",
+          subject: "Invite",
+          html: "<p>Invite</p>",
+        },
+        (name) => (name === "RESEND_API_KEY" ? "secret" : null),
+      );
+
+      expect(result.ok).toBe(false);
+      expect(result.failure?.code).toBe(code);
+    } finally {
+      globalThis.fetch = previousFetch;
+    }
+  });
+
+  it("classifica erro de rede sem expor credencial", async () => {
+    const previousFetch = globalThis.fetch;
+    globalThis.fetch = vi.fn(async () => {
+      throw new Error("network unavailable");
+    });
+
+    try {
+      const result = await sendResendEmail(
+        {
+          to: "admin@example.com",
+          from: "noreply@example.com",
+          subject: "Invite",
+          html: "<p>Invite</p>",
+        },
+        (name) => (name === "RESEND_API_KEY" ? "secret" : null),
+      );
+
+      expect(result.ok).toBe(false);
+      expect(result.failure?.code).toBe(RESEND_FAILURE_CODES.NETWORK_ERROR);
+      expect(result.failure?.message).not.toContain("secret");
+    } finally {
+      globalThis.fetch = previousFetch;
+    }
   });
 });

@@ -441,6 +441,12 @@ verify_jwt = true
 import_map = "./functions/create-client-account/deno.json"
 entrypoint = "./functions/create-client-account/index.ts"
 
+[functions.resend-client-admin-invite]
+enabled = true
+verify_jwt = true
+import_map = "./functions/resend-client-admin-invite/deno.json"
+entrypoint = "./functions/resend-client-admin-invite/index.ts"
+
 [functions.delete-client-account]
 enabled = true
 verify_jwt = true

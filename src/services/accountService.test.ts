@@ -59,6 +59,7 @@ describe('accountService', () => {
         ownerEmail: 'test@test.com',
         institutionLimit: 1,
         invitationSent: true,
+        invitationStatus: 'SENT',
         reusedExistingUser: false,
       },
       error: null,

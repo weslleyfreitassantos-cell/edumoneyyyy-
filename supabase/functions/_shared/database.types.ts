@@ -99,6 +99,69 @@ export type Database = {
           },
         ]
       }
+      client_admin_invitations: {
+        Row: {
+          accepted_at: string | null
+          account_id: string
+          attempt_count: number
+          created_at: string
+          email: string
+          id: string
+          last_attempt_at: string | null
+          last_error_code: string | null
+          last_error_message: string | null
+          profile_id: string
+          sent_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          accepted_at?: string | null
+          account_id: string
+          attempt_count?: number
+          created_at?: string
+          email: string
+          id?: string
+          last_attempt_at?: string | null
+          last_error_code?: string | null
+          last_error_message?: string | null
+          profile_id: string
+          sent_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          accepted_at?: string | null
+          account_id?: string
+          attempt_count?: number
+          created_at?: string
+          email?: string
+          id?: string
+          last_attempt_at?: string | null
+          last_error_code?: string | null
+          last_error_message?: string | null
+          profile_id?: string
+          sent_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_admin_invitations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: true
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_admin_invitations_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       academic_years: {
         Row: {
           active: boolean | null
@@ -849,6 +912,10 @@ export type Database = {
       }
     }
     Functions: {
+      mark_client_admin_invitation_accepted: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
       hard_delete_client_account: {
         Args: {
           acknowledgement: boolean

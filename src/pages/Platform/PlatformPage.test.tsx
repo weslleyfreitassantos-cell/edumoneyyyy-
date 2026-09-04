@@ -22,6 +22,7 @@ import { AccountServiceError } from '../../services/accountService';
 const hookMock = vi.hoisted(() => ({
   accountsQuery: {} as any,
   createAccount: {} as any,
+  resendClientAdminInvite: {} as any,
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
   deleteInstitution: {} as any,
@@ -35,6 +36,7 @@ const hookMock = vi.hoisted(() => ({
   activateDomain: {} as any,
   disableDomain: {} as any,
   createMutateAsync: vi.fn(),
+  resendClientAdminInviteMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
   deleteInstitutionMutateAsync: vi.fn(),
@@ -57,6 +59,7 @@ vi.mock('react-router-dom', () => ({
 vi.mock('../../hooks/useAccounts', () => ({
   useAccounts: () => hookMock.accountsQuery,
   useCreateClientAccount: () => hookMock.createAccount,
+  useResendClientAdminInvite: () => hookMock.resendClientAdminInvite,
   useUpdateClientAccount: () => hookMock.updateAccount,
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
@@ -182,6 +185,13 @@ const accounts: AccountSummaryRow[] = [
       active: true,
     },
     institutions: [],
+    invitation: {
+      id: 'invitation-3',
+      status: 'PENDING',
+      attemptCount: 1,
+      lastAttemptAt: null,
+      sentAt: null,
+    },
   },
   {
     id: 'account-4',
@@ -247,6 +257,10 @@ describe('PlatformPage', () => {
     hookMock.createAccount = {
       isPending: false,
       mutateAsync: hookMock.createMutateAsync,
+    };
+    hookMock.resendClientAdminInvite = {
+      isPending: false,
+      mutateAsync: hookMock.resendClientAdminInviteMutateAsync,
     };
     hookMock.updateAccount = {
       isPending: false,
@@ -331,6 +345,7 @@ describe('PlatformPage', () => {
       ownerEmail: 'new@example.com',
       institutionLimit: 2,
       invitationSent: true,
+      invitationStatus: 'SENT',
       reusedExistingUser: false,
     });
     hookMock.updateMutateAsync.mockResolvedValue({
@@ -739,9 +754,38 @@ describe('PlatformPage', () => {
         institutionLimit: 5,
       });
       expect(
-        screen.getByText(/Conta criada e convite enviado/i),
+        screen.getByText(/Conta criada com sucesso\. Convite enviado/i),
       ).toBeDefined();
     });
+  });
+
+  it('permite reenviar somente o convite pendente sem criar outra conta', async () => {
+    hookMock.resendClientAdminInviteMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-3',
+      ownerProfileId: 'owner-3',
+      ownerEmail: 'caio@example.com',
+      invitationSent: false,
+      invitationStatus: 'PENDING',
+    });
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Reenviar convite de Conta Gama/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.resendClientAdminInviteMutateAsync,
+      ).toHaveBeenCalledWith({ accountId: 'account-3' });
+      expect(
+        screen.getByText(/convite continua pendente/i),
+      ).toBeDefined();
+    });
+    expect(hookMock.createMutateAsync).not.toHaveBeenCalled();
   });
 
   it('bloqueia criacao com nome do ADMIN vazio', () => {

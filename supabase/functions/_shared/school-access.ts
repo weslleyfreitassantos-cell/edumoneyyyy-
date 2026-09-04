@@ -1,7 +1,5 @@
 import {
-  createResendNetworkFailure,
-  getResendApiKey,
-  readResendFailure,
+  sendResendEmail,
 } from "./resend.ts";
 
 export type SchoolAccessRole =
@@ -277,52 +275,23 @@ export function buildSchoolAccessEmail({
 export async function sendSchoolAccessEmail(
   input: SchoolAccessEmailInput,
 ): Promise<void> {
-  const apiKey = getResendApiKey((name) => Deno.env.get(name));
-  const from = Deno.env.get("EMAIL_FROM")?.trim();
-
-  if (!apiKey || !from) {
-    throw new SchoolAccessEmailError(
-      "EMAIL_PROVIDER_NOT_CONFIGURED",
-      "O provedor de e-mail não está configurado.",
-    );
-  }
-
   const { subject, html } = buildSchoolAccessEmail(input);
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from,
-        to: [input.recipientEmail],
-        subject,
-        html,
-      }),
-    });
+  const result = await sendResendEmail({
+    to: input.recipientEmail,
+    from: Deno.env.get("EMAIL_FROM")?.trim() ?? "",
+    subject,
+    html,
+  });
 
-    if (!response.ok) {
-      const failure = await readResendFailure(response);
-      console.error("Resend access email failed", {
-        status: failure.status,
-        statusText: failure.statusText,
-        code: failure.code,
-        providerCode: failure.providerCode,
-        message: failure.message,
-      });
+  if (!result.ok || result.failure) {
+    const failure = result.failure;
+    if (!failure || failure.code === "RESEND_NOT_CONFIGURED") {
       throw new SchoolAccessEmailError(
-        failure.code,
-        failure.publicMessage,
+        "EMAIL_PROVIDER_NOT_CONFIGURED",
+        "O provedor de e-mail não está configurado.",
       );
     }
-  } catch (error) {
-    if (error instanceof SchoolAccessEmailError) {
-      throw error;
-    }
 
-    const failure = createResendNetworkFailure(error);
     console.error("Resend access email request failed", {
       status: failure.status,
       statusText: failure.statusText,
@@ -330,9 +299,6 @@ export async function sendSchoolAccessEmail(
       providerCode: failure.providerCode,
       message: failure.message,
     });
-    throw new SchoolAccessEmailError(
-      failure.code,
-      failure.publicMessage,
-    );
+    throw new SchoolAccessEmailError(failure.code, failure.publicMessage);
   }
 }

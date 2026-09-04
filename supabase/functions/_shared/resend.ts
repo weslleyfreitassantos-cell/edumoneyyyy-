@@ -1,4 +1,5 @@
 export const RESEND_FAILURE_CODES = {
+  NOT_CONFIGURED: "RESEND_NOT_CONFIGURED",
   AUTH_ERROR: "RESEND_AUTH_ERROR",
   FORBIDDEN: "RESEND_FORBIDDEN",
   DOMAIN_NOT_VERIFIED: "RESEND_DOMAIN_NOT_VERIFIED",
@@ -21,6 +22,18 @@ export interface ResendFailure {
   publicMessage: string;
 }
 
+export interface ResendEmailInput {
+  to: string;
+  from: string;
+  subject: string;
+  html: string;
+}
+
+export interface ResendEmailResult {
+  ok: boolean;
+  failure: ResendFailure | null;
+}
+
 const MAX_DIAGNOSTIC_LENGTH = 500;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -38,6 +51,7 @@ export function sanitizeProviderText(value: unknown): string {
 
   return value
     .replace(/Bearer\s+[^\s]+/gi, "Bearer [redacted]")
+    .replace(/https?:\/\/[^\s"'<>]+/gi, "[redacted-url]")
     .replace(
       /(api[_-]?key|authorization|password|token)\s*[:=]\s*(?!Bearer\b)[^\s,;]+/gi,
       "$1=[redacted]",
@@ -88,6 +102,8 @@ export function parseProviderErrorBody(bodyText: string): {
 
 function getPublicMessage(code: ResendFailureCode): string {
   switch (code) {
+    case RESEND_FAILURE_CODES.NOT_CONFIGURED:
+      return "O serviço de e-mail ainda não está configurado.";
     case RESEND_FAILURE_CODES.AUTH_ERROR:
       return "O serviço de e-mail recusou as credenciais configuradas.";
     case RESEND_FAILURE_CODES.FORBIDDEN:
@@ -114,6 +130,13 @@ export function classifyResendFailure(input: {
   message?: string | null;
 }): ResendFailureCode {
   const signal = `${input.providerCode ?? ""} ${input.message ?? ""}`.toLowerCase();
+
+  if (
+    input.status === null &&
+    /network|fetch|timeout|timed out|connection|dns|socket/.test(signal)
+  ) {
+    return RESEND_FAILURE_CODES.NETWORK_ERROR;
+  }
 
   if (
     input.status === 429 ||
@@ -209,4 +232,50 @@ export function getResendApiKey(
   getEnv: (name: string) => string | undefined | null,
 ): string | null {
   return getEnv("RESEND_API_KEY")?.trim() || getEnv("resendsenha")?.trim() || null;
+}
+
+export async function sendResendEmail(
+  input: ResendEmailInput,
+  getEnv: (name: string) => string | undefined | null = (name) =>
+    Deno.env.get(name),
+): Promise<ResendEmailResult> {
+  const apiKey = getResendApiKey(getEnv);
+
+  if (!apiKey || !input.from.trim()) {
+    return {
+      ok: false,
+      failure: {
+        code: RESEND_FAILURE_CODES.NOT_CONFIGURED,
+        status: null,
+        statusText: null,
+        providerCode: null,
+        message: "Credenciais ou remetente do provedor ausentes.",
+        publicMessage: getPublicMessage(RESEND_FAILURE_CODES.NOT_CONFIGURED),
+      },
+    };
+  }
+
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: input.from,
+        to: [input.to],
+        subject: input.subject,
+        html: input.html,
+      }),
+    });
+
+    if (!response.ok) {
+      return { ok: false, failure: await readResendFailure(response) };
+    }
+
+    return { ok: true, failure: null };
+  } catch (error) {
+    return { ok: false, failure: createResendNetworkFailure(error) };
+  }
 }

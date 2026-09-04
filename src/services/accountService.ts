@@ -38,6 +38,20 @@ export interface AccountSummaryRow {
   activeInstitutionCount: number;
   owner: AccountOwnerSummary | null;
   institutions: AccountInstitutionSummary[];
+  invitation?: ClientAdminInvitationSummary | null;
+}
+
+export type ClientAdminInvitationStatus =
+  | 'PENDING'
+  | 'SENT'
+  | 'ACCEPTED';
+
+export interface ClientAdminInvitationSummary {
+  id: string;
+  status: ClientAdminInvitationStatus;
+  attemptCount: number;
+  lastAttemptAt: string | null;
+  sentAt: string | null;
 }
 
 export interface CreateClientAccountInput {
@@ -54,7 +68,21 @@ export interface CreateClientAccountResponse {
   ownerEmail: string;
   institutionLimit: number;
   invitationSent: boolean;
+  invitationStatus: 'PENDING' | 'SENT';
   reusedExistingUser: boolean;
+}
+
+export interface ResendClientAdminInviteInput {
+  accountId: string;
+}
+
+export interface ResendClientAdminInviteResponse {
+  success: true;
+  accountId: string;
+  ownerProfileId: string;
+  ownerEmail: string;
+  invitationSent: boolean;
+  invitationStatus: 'PENDING' | 'SENT';
 }
 
 export interface UpdateClientAccountInput {
@@ -209,6 +237,18 @@ interface AccountQueryRow {
         suspended_at: string | null;
       })[]
     | null;
+  client_admin_invitations?:
+    | ClientAdminInvitationQueryRow
+    | ClientAdminInvitationQueryRow[]
+    | null;
+}
+
+interface ClientAdminInvitationQueryRow {
+  id: string;
+  status: string;
+  attempt_count: number;
+  last_attempt_at: string | null;
+  sent_at: string | null;
 }
 
 interface FunctionErrorBody {
@@ -285,6 +325,16 @@ function normalizeStatus(
   return 'ACTIVE';
 }
 
+function normalizeInvitationStatus(
+  value: string,
+): ClientAdminInvitationStatus {
+  if (value === 'SENT' || value === 'ACCEPTED') {
+    return value;
+  }
+
+  return 'PENDING';
+}
+
 function normalizeAccountRow(
   row: AccountQueryRow,
 ): AccountSummaryRow {
@@ -321,6 +371,21 @@ function normalizeAccountRow(
     ).length,
     owner: normalizeRelation(row.profiles),
     institutions,
+    invitation: (() => {
+      const invitation = normalizeRelation(
+        row.client_admin_invitations ?? null,
+      );
+
+      return invitation
+        ? {
+            id: invitation.id,
+            status: normalizeInvitationStatus(invitation.status),
+            attemptCount: invitation.attempt_count,
+            lastAttemptAt: invitation.last_attempt_at,
+            sentAt: invitation.sent_at,
+          }
+        : null;
+    })(),
   };
 }
 
@@ -466,7 +531,30 @@ function assertCreateAccountResponse(
     ownerEmail: requireString(value, 'ownerEmail'),
     institutionLimit: requireNumber(value, 'institutionLimit'),
     invitationSent: requireBoolean(value, 'invitationSent'),
+    invitationStatus:
+      value.invitationStatus === 'SENT' ? 'SENT' : 'PENDING',
     reusedExistingUser: requireBoolean(value, 'reusedExistingUser'),
+  };
+}
+
+function assertResendClientAdminInviteResponse(
+  value: unknown,
+): ResendClientAdminInviteResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    accountId: requireString(value, 'accountId'),
+    ownerProfileId: requireString(value, 'ownerProfileId'),
+    ownerEmail: requireString(value, 'ownerEmail'),
+    invitationSent: requireBoolean(value, 'invitationSent'),
+    invitationStatus:
+      value.invitationStatus === 'SENT' ? 'SENT' : 'PENDING',
   };
 }
 
@@ -759,10 +847,17 @@ export const accountService = {
           account_id,
           logo_url,
           public_slug,
-          suspended_by_profile_id,
-          suspended_by_scope,
-          suspended_at
-        )
+           suspended_by_profile_id,
+           suspended_by_scope,
+           suspended_at
+         ),
+         client_admin_invitations:client_admin_invitations (
+           id,
+           status,
+           attempt_count,
+           last_attempt_at,
+           sent_at
+         )
       `,
       )
       .order('created_at', {
@@ -804,10 +899,17 @@ export const accountService = {
           account_id,
           logo_url,
           public_slug,
-          suspended_by_profile_id,
-          suspended_by_scope,
-          suspended_at
-        )
+           suspended_by_profile_id,
+           suspended_by_scope,
+           suspended_at
+         ),
+         client_admin_invitations:client_admin_invitations (
+           id,
+           status,
+           attempt_count,
+           last_attempt_at,
+           sent_at
+         )
       `,
       )
       .eq('owner_profile_id', profileId)
@@ -838,6 +940,21 @@ export const accountService = {
     }
 
     return assertCreateAccountResponse(data);
+  },
+
+  async resendClientAdminInvite(
+    input: ResendClientAdminInviteInput,
+  ): Promise<ResendClientAdminInviteResponse> {
+    const { data, error } = await supabase.functions.invoke(
+      'resend-client-admin-invite',
+      { body: input },
+    );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertResendClientAdminInviteResponse(data);
   },
 
   async updateAccount(

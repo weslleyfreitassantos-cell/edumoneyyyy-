@@ -12,6 +12,8 @@ import {
   type CloseClientAccountResponse,
   type CreateClientAccountInput,
   type CreateClientAccountResponse,
+  type ResendClientAdminInviteInput,
+  type ResendClientAdminInviteResponse,
   type CreateInstitutionInput,
   type CreateInstitutionResponse,
   type DeleteClientAccountInput,
@@ -93,6 +95,24 @@ export function useCreateClientAccount() {
   >({
     mutationFn: (input) =>
       accountService.createAccount(input),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: accountKeys.all,
+      });
+    },
+  });
+}
+
+export function useResendClientAdminInvite() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    ResendClientAdminInviteResponse,
+    Error,
+    ResendClientAdminInviteInput
+  >({
+    mutationFn: (input) =>
+      accountService.resendClientAdminInvite(input),
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: accountKeys.all,

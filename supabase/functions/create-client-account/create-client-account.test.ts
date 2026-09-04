@@ -28,12 +28,22 @@ describe('create-client-account', () => {
     expect(source).toContain('platform_role');
   });
 
-  it('classifies Auth invitation failures without exposing provider secrets', () => {
-    expect(source).toContain('classifyAuthInviteError');
-    expect(source).toContain('failure.code');
-    expect(source).toContain('failure.status');
-    expect(source).toContain('diagnosticMessage');
-    expect(source).toContain('providerCode');
+  it('creates the Auth identity without making SMTP delivery mandatory', () => {
+    expect(source).toContain('auth.admin.generateLink');
+    expect(source).toContain('type: "invite"');
+    expect(source).not.toContain('inviteUserByEmail');
+    expect(source).toContain('sendResendEmail');
+    expect(source).toContain('invitationStatus: delivery.invitationStatus');
+    expect(source).toContain('status: "PENDING"');
+    expect(source).toContain('status: "SENT"');
+    expect(source).not.toContain('send-school-email');
+    expect(source).not.toContain('console.error("Falha no convite", generatedLink');
+  });
+
+  it('keeps provider failures out of the account rollback path', () => {
+    expect(source).toContain('Convite do administrador pendente');
+    expect(source).toContain('return { invitationSent: false, invitationStatus: "PENDING" }');
+    expect(source).toContain('RESEND_PROVIDER_ERROR');
     expect(source).not.toContain('console.error("Falha ao criar conta", error)');
   });
 });

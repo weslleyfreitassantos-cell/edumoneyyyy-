@@ -36,6 +36,7 @@ import {
   useDeleteClientAccount,
   useDeleteInstitution,
   useRestoreClientAccount,
+  useResendClientAdminInvite,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
@@ -143,6 +144,14 @@ function getPlatformErrorMessage(error: unknown): string {
 
     if (error.code === 'AUTH_RATE_LIMITED') {
       return 'O serviço de convites atingiu temporariamente o limite. Tente novamente mais tarde.';
+    }
+
+    if (error.code === 'INVITATION_ALREADY_ACCEPTED') {
+      return 'Este convite já foi aceito pelo administrador.';
+    }
+
+    if (error.code === 'INVITATION_NOT_FOUND') {
+      return 'Não há convite pendente para esta conta.';
     }
 
     if (
@@ -382,6 +391,7 @@ export default function PlatformPage() {
     useRef<HTMLInputElement | null>(null);
   const accountsQuery = useAccounts();
   const createAccount = useCreateClientAccount();
+  const resendClientAdminInvite = useResendClientAdminInvite();
   const updateAccount = useUpdateClientAccount();
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
@@ -670,13 +680,39 @@ export default function PlatformPage() {
       setFeedback({
         type: 'success',
         message: response.invitationSent
-          ? 'Conta criada e convite enviado ao ADMIN.'
-          : 'Conta criada.',
+          ? 'Conta criada com sucesso. Convite enviado ao administrador.'
+          : 'Conta e administrador criados com sucesso, mas o convite ainda não pôde ser enviado. Você poderá reenviá-lo.',
       });
     } catch (error) {
       setFormFieldErrors(
         getCreateAccountFieldErrors(error),
       );
+      setFeedback({
+        type: 'error',
+        message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
+  async function resendInvite(account: AccountSummaryRow): Promise<void> {
+    if (
+      resendClientAdminInvite.isPending ||
+      account.invitation?.status !== 'PENDING'
+    ) {
+      return;
+    }
+
+    try {
+      const response = await resendClientAdminInvite.mutateAsync({
+        accountId: account.id,
+      });
+      setFeedback({
+        type: 'success',
+        message: response.invitationSent
+          ? 'Convite reenviado ao administrador.'
+          : 'O convite continua pendente e poderá ser reenviado novamente.',
+      });
+    } catch (error) {
       setFeedback({
         type: 'error',
         message: getPlatformErrorMessage(error),
@@ -1570,6 +1606,42 @@ export default function PlatformPage() {
                           <p className="text-xs">
                             {account.owner?.email ?? ''}
                           </p>
+                          {account.invitation && (
+                            <div className="mt-2 flex flex-wrap items-center gap-2">
+                              <span
+                                className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold ${
+                                  account.invitation.status === 'SENT'
+                                    ? 'bg-[#e6f4ea] text-[#0f6d3a]'
+                                    : account.invitation.status === 'ACCEPTED'
+                                      ? 'bg-[#dce1ff] text-[#00236f]'
+                                      : 'bg-[#fff4ce] text-[#7a4d00]'
+                                }`}
+                              >
+                                {account.invitation.status === 'SENT'
+                                  ? 'Convite enviado'
+                                  : account.invitation.status === 'ACCEPTED'
+                                    ? 'Convite aceito'
+                                    : 'Convite pendente'}
+                              </span>
+                              {account.invitation.status === 'PENDING' && (
+                                <button
+                                  type="button"
+                                  onClick={() => void resendInvite(account)}
+                                  disabled={resendClientAdminInvite.isPending}
+                                  className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-semibold text-[#005bbf] transition hover:bg-[#eef3ff] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                                  aria-label={`Reenviar convite de ${account.name}`}
+                                >
+                                  <RotateCcw
+                                    className={`h-3.5 w-3.5 ${resendClientAdminInvite.isPending ? 'animate-spin' : ''}`}
+                                    aria-hidden="true"
+                                  />
+                                  {resendClientAdminInvite.isPending
+                                    ? 'Enviando...'
+                                    : 'Reenviar convite'}
+                                </button>
+                              )}
+                            </div>
+                          )}
                         </td>
                         <td className="px-3 py-4 text-center">
                           <StatusBadge status={account.status} />

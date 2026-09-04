@@ -157,6 +157,7 @@ describe('account mutations', () => {
       ownerEmail: 'admin@example.com',
       institutionLimit: 2,
       invitationSent: true,
+      invitationStatus: 'SENT',
       reusedExistingUser: false,
     });
 
