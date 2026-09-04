@@ -29,6 +29,7 @@ import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { schoolEmailService } from '../services/schoolEmailService';
 
 interface AppShellProps {
   children: ReactNode;
@@ -237,6 +238,13 @@ export default function AppShell({
   const location = useLocation();
   const { theme, toggleTheme } = useThemePreference();
   const branding = useHostBranding();
+
+  useEffect(() => {
+    const institutionId = institutionContext.currentInstitutionId;
+    if (!institutionId) return;
+
+    void schoolEmailService.listRecipients(institutionId).catch(() => undefined);
+  }, [institutionContext.currentInstitutionId]);
 
   const [isSidebarHidden, setIsSidebarHidden] =
     useState(readSidebarPreference);

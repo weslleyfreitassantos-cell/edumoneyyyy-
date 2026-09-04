@@ -83,7 +83,10 @@ export default function AdminOverviewTab({
 
   const overviewQuery = useAdminOverview(institutionId);
 
-  if (institutionQuery.isLoading || overviewQuery.isLoading) {
+  if (
+    institutionQuery.isLoading ||
+    (overviewQuery.isLoading && !overviewQuery.data)
+  ) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
         Carregando visão geral...

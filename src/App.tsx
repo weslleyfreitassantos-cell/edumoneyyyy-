@@ -37,6 +37,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 
 import AppShell from './components/AppShell';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { Login } from './pages/Login';
 
 import {
   mapDatabaseRole,
@@ -45,12 +46,6 @@ import {
 import { hasEffectivePermission } from './lib/permissions';
 
 import type { UserRole } from './types';
-
-const Login = lazy(() =>
-  import('./pages/Login').then((module) => ({
-    default: module.Login,
-  })),
-);
 
 const SetPassword = lazy(
   () => import('./pages/SetPassword'),
@@ -140,8 +135,8 @@ const TerminalsPage = lazy(
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5,
-      gcTime: 1000 * 60 * 30,
+      staleTime: 1000 * 60 * 10,
+      gcTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
       retry: 1,
@@ -176,6 +171,15 @@ class AppErrorBoundary extends Component<
       error,
       errorInfo,
     );
+
+    // A transient chunk/context failure after authentication should recover
+    // once without trapping the user in the error screen.
+    const retryKey = 'edumanager-render-retry';
+    if (!sessionStorage.getItem(retryKey)) {
+      sessionStorage.setItem(retryKey, '1');
+      window.setTimeout(() => sessionStorage.removeItem(retryKey), 10000);
+      window.location.reload();
+    }
   }
 
   render() {

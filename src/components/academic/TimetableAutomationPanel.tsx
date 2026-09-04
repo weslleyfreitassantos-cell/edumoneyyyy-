@@ -25,6 +25,17 @@ import type { SchoolScheduleBreakRow } from '../../services/academicAutomationSe
 import { REQUIRED_SCHOOL_DAYS } from '../../lib/academic/timetableGenerator';
 import TimetableBreakMarker from './TimetableBreakMarker';
 
+const timetableVersionStatusLabels: Record<string, string> = {
+  DRAFT: 'Rascunho',
+  PUBLISHED: 'Publicada',
+  ARCHIVED: 'Arquivada',
+};
+
+const timetableGenerationSourceLabels: Record<string, string> = {
+  DETERMINISTIC_GENERATOR: 'Gerador automático',
+  MANUAL: 'Manual',
+};
+
 interface SlotDraft {
   day_of_week: number;
   slot_number: number;
@@ -573,8 +584,8 @@ export default function TimetableAutomationPanel({
               {versions.map((version) => (
                 <tr key={version.id} className="border-t border-[#e4e8f1]">
                   <td className="px-3 py-2 font-semibold text-[#181c20]">{version.name}</td>
-                  <td className="px-3 py-2">{version.status}</td>
-                  <td className="px-3 py-2">{version.generation_source}</td>
+                  <td className="px-3 py-2">{timetableVersionStatusLabels[version.status] ?? version.status}</td>
+                  <td className="px-3 py-2">{timetableGenerationSourceLabels[version.generation_source] ?? version.generation_source}</td>
                   <td className="px-3 py-2"><div className="flex flex-wrap gap-3">
                     <button type="button" onClick={() => setReviewVersionId(version.id)} className="font-semibold text-blue-700 hover:text-blue-900">Revisar grade</button>
                     {version.status === 'DRAFT' && <>

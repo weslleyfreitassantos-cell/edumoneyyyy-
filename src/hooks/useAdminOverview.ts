@@ -30,5 +30,7 @@ export function useAdminOverview(
       ),
 
     enabled: Boolean(institutionId),
+    // Keep the previous metrics visible while a refreshed institution query runs.
+    placeholderData: (previous) => previous,
   });
 }
