@@ -611,7 +611,7 @@ export default function StudentsTab() {
             void studentsQuery.refetch();
             void enrollmentsQuery.refetch();
             setFeedbackMessage(
-              `${result.succeeded.length} aluno(s) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}`,
+              `${result.succeeded.length} aluno(s) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}${result.emailPending.length > 0 ? ` ${result.emailPending.length} acesso(s) ficaram sem e-mail.` : ''}`,
             );
           }}
         />

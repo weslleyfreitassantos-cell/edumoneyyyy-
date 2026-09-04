@@ -116,6 +116,7 @@ export interface UnifiedUserInvitePayload {
   fullName: string;
   email: string;
   phone?: string;
+  continueOnEmailFailure?: boolean;
   student?: {
     birthDate: string;
     cpf?: string;

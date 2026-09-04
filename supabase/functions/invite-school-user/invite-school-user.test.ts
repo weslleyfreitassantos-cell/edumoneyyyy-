@@ -32,6 +32,13 @@ describe('invite-school-user', () => {
     expect(source).not.toContain('Gerar nova senha de acesso');
   });
 
+  it('lets batch enrollment continue when access email delivery fails', () => {
+    expect(source).toContain('continueOnEmailFailure: z.boolean().optional()');
+    expect(source).toContain('if (input.continueOnEmailFailure)');
+    expect(source).toContain('invitationSent: false');
+    expect(source).toContain('emailPending: true');
+  });
+
   it('authorizes by account ownership or active membership role', () => {
     expect(source).toContain('owner_profile_id');
     expect(source).toContain('isAccountOwner');

@@ -47,6 +47,18 @@ function FailureList({ failures }: { failures: ImportFailure[] }) {
   );
 }
 
+function PendingEmailList({ items }: { items: Array<{ rowNumber: number; label: string }> }) {
+  if (items.length === 0) return null;
+  return (
+    <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-800">
+      <p>{items.length} acesso(s) foram criados, mas o e-mail não foi enviado. Defina as senhas manualmente e comunique o acesso por um canal seguro.</p>
+      <div className="mt-2 max-h-32 overflow-y-auto text-xs">
+        {items.map((item) => <p key={`${item.rowNumber}-${item.label}`}>Linha {item.rowNumber} · {item.label}</p>)}
+      </div>
+    </div>
+  );
+}
+
 export default function SpreadsheetImportModal({
   title,
   description,
@@ -146,6 +158,7 @@ export default function SpreadsheetImportModal({
                 <CheckCircle2 size={17} className="text-green-600" aria-hidden="true" />
                 {result.succeeded.length} importado(s), {result.failed.length} com erro.
               </div>
+              <PendingEmailList items={result.emailPending} />
               <FailureList failures={result.failed} />
             </section>
           )}

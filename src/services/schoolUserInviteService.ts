@@ -27,6 +27,7 @@ export interface SchoolUserInviteResponse {
     id: string;
   };
   invitationSent: boolean;
+  emailPending?: boolean;
   reusedExistingUser: boolean;
   message: string;
 }

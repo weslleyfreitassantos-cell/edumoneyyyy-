@@ -204,7 +204,7 @@ describe('userImportService', () => {
       maximumActive = Math.max(maximumActive, active);
       await new Promise((resolve) => setTimeout(resolve, 5));
       active -= 1;
-      return { student_id: 'student-1', enrollment_id: 'enrollment-1', guardian_profile_ids: [], documents_pending: 0 };
+      return { student_id: 'student-1', enrollment_id: 'enrollment-1', guardian_profile_ids: [], documents_pending: 0, email_pending: false };
     });
 
     const previews = Array.from({ length: 7 }, (_, index) => ({
@@ -220,6 +220,7 @@ describe('userImportService', () => {
 
     expect(maximumActive).toBe(3);
     expect(result.failed).toEqual([]);
+    expect(result.emailPending).toEqual([]);
     expect(result.succeeded.map((item) => item.rowNumber)).toEqual([2, 3, 4, 5, 6, 7, 8]);
     expect(progress).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });

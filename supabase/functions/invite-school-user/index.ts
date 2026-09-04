@@ -103,6 +103,7 @@ const requestSchema = z
       .pipe(z.string().min(3, "Nome obrigatorio").max(120, "Nome muito longo")),
     email: z.string().trim().toLowerCase().email("E-mail invalido"),
     phone: z.string().trim().max(40, "Telefone muito longo").optional(),
+    continueOnEmailFailure: z.boolean().optional(),
     student: studentPayloadSchema.optional(),
     guardian: guardianPayloadSchema.optional(),
   })
@@ -892,6 +893,26 @@ export default {
         });
       } catch (emailError) {
         const publicEmailError = toPublicError(emailError);
+        if (input.continueOnEmailFailure) {
+          return Response.json(
+            {
+              success: true,
+              accessCreated: true,
+              userId: profileId,
+              profileId,
+              membershipId,
+              role: input.role,
+              email: input.email,
+              ...(studentResult ? { student: studentResult } : {}),
+              ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
+              invitationSent: false,
+              emailPending: true,
+              reusedExistingUser: false,
+              message: "Acesso criado; o e-mail de acesso ficou pendente.",
+            },
+            { status: 201 },
+          );
+        }
         return jsonError({
           status: 502,
           code: "ACCESS_CREATED_EMAIL_FAILED",

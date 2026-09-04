@@ -58,6 +58,7 @@ export interface ImportFailure {
 export interface ImportResult {
   succeeded: Array<{ rowNumber: number; label: string }>;
   failed: ImportFailure[];
+  emailPending: Array<{ rowNumber: number; label: string }>;
 }
 
 const STUDENT_IMPORT_CONCURRENCY = 3;
@@ -597,7 +598,7 @@ export async function importStudents(
   onProgress?: (progress: ImportProgress) => void,
 ): Promise<ImportResult> {
   const concurrency = Math.min(STUDENT_IMPORT_CONCURRENCY, previews.length);
-  const result: ImportResult = { succeeded: [], failed: [] };
+  const result: ImportResult = { succeeded: [], failed: [], emailPending: [] };
 
   let nextIndex = 0;
   async function importWorker(): Promise<void> {
@@ -608,8 +609,16 @@ export async function importStudents(
       onProgress?.({ current: index + 1, total: previews.length, rowNumber: preview.rowNumber, label: preview.label });
       try {
         // Each row remains sequential, while a small pool shortens the total wait time.
-        await createFullStudentEnrollment(institutionId, preview.data);
+        const enrollment = await createFullStudentEnrollment(
+          institutionId,
+          preview.data,
+          undefined,
+          { continueOnEmailFailure: true },
+        );
         result.succeeded.push({ rowNumber: preview.rowNumber, label: preview.label });
+        if (enrollment.email_pending) {
+          result.emailPending.push({ rowNumber: preview.rowNumber, label: preview.label });
+        }
       } catch (error) {
         result.failed.push({ rowNumber: preview.rowNumber, label: preview.label, message: error instanceof Error ? error.message : 'Não foi possível importar o aluno.' });
       }
@@ -627,7 +636,7 @@ export async function importTeachers(
   previews: Array<ImportPreview<TeacherImportPreviewData>>,
   onProgress?: (progress: ImportProgress) => void,
 ): Promise<ImportResult> {
-  const result: ImportResult = { succeeded: [], failed: [] };
+  const result: ImportResult = { succeeded: [], failed: [], emailPending: [] };
   for (let index = 0; index < previews.length; index += 1) {
     const preview = previews[index];
     onProgress?.({ current: index + 1, total: previews.length, rowNumber: preview.rowNumber, label: preview.label });
