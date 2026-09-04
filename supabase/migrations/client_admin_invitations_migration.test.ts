@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 const source = readFileSync(
-  new URL("./20260904000100_client_admin_invitations.sql", import.meta.url),
+  new URL("./20260904000300_client_admin_invitations.sql", import.meta.url),
   "utf8",
 );
 
