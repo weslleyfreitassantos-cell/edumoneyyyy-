@@ -768,12 +768,12 @@ describe('PlatformPage', () => {
         institutionLimit: 5,
       });
       expect(
-        screen.getByText(/Conta criada com sucesso\. Convite enviado/i),
+        screen.getByText(/Conta criada com sucesso\. Os dados de acesso foram enviados/i),
       ).toBeDefined();
     });
   });
 
-  it('permite reenviar somente o convite pendente sem criar outra conta', async () => {
+  it('permite reenviar somente o acesso pendente sem criar outra conta', async () => {
     hookMock.resendClientAdminInviteMutateAsync.mockResolvedValue({
       success: true,
       accountId: 'account-3',
@@ -787,7 +787,7 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Reenviar convite de Conta Gama/i,
+        name: /Reenviar acesso de Conta Gama/i,
       }),
     );
 
@@ -796,7 +796,7 @@ describe('PlatformPage', () => {
         hookMock.resendClientAdminInviteMutateAsync,
       ).toHaveBeenCalledWith({ accountId: 'account-3' });
       expect(
-        screen.getByText(/convite continua pendente/i),
+        screen.getByText(/acesso continua pendente/i),
       ).toBeDefined();
     });
     expect(hookMock.createMutateAsync).not.toHaveBeenCalled();

@@ -9,9 +9,10 @@ import {
   type ExistingIdentityProfile,
   type IdentityConflict,
 } from "../_shared/identity-protection.ts";
-import { buildClientAdminInviteEmail } from "../_shared/client-admin-invite.ts";
+import { buildClientAdminAccessEmail } from "../_shared/client-admin-invite.ts";
 import type { Database } from "../_shared/database.types.ts";
 import { sendResendEmail } from "../_shared/resend.ts";
+import { generateSecurePassword } from "../_shared/school-access.ts";
 
 interface RollbackState {
   createdAuthUserId: string | null;
@@ -228,7 +229,7 @@ async function createOwnerProfile(
   rollback: RollbackState,
 ): Promise<{
   profileId: string;
-  actionLink: string;
+  temporaryPassword: string;
   reusedExistingUser: boolean;
 }> {
   const normalizedEmail = normalizeIdentityEmail(input.adminEmail);
@@ -253,29 +254,26 @@ async function createOwnerProfile(
     }
   }
 
-  const inviteRedirectUrl = `${getAppUrl()}/auth/confirm`;
-
-  const { data: generatedLink, error: linkError } =
-    await ctx.supabaseAdmin.auth.admin.generateLink({
-      type: "invite",
+  const temporaryPassword = generateSecurePassword();
+  const { data: createdUser, error: authError } =
+    await ctx.supabaseAdmin.auth.admin.createUser({
       email: normalizedEmail,
-      options: {
-        data: {
-          full_name: input.adminFullName,
-          role: "ADMIN",
-        },
-        redirectTo: inviteRedirectUrl,
+      password: temporaryPassword,
+      email_confirm: true,
+      user_metadata: {
+        full_name: input.adminFullName,
+        role: "ADMIN",
       },
     });
 
-  if (generatedLink.user) {
-    rollback.createdAuthUserId = generatedLink.user.id;
+  if (createdUser.user) {
+    rollback.createdAuthUserId = createdUser.user.id;
   }
 
-  if (linkError || !generatedLink.user || !generatedLink.properties?.action_link) {
+  if (authError || !createdUser.user) {
     if (
-      linkError?.message &&
-      /already|registered|exists|duplicate/i.test(linkError.message)
+      authError?.message &&
+      /already|registered|exists|duplicate/i.test(authError.message)
     ) {
       throw accountErrorFromIdentityConflict(
         buildIdentityConflict(
@@ -286,17 +284,17 @@ async function createOwnerProfile(
     }
 
     console.error("Falha ao gerar identidade do administrador", {
-      code: "AUTH_LINK_GENERATION_FAILED",
-      status: linkError?.status ?? 502,
+      code: "AUTH_USER_CREATION_FAILED",
+      status: authError?.status ?? 502,
     });
     throw new AccountError({
       status: 502,
-      code: "AUTH_LINK_GENERATION_FAILED",
+      code: "AUTH_USER_CREATION_FAILED",
       message: "Nao foi possivel preparar o acesso do administrador.",
     });
   }
 
-  const profileId = generatedLink.user.id;
+  const profileId = createdUser.user.id;
 
   const { error: profileError } = await ctx.supabaseAdmin
     .from("profiles")
@@ -316,7 +314,7 @@ async function createOwnerProfile(
 
   return {
     profileId,
-    actionLink: generatedLink.properties.action_link,
+    temporaryPassword,
     reusedExistingUser: false,
   };
 }
@@ -344,7 +342,7 @@ async function persistInvitation(
     .single();
 
   if (error || !data) {
-    throw new Error(error?.message ?? "Nao foi possivel registrar o convite.");
+    throw new Error(error?.message ?? "Nao foi possivel registrar o acesso.");
   }
 
   return data.id;
@@ -377,7 +375,7 @@ async function updateInvitationDelivery(
     .eq("id", invitationId);
 
   if (error) {
-    console.error("Falha ao atualizar estado do convite", {
+    console.error("Falha ao atualizar estado do acesso", {
       code: "INVITATION_STATE_UPDATE_FAILED",
     });
   }
@@ -392,15 +390,17 @@ async function deliverInvitation(
     accountName: string;
     recipientName: string;
     recipientEmail: string;
-    actionLink: string;
+    temporaryPassword: string;
   },
 ): Promise<{ invitationSent: boolean; invitationStatus: InvitationStatus }> {
   const attemptedAt = new Date().toISOString();
   const from = Deno.env.get("EMAIL_FROM")?.trim() ?? "";
-  const email = buildClientAdminInviteEmail({
+  const email = buildClientAdminAccessEmail({
     accountName: input.accountName,
     recipientName: input.recipientName,
-    actionLink: input.actionLink,
+    recipientEmail: input.recipientEmail,
+    temporaryPassword: input.temporaryPassword,
+    loginUrl: `${getAppUrl()}/login`,
   });
   const result = await sendResendEmail({
     to: input.recipientEmail,
@@ -411,7 +411,7 @@ async function deliverInvitation(
 
   if (!result.ok || result.failure) {
     const failure = result.failure;
-    console.error("Convite do administrador pendente", {
+    console.error("Acesso do administrador pendente", {
       code: failure?.code ?? "RESEND_PROVIDER_ERROR",
       status: failure?.status ?? null,
       providerCode: failure?.providerCode ?? null,
@@ -527,7 +527,7 @@ export default {
           recipientEmail: normalizeIdentityEmail(
             validation.data.adminEmail,
           ),
-          actionLink: owner.actionLink,
+          temporaryPassword: owner.temporaryPassword,
         });
 
         return Response.json(

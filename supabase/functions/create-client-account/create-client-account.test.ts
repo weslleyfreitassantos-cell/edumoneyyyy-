@@ -18,9 +18,10 @@ describe('create-client-account', () => {
     expect(source).toContain('127\\.0\\.0\\.1');
   });
 
-  it('builds redirectTo from APP_URL', () => {
-    expect(source).toContain('redirectTo');
-    expect(source).toContain('/auth/confirm');
+  it('builds the normal login URL from APP_URL', () => {
+    expect(source).toContain('`${getAppUrl()}/login`');
+    expect(source).not.toContain('/auth/confirm');
+    expect(source).not.toContain('/reset-password');
   });
 
   it('requires SUPER_ADMIN authorization', () => {
@@ -29,8 +30,11 @@ describe('create-client-account', () => {
   });
 
   it('creates the Auth identity without making SMTP delivery mandatory', () => {
-    expect(source).toContain('auth.admin.generateLink');
-    expect(source).toContain('type: "invite"');
+    expect(source).toContain('auth.admin.createUser');
+    expect(source).toContain('password: temporaryPassword');
+    expect(source).toContain('email_confirm: true');
+    expect(source).toContain('generateSecurePassword');
+    expect(source).not.toContain('generateLink');
     expect(source).not.toContain('inviteUserByEmail');
     expect(source).toContain('sendResendEmail');
     expect(source).toContain('invitationStatus: delivery.invitationStatus');
@@ -41,7 +45,7 @@ describe('create-client-account', () => {
   });
 
   it('keeps provider failures out of the account rollback path', () => {
-    expect(source).toContain('Convite do administrador pendente');
+    expect(source).toContain('Acesso do administrador pendente');
     expect(source).toContain('return { invitationSent: false, invitationStatus: "PENDING" }');
     expect(source).toContain('RESEND_PROVIDER_ERROR');
     expect(source).not.toContain('console.error("Falha ao criar conta", error)');

@@ -188,15 +188,15 @@ function getPlatformErrorMessage(error: unknown): string {
     }
 
     if (error.code === 'AUTH_RATE_LIMITED') {
-      return 'O serviço de convites atingiu temporariamente o limite. Tente novamente mais tarde.';
+      return 'O serviço de envio de acessos atingiu temporariamente o limite. Tente novamente mais tarde.';
     }
 
     if (error.code === 'INVITATION_ALREADY_ACCEPTED') {
-      return 'Este convite já foi aceito pelo administrador.';
+      return 'Este acesso já foi confirmado pelo administrador.';
     }
 
     if (error.code === 'INVITATION_NOT_FOUND') {
-      return 'Não há convite pendente para esta conta.';
+      return 'Não há acesso pendente para esta conta.';
     }
 
     if (
@@ -205,7 +205,7 @@ function getPlatformErrorMessage(error: unknown): string {
       error.code === 'AUTH_INVITE_EMAIL_FAILED' ||
       error.code === 'AUTH_UNKNOWN_INVITE_ERROR'
     ) {
-      return 'Não foi possível enviar o convite por e-mail. Verifique a configuração de e-mail ou contate o administrador.';
+      return 'Não foi possível enviar os dados de acesso por e-mail. Verifique a configuração de e-mail ou contate o administrador.';
     }
   }
 
@@ -744,8 +744,8 @@ export default function PlatformPage() {
       setFeedback({
         type: 'success',
         message: response.invitationSent
-          ? 'Conta criada com sucesso. Convite enviado ao administrador.'
-          : 'Conta e administrador criados com sucesso, mas o convite ainda não pôde ser enviado. Você poderá reenviá-lo.',
+          ? 'Conta criada com sucesso. Os dados de acesso foram enviados ao administrador.'
+          : 'Conta e administrador criados com sucesso, mas os dados de acesso ainda não puderam ser enviados. Você poderá reenviá-los.',
       });
     } catch (error) {
       setFormFieldErrors(
@@ -758,7 +758,7 @@ export default function PlatformPage() {
     }
   }
 
-  async function resendInvite(account: AccountSummaryRow): Promise<void> {
+  async function resendAccess(account: AccountSummaryRow): Promise<void> {
     if (
       resendClientAdminInvite.isPending ||
       account.invitation?.status !== 'PENDING'
@@ -773,8 +773,8 @@ export default function PlatformPage() {
       setFeedback({
         type: 'success',
         message: response.invitationSent
-          ? 'Convite reenviado ao administrador.'
-          : 'O convite continua pendente e poderá ser reenviado novamente.',
+          ? 'Dados de acesso reenviados ao administrador.'
+          : 'O acesso continua pendente e poderá ser reenviado novamente.',
       });
     } catch (error) {
       setFeedback({
@@ -1759,18 +1759,18 @@ export default function PlatformPage() {
                                 }`}
                               >
                                 {account.invitation.status === 'SENT'
-                                  ? 'Convite enviado'
+                                  ? 'Acesso enviado'
                                   : account.invitation.status === 'ACCEPTED'
-                                    ? 'Convite aceito'
-                                    : 'Convite pendente'}
+                                    ? 'Acesso confirmado'
+                                    : 'Acesso pendente'}
                               </span>
                               {account.invitation.status === 'PENDING' && (
                                 <button
                                   type="button"
-                                  onClick={() => void resendInvite(account)}
+                                  onClick={() => void resendAccess(account)}
                                   disabled={resendClientAdminInvite.isPending}
                                   className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-semibold text-[#005bbf] transition hover:bg-[#eef3ff] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#93c5fd] dark:hover:bg-[#243247]"
-                                  aria-label={`Reenviar convite de ${account.name}`}
+                                  aria-label={`Reenviar acesso de ${account.name}`}
                                 >
                                   <RotateCcw
                                     className={`h-3.5 w-3.5 ${resendClientAdminInvite.isPending ? 'animate-spin' : ''}`}
@@ -1778,7 +1778,7 @@ export default function PlatformPage() {
                                   />
                                   {resendClientAdminInvite.isPending
                                     ? 'Enviando...'
-                                    : 'Reenviar convite'}
+                                    : 'Reenviar acesso'}
                                 </button>
                               )}
                             </div>

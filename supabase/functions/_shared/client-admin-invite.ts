@@ -20,23 +20,29 @@ function getEnvironmentValue(name: string): string | undefined {
   return typeof Deno === "undefined" ? undefined : Deno.env.get(name) ?? undefined;
 }
 
-export interface ClientAdminInviteEmailInput {
+export interface ClientAdminAccessEmailInput {
   accountName: string;
   recipientName: string;
-  actionLink: string;
+  recipientEmail: string;
+  temporaryPassword: string;
+  loginUrl: string;
 }
 
-export function buildClientAdminInviteEmail({
+export function buildClientAdminAccessEmail({
   accountName,
   recipientName,
-  actionLink,
-}: ClientAdminInviteEmailInput): {
+  recipientEmail,
+  temporaryPassword,
+  loginUrl,
+}: ClientAdminAccessEmailInput): {
   subject: string;
   html: string;
 } {
   const safeAccountName = escapeHtml(accountName);
   const safeRecipientName = escapeHtml(recipientName);
-  const safeActionLink = escapeHtml(actionLink);
+  const safeRecipientEmail = escapeHtml(recipientEmail);
+  const safeTemporaryPassword = escapeHtml(temporaryPassword);
+  const safeLoginUrl = escapeHtml(loginUrl);
   const primaryColor = safeColor(getEnvironmentValue("EMAIL_PRIMARY_COLOR"));
   const configuredSecondaryColor = getEnvironmentValue("EMAIL_SECONDARY_COLOR");
   const secondaryColor = /^#[0-9a-f]{6}$/i.test(
@@ -46,7 +52,7 @@ export function buildClientAdminInviteEmail({
     : DEFAULT_SECONDARY_COLOR;
 
   return {
-    subject: `Convite de administrador - ${accountName}`,
+    subject: `Seu acesso administrativo - ${accountName}`,
     html: `<!doctype html>
 <html lang="pt-BR">
   <body style="margin:0;background:#f1f5f9;font-family:Arial,Helvetica,sans-serif;color:#0f172a;">
@@ -59,9 +65,16 @@ export function buildClientAdminInviteEmail({
           </td></tr>
           <tr><td style="padding:32px 28px;">
             <p style="margin:0 0 12px;font-size:16px;line-height:24px;">Olá, ${safeRecipientName}.</p>
-            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Sua conta de administrador foi criada. Use o botão abaixo para confirmar o acesso e definir sua senha.</p>
-            <p style="margin:0 0 24px;text-align:center;"><a href="${safeActionLink}" style="display:inline-block;padding:13px 22px;background:${secondaryColor};color:#ffffff;text-decoration:none;font-weight:700;border-radius:8px;">Definir minha senha</a></p>
-            <p style="margin:0;font-size:13px;line-height:20px;color:#64748b;">Por segurança, o link é temporário e deve ser usado apenas por você.</p>
+            <p style="margin:0 0 24px;font-size:15px;line-height:24px;color:#475569;">Sua conta de administrador foi criada. Use os dados abaixo para acessar a plataforma.</p>
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="border:1px solid #e2e8f0;border-radius:10px;padding:16px;">
+              <tr><td style="padding:0 0 4px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;">E-mail</td></tr>
+              <tr><td style="padding:0 0 12px;color:#0f172a;font-size:16px;font-weight:700;">${safeRecipientEmail}</td></tr>
+              <tr><td style="padding:0 0 4px;color:#64748b;font-size:12px;font-weight:700;text-transform:uppercase;">Senha temporária</td></tr>
+              <tr><td style="padding:0;color:#0f172a;font-size:18px;font-weight:700;letter-spacing:1px;">${safeTemporaryPassword}</td></tr>
+            </table>
+            <p style="margin:24px 0 12px;text-align:center;"><a href="${safeLoginUrl}" style="display:inline-block;padding:13px 22px;background:${secondaryColor};color:#ffffff;text-decoration:none;font-weight:700;border-radius:8px;">Acessar plataforma</a></p>
+            <p style="margin:0 0 10px;font-size:13px;line-height:20px;color:#64748b;word-break:break-all;">${safeLoginUrl}</p>
+            <p style="margin:0;font-size:13px;line-height:20px;color:#64748b;">Por segurança, altere sua senha após o primeiro acesso e não compartilhe estes dados.</p>
           </td></tr>
           <tr><td style="padding:18px 28px;background:#f8fafc;color:#64748b;font-size:12px;text-align:center;">Tecnologia fornecida por GrupoTec.</td></tr>
         </table>

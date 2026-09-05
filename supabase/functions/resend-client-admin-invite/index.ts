@@ -2,9 +2,10 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import { z } from "zod";
 
-import { buildClientAdminInviteEmail } from "../_shared/client-admin-invite.ts";
+import { buildClientAdminAccessEmail } from "../_shared/client-admin-invite.ts";
 import type { Database } from "../_shared/database.types.ts";
 import { sendResendEmail } from "../_shared/resend.ts";
+import { generateSecurePassword } from "../_shared/school-access.ts";
 
 class ResendInviteError extends Error {
   constructor(
@@ -79,7 +80,7 @@ async function assertSuperAdmin(
     throw new ResendInviteError(
       403,
       "PROFILE_INACTIVE",
-      "Perfil desativado nao pode reenviar convites.",
+      "Perfil desativado nao pode reenviar acessos.",
     );
   }
 
@@ -87,7 +88,7 @@ async function assertSuperAdmin(
     throw new ResendInviteError(
       403,
       "SUPER_ADMIN_REQUIRED",
-      "Apenas SUPER_ADMIN pode reenviar convites.",
+      "Apenas SUPER_ADMIN pode reenviar acessos.",
     );
   }
 }
@@ -150,7 +151,7 @@ export default {
           throw new ResendInviteError(
             404,
             "INVITATION_NOT_FOUND",
-            "Nenhum convite de administrador foi encontrado para esta conta.",
+            "Nenhum acesso de administrador foi encontrado para esta conta.",
           );
         }
 
@@ -158,7 +159,7 @@ export default {
           throw new ResendInviteError(
             409,
             "INVITATION_ALREADY_ACCEPTED",
-            "Este convite ja foi aceito e nao precisa ser reenviado.",
+            "Este acesso ja foi confirmado e nao precisa ser reenviado.",
           );
         }
 
@@ -173,7 +174,7 @@ export default {
           throw new ResendInviteError(
             409,
             "ACCOUNT_NOT_ACTIVE",
-            "A conta precisa estar ativa para reenviar o convite.",
+            "A conta precisa estar ativa para reenviar o acesso.",
           );
         }
 
@@ -194,36 +195,38 @@ export default {
           throw new ResendInviteError(
             409,
             "INVALID_ACCOUNT_OWNER",
-            "O administrador proprietário desta conta não está elegível para convite.",
+            "O administrador proprietário desta conta não está elegível para acesso.",
           );
         }
 
         const email = owner.email.trim().toLowerCase();
-        const redirectTo = `${getAppUrl()}/reset-password`;
-        const { data: generatedLink, error: linkError } =
-          await ctx.supabaseAdmin.auth.admin.generateLink({
-            type: "recovery",
-            email,
-            options: { redirectTo },
+        const loginUrl = `${getAppUrl()}/login`;
+        const temporaryPassword = generateSecurePassword();
+        const { error: passwordError } =
+          await ctx.supabaseAdmin.auth.admin.updateUserById(owner.id, {
+            password: temporaryPassword,
+            email_confirm: true,
           });
 
-        if (linkError || !generatedLink.properties?.action_link) {
-          console.error("Falha ao gerar novo link de administrador", {
-            code: "INVITATION_LINK_GENERATION_FAILED",
-            status: linkError?.status ?? 502,
+        if (passwordError) {
+          console.error("Falha ao preparar novo acesso de administrador", {
+            code: "TEMPORARY_PASSWORD_UPDATE_FAILED",
+            status: passwordError.status ?? 502,
           });
           throw new ResendInviteError(
             502,
-            "INVITATION_LINK_GENERATION_FAILED",
-            "Nao foi possivel preparar um novo convite.",
+            "TEMPORARY_PASSWORD_UPDATE_FAILED",
+            "Nao foi possivel preparar um novo acesso.",
           );
         }
 
         const attemptedAt = new Date().toISOString();
-        const emailContent = buildClientAdminInviteEmail({
+        const emailContent = buildClientAdminAccessEmail({
           accountName: account.name,
           recipientName: owner.full_name,
-          actionLink: generatedLink.properties.action_link,
+          recipientEmail: email,
+          temporaryPassword,
+          loginUrl,
         });
         const delivery = await sendResendEmail({
           to: email,
@@ -235,7 +238,7 @@ export default {
 
         if (!delivery.ok || delivery.failure) {
           const failure = delivery.failure;
-          console.error("Reenvio do convite pendente", {
+          console.error("Reenvio do acesso pendente", {
             code: failure?.code ?? "RESEND_PROVIDER_ERROR",
             status: failure?.status ?? null,
             providerCode: failure?.providerCode ?? null,
@@ -281,7 +284,7 @@ export default {
           return jsonError(error);
         }
 
-        console.error("Erro ao reenviar convite do administrador", {
+        console.error("Erro ao reenviar acesso do administrador", {
           code: "INTERNAL_ERROR",
           status: 500,
         });
@@ -289,7 +292,7 @@ export default {
           new ResendInviteError(
             500,
             "INTERNAL_ERROR",
-            "Nao foi possivel reenviar o convite.",
+            "Nao foi possivel reenviar o acesso.",
           ),
         );
       }

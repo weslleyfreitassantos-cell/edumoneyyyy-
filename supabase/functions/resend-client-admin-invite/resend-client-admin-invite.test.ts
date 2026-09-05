@@ -7,10 +7,17 @@ const source = readFileSync(
 );
 
 describe("resend-client-admin-invite", () => {
-  it("uses recovery links for an existing owner and never recreates the account", () => {
-    expect(source).toContain('type: "recovery"');
+  it("changes the existing owner's password and never recreates the account", () => {
+    expect(source).toContain("auth.admin.updateUserById");
+    expect(source).toContain("password: temporaryPassword");
+    expect(source).toContain("email_confirm: true");
+    expect(source).toContain("generateSecurePassword");
     expect(source).toContain("INVITATION_ALREADY_ACCEPTED");
     expect(source).toContain("client_admin_invitations");
+    expect(source).not.toContain("generateLink");
+    expect(source).not.toContain("/auth/confirm");
+    expect(source).not.toContain("/reset-password");
+    expect(source).not.toContain("createUser");
     expect(source).not.toContain("inviteUserByEmail");
     expect(source).not.toContain("send-school-email");
   });
