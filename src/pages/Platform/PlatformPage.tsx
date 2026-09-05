@@ -2,7 +2,10 @@ import {
   AlertTriangle,
   Building2,
   CheckCircle2,
+  Eye,
+  EyeOff,
   History,
+  KeyRound,
   Loader2,
   PauseCircle,
   Plus,
@@ -36,6 +39,8 @@ import {
   useDeleteClientAccount,
   useDeleteInstitution,
   useRestoreClientAccount,
+  useResendClientAdminInvite,
+  useUpdateClientAdminPassword,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
@@ -92,7 +97,17 @@ interface InstitutionAccessDialogState {
   error: string | null;
 }
 
+interface AdminPasswordDialogState {
+  account: AccountSummaryRow;
+  password: string;
+  confirmation: string;
+  error: string | null;
+}
+
 type StatusFilter = 'ALL' | 'ACTIVE' | 'SUSPENDED' | 'DELETED';
+
+const ADMIN_PASSWORD_MIN_LENGTH = 8;
+const ADMIN_PASSWORD_MAX_LENGTH = 72;
 
 const initialForm: AccountFormState = {
   adminFullName: '',
@@ -120,6 +135,25 @@ function getErrorMessage(error: unknown): string {
   return 'Operacao nao concluida.';
 }
 
+function validateAdminPassword(
+  password: string,
+  confirmation: string,
+): string | null {
+  if (password.length < ADMIN_PASSWORD_MIN_LENGTH) {
+    return 'A senha deve possuir pelo menos 8 caracteres.';
+  }
+
+  if (password.length > ADMIN_PASSWORD_MAX_LENGTH) {
+    return 'A senha deve possuir no maximo 72 caracteres.';
+  }
+
+  if (password !== confirmation) {
+    return 'As senhas informadas nao sao iguais.';
+  }
+
+  return null;
+}
+
 function getPlatformErrorMessage(error: unknown): string {
   if (error instanceof AccountServiceError) {
     if (
@@ -139,6 +173,39 @@ function getPlatformErrorMessage(error: unknown): string {
 
     if (error.code === 'PROFILE_INACTIVE') {
       return 'Seu usuário está desativado e não pode executar esta operação.';
+    }
+
+    if (error.code === 'PASSWORD_UPDATE_FAILED') {
+      return 'Não foi possível alterar a senha do administrador.';
+    }
+
+    if (error.code === 'INVALID_PASSWORD') {
+      return 'Informe uma senha entre 8 e 72 caracteres.';
+    }
+
+    if (error.code === 'SUPER_ADMIN_REQUIRED') {
+      return 'Apenas SUPER_ADMIN pode alterar a senha do administrador.';
+    }
+
+    if (error.code === 'AUTH_RATE_LIMITED') {
+      return 'O serviço de envio de acessos atingiu temporariamente o limite. Tente novamente mais tarde.';
+    }
+
+    if (error.code === 'INVITATION_ALREADY_ACCEPTED') {
+      return 'Este acesso já foi confirmado pelo administrador.';
+    }
+
+    if (error.code === 'INVITATION_NOT_FOUND') {
+      return 'Não há acesso pendente para esta conta.';
+    }
+
+    if (
+      error.code === 'AUTH_SMTP_CONFIGURATION_ERROR' ||
+      error.code === 'AUTH_EMAIL_PROVIDER_REJECTED' ||
+      error.code === 'AUTH_INVITE_EMAIL_FAILED' ||
+      error.code === 'AUTH_UNKNOWN_INVITE_ERROR'
+    ) {
+      return 'Não foi possível enviar os dados de acesso por e-mail. Verifique a configuração de e-mail ou contate o administrador.';
     }
   }
 
@@ -369,6 +436,9 @@ export default function PlatformPage() {
     useRef<HTMLInputElement | null>(null);
   const accountsQuery = useAccounts();
   const createAccount = useCreateClientAccount();
+  const resendClientAdminInvite = useResendClientAdminInvite();
+  const updateClientAdminPassword =
+    useUpdateClientAdminPassword();
   const updateAccount = useUpdateClientAccount();
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
@@ -412,6 +482,12 @@ export default function PlatformPage() {
     useState<InstitutionAccessDialogState | null>(
       null,
     );
+  const [adminPasswordDialog, setAdminPasswordDialog] =
+    useState<AdminPasswordDialogState | null>(null);
+  const [showAdminPassword, setShowAdminPassword] =
+    useState(false);
+  const [showAdminPasswordConfirmation, setShowAdminPasswordConfirmation] =
+    useState(false);
   const [isAccessingInstitution, setIsAccessingInstitution] =
     useState(false);
 
@@ -553,6 +629,17 @@ export default function PlatformPage() {
           institution.active !== false,
       ),
   );
+  const adminPasswordValidationError = adminPasswordDialog
+    ? validateAdminPassword(
+        adminPasswordDialog.password,
+        adminPasswordDialog.confirmation,
+      )
+    : null;
+  const canSubmitAdminPassword = Boolean(
+    adminPasswordDialog &&
+      !adminPasswordValidationError &&
+      !updateClientAdminPassword.isPending,
+  );
 
   useEffect(() => {
     if (institutionAccessDialog) {
@@ -657,8 +744,8 @@ export default function PlatformPage() {
       setFeedback({
         type: 'success',
         message: response.invitationSent
-          ? 'Conta criada e convite enviado ao ADMIN.'
-          : 'Conta criada.',
+          ? 'Conta criada com sucesso. Os dados de acesso foram enviados ao administrador.'
+          : 'Conta e administrador criados com sucesso, mas os dados de acesso ainda não puderam ser enviados. Você poderá reenviá-los.',
       });
     } catch (error) {
       setFormFieldErrors(
@@ -668,6 +755,109 @@ export default function PlatformPage() {
         type: 'error',
         message: getPlatformErrorMessage(error),
       });
+    }
+  }
+
+  async function resendAccess(account: AccountSummaryRow): Promise<void> {
+    if (
+      resendClientAdminInvite.isPending ||
+      account.invitation?.status !== 'PENDING'
+    ) {
+      return;
+    }
+
+    try {
+      const response = await resendClientAdminInvite.mutateAsync({
+        accountId: account.id,
+      });
+      setFeedback({
+        type: 'success',
+        message: response.invitationSent
+          ? 'Dados de acesso reenviados ao administrador.'
+          : 'O acesso continua pendente e poderá ser reenviado novamente.',
+      });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
+  function openAdminPasswordDialog(
+    account: AccountSummaryRow,
+  ): void {
+    const owner = account.owner;
+    if (
+      !isSuperAdmin ||
+      account.status !== 'ACTIVE' ||
+      !owner ||
+      owner.active !== true ||
+      owner.role !== 'ADMIN' ||
+      owner.platform_role === 'SUPER_ADMIN'
+    ) {
+      return;
+    }
+
+    setFeedback(null);
+    setShowAdminPassword(false);
+    setShowAdminPasswordConfirmation(false);
+    setAdminPasswordDialog({
+      account,
+      password: '',
+      confirmation: '',
+      error: null,
+    });
+  }
+
+  function closeAdminPasswordDialog(): void {
+    if (updateClientAdminPassword.isPending) {
+      return;
+    }
+
+    setAdminPasswordDialog(null);
+    setShowAdminPassword(false);
+    setShowAdminPasswordConfirmation(false);
+  }
+
+  async function handleAdminPasswordSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+    if (!adminPasswordDialog || !canSubmitAdminPassword) {
+      return;
+    }
+
+    const validationError = validateAdminPassword(
+      adminPasswordDialog.password,
+      adminPasswordDialog.confirmation,
+    );
+    if (validationError) {
+      setAdminPasswordDialog((current) =>
+        current ? { ...current, error: validationError } : current,
+      );
+      return;
+    }
+
+    try {
+      await updateClientAdminPassword.mutateAsync({
+        accountId: adminPasswordDialog.account.id,
+        password: adminPasswordDialog.password,
+      });
+      setFeedback({
+        type: 'success',
+        message: 'Senha do administrador alterada com sucesso.',
+      });
+      closeAdminPasswordDialog();
+    } catch (error) {
+      setAdminPasswordDialog((current) =>
+        current
+          ? {
+              ...current,
+              error: getPlatformErrorMessage(error),
+            }
+          : current,
+      );
     }
   }
 
@@ -1557,6 +1747,42 @@ export default function PlatformPage() {
                           <p className="text-xs">
                             {account.owner?.email ?? ''}
                           </p>
+                          {account.invitation && (
+                            <div className="mt-2 flex flex-wrap items-center gap-2">
+                              <span
+                                className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold ${
+                                  account.invitation.status === 'SENT'
+                                    ? 'bg-[#e6f4ea] text-[#0f6d3a]'
+                                    : account.invitation.status === 'ACCEPTED'
+                                      ? 'bg-[#dce1ff] text-[#00236f]'
+                                      : 'bg-[#fff4ce] text-[#7a4d00]'
+                                }`}
+                              >
+                                {account.invitation.status === 'SENT'
+                                  ? 'Acesso enviado'
+                                  : account.invitation.status === 'ACCEPTED'
+                                    ? 'Acesso confirmado'
+                                    : 'Acesso pendente'}
+                              </span>
+                              {account.invitation.status === 'PENDING' && (
+                                <button
+                                  type="button"
+                                  onClick={() => void resendAccess(account)}
+                                  disabled={resendClientAdminInvite.isPending}
+                                  className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-semibold text-[#005bbf] transition hover:bg-[#eef3ff] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                                  aria-label={`Reenviar acesso de ${account.name}`}
+                                >
+                                  <RotateCcw
+                                    className={`h-3.5 w-3.5 ${resendClientAdminInvite.isPending ? 'animate-spin' : ''}`}
+                                    aria-hidden="true"
+                                  />
+                                  {resendClientAdminInvite.isPending
+                                    ? 'Enviando...'
+                                    : 'Reenviar acesso'}
+                                </button>
+                              )}
+                            </div>
+                          )}
                         </td>
                         <td className="px-3 py-4 text-center">
                           <StatusBadge status={account.status} />
@@ -1966,6 +2192,32 @@ export default function PlatformPage() {
                       </IconActionButton>
                     ) : null}
 
+                    {isSuperAdmin &&
+                      institutionAccessDialog.account.status ===
+                        'ACTIVE' &&
+                      institutionAccessDialogOwner.active === true &&
+                      institutionAccessDialogOwner.role === 'ADMIN' &&
+                      institutionAccessDialogOwner.platform_role !==
+                        'SUPER_ADMIN' && (
+                        <IconActionButton
+                          label="Alterar senha do administrador"
+                          onClick={() =>
+                            openAdminPasswordDialog(
+                              institutionAccessDialog.account,
+                            )
+                          }
+                          disabled={
+                            updateClientAdminPassword.isPending
+                          }
+                          className="border-[#c5c5d3] text-[#005bbf] hover:bg-[#eef3ff] focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                        >
+                          <KeyRound
+                            className="h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </IconActionButton>
+                      )}
+
                     <IconActionButton
                       label={`Ver histórico de ${institutionAccessDialog.account.name}`}
                       onClick={() => {
@@ -2079,6 +2331,218 @@ export default function PlatformPage() {
               </section>
             </div>
           )}
+
+        {adminPasswordDialog && (
+          <div
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4 py-6 dark:bg-black/70"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="admin-password-title"
+              className="w-full max-w-md rounded-xl border border-transparent bg-white p-5 shadow-xl dark:border-[#334155] dark:bg-[#182235]"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="admin-password-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d] dark:text-[#f8fafc]"
+                  >
+                    Alterar senha do administrador
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
+                    Atualize o acesso do administrador dono da conta.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeAdminPasswordDialog}
+                  disabled={updateClientAdminPassword.isPending}
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
+                  aria-label="Fechar alteração de senha"
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-3 text-sm text-[#444651] dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]">
+                <p className="font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                  {adminPasswordDialog.account.owner?.full_name}
+                </p>
+                <p className="truncate">
+                  {adminPasswordDialog.account.owner?.email}
+                </p>
+              </div>
+
+              <form
+                className="mt-4 space-y-4"
+                onSubmit={handleAdminPasswordSubmit}
+              >
+                <div>
+                  <label
+                    htmlFor="client-admin-password"
+                    className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    Nova senha
+                  </label>
+                  <div className="relative mt-1">
+                    <input
+                      id="client-admin-password"
+                      type={showAdminPassword ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      maxLength={ADMIN_PASSWORD_MAX_LENGTH}
+                      value={adminPasswordDialog.password}
+                      onChange={(event) =>
+                        setAdminPasswordDialog((current) =>
+                          current
+                            ? {
+                                ...current,
+                                password: event.target.value,
+                                error: null,
+                              }
+                            : current,
+                        )
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-3 pr-11 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:disabled:bg-[#111827]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowAdminPassword((visible) => !visible)
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="absolute right-1 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-[#757682] hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#94a3b8] dark:hover:bg-[#243247]"
+                      aria-label={
+                        showAdminPassword
+                          ? 'Ocultar senha'
+                          : 'Mostrar senha'
+                      }
+                      title={
+                        showAdminPassword
+                          ? 'Ocultar senha'
+                          : 'Mostrar senha'
+                      }
+                    >
+                      {showAdminPassword ? (
+                        <EyeOff className="h-4 w-4" aria-hidden="true" />
+                      ) : (
+                        <Eye className="h-4 w-4" aria-hidden="true" />
+                      )}
+                    </button>
+                  </div>
+                  <p className="mt-1 text-xs text-[#757682] dark:text-[#94a3b8]">
+                    Use entre 8 e 72 caracteres.
+                  </p>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="client-admin-password-confirmation"
+                    className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    Confirmar nova senha
+                  </label>
+                  <div className="relative mt-1">
+                    <input
+                      id="client-admin-password-confirmation"
+                      type={
+                        showAdminPasswordConfirmation
+                          ? 'text'
+                          : 'password'
+                      }
+                      autoComplete="new-password"
+                      maxLength={ADMIN_PASSWORD_MAX_LENGTH}
+                      value={adminPasswordDialog.confirmation}
+                      onChange={(event) =>
+                        setAdminPasswordDialog((current) =>
+                          current
+                            ? {
+                                ...current,
+                                confirmation: event.target.value,
+                                error: null,
+                              }
+                            : current,
+                        )
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-3 pr-11 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:disabled:bg-[#111827]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowAdminPasswordConfirmation(
+                          (visible) => !visible,
+                        )
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="absolute right-1 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-[#757682] hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#94a3b8] dark:hover:bg-[#243247]"
+                      aria-label={
+                        showAdminPasswordConfirmation
+                          ? 'Ocultar confirmação de senha'
+                          : 'Mostrar confirmação de senha'
+                      }
+                      title={
+                        showAdminPasswordConfirmation
+                          ? 'Ocultar confirmação de senha'
+                          : 'Mostrar confirmação de senha'
+                      }
+                    >
+                      {showAdminPasswordConfirmation ? (
+                        <EyeOff className="h-4 w-4" aria-hidden="true" />
+                      ) : (
+                        <Eye className="h-4 w-4" aria-hidden="true" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {(adminPasswordDialog.error ||
+                  adminPasswordValidationError) && (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200"
+                  >
+                    {adminPasswordDialog.error ??
+                      adminPasswordValidationError}
+                  </div>
+                )}
+
+                <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                  <button
+                    type="button"
+                    onClick={closeAdminPasswordDialog}
+                    disabled={updateClientAdminPassword.isPending}
+                    className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247]"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!canSubmitAdminPassword}
+                    className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#1e3a8a] px-4 text-sm font-semibold text-white transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                  >
+                    {updateClientAdminPassword.isPending ? (
+                      <Loader2
+                        className="h-4 w-4 animate-spin"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <KeyRound
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    )}
+                    {updateClientAdminPassword.isPending
+                      ? 'Alterando...'
+                      : 'Alterar senha'}
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+        )}
 
         {statusHistoryDialog && (
           <div

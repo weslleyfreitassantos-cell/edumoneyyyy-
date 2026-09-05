@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { FunctionsHttpError } from '@supabase/supabase-js';
 
 import { supabase } from '../lib/supabaseClient';
 import { schoolEmailService } from './schoolEmailService';
@@ -59,5 +60,30 @@ describe('schoolEmailService', () => {
     });
     expect(options.body).not.toHaveProperty('emails');
     expect(options.body).not.toHaveProperty('recipients');
+  });
+
+  it('preserva o código semântico retornado pela Edge Function', async () => {
+    vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
+      data: null,
+      error: new FunctionsHttpError(
+        new Response(JSON.stringify({
+          success: false,
+          code: 'RESEND_FORBIDDEN',
+          message: 'O serviço de e-mail recusou esta operação.',
+        })),
+      ),
+    } as never);
+
+    await expect(
+      schoolEmailService.send({
+        institutionId: 'institution-1',
+        audience: 'TEACHERS',
+        subject: 'Aviso',
+        message: 'Mensagem',
+      }),
+    ).rejects.toMatchObject({
+      code: 'RESEND_FORBIDDEN',
+      message: 'O serviço de e-mail recusou esta operação.',
+    });
   });
 });

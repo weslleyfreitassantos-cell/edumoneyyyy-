@@ -59,6 +59,7 @@ describe('accountService', () => {
         ownerEmail: 'test@test.com',
         institutionLimit: 1,
         invitationSent: true,
+        invitationStatus: 'SENT',
         reusedExistingUser: false,
       },
       error: null,
@@ -108,6 +109,38 @@ describe('accountService', () => {
       adminEmail: 'test@test.com',
       institutionLimit: 1,
     })).rejects.toThrow(AccountServiceError);
+  });
+
+  it('altera a senha do admin pelo accountId sem expor dados extras', async () => {
+    vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
+      data: {
+        success: true,
+        accountId: 'account-1',
+        sessionRevocation: 'NOT_SUPPORTED',
+      },
+      error: null,
+    });
+
+    const response =
+      await accountService.updateClientAdminPassword({
+        accountId: 'account-1',
+        password: 'StrongPass123!',
+      });
+
+    expect(supabase.functions.invoke).toHaveBeenCalledWith(
+      'update-client-admin-password',
+      {
+        body: {
+          accountId: 'account-1',
+          password: 'StrongPass123!',
+        },
+      },
+    );
+    expect(response).toEqual({
+      success: true,
+      accountId: 'account-1',
+      sessionRevocation: 'NOT_SUPPORTED',
+    });
   });
 
   it('normaliza resposta de encerramento seguro', async () => {

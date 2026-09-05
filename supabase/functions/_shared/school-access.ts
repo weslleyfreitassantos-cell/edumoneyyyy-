@@ -1,3 +1,7 @@
+import {
+  sendResendEmail,
+} from "./resend.ts";
+
 export type SchoolAccessRole =
   | "ADMIN"
   | "DIRECTOR"
@@ -271,35 +275,30 @@ export function buildSchoolAccessEmail({
 export async function sendSchoolAccessEmail(
   input: SchoolAccessEmailInput,
 ): Promise<void> {
-  const apiKey = Deno.env.get("resendsenha")?.trim();
-  const from = Deno.env.get("EMAIL_FROM")?.trim();
-
-  if (!apiKey || !from) {
-    throw new SchoolAccessEmailError(
-      "EMAIL_PROVIDER_NOT_CONFIGURED",
-      "O provedor de e-mail não está configurado.",
-    );
-  }
-
   const { subject, html } = buildSchoolAccessEmail(input);
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from,
-      to: [input.recipientEmail],
-      subject,
-      html,
-    }),
+  const result = await sendResendEmail({
+    to: input.recipientEmail,
+    from: Deno.env.get("EMAIL_FROM")?.trim() ?? "",
+    subject,
+    html,
   });
 
-  if (!response.ok) {
-    throw new SchoolAccessEmailError(
-      "EMAIL_DELIVERY_FAILED",
-      "Não foi possível enviar o e-mail de acesso.",
-    );
+  if (!result.ok || result.failure) {
+    const failure = result.failure;
+    if (!failure || failure.code === "RESEND_NOT_CONFIGURED") {
+      throw new SchoolAccessEmailError(
+        "EMAIL_PROVIDER_NOT_CONFIGURED",
+        "O provedor de e-mail não está configurado.",
+      );
+    }
+
+    console.error("Resend access email request failed", {
+      status: failure.status,
+      statusText: failure.statusText,
+      code: failure.code,
+      providerCode: failure.providerCode,
+      message: failure.message,
+    });
+    throw new SchoolAccessEmailError(failure.code, failure.publicMessage);
   }
 }

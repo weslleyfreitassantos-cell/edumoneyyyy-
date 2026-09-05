@@ -12,6 +12,10 @@ import {
   type CloseClientAccountResponse,
   type CreateClientAccountInput,
   type CreateClientAccountResponse,
+  type ResendClientAdminInviteInput,
+  type ResendClientAdminInviteResponse,
+  type UpdateClientAdminPasswordInput,
+  type UpdateClientAdminPasswordResponse,
   type CreateInstitutionInput,
   type CreateInstitutionResponse,
   type DeleteClientAccountInput,
@@ -98,6 +102,35 @@ export function useCreateClientAccount() {
         queryKey: accountKeys.all,
       });
     },
+  });
+}
+
+export function useResendClientAdminInvite() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    ResendClientAdminInviteResponse,
+    Error,
+    ResendClientAdminInviteInput
+  >({
+    mutationFn: (input) =>
+      accountService.resendClientAdminInvite(input),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: accountKeys.all,
+      });
+    },
+  });
+}
+
+export function useUpdateClientAdminPassword() {
+  return useMutation<
+    UpdateClientAdminPasswordResponse,
+    Error,
+    UpdateClientAdminPasswordInput
+  >({
+    mutationFn: (input) =>
+      accountService.updateClientAdminPassword(input),
   });
 }
 

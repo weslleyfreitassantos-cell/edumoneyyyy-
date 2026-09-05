@@ -103,6 +103,7 @@ const requestSchema = z
       .pipe(z.string().min(3, "Nome obrigatorio").max(120, "Nome muito longo")),
     email: z.string().trim().toLowerCase().email("E-mail invalido"),
     phone: z.string().trim().max(40, "Telefone muito longo").optional(),
+    // Compatibilidade legada: a falha exclusiva do e-mail sempre retorna 201.
     continueOnEmailFailure: z.boolean().optional(),
     student: studentPayloadSchema.optional(),
     guardian: guardianPayloadSchema.optional(),
@@ -290,15 +291,6 @@ function toPublicError(error: unknown): InviteError {
       code: error.code,
       message: error.message,
       fieldErrors: { institutionId: error.message },
-    });
-  }
-
-  if (error instanceof SchoolAccessEmailError) {
-    return new InviteError({
-      status: 502,
-      code: "ACCESS_CREATED_EMAIL_FAILED",
-      message:
-        "O acesso foi criado, mas nao foi possivel enviar o e-mail de acesso. Defina uma senha manualmente na edicao do usuario e comunique o acesso por um canal seguro.",
     });
   }
 
@@ -775,10 +767,7 @@ export default {
         });
       }
 
-      let generatedPassword: string | undefined;
-      let profileId: string;
-
-      generatedPassword = generateSecurePassword();
+      const generatedPassword = generateSecurePassword();
       const { data: createdAuth, error: createAuthError } = await ctx.supabaseAdmin.auth.admin.createUser({
         email: input.email,
         password: generatedPassword,
@@ -803,7 +792,7 @@ export default {
         throw createAuthError ?? new Error("Nao foi possivel criar o usuario de autenticacao.");
       }
 
-      profileId = createdAuth.user.id;
+      const profileId = createdAuth.user.id;
       rollback.createdAuthUserId = profileId;
 
       const { error: profileInsertError } = await ctx.supabaseAdmin
@@ -892,43 +881,30 @@ export default {
           ...(generatedPassword ? { password: generatedPassword } : {}),
         });
       } catch (emailError) {
-        const publicEmailError = toPublicError(emailError);
-        if (input.continueOnEmailFailure) {
-          return Response.json(
-            {
-              success: true,
-              accessCreated: true,
-              userId: profileId,
-              profileId,
-              membershipId,
-              role: input.role,
-              email: input.email,
-              ...(studentResult ? { student: studentResult } : {}),
-              ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
-              invitationSent: false,
-              emailPending: true,
-              reusedExistingUser: false,
-              message: "Acesso criado; o e-mail de acesso ficou pendente.",
-            },
-            { status: 201 },
-          );
-        }
-        return jsonError({
-          status: 502,
-          code: "ACCESS_CREATED_EMAIL_FAILED",
-          message:
-            "O acesso foi criado, mas nao foi possivel enviar o e-mail de acesso. Defina uma senha manualmente na edicao do usuario e comunique o acesso por um canal seguro.",
+        console.error("Falha ao enviar e-mail de acesso escolar", {
           requestId,
-          extra: {
+          code: emailError instanceof SchoolAccessEmailError
+            ? emailError.code
+            : "EMAIL_DELIVERY_FAILED",
+        });
+        return Response.json(
+          {
+            success: true,
             accessCreated: true,
             userId: profileId,
             profileId,
             membershipId,
+            role: input.role,
             email: input.email,
+            ...(studentResult ? { student: studentResult } : {}),
+            ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
+            invitationSent: false,
+            emailPending: true,
             reusedExistingUser: false,
-            providerCode: publicEmailError.code,
+            message: "Acesso criado; o e-mail de acesso ficou pendente.",
           },
-        });
+          { status: 201 },
+        );
       }
 
       return Response.json(
@@ -943,6 +919,7 @@ export default {
           ...(studentResult ? { student: studentResult } : {}),
           ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
           invitationSent: true,
+          emailPending: false,
           reusedExistingUser: false,
           message: "Acesso criado e credenciais enviadas por e-mail.",
         },

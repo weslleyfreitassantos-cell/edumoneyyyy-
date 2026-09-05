@@ -30,6 +30,7 @@ import {
   useCloseClientAccount,
   useCreateClientAccount,
   useCreateInstitution,
+  useUpdateClientAdminPassword,
   useUpdateClientAccount,
   useUpdateInstitutionName,
   useUpdateInstitutionStatus,
@@ -40,6 +41,7 @@ vi.mock('../services/accountService', () => ({
     createAccount: vi.fn(),
     closeAccount: vi.fn(),
     updateAccount: vi.fn(),
+    updateClientAdminPassword: vi.fn(),
     updateInstitutionStatus: vi.fn(),
     deleteAccount: vi.fn(),
     createInstitution: vi.fn(),
@@ -157,6 +159,7 @@ describe('account mutations', () => {
       ownerEmail: 'admin@example.com',
       institutionLimit: 2,
       invitationSent: true,
+      invitationStatus: 'SENT',
       reusedExistingUser: false,
     });
 
@@ -281,6 +284,55 @@ describe('account mutations', () => {
       queryKey: userInstitutionKeys.all,
     });
     expect(invalidateSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('altera a senha do admin sem invalidar ou criar uma chave de consulta', async () => {
+    const queryClient = createQueryClient();
+    const invalidateSpy = vi.spyOn(
+      queryClient,
+      'invalidateQueries',
+    );
+
+    mockedAccountService.updateClientAdminPassword.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      sessionRevocation: 'NOT_SUPPORTED',
+    });
+
+    const wrapper = ({
+      children,
+    }: {
+      children: ReactNode;
+    }) => (
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    );
+
+    const { result } = renderHook(
+      () => useUpdateClientAdminPassword(),
+      { wrapper },
+    );
+
+    await act(async () => {
+      await result.current.mutateAsync({
+        accountId: 'account-1',
+        password: 'StrongPass123!',
+      });
+    });
+
+    expect(
+      mockedAccountService.updateClientAdminPassword,
+    ).toHaveBeenCalledWith({
+      accountId: 'account-1',
+      password: 'StrongPass123!',
+    });
+    expect(invalidateSpy).not.toHaveBeenCalled();
+    expect(
+      queryClient.getQueryCache().getAll().map((query) => query.queryKey),
+    ).not.toContainEqual(
+      expect.arrayContaining(['StrongPass123!']),
+    );
   });
 
   it('invalida contas e instituicoes autorizadas apos renomear instituicao', async () => {
