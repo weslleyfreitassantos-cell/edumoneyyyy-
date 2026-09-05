@@ -14,6 +14,7 @@ import type {
 
 export interface SchoolUserInviteResponse {
   success: true;
+  accessCreated: boolean;
   userId: string;
   profileId: string;
   membershipId?: string;
@@ -27,7 +28,7 @@ export interface SchoolUserInviteResponse {
     id: string;
   };
   invitationSent: boolean;
-  emailPending?: boolean;
+  emailPending: boolean;
   reusedExistingUser: boolean;
   message: string;
 }
@@ -82,11 +83,13 @@ function isInviteResponse(
   return (
     isRecord(value) &&
     value.success === true &&
+    typeof value.accessCreated === 'boolean' &&
     typeof value.userId === 'string' &&
     typeof value.profileId === 'string' &&
     typeof value.role === 'string' &&
     typeof value.email === 'string' &&
     typeof value.invitationSent === 'boolean' &&
+    typeof value.emailPending === 'boolean' &&
     typeof value.reusedExistingUser === 'boolean' &&
     typeof value.message === 'string'
   );

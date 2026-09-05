@@ -106,6 +106,7 @@ beforeEach(() => {
   saveAcademicMutateAsync.mockReset();
   mutateAsync.mockResolvedValue({
     success: true,
+    accessCreated: true,
     userId:
       '11111111-1111-4111-8111-111111111111',
     profileId:
@@ -115,6 +116,7 @@ beforeEach(() => {
     role: 'TEACHER',
     email: 'professor@escola.com',
     invitationSent: true,
+    emailPending: false,
     reusedExistingUser: false,
     message:
       'Convite enviado e vinculo criado com sucesso.',
@@ -233,6 +235,93 @@ describe('UnifiedUserInvitePreview', () => {
           end_time: '12:00',
         }],
       });
+    });
+  });
+
+  it('trata o e-mail pendente como criação concluída e limpa o formulário', async () => {
+    mutateAsync.mockResolvedValueOnce({
+      success: true,
+      accessCreated: true,
+      userId: '11111111-1111-4111-8111-111111111111',
+      profileId: '11111111-1111-4111-8111-111111111111',
+      membershipId: '33333333-3333-4333-8333-333333333333',
+      role: 'STUDENT',
+      email: 'aluno-pendente@escola.com',
+      invitationSent: false,
+      emailPending: true,
+      reusedExistingUser: false,
+      message: 'Acesso criado; o e-mail de acesso ficou pendente.',
+    });
+
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        allowedTargets={['STUDENT']}
+      />,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Nome completo/), {
+      target: { value: 'Aluno Pendente' },
+    });
+    fireEvent.change(screen.getByLabelText(/E-mail/), {
+      target: { value: 'aluno-pendente@escola.com' },
+    });
+    fireEvent.change(screen.getByLabelText(/Data de nascimento/), {
+      target: { value: '2010-01-01' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /Criar e enviar acesso/ }));
+
+    await waitFor(() => {
+      const feedback = screen.getByRole('alert');
+      expect(feedback.textContent).toContain('Acesso criado; o e-mail de acesso ficou pendente.');
+      expect(feedback.className).toContain('border-amber-200');
+      expect(screen.queryByDisplayValue('aluno-pendente@escola.com')).toBeNull();
+      expect(screen.queryByRole('button', { name: /tentar novamente|reenviar/i })).toBeNull();
+    });
+  });
+
+  it('salva a configuração acadêmica do professor mesmo com e-mail pendente', async () => {
+    mutateAsync.mockResolvedValueOnce({
+      success: true,
+      accessCreated: true,
+      userId: '11111111-1111-4111-8111-111111111111',
+      profileId: '11111111-1111-4111-8111-111111111111',
+      membershipId: '33333333-3333-4333-8333-333333333333',
+      role: 'TEACHER',
+      email: 'professor-pendente@escola.com',
+      invitationSent: false,
+      emailPending: true,
+      reusedExistingUser: false,
+      message: 'Acesso criado; o e-mail de acesso ficou pendente.',
+    });
+
+    render(<UnifiedUserInvitePreview {...defaultProps} />);
+    fireEvent.click(screen.getByRole('button', { name: /Professor/ }));
+    fireEvent.change(screen.getByLabelText(/Nome completo/), {
+      target: { value: 'Professor Pendente' },
+    });
+    fireEvent.change(screen.getByLabelText(/E-mail/), {
+      target: { value: 'professor-pendente@escola.com' },
+    });
+    fireEvent.click(screen.getByLabelText('Matemática'));
+    fireEvent.click(screen.getByRole('button', { name: /Adicionar janela/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Criar e enviar acesso/ }));
+
+    await waitFor(() => {
+      expect(saveAcademicMutateAsync).toHaveBeenCalledWith({
+        institution_id: defaultProps.institutionId,
+        teacher_profile_id: '11111111-1111-4111-8111-111111111111',
+        subject_ids: ['subject-math'],
+        primary_subject_id: undefined,
+        availability: [{
+          day_of_week: 1,
+          start_time: '07:00',
+          end_time: '12:00',
+        }],
+      });
+      expect(screen.getByRole('alert').textContent).toContain(
+        'Acesso criado; o e-mail de acesso ficou pendente. Disciplinas e disponibilidade salvas.',
+      );
     });
   });
 
