@@ -775,10 +775,7 @@ export default {
         });
       }
 
-      let generatedPassword: string | undefined;
-      let profileId: string;
-
-      generatedPassword = generateSecurePassword();
+      const generatedPassword = generateSecurePassword();
       const { data: createdAuth, error: createAuthError } = await ctx.supabaseAdmin.auth.admin.createUser({
         email: input.email,
         password: generatedPassword,
@@ -803,7 +800,7 @@ export default {
         throw createAuthError ?? new Error("Nao foi possivel criar o usuario de autenticacao.");
       }
 
-      profileId = createdAuth.user.id;
+      const profileId = createdAuth.user.id;
       rollback.createdAuthUserId = profileId;
 
       const { error: profileInsertError } = await ctx.supabaseAdmin

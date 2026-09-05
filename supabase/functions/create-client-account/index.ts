@@ -568,7 +568,7 @@ export default {
             await ctx.supabaseAdmin.auth.admin.deleteUser(
               rollback.createdAuthUserId,
             );
-          } catch (cleanupError) {
+          } catch {
             console.error(
               "Erro no cleanup da conta:",
               { code: "CLEANUP_FAILED" },
