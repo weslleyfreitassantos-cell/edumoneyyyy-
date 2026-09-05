@@ -200,6 +200,13 @@ export function getRouteVisualContext(
         };
       }
 
+      if (normalizedPath === '/dashboard/materials') {
+        return {
+          section: 'Acadêmico',
+          title: 'Materiais e avisos',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do professor',
@@ -211,6 +218,13 @@ export function getRouteVisualContext(
         return {
           section: 'Acadêmico',
           title: 'Grade de horário',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/materials') {
+        return {
+          section: 'Acadêmico',
+          title: 'Materiais e avisos',
         };
       }
 
