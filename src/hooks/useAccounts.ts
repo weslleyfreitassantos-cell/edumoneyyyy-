@@ -14,6 +14,8 @@ import {
   type CreateClientAccountResponse,
   type ResendClientAdminInviteInput,
   type ResendClientAdminInviteResponse,
+  type UpdateClientAdminPasswordInput,
+  type UpdateClientAdminPasswordResponse,
   type CreateInstitutionInput,
   type CreateInstitutionResponse,
   type DeleteClientAccountInput,
@@ -118,6 +120,17 @@ export function useResendClientAdminInvite() {
         queryKey: accountKeys.all,
       });
     },
+  });
+}
+
+export function useUpdateClientAdminPassword() {
+  return useMutation<
+    UpdateClientAdminPasswordResponse,
+    Error,
+    UpdateClientAdminPasswordInput
+  >({
+    mutationFn: (input) =>
+      accountService.updateClientAdminPassword(input),
   });
 }
 

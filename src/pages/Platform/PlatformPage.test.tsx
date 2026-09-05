@@ -23,6 +23,7 @@ const hookMock = vi.hoisted(() => ({
   accountsQuery: {} as any,
   createAccount: {} as any,
   resendClientAdminInvite: {} as any,
+  updateClientAdminPassword: {} as any,
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
   deleteInstitution: {} as any,
@@ -37,6 +38,7 @@ const hookMock = vi.hoisted(() => ({
   disableDomain: {} as any,
   createMutateAsync: vi.fn(),
   resendClientAdminInviteMutateAsync: vi.fn(),
+  updateClientAdminPasswordMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
   deleteInstitutionMutateAsync: vi.fn(),
@@ -60,6 +62,8 @@ vi.mock('../../hooks/useAccounts', () => ({
   useAccounts: () => hookMock.accountsQuery,
   useCreateClientAccount: () => hookMock.createAccount,
   useResendClientAdminInvite: () => hookMock.resendClientAdminInvite,
+  useUpdateClientAdminPassword: () =>
+    hookMock.updateClientAdminPassword,
   useUpdateClientAccount: () => hookMock.updateAccount,
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
@@ -262,6 +266,11 @@ describe('PlatformPage', () => {
       isPending: false,
       mutateAsync: hookMock.resendClientAdminInviteMutateAsync,
     };
+    hookMock.updateClientAdminPassword = {
+      isPending: false,
+      mutateAsync:
+        hookMock.updateClientAdminPasswordMutateAsync,
+    };
     hookMock.updateAccount = {
       isPending: false,
       mutateAsync: hookMock.updateMutateAsync,
@@ -356,6 +365,11 @@ describe('PlatformPage', () => {
       status: 'ACTIVE',
       auditEventId: null,
       statusChanged: false,
+    });
+    hookMock.updateClientAdminPasswordMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      sessionRevocation: 'NOT_SUPPORTED',
     });
     hookMock.updateInstitutionStatusMutateAsync.mockResolvedValue({
       success: true,
@@ -786,6 +800,76 @@ describe('PlatformPage', () => {
       ).toBeDefined();
     });
     expect(hookMock.createMutateAsync).not.toHaveBeenCalled();
+  });
+
+  it('permite ao SUPER_ADMIN alterar a senha do admin dono da conta', async () => {
+    const accountDialog = openInstitutionAccessDialog();
+
+    fireEvent.click(
+      within(accountDialog).getByRole('button', {
+        name: 'Alterar senha do administrador',
+      }),
+    );
+
+    const passwordDialog = screen.getByRole('dialog', {
+      name: 'Alterar senha do administrador',
+    });
+
+    expect(
+      within(passwordDialog).getByText('Ana Admin'),
+    ).toBeDefined();
+    expect(
+      within(passwordDialog).getByText('ana@example.com'),
+    ).toBeDefined();
+
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Nova senha'),
+      { target: { value: 'StrongPass123!' } },
+    );
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      { target: { value: 'DifferentPass123!' } },
+    );
+    fireEvent.submit(
+      within(passwordDialog).getByRole('button', {
+        name: 'Alterar senha',
+      }).closest('form')!,
+    );
+
+    expect(
+      hookMock.updateClientAdminPasswordMutateAsync,
+    ).not.toHaveBeenCalled();
+    expect(
+      within(passwordDialog).getByRole('alert').textContent,
+    ).toMatch(/senhas informadas nao sao iguais/i);
+
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      { target: { value: 'StrongPass123!' } },
+    );
+    fireEvent.click(
+      within(passwordDialog).getByRole('button', {
+        name: 'Alterar senha',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.updateClientAdminPasswordMutateAsync,
+      ).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        password: 'StrongPass123!',
+      });
+      expect(
+        screen.getByText(/Senha do administrador alterada com sucesso/i),
+      ).toBeDefined();
+    });
+
+    expect(
+      screen.queryByRole('dialog', {
+        name: 'Alterar senha do administrador',
+      }),
+    ).toBeNull();
   });
 
   it('bloqueia criacao com nome do ADMIN vazio', () => {

@@ -85,6 +85,17 @@ export interface ResendClientAdminInviteResponse {
   invitationStatus: 'PENDING' | 'SENT';
 }
 
+export interface UpdateClientAdminPasswordInput {
+  accountId: string;
+  password: string;
+}
+
+export interface UpdateClientAdminPasswordResponse {
+  success: true;
+  accountId: string;
+  sessionRevocation: 'NOT_SUPPORTED';
+}
+
 export interface UpdateClientAccountInput {
   accountId: string;
   institutionLimit?: number;
@@ -558,6 +569,23 @@ function assertResendClientAdminInviteResponse(
   };
 }
 
+function assertUpdateClientAdminPasswordResponse(
+  value: unknown,
+): UpdateClientAdminPasswordResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    accountId: requireString(value, 'accountId'),
+    sessionRevocation: 'NOT_SUPPORTED',
+  };
+}
+
 function assertInstitutionSsoHandoffResponse(
   value: unknown,
 ): string {
@@ -955,6 +983,21 @@ export const accountService = {
     }
 
     return assertResendClientAdminInviteResponse(data);
+  },
+
+  async updateClientAdminPassword(
+    input: UpdateClientAdminPasswordInput,
+  ): Promise<UpdateClientAdminPasswordResponse> {
+    const { data, error } = await supabase.functions.invoke(
+      'update-client-admin-password',
+      { body: input },
+    );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertUpdateClientAdminPasswordResponse(data);
   },
 
   async updateAccount(
