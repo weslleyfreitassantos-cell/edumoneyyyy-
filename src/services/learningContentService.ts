@@ -111,6 +111,7 @@ interface RawRow {
 }
 
 interface RawAttachment {
+  post_id?: unknown;
   id?: unknown;
   file_name?: unknown;
   mime_type?: unknown;
@@ -144,10 +145,11 @@ const POST_SELECT = `
   updated_at,
   subjects:subject_id (id, name, code),
   classes:class_id (id, name),
-  profiles:created_by (id, full_name),
-  learning_post_attachments (id, file_name, mime_type, size_bytes, storage_path, created_at),
-  learning_post_reads (profile_id, read_at)
+  profiles:created_by (id, full_name)
 `;
+
+const POST_ATTACHMENTS_SELECT =
+  'post_id, id, file_name, mime_type, size_bytes, storage_path, created_at';
 
 function asRecord(value: unknown): RawRow | RawAttachment | RawRelation {
   return typeof value === 'object' && value !== null
@@ -187,17 +189,19 @@ function normalizeAttachment(value: unknown): LearningAttachment | null {
   };
 }
 
-function normalizePost(value: unknown, profileId: string): LearningPost {
+function normalizePost(
+  value: unknown,
+  attachmentsByPostId: ReadonlyMap<string, LearningAttachment[]>,
+  readPostIds: ReadonlySet<string>,
+): LearningPost {
   const row = asRecord(value) as RawRow;
   const subject = firstRelation(row.subjects);
   const classRow = firstRelation(row.classes);
   const profile = firstRelation(row.profiles);
-  const reads = Array.isArray(row.learning_post_reads)
-    ? row.learning_post_reads
-    : [];
+  const id = stringValue(row.id);
 
   return {
-    id: stringValue(row.id),
+    id,
     institutionId: stringValue(row.institution_id),
     classId: stringValue(row.class_id),
     className: stringValue(classRow.name, 'Turma'),
@@ -216,15 +220,8 @@ function normalizePost(value: unknown, profileId: string): LearningPost {
     expiresAt: nullableString(row.expires_at),
     createdAt: stringValue(row.created_at),
     updatedAt: stringValue(row.updated_at),
-    attachments: (Array.isArray(row.learning_post_attachments)
-      ? row.learning_post_attachments
-      : [])
-      .map(normalizeAttachment)
-      .filter((attachment): attachment is LearningAttachment => Boolean(attachment)),
-    isRead: reads.some((read) => {
-      const readRow = asRecord(read) as RawRow;
-      return stringValue(readRow.profile_id) === profileId;
-    }),
+    attachments: attachmentsByPostId.get(id) ?? [],
+    isRead: readPostIds.has(id),
   };
 }
 
@@ -318,16 +315,59 @@ async function uploadAttachments(
   }
 }
 
-async function loadPostAttachments(postId: string): Promise<LearningAttachment[]> {
+async function loadPostAttachmentsForPosts(
+  postIds: readonly string[],
+): Promise<Map<string, LearningAttachment[]>> {
+  const attachmentsByPostId = new Map<string, LearningAttachment[]>();
+  if (postIds.length === 0) return attachmentsByPostId;
+
   const { data, error } = await supabase
     .from('learning_post_attachments')
-    .select('id, file_name, mime_type, size_bytes, storage_path, created_at')
-    .eq('post_id', postId)
+    .select(POST_ATTACHMENTS_SELECT)
+    .in('post_id', [...postIds])
     .order('created_at', { ascending: true });
   if (error) throw error;
-  return (data ?? [])
-    .map(normalizeAttachment)
-    .filter((attachment): attachment is LearningAttachment => Boolean(attachment));
+
+  for (const value of data ?? []) {
+    const row = asRecord(value) as RawAttachment;
+    const postId = stringValue(row.post_id);
+    const attachment = normalizeAttachment(value);
+    if (!postId || !attachment) continue;
+    const current = attachmentsByPostId.get(postId) ?? [];
+    current.push(attachment);
+    attachmentsByPostId.set(postId, current);
+  }
+
+  return attachmentsByPostId;
+}
+
+async function loadPostAttachments(postId: string): Promise<LearningAttachment[]> {
+  const attachmentsByPostId = await loadPostAttachmentsForPosts([postId]);
+  return attachmentsByPostId.get(postId) ?? [];
+}
+
+async function loadReadPostIds(
+  postIds: readonly string[],
+  profileId: string,
+): Promise<Set<string>> {
+  if (postIds.length === 0) return new Set<string>();
+
+  const { data, error } = await supabase
+    .from('learning_post_reads')
+    .select('post_id')
+    .in('post_id', [...postIds])
+    .eq('profile_id', profileId);
+  if (error) throw error;
+
+  return new Set(
+    (data ?? [])
+      .map((row) => stringValue((asRecord(row) as { post_id?: unknown }).post_id))
+      .filter(Boolean),
+  );
+}
+
+interface ListPostsOptions {
+  includeReadState?: boolean;
 }
 
 export const learningContentService = {
@@ -335,6 +375,7 @@ export const learningContentService = {
     institutionId: string,
     profileId: string,
     filters: LearningPostFilters = {},
+    options: ListPostsOptions = {},
   ): Promise<LearningPostPage> {
     const page = Math.max(1, filters.page ?? 1);
     const pageSize = Math.min(20, Math.max(1, filters.pageSize ?? 20));
@@ -361,8 +402,19 @@ export const learningContentService = {
     const { data, error, count } = await query;
     if (error) throw error;
 
+    const rawPosts = data ?? [];
+    const postIds = rawPosts
+      .map((row) => stringValue(asRecord(row).id))
+      .filter(Boolean);
+    const [attachmentsByPostId, readPostIds] = await Promise.all([
+      loadPostAttachmentsForPosts(postIds),
+      options.includeReadState === false
+        ? Promise.resolve(new Set<string>())
+        : loadReadPostIds(postIds, profileId),
+    ]);
+
     return {
-      posts: (data ?? []).map((row) => normalizePost(row, profileId)),
+      posts: rawPosts.map((row) => normalizePost(row, attachmentsByPostId, readPostIds)),
       total: count ?? data?.length ?? 0,
       page,
       pageSize,

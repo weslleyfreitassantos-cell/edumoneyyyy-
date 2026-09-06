@@ -717,7 +717,7 @@ function TeacherLearningView({ institutionId, profileId }: { institutionId: stri
   const [detailPost, setDetailPost] = useState<LearningPost | null>(null);
   const [deletePost, setDeletePost] = useState<LearningPost | null>(null);
   const targetsQuery = useTeacherLearningTargets(institutionId);
-  const postsQuery = useLearningPosts(institutionId, profileId, filters);
+  const postsQuery = useLearningPosts(institutionId, profileId, filters, false);
   const archiveMutation = useArchiveLearningPost();
   const deleteMutation = useDeleteLearningPost();
   const pinMutation = useToggleLearningPostPin();
@@ -751,7 +751,7 @@ function TeacherLearningView({ institutionId, profileId }: { institutionId: stri
 function StudentLearningView({ institutionId, profileId }: { institutionId: string; profileId: string }) {
   const [filters, setFilters] = useState<FilterState>({ ...initialFilters, status: 'active' });
   const [detailPost, setDetailPost] = useState<LearningPost | null>(null);
-  const postsQuery = useLearningPosts(institutionId, profileId, filters);
+  const postsQuery = useLearningPosts(institutionId, profileId, filters, true);
   const targetsQuery = useStudentLearningTargets(institutionId);
   const readMutation = useMarkLearningPostRead();
   const posts = postsQuery.data?.posts ?? [];

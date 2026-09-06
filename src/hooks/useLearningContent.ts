@@ -17,7 +17,8 @@ export const learningContentKeys = {
     institutionId: string | null,
     profileId: string | null,
     filters: LearningPostFilters,
-  ) => ['learning-content', 'posts', institutionId, profileId, filters] as const,
+    includeReadState: boolean,
+  ) => ['learning-content', 'posts', institutionId, profileId, filters, includeReadState] as const,
   targets: (institutionId: string | null) =>
     ['learning-content', 'targets', institutionId] as const,
 };
@@ -26,10 +27,11 @@ export function useLearningPosts(
   institutionId: string | null,
   profileId: string | null,
   filters: LearningPostFilters,
+  includeReadState = true,
 ) {
   return useQuery({
-    queryKey: learningContentKeys.posts(institutionId, profileId, filters),
-    queryFn: () => learningContentService.listPosts(institutionId!, profileId!, filters),
+    queryKey: learningContentKeys.posts(institutionId, profileId, filters, includeReadState),
+    queryFn: () => learningContentService.listPosts(institutionId!, profileId!, filters, { includeReadState }),
     enabled: Boolean(institutionId && profileId),
   });
 }
