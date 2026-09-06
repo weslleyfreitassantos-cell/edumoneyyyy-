@@ -54,6 +54,7 @@ export interface OperationalReadiness {
 
 export interface SchoolSetupReadiness {
   institutionId: string;
+  academicManagerCount?: number;
   steps: SchoolSetupStepState[];
   completedCount: number;
   totalCount: number;
@@ -145,6 +146,7 @@ interface OfferingRow {
 
 interface TeacherMembershipRow {
   profile_id: string;
+  role?: string | null;
   active: boolean | null;
   profiles?: { active: boolean | null } | { active: boolean | null }[] | null;
 }
@@ -179,6 +181,20 @@ interface TimetableStructuralState {
 
 function isActive(value: boolean | null | undefined): boolean {
   return value !== false;
+}
+
+function countAcademicManagers(memberships: TeacherMembershipRow[]): number {
+  return memberships.filter((membership) => {
+    const profileRelation = Array.isArray(membership.profiles)
+      ? membership.profiles[0]
+      : membership.profiles;
+
+    return (
+      (membership.role === 'DIRECTOR' || membership.role === 'SECRETARY') &&
+      isActive(membership.active) &&
+      isActive(profileRelation?.active)
+    );
+  }).length;
 }
 
 function hasLoginBranding(
@@ -388,6 +404,7 @@ function stepHref(stepId: SchoolSetupStepId): string {
 export function buildSchoolSetupReadiness({
   institutionId,
   loginBrandingConfigured,
+  academicManagerCount = 0,
   academicYear,
   terms,
   subjects,
@@ -405,9 +422,10 @@ export function buildSchoolSetupReadiness({
   teacherAvailability = [],
   enrollments = [],
   requireTeacherAvailability = false,
-}: {
+  }: {
   institutionId: string;
   loginBrandingConfigured: boolean;
+  academicManagerCount?: number;
   academicYear: AcademicYearRow | null;
   terms: TermRow[];
   subjects: { id: string }[];
@@ -538,7 +556,11 @@ export function buildSchoolSetupReadiness({
     const profileRelation = Array.isArray(teacher.profiles)
       ? teacher.profiles[0]
       : teacher.profiles;
-    return isActive(teacher.active) && isActive(profileRelation?.active);
+    return (
+      (teacher.role === undefined || teacher.role === 'TEACHER') &&
+      isActive(teacher.active) &&
+      isActive(profileRelation?.active)
+    );
   });
   const activeTeacherIds = new Set(activeTeacherProfiles.map((teacher) => teacher.profile_id));
   const activeTeacherSubjectKeys = new Set(
@@ -654,6 +676,7 @@ export function buildSchoolSetupReadiness({
 
   return {
     institutionId,
+    academicManagerCount,
     steps,
     completedCount,
     totalCount: steps.length,
@@ -690,7 +713,7 @@ export const schoolSetupService = {
   async getReadiness(
     institutionId: string,
   ): Promise<SchoolSetupReadiness> {
-    const [yearsResult, brandingResult] = await Promise.all([
+    const [yearsResult, brandingResult, membershipsResult] = await Promise.all([
       supabase
         .from('academic_years')
         .select('id, name, start_date, end_date, active')
@@ -701,13 +724,23 @@ export const schoolSetupService = {
         .select('login_display_name, logo_url, favicon_url, primary_color, secondary_color')
         .eq('id', institutionId)
         .maybeSingle(),
+      supabase
+        .from('memberships')
+        .select('profile_id, role, active, profiles:profile_id(active)')
+        .eq('institution_id', institutionId)
+        .in('role', ['TEACHER', 'DIRECTOR', 'SECRETARY']),
     ]);
 
     const { data: yearsData, error: yearsError } = yearsResult;
     const { data: brandingData, error: brandingError } = brandingResult;
+    const { data: membershipsData, error: membershipsError } = membershipsResult;
 
     if (yearsError) throw yearsError;
     if (brandingError) throw brandingError;
+    if (membershipsError) throw membershipsError;
+
+    const memberships = (membershipsData ?? []) as TeacherMembershipRow[];
+    const academicManagerCount = countAcademicManagers(memberships);
 
     const loginBrandingConfigured = hasLoginBranding(
       (brandingData ?? null) as InstitutionBrandingRow | null,
@@ -721,6 +754,7 @@ export const schoolSetupService = {
       return buildSchoolSetupReadiness({
         institutionId,
         loginBrandingConfigured,
+        academicManagerCount,
         academicYear: null,
         terms: [],
         subjects: [],
@@ -743,7 +777,6 @@ export const schoolSetupService = {
       slotsResult,
       versionsResult,
       offeringsResult,
-      teachersResult,
       teacherSubjectsResult,
       teacherAvailabilityResult,
       enrollmentsResult,
@@ -789,11 +822,6 @@ export const schoolSetupService = {
         .eq('classes.institution_id', institutionId)
         .eq('classes.academic_year_id', academicYear.id),
       supabase
-        .from('memberships')
-        .select('profile_id, active, profiles:profile_id(active)')
-        .eq('institution_id', institutionId)
-        .eq('role', 'TEACHER'),
-      supabase
         .from('teacher_subjects')
         .select('teacher_profile_id, subject_id, active')
         .eq('institution_id', institutionId),
@@ -816,7 +844,6 @@ export const schoolSetupService = {
       slotsResult,
       versionsResult,
       offeringsResult,
-      teachersResult,
       teacherSubjectsResult,
       teacherAvailabilityResult,
       enrollmentsResult,
@@ -870,7 +897,8 @@ export const schoolSetupService = {
       timetableCandidates,
       offerings: (offeringsResult.data ?? []) as OfferingRow[],
       enabledShifts,
-      teacherProfiles: (teachersResult.data ?? []) as TeacherMembershipRow[],
+      teacherProfiles: memberships,
+      academicManagerCount,
       teacherSubjects: (teacherSubjectsResult.data ?? []) as TeacherSubjectRow[],
       teacherAvailability: (teacherAvailabilityResult.data ?? []) as TeacherAvailabilityRow[],
       enrollments: (enrollmentsResult.data ?? []) as EnrollmentRow[],

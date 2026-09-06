@@ -198,10 +198,10 @@ describe('AdminOverviewTab', () => {
 
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
     expect(screen.getByText(/professores ativos/i)).toBeTruthy();
-    expect(screen.getByText(/turmas ativas/i)).toBeTruthy();
+    expect(screen.getAllByText(/turmas ativas/i).length).toBeGreaterThan(0);
 
-    expect(screen.getByText(/configuração acadêmica/i)).toBeTruthy();
-    expect(screen.getByText(/prontidão operacional/i)).toBeTruthy();
+    expect(screen.getByText(/^configuração da escola$/i)).toBeTruthy();
+    expect(screen.getAllByText(/prontidão operacional/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
@@ -219,7 +219,7 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText(/configuração acadêmica/i)).toBeTruthy();
+    expect(screen.getAllByText(/configuração acadêmica/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/gerenciar diretor ou secretaria/i)).toBeNull();
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
   });

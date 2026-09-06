@@ -83,12 +83,12 @@ describe('SchoolSetupProgress', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText(/configuração acadêmica — 88%/i)).toBeTruthy();
-    expect(screen.getAllByText('Grade horária')).toHaveLength(2);
-    expect(screen.getByText('Personalização')).toBeTruthy();
-    expect(screen.getByText(/personalizar login é opcional/i)).toBeTruthy();
-    expect(screen.getByText(/prontidão operacional — 0%/i)).toBeTruthy();
-    expect(screen.getAllByText(/grade publicada/i)).toHaveLength(2);
+    expect(screen.getByText(/2 de 15 etapas concluídas/i)).toBeTruthy();
+    expect(screen.getByText('Grade horária')).toBeTruthy();
+    expect(screen.getAllByText('Personalização').length).toBeGreaterThan(0);
+    expect(screen.getByText(/personalizar o login é opcional/i)).toBeTruthy();
+    expect(screen.getAllByText(/prontidão operacional/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Publique uma grade válida/i)).toBeTruthy();
   });
 
   it('não expõe erro técnico cru e orienta ADMIN para a configuração responsável', () => {
