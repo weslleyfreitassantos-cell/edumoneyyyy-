@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 describe('Hard delete owner classification migration', () => {
   const migrationSql = readFileSync(
     new URL(
-      './20260906010000_fix_hard_delete_owner_classification.sql',
+      './20260906143016_fix_hard_delete_owner_classification.sql',
       import.meta.url,
     ),
     'utf8',
