@@ -215,13 +215,13 @@ function FilterBar({
         </div>
         <button
           type="button"
-          onClick={() => onChange({ ...initialFilters })}
+          onClick={() => onChange(isTeacher ? { ...initialFilters } : { ...initialFilters, status: 'active', classId: '' })}
           className="text-xs font-semibold text-[#005bbf] hover:underline dark:text-blue-300"
         >
           Limpar filtros
         </button>
       </div>
-      <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+      <div className={`mt-4 grid gap-3 md:grid-cols-2 ${isTeacher ? 'xl:grid-cols-5' : 'xl:grid-cols-4'}`}>
         <label className="relative block xl:col-span-2">
           <span className="sr-only">Buscar</span>
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
@@ -244,17 +244,19 @@ function FilterBar({
             {subjects.map((subject) => <option key={subject.subjectId} value={subject.subjectId}>{subject.subjectName}</option>)}
           </select>
         </label>
-        <label>
-          <span className="sr-only">Turma</span>
-          <select
-            value={filters.classId ?? ''}
-            onChange={(event) => onChange({ classId: event.target.value, page: 1 })}
-            className="h-10 w-full rounded-xl border border-[#dfe3e8] bg-white px-3 text-sm text-[#181c20] outline-none focus:border-[#005bbf] dark:border-slate-700 dark:bg-slate-950 dark:text-white"
-          >
-            <option value="">Todas as turmas</option>
-            {classes.map((item) => <option key={item.classId} value={item.classId}>{item.className}</option>)}
-          </select>
-        </label>
+        {isTeacher ? (
+          <label>
+            <span className="sr-only">Turma</span>
+            <select
+              value={filters.classId ?? ''}
+              onChange={(event) => onChange({ classId: event.target.value, page: 1 })}
+              className="h-10 w-full rounded-xl border border-[#dfe3e8] bg-white px-3 text-sm text-[#181c20] outline-none focus:border-[#005bbf] dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            >
+              <option value="">Todas as turmas</option>
+              {classes.map((item) => <option key={item.classId} value={item.classId}>{item.className}</option>)}
+            </select>
+          </label>
+        ) : null}
         <label>
           <span className="sr-only">Tipo</span>
           <select
@@ -765,10 +767,14 @@ function StudentLearningView({ institutionId, profileId }: { institutionId: stri
     if (!post.isRead) readMutation.mutate({ postId: post.id, profileId });
   }
 
+  function changeFilters(next: Partial<FilterState>): void {
+    setFilters((current) => ({ ...current, ...next, classId: '' }));
+  }
+
   return (
     <>
       <LearningHeader isTeacher={false} unreadCount={unreadCount} />
-      <FilterBar filters={filters} onChange={(next) => setFilters((current) => ({ ...current, ...next }))} subjects={subjects} classes={classes} isTeacher={false} />
+      <FilterBar filters={filters} onChange={changeFilters} subjects={subjects} classes={classes} isTeacher={false} />
       {postsQuery.isLoading ? <LoadingState /> : postsQuery.isError ? <ErrorState onRetry={() => void postsQuery.refetch()} /> : posts.length === 0 ? <EmptyState isTeacher={false} /> : <><div className="grid gap-4 lg:grid-cols-2 2xl:grid-cols-3">{posts.map((post) => <LearningPostCard key={post.id} post={post} isTeacher={false} onOpen={() => openPost(post)} />)}</div><Pagination page={filters.page} pageSize={PAGE_SIZE} total={postsQuery.data?.total ?? 0} onChange={(page) => setFilters((current) => ({ ...current, page }))} /></>}
       {detailPost ? <PostDetailDialog post={detailPost} onClose={() => setDetailPost(null)} /> : null}
     </>
