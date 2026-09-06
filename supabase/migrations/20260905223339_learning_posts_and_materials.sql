@@ -210,7 +210,7 @@ using (
        and profile.active is true
        and enrollment.class_id = learning_posts.class_id
        and enrollment.active is true
-       and enrollment.status = 'active'
+       and lower(btrim(enrollment.status)) = 'active'
        and class_row.active is true
        and learning_posts.active is true
        and learning_posts.published_at <= now()

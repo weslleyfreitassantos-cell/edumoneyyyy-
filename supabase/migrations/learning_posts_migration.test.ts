@@ -26,6 +26,6 @@ describe('learning posts migration', () => {
     expect(migrationSql).toContain('on storage.objects for select to authenticated');
     expect(migrationSql).toContain('post.created_by = auth.uid()');
     expect(migrationSql).toContain("membership.role = 'TEACHER'::public.user_role");
-    expect(migrationSql).toContain("enrollment.status = 'active'");
+    expect(migrationSql).toContain("lower(btrim(enrollment.status)) = 'active'");
   });
 });
