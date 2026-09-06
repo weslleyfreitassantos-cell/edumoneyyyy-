@@ -440,7 +440,7 @@ describe('UnifiedUserInvitePreview', () => {
     ).toBeTruthy();
   });
 
-  it('limita secretaria a aluno e responsavel', () => {
+  it('permite secretaria convidar professor, aluno e responsavel', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -449,10 +449,10 @@ describe('UnifiedUserInvitePreview', () => {
     );
 
     expect(
-      screen.queryByRole('button', {
+      screen.getByRole('button', {
         name: /Professor/,
       }),
-    ).toBeNull();
+    ).toBeTruthy();
     expect(
       screen.queryByRole('button', {
         name: /Diretor/,

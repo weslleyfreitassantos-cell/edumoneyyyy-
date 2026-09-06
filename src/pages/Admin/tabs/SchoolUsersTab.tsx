@@ -30,6 +30,7 @@ import {
   hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
@@ -105,20 +106,7 @@ export interface SchoolUserSummary {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar os usuários da escola.';
+  return getUserFacingErrorMessage(error, 'Não foi possível carregar os usuários da escola.');
 }
 
 function normalizeSearchValue(
@@ -301,11 +289,13 @@ function SchoolUsersTable({
   onEdit,
   onDelete,
   isBusy,
+  currentRole,
 }: {
   users: SchoolUserRow[];
   onEdit: (user: SchoolUserRow) => void;
   onDelete: (user: SchoolUserRow) => void;
   isBusy: boolean;
+  currentRole: CurrentDatabaseRole | string | null;
 }) {
   return (
     <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
@@ -406,22 +396,24 @@ function SchoolUsersTable({
                       />
                     </button>
 
-                    <button
-                      type="button"
-                      title="Excluir usuario"
-                      aria-label={`Excluir ${
-                        user.profile?.full_name ??
-                        'usuario'
-                      }`}
-                      disabled={isBusy}
-                      onClick={() => onDelete(user)}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-red-200 text-red-700 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <Trash2
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                      />
-                    </button>
+                    {!(currentRole === 'SECRETARY' && user.role === 'DIRECTOR') && (
+                      <button
+                        type="button"
+                        title="Excluir usuario"
+                        aria-label={`Excluir ${
+                          user.profile?.full_name ??
+                          'usuario'
+                        }`}
+                        disabled={isBusy}
+                        onClick={() => onDelete(user)}
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-red-200 text-red-700 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <Trash2
+                          className="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                      </button>
+                    )}
                   </div>
                 </td>
               </tr>
@@ -438,6 +430,7 @@ function SchoolUserEditDialog({
   onClose,
   onSubmit,
   isSubmitting,
+  allowRoleChange,
 }: {
   user: SchoolUserRow;
   onClose: () => void;
@@ -447,6 +440,7 @@ function SchoolUserEditDialog({
     password: string;
   }) => void;
   isSubmitting: boolean;
+  allowRoleChange: boolean;
 }) {
   const [fullName, setFullName] = useState(
     user.profile?.full_name ?? '',
@@ -529,6 +523,7 @@ function SchoolUserEditDialog({
             <select
               id="school-user-role"
               value={role}
+              disabled={!allowRoleChange}
               onChange={(event) =>
                 setRole(
                   event.target
@@ -1032,6 +1027,7 @@ export default function SchoolUsersTab({
             onEdit={setEditingUser}
             onDelete={handleDeleteUser}
             isBusy={isManaging}
+            currentRole={institutionQuery.currentRole}
           />
         )}
 
@@ -1099,6 +1095,7 @@ export default function SchoolUsersTab({
           onClose={() => setEditingUser(null)}
           onSubmit={handleEditSubmit}
           isSubmitting={isManaging}
+          allowRoleChange={!(institutionQuery.currentRole === 'SECRETARY' && editingUser.role === 'DIRECTOR')}
         />
       )}
     </div>
