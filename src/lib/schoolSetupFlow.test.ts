@@ -135,4 +135,16 @@ describe('buildSchoolSetupFlow', () => {
     expect(flow.recommendedNextStep?.id).toBe('manage-users');
     expect(flow.recommendedNextStep?.href).toBe('/admin?module=school-users');
   });
+
+  it('inicia o fluxo do DIRETOR pela estrutura acadêmica', () => {
+    const flow = buildSchoolSetupFlow(
+      createReadiness({ incompleteAcademic: ['academic-year'] }),
+      { includeFoundation: false },
+    );
+
+    expect(flow.sections.some((section) => section.id === 'foundation')).toBe(false);
+    expect(flow.sections[0]?.id).toBe('academic-structure');
+    expect(flow.recommendedNextStep?.id).toBe('academic-year');
+    expect(flow.sections.flatMap((section) => section.steps).every((step) => step.status !== 'BLOCKED' || !step.reason?.includes('responsável'))).toBe(true);
+  });
 });

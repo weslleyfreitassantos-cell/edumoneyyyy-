@@ -124,4 +124,22 @@ describe('SchoolSetupProgress', () => {
     expect(screen.getByRole('alert').textContent).toMatch(/operação demorou mais que o esperado/i);
     expect(screen.queryByText(/statement timeout/i)).toBeNull();
   });
+
+  it('não mostra a fundação para o Diretor', () => {
+    mockedUseSchoolSetupReadiness.mockReturnValue({
+      data: readinessFixture(),
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolSetupReadiness>);
+
+    render(
+      <MemoryRouter>
+        <SchoolSetupProgress institutionId="institution-1" showFoundation={false} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByText('Fundação')).toBeNull();
+    expect(screen.getByText('Estrutura acadêmica')).toBeTruthy();
+  });
 });

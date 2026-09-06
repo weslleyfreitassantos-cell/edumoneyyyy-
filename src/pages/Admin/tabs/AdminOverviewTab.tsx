@@ -118,6 +118,7 @@ export default function AdminOverviewTab({
       <SchoolSetupProgress
         institutionId={institutionId}
         canEditAcademic={canEditAcademic}
+        showFoundation={institutionQuery.currentRole !== 'DIRECTOR'}
         configurationHref={availableModuleIds.includes('directors') ? '/admin?module=directors' : '/admin?module=school-users'}
       />
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

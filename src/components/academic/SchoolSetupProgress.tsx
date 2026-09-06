@@ -206,10 +206,12 @@ function FlowDetails({
 export default function SchoolSetupProgress({
   institutionId,
   canEditAcademic = true,
+  showFoundation = true,
   configurationHref = '/admin?module=school-users',
 }: {
   institutionId: string;
   canEditAcademic?: boolean;
+  showFoundation?: boolean;
   configurationHref?: string;
 }) {
   const readinessQuery = useSchoolSetupReadiness(institutionId);
@@ -242,6 +244,7 @@ export default function SchoolSetupProgress({
   const readiness = readinessQuery.data;
   const flow = buildSchoolSetupFlow(readiness, {
     canEditAcademic,
+    includeFoundation: showFoundation,
     responsibleUserHref: configurationHref,
   });
   const recommendedStep = flow.recommendedNextStep;

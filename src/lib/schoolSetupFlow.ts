@@ -43,6 +43,7 @@ export interface SchoolSetupFlow {
 
 interface FlowOptions {
   canEditAcademic?: boolean;
+  includeFoundation?: boolean;
   responsibleUserHref?: string;
 }
 
@@ -226,6 +227,7 @@ function createSection(
 function setupStepDefinitions(
   readiness: SchoolSetupReadiness,
   responsibleUserHref: string,
+  includeFoundation: boolean,
 ): {
   foundation: StepDefinition[];
   academic: StepDefinition[];
@@ -235,9 +237,10 @@ function setupStepDefinitions(
 } {
   const managerConfigured =
     readiness.academicManagerCount === undefined || readiness.academicManagerCount > 0;
+  const managerDependencies = includeFoundation ? ['responsible-user'] : [];
 
   return {
-    foundation: [
+    foundation: includeFoundation ? [
       {
         id: 'institution-selected',
         label: 'Instituição criada e selecionada',
@@ -257,49 +260,49 @@ function setupStepDefinitions(
         complete: managerConfigured,
         dependencies: ['institution-selected'],
       },
-    ],
+    ] : [],
     academic: [
       definitionFromReadiness(
         readiness,
         'academic-year',
         'Defina o ano letivo que será usado pela escola.',
-        ['responsible-user'],
+        managerDependencies,
       ),
       definitionFromReadiness(
         readiness,
         'terms',
         'Cadastre os períodos dentro do ano letivo.',
-        ['responsible-user', 'academic-year'],
+        [...managerDependencies, 'academic-year'],
       ),
       definitionFromReadiness(
         readiness,
         'subjects',
         'Cadastre as matérias que a escola oferece.',
-        ['responsible-user'],
+        managerDependencies,
       ),
       definitionFromReadiness(
         readiness,
         'teaching-structure',
         'Defina a estrutura acadêmica usada pela escola.',
-        ['responsible-user'],
+        managerDependencies,
       ),
       definitionFromReadiness(
         readiness,
         'shifts',
         'Escolha os turnos e configure os horários disponíveis.',
-        ['responsible-user'],
+        managerDependencies,
       ),
       definitionFromReadiness(
         readiness,
         'classes',
         'Crie as turmas e associe cada uma ao seu turno.',
-        ['responsible-user', 'academic-year', 'shifts'],
+        [...managerDependencies, 'academic-year', 'shifts'],
       ),
       definitionFromReadiness(
         readiness,
         'class-subjects',
         'Defina as matérias de cada turma e a quantidade de aulas semanais. Essas informações serão usadas na grade.',
-        ['responsible-user', 'classes', 'subjects'],
+        [...managerDependencies, 'classes', 'subjects'],
       ),
     ],
     people: [
@@ -308,7 +311,7 @@ function setupStepDefinitions(
         'teachers-configured',
         'Professores',
         'Cadastre pelo menos um professor ativo.',
-        ['responsible-user'],
+        managerDependencies,
         'Configurar professores',
       ),
       definitionFromBlocker(
@@ -316,7 +319,7 @@ function setupStepDefinitions(
         'subject-offerings',
         'Ofertas das disciplinas',
         'Crie as ofertas para as matérias da matriz.',
-        ['responsible-user', 'class-subjects', 'terms'],
+        [...managerDependencies, 'class-subjects', 'terms'],
         'Configurar ofertas',
       ),
       definitionFromBlocker(
@@ -324,7 +327,7 @@ function setupStepDefinitions(
         'teacher-assignments',
         'Atribuições de professores',
         'Associe professores às ofertas das disciplinas.',
-        ['responsible-user', 'teachers-configured', 'subject-offerings'],
+        [...managerDependencies, 'teachers-configured', 'subject-offerings'],
         'Configurar atribuições',
       ),
       definitionFromBlocker(
@@ -332,7 +335,7 @@ function setupStepDefinitions(
         'teacher-qualifications',
         'Habilitações dos professores',
         'Confirme que os professores possuem habilitação para suas disciplinas.',
-        ['responsible-user', 'teacher-assignments'],
+        [...managerDependencies, 'teacher-assignments'],
         'Configurar habilitações',
       ),
       {
@@ -341,7 +344,7 @@ function setupStepDefinitions(
           'teacher-availability',
           'Disponibilidade dos professores',
           'Informe a disponibilidade quando a política acadêmica exigir esse dado.',
-          ['responsible-user', 'teacher-assignments'],
+          [...managerDependencies, 'teacher-assignments'],
           'Configurar disponibilidade',
         ),
         optional: !readiness.operationalReadiness.blockers.some(
@@ -353,7 +356,7 @@ function setupStepDefinitions(
         'active-enrollments',
         'Alunos e matrículas',
         'Cadastre os alunos e efetive pelo menos uma matrícula.',
-        ['responsible-user', 'academic-year', 'classes'],
+        [...managerDependencies, 'academic-year', 'classes'],
         'Matricular alunos',
       ),
     ],
@@ -362,7 +365,7 @@ function setupStepDefinitions(
         readiness,
         'timetable',
         'Prepare e publique uma grade válida para as turmas ativas.',
-        ['responsible-user', 'terms', 'class-subjects', 'shifts', 'teacher-assignments'],
+        [...managerDependencies, 'terms', 'class-subjects', 'shifts', 'teacher-assignments'],
       ),
     ],
     optional: [
@@ -395,15 +398,21 @@ export function buildSchoolSetupFlow(
   const definitions = setupStepDefinitions(
     readiness,
     options.responsibleUserHref ?? defaultResponsibleUserHref,
+    options.includeFoundation !== false,
   );
-  const sections = [
-    createSection(
+  const sections: SchoolSetupFlowSection[] = [];
+
+  if (options.includeFoundation !== false) {
+    sections.push(createSection(
       'foundation',
       'Fundação',
       'Defina quem poderá realizar a configuração acadêmica da escola.',
       definitions.foundation,
       resolved,
-    ),
+    ));
+  }
+
+  sections.push(
     createSection(
       'academic-structure',
       'Estrutura acadêmica',
@@ -433,7 +442,7 @@ export function buildSchoolSetupFlow(
       resolved,
       true,
     ),
-  ];
+  );
   const requiredSteps = sections
     .filter((section) => section.id !== 'personalization')
     .flatMap((section) => section.steps)
