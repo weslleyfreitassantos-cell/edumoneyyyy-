@@ -4,6 +4,7 @@ export interface UpdateAuthorizationContext {
   isLocalAdmin: boolean;
   isOperationalManager: boolean;
   isDirector?: boolean;
+  isSecretary?: boolean;
 }
 
 export interface UpdateAuthorizationInput {
@@ -19,7 +20,7 @@ export interface UpdateAuthorizationInput {
 export interface UpdateAuthorizationDecision {
   allowed: boolean;
   code?:
-    | "DIRECTOR_PASSWORD_ONLY"
+    | "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE"
     | "TARGET_MEMBERSHIP_INACTIVE"
     | "TARGET_ROLE_NOT_ALLOWED"
     | "STUDENT_INACTIVE";
@@ -31,6 +32,7 @@ export interface DeleteAuthorizationInput {
   targetProfileId: string;
   targetPlatformRole: string | null;
   targetIsAccountOwner: boolean;
+  targetRole: string;
 }
 
 export interface DeleteAuthorizationDecision {
@@ -40,6 +42,7 @@ export interface DeleteAuthorizationDecision {
     | "SELF_MANAGEMENT_BLOCKED"
     | "SUPER_ADMIN_PROTECTED"
     | "ACCOUNT_OWNER_PROTECTED"
+    | "SECRETARY_CANNOT_REMOVE_DIRECTOR"
     | "DIRECTOR_REQUIRED";
 }
 
@@ -64,10 +67,20 @@ export function getDeleteAuthorizationDecision(
   }
 
   if (
+    authorization.isOperationalManager &&
+    authorization.isDirector !== true &&
+    authorization.isSecretary === true &&
+    input.targetRole === "DIRECTOR"
+  ) {
+    return { allowed: false, code: "SECRETARY_CANNOT_REMOVE_DIRECTOR" };
+  }
+
+  if (
     authorization.isSuperAdmin ||
     authorization.isAccountOwner ||
     authorization.isLocalAdmin ||
-    authorization.isDirector === true
+    authorization.isDirector === true ||
+    authorization.isSecretary === true
   ) {
     return { allowed: true };
   }
@@ -103,20 +116,21 @@ export function getUpdateAuthorizationDecision(
     return { allowed: true };
   }
 
-  if (!input.hasPassword || input.hasFullName || input.hasRole) {
-    return { allowed: false, code: "DIRECTOR_PASSWORD_ONLY" };
-  }
-
   if (input.targetMembershipActive !== true) {
     return { allowed: false, code: "TARGET_MEMBERSHIP_INACTIVE" };
   }
 
-  if (input.targetRole !== "STUDENT") {
+  if (input.targetRole === "ADMIN") {
     return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
   }
 
-  if (input.studentActive !== true) {
-    return { allowed: false, code: "STUDENT_INACTIVE" };
+  if (
+    authorization.isSecretary === true &&
+    input.targetRole === "DIRECTOR" &&
+    input.requestedRole !== undefined &&
+    input.requestedRole !== "DIRECTOR"
+  ) {
+    return { allowed: false, code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE" };
   }
 
   return { allowed: true };

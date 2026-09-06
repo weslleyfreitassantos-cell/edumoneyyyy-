@@ -402,7 +402,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('nao mostra modulos sem permissao para SECRETARY', () => {
+  it('mostra os modulos institucionais para SECRETARY', () => {
     renderSidebar({
       route: '/admin?module=students',
       profile: {
@@ -426,21 +426,22 @@ describe('Sidebar', () => {
         name: /alunos/i,
       }),
     ).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole('button', { name: /configura..o acad.mica/i }),
+    );
     expect(
-      screen.queryByRole('link', {
-        name: /matr.culas/i,
-      }),
-    ).toBeNull();
-    expect(
-      screen.queryByRole('link', {
+      screen.getByRole('link', {
         name: /disciplinas/i,
       }),
-    ).toBeNull();
+    ).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole('button', { name: /opera..o escolar/i }),
+    );
     expect(
-      screen.queryByRole('link', {
+      screen.getByRole('link', {
         name: /atribui..es/i,
       }),
-    ).toBeNull();
+    ).toBeTruthy();
     expect(
       screen.queryByRole('link', {
         name: /secretaria/i,
@@ -455,7 +456,7 @@ describe('Sidebar', () => {
       screen.getByRole('button', {
         name: /opera..o escolar/i,
       }).getAttribute('aria-expanded'),
-    ).toBe('false');
+    ).toBe('true');
   });
 
   it('clicar em Disciplinas aponta para /admin?module=subjects', () => {
@@ -750,13 +751,13 @@ describe('sidebar navigation helpers', () => {
     ).not.toContain('enrollments');
     expect(
       modules.map((module) => module.id),
-    ).not.toContain('subjects');
+    ).toContain('subjects');
     expect(
       modules.map((module) => module.id),
     ).toContain('teachers');
   });
 
-  it('mostra cameras ao vivo somente para DIRECTOR', () => {
+  it('mostra cameras ao vivo para DIRECTOR e SECRETARY', () => {
     const directorItems = getSidebarNavigationItems({
       profile: directorProfile(),
       currentInstitutionRole: 'DIRECTOR',
@@ -765,7 +766,7 @@ describe('sidebar navigation helpers', () => {
     });
     expect(directorItems.map((item) => item.id)).toContain('cameras');
 
-    for (const role of ['ADMIN', 'SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN'] as const) {
+    for (const role of ['ADMIN', 'TEACHER', 'STUDENT', 'GUARDIAN'] as const) {
       const items = getSidebarNavigationItems({
         profile: { ...baseProfile, role },
         currentInstitutionRole: role,

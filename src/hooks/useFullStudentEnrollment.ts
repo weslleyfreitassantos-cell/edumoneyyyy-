@@ -9,6 +9,7 @@ import { classKeys } from './useClasses';
 import { enrollmentKeys } from './useEnrollments';
 import { schoolUserKeys } from './useSchoolUsers';
 import { studentKeys } from './useStudents';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   createFullStudentEnrollment,
@@ -68,6 +69,7 @@ export function useCreateFullStudentEnrollment() {
         queryClient.invalidateQueries({
           queryKey: enrollmentKeys.list(variables.institutionId),
         }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
         queryClient.invalidateQueries({
           queryKey: schoolUserKeys.list(variables.institutionId),
         }),

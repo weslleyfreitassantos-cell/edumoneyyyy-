@@ -63,6 +63,7 @@ describe('unified user invite model', () => {
       'GUARDIAN',
     ]);
     expect(getAllowedInviteTargets('SECRETARY')).toEqual([
+      'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ]);
@@ -162,7 +163,7 @@ describe('unified user invite model', () => {
     }
   });
 
-  it('bloqueia secretaria convidando professor', () => {
+  it('permite secretaria convidar professor', () => {
     const result =
       buildUnifiedUserInvitePayload({
         institutionId,
@@ -172,6 +173,6 @@ describe('unified user invite model', () => {
         currentRole: 'SECRETARY',
       });
 
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
   });
 });

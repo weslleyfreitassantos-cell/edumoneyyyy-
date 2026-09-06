@@ -64,7 +64,7 @@ describe('school permissions', () => {
     ).toBe(true);
   });
 
-  it('permite SECRETARY operar cadastros, mas nao criar instituicao', () => {
+  it('mantem SECRETARY alinhada à DIREÇÃO dentro da escola, mas nao criar instituicao', () => {
     expect(
       hasPermission(
         null,
@@ -72,6 +72,9 @@ describe('school permissions', () => {
         'manage_students',
       ),
     ).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'manage_academic_structure')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'manage_assignments')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'manage_finance')).toBe(true);
     expect(
       hasPermission(
         null,

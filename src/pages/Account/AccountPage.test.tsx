@@ -773,7 +773,7 @@ describe('AccountPage', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/Falha ao atualizar/i),
+        screen.getByText(/Operação não concluída/i),
       ).toBeTruthy();
       expect(
         screen.getByRole('form', {

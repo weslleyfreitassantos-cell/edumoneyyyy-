@@ -23,6 +23,7 @@ import {
 import type { SchoolScheduleBreakRow } from '../../services/academicAutomationService';
 import { REQUIRED_SCHOOL_DAYS } from '../../lib/academic/timetableGenerator';
 import TimetableBreakMarker from './TimetableBreakMarker';
+import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 
 interface EntryDraft {
   day_of_week: number;
@@ -112,7 +113,7 @@ function getErrorMessage(error: unknown, operation: TimetableOperation = 'genera
     return 'Você não tem permissão para publicar esta grade.';
   }
 
-  return details.message ?? 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function readErrorDetails(error: unknown): {

@@ -350,7 +350,7 @@ function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[]
   if (requesterRole === "DIRECTOR") {
     return ["TEACHER", "STUDENT", "GUARDIAN"];
   }
-  return ["STUDENT", "GUARDIAN"];
+  return ["TEACHER", "STUDENT", "GUARDIAN"];
 }
 
 function canRequesterInviteRole(

@@ -44,6 +44,7 @@ import type { EnrollmentRow } from '../../../services/enrollmentService';
 import type { StudentRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 import StudentSpreadsheetImportModal from '../../../components/StudentSpreadsheetImportModal';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface GuardianLinkDraft {
   guardian_profile_id: string;
@@ -60,20 +61,7 @@ const emptyGuardianLinkDraft: GuardianLinkDraft = {
 const STUDENTS_PAGE_SIZE = 6;
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function formatDate(value: string): string {
@@ -98,7 +86,9 @@ function getCurrentEnrollmentByStudent(
 ): Map<string, EnrollmentRow> {
   const currentByStudent = new Map<string, EnrollmentRow>();
 
-  for (const enrollment of enrollments) {
+  for (const enrollment of enrollments.filter(
+    (item) => item.active && item.status.trim().toLowerCase() === 'active',
+  )) {
     const current = currentByStudent.get(enrollment.student_id);
     if (!current) {
       currentByStudent.set(enrollment.student_id, enrollment);
@@ -152,6 +142,9 @@ export default function StudentsTab() {
     useState(false);
 
   const [fullEditStudentId, setFullEditStudentId] =
+    useState<string | null>(null);
+
+  const [enrollStudentId, setEnrollStudentId] =
     useState<string | null>(null);
 
   const [
@@ -339,9 +332,20 @@ export default function StudentsTab() {
 
         if (!enrollment) {
           return (
-            <span className="text-xs text-amber-700">
-              Não matriculado
-            </span>
+            <div className="min-w-[150px]">
+              <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800">
+                Não matriculado
+              </span>
+              {row.active && (
+                <button
+                  type="button"
+                  className="mt-2 block text-xs font-semibold text-blue-700 hover:underline"
+                  onClick={() => setEnrollStudentId(row.id)}
+                >
+                  Matricular aluno
+                </button>
+              )}
+            </div>
           );
         }
 
@@ -628,6 +632,21 @@ export default function StudentsTab() {
           onCompleted={() => {
             setFullEditStudentId(null);
             setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
+          }}
+        />
+      )}
+
+      {enrollStudentId && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={yearsQuery.data ?? []}
+          classes={classesQuery.data ?? []}
+          mode="enroll"
+          studentId={enrollStudentId}
+          onClose={() => setEnrollStudentId(null)}
+          onCompleted={() => {
+            setEnrollStudentId(null);
+            setFeedbackMessage('Matrícula realizada com sucesso.');
           }}
         />
       )}

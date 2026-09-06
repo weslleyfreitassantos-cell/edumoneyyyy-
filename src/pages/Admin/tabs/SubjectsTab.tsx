@@ -34,6 +34,7 @@ import type {
   SubjectBatchInput,
   SubjectRow,
 } from '../../../services/subjectService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 import {
   BNCC_STAGE_TEMPLATES,
@@ -82,20 +83,7 @@ const emptyDraft: SubjectDraft = {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function normalizeText(value: string): string {

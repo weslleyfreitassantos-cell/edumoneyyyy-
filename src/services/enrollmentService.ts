@@ -113,6 +113,20 @@ interface DuplicateEnrollmentRow {
   class_id: string;
 }
 
+function isActiveEnrollmentConflict(error: unknown): boolean {
+  if (typeof error !== 'object' || error === null) return false;
+  const code = 'code' in error && typeof error.code === 'string' ? error.code : '';
+  const message = 'message' in error && typeof error.message === 'string' ? error.message : '';
+  return code === '23505' || message.includes('enrollments_active_student_year_unique');
+}
+
+function throwEnrollmentConflict(error: unknown): never {
+  if (isActiveEnrollmentConflict(error)) {
+    throw new Error('Este aluno já possui uma matrícula ativa neste ano letivo.');
+  }
+  throw error;
+}
+
 export type EnrollmentStatus =
   | 'ACTIVE'
   | 'TRANSFERRED'
@@ -570,7 +584,7 @@ export const enrollmentService = {
       });
 
     if (error) {
-      throw error;
+      throwEnrollmentConflict(error);
     }
 
     const rows =
@@ -760,7 +774,7 @@ export const enrollmentService = {
         .update(previousState)
         .eq('id', current.id);
 
-      throw insertError;
+      throwEnrollmentConflict(insertError);
     }
   },
 

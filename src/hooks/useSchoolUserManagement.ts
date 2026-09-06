@@ -8,6 +8,7 @@ import { guardianKeys } from './useGuardians';
 import { schoolUserKeys } from './useSchoolUsers';
 import { studentKeys } from './useStudents';
 import { teacherKeys } from './useTeachers';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   schoolUserManagementService,
   type ManageSchoolUserPayload,
@@ -52,6 +53,7 @@ export function useManageSchoolUser() {
           queryKey:
             guardianKeys.list(institutionId),
         }),
+        invalidateSchoolSetupReadiness(queryClient, institutionId),
       ]);
     },
   });

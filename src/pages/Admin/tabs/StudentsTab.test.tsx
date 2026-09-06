@@ -111,6 +111,21 @@ vi.mock('../../../hooks/useStudents', () => ({
           avatar_url: null,
         },
       },
+      {
+        id: '00000000-0000-0000-0000-000000000006',
+        profile_id: 'student-profile-2',
+        institution_id: '00000000-0000-0000-0000-000000000001',
+        registration_number: '20260002',
+        birth_date: '2015-02-02',
+        cpf: null,
+        active: true,
+        profiles: {
+          full_name: 'Aluno sem matrícula',
+          email: 'sem.matricula@example.com',
+          active: true,
+          avatar_url: null,
+        },
+      },
     ],
     isLoading: false,
     isError: false,
@@ -179,9 +194,9 @@ describe('StudentsTab - vínculo de responsável', () => {
     render(<StudentsTab />);
 
     fireEvent.click(
-      screen.getByRole('button', {
+      screen.getAllByRole('button', {
         name: 'Vincular responsável',
-      }),
+      })[0],
     );
     fireEvent.change(
       screen.getByLabelText('Responsável existente'),
@@ -241,5 +256,14 @@ describe('StudentsTab - vínculo de responsável', () => {
         'full-student-enrollment-wizard',
       ),
     ).toBeTruthy();
+  });
+
+  it('mostra o estado sem matrícula e abre o fluxo de matrícula do aluno existente', () => {
+    render(<StudentsTab />);
+
+    expect(screen.getByText('Não matriculado')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Matricular aluno' }));
+
+    expect(screen.getByTestId('full-student-enrollment-wizard')).toBeTruthy();
   });
 });

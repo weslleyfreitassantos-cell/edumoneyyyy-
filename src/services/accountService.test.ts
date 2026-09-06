@@ -11,6 +11,7 @@ const queryBuilder = vi.hoisted(() => ({
   eq: vi.fn(),
   select: vi.fn(),
   single: vi.fn(),
+  order: vi.fn(),
 }));
 
 vi.mock('../lib/supabaseClient', () => ({
@@ -29,6 +30,40 @@ describe('accountService', () => {
     queryBuilder.update.mockReturnValue(queryBuilder);
     queryBuilder.eq.mockReturnValue(queryBuilder);
     queryBuilder.select.mockReturnValue(queryBuilder);
+    queryBuilder.order.mockReturnValue(queryBuilder);
+  });
+
+  it('preserva contas CANCELED na listagem e normaliza o status', async () => {
+    queryBuilder.order.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'account-canceled',
+          name: 'Conta Cancelada QA',
+          status: 'CANCELED',
+          institution_limit: 1,
+          profiles: {
+            id: 'owner-canceled',
+            full_name: 'Administrador QA',
+            email: 'cancelado@example.test',
+            role: 'ADMIN',
+            platform_role: 'USER',
+            active: true,
+          },
+          institutions: [],
+        },
+      ],
+      error: null,
+    });
+
+    const result = await accountService.listAccounts();
+
+    expect(result).toHaveLength(1);
+    expect(result[0]?.status).toBe('CANCELED');
+    expect(supabase.from).toHaveBeenCalledWith('accounts');
+    expect(queryBuilder.order).toHaveBeenCalledWith(
+      'created_at',
+      { ascending: false },
+    );
   });
 
   it('inicia o handoff SSO sem expor tokens de sessão', async () => {

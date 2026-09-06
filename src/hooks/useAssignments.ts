@@ -7,6 +7,7 @@ import {
 import { adminOverviewKeys } from './useAdminOverview';
 import { classKeys } from './useClasses';
 import { subjectKeys } from './useSubjects';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   assignmentService,
@@ -60,6 +61,7 @@ function invalidateAssignments(
     queryClient.invalidateQueries({
       queryKey: ['teacher-dashboard'],
     }),
+    invalidateSchoolSetupReadiness(queryClient, institutionId),
   ]);
 }
 

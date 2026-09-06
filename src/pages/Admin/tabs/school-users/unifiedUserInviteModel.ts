@@ -209,6 +209,7 @@ export function getAllowedInviteTargets(
 
   if (currentRole === 'SECRETARY') {
     return [
+      'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ];

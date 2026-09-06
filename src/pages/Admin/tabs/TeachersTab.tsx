@@ -38,6 +38,7 @@ import TeacherSpreadsheetImportModal from '../../../components/TeacherSpreadshee
 import { teacherSchema } from '../../../schemas/adminSchemas';
 
 import type { TeacherRow } from '../../../services/teacherService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface TeacherDraft {
   full_name: string;
@@ -58,20 +59,7 @@ const TEACHERS_PAGE_SIZE = 6;
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function formatDate(

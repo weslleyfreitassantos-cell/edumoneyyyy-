@@ -5,6 +5,7 @@ import {
 } from '@tanstack/react-query';
 
 import { adminOverviewKeys } from './useAdminOverview';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   classService,
@@ -48,6 +49,7 @@ function invalidateClasses(
           institutionId,
         ),
     }),
+    invalidateSchoolSetupReadiness(queryClient, institutionId),
   ]);
 }
 
