@@ -822,6 +822,111 @@ describe('PlatformPage', () => {
     });
   });
 
+  it('mostra o conflito de uma conta excluida dentro do bloco Novo cliente', async () => {
+    const canceledMessage =
+      'Este e-mail pertence ao administrador de uma conta em Excluídos. Restaure essa conta ou exclua-a definitivamente antes de reutilizar este e-mail.';
+
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Este usuário já administra outra conta.',
+        'EMAIL_BELONGS_TO_ACCOUNT_OWNER',
+        {
+          adminEmail: 'Este usuário já administra outra conta.',
+        },
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: ' DORA@EXAMPLE.COM ' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Criar conta/i }),
+    );
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+
+      expect(alert.textContent).toContain(canceledMessage);
+      expect(alert.closest('form')).not.toBeNull();
+      expect(
+        screen.getByLabelText('Email do ADMIN').getAttribute(
+          'aria-invalid',
+        ),
+      ).toBe('true');
+      expect(screen.getAllByText(canceledMessage)).toHaveLength(1);
+      expect(
+        screen.queryByText('Este usuário já administra outra conta.'),
+      ).toBeNull();
+    });
+  });
+
+  it('mantem a mensagem generica para owner de conta ativa', async () => {
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Este usuário já administra outra conta.',
+        'EMAIL_BELONGS_TO_ACCOUNT_OWNER',
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'ANA@EXAMPLE.COM' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Criar conta/i }),
+    );
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+
+      expect(alert.textContent).toContain(
+        'Este usuário já administra outra conta.',
+      );
+      expect(alert.textContent).not.toMatch(/Restaure essa conta/);
+      expect(screen.getAllByText('Este usuário já administra outra conta.')).toHaveLength(1);
+    });
+  });
+
+  it('mantem a mensagem generica para owner de conta suspensa', async () => {
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Este usuário já administra outra conta.',
+        'EMAIL_BELONGS_TO_ACCOUNT_OWNER',
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'bia@example.com' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Criar conta/i }),
+    );
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+
+      expect(alert.textContent).toContain(
+        'Este usuário já administra outra conta.',
+      );
+      expect(alert.textContent).not.toMatch(/Restaure essa conta/);
+      expect(screen.getAllByText('Este usuário já administra outra conta.')).toHaveLength(1);
+    });
+  });
+
   it('mantem as acoes reais de limite e status', async () => {
     renderPage();
 
