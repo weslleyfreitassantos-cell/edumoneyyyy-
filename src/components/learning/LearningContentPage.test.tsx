@@ -101,6 +101,12 @@ describe('LearningContentPage', () => {
   it('exposes the composer to teachers and keeps the student feed action-free', () => {
     render(<LearningContentPage />);
     expect(screen.getAllByRole('button', { name: /Nova publicação/i }).length).toBeGreaterThan(0);
+    expect(screen.getByRole('searchbox', { name: 'Buscar' })).toBeTruthy();
+    expect(screen.getByRole('combobox', { name: 'Turma' })).toBeTruthy();
+    expect(screen.getByRole('option', { name: 'Todas as turmas' })).toBeTruthy();
+    expect(screen.getByRole('combobox', { name: 'Disciplina' })).toBeTruthy();
+    expect(screen.getByRole('combobox', { name: 'Tipo' })).toBeTruthy();
+    expect(screen.getByRole('combobox', { name: 'Status' })).toBeTruthy();
     expect(screen.queryByText('Tudo em dia por aqui')).toBeNull();
 
     fireEvent.click(screen.getAllByRole('button', { name: /Nova publicação/i })[0]);
@@ -113,6 +119,12 @@ describe('LearningContentPage', () => {
     state.posts = [studentPost];
     render(<LearningContentPage />);
 
+    expect(screen.getByRole('searchbox', { name: 'Buscar' })).toBeTruthy();
+    expect(screen.queryByRole('combobox', { name: 'Turma' })).toBeNull();
+    expect(screen.queryByRole('option', { name: 'Todas as turmas' })).toBeNull();
+    expect(screen.getByRole('combobox', { name: 'Disciplina' })).toBeTruthy();
+    expect(screen.getByRole('combobox', { name: 'Tipo' })).toBeTruthy();
+    expect(screen.queryByRole('combobox', { name: 'Status' })).toBeNull();
     expect(screen.getByText('1 não lido(s)')).toBeTruthy();
     expect(state.markRead).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole('button', { name: /Aviso de prova/ }));
