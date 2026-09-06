@@ -31,6 +31,7 @@ import {
   type CurriculumItemRow,
   type CurriculumTeacherInfo,
 } from '../../../services/curriculumService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface ItemDraft {
   class_id: string;
@@ -53,9 +54,7 @@ const emptyDraft: ItemDraft = {
 const CURRICULUM_PAGE_SIZE = 10;
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as Record<string, unknown>).message === 'string') return (error as Record<string, unknown>).message as string;
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function StatusBadge({ active }: { active: boolean }) {

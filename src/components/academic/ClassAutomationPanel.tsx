@@ -16,6 +16,7 @@ import {
   getAcademicShiftLabel,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 
 interface ClassAutomationPanelProps {
   institutionId: string;
@@ -52,11 +53,7 @@ const defaultPresetCounts = Object.fromEntries(
 );
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error && typeof error.message === 'string') {
-    return error.message;
-  }
-  return 'Não foi possível criar as turmas automaticamente.';
+  return getUserFacingErrorMessage(error, 'Não foi possível criar as turmas automaticamente.');
 }
 
 export default function ClassAutomationPanel({ institutionId, onClose, onCompleted }: ClassAutomationPanelProps) {

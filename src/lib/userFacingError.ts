@@ -14,6 +14,38 @@ function readErrorMessage(error: unknown): string {
   return '';
 }
 
+function readErrorCode(error: unknown): string {
+  if (typeof error === 'object' && error !== null && 'code' in error && typeof error.code === 'string') {
+    return error.code;
+  }
+  return '';
+}
+
+function isTechnicalError(error: unknown, message: string): boolean {
+  const normalized = `${readErrorCode(error)} ${message}`.toLowerCase();
+
+  return [
+    'pgrst',
+    'postgrest',
+    'postgres',
+    'sql',
+    'statement timeout',
+    'canceling statement',
+    'row-level security',
+    'violates',
+    'constraint',
+    'foreign key',
+    'duplicate key',
+    'internal server error',
+    'failed to fetch',
+    'fetch failed',
+    'network',
+    'jwt',
+    'authorization',
+    'supabase',
+  ].some((term) => normalized.includes(term));
+}
+
 export function toUserFacingError(error: unknown): UserFacingError {
   const raw = readErrorMessage(error);
   const normalized = raw.toLowerCase();
@@ -64,5 +96,13 @@ export function toUserFacingError(error: unknown): UserFacingError {
 
 export function getUserFacingErrorMessage(error: unknown, fallback?: string): string {
   const result = toUserFacingError(error);
+  const raw = readErrorMessage(error).trim();
+
+  // Services in the admin flow already throw translated business messages.
+  // Keep those messages, but never let provider/database diagnostics reach the UI.
+  if (result.code === 'UNKNOWN' && raw.length >= 25 && !isTechnicalError(error, raw)) {
+    return raw;
+  }
+
   return result.code === 'UNKNOWN' && fallback ? fallback : result.message;
 }
