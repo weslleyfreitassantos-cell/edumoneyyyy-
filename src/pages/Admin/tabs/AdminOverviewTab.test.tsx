@@ -15,6 +15,7 @@ import {
   it,
   vi,
 } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
 
 import {
   useAuth,
@@ -141,6 +142,8 @@ function mockOverviewState({
       totalCount: 7,
       progress: 100,
       configured: true,
+      academicSetupConfigured: true,
+      academicSetupStatus: 'CONFIGURED',
       status: 'CONFIGURED',
       nextStepId: null,
       review: {
@@ -152,6 +155,14 @@ function mockOverviewState({
         timetableClassCount: 3,
       },
       publishedVersionId: 'version-1',
+      operationalReadiness: {
+        blockers: [],
+        completedCount: 0,
+        totalCount: 0,
+        progress: 0,
+        ready: false,
+      },
+      optionalSetup: { brandingConfigured: false },
     },
     isLoading: false,
     isError: false,
@@ -171,43 +182,45 @@ afterEach(() => {
 describe('AdminOverviewTab', () => {
   it('renderiza os cards de métricas e a revisão quando a escola está configurada', () => {
     render(
-      <AdminOverviewTab
-        availableModuleIds={[
-          'academic-years',
-          'subjects',
-          'classes',
-          'teachers',
-          'assignments',
-          'enrollments',
-        ]}
-      />,
+      <MemoryRouter>
+        <AdminOverviewTab
+          availableModuleIds={[
+            'academic-years',
+            'subjects',
+            'classes',
+            'teachers',
+            'assignments',
+            'enrollments',
+          ]}
+        />
+      </MemoryRouter>,
     );
 
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
     expect(screen.getByText(/professores ativos/i)).toBeTruthy();
     expect(screen.getByText(/turmas ativas/i)).toBeTruthy();
 
-    expect(screen.getByText(/revisão da escola/i)).toBeTruthy();
-    expect(screen.getByText(/escola configurada/i)).toBeTruthy();
-    expect(screen.queryByText(/pendências acadêmicas/i)).toBeNull();
+    expect(screen.getByText(/configuração acadêmica/i)).toBeTruthy();
+    expect(screen.getByText(/prontidão operacional/i)).toBeTruthy();
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
   });
 
-  it('oculta a configuração acadêmica para ADMIN', () => {
+  it('exibe a configuração acadêmica para ADMIN sem oferecer edição indevida', () => {
     mockOverviewState({
       profileRole: 'ADMIN',
       currentRole: 'ADMIN',
     });
 
-    render(<AdminOverviewTab />);
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
 
-    expect(
-      screen.queryByRole('region', {
-        name: /configuração da escola/i,
-      }),
-    ).toBeNull();
+    expect(screen.getByText(/configuração acadêmica/i)).toBeTruthy();
+    expect(screen.queryByText(/gerenciar diretor ou secretaria/i)).toBeNull();
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
   });
 });
