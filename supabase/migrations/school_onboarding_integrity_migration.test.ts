@@ -22,6 +22,8 @@ describe('school onboarding integrity migration', () => {
 
   it('normaliza e restringe turnos sem apagar registros', () => {
     expect(migration).toContain("set shift = case");
+    expect(migration).toContain("and shift not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO')");
+    expect(migration).not.toContain("and upper(btrim(shift)) not in");
     expect(migration).toContain('classes_supported_shift');
     expect(migration).toContain('school_time_slots_supported_shift');
     expect(migration).toContain('school_schedule_breaks_supported_shift');

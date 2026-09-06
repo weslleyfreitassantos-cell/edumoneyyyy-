@@ -57,7 +57,7 @@ set shift = case
   else shift
 end
 where shift is not null
-  and upper(btrim(shift)) not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO');
+  and shift not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO');
 
 update public.school_time_slots
 set shift = case
@@ -67,7 +67,8 @@ set shift = case
   when upper(btrim(shift)) like '%MATUT%' or upper(btrim(shift)) like '%MANH%' then 'MATUTINO'
   else shift
 end
-where upper(btrim(shift)) not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO');
+where shift is not null
+  and shift not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO');
 
 update public.school_schedule_breaks
 set shift = case
@@ -77,7 +78,8 @@ set shift = case
   when upper(btrim(shift)) like '%MATUT%' or upper(btrim(shift)) like '%MANH%' then 'MATUTINO'
   else shift
 end
-where upper(btrim(shift)) not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO');
+where shift is not null
+  and shift not in ('MATUTINO', 'VESPERTINO', 'INTEGRAL', 'NOTURNO');
 
 alter table public.classes
   drop constraint if exists classes_supported_shift;
