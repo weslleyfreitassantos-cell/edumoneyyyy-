@@ -12,6 +12,7 @@ import type { AcademicYearRow } from '../../../services/academicStructureService
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
 import { DataTable, type Column } from '../../../components/DataTable';
 import TimetableAutomationPanel from '../../../components/academic/TimetableAutomationPanel';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface RoomDraft {
   name: string;
@@ -35,9 +36,7 @@ const emptyEntryDraft: EntryDraft = { class_id: '', subject_offering_id: '', roo
 type SubView = 'grid' | 'rooms' | 'automation';
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as Record<string, unknown>).message === 'string') return (error as Record<string, unknown>).message as string;
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function getPreferredTermId(year: AcademicYearRow | undefined): string {

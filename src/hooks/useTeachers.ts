@@ -8,6 +8,7 @@ import {
   teacherService,
   type TeacherRow,
 } from '../services/teacherService';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import type {
   TeacherFormData,
@@ -54,6 +55,7 @@ export function useCreateTeacher() {
           variables.institution_id,
         ),
       });
+      await invalidateSchoolSetupReadiness(queryClient, variables.institution_id);
     },
   });
 }
@@ -86,6 +88,7 @@ export function useSetTeacherActive() {
           variables.institutionId,
         ),
       });
+      await invalidateSchoolSetupReadiness(queryClient, variables.institutionId);
     },
   });
 }

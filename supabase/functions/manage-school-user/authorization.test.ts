@@ -12,6 +12,7 @@ const operationalManager: UpdateAuthorizationContext = {
   isAccountOwner: false,
   isLocalAdmin: false,
   isOperationalManager: true,
+  isDirector: true,
 };
 
 const activeStudentReset: UpdateAuthorizationInput = {
@@ -45,8 +46,8 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "TARGET_MEMBERSHIP_INACTIVE" });
   });
 
-  it.each(["TEACHER", "GUARDIAN", "SECRETARY", "DIRECTOR", "ADMIN"])(
-    "bloqueia reset de senha para %s",
+  it.each(["TEACHER", "GUARDIAN", "SECRETARY", "DIRECTOR"])(
+    "permite ao gestor atualizar %s",
     (targetRole) => {
       expect(
         getUpdateAuthorizationDecision(operationalManager, {
@@ -54,28 +55,38 @@ describe("manage-school-user update authorization", () => {
           targetRole,
           studentActive: null,
         }),
-      ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+      ).toEqual({ allowed: true });
     },
   );
 
-  it("bloqueia alteração de nome sem senha", () => {
+  it("bloqueia gestão do papel ADMIN por gestor institucional", () => {
+    expect(
+      getUpdateAuthorizationDecision(operationalManager, {
+        ...activeStudentReset,
+        targetRole: "ADMIN",
+        studentActive: null,
+      }),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("permite atualizar nome de usuario da escola", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         hasPassword: false,
         hasFullName: true,
       }),
-    ).toEqual({ allowed: false, code: "DIRECTOR_PASSWORD_ONLY" });
+    ).toEqual({ allowed: true });
   });
 
-  it("bloqueia alteração de role sem senha", () => {
+  it("permite alterar papel quando a regra do papel permite", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         hasPassword: false,
         hasRole: true,
       }),
-    ).toEqual({ allowed: false, code: "DIRECTOR_PASSWORD_ONLY" });
+    ).toEqual({ allowed: true });
   });
 
   it("bloqueia diretor de atribuir ADMIN a outro usuario", () => {
@@ -88,13 +99,13 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
   });
 
-  it("bloqueia password combinado com fullName", () => {
+  it("permite senha combinada com nome", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         hasFullName: true,
       }),
-    ).toEqual({ allowed: false, code: "DIRECTOR_PASSWORD_ONLY" });
+    ).toEqual({ allowed: true });
   });
 
   it("bloqueia membership inativa", () => {
@@ -106,13 +117,13 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "TARGET_MEMBERSHIP_INACTIVE" });
   });
 
-  it("bloqueia student inativo", () => {
+  it("mantem o contexto operacional para estudante inativo", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         studentActive: false,
       }),
-    ).toEqual({ allowed: false, code: "STUDENT_INACTIVE" });
+    ).toEqual({ allowed: true });
   });
 
   it.each([
@@ -152,6 +163,7 @@ const ordinaryDeleteTarget = {
   targetProfileId: "target",
   targetPlatformRole: null,
   targetIsAccountOwner: false,
+  targetRole: "TEACHER",
 };
 
 describe("manage-school-user delete authorization", () => {
@@ -247,5 +259,34 @@ describe("manage-school-user delete authorization", () => {
         ordinaryDeleteTarget,
       ),
     ).toEqual({ allowed: false, code: "DIRECTOR_REQUIRED" });
+  });
+
+  it("bloqueia SECRETARY de remover DIRECTOR", () => {
+    expect(
+      getDeleteAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        { ...ordinaryDeleteTarget, targetRole: "DIRECTOR" },
+      ),
+    ).toEqual({
+      allowed: false,
+      code: "SECRETARY_CANNOT_REMOVE_DIRECTOR",
+    });
+  });
+
+  it("bloqueia SECRETARY de rebaixar DIRECTOR", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        {
+          ...activeStudentReset,
+          targetRole: "DIRECTOR",
+          requestedRole: "TEACHER",
+          hasRole: true,
+        },
+      ),
+    ).toEqual({
+      allowed: false,
+      code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE",
+    });
   });
 });

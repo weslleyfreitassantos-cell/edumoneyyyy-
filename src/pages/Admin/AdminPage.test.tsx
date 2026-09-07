@@ -398,7 +398,7 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
-  it('modulo sem permissao abre o primeiro modulo autorizado', () => {
+  it('secretaria pode acessar a estrutura academica', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -410,11 +410,8 @@ describe('AdminPage URL module resolution', () => {
     renderAdminPage('/admin?module=subjects');
 
     expect(
-      screen.getByTestId('overview-tab'),
+      screen.getByTestId('subjects-tab'),
     ).toBeTruthy();
-    expect(
-      screen.queryByTestId('subjects-tab'),
-    ).toBeNull();
   });
 
   it('checklist navega alterando o modulo ativo pela URL', () => {
@@ -475,7 +472,7 @@ describe('AdminPage permissions', () => {
     ).toBeTruthy();
   });
 
-  it('limita SECRETARY a operacao escolar sem estrutura e atribuicoes', () => {
+  it('permite SECRETARY administrar a operacao e a estrutura escolar', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -501,7 +498,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=assignments');
 
     expect(
-      screen.getByTestId('overview-tab'),
+      screen.getByTestId('assignments-tab'),
     ).toBeTruthy();
   });
 

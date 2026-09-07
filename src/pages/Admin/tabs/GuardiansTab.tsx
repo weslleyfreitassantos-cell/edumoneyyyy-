@@ -33,6 +33,7 @@ import type {
   GuardianRow,
   GuardianStudentLink,
 } from '../../../services/guardianService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface LinkDraft {
   student_id: string;
@@ -63,20 +64,7 @@ const GUARDIANS_PAGE_SIZE = 6;
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function getStudentLabel(

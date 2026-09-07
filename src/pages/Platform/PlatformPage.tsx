@@ -112,6 +112,13 @@ const statusStyles: Record<AccountStatus, string> = {
   CANCELED: 'bg-[#ffdad6] text-[#93000a]',
 };
 
+const canceledAdminEmailMessage =
+  'Este e-mail pertence ao administrador de uma conta em Excluídos. Restaure essa conta ou exclua-a definitivamente antes de reutilizar este e-mail.';
+
+function normalizeAccountEmail(value: string): string {
+  return value.trim().toLocaleLowerCase();
+}
+
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
@@ -152,6 +159,10 @@ function getCreateAccountFieldErrors(
     return {};
   }
 
+  if (error.code === 'EMAIL_BELONGS_TO_ACCOUNT_OWNER') {
+    return {};
+  }
+
   const fieldErrors = error.fieldErrors ?? {};
 
   if (fieldErrors.adminEmail) {
@@ -187,14 +198,40 @@ function getCreateAccountFieldErrors(
     };
   }
 
-  if (error.code === 'EMAIL_BELONGS_TO_ACCOUNT_OWNER') {
-    return {
-      adminEmail:
-        'Este usuário já administra outra conta.',
-    };
+  return {};
+}
+
+function isAccountOwnerEmailConflict(
+  error: unknown,
+): boolean {
+  return (
+    error instanceof AccountServiceError &&
+    error.code === 'EMAIL_BELONGS_TO_ACCOUNT_OWNER'
+  );
+}
+
+function getCreateAccountFeedbackMessage(
+  error: unknown,
+  accounts: AccountSummaryRow[],
+  adminEmail: string,
+): string {
+  if (isAccountOwnerEmailConflict(error)) {
+    const normalizedEmail = normalizeAccountEmail(adminEmail);
+    const canceledAccount = accounts.find(
+      (account) =>
+        account.status === 'CANCELED' &&
+        normalizeAccountEmail(account.owner?.email ?? '') ===
+          normalizedEmail,
+    );
+
+    if (canceledAccount) {
+      return canceledAdminEmailMessage;
+    }
+
+    return 'Este usuário já administra outra conta.';
   }
 
-  return {};
+  return getPlatformErrorMessage(error);
 }
 
 function getCloseAccountErrorMessage(
@@ -397,6 +434,12 @@ export default function PlatformPage() {
   const [feedback, setFeedback] = useState<
     { type: 'success' | 'error'; message: string } | null
   >(null);
+  const [createAccountFeedback, setCreateAccountFeedback] =
+    useState<
+      { type: 'success' | 'error'; message: string } | null
+    >(null);
+  const [createAccountEmailConflict, setCreateAccountEmailConflict] =
+    useState(false);
   const [closeDialog, setCloseDialog] =
     useState<CloseDialogState | null>(null);
   const [permanentDeleteDialog, setPermanentDeleteDialog] =
@@ -599,6 +642,8 @@ export default function PlatformPage() {
     field: keyof AccountFormState,
     value: string,
   ): void {
+    setCreateAccountFeedback(null);
+    setCreateAccountEmailConflict(false);
     setFormFieldErrors((current) => {
       if (!current[field]) {
         return current;
@@ -619,6 +664,8 @@ export default function PlatformPage() {
   ): Promise<void> {
     event.preventDefault();
     setFeedback(null);
+    setCreateAccountFeedback(null);
+    setCreateAccountEmailConflict(false);
     setFormFieldErrors({});
 
     const institutionLimit = Number(
@@ -636,7 +683,7 @@ export default function PlatformPage() {
       !Number.isInteger(institutionLimit) ||
       institutionLimit < 1
     ) {
-      setFeedback({
+      setCreateAccountFeedback({
         type: 'error',
         message:
           'Informe ADMIN, e-mail e limite valido.',
@@ -654,7 +701,7 @@ export default function PlatformPage() {
         });
 
       setForm(initialForm);
-      setFeedback({
+      setCreateAccountFeedback({
         type: 'success',
         message: response.invitationSent
           ? 'Conta criada e convite enviado ao ADMIN.'
@@ -664,9 +711,16 @@ export default function PlatformPage() {
       setFormFieldErrors(
         getCreateAccountFieldErrors(error),
       );
-      setFeedback({
+      setCreateAccountEmailConflict(
+        isAccountOwnerEmailConflict(error),
+      );
+      setCreateAccountFeedback({
         type: 'error',
-        message: getPlatformErrorMessage(error),
+        message: getCreateAccountFeedbackMessage(
+          error,
+          accounts,
+          normalizedAdminEmail,
+        ),
       });
     }
   }
@@ -1320,7 +1374,8 @@ export default function PlatformPage() {
                   )
                 }
                 aria-invalid={Boolean(
-                  formFieldErrors.adminEmail,
+                  formFieldErrors.adminEmail ||
+                    createAccountEmailConflict,
                 )}
                 aria-describedby={
                   formFieldErrors.adminEmail
@@ -1354,6 +1409,19 @@ export default function PlatformPage() {
               />
             </Field>
           </div>
+
+          {createAccountFeedback && (
+            <div
+              role="alert"
+              className={`mt-4 rounded-xl border p-4 text-sm ${
+                createAccountFeedback.type === 'success'
+                  ? 'border-[#6ffbbe] bg-[#effdf6] text-[#005236]'
+                  : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
+              }`}
+            >
+              {createAccountFeedback.message}
+            </div>
+          )}
 
           <button
             type="submit"

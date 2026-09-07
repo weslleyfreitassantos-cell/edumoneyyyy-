@@ -13,6 +13,7 @@ import {
 import {
   academicShiftSettingsService,
 } from '../services/academicShiftSettingsService';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   academicAutomationService,
   type SchoolScheduleBreakDraft,
@@ -159,10 +160,11 @@ export function useSaveAcademicPolicy() {
   return useMutation({
     mutationFn: (input: SaveAcademicPolicyInput) =>
       academicPolicyService.savePolicy(input),
-    onSuccess: () => {
+    onSuccess: (_result, variables) => {
       void queryClient.invalidateQueries({
         queryKey: academicKeys.all,
       });
+      void invalidateSchoolSetupReadiness(queryClient, variables.institutionId);
     },
   });
 }
@@ -212,6 +214,7 @@ export function useSaveAcademicShiftSettings() {
       void queryClient.invalidateQueries({
         queryKey: ['school-setup-readiness', variables.institutionId],
       });
+      void invalidateSchoolSetupReadiness(queryClient, variables.institutionId);
     },
   });
 }

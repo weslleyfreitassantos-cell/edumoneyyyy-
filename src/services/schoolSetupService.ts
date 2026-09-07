@@ -7,11 +7,11 @@ import {
 import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export const SCHOOL_SETUP_STEP_IDS = [
-  'login-branding',
   'academic-year',
   'terms',
   'subjects',
   'teaching-structure',
+  'shifts',
   'classes',
   'class-subjects',
   'timetable',
@@ -36,17 +36,40 @@ export interface SchoolSetupReview {
   timetableClassCount: number;
 }
 
+export interface SchoolReadinessBlocker {
+  id: string;
+  label: string;
+  complete: boolean;
+  description: string;
+  href: string;
+}
+
+export interface OperationalReadiness {
+  blockers: SchoolReadinessBlocker[];
+  completedCount: number;
+  totalCount: number;
+  progress: number;
+  ready: boolean;
+}
+
 export interface SchoolSetupReadiness {
   institutionId: string;
+  academicManagerCount?: number;
   steps: SchoolSetupStepState[];
   completedCount: number;
   totalCount: number;
   progress: number;
   configured: boolean;
+  academicSetupConfigured: boolean;
+  academicSetupStatus: 'IN_PROGRESS' | 'CONFIGURED';
   status: 'IN_PROGRESS' | 'CONFIGURED';
   nextStepId: SchoolSetupStepId | null;
   review: SchoolSetupReview;
   publishedVersionId: string | null;
+  operationalReadiness: OperationalReadiness;
+  optionalSetup: {
+    brandingConfigured: boolean;
+  };
 }
 
 interface AcademicYearRow {
@@ -102,6 +125,7 @@ interface VersionRow {
 }
 
 interface VersionEntryRow {
+  version_id?: string;
   class_id: string;
   term_id: string;
   subject_offering_id: string;
@@ -117,6 +141,32 @@ interface OfferingRow {
   subject_id: string;
   term_id: string;
   active: boolean | null;
+  teacher_profile_id?: string | null;
+}
+
+interface TeacherMembershipRow {
+  profile_id: string;
+  role?: string | null;
+  active: boolean | null;
+  profiles?: { active: boolean | null } | { active: boolean | null }[] | null;
+}
+
+interface TeacherSubjectRow {
+  teacher_profile_id: string;
+  subject_id: string;
+  active: boolean | null;
+}
+
+interface TeacherAvailabilityRow {
+  teacher_profile_id: string;
+  active: boolean | null;
+}
+
+interface EnrollmentRow {
+  class_id: string;
+  academic_year_id: string;
+  status: string | null;
+  active: boolean | null;
 }
 
 interface TimetableCandidate {
@@ -131,6 +181,20 @@ interface TimetableStructuralState {
 
 function isActive(value: boolean | null | undefined): boolean {
   return value !== false;
+}
+
+function countAcademicManagers(memberships: TeacherMembershipRow[]): number {
+  return memberships.filter((membership) => {
+    const profileRelation = Array.isArray(membership.profiles)
+      ? membership.profiles[0]
+      : membership.profiles;
+
+    return (
+      (membership.role === 'DIRECTOR' || membership.role === 'SECRETARY') &&
+      isActive(membership.active) &&
+      isActive(profileRelation?.active)
+    );
+  }).length;
 }
 
 function hasLoginBranding(
@@ -290,6 +354,7 @@ function evaluateTimetableStructure({
 
   return {
     complete:
+      version.status === 'PUBLISHED' &&
       version.id.length > 0 &&
       activeClasses.length > 0 &&
       classesHaveSlots &&
@@ -319,14 +384,13 @@ function pickAcademicYear(
 
 function stepHref(stepId: SchoolSetupStepId): string {
   switch (stepId) {
-    case 'login-branding':
-      return '/personalizar-login';
     case 'academic-year':
     case 'terms':
       return '/admin?module=academic-years';
     case 'subjects':
       return '/admin?module=subjects';
     case 'teaching-structure':
+    case 'shifts':
       return '/admin?module=academic-policies';
     case 'classes':
       return '/admin?module=classes';
@@ -340,6 +404,7 @@ function stepHref(stepId: SchoolSetupStepId): string {
 export function buildSchoolSetupReadiness({
   institutionId,
   loginBrandingConfigured,
+  academicManagerCount = 0,
   academicYear,
   terms,
   subjects,
@@ -352,9 +417,15 @@ export function buildSchoolSetupReadiness({
   timetableCandidates = [],
   offerings = [],
   enabledShifts,
-}: {
+  teacherProfiles = [],
+  teacherSubjects = [],
+  teacherAvailability = [],
+  enrollments = [],
+  requireTeacherAvailability = false,
+  }: {
   institutionId: string;
   loginBrandingConfigured: boolean;
+  academicManagerCount?: number;
   academicYear: AcademicYearRow | null;
   terms: TermRow[];
   subjects: { id: string }[];
@@ -367,6 +438,11 @@ export function buildSchoolSetupReadiness({
   timetableCandidates?: TimetableCandidate[];
   offerings?: OfferingRow[];
   enabledShifts?: readonly string[];
+  teacherProfiles?: TeacherMembershipRow[];
+  teacherSubjects?: TeacherSubjectRow[];
+  teacherAvailability?: TeacherAvailabilityRow[];
+  enrollments?: EnrollmentRow[];
+  requireTeacherAvailability?: boolean;
 }): SchoolSetupReadiness {
   const activeClasses = classes.filter((classRecord) =>
     isActive(classRecord.active),
@@ -402,7 +478,7 @@ export function buildSchoolSetupReadiness({
       activeTerms: terms.filter((term) => isActive(term.active)),
       offerings,
       timeSlots,
-    }).complete,
+    }).complete && candidate.version.status === 'PUBLISHED',
   );
   const timetableState = structuralCandidate
     ? evaluateTimetableStructure({
@@ -417,13 +493,13 @@ export function buildSchoolSetupReadiness({
     : { complete: false, completeClassIds: new Set<string>() };
 
   const completed = {
-    'login-branding': loginBrandingConfigured,
     'academic-year': academicYear !== null,
     terms:
       academicYear !== null &&
       terms.some((term) => isActive(term.active)),
     subjects: subjects.length > 0,
     'teaching-structure': policies.length > 0,
+    shifts: configuredShifts.length > 0,
     classes:
       activeClasses.length > 0 &&
       activeClasses.every(
@@ -442,11 +518,11 @@ export function buildSchoolSetupReadiness({
   } satisfies Record<SchoolSetupStepId, boolean>;
 
   const labels: Record<SchoolSetupStepId, string> = {
-    'login-branding': 'Personalizar login',
     'academic-year': 'Ano letivo',
     terms: 'Períodos',
     subjects: 'Matérias',
     'teaching-structure': 'Estrutura de ensino',
+    shifts: 'Turnos',
     classes: 'Turmas',
     'class-subjects': 'Matérias das turmas',
     timetable: 'Grade horária',
@@ -461,13 +537,153 @@ export function buildSchoolSetupReadiness({
   const completedCount = steps.filter((step) => step.complete).length;
   const nextStep = steps.find((step) => !step.complete);
 
+  const activeTerms = terms.filter((term) => isActive(term.active));
+  const activeOfferings = offerings.filter(
+    (offering) => isActive(offering.active) && activeTerms.some((term) => term.id === offering.term_id),
+  );
+  const curriculumPairs = activeClasses.flatMap((classRecord) =>
+    activeCurriculum
+      .filter((item) => item.class_id === classRecord.id && item.weekly_lessons > 0)
+      .map((item) => `${item.class_id}:${item.subject_id}`),
+  );
+  const offeringPairs = new Set(
+    activeOfferings.map((offering) => `${offering.class_id}:${offering.subject_id}`),
+  );
+  const missingOfferingCount = curriculumPairs.filter(
+    (pair) => !offeringPairs.has(pair),
+  ).length;
+  const activeTeacherProfiles = teacherProfiles.filter((teacher) => {
+    const profileRelation = Array.isArray(teacher.profiles)
+      ? teacher.profiles[0]
+      : teacher.profiles;
+    return (
+      (teacher.role === undefined || teacher.role === 'TEACHER') &&
+      isActive(teacher.active) &&
+      isActive(profileRelation?.active)
+    );
+  });
+  const activeTeacherIds = new Set(activeTeacherProfiles.map((teacher) => teacher.profile_id));
+  const activeTeacherSubjectKeys = new Set(
+    teacherSubjects
+      .filter((row) => isActive(row.active) && activeTeacherIds.has(row.teacher_profile_id))
+      .map((row) => `${row.teacher_profile_id}:${row.subject_id}`),
+  );
+  const missingAssignmentCount = activeOfferings.filter(
+    (offering) =>
+      !offering.teacher_profile_id ||
+      !activeTeacherIds.has(offering.teacher_profile_id),
+  ).length;
+  const missingQualificationCount = activeOfferings.filter(
+    (offering) =>
+      !offering.teacher_profile_id ||
+      !activeTeacherSubjectKeys.has(`${offering.teacher_profile_id}:${offering.subject_id}`),
+  ).length;
+  const assignedTeacherIds = new Set(
+    activeOfferings
+      .map((offering) => offering.teacher_profile_id)
+      .filter((teacherId): teacherId is string => Boolean(teacherId)),
+  );
+  const teachersWithoutAvailability = [...assignedTeacherIds].filter(
+    (teacherId) =>
+      !teacherAvailability.some(
+        (row) => row.teacher_profile_id === teacherId && isActive(row.active),
+      ),
+  ).length;
+  const activeEnrollmentCount = enrollments.filter(
+    (enrollment) =>
+      enrollment.academic_year_id === academicYear?.id &&
+      activeClasses.some((classRecord) => classRecord.id === enrollment.class_id) &&
+      isActive(enrollment.active) &&
+      enrollment.status?.trim().toLowerCase() === 'active',
+  ).length;
+  const operationalBlockers: SchoolReadinessBlocker[] = [
+    {
+      id: 'academic-setup',
+      label: 'Configuração acadêmica',
+      complete: completedCount === steps.length,
+      description: completedCount === steps.length
+        ? 'A estrutura acadêmica está completa.'
+        : 'Finalize a estrutura acadêmica antes de operar a escola.',
+      href: nextStep?.href ?? '/admin?module=overview',
+    },
+    {
+      id: 'published-timetable',
+      label: 'Grade publicada',
+      complete: timetableState.complete,
+      description: timetableState.complete
+        ? 'Existe uma grade publicada e válida.'
+        : 'Publique uma grade válida para as turmas ativas.',
+      href: '/admin?module=timetable&view=automation',
+    },
+    {
+      id: 'teachers-configured',
+      label: 'Professores cadastrados',
+      complete: activeTeacherProfiles.length > 0,
+      description: activeTeacherProfiles.length > 0
+        ? `${activeTeacherProfiles.length} professor(es) ativo(s).`
+        : 'Cadastre pelo menos um professor ativo.',
+      href: '/admin?module=teachers',
+    },
+    {
+      id: 'subject-offerings',
+      label: 'Ofertas das disciplinas',
+      complete: missingOfferingCount === 0 && curriculumPairs.length > 0,
+      description: missingOfferingCount === 0 && curriculumPairs.length > 0
+        ? 'Todas as disciplinas da matriz possuem oferta.'
+        : `${missingOfferingCount} disciplina(s) da matriz ainda não possuem oferta.`,
+      href: '/admin?module=assignments',
+    },
+    {
+      id: 'teacher-assignments',
+      label: 'Professores associados',
+      complete: missingAssignmentCount === 0 && activeOfferings.length > 0,
+      description: missingAssignmentCount === 0 && activeOfferings.length > 0
+        ? 'As ofertas possuem professores ativos.'
+        : `${missingAssignmentCount} oferta(s) ainda estão sem professor ativo.`,
+      href: '/admin?module=assignments',
+    },
+    {
+      id: 'teacher-qualifications',
+      label: 'Habilitações dos professores',
+      complete: missingQualificationCount === 0 && activeOfferings.length > 0,
+      description: missingQualificationCount === 0 && activeOfferings.length > 0
+        ? 'As disciplinas estão associadas às habilitações dos professores.'
+        : `${missingQualificationCount} oferta(s) não possui habilitação correspondente.`,
+      href: '/admin?module=teachers',
+    },
+    {
+      id: 'teacher-availability',
+      label: 'Disponibilidade dos professores',
+      complete: !requireTeacherAvailability || (assignedTeacherIds.size > 0 && teachersWithoutAvailability === 0),
+      description: !requireTeacherAvailability
+        ? 'A política não exige disponibilidade cadastrada.'
+        : teachersWithoutAvailability === 0 && assignedTeacherIds.size > 0
+          ? 'A disponibilidade está cadastrada para os professores associados.'
+          : `${teachersWithoutAvailability} professor(es) associado(s) sem disponibilidade.`,
+      href: '/admin?module=teachers',
+    },
+    {
+      id: 'active-enrollments',
+      label: 'Matrículas ativas',
+      complete: activeEnrollmentCount > 0,
+      description: activeEnrollmentCount > 0
+        ? `${activeEnrollmentCount} matrícula(s) ativa(s).`
+        : 'Matricule pelo menos um aluno para iniciar a operação.',
+      href: '/admin?module=students',
+    },
+  ];
+  const operationalCompletedCount = operationalBlockers.filter((blocker) => blocker.complete).length;
+
   return {
     institutionId,
+    academicManagerCount,
     steps,
     completedCount,
     totalCount: steps.length,
     progress: Math.round((completedCount / steps.length) * 100),
     configured: completedCount === steps.length,
+    academicSetupConfigured: completedCount === steps.length,
+    academicSetupStatus: completedCount === steps.length ? 'CONFIGURED' : 'IN_PROGRESS',
     status: completedCount === steps.length ? 'CONFIGURED' : 'IN_PROGRESS',
     nextStepId: nextStep?.id ?? null,
     review: {
@@ -479,8 +695,17 @@ export function buildSchoolSetupReadiness({
       timetableClassCount: timetableState.completeClassIds.size,
     },
     publishedVersionId:
-      candidates.find((candidate) => candidate.version.status === 'PUBLISHED')
-        ?.version.id ?? publishedVersion?.id ?? null,
+      structuralCandidate?.version.id ?? null,
+    operationalReadiness: {
+      blockers: operationalBlockers,
+      completedCount: operationalCompletedCount,
+      totalCount: operationalBlockers.length,
+      progress: Math.round((operationalCompletedCount / operationalBlockers.length) * 100),
+      ready: operationalCompletedCount === operationalBlockers.length,
+    },
+    optionalSetup: {
+      brandingConfigured: loginBrandingConfigured,
+    },
   };
 }
 
@@ -488,7 +713,7 @@ export const schoolSetupService = {
   async getReadiness(
     institutionId: string,
   ): Promise<SchoolSetupReadiness> {
-    const [yearsResult, brandingResult] = await Promise.all([
+    const [yearsResult, brandingResult, membershipsResult] = await Promise.all([
       supabase
         .from('academic_years')
         .select('id, name, start_date, end_date, active')
@@ -499,13 +724,23 @@ export const schoolSetupService = {
         .select('login_display_name, logo_url, favicon_url, primary_color, secondary_color')
         .eq('id', institutionId)
         .maybeSingle(),
+      supabase
+        .from('memberships')
+        .select('profile_id, role, active, profiles:profile_id(active)')
+        .eq('institution_id', institutionId)
+        .in('role', ['TEACHER', 'DIRECTOR', 'SECRETARY']),
     ]);
 
     const { data: yearsData, error: yearsError } = yearsResult;
     const { data: brandingData, error: brandingError } = brandingResult;
+    const { data: membershipsData, error: membershipsError } = membershipsResult;
 
     if (yearsError) throw yearsError;
     if (brandingError) throw brandingError;
+    if (membershipsError) throw membershipsError;
+
+    const memberships = (membershipsData ?? []) as TeacherMembershipRow[];
+    const academicManagerCount = countAcademicManagers(memberships);
 
     const loginBrandingConfigured = hasLoginBranding(
       (brandingData ?? null) as InstitutionBrandingRow | null,
@@ -519,6 +754,7 @@ export const schoolSetupService = {
       return buildSchoolSetupReadiness({
         institutionId,
         loginBrandingConfigured,
+        academicManagerCount,
         academicYear: null,
         terms: [],
         subjects: [],
@@ -541,6 +777,9 @@ export const schoolSetupService = {
       slotsResult,
       versionsResult,
       offeringsResult,
+      teacherSubjectsResult,
+      teacherAvailabilityResult,
+      enrollmentsResult,
     ] = await Promise.all([
       supabase
       .from('terms')
@@ -553,7 +792,7 @@ export const schoolSetupService = {
         .eq('active', true),
       supabase
         .from('academic_policies')
-        .select('id')
+        .select('id, require_teacher_availability')
         .eq('institution_id', institutionId)
         .eq('academic_year_id', academicYear.id)
         .eq('active', true),
@@ -575,13 +814,25 @@ export const schoolSetupService = {
         .select('id, status, created_at, published_at')
         .eq('institution_id', institutionId)
         .eq('academic_year_id', academicYear.id)
-        .in('status', ['DRAFT', 'PUBLISHED'])
+        .in('status', ['DRAFT', 'PUBLISHED', 'ARCHIVED'])
         .order('created_at', { ascending: false }),
       supabase
         .from('subject_offerings')
-        .select('id, class_id, subject_id, term_id, active, classes!inner(institution_id, academic_year_id)')
+        .select('id, class_id, subject_id, teacher_profile_id, term_id, active, classes!inner(institution_id, academic_year_id)')
         .eq('classes.institution_id', institutionId)
         .eq('classes.academic_year_id', academicYear.id),
+      supabase
+        .from('teacher_subjects')
+        .select('teacher_profile_id, subject_id, active')
+        .eq('institution_id', institutionId),
+      supabase
+        .from('teacher_availability')
+        .select('teacher_profile_id, active')
+        .eq('institution_id', institutionId),
+      supabase
+        .from('enrollments')
+        .select('class_id, academic_year_id, status, active')
+        .eq('academic_year_id', academicYear.id),
     ]);
 
     const results = [
@@ -593,26 +844,37 @@ export const schoolSetupService = {
       slotsResult,
       versionsResult,
       offeringsResult,
+      teacherSubjectsResult,
+      teacherAvailabilityResult,
+      enrollmentsResult,
     ];
     const failed = results.find((result) => result.error);
     if (failed?.error) throw failed.error;
 
     const versions = (versionsResult.data ?? []) as VersionRow[];
-    const timetableCandidates = await Promise.all(
-      versions.map(async (version) => {
-        const entriesResult = await supabase
-          .from('timetable_version_entries')
-          .select(
-            'class_id, term_id, subject_offering_id, day_of_week, start_time, end_time, active',
-          )
-          .eq('version_id', version.id);
-        if (entriesResult.error) throw entriesResult.error;
-        return {
-          version,
-          entries: (entriesResult.data ?? []) as VersionEntryRow[],
-        };
-      }),
-    );
+    const versionIds = versions.map((version) => version.id);
+    let entriesData: VersionEntryRow[] = [];
+    if (versionIds.length > 0) {
+      const entriesResult = await supabase
+        .from('timetable_version_entries')
+        .select(
+          'version_id, class_id, term_id, subject_offering_id, day_of_week, start_time, end_time, active',
+        )
+        .in('version_id', versionIds);
+      if (entriesResult.error) throw entriesResult.error;
+      entriesData = (entriesResult.data ?? []) as VersionEntryRow[];
+    }
+    const entriesByVersion = new Map<string, VersionEntryRow[]>();
+    for (const entry of entriesData) {
+      if (!entry.version_id) continue;
+      const entries = entriesByVersion.get(entry.version_id) ?? [];
+      entries.push(entry);
+      entriesByVersion.set(entry.version_id, entries);
+    }
+    const timetableCandidates = versions.map((version) => ({
+      version,
+      entries: entriesByVersion.get(version.id) ?? [],
+    }));
     const publishedCandidate = timetableCandidates.find(
       (candidate) => candidate.version.status === 'PUBLISHED',
     );
@@ -635,6 +897,13 @@ export const schoolSetupService = {
       timetableCandidates,
       offerings: (offeringsResult.data ?? []) as OfferingRow[],
       enabledShifts,
+      teacherProfiles: memberships,
+      academicManagerCount,
+      teacherSubjects: (teacherSubjectsResult.data ?? []) as TeacherSubjectRow[],
+      teacherAvailability: (teacherAvailabilityResult.data ?? []) as TeacherAvailabilityRow[],
+      enrollments: (enrollmentsResult.data ?? []) as EnrollmentRow[],
+      requireTeacherAvailability: ((policiesResult.data ?? []) as { require_teacher_availability?: boolean | null }[])
+        .some((policy) => policy.require_teacher_availability === true),
     });
   },
 };

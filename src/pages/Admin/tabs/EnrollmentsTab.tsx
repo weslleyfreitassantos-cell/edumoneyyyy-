@@ -48,6 +48,7 @@ import {
   isClassAtCapacity,
   sortAcademicYearsForSelection,
 } from '../../../lib/academicSelection';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface EnrollmentDraft {
   student_id: string;
@@ -101,20 +102,7 @@ const statusOptions: {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function StatusBadge({

@@ -48,6 +48,7 @@ import type {
   AcademicYearRow,
   TermRow,
 } from '../../../services/academicStructureService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface AcademicYearDraft {
   name: string;
@@ -82,20 +83,7 @@ const emptyTermDraft: TermDraft = {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function formatDate(value: string): string {

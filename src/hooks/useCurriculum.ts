@@ -3,6 +3,7 @@ import { adminOverviewKeys } from './useAdminOverview';
 import { classKeys } from './useClasses';
 import { subjectKeys } from './useSubjects';
 import { assignmentKeys } from './useAssignments';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   curriculumService,
   type CurriculumItemRow,
@@ -25,6 +26,7 @@ function invalidateCurriculum(
     queryClient.invalidateQueries({ queryKey: subjectKeys.list(institutionId) }),
     queryClient.invalidateQueries({ queryKey: assignmentKeys.list(institutionId) }),
     queryClient.invalidateQueries({ queryKey: adminOverviewKeys.detail(institutionId) }),
+    invalidateSchoolSetupReadiness(queryClient, institutionId),
   ]);
 }
 
