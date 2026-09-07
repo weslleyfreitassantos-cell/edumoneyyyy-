@@ -65,31 +65,31 @@ function FlowStepRow({
   isRecommended: boolean;
 }) {
   const canOpen = canEditAcademic || step.id === 'responsible-user';
-  const action = step.status === 'COMPLETED'
-    ? null
-    : canOpen
+  const action = canOpen
       ? (
         <Link
           to={step.href}
-          className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#b8c7df] px-3 py-1.5 text-xs font-bold text-[#005bbf] hover:bg-[#f3f7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+          className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#b8c7df] px-3 py-1.5 text-xs font-bold text-[#005bbf] hover:bg-[#f3f7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-950/40"
         >
-          {step.actionLabel}
+          {step.status === 'COMPLETED' ? 'Revisar' : step.actionLabel}
         </Link>
       )
-      : (
+      : step.status === 'COMPLETED'
+        ? null
+        : (
         <span
           aria-disabled="true"
           className="mt-3 inline-flex min-h-9 items-center text-xs font-semibold text-[#667085]"
         >
           Disponível para Diretor ou Secretaria
         </span>
-      );
+        );
 
   return (
     <li
       className={`rounded-lg border p-4 ${
         isRecommended
-          ? 'border-[#7ca8e8] bg-[#f7faff]'
+          ? 'border-[#7ca8e8] bg-[#f7faff] dark:border-blue-700 dark:bg-blue-950/30'
           : 'border-[#e4e8f1] bg-white dark:border-slate-700 dark:bg-slate-900'
       }`}
       aria-current={isRecommended ? 'step' : undefined}
