@@ -512,36 +512,45 @@ export default function AcademicYearsTab() {
     }
   }
 
-  async function handleDeleteYear(): Promise<void> {
-    if (!editingYear || !institutionId || deleteYearMutation.isPending) {
+  async function handleDeleteYear(
+    year: AcademicYearRow | null = editingYear,
+  ): Promise<void> {
+    if (!year || !institutionId || deleteYearMutation.isPending) {
       return;
     }
 
     if (
       !window.confirm(
-        `Excluir o ano letivo ${editingYear.name}? Esta ação não pode ser desfeita.`,
+        `Excluir o ano letivo ${year.name}? Esta ação não pode ser desfeita.`,
       )
     ) {
       return;
     }
 
     setModalError(null);
+    setPageError(null);
     setFeedbackMessage(null);
 
     try {
       await deleteYearMutation.mutateAsync({
-        id: editingYear.id,
+        id: year.id,
         institutionId,
       });
 
       setFeedbackMessage(
         'Ano letivo excluído com sucesso.',
       );
-      closeModals();
+      if (editingYear?.id === year.id) {
+        closeModals();
+      }
     } catch (error) {
-      setModalError(
-        getErrorMessage(error),
-      );
+      const message = getErrorMessage(error);
+
+      if (editingYear?.id === year.id) {
+        setModalError(message);
+      } else {
+        setPageError(message);
+      }
     }
   }
 
@@ -751,6 +760,10 @@ export default function AcademicYearsTab() {
             yearStatusMutation.isPending &&
             yearStatusMutation.variables?.id ===
               year.id;
+          const isRemoving =
+            deleteYearMutation.isPending &&
+            deleteYearMutation.variables?.id ===
+              year.id;
 
           const isSelected = year.id === selectedYearId;
 
@@ -787,7 +800,7 @@ export default function AcademicYearsTab() {
 
               <button
                 type="button"
-                disabled={isChangingStatus}
+                disabled={isChangingStatus || isRemoving}
                 onClick={() =>
                   void handleYearStatus(year)
                 }
@@ -799,9 +812,18 @@ export default function AcademicYearsTab() {
               >
                 {isChangingStatus
                   ? 'Salvando...'
-                  : year.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                    : year.active
+                      ? 'Desativar'
+                      : 'Reativar'}
+              </button>
+
+              <button
+                type="button"
+                disabled={isRemoving || isChangingStatus}
+                onClick={() => void handleDeleteYear(year)}
+                className="rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200"
+              >
+                {isRemoving ? 'Removendo...' : 'Remover'}
               </button>
             </div>
           );
@@ -916,13 +938,13 @@ export default function AcademicYearsTab() {
                           />
                         </td>
                         <td className="px-4 py-3">
-                          <div className="flex flex-wrap items-center gap-3">
+                          <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
                             <button
                               type="button"
                               onClick={() =>
                                 openEditTermModal(term)
                               }
-                              className="font-medium text-blue-600 hover:text-blue-800"
+                              className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
                             >
                               Editar
                             </button>
@@ -939,8 +961,8 @@ export default function AcademicYearsTab() {
                               }
                               className={
                                 term.active
-                                  ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                                  : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                                  ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
+                                  : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
                               }
                             >
                               {isChangingStatus
@@ -1020,11 +1042,11 @@ export default function AcademicYearsTab() {
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                         Ações
                       </p>
-                      <div className="flex flex-wrap items-center gap-3">
+                      <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
                         <button
                           type="button"
                           onClick={() => openEditTermModal(term)}
-                          className="font-medium text-blue-600 hover:text-blue-800"
+                          className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
                         >
                           Editar
                         </button>
@@ -1035,8 +1057,8 @@ export default function AcademicYearsTab() {
                           onClick={() => void handleTermStatus(term)}
                           className={
                             term.active
-                              ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                              : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                              ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
+                              : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
                           }
                         >
                           {isChangingStatus
