@@ -7,7 +7,7 @@ const migrationSql = fs.readFileSync(
     process.cwd(),
     'supabase',
     'migrations',
-    '20260906003859_learning_posts_hardening.sql',
+    '20260906004102_20260906003859_learning_posts_hardening.sql',
   ),
   'utf8',
 );
