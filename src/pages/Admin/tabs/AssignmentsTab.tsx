@@ -13,6 +13,11 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -61,6 +66,8 @@ const emptyDraft: AssignmentDraft = {
   term_id: '',
   active: true,
 };
+
+const ASSIGNMENTS_PAGE_SIZE = 10;
 
 function getErrorMessage(
   error: unknown,
@@ -194,6 +201,10 @@ export default function AssignmentsTab() {
     setStatusFilter,
   ] = useState('all');
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [
     modalError,
     setModalError,
@@ -215,6 +226,10 @@ export default function AssignmentsTab() {
     if (classId) setClassFilter(classId);
     if (subjectId) setSubjectFilter(subjectId);
   }, [searchParams]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, teacherFilter, classFilter, subjectFilter, termFilter, statusFilter]);
 
   const classes = classesQuery.data ?? [];
   const subjects = subjectsQuery.data ?? [];
@@ -347,6 +362,7 @@ export default function AssignmentsTab() {
   const filteredAssignments = useMemo(() => {
     const assignments =
       assignmentsQuery.data ?? [];
+    const normalizedSearch = normalizeListSearch(searchTerm);
 
     return assignments.filter(
       (assignment) => {
@@ -375,23 +391,58 @@ export default function AssignmentsTab() {
           (statusFilter === 'inactive' &&
             !assignment.active);
 
+        const matchesSearch =
+          !normalizedSearch ||
+          [
+            assignment.subject_name,
+            assignment.subject_code,
+            assignment.class_name,
+            assignment.class_grade_level,
+            assignment.class_shift,
+            assignment.teacher_name,
+            assignment.teacher_email,
+            assignment.term_name,
+            assignment.academic_year_id,
+          ].some((value) =>
+            normalizeListSearch(value ?? '').includes(normalizedSearch),
+          );
+
         return (
           matchesTeacher &&
           matchesClass &&
           matchesSubject &&
           matchesTerm &&
-          matchesStatus
+          matchesStatus &&
+          matchesSearch
         );
       },
     );
   }, [
     assignmentsQuery.data,
     classFilter,
+    searchTerm,
     statusFilter,
     subjectFilter,
     teacherFilter,
     termFilter,
   ]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredAssignments.length / ASSIGNMENTS_PAGE_SIZE),
+  );
+
+  const paginatedAssignments = useMemo(() => {
+    const startIndex = (currentPage - 1) * ASSIGNMENTS_PAGE_SIZE;
+    return filteredAssignments.slice(
+      startIndex,
+      startIndex + ASSIGNMENTS_PAGE_SIZE,
+    );
+  }, [currentPage, filteredAssignments]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
 
   const isSubmitting =
     createMutation.isPending ||
@@ -713,7 +764,15 @@ export default function AssignmentsTab() {
         </div>
       )}
 
-      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:grid-cols-2 xl:grid-cols-5">
+      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:grid-cols-2 xl:grid-cols-6">
+        <ListSearch
+          id="assignment-search"
+          label="Buscar atribuição"
+          placeholder="Disciplina, turma ou professor"
+          value={searchTerm}
+          onChange={setSearchTerm}
+        />
+
         <div>
           <label
             htmlFor="assignment-teacher-filter"
@@ -870,7 +929,7 @@ export default function AssignmentsTab() {
       <DataTable
         title="Atribuições"
         addLabel="Nova atribuição"
-        data={filteredAssignments}
+        data={paginatedAssignments}
         columns={columns}
         isLoading={
           assignmentsQuery.isLoading ||
@@ -922,6 +981,13 @@ export default function AssignmentsTab() {
             </div>
           );
         }}
+      />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={ASSIGNMENTS_PAGE_SIZE}
+        totalItems={filteredAssignments.length}
+        onPageChange={setCurrentPage}
       />
 
       {isAutomationOpen && (
