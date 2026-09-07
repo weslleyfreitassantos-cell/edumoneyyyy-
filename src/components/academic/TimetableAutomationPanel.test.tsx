@@ -108,8 +108,8 @@ describe('TimetableAutomationPanel', () => {
   it('conecta o turno ao gerador sem exibir o editor manual de horários', async () => {
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
 
-    expect(screen.getByText('Quais horários sua escola utiliza?')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Gerar grade automaticamente' })).toBeTruthy();
+    expect(screen.getByText('Gerar grade horária')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Gerar grade' })).toBeTruthy();
     expect((screen.getByRole('combobox', { name: 'Turno do gerador' }) as HTMLSelectElement).value).toBe('TODOS');
     expect(screen.getByRole('option', { name: 'Integral' })).toBeTruthy();
     expect(screen.queryByText('Horários da escola')).toBeNull();
@@ -120,7 +120,7 @@ describe('TimetableAutomationPanel', () => {
       diagnostics: [],
     });
     fireEvent.change(screen.getByRole('combobox', { name: 'Turno do gerador' }), { target: { value: 'MATUTINO' } });
-    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade automaticamente' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade' }));
 
     await waitFor(() => {
       expect(generateMutation.mutateAsync).toHaveBeenCalledWith(expect.objectContaining({
@@ -159,7 +159,7 @@ describe('TimetableAutomationPanel', () => {
     });
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade automaticamente' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade' }));
 
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/não foi possível montar a grade/i);

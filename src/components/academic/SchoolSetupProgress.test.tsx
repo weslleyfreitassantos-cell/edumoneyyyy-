@@ -85,10 +85,10 @@ describe('SchoolSetupProgress', () => {
 
     expect(screen.getByText(/2 de 11 etapas concluídas/i)).toBeTruthy();
     expect(screen.getAllByText('Grade horária').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Personalização').length).toBeGreaterThan(0);
-    expect(screen.getByText(/personalizar o login é opcional/i)).toBeTruthy();
-    expect(screen.getAllByText(/prontidão operacional/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Publique uma grade válida/i)).toBeTruthy();
+    expect(screen.getAllByText('Identidade visual').length).toBeGreaterThan(0);
+    expect(screen.getByText(/identidade visual é opcional/i)).toBeTruthy();
+    expect(screen.getAllByText(/prontidão da escola/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Gere, revise e publique a grade/i)).toBeTruthy();
   });
 
   it('não expõe erro técnico cru e orienta ADMIN para a configuração responsável', () => {
@@ -105,7 +105,7 @@ describe('SchoolSetupProgress', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('link', { name: /gerenciar diretor ou secretaria/i })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /gerenciar acesso/i })).toBeTruthy();
     expect(screen.queryByRole('link', { name: /resolver pendência/i })).toBeNull();
 
     mockedUseSchoolSetupReadiness.mockReturnValue({
@@ -139,7 +139,7 @@ describe('SchoolSetupProgress', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.queryByText('Fundação')).toBeNull();
-    expect(screen.getByText('Configuração acadêmica')).toBeTruthy();
+    expect(screen.queryByText('Acesso de configuração')).toBeNull();
+    expect(screen.getByText('Base acadêmica')).toBeTruthy();
   });
 });

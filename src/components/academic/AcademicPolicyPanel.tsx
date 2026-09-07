@@ -384,7 +384,7 @@ export default function AcademicPolicyPanel({
       timetable: timetableSettings,
     });
 
-    setSuccessMessage('Politica academica salva.');
+    setSuccessMessage('Política acadêmica salva.');
   }
 
   return (
@@ -397,11 +397,11 @@ export default function AcademicPolicyPanel({
               aria-hidden="true"
             />
             <h2 className="text-lg font-bold text-[#181c20]">
-              Politica academica
+              Política acadêmica
             </h2>
           </div>
           <p className="mt-1 text-sm text-[#727785]">
-            Regras de fechamento, turnos e capacidade usadas na rotina academica.
+            Regras de fechamento, turnos e capacidade da escola.
           </p>
         </div>
 
@@ -442,7 +442,7 @@ export default function AcademicPolicyPanel({
             className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
           >
             Não foi possível carregar os turnos da escola.
-            A migração de configuração precisa estar aplicada antes do uso.
+            Não foi possível carregar os turnos. Tente novamente.
           </div>
         ) : (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -542,7 +542,7 @@ export default function AcademicPolicyPanel({
               role="alert"
               className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
             >
-              Não foi possível carregar os intervalos. A migration de horários complementares precisa estar aplicada antes do uso.
+              Não foi possível carregar os intervalos. Tente novamente.
             </div>
           ) : enabledShifts.length === 0 ? (
             <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
@@ -785,7 +785,7 @@ export default function AcademicPolicyPanel({
               htmlFor="academic-policy-grade"
               className="text-xs font-semibold text-[#3d4652]"
             >
-              Media minima (%)
+              Média mínima (%)
             </label>
             <input
               id="academic-policy-grade"
@@ -807,7 +807,7 @@ export default function AcademicPolicyPanel({
               htmlFor="academic-policy-attendance"
               className="text-xs font-semibold text-[#3d4652]"
             >
-              Frequencia minima (%)
+              Frequência mínima (%)
             </label>
             <input
               id="academic-policy-attendance"
@@ -849,10 +849,10 @@ export default function AcademicPolicyPanel({
           <section className="lg:col-span-5 rounded-lg border border-[#dfe3e8] bg-slate-50 p-4">
             <div>
               <h3 className="text-sm font-bold text-[#181c20]">
-                Regras da grade horaria
+                Regras da grade horária
               </h3>
               <p className="mt-1 text-xs text-[#667085]">
-                Estas regras orientam a preparacao, a geracao e a publicacao da grade.
+                Essas regras orientam a preparação e a publicação da grade.
               </p>
             </div>
 
@@ -891,12 +891,12 @@ export default function AcademicPolicyPanel({
 
             <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {([
-                ['defaultLessonDurationMinutes', 'Duracao padrao da aula (min)', 15, 180],
-                ['maxLessonsPerDay', 'Maximo de aulas por turma/dia', 1, 30],
-                ['maxTeacherLessonsPerDay', 'Maximo de aulas por professor/dia', 1, 30],
-                ['maxTeacherLessonsPerWeek', 'Maximo de aulas por professor/semana', 1, 180],
-                ['maxConsecutiveSubjectLessons', 'Maximo consecutivo da mesma materia', 1, 6],
-                ['maxSubjectLessonsPerDay', 'Maximo da mesma materia/dia', 1, 12],
+                ['defaultLessonDurationMinutes', 'Duração padrão da aula (min)', 15, 180],
+                ['maxLessonsPerDay', 'Máximo de aulas por turma/dia', 1, 30],
+                ['maxTeacherLessonsPerDay', 'Máximo de aulas por professor/dia', 1, 30],
+                ['maxTeacherLessonsPerWeek', 'Máximo de aulas por professor/semana', 1, 180],
+                ['maxConsecutiveSubjectLessons', 'Máximo consecutivo da mesma matéria', 1, 6],
+                ['maxSubjectLessonsPerDay', 'Máximo da mesma matéria/dia', 1, 12],
               ] as const).map(([field, label, min, max]) => (
                 <label key={field} className="text-xs font-semibold text-[#3d4652]">
                   {label}
@@ -920,7 +920,7 @@ export default function AcademicPolicyPanel({
             <div className="mt-4 grid gap-2 sm:grid-cols-3">
               {([
                 ['requireTeacherAvailability', 'Exigir disponibilidade do professor'],
-                ['requireRoomForGeneration', 'Exigir sala para gerar'],
+                ['requireRoomForGeneration', 'Exigir sala para gerar a grade'],
                 ['allowSharedRooms', 'Permitir salas compartilhadas'],
               ] as const).map(([field, label]) => (
                 <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054]">
@@ -943,13 +943,13 @@ export default function AcademicPolicyPanel({
           <div className="lg:col-span-5">
             {!policyQuery.isLoading && !policy && (
               <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
-                Nao ha politica ativa para este ano letivo.
+                Não há política ativa para este ano letivo.
               </div>
             )}
 
             {readOnly ? (
               <div className="rounded-lg border border-[#dfe3e8] bg-gray-50 p-3 text-sm text-[#727785]">
-                Seu perfil pode visualizar a politica, mas nao altera-la.
+                Seu perfil pode visualizar a política, mas não alterá-la.
               </div>
             ) : (
               <button
@@ -961,7 +961,7 @@ export default function AcademicPolicyPanel({
                   className="h-4 w-4"
                   aria-hidden="true"
                 />
-                {isSaving ? 'Salvando...' : 'Salvar politica'}
+                {isSaving ? 'Salvando...' : 'Salvar política'}
               </button>
             )}
           </div>
@@ -970,7 +970,7 @@ export default function AcademicPolicyPanel({
 
       {selectedYear && (
         <p className="mt-4 text-xs text-[#727785]">
-          Periodo do ano: {formatDate(selectedYear.startDate)} ate{' '}
+          Período do ano: {formatDate(selectedYear.startDate)} até{' '}
           {formatDate(selectedYear.endDate)}.
         </p>
       )}

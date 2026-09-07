@@ -81,7 +81,7 @@ function FlowStepRow({
           aria-disabled="true"
           className="mt-3 inline-flex min-h-9 items-center text-xs font-semibold text-[#667085]"
         >
-          Disponível para Diretor ou Secretaria
+          Somente Diretor ou Secretaria
         </span>
       );
 
@@ -255,7 +255,7 @@ export default function SchoolSetupProgress({
 
   if (showOnlyFoundation) {
     return (
-      <section aria-label="Fundação da escola">
+      <section aria-label="Acesso de configuração">
         <FlowDetails
           flow={flow}
           canEditAcademic={canEditAcademic}
@@ -315,11 +315,10 @@ export default function SchoolSetupProgress({
               </span>
             </div>
             <h2 className="mt-2 text-xl font-extrabold text-[#181c20] dark:text-white">
-              {flow.completedCount} de {flow.totalCount} etapas concluídas ({flow.progress}%)
+              {flow.completedCount} de {flow.totalCount} etapas concluídas
             </h2>
             <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">
-              Configuração acadêmica: {readiness.academicSetupConfigured ? 'concluída' : `${readiness.progress}%`}.
-              {' '}Prontidão operacional: {readiness.operationalReadiness.progress}%.
+              Conclua as etapas abaixo para liberar a operação da escola.
             </p>
           </div>
 
@@ -330,15 +329,15 @@ export default function SchoolSetupProgress({
                 className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
               >
                 {recommendedStep.id === 'responsible-user' || recommendedStep.id === 'manage-users'
-                  ? 'Gerenciar Diretor ou Secretaria'
-                  : 'Continuar configuração'}
+                  ? 'Gerenciar acesso'
+                  : 'Continuar'}
               </Link>
             ) : (
               <Link
                 to={configurationHref}
                 className="inline-flex min-h-10 items-center justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
               >
-                Gerenciar Diretor ou Secretaria
+                Gerenciar acesso
               </Link>
             )
           )}
@@ -346,7 +345,7 @@ export default function SchoolSetupProgress({
 
         {recommendedStep && (
           <p className="mt-4 rounded-lg border border-[#e4e8f1] bg-[#f8faff] px-3 py-2 text-sm text-[#475467] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-300">
-            Próximo passo: <strong>{recommendedStep.label}</strong>
+            Próximo: <strong>{recommendedStep.label}</strong>
             {recommendedStep.reason && ` — ${recommendedStep.reason}`}
           </p>
         )}
@@ -359,11 +358,11 @@ export default function SchoolSetupProgress({
       }`}>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div>
-            <p className="text-sm font-bold text-[#344054] dark:text-slate-100">Prontidão operacional</p>
+            <p className="text-sm font-bold text-[#344054] dark:text-slate-100">Prontidão da escola</p>
             <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">
               {readiness.operationalReadiness.ready
                 ? 'Escola pronta para operar.'
-                : `${readiness.operationalReadiness.totalCount - readiness.operationalReadiness.completedCount} requisito(s) pendente(s).`}
+                : `Faltam ${readiness.operationalReadiness.totalCount - readiness.operationalReadiness.completedCount} requisito(s) para operar.`}
             </p>
           </div>
           <span className="text-lg font-extrabold text-[#005bbf] dark:text-blue-300">

@@ -573,8 +573,8 @@ export default function TeachersTab() {
       <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 className="font-bold text-[#181c20]">Disponibilidade dos professores</h3>
-            <p className="mt-1 text-sm text-gray-500">Preencha em lote com os horários ativos da escola. Antes deles existirem, a Política acadêmica fornece uma sugestão padrão; ajuste apenas quem tiver uma jornada diferente.</p>
+            <h3 className="font-bold text-[#181c20]">Disponibilidade</h3>
+            <p className="mt-1 text-sm text-gray-500">Aplique o horário padrão e ajuste apenas as exceções.</p>
           </div>
           <button
             type="button"
@@ -597,7 +597,7 @@ export default function TeachersTab() {
           </button>
         </div>
         {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível carregar os horários da escola.</p>}
-        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-blue-700">Nenhum horário de aula foi cadastrado ainda. Será usada uma sugestão padrão baseada na Política acadêmica; horários cadastrados depois passarão a ser priorizados.</p>}
+        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-blue-700">Nenhum horário foi cadastrado. Será usada a sugestão da Política acadêmica.</p>}
       </section>
 
       <ListSearch
@@ -782,10 +782,10 @@ export default function TeachersTab() {
                       </label>
                     ))}
                   {subjectsQuery.data?.length === 0 && (
-                    <p className="text-xs text-gray-500">Cadastre disciplinas antes de vincular habilidades.</p>
+                    <p className="text-xs text-gray-500">Cadastre as matérias antes de vinculá-las.</p>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-gray-500">A disponibilidade semanal e configurada no proximo passo.</p>
+                <p className="mt-1 text-xs text-gray-500">A disponibilidade semanal é configurada depois.</p>
               </div>
 
               <div>

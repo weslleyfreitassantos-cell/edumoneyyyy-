@@ -508,7 +508,7 @@ export default function AcademicYearsTab() {
 
         setFeedbackMessage(
           periodDrafts.length > 0
-            ? `Ano letivo criado com ${created.term_count} periodo(s).`
+            ? `Ano letivo criado com ${created.term_count} período(s).`
             : 'Ano letivo criado com sucesso.',
         );
       }
@@ -1269,9 +1269,9 @@ export default function AcademicYearsTab() {
                     </select>
                     {sourceYearId && <div className="mt-2 space-y-2 text-xs text-gray-600">
                       <label className="flex items-center gap-2"><input type="checkbox" checked readOnly /> Estrutura das turmas e matriz curricular</label>
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horarios padrao</label>
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuicoes de professores qualificadas (sugestao)</label>
-                      <p>Alunos, matriculas, notas e frequencia nunca sao copiados.</p>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horários padrão</label>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuições de professores qualificadas (sugestão)</label>
+                      <p>Alunos, matrículas, notas e frequência nunca são copiados.</p>
                     </div>}
                   </div>
                 </>

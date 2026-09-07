@@ -87,7 +87,7 @@ export default function AssignmentAutomationPanel({
               Atribuir professores automaticamente
             </h2>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
-              Preencha apenas as combinações que ainda não possuem atribuição em todos os períodos ativos.
+              O sistema preencherá apenas o que estiver faltando nos períodos ativos.
             </p>
           </div>
           <button type="button" onClick={onClose} aria-label="Fechar" title="Fechar" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
@@ -104,21 +104,21 @@ export default function AssignmentAutomationPanel({
 
         {errorMessage && <div role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{errorMessage}</div>}
         {previewQuery.isError && <div role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">Não foi possível preparar a prévia das atribuições.</div>}
-        {previewQuery.isLoading && <div className="flex items-center gap-2 py-8 text-sm text-slate-600"><Loader2 className="h-4 w-4 animate-spin" />Analisando matriz, períodos e habilitações...</div>}
+        {previewQuery.isLoading && <div className="flex items-center gap-2 py-8 text-sm text-slate-600"><Loader2 className="h-4 w-4 animate-spin" />Verificando matérias, períodos e professores...</div>}
 
         {preview && !previewQuery.isLoading && (
           <>
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <div className="rounded-lg border border-blue-100 bg-blue-50 p-3 dark:border-blue-900/60 dark:bg-blue-950/30"><p className="text-xs text-slate-600 dark:text-slate-300">Serão preenchidas</p><strong className="text-xl text-blue-700 dark:text-blue-300">{preview.candidates.length}</strong></div>
-              <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-3 dark:border-emerald-900/60 dark:bg-emerald-950/30"><p className="text-xs text-slate-600 dark:text-slate-300">Já cobertas</p><strong className="text-xl text-emerald-700 dark:text-emerald-300">{preview.coveredCount}</strong></div>
-              <div className="rounded-lg border border-amber-100 bg-amber-50 p-3 dark:border-amber-900/60 dark:bg-amber-950/30"><p className="text-xs text-slate-600 dark:text-slate-300">Sem professor habilitado</p><strong className="text-xl text-amber-700 dark:text-amber-300">{preview.unassigned.length}</strong></div>
+              <div className="rounded-lg border border-blue-100 bg-blue-50 p-3 dark:border-blue-900/60 dark:bg-blue-950/30"><p className="text-xs text-slate-600 dark:text-slate-300">A preencher</p><strong className="text-xl text-blue-700 dark:text-blue-300">{preview.candidates.length}</strong></div>
+              <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-3 dark:border-emerald-900/60 dark:bg-emerald-950/30"><p className="text-xs text-slate-600 dark:text-slate-300">Já preenchidas</p><strong className="text-xl text-emerald-700 dark:text-emerald-300">{preview.coveredCount}</strong></div>
+              <div className="rounded-lg border border-amber-100 bg-amber-50 p-3 dark:border-amber-900/60 dark:bg-amber-950/30"><p className="text-xs text-slate-600 dark:text-slate-300">Sem professor</p><strong className="text-xl text-amber-700 dark:text-amber-300">{preview.unassigned.length}</strong></div>
             </div>
 
             {preview.activeTermCount === 0 && <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">Cadastre pelo menos um período ativo para criar atribuições.</div>}
-            {preview.unassigned.length > 0 && <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"><div className="flex items-center gap-2 font-semibold"><AlertTriangle className="h-4 w-4" />Estas combinações ficarão pendentes</div><p className="mt-1">Associe um professor habilitado à disciplina antes de tentar novamente.</p><ul className="mt-2 list-inside list-disc">{preview.unassigned.slice(0, 6).map((item) => <li key={`${item.classId}:${item.subjectId}`}>{classNames.get(item.classId) ?? 'Turma'} · {subjectNames.get(item.subjectId) ?? 'Disciplina'}</li>)}</ul>{preview.unassigned.length > 6 && <p className="mt-1">E mais {preview.unassigned.length - 6} pendência(s).</p>}</div>}
+            {preview.unassigned.length > 0 && <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800"><div className="flex items-center gap-2 font-semibold"><AlertTriangle className="h-4 w-4" />Faltam professores</div><p className="mt-1">Associe um professor habilitado antes de tentar novamente.</p><ul className="mt-2 list-inside list-disc">{preview.unassigned.slice(0, 6).map((item) => <li key={`${item.classId}:${item.subjectId}`}>{classNames.get(item.classId) ?? 'Turma'} · {subjectNames.get(item.subjectId) ?? 'Disciplina'}</li>)}</ul>{preview.unassigned.length > 6 && <p className="mt-1">E mais {preview.unassigned.length - 6} pendência(s).</p>}</div>}
 
             {preview.candidates.length > 0 && <div className="mt-4 overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"><div className="border-b border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold dark:border-slate-700 dark:bg-slate-800 dark:text-white">Prévia das atribuições</div><div className="max-h-64 overflow-y-auto">{preview.candidates.slice(0, 12).map((item) => <div key={`${item.classId}:${item.subjectId}`} className="grid gap-1 border-b border-slate-100 px-4 py-3 text-sm last:border-b-0 sm:grid-cols-[1fr_1fr_1fr] dark:border-slate-800"><span className="font-medium text-slate-900 dark:text-white">{classNames.get(item.classId) ?? 'Turma'}</span><span className="text-slate-600 dark:text-slate-300">{subjectNames.get(item.subjectId) ?? 'Disciplina'} · {item.weeklyLessons} aula(s)/semana</span><span className="text-slate-600 dark:text-slate-300">{teacherNames.get(item.teacherProfileId) ?? 'Professor habilitado'}</span></div>)}</div>{preview.candidates.length > 12 && <p className="border-t border-slate-200 px-4 py-2 text-xs text-slate-500 dark:border-slate-700">Mostrando 12 de {preview.candidates.length} combinações.</p>}</div>}
-            {preview.candidates.length === 0 && preview.unassigned.length === 0 && <div className="mt-5 flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"><CheckCircle2 className="h-4 w-4" />Nenhuma pendência de atribuição para este ano letivo.</div>}
+            {preview.candidates.length === 0 && preview.unassigned.length === 0 && <div className="mt-5 flex items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800"><CheckCircle2 className="h-4 w-4" />Todas as atribuições estão preenchidas.</div>}
           </>
         )}
 

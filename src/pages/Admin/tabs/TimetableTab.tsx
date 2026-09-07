@@ -423,7 +423,7 @@ export default function TimetableTab() {
               </select>
             </div>
             <div>
-              <label htmlFor="tt-term-filter" className="block text-sm font-medium text-gray-700">Periodo</label>
+              <label htmlFor="tt-term-filter" className="block text-sm font-medium text-gray-700">Período</label>
               <select id="tt-term-filter" value={termFilter} onChange={(e) => setTermFilter(e.target.value)} className="mt-1 rounded-lg border px-3 py-2 text-sm">
                 <option value="all">Todos</option>
                 {years.flatMap((year) => year.terms.filter((term) => yearFilter === 'all' || year.id === yearFilter).map((term) => <option key={term.id} value={term.id}>{term.name} - {year.name}</option>))}

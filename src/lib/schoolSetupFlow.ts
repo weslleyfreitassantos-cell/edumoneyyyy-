@@ -298,7 +298,7 @@ function setupStepDefinitions(
       {
         id: 'institution-selected',
         label: 'Instituição criada e selecionada',
-        description: 'A configuração está vinculada à instituição selecionada.',
+        description: 'A escola está selecionada para esta configuração.',
         href: '/admin?module=overview',
         actionLabel: 'Ver visão geral',
         complete: Boolean(readiness.institutionId),
@@ -307,10 +307,10 @@ function setupStepDefinitions(
         id: 'responsible-user',
         label: 'Diretor ou Secretaria',
         description: managerConfigured
-          ? 'Existe um responsável com acesso à configuração acadêmica.'
-          : 'Adicione um Diretor ou Secretaria para realizar a configuração acadêmica da escola.',
+          ? 'Há um responsável com acesso à configuração.'
+          : 'Adicione um Diretor ou uma Secretaria para configurar a escola.',
         href: responsibleUserHref,
-        actionLabel: 'Gerenciar usuários',
+        actionLabel: 'Gerenciar acesso',
         complete: managerConfigured,
         dependencies: ['institution-selected'],
       },
@@ -320,34 +320,34 @@ function setupStepDefinitions(
         readiness,
         'academic-calendar',
         ['academic-year', 'terms'],
-        'Calendário acadêmico',
-        'Defina o ano letivo e cadastre os períodos que serão usados pela escola.',
+        'Calendário',
+        'Defina o ano letivo e os períodos.',
         managerDependencies,
       ),
       definitionFromReadiness(
         readiness,
         'subjects',
-        'Cadastre as matérias que a escola oferece.',
+        'Cadastre as matérias oferecidas pela escola.',
         managerDependencies,
       ),
       definitionFromReadinessGroup(
         readiness,
         'academic-structure',
         ['teaching-structure', 'shifts'],
-        'Estrutura acadêmica',
-        'Defina a estrutura de ensino e os turnos permitidos pela escola.',
+        'Estrutura de ensino',
+        'Defina os níveis de ensino e os turnos usados pela escola.',
         [...managerDependencies, 'academic-calendar'],
       ),
       definitionFromReadiness(
         readiness,
         'classes',
-        'Crie as turmas e associe cada uma ao seu turno.',
+        'Crie as turmas e associe cada uma a um turno.',
         [...managerDependencies, 'academic-calendar', 'academic-structure'],
       ),
       definitionFromReadiness(
         readiness,
         'class-subjects',
-        'Defina as matérias de cada turma e a quantidade de aulas semanais.',
+        'Associe matérias e aulas semanais às turmas.',
         [...managerDependencies, 'academic-calendar', 'subjects', 'classes'],
         'curriculum',
       ),
@@ -357,7 +357,7 @@ function setupStepDefinitions(
         readiness,
         'teachers-configured',
         'Professores',
-        'Cadastre pelo menos um professor ativo.',
+        'Cadastre os professores da escola.',
         managerDependencies,
         'Configurar professores',
       ),
@@ -365,8 +365,8 @@ function setupStepDefinitions(
         readiness,
         'teaching-assignments',
         ['subject-offerings', 'teacher-assignments', 'teacher-qualifications'],
-        'Atribuições de professores',
-        'Associe professores habilitados às matérias da matriz. O sistema pode automatizar essa etapa.',
+        'Atribuições',
+        'Associe professores habilitados às matérias. O sistema pode fazer isso automaticamente.',
         [...managerDependencies, 'teachers-configured', 'curriculum'],
         'Configurar atribuições',
       ),
@@ -374,8 +374,8 @@ function setupStepDefinitions(
         ...definitionFromBlocker(
           readiness,
           'teacher-availability',
-          'Disponibilidade dos professores',
-          'Informe a disponibilidade quando a política acadêmica exigir esse dado.',
+          'Disponibilidade',
+          'Defina quando os professores podem dar aulas.',
           [...managerDependencies, 'teaching-assignments'],
           'Configurar disponibilidade',
         ),
@@ -388,8 +388,8 @@ function setupStepDefinitions(
       definitionFromBlocker(
         readiness,
         'active-enrollments',
-        'Alunos e matrículas',
-        'Cadastre os alunos e efetive pelo menos uma matrícula.',
+        'Alunos',
+        'Cadastre os alunos e associe-os às turmas.',
         [...managerDependencies, 'academic-calendar', 'classes'],
         'Matricular alunos',
       ),
@@ -398,21 +398,21 @@ function setupStepDefinitions(
       definitionFromReadiness(
         readiness,
         'timetable',
-        'Prepare e publique uma grade válida para as turmas ativas.',
+        'Gere, revise e publique a grade.',
         [...managerDependencies, 'academic-calendar', 'academic-structure', 'classes', 'curriculum', 'teaching-assignments'],
       ),
     ],
     optional: [
       {
         id: 'branding',
-        label: 'Personalização',
+        label: 'Identidade visual',
         description: readiness.optionalSetup.brandingConfigured
-          ? 'A personalização do login está configurada.'
-          : 'Personalizar o login é opcional e não bloqueia a operação.',
+          ? 'A identidade visual está configurada.'
+          : 'A identidade visual é opcional e não bloqueia a operação.',
         href: '/personalizar-login',
         actionLabel: readiness.optionalSetup.brandingConfigured
-          ? 'Revisar personalização'
-          : 'Personalizar login',
+          ? 'Revisar identidade visual'
+          : 'Personalizar acesso',
         complete: readiness.optionalSetup.brandingConfigured,
         optional: true,
       },
@@ -439,8 +439,8 @@ export function buildSchoolSetupFlow(
   if (options.includeFoundation !== false) {
     sections.push(createSection(
       'foundation',
-      'Fundação',
-      'Defina quem poderá realizar a configuração acadêmica da escola.',
+      'Acesso de configuração',
+      'Defina quem pode configurar a escola.',
       definitions.foundation,
       resolved,
     ));
@@ -449,22 +449,22 @@ export function buildSchoolSetupFlow(
   sections.push(
     createSection(
       'academic-structure',
-      'Configuração acadêmica',
-      'Siga o fluxo acadêmico na ordem certa, com cada etapa no seu módulo.',
+      'Base acadêmica',
+      'Configure calendário, matérias, turmas e matriz curricular.',
       definitions.academic,
       resolved,
     ),
     createSection(
       'people',
-      'Equipe escolar',
-      'Prepare professores, atribuições automáticas e disponibilidade para a operação.',
+      'Equipe',
+      'Cadastre professores, atribuições e disponibilidade.',
       definitions.people,
       resolved,
     ),
     createSection(
       'enrollments',
-      'Matrículas',
-      'Cadastre os alunos e efetive suas matrículas nas turmas correspondentes.',
+      'Alunos',
+      'Cadastre os alunos e associe-os às turmas.',
       definitions.enrollments,
       resolved,
     ),
@@ -477,8 +477,8 @@ export function buildSchoolSetupFlow(
     ),
     createSection(
       'personalization',
-      'Personalização',
-      'A identidade visual é opcional e não bloqueia a escola.',
+      'Identidade visual',
+      'Personalize o acesso da escola, se desejar.',
       definitions.optional,
       resolved,
       true,
@@ -503,10 +503,10 @@ export function buildSchoolSetupFlow(
         ...firstIncompleteStep,
         id: 'manage-users',
         label: 'Responsável pela configuração',
-        description: 'A configuração acadêmica deve ser realizada por um Diretor ou Secretaria.',
-        reason: 'Escolha ou gerencie o responsável pela configuração acadêmica.',
+        description: 'A configuração deve ser realizada por um Diretor ou uma Secretaria.',
+        reason: 'Escolha quem ficará responsável pela configuração.',
         href: options.responsibleUserHref ?? defaultResponsibleUserHref,
-        actionLabel: 'Gerenciar Diretor ou Secretaria',
+        actionLabel: 'Gerenciar acesso',
       }
     : nextEditableStep;
 

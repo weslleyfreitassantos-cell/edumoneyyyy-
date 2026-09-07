@@ -125,14 +125,14 @@ describe('buildSchoolSetupFlow', () => {
     const peopleSection = flow.sections.find((section) => section.id === 'people');
 
     expect(academicSection?.steps.map((step) => step.label)).toEqual([
-      'Calendário acadêmico',
+      'Calendário',
       'Matérias',
-      'Estrutura acadêmica',
+      'Estrutura de ensino',
       'Turmas',
       'Matérias das turmas',
     ]);
-    expect(peopleSection?.steps.map((step) => step.label)).toContain('Atribuições de professores');
-    expect(flow.sections.find((section) => section.id === 'enrollments')?.label).toBe('Matrículas');
+    expect(peopleSection?.steps.map((step) => step.label)).toContain('Atribuições');
+    expect(flow.sections.find((section) => section.id === 'enrollments')?.label).toBe('Alunos');
   });
 
   it('recomenda matrículas quando os professores estão prontos', () => {
