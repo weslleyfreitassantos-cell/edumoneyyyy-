@@ -14,7 +14,13 @@ import {
   ListSearch,
   normalizeListSearch,
 } from '../../../components/ListControls';
-import { Upload } from 'lucide-react';
+import {
+  Loader2,
+  Power,
+  PowerOff,
+  Settings2,
+  Upload,
+} from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -567,6 +573,8 @@ export default function TeachersTab() {
         data={paginatedTeachers}
         columns={columns}
         isLoading={teachersQuery.isLoading}
+        actionCellClassName="min-w-[100px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         onAdd={openCreateModal}
         emptyMessage={
           filteredTeachers.length === 0 && teachers.length > 0
@@ -580,25 +588,35 @@ export default function TeachersTab() {
               teacher.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex min-w-max items-center gap-1">
               <button
                 type="button"
+                title="Disciplinas e disponibilidade"
+                aria-label={`Disciplinas e disponibilidade de ${getTeacherName(teacher)}`}
                 onClick={() => setSettingsTeacher({ profileId: teacher.profile_id, name: getTeacherName(teacher) })}
-                className="font-medium text-blue-600 hover:text-blue-800"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Disciplinas e disponibilidade
+                <Settings2 className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
+                title={`${teacher.active ? 'Desativar' : 'Reativar'} ${getTeacherName(teacher)}`}
+                aria-label={`${teacher.active ? 'Desativar' : 'Reativar'} ${getTeacherName(teacher)}`}
                 onClick={() => void handleToggleStatus(teacher)}
                 disabled={isChangingStatus}
                 className={
                   teacher.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus ? 'Salvando...' : teacher.active ? 'Desativar' : 'Reativar'}
+                {isChangingStatus ? (
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : teacher.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
             </div>
           );

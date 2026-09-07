@@ -231,31 +231,35 @@ export function DataTable<T extends { id: string }>({
                     Ações
                   </p>
                   {renderActions ? (
-                    <ActionGroup className={actionGroupClassName}>
-                      {renderActions(row)}
-                    </ActionGroup>
+                    <div className="flex justify-end">
+                      <ActionGroup className={actionGroupClassName}>
+                        {renderActions(row)}
+                      </ActionGroup>
+                    </div>
                   ) : (
-                    <ActionGroup>
-                      {onEdit && (
-                        <button
-                          type="button"
-                          onClick={() => onEdit(row)}
-                          className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
-                        >
-                          Editar
-                        </button>
-                      )}
+                    <div className="flex justify-end">
+                      <ActionGroup>
+                        {onEdit && (
+                          <button
+                            type="button"
+                            onClick={() => onEdit(row)}
+                            className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
+                          >
+                            Editar
+                          </button>
+                        )}
 
-                      {onDelete && (
-                        <button
-                          type="button"
-                          onClick={() => onDelete(row)}
-                          className="rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200"
-                        >
-                          Excluir
-                        </button>
-                      )}
-                    </ActionGroup>
+                        {onDelete && (
+                          <button
+                            type="button"
+                            onClick={() => onDelete(row)}
+                            className="rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200"
+                          >
+                            Excluir
+                          </button>
+                        )}
+                      </ActionGroup>
+                    </div>
                   )}
                 </div>
               )}
