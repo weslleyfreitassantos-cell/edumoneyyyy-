@@ -25,6 +25,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 import { ActionGroup } from '../../../components/ActionGroup';
+import StatusBadge from '../../../components/StatusBadge';
 
 import {
   CURRENT_DATABASE_ROLES,
@@ -102,6 +103,11 @@ export interface SchoolUserSummary {
   active: number;
   inactive: number;
   byRole: Record<CurrentDatabaseRole, number>;
+}
+
+export interface SchoolUserAccessStatus {
+  active: boolean | null;
+  reason: string;
 }
 
 function getErrorMessage(
@@ -218,30 +224,41 @@ export function getSchoolUserSummary(
   };
 }
 
-function StatusBadge({
-  active,
-}: {
-  active: boolean | null;
-}) {
-  if (active === null) {
-    return (
-      <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-slate-300">
-        Status não informado
-      </span>
-    );
+export function getSchoolUserAccessStatus(
+  user: SchoolUserRow,
+): SchoolUserAccessStatus {
+  if (!user.active && user.profile?.active === false) {
+    return {
+      active: false,
+      reason: 'Vínculo e perfil inativos',
+    };
   }
 
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-slate-300'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
+  if (!user.active) {
+    return {
+      active: false,
+      reason: 'Vínculo inativo',
+    };
+  }
+
+  if (user.profile?.active === false) {
+    return {
+      active: false,
+      reason: 'Perfil inativo',
+    };
+  }
+
+  if (user.profile?.active === true) {
+    return {
+      active: true,
+      reason: 'Acesso ativo',
+    };
+  }
+
+  return {
+    active: null,
+    reason: 'Status não confirmado',
+  };
 }
 
 function SummaryCard({
@@ -380,16 +397,17 @@ function SchoolUsersTable({
                 <p className="mt-1"><span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">{schoolUserRoleLabels[user.role]}</span></p>
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Vínculo</p>
-                <p className="mt-1"><StatusBadge active={user.active} /></p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Status</p>
+                <p
+                  className="mt-1"
+                  title={getSchoolUserAccessStatus(user).reason}
+                >
+                  <StatusBadge active={getSchoolUserAccessStatus(user).active} />
+                </p>
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Entrada</p>
                 <p className="mt-1 text-gray-600 dark:text-slate-300">{formatDate(user.joined_at)}</p>
-              </div>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Perfil</p>
-                <p className="mt-1"><StatusBadge active={user.profile?.active ?? null} /></p>
               </div>
             </div>
 
@@ -411,7 +429,7 @@ function SchoolUsersTable({
   return (
     <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
       <div className="overflow-x-auto">
-        <table className="min-w-[920px] w-full text-sm">
+        <table className="min-w-[800px] w-full text-sm">
           <thead className="bg-gray-50 dark:bg-slate-800">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
@@ -427,15 +445,11 @@ function SchoolUsersTable({
               </th>
 
               <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
-                Vínculo
+                Status
               </th>
 
               <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Entrada
-              </th>
-
-              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
-                Perfil
               </th>
 
               <th className="px-4 py-3 text-right font-medium text-gray-700 dark:text-slate-300">
@@ -470,22 +484,17 @@ function SchoolUsersTable({
                   </span>
                 </td>
 
-                <td className="px-4 py-3">
+                <td
+                  className="px-4 py-3"
+                  title={getSchoolUserAccessStatus(user).reason}
+                >
                   <StatusBadge
-                    active={user.active}
+                    active={getSchoolUserAccessStatus(user).active}
                   />
                 </td>
 
                 <td className="px-4 py-3 text-gray-600 dark:text-slate-300">
                   {formatDate(user.joined_at)}
-                </td>
-
-                <td className="px-4 py-3">
-                  <StatusBadge
-                    active={
-                      user.profile?.active ?? null
-                    }
-                  />
                 </td>
 
                 <td className="px-4 py-3">

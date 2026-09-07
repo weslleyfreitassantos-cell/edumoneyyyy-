@@ -21,6 +21,7 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import StatusBadge from '../../../components/StatusBadge';
 
 import {
   ListPagination,
@@ -367,13 +368,13 @@ export default function StudentsTab() {
                 ? ` • ${enrollment.class_shift}`
                 : ''}
             </p>
-            <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${
-              enrollment.active
-                ? 'bg-green-100 text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
-                : 'bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300'
-            }`}>
-              {enrollment.status_label}
-            </span>
+            <div className="mt-2">
+              <StatusBadge
+                active={enrollment.active}
+                activeLabel={enrollment.status_label}
+                inactiveLabel={enrollment.status_label}
+              />
+            </div>
           </div>
         );
       },
@@ -387,19 +388,7 @@ export default function StudentsTab() {
     {
       key: 'active',
       label: 'Status',
-      render: (_value, row) => (
-        <span
-          className={
-            row.active
-              ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
-              : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-slate-300'
-          }
-        >
-          {row.active
-            ? 'Ativo'
-            : 'Inativo'}
-        </span>
-      ),
+      render: (_value, row) => <StatusBadge active={row.active} />,
     },
   ];
 

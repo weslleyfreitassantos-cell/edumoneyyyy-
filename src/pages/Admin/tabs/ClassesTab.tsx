@@ -21,6 +21,7 @@ import {
   type Column,
 } from '../../../components/DataTable';
 import ClassAutomationPanel from '../../../components/academic/ClassAutomationPanel';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -87,24 +88,6 @@ function getErrorMessage(
   error: unknown,
 ): string {
   return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativa' : 'Inativa'}
-    </span>
-  );
 }
 
 function toClassPayload(
@@ -334,7 +317,11 @@ export default function ClassesTab() {
       key: 'active',
       label: 'Status',
       render: (_value, row) => (
-        <StatusBadge active={row.active} />
+        <StatusBadge
+          active={row.active}
+          activeLabel="Ativa"
+          inactiveLabel="Inativa"
+        />
       ),
     },
   ];

@@ -9,6 +9,7 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import StatusBadge from '../../../components/StatusBadge';
 import {
   ListPagination,
   ListSearch,
@@ -313,19 +314,7 @@ export default function TeachersTab() {
     {
       key: 'active',
       label: 'Status',
-      render: (_value, row) => (
-        <span
-          className={
-            row.active
-              ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-              : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-          }
-        >
-          {row.active
-            ? 'Ativo'
-            : 'Inativo'}
-        </span>
-      ),
+      render: (_value, row) => <StatusBadge active={row.active} />,
     },
   ];
 

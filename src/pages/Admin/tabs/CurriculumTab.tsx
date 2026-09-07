@@ -16,6 +16,7 @@ import {
   normalizeListSearch,
 } from '../../../components/ListControls';
 import CurriculumTemplatePanel from '../../../components/academic/CurriculumTemplatePanel';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -62,20 +63,6 @@ const CURRICULUM_PAGE_SIZE = 10;
 
 function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
-}
-
-function StatusBadge({ active }: { active: boolean }) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
 }
 
 function toCreatePayload(institutionId: string, draft: ItemDraft) {
