@@ -44,7 +44,9 @@ describe('manage-school-user', () => {
     expect(source).toContain('code: "EMAIL_ALREADY_IN_USE"');
   });
 
-  it('protege historico academico e limita vinculos de guardianship ao tenant', () => {
+  it('preserva historico academico ao remover aluno com registros vinculados', () => {
+    expect(source).toContain('historyPreserved: true');
+    expect(source).toContain('.update({ active: false })');
     expect(source).toContain('USER_HAS_RELATED_RECORDS');
     expect(source).toContain('.in("student_id", ownStudentIds)');
     expect(source).toContain('.from("student_term_results")');
