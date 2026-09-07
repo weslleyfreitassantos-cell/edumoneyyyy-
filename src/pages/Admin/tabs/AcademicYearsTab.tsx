@@ -797,8 +797,8 @@ export default function AcademicYearsTab() {
         }}
       />
 
-      <section className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-300">
-        <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-300 sm:flex-row sm:items-center sm:justify-between">
+      <section className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
+        <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
             <h3 className="font-bold text-[#181c20]">
               Períodos
@@ -865,7 +865,7 @@ export default function AcademicYearsTab() {
                     return (
                       <tr
                         key={term.id}
-                        className="border-t border-[#dfe3e8] hover:bg-gray-50 dark:border-slate-300"
+                        className="border-t border-[#dfe3e8] hover:bg-gray-50 dark:border-slate-700"
                       >
                         <td className="px-4 py-3">
                           <div>
@@ -941,7 +941,7 @@ export default function AcademicYearsTab() {
             </table>
             </div>}
 
-            {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-300">
+            {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
             {selectedYear.terms.length === 0 ? (
               <div className="px-4 py-8 text-center text-sm text-gray-500">
                 Nenhum período cadastrado para este ano letivo.
@@ -998,7 +998,7 @@ export default function AcademicYearsTab() {
                       </div>
                     </dl>
 
-                    <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-300">
+                    <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                         Ações
                       </p>

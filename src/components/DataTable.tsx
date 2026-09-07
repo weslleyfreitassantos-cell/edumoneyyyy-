@@ -62,15 +62,15 @@ export function DataTable<T extends { id: string }>({
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500 dark:border-slate-300">
+      <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500 dark:border-slate-700">
         Carregando...
       </div>
     );
   }
 
   return (
-    <div className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-300">
-      <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-300 sm:flex-row sm:items-center sm:justify-between">
+    <div className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
+      <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
         <h3 className="min-w-0 font-bold text-[#181c20]">
           {title}
         </h3>
@@ -133,7 +133,7 @@ export function DataTable<T extends { id: string }>({
               data.map((row) => (
                 <tr
                   key={row.id}
-                  className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-300"
+                  className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700"
                 >
                   {columns.map((column) => (
                     <td
@@ -194,7 +194,7 @@ export function DataTable<T extends { id: string }>({
         </table>
       </div>}
 
-      {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-300">
+      {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
         {data.length === 0 ? (
           <div className="px-4 py-8 text-center text-sm text-gray-500">
             {emptyMessage}
@@ -218,7 +218,7 @@ export function DataTable<T extends { id: string }>({
               </dl>
 
               {hasActions && (
-                <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-300">
+                <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                     Ações
                   </p>

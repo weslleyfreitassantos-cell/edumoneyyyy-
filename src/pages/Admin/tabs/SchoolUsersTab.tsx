@@ -298,7 +298,7 @@ function SchoolUsersTable({
   currentRole: CurrentDatabaseRole | string | null;
 }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
+    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
       <div className="overflow-x-auto">
         <table className="min-w-[920px] w-full text-sm">
           <thead className="bg-gray-50">
@@ -337,7 +337,7 @@ function SchoolUsersTable({
             {users.map((user) => (
               <tr
                 key={user.id}
-                className="border-t transition-colors hover:bg-gray-50"
+                className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700"
               >
                 <td className="px-4 py-3 font-medium text-[#181c20]">
                   {user.profile?.full_name ??
@@ -1032,7 +1032,7 @@ export default function SchoolUsersTab({
         )}
 
         {filteredUsers.length > SCHOOL_USERS_PAGE_SIZE && (
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600">
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600 dark:border-slate-700">
             <span>
               Mostrando {pageStart + 1}–
               {Math.min(
@@ -1053,7 +1053,7 @@ export default function SchoolUsersTab({
                     Math.max(1, page - 1),
                   )
                 }
-                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700"
               >
                 <ChevronLeft
                   className="h-4 w-4"
@@ -1076,7 +1076,7 @@ export default function SchoolUsersTab({
                     Math.min(totalPages, page + 1),
                   )
                 }
-                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700"
               >
                 Próxima
                 <ChevronRight
