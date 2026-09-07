@@ -37,7 +37,16 @@ function createReadiness({
 } = {}): SchoolSetupReadiness {
   const steps = academicStepIds.map((id) => ({
     id,
-    label: id,
+    label: {
+      'academic-year': 'Ano letivo',
+      terms: 'Períodos',
+      subjects: 'Matérias',
+      'teaching-structure': 'Estrutura de ensino',
+      shifts: 'Turnos',
+      classes: 'Turmas',
+      'class-subjects': 'Matérias das turmas',
+      timetable: 'Grade horária',
+    }[id],
     complete: !incompleteAcademic.includes(id),
     href: `/admin?module=${id}`,
   }));
@@ -98,12 +107,12 @@ describe('buildSchoolSetupFlow', () => {
     expect(nextId({ incompleteAcademic: ['academic-year', 'terms'] })).toBe('academic-calendar');
   });
 
-  it('recomenda matérias e estrutura quando o calendário já existe', () => {
-    expect(nextId({ incompleteAcademic: ['subjects'] })).toBe('academic-base');
+  it('recomenda matérias quando o calendário já existe', () => {
+    expect(nextId({ incompleteAcademic: ['subjects'] })).toBe('subjects');
   });
 
-  it('recomenda turmas e matriz quando a estrutura ainda está incompleta', () => {
-    expect(nextId({ incompleteAcademic: ['class-subjects', 'timetable'] })).toBe('classes-and-curriculum');
+  it('recomenda a matriz depois das turmas', () => {
+    expect(nextId({ incompleteAcademic: ['class-subjects', 'timetable'] })).toBe('curriculum');
   });
 
   it('recomenda professores quando a configuração acadêmica terminou', () => {
@@ -117,10 +126,13 @@ describe('buildSchoolSetupFlow', () => {
 
     expect(academicSection?.steps.map((step) => step.label)).toEqual([
       'Calendário acadêmico',
-      'Matérias e estrutura',
-      'Turmas e matriz curricular',
+      'Matérias',
+      'Estrutura acadêmica',
+      'Turmas',
+      'Matérias das turmas',
     ]);
-    expect(peopleSection?.steps.map((step) => step.label)).toContain('Equipe e atribuições');
+    expect(peopleSection?.steps.map((step) => step.label)).toContain('Atribuições de professores');
+    expect(flow.sections.find((section) => section.id === 'enrollments')?.label).toBe('Matrículas');
   });
 
   it('recomenda matrículas quando os professores estão prontos', () => {

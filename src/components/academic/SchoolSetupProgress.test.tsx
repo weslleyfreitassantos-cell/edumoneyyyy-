@@ -83,7 +83,7 @@ describe('SchoolSetupProgress', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText(/2 de 9 etapas concluídas/i)).toBeTruthy();
+    expect(screen.getByText(/2 de 11 etapas concluídas/i)).toBeTruthy();
     expect(screen.getAllByText('Grade horária').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Personalização').length).toBeGreaterThan(0);
     expect(screen.getByText(/personalizar o login é opcional/i)).toBeTruthy();

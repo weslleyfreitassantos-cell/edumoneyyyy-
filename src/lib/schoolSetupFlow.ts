@@ -117,11 +117,12 @@ function definitionFromReadiness(
   id: SchoolSetupStepId,
   description: string,
   dependencies: string[] = [],
+  visibleId: string = id,
 ): StepDefinition {
   const source = getReadinessStep(readiness, id);
 
   return {
-    id,
+    id: visibleId,
     label: source?.label ?? id,
     description,
     href: source?.href ?? '/admin?module=overview',
@@ -284,6 +285,7 @@ function setupStepDefinitions(
   foundation: StepDefinition[];
   academic: StepDefinition[];
   people: StepDefinition[];
+  enrollments: StepDefinition[];
   timetable: StepDefinition[];
   optional: StepDefinition[];
 } {
@@ -322,21 +324,32 @@ function setupStepDefinitions(
         'Defina o ano letivo e cadastre os períodos que serão usados pela escola.',
         managerDependencies,
       ),
-      definitionFromReadinessGroup(
+      definitionFromReadiness(
         readiness,
-        'academic-base',
-        ['subjects', 'teaching-structure', 'shifts'],
-        'Matérias e estrutura',
-        'Cadastre as matérias e defina a estrutura de ensino e os turnos permitidos.',
-        [...managerDependencies, 'academic-calendar'],
+        'subjects',
+        'Cadastre as matérias que a escola oferece.',
+        managerDependencies,
       ),
       definitionFromReadinessGroup(
         readiness,
-        'classes-and-curriculum',
-        ['classes', 'class-subjects'],
-        'Turmas e matriz curricular',
-        'Crie as turmas e associe as matérias e cargas horárias que serão usadas na grade.',
-        [...managerDependencies, 'academic-calendar', 'academic-base'],
+        'academic-structure',
+        ['teaching-structure', 'shifts'],
+        'Estrutura acadêmica',
+        'Defina a estrutura de ensino e os turnos permitidos pela escola.',
+        [...managerDependencies, 'academic-calendar'],
+      ),
+      definitionFromReadiness(
+        readiness,
+        'classes',
+        'Crie as turmas e associe cada uma ao seu turno.',
+        [...managerDependencies, 'academic-calendar', 'academic-structure'],
+      ),
+      definitionFromReadiness(
+        readiness,
+        'class-subjects',
+        'Defina as matérias de cada turma e a quantidade de aulas semanais.',
+        [...managerDependencies, 'academic-calendar', 'subjects', 'classes'],
+        'curriculum',
       ),
     ],
     people: [
@@ -352,10 +365,10 @@ function setupStepDefinitions(
         readiness,
         'teaching-assignments',
         ['subject-offerings', 'teacher-assignments', 'teacher-qualifications'],
-        'Equipe e atribuições',
+        'Atribuições de professores',
         'Associe professores habilitados às matérias da matriz. O sistema pode automatizar essa etapa.',
-        [...managerDependencies, 'teachers-configured', 'classes-and-curriculum'],
-        'Configurar equipe',
+        [...managerDependencies, 'teachers-configured', 'curriculum'],
+        'Configurar atribuições',
       ),
       {
         ...definitionFromBlocker(
@@ -370,12 +383,14 @@ function setupStepDefinitions(
           (blocker) => blocker.id === 'teacher-availability',
         ) || blockerById(readiness, 'teacher-availability')?.description.includes('não exige') === true,
       },
+    ],
+    enrollments: [
       definitionFromBlocker(
         readiness,
         'active-enrollments',
         'Alunos e matrículas',
         'Cadastre os alunos e efetive pelo menos uma matrícula.',
-        [...managerDependencies, 'academic-calendar', 'classes-and-curriculum'],
+        [...managerDependencies, 'academic-calendar', 'classes'],
         'Matricular alunos',
       ),
     ],
@@ -384,7 +399,7 @@ function setupStepDefinitions(
         readiness,
         'timetable',
         'Prepare e publique uma grade válida para as turmas ativas.',
-        [...managerDependencies, 'academic-calendar', 'academic-base', 'classes-and-curriculum', 'teaching-assignments'],
+        [...managerDependencies, 'academic-calendar', 'academic-structure', 'classes', 'curriculum', 'teaching-assignments'],
       ),
     ],
     optional: [
@@ -435,15 +450,22 @@ export function buildSchoolSetupFlow(
     createSection(
       'academic-structure',
       'Configuração acadêmica',
-      'Siga um único fluxo para configurar calendário, matérias, estrutura, turmas e matriz curricular.',
+      'Siga o fluxo acadêmico na ordem certa, com cada etapa no seu módulo.',
       definitions.academic,
       resolved,
     ),
     createSection(
       'people',
-      'Equipe e matrículas',
-      'Prepare professores, atribuições automáticas, disponibilidade e matrículas para a operação.',
+      'Equipe escolar',
+      'Prepare professores, atribuições automáticas e disponibilidade para a operação.',
       definitions.people,
+      resolved,
+    ),
+    createSection(
+      'enrollments',
+      'Matrículas',
+      'Cadastre os alunos e efetive suas matrículas nas turmas correspondentes.',
+      definitions.enrollments,
       resolved,
     ),
     createSection(
