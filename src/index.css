@@ -156,6 +156,10 @@ html.dark #app-authenticated-container .bg-blue-50 {
   background-color: #1e3a5f;
 }
 
+html.dark #app-authenticated-container [class~="bg-blue-50/60"] {
+  background-color: #1e3a5f;
+}
+
 html.dark #app-authenticated-container .bg-blue-100,
 html.dark #app-authenticated-container [class~="hover:bg-blue-50"]:hover,
 html.dark #app-authenticated-container [class~="hover:bg-[#eef3ff]"]:hover,
@@ -233,6 +237,12 @@ html.dark #app-authenticated-container .text-amber-900 {
 html.dark #app-authenticated-container [class~="text-[#00236f]"],
 html.dark #app-authenticated-container [class~="text-[#061f6f]"] {
   color: #b9c8ff;
+}
+
+html.dark #app-authenticated-container .text-slate-700,
+html.dark #app-authenticated-container .text-slate-800,
+html.dark #app-authenticated-container .text-slate-900 {
+  color: #f3f4f6;
 }
 
 html.dark #app-authenticated-container [class~="border-[#c1c6d6]"],
