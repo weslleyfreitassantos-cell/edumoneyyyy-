@@ -427,13 +427,22 @@ describe('classSchema', () => {
     const result = classSchema.parse({
       ...validClass,
       name: '  9º Ano A  ',
-      grade_level: '',
+      grade_level: '9º ano',
       shift: '',
     });
 
     expect(result.name).toBe('9º Ano A');
-    expect(result.grade_level).toBeUndefined();
+    expect(result.grade_level).toBe('9');
     expect(result.shift).toBeUndefined();
+  });
+
+  it('exige série ou nível padronizado para criar uma turma', () => {
+    const result = classSchema.safeParse({
+      ...validClass,
+      grade_level: '',
+    });
+
+    expect(result.success).toBe(false);
   });
 
   it('rejeita capacidade inválida', () => {

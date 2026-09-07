@@ -196,6 +196,33 @@ describe('userImportService', () => {
     expect(result.previews[0]?.errors).toContain('Ano escolar / série é obrigatório.');
   });
 
+  it('rejects a grade outside the standardized education levels', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Alunos',
+      headers: ['full_name', 'email', 'birth_date', 'ano_escolar', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship'],
+      rows: [{
+        rowNumber: 2,
+        values: {
+          full_name: 'Aluno nível inválido',
+          email: 'aluno-nivel-invalido@example.com',
+          birth_date: '31/08/2016',
+          ano_escolar: '10º ano',
+          guardian_1_full_name: 'Carlos Souza',
+          guardian_1_email: 'carlos@example.com',
+          guardian_1_relationship: 'Pai',
+        },
+      }],
+    }, {
+      years: [year],
+      classes: [schoolClass],
+      defaultAcademicYearId: year.id,
+    });
+
+    expect(result.previews[0]?.errors).toContain(
+      'Ano escolar / série inválido. Use 1 a 9 ou 1 EM, 2 EM e 3 EM.',
+    );
+  });
+
   it('keeps numeric grades in fundamental education separate from high school', () => {
     const fundamentalClass = {
       ...schoolClass,

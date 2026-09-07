@@ -1,4 +1,5 @@
 import type { AcademicYearRow } from './academicStructureService';
+import { normalizeAcademicLevel } from '../lib/academic/academicLevels';
 import { getActiveClassesForYear } from '../lib/academicSelection';
 import {
   academicAutomationService,
@@ -219,15 +220,7 @@ function resolveClass(
 }
 
 function normalizeGradeLevel(valueToParse: string): string {
-  const normalized = normalize(valueToParse).replace(/[ºª°]/g, '');
-  const number = normalized.match(/\d+/)?.[0];
-  const isHighSchool = /\b(em|ensino medio|medio)\b/.test(normalized);
-
-  if (number && isHighSchool) return `${number}em`;
-
-  return normalized
-    .replace(/\b(ano|serie)\b/g, '')
-    .replace(/\s+/g, '');
+  return normalizeAcademicLevel(valueToParse) ?? '';
 }
 
 function classesMatchGrade(
@@ -420,10 +413,11 @@ export function buildStudentImportPreviews(
     const yearInput = value(row, ['academic_year_id', 'academic_year', 'ano_letivo', 'ano', 'id_do_ano_letivo']);
     const classInput = value(row, ['class_id', 'class', 'turma', 'id_da_turma']);
     const gradeInput = value(row, ['grade_level', 'ano_escolar', 'ano_escolar_serie', 'serie', 'ano_do_aluno', 'ano_cursado']);
+    const normalizedGradeInput = gradeInput ? normalizeGradeLevel(gradeInput) : '';
     const year = resolveYear(yearInput, options.years) ?? (yearInput ? null : defaultAcademicYear);
     let classRow = resolveClass(classInput, year, options.classes);
     const yearClasses = year ? getActiveClassesForYear(options.classes, year.id) : [];
-    const matchingGradeClasses = gradeInput
+    const matchingGradeClasses = normalizedGradeInput
       ? yearClasses.filter((item) => classesMatchGrade(item, gradeInput))
       : yearClasses;
 
@@ -439,6 +433,9 @@ export function buildStudentImportPreviews(
     required(fullName, 'Nome completo', errors);
     required(email, 'E-mail', errors);
     required(gradeInput, 'Ano escolar / série', errors);
+    if (gradeInput && !normalizedGradeInput) {
+      errors.push('Ano escolar / série inválido. Use 1 a 9 ou 1 EM, 2 EM e 3 EM.');
+    }
     if (email && !/^\S+@\S+\.\S+$/.test(email)) errors.push('E-mail inválido.');
     if (classInput && !classRow) errors.push('Turma não encontrada para o ano letivo informado.');
     if (!year) {
@@ -448,7 +445,7 @@ export function buildStudentImportPreviews(
           : 'Ano letivo é obrigatório ou selecione um ano padrão para a importação.',
       );
     }
-    if (!classInput && !classRow && year && gradeInput) {
+    if (!classInput && !classRow && year && normalizedGradeInput) {
       if (matchingGradeClasses.length === 0) {
         errors.push('Nenhuma turma ativa corresponde ao ano escolar informado.');
       } else {
