@@ -456,7 +456,7 @@ export default function SubjectsTab() {
     },
     {
       key: 'active_offerings_count',
-      label: 'Ofertas',
+      label: 'Atribuições',
     },
     {
       key: 'active',
@@ -708,7 +708,7 @@ export default function SubjectsTab() {
     const suffix =
       !nextActive &&
       subject.active_offerings_count > 0
-        ? ' O histórico de ofertas será preservado.'
+        ? ' O histórico de atribuições será preservado.'
         : '';
 
     if (
@@ -782,12 +782,12 @@ export default function SubjectsTab() {
         </div>
       )}
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4">
+      <section className="flex flex-col gap-2 rounded-xl border border-[#dfe3e8] bg-white p-3 dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between">
         <label
           htmlFor="subject-status-filter"
-          className="block text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-700 dark:text-slate-300"
         >
-          Status
+          Filtrar por status
         </label>
         <select
           id="subject-status-filter"
@@ -795,7 +795,7 @@ export default function SubjectsTab() {
           onChange={(event) =>
             setStatusFilter(event.target.value)
           }
-          className="mt-1 rounded-lg border px-3 py-2 text-sm"
+          className="w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-blue-400 dark:focus:ring-blue-900/40 sm:w-auto"
         >
           <option value="all">Todas</option>
           <option value="active">Ativas</option>
@@ -816,7 +816,7 @@ export default function SubjectsTab() {
           <button
             type="button"
             onClick={openBnccModal}
-            className="rounded-lg border border-[#005bbf] bg-white px-4 py-2 text-sm font-medium text-[#005bbf] transition-colors hover:bg-[#eaf2ff]"
+            className="rounded-lg border border-[#005bbf] bg-white px-4 py-2 text-sm font-medium text-[#005bbf] transition-colors hover:bg-[#eaf2ff] dark:border-blue-400 dark:bg-slate-900 dark:text-blue-300 dark:hover:bg-slate-800"
           >
             Adicionar modelo BNCC
           </button>
@@ -829,13 +829,13 @@ export default function SubjectsTab() {
               subject.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
               <button
                 type="button"
                 onClick={() =>
                   openEditModal(subject)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
               >
                 Editar
               </button>
@@ -850,8 +850,8 @@ export default function SubjectsTab() {
                 }
                 className={
                   subject.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
+                    : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
                 }
               >
                 {isChangingStatus
