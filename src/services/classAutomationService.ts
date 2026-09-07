@@ -416,7 +416,9 @@ export const classAutomationService = {
     for (const definition of definitions) {
       if (definition.count === 0) continue;
 
-      const batch = await this.createBatch({
+      // Keep preset creation independent from method binding. This method is
+      // passed directly to React Query and therefore cannot rely on `this`.
+      const batch = await classAutomationService.createBatch({
         institutionId: input.institutionId,
         academicYearId: input.academicYearId,
         baseName: definition.grade.baseName,
