@@ -130,6 +130,32 @@ function definitionFromReadiness(
   };
 }
 
+function definitionFromReadinessGroup(
+  readiness: SchoolSetupReadiness,
+  id: string,
+  sourceIds: SchoolSetupStepId[],
+  label: string,
+  description: string,
+  dependencies: string[] = [],
+): StepDefinition {
+  const sourceSteps = sourceIds.map((sourceId) =>
+    getReadinessStep(readiness, sourceId),
+  );
+  const firstIncomplete = sourceSteps.find((step) => !step?.complete);
+  const firstSource = sourceSteps.find(Boolean);
+
+  return {
+    id,
+    label,
+    description,
+    href: firstIncomplete?.href ?? firstSource?.href ?? '/admin?module=overview',
+    dependencies,
+    complete: sourceSteps.every(
+      (step) => step?.complete ?? readiness.academicSetupConfigured,
+    ),
+  };
+}
+
 function definitionFromBlocker(
   readiness: SchoolSetupReadiness,
   id: string,
@@ -148,6 +174,32 @@ function definitionFromBlocker(
     actionLabel,
     dependencies,
     complete: blockerComplete(readiness, id),
+  };
+}
+
+function definitionFromBlockerGroup(
+  readiness: SchoolSetupReadiness,
+  id: string,
+  sourceIds: string[],
+  label: string,
+  description: string,
+  dependencies: string[] = [],
+  actionLabel?: string,
+): StepDefinition {
+  const sourceBlockers = sourceIds.map((sourceId) =>
+    blockerById(readiness, sourceId),
+  );
+  const firstIncomplete = sourceBlockers.find((blocker) => !blocker?.complete);
+  const firstSource = sourceBlockers.find(Boolean);
+
+  return {
+    id,
+    label,
+    description,
+    href: firstIncomplete?.href ?? firstSource?.href ?? '/admin?module=overview',
+    actionLabel,
+    dependencies,
+    complete: sourceIds.every((sourceId) => blockerComplete(readiness, sourceId)),
   };
 }
 
@@ -262,47 +314,29 @@ function setupStepDefinitions(
       },
     ] : [],
     academic: [
-      definitionFromReadiness(
+      definitionFromReadinessGroup(
         readiness,
-        'academic-year',
-        'Defina o ano letivo que será usado pela escola.',
+        'academic-calendar',
+        ['academic-year', 'terms'],
+        'Calendário acadêmico',
+        'Defina o ano letivo e cadastre os períodos que serão usados pela escola.',
         managerDependencies,
       ),
-      definitionFromReadiness(
+      definitionFromReadinessGroup(
         readiness,
-        'terms',
-        'Cadastre os períodos dentro do ano letivo.',
-        [...managerDependencies, 'academic-year'],
+        'academic-base',
+        ['subjects', 'teaching-structure', 'shifts'],
+        'Matérias e estrutura',
+        'Cadastre as matérias e defina a estrutura de ensino e os turnos permitidos.',
+        [...managerDependencies, 'academic-calendar'],
       ),
-      definitionFromReadiness(
+      definitionFromReadinessGroup(
         readiness,
-        'subjects',
-        'Cadastre as matérias que a escola oferece.',
-        managerDependencies,
-      ),
-      definitionFromReadiness(
-        readiness,
-        'teaching-structure',
-        'Defina a estrutura acadêmica usada pela escola.',
-        managerDependencies,
-      ),
-      definitionFromReadiness(
-        readiness,
-        'shifts',
-        'Escolha os turnos e configure os horários disponíveis.',
-        managerDependencies,
-      ),
-      definitionFromReadiness(
-        readiness,
-        'classes',
-        'Crie as turmas e associe cada uma ao seu turno.',
-        [...managerDependencies, 'academic-year', 'shifts'],
-      ),
-      definitionFromReadiness(
-        readiness,
-        'class-subjects',
-        'Defina as matérias de cada turma e a quantidade de aulas semanais. Essas informações serão usadas na grade.',
-        [...managerDependencies, 'classes', 'subjects'],
+        'classes-and-curriculum',
+        ['classes', 'class-subjects'],
+        'Turmas e matriz curricular',
+        'Crie as turmas e associe as matérias e cargas horárias que serão usadas na grade.',
+        [...managerDependencies, 'academic-calendar', 'academic-base'],
       ),
     ],
     people: [
@@ -314,29 +348,14 @@ function setupStepDefinitions(
         managerDependencies,
         'Configurar professores',
       ),
-      definitionFromBlocker(
+      definitionFromBlockerGroup(
         readiness,
-        'subject-offerings',
-        'Ofertas das disciplinas',
-        'Crie as ofertas para as matérias da matriz.',
-        [...managerDependencies, 'class-subjects', 'terms'],
-        'Configurar ofertas',
-      ),
-      definitionFromBlocker(
-        readiness,
-        'teacher-assignments',
-        'Atribuições de professores',
-        'Associe professores às ofertas das disciplinas.',
-        [...managerDependencies, 'teachers-configured', 'subject-offerings'],
-        'Configurar atribuições',
-      ),
-      definitionFromBlocker(
-        readiness,
-        'teacher-qualifications',
-        'Habilitações dos professores',
-        'Confirme que os professores possuem habilitação para suas disciplinas.',
-        [...managerDependencies, 'teacher-assignments'],
-        'Configurar habilitações',
+        'teaching-assignments',
+        ['subject-offerings', 'teacher-assignments', 'teacher-qualifications'],
+        'Equipe e atribuições',
+        'Associe professores habilitados às matérias da matriz. O sistema pode automatizar essa etapa.',
+        [...managerDependencies, 'teachers-configured', 'classes-and-curriculum'],
+        'Configurar equipe',
       ),
       {
         ...definitionFromBlocker(
@@ -344,7 +363,7 @@ function setupStepDefinitions(
           'teacher-availability',
           'Disponibilidade dos professores',
           'Informe a disponibilidade quando a política acadêmica exigir esse dado.',
-          [...managerDependencies, 'teacher-assignments'],
+          [...managerDependencies, 'teaching-assignments'],
           'Configurar disponibilidade',
         ),
         optional: !readiness.operationalReadiness.blockers.some(
@@ -356,7 +375,7 @@ function setupStepDefinitions(
         'active-enrollments',
         'Alunos e matrículas',
         'Cadastre os alunos e efetive pelo menos uma matrícula.',
-        [...managerDependencies, 'academic-year', 'classes'],
+        [...managerDependencies, 'academic-calendar', 'classes-and-curriculum'],
         'Matricular alunos',
       ),
     ],
@@ -365,7 +384,7 @@ function setupStepDefinitions(
         readiness,
         'timetable',
         'Prepare e publique uma grade válida para as turmas ativas.',
-        [...managerDependencies, 'terms', 'class-subjects', 'shifts', 'teacher-assignments'],
+        [...managerDependencies, 'academic-calendar', 'academic-base', 'classes-and-curriculum', 'teaching-assignments'],
       ),
     ],
     optional: [
@@ -415,21 +434,21 @@ export function buildSchoolSetupFlow(
   sections.push(
     createSection(
       'academic-structure',
-      'Estrutura acadêmica',
-      'Configure a base que será usada pelas turmas e pela grade.',
+      'Configuração acadêmica',
+      'Siga um único fluxo para configurar calendário, matérias, estrutura, turmas e matriz curricular.',
       definitions.academic,
       resolved,
     ),
     createSection(
       'people',
-      'Pessoas e matrículas',
-      'Prepare professores, atribuições, habilitações e matrículas para a operação.',
+      'Equipe e matrículas',
+      'Prepare professores, atribuições automáticas, disponibilidade e matrículas para a operação.',
       definitions.people,
       resolved,
     ),
     createSection(
       'timetable',
-      'Grade e validação',
+      'Grade horária',
       'Prepare, revise e publique uma grade estruturalmente válida.',
       definitions.timetable,
       resolved,

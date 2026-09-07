@@ -94,20 +94,33 @@ describe('buildSchoolSetupFlow', () => {
     expect(nextId({ academicManagerCount: 0 })).toBe('responsible-user');
   });
 
-  it('recomenda o ano letivo antes dos períodos', () => {
-    expect(nextId({ incompleteAcademic: ['academic-year', 'terms'] })).toBe('academic-year');
+  it('recomenda o calendário acadêmico antes da base escolar', () => {
+    expect(nextId({ incompleteAcademic: ['academic-year', 'terms'] })).toBe('academic-calendar');
   });
 
-  it('mantém matérias disponíveis quando o ano e os períodos já existem', () => {
-    expect(nextId({ incompleteAcademic: ['subjects'] })).toBe('subjects');
+  it('recomenda matérias e estrutura quando o calendário já existe', () => {
+    expect(nextId({ incompleteAcademic: ['subjects'] })).toBe('academic-base');
   });
 
-  it('recomenda o currículo quando a estrutura das turmas ainda está sem matérias', () => {
-    expect(nextId({ incompleteAcademic: ['class-subjects', 'timetable'] })).toBe('class-subjects');
+  it('recomenda turmas e matriz quando a estrutura ainda está incompleta', () => {
+    expect(nextId({ incompleteAcademic: ['class-subjects', 'timetable'] })).toBe('classes-and-curriculum');
   });
 
   it('recomenda professores quando a configuração acadêmica terminou', () => {
     expect(nextId({ incompleteBlockers: ['teachers-configured'] })).toBe('teachers-configured');
+  });
+
+  it('consolida as dependências acadêmicas em um fluxo legível', () => {
+    const flow = buildSchoolSetupFlow(createReadiness());
+    const academicSection = flow.sections.find((section) => section.id === 'academic-structure');
+    const peopleSection = flow.sections.find((section) => section.id === 'people');
+
+    expect(academicSection?.steps.map((step) => step.label)).toEqual([
+      'Calendário acadêmico',
+      'Matérias e estrutura',
+      'Turmas e matriz curricular',
+    ]);
+    expect(peopleSection?.steps.map((step) => step.label)).toContain('Equipe e atribuições');
   });
 
   it('recomenda matrículas quando os professores estão prontos', () => {
@@ -144,7 +157,7 @@ describe('buildSchoolSetupFlow', () => {
 
     expect(flow.sections.some((section) => section.id === 'foundation')).toBe(false);
     expect(flow.sections[0]?.id).toBe('academic-structure');
-    expect(flow.recommendedNextStep?.id).toBe('academic-year');
+    expect(flow.recommendedNextStep?.id).toBe('academic-calendar');
     expect(flow.sections.flatMap((section) => section.steps).every((step) => step.status !== 'BLOCKED' || !step.reason?.includes('responsável'))).toBe(true);
   });
 });

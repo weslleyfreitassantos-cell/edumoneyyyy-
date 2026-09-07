@@ -83,8 +83,8 @@ describe('SchoolSetupProgress', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText(/2 de 15 etapas concluídas/i)).toBeTruthy();
-    expect(screen.getByText('Grade horária')).toBeTruthy();
+    expect(screen.getByText(/2 de 9 etapas concluídas/i)).toBeTruthy();
+    expect(screen.getAllByText('Grade horária').length).toBeGreaterThan(0);
     expect(screen.getAllByText('Personalização').length).toBeGreaterThan(0);
     expect(screen.getByText(/personalizar o login é opcional/i)).toBeTruthy();
     expect(screen.getAllByText(/prontidão operacional/i).length).toBeGreaterThan(0);
@@ -140,6 +140,6 @@ describe('SchoolSetupProgress', () => {
     );
 
     expect(screen.queryByText('Fundação')).toBeNull();
-    expect(screen.getByText('Estrutura acadêmica')).toBeTruthy();
+    expect(screen.getByText('Configuração acadêmica')).toBeTruthy();
   });
 });

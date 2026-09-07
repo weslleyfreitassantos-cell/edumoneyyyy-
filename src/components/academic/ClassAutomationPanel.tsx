@@ -16,6 +16,7 @@ import {
   getAcademicShiftLabel,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import { ACADEMIC_LEVEL_OPTIONS } from '../../lib/academic/academicLevels';
 import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 
 interface ClassAutomationPanelProps {
@@ -261,7 +262,22 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
               {mode === 'preset' ? (
                 <p className="mt-2 text-sm text-gray-500">Preenchida automaticamente em cada turma.</p>
               ) : (
-                <input id="class-automation-grade" value={formData.gradeLevel} onChange={(event) => update('gradeLevel', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" />
+                <>
+                  <select id="class-automation-grade" value={formData.gradeLevel} onChange={(event) => update('gradeLevel', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" required>
+                    <option value="">Selecione</option>
+                    <optgroup label="Ensino Fundamental">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Fundamental').map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Ensino Médio">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Médio').map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
+                    </optgroup>
+                  </select>
+                  <p className="mt-1 text-xs text-gray-500">Use o nível padronizado para que matrículas e importações encontrem a turma automaticamente.</p>
+                </>
               )}
             </div>
             <div>

@@ -28,6 +28,11 @@ import {
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import {
+  ACADEMIC_LEVEL_OPTIONS,
+  getAcademicLevelLabel,
+  normalizeAcademicLevel,
+} from '../../../lib/academic/academicLevels';
+import {
   getPreferredAcademicYear,
   sortAcademicYearsForSelection,
 } from '../../../lib/academicSelection';
@@ -237,7 +242,7 @@ export default function ClassesTab() {
           </p>
 
           <p className="mt-1 text-xs text-[#727785]">
-            {[row.grade_level, row.shift]
+            {[getAcademicLevelLabel(row.grade_level), row.shift]
               .filter(Boolean)
               .join(' • ') || 'Série e turno não informados'}
           </p>
@@ -305,7 +310,7 @@ export default function ClassesTab() {
       academic_year_id:
         classRecord.academic_year_id,
       grade_level:
-        classRecord.grade_level ?? '',
+        normalizeAcademicLevel(classRecord.grade_level) ?? classRecord.grade_level ?? '',
       shift: toAcademicShift(classRecord.shift) ?? '',
       capacity: String(
         classRecord.capacity,
@@ -776,9 +781,8 @@ export default function ClassesTab() {
                   >
                     Série ou nível
                   </label>
-                  <input
+                  <select
                     id="class-grade"
-                    type="text"
                     value={formData.grade_level}
                     onChange={(event) =>
                       setFormData(
@@ -790,7 +794,29 @@ export default function ClassesTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
-                  />
+                    required
+                  >
+                    <option value="">Selecione</option>
+                    <optgroup label="Ensino Fundamental">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Fundamental').map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Ensino Médio">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Médio').map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                    {formData.grade_level && !ACADEMIC_LEVEL_OPTIONS.some((option) => option.value === formData.grade_level) && (
+                      <option value={formData.grade_level}>
+                        Atual: {formData.grade_level}
+                      </option>
+                    )}
+                  </select>
                 </div>
 
                 <div>
