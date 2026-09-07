@@ -606,9 +606,9 @@ export default function AcademicPolicyPanel({
                         {shiftBreaks.map((item, index) => (
                           <div
                             key={`${shift}-${index}`}
-                            className="grid gap-3 rounded-lg border border-[#edf0f4] bg-[#fbfcfe] p-3 lg:grid-cols-[minmax(300px,1.5fr)_minmax(170px,1fr)_minmax(150px,.8fr)_minmax(150px,.8fr)_auto] lg:items-end"
+                            className="grid min-w-0 gap-3 rounded-lg border border-[#edf0f4] bg-[#fbfcfe] p-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)_2.5rem] lg:items-end"
                           >
-                            <fieldset>
+                            <fieldset className="min-w-0">
                               <legend className="text-xs font-semibold text-[#3d4652]">
                                 Dias da semana
                               </legend>
@@ -640,7 +640,7 @@ export default function AcademicPolicyPanel({
                                 })}
                               </div>
                             </fieldset>
-                            <label className="text-xs font-semibold text-[#3d4652]">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652]">
                               Tipo
                               <input
                                 value={item.name}
@@ -654,7 +654,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="text-xs font-semibold text-[#3d4652]">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652]">
                               Início
                               <input
                                 type="time"
@@ -668,7 +668,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="text-xs font-semibold text-[#3d4652]">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652]">
                               Fim
                               <input
                                 type="time"
@@ -689,7 +689,7 @@ export default function AcademicPolicyPanel({
                                 aria-label={`Remover intervalo ${index + 1} do turno ${option?.label ?? shift}`}
                                 onClick={() => removeBreak(shift, index)}
                                 disabled={saveScheduleBreaks.isPending}
-                                className="inline-flex h-10 items-center justify-center rounded-lg border border-red-200 px-3 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-200 p-0 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
                               >
                                 <Trash2 className="h-4 w-4" aria-hidden="true" />
                               </button>
