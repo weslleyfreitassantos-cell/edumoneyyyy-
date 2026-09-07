@@ -76,12 +76,24 @@ Uma consulta read-only com `supabase migration list` mostrou:
   `20260906003653`, `20260906004102`, `20260906143016`, `20260906193456` e
   `20260906222415`.
 
-Os timestamps remotos não foram interpretados por nome. É necessário identificar
-o conteúdo e comparar o schema antes de usar `db push` ou `migration repair`.
+Os timestamps remotos não foram interpretados por nome. A comparação read-only
+com `npx supabase db diff --linked --schema public,storage --use-pg-delta`
+terminou com **nenhuma diferença de schema**. Isso indica que o estado
+estrutural remoto é compatível com o resultado das migrations locais, mas não
+prova que os timestamps representam os mesmos arquivos. Ainda não é seguro
+usar `db push` ou `migration repair` sem mapear esse histórico.
 O `db diff --linked` não pôde ser executado porque o Docker Desktop não estava
-disponível para criar o shadow database. A tentativa de `db dump --linked`
-também foi interrompida pelo mesmo requisito local. Nenhuma dessas operações
-alterou o banco remoto.
+disponível para criar o shadow database na primeira tentativa. Depois que o
+Docker Desktop foi iniciado, a comparação foi concluída sem diferenças. A
+tentativa de `db dump --linked` anterior também foi interrompida pelo mesmo
+requisito local. Nenhuma dessas operações alterou o banco remoto.
+
+Durante a reconstrução do shadow foram corrigidos dois BOMs UTF-8 em migrations
+SQL e duas incompatibilidades históricas foram tornadas condicionais: a RPC
+`can_view_institution_profile`, que existe no remoto mas não no histórico local,
+e os índices de auditoria opcionais de `account_domains`. Essas mudanças só
+afetam a reprodutibilidade do shadow e preservam o comportamento quando os
+objetos existem.
 
 ### 2. PR conflitante
 
