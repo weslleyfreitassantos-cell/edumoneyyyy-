@@ -14,6 +14,7 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import { ActionGroup } from '../../../components/ActionGroup';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -768,7 +769,7 @@ export default function AcademicYearsTab() {
           const isSelected = year.id === selectedYearId;
 
           return (
-            <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
+            <div className="flex max-w-full flex-wrap items-center gap-1">
               {years.length > 1 && (
                 <button
                   type="button"
@@ -938,7 +939,7 @@ export default function AcademicYearsTab() {
                           />
                         </td>
                         <td className="px-4 py-3">
-                          <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
+                          <ActionGroup>
                             <button
                               type="button"
                               onClick={() =>
@@ -971,7 +972,7 @@ export default function AcademicYearsTab() {
                                   ? 'Desativar'
                                   : 'Reativar'}
                             </button>
-                          </div>
+                          </ActionGroup>
                         </td>
                       </tr>
                     );
@@ -1042,7 +1043,7 @@ export default function AcademicYearsTab() {
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                         Ações
                       </p>
-                      <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
+                      <ActionGroup>
                         <button
                           type="button"
                           onClick={() => openEditTermModal(term)}
@@ -1067,7 +1068,7 @@ export default function AcademicYearsTab() {
                               ? 'Desativar'
                               : 'Reativar'}
                         </button>
-                      </div>
+                      </ActionGroup>
                     </div>
                   </article>
                 );

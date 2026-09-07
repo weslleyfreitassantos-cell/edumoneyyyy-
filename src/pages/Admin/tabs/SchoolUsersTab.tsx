@@ -24,6 +24,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
+import { ActionGroup } from '../../../components/ActionGroup';
 
 import {
   CURRENT_DATABASE_ROLES,
@@ -301,7 +302,7 @@ function UserActions({
   const canDelete = !(currentRole === 'SECRETARY' && user.role === 'DIRECTOR');
 
   return (
-    <div className="inline-flex items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
+    <ActionGroup>
       <button
         type="button"
         title="Editar usuário"
@@ -325,7 +326,7 @@ function UserActions({
           <Trash2 className="h-4 w-4" aria-hidden="true" />
         </button>
       )}
-    </div>
+    </ActionGroup>
   );
 }
 
@@ -438,7 +439,7 @@ function SchoolUsersTable({
               </th>
 
               <th className="px-4 py-3 text-right font-medium text-gray-700 dark:text-slate-300">
-                Acoes
+                Ações
               </th>
             </tr>
           </thead>

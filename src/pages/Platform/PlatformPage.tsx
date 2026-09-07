@@ -53,6 +53,7 @@ import {
   type AccountSummaryRow,
 } from '../../services/accountService';
 import { BrandingEditor } from '../../components/branding/BrandingEditor';
+import { ActionGroup } from '../../components/ActionGroup';
 import { PlatformDomainRequestsSection } from '../../components/branding/DomainManagement';
 
 interface AccountFormState {
@@ -1692,7 +1693,8 @@ export default function PlatformPage() {
                           </div>
                         </td>
                         <td className="px-3 py-4">
-                          <button
+                          <ActionGroup>
+                            <button
                             type="button"
                             onClick={() =>
                               void openInstitutionAccessDialog(
@@ -1708,7 +1710,8 @@ export default function PlatformPage() {
                               aria-hidden="true"
                             />
                             Gerenciar
-                          </button>
+                            </button>
+                          </ActionGroup>
                         </td>
                       </tr>
                     );

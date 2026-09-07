@@ -829,7 +829,7 @@ export default function SubjectsTab() {
               subject.id;
 
           return (
-            <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
+            <div className="flex max-w-full flex-wrap items-center gap-1">
               <button
                 type="button"
                 onClick={() =>
