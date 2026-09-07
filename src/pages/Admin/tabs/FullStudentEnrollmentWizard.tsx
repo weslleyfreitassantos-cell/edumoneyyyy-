@@ -43,13 +43,13 @@ interface FullStudentEnrollmentWizardProps {
 
 const steps = [
   'Aluno',
-  'Endereco',
-  'Responsaveis',
+  'Endereço',
+  'Responsáveis',
   'Dados escolares',
-  'Saude',
+  'Saúde',
   'Documentos',
-  'Matricula',
-  'Revisao',
+  'Matrícula',
+  'Revisão',
 ];
 
 const documentTypes = [
@@ -336,14 +336,14 @@ export default function FullStudentEnrollmentWizard({
       if (!/^\d{4}-\d{2}-\d{2}$/.test(draft.identity.birth_date)) return 'Informe a data de nascimento do aluno.';
     }
     if (step === 2) {
-      if (!isEditMode && draft.guardians.length === 0) return 'Associe pelo menos um responsavel.';
+      if (!isEditMode && draft.guardians.length === 0) return 'Associe pelo menos um responsável.';
       for (const guardian of draft.guardians) {
-        if (guardian.mode === 'existing' && !guardian.profile_id) return 'Selecione o responsavel existente ou escolha Novo responsavel.';
-        if (guardian.mode === 'new' && guardian.full_name.trim().length < 3) return 'Informe o nome do novo responsavel.';
-        if (guardian.mode === 'new' && !/^\S+@\S+\.\S+$/.test(guardian.email.trim())) return 'Informe um e-mail valido para o novo responsavel.';
-        if (guardian.relationship.trim().length < 2) return 'Informe o parentesco de cada responsavel.';
+        if (guardian.mode === 'existing' && !guardian.profile_id) return 'Selecione o responsável existente ou escolha Novo responsável.';
+        if (guardian.mode === 'new' && guardian.full_name.trim().length < 3) return 'Informe o nome do novo responsável.';
+        if (guardian.mode === 'new' && !/^\S+@\S+\.\S+$/.test(guardian.email.trim())) return 'Informe um e-mail válido para o novo responsável.';
+        if (guardian.relationship.trim().length < 2) return 'Informe o parentesco de cada responsável.';
       }
-      if (draft.guardians.length > 0 && !draft.guardians.some((guardian) => guardian.is_primary)) return 'Marque um responsavel principal.';
+      if (draft.guardians.length > 0 && !draft.guardians.some((guardian) => guardian.is_primary)) return 'Marque um responsável principal.';
     }
     if (step === 6) {
       if (!isExistingStudentMode || editEnrollmentId || mode === 'enroll') {
@@ -370,11 +370,11 @@ export default function FullStudentEnrollmentWizard({
         );
         if (candidates.length > 0) {
           setDuplicates(candidates);
-          setError('Encontramos possiveis cadastros existentes. Revise antes de continuar.');
+          setError('Encontramos possíveis cadastros existentes. Revise antes de continuar.');
           return;
         }
       } catch (duplicateError) {
-        setError(getUserFacingErrorMessage(duplicateError, 'Nao foi possivel verificar duplicidade.'));
+        setError(getUserFacingErrorMessage(duplicateError, 'Não foi possível verificar duplicidade.'));
         return;
       } finally {
         setIsCheckingDuplicates(false);
@@ -403,7 +403,7 @@ export default function FullStudentEnrollmentWizard({
 
     if (isEditMode) {
       if (!studentId || !editorQuery.data) {
-        setError('Os dados do aluno ainda nao foram carregados.');
+        setError('Os dados do aluno ainda não foram carregados.');
         return;
       }
 
@@ -416,14 +416,14 @@ export default function FullStudentEnrollmentWizard({
         });
         onCompleted();
       } catch (submitError) {
-        setError(getUserFacingErrorMessage(submitError, 'Nao foi possivel atualizar o cadastro completo do aluno.'));
+        setError(getUserFacingErrorMessage(submitError, 'Não foi possível atualizar o cadastro completo do aluno.'));
       }
       return;
     }
 
     if (mode === 'enroll') {
       if (!studentId) {
-        setError('O aluno selecionado nao foi identificado.');
+        setError('O aluno selecionado não foi identificado.');
         return;
       }
 
@@ -435,7 +435,7 @@ export default function FullStudentEnrollmentWizard({
         });
         onCompleted();
       } catch (submitError) {
-        setError(getUserFacingErrorMessage(submitError, 'Nao foi possivel concluir a matricula.'));
+        setError(getUserFacingErrorMessage(submitError, 'Não foi possível concluir a matrícula.'));
       }
       return;
     }
@@ -457,9 +457,9 @@ export default function FullStudentEnrollmentWizard({
             profile_id: guardian.profile_id || submitError.guardianProfileIds[index] || '',
           })),
         }));
-        setError('Parte do cadastro foi criada, mas a matricula nao foi concluida. Corrija o problema e tente novamente; o sistema vai reutilizar os registros ja criados.');
+        setError('Parte do cadastro foi criada, mas a matrícula não foi concluída. Corrija o problema e tente novamente; o sistema vai reutilizar os registros já criados.');
       } else {
-        setError(getUserFacingErrorMessage(submitError, 'Nao foi possivel concluir a matricula.'));
+        setError(getUserFacingErrorMessage(submitError, 'Não foi possível concluir a matrícula.'));
       }
     }
   }
@@ -474,13 +474,13 @@ export default function FullStudentEnrollmentWizard({
         <Field label="Nome social"><input className={inputClass} value={draft.identity.social_name} onChange={(event) => updateIdentity('social_name', event.target.value)} /></Field>
         <Field label="Telefone"><input className={inputClass} value={draft.identity.phone} onChange={(event) => updateIdentity('phone', event.target.value)} /></Field>
         <Field label="RG"><input className={inputClass} value={draft.identity.rg} onChange={(event) => updateIdentity('rg', event.target.value)} /></Field>
-        <Field label="Orgao expedidor"><input className={inputClass} value={draft.identity.rg_issuing_authority} onChange={(event) => updateIdentity('rg_issuing_authority', event.target.value)} /></Field>
+        <Field label="Órgão expedidor"><input className={inputClass} value={draft.identity.rg_issuing_authority} onChange={(event) => updateIdentity('rg_issuing_authority', event.target.value)} /></Field>
         <Field label="UF do RG"><input maxLength={2} className={inputClass} value={draft.identity.rg_state} onChange={(event) => updateIdentity('rg_state', event.target.value.toUpperCase())} /></Field>
-        <Field label="Certidao de nascimento"><input className={inputClass} value={draft.identity.birth_certificate} onChange={(event) => updateIdentity('birth_certificate', event.target.value)} /></Field>
+        <Field label="Certidão de nascimento"><input className={inputClass} value={draft.identity.birth_certificate} onChange={(event) => updateIdentity('birth_certificate', event.target.value)} /></Field>
         <Field label="Nacionalidade"><input className={inputClass} value={draft.identity.nationality} onChange={(event) => updateIdentity('nationality', event.target.value)} /></Field>
         <Field label="Naturalidade"><input className={inputClass} value={draft.identity.birthplace} onChange={(event) => updateIdentity('birthplace', event.target.value)} /></Field>
         <Field label="UF de nascimento"><input maxLength={2} className={inputClass} value={draft.identity.birth_state} onChange={(event) => updateIdentity('birth_state', event.target.value.toUpperCase())} /></Field>
-        <Field label="Sexo"><select className={inputClass} value={draft.identity.sex} onChange={(event) => updateIdentity('sex', event.target.value)}><option value="">Nao informado</option><option value="F">Feminino</option><option value="M">Masculino</option><option value="O">Outro</option></select></Field>
+        <Field label="Sexo"><select className={inputClass} value={draft.identity.sex} onChange={(event) => updateIdentity('sex', event.target.value)}><option value="">Não informado</option><option value="F">Feminino</option><option value="M">Masculino</option><option value="O">Outro</option></select></Field>
       </div>
     );
   }
@@ -490,7 +490,7 @@ export default function FullStudentEnrollmentWizard({
       <div className="grid gap-4 md:grid-cols-2">
         <Field label="CEP"><input className={inputClass} value={draft.address.postal_code} onChange={(event) => updateAddress('postal_code', event.target.value)} /></Field>
         <Field label="Logradouro"><input className={inputClass} value={draft.address.street} onChange={(event) => updateAddress('street', event.target.value)} /></Field>
-        <Field label="Numero"><input className={inputClass} value={draft.address.number} onChange={(event) => updateAddress('number', event.target.value)} /></Field>
+        <Field label="Número"><input className={inputClass} value={draft.address.number} onChange={(event) => updateAddress('number', event.target.value)} /></Field>
         <Field label="Complemento"><input className={inputClass} value={draft.address.complement} onChange={(event) => updateAddress('complement', event.target.value)} /></Field>
         <Field label="Bairro"><input className={inputClass} value={draft.address.neighborhood} onChange={(event) => updateAddress('neighborhood', event.target.value)} /></Field>
         <Field label="Cidade"><input className={inputClass} value={draft.address.city} onChange={(event) => updateAddress('city', event.target.value)} /></Field>
@@ -503,7 +503,7 @@ export default function FullStudentEnrollmentWizard({
   function renderGuardians() {
     return (
       <div className="space-y-4">
-        <p className="text-sm text-slate-600">Associe um ou mais responsaveis. O principal sera usado como contato prioritario.</p>
+        <p className="text-sm text-slate-600">Associe um ou mais responsáveis. O principal será usado como contato prioritário.</p>
         {draft.guardians.map((guardian, index) => {
           const matchingGuardian = guardian.mode === 'new'
             ? guardians.find((user) => user.profile?.email?.trim().toLowerCase() === guardian.email.trim().toLowerCase())
@@ -511,18 +511,18 @@ export default function FullStudentEnrollmentWizard({
 
           return (
             <div key={`${index}-${guardian.profile_id}`} className="rounded-lg border border-slate-200 p-4">
-              <div className="mb-3 flex items-center justify-between gap-3"><strong className="text-sm text-slate-800">Responsavel {index + 1}</strong>{draft.guardians.length > 1 ? <button type="button" className="text-sm text-red-600" onClick={() => removeGuardian(index)}>Remover</button> : null}</div>
+              <div className="mb-3 flex items-center justify-between gap-3"><strong className="text-sm text-slate-800">Responsável {index + 1}</strong>{draft.guardians.length > 1 ? <button type="button" className="text-sm text-red-600" onClick={() => removeGuardian(index)}>Remover</button> : null}</div>
               <div className="grid gap-3 md:grid-cols-2">
-                <Field label="Origem"><select className={inputClass} value={guardian.mode} onChange={(event) => updateGuardian(index, { mode: event.target.value as GuardianDraft['mode'], profile_id: '' })}><option value="existing">Responsavel ja cadastrado</option><option value="new">Novo responsavel</option></select></Field>
-                {guardian.mode === 'existing' ? <Field label="Responsavel"><select className={inputClass} value={guardian.profile_id} onChange={(event) => updateGuardian(index, { profile_id: event.target.value })}><option value="">Selecione</option>{guardians.map((user) => <option key={user.profile_id} value={user.profile_id}>{user.profile?.full_name ?? user.profile?.email}</option>)}</select></Field> : <><Field label="Nome completo *"><input className={inputClass} value={guardian.full_name} onChange={(event) => updateGuardian(index, { full_name: event.target.value })} /></Field><Field label="E-mail *"><input type="email" className={inputClass} value={guardian.email} onChange={(event) => updateGuardian(index, { email: event.target.value })} /></Field><Field label="Telefone"><input className={inputClass} value={guardian.phone} onChange={(event) => updateGuardian(index, { phone: event.target.value })} /></Field></>}
-                <Field label="Parentesco *"><input className={inputClass} value={guardian.relationship} onChange={(event) => updateGuardian(index, { relationship: event.target.value })} placeholder="Mae, pai, avo..." /></Field>
+                <Field label="Origem"><select className={inputClass} value={guardian.mode} onChange={(event) => updateGuardian(index, { mode: event.target.value as GuardianDraft['mode'], profile_id: '' })}><option value="existing">Responsável já cadastrado</option><option value="new">Novo responsável</option></select></Field>
+                {guardian.mode === 'existing' ? <Field label="Responsável"><select className={inputClass} value={guardian.profile_id} onChange={(event) => updateGuardian(index, { profile_id: event.target.value })}><option value="">Selecione</option>{guardians.map((user) => <option key={user.profile_id} value={user.profile_id}>{user.profile?.full_name ?? user.profile?.email}</option>)}</select></Field> : <><Field label="Nome completo *"><input className={inputClass} value={guardian.full_name} onChange={(event) => updateGuardian(index, { full_name: event.target.value })} /></Field><Field label="E-mail *"><input type="email" className={inputClass} value={guardian.email} onChange={(event) => updateGuardian(index, { email: event.target.value })} /></Field><Field label="Telefone"><input className={inputClass} value={guardian.phone} onChange={(event) => updateGuardian(index, { phone: event.target.value })} /></Field></>}
+                <Field label="Parentesco *"><input className={inputClass} value={guardian.relationship} onChange={(event) => updateGuardian(index, { relationship: event.target.value })} placeholder="Mãe, pai, avó..." /></Field>
               </div>
-              {matchingGuardian ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><p>Ja existe um responsavel com este e-mail: <strong>{matchingGuardian.profile?.full_name ?? matchingGuardian.profile?.email}</strong>.</p><button type="button" className="mt-2 rounded-lg border border-amber-700 px-3 py-2 font-semibold" onClick={() => updateGuardian(index, { mode: 'existing', profile_id: matchingGuardian.profile_id })}>Usar cadastro existente</button></div> : null}
-              <label className="mt-3 flex items-center gap-2 text-sm text-slate-700"><input type="radio" name="primary-guardian" checked={guardian.is_primary} onChange={() => setPrimaryGuardian(index)} /> Responsavel principal</label>
+              {matchingGuardian ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><p>Já existe um responsável com este e-mail: <strong>{matchingGuardian.profile?.full_name ?? matchingGuardian.profile?.email}</strong>.</p><button type="button" className="mt-2 rounded-lg border border-amber-700 px-3 py-2 font-semibold" onClick={() => updateGuardian(index, { mode: 'existing', profile_id: matchingGuardian.profile_id })}>Usar cadastro existente</button></div> : null}
+              <label className="mt-3 flex items-center gap-2 text-sm text-slate-700"><input type="radio" name="primary-guardian" checked={guardian.is_primary} onChange={() => setPrimaryGuardian(index)} /> Responsável principal</label>
             </div>
           );
         })}
-        <button type="button" className="rounded-lg border border-blue-600 px-3 py-2 text-sm font-semibold text-blue-700" onClick={addGuardian}>+ Adicionar responsavel</button>
+        <button type="button" className="rounded-lg border border-blue-600 px-3 py-2 text-sm font-semibold text-blue-700" onClick={addGuardian}>+ Adicionar responsável</button>
       </div>
     );
   }
@@ -530,7 +530,7 @@ export default function FullStudentEnrollmentWizard({
   function renderPreviousSchooling() {
     const previous = draft.previous_schooling;
     const update = (field: keyof typeof previous, value: string | boolean) => setDraft((current) => ({ ...current, previous_schooling: { ...current.previous_schooling, [field]: value } }));
-    return <div className="grid gap-4 md:grid-cols-2"><Field label="Escola de origem"><input className={inputClass} value={previous.origin_school} onChange={(event) => update('origin_school', event.target.value)} /></Field><Field label="Rede de ensino"><input className={inputClass} value={previous.origin_network} onChange={(event) => update('origin_network', event.target.value)} /></Field><Field label="Cidade"><input className={inputClass} value={previous.city} onChange={(event) => update('city', event.target.value)} /></Field><Field label="UF"><input maxLength={2} className={inputClass} value={previous.state} onChange={(event) => update('state', event.target.value.toUpperCase())} /></Field><Field label="Ultima serie"><input className={inputClass} value={previous.last_grade} onChange={(event) => update('last_grade', event.target.value)} /></Field><Field label="Ano de origem"><input type="number" className={inputClass} value={previous.origin_year} onChange={(event) => update('origin_year', event.target.value)} /></Field><Field label="Situacao"><input className={inputClass} value={previous.status} onChange={(event) => update('status', event.target.value)} /></Field><Field label="Observacoes"><textarea className={inputClass} value={previous.observations} onChange={(event) => update('observations', event.target.value)} /></Field><label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={previous.history_delivered} onChange={(event) => update('history_delivered', event.target.checked)} /> Historico entregue</label><label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={previous.transfer_declaration} onChange={(event) => update('transfer_declaration', event.target.checked)} /> Declaracao de transferencia entregue</label></div>;
+    return <div className="grid gap-4 md:grid-cols-2"><Field label="Escola de origem"><input className={inputClass} value={previous.origin_school} onChange={(event) => update('origin_school', event.target.value)} /></Field><Field label="Rede de ensino"><input className={inputClass} value={previous.origin_network} onChange={(event) => update('origin_network', event.target.value)} /></Field><Field label="Cidade"><input className={inputClass} value={previous.city} onChange={(event) => update('city', event.target.value)} /></Field><Field label="UF"><input maxLength={2} className={inputClass} value={previous.state} onChange={(event) => update('state', event.target.value.toUpperCase())} /></Field><Field label="Última série"><input className={inputClass} value={previous.last_grade} onChange={(event) => update('last_grade', event.target.value)} /></Field><Field label="Ano de origem"><input type="number" className={inputClass} value={previous.origin_year} onChange={(event) => update('origin_year', event.target.value)} /></Field><Field label="Situação"><input className={inputClass} value={previous.status} onChange={(event) => update('status', event.target.value)} /></Field><Field label="Observações"><textarea className={inputClass} value={previous.observations} onChange={(event) => update('observations', event.target.value)} /></Field><label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={previous.history_delivered} onChange={(event) => update('history_delivered', event.target.checked)} /> Histórico entregue</label><label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={previous.transfer_declaration} onChange={(event) => update('transfer_declaration', event.target.checked)} /> Declaração de transferência entregue</label></div>;
   }
 
   function renderHealth() {
@@ -540,7 +540,7 @@ export default function FullStudentEnrollmentWizard({
   }
 
   function renderDocuments() {
-    return <div className="space-y-3"><p className="text-sm text-slate-600">Esta etapa registra a pendencia documental. Upload de arquivos sera ativado somente com storage privado e politica validada.</p>{draft.documents.map((document, index) => <div key={document.document_type} className="grid gap-2 rounded-lg border border-slate-200 p-3 md:grid-cols-[1fr_180px_1fr]"><span className="self-center text-sm font-medium text-slate-700">{document.document_type}</span><select className={inputClass} value={document.status} onChange={(event) => setDraft((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, status: event.target.value as StudentDocumentDraft['status'] } : item) }))}><option value="PENDING">Pendente</option><option value="DELIVERED">Entregue</option><option value="VALIDATED">Validado</option><option value="DISPENSED">Dispensado</option></select><input className={inputClass} placeholder="Observacao" value={document.notes} onChange={(event) => setDraft((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, notes: event.target.value } : item) }))} /></div>)}</div>;
+    return <div className="space-y-3"><p className="text-sm text-slate-600">Esta etapa registra a pendência documental. O envio de arquivos será ativado somente com armazenamento privado e política validada.</p>{draft.documents.map((document, index) => <div key={document.document_type} className="grid gap-2 rounded-lg border border-slate-200 p-3 md:grid-cols-[1fr_180px_1fr]"><span className="self-center text-sm font-medium text-slate-700">{document.document_type}</span><select className={inputClass} value={document.status} onChange={(event) => setDraft((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, status: event.target.value as StudentDocumentDraft['status'] } : item) }))}><option value="PENDING">Pendente</option><option value="DELIVERED">Entregue</option><option value="VALIDATED">Validado</option><option value="DISPENSED">Dispensado</option></select><input className={inputClass} placeholder="Observação" value={document.notes} onChange={(event) => setDraft((current) => ({ ...current, documents: current.documents.map((item, itemIndex) => itemIndex === index ? { ...item, notes: event.target.value } : item) }))} /></div>)}</div>;
   }
 
   function renderEnrollment() {
@@ -633,7 +633,7 @@ export default function FullStudentEnrollmentWizard({
           </select>
         </Field>
 
-        <Field label="Data da matricula">
+        <Field label="Data da matrícula">
           <input
             type="date"
             className={inputClass}
@@ -649,7 +649,7 @@ export default function FullStudentEnrollmentWizard({
 
         <div className="rounded-lg bg-slate-50 p-3 text-sm text-slate-600">
           Status inicial: <strong>Ativa</strong>. Transferencia, cancelamento e
-          conclusao continuam disponiveis no fluxo de matriculas.
+          conclusão continuam disponíveis no fluxo de matrículas.
         </div>
       </div>
     );
@@ -659,7 +659,7 @@ export default function FullStudentEnrollmentWizard({
     const primary = draft.guardians.find((guardian) => guardian.is_primary);
     const year = years.find((item) => item.id === draft.academic_year_id);
     const classRecord = classes.find((item) => item.id === draft.class_id);
-    return <div className="space-y-4 text-sm text-slate-700"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matricula</strong><p>{year?.name ?? 'Ano nao selecionado'}</p><p>{classRecord?.name ?? 'Turma nao selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsavel principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsavel cadastrado' : 'Nao informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos pendentes</strong><p>{draft.documents.filter((document) => document.status === 'PENDING').length}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3">Ao confirmar, o aluno, os responsaveis, os dados complementares e a matricula serao persistidos. O acesso por e-mail sera criado conforme o fluxo de autenticacao.</div></div>;
+    return <div className="space-y-4 text-sm text-slate-700"><div className="grid gap-3 md:grid-cols-2"><div><strong>Aluno</strong><p>{draft.identity.full_name}</p><p>{draft.identity.email}</p><p>{draft.identity.birth_date}</p></div><div><strong>Matrícula</strong><p>{year?.name ?? 'Ano não selecionado'}</p><p>{classRecord?.name ?? 'Turma não selecionada'}</p><p>{draft.enrolled_at}</p></div><div><strong>Responsável principal</strong><p>{primary?.full_name || (primary?.profile_id ? 'Responsável cadastrado' : 'Não informado')}</p><p>{primary?.relationship}</p></div><div><strong>Documentos pendentes</strong><p>{draft.documents.filter((document) => document.status === 'PENDING').length}</p></div></div><div className="rounded-lg border border-blue-100 bg-blue-50 p-3">Ao confirmar, o aluno, os responsáveis, os dados complementares e a matrícula serão persistidos. O acesso por e-mail será criado conforme o fluxo de autenticação.</div></div>;
   }
 
   function renderStep() {
@@ -687,7 +687,7 @@ export default function FullStudentEnrollmentWizard({
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label="Editar aluno">
         <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-2xl">
-          <ErrorBox message={getUserFacingErrorMessage(editorQuery.error, 'Nao foi possivel carregar os dados do aluno.')} />
+          <ErrorBox message={getUserFacingErrorMessage(editorQuery.error, 'Não foi possível carregar os dados do aluno.')} />
           <div className="mt-4 flex justify-end"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={onClose}>Fechar</button></div>
         </div>
       </div>
@@ -695,11 +695,11 @@ export default function FullStudentEnrollmentWizard({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label={isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Matricula completa de aluno'}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-3" role="dialog" aria-modal="true" aria-label={isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Matrícula completa de aluno'}>
       <div className="flex max-h-[94vh] w-full max-w-6xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
-        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Novo aluno'}</p><h2 className="mt-1 text-xl font-bold text-slate-900">{mode === 'enroll' ? 'Concluir matrícula' : isEditMode ? 'Editar cadastro completo' : 'Matricula completa'}</h2><p className="mt-1 text-sm text-slate-600">{mode === 'enroll' ? 'Revise os dados e escolha a turma para concluir a matrícula deste aluno.' : isEditMode ? 'Atualize todos os dados cadastrais, escolares e da matricula.' : 'Cadastro detalhado com vinculos, documentos e revisao antes de confirmar.'}</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700" onClick={onClose} aria-label="Fechar">X</button></div>
-        <div className="overflow-y-auto px-5 py-4"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-500'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><strong>Possiveis duplicidades</strong>{duplicates.map((candidate) => <div key={candidate.id} className="mt-2 rounded-lg border border-amber-300 bg-white/70 p-3"><p className="font-semibold">{candidate.full_name}</p><p className="mt-1">Matricula {candidate.registration_number} - {candidate.birth_date}</p>{onUseExistingStudent ? <button type="button" className="mt-2 rounded-lg border border-blue-600 px-3 py-2 font-semibold text-blue-700" onClick={() => onUseExistingStudent(candidate.id)}>Usar este cadastro</button> : null}</div>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={step === 0 ? onClose : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates}>{isCheckingDuplicates ? 'Verificando...' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending || updateMutation.isPending}>{createMutation.isPending || updateMutation.isPending ? 'Salvando...' : mode === 'enroll' ? 'Confirmar matrícula' : isEditMode ? 'Salvar alteracoes' : 'Confirmar matricula'}</button>}</div></div>
+        <div className="flex items-start justify-between border-b border-slate-200 px-5 py-4"><div><p className="text-xs font-semibold uppercase tracking-wide text-blue-700">{isExistingStudentMode ? (mode === 'enroll' ? 'Matricular aluno' : 'Editar aluno') : 'Novo aluno'}</p><h2 className="mt-1 text-xl font-bold text-slate-900">{mode === 'enroll' ? 'Concluir matrícula' : isEditMode ? 'Editar cadastro completo' : 'Matrícula completa'}</h2><p className="mt-1 text-sm text-slate-600">{mode === 'enroll' ? 'Revise os dados e escolha a turma para concluir a matrícula deste aluno.' : isEditMode ? 'Atualize todos os dados cadastrais, escolares e da matrícula.' : 'Cadastro detalhado com vínculos, documentos e revisão antes de confirmar.'}</p></div><button type="button" className="rounded-lg border border-slate-300 px-3 py-2 text-slate-700" onClick={onClose} aria-label="Fechar">X</button></div>
+        <div className="overflow-y-auto px-5 py-4"><div className="mb-5 grid grid-cols-2 gap-2 md:grid-cols-8">{steps.map((label, index) => <div key={label} className={`rounded-lg px-2 py-2 text-center text-xs font-semibold ${index === step ? 'bg-blue-700 text-white' : index < step ? 'bg-blue-50 text-blue-700' : 'bg-slate-100 text-slate-500'}`}><span className="block">{index + 1}</span>{label}</div>)}</div><div className="mb-4"><ErrorBox message={error} />{duplicates.length > 0 ? <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900"><strong>Possíveis duplicidades</strong>{duplicates.map((candidate) => <div key={candidate.id} className="mt-2 rounded-lg border border-amber-300 bg-white/70 p-3"><p className="font-semibold">{candidate.full_name}</p><p className="mt-1">Matrícula {candidate.registration_number} - {candidate.birth_date}</p>{onUseExistingStudent ? <button type="button" className="mt-2 rounded-lg border border-blue-600 px-3 py-2 font-semibold text-blue-700" onClick={() => onUseExistingStudent(candidate.id)}>Usar este cadastro</button> : null}</div>)}<div className="mt-3 flex flex-wrap gap-2"><button type="button" className="rounded-lg border border-slate-400 bg-white px-3 py-2 font-semibold" onClick={() => setDuplicates([])}>Voltar e revisar</button><button type="button" className="rounded-lg bg-amber-700 px-3 py-2 font-semibold text-white" onClick={continueAfterDuplicateCheck}>Continuar mesmo assim</button></div></div> : null}</div><div className="min-h-[300px]">{renderStep()}</div></div>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-4"><button type="button" className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700" onClick={step === 0 ? onClose : () => { setError(null); setStep((current) => current - 1); }}>{step === 0 ? 'Cancelar' : 'Voltar'}</button><div className="flex gap-2"><span className="self-center text-xs text-slate-500">Etapa {step + 1} de {steps.length}</span>{step < steps.length - 1 ? <button type="button" className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={next} disabled={isCheckingDuplicates}>{isCheckingDuplicates ? 'Verificando...' : 'Continuar'}</button> : <button type="button" className="rounded-lg bg-green-700 px-4 py-2 text-sm font-semibold text-white disabled:opacity-60" onClick={submit} disabled={createMutation.isPending || updateMutation.isPending}>{createMutation.isPending || updateMutation.isPending ? 'Salvando...' : mode === 'enroll' ? 'Confirmar matrícula' : isEditMode ? 'Salvar alterações' : 'Confirmar matrícula'}</button>}</div></div>
       </div>
     </div>
   );

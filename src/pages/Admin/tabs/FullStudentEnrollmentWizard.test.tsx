@@ -155,7 +155,7 @@ describe('FullStudentEnrollmentWizard', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Continuar' }));
 
     await waitFor(() => {
-      expect(screen.getByText('Possiveis duplicidades')).toBeTruthy();
+      expect(screen.getByText('Possíveis duplicidades')).toBeTruthy();
     });
     fireEvent.click(screen.getByRole('button', { name: 'Usar este cadastro' }));
     expect(mocks.useExisting).toHaveBeenCalledWith('student-1');
@@ -186,7 +186,7 @@ describe('FullStudentEnrollmentWizard', () => {
       await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
     }
 
-    fireEvent.change(screen.getByLabelText('Responsavel'), {
+    fireEvent.change(screen.getByLabelText('Responsável'), {
       target: { value: 'guardian-profile' },
     });
     fireEvent.change(screen.getByLabelText('Parentesco *'), {
@@ -197,7 +197,7 @@ describe('FullStudentEnrollmentWizard', () => {
       await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
     }
 
-    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matricula' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Confirmar matrícula' }));
     await waitFor(() => expect(mocks.create).toHaveBeenCalledTimes(1));
     expect(mocks.create.mock.calls[0][0].institutionId).toBe('institution-1');
   });
@@ -299,7 +299,7 @@ describe('FullStudentEnrollmentWizard', () => {
       await waitFor(() => expect(screen.getByText(`Etapa ${index + 2} de 8`)).toBeTruthy());
     }
 
-    fireEvent.click(screen.getByRole('button', { name: 'Salvar alteracoes' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar alterações' }));
     await waitFor(() => expect(mocks.update).toHaveBeenCalledTimes(1));
     expect(mocks.update.mock.calls[0][0]).toMatchObject({
       institutionId: 'institution-1',
