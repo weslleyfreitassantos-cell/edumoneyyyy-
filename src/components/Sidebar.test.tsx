@@ -314,6 +314,7 @@ describe('Sidebar', () => {
     expect(screen.getByRole('link', { name: 'Câmeras ao vivo' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'TV Escola' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'E-mail' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Avisos' })).toBeTruthy();
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {

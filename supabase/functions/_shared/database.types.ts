@@ -61,6 +61,55 @@ export type Database = {
           },
         ]
       }
+      platform_security_events: {
+        Row: {
+          account_id: string
+          created_at: string
+          event_type: string
+          id: string
+          requester_profile_id: string
+          target_profile_id: string
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          event_type: string
+          id?: string
+          requester_profile_id: string
+          target_profile_id: string
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          event_type?: string
+          id?: string
+          requester_profile_id?: string
+          target_profile_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "platform_security_events_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "platform_security_events_requester_profile_id_fkey"
+            columns: ["requester_profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "platform_security_events_target_profile_id_fkey"
+            columns: ["target_profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       accounts: {
         Row: {
           created_at: string | null
@@ -93,6 +142,69 @@ export type Database = {
           {
             foreignKeyName: "accounts_owner_profile_id_fkey"
             columns: ["owner_profile_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_admin_invitations: {
+        Row: {
+          accepted_at: string | null
+          account_id: string
+          attempt_count: number
+          created_at: string
+          email: string
+          id: string
+          last_attempt_at: string | null
+          last_error_code: string | null
+          last_error_message: string | null
+          profile_id: string
+          sent_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          accepted_at?: string | null
+          account_id: string
+          attempt_count?: number
+          created_at?: string
+          email: string
+          id?: string
+          last_attempt_at?: string | null
+          last_error_code?: string | null
+          last_error_message?: string | null
+          profile_id: string
+          sent_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          accepted_at?: string | null
+          account_id?: string
+          attempt_count?: number
+          created_at?: string
+          email?: string
+          id?: string
+          last_attempt_at?: string | null
+          last_error_code?: string | null
+          last_error_message?: string | null
+          profile_id?: string
+          sent_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_admin_invitations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: true
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_admin_invitations_profile_id_fkey"
+            columns: ["profile_id"]
             isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -849,6 +961,10 @@ export type Database = {
       }
     }
     Functions: {
+      mark_client_admin_invitation_accepted: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
       hard_delete_client_account: {
         Args: {
           acknowledgement: boolean

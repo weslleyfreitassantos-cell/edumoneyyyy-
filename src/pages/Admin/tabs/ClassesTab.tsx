@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useMemo,
   useState,
   type FormEvent,
@@ -12,6 +13,7 @@ import {
   Power,
   PowerOff,
   Settings2,
+  Trash2,
 } from 'lucide-react';
 
 import {
@@ -35,6 +37,11 @@ import {
 } from '../../../hooks/useClasses';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import {
+  ACADEMIC_LEVEL_OPTIONS,
+  getAcademicLevelLabel,
+  normalizeAcademicLevel,
+} from '../../../lib/academic/academicLevels';
 import {
   getPreferredAcademicYear,
   sortAcademicYearsForSelection,
@@ -73,6 +80,8 @@ const emptyDraft: ClassDraft = {
   capacity: '30',
   active: true,
 };
+
+const CLASSES_PAGE_SIZE = 10;
 
 function getErrorMessage(
   error: unknown,
@@ -184,6 +193,16 @@ export default function ClassesTab() {
   ] = useState('all');
 
   const [
+    searchTerm,
+    setSearchTerm,
+  ] = useState('');
+
+  const [
+    currentPage,
+    setCurrentPage,
+  ] = useState(1);
+
+  const [
     modalError,
     setModalError,
   ] = useState<string | null>(null);
@@ -207,6 +226,7 @@ export default function ClassesTab() {
 
   const filteredClasses = useMemo(() => {
     const classes = classesQuery.data ?? [];
+    const normalizedSearch = searchTerm.trim().toLocaleLowerCase('pt-BR');
 
     return classes.filter((classRecord) => {
       const matchesYear =
@@ -221,13 +241,49 @@ export default function ClassesTab() {
         (statusFilter === 'inactive' &&
           !classRecord.active);
 
-      return matchesYear && matchesStatus;
+      const searchableText = [
+        classRecord.name,
+        classRecord.academic_year_name,
+        classRecord.grade_level,
+        getAcademicLevelLabel(classRecord.grade_level),
+        classRecord.shift,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLocaleLowerCase('pt-BR');
+
+      const matchesSearch =
+        !normalizedSearch || searchableText.includes(normalizedSearch);
+
+      return matchesYear && matchesStatus && matchesSearch;
     });
   }, [
     classesQuery.data,
+    searchTerm,
     statusFilter,
     yearFilter,
   ]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredClasses.length / CLASSES_PAGE_SIZE),
+  );
+
+  const paginatedClasses = useMemo(() => {
+    const startIndex = (currentPage - 1) * CLASSES_PAGE_SIZE;
+    return filteredClasses.slice(
+      startIndex,
+      startIndex + CLASSES_PAGE_SIZE,
+    );
+  }, [currentPage, filteredClasses]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, statusFilter, yearFilter]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
 
   const isSubmitting =
     createMutation.isPending ||
@@ -245,7 +301,7 @@ export default function ClassesTab() {
           </p>
 
           <p className="mt-1 text-xs text-[#727785]">
-            {[row.grade_level, row.shift]
+            {[getAcademicLevelLabel(row.grade_level), row.shift]
               .filter(Boolean)
               .join(' • ') || 'Série e turno não informados'}
           </p>
@@ -313,11 +369,29 @@ export default function ClassesTab() {
       academic_year_id:
         classRecord.academic_year_id,
       grade_level:
-        classRecord.grade_level ?? '',
+        normalizeAcademicLevel(classRecord.grade_level) ?? classRecord.grade_level ?? '',
       shift: toAcademicShift(classRecord.shift) ?? '',
       capacity: String(
         classRecord.capacity,
       ),
+      active: classRecord.active,
+    });
+    setIsModalOpen(true);
+  }
+
+  function openDeleteModal(
+    classRecord: ClassRow,
+  ): void {
+    resetMessages();
+    setEditingClass(classRecord);
+    setDeletionCheckClassId(classRecord.id);
+    setFormData({
+      name: classRecord.name,
+      academic_year_id: classRecord.academic_year_id,
+      grade_level:
+        normalizeAcademicLevel(classRecord.grade_level) ?? classRecord.grade_level ?? '',
+      shift: toAcademicShift(classRecord.shift) ?? '',
+      capacity: String(classRecord.capacity),
       active: classRecord.active,
     });
     setIsModalOpen(true);
@@ -544,7 +618,24 @@ export default function ClassesTab() {
         </div>
       )}
 
-      <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:items-end">
+      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:grid-cols-2 lg:grid-cols-[minmax(16rem,1fr)_auto_auto] lg:items-end">
+        <div>
+          <label
+            htmlFor="class-search"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Buscar turma
+          </label>
+          <input
+            id="class-search"
+            type="search"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Nome, série ou turno"
+            className="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+          />
+        </div>
+
         <div>
           <label
             htmlFor="class-year-filter"
@@ -610,7 +701,7 @@ export default function ClassesTab() {
             Automatizar turmas
           </button>
         )}
-        data={filteredClasses}
+        data={paginatedClasses}
         columns={columns}
         isLoading={
           classesQuery.isLoading ||
@@ -678,10 +769,56 @@ export default function ClassesTab() {
                   <Power className="h-4 w-4" aria-hidden="true" />
                 )}
               </button>
+              <button
+                type="button"
+                onClick={() => openDeleteModal(classRecord)}
+                title={`Excluir turma ${classRecord.name}`}
+                aria-label={`Excluir turma ${classRecord.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+              >
+                <Trash2 className="h-4 w-4" aria-hidden="true" />
+              </button>
             </>
           );
         }}
       />
+
+      {filteredClasses.length > 0 && (
+        <nav
+          aria-label="Paginação de turmas"
+          className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white px-4 py-3 text-sm text-gray-600 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>
+            Mostrando{' '}
+            {(currentPage - 1) * CLASSES_PAGE_SIZE + 1}
+            {' '}a{' '}
+            {Math.min(currentPage * CLASSES_PAGE_SIZE, filteredClasses.length)}
+            {' '}de {filteredClasses.length} turma(s)
+          </span>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+              disabled={currentPage === 1}
+              className="rounded-lg border px-3 py-2 font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Anterior
+            </button>
+            <span aria-live="polite" className="min-w-24 text-center">
+              Página {currentPage} de {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+              disabled={currentPage === totalPages}
+              className="rounded-lg border px-3 py-2 font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Próxima
+            </button>
+          </div>
+        </nav>
+      )}
 
       {isAutomationOpen && (
         <ClassAutomationPanel
@@ -794,9 +931,8 @@ export default function ClassesTab() {
                   >
                     Série ou nível
                   </label>
-                  <input
+                  <select
                     id="class-grade"
-                    type="text"
                     value={formData.grade_level}
                     onChange={(event) =>
                       setFormData(
@@ -808,7 +944,29 @@ export default function ClassesTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
-                  />
+                    required
+                  >
+                    <option value="">Selecione</option>
+                    <optgroup label="Ensino Fundamental">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Fundamental').map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Ensino Médio">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Médio').map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                    {formData.grade_level && !ACADEMIC_LEVEL_OPTIONS.some((option) => option.value === formData.grade_level) && (
+                      <option value={formData.grade_level}>
+                        Atual: {formData.grade_level}
+                      </option>
+                    )}
+                  </select>
                 </div>
 
                 <div>

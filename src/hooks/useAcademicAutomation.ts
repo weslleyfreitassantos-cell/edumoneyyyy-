@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
+import { assignmentAutomationService } from '../services/assignmentAutomationService';
 import { classAutomationService } from '../services/classAutomationService';
 import { timetableAutomationService, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
 import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
@@ -14,6 +15,7 @@ export const academicAutomationKeys = {
   timetablePreparation: (institutionId: string, academicYearId: string, shift?: string) => [...academicAutomationKeys.all, 'timetable-preparation', institutionId, academicYearId, shift ?? 'TODOS'] as const,
   timetableVersions: (institutionId: string, academicYearId?: string) => [...academicAutomationKeys.all, 'timetable-versions', institutionId, academicYearId ?? 'all'] as const,
   timetableVersionEntries: (institutionId: string, versionId: string) => [...academicAutomationKeys.all, 'timetable-version-entries', institutionId, versionId] as const,
+  assignmentPreview: (institutionId: string, academicYearId: string) => [...academicAutomationKeys.all, 'assignment-preview', institutionId, academicYearId] as const,
 };
 
 export function useTeacherSubjects(institutionId: string, teacherProfileId: string) {
@@ -103,6 +105,33 @@ export function useCreateWholeYearAssignment() {
       await queryClient.invalidateQueries({ queryKey: ['assignments', variables.institution_id] });
       await queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institution_id) });
       await invalidateSchoolSetupReadiness(queryClient, variables.institution_id);
+    },
+  });
+}
+
+export function useAssignmentAutomationPreview(
+  institutionId: string,
+  academicYearId: string,
+  enabled = true,
+) {
+  return useQuery({
+    queryKey: academicAutomationKeys.assignmentPreview(institutionId, academicYearId),
+    queryFn: () => assignmentAutomationService.preview({ institutionId, academicYearId }),
+    enabled: enabled && Boolean(institutionId && academicYearId),
+  });
+}
+
+export function useApplyAssignmentAutomation() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: assignmentAutomationService.apply,
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['assignments', variables.institutionId] }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.assignmentPreview(variables.institutionId, variables.academicYearId) }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institutionId) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
+      ]);
     },
   });
 }

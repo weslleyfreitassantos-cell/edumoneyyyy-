@@ -599,76 +599,76 @@ export function buildSchoolSetupReadiness({
   const operationalBlockers: SchoolReadinessBlocker[] = [
     {
       id: 'academic-setup',
-      label: 'Configuração acadêmica',
+      label: 'Base acadêmica',
       complete: completedCount === steps.length,
       description: completedCount === steps.length
-        ? 'A estrutura acadêmica está completa.'
-        : 'Finalize a estrutura acadêmica antes de operar a escola.',
+        ? 'A base acadêmica está completa.'
+        : 'Finalize a base acadêmica antes de operar a escola.',
       href: nextStep?.href ?? '/admin?module=overview',
     },
     {
       id: 'published-timetable',
-      label: 'Grade publicada',
+      label: 'Grade',
       complete: timetableState.complete,
       description: timetableState.complete
-        ? 'Existe uma grade publicada e válida.'
+        ? 'Há uma grade publicada e válida.'
         : 'Publique uma grade válida para as turmas ativas.',
       href: '/admin?module=timetable&view=automation',
     },
     {
       id: 'teachers-configured',
-      label: 'Professores cadastrados',
+      label: 'Professores',
       complete: activeTeacherProfiles.length > 0,
       description: activeTeacherProfiles.length > 0
-        ? `${activeTeacherProfiles.length} professor(es) ativo(s).`
-        : 'Cadastre pelo menos um professor ativo.',
+        ? `${activeTeacherProfiles.length} ${activeTeacherProfiles.length === 1 ? 'professor ativo' : 'professores ativos'}.`
+        : 'Cadastre pelo menos um professor.',
       href: '/admin?module=teachers',
     },
     {
       id: 'subject-offerings',
-      label: 'Ofertas das disciplinas',
+      label: 'Matérias ofertadas',
       complete: missingOfferingCount === 0 && curriculumPairs.length > 0,
       description: missingOfferingCount === 0 && curriculumPairs.length > 0
-        ? 'Todas as disciplinas da matriz possuem oferta.'
-        : `${missingOfferingCount} disciplina(s) da matriz ainda não possuem oferta.`,
+        ? 'Todas as matérias da matriz têm oferta.'
+        : `${missingOfferingCount} ${missingOfferingCount === 1 ? 'matéria' : 'matérias'} da matriz ainda não têm oferta.`,
       href: '/admin?module=assignments',
     },
     {
       id: 'teacher-assignments',
-      label: 'Professores associados',
+      label: 'Professores atribuídos',
       complete: missingAssignmentCount === 0 && activeOfferings.length > 0,
       description: missingAssignmentCount === 0 && activeOfferings.length > 0
-        ? 'As ofertas possuem professores ativos.'
-        : `${missingAssignmentCount} oferta(s) ainda estão sem professor ativo.`,
+        ? 'Todas as ofertas têm professor.'
+        : `${missingAssignmentCount} ${missingAssignmentCount === 1 ? 'oferta' : 'ofertas'} ainda estão sem professor.`,
       href: '/admin?module=assignments',
     },
     {
       id: 'teacher-qualifications',
-      label: 'Habilitações dos professores',
+      label: 'Habilitações',
       complete: missingQualificationCount === 0 && activeOfferings.length > 0,
       description: missingQualificationCount === 0 && activeOfferings.length > 0
-        ? 'As disciplinas estão associadas às habilitações dos professores.'
-        : `${missingQualificationCount} oferta(s) não possui habilitação correspondente.`,
+        ? 'As matérias estão vinculadas às habilitações.'
+        : `${missingQualificationCount} ${missingQualificationCount === 1 ? 'oferta' : 'ofertas'} não têm habilitação correspondente.`,
       href: '/admin?module=teachers',
     },
     {
       id: 'teacher-availability',
-      label: 'Disponibilidade dos professores',
+      label: 'Disponibilidade',
       complete: !requireTeacherAvailability || (assignedTeacherIds.size > 0 && teachersWithoutAvailability === 0),
       description: !requireTeacherAvailability
         ? 'A política não exige disponibilidade cadastrada.'
         : teachersWithoutAvailability === 0 && assignedTeacherIds.size > 0
-          ? 'A disponibilidade está cadastrada para os professores associados.'
-          : `${teachersWithoutAvailability} professor(es) associado(s) sem disponibilidade.`,
+          ? 'A disponibilidade está cadastrada para os professores atribuídos.'
+          : `${teachersWithoutAvailability} ${teachersWithoutAvailability === 1 ? 'professor' : 'professores'} sem disponibilidade.`,
       href: '/admin?module=teachers',
     },
     {
       id: 'active-enrollments',
-      label: 'Matrículas ativas',
+      label: 'Matrículas',
       complete: activeEnrollmentCount > 0,
       description: activeEnrollmentCount > 0
-        ? `${activeEnrollmentCount} matrícula(s) ativa(s).`
-        : 'Matricule pelo menos um aluno para iniciar a operação.',
+        ? `${activeEnrollmentCount} ${activeEnrollmentCount === 1 ? 'matrícula ativa' : 'matrículas ativas'}.`
+        : 'Associe pelo menos um aluno a uma turma.',
       href: '/admin?module=students',
     },
   ];

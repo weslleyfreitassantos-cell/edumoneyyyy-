@@ -202,13 +202,13 @@ describe('AdminOverviewTab', () => {
 
     expect(screen.getByText(/^configuração da escola$/i)).toBeTruthy();
     expect(screen.queryByText(/^fundação$/i)).toBeNull();
-    expect(screen.getAllByText(/prontidão operacional/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/prontidão da escola/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
   });
 
-  it('exibe a configuração acadêmica para ADMIN sem oferecer edição indevida', () => {
+  it('exibe somente o acesso de configuração para ADMIN', () => {
     mockOverviewState({
       profileRole: 'ADMIN',
       currentRole: 'ADMIN',
@@ -220,9 +220,10 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getAllByText(/configuração acadêmica/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/^fundação$/i)).toBeTruthy();
-    expect(screen.queryByText(/gerenciar diretor ou secretaria/i)).toBeNull();
+    expect(screen.getByText(/^acesso de configuração$/i)).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: /^base acadêmica$/i })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /^equipe$/i })).toBeNull();
+    expect(screen.queryByText(/gerenciar acesso/i)).toBeNull();
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
   });
 });

@@ -40,6 +40,7 @@ Documentos de readiness:
 - [Especificação futura de convites](docs/edge-functions-user-invite-spec.md)
 - [Matriz de roles](docs/roles-matrix.md)
 - [Checklist de produção](docs/release-readiness-checklist.md)
+- [Avaliação de prontidão do MVP](docs/mvp-readiness-assessment.md)
 - [Auditoria de escritas frontend](docs/frontend-write-audit.md)
 
 ---

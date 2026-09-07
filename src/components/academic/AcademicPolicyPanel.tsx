@@ -401,7 +401,7 @@ export default function AcademicPolicyPanel({
             </h2>
           </div>
           <p className="mt-1 text-sm text-[#727785]">
-            Regras de fechamento, turnos e capacidade usadas na rotina academica.
+            Regras de fechamento, turnos e capacidade da escola.
           </p>
         </div>
 
@@ -442,7 +442,7 @@ export default function AcademicPolicyPanel({
             className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
           >
             Não foi possível carregar os turnos da escola.
-            A migração de configuração precisa estar aplicada antes do uso.
+            Não foi possível carregar os turnos. Tente novamente.
           </div>
         ) : (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -542,7 +542,7 @@ export default function AcademicPolicyPanel({
               role="alert"
               className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
             >
-              Não foi possível carregar os intervalos. A migration de horários complementares precisa estar aplicada antes do uso.
+              Não foi possível carregar os intervalos. Tente novamente.
             </div>
           ) : enabledShifts.length === 0 ? (
             <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700">
@@ -606,9 +606,9 @@ export default function AcademicPolicyPanel({
                         {shiftBreaks.map((item, index) => (
                           <div
                             key={`${shift}-${index}`}
-                            className="grid gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-2 lg:items-end xl:grid-cols-[minmax(260px,1.5fr)_minmax(140px,1fr)_minmax(120px,.8fr)_minmax(120px,.8fr)_auto]"
+                            className="grid min-w-0 gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-2 lg:items-end xl:grid-cols-[minmax(260px,1.5fr)_minmax(140px,1fr)_minmax(120px,.8fr)_minmax(120px,.8fr)_auto]"
                           >
-                            <fieldset>
+                            <fieldset className="min-w-0">
                               <legend className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                                 Dias da semana
                               </legend>
@@ -640,7 +640,7 @@ export default function AcademicPolicyPanel({
                                 })}
                               </div>
                             </fieldset>
-                            <label className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Tipo
                               <input
                                 value={item.name}
@@ -654,7 +654,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Início
                               <input
                                 type="time"
@@ -668,7 +668,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Fim
                               <input
                                 type="time"
@@ -920,7 +920,7 @@ export default function AcademicPolicyPanel({
             <div className="mt-4 grid gap-2 sm:grid-cols-3">
               {([
                 ['requireTeacherAvailability', 'Exigir disponibilidade do professor'],
-                ['requireRoomForGeneration', 'Exigir sala para gerar'],
+                ['requireRoomForGeneration', 'Exigir sala para gerar a grade'],
                 ['allowSharedRooms', 'Permitir salas compartilhadas'],
               ] as const).map(([field, label]) => (
                 <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054] dark:text-slate-200">
@@ -970,7 +970,7 @@ export default function AcademicPolicyPanel({
 
       {selectedYear && (
         <p className="mt-4 text-xs text-[#727785]">
-          Periodo do ano: {formatDate(selectedYear.startDate)} ate{' '}
+          Período do ano: {formatDate(selectedYear.startDate)} até{' '}
           {formatDate(selectedYear.endDate)}.
         </p>
       )}

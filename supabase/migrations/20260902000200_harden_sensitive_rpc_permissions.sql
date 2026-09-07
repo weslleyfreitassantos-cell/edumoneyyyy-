@@ -2,8 +2,17 @@ begin;
 
 -- These functions read or mutate authenticated user data. Keep the public
 -- branding resolvers available anonymously, but require a user session here.
-revoke all on function public.can_view_institution_profile(uuid) from public, anon;
-grant execute on function public.can_view_institution_profile(uuid) to authenticated;
+-- This RPC exists in the reconciled remote baseline but is not created by the
+-- local historical migrations. Keep fresh shadow databases reproducible while
+-- preserving the hardening wherever the RPC is present.
+do $$
+begin
+  if to_regprocedure('public.can_view_institution_profile(uuid)') is not null then
+    revoke all on function public.can_view_institution_profile(uuid) from public, anon;
+    grant execute on function public.can_view_institution_profile(uuid) to authenticated;
+  end if;
+end
+$$;
 
 revoke all on function public.create_full_student_enrollment_bundle(jsonb) from public, anon;
 grant execute on function public.create_full_student_enrollment_bundle(jsonb) to authenticated;

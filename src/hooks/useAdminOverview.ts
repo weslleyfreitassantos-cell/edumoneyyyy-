@@ -15,6 +15,8 @@ export const adminOverviewKeys = {
     ] as const,
 };
 
+export const ADMIN_OVERVIEW_STALE_TIME = 1000 * 60;
+
 export function useAdminOverview(
   institutionId: string,
 ) {
@@ -30,5 +32,6 @@ export function useAdminOverview(
       ),
 
     enabled: Boolean(institutionId),
+    staleTime: ADMIN_OVERVIEW_STALE_TIME,
   });
 }

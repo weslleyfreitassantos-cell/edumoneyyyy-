@@ -1,8 +1,10 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import {
   buildClassBatchNames,
   buildEducationPresetClassDefinitions,
+  classAutomationService,
+  EDUCATION_PRESET_GRADES,
 } from './classAutomationService';
 
 describe('buildClassBatchNames', () => {
@@ -56,5 +58,38 @@ describe('buildClassBatchNames', () => {
 
     expect(definitions[0].names).toEqual([]);
     expect(definitions[11].names).toEqual(['3ª série EM']);
+  });
+
+  it('executa o preset sem depender do contexto this', async () => {
+    const classCounts = Object.fromEntries(
+      EDUCATION_PRESET_GRADES.map((grade) => [grade.key, 0]),
+    );
+    classCounts['fundamental-1'] = 1;
+    classCounts['medio-1'] = 1;
+
+    const createBatch = vi.spyOn(classAutomationService, 'createBatch').mockResolvedValue({
+      createdClassIds: ['class-1'],
+      createdClassNames: ['Turma criada'],
+      curriculumItemsApplied: 0,
+      assignmentsCreated: 0,
+      uncoveredSubjects: [],
+    });
+
+    try {
+      const createPreset = classAutomationService.createEducationPreset;
+      const result = await createPreset({
+        institutionId: 'institution-1',
+        academicYearId: 'year-1',
+        classCounts,
+        shift: 'INTEGRAL',
+        capacity: 30,
+        assignTeachers: false,
+      });
+
+      expect(createBatch).toHaveBeenCalledTimes(2);
+      expect(result.createdClassNames).toEqual(['Turma criada', 'Turma criada']);
+    } finally {
+      createBatch.mockRestore();
+    }
   });
 });

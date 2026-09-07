@@ -214,8 +214,21 @@ async function getValidatedRecoveryUser(): Promise<{
   };
 }
 
+async function markClientAdminInvitationAccepted(): Promise<void> {
+  if (typeof supabase.rpc !== 'function') {
+    return;
+  }
+
+  try {
+    await supabase.rpc('mark_client_admin_invitation_accepted');
+  } catch {
+    // Invitation state is auxiliary; do not block password recovery.
+  }
+}
+
 async function buildRecoveryContextFromCurrentUser(): Promise<RecoveryContext> {
   const user = await getValidatedRecoveryUser();
+  await markClientAdminInvitationAccepted();
 
   const context: RecoveryContext = {
     userId: user.id,

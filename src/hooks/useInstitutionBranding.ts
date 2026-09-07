@@ -6,6 +6,7 @@ import {
 
 import { accountKeys } from './useAccounts';
 import { userInstitutionKeys } from './useUserInstitutions';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   brandingPublicService,
   normalizePublicSlug,
@@ -82,6 +83,7 @@ export function useSaveInstitutionLogo() {
               response.publicSlug,
             ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
       ]);
     },
   });
@@ -111,6 +113,7 @@ export function useRemoveInstitutionLogo() {
               response.publicSlug,
             ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
       ]);
     },
   });
@@ -140,6 +143,7 @@ export function useSaveInstitutionFavicon() {
               response.publicSlug,
             ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
       ]);
     },
   });
@@ -169,6 +173,7 @@ export function useRemoveInstitutionFavicon() {
               response.publicSlug,
             ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
       ]);
     },
   });

@@ -36,6 +36,7 @@ import {
 import { ThemeProvider } from './contexts/ThemeContext';
 
 import AppShell from './components/AppShell';
+import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 import {
@@ -500,6 +501,7 @@ function PersistentTerminalsView() {
 function AuthenticatedShellLayout() {
   return (
     <ProtectedRoute>
+      <AuthenticatedDataPreloader />
       <AppShell>
         <PersistentTerminalsView />
         <Outlet />

@@ -1,3 +1,9 @@
+import {
+  FunctionsFetchError,
+  FunctionsHttpError,
+  FunctionsRelayError,
+} from '@supabase/supabase-js';
+
 import { supabase } from '../lib/supabaseClient';
 
 export const SCHOOL_EMAIL_AUDIENCES = [
@@ -59,18 +65,61 @@ function getResponseError(data: unknown): SchoolEmailServiceError | null {
   if (
     typeof data === 'object' &&
     data !== null &&
+    'success' in data &&
+    data.success === false &&
+    'code' in data &&
+    typeof data.code === 'string' &&
     'message' in data &&
     typeof data.message === 'string'
   ) {
     return new SchoolEmailServiceError(
       data.message,
-      'code' in data && typeof data.code === 'string'
-        ? data.code
-        : 'SCHOOL_EMAIL_ERROR',
+      data.code,
     );
   }
 
   return null;
+}
+
+async function getFunctionError(
+  error: unknown,
+): Promise<SchoolEmailServiceError> {
+  if (error instanceof FunctionsHttpError) {
+    try {
+      const responseError = getResponseError(await error.context.json());
+      if (responseError) return responseError;
+    } catch {
+      // A relay or proxy can return a non-JSON body.
+    }
+
+    return new SchoolEmailServiceError(
+      'Não foi possível processar o e-mail institucional.',
+      'FUNCTION_HTTP_ERROR',
+    );
+  }
+
+  if (error instanceof FunctionsRelayError) {
+    return new SchoolEmailServiceError(
+      'O serviço de e-mail está temporariamente indisponível.',
+      'FUNCTION_RELAY_ERROR',
+    );
+  }
+
+  if (error instanceof FunctionsFetchError) {
+    return new SchoolEmailServiceError(
+      'Não foi possível conectar ao serviço de e-mail.',
+      'FUNCTION_FETCH_ERROR',
+    );
+  }
+
+  if (error instanceof Error) {
+    return new SchoolEmailServiceError(error.message, 'UNKNOWN_ERROR');
+  }
+
+  return new SchoolEmailServiceError(
+    'Não foi possível concluir o envio.',
+    'UNKNOWN_ERROR',
+  );
 }
 
 async function invoke(
@@ -82,11 +131,7 @@ async function invoke(
   );
 
   if (error) {
-    const responseError = getResponseError(error);
-    throw responseError ?? new SchoolEmailServiceError(
-      'Não foi possível conectar ao serviço de e-mail.',
-      'FUNCTION_FETCH_ERROR',
-    );
+    throw await getFunctionError(error);
   }
 
   const bodyError = getResponseError(data);

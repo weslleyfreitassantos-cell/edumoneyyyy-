@@ -2,6 +2,7 @@ node_modules/
 build/
 dist/
 coverage/
+/outputs/
 .camera-lab/
 scripts/cameras/.camera-lab/
 *.mp4

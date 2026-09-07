@@ -106,4 +106,16 @@ describe('buildTimetablePreparationReport', () => {
 
     expect(report.ready).toBe(true);
   });
+
+  it('valida a disponibilidade contra horários padrão quando a escola ainda não os cadastrou', () => {
+    const report = buildTimetablePreparationReport({
+      ...baseInput,
+      slots: [],
+    });
+
+    expect(report.ready).toBe(true);
+    expect(report.classes[0]?.compatibleSlots).toBeGreaterThan(0);
+    expect(report.blockers.some((item) => item.code === 'TEACHER_AVAILABILITY_MISSING')).toBe(false);
+    expect(report.warnings.some((item) => item.code === 'SCHOOL_SLOTS_WILL_BE_CREATED')).toBe(true);
+  });
 });

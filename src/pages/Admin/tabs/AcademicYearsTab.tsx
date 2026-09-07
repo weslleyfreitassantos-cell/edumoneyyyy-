@@ -34,6 +34,11 @@ import {
   useUpdateTerm,
 } from '../../../hooks/useAcademicStructure';
 
+import {
+  useCopyPreviousYear,
+  useCreateAcademicYearWithTerms,
+} from '../../../hooks/useAcademicAutomation';
+
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 
@@ -44,7 +49,6 @@ import {
   termUpdateSchema,
 } from '../../../schemas/adminSchemas';
 import {
-  academicAutomationService,
   suggestPeriods,
   type PeriodDraft,
   type PeriodModel,
@@ -159,6 +163,12 @@ export default function AcademicYearsTab() {
 
   const createYearMutation =
     useCreateAcademicYear();
+
+  const createYearWithTermsMutation =
+    useCreateAcademicYearWithTerms();
+
+  const copyPreviousYearMutation =
+    useCopyPreviousYear();
 
   const updateYearMutation =
     useUpdateAcademicYear();
@@ -290,6 +300,8 @@ export default function AcademicYearsTab() {
   const isSubmitting =
     isYearBusy ||
     createYearMutation.isPending ||
+    createYearWithTermsMutation.isPending ||
+    copyPreviousYearMutation.isPending ||
     updateYearMutation.isPending ||
     createTermMutation.isPending ||
     updateTermMutation.isPending;
@@ -487,11 +499,11 @@ export default function AcademicYearsTab() {
         }
 
         const created = periodDrafts.length > 0
-          ? await academicAutomationService.createAcademicYearWithTerms({ ...result.data, periods: periodDrafts })
+          ? await createYearWithTermsMutation.mutateAsync({ ...result.data, periods: periodDrafts })
           : await createYearMutation.mutateAsync(result.data).then((year) => ({ year_id: year.id, term_count: 0 }));
 
         if (sourceYearId) {
-          await academicAutomationService.copyPreviousYear({
+          await copyPreviousYearMutation.mutateAsync({
             institution_id: institutionId,
             source_year_id: sourceYearId,
             target_year_id: created.year_id,
@@ -502,7 +514,7 @@ export default function AcademicYearsTab() {
 
         setFeedbackMessage(
           periodDrafts.length > 0
-            ? `Ano letivo criado com ${created.term_count} periodo(s).`
+            ? `Ano letivo criado com ${created.term_count} período(s).`
             : 'Ano letivo criado com sucesso.',
         );
       }
@@ -1340,9 +1352,9 @@ export default function AcademicYearsTab() {
                     </select>
                     {sourceYearId && <div className="mt-2 space-y-2 text-xs text-gray-600">
                       <label className="flex items-center gap-2"><input type="checkbox" checked readOnly /> Estrutura das turmas e matriz curricular</label>
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horarios padrao</label>
-                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuicoes de professores qualificadas (sugestao)</label>
-                      <p>Alunos, matriculas, notas e frequencia nunca sao copiados.</p>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horários padrão</label>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuições de professores qualificadas (sugestão)</label>
+                      <p>Alunos, matrículas, notas e frequência nunca são copiados.</p>
                     </div>}
                   </div>
                 </>

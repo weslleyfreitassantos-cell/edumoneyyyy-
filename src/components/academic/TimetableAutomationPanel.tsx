@@ -424,7 +424,7 @@ export default function TimetableAutomationPanel({
     setError(null);
     try {
       await publishMutation.mutateAsync({ versionId, institutionId, academicYearId: selectedYearId });
-      setMessage('Grade publicada com validação server-side.');
+      setMessage('Grade publicada.');
     } catch (publishError) {
       setError(getErrorMessage(publishError, 'publish'));
     }
@@ -495,8 +495,8 @@ export default function TimetableAutomationPanel({
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Grade horária</p>
-          <h3 className="mt-1 text-lg font-bold text-[#181c20]">Quais horários sua escola utiliza?</h3>
-          <p className="mt-1 text-sm text-[#667085]">Escolha o turno, gere os horários automaticamente e revise cada aula antes da publicação.</p>
+          <h3 className="mt-1 text-lg font-bold text-[#181c20]">Gerar grade horária</h3>
+          <p className="mt-1 text-sm text-[#667085]">Escolha o ano e o turno. A proposta será criada para revisão.</p>
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
           <label className="text-sm font-semibold text-[#344054]">
@@ -532,7 +532,7 @@ export default function TimetableAutomationPanel({
             disabled={!selectedYearId || generateMutation.isPending || preparationQuery.isLoading || preparationQuery.isFetching || preparationQuery.isError || Boolean(preparationQuery.data && !preparationQuery.data.ready)}
             className="min-h-10 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {generateMutation.isPending ? 'Gerando...' : 'Gerar grade automaticamente'}
+            {generateMutation.isPending ? 'Gerando...' : 'Gerar grade'}
           </button>
         </div>
       </div>
@@ -547,8 +547,8 @@ export default function TimetableAutomationPanel({
         <section className="rounded-lg border border-[#d8deea] bg-slate-50 p-4">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h4 className="font-semibold text-[#181c20]">Preparação da grade</h4>
-              <p className="text-xs text-[#667085]">Confira a capacidade antes de criar a proposta.</p>
+              <h4 className="font-semibold text-[#181c20]">Antes de gerar</h4>
+              <p className="text-xs text-[#667085]">Confira se a escola está pronta para criar a proposta.</p>
             </div>
             <button
               type="button"
@@ -556,25 +556,25 @@ export default function TimetableAutomationPanel({
               disabled={preparationQuery.isFetching}
               className="self-start rounded-lg border border-[#c1c6d6] bg-white px-3 py-2 text-xs font-semibold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50"
             >
-              {preparationQuery.isFetching ? 'Atualizando...' : 'Atualizar preparação'}
+              {preparationQuery.isFetching ? 'Atualizando...' : 'Atualizar'}
             </button>
           </div>
 
           {preparationQuery.isLoading ? (
-            <p className="mt-3 text-sm text-[#667085]">Calculando alunos, salas, professores e horários...</p>
+            <p className="mt-3 text-sm text-[#667085]">Verificando alunos, salas, professores e horários...</p>
           ) : preparationQuery.isError ? (
             <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível calcular a preparação. Atualize a página e tente novamente.</p>
           ) : preparationQuery.data ? (
             <>
               <div className="mt-3 grid gap-2 text-xs sm:grid-cols-4">
-                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.classes}</strong> turma(s)</div>
-                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.students}</strong> aluno(s)</div>
-                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.rooms}</strong> sala(s) ativa(s)</div>
-                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.slots}</strong> horário(s) cadastrado(s)</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.classes}</strong> turmas</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.students}</strong> alunos</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.rooms}</strong> salas ativas</div>
+                <div className="rounded-lg border border-[#d8deea] bg-white p-3"><strong>{preparationQuery.data.totals.slots}</strong> horários cadastrados</div>
               </div>
               {preparationQuery.data.blockers.length > 0 && (
                 <div className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
-                  <strong>Geração bloqueada</strong>
+                  <strong>Não é possível gerar ainda</strong>
                   <ul className="mt-2 list-disc space-y-1 pl-5">
                     {preparationQuery.data.blockers.slice(0, 8).map((blocker) => <li key={`${blocker.code}:${blocker.message}`}>{blocker.message} {blocker.action}</li>)}
                   </ul>
@@ -583,7 +583,7 @@ export default function TimetableAutomationPanel({
               )}
               {preparationQuery.data.warnings.length > 0 && (
                 <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-                  <strong>Atenção antes de publicar</strong>
+                  <strong>Revise antes de publicar</strong>
                   <ul className="mt-2 list-disc space-y-1 pl-5">
                     {preparationQuery.data.warnings.slice(0, 5).map((warning) => <li key={`${warning.code}:${warning.message}`}>{warning.message}</li>)}
                   </ul>
@@ -599,7 +599,7 @@ export default function TimetableAutomationPanel({
 
       <section>
         <div>
-          <h4 className="font-semibold text-[#181c20]">Grades geradas</h4>
+          <h4 className="font-semibold text-[#181c20]">Propostas de grade</h4>
           <p className="text-xs text-[#667085]">Toda geração começa como rascunho e precisa de revisão.</p>
         </div>
         <div className="mt-3 overflow-x-auto rounded-lg border border-[#e4e8f1]">
@@ -630,7 +630,7 @@ export default function TimetableAutomationPanel({
 
       {reviewVersionId && (
         <section className="space-y-4 border-t border-[#e4e8f1] pt-5">
-          <div><h4 className="font-semibold text-[#181c20]">Revisar grade</h4><p className="text-sm text-[#667085]">Clique em uma aula para editar o horário ou marcá-la como fixa.</p></div>
+          <div><h4 className="font-semibold text-[#181c20]">Revisar grade</h4><p className="text-sm text-[#667085]">Selecione uma aula para editar o horário ou mantê-la na próxima geração.</p></div>
           {versionEntriesQuery.isLoading ? <p className="text-sm text-[#667085]">Carregando rascunho...</p> : versionEntriesQuery.isError ? <p role="alert" className="text-sm text-red-700">{getErrorMessage(versionEntriesQuery.error, 'review')}</p> : <VersionReview entries={versionEntriesQuery.data ?? []} scheduleBreaks={scheduleBreaksQuery.data ?? []} onEdit={openEntryEditor} editable={reviewVersion?.status === 'DRAFT'} schoolDays={preparationQuery.data?.policy.schoolDays} />}
         </section>
       )}

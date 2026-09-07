@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import {
   suggestPeriods,
+  suggestTeacherAvailabilityFromPolicy,
   suggestTeacherAvailabilityFromSchoolSlots,
 } from './academicAutomationService';
 
@@ -50,6 +51,42 @@ describe('suggestTeacherAvailabilityFromSchoolSlots', () => {
       { day_of_week: 1, start_time: '07:00', end_time: '08:40' },
       { day_of_week: 1, start_time: '09:50', end_time: '10:40' },
       { day_of_week: 2, start_time: '13:00', end_time: '13:50' },
+    ]);
+  });
+});
+
+describe('suggestTeacherAvailabilityFromPolicy', () => {
+  it('creates initial windows from the configured days, shift and daily lesson limit', () => {
+    expect(
+      suggestTeacherAvailabilityFromPolicy({
+        shifts: ['MATUTINO'],
+        schoolDays: [1],
+        maxLessonsPerDay: 2,
+      }),
+    ).toEqual([
+      { day_of_week: 1, start_time: '07:00', end_time: '08:40' },
+    ]);
+  });
+
+  it('removes policy windows that overlap an active break', () => {
+    expect(
+      suggestTeacherAvailabilityFromPolicy({
+        shifts: ['INTEGRAL'],
+        schoolDays: [1],
+        maxLessonsPerDay: 8,
+        breaks: [{
+          shift: 'INTEGRAL',
+          day_of_week: 1,
+          start_time: '10:30',
+          end_time: '13:30',
+          active: true,
+        }],
+      }),
+    ).toEqual([
+      { day_of_week: 1, start_time: '07:00', end_time: '08:40' },
+      { day_of_week: 1, start_time: '08:50', end_time: '10:30' },
+      { day_of_week: 1, start_time: '13:50', end_time: '14:40' },
+      { day_of_week: 1, start_time: '14:50', end_time: '15:40' },
     ]);
   });
 });
