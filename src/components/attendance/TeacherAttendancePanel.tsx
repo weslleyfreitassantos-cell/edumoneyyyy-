@@ -8,6 +8,7 @@ import {
   CalendarDays,
   CheckCircle2,
   ClipboardCheck,
+  Clock3,
   Save,
 } from 'lucide-react';
 
@@ -23,6 +24,7 @@ import {
 import {
   ATTENDANCE_STATUS_LABELS,
   formatAttendanceDate,
+  formatAttendanceTime,
   getTodayDateInputValue,
 } from './attendanceDisplay';
 
@@ -225,6 +227,8 @@ export default function TeacherAttendancePanel({
             <p className="mt-1 text-sm text-[#727785]">
               {rollCallQuery.data?.session
                 ? 'Sessão carregada para correção.'
+                : rollCallQuery.data?.scheduleSlot
+                  ? 'Aula encontrada na grade publicada.'
                 : 'Sessão ainda não salva.'}
             </p>
           </div>
@@ -321,6 +325,19 @@ export default function TeacherAttendancePanel({
                   Período permitido:{' '}
                   {formatAttendanceDate(termStartDate)} a{' '}
                   {formatAttendanceDate(termEndDate)}.
+                </p>
+              )}
+              {rollCallQuery.data?.scheduleSlot && (
+                <p className="mt-1 flex items-center gap-1 text-xs font-medium text-[#005bbf]">
+                  <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
+                  Aula prevista:{' '}
+                  {formatAttendanceTime(
+                    rollCallQuery.data.scheduleSlot.startTime,
+                  )}{' '}
+                  a{' '}
+                  {formatAttendanceTime(
+                    rollCallQuery.data.scheduleSlot.endTime,
+                  )}
                 </p>
               )}
             </div>
