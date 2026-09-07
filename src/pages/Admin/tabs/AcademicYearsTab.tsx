@@ -20,6 +20,7 @@ import {
   type Column,
 } from '../../../components/DataTable';
 import { ActionGroup } from '../../../components/ActionGroup';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -129,24 +130,6 @@ function isCurrentRange(
     .slice(0, 10);
 
   return startDate <= today && today <= endDate;
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
 }
 
 export default function AcademicYearsTab() {

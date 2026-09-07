@@ -25,6 +25,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 import { ActionGroup } from '../../../components/ActionGroup';
+import StatusBadge from '../../../components/StatusBadge';
 
 import {
   CURRENT_DATABASE_ROLES,
@@ -216,32 +217,6 @@ export function getSchoolUserSummary(
     inactive: users.length - active,
     byRole,
   };
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean | null;
-}) {
-  if (active === null) {
-    return (
-      <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-slate-300">
-        Status não informado
-      </span>
-    );
-  }
-
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-slate-300'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
 }
 
 function SummaryCard({

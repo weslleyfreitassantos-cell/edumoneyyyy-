@@ -16,6 +16,7 @@ import { timetableService, DAYS_OF_WEEK, dayLabel, type TimetableEntryRow, type 
 import type { AcademicYearRow } from '../../../services/academicStructureService';
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
 import { DataTable, type Column } from '../../../components/DataTable';
+import StatusBadge from '../../../components/StatusBadge';
 import TimetableAutomationPanel from '../../../components/academic/TimetableAutomationPanel';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
@@ -60,41 +61,41 @@ function TimetableView({ grid, onEdit }: { grid: TimetableGrid; onEdit: (e: Time
     return (
       <div
         key={entry.id}
-        className="cursor-pointer rounded-md border border-blue-200 bg-blue-50 p-1.5 text-xs hover:bg-blue-100"
+        className="cursor-pointer rounded-md border border-blue-200 bg-blue-50 p-1.5 text-xs hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/50 dark:hover:bg-blue-900/60"
         onClick={() => onEdit(entry)}
       >
-        <div className="font-semibold text-[#181c20]">{entry.subject_name}</div>
-        <div className="text-[#727785]">{entry.teacher_name ?? '—'}</div>
-        {entry.room_name && <div className="text-[#727785]">{entry.room_name}</div>}
+        <div className="font-semibold text-[#181c20] dark:text-blue-50">{entry.subject_name}</div>
+        <div className="text-[#727785] dark:text-slate-300">{entry.teacher_name ?? '—'}</div>
+        {entry.room_name && <div className="text-[#727785] dark:text-slate-300">{entry.room_name}</div>}
       </div>
     );
   }
 
   if (grid.timeSlots.length === 0) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-sm text-gray-500">
+      <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
         Nenhum horário cadastrado. Clique em "Adicionar horário" para começar.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-[#dfe3e8]">
-      <table className="min-w-full divide-y divide-[#dfe3e8] text-sm">
+    <div className="overflow-x-auto rounded-xl border border-[#dfe3e8] dark:border-slate-700">
+      <table className="min-w-full divide-y divide-[#dfe3e8] text-sm dark:divide-slate-700">
         <thead>
-          <tr className="bg-gray-50">
-            <th className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase">Horário</th>
+          <tr className="bg-gray-50 dark:bg-slate-800">
+            <th className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase dark:text-slate-300">Horário</th>
             {grid.days.map((day) => (
-              <th key={day.day} className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase">
+              <th key={day.day} className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase dark:text-slate-300">
                 {day.label}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#dfe3e8]">
+        <tbody className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
           {grid.timeSlots.map((slot, idx) => (
-            <tr key={`${slot.start_time}-${slot.end_time}`} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
-              <td className="whitespace-nowrap px-3 py-2 text-xs font-medium text-[#727785]">
+            <tr key={`${slot.start_time}-${slot.end_time}`} className={idx % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-gray-50/50 dark:bg-slate-800/60'}>
+              <td className="whitespace-nowrap px-3 py-2 text-xs font-medium text-[#727785] dark:text-slate-400">
                 {slot.start_time} – {slot.end_time}
               </td>
               {grid.days.map((day) => {
@@ -368,9 +369,7 @@ export default function TimetableTab() {
       key: 'active',
       label: 'Status',
       render: (_v, r) => (
-        <span className={r.active ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700' : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'}>
-          {r.active ? 'Ativo' : 'Inativo'}
-        </span>
+        <StatusBadge active={r.active} />
       ),
     },
   ];
@@ -390,25 +389,25 @@ export default function TimetableTab() {
       )}
 
       {/* Sub-navigation */}
-      <div className="flex gap-2 border-b border-[#dfe3e8] pb-2">
+      <div className="flex gap-2 border-b border-[#dfe3e8] pb-2 dark:border-slate-700">
         <button
           type="button"
           onClick={() => setSubView('grid')}
-          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'grid' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf]' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'grid' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Grade Horária
         </button>
         <button
           type="button"
           onClick={() => setSubView('rooms')}
-          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'rooms' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf]' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'rooms' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Salas
         </button>
         <button
           type="button"
           onClick={() => setSubView('automation')}
-          className={`rounded-t-lg px-4 py-2 text-sm font-medium ${subView === 'automation' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf]' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`rounded-t-lg px-4 py-2 text-sm font-medium ${subView === 'automation' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Automacao
         </button>
@@ -419,28 +418,28 @@ export default function TimetableTab() {
       {subView === 'grid' && (
         <>
           {/* Filters */}
-          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:flex-wrap sm:items-end">
+          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:flex-wrap sm:items-end">
             <div>
-              <label htmlFor="tt-year-filter" className="block text-sm font-medium text-gray-700">Ano letivo</label>
-              <select id="tt-year-filter" value={yearFilter} onChange={(e) => { setYearFilter(e.target.value); setTermFilter('all'); }} className="mt-1 rounded-lg border px-3 py-2 text-sm">
+              <label htmlFor="tt-year-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Ano letivo</label>
+              <select id="tt-year-filter" value={yearFilter} onChange={(e) => { setYearFilter(e.target.value); setTermFilter('all'); }} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                 <option value="all">Todos</option>
                 {years.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
               </select>
             </div>
             <div>
-              <label htmlFor="tt-term-filter" className="block text-sm font-medium text-gray-700">Período</label>
-              <select id="tt-term-filter" value={termFilter} onChange={(e) => setTermFilter(e.target.value)} className="mt-1 rounded-lg border px-3 py-2 text-sm">
+              <label htmlFor="tt-term-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Período</label>
+              <select id="tt-term-filter" value={termFilter} onChange={(e) => setTermFilter(e.target.value)} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                 <option value="all">Todos</option>
                 {years.flatMap((year) => year.terms.filter((term) => yearFilter === 'all' || year.id === yearFilter).map((term) => <option key={term.id} value={term.id}>{term.name} - {year.name}</option>))}
               </select>
             </div>
             <div>
-              <label htmlFor="tt-class-filter" className="block text-sm font-medium text-gray-700">Turma</label>
+              <label htmlFor="tt-class-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Turma</label>
               <select
                 id="tt-class-filter"
                 value={classFilter}
                 onChange={(e) => setClassFilter(e.target.value)}
-                className="mt-1 rounded-lg border px-3 py-2 text-sm"
+                className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               >
                 <option value="all">Todas</option>
                 {classes.filter((c) => c.active && (yearFilter === 'all' || c.academic_year_id === yearFilter)).map((c) => (
@@ -450,20 +449,20 @@ export default function TimetableTab() {
             </div>
 
             <div>
-              <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700">Professor</label>
-              <select id="tt-teacher-filter" value={teacherFilter} onChange={(e) => setTeacherFilter(e.target.value)} className="mt-1 rounded-lg border px-3 py-2 text-sm">
+              <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Professor</label>
+              <select id="tt-teacher-filter" value={teacherFilter} onChange={(e) => setTeacherFilter(e.target.value)} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                 <option value="all">Todos</option>
                 {teachers.filter((teacher) => teacher.active).map((teacher) => <option key={teacher.profile_id} value={teacher.profile_id}>{teacher.profiles?.full_name ?? teacher.profile_id}</option>)}
               </select>
             </div>
 
             <div>
-              <label htmlFor="tt-day-filter" className="block text-sm font-medium text-gray-700">Dia da semana</label>
+              <label htmlFor="tt-day-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Dia da semana</label>
               <select
                 id="tt-day-filter"
                 value={dayFilter}
                 onChange={(e) => setDayFilter(e.target.value)}
-                className="mt-1 rounded-lg border px-3 py-2 text-sm"
+                className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               >
                 <option value="all">Todos</option>
                 {DAYS_OF_WEEK.map((d) => (
@@ -491,20 +490,20 @@ export default function TimetableTab() {
 
       {subView === 'rooms' && (
         <>
-          <section className="rounded-xl border border-blue-100 bg-blue-50 p-4">
+          <section className="rounded-xl border border-blue-100 bg-blue-50 p-4 dark:border-blue-900/70 dark:bg-blue-950/30">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">CONFIGURAÇÃO DAS SALAS</p>
-                <h2 className="mt-1 text-lg font-bold text-[#181c20]">Crie e organize as salas da escola</h2>
-                <p className="mt-1 max-w-3xl text-sm text-gray-700">
+                <p className="text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">CONFIGURAÇÃO DAS SALAS</p>
+                <h2 className="mt-1 text-lg font-bold text-[#181c20] dark:text-white">Crie e organize as salas da escola</h2>
+                <p className="mt-1 max-w-3xl text-sm text-gray-700 dark:text-slate-300">
                   Cadastre uma sala física e, se quiser, vincule-a a uma turma. Salas sem turma ficam compartilhadas e podem ser usadas em qualquer horário.
                 </p>
               </div>
-              <span className="shrink-0 text-sm font-medium text-blue-800">{rooms.length} sala(s) cadastrada(s)</span>
+              <span className="shrink-0 text-sm font-medium text-blue-800 dark:text-blue-300">{rooms.length} sala(s) cadastrada(s)</span>
             </div>
-            <div className="mt-3 flex flex-col gap-2 border-t border-blue-100 pt-3 text-sm text-gray-700 md:flex-row md:gap-6">
-              <p><strong className="text-[#181c20]">Criação manual:</strong> use o botão abaixo para escolher nome, código, capacidade e turma.</p>
-              <p><strong className="text-[#181c20]">Geração automática:</strong> ao gerar uma grade sem salas cadastradas, o sistema cria salas AUTO vinculadas às turmas.</p>
+            <div className="mt-3 flex flex-col gap-2 border-t border-blue-100 pt-3 text-sm text-gray-700 dark:border-blue-900/70 dark:text-slate-300 md:flex-row md:gap-6">
+              <p><strong className="text-[#181c20] dark:text-white">Criação manual:</strong> use o botão abaixo para escolher nome, código, capacidade e turma.</p>
+              <p><strong className="text-[#181c20] dark:text-white">Geração automática:</strong> ao gerar uma grade sem salas cadastradas, o sistema cria salas AUTO vinculadas às turmas.</p>
             </div>
           </section>
 

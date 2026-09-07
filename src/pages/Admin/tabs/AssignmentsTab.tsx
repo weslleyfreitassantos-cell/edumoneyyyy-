@@ -25,6 +25,7 @@ import {
   ListSearch,
   normalizeListSearch,
 } from '../../../components/ListControls';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -106,24 +107,6 @@ function getErrorMessage(
   }
 
   return 'Não foi possível concluir a operação.';
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativa' : 'Inativa'}
-    </span>
-  );
 }
 
 export default function AssignmentsTab() {
@@ -509,7 +492,11 @@ export default function AssignmentsTab() {
       key: 'active',
       label: 'Status',
       render: (_value, row) => (
-        <StatusBadge active={row.active} />
+        <StatusBadge
+          active={row.active}
+          activeLabel="Ativa"
+          inactiveLabel="Inativa"
+        />
       ),
     },
   ];

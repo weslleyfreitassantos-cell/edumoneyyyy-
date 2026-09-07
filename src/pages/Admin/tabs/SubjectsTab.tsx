@@ -16,6 +16,7 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -165,24 +166,6 @@ function buildBnccDrafts(
       sourceStageIds: template.sourceStageIds,
     };
   });
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativa' : 'Inativa'}
-    </span>
-  );
 }
 
 function toSubjectPayload(
@@ -466,7 +449,11 @@ export default function SubjectsTab() {
       key: 'active',
       label: 'Status',
       render: (_value, row) => (
-        <StatusBadge active={row.active} />
+        <StatusBadge
+          active={row.active}
+          activeLabel="Ativa"
+          inactiveLabel="Inativa"
+        />
       ),
     },
   ];
