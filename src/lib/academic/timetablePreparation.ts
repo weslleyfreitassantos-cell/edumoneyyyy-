@@ -3,6 +3,7 @@ import {
   normalizeTimetablePolicy,
   type TimetablePolicySettings,
 } from './timetablePolicy';
+import { buildDefaultTimeSlots } from './timetableGenerator/automaticPreparation';
 
 export type PreparationIssueSeverity = 'BLOCKER' | 'WARNING';
 
@@ -136,6 +137,38 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
   const activeRooms = input.rooms.filter((room) => isActive(room.active));
   const enabledShifts = input.enabledShifts?.map((shift) => normalizeAcademicShift(shift)) ?? null;
   const sharedRooms = activeRooms.filter((room) => !room.class_id);
+  const shiftsInUse = [...new Set(
+    classes.map((classRecord) => normalizeAcademicShift(classRecord.shift ?? 'MATUTINO')),
+  )];
+  const weeklyLoadByShift = new Map<string, number>();
+  for (const classRecord of classes) {
+    const shift = normalizeAcademicShift(classRecord.shift ?? 'MATUTINO');
+    const weeklyLoad = activeCurriculum
+      .filter((item) => item.class_id === classRecord.id)
+      .reduce((total, item) => total + item.weekly_lessons, 0);
+    weeklyLoadByShift.set(shift, Math.max(weeklyLoadByShift.get(shift) ?? 0, weeklyLoad));
+  }
+  const slotsPerDayByShift = Object.fromEntries(shiftsInUse.map((shift) => [
+    shift,
+    Math.max(
+      shift === 'INTEGRAL' ? 8 : 5,
+      Math.ceil((weeklyLoadByShift.get(shift) ?? 0) / Math.max(1, policy.schoolDays.length)),
+    ),
+  ]));
+  const planningSlots = input.slots.length > 0
+    ? input.slots
+    : buildDefaultTimeSlots(shiftsInUse.length > 0 ? shiftsInUse : (input.enabledShifts ?? ['MATUTINO']), slotsPerDayByShift, policy.schoolDays)
+      .filter((slot) =>
+        !input.breaks.some((scheduleBreak) =>
+          isActive(scheduleBreak.active) &&
+          normalizeAcademicShift(scheduleBreak.shift) === normalizeAcademicShift(slot.shift) &&
+          scheduleBreak.day_of_week === slot.day_of_week &&
+          overlaps(slot.start_time, slot.end_time, scheduleBreak.start_time, scheduleBreak.end_time),
+        ),
+      );
+  const reportInput = planningSlots === input.slots
+    ? input
+    : { ...input, slots: planningSlots };
   const allIssues: PreparationIssue[] = [];
 
   if (activeTerms.length === 0) {
@@ -156,7 +189,7 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
     ).length;
     const classRooms = activeRooms.filter((room) => room.class_id === classRecord.id);
     const usableRooms = classRooms.length > 0 ? classRooms : (policy.allowSharedRooms ? sharedRooms : []);
-    const compatibleSlots = compatibleSlotsForClass(input, classRecord, policy);
+    const compatibleSlots = compatibleSlotsForClass(reportInput, classRecord, policy);
     const classIssues: PreparationIssue[] = [];
 
     if (!classRecord.shift?.trim()) {
@@ -170,7 +203,9 @@ export function buildTimetablePreparationReport(input: TimetablePreparationInput
     if (weeklyLessons > policy.maxLessonsPerDay * policy.schoolDays.length) {
       classIssues.push(issue('CLASS_WEEKLY_CAPACITY', 'BLOCKER', `${classRecord.name} precisa de ${weeklyLessons} aulas semanais, acima da capacidade configurada.`, 'Aumente os horários do turno ou revise a carga da matriz.'));
     }
-    if (compatibleSlots.length > 0 && compatibleSlots.length < weeklyLessons) {
+    if (input.slots.length === 0) {
+      classIssues.push(issue('SCHOOL_SLOTS_WILL_BE_CREATED', 'WARNING', `${classRecord.name} ainda não possui horários cadastrados para o turno.`, 'O gerador tentará criar horários padrão; confirme a rotina da escola antes de publicar.'));
+    } else if (compatibleSlots.length > 0 && compatibleSlots.length < weeklyLessons) {
       classIssues.push(issue('SCHOOL_SLOT_CAPACITY', 'WARNING', `${classRecord.name} precisa de ${weeklyLessons} horários compatíveis, mas há apenas ${compatibleSlots.length} configurado(s).`, 'O gerador tentará completar os horários padrão; revise o resultado antes de publicar.'));
     } else if (compatibleSlots.length === 0) {
       classIssues.push(issue('SCHOOL_SLOTS_WILL_BE_CREATED', 'WARNING', `${classRecord.name} ainda não possui horários cadastrados para o turno.`, 'O gerador tentará criar horários padrão; confirme a rotina da escola antes de publicar.'));
