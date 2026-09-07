@@ -338,14 +338,14 @@ export default function StudentsTab() {
 
         if (!enrollment) {
           return (
-            <div className="min-w-[150px]">
+            <div className="flex min-w-[150px] flex-col items-start gap-2">
               <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
                 Não matriculado
               </span>
               {row.active && (
                 <button
                   type="button"
-                  className="mt-2 inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-slate-700"
+                  className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-slate-700"
                   onClick={() => setEnrollStudentId(row.id)}
                 >
                   <GraduationCap className="h-3.5 w-3.5" aria-hidden="true" />
