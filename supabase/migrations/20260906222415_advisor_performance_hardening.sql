@@ -140,11 +140,34 @@ alter policy "client_admin_invitations_super_admin_select" on public."client_adm
 create index if not exists "academic_policies_academic_year_id_idx"
   on public."academic_policies" ("academic_year_id");
 
-create index if not exists "account_domains_created_by_idx"
-  on public."account_domains" ("created_by");
+-- These audit columns exist in the reconciled remote schema but are absent
+-- from the local historical definition. Apply the indexes wherever the
+-- columns are present without making a fresh database reset fail.
+do $$
+begin
+  if exists (
+    select 1
+      from information_schema.columns
+     where table_schema = 'public'
+       and table_name = 'account_domains'
+       and column_name = 'created_by'
+  ) then
+    create index if not exists "account_domains_created_by_idx"
+      on public."account_domains" ("created_by");
+  end if;
 
-create index if not exists "account_domains_updated_by_idx"
-  on public."account_domains" ("updated_by");
+  if exists (
+    select 1
+      from information_schema.columns
+     where table_schema = 'public'
+       and table_name = 'account_domains'
+       and column_name = 'updated_by'
+  ) then
+    create index if not exists "account_domains_updated_by_idx"
+      on public."account_domains" ("updated_by");
+  end if;
+end
+$$;
 
 create index if not exists "account_status_events_actor_profile_id_idx"
   on public."account_status_events" ("actor_profile_id");

@@ -1,4 +1,4 @@
-﻿-- Fix hard delete classification so exclusive account owners are removed from Supabase Auth.
+-- Fix hard delete classification so exclusive account owners are removed from Supabase Auth.
 -- The previous implementation always preserved owner_profile_id, leaving deleted
 -- client account admins visible in auth.users after hard delete.
 create or replace function public.hard_delete_client_account(
