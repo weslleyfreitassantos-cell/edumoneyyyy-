@@ -36,6 +36,29 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: true });
   });
 
+  it("permite DIRECTOR redefinir senha de TEACHER ativo da mesma instituição", () => {
+    expect(
+      getUpdateAuthorizationDecision(operationalManager, {
+        ...activeStudentReset,
+        targetRole: "TEACHER",
+        studentActive: null,
+      }),
+    ).toEqual({ allowed: true });
+  });
+
+  it("permite DIRECTOR redefinir senha de SECRETARY ativo da mesma instituição", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...operationalManager, isDirector: true },
+        {
+          ...activeStudentReset,
+          targetRole: "SECRETARY",
+          studentActive: null,
+        },
+      ),
+    ).toEqual({ allowed: true });
+  });
+
   it("bloqueia membership do outro tenant quando ela não é resolvida como alvo ativo", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
@@ -45,7 +68,7 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "TARGET_MEMBERSHIP_INACTIVE" });
   });
 
-  it.each(["TEACHER", "GUARDIAN", "SECRETARY", "DIRECTOR", "ADMIN"])(
+  it.each(["GUARDIAN", "SECRETARY", "DIRECTOR", "ADMIN"])(
     "bloqueia reset de senha para %s",
     (targetRole) => {
       expect(
@@ -58,14 +81,14 @@ describe("manage-school-user update authorization", () => {
     },
   );
 
-  it("bloqueia alteração de nome sem senha", () => {
+  it("permite alteração de nome sem senha", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         hasPassword: false,
         hasFullName: true,
       }),
-    ).toEqual({ allowed: false, code: "DIRECTOR_PASSWORD_ONLY" });
+    ).toEqual({ allowed: true });
   });
 
   it("bloqueia alteração de role sem senha", () => {
@@ -88,13 +111,13 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
   });
 
-  it("bloqueia password combinado com fullName", () => {
+  it("permite alterar password combinado com fullName", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         hasFullName: true,
       }),
-    ).toEqual({ allowed: false, code: "DIRECTOR_PASSWORD_ONLY" });
+    ).toEqual({ allowed: true });
   });
 
   it("bloqueia membership inativa", () => {

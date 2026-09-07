@@ -121,12 +121,13 @@ export async function readSpreadsheetFile(file: File): Promise<ParsedSpreadsheet
 export async function downloadSpreadsheetTemplate(
   fileName: string,
   headers: readonly string[],
-  exampleRow: Record<string, string>,
+  exampleRow: Record<string, string> | readonly Record<string, string>[],
 ): Promise<void> {
   const XLSX = await import('xlsx');
+  const exampleRows = Array.isArray(exampleRow) ? exampleRow : [exampleRow];
   const worksheet = XLSX.utils.aoa_to_sheet([
     [...headers],
-    headers.map((header) => exampleRow[header] ?? ''),
+    ...exampleRows.map((row) => headers.map((header) => row[header] ?? '')),
   ]);
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, 'Importação');

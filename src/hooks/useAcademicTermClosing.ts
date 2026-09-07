@@ -31,6 +31,7 @@ import {
   type TermClosureOffering,
   type TermClosurePreview,
 } from '../services/termClosingService';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 export const academicKeys = {
   all: ['academic-closing'] as const,
@@ -159,10 +160,13 @@ export function useSaveAcademicPolicy() {
   return useMutation({
     mutationFn: (input: SaveAcademicPolicyInput) =>
       academicPolicyService.savePolicy(input),
-    onSuccess: () => {
-      void queryClient.invalidateQueries({
-        queryKey: academicKeys.all,
-      });
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: academicKeys.all,
+        }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
+      ]);
     },
   });
 }
@@ -209,9 +213,7 @@ export function useSaveAcademicShiftSettings() {
       void queryClient.invalidateQueries({
         queryKey: ['classes', variables.institutionId],
       });
-      void queryClient.invalidateQueries({
-        queryKey: ['school-setup-readiness', variables.institutionId],
-      });
+      void invalidateSchoolSetupReadiness(queryClient, variables.institutionId);
     },
   });
 }
@@ -252,6 +254,7 @@ export function useSaveSchoolScheduleBreaks() {
         queryClient.invalidateQueries({
           queryKey: ['academic-automation', 'time-slots', variables.institution_id],
         }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institution_id),
       ]);
     },
   });

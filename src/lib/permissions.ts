@@ -353,3 +353,10 @@ export function canManageEnrollments(
 ): boolean {
   return hasPermission(platformRole, effectiveRole, 'manage_enrollments');
 }
+
+export function canManageAcademicStructure(
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
+): boolean {
+  return hasPermission(platformRole, effectiveRole, 'manage_academic_structure');
+}

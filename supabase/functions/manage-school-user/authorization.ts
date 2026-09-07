@@ -103,7 +103,7 @@ export function getUpdateAuthorizationDecision(
     return { allowed: true };
   }
 
-  if (!input.hasPassword || input.hasFullName || input.hasRole) {
+  if ((!input.hasPassword && !input.hasFullName) || input.hasRole) {
     return { allowed: false, code: "DIRECTOR_PASSWORD_ONLY" };
   }
 
@@ -111,11 +111,25 @@ export function getUpdateAuthorizationDecision(
     return { allowed: false, code: "TARGET_MEMBERSHIP_INACTIVE" };
   }
 
-  if (input.targetRole !== "STUDENT") {
+  if (
+    input.targetRole !== "STUDENT" &&
+    input.targetRole !== "TEACHER" &&
+    input.targetRole !== "SECRETARY"
+  ) {
     return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
   }
 
-  if (input.studentActive !== true) {
+  if (
+    input.targetRole === "SECRETARY" &&
+    authorization.isDirector !== true
+  ) {
+    return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
+  }
+
+  if (
+    input.targetRole === "STUDENT" &&
+    input.studentActive !== true
+  ) {
     return { allowed: false, code: "STUDENT_INACTIVE" };
   }
 

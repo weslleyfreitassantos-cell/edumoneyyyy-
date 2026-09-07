@@ -372,7 +372,7 @@ async function handleUpdate(
 
   if (
     operationalManagerOnly &&
-    input.password !== undefined &&
+    (input.password !== undefined || input.fullName !== undefined) &&
     membership.role === "STUDENT"
   ) {
     const { data: student, error: studentError } = await ctx.supabaseAdmin
@@ -404,7 +404,7 @@ async function handleUpdate(
       DIRECTOR_PASSWORD_ONLY: new ManageSchoolUserError({
         status: 403,
         code: "DIRECTOR_PASSWORD_ONLY",
-        message: "Este papel pode redefinir somente a senha do aluno.",
+        message: "Diretores e secretarias podem alterar somente nome e senha; a troca de papel deve ser feita por um administrador.",
       }),
       TARGET_MEMBERSHIP_INACTIVE: new ManageSchoolUserError({
         status: 403,
@@ -414,7 +414,7 @@ async function handleUpdate(
       TARGET_ROLE_NOT_ALLOWED: new ManageSchoolUserError({
         status: 403,
         code: "TARGET_ROLE_NOT_ALLOWED",
-        message: "Somente alunos podem ter a senha redefinida por esta tela.",
+        message: "Este papel nao pode ser alterado por este gestor.",
       }),
       STUDENT_INACTIVE: new ManageSchoolUserError({
         status: 403,
@@ -1046,7 +1046,8 @@ const authenticatedFetch = withSupabase<Database>(
           {
             allowOperationalManager:
               input.action === "link_guardian" ||
-              (input.action === "update" && input.password !== undefined) ||
+              (input.action === "update" &&
+                (input.password !== undefined || input.fullName !== undefined)) ||
               input.action === "update_student_identity",
             allowDirectorDelete: input.action === "delete",
           },

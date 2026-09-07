@@ -10,8 +10,10 @@ import {
 import {
   buildStudentImportPreviews,
   importStudents,
-  STUDENT_IMPORT_EXAMPLE,
+  STUDENT_IMPORT_EXAMPLES,
   STUDENT_IMPORT_HEADERS,
+  STUDENT_REQUIRED_IMPORT_EXAMPLES,
+  STUDENT_REQUIRED_IMPORT_HEADERS,
   type ImportProgress,
   type ImportPreview,
   type ImportResult,
@@ -156,9 +158,9 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
     <SpreadsheetImportModal
       title="Importar alunos"
       description="Use uma planilha para cadastrar o aluno, os dados complementares, os responsáveis e a matrícula acadêmica pelo fluxo normal do sistema."
-      requiredFields="Nome completo, e-mail, data de nascimento e pelo menos um responsável. A turma será distribuída automaticamente pela série informada."
-      preUploadContent={<div className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-3 py-3"><label htmlFor="student-import-academic-year" className="block text-sm font-semibold text-slate-800">Ano letivo da importação</label><select id="student-import-academic-year" value={defaultAcademicYearId} onChange={(event) => handleDefaultAcademicYearChange(event.target.value)} className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm text-slate-800" disabled={yearOptions.filter((year) => year.active).length === 0}><option value="">Selecione o ano letivo</option>{yearOptions.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}</select><p className="mt-2 text-xs text-slate-600">Esse ano será usado quando a planilha deixar o campo “Ano letivo” vazio. Informe “Ano escolar / série” para distribuir entre as turmas correspondentes.</p></div>}
-      supportedFields={<><p><strong>Identidade:</strong> nome, e-mail, nascimento, CPF, nome social, RG, certidão, nacionalidade, naturalidade, sexo e telefone.</p><p className="mt-1"><strong>Endereço:</strong> CEP, logradouro, número, complemento, bairro, cidade, UF e zona rural.</p><p className="mt-1"><strong>Acadêmico:</strong> ano letivo (opcional quando definido acima), ano escolar/série, turma opcional, data da matrícula e dados da escola de origem.</p><p className="mt-1"><strong>Responsáveis:</strong> até dois responsáveis novos ou IDs de perfis já existentes.</p><p className="mt-1"><strong>Saúde e documentos:</strong> campos de saúde e status/observações dos documentos. Arquivos físicos devem ser anexados depois.</p></>}
+      requiredFields="Nome completo, e-mail, data de nascimento, ano escolar / série e pelo menos um responsável. Ano letivo pode vir na planilha ou ser definido acima; turma é opcional."
+      preUploadContent={<div className="mt-4 rounded-lg border border-blue-100 bg-blue-50 px-3 py-3"><label htmlFor="student-import-academic-year" className="block text-sm font-semibold text-slate-800">Ano letivo da importação</label><select id="student-import-academic-year" value={defaultAcademicYearId} onChange={(event) => handleDefaultAcademicYearChange(event.target.value)} className="mt-2 w-full rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm text-slate-800" disabled={yearOptions.filter((year) => year.active).length === 0}><option value="">Selecione o ano letivo</option>{yearOptions.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}</select><p className="mt-2 text-xs text-slate-600">Esse ano será usado quando a planilha deixar o campo “Ano letivo” vazio. Informe a série: use 1 a 9 no Ensino Fundamental ou 1 EM, 2 EM e 3 EM no Ensino Médio. Se a turma não for informada, o sistema escolherá uma vaga disponível dentro da série.</p></div>}
+      supportedFields={<><p><strong>Identidade:</strong> nome, e-mail, nascimento, CPF, nome social, RG, certidão, nacionalidade, naturalidade, sexo e telefone.</p><p className="mt-1"><strong>Endereço:</strong> CEP, logradouro, número, complemento, bairro, cidade, UF e zona rural.</p><p className="mt-1"><strong>Acadêmico:</strong> ano letivo (opcional quando definido acima), <strong>ano escolar/série obrigatório</strong>, turma opcional, data da matrícula e dados da escola de origem.</p><p className="mt-1"><strong>Formato da série:</strong> use <strong>1 a 9</strong> no Ensino Fundamental e <strong>1 EM, 2 EM ou 3 EM</strong> no Ensino Médio. Também são aceitas formas como “7º ano” e “1ª série EM”.</p><p className="mt-1"><strong>Responsáveis:</strong> até dois responsáveis novos ou IDs de perfis já existentes.</p><p className="mt-1"><strong>Saúde e documentos:</strong> campos de saúde e status/observações dos documentos. Arquivos físicos devem ser anexados depois.</p></>}
       fileName={fileName}
       isParsing={isParsing}
       isImporting={isImporting}
@@ -172,7 +174,8 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
       canImport={validRows > 0}
       onClose={onClose}
       onFileSelected={(file) => void handleFileSelected(file)}
-      onDownloadTemplate={() => void downloadSpreadsheetTemplate('modelo-alunos.xlsx', [...STUDENT_IMPORT_HEADERS], STUDENT_IMPORT_EXAMPLE).catch((error) => setParseError(error instanceof Error ? error.message : 'Não foi possível gerar o modelo.'))}
+      onDownloadTemplate={() => void downloadSpreadsheetTemplate('modelo-alunos.xlsx', [...STUDENT_IMPORT_HEADERS], STUDENT_IMPORT_EXAMPLES).catch((error) => setParseError(error instanceof Error ? error.message : 'Não foi possível gerar o modelo.'))}
+      onDownloadMinimalTemplate={() => void downloadSpreadsheetTemplate('modelo-alunos-minimo.xlsx', [...STUDENT_REQUIRED_IMPORT_HEADERS], STUDENT_REQUIRED_IMPORT_EXAMPLES).catch((error) => setParseError(error instanceof Error ? error.message : 'Não foi possível gerar o modelo mínimo.'))}
       onImport={() => void handleImport()}
     />
   );

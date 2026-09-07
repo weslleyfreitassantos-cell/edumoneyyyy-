@@ -31,13 +31,13 @@ describe('userImportService', () => {
   it('builds the complete student draft and resolves academic links', () => {
     const result = buildStudentImportPreviews({
       sheetName: 'Alunos',
-      headers: ['full_name', 'email', 'birth_date', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship', 'academic_year', 'class'],
+      headers: ['full_name', 'email', 'birth_date', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship', 'academic_year', 'ano_escolar', 'class'],
       rows: [{
         rowNumber: 2,
         values: {
           full_name: 'Ana Souza', email: 'ana@example.com', birth_date: '31/08/2016',
           guardian_1_full_name: 'Carlos Souza', guardian_1_email: 'carlos@example.com', guardian_1_relationship: 'Pai',
-          academic_year: '2027', class: '7º A',
+          academic_year: '2027', ano_escolar: '7º ano', class: '7º A',
         },
       }],
     }, { years: [year], classes: [schoolClass] });
@@ -143,7 +143,36 @@ describe('userImportService', () => {
     expect(result.previews[0]?.warnings).toContain('Turma atribuída automaticamente: 7º B.');
   });
 
-  it('asks for the school grade when multiple classes cannot be distinguished', () => {
+  it('distributes a minimal student file across active classes within the provided grade', () => {
+    const result = buildStudentImportPreviews({
+      sheetName: 'Alunos',
+      headers: ['full_name', 'email', 'birth_date', 'ano_escolar', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship'],
+      rows: [1, 2].map((index) => ({
+        rowNumber: index + 1,
+        values: {
+          full_name: `Aluno mínimo ${index}`,
+          email: `aluno-minimo-${index}@example.com`,
+          birth_date: '31/08/2016',
+          ano_escolar: '7º ano',
+          guardian_1_full_name: 'Carlos Souza',
+          guardian_1_email: 'carlos@example.com',
+          guardian_1_relationship: 'Pai',
+        },
+      })),
+    }, {
+      years: [year],
+      classes: [schoolClass, { ...schoolClassB, active_enrollments_count: 0 }],
+      defaultAcademicYearId: year.id,
+    });
+
+    expect(result.previews.every((preview) => preview.errors.length === 0)).toBe(true);
+    expect(result.previews.map((preview) => preview.data.class_id)).toEqual([
+      schoolClass.id,
+      schoolClassB.id,
+    ]);
+  });
+
+  it('requires the student grade even when classes are available', () => {
     const result = buildStudentImportPreviews({
       sheetName: 'Alunos',
       headers: ['full_name', 'email', 'birth_date', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship'],
@@ -151,7 +180,7 @@ describe('userImportService', () => {
         rowNumber: 2,
         values: {
           full_name: 'Aluno sem série',
-          email: 'aluno@example.com',
+          email: 'aluno-sem-serie@example.com',
           birth_date: '31/08/2016',
           guardian_1_full_name: 'Carlos Souza',
           guardian_1_email: 'carlos@example.com',
@@ -160,13 +189,57 @@ describe('userImportService', () => {
       }],
     }, {
       years: [year],
-      classes: [schoolClass, schoolClassB],
+      classes: [schoolClass],
       defaultAcademicYearId: year.id,
     });
 
-    expect(result.previews[0]?.errors).toContain(
-      'Informe o ano escolar/série para distribuir o aluno entre as turmas.',
-    );
+    expect(result.previews[0]?.errors).toContain('Ano escolar / série é obrigatório.');
+  });
+
+  it('keeps numeric grades in fundamental education separate from high school', () => {
+    const fundamentalClass = {
+      ...schoolClass,
+      id: 'class-1-fundamental',
+      name: '1º ano A',
+      grade_level: '1',
+    } as ClassRow;
+    const highSchoolClass = {
+      ...schoolClass,
+      id: 'class-1-high-school',
+      name: '1ª série EM A',
+      grade_level: '1º EM',
+    } as ClassRow;
+
+    const result = buildStudentImportPreviews({
+      sheetName: 'Alunos',
+      headers: ['full_name', 'email', 'birth_date', 'ano_escolar', 'guardian_1_full_name', 'guardian_1_email', 'guardian_1_relationship'],
+      rows: [
+        {
+          rowNumber: 2,
+          values: {
+            full_name: 'Aluno Fundamental', email: 'fundamental@example.com', birth_date: '31/08/2016', ano_escolar: '1',
+            guardian_1_full_name: 'Carlos Souza', guardian_1_email: 'carlos@example.com', guardian_1_relationship: 'Pai',
+          },
+        },
+        {
+          rowNumber: 3,
+          values: {
+            full_name: 'Aluno Ensino Médio', email: 'medio@example.com', birth_date: '31/08/2008', ano_escolar: '1 EM',
+            guardian_1_full_name: 'Maria Souza', guardian_1_email: 'maria@example.com', guardian_1_relationship: 'Mãe',
+          },
+        },
+      ],
+    }, {
+      years: [year],
+      classes: [fundamentalClass, highSchoolClass],
+      defaultAcademicYearId: year.id,
+    });
+
+    expect(result.previews.map((preview) => preview.data.class_id)).toEqual([
+      fundamentalClass.id,
+      highSchoolClass.id,
+    ]);
+    expect(result.previews.every((preview) => preview.errors.length === 0)).toBe(true);
   });
 
   it('requires a responsible and rejects unavailable teacher subjects or times', () => {
@@ -194,6 +267,26 @@ describe('userImportService', () => {
     expect(result.previews[0]?.errors).toEqual([]);
     expect(result.previews[0]?.data.subject_ids).toEqual(['subject-mat', 'subject-fis']);
     expect(result.previews[0]?.data.availability[0]).toEqual({ day_of_week: 1, start_time: '07:00', end_time: '12:00' });
+  });
+
+  it('accepts a minimal teacher file without optional academic data', () => {
+    const result = buildTeacherImportPreviews({
+      sheetName: 'Professores',
+      headers: ['full_name', 'email'],
+      rows: [{
+        rowNumber: 2,
+        values: {
+          full_name: 'João Silva',
+          email: 'joao@example.com',
+        },
+      }],
+    }, subjects);
+
+    expect(result.previews[0]?.errors).toEqual([]);
+    expect(result.previews[0]?.data.subject_ids).toEqual([]);
+    expect(result.previews[0]?.warnings).toContain(
+      'Professor sem disciplinas; faça as atribuições depois do cadastro.',
+    );
   });
 
   it('imports students with bounded concurrency and preserves result order', async () => {

@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
 import { classAutomationService } from '../services/classAutomationService';
 import { timetableAutomationService, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 export const academicAutomationKeys = {
   all: ['academic-automation'] as const,
@@ -69,7 +70,10 @@ export function useCreateAcademicYearWithTerms() {
   return useMutation({
     mutationFn: academicAutomationService.createAcademicYearWithTerms,
     onSuccess: async (_result, variables) => {
-      await queryClient.invalidateQueries({ queryKey: ['academic-structure', 'years', variables.institution_id] });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['academic-structure', 'years', variables.institution_id] }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institution_id),
+      ]);
     },
   });
 }
@@ -85,6 +89,7 @@ export function useCopyPreviousYear() {
         queryClient.invalidateQueries({ queryKey: ['curriculum', variables.institution_id] }),
         queryClient.invalidateQueries({ queryKey: ['assignments', variables.institution_id] }),
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institution_id) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institution_id),
       ]);
     },
   });
@@ -95,8 +100,11 @@ export function useCreateWholeYearAssignment() {
   return useMutation({
     mutationFn: academicAutomationService.createWholeYearAssignment,
     onSuccess: async (_result, variables) => {
-      await queryClient.invalidateQueries({ queryKey: ['assignments', variables.institution_id] });
-      await queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institution_id) });
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['assignments', variables.institution_id] }),
+        queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institution_id) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institution_id),
+      ]);
     },
   });
 }
@@ -147,6 +155,7 @@ export function useApplyCurriculumTemplate() {
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ['curriculum', variables.institution_id] }),
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institution_id) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institution_id),
       ]);
     },
   });
@@ -164,6 +173,7 @@ export function useCreateClassBatch() {
         queryClient.invalidateQueries({ queryKey: ['assignments', variables.institutionId] }),
         queryClient.invalidateQueries({ queryKey: ['admin-overview', variables.institutionId] }),
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institutionId) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
       ]);
     },
   });
@@ -181,6 +191,7 @@ export function useCreateEducationPreset() {
         queryClient.invalidateQueries({ queryKey: ['assignments', variables.institutionId] }),
         queryClient.invalidateQueries({ queryKey: ['admin-overview', variables.institutionId] }),
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institutionId) }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
       ]);
     },
   });
@@ -250,6 +261,7 @@ export function useDeleteTimetableVersion() {
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
         queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersionEntries(variables.institutionId, variables.versionId) }),
         queryClient.invalidateQueries({ queryKey: ['timetable', 'entries', variables.institutionId] }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
       ]);
     },
   });
@@ -292,6 +304,7 @@ export function useUpdateTimetableVersionEntry() {
           variables.versionId,
         ),
       });
+      await invalidateSchoolSetupReadiness(queryClient, variables.institutionId);
     },
   });
 }

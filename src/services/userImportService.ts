@@ -97,6 +97,21 @@ export const TEACHER_IMPORT_HEADERS = [
   }).flat(),
 ] as const;
 
+export const STUDENT_REQUIRED_IMPORT_HEADERS = [
+  'Nome completo',
+  'E-mail',
+  'Data de nascimento',
+  'Ano escolar / série',
+  'Responsável 1 - Nome completo',
+  'Responsável 1 - E-mail',
+  'Responsável 1 - Parentesco',
+] as const;
+
+export const TEACHER_REQUIRED_IMPORT_HEADERS = [
+  'Nome completo',
+  'E-mail',
+] as const;
+
 const studentDocumentFields: Array<{ type: string; key: string }> = [
   { type: 'Certidao de nascimento', key: 'certidao_nascimento' },
   { type: 'RG', key: 'rg_document' },
@@ -204,8 +219,13 @@ function resolveClass(
 }
 
 function normalizeGradeLevel(valueToParse: string): string {
-  return normalize(valueToParse)
-    .replace(/[ºª°]/g, '')
+  const normalized = normalize(valueToParse).replace(/[ºª°]/g, '');
+  const number = normalized.match(/\d+/)?.[0];
+  const isHighSchool = /\b(em|ensino medio|medio)\b/.test(normalized);
+
+  if (number && isHighSchool) return `${number}em`;
+
+  return normalized
     .replace(/\b(ano|serie)\b/g, '')
     .replace(/\s+/g, '');
 }
@@ -218,17 +238,7 @@ function classesMatchGrade(
   const normalizedClass = normalizeGradeLevel(classRow.grade_level ?? '');
 
   if (!normalizedInput || !normalizedClass) return false;
-  if (normalizedInput === normalizedClass) return true;
-
-  const inputNumber = normalizedInput.match(/^\d+/)?.[0];
-  const classNumber = normalizedClass.match(/^\d+/)?.[0];
-
-  return Boolean(
-    inputNumber &&
-      classNumber &&
-      inputNumber === classNumber &&
-      normalizedInput.replace(/^\d+/, '') === '',
-  );
+  return normalizedInput === normalizedClass;
 }
 
 function resolveAutomaticClass(
@@ -240,7 +250,6 @@ function resolveAutomaticClass(
   if (!year) return null;
 
   const classesForYear = getActiveClassesForYear(classes, year.id);
-  if (!gradeInput && classesForYear.length !== 1) return null;
 
   const matchingClasses = gradeInput
     ? classesForYear.filter((classRow) => classesMatchGrade(classRow, gradeInput))
@@ -418,7 +427,7 @@ export function buildStudentImportPreviews(
       ? yearClasses.filter((item) => classesMatchGrade(item, gradeInput))
       : yearClasses;
 
-    if (!classInput) {
+    if (!classInput && gradeInput) {
       classRow = resolveAutomaticClass(
         year,
         gradeInput,
@@ -429,6 +438,7 @@ export function buildStudentImportPreviews(
 
     required(fullName, 'Nome completo', errors);
     required(email, 'E-mail', errors);
+    required(gradeInput, 'Ano escolar / série', errors);
     if (email && !/^\S+@\S+\.\S+$/.test(email)) errors.push('E-mail inválido.');
     if (classInput && !classRow) errors.push('Turma não encontrada para o ano letivo informado.');
     if (!year) {
@@ -438,10 +448,8 @@ export function buildStudentImportPreviews(
           : 'Ano letivo é obrigatório ou selecione um ano padrão para a importação.',
       );
     }
-    if (!classInput && !classRow && year) {
-      if (!gradeInput && matchingGradeClasses.length > 1) {
-        errors.push('Informe o ano escolar/série para distribuir o aluno entre as turmas.');
-      } else if (matchingGradeClasses.length === 0) {
+    if (!classInput && !classRow && year && gradeInput) {
+      if (matchingGradeClasses.length === 0) {
         errors.push('Nenhuma turma ativa corresponde ao ano escolar informado.');
       } else {
         errors.push('Não há vagas nas turmas correspondentes ao ano escolar informado.');
@@ -558,7 +566,9 @@ export function buildTeacherImportPreviews(
     resolvedSubjects.forEach((subject, index) => {
       if (!subject) errors.push(`Disciplina não encontrada: ${subjectNames[index]}.`);
     });
-    if (resolvedSubjects.length === 0) errors.push('Informe pelo menos uma disciplina em subjects/disciplinas.');
+    if (resolvedSubjects.length === 0) {
+      warnings.push('Professor sem disciplinas; faça as atribuições depois do cadastro.');
+    }
     const subjectIds = resolvedSubjects.filter((subject): subject is SubjectRow => Boolean(subject)).map((subject) => subject.id);
     const primaryInput = value(row, ['primary_subject', 'disciplina_principal', 'materia_principal']);
     const primarySubject = primaryInput ? resolveSubject(primaryInput, subjects) : null;
@@ -647,17 +657,21 @@ export async function importTeachers(
         email: preview.data.email,
         ...(preview.data.phone ? { phone: preview.data.phone } : {}),
       });
-      await academicAutomationService.replaceTeacherSubjects({
-        institution_id: institutionId,
-        teacher_profile_id: teacher.profile_id,
-        subject_ids: preview.data.subject_ids,
-        primary_subject_id: preview.data.primary_subject_id,
-      });
-      await academicAutomationService.replaceTeacherAvailability({
-        institution_id: institutionId,
-        teacher_profile_id: teacher.profile_id,
-        availability: preview.data.availability,
-      });
+      if (preview.data.subject_ids.length > 0) {
+        await academicAutomationService.replaceTeacherSubjects({
+          institution_id: institutionId,
+          teacher_profile_id: teacher.profile_id,
+          subject_ids: preview.data.subject_ids,
+          primary_subject_id: preview.data.primary_subject_id,
+        });
+      }
+      if (preview.data.availability.length > 0) {
+        await academicAutomationService.replaceTeacherAvailability({
+          institution_id: institutionId,
+          teacher_profile_id: teacher.profile_id,
+          availability: preview.data.availability,
+        });
+      }
       result.succeeded.push({ rowNumber: preview.rowNumber, label: preview.label });
     } catch (error) {
       result.failed.push({ rowNumber: preview.rowNumber, label: preview.label, message: error instanceof Error ? error.message : 'Não foi possível importar o professor.' });
@@ -666,17 +680,68 @@ export async function importTeachers(
   return result;
 }
 
-export const STUDENT_IMPORT_EXAMPLE: Record<string, string> = {
-  'Nome completo': 'Ana Souza', 'E-mail': 'ana.souza@exemplo.com', 'Data de nascimento': '12/03/2016', CPF: '12345678900',
-  'Responsável 1 - Nome completo': 'Carlos Souza', 'Responsável 1 - E-mail': 'carlos.souza@exemplo.com', 'Responsável 1 - Parentesco': 'Pai',
-  'Ano letivo': '2027', 'Ano escolar / série': '7º ano',
-};
+export const STUDENT_IMPORT_EXAMPLES: Array<Record<string, string>> = [
+  {
+    'Nome completo': 'Ana Souza', 'E-mail': 'ana.souza@exemplo.com', 'Data de nascimento': '12/03/2016', CPF: '12345678900',
+    'Responsável 1 - Nome completo': 'Carlos Souza', 'Responsável 1 - E-mail': 'carlos.souza@exemplo.com', 'Responsável 1 - Parentesco': 'Pai',
+    'Ano letivo': '2027', 'Ano escolar / série': '7º ano',
+  },
+  {
+    'Nome completo': 'Bruno Lima', 'E-mail': 'bruno.lima@exemplo.com', 'Data de nascimento': '09/05/2016',
+    'Responsável 1 - Nome completo': 'Paula Lima', 'Responsável 1 - E-mail': 'paula.lima@exemplo.com', 'Responsável 1 - Parentesco': 'Mãe',
+    'Ano letivo': '2027', 'Ano escolar / série': '1',
+  },
+  {
+    'Nome completo': 'Carla Mendes', 'E-mail': 'carla.mendes@exemplo.com', 'Data de nascimento': '21/07/2008',
+    'Responsável 1 - Nome completo': 'Rui Mendes', 'Responsável 1 - E-mail': 'rui.mendes@exemplo.com', 'Responsável 1 - Parentesco': 'Pai',
+    'Ano letivo': '2027', 'Ano escolar / série': '1 EM',
+  },
+];
+
+export const STUDENT_IMPORT_EXAMPLE: Record<string, string> = STUDENT_IMPORT_EXAMPLES[0];
 
 export const TEACHER_IMPORT_EXAMPLE: Record<string, string> = {
   'Nome completo': 'João Silva', 'E-mail': 'joao.silva@exemplo.com', Telefone: '(71) 99999-0000',
   Disciplinas: 'Matemática; Física', 'Disciplina principal': 'Matemática',
   'Disponibilidade 1 - Dia': 'Segunda', 'Disponibilidade 1 - Início': '07:00', 'Disponibilidade 1 - Fim': '12:00',
   'Disponibilidade 2 - Dia': 'Terça', 'Disponibilidade 2 - Início': '07:00', 'Disponibilidade 2 - Fim': '12:00',
+};
+
+export const STUDENT_REQUIRED_IMPORT_EXAMPLES: Array<Record<string, string>> = [
+  {
+    'Nome completo': 'Ana Souza',
+    'E-mail': 'ana.souza@exemplo.com',
+    'Data de nascimento': '12/03/2016',
+    'Ano escolar / série': '7º ano',
+    'Responsável 1 - Nome completo': 'Carlos Souza',
+    'Responsável 1 - E-mail': 'carlos.souza@exemplo.com',
+    'Responsável 1 - Parentesco': 'Pai',
+  },
+  {
+    'Nome completo': 'Bruno Lima',
+    'E-mail': 'bruno.lima@exemplo.com',
+    'Data de nascimento': '09/05/2016',
+    'Ano escolar / série': '1',
+    'Responsável 1 - Nome completo': 'Paula Lima',
+    'Responsável 1 - E-mail': 'paula.lima@exemplo.com',
+    'Responsável 1 - Parentesco': 'Mãe',
+  },
+  {
+    'Nome completo': 'Carla Mendes',
+    'E-mail': 'carla.mendes@exemplo.com',
+    'Data de nascimento': '21/07/2008',
+    'Ano escolar / série': '1 EM',
+    'Responsável 1 - Nome completo': 'Rui Mendes',
+    'Responsável 1 - E-mail': 'rui.mendes@exemplo.com',
+    'Responsável 1 - Parentesco': 'Pai',
+  },
+];
+
+export const STUDENT_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = STUDENT_REQUIRED_IMPORT_EXAMPLES[0];
+
+export const TEACHER_REQUIRED_IMPORT_EXAMPLE: Record<string, string> = {
+  'Nome completo': 'João Silva',
+  'E-mail': 'joao.silva@exemplo.com',
 };
 
 export async function ensureSubjectsForTeacherImport(institutionId: string): Promise<SubjectRow[]> {
