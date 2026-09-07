@@ -79,7 +79,9 @@ Uma consulta read-only com `supabase migration list` mostrou:
 Os timestamps remotos não foram interpretados por nome. É necessário identificar
 o conteúdo e comparar o schema antes de usar `db push` ou `migration repair`.
 O `db diff --linked` não pôde ser executado porque o Docker Desktop não estava
-disponível para criar o shadow database.
+disponível para criar o shadow database. A tentativa de `db dump --linked`
+também foi interrompida pelo mesmo requisito local. Nenhuma dessas operações
+alterou o banco remoto.
 
 ### 2. PR conflitante
 
@@ -109,14 +111,16 @@ banco remoto.
 1. Congelar a branch de release e resolver o conflito do PR manualmente.
 2. Inventariar os cinco timestamps remotos desconhecidos e confirmar se algum já
    contém objetos de materiais, hardening ou advisors.
-3. Criar um staging com backup, aplicar somente migrations incrementais
+3. Com o Docker Desktop ativo, repetir `db diff --linked` e `db dump --linked`
+   em modo somente leitura para comparar tabelas, policies, funções e buckets.
+4. Criar um staging com backup, aplicar somente migrations incrementais
    reconciliadas e executar a auditoria read-only novamente.
-4. Testar os fluxos reais com um usuário de cada papel: diretor, professor,
+5. Testar os fluxos reais com um usuário de cada papel: diretor, professor,
    aluno e responsável.
-5. Validar importação parcial/completa, matrícula automática, atribuição,
+6. Validar importação parcial/completa, matrícula automática, atribuição,
    geração/publicação de grade, avisos e materiais.
-6. Confirmar SMTP/Resend, redirects, secrets, RLS e logs antes do go-live.
-7. Só então publicar frontend, Edge Functions e migrations em uma janela
+7. Confirmar SMTP/Resend, redirects, secrets, RLS e logs antes do go-live.
+8. Só então publicar frontend, Edge Functions e migrations em uma janela
    controlada, com rollback preparado.
 
 ## Decisão deste ciclo
@@ -125,4 +129,3 @@ O código do commit `e67713f` pode permanecer no branch e já passou pelo CI.
 Não há uma nova publicação de produção necessária para organizar o repositório
 agora. A próxima publicação segura depende da reconciliação do banco e da
 resolução do conflito do PR.
-
