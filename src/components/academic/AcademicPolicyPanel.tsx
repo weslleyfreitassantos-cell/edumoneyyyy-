@@ -606,10 +606,10 @@ export default function AcademicPolicyPanel({
                         {shiftBreaks.map((item, index) => (
                           <div
                             key={`${shift}-${index}`}
-                            className="grid gap-3 rounded-lg border border-[#edf0f4] bg-[#fbfcfe] p-3 lg:grid-cols-[minmax(300px,1.5fr)_minmax(170px,1fr)_minmax(150px,.8fr)_minmax(150px,.8fr)_auto] lg:items-end"
+                            className="grid gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-2 lg:items-end xl:grid-cols-[minmax(260px,1.5fr)_minmax(140px,1fr)_minmax(120px,.8fr)_minmax(120px,.8fr)_auto]"
                           >
                             <fieldset>
-                              <legend className="text-xs font-semibold text-[#3d4652]">
+                              <legend className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                                 Dias da semana
                               </legend>
                               <div className="mt-1 flex flex-wrap gap-1.5">
@@ -620,8 +620,8 @@ export default function AcademicPolicyPanel({
                                       key={day.value}
                                       className={`inline-flex cursor-pointer items-center gap-1.5 rounded-md border px-2 py-1.5 text-xs font-semibold transition-colors ${
                                         checked
-                                          ? 'border-[#8db9ed] bg-blue-50 text-[#005bbf]'
-                                          : 'border-[#dfe3e8] bg-white text-[#667085]'
+                                          ? 'border-[#8db9ed] bg-blue-50 text-[#005bbf] dark:border-blue-700 dark:bg-blue-950/50 dark:text-blue-300'
+                                          : 'border-[#dfe3e8] bg-white text-[#667085] dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300'
                                       } ${readOnly ? 'cursor-default opacity-80' : ''}`}
                                     >
                                       <input
@@ -640,7 +640,7 @@ export default function AcademicPolicyPanel({
                                 })}
                               </div>
                             </fieldset>
-                            <label className="text-xs font-semibold text-[#3d4652]">
+                            <label className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Tipo
                               <input
                                 value={item.name}
@@ -654,7 +654,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="text-xs font-semibold text-[#3d4652]">
+                            <label className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Início
                               <input
                                 type="time"
@@ -668,7 +668,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="text-xs font-semibold text-[#3d4652]">
+                            <label className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Fim
                               <input
                                 type="time"
@@ -689,7 +689,7 @@ export default function AcademicPolicyPanel({
                                 aria-label={`Remover intervalo ${index + 1} do turno ${option?.label ?? shift}`}
                                 onClick={() => removeBreak(shift, index)}
                                 disabled={saveScheduleBreaks.isPending}
-                                className="inline-flex h-10 items-center justify-center rounded-lg border border-red-200 px-3 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-red-200 px-3 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40 xl:w-10 xl:px-0"
                               >
                                 <Trash2 className="h-4 w-4" aria-hidden="true" />
                               </button>
