@@ -755,30 +755,32 @@ export default function AcademicYearsTab() {
           const isSelected = year.id === selectedYearId;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                aria-pressed={isSelected}
-                aria-controls="academic-periods"
-                aria-label={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
-                onClick={() =>
-                  setSelectedYearId(year.id)
-                }
-                className={`rounded-md px-2 py-1 font-medium transition-colors ${
-                  isSelected
-                    ? 'bg-blue-50 text-[#005bbf] dark:bg-slate-800 dark:text-blue-300'
-                    : 'text-[#005bbf] hover:bg-blue-50 hover:text-[#1a73e8] dark:hover:bg-slate-800 dark:hover:text-blue-300'
-                }`}
-              >
-                Ver períodos
-              </button>
+            <div className="inline-flex max-w-full flex-wrap items-center gap-1 rounded-lg border border-[#dfe3e8] bg-gray-50 p-1 dark:border-slate-700 dark:bg-slate-800/60">
+              {years.length > 1 && (
+                <button
+                  type="button"
+                  aria-pressed={isSelected}
+                  aria-controls="academic-periods"
+                  aria-label={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
+                  onClick={() =>
+                    setSelectedYearId(year.id)
+                  }
+                  className={`rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] ${
+                    isSelected
+                      ? 'bg-blue-50 text-[#005bbf] dark:bg-slate-700 dark:text-blue-300'
+                      : 'text-[#005bbf] hover:bg-blue-50 hover:text-[#1a73e8] dark:hover:bg-slate-700 dark:hover:text-blue-300'
+                  }`}
+                >
+                  Ver períodos
+                </button>
+              )}
 
               <button
                 type="button"
                 onClick={() =>
                   openEditYearModal(year)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
               >
                 Editar
               </button>
@@ -791,8 +793,8 @@ export default function AcademicYearsTab() {
                 }
                 className={
                   year.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
+                    : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
                 }
               >
                 {isChangingStatus
