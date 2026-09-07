@@ -686,74 +686,45 @@ async function handleDelete(
   const ownStudentIds = (ownStudents ?? []).map((student) => student.id);
 
   if (ownStudentIds.length > 0) {
-    const [gradeResult, attendanceResult, termResult] = await Promise.all([
-      ctx.supabaseAdmin
-        .from("grades")
-        .select("id", { count: "exact", head: true })
-        .in("student_id", ownStudentIds),
-      ctx.supabaseAdmin
-        .from("attendance_records")
-        .select("id", { count: "exact", head: true })
-        .in("student_id", ownStudentIds),
-      ctx.supabaseAdmin
-        .from("student_term_results")
-        .select("id", { count: "exact", head: true })
-        .in("student_id", ownStudentIds),
-    ]);
+    const { count: gradeCount, error: gradeError } = await ctx.supabaseAdmin
+      .from("grades")
+      .select("id", { count: "exact", head: true })
+      .in("student_id", ownStudentIds);
 
-    if (gradeResult.error) throw gradeResult.error;
-    if (attendanceResult.error) throw attendanceResult.error;
-    if (termResult.error) throw termResult.error;
-
-    const hasAcademicHistory =
-      (gradeResult.count ?? 0) > 0 ||
-      (attendanceResult.count ?? 0) > 0 ||
-      (termResult.count ?? 0) > 0;
-
-    if (hasAcademicHistory && membership.role === "STUDENT") {
-      const { error: guardianshipError } = await ctx.supabaseAdmin
-        .from("guardianships")
-        .update({ active: false })
-        .in("student_id", ownStudentIds)
-        .eq("active", true);
-
-      if (guardianshipError) throw guardianshipError;
-
-      const { error: enrollmentError } = await ctx.supabaseAdmin
-        .from("enrollments")
-        .update({ active: false })
-        .in("student_id", ownStudentIds)
-        .eq("active", true);
-
-      if (enrollmentError) throw enrollmentError;
-
-      const { error: studentError } = await ctx.supabaseAdmin
-        .from("students")
-        .update({ active: false })
-        .in("id", ownStudentIds);
-
-      if (studentError) throw studentError;
-
-      const { error: membershipArchiveError } = await ctx.supabaseAdmin
-        .from("memberships")
-        .delete()
-        .eq("id", membership.id);
-
-      if (membershipArchiveError) throw membershipArchiveError;
-
-      return jsonSuccess({
-        success: true,
-        action: "delete",
-        membershipId: membership.id,
-        profileId: membership.profile_id,
-        authUserDeleted: false,
-        historyPreserved: true,
+    if (gradeError) throw gradeError;
+    if ((gradeCount ?? 0) > 0) {
+      throw new ManageSchoolUserError({
+        status: 409,
+        code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Aluno removido da operacao. O historico academico foi preservado.",
+          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
       });
     }
 
-    if (hasAcademicHistory) {
+    const { count: attendanceCount, error: attendanceError } =
+      await ctx.supabaseAdmin
+        .from("attendance_records")
+        .select("id", { count: "exact", head: true })
+        .in("student_id", ownStudentIds);
+
+    if (attendanceError) throw attendanceError;
+    if ((attendanceCount ?? 0) > 0) {
+      throw new ManageSchoolUserError({
+        status: 409,
+        code: "USER_HAS_RELATED_RECORDS",
+        message:
+          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+      });
+    }
+
+    const { count: termResultCount, error: termResultError } =
+      await ctx.supabaseAdmin
+        .from("student_term_results")
+        .select("id", { count: "exact", head: true })
+        .in("student_id", ownStudentIds);
+
+    if (termResultError) throw termResultError;
+    if ((termResultCount ?? 0) > 0) {
       throw new ManageSchoolUserError({
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
