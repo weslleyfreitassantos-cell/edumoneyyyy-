@@ -31,6 +31,7 @@ interface SpreadsheetImportModalProps {
   onClose: () => void;
   onFileSelected: (file: File | undefined) => void;
   onDownloadTemplate: () => void;
+  onDownloadMinimalTemplate?: () => void;
   onImport: () => void;
 }
 
@@ -79,6 +80,7 @@ export default function SpreadsheetImportModal({
   onClose,
   onFileSelected,
   onDownloadTemplate,
+  onDownloadMinimalTemplate,
   onImport,
 }: SpreadsheetImportModalProps) {
   return (
@@ -103,9 +105,14 @@ export default function SpreadsheetImportModal({
                   <h3 className="font-semibold text-slate-800">Arquivo Excel</h3>
                   <p className="mt-1 text-sm text-slate-600">Formatos aceitos: .xlsx e .xls. O limite é de 1.000 linhas por importação.</p>
                 </div>
-                <button type="button" onClick={onDownloadTemplate} className="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50">
-                  <Download size={16} aria-hidden="true" /> Baixar modelo
-                </button>
+                <div className="flex flex-wrap gap-2">
+                  <button type="button" onClick={onDownloadTemplate} className="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50">
+                    <Download size={16} aria-hidden="true" /> Modelo completo
+                  </button>
+                  {onDownloadMinimalTemplate ? <button type="button" onClick={onDownloadMinimalTemplate} className="inline-flex items-center gap-2 rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50">
+                    <Download size={16} aria-hidden="true" /> Modelo mínimo
+                  </button> : null}
+                </div>
               </div>
               {preUploadContent}
               <label className="mt-4 flex cursor-pointer items-center gap-3 rounded-lg border border-dashed border-blue-300 bg-white px-4 py-3 text-sm text-slate-700 hover:bg-blue-50">
@@ -114,6 +121,7 @@ export default function SpreadsheetImportModal({
                 <input type="file" accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" className="sr-only" onChange={(event) => onFileSelected(event.target.files?.[0])} />
               </label>
               <p className="mt-3 text-xs text-slate-600"><strong>Obrigatórios:</strong> {requiredFields}</p>
+              <p className="mt-2 text-xs text-slate-600">Você pode enviar o modelo completo, somente os obrigatórios ou qualquer combinação dos campos aceitos. Colunas não informadas ficam vazias.</p>
               <details className="mt-3 rounded-lg border border-blue-100 bg-white px-3 py-2 text-xs text-slate-600">
                 <summary className="cursor-pointer font-semibold text-blue-800">Ver todos os campos aceitos</summary>
                 <div className="mt-2 leading-5">{supportedFields}</div>

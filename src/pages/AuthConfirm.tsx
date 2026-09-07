@@ -170,6 +170,18 @@ async function hasCurrentInviteSession(
   );
 }
 
+async function markClientAdminInvitationAccepted(): Promise<void> {
+  if (typeof supabase.rpc !== 'function') {
+    return;
+  }
+
+  try {
+    await supabase.rpc('mark_client_admin_invitation_accepted');
+  } catch {
+    // The invitation state is auxiliary; never block a valid auth callback.
+  }
+}
+
 export default function AuthConfirm() {
   const navigate = useNavigate();
   const processingRef = useRef(false);
@@ -266,6 +278,8 @@ export default function AuthConfirm() {
         if (userError || !user || !user.email) {
           throw new Error('Falha ao obter identidade do convite.');
         }
+
+        await markClientAdminInvitationAccepted();
 
         saveInviteContext({
           userId: user.id,

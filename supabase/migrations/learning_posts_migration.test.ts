@@ -22,7 +22,9 @@ describe('learning posts migration', () => {
 
   it('keeps files private and limits access to signed-in users with post scope', () => {
     expect(migrationSql).toContain("'learning-materials',");
-    expect(migrationSql).toContain("false,\n  26214400");
+    expect(migrationSql).toMatch(
+      /'learning-materials',\s*'learning-materials',\s*false,\s*26214400/,
+    );
     expect(migrationSql).toContain('on storage.objects for select to authenticated');
     expect(migrationSql).toContain('post.created_by = auth.uid()');
     expect(migrationSql).toContain("membership.role = 'TEACHER'::public.user_role");

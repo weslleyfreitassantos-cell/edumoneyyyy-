@@ -7,6 +7,8 @@ import {
   importTeachers,
   TEACHER_IMPORT_EXAMPLE,
   TEACHER_IMPORT_HEADERS,
+  TEACHER_REQUIRED_IMPORT_EXAMPLE,
+  TEACHER_REQUIRED_IMPORT_HEADERS,
   type ImportProgress,
   type ImportPreview,
   type ImportResult,
@@ -89,7 +91,7 @@ export default function TeacherSpreadsheetImportModal({ institutionId, subjects,
     <SpreadsheetImportModal
       title="Importar professores"
       description="Cadastre professores em lote e já vincule disciplinas e disponibilidade semanal para a geração da grade."
-      requiredFields="Nome completo, e-mail e disciplinas"
+      requiredFields="Nome completo e e-mail. Disciplinas, telefone e disponibilidade são opcionais."
       supportedFields={<><p><strong>Cadastro:</strong> nome completo, e-mail e telefone.</p><p className="mt-1"><strong>Acadêmico:</strong> disciplinas por nome, código ou ID e disciplina principal.</p><p className="mt-1"><strong>Disponibilidade:</strong> até 10 janelas com dia, início e fim. Dias aceitos: Segunda a Sábado ou 1 a 6.</p><p className="mt-1">A importação usa o mesmo convite de acesso e as mesmas tabelas de disciplinas/disponibilidade do cadastro manual.</p></>}
       fileName={fileName}
       isParsing={isParsing}
@@ -105,6 +107,7 @@ export default function TeacherSpreadsheetImportModal({ institutionId, subjects,
       onClose={onClose}
       onFileSelected={(file) => void handleFileSelected(file)}
       onDownloadTemplate={() => void downloadSpreadsheetTemplate('modelo-professores.xlsx', [...TEACHER_IMPORT_HEADERS], TEACHER_IMPORT_EXAMPLE).catch((error) => setParseError(error instanceof Error ? error.message : 'Não foi possível gerar o modelo.'))}
+      onDownloadMinimalTemplate={() => void downloadSpreadsheetTemplate('modelo-professores-minimo.xlsx', [...TEACHER_REQUIRED_IMPORT_HEADERS], TEACHER_REQUIRED_IMPORT_EXAMPLE).catch((error) => setParseError(error instanceof Error ? error.message : 'Não foi possível gerar o modelo mínimo.'))}
       onImport={() => void handleImport()}
     />
   );

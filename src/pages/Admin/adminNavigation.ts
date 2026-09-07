@@ -22,7 +22,8 @@ export type AdminModuleId =
   | 'timetable'
   | 'rooms'
   | 'finance'
-  | 'directors';
+  | 'directors'
+  | 'announcements';
 
 export type AdminNavigationGroupId =
   | 'start'
@@ -128,6 +129,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     permission: 'manage_school_users',
     href: moduleHref('directors'),
     allowedRoles: ['ADMIN'],
+  },
+  {
+    id: 'announcements',
+    label: 'Avisos',
+    groupId: 'communication-resources',
+    permission: 'manage_school_users',
+    href: moduleHref('announcements'),
   },
   {
     id: 'finance',

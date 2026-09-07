@@ -19,6 +19,7 @@ import {
   ListChecks,
   LogOut,
   Mail,
+  Megaphone,
   MonitorCog,
   Palette,
   School,
@@ -137,6 +138,7 @@ const adminModuleIcons: Record<
   grades: BadgeCheck,
   'term-closing': FileCheck2,
   'academic-policies': ShieldCheck,
+  announcements: Megaphone,
 };
 
 const adminNavigationGroupIcons: Record<

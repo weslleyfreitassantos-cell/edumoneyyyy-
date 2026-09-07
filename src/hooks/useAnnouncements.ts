@@ -12,11 +12,14 @@ export const announcementKeys = {
   audience: (institutionId: string | undefined, audience: string) => [...announcementKeys.list(institutionId), audience] as const,
 };
 
+export const ANNOUNCEMENT_STALE_TIME = 1000 * 60;
+
 export function useInstitutionAnnouncements(institutionId: string) {
   return useQuery({
     queryKey: announcementKeys.list(institutionId),
     queryFn: () => announcementService.listForStaff(institutionId),
     enabled: Boolean(institutionId),
+    staleTime: ANNOUNCEMENT_STALE_TIME,
   });
 }
 
@@ -28,7 +31,7 @@ export function useAudienceAnnouncements(
     queryKey: announcementKeys.audience(institutionId ?? undefined, audience),
     queryFn: () => announcementService.listForAudience(institutionId as string, audience),
     enabled: Boolean(institutionId),
-    staleTime: 1000 * 60,
+    staleTime: ANNOUNCEMENT_STALE_TIME,
   });
 }
 

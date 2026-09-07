@@ -231,7 +231,7 @@ export default function EmailTab() {
   }
 
   async function handleSend(): Promise<void> {
-    if (!preview) return;
+    if (isSending || !preview) return;
     const content = buildContent();
     if (!content) return;
 

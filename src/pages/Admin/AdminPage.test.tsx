@@ -366,6 +366,22 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
+  it('renderiza a tela de avisos para perfis administrativos autorizados', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=announcements');
+
+    expect(
+      screen.getByTestId('announcements-tab'),
+    ).toBeTruthy();
+  });
+
   it('mantem modulo ao recarregar com a mesma URL', () => {
     mockAdminState({
       profile: {
