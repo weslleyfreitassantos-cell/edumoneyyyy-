@@ -415,7 +415,7 @@ export default function AcademicPolicyPanel({
         )}
       </div>
 
-      <section className="mt-6 rounded-lg border border-blue-100 bg-blue-50/60 p-4 dark:border-slate-700 dark:bg-slate-50">
+      <section className="mt-6 rounded-lg border border-[#dfe3e8] bg-slate-50 p-4">
         <div className="flex items-start gap-3">
           <Clock3
             className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]"
@@ -757,7 +757,7 @@ export default function AcademicPolicyPanel({
           <div className="lg:col-span-2">
             <label
               htmlFor="academic-policy-year"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
               Ano letivo
             </label>
@@ -783,9 +783,9 @@ export default function AcademicPolicyPanel({
           <div>
             <label
               htmlFor="academic-policy-grade"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
-              Media minima (%)
+              Média mínima (%)
             </label>
             <input
               id="academic-policy-grade"
@@ -805,9 +805,9 @@ export default function AcademicPolicyPanel({
           <div>
             <label
               htmlFor="academic-policy-attendance"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
-              Frequencia minima (%)
+              Frequência mínima (%)
             </label>
             <input
               id="academic-policy-attendance"
@@ -827,7 +827,7 @@ export default function AcademicPolicyPanel({
           <div>
             <label
               htmlFor="academic-policy-decimals"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
               Casas decimais
             </label>
@@ -857,7 +857,7 @@ export default function AcademicPolicyPanel({
             </div>
 
             <fieldset className="mt-4">
-              <legend className="text-xs font-semibold text-[#3d4652]">
+              <legend className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                 Dias letivos
               </legend>
               <div className="mt-2 flex flex-wrap gap-2">
@@ -866,7 +866,7 @@ export default function AcademicPolicyPanel({
                   return (
                     <label
                       key={day.value}
-                      className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-xs font-semibold text-[#344054]"
+                      className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-xs font-semibold text-[#344054] dark:text-slate-200"
                     >
                       <input
                         type="checkbox"
@@ -898,7 +898,7 @@ export default function AcademicPolicyPanel({
                 ['maxConsecutiveSubjectLessons', 'Máximo consecutivo da mesma disciplina', 1, 6],
                 ['maxSubjectLessonsPerDay', 'Máximo da mesma disciplina/dia', 1, 12],
               ] as const).map(([field, label, min, max]) => (
-                <label key={field} className="text-xs font-semibold text-[#3d4652]">
+                <label key={field} className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                   {label}
                   <input
                     type="number"
@@ -923,7 +923,7 @@ export default function AcademicPolicyPanel({
                 ['requireRoomForGeneration', 'Exigir sala para gerar'],
                 ['allowSharedRooms', 'Permitir salas compartilhadas'],
               ] as const).map(([field, label]) => (
-                <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054]">
+                <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054] dark:text-slate-200">
                   <input
                     type="checkbox"
                     checked={timetableSettings[field]}
