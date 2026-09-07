@@ -46,6 +46,7 @@ describe('manage-school-user', () => {
 
   it('protege historico academico e limita vinculos de guardianship ao tenant', () => {
     expect(source).toContain('USER_HAS_RELATED_RECORDS');
+    expect(source).toContain('O histórico acadêmico precisa ser preservado.');
     expect(source).toContain('.in("student_id", ownStudentIds)');
     expect(source).toContain('.from("student_term_results")');
     expect(source).toContain('.eq("institution_id", input.institutionId)');

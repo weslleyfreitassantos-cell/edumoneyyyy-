@@ -30,6 +30,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useSubjects } from '../../../hooks/useSubjects';
 import { useTeachers } from '../../../hooks/useTeachers';
 import { useCreateWholeYearAssignment } from '../../../hooks/useAcademicAutomation';
+import AssignmentAutomationPanel from '../../../components/academic/AssignmentAutomationPanel';
 
 import {
   subjectOfferingSchema,
@@ -150,6 +151,9 @@ export default function AssignmentsTab() {
     useCreateWholeYearAssignment();
 
   const [isModalOpen, setIsModalOpen] =
+    useState(false);
+
+  const [isAutomationOpen, setIsAutomationOpen] =
     useState(false);
 
   const [
@@ -853,6 +857,16 @@ export default function AssignmentsTab() {
         </div>
       </section>
 
+      <section className="flex flex-col gap-4 rounded-xl border border-blue-100 bg-blue-50/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="font-semibold text-slate-900">Preparação automática de atribuições</h2>
+          <p className="mt-1 text-sm text-slate-600">Revise as pendências e atribua professores habilitados sem abrir a geração da grade.</p>
+        </div>
+        <button type="button" onClick={() => setIsAutomationOpen(true)} className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800">
+          Atribuir automaticamente
+        </button>
+      </section>
+
       <DataTable
         title="Atribuições"
         addLabel="Nova atribuição"
@@ -909,6 +923,21 @@ export default function AssignmentsTab() {
           );
         }}
       />
+
+      {isAutomationOpen && (
+        <AssignmentAutomationPanel
+          institutionId={institutionId}
+          academicYears={years}
+          classes={classes}
+          subjects={subjects}
+          teachers={teachers}
+          onClose={() => setIsAutomationOpen(false)}
+          onCompleted={(message) => {
+            setFeedbackMessage(message);
+            setPageError(null);
+          }}
+        />
+      )}
 
       {isModalOpen && (
         <div

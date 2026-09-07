@@ -855,6 +855,16 @@ export default function SchoolUsersTab({
         </div>
       )}
 
+      <div
+        role="note"
+        className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
+      >
+        <strong>Exclusão protegida:</strong> alunos com notas, frequência ou
+        fechamento de período não podem ser excluídos. O bloqueio preserva o
+        histórico acadêmico; alunos sem esses registros podem ser removidos
+        normalmente.
+      </div>
+
       {inviteTargets ? (
         <UnifiedUserInvitePreview
           institutionId={institutionId}

@@ -697,7 +697,7 @@ async function handleDelete(
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+          "Não é possível excluir este aluno porque há notas, frequência ou fechamento de período vinculados. O histórico acadêmico precisa ser preservado.",
       });
     }
 
@@ -713,7 +713,7 @@ async function handleDelete(
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+          "Não é possível excluir este aluno porque há notas, frequência ou fechamento de período vinculados. O histórico acadêmico precisa ser preservado.",
       });
     }
 
@@ -729,7 +729,7 @@ async function handleDelete(
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+          "Não é possível excluir este aluno porque há notas, frequência ou fechamento de período vinculados. O histórico acadêmico precisa ser preservado.",
       });
     }
   }
