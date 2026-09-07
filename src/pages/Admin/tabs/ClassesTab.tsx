@@ -7,6 +7,14 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import {
+  Edit3,
+  LoaderCircle,
+  Power,
+  PowerOff,
+  Settings2,
+} from 'lucide-react';
+
+import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
@@ -260,7 +268,7 @@ export default function ClassesTab() {
     },
     {
       key: 'active_offerings_count',
-      label: 'Ofertas',
+      label: 'Atribuições',
     },
     {
       key: 'active_curriculum_items_count',
@@ -610,6 +618,8 @@ export default function ClassesTab() {
         }
         onAdd={openCreateModal}
         emptyMessage="Nenhuma turma encontrada para os filtros selecionados."
+        actionCellClassName="min-w-[116px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         renderActions={(classRecord) => {
           const isChangingStatus =
             statusMutation.isPending &&
@@ -617,15 +627,17 @@ export default function ClassesTab() {
               classRecord.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <>
               <button
                 type="button"
                 onClick={() =>
                   openEditModal(classRecord)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar turma ${classRecord.name}`}
+                aria-label={`Editar turma ${classRecord.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -635,9 +647,11 @@ export default function ClassesTab() {
                     `/admin?module=curriculum&classId=${classRecord.id}`,
                   )
                 }
-                className="font-medium text-indigo-600 hover:text-indigo-800"
+                title={`Configurar matriz de ${classRecord.name}`}
+                aria-label={`Configurar matriz de ${classRecord.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-indigo-200 text-indigo-700 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-indigo-800 dark:text-indigo-300 dark:hover:bg-slate-700"
               >
-                Configurar matriz
+                <Settings2 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -648,19 +662,23 @@ export default function ClassesTab() {
                     classRecord,
                   )
                 }
+                title={`${classRecord.active ? 'Desativar' : 'Reativar'} turma ${classRecord.name}`}
+                aria-label={`${classRecord.active ? 'Desativar' : 'Reativar'} turma ${classRecord.name}`}
                 className={
                   classRecord.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : classRecord.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : classRecord.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />

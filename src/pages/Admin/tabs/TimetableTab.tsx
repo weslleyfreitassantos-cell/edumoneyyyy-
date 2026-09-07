@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import {
+  Edit3,
+  Power,
+  PowerOff,
+} from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
@@ -511,13 +516,31 @@ export default function TimetableTab() {
             isLoading={roomsQuery.isLoading}
             onAdd={openCreateRoomModal}
             emptyMessage="Nenhuma sala cadastrada. Crie a primeira sala manualmente."
+            actionCellClassName="min-w-[76px] align-top whitespace-nowrap"
+            actionGroupClassName="md:flex-nowrap"
             renderActions={(room) => (
-              <div className="flex items-center gap-3">
-                <button type="button" onClick={() => openEditRoomModal(room)} className="font-medium text-blue-600 hover:text-blue-800">Editar</button>
-                <button type="button" onClick={() => void handleToggleRoomActive(room)} className={room.active ? 'font-medium text-red-600 hover:text-red-800' : 'font-medium text-green-600 hover:text-green-800'}>
-                  {room.active ? 'Desativar' : 'Reativar'}
+              <>
+                <button
+                  type="button"
+                  title={`Editar sala ${room.name}`}
+                  aria-label={`Editar sala ${room.name}`}
+                  onClick={() => openEditRoomModal(room)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
+                >
+                  <Edit3 className="h-4 w-4" aria-hidden="true" />
                 </button>
-              </div>
+                <button
+                  type="button"
+                  title={`${room.active ? 'Desativar' : 'Reativar'} sala ${room.name}`}
+                  aria-label={`${room.active ? 'Desativar' : 'Reativar'} sala ${room.name}`}
+                  onClick={() => void handleToggleRoomActive(room)}
+                  className={room.active
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'}
+                >
+                  {room.active ? <PowerOff className="h-4 w-4" aria-hidden="true" /> : <Power className="h-4 w-4" aria-hidden="true" />}
+                </button>
+              </>
             )}
           />
         </>

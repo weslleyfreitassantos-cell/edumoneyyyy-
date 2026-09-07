@@ -4,6 +4,10 @@ import {
   type FormEvent,
 } from 'react';
 import {
+  Edit3,
+  LoaderCircle,
+  Power,
+  PowerOff,
   Search,
   X,
 } from 'lucide-react';
@@ -812,6 +816,8 @@ export default function SubjectsTab() {
         columns={columns}
         isLoading={subjectsQuery.isLoading}
         onAdd={openCreateModal}
+        actionCellClassName="min-w-[76px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         extraHeaderActions={
           <button
             type="button"
@@ -829,15 +835,17 @@ export default function SubjectsTab() {
               subject.id;
 
           return (
-            <div className="flex max-w-full flex-wrap items-center gap-1">
+            <>
               <button
                 type="button"
                 onClick={() =>
                   openEditModal(subject)
                 }
-                className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
+                title={`Editar disciplina ${subject.name}`}
+                aria-label={`Editar disciplina ${subject.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -848,19 +856,23 @@ export default function SubjectsTab() {
                     subject,
                   )
                 }
+                title={`${subject.active ? 'Desativar' : 'Reativar'} disciplina ${subject.name}`}
+                aria-label={`${subject.active ? 'Desativar' : 'Reativar'} disciplina ${subject.name}`}
                 className={
                   subject.active
-                    ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
-                    : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : subject.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : subject.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />

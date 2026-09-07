@@ -2,6 +2,13 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+import {
+  Edit3,
+  LoaderCircle,
+  Settings2,
+  Trash2,
+} from 'lucide-react';
+
 import { DataTable, type Column } from '../../../components/DataTable';
 import {
   ListPagination,
@@ -458,13 +465,15 @@ export default function CurriculumTab() {
         columns={columns}
         isLoading={curriculumQuery.isLoading || classesQuery.isLoading || subjectsQuery.isLoading}
         onAdd={openCreateModal}
+        actionCellClassName="min-w-[116px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         extraHeaderActions={<button type="button" onClick={() => setIsTemplatePanelOpen(true)} className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50">Modelos de matriz</button>}
         emptyMessage="Nenhum item encontrado para os filtros selecionados."
         renderActions={(item) => {
           const isDeleting = deleteMutation.isPending && deleteMutation.variables?.id === item.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <>
               {item.needs_review && (
                 <span className="text-xs font-semibold text-amber-600">Revisão pendente</span>
               )}
@@ -474,26 +483,36 @@ export default function CurriculumTab() {
                   setTeachersCache({});
                   openEditModal(item);
                 }}
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar ${item.subject_name} na turma ${item.class_name}`}
+                aria-label={`Editar ${item.subject_name} na turma ${item.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
                 onClick={() => handleNavigateToAssignments(item)}
-                className="font-medium text-indigo-600 hover:text-indigo-800"
+                title={`Ver atribuições de ${item.subject_name} na turma ${item.class_name}`}
+                aria-label={`Ver atribuições de ${item.subject_name} na turma ${item.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-indigo-200 text-indigo-700 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-indigo-800 dark:text-indigo-300 dark:hover:bg-slate-700"
               >
-                Atribuições
+                <Settings2 className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
                 disabled={isDeleting}
                 onClick={() => void handleDelete(item)}
-                className="font-medium text-red-600 hover:text-red-800 disabled:opacity-50"
+                title={`Excluir ${item.subject_name} da turma ${item.class_name}`}
+                aria-label={`Excluir ${item.subject_name} da turma ${item.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
               >
-                {isDeleting ? 'Excluindo...' : 'Excluir'}
+                {isDeleting ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />

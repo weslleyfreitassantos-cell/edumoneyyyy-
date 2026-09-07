@@ -7,7 +7,12 @@ import {
 } from 'react';
 
 import {
+  CalendarDays,
+  Edit3,
   LoaderCircle,
+  Power,
+  PowerOff,
+  Trash2,
 } from 'lucide-react';
 
 import {
@@ -756,6 +761,8 @@ export default function AcademicYearsTab() {
         isLoading={yearsQuery.isLoading}
         onAdd={openCreateYearModal}
         emptyMessage="Nenhum ano letivo cadastrado nesta instituição."
+        actionCellClassName="min-w-[160px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         renderActions={(year) => {
           const isChangingStatus =
             yearStatusMutation.isPending &&
@@ -769,7 +776,7 @@ export default function AcademicYearsTab() {
           const isSelected = year.id === selectedYearId;
 
           return (
-            <div className="flex max-w-full flex-wrap items-center gap-1">
+            <>
               {years.length > 1 && (
                 <button
                   type="button"
@@ -779,13 +786,14 @@ export default function AcademicYearsTab() {
                   onClick={() =>
                     setSelectedYearId(year.id)
                   }
-                  className={`rounded-md px-2.5 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] ${
+                  title={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
                     isSelected
-                      ? 'bg-blue-50 text-[#005bbf] dark:bg-slate-700 dark:text-blue-300'
-                      : 'text-[#005bbf] hover:bg-blue-50 hover:text-[#1a73e8] dark:hover:bg-slate-700 dark:hover:text-blue-300'
+                      ? 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-slate-700 dark:text-blue-300'
+                      : 'border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700'
                   }`}
                 >
-                  Ver períodos
+                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
                 </button>
               )}
 
@@ -794,9 +802,11 @@ export default function AcademicYearsTab() {
                 onClick={() =>
                   openEditYearModal(year)
                 }
-                className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
+                title={`Editar ano letivo ${year.name}`}
+                aria-label={`Editar ano letivo ${year.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -805,28 +815,38 @@ export default function AcademicYearsTab() {
                 onClick={() =>
                   void handleYearStatus(year)
                 }
+                title={`${year.active ? 'Desativar' : 'Reativar'} ano letivo ${year.name}`}
+                aria-label={`${year.active ? 'Desativar' : 'Reativar'} ano letivo ${year.name}`}
                 className={
                   year.active
-                    ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
-                    : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                    : year.active
-                      ? 'Desativar'
-                      : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : year.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
 
               <button
                 type="button"
                 disabled={isRemoving || isChangingStatus}
                 onClick={() => void handleDeleteYear(year)}
-                className="rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200"
+                title={`Remover ano letivo ${year.name}`}
+                aria-label={`Remover ano letivo ${year.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
               >
-                {isRemoving ? 'Removendo...' : 'Remover'}
+                {isRemoving ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />
@@ -939,15 +959,17 @@ export default function AcademicYearsTab() {
                           />
                         </td>
                         <td className="px-4 py-3">
-                          <ActionGroup>
+                          <ActionGroup className="md:flex-nowrap">
                             <button
                               type="button"
                               onClick={() =>
                                 openEditTermModal(term)
                               }
-                              className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
+                              title={`Editar ${formatPeriodName(term.name)}`}
+                              aria-label={`Editar ${formatPeriodName(term.name)}`}
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                             >
-                              Editar
+                              <Edit3 className="h-4 w-4" aria-hidden="true" />
                             </button>
 
                             <button
@@ -960,17 +982,21 @@ export default function AcademicYearsTab() {
                                   term,
                                 )
                               }
+                              title={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                              aria-label={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
                               className={
                                 term.active
-                                  ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
-                                  : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
+                                  ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                                  : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                               }
                             >
-                              {isChangingStatus
-                                ? 'Salvando...'
-                                : term.active
-                                  ? 'Desativar'
-                                  : 'Reativar'}
+                              {isChangingStatus ? (
+                                <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                              ) : term.active ? (
+                                <PowerOff className="h-4 w-4" aria-hidden="true" />
+                              ) : (
+                                <Power className="h-4 w-4" aria-hidden="true" />
+                              )}
                             </button>
                           </ActionGroup>
                         </td>
@@ -1043,30 +1069,36 @@ export default function AcademicYearsTab() {
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                         Ações
                       </p>
-                      <ActionGroup>
+                      <ActionGroup className="md:flex-nowrap">
                         <button
                           type="button"
                           onClick={() => openEditTermModal(term)}
-                          className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
+                          title={`Editar ${formatPeriodName(term.name)}`}
+                          aria-label={`Editar ${formatPeriodName(term.name)}`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                         >
-                          Editar
+                          <Edit3 className="h-4 w-4" aria-hidden="true" />
                         </button>
 
                         <button
                           type="button"
                           disabled={isChangingStatus}
                           onClick={() => void handleTermStatus(term)}
+                          title={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                          aria-label={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
                           className={
                             term.active
-                              ? 'rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:opacity-50 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200'
-                              : 'rounded-md px-2.5 py-1.5 text-sm font-medium text-green-600 transition-colors hover:bg-green-50 hover:text-green-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:opacity-50 dark:text-green-300 dark:hover:bg-green-950/40 dark:hover:text-green-200'
+                              ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                              : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                           }
                         >
-                          {isChangingStatus
-                            ? 'Salvando...'
-                            : term.active
-                              ? 'Desativar'
-                              : 'Reativar'}
+                          {isChangingStatus ? (
+                            <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                          ) : term.active ? (
+                            <PowerOff className="h-4 w-4" aria-hidden="true" />
+                          ) : (
+                            <Power className="h-4 w-4" aria-hidden="true" />
+                          )}
                         </button>
                       </ActionGroup>
                     </div>
@@ -1284,7 +1316,17 @@ export default function AcademicYearsTab() {
                             <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Fim</span>
                             <input aria-label={`Fim do período ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
                           </label>
-                          {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="self-end rounded-lg border border-red-200 px-3 py-2 text-sm text-red-700 sm:self-stretch">Remover</button>}
+                          {periodModel === 'CUSTOM' && (
+                            <button
+                              type="button"
+                              title={`Remover período ${index + 1}`}
+                              aria-label={`Remover período ${index + 1}`}
+                              onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))}
+                              className="inline-flex h-9 w-9 self-end items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:self-stretch dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+                            >
+                              <Trash2 className="h-4 w-4" aria-hidden="true" />
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>
