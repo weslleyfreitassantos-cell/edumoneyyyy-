@@ -415,7 +415,7 @@ export default function AcademicPolicyPanel({
         )}
       </div>
 
-      <section className="mt-6 rounded-lg border border-blue-100 bg-blue-50/60 p-4">
+      <section className="mt-6 rounded-lg border border-blue-100 bg-blue-50/60 p-4 dark:border-slate-700 dark:bg-slate-900/80">
         <div className="flex items-start gap-3">
           <Clock3
             className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]"
