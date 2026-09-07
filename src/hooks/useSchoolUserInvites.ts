@@ -8,6 +8,7 @@ import { guardianKeys } from './useGuardians';
 import { schoolUserKeys } from './useSchoolUsers';
 import { studentKeys } from './useStudents';
 import { teacherKeys } from './useTeachers';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   schoolUserInviteService,
@@ -42,8 +43,9 @@ export function useInviteSchoolUser() {
           queryKey:
             adminOverviewKeys.detail(
               institutionId,
-            ),
+          ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, institutionId),
       ];
 
       if (variables.role === 'STUDENT') {

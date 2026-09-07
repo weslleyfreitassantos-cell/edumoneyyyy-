@@ -31,7 +31,8 @@ describe('manage-school-user', () => {
   });
 
   it('autoriza DELETE de DIRECTOR somente com membership ativo da instituicao alvo', () => {
-    expect(source).toContain('allowDirectorDelete: input.action === "delete"');
+    expect(source).toContain('allowOperationalManager:');
+    expect(source).toContain('allowDirectorDelete: false');
     expect(source).toContain('const isDirector =');
     expect(source).toContain('TARGET_OUTSIDE_INSTITUTION');
     expect(source).toContain('.eq("institution_id", input.institutionId)');

@@ -46,6 +46,7 @@ import {
   toAcademicShift,
   type AcademicShift,
 } from '../../../lib/academic/academicShifts';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface ClassDraft {
   name: string;
@@ -68,20 +69,7 @@ const emptyDraft: ClassDraft = {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function StatusBadge({

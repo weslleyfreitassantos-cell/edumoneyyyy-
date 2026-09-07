@@ -38,6 +38,7 @@ import {
 
 import type { TermRow } from '../../../services/academicStructureService';
 import type { AssignmentRow } from '../../../services/assignmentService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface AssignmentDraft {
   class_id: string;
@@ -70,7 +71,7 @@ function getErrorMessage(
     if (error.message.includes('TEACHER_SUBJECT_NOT_AUTHORIZED')) {
       return 'Este professor nao esta habilitado para lecionar esta disciplina.';
     }
-    return error.message;
+    return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
   }
 
   if (
@@ -86,7 +87,7 @@ function getErrorMessage(
     if (msg.includes('TEACHER_SUBJECT_NOT_AUTHORIZED')) {
       return 'Este professor nao esta habilitado para lecionar esta disciplina.';
     }
-    return msg;
+    return getUserFacingErrorMessage({ message: msg }, 'Não foi possível concluir a operação.');
   }
 
   return 'Não foi possível concluir a operação.';

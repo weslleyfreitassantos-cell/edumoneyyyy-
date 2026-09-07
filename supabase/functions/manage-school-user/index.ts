@@ -260,6 +260,10 @@ async function getAuthorizedContext(
     (membership) =>
       membership.active === true && membership.role === "DIRECTOR",
   );
+  const isSecretary = (memberships ?? []).some(
+    (membership) =>
+      membership.active === true && membership.role === "SECRETARY",
+  );
 
   if (
     !isSuperAdmin &&
@@ -281,6 +285,7 @@ async function getAuthorizedContext(
     isLocalAdmin,
     isOperationalManager,
     isDirector,
+    isSecretary,
   };
 }
 
@@ -372,7 +377,7 @@ async function handleUpdate(
 
   if (
     operationalManagerOnly &&
-    (input.password !== undefined || input.fullName !== undefined) &&
+    input.password !== undefined &&
     membership.role === "STUDENT"
   ) {
     const { data: student, error: studentError } = await ctx.supabaseAdmin
@@ -401,10 +406,10 @@ async function handleUpdate(
 
   if (!authorizationDecision.allowed) {
     const errorByCode: Record<NonNullable<typeof authorizationDecision.code>, ManageSchoolUserError> = {
-      DIRECTOR_PASSWORD_ONLY: new ManageSchoolUserError({
+      SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE: new ManageSchoolUserError({
         status: 403,
-        code: "DIRECTOR_PASSWORD_ONLY",
-        message: "Diretores e secretarias podem alterar somente nome e senha; a troca de papel deve ser feita por um administrador.",
+        code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE",
+        message: "A Secretaria nao pode alterar o papel de um Diretor.",
       }),
       TARGET_MEMBERSHIP_INACTIVE: new ManageSchoolUserError({
         status: 403,
@@ -414,7 +419,7 @@ async function handleUpdate(
       TARGET_ROLE_NOT_ALLOWED: new ManageSchoolUserError({
         status: 403,
         code: "TARGET_ROLE_NOT_ALLOWED",
-        message: "Este papel nao pode ser alterado por este gestor.",
+        message: "Somente alunos podem ter a senha redefinida por esta tela.",
       }),
       STUDENT_INACTIVE: new ManageSchoolUserError({
         status: 403,
@@ -589,7 +594,7 @@ async function handleDelete(
   const membership = await getTargetMembership(
     ctx,
     input,
-    authorization.isDirector
+    (authorization.isDirector || authorization.isSecretary)
       ? {
           notFoundError: new ManageSchoolUserError({
             status: 403,
@@ -626,6 +631,7 @@ async function handleDelete(
       targetProfileId: membership.profile_id,
       targetPlatformRole: targetProfile?.platform_role ?? null,
       targetIsAccountOwner: Boolean(targetAccount),
+      targetRole: membership.role,
     },
   );
 
@@ -653,6 +659,11 @@ async function handleDelete(
         status: 409,
         code: "ACCOUNT_OWNER_PROTECTED",
         message: "O administrador dono da conta deve ser alterado pela Plataforma.",
+      }),
+      SECRETARY_CANNOT_REMOVE_DIRECTOR: new ManageSchoolUserError({
+        status: 403,
+        code: "SECRETARY_CANNOT_REMOVE_DIRECTOR",
+        message: "A Secretaria nao pode remover um Diretor.",
       }),
       DIRECTOR_REQUIRED: new ManageSchoolUserError({
         status: 403,
@@ -1046,10 +1057,10 @@ const authenticatedFetch = withSupabase<Database>(
           {
             allowOperationalManager:
               input.action === "link_guardian" ||
-              (input.action === "update" &&
-                (input.password !== undefined || input.fullName !== undefined)) ||
-              input.action === "update_student_identity",
-            allowDirectorDelete: input.action === "delete",
+              input.action === "update" ||
+              input.action === "update_student_identity" ||
+              input.action === "delete",
+            allowDirectorDelete: false,
           },
         );
 

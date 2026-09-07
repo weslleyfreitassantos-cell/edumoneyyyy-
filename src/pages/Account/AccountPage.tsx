@@ -36,6 +36,7 @@ import {
   useSaveAccountBranding,
 } from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
+import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 import {
   clearInstitutionSsoSelectionCookie,
   getInstitutionEntryUrl,
@@ -69,11 +70,7 @@ interface InstitutionEditState {
 }
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return 'Operacao nao concluida.';
+  return getUserFacingErrorMessage(error, 'Operação não concluída.');
 }
 
 type SelectInstitutionFailure = Extract<
@@ -471,6 +468,19 @@ export default function AccountPage() {
             }`}
           >
             {feedback.message}
+          </div>
+        )}
+
+        {feedback?.type === 'success' && institutionContext.currentInstitutionId && (
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800">
+            <span>Escola criada. Agora configure a estrutura acadêmica.</span>
+            <button
+              type="button"
+              onClick={() => navigate('/admin?module=overview')}
+              className="rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white hover:bg-[#004a9b]"
+            >
+              Configurar escola
+            </button>
           </div>
         )}
 

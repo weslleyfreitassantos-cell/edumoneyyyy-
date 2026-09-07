@@ -1,7 +1,4 @@
-import {
-  useQuery,
-  type QueryClient,
-} from '@tanstack/react-query';
+import { useQuery, type QueryClient } from '@tanstack/react-query';
 
 import {
   schoolSetupService,
@@ -16,8 +13,9 @@ export const schoolSetupKeys = {
 
 export function invalidateSchoolSetupReadiness(
   queryClient: QueryClient,
-  institutionId: string,
+  institutionId: string | null | undefined,
 ) {
+  if (!institutionId) return Promise.resolve();
   return queryClient.invalidateQueries({
     queryKey: schoolSetupKeys.detail(institutionId),
   });
