@@ -501,21 +501,21 @@ export default function TeachersTab() {
       )}
 
       {subjectCoverage.length > 0 && (
-        <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+        <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="font-bold text-[#181c20]">Cobertura das disciplinas</h3>
-              <p className="mt-1 text-sm text-gray-500">Cada disciplina precisa de pelo menos um professor ativo vinculado.</p>
+              <h3 className="font-bold text-[#181c20] dark:text-white">Cobertura das disciplinas</h3>
+              <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Cada disciplina precisa de pelo menos um professor ativo vinculado.</p>
             </div>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-slate-300">
               {subjectCoverage.filter((subject) => subject.teacherCount > 0).length}/{subjectCoverage.length} cobertas
             </span>
           </div>
           <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {subjectCoverage.map((subject) => (
-              <div key={subject.id} className="flex items-center justify-between gap-3 rounded-lg border border-gray-100 px-3 py-2 text-sm">
-                <span className="min-w-0 truncate text-gray-800">{subject.name}</span>
-                <span className={subject.teacherCount > 0 ? 'shrink-0 text-xs font-semibold text-green-700' : 'shrink-0 text-xs font-semibold text-amber-700'}>
+              <div key={subject.id} className="flex items-center justify-between gap-3 rounded-lg border border-gray-100 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800/60">
+                <span className="min-w-0 truncate text-gray-800 dark:text-slate-200">{subject.name}</span>
+                <span className={subject.teacherCount > 0 ? 'shrink-0 text-xs font-semibold text-green-700 dark:text-emerald-300' : 'shrink-0 text-xs font-semibold text-amber-700 dark:text-amber-300'}>
                   {subject.teacherCount > 0 ? `${subject.teacherCount} professor(es)` : 'Sem professor'}
                 </span>
               </div>
@@ -524,11 +524,11 @@ export default function TeachersTab() {
         </section>
       )}
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 className="font-bold text-[#181c20]">Disponibilidade dos professores</h3>
-            <p className="mt-1 text-sm text-gray-500">Preencha em lote com os horários ativos da escola e ajuste apenas quem tiver uma jornada diferente.</p>
+            <h3 className="font-bold text-[#181c20] dark:text-white">Disponibilidade dos professores</h3>
+            <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Preencha em lote com os horários ativos da escola e ajuste apenas quem tiver uma jornada diferente.</p>
           </div>
           <button
             type="button"
@@ -540,13 +540,13 @@ export default function TeachersTab() {
               schoolTimeSlotsQuery.data?.length === 0 ||
               teachersQuery.isLoading
             }
-            className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-800"
           >
             {availabilityMutation.isPending ? 'Aplicando...' : 'Aplicar aos professores ativos'}
           </button>
         </div>
-        {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível carregar os horários da escola.</p>}
-        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-amber-700">Cadastre pelo menos um horário da escola para habilitar o preenchimento em lote.</p>}
+        {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-300">Não foi possível carregar os horários da escola.</p>}
+        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-amber-700 dark:text-amber-300">Cadastre pelo menos um horário da escola para habilitar o preenchimento em lote.</p>}
       </section>
 
       <ListSearch
