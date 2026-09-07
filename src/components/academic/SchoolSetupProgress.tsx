@@ -58,11 +58,13 @@ function FlowStepRow({
   step,
   canEditAcademic,
   isRecommended,
+  showStatus = true,
 }: {
   key?: string;
   step: SchoolSetupFlowStep;
   canEditAcademic: boolean;
   isRecommended: boolean;
+  showStatus?: boolean;
 }) {
   const canOpen = canEditAcademic || step.id === 'responsible-user';
   const action = canOpen
@@ -99,7 +101,7 @@ function FlowStepRow({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-2">
             <p className="font-bold text-[#344054] dark:text-slate-100">{step.label}</p>
-            <StatusPill status={step.status} />
+            {showStatus && <StatusPill status={step.status} />}
           </div>
           <p className="mt-1 text-sm leading-5 text-[#667085] dark:text-slate-400">{step.description}</p>
           {step.reason && (
@@ -126,6 +128,7 @@ function FlowSection({
   const sectionProgress = requiredCount > 0
     ? Math.round((section.completedCount / requiredCount) * 100)
     : 0;
+  const showStatus = section.id !== 'personalization';
 
   return (
     <section
@@ -141,16 +144,15 @@ function FlowSection({
             >
               {section.label}
             </h3>
-            <StatusPill status={section.status} />
+            {showStatus && <StatusPill status={section.status} />}
           </div>
           <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">{section.description}</p>
         </div>
-        <p className="shrink-0 text-sm font-bold text-[#005bbf] dark:text-blue-300">
-          {section.status === 'OPTIONAL'
-            ? 'Opcional'
-            : `${section.completedCount} de ${requiredCount}`}
-          {section.status !== 'OPTIONAL' && ` (${sectionProgress}%)`}
-        </p>
+        {showStatus && (
+          <p className="shrink-0 text-sm font-bold text-[#005bbf] dark:text-blue-300">
+            {section.completedCount} de {requiredCount} ({sectionProgress}%)
+          </p>
+        )}
       </div>
 
       <ol className="mt-4 grid gap-3 lg:grid-cols-2">
@@ -160,6 +162,7 @@ function FlowSection({
             step={step}
             canEditAcademic={canEditAcademic}
             isRecommended={step.id === recommendedStepId}
+            showStatus={showStatus}
           />
         ))}
       </ol>
