@@ -242,6 +242,20 @@ describe('StudentsTab - vínculo de responsável', () => {
     expect(screen.getByText('primeiro ano • Integral')).toBeTruthy();
   });
 
+  it('exibe ações de aluno como botões compactos com nomes acessíveis', () => {
+    render(<StudentsTab />);
+
+    expect(
+      screen.getAllByRole('button', { name: 'Vincular responsável' }),
+    ).toHaveLength(2);
+    expect(
+      screen.getByRole('button', { name: 'Editar Ieti' }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: 'Desativar Ieti' }),
+    ).toBeTruthy();
+  });
+
   it('abre o cadastro completo ao criar um aluno', () => {
     render(<StudentsTab />);
 
