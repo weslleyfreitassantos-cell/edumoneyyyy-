@@ -254,6 +254,11 @@ describe('StudentsTab - vínculo de responsável', () => {
     expect(
       screen.getByRole('button', { name: 'Desativar Ieti' }),
     ).toBeTruthy();
+
+    expect(
+      screen.getByRole('button', { name: 'Editar Ieti' })
+        .parentElement?.className,
+    ).toContain('md:flex-nowrap');
   });
 
   it('abre o cadastro completo ao criar um aluno', () => {

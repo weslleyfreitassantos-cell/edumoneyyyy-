@@ -23,6 +23,8 @@ interface DataTableProps<T> {
   addLabel?: string;
   extraHeaderActions?: ReactNode;
   emptyMessage?: string;
+  actionCellClassName?: string;
+  actionGroupClassName?: string;
 }
 
 export function DataTable<T extends { id: string }>({
@@ -37,6 +39,8 @@ export function DataTable<T extends { id: string }>({
   addLabel = 'Adicionar',
   extraHeaderActions,
   emptyMessage = 'Nenhum registro encontrado.',
+  actionCellClassName = '',
+  actionGroupClassName = '',
 }: DataTableProps<T>) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -157,9 +161,9 @@ export function DataTable<T extends { id: string }>({
                   ))}
 
                   {hasActions && (
-                    <td className="px-4 py-3">
+                    <td className={`px-4 py-3 ${actionCellClassName}`}>
                       {renderActions ? (
-                        <ActionGroup>
+                        <ActionGroup className={actionGroupClassName}>
                           {renderActions(row)}
                         </ActionGroup>
                       ) : (
@@ -227,7 +231,7 @@ export function DataTable<T extends { id: string }>({
                     Ações
                   </p>
                   {renderActions ? (
-                    <ActionGroup>
+                    <ActionGroup className={actionGroupClassName}>
                       {renderActions(row)}
                     </ActionGroup>
                   ) : (
