@@ -170,16 +170,19 @@ function FlowSection({
 function FlowDetails({
   flow,
   canEditAcademic,
+  showOnlyFoundation = false,
 }: {
   flow: SchoolSetupFlow;
   canEditAcademic: boolean;
+  showOnlyFoundation?: boolean;
 }) {
   const requiredSections = flow.sections.filter(
-    (section) => section.id !== 'personalization',
+    (section) => section.id !== 'personalization' &&
+      (!showOnlyFoundation || section.id === 'foundation'),
   );
-  const personalization = flow.sections.find(
-    (section) => section.id === 'personalization',
-  );
+  const personalization = showOnlyFoundation
+    ? null
+    : flow.sections.find((section) => section.id === 'personalization');
 
   return (
     <div id="school-setup-flow" className="space-y-4">
@@ -207,11 +210,13 @@ export default function SchoolSetupProgress({
   institutionId,
   canEditAcademic = true,
   showFoundation = true,
+  showOnlyFoundation = false,
   configurationHref = '/admin?module=school-users',
 }: {
   institutionId: string;
   canEditAcademic?: boolean;
   showFoundation?: boolean;
+  showOnlyFoundation?: boolean;
   configurationHref?: string;
 }) {
   const readinessQuery = useSchoolSetupReadiness(institutionId);
@@ -247,6 +252,19 @@ export default function SchoolSetupProgress({
     includeFoundation: showFoundation,
     responsibleUserHref: configurationHref,
   });
+
+  if (showOnlyFoundation) {
+    return (
+      <section aria-label="Fundação da escola">
+        <FlowDetails
+          flow={flow}
+          canEditAcademic={canEditAcademic}
+          showOnlyFoundation
+        />
+      </section>
+    );
+  }
+
   const recommendedStep = flow.recommendedNextStep;
   const showDetails = !flow.operationalReady || showCompletedDetails;
 

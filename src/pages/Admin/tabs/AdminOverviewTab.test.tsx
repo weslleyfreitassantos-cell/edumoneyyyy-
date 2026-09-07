@@ -208,7 +208,7 @@ describe('AdminOverviewTab', () => {
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
   });
 
-  it('exibe a configuração acadêmica para ADMIN sem oferecer edição indevida', () => {
+  it('exibe somente a Fundação para ADMIN', () => {
     mockOverviewState({
       profileRole: 'ADMIN',
       currentRole: 'ADMIN',
@@ -220,8 +220,9 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getAllByText(/configuração acadêmica/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/^fundação$/i)).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: /^configuração acadêmica$/i })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /^equipe e matrículas$/i })).toBeNull();
     expect(screen.queryByText(/gerenciar diretor ou secretaria/i)).toBeNull();
     expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
   });
