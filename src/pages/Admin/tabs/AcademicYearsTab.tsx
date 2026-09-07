@@ -243,7 +243,7 @@ export default function AcademicYearsTab() {
       return undefined;
     }
 
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
     const syncViewport = () => setIsMobile(mediaQuery.matches);
 
     syncViewport();
@@ -752,16 +752,25 @@ export default function AcademicYearsTab() {
             yearStatusMutation.variables?.id ===
               year.id;
 
+          const isSelected = year.id === selectedYearId;
+
           return (
             <div className="flex flex-wrap items-center gap-3">
               <button
                 type="button"
+                aria-pressed={isSelected}
+                aria-controls="academic-periods"
+                aria-label={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
                 onClick={() =>
                   setSelectedYearId(year.id)
                 }
-                className="font-medium text-[#005bbf] hover:text-[#1a73e8]"
+                className={`rounded-md px-2 py-1 font-medium transition-colors ${
+                  isSelected
+                    ? 'bg-blue-50 text-[#005bbf] dark:bg-slate-800 dark:text-blue-300'
+                    : 'text-[#005bbf] hover:bg-blue-50 hover:text-[#1a73e8] dark:hover:bg-slate-800 dark:hover:text-blue-300'
+                }`}
               >
-                Períodos
+                Ver períodos
               </button>
 
               <button
@@ -797,10 +806,17 @@ export default function AcademicYearsTab() {
         }}
       />
 
-      <section className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
+      <section
+        id="academic-periods"
+        aria-labelledby="academic-periods-title"
+        className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700"
+      >
         <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
-            <h3 className="font-bold text-[#181c20]">
+            <h3
+              id="academic-periods-title"
+              className="font-bold text-[#181c20]"
+            >
               Períodos
             </h3>
 
