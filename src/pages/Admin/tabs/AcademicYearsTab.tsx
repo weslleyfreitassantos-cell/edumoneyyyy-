@@ -28,6 +28,11 @@ import {
   useUpdateTerm,
 } from '../../../hooks/useAcademicStructure';
 
+import {
+  useCopyPreviousYear,
+  useCreateAcademicYearWithTerms,
+} from '../../../hooks/useAcademicAutomation';
+
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 
@@ -38,7 +43,6 @@ import {
   termUpdateSchema,
 } from '../../../schemas/adminSchemas';
 import {
-  academicAutomationService,
   suggestPeriods,
   type PeriodDraft,
   type PeriodModel,
@@ -153,6 +157,12 @@ export default function AcademicYearsTab() {
 
   const createYearMutation =
     useCreateAcademicYear();
+
+  const createYearWithTermsMutation =
+    useCreateAcademicYearWithTerms();
+
+  const copyPreviousYearMutation =
+    useCopyPreviousYear();
 
   const updateYearMutation =
     useUpdateAcademicYear();
@@ -284,6 +294,8 @@ export default function AcademicYearsTab() {
   const isSubmitting =
     isYearBusy ||
     createYearMutation.isPending ||
+    createYearWithTermsMutation.isPending ||
+    copyPreviousYearMutation.isPending ||
     updateYearMutation.isPending ||
     createTermMutation.isPending ||
     updateTermMutation.isPending;
@@ -481,11 +493,11 @@ export default function AcademicYearsTab() {
         }
 
         const created = periodDrafts.length > 0
-          ? await academicAutomationService.createAcademicYearWithTerms({ ...result.data, periods: periodDrafts })
+          ? await createYearWithTermsMutation.mutateAsync({ ...result.data, periods: periodDrafts })
           : await createYearMutation.mutateAsync(result.data).then((year) => ({ year_id: year.id, term_count: 0 }));
 
         if (sourceYearId) {
-          await academicAutomationService.copyPreviousYear({
+          await copyPreviousYearMutation.mutateAsync({
             institution_id: institutionId,
             source_year_id: sourceYearId,
             target_year_id: created.year_id,
