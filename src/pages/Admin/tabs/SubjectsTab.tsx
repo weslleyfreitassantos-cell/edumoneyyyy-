@@ -4,6 +4,10 @@ import {
   type FormEvent,
 } from 'react';
 import {
+  Edit3,
+  LoaderCircle,
+  Power,
+  PowerOff,
   Search,
   X,
 } from 'lucide-react';
@@ -456,7 +460,7 @@ export default function SubjectsTab() {
     },
     {
       key: 'active_offerings_count',
-      label: 'Ofertas',
+      label: 'Atribuições',
     },
     {
       key: 'active',
@@ -708,7 +712,7 @@ export default function SubjectsTab() {
     const suffix =
       !nextActive &&
       subject.active_offerings_count > 0
-        ? ' O histórico de ofertas será preservado.'
+        ? ' O histórico de atribuições será preservado.'
         : '';
 
     if (
@@ -782,12 +786,12 @@ export default function SubjectsTab() {
         </div>
       )}
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4">
+      <section className="flex flex-col gap-2 rounded-xl border border-[#dfe3e8] bg-white p-3 dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:items-center sm:justify-between">
         <label
           htmlFor="subject-status-filter"
-          className="block text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-700 dark:text-slate-300"
         >
-          Status
+          Filtrar por status
         </label>
         <select
           id="subject-status-filter"
@@ -795,7 +799,7 @@ export default function SubjectsTab() {
           onChange={(event) =>
             setStatusFilter(event.target.value)
           }
-          className="mt-1 rounded-lg border px-3 py-2 text-sm"
+          className="w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:border-blue-400 dark:focus:ring-blue-900/40 sm:w-auto"
         >
           <option value="all">Todas</option>
           <option value="active">Ativas</option>
@@ -812,11 +816,13 @@ export default function SubjectsTab() {
         columns={columns}
         isLoading={subjectsQuery.isLoading}
         onAdd={openCreateModal}
+        actionCellClassName="min-w-[76px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         extraHeaderActions={
           <button
             type="button"
             onClick={openBnccModal}
-            className="rounded-lg border border-[#005bbf] bg-white px-4 py-2 text-sm font-medium text-[#005bbf] transition-colors hover:bg-[#eaf2ff]"
+            className="rounded-lg border border-[#005bbf] bg-white px-4 py-2 text-sm font-medium text-[#005bbf] transition-colors hover:bg-[#eaf2ff] dark:border-blue-400 dark:bg-slate-900 dark:text-blue-300 dark:hover:bg-slate-800"
           >
             Adicionar modelo BNCC
           </button>
@@ -829,15 +835,17 @@ export default function SubjectsTab() {
               subject.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <>
               <button
                 type="button"
                 onClick={() =>
                   openEditModal(subject)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar disciplina ${subject.name}`}
+                aria-label={`Editar disciplina ${subject.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -848,19 +856,23 @@ export default function SubjectsTab() {
                     subject,
                   )
                 }
+                title={`${subject.active ? 'Desativar' : 'Reativar'} disciplina ${subject.name}`}
+                aria-label={`${subject.active ? 'Desativar' : 'Reativar'} disciplina ${subject.name}`}
                 className={
                   subject.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : subject.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : subject.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />

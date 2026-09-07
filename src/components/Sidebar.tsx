@@ -869,7 +869,7 @@ export default function Sidebar({
               type="button"
               onClick={onLogout}
               disabled={isLoggingOut}
-              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
+              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70 dark:border-slate-700"
             >
               <LogOut
                 className="h-4 w-4 shrink-0"

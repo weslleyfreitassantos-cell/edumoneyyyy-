@@ -14,7 +14,13 @@ import {
   ListSearch,
   normalizeListSearch,
 } from '../../../components/ListControls';
-import { Upload } from 'lucide-react';
+import {
+  Loader2,
+  Power,
+  PowerOff,
+  Settings2,
+  Upload,
+} from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -547,21 +553,21 @@ export default function TeachersTab() {
       )}
 
       {subjectCoverage.length > 0 && (
-        <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+        <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="font-bold text-[#181c20]">Cobertura das disciplinas</h3>
-              <p className="mt-1 text-sm text-gray-500">Cada disciplina precisa de pelo menos um professor ativo vinculado.</p>
+              <h3 className="font-bold text-[#181c20] dark:text-white">Cobertura das disciplinas</h3>
+              <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Cada disciplina precisa de pelo menos um professor ativo vinculado.</p>
             </div>
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-gray-600 dark:text-slate-300">
               {subjectCoverage.filter((subject) => subject.teacherCount > 0).length}/{subjectCoverage.length} cobertas
             </span>
           </div>
           <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {subjectCoverage.map((subject) => (
-              <div key={subject.id} className="flex items-center justify-between gap-3 rounded-lg border border-gray-100 px-3 py-2 text-sm">
-                <span className="min-w-0 truncate text-gray-800">{subject.name}</span>
-                <span className={subject.teacherCount > 0 ? 'shrink-0 text-xs font-semibold text-green-700' : 'shrink-0 text-xs font-semibold text-amber-700'}>
+              <div key={subject.id} className="flex items-center justify-between gap-3 rounded-lg border border-gray-100 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800/60">
+                <span className="min-w-0 truncate text-gray-800 dark:text-slate-200">{subject.name}</span>
+                <span className={subject.teacherCount > 0 ? 'shrink-0 text-xs font-semibold text-green-700 dark:text-emerald-300' : 'shrink-0 text-xs font-semibold text-amber-700 dark:text-amber-300'}>
                   {subject.teacherCount > 0 ? `${subject.teacherCount} professor(es)` : 'Sem professor'}
                 </span>
               </div>
@@ -570,11 +576,11 @@ export default function TeachersTab() {
         </section>
       )}
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 className="font-bold text-[#181c20]">Disponibilidade</h3>
-            <p className="mt-1 text-sm text-gray-500">Aplique o horário padrão e ajuste apenas as exceções.</p>
+            <h3 className="font-bold text-[#181c20] dark:text-white">Disponibilidade dos professores</h3>
+            <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Aplique o horário padrão e ajuste apenas as exceções.</p>
           </div>
           <button
             type="button"
@@ -591,13 +597,13 @@ export default function TeachersTab() {
               shiftSettingsQuery.isError ||
               scheduleBreaksQuery.isError
             }
-            className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-800"
           >
             {availabilityMutation.isPending ? 'Aplicando...' : 'Aplicar aos professores ativos'}
           </button>
         </div>
-        {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível carregar os horários da escola.</p>}
-        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-blue-700">Nenhum horário foi cadastrado. Será usada a sugestão da Política acadêmica.</p>}
+        {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-300">Não foi possível carregar os horários da escola.</p>}
+        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-blue-700 dark:text-blue-300">Nenhum horário foi cadastrado. Será usada a sugestão da Política acadêmica.</p>}
       </section>
 
       <ListSearch
@@ -624,6 +630,8 @@ export default function TeachersTab() {
         data={paginatedTeachers}
         columns={columns}
         isLoading={teachersQuery.isLoading}
+        actionCellClassName="min-w-[100px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         onAdd={openCreateModal}
         emptyMessage={
           filteredTeachers.length === 0 && teachers.length > 0
@@ -637,25 +645,35 @@ export default function TeachersTab() {
               teacher.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex min-w-max items-center gap-1">
               <button
                 type="button"
+                title="Disciplinas e disponibilidade"
+                aria-label={`Disciplinas e disponibilidade de ${getTeacherName(teacher)}`}
                 onClick={() => setSettingsTeacher({ profileId: teacher.profile_id, name: getTeacherName(teacher) })}
-                className="font-medium text-blue-600 hover:text-blue-800"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Disciplinas e disponibilidade
+                <Settings2 className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
+                title={`${teacher.active ? 'Desativar' : 'Reativar'} ${getTeacherName(teacher)}`}
+                aria-label={`${teacher.active ? 'Desativar' : 'Reativar'} ${getTeacherName(teacher)}`}
                 onClick={() => void handleToggleStatus(teacher)}
                 disabled={isChangingStatus}
                 className={
                   teacher.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus ? 'Salvando...' : teacher.active ? 'Desativar' : 'Reativar'}
+                {isChangingStatus ? (
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : teacher.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
             </div>
           );

@@ -6,7 +6,13 @@
 } from 'react';
 
 import {
+  Edit3,
+  GraduationCap,
+  Loader2,
+  Power,
+  PowerOff,
   Upload,
+  UserPlus,
 } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -332,16 +338,17 @@ export default function StudentsTab() {
 
         if (!enrollment) {
           return (
-            <div className="min-w-[150px]">
-              <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800">
+            <div className="flex min-w-[150px] flex-col items-start gap-2">
+              <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
                 Não matriculado
               </span>
               {row.active && (
                 <button
                   type="button"
-                  className="mt-2 block text-xs font-semibold text-blue-700 hover:underline"
+                  className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-slate-700"
                   onClick={() => setEnrollStudentId(row.id)}
                 >
+                  <GraduationCap className="h-3.5 w-3.5" aria-hidden="true" />
                   Matricular aluno
                 </button>
               )}
@@ -351,10 +358,10 @@ export default function StudentsTab() {
 
         return (
           <div className="min-w-[150px]">
-            <p className="font-medium text-[#181c20]">
+            <p className="font-medium text-[#181c20] dark:text-white">
               {enrollment.class_name}
             </p>
-            <p className="mt-1 text-xs text-[#727785]">
+            <p className="mt-1 text-xs text-[#727785] dark:text-slate-400">
               {enrollment.academic_year_name}
               {enrollment.class_shift
                 ? ` • ${enrollment.class_shift}`
@@ -362,8 +369,8 @@ export default function StudentsTab() {
             </p>
             <span className={`mt-2 inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${
               enrollment.active
-                ? 'bg-green-100 text-green-700'
-                : 'bg-gray-100 text-gray-600'
+                ? 'bg-green-100 text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
+                : 'bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300'
             }`}>
               {enrollment.status_label}
             </span>
@@ -384,8 +391,8 @@ export default function StudentsTab() {
         <span
           className={
             row.active
-              ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-              : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
+              ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
+              : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600 dark:bg-slate-800 dark:text-slate-300'
           }
         >
           {row.active
@@ -523,6 +530,8 @@ export default function StudentsTab() {
           studentsQuery.isLoading ||
           enrollmentsQuery.isLoading
         }
+        actionCellClassName="min-w-[136px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         onAdd={openFullWizard}
         emptyMessage={
           filteredStudents.length === 0 && students.length > 0
@@ -536,32 +545,38 @@ export default function StudentsTab() {
             student.id;
 
           return (
-            <div className="flex items-center gap-3">
+            <>
               {student.active && (
                 <button
                   type="button"
+                  title="Vincular responsável"
+                  aria-label="Vincular responsável"
                   onClick={() =>
                     openGuardianLinkModal(student)
                   }
                   disabled={manageSchoolUserMutation.isPending}
-                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                 >
-                  Vincular responsável
+                  <UserPlus className="h-4 w-4" aria-hidden="true" />
                 </button>
               )}
 
               <button
                 type="button"
+                title={`Editar ${getStudentName(student)}`}
+                aria-label={`Editar ${getStudentName(student)}`}
                 onClick={() =>
                   openEditModal(student)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
                 type="button"
+                title={`${student.active ? 'Desativar' : 'Reativar'} ${getStudentName(student)}`}
+                aria-label={`${student.active ? 'Desativar' : 'Reativar'} ${getStudentName(student)}`}
                 onClick={() =>
                   void handleToggleStatus(
                     student,
@@ -570,17 +585,28 @@ export default function StudentsTab() {
                 disabled={isChangingStatus}
                 className={
                   student.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : student.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <Loader2
+                    className="h-4 w-4 animate-spin"
+                    aria-hidden="true"
+                  />
+                ) : student.active ? (
+                  <PowerOff
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Power
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />

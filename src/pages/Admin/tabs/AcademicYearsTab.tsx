@@ -7,13 +7,19 @@ import {
 } from 'react';
 
 import {
+  CalendarDays,
+  Edit3,
   LoaderCircle,
+  Power,
+  PowerOff,
+  Trash2,
 } from 'lucide-react';
 
 import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import { ActionGroup } from '../../../components/ActionGroup';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -253,7 +259,7 @@ export default function AcademicYearsTab() {
       return undefined;
     }
 
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
     const syncViewport = () => setIsMobile(mediaQuery.matches);
 
     syncViewport();
@@ -524,36 +530,45 @@ export default function AcademicYearsTab() {
     }
   }
 
-  async function handleDeleteYear(): Promise<void> {
-    if (!editingYear || !institutionId || deleteYearMutation.isPending) {
+  async function handleDeleteYear(
+    year: AcademicYearRow | null = editingYear,
+  ): Promise<void> {
+    if (!year || !institutionId || deleteYearMutation.isPending) {
       return;
     }
 
     if (
       !window.confirm(
-        `Excluir o ano letivo ${editingYear.name}? Esta ação não pode ser desfeita.`,
+        `Excluir o ano letivo ${year.name}? Esta ação não pode ser desfeita.`,
       )
     ) {
       return;
     }
 
     setModalError(null);
+    setPageError(null);
     setFeedbackMessage(null);
 
     try {
       await deleteYearMutation.mutateAsync({
-        id: editingYear.id,
+        id: year.id,
         institutionId,
       });
 
       setFeedbackMessage(
         'Ano letivo excluído com sucesso.',
       );
-      closeModals();
+      if (editingYear?.id === year.id) {
+        closeModals();
+      }
     } catch (error) {
-      setModalError(
-        getErrorMessage(error),
-      );
+      const message = getErrorMessage(error);
+
+      if (editingYear?.id === year.id) {
+        setModalError(message);
+      } else {
+        setPageError(message);
+      }
     }
   }
 
@@ -758,61 +773,107 @@ export default function AcademicYearsTab() {
         isLoading={yearsQuery.isLoading}
         onAdd={openCreateYearModal}
         emptyMessage="Nenhum ano letivo cadastrado nesta instituição."
+        actionCellClassName="min-w-[160px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         renderActions={(year) => {
           const isChangingStatus =
             yearStatusMutation.isPending &&
             yearStatusMutation.variables?.id ===
               year.id;
+          const isRemoving =
+            deleteYearMutation.isPending &&
+            deleteYearMutation.variables?.id ===
+              year.id;
+
+          const isSelected = year.id === selectedYearId;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() =>
-                  setSelectedYearId(year.id)
-                }
-                className="font-medium text-[#005bbf] hover:text-[#1a73e8]"
-              >
-                Períodos
-              </button>
+            <>
+              {years.length > 1 && (
+                <button
+                  type="button"
+                  aria-pressed={isSelected}
+                  aria-controls="academic-periods"
+                  aria-label={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
+                  onClick={() =>
+                    setSelectedYearId(year.id)
+                  }
+                  title={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                    isSelected
+                      ? 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-slate-700 dark:text-blue-300'
+                      : 'border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700'
+                  }`}
+                >
+                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
 
               <button
                 type="button"
                 onClick={() =>
                   openEditYearModal(year)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar ano letivo ${year.name}`}
+                aria-label={`Editar ano letivo ${year.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
                 type="button"
-                disabled={isChangingStatus}
+                disabled={isChangingStatus || isRemoving}
                 onClick={() =>
                   void handleYearStatus(year)
                 }
+                title={`${year.active ? 'Desativar' : 'Reativar'} ano letivo ${year.name}`}
+                aria-label={`${year.active ? 'Desativar' : 'Reativar'} ano letivo ${year.name}`}
                 className={
                   year.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : year.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : year.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+
+              <button
+                type="button"
+                disabled={isRemoving || isChangingStatus}
+                onClick={() => void handleDeleteYear(year)}
+                title={`Remover ano letivo ${year.name}`}
+                aria-label={`Remover ano letivo ${year.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+              >
+                {isRemoving ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                )}
+              </button>
+            </>
           );
         }}
       />
 
-      <section className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow">
-        <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center sm:justify-between">
+      <section
+        id="academic-periods"
+        aria-labelledby="academic-periods-title"
+        className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700"
+      >
+        <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
           <div className="min-w-0">
-            <h3 className="font-bold text-[#181c20]">
+            <h3
+              id="academic-periods-title"
+              className="font-bold text-[#181c20]"
+            >
               Períodos
             </h3>
 
@@ -877,7 +938,7 @@ export default function AcademicYearsTab() {
                     return (
                       <tr
                         key={term.id}
-                        className="border-t hover:bg-gray-50"
+                        className="border-t border-[#dfe3e8] hover:bg-gray-50 dark:border-slate-700"
                       >
                         <td className="px-4 py-3">
                           <div>
@@ -910,15 +971,17 @@ export default function AcademicYearsTab() {
                           />
                         </td>
                         <td className="px-4 py-3">
-                          <div className="flex flex-wrap items-center gap-3">
+                          <ActionGroup className="md:flex-nowrap">
                             <button
                               type="button"
                               onClick={() =>
                                 openEditTermModal(term)
                               }
-                              className="font-medium text-blue-600 hover:text-blue-800"
+                              title={`Editar ${formatPeriodName(term.name)}`}
+                              aria-label={`Editar ${formatPeriodName(term.name)}`}
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                             >
-                              Editar
+                              <Edit3 className="h-4 w-4" aria-hidden="true" />
                             </button>
 
                             <button
@@ -931,19 +994,23 @@ export default function AcademicYearsTab() {
                                   term,
                                 )
                               }
+                              title={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                              aria-label={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
                               className={
                                 term.active
-                                  ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                                  : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                                  ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                                  : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                               }
                             >
-                              {isChangingStatus
-                                ? 'Salvando...'
-                                : term.active
-                                  ? 'Desativar'
-                                  : 'Reativar'}
+                              {isChangingStatus ? (
+                                <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                              ) : term.active ? (
+                                <PowerOff className="h-4 w-4" aria-hidden="true" />
+                              ) : (
+                                <Power className="h-4 w-4" aria-hidden="true" />
+                              )}
                             </button>
-                          </div>
+                          </ActionGroup>
                         </td>
                       </tr>
                     );
@@ -953,7 +1020,7 @@ export default function AcademicYearsTab() {
             </table>
             </div>}
 
-            {isMobile && <div className="divide-y divide-[#dfe3e8]">
+            {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
             {selectedYear.terms.length === 0 ? (
               <div className="px-4 py-8 text-center text-sm text-gray-500">
                 Nenhum período cadastrado para este ano letivo.
@@ -1010,36 +1077,42 @@ export default function AcademicYearsTab() {
                       </div>
                     </dl>
 
-                    <div className="border-t border-[#dfe3e8] pt-3">
+                    <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                         Ações
                       </p>
-                      <div className="flex flex-wrap items-center gap-3">
+                      <ActionGroup className="md:flex-nowrap">
                         <button
                           type="button"
                           onClick={() => openEditTermModal(term)}
-                          className="font-medium text-blue-600 hover:text-blue-800"
+                          title={`Editar ${formatPeriodName(term.name)}`}
+                          aria-label={`Editar ${formatPeriodName(term.name)}`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                         >
-                          Editar
+                          <Edit3 className="h-4 w-4" aria-hidden="true" />
                         </button>
 
                         <button
                           type="button"
                           disabled={isChangingStatus}
                           onClick={() => void handleTermStatus(term)}
+                          title={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                          aria-label={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
                           className={
                             term.active
-                              ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                              : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                              ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                              : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                           }
                         >
-                          {isChangingStatus
-                            ? 'Salvando...'
-                            : term.active
-                              ? 'Desativar'
-                              : 'Reativar'}
+                          {isChangingStatus ? (
+                            <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                          ) : term.active ? (
+                            <PowerOff className="h-4 w-4" aria-hidden="true" />
+                          ) : (
+                            <Power className="h-4 w-4" aria-hidden="true" />
+                          )}
                         </button>
-                      </div>
+                      </ActionGroup>
                     </div>
                   </article>
                 );
@@ -1255,7 +1328,17 @@ export default function AcademicYearsTab() {
                             <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Fim</span>
                             <input aria-label={`Fim do período ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
                           </label>
-                          {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))} className="self-end rounded-lg border border-red-200 px-3 py-2 text-sm text-red-700 sm:self-stretch">Remover</button>}
+                          {periodModel === 'CUSTOM' && (
+                            <button
+                              type="button"
+                              title={`Remover período ${index + 1}`}
+                              aria-label={`Remover período ${index + 1}`}
+                              onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))}
+                              className="inline-flex h-9 w-9 self-end items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:self-stretch dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+                            >
+                              <Trash2 className="h-4 w-4" aria-hidden="true" />
+                            </button>
+                          )}
                         </div>
                       ))}
                     </div>

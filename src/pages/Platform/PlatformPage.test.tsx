@@ -474,10 +474,10 @@ describe('PlatformPage', () => {
       }),
     ).toBeNull();
     expect(
-      screen.queryByRole('columnheader', {
+      screen.getByRole('columnheader', {
         name: /^Ações$/i,
       }),
-    ).toBeNull();
+    ).toBeDefined();
     expect(
       screen.getByRole('columnheader', {
         name: /^Gerenciar$/i,

@@ -58,38 +58,40 @@ function FlowStepRow({
   step,
   canEditAcademic,
   isRecommended,
+  showStatus = true,
 }: {
   key?: string;
   step: SchoolSetupFlowStep;
   canEditAcademic: boolean;
   isRecommended: boolean;
+  showStatus?: boolean;
 }) {
   const canOpen = canEditAcademic || step.id === 'responsible-user';
-  const action = step.status === 'COMPLETED'
-    ? null
-    : canOpen
+  const action = canOpen
       ? (
         <Link
           to={step.href}
-          className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#b8c7df] px-3 py-1.5 text-xs font-bold text-[#005bbf] hover:bg-[#f3f7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+          className="mt-3 inline-flex min-h-9 items-center rounded-lg border border-[#b8c7df] px-3 py-1.5 text-xs font-bold text-[#005bbf] hover:bg-[#f3f7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-950/40"
         >
-          {step.actionLabel}
+          {step.status === 'COMPLETED' ? 'Revisar' : step.actionLabel}
         </Link>
       )
-      : (
+      : step.status === 'COMPLETED'
+        ? null
+        : (
         <span
           aria-disabled="true"
           className="mt-3 inline-flex min-h-9 items-center text-xs font-semibold text-[#667085]"
         >
           Somente Diretor ou Secretaria
         </span>
-      );
+        );
 
   return (
     <li
       className={`rounded-lg border p-4 ${
         isRecommended
-          ? 'border-[#7ca8e8] bg-[#f7faff]'
+          ? 'border-[#7ca8e8] bg-[#f7faff] dark:border-blue-700 dark:bg-blue-950/30'
           : 'border-[#e4e8f1] bg-white dark:border-slate-700 dark:bg-slate-900'
       }`}
       aria-current={isRecommended ? 'step' : undefined}
@@ -99,7 +101,7 @@ function FlowStepRow({
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-start justify-between gap-2">
             <p className="font-bold text-[#344054] dark:text-slate-100">{step.label}</p>
-            <StatusPill status={step.status} />
+            {showStatus && <StatusPill status={step.status} />}
           </div>
           <p className="mt-1 text-sm leading-5 text-[#667085] dark:text-slate-400">{step.description}</p>
           {step.reason && (
@@ -126,6 +128,7 @@ function FlowSection({
   const sectionProgress = requiredCount > 0
     ? Math.round((section.completedCount / requiredCount) * 100)
     : 0;
+  const showStatus = section.id !== 'personalization';
 
   return (
     <section
@@ -141,16 +144,15 @@ function FlowSection({
             >
               {section.label}
             </h3>
-            <StatusPill status={section.status} />
+            {showStatus && <StatusPill status={section.status} />}
           </div>
           <p className="mt-1 text-sm text-[#667085] dark:text-slate-400">{section.description}</p>
         </div>
-        <p className="shrink-0 text-sm font-bold text-[#005bbf] dark:text-blue-300">
-          {section.status === 'OPTIONAL'
-            ? 'Opcional'
-            : `${section.completedCount} de ${requiredCount}`}
-          {section.status !== 'OPTIONAL' && ` (${sectionProgress}%)`}
-        </p>
+        {showStatus && (
+          <p className="shrink-0 text-sm font-bold text-[#005bbf] dark:text-blue-300">
+            {section.completedCount} de {requiredCount} ({sectionProgress}%)
+          </p>
+        )}
       </div>
 
       <ol className="mt-4 grid gap-3 lg:grid-cols-2">
@@ -160,6 +162,7 @@ function FlowSection({
             step={step}
             canEditAcademic={canEditAcademic}
             isRecommended={step.id === recommendedStepId}
+            showStatus={showStatus}
           />
         ))}
       </ol>

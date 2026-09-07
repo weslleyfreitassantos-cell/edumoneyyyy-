@@ -38,7 +38,7 @@ describe('AcademicPolicyPanel', () => {
 
     // readOnly=true representa secretaria. O formulário deve estar desabilitado ou botão ausente.
     render(<AcademicPolicyPanel institutionId="inst-1" readOnly={true} />);
-    const button = screen.queryByText(/Salvar Política/i);
+    const button = screen.queryByText(/Salvar política/i);
     if (button) {
       expect((button as HTMLButtonElement).disabled).toBe(true);
     } else {

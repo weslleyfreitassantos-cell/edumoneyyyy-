@@ -190,7 +190,7 @@ describe('CurriculumTab', () => {
 
   it('filtra por turma', () => {
     renderTab();
-    const classSelect = screen.getByLabelText(/turma/i);
+    const classSelect = screen.getByRole('combobox', { name: /^Turma$/i });
     expect(classSelect).toBeTruthy();
   });
 
@@ -236,8 +236,11 @@ describe('CurriculumTab', () => {
 
   it('navega para atribuicoes ao clicar no botao', () => {
     renderTab();
-    const buttons = screen.getAllByText('Atribuições');
-    expect(buttons.length).toBeGreaterThanOrEqual(1);
+    expect(
+      screen.getByRole('button', {
+        name: /Ver atribuições de Português na turma 1A/i,
+      }),
+    ).toBeTruthy();
   });
 
   it('exclui o item depois de confirmar', () => {
@@ -249,7 +252,11 @@ describe('CurriculumTab', () => {
     const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
 
     renderTab();
-    fireEvent.click(screen.getAllByText('Excluir')[0]);
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir Português da turma 1A/i,
+      }),
+    );
 
     expect(confirmSpy).toHaveBeenCalledWith(
       'Excluir definitivamente a disciplina Português da turma 1A?',

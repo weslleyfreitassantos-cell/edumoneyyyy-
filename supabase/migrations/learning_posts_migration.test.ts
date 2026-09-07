@@ -6,7 +6,7 @@ const migrationPath = path.join(
   process.cwd(),
   'supabase',
   'migrations',
-  '20260905223339_learning_posts_and_materials.sql',
+  '20260906003653_20260905223339_learning_posts_and_materials.sql',
 );
 const migrationSql = fs.readFileSync(migrationPath, 'utf8');
 

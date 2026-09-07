@@ -14,6 +14,7 @@ import {
   ListSearch,
   normalizeListSearch,
 } from '../../../components/ListControls';
+import { UserPlus } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -448,6 +449,8 @@ export default function GuardiansTab() {
           guardiansQuery.isLoading ||
           studentsQuery.isLoading
         }
+        actionCellClassName="min-w-[60px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         onAdd={openCreateModal}
         emptyMessage={
           filteredGuardians.length === 0 && guardians.length > 0
@@ -457,12 +460,14 @@ export default function GuardiansTab() {
         renderActions={(guardian) => (
           <button
             type="button"
+            title={`Adicionar vínculo para ${guardian.full_name}`}
+            aria-label={`Adicionar vínculo para ${guardian.full_name}`}
             onClick={() =>
               openAddLinkModal(guardian)
             }
-            className="font-medium text-[#005bbf] hover:text-[#1a73e8]"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
           >
-            Adicionar vínculo
+            <UserPlus className="h-4 w-4" aria-hidden="true" />
           </button>
         )}
       />

@@ -24,6 +24,7 @@ import type { SchoolScheduleBreakRow } from '../../services/academicAutomationSe
 import { REQUIRED_SCHOOL_DAYS } from '../../lib/academic/timetableGenerator';
 import TimetableBreakMarker from './TimetableBreakMarker';
 import { getUserFacingErrorMessage } from '../../lib/userFacingError';
+import { ActionGroup } from '../ActionGroup';
 
 interface EntryDraft {
   day_of_week: number;
@@ -611,14 +612,14 @@ export default function TimetableAutomationPanel({
                   <td className="px-3 py-2">{version.status}</td>
                   <td className="px-3 py-2">{version.generation_shift === 'TODOS' || !version.generation_shift ? 'Todos' : getAcademicShiftLabel(version.generation_shift)}</td>
                   <td className="px-3 py-2">{version.generation_source}</td>
-                  <td className="px-3 py-2"><div className="flex flex-wrap gap-3">
+                  <td className="px-3 py-2"><ActionGroup>
                     <button type="button" onClick={() => { setError(null); setReviewVersionId(version.id); }} className="font-semibold text-blue-700 hover:text-blue-900">Revisar grade</button>
                     {version.status === 'DRAFT' && <>
                       <button type="button" onClick={() => void generate(version.id)} disabled={generateMutation.isPending} className="font-semibold text-blue-700 disabled:opacity-50">Regenerar grade</button>
                       <button type="button" onClick={() => void publish(version.id)} disabled={publishMutation.isPending} className="font-semibold text-emerald-700 disabled:opacity-50">Publicar grade</button>
                     </>}
                     {(version.status === 'DRAFT' || version.status === 'PUBLISHED') && <button type="button" onClick={() => void removeVersion(version.id)} disabled={deleteMutation.isPending} className="font-semibold text-red-700 disabled:opacity-50">{version.status === 'PUBLISHED' ? 'Excluir grade' : 'Excluir proposta'}</button>}
-                  </div></td>
+                  </ActionGroup></td>
                 </tr>
               ))}
               {versions.length === 0 && <tr><td colSpan={5} className="px-3 py-6 text-center text-[#667085]">Nenhuma grade foi gerada para este ano.</td></tr>}

@@ -285,7 +285,7 @@ describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
 
     expect(screen.getByRole('button', { name: /Aluno ja cadastrado/ })).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: /Aluno novo/ }));
-    expect(screen.getByRole('dialog', { name: 'Matricula completa de aluno' })).toBeTruthy();
+    expect(screen.getByRole('dialog', { name: 'Matrícula completa de aluno' })).toBeTruthy();
   });
 
   it('permite selecionar e vincular responsavel na mesma janela da matricula', async () => {

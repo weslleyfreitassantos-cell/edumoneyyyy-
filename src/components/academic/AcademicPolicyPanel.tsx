@@ -415,7 +415,7 @@ export default function AcademicPolicyPanel({
         )}
       </div>
 
-      <section className="mt-6 rounded-lg border border-blue-100 bg-blue-50/60 p-4">
+      <section className="mt-6 rounded-lg border border-[#dfe3e8] bg-slate-50 p-4">
         <div className="flex items-start gap-3">
           <Clock3
             className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]"
@@ -606,10 +606,10 @@ export default function AcademicPolicyPanel({
                         {shiftBreaks.map((item, index) => (
                           <div
                             key={`${shift}-${index}`}
-                            className="grid min-w-0 gap-3 rounded-lg border border-[#edf0f4] bg-[#fbfcfe] p-3 lg:grid-cols-[minmax(0,2fr)_minmax(0,1.1fr)_minmax(0,1fr)_minmax(0,1fr)_2.5rem] lg:items-end"
+                            className="grid min-w-0 gap-3 rounded-lg border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-900 lg:grid-cols-2 lg:items-end xl:grid-cols-[minmax(260px,1.5fr)_minmax(140px,1fr)_minmax(120px,.8fr)_minmax(120px,.8fr)_auto]"
                           >
                             <fieldset className="min-w-0">
-                              <legend className="text-xs font-semibold text-[#3d4652]">
+                              <legend className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                                 Dias da semana
                               </legend>
                               <div className="mt-1 flex flex-wrap gap-1.5">
@@ -620,8 +620,8 @@ export default function AcademicPolicyPanel({
                                       key={day.value}
                                       className={`inline-flex cursor-pointer items-center gap-1.5 rounded-md border px-2 py-1.5 text-xs font-semibold transition-colors ${
                                         checked
-                                          ? 'border-[#8db9ed] bg-blue-50 text-[#005bbf]'
-                                          : 'border-[#dfe3e8] bg-white text-[#667085]'
+                                          ? 'border-[#8db9ed] bg-blue-50 text-[#005bbf] dark:border-blue-700 dark:bg-blue-950/50 dark:text-blue-300'
+                                          : 'border-[#dfe3e8] bg-white text-[#667085] dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300'
                                       } ${readOnly ? 'cursor-default opacity-80' : ''}`}
                                     >
                                       <input
@@ -640,7 +640,7 @@ export default function AcademicPolicyPanel({
                                 })}
                               </div>
                             </fieldset>
-                            <label className="min-w-0 text-xs font-semibold text-[#3d4652]">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Tipo
                               <input
                                 value={item.name}
@@ -654,7 +654,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="min-w-0 text-xs font-semibold text-[#3d4652]">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Início
                               <input
                                 type="time"
@@ -668,7 +668,7 @@ export default function AcademicPolicyPanel({
                                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-normal text-[#181c20] disabled:bg-gray-50"
                               />
                             </label>
-                            <label className="min-w-0 text-xs font-semibold text-[#3d4652]">
+                            <label className="min-w-0 text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                               Fim
                               <input
                                 type="time"
@@ -689,7 +689,7 @@ export default function AcademicPolicyPanel({
                                 aria-label={`Remover intervalo ${index + 1} do turno ${option?.label ?? shift}`}
                                 onClick={() => removeBreak(shift, index)}
                                 disabled={saveScheduleBreaks.isPending}
-                                className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-200 p-0 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-red-200 px-3 text-red-600 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40 xl:w-10 xl:px-0"
                               >
                                 <Trash2 className="h-4 w-4" aria-hidden="true" />
                               </button>
@@ -757,7 +757,7 @@ export default function AcademicPolicyPanel({
           <div className="lg:col-span-2">
             <label
               htmlFor="academic-policy-year"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
               Ano letivo
             </label>
@@ -783,7 +783,7 @@ export default function AcademicPolicyPanel({
           <div>
             <label
               htmlFor="academic-policy-grade"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
               Média mínima (%)
             </label>
@@ -805,7 +805,7 @@ export default function AcademicPolicyPanel({
           <div>
             <label
               htmlFor="academic-policy-attendance"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
               Frequência mínima (%)
             </label>
@@ -827,7 +827,7 @@ export default function AcademicPolicyPanel({
           <div>
             <label
               htmlFor="academic-policy-decimals"
-              className="text-xs font-semibold text-[#3d4652]"
+              className="text-xs font-semibold text-[#3d4652] dark:text-slate-200"
             >
               Casas decimais
             </label>
@@ -852,12 +852,12 @@ export default function AcademicPolicyPanel({
                 Regras da grade horária
               </h3>
               <p className="mt-1 text-xs text-[#667085]">
-                Essas regras orientam a preparação e a publicação da grade.
+                Estas regras orientam a preparação, a geração e a publicação da grade.
               </p>
             </div>
 
             <fieldset className="mt-4">
-              <legend className="text-xs font-semibold text-[#3d4652]">
+              <legend className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                 Dias letivos
               </legend>
               <div className="mt-2 flex flex-wrap gap-2">
@@ -866,7 +866,7 @@ export default function AcademicPolicyPanel({
                   return (
                     <label
                       key={day.value}
-                      className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-xs font-semibold text-[#344054]"
+                      className="inline-flex items-center gap-2 rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-xs font-semibold text-[#344054] dark:text-slate-200"
                     >
                       <input
                         type="checkbox"
@@ -895,10 +895,10 @@ export default function AcademicPolicyPanel({
                 ['maxLessonsPerDay', 'Máximo de aulas por turma/dia', 1, 30],
                 ['maxTeacherLessonsPerDay', 'Máximo de aulas por professor/dia', 1, 30],
                 ['maxTeacherLessonsPerWeek', 'Máximo de aulas por professor/semana', 1, 180],
-                ['maxConsecutiveSubjectLessons', 'Máximo consecutivo da mesma matéria', 1, 6],
-                ['maxSubjectLessonsPerDay', 'Máximo da mesma matéria/dia', 1, 12],
+                ['maxConsecutiveSubjectLessons', 'Máximo consecutivo da mesma disciplina', 1, 6],
+                ['maxSubjectLessonsPerDay', 'Máximo da mesma disciplina/dia', 1, 12],
               ] as const).map(([field, label, min, max]) => (
-                <label key={field} className="text-xs font-semibold text-[#3d4652]">
+                <label key={field} className="text-xs font-semibold text-[#3d4652] dark:text-slate-200">
                   {label}
                   <input
                     type="number"
@@ -923,7 +923,7 @@ export default function AcademicPolicyPanel({
                 ['requireRoomForGeneration', 'Exigir sala para gerar a grade'],
                 ['allowSharedRooms', 'Permitir salas compartilhadas'],
               ] as const).map(([field, label]) => (
-                <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054]">
+                <label key={field} className="flex items-start gap-2 rounded-lg border border-[#dfe3e8] bg-white p-3 text-xs font-semibold text-[#344054] dark:text-slate-200">
                   <input
                     type="checkbox"
                     checked={timetableSettings[field]}

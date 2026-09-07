@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import { ActionGroup } from './ActionGroup';
+
 export interface Column<T> {
   id?: string;
   key: keyof T;
@@ -21,6 +23,8 @@ interface DataTableProps<T> {
   addLabel?: string;
   extraHeaderActions?: ReactNode;
   emptyMessage?: string;
+  actionCellClassName?: string;
+  actionGroupClassName?: string;
 }
 
 export function DataTable<T extends { id: string }>({
@@ -35,6 +39,8 @@ export function DataTable<T extends { id: string }>({
   addLabel = 'Adicionar',
   extraHeaderActions,
   emptyMessage = 'Nenhum registro encontrado.',
+  actionCellClassName = '',
+  actionGroupClassName = '',
 }: DataTableProps<T>) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -62,15 +68,15 @@ export function DataTable<T extends { id: string }>({
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
+      <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500 dark:border-slate-700">
         Carregando...
       </div>
     );
   }
 
   return (
-    <div className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
-      <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center sm:justify-between">
+    <div className="min-w-0 overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
+      <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
         <h3 className="min-w-0 font-bold text-[#181c20]">
           {title}
         </h3>
@@ -133,7 +139,7 @@ export function DataTable<T extends { id: string }>({
               data.map((row) => (
                 <tr
                   key={row.id}
-                  className="border-t transition-colors hover:bg-gray-50"
+                  className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700"
                 >
                   {columns.map((column) => (
                     <td
@@ -155,18 +161,20 @@ export function DataTable<T extends { id: string }>({
                   ))}
 
                   {hasActions && (
-                    <td className="px-4 py-3">
+                    <td className={`px-4 py-3 ${actionCellClassName}`}>
                       {renderActions ? (
-                        renderActions(row)
+                        <ActionGroup className={actionGroupClassName}>
+                          {renderActions(row)}
+                        </ActionGroup>
                       ) : (
-                        <div className="flex items-center gap-3">
+                        <ActionGroup>
                           {onEdit && (
                             <button
                               type="button"
                               onClick={() =>
                                 onEdit(row)
                               }
-                              className="font-medium text-blue-600 hover:text-blue-800"
+                              className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
                             >
                               Editar
                             </button>
@@ -178,12 +186,12 @@ export function DataTable<T extends { id: string }>({
                               onClick={() =>
                                 onDelete(row)
                               }
-                              className="font-medium text-red-600 hover:text-red-800"
+                              className="rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200"
                             >
                               Excluir
                             </button>
                           )}
-                        </div>
+                        </ActionGroup>
                       )}
                     </td>
                   )}
@@ -194,7 +202,7 @@ export function DataTable<T extends { id: string }>({
         </table>
       </div>}
 
-      {isMobile && <div className="divide-y divide-[#dfe3e8]">
+      {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
         {data.length === 0 ? (
           <div className="px-4 py-8 text-center text-sm text-gray-500">
             {emptyMessage}
@@ -218,33 +226,39 @@ export function DataTable<T extends { id: string }>({
               </dl>
 
               {hasActions && (
-                <div className="border-t border-[#dfe3e8] pt-3">
+                <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
                     Ações
                   </p>
                   {renderActions ? (
-                    renderActions(row)
+                    <div className="flex justify-end">
+                      <ActionGroup className={actionGroupClassName}>
+                        {renderActions(row)}
+                      </ActionGroup>
+                    </div>
                   ) : (
-                    <div className="flex flex-wrap items-center gap-3">
-                      {onEdit && (
-                        <button
-                          type="button"
-                          onClick={() => onEdit(row)}
-                          className="font-medium text-blue-600 hover:text-blue-800"
-                        >
-                          Editar
-                        </button>
-                      )}
+                    <div className="flex justify-end">
+                      <ActionGroup>
+                        {onEdit && (
+                          <button
+                            type="button"
+                            onClick={() => onEdit(row)}
+                            className="rounded-md px-2.5 py-1.5 text-sm font-medium text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:text-blue-300 dark:hover:bg-slate-700 dark:hover:text-blue-200"
+                          >
+                            Editar
+                          </button>
+                        )}
 
-                      {onDelete && (
-                        <button
-                          type="button"
-                          onClick={() => onDelete(row)}
-                          className="font-medium text-red-600 hover:text-red-800"
-                        >
-                          Excluir
-                        </button>
-                      )}
+                        {onDelete && (
+                          <button
+                            type="button"
+                            onClick={() => onDelete(row)}
+                            className="rounded-md px-2.5 py-1.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:text-red-300 dark:hover:bg-red-950/40 dark:hover:text-red-200"
+                          >
+                            Excluir
+                          </button>
+                        )}
+                      </ActionGroup>
                     </div>
                   )}
                 </div>

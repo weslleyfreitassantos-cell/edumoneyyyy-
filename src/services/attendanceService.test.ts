@@ -12,6 +12,7 @@ import {
   attendanceService,
   buildRollCallRecords,
   calculateAttendanceSummary,
+  getAttendanceDayOfWeek,
   isEnrollmentValidForAttendanceDate,
 } from './attendanceService';
 
@@ -67,6 +68,13 @@ describe('attendanceService', () => {
     expect(
       calculateAttendanceSummary([]).attendanceRate,
     ).toBe(0);
+  });
+
+  it('converte a data para o padrão de dias da grade', () => {
+    expect(getAttendanceDayOfWeek('2026-02-02')).toBe(1);
+    expect(getAttendanceDayOfWeek('2026-02-07')).toBe(6);
+    expect(getAttendanceDayOfWeek('2026-02-08')).toBe(7);
+    expect(getAttendanceDayOfWeek('data-inválida')).toBe(0);
   });
 
   it('valida matrícula ativa na data da chamada', () => {
