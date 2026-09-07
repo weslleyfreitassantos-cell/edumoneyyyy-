@@ -18,7 +18,13 @@ import { Upload } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
+import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import {
+  useAcademicPolicy,
+  useAcademicShiftSettings,
+  useSchoolScheduleBreaks,
+} from '../../../hooks/useAcademicTermClosing';
 
 import {
   useCreateTeacher,
@@ -32,7 +38,10 @@ import {
   useSchoolTimeSlots,
 } from '../../../hooks/useAcademicAutomation';
 import TeacherAcademicSettings from '../../../components/academic/TeacherAcademicSettings';
-import { suggestTeacherAvailabilityFromSchoolSlots } from '../../../services/academicAutomationService';
+import {
+  suggestTeacherAvailabilityFromPolicy,
+  suggestTeacherAvailabilityFromSchoolSlots,
+} from '../../../services/academicAutomationService';
 import TeacherSpreadsheetImportModal from '../../../components/TeacherSpreadsheetImportModal';
 
 import { teacherSchema } from '../../../schemas/adminSchemas';
@@ -102,6 +111,20 @@ export default function TeachersTab() {
   const institutionId =
     institutionQuery.data ?? '';
 
+  const yearsQuery = useAcademicYears(institutionId);
+  const activeAcademicYear = useMemo(
+    () =>
+      (yearsQuery.data ?? []).find((year) => year.active) ??
+      yearsQuery.data?.[0],
+    [yearsQuery.data],
+  );
+  const policyQuery = useAcademicPolicy(
+    institutionId,
+    activeAcademicYear?.id,
+  );
+  const shiftSettingsQuery = useAcademicShiftSettings(institutionId);
+  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
+
   const teachersQuery =
     useTeachers(institutionId);
   const subjectsQuery = useSubjects(institutionId);
@@ -117,6 +140,8 @@ export default function TeachersTab() {
     useSaveTeacherAvailability();
   const schoolTimeSlotsQuery =
     useSchoolTimeSlots(institutionId);
+
+  const enabledShifts = shiftSettingsQuery.data ?? ['MATUTINO'];
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
@@ -154,6 +179,26 @@ export default function TeachersTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
+
+  const availabilitySuggestions = useMemo(() => {
+    const schoolSlots = schoolTimeSlotsQuery.data ?? [];
+    if (schoolSlots.length > 0) {
+      return suggestTeacherAvailabilityFromSchoolSlots(schoolSlots);
+    }
+
+    const timetable = policyQuery.data?.timetable;
+    return suggestTeacherAvailabilityFromPolicy({
+      shifts: enabledShifts,
+      schoolDays: timetable?.schoolDays ?? [1, 2, 3, 4, 5],
+      maxLessonsPerDay: timetable?.maxLessonsPerDay ?? 8,
+      breaks: scheduleBreaksQuery.data ?? [],
+    });
+  }, [
+    enabledShifts,
+    policyQuery.data?.timetable,
+    scheduleBreaksQuery.data,
+    schoolTimeSlotsQuery.data,
+  ]);
 
   const subjectCoverage = useMemo(() => {
     const activeTeachers = (teachersQuery.data ?? []).filter(
@@ -414,21 +459,22 @@ export default function TeachersTab() {
     const activeTeachers = (teachersQuery.data ?? []).filter(
       (teacher) => teacher.active && teacher.profiles?.active !== false,
     );
-    const suggestions = suggestTeacherAvailabilityFromSchoolSlots(
-      schoolTimeSlotsQuery.data ?? [],
-    );
+    const suggestions = availabilitySuggestions;
+    const sourceLabel = (schoolTimeSlotsQuery.data ?? []).length > 0
+      ? 'os horários cadastrados da escola'
+      : 'a sugestão padrão da Política acadêmica';
 
     if (activeTeachers.length === 0) {
       setPageError('Nenhum professor ativo encontrado nesta instituição.');
       return;
     }
     if (suggestions.length === 0) {
-      setPageError('Cadastre os horários da escola antes de aplicar a disponibilidade.');
+      setPageError('Configure pelo menos um turno e um dia letivo na Política acadêmica antes de aplicar a disponibilidade.');
       return;
     }
 
     const confirmed = window.confirm(
-      `Aplicar os horários ativos da escola a ${activeTeachers.length} professor(es)? A disponibilidade atual será substituída; depois você poderá ajustar exceções individualmente.`,
+      `Aplicar ${sourceLabel} a ${activeTeachers.length} professor(es)? A disponibilidade atual será substituída; depois você poderá ajustar exceções individualmente.`,
     );
     if (!confirmed) return;
 
@@ -442,7 +488,7 @@ export default function TeachersTab() {
         });
         updatedCount += 1;
       }
-      setFeedbackMessage(`Disponibilidade aplicada a ${updatedCount} professor(es). Revise as exceções antes de publicar a grade.`);
+      setFeedbackMessage(`Disponibilidade aplicada a ${updatedCount} professor(es) usando ${sourceLabel}. Revise as exceções antes de publicar a grade.`);
     } catch (error) {
       setPageError(
         `A aplicação foi interrompida após ${updatedCount} professor(es). ${getErrorMessage(error)}`,
@@ -481,7 +527,10 @@ export default function TeachersTab() {
 
       {(pageError ||
         teachersQuery.isError ||
-        subjectsQuery.isError) && (
+        subjectsQuery.isError ||
+        policyQuery.isError ||
+        shiftSettingsQuery.isError ||
+        scheduleBreaksQuery.isError) && (
         <div
           role="alert"
           className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
@@ -489,7 +538,10 @@ export default function TeachersTab() {
           {pageError ??
             getErrorMessage(
               teachersQuery.error ??
-                subjectsQuery.error,
+                subjectsQuery.error ??
+                policyQuery.error ??
+                shiftSettingsQuery.error ??
+                scheduleBreaksQuery.error,
             )}
         </div>
       )}
@@ -522,7 +574,7 @@ export default function TeachersTab() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h3 className="font-bold text-[#181c20]">Disponibilidade dos professores</h3>
-            <p className="mt-1 text-sm text-gray-500">Preencha em lote com os horários ativos da escola e ajuste apenas quem tiver uma jornada diferente.</p>
+            <p className="mt-1 text-sm text-gray-500">Preencha em lote com os horários ativos da escola. Antes deles existirem, a Política acadêmica fornece uma sugestão padrão; ajuste apenas quem tiver uma jornada diferente.</p>
           </div>
           <button
             type="button"
@@ -531,8 +583,13 @@ export default function TeachersTab() {
               availabilityMutation.isPending ||
               schoolTimeSlotsQuery.isLoading ||
               schoolTimeSlotsQuery.isError ||
-              schoolTimeSlotsQuery.data?.length === 0 ||
-              teachersQuery.isLoading
+              teachersQuery.isLoading ||
+              policyQuery.isLoading ||
+              shiftSettingsQuery.isLoading ||
+              scheduleBreaksQuery.isLoading ||
+              policyQuery.isError ||
+              shiftSettingsQuery.isError ||
+              scheduleBreaksQuery.isError
             }
             className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
           >
@@ -540,7 +597,7 @@ export default function TeachersTab() {
           </button>
         </div>
         {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700">Não foi possível carregar os horários da escola.</p>}
-        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-amber-700">Cadastre pelo menos um horário da escola para habilitar o preenchimento em lote.</p>}
+        {!schoolTimeSlotsQuery.isLoading && !schoolTimeSlotsQuery.isError && schoolTimeSlotsQuery.data?.length === 0 && <p className="mt-3 text-sm text-blue-700">Nenhum horário de aula foi cadastrado ainda. Será usada uma sugestão padrão baseada na Política acadêmica; horários cadastrados depois passarão a ser priorizados.</p>}
       </section>
 
       <ListSearch

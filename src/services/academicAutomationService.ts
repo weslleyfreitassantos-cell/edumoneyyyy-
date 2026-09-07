@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 import {
   normalizeAcademicShift,
 } from '../lib/academic/academicShifts';
+import { buildDefaultTimeSlots } from '../lib/academic/timetableGenerator/automaticPreparation';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export type PeriodModel = 'BIMESTERS_4' | 'TRIMESTERS_3' | 'SEMESTERS_2' | 'CUSTOM';
@@ -99,6 +100,60 @@ export function suggestTeacherAvailabilityFromSchoolSlots(
   }
 
   return suggestions;
+}
+
+function timeToMinutes(value: string): number {
+  const [hours, minutes] = value.slice(0, 5).split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function overlapsTime(
+  leftStart: string,
+  leftEnd: string,
+  rightStart: string,
+  rightEnd: string,
+): boolean {
+  return (
+    timeToMinutes(leftStart) < timeToMinutes(rightEnd) &&
+    timeToMinutes(rightStart) < timeToMinutes(leftEnd)
+  );
+}
+
+/**
+ * Provides the initial teacher windows before school lesson slots exist.
+ * The academic policy is the source of truth; saved school slots still take precedence in the UI.
+ */
+export function suggestTeacherAvailabilityFromPolicy(input: {
+  shifts: string[];
+  schoolDays: number[];
+  maxLessonsPerDay: number;
+  breaks?: Array<Pick<SchoolScheduleBreakRow, 'shift' | 'day_of_week' | 'start_time' | 'end_time' | 'active'>>;
+}): TeacherAvailabilityDraft[] {
+  const slotsPerDayByShift = Object.fromEntries(
+    input.shifts.map((shift) => [shift, input.maxLessonsPerDay]),
+  );
+  const breaks = input.breaks ?? [];
+  const slots = buildDefaultTimeSlots(
+    input.shifts,
+    slotsPerDayByShift,
+    input.schoolDays,
+  ).filter((slot) =>
+    !breaks.some((scheduleBreak) =>
+      scheduleBreak.active &&
+      normalizeAcademicShift(scheduleBreak.shift) === normalizeAcademicShift(slot.shift) &&
+      scheduleBreak.day_of_week === slot.day_of_week &&
+      overlapsTime(
+        slot.start_time,
+        slot.end_time,
+        scheduleBreak.start_time,
+        scheduleBreak.end_time,
+      ),
+    ),
+  );
+
+  return suggestTeacherAvailabilityFromSchoolSlots(
+    slots.map((slot) => ({ ...slot, active: true })),
+  );
 }
 
 export interface CurriculumTemplateRow {
