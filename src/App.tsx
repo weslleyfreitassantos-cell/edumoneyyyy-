@@ -38,6 +38,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import AppShell from './components/AppShell';
 import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { Login } from './pages/Login';
 
 import {
   mapDatabaseRole,
@@ -46,12 +47,6 @@ import {
 import { hasEffectivePermission } from './lib/permissions';
 
 import type { UserRole } from './types';
-
-const Login = lazy(() =>
-  import('./pages/Login').then((module) => ({
-    default: module.Login,
-  })),
-);
 
 const SetPassword = lazy(
   () => import('./pages/SetPassword'),
@@ -145,8 +140,9 @@ const TerminalsPage = lazy(
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5,
-      gcTime: 1000 * 60 * 30,
+      // Keep already visited screens warm while the user changes browser tabs.
+      staleTime: 1000 * 60 * 10,
+      gcTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
       retry: 1,
@@ -157,6 +153,18 @@ const queryClient = new QueryClient({
   },
 });
 
+function preloadApplicationScreens(): void {
+  void Promise.all([
+    import('./pages/Login'),
+    import('./pages/Admin/AdminPage'),
+    import('./pages/Platform/PlatformPage'),
+    import('./pages/Account/AccountPage'),
+    import('./components/TeacherDashboard'),
+    import('./components/StudentDashboard'),
+    import('./components/DirectorDashboard'),
+    import('./components/ParentDashboard'),
+  ]);
+}
 const resolvedTerminalsAccessProfiles = new Set<string>();
 
 class AppErrorBoundary extends Component<
@@ -181,6 +189,15 @@ class AppErrorBoundary extends Component<
       error,
       errorInfo,
     );
+
+    // A transient chunk/context failure after authentication should recover
+    // once without trapping the user in the error screen.
+    const retryKey = 'edumanager-render-retry';
+    if (!sessionStorage.getItem(retryKey)) {
+      sessionStorage.setItem(retryKey, '1');
+      window.setTimeout(() => sessionStorage.removeItem(retryKey), 10000);
+      window.location.reload();
+    }
   }
 
   render() {
@@ -670,6 +687,29 @@ function AppRoutes() {
 }
 
 function App() {
+  useEffect(() => {
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void) => number;
+    };
+
+    if (idleWindow.requestIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(
+        preloadApplicationScreens,
+      );
+
+      return () => {
+        window.clearTimeout(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(
+      preloadApplicationScreens,
+      800,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <AppErrorBoundary>
       <QueryClientProvider

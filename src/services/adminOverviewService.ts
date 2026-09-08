@@ -171,7 +171,37 @@ function getProfileName(
 }
 
 export const adminOverviewService = {
-  async getOverview(
+  async getOverview(institutionId: string): Promise<AdminOverviewData> {
+    const { data, error } = await supabase.rpc('get_admin_overview_fast', {
+      p_institution_id: institutionId,
+    });
+
+    if (!error && data && typeof data === 'object' && !Array.isArray(data)) {
+      const value = data as Record<string, unknown>;
+      const count = (key: string) => Number(value[key] ?? 0);
+      return {
+        metrics: {
+          activeStudents: count('active_students'),
+          inactiveStudents: count('inactive_students'),
+          activeTeachers: count('active_teachers'),
+          activeGuardians: count('active_guardians'),
+          activeClasses: count('active_classes'),
+          activeSubjects: count('active_subjects'),
+          activeEnrollments: count('active_enrollments'),
+          activeAssignments: count('active_assignments'),
+          activeCurriculumItems: count('active_curriculum_items'),
+          curriculumItemsNeedingReview: count('curriculum_items_needing_review'),
+        },
+        currentAcademicYear: null,
+        currentTerm: null,
+        warnings: [],
+      };
+    }
+
+    return this.getOverviewLegacy(institutionId);
+  },
+
+  async getOverviewLegacy(
     institutionId: string,
   ): Promise<AdminOverviewData> {
     const [

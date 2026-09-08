@@ -1437,19 +1437,6 @@ export default function PlatformPage() {
           </div>
         </header>
 
-        {feedback && (
-          <div
-            role="alert"
-            className={`rounded-xl border p-4 text-sm ${
-              feedback.type === 'success'
-                ? 'border-[#6ffbbe] bg-[#effdf6] text-[#005236]'
-                : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
-            }`}
-          >
-            {feedback.message}
-          </div>
-        )}
-
         <section
           className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
           aria-label="Indicadores reais de instituições"
@@ -1632,6 +1619,19 @@ export default function PlatformPage() {
             )}
             Criar conta
           </button>
+
+          {feedback && (
+            <div
+              role="alert"
+              className={`mt-3 rounded-lg border p-3 text-sm ${
+                feedback.type === 'success'
+                  ? 'border-[#6ffbbe] bg-[#effdf6] text-[#005236]'
+                  : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
+              }`}
+            >
+              {feedback.message}
+            </div>
+          )}
         </form>
 
         <section className="overflow-hidden rounded-2xl border border-[#c5c5d3]/60 bg-white shadow-sm">

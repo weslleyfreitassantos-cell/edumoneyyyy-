@@ -72,7 +72,10 @@ export default function AdminOverviewTab({
   );
   const overviewQuery = useAdminOverview(institutionId);
 
-  if (institutionQuery.isLoading || overviewQuery.isLoading) {
+  if (
+    institutionQuery.isLoading ||
+    (overviewQuery.isLoading && !overviewQuery.data)
+  ) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
         Carregando visão geral...
@@ -120,7 +123,7 @@ export default function AdminOverviewTab({
         canEditAcademic={canEditAcademic}
         showFoundation={institutionQuery.currentRole !== 'DIRECTOR'}
         showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
-        configurationHref={availableModuleIds.includes('directors') ? '/admin?module=directors' : '/admin?module=school-users'}
+        configurationHref={availableModuleIds.includes('school-users') ? '/admin?module=school-users' : '/admin?module=overview'}
       />
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard

@@ -1,7 +1,7 @@
 import type {
-  CurrentDatabaseRole,
   SystemPermission,
 } from '../../lib/permissions';
+import type { CurrentDatabaseRole } from '../../lib/permissions';
 
 export type AdminModuleId =
   | 'overview'
@@ -11,6 +11,9 @@ export type AdminModuleId =
   | 'students'
   | 'teachers'
   | 'guardians'
+  | 'secretaries'
+  | 'email'
+  | 'announcements'
   | 'academic-years'
   | 'classes'
   | 'subjects'
@@ -22,8 +25,7 @@ export type AdminModuleId =
   | 'timetable'
   | 'rooms'
   | 'finance'
-  | 'directors'
-  | 'announcements';
+  | 'access';
 
 export type AdminNavigationGroupId =
   | 'start'
@@ -45,7 +47,7 @@ export interface AdminModuleDefinition {
   permission: SystemPermission;
   href: string;
   visibleInSidebar?: boolean;
-  allowedRoles?: readonly CurrentDatabaseRole[];
+  allowedRoles?: CurrentDatabaseRole[];
 }
 
 export interface AdminModuleGroup
@@ -123,12 +125,19 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     href: moduleHref('guardians'),
   },
   {
-    id: 'directors',
-    label: 'Diretores',
+    id: 'secretaries',
+    label: 'Secretaria',
     groupId: 'people',
     permission: 'manage_school_users',
-    href: moduleHref('directors'),
-    allowedRoles: ['ADMIN'],
+    href: moduleHref('secretaries'),
+  },
+  {
+    id: 'email',
+    label: 'E-mail',
+    groupId: 'communication-resources',
+    permission: 'send_school_email',
+    href: moduleHref('email'),
+    visibleInSidebar: false,
   },
   {
     id: 'announcements',
@@ -143,6 +152,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'administration',
     permission: 'manage_finance',
     href: moduleHref('finance'),
+  },
+  {
+    id: 'access',
+    label: 'Portaria',
+    groupId: 'administration',
+    permission: 'manage_finance',
+    href: moduleHref('access'),
   },
   {
     id: 'academic-years',
@@ -238,16 +254,8 @@ export function isAdminModuleAvailable(
   module: AdminModuleDefinition,
   currentRole: string | null | undefined,
 ): boolean {
-  if (!module.allowedRoles) {
-    return true;
-  }
-
-  return (
-    typeof currentRole === 'string' &&
-    module.allowedRoles.includes(
-      currentRole as CurrentDatabaseRole,
-    )
-  );
+  if (!module.allowedRoles) return true;
+  return typeof currentRole === 'string' && module.allowedRoles.includes(currentRole as CurrentDatabaseRole);
 }
 
 export function isAdminModuleId(

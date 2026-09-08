@@ -21,7 +21,6 @@ import {
 import {
   ADMIN_MODULES,
   DEFAULT_ADMIN_MODULE_ID,
-  isAdminModuleAvailable,
   isAdminModuleId,
   type AdminModuleId,
 } from './adminNavigation';
@@ -31,12 +30,15 @@ import AssignmentsTab from './tabs/AssignmentsTab';
 import ClassesTab from './tabs/ClassesTab';
 import CurriculumTab from './tabs/CurriculumTab';
 import TimetableTab from './tabs/TimetableTab';
+import EnrollmentsTab from './tabs/EnrollmentsTab';
 import GuardiansTab from './tabs/GuardiansTab';
 import SchoolUsersTab from './tabs/SchoolUsersTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
 import FinanceTab from './tabs/FinanceTab';
+import AccessControlTab from './tabs/AccessControlTab';
+import EmailTab from './tabs/EmailTab';
 import AnnouncementsTab from './tabs/AnnouncementsTab';
 
 function setModuleParam(
@@ -72,12 +74,8 @@ export default function AdminPage() {
 
   const modules = useMemo(
     () =>
-      ADMIN_MODULES.filter(
-        (module) =>
-          isAdminModuleAvailable(
-            module,
-            institutionQuery.currentRole,
-          ) && can(module.permission),
+      ADMIN_MODULES.filter((module) =>
+        can(module.permission),
       ),
     [
       profile?.platform_role,
@@ -198,18 +196,22 @@ export default function AdminPage() {
         return <TeachersTab />;
       case 'guardians':
         return <GuardiansTab />;
-      case 'directors':
+      case 'secretaries':
         return (
           <SchoolUsersTab
-            fixedRole="DIRECTOR"
-            inviteTargets={['DIRECTOR']}
-            inviteHeading="Cadastro de diretor"
+            fixedRole="SECRETARY"
+            inviteTargets={['SECRETARY']}
+            inviteHeading="Cadastro de secretaria"
           />
         );
+      case 'email':
+        return <EmailTab />;
       case 'announcements':
         return <AnnouncementsTab />;
       case 'finance':
         return <FinanceTab />;
+      case 'access':
+        return <AccessControlTab />;
       case 'academic-policies':
         return (
           <AcademicPolicyPanel
@@ -229,7 +231,7 @@ export default function AdminPage() {
       case 'rooms':
         return <TimetableTab />;
       case 'enrollments':
-        return <StudentsTab />;
+        return <EnrollmentsTab />;
       case 'assignments':
         return <AssignmentsTab />;
       default:

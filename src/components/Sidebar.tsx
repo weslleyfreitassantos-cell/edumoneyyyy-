@@ -12,6 +12,7 @@ import {
   ChevronRight,
   ClipboardCheck,
   ClipboardList,
+  CircleHelp,
   Clock3,
   FileCheck2,
   GraduationCap,
@@ -124,8 +125,10 @@ const adminModuleIcons: Record<
   students: GraduationCap,
   teachers: Users,
   guardians: Users,
-  directors: BadgeCheck,
+  secretaries: Users,
+  email: Mail,
   finance: WalletCards,
+  access: ShieldCheck,
   'academic-years': CalendarDays,
   subjects: BookOpen,
   classes: School,
@@ -562,7 +565,7 @@ export default function Sidebar({
   function renderNavigationLink(
     item: SidebarNavigationItem,
   ) {
-    const Icon = item.icon;
+    const Icon = item.icon ?? CircleHelp;
     const isActive = isActivePath(
       location.pathname,
       item,
@@ -586,7 +589,7 @@ export default function Sidebar({
         aria-current={
           isActive ? 'page' : undefined
         }
-        className={`group relative flex min-h-9 items-center gap-3 rounded-xl px-3 py-2 text-sm font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
+        className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
           isActive
             ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
             : 'text-[#414754] hover:bg-white hover:text-[#181c20] focus-visible:bg-white'
@@ -630,7 +633,7 @@ export default function Sidebar({
         ? isRoomsView
         : activeAdminModule?.id === module.id &&
           !isRoomsView);
-    const Icon = adminModuleIcons[module.id];
+    const Icon = adminModuleIcons[module.id] ?? CircleHelp;
 
     return (
       <Link
@@ -640,7 +643,7 @@ export default function Sidebar({
         aria-current={
           isActive ? 'page' : undefined
         }
-        className={`group relative flex min-h-9 items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
+        className={`group relative flex min-h-11 items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
           isActive
             ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
             : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
@@ -667,8 +670,8 @@ export default function Sidebar({
     }
 
     return (
-      <div className="mb-1 last:mb-0">
-        <div className="space-y-1">
+      <div className="mb-4 last:mb-0">
+        <div className="space-y-1.5">
           {adminMenuGroups.map((group) => {
             const GroupIcon =
               adminNavigationGroupIcons[group.id];
@@ -689,7 +692,7 @@ export default function Sidebar({
                   onClick={() =>
                     toggleAdminGroup(group.id)
                   }
-                  className="mb-1 flex min-h-8 w-full items-center gap-2 rounded-lg px-3 text-left text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                  className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
                 >
                   <GroupIcon
                     className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
@@ -714,7 +717,7 @@ export default function Sidebar({
                 <div
                   id={childGroupId}
                   hidden={isCollapsed}
-                  className="space-y-1 pl-1"
+                  className="space-y-1.5 pl-1"
                 >
                   {group.modules.map(
                     renderAdminModuleLink,
@@ -826,7 +829,7 @@ export default function Sidebar({
         </div>
 
         <nav
-          className="min-h-0 flex-1 overflow-y-auto px-3 py-3"
+          className="min-h-0 flex-1 overflow-y-auto px-3 py-5"
           aria-label="Menu principal"
         >
           {groupedSections.map((section) => {
@@ -837,15 +840,15 @@ export default function Sidebar({
             return (
               <div
                 key={section}
-                className="mb-1 last:mb-0"
+                className="mb-4 last:mb-0"
               >
                 {hiddenSectionLabels.includes(section) ? null : (
-                  <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+                  <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">
                     {sectionLabels[section]}
                   </p>
                 )}
 
-                <div className="space-y-1">
+                <div className="space-y-1.5">
                   {items.map(renderNavigationLink)}
                 </div>
               </div>

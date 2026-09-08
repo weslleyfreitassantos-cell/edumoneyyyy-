@@ -16,6 +16,16 @@
 }
 
 @layer components {
+  .assistant-focus {
+    animation: assistant-focus-pulse 1s ease-in-out 3;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes assistant-focus-pulse {
+    50% { box-shadow: 0 0 0 4px rgba(0, 91, 191, 0.25); background-color: white; }
+  }
+
   .auth-hero-video-layer {
     position: absolute;
     inset: 0;

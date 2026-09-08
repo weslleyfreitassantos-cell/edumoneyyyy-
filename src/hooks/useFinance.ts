@@ -7,5 +7,6 @@ export function useFinance(institutionId: string) {
   const invoices = useQuery({ queryKey: financeKeys.invoices(institutionId), queryFn: () => financeService.listInvoices(institutionId), enabled: Boolean(institutionId) });
   const summary = useQuery({ queryKey: financeKeys.summary(institutionId), queryFn: () => financeService.summary(institutionId), enabled: Boolean(institutionId) });
   const payment = useMutation({ mutationFn: (input: { invoiceId: string; amount: number }) => financeService.registerMockPayment(input.invoiceId, institutionId, input.amount), onSuccess: async () => { await queryClient.invalidateQueries({ queryKey: ['finance', institutionId] }); } });
-  return { invoices, summary, payment };
+  const createContract = useMutation({ mutationFn: financeService.createContract, onSuccess: async () => { await queryClient.invalidateQueries({ queryKey: ['finance', institutionId] }); } });
+  return { invoices, summary, payment, createContract };
 }

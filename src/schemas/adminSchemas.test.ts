@@ -186,7 +186,7 @@ describe('unifiedUserInvitePreviewSchema', () => {
     );
   });
 
-  it('rejeita secretaria como alvo do cadastro unificado', () => {
+  it('aceita secretaria como alvo do cadastro unificado', () => {
     const result =
       unifiedUserInvitePreviewSchema.safeParse({
         ...validUnifiedInvitePreview,
@@ -194,17 +194,7 @@ describe('unifiedUserInvitePreviewSchema', () => {
         full_name: 'Secretaria Visual',
       });
 
-    expect(result.success).toBe(false);
-
-    if (!result.success) {
-      expect(result.error.issues).toEqual(
-        expect.arrayContaining([
-          expect.objectContaining({
-            path: ['target_type'],
-          }),
-        ]),
-      );
-    }
+    expect(result.success).toBe(true);
   });
 
   it('nao cria payload de banco', () => {

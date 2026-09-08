@@ -10,6 +10,21 @@ import type {
   PlatformRole,
 } from '../lib/roles';
 
+function getProfileHome(profile: {
+  role: DatabaseRole;
+  platform_role: PlatformRole;
+}): string {
+  if (profile.platform_role === 'SUPER_ADMIN') {
+    return '/platform';
+  }
+
+  if (profile.role === 'DIRECTOR' || profile.role === 'SECRETARY') {
+    return '/admin?module=overview';
+  }
+
+  return '/dashboard';
+}
+
 interface ProtectedRouteProps {
   children: ReactNode;
   allowedRoles?: DatabaseRole[];
@@ -74,11 +89,11 @@ export function ProtectedRoute({
 
   if (allowedRoles && allowedPlatformRoles) {
     if (!hasAllowedRole && !hasAllowedPlatformRole) {
-      return <Navigate to="/unauthorized" replace />;
+      return <Navigate to={getProfileHome(profile)} replace />;
     }
   } else {
     if (!hasAllowedRole || !hasAllowedPlatformRole) {
-      return <Navigate to="/unauthorized" replace />;
+      return <Navigate to={getProfileHome(profile)} replace />;
     }
   }
 
