@@ -12,6 +12,7 @@ import {
   ChevronRight,
   ClipboardCheck,
   ClipboardList,
+  CircleHelp,
   Clock3,
   FileCheck2,
   GraduationCap,
@@ -564,7 +565,7 @@ export default function Sidebar({
   function renderNavigationLink(
     item: SidebarNavigationItem,
   ) {
-    const Icon = item.icon;
+    const Icon = item.icon ?? CircleHelp;
     const isActive = isActivePath(
       location.pathname,
       item,
@@ -632,7 +633,7 @@ export default function Sidebar({
         ? isRoomsView
         : activeAdminModule?.id === module.id &&
           !isRoomsView);
-    const Icon = adminModuleIcons[module.id];
+    const Icon = adminModuleIcons[module.id] ?? CircleHelp;
 
     return (
       <Link
