@@ -212,7 +212,7 @@ export function getRouteVisualContext(
       if (normalizedPath === '/dashboard/library') {
         return {
           section: 'Acadêmico',
-          title: 'Biblioteca',
+          title: 'Indicações de livros',
         };
       }
 
@@ -240,7 +240,7 @@ export function getRouteVisualContext(
       if (normalizedPath === '/dashboard/library') {
         return {
           section: 'Acadêmico',
-          title: 'Biblioteca',
+          title: 'Indicações de livros',
         };
       }
 

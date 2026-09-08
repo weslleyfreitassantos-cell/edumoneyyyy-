@@ -235,7 +235,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
   {
     id: 'library',
-    label: 'Biblioteca',
+    label: 'Indicações de livros',
     path: '/dashboard/library',
     section: 'personal',
     icon: BookOpen,
