@@ -616,7 +616,10 @@ export default function AppShell({
           </div>
         </main>
       </div>
-      <AssistantTec />
+      <AssistantTec
+        role={currentRole}
+        institutionId={institutionContext.currentInstitutionId}
+      />
     </div>
   );
 }
