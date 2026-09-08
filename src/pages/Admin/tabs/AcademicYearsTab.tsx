@@ -756,7 +756,7 @@ export default function AcademicYearsTab() {
         isLoading={yearsQuery.isLoading}
         onAdd={openCreateYearModal}
         emptyMessage="Nenhum ano letivo cadastrado nesta instituição."
-        actionCellClassName="min-w-[160px] align-top whitespace-nowrap"
+        actionCellClassName="w-[264px] min-w-[264px] align-top whitespace-nowrap"
         actionGroupClassName="md:flex-nowrap"
         renderActions={(year) => {
           const isChangingStatus =
@@ -1117,7 +1117,7 @@ export default function AcademicYearsTab() {
           aria-modal="true"
           aria-labelledby="academic-year-modal-title"
         >
-          <div className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
+          <div className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 text-gray-900 shadow-xl dark:bg-[#182235] dark:text-slate-100">
             <h3
               id="academic-year-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
@@ -1136,7 +1136,7 @@ export default function AcademicYearsTab() {
               {modalError && (
                 <div
                   role="alert"
-                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700 dark:border-red-900/70 dark:bg-red-950/40 dark:text-red-200"
                 >
                   {modalError}
                 </div>
@@ -1146,7 +1146,7 @@ export default function AcademicYearsTab() {
                 <div
                   role="status"
                   aria-live="polite"
-                  className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3 text-sm text-blue-800"
+                  className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3 text-sm text-blue-800 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-200"
                 >
                   <div className="flex items-center gap-2 font-semibold">
                     <LoaderCircle
@@ -1166,7 +1166,7 @@ export default function AcademicYearsTab() {
                         ? 'Excluindo ano letivo'
                         : 'Salvando ano letivo'
                     }
-                    className="mt-2 h-2 overflow-hidden rounded-full bg-blue-100"
+                    className="mt-2 h-2 overflow-hidden rounded-full bg-blue-100 dark:bg-blue-950/70"
                   >
                     <div className="h-full w-1/3 animate-pulse rounded-full bg-[#005bbf]" />
                   </div>
@@ -1179,7 +1179,7 @@ export default function AcademicYearsTab() {
               <div>
                 <label
                   htmlFor="academic-year-name"
-                  className="block text-sm font-medium text-gray-700"
+                  className="block text-sm font-medium text-gray-700 dark:text-slate-200"
                 >
                   Nome
                 </label>
@@ -1193,7 +1193,7 @@ export default function AcademicYearsTab() {
                       name: event.target.value,
                     }))
                   }
-                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                  className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100"
                   required
                 />
               </div>
@@ -1202,7 +1202,7 @@ export default function AcademicYearsTab() {
                 <div>
                   <label
                     htmlFor="academic-year-start"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-gray-700 dark:text-slate-200"
                   >
                     Data inicial
                   </label>
@@ -1219,7 +1219,7 @@ export default function AcademicYearsTab() {
                         }),
                       )
                     }
-                    className="mt-1 w-full rounded-lg border px-3 py-2"
+                    className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100"
                     required
                   />
                 </div>
@@ -1227,7 +1227,7 @@ export default function AcademicYearsTab() {
                 <div>
                   <label
                     htmlFor="academic-year-end"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-gray-700 dark:text-slate-200"
                   >
                     Data final
                   </label>
@@ -1244,13 +1244,13 @@ export default function AcademicYearsTab() {
                         }),
                       )
                     }
-                    className="mt-1 w-full rounded-lg border px-3 py-2"
+                    className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100"
                     required
                   />
                 </div>
               </div>
 
-              <label className="flex items-center gap-2 text-sm text-gray-700">
+              <label className="flex items-center gap-2 text-sm text-gray-700 dark:text-slate-200">
                 <input
                   type="checkbox"
                   checked={yearDraft.active}
@@ -1261,55 +1261,55 @@ export default function AcademicYearsTab() {
                         event.target.checked,
                     }))
                   }
-                  className="h-4 w-4 rounded border-gray-300"
+                  className="h-4 w-4 rounded border-gray-300 dark:border-slate-600 dark:bg-[#0f172a]"
                 />
                 Ativo
               </label>
 
               {!editingYear && (
                 <>
-                  <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
+                    <div className="rounded-lg border border-blue-100 bg-blue-50 p-3 dark:border-blue-800 dark:bg-[#1e3a5f]">
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
                       <div className="flex-1">
-                        <label htmlFor="academic-period-model" className="block text-sm font-medium text-gray-700">Modelo de períodos</label>
-                        <select id="academic-period-model" value={periodModel} onChange={(event) => { setPeriodModel(event.target.value as AssistedPeriodModel); setPeriodDrafts([]); }} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
+                        <label htmlFor="academic-period-model" className="block text-sm font-medium text-gray-700 dark:text-slate-200">Modelo de períodos</label>
+                        <select id="academic-period-model" value={periodModel} onChange={(event) => { setPeriodModel(event.target.value as AssistedPeriodModel); setPeriodDrafts([]); }} className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100">
                           <option value="BIMESTERS_4">4 bimestres</option>
                           <option value="TRIMESTERS_3">3 trimestres</option>
                           <option value="SEMESTERS_2">2 semestres</option>
                           <option value="CUSTOM">Personalizado</option>
                         </select>
                       </div>
-                      <button type="button" onClick={suggestAssistedPeriods} disabled={periodModel === 'CUSTOM' || !yearDraft.start_date || !yearDraft.end_date} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 disabled:opacity-50">Sugerir períodos</button>
-                      {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => [...current, { name: `${current.length + 1}º Período`, start_date: yearDraft.start_date, end_date: yearDraft.end_date, active: true }])} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700">Adicionar período</button>}
+                      <button type="button" onClick={suggestAssistedPeriods} disabled={periodModel === 'CUSTOM' || !yearDraft.start_date || !yearDraft.end_date} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 disabled:opacity-50 dark:border-blue-700 dark:bg-[#182235] dark:text-blue-200 dark:hover:bg-[#243449]">Sugerir períodos</button>
+                      {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => [...current, { name: `${current.length + 1}º Período`, start_date: yearDraft.start_date, end_date: yearDraft.end_date, active: true }])} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:bg-[#182235] dark:text-blue-200 dark:hover:bg-[#243449]">Adicionar período</button>}
                     </div>
-                    <p className="mt-2 text-xs text-blue-800">As datas são apenas uma sugestão e podem ser revisadas antes de salvar.</p>
+                    <p className="mt-2 text-xs text-blue-800 dark:text-blue-200">As datas são apenas uma sugestão e podem ser revisadas antes de salvar.</p>
                   </div>
 
                   {periodDrafts.length > 0 && (
-                    <div className="space-y-3 rounded-lg border border-gray-200 bg-gray-50/50 p-3">
+                    <div className="space-y-3 rounded-lg border border-gray-200 bg-gray-50/50 p-3 dark:border-slate-700 dark:bg-[#111827]">
                       <div className="flex flex-wrap items-center justify-between gap-2">
-                        <p className="text-sm font-semibold text-gray-700">Revise os períodos</p>
-                        <span className="text-xs font-medium text-gray-500">{periodDrafts.length} períodos</span>
+                        <p className="text-sm font-semibold text-gray-700 dark:text-slate-100">Revise os períodos</p>
+                        <span className="text-xs font-medium text-gray-500 dark:text-slate-400">{periodDrafts.length} períodos</span>
                       </div>
-                      <div className="hidden grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-gray-500 sm:grid">
+                      <div className="hidden grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400 sm:grid">
                         <span>Período</span>
                         <span>Início</span>
                         <span>Fim</span>
                         {periodModel === 'CUSTOM' && <span className="sr-only">Ações</span>}
                       </div>
                       {periodDrafts.map((period, index) => (
-                        <div key={`${period.name}-${index}`} className="grid min-w-0 gap-2 rounded-lg border border-gray-200 bg-white p-2 sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] sm:border-0 sm:bg-transparent sm:p-0">
+                        <div key={`${period.name}-${index}`} className="grid min-w-0 gap-2 rounded-lg border border-gray-200 bg-white p-2 dark:border-slate-700 dark:bg-[#182235] sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] sm:border-0 sm:bg-transparent sm:p-0">
                           <label className="min-w-0">
-                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Período</span>
-                            <input aria-label={`Nome do período ${index + 1}`} value={period.name} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, name: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                            <span className="mb-1 block text-xs font-medium text-gray-600 dark:text-slate-300 sm:sr-only">Período</span>
+                            <input aria-label={`Nome do período ${index + 1}`} value={period.name} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, name: event.target.value } : item))} className="min-w-0 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100" />
                           </label>
                           <label className="min-w-0">
-                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Início</span>
-                            <input aria-label={`Início do período ${index + 1}`} type="date" value={period.start_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                            <span className="mb-1 block text-xs font-medium text-gray-600 dark:text-slate-300 sm:sr-only">Início</span>
+                            <input aria-label={`Início do período ${index + 1}`} type="date" value={period.start_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100" />
                           </label>
                           <label className="min-w-0">
-                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Fim</span>
-                            <input aria-label={`Fim do período ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                            <span className="mb-1 block text-xs font-medium text-gray-600 dark:text-slate-300 sm:sr-only">Fim</span>
+                            <input aria-label={`Fim do período ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100" />
                           </label>
                           {periodModel === 'CUSTOM' && (
                             <button
@@ -1327,13 +1327,13 @@ export default function AcademicYearsTab() {
                     </div>
                   )}
 
-                  <div className="rounded-lg border p-3">
-                    <label htmlFor="academic-source-year" className="block text-sm font-medium text-gray-700">Usar ano anterior como modelo (opcional)</label>
-                    <select id="academic-source-year" value={sourceYearId} onChange={(event) => setSourceYearId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
+                  <div className="rounded-lg border border-gray-200 p-3 dark:border-slate-700 dark:bg-[#182235]">
+                    <label htmlFor="academic-source-year" className="block text-sm font-medium text-gray-700 dark:text-slate-200">Usar ano anterior como modelo (opcional)</label>
+                    <select id="academic-source-year" value={sourceYearId} onChange={(event) => setSourceYearId(event.target.value)} className="mt-1 w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 dark:border-slate-600 dark:bg-[#0f172a] dark:text-slate-100">
                       <option value="">Criar do zero</option>
                       {years.filter((year) => year.id !== editingYear?.id).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
                     </select>
-                    {sourceYearId && <div className="mt-2 space-y-2 text-xs text-gray-600">
+                    {sourceYearId && <div className="mt-2 space-y-2 text-xs text-gray-600 dark:text-slate-300">
                       <label className="flex items-center gap-2"><input type="checkbox" checked readOnly /> Estrutura das turmas e matriz curricular</label>
                       <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horários padrão</label>
                       <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuições de professores qualificadas (sugestão)</label>
@@ -1362,7 +1362,7 @@ export default function AcademicYearsTab() {
                     type="button"
                     onClick={closeModals}
                     disabled={isSubmitting}
-                    className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+                    className="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-700"
                   >
                     Cancelar
                   </button>

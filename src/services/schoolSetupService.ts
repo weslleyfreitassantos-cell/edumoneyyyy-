@@ -42,6 +42,10 @@ export interface SchoolReadinessBlocker {
   complete: boolean;
   description: string;
   href: string;
+  progress?: {
+    current: number;
+    total: number;
+  };
 }
 
 export interface OperationalReadiness {
@@ -661,6 +665,14 @@ export function buildSchoolSetupReadiness({
           ? 'A disponibilidade está cadastrada para os professores atribuídos.'
           : `${teachersWithoutAvailability} ${teachersWithoutAvailability === 1 ? 'professor' : 'professores'} sem disponibilidade.`,
       href: '/admin?module=teachers',
+      ...(requireTeacherAvailability && assignedTeacherIds.size > 0
+        ? {
+            progress: {
+              current: assignedTeacherIds.size - teachersWithoutAvailability,
+              total: assignedTeacherIds.size,
+            },
+          }
+        : {}),
     },
     {
       id: 'active-enrollments',

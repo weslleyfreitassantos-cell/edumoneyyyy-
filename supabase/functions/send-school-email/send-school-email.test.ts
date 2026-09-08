@@ -7,11 +7,12 @@ const source = readFileSync(
 );
 
 describe("send-school-email", () => {
-  it("requires a JWT and an active DIRECTOR or SECRETARY membership", () => {
+  it("requires a JWT and an active ADMIN, DIRECTOR, or SECRETARY membership", () => {
     expect(source).toContain('withSupabase<Database>({ auth: "user" }');
     expect(source).toContain('membership.active === true');
     expect(source).toContain('membership.role === "DIRECTOR"');
     expect(source).toContain('membership.role === "SECRETARY"');
+    expect(source).toContain('membership.role === "ADMIN"');
     expect(source).toContain('"INSUFFICIENT_PERMISSION"');
   });
 

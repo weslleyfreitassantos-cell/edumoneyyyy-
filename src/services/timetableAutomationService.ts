@@ -1,10 +1,10 @@
 import { supabase } from '../lib/supabaseClient';
 import {
-  generateTimetable,
   type GeneratorDiagnostic,
   type GeneratorScheduleBreak,
   type TimetableGeneratorResult,
 } from '../lib/academic/timetableGenerator';
+import { runTimetableGenerator } from './timetableGeneratorRunner';
 import {
   buildDefaultTimeSlots,
   normalizeAcademicShift,
@@ -870,7 +870,7 @@ export const timetableAutomationService = {
       });
     }
 
-    const result = generateTimetable({
+    const result = await runTimetableGenerator({
       institutionId: input.institutionId,
       academicYearId: input.academicYearId,
       terms: (termsResult.data ?? []).map((term) => ({ id: term.id, academicYearId: term.academic_year_id, startDate: term.start_date, endDate: term.end_date })),

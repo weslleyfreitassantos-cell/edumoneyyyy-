@@ -209,6 +209,27 @@ export function getRouteVisualContext(
         };
       }
 
+      if (normalizedPath === '/dashboard/attendance') {
+        return {
+          section: 'Operação docente',
+          title: 'Chamadas',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/grades') {
+        return {
+          section: 'Operação docente',
+          title: 'Avaliações e notas',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/term-closing') {
+        return {
+          section: 'Operação docente',
+          title: 'Fechamento de período',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do professor',

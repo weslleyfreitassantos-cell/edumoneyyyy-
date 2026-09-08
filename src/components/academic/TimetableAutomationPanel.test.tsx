@@ -109,6 +109,11 @@ function mockDefaults() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  generateMutation.isPending = false;
+  deleteMutation.isPending = false;
+  publishMutation.isPending = false;
+  saveSlotsMutation.isPending = false;
+  updateEntryMutation.isPending = false;
   mockDefaults();
 });
 
@@ -140,6 +145,17 @@ describe('TimetableAutomationPanel', () => {
         createdBy: 'profile-1',
       }));
     });
+  });
+
+  it('mostra o indicador girando enquanto gera a grade', () => {
+    generateMutation.isPending = true;
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+
+    const button = screen.getByRole('button', { name: 'Gerando...' });
+    expect(button.getAttribute('aria-busy')).toBe('true');
+    expect(button.querySelector('.animate-spin')).toBeTruthy();
+    expect((button as HTMLButtonElement).disabled).toBe(true);
   });
 
   it('exibe o rascunho por turma e permite marcar uma aula como fixa', () => {

@@ -9,10 +9,14 @@ import {
   type ExistingIdentityProfile,
   type IdentityConflict,
 } from "../_shared/identity-protection.ts";
+import { buildClientAdminAccessEmail } from "../_shared/client-admin-invite.ts";
 import type { Database } from "../_shared/database.types.ts";
+import { sendResendEmail } from "../_shared/resend.ts";
+import { generateSecurePassword } from "../_shared/school-access.ts";
 
 interface RollbackState {
   createdAuthUserId: string | null;
+  createdAccountId: string | null;
 }
 
 class AccountError extends Error {
@@ -226,10 +230,10 @@ async function createOwnerProfile(
   >[1],
   input: RequestData,
   rollback: RollbackState,
-  requestUrl: string,
 ): Promise<{
   profileId: string;
-  invitationSent: boolean;
+  email: string;
+  temporaryPassword: string;
   reusedExistingUser: boolean;
 }> {
   const normalizedEmail = normalizeIdentityEmail(input.adminEmail);
@@ -254,22 +258,21 @@ async function createOwnerProfile(
     }
   }
 
-  const inviteRedirectUrl = `${getAppUrl(requestUrl)}/auth/confirm`;
+  const temporaryPassword = generateSecurePassword();
 
-  const { data: invitationData, error: invitationError } =
-    await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
-      normalizedEmail,
-      {
-        data: {
-          full_name: input.adminFullName,
-          role: "ADMIN",
-        },
-        redirectTo: inviteRedirectUrl,
+  const { data: userData, error: userError } =
+    await ctx.supabaseAdmin.auth.admin.createUser({
+      email: normalizedEmail,
+      password: temporaryPassword,
+      email_confirm: true,
+      user_metadata: {
+        full_name: input.adminFullName,
+        role: "ADMIN",
       },
-    );
+    });
 
-  if (invitationError || !invitationData.user) {
-    if (isDuplicateAuthError(invitationError?.message)) {
+  if (userError || !userData.user) {
+    if (isDuplicateAuthError(userError?.message)) {
       throw accountErrorFromIdentityConflict(
         buildIdentityConflict(
           "AUTH_USER_ALREADY_EXISTS",
@@ -279,12 +282,12 @@ async function createOwnerProfile(
     }
 
     throw new Error(
-      invitationError?.message ??
-        "Nao foi possivel convidar o ADMIN.",
+      userError?.message ??
+        "Nao foi possivel criar o ADMIN.",
     );
   }
 
-  const profileId = invitationData.user.id;
+  const profileId = userData.user.id;
   rollback.createdAuthUserId = profileId;
 
   const { error: profileError } = await ctx.supabaseAdmin
@@ -305,9 +308,42 @@ async function createOwnerProfile(
 
   return {
     profileId,
-    invitationSent: true,
+    email: normalizedEmail,
+    temporaryPassword,
     reusedExistingUser: false,
   };
+}
+
+async function updateInvitation(
+  ctx: Parameters<
+    Parameters<typeof withSupabase<Database>>[1]
+  >[1],
+  invitationId: string,
+  input: {
+    status: "PENDING" | "SENT";
+    attemptedAt: string;
+    sentAt?: string | null;
+    errorCode?: string | null;
+    errorMessage?: string | null;
+  },
+): Promise<void> {
+  const { error } = await ctx.supabaseAdmin
+    .from("client_admin_invitations")
+    .update({
+      status: input.status,
+      attempt_count: 1,
+      last_attempt_at: input.attemptedAt,
+      sent_at: input.sentAt ?? null,
+      last_error_code: input.errorCode ?? null,
+      last_error_message: input.errorMessage ?? null,
+    })
+    .eq("id", invitationId);
+
+  if (error) {
+    console.error("Falha ao atualizar estado do acesso do administrador", {
+      code: "INVITATION_STATE_UPDATE_FAILED",
+    });
+  }
 }
 
 export default {
@@ -355,6 +391,7 @@ export default {
 
       const rollback: RollbackState = {
         createdAuthUserId: null,
+        createdAccountId: null,
       };
 
       try {
@@ -364,7 +401,6 @@ export default {
           ctx,
           validation.data,
           rollback,
-          request.url,
         );
 
         const { data: account, error: accountError } =
@@ -387,6 +423,77 @@ export default {
           );
         }
 
+        rollback.createdAccountId = account.id;
+
+        const { data: invitation, error: invitationError } =
+          await ctx.supabaseAdmin
+            .from("client_admin_invitations")
+            .insert({
+              account_id: account.id,
+              profile_id: owner.profileId,
+              email: owner.email,
+              status: "PENDING",
+              attempt_count: 0,
+            })
+            .select("id")
+            .single();
+
+        if (invitationError || !invitation) {
+          throw invitationError ?? new Error(
+            "Nao foi possivel registrar o acesso do ADMIN.",
+          );
+        }
+
+        const attemptedAt = new Date().toISOString();
+        const emailContent = buildClientAdminAccessEmail({
+          accountName: validation.data.accountName,
+          recipientName: validation.data.adminFullName,
+          recipientEmail: owner.email,
+          temporaryPassword: owner.temporaryPassword,
+          loginUrl: `${getAppUrl(request.url)}/login`,
+        });
+        const delivery = await sendResendEmail({
+          to: owner.email,
+          from: Deno.env.get("EMAIL_FROM")?.trim() ?? "",
+          subject: emailContent.subject,
+          html: emailContent.html,
+        });
+
+        if (!delivery.ok || delivery.failure) {
+          const failure = delivery.failure;
+          console.error("Acesso do ADMIN criado sem entrega de e-mail", {
+            code: failure?.code ?? "RESEND_PROVIDER_ERROR",
+            status: failure?.status ?? 502,
+            providerCode: failure?.providerCode ?? null,
+          });
+          await updateInvitation(ctx, invitation.id, {
+            status: "PENDING",
+            attemptedAt,
+            errorCode: failure?.code ?? "RESEND_PROVIDER_ERROR",
+            errorMessage: failure?.message ?? "Falha no provedor de e-mail.",
+          });
+
+          return Response.json(
+            {
+              success: true,
+              accountId: account.id,
+              ownerProfileId: owner.profileId,
+              ownerEmail: owner.email,
+              institutionLimit: account.institution_limit,
+              invitationSent: false,
+              invitationStatus: "PENDING",
+              reusedExistingUser: owner.reusedExistingUser,
+            },
+            { status: 201 },
+          );
+        }
+
+        await updateInvitation(ctx, invitation.id, {
+          status: "SENT",
+          attemptedAt,
+          sentAt: attemptedAt,
+        });
+
         return Response.json(
           {
             success: true,
@@ -396,7 +503,8 @@ export default {
               validation.data.adminEmail,
             ),
             institutionLimit: account.institution_limit,
-            invitationSent: owner.invitationSent,
+            invitationSent: true,
+            invitationStatus: "SENT",
             reusedExistingUser: owner.reusedExistingUser,
           },
           { status: 201 },
@@ -406,6 +514,13 @@ export default {
 
         if (rollback.createdAuthUserId) {
           try {
+            if (rollback.createdAccountId) {
+              await ctx.supabaseAdmin
+                .from("accounts")
+                .delete()
+                .eq("id", rollback.createdAccountId);
+            }
+
             await ctx.supabaseAdmin
               .from("profiles")
               .delete()

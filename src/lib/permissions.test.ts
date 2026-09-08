@@ -108,10 +108,10 @@ describe('school permissions', () => {
     ).toBe(true);
   });
 
-  it('permite e-mail institucional somente a DIRECTOR e SECRETARY', () => {
+  it('permite e-mail institucional a ADMIN, DIRECTOR e SECRETARY', () => {
     expect(hasPermission(null, 'DIRECTOR', 'send_school_email')).toBe(true);
     expect(hasPermission(null, 'SECRETARY', 'send_school_email')).toBe(true);
-    expect(hasPermission(null, 'ADMIN', 'send_school_email')).toBe(false);
+    expect(hasPermission(null, 'ADMIN', 'send_school_email')).toBe(true);
     expect(hasPermission(null, 'TEACHER', 'send_school_email')).toBe(false);
     expect(hasPermission(null, 'STUDENT', 'send_school_email')).toBe(false);
     expect(hasPermission(null, 'GUARDIAN', 'send_school_email')).toBe(false);

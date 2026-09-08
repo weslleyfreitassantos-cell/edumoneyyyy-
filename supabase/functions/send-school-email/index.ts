@@ -228,14 +228,16 @@ async function getAuthorizedContext(
   const canSend = (memberships ?? []).some(
     (membership) =>
       membership.active === true &&
-      (membership.role === "DIRECTOR" || membership.role === "SECRETARY"),
+      (membership.role === "ADMIN" ||
+        membership.role === "DIRECTOR" ||
+        membership.role === "SECRETARY"),
   );
 
   if (!canSend) {
     throw new EmailFunctionError(
       403,
       "INSUFFICIENT_PERMISSION",
-      "Apenas Diretor(a) e Secretaria podem enviar e-mails institucionais.",
+      "Apenas Administração, Direção e Secretaria podem enviar e-mails institucionais.",
     );
   }
 

@@ -79,6 +79,7 @@ const ADMIN_PERMISSIONS = [
   'view_account_dashboard',
   'manage_owned_institutions',
   'manage_school_users',
+  'send_school_email',
   'view_school_dashboard',
   'view_reports',
 ] as const satisfies readonly SystemPermission[];

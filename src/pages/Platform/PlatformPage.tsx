@@ -2191,10 +2191,19 @@ export default function PlatformPage() {
                                       }
                                       className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
                                     >
-                                      <Trash2
-                                        className="h-4 w-4"
-                                        aria-hidden="true"
-                                      />
+                                      {deleteInstitutionMutation.isPending &&
+                                      deleteInstitutionMutation.variables?.institutionId ===
+                                        institution.id ? (
+                                        <Loader2
+                                          className="h-4 w-4 animate-spin"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <Trash2
+                                          className="h-4 w-4"
+                                          aria-hidden="true"
+                                        />
+                                      )}
                                     </IconActionButton>
                                   </>
                                 )}

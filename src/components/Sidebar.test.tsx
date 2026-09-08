@@ -646,6 +646,13 @@ describe('sidebar navigation helpers', () => {
     expect(timetableItem?.label).toBe('Grade de horário');
     expect(timetableItem?.path).toBe('/dashboard/timetable');
 
+    const subjectsItem = studentItems.find(
+      (item) => item.id === 'student-subjects',
+    );
+
+    expect(subjectsItem?.label).toBe('Disciplinas e professores');
+    expect(subjectsItem?.path).toBe('/dashboard/subjects');
+
     const teacherItems = getSidebarNavigationItems({
       profile: {
         ...baseProfile,
@@ -659,6 +666,18 @@ describe('sidebar navigation helpers', () => {
     expect(
       teacherItems.map((item) => item.id),
     ).toContain('student-timetable');
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toEqual(
+      expect.arrayContaining([
+        'teacher-attendance',
+        'teacher-grades',
+        'teacher-term-closing',
+      ]),
+    );
+    expect(
+      teacherItems.map((item) => item.id),
+    ).not.toContain('student-subjects');
 
     const directorItems = getSidebarNavigationItems({
       profile: directorProfile(),

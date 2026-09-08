@@ -112,6 +112,33 @@ function LoadingState() {
   );
 }
 
+function TeacherWorkspacePage({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="space-y-6">
+      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+          Operação docente
+        </p>
+        <h1 className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
+          {title}
+        </h1>
+        <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
+          {description}
+        </p>
+      </section>
+      {children}
+    </div>
+  );
+}
+
 export default function TeacherDashboard() {
   const { profile } = useAuth();
   const location = useLocation();
@@ -178,6 +205,48 @@ export default function TeacherDashboard() {
           (offering) => offering.shift,
         )}
       />
+    );
+  }
+
+  if (location.pathname === '/dashboard/attendance') {
+    return (
+      <TeacherWorkspacePage
+        title="Chamadas"
+        description="Registre a presença dos alunos nas aulas previstas para você."
+      >
+        <TeacherAttendancePanel
+          profileId={profile.id}
+          institutionId={institutionQuery.data}
+        />
+      </TeacherWorkspacePage>
+    );
+  }
+
+  if (location.pathname === '/dashboard/grades') {
+    return (
+      <TeacherWorkspacePage
+        title="Avaliações e notas"
+        description="Crie avaliações e lance notas para as suas turmas."
+      >
+        <TeacherAssessmentsPanel
+          profileId={profile.id}
+          institutionId={institutionQuery.data}
+        />
+      </TeacherWorkspacePage>
+    );
+  }
+
+  if (location.pathname === '/dashboard/term-closing') {
+    return (
+      <TeacherWorkspacePage
+        title="Fechamento de período"
+        description="Revise os resultados acadêmicos antes do fechamento."
+      >
+        <TeacherTermClosingPanel
+          profileId={profile.id}
+          institutionId={institutionQuery.data}
+        />
+      </TeacherWorkspacePage>
     );
   }
 
@@ -390,20 +459,6 @@ export default function TeacherDashboard() {
         )}
       </section>
 
-      <TeacherAttendancePanel
-        profileId={profile.id}
-        institutionId={institutionQuery.data}
-      />
-
-      <TeacherAssessmentsPanel
-        profileId={profile.id}
-        institutionId={institutionQuery.data}
-      />
-
-      <TeacherTermClosingPanel
-        profileId={profile.id}
-        institutionId={institutionQuery.data}
-      />
     </motion.div>
   );
 }

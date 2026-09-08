@@ -1,6 +1,7 @@
 import {
   useEffect,
   useMemo,
+  useRef,
 } from 'react';
 import {
   Navigate,
@@ -13,10 +14,13 @@ import InstitutionTermClosingPanel from '../../components/academic/InstitutionTe
 import AcademicPolicyPanel from '../../components/academic/AcademicPolicyPanel';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
+import { useSchoolSetupReadiness } from '../../hooks/useSchoolSetupReadiness';
 
 import {
+  canManageAcademicStructure,
   hasEffectivePermission,
 } from '../../lib/permissions';
+import { buildSchoolSetupFlow } from '../../lib/schoolSetupFlow';
 
 import {
   ADMIN_MODULES,
@@ -52,12 +56,41 @@ function setModuleParam(
   return nextParams;
 }
 
+const setupModules = new Set<AdminModuleId>([
+  'school-users',
+  'academic-years',
+  'subjects',
+  'academic-policies',
+  'classes',
+  'curriculum',
+  'teachers',
+  'assignments',
+  'students',
+  'timetable',
+]);
+
+function getModuleFromStepHref(
+  href: string,
+): AdminModuleId | null {
+  const query = href.includes('?')
+    ? href.slice(href.indexOf('?') + 1)
+    : '';
+  const moduleId = new URLSearchParams(query).get('module');
+
+  return isAdminModuleId(moduleId) ? moduleId : null;
+}
+
 export default function AdminPage() {
   const { profile } = useAuth();
   const institutionQuery =
     useCurrentInstitution(profile?.id);
   const [searchParams, setSearchParams] =
     useSearchParams();
+  const readinessQuery = useSchoolSetupReadiness(
+    institutionQuery.data ?? '',
+  );
+  const previousSetupStepIdRef = useRef<string | null | undefined>(undefined);
+  const readinessInstitutionIdRef = useRef<string | null>(null);
 
   const can = (
     permission: Parameters<
@@ -88,6 +121,36 @@ export default function AdminPage() {
     (module) => module.id,
   );
 
+  const canEditAcademic = canManageAcademicStructure(
+    profile?.platform_role,
+    institutionQuery.currentRole as Parameters<typeof canManageAcademicStructure>[1],
+  );
+
+  const configurationHref = availableModuleIds.includes('school-users')
+    ? '/admin?module=school-users'
+    : '/admin?module=overview';
+  const setupFlow = useMemo(
+    () => readinessQuery.data
+      ? buildSchoolSetupFlow(readinessQuery.data, {
+          canEditAcademic,
+          includeFoundation: institutionQuery.currentRole !== 'DIRECTOR',
+          responsibleUserHref: configurationHref,
+        })
+      : null,
+    [
+      canEditAcademic,
+      configurationHref,
+      institutionQuery.currentRole,
+      readinessQuery.data,
+    ],
+  );
+  const setupFlowSteps = useMemo(
+    () => setupFlow?.sections
+      .filter((section) => section.id !== 'personalization')
+      .flatMap((section) => section.steps) ?? [],
+    [setupFlow],
+  );
+
   const requestedModuleParam =
     searchParams.get('module');
   const requestedModuleId = isAdminModuleId(
@@ -103,6 +166,78 @@ export default function AdminPage() {
     )
       ? requestedModuleId
       : modules[0]?.id;
+
+  useEffect(() => {
+    const currentNextStepId = setupFlow?.recommendedNextStep?.id ?? null;
+
+    if (!setupFlow || !canEditAcademic) {
+      return;
+    }
+
+    if (readinessInstitutionIdRef.current !== readinessQuery.data?.institutionId) {
+      readinessInstitutionIdRef.current = readinessQuery.data?.institutionId ?? null;
+      previousSetupStepIdRef.current = currentNextStepId;
+      return;
+    }
+
+    const previousNextStepId = previousSetupStepIdRef.current;
+    if (previousNextStepId === currentNextStepId) {
+      return;
+    }
+
+    previousSetupStepIdRef.current = currentNextStepId;
+
+    if (!previousNextStepId || !currentNextStepId || !activeModuleId) {
+      return;
+    }
+
+    const previousStepIndex = setupFlowSteps.findIndex(
+      (step) => step.id === previousNextStepId,
+    );
+    const currentStepIndex = setupFlowSteps.findIndex(
+      (step) => step.id === currentNextStepId,
+    );
+
+    if (
+      previousStepIndex < 0 ||
+      currentStepIndex <= previousStepIndex ||
+      !setupModules.has(activeModuleId)
+    ) {
+      return;
+    }
+
+    const nextStep = setupFlow.recommendedNextStep;
+    const nextModuleId = nextStep
+      ? getModuleFromStepHref(nextStep.href)
+      : null;
+
+    if (
+      !nextModuleId ||
+      nextModuleId === activeModuleId ||
+      !availableModuleIds.includes(nextModuleId)
+    ) {
+      return;
+    }
+
+    const nextParams = new URLSearchParams(searchParams);
+    const targetQuery = nextStep?.href.includes('?')
+      ? nextStep.href.slice(nextStep.href.indexOf('?') + 1)
+      : '';
+    const targetParams = new URLSearchParams(targetQuery);
+    targetParams.forEach((value, key) => {
+      nextParams.set(key, value);
+    });
+
+    setSearchParams(nextParams);
+  }, [
+    activeModuleId,
+    availableModuleIds,
+    canEditAcademic,
+    setupFlow,
+    setupFlowSteps,
+    searchParams,
+    setSearchParams,
+  ]);
 
   useEffect(() => {
     if (!activeModuleId || modules.length === 0) {
