@@ -12,6 +12,8 @@ import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
   usePublishTimetableVersion,
+  useSaveSchoolTimeSlots,
+  useSchoolTimeSlots,
   useTimetablePreparation,
   useTimetableVersionEntries,
   useTimetableVersions,
@@ -33,6 +35,8 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
   useDeleteTimetableVersion: vi.fn(),
   useGenerateTimetableDraft: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
+  useSaveSchoolTimeSlots: vi.fn(),
+  useSchoolTimeSlots: vi.fn(),
   useTimetablePreparation: vi.fn(),
   useTimetableVersionEntries: vi.fn(),
   useTimetableVersions: vi.fn(),
@@ -42,6 +46,7 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
 const generateMutation = { mutateAsync: vi.fn(), isPending: false };
 const deleteMutation = { mutateAsync: vi.fn(), isPending: false };
 const publishMutation = { mutateAsync: vi.fn(), isPending: false };
+const saveSlotsMutation = { mutateAsync: vi.fn(), isPending: false };
 const updateEntryMutation = { mutateAsync: vi.fn(), isPending: false };
 
 function mockDefaults() {
@@ -58,6 +63,12 @@ function mockDefaults() {
     error: null,
   } as never);
   vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
+    data: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+  vi.mocked(useSchoolTimeSlots).mockReturnValue({
     data: [],
     isLoading: false,
     isError: false,
@@ -92,6 +103,7 @@ function mockDefaults() {
   vi.mocked(useGenerateTimetableDraft).mockReturnValue(generateMutation as never);
   vi.mocked(useDeleteTimetableVersion).mockReturnValue(deleteMutation as never);
   vi.mocked(usePublishTimetableVersion).mockReturnValue(publishMutation as never);
+  vi.mocked(useSaveSchoolTimeSlots).mockReturnValue(saveSlotsMutation as never);
   vi.mocked(useUpdateTimetableVersionEntry).mockReturnValue(updateEntryMutation as never);
 }
 
@@ -105,26 +117,27 @@ afterEach(() => {
 });
 
 describe('TimetableAutomationPanel', () => {
-  it('conecta o turno ao gerador sem exibir o editor manual de horários', async () => {
+  it('conecta o turno aos horários da escola e ao gerador', async () => {
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
 
-    expect(screen.getByText('Gerar grade horária')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Gerar grade' })).toBeTruthy();
-    expect((screen.getByRole('combobox', { name: 'Turno do gerador' }) as HTMLSelectElement).value).toBe('TODOS');
+    expect(screen.getByText('Quais horários sua escola utiliza?')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Gerar grade automaticamente' })).toBeTruthy();
+    expect((screen.getByRole('combobox', { name: 'Turno dos horários' }) as HTMLSelectElement).value).toBe('MATUTINO');
     expect(screen.getByRole('option', { name: 'Integral' })).toBeTruthy();
-    expect(screen.queryByText('Horários da escola')).toBeNull();
+    expect(screen.getByText('Horários da escola')).toBeTruthy();
 
     generateMutation.mutateAsync.mockResolvedValue({
       valid: false,
       entries: [],
       diagnostics: [],
     });
-    fireEvent.change(screen.getByRole('combobox', { name: 'Turno do gerador' }), { target: { value: 'MATUTINO' } });
-    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade automaticamente' }));
 
     await waitFor(() => {
       expect(generateMutation.mutateAsync).toHaveBeenCalledWith(expect.objectContaining({
-        shift: 'MATUTINO',
+        academicYearId: 'year-1',
+        institutionId: 'institution-1',
+        createdBy: 'profile-1',
       }));
     });
   });
@@ -145,7 +158,7 @@ describe('TimetableAutomationPanel', () => {
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
     fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
-    fireEvent.click(screen.getByRole('button', { name: /Editar Português às 07:00/i }));
+    fireEvent.click(screen.getByRole('button', { name: /07:00 PortuguêsProfessora Ana/i }));
 
     expect(screen.getByText('Bloqueado/Fixo: preservar ao regenerar')).toBeTruthy();
     expect(screen.getByRole('checkbox')).toBeTruthy();
@@ -159,7 +172,7 @@ describe('TimetableAutomationPanel', () => {
     });
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade automaticamente' }));
 
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/não foi possível montar a grade/i);

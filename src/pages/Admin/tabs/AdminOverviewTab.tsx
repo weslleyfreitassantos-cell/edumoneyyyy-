@@ -123,7 +123,7 @@ export default function AdminOverviewTab({
         canEditAcademic={canEditAcademic}
         showFoundation={institutionQuery.currentRole !== 'DIRECTOR'}
         showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
-        configurationHref={availableModuleIds.includes('directors') ? '/admin?module=directors' : '/admin?module=school-users'}
+        configurationHref={availableModuleIds.includes('school-users') ? '/admin?module=school-users' : '/admin?module=overview'}
       />
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard

@@ -165,14 +165,14 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^respons.veis$/i }),
     ).toBeTruthy();
     expect(
-      screen.queryByRole('link', { name: /^secretaria$/i }),
-    ).toBeNull();
+      screen.getByRole('link', { name: /^secretaria$/i }),
+    ).toBeTruthy();
     expect(
       screen.queryByRole('link', { name: /^diretores$/i }),
     ).toBeNull();
   });
 
-  it('mostra Diretores em Pessoas somente para ADMIN', () => {
+  it('não exibe Diretores como módulo administrativo', () => {
     renderSidebar();
 
     fireEvent.click(
@@ -180,13 +180,11 @@ describe('Sidebar', () => {
     );
 
     expect(
-      screen
-        .getByRole('link', { name: /^diretores$/i })
-        .getAttribute('href'),
-    ).toBe('/admin?module=directors');
-    expect(
-      screen.queryByRole('link', { name: /^secretaria$/i }),
+      screen.queryByRole('link', { name: /^diretores$/i }),
     ).toBeNull();
+    expect(
+      screen.getByRole('link', { name: /^secretaria$/i }),
+    ).toBeTruthy();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -313,7 +311,9 @@ describe('Sidebar', () => {
 
     expect(screen.getByRole('link', { name: 'Câmeras ao vivo' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'TV Escola' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'E-mail' })).toBeTruthy();
+    expect(
+      screen.getByRole('link', { name: 'E-mail' }).getAttribute('href'),
+    ).toBe('/email');
     expect(screen.getByRole('link', { name: 'Avisos' })).toBeTruthy();
   });
 
@@ -395,8 +395,9 @@ describe('Sidebar', () => {
       }),
     );
 
+    const emailLinks = screen.getAllByRole('link', { name: 'E-mail' });
     expect(
-      screen.getByRole('link', { name: 'E-mail' }).getAttribute('aria-current'),
+      emailLinks.find((link) => link.getAttribute('href') === '/email')?.getAttribute('aria-current'),
     ).toBe('page');
     expect(
       screen.queryByRole('link', { name: /^Administração$/i }),
@@ -750,6 +751,12 @@ describe('sidebar navigation helpers', () => {
     expect(
       modules.map((module) => module.id),
     ).not.toContain('enrollments');
+    expect(
+      modules.map((module) => module.id),
+    ).toContain('announcements');
+    expect(
+      modules.map((module) => module.id),
+    ).not.toContain('email');
     expect(
       modules.map((module) => module.id),
     ).toContain('subjects');

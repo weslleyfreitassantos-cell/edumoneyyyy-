@@ -78,6 +78,11 @@ function renderProtectedRoute(
                 />
 
                 <Route
+                    path="/dashboard"
+                    element={<div>Painel inicial</div>}
+                />
+
+                <Route
                     path="/protected"
                     element={
                         <ProtectedRoute
@@ -185,7 +190,7 @@ describe('ProtectedRoute', () => {
         renderProtectedRoute(['DIRECTOR']);
 
         expect(
-            screen.getByText('Acesso não autorizado'),
+            screen.getByText('Painel inicial'),
         ).toBeTruthy();
     });
 
@@ -215,7 +220,7 @@ describe('ProtectedRoute', () => {
         renderProtectedRoute(undefined, ['SUPER_ADMIN']);
 
         expect(
-            screen.getByText('Acesso não autorizado'),
+            screen.getByText('Painel inicial'),
         ).toBeTruthy();
     });
 
@@ -260,7 +265,7 @@ describe('ProtectedRoute', () => {
         renderProtectedRoute(['ADMIN', 'DIRECTOR', 'SECRETARY'], ['SUPER_ADMIN']);
 
         expect(
-            screen.getByText('Acesso não autorizado'),
+            screen.getByText('Painel inicial'),
         ).toBeTruthy();
     });
 });
