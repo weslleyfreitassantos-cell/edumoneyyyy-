@@ -13,6 +13,7 @@ export type AdminModuleId =
   | 'guardians'
   | 'secretaries'
   | 'email'
+  | 'announcements'
   | 'academic-years'
   | 'classes'
   | 'subjects'
@@ -136,6 +137,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'communication-resources',
     permission: 'send_school_email',
     href: moduleHref('email'),
+    visibleInSidebar: false,
+  },
+  {
+    id: 'announcements',
+    label: 'Avisos',
+    groupId: 'communication-resources',
+    permission: 'manage_school_users',
+    href: moduleHref('announcements'),
   },
   {
     id: 'finance',

@@ -131,6 +131,14 @@ vi.mock('./tabs/SchoolUsersTab', () => ({
   ),
 }));
 
+vi.mock('./tabs/EnrollmentsTab', () => ({
+  default: () => (
+    <div data-testid="enrollments-tab">
+      Aba matriculas
+    </div>
+  ),
+}));
+
 vi.mock('./tabs/StudentsTab', () => ({
   default: () => (
     <div data-testid="students-tab">
@@ -199,6 +207,14 @@ vi.mock('./tabs/AnnouncementsTab', () => ({
   default: () => (
     <div data-testid="announcements-tab">
       Aba avisos
+    </div>
+  ),
+}));
+
+vi.mock('./tabs/EmailTab', () => ({
+  default: () => (
+    <div data-testid="email-tab">
+      Aba e-mail
     </div>
   ),
 }));
@@ -344,11 +360,11 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
-  it('renderiza o cadastro de Diretor somente para ADMIN', () => {
+  it('usa a visão geral quando a rota antiga de Diretor é acessada', () => {
     renderAdminPage('/admin?module=directors');
 
     expect(
-      screen.getByTestId('school-users-tab'),
+      screen.getByTestId('overview-tab'),
     ).toBeTruthy();
 
     cleanup();
@@ -380,6 +396,20 @@ describe('AdminPage URL module resolution', () => {
     expect(
       screen.getByTestId('announcements-tab'),
     ).toBeTruthy();
+  });
+
+  it('renderiza o e-mail para perfis administrativos autorizados', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=email');
+
+    expect(screen.getByTestId('email-tab')).toBeTruthy();
   });
 
   it('mantem modulo ao recarregar com a mesma URL', () => {
@@ -500,7 +530,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=enrollments');
 
     expect(
-      screen.getByTestId('students-tab'),
+      screen.getByTestId('enrollments-tab'),
     ).toBeTruthy();
 
     cleanup();

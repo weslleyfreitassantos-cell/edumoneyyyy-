@@ -27,6 +27,7 @@ describe('unified user invite model', () => {
       'Professor',
       'Responsavel',
       'Diretor',
+      'Secretaria',
     ]);
 
     expect(CURRENT_DATABASE_ROLES).toContain(
@@ -53,11 +54,13 @@ describe('unified user invite model', () => {
   it('resolve alvos permitidos por papel efetivo', () => {
     expect(getAllowedInviteTargets('ADMIN')).toEqual([
       'DIRECTOR',
+      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ]);
     expect(getAllowedInviteTargets('DIRECTOR')).toEqual([
+      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, type FormEvent } from 'react';
 import { CircleDollarSign, ReceiptText, Search, Wallet } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -23,7 +23,7 @@ export default function FinanceTab() {
   const [formMessage, setFormMessage] = useState<string | null>(null);
   const invoices = useMemo(() => (finance.invoices.data ?? []).filter((invoice) => `${invoice.reference} ${invoice.student?.profiles?.full_name ?? ''} ${invoice.responsible?.full_name ?? ''}`.toLowerCase().includes(search.toLowerCase())), [finance.invoices.data, search]);
   const summary = finance.summary.data;
-  const createContract = async (event: React.FormEvent) => {
+  const createContract = async (event: FormEvent) => {
     event.preventDefault(); setFormMessage(null);
     try {
       if (!form.studentId || !form.yearId || !form.responsibleId || !form.amount || !form.firstDueDate) throw new Error('Preencha aluno, ano letivo, responsável, mensalidade e vencimento.');
