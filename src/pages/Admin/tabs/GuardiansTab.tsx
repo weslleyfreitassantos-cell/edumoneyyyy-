@@ -449,7 +449,7 @@ export default function GuardiansTab() {
           guardiansQuery.isLoading ||
           studentsQuery.isLoading
         }
-        actionCellClassName="min-w-[60px] align-top whitespace-nowrap"
+        actionCellClassName="min-w-[60px] align-middle whitespace-nowrap"
         actionGroupClassName="md:flex-nowrap"
         onAdd={openCreateModal}
         emptyMessage={
