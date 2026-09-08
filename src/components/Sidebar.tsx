@@ -124,6 +124,7 @@ const adminModuleIcons: Record<
   students: GraduationCap,
   teachers: Users,
   guardians: Users,
+  secretaries: Users,
   directors: BadgeCheck,
   finance: WalletCards,
   access: ShieldCheck,
