@@ -17,6 +17,8 @@ export const timetableKeys = {
   all: ['timetable'] as const,
   rooms: (institutionId: string) => [...timetableKeys.all, 'rooms', institutionId] as const,
   entries: (institutionId: string) => [...timetableKeys.all, 'entries', institutionId] as const,
+  classEntries: (institutionId: string, classId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'class', classId, termId ?? 'current'] as const,
+  teacherEntries: (institutionId: string, teacherProfileId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'teacher', teacherProfileId, termId ?? 'current'] as const,
 };
 
 function invalidateTimetable(
@@ -94,6 +96,58 @@ export function useTimetableEntries(institutionId: string) {
     queryKey: timetableKeys.entries(institutionId),
     queryFn: () => timetableService.listEntries(institutionId),
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useStudentTimetable(
+  institutionId: string | undefined,
+  classId: string | undefined,
+  termId?: string,
+) {
+  return useQuery<TimetableEntryRow[]>({
+    queryKey: timetableKeys.classEntries(
+      institutionId ?? '',
+      classId ?? '',
+      termId,
+    ),
+    queryFn: () => {
+      if (!institutionId || !classId) {
+        throw new Error('A turma do aluno não foi informada.');
+      }
+
+      return timetableService.listByClass(
+        institutionId,
+        classId,
+        termId,
+      );
+    },
+    enabled: Boolean(institutionId && classId),
+  });
+}
+
+export function useTeacherTimetable(
+  institutionId: string | undefined,
+  teacherProfileId: string | undefined,
+  termId?: string,
+) {
+  return useQuery<TimetableEntryRow[]>({
+    queryKey: timetableKeys.teacherEntries(
+      institutionId ?? '',
+      teacherProfileId ?? '',
+      termId,
+    ),
+    queryFn: () => {
+      if (!institutionId || !teacherProfileId) {
+        throw new Error('O professor não foi informado.');
+      }
+
+      return timetableService.listByTeacher(
+        institutionId,
+        teacherProfileId,
+        termId,
+      );
+    },
+    enabled: Boolean(institutionId && teacherProfileId),
   });
 }
 

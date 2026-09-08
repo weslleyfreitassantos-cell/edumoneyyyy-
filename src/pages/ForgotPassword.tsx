@@ -46,7 +46,7 @@ function getRequestErrorMessage(error: unknown): string {
     message.includes('limit') ||
     message.includes('too many')
   ) {
-    return 'Muitas solicitacoes foram feitas. Aguarde alguns minutos e tente novamente.';
+    return 'Limite temporario de envio atingido. Aguarde alguns minutos e tente novamente.';
   }
 
   if (

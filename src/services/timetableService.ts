@@ -45,7 +45,13 @@ export interface RoomRow {
   name: string;
   code: string | null;
   capacity: number | null;
+  class_id: string | null;
+  class_name: string | null;
   active: boolean;
+}
+
+interface RoomQueryRow extends RoomRow {
+  classes: { name: string } | { name: string }[] | null;
 }
 
 // --- Timetable Entry Types ---
@@ -63,11 +69,14 @@ interface TimetableEntryQueryRow {
   updated_at: string | null;
   subject_offerings: {
     class_id: string;
+    subject_id: string;
     teacher_profile_id: string;
-    classes: { name: string } | { name: string }[] | null;
+    term_id: string;
+    classes: { name: string; academic_year_id: string } | { name: string; academic_year_id: string }[] | null;
     subjects: { name: string } | { name: string }[] | null;
     profiles: { full_name: string } | { full_name: string }[] | null;
-  } | { class_id: string; teacher_profile_id: string; classes: { name: string } | { name: string }[] | null; subjects: { name: string } | { name: string }[] | null; profiles: { full_name: string } | { full_name: string }[] | null }[] | null;
+    terms: { academic_year_id: string } | { academic_year_id: string }[] | null;
+  } | { class_id: string; subject_id: string; teacher_profile_id: string; term_id: string; classes: { name: string; academic_year_id: string } | { name: string; academic_year_id: string }[] | null; subjects: { name: string } | { name: string }[] | null; profiles: { full_name: string } | { full_name: string }[] | null; terms: { academic_year_id: string } | { academic_year_id: string }[] | null }[] | null;
   rooms: { name: string } | { name: string }[] | null;
 }
 
@@ -75,6 +84,11 @@ export interface TimetableEntryRow {
   id: string;
   institution_id: string;
   subject_offering_id: string;
+  class_id: string;
+  academic_year_id: string;
+  term_id: string;
+  subject_id: string;
+  teacher_profile_id: string;
   room_id: string | null;
   room_name: string | null;
   day_of_week: number;
@@ -122,6 +136,11 @@ function normalizeEntry(row: TimetableEntryQueryRow): TimetableEntryRow {
     id: row.id,
     institution_id: row.institution_id,
     subject_offering_id: row.subject_offering_id,
+    class_id: offering?.class_id ?? '',
+    academic_year_id: normalizeRelation(offering?.terms)?.academic_year_id ?? normalizeRelation(offering?.classes)?.academic_year_id ?? '',
+    term_id: offering?.term_id ?? '',
+    subject_id: offering?.subject_id ?? '',
+    teacher_profile_id: offering?.teacher_profile_id ?? '',
     room_id: row.room_id,
     room_name: roomRel?.name ?? null,
     day_of_week: row.day_of_week,
@@ -184,12 +203,15 @@ const entrySelect = `
   active,
   created_at,
   updated_at,
-  subject_offerings:subject_offering_id (
+  subject_offerings:subject_offering_id!inner (
     class_id,
+    subject_id,
     teacher_profile_id,
-    classes:class_id (name),
+    term_id,
+    classes:class_id (name, academic_year_id),
     subjects:subject_id (name),
-    profiles:teacher_profile_id (full_name)
+    profiles:teacher_profile_id (full_name),
+    terms:term_id (academic_year_id)
   ),
   rooms:room_id (name)
 `;
@@ -200,12 +222,21 @@ export const timetableService = {
   async listRooms(institutionId: string): Promise<RoomRow[]> {
     const { data, error } = await supabase
       .from('rooms')
-      .select('*')
+      .select('id, institution_id, name, code, capacity, class_id, active, classes:class_id(name)')
       .eq('institution_id', institutionId)
       .order('name', { ascending: true });
 
     if (error) throw mapTimetableError(error);
-    return (data ?? []) as unknown as RoomRow[];
+    return ((data ?? []) as unknown as RoomQueryRow[]).map((room) => ({
+      id: room.id,
+      institution_id: room.institution_id,
+      name: room.name,
+      code: room.code,
+      capacity: room.capacity,
+      class_id: room.class_id ?? null,
+      class_name: normalizeRelation(room.classes)?.name ?? null,
+      active: room.active,
+    }));
   },
 
   async createRoom(input: RoomFormData): Promise<RoomRow> {
@@ -305,11 +336,19 @@ export const timetableService = {
     if (error) throw mapTimetableError(error);
   },
 
-  async listByClass(institutionId: string, classId: string): Promise<TimetableEntryRow[]> {
-    const { data, error } = await supabase
+  async listByClass(institutionId: string, classId: string, termId?: string): Promise<TimetableEntryRow[]> {
+    let query = supabase
       .from('timetable_entries')
       .select(entrySelect)
       .eq('institution_id', institutionId)
+      .eq('active', true)
+      .eq('subject_offerings.class_id', classId);
+
+    if (termId) {
+      query = query.eq('term_id', termId);
+    }
+
+    const { data, error } = await query
       .order('day_of_week', { ascending: true })
       .order('start_time', { ascending: true });
 
@@ -318,7 +357,37 @@ export const timetableService = {
     return ((data ?? []) as unknown as TimetableEntryQueryRow[])
       .filter((row) => {
         const offering = normalizeRelation(row.subject_offerings);
-        return offering?.class_id === classId;
+        return row.active && offering?.class_id === classId;
+      })
+      .map(normalizeEntry);
+  },
+
+  async listByTeacher(
+    institutionId: string,
+    teacherProfileId: string,
+    termId?: string,
+  ): Promise<TimetableEntryRow[]> {
+    let query = supabase
+      .from('timetable_entries')
+      .select(entrySelect)
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .eq('subject_offerings.teacher_profile_id', teacherProfileId);
+
+    if (termId) {
+      query = query.eq('term_id', termId);
+    }
+
+    const { data, error } = await query
+      .order('day_of_week', { ascending: true })
+      .order('start_time', { ascending: true });
+
+    if (error) throw mapTimetableError(error);
+
+    return ((data ?? []) as unknown as TimetableEntryQueryRow[])
+      .filter((row) => {
+        const offering = normalizeRelation(row.subject_offerings);
+        return row.active && offering?.teacher_profile_id === teacherProfileId;
       })
       .map(normalizeEntry);
   },

@@ -24,7 +24,6 @@ import {
   termUpdateSchema,
   unifiedUserInvitePreviewSchema,
 } from './adminSchemas';
-import { getUnifiedUserInviteOption } from '../pages/Admin/tabs/school-users/unifiedUserInviteModel';
 
 const validStudent = {
   institution_id:
@@ -187,19 +186,25 @@ describe('unifiedUserInvitePreviewSchema', () => {
     );
   });
 
-  it('aceita secretaria como papel real no modelo', () => {
+  it('rejeita secretaria como alvo do cadastro unificado', () => {
     const result =
-      unifiedUserInvitePreviewSchema.parse({
+      unifiedUserInvitePreviewSchema.safeParse({
         ...validUnifiedInvitePreview,
         target_type: 'SECRETARY',
         full_name: 'Secretaria Visual',
       });
 
-    expect(
-      getUnifiedUserInviteOption(
-        result.target_type,
-      ).isPlanned,
-    ).toBe(false);
+    expect(result.success).toBe(false);
+
+    if (!result.success) {
+      expect(result.error.issues).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            path: ['target_type'],
+          }),
+        ]),
+      );
+    }
   });
 
   it('nao cria payload de banco', () => {
@@ -422,13 +427,22 @@ describe('classSchema', () => {
     const result = classSchema.parse({
       ...validClass,
       name: '  9º Ano A  ',
-      grade_level: '',
+      grade_level: '9º ano',
       shift: '',
     });
 
     expect(result.name).toBe('9º Ano A');
-    expect(result.grade_level).toBeUndefined();
+    expect(result.grade_level).toBe('9');
     expect(result.shift).toBeUndefined();
+  });
+
+  it('exige série ou nível padronizado para criar uma turma', () => {
+    const result = classSchema.safeParse({
+      ...validClass,
+      grade_level: '',
+    });
+
+    expect(result.success).toBe(false);
   });
 
   it('rejeita capacidade inválida', () => {

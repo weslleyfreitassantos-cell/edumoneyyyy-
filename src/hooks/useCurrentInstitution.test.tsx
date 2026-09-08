@@ -80,6 +80,7 @@ function mockInstitutionContext(
     currentInstitutionId: 'institution-2',
     currentRole: 'DIRECTOR',
     isLoading: false,
+    isSwitchingInstitution: false,
     error: null,
     hasMultipleInstitutions: true,
     setCurrentInstitutionId: vi.fn(

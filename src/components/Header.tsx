@@ -1,12 +1,9 @@
 import {
-  Building2,
   CheckCircle2,
   ChevronDown,
   LogOut,
   Menu,
   Moon,
-  PanelLeftClose,
-  PanelLeftOpen,
   Sun,
   UserRound,
 } from 'lucide-react';
@@ -17,18 +14,16 @@ import {
   type RefObject,
 } from 'react';
 
-import InstitutionSwitcher from './InstitutionSwitcher';
 import AccountSettingsModal from './AccountSettingsModal';
 import type { ThemePreference } from '../contexts/ThemeContext';
+import type { SelfRegistrationUpdate } from '../services/selfRegistrationService';
 import type { User } from '../types';
 
 interface HeaderProps {
   currentUser: User;
   pageTitle: string;
   pageSection: string;
-  showInstitutionSwitcher: boolean;
-  staticInstitutionName?: string | null;
-  staticInstitutionHelper?: string;
+  currentInstitutionName?: string | null;
   isSidebarHidden: boolean;
   isMobileSidebarOpen: boolean;
   isLoggingOut: boolean;
@@ -37,6 +32,7 @@ interface HeaderProps {
   onToggleSidebar: () => void;
   onLogout: () => void;
   onUpdateProfileName: (fullName: string) => Promise<void>;
+  onUpdateSelfRegistration?: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   theme: ThemePreference;
   onToggleTheme: () => void;
@@ -59,9 +55,7 @@ export default function Header({
   currentUser,
   pageTitle,
   pageSection,
-  showInstitutionSwitcher,
-  staticInstitutionName = null,
-  staticInstitutionHelper = 'Escola selecionada',
+  currentInstitutionName = null,
   isSidebarHidden,
   isMobileSidebarOpen,
   isLoggingOut,
@@ -70,6 +64,7 @@ export default function Header({
   onToggleSidebar,
   onLogout,
   onUpdateProfileName,
+  onUpdateSelfRegistration = async () => undefined,
   onUpdatePassword,
   theme,
   onToggleTheme,
@@ -92,8 +87,6 @@ export default function Header({
     currentUser.avatar?.trim() || null;
   const userInitials =
     getUserInitials(currentUser.name);
-  const showStaticInstitution =
-    Boolean(staticInstitutionName);
 
   useEffect(() => {
     setAvatarFailed(false);
@@ -138,6 +131,26 @@ export default function Header({
     };
   }, [isUserMenuOpen]);
 
+  useEffect(() => {
+    function handleOpenSelfRegistration() {
+      setIsUserMenuOpen(false);
+      setAccountFeedback(null);
+      setIsAccountModalOpen(true);
+    }
+
+    window.addEventListener(
+      'open-self-registration',
+      handleOpenSelfRegistration,
+    );
+
+    return () => {
+      window.removeEventListener(
+        'open-self-registration',
+        handleOpenSelfRegistration,
+      );
+    };
+  }, []);
+
   function handleLogout(): void {
     setIsUserMenuOpen(false);
     onLogout();
@@ -147,34 +160,6 @@ export default function Header({
     setIsUserMenuOpen(false);
     setAccountFeedback(null);
     setIsAccountModalOpen(true);
-  }
-
-  function renderStaticInstitution() {
-    if (!staticInstitutionName) {
-      return null;
-    }
-
-    return (
-      <div
-        className="inline-flex min-h-11 w-full min-w-0 items-center gap-2 rounded-xl border border-[#d8deea] bg-white px-3 py-2 text-left shadow-sm md:w-auto"
-        aria-label={`Escola selecionada: ${staticInstitutionName}`}
-      >
-        <Building2
-          className="h-4 w-4 shrink-0 text-[#005bbf]"
-          aria-hidden="true"
-        />
-
-        <div className="min-w-0 leading-tight">
-          <p className="truncate text-sm font-bold text-[#181c20]">
-            {staticInstitutionName}
-          </p>
-
-          <p className="text-xs text-[#727785]">
-            {staticInstitutionHelper}
-          </p>
-        </div>
-      </div>
-    );
   }
 
   return (
@@ -207,37 +192,24 @@ export default function Header({
           aria-expanded={!isSidebarHidden}
           aria-controls={mobileSidebarId}
         >
-          {isSidebarHidden ? (
-            <PanelLeftOpen
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          ) : (
-            <PanelLeftClose
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          )}
+          <Menu
+            className="h-5 w-5"
+            aria-hidden="true"
+          />
         </button>
 
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-            {pageSection}
-          </p>
-          <h1 className="truncate text-lg font-extrabold leading-tight text-[#181c20] sm:text-xl">
-            {pageTitle}
-          </h1>
+          {pageSection ? (
+            <p className="truncate text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
+              {pageSection}
+            </p>
+          ) : null}
+          {pageTitle ? (
+            <h1 className="truncate text-lg font-extrabold leading-tight text-[#181c20] sm:text-xl">
+              {pageTitle}
+            </h1>
+          ) : null}
         </div>
-
-        {showStaticInstitution ? (
-          <div className="hidden min-w-0 max-w-[22rem] md:block">
-            {renderStaticInstitution()}
-          </div>
-        ) : showInstitutionSwitcher ? (
-          <div className="hidden min-w-0 max-w-[22rem] md:block">
-            <InstitutionSwitcher />
-          </div>
-        ) : null}
 
         <button
           type="button"
@@ -335,6 +307,11 @@ export default function Header({
                     <p className="mt-2 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#d8deea]">
                       {currentUser.subtitle}
                     </p>
+                    {currentInstitutionName ? (
+                      <p className="mt-2 truncate text-xs font-semibold text-[#414754]">
+                        {currentInstitutionName}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -392,20 +369,13 @@ export default function Header({
           returnFocusRef={userMenuButtonRef}
           onClose={() => setIsAccountModalOpen(false)}
           onUpdateName={onUpdateProfileName}
+          onUpdateSelfRegistration={onUpdateSelfRegistration}
           onUpdatePassword={onUpdatePassword}
           onSuccess={setAccountFeedback}
+          currentRole={currentUser.role}
         />
       )}
 
-      {showStaticInstitution ? (
-        <div className="border-t border-[#e4e8f1] px-4 py-2 md:hidden">
-          {renderStaticInstitution()}
-        </div>
-      ) : showInstitutionSwitcher ? (
-        <div className="border-t border-[#e4e8f1] px-4 py-2 md:hidden">
-          <InstitutionSwitcher />
-        </div>
-      ) : null}
     </header>
   );
 }

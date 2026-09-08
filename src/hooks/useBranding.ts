@@ -59,7 +59,8 @@ export function useResolvedBranding(
     queryFn: () =>
       brandingService.resolveForHostname(normalizedHostname),
     retry: false,
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 60 * 10,
+    gcTime: 1000 * 60 * 60,
   });
 }
 

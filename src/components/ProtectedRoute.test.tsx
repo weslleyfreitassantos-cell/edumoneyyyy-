@@ -116,6 +116,25 @@ describe('ProtectedRoute', () => {
         ).toBeTruthy();
     });
 
+    it('mantem a tela ao renovar uma sessão já autenticada', () => {
+        mockedUseAuth.mockReturnValue(
+            createAuthState({
+                user,
+                profile: adminProfile,
+                loading: true,
+            }),
+        );
+
+        renderProtectedRoute();
+
+        expect(
+            screen.getByText('Conteúdo protegido'),
+        ).toBeTruthy();
+        expect(
+            screen.queryByText('Carregando...'),
+        ).toBeNull();
+    });
+
     it('envia usuários não autenticados para o login', () => {
         mockedUseAuth.mockReturnValue(createAuthState());
 

@@ -3,12 +3,30 @@ import type {
 } from 'lucide-react';
 import {
   Building2,
+  BookOpen,
+  BadgeCheck,
+  BookOpenCheck,
+  CalendarDays,
+  CalendarClock,
+  ChevronDown,
+  ChevronRight,
+  ClipboardCheck,
+  ClipboardList,
+  Clock3,
+  FileCheck2,
   GraduationCap,
   LayoutDashboard,
+  ListChecks,
   LogOut,
+  Mail,
+  Megaphone,
+  MonitorCog,
+  Palette,
   School,
   ShieldCheck,
-  UserCircle2,
+  Users,
+  Video,
+  WalletCards,
   X,
 } from 'lucide-react';
 import type {
@@ -27,10 +45,14 @@ import type { Profile } from '../contexts/AuthContext';
 import type { PublicBranding } from '../services/brandingService';
 import {
   ADMIN_MODULES,
+  ADMIN_NAVIGATION_GROUPS,
   DEFAULT_ADMIN_MODULE_ID,
   groupAdminModules,
+  isAdminModuleAvailable,
   isAdminModuleId,
+  type AdminModuleId,
   type AdminModuleDefinition,
+  type AdminNavigationGroupId,
 } from '../pages/Admin/adminNavigation';
 import type {
   SystemPermission,
@@ -40,6 +62,7 @@ import {
   hasAnyPermission,
   hasPermission,
 } from '../lib/permissions';
+import { mapDatabaseRole } from '../lib/roles';
 import type { User } from '../types';
 
 type NavigationSection =
@@ -56,6 +79,7 @@ export interface SidebarNavigationItem {
   icon: LucideIcon;
   permissions?: readonly SystemPermission[];
   activePaths?: readonly string[];
+  exactActivePath?: boolean;
   roles?: readonly User['role'][];
 }
 
@@ -82,6 +106,71 @@ const sectionLabels: Record<
   account: 'Conta',
   school: 'Instituição',
   personal: 'Acesso',
+};
+
+const hiddenSectionLabels: readonly NavigationSection[] = [
+  'global',
+  'account',
+  'school',
+  'personal',
+];
+
+const adminModuleIcons: Record<
+  AdminModuleId,
+  LucideIcon
+> = {
+  overview: LayoutDashboard,
+  'school-users': Users,
+  students: GraduationCap,
+  teachers: Users,
+  guardians: Users,
+  directors: BadgeCheck,
+  finance: WalletCards,
+  access: ShieldCheck,
+  'academic-years': CalendarDays,
+  subjects: BookOpen,
+  classes: School,
+  curriculum: ClipboardList,
+  timetable: Clock3,
+  rooms: Building2,
+  enrollments: ClipboardCheck,
+  assignments: ListChecks,
+  attendance: ClipboardList,
+  grades: BadgeCheck,
+  'term-closing': FileCheck2,
+  'academic-policies': ShieldCheck,
+  announcements: Megaphone,
+};
+
+const adminNavigationGroupIcons: Record<
+  AdminNavigationGroupId,
+  LucideIcon
+> = {
+  start: LayoutDashboard,
+  people: Users,
+  'academic-configuration': School,
+  'school-operation': ClipboardCheck,
+  'communication-resources': MonitorCog,
+  administration: ShieldCheck,
+};
+
+const baseAdminNavigationGroupByItemId: Partial<
+  Record<string, AdminNavigationGroupId>
+> = {
+  cameras: 'communication-resources',
+  terminals: 'communication-resources',
+  email: 'communication-resources',
+  'personalize-login': 'administration',
+};
+
+const adminNavigationItemOrder: Record<
+  string,
+  number
+> = {
+  terminals: 0,
+  cameras: 1,
+  email: 2,
+  'personalize-login': 0,
 };
 
 const baseNavigationItems: readonly SidebarNavigationItem[] = [
@@ -118,20 +207,68 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
       'student',
       'parent',
     ],
+    activePaths: ['/dashboard'],
+    exactActivePath: true,
+  },
+  {
+    id: 'student-timetable',
+    label: 'Grade de horário',
+    path: '/dashboard/timetable',
+    section: 'personal',
+    icon: CalendarClock,
+    roles: ['student', 'teacher'],
+    activePaths: ['/dashboard/timetable'],
+    exactActivePath: true,
+  },
+  {
+    id: 'learning-materials',
+    label: 'Materiais e avisos',
+    path: '/dashboard/materials',
+    section: 'personal',
+    icon: BookOpenCheck,
+    roles: ['student', 'teacher'],
+    activePaths: ['/dashboard/materials'],
+    exactActivePath: true,
+  },
+  {
+    id: 'personalize-login',
+    label: 'Personalizar login',
+    path: '/personalizar-login',
+    section: 'personal',
+    icon: Palette,
+    roles: ['director'],
+    activePaths: ['/personalizar-login'],
+  },
+  {
+    id: 'cameras',
+    label: 'Câmeras ao vivo',
+    path: '/cameras',
+    section: 'school',
+    icon: Video,
+    permissions: ['view_live_cameras'],
+    roles: ['director'],
+    activePaths: ['/cameras'],
+  },
+  {
+    id: 'terminals',
+    label: 'TV Escola',
+    path: '/terminais',
+    section: 'school',
+    icon: MonitorCog,
+    permissions: ['view_school_dashboard'],
+    roles: ['director', 'secretary', 'super_admin'],
+    activePaths: ['/terminais'],
+  },
+  {
+    id: 'email',
+    label: 'E-mail',
+    path: '/email',
+    section: 'school',
+    icon: Mail,
+    permissions: ['send_school_email'],
+    activePaths: ['/email'],
   },
 ];
-
-function getInitials(name: string): string {
-  const initials = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join('');
-
-  return initials || 'U';
-}
 
 function isActivePath(
   pathname: string,
@@ -146,10 +283,9 @@ function isActivePath(
       return pathname === path;
     }
 
-    return (
-      pathname === path ||
-      pathname.startsWith(`${path}/`)
-    );
+    return item.exactActivePath
+      ? pathname === path
+      : pathname === path || pathname.startsWith(`${path}/`);
   });
 }
 
@@ -173,6 +309,10 @@ function isAdminPath(pathname: string): boolean {
   );
 }
 
+function preloadEmailPage(): void {
+  void import('../pages/Admin/tabs/EmailTab');
+}
+
 export function getSidebarNavigationItems({
   profile,
   currentInstitutionRole,
@@ -191,9 +331,21 @@ export function getSidebarNavigationItems({
     });
   const isPlatformSuperAdmin =
     profile.platform_role === 'SUPER_ADMIN';
+  const effectiveNavigationRole =
+    isPlatformSuperAdmin
+      ? currentUserRole
+      : mapDatabaseRole(effectiveRole ?? '') ?? currentUserRole;
 
   return baseNavigationItems
     .filter((item) => {
+      if (
+        item.id === 'terminals' &&
+        isPlatformSuperAdmin &&
+        !isAdminPath(pathname)
+      ) {
+        return false;
+      }
+
       if (
         item.id === 'dashboard' &&
         (currentUserRole === 'director' ||
@@ -204,7 +356,7 @@ export function getSidebarNavigationItems({
 
       if (
         item.roles &&
-        !item.roles.includes(currentUserRole)
+        !item.roles.includes(effectiveNavigationRole)
       ) {
         return false;
       }
@@ -270,13 +422,31 @@ export function getSidebarAdminModules({
       currentInstitutionRole,
     });
 
-  return ADMIN_MODULES.filter((module) =>
-    hasPermission(
+  return ADMIN_MODULES.filter((module) => {
+    if (module.visibleInSidebar === false) {
+      return false;
+    }
+
+    if (
+      !isAdminModuleAvailable(
+        module,
+        effectiveRole,
+      )
+    ) {
+      return false;
+    }
+
+    if (profile.role === 'ADMIN' || currentUserRole === 'admin') {
+      if (['attendance', 'grades', 'term-closing'].includes(module.id)) {
+        return false;
+      }
+    }
+    return hasPermission(
       profile.platform_role,
       effectiveRole,
       module.permission,
-    ),
-  );
+    );
+  });
 }
 
 export default function Sidebar({
@@ -296,6 +466,8 @@ export default function Sidebar({
   const location = useLocation();
   const [brandLogoFailed, setBrandLogoFailed] =
     useState(false);
+  const [openAdminGroupId, setOpenAdminGroupId] =
+    useState<AdminNavigationGroupId | null>(null);
   const navigationItems = getSidebarNavigationItems({
     profile,
     currentInstitutionRole,
@@ -310,20 +482,52 @@ export default function Sidebar({
   });
   const adminModuleGroups =
     groupAdminModules(adminModules);
+  const overviewAdminModule = adminModules.find(
+    (module) => module.id === 'overview',
+  );
+  const adminMenuGroups = ADMIN_NAVIGATION_GROUPS.map(
+    (group) => ({
+      ...group,
+      modules:
+        adminModuleGroups.find(
+          (item) => item.id === group.id,
+        )?.modules ?? [],
+      navigationItems: navigationItems.filter(
+        (item) =>
+          baseAdminNavigationGroupByItemId[
+            item.id
+          ] === group.id,
+        ).sort(
+        (left, right) =>
+          (adminNavigationItemOrder[left.id] ?? 99) -
+          (adminNavigationItemOrder[right.id] ?? 99),
+      ),
+    }),
+  ).filter(
+    (group) => group.id !== 'start',
+  ).filter(
+    (group) =>
+      group.modules.length > 0 ||
+      group.navigationItems.length > 0,
+  );
   const groupedSections = Array.from(
     new Set(
-      navigationItems.map((item) => item.section),
+      navigationItems
+        .filter(
+          (item) =>
+            !baseAdminNavigationGroupByItemId[
+              item.id
+            ],
+        )
+        .map((item) => item.section),
     ),
   );
-  const initials = getInitials(currentUser.name);
   const brandName =
     branding.displayName?.trim() || 'EduManager Pro';
   const brandLogoUrl =
     branding.logoUrl && !brandLogoFailed
       ? branding.logoUrl
       : null;
-  const isSuperAdmin =
-    profile.platform_role === 'SUPER_ADMIN';
   const adminSearchParams =
     new URLSearchParams(location.search);
   const requestedAdminModule =
@@ -339,7 +543,7 @@ export default function Sidebar({
         module.id === activeAdminModuleId,
     ) ?? adminModules[0];
   const showAdminModules =
-    adminModules.length > 0;
+    adminMenuGroups.length > 0;
   const adminRouteActive = isAdminPath(
     location.pathname,
   );
@@ -348,12 +552,86 @@ export default function Sidebar({
     setBrandLogoFailed(false);
   }, [branding.logoUrl]);
 
+  function toggleAdminGroup(
+    groupId: AdminNavigationGroupId,
+  ): void {
+    setOpenAdminGroupId((current) =>
+      current === groupId ? null : groupId,
+    );
+  }
+
+  function renderNavigationLink(
+    item: SidebarNavigationItem,
+  ) {
+    const Icon = item.icon;
+    const isActive = isActivePath(
+      location.pathname,
+      item,
+    );
+
+    return (
+      <Link
+        key={item.id}
+        to={item.path}
+        onClick={onCloseMobile}
+        onMouseEnter={
+          item.id === 'email'
+            ? preloadEmailPage
+            : undefined
+        }
+        onFocus={
+          item.id === 'email'
+            ? preloadEmailPage
+            : undefined
+        }
+        aria-current={
+          isActive ? 'page' : undefined
+        }
+        className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-[15px] font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
+          isActive
+            ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
+            : 'text-[#414754] hover:bg-white hover:text-[#181c20] focus-visible:bg-white'
+        } focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2`}
+      >
+        <span
+          className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
+            isActive
+              ? 'bg-[#005bbf]'
+              : 'bg-transparent'
+          }`}
+          aria-hidden="true"
+        />
+
+        <Icon
+          className={`h-5 w-5 shrink-0 ${
+            isActive
+              ? 'text-[#005bbf]'
+              : 'text-[#667085]'
+          }`}
+          aria-hidden="true"
+        />
+
+        <span className="min-w-0 truncate">
+          {item.label}
+        </span>
+      </Link>
+    );
+  }
+
   function renderAdminModuleLink(
     module: AdminModuleDefinition,
   ) {
+    const isRoomsView =
+      activeAdminModuleId === 'rooms' ||
+      (activeAdminModuleId === 'timetable' &&
+        adminSearchParams.get('view') === 'rooms');
     const isActive =
       adminRouteActive &&
-      activeAdminModule?.id === module.id;
+      (module.id === 'rooms'
+        ? isRoomsView
+        : activeAdminModule?.id === module.id &&
+          !isRoomsView);
+    const Icon = adminModuleIcons[module.id];
 
     return (
       <Link
@@ -363,17 +641,17 @@ export default function Sidebar({
         aria-current={
           isActive ? 'page' : undefined
         }
-        className={`group relative flex min-h-9 items-center rounded-lg py-2 pl-9 pr-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
+        className={`group relative flex min-h-11 items-center gap-3 rounded-lg px-3 py-2.5 text-[15px] font-semibold outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
           isActive
             ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
             : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
         }`}
       >
-        <span
-          className={`absolute left-5 top-3 h-2 w-2 rounded-full ${
+        <Icon
+          className={`h-4 w-4 shrink-0 ${
             isActive
-              ? 'bg-[#005bbf]'
-              : 'bg-[#a8b3c7]'
+              ? 'text-[#005bbf]'
+              : 'text-[#7b879d]'
           }`}
           aria-hidden="true"
         />
@@ -390,60 +668,65 @@ export default function Sidebar({
     }
 
     return (
-      <div className="mb-5 last:mb-0">
-        <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-          {isSuperAdmin
-            ? 'Escola selecionada'
-            : sectionLabels.school}
-        </p>
+      <div className="mb-4 last:mb-0">
+        <div className="space-y-1.5">
+          {adminMenuGroups.map((group) => {
+            const GroupIcon =
+              adminNavigationGroupIcons[group.id];
+            const isCollapsed =
+              openAdminGroupId !== group.id;
+            const childGroupId =
+              `sidebar-admin-group-${group.id}`;
 
-        <div className="space-y-3">
-          {!isSuperAdmin && (
-            <Link
-              to="/admin?module=overview"
-              onClick={onCloseMobile}
-              className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2 ${
-                adminRouteActive
-                  ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
-                  : 'text-[#414754] hover:bg-white hover:text-[#181c20]'
-              }`}
-            >
-              <span
-                className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
-                  adminRouteActive
-                    ? 'bg-[#005bbf]'
-                    : 'bg-transparent'
-                }`}
-                aria-hidden="true"
-              />
+            return (
+              <section
+                key={group.id}
+                className="mb-4 last:mb-0"
+              >
+                <button
+                  type="button"
+                  aria-expanded={!isCollapsed}
+                  aria-controls={childGroupId}
+                  onClick={() =>
+                    toggleAdminGroup(group.id)
+                  }
+                  className="mb-1 flex min-h-9 w-full items-center gap-2 rounded-lg px-3 text-left text-xs font-bold uppercase tracking-[0.16em] text-[#667085] outline-none transition-colors hover:bg-white hover:text-[#414754] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
+                >
+                  <GroupIcon
+                    className="h-3.5 w-3.5 shrink-0 text-[#005bbf]"
+                    aria-hidden="true"
+                  />
+                  <span className="min-w-0 flex-1">
+                    {group.label}
+                  </span>
+                  {isCollapsed ? (
+                    <ChevronRight
+                      className="h-4 w-4 shrink-0 text-[#7b879d]"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <ChevronDown
+                      className="h-4 w-4 shrink-0 text-[#7b879d]"
+                      aria-hidden="true"
+                    />
+                  )}
+                </button>
 
-              <School
-                className={`h-5 w-5 shrink-0 ${
-                  adminRouteActive
-                    ? 'text-[#005bbf]'
-                    : 'text-[#667085]'
-                }`}
-                aria-hidden="true"
-              />
-
-              <span className="min-w-0 truncate">
-                Administração
-              </span>
-            </Link>
-          )}
-
-          {adminModuleGroups.map((group) => (
-            <div key={group.id}>
-              <p className="mb-1 px-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[#667085]">
-                {group.label}
-              </p>
-              <div className="space-y-1">
-                {group.modules.map(
-                  renderAdminModuleLink,
-                )}
-              </div>
-            </div>
-          ))}
+                <div
+                  id={childGroupId}
+                  hidden={isCollapsed}
+                  className="space-y-1.5 pl-1"
+                >
+                  {group.modules.map(
+                    renderAdminModuleLink,
+                  )}
+                  {group.navigationItems.map(
+                    renderNavigationLink,
+                  )}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
     );
@@ -490,9 +773,15 @@ export default function Sidebar({
             aria-label={brandName}
           >
             <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl text-white shadow-sm"
+              className={`flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden text-white ${
+                brandLogoUrl
+                  ? 'rounded-lg bg-transparent shadow-none'
+                  : 'rounded-xl shadow-sm'
+              }`}
               style={{
-                backgroundColor: 'var(--brand-primary)',
+                backgroundColor: brandLogoUrl
+                  ? 'transparent'
+                  : 'var(--brand-primary)',
               }}
             >
               {brandLogoUrl ? (
@@ -538,7 +827,7 @@ export default function Sidebar({
         </div>
 
         <nav
-          className="min-h-0 flex-1 overflow-y-auto px-3 py-4"
+          className="min-h-0 flex-1 overflow-y-auto px-3 py-5"
           aria-label="Menu principal"
         >
           {groupedSections.map((section) => {
@@ -549,93 +838,39 @@ export default function Sidebar({
             return (
               <div
                 key={section}
-                className="mb-5 last:mb-0"
+                className="mb-4 last:mb-0"
               >
-                <p className="mb-2 px-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#667085]">
-                  {sectionLabels[section]}
-                </p>
+                {hiddenSectionLabels.includes(section) ? null : (
+                  <p className="mb-1 px-3 text-xs font-bold uppercase tracking-[0.16em] text-[#667085]">
+                    {sectionLabels[section]}
+                  </p>
+                )}
 
-                <div className="space-y-1">
-                  {items.map((item) => {
-                    const Icon = item.icon;
-                    const isActive = isActivePath(
-                      location.pathname,
-                      item,
-                    );
-
-                    return (
-                      <Link
-                        key={item.id}
-                        to={item.path}
-                        onClick={onCloseMobile}
-                        aria-current={
-                          isActive
-                            ? 'page'
-                            : undefined
-                        }
-                        className={`group relative flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold outline-none transition-colors duration-150 motion-reduce:transition-none ${
-                          isActive
-                            ? 'bg-white text-[#061f6f] shadow-sm ring-1 ring-[#d8deea]'
-                            : 'text-[#414754] hover:bg-white hover:text-[#181c20] focus-visible:bg-white'
-                        } focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2`}
-                      >
-                        <span
-                          className={`absolute left-0 top-2 bottom-2 w-1 rounded-r-full ${
-                            isActive
-                              ? 'bg-[#005bbf]'
-                              : 'bg-transparent'
-                          }`}
-                          aria-hidden="true"
-                        />
-
-                        <Icon
-                          className={`h-5 w-5 shrink-0 ${
-                            isActive
-                              ? 'text-[#005bbf]'
-                              : 'text-[#667085]'
-                          }`}
-                          aria-hidden="true"
-                        />
-
-                        <span className="min-w-0 truncate">
-                          {item.label}
-                        </span>
-                      </Link>
-                    );
-                  })}
+                <div className="space-y-1.5">
+                  {items.map(renderNavigationLink)}
                 </div>
               </div>
             );
           })}
 
+          {overviewAdminModule ? (
+            <div className="mb-4">
+              {renderAdminModuleLink(
+                overviewAdminModule,
+              )}
+            </div>
+          ) : null}
+
           {renderAdminModules()}
         </nav>
 
         <div className="border-t border-[#d8deea] p-3">
-          <div className="mb-3 flex items-center gap-3 rounded-xl bg-white p-3 ring-1 ring-[#e4e8f1]">
-            <span
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f]"
-              aria-hidden="true"
-            >
-              {initials}
-            </span>
-
-            <span className="min-w-0">
-              <span className="block truncate text-sm font-bold text-[#181c20]">
-                {currentUser.name}
-              </span>
-              <span className="block truncate text-xs text-[#667085]">
-                {currentUser.subtitle}
-              </span>
-            </span>
-          </div>
-
           <div className="flex">
             <button
               type="button"
               onClick={onLogout}
               disabled={isLoggingOut}
-              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
+              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70 dark:border-slate-700"
             >
               <LogOut
                 className="h-4 w-4 shrink-0"
@@ -647,16 +882,6 @@ export default function Sidebar({
                   : 'Sair'}
               </span>
             </button>
-          </div>
-
-          <div className="mt-3 flex items-center gap-2 px-1 text-[11px] text-[#667085]">
-            <UserCircle2
-              className="h-3.5 w-3.5"
-              aria-hidden="true"
-            />
-            <span className="truncate">
-              {currentUser.email}
-            </span>
           </div>
         </div>
       </aside>

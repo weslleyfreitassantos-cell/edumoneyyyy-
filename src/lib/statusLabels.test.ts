@@ -9,7 +9,7 @@ describe('statusLabels', () => {
   it('traduz status de conta', () => {
     expect(getAccountStatusLabel('ACTIVE')).toBe('Ativa');
     expect(getAccountStatusLabel('SUSPENDED')).toBe('Suspensa');
-    expect(getAccountStatusLabel('CANCELED')).toBe('Cancelada');
+    expect(getAccountStatusLabel('CANCELED')).toBe('Excluída');
   });
 
   it('traduz status de matricula sem depender de caixa', () => {

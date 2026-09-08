@@ -1,16 +1,90 @@
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { supabase } from '../lib/supabaseClient';
-import { accountService, AccountServiceError } from './accountService';
+import {
+  accountService,
+  AccountServiceError,
+  createInstitutionSsoHandoff,
+} from './accountService';
+
+const queryBuilder = vi.hoisted(() => ({
+  update: vi.fn(),
+  eq: vi.fn(),
+  select: vi.fn(),
+  single: vi.fn(),
+  order: vi.fn(),
+}));
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     functions: {
       invoke: vi.fn(),
     },
+    rpc: vi.fn(),
+    from: vi.fn(() => queryBuilder),
   },
 }));
 
 describe('accountService', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    queryBuilder.update.mockReturnValue(queryBuilder);
+    queryBuilder.eq.mockReturnValue(queryBuilder);
+    queryBuilder.select.mockReturnValue(queryBuilder);
+    queryBuilder.order.mockReturnValue(queryBuilder);
+  });
+
+  it('preserva contas CANCELED na listagem e normaliza o status', async () => {
+    queryBuilder.order.mockResolvedValueOnce({
+      data: [
+        {
+          id: 'account-canceled',
+          name: 'Conta Cancelada QA',
+          status: 'CANCELED',
+          institution_limit: 1,
+          profiles: {
+            id: 'owner-canceled',
+            full_name: 'Administrador QA',
+            email: 'cancelado@example.test',
+            role: 'ADMIN',
+            platform_role: 'USER',
+            active: true,
+          },
+          institutions: [],
+        },
+      ],
+      error: null,
+    });
+
+    const result = await accountService.listAccounts();
+
+    expect(result).toHaveLength(1);
+    expect(result[0]?.status).toBe('CANCELED');
+    expect(supabase.from).toHaveBeenCalledWith('accounts');
+    expect(queryBuilder.order).toHaveBeenCalledWith(
+      'created_at',
+      { ascending: false },
+    );
+  });
+
+  it('inicia o handoff SSO sem expor tokens de sessão', async () => {
+    vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
+      data: {
+        success: true,
+        actionLink: 'https://auth.example.com/verify?token=opaque',
+      },
+      error: null,
+    } as never);
+
+    await expect(
+      createInstitutionSsoHandoff('institution-1'),
+    ).resolves.toBe('https://auth.example.com/verify?token=opaque');
+
+    expect(supabase.functions.invoke).toHaveBeenCalledWith(
+      'institution-sso-handoff',
+      { body: { institutionId: 'institution-1' } },
+    );
+  });
+
   it('normalizando respostas validas', async () => {
     vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
       data: {
@@ -20,6 +94,7 @@ describe('accountService', () => {
         ownerEmail: 'test@test.com',
         institutionLimit: 1,
         invitationSent: true,
+        invitationStatus: 'SENT',
         reusedExistingUser: false,
       },
       error: null,
@@ -71,6 +146,38 @@ describe('accountService', () => {
     })).rejects.toThrow(AccountServiceError);
   });
 
+  it('altera a senha do admin pelo accountId sem expor dados extras', async () => {
+    vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
+      data: {
+        success: true,
+        accountId: 'account-1',
+        sessionRevocation: 'NOT_SUPPORTED',
+      },
+      error: null,
+    });
+
+    const response =
+      await accountService.updateClientAdminPassword({
+        accountId: 'account-1',
+        password: 'StrongPass123!',
+      });
+
+    expect(supabase.functions.invoke).toHaveBeenCalledWith(
+      'update-client-admin-password',
+      {
+        body: {
+          accountId: 'account-1',
+          password: 'StrongPass123!',
+        },
+      },
+    );
+    expect(response).toEqual({
+      success: true,
+      accountId: 'account-1',
+      sessionRevocation: 'NOT_SUPPORTED',
+    });
+  });
+
   it('normaliza resposta de encerramento seguro', async () => {
     vi.mocked(supabase.functions.invoke).mockResolvedValueOnce({
       data: {
@@ -104,5 +211,47 @@ describe('accountService', () => {
     expect(response.status).toBe('CANCELED');
     expect(response.auditEventId).toBe('event-1');
     expect(response.statusChanged).toBe(true);
+  });
+
+  it('atualiza somente o nome da instituicao usando a RPC e o id', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValueOnce({
+      data: [{ id: 'institution-1', name: 'Colegio Luz' }],
+      error: null,
+      count: null,
+      status: 200,
+      statusText: 'OK',
+      success: true,
+    });
+
+    const response =
+      await accountService.updateInstitutionName({
+        institutionId: 'institution-1',
+        name: '  Colegio Luz  ',
+      });
+
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'update_admin_institution_name',
+      {
+        target_institution_id: 'institution-1',
+        new_name: 'Colegio Luz',
+      },
+    );
+    expect(response).toEqual({
+      success: true,
+      institutionId: 'institution-1',
+      name: 'Colegio Luz',
+    });
+  });
+
+  it('rejeita nome vazio antes de chamar o banco', async () => {
+    await expect(
+      accountService.updateInstitutionName({
+        institutionId: 'institution-1',
+        name: '    ',
+      }),
+    ).rejects.toThrow(AccountServiceError);
+
+    expect(supabase.from).not.toHaveBeenCalled();
+    expect(supabase.rpc).not.toHaveBeenCalled();
   });
 });

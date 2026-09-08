@@ -1,15 +1,21 @@
 import {
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from 'react';
 
 import {
-  PlusCircle,
+  ChevronLeft,
+  ChevronRight,
+  Edit3,
+  Loader2,
   Search,
+  Trash2,
   UserRoundCheck,
   UserRoundX,
   Users,
+  X,
 } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -17,19 +23,32 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
+import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
+import { ActionGroup } from '../../../components/ActionGroup';
+import StatusBadge from '../../../components/StatusBadge';
 
 import {
   CURRENT_DATABASE_ROLES,
   hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
+import type { UnifiedUserInviteTarget } from './school-users/unifiedUserInviteModel';
 
 type RoleFilter =
   | 'ALL'
   | CurrentDatabaseRole;
+
+type EditableSchoolRole = CurrentDatabaseRole;
+
+export interface SchoolUsersTabProps {
+  fixedRole?: CurrentDatabaseRole;
+  inviteTargets?: readonly UnifiedUserInviteTarget[];
+  inviteHeading?: string;
+}
 
 export const schoolUserRoleLabels: Record<
   CurrentDatabaseRole,
@@ -65,6 +84,20 @@ const filterOptions: {
   },
 ];
 
+const editableRoleOptions: {
+  value: EditableSchoolRole;
+  label: string;
+}[] = [
+  { value: 'ADMIN', label: 'Administração' },
+  { value: 'DIRECTOR', label: 'Direção' },
+  { value: 'SECRETARY', label: 'Secretaria' },
+  { value: 'TEACHER', label: 'Professor' },
+  { value: 'STUDENT', label: 'Aluno' },
+  { value: 'GUARDIAN', label: 'Responsável' },
+];
+
+const SCHOOL_USERS_PAGE_SIZE = 6;
+
 export interface SchoolUserSummary {
   total: number;
   active: number;
@@ -72,23 +105,15 @@ export interface SchoolUserSummary {
   byRole: Record<CurrentDatabaseRole, number>;
 }
 
+export interface SchoolUserAccessStatus {
+  active: boolean | null;
+  reason: string;
+}
+
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar os usuários da escola.';
+  return getUserFacingErrorMessage(error, 'Não foi possível carregar os usuários da escola.');
 }
 
 function normalizeSearchValue(
@@ -99,6 +124,12 @@ function normalizeSearchValue(
     .replace(/[\u0300-\u036f]/g, '')
     .trim()
     .toLowerCase();
+}
+
+function normalizeCpfValue(
+  value: string,
+): string {
+  return value.replace(/\D/g, '');
 }
 
 function formatDate(
@@ -152,8 +183,17 @@ export function filterSchoolUsers(
       .map(normalizeSearchValue)
       .join(' ');
 
-    return searchableText.includes(
-      normalizedTerm,
+    const normalizedCpf = normalizeCpfValue(
+      user.cpf ?? '',
+    );
+    const normalizedTermDigits = normalizeCpfValue(
+      searchTerm,
+    );
+
+    return (
+      searchableText.includes(normalizedTerm) ||
+      (normalizedTermDigits.length > 0 &&
+        normalizedCpf.includes(normalizedTermDigits))
     );
   });
 }
@@ -184,30 +224,41 @@ export function getSchoolUserSummary(
   };
 }
 
-function StatusBadge({
-  active,
-}: {
-  active: boolean | null;
-}) {
-  if (active === null) {
-    return (
-      <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600">
-        Status não informado
-      </span>
-    );
+export function getSchoolUserAccessStatus(
+  user: SchoolUserRow,
+): SchoolUserAccessStatus {
+  if (!user.active && user.profile?.active === false) {
+    return {
+      active: false,
+      reason: 'Vínculo e perfil inativos',
+    };
   }
 
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
+  if (!user.active) {
+    return {
+      active: false,
+      reason: 'Vínculo inativo',
+    };
+  }
+
+  if (user.profile?.active === false) {
+    return {
+      active: false,
+      reason: 'Perfil inativo',
+    };
+  }
+
+  if (user.profile?.active === true) {
+    return {
+      active: true,
+      reason: 'Acesso ativo',
+    };
+  }
+
+  return {
+    active: null,
+    reason: 'Status não confirmado',
+  };
 }
 
 function SummaryCard({
@@ -223,20 +274,20 @@ function SummaryCard({
 }) {
   const toneClass =
     tone === 'success'
-      ? 'bg-green-50 text-green-700'
+      ? 'bg-green-50 text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
       : tone === 'muted'
-        ? 'bg-gray-100 text-gray-600'
-        : 'bg-blue-50 text-[#005bbf]';
+        ? 'bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300'
+        : 'bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300';
 
   return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold text-[#727785]">
+          <p className="text-xs font-semibold text-[#727785] dark:text-slate-400">
             {label}
           </p>
 
-          <p className="mt-2 text-2xl font-bold text-[#181c20]">
+          <p className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
             {value}
           </p>
         </div>
@@ -251,39 +302,158 @@ function SummaryCard({
   );
 }
 
+function UserActions({
+  user,
+  onEdit,
+  onDelete,
+  isBusy,
+  currentRole,
+}: {
+  user: SchoolUserRow;
+  onEdit: (user: SchoolUserRow) => void;
+  onDelete: (user: SchoolUserRow) => void;
+  isBusy: boolean;
+  currentRole: CurrentDatabaseRole | string | null;
+}) {
+  const userName = user.profile?.full_name ?? 'usuario';
+  const canDelete = !(currentRole === 'SECRETARY' && user.role === 'DIRECTOR');
+
+  return (
+    <ActionGroup>
+      <button
+        type="button"
+        title="Editar usuário"
+        aria-label={`Editar ${userName}`}
+        disabled={isBusy}
+        onClick={() => onEdit(user)}
+        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
+      >
+        <Edit3 className="h-4 w-4" aria-hidden="true" />
+      </button>
+
+      {canDelete && (
+        <button
+          type="button"
+          title="Excluir usuário"
+          aria-label={`Excluir ${userName}`}
+          disabled={isBusy}
+          onClick={() => onDelete(user)}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+        >
+          <Trash2 className="h-4 w-4" aria-hidden="true" />
+        </button>
+      )}
+    </ActionGroup>
+  );
+}
+
 function SchoolUsersTable({
   users,
+  onEdit,
+  onDelete,
+  isBusy,
+  currentRole,
 }: {
   users: SchoolUserRow[];
+  onEdit: (user: SchoolUserRow) => void;
+  onDelete: (user: SchoolUserRow) => void;
+  isBusy: boolean;
+  currentRole: CurrentDatabaseRole | string | null;
 }) {
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const syncViewport = () => setIsCompact(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener?.('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener?.('change', syncViewport);
+    };
+  }, []);
+
+  if (isCompact) {
+    return (
+      <div className="divide-y divide-[#dfe3e8] overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-900">
+        {users.map((user) => (
+          <article key={user.id} className="space-y-4 p-4">
+            <div className="grid gap-3 text-sm sm:grid-cols-2">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Nome</p>
+                <p className="mt-1 break-words font-semibold text-[#181c20] dark:text-white">{user.profile?.full_name ?? 'Perfil indisponível'}</p>
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">E-mail</p>
+                <p className="mt-1 break-words text-gray-600 dark:text-slate-300">{user.profile?.email ?? 'Não informado'}</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Papel atual</p>
+                <p className="mt-1"><span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">{schoolUserRoleLabels[user.role]}</span></p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Status</p>
+                <p
+                  className="mt-1"
+                  title={getSchoolUserAccessStatus(user).reason}
+                >
+                  <StatusBadge active={getSchoolUserAccessStatus(user).active} />
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Entrada</p>
+                <p className="mt-1 text-gray-600 dark:text-slate-300">{formatDate(user.joined_at)}</p>
+              </div>
+            </div>
+
+            <div className="flex justify-end border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
+              <UserActions
+                user={user}
+                onEdit={onEdit}
+                onDelete={onDelete}
+                isBusy={isBusy}
+                currentRole={currentRole}
+              />
+            </div>
+          </article>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
+    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50">
+        <table className="min-w-[800px] w-full text-sm">
+          <thead className="bg-gray-50 dark:bg-slate-800">
             <tr>
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Nome
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 E-mail
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Papel atual
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
-                Vínculo
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
+                Status
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Entrada
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
-                Perfil
+              <th className="px-4 py-3 text-right font-medium text-gray-700 dark:text-slate-300">
+                Ações
               </th>
             </tr>
           </thead>
@@ -292,20 +462,20 @@ function SchoolUsersTable({
             {users.map((user) => (
               <tr
                 key={user.id}
-                className="border-t transition-colors hover:bg-gray-50"
+                className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700"
               >
-                <td className="px-4 py-3 font-medium text-[#181c20]">
+                <td className="px-4 py-3 font-medium text-[#181c20] dark:text-white">
                   {user.profile?.full_name ??
                     'Perfil indisponível'}
                 </td>
 
-                <td className="px-4 py-3 text-gray-600">
+                <td className="px-4 py-3 text-gray-600 dark:text-slate-300">
                   {user.profile?.email ??
                     'Não informado'}
                 </td>
 
                 <td className="px-4 py-3">
-                  <span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf]">
+                  <span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">
                     {
                       schoolUserRoleLabels[
                         user.role
@@ -314,27 +484,211 @@ function SchoolUsersTable({
                   </span>
                 </td>
 
-                <td className="px-4 py-3">
+                <td
+                  className="px-4 py-3"
+                  title={getSchoolUserAccessStatus(user).reason}
+                >
                   <StatusBadge
-                    active={user.active}
+                    active={getSchoolUserAccessStatus(user).active}
                   />
                 </td>
 
-                <td className="px-4 py-3 text-gray-600">
+                <td className="px-4 py-3 text-gray-600 dark:text-slate-300">
                   {formatDate(user.joined_at)}
                 </td>
 
                 <td className="px-4 py-3">
-                  <StatusBadge
-                    active={
-                      user.profile?.active ?? null
-                    }
-                  />
+                  <div className="flex justify-end">
+                    <UserActions
+                      user={user}
+                      onEdit={onEdit}
+                      onDelete={onDelete}
+                      isBusy={isBusy}
+                      currentRole={currentRole}
+                    />
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+    </div>
+  );
+}
+
+function SchoolUserEditDialog({
+  user,
+  onClose,
+  onSubmit,
+  isSubmitting,
+  allowRoleChange,
+}: {
+  user: SchoolUserRow;
+  onClose: () => void;
+  onSubmit: (input: {
+    fullName: string;
+    role: EditableSchoolRole;
+    password: string;
+  }) => void;
+  isSubmitting: boolean;
+  allowRoleChange: boolean;
+}) {
+  const [fullName, setFullName] = useState(
+    user.profile?.full_name ?? '',
+  );
+  const [role, setRole] = useState<EditableSchoolRole>(user.role);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState<string | null>(null);
+
+  function handleSubmit() {
+    const trimmedPassword = password.trim();
+    if (trimmedPassword.length > 0 && trimmedPassword.length < 8) {
+      setPasswordError('A nova senha deve conter pelo menos 8 caracteres.');
+      return;
+    }
+
+    setPasswordError(null);
+    onSubmit({
+      fullName,
+      role,
+      password: trimmedPassword,
+    });
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="school-user-edit-title"
+    >
+      <div className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl dark:bg-slate-900">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3
+              id="school-user-edit-title"
+              className="text-lg font-bold text-[#181c20] dark:text-white"
+            >
+              Editar usuario
+            </h3>
+            <p className="mt-1 text-sm text-gray-600 dark:text-slate-300">
+              Atualize dados de acesso sem depender do e-mail de convite.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+            aria-label="Fechar"
+          >
+            <X className="h-4 w-4" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="mt-5 space-y-4">
+          <div>
+            <label
+              htmlFor="school-user-full-name"
+              className="text-sm font-semibold text-gray-700 dark:text-slate-200"
+            >
+              Nome completo
+            </label>
+            <input
+              id="school-user-full-name"
+              value={fullName}
+              onChange={(event) =>
+                setFullName(event.target.value)
+              }
+              className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="school-user-role"
+              className="text-sm font-semibold text-gray-700 dark:text-slate-200"
+            >
+              Papel
+            </label>
+            <select
+              id="school-user-role"
+              value={role}
+              disabled={!allowRoleChange}
+              onChange={(event) =>
+                setRole(
+                  event.target
+                    .value as EditableSchoolRole,
+                )
+              }
+              className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            >
+              {editableRoleOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                >
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label
+              htmlFor="school-user-password"
+              className="text-sm font-semibold text-gray-700 dark:text-slate-200"
+            >
+              Nova senha
+            </label>
+            <input
+              id="school-user-password"
+              type="password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+                if (passwordError) setPasswordError(null);
+              }}
+              placeholder="Deixe vazio para nao alterar"
+              className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            />
+            {passwordError ? (
+              <p className="mt-1 text-xs text-red-600 dark:text-red-400 font-medium">
+                {passwordError}
+              </p>
+            ) : (
+              <p className="mt-1 text-xs text-gray-500 dark:text-slate-400">
+                Minimo de 8 caracteres.
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="mt-6 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg border border-gray-300 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            disabled={isSubmitting}
+            onClick={handleSubmit}
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {isSubmitting && (
+              <Loader2
+                className="h-4 w-4 animate-spin"
+                aria-hidden="true"
+              />
+            )}
+            Salvar
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -361,14 +715,18 @@ function EmptyState({
         {!hasInstitution
           ? 'Selecione uma escola ativa para visualizar os usuários vinculados a ela.'
           : hasUsers
-          ? 'Ajuste a busca ou os filtros para localizar usuários por nome, e-mail ou papel.'
+          ? 'Ajuste a busca ou os filtros para localizar usuários por nome, e-mail, CPF ou papel.'
           : 'Quando houver vínculos ativos ou inativos em memberships para esta instituição, eles aparecerão nesta tela somente leitura.'}
       </p>
     </div>
   );
 }
 
-export default function SchoolUsersTab() {
+export default function SchoolUsersTab({
+  fixedRole,
+  inviteTargets,
+  inviteHeading,
+}: SchoolUsersTabProps = {}) {
   const { profile } = useAuth();
 
   const institutionQuery =
@@ -379,14 +737,40 @@ export default function SchoolUsersTab() {
 
   const usersQuery =
     useSchoolUsers(institutionId);
+  const manageUserMutation =
+    useManageSchoolUser();
 
   const [selectedRole, setSelectedRole] =
-    useState<RoleFilter>('ALL');
+    useState<RoleFilter>(fixedRole ?? 'ALL');
 
   const [searchTerm, setSearchTerm] =
     useState('');
+  const [currentPage, setCurrentPage] =
+    useState(1);
+  const [editingUser, setEditingUser] =
+    useState<SchoolUserRow | null>(null);
+  const [feedback, setFeedback] =
+    useState<{
+      type: 'success' | 'error';
+      message: string;
+    } | null>(null);
+
+  useEffect(() => {
+    if (!feedback) {
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      setFeedback(null);
+    }, 6000);
+
+    return () => window.clearTimeout(timer);
+  }, [feedback]);
 
   const users = usersQuery.data ?? [];
+
+  const effectiveSelectedRole =
+    fixedRole ?? selectedRole;
 
   const summary = useMemo(
     () => getSchoolUserSummary(users),
@@ -397,39 +781,134 @@ export default function SchoolUsersTab() {
     () =>
       filterSchoolUsers(
         users,
-        selectedRole,
+        effectiveSelectedRole,
         searchTerm,
       ),
-    [searchTerm, selectedRole, users],
+    [effectiveSelectedRole, searchTerm, users],
   );
 
-  const canManageSchoolUsers =
-    hasEffectivePermission({
-      platformRole: profile?.platform_role,
-      membershipRole:
-        institutionQuery.currentRole,
-      profileRole: profile?.role,
-      permission: 'manage_school_users',
-    });
+  const totalPages = Math.max(
+    1,
+    Math.ceil(
+      filteredUsers.length /
+        SCHOOL_USERS_PAGE_SIZE,
+    ),
+  );
 
-  const canOpenNewUserForm =
-    canManageSchoolUsers &&
-    Boolean(institutionId);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [effectiveSelectedRole, searchTerm]);
 
-  const newUserTitle =
-    canOpenNewUserForm
-      ? 'Abrir cadastro unificado de usuarios.'
-      : 'Seu papel efetivo nesta instituicao ainda nao permite gerenciar usuarios da escola.';
+  useEffect(() => {
+    setCurrentPage((page) =>
+      Math.min(page, totalPages),
+    );
+  }, [totalPages]);
 
-  function focusUnifiedInviteForm(): void {
-    document
-      .getElementById(
-        'unified-user-invite-preview',
-      )
-      ?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
+  const pageStart =
+    (currentPage - 1) *
+    SCHOOL_USERS_PAGE_SIZE;
+  const paginatedUsers = filteredUsers.slice(
+    pageStart,
+    pageStart + SCHOOL_USERS_PAGE_SIZE,
+  );
+
+  const isManaging =
+    manageUserMutation.isPending;
+
+  function handleEditSubmit(input: {
+    fullName: string;
+    role: EditableSchoolRole;
+    password: string;
+  }) {
+    if (!editingUser || !institutionId) {
+      return;
+    }
+
+    const fullName = input.fullName.trim();
+    const password = input.password.trim();
+    const originalName = editingUser.profile?.full_name ?? '';
+
+    const hasNameChanged = fullName !== '' && fullName !== originalName;
+    const hasRoleChanged = input.role !== editingUser.role;
+    const hasPassword = Boolean(password);
+
+    if (!hasNameChanged && !hasRoleChanged && !hasPassword) {
+      setFeedback({
+        type: 'error',
+        message: 'Nenhum dado foi alterado.',
       });
+      setEditingUser(null);
+      return;
+    }
+
+    manageUserMutation.mutate(
+      {
+        action: 'update',
+        institutionId,
+        membershipId: editingUser.id,
+        ...(hasNameChanged ? { fullName } : {}),
+        ...(hasRoleChanged ? { role: input.role } : {}),
+        ...(hasPassword ? { password } : {}),
+      },
+      {
+        onSuccess: (result) => {
+          setFeedback({
+            type: 'success',
+            message: result.message,
+          });
+          setEditingUser(null);
+        },
+        onError: (error) => {
+          setFeedback({
+            type: 'error',
+            message: getErrorMessage(error),
+          });
+        },
+      },
+    );
+  }
+
+  function handleDeleteUser(user: SchoolUserRow) {
+    if (!institutionId || isManaging) {
+      return;
+    }
+
+    const name =
+      user.profile?.full_name ??
+      user.profile?.email ??
+      'este usuario';
+
+    const confirmed = window.confirm(
+      `Excluir ${name}? Esta acao remove o vinculo da escola e pode remover o acesso do usuario se ele nao tiver outros vinculos.`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    manageUserMutation.mutate(
+      {
+        action: 'delete',
+        institutionId,
+        membershipId: user.id,
+        confirmation: 'EXCLUIR USUARIO',
+      },
+      {
+        onSuccess: (result) => {
+          setFeedback({
+            type: 'success',
+            message: result.message,
+          });
+        },
+        onError: (error) => {
+          setFeedback({
+            type: 'error',
+            message: getErrorMessage(error),
+          });
+        },
+      },
+    );
   }
 
   if (institutionQuery.isLoading) {
@@ -455,62 +934,47 @@ export default function SchoolUsersTab() {
 
   return (
     <div className="space-y-5">
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-          <div>
-            <h3 className="text-lg font-bold text-[#181c20]">
-              Usuários da Escola
-            </h3>
-
-            <p className="mt-1 text-sm text-[#727785]">
-              Vínculos atuais da instituição com base em memberships e profiles.
-            </p>
-          </div>
-
-          <div className="lg:max-w-sm lg:text-right">
-            <button
-              type="button"
-              disabled={!canOpenNewUserForm}
-              title={newUserTitle}
-              aria-describedby="new-user-disabled-help"
-              onClick={focusUnifiedInviteForm}
-              className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors ${
-                canOpenNewUserForm
-                  ? 'bg-[#005bbf] text-white hover:bg-[#004a9f]'
-                  : 'cursor-not-allowed bg-gray-200 text-gray-500'
-              }`}
-            >
-              <PlusCircle
-                className="h-4 w-4"
-                aria-hidden="true"
-              />
-              Novo usuário
-            </button>
-
-            <p
-              id="new-user-disabled-help"
-              className="mt-2 text-xs leading-relaxed text-[#727785]"
-            >
-              Use o cadastro unificado abaixo para convidar diretores, secretaria, professores, alunos e responsaveis.
-            </p>
-          </div>
+      {feedback && (
+        <div
+          role="alert"
+          className={`rounded-xl border p-4 text-sm ${
+            feedback.type === 'success'
+              ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+              : 'border-red-200 bg-red-50 text-red-700'
+          }`}
+        >
+          {feedback.message}
         </div>
-      </section>
+      )}
 
-      <UnifiedUserInvitePreview
-        institutionId={institutionId}
-        currentRole={
-          institutionQuery.currentRole
-        }
-        profileRole={profile?.role}
-        currentInstitutionName={
-          institutionQuery.currentInstitution
-            ?.name ?? null
-        }
-        hasActiveInstitution={Boolean(
-          institutionId,
-        )}
-      />
+      <div
+        role="note"
+        className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
+      >
+        <strong>Exclusão protegida:</strong> alunos com notas, frequência ou
+        fechamento de período não podem ser excluídos. O bloqueio preserva o
+        histórico acadêmico; alunos sem esses registros podem ser removidos
+        normalmente.
+      </div>
+
+      {inviteTargets ? (
+        <UnifiedUserInvitePreview
+          institutionId={institutionId}
+          currentRole={
+            institutionQuery.currentRole
+          }
+          profileRole={profile?.role}
+          currentInstitutionName={
+            institutionQuery.currentInstitution
+              ?.name ?? null
+          }
+          hasActiveInstitution={Boolean(
+            institutionId,
+          )}
+          allowedTargets={inviteTargets}
+          heading={inviteHeading}
+        />
+      ) : null}
 
       <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <SummaryCard
@@ -548,8 +1012,8 @@ export default function SchoolUsersTab() {
           }
         />
 
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
-          <p className="text-xs font-semibold text-[#727785]">
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p className="text-xs font-semibold text-[#727785] dark:text-slate-400">
             Total por papel
           </p>
 
@@ -560,10 +1024,10 @@ export default function SchoolUsersTab() {
                   key={role}
                   className="flex items-center justify-between gap-2"
                 >
-                  <dt className="truncate text-[#727785]">
+                  <dt className="truncate text-[#727785] dark:text-slate-400">
                     {schoolUserRoleLabels[role]}
                   </dt>
-                  <dd className="font-bold text-[#181c20]">
+                  <dd className="font-bold text-[#181c20] dark:text-white">
                     {summary.byRole[role]}
                   </dd>
                 </div>
@@ -575,10 +1039,10 @@ export default function SchoolUsersTab() {
 
       <section className="space-y-3">
         <div className="grid gap-3 lg:grid-cols-[minmax(240px,1fr)_auto] lg:items-end">
-          <div>
+          <div className="rounded-xl border border-[#dfe3e8] bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <label
               htmlFor="school-users-search"
-              className="block text-sm font-medium text-[#414754]"
+              className="block text-sm font-medium text-[#414754] dark:text-slate-300"
             >
               Buscar usuário
             </label>
@@ -598,40 +1062,46 @@ export default function SchoolUsersTab() {
                     event.target.value,
                   )
                 }
-                placeholder="Nome, e-mail ou papel"
-                className="w-full rounded-lg border border-[#dfe3e8] bg-white py-2 pl-9 pr-3 text-sm text-[#181c20] outline-none transition-colors placeholder:text-gray-400 focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                placeholder="Nome, e-mail, CPF ou papel"
+                className="w-full rounded-lg border border-[#dfe3e8] bg-white py-2 pl-9 pr-3 text-sm text-[#181c20] outline-none transition-colors placeholder:text-gray-400 focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-400 dark:focus:ring-blue-900/40"
               />
             </div>
           </div>
 
-          <div
-            className="flex flex-wrap gap-2"
-            aria-label="Filtrar usuários por papel"
-          >
-            {filterOptions.map((option) => (
-              <button
-                key={option.value}
-                type="button"
-                aria-pressed={
-                  selectedRole === option.value
-                }
-                onClick={() =>
-                  setSelectedRole(option.value)
-                }
-                className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
-                  selectedRole === option.value
-                    ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
-                    : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50'
-                }`}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
+          {!fixedRole ? (
+            <div
+              className="flex flex-wrap gap-2"
+              aria-label="Filtrar usuários por papel"
+            >
+              {filterOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  aria-pressed={
+                    selectedRole === option.value
+                  }
+                  onClick={() =>
+                    setSelectedRole(option.value)
+                  }
+                  className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
+                    selectedRole === option.value
+                      ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
+                      : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <span className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-medium text-[#005bbf] dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-300">
+              {schoolUserRoleLabels[fixedRole]}
+            </span>
+          )}
         </div>
 
         {usersQuery.isLoading ? (
-          <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
+          <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
             Carregando usuários...
           </div>
         ) : usersQuery.isError ? (
@@ -655,10 +1125,81 @@ export default function SchoolUsersTab() {
           />
         ) : (
           <SchoolUsersTable
-            users={filteredUsers}
+            users={paginatedUsers}
+            onEdit={setEditingUser}
+            onDelete={handleDeleteUser}
+            isBusy={isManaging}
+            currentRole={institutionQuery.currentRole}
           />
         )}
+
+        {filteredUsers.length > SCHOOL_USERS_PAGE_SIZE && (
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600 dark:border-slate-700">
+            <span className="dark:text-slate-300">
+              Mostrando {pageStart + 1}–
+              {Math.min(
+                pageStart + SCHOOL_USERS_PAGE_SIZE,
+                filteredUsers.length,
+              )}{' '}
+              de {filteredUsers.length}
+            </span>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Página anterior"
+                title="Página anterior"
+                disabled={currentPage === 1}
+                onClick={() =>
+                  setCurrentPage((page) =>
+                    Math.max(1, page - 1),
+                  )
+                }
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              >
+                <ChevronLeft
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                />
+                Anterior
+              </button>
+
+              <span className="whitespace-nowrap font-medium text-gray-700">
+                Página {currentPage} de {totalPages}
+              </span>
+
+              <button
+                type="button"
+                aria-label="Próxima página"
+                title="Próxima página"
+                disabled={currentPage === totalPages}
+                onClick={() =>
+                  setCurrentPage((page) =>
+                    Math.min(totalPages, page + 1),
+                  )
+                }
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+              >
+                Próxima
+                <ChevronRight
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+          </div>
+        )}
       </section>
+
+      {editingUser && (
+        <SchoolUserEditDialog
+          user={editingUser}
+          onClose={() => setEditingUser(null)}
+          onSubmit={handleEditSubmit}
+          isSubmitting={isManaging}
+          allowRoleChange={!(institutionQuery.currentRole === 'SECRETARY' && editingUser.role === 'DIRECTOR')}
+        />
+      )}
     </div>
   );
 }

@@ -15,6 +15,7 @@ import {
   it,
   vi,
 } from 'vitest';
+import { MemoryRouter } from 'react-router-dom';
 
 import {
   useAuth,
@@ -25,6 +26,8 @@ import {
 import {
   useCurrentInstitution,
 } from '../../../hooks/useCurrentInstitution';
+import { useSchoolSetupReadiness } from '../../../hooks/useSchoolSetupReadiness';
+import type { DatabaseRole } from '../../../lib/roles';
 
 import AdminOverviewTab from './AdminOverviewTab';
 
@@ -40,12 +43,19 @@ vi.mock('../../../hooks/useAdminOverview', () => ({
   useAdminOverview: vi.fn(),
 }));
 
+vi.mock('../../../hooks/useSchoolSetupReadiness', () => ({
+  useSchoolSetupReadiness: vi.fn(),
+}));
+
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseCurrentInstitution = vi.mocked(
   useCurrentInstitution,
 );
 const mockedUseAdminOverview = vi.mocked(
   useAdminOverview,
+);
+const mockedUseSchoolSetupReadiness = vi.mocked(
+  useSchoolSetupReadiness,
 );
 
 const overviewData = {
@@ -70,14 +80,20 @@ const overviewData = {
   warnings: [],
 };
 
-function mockOverviewState() {
+function mockOverviewState({
+  profileRole = 'DIRECTOR',
+  currentRole = profileRole,
+}: {
+  profileRole?: DatabaseRole;
+  currentRole?: DatabaseRole | null;
+} = {}) {
   mockedUseAuth.mockReturnValue({
     user: null,
     profile: {
       id: 'profile-1',
       full_name: 'Ana Admin',
       email: 'ana@example.com',
-      role: 'DIRECTOR',
+      role: profileRole,
       platform_role: 'USER',
       avatar_url: null,
     },
@@ -103,7 +119,7 @@ function mockOverviewState() {
     },
     currentMembership: null,
     currentInstitutionId: 'institution-1',
-    currentRole: 'DIRECTOR',
+    currentRole,
     isLoading: false,
     isError: false,
     error: null,
@@ -117,6 +133,41 @@ function mockOverviewState() {
     isError: false,
     error: null,
   } as ReturnType<typeof useAdminOverview>);
+
+  mockedUseSchoolSetupReadiness.mockReturnValue({
+    data: {
+      institutionId: 'institution-1',
+      steps: [],
+      completedCount: 7,
+      totalCount: 7,
+      progress: 100,
+      configured: true,
+      academicSetupConfigured: true,
+      academicSetupStatus: 'CONFIGURED',
+      status: 'CONFIGURED',
+      nextStepId: null,
+      review: {
+        academicYearName: '2026',
+        termCount: 4,
+        subjectCount: 8,
+        classCount: 3,
+        curriculumClassCount: 3,
+        timetableClassCount: 3,
+      },
+      publishedVersionId: 'version-1',
+      operationalReadiness: {
+        blockers: [],
+        completedCount: 0,
+        totalCount: 0,
+        progress: 0,
+        ready: false,
+      },
+      optionalSetup: { brandingConfigured: false },
+    },
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as ReturnType<typeof useSchoolSetupReadiness>);
 }
 
 beforeEach(() => {
@@ -128,75 +179,51 @@ afterEach(() => {
   cleanup();
 });
 
-describe('AdminOverviewTab setup checklist', () => {
-  it('mostra etapas concluidas e pendentes usando dados reais', () => {
+describe('AdminOverviewTab', () => {
+  it('renderiza os cards de métricas e a revisão quando a escola está configurada', () => {
     render(
-      <AdminOverviewTab
-        availableModuleIds={[
-          'academic-years',
-          'subjects',
-          'classes',
-          'teachers',
-          'assignments',
-          'enrollments',
-        ]}
-      />,
+      <MemoryRouter>
+        <AdminOverviewTab
+          availableModuleIds={[
+            'academic-years',
+            'subjects',
+            'classes',
+            'teachers',
+            'assignments',
+            'enrollments',
+          ]}
+        />
+      </MemoryRouter>,
     );
 
-    const checklist = screen
-      .getByText(/configura..o inicial da escola/i)
-      .closest('article');
+    expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
+    expect(screen.getByText(/professores ativos/i)).toBeTruthy();
+    expect(screen.getAllByText(/turmas ativas/i).length).toBeGreaterThan(0);
 
-    expect(checklist).toBeTruthy();
-    expect(
-      within(checklist!).getByText(
-        /institui..o selecionada/i,
-      ),
-    ).toBeTruthy();
-    expect(
-      within(checklist!).getByText(
-        /criar ano letivo/i,
-      ),
-    ).toBeTruthy();
-    expect(
-      within(checklist!).getByText(
-        /adicionar disciplinas/i,
-      ),
-    ).toBeTruthy();
-    expect(
-      within(checklist!).getAllByText(
-        /conclu.do/i,
-      ).length,
-    ).toBeGreaterThan(0);
-    expect(
-      within(checklist!).getAllByText(
-        /pendente/i,
-      ).length,
-    ).toBeGreaterThan(0);
+    expect(screen.getByText(/^configuração da escola$/i)).toBeTruthy();
+    expect(screen.queryByText(/^fundação$/i)).toBeNull();
+    expect(screen.getAllByText(/prontidão da escola/i).length).toBeGreaterThan(0);
+    expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
+    expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
+    expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
   });
 
-  it('abre o modulo correspondente de uma etapa incompleta', () => {
-    const onNavigateToModule = vi.fn();
+  it('exibe somente o acesso de configuração para ADMIN', () => {
+    mockOverviewState({
+      profileRole: 'ADMIN',
+      currentRole: 'ADMIN',
+    });
 
     render(
-      <AdminOverviewTab
-        availableModuleIds={[
-          'subjects',
-        ]}
-        onNavigateToModule={
-          onNavigateToModule
-        }
-      />,
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
     );
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /adicionar disciplinas/i,
-      }),
-    );
-
-    expect(onNavigateToModule).toHaveBeenCalledWith(
-      'subjects',
-    );
+    expect(screen.getByText(/^acesso de configuração$/i)).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: /^base acadêmica$/i })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /^equipe$/i })).toBeNull();
+    expect(screen.queryByText(/gerenciar acesso/i)).toBeNull();
+    expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
   });
 });

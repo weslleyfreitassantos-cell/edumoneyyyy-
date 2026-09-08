@@ -2,7 +2,21 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react';
 
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+import {
+  Edit3,
+  LoaderCircle,
+  Settings2,
+  Trash2,
+} from 'lucide-react';
+
 import { DataTable, type Column } from '../../../components/DataTable';
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
+import CurriculumTemplatePanel from '../../../components/academic/CurriculumTemplatePanel';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -12,8 +26,8 @@ import { useSubjects } from '../../../hooks/useSubjects';
 import {
   useCurriculum,
   useCreateCurriculumItem,
+  useDeleteCurriculumItem,
   useUpdateCurriculumItem,
-  useSetCurriculumItemActive,
 } from '../../../hooks/useCurriculum';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -25,6 +39,7 @@ import {
   type CurriculumItemRow,
   type CurriculumTeacherInfo,
 } from '../../../services/curriculumService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface ItemDraft {
   class_id: string;
@@ -44,24 +59,10 @@ const emptyDraft: ItemDraft = {
   lesson_duration_minutes: '50',
 };
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as Record<string, unknown>).message === 'string') return (error as Record<string, unknown>).message as string;
-  return 'Não foi possível concluir a operação.';
-}
+const CURRICULUM_PAGE_SIZE = 10;
 
-function StatusBadge({ active }: { active: boolean }) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
+function getErrorMessage(error: unknown): string {
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function toCreatePayload(institutionId: string, draft: ItemDraft) {
@@ -88,8 +89,8 @@ export default function CurriculumTab() {
   const curriculumQuery = useCurriculum(institutionId);
 
   const createMutation = useCreateCurriculumItem();
+  const deleteMutation = useDeleteCurriculumItem();
   const updateMutation = useUpdateCurriculumItem();
-  const statusMutation = useSetCurriculumItemActive();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState<CurriculumItemRow | null>(null);
@@ -97,14 +98,22 @@ export default function CurriculumTab() {
 
   const [yearFilter, setYearFilter] = useState('all');
   const [classFilter, setClassFilter] = useState('all');
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(1);
   const [modalError, setModalError] = useState<string | null>(null);
 
   useEffect(() => {
     const classId = searchParams.get('classId');
     if (classId) setClassFilter(classId);
   }, [searchParams]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [yearFilter, classFilter, search]);
+
   const [pageError, setPageError] = useState<string | null>(null);
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+  const [isTemplatePanelOpen, setIsTemplatePanelOpen] = useState(false);
 
   const [teachersCache, setTeachersCache] = useState<Record<string, TeachersByTerm>>({});
 
@@ -114,12 +123,31 @@ export default function CurriculumTab() {
 
   const filteredItems = useMemo(() => {
     const items = curriculumQuery.data ?? [];
+    const normalizedSearch = normalizeListSearch(search);
     return items.filter((item) => {
       const matchesYear = yearFilter === 'all' || item.academic_year_id === yearFilter;
       const matchesClass = classFilter === 'all' || item.class_id === classFilter;
-      return matchesYear && matchesClass;
+      const matchesSearch = !normalizedSearch || [
+        item.class_name,
+        item.subject_name,
+        item.subject_code,
+      ].some((value) => normalizeListSearch(value ?? '').includes(normalizedSearch));
+      return matchesYear && matchesClass && matchesSearch;
     });
-  }, [curriculumQuery.data, yearFilter, classFilter]);
+  }, [curriculumQuery.data, yearFilter, classFilter, search]);
+
+  const paginatedItems = useMemo(() => {
+    const start = (page - 1) * CURRICULUM_PAGE_SIZE;
+    return filteredItems.slice(start, start + CURRICULUM_PAGE_SIZE);
+  }, [filteredItems, page]);
+
+  useEffect(() => {
+    const totalPages = Math.max(
+      1,
+      Math.ceil(filteredItems.length / CURRICULUM_PAGE_SIZE),
+    );
+    setPage((currentPage) => Math.min(currentPage, totalPages));
+  }, [filteredItems.length]);
 
   const totalWeeklyMinutes = useMemo(() => {
     return filteredItems.reduce((sum, item) => sum + item.weekly_minutes, 0);
@@ -310,18 +338,15 @@ export default function CurriculumTab() {
     }
   }
 
-  async function handleToggleStatus(item: CurriculumItemRow): Promise<void> {
-    const nextActive = !item.active;
-    const action = nextActive ? 'reativar' : 'desativar';
-
-    if (!window.confirm(`Deseja ${action} o item da matriz para a disciplina ${item.subject_name}?`)) return;
+  async function handleDelete(item: CurriculumItemRow): Promise<void> {
+    if (!window.confirm(`Excluir definitivamente a disciplina ${item.subject_name} da turma ${item.class_name}?`)) return;
 
     setPageError(null);
     setFeedbackMessage(null);
 
     try {
-      await statusMutation.mutateAsync({ id: item.id, institutionId, active: nextActive });
-      setFeedbackMessage(nextActive ? 'Item reativado.' : 'Item desativado.');
+      await deleteMutation.mutateAsync({ id: item.id, institutionId });
+      setFeedbackMessage('Item da matriz excluído com sucesso.');
     } catch (error) {
       setPageError(getErrorMessage(error));
     }
@@ -361,7 +386,15 @@ export default function CurriculumTab() {
         </div>
       )}
 
-      <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:items-end">
+      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 md:grid-cols-4 md:items-end">
+        <ListSearch
+          id="curriculum-search"
+          label="Buscar na matriz"
+          placeholder="Turma ou disciplina"
+          value={search}
+          onChange={setSearch}
+        />
+
         <div>
           <label htmlFor="curriculum-year-filter" className="block text-sm font-medium text-gray-700">
             Ano letivo
@@ -398,6 +431,10 @@ export default function CurriculumTab() {
             ))}
           </select>
         </div>
+
+        <p className="text-sm text-[#667085] md:pb-2">
+          {filteredItems.length} item(ns) encontrado(s)
+        </p>
       </section>
 
       {filteredItems.length > 0 && (
@@ -411,16 +448,19 @@ export default function CurriculumTab() {
       <DataTable
         title="Matriz curricular"
         addLabel="Adicionar disciplina"
-        data={filteredItems}
+        data={paginatedItems}
         columns={columns}
         isLoading={curriculumQuery.isLoading || classesQuery.isLoading || subjectsQuery.isLoading}
         onAdd={openCreateModal}
+        actionCellClassName="min-w-[116px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
+        extraHeaderActions={<button type="button" onClick={() => setIsTemplatePanelOpen(true)} className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-50">Modelos de matriz</button>}
         emptyMessage="Nenhum item encontrado para os filtros selecionados."
         renderActions={(item) => {
-          const isChangingStatus = statusMutation.isPending && statusMutation.variables?.id === item.id;
+          const isDeleting = deleteMutation.isPending && deleteMutation.variables?.id === item.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <>
               {item.needs_review && (
                 <span className="text-xs font-semibold text-amber-600">Revisão pendente</span>
               )}
@@ -430,32 +470,45 @@ export default function CurriculumTab() {
                   setTeachersCache({});
                   openEditModal(item);
                 }}
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar ${item.subject_name} na turma ${item.class_name}`}
+                aria-label={`Editar ${item.subject_name} na turma ${item.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
                 onClick={() => handleNavigateToAssignments(item)}
-                className="font-medium text-indigo-600 hover:text-indigo-800"
+                title={`Ver atribuições de ${item.subject_name} na turma ${item.class_name}`}
+                aria-label={`Ver atribuições de ${item.subject_name} na turma ${item.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-indigo-200 text-indigo-700 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-indigo-800 dark:text-indigo-300 dark:hover:bg-slate-700"
               >
-                Atribuições
+                <Settings2 className="h-4 w-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
-                disabled={isChangingStatus}
-                onClick={() => void handleToggleStatus(item)}
-                className={
-                  item.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
-                }
+                disabled={isDeleting}
+                onClick={() => void handleDelete(item)}
+                title={`Excluir ${item.subject_name} da turma ${item.class_name}`}
+                aria-label={`Excluir ${item.subject_name} da turma ${item.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
               >
-                {isChangingStatus ? 'Salvando...' : item.active ? 'Desativar' : 'Reativar'}
+                {isDeleting ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
+      />
+
+      <ListPagination
+        page={page}
+        pageSize={CURRICULUM_PAGE_SIZE}
+        totalItems={filteredItems.length}
+        onPageChange={setPage}
       />
 
       {isModalOpen && (
@@ -571,6 +624,8 @@ export default function CurriculumTab() {
           </div>
         </div>
       )}
+
+      {isTemplatePanelOpen && <CurriculumTemplatePanel institutionId={institutionId} subjects={subjects} classes={classes} onClose={() => setIsTemplatePanelOpen(false)} />}
     </div>
   );
 }

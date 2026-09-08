@@ -142,6 +142,42 @@ describe('profileService', () => {
     expect(supabase.auth.updateUser).not.toHaveBeenCalled();
   });
 
+  it('informa quando o Auth rejeita a mesma senha atual', async () => {
+    vi.mocked(supabase.auth.updateUser).mockResolvedValue({
+      data: { user: null },
+      error: {
+        code: 'same_password',
+        status: 422,
+        message: 'New password should be different from the old password.',
+      },
+    } as never);
+
+    await expect(
+      updateCurrentPassword('SenhaSegura123!'),
+    ).rejects.toMatchObject({
+      code: 'PASSWORD_REUSED',
+      message: 'A nova senha deve ser diferente da senha atual.',
+    });
+  });
+
+  it('informa quando o Auth rejeita a politica de senha em producao', async () => {
+    vi.mocked(supabase.auth.updateUser).mockResolvedValue({
+      data: { user: null },
+      error: {
+        code: 'weak_password',
+        status: 422,
+        message: 'Password is too weak.',
+      },
+    } as never);
+
+    await expect(
+      updateCurrentPassword('SenhaSegura123!'),
+    ).rejects.toMatchObject({
+      code: 'PASSWORD_POLICY_FAILED',
+      message: 'A nova senha não atende aos requisitos de segurança configurados.',
+    });
+  });
+
   it('não registra a senha nem expõe detalhes internos quando updateUser falha', async () => {
     const consoleError = vi
       .spyOn(console, 'error')

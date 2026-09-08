@@ -25,7 +25,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useSubjects } from '../../../hooks/useSubjects';
-import { useCurriculum } from '../../../hooks/useCurriculum';
+import { useCurriculum, useDeleteCurriculumItem } from '../../../hooks/useCurriculum';
 
 vi.mock('../../../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
@@ -50,6 +50,7 @@ vi.mock('../../../hooks/useSubjects', () => ({
 vi.mock('../../../hooks/useCurriculum', () => ({
   useCurriculum: vi.fn(),
   useCreateCurriculumItem: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
+  useDeleteCurriculumItem: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
   useUpdateCurriculumItem: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
   useSetCurriculumItemActive: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
 }));
@@ -189,8 +190,42 @@ describe('CurriculumTab', () => {
 
   it('filtra por turma', () => {
     renderTab();
-    const classSelect = screen.getByLabelText(/turma/i);
+    const classSelect = screen.getByRole('combobox', { name: /^Turma$/i });
     expect(classSelect).toBeTruthy();
+  });
+
+  it('busca por turma ou disciplina', () => {
+    renderTab();
+    fireEvent.change(screen.getByLabelText(/buscar na matriz/i), {
+      target: { value: 'matemática' },
+    });
+
+    expect(screen.getByText('Matemática')).toBeTruthy();
+    expect(screen.queryByText('Português')).toBeNull();
+  });
+
+  it('limita a matriz e permite navegar entre páginas', () => {
+    vi.mocked(useCurriculum).mockReturnValue({
+      data: Array.from({ length: 11 }, (_, index) => ({
+        ...baseItems[0],
+        id: `item-${index + 1}`,
+        subject_id: `subj-${index + 1}`,
+        subject_name: `Disciplina ${index + 1}`,
+      })),
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    renderTab();
+
+    expect(screen.getByText('Mostrando 1–10 de 11')).toBeTruthy();
+    expect(screen.queryByText('Disciplina 11')).toBeNull();
+
+    fireEvent.click(screen.getByLabelText('Próxima página'));
+
+    expect(screen.getByText('Página 2 de 2')).toBeTruthy();
+    expect(screen.getByText('Disciplina 11')).toBeTruthy();
   });
 
   it('abre modal de criacao ao clicar em Adicionar', () => {
@@ -201,8 +236,33 @@ describe('CurriculumTab', () => {
 
   it('navega para atribuicoes ao clicar no botao', () => {
     renderTab();
-    const buttons = screen.getAllByText('Atribuições');
-    expect(buttons.length).toBeGreaterThanOrEqual(1);
+    expect(
+      screen.getByRole('button', {
+        name: /Ver atribuições de Português na turma 1A/i,
+      }),
+    ).toBeTruthy();
+  });
+
+  it('exclui o item depois de confirmar', () => {
+    const mutateAsync = vi.fn().mockResolvedValue(undefined);
+    vi.mocked(useDeleteCurriculumItem).mockReturnValue({
+      mutateAsync,
+      isPending: false,
+    } as never);
+    const confirmSpy = vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    renderTab();
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir Português da turma 1A/i,
+      }),
+    );
+
+    expect(confirmSpy).toHaveBeenCalledWith(
+      'Excluir definitivamente a disciplina Português da turma 1A?',
+    );
+    expect(mutateAsync).toHaveBeenCalledWith({ id: 'item-1', institutionId: 'inst-1' });
+    confirmSpy.mockRestore();
   });
 
   it('pre-classifica classId da URL', () => {

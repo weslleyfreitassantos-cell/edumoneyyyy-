@@ -2,6 +2,12 @@ node_modules/
 build/
 dist/
 coverage/
+/outputs/
+.camera-lab/
+scripts/cameras/.camera-lab/
+*.mp4
+*.mkv
+*.tsm
 .DS_Store
 *.log
 .env*
@@ -10,3 +16,4 @@ coverage/
 supabase/.temp/
 *.dump
 *.backup
+scripts/db/production-cleanup-execute.sql

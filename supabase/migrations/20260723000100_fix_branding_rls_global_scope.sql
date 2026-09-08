@@ -1,4 +1,4 @@
-﻿begin;
+begin;
 
 drop policy if exists branding_settings_select_policy
   on public.branding_settings;

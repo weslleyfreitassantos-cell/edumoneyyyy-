@@ -5,6 +5,7 @@ import {
 } from '@tanstack/react-query';
 
 import { adminOverviewKeys } from './useAdminOverview';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   academicStructureService,
@@ -48,6 +49,7 @@ function invalidateAcademicStructure(
           institutionId,
         ),
     }),
+    invalidateSchoolSetupReadiness(queryClient, institutionId),
   ]);
 }
 
@@ -106,6 +108,31 @@ export function useUpdateAcademicYear() {
           institutionId,
           data,
         ),
+
+    onSuccess: async (_result, variables) => {
+      await invalidateAcademicStructure(
+        queryClient,
+        variables.institutionId,
+      );
+    },
+  });
+}
+
+export function useDeleteAcademicYear() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      institutionId,
+    }: {
+      id: string;
+      institutionId: string;
+    }) =>
+      academicStructureService.deleteAcademicYear(
+        id,
+        institutionId,
+      ),
 
     onSuccess: async (_result, variables) => {
       await invalidateAcademicStructure(

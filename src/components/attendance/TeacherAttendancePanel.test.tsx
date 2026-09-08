@@ -49,10 +49,17 @@ const offering = {
   teacherName: 'Professora Ana',
   teacherEmail: 'ana@escola.com',
   termName: '1º bimestre',
+  termStartDate: '2026-02-09',
+  termEndDate: '2026-05-09',
 };
 
 const rollCall = {
   offering,
+  scheduleSlot: {
+    dayOfWeek: 1,
+    startTime: '07:00:00',
+    endTime: '07:50:00',
+  },
   session: {
     id: 'session-1',
     institutionId: 'institution-1',
@@ -167,6 +174,18 @@ describe('TeacherAttendancePanel', () => {
         /Sessão carregada para correção/,
       ),
     ).toBeTruthy();
+    const dateInput = screen.getByLabelText('Data');
+    expect(dateInput.getAttribute('lang')).toBe('pt-BR');
+    expect(dateInput.getAttribute('min')).toBe('2026-02-09');
+    expect(dateInput.getAttribute('max')).toBe('2026-05-09');
+    expect(
+      screen.getByText(
+        'Período permitido: 09/02/2026 a 09/05/2026.',
+      ),
+    ).toBeTruthy();
+    expect(
+      screen.getByText('Aula prevista: 07:00 a 07:50'),
+    ).toBeTruthy();
     expect(
       screen.getByText('Ana Silva'),
     ).toBeTruthy();
@@ -182,6 +201,10 @@ describe('TeacherAttendancePanel', () => {
         institutionId="institution-1"
       />,
     );
+
+    fireEvent.change(screen.getByLabelText('Data'), {
+      target: { value: '2026-03-02' },
+    });
 
     fireEvent.click(
       screen.getByRole('button', {

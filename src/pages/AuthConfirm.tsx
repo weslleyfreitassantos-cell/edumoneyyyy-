@@ -10,6 +10,10 @@ import {
   authPrimaryActionLinkClass,
 } from '../components/auth/AuthLayout';
 import { supabase } from '../lib/supabaseClient';
+import {
+  clearInstitutionSsoSelectionCookie,
+  getInstitutionSsoSelectionCookie,
+} from '../lib/subdomain';
 
 export interface InviteContext {
   userId: string;
@@ -56,14 +60,17 @@ type InviteConfirmation =
       kind: 'session';
       accessToken: string;
       refreshToken: string;
+      flow: 'invite' | 'sso';
     }
   | {
       kind: 'code';
       code: string;
+      flow: 'invite';
     }
   | {
       kind: 'otp';
       tokenHash: string;
+      flow: 'invite';
     };
 
 function getInviteConfirmationFromUrl(): InviteConfirmation {
@@ -74,12 +81,18 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
   const tokenHash = searchParams.get('token_hash');
   const code = searchParams.get('code');
   const type = hashParams.get('type') ?? searchParams.get('type');
+  const isSsoHandoff =
+    searchParams.get('handoff') === 'sso' ||
+    type === 'magiclink';
 
   if ((!accessToken || !refreshToken) && !tokenHash && !code) {
     throw new Error('Link de convite inválido ou ausente.');
   }
 
-  if (type && type !== 'invite') {
+  if (
+    (isSsoHandoff && type !== 'magiclink') ||
+    (!isSsoHandoff && type && type !== 'invite')
+  ) {
     throw new Error('Tipo de confirmação inválido.');
   }
 
@@ -88,6 +101,7 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
       kind: 'session',
       accessToken,
       refreshToken,
+      flow: isSsoHandoff ? 'sso' : 'invite',
     };
   }
 
@@ -95,13 +109,77 @@ function getInviteConfirmationFromUrl(): InviteConfirmation {
     return {
       kind: 'code',
       code,
+      flow: 'invite',
     };
   }
 
   return {
     kind: 'otp',
     tokenHash: tokenHash!,
+    flow: 'invite',
   };
+}
+
+function getSsoContext(): {
+  returnPath: '/admin' | '/account';
+  institutionId: string | null;
+} {
+  const searchParams = new URLSearchParams(window.location.search);
+  const returnTo = searchParams.get('returnTo');
+  const institutionId =
+    searchParams.get('institutionId') ??
+    getInstitutionSsoSelectionCookie();
+
+  return {
+    returnPath: returnTo === '/account' ? '/account' : '/admin',
+    institutionId:
+      institutionId &&
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+        institutionId,
+      )
+        ? institutionId
+        : null,
+  };
+}
+
+function saveSsoInstitutionSelection(
+  userId: string,
+  institutionId: string | null,
+): void {
+  if (!institutionId) return;
+
+  window.localStorage.setItem(
+    `edumanager.currentInstitutionId.${userId}`,
+    institutionId,
+  );
+}
+
+async function hasCurrentInviteSession(
+  context: InviteContext,
+): Promise<boolean> {
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  return Boolean(
+    !error &&
+      user &&
+      user.id === context.userId &&
+      user.email === context.email,
+  );
+}
+
+async function markClientAdminInvitationAccepted(): Promise<void> {
+  if (typeof supabase.rpc !== 'function') {
+    return;
+  }
+
+  try {
+    await supabase.rpc('mark_client_admin_invitation_accepted');
+  } catch {
+    // The invitation state is auxiliary; never block a valid auth callback.
+  }
 }
 
 export default function AuthConfirm() {
@@ -117,7 +195,24 @@ export default function AuthConfirm() {
 
     async function confirmInvite() {
       try {
-        const confirmation = getInviteConfirmationFromUrl();
+        let confirmation: InviteConfirmation | null = null;
+
+        try {
+          confirmation = getInviteConfirmationFromUrl();
+        } catch (inviteError) {
+          const existingContext = getInviteContext();
+
+          if (
+            existingContext &&
+            (await hasCurrentInviteSession(existingContext))
+          ) {
+            clearInviteTokensFromUrl();
+            navigate('/set-password', { replace: true });
+            return;
+          }
+
+          throw inviteError;
+        }
 
         clearInviteContext();
 
@@ -154,6 +249,27 @@ export default function AuthConfirm() {
           }
         }
 
+        if (confirmation.flow === 'sso') {
+          const ssoContext = getSsoContext();
+          const {
+            data: { user },
+            error: userError,
+          } = await supabase.auth.getUser();
+
+          if (userError || !user) {
+            throw new Error('Falha ao restaurar a sessão administrativa.');
+          }
+
+          saveSsoInstitutionSelection(
+            user.id,
+            ssoContext.institutionId,
+          );
+          clearInstitutionSsoSelectionCookie();
+          clearInviteTokensFromUrl();
+          navigate(ssoContext.returnPath, { replace: true });
+          return;
+        }
+
         const {
           data: { user },
           error: userError,
@@ -162,6 +278,8 @@ export default function AuthConfirm() {
         if (userError || !user || !user.email) {
           throw new Error('Falha ao obter identidade do convite.');
         }
+
+        await markClientAdminInvitationAccepted();
 
         saveInviteContext({
           userId: user.id,
@@ -195,7 +313,7 @@ export default function AuthConfirm() {
 
   if (isProcessing) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="default" showBrand={false}>
         <AuthStatusPanel
           icon={Loader2}
           title="Validando convite de acesso..."
@@ -207,7 +325,7 @@ export default function AuthConfirm() {
 
   if (error) {
     return (
-      <AuthShell>
+      <AuthShell layoutVariant="login" heroVariant="default" showBrand={false}>
         <AuthStatusPanel
           icon={ShieldAlert}
           variant="error"

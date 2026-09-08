@@ -2,9 +2,11 @@ import { supabase } from '../lib/supabaseClient';
 
 import {
   enrollmentSchema,
+  enrollmentUpdateSchema,
   enrollmentStatusUpdateSchema,
   enrollmentTransferSchema,
   type EnrollmentFormData,
+  type EnrollmentUpdateData,
   type EnrollmentStatusUpdateData,
   type EnrollmentTransferData,
 } from '../schemas/adminSchemas';
@@ -109,6 +111,20 @@ interface ClassLookupRow {
 interface DuplicateEnrollmentRow {
   id: string;
   class_id: string;
+}
+
+function isActiveEnrollmentConflict(error: unknown): boolean {
+  if (typeof error !== 'object' || error === null) return false;
+  const code = 'code' in error && typeof error.code === 'string' ? error.code : '';
+  const message = 'message' in error && typeof error.message === 'string' ? error.message : '';
+  return code === '23505' || message.includes('enrollments_active_student_year_unique');
+}
+
+function throwEnrollmentConflict(error: unknown): never {
+  if (isActiveEnrollmentConflict(error)) {
+    throw new Error('Este aluno já possui uma matrícula ativa neste ano letivo.');
+  }
+  throw error;
 }
 
 export type EnrollmentStatus =
@@ -568,7 +584,7 @@ export const enrollmentService = {
       });
 
     if (error) {
-      throw error;
+      throwEnrollmentConflict(error);
     }
 
     const rows =
@@ -758,7 +774,73 @@ export const enrollmentService = {
         .update(previousState)
         .eq('id', current.id);
 
-      throw insertError;
+      throwEnrollmentConflict(insertError);
+    }
+  },
+
+  async update(
+    enrollmentId: string,
+    institutionId: string,
+    input: EnrollmentUpdateData,
+  ): Promise<void> {
+    const data =
+      enrollmentUpdateSchema.parse(input);
+
+    const current =
+      await getEnrollmentForInstitution(
+        enrollmentId,
+        institutionId,
+      );
+
+    if (!isActive(current.active)) {
+      throw new Error(
+        'Apenas matrículas ativas podem ser editadas.',
+      );
+    }
+
+    await assertStudentForInstitution(
+      current.student_id,
+      institutionId,
+    );
+
+    const targetClass =
+      await getClassForInstitution(
+        data.class_id,
+        institutionId,
+      );
+
+    if (
+      targetClass.academic_year_id !==
+      data.academic_year_id
+    ) {
+      throw new Error(
+        'A turma selecionada não pertence ao ano letivo informado.',
+      );
+    }
+
+    await assertNoActiveEnrollmentForYear(
+      current.student_id,
+      data.academic_year_id,
+      current.id,
+    );
+
+    await assertClassCapacityAvailable(
+      targetClass.id,
+      targetClass.capacity,
+      current.id,
+    );
+
+    const { error } = await supabase
+      .from('enrollments')
+      .update({
+        class_id: data.class_id,
+        academic_year_id:
+          data.academic_year_id,
+      })
+      .eq('id', current.id);
+
+    if (error) {
+      throw error;
     }
   },
 

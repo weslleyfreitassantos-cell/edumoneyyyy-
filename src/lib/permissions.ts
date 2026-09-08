@@ -61,10 +61,14 @@ export const SYSTEM_PERMISSIONS = [
   'manage_academic_structure',
   'manage_assignments',
   'view_school_dashboard',
+  'send_school_email',
   'view_reports',
   'view_own_classes',
   'view_own_student_data',
   'view_linked_students',
+  'manage_finance',
+  'view_own_finance',
+  'view_live_cameras',
 ] as const;
 
 export type SystemPermission =
@@ -88,8 +92,15 @@ const DIRECTOR_PERMISSIONS = [
   'manage_enrollments',
   'manage_academic_structure',
   'manage_assignments',
+  'manage_finance',
   'view_school_dashboard',
+  'send_school_email',
   'view_reports',
+  'view_live_cameras',
+] as const satisfies readonly SystemPermission[];
+
+const SCHOOL_MANAGER_PERMISSIONS = [
+  ...DIRECTOR_PERMISSIONS,
 ] as const satisfies readonly SystemPermission[];
 
 export const CURRENT_ROLE_PERMISSIONS = {
@@ -97,14 +108,9 @@ export const CURRENT_ROLE_PERMISSIONS = {
 
   DIRECTOR: DIRECTOR_PERMISSIONS,
 
-  SECRETARY: [
-    'manage_school_users',
-    'manage_students',
-    'manage_guardians',
-    'manage_teachers',
-    'manage_enrollments',
-    'view_school_dashboard',
-  ],
+  // A Secretaria administra a escola como a Direcao. A excecao para
+  // remover Diretores e aplicada no backend e na acao especifica da UI.
+  SECRETARY: SCHOOL_MANAGER_PERMISSIONS,
 
   TEACHER: [
     'view_own_classes',
@@ -115,7 +121,8 @@ export const CURRENT_ROLE_PERMISSIONS = {
   ],
 
   GUARDIAN: [
-    'view_linked_students',
+  'view_linked_students',
+  'view_own_finance',
   ],
 } as const satisfies Record<
   CurrentDatabaseRole,
@@ -343,4 +350,25 @@ export function canManageEnrollments(
   effectiveRole: EffectiveRole | null | undefined,
 ): boolean {
   return hasPermission(platformRole, effectiveRole, 'manage_enrollments');
+}
+
+export function canManageAcademicStructure(
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
+): boolean {
+  return hasPermission(platformRole, effectiveRole, 'manage_academic_structure');
+}
+
+export function canManageSchoolOperations(
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
+): boolean {
+  return hasPermission(platformRole, effectiveRole, 'manage_assignments');
+}
+
+export function canRemoveDirector(
+  platformRole: PlatformRole | string | null | undefined,
+  effectiveRole: EffectiveRole | null | undefined,
+): boolean {
+  return isPlatformSuperAdmin(platformRole) || effectiveRole === 'ADMIN' || effectiveRole === 'DIRECTOR';
 }

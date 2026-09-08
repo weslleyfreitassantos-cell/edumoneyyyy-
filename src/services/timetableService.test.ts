@@ -157,6 +157,122 @@ describe('timetableService.listEntries', () => {
   });
 });
 
+describe('timetableService.listByClass', () => {
+  it('mantem somente os horarios da turma solicitada', async () => {
+    const otherClassEntry = {
+      ...baseEntry,
+      id: 'other-entry',
+      subject_offerings: {
+        ...baseEntry.subject_offerings,
+        class_id: 'other-class',
+      },
+    };
+
+    const order = vi.fn(() => ({
+      order: vi.fn().mockResolvedValue({
+        data: [baseEntry, otherClassEntry],
+        error: null,
+      }),
+    }));
+    const classFilter = vi.fn(() => ({ order }));
+    const activeFilter = vi.fn(() => ({ eq: classFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    const result = await timetableService.listByClass(
+      UUID,
+      UUID,
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].class_id).toBe(UUID);
+    expect(institutionFilter).toHaveBeenCalledWith('institution_id', UUID);
+    expect(activeFilter).toHaveBeenCalledWith('active', true);
+    expect(classFilter).toHaveBeenCalledWith(
+      'subject_offerings.class_id',
+      UUID,
+    );
+  });
+
+  it('limita a grade da turma ao periodo informado', async () => {
+    const eq3 = vi.fn(() => ({
+      order: vi.fn(() => ({
+        order: vi.fn().mockResolvedValue({
+          data: [baseEntry],
+          error: null,
+        }),
+      })),
+    }));
+    const classFilter = vi.fn(() => ({ eq: eq3 }));
+    const activeFilter = vi.fn(() => ({ eq: classFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    await timetableService.listByClass(UUID, UUID, 'term-current');
+
+    expect(eq3).toHaveBeenCalledWith('term_id', 'term-current');
+  });
+});
+
+describe('timetableService.listByTeacher', () => {
+  it('mantem somente os horarios do professor solicitado', async () => {
+    const otherTeacherEntry = {
+      ...baseEntry,
+      id: 'other-entry',
+      subject_offerings: {
+        ...baseEntry.subject_offerings,
+        teacher_profile_id: 'other-teacher',
+      },
+    };
+
+    const order = vi.fn(() => ({
+      order: vi.fn().mockResolvedValue({
+        data: [baseEntry, otherTeacherEntry],
+        error: null,
+      }),
+    }));
+    const teacherFilter = vi.fn(() => ({ order }));
+    const activeFilter = vi.fn(() => ({ eq: teacherFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    const result = await timetableService.listByTeacher(
+      UUID,
+      UUID,
+    );
+
+    expect(result).toHaveLength(1);
+    expect(result[0].teacher_profile_id).toBe(UUID);
+    expect(teacherFilter).toHaveBeenCalledWith(
+      'subject_offerings.teacher_profile_id',
+      UUID,
+    );
+  });
+
+  it('limita a grade do professor ao periodo informado', async () => {
+    const eq3 = vi.fn(() => ({
+      order: vi.fn(() => ({
+        order: vi.fn().mockResolvedValue({
+          data: [baseEntry],
+          error: null,
+        }),
+      })),
+    }));
+    const teacherFilter = vi.fn(() => ({ eq: eq3 }));
+    const activeFilter = vi.fn(() => ({ eq: teacherFilter }));
+    const institutionFilter = vi.fn(() => ({ eq: activeFilter }));
+    const select = vi.fn(() => ({ eq: institutionFilter }));
+    vi.mocked(supabase.from).mockReturnValue({ select } as never);
+
+    await timetableService.listByTeacher(UUID, UUID, 'term-current');
+
+    expect(eq3).toHaveBeenCalledWith('term_id', 'term-current');
+  });
+});
+
 describe('timetableService.createEntry', () => {
   it('cria entrada com dados validos', async () => {
     const single = vi.fn().mockResolvedValue({ data: baseEntry, error: null });
@@ -257,17 +373,17 @@ describe('timetableService.createEntry', () => {
 
 describe('timetableService.buildGrid', () => {
   const entry1: TimetableEntryRow = {
-    id: 'e1', institution_id: UUID, subject_offering_id: UUID, room_id: UUID, room_name: 'Sala 01',
+    id: 'e1', institution_id: UUID, subject_offering_id: UUID, class_id: 'class-1', academic_year_id: 'year-1', term_id: 'term-1', subject_id: 'subject-1', teacher_profile_id: 'teacher-1', room_id: UUID, room_name: 'Sala 01',
     day_of_week: 2, day_label: 'Terça', start_time: '07:00', end_time: '07:50',
     active: true, class_name: '1A', subject_name: 'Português', teacher_name: 'Prof Silva',
   };
   const entry2: TimetableEntryRow = {
-    id: 'e2', institution_id: UUID, subject_offering_id: UUID, room_id: null, room_name: null,
+    id: 'e2', institution_id: UUID, subject_offering_id: UUID, class_id: 'class-1', academic_year_id: 'year-1', term_id: 'term-1', subject_id: 'subject-2', teacher_profile_id: 'teacher-2', room_id: null, room_name: null,
     day_of_week: 2, day_label: 'Terça', start_time: '07:50', end_time: '08:40',
     active: true, class_name: '1A', subject_name: 'Matemática', teacher_name: 'Prof Souza',
   };
   const entry3: TimetableEntryRow = {
-    id: 'e3', institution_id: UUID, subject_offering_id: UUID, room_id: null, room_name: null,
+    id: 'e3', institution_id: UUID, subject_offering_id: UUID, class_id: 'class-1', academic_year_id: 'year-1', term_id: 'term-1', subject_id: 'subject-1', teacher_profile_id: 'teacher-1', room_id: null, room_name: null,
     day_of_week: 3, day_label: 'Quarta', start_time: '07:00', end_time: '07:50',
     active: true, class_name: '1A', subject_name: 'Português', teacher_name: 'Prof Silva',
   };

@@ -4,6 +4,10 @@
 # working directory name when running `supabase init`.
 project_id = "edumoneyyyy-"
 
+[functions.camera-gateway]
+verify_jwt = false
+import_map = "./functions/camera-gateway/deno.json"
+
 [api]
 enabled = true
 # Port to use for the API URL.
@@ -419,11 +423,35 @@ verify_jwt = true
 import_map = "./functions/invite-school-user/deno.json"
 entrypoint = "./functions/invite-school-user/index.ts"
 
+[functions.manage-school-user]
+enabled = true
+verify_jwt = true
+import_map = "./functions/manage-school-user/deno.json"
+entrypoint = "./functions/manage-school-user/index.ts"
+
+[functions.camera-turn-credentials]
+enabled = true
+verify_jwt = true
+import_map = "./functions/camera-turn-credentials/deno.json"
+entrypoint = "./functions/camera-turn-credentials/index.ts"
+
 [functions.create-client-account]
 enabled = true
 verify_jwt = true
 import_map = "./functions/create-client-account/deno.json"
 entrypoint = "./functions/create-client-account/index.ts"
+
+[functions.resend-client-admin-invite]
+enabled = true
+verify_jwt = true
+import_map = "./functions/resend-client-admin-invite/deno.json"
+entrypoint = "./functions/resend-client-admin-invite/index.ts"
+
+[functions.update-client-admin-password]
+enabled = true
+verify_jwt = true
+import_map = "./functions/update-client-admin-password/deno.json"
+entrypoint = "./functions/update-client-admin-password/index.ts"
 
 [functions.delete-client-account]
 enabled = true
@@ -448,3 +476,15 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/update-institution-status/deno.json"
 entrypoint = "./functions/update-institution-status/index.ts"
+
+[functions.restore-client-account]
+enabled = true
+verify_jwt = true
+import_map = "./functions/restore-client-account/deno.json"
+entrypoint = "./functions/restore-client-account/index.ts"
+
+[functions.send-school-email]
+enabled = true
+verify_jwt = true
+import_map = "./functions/send-school-email/deno.json"
+entrypoint = "./functions/send-school-email/index.ts"

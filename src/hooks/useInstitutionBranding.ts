@@ -6,6 +6,7 @@ import {
 
 import { accountKeys } from './useAccounts';
 import { userInstitutionKeys } from './useUserInstitutions';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   brandingPublicService,
   normalizePublicSlug,
@@ -13,7 +14,10 @@ import {
 } from '../services/brandingPublicService';
 import {
   brandingMutationService,
+  type RemoveInstitutionFaviconInput,
   type RemoveInstitutionLogoInput,
+  type SaveInstitutionFaviconInput,
+  type SaveInstitutionFaviconResponse,
   type SaveInstitutionLogoInput,
   type SaveInstitutionLogoResponse,
   type InstitutionBranding,
@@ -79,6 +83,7 @@ export function useSaveInstitutionLogo() {
               response.publicSlug,
             ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
       ]);
     },
   });
@@ -108,6 +113,67 @@ export function useRemoveInstitutionLogo() {
               response.publicSlug,
             ),
         }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
+      ]);
+    },
+  });
+}
+
+export function useSaveInstitutionFavicon() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    SaveInstitutionFaviconResponse,
+    Error,
+    SaveInstitutionFaviconInput
+  >({
+    mutationFn: (input) =>
+      brandingMutationService.saveFavicon(input),
+    onSuccess: async (response) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey:
+            institutionBrandingKeys.public(
+              response.publicSlug,
+            ),
+        }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
+      ]);
+    },
+  });
+}
+
+export function useRemoveInstitutionFavicon() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    InstitutionBranding,
+    Error,
+    RemoveInstitutionFaviconInput
+  >({
+    mutationFn: (input) =>
+      brandingMutationService.removeFavicon(input),
+    onSuccess: async (response) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey:
+            institutionBrandingKeys.public(
+              response.publicSlug,
+            ),
+        }),
+        invalidateSchoolSetupReadiness(queryClient, response.id),
       ]);
     },
   });

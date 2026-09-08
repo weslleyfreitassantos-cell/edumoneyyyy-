@@ -12,10 +12,20 @@ import {
   type CloseClientAccountResponse,
   type CreateClientAccountInput,
   type CreateClientAccountResponse,
+  type ResendClientAdminInviteInput,
+  type ResendClientAdminInviteResponse,
+  type UpdateClientAdminPasswordInput,
+  type UpdateClientAdminPasswordResponse,
   type CreateInstitutionInput,
   type CreateInstitutionResponse,
   type DeleteClientAccountInput,
   type DeleteClientAccountResponse,
+  type DeleteInstitutionInput,
+  type DeleteInstitutionResponse,
+  type RestoreClientAccountInput,
+  type RestoreClientAccountResponse,
+  type UpdateInstitutionNameInput,
+  type UpdateInstitutionNameResponse,
   type UpdateInstitutionStatusInput,
   type UpdateInstitutionStatusResponse,
   type UpdateClientAccountInput,
@@ -46,6 +56,12 @@ export function useAccounts() {
   return useQuery<AccountSummaryRow[]>({
     queryKey: accountKeys.lists(),
     queryFn: () => accountService.listAccounts(),
+    refetchInterval: 1000 * 10,
+    refetchIntervalInBackground: true,
+    refetchOnMount: 'always',
+    refetchOnReconnect: 'always',
+    refetchOnWindowFocus: 'always',
+    staleTime: 1000 * 5,
   });
 }
 
@@ -62,6 +78,12 @@ export function useOwnedAccount(
       return accountService.getOwnedAccount(profileId);
     },
     enabled: Boolean(profileId),
+    refetchInterval: 1000 * 5,
+    refetchIntervalInBackground: true,
+    refetchOnMount: 'always',
+    refetchOnReconnect: 'always',
+    refetchOnWindowFocus: 'always',
+    staleTime: 1000 * 2,
   });
 }
 
@@ -80,6 +102,35 @@ export function useCreateClientAccount() {
         queryKey: accountKeys.all,
       });
     },
+  });
+}
+
+export function useResendClientAdminInvite() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    ResendClientAdminInviteResponse,
+    Error,
+    ResendClientAdminInviteInput
+  >({
+    mutationFn: (input) =>
+      accountService.resendClientAdminInvite(input),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: accountKeys.all,
+      });
+    },
+  });
+}
+
+export function useUpdateClientAdminPassword() {
+  return useMutation<
+    UpdateClientAdminPasswordResponse,
+    Error,
+    UpdateClientAdminPasswordInput
+  >({
+    mutationFn: (input) =>
+      accountService.updateClientAdminPassword(input),
   });
 }
 
@@ -116,6 +167,29 @@ export function useCloseClientAccount() {
   >({
     mutationFn: (input) =>
       accountService.closeAccount(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
+    },
+  });
+}
+
+export function useRestoreClientAccount() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    RestoreClientAccountResponse,
+    Error,
+    RestoreClientAccountInput
+  >({
+    mutationFn: (input) =>
+      accountService.restoreAccount(input),
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({
@@ -188,12 +262,58 @@ export function useUpdateInstitutionStatus() {
   const queryClient = useQueryClient();
 
   return useMutation<
-    UpdateInstitutionStatusResponse,
-    Error,
-    UpdateInstitutionStatusInput
+  UpdateInstitutionStatusResponse,
+  Error,
+  UpdateInstitutionStatusInput
   >({
     mutationFn: (input) =>
       accountService.updateInstitutionStatus(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
+    },
+  });
+}
+
+export function useUpdateInstitutionName() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    UpdateInstitutionNameResponse,
+    Error,
+    UpdateInstitutionNameInput
+  >({
+    mutationFn: (input) =>
+      accountService.updateInstitutionName(input),
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: accountKeys.all,
+        }),
+        queryClient.invalidateQueries({
+          queryKey: userInstitutionKeys.all,
+        }),
+      ]);
+    },
+  });
+}
+
+export function useDeleteInstitution() {
+  const queryClient = useQueryClient();
+
+  return useMutation<
+    DeleteInstitutionResponse,
+    Error,
+    DeleteInstitutionInput
+  >({
+    mutationFn: (input) =>
+      accountService.deleteInstitution(input),
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({

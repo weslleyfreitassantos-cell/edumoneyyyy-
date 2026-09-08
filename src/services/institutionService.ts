@@ -8,6 +8,12 @@ import type {
 export interface InstitutionSummary {
   id: string;
   name: string;
+  subdomain?: string | null;
+  login_display_name?: string | null;
+  logo_url?: string | null;
+  favicon_url?: string | null;
+  primary_color?: string | null;
+  secondary_color?: string | null;
   active: boolean | null;
   account_id: string | null;
 }
@@ -42,6 +48,12 @@ export interface UserInstitution {
 interface InstitutionRelation {
   id: string;
   name: string;
+  subdomain?: string | null;
+  login_display_name?: string | null;
+  logo_url?: string | null;
+  favicon_url?: string | null;
+  primary_color?: string | null;
+  secondary_color?: string | null;
   active: boolean | null;
   account_id: string | null;
   accounts?: AccountSummary | AccountSummary[] | null;
@@ -101,6 +113,36 @@ function isAccountStatus(
   ].includes(value);
 }
 
+const institutionRolePriority: Record<
+  CurrentDatabaseRole,
+  number
+> = {
+  ADMIN: 600,
+  DIRECTOR: 500,
+  SECRETARY: 400,
+  TEACHER: 300,
+  GUARDIAN: 200,
+  STUDENT: 100,
+};
+
+function shouldPreferInstitutionAccess(
+  candidate: UserInstitution,
+  current: UserInstitution,
+): boolean {
+  if (current.accessSource === 'account_owner') {
+    return false;
+  }
+
+  return (
+    institutionRolePriority[
+      candidate.effectiveRole
+    ] >
+    institutionRolePriority[
+      current.effectiveRole
+    ]
+  );
+}
+
 function normalizeInstitution(
   institution: InstitutionRelation | null,
 ): InstitutionSummary | null {
@@ -115,6 +157,12 @@ function normalizeInstitution(
   return {
     id: institution.id,
     name: institution.name,
+    subdomain: institution.subdomain ?? null,
+    login_display_name: institution.login_display_name ?? null,
+    logo_url: institution.logo_url ?? null,
+    favicon_url: institution.favicon_url ?? null,
+    primary_color: institution.primary_color ?? null,
+    secondary_color: institution.secondary_color ?? null,
     active: institution.active ?? true,
     account_id: institution.account_id ?? null,
   };
@@ -206,20 +254,9 @@ function normalizeMembershipInstitution(
         }
       : null;
 
-  if (institution.account_id !== null && !account) {
-    return null;
-  }
-
   if (
     account !== null &&
     account.status !== 'ACTIVE'
-  ) {
-    return null;
-  }
-
-  if (
-    row.role === 'ADMIN' &&
-    institution.account_id !== null
   ) {
     return null;
   }
@@ -248,7 +285,8 @@ function normalizeMembershipInstitution(
     institution,
     account,
     accessSource:
-      row.role === 'ADMIN'
+      row.role === 'ADMIN' &&
+      institution.account_id === null
         ? 'legacy_admin_membership'
         : 'membership',
     effectiveRole: role,
@@ -348,6 +386,12 @@ export const institutionService = {
             institutions (
               id,
               name,
+              subdomain,
+              login_display_name,
+              logo_url,
+              favicon_url,
+              primary_color,
+              secondary_color,
               active,
               account_id
             )
@@ -366,6 +410,12 @@ export const institutionService = {
             institutions:institution_id!inner (
               id,
               name,
+              subdomain,
+              login_display_name,
+              logo_url,
+              favicon_url,
+              primary_color,
+              secondary_color,
               active,
               account_id,
               accounts:account_id (
@@ -407,7 +457,18 @@ export const institutionService = {
       const item =
         normalizeMembershipInstitution(row);
 
-      if (!item || institutions.has(item.institution.id)) {
+      if (!item) {
+        continue;
+      }
+
+      const current = institutions.get(
+        item.institution.id,
+      );
+
+      if (
+        current &&
+        !shouldPreferInstitutionAccess(item, current)
+      ) {
         continue;
       }
 
@@ -422,3 +483,248 @@ export const institutionService = {
     );
   },
 };
+
+/**
+ * Operação 1 — Subdomínio (Exclusiva do ADMIN)
+ * Altera exclusivamente o subdomínio da instituição.
+ * Valida que o usuário é ADMIN e que a instituição pertence à sua conta.
+ */
+export async function updateInstitutionSubdomain({
+  institutionId,
+  subdomain,
+  profileId,
+  userRole,
+}: {
+  institutionId: string;
+  subdomain: string;
+  profileId: string;
+  userRole: string;
+}): Promise<InstitutionSummary> {
+  if (userRole !== 'ADMIN') {
+    throw new Error('Apenas o administrador da conta pode alterar o subdomínio da instituição.');
+  }
+
+  const { data: inst, error: fetchErr } = await supabase
+    .from('institutions')
+    .select('id, name, account_id, active')
+    .eq('id', institutionId)
+    .single();
+
+  if (fetchErr || !inst) {
+    throw new Error('Instituição não encontrada.');
+  }
+
+  if (!inst.account_id) {
+    throw new Error('A instituição não está vinculada a nenhuma conta.');
+  }
+
+  const { data: account, error: accErr } = await supabase
+    .from('accounts')
+    .select('id')
+    .eq('id', inst.account_id)
+    .eq('owner_profile_id', profileId)
+    .maybeSingle();
+
+  if (accErr || !account) {
+    throw new Error('Você não possui permissão para alterar o subdomínio de uma instituição que não pertence à sua conta.');
+  }
+
+  const { validateSubdomain, normalizeSubdomain } = await import('../lib/subdomain');
+  const validation = validateSubdomain(subdomain);
+  if (!validation.valid) {
+    throw new Error(validation.error || 'Subdomínio inválido.');
+  }
+
+  const normalized = normalizeSubdomain(subdomain);
+
+  const { data: existing, error: checkError } = await supabase
+    .from('institutions')
+    .select('id')
+    .eq('subdomain', normalized)
+    .neq('id', institutionId)
+    .maybeSingle();
+
+  if (checkError) {
+    throw new Error('Erro ao verificar disponibilidade do subdomínio.');
+  }
+
+  if (existing) {
+    throw new Error('Este subdomínio já está em uso por outra instituição.');
+  }
+
+  const { data, error } = await supabase
+    .from('institutions')
+    .update({ subdomain: normalized, updated_at: new Date().toISOString() })
+    .eq('id', institutionId)
+    .select('id, name, subdomain, login_display_name, logo_url, favicon_url, primary_color, secondary_color, active, account_id')
+    .single();
+
+  if (error || !data) {
+    throw new Error(error?.message || 'Falha ao atualizar o subdomínio da instituição.');
+  }
+
+  return data;
+}
+
+/**
+ * Operação 2 — Identidade Visual (Exclusiva do DIRECTOR)
+ * Altera exclusivamente logotipo e cores da própria instituição.
+ * Valida que o usuário tem membership ativa com papel DIRECTOR na instituição correspondente.
+ */
+export async function updateInstitutionBranding({
+  institutionId,
+  login_display_name,
+  logo_url,
+  favicon_url,
+  primary_color,
+  secondary_color,
+}: {
+  institutionId: string;
+  profileId?: string;
+  login_display_name?: string | null;
+  logo_url?: string | null;
+  favicon_url?: string | null;
+  primary_color?: string | null;
+  secondary_color?: string | null;
+}): Promise<InstitutionSummary> {
+  const { data, error } = await supabase.rpc(
+    'update_institution_login_branding',
+    {
+      target_institution_id: institutionId,
+      new_login_display_name: login_display_name ?? null,
+      set_login_display_name: login_display_name !== undefined,
+      new_logo_url: logo_url ?? null,
+      set_logo_url: logo_url !== undefined,
+      new_favicon_url: favicon_url ?? null,
+      set_favicon_url: favicon_url !== undefined,
+      new_primary_color: primary_color ?? null,
+      set_primary_color: primary_color !== undefined,
+      new_secondary_color: secondary_color ?? null,
+      set_secondary_color: secondary_color !== undefined,
+    },
+  );
+
+  const rows = Array.isArray(data) ? data : data ? [data] : [];
+  const row = rows[0] as InstitutionSummary | undefined;
+
+  if (error || !row) {
+    throw new Error(error?.message || 'Falha ao atualizar a identidade visual da instituicao.');
+  }
+
+  return row;
+}
+export interface ResolveInstitutionResult {
+  institution: InstitutionSummary | null;
+  error: Error | null;
+}
+
+export async function resolveInstitutionBySubdomain(
+  subdomain: string,
+): Promise<ResolveInstitutionResult> {
+  const { validateSubdomain, normalizeSubdomain } = await import('../lib/subdomain');
+  const validation = validateSubdomain(subdomain);
+  if (!validation.valid) {
+    return { institution: null, error: null };
+  }
+
+  const normalized = normalizeSubdomain(subdomain);
+
+  try {
+    const { data: rpcData, error: rpcError } = await supabase.rpc(
+      'resolve_public_institution_by_subdomain',
+      { target_subdomain: normalized },
+    );
+
+    if (!rpcError && rpcData !== null && rpcData !== undefined) {
+      const rows = Array.isArray(rpcData) ? rpcData : [rpcData];
+      if (rows.length > 0 && rows[0]?.id && rows[0]?.name) {
+        const row = rows[0];
+        return {
+          institution: {
+            id: row.id,
+            name: row.name,
+            subdomain: row.subdomain ?? null,
+            login_display_name: row.login_display_name ?? null,
+            logo_url: row.logo_url ?? null,
+            favicon_url: row.favicon_url ?? null,
+            primary_color: row.primary_color ?? null,
+            secondary_color: row.secondary_color ?? null,
+            active: true,
+            account_id: null,
+          },
+          error: null,
+        };
+      }
+
+      if (Array.isArray(rpcData) && rpcData.length === 0) {
+        return { institution: null, error: null };
+      }
+    }
+  } catch {
+    // Segue para a consulta direta em caso de indisponibilidade da RPC no ambiente de testes
+  }
+
+  const { data, error } = await supabase
+    .from('institutions')
+    .select(
+      `
+      id,
+      name,
+      subdomain,
+      login_display_name,
+      logo_url,
+      favicon_url,
+      primary_color,
+      secondary_color,
+      active,
+      account_id,
+      accounts:account_id (
+        id,
+        status
+      )
+    `,
+    )
+    .eq('subdomain', normalized)
+    .eq('active', true)
+    .maybeSingle();
+
+  if (error) {
+    return { institution: null, error };
+  }
+
+  if (!data) {
+    return { institution: null, error: null };
+  }
+
+  if (data.account_id) {
+    const accountRelation = normalizeRelation(
+      (data as unknown as { accounts?: AccountSummary | AccountSummary[] | null }).accounts,
+    );
+
+    if (!accountRelation || accountRelation.status !== 'ACTIVE') {
+      return { institution: null, error: null };
+    }
+  }
+
+  const institution: InstitutionSummary = {
+    id: data.id,
+    name: data.name,
+    subdomain: data.subdomain ?? null,
+    login_display_name: data.login_display_name ?? null,
+    logo_url: data.logo_url ?? null,
+    favicon_url: data.favicon_url ?? null,
+    primary_color: data.primary_color ?? null,
+    secondary_color: data.secondary_color ?? null,
+    active: data.active ?? true,
+    account_id: data.account_id ?? null,
+  };
+
+  return { institution, error: null };
+}
+
+export async function fetchInstitutionBySubdomain(
+  subdomain: string,
+): Promise<InstitutionSummary | null> {
+  const result = await resolveInstitutionBySubdomain(subdomain);
+  return result.institution;
+}

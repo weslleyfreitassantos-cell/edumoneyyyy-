@@ -16,14 +16,20 @@ import {
   vi,
 } from 'vitest';
 import PlatformPage from './PlatformPage';
+import type { AccountSummaryRow } from '../../services/accountService';
 import { AccountServiceError } from '../../services/accountService';
 
 const hookMock = vi.hoisted(() => ({
   accountsQuery: {} as any,
   createAccount: {} as any,
+  resendClientAdminInvite: {} as any,
+  updateClientAdminPassword: {} as any,
   updateAccount: {} as any,
   updateInstitutionStatus: {} as any,
+  deleteInstitution: {} as any,
   closeAccount: {} as any,
+  restoreAccount: {} as any,
+  permanentlyDeleteAccount: {} as any,
   statusEventsQuery: {} as any,
   globalBrandingQuery: {} as any,
   saveGlobalBranding: {} as any,
@@ -31,9 +37,14 @@ const hookMock = vi.hoisted(() => ({
   activateDomain: {} as any,
   disableDomain: {} as any,
   createMutateAsync: vi.fn(),
+  resendClientAdminInviteMutateAsync: vi.fn(),
+  updateClientAdminPasswordMutateAsync: vi.fn(),
   updateMutateAsync: vi.fn(),
   updateInstitutionStatusMutateAsync: vi.fn(),
+  deleteInstitutionMutateAsync: vi.fn(),
   closeMutateAsync: vi.fn(),
+  restoreMutateAsync: vi.fn(),
+  permanentlyDeleteMutateAsync: vi.fn(),
   saveGlobalBrandingMutateAsync: vi.fn(),
   activateDomainMutateAsync: vi.fn(),
   disableDomainMutateAsync: vi.fn(),
@@ -50,10 +61,17 @@ vi.mock('react-router-dom', () => ({
 vi.mock('../../hooks/useAccounts', () => ({
   useAccounts: () => hookMock.accountsQuery,
   useCreateClientAccount: () => hookMock.createAccount,
+  useResendClientAdminInvite: () => hookMock.resendClientAdminInvite,
+  useUpdateClientAdminPassword: () =>
+    hookMock.updateClientAdminPassword,
   useUpdateClientAccount: () => hookMock.updateAccount,
   useUpdateInstitutionStatus: () =>
     hookMock.updateInstitutionStatus,
+  useDeleteInstitution: () => hookMock.deleteInstitution,
   useCloseClientAccount: () => hookMock.closeAccount,
+  useRestoreClientAccount: () => hookMock.restoreAccount,
+  useDeleteClientAccount: () =>
+    hookMock.permanentlyDeleteAccount,
   useAccountStatusEvents: () => hookMock.statusEventsQuery,
 }));
 
@@ -89,7 +107,7 @@ vi.mock('../../contexts/AuthContext', () => ({
   }),
 }));
 
-const accounts = [
+const accounts: AccountSummaryRow[] = [
   {
     id: 'account-1',
     name: 'Conta Alfa',
@@ -100,8 +118,8 @@ const accounts = [
       id: 'owner-1',
       full_name: 'Ana Admin',
       email: 'ana@example.com',
-      role: 'ADMIN',
-      platform_role: 'USER',
+      role: 'ADMIN' as const,
+      platform_role: 'USER' as const,
       active: true,
     },
     institutions: [
@@ -110,18 +128,24 @@ const accounts = [
         name: 'Escola Alpha',
         active: true,
         account_id: 'account-1',
+        logoUrl: null,
+        publicSlug: null,
       },
       {
         id: 'institution-2',
         name: 'Escola Luz',
         active: true,
         account_id: 'account-1',
+        logoUrl: null,
+        publicSlug: null,
       },
       {
         id: 'institution-3',
         name: 'Escola Pausada',
         active: false,
         account_id: 'account-1',
+        logoUrl: null,
+        publicSlug: null,
       },
     ],
   },
@@ -145,6 +169,8 @@ const accounts = [
         name: 'Escola Beta',
         active: true,
         account_id: 'account-2',
+        logoUrl: null,
+        publicSlug: null,
       },
     ],
   },
@@ -163,6 +189,13 @@ const accounts = [
       active: true,
     },
     institutions: [],
+    invitation: {
+      id: 'invitation-3',
+      status: 'PENDING',
+      attemptCount: 1,
+      lastAttemptAt: null,
+      sentAt: null,
+    },
   },
   {
     id: 'account-4',
@@ -184,6 +217,8 @@ const accounts = [
         name: 'Escola Histórica',
         active: true,
         account_id: 'account-4',
+        logoUrl: null,
+        publicSlug: null,
       },
     ],
   },
@@ -193,18 +228,41 @@ function renderPage() {
   return render(<PlatformPage />);
 }
 
-function openInstitutionAccessDialog() {
-  renderPage();
+function renderPageWithAccounts(
+  data: AccountSummaryRow[],
+) {
+  hookMock.accountsQuery = {
+    ...hookMock.accountsQuery,
+    data,
+  };
 
+  return renderPage();
+}
+
+function getAccountsTable() {
+  return screen.getByRole('table', {
+    name: /Contas e instituições da plataforma/i,
+  });
+}
+
+function openAccountManagementDialog(accountName = 'Conta Alfa') {
   fireEvent.click(
     screen.getByRole('button', {
-      name: /Acessar escolas de Ana Admin/i,
+      name: new RegExp(
+        `Gerenciar escolas e ações de ${accountName}`,
+        'i',
+      ),
     }),
   );
 
   return screen.getByRole('dialog', {
-    name: /Acessar escola da conta/i,
+    name: /Escolas e ações/i,
   });
+}
+
+function openInstitutionAccessDialog() {
+  renderPage();
+  return openAccountManagementDialog();
 }
 
 describe('PlatformPage', () => {
@@ -221,6 +279,15 @@ describe('PlatformPage', () => {
       isPending: false,
       mutateAsync: hookMock.createMutateAsync,
     };
+    hookMock.resendClientAdminInvite = {
+      isPending: false,
+      mutateAsync: hookMock.resendClientAdminInviteMutateAsync,
+    };
+    hookMock.updateClientAdminPassword = {
+      isPending: false,
+      mutateAsync:
+        hookMock.updateClientAdminPasswordMutateAsync,
+    };
     hookMock.updateAccount = {
       isPending: false,
       mutateAsync: hookMock.updateMutateAsync,
@@ -230,9 +297,21 @@ describe('PlatformPage', () => {
       mutateAsync:
         hookMock.updateInstitutionStatusMutateAsync,
     };
+    hookMock.deleteInstitution = {
+      isPending: false,
+      mutateAsync: hookMock.deleteInstitutionMutateAsync,
+    };
     hookMock.closeAccount = {
       isPending: false,
       mutateAsync: hookMock.closeMutateAsync,
+    };
+    hookMock.restoreAccount = {
+      isPending: false,
+      mutateAsync: hookMock.restoreMutateAsync,
+    };
+    hookMock.permanentlyDeleteAccount = {
+      isPending: false,
+      mutateAsync: hookMock.permanentlyDeleteMutateAsync,
     };
     hookMock.statusEventsQuery = {
       data: [],
@@ -292,6 +371,7 @@ describe('PlatformPage', () => {
       ownerEmail: 'new@example.com',
       institutionLimit: 2,
       invitationSent: true,
+      invitationStatus: 'SENT',
       reusedExistingUser: false,
     });
     hookMock.updateMutateAsync.mockResolvedValue({
@@ -303,6 +383,11 @@ describe('PlatformPage', () => {
       auditEventId: null,
       statusChanged: false,
     });
+    hookMock.updateClientAdminPasswordMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-1',
+      sessionRevocation: 'NOT_SUPPORTED',
+    });
     hookMock.updateInstitutionStatusMutateAsync.mockResolvedValue({
       success: true,
       institutionId: 'institution-1',
@@ -310,6 +395,16 @@ describe('PlatformPage', () => {
       currentInstitutionCount: 1,
       institutionLimit: 3,
       remainingSlots: 2,
+      suspendedByScope: 'PLATFORM',
+    });
+    hookMock.deleteInstitutionMutateAsync.mockResolvedValue({
+      success: true,
+      institutionId: 'institution-1',
+      accountId: 'account-1',
+      currentInstitutionCount: 2,
+      institutionLimit: 3,
+      remainingSlots: 1,
+      summary: {},
     });
     hookMock.closeMutateAsync.mockResolvedValue({
       success: true,
@@ -320,6 +415,24 @@ describe('PlatformPage', () => {
       auditEventId: 'event-1',
       statusChanged: true,
     });
+    hookMock.restoreMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-4',
+      institutionLimit: 1,
+      previousStatus: 'CANCELED',
+      status: 'ACTIVE',
+      auditEventId: 'event-2',
+      statusChanged: true,
+    });
+    hookMock.permanentlyDeleteMutateAsync.mockResolvedValue(
+      {
+        success: true,
+        accountId: 'account-4',
+        ownerProfileId: 'owner-4',
+        ownerPreserved: false,
+        deletedAuthUser: true,
+      },
+    );
   });
 
   afterEach(() => {
@@ -354,25 +467,30 @@ describe('PlatformPage', () => {
       screen.getAllByText('Conta Alfa').length,
     ).toBeGreaterThan(0);
     expect(screen.getByText('Ana Admin')).toBeDefined();
-    expect(
-      screen.getByText('Escola Alpha'),
-    ).toBeDefined();
-    expect(screen.getByText('Escola Luz')).toBeDefined();
-    expect(screen.getByText('Escola Pausada')).toBeDefined();
     expect(screen.getAllByText('Ativa').length).toBeGreaterThan(0);
     expect(
-      screen.getAllByText('Suspensa').length,
-    ).toBeGreaterThan(0);
+      screen.queryByRole('columnheader', {
+        name: /^Instituições$/i,
+      }),
+    ).toBeNull();
     expect(
-      screen.getByRole('button', {
-        name: /Suspender Escola Alpha/i,
+      screen.getByRole('columnheader', {
+        name: /^Ações$/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.getByRole('columnheader', {
+        name: /^Gerenciar$/i,
       }),
     ).toBeDefined();
     expect(
       screen.getByRole('button', {
-        name: /Reativar Escola Pausada/i,
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
       }),
     ).toBeDefined();
+    expect(screen.queryByText('Escola Alpha')).toBeNull();
+    expect(screen.queryByText('Escola Luz')).toBeNull();
+    expect(screen.queryByText('Escola Pausada')).toBeNull();
   });
 
   it('exibe busca, quantidade e somente escolas da conta do ADMIN', () => {
@@ -389,11 +507,11 @@ describe('PlatformPage', () => {
       ),
     ).toBeDefined();
     expect(
-      within(dialog).getByText('2 escolas encontradas'),
+      within(dialog).getByText('3 escolas encontradas'),
     ).toBeDefined();
     expect(within(dialog).getByText('Escola Alpha')).toBeDefined();
     expect(within(dialog).getByText('Escola Luz')).toBeDefined();
-    expect(within(dialog).queryByText('Escola Pausada')).toBeNull();
+    expect(within(dialog).getByText('Escola Pausada')).toBeDefined();
     expect(within(dialog).queryByText('Escola Beta')).toBeNull();
   });
 
@@ -444,7 +562,7 @@ describe('PlatformPage', () => {
       ) as HTMLInputElement).value,
     ).toBe('');
     expect(
-      within(dialog).getByText('2 escolas encontradas'),
+      within(dialog).getByText('3 escolas encontradas'),
     ).toBeDefined();
   });
 
@@ -512,6 +630,10 @@ describe('PlatformPage', () => {
   it('bloqueia acesso direto a escolas de conta suspensa', () => {
     renderPage();
 
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'SUSPENDED' },
+    });
+
     const suspendedRow = screen
       .getByText('Bia Admin')
       .closest('tr');
@@ -520,34 +642,45 @@ describe('PlatformPage', () => {
     expect(
       within(suspendedRow!).getByText('Suspensa'),
     ).toBeDefined();
-    expect(
-      within(suspendedRow!).queryByRole('button', {
-        name: /Acessar escolas de Bia Admin/i,
-      }),
-    ).toBeNull();
-    expect(
+    fireEvent.click(
       within(suspendedRow!).getByRole('button', {
-        name: 'Reativar',
+        name: /Gerenciar escolas e ações de Conta Beta/i,
+      }),
+    );
+
+    const dialog = screen.getByRole('dialog', {
+      name: /Escolas e ações/i,
+    });
+    const accessButton = within(dialog).getByRole('button', {
+      name: /^Acessar escola$/i,
+    }) as HTMLButtonElement;
+
+    fireEvent.click(
+      within(dialog).getByRole('option', {
+        name: /Escola Beta/i,
+      }),
+    );
+
+    expect(accessButton.disabled).toBe(true);
+    expect(
+      within(dialog).getByRole('button', {
+        name: /Reativar Conta Beta/i,
       }),
     ).toBeDefined();
   });
 
-  it('mostra mensagem quando a conta nao possui escolas ativas', async () => {
+  it('mostra mensagem quando a conta nao possui escolas cadastradas', () => {
     renderPage();
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Acessar escolas de Caio Admin/i,
+        name: /Gerenciar escolas e ações de Conta Gama/i,
       }),
     );
 
     expect(
-      (
-        await screen.findByRole('alert')
-      ).textContent,
-    ).toMatch(
-      /Esta conta n.o possui escolas ativas para acessar/i,
-    );
+      screen.getByRole('status').textContent,
+    ).toMatch(/Nenhuma escola cadastrada nesta conta/i);
     expect(
       hookMock.setCurrentInstitutionId,
     ).not.toHaveBeenCalled();
@@ -652,9 +785,108 @@ describe('PlatformPage', () => {
         institutionLimit: 5,
       });
       expect(
-        screen.getByText(/Conta criada e convite enviado/i),
+        screen.getByText(/Conta criada com sucesso\. Os dados de acesso foram enviados/i),
       ).toBeDefined();
     });
+  });
+
+  it('permite reenviar somente o acesso pendente sem criar outra conta', async () => {
+    hookMock.resendClientAdminInviteMutateAsync.mockResolvedValue({
+      success: true,
+      accountId: 'account-3',
+      ownerProfileId: 'owner-3',
+      ownerEmail: 'caio@example.com',
+      invitationSent: false,
+      invitationStatus: 'PENDING',
+    });
+
+    renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Reenviar acesso de Conta Gama/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.resendClientAdminInviteMutateAsync,
+      ).toHaveBeenCalledWith({ accountId: 'account-3' });
+      expect(
+        screen.getByText(/acesso continua pendente/i),
+      ).toBeDefined();
+    });
+    expect(hookMock.createMutateAsync).not.toHaveBeenCalled();
+  });
+
+  it('permite ao SUPER_ADMIN alterar a senha do admin dono da conta', async () => {
+    const accountDialog = openInstitutionAccessDialog();
+
+    fireEvent.click(
+      within(accountDialog).getByRole('button', {
+        name: 'Alterar senha do administrador',
+      }),
+    );
+
+    const passwordDialog = screen.getByRole('dialog', {
+      name: 'Alterar senha do administrador',
+    });
+
+    expect(
+      within(passwordDialog).getByText('Ana Admin'),
+    ).toBeDefined();
+    expect(
+      within(passwordDialog).getByText('ana@example.com'),
+    ).toBeDefined();
+
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Nova senha'),
+      { target: { value: 'StrongPass123!' } },
+    );
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      { target: { value: 'DifferentPass123!' } },
+    );
+    fireEvent.submit(
+      within(passwordDialog).getByRole('button', {
+        name: 'Alterar senha',
+      }).closest('form')!,
+    );
+
+    expect(
+      hookMock.updateClientAdminPasswordMutateAsync,
+    ).not.toHaveBeenCalled();
+    expect(
+      within(passwordDialog).getByRole('alert').textContent,
+    ).toMatch(/senhas informadas nao sao iguais/i);
+
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      { target: { value: 'StrongPass123!' } },
+    );
+    fireEvent.click(
+      within(passwordDialog).getByRole('button', {
+        name: 'Alterar senha',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.updateClientAdminPasswordMutateAsync,
+      ).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        password: 'StrongPass123!',
+      });
+      expect(
+        screen.getByText(/Senha do administrador alterada com sucesso/i),
+      ).toBeDefined();
+    });
+
+    expect(
+      screen.queryByRole('dialog', {
+        name: 'Alterar senha do administrador',
+      }),
+    ).toBeNull();
   });
 
   it('bloqueia criacao com nome do ADMIN vazio', () => {
@@ -735,6 +967,111 @@ describe('PlatformPage', () => {
     });
   });
 
+  it('mostra o conflito de uma conta excluida dentro do bloco Novo cliente', async () => {
+    const canceledMessage =
+      'Este e-mail pertence ao administrador de uma conta em Excluídos. Restaure essa conta ou exclua-a definitivamente antes de reutilizar este e-mail.';
+
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Este usuário já administra outra conta.',
+        'EMAIL_BELONGS_TO_ACCOUNT_OWNER',
+        {
+          adminEmail: 'Este usuário já administra outra conta.',
+        },
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: ' DORA@EXAMPLE.COM ' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Criar conta/i }),
+    );
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+
+      expect(alert.textContent).toContain(canceledMessage);
+      expect(alert.closest('form')).not.toBeNull();
+      expect(
+        screen.getByLabelText('Email do ADMIN').getAttribute(
+          'aria-invalid',
+        ),
+      ).toBe('true');
+      expect(screen.getAllByText(canceledMessage)).toHaveLength(1);
+      expect(
+        screen.queryByText('Este usuário já administra outra conta.'),
+      ).toBeNull();
+    });
+  });
+
+  it('mantem a mensagem generica para owner de conta ativa', async () => {
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Este usuário já administra outra conta.',
+        'EMAIL_BELONGS_TO_ACCOUNT_OWNER',
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'ANA@EXAMPLE.COM' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Criar conta/i }),
+    );
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+
+      expect(alert.textContent).toContain(
+        'Este usuário já administra outra conta.',
+      );
+      expect(alert.textContent).not.toMatch(/Restaure essa conta/);
+      expect(screen.getAllByText('Este usuário já administra outra conta.')).toHaveLength(1);
+    });
+  });
+
+  it('mantem a mensagem generica para owner de conta suspensa', async () => {
+    hookMock.createMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError(
+        'Este usuário já administra outra conta.',
+        'EMAIL_BELONGS_TO_ACCOUNT_OWNER',
+      ),
+    );
+
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Nome do ADMIN'), {
+      target: { value: 'Novo Admin' },
+    });
+    fireEvent.change(screen.getByLabelText('Email do ADMIN'), {
+      target: { value: 'bia@example.com' },
+    });
+    fireEvent.click(
+      screen.getByRole('button', { name: /Criar conta/i }),
+    );
+
+    await waitFor(() => {
+      const alert = screen.getByRole('alert');
+
+      expect(alert.textContent).toContain(
+        'Este usuário já administra outra conta.',
+      );
+      expect(alert.textContent).not.toMatch(/Restaure essa conta/);
+      expect(screen.getAllByText('Este usuário já administra outra conta.')).toHaveLength(1);
+    });
+  });
+
   it('mantem as acoes reais de limite e status', async () => {
     renderPage();
 
@@ -768,7 +1105,12 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       within(alfaRow).getByRole('button', {
-        name: /^Suspender$/i,
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Suspender Conta Alfa/i,
       }),
     );
 
@@ -781,7 +1123,7 @@ describe('PlatformPage', () => {
     });
   });
 
-  it('bloqueia limite abaixo das instituicoes ativas', () => {
+  it('bloqueia limite abaixo das licencas em uso', () => {
     renderPage();
 
     fireEvent.change(
@@ -798,12 +1140,18 @@ describe('PlatformPage', () => {
 
     expect(hookMock.updateMutateAsync).not.toHaveBeenCalled();
     expect(screen.getByRole('alert').textContent).toMatch(
-      /limite m.nimo.*2.*institui..es ativas/i,
+      /limite m.nimo.*2.*licen.as em uso/i,
     );
   });
 
-  it('suspende e reativa instituicao preservando historico', async () => {
+  it('suspende e reativa instituicao atualizando o modal', async () => {
     renderPage();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('button', {
@@ -819,7 +1167,12 @@ describe('PlatformPage', () => {
         active: false,
       });
       expect(
-        screen.getByText(/Hist.rico acad.mico preservado/i),
+        screen.getByRole('button', {
+          name: /Reativar Escola Alpha/i,
+        }),
+      ).toBeDefined();
+      expect(
+        screen.getByText(/licen.a continua ocupada/i),
       ).toBeDefined();
     });
 
@@ -836,6 +1189,69 @@ describe('PlatformPage', () => {
         institutionId: 'institution-3',
         active: true,
       });
+    });
+
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir Escola Alpha/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.deleteInstitutionMutateAsync,
+      ).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        institutionId: 'institution-1',
+      });
+      expect(
+        screen.getByText(/licen.a foi liberada/i),
+      ).toBeDefined();
+      expect(screen.queryByText('Escola Alpha')).toBeNull();
+    });
+  });
+
+  it('atualiza o modal de escolas quando os dados da conta sao recarregados', async () => {
+    const { rerender } = renderPage();
+
+    openAccountManagementDialog();
+
+    expect(
+      screen.getByRole('button', {
+        name: /Suspender Escola Alpha/i,
+      }),
+    ).toBeDefined();
+
+    hookMock.accountsQuery = {
+      ...hookMock.accountsQuery,
+      data: accounts.map((account) =>
+        account.id === 'account-1'
+          ? {
+              ...account,
+              institutions: account.institutions.map(
+                (institution) =>
+                  institution.id === 'institution-1'
+                    ? {
+                        ...institution,
+                        active: false,
+                      }
+                    : institution,
+              ),
+            }
+          : account,
+      ),
+    };
+
+    rerender(<PlatformPage />);
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole('button', {
+          name: /Reativar Escola Alpha/i,
+        }),
+      ).toBeDefined();
     });
   });
 
@@ -859,31 +1275,39 @@ describe('PlatformPage', () => {
     ).toHaveLength(1);
   });
 
-  it('mantem conta encerrada visivel sem acoes operacionais', () => {
+  it('conta excluida mostra botoes Restaurar e Excluir permanentemente habilitados', () => {
     renderPage();
 
-    const closedRow = screen
-      .getByLabelText('Limite de Conta Encerrada')
-      .closest('tr')!;
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
 
-    expect(within(closedRow).getByText('Dora Admin')).toBeDefined();
     expect(
-      within(closedRow).getByText(
-        'Conta encerrada. Dados e historico preservados.',
-      ),
+      screen.getByText('Conta Encerrada'),
     ).toBeDefined();
     expect(
-      within(closedRow).queryByRole('button', {
+      screen.getAllByText('Excluída').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(
+      screen.queryByRole('button', {
         name: /Acessar escolas/i,
       }),
     ).toBeNull();
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
     expect(
-      within(closedRow).queryByRole('button', {
-        name: /Encerrar conta/i,
+      within(dialog).getByRole('button', {
+        name: /Restaurar/i,
       }),
-    ).toBeNull();
+    ).toBeDefined();
     expect(
-      within(closedRow).queryByRole('button', {
+      within(dialog).getByRole('button', {
+        name: /Excluir permanentemente/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.queryByRole('button', {
         name: /^Reativar$/i,
       }),
     ).toBeNull();
@@ -919,7 +1343,12 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       within(alfaRow).getByRole('button', {
-        name: /Ver histórico/i,
+        name: /Gerenciar escolas e ações de Conta Alfa/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Ver histórico de Conta Alfa/i,
       }),
     );
 
@@ -933,18 +1362,19 @@ describe('PlatformPage', () => {
     ).toBeDefined();
   });
 
-  it('exige motivo e confirmacao por e-mail para encerrar conta', async () => {
+  it('exige motivo e confirmacao por e-mail para excluir conta', async () => {
     renderPage();
 
+    openAccountManagementDialog();
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Encerrar conta Conta Alfa/i,
+        name: /Excluir conta Conta Alfa/i,
       }),
     );
 
     expect(
       screen.getByRole('dialog', {
-        name: /Encerrar conta/i,
+        name: /Excluir conta/i,
       }),
     ).toBeDefined();
     expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
@@ -952,15 +1382,15 @@ describe('PlatformPage', () => {
     expect(screen.getAllByText('ana@example.com').length).toBeGreaterThan(1);
 
     const confirmButton = screen.getByRole('button', {
-      name: /^Encerrar conta$/i,
+      name: /^Excluir conta$/i,
     }) as HTMLButtonElement;
     expect(confirmButton.disabled).toBe(true);
 
     fireEvent.change(
-      screen.getByLabelText(/Motivo do encerramento/i),
+      screen.getByLabelText(/Motivo da exclusão/i),
       {
         target: {
-          value: 'Encerramento comercial solicitado.',
+          value: 'Exclusao solicitada.',
         },
       },
     );
@@ -979,7 +1409,7 @@ describe('PlatformPage', () => {
     await waitFor(() => {
       expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-1',
-        reason: 'Encerramento comercial solicitado.',
+        reason: 'Exclusao solicitada.',
       });
       expect(
         hookMock.clearCurrentInstitutionSelection,
@@ -989,32 +1419,33 @@ describe('PlatformPage', () => {
       );
       expect(
         screen.getAllByText(
-          /Conta encerrada. Dados e historico preservados/i,
+          /Conta movida para Excluídos/i,
         ).length,
       ).toBeGreaterThanOrEqual(1);
     });
   });
 
-  it('mostra erro de encerramento sem remover item da interface', async () => {
+  it('mostra erro de exclusao sem remover item da interface', async () => {
     hookMock.closeMutateAsync.mockRejectedValueOnce(
       new AccountServiceError(
-        'Não foi possível encerrar a conta.',
+        'Não foi possível excluir a conta.',
         'ACCOUNT_STATUS_TRANSITION_INVALID',
       ),
     );
 
     renderPage();
 
+    openAccountManagementDialog();
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Encerrar conta Conta Alfa/i,
+        name: /Excluir conta Conta Alfa/i,
       }),
     );
     fireEvent.change(
-      screen.getByLabelText(/Motivo do encerramento/i),
+      screen.getByLabelText(/Motivo da exclusão/i),
       {
         target: {
-          value: 'Encerramento comercial solicitado.',
+          value: 'Exclusao solicitada.',
         },
       },
     );
@@ -1028,14 +1459,14 @@ describe('PlatformPage', () => {
     );
     fireEvent.click(
       screen.getByRole('button', {
-        name: /^Encerrar conta$/i,
+        name: /^Excluir conta$/i,
       }),
     );
 
     await waitFor(() => {
       expect(
         screen.getByText(
-          /Não foi possível encerrar a conta/i,
+          /Não foi possível excluir a conta/i,
         ),
       ).toBeDefined();
       expect(screen.getAllByText('Conta Alfa').length).toBeGreaterThan(1);
@@ -1046,18 +1477,19 @@ describe('PlatformPage', () => {
     });
   });
 
-  it('encerra conta sem instituicoes sem limpar selecao de outra conta', async () => {
+  it('exclui conta sem instituicoes sem limpar selecao de outra conta', async () => {
     renderPage();
 
+    openAccountManagementDialog('Conta Gama');
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Encerrar conta Conta Gama/i,
+        name: /Excluir conta Conta Gama/i,
       }),
     );
 
     expect(
       screen.getByRole('dialog', {
-        name: /Encerrar conta/i,
+        name: /Excluir conta/i,
       }),
     ).toBeDefined();
     expect(screen.getAllByText('Conta Gama').length).toBeGreaterThan(1);
@@ -1065,9 +1497,9 @@ describe('PlatformPage', () => {
     expect(screen.getAllByText('caio@example.com').length).toBeGreaterThan(1);
 
     fireEvent.change(
-      screen.getByLabelText(/Motivo do encerramento/i),
+      screen.getByLabelText(/Motivo da exclusão/i),
       {
-        target: { value: 'Encerramento solicitado pelo cliente.' },
+        target: { value: 'Exclusao solicitada pelo cliente.' },
       },
     );
     fireEvent.change(
@@ -1081,14 +1513,14 @@ describe('PlatformPage', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /^Encerrar conta$/i,
+        name: /^Excluir conta$/i,
       }),
     );
 
     await waitFor(() => {
       expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
         accountId: 'account-3',
-        reason: 'Encerramento solicitado pelo cliente.',
+        reason: 'Exclusao solicitada pelo cliente.',
       });
       expect(
         hookMock.clearCurrentInstitutionSelection,
@@ -1111,6 +1543,9 @@ describe('PlatformPage', () => {
       screen.getAllByText('Conta Alfa').length,
     ).toBeGreaterThan(0);
     expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(
+      screen.queryByText('Conta Cancelada'),
+    ).toBeNull();
 
     fireEvent.change(
       screen.getByLabelText('Buscar conta ou instituição'),
@@ -1139,5 +1574,423 @@ describe('PlatformPage', () => {
     expect(screen.queryByText(/Acessar como suporte/i)).toBeNull();
     expect(screen.queryByText(/485,2 mil alunos/i)).toBeNull();
     expect(screen.queryByText(/24 estados/i)).toBeNull();
+  });
+
+  it('abre por padrao mostrando somente contas ativas', () => {
+    renderPage();
+
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(
+      screen.queryByText('Conta Encerrada'),
+    ).toBeNull();
+  });
+
+  it('Todos exibe ativas, suspensas e excluidas', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
+
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(screen.getByText('Conta Encerrada')).toBeDefined();
+  });
+
+  it('filtro Excluidos exibe somente excluidas', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+
+    expect(
+      screen.getByText('Conta Encerrada'),
+    ).toBeDefined();
+    expect(screen.queryByText('Conta Beta')).toBeNull();
+  });
+
+  it('busca em Todos encontra conta excluida', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
+    fireEvent.change(
+      screen.getByLabelText('Buscar conta ou instituição'),
+      {
+        target: { value: 'Encerrada' },
+      },
+    );
+
+    expect(
+      screen.getByText('Conta Encerrada'),
+    ).toBeDefined();
+  });
+
+  it('busca em Excluidos encontra conta excluida', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+    fireEvent.change(
+      screen.getByLabelText('Buscar conta ou instituição'),
+      {
+        target: { value: 'Encerrada' },
+      },
+    );
+
+    expect(
+      screen.getByText('Conta Encerrada'),
+    ).toBeDefined();
+  });
+
+  it('mantem Excluidos ao limpar somente a busca', () => {
+    renderPage();
+
+    const statusFilter = screen.getByLabelText('Status') as HTMLSelectElement;
+    const search = screen.getByLabelText(
+      'Buscar conta ou instituição',
+    ) as HTMLInputElement;
+
+    fireEvent.change(statusFilter, {
+      target: { value: 'DELETED' },
+    });
+    fireEvent.change(search, {
+      target: { value: 'dora@example.com' },
+    });
+
+    expect(screen.getByText('Conta Encerrada')).toBeDefined();
+
+    fireEvent.change(search, { target: { value: '' } });
+
+    expect(statusFilter.value).toBe('DELETED');
+    expect(
+      within(getAccountsTable()).getByText('Conta Encerrada'),
+    ).toBeDefined();
+    expect(
+      within(getAccountsTable()).queryByText('Conta Alfa'),
+    ).toBeNull();
+  });
+
+  it('conta excluida mantem botao Ver historico e exibe acoes pendentes no modal', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
+
+    expect(
+      within(dialog).getByRole('button', {
+        name: /Ver histórico de Conta Encerrada/i,
+      }),
+    ).toBeDefined();
+    expect(
+      screen.getAllByText('Excluída').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(
+      within(dialog).getByRole('button', {
+        name: /Restaurar Conta Encerrada/i,
+      }),
+    ).toBeDefined();
+    expect(
+      within(dialog).getByRole('button', {
+        name: /Excluir permanentemente Conta Encerrada/i,
+      }),
+    ).toBeDefined();
+  });
+
+  it('restauracao exibe botao Restaurar como botao habilitado', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
+    const restoreButton = within(dialog).getByRole('button', {
+      name: /Restaurar/i,
+    });
+    expect(restoreButton).toBeDefined();
+    expect(
+      restoreButton.tagName,
+    ).toBe('BUTTON');
+  });
+
+  it('exclusao permanente exibe botao Excluir permanentemente habilitado', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+
+    const dialog = openAccountManagementDialog(
+      'Conta Encerrada',
+    );
+    const deleteButton = within(dialog).getByRole('button', {
+      name: /Excluir permanentemente/i,
+    });
+    expect(deleteButton).toBeDefined();
+    expect(
+      deleteButton.tagName,
+    ).toBe('BUTTON');
+  });
+
+  it('nenhuma exclusao fisica e executada sem acao', () => {
+    renderPage();
+
+    expect(
+      hookMock.closeMutateAsync,
+    ).not.toHaveBeenCalled();
+  });
+
+  it('filtros Ativas e Suspensas continuam funcionando', () => {
+    renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ACTIVE' },
+    });
+
+    expect(
+      screen.getAllByText('Conta Alfa').length,
+    ).toBeGreaterThanOrEqual(1);
+    expect(screen.queryByText('Conta Beta')).toBeNull();
+    expect(
+      screen.queryByText('Conta Encerrada'),
+    ).toBeNull();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'SUSPENDED' },
+    });
+
+    expect(screen.getByText('Conta Beta')).toBeDefined();
+    expect(
+      screen.queryByText('Conta Encerrada'),
+    ).toBeNull();
+  });
+
+  it('mantem o total de Todos consistente com as contas existentes', () => {
+    const filterFixture = accounts.filter(
+      (account) => account.id !== 'account-3',
+    );
+
+    renderPageWithAccounts(filterFixture);
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
+
+    expect(screen.getByText('3 contas no total')).toBeDefined();
+    expect(
+      getAccountsTable().querySelectorAll('tbody tr'),
+    ).toHaveLength(3);
+    expect(
+      within(getAccountsTable()).getByText('Conta Alfa'),
+    ).toBeDefined();
+    expect(
+      within(getAccountsTable()).getByText('Conta Beta'),
+    ).toBeDefined();
+    expect(
+      within(getAccountsTable()).getByText('Conta Encerrada'),
+    ).toBeDefined();
+  });
+
+  it('mostra a transicao ACTIVE para CANCELED conforme o refetch', async () => {
+    const { rerender } = renderPage();
+
+    openAccountManagementDialog('Conta Alfa');
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir conta Conta Alfa/i,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Motivo da exclusão/i),
+      { target: { value: 'Encerramento comercial QA.' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText(
+        /Digite o e-mail do administrador para confirmar/i,
+      ),
+      { target: { value: 'ana@example.com' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /^Excluir conta$/i }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.closeMutateAsync).toHaveBeenCalledWith({
+        accountId: 'account-1',
+        reason: 'Encerramento comercial QA.',
+      });
+    });
+
+    const refetchedAccounts = accounts.map((account) =>
+      account.id === 'account-1'
+        ? { ...account, status: 'CANCELED' as const }
+        : account,
+    );
+    hookMock.accountsQuery = {
+      ...hookMock.accountsQuery,
+      data: refetchedAccounts,
+    };
+    rerender(<PlatformPage />);
+
+    expect(
+      within(getAccountsTable()).queryByText('Conta Alfa'),
+    ).toBeNull();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+    expect(
+      within(getAccountsTable()).getByText('Conta Alfa'),
+    ).toBeDefined();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
+    expect(
+      within(getAccountsTable()).getByText('Conta Alfa'),
+    ).toBeDefined();
+  });
+
+  it('restauracao move CANCELED para Ativas apos o refetch', async () => {
+    const { rerender } = renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+    const dialog = openAccountManagementDialog('Conta Encerrada');
+    fireEvent.click(
+      within(dialog).getByRole('button', {
+        name: /Restaurar Conta Encerrada/i,
+      }),
+    );
+    const restoreDialog = screen.getByRole('dialog', {
+      name: /Restaurar conta/i,
+    });
+    fireEvent.click(
+      within(restoreDialog).getByRole('button', {
+        name: /^Restaurar$/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(hookMock.restoreMutateAsync).toHaveBeenCalledWith({
+        accountId: 'account-4',
+        reason: 'Restauracao pelo super admin.',
+      });
+    });
+
+    hookMock.accountsQuery = {
+      ...hookMock.accountsQuery,
+      data: accounts.map((account) =>
+        account.id === 'account-4'
+          ? { ...account, status: 'ACTIVE' as const }
+          : account,
+      ),
+    };
+    rerender(<PlatformPage />);
+
+    expect(screen.queryByText('Conta Encerrada')).toBeNull();
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ACTIVE' },
+    });
+    expect(
+      within(getAccountsTable()).getByText('Conta Encerrada'),
+    ).toBeDefined();
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'ALL' },
+    });
+    expect(
+      within(getAccountsTable()).getByText('Conta Encerrada'),
+    ).toBeDefined();
+  });
+
+  it('hard delete remove a conta de todos os filtros', async () => {
+    const { rerender } = renderPage();
+
+    fireEvent.change(screen.getByLabelText('Status'), {
+      target: { value: 'DELETED' },
+    });
+    openAccountManagementDialog('Conta Encerrada');
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir permanentemente Conta Encerrada/i,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Motivo da exclusão permanente/i),
+      { target: { value: 'Remocao definitiva QA.' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText(
+        /Digite o e-mail do administrador para confirmar/i,
+      ),
+      { target: { value: 'dora@example.com' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/EXCLUIR DEFINITIVAMENTE/i),
+      { target: { value: 'EXCLUIR DEFINITIVAMENTE' } },
+    );
+    fireEvent.click(
+      screen.getByRole('checkbox'),
+    );
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Excluir permanentemente/i,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(
+        hookMock.permanentlyDeleteMutateAsync,
+      ).toHaveBeenCalledWith(
+        expect.objectContaining({ accountId: 'account-4' }),
+      );
+    });
+
+    hookMock.accountsQuery = {
+      ...hookMock.accountsQuery,
+      data: accounts.filter((account) => account.id !== 'account-4'),
+    };
+    rerender(<PlatformPage />);
+
+    for (const status of ['ALL', 'ACTIVE', 'SUSPENDED', 'DELETED']) {
+      fireEvent.change(screen.getByLabelText('Status'), {
+        target: { value: status },
+      });
+      expect(screen.queryByText('Conta Encerrada')).toBeNull();
+    }
+  });
+
+  it('mostra mensagem para filtro sem resultados', () => {
+    renderPage();
+
+    fireEvent.change(
+      screen.getByLabelText('Buscar conta ou instituição'),
+      {
+        target: { value: 'naoexiste' },
+      },
+    );
+
+    expect(
+      screen.getByText(
+        /Nenhuma conta encontrada para os filtros informados/i,
+      ),
+    ).toBeDefined();
   });
 });

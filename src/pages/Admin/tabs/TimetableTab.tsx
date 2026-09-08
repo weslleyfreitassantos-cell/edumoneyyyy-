@@ -1,18 +1,30 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import {
+  Edit3,
+  Power,
+  PowerOff,
+} from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useAssignments } from '../../../hooks/useAssignments';
-import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableEntries, useCreateTimetableEntry, useSetTimetableEntryActive } from '../../../hooks/useTimetable';
+import { getPreferredAcademicYear } from '../../../lib/academicSelection';
+import { useRooms, useCreateRoom, useUpdateRoom, useSetRoomActive, useTimetableEntries, useCreateTimetableEntry, useUpdateTimetableEntry, useSetTimetableEntryActive } from '../../../hooks/useTimetable';
 import { timetableService, DAYS_OF_WEEK, dayLabel, type TimetableEntryRow, type RoomRow, type TimetableGrid } from '../../../services/timetableService';
+import type { AcademicYearRow } from '../../../services/academicStructureService';
 import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntryFormData } from '../../../schemas/adminSchemas';
 import { DataTable, type Column } from '../../../components/DataTable';
+import StatusBadge from '../../../components/StatusBadge';
+import TimetableAutomationPanel from '../../../components/academic/TimetableAutomationPanel';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface RoomDraft {
   name: string;
   code: string;
   capacity: string;
+  class_id: string;
 }
 
 interface EntryDraft {
@@ -24,15 +36,24 @@ interface EntryDraft {
   end_time: string;
 }
 
-const emptyRoomDraft: RoomDraft = { name: '', code: '', capacity: '' };
+const emptyRoomDraft: RoomDraft = { name: '', code: '', capacity: '', class_id: '' };
 const emptyEntryDraft: EntryDraft = { class_id: '', subject_offering_id: '', room_id: '', day_of_week: '1', start_time: '07:00', end_time: '07:50' };
 
-type SubView = 'grid' | 'rooms';
+type SubView = 'grid' | 'rooms' | 'automation';
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error && typeof (error as Record<string, unknown>).message === 'string') return (error as Record<string, unknown>).message as string;
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
+}
+
+function getPreferredTermId(year: AcademicYearRow | undefined): string {
+  if (!year) return 'all';
+
+  const activeTerms = year.terms.filter((term) => term.active);
+  if (activeTerms.length === 0) return 'all';
+
+  const today = new Date().toISOString().slice(0, 10);
+  return activeTerms.find((term) => term.start_date <= today && today <= term.end_date)?.id
+    ?? activeTerms[0].id;
 }
 
 function TimetableView({ grid, onEdit }: { grid: TimetableGrid; onEdit: (e: TimetableEntryRow) => void }) {
@@ -40,41 +61,41 @@ function TimetableView({ grid, onEdit }: { grid: TimetableGrid; onEdit: (e: Time
     return (
       <div
         key={entry.id}
-        className="cursor-pointer rounded-md border border-blue-200 bg-blue-50 p-1.5 text-xs hover:bg-blue-100"
+        className="cursor-pointer rounded-md border border-blue-200 bg-blue-50 p-1.5 text-xs hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/50 dark:hover:bg-blue-900/60"
         onClick={() => onEdit(entry)}
       >
-        <div className="font-semibold text-[#181c20]">{entry.subject_name}</div>
-        <div className="text-[#727785]">{entry.teacher_name ?? '—'}</div>
-        {entry.room_name && <div className="text-[#727785]">{entry.room_name}</div>}
+        <div className="font-semibold text-[#181c20] dark:text-blue-50">{entry.subject_name}</div>
+        <div className="text-[#727785] dark:text-slate-300">{entry.teacher_name ?? '—'}</div>
+        {entry.room_name && <div className="text-[#727785] dark:text-slate-300">{entry.room_name}</div>}
       </div>
     );
   }
 
   if (grid.timeSlots.length === 0) {
     return (
-      <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-sm text-gray-500">
+      <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
         Nenhum horário cadastrado. Clique em "Adicionar horário" para começar.
       </div>
     );
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-[#dfe3e8]">
-      <table className="min-w-full divide-y divide-[#dfe3e8] text-sm">
+    <div className="overflow-x-auto rounded-xl border border-[#dfe3e8] dark:border-slate-700">
+      <table className="min-w-full divide-y divide-[#dfe3e8] text-sm dark:divide-slate-700">
         <thead>
-          <tr className="bg-gray-50">
-            <th className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase">Horário</th>
+          <tr className="bg-gray-50 dark:bg-slate-800">
+            <th className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase dark:text-slate-300">Horário</th>
             {grid.days.map((day) => (
-              <th key={day.day} className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase">
+              <th key={day.day} className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase dark:text-slate-300">
                 {day.label}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#dfe3e8]">
+        <tbody className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
           {grid.timeSlots.map((slot, idx) => (
-            <tr key={`${slot.start_time}-${slot.end_time}`} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}>
-              <td className="whitespace-nowrap px-3 py-2 text-xs font-medium text-[#727785]">
+            <tr key={`${slot.start_time}-${slot.end_time}`} className={idx % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-gray-50/50 dark:bg-slate-800/60'}>
+              <td className="whitespace-nowrap px-3 py-2 text-xs font-medium text-[#727785] dark:text-slate-400">
                 {slot.start_time} – {slot.end_time}
               </td>
               {grid.days.map((day) => {
@@ -107,13 +128,22 @@ export default function TimetableTab() {
   const entriesQuery = useTimetableEntries(institutionId);
 
   const createEntryMutation = useCreateTimetableEntry();
+  const updateEntryMutation = useUpdateTimetableEntry();
   const setEntryActiveMutation = useSetTimetableEntryActive();
   const createRoomMutation = useCreateRoom();
   const updateRoomMutation = useUpdateRoom();
   const setRoomActiveMutation = useSetRoomActive();
 
-  const [subView, setSubView] = useState<SubView>('grid');
+  const [searchParams] = useSearchParams();
+  const [subView, setSubView] = useState<SubView>(() => {
+    const requestedView = searchParams.get('view');
+    if (requestedView === 'automation' || requestedView === 'rooms') return requestedView;
+    return 'grid';
+  });
   const [classFilter, setClassFilter] = useState('all');
+  const [yearFilter, setYearFilter] = useState('all');
+  const [termFilter, setTermFilter] = useState('all');
+  const [teacherFilter, setTeacherFilter] = useState('all');
   const [dayFilter, setDayFilter] = useState('all');
 
   // Entry modal state
@@ -134,14 +164,26 @@ export default function TimetableTab() {
   const assignments = assignmentsQuery.data ?? [];
   const rooms = roomsQuery.data ?? [];
   const entries = entriesQuery.data ?? [];
+  const teachers = useMemo(() => Array.from(new Map(assignments.filter((assignment) => assignment.active).map((assignment) => [assignment.teacher_profile_id, { profile_id: assignment.teacher_profile_id, name: assignment.teacher_name }])).values()), [assignments]);
+
+  useEffect(() => {
+    if (yearFilter !== 'all' || years.length === 0) return;
+    const activeYear = getPreferredAcademicYear(years) ?? years[0];
+    if (!activeYear) return;
+    setYearFilter(activeYear.id);
+    setTermFilter(getPreferredTermId(activeYear));
+  }, [yearFilter, years]);
 
   const filteredEntries = useMemo(() => {
     return entries.filter((e) => {
-      if (classFilter !== 'all' && e.class_name !== classes.find((c) => c.id === classFilter)?.name) return false;
+      if (yearFilter !== 'all' && e.academic_year_id && e.academic_year_id !== yearFilter) return false;
+      if (termFilter !== 'all' && e.term_id && e.term_id !== termFilter) return false;
+      if (classFilter !== 'all' && e.class_id !== classFilter) return false;
+      if (teacherFilter !== 'all' && e.teacher_profile_id !== teacherFilter) return false;
       if (dayFilter !== 'all' && e.day_of_week !== Number(dayFilter)) return false;
       return true;
     });
-  }, [entries, classFilter, dayFilter, classes]);
+  }, [entries, classFilter, dayFilter, teacherFilter, termFilter, yearFilter]);
 
   const grid = useMemo(() => timetableService.buildGrid(filteredEntries), [filteredEntries]);
 
@@ -150,16 +192,14 @@ export default function TimetableTab() {
     const map = new Map<string, typeof assignments>();
     for (const a of assignments) {
       if (!a.active) continue;
-      const list = map.get(a.class_name) ?? [];
+      const list = map.get(a.class_id) ?? [];
       list.push(a);
-      map.set(a.class_name, list);
+      map.set(a.class_id, list);
     }
     return map;
   }, [assignments]);
 
-  const classNames: string[] = useMemo(() => {
-    return Array.from(assignmentsByClass.keys()).sort((a: string, b: string) => a.localeCompare(b, 'pt-BR'));
-  }, [assignmentsByClass]);
+  const classOptions = useMemo(() => classes.filter((classRecord) => assignmentsByClass.has(classRecord.id)).sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')), [assignmentsByClass, classes]);
 
   const filteredAssignments = useMemo(() => {
     if (!entryDraft.class_id) return [];
@@ -168,7 +208,8 @@ export default function TimetableTab() {
 
   const activeRooms = useMemo(() => rooms.filter((r) => r.active), [rooms]);
 
-  const isEntrySubmitting = createEntryMutation.isPending;
+  const isEntrySubmitting = createEntryMutation.isPending || updateEntryMutation.isPending;
+  const isRoomSubmitting = createRoomMutation.isPending || updateRoomMutation.isPending;
 
   function resetMessages(): void {
     setEntryError(null);
@@ -197,6 +238,11 @@ export default function TimetableTab() {
 
     try {
       if (editingEntry) {
+        await updateEntryMutation.mutateAsync({
+          id: editingEntry.id,
+          institutionId,
+          data: result.data,
+        });
         setFeedbackMessage('Horário atualizado.');
       } else {
         await createEntryMutation.mutateAsync(result.data);
@@ -219,7 +265,7 @@ export default function TimetableTab() {
     resetMessages();
     setEditingEntry(entry);
     setEntryDraft({
-      class_id: entry.class_name,
+      class_id: entry.class_id,
       subject_offering_id: entry.subject_offering_id,
       room_id: entry.room_id ?? '',
       day_of_week: String(entry.day_of_week),
@@ -261,6 +307,7 @@ export default function TimetableTab() {
       name: roomDraft.name,
       code: roomDraft.code || undefined,
       capacity: roomDraft.capacity ? Number(roomDraft.capacity) : undefined,
+      class_id: roomDraft.class_id || undefined,
       active: true,
     };
 
@@ -269,7 +316,7 @@ export default function TimetableTab() {
 
     try {
       if (editingRoom) {
-        await updateRoomMutation.mutateAsync({ id: editingRoom.id, institutionId, data: { name: result.data.name, code: result.data.code, capacity: result.data.capacity, active: editingRoom.active } });
+        await updateRoomMutation.mutateAsync({ id: editingRoom.id, institutionId, data: { name: result.data.name, code: result.data.code, capacity: result.data.capacity, class_id: result.data.class_id, active: editingRoom.active } });
         setFeedbackMessage('Sala atualizada.');
       } else {
         await createRoomMutation.mutateAsync(result.data);
@@ -291,7 +338,7 @@ export default function TimetableTab() {
   function openEditRoomModal(room: RoomRow): void {
     resetMessages();
     setEditingRoom(room);
-    setRoomDraft({ name: room.name, code: room.code ?? '', capacity: room.capacity ? String(room.capacity) : '' });
+    setRoomDraft({ name: room.name, code: room.code ?? '', capacity: room.capacity ? String(room.capacity) : '', class_id: room.class_id ?? '' });
     setIsRoomModalOpen(true);
   }
 
@@ -317,13 +364,12 @@ export default function TimetableTab() {
     { key: 'name', label: 'Nome' },
     { key: 'code', label: 'Código', render: (_v, r) => r.code ?? '—' },
     { key: 'capacity', label: 'Capacidade', render: (_v, r) => r.capacity ? String(r.capacity) : '—' },
+    { key: 'class_name', label: 'Turma', render: (_v, r) => r.class_name ?? 'Compartilhada' },
     {
       key: 'active',
       label: 'Status',
       render: (_v, r) => (
-        <span className={r.active ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700' : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'}>
-          {r.active ? 'Ativo' : 'Inativo'}
-        </span>
+        <StatusBadge active={r.active} />
       ),
     },
   ];
@@ -343,49 +389,80 @@ export default function TimetableTab() {
       )}
 
       {/* Sub-navigation */}
-      <div className="flex gap-2 border-b border-[#dfe3e8] pb-2">
+      <div className="flex gap-2 border-b border-[#dfe3e8] pb-2 dark:border-slate-700">
         <button
           type="button"
           onClick={() => setSubView('grid')}
-          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'grid' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf]' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'grid' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Grade Horária
         </button>
         <button
           type="button"
           onClick={() => setSubView('rooms')}
-          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'rooms' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf]' : 'text-gray-500 hover:text-gray-700'}`}
+          className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'rooms' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Salas
         </button>
+        <button
+          type="button"
+          onClick={() => setSubView('automation')}
+          className={`rounded-t-lg px-4 py-2 text-sm font-medium ${subView === 'automation' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
+        >
+          Automacao
+        </button>
       </div>
+
+      {subView === 'automation' && <TimetableAutomationPanel institutionId={institutionId} createdBy={profile?.id ?? ''} />}
 
       {subView === 'grid' && (
         <>
           {/* Filters */}
-          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:items-end">
+          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:flex-wrap sm:items-end">
             <div>
-              <label htmlFor="tt-class-filter" className="block text-sm font-medium text-gray-700">Turma</label>
+              <label htmlFor="tt-year-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Ano letivo</label>
+              <select id="tt-year-filter" value={yearFilter} onChange={(e) => { setYearFilter(e.target.value); setTermFilter('all'); }} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                <option value="all">Todos</option>
+                {years.filter((year) => year.active).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="tt-term-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Período</label>
+              <select id="tt-term-filter" value={termFilter} onChange={(e) => setTermFilter(e.target.value)} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                <option value="all">Todos</option>
+                {years.flatMap((year) => year.terms.filter((term) => yearFilter === 'all' || year.id === yearFilter).map((term) => <option key={term.id} value={term.id}>{term.name} - {year.name}</option>))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="tt-class-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Turma</label>
               <select
                 id="tt-class-filter"
                 value={classFilter}
                 onChange={(e) => setClassFilter(e.target.value)}
-                className="mt-1 rounded-lg border px-3 py-2 text-sm"
+                className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               >
                 <option value="all">Todas</option>
-                {classes.filter((c) => c.active).map((c) => (
+                {classes.filter((c) => c.active && (yearFilter === 'all' || c.academic_year_id === yearFilter)).map((c) => (
                   <option key={c.id} value={c.id}>{c.name}</option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label htmlFor="tt-day-filter" className="block text-sm font-medium text-gray-700">Dia da semana</label>
+              <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Professor</label>
+              <select id="tt-teacher-filter" value={teacherFilter} onChange={(e) => setTeacherFilter(e.target.value)} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                <option value="all">Todos</option>
+                {teachers.filter((teacher) => teacher.active).map((teacher) => <option key={teacher.profile_id} value={teacher.profile_id}>{teacher.profiles?.full_name ?? teacher.profile_id}</option>)}
+              </select>
+            </div>
+
+            <div>
+              <label htmlFor="tt-day-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Dia da semana</label>
               <select
                 id="tt-day-filter"
                 value={dayFilter}
                 onChange={(e) => setDayFilter(e.target.value)}
-                className="mt-1 rounded-lg border px-3 py-2 text-sm"
+                className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
               >
                 <option value="all">Todos</option>
                 {DAYS_OF_WEEK.map((d) => (
@@ -412,23 +489,60 @@ export default function TimetableTab() {
       )}
 
       {subView === 'rooms' && (
-        <DataTable
-          title="Salas"
-          addLabel="Adicionar sala"
-          data={rooms}
-          columns={roomColumns}
-          isLoading={roomsQuery.isLoading}
-          onAdd={openCreateRoomModal}
-          emptyMessage="Nenhuma sala cadastrada."
-          renderActions={(room) => (
-            <div className="flex items-center gap-3">
-              <button type="button" onClick={() => openEditRoomModal(room)} className="font-medium text-blue-600 hover:text-blue-800">Editar</button>
-              <button type="button" onClick={() => void handleToggleRoomActive(room)} className={room.active ? 'font-medium text-red-600 hover:text-red-800' : 'font-medium text-green-600 hover:text-green-800'}>
-                {room.active ? 'Desativar' : 'Reativar'}
-              </button>
+        <>
+          <section className="rounded-xl border border-blue-100 bg-blue-50 p-4 dark:border-blue-900/70 dark:bg-blue-950/30">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-blue-700 dark:text-blue-300">CONFIGURAÇÃO DAS SALAS</p>
+                <h2 className="mt-1 text-lg font-bold text-[#181c20] dark:text-white">Crie e organize as salas da escola</h2>
+                <p className="mt-1 max-w-3xl text-sm text-gray-700 dark:text-slate-300">
+                  Cadastre uma sala física e, se quiser, vincule-a a uma turma. Salas sem turma ficam compartilhadas e podem ser usadas em qualquer horário.
+                </p>
+              </div>
+              <span className="shrink-0 text-sm font-medium text-blue-800 dark:text-blue-300">{rooms.length} sala(s) cadastrada(s)</span>
             </div>
-          )}
-        />
+            <div className="mt-3 flex flex-col gap-2 border-t border-blue-100 pt-3 text-sm text-gray-700 dark:border-blue-900/70 dark:text-slate-300 md:flex-row md:gap-6">
+              <p><strong className="text-[#181c20] dark:text-white">Criação manual:</strong> use o botão abaixo para escolher nome, código, capacidade e turma.</p>
+              <p><strong className="text-[#181c20] dark:text-white">Geração automática:</strong> ao gerar uma grade sem salas cadastradas, o sistema cria salas AUTO vinculadas às turmas.</p>
+            </div>
+          </section>
+
+          <DataTable
+            title="Salas"
+            addLabel="Criar sala manualmente"
+            data={rooms}
+            columns={roomColumns}
+            isLoading={roomsQuery.isLoading}
+            onAdd={openCreateRoomModal}
+            emptyMessage="Nenhuma sala cadastrada. Crie a primeira sala manualmente."
+            actionCellClassName="min-w-[76px] align-top whitespace-nowrap"
+            actionGroupClassName="md:flex-nowrap"
+            renderActions={(room) => (
+              <>
+                <button
+                  type="button"
+                  title={`Editar sala ${room.name}`}
+                  aria-label={`Editar sala ${room.name}`}
+                  onClick={() => openEditRoomModal(room)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
+                >
+                  <Edit3 className="h-4 w-4" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  title={`${room.active ? 'Desativar' : 'Reativar'} sala ${room.name}`}
+                  aria-label={`${room.active ? 'Desativar' : 'Reativar'} sala ${room.name}`}
+                  onClick={() => void handleToggleRoomActive(room)}
+                  className={room.active
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'}
+                >
+                  {room.active ? <PowerOff className="h-4 w-4" aria-hidden="true" /> : <Power className="h-4 w-4" aria-hidden="true" />}
+                </button>
+              </>
+            )}
+          />
+        </>
       )}
 
       {/* Entry Modal */}
@@ -446,7 +560,7 @@ export default function TimetableTab() {
                 <label htmlFor="entry-class" className="block text-sm font-medium text-gray-700">Turma</label>
                 <select
                   id="entry-class"
-                  value={editingEntry ? editingEntry.class_name : entryDraft.class_id}
+                  value={editingEntry ? editingEntry.class_id : entryDraft.class_id}
                   onChange={(e) => {
                     setEntryDraft((curr) => ({ ...curr, class_id: e.target.value, subject_offering_id: '' }));
                   }}
@@ -455,8 +569,8 @@ export default function TimetableTab() {
                   required
                 >
                   <option value="">Selecione</option>
-                  {classNames.map((name) => (
-                    <option key={name} value={name}>{name}</option>
+                  {classOptions.map((classRecord) => (
+                    <option key={classRecord.id} value={classRecord.id}>{classRecord.name}</option>
                   ))}
                 </select>
               </div>
@@ -548,9 +662,12 @@ export default function TimetableTab() {
       {isRoomModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" role="dialog" aria-modal="true" aria-labelledby="room-modal-title">
           <div className="max-h-[90vh] w-full max-w-md overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
-            <h3 id="room-modal-title" className="mb-4 text-lg font-bold text-[#181c20]">
+            <h3 id="room-modal-title" className="text-lg font-bold text-[#181c20]">
               {editingRoom ? 'Editar sala' : 'Adicionar sala'}
             </h3>
+            <p className="mb-4 mt-1 text-sm text-gray-600">
+              {editingRoom ? 'Atualize os dados e o vínculo desta sala.' : 'Cadastre uma sala para usar na grade horária. O vínculo com a turma é opcional.'}
+            </p>
 
             <form onSubmit={(e) => void handleRoomSubmit(e)} className="space-y-4">
               {roomError && <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{roomError}</div>}
@@ -593,10 +710,26 @@ export default function TimetableTab() {
                 />
               </div>
 
+              <div>
+                <label htmlFor="room-class" className="block text-sm font-medium text-gray-700">Turma vinculada (opcional)</label>
+                <select
+                  id="room-class"
+                  value={roomDraft.class_id}
+                  onChange={(e) => setRoomDraft((curr) => ({ ...curr, class_id: e.target.value }))}
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                >
+                  <option value="">Sala compartilhada</option>
+                  {classes.filter((classRecord) => classRecord.active).sort((left, right) => left.name.localeCompare(right.name, 'pt-BR')).map((classRecord) => (
+                    <option key={classRecord.id} value={classRecord.id}>{classRecord.name}</option>
+                  ))}
+                </select>
+                <p className="mt-1 text-xs text-gray-500">Deixe como Sala compartilhada para disponibilizá-la em qualquer turma.</p>
+              </div>
+
               <div className="flex justify-end gap-2 pt-2">
-                <button type="button" onClick={closeRoomModal} className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50">Cancelar</button>
-                <button type="submit" className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]">
-                  {editingRoom ? 'Salvar' : 'Criar'}
+                <button type="button" onClick={closeRoomModal} disabled={isRoomSubmitting} className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50">Cancelar</button>
+                <button type="submit" disabled={isRoomSubmitting} className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50">
+                  {isRoomSubmitting ? 'Salvando...' : editingRoom ? 'Salvar' : 'Criar sala'}
                 </button>
               </div>
             </form>

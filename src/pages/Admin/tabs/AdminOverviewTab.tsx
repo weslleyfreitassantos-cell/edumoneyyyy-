@@ -1,11 +1,8 @@
 import type { ReactNode } from 'react';
 
 import {
-  AlertTriangle,
   BookOpen,
   CalendarDays,
-  CheckCircle2,
-  Circle,
   GraduationCap,
   Layers3,
   School,
@@ -14,48 +11,15 @@ import {
 } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
-
 import { useAdminOverview } from '../../../hooks/useAdminOverview';
-
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import SchoolSetupProgress from '../../../components/academic/SchoolSetupProgress';
+import type { AdminModuleId } from '../adminNavigation';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
+import { canManageAcademicStructure } from '../../../lib/permissions';
 
-import type {
-  AdminModuleId,
-} from '../adminNavigation';
-
-function getErrorMessage(
-  error: unknown,
-): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar a visão geral.';
-}
-
-function formatDate(
-  value: string | undefined,
-): string {
-  if (!value) {
-    return 'Não informado';
-  }
-
-  const [year, month, day] = value.split('-');
-
-  if (!year || !month || !day) {
-    return value;
-  }
-
-  return `${day}/${month}/${year}`;
+function getErrorMessage(error: unknown): string {
+  return getUserFacingErrorMessage(error, 'Não foi possível carregar a visão geral.');
 }
 
 function MetricCard({
@@ -88,124 +52,9 @@ function MetricCard({
   );
 }
 
-interface SetupChecklistItem {
-  id: string;
-  label: string;
-  complete: boolean;
-  targetModuleId?: AdminModuleId;
-}
-
-interface SetupChecklistProps {
-  items: SetupChecklistItem[];
-  availableModuleIds: readonly AdminModuleId[];
-  onNavigateToModule?: (
-    moduleId: AdminModuleId,
-  ) => void;
-}
-
-function SetupChecklist({
-  items,
-  availableModuleIds,
-  onNavigateToModule,
-}: SetupChecklistProps) {
-  const availableModules = new Set(
-    availableModuleIds,
-  );
-
-  return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#182235]">
-      <div>
-        <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf] dark:text-[#93c5fd]">
-          Configuração inicial da escola
-        </p>
-
-        <h3 className="mt-2 text-lg font-bold text-[#181c20] dark:text-[#f8fafc]">
-          Primeiros passos
-        </h3>
-      </div>
-
-      <div className="mt-4 grid gap-2 md:grid-cols-2">
-        {items.map((item) => {
-          const canNavigate =
-            !item.complete &&
-            item.targetModuleId &&
-            availableModules.has(
-              item.targetModuleId,
-            ) &&
-            onNavigateToModule;
-
-          const content = (
-            <>
-              <span
-                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${
-                  item.complete
-                    ? 'bg-green-100 text-green-700 dark:bg-green-950/50 dark:text-green-300'
-                    : 'bg-gray-100 text-gray-500 dark:bg-[#0f172a] dark:text-[#94a3b8]'
-                }`}
-              >
-                {item.complete ? (
-                  <CheckCircle2
-                    className="h-4 w-4"
-                    aria-hidden="true"
-                  />
-                ) : (
-                  <Circle
-                    className="h-4 w-4"
-                    aria-hidden="true"
-                  />
-                )}
-              </span>
-
-              <span className="min-w-0 flex-1">
-                <span className="block text-sm font-semibold text-[#181c20] dark:text-[#f8fafc]">
-                  {item.label}
-                </span>
-
-                <span className="mt-0.5 block text-xs text-[#727785] dark:text-[#94a3b8]">
-                  {item.complete
-                    ? 'Concluído'
-                    : 'Pendente'}
-                </span>
-              </span>
-            </>
-          );
-
-          if (canNavigate) {
-            return (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() =>
-                  onNavigateToModule(
-                    item.targetModuleId!,
-                  )
-                }
-                className="flex items-center gap-3 rounded-lg border border-[#dfe3e8] bg-white p-3 text-left outline-none transition hover:border-[#005bbf] hover:bg-[#f3f7ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-[#334155] dark:bg-[#0f172a] dark:hover:border-[#60a5fa] dark:hover:bg-[#1e293b]"
-              >
-                {content}
-              </button>
-            );
-          }
-
-          return (
-            <div
-              key={item.id}
-              className="flex items-center gap-3 rounded-lg border border-[#dfe3e8] bg-white p-3 dark:border-[#334155] dark:bg-[#0f172a]"
-            >
-              {content}
-            </div>
-          );
-        })}
-      </div>
-    </article>
-  );
-}
-
 interface AdminOverviewTabProps {
   availableModuleIds?: readonly AdminModuleId[];
-  onNavigateToModule?: (
-    moduleId: AdminModuleId,
-  ) => void;
+  onNavigateToModule?: (moduleId: AdminModuleId) => void;
 }
 
 export default function AdminOverviewTab({
@@ -214,23 +63,37 @@ export default function AdminOverviewTab({
 }: AdminOverviewTabProps) {
   const { profile } = useAuth();
 
-  const institutionQuery =
-    useCurrentInstitution(profile?.id);
+  const institutionQuery = useCurrentInstitution(profile?.id);
 
-  const institutionId =
-    institutionQuery.data ?? '';
-
-  const overviewQuery =
-    useAdminOverview(institutionId);
+  const institutionId = institutionQuery.data ?? '';
+  const canEditAcademic = canManageAcademicStructure(
+    profile?.platform_role,
+    institutionQuery.currentRole as Parameters<typeof canManageAcademicStructure>[1],
+  );
+  const overviewQuery = useAdminOverview(institutionId);
 
   if (
     institutionQuery.isLoading ||
-    overviewQuery.isLoading
+    (overviewQuery.isLoading && !overviewQuery.data)
   ) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
         Carregando visão geral...
       </div>
+    );
+  }
+
+  if (!institutionId) {
+    return (
+      <section className="rounded-xl border border-blue-200 bg-blue-50 p-6">
+        <h2 className="text-lg font-extrabold text-[#181c20]">Crie a primeira escola</h2>
+        <p className="mt-2 max-w-2xl text-sm text-[#475467]">
+          Nenhuma instituição está selecionada. Crie ou selecione uma escola para acompanhar a configuração acadêmica.
+        </p>
+        <a href="/account" className="mt-4 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b]">
+          Gerenciar instituições
+        </a>
+      </section>
     );
   }
 
@@ -245,85 +108,23 @@ export default function AdminOverviewTab({
         className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700"
       >
         {getErrorMessage(
-          institutionQuery.error ??
-            overviewQuery.error,
+          institutionQuery.error ?? overviewQuery.error,
         )}
       </div>
     );
   }
 
-  const { metrics, warnings } =
-    overviewQuery.data;
-
-  const currentAcademicYear =
-    overviewQuery.data.currentAcademicYear;
-
-  const currentTerm =
-    overviewQuery.data.currentTerm;
-
-  const setupItems: SetupChecklistItem[] = [
-    {
-      id: 'institution',
-      label: 'Instituição selecionada',
-      complete: Boolean(
-        institutionQuery.currentInstitution ??
-          institutionId,
-      ),
-    },
-    {
-      id: 'academic-year',
-      label: 'Criar ano letivo',
-      complete: Boolean(currentAcademicYear),
-      targetModuleId: 'academic-years',
-    },
-    {
-      id: 'subjects',
-      label: 'Adicionar disciplinas',
-      complete: metrics.activeSubjects > 0,
-      targetModuleId: 'subjects',
-    },
-    {
-      id: 'classes',
-      label: 'Criar turmas',
-      complete: metrics.activeClasses > 0,
-      targetModuleId: 'classes',
-    },
-    {
-      id: 'teachers',
-      label: 'Cadastrar professores',
-      complete: metrics.activeTeachers > 0,
-      targetModuleId: 'teachers',
-    },
-    {
-      id: 'assignments',
-      label: 'Vincular professores às turmas',
-      complete: metrics.activeAssignments > 0,
-      targetModuleId: 'assignments',
-    },
-    {
-      id: 'curriculum',
-      label: 'Configurar matriz curricular',
-      complete:
-        metrics.activeCurriculumItems > 0 &&
-        metrics.curriculumItemsNeedingReview === 0,
-      targetModuleId: 'curriculum',
-    },
-    {
-      id: 'enrollments',
-      label: 'Matricular alunos',
-      complete: metrics.activeEnrollments > 0,
-      targetModuleId: 'enrollments',
-    },
-  ];
+  const { metrics } = overviewQuery.data;
 
   return (
     <div className="space-y-6">
-      <SetupChecklist
-        items={setupItems}
-        availableModuleIds={availableModuleIds}
-        onNavigateToModule={onNavigateToModule}
+      <SchoolSetupProgress
+        institutionId={institutionId}
+        canEditAcademic={canEditAcademic}
+        showFoundation={institutionQuery.currentRole !== 'DIRECTOR'}
+        showOnlyFoundation={institutionQuery.currentRole === 'ADMIN'}
+        configurationHref={availableModuleIds.includes('directors') ? '/admin?module=directors' : '/admin?module=school-users'}
       />
-
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard
           label="Alunos ativos"
@@ -423,90 +224,6 @@ export default function AdminOverviewTab({
             />
           }
         />
-      </section>
-
-      <section className="grid gap-4 lg:grid-cols-2">
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
-            Ano letivo atual
-          </p>
-
-          <h3 className="mt-2 text-lg font-bold text-[#181c20]">
-            {currentAcademicYear?.name ??
-              'Nenhum ano ativo'}
-          </h3>
-
-          <p className="mt-2 text-sm text-[#727785]">
-            {currentAcademicYear
-              ? `${formatDate(
-                  currentAcademicYear.start_date,
-                )} a ${formatDate(
-                  currentAcademicYear.end_date,
-                )}`
-              : 'Cadastre um ano letivo para iniciar a operação acadêmica.'}
-          </p>
-        </article>
-
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
-            Período atual
-          </p>
-
-          <h3 className="mt-2 text-lg font-bold text-[#181c20]">
-            {currentTerm?.name ??
-              'Nenhum período ativo'}
-          </h3>
-
-          <p className="mt-2 text-sm text-[#727785]">
-            {currentTerm
-              ? `${formatDate(
-                  currentTerm.start_date,
-                )} a ${formatDate(
-                  currentTerm.end_date,
-                )}`
-              : 'Crie períodos dentro do ano letivo ativo.'}
-          </p>
-        </article>
-      </section>
-
-      <section>
-        <div className="mb-3 flex items-center gap-2">
-          <AlertTriangle
-            className="h-5 w-5 text-amber-600"
-            aria-hidden="true"
-          />
-
-          <h3 className="text-lg font-bold text-[#181c20]">
-            Pendências acadêmicas
-          </h3>
-        </div>
-
-        {warnings.length === 0 ? (
-          <div className="rounded-xl border border-green-200 bg-green-50 p-5 text-sm text-green-700">
-            Nenhuma pendência acadêmica encontrada.
-          </div>
-        ) : (
-          <div className="grid gap-3 md:grid-cols-2">
-            {warnings.map((warning) => (
-              <article
-                key={warning.id}
-                className={
-                  warning.severity === 'warning'
-                    ? 'rounded-xl border border-amber-200 bg-amber-50 p-4 text-amber-800'
-                    : 'rounded-xl border border-[#dfe3e8] bg-white p-4 text-[#414754]'
-                }
-              >
-                <h4 className="text-sm font-bold">
-                  {warning.title}
-                </h4>
-
-                <p className="mt-1 text-xs leading-relaxed">
-                  {warning.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        )}
       </section>
     </div>
   );

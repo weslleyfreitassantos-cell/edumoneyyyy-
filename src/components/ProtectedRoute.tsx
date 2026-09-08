@@ -2,10 +2,28 @@ import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
+import {
+  useOptionalInstitution,
+} from '../contexts/InstitutionContext';
 import type {
   DatabaseRole,
   PlatformRole,
 } from '../lib/roles';
+
+function getProfileHome(profile: {
+  role: DatabaseRole;
+  platform_role: PlatformRole;
+}): string {
+  if (profile.platform_role === 'SUPER_ADMIN') {
+    return '/platform';
+  }
+
+  if (profile.role === 'DIRECTOR' || profile.role === 'SECRETARY') {
+    return '/admin?module=overview';
+  }
+
+  return '/dashboard';
+}
 
 interface ProtectedRouteProps {
   children: ReactNode;
@@ -19,8 +37,12 @@ export function ProtectedRoute({
   allowedPlatformRoles,
 }: ProtectedRouteProps) {
   const { user, profile, loading } = useAuth();
+  const institutionContext =
+    useOptionalInstitution();
 
-  if (loading) {
+  // Token refreshes can briefly set loading while the authenticated shell
+  // is still valid. Keep the current screen mounted in that case.
+  if (loading && (!user || !profile)) {
     return (
       <main className="min-h-screen grid place-items-center">
         <p>Carregando...</p>
@@ -49,9 +71,15 @@ export function ProtectedRoute({
     );
   }
 
+  const effectiveDatabaseRole =
+    institutionContext?.currentRole ??
+    profile.role;
+
   const hasAllowedRole =
     !allowedRoles ||
-    allowedRoles.includes(profile.role);
+    allowedRoles.includes(
+      effectiveDatabaseRole as DatabaseRole,
+    );
 
   const hasAllowedPlatformRole =
     !allowedPlatformRoles ||
@@ -61,11 +89,11 @@ export function ProtectedRoute({
 
   if (allowedRoles && allowedPlatformRoles) {
     if (!hasAllowedRole && !hasAllowedPlatformRole) {
-      return <Navigate to="/unauthorized" replace />;
+      return <Navigate to={getProfileHome(profile)} replace />;
     }
   } else {
     if (!hasAllowedRole || !hasAllowedPlatformRole) {
-      return <Navigate to="/unauthorized" replace />;
+      return <Navigate to={getProfileHome(profile)} replace />;
     }
   }
 

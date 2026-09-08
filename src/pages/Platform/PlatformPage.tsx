@@ -2,6 +2,10 @@ import {
   AlertTriangle,
   Building2,
   CheckCircle2,
+  Eye,
+  EyeOff,
+  History,
+  KeyRound,
   Loader2,
   PauseCircle,
   Plus,
@@ -9,6 +13,7 @@ import {
   Save,
   Search,
   ShieldCheck,
+  Trash2,
   X,
 } from 'lucide-react';
 import {
@@ -31,6 +36,11 @@ import {
   useAccountStatusEvents,
   useCloseClientAccount,
   useCreateClientAccount,
+  useDeleteClientAccount,
+  useDeleteInstitution,
+  useRestoreClientAccount,
+  useResendClientAdminInvite,
+  useUpdateClientAdminPassword,
   useUpdateClientAccount,
   useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
@@ -48,6 +58,7 @@ import {
   type AccountSummaryRow,
 } from '../../services/accountService';
 import { BrandingEditor } from '../../components/branding/BrandingEditor';
+import { ActionGroup } from '../../components/ActionGroup';
 import { PlatformDomainRequestsSection } from '../../components/branding/DomainManagement';
 
 interface AccountFormState {
@@ -67,6 +78,15 @@ interface CloseDialogState {
   error: string | null;
 }
 
+interface PermanentDeleteDialogState {
+  account: AccountSummaryRow;
+  confirmation: string;
+  typedConfirmationLiteral: string;
+  understands: boolean;
+  reason: string;
+  error: string | null;
+}
+
 interface StatusHistoryDialogState {
   account: AccountSummaryRow;
 }
@@ -78,7 +98,17 @@ interface InstitutionAccessDialogState {
   error: string | null;
 }
 
-type StatusFilter = 'ALL' | AccountStatus;
+interface AdminPasswordDialogState {
+  account: AccountSummaryRow;
+  password: string;
+  confirmation: string;
+  error: string | null;
+}
+
+type StatusFilter = 'ALL' | 'ACTIVE' | 'SUSPENDED' | 'DELETED';
+
+const ADMIN_PASSWORD_MIN_LENGTH = 8;
+const ADMIN_PASSWORD_MAX_LENGTH = 72;
 
 const initialForm: AccountFormState = {
   adminFullName: '',
@@ -89,7 +119,7 @@ const initialForm: AccountFormState = {
 const statusLabels: Record<AccountStatus, string> = {
   ACTIVE: 'Ativa',
   SUSPENDED: 'Suspensa',
-  CANCELED: 'Cancelada',
+  CANCELED: 'Excluída',
 };
 
 const statusStyles: Record<AccountStatus, string> = {
@@ -97,6 +127,13 @@ const statusStyles: Record<AccountStatus, string> = {
   SUSPENDED: 'bg-[#fff4ce] text-[#7a4d00]',
   CANCELED: 'bg-[#ffdad6] text-[#93000a]',
 };
+
+const canceledAdminEmailMessage =
+  'Este e-mail pertence ao administrador de uma conta em Excluídos. Restaure essa conta ou exclua-a definitivamente antes de reutilizar este e-mail.';
+
+function normalizeAccountEmail(value: string): string {
+  return value.trim().toLocaleLowerCase();
+}
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
@@ -106,21 +143,77 @@ function getErrorMessage(error: unknown): string {
   return 'Operacao nao concluida.';
 }
 
+function validateAdminPassword(
+  password: string,
+  confirmation: string,
+): string | null {
+  if (password.length < ADMIN_PASSWORD_MIN_LENGTH) {
+    return 'A senha deve possuir pelo menos 8 caracteres.';
+  }
+
+  if (password.length > ADMIN_PASSWORD_MAX_LENGTH) {
+    return 'A senha deve possuir no maximo 72 caracteres.';
+  }
+
+  if (password !== confirmation) {
+    return 'As senhas informadas nao sao iguais.';
+  }
+
+  return null;
+}
+
 function getPlatformErrorMessage(error: unknown): string {
   if (error instanceof AccountServiceError) {
     if (
       error.code ===
       'INSTITUTION_LIMIT_BELOW_ACTIVE_INSTITUTIONS'
     ) {
-      return 'O limite não pode ficar abaixo da quantidade de instituições ativas. Suspenda uma instituição antes de reduzir o limite.';
+      return 'O limite nao pode ficar abaixo da quantidade de licencas em uso. Exclua definitivamente uma instituicao antes de reduzir.';
     }
 
     if (error.code === 'INSTITUTION_LIMIT_REACHED') {
-      return 'A conta atingiu o limite de instituições ativas. Aumente o limite antes de reativar esta escola.';
+      return 'A conta atingiu o limite de instituicoes.';
+    }
+
+    if (error.code === 'INSTITUTION_SUSPENDED_BY_PLATFORM') {
+      return 'Esta instituição foi suspensa pela plataforma.';
     }
 
     if (error.code === 'PROFILE_INACTIVE') {
       return 'Seu usuário está desativado e não pode executar esta operação.';
+    }
+
+    if (error.code === 'PASSWORD_UPDATE_FAILED') {
+      return 'Não foi possível alterar a senha do administrador.';
+    }
+
+    if (error.code === 'INVALID_PASSWORD') {
+      return 'Informe uma senha entre 8 e 72 caracteres.';
+    }
+
+    if (error.code === 'SUPER_ADMIN_REQUIRED') {
+      return 'Apenas SUPER_ADMIN pode alterar a senha do administrador.';
+    }
+
+    if (error.code === 'AUTH_RATE_LIMITED') {
+      return 'O serviço de envio de acessos atingiu temporariamente o limite. Tente novamente mais tarde.';
+    }
+
+    if (error.code === 'INVITATION_ALREADY_ACCEPTED') {
+      return 'Este acesso já foi confirmado pelo administrador.';
+    }
+
+    if (error.code === 'INVITATION_NOT_FOUND') {
+      return 'Não há acesso pendente para esta conta.';
+    }
+
+    if (
+      error.code === 'AUTH_SMTP_CONFIGURATION_ERROR' ||
+      error.code === 'AUTH_EMAIL_PROVIDER_REJECTED' ||
+      error.code === 'AUTH_INVITE_EMAIL_FAILED' ||
+      error.code === 'AUTH_UNKNOWN_INVITE_ERROR'
+    ) {
+      return 'Não foi possível enviar os dados de acesso por e-mail. Verifique a configuração de e-mail ou contate o administrador.';
     }
   }
 
@@ -131,6 +224,10 @@ function getCreateAccountFieldErrors(
   error: unknown,
 ): AccountFormFieldErrors {
   if (!(error instanceof AccountServiceError)) {
+    return {};
+  }
+
+  if (error.code === 'EMAIL_BELONGS_TO_ACCOUNT_OWNER') {
     return {};
   }
 
@@ -169,14 +266,40 @@ function getCreateAccountFieldErrors(
     };
   }
 
-  if (error.code === 'EMAIL_BELONGS_TO_ACCOUNT_OWNER') {
-    return {
-      adminEmail:
-        'Este usuário já administra outra conta.',
-    };
+  return {};
+}
+
+function isAccountOwnerEmailConflict(
+  error: unknown,
+): boolean {
+  return (
+    error instanceof AccountServiceError &&
+    error.code === 'EMAIL_BELONGS_TO_ACCOUNT_OWNER'
+  );
+}
+
+function getCreateAccountFeedbackMessage(
+  error: unknown,
+  accounts: AccountSummaryRow[],
+  adminEmail: string,
+): string {
+  if (isAccountOwnerEmailConflict(error)) {
+    const normalizedEmail = normalizeAccountEmail(adminEmail);
+    const canceledAccount = accounts.find(
+      (account) =>
+        account.status === 'CANCELED' &&
+        normalizeAccountEmail(account.owner?.email ?? '') ===
+          normalizedEmail,
+    );
+
+    if (canceledAccount) {
+      return canceledAdminEmailMessage;
+    }
+
+    return 'Este usuário já administra outra conta.';
   }
 
-  return {};
+  return getPlatformErrorMessage(error);
 }
 
 function getCloseAccountErrorMessage(
@@ -192,14 +315,6 @@ function getInitials(name: string): string {
     .slice(0, 2)
     .map((part) => part[0]?.toUpperCase() ?? '')
     .join('');
-}
-
-function getActiveAccountInstitutions(
-  account: AccountSummaryRow,
-): AccountInstitutionSummary[] {
-  return account.institutions.filter(
-    (institution) => institution.active !== false,
-  );
 }
 
 function normalizeInstitutionSearch(value: string): string {
@@ -318,6 +433,35 @@ function Field({
   );
 }
 
+interface IconActionButtonProps {
+  label: string;
+  children: ReactNode;
+  className: string;
+  disabled?: boolean;
+  onClick: () => void;
+}
+
+function IconActionButton({
+  label,
+  children,
+  className,
+  disabled,
+  onClick,
+}: IconActionButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${className}`}
+      aria-label={label}
+      title={label}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function PlatformPage() {
   const { profile } = useAuth();
   const navigate = useNavigate();
@@ -330,10 +474,18 @@ export default function PlatformPage() {
     useRef<HTMLInputElement | null>(null);
   const accountsQuery = useAccounts();
   const createAccount = useCreateClientAccount();
+  const resendClientAdminInvite = useResendClientAdminInvite();
+  const updateClientAdminPassword =
+    useUpdateClientAdminPassword();
   const updateAccount = useUpdateClientAccount();
   const updateInstitutionStatusMutation =
     useUpdateInstitutionStatus();
+  const deleteInstitutionMutation =
+    useDeleteInstitution();
   const closeAccount = useCloseClientAccount();
+  const restoreAccount = useRestoreClientAccount();
+  const permanentlyDeleteAccount =
+    useDeleteClientAccount();
   const globalBrandingQuery = useGlobalBranding();
   const saveGlobalBranding = useSaveGlobalBranding();
   const domainRequestsQuery = useDomainRequests();
@@ -349,12 +501,22 @@ export default function PlatformPage() {
   >({});
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] =
-    useState<StatusFilter>('ALL');
+    useState<StatusFilter>('ACTIVE');
   const [feedback, setFeedback] = useState<
     { type: 'success' | 'error'; message: string } | null
   >(null);
+  const [createAccountFeedback, setCreateAccountFeedback] =
+    useState<
+      { type: 'success' | 'error'; message: string } | null
+    >(null);
+  const [createAccountEmailConflict, setCreateAccountEmailConflict] =
+    useState(false);
   const [closeDialog, setCloseDialog] =
     useState<CloseDialogState | null>(null);
+  const [permanentDeleteDialog, setPermanentDeleteDialog] =
+    useState<PermanentDeleteDialogState | null>(null);
+  const [restoreDialogAccount, setRestoreDialogAccount] =
+    useState<AccountSummaryRow | null>(null);
   const [statusHistoryDialog, setStatusHistoryDialog] =
     useState<StatusHistoryDialogState | null>(null);
   const [
@@ -364,6 +526,12 @@ export default function PlatformPage() {
     useState<InstitutionAccessDialogState | null>(
       null,
     );
+  const [adminPasswordDialog, setAdminPasswordDialog] =
+    useState<AdminPasswordDialogState | null>(null);
+  const [showAdminPassword, setShowAdminPassword] =
+    useState(false);
+  const [showAdminPasswordConfirmation, setShowAdminPasswordConfirmation] =
+    useState(false);
   const [isAccessingInstitution, setIsAccessingInstitution] =
     useState(false);
 
@@ -407,8 +575,11 @@ export default function PlatformPage() {
 
     return accounts.filter((account) => {
       const matchesStatus =
-        statusFilter === 'ALL' ||
-        account.status === statusFilter;
+        statusFilter === 'ALL'
+          ? true
+          : statusFilter === 'DELETED'
+            ? account.status === 'CANCELED'
+            : account.status === statusFilter;
 
       return (
         matchesStatus &&
@@ -418,7 +589,7 @@ export default function PlatformPage() {
   }, [accounts, searchTerm, statusFilter]);
 
   const hasActiveFilters =
-    searchTerm.trim().length > 0 || statusFilter !== 'ALL';
+    searchTerm.trim().length > 0 || statusFilter !== 'ACTIVE';
   const closeDialogOwner =
     closeDialog?.account.owner ?? null;
   const closeConfirmationMatches = Boolean(
@@ -429,6 +600,24 @@ export default function PlatformPage() {
   const closeReason = closeDialog?.reason.trim() ?? '';
   const closeReasonIsValid =
     closeReason.length >= 10 && closeReason.length <= 500;
+  const permanentDeleteReason =
+    permanentDeleteDialog?.reason.trim() ?? '';
+  const permanentDeleteReasonIsValid =
+    permanentDeleteReason.length >= 10 &&
+    permanentDeleteReason.length <= 500;
+  const permanentDeleteConfirmationMatches = Boolean(
+    permanentDeleteDialog?.confirmation ===
+      permanentDeleteDialog?.account.owner?.email,
+  );
+  const permanentDeleteLiteralMatches =
+    permanentDeleteDialog?.typedConfirmationLiteral ===
+    'EXCLUIR DEFINITIVAMENTE';
+  const permanentDeleteCanSubmit = Boolean(
+    permanentDeleteReasonIsValid &&
+      permanentDeleteConfirmationMatches &&
+      permanentDeleteLiteralMatches &&
+      permanentDeleteDialog?.understands,
+  );
   const institutionAccessDialogOwner =
     institutionAccessDialog?.account.owner ?? null;
   const statusEventsQuery = useAccountStatusEvents(
@@ -438,9 +627,7 @@ export default function PlatformPage() {
   const institutionAccessOptions = useMemo(
     () =>
       institutionAccessDialog
-        ? getActiveAccountInstitutions(
-            institutionAccessDialog.account,
-          )
+        ? institutionAccessDialog.account.institutions
         : [],
     [institutionAccessDialog],
   );
@@ -478,11 +665,24 @@ export default function PlatformPage() {
       : 'escolas encontradas');
   const canAccessSelectedInstitution = Boolean(
     institutionAccessDialog?.selectedInstitutionId &&
+      institutionAccessDialog.account.status === 'ACTIVE' &&
       institutionAccessOptions.some(
         (institution) =>
           institution.id ===
-          institutionAccessDialog.selectedInstitutionId,
+            institutionAccessDialog.selectedInstitutionId &&
+          institution.active !== false,
       ),
+  );
+  const adminPasswordValidationError = adminPasswordDialog
+    ? validateAdminPassword(
+        adminPasswordDialog.password,
+        adminPasswordDialog.confirmation,
+      )
+    : null;
+  const canSubmitAdminPassword = Boolean(
+    adminPasswordDialog &&
+      !adminPasswordValidationError &&
+      !updateClientAdminPassword.isPending,
   );
 
   useEffect(() => {
@@ -491,15 +691,47 @@ export default function PlatformPage() {
     }
   }, [institutionAccessDialog?.account.id]);
 
+  useEffect(() => {
+    setInstitutionAccessDialog((current) => {
+      if (!current) {
+        return current;
+      }
+
+      const updatedAccount = accounts.find(
+        (account) => account.id === current.account.id,
+      );
+
+      if (!updatedAccount) {
+        return null;
+      }
+
+      const selectedInstitutionStillExists =
+        updatedAccount.institutions.some(
+          (institution) =>
+            institution.id === current.selectedInstitutionId,
+        );
+
+      return {
+        ...current,
+        account: updatedAccount,
+        selectedInstitutionId: selectedInstitutionStillExists
+          ? current.selectedInstitutionId
+          : '',
+      };
+    });
+  }, [accounts]);
+
   function clearFilters(): void {
     setSearchTerm('');
-    setStatusFilter('ALL');
+    setStatusFilter('ACTIVE');
   }
 
   function updateCreateForm(
     field: keyof AccountFormState,
     value: string,
   ): void {
+    setCreateAccountFeedback(null);
+    setCreateAccountEmailConflict(false);
     setFormFieldErrors((current) => {
       if (!current[field]) {
         return current;
@@ -520,6 +752,8 @@ export default function PlatformPage() {
   ): Promise<void> {
     event.preventDefault();
     setFeedback(null);
+    setCreateAccountFeedback(null);
+    setCreateAccountEmailConflict(false);
     setFormFieldErrors({});
 
     const institutionLimit = Number(
@@ -537,7 +771,7 @@ export default function PlatformPage() {
       !Number.isInteger(institutionLimit) ||
       institutionLimit < 1
     ) {
-      setFeedback({
+      setCreateAccountFeedback({
         type: 'error',
         message:
           'Informe ADMIN, e-mail e limite valido.',
@@ -555,20 +789,130 @@ export default function PlatformPage() {
         });
 
       setForm(initialForm);
-      setFeedback({
+      setCreateAccountFeedback({
         type: 'success',
         message: response.invitationSent
-          ? 'Conta criada e convite enviado ao ADMIN.'
-          : 'Conta criada.',
+          ? 'Conta criada com sucesso. Os dados de acesso foram enviados ao administrador.'
+          : 'Conta e administrador criados com sucesso, mas os dados de acesso ainda não puderam ser enviados. Você poderá reenviá-los.',
       });
     } catch (error) {
       setFormFieldErrors(
         getCreateAccountFieldErrors(error),
       );
+      setCreateAccountEmailConflict(
+        isAccountOwnerEmailConflict(error),
+      );
+      setCreateAccountFeedback({
+        type: 'error',
+        message: getCreateAccountFeedbackMessage(
+          error,
+          accounts,
+          normalizedAdminEmail,
+        ),
+      });
+    }
+  }
+
+  async function resendAccess(account: AccountSummaryRow): Promise<void> {
+    if (
+      resendClientAdminInvite.isPending ||
+      account.invitation?.status !== 'PENDING'
+    ) {
+      return;
+    }
+
+    try {
+      const response = await resendClientAdminInvite.mutateAsync({
+        accountId: account.id,
+      });
+      setFeedback({
+        type: 'success',
+        message: response.invitationSent
+          ? 'Dados de acesso reenviados ao administrador.'
+          : 'O acesso continua pendente e poderá ser reenviado novamente.',
+      });
+    } catch (error) {
       setFeedback({
         type: 'error',
         message: getPlatformErrorMessage(error),
       });
+    }
+  }
+
+  function openAdminPasswordDialog(
+    account: AccountSummaryRow,
+  ): void {
+    const owner = account.owner;
+    if (
+      !isSuperAdmin ||
+      account.status !== 'ACTIVE' ||
+      !owner ||
+      owner.active !== true ||
+      owner.role !== 'ADMIN' ||
+      owner.platform_role === 'SUPER_ADMIN'
+    ) {
+      return;
+    }
+
+    setFeedback(null);
+    setShowAdminPassword(false);
+    setShowAdminPasswordConfirmation(false);
+    setAdminPasswordDialog({
+      account,
+      password: '',
+      confirmation: '',
+      error: null,
+    });
+  }
+
+  function closeAdminPasswordDialog(): void {
+    if (updateClientAdminPassword.isPending) {
+      return;
+    }
+
+    setAdminPasswordDialog(null);
+    setShowAdminPassword(false);
+    setShowAdminPasswordConfirmation(false);
+  }
+
+  async function handleAdminPasswordSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+    if (!adminPasswordDialog || !canSubmitAdminPassword) {
+      return;
+    }
+
+    const validationError = validateAdminPassword(
+      adminPasswordDialog.password,
+      adminPasswordDialog.confirmation,
+    );
+    if (validationError) {
+      setAdminPasswordDialog((current) =>
+        current ? { ...current, error: validationError } : current,
+      );
+      return;
+    }
+
+    try {
+      await updateClientAdminPassword.mutateAsync({
+        accountId: adminPasswordDialog.account.id,
+        password: adminPasswordDialog.password,
+      });
+      setFeedback({
+        type: 'success',
+        message: 'Senha do administrador alterada com sucesso.',
+      });
+      closeAdminPasswordDialog();
+    } catch (error) {
+      setAdminPasswordDialog((current) =>
+        current
+          ? {
+              ...current,
+              error: getPlatformErrorMessage(error),
+            }
+          : current,
+      );
     }
   }
 
@@ -578,9 +922,25 @@ export default function PlatformPage() {
     }
 
     setFeedback(null);
+    setInstitutionAccessDialog(null);
     setCloseDialog({
       account,
       confirmation: '',
+      reason: '',
+      error: null,
+    });
+  }
+
+  function openPermanentDeleteDialog(
+    account: AccountSummaryRow,
+  ): void {
+    setFeedback(null);
+    setInstitutionAccessDialog(null);
+    setPermanentDeleteDialog({
+      account,
+      confirmation: '',
+      typedConfirmationLiteral: '',
+      understands: false,
       reason: '',
       error: null,
     });
@@ -628,50 +988,7 @@ export default function PlatformPage() {
   async function openInstitutionAccessDialog(
     account: AccountSummaryRow,
   ): Promise<void> {
-    if (account.status === 'SUSPENDED') {
-      setFeedback({
-        type: 'error',
-        message:
-          'Esta conta esta suspensa. Reative a conta antes de acessar suas escolas.',
-      });
-      return;
-    }
-
-    if (account.status === 'CANCELED') {
-      setFeedback({
-        type: 'error',
-        message:
-          'Esta conta foi encerrada. O acesso operacional as escolas esta bloqueado e o historico permanece preservado.',
-      });
-      return;
-    }
-
-    const activeInstitutions =
-      getActiveAccountInstitutions(account);
-
     setFeedback(null);
-
-    if (activeInstitutions.length === 0) {
-      setFeedback({
-        type: 'error',
-        message:
-          'Esta conta não possui escolas ativas para acessar.',
-      });
-      return;
-    }
-
-    if (activeInstitutions.length === 1) {
-      await accessInstitutionById(
-        activeInstitutions[0].id,
-        (message) =>
-          setFeedback({
-            type: 'error',
-            message,
-          }),
-      );
-      return;
-    }
-
     setInstitutionAccessDialog({
       account,
       selectedInstitutionId: '',
@@ -815,7 +1132,7 @@ export default function PlatformPage() {
       setFeedback({
         type: 'success',
         message:
-          'Conta encerrada. Dados e historico preservados.',
+          'Conta movida para Excluídos. Os dados foram preservados.',
       });
     } catch (error) {
       setCloseDialog((current) =>
@@ -824,6 +1141,71 @@ export default function PlatformPage() {
               ...current,
               error:
                 getCloseAccountErrorMessage(error),
+            }
+          : current,
+      );
+    }
+  }
+
+  async function handleRestoreAccount(): Promise<void> {
+    if (
+      !restoreDialogAccount ||
+      restoreAccount.isPending
+    ) {
+      return;
+    }
+
+    try {
+      await restoreAccount.mutateAsync({
+        accountId: restoreDialogAccount.id,
+        reason: 'Restauracao pelo super admin.',
+      });
+
+      setRestoreDialogAccount(null);
+      setFeedback({
+        type: 'success',
+        message: 'Conta restaurada com sucesso.',
+      });
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
+  async function handlePermanentDelete(): Promise<void> {
+    if (
+      !permanentDeleteDialog ||
+      permanentlyDeleteAccount.isPending
+    ) {
+      return;
+    }
+
+    try {
+      await permanentlyDeleteAccount.mutateAsync({
+        accountId: permanentDeleteDialog.account.id,
+        reason: permanentDeleteDialog.reason,
+        confirmationEmail:
+          permanentDeleteDialog.confirmation,
+        confirmationText:
+          permanentDeleteDialog.typedConfirmationLiteral,
+        acknowledgement:
+          permanentDeleteDialog.understands as true,
+      });
+
+      setPermanentDeleteDialog(null);
+      setFeedback({
+        type: 'success',
+        message:
+          'Conta e dados relacionados foram excluídos definitivamente.',
+      });
+    } catch (error) {
+      setPermanentDeleteDialog((current) =>
+        current
+          ? {
+              ...current,
+              error: getPlatformErrorMessage(error),
             }
           : current,
       );
@@ -859,7 +1241,7 @@ export default function PlatformPage() {
         type: 'error',
         message:
           account.activeInstitutionCount > 0
-            ? `O limite mínimo para ${account.name} é ${minimumLimit}, pois há ${account.activeInstitutionCount} instituições ativas. Suspenda instituições antes de reduzir.`
+            ? `O limite minimo para ${account.name} e ${minimumLimit}, pois ha ${account.activeInstitutionCount} licencas em uso. Exclua definitivamente instituicoes antes de reduzir.`
             : 'Informe um limite maior que zero.',
       });
       return;
@@ -930,21 +1312,107 @@ export default function PlatformPage() {
     institution: AccountInstitutionSummary,
     active: boolean,
   ): Promise<void> {
+    const previousDialog = institutionAccessDialog;
+
     try {
-      await updateInstitutionStatusMutation.mutateAsync({
-        institutionId: institution.id,
-        active,
-      });
+      const result =
+        await updateInstitutionStatusMutation.mutateAsync({
+          institutionId: institution.id,
+          active,
+        });
+
+      setInstitutionAccessDialog((current) =>
+        current
+          ? {
+              ...current,
+              account: {
+                ...current.account,
+                institutions: current.account.institutions.map((item) =>
+                  item.id === institution.id
+                    ? {
+                        ...item,
+                        active,
+                        suspendedByScope:
+                          result.suspendedByScope,
+                      }
+                    : item,
+                ),
+              },
+              error: null,
+            }
+          : current,
+      );
+
       setFeedback({
         type: 'success',
         message: active
           ? `${institution.name} reativada. Histórico acadêmico preservado.`
-          : `${institution.name} suspensa. Histórico acadêmico preservado.`,
+          : `${institution.name} suspensa. A licenca continua ocupada.`,
       });
     } catch (error) {
+      setInstitutionAccessDialog(previousDialog);
       setFeedback({
         type: 'error',
         message: getPlatformErrorMessage(error),
+      });
+    }
+  }
+
+  async function deleteInstitutionFromAccessDialog(
+    institution: AccountInstitutionSummary,
+  ): Promise<void> {
+    if (!institutionAccessDialog) {
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Excluir definitivamente a instituição "${institution.name}"? Esta ação libera uma licença e remove os dados vinculados a esta escola.`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    const previousDialog = institutionAccessDialog;
+
+    try {
+      await deleteInstitutionMutation.mutateAsync({
+        accountId: institutionAccessDialog.account.id,
+        institutionId: institution.id,
+      });
+
+      setInstitutionAccessDialog((current) => {
+        if (!current) {
+          return current;
+        }
+
+        const institutions =
+          current.account.institutions.filter(
+            (item) => item.id !== institution.id,
+          );
+
+        return {
+          ...current,
+          account: {
+            ...current.account,
+            institutions,
+          },
+          selectedInstitutionId:
+            current.selectedInstitutionId === institution.id
+              ? institutions[0]?.id ?? ''
+              : current.selectedInstitutionId,
+          error: null,
+        };
+      });
+
+      setFeedback({
+        type: 'success',
+        message: `${institution.name} excluída. A licença foi liberada.`,
+      });
+    } catch (error) {
+      setInstitutionAccessDialog({
+        ...previousDialog,
+        error: getPlatformErrorMessage(error),
       });
     }
   }
@@ -968,19 +1436,6 @@ export default function PlatformPage() {
             </p>
           </div>
         </header>
-
-        {feedback && (
-          <div
-            role="alert"
-            className={`rounded-xl border p-4 text-sm ${
-              feedback.type === 'success'
-                ? 'border-[#6ffbbe] bg-[#effdf6] text-[#005236]'
-                : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
-            }`}
-          >
-            {feedback.message}
-          </div>
-        )}
 
         <section
           className="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
@@ -1097,7 +1552,8 @@ export default function PlatformPage() {
                   )
                 }
                 aria-invalid={Boolean(
-                  formFieldErrors.adminEmail,
+                  formFieldErrors.adminEmail ||
+                    createAccountEmailConflict,
                 )}
                 aria-describedby={
                   formFieldErrors.adminEmail
@@ -1132,6 +1588,19 @@ export default function PlatformPage() {
             </Field>
           </div>
 
+          {createAccountFeedback && (
+            <div
+              role="alert"
+              className={`mt-4 rounded-xl border p-4 text-sm ${
+                createAccountFeedback.type === 'success'
+                  ? 'border-[#6ffbbe] bg-[#effdf6] text-[#005236]'
+                  : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
+              }`}
+            >
+              {createAccountFeedback.message}
+            </div>
+          )}
+
           <button
             type="submit"
             disabled={createAccount.isPending}
@@ -1150,6 +1619,19 @@ export default function PlatformPage() {
             )}
             Criar conta
           </button>
+
+          {feedback && (
+            <div
+              role="alert"
+              className={`mt-3 rounded-lg border p-3 text-sm ${
+                feedback.type === 'success'
+                  ? 'border-[#6ffbbe] bg-[#effdf6] text-[#005236]'
+                  : 'border-[#ffdad6] bg-[#fff1ef] text-[#93000a]'
+              }`}
+            >
+              {feedback.message}
+            </div>
+          )}
         </form>
 
         <section className="overflow-hidden rounded-2xl border border-[#c5c5d3]/60 bg-white shadow-sm">
@@ -1163,7 +1645,7 @@ export default function PlatformPage() {
           </div>
 
           <div className="border-b border-[#c5c5d3]/60 bg-white px-5 py-4">
-            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_220px_auto] lg:items-end">
+            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_150px_auto] lg:items-end">
               <Field
                 id="platform-account-search"
                 label="Buscar conta ou instituição"
@@ -1203,6 +1685,7 @@ export default function PlatformPage() {
                   <option value="ALL">Todos</option>
                   <option value="ACTIVE">Ativas</option>
                   <option value="SUSPENDED">Suspensas</option>
+                  <option value="DELETED">Excluídos</option>
                 </select>
               </Field>
 
@@ -1249,32 +1732,37 @@ export default function PlatformPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[940px] text-left text-sm">
+              <table className="w-full min-w-[900px] table-fixed text-left text-sm">
                 <caption className="sr-only">
                   Contas e instituições da plataforma
                 </caption>
+                <colgroup>
+                  <col className="w-[24%]" />
+                  <col className="w-[25%]" />
+                  <col className="w-[10%]" />
+                  <col className="w-[8%]" />
+                  <col className="w-[17%]" />
+                  <col className="w-[16%]" />
+                </colgroup>
                 <thead className="bg-[#f3f4f5] text-[11px] uppercase leading-4 text-[#444651]">
                   <tr>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       Conta
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       ADMIN
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 text-center font-semibold">
                       Status
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 text-center font-semibold">
                       Uso
                     </th>
-                    <th className="px-4 py-3 font-semibold">
+                    <th className="px-3 py-3 font-semibold">
                       Limite
                     </th>
-                    <th className="px-4 py-3 font-semibold">
-                      Instituições
-                    </th>
-                    <th className="px-4 py-3 font-semibold">
-                      Ações
+                    <th className="px-3 py-3 font-semibold">
+                      Gerenciar
                     </th>
                   </tr>
                 </thead>
@@ -1302,71 +1790,84 @@ export default function PlatformPage() {
                     return (
                       <tr
                         key={account.id}
-                        className="transition hover:bg-[#f8f9fa]"
+                        className="transition hover:bg-[#f8f9fa] dark:hover:bg-[#1e293b]"
                       >
-                        <td className="px-4 py-4">
+                        <td className="px-3 py-4">
                           <div className="flex items-center gap-3">
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#dce1ff] text-xs font-bold text-[#00236f]">
+                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#dce1ff] text-xs font-bold text-[#00236f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]">
                               {getInitials(account.name)}
                             </div>
-                            <div>
-                              <p className="font-semibold text-[#191c1d]">
+                            <div className="min-w-0">
+                              <p className="truncate font-semibold text-[#191c1d] dark:text-[#f8fafc]">
                                 {account.name}
                               </p>
-                              <p className="text-xs text-[#444651]">
+                              <p className="truncate text-xs text-[#444651] dark:text-[#cbd5e1]">
                                 {account.institutions.length} instituições
                               </p>
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-4 text-[#444651]">
-                          {account.owner &&
-                          account.status === 'ACTIVE' ? (
-                            <button
-                              type="button"
-                              onClick={() =>
-                                void openInstitutionAccessDialog(
-                                  account,
-                                )
-                              }
-                              className="-m-1 max-w-full rounded-md p-1 text-left outline-none transition-colors hover:text-[#005bbf] focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2"
-                              aria-label={`Acessar escolas de ${account.owner.full_name}`}
-                            >
-                              <span className="block truncate font-medium text-[#191c1d] transition-colors hover:text-[#005bbf]">
-                                {account.owner.full_name}
+                        <td className="min-w-0 px-3 py-4 text-[#444651] dark:text-[#cbd5e1]">
+                          <p className="font-medium text-[#191c1d] dark:text-[#f8fafc]">
+                            {account.owner
+                              ? account.owner.full_name
+                              : 'Sem owner'}
+                          </p>
+                          <p className="text-xs">
+                            {account.owner?.email ?? ''}
+                          </p>
+                          {account.invitation && (
+                            <div className="mt-2 flex flex-wrap items-center gap-2">
+                              <span
+                                className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold ${
+                                  account.invitation.status === 'SENT'
+                                    ? 'bg-[#e6f4ea] text-[#0f6d3a]'
+                                    : account.invitation.status === 'ACCEPTED'
+                                      ? 'bg-[#dce1ff] text-[#00236f]'
+                                      : 'bg-[#fff4ce] text-[#7a4d00]'
+                                }`}
+                              >
+                                {account.invitation.status === 'SENT'
+                                  ? 'Acesso enviado'
+                                  : account.invitation.status === 'ACCEPTED'
+                                    ? 'Acesso confirmado'
+                                    : 'Acesso pendente'}
                               </span>
-                              <span className="block truncate text-xs">
-                                {account.owner.email}
-                              </span>
-                            </button>
-                          ) : (
-                            <>
-                              <p className="font-medium text-[#191c1d]">
-                                {account.owner
-                                  ? account.owner.full_name
-                                  : 'Sem owner'}
-                              </p>
-                              <p className="text-xs">
-                                {account.owner?.email ?? ''}
-                              </p>
-                            </>
+                              {account.invitation.status === 'PENDING' && (
+                                <button
+                                  type="button"
+                                  onClick={() => void resendAccess(account)}
+                                  disabled={resendClientAdminInvite.isPending}
+                                  className="inline-flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-semibold text-[#005bbf] transition hover:bg-[#eef3ff] focus:outline-none focus:ring-2 focus:ring-[#005bbf]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                                  aria-label={`Reenviar acesso de ${account.name}`}
+                                >
+                                  <RotateCcw
+                                    className={`h-3.5 w-3.5 ${resendClientAdminInvite.isPending ? 'animate-spin' : ''}`}
+                                    aria-hidden="true"
+                                  />
+                                  {resendClientAdminInvite.isPending
+                                    ? 'Enviando...'
+                                    : 'Reenviar acesso'}
+                                </button>
+                              )}
+                            </div>
                           )}
                         </td>
-                        <td className="px-4 py-4">
+                        <td className="px-3 py-4 text-center">
                           <StatusBadge status={account.status} />
                         </td>
-                        <td className="px-4 py-4">
-                          <div className="w-36">
-                            <div className="flex justify-between text-xs text-[#444651]">
-                              <span>
-                                {account.activeInstitutionCount}/
-                                {account.institutionLimit}
-                              </span>
-                              <span>{usagePercent}%</span>
-                            </div>
-                            <div className="mt-2 h-2 rounded-full bg-[#edeeef]">
+                        <td className="px-3 py-4 text-center">
+                          <div
+                            className="mx-auto w-9"
+                            aria-label={`Uso de ${account.name}: ${account.activeInstitutionCount} de ${account.institutionLimit}, ${usagePercent}%`}
+                          >
+                            <span className="block text-xs font-semibold text-[#444651] dark:text-[#cbd5e1]">
+                              {account.activeInstitutionCount}/
+                              {account.institutionLimit}
+                            </span>
+                            <div className="mx-auto mt-1.5 h-1 w-8 rounded-full bg-[#edeeef] dark:bg-[#334155]">
                               <div
-                                className="h-2 rounded-full bg-[#006c49]"
+                                className="h-1 rounded-full bg-[#006c49]"
                                 style={{
                                   width: `${usagePercent}%`,
                                 }}
@@ -1374,7 +1875,7 @@ export default function PlatformPage() {
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-4">
+                        <td className="px-3 py-4">
                           <div className="flex items-center gap-2">
                             <input
                               aria-label={`Limite de ${account.name}`}
@@ -1393,7 +1894,7 @@ export default function PlatformPage() {
                               disabled={
                                 account.status === 'CANCELED'
                               }
-                              className="h-9 w-20 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682]"
+                              className="h-9 w-16 rounded-lg border border-[#c5c5d3] px-2 text-sm outline-none focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] disabled:text-[#757682] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:disabled:bg-[#111827] dark:disabled:text-[#64748b]"
                             />
                             <button
                               type="button"
@@ -1406,7 +1907,7 @@ export default function PlatformPage() {
                                 updateAccount.isPending ||
                                 account.status === 'CANCELED'
                               }
-                              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:text-[#93c5fd] dark:hover:bg-[#1e3a5f]"
                               aria-label={`Salvar limite de ${account.name}`}
                               title="Salvar limite"
                             >
@@ -1417,164 +1918,26 @@ export default function PlatformPage() {
                             </button>
                           </div>
                         </td>
-                        <td className="max-w-md px-4 py-4 text-sm leading-5 text-[#444651]">
-                          {account.institutions.length === 0 ? (
-                            <span>Nenhuma instituição cadastrada.</span>
-                          ) : (
-                            <div className="space-y-2">
-                              {account.institutions.map(
-                                (institution) => {
-                                  const isActiveInstitution =
-                                    institution.active !== false;
-
-                                  return (
-                                    <div
-                                      key={institution.id}
-                                      className="flex items-center justify-between gap-3 rounded-lg border border-[#d8deea] bg-white px-3 py-2"
-                                    >
-                                      <div className="min-w-0">
-                                        <p className="truncate font-medium text-[#191c1d]">
-                                          {institution.name}
-                                        </p>
-                                        <p
-                                          className={`text-xs font-semibold ${
-                                            isActiveInstitution
-                                              ? 'text-[#005236]'
-                                              : 'text-[#7a4d00]'
-                                          }`}
-                                        >
-                                          {isActiveInstitution
-                                            ? 'Ativa'
-                                            : 'Suspensa'}
-                                        </p>
-                                      </div>
-
-                                      {account.status ===
-                                        'ACTIVE' && (
-                                        <button
-                                          type="button"
-                                          onClick={() =>
-                                            void changeInstitutionStatus(
-                                              institution,
-                                              !isActiveInstitution,
-                                            )
-                                          }
-                                          disabled={
-                                            updateInstitutionStatusMutation.isPending
-                                          }
-                                          className={`inline-flex shrink-0 items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
-                                            isActiveInstitution
-                                              ? 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40'
-                                              : 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50'
-                                          }`}
-                                          aria-label={`${
-                                            isActiveInstitution
-                                              ? 'Suspender'
-                                              : 'Reativar'
-                                          } ${institution.name}`}
-                                        >
-                                          {isActiveInstitution ? (
-                                            <PauseCircle
-                                              className="h-4 w-4"
-                                              aria-hidden="true"
-                                            />
-                                          ) : (
-                                            <RotateCcw
-                                              className="h-4 w-4"
-                                              aria-hidden="true"
-                                            />
-                                          )}
-                                          {isActiveInstitution
-                                            ? 'Suspender'
-                                            : 'Reativar'}
-                                        </button>
-                                      )}
-                                    </div>
-                                  );
-                                },
-                              )}
-                            </div>
-                          )}
-                        </td>
-                        <td className="px-4 py-4">
-                          <div className="flex flex-wrap gap-2">
-                            {account.status === 'ACTIVE' ? (
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  void updateStatus(
-                                    account.id,
-                                    'SUSPENDED',
-                                  )
-                                }
-                                disabled={updateAccount.isPending}
-                                className="inline-flex items-center gap-2 rounded-lg border border-[#ffb95f] px-3 py-1.5 text-xs font-semibold text-[#7a4d00] transition hover:bg-[#fff4ce] focus:outline-none focus:ring-2 focus:ring-[#ffb95f]/40 disabled:cursor-not-allowed disabled:opacity-60"
-                              >
-                                <PauseCircle
-                                  className="h-4 w-4"
-                                  aria-hidden="true"
-                                />
-                                Suspender
-                              </button>
-                            ) : account.status ===
-                              'SUSPENDED' ? (
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  void updateStatus(
-                                    account.id,
-                                    'ACTIVE',
-                                  )
-                                }
-                                disabled={updateAccount.isPending}
-                                className="inline-flex items-center gap-2 rounded-lg border border-[#6ffbbe] px-3 py-1.5 text-xs font-semibold text-[#005236] transition hover:bg-[#effdf6] focus:outline-none focus:ring-2 focus:ring-[#6ffbbe]/50 disabled:cursor-not-allowed disabled:opacity-60"
-                              >
-                                <CheckCircle2
-                                  className="h-4 w-4"
-                                  aria-hidden="true"
-                                />
-                                Reativar
-                              </button>
-                            ) : (
-                              <span className="inline-flex max-w-xs items-center rounded-lg border border-[#ffdad6] bg-[#fff1ef] px-3 py-1.5 text-xs font-semibold text-[#93000a]">
-                                Conta encerrada. Dados e
-                                historico preservados.
-                              </span>
-                            )}
+                        <td className="px-3 py-4">
+                          <ActionGroup>
                             <button
-                              type="button"
-                              onClick={() =>
-                                setStatusHistoryDialog({
-                                  account,
-                                })
-                              }
-                              className="inline-flex items-center gap-2 rounded-lg border border-[#c5c5d3] px-3 py-1.5 text-xs font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30"
-                            >
-                              Ver histórico
+                            type="button"
+                            onClick={() =>
+                              void openInstitutionAccessDialog(
+                                account,
+                              )
+                            }
+                            disabled={!account.owner}
+                            className="inline-flex h-9 items-center justify-center gap-2 rounded-lg border border-[#c5c5d3] bg-white px-3 text-xs font-semibold text-[#1e3a8a] transition hover:bg-[#dce1ff] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:bg-[#182235] dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                            aria-label={`Gerenciar escolas e ações de ${account.name}`}
+                          >
+                            <Building2
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                            Gerenciar
                             </button>
-                            {canCloseAccounts &&
-                              account.status !==
-                                'CANCELED' &&
-                              account.owner?.email && (
-                                <button
-                                  type="button"
-                                  onClick={() =>
-                                    openCloseDialog(account)
-                                  }
-                                  disabled={
-                                    closeAccount.isPending
-                                  }
-                                  className="inline-flex items-center gap-2 rounded-lg border border-[#ffdad6] px-3 py-1.5 text-xs font-semibold text-[#93000a] transition hover:bg-[#fff1ef] focus:outline-none focus:ring-2 focus:ring-[#ffdad6]/70 disabled:cursor-not-allowed disabled:opacity-60"
-                                  aria-label={`Encerrar conta ${account.name}`}
-                                >
-                                  <X
-                                    className="h-4 w-4"
-                                    aria-hidden="true"
-                                  />
-                                  Encerrar conta
-                                </button>
-                              )}
-                          </div>
+                          </ActionGroup>
                         </td>
                       </tr>
                     );
@@ -1604,7 +1967,7 @@ export default function PlatformPage() {
                       id="institution-access-title"
                       className="text-xl font-semibold leading-7 text-[#191c1d] dark:text-[#f8fafc]"
                     >
-                      Acessar escola da conta
+                      Escolas e ações
                     </h2>
                     <p className="mt-1 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
                       {institutionAccessDialog.account.name}
@@ -1693,7 +2056,7 @@ export default function PlatformPage() {
                     role="status"
                     className="mt-4 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651] dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]"
                   >
-                    Nenhuma escola ativa nesta conta.
+                    Nenhuma escola cadastrada nesta conta.
                   </div>
                 ) : (
                   <div className="mt-3">
@@ -1727,41 +2090,115 @@ export default function PlatformPage() {
                               institution.id;
 
                             return (
-                              <button
+                              <div
                                 key={institution.id}
-                                type="button"
-                                role="option"
-                                aria-selected={isSelected}
-                                onClick={() =>
-                                  selectInstitutionAccessOption(
-                                    institution.id,
-                                  )
-                                }
-                                disabled={
-                                  isAccessingInstitution
-                                }
-                                className={`flex min-h-11 w-full items-center gap-3 rounded-md px-3 py-2 text-left text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-60 ${
-                                  isSelected
-                                    ? 'bg-[#e8f0ff] text-[#061f6f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]'
-                                    : 'text-[#191c1d] hover:bg-[#f3f4f5] dark:text-[#e2e8f0] dark:hover:bg-[#243247]'
-                                }`}
+                                className="flex items-center gap-2 rounded-md p-1"
                               >
-                                <span
-                                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                                <button
+                                  type="button"
+                                  role="option"
+                                  aria-selected={isSelected}
+                                  onClick={() =>
+                                    selectInstitutionAccessOption(
+                                      institution.id,
+                                    )
+                                  }
+                                  disabled={
+                                    isAccessingInstitution ||
+                                    institution.active === false
+                                  }
+                                  className={`flex min-h-11 min-w-0 flex-1 items-center gap-3 rounded-md px-3 py-2 text-left text-sm outline-none transition focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-70 ${
                                     isSelected
-                                      ? 'border-[#005bbf] bg-[#005bbf] text-white dark:border-[#93c5fd] dark:bg-[#93c5fd] dark:text-[#0f172a]'
-                                      : 'border-[#9aa4b2] bg-white dark:border-[#64748b] dark:bg-[#111827]'
+                                      ? 'bg-[#e8f0ff] text-[#061f6f] dark:bg-[#1e3a5f] dark:text-[#dbeafe]'
+                                      : 'text-[#191c1d] hover:bg-[#f3f4f5] dark:text-[#e2e8f0] dark:hover:bg-[#243247]'
                                   }`}
-                                  aria-hidden="true"
                                 >
-                                  {isSelected && (
-                                    <CheckCircle2 className="h-3.5 w-3.5" />
-                                  )}
-                                </span>
-                                <span className="min-w-0 truncate font-semibold">
-                                  {institution.name}
-                                </span>
-                              </button>
+                                  <span
+                                    className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+                                      isSelected
+                                        ? 'border-[#005bbf] bg-[#005bbf] text-white dark:border-[#93c5fd] dark:bg-[#93c5fd] dark:text-[#0f172a]'
+                                        : 'border-[#9aa4b2] bg-white dark:border-[#64748b] dark:bg-[#111827]'
+                                    }`}
+                                    aria-hidden="true"
+                                  >
+                                    {isSelected && (
+                                      <CheckCircle2 className="h-3.5 w-3.5" />
+                                    )}
+                                  </span>
+                                  <span className="min-w-0">
+                                    <span className="block truncate font-semibold">
+                                      {institution.name}
+                                    </span>
+                                    <span
+                                      className={`block text-xs font-semibold ${
+                                        institution.active ===
+                                        false
+                                          ? 'text-[#7a4d00] dark:text-[#ffb95f]'
+                                          : 'text-[#005236] dark:text-[#6ffbbe]'
+                                      }`}
+                                    >
+                                      {institution.active ===
+                                      false
+                                        ? 'Suspensa'
+                                        : 'Ativa'}
+                                    </span>
+                                  </span>
+                                </button>
+
+                                {institutionAccessDialog.account
+                                  .status === 'ACTIVE' && (
+                                  <>
+                                    <IconActionButton
+                                      label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institution.name}`}
+                                      onClick={() =>
+                                        void changeInstitutionStatus(
+                                          institution,
+                                          institution.active ===
+                                            false,
+                                        )
+                                      }
+                                      disabled={
+                                        updateInstitutionStatusMutation.isPending
+                                      }
+                                      className={
+                                        institution.active ===
+                                        false
+                                          ? 'border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60'
+                                          : 'border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60'
+                                      }
+                                    >
+                                      {institution.active === false ? (
+                                        <CheckCircle2
+                                          className="h-4 w-4"
+                                          aria-hidden="true"
+                                        />
+                                      ) : (
+                                        <PauseCircle
+                                          className="h-4 w-4"
+                                          aria-hidden="true"
+                                        />
+                                      )}
+                                    </IconActionButton>
+                                    <IconActionButton
+                                      label={`Excluir ${institution.name}`}
+                                      onClick={() =>
+                                        void deleteInstitutionFromAccessDialog(
+                                          institution,
+                                        )
+                                      }
+                                      disabled={
+                                        deleteInstitutionMutation.isPending
+                                      }
+                                      className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
+                                    >
+                                      <Trash2
+                                        className="h-4 w-4"
+                                        aria-hidden="true"
+                                      />
+                                    </IconActionButton>
+                                  </>
+                                )}
+                              </div>
                             );
                           },
                         )}
@@ -1782,6 +2219,151 @@ export default function PlatformPage() {
                     {institutionAccessDialog.error}
                   </div>
                 )}
+
+                <div className="mt-4 rounded-lg border border-[#c5c5d3]/70 p-4 dark:border-[#334155]">
+                  <h3 className="text-sm font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                    Opções de ação
+                  </h3>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {institutionAccessDialog.account.status ===
+                    'ACTIVE' ? (
+                      <IconActionButton
+                        label={`Suspender ${institutionAccessDialog.account.name}`}
+                        onClick={() =>
+                          void updateStatus(
+                            institutionAccessDialog.account.id,
+                            'SUSPENDED',
+                          )
+                        }
+                        disabled={updateAccount.isPending}
+                        className="border-[#ffb95f] text-[#7a4d00] hover:bg-[#fff4ce] focus:ring-[#ffb95f]/40 dark:border-[#b45309] dark:text-[#ffb95f] dark:hover:bg-[#451a03]/60"
+                      >
+                        <PauseCircle
+                          className="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                      </IconActionButton>
+                    ) : institutionAccessDialog.account.status ===
+                      'SUSPENDED' ? (
+                      <IconActionButton
+                        label={`Reativar ${institutionAccessDialog.account.name}`}
+                        onClick={() =>
+                          void updateStatus(
+                            institutionAccessDialog.account.id,
+                            'ACTIVE',
+                          )
+                        }
+                        disabled={updateAccount.isPending}
+                        className="border-[#6ffbbe] text-[#005236] hover:bg-[#effdf6] focus:ring-[#6ffbbe]/50 dark:border-[#059669] dark:text-[#6ffbbe] dark:hover:bg-[#022c22]/60"
+                      >
+                        <CheckCircle2
+                          className="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                      </IconActionButton>
+                    ) : null}
+
+                    {isSuperAdmin &&
+                      institutionAccessDialog.account.status ===
+                        'ACTIVE' &&
+                      institutionAccessDialogOwner.active === true &&
+                      institutionAccessDialogOwner.role === 'ADMIN' &&
+                      institutionAccessDialogOwner.platform_role !==
+                        'SUPER_ADMIN' && (
+                        <IconActionButton
+                          label="Alterar senha do administrador"
+                          onClick={() =>
+                            openAdminPasswordDialog(
+                              institutionAccessDialog.account,
+                            )
+                          }
+                          disabled={
+                            updateClientAdminPassword.isPending
+                          }
+                          className="border-[#c5c5d3] text-[#005bbf] hover:bg-[#eef3ff] focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#93c5fd] dark:hover:bg-[#243247]"
+                        >
+                          <KeyRound
+                            className="h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </IconActionButton>
+                      )}
+
+                    <IconActionButton
+                      label={`Ver histórico de ${institutionAccessDialog.account.name}`}
+                      onClick={() => {
+                        setInstitutionAccessDialog(null);
+                        setStatusHistoryDialog({
+                          account: institutionAccessDialog.account,
+                        });
+                      }}
+                      className="border-[#c5c5d3] text-[#444651] hover:bg-[#f3f4f5] focus:ring-[#1e3a8a]/30 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
+                    >
+                      <History
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    </IconActionButton>
+
+                    {institutionAccessDialog.account.status !==
+                      'CANCELED' &&
+                      canCloseAccounts &&
+                      institutionAccessDialog.account.owner
+                        ?.email && (
+                        <IconActionButton
+                          label={`Excluir conta ${institutionAccessDialog.account.name}`}
+                          onClick={() =>
+                            openCloseDialog(
+                              institutionAccessDialog.account,
+                            )
+                          }
+                          disabled={closeAccount.isPending}
+                          className="border-[#ffdad6] text-[#93000a] hover:bg-[#fff1ef] focus:ring-[#ffdad6]/70 dark:border-red-900/60 dark:text-red-200 dark:hover:bg-red-950/40"
+                        >
+                          <X
+                            className="h-4 w-4"
+                            aria-hidden="true"
+                          />
+                        </IconActionButton>
+                      )}
+
+                    {institutionAccessDialog.account.status ===
+                      'CANCELED' &&
+                      canCloseAccounts && (
+                        <>
+                          <IconActionButton
+                            label={`Restaurar ${institutionAccessDialog.account.name}`}
+                            onClick={() => {
+                              setInstitutionAccessDialog(null);
+                              setRestoreDialogAccount(
+                                institutionAccessDialog.account,
+                              );
+                            }}
+                            className="border-emerald-300 text-emerald-700 hover:bg-emerald-50 focus:ring-emerald-300/50 active:bg-emerald-100 dark:border-emerald-700 dark:text-emerald-400 dark:hover:bg-emerald-950 dark:active:bg-emerald-900"
+                          >
+                            <RotateCcw
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                          </IconActionButton>
+                          <IconActionButton
+                            label={`Excluir permanentemente ${institutionAccessDialog.account.name}`}
+                            onClick={() =>
+                              openPermanentDeleteDialog(
+                                institutionAccessDialog.account,
+                              )
+                            }
+                            className="border-red-300 text-red-700 hover:bg-red-50 focus:ring-red-300/50 active:bg-red-100 dark:border-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:active:bg-red-900"
+                          >
+                            <Trash2
+                              className="h-4 w-4"
+                              aria-hidden="true"
+                            />
+                          </IconActionButton>
+                        </>
+                      )}
+                  </div>
+                </div>
 
                 <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
                   <button
@@ -1820,6 +2402,218 @@ export default function PlatformPage() {
               </section>
             </div>
           )}
+
+        {adminPasswordDialog && (
+          <div
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-4 py-6 dark:bg-black/70"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="admin-password-title"
+              className="w-full max-w-md rounded-xl border border-transparent bg-white p-5 shadow-xl dark:border-[#334155] dark:bg-[#182235]"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="admin-password-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d] dark:text-[#f8fafc]"
+                  >
+                    Alterar senha do administrador
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651] dark:text-[#cbd5e1]">
+                    Atualize o acesso do administrador dono da conta.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={closeAdminPasswordDialog}
+                  disabled={updateClientAdminPassword.isPending}
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247]"
+                  aria-label="Fechar alteração de senha"
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-3 text-sm text-[#444651] dark:border-[#334155] dark:bg-[#0f172a] dark:text-[#cbd5e1]">
+                <p className="font-semibold text-[#191c1d] dark:text-[#f8fafc]">
+                  {adminPasswordDialog.account.owner?.full_name}
+                </p>
+                <p className="truncate">
+                  {adminPasswordDialog.account.owner?.email}
+                </p>
+              </div>
+
+              <form
+                className="mt-4 space-y-4"
+                onSubmit={handleAdminPasswordSubmit}
+              >
+                <div>
+                  <label
+                    htmlFor="client-admin-password"
+                    className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    Nova senha
+                  </label>
+                  <div className="relative mt-1">
+                    <input
+                      id="client-admin-password"
+                      type={showAdminPassword ? 'text' : 'password'}
+                      autoComplete="new-password"
+                      maxLength={ADMIN_PASSWORD_MAX_LENGTH}
+                      value={adminPasswordDialog.password}
+                      onChange={(event) =>
+                        setAdminPasswordDialog((current) =>
+                          current
+                            ? {
+                                ...current,
+                                password: event.target.value,
+                                error: null,
+                              }
+                            : current,
+                        )
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-3 pr-11 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:disabled:bg-[#111827]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowAdminPassword((visible) => !visible)
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="absolute right-1 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-[#757682] hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#94a3b8] dark:hover:bg-[#243247]"
+                      aria-label={
+                        showAdminPassword
+                          ? 'Ocultar senha'
+                          : 'Mostrar senha'
+                      }
+                      title={
+                        showAdminPassword
+                          ? 'Ocultar senha'
+                          : 'Mostrar senha'
+                      }
+                    >
+                      {showAdminPassword ? (
+                        <EyeOff className="h-4 w-4" aria-hidden="true" />
+                      ) : (
+                        <Eye className="h-4 w-4" aria-hidden="true" />
+                      )}
+                    </button>
+                  </div>
+                  <p className="mt-1 text-xs text-[#757682] dark:text-[#94a3b8]">
+                    Use entre 8 e 72 caracteres.
+                  </p>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="client-admin-password-confirmation"
+                    className="block text-sm font-semibold text-[#444651] dark:text-[#cbd5e1]"
+                  >
+                    Confirmar nova senha
+                  </label>
+                  <div className="relative mt-1">
+                    <input
+                      id="client-admin-password-confirmation"
+                      type={
+                        showAdminPasswordConfirmation
+                          ? 'text'
+                          : 'password'
+                      }
+                      autoComplete="new-password"
+                      maxLength={ADMIN_PASSWORD_MAX_LENGTH}
+                      value={adminPasswordDialog.confirmation}
+                      onChange={(event) =>
+                        setAdminPasswordDialog((current) =>
+                          current
+                            ? {
+                                ...current,
+                                confirmation: event.target.value,
+                                error: null,
+                              }
+                            : current,
+                        )
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="h-10 w-full rounded-lg border border-[#c5c5d3] bg-white px-3 pr-11 text-sm text-[#191c1d] outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:disabled:bg-[#111827]"
+                    />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowAdminPasswordConfirmation(
+                          (visible) => !visible,
+                        )
+                      }
+                      disabled={updateClientAdminPassword.isPending}
+                      className="absolute right-1 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-[#757682] hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 dark:text-[#94a3b8] dark:hover:bg-[#243247]"
+                      aria-label={
+                        showAdminPasswordConfirmation
+                          ? 'Ocultar confirmação de senha'
+                          : 'Mostrar confirmação de senha'
+                      }
+                      title={
+                        showAdminPasswordConfirmation
+                          ? 'Ocultar confirmação de senha'
+                          : 'Mostrar confirmação de senha'
+                      }
+                    >
+                      {showAdminPasswordConfirmation ? (
+                        <EyeOff className="h-4 w-4" aria-hidden="true" />
+                      ) : (
+                        <Eye className="h-4 w-4" aria-hidden="true" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {(adminPasswordDialog.error ||
+                  adminPasswordValidationError) && (
+                  <div
+                    role="alert"
+                    className="rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a] dark:border-red-900/60 dark:bg-red-950/40 dark:text-red-200"
+                  >
+                    {adminPasswordDialog.error ??
+                      adminPasswordValidationError}
+                  </div>
+                )}
+
+                <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                  <button
+                    type="button"
+                    onClick={closeAdminPasswordDialog}
+                    disabled={updateClientAdminPassword.isPending}
+                    className="inline-flex h-10 w-full items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247]"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={!canSubmitAdminPassword}
+                    className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg bg-[#1e3a8a] px-4 text-sm font-semibold text-white transition hover:bg-[#00236f] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+                  >
+                    {updateClientAdminPassword.isPending ? (
+                      <Loader2
+                        className="h-4 w-4 animate-spin"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      <KeyRound
+                        className="h-4 w-4"
+                        aria-hidden="true"
+                      />
+                    )}
+                    {updateClientAdminPassword.isPending
+                      ? 'Alterando...'
+                      : 'Alterar senha'}
+                  </button>
+                </div>
+              </form>
+            </section>
+          </div>
+        )}
 
         {statusHistoryDialog && (
           <div
@@ -1942,12 +2736,12 @@ export default function PlatformPage() {
                     id="close-account-title"
                     className="text-xl font-semibold leading-7 text-[#191c1d]"
                   >
-                    Encerrar conta
+                    Excluir conta
                   </h2>
                   <p className="mt-1 text-sm leading-5 text-[#444651]">
-                    Encerre o contrato comercial sem apagar
-                    dados acadêmicos, instituições, perfis ou
-                    histórico.
+                    A conta será movida para Excluídos. Dados
+                    acadêmicos, instituições, perfis e
+                    histórico serão preservados.
                   </p>
                 </div>
                 <button
@@ -1990,10 +2784,9 @@ export default function PlatformPage() {
                   aria-hidden="true"
                 />
                 <p>
-                  A conta ficará com status Cancelada e não
-                  poderá ser reativada pelo aplicativo. O
-                  administrador, as escolas e todo o histórico
-                  acadêmico serão preservados.
+                  A conta será movida para Excluídos. Todos os
+                  dados permanecem preservados e podem ser
+                  restaurados posteriormente.
                 </p>
               </div>
 
@@ -2011,7 +2804,7 @@ export default function PlatformPage() {
                   htmlFor="close-account-reason"
                   className="block text-xs font-semibold text-[#444651]"
                 >
-                  Motivo do encerramento
+                  Motivo da exclusão
                 </label>
                 <textarea
                   id="close-account-reason"
@@ -2095,7 +2888,351 @@ export default function PlatformPage() {
                       aria-hidden="true"
                     />
                   )}
-                  Encerrar conta
+                  Excluir conta
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {restoreDialogAccount && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="restore-account-title"
+              className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="restore-account-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d]"
+                  >
+                    Restaurar conta
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651]">
+                    {restoreDialogAccount.name}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setRestoreDialogAccount(null)
+                  }
+                  disabled={restoreAccount.isPending}
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                  aria-label="Fechar restauracao"
+                >
+                  <X
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+
+              <div className="mt-4 rounded-lg border border-[#6ffbbe] bg-[#effdf6] p-4 text-sm leading-5 text-[#005236]">
+                <p>
+                  Restaurar esta conta e permitir novamente o
+                  acesso operacional? Todos os dados anteriores
+                  serão preservados.
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setRestoreDialogAccount(null)
+                  }
+                  disabled={restoreAccount.isPending}
+                  className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    void handleRestoreAccount()
+                  }
+                  disabled={restoreAccount.isPending}
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-[#006c49] px-4 text-sm font-semibold text-white transition hover:bg-[#005236] focus:outline-none focus:ring-2 focus:ring-[#006c49]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {restoreAccount.isPending ? (
+                    <Loader2
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <RotateCcw
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
+                  )}
+                  Restaurar
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {permanentDeleteDialog && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6"
+            role="presentation"
+          >
+            <section
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="permanent-delete-title"
+              className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="permanent-delete-title"
+                    className="text-xl font-semibold leading-7 text-[#191c1d]"
+                  >
+                    Excluir permanentemente
+                  </h2>
+                  <p className="mt-1 text-sm leading-5 text-[#444651]">
+                    {permanentDeleteDialog.account.name}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setPermanentDeleteDialog(null)
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c5c5d3] text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                  aria-label="Fechar exclusao permanente"
+                >
+                  <X
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+
+              <div className="mt-4 space-y-3 rounded-lg border border-[#c5c5d3]/70 bg-[#f8f9fa] p-4 text-sm text-[#444651]">
+                <div>
+                  <p className="text-xs font-semibold uppercase text-[#757682]">
+                    Conta
+                  </p>
+                  <p className="mt-1 font-semibold text-[#191c1d]">
+                    {permanentDeleteDialog.account.name}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase text-[#757682]">
+                    Administrador
+                  </p>
+                  <p className="mt-1 font-semibold text-[#191c1d]">
+                    {permanentDeleteDialog.account.owner
+                      ?.full_name ?? 'Sem owner'}
+                  </p>
+                  <p>
+                    {permanentDeleteDialog.account.owner
+                      ?.email ?? ''}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-4 flex gap-3 rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-4 text-sm leading-5 text-[#93000a]">
+                <AlertTriangle
+                  className="mt-0.5 h-4 w-4 shrink-0"
+                  aria-hidden="true"
+                />
+                <p>
+                  Esta operação removerá todos os dados
+                  relacionados à conta de forma irreversível.
+                  Não será possível recuperar nenhuma
+                  informação após a confirmação.
+                </p>
+              </div>
+
+              {permanentDeleteDialog.error && (
+                <div
+                  role="alert"
+                  className="mt-4 rounded-lg border border-[#ffdad6] bg-[#fff1ef] p-3 text-sm text-[#93000a]"
+                >
+                  {permanentDeleteDialog.error}
+                </div>
+              )}
+
+              <div className="mt-4">
+                <label
+                  htmlFor="permanent-delete-reason"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Motivo da exclusão permanente
+                </label>
+                <textarea
+                  id="permanent-delete-reason"
+                  value={permanentDeleteDialog.reason}
+                  onChange={(event) =>
+                    setPermanentDeleteDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            reason:
+                              event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  minLength={10}
+                  maxLength={500}
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-1 min-h-24 w-full rounded-lg border border-[#c5c5d3] px-3 py-2 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+              </div>
+
+              <div className="mt-4">
+                <label
+                  htmlFor="permanent-delete-confirmation"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Digite o e-mail do administrador para
+                  confirmar
+                </label>
+                <input
+                  id="permanent-delete-confirmation"
+                  type="email"
+                  value={
+                    permanentDeleteDialog.confirmation
+                  }
+                  onChange={(event) =>
+                    setPermanentDeleteDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            confirmation:
+                              event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+              </div>
+
+              <div className="mt-4">
+                <label
+                  htmlFor="permanent-delete-literal"
+                  className="block text-xs font-semibold text-[#444651]"
+                >
+                  Digite{' '}
+                  <span className="font-bold tracking-wider">
+                    EXCLUIR DEFINITIVAMENTE
+                  </span>{' '}
+                  para confirmar
+                </label>
+                <input
+                  id="permanent-delete-literal"
+                  type="text"
+                  value={
+                    permanentDeleteDialog
+                      .typedConfirmationLiteral
+                  }
+                  onChange={(event) =>
+                    setPermanentDeleteDialog((current) =>
+                      current
+                        ? {
+                            ...current,
+                            typedConfirmationLiteral:
+                              event.target.value,
+                            error: null,
+                          }
+                        : current,
+                    )
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-1 h-10 w-full rounded-lg border border-[#c5c5d3] px-3 text-sm outline-none transition focus:border-[#1e3a8a] focus:ring-2 focus:ring-[#1e3a8a]/20 disabled:cursor-not-allowed disabled:bg-[#f3f4f5]"
+                />
+              </div>
+
+              <label className="mt-4 flex cursor-pointer items-start gap-3">
+                <input
+                  type="checkbox"
+                  checked={
+                    permanentDeleteDialog.understands
+                  }
+                  onChange={(event) =>
+                    setPermanentDeleteDialog(
+                      (current) =>
+                        current
+                          ? {
+                              ...current,
+                              understands:
+                                event.target.checked,
+                              error: null,
+                            }
+                          : current,
+                    )
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="mt-0.5 h-4 w-4 rounded border-[#c5c5d3] text-[#93000a] focus:ring-[#93000a]/30"
+                />
+                <span className="text-sm leading-5 text-[#444651]">
+                  Entendo que esta operação não poderá ser
+                  desfeita.
+                </span>
+              </label>
+
+              <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setPermanentDeleteDialog(null)
+                  }
+                  disabled={
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5c5d3] bg-white px-4 text-sm font-semibold text-[#444651] transition hover:bg-[#f3f4f5] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    void handlePermanentDelete()
+                  }
+                  disabled={
+                    !permanentDeleteCanSubmit ||
+                    permanentlyDeleteAccount.isPending
+                  }
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-lg bg-[#93000a] px-4 text-sm font-semibold text-white transition hover:bg-[#730006] focus:outline-none focus:ring-2 focus:ring-[#93000a]/30 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {permanentlyDeleteAccount.isPending ? (
+                    <Loader2
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <Trash2
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
+                  )}
+                  Excluir permanentemente
                 </button>
               </div>
             </section>

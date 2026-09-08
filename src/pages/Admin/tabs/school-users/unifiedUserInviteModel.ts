@@ -3,7 +3,6 @@ export const UNIFIED_USER_INVITE_TARGETS = [
   'TEACHER',
   'GUARDIAN',
   'DIRECTOR',
-  'SECRETARY',
 ] as const;
 
 export type UnifiedUserInviteTarget =
@@ -36,7 +35,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'profile',
       'membership',
       'student record',
-      'convite/senha, quando aplicavel',
+      'acesso e senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -52,7 +51,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     futureRecords: [
       'profile',
       'membership',
-      'convite/senha, quando aplicavel',
+      'acesso e senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -69,7 +68,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
       'profile',
       'membership',
       'guardianship',
-      'convite/senha, quando aplicavel',
+      'acesso e senha, quando aplicavel',
     ],
     isPlanned: false,
   },
@@ -85,23 +84,7 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
     futureRecords: [
       'profile',
       'membership',
-      'convite/senha',
-    ],
-    isPlanned: false,
-  },
-  {
-    target: 'SECRETARY',
-    label: 'Secretaria',
-    description:
-      'Operacao institucional para cadastros, responsaveis e matriculas.',
-    rolePreview: 'SECRETARY',
-    availabilityStatuses: [
-      'available_now',
-    ],
-    futureRecords: [
-      'profile',
-      'membership',
-      'convite/senha',
+      'acesso e senha',
     ],
     isPlanned: false,
   },
@@ -132,6 +115,8 @@ export interface UnifiedUserInvitePayload {
   role: UnifiedUserInviteRole;
   fullName: string;
   email: string;
+  phone?: string;
+  continueOnEmailFailure?: boolean;
   student?: {
     birthDate: string;
     cpf?: string;
@@ -208,7 +193,6 @@ export function getAllowedInviteTargets(
   if (currentRole === 'ADMIN') {
     return [
       'DIRECTOR',
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
@@ -217,7 +201,6 @@ export function getAllowedInviteTargets(
 
   if (currentRole === 'DIRECTOR') {
     return [
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
@@ -226,6 +209,7 @@ export function getAllowedInviteTargets(
 
   if (currentRole === 'SECRETARY') {
     return [
+      'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ];
@@ -269,7 +253,7 @@ export function buildUnifiedUserInvitePayload(
 
   if (!isUnifiedInviteRole(input.target)) {
     fieldErrors.target =
-      'Este papel nao pode receber convite.';
+      'Este papel nao pode receber acesso.';
   } else if (
     !canInviteTarget(input.currentRole, input.target)
   ) {

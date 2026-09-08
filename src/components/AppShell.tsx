@@ -29,6 +29,8 @@ import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
 import Sidebar from './Sidebar';
+import { schoolEmailService } from '../services/schoolEmailService';
+import AssistantTec from './AssistantTec';
 
 interface AppShellProps {
   children: ReactNode;
@@ -127,37 +129,58 @@ export function getRouteVisualContext(
 
   if (normalizedPath.startsWith('/platform')) {
     return {
-      section: 'Plataforma',
-      title: 'Instituições',
+      section: '',
+      title: '',
     };
   }
 
   if (normalizedPath.startsWith('/account')) {
     return {
-      section: 'Conta',
-      title: 'Instituições da conta',
+      section: '',
+      title: '',
     };
   }
 
   if (normalizedPath.startsWith('/admin')) {
     return {
-      section: 'Administração',
-      title: 'Gestão institucional',
+      section: '',
+      title: '',
+    };
+  }
+
+  if (normalizedPath.startsWith('/cameras')) {
+    return {
+      section: 'Instituição',
+      title: 'Câmeras ao vivo',
+    };
+  }
+
+  if (normalizedPath.startsWith('/terminais')) {
+    return {
+      section: '',
+      title: '',
+    };
+  }
+
+  if (normalizedPath.startsWith('/email')) {
+    return {
+      section: 'Comunicação',
+      title: 'E-mail',
     };
   }
 
   if (normalizedPath.startsWith('/dashboard')) {
     if (role === 'super_admin') {
       return {
-        section: 'Plataforma',
-        title: 'Instituições',
+        section: '',
+        title: '',
       };
     }
 
     if (role === 'admin') {
       return {
-        section: 'Conta',
-        title: 'Instituições da conta',
+        section: '',
+        title: '',
       };
     }
 
@@ -172,6 +195,20 @@ export function getRouteVisualContext(
     }
 
     if (role === 'teacher') {
+      if (normalizedPath === '/dashboard/timetable') {
+        return {
+          section: 'Acadêmico',
+          title: 'Grade de horário',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/materials') {
+        return {
+          section: 'Acadêmico',
+          title: 'Materiais e avisos',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do professor',
@@ -179,6 +216,20 @@ export function getRouteVisualContext(
     }
 
     if (role === 'student') {
+      if (normalizedPath === '/dashboard/timetable') {
+        return {
+          section: 'Acadêmico',
+          title: 'Grade de horário',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/materials') {
+        return {
+          section: 'Acadêmico',
+          title: 'Materiais e avisos',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do aluno',
@@ -203,12 +254,23 @@ export default function AppShell({
   children,
 }: AppShellProps) {
   const { profile, signOut } = useAuth();
-  const { updateProfileName, updatePassword } =
+  const {
+    updateProfileName,
+    updateSelfRegistration,
+    updatePassword,
+  } =
     useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
   const { theme, toggleTheme } = useThemePreference();
   const branding = useHostBranding();
+
+  useEffect(() => {
+    const institutionId = institutionContext.currentInstitutionId;
+    if (!institutionId) return;
+
+    void schoolEmailService.listRecipients(institutionId).catch(() => undefined);
+  }, [institutionContext.currentInstitutionId]);
 
   const [isSidebarHidden, setIsSidebarHidden] =
     useState(readSidebarPreference);
@@ -413,6 +475,9 @@ export default function AppShell({
 
   const currentRole =
     mapPlatformRole(profile.platform_role) ??
+    mapDatabaseRole(
+      institutionContext.currentRole ?? '',
+    ) ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {
@@ -448,27 +513,12 @@ export default function AppShell({
     location.pathname,
     currentRole,
   );
-
-  const hasAccessibleInstitutions =
-    institutionContext.institutions.length > 0;
-  const isSuperAdmin =
-    profile.platform_role === 'SUPER_ADMIN';
-  const isPlatformRoute =
-    location.pathname.startsWith('/platform');
   const isAdminRoute =
     location.pathname.startsWith('/admin');
-  const showStaticInstitution =
-    isSuperAdmin &&
-    isAdminRoute &&
-    Boolean(institutionContext.currentInstitution);
-
-  const showInstitutionSwitcher =
-    !showStaticInstitution &&
-    (isSuperAdmin
-      ? !isPlatformRoute &&
-        !isAdminRoute &&
-        hasAccessibleInstitutions
-      : true);
+  const pageTitle =
+    isAdminRoute && institutionContext.currentInstitution
+      ? institutionContext.currentInstitution.name
+      : pageContext.title;
 
   function openMobileSidebar(): void {
     const activeElement =
@@ -547,16 +597,10 @@ export default function AppShell({
       >
         <Header
           currentUser={currentUser}
-          pageTitle={pageContext.title}
+          pageTitle={pageTitle}
           pageSection={pageContext.section}
-          showInstitutionSwitcher={
-            showInstitutionSwitcher
-          }
-          staticInstitutionName={
-            showStaticInstitution
-              ? institutionContext
-                  .currentInstitution?.name
-              : null
+          currentInstitutionName={
+            institutionContext.currentInstitution?.name ?? null
           }
           isSidebarHidden={isSidebarHidden}
           isMobileSidebarOpen={
@@ -572,6 +616,7 @@ export default function AppShell({
             void handleLogout();
           }}
           onUpdateProfileName={updateProfileName}
+          onUpdateSelfRegistration={updateSelfRegistration}
           onUpdatePassword={updatePassword}
           theme={theme}
           onToggleTheme={toggleTheme}
@@ -583,13 +628,27 @@ export default function AppShell({
         <main
           id="app-main-content"
           tabIndex={-1}
-          className="min-w-0 flex-1 overflow-x-hidden px-4 py-5 outline-none sm:px-5 lg:px-6 lg:py-6 xl:px-8"
+          className={`min-w-0 flex-1 overflow-x-hidden outline-none ${
+            location.pathname.startsWith('/terminais')
+              ? 'p-0'
+              : 'px-4 py-5 sm:px-5 lg:px-6 lg:py-6 xl:px-8'
+          }`}
         >
-          <div className="mx-auto w-full max-w-none">
+          <div
+            className={`mx-auto w-full max-w-none ${
+              location.pathname.startsWith('/terminais')
+                ? 'h-full'
+                : ''
+            }`}
+          >
             {children}
           </div>
         </main>
       </div>
+      <AssistantTec
+        role={currentRole}
+        institutionId={institutionContext.currentInstitutionId}
+      />
     </div>
   );
 }

@@ -42,6 +42,7 @@ export default function InstitutionSwitcher() {
     currentInstitutionId,
     currentRole,
     isLoading,
+    isSwitchingInstitution,
     error,
     hasMultipleInstitutions,
     setCurrentInstitutionId,
@@ -165,12 +166,13 @@ export default function InstitutionSwitcher() {
           id={selectId}
           aria-describedby={descriptionId}
           value={currentInstitutionId ?? ''}
+          disabled={isSwitchingInstitution}
           onChange={(event) => {
             void setCurrentInstitutionId(
               event.target.value,
             );
           }}
-          className="h-11 w-full min-w-0 rounded-xl border border-[#d8deea] bg-white py-2 pl-9 pr-8 text-sm font-bold text-[#181c20] shadow-sm outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 md:min-w-64"
+          className="h-11 w-full min-w-0 rounded-xl border border-[#d8deea] bg-white py-2 pl-9 pr-8 text-sm font-bold text-[#181c20] shadow-sm outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 disabled:cursor-wait disabled:opacity-70 md:min-w-64"
         >
           {institutions.map((item) => {
             const roleLabel = getRoleLabel(

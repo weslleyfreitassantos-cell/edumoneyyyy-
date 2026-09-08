@@ -87,18 +87,24 @@ function accountErrorFromIdentityConflict(
   });
 }
 
-function getAppUrl(): string {
+function isLocalhostUrl(url: string): boolean {
+  return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?(\/|$)/i.test(url);
+}
+
+function getAppUrl(requestUrl: string): string {
   const appUrl = Deno.env.get("APP_URL")?.replace(/\/+$/, "");
 
-  if (!appUrl) {
+  const resolvedUrl = appUrl || new URL(requestUrl).origin;
+
+  if (isLocalhostUrl(resolvedUrl)) {
     throw new AccountError({
       status: 500,
-      code: "MISSING_APP_URL",
-      message: "A URL da aplicacao nao foi configurada.",
+      code: "LOCALHOST_APP_URL",
+      message: "A URL da aplicacao nao pode ser localhost em ambiente de producao.",
     });
   }
 
-  return appUrl;
+  return resolvedUrl;
 }
 
 function isDuplicateAuthError(message: string | undefined): boolean {
@@ -220,6 +226,7 @@ async function createOwnerProfile(
   >[1],
   input: RequestData,
   rollback: RollbackState,
+  requestUrl: string,
 ): Promise<{
   profileId: string;
   invitationSent: boolean;
@@ -247,7 +254,7 @@ async function createOwnerProfile(
     }
   }
 
-  const inviteRedirectUrl = `${getAppUrl()}/auth/confirm`;
+  const inviteRedirectUrl = `${getAppUrl(requestUrl)}/auth/confirm`;
 
   const { data: invitationData, error: invitationError } =
     await ctx.supabaseAdmin.auth.admin.inviteUserByEmail(
@@ -282,7 +289,7 @@ async function createOwnerProfile(
 
   const { error: profileError } = await ctx.supabaseAdmin
     .from("profiles")
-    .insert({
+    .upsert({
       id: profileId,
       full_name: input.adminFullName,
       email: normalizedEmail,
@@ -290,7 +297,7 @@ async function createOwnerProfile(
       platform_role: "USER",
       avatar_url: null,
       active: true,
-    });
+    }, { onConflict: "id" });
 
   if (profileError) {
     throw profileError;
@@ -357,6 +364,7 @@ export default {
           ctx,
           validation.data,
           rollback,
+          request.url,
         );
 
         const { data: account, error: accountError } =
@@ -422,7 +430,10 @@ export default {
           new AccountError({
             status: 500,
             code: "INTERNAL_ERROR",
-            message: "Nao foi possivel criar a conta.",
+            message:
+              error instanceof Error && error.message
+                ? `Nao foi possivel criar a conta: ${error.message}`
+                : "Nao foi possivel criar a conta.",
           }),
         );
       }

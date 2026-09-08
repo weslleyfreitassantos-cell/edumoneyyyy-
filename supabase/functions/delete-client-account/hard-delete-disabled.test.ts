@@ -6,25 +6,24 @@ const source = readFileSync(
   'utf8',
 );
 
-describe('delete-client-account hard delete disabled', () => {
-  it('returns hard delete disabled with HTTP 410', () => {
-    expect(source).toContain('HARD_DELETE_DISABLED');
-    expect(source).toContain('status: 410');
+describe('delete-client-account hard delete enabled', () => {
+  it('calls hard_delete_client_account RPC', () => {
+    expect(source).toContain('hard_delete_client_account');
   });
 
-  it('does not delete auth users or restore deleted data', () => {
-    expect(source).not.toContain('auth.admin.deleteUser');
-    expect(source).not.toContain('restoreAccount');
-    expect(source).not.toContain('restoreProfile');
-    expect(source).not.toContain('restoreOwnerAndAccount');
+  it('requires reason, confirmationEmail, confirmationText, acknowledgement', () => {
+    expect(source).toContain('confirmationEmail');
+    expect(source).toContain('confirmationText');
+    expect(source).toContain('acknowledgement');
+    expect(source).toContain('EXCLUIR DEFINITIVAMENTE');
   });
 
-  it('does not delete account or profile records', () => {
-    expect(source).not.toMatch(
-      /\.from\(["']accounts["']\)[\s\S]*?\.delete\(/,
-    );
-    expect(source).not.toMatch(
-      /\.from\(["']profiles["']\)[\s\S]*?\.delete\(/,
-    );
+  it('requires SUPER_ADMIN authorization', () => {
+    expect(source).toContain('SUPER_ADMIN_REQUIRED');
+    expect(source).toContain('platform_role');
+  });
+
+  it('deletes auth users for exclusive profiles after RPC', () => {
+    expect(source).toContain('auth.admin.deleteUser');
   });
 });

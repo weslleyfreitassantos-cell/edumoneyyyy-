@@ -34,6 +34,7 @@ const currentDirectory = dirname(
 );
 
 const mutateAsync = vi.fn();
+const saveAcademicMutateAsync = vi.fn();
 
 vi.mock(
   '../../../../hooks/useSchoolUserInvites',
@@ -44,6 +45,29 @@ vi.mock(
     }),
   }),
 );
+
+vi.mock('../../../../hooks/useAcademicAutomation', () => ({
+  useSaveTeacherAcademicSettings: () => ({
+    isPending: false,
+    mutateAsync: saveAcademicMutateAsync,
+  }),
+  useSchoolTimeSlots: () => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+  }),
+}));
+
+vi.mock('../../../../hooks/useSubjects', () => ({
+  useSubjects: () => ({
+    data: [
+      { id: 'subject-math', name: 'Matemática', active: true },
+      { id: 'subject-portuguese', name: 'Português', active: true },
+    ],
+    isLoading: false,
+    isError: false,
+  }),
+}));
 
 vi.mock('../../../../hooks/useStudents', () => ({
   useStudents: () => ({
@@ -79,8 +103,10 @@ afterEach(() => {
 
 beforeEach(() => {
   mutateAsync.mockReset();
+  saveAcademicMutateAsync.mockReset();
   mutateAsync.mockResolvedValue({
     success: true,
+    accessCreated: true,
     userId:
       '11111111-1111-4111-8111-111111111111',
     profileId:
@@ -90,14 +116,16 @@ beforeEach(() => {
     role: 'TEACHER',
     email: 'professor@escola.com',
     invitationSent: true,
+    emailPending: false,
     reusedExistingUser: false,
     message:
       'Convite enviado e vinculo criado com sucesso.',
   });
+  saveAcademicMutateAsync.mockResolvedValue(undefined);
 });
 
 describe('UnifiedUserInvitePreview', () => {
-  it('renderiza formulario real de convite', () => {
+  it('renderiza formulario real de acesso', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -109,11 +137,24 @@ describe('UnifiedUserInvitePreview', () => {
         'Cadastro unificado de usuarios',
       ),
     ).toBeTruthy();
+  });
+
+  it('renderiza somente o cadastro especifico quando recebe um unico destino', () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        allowedTargets={['DIRECTOR']}
+        heading="Cadastro de diretor"
+      />,
+    );
+
     expect(
-      screen.getByText(
-        /invite-school-user/,
-      ),
+      screen.getByText('Cadastro de diretor'),
     ).toBeTruthy();
+    expect(screen.getByText('Diretor')).toBeTruthy();
+    expect(
+      screen.queryByRole('button', { name: /^Aluno$/i }),
+    ).toBeNull();
   });
 
   it('mantem envio desabilitado para formulario invalido', () => {
@@ -126,7 +167,7 @@ describe('UnifiedUserInvitePreview', () => {
     expect(
       screen
         .getByRole('button', {
-          name: /Enviar convite/,
+          name: /Criar e enviar acesso/,
         })
         .hasAttribute('disabled'),
     ).toBe(true);
@@ -160,10 +201,16 @@ describe('UnifiedUserInvitePreview', () => {
         },
       },
     );
+    fireEvent.click(screen.getByLabelText('Matemática'));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Adicionar janela/,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar convite/,
+        name: /Criar e enviar acesso/,
       }),
     );
 
@@ -175,7 +222,137 @@ describe('UnifiedUserInvitePreview', () => {
         fullName: 'Professor Teste',
         email: 'professor@escola.com',
       });
+      expect(saveAcademicMutateAsync).toHaveBeenCalledWith({
+        institution_id:
+          defaultProps.institutionId,
+        teacher_profile_id:
+          '11111111-1111-4111-8111-111111111111',
+        subject_ids: ['subject-math'],
+        primary_subject_id: undefined,
+        availability: [{
+          day_of_week: 1,
+          start_time: '07:00',
+          end_time: '12:00',
+        }],
+      });
     });
+  });
+
+  it('trata o e-mail pendente como criação concluída e limpa o formulário', async () => {
+    mutateAsync.mockResolvedValueOnce({
+      success: true,
+      accessCreated: true,
+      userId: '11111111-1111-4111-8111-111111111111',
+      profileId: '11111111-1111-4111-8111-111111111111',
+      membershipId: '33333333-3333-4333-8333-333333333333',
+      role: 'STUDENT',
+      email: 'aluno-pendente@escola.com',
+      invitationSent: false,
+      emailPending: true,
+      reusedExistingUser: false,
+      message: 'Acesso criado; o e-mail de acesso ficou pendente.',
+    });
+
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+        allowedTargets={['STUDENT']}
+      />,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Nome completo/), {
+      target: { value: 'Aluno Pendente' },
+    });
+    fireEvent.change(screen.getByLabelText(/E-mail/), {
+      target: { value: 'aluno-pendente@escola.com' },
+    });
+    fireEvent.change(screen.getByLabelText(/Data de nascimento/), {
+      target: { value: '2010-01-01' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /Criar e enviar acesso/ }));
+
+    await waitFor(() => {
+      const feedback = screen.getByRole('alert');
+      expect(feedback.textContent).toContain('Acesso criado; o e-mail de acesso ficou pendente.');
+      expect(feedback.className).toContain('border-amber-200');
+      expect(screen.queryByDisplayValue('aluno-pendente@escola.com')).toBeNull();
+      expect(screen.queryByRole('button', { name: /tentar novamente|reenviar/i })).toBeNull();
+    });
+  });
+
+  it('salva a configuração acadêmica do professor mesmo com e-mail pendente', async () => {
+    mutateAsync.mockResolvedValueOnce({
+      success: true,
+      accessCreated: true,
+      userId: '11111111-1111-4111-8111-111111111111',
+      profileId: '11111111-1111-4111-8111-111111111111',
+      membershipId: '33333333-3333-4333-8333-333333333333',
+      role: 'TEACHER',
+      email: 'professor-pendente@escola.com',
+      invitationSent: false,
+      emailPending: true,
+      reusedExistingUser: false,
+      message: 'Acesso criado; o e-mail de acesso ficou pendente.',
+    });
+
+    render(<UnifiedUserInvitePreview {...defaultProps} />);
+    fireEvent.click(screen.getByRole('button', { name: /Professor/ }));
+    fireEvent.change(screen.getByLabelText(/Nome completo/), {
+      target: { value: 'Professor Pendente' },
+    });
+    fireEvent.change(screen.getByLabelText(/E-mail/), {
+      target: { value: 'professor-pendente@escola.com' },
+    });
+    fireEvent.click(screen.getByLabelText('Matemática'));
+    fireEvent.click(screen.getByRole('button', { name: /Adicionar janela/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Criar e enviar acesso/ }));
+
+    await waitFor(() => {
+      expect(saveAcademicMutateAsync).toHaveBeenCalledWith({
+        institution_id: defaultProps.institutionId,
+        teacher_profile_id: '11111111-1111-4111-8111-111111111111',
+        subject_ids: ['subject-math'],
+        primary_subject_id: undefined,
+        availability: [{
+          day_of_week: 1,
+          start_time: '07:00',
+          end_time: '12:00',
+        }],
+      });
+      expect(screen.getByRole('alert').textContent).toContain(
+        'Acesso criado; o e-mail de acesso ficou pendente. Disciplinas e disponibilidade salvas.',
+      );
+    });
+  });
+
+  it('exige disciplina e disponibilidade antes de criar professor', async () => {
+    render(
+      <UnifiedUserInvitePreview
+        {...defaultProps}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Professor/,
+      }),
+    );
+    fireEvent.change(
+      screen.getByLabelText(/Nome completo/),
+      { target: { value: 'Professor Sem Configuração' } },
+    );
+    fireEvent.change(
+      screen.getByLabelText(/E-mail/),
+      { target: { value: 'sem-config@escola.com' } },
+    );
+
+    expect(
+      screen.getByText(/Selecione pelo menos uma disciplina/i),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: /Criar e enviar acesso/ }).hasAttribute('disabled'),
+    ).toBe(true);
+    expect(mutateAsync).not.toHaveBeenCalled();
   });
 
   it('mostra erro especifico de e-mail ja cadastrado sem limpar formulario', async () => {
@@ -216,10 +393,16 @@ describe('UnifiedUserInvitePreview', () => {
         },
       },
     );
+    fireEvent.click(screen.getByLabelText('Matemática'));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Adicionar janela/,
+      }),
+    );
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar convite/,
+        name: /Criar e enviar acesso/,
       }),
     );
 
@@ -236,7 +419,7 @@ describe('UnifiedUserInvitePreview', () => {
       ).toBeTruthy();
       expect(
         screen.getByRole('button', {
-          name: /Enviar convite/,
+          name: /Criar e enviar acesso/,
         }).hasAttribute('disabled'),
       ).toBe(false);
     });
@@ -290,7 +473,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Enviar convite/,
+        name: /Criar e enviar acesso/,
       }),
     );
 
@@ -310,7 +493,7 @@ describe('UnifiedUserInvitePreview', () => {
     });
   });
 
-  it('habilita secretaria como role real para ADMIN', () => {
+  it('habilita diretor como role real para ADMIN', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -320,7 +503,7 @@ describe('UnifiedUserInvitePreview', () => {
     expect(
       screen
         .getByRole('button', {
-          name: /Secret/,
+          name: /^Diretor/,
         })
         .hasAttribute('disabled'),
     ).toBe(false);
@@ -341,12 +524,12 @@ describe('UnifiedUserInvitePreview', () => {
     ).toBeNull();
     expect(
       screen.getByRole('button', {
-        name: /Secret/,
+        name: /Professor/,
       }),
     ).toBeTruthy();
   });
 
-  it('limita secretaria a aluno e responsavel', () => {
+  it('permite secretaria convidar professor, aluno e responsavel', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
@@ -355,10 +538,10 @@ describe('UnifiedUserInvitePreview', () => {
     );
 
     expect(
-      screen.queryByRole('button', {
+      screen.getByRole('button', {
         name: /Professor/,
       }),
-    ).toBeNull();
+    ).toBeTruthy();
     expect(
       screen.queryByRole('button', {
         name: /Diretor/,

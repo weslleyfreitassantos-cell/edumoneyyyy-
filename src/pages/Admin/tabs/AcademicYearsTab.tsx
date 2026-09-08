@@ -1,14 +1,26 @@
 import {
   useEffect,
   useMemo,
+  useRef,
   useState,
   type FormEvent,
 } from 'react';
 
 import {
+  CalendarDays,
+  Edit3,
+  LoaderCircle,
+  Power,
+  PowerOff,
+  Trash2,
+} from 'lucide-react';
+
+import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import { ActionGroup } from '../../../components/ActionGroup';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -16,13 +28,20 @@ import {
   useAcademicYears,
   useCreateAcademicYear,
   useCreateTerm,
+  useDeleteAcademicYear,
   useSetAcademicYearActive,
   useSetTermActive,
   useUpdateAcademicYear,
   useUpdateTerm,
 } from '../../../hooks/useAcademicStructure';
 
+import {
+  useCopyPreviousYear,
+  useCreateAcademicYearWithTerms,
+} from '../../../hooks/useAcademicAutomation';
+
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { getPreferredAcademicYear } from '../../../lib/academicSelection';
 
 import {
   academicYearSchema,
@@ -30,11 +49,17 @@ import {
   termSchema,
   termUpdateSchema,
 } from '../../../schemas/adminSchemas';
+import {
+  suggestPeriods,
+  type PeriodDraft,
+  type PeriodModel,
+} from '../../../services/academicAutomationService';
 
 import type {
   AcademicYearRow,
   TermRow,
 } from '../../../services/academicStructureService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface AcademicYearDraft {
   name: string;
@@ -49,6 +74,8 @@ interface TermDraft {
   end_date: string;
   active: boolean;
 }
+
+type AssistedPeriodModel = Exclude<PeriodModel, 'CUSTOM'> | 'CUSTOM';
 
 const emptyAcademicYearDraft: AcademicYearDraft = {
   name: '',
@@ -67,20 +94,7 @@ const emptyTermDraft: TermDraft = {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function formatDate(value: string): string {
@@ -93,6 +107,20 @@ function formatDate(value: string): string {
   return `${day}/${month}/${year}`;
 }
 
+function formatPeriodName(value: string): string {
+  const match = value.match(
+    /^(\d+)\s*(?:º|°|o)?\s+(bimestre|trimestre|semestre|per[ií]odo)$/i,
+  );
+
+  if (!match) {
+    return value;
+  }
+
+  const unit = match[2].toLowerCase();
+
+  return `${match[1]}º ${unit.charAt(0).toUpperCase()}${unit.slice(1)}`;
+}
+
 function isCurrentRange(
   startDate: string,
   endDate: string,
@@ -102,24 +130,6 @@ function isCurrentRange(
     .slice(0, 10);
 
   return startDate <= today && today <= endDate;
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
 }
 
 export default function AcademicYearsTab() {
@@ -137,8 +147,17 @@ export default function AcademicYearsTab() {
   const createYearMutation =
     useCreateAcademicYear();
 
+  const createYearWithTermsMutation =
+    useCreateAcademicYearWithTerms();
+
+  const copyPreviousYearMutation =
+    useCopyPreviousYear();
+
   const updateYearMutation =
     useUpdateAcademicYear();
+
+  const deleteYearMutation =
+    useDeleteAcademicYear();
 
   const yearStatusMutation =
     useSetAcademicYearActive();
@@ -147,6 +166,17 @@ export default function AcademicYearsTab() {
   const updateTermMutation = useUpdateTerm();
   const termStatusMutation =
     useSetTermActive();
+
+  const [periodModel, setPeriodModel] =
+    useState<AssistedPeriodModel>('BIMESTERS_4');
+  const [periodDrafts, setPeriodDrafts] =
+    useState<PeriodDraft[]>([]);
+  const [sourceYearId, setSourceYearId] =
+    useState('');
+  const [copyTeachers, setCopyTeachers] =
+    useState(false);
+  const [copyRooms, setCopyRooms] =
+    useState(true);
 
   const [
     selectedYearId,
@@ -200,7 +230,28 @@ export default function AcademicYearsTab() {
     setFeedbackMessage,
   ] = useState<string | null>(null);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [isYearSubmitting, setIsYearSubmitting] =
+    useState(false);
+  const yearSubmitLockRef = useRef(false);
+
   const years = yearsQuery.data ?? [];
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const syncViewport = () => setIsMobile(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener?.('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener?.('change', syncViewport);
+    };
+  }, []);
 
   useEffect(() => {
     if (
@@ -209,7 +260,11 @@ export default function AcademicYearsTab() {
         (year) => year.id === selectedYearId,
       )
     ) {
-      setSelectedYearId(years[0]?.id ?? '');
+      setSelectedYearId(
+        getPreferredAcademicYear(years)?.id ??
+          years[0]?.id ??
+          '',
+      );
     }
   }, [selectedYearId, years]);
 
@@ -221,8 +276,15 @@ export default function AcademicYearsTab() {
     [selectedYearId, years],
   );
 
+  const isYearBusy =
+    isYearSubmitting ||
+    deleteYearMutation.isPending;
+
   const isSubmitting =
+    isYearBusy ||
     createYearMutation.isPending ||
+    createYearWithTermsMutation.isPending ||
+    copyPreviousYearMutation.isPending ||
     updateYearMutation.isPending ||
     createTermMutation.isPending ||
     updateTermMutation.isPending;
@@ -282,6 +344,11 @@ export default function AcademicYearsTab() {
     setYearDraft({
       ...emptyAcademicYearDraft,
     });
+    setPeriodModel('BIMESTERS_4');
+    setPeriodDrafts([]);
+    setSourceYearId('');
+    setCopyTeachers(false);
+    setCopyRooms(true);
     setIsYearModalOpen(true);
   }
 
@@ -296,6 +363,7 @@ export default function AcademicYearsTab() {
       end_date: year.end_date,
       active: year.active,
     });
+    setPeriodDrafts([]);
     setIsYearModalOpen(true);
   }
 
@@ -312,7 +380,7 @@ export default function AcademicYearsTab() {
     resetMessages();
     setEditingTerm(term);
     setTermDraft({
-      name: term.name,
+      name: formatPeriodName(term.name),
       start_date: term.start_date,
       end_date: term.end_date,
       active: term.active,
@@ -331,21 +399,46 @@ export default function AcademicYearsTab() {
     setTermDraft({
       ...emptyTermDraft,
     });
+    setPeriodDrafts([]);
     setModalError(null);
+  }
+
+  function suggestAssistedPeriods(): void {
+    if (!yearDraft.start_date || !yearDraft.end_date || periodModel === 'CUSTOM') {
+      return;
+    }
+    try {
+      setPeriodDrafts(suggestPeriods(yearDraft.start_date, yearDraft.end_date, periodModel));
+      setModalError(null);
+    } catch (error) {
+      setModalError(getErrorMessage(error));
+    }
   }
 
   async function handleYearSubmit(
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
     event.preventDefault();
-    setModalError(null);
+
+    if (
+      isYearSubmitting ||
+      yearSubmitLockRef.current
+    ) {
+      return;
+    }
+
+    yearSubmitLockRef.current = true;
 
     if (!institutionId) {
+      yearSubmitLockRef.current = false;
       setModalError(
         'A instituição não foi carregada.',
       );
       return;
     }
+
+    setIsYearSubmitting(true);
+    setModalError(null);
 
     try {
       if (editingYear) {
@@ -388,12 +481,24 @@ export default function AcademicYearsTab() {
           return;
         }
 
-        await createYearMutation.mutateAsync(
-          result.data,
-        );
+        const created = periodDrafts.length > 0
+          ? await createYearWithTermsMutation.mutateAsync({ ...result.data, periods: periodDrafts })
+          : await createYearMutation.mutateAsync(result.data).then((year) => ({ year_id: year.id, term_count: 0 }));
+
+        if (sourceYearId) {
+          await copyPreviousYearMutation.mutateAsync({
+            institution_id: institutionId,
+            source_year_id: sourceYearId,
+            target_year_id: created.year_id,
+            copy_teachers: copyTeachers,
+            copy_rooms: copyRooms,
+          });
+        }
 
         setFeedbackMessage(
-          'Ano letivo criado com sucesso.',
+          periodDrafts.length > 0
+            ? `Ano letivo criado com ${created.term_count} período(s).`
+            : 'Ano letivo criado com sucesso.',
         );
       }
 
@@ -402,6 +507,51 @@ export default function AcademicYearsTab() {
       setModalError(
         getErrorMessage(error),
       );
+    } finally {
+      yearSubmitLockRef.current = false;
+      setIsYearSubmitting(false);
+    }
+  }
+
+  async function handleDeleteYear(
+    year: AcademicYearRow | null = editingYear,
+  ): Promise<void> {
+    if (!year || !institutionId || deleteYearMutation.isPending) {
+      return;
+    }
+
+    if (
+      !window.confirm(
+        `Excluir o ano letivo ${year.name}? Esta ação não pode ser desfeita.`,
+      )
+    ) {
+      return;
+    }
+
+    setModalError(null);
+    setPageError(null);
+    setFeedbackMessage(null);
+
+    try {
+      await deleteYearMutation.mutateAsync({
+        id: year.id,
+        institutionId,
+      });
+
+      setFeedbackMessage(
+        'Ano letivo excluído com sucesso.',
+      );
+      if (editingYear?.id === year.id) {
+        closeModals();
+      }
+    } catch (error) {
+      const message = getErrorMessage(error);
+
+      if (editingYear?.id === year.id) {
+        setModalError(message);
+      } else {
+        setPageError(message);
+      }
     }
   }
 
@@ -528,7 +678,7 @@ export default function AcademicYearsTab() {
 
     if (
       !window.confirm(
-        `Deseja ${action} o período ${term.name}?`,
+        `Deseja ${action} o período ${formatPeriodName(term.name)}?`,
       )
     ) {
       return;
@@ -606,61 +756,107 @@ export default function AcademicYearsTab() {
         isLoading={yearsQuery.isLoading}
         onAdd={openCreateYearModal}
         emptyMessage="Nenhum ano letivo cadastrado nesta instituição."
+        actionCellClassName="min-w-[160px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         renderActions={(year) => {
           const isChangingStatus =
             yearStatusMutation.isPending &&
             yearStatusMutation.variables?.id ===
               year.id;
+          const isRemoving =
+            deleteYearMutation.isPending &&
+            deleteYearMutation.variables?.id ===
+              year.id;
+
+          const isSelected = year.id === selectedYearId;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={() =>
-                  setSelectedYearId(year.id)
-                }
-                className="font-medium text-[#005bbf] hover:text-[#1a73e8]"
-              >
-                Períodos
-              </button>
+            <>
+              {years.length > 1 && (
+                <button
+                  type="button"
+                  aria-pressed={isSelected}
+                  aria-controls="academic-periods"
+                  aria-label={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
+                  onClick={() =>
+                    setSelectedYearId(year.id)
+                  }
+                  title={`${isSelected ? 'Períodos selecionados de' : 'Ver períodos de'} ${year.name}`}
+                  className={`inline-flex h-9 w-9 items-center justify-center rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
+                    isSelected
+                      ? 'border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-800 dark:bg-slate-700 dark:text-blue-300'
+                      : 'border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700'
+                  }`}
+                >
+                  <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
 
               <button
                 type="button"
                 onClick={() =>
                   openEditYearModal(year)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar ano letivo ${year.name}`}
+                aria-label={`Editar ano letivo ${year.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
                 type="button"
-                disabled={isChangingStatus}
+                disabled={isChangingStatus || isRemoving}
                 onClick={() =>
                   void handleYearStatus(year)
                 }
+                title={`${year.active ? 'Desativar' : 'Reativar'} ano letivo ${year.name}`}
+                aria-label={`${year.active ? 'Desativar' : 'Reativar'} ano letivo ${year.name}`}
                 className={
                   year.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : year.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : year.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+
+              <button
+                type="button"
+                disabled={isRemoving || isChangingStatus}
+                onClick={() => void handleDeleteYear(year)}
+                title={`Remover ano letivo ${year.name}`}
+                aria-label={`Remover ano letivo ${year.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+              >
+                {isRemoving ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : (
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                )}
+              </button>
+            </>
           );
         }}
       />
 
-      <section className="rounded-xl border border-[#dfe3e8] bg-white shadow">
-        <div className="flex flex-col gap-3 border-b p-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="font-bold text-[#181c20]">
+      <section
+        id="academic-periods"
+        aria-labelledby="academic-periods-title"
+        className="min-w-0 rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700"
+      >
+        <div className="flex flex-col gap-3 border-b border-[#dfe3e8] p-4 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <h3
+              id="academic-periods-title"
+              className="font-bold text-[#181c20]"
+            >
               Períodos
             </h3>
 
@@ -675,14 +871,15 @@ export default function AcademicYearsTab() {
             type="button"
             onClick={openCreateTermModal}
             disabled={!selectedYear}
-            className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           >
             + Novo período
           </button>
         </div>
 
         {selectedYear ? (
-          <div className="overflow-x-auto">
+          <>
+            {!isMobile && <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="bg-gray-50">
                 <tr>
@@ -724,12 +921,12 @@ export default function AcademicYearsTab() {
                     return (
                       <tr
                         key={term.id}
-                        className="border-t hover:bg-gray-50"
+                        className="border-t border-[#dfe3e8] hover:bg-gray-50 dark:border-slate-700"
                       >
                         <td className="px-4 py-3">
                           <div>
                             <p className="font-semibold text-[#181c20]">
-                              {term.name}
+                              {formatPeriodName(term.name)}
                             </p>
 
                             {term.active &&
@@ -757,15 +954,17 @@ export default function AcademicYearsTab() {
                           />
                         </td>
                         <td className="px-4 py-3">
-                          <div className="flex flex-wrap items-center gap-3">
+                          <ActionGroup className="md:flex-nowrap">
                             <button
                               type="button"
                               onClick={() =>
                                 openEditTermModal(term)
                               }
-                              className="font-medium text-blue-600 hover:text-blue-800"
+                              title={`Editar ${formatPeriodName(term.name)}`}
+                              aria-label={`Editar ${formatPeriodName(term.name)}`}
+                              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                             >
-                              Editar
+                              <Edit3 className="h-4 w-4" aria-hidden="true" />
                             </button>
 
                             <button
@@ -778,19 +977,23 @@ export default function AcademicYearsTab() {
                                   term,
                                 )
                               }
+                              title={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                              aria-label={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
                               className={
                                 term.active
-                                  ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                                  : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                                  ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                                  : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                               }
                             >
-                              {isChangingStatus
-                                ? 'Salvando...'
-                                : term.active
-                                  ? 'Desativar'
-                                  : 'Reativar'}
+                              {isChangingStatus ? (
+                                <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                              ) : term.active ? (
+                                <PowerOff className="h-4 w-4" aria-hidden="true" />
+                              ) : (
+                                <Power className="h-4 w-4" aria-hidden="true" />
+                              )}
                             </button>
-                          </div>
+                          </ActionGroup>
                         </td>
                       </tr>
                     );
@@ -798,7 +1001,108 @@ export default function AcademicYearsTab() {
                 )}
               </tbody>
             </table>
-          </div>
+            </div>}
+
+            {isMobile && <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
+            {selectedYear.terms.length === 0 ? (
+              <div className="px-4 py-8 text-center text-sm text-gray-500">
+                Nenhum período cadastrado para este ano letivo.
+              </div>
+            ) : (
+              selectedYear.terms.map((term) => {
+                const isChangingStatus =
+                  termStatusMutation.isPending &&
+                  termStatusMutation.variables?.id === term.id;
+
+                return (
+                  <article key={term.id} className="space-y-4 p-4">
+                    <dl className="grid gap-3 text-sm">
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Período
+                        </dt>
+                        <dd className="mt-1 break-words font-semibold text-[#181c20]">
+                          {formatPeriodName(term.name)}
+                          {term.active &&
+                            isCurrentRange(
+                              term.start_date,
+                              term.end_date,
+                            ) && (
+                              <span className="ml-2 text-xs font-medium text-[#005bbf]">
+                                Período atual
+                              </span>
+                            )}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Início
+                        </dt>
+                        <dd className="mt-1 text-[#181c20]">
+                          {formatDate(term.start_date)}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Fim
+                        </dt>
+                        <dd className="mt-1 text-[#181c20]">
+                          {formatDate(term.end_date)}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                          Status
+                        </dt>
+                        <dd className="mt-1">
+                          <StatusBadge active={term.active} />
+                        </dd>
+                      </div>
+                    </dl>
+
+                    <div className="border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">
+                        Ações
+                      </p>
+                      <ActionGroup className="md:flex-nowrap">
+                        <button
+                          type="button"
+                          onClick={() => openEditTermModal(term)}
+                          title={`Editar ${formatPeriodName(term.name)}`}
+                          aria-label={`Editar ${formatPeriodName(term.name)}`}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
+                        >
+                          <Edit3 className="h-4 w-4" aria-hidden="true" />
+                        </button>
+
+                        <button
+                          type="button"
+                          disabled={isChangingStatus}
+                          onClick={() => void handleTermStatus(term)}
+                          title={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                          aria-label={`${term.active ? 'Desativar' : 'Reativar'} ${formatPeriodName(term.name)}`}
+                          className={
+                            term.active
+                              ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                              : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
+                          }
+                        >
+                          {isChangingStatus ? (
+                            <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                          ) : term.active ? (
+                            <PowerOff className="h-4 w-4" aria-hidden="true" />
+                          ) : (
+                            <Power className="h-4 w-4" aria-hidden="true" />
+                          )}
+                        </button>
+                      </ActionGroup>
+                    </div>
+                  </article>
+                );
+              })
+            )}
+            </div>}
+          </>
         ) : (
           <div className="p-8 text-center text-sm text-gray-500">
             Cadastre um ano letivo para criar períodos.
@@ -813,7 +1117,7 @@ export default function AcademicYearsTab() {
           aria-modal="true"
           aria-labelledby="academic-year-modal-title"
         >
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+          <div className="max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
             <h3
               id="academic-year-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
@@ -835,6 +1139,40 @@ export default function AcademicYearsTab() {
                   className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
                 >
                   {modalError}
+                </div>
+              )}
+
+              {isYearBusy && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="rounded-lg border border-blue-200 bg-blue-50 px-3 py-3 text-sm text-blue-800"
+                >
+                  <div className="flex items-center gap-2 font-semibold">
+                    <LoaderCircle
+                      className="h-4 w-4 animate-spin"
+                      aria-hidden="true"
+                    />
+                    {deleteYearMutation.isPending
+                      ? 'Excluindo ano letivo...'
+                      : editingYear
+                        ? 'Salvando alterações...'
+                        : 'Criando ano letivo...'}
+                  </div>
+                  <div
+                    role="progressbar"
+                    aria-label={
+                      deleteYearMutation.isPending
+                        ? 'Excluindo ano letivo'
+                        : 'Salvando ano letivo'
+                    }
+                    className="mt-2 h-2 overflow-hidden rounded-full bg-blue-100"
+                  >
+                    <div className="h-full w-1/3 animate-pulse rounded-full bg-[#005bbf]" />
+                  </div>
+                  <p className="mt-2 text-xs">
+                    Aguarde a conclusão para evitar o envio duplicado.
+                  </p>
                 </div>
               )}
 
@@ -928,25 +1266,117 @@ export default function AcademicYearsTab() {
                 Ativo
               </label>
 
-              <div className="flex justify-end gap-2 pt-2">
-                <button
-                  type="button"
-                  onClick={closeModals}
-                  disabled={isSubmitting}
-                  className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
-                >
-                  Cancelar
-                </button>
+              {!editingYear && (
+                <>
+                  <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:items-end">
+                      <div className="flex-1">
+                        <label htmlFor="academic-period-model" className="block text-sm font-medium text-gray-700">Modelo de períodos</label>
+                        <select id="academic-period-model" value={periodModel} onChange={(event) => { setPeriodModel(event.target.value as AssistedPeriodModel); setPeriodDrafts([]); }} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
+                          <option value="BIMESTERS_4">4 bimestres</option>
+                          <option value="TRIMESTERS_3">3 trimestres</option>
+                          <option value="SEMESTERS_2">2 semestres</option>
+                          <option value="CUSTOM">Personalizado</option>
+                        </select>
+                      </div>
+                      <button type="button" onClick={suggestAssistedPeriods} disabled={periodModel === 'CUSTOM' || !yearDraft.start_date || !yearDraft.end_date} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700 disabled:opacity-50">Sugerir períodos</button>
+                      {periodModel === 'CUSTOM' && <button type="button" onClick={() => setPeriodDrafts((current) => [...current, { name: `${current.length + 1}º Período`, start_date: yearDraft.start_date, end_date: yearDraft.end_date, active: true }])} className="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-medium text-blue-700">Adicionar período</button>}
+                    </div>
+                    <p className="mt-2 text-xs text-blue-800">As datas são apenas uma sugestão e podem ser revisadas antes de salvar.</p>
+                  </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {isSubmitting
-                    ? 'Salvando...'
-                    : 'Salvar'}
-                </button>
+                  {periodDrafts.length > 0 && (
+                    <div className="space-y-3 rounded-lg border border-gray-200 bg-gray-50/50 p-3">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="text-sm font-semibold text-gray-700">Revise os períodos</p>
+                        <span className="text-xs font-medium text-gray-500">{periodDrafts.length} períodos</span>
+                      </div>
+                      <div className="hidden grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] gap-2 px-1 text-xs font-semibold uppercase tracking-wide text-gray-500 sm:grid">
+                        <span>Período</span>
+                        <span>Início</span>
+                        <span>Fim</span>
+                        {periodModel === 'CUSTOM' && <span className="sr-only">Ações</span>}
+                      </div>
+                      {periodDrafts.map((period, index) => (
+                        <div key={`${period.name}-${index}`} className="grid min-w-0 gap-2 rounded-lg border border-gray-200 bg-white p-2 sm:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,1fr)_auto] sm:border-0 sm:bg-transparent sm:p-0">
+                          <label className="min-w-0">
+                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Período</span>
+                            <input aria-label={`Nome do período ${index + 1}`} value={period.name} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, name: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                          </label>
+                          <label className="min-w-0">
+                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Início</span>
+                            <input aria-label={`Início do período ${index + 1}`} type="date" value={period.start_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, start_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                          </label>
+                          <label className="min-w-0">
+                            <span className="mb-1 block text-xs font-medium text-gray-600 sm:sr-only">Fim</span>
+                            <input aria-label={`Fim do período ${index + 1}`} type="date" value={period.end_date} min={yearDraft.start_date} max={yearDraft.end_date} onChange={(event) => setPeriodDrafts((current) => current.map((item, itemIndex) => itemIndex === index ? { ...item, end_date: event.target.value } : item))} className="min-w-0 w-full rounded-lg border px-3 py-2 text-sm" />
+                          </label>
+                          {periodModel === 'CUSTOM' && (
+                            <button
+                              type="button"
+                              title={`Remover período ${index + 1}`}
+                              aria-label={`Remover período ${index + 1}`}
+                              onClick={() => setPeriodDrafts((current) => current.filter((_item, itemIndex) => itemIndex !== index))}
+                              className="inline-flex h-9 w-9 self-end items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 sm:self-stretch dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+                            >
+                              <Trash2 className="h-4 w-4" aria-hidden="true" />
+                            </button>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="rounded-lg border p-3">
+                    <label htmlFor="academic-source-year" className="block text-sm font-medium text-gray-700">Usar ano anterior como modelo (opcional)</label>
+                    <select id="academic-source-year" value={sourceYearId} onChange={(event) => setSourceYearId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 text-sm">
+                      <option value="">Criar do zero</option>
+                      {years.filter((year) => year.id !== editingYear?.id).map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}
+                    </select>
+                    {sourceYearId && <div className="mt-2 space-y-2 text-xs text-gray-600">
+                      <label className="flex items-center gap-2"><input type="checkbox" checked readOnly /> Estrutura das turmas e matriz curricular</label>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyRooms} onChange={(event) => setCopyRooms(event.target.checked)} /> Salas e horários padrão</label>
+                      <label className="flex items-center gap-2"><input type="checkbox" checked={copyTeachers} onChange={(event) => setCopyTeachers(event.target.checked)} /> Atribuições de professores qualificadas (sugestão)</label>
+                      <p>Alunos, matrículas, notas e frequência nunca são copiados.</p>
+                    </div>}
+                  </div>
+                </>
+              )}
+
+              <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  {editingYear && (
+                    <button
+                      type="button"
+                      onClick={() => void handleDeleteYear()}
+                      disabled={isSubmitting}
+                      className="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      Excluir ano letivo
+                    </button>
+                  )}
+                </div>
+
+                <div className="flex justify-end gap-2">
+                  <button
+                    type="button"
+                    onClick={closeModals}
+                    disabled={isSubmitting}
+                    className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+                  >
+                    Cancelar
+                  </button>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isSubmitting
+                      ? 'Salvando...'
+                      : 'Salvar'}
+                  </button>
+                </div>
               </div>
             </form>
           </div>

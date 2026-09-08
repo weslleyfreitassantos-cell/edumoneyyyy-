@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 import {
   classSchema,
@@ -61,6 +62,14 @@ export interface ClassRow {
   updated_at?: string;
 }
 
+export interface ClassDeletionImpact {
+  enrollmentCount: number;
+  offeringCount: number;
+  curriculumItemCount: number;
+  timetableVersionEntryCount: number;
+  totalLinkedRecords: number;
+}
+
 function normalizeRelation<T>(
   relation: T | T[] | null,
 ): T | null {
@@ -73,6 +82,34 @@ function normalizeRelation<T>(
 
 function normalizeName(value: string): string {
   return value.trim().toLocaleLowerCase('pt-BR');
+}
+
+export function buildClassDeletionBlockedMessage(
+  impact: ClassDeletionImpact,
+): string | null {
+  const details: string[] = [];
+
+  if (impact.enrollmentCount > 0) {
+    details.push(`${impact.enrollmentCount} matrícula(s) de aluno`);
+  }
+
+  if (impact.offeringCount > 0) {
+    details.push(`${impact.offeringCount} oferta(s) de disciplina`);
+  }
+
+  if (impact.curriculumItemCount > 0) {
+    details.push(`${impact.curriculumItemCount} item(ns) de matriz`);
+  }
+
+  if (impact.timetableVersionEntryCount > 0) {
+    details.push(`${impact.timetableVersionEntryCount} entrada(s) de grade`);
+  }
+
+  if (details.length === 0) {
+    return null;
+  }
+
+  return `Esta turma possui ${details.join(', ')} vinculada(s). A exclusão física está bloqueada para preservar o histórico. Use "Desativar" para mantê-lo.`;
 }
 
 async function assertAcademicYearBelongsToInstitution(
@@ -311,6 +348,12 @@ export const classService = {
       data.institution_id,
     );
 
+    const normalizedShift =
+      await academicShiftSettingsService.assertShiftEnabled(
+        data.institution_id,
+        data.shift,
+      );
+
     await assertUniqueClassName(
       data.institution_id,
       data.academic_year_id,
@@ -322,7 +365,7 @@ export const classService = {
       .insert({
         ...data,
         grade_level: data.grade_level ?? null,
-        shift: data.shift ?? null,
+        shift: normalizedShift,
       })
       .select(
         `
@@ -367,6 +410,12 @@ export const classService = {
       institutionId,
     );
 
+    const normalizedShift =
+      await academicShiftSettingsService.assertShiftEnabled(
+        institutionId,
+        data.shift,
+      );
+
     await assertUniqueClassName(
       institutionId,
       data.academic_year_id,
@@ -379,7 +428,7 @@ export const classService = {
       .update({
         ...data,
         grade_level: data.grade_level ?? null,
-        shift: data.shift ?? null,
+        shift: normalizedShift,
       })
       .eq('id', id)
       .eq('institution_id', institutionId);
@@ -401,6 +450,84 @@ export const classService = {
       .eq('institution_id', institutionId);
 
     if (error) {
+      throw error;
+    }
+  },
+
+  async getDeletionImpact(
+    classId: string,
+    institutionId: string,
+  ): Promise<ClassDeletionImpact> {
+    const [enrollmentsResult, offeringsResult, curriculumResult, timetableVersionEntriesResult] = await Promise.all([
+      supabase
+        .from('enrollments')
+        .select('id', { count: 'exact', head: true })
+        .eq('class_id', classId),
+      supabase
+        .from('subject_offerings')
+        .select('id', { count: 'exact', head: true })
+        .eq('class_id', classId),
+      supabase
+        .from('class_curriculum_items')
+        .select('id', { count: 'exact', head: true })
+        .eq('class_id', classId)
+        .eq('institution_id', institutionId),
+      supabase
+        .from('timetable_version_entries')
+        .select('id', { count: 'exact', head: true })
+        .eq('class_id', classId)
+        .eq('institution_id', institutionId),
+    ]);
+
+    const error = enrollmentsResult.error ??
+      offeringsResult.error ??
+      curriculumResult.error ??
+      timetableVersionEntriesResult.error;
+
+    if (error) {
+      throw error;
+    }
+
+    const impact: ClassDeletionImpact = {
+      enrollmentCount: enrollmentsResult.count ?? 0,
+      offeringCount: offeringsResult.count ?? 0,
+      curriculumItemCount: curriculumResult.count ?? 0,
+      timetableVersionEntryCount: timetableVersionEntriesResult.count ?? 0,
+      totalLinkedRecords: 0,
+    };
+
+    impact.totalLinkedRecords = impact.enrollmentCount +
+      impact.offeringCount +
+      impact.curriculumItemCount +
+      impact.timetableVersionEntryCount;
+
+    return impact;
+  },
+
+  async delete(
+    classId: string,
+    institutionId: string,
+  ): Promise<void> {
+    const impact = await this.getDeletionImpact(classId, institutionId);
+    const blockedMessage = buildClassDeletionBlockedMessage(impact);
+
+    if (blockedMessage) {
+      throw new Error(blockedMessage);
+    }
+
+    const { error } = await supabase
+      .from('classes')
+      .delete()
+      .eq('id', classId)
+      .eq('institution_id', institutionId);
+
+    if (error) {
+      if (error.code === '23503') {
+        throw new Error(
+          'Esta turma possui dados vinculados. Desative-a para preservar o histórico.',
+        );
+      }
+
       throw error;
     }
   },

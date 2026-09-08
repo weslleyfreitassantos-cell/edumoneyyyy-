@@ -14,6 +14,7 @@ import type {
 
 export interface SchoolUserInviteResponse {
   success: true;
+  accessCreated: boolean;
   userId: string;
   profileId: string;
   membershipId?: string;
@@ -27,6 +28,7 @@ export interface SchoolUserInviteResponse {
     id: string;
   };
   invitationSent: boolean;
+  emailPending: boolean;
   reusedExistingUser: boolean;
   message: string;
 }
@@ -81,11 +83,13 @@ function isInviteResponse(
   return (
     isRecord(value) &&
     value.success === true &&
+    typeof value.accessCreated === 'boolean' &&
     typeof value.userId === 'string' &&
     typeof value.profileId === 'string' &&
     typeof value.role === 'string' &&
     typeof value.email === 'string' &&
     typeof value.invitationSent === 'boolean' &&
+    typeof value.emailPending === 'boolean' &&
     typeof value.reusedExistingUser === 'boolean' &&
     typeof value.message === 'string'
   );
@@ -139,14 +143,14 @@ async function getFunctionError(
 
   if (error instanceof FunctionsRelayError) {
     return new SchoolUserInviteServiceError(
-      'A funcao de convite esta temporariamente indisponivel.',
+      'A funcao de acesso esta temporariamente indisponivel.',
       'FUNCTION_RELAY_ERROR',
     );
   }
 
   if (error instanceof FunctionsFetchError) {
     return new SchoolUserInviteServiceError(
-      'Nao foi possivel conectar a funcao de convite.',
+      'Nao foi possivel conectar a funcao de acesso.',
       'FUNCTION_FETCH_ERROR',
     );
   }
@@ -159,7 +163,7 @@ async function getFunctionError(
   }
 
   return new SchoolUserInviteServiceError(
-    'Nao foi possivel enviar o convite.',
+    'Nao foi possivel criar e enviar o acesso.',
     'UNKNOWN_ERROR',
   );
 }

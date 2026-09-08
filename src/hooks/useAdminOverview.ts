@@ -5,6 +5,8 @@ import {
   type AdminOverviewData,
 } from '../services/adminOverviewService';
 
+export const ADMIN_OVERVIEW_STALE_TIME = 30_000;
+
 export const adminOverviewKeys = {
   all: ['admin-overview'] as const,
 
@@ -30,5 +32,8 @@ export function useAdminOverview(
       ),
 
     enabled: Boolean(institutionId),
+    staleTime: ADMIN_OVERVIEW_STALE_TIME,
+    // Keep the previous metrics visible while a refreshed institution query runs.
+    placeholderData: (previous) => previous,
   });
 }

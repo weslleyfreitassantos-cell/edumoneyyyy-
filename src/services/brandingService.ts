@@ -1,5 +1,9 @@
 import { supabase } from '../lib/supabaseClient';
 import {
+  classifyHostname,
+  type HostResolution,
+} from '../lib/subdomain';
+import {
   DEFAULT_BRAND_PRIMARY_COLOR,
   DEFAULT_BRAND_SECONDARY_COLOR,
   type AllowedBrandingMimeType,
@@ -17,7 +21,7 @@ import {
 export const BRANDING_BUCKET = 'institution-branding';
 
 export type BrandingScope = 'GLOBAL' | 'ACCOUNT';
-export type PublicBrandingScope = BrandingScope | 'FALLBACK';
+export type PublicBrandingScope = BrandingScope | 'INSTITUTION' | 'FALLBACK';
 export type AccountDomainStatus = 'PENDING' | 'ACTIVE' | 'DISABLED';
 
 export interface PublicBranding {
@@ -66,6 +70,17 @@ interface PublicBrandingRow {
   display_name?: unknown;
   logo_path?: unknown;
   favicon_path?: unknown;
+  primary_color?: unknown;
+  secondary_color?: unknown;
+}
+
+interface PublicInstitutionBrandingRow {
+  id?: unknown;
+  name?: unknown;
+  subdomain?: unknown;
+  login_display_name?: unknown;
+  logo_url?: unknown;
+  favicon_url?: unknown;
   primary_color?: unknown;
   secondary_color?: unknown;
 }
@@ -234,6 +249,61 @@ function normalizePublicBrandingRow(
       DEFAULT_BRAND_SECONDARY_COLOR,
     ),
   };
+}
+
+function normalizePublicInstitutionBrandingRow(
+  row: PublicInstitutionBrandingRow,
+): PublicBranding {
+  return {
+    scope: 'INSTITUTION',
+    displayName:
+      typeof row.login_display_name === 'string' &&
+      row.login_display_name.trim()
+        ? row.login_display_name
+        : typeof row.name === 'string'
+          ? row.name
+          : null,
+    logoUrl:
+      typeof row.logo_url === 'string' ? row.logo_url : null,
+    faviconUrl:
+      typeof row.favicon_url === 'string'
+        ? row.favicon_url
+        : null,
+    primaryColor: sanitizeBrandColor(
+      typeof row.primary_color === 'string'
+        ? row.primary_color
+        : null,
+      DEFAULT_BRAND_PRIMARY_COLOR,
+    ),
+    secondaryColor: sanitizeBrandColor(
+      typeof row.secondary_color === 'string'
+        ? row.secondary_color
+        : null,
+      DEFAULT_BRAND_SECONDARY_COLOR,
+    ),
+  };
+}
+
+async function resolveInstitutionBranding(
+  resolution: Extract<HostResolution, { type: 'institution' }>,
+): Promise<PublicBranding> {
+  const { data, error } = await supabase.rpc(
+    'resolve_public_institution_by_subdomain',
+    {
+      target_subdomain: resolution.subdomain,
+    },
+  );
+
+  if (error) {
+    return FALLBACK_BRANDING;
+  }
+
+  const rows = Array.isArray(data) ? data : data ? [data] : [];
+  const row = rows[0] as PublicInstitutionBrandingRow | undefined;
+
+  return row?.id
+    ? normalizePublicInstitutionBrandingRow(row)
+    : FALLBACK_BRANDING;
 }
 
 function normalizeBrandingRecord(
@@ -622,6 +692,11 @@ async function uploadBrandingAsset({
 export const brandingService = {
   async resolveForHostname(hostname: string): Promise<PublicBranding> {
     const normalizedHostname = normalizeHostnameValue(hostname);
+    const resolution = classifyHostname(normalizedHostname);
+
+    if (resolution.type === 'institution') {
+      return resolveInstitutionBranding(resolution);
+    }
 
     try {
       const { data, error } = await supabase.rpc(

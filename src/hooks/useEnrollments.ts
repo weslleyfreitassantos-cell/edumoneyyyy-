@@ -6,6 +6,7 @@ import {
 
 import { adminOverviewKeys } from './useAdminOverview';
 import { classKeys } from './useClasses';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 import {
   enrollmentService,
@@ -14,6 +15,7 @@ import {
 
 import type {
   EnrollmentFormData,
+  EnrollmentUpdateData,
   EnrollmentStatusUpdateData,
   EnrollmentTransferData,
 } from '../schemas/adminSchemas';
@@ -56,6 +58,7 @@ function invalidateEnrollments(
     queryClient.invalidateQueries({
       queryKey: ['teacher-dashboard'],
     }),
+    invalidateSchoolSetupReadiness(queryClient, institutionId),
   ]);
 }
 
@@ -100,6 +103,34 @@ export function useTransferEnrollment() {
       data: EnrollmentTransferData;
     }) =>
       enrollmentService.transfer(
+        institutionId,
+        data,
+      ),
+
+    onSuccess: async (_result, variables) => {
+      await invalidateEnrollments(
+        queryClient,
+        variables.institutionId,
+      );
+    },
+  });
+}
+
+export function useUpdateEnrollment() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({
+      id,
+      institutionId,
+      data,
+    }: {
+      id: string;
+      institutionId: string;
+      data: EnrollmentUpdateData;
+    }) =>
+      enrollmentService.update(
+        id,
         institutionId,
         data,
       ),

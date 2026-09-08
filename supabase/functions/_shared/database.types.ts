@@ -1,4 +1,4 @@
-﻿export type Json =
+export type Json =
   | string
   | number
   | boolean
@@ -14,6 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
+      platform_destructive_actions: {
+        Row: {
+          action_type: string
+          created_at: string
+          error_message: string | null
+          id: string
+          performed_by_profile_id: string | null
+          reason: string
+          result_status: string
+          summary: Json
+          target_account_id: string | null
+          target_account_name: string
+        }
+        Insert: {
+          action_type: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          performed_by_profile_id?: string | null
+          reason: string
+          result_status?: string
+          summary?: Json
+          target_account_id?: string | null
+          target_account_name: string
+        }
+        Update: {
+          action_type?: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          performed_by_profile_id?: string | null
+          reason?: string
+          result_status?: string
+          summary?: Json
+          target_account_id?: string | null
+          target_account_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "platform_destructive_actions_performed_by_profile_id_fkey"
+            columns: ["performed_by_profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      platform_security_events: {
+        Row: {
+          account_id: string
+          created_at: string
+          event_type: string
+          id: string
+          requester_profile_id: string
+          target_profile_id: string
+        }
+        Insert: {
+          account_id: string
+          created_at?: string
+          event_type: string
+          id?: string
+          requester_profile_id: string
+          target_profile_id: string
+        }
+        Update: {
+          account_id?: string
+          created_at?: string
+          event_type?: string
+          id?: string
+          requester_profile_id?: string
+          target_profile_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "platform_security_events_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "platform_security_events_requester_profile_id_fkey"
+            columns: ["requester_profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "platform_security_events_target_profile_id_fkey"
+            columns: ["target_profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       accounts: {
         Row: {
           created_at: string | null
@@ -46,6 +142,69 @@ export type Database = {
           {
             foreignKeyName: "accounts_owner_profile_id_fkey"
             columns: ["owner_profile_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      client_admin_invitations: {
+        Row: {
+          accepted_at: string | null
+          account_id: string
+          attempt_count: number
+          created_at: string
+          email: string
+          id: string
+          last_attempt_at: string | null
+          last_error_code: string | null
+          last_error_message: string | null
+          profile_id: string
+          sent_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          accepted_at?: string | null
+          account_id: string
+          attempt_count?: number
+          created_at?: string
+          email: string
+          id?: string
+          last_attempt_at?: string | null
+          last_error_code?: string | null
+          last_error_message?: string | null
+          profile_id: string
+          sent_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          accepted_at?: string | null
+          account_id?: string
+          attempt_count?: number
+          created_at?: string
+          email?: string
+          id?: string
+          last_attempt_at?: string | null
+          last_error_code?: string | null
+          last_error_message?: string | null
+          profile_id?: string
+          sent_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "client_admin_invitations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: true
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "client_admin_invitations_profile_id_fkey"
+            columns: ["profile_id"]
             isOneToOne: true
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -307,6 +466,12 @@ export type Database = {
           logo_url: string | null
           name: string
           phone: string | null
+          primary_color: string | null
+          secondary_color: string | null
+          subdomain: string | null
+          suspended_at: string | null
+          suspended_by_profile_id: string | null
+          suspended_by_scope: string | null
           updated_at: string | null
         }
         Insert: {
@@ -320,6 +485,12 @@ export type Database = {
           logo_url?: string | null
           name: string
           phone?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          subdomain?: string | null
+          suspended_at?: string | null
+          suspended_by_profile_id?: string | null
+          suspended_by_scope?: string | null
           updated_at?: string | null
         }
         Update: {
@@ -333,6 +504,12 @@ export type Database = {
           logo_url?: string | null
           name?: string
           phone?: string | null
+          primary_color?: string | null
+          secondary_color?: string | null
+          subdomain?: string | null
+          suspended_at?: string | null
+          suspended_by_profile_id?: string | null
+          suspended_by_scope?: string | null
           updated_at?: string | null
         }
         Relationships: [
@@ -784,6 +961,36 @@ export type Database = {
       }
     }
     Functions: {
+      mark_client_admin_invitation_accepted: {
+        Args: Record<PropertyKey, never>
+        Returns: boolean
+      }
+      hard_delete_client_account: {
+        Args: {
+          acknowledgement: boolean
+          actor_profile_id: string
+          change_reason: string
+          confirmation_email: string
+          confirmation_text: string
+          target_account_id: string
+        }
+        Returns: Json
+      }
+      restore_client_account: {
+        Args: {
+          actor_profile_id: string
+          change_reason?: string
+          target_account_id: string
+        }
+        Returns: {
+          account_id: string
+          audit_event_id: string | null
+          institution_limit: number
+          new_status: string
+          previous_status: string
+          status_changed: boolean
+        }[]
+      }
       can_view_institution_profile: {
         Args: { target_profile_id: string }
         Returns: boolean
@@ -792,9 +999,81 @@ export type Database = {
         Args: { target_institution_id: string }
         Returns: string
       }
+      accept_camera_gateway_request: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: boolean
+      }
       is_institution_admin: {
         Args: { target_institution_id: string }
         Returns: boolean
+      }
+      pair_camera_gateway_runtime: {
+        Args: { gateway_local_url: string; target_pairing_code: string }
+        Returns: {
+          gateway_id: string
+          institution_id: string
+          gateway_token: string
+          local_base_url: string | null
+          paired_at: string
+        }[]
+      }
+      heartbeat_camera_gateway_runtime: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: boolean
+      }
+      sync_camera_gateway_runtime: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: {
+          id: string
+          institution_id: string
+          name: string
+          host: string
+          port: number
+          protocol: "ONVIF" | "RTSP"
+          channel: number | null
+          stream_profile: "MAIN" | "SUB"
+          active: boolean
+        }[]
+      }
+      create_camera_stream_session: {
+        Args: { target_camera_id: string }
+        Returns: {
+          session_id: string
+          protocol: string
+          playback_url: string | null
+          expires_at: string
+        }[]
+      }
+      redeem_camera_stream_session: {
+        Args: {
+          target_gateway_id: string
+          target_gateway_token: string
+          target_session_id: string
+          target_session_token: string
+          target_request_id: string
+          target_request_expires_at: string
+        }
+        Returns: {
+          camera_id: string
+          institution_id: string
+          stream_path: string
+          expires_at: string
+        }[]
       }
     }
     Enums: {

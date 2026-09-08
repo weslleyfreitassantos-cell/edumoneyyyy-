@@ -1,6 +1,7 @@
 import type {
   SystemPermission,
 } from '../../lib/permissions';
+import type { CurrentDatabaseRole } from '../../lib/permissions';
 
 export type AdminModuleId =
   | 'overview'
@@ -10,6 +11,8 @@ export type AdminModuleId =
   | 'students'
   | 'teachers'
   | 'guardians'
+  | 'secretaries'
+  | 'email'
   | 'academic-years'
   | 'classes'
   | 'subjects'
@@ -18,13 +21,18 @@ export type AdminModuleId =
   | 'assignments'
   | 'term-closing'
   | 'academic-policies'
-  | 'timetable';
+  | 'timetable'
+  | 'rooms'
+  | 'finance'
+  | 'access';
 
 export type AdminNavigationGroupId =
   | 'start'
   | 'people'
-  | 'school-structure'
-  | 'academic-operation';
+  | 'academic-configuration'
+  | 'school-operation'
+  | 'communication-resources'
+  | 'administration';
 
 export interface AdminNavigationGroup {
   id: AdminNavigationGroupId;
@@ -37,6 +45,8 @@ export interface AdminModuleDefinition {
   groupId: AdminNavigationGroupId;
   permission: SystemPermission;
   href: string;
+  visibleInSidebar?: boolean;
+  allowedRoles?: CurrentDatabaseRole[];
 }
 
 export interface AdminModuleGroup
@@ -54,12 +64,20 @@ export const ADMIN_NAVIGATION_GROUPS: AdminNavigationGroup[] = [
     label: 'Pessoas',
   },
   {
-    id: 'school-structure',
-    label: 'Estrutura escolar',
+    id: 'academic-configuration',
+    label: 'Configuração acadêmica',
   },
   {
-    id: 'academic-operation',
-    label: 'Operação acadêmica',
+    id: 'school-operation',
+    label: 'Operação escolar',
+  },
+  {
+    id: 'communication-resources',
+    label: 'Comunicação e recursos',
+  },
+  {
+    id: 'administration',
+    label: 'Administração',
   },
 ];
 
@@ -106,79 +124,115 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     href: moduleHref('guardians'),
   },
   {
+    id: 'secretaries',
+    label: 'Secretaria',
+    groupId: 'people',
+    permission: 'manage_school_users',
+    href: moduleHref('secretaries'),
+  },
+  {
+    id: 'email',
+    label: 'E-mail',
+    groupId: 'communication-resources',
+    permission: 'send_school_email',
+    href: moduleHref('email'),
+  },
+  {
+    id: 'finance',
+    label: 'Financeiro',
+    groupId: 'administration',
+    permission: 'manage_finance',
+    href: moduleHref('finance'),
+  },
+  {
+    id: 'access',
+    label: 'Portaria',
+    groupId: 'administration',
+    permission: 'manage_finance',
+    href: moduleHref('access'),
+  },
+  {
     id: 'academic-years',
     label: 'Ano letivo',
-    groupId: 'school-structure',
+    groupId: 'academic-configuration',
     permission: 'manage_academic_structure',
     href: moduleHref('academic-years'),
   },
   {
     id: 'subjects',
     label: 'Disciplinas',
-    groupId: 'school-structure',
+    groupId: 'academic-configuration',
     permission: 'manage_academic_structure',
     href: moduleHref('subjects'),
   },
   {
     id: 'classes',
     label: 'Turmas',
-    groupId: 'school-structure',
+    groupId: 'academic-configuration',
     permission: 'manage_academic_structure',
     href: moduleHref('classes'),
   },
   {
+    id: 'rooms',
+    label: 'Salas',
+    groupId: 'academic-configuration',
+    permission: 'manage_academic_structure',
+    href: `${moduleHref('rooms')}&view=rooms`,
+  },
+  {
     id: 'curriculum',
     label: 'Matriz curricular',
-    groupId: 'school-structure',
+    groupId: 'academic-configuration',
     permission: 'manage_academic_structure',
     href: moduleHref('curriculum'),
   },
   {
     id: 'timetable',
     label: 'Grade horária',
-    groupId: 'school-structure',
+    groupId: 'academic-configuration',
     permission: 'manage_academic_structure',
     href: moduleHref('timetable'),
   },
   {
     id: 'enrollments',
     label: 'Matrículas',
-    groupId: 'school-structure',
+    groupId: 'people',
     permission: 'manage_enrollments',
     href: moduleHref('enrollments'),
+    visibleInSidebar: false,
   },
   {
     id: 'assignments',
     label: 'Atribuições',
-    groupId: 'school-structure',
+    groupId: 'school-operation',
     permission: 'manage_assignments',
     href: moduleHref('assignments'),
   },
   {
     id: 'attendance',
     label: 'Frequência',
-    groupId: 'academic-operation',
+    groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('attendance'),
   },
   {
     id: 'grades',
     label: 'Notas',
-    groupId: 'academic-operation',
+    groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('grades'),
   },
   {
     id: 'term-closing',
     label: 'Fechamento',
-    groupId: 'academic-operation',
+    groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('term-closing'),
   },
   {
     id: 'academic-policies',
     label: 'Política acadêmica',
-    groupId: 'academic-operation',
+    groupId: 'administration',
     permission: 'manage_academic_structure',
     href: moduleHref('academic-policies'),
   },
@@ -186,6 +240,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
 
 export const DEFAULT_ADMIN_MODULE_ID: AdminModuleId =
   'overview';
+
+export function isAdminModuleAvailable(
+  module: AdminModuleDefinition,
+  currentRole: string | null | undefined,
+): boolean {
+  if (!module.allowedRoles) return true;
+  return typeof currentRole === 'string' && module.allowedRoles.includes(currentRole as CurrentDatabaseRole);
+}
 
 export function isAdminModuleId(
   value: string | null | undefined,

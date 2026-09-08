@@ -1,0 +1,458 @@
+import { supabase } from '../lib/supabaseClient';
+import {
+  normalizeAcademicShift,
+} from '../lib/academic/academicShifts';
+import { buildDefaultTimeSlots } from '../lib/academic/timetableGenerator/automaticPreparation';
+import { academicShiftSettingsService } from './academicShiftSettingsService';
+
+export type PeriodModel = 'BIMESTERS_4' | 'TRIMESTERS_3' | 'SEMESTERS_2' | 'CUSTOM';
+
+export interface PeriodDraft {
+  name: string;
+  start_date: string;
+  end_date: string;
+  active: boolean;
+}
+
+export interface TeacherSubjectRow {
+  id: string;
+  institution_id: string;
+  teacher_profile_id: string;
+  subject_id: string;
+  primary_subject: boolean;
+  active: boolean;
+}
+
+export interface TeacherAvailabilityRow {
+  id: string;
+  institution_id: string;
+  teacher_profile_id: string;
+  day_of_week: number;
+  start_time: string;
+  end_time: string;
+  active: boolean;
+}
+
+export interface SchoolTimeSlotRow {
+  id: string;
+  institution_id: string;
+  shift: string;
+  day_of_week: number;
+  slot_number: number;
+  start_time: string;
+  end_time: string;
+  active: boolean;
+}
+
+export interface SchoolScheduleBreakRow {
+  id: string;
+  institution_id: string;
+  shift: string;
+  day_of_week: number;
+  name: string;
+  start_time: string;
+  end_time: string;
+  active: boolean;
+}
+
+export type SchoolScheduleBreakDraft = Pick<
+  SchoolScheduleBreakRow,
+  'day_of_week' | 'name' | 'start_time' | 'end_time'
+>;
+
+export type TeacherAvailabilityDraft = Pick<
+  TeacherAvailabilityRow,
+  'day_of_week' | 'start_time' | 'end_time'
+>;
+
+/**
+ * Converts the school's active lesson slots into editable teacher windows.
+ * Adjacent slots are merged while recesses and shift changes remain visible.
+ */
+export function suggestTeacherAvailabilityFromSchoolSlots(
+  slots: Array<Pick<SchoolTimeSlotRow, 'day_of_week' | 'start_time' | 'end_time' | 'active'>>,
+): TeacherAvailabilityDraft[] {
+  const normalized = slots
+    .filter((slot) => slot.active && slot.start_time.slice(0, 5) < slot.end_time.slice(0, 5))
+    .map((slot) => ({
+      day_of_week: slot.day_of_week,
+      start_time: slot.start_time.slice(0, 5),
+      end_time: slot.end_time.slice(0, 5),
+    }))
+    .sort((left, right) =>
+      left.day_of_week - right.day_of_week ||
+      left.start_time.localeCompare(right.start_time) ||
+      left.end_time.localeCompare(right.end_time),
+    );
+
+  const suggestions: TeacherAvailabilityDraft[] = [];
+  for (const window of normalized) {
+    const previous = suggestions[suggestions.length - 1];
+    if (
+      previous &&
+      previous.day_of_week === window.day_of_week &&
+      window.start_time <= previous.end_time
+    ) {
+      if (window.end_time > previous.end_time) previous.end_time = window.end_time;
+      continue;
+    }
+    suggestions.push({ ...window });
+  }
+
+  return suggestions;
+}
+
+function timeToMinutes(value: string): number {
+  const [hours, minutes] = value.slice(0, 5).split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function overlapsTime(
+  leftStart: string,
+  leftEnd: string,
+  rightStart: string,
+  rightEnd: string,
+): boolean {
+  return (
+    timeToMinutes(leftStart) < timeToMinutes(rightEnd) &&
+    timeToMinutes(rightStart) < timeToMinutes(leftEnd)
+  );
+}
+
+/**
+ * Provides the initial teacher windows before school lesson slots exist.
+ * The academic policy is the source of truth; saved school slots still take precedence in the UI.
+ */
+export function suggestTeacherAvailabilityFromPolicy(input: {
+  shifts: string[];
+  schoolDays: number[];
+  maxLessonsPerDay: number;
+  breaks?: Array<Pick<SchoolScheduleBreakRow, 'shift' | 'day_of_week' | 'start_time' | 'end_time' | 'active'>>;
+}): TeacherAvailabilityDraft[] {
+  const slotsPerDayByShift = Object.fromEntries(
+    input.shifts.map((shift) => [shift, input.maxLessonsPerDay]),
+  );
+  const breaks = input.breaks ?? [];
+  const slots = buildDefaultTimeSlots(
+    input.shifts,
+    slotsPerDayByShift,
+    input.schoolDays,
+  ).filter((slot) =>
+    !breaks.some((scheduleBreak) =>
+      scheduleBreak.active &&
+      normalizeAcademicShift(scheduleBreak.shift) === normalizeAcademicShift(slot.shift) &&
+      scheduleBreak.day_of_week === slot.day_of_week &&
+      overlapsTime(
+        slot.start_time,
+        slot.end_time,
+        scheduleBreak.start_time,
+        scheduleBreak.end_time,
+      ),
+    ),
+  );
+
+  return suggestTeacherAvailabilityFromSchoolSlots(
+    slots.map((slot) => ({ ...slot, active: true })),
+  );
+}
+
+export interface CurriculumTemplateRow {
+  id: string;
+  institution_id: string;
+  name: string;
+  grade_level: string | null;
+  stage: string | null;
+  active: boolean;
+}
+
+function assertDateOrder(startDate: string, endDate: string, message = 'A data inicial deve ser anterior ou igual a data final.'): void {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate) || startDate > endDate) {
+    throw new Error(message);
+  }
+}
+
+function dateFromIso(value: string): Date {
+  const date = new Date(`${value}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) throw new Error('Data invalida.');
+  return date;
+}
+
+function isoDate(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}
+
+export function suggestPeriods(startDate: string, endDate: string, model: Exclude<PeriodModel, 'CUSTOM'>): PeriodDraft[] {
+  assertDateOrder(startDate, endDate);
+  const count = model === 'BIMESTERS_4' ? 4 : model === 'TRIMESTERS_3' ? 3 : 2;
+  const start = dateFromIso(startDate);
+  const end = dateFromIso(endDate);
+  const totalDays = Math.floor((end.getTime() - start.getTime()) / 86_400_000) + 1;
+  return Array.from({ length: count }, (_, index) => {
+    const periodStart = new Date(start.getTime() + Math.floor((totalDays * index) / count) * 86_400_000);
+    const periodEnd = new Date(start.getTime() + (Math.floor((totalDays * (index + 1)) / count) - 1) * 86_400_000);
+    return { name: `${index + 1}º ${model === 'BIMESTERS_4' ? 'Bimestre' : model === 'TRIMESTERS_3' ? 'Trimestre' : 'Semestre'}`, start_date: isoDate(periodStart), end_date: isoDate(periodEnd), active: true };
+  });
+}
+
+export function validatePeriods(startDate: string, endDate: string, periods: PeriodDraft[]): void {
+  assertDateOrder(startDate, endDate);
+  if (periods.length === 0) throw new Error('Informe pelo menos um periodo.');
+  const sorted = [...periods].sort((left, right) => left.start_date.localeCompare(right.start_date));
+  let previousEnd = '';
+  for (const period of sorted) {
+    assertDateOrder(period.start_date, period.end_date, 'O periodo possui datas invalidas.');
+    if (period.start_date < startDate || period.end_date > endDate) throw new Error('Todos os periodos devem estar dentro do ano letivo.');
+    if (previousEnd && period.start_date <= previousEnd) throw new Error('Os periodos nao podem se sobrepor.');
+    previousEnd = period.end_date;
+  }
+}
+
+export const academicAutomationService = {
+  async createAcademicYearWithTerms(input: { institution_id: string; name: string; start_date: string; end_date: string; active: boolean; periods: PeriodDraft[] }): Promise<{ year_id: string; term_count: number }> {
+    validatePeriods(input.start_date, input.end_date, input.periods);
+    const { data, error } = await supabase.rpc('create_academic_year_with_terms', {
+      p_institution_id: input.institution_id,
+      p_name: input.name.trim(),
+      p_start_date: input.start_date,
+      p_end_date: input.end_date,
+      p_active: input.active,
+      p_terms: input.periods,
+    });
+    if (error) throw error;
+    return data as { year_id: string; term_count: number };
+  },
+
+  async copyPreviousYear(input: { institution_id: string; source_year_id: string; target_year_id: string; copy_teachers: boolean; copy_rooms: boolean }): Promise<Record<string, number>> {
+    const { data, error } = await supabase.rpc('copy_academic_year_structure', {
+      p_institution_id: input.institution_id,
+      p_source_year_id: input.source_year_id,
+      p_target_year_id: input.target_year_id,
+      p_copy_teachers: input.copy_teachers,
+      p_copy_rooms: input.copy_rooms,
+    });
+    if (error) throw error;
+    return (data ?? {}) as Record<string, number>;
+  },
+
+  async listTeacherSubjects(institutionId: string, teacherProfileId: string): Promise<TeacherSubjectRow[]> {
+    const { data, error } = await supabase.from('teacher_subjects').select('*').eq('institution_id', institutionId).eq('teacher_profile_id', teacherProfileId).order('primary_subject', { ascending: false });
+    if (error) throw error;
+    return (data ?? []) as TeacherSubjectRow[];
+  },
+
+  async replaceTeacherSubjects(input: { institution_id: string; teacher_profile_id: string; subject_ids: string[]; primary_subject_id?: string }): Promise<void> {
+    const subjectIds = [...new Set(input.subject_ids)];
+    const { error: deactivateError } = await supabase.from('teacher_subjects').update({ active: false }).eq('institution_id', input.institution_id).eq('teacher_profile_id', input.teacher_profile_id);
+    if (deactivateError) throw deactivateError;
+    if (subjectIds.length === 0) return;
+    const { error } = await supabase.from('teacher_subjects').insert(subjectIds.map((subject_id) => ({ institution_id: input.institution_id, teacher_profile_id: input.teacher_profile_id, subject_id, primary_subject: subject_id === input.primary_subject_id, active: true })));
+    if (error) throw error;
+  },
+
+  async listTeacherAvailability(institutionId: string, teacherProfileId: string): Promise<TeacherAvailabilityRow[]> {
+    const { data, error } = await supabase.from('teacher_availability').select('*').eq('institution_id', institutionId).eq('teacher_profile_id', teacherProfileId).eq('active', true).order('day_of_week').order('start_time');
+    if (error) throw error;
+    return (data ?? []) as TeacherAvailabilityRow[];
+  },
+
+  async replaceTeacherAvailability(input: { institution_id: string; teacher_profile_id: string; availability: Array<Omit<TeacherAvailabilityRow, 'id' | 'active' | 'institution_id' | 'teacher_profile_id'>> }): Promise<void> {
+    for (const window of input.availability) {
+      if (window.start_time >= window.end_time) throw new Error('O horario final deve ser posterior ao inicial.');
+    }
+    const { error: deactivateError } = await supabase.from('teacher_availability').update({ active: false }).eq('institution_id', input.institution_id).eq('teacher_profile_id', input.teacher_profile_id);
+    if (deactivateError) throw deactivateError;
+    if (input.availability.length === 0) return;
+    const { error } = await supabase.from('teacher_availability').insert(input.availability.map((window) => ({ ...window, institution_id: input.institution_id, teacher_profile_id: input.teacher_profile_id, active: true })));
+    if (error) throw error;
+  },
+
+  async createWholeYearAssignment(input: { institution_id: string; class_id: string; subject_id: string; teacher_profile_id: string; academic_year_id: string }): Promise<number> {
+    const { data, error } = await supabase.rpc('create_whole_year_assignment', { p_institution_id: input.institution_id, p_class_id: input.class_id, p_subject_id: input.subject_id, p_teacher_profile_id: input.teacher_profile_id, p_academic_year_id: input.academic_year_id });
+    if (error) throw error;
+    return Number(data ?? 0);
+  },
+
+  async listTimeSlots(institutionId: string, shift?: string): Promise<SchoolTimeSlotRow[]> {
+    const normalizedShift = shift
+      ? await academicShiftSettingsService.assertShiftEnabled(institutionId, shift)
+      : null;
+    let query = supabase.from('school_time_slots').select('*').eq('institution_id', institutionId).eq('active', true).order('day_of_week').order('slot_number');
+    if (normalizedShift) query = query.eq('shift', normalizedShift);
+    const { data, error } = await query;
+    if (error) throw error;
+    return ((data ?? []) as SchoolTimeSlotRow[]).map((slot) => ({
+      ...slot,
+      shift: normalizeAcademicShift(slot.shift),
+    }));
+  },
+
+  async upsertTimeSlots(input: { institution_id: string; shift: string; slots: Array<{ day_of_week: number; slot_number: number; start_time: string; end_time: string }> }): Promise<void> {
+    const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+      input.institution_id,
+      input.shift,
+    );
+    if (!normalizedShift) throw new Error('Selecione um turno válido para os horários.');
+
+    const positions = new Set<string>();
+    for (const slot of input.slots) {
+      if (slot.start_time >= slot.end_time) throw new Error('O horario final deve ser posterior ao inicial.');
+      const position = `${slot.day_of_week}:${slot.slot_number}`;
+      if (positions.has(position)) throw new Error('Não é possível repetir a posição de um horário no mesmo dia.');
+      positions.add(position);
+    }
+
+    const { data: existingSlots, error: existingError } = await supabase
+      .from('school_time_slots')
+      .select('id, day_of_week, slot_number')
+      .eq('institution_id', input.institution_id)
+      .eq('shift', normalizedShift)
+      .eq('active', true);
+    if (existingError) throw existingError;
+
+    const staleIds = (existingSlots ?? [])
+      .filter((slot) => !positions.has(`${slot.day_of_week}:${slot.slot_number}`))
+      .map((slot) => slot.id);
+    if (staleIds.length > 0) {
+      const { error: deactivateError } = await supabase
+        .from('school_time_slots')
+        .update({ active: false })
+        .eq('institution_id', input.institution_id)
+        .eq('shift', normalizedShift)
+        .in('id', staleIds);
+      if (deactivateError) throw deactivateError;
+    }
+
+    const { error } = await supabase.from('school_time_slots').upsert(input.slots.map((slot) => ({ ...slot, institution_id: input.institution_id, shift: normalizedShift, active: true })), { onConflict: 'institution_id,shift,day_of_week,slot_number' });
+    if (error) throw error;
+  },
+
+  async listScheduleBreaks(
+    institutionId: string,
+    shift?: string,
+  ): Promise<SchoolScheduleBreakRow[]> {
+    let query = supabase
+      .from('school_schedule_breaks')
+      .select('*')
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .order('shift')
+      .order('day_of_week')
+      .order('start_time');
+
+    if (shift) {
+      const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+        institutionId,
+        shift,
+      );
+      if (normalizedShift) query = query.eq('shift', normalizedShift);
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+    return (data ?? []) as SchoolScheduleBreakRow[];
+  },
+
+  async replaceScheduleBreaks(input: {
+    institution_id: string;
+    shift: string;
+    breaks: SchoolScheduleBreakDraft[];
+  }): Promise<SchoolScheduleBreakRow[]> {
+    const normalizedShift = await academicShiftSettingsService.assertShiftEnabled(
+      input.institution_id,
+      input.shift,
+    );
+    if (!normalizedShift) {
+      throw new Error('Selecione um turno válido para os intervalos.');
+    }
+
+    const seen = new Set<string>();
+    for (const item of input.breaks) {
+      const name = item.name.trim();
+      if (!name) throw new Error('Informe o nome do intervalo.');
+      if (item.day_of_week < 1 || item.day_of_week > 6) {
+        throw new Error('Selecione um dia válido para o intervalo.');
+      }
+      if (item.start_time >= item.end_time) {
+        throw new Error('O horário final do intervalo deve ser posterior ao inicial.');
+      }
+      const duplicateKey = `${item.day_of_week}:${item.start_time}:${item.end_time}:${name.toLocaleLowerCase()}`;
+      if (seen.has(duplicateKey)) {
+        throw new Error('Não repita o mesmo intervalo no mesmo dia.');
+      }
+      seen.add(duplicateKey);
+    }
+
+    const ordered = [...input.breaks].sort(
+      (left, right) =>
+        left.day_of_week - right.day_of_week ||
+        left.start_time.localeCompare(right.start_time),
+    );
+    for (let index = 1; index < ordered.length; index += 1) {
+      const previous = ordered[index - 1];
+      const current = ordered[index];
+      if (
+        previous.day_of_week === current.day_of_week &&
+        previous.start_time < current.end_time &&
+        current.start_time < previous.end_time
+      ) {
+        throw new Error('Os intervalos do mesmo turno não podem se sobrepor.');
+      }
+    }
+
+    const { data, error } = await supabase.rpc(
+      'replace_school_schedule_breaks',
+      {
+        p_institution_id: input.institution_id,
+        p_shift: normalizedShift,
+        p_breaks: input.breaks.map((item) => ({
+          day_of_week: item.day_of_week,
+          name: item.name.trim(),
+          start_time: item.start_time,
+          end_time: item.end_time,
+        })),
+      },
+    );
+    if (error) throw error;
+    return (data ?? []) as SchoolScheduleBreakRow[];
+  },
+
+  async applyCurriculumTemplate(input: { institution_id: string; template_id: string; class_ids: string[] }): Promise<number> {
+    const { data, error } = await supabase.rpc('apply_curriculum_template', { p_institution_id: input.institution_id, p_template_id: input.template_id, p_class_ids: input.class_ids });
+    if (error) throw error;
+    return Number(data ?? 0);
+  },
+
+  async listCurriculumTemplates(institutionId: string): Promise<CurriculumTemplateRow[]> {
+    const { data, error } = await supabase.from('curriculum_templates').select('id, institution_id, name, grade_level, stage, active').eq('institution_id', institutionId).eq('active', true).order('name');
+    if (error) throw error;
+    return (data ?? []) as CurriculumTemplateRow[];
+  },
+
+  async deleteCurriculumTemplate(input: { institution_id: string; template_id: string }): Promise<void> {
+    const { error } = await supabase
+      .from('curriculum_templates')
+      .delete()
+      .eq('id', input.template_id)
+      .eq('institution_id', input.institution_id);
+    if (error) throw error;
+  },
+
+  async createCurriculumTemplate(input: { institution_id: string; name: string; grade_level?: string; stage?: string; items: Array<{ subject_id: string; weekly_lessons: number; lesson_duration_minutes: number }> }): Promise<CurriculumTemplateRow> {
+    if (!input.name.trim() || input.items.length === 0) throw new Error('O modelo precisa de nome e pelo menos uma disciplina.');
+    if (input.items.some((item) =>
+      !Number.isInteger(item.weekly_lessons) ||
+      item.weekly_lessons < 1 ||
+      item.weekly_lessons > 20 ||
+      !Number.isInteger(item.lesson_duration_minutes) ||
+      item.lesson_duration_minutes < 15 ||
+      item.lesson_duration_minutes > 180
+    )) {
+      throw new Error('A quantidade de aulas deve estar entre 1 e 20, e a duração entre 15 e 180 minutos.');
+    }
+    const { data: template, error: templateError } = await supabase.from('curriculum_templates').insert({ institution_id: input.institution_id, name: input.name.trim(), grade_level: input.grade_level?.trim() || null, stage: input.stage?.trim() || null, active: true }).select('id, institution_id, name, grade_level, stage, active').single();
+    if (templateError) throw templateError;
+    const { error: itemsError } = await supabase.from('curriculum_template_items').insert(input.items.map((item) => ({ institution_id: input.institution_id, template_id: template.id, ...item, active: true })));
+    if (itemsError) throw itemsError;
+    return template as CurriculumTemplateRow;
+  },
+};

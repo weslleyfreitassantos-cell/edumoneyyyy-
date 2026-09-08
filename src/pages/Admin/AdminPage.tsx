@@ -36,6 +36,9 @@ import SchoolUsersTab from './tabs/SchoolUsersTab';
 import StudentsTab from './tabs/StudentsTab';
 import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
+import EmailTab from './tabs/EmailTab';
+import FinanceTab from './tabs/FinanceTab';
+import AccessControlTab from './tabs/AccessControlTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -192,6 +195,20 @@ export default function AdminPage() {
         return <TeachersTab />;
       case 'guardians':
         return <GuardiansTab />;
+      case 'secretaries':
+        return (
+          <SchoolUsersTab
+            fixedRole="SECRETARY"
+            inviteTargets={['SECRETARY']}
+            inviteHeading="Cadastro de secretaria"
+          />
+        );
+      case 'email':
+        return <EmailTab />;
+      case 'finance':
+        return <FinanceTab />;
+      case 'access':
+        return <AccessControlTab />;
       case 'academic-policies':
         return (
           <AcademicPolicyPanel
@@ -208,6 +225,8 @@ export default function AdminPage() {
         return <CurriculumTab />;
       case 'timetable':
         return <TimetableTab />;
+      case 'rooms':
+        return <TimetableTab />;
       case 'enrollments':
         return <EnrollmentsTab />;
       case 'assignments':
@@ -219,17 +238,10 @@ export default function AdminPage() {
 
   return (
     <div className="space-y-6">
-      <header>
-        <h2 className="text-2xl font-bold text-[#181c20] dark:text-[#f8fafc]">
-          Gestão institucional
-        </h2>
-
-        <p className="text-sm text-[#727785] dark:text-[#cbd5e1]">
-          Gerencie a estrutura acadêmica, vínculos e matrículas da instituição.
-        </p>
-      </header>
-
-      <section className="min-w-0">
+      <section
+        key={institutionQuery.currentInstitutionId ?? 'no-institution'}
+        className="min-w-0"
+      >
         {renderModule()}
       </section>
     </div>

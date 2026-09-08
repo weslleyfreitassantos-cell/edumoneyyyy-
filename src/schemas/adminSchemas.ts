@@ -1,6 +1,14 @@
 import { z } from 'zod';
 
 import { UNIFIED_USER_INVITE_TARGETS } from '../pages/Admin/tabs/school-users/unifiedUserInviteModel';
+import {
+  ACADEMIC_SHIFT_VALUES,
+  toAcademicShift,
+} from '../lib/academic/academicShifts';
+import {
+  ACADEMIC_LEVEL_VALUES,
+  normalizeAcademicLevel,
+} from '../lib/academic/academicLevels';
 
 const optionalCpfSchema = z.preprocess(
   (value) => {
@@ -156,7 +164,10 @@ export const studentUpdateSchema = z
   .strict();
 
 export const teacherSchema = z
-  .object(personIdentityFields)
+  .object({
+    ...personIdentityFields,
+    phone: optionalTextSchema,
+  })
   .strict();
 
 export const guardianLinkSchema = z
@@ -292,9 +303,31 @@ const classFields = {
       'Nome da turma deve possuir no máximo 80 caracteres',
     ),
 
-  grade_level: optionalTextSchema,
+  grade_level: z.preprocess(
+    (value) =>
+      typeof value === 'string'
+        ? normalizeAcademicLevel(value) ?? undefined
+        : value,
+    z.enum(ACADEMIC_LEVEL_VALUES),
+  ),
 
-  shift: optionalTextSchema,
+  shift: z.preprocess(
+    (value) => {
+      if (
+        typeof value === 'string' &&
+        value.trim() === ''
+      ) {
+        return undefined;
+      }
+
+      if (typeof value === 'string') {
+        return toAcademicShift(value) ?? value;
+      }
+
+      return value;
+    },
+    z.enum(ACADEMIC_SHIFT_VALUES).optional(),
+  ),
 
   capacity: z
     .number()
@@ -328,7 +361,10 @@ export const classSchema = z
   .strict();
 
 export const classUpdateSchema = z
-  .object(classFields)
+  .object({
+    ...classFields,
+    grade_level: classFields.grade_level.optional(),
+  })
   .strict();
 
 const optionalSubjectCodeSchema = z.preprocess(
@@ -446,6 +482,18 @@ export const enrollmentSchema = z
     }
   });
 
+export const enrollmentUpdateSchema = z
+  .object({
+    class_id: z.guid(
+      'Turma é obrigatória',
+    ),
+
+    academic_year_id: z.guid(
+      'Ano letivo é obrigatório',
+    ),
+  })
+  .strict();
+
 export const enrollmentTransferSchema = z
   .object({
     enrollment_id: z.guid(
@@ -558,6 +606,9 @@ export type SubjectUpdateData =
 export type EnrollmentFormData =
   z.infer<typeof enrollmentSchema>;
 
+export type EnrollmentUpdateData =
+  z.infer<typeof enrollmentUpdateSchema>;
+
 export type EnrollmentTransferData =
   z.infer<
     typeof enrollmentTransferSchema
@@ -597,6 +648,11 @@ const roomFields = {
     .min(1, 'Capacidade deve ser maior que 0')
     .max(500, 'Capacidade deve ser menor ou igual a 500')
     .optional(),
+
+  class_id: z.preprocess(
+    (value) => value === '' ? null : value,
+    z.guid('Turma da sala inválida').nullable().optional(),
+  ),
 
   active: z.boolean().default(true),
 };

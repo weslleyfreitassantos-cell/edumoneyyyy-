@@ -7,7 +7,12 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import type { User } from '@supabase/supabase-js';
+import { useState, type ReactNode } from 'react';
 import {
   afterEach,
   beforeEach,
@@ -27,6 +32,21 @@ import {
   useAuth,
   useAuthProfileActions,
 } from './AuthContext';
+
+function renderAuthProvider(children: ReactNode) {
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: false },
+      mutations: { retry: false },
+    },
+  });
+
+  return render(
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>{children}</AuthProvider>
+    </QueryClientProvider>,
+  );
+}
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
@@ -56,6 +76,64 @@ const authUser = {
   id: 'user-1',
   email: 'ana@example.com',
 } as User;
+
+function mockAuthQueries({
+  profile = {
+    id: 'user-1',
+    full_name: 'Ana Silva',
+    email: 'ana@example.com',
+    role: 'ADMIN',
+    platform_role: 'USER',
+    avatar_url: null,
+    active: true,
+  },
+  ownedAccounts = [
+    {
+      id: 'account-1',
+      status: 'ACTIVE',
+    },
+  ],
+  memberships = [],
+}: {
+  profile?: Record<string, unknown>;
+  ownedAccounts?: Record<string, unknown>[];
+  memberships?: Record<string, unknown>[];
+} = {}) {
+  vi.mocked(supabase.from).mockImplementation((table) => {
+    if (table === 'profiles') {
+      const single = vi.fn().mockResolvedValue({
+        data: profile,
+        error: null,
+      });
+      const eq = vi.fn().mockReturnValue({ single });
+      const select = vi.fn().mockReturnValue({ eq });
+
+      return { select } as never;
+    }
+
+    if (table === 'accounts') {
+      const eq = vi.fn().mockResolvedValue({
+        data: ownedAccounts,
+        error: null,
+      });
+      const select = vi.fn().mockReturnValue({ eq });
+
+      return { select } as never;
+    }
+
+    if (table === 'memberships') {
+      const eq = vi.fn().mockResolvedValue({
+        data: memberships,
+        error: null,
+      });
+      const select = vi.fn().mockReturnValue({ eq });
+
+      return { select } as never;
+    }
+
+    throw new Error(`Tabela nao mockada: ${String(table)}`);
+  });
+}
 
 function ProfileProbe() {
   const { profile, signOut } = useAuth();
@@ -113,21 +191,7 @@ beforeEach(() => {
     error: null,
   } as never);
 
-  const single = vi.fn().mockResolvedValue({
-    data: {
-      id: 'user-1',
-      full_name: 'Ana Silva',
-      email: 'ana@example.com',
-      role: 'ADMIN',
-      platform_role: 'USER',
-      avatar_url: null,
-      active: true,
-    },
-    error: null,
-  });
-  const eq = vi.fn().mockReturnValue({ single });
-  const select = vi.fn().mockReturnValue({ eq });
-  vi.mocked(supabase.from).mockReturnValue({ select } as never);
+  mockAuthQueries();
 });
 
 afterEach(() => {
@@ -141,11 +205,7 @@ describe('AuthProfileActionsContext', () => {
       full_name: 'Novo Nome',
     });
 
-    render(
-      <AuthProvider>
-        <ProfileProbe />
-      </AuthProvider>,
-    );
+    renderAuthProvider(<ProfileProbe />);
 
     await screen.findByText('Ana Silva');
     fireEvent.click(
@@ -167,11 +227,7 @@ describe('AuthProfileActionsContext', () => {
   it('encaminha a senha sem persistir no perfil global', async () => {
     vi.mocked(updateCurrentPassword).mockResolvedValue(undefined);
 
-    render(
-      <AuthProvider>
-        <ProfileProbe />
-      </AuthProvider>,
-    );
+    renderAuthProvider(<ProfileProbe />);
 
     await screen.findByText('Ana Silva');
     fireEvent.click(
@@ -197,11 +253,7 @@ describe('AuthProfileActionsContext', () => {
       }),
     );
 
-    render(
-      <AuthProvider>
-        <ProfileProbe />
-      </AuthProvider>,
-    );
+    renderAuthProvider(<ProfileProbe />);
 
     await screen.findByText('Ana Silva');
     fireEvent.click(
@@ -227,8 +279,8 @@ describe('AuthProfileActionsContext', () => {
     const consoleErrorSpy = vi
       .spyOn(console, 'error')
       .mockImplementation(() => undefined);
-    const single = vi.fn().mockResolvedValue({
-      data: {
+    mockAuthQueries({
+      profile: {
         id: 'user-1',
         full_name: 'Ana Silva',
         email: 'ana@example.com',
@@ -237,24 +289,93 @@ describe('AuthProfileActionsContext', () => {
         avatar_url: null,
         active: false,
       },
-      error: null,
     });
-    const eq = vi.fn().mockReturnValue({ single });
-    const select = vi.fn().mockReturnValue({ eq });
-    vi.mocked(supabase.from).mockReturnValue({ select } as never);
 
     try {
-      render(
-        <AuthProvider>
-          <ProfileProbe />
-        </AuthProvider>,
-      );
+      renderAuthProvider(<ProfileProbe />);
 
       await waitFor(() => {
         expect(supabase.auth.signOut).toHaveBeenCalled();
       });
 
       expect(screen.getByText('Carregando perfil')).toBeTruthy();
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
+  });
+
+  it('bloqueia login quando a conta vinculada foi excluida', async () => {
+    const consoleErrorSpy = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined);
+    vi.mocked(supabase.auth.getSession).mockResolvedValue({
+      data: {
+        session: null,
+      },
+      error: null,
+    } as never);
+    vi.mocked(supabase.auth.signInWithPassword).mockResolvedValue({
+      data: {
+        user: authUser,
+        session: { user: authUser },
+      },
+      error: null,
+    } as never);
+    mockAuthQueries({
+      ownedAccounts: [
+        {
+          id: 'account-1',
+          status: 'CANCELED',
+        },
+      ],
+    });
+
+    function SignInProbe() {
+      const { signIn, profile } = useAuth();
+      const [message, setMessage] = useState('');
+
+      return (
+        <div>
+          <p>{profile?.full_name ?? 'Sem perfil'}</p>
+          <p>{message}</p>
+          <button
+            type="button"
+            onClick={() =>
+              void signIn('ana@example.com', 'senha').catch(
+                (error: unknown) => {
+                  setMessage(
+                    error instanceof Error
+                      ? error.message
+                      : 'Falha no login',
+                  );
+                },
+              )
+            }
+          >
+            Entrar
+          </button>
+        </div>
+      );
+    }
+
+    try {
+      renderAuthProvider(<SignInProbe />);
+
+      await screen.findByText('Sem perfil');
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Entrar' }),
+      );
+
+      await waitFor(() => {
+        expect(supabase.auth.signOut).toHaveBeenCalled();
+        expect(
+          screen.getByText(
+            'Voce nao tem acesso a esta plataforma. Procure a administracao da sua instituicao.',
+          ),
+        ).toBeTruthy();
+      });
+
+      expect(screen.getByText('Sem perfil')).toBeTruthy();
     } finally {
       consoleErrorSpy.mockRestore();
     }

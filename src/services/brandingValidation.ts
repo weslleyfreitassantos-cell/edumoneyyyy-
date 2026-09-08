@@ -321,3 +321,9 @@ export async function validateInstitutionLogoFile(
 ): Promise<string | null> {
   return validateBrandingImageFile(file, 'logo');
 }
+
+export async function validateInstitutionFaviconFile(
+  file: File,
+): Promise<string | null> {
+  return validateBrandingImageFile(file, 'favicon');
+}

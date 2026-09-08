@@ -1,233 +1,399 @@
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi, beforeEach } from 'vitest';
+import {
+  updateInstitutionSubdomain,
+  updateInstitutionBranding,
+  resolveInstitutionBySubdomain,
+} from './institutionService';
 import { supabase } from '../lib/supabaseClient';
-import { institutionService } from './institutionService';
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     from: vi.fn(),
+    rpc: vi.fn(),
   },
 }));
 
-describe('institutionService', () => {
-  it('listAllActiveInstitutions retorna todas as instituicoes ativas para SUPER_ADMIN', async () => {
-    const mockSelect = vi.fn().mockReturnValue({
-      eq: vi.fn().mockReturnThis(),
-      order: vi.fn().mockResolvedValue({
+describe('Institution Service Authorization & Security', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  describe('resolveInstitutionBySubdomain', () => {
+    it('resolve via RPC publica quando disponivel', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
         data: [
-          { id: 'inst-1', name: 'Escola Ativa 1', active: true, account_id: null },
           {
-            id: 'inst-2',
-            name: 'Escola Ativa 2',
-            active: true,
-            account_id: 'acc-1',
-            accounts: {
-              id: 'acc-1',
-              name: 'Conta Ativa',
-              status: 'ACTIVE',
-              institution_limit: 3,
-            },
-          },
-          {
-            id: 'inst-3',
-            name: 'Escola Suspensa',
-            active: true,
-            account_id: 'acc-2',
-            accounts: {
-              id: 'acc-2',
-              name: 'Conta Suspensa',
-              status: 'SUSPENDED',
-              institution_limit: 2,
-            },
-          },
-          {
-            id: 'inst-4',
-            name: 'Escola Cancelada',
-            active: true,
-            account_id: 'acc-3',
-            accounts: {
-              id: 'acc-3',
-              name: 'Conta Cancelada',
-              status: 'CANCELED',
-              institution_limit: 1,
-            },
+            id: 'inst-rpc-1',
+            name: 'Escola Luz Publica',
+            subdomain: 'escolaluz',
+            login_display_name: 'Login Luz',
+            logo_url: 'https://cdn.example.com/logo.png',
+            favicon_url: 'https://cdn.example.com/favicon.png',
+            primary_color: '#005bbf',
+            secondary_color: '#6ffbbe',
           },
         ],
         error: null,
-      }),
+      } as never);
+
+      const res = await resolveInstitutionBySubdomain('escolaluz');
+      expect(res.error).toBeNull();
+      expect(res.institution).toEqual({
+        id: 'inst-rpc-1',
+        name: 'Escola Luz Publica',
+        subdomain: 'escolaluz',
+        login_display_name: 'Login Luz',
+        logo_url: 'https://cdn.example.com/logo.png',
+        favicon_url: 'https://cdn.example.com/favicon.png',
+        primary_color: '#005bbf',
+        secondary_color: '#6ffbbe',
+        active: true,
+        account_id: null,
+      });
     });
 
-    vi.mocked(supabase.from).mockReturnValue({ select: mockSelect } as any);
-
-    const result = await institutionService.listAllActiveInstitutions();
-
-    expect(result).toHaveLength(2);
-    expect(result[0].institution.id).toBe('inst-1');
-    expect(result[1].institution.id).toBe('inst-2');
-    expect(result[0].effectiveRole).toBe('ADMIN');
-    expect(result[0].membership).toBeNull();
-    expect(result[0].account).toBeNull();
-    expect(result[1].account?.status).toBe('ACTIVE');
-    expect(
-      result.some((item) => item.institution.id === 'inst-3'),
-    ).toBe(false);
-    expect(
-      result.some((item) => item.institution.id === 'inst-4'),
-    ).toBe(false);
-  });
-
-  it('listAllActiveInstitutions lanca erro quando a consulta falha', async () => {
-    const mockSelect = vi.fn().mockReturnValue({
-      eq: vi.fn().mockReturnThis(),
-      order: vi.fn().mockResolvedValue({
-        data: null,
-        error: new Error('Falha no banco'),
-      }),
-    });
-
-    vi.mocked(supabase.from).mockReturnValue({ select: mockSelect } as any);
-
-    await expect(
-      institutionService.listAllActiveInstitutions(),
-    ).rejects.toThrow('Falha no banco');
-  });
-
-  it('combina ownership e memberships com deduplicacao, ignorando contas suspensas, e mantem limite e effectiveRole', async () => {
-    const mockSelectAccount = vi.fn().mockReturnValue({
-      eq: vi.fn().mockResolvedValue({
-        data: [
-          {
-            id: 'acc-1',
-            name: 'Conta 1',
-            status: 'ACTIVE',
-            institution_limit: 5,
-            institutions: [
-              {
-                id: 'inst-1',
-                name: 'Instituicao 1',
-                active: true,
-                account_id: 'acc-1',
-              },
-            ],
-          },
-          {
-            id: 'acc-2',
-            name: 'Conta Suspensa',
-            status: 'SUSPENDED',
-            institution_limit: 2,
-            institutions: [
-              {
-                id: 'inst-2',
-                name: 'Instituicao 2',
-                active: true,
-                account_id: 'acc-2',
-              },
-            ],
-          },
-        ],
+    it('retorna null sem erro quando RPC retorna array vazio', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
+        data: [],
         error: null,
-      }),
-    });
+      } as never);
 
-    const mockSelectMembership = vi.fn().mockReturnValue({
-      eq: vi.fn().mockReturnValue({
-        eq: vi.fn().mockReturnValue({
-          eq: vi.fn().mockResolvedValue({
-            data: [
-              {
-                id: 'mem-1',
-                institution_id: 'inst-1', // deduplicacao esperada
-                role: 'DIRECTOR',
-                active: true,
-                institutions: {
+      const res = await resolveInstitutionBySubdomain('inexistente');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+    });
+    it('retorna instituicao quando subdominio existe, instituicao ativa e conta ativa', async () => {
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: {
                   id: 'inst-1',
-                  name: 'Instituicao 1',
+                  name: 'Escola Luz',
+                  subdomain: 'escolaluz',
                   active: true,
                   account_id: 'acc-1',
-                  accounts: {
-                    id: 'acc-1',
-                    name: 'Conta 1',
-                    status: 'ACTIVE',
-                    institution_limit: 5,
-                  },
+                  accounts: { id: 'acc-1', status: 'ACTIVE' },
                 },
-              },
-              {
-                id: 'mem-2',
-                institution_id: 'inst-3',
-                role: 'SECRETARY',
-                active: true,
-                institutions: {
-                  id: 'inst-3',
-                  name: 'Instituicao 3',
-                  active: true,
-                  account_id: 'acc-1',
-                  accounts: {
-                    id: 'acc-1',
-                    name: 'Conta 1',
-                    status: 'ACTIVE',
-                    institution_limit: 5,
-                  },
-                },
-              },
-              {
-                id: 'mem-3',
-                institution_id: 'inst-4',
-                role: 'ADMIN',
-                active: true,
-                institutions: {
-                  id: 'inst-4',
-                  name: 'Legacy Inst',
-                  active: true,
-                  account_id: null, // Legado aceito
-                },
-              },
-              {
-                id: 'mem-4',
-                institution_id: 'inst-5',
-                role: 'ADMIN',
-                active: true,
-                institutions: {
-                  id: 'inst-5',
-                  name: 'Invalid Legacy Inst',
-                  active: true,
-                  account_id: 'some-account', // Legado rejeitado
-                },
-              },
-            ],
-            error: null,
+                error: null,
+              }),
+            }),
           }),
         }),
-      }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('escolaluz');
+      expect(res.error).toBeNull();
+      expect(res.institution).toEqual({
+        id: 'inst-1',
+        name: 'Escola Luz',
+        subdomain: 'escolaluz',
+        login_display_name: null,
+        logo_url: null,
+        favicon_url: null,
+        primary_color: null,
+        secondary_color: null,
+        active: true,
+        account_id: 'acc-1',
+      });
     });
 
-    vi.mocked(supabase.from).mockImplementation((table) => {
-      if (table === 'accounts') return { select: mockSelectAccount } as any;
-      if (table === 'memberships') return { select: mockSelectMembership } as any;
-      return {} as any;
+    it('retorna null sem erro para subdominio inexistente', async () => {
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: null,
+                error: null,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const res = await resolveInstitutionBySubdomain('inexistente');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
     });
 
-    const result = await institutionService.listForProfile('user-1');
+    it('retorna null sem erro quando a conta associada esta SUSPENDED ou CANCELED', async () => {
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: {
+                  id: 'inst-1',
+                  name: 'Escola Suspensa',
+                  subdomain: 'escolasuspensa',
+                  active: true,
+                  account_id: 'acc-1',
+                  accounts: { id: 'acc-1', status: 'SUSPENDED' },
+                },
+                error: null,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
 
-    // Expected 3 institutions:
-    // 1. inst-1 (from account_owner, deducts from membership since it's deduplicated and added first)
-    // 2. inst-3 (from membership SECRETARY)
-    // 3. inst-4 (from legacy ADMIN membership)
-    // inst-2 is ignored because account is SUSPENDED
-    // inst-5 is ignored because ADMIN membership with account_id is not allowed
+      const res = await resolveInstitutionBySubdomain('escolasuspensa');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+    });
 
-    expect(result).toHaveLength(3);
+    it('retorna null sem erro para subdominios reservados sem consultar o banco', async () => {
+      const mockFrom = vi.fn();
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
 
-    const inst1 = result.find((r) => r.institution.id === 'inst-1');
-    expect(inst1?.accessSource).toBe('account_owner');
-    expect(inst1?.effectiveRole).toBe('ADMIN');
-    expect(inst1?.account?.institution_limit).toBe(5);
+      const res = await resolveInstitutionBySubdomain('admin');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBeNull();
+      expect(mockFrom).not.toHaveBeenCalled();
+    });
 
-    const inst3 = result.find((r) => r.institution.id === 'inst-3');
-    expect(inst3?.accessSource).toBe('membership');
-    expect(inst3?.effectiveRole).toBe('SECRETARY');
+    it('preserva erro do Supabase sem transformar em null', async () => {
+      const dbError = new Error('Database error 500');
+      const mockFrom = vi.fn().mockReturnValue({
+        select: vi.fn().mockReturnValue({
+          eq: vi.fn().mockReturnValue({
+            eq: vi.fn().mockReturnValue({
+              maybeSingle: vi.fn().mockResolvedValue({
+                data: null,
+                error: dbError,
+              }),
+            }),
+          }),
+        }),
+      });
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
 
-    const inst4 = result.find((r) => r.institution.id === 'inst-4');
-    expect(inst4?.accessSource).toBe('legacy_admin_membership');
-    expect(inst4?.effectiveRole).toBe('ADMIN');
+      const res = await resolveInstitutionBySubdomain('escolaluz');
+      expect(res.institution).toBeNull();
+      expect(res.error).toBe(dbError);
+    });
+  });
+
+  describe('updateInstitutionSubdomain (Operação 1 - ADMIN)', () => {
+
+    it('permite que o ADMIN altere o subdomínio de uma instituição de sua própria conta', async () => {
+      const mockFrom = vi.fn().mockImplementation((table: string) => {
+        if (table === 'institutions') {
+          return {
+            select: vi.fn().mockReturnValue({
+              eq: vi.fn().mockReturnValue({
+                single: vi.fn().mockResolvedValue({
+                  data: { id: 'inst-1', name: 'Escola Modelo', account_id: 'acc-1', active: true },
+                  error: null,
+                }),
+                neq: vi.fn().mockReturnValue({
+                  maybeSingle: vi.fn().mockResolvedValue({ data: null, error: null }),
+                }),
+              }),
+            }),
+            update: vi.fn().mockReturnValue({
+              eq: vi.fn().mockReturnValue({
+                select: vi.fn().mockReturnValue({
+                  single: vi.fn().mockResolvedValue({
+                    data: {
+                      id: 'inst-1',
+                      name: 'Escola Modelo',
+                      subdomain: 'escolamodelo',
+                      account_id: 'acc-1',
+                      active: true,
+                    },
+                    error: null,
+                  }),
+                }),
+              }),
+            }),
+          };
+        }
+        if (table === 'accounts') {
+          return {
+            select: vi.fn().mockReturnValue({
+              eq: vi.fn().mockReturnValue({
+                eq: vi.fn().mockReturnValue({
+                  maybeSingle: vi.fn().mockResolvedValue({
+                    data: { id: 'acc-1' },
+                    error: null,
+                  }),
+                }),
+              }),
+            }),
+          };
+        }
+        return {};
+      });
+
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      const result = await updateInstitutionSubdomain({
+        institutionId: 'inst-1',
+        subdomain: 'escolamodelo',
+        profileId: 'admin-profile-1',
+        userRole: 'ADMIN',
+      });
+
+      expect(result.subdomain).toBe('escolamodelo');
+    });
+
+    it('bloqueia o ADMIN de alterar o subdomínio de uma instituição pertencente a outra conta', async () => {
+      const mockFrom = vi.fn().mockImplementation((table: string) => {
+        if (table === 'institutions') {
+          return {
+            select: vi.fn().mockReturnValue({
+              eq: vi.fn().mockReturnValue({
+                single: vi.fn().mockResolvedValue({
+                  data: { id: 'inst-other', name: 'Outra Escola', account_id: 'acc-other', active: true },
+                  error: null,
+                }),
+              }),
+            }),
+          };
+        }
+        if (table === 'accounts') {
+          return {
+            select: vi.fn().mockReturnValue({
+              eq: vi.fn().mockReturnValue({
+                eq: vi.fn().mockReturnValue({
+                  maybeSingle: vi.fn().mockResolvedValue({
+                    data: null, // Outra conta que não pertence a admin-profile-1
+                    error: null,
+                  }),
+                }),
+              }),
+            }),
+          };
+        }
+        return {};
+      });
+
+      vi.mocked(supabase.from).mockImplementation(mockFrom);
+
+      await expect(
+        updateInstitutionSubdomain({
+          institutionId: 'inst-other',
+          subdomain: 'outraescola',
+          profileId: 'admin-profile-1',
+          userRole: 'ADMIN',
+        })
+      ).rejects.toThrow(/não possui permissão/i);
+    });
+
+    it('bloqueia o DIRECTOR de alterar o subdomínio', async () => {
+      await expect(
+        updateInstitutionSubdomain({
+          institutionId: 'inst-1',
+          subdomain: 'tentativadiretor',
+          profileId: 'director-profile-1',
+          userRole: 'DIRECTOR',
+        })
+      ).rejects.toThrow(/Apenas o administrador da conta/i);
+    });
+  });
+
+  describe('updateInstitutionBranding (Operacao 2 - DIRECTOR)', () => {
+    it('salva branding via RPC server-side especifica usando institution.id', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
+        data: [
+          {
+            id: 'inst-1',
+            name: 'Escola Modelo',
+            subdomain: 'escola-modelo',
+            login_display_name: 'Login Escola',
+            logo_url: 'https://cdn.example.co/logo.png',
+            favicon_url: 'https://cdn.example.co/favicon.png',
+            primary_color: '#005bbf',
+            secondary_color: '#ff9900',
+            active: true,
+            account_id: 'acc-1',
+          },
+        ],
+        error: null,
+      } as never);
+
+      const result = await updateInstitutionBranding({
+        institutionId: 'inst-1',
+        profileId: 'director-profile-1',
+        login_display_name: 'Login Escola',
+        logo_url: 'https://cdn.example.co/logo.png',
+        favicon_url: 'https://cdn.example.co/favicon.png',
+        primary_color: '#005bbf',
+        secondary_color: '#ff9900',
+      });
+
+      expect(supabase.rpc).toHaveBeenCalledWith(
+        'update_institution_login_branding',
+        expect.objectContaining({
+          target_institution_id: 'inst-1',
+          new_login_display_name: 'Login Escola',
+          set_login_display_name: true,
+          new_logo_url: 'https://cdn.example.co/logo.png',
+          set_logo_url: true,
+          new_favicon_url: 'https://cdn.example.co/favicon.png',
+          set_favicon_url: true,
+          new_primary_color: '#005bbf',
+          set_primary_color: true,
+          new_secondary_color: '#ff9900',
+          set_secondary_color: true,
+        }),
+      );
+      expect(supabase.from).not.toHaveBeenCalledWith('institutions');
+      expect(result.logo_url).toBe('https://cdn.example.co/logo.png');
+      expect(result.primary_color).toBe('#005bbf');
+    });
+
+    it('nao envia subdomain, active ou account_id para a RPC de branding', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
+        data: [
+          {
+            id: 'inst-1',
+            name: 'Escola Modelo',
+            subdomain: 'escola-modelo',
+            login_display_name: 'Login Escola',
+            logo_url: null,
+            favicon_url: null,
+            primary_color: '#005bbf',
+            secondary_color: '#ff9900',
+            active: true,
+            account_id: 'acc-1',
+          },
+        ],
+        error: null,
+      } as never);
+
+      await updateInstitutionBranding({
+        institutionId: 'inst-1',
+        profileId: 'director-profile-1',
+        login_display_name: 'Login Escola',
+      });
+
+      const payload = vi.mocked(supabase.rpc).mock.calls[0][1] as Record<string, unknown>;
+      expect(payload).not.toHaveProperty('subdomain');
+      expect(payload).not.toHaveProperty('active');
+      expect(payload).not.toHaveProperty('account_id');
+      expect(payload).not.toHaveProperty('id');
+    });
+
+    it('propaga erro de autorizacao server-side da RPC', async () => {
+      vi.mocked(supabase.rpc).mockResolvedValueOnce({
+        data: null,
+        error: new Error('Apenas um Diretor com membership ativa pode alterar a identidade visual da instituicao.'),
+      } as never);
+
+      await expect(
+        updateInstitutionBranding({
+          institutionId: 'inst-outro',
+          profileId: 'director-profile-1',
+          logo_url: 'https://cdn.example.co/hack.png',
+        }),
+      ).rejects.toThrow(/Apenas um Diretor/i);
+    });
   });
 });

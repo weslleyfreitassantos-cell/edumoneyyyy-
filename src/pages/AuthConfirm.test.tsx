@@ -66,6 +66,35 @@ describe("AuthConfirm", () => {
     });
   });
 
+  it("should resume set password when invite context and session are still valid", async () => {
+    window.location.hash = "";
+    sessionStorage.setItem(
+      "invite_context",
+      JSON.stringify({
+        userId: "user-123",
+        email: "test@example.com",
+        verifiedAt: Date.now(),
+        purpose: "invite",
+      })
+    );
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/set-password", { replace: true });
+      expect(supabase.auth.signOut).not.toHaveBeenCalled();
+      expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
+    });
+  });
+
   it("should show error if type is not invite", async () => {
     window.location.hash = "#access_token=123&refresh_token=456&type=recovery";
 
@@ -78,6 +107,40 @@ describe("AuthConfirm", () => {
     await waitFor(() => {
       expect(screen.getByText("Tipo de confirmação inválido.")).toBeDefined();
       expect(window.history.replaceState).toHaveBeenCalledWith(null, "", "/auth/confirm");
+    });
+  });
+
+  it("should establish an SSO session and return to the requested area", async () => {
+    window.location.hash = "#access_token=acc123&refresh_token=ref456&type=magiclink";
+    window.location.search = "?handoff=sso&returnTo=%2Faccount&institutionId=11111111-1111-4111-8111-111111111111";
+
+    (supabase.auth.signOut as any).mockResolvedValue({});
+    (supabase.auth.setSession as any).mockResolvedValue({ error: null });
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "admin@example.com" } },
+      error: null,
+    });
+
+    render(
+      <MemoryRouter>
+        <AuthConfirm />
+      </MemoryRouter>,
+    );
+
+    await waitFor(() => {
+      expect(supabase.auth.setSession).toHaveBeenCalledWith({
+        access_token: "acc123",
+        refresh_token: "ref456",
+      });
+      expect(mockNavigate).toHaveBeenCalledWith('/account', {
+        replace: true,
+      });
+      expect(
+        window.localStorage.getItem(
+          'edumanager.currentInstitutionId.user-123',
+        ),
+      ).toBe('11111111-1111-4111-8111-111111111111');
+      expect(sessionStorage.getItem("invite_context")).toBeNull();
     });
   });
 

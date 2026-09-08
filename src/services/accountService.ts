@@ -20,10 +20,14 @@ export interface AccountOwnerSummary {
 export interface AccountInstitutionSummary {
   id: string;
   name: string;
+  subdomain?: string | null;
   active: boolean | null;
   account_id: string | null;
   logoUrl: string | null;
   publicSlug: string | null;
+  suspendedByProfileId?: string | null;
+  suspendedByScope?: 'PLATFORM' | 'ACCOUNT' | null;
+  suspendedAt?: string | null;
 }
 
 export interface AccountSummaryRow {
@@ -34,6 +38,20 @@ export interface AccountSummaryRow {
   activeInstitutionCount: number;
   owner: AccountOwnerSummary | null;
   institutions: AccountInstitutionSummary[];
+  invitation?: ClientAdminInvitationSummary | null;
+}
+
+export type ClientAdminInvitationStatus =
+  | 'PENDING'
+  | 'SENT'
+  | 'ACCEPTED';
+
+export interface ClientAdminInvitationSummary {
+  id: string;
+  status: ClientAdminInvitationStatus;
+  attemptCount: number;
+  lastAttemptAt: string | null;
+  sentAt: string | null;
 }
 
 export interface CreateClientAccountInput {
@@ -50,7 +68,32 @@ export interface CreateClientAccountResponse {
   ownerEmail: string;
   institutionLimit: number;
   invitationSent: boolean;
+  invitationStatus: 'PENDING' | 'SENT';
   reusedExistingUser: boolean;
+}
+
+export interface ResendClientAdminInviteInput {
+  accountId: string;
+}
+
+export interface ResendClientAdminInviteResponse {
+  success: true;
+  accountId: string;
+  ownerProfileId: string;
+  ownerEmail: string;
+  invitationSent: boolean;
+  invitationStatus: 'PENDING' | 'SENT';
+}
+
+export interface UpdateClientAdminPasswordInput {
+  accountId: string;
+  password: string;
+}
+
+export interface UpdateClientAdminPasswordResponse {
+  success: true;
+  accountId: string;
+  sessionRevocation: 'NOT_SUPPORTED';
 }
 
 export interface UpdateClientAccountInput {
@@ -91,16 +134,33 @@ export interface AccountStatusEvent {
   createdAt: string;
 }
 
+export interface RestoreClientAccountInput {
+  accountId: string;
+  reason: string;
+}
+
+export type RestoreClientAccountResponse =
+  UpdateClientAccountResponse;
+
 export interface DeleteClientAccountInput {
   accountId: string;
+  reason: string;
+  confirmationEmail: string;
+  confirmationText: string;
+  acknowledgement: true;
 }
 
 export interface DeleteClientAccountResponse {
   success: true;
   accountId: string;
-  ownerProfileId: string;
+  accountName: string;
+  auditId: string;
+  summary: Record<string, number>;
   ownerPreserved: boolean;
-  deletedAuthUser: boolean;
+  exclusiveProfileIds: string[];
+  sharedProfileIds: string[];
+  deletedAuthUsers: number;
+  authDeletionFailed: number;
 }
 
 export interface CreateInstitutionInput {
@@ -127,13 +187,40 @@ export interface UpdateInstitutionStatusInput {
   active: boolean;
 }
 
+export interface UpdateInstitutionNameInput {
+  institutionId: string;
+  name: string;
+}
+
+export interface UpdateInstitutionNameResponse {
+  success: true;
+  institutionId: string;
+  name: string;
+}
+
 export interface UpdateInstitutionStatusResponse {
   success: true;
   institutionId: string;
   active: boolean;
+  suspendedByScope: 'PLATFORM' | 'ACCOUNT' | null;
   currentInstitutionCount: number;
   institutionLimit: number;
   remainingSlots: number;
+}
+
+export interface DeleteInstitutionInput {
+  accountId: string;
+  institutionId: string;
+}
+
+export interface DeleteInstitutionResponse {
+  success: true;
+  institutionId: string;
+  accountId: string;
+  currentInstitutionCount: number;
+  institutionLimit: number;
+  remainingSlots: number;
+  summary: Record<string, number>;
 }
 
 interface AccountQueryRow {
@@ -146,9 +233,33 @@ interface AccountQueryRow {
     | AccountOwnerSummary[]
     | null;
   institutions:
-    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })
-    | (AccountInstitutionSummary & { logo_url: string | null; public_slug: string | null; })[]
+    | (AccountInstitutionSummary & {
+        logo_url: string | null;
+        public_slug: string | null;
+        suspended_by_profile_id: string | null;
+        suspended_by_scope: string | null;
+        suspended_at: string | null;
+      })
+    | (AccountInstitutionSummary & {
+        logo_url: string | null;
+        public_slug: string | null;
+        suspended_by_profile_id: string | null;
+        suspended_by_scope: string | null;
+        suspended_at: string | null;
+      })[]
     | null;
+  client_admin_invitations?:
+    | ClientAdminInvitationQueryRow
+    | ClientAdminInvitationQueryRow[]
+    | null;
+}
+
+interface ClientAdminInvitationQueryRow {
+  id: string;
+  status: string;
+  attempt_count: number;
+  last_attempt_at: string | null;
+  sent_at: string | null;
 }
 
 interface FunctionErrorBody {
@@ -225,17 +336,39 @@ function normalizeStatus(
   return 'ACTIVE';
 }
 
+function normalizeInvitationStatus(
+  value: string,
+): ClientAdminInvitationStatus {
+  if (value === 'SENT' || value === 'ACCEPTED') {
+    return value;
+  }
+
+  return 'PENDING';
+}
+
 function normalizeAccountRow(
   row: AccountQueryRow,
 ): AccountSummaryRow {
-  const institutions = normalizeRelationList(row.institutions).map((inst) => ({
-    id: inst.id,
-    name: inst.name,
-    active: inst.active,
-    account_id: inst.account_id,
-    logoUrl: inst.logo_url ?? null,
-    publicSlug: inst.public_slug ?? null,
-  })).sort((first, second) =>
+  const institutions = normalizeRelationList(row.institutions).map((inst) => {
+    const suspendedByScope: AccountInstitutionSummary['suspendedByScope'] =
+      inst.suspended_by_scope === 'PLATFORM' ||
+      inst.suspended_by_scope === 'ACCOUNT'
+        ? inst.suspended_by_scope
+        : null;
+
+    return {
+      id: inst.id,
+      name: inst.name,
+      subdomain: inst.subdomain ?? null,
+      active: inst.active,
+      account_id: inst.account_id,
+      logoUrl: inst.logo_url ?? null,
+      publicSlug: inst.public_slug ?? null,
+      suspendedByProfileId: inst.suspended_by_profile_id ?? null,
+      suspendedByScope,
+      suspendedAt: inst.suspended_at ?? null,
+    };
+  }).sort((first, second) =>
     first.name.localeCompare(second.name, 'pt-BR'),
   );
 
@@ -249,6 +382,21 @@ function normalizeAccountRow(
     ).length,
     owner: normalizeRelation(row.profiles),
     institutions,
+    invitation: (() => {
+      const invitation = normalizeRelation(
+        row.client_admin_invitations ?? null,
+      );
+
+      return invitation
+        ? {
+            id: invitation.id,
+            status: normalizeInvitationStatus(invitation.status),
+            attemptCount: invitation.attempt_count,
+            lastAttemptAt: invitation.last_attempt_at,
+            sentAt: invitation.sent_at,
+          }
+        : null;
+    })(),
   };
 }
 
@@ -394,8 +542,82 @@ function assertCreateAccountResponse(
     ownerEmail: requireString(value, 'ownerEmail'),
     institutionLimit: requireNumber(value, 'institutionLimit'),
     invitationSent: requireBoolean(value, 'invitationSent'),
+    invitationStatus:
+      value.invitationStatus === 'SENT' ? 'SENT' : 'PENDING',
     reusedExistingUser: requireBoolean(value, 'reusedExistingUser'),
   };
+}
+
+function assertResendClientAdminInviteResponse(
+  value: unknown,
+): ResendClientAdminInviteResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    accountId: requireString(value, 'accountId'),
+    ownerProfileId: requireString(value, 'ownerProfileId'),
+    ownerEmail: requireString(value, 'ownerEmail'),
+    invitationSent: requireBoolean(value, 'invitationSent'),
+    invitationStatus:
+      value.invitationStatus === 'SENT' ? 'SENT' : 'PENDING',
+  };
+}
+
+function assertUpdateClientAdminPasswordResponse(
+  value: unknown,
+): UpdateClientAdminPasswordResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return {
+    success: requireTrue(value, 'success'),
+    accountId: requireString(value, 'accountId'),
+    sessionRevocation: 'NOT_SUPPORTED',
+  };
+}
+
+function assertInstitutionSsoHandoffResponse(
+  value: unknown,
+): string {
+  if (
+    !isRecord(value) ||
+    value.success !== true ||
+    typeof value.actionLink !== 'string' ||
+    !value.actionLink.startsWith('https://')
+  ) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  return value.actionLink;
+}
+
+export async function createInstitutionSsoHandoff(
+  institutionId: string,
+): Promise<string> {
+  const { data, error } =
+    await supabase.functions.invoke(
+      'institution-sso-handoff',
+      { body: { institutionId } },
+    );
+
+  if (error) {
+    throw await getFunctionError(error);
+  }
+
+  return assertInstitutionSsoHandoffResponse(data);
 }
 
 function assertUpdateAccountResponse(
@@ -493,6 +715,11 @@ function assertUpdateInstitutionStatusResponse(
     success: requireTrue(value, 'success'),
     institutionId: requireString(value, 'institutionId'),
     active: requireBoolean(value, 'active'),
+    suspendedByScope:
+      value.suspendedByScope === 'PLATFORM' ||
+      value.suspendedByScope === 'ACCOUNT'
+        ? value.suspendedByScope
+        : null,
     currentInstitutionCount: requireNumber(
       value,
       'currentInstitutionCount',
@@ -500,6 +727,77 @@ function assertUpdateInstitutionStatusResponse(
     institutionLimit: requireNumber(value, 'institutionLimit'),
     remainingSlots: requireNumber(value, 'remainingSlots'),
   };
+}
+
+function assertDeleteInstitutionResponse(
+  value: unknown,
+): DeleteInstitutionResponse {
+  if (!isRecord(value)) {
+    throw new AccountServiceError(
+      'A funcao respondeu em um formato invalido.',
+      'INVALID_FUNCTION_RESPONSE',
+    );
+  }
+
+  const rawSummary = value.summary;
+  const summary =
+    typeof rawSummary === 'object' &&
+    rawSummary !== null &&
+    !Array.isArray(rawSummary)
+      ? (rawSummary as Record<string, number>)
+      : {};
+
+  return {
+    success: requireTrue(value, 'success'),
+    institutionId: requireString(value, 'institutionId'),
+    accountId: requireString(value, 'accountId'),
+    currentInstitutionCount: requireNumber(
+      value,
+      'currentInstitutionCount',
+    ),
+    institutionLimit: requireNumber(value, 'institutionLimit'),
+    remainingSlots: requireNumber(value, 'remainingSlots'),
+    summary,
+  };
+}
+
+function assertRestoreAccountResponse(
+  value: unknown,
+): RestoreClientAccountResponse {
+  if (
+    isRecord(value) &&
+    value.success === true &&
+    typeof value.accountId === 'string' &&
+    typeof value.institutionLimit === 'number' &&
+    typeof value.status === 'string'
+  ) {
+    const status = normalizeStatus(value.status);
+    const previousStatus =
+      typeof value.previousStatus === 'string'
+        ? normalizeStatus(value.previousStatus)
+        : status;
+
+    return {
+      success: true,
+      accountId: value.accountId,
+      institutionLimit: value.institutionLimit,
+      previousStatus,
+      status,
+      auditEventId:
+        typeof value.auditEventId === 'string'
+          ? value.auditEventId
+          : null,
+      statusChanged:
+        typeof value.statusChanged === 'boolean'
+          ? value.statusChanged
+          : previousStatus !== status,
+    };
+  }
+
+  throw new AccountServiceError(
+    'A funcao respondeu em um formato invalido.',
+    'INVALID_FUNCTION_RESPONSE',
+  );
 }
 
 function assertDeleteAccountResponse(
@@ -515,9 +813,39 @@ function assertDeleteAccountResponse(
   return {
     success: requireTrue(value, 'success'),
     accountId: requireString(value, 'accountId'),
-    ownerProfileId: requireString(value, 'ownerProfileId'),
+    accountName: requireString(value, 'accountName'),
+    auditId: requireString(value, 'auditId'),
+    summary: (() => {
+      const raw = value.summary;
+      if (
+        typeof raw === 'object' &&
+        raw !== null &&
+        !Array.isArray(raw)
+      ) {
+        return raw as Record<string, number>;
+      }
+      throw new AccountServiceError(
+        'A funcao respondeu em um formato invalido.',
+        'INVALID_FUNCTION_RESPONSE',
+      );
+    })(),
     ownerPreserved: requireBoolean(value, 'ownerPreserved'),
-    deletedAuthUser: requireBoolean(value, 'deletedAuthUser'),
+    exclusiveProfileIds: (() => {
+      const raw = value.exclusiveProfileIds;
+      if (Array.isArray(raw)) {
+        return raw.map(String);
+      }
+      return [];
+    })(),
+    sharedProfileIds: (() => {
+      const raw = value.sharedProfileIds;
+      if (Array.isArray(raw)) {
+        return raw.map(String);
+      }
+      return [];
+    })(),
+    deletedAuthUsers: requireNumber(value, 'deletedAuthUsers'),
+    authDeletionFailed: requireNumber(value, 'authDeletionFailed'),
   };
 }
 
@@ -542,11 +870,22 @@ export const accountService = {
         institutions (
           id,
           name,
+          subdomain,
           active,
           account_id,
           logo_url,
-          public_slug
-        )
+          public_slug,
+           suspended_by_profile_id,
+           suspended_by_scope,
+           suspended_at
+         ),
+         client_admin_invitations:client_admin_invitations (
+           id,
+           status,
+           attempt_count,
+           last_attempt_at,
+           sent_at
+         )
       `,
       )
       .order('created_at', {
@@ -583,11 +922,22 @@ export const accountService = {
         institutions (
           id,
           name,
+          subdomain,
           active,
           account_id,
           logo_url,
-          public_slug
-        )
+          public_slug,
+           suspended_by_profile_id,
+           suspended_by_scope,
+           suspended_at
+         ),
+         client_admin_invitations:client_admin_invitations (
+           id,
+           status,
+           attempt_count,
+           last_attempt_at,
+           sent_at
+         )
       `,
       )
       .eq('owner_profile_id', profileId)
@@ -620,6 +970,36 @@ export const accountService = {
     return assertCreateAccountResponse(data);
   },
 
+  async resendClientAdminInvite(
+    input: ResendClientAdminInviteInput,
+  ): Promise<ResendClientAdminInviteResponse> {
+    const { data, error } = await supabase.functions.invoke(
+      'resend-client-admin-invite',
+      { body: input },
+    );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertResendClientAdminInviteResponse(data);
+  },
+
+  async updateClientAdminPassword(
+    input: UpdateClientAdminPasswordInput,
+  ): Promise<UpdateClientAdminPasswordResponse> {
+    const { data, error } = await supabase.functions.invoke(
+      'update-client-admin-password',
+      { body: input },
+    );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertUpdateClientAdminPasswordResponse(data);
+  },
+
   async updateAccount(
     input: UpdateClientAccountInput,
   ): Promise<UpdateClientAccountResponse> {
@@ -644,6 +1024,22 @@ export const accountService = {
       status: 'CANCELED',
       reason: input.reason,
     });
+  },
+
+  async restoreAccount(
+    input: RestoreClientAccountInput,
+  ): Promise<RestoreClientAccountResponse> {
+    const { data, error } =
+      await supabase.functions.invoke(
+        'restore-client-account',
+        { body: input },
+      );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertRestoreAccountResponse(data);
   },
 
   async listAccountStatusEvents(
@@ -711,6 +1107,66 @@ export const accountService = {
     return assertUpdateInstitutionStatusResponse(data);
   },
 
+  async updateInstitutionName(
+    input: UpdateInstitutionNameInput,
+  ): Promise<UpdateInstitutionNameResponse> {
+    const normalizedName = input.name.trim();
+
+    if (!normalizedName) {
+      throw new AccountServiceError(
+        'Informe o nome da instituicao.',
+        'INVALID_INSTITUTION_NAME',
+      );
+    }
+
+    const { data, error } = await supabase.rpc(
+      'update_admin_institution_name',
+      {
+        target_institution_id: input.institutionId,
+        new_name: normalizedName,
+      },
+    );
+
+    if (error) {
+      throw error;
+    }
+
+    const row = Array.isArray(data) ? data[0] : null;
+
+    if (
+      !isRecord(row) ||
+      typeof row.id !== 'string' ||
+      typeof row.name !== 'string'
+    ) {
+      throw new AccountServiceError(
+        'Instituicao nao encontrada ou sem permissao para alterar.',
+        'INSTITUTION_NOT_FOUND',
+      );
+    }
+
+    return {
+      success: true,
+      institutionId: row.id,
+      name: row.name,
+    };
+  },
+
+  async deleteInstitution(
+    input: DeleteInstitutionInput,
+  ): Promise<DeleteInstitutionResponse> {
+    const { data, error } =
+      await supabase.functions.invoke(
+        'delete-institution',
+        { body: input },
+      );
+
+    if (error) {
+      throw await getFunctionError(error);
+    }
+
+    return assertDeleteInstitutionResponse(data);
+  },
+
   async deleteAccount(
     input: DeleteClientAccountInput,
   ): Promise<DeleteClientAccountResponse> {
@@ -725,5 +1181,15 @@ export const accountService = {
     }
 
     return assertDeleteAccountResponse(data);
+  },
+
+  async restoreAccountOld(
+    input: RestoreClientAccountInput,
+  ): Promise<RestoreClientAccountResponse> {
+    return accountService.updateAccount({
+      accountId: input.accountId,
+      status: 'ACTIVE',
+      reason: input.reason,
+    });
   },
 };

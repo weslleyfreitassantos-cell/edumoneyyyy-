@@ -20,6 +20,7 @@ export interface SchoolUserRow {
   role: CurrentDatabaseRole;
   active: boolean;
   joined_at?: string;
+  cpf?: string | null;
   profile: SchoolUserProfileSummary | null;
 }
 
@@ -34,6 +35,11 @@ interface SchoolUserQueryRow {
     | SchoolUserProfileSummary
     | SchoolUserProfileSummary[]
     | null;
+}
+
+interface SchoolUserStudentCpfRow {
+  profile_id: string;
+  cpf: string | null;
 }
 
 function normalizeRelation<T>(
@@ -129,10 +135,40 @@ export const schoolUserService = {
         active: row.active ?? false,
         joined_at:
           row.joined_at ?? undefined,
+        cpf: null,
         profile: normalizeRelation(
           row.profiles,
         ),
-      }));
+    }));
+
+    const studentProfileIds = users
+      .filter((user) => user.role === 'STUDENT')
+      .map((user) => user.profile_id);
+
+    if (studentProfileIds.length > 0) {
+      const {
+        data: studentRows,
+        error: studentError,
+      } = await supabase
+        .from('students')
+        .select('profile_id, cpf')
+        .eq('institution_id', institutionId)
+        .in('profile_id', studentProfileIds);
+
+      if (studentError) {
+        throw studentError;
+      }
+
+      const cpfByProfileId = new Map(
+        ((studentRows ?? []) as SchoolUserStudentCpfRow[]).map(
+          (student) => [student.profile_id, student.cpf],
+        ),
+      );
+
+      for (const user of users) {
+        user.cpf = cpfByProfileId.get(user.profile_id) ?? null;
+      }
+    }
 
     return users.sort(compareSchoolUsers);
   },

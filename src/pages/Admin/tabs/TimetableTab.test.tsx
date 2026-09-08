@@ -236,15 +236,25 @@ describe('TimetableTab', () => {
   it('alterna para visualizacao de salas', () => {
     renderTab();
     fireEvent.click(screen.getByText('Salas'));
+    expect(screen.getByText('Crie e organize as salas da escola')).toBeTruthy();
+    expect(screen.getByText(/Geração automática:/i)).toBeTruthy();
     expect(screen.getByText('Sala 01')).toBeTruthy();
     expect(screen.getByText('Sala 02')).toBeTruthy();
   });
 
-  it('abre modal de sala ao clicar em Adicionar sala', () => {
+  it('abre a aba de salas diretamente quando a rota solicita view=rooms', () => {
+    renderTab('/admin?module=timetable&view=rooms');
+    expect(screen.getByText('Crie e organize as salas da escola')).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Criar sala manualmente/i })).toBeTruthy();
+  });
+
+  it('abre modal de sala ao clicar em Criar sala manualmente', () => {
     renderTab();
     fireEvent.click(screen.getByText('Salas'));
-    fireEvent.click(screen.getByText(/Adicionar sala/i));
+    fireEvent.click(screen.getByRole('button', { name: /Criar sala manualmente/i }));
     expect(screen.getByLabelText(/nome da sala/i)).toBeTruthy();
+    expect(screen.getByLabelText(/turma vinculada/i)).toBeTruthy();
+    expect(screen.getByText(/O vínculo com a turma é opcional/i)).toBeTruthy();
   });
 
   it('mostra mensagem amigavel em erro RLS ao criar sala', async () => {
@@ -256,10 +266,10 @@ describe('TimetableTab', () => {
 
     renderTab();
     fireEvent.click(screen.getByText('Salas'));
-    fireEvent.click(screen.getByText(/Adicionar sala/i));
+    fireEvent.click(screen.getByRole('button', { name: /Criar sala manualmente/i }));
 
     fireEvent.change(screen.getByLabelText(/nome da sala/i), { target: { value: 'Sala Teste' } });
-    fireEvent.click(screen.getAllByText('Criar')[0]);
+    fireEvent.click(screen.getByRole('button', { name: 'Criar sala' }));
 
     expect(await screen.findByText('Você não tem permissão para alterar a grade horária desta instituição.')).toBeTruthy();
   });
@@ -276,7 +286,7 @@ describe('TimetableTab', () => {
     fireEvent.click(buttons[0]);
 
     const turmaSelects = screen.getAllByLabelText('Turma');
-    fireEvent.change(turmaSelects[1], { target: { value: '1A' } });
+    fireEvent.change(turmaSelects[1], { target: { value: 'class-1' } });
     fireEvent.change(screen.getByLabelText(/disciplina \/ professor \/ período/i), { target: { value: OFFERING_1_UUID } });
     fireEvent.change(screen.getByLabelText('Dia'), { target: { value: '2' } });
     fireEvent.click(screen.getAllByText('Salvar')[0]);

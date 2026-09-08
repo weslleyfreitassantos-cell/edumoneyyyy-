@@ -27,6 +27,19 @@ vi.mock("../contexts/ThemeContext", () => ({
   useThemePreference: () => ({ theme: "light" }),
 }));
 
+vi.mock("../hooks/useBranding", () => ({
+  useResolvedBranding: () => ({
+    data: {
+      displayName: "EduManager Pro",
+      logoUrl: null,
+      faviconUrl: null,
+      primaryColor: "#1e3a8a",
+      secondaryColor: "#6ffbbe",
+    },
+    isLoading: false,
+  }),
+}));
+
 describe("SetPassword", () => {
   const mockNavigate = vi.fn();
 
@@ -146,6 +159,50 @@ describe("SetPassword", () => {
       expect(supabase.auth.signOut).toHaveBeenCalledWith({ scope: "local" });
       expect(screen.getByText("Sucesso")).toBeDefined();
       expect(sessionStorage.getItem("invite_context")).toBeNull();
+    });
+  });
+
+  it("should accept any password with at least 8 characters", async () => {
+    sessionStorage.setItem(
+      "invite_context",
+      JSON.stringify({
+        userId: "user-123",
+        email: "test@example.com",
+        verifiedAt: Date.now(),
+        purpose: "invite",
+      })
+    );
+
+    (supabase.auth.getUser as any).mockResolvedValue({
+      data: { user: { id: "user-123", email: "test@example.com" } },
+      error: null,
+    });
+    (supabase.auth.updateUser as any).mockResolvedValue({ error: null });
+    (supabase.auth.signOut as any).mockResolvedValue({});
+
+    render(
+      <MemoryRouter>
+        <SetPassword />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText(/Defina sua senha/i)).toBeDefined();
+    });
+
+    fireEvent.change(screen.getByLabelText(/Nova senha/i), {
+      target: { value: "12345678" },
+    });
+    fireEvent.change(screen.getByLabelText(/Confirme a senha/i), {
+      target: { value: "12345678" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: /Definir senha e acessar/i }));
+
+    await waitFor(() => {
+      expect(supabase.auth.updateUser).toHaveBeenCalledWith({
+        password: "12345678",
+      });
     });
   });
 

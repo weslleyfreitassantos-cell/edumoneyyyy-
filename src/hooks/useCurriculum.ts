@@ -3,6 +3,7 @@ import { adminOverviewKeys } from './useAdminOverview';
 import { classKeys } from './useClasses';
 import { subjectKeys } from './useSubjects';
 import { assignmentKeys } from './useAssignments';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   curriculumService,
   type CurriculumItemRow,
@@ -25,6 +26,7 @@ function invalidateCurriculum(
     queryClient.invalidateQueries({ queryKey: subjectKeys.list(institutionId) }),
     queryClient.invalidateQueries({ queryKey: assignmentKeys.list(institutionId) }),
     queryClient.invalidateQueries({ queryKey: adminOverviewKeys.detail(institutionId) }),
+    invalidateSchoolSetupReadiness(queryClient, institutionId),
   ]);
 }
 
@@ -58,6 +60,17 @@ export function useUpdateCurriculumItem() {
       institutionId: string;
       data: CurriculumUpdateData;
     }) => curriculumService.update(id, institutionId, data),
+    onSuccess: async (_result, variables) => {
+      await invalidateCurriculum(queryClient, variables.institutionId);
+    },
+  });
+}
+
+export function useDeleteCurriculumItem() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: ({ id, institutionId }: { id: string; institutionId: string }) =>
+      curriculumService.delete(id, institutionId),
     onSuccess: async (_result, variables) => {
       await invalidateCurriculum(queryClient, variables.institutionId);
     },

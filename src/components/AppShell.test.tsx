@@ -133,6 +133,7 @@ function mockContexts(
 
   mockedUseAuthProfileActions.mockReturnValue({
     updateProfileName,
+    updateSelfRegistration: vi.fn(async () => undefined),
     updatePassword,
   });
 
@@ -144,6 +145,7 @@ function mockContexts(
     currentRole:
       overrides.currentRole ?? 'ADMIN',
     isLoading: false,
+    isSwitchingInstitution: false,
     error: null,
     hasMultipleInstitutions: false,
     setCurrentInstitutionId: vi.fn(
@@ -193,20 +195,44 @@ describe('getRouteVisualContext', () => {
     expect(
       getRouteVisualContext('/platform', 'super_admin'),
     ).toEqual({
-      section: 'Plataforma',
-      title: 'Instituições',
+      section: '',
+      title: '',
     });
     expect(
       getRouteVisualContext('/admin', 'director'),
     ).toEqual({
-      section: 'Administração',
-      title: 'Gestão institucional',
+      section: '',
+      title: '',
     });
     expect(
       getRouteVisualContext('/dashboard', 'parent'),
     ).toEqual({
       section: 'Família',
       title: 'Dependentes e boletins',
+    });
+    expect(
+      getRouteVisualContext('/dashboard/timetable', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Grade de horário',
+    });
+    expect(
+      getRouteVisualContext('/dashboard/timetable', 'teacher'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Grade de horário',
+    });
+    expect(
+      getRouteVisualContext('/terminais', 'director'),
+    ).toEqual({
+      section: '',
+      title: '',
+    });
+    expect(
+      getRouteVisualContext('/email', 'director'),
+    ).toEqual({
+      section: 'Comunicação',
+      title: 'E-mail',
     });
   });
 });
@@ -246,16 +272,16 @@ describe('AppShell', () => {
     renderShell('/admin');
 
     expect(
-      screen.getByRole('heading', {
-        name: /gest/i,
+      screen.queryByRole('heading', {
+        name: /gestão institucional/i,
       }),
-    ).toBeTruthy();
+    ).toBeNull();
     expect(
       screen.getByText('Conteudo da rota'),
     ).toBeTruthy();
     expect(
-      screen.getAllByText(/seletor global/i).length,
-    ).toBeGreaterThan(0);
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
   });
 
   it('inicia com Sidebar desktop aberta e oculta completamente pelo Header', () => {
@@ -387,7 +413,7 @@ describe('AppShell', () => {
     ).toBeGreaterThan(0);
   });
 
-  it('mostra escola estatica e volta para Plataforma para SUPER_ADMIN em /admin', () => {
+  it('oculta escola estatica e volta para Plataforma para SUPER_ADMIN em /admin', () => {
     mockContexts({
       profile: {
         ...profile,
@@ -412,11 +438,13 @@ describe('AppShell', () => {
     renderShell('/admin?module=subjects');
 
     expect(
-      screen.getAllByText('Escola do Saber').length,
-    ).toBeGreaterThan(0);
+      screen.getByRole('heading', {
+        name: 'Escola do Saber',
+      }),
+    ).toBeTruthy();
     expect(
-      screen.getAllByText('Escola selecionada').length,
-    ).toBeGreaterThan(0);
+      screen.queryByText('Escola selecionada'),
+    ).toBeNull();
     expect(
       screen.queryByText(/seletor global/i),
     ).toBeNull();
@@ -430,7 +458,7 @@ describe('AppShell', () => {
     );
   });
 
-  it('mantem seletor para ADMIN institucional', () => {
+  it('oculta seletor para ADMIN institucional', () => {
     mockContexts({
       profile,
       currentRole: 'ADMIN',
@@ -450,11 +478,11 @@ describe('AppShell', () => {
     renderShell('/admin');
 
     expect(
-      screen.getAllByText(/seletor global/i).length,
-    ).toBeGreaterThan(0);
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
   });
 
-  it('mantem seletor para DIRECTOR institucional', () => {
+  it('oculta seletor para DIRECTOR institucional', () => {
     mockContexts({
       profile: {
         ...profile,
@@ -477,8 +505,31 @@ describe('AppShell', () => {
     renderShell('/admin');
 
     expect(
-      screen.getAllByText(/seletor global/i).length,
-    ).toBeGreaterThan(0);
+      screen.queryByText(/seletor global/i),
+    ).toBeNull();
+  });
+
+  it('usa o papel do vínculo da instituição selecionada', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'STUDENT',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderShell('/dashboard');
+
+    expect(
+      screen.getByRole('link', {
+        name: /visão geral/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /^dashboard$/i,
+      }),
+    ).toBeNull();
   });
 
   it('abre e fecha o drawer mobile pelo botao com foco restaurado', async () => {
@@ -629,7 +680,7 @@ describe('AppShell', () => {
     fireEvent.click(getMobileMenuButton());
     fireEvent.click(
       screen.getByRole('link', {
-        name: /administra/i,
+        name: /vis.o geral/i,
       }),
     );
 
@@ -680,12 +731,15 @@ describe('AppShell', () => {
     });
   });
 
-  it('mantem Administracao na navegacao lateral', () => {
+  it('mantem visao geral na navegacao lateral sem item administracao duplicado', () => {
     renderShell('/account');
 
     expect(
-      screen.getByRole('link', { name: /administra/i }),
+      screen.getByRole('link', { name: /vis.o geral/i }),
     ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', { name: /administra/i }),
+    ).toBeNull();
   });
 
   it('conecta Minha conta às ações do perfil autenticado', async () => {

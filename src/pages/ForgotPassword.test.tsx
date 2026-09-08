@@ -220,7 +220,7 @@ describe('ForgotPassword', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText(/Muitas solicitacoes/i),
+        screen.getByText(/Limite temporario de envio/i),
       ).toBeDefined();
       expect(
         screen.queryByText(/nao cadastrado/i),

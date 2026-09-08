@@ -14,6 +14,7 @@ import type {
   AccountDomain,
   AccountDomainStatus,
 } from '../../services/brandingService';
+import { ActionGroup } from '../ActionGroup';
 
 const statusLabels: Record<AccountDomainStatus, string> = {
   PENDING: 'Pendente',
@@ -304,7 +305,7 @@ export function PlatformDomainRequestsSection({
                 <th className="py-2 pr-4 font-bold">Status</th>
                 <th className="py-2 pr-4 font-bold">Solicitado em</th>
                 <th className="py-2 pr-4 font-bold">Tipo</th>
-                <th className="py-2 font-bold">Acoes</th>
+                <th className="py-2 font-bold">Ações</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#e4e8f1]">
@@ -326,7 +327,7 @@ export function PlatformDomainRequestsSection({
                     {domain.isPrimary ? 'Principal' : 'Secundario'}
                   </td>
                   <td className="py-3">
-                    <div className="flex flex-wrap gap-2">
+                    <ActionGroup>
                       <button
                         type="button"
                         disabled={
@@ -367,7 +368,7 @@ export function PlatformDomainRequestsSection({
                         />
                         Desativar
                       </button>
-                    </div>
+                    </ActionGroup>
                   </td>
                 </tr>
               ))}

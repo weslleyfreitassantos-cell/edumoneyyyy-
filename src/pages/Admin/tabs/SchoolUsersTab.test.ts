@@ -3,6 +3,7 @@
 import { createElement } from 'react';
 import {
   cleanup,
+  fireEvent,
   render,
   screen,
 } from '@testing-library/react';
@@ -18,6 +19,7 @@ import {
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 
 vi.mock('../../../contexts/AuthContext', () => ({
@@ -32,6 +34,10 @@ vi.mock('../../../hooks/useSchoolUsers', () => ({
   useSchoolUsers: vi.fn(),
 }));
 
+vi.mock('../../../hooks/useSchoolUserManagement', () => ({
+  useManageSchoolUser: vi.fn(),
+}));
+
 vi.mock(
   './school-users/UnifiedUserInvitePreview',
   () => ({
@@ -43,6 +49,7 @@ import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
 import {
   default as SchoolUsersTab,
   filterSchoolUsers,
+  getSchoolUserAccessStatus,
   getSchoolUserSummary,
 } from './SchoolUsersTab';
 
@@ -52,6 +59,9 @@ const mockedUseCurrentInstitution = vi.mocked(
 );
 const mockedUseSchoolUsers = vi.mocked(
   useSchoolUsers,
+);
+const mockedUseManageSchoolUser = vi.mocked(
+  useManageSchoolUser,
 );
 const mockedUnifiedUserInvitePreview =
   vi.mocked(UnifiedUserInvitePreview);
@@ -161,6 +171,11 @@ function mockTabState({
     isError: false,
     error: null,
   } as ReturnType<typeof useSchoolUsers>);
+
+  mockedUseManageSchoolUser.mockReturnValue({
+    mutate: vi.fn(),
+    isPending: false,
+  } as unknown as ReturnType<typeof useManageSchoolUser>);
 }
 
 beforeEach(() => {
@@ -191,6 +206,29 @@ describe('SchoolUsersTab helpers', () => {
         'direcao@escola.com',
       ).map((user) => user.id),
     ).toEqual(['membership-2']);
+  });
+
+  it('filtra usuarios por CPF com ou sem pontuacao', () => {
+    const student = {
+      ...users[0],
+      cpf: '123.456.789-01',
+    };
+
+    expect(
+      filterSchoolUsers(
+        [student],
+        'ALL',
+        '12345678901',
+      ),
+    ).toHaveLength(1);
+
+    expect(
+      filterSchoolUsers(
+        [student],
+        'ALL',
+        '123.456.789',
+      ),
+    ).toHaveLength(1);
   });
 
   it('filtra usuarios por label de papel', () => {
@@ -226,51 +264,135 @@ describe('SchoolUsersTab helpers', () => {
     expect(summary.byRole.STUDENT).toBe(0);
     expect(summary.byRole.GUARDIAN).toBe(0);
   });
+
+  it('calcula o status efetivo combinando vinculo e perfil', () => {
+    expect(getSchoolUserAccessStatus(users[0])).toEqual({
+      active: true,
+      reason: 'Acesso ativo',
+    });
+
+    expect(getSchoolUserAccessStatus(users[1])).toEqual({
+      active: false,
+      reason: 'Vínculo inativo',
+    });
+
+    expect(
+      getSchoolUserAccessStatus({
+        ...users[0],
+        profile: {
+          ...users[0].profile!,
+          active: false,
+        },
+      }),
+    ).toEqual({
+      active: false,
+      reason: 'Perfil inativo',
+    });
+  });
 });
 
 describe('SchoolUsersTab integration', () => {
-  it('passa a instituicao ativa para o cadastro unificado', () => {
+  it('remove o cadastro unificado da lista geral de usuarios', () => {
     render(createElement(SchoolUsersTab));
 
+    expect(mockedUnifiedUserInvitePreview).not.toHaveBeenCalled();
+  });
+
+  it('mantem o cadastro especifico quando a lista e restrita a um papel', () => {
+    render(
+      createElement(SchoolUsersTab, {
+        fixedRole: 'SECRETARY',
+        inviteTargets: ['SECRETARY'],
+        inviteHeading: 'Cadastro de secretaria',
+      }),
+    );
+
     expect(
-      mockedUnifiedUserInvitePreview.mock
-        .calls[0]?.[0],
+      mockedUnifiedUserInvitePreview.mock.calls[0]?.[0],
     ).toEqual(
       expect.objectContaining({
         institutionId: 'institution-1',
         currentRole: 'ADMIN',
         hasActiveInstitution: true,
+        allowedTargets: ['SECRETARY'],
+        heading: 'Cadastro de secretaria',
       }),
     );
   });
 
-  it('habilita novo usuario para ADMIN ativo', () => {
+  it('mostra acoes de editar e excluir usuarios', () => {
     render(createElement(SchoolUsersTab));
 
     expect(
-      screen
-        .getByRole('button', {
-          name: /Novo/,
-        })
-        .hasAttribute('disabled'),
-    ).toBe(false);
+      screen.getByRole('button', {
+        name: /Editar Ana Admin/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', {
+        name: /Excluir Ana Admin/i,
+      }),
+    ).toBeTruthy();
   });
 
-  it('desabilita novo usuario sem permissao efetiva', () => {
-    mockTabState({
-      currentRole: 'TEACHER',
-    });
-
+  it('remove a geracao de senha aleatoria e mantem a senha manual na edicao', () => {
     render(createElement(SchoolUsersTab));
 
     expect(
-      screen
-        .getByRole('button', {
-          name: /Novo/,
-        })
-        .hasAttribute('disabled'),
-    ).toBe(true);
+      screen.queryByRole('button', {
+        name: /Gerar nova senha de acesso/i,
+      }),
+    ).toBeNull();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Editar Ana Admin/i,
+      }),
+    );
+
+    expect(screen.getByLabelText('Nova senha')).toBeTruthy();
   });
+
+  it('limita a lista a dez usuarios por pagina e permite avancar', () => {
+    const manyUsers = Array.from(
+      { length: 11 },
+      (_, index) => ({
+        ...users[0],
+        id: `membership-${index + 10}`,
+        profile_id: `profile-${index + 10}`,
+        profile: {
+          ...users[0].profile,
+          full_name: `Aluno ${String(index + 1).padStart(2, '0')}`,
+          email: `aluno${index + 1}@escola.com`,
+        },
+      }),
+    );
+
+    mockedUseSchoolUsers.mockReturnValue({
+      data: manyUsers,
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolUsers>);
+
+    render(createElement(SchoolUsersTab));
+
+    expect(screen.getByText('Página 1 de 2')).toBeTruthy();
+    expect(screen.getByText('Aluno 01')).toBeTruthy();
+    expect(screen.getByText('Aluno 06')).toBeTruthy();
+    expect(screen.queryByText('Aluno 07')).toBeNull();
+    expect(screen.queryByText('Aluno 11')).toBeNull();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Próxima página',
+      }),
+    );
+
+    expect(screen.getByText('Página 2 de 2')).toBeTruthy();
+    expect(screen.getByText('Aluno 11')).toBeTruthy();
+  });
+
 
   it('mostra carregamento durante sincronizacao da instituicao sem falsa falta de permissao', () => {
     mockTabState({

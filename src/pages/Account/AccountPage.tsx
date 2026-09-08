@@ -1,13 +1,18 @@
 import {
   Building2,
+  DoorOpen,
   Loader2,
+  PauseCircle,
+  Pencil,
+  PlayCircle,
   Plus,
+  Trash2,
 } from 'lucide-react';
 import {
   useState,
   type FormEvent,
 } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { BrandingEditor } from '../../components/branding/BrandingEditor';
 import { AccountDomainSection } from '../../components/branding/DomainManagement';
@@ -16,9 +21,13 @@ import {
   useInstitution,
   type SelectInstitutionResult,
 } from '../../contexts/InstitutionContext';
+import { AdminInstitutionSubdomainSection } from '../../components/account/AdminInstitutionSubdomainSection';
 import {
   useCreateInstitution,
+  useDeleteInstitution,
   useOwnedAccount,
+  useUpdateInstitutionName,
+  useUpdateInstitutionStatus,
 } from '../../hooks/useAccounts';
 import {
   useAccountBranding,
@@ -27,6 +36,17 @@ import {
   useSaveAccountBranding,
 } from '../../hooks/useBranding';
 import { getAccountStatusLabel } from '../../lib/statusLabels';
+import { getUserFacingErrorMessage } from '../../lib/userFacingError';
+import {
+  clearInstitutionSsoSelectionCookie,
+  getInstitutionEntryUrl,
+  setInstitutionSsoSelectionCookie,
+} from '../../lib/subdomain';
+import {
+  AccountServiceError,
+  createInstitutionSsoHandoff,
+  type AccountInstitutionSummary,
+} from '../../services/accountService';
 
 interface InstitutionFormState {
   name: string;
@@ -44,12 +64,13 @@ const initialForm: InstitutionFormState = {
   address: '',
 };
 
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
+interface InstitutionEditState {
+  id: string;
+  name: string;
+}
 
-  return 'Operacao nao concluida.';
+function getErrorMessage(error: unknown): string {
+  return getUserFacingErrorMessage(error, 'Operação não concluída.');
 }
 
 type SelectInstitutionFailure = Extract<
@@ -76,8 +97,14 @@ function getSelectionFailureMessage(
 export default function AccountPage() {
   const { profile } = useAuth();
   const institutionContext = useInstitution();
+  const navigate = useNavigate();
   const accountQuery = useOwnedAccount(profile?.id);
   const createInstitution = useCreateInstitution(profile?.id);
+  const updateInstitutionName =
+    useUpdateInstitutionName();
+  const updateInstitutionStatus =
+    useUpdateInstitutionStatus();
+  const deleteInstitution = useDeleteInstitution();
   const accountId = accountQuery.data?.id;
   const accountBrandingQuery = useAccountBranding(accountId);
   const saveAccountBranding = useSaveAccountBranding(
@@ -93,13 +120,22 @@ export default function AccountPage() {
   const [feedback, setFeedback] = useState<
     { type: 'success' | 'error'; message: string } | null
   >(null);
+  const [editingInstitution, setEditingInstitution] =
+    useState<InstitutionEditState | null>(null);
+  const [editInstitutionName, setEditInstitutionName] =
+    useState('');
+  const [editInstitutionError, setEditInstitutionError] =
+    useState<string | null>(null);
+  const [editedInstitutionNames, setEditedInstitutionNames] =
+    useState<Record<string, string>>({});
 
   const account = accountQuery.data;
-  const activeCount =
-    account?.activeInstitutionCount ?? 0;
+  const canEditInstitutions = profile?.role === 'ADMIN';
+  const usedLicenses =
+    account?.institutions.length ?? 0;
   const limit = account?.institutionLimit ?? 0;
   const remainingSlots = Math.max(
-    limit - activeCount,
+    limit - usedLicenses,
     0,
   );
   const canCreate =
@@ -166,15 +202,39 @@ export default function AccountPage() {
   }
 
   async function handleSelectInstitution(
-    institutionId: string,
+    institution: AccountInstitutionSummary,
+    shouldNavigate = false,
   ): Promise<void> {
     try {
       const selectionResult =
         await institutionContext.setCurrentInstitutionId(
-          institutionId,
+          institution.id,
         );
 
       if (selectionResult.success === true) {
+        if (shouldNavigate) {
+          const entryUrl = getInstitutionEntryUrl(
+            window.location.hostname,
+            institution.subdomain,
+          );
+
+          if (entryUrl) {
+            setInstitutionSsoSelectionCookie(institution.id);
+            const actionLink =
+              await createInstitutionSsoHandoff(institution.id).catch(
+                (error) => {
+                  clearInstitutionSsoSelectionCookie();
+                  throw error;
+                },
+              );
+            window.location.assign(actionLink);
+            return;
+          }
+
+          navigate('/admin');
+          return;
+        }
+
         setFeedback({
           type: 'success',
           message: 'Instituicao selecionada.',
@@ -190,6 +250,145 @@ export default function AccountPage() {
             'Nao foi possivel selecionar a instituicao. Atualize a lista e tente novamente.',
         });
       }
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: getErrorMessage(error),
+      });
+    }
+  }
+
+  async function handleToggleInstitutionStatus(
+    institutionId: string,
+    active: boolean,
+  ): Promise<void> {
+    setFeedback(null);
+
+    try {
+      await updateInstitutionStatus.mutateAsync({
+        institutionId,
+        active,
+      });
+
+      setFeedback({
+        type: 'success',
+        message: active
+          ? 'Instituição reativada.'
+          : 'Instituição suspensa. A licença continua ocupada.',
+      });
+    } catch (error) {
+      const message = getErrorMessage(error);
+
+      setFeedback({
+        type: 'error',
+        message:
+          error instanceof AccountServiceError &&
+          error.code === 'INSTITUTION_SUSPENDED_BY_PLATFORM'
+            ? 'Esta instituição foi suspensa pela plataforma.'
+            : message,
+      });
+    }
+  }
+
+  function openEditInstitutionDialog(
+    institution: InstitutionEditState,
+  ): void {
+    setFeedback(null);
+    setEditInstitutionError(null);
+    setEditingInstitution(institution);
+    setEditInstitutionName(institution.name);
+  }
+
+  function closeEditInstitutionDialog(): void {
+    setEditingInstitution(null);
+    setEditInstitutionName('');
+    setEditInstitutionError(null);
+  }
+
+  async function handleEditInstitutionName(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+
+    if (!account || !editingInstitution) {
+      return;
+    }
+
+    const normalizedName = editInstitutionName.trim();
+
+    if (!normalizedName) {
+      setEditInstitutionError(
+        'Informe o nome da instituicao.',
+      );
+      return;
+    }
+
+    setEditInstitutionError(null);
+
+    try {
+      await updateInstitutionName.mutateAsync({
+        institutionId: editingInstitution.id,
+        name: normalizedName,
+      });
+
+      setEditedInstitutionNames((current) => ({
+        ...current,
+        [editingInstitution.id]: normalizedName,
+      }));
+
+      if (
+        editingInstitution.id ===
+        institutionContext.currentInstitutionId
+      ) {
+        await institutionContext.refresh();
+      }
+
+      closeEditInstitutionDialog();
+      setFeedback({
+        type: 'success',
+        message: 'Nome da instituicao atualizado.',
+      });
+    } catch (error) {
+      setEditInstitutionError(getErrorMessage(error));
+    }
+  }
+
+  async function handleDeleteInstitution(
+    institutionId: string,
+    institutionName: string,
+  ): Promise<void> {
+    if (!account) {
+      return;
+    }
+
+    const confirmed = window.confirm(
+      `Excluir definitivamente a instituição "${institutionName}"? Esta ação libera uma licença e não pode ser desfeita.`,
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setFeedback(null);
+
+    try {
+      await deleteInstitution.mutateAsync({
+        accountId: account.id,
+        institutionId,
+      });
+
+      if (
+        institutionId ===
+        institutionContext.currentInstitutionId
+      ) {
+        institutionContext.clearCurrentInstitutionSelection();
+      }
+
+      setFeedback({
+        type: 'success',
+        message:
+          'Instituição excluída. A licença foi liberada.',
+      });
     } catch (error) {
       setFeedback({
         type: 'error',
@@ -243,9 +442,9 @@ export default function AccountPage() {
               </h1>
             </div>
             <p className="mt-1 text-sm text-[#727785]">
-              Conta {getAccountStatusLabel(account.status)} ·{' '}
-              {activeCount}/{limit}{' '}
-              instituicoes usadas
+              Conta {getAccountStatusLabel(account.status)} Â·{' '}
+              {usedLicenses}/{limit}{' '}
+              instituições usadas
             </p>
           </div>
         </header>
@@ -272,29 +471,20 @@ export default function AccountPage() {
           </div>
         )}
 
-        <BrandingEditor
-          title="Identidade da conta"
-          description="Esta identidade sera exibida somente nos dominios ativos vinculados a esta conta."
-          branding={accountBrandingQuery.data}
-          isLoading={accountBrandingQuery.isLoading}
-          isSaving={saveAccountBranding.isPending}
-          onSave={(input) =>
-            saveAccountBranding
-              .mutateAsync(input)
-              .then(() => undefined)
-          }
-        />
+        {feedback?.type === 'success' && institutionContext.currentInstitutionId && (
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-800">
+            <span>Escola criada. Agora configure a estrutura acadêmica.</span>
+            <button
+              type="button"
+              onClick={() => navigate('/admin?module=overview')}
+              className="rounded-lg bg-[#005bbf] px-4 py-2 font-bold text-white hover:bg-[#004a9b]"
+            >
+              Configurar escola
+            </button>
+          </div>
+        )}
 
-        <AccountDomainSection
-          domains={accountDomainsQuery.data ?? []}
-          isLoading={accountDomainsQuery.isLoading}
-          isRequesting={requestAccountDomain.isPending}
-          onRequestDomain={(hostname) =>
-            requestAccountDomain
-              .mutateAsync(hostname)
-              .then(() => undefined)
-          }
-        />
+
 
         <section className="grid gap-3 md:grid-cols-3">
           <article className="rounded-lg border border-[#dfe3e8] bg-white p-4">
@@ -315,7 +505,7 @@ export default function AccountPage() {
           </article>
           <article className="rounded-lg border border-[#dfe3e8] bg-white p-4">
             <p className="text-xs font-semibold text-[#727785]">
-              Slots restantes
+              Licenças restantes
             </p>
             <p className="mt-2 text-xl font-bold text-[#181c20]">
               {remainingSlots}
@@ -407,6 +597,10 @@ export default function AccountPage() {
           </button>
         </form>
 
+        {(profile?.role === 'ADMIN' || Boolean(account)) && (
+          <AdminInstitutionSubdomainSection />
+        )}
+
         <section className="rounded-lg border border-[#dfe3e8] bg-white">
           <div className="border-b border-[#dfe3e8] p-5">
             <h2 className="text-lg font-bold text-[#181c20]">
@@ -419,17 +613,36 @@ export default function AccountPage() {
             </div>
           ) : (
             <div className="divide-y divide-[#dfe3e8]">
-              {account.institutions.map((institution) => (
+              {account.institutions.map((institution) => {
+                const isCurrentInstitution =
+                  institution.id ===
+                  institutionContext.currentInstitutionId;
+                const institutionName =
+                  editedInstitutionNames[institution.id] ??
+                  institution.name;
+
+                return (
                 <div
                   key={institution.id}
-                  className="p-4"
+                  className={`p-4 transition-colors ${
+                    isCurrentInstitution
+                      ? 'bg-[#e8f0ff] dark:bg-[#1e3a5f]/80'
+                      : 'dark:bg-transparent'
+                  }`}
                 >
                   <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
                     <div>
-                      <p className="font-semibold text-[#181c20]">
-                        {institution.name}
-                      </p>
-                      <p className="text-xs text-[#727785]">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="font-semibold text-[#181c20] dark:text-[#f8fafc]">
+                          {institutionName}
+                        </p>
+                        {isCurrentInstitution && (
+                          <span className="rounded-full bg-[#dce8ff] px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#b7c8ff] dark:bg-[#0f2f63] dark:text-[#dbeafe] dark:ring-[#60a5fa]/40">
+                            Selecionada
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-[#727785] dark:text-[#cbd5e1]">
                         {institution.active === false
                           ? 'Inativa'
                           : 'Ativa'}
@@ -438,29 +651,162 @@ export default function AccountPage() {
                     <div className="flex flex-wrap gap-2">
                       <button
                         type="button"
+                        disabled={isCurrentInstitution}
                         onClick={() =>
                           void handleSelectInstitution(
-                            institution.id,
+                            institution,
+                            true,
                           )
                         }
-                        className="rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm font-semibold text-[#414754] hover:bg-gray-50"
+                        aria-label={
+                          isCurrentInstitution
+                            ? 'Instituicao selecionada'
+                            : `Entrar em ${institutionName}`
+                        }
+                        title={
+                          isCurrentInstitution
+                            ? 'Selecionada'
+                            : 'Entrar'
+                        }
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#005bbf] text-white hover:bg-[#004a9f] disabled:cursor-default disabled:bg-[#d8deea] disabled:text-[#414754] dark:disabled:bg-[#334155] dark:disabled:text-[#e2e8f0]"
                       >
-                        Selecionar
+                        <DoorOpen className="h-4 w-4" />
+                        <span className="sr-only">
+                          {isCurrentInstitution
+                            ? 'Selecionada'
+                            : 'Entrar'}
+                        </span>
                       </button>
-                      <Link
-                        to="/admin"
-                        className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9f]"
+                      {canEditInstitutions && (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openEditInstitutionDialog({
+                              id: institution.id,
+                              name: institutionName,
+                            })
+                          }
+                          aria-label={`Editar instituicao ${institutionName}`}
+                          title="Editar instituicao"
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-blue-300 text-blue-700 hover:bg-blue-50"
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        disabled={
+                          updateInstitutionStatus.isPending
+                        }
+                        onClick={() =>
+                          void handleToggleInstitutionStatus(
+                            institution.id,
+                            institution.active === false,
+                          )
+                        }
+                        aria-label={`${institution.active === false ? 'Reativar' : 'Suspender'} ${institutionName}`}
+                        title={
+                          institution.active === false
+                            ? 'Reativar'
+                            : 'Suspender'
+                        }
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-orange-300 text-orange-700 hover:bg-orange-50 disabled:cursor-not-allowed disabled:opacity-60"
                       >
-                        Entrar
-                      </Link>
+                        {institution.active === false ? (
+                          <PlayCircle className="h-4 w-4" />
+                        ) : (
+                          <PauseCircle className="h-4 w-4" />
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        disabled={deleteInstitution.isPending}
+                        onClick={() =>
+                          void handleDeleteInstitution(
+                            institution.id,
+                            institutionName,
+                          )
+                        }
+                        aria-label={`Excluir ${institutionName}`}
+                        title="Excluir"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-300 text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </section>
       </div>
+
+      {editingInstitution && (
+        <div
+          role="presentation"
+          className="fixed inset-0 z-50 grid place-items-center bg-slate-950/50 p-4"
+        >
+          <form
+            onSubmit={(event) =>
+              void handleEditInstitutionName(event)
+            }
+            aria-label="Editar instituicao"
+            className="w-full max-w-md rounded-lg border border-[#dfe3e8] bg-white p-5 shadow-xl"
+          >
+            <div>
+              <h2 className="text-lg font-bold text-[#181c20]">
+                Editar instituicao
+              </h2>
+              <p className="mt-1 text-sm text-[#727785]">
+                Altere somente o nome exibido da escola.
+              </p>
+            </div>
+
+            {editInstitutionError && (
+              <div
+                role="alert"
+                className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+              >
+                {editInstitutionError}
+              </div>
+            )}
+
+            <label className="mt-4 block text-sm font-semibold text-[#414754]">
+              Nome da instituicao
+              <input
+                value={editInstitutionName}
+                onChange={(event) =>
+                  setEditInstitutionName(event.target.value)
+                }
+                className="mt-2 w-full rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+              />
+            </label>
+
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={closeEditInstitutionDialog}
+                className="rounded-lg border border-[#dfe3e8] px-4 py-2 text-sm font-semibold text-[#414754] hover:bg-slate-50"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={updateInstitutionName.isPending}
+                className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white hover:bg-[#004a9f] disabled:cursor-not-allowed disabled:bg-gray-300"
+              >
+                {updateInstitutionName.isPending && (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                )}
+                Salvar alteracoes
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
+

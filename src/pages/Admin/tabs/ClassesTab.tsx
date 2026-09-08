@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useMemo,
   useState,
   type FormEvent,
@@ -7,29 +8,61 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 import {
+  Edit3,
+  LoaderCircle,
+  Power,
+  PowerOff,
+  Settings2,
+  Trash2,
+} from 'lucide-react';
+
+import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import ClassAutomationPanel from '../../../components/academic/ClassAutomationPanel';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
+import { useAcademicShiftSettings } from '../../../hooks/useAcademicTermClosing';
 
 import {
   useClasses,
+  useClassDeletionImpact,
   useCreateClass,
+  useDeleteClass,
   useSetClassActive,
   useUpdateClass,
 } from '../../../hooks/useClasses';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import {
+  ACADEMIC_LEVEL_OPTIONS,
+  getAcademicLevelLabel,
+  normalizeAcademicLevel,
+} from '../../../lib/academic/academicLevels';
+import {
+  getPreferredAcademicYear,
+  sortAcademicYearsForSelection,
+} from '../../../lib/academicSelection';
 
 import {
   classSchema,
   classUpdateSchema,
 } from '../../../schemas/adminSchemas';
 
-import type { ClassRow } from '../../../services/classService';
+import {
+  buildClassDeletionBlockedMessage,
+  type ClassRow,
+} from '../../../services/classService';
+import {
+  getAcademicShiftLabel,
+  toAcademicShift,
+  type AcademicShift,
+} from '../../../lib/academic/academicShifts';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface ClassDraft {
   name: string;
@@ -49,41 +82,12 @@ const emptyDraft: ClassDraft = {
   active: true,
 };
 
+const CLASSES_PAGE_SIZE = 10;
+
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativa' : 'Inativa'}
-    </span>
-  );
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function toClassPayload(
@@ -119,6 +123,12 @@ export default function ClassesTab() {
   const yearsQuery =
     useAcademicYears(institutionId);
 
+  const shiftSettingsQuery =
+    useAcademicShiftSettings(institutionId);
+
+  const enabledShifts: AcademicShift[] =
+    shiftSettingsQuery.data ?? ['MATUTINO'];
+
   const createMutation =
     useCreateClass();
 
@@ -128,13 +138,27 @@ export default function ClassesTab() {
   const statusMutation =
     useSetClassActive();
 
+  const deleteMutation =
+    useDeleteClass();
+
   const [isModalOpen, setIsModalOpen] =
+    useState(false);
+
+  const [isAutomationOpen, setIsAutomationOpen] =
     useState(false);
 
   const [
     editingClass,
     setEditingClass,
   ] = useState<ClassRow | null>(null);
+
+  const [deletionCheckClassId, setDeletionCheckClassId] =
+    useState<string | null>(null);
+
+  const deletionImpactQuery = useClassDeletionImpact(
+    institutionId,
+    deletionCheckClassId,
+  );
 
   const [formData, setFormData] =
     useState<ClassDraft>({
@@ -150,6 +174,16 @@ export default function ClassesTab() {
     statusFilter,
     setStatusFilter,
   ] = useState('all');
+
+  const [
+    searchTerm,
+    setSearchTerm,
+  ] = useState('');
+
+  const [
+    currentPage,
+    setCurrentPage,
+  ] = useState(1);
 
   const [
     modalError,
@@ -168,8 +202,14 @@ export default function ClassesTab() {
 
   const years = yearsQuery.data ?? [];
 
+  const yearOptions = useMemo(
+    () => sortAcademicYearsForSelection(years),
+    [years],
+  );
+
   const filteredClasses = useMemo(() => {
     const classes = classesQuery.data ?? [];
+    const normalizedSearch = searchTerm.trim().toLocaleLowerCase('pt-BR');
 
     return classes.filter((classRecord) => {
       const matchesYear =
@@ -184,17 +224,54 @@ export default function ClassesTab() {
         (statusFilter === 'inactive' &&
           !classRecord.active);
 
-      return matchesYear && matchesStatus;
+      const searchableText = [
+        classRecord.name,
+        classRecord.academic_year_name,
+        classRecord.grade_level,
+        getAcademicLevelLabel(classRecord.grade_level),
+        classRecord.shift,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLocaleLowerCase('pt-BR');
+
+      const matchesSearch =
+        !normalizedSearch || searchableText.includes(normalizedSearch);
+
+      return matchesYear && matchesStatus && matchesSearch;
     });
   }, [
     classesQuery.data,
+    searchTerm,
     statusFilter,
     yearFilter,
   ]);
 
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredClasses.length / CLASSES_PAGE_SIZE),
+  );
+
+  const paginatedClasses = useMemo(() => {
+    const startIndex = (currentPage - 1) * CLASSES_PAGE_SIZE;
+    return filteredClasses.slice(
+      startIndex,
+      startIndex + CLASSES_PAGE_SIZE,
+    );
+  }, [currentPage, filteredClasses]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, statusFilter, yearFilter]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
   const isSubmitting =
     createMutation.isPending ||
-    updateMutation.isPending;
+    updateMutation.isPending ||
+    deleteMutation.isPending;
 
   const columns: Column<ClassRow>[] = [
     {
@@ -207,7 +284,7 @@ export default function ClassesTab() {
           </p>
 
           <p className="mt-1 text-xs text-[#727785]">
-            {[row.grade_level, row.shift]
+            {[getAcademicLevelLabel(row.grade_level), row.shift]
               .filter(Boolean)
               .join(' • ') || 'Série e turno não informados'}
           </p>
@@ -230,7 +307,7 @@ export default function ClassesTab() {
     },
     {
       key: 'active_offerings_count',
-      label: 'Ofertas',
+      label: 'Atribuições',
     },
     {
       key: 'active_curriculum_items_count',
@@ -240,7 +317,11 @@ export default function ClassesTab() {
       key: 'active',
       label: 'Status',
       render: (_value, row) => (
-        <StatusBadge active={row.active} />
+        <StatusBadge
+          active={row.active}
+          activeLabel="Ativa"
+          inactiveLabel="Inativa"
+        />
       ),
     },
   ];
@@ -254,10 +335,12 @@ export default function ClassesTab() {
   function openCreateModal(): void {
     resetMessages();
     setEditingClass(null);
+    setDeletionCheckClassId(null);
     setFormData({
       ...emptyDraft,
       academic_year_id:
-        years[0]?.id ?? '',
+        getPreferredAcademicYear(years)?.id ?? '',
+      shift: enabledShifts[0] ?? 'MATUTINO',
     });
     setIsModalOpen(true);
   }
@@ -267,13 +350,14 @@ export default function ClassesTab() {
   ): void {
     resetMessages();
     setEditingClass(classRecord);
+    setDeletionCheckClassId(classRecord.id);
     setFormData({
       name: classRecord.name,
       academic_year_id:
         classRecord.academic_year_id,
       grade_level:
-        classRecord.grade_level ?? '',
-      shift: classRecord.shift ?? '',
+        normalizeAcademicLevel(classRecord.grade_level) ?? classRecord.grade_level ?? '',
+      shift: toAcademicShift(classRecord.shift) ?? '',
       capacity: String(
         classRecord.capacity,
       ),
@@ -282,9 +366,28 @@ export default function ClassesTab() {
     setIsModalOpen(true);
   }
 
+  function openDeleteModal(
+    classRecord: ClassRow,
+  ): void {
+    resetMessages();
+    setEditingClass(classRecord);
+    setDeletionCheckClassId(classRecord.id);
+    setFormData({
+      name: classRecord.name,
+      academic_year_id: classRecord.academic_year_id,
+      grade_level:
+        normalizeAcademicLevel(classRecord.grade_level) ?? classRecord.grade_level ?? '',
+      shift: toAcademicShift(classRecord.shift) ?? '',
+      capacity: String(classRecord.capacity),
+      active: classRecord.active,
+    });
+    setIsModalOpen(true);
+  }
+
   function closeModal(): void {
     setIsModalOpen(false);
     setEditingClass(null);
+    setDeletionCheckClassId(null);
     setFormData({
       ...emptyDraft,
     });
@@ -416,6 +519,48 @@ export default function ClassesTab() {
     }
   }
 
+  async function handleDeleteClass(): Promise<void> {
+    if (!editingClass) {
+      return;
+    }
+
+    if (deletionImpactQuery.isLoading) {
+      return;
+    }
+
+    if (deletionImpactQuery.isError) {
+      setModalError(getErrorMessage(deletionImpactQuery.error));
+      return;
+    }
+
+    const impact = deletionImpactQuery.data;
+    if (!impact) {
+      setModalError('Não foi possível verificar os vínculos desta turma.');
+      return;
+    }
+
+    const blockedMessage = buildClassDeletionBlockedMessage(impact);
+    if (blockedMessage) {
+      setModalError(blockedMessage);
+      return;
+    }
+
+    if (!window.confirm(`Excluir a turma ${editingClass.name}? Esta ação não pode ser desfeita.`)) {
+      return;
+    }
+
+    try {
+      await deleteMutation.mutateAsync({
+        id: editingClass.id,
+        institutionId,
+      });
+      setFeedbackMessage('Turma excluída com sucesso.');
+      closeModal();
+    } catch (error) {
+      setModalError(getErrorMessage(error));
+    }
+  }
+
   if (institutionQuery.isLoading) {
     return (
       <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
@@ -460,7 +605,24 @@ export default function ClassesTab() {
         </div>
       )}
 
-      <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:flex-row sm:items-end">
+      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:grid-cols-2 lg:grid-cols-[minmax(16rem,1fr)_auto_auto] lg:items-end">
+        <div>
+          <label
+            htmlFor="class-search"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Buscar turma
+          </label>
+          <input
+            id="class-search"
+            type="search"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
+            placeholder="Nome, série ou turno"
+            className="mt-1 w-full rounded-lg border px-3 py-2 text-sm"
+          />
+        </div>
+
         <div>
           <label
             htmlFor="class-year-filter"
@@ -517,7 +679,16 @@ export default function ClassesTab() {
       <DataTable
         title="Turmas"
         addLabel="Nova turma"
-        data={filteredClasses}
+        extraHeaderActions={(
+          <button
+            type="button"
+            onClick={() => setIsAutomationOpen(true)}
+            className="rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-medium text-[#005bbf] transition-colors hover:bg-blue-50"
+          >
+            Automatizar turmas
+          </button>
+        )}
+        data={paginatedClasses}
         columns={columns}
         isLoading={
           classesQuery.isLoading ||
@@ -525,6 +696,8 @@ export default function ClassesTab() {
         }
         onAdd={openCreateModal}
         emptyMessage="Nenhuma turma encontrada para os filtros selecionados."
+        actionCellClassName="min-w-[116px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         renderActions={(classRecord) => {
           const isChangingStatus =
             statusMutation.isPending &&
@@ -532,15 +705,17 @@ export default function ClassesTab() {
               classRecord.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <>
               <button
                 type="button"
                 onClick={() =>
                   openEditModal(classRecord)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar turma ${classRecord.name}`}
+                aria-label={`Editar turma ${classRecord.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -550,9 +725,11 @@ export default function ClassesTab() {
                     `/admin?module=curriculum&classId=${classRecord.id}`,
                   )
                 }
-                className="font-medium text-indigo-600 hover:text-indigo-800"
+                title={`Configurar matriz de ${classRecord.name}`}
+                aria-label={`Configurar matriz de ${classRecord.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-indigo-200 text-indigo-700 transition hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-indigo-800 dark:text-indigo-300 dark:hover:bg-slate-700"
               >
-                Configurar matriz
+                <Settings2 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -563,22 +740,83 @@ export default function ClassesTab() {
                     classRecord,
                   )
                 }
+                title={`${classRecord.active ? 'Desativar' : 'Reativar'} turma ${classRecord.name}`}
+                aria-label={`${classRecord.active ? 'Desativar' : 'Reativar'} turma ${classRecord.name}`}
                 className={
                   classRecord.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : classRecord.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : classRecord.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+              <button
+                type="button"
+                onClick={() => openDeleteModal(classRecord)}
+                title={`Excluir turma ${classRecord.name}`}
+                aria-label={`Excluir turma ${classRecord.name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+              >
+                <Trash2 className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </>
           );
         }}
       />
+
+      {filteredClasses.length > 0 && (
+        <nav
+          aria-label="Paginação de turmas"
+          className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white px-4 py-3 text-sm text-gray-600 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>
+            Mostrando{' '}
+            {(currentPage - 1) * CLASSES_PAGE_SIZE + 1}
+            {' '}a{' '}
+            {Math.min(currentPage * CLASSES_PAGE_SIZE, filteredClasses.length)}
+            {' '}de {filteredClasses.length} turma(s)
+          </span>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+              disabled={currentPage === 1}
+              className="rounded-lg border px-3 py-2 font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Anterior
+            </button>
+            <span aria-live="polite" className="min-w-24 text-center">
+              Página {currentPage} de {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+              disabled={currentPage === totalPages}
+              className="rounded-lg border px-3 py-2 font-medium text-gray-700 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Próxima
+            </button>
+          </div>
+        </nav>
+      )}
+
+      {isAutomationOpen && (
+        <ClassAutomationPanel
+          institutionId={institutionId}
+          onClose={() => setIsAutomationOpen(false)}
+          onCompleted={(message) => {
+            setFeedbackMessage(message);
+            setPageError(null);
+          }}
+        />
+      )}
 
       {isModalOpen && (
         <div
@@ -661,7 +899,7 @@ export default function ClassesTab() {
                   <option value="">
                     Selecione
                   </option>
-                  {years.map((year) => (
+                  {yearOptions.map((year) => (
                     <option
                       key={year.id}
                       value={year.id}
@@ -680,9 +918,8 @@ export default function ClassesTab() {
                   >
                     Série ou nível
                   </label>
-                  <input
+                  <select
                     id="class-grade"
-                    type="text"
                     value={formData.grade_level}
                     onChange={(event) =>
                       setFormData(
@@ -694,7 +931,29 @@ export default function ClassesTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
-                  />
+                    required
+                  >
+                    <option value="">Selecione</option>
+                    <optgroup label="Ensino Fundamental">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Fundamental').map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Ensino Médio">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Médio').map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                    {formData.grade_level && !ACADEMIC_LEVEL_OPTIONS.some((option) => option.value === formData.grade_level) && (
+                      <option value={formData.grade_level}>
+                        Atual: {formData.grade_level}
+                      </option>
+                    )}
+                  </select>
                 </div>
 
                 <div>
@@ -704,9 +963,8 @@ export default function ClassesTab() {
                   >
                     Turno
                   </label>
-                  <input
+                  <select
                     id="class-shift"
-                    type="text"
                     value={formData.shift}
                     onChange={(event) =>
                       setFormData(
@@ -718,7 +976,19 @@ export default function ClassesTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
-                  />
+                  >
+                    <option value="">Selecione</option>
+                    {enabledShifts.map((shift) => (
+                      <option key={shift} value={shift}>
+                        {getAcademicShiftLabel(shift)}
+                      </option>
+                    ))}
+                    {formData.shift && !enabledShifts.includes(formData.shift as typeof enabledShifts[number]) && (
+                      <option value={formData.shift}>
+                        {getAcademicShiftLabel(formData.shift)} (atual)
+                      </option>
+                    )}
+                  </select>
                 </div>
               </div>
 
@@ -765,7 +1035,44 @@ export default function ClassesTab() {
                 Ativa
               </label>
 
-              <div className="flex justify-end gap-2 pt-2">
+              {editingClass && (
+                <div
+                  className={
+                    deletionImpactQuery.isError ||
+                    (deletionImpactQuery.data?.totalLinkedRecords ?? 0) > 0
+                      ? 'rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-sm text-amber-900'
+                      : 'rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-gray-700'
+                  }
+                  role={
+                    deletionImpactQuery.isError ||
+                    (deletionImpactQuery.data?.totalLinkedRecords ?? 0) > 0
+                      ? 'alert'
+                      : undefined
+                  }
+                >
+                  {deletionImpactQuery.isLoading && 'Verificando vínculos da turma...'}
+                  {deletionImpactQuery.isError && 'Não foi possível verificar os vínculos antes da exclusão.'}
+                  {!deletionImpactQuery.isLoading && !deletionImpactQuery.isError && deletionImpactQuery.data && (
+                    deletionImpactQuery.data.totalLinkedRecords > 0
+                      ? buildClassDeletionBlockedMessage(deletionImpactQuery.data)
+                      : 'Nenhum vínculo acadêmico encontrado. A exclusão física está disponível.'
+                  )}
+                </div>
+              )}
+
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
+                {editingClass && (
+                  <button
+                    type="button"
+                    onClick={() => void handleDeleteClass()}
+                    disabled={isSubmitting || deletionImpactQuery.isLoading || deletionImpactQuery.isError}
+                    className="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {deleteMutation.isPending ? 'Excluindo...' : 'Excluir turma'}
+                  </button>
+                )}
+
+                <div className="ml-auto flex gap-2">
                 <button
                   type="button"
                   onClick={closeModal}
@@ -784,6 +1091,7 @@ export default function ClassesTab() {
                     ? 'Salvando...'
                     : 'Salvar'}
                 </button>
+                </div>
               </div>
             </form>
           </div>

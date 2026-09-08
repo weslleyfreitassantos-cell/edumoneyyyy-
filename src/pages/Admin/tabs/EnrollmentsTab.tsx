@@ -14,18 +14,24 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
+import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 
 import {
   useCreateEnrollment,
   useEnrollments,
   useTransferEnrollment,
+  useUpdateEnrollment,
   useUpdateEnrollmentStatus,
 } from '../../../hooks/useEnrollments';
 
 import { useStudents } from '../../../hooks/useStudents';
+import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
+import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 
 import {
+  guardianLinkSchema,
   enrollmentSchema,
+  enrollmentUpdateSchema,
   enrollmentStatusUpdateSchema,
   enrollmentTransferSchema,
 } from '../../../schemas/adminSchemas';
@@ -35,17 +41,48 @@ import type {
   EnrollmentRow,
   EnrollmentStatus,
 } from '../../../services/enrollmentService';
+import {
+  getActiveClassesForYear,
+  getPreferredAcademicYear,
+  getSuggestedClassId,
+  isClassAtCapacity,
+  sortAcademicYearsForSelection,
+} from '../../../lib/academicSelection';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface EnrollmentDraft {
   student_id: string;
   academic_year_id: string;
   class_id: string;
+  guardian_profile_id: string;
+  guardian_relationship: string;
+  guardian_is_primary: boolean;
+}
+
+interface GuardianLinkDraft {
+  guardian_profile_id: string;
+  relationship: string;
+  is_primary: boolean;
+}
+
+interface PendingGuardianLink {
+  student_id: string;
+  student_name: string;
 }
 
 const emptyDraft: EnrollmentDraft = {
   student_id: '',
   academic_year_id: '',
   class_id: '',
+  guardian_profile_id: '',
+  guardian_relationship: '',
+  guardian_is_primary: false,
+};
+
+const emptyGuardianLinkDraft: GuardianLinkDraft = {
+  guardian_profile_id: '',
+  relationship: '',
+  is_primary: false,
 };
 
 const statusOptions: {
@@ -65,20 +102,7 @@ const statusOptions: {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function StatusBadge({
@@ -91,18 +115,18 @@ function StatusBadge({
     string
   > = {
     ACTIVE:
-      'bg-green-100 text-green-700',
+      'border-emerald-300 bg-emerald-100 text-emerald-800 dark:border-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-200',
     TRANSFERRED:
-      'bg-blue-100 text-blue-700',
+      'border-blue-200 bg-blue-100 text-blue-800 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300',
     CANCELLED:
-      'bg-gray-100 text-gray-600',
+      'border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300',
     COMPLETED:
-      'bg-purple-100 text-purple-700',
+      'border-purple-200 bg-purple-100 text-purple-800 dark:border-purple-800 dark:bg-purple-950/40 dark:text-purple-300',
   };
 
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${styles[enrollment.status]}`}
+      className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${styles[enrollment.status]}`}
     >
       {enrollment.status_label}
     </span>
@@ -173,8 +197,45 @@ export default function EnrollmentsTab() {
   const statusMutation =
     useUpdateEnrollmentStatus();
 
+  const updateMutation =
+    useUpdateEnrollment();
+
+  const manageSchoolUserMutation =
+    useManageSchoolUser();
+
+  const [isGuardianLinkModalOpen, setIsGuardianLinkModalOpen] =
+    useState(false);
+
+  const [pendingGuardianLink, setPendingGuardianLink] =
+    useState<PendingGuardianLink | null>(null);
+
+  const [guardianLinkDraft, setGuardianLinkDraft] =
+    useState<GuardianLinkDraft>({
+      ...emptyGuardianLinkDraft,
+    });
+
+  const [guardianLinkError, setGuardianLinkError] =
+    useState<string | null>(null);
+
   const [isModalOpen, setIsModalOpen] =
     useState(false);
+
+  const [isEnrollmentStartOpen, setIsEnrollmentStartOpen] =
+    useState(false);
+
+  const [isFullWizardOpen, setIsFullWizardOpen] =
+    useState(false);
+
+  const [fullEditStudentId, setFullEditStudentId] =
+    useState<string | null>(null);
+
+  const [editingEnrollment, setEditingEnrollment] =
+    useState<EnrollmentRow | null>(null);
+
+  const schoolUsersQuery = useSchoolUsers(
+    institutionId,
+    isModalOpen || isGuardianLinkModalOpen,
+  );
 
   const [
     transferEnrollment,
@@ -227,6 +288,17 @@ export default function EnrollmentsTab() {
   const classes = classesQuery.data ?? [];
   const students = studentsQuery.data ?? [];
 
+  const activeGuardians = useMemo(
+    () =>
+      (schoolUsersQuery.data ?? []).filter(
+        (user) =>
+          user.role === 'GUARDIAN' &&
+          user.active &&
+          user.profile?.active !== false,
+      ),
+    [schoolUsersQuery.data],
+  );
+
   const activeStudents = useMemo(
     () =>
       students.filter(
@@ -251,14 +323,13 @@ export default function EnrollmentsTab() {
   );
 
   const classesForDraft = useMemo(
-    () =>
-      activeClasses.filter(
-        (classRecord) =>
-          !formData.academic_year_id ||
-          classRecord.academic_year_id ===
-            formData.academic_year_id,
-      ),
+    () => getActiveClassesForYear(activeClasses, formData.academic_year_id),
     [activeClasses, formData.academic_year_id],
+  );
+
+  const yearOptions = useMemo(
+    () => sortAcademicYearsForSelection(years),
+    [years],
   );
 
   const transferClassOptions = useMemo(() => {
@@ -310,8 +381,10 @@ export default function EnrollmentsTab() {
 
   const isSubmitting =
     createMutation.isPending ||
+    updateMutation.isPending ||
     transferMutation.isPending ||
-    statusMutation.isPending;
+    statusMutation.isPending ||
+    manageSchoolUserMutation.isPending;
 
   const columns: Column<EnrollmentRow>[] = [
     {
@@ -369,37 +442,48 @@ export default function EnrollmentsTab() {
     setFeedbackMessage(null);
   }
 
-  function openCreateModal(): void {
+  function openCreateModal(existingStudentId = ''): void {
     resetMessages();
+    setEditingEnrollment(null);
     setTransferEnrollment(null);
     setTransferClassId('');
 
-    const firstYear =
-      years.find((year) => year.active)?.id ??
-      years[0]?.id ??
-      '';
-
-    const firstClass =
-      activeClasses.find(
-        (classRecord) =>
-          classRecord.academic_year_id ===
-            firstYear &&
-          !isClassFull(classRecord),
-      ) ??
-      activeClasses.find(
-        (classRecord) =>
-          !isClassFull(classRecord),
-      );
+    const firstYear = getPreferredAcademicYear(years)?.id ?? '';
+    const firstYearClasses = getActiveClassesForYear(
+      activeClasses,
+      firstYear,
+    );
 
     setFormData({
-      student_id: '',
-      academic_year_id:
-        firstClass?.academic_year_id ??
-        firstYear,
-      class_id: firstClass?.id ?? '',
+      student_id: existingStudentId,
+      academic_year_id: firstYear,
+      class_id: getSuggestedClassId(firstYearClasses),
+      guardian_profile_id: '',
+      guardian_relationship: '',
+      guardian_is_primary: false,
     });
 
     setIsModalOpen(true);
+  }
+
+  function openEnrollmentStart(): void {
+    resetMessages();
+    setIsEnrollmentStartOpen(true);
+  }
+
+  function openFullWizard(): void {
+    resetMessages();
+    setIsEnrollmentStartOpen(false);
+    setIsFullWizardOpen(true);
+  }
+
+  function openEditModal(
+    enrollment: EnrollmentRow,
+  ): void {
+    resetMessages();
+    setTransferEnrollment(null);
+    setEditingEnrollment(null);
+    setFullEditStudentId(enrollment.student_id);
   }
 
   function openTransferModal(
@@ -413,22 +497,59 @@ export default function EnrollmentsTab() {
 
   function closeModal(): void {
     setIsModalOpen(false);
+    setEditingEnrollment(null);
     setTransferEnrollment(null);
     setTransferClassId('');
     setFormData({ ...emptyDraft });
     setModalError(null);
   }
 
+  function openGuardianLinkModal(): void {
+    if (!pendingGuardianLink) {
+      return;
+    }
+
+    setGuardianLinkDraft({
+      ...emptyGuardianLinkDraft,
+    });
+    setGuardianLinkError(null);
+    setIsGuardianLinkModalOpen(true);
+  }
+
+  function openGuardianLinkForEnrollment(
+    enrollment: EnrollmentRow,
+  ): void {
+    resetMessages();
+    setPendingGuardianLink({
+      student_id: enrollment.student_id,
+      student_name: enrollment.student_name,
+    });
+    setGuardianLinkDraft({
+      ...emptyGuardianLinkDraft,
+    });
+    setGuardianLinkError(null);
+    setIsGuardianLinkModalOpen(true);
+  }
+
+  function closeGuardianLinkModal(): void {
+    setIsGuardianLinkModalOpen(false);
+    setGuardianLinkDraft({
+      ...emptyGuardianLinkDraft,
+    });
+    setGuardianLinkError(null);
+  }
+
+  function finishPendingGuardianLink(): void {
+    setPendingGuardianLink(null);
+    setGuardianLinkError(null);
+  }
+
   function handleYearChange(
     academicYearId: string,
   ): void {
-    const nextClass =
-      activeClasses.find(
-        (classRecord) =>
-          classRecord.academic_year_id ===
-            academicYearId &&
-          !isClassFull(classRecord),
-      )?.id ?? '';
+    const nextClass = getSuggestedClassId(
+      getActiveClassesForYear(activeClasses, academicYearId),
+    );
 
     setFormData((current) => ({
       ...current,
@@ -467,6 +588,39 @@ export default function EnrollmentsTab() {
       return;
     }
 
+    if (editingEnrollment) {
+      const editResult =
+        enrollmentUpdateSchema.safeParse({
+          academic_year_id:
+            formData.academic_year_id,
+          class_id: formData.class_id,
+        });
+
+      if (!editResult.success) {
+        setModalError(
+          editResult.error.issues[0]?.message ??
+            'Dados inválidos.',
+        );
+        return;
+      }
+
+      try {
+        await updateMutation.mutateAsync({
+          id: editingEnrollment.id,
+          institutionId,
+          data: editResult.data,
+        });
+        closeModal();
+        setFeedbackMessage(
+          'Matrícula atualizada com sucesso.',
+        );
+      } catch (error) {
+        setModalError(getErrorMessage(error));
+      }
+
+      return;
+    }
+
     const result = enrollmentSchema.safeParse({
       institution_id: institutionId,
       student_id: formData.student_id,
@@ -485,17 +639,149 @@ export default function EnrollmentsTab() {
       return;
     }
 
+    const guardianProfileId =
+      formData.guardian_profile_id.trim();
+
+    if (guardianProfileId) {
+      const guardianResult =
+        guardianLinkSchema.safeParse({
+          student_id: result.data.student_id,
+          relationship:
+            formData.guardian_relationship,
+          is_primary:
+            formData.guardian_is_primary,
+        });
+
+      if (!guardianResult.success) {
+        setModalError(
+          guardianResult.error.issues[0]?.message ??
+            'Informe os dados do responsável.',
+        );
+        return;
+      }
+    }
+
+    const studentName =
+      activeStudents.find(
+        (student) =>
+          student.id === result.data.student_id,
+      )?.profiles?.full_name ??
+      'Aluno matriculado';
+
+    let enrollmentCreated = false;
+
     try {
       await createMutation.mutateAsync(
         result.data,
       );
+      enrollmentCreated = true;
+
+      if (guardianProfileId) {
+        await manageSchoolUserMutation.mutateAsync({
+          action: 'link_guardian',
+          institutionId,
+          guardianProfileId,
+          studentId: result.data.student_id,
+          relationship:
+            formData.guardian_relationship.trim(),
+          isPrimary:
+            formData.guardian_is_primary,
+        });
+      }
 
       closeModal();
+      setPendingGuardianLink(
+        guardianProfileId
+          ? null
+          : {
+              student_id: result.data.student_id,
+              student_name: studentName,
+            },
+      );
       setFeedbackMessage(
-        'Matrícula criada com sucesso.',
+        guardianProfileId
+          ? 'Matrícula e responsável vinculados com sucesso.'
+          : null,
       );
     } catch (error) {
+      if (enrollmentCreated && guardianProfileId) {
+        closeModal();
+        setPendingGuardianLink({
+          student_id: result.data.student_id,
+          student_name: studentName,
+        });
+        setGuardianLinkDraft({
+          guardian_profile_id: guardianProfileId,
+          relationship:
+            formData.guardian_relationship,
+          is_primary:
+            formData.guardian_is_primary,
+        });
+        setGuardianLinkError(
+          `Matrícula criada, mas não foi possível vincular o responsável: ${getErrorMessage(error)}`,
+        );
+        setIsGuardianLinkModalOpen(true);
+        return;
+      }
+
       setModalError(
+        getErrorMessage(error),
+      );
+    }
+  }
+
+  async function handleLinkGuardian(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+    setGuardianLinkError(null);
+
+    if (!institutionId || !pendingGuardianLink) {
+      setGuardianLinkError(
+        'A matrícula de origem não foi encontrada.',
+      );
+      return;
+    }
+
+    const result = guardianLinkSchema.safeParse({
+      student_id: pendingGuardianLink.student_id,
+      relationship: guardianLinkDraft.relationship,
+      is_primary: guardianLinkDraft.is_primary,
+    });
+
+    if (!result.success) {
+      setGuardianLinkError(
+        result.error.issues[0]?.message ??
+          'Informe os dados do vínculo.',
+      );
+      return;
+    }
+
+    if (!guardianLinkDraft.guardian_profile_id) {
+      setGuardianLinkError(
+        'Selecione um responsável ativo.',
+      );
+      return;
+    }
+
+    try {
+      await manageSchoolUserMutation.mutateAsync({
+        action: 'link_guardian',
+        institutionId,
+        guardianProfileId:
+          guardianLinkDraft.guardian_profile_id,
+        studentId: result.data.student_id,
+        relationship: result.data.relationship,
+        isPrimary: result.data.is_primary,
+      });
+
+      closeGuardianLinkModal();
+      setPendingGuardianLink(null);
+      setFeedbackMessage(
+        'Responsável vinculado ao aluno com sucesso.',
+      );
+    } catch (error) {
+      setGuardianLinkError(
         getErrorMessage(error),
       );
     }
@@ -619,14 +905,43 @@ export default function EnrollmentsTab() {
 
   return (
     <div className="space-y-4">
-      {feedbackMessage && (
+      {pendingGuardianLink ? (
+        <div
+          role="status"
+          className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
+        >
+          <p className="font-semibold">
+            Matrícula criada com sucesso.
+          </p>
+          <p className="mt-1">
+            Deseja vincular um responsável a{' '}
+            <strong>{pendingGuardianLink.student_name}</strong> agora?
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={openGuardianLinkModal}
+              className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-medium text-white hover:bg-[#1a73e8]"
+            >
+              Vincular responsável
+            </button>
+            <button
+              type="button"
+              onClick={finishPendingGuardianLink}
+              className="rounded-lg border border-green-300 px-3 py-2 text-sm font-medium text-green-800 hover:bg-green-100"
+            >
+              Concluir
+            </button>
+          </div>
+        </div>
+      ) : feedbackMessage ? (
         <div
           role="status"
           className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
         >
           {feedbackMessage}
         </div>
-      )}
+      ) : null}
 
       {(pageError ||
         enrollmentsQuery.isError ||
@@ -746,19 +1061,38 @@ export default function EnrollmentsTab() {
           classesQuery.isLoading ||
           yearsQuery.isLoading
         }
-        onAdd={openCreateModal}
+        onAdd={openEnrollmentStart}
         emptyMessage="Nenhuma matrícula encontrada para os filtros selecionados."
         renderActions={(enrollment) => {
+          const isLinking =
+            manageSchoolUserMutation.isPending &&
+            pendingGuardianLink?.student_id ===
+              enrollment.student_id;
           const isChanging =
-            isSubmitting &&
-            (statusMutation.variables?.id ===
-              enrollment.id ||
+            (statusMutation.isPending &&
+              statusMutation.variables?.id ===
+                enrollment.id) ||
+            (transferMutation.isPending &&
               transferMutation.variables?.data
                 .enrollment_id ===
-                enrollment.id);
+                enrollment.id) ||
+            isLinking;
 
           return (
             <div className="flex flex-wrap items-center gap-3">
+              {enrollment.active && (
+                <button
+                  type="button"
+                  disabled={isChanging}
+                  onClick={() =>
+                    openEditModal(enrollment)
+                  }
+                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                >
+                  Editar
+                </button>
+              )}
+
               {enrollment.active && (
                 <button
                   type="button"
@@ -771,6 +1105,21 @@ export default function EnrollmentsTab() {
                   className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
                 >
                   Transferir
+                </button>
+              )}
+
+              {enrollment.active && (
+                <button
+                  type="button"
+                  disabled={isChanging}
+                  onClick={() =>
+                    openGuardianLinkForEnrollment(
+                      enrollment,
+                    )
+                  }
+                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                >
+                  Vincular responsável
                 </button>
               )}
 
@@ -814,6 +1163,77 @@ export default function EnrollmentsTab() {
         }}
       />
 
+      {isEnrollmentStartOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="enrollment-start-title"
+        >
+          <div className="w-full max-w-2xl rounded-xl bg-white p-6 shadow-xl">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3
+                  id="enrollment-start-title"
+                  className="text-lg font-bold text-[#181c20]"
+                >
+                  Como deseja iniciar a matricula?
+                </h3>
+                <p className="mt-1 text-sm text-[#727785]">
+                  Escolha o caminho que corresponde ao cadastro do aluno.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsEnrollmentStartOpen(false)}
+                className="rounded-lg border border-[#dfe3e8] px-3 py-2 text-sm text-[#727785]"
+                aria-label="Fechar"
+              >
+                X
+              </button>
+            </div>
+            <div className="mt-5 grid gap-3 md:grid-cols-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEnrollmentStartOpen(false);
+                  openCreateModal();
+                }}
+                className="rounded-xl border border-[#dfe3e8] p-5 text-left transition hover:border-[#005bbf] hover:bg-blue-50"
+              >
+                <strong className="block text-base text-[#181c20]">
+                  Aluno ja cadastrado
+                </strong>
+                <span className="mt-2 block text-sm text-[#727785]">
+                  Use a matricula rapida e associe um responsavel existente, se necessario.
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={openFullWizard}
+                className="rounded-xl border border-blue-200 bg-blue-50 p-5 text-left transition hover:border-[#005bbf]"
+              >
+                <strong className="block text-base text-[#181c20]">
+                  Aluno novo
+                </strong>
+                <span className="mt-2 block text-sm text-[#727785]">
+                  Preencha o cadastro completo, responsaveis, documentos e dados escolares.
+                </span>
+              </button>
+            </div>
+            <div className="mt-5 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setIsEnrollmentStartOpen(false)}
+                className="rounded-lg border border-[#dfe3e8] px-4 py-2 text-sm font-medium text-[#727785]"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
@@ -826,7 +1246,9 @@ export default function EnrollmentsTab() {
               id="enrollment-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
             >
-              Nova matrícula
+              {editingEnrollment
+                ? 'Editar matrícula'
+                : 'Nova matrícula'}
             </h3>
 
             <form
@@ -865,6 +1287,10 @@ export default function EnrollmentsTab() {
                   }
                   className="mt-1 w-full rounded-lg border px-3 py-2"
                   required
+                  disabled={
+                    Boolean(editingEnrollment) ||
+                    isSubmitting
+                  }
                 >
                   <option value="">
                     Selecione
@@ -907,7 +1333,7 @@ export default function EnrollmentsTab() {
                     <option value="">
                       Selecione
                     </option>
-                    {years
+                    {yearOptions
                       .filter((year) => year.active)
                       .map((year) => (
                         <option
@@ -936,10 +1362,16 @@ export default function EnrollmentsTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
+                    disabled={
+                      !formData.academic_year_id ||
+                      classesForDraft.length === 0
+                    }
                     required
                   >
                     <option value="">
-                      Selecione
+                      {classesForDraft.length === 0
+                        ? 'Nenhuma turma disponível'
+                        : 'Selecione'}
                     </option>
                     {classesForDraft.map(
                       (classRecord) => {
@@ -963,14 +1395,124 @@ export default function EnrollmentsTab() {
                       },
                     )}
                   </select>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {classesForDraft.length === 0
+                      ? 'Cadastre uma turma ativa neste ano letivo para continuar.'
+                      : classesForDraft.filter((classRecord) => !isClassAtCapacity(classRecord)).length > 1 && !formData.class_id
+                        ? 'Escolha a turma do aluno. O sistema não seleciona uma turma aleatória.'
+                        : 'As turmas são filtradas pelo ano letivo selecionado.'}
+                  </p>
                 </div>
               </div>
+
+              <fieldset className="rounded-lg border border-gray-200 p-3">
+                <legend className="px-1 text-sm font-medium text-gray-700">
+                  Responsável (opcional)
+                </legend>
+                <p className="mb-3 text-xs text-gray-500">
+                  Selecione um responsável já cadastrado para vincular ao aluno.
+                  Você também poderá fazer isso depois.
+                </p>
+                <label
+                  htmlFor="enrollment-guardian"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Responsável
+                </label>
+                <select
+                  id="enrollment-guardian"
+                  value={formData.guardian_profile_id}
+                  onChange={(event) =>
+                    setFormData((current) => ({
+                      ...current,
+                      guardian_profile_id:
+                        event.target.value,
+                    }))
+                  }
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                  disabled={
+                    schoolUsersQuery.isLoading ||
+                    isSubmitting
+                  }
+                >
+                  <option value="">
+                    {schoolUsersQuery.isLoading
+                      ? 'Carregando responsáveis...'
+                      : 'Nenhum agora'}
+                  </option>
+                  {activeGuardians.map((guardian) => (
+                    <option
+                      key={guardian.profile_id}
+                      value={guardian.profile_id}
+                    >
+                      {guardian.profile?.full_name ??
+                        guardian.profile?.email ??
+                        'Responsável'}
+                      {guardian.profile?.email
+                        ? ` (${guardian.profile.email})`
+                        : ''}
+                    </option>
+                  ))}
+                </select>
+
+                {formData.guardian_profile_id && (
+                  <>
+                    <label
+                      htmlFor="enrollment-guardian-relationship"
+                      className="mt-3 block text-sm font-medium text-gray-700"
+                    >
+                      Parentesco
+                    </label>
+                    <input
+                      id="enrollment-guardian-relationship"
+                      value={
+                        formData.guardian_relationship
+                      }
+                      onChange={(event) =>
+                        setFormData((current) => ({
+                          ...current,
+                          guardian_relationship:
+                            event.target.value,
+                        }))
+                      }
+                      className="mt-1 w-full rounded-lg border px-3 py-2"
+                      placeholder="Mãe, pai, avó, tutor..."
+                      required
+                      disabled={isSubmitting}
+                    />
+                    <label className="mt-3 flex items-center gap-2 text-sm text-gray-700">
+                      <input
+                        type="checkbox"
+                        checked={
+                          formData.guardian_is_primary
+                        }
+                        onChange={(event) =>
+                          setFormData((current) => ({
+                            ...current,
+                            guardian_is_primary:
+                              event.target.checked,
+                          }))
+                        }
+                        disabled={isSubmitting}
+                      />
+                      Responsável principal
+                    </label>
+                  </>
+                )}
+
+                {!schoolUsersQuery.isLoading &&
+                  activeGuardians.length === 0 && (
+                    <p className="mt-2 text-xs text-gray-500">
+                      Nenhum responsável ativo encontrado. Cadastre o responsável em Usuários da Escola primeiro.
+                    </p>
+                  )}
+              </fieldset>
 
               <div className="flex justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={closeModal}
-                  disabled={createMutation.isPending}
+                  disabled={isSubmitting}
                   className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
                 >
                   Cancelar
@@ -978,12 +1520,165 @@ export default function EnrollmentsTab() {
 
                 <button
                   type="submit"
-                  disabled={createMutation.isPending}
+                  disabled={isSubmitting}
                   className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  {createMutation.isPending
+                  {isSubmitting
                     ? 'Salvando...'
-                    : 'Salvar'}
+                    : editingEnrollment
+                      ? 'Salvar alterações'
+                      : 'Salvar'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {isGuardianLinkModalOpen && pendingGuardianLink && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="guardian-link-modal-title"
+        >
+          <div className="w-full max-w-xl rounded-xl bg-white p-6 shadow-xl">
+            <h3
+              id="guardian-link-modal-title"
+              className="mb-1 text-lg font-bold text-[#181c20]"
+            >
+              Vincular responsável
+            </h3>
+            <p className="mb-4 text-sm text-[#727785]">
+              Aluno: <strong>{pendingGuardianLink.student_name}</strong>
+            </p>
+
+            <form
+              onSubmit={(event) =>
+                void handleLinkGuardian(event)
+              }
+              className="space-y-4"
+            >
+              {guardianLinkError && (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+                >
+                  {guardianLinkError}
+                </div>
+              )}
+
+              {schoolUsersQuery.isError ? (
+                <div
+                  role="alert"
+                  className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+                >
+                  Não foi possível carregar os responsáveis desta instituição.
+                </div>
+              ) : (
+                <div>
+                  <label
+                    htmlFor="enrollment-guardian"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Responsável existente
+                  </label>
+                  <select
+                    id="enrollment-guardian"
+                    value={guardianLinkDraft.guardian_profile_id}
+                    onChange={(event) =>
+                      setGuardianLinkDraft((current) => ({
+                        ...current,
+                        guardian_profile_id: event.target.value,
+                      }))
+                    }
+                    className="mt-1 w-full rounded-lg border px-3 py-2"
+                    required
+                    disabled={schoolUsersQuery.isLoading}
+                  >
+                    <option value="">
+                      {schoolUsersQuery.isLoading
+                        ? 'Carregando...'
+                        : 'Selecione'}
+                    </option>
+                    {activeGuardians.map((guardian) => (
+                      <option
+                        key={guardian.profile_id}
+                        value={guardian.profile_id}
+                      >
+                        {guardian.profile?.full_name ?? guardian.profile?.email ?? 'Responsável'}
+                        {guardian.profile?.email
+                          ? ` (${guardian.profile.email})`
+                          : ''}
+                      </option>
+                    ))}
+                  </select>
+                  {!schoolUsersQuery.isLoading &&
+                    activeGuardians.length === 0 && (
+                      <p className="mt-1 text-xs text-[#727785]">
+                        Nenhum responsável ativo foi encontrado nesta instituição.
+                      </p>
+                    )}
+                </div>
+              )}
+
+              <div>
+                <label
+                  htmlFor="enrollment-guardian-relationship"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Parentesco
+                </label>
+                <input
+                  id="enrollment-guardian-relationship"
+                  value={guardianLinkDraft.relationship}
+                  onChange={(event) =>
+                    setGuardianLinkDraft((current) => ({
+                      ...current,
+                      relationship: event.target.value,
+                    }))
+                  }
+                  className="mt-1 w-full rounded-lg border px-3 py-2"
+                  placeholder="Mãe, pai, avó, tutor..."
+                  required
+                />
+              </div>
+
+              <label className="flex items-center gap-2 text-sm text-gray-700">
+                <input
+                  type="checkbox"
+                  checked={guardianLinkDraft.is_primary}
+                  onChange={(event) =>
+                    setGuardianLinkDraft((current) => ({
+                      ...current,
+                      is_primary: event.target.checked,
+                    }))
+                  }
+                />
+                Responsável principal
+              </label>
+
+              <div className="flex justify-end gap-2 pt-2">
+                <button
+                  type="button"
+                  onClick={closeGuardianLinkModal}
+                  disabled={manageSchoolUserMutation.isPending}
+                  className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={
+                    manageSchoolUserMutation.isPending ||
+                    schoolUsersQuery.isLoading ||
+                    activeGuardians.length === 0
+                  }
+                  className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {manageSchoolUserMutation.isPending
+                    ? 'Vinculando...'
+                    : 'Vincular responsável'}
                 </button>
               </div>
             </form>
@@ -1102,6 +1797,41 @@ export default function EnrollmentsTab() {
             </form>
           </div>
         </div>
+      )}
+
+      {isFullWizardOpen && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={years}
+          classes={classes}
+          onClose={() => setIsFullWizardOpen(false)}
+          onUseExistingStudent={(studentId) => {
+            setIsFullWizardOpen(false);
+            openCreateModal(studentId);
+          }}
+          onCompleted={() => {
+            setIsFullWizardOpen(false);
+            setFeedbackMessage(
+              'Cadastro completo e matricula realizados com sucesso.',
+            );
+          }}
+        />
+      )}
+
+      {fullEditStudentId && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={years}
+          classes={classes}
+          mode="edit"
+          studentId={fullEditStudentId}
+          onClose={() => setFullEditStudentId(null)}
+          onUseExistingStudent={() => undefined}
+          onCompleted={() => {
+            setFullEditStudentId(null);
+            setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
+          }}
+        />
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useState,
   type FormEvent,
 } from 'react';
@@ -7,6 +8,13 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
+import { UserPlus } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -26,6 +34,7 @@ import type {
   GuardianRow,
   GuardianStudentLink,
 } from '../../../services/guardianService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface LinkDraft {
   student_id: string;
@@ -51,23 +60,12 @@ const emptyDraft: GuardianDraft = {
   student_links: [{ ...emptyLinkDraft }],
 };
 
+const GUARDIANS_PAGE_SIZE = 6;
+
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function getStudentLabel(
@@ -100,6 +98,9 @@ export default function GuardiansTab() {
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [formData, setFormData] =
     useState<GuardianDraft>({
       ...emptyDraft,
@@ -120,6 +121,43 @@ export default function GuardiansTab() {
     feedbackMessage,
     setFeedbackMessage,
   ] = useState<string | null>(null);
+
+  const guardians = guardiansQuery.data ?? [];
+  const filteredGuardians = guardians.filter((guardian) => {
+    const query = normalizeListSearch(searchTerm);
+
+    if (!query) {
+      return true;
+    }
+
+    return normalizeListSearch([
+      guardian.full_name,
+      guardian.email,
+      ...guardian.links.flatMap((link) => [
+        link.student_name,
+        link.registration_number,
+        link.relationship,
+      ]),
+    ].filter(Boolean).join(' ')).includes(query);
+  });
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredGuardians.length / GUARDIANS_PAGE_SIZE),
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
+  const paginatedGuardians = filteredGuardians.slice(
+    (currentPage - 1) * GUARDIANS_PAGE_SIZE,
+    currentPage * GUARDIANS_PAGE_SIZE,
+  );
 
   const columns: Column<GuardianRow>[] = [
     {
@@ -394,28 +432,51 @@ export default function GuardiansTab() {
         </div>
       )}
 
+      <ListSearch
+        id="guardians-search"
+        label="Buscar responsável"
+        placeholder="Nome, e-mail ou aluno vinculado"
+        value={searchTerm}
+        onChange={setSearchTerm}
+      />
+
       <DataTable
         title="Responsáveis"
         addLabel="Novo responsável"
-        data={guardiansQuery.data ?? []}
+        data={paginatedGuardians}
         columns={columns}
         isLoading={
           guardiansQuery.isLoading ||
           studentsQuery.isLoading
         }
+        actionCellClassName="min-w-[60px] align-middle whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         onAdd={openCreateModal}
-        emptyMessage="Nenhum responsável vinculado aos alunos desta instituição."
+        emptyMessage={
+          filteredGuardians.length === 0 && guardians.length > 0
+            ? 'Nenhum responsável encontrado.'
+            : 'Nenhum responsável vinculado aos alunos desta instituição.'
+        }
         renderActions={(guardian) => (
           <button
             type="button"
+            title={`Adicionar vínculo para ${guardian.full_name}`}
+            aria-label={`Adicionar vínculo para ${guardian.full_name}`}
             onClick={() =>
               openAddLinkModal(guardian)
             }
-            className="font-medium text-[#005bbf] hover:text-[#1a73e8]"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
           >
-            Adicionar vínculo
+            <UserPlus className="h-4 w-4" aria-hidden="true" />
           </button>
         )}
+      />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={GUARDIANS_PAGE_SIZE}
+        totalItems={filteredGuardians.length}
+        onPageChange={setCurrentPage}
       />
 
       {isModalOpen && (
@@ -652,7 +713,7 @@ export default function GuardiansTab() {
                 >
                   {createMutation.isPending
                     ? 'Salvando...'
-                    : 'Salvar e enviar convite'}
+                    : 'Salvar e enviar acesso'}
                 </button>
               </div>
             </form>

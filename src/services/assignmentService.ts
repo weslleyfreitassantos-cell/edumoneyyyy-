@@ -183,6 +183,8 @@ const offeringSelect = `
   )
 `;
 
+const OFFERINGS_PAGE_SIZE = 1000;
+
 function normalizeRelation<T>(
   relation: T | T[] | null,
 ): T | null {
@@ -429,6 +431,26 @@ async function assertTeacherForInstitution(
   }
 }
 
+async function assertTeacherSubjectAuthorized(
+  teacherProfileId: string,
+  subjectId: string,
+  institutionId: string,
+): Promise<void> {
+  const { data, error } = await supabase
+    .from('teacher_subjects')
+    .select('id')
+    .eq('institution_id', institutionId)
+    .eq('teacher_profile_id', teacherProfileId)
+    .eq('subject_id', subjectId)
+    .eq('active', true)
+    .maybeSingle();
+
+  if (error) throw error;
+  if (!data) {
+    throw new Error('TEACHER_SUBJECT_NOT_AUTHORIZED');
+  }
+}
+
 async function assertNoDuplicateActiveOffering(
   input: {
     class_id: string;
@@ -555,6 +577,11 @@ async function validateOfferingInput(
       input.teacher_profile_id,
       institutionId,
     ),
+    assertTeacherSubjectAuthorized(
+      input.teacher_profile_id,
+      input.subject_id,
+      institutionId,
+    ),
   ]);
 
   if (
@@ -578,20 +605,38 @@ export const assignmentService = {
   async list(
     institutionId: string,
   ): Promise<AssignmentRow[]> {
-    const { data, error } = await supabase
-      .from('subject_offerings')
-      .select(offeringSelect)
-      .order('created_at', {
-        ascending: false,
-      });
+    const rows: OfferingQueryRow[] = [];
 
-    if (error) {
-      throw error;
+    for (
+      let offset = 0;
+      ;
+      offset += OFFERINGS_PAGE_SIZE
+    ) {
+      const { data, error } = await supabase
+        .from('subject_offerings')
+        .select(offeringSelect)
+        .order('created_at', {
+          ascending: false,
+        })
+        .range(
+          offset,
+          offset + OFFERINGS_PAGE_SIZE - 1,
+        );
+
+      if (error) {
+        throw error;
+      }
+
+      rows.push(
+        ...((data ?? []) as unknown as OfferingQueryRow[]),
+      );
+
+      if (!data || data.length < OFFERINGS_PAGE_SIZE) {
+        break;
+      }
     }
 
-    return (
-      (data ?? []) as unknown as OfferingQueryRow[]
-    )
+    return rows
       .map((row) =>
         normalizeOffering(row, institutionId),
       )

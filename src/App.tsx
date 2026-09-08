@@ -3,6 +3,8 @@ import {
   lazy,
   Suspense,
   useEffect,
+  useRef,
+  useState,
   type ErrorInfo,
   type ReactNode,
 } from 'react';
@@ -10,8 +12,10 @@ import {
 import {
   BrowserRouter,
   Navigate,
+  Outlet,
   Route,
   Routes,
+  useLocation,
 } from 'react-router-dom';
 
 import {
@@ -24,25 +28,25 @@ import {
   useAuth,
 } from './contexts/AuthContext';
 
-import { InstitutionProvider } from './contexts/InstitutionContext';
+import {
+  InstitutionProvider,
+  useInstitution,
+} from './contexts/InstitutionContext';
 
 import { ThemeProvider } from './contexts/ThemeContext';
 
 import AppShell from './components/AppShell';
+import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { Login } from './pages/Login';
 
 import {
   mapDatabaseRole,
   mapPlatformRole,
 } from './lib/roles';
+import { hasEffectivePermission } from './lib/permissions';
 
 import type { UserRole } from './types';
-
-const Login = lazy(() =>
-  import('./pages/Login').then((module) => ({
-    default: module.Login,
-  })),
-);
 
 const SetPassword = lazy(
   () => import('./pages/SetPassword'),
@@ -94,6 +98,10 @@ const StudentDashboard = lazy(
     ),
 );
 
+const LearningContentPage = lazy(
+  () => import('./components/learning/LearningContentPage'),
+);
+
 const DirectorDashboard = lazy(
   () =>
     import(
@@ -106,6 +114,27 @@ const ParentDashboard = lazy(
     import(
       './components/ParentDashboard'
     ),
+);
+
+const DirectorLoginBrandingPage = lazy(
+  () =>
+    import(
+      './pages/DirectorLoginBrandingPage'
+    ).then((module) => ({
+      default: module.DirectorLoginBrandingPage,
+    })),
+);
+
+const CamerasPage = lazy(
+  () => import('./pages/Cameras/CamerasPage'),
+);
+
+const EmailTab = lazy(
+  () => import('./pages/Admin/tabs/EmailTab'),
+);
+
+const TerminalsPage = lazy(
+  () => import('./pages/Terminals/TerminalsPage'),
 );
 
 const queryClient = new QueryClient({
@@ -136,6 +165,7 @@ function preloadApplicationScreens(): void {
     import('./components/ParentDashboard'),
   ]);
 }
+const resolvedTerminalsAccessProfiles = new Set<string>();
 
 class AppErrorBoundary extends Component<
   { children: ReactNode },
@@ -159,6 +189,15 @@ class AppErrorBoundary extends Component<
       error,
       errorInfo,
     );
+
+    // A transient chunk/context failure after authentication should recover
+    // once without trapping the user in the error screen.
+    const retryKey = 'edumanager-render-retry';
+    if (!sessionStorage.getItem(retryKey)) {
+      sessionStorage.setItem(retryKey, '1');
+      window.setTimeout(() => sessionStorage.removeItem(retryKey), 10000);
+      window.location.reload();
+    }
   }
 
   render() {
@@ -208,6 +247,34 @@ function PageLoading() {
         </p>
       </div>
     </main>
+  );
+}
+
+function AuthenticatedPageLoading() {
+  return (
+    <main
+      id="app-main-content"
+      className="min-w-0 flex-1 bg-[#f3f6fb] p-4 sm:p-6 dark:bg-slate-950"
+    >
+      <div
+        role="status"
+        className="grid min-h-48 place-items-center rounded-2xl border border-slate-200 bg-white text-sm font-medium text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400"
+      >
+        Carregando conteúdo...
+      </div>
+    </main>
+  );
+}
+
+function AuthenticatedRouteContent({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  return (
+    <Suspense fallback={<AuthenticatedPageLoading />}>
+      {children}
+    </Suspense>
   );
 }
 
@@ -275,6 +342,8 @@ function InvalidRolePage({
 
 function DashboardContent() {
   const { profile, signOut } = useAuth();
+  const { currentRole: institutionRole } =
+    useInstitution();
 
   if (!profile) {
     return (
@@ -287,6 +356,7 @@ function DashboardContent() {
 
   const currentRole =
     mapPlatformRole(profile.platform_role) ??
+    mapDatabaseRole(institutionRole ?? '') ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {
@@ -310,6 +380,151 @@ function DashboardContent() {
   }
 
   return <>{renderDashboard(currentRole)}</>;
+}
+
+export function DirectorLoginBrandingRoute() {
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return (
+      <main className="grid min-h-screen place-items-center">
+        <p>Carregando...</p>
+      </main>
+    );
+  }
+
+  if (currentRole !== 'DIRECTOR') {
+    return (
+      <Navigate
+        to="/unauthorized"
+        replace
+      />
+    );
+  }
+
+  return <DirectorLoginBrandingPage />;
+}
+
+function DirectorCamerasRoute() {
+  const { profile } = useAuth();
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return <PageLoading />;
+  }
+
+  if (currentRole !== 'DIRECTOR' && profile?.role !== 'DIRECTOR') {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <CamerasPage />;
+}
+
+function InstitutionEmailRoute() {
+  const { profile } = useAuth();
+  const { currentRole, isLoading } = useInstitution();
+
+  if (isLoading) {
+    return <PageLoading />;
+  }
+
+  if (
+    !profile ||
+    !hasEffectivePermission({
+      platformRole: profile.platform_role,
+      membershipRole: currentRole,
+      profileRole: profile.role,
+      permission: 'send_school_email',
+    })
+  ) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  return <EmailTab />;
+}
+
+function InstitutionTerminalsRoute({
+  active = true,
+}: {
+  active?: boolean;
+}) {
+  const { profile } = useAuth();
+  const { currentRole, isLoading } = useInstitution();
+  const hasResolvedAccess = useRef(false);
+  const profileAccessWasResolved = Boolean(
+    profile?.id && resolvedTerminalsAccessProfiles.has(profile.id),
+  );
+
+  if (!active) {
+    return <TerminalsPage />;
+  }
+
+  if (isLoading) {
+    if (hasResolvedAccess.current || profileAccessWasResolved) {
+      return <TerminalsPage />;
+    }
+
+    return <PageLoading />;
+  }
+
+  if (
+    !profile ||
+    !hasEffectivePermission({
+      platformRole: profile.platform_role,
+      membershipRole: currentRole,
+      profileRole: profile.role,
+      permission: 'view_school_dashboard',
+    })
+  ) {
+    return <Navigate to="/unauthorized" replace />;
+  }
+
+  hasResolvedAccess.current = true;
+  if (profile?.id) {
+    resolvedTerminalsAccessProfiles.add(profile.id);
+  }
+  return <TerminalsPage />;
+}
+
+function PersistentTerminalsView() {
+  const { pathname } = useLocation();
+  const isActive = pathname.startsWith('/terminais');
+  const [hasVisited, setHasVisited] = useState(isActive);
+
+  useEffect(() => {
+    if (isActive) {
+      setHasVisited(true);
+    }
+  }, [isActive]);
+
+  if (!hasVisited) {
+    return null;
+  }
+
+  return (
+    <div
+      className={
+        isActive
+          ? 'h-full'
+          : 'pointer-events-none fixed left-[-10000px] top-0 z-[-1] h-screen w-screen opacity-0'
+      }
+      aria-hidden={!isActive}
+    >
+      <InstitutionTerminalsRoute active={isActive} />
+    </div>
+  );
+}
+
+function AuthenticatedShellLayout() {
+  return (
+    <ProtectedRoute>
+      <AuthenticatedDataPreloader />
+      <AppShell>
+        <PersistentTerminalsView />
+        <Outlet />
+      </AppShell>
+    </ProtectedRoute>
+  );
 }
 
 function AppRoutes() {
@@ -346,59 +561,107 @@ function AppRoutes() {
       />
 
       <Route
-        path="/dashboard/*"
-        element={
-          <ProtectedRoute>
-            <AppShell>
+        path="/configurar-escola/*"
+        element={<Navigate to="/admin?module=overview" replace />}
+      />
+
+      <Route element={<AuthenticatedShellLayout />}>
+        <Route
+          path="/dashboard/materials"
+          element={
+            <ProtectedRoute
+              allowedRoles={['TEACHER', 'STUDENT']}
+            >
+              <AuthenticatedRouteContent>
+                <LearningContentPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/*"
+          element={
+            <AuthenticatedRouteContent>
               <DashboardContent />
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
+            </AuthenticatedRouteContent>
+          }
+        />
 
-      <Route
-        path="/admin/*"
-        element={
-          <ProtectedRoute
-            allowedRoles={[
-              'ADMIN',
-              'DIRECTOR',
-              'SECRETARY',
-            ]}
-            allowedPlatformRoles={['SUPER_ADMIN']}
-          >
-            <AppShell>
-              <AdminPage />
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/personalizar-login"
+          element={
+            <AuthenticatedRouteContent>
+              <DirectorLoginBrandingRoute />
+            </AuthenticatedRouteContent>
+          }
+        />
 
-      <Route
-        path="/platform/*"
-        element={
-          <ProtectedRoute
-            allowedPlatformRoles={[
-              'SUPER_ADMIN',
-            ]}
-          >
-            <AppShell>
-              <PlatformPage />
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
+        <Route
+          path="/cameras"
+          element={
+            <AuthenticatedRouteContent>
+              <DirectorCamerasRoute />
+            </AuthenticatedRouteContent>
+          }
+        />
 
-      <Route
-        path="/account/*"
-        element={
-          <ProtectedRoute>
-            <AppShell>
+        <Route
+          path="/email"
+          element={
+            <AuthenticatedRouteContent>
+              <InstitutionEmailRoute />
+            </AuthenticatedRouteContent>
+          }
+        />
+
+        <Route
+          path="/terminais"
+          element={<div className="hidden" />}
+        />
+
+        <Route
+          path="/admin/*"
+          element={
+            <ProtectedRoute
+              allowedRoles={[
+                'ADMIN',
+                'DIRECTOR',
+                'SECRETARY',
+              ]}
+              allowedPlatformRoles={['SUPER_ADMIN']}
+            >
+              <AuthenticatedRouteContent>
+                <AdminPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/platform/*"
+          element={
+            <ProtectedRoute
+              allowedPlatformRoles={[
+                'SUPER_ADMIN',
+              ]}
+            >
+              <AuthenticatedRouteContent>
+                <PlatformPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/account/*"
+          element={
+            <AuthenticatedRouteContent>
               <AccountPage />
-            </AppShell>
-          </ProtectedRoute>
-        }
-      />
+            </AuthenticatedRouteContent>
+          }
+        />
+      </Route>
 
       <Route
         path="/"
