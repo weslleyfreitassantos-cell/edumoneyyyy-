@@ -211,6 +211,14 @@ vi.mock('./tabs/AnnouncementsTab', () => ({
   ),
 }));
 
+vi.mock('./tabs/EmailTab', () => ({
+  default: () => (
+    <div data-testid="email-tab">
+      Aba e-mail
+    </div>
+  ),
+}));
+
 const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseCurrentInstitution = vi.mocked(
   useCurrentInstitution,
@@ -388,6 +396,20 @@ describe('AdminPage URL module resolution', () => {
     expect(
       screen.getByTestId('announcements-tab'),
     ).toBeTruthy();
+  });
+
+  it('renderiza o e-mail para perfis administrativos autorizados', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=email');
+
+    expect(screen.getByTestId('email-tab')).toBeTruthy();
   });
 
   it('mantem modulo ao recarregar com a mesma URL', () => {

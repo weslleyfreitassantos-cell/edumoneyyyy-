@@ -38,6 +38,7 @@ import SubjectsTab from './tabs/SubjectsTab';
 import TeachersTab from './tabs/TeachersTab';
 import FinanceTab from './tabs/FinanceTab';
 import AccessControlTab from './tabs/AccessControlTab';
+import EmailTab from './tabs/EmailTab';
 import AnnouncementsTab from './tabs/AnnouncementsTab';
 
 function setModuleParam(
@@ -203,6 +204,8 @@ export default function AdminPage() {
             inviteHeading="Cadastro de secretaria"
           />
         );
+      case 'email':
+        return <EmailTab />;
       case 'announcements':
         return <AnnouncementsTab />;
       case 'finance':
