@@ -7,13 +7,15 @@ export interface AssistantFeature {
   route: string;
   roles: UserRole[];
   permission?: string;
+  keywords: string[];
 }
 
 export const FEATURE_REGISTRY: AssistantFeature[] = [
-  { id: 'timetable', label: 'Grade horária', description: 'Configure turmas, disciplinas, professores e horários.', route: '/admin?module=timetable&view=automation', roles: ['super_admin', 'director', 'secretary'] },
-  { id: 'finance', label: 'Financeiro', description: 'Consulte faturas, mensalidades e recebimentos.', route: '/admin?module=finance', roles: ['super_admin', 'director'] , permission: 'manage_finance' },
-  { id: 'access', label: 'Portaria e equipamentos', description: 'Conecte e acompanhe equipamentos de acesso.', route: '/admin?module=access', roles: ['super_admin', 'director', 'secretary'], permission: 'manage_finance' },
-  { id: 'students', label: 'Alunos', description: 'Consulte e cadastre alunos da instituição.', route: '/admin?module=students', roles: ['super_admin', 'director', 'secretary'] },
+  { id: 'timetable', label: 'Grade horária', description: 'Configure turmas, disciplinas, professores e horários.', route: '/admin?module=timetable&view=automation', roles: ['super_admin', 'director', 'secretary'], keywords: ['grade', 'horario', 'aula', 'professor', 'turma'] },
+  { id: 'finance', label: 'Financeiro', description: 'Consulte faturas, mensalidades e recebimentos.', route: '/admin?module=finance', roles: ['super_admin', 'director'], permission: 'manage_finance', keywords: ['financeiro', 'fatura', 'mensalidade', 'boleto', 'inadimplencia', 'recebimento'] },
+  { id: 'access', label: 'Portaria e equipamentos', description: 'Conecte e acompanhe equipamentos de acesso.', route: '/admin?module=access', roles: ['super_admin', 'director', 'secretary'], permission: 'manage_finance', keywords: ['portaria', 'catraca', 'equipamento', 'acesso'] },
+  { id: 'students', label: 'Alunos', description: 'Consulte e cadastre alunos da instituição.', route: '/admin?module=students', roles: ['super_admin', 'director', 'secretary'], keywords: ['aluno', 'estudante', 'cadastro', 'pessoa'] },
+  { id: 'login-branding', label: 'Personalizar login', description: 'Altere logo, cores e aparência da tela de login.', route: '/personalizar-login', roles: ['super_admin', 'director'], keywords: ['personalizar', 'login', 'logo', 'marca', 'aparencia', 'identidade'] },
 ];
 
 export function getAssistantFeatures(role: UserRole): AssistantFeature[] {
