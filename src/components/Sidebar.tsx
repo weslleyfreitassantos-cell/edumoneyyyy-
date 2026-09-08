@@ -125,6 +125,7 @@ const adminModuleIcons: Record<
   secretaries: ContactRound,
   email: Mail,
   finance: WalletCards,
+  access: ShieldCheck,
   'academic-years': CalendarDays,
   subjects: BookOpen,
   classes: School,

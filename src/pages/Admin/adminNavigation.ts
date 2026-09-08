@@ -22,7 +22,8 @@ export type AdminModuleId =
   | 'academic-policies'
   | 'timetable'
   | 'rooms'
-  | 'finance';
+  | 'finance'
+  | 'access';
 
 export type AdminNavigationGroupId =
   | 'start'
@@ -140,6 +141,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'administration',
     permission: 'manage_finance',
     href: moduleHref('finance'),
+  },
+  {
+    id: 'access',
+    label: 'Portaria',
+    groupId: 'administration',
+    permission: 'manage_finance',
+    href: moduleHref('access'),
   },
   {
     id: 'academic-years',
