@@ -1,6 +1,7 @@
 import type {
   SystemPermission,
 } from '../../lib/permissions';
+import type { CurrentDatabaseRole } from '../../lib/permissions';
 
 export type AdminModuleId =
   | 'overview'
@@ -45,6 +46,7 @@ export interface AdminModuleDefinition {
   permission: SystemPermission;
   href: string;
   visibleInSidebar?: boolean;
+  allowedRoles?: CurrentDatabaseRole[];
 }
 
 export interface AdminModuleGroup
@@ -238,6 +240,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
 
 export const DEFAULT_ADMIN_MODULE_ID: AdminModuleId =
   'overview';
+
+export function isAdminModuleAvailable(
+  module: AdminModuleDefinition,
+  currentRole: string | null | undefined,
+): boolean {
+  if (!module.allowedRoles) return true;
+  return typeof currentRole === 'string' && module.allowedRoles.includes(currentRole as CurrentDatabaseRole);
+}
 
 export function isAdminModuleId(
   value: string | null | undefined,
