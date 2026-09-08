@@ -165,14 +165,14 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^respons.veis$/i }),
     ).toBeTruthy();
     expect(
-      screen.queryByRole('link', { name: /^secretaria$/i }),
-    ).toBeNull();
+      screen.getByRole('link', { name: /^secretaria$/i }),
+    ).toBeTruthy();
     expect(
       screen.queryByRole('link', { name: /^diretores$/i }),
     ).toBeNull();
   });
 
-  it('mostra Diretores em Pessoas somente para ADMIN', () => {
+  it('não exibe Diretores como módulo administrativo', () => {
     renderSidebar();
 
     fireEvent.click(
@@ -180,13 +180,11 @@ describe('Sidebar', () => {
     );
 
     expect(
-      screen
-        .getByRole('link', { name: /^diretores$/i })
-        .getAttribute('href'),
-    ).toBe('/admin?module=directors');
-    expect(
-      screen.queryByRole('link', { name: /^secretaria$/i }),
+      screen.queryByRole('link', { name: /^diretores$/i }),
     ).toBeNull();
+    expect(
+      screen.getByRole('link', { name: /^secretaria$/i }),
+    ).toBeTruthy();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {

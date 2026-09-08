@@ -7,8 +7,9 @@ const source = readFileSync(
 );
 
 describe('create-client-account', () => {
-  it('rejects missing APP_URL', () => {
-    expect(source).toContain('MISSING_APP_URL');
+  it('uses the request origin when APP_URL is not configured', () => {
+    expect(source).toContain('const resolvedUrl = appUrl || new URL(requestUrl).origin');
+    expect(source).toContain('getAppUrl(requestUrl)');
   });
 
   it('rejects localhost APP_URL in production', () => {
@@ -18,9 +19,9 @@ describe('create-client-account', () => {
     expect(source).toContain('127\\.0\\.0\\.1');
   });
 
-  it('builds the normal login URL from APP_URL', () => {
-    expect(source).toContain('`${getAppUrl()}/login`');
-    expect(source).not.toContain('/auth/confirm');
+  it('builds the auth confirmation URL from APP_URL', () => {
+    expect(source).toContain('`${getAppUrl(requestUrl)}/auth/confirm`');
+    expect(source).not.toContain('/login');
     expect(source).not.toContain('/reset-password');
   });
 
@@ -29,25 +30,22 @@ describe('create-client-account', () => {
     expect(source).toContain('platform_role');
   });
 
-  it('creates the Auth identity without making SMTP delivery mandatory', () => {
-    expect(source).toContain('auth.admin.createUser');
-    expect(source).toContain('password: temporaryPassword');
-    expect(source).toContain('email_confirm: true');
-    expect(source).toContain('generateSecurePassword');
-    expect(source).not.toContain('generateLink');
-    expect(source).not.toContain('inviteUserByEmail');
-    expect(source).toContain('sendResendEmail');
-    expect(source).toContain('invitationStatus: delivery.invitationStatus');
-    expect(source).toContain('status: "PENDING"');
-    expect(source).toContain('status: "SENT"');
-    expect(source).not.toContain('send-school-email');
-    expect(source).not.toContain('console.error("Falha no convite", generatedLink');
+  it('invites the Auth identity with the institutional confirmation URL', () => {
+    expect(source).toContain('auth.admin.inviteUserByEmail');
+    expect(source).toContain('redirectTo: inviteRedirectUrl');
+    expect(source).toContain('role: "ADMIN"');
+    expect(source).toContain('invitationSent: true');
+    expect(source).toContain('reusedExistingUser: false');
+    expect(source).not.toContain('auth.admin.createUser');
+    expect(source).not.toContain('sendResendEmail');
   });
 
-  it('keeps provider failures out of the account rollback path', () => {
-    expect(source).toContain('Acesso do administrador pendente');
-    expect(source).toContain('return { invitationSent: false, invitationStatus: "PENDING" }');
-    expect(source).toContain('RESEND_PROVIDER_ERROR');
-    expect(source).not.toContain('console.error("Falha ao criar conta", error)');
+  it('rolls back the invited identity when account creation fails', () => {
+    expect(source).toContain('invitationError');
+    expect(source).toContain('Nao foi possivel convidar o ADMIN.');
+    expect(source).toContain('rollback.createdAuthUserId');
+    expect(source).toContain('auth.admin.deleteUser');
+    expect(source).toContain('INTERNAL_ERROR');
+    expect(source).not.toContain('RESEND_PROVIDER_ERROR');
   });
 });

@@ -126,7 +126,6 @@ const adminModuleIcons: Record<
   teachers: Users,
   guardians: Users,
   secretaries: Users,
-  directors: BadgeCheck,
   finance: WalletCards,
   access: ShieldCheck,
   'academic-years': CalendarDays,

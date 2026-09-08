@@ -131,6 +131,14 @@ vi.mock('./tabs/SchoolUsersTab', () => ({
   ),
 }));
 
+vi.mock('./tabs/EnrollmentsTab', () => ({
+  default: () => (
+    <div data-testid="enrollments-tab">
+      Aba matriculas
+    </div>
+  ),
+}));
+
 vi.mock('./tabs/StudentsTab', () => ({
   default: () => (
     <div data-testid="students-tab">
@@ -344,11 +352,11 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
-  it('renderiza o cadastro de Diretor somente para ADMIN', () => {
+  it('usa a visão geral quando a rota antiga de Diretor é acessada', () => {
     renderAdminPage('/admin?module=directors');
 
     expect(
-      screen.getByTestId('school-users-tab'),
+      screen.getByTestId('overview-tab'),
     ).toBeTruthy();
 
     cleanup();
@@ -500,7 +508,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=enrollments');
 
     expect(
-      screen.getByTestId('students-tab'),
+      screen.getByTestId('enrollments-tab'),
     ).toBeTruthy();
 
     cleanup();
