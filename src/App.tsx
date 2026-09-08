@@ -103,6 +103,10 @@ const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
 );
 
+const LibraryPage = lazy(
+  () => import('./components/learning/LibraryPage'),
+);
+
 const DirectorDashboard = lazy(
   () =>
     import(
@@ -563,6 +567,17 @@ function AppRoutes() {
             >
               <AuthenticatedRouteContent>
                 <LearningContentPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/library"
+          element={
+            <ProtectedRoute allowedRoles={['STUDENT']}>
+              <AuthenticatedRouteContent>
+                <LibraryPage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }

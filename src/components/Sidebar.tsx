@@ -234,6 +234,16 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     exactActivePath: true,
   },
   {
+    id: 'library',
+    label: 'Biblioteca',
+    path: '/dashboard/library',
+    section: 'personal',
+    icon: BookOpen,
+    roles: ['student'],
+    activePaths: ['/dashboard/library'],
+    exactActivePath: true,
+  },
+  {
     id: 'personalize-login',
     label: 'Personalizar login',
     path: '/personalizar-login',
