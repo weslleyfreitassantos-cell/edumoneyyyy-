@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
+import LoadingIndicator from './LoadingIndicator';
 import {
   useOptionalInstitution,
 } from '../contexts/InstitutionContext';
@@ -45,7 +46,7 @@ export function ProtectedRoute({
   if (loading && (!user || !profile)) {
     return (
       <main className="min-h-screen grid place-items-center">
-        <p>Carregando...</p>
+        <LoadingIndicator />
       </main>
     );
   }

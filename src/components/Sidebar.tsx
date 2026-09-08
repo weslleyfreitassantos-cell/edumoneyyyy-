@@ -128,6 +128,7 @@ const adminModuleIcons: Record<
   teachers: Users,
   guardians: Users,
   secretaries: Users,
+  directors: BadgeCheck,
   email: Mail,
   finance: WalletCards,
   access: ShieldCheck,
@@ -272,6 +273,15 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     icon: FileCheck2,
     roles: ['teacher'],
     activePaths: ['/dashboard/term-closing'],
+  },
+  {
+    id: 'library',
+    label: 'Indicações de livros',
+    path: '/dashboard/library',
+    section: 'personal',
+    icon: BookOpen,
+    roles: ['student'],
+    activePaths: ['/dashboard/library'],
     exactActivePath: true,
   },
   {

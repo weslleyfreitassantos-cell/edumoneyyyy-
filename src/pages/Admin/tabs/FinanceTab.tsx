@@ -1,4 +1,5 @@
-import { useMemo, useState, type FormEvent } from 'react';
+import { useMemo, useState } from 'react';
+import type { FormEvent } from 'react';
 import { CircleDollarSign, ReceiptText, Search, Wallet } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';

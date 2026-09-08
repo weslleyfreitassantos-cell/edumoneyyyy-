@@ -230,6 +230,13 @@ export function getRouteVisualContext(
         };
       }
 
+      if (normalizedPath === '/dashboard/library') {
+        return {
+          section: 'Acadêmico',
+          title: 'Indicações de livros',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do professor',
@@ -248,6 +255,13 @@ export function getRouteVisualContext(
         return {
           section: 'Acadêmico',
           title: 'Materiais e avisos',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/library') {
+        return {
+          section: 'Acadêmico',
+          title: 'Indicações de livros',
         };
       }
 

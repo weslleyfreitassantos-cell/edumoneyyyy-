@@ -103,9 +103,19 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
 export function getUnifiedUserInviteOption(
   target: UnifiedUserInviteTarget,
 ): UnifiedUserInviteOption {
-  return UNIFIED_USER_INVITE_OPTIONS.find(
+  const option = UNIFIED_USER_INVITE_OPTIONS.find(
     (option) => option.target === target,
-  )!;
+  );
+
+  return option ?? {
+    target,
+    label: 'Usuário',
+    description: 'Este tipo de usuário ainda não está disponível.',
+    rolePreview: target,
+    availabilityStatuses: [],
+    futureRecords: [],
+    isPlanned: true,
+  };
 }
 
 export function isUnifiedInviteTargetCurrentlySupported(

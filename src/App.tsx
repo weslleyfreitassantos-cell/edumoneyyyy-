@@ -37,6 +37,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 
 import AppShell from './components/AppShell';
 import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
+import LoadingIndicator from './components/LoadingIndicator';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 
@@ -100,6 +101,10 @@ const StudentDashboard = lazy(
 
 const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
+);
+
+const LibraryPage = lazy(
+  () => import('./components/learning/LibraryPage'),
 );
 
 const DirectorDashboard = lazy(
@@ -233,19 +238,7 @@ class AppErrorBoundary extends Component<
 function PageLoading() {
   return (
     <main className="grid min-h-screen place-items-center bg-slate-50">
-      <div
-        role="status"
-        className="text-center"
-      >
-        <div
-          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
-          aria-hidden="true"
-        />
-
-        <p className="mt-4 text-sm font-medium text-[#727785]">
-          Carregando...
-        </p>
-      </div>
+      <LoadingIndicator />
     </main>
   );
 }
@@ -260,7 +253,7 @@ function AuthenticatedPageLoading() {
         role="status"
         className="grid min-h-48 place-items-center rounded-2xl border border-slate-200 bg-white text-sm font-medium text-slate-500 shadow-sm dark:border-slate-800 dark:bg-slate-900 dark:text-slate-400"
       >
-        Carregando conteúdo...
+        <LoadingIndicator label="Carregando conteúdo..." />
       </div>
     </main>
   );
@@ -388,7 +381,7 @@ export function DirectorLoginBrandingRoute() {
   if (isLoading) {
     return (
       <main className="grid min-h-screen place-items-center">
-        <p>Carregando...</p>
+        <LoadingIndicator />
       </main>
     );
   }
@@ -574,6 +567,17 @@ function AppRoutes() {
             >
               <AuthenticatedRouteContent>
                 <LearningContentPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/library"
+          element={
+            <ProtectedRoute allowedRoles={['STUDENT']}>
+              <AuthenticatedRouteContent>
+                <LibraryPage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
