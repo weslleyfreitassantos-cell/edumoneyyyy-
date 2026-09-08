@@ -55,6 +55,11 @@ const offering = {
 
 const rollCall = {
   offering,
+  scheduleSlot: {
+    dayOfWeek: 1,
+    startTime: '07:00:00',
+    endTime: '07:50:00',
+  },
   session: {
     id: 'session-1',
     institutionId: 'institution-1',
@@ -177,6 +182,9 @@ describe('TeacherAttendancePanel', () => {
       screen.getByText(
         'Período permitido: 09/02/2026 a 09/05/2026.',
       ),
+    ).toBeTruthy();
+    expect(
+      screen.getByText('Aula prevista: 07:00 a 07:50'),
     ).toBeTruthy();
     expect(
       screen.getByText('Ana Silva'),

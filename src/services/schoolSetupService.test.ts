@@ -7,7 +7,7 @@ import {
 
 const baseInput: Parameters<typeof buildSchoolSetupReadiness>[0] = {
   institutionId: 'institution-a',
-  loginBrandingConfigured: true,
+  loginBrandingConfigured: false,
   academicYear: {
     id: 'year-1',
     name: '2026',
@@ -29,7 +29,7 @@ const baseInput: Parameters<typeof buildSchoolSetupReadiness>[0] = {
     { shift: 'MATUTINO', day_of_week: 1, start_time: '07:00', end_time: '07:50', active: true },
     { shift: 'MATUTINO', day_of_week: 2, start_time: '07:00', end_time: '07:50', active: true },
   ],
-  publishedVersion: { id: 'version-1', published_at: '2026-01-01T00:00:00Z' },
+  publishedVersion: { id: 'version-1', status: 'PUBLISHED', published_at: '2026-01-01T00:00:00Z' },
   publishedEntries: [
     { class_id: 'class-1', term_id: 'term-1', subject_offering_id: 'offering-1', day_of_week: 1, start_time: '07:00', end_time: '07:50', active: true },
     { class_id: 'class-1', term_id: 'term-1', subject_offering_id: 'offering-1', day_of_week: 2, start_time: '07:00', end_time: '07:50', active: true },
@@ -48,19 +48,12 @@ function getStep(readiness: SchoolSetupReadiness, id: string) {
 }
 
 describe('school setup readiness', () => {
-  it('coloca Personalizar login como primeiro passo e direciona para a tela correta', () => {
-    const readiness = buildSchoolSetupReadiness({
-      ...baseInput,
-      loginBrandingConfigured: false,
-    });
+  it('trata branding como opcional sem bloquear a configuração acadêmica', () => {
+    const readiness = buildSchoolSetupReadiness(baseInput);
 
-    expect(readiness.steps[0]).toEqual({
-      id: 'login-branding',
-      label: 'Personalizar login',
-      complete: false,
-      href: '/personalizar-login',
-    });
-    expect(readiness.nextStepId).toBe('login-branding');
+    expect(readiness.optionalSetup.brandingConfigured).toBe(false);
+    expect(readiness.academicSetupConfigured).toBe(true);
+    expect(readiness.steps.some((step) => step.label === 'Personalizar login')).toBe(false);
   });
 
   it('fica IN_PROGRESS sem grade publicada', () => {
@@ -97,7 +90,7 @@ describe('school setup readiness', () => {
     expect(getStep(readiness, 'timetable')?.complete).toBe(true);
   });
 
-  it('fica CONFIGURED com rascunho estrutural completo mesmo sem gate de professor', () => {
+  it('não fica CONFIGURED com rascunho estrutural completo', () => {
     const readiness = buildSchoolSetupReadiness({
       ...baseInput,
       publishedVersion: null,
@@ -108,10 +101,48 @@ describe('school setup readiness', () => {
       }],
     });
 
-    expect(readiness.status).toBe('CONFIGURED');
-    expect(readiness.configured).toBe(true);
+    expect(readiness.status).toBe('IN_PROGRESS');
+    expect(readiness.configured).toBe(false);
     expect(readiness.publishedVersionId).toBeNull();
-    expect(readiness.review.timetableClassCount).toBe(1);
+    expect(readiness.review.timetableClassCount).toBe(0);
+  });
+
+  it('não considera uma grade arquivada como publicada', () => {
+    const readiness = buildSchoolSetupReadiness({
+      ...baseInput,
+      publishedVersion: null,
+      publishedEntries: [],
+      timetableCandidates: [{
+        version: { id: 'archived-1', status: 'ARCHIVED', published_at: null },
+        entries: baseInput.publishedEntries,
+      }],
+    });
+
+    expect(readiness.academicSetupConfigured).toBe(false);
+    expect(getStep(readiness, 'timetable')?.complete).toBe(false);
+  });
+
+  it('separa prontidão operacional da configuração acadêmica', () => {
+    const readiness = buildSchoolSetupReadiness(baseInput);
+
+    expect(readiness.academicSetupConfigured).toBe(true);
+    expect(readiness.operationalReadiness.ready).toBe(false);
+    expect(readiness.operationalReadiness.blockers.find((blocker) => blocker.id === 'teachers-configured')?.complete).toBe(false);
+    expect(readiness.operationalReadiness.blockers.find((blocker) => blocker.id === 'active-enrollments')?.complete).toBe(false);
+  });
+
+  it('exige associação real de professor às ofertas e matrícula ativa', () => {
+    const readiness = buildSchoolSetupReadiness({
+      ...baseInput,
+      offerings: [{ ...baseInput.offerings[0], teacher_profile_id: 'teacher-1' }],
+      teacherProfiles: [{ profile_id: 'teacher-1', active: true }],
+      teacherSubjects: [{ teacher_profile_id: 'teacher-1', subject_id: 'subject-math', active: true }],
+      enrollments: [{ class_id: 'class-1', academic_year_id: 'year-1', status: 'ACTIVE', active: true }],
+    });
+
+    expect(readiness.operationalReadiness.blockers.find((blocker) => blocker.id === 'teacher-assignments')?.complete).toBe(true);
+    expect(readiness.operationalReadiness.blockers.find((blocker) => blocker.id === 'teacher-qualifications')?.complete).toBe(true);
+    expect(readiness.operationalReadiness.blockers.find((blocker) => blocker.id === 'active-enrollments')?.complete).toBe(true);
   });
 
   it('não conclui o onboarding quando o rascunho possui conflito de turma', () => {

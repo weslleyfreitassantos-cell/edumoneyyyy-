@@ -36,6 +36,7 @@ import {
 import { ThemeProvider } from './contexts/ThemeContext';
 
 import AppShell from './components/AppShell';
+import AuthenticatedDataPreloader from './components/AuthenticatedDataPreloader';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { Login } from './pages/Login';
 
@@ -95,6 +96,10 @@ const StudentDashboard = lazy(
     import(
       './components/StudentDashboard'
     ),
+);
+
+const LearningContentPage = lazy(
+  () => import('./components/learning/LearningContentPage'),
 );
 
 const DirectorDashboard = lazy(
@@ -324,6 +329,8 @@ function InvalidRolePage({
 
 function DashboardContent() {
   const { profile, signOut } = useAuth();
+  const { currentRole: institutionRole } =
+    useInstitution();
 
   if (!profile) {
     return (
@@ -336,6 +343,7 @@ function DashboardContent() {
 
   const currentRole =
     mapPlatformRole(profile.platform_role) ??
+    mapDatabaseRole(institutionRole ?? '') ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {
@@ -497,6 +505,7 @@ function PersistentTerminalsView() {
 function AuthenticatedShellLayout() {
   return (
     <ProtectedRoute>
+      <AuthenticatedDataPreloader />
       <AppShell>
         <PersistentTerminalsView />
         <Outlet />
@@ -544,6 +553,19 @@ function AppRoutes() {
       />
 
       <Route element={<AuthenticatedShellLayout />}>
+        <Route
+          path="/dashboard/materials"
+          element={
+            <ProtectedRoute
+              allowedRoles={['TEACHER', 'STUDENT']}
+            >
+              <AuthenticatedRouteContent>
+                <LearningContentPage />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/dashboard/*"
           element={

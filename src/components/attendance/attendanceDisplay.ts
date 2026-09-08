@@ -25,6 +25,12 @@ export function formatAttendanceDate(
   return `${day}/${month}/${year}`;
 }
 
+export function formatAttendanceTime(
+  value: string,
+): string {
+  return value.slice(0, 5);
+}
+
 export function getTodayDateInputValue(): string {
   const today = new Date();
   const year = today.getFullYear();

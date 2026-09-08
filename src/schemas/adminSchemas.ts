@@ -5,6 +5,10 @@ import {
   ACADEMIC_SHIFT_VALUES,
   toAcademicShift,
 } from '../lib/academic/academicShifts';
+import {
+  ACADEMIC_LEVEL_VALUES,
+  normalizeAcademicLevel,
+} from '../lib/academic/academicLevels';
 
 const optionalCpfSchema = z.preprocess(
   (value) => {
@@ -160,7 +164,10 @@ export const studentUpdateSchema = z
   .strict();
 
 export const teacherSchema = z
-  .object(personIdentityFields)
+  .object({
+    ...personIdentityFields,
+    phone: optionalTextSchema,
+  })
   .strict();
 
 export const guardianLinkSchema = z
@@ -296,7 +303,13 @@ const classFields = {
       'Nome da turma deve possuir no máximo 80 caracteres',
     ),
 
-  grade_level: optionalTextSchema,
+  grade_level: z.preprocess(
+    (value) =>
+      typeof value === 'string'
+        ? normalizeAcademicLevel(value) ?? undefined
+        : value,
+    z.enum(ACADEMIC_LEVEL_VALUES),
+  ),
 
   shift: z.preprocess(
     (value) => {
@@ -348,7 +361,10 @@ export const classSchema = z
   .strict();
 
 export const classUpdateSchema = z
-  .object(classFields)
+  .object({
+    ...classFields,
+    grade_level: classFields.grade_level.optional(),
+  })
   .strict();
 
 const optionalSubjectCodeSchema = z.preprocess(

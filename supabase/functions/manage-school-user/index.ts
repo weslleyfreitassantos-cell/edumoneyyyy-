@@ -260,6 +260,10 @@ async function getAuthorizedContext(
     (membership) =>
       membership.active === true && membership.role === "DIRECTOR",
   );
+  const isSecretary = (memberships ?? []).some(
+    (membership) =>
+      membership.active === true && membership.role === "SECRETARY",
+  );
 
   if (
     !isSuperAdmin &&
@@ -281,6 +285,7 @@ async function getAuthorizedContext(
     isLocalAdmin,
     isOperationalManager,
     isDirector,
+    isSecretary,
   };
 }
 
@@ -390,6 +395,7 @@ async function handleUpdate(
     authorization,
     {
       targetRole: membership.role,
+      requestedRole: input.role,
       targetMembershipActive: membership.active,
       studentActive,
       hasPassword: input.password !== undefined,
@@ -400,10 +406,10 @@ async function handleUpdate(
 
   if (!authorizationDecision.allowed) {
     const errorByCode: Record<NonNullable<typeof authorizationDecision.code>, ManageSchoolUserError> = {
-      DIRECTOR_PASSWORD_ONLY: new ManageSchoolUserError({
+      SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE: new ManageSchoolUserError({
         status: 403,
-        code: "DIRECTOR_PASSWORD_ONLY",
-        message: "Este papel pode redefinir somente a senha do aluno.",
+        code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE",
+        message: "A Secretaria nao pode alterar o papel de um Diretor.",
       }),
       TARGET_MEMBERSHIP_INACTIVE: new ManageSchoolUserError({
         status: 403,
@@ -511,14 +517,19 @@ async function handleUpdateStudentIdentity(
 
   if (existingProfileError) throw existingProfileError;
 
-  const { data: emailOwner, error: emailOwnerError } = await ctx.supabaseAdmin
+  const { data: emailOwners, error: emailOwnerError } = await ctx.supabaseAdmin
     .from("profiles")
-    .select("id")
-    .eq("email", input.email)
+    .select("id, email")
+    .ilike("email", input.email)
     .neq("id", student.profile_id)
-    .maybeSingle();
+    .limit(10);
 
   if (emailOwnerError) throw emailOwnerError;
+  const emailOwner = (emailOwners ?? []).find(
+    (profile: { id: string; email: string | null }) =>
+      profile.email?.trim().toLowerCase() === input.email,
+  );
+
   if (emailOwner) {
     throw new ManageSchoolUserError({
       status: 409,
@@ -583,7 +594,7 @@ async function handleDelete(
   const membership = await getTargetMembership(
     ctx,
     input,
-    authorization.isDirector
+    (authorization.isDirector || authorization.isSecretary)
       ? {
           notFoundError: new ManageSchoolUserError({
             status: 403,
@@ -620,6 +631,7 @@ async function handleDelete(
       targetProfileId: membership.profile_id,
       targetPlatformRole: targetProfile?.platform_role ?? null,
       targetIsAccountOwner: Boolean(targetAccount),
+      targetRole: membership.role,
     },
   );
 
@@ -647,6 +659,11 @@ async function handleDelete(
         status: 409,
         code: "ACCOUNT_OWNER_PROTECTED",
         message: "O administrador dono da conta deve ser alterado pela Plataforma.",
+      }),
+      SECRETARY_CANNOT_REMOVE_DIRECTOR: new ManageSchoolUserError({
+        status: 403,
+        code: "SECRETARY_CANNOT_REMOVE_DIRECTOR",
+        message: "A Secretaria nao pode remover um Diretor.",
       }),
       DIRECTOR_REQUIRED: new ManageSchoolUserError({
         status: 403,
@@ -680,7 +697,7 @@ async function handleDelete(
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+          "Não é possível excluir este aluno porque há notas, frequência ou fechamento de período vinculados. O histórico acadêmico precisa ser preservado.",
       });
     }
 
@@ -696,7 +713,7 @@ async function handleDelete(
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+          "Não é possível excluir este aluno porque há notas, frequência ou fechamento de período vinculados. O histórico acadêmico precisa ser preservado.",
       });
     }
 
@@ -712,7 +729,7 @@ async function handleDelete(
         status: 409,
         code: "USER_HAS_RELATED_RECORDS",
         message:
-          "Nao foi possivel excluir este usuario porque existem registros academicos vinculados.",
+          "Não é possível excluir este aluno porque há notas, frequência ou fechamento de período vinculados. O histórico acadêmico precisa ser preservado.",
       });
     }
   }
@@ -1040,9 +1057,10 @@ const authenticatedFetch = withSupabase<Database>(
           {
             allowOperationalManager:
               input.action === "link_guardian" ||
-              (input.action === "update" && input.password !== undefined) ||
-              input.action === "update_student_identity",
-            allowDirectorDelete: input.action === "delete",
+              input.action === "update" ||
+              input.action === "update_student_identity" ||
+              input.action === "delete",
+            allowDirectorDelete: false,
           },
         );
 

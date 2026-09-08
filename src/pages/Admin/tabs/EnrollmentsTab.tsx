@@ -41,6 +41,14 @@ import type {
   EnrollmentRow,
   EnrollmentStatus,
 } from '../../../services/enrollmentService';
+import {
+  getActiveClassesForYear,
+  getPreferredAcademicYear,
+  getSuggestedClassId,
+  isClassAtCapacity,
+  sortAcademicYearsForSelection,
+} from '../../../lib/academicSelection';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface EnrollmentDraft {
   student_id: string;
@@ -94,20 +102,7 @@ const statusOptions: {
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function StatusBadge({
@@ -120,18 +115,18 @@ function StatusBadge({
     string
   > = {
     ACTIVE:
-      'bg-green-100 text-green-700',
+      'border-emerald-300 bg-emerald-100 text-emerald-800 dark:border-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-200',
     TRANSFERRED:
-      'bg-blue-100 text-blue-700',
+      'border-blue-200 bg-blue-100 text-blue-800 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300',
     CANCELLED:
-      'bg-gray-100 text-gray-600',
+      'border-slate-300 bg-slate-100 text-slate-700 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-300',
     COMPLETED:
-      'bg-purple-100 text-purple-700',
+      'border-purple-200 bg-purple-100 text-purple-800 dark:border-purple-800 dark:bg-purple-950/40 dark:text-purple-300',
   };
 
   return (
     <span
-      className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ${styles[enrollment.status]}`}
+      className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${styles[enrollment.status]}`}
     >
       {enrollment.status_label}
     </span>
@@ -328,14 +323,13 @@ export default function EnrollmentsTab() {
   );
 
   const classesForDraft = useMemo(
-    () =>
-      activeClasses.filter(
-        (classRecord) =>
-          !formData.academic_year_id ||
-          classRecord.academic_year_id ===
-            formData.academic_year_id,
-      ),
+    () => getActiveClassesForYear(activeClasses, formData.academic_year_id),
     [activeClasses, formData.academic_year_id],
+  );
+
+  const yearOptions = useMemo(
+    () => sortAcademicYearsForSelection(years),
+    [years],
   );
 
   const transferClassOptions = useMemo(() => {
@@ -454,29 +448,16 @@ export default function EnrollmentsTab() {
     setTransferEnrollment(null);
     setTransferClassId('');
 
-    const firstYear =
-      years.find((year) => year.active)?.id ??
-      years[0]?.id ??
-      '';
-
-    const firstClass =
-      activeClasses.find(
-        (classRecord) =>
-          classRecord.academic_year_id ===
-            firstYear &&
-          !isClassFull(classRecord),
-      ) ??
-      activeClasses.find(
-        (classRecord) =>
-          !isClassFull(classRecord),
-      );
+    const firstYear = getPreferredAcademicYear(years)?.id ?? '';
+    const firstYearClasses = getActiveClassesForYear(
+      activeClasses,
+      firstYear,
+    );
 
     setFormData({
       student_id: existingStudentId,
-      academic_year_id:
-        firstClass?.academic_year_id ??
-        firstYear,
-      class_id: firstClass?.id ?? '',
+      academic_year_id: firstYear,
+      class_id: getSuggestedClassId(firstYearClasses),
       guardian_profile_id: '',
       guardian_relationship: '',
       guardian_is_primary: false,
@@ -566,13 +547,9 @@ export default function EnrollmentsTab() {
   function handleYearChange(
     academicYearId: string,
   ): void {
-    const nextClass =
-      activeClasses.find(
-        (classRecord) =>
-          classRecord.academic_year_id ===
-            academicYearId &&
-          !isClassFull(classRecord),
-      )?.id ?? '';
+    const nextClass = getSuggestedClassId(
+      getActiveClassesForYear(activeClasses, academicYearId),
+    );
 
     setFormData((current) => ({
       ...current,
@@ -1356,7 +1333,7 @@ export default function EnrollmentsTab() {
                     <option value="">
                       Selecione
                     </option>
-                    {years
+                    {yearOptions
                       .filter((year) => year.active)
                       .map((year) => (
                         <option
@@ -1385,10 +1362,16 @@ export default function EnrollmentsTab() {
                       )
                     }
                     className="mt-1 w-full rounded-lg border px-3 py-2"
+                    disabled={
+                      !formData.academic_year_id ||
+                      classesForDraft.length === 0
+                    }
                     required
                   >
                     <option value="">
-                      Selecione
+                      {classesForDraft.length === 0
+                        ? 'Nenhuma turma disponível'
+                        : 'Selecione'}
                     </option>
                     {classesForDraft.map(
                       (classRecord) => {
@@ -1412,6 +1395,13 @@ export default function EnrollmentsTab() {
                       },
                     )}
                   </select>
+                  <p className="mt-1 text-xs text-gray-500">
+                    {classesForDraft.length === 0
+                      ? 'Cadastre uma turma ativa neste ano letivo para continuar.'
+                      : classesForDraft.filter((classRecord) => !isClassAtCapacity(classRecord)).length > 1 && !formData.class_id
+                        ? 'Escolha a turma do aluno. O sistema não seleciona uma turma aleatória.'
+                        : 'As turmas são filtradas pelo ano letivo selecionado.'}
+                  </p>
                 </div>
               </div>
 

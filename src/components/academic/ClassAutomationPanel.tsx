@@ -16,6 +16,8 @@ import {
   getAcademicShiftLabel,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
+import { ACADEMIC_LEVEL_OPTIONS } from '../../lib/academic/academicLevels';
+import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 
 interface ClassAutomationPanelProps {
   institutionId: string;
@@ -52,11 +54,7 @@ const defaultPresetCounts = Object.fromEntries(
 );
 
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) return error.message;
-  if (typeof error === 'object' && error !== null && 'message' in error && typeof error.message === 'string') {
-    return error.message;
-  }
-  return 'Não foi possível criar as turmas automaticamente.';
+  return getUserFacingErrorMessage(error, 'Não foi possível criar as turmas automaticamente.');
 }
 
 export default function ClassAutomationPanel({ institutionId, onClose, onCompleted }: ClassAutomationPanelProps) {
@@ -171,7 +169,7 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
         <div className="flex items-start justify-between gap-4">
           <div>
             <h3 id="class-automation-title" className="text-lg font-bold text-[#181c20]">Criar turmas automaticamente</h3>
-            <p className="mt-1 text-sm text-gray-500">Prepare a estrutura escolar por série e reaproveite os professores já vinculados às disciplinas.</p>
+            <p className="mt-1 text-sm text-gray-500">Crie turmas por série e reaproveite a matriz curricular.</p>
           </div>
           <button type="button" onClick={onClose} className="text-sm font-medium text-gray-500 hover:text-gray-800">Fechar</button>
         </div>
@@ -215,7 +213,7 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div>
                   <h4 className="text-sm font-semibold text-gray-800">Turmas por série</h4>
-                  <p className="mt-1 text-xs text-gray-500">O padrão é de duas turmas por série. Ajuste para 0 quando a escola não oferecer uma etapa.</p>
+                  <p className="mt-1 text-xs text-gray-500">Defina quantas turmas cada série terá. Use 0 para não criar uma etapa.</p>
                 </div>
                 <span className="text-xs font-semibold text-[#005bbf]">{previewNames.length} previstas</span>
               </div>
@@ -262,9 +260,24 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
             <div>
               <label htmlFor="class-automation-grade" className="block text-sm font-medium text-gray-700">Série ou nível</label>
               {mode === 'preset' ? (
-                <p className="mt-2 text-sm text-gray-500">Preenchida automaticamente em cada turma.</p>
+                <p className="mt-2 text-sm text-gray-500">Será preenchida em cada turma.</p>
               ) : (
-                <input id="class-automation-grade" value={formData.gradeLevel} onChange={(event) => update('gradeLevel', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" />
+                <>
+                  <select id="class-automation-grade" value={formData.gradeLevel} onChange={(event) => update('gradeLevel', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" required>
+                    <option value="">Selecione</option>
+                    <optgroup label="Ensino Fundamental">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Fundamental').map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
+                    </optgroup>
+                    <optgroup label="Ensino Médio">
+                      {ACADEMIC_LEVEL_OPTIONS.filter((option) => option.stage === 'Ensino Médio').map((option) => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                      ))}
+                    </optgroup>
+                  </select>
+                  <p className="mt-1 text-xs text-gray-500">Use o nível padronizado para facilitar matrículas e importações.</p>
+                </>
               )}
             </div>
             <div>
@@ -295,7 +308,7 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
           {formData.templateId && (
             <label className="flex items-start gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-3 text-sm text-blue-900">
               <input type="checkbox" checked={formData.assignTeachers} onChange={(event) => update('assignTeachers', event.target.checked)} className="mt-0.5" />
-              <span><strong>Atribuir professores automaticamente.</strong> Usa apenas professores ativos que já estejam vinculados às disciplinas selecionadas.</span>
+              <span><strong>Atribuir professores automaticamente.</strong> Usa professores ativos vinculados às disciplinas.</span>
             </label>
           )}
 
@@ -306,13 +319,13 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
                 {previewNames.map((name) => <li key={name}>• {name}</li>)}
               </ul>
             ) : (
-              <p className="mt-2 text-sm text-gray-500">Informe um nome-base e uma quantidade válida.</p>
+              <p className="mt-2 text-sm text-gray-500">Informe o nome e a quantidade de turmas.</p>
             )}
           </section>
 
           <div className="flex justify-end gap-2 border-t pt-4">
             <button type="button" onClick={onClose} disabled={isPending} className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50">Cancelar</button>
-            <button type="submit" disabled={isPending || years.length === 0 || previewNames.length === 0} className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50">{isPending ? 'Criando...' : 'Criar turmas automaticamente'}</button>
+            <button type="submit" disabled={isPending || years.length === 0 || previewNames.length === 0} className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50">{isPending ? 'Criando...' : 'Criar turmas'}</button>
           </div>
         </form>
       </div>

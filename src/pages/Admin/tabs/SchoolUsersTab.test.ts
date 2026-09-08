@@ -49,6 +49,7 @@ import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
 import {
   default as SchoolUsersTab,
   filterSchoolUsers,
+  getSchoolUserAccessStatus,
   getSchoolUserSummary,
 } from './SchoolUsersTab';
 
@@ -262,6 +263,31 @@ describe('SchoolUsersTab helpers', () => {
     expect(summary.byRole.TEACHER).toBe(1);
     expect(summary.byRole.STUDENT).toBe(0);
     expect(summary.byRole.GUARDIAN).toBe(0);
+  });
+
+  it('calcula o status efetivo combinando vinculo e perfil', () => {
+    expect(getSchoolUserAccessStatus(users[0])).toEqual({
+      active: true,
+      reason: 'Acesso ativo',
+    });
+
+    expect(getSchoolUserAccessStatus(users[1])).toEqual({
+      active: false,
+      reason: 'Vínculo inativo',
+    });
+
+    expect(
+      getSchoolUserAccessStatus({
+        ...users[0],
+        profile: {
+          ...users[0].profile!,
+          active: false,
+        },
+      }),
+    ).toEqual({
+      active: false,
+      reason: 'Perfil inativo',
+    });
   });
 });
 

@@ -7,6 +7,8 @@ import {
 export type ProfileServiceErrorCode =
   | 'INVALID_NAME'
   | 'PASSWORD_TOO_SHORT'
+  | 'PASSWORD_REUSED'
+  | 'PASSWORD_POLICY_FAILED'
   | 'SESSION_EXPIRED'
   | 'PROFILE_UPDATE_FAILED'
   | 'PASSWORD_UPDATE_FAILED';
@@ -39,6 +41,45 @@ function isExpiredSessionError(error: unknown): boolean {
     'refresh_token_not_found',
     'session_not_found',
   ].includes(code);
+}
+
+function getAuthErrorCode(error: unknown): string {
+  if (!error || typeof error !== 'object') {
+    return '';
+  }
+
+  return 'code' in error ? String(error.code).toLowerCase() : '';
+}
+
+function getAuthErrorMessage(error: unknown): string {
+  if (!error || typeof error !== 'object') {
+    return '';
+  }
+
+  return 'message' in error ? String(error.message).toLowerCase() : '';
+}
+
+function isPasswordReuseError(error: unknown): boolean {
+  const code = getAuthErrorCode(error);
+  const message = getAuthErrorMessage(error);
+
+  return code === 'same_password' ||
+    /different from (the )?(old|current) password/.test(message) ||
+    /same password/.test(message);
+}
+
+function isPasswordPolicyError(error: unknown): boolean {
+  const code = getAuthErrorCode(error);
+  const message = getAuthErrorMessage(error);
+  const status = error && typeof error === 'object' && 'status' in error
+    ? Number(error.status)
+    : null;
+
+  return code === 'weak_password' ||
+    code === 'password_too_short' ||
+    code === 'password_strength' ||
+    status === 422 ||
+    /password.*(at least|characters|weak|common|security)/.test(message);
 }
 
 function normalizeFullName(fullName: string): string {
@@ -114,6 +155,20 @@ export async function updateCurrentPassword(
   });
 
   if (error) {
+    if (isPasswordReuseError(error)) {
+      throw new ProfileServiceError(
+        'PASSWORD_REUSED',
+        'A nova senha deve ser diferente da senha atual.',
+      );
+    }
+
+    if (isPasswordPolicyError(error)) {
+      throw new ProfileServiceError(
+        'PASSWORD_POLICY_FAILED',
+        'A nova senha não atende aos requisitos de segurança configurados.',
+      );
+    }
+
     throw new ProfileServiceError(
       isExpiredSessionError(error)
         ? 'SESSION_EXPIRED'

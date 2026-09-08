@@ -179,14 +179,6 @@ vi.mock('./tabs/SubjectsTab', () => ({
   ),
 }));
 
-vi.mock('./tabs/EnrollmentsTab', () => ({
-  default: () => (
-    <div data-testid="enrollments-tab">
-      Aba matriculas
-    </div>
-  ),
-}));
-
 vi.mock('./tabs/CurriculumTab', () => ({
   default: () => (
     <div data-testid="curriculum-tab">
@@ -199,6 +191,14 @@ vi.mock('./tabs/AssignmentsTab', () => ({
   default: () => (
     <div data-testid="assignments-tab">
       Aba atribuicoes
+    </div>
+  ),
+}));
+
+vi.mock('./tabs/AnnouncementsTab', () => ({
+  default: () => (
+    <div data-testid="announcements-tab">
+      Aba avisos
     </div>
   ),
 }));
@@ -344,6 +344,44 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
+  it('renderiza o cadastro de Diretor somente para ADMIN', () => {
+    renderAdminPage('/admin?module=directors');
+
+    expect(
+      screen.getByTestId('school-users-tab'),
+    ).toBeTruthy();
+
+    cleanup();
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+    renderAdminPage('/admin?module=directors');
+
+    expect(
+      screen.getByTestId('overview-tab'),
+    ).toBeTruthy();
+  });
+
+  it('renderiza a tela de avisos para perfis administrativos autorizados', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=announcements');
+
+    expect(
+      screen.getByTestId('announcements-tab'),
+    ).toBeTruthy();
+  });
+
   it('mantem modulo ao recarregar com a mesma URL', () => {
     mockAdminState({
       profile: {
@@ -376,7 +414,7 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
-  it('modulo sem permissao abre o primeiro modulo autorizado', () => {
+  it('secretaria pode acessar a estrutura academica', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -388,11 +426,8 @@ describe('AdminPage URL module resolution', () => {
     renderAdminPage('/admin?module=subjects');
 
     expect(
-      screen.getByTestId('overview-tab'),
+      screen.getByTestId('subjects-tab'),
     ).toBeTruthy();
-    expect(
-      screen.queryByTestId('subjects-tab'),
-    ).toBeNull();
   });
 
   it('checklist navega alterando o modulo ativo pela URL', () => {
@@ -453,7 +488,7 @@ describe('AdminPage permissions', () => {
     ).toBeTruthy();
   });
 
-  it('limita SECRETARY a operacao escolar sem estrutura e atribuicoes', () => {
+  it('permite SECRETARY administrar a operacao e a estrutura escolar', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -465,7 +500,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=enrollments');
 
     expect(
-      screen.getByTestId('enrollments-tab'),
+      screen.getByTestId('students-tab'),
     ).toBeTruthy();
 
     cleanup();
@@ -479,7 +514,7 @@ describe('AdminPage permissions', () => {
     renderAdminPage('/admin?module=assignments');
 
     expect(
-      screen.getByTestId('overview-tab'),
+      screen.getByTestId('assignments-tab'),
     ).toBeTruthy();
   });
 

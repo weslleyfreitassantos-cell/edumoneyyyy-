@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { normalizeAcademicLevel } from '../lib/academic/academicLevels';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export interface ClassBatchInput {
@@ -61,7 +62,7 @@ export const EDUCATION_PRESET_GRADES: EducationPresetGrade[] = [
     key: `medio-${index + 1}`,
     label: `${index + 1}ª série do Ensino Médio`,
     baseName: `${index + 1}ª série EM`,
-    gradeLevel: `${index + 1}º EM`,
+    gradeLevel: `${index + 1} EM`,
     stage: 'Ensino Médio',
     defaultClassCount: 2,
   })),
@@ -174,6 +175,10 @@ function validateInput(input: ClassBatchInput): void {
 
   buildClassBatchNames(input.baseName, input.count);
 
+  if (!normalizeAcademicLevel(input.gradeLevel)) {
+    throw new Error('Selecione uma série ou nível padronizado.');
+  }
+
   if (!Number.isInteger(input.capacity) || input.capacity < 1 || input.capacity > 500) {
     throw new Error('A capacidade deve ser um número inteiro entre 1 e 500.');
   }
@@ -264,6 +269,11 @@ export const classAutomationService = {
       throw new Error(`A turma ${duplicateName.name} já existe neste ano letivo.`);
     }
 
+    const normalizedGradeLevel = normalizeAcademicLevel(input.gradeLevel);
+    if (!normalizedGradeLevel) {
+      throw new Error('Selecione uma série ou nível padronizado.');
+    }
+
     let templateItems: TemplateItemRow[] = [];
 
     if (input.templateId) {
@@ -301,7 +311,7 @@ export const classAutomationService = {
           institution_id: input.institutionId,
           academic_year_id: input.academicYearId,
           name,
-          grade_level: input.gradeLevel?.trim() || null,
+          grade_level: normalizedGradeLevel,
           shift: normalizedShift,
           capacity: input.capacity,
           active: true,
@@ -406,7 +416,9 @@ export const classAutomationService = {
     for (const definition of definitions) {
       if (definition.count === 0) continue;
 
-      const batch = await this.createBatch({
+      // Keep preset creation independent from method binding. This method is
+      // passed directly to React Query and therefore cannot rely on `this`.
+      const batch = await classAutomationService.createBatch({
         institutionId: input.institutionId,
         academicYearId: input.academicYearId,
         baseName: definition.grade.baseName,

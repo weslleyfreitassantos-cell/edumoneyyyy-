@@ -103,6 +103,11 @@ export interface FullEnrollmentResult {
   enrollment_id: string;
   guardian_profile_ids: string[];
   documents_pending: number;
+  email_pending: boolean;
+}
+
+export interface FullStudentEnrollmentOptions {
+  continueOnEmailFailure?: boolean;
 }
 
 export interface StudentEditorData {
@@ -445,9 +450,11 @@ export async function createFullStudentEnrollment(
   institutionId: string,
   draft: FullStudentEnrollmentDraft,
   existingStudentId?: string,
+  options: FullStudentEnrollmentOptions = {},
 ): Promise<FullEnrollmentResult> {
   let studentId = existingStudentId;
   const guardianProfileIds: Record<number, string> = {};
+  let emailPending = false;
 
   try {
     if (!studentId) {
@@ -463,6 +470,7 @@ export async function createFullStudentEnrollment(
             ? { cpf: draft.identity.cpf.trim() }
             : {}),
         },
+        ...(options.continueOnEmailFailure ? { continueOnEmailFailure: true } : {}),
       });
 
       if (!student.student) {
@@ -470,6 +478,7 @@ export async function createFullStudentEnrollment(
       }
 
       studentId = student.student.id;
+      emailPending ||= student.emailPending === true || student.invitationSent === false;
     }
 
     for (const [index, guardian] of draft.guardians.entries()) {
@@ -488,8 +497,10 @@ export async function createFullStudentEnrollment(
           studentId,
           relationship: guardian.relationship,
         },
+        ...(options.continueOnEmailFailure ? { continueOnEmailFailure: true } : {}),
       });
       guardianProfileIds[index] = createdGuardian.profileId;
+      emailPending ||= createdGuardian.emailPending === true || createdGuardian.invitationSent === false;
     }
 
     const payload = toRpcPayload(
@@ -534,6 +545,7 @@ export async function createFullStudentEnrollment(
         )
         : Object.values(guardianProfileIds),
       documents_pending: Number(result.documents_pending ?? 0),
+      email_pending: emailPending,
     };
   } catch (error) {
     throw new FullStudentEnrollmentError(

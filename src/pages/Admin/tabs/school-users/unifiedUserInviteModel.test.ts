@@ -27,7 +27,6 @@ describe('unified user invite model', () => {
       'Professor',
       'Responsavel',
       'Diretor',
-      'Secretaria',
     ]);
 
     expect(CURRENT_DATABASE_ROLES).toContain(
@@ -54,18 +53,17 @@ describe('unified user invite model', () => {
   it('resolve alvos permitidos por papel efetivo', () => {
     expect(getAllowedInviteTargets('ADMIN')).toEqual([
       'DIRECTOR',
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ]);
     expect(getAllowedInviteTargets('DIRECTOR')).toEqual([
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ]);
     expect(getAllowedInviteTargets('SECRETARY')).toEqual([
+      'TEACHER',
       'STUDENT',
       'GUARDIAN',
     ]);
@@ -98,19 +96,6 @@ describe('unified user invite model', () => {
         email: 'professora@escola.com',
       });
     }
-  });
-
-  it('monta payload de secretaria para diretor', () => {
-    const result =
-      buildUnifiedUserInvitePayload({
-        institutionId,
-        target: 'SECRETARY',
-        fullName: 'Secretaria Teste',
-        email: 'secretaria@escola.com',
-        currentRole: 'DIRECTOR',
-      });
-
-    expect(result.success).toBe(true);
   });
 
   it('monta payload de aluno com campos especificos', () => {
@@ -178,7 +163,7 @@ describe('unified user invite model', () => {
     }
   });
 
-  it('bloqueia secretaria convidando professor', () => {
+  it('permite secretaria convidar professor', () => {
     const result =
       buildUnifiedUserInvitePayload({
         institutionId,
@@ -188,6 +173,6 @@ describe('unified user invite model', () => {
         currentRole: 'SECRETARY',
       });
 
-    expect(result.success).toBe(false);
+    expect(result.success).toBe(true);
   });
 });

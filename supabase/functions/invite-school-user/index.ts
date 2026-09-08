@@ -16,7 +16,7 @@ import {
 type UserRole = Database["public"]["Enums"]["user_role"];
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  "DIRECTOR" | "TEACHER" | "STUDENT" | "GUARDIAN"
 >;
 type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
@@ -61,7 +61,6 @@ interface RollbackState {
 
 const targetRoleSchema = z.enum([
   "DIRECTOR",
-  "SECRETARY",
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
@@ -104,6 +103,8 @@ const requestSchema = z
       .pipe(z.string().min(3, "Nome obrigatorio").max(120, "Nome muito longo")),
     email: z.string().trim().toLowerCase().email("E-mail invalido"),
     phone: z.string().trim().max(40, "Telefone muito longo").optional(),
+    // Compatibilidade legada: a falha exclusiva do e-mail sempre retorna 201.
+    continueOnEmailFailure: z.boolean().optional(),
     student: studentPayloadSchema.optional(),
     guardian: guardianPayloadSchema.optional(),
   })
@@ -293,15 +294,6 @@ function toPublicError(error: unknown): InviteError {
     });
   }
 
-  if (error instanceof SchoolAccessEmailError) {
-    return new InviteError({
-      status: 502,
-      code: "ACCESS_CREATED_EMAIL_FAILED",
-      message:
-        "O acesso foi criado, mas nao foi possivel enviar o e-mail de acesso. Defina uma senha manualmente na edicao do usuario e comunique o acesso por um canal seguro.",
-    });
-  }
-
   const postgresCode = toPostgresCode(error);
   if (postgresCode === "42501") {
     return new InviteError({
@@ -345,12 +337,12 @@ function toPublicError(error: unknown): InviteError {
 
 function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[] {
   if (requesterRole === "ADMIN") {
-    return ["DIRECTOR", "SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"];
   }
   if (requesterRole === "DIRECTOR") {
-    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["TEACHER", "STUDENT", "GUARDIAN"];
   }
-  return ["STUDENT", "GUARDIAN"];
+  return ["TEACHER", "STUDENT", "GUARDIAN"];
 }
 
 function canRequesterInviteRole(
@@ -678,9 +670,9 @@ export default {
         (membership: { active: boolean | null }) => membership.active === true,
       );
       const isAccountOwner = account?.owner_profile_id === user.id;
-      const legacyAdminMembership = activeInstitution.account_id === null
-        ? activeMemberships.find((membership: { role: string }) => membership.role === "ADMIN")
-        : null;
+      const adminMembership = activeMemberships.find(
+        (membership: { role: string }) => membership.role === "ADMIN",
+      );
       const directorMembership = activeMemberships.find(
         (membership: { role: string }) => membership.role === "DIRECTOR",
       );
@@ -689,7 +681,7 @@ export default {
       );
       const requesterRole: RequesterInviteRole | null = isSuperAdmin
         ? "ADMIN"
-        : isAccountOwner || legacyAdminMembership
+        : isAccountOwner || adminMembership
           ? "ADMIN"
           : directorMembership
             ? "DIRECTOR"
@@ -727,7 +719,6 @@ export default {
       const existingProfile = ((existingProfileData ?? []) as ExistingProfile[]).find(
         (profile) => normalizeEmail(profile.email) === input.email,
       ) ?? null;
-      const reusedExistingUser = Boolean(existingAuthUser || existingProfile);
 
       if (existingProfile?.platform_role === "SUPER_ADMIN") {
         throw new InviteError({
@@ -767,71 +758,57 @@ export default {
         }
       }
 
-      let generatedPassword: string | undefined;
-      let profileId: string;
-
-      if (reusedExistingUser) {
-        profileId = existingProfile?.id ?? existingAuthUser!.id;
-        if (!existingProfile) {
-          const { error: profileInsertError } = await ctx.supabaseAdmin
-            .from("profiles")
-            .insert({
-              id: profileId,
-              full_name: input.fullName,
-              email: input.email,
-              phone: input.phone ?? null,
-              role: input.role,
-              platform_role: "USER",
-              avatar_url: null,
-              active: true,
-            });
-          if (profileInsertError) throw profileInsertError;
-          rollback.createdProfileId = profileId;
-        }
-      } else {
-        generatedPassword = generateSecurePassword();
-        const { data: createdAuth, error: createAuthError } = await ctx.supabaseAdmin.auth.admin.createUser({
-          email: input.email,
-          password: generatedPassword,
-          email_confirm: true,
-          user_metadata: {
-            full_name: input.fullName,
-            role: input.role,
-            institution_id: activeInstitution.id,
-            institution_name: activeInstitution.name,
-          },
+      if (existingAuthUser || existingProfile) {
+        throw new InviteError({
+          status: 409,
+          code: "EMAIL_ALREADY_REGISTERED",
+          message: "Ja existe um usuario cadastrado com este e-mail.",
+          fieldErrors: { email: "Este e-mail ja esta cadastrado." },
         });
-
-        if (createAuthError || !createdAuth.user) {
-          if (isDuplicateAuthError(createAuthError?.message)) {
-            throw new InviteError({
-              status: 409,
-              code: "AUTH_USER_ALREADY_EXISTS",
-              message: "Ja existe um usuario cadastrado com este e-mail.",
-              fieldErrors: { email: "E-mail ja cadastrado." },
-            });
-          }
-          throw createAuthError ?? new Error("Nao foi possivel criar o usuario de autenticacao.");
-        }
-
-        profileId = createdAuth.user.id;
-        rollback.createdAuthUserId = profileId;
-
-        const { error: profileInsertError } = await ctx.supabaseAdmin
-          .from("profiles")
-          .insert({
-            id: profileId,
-            full_name: input.fullName,
-            email: input.email,
-            phone: input.phone ?? null,
-            role: input.role,
-            platform_role: "USER",
-            avatar_url: null,
-            active: true,
-          });
-        if (profileInsertError) throw profileInsertError;
-        rollback.createdProfileId = profileId;
       }
+
+      const generatedPassword = generateSecurePassword();
+      const { data: createdAuth, error: createAuthError } = await ctx.supabaseAdmin.auth.admin.createUser({
+        email: input.email,
+        password: generatedPassword,
+        email_confirm: true,
+        user_metadata: {
+          full_name: input.fullName,
+          role: input.role,
+          institution_id: activeInstitution.id,
+          institution_name: activeInstitution.name,
+        },
+      });
+
+      if (createAuthError || !createdAuth.user) {
+        if (isDuplicateAuthError(createAuthError?.message)) {
+          throw new InviteError({
+            status: 409,
+            code: "EMAIL_ALREADY_REGISTERED",
+            message: "Ja existe um usuario cadastrado com este e-mail.",
+            fieldErrors: { email: "Este e-mail ja esta cadastrado." },
+          });
+        }
+        throw createAuthError ?? new Error("Nao foi possivel criar o usuario de autenticacao.");
+      }
+
+      const profileId = createdAuth.user.id;
+      rollback.createdAuthUserId = profileId;
+
+      const { error: profileInsertError } = await ctx.supabaseAdmin
+        .from("profiles")
+        .insert({
+          id: profileId,
+          full_name: input.fullName,
+          email: input.email,
+          phone: input.phone ?? null,
+          role: input.role,
+          platform_role: "USER",
+          avatar_url: null,
+          active: true,
+        });
+      if (profileInsertError) throw profileInsertError;
+      rollback.createdProfileId = profileId;
 
       const membershipId = await getOrCreateMembership(
         ctx.supabaseAdmin,
@@ -904,23 +881,30 @@ export default {
           ...(generatedPassword ? { password: generatedPassword } : {}),
         });
       } catch (emailError) {
-        const publicEmailError = toPublicError(emailError);
-        return jsonError({
-          status: 502,
-          code: "ACCESS_CREATED_EMAIL_FAILED",
-          message:
-            "O acesso foi criado, mas nao foi possivel enviar o e-mail de acesso. Defina uma senha manualmente na edicao do usuario e comunique o acesso por um canal seguro.",
+        console.error("Falha ao enviar e-mail de acesso escolar", {
           requestId,
-          extra: {
+          code: emailError instanceof SchoolAccessEmailError
+            ? emailError.code
+            : "EMAIL_DELIVERY_FAILED",
+        });
+        return Response.json(
+          {
+            success: true,
             accessCreated: true,
             userId: profileId,
             profileId,
             membershipId,
+            role: input.role,
             email: input.email,
-            reusedExistingUser,
-            providerCode: publicEmailError.code,
+            ...(studentResult ? { student: studentResult } : {}),
+            ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
+            invitationSent: false,
+            emailPending: true,
+            reusedExistingUser: false,
+            message: "Acesso criado; o e-mail de acesso ficou pendente.",
           },
-        });
+          { status: 201 },
+        );
       }
 
       return Response.json(
@@ -935,10 +919,9 @@ export default {
           ...(studentResult ? { student: studentResult } : {}),
           ...(guardianshipResult ? { guardianship: guardianshipResult } : {}),
           invitationSent: true,
-          reusedExistingUser,
-          message: reusedExistingUser
-            ? "Novo acesso adicionado e e-mail enviado com sua senha atual."
-            : "Acesso criado e credenciais enviadas por e-mail.",
+          emailPending: false,
+          reusedExistingUser: false,
+          message: "Acesso criado e credenciais enviadas por e-mail.",
         },
         { status: 201 },
       );

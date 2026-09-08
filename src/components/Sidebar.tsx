@@ -5,6 +5,7 @@ import {
   Building2,
   BookOpen,
   BadgeCheck,
+  BookOpenCheck,
   CalendarDays,
   CalendarClock,
   ChevronDown,
@@ -12,13 +13,13 @@ import {
   ClipboardCheck,
   ClipboardList,
   Clock3,
-  ContactRound,
   FileCheck2,
   GraduationCap,
   LayoutDashboard,
   ListChecks,
   LogOut,
   Mail,
+  Megaphone,
   MonitorCog,
   Palette,
   School,
@@ -47,6 +48,7 @@ import {
   ADMIN_NAVIGATION_GROUPS,
   DEFAULT_ADMIN_MODULE_ID,
   groupAdminModules,
+  isAdminModuleAvailable,
   isAdminModuleId,
   type AdminModuleId,
   type AdminModuleDefinition,
@@ -122,8 +124,7 @@ const adminModuleIcons: Record<
   students: GraduationCap,
   teachers: Users,
   guardians: Users,
-  secretaries: ContactRound,
-  email: Mail,
+  directors: BadgeCheck,
   finance: WalletCards,
   access: ShieldCheck,
   'academic-years': CalendarDays,
@@ -138,6 +139,7 @@ const adminModuleIcons: Record<
   grades: BadgeCheck,
   'term-closing': FileCheck2,
   'academic-policies': ShieldCheck,
+  announcements: Megaphone,
 };
 
 const adminNavigationGroupIcons: Record<
@@ -155,10 +157,10 @@ const adminNavigationGroupIcons: Record<
 const baseAdminNavigationGroupByItemId: Partial<
   Record<string, AdminNavigationGroupId>
 > = {
-  'personalize-login': 'administration',
   cameras: 'communication-resources',
   terminals: 'communication-resources',
   email: 'communication-resources',
+  'personalize-login': 'administration',
 };
 
 const adminNavigationItemOrder: Record<
@@ -214,8 +216,18 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     path: '/dashboard/timetable',
     section: 'personal',
     icon: CalendarClock,
-    roles: ['student'],
+    roles: ['student', 'teacher'],
     activePaths: ['/dashboard/timetable'],
+    exactActivePath: true,
+  },
+  {
+    id: 'learning-materials',
+    label: 'Materiais e avisos',
+    path: '/dashboard/materials',
+    section: 'personal',
+    icon: BookOpenCheck,
+    roles: ['student', 'teacher'],
+    activePaths: ['/dashboard/materials'],
     exactActivePath: true,
   },
   {
@@ -415,7 +427,12 @@ export function getSidebarAdminModules({
       return false;
     }
 
-    if (module.id === 'email') {
+    if (
+      !isAdminModuleAvailable(
+        module,
+        effectiveRole,
+      )
+    ) {
       return false;
     }
 
@@ -853,7 +870,7 @@ export default function Sidebar({
               type="button"
               onClick={onLogout}
               disabled={isLoggingOut}
-              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70"
+              className="inline-flex h-10 min-w-0 flex-1 items-center justify-center gap-2 rounded-lg border border-red-100 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition-colors hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70 dark:border-slate-700"
             >
               <LogOut
                 className="h-4 w-4 shrink-0"

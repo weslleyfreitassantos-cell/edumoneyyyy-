@@ -195,6 +195,20 @@ export function getRouteVisualContext(
     }
 
     if (role === 'teacher') {
+      if (normalizedPath === '/dashboard/timetable') {
+        return {
+          section: 'Acadêmico',
+          title: 'Grade de horário',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/materials') {
+        return {
+          section: 'Acadêmico',
+          title: 'Materiais e avisos',
+        };
+      }
+
       return {
         section: 'Acadêmico',
         title: 'Painel do professor',
@@ -206,6 +220,13 @@ export function getRouteVisualContext(
         return {
           section: 'Acadêmico',
           title: 'Grade de horário',
+        };
+      }
+
+      if (normalizedPath === '/dashboard/materials') {
+        return {
+          section: 'Acadêmico',
+          title: 'Materiais e avisos',
         };
       }
 
@@ -233,7 +254,11 @@ export default function AppShell({
   children,
 }: AppShellProps) {
   const { profile, signOut } = useAuth();
-  const { updateProfileName, updatePassword } =
+  const {
+    updateProfileName,
+    updateSelfRegistration,
+    updatePassword,
+  } =
     useAuthProfileActions();
   const institutionContext = useInstitution();
   const location = useLocation();
@@ -450,6 +475,9 @@ export default function AppShell({
 
   const currentRole =
     mapPlatformRole(profile.platform_role) ??
+    mapDatabaseRole(
+      institutionContext.currentRole ?? '',
+    ) ??
     mapDatabaseRole(profile.role);
 
   if (!currentRole) {
@@ -588,6 +616,7 @@ export default function AppShell({
             void handleLogout();
           }}
           onUpdateProfileName={updateProfileName}
+          onUpdateSelfRegistration={updateSelfRegistration}
           onUpdatePassword={updatePassword}
           theme={theme}
           onToggleTheme={toggleTheme}

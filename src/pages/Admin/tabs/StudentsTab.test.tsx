@@ -17,14 +17,6 @@ import {
 
 import StudentsTab from './StudentsTab';
 
-vi.mock('./EnrollmentsTab', () => ({
-  default: () => (
-    <div data-testid="enrollments-tab">
-      Configuração de matrículas
-    </div>
-  ),
-}));
-
 vi.mock('./FullStudentEnrollmentWizard', () => ({
   default: () => (
     <div data-testid="full-student-enrollment-wizard">
@@ -69,6 +61,38 @@ vi.mock('../../../hooks/useClasses', () => ({
   }),
 }));
 
+vi.mock('../../../hooks/useEnrollments', () => ({
+  useEnrollments: () => ({
+    data: [
+      {
+        id: 'enrollment-1',
+        student_id: '00000000-0000-0000-0000-000000000004',
+        class_id: 'class-1',
+        academic_year_id: 'year-1',
+        status: 'ACTIVE',
+        status_label: 'Ativa',
+        active: true,
+        enrolled_at: '2026-01-10',
+        created_at: '2026-01-10',
+        student_name: 'Ieti',
+        student_registration_number: '20260001',
+        student_active: true,
+        class_name: '1ª série EM B',
+        class_grade_level: '1º EM',
+        class_shift: 'Integral',
+        class_capacity: 35,
+        class_active: true,
+        academic_year_name: 'primeiro ano',
+        active_enrollments_in_class: 1,
+        has_capacity_available: true,
+      },
+    ],
+    isLoading: false,
+    isError: false,
+    error: null,
+  }),
+}));
+
 vi.mock('../../../hooks/useStudents', () => ({
   useStudents: () => ({
     data: [
@@ -83,6 +107,21 @@ vi.mock('../../../hooks/useStudents', () => ({
         profiles: {
           full_name: 'Ieti',
           email: 'ieti@example.com',
+          active: true,
+          avatar_url: null,
+        },
+      },
+      {
+        id: '00000000-0000-0000-0000-000000000006',
+        profile_id: 'student-profile-2',
+        institution_id: '00000000-0000-0000-0000-000000000001',
+        registration_number: '20260002',
+        birth_date: '2015-02-02',
+        cpf: null,
+        active: true,
+        profiles: {
+          full_name: 'Aluno sem matrícula',
+          email: 'sem.matricula@example.com',
           active: true,
           avatar_url: null,
         },
@@ -155,9 +194,9 @@ describe('StudentsTab - vínculo de responsável', () => {
     render(<StudentsTab />);
 
     fireEvent.click(
-      screen.getByRole('button', {
+      screen.getAllByRole('button', {
         name: 'Vincular responsável',
-      }),
+      })[0],
     );
     fireEvent.change(
       screen.getByLabelText('Responsável existente'),
@@ -194,23 +233,32 @@ describe('StudentsTab - vínculo de responsável', () => {
     ).toBeTruthy();
   });
 
-  it('abre a configuração de matrículas dentro de Alunos', () => {
+  it('exibe a matrícula atual na mesma lista de alunos', () => {
     render(<StudentsTab />);
 
-    fireEvent.click(
-      screen.getByRole('tab', {
-        name: /matrículas/i,
-      }),
-    );
+    expect(screen.queryByRole('tab', { name: /matrículas/i })).toBeNull();
+    expect(screen.getByText('Matrícula atual')).toBeTruthy();
+    expect(screen.getByText('1ª série EM B')).toBeTruthy();
+    expect(screen.getByText('primeiro ano • Integral')).toBeTruthy();
+  });
+
+  it('exibe ações de aluno como botões compactos com nomes acessíveis', () => {
+    render(<StudentsTab />);
 
     expect(
-      screen.getByTestId('enrollments-tab'),
+      screen.getAllByRole('button', { name: 'Vincular responsável' }),
+    ).toHaveLength(2);
+    expect(
+      screen.getByRole('button', { name: 'Editar Ieti' }),
     ).toBeTruthy();
     expect(
-      screen.getByRole('tab', {
-        name: /alunos/i,
-      }).getAttribute('aria-selected'),
-    ).toBe('false');
+      screen.getByRole('button', { name: 'Desativar Ieti' }),
+    ).toBeTruthy();
+
+    expect(
+      screen.getByRole('button', { name: 'Editar Ieti' })
+        .parentElement?.className,
+    ).toContain('md:flex-nowrap');
   });
 
   it('abre o cadastro completo ao criar um aluno', () => {
@@ -227,5 +275,14 @@ describe('StudentsTab - vínculo de responsável', () => {
         'full-student-enrollment-wizard',
       ),
     ).toBeTruthy();
+  });
+
+  it('mostra o estado sem matrícula e abre o fluxo de matrícula do aluno existente', () => {
+    render(<StudentsTab />);
+
+    expect(screen.getByText('Não matriculado')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Matricular aluno' }));
+
+    expect(screen.getByTestId('full-student-enrollment-wizard')).toBeTruthy();
   });
 });

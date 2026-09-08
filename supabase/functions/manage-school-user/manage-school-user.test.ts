@@ -24,21 +24,29 @@ describe('manage-school-user', () => {
     expect(source).toContain('SUPER_ADMIN_PROTECTED');
   });
 
-  it('permite reset de senha por gestor operacional somente para STUDENT', () => {
+  it('permite reset de senha por gestor operacional para STUDENT ou TEACHER e por DIRECTOR para SECRETARY', () => {
     expect(source).toContain('getUpdateAuthorizationDecision');
     expect(source).toContain('authorization: UpdateAuthorizationContext');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
   });
 
   it('autoriza DELETE de DIRECTOR somente com membership ativo da instituicao alvo', () => {
-    expect(source).toContain('allowDirectorDelete: input.action === "delete"');
+    expect(source).toContain('allowOperationalManager:');
+    expect(source).toContain('allowDirectorDelete: false');
     expect(source).toContain('const isDirector =');
     expect(source).toContain('TARGET_OUTSIDE_INSTITUTION');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
   });
 
+  it('rejeita e-mail já usado mesmo quando a capitalização é diferente', () => {
+    expect(source).toContain('.ilike("email", input.email)');
+    expect(source).toContain('profile.email?.trim().toLowerCase() === input.email');
+    expect(source).toContain('code: "EMAIL_ALREADY_IN_USE"');
+  });
+
   it('protege historico academico e limita vinculos de guardianship ao tenant', () => {
     expect(source).toContain('USER_HAS_RELATED_RECORDS');
+    expect(source).toContain('O histórico acadêmico precisa ser preservado.');
     expect(source).toContain('.in("student_id", ownStudentIds)');
     expect(source).toContain('.from("student_term_results")');
     expect(source).toContain('.eq("institution_id", input.institutionId)');

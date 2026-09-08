@@ -1,11 +1,18 @@
 ﻿import {
+  useEffect,
+  useMemo,
   useState,
   type FormEvent,
 } from 'react';
 
 import {
-  ClipboardCheck,
-  Users,
+  Edit3,
+  GraduationCap,
+  Loader2,
+  Power,
+  PowerOff,
+  Upload,
+  UserPlus,
 } from 'lucide-react';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -14,18 +21,24 @@ import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import StatusBadge from '../../../components/StatusBadge';
+
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useAcademicYears } from '../../../hooks/useAcademicStructure';
 import { useClasses } from '../../../hooks/useClasses';
 
-import {
-  hasPermission,
-  isCurrentDatabaseRole,
-} from '../../../lib/permissions';
-
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
+
+import {
+  useEnrollments,
+} from '../../../hooks/useEnrollments';
 
 import {
   useSetStudentActive,
@@ -34,13 +47,11 @@ import {
 
 import { guardianLinkSchema } from '../../../schemas/adminSchemas';
 
+import type { EnrollmentRow } from '../../../services/enrollmentService';
 import type { StudentRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
-import EnrollmentsTab from './EnrollmentsTab';
-
-export type StudentManagementView =
-  | 'students'
-  | 'enrollments';
+import StudentSpreadsheetImportModal from '../../../components/StudentSpreadsheetImportModal';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface GuardianLinkDraft {
   guardian_profile_id: string;
@@ -54,21 +65,10 @@ const emptyGuardianLinkDraft: GuardianLinkDraft = {
   is_primary: false,
 };
 
+const STUDENTS_PAGE_SIZE = 6;
+
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível concluir a operação.';
+  return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
 function formatDate(value: string): string {
@@ -88,55 +88,34 @@ function getStudentName(student: StudentRow): string {
   );
 }
 
-function StudentManagementNavigation({
-  activeView,
-  onChange,
-  canManageEnrollments,
-}: {
-  activeView: StudentManagementView;
-  onChange: (view: StudentManagementView) => void;
-  canManageEnrollments: boolean;
-}) {
-  return (
-    <nav aria-label="Gestão de alunos">
-      <div
-        className="inline-flex flex-wrap gap-1 rounded-lg border border-slate-200 bg-white p-1"
-        role="tablist"
-      >
-        <button
-          type="button"
-          role="tab"
-          aria-selected={activeView === 'students'}
-          onClick={() => onChange('students')}
-          className={
-            activeView === 'students'
-              ? 'inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700'
-              : 'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50'
-          }
-        >
-          <Users size={16} aria-hidden="true" />
-          Alunos
-        </button>
+function getCurrentEnrollmentByStudent(
+  enrollments: EnrollmentRow[],
+): Map<string, EnrollmentRow> {
+  const currentByStudent = new Map<string, EnrollmentRow>();
 
-        {canManageEnrollments && (
-          <button
-            type="button"
-            role="tab"
-            aria-selected={activeView === 'enrollments'}
-            onClick={() => onChange('enrollments')}
-            className={
-              activeView === 'enrollments'
-                ? 'inline-flex items-center gap-2 rounded-md bg-blue-50 px-3 py-2 text-sm font-semibold text-blue-700'
-                : 'inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50'
-            }
-          >
-            <ClipboardCheck size={16} aria-hidden="true" />
-            Matrículas
-          </button>
-        )}
-      </div>
-    </nav>
-  );
+  for (const enrollment of enrollments.filter(
+    (item) => item.active && item.status.trim().toLowerCase() === 'active',
+  )) {
+    const current = currentByStudent.get(enrollment.student_id);
+    if (!current) {
+      currentByStudent.set(enrollment.student_id, enrollment);
+      continue;
+    }
+
+    const shouldReplace = enrollment.active && !current.active;
+    const enrollmentDate = enrollment.enrolled_at ?? enrollment.created_at ?? '';
+    const currentDate = current.enrolled_at ?? current.created_at ?? '';
+
+    if (
+      shouldReplace ||
+      (enrollment.active === current.active &&
+        enrollmentDate > currentDate)
+    ) {
+      currentByStudent.set(enrollment.student_id, enrollment);
+    }
+  }
+
+  return currentByStudent;
 }
 
 export default function StudentsTab() {
@@ -148,20 +127,11 @@ export default function StudentsTab() {
   const institutionId =
     institutionQuery.data ?? '';
 
-  const effectiveRole = isCurrentDatabaseRole(
-    institutionQuery.currentRole,
-  )
-    ? institutionQuery.currentRole
-    : null;
-
-  const canManageEnrollments = hasPermission(
-    profile?.platform_role,
-    effectiveRole,
-    'manage_enrollments',
-  );
-
   const studentsQuery =
     useStudents(institutionId);
+
+  const enrollmentsQuery =
+    useEnrollments(institutionId);
 
   const yearsQuery =
     useAcademicYears(institutionId);
@@ -169,13 +139,19 @@ export default function StudentsTab() {
   const classesQuery =
     useClasses(institutionId);
 
-  const [activeView, setActiveView] =
-    useState<StudentManagementView>('students');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [isFullWizardOpen, setIsFullWizardOpen] =
     useState(false);
 
+  const [isSpreadsheetImportOpen, setIsSpreadsheetImportOpen] =
+    useState(false);
+
   const [fullEditStudentId, setFullEditStudentId] =
+    useState<string | null>(null);
+
+  const [enrollStudentId, setEnrollStudentId] =
     useState<string | null>(null);
 
   const [
@@ -217,6 +193,49 @@ export default function StudentsTab() {
         user.active &&
         user.profile?.active !== false,
     );
+
+  const students = studentsQuery.data ?? [];
+  const currentEnrollmentByStudent = useMemo(
+    () => getCurrentEnrollmentByStudent(enrollmentsQuery.data ?? []),
+    [enrollmentsQuery.data],
+  );
+  const filteredStudents = useMemo(() => {
+    const query = normalizeListSearch(searchTerm);
+
+    if (!query) {
+      return students;
+    }
+
+    return students.filter((student) =>
+      normalizeListSearch([
+        student.registration_number,
+        student.profiles?.full_name,
+        student.profiles?.email,
+        student.cpf,
+        currentEnrollmentByStudent.get(student.id)?.class_name,
+        currentEnrollmentByStudent.get(student.id)?.academic_year_name,
+        currentEnrollmentByStudent.get(student.id)?.status_label,
+      ].filter(Boolean).join(' ')).includes(query),
+    );
+  }, [currentEnrollmentByStudent, searchTerm, students]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredStudents.length / STUDENTS_PAGE_SIZE),
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
+
+  const paginatedStudents = filteredStudents.slice(
+    (currentPage - 1) * STUDENTS_PAGE_SIZE,
+    currentPage * STUDENTS_PAGE_SIZE,
+  );
 
   function openGuardianLinkModal(
     student: StudentRow,
@@ -312,6 +331,55 @@ export default function StudentsTab() {
         row.profiles?.email ?? '—',
     },
     {
+      id: 'student-enrollment',
+      key: 'id',
+      label: 'Matrícula atual',
+      render: (_value, row) => {
+        const enrollment = currentEnrollmentByStudent.get(row.id);
+
+        if (!enrollment) {
+          return (
+            <div className="flex min-w-[150px] flex-col items-start gap-2">
+              <span className="inline-flex rounded-full bg-amber-100 px-2.5 py-1 text-xs font-semibold text-amber-800 dark:bg-amber-950/40 dark:text-amber-300">
+                Não matriculado
+              </span>
+              {row.active && (
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-1 rounded-md border border-blue-200 bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 transition hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/40 dark:text-blue-300 dark:hover:bg-slate-700"
+                  onClick={() => setEnrollStudentId(row.id)}
+                >
+                  <GraduationCap className="h-3.5 w-3.5" aria-hidden="true" />
+                  Matricular aluno
+                </button>
+              )}
+            </div>
+          );
+        }
+
+        return (
+          <div className="min-w-[150px]">
+            <p className="font-medium text-[#181c20] dark:text-white">
+              {enrollment.class_name}
+            </p>
+            <p className="mt-1 text-xs text-[#727785] dark:text-slate-400">
+              {enrollment.academic_year_name}
+              {enrollment.class_shift
+                ? ` • ${enrollment.class_shift}`
+                : ''}
+            </p>
+            <div className="mt-2">
+              <StatusBadge
+                active={enrollment.active}
+                activeLabel={enrollment.status_label}
+                inactiveLabel={enrollment.status_label}
+              />
+            </div>
+          </div>
+        );
+      },
+    },
+    {
       key: 'birth_date',
       label: 'Data de nascimento',
       render: (value) =>
@@ -320,19 +388,7 @@ export default function StudentsTab() {
     {
       key: 'active',
       label: 'Status',
-      render: (_value, row) => (
-        <span
-          className={
-            row.active
-              ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-              : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-          }
-        >
-          {row.active
-            ? 'Ativo'
-            : 'Inativo'}
-        </span>
-      ),
+      render: (_value, row) => <StatusBadge active={row.active} />,
     },
   ];
 
@@ -410,27 +466,8 @@ export default function StudentsTab() {
     );
   }
 
-  if (activeView === 'enrollments') {
-    return (
-      <div className="space-y-4">
-        <StudentManagementNavigation
-          activeView={activeView}
-          onChange={setActiveView}
-          canManageEnrollments={canManageEnrollments}
-        />
-        <EnrollmentsTab />
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-4">
-      <StudentManagementNavigation
-        activeView={activeView}
-        onChange={setActiveView}
-        canManageEnrollments={canManageEnrollments}
-      />
-
       {feedbackMessage && (
         <div
           role="status"
@@ -441,26 +478,55 @@ export default function StudentsTab() {
       )}
 
       {(pageError ||
-        studentsQuery.isError) && (
+        studentsQuery.isError ||
+        enrollmentsQuery.isError) && (
           <div
             role="alert"
             className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
           >
             {pageError ??
               getErrorMessage(
-                studentsQuery.error,
+                studentsQuery.error ??
+                  enrollmentsQuery.error,
               )}
           </div>
         )}
 
+      <ListSearch
+        id="students-search"
+        label="Buscar aluno"
+        placeholder="Nome, e-mail, RA ou CPF"
+        value={searchTerm}
+        onChange={setSearchTerm}
+      />
+
       <DataTable
         title="Alunos"
         addLabel="Novo aluno"
-        data={studentsQuery.data ?? []}
+        extraHeaderActions={(
+          <button
+            type="button"
+            onClick={() => setIsSpreadsheetImportOpen(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50"
+          >
+            <Upload size={16} aria-hidden="true" />
+            Importar Excel
+          </button>
+        )}
+        data={paginatedStudents}
         columns={columns}
-        isLoading={studentsQuery.isLoading}
+        isLoading={
+          studentsQuery.isLoading ||
+          enrollmentsQuery.isLoading
+        }
+        actionCellClassName="min-w-[136px] align-middle whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         onAdd={openFullWizard}
-        emptyMessage="Nenhum aluno cadastrado nesta instituição."
+        emptyMessage={
+          filteredStudents.length === 0 && students.length > 0
+            ? 'Nenhum aluno encontrado.'
+            : 'Nenhum aluno cadastrado nesta instituição.'
+        }
         renderActions={(student) => {
           const isChangingStatus =
             statusMutation.isPending &&
@@ -468,32 +534,38 @@ export default function StudentsTab() {
             student.id;
 
           return (
-            <div className="flex items-center gap-3">
+            <>
               {student.active && (
                 <button
                   type="button"
+                  title="Vincular responsável"
+                  aria-label="Vincular responsável"
                   onClick={() =>
                     openGuardianLinkModal(student)
                   }
                   disabled={manageSchoolUserMutation.isPending}
-                  className="font-medium text-blue-600 hover:text-blue-800 disabled:opacity-50"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
                 >
-                  Vincular responsável
+                  <UserPlus className="h-4 w-4" aria-hidden="true" />
                 </button>
               )}
 
               <button
                 type="button"
+                title={`Editar ${getStudentName(student)}`}
+                aria-label={`Editar ${getStudentName(student)}`}
                 onClick={() =>
                   openEditModal(student)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
                 type="button"
+                title={`${student.active ? 'Desativar' : 'Reativar'} ${getStudentName(student)}`}
+                aria-label={`${student.active ? 'Desativar' : 'Reativar'} ${getStudentName(student)}`}
                 onClick={() =>
                   void handleToggleStatus(
                     student,
@@ -502,19 +574,37 @@ export default function StudentsTab() {
                 disabled={isChangingStatus}
                 className={
                   student.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : student.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <Loader2
+                    className="h-4 w-4 animate-spin"
+                    aria-hidden="true"
+                  />
+                ) : student.active ? (
+                  <PowerOff
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                ) : (
+                  <Power
+                    className="h-4 w-4"
+                    aria-hidden="true"
+                  />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
+      />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={STUDENTS_PAGE_SIZE}
+        totalItems={filteredStudents.length}
+        onPageChange={setCurrentPage}
       />
 
       {isFullWizardOpen && institutionId && (
@@ -530,6 +620,22 @@ export default function StudentsTab() {
         />
       )}
 
+      {isSpreadsheetImportOpen && institutionId && (
+        <StudentSpreadsheetImportModal
+          institutionId={institutionId}
+          years={yearsQuery.data ?? []}
+          classes={classesQuery.data ?? []}
+          onClose={() => setIsSpreadsheetImportOpen(false)}
+          onImported={(result) => {
+            void studentsQuery.refetch();
+            void enrollmentsQuery.refetch();
+            setFeedbackMessage(
+              `${result.succeeded.length} aluno(s) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}${result.emailPending.length > 0 ? ` ${result.emailPending.length} acesso(s) ficaram sem e-mail.` : ''}`,
+            );
+          }}
+        />
+      )}
+
       {fullEditStudentId && institutionId && (
         <FullStudentEnrollmentWizard
           institutionId={institutionId}
@@ -541,6 +647,21 @@ export default function StudentsTab() {
           onCompleted={() => {
             setFullEditStudentId(null);
             setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
+          }}
+        />
+      )}
+
+      {enrollStudentId && institutionId && (
+        <FullStudentEnrollmentWizard
+          institutionId={institutionId}
+          years={yearsQuery.data ?? []}
+          classes={classesQuery.data ?? []}
+          mode="enroll"
+          studentId={enrollStudentId}
+          onClose={() => setEnrollStudentId(null)}
+          onCompleted={() => {
+            setEnrollStudentId(null);
+            setFeedbackMessage('Matrícula realizada com sucesso.');
           }}
         />
       )}

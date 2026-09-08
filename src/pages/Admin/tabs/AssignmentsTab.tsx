@@ -10,9 +10,22 @@ import {
 } from 'react-router-dom';
 
 import {
+  Edit3,
+  LoaderCircle,
+  Power,
+  PowerOff,
+} from 'lucide-react';
+
+import {
   DataTable,
   type Column,
 } from '../../../components/DataTable';
+import {
+  ListPagination,
+  ListSearch,
+  normalizeListSearch,
+} from '../../../components/ListControls';
+import StatusBadge from '../../../components/StatusBadge';
 
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -30,6 +43,7 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 import { useSubjects } from '../../../hooks/useSubjects';
 import { useTeachers } from '../../../hooks/useTeachers';
 import { useCreateWholeYearAssignment } from '../../../hooks/useAcademicAutomation';
+import AssignmentAutomationPanel from '../../../components/academic/AssignmentAutomationPanel';
 
 import {
   subjectOfferingSchema,
@@ -38,6 +52,7 @@ import {
 
 import type { TermRow } from '../../../services/academicStructureService';
 import type { AssignmentRow } from '../../../services/assignmentService';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface AssignmentDraft {
   class_id: string;
@@ -60,6 +75,8 @@ const emptyDraft: AssignmentDraft = {
   active: true,
 };
 
+const ASSIGNMENTS_PAGE_SIZE = 10;
+
 function getErrorMessage(
   error: unknown,
 ): string {
@@ -70,7 +87,7 @@ function getErrorMessage(
     if (error.message.includes('TEACHER_SUBJECT_NOT_AUTHORIZED')) {
       return 'Este professor nao esta habilitado para lecionar esta disciplina.';
     }
-    return error.message;
+    return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
   }
 
   if (
@@ -86,28 +103,10 @@ function getErrorMessage(
     if (msg.includes('TEACHER_SUBJECT_NOT_AUTHORIZED')) {
       return 'Este professor nao esta habilitado para lecionar esta disciplina.';
     }
-    return msg;
+    return getUserFacingErrorMessage({ message: msg }, 'Não foi possível concluir a operação.');
   }
 
   return 'Não foi possível concluir a operação.';
-}
-
-function StatusBadge({
-  active,
-}: {
-  active: boolean;
-}) {
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativa' : 'Inativa'}
-    </span>
-  );
 }
 
 export default function AssignmentsTab() {
@@ -151,6 +150,9 @@ export default function AssignmentsTab() {
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
+  const [isAutomationOpen, setIsAutomationOpen] =
+    useState(false);
+
   const [
     editingAssignment,
     setEditingAssignment,
@@ -189,6 +191,10 @@ export default function AssignmentsTab() {
     setStatusFilter,
   ] = useState('all');
 
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [
     modalError,
     setModalError,
@@ -210,6 +216,10 @@ export default function AssignmentsTab() {
     if (classId) setClassFilter(classId);
     if (subjectId) setSubjectFilter(subjectId);
   }, [searchParams]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, teacherFilter, classFilter, subjectFilter, termFilter, statusFilter]);
 
   const classes = classesQuery.data ?? [];
   const subjects = subjectsQuery.data ?? [];
@@ -342,6 +352,7 @@ export default function AssignmentsTab() {
   const filteredAssignments = useMemo(() => {
     const assignments =
       assignmentsQuery.data ?? [];
+    const normalizedSearch = normalizeListSearch(searchTerm);
 
     return assignments.filter(
       (assignment) => {
@@ -370,23 +381,58 @@ export default function AssignmentsTab() {
           (statusFilter === 'inactive' &&
             !assignment.active);
 
+        const matchesSearch =
+          !normalizedSearch ||
+          [
+            assignment.subject_name,
+            assignment.subject_code,
+            assignment.class_name,
+            assignment.class_grade_level,
+            assignment.class_shift,
+            assignment.teacher_name,
+            assignment.teacher_email,
+            assignment.term_name,
+            assignment.academic_year_id,
+          ].some((value) =>
+            normalizeListSearch(value ?? '').includes(normalizedSearch),
+          );
+
         return (
           matchesTeacher &&
           matchesClass &&
           matchesSubject &&
           matchesTerm &&
-          matchesStatus
+          matchesStatus &&
+          matchesSearch
         );
       },
     );
   }, [
     assignmentsQuery.data,
     classFilter,
+    searchTerm,
     statusFilter,
     subjectFilter,
     teacherFilter,
     termFilter,
   ]);
+
+  const totalPages = Math.max(
+    1,
+    Math.ceil(filteredAssignments.length / ASSIGNMENTS_PAGE_SIZE),
+  );
+
+  const paginatedAssignments = useMemo(() => {
+    const startIndex = (currentPage - 1) * ASSIGNMENTS_PAGE_SIZE;
+    return filteredAssignments.slice(
+      startIndex,
+      startIndex + ASSIGNMENTS_PAGE_SIZE,
+    );
+  }, [currentPage, filteredAssignments]);
+
+  useEffect(() => {
+    setCurrentPage((page) => Math.min(page, totalPages));
+  }, [totalPages]);
 
   const isSubmitting =
     createMutation.isPending ||
@@ -446,7 +492,11 @@ export default function AssignmentsTab() {
       key: 'active',
       label: 'Status',
       render: (_value, row) => (
-        <StatusBadge active={row.active} />
+        <StatusBadge
+          active={row.active}
+          activeLabel="Ativa"
+          inactiveLabel="Inativa"
+        />
       ),
     },
   ];
@@ -708,7 +758,15 @@ export default function AssignmentsTab() {
         </div>
       )}
 
-      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:grid-cols-2 xl:grid-cols-5">
+      <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 sm:grid-cols-2 xl:grid-cols-6">
+        <ListSearch
+          id="assignment-search"
+          label="Buscar atribuição"
+          placeholder="Disciplina, turma ou professor"
+          value={searchTerm}
+          onChange={setSearchTerm}
+        />
+
         <div>
           <label
             htmlFor="assignment-teacher-filter"
@@ -852,10 +910,20 @@ export default function AssignmentsTab() {
         </div>
       </section>
 
+      <section className="flex flex-col gap-4 rounded-xl border border-blue-100 bg-blue-50/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="font-semibold text-slate-900">Preparação automática de atribuições</h2>
+          <p className="mt-1 text-sm text-slate-600">Revise as pendências e atribua professores habilitados sem abrir a geração da grade.</p>
+        </div>
+        <button type="button" onClick={() => setIsAutomationOpen(true)} className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800">
+          Atribuir automaticamente
+        </button>
+      </section>
+
       <DataTable
         title="Atribuições"
         addLabel="Nova atribuição"
-        data={filteredAssignments}
+        data={paginatedAssignments}
         columns={columns}
         isLoading={
           assignmentsQuery.isLoading ||
@@ -866,6 +934,8 @@ export default function AssignmentsTab() {
         }
         onAdd={openCreateModal}
         emptyMessage="Nenhuma atribuição encontrada para os filtros selecionados."
+        actionCellClassName="min-w-[76px] align-top whitespace-nowrap"
+        actionGroupClassName="md:flex-nowrap"
         renderActions={(assignment) => {
           const isChangingStatus =
             statusMutation.isPending &&
@@ -873,15 +943,17 @@ export default function AssignmentsTab() {
               assignment.id;
 
           return (
-            <div className="flex flex-wrap items-center gap-3">
+            <>
               <button
                 type="button"
                 onClick={() =>
                   openEditModal(assignment)
                 }
-                className="font-medium text-blue-600 hover:text-blue-800"
+                title={`Editar atribuição de ${assignment.subject_name} para ${assignment.class_name}`}
+                aria-label={`Editar atribuição de ${assignment.subject_name} para ${assignment.class_name}`}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
               >
-                Editar
+                <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <button
@@ -892,22 +964,48 @@ export default function AssignmentsTab() {
                     assignment,
                   )
                 }
+                title={`${assignment.active ? 'Desativar' : 'Reativar'} atribuição de ${assignment.subject_name} para ${assignment.class_name}`}
+                aria-label={`${assignment.active ? 'Desativar' : 'Reativar'} atribuição de ${assignment.subject_name} para ${assignment.class_name}`}
                 className={
                   assignment.active
-                    ? 'font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
-                    : 'font-medium text-green-600 hover:text-green-800 disabled:opacity-50'
+                    ? 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40'
+                    : 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-green-200 text-green-700 transition hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-green-900/70 dark:text-green-300 dark:hover:bg-green-950/40'
                 }
               >
-                {isChangingStatus
-                  ? 'Salvando...'
-                  : assignment.active
-                    ? 'Desativar'
-                    : 'Reativar'}
+                {isChangingStatus ? (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                ) : assignment.active ? (
+                  <PowerOff className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <Power className="h-4 w-4" aria-hidden="true" />
+                )}
               </button>
-            </div>
+            </>
           );
         }}
       />
+
+      <ListPagination
+        page={currentPage}
+        pageSize={ASSIGNMENTS_PAGE_SIZE}
+        totalItems={filteredAssignments.length}
+        onPageChange={setCurrentPage}
+      />
+
+      {isAutomationOpen && (
+        <AssignmentAutomationPanel
+          institutionId={institutionId}
+          academicYears={years}
+          classes={classes}
+          subjects={subjects}
+          teachers={teachers}
+          onClose={() => setIsAutomationOpen(false)}
+          onCompleted={(message) => {
+            setFeedbackMessage(message);
+            setPageError(null);
+          }}
+        />
+      )}
 
       {isModalOpen && (
         <div

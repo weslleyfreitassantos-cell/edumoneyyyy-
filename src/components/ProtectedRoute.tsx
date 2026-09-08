@@ -2,6 +2,9 @@ import type { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
+import {
+  useOptionalInstitution,
+} from '../contexts/InstitutionContext';
 import type {
   DatabaseRole,
   PlatformRole,
@@ -34,6 +37,8 @@ export function ProtectedRoute({
   allowedPlatformRoles,
 }: ProtectedRouteProps) {
   const { user, profile, loading } = useAuth();
+  const institutionContext =
+    useOptionalInstitution();
 
   // Token refreshes can briefly set loading while the authenticated shell
   // is still valid. Keep the current screen mounted in that case.
@@ -66,9 +71,15 @@ export function ProtectedRoute({
     );
   }
 
+  const effectiveDatabaseRole =
+    institutionContext?.currentRole ??
+    profile.role;
+
   const hasAllowedRole =
     !allowedRoles ||
-    allowedRoles.includes(profile.role);
+    allowedRoles.includes(
+      effectiveDatabaseRole as DatabaseRole,
+    );
 
   const hasAllowedPlatformRole =
     !allowedPlatformRoles ||

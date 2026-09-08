@@ -336,13 +336,19 @@ export const timetableService = {
     if (error) throw mapTimetableError(error);
   },
 
-  async listByClass(institutionId: string, classId: string): Promise<TimetableEntryRow[]> {
-    const { data, error } = await supabase
+  async listByClass(institutionId: string, classId: string, termId?: string): Promise<TimetableEntryRow[]> {
+    let query = supabase
       .from('timetable_entries')
       .select(entrySelect)
       .eq('institution_id', institutionId)
       .eq('active', true)
-      .eq('subject_offerings.class_id', classId)
+      .eq('subject_offerings.class_id', classId);
+
+    if (termId) {
+      query = query.eq('term_id', termId);
+    }
+
+    const { data, error } = await query
       .order('day_of_week', { ascending: true })
       .order('start_time', { ascending: true });
 
@@ -352,6 +358,36 @@ export const timetableService = {
       .filter((row) => {
         const offering = normalizeRelation(row.subject_offerings);
         return row.active && offering?.class_id === classId;
+      })
+      .map(normalizeEntry);
+  },
+
+  async listByTeacher(
+    institutionId: string,
+    teacherProfileId: string,
+    termId?: string,
+  ): Promise<TimetableEntryRow[]> {
+    let query = supabase
+      .from('timetable_entries')
+      .select(entrySelect)
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .eq('subject_offerings.teacher_profile_id', teacherProfileId);
+
+    if (termId) {
+      query = query.eq('term_id', termId);
+    }
+
+    const { data, error } = await query
+      .order('day_of_week', { ascending: true })
+      .order('start_time', { ascending: true });
+
+    if (error) throw mapTimetableError(error);
+
+    return ((data ?? []) as unknown as TimetableEntryQueryRow[])
+      .filter((row) => {
+        const offering = normalizeRelation(row.subject_offerings);
+        return row.active && offering?.teacher_profile_id === teacherProfileId;
       })
       .map(normalizeEntry);
   },

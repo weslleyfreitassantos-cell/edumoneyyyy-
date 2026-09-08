@@ -24,12 +24,15 @@ import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
 
 import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
+import { ActionGroup } from '../../../components/ActionGroup';
+import StatusBadge from '../../../components/StatusBadge';
 
 import {
   CURRENT_DATABASE_ROLES,
   hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
+import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
 import UnifiedUserInvitePreview from './school-users/UnifiedUserInvitePreview';
@@ -102,23 +105,15 @@ export interface SchoolUserSummary {
   byRole: Record<CurrentDatabaseRole, number>;
 }
 
+export interface SchoolUserAccessStatus {
+  active: boolean | null;
+  reason: string;
+}
+
 function getErrorMessage(
   error: unknown,
 ): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar os usuários da escola.';
+  return getUserFacingErrorMessage(error, 'Não foi possível carregar os usuários da escola.');
 }
 
 function normalizeSearchValue(
@@ -229,30 +224,41 @@ export function getSchoolUserSummary(
   };
 }
 
-function StatusBadge({
-  active,
-}: {
-  active: boolean | null;
-}) {
-  if (active === null) {
-    return (
-      <span className="inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600">
-        Status não informado
-      </span>
-    );
+export function getSchoolUserAccessStatus(
+  user: SchoolUserRow,
+): SchoolUserAccessStatus {
+  if (!user.active && user.profile?.active === false) {
+    return {
+      active: false,
+      reason: 'Vínculo e perfil inativos',
+    };
   }
 
-  return (
-    <span
-      className={
-        active
-          ? 'inline-flex rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700'
-          : 'inline-flex rounded-full bg-gray-100 px-2.5 py-1 text-xs font-semibold text-gray-600'
-      }
-    >
-      {active ? 'Ativo' : 'Inativo'}
-    </span>
-  );
+  if (!user.active) {
+    return {
+      active: false,
+      reason: 'Vínculo inativo',
+    };
+  }
+
+  if (user.profile?.active === false) {
+    return {
+      active: false,
+      reason: 'Perfil inativo',
+    };
+  }
+
+  if (user.profile?.active === true) {
+    return {
+      active: true,
+      reason: 'Acesso ativo',
+    };
+  }
+
+  return {
+    active: null,
+    reason: 'Status não confirmado',
+  };
 }
 
 function SummaryCard({
@@ -268,20 +274,20 @@ function SummaryCard({
 }) {
   const toneClass =
     tone === 'success'
-      ? 'bg-green-50 text-green-700'
+      ? 'bg-green-50 text-green-700 dark:bg-emerald-950/40 dark:text-emerald-300'
       : tone === 'muted'
-        ? 'bg-gray-100 text-gray-600'
-        : 'bg-blue-50 text-[#005bbf]';
+        ? 'bg-gray-100 text-gray-600 dark:bg-slate-800 dark:text-slate-300'
+        : 'bg-blue-50 text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300';
 
   return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="flex items-center justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold text-[#727785]">
+          <p className="text-xs font-semibold text-[#727785] dark:text-slate-400">
             {label}
           </p>
 
-          <p className="mt-2 text-2xl font-bold text-[#181c20]">
+          <p className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
             {value}
           </p>
         </div>
@@ -296,49 +302,158 @@ function SummaryCard({
   );
 }
 
+function UserActions({
+  user,
+  onEdit,
+  onDelete,
+  isBusy,
+  currentRole,
+}: {
+  user: SchoolUserRow;
+  onEdit: (user: SchoolUserRow) => void;
+  onDelete: (user: SchoolUserRow) => void;
+  isBusy: boolean;
+  currentRole: CurrentDatabaseRole | string | null;
+}) {
+  const userName = user.profile?.full_name ?? 'usuario';
+  const canDelete = !(currentRole === 'SECRETARY' && user.role === 'DIRECTOR');
+
+  return (
+    <ActionGroup>
+      <button
+        type="button"
+        title="Editar usuário"
+        aria-label={`Editar ${userName}`}
+        disabled={isBusy}
+        onClick={() => onEdit(user)}
+        className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-blue-200 text-blue-700 transition hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-700"
+      >
+        <Edit3 className="h-4 w-4" aria-hidden="true" />
+      </button>
+
+      {canDelete && (
+        <button
+          type="button"
+          title="Excluir usuário"
+          aria-label={`Excluir ${userName}`}
+          disabled={isBusy}
+          onClick={() => onDelete(user)}
+          className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-red-200 text-red-700 transition hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/70 dark:text-red-300 dark:hover:bg-red-950/40"
+        >
+          <Trash2 className="h-4 w-4" aria-hidden="true" />
+        </button>
+      )}
+    </ActionGroup>
+  );
+}
+
 function SchoolUsersTable({
   users,
   onEdit,
   onDelete,
   isBusy,
+  currentRole,
 }: {
   users: SchoolUserRow[];
   onEdit: (user: SchoolUserRow) => void;
   onDelete: (user: SchoolUserRow) => void;
   isBusy: boolean;
+  currentRole: CurrentDatabaseRole | string | null;
 }) {
+  const [isCompact, setIsCompact] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) {
+      return undefined;
+    }
+
+    const mediaQuery = window.matchMedia('(max-width: 1023px)');
+    const syncViewport = () => setIsCompact(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener?.('change', syncViewport);
+
+    return () => {
+      mediaQuery.removeEventListener?.('change', syncViewport);
+    };
+  }, []);
+
+  if (isCompact) {
+    return (
+      <div className="divide-y divide-[#dfe3e8] overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:divide-slate-700 dark:border-slate-700 dark:bg-slate-900">
+        {users.map((user) => (
+          <article key={user.id} className="space-y-4 p-4">
+            <div className="grid gap-3 text-sm sm:grid-cols-2">
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Nome</p>
+                <p className="mt-1 break-words font-semibold text-[#181c20] dark:text-white">{user.profile?.full_name ?? 'Perfil indisponível'}</p>
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">E-mail</p>
+                <p className="mt-1 break-words text-gray-600 dark:text-slate-300">{user.profile?.email ?? 'Não informado'}</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Papel atual</p>
+                <p className="mt-1"><span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">{schoolUserRoleLabels[user.role]}</span></p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Status</p>
+                <p
+                  className="mt-1"
+                  title={getSchoolUserAccessStatus(user).reason}
+                >
+                  <StatusBadge active={getSchoolUserAccessStatus(user).active} />
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-slate-400">Entrada</p>
+                <p className="mt-1 text-gray-600 dark:text-slate-300">{formatDate(user.joined_at)}</p>
+              </div>
+            </div>
+
+            <div className="flex justify-end border-t border-[#dfe3e8] pt-3 dark:border-slate-700">
+              <UserActions
+                user={user}
+                onEdit={onEdit}
+                onDelete={onDelete}
+                isBusy={isBusy}
+                currentRole={currentRole}
+              />
+            </div>
+          </article>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow">
+    <div className="overflow-hidden rounded-xl border border-[#dfe3e8] bg-white shadow dark:border-slate-700">
       <div className="overflow-x-auto">
-        <table className="min-w-[920px] w-full text-sm">
-          <thead className="bg-gray-50">
+        <table className="min-w-[800px] w-full text-sm">
+          <thead className="bg-gray-50 dark:bg-slate-800">
             <tr>
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Nome
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 E-mail
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Papel atual
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
-                Vínculo
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
+                Status
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
+              <th className="px-4 py-3 text-left font-medium text-gray-700 dark:text-slate-300">
                 Entrada
               </th>
 
-              <th className="px-4 py-3 text-left font-medium text-gray-700">
-                Perfil
-              </th>
-
-              <th className="px-4 py-3 text-right font-medium text-gray-700">
-                Acoes
+              <th className="px-4 py-3 text-right font-medium text-gray-700 dark:text-slate-300">
+                Ações
               </th>
             </tr>
           </thead>
@@ -347,20 +462,20 @@ function SchoolUsersTable({
             {users.map((user) => (
               <tr
                 key={user.id}
-                className="border-t transition-colors hover:bg-gray-50"
+                className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700"
               >
-                <td className="px-4 py-3 font-medium text-[#181c20]">
+                <td className="px-4 py-3 font-medium text-[#181c20] dark:text-white">
                   {user.profile?.full_name ??
                     'Perfil indisponível'}
                 </td>
 
-                <td className="px-4 py-3 text-gray-600">
+                <td className="px-4 py-3 text-gray-600 dark:text-slate-300">
                   {user.profile?.email ??
                     'Não informado'}
                 </td>
 
                 <td className="px-4 py-3">
-                  <span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf]">
+                  <span className="inline-flex rounded-full bg-blue-50 px-2.5 py-1 text-xs font-semibold text-[#005bbf] dark:bg-blue-950/40 dark:text-blue-300">
                     {
                       schoolUserRoleLabels[
                         user.role
@@ -369,59 +484,28 @@ function SchoolUsersTable({
                   </span>
                 </td>
 
-                <td className="px-4 py-3">
+                <td
+                  className="px-4 py-3"
+                  title={getSchoolUserAccessStatus(user).reason}
+                >
                   <StatusBadge
-                    active={user.active}
+                    active={getSchoolUserAccessStatus(user).active}
                   />
                 </td>
 
-                <td className="px-4 py-3 text-gray-600">
+                <td className="px-4 py-3 text-gray-600 dark:text-slate-300">
                   {formatDate(user.joined_at)}
                 </td>
 
                 <td className="px-4 py-3">
-                  <StatusBadge
-                    active={
-                      user.profile?.active ?? null
-                    }
-                  />
-                </td>
-
-                <td className="px-4 py-3">
-                  <div className="flex justify-end gap-2">
-                    <button
-                      type="button"
-                      title="Editar usuario"
-                      aria-label={`Editar ${
-                        user.profile?.full_name ??
-                        'usuario'
-                      }`}
-                      disabled={isBusy}
-                      onClick={() => onEdit(user)}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-blue-200 text-blue-700 transition hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <Edit3
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                      />
-                    </button>
-
-                    <button
-                      type="button"
-                      title="Excluir usuario"
-                      aria-label={`Excluir ${
-                        user.profile?.full_name ??
-                        'usuario'
-                      }`}
-                      disabled={isBusy}
-                      onClick={() => onDelete(user)}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-red-200 text-red-700 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      <Trash2
-                        className="h-4 w-4"
-                        aria-hidden="true"
-                      />
-                    </button>
+                  <div className="flex justify-end">
+                    <UserActions
+                      user={user}
+                      onEdit={onEdit}
+                      onDelete={onDelete}
+                      isBusy={isBusy}
+                      currentRole={currentRole}
+                    />
                   </div>
                 </td>
               </tr>
@@ -438,6 +522,7 @@ function SchoolUserEditDialog({
   onClose,
   onSubmit,
   isSubmitting,
+  allowRoleChange,
 }: {
   user: SchoolUserRow;
   onClose: () => void;
@@ -447,6 +532,7 @@ function SchoolUserEditDialog({
     password: string;
   }) => void;
   isSubmitting: boolean;
+  allowRoleChange: boolean;
 }) {
   const [fullName, setFullName] = useState(
     user.profile?.full_name ?? '',
@@ -529,6 +615,7 @@ function SchoolUserEditDialog({
             <select
               id="school-user-role"
               value={role}
+              disabled={!allowRoleChange}
               onChange={(event) =>
                 setRole(
                   event.target
@@ -860,6 +947,16 @@ export default function SchoolUsersTab({
         </div>
       )}
 
+      <div
+        role="note"
+        className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
+      >
+        <strong>Exclusão protegida:</strong> alunos com notas, frequência ou
+        fechamento de período não podem ser excluídos. O bloqueio preserva o
+        histórico acadêmico; alunos sem esses registros podem ser removidos
+        normalmente.
+      </div>
+
       {inviteTargets ? (
         <UnifiedUserInvitePreview
           institutionId={institutionId}
@@ -915,8 +1012,8 @@ export default function SchoolUsersTab({
           }
         />
 
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm">
-          <p className="text-xs font-semibold text-[#727785]">
+        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p className="text-xs font-semibold text-[#727785] dark:text-slate-400">
             Total por papel
           </p>
 
@@ -927,10 +1024,10 @@ export default function SchoolUsersTab({
                   key={role}
                   className="flex items-center justify-between gap-2"
                 >
-                  <dt className="truncate text-[#727785]">
+                  <dt className="truncate text-[#727785] dark:text-slate-400">
                     {schoolUserRoleLabels[role]}
                   </dt>
-                  <dd className="font-bold text-[#181c20]">
+                  <dd className="font-bold text-[#181c20] dark:text-white">
                     {summary.byRole[role]}
                   </dd>
                 </div>
@@ -942,10 +1039,10 @@ export default function SchoolUsersTab({
 
       <section className="space-y-3">
         <div className="grid gap-3 lg:grid-cols-[minmax(240px,1fr)_auto] lg:items-end">
-          <div>
+          <div className="rounded-xl border border-[#dfe3e8] bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <label
               htmlFor="school-users-search"
-              className="block text-sm font-medium text-[#414754]"
+              className="block text-sm font-medium text-[#414754] dark:text-slate-300"
             >
               Buscar usuário
             </label>
@@ -966,7 +1063,7 @@ export default function SchoolUsersTab({
                   )
                 }
                 placeholder="Nome, e-mail, CPF ou papel"
-                className="w-full rounded-lg border border-[#dfe3e8] bg-white py-2 pl-9 pr-3 text-sm text-[#181c20] outline-none transition-colors placeholder:text-gray-400 focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                className="w-full rounded-lg border border-[#dfe3e8] bg-white py-2 pl-9 pr-3 text-sm text-[#181c20] outline-none transition-colors placeholder:text-gray-400 focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:border-blue-400 dark:focus:ring-blue-900/40"
               />
             </div>
           </div>
@@ -989,7 +1086,7 @@ export default function SchoolUsersTab({
                   className={`rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
                     selectedRole === option.value
                       ? 'border-[#005bbf] bg-blue-50 text-[#005bbf]'
-                      : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50'
+                      : 'border-[#dfe3e8] bg-white text-gray-600 hover:bg-gray-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:bg-slate-800'
                   }`}
                 >
                   {option.label}
@@ -997,14 +1094,14 @@ export default function SchoolUsersTab({
               ))}
             </div>
           ) : (
-            <span className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-medium text-[#005bbf]">
+            <span className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-medium text-[#005bbf] dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-300">
               {schoolUserRoleLabels[fixedRole]}
             </span>
           )}
         </div>
 
         {usersQuery.isLoading ? (
-          <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500">
+          <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
             Carregando usuários...
           </div>
         ) : usersQuery.isError ? (
@@ -1032,12 +1129,13 @@ export default function SchoolUsersTab({
             onEdit={setEditingUser}
             onDelete={handleDeleteUser}
             isBusy={isManaging}
+            currentRole={institutionQuery.currentRole}
           />
         )}
 
         {filteredUsers.length > SCHOOL_USERS_PAGE_SIZE && (
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600">
-            <span>
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-gray-600 dark:border-slate-700">
+            <span className="dark:text-slate-300">
               Mostrando {pageStart + 1}–
               {Math.min(
                 pageStart + SCHOOL_USERS_PAGE_SIZE,
@@ -1057,7 +1155,7 @@ export default function SchoolUsersTab({
                     Math.max(1, page - 1),
                   )
                 }
-                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 <ChevronLeft
                   className="h-4 w-4"
@@ -1080,7 +1178,7 @@ export default function SchoolUsersTab({
                     Math.min(totalPages, page + 1),
                   )
                 }
-                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex h-9 items-center gap-1 rounded-lg border border-[#dfe3e8] px-2.5 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
               >
                 Próxima
                 <ChevronRight
@@ -1099,6 +1197,7 @@ export default function SchoolUsersTab({
           onClose={() => setEditingUser(null)}
           onSubmit={handleEditSubmit}
           isSubmitting={isManaging}
+          allowRoleChange={!(institutionQuery.currentRole === 'SECRETARY' && editingUser.role === 'DIRECTOR')}
         />
       )}
     </div>

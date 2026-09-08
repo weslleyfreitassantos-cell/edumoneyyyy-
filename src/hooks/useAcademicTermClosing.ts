@@ -13,6 +13,7 @@ import {
 import {
   academicShiftSettingsService,
 } from '../services/academicShiftSettingsService';
+import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 import {
   academicAutomationService,
   type SchoolScheduleBreakDraft,
@@ -159,10 +160,13 @@ export function useSaveAcademicPolicy() {
   return useMutation({
     mutationFn: (input: SaveAcademicPolicyInput) =>
       academicPolicyService.savePolicy(input),
-    onSuccess: () => {
-      void queryClient.invalidateQueries({
-        queryKey: academicKeys.all,
-      });
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: academicKeys.all,
+        }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
+      ]);
     },
   });
 }
@@ -200,18 +204,18 @@ export function useSaveAcademicShiftSettings() {
         input.institutionId,
         input.enabledShifts,
       ),
-    onSuccess: (_result, variables) => {
-      void queryClient.invalidateQueries({
-        queryKey: academicKeys.shiftSettings(
-          variables.institutionId,
-        ),
-      });
-      void queryClient.invalidateQueries({
-        queryKey: ['classes', variables.institutionId],
-      });
-      void queryClient.invalidateQueries({
-        queryKey: ['school-setup-readiness', variables.institutionId],
-      });
+    onSuccess: async (_result, variables) => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: academicKeys.shiftSettings(
+            variables.institutionId,
+          ),
+        }),
+        queryClient.invalidateQueries({
+          queryKey: ['classes', variables.institutionId],
+        }),
+        invalidateSchoolSetupReadiness(queryClient, variables.institutionId),
+      ]);
     },
   });
 }

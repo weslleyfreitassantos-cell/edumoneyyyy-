@@ -165,8 +165,28 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^respons.veis$/i }),
     ).toBeTruthy();
     expect(
-      screen.getByRole('link', { name: /^secretaria$/i }),
-    ).toBeTruthy();
+      screen.queryByRole('link', { name: /^secretaria$/i }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', { name: /^diretores$/i }),
+    ).toBeNull();
+  });
+
+  it('mostra Diretores em Pessoas somente para ADMIN', () => {
+    renderSidebar();
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /pessoas/i }),
+    );
+
+    expect(
+      screen
+        .getByRole('link', { name: /^diretores$/i })
+        .getAttribute('href'),
+    ).toBe('/admin?module=directors');
+    expect(
+      screen.queryByRole('link', { name: /^secretaria$/i }),
+    ).toBeNull();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -263,7 +283,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('mantem TV Escola, E-mail e os modulos administrativos sem item duplicado', () => {
+  it('mantem os recursos de comunicacao em um grupo sem itens duplicados', () => {
     renderSidebar({
       route: '/admin?module=overview',
       profile: directorProfile(),
@@ -278,11 +298,23 @@ describe('Sidebar', () => {
       navigation.querySelectorAll('a'),
     ).map((link) => link.textContent?.trim());
 
-    expect(labels.filter((label) => label === 'TV Escola')).toHaveLength(1);
-    expect(labels.filter((label) => label === 'E-mail')).toHaveLength(1);
-    expect(labels.indexOf('TV Escola')).toBeLessThan(labels.indexOf('E-mail'));
+    const communicationGroup = screen.getByRole('button', {
+      name: /comunica..o e recursos/i,
+    });
+
+    expect(communicationGroup.getAttribute('aria-expanded')).toBe('false');
+    expect(screen.queryByRole('link', { name: 'TV Escola' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'E-mail' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Câmeras ao vivo' })).toBeNull();
     expect(labels).toContain('Visão geral');
     expect(labels).not.toContain('Administração');
+
+    fireEvent.click(communicationGroup);
+
+    expect(screen.getByRole('link', { name: 'Câmeras ao vivo' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'TV Escola' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'E-mail' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Avisos' })).toBeTruthy();
   });
 
   it('inicia recolhido e mantém somente um grupo aberto por vez', () => {
@@ -371,7 +403,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('nao mostra modulos sem permissao para SECRETARY', () => {
+  it('mostra os modulos institucionais para SECRETARY', () => {
     renderSidebar({
       route: '/admin?module=students',
       profile: {
@@ -395,31 +427,37 @@ describe('Sidebar', () => {
         name: /alunos/i,
       }),
     ).toBeTruthy();
-    expect(
-      screen.queryByRole('link', {
-        name: /matr.culas/i,
-      }),
-    ).toBeNull();
-    expect(
-      screen.queryByRole('link', {
-        name: /disciplinas/i,
-      }),
-    ).toBeNull();
-    expect(
-      screen.queryByRole('link', {
-        name: /atribui..es/i,
-      }),
-    ).toBeNull();
+    fireEvent.click(
+      screen.getByRole('button', { name: /configura..o acad.mica/i }),
+    );
     expect(
       screen.getByRole('link', {
-        name: /secretaria/i,
+        name: /disciplinas/i,
       }),
     ).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole('button', { name: /opera..o escolar/i }),
+    );
+    expect(
+      screen.getByRole('link', {
+        name: /atribui..es/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /secretaria/i,
+      }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole('link', {
+        name: /administrador/i,
+      }),
+    ).toBeNull();
     expect(
       screen.getByRole('button', {
         name: /opera..o escolar/i,
       }).getAttribute('aria-expanded'),
-    ).toBe('false');
+    ).toBe('true');
   });
 
   it('clicar em Disciplinas aponta para /admin?module=subjects', () => {
@@ -589,7 +627,7 @@ describe('Sidebar', () => {
 });
 
 describe('sidebar navigation helpers', () => {
-  it('mostra a grade de horario somente no menu do aluno', () => {
+  it('mostra a grade de horario no menu do aluno e do professor', () => {
     const studentItems = getSidebarNavigationItems({
       profile: {
         ...baseProfile,
@@ -606,6 +644,20 @@ describe('sidebar navigation helpers', () => {
 
     expect(timetableItem?.label).toBe('Grade de horário');
     expect(timetableItem?.path).toBe('/dashboard/timetable');
+
+    const teacherItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'TEACHER',
+      },
+      currentInstitutionRole: 'TEACHER',
+      currentUserRole: 'teacher',
+      pathname: '/dashboard/timetable',
+    });
+
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toContain('student-timetable');
 
     const directorItems = getSidebarNavigationItems({
       profile: directorProfile(),
@@ -700,13 +752,13 @@ describe('sidebar navigation helpers', () => {
     ).not.toContain('enrollments');
     expect(
       modules.map((module) => module.id),
-    ).not.toContain('subjects');
+    ).toContain('subjects');
     expect(
       modules.map((module) => module.id),
     ).toContain('teachers');
   });
 
-  it('mostra cameras ao vivo somente para DIRECTOR', () => {
+  it('mostra cameras ao vivo para DIRECTOR e SECRETARY', () => {
     const directorItems = getSidebarNavigationItems({
       profile: directorProfile(),
       currentInstitutionRole: 'DIRECTOR',
@@ -715,7 +767,7 @@ describe('sidebar navigation helpers', () => {
     });
     expect(directorItems.map((item) => item.id)).toContain('cameras');
 
-    for (const role of ['ADMIN', 'SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN'] as const) {
+    for (const role of ['ADMIN', 'TEACHER', 'STUDENT', 'GUARDIAN'] as const) {
       const items = getSidebarNavigationItems({
         profile: { ...baseProfile, role },
         currentInstitutionRole: role,

@@ -133,6 +133,7 @@ function mockContexts(
 
   mockedUseAuthProfileActions.mockReturnValue({
     updateProfileName,
+    updateSelfRegistration: vi.fn(async () => undefined),
     updatePassword,
   });
 
@@ -211,6 +212,12 @@ describe('getRouteVisualContext', () => {
     });
     expect(
       getRouteVisualContext('/dashboard/timetable', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Grade de horário',
+    });
+    expect(
+      getRouteVisualContext('/dashboard/timetable', 'teacher'),
     ).toEqual({
       section: 'Acadêmico',
       title: 'Grade de horário',
@@ -499,6 +506,29 @@ describe('AppShell', () => {
 
     expect(
       screen.queryByText(/seletor global/i),
+    ).toBeNull();
+  });
+
+  it('usa o papel do vínculo da instituição selecionada', () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'STUDENT',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderShell('/dashboard');
+
+    expect(
+      screen.getByRole('link', {
+        name: /visão geral/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', {
+        name: /^dashboard$/i,
+      }),
     ).toBeNull();
   });
 

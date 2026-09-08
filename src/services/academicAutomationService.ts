@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 import {
   normalizeAcademicShift,
 } from '../lib/academic/academicShifts';
+import { buildDefaultTimeSlots } from '../lib/academic/timetableGenerator/automaticPreparation';
 import { academicShiftSettingsService } from './academicShiftSettingsService';
 
 export type PeriodModel = 'BIMESTERS_4' | 'TRIMESTERS_3' | 'SEMESTERS_2' | 'CUSTOM';
@@ -99,6 +100,60 @@ export function suggestTeacherAvailabilityFromSchoolSlots(
   }
 
   return suggestions;
+}
+
+function timeToMinutes(value: string): number {
+  const [hours, minutes] = value.slice(0, 5).split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function overlapsTime(
+  leftStart: string,
+  leftEnd: string,
+  rightStart: string,
+  rightEnd: string,
+): boolean {
+  return (
+    timeToMinutes(leftStart) < timeToMinutes(rightEnd) &&
+    timeToMinutes(rightStart) < timeToMinutes(leftEnd)
+  );
+}
+
+/**
+ * Provides the initial teacher windows before school lesson slots exist.
+ * The academic policy is the source of truth; saved school slots still take precedence in the UI.
+ */
+export function suggestTeacherAvailabilityFromPolicy(input: {
+  shifts: string[];
+  schoolDays: number[];
+  maxLessonsPerDay: number;
+  breaks?: Array<Pick<SchoolScheduleBreakRow, 'shift' | 'day_of_week' | 'start_time' | 'end_time' | 'active'>>;
+}): TeacherAvailabilityDraft[] {
+  const slotsPerDayByShift = Object.fromEntries(
+    input.shifts.map((shift) => [shift, input.maxLessonsPerDay]),
+  );
+  const breaks = input.breaks ?? [];
+  const slots = buildDefaultTimeSlots(
+    input.shifts,
+    slotsPerDayByShift,
+    input.schoolDays,
+  ).filter((slot) =>
+    !breaks.some((scheduleBreak) =>
+      scheduleBreak.active &&
+      normalizeAcademicShift(scheduleBreak.shift) === normalizeAcademicShift(slot.shift) &&
+      scheduleBreak.day_of_week === slot.day_of_week &&
+      overlapsTime(
+        slot.start_time,
+        slot.end_time,
+        scheduleBreak.start_time,
+        scheduleBreak.end_time,
+      ),
+    ),
+  );
+
+  return suggestTeacherAvailabilityFromSchoolSlots(
+    slots.map((slot) => ({ ...slot, active: true })),
+  );
 }
 
 export interface CurriculumTemplateRow {
@@ -373,8 +428,27 @@ export const academicAutomationService = {
     return (data ?? []) as CurriculumTemplateRow[];
   },
 
+  async deleteCurriculumTemplate(input: { institution_id: string; template_id: string }): Promise<void> {
+    const { error } = await supabase
+      .from('curriculum_templates')
+      .delete()
+      .eq('id', input.template_id)
+      .eq('institution_id', input.institution_id);
+    if (error) throw error;
+  },
+
   async createCurriculumTemplate(input: { institution_id: string; name: string; grade_level?: string; stage?: string; items: Array<{ subject_id: string; weekly_lessons: number; lesson_duration_minutes: number }> }): Promise<CurriculumTemplateRow> {
     if (!input.name.trim() || input.items.length === 0) throw new Error('O modelo precisa de nome e pelo menos uma disciplina.');
+    if (input.items.some((item) =>
+      !Number.isInteger(item.weekly_lessons) ||
+      item.weekly_lessons < 1 ||
+      item.weekly_lessons > 20 ||
+      !Number.isInteger(item.lesson_duration_minutes) ||
+      item.lesson_duration_minutes < 15 ||
+      item.lesson_duration_minutes > 180
+    )) {
+      throw new Error('A quantidade de aulas deve estar entre 1 e 20, e a duração entre 15 e 180 minutos.');
+    }
     const { data: template, error: templateError } = await supabase.from('curriculum_templates').insert({ institution_id: input.institution_id, name: input.name.trim(), grade_level: input.grade_level?.trim() || null, stage: input.stage?.trim() || null, active: true }).select('id, institution_id, name, grade_level, stage, active').single();
     if (templateError) throw templateError;
     const { error: itemsError } = await supabase.from('curriculum_template_items').insert(input.items.map((item) => ({ institution_id: input.institution_id, template_id: template.id, ...item, active: true })));

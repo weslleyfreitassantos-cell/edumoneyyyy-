@@ -12,8 +12,7 @@ import {
   useDeleteTimetableVersion,
   useGenerateTimetableDraft,
   usePublishTimetableVersion,
-  useSaveSchoolTimeSlots,
-  useSchoolTimeSlots,
+  useTimetablePreparation,
   useTimetableVersionEntries,
   useTimetableVersions,
   useUpdateTimetableVersionEntry,
@@ -34,14 +33,12 @@ vi.mock('../../hooks/useAcademicAutomation', () => ({
   useDeleteTimetableVersion: vi.fn(),
   useGenerateTimetableDraft: vi.fn(),
   usePublishTimetableVersion: vi.fn(),
-  useSaveSchoolTimeSlots: vi.fn(),
-  useSchoolTimeSlots: vi.fn(),
+  useTimetablePreparation: vi.fn(),
   useTimetableVersionEntries: vi.fn(),
   useTimetableVersions: vi.fn(),
   useUpdateTimetableVersionEntry: vi.fn(),
 }));
 
-const slotMutation = { mutateAsync: vi.fn(), isPending: false };
 const generateMutation = { mutateAsync: vi.fn(), isPending: false };
 const deleteMutation = { mutateAsync: vi.fn(), isPending: false };
 const publishMutation = { mutateAsync: vi.fn(), isPending: false };
@@ -66,17 +63,25 @@ function mockDefaults() {
     isError: false,
     error: null,
   } as never);
-  vi.mocked(useSchoolTimeSlots).mockReturnValue({
-    data: [],
-    isLoading: false,
-    isError: false,
-    error: null,
-  } as never);
   vi.mocked(useTimetableVersions).mockReturnValue({
     data: [],
     isLoading: false,
     isError: false,
     error: null,
+  } as never);
+  vi.mocked(useTimetablePreparation).mockReturnValue({
+    data: {
+      ready: true,
+      policy: { schoolDays: [1, 2, 3, 4, 5] },
+      blockers: [],
+      warnings: [],
+      totals: { classes: 0, students: 0, rooms: 0, slots: 0 },
+    },
+    isLoading: false,
+    isFetching: false,
+    isError: false,
+    error: null,
+    refetch: vi.fn(),
   } as never);
   vi.mocked(useTimetableVersionEntries).mockReturnValue({
     data: [],
@@ -84,7 +89,6 @@ function mockDefaults() {
     isError: false,
     error: null,
   } as never);
-  vi.mocked(useSaveSchoolTimeSlots).mockReturnValue(slotMutation as never);
   vi.mocked(useGenerateTimetableDraft).mockReturnValue(generateMutation as never);
   vi.mocked(useDeleteTimetableVersion).mockReturnValue(deleteMutation as never);
   vi.mocked(usePublishTimetableVersion).mockReturnValue(publishMutation as never);
@@ -101,22 +105,26 @@ afterEach(() => {
 });
 
 describe('TimetableAutomationPanel', () => {
-  it('configura os horários e oferece a geração automática', async () => {
+  it('conecta o turno ao gerador sem exibir o editor manual de horários', async () => {
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
 
-    expect(screen.getByText('Quais horários sua escola utiliza?')).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Gerar grade automaticamente' })).toBeTruthy();
+    expect(screen.getByText('Gerar grade horária')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Gerar grade' })).toBeTruthy();
+    expect((screen.getByRole('combobox', { name: 'Turno do gerador' }) as HTMLSelectElement).value).toBe('TODOS');
     expect(screen.getByRole('option', { name: 'Integral' })).toBeTruthy();
+    expect(screen.queryByText('Horários da escola')).toBeNull();
 
-    fireEvent.click(screen.getByRole('button', { name: /adicionar horário/i }));
-    expect(screen.getByLabelText('Dia do horário 1')).toBeTruthy();
+    generateMutation.mutateAsync.mockResolvedValue({
+      valid: false,
+      entries: [],
+      diagnostics: [],
+    });
+    fireEvent.change(screen.getByRole('combobox', { name: 'Turno do gerador' }), { target: { value: 'MATUTINO' } });
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade' }));
 
-    fireEvent.click(screen.getByRole('button', { name: 'Salvar horários' }));
     await waitFor(() => {
-      expect(slotMutation.mutateAsync).toHaveBeenCalledWith(expect.objectContaining({
-        institution_id: 'institution-1',
+      expect(generateMutation.mutateAsync).toHaveBeenCalledWith(expect.objectContaining({
         shift: 'MATUTINO',
-        slots: [expect.objectContaining({ day_of_week: 1 })],
       }));
     });
   });
@@ -137,7 +145,7 @@ describe('TimetableAutomationPanel', () => {
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
     fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
-    fireEvent.click(screen.getByRole('button', { name: /07:00 Português/i }));
+    fireEvent.click(screen.getByRole('button', { name: /Editar Português às 07:00/i }));
 
     expect(screen.getByText('Bloqueado/Fixo: preservar ao regenerar')).toBeTruthy();
     expect(screen.getByRole('checkbox')).toBeTruthy();
@@ -151,7 +159,7 @@ describe('TimetableAutomationPanel', () => {
     });
 
     render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
-    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade automaticamente' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Gerar grade' }));
 
     const alert = await screen.findByRole('alert');
     expect(alert.textContent).toMatch(/não foi possível montar a grade/i);

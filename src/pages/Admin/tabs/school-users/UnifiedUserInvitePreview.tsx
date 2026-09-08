@@ -57,7 +57,7 @@ interface InviteFormState {
 }
 
 interface FeedbackState {
-  type: 'success' | 'error';
+  type: 'success' | 'warning' | 'error';
   message: string;
 }
 
@@ -105,8 +105,6 @@ function getTargetNote(
       return 'Cria usuario, profile, membership GUARDIAN, vinculo guardianships e envia as credenciais por e-mail.';
     case 'DIRECTOR':
       return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode criar este acesso.';
-    case 'SECRETARY':
-      return 'Cria usuario, profile e membership SECRETARY para operacao institucional.';
   }
 }
 
@@ -421,6 +419,7 @@ export default function UnifiedUserInvitePreview({
         );
 
       if (selectedTarget === 'TEACHER') {
+        const emailPending = result.emailPending || !result.invitationSent;
         try {
           await teacherAcademicMutation.mutateAsync({
             institution_id: validation.payload.institutionId,
@@ -439,17 +438,22 @@ export default function UnifiedUserInvitePreview({
           setFeedback({
             type: 'error',
             message:
-              'O acesso do professor foi criado e o e-mail foi enviado, mas as disciplinas e a disponibilidade não foram salvas.',
+              emailPending
+                ? 'O acesso do professor foi criado e o e-mail de acesso ficou pendente, mas as disciplinas e a disponibilidade não foram salvas.'
+                : 'O acesso do professor foi criado e o e-mail foi enviado, mas as disciplinas e a disponibilidade não foram salvas.',
           });
           return;
         }
       }
 
+      const emailPending = result.emailPending || !result.invitationSent;
       const successMessage =
         selectedTarget === 'TEACHER'
           ? `${result.message} Disciplinas e disponibilidade salvas.`
           : result.message;
-      setSelectedTarget('STUDENT');
+      setSelectedTarget(
+        allowedTargetsProp?.[0] ?? 'STUDENT',
+      );
       setForm(initialFormState);
       setServerFieldErrors({});
       setTeacherSubjectIds([]);
@@ -457,7 +461,7 @@ export default function UnifiedUserInvitePreview({
       setTeacherAvailability([]);
       setTeacherAcademicError(null);
       setFeedback({
-        type: 'success',
+        type: emailPending ? 'warning' : 'success',
         message: successMessage,
       });
     } catch (error) {
@@ -526,7 +530,9 @@ export default function UnifiedUserInvitePreview({
           className={`mt-4 flex gap-2 rounded-lg border p-4 text-sm ${
             feedback.type === 'success'
               ? 'border-green-200 bg-green-50 text-green-700'
-              : 'border-red-200 bg-red-50 text-red-700'
+              : feedback.type === 'warning'
+                ? 'border-amber-200 bg-amber-50 text-amber-700'
+                : 'border-red-200 bg-red-50 text-red-700'
           }`}
         >
           {feedback.type === 'success' ? (
@@ -931,12 +937,6 @@ export default function UnifiedUserInvitePreview({
             {selectedTarget === 'DIRECTOR' && (
               <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
                 Diretor so pode ser convidado por ADMIN da conta.
-              </p>
-            )}
-
-            {selectedTarget === 'SECRETARY' && (
-              <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
-                Secretaria recebe acesso operacional para cadastros e matriculas da instituicao.
               </p>
             )}
 

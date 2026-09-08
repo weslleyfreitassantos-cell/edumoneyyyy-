@@ -12,6 +12,7 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from './AuthContext';
 import { useUserInstitutions } from '../hooks/useUserInstitutions';
+import { invalidateSchoolSetupReadiness } from '../hooks/useSchoolSetupReadiness';
 import { classifyHostname, type HostResolution } from '../lib/subdomain';
 import { SubdomainNotFoundPage } from '../components/SubdomainNotFoundPage';
 import { SubdomainForbiddenPage } from '../components/SubdomainForbiddenPage';
@@ -551,6 +552,21 @@ export function InstitutionProvider({
     setPlatformInstitutionId(null);
   }, [profile?.id]);
 
+  const refreshInstitution = useCallback(async () => {
+    const result = await institutionsQuery.refetch();
+    if (currentInstitutionId) {
+      await invalidateSchoolSetupReadiness(
+        queryClient,
+        currentInstitutionId,
+      );
+    }
+    return result;
+  }, [
+    currentInstitutionId,
+    institutionsQuery.refetch,
+    queryClient,
+  ]);
+
   const value = useMemo<InstitutionContextType>(
     () => ({
       institutions,
@@ -574,7 +590,7 @@ export function InstitutionProvider({
       hasMultipleInstitutions: institutions.length > 1,
       setCurrentInstitutionId,
       clearCurrentInstitutionSelection,
-      refresh: institutionsQuery.refetch,
+      refresh: refreshInstitution,
     }),
     [
       activeLink,
@@ -590,6 +606,7 @@ export function InstitutionProvider({
       institutionsQuery.refetch,
       isSwitchingInstitution,
       profile?.id,
+      refreshInstitution,
       resolutionState,
       setCurrentInstitutionId,
       subdomainError,
@@ -638,4 +655,8 @@ export function useInstitution(): InstitutionContextType {
   }
 
   return context;
+}
+
+export function useOptionalInstitution(): InstitutionContextType | null {
+  return useContext(InstitutionContext);
 }

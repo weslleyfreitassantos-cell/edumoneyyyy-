@@ -153,6 +153,7 @@ export function planAutomaticAssignments(input: AutomaticAssignmentInput): Autom
 export function buildDefaultTimeSlots(
   shifts: string[],
   slotsPerDayByShift: Record<string, number> = {},
+  schoolDays: number[] = [1, 2, 3, 4, 5],
 ): AutomaticTimeSlot[] {
   const uniqueShifts = [...new Set(shifts.map((shift) => shift.trim()).filter(Boolean))];
   const effectiveShifts = uniqueShifts.length > 0 ? uniqueShifts : ['MATUTINO'];
@@ -164,7 +165,7 @@ export function buildDefaultTimeSlots(
     const requestedSlots = slotsPerDayByShift[normalizedShift] ??
       slotsPerDayByShift[shift] ??
       times.length;
-    for (let day = 1; day <= 5; day += 1) {
+    for (const day of schoolDays) {
       times.slice(0, requestedSlots).forEach(([start_time, end_time], index) => {
         slots.push({
           shift,

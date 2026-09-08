@@ -44,6 +44,7 @@ jobs:
             delete-client-account
             invite-school-user
             send-school-email
+            update-client-admin-password
             camera-gateway
           )
 

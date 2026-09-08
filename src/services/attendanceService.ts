@@ -23,6 +23,7 @@ export type AttendanceSessionStatus =
 export type AttendanceServiceErrorCode =
   | 'ATTENDANCE_OFFERING_NOT_FOUND'
   | 'ATTENDANCE_FORBIDDEN'
+  | 'ATTENDANCE_SCHEDULE_NOT_FOUND'
   | 'ATTENDANCE_SESSION_CONFLICT'
   | 'ATTENDANCE_STUDENT_NOT_ENROLLED'
   | 'ATTENDANCE_SAVE_FAILED';
@@ -141,6 +142,12 @@ interface AttendanceSessionQueryRow {
   updated_at: string;
 }
 
+interface AttendanceScheduleQueryRow {
+  day_of_week: number;
+  start_time: string;
+  end_time: string;
+}
+
 interface AttendanceRecordQueryRow {
   id: string;
   institution_id: string;
@@ -202,6 +209,12 @@ export interface AttendanceSession {
   updatedAt: string;
 }
 
+export interface AttendanceScheduleSlot {
+  dayOfWeek: number;
+  startTime: string;
+  endTime: string;
+}
+
 export interface AttendanceStudent {
   id: string;
   profileId: string;
@@ -222,6 +235,7 @@ export interface AttendanceRollCallRecord {
 export interface AttendanceRollCall {
   offering: AttendanceOffering;
   session: AttendanceSession | null;
+  scheduleSlot: AttendanceScheduleSlot | null;
   records: AttendanceRollCallRecord[];
 }
 
@@ -384,6 +398,16 @@ function createAttendanceError(
 
   if (isSupabaseErrorLike(error)) {
     if (
+      error.message?.includes('ATTENDANCE_SCHEDULE_NOT_FOUND')
+    ) {
+      return new AttendanceServiceError(
+        'ATTENDANCE_SCHEDULE_NOT_FOUND',
+        'Não existe aula publicada para esta atribuição na data selecionada.',
+        error,
+      );
+    }
+
+    if (
       error.code === '42501' ||
       error.message?.toLowerCase().includes('permission')
     ) {
@@ -422,6 +446,19 @@ function formatDateForAttendanceMessage(value: string): string {
   }
 
   return `${day}/${month}/${year}`;
+}
+
+export function getAttendanceDayOfWeek(
+  sessionDate: string,
+): number {
+  const date = new Date(`${sessionDate}T12:00:00.000Z`);
+
+  if (Number.isNaN(date.getTime())) {
+    return 0;
+  }
+
+  const day = date.getUTCDay();
+  return day === 0 ? 7 : day;
 }
 
 export function isEnrollmentValidForAttendanceDate(
@@ -864,6 +901,66 @@ async function getSingleSessionForOfferingDate(
   return sessions[0] ?? null;
 }
 
+async function getAttendanceScheduleSlot(
+  institutionId: string,
+  subjectOfferingId: string,
+  sessionDate: string,
+): Promise<AttendanceScheduleSlot | null> {
+  const dayOfWeek = getAttendanceDayOfWeek(sessionDate);
+
+  if (dayOfWeek < 1 || dayOfWeek > 6) {
+    return null;
+  }
+
+  const { data, error } = await supabase
+    .from('timetable_entries')
+    .select('day_of_week, start_time, end_time')
+    .eq('institution_id', institutionId)
+    .eq('subject_offering_id', subjectOfferingId)
+    .eq('day_of_week', dayOfWeek)
+    .eq('active', true)
+    .order('start_time', { ascending: true });
+
+  if (error) {
+    throw createAttendanceError(
+      error,
+      'ATTENDANCE_FORBIDDEN',
+    );
+  }
+
+  const row = ((data ?? []) as unknown as AttendanceScheduleQueryRow[])[0];
+
+  if (!row) {
+    return null;
+  }
+
+  return {
+    dayOfWeek: row.day_of_week,
+    startTime: row.start_time,
+    endTime: row.end_time,
+  };
+}
+
+function getScheduleSlotFromSession(
+  session: AttendanceSession | null,
+): AttendanceScheduleSlot | null {
+  if (!session?.startsAt || !session.endsAt) {
+    return null;
+  }
+
+  const dayOfWeek = getAttendanceDayOfWeek(session.sessionDate);
+
+  if (dayOfWeek < 1 || dayOfWeek > 6) {
+    return null;
+  }
+
+  return {
+    dayOfWeek,
+    startTime: session.startsAt,
+    endTime: session.endsAt,
+  };
+}
+
 async function getRecordsForSession(
   sessionId: string,
 ): Promise<AttendanceRecordQueryRow[]> {
@@ -912,6 +1009,7 @@ async function getRecordsForSession(
 
 async function createAttendanceSession(
   input: SaveAttendanceRollCallInput,
+  scheduleSlot: AttendanceScheduleSlot,
 ): Promise<AttendanceSession> {
   const { data, error } = await supabase
     .from('attendance_sessions')
@@ -919,6 +1017,8 @@ async function createAttendanceSession(
       institution_id: input.institutionId,
       subject_offering_id: input.subjectOfferingId,
       session_date: input.sessionDate,
+      starts_at: scheduleSlot.startTime,
+      ends_at: scheduleSlot.endTime,
       topic: normalizeOptionalText(input.topic),
       notes: normalizeOptionalText(input.notes),
       status: 'CLOSED',
@@ -958,10 +1058,15 @@ async function createAttendanceSession(
 async function updateAttendanceSession(
   session: AttendanceSession,
   input: SaveAttendanceRollCallInput,
+  scheduleSlot: AttendanceScheduleSlot,
 ): Promise<AttendanceSession> {
+  const startsAt = session.startsAt ?? scheduleSlot.startTime;
+  const endsAt = session.endsAt ?? scheduleSlot.endTime;
   const { data, error } = await supabase
     .from('attendance_sessions')
     .update({
+      starts_at: startsAt,
+      ends_at: endsAt,
       topic: normalizeOptionalText(input.topic),
       notes: normalizeOptionalText(input.notes),
       status: 'CLOSED',
@@ -1343,6 +1448,20 @@ export const attendanceService = {
         subjectOfferingId,
         sessionDate,
       );
+    const scheduleSlot =
+      (await getAttendanceScheduleSlot(
+        institutionId,
+        subjectOfferingId,
+        sessionDate,
+      )) ?? getScheduleSlotFromSession(session);
+
+    if (!scheduleSlot && !session) {
+      throw new AttendanceServiceError(
+        'ATTENDANCE_SCHEDULE_NOT_FOUND',
+        'Não existe aula publicada para esta atribuição na data selecionada.',
+      );
+    }
+
     const students =
       await getValidStudentsForOfferingDate(
         offering,
@@ -1355,6 +1474,7 @@ export const attendanceService = {
     return {
       offering,
       session,
+      scheduleSlot,
       records: buildRollCallRecords(students, records),
     };
   },
@@ -1374,6 +1494,20 @@ export const attendanceService = {
         input.subjectOfferingId,
         input.sessionDate,
       );
+    const scheduleSlot =
+      (await getAttendanceScheduleSlot(
+        input.institutionId,
+        input.subjectOfferingId,
+        input.sessionDate,
+      )) ?? getScheduleSlotFromSession(existingSession);
+
+    if (!scheduleSlot) {
+      throw new AttendanceServiceError(
+        'ATTENDANCE_SCHEDULE_NOT_FOUND',
+        'Não existe aula publicada para esta atribuição na data selecionada.',
+      );
+    }
+
     const validStudents =
       await getValidStudentsForOfferingDate(
         offering,
@@ -1393,8 +1527,12 @@ export const attendanceService = {
       ? await updateAttendanceSession(
           existingSession,
           input,
+          scheduleSlot,
         )
-      : await createAttendanceSession(input);
+      : await createAttendanceSession(
+          input,
+          scheduleSlot,
+        );
 
     await upsertAttendanceRecords(input, session.id);
 
