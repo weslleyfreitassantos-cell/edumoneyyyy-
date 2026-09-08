@@ -11,10 +11,52 @@ export interface RegistrationCompletion {
   pendingItems: RegistrationPendingItem[];
 }
 
+function hasText(value: unknown): boolean {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+export function hasIncompleteStudentPersonalData(value: unknown): boolean {
+  if (!value || typeof value !== 'object') return true;
+
+  const record = value as Record<string, unknown>;
+  if (record.role !== 'STUDENT') return true;
+
+  const profile = record.profile && typeof record.profile === 'object'
+    ? record.profile as Record<string, unknown>
+    : {};
+  const student = record.student && typeof record.student === 'object'
+    ? record.student as Record<string, unknown>
+    : {};
+  const address = student.address && typeof student.address === 'object'
+    ? student.address as Record<string, unknown>
+    : {};
+
+  const personalFields = [
+    profile.phone,
+    student.cpf,
+    student.sex,
+    student.nationality,
+    student.birthplace,
+    student.birth_state,
+  ];
+  const addressFields = [
+    address.postal_code,
+    address.street,
+    address.number,
+    address.neighborhood,
+    address.city,
+    address.state,
+  ];
+
+  return personalFields.some((field) => !hasText(field))
+    || addressFields.some((field) => !hasText(field));
+}
+
 export function buildStudentPendingItems(input: {
   birthDate: string | null | undefined;
   hasActiveEnrollment: boolean;
   hasActiveGuardian: boolean;
+  hasIncompletePersonalData?: boolean;
 }): RegistrationPendingItem[] {
   const pending: RegistrationPendingItem[] = [];
 
@@ -23,6 +65,14 @@ export function buildStudentPendingItems(input: {
       id: 'birth-date',
       label: 'Data de nascimento',
       description: 'Informe sua data de nascimento no cadastro acadêmico.',
+    });
+  }
+
+  if (input.hasIncompletePersonalData) {
+    pending.push({
+      id: 'personal-data',
+      label: 'Dados pessoais',
+      description: 'Complete seus dados pessoais e de endereço no cadastro.',
     });
   }
 
@@ -62,7 +112,7 @@ export const registrationCompletionService = {
     studentId: string,
     institutionId: string,
   ): Promise<RegistrationCompletion> {
-    const [studentResult, enrollmentResult, guardianshipResult] = await Promise.all([
+    const [studentResult, enrollmentResult, guardianshipResult, selfRegistrationResult] = await Promise.all([
       supabase
         .from('students')
         .select('birth_date')
@@ -81,6 +131,7 @@ export const registrationCompletionService = {
         .eq('student_id', studentId)
         .eq('active', true)
         .limit(1),
+      supabase.rpc('get_current_self_registration'),
     ]);
 
     if (studentResult.error) throw studentResult.error;
@@ -93,6 +144,9 @@ export const registrationCompletionService = {
         birthDate: (studentResult.data as { birth_date?: string | null } | null)?.birth_date,
         hasActiveEnrollment: (enrollmentResult.data ?? []).length > 0,
         hasActiveGuardian: (guardianshipResult.data ?? []).length > 0,
+        hasIncompletePersonalData:
+          selfRegistrationResult.error !== null ||
+          hasIncompleteStudentPersonalData(selfRegistrationResult.data),
       }),
     };
   },

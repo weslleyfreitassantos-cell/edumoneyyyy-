@@ -144,6 +144,9 @@ export default function ClassesTab() {
   const [isModalOpen, setIsModalOpen] =
     useState(false);
 
+  const [isDeleteModalOpen, setIsDeleteModalOpen] =
+    useState(false);
+
   const [isAutomationOpen, setIsAutomationOpen] =
     useState(false);
 
@@ -272,6 +275,9 @@ export default function ClassesTab() {
     createMutation.isPending ||
     updateMutation.isPending ||
     deleteMutation.isPending;
+  const deletionBlockedMessage = deletionImpactQuery.data
+    ? buildClassDeletionBlockedMessage(deletionImpactQuery.data)
+    : null;
 
   const columns: Column<ClassRow>[] = [
     {
@@ -349,8 +355,9 @@ export default function ClassesTab() {
     classRecord: ClassRow,
   ): void {
     resetMessages();
+    setIsDeleteModalOpen(false);
     setEditingClass(classRecord);
-    setDeletionCheckClassId(classRecord.id);
+    setDeletionCheckClassId(null);
     setFormData({
       name: classRecord.name,
       academic_year_id:
@@ -372,25 +379,25 @@ export default function ClassesTab() {
     resetMessages();
     setEditingClass(classRecord);
     setDeletionCheckClassId(classRecord.id);
-    setFormData({
-      name: classRecord.name,
-      academic_year_id: classRecord.academic_year_id,
-      grade_level:
-        normalizeAcademicLevel(classRecord.grade_level) ?? classRecord.grade_level ?? '',
-      shift: toAcademicShift(classRecord.shift) ?? '',
-      capacity: String(classRecord.capacity),
-      active: classRecord.active,
-    });
-    setIsModalOpen(true);
+    setIsModalOpen(false);
+    setIsDeleteModalOpen(true);
   }
 
   function closeModal(): void {
     setIsModalOpen(false);
+    setIsDeleteModalOpen(false);
     setEditingClass(null);
     setDeletionCheckClassId(null);
     setFormData({
       ...emptyDraft,
     });
+    setModalError(null);
+  }
+
+  function closeDeleteModal(): void {
+    setIsDeleteModalOpen(false);
+    setEditingClass(null);
+    setDeletionCheckClassId(null);
     setModalError(null);
   }
 
@@ -555,7 +562,7 @@ export default function ClassesTab() {
         institutionId,
       });
       setFeedbackMessage('Turma excluída com sucesso.');
-      closeModal();
+      closeDeleteModal();
     } catch (error) {
       setModalError(getErrorMessage(error));
     }
@@ -1035,43 +1042,7 @@ export default function ClassesTab() {
                 Ativa
               </label>
 
-              {editingClass && (
-                <div
-                  className={
-                    deletionImpactQuery.isError ||
-                    (deletionImpactQuery.data?.totalLinkedRecords ?? 0) > 0
-                      ? 'rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-sm text-amber-900'
-                      : 'rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-gray-700'
-                  }
-                  role={
-                    deletionImpactQuery.isError ||
-                    (deletionImpactQuery.data?.totalLinkedRecords ?? 0) > 0
-                      ? 'alert'
-                      : undefined
-                  }
-                >
-                  {deletionImpactQuery.isLoading && 'Verificando vínculos da turma...'}
-                  {deletionImpactQuery.isError && 'Não foi possível verificar os vínculos antes da exclusão.'}
-                  {!deletionImpactQuery.isLoading && !deletionImpactQuery.isError && deletionImpactQuery.data && (
-                    deletionImpactQuery.data.totalLinkedRecords > 0
-                      ? buildClassDeletionBlockedMessage(deletionImpactQuery.data)
-                      : 'Nenhum vínculo acadêmico encontrado. A exclusão física está disponível.'
-                  )}
-                </div>
-              )}
-
               <div className="flex flex-wrap items-center justify-between gap-2 pt-2">
-                {editingClass && (
-                  <button
-                    type="button"
-                    onClick={() => void handleDeleteClass()}
-                    disabled={isSubmitting || deletionImpactQuery.isLoading || deletionImpactQuery.isError}
-                    className="rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {deleteMutation.isPending ? 'Excluindo...' : 'Excluir turma'}
-                  </button>
-                )}
-
                 <div className="ml-auto flex gap-2">
                 <button
                   type="button"
@@ -1094,6 +1065,83 @@ export default function ClassesTab() {
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {isDeleteModalOpen && editingClass && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="class-delete-modal-title"
+        >
+          <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+            <h3
+              id="class-delete-modal-title"
+              className="text-lg font-bold text-[#181c20]"
+            >
+              Excluir turma
+            </h3>
+            <p className="mt-2 text-sm text-gray-600">
+              Confirme a exclusão de <strong>{editingClass.name}</strong>.
+            </p>
+
+            {modalError && (
+              <div
+                role="alert"
+                className="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+              >
+                {modalError}
+              </div>
+            )}
+
+            <div
+              className={
+                deletionImpactQuery.isError || deletionBlockedMessage
+                  ? 'mt-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-3 text-sm text-amber-900'
+                  : 'mt-4 rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 text-sm text-gray-700'
+              }
+              role={
+                deletionImpactQuery.isError || deletionBlockedMessage
+                  ? 'alert'
+                  : undefined
+              }
+            >
+              {deletionImpactQuery.isLoading && 'Verificando vínculos da turma...'}
+              {deletionImpactQuery.isError && 'Não foi possível verificar os vínculos antes da exclusão.'}
+              {!deletionImpactQuery.isLoading && !deletionImpactQuery.isError && deletionImpactQuery.data && (
+                deletionBlockedMessage ?? 'Nenhum vínculo acadêmico encontrado. A exclusão física está disponível.'
+              )}
+            </div>
+
+            <div className="mt-5 flex justify-end gap-2">
+              <button
+                type="button"
+                onClick={closeDeleteModal}
+                disabled={deleteMutation.isPending}
+                className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={() => void handleDeleteClass()}
+                disabled={
+                  deleteMutation.isPending ||
+                  deletionImpactQuery.isLoading ||
+                  deletionImpactQuery.isError ||
+                  !deletionImpactQuery.data ||
+                  Boolean(deletionBlockedMessage)
+                }
+                className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {deleteMutation.isPending && (
+                  <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+                )}
+                {deleteMutation.isPending ? 'Excluindo...' : 'Excluir turma'}
+              </button>
+            </div>
           </div>
         </div>
       )}

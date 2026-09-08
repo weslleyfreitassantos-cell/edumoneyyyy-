@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   buildGuardianPendingItems,
   buildStudentPendingItems,
+  hasIncompleteStudentPersonalData,
 } from './registrationCompletionService';
 
 describe('registrationCompletionService', () => {
@@ -24,6 +25,41 @@ describe('registrationCompletionService', () => {
       hasActiveEnrollment: true,
       hasActiveGuardian: true,
     })).toEqual([]);
+  });
+
+  it('identifica dados pessoais ou endereço ainda não preenchidos', () => {
+    expect(hasIncompleteStudentPersonalData({
+      role: 'STUDENT',
+      profile: { phone: '' },
+      student: {
+        cpf: '12345678900',
+        sex: 'F',
+        nationality: 'Brasileira',
+        birthplace: 'Salvador',
+        birth_state: 'BA',
+        address: {
+          postal_code: '',
+          street: 'Rua A',
+          number: '10',
+          neighborhood: 'Centro',
+          city: 'Salvador',
+          state: 'BA',
+        },
+      },
+    })).toBe(true);
+
+    expect(buildStudentPendingItems({
+      birthDate: '2010-01-01',
+      hasActiveEnrollment: true,
+      hasActiveGuardian: true,
+      hasIncompletePersonalData: true,
+    })).toEqual([
+      {
+        id: 'personal-data',
+        label: 'Dados pessoais',
+        description: 'Complete seus dados pessoais e de endereço no cadastro.',
+      },
+    ]);
   });
 
   it('sinaliza telefone ausente do responsável', () => {

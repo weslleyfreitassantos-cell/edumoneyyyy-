@@ -21,12 +21,12 @@ type TimetableItem =
   | { kind: 'break'; scheduleBreak: ScheduleBreak };
 
 const DAY_HEADER_CLASSES: Record<number, string> = {
-  1: 'border-t-[#1769c2] bg-[#eef5ff]',
-  2: 'border-t-[#087f72] bg-[#effbf8]',
-  3: 'border-t-[#b45309] bg-[#fff8eb]',
-  4: 'border-t-[#6941c6] bg-[#f5f1ff]',
-  5: 'border-t-[#b4236d] bg-[#fff1f7]',
-  6: 'border-t-[#475569] bg-[#f1f5f9]',
+  1: 'border-t-[#1769c2] bg-[#eef5ff] dark:border-t-[#60a5fa] dark:bg-[#1e3a5f]',
+  2: 'border-t-[#087f72] bg-[#effbf8] dark:border-t-[#2dd4bf] dark:bg-[#123d3a]',
+  3: 'border-t-[#b45309] bg-[#fff8eb] dark:border-t-[#f59e0b] dark:bg-[#452a0a]',
+  4: 'border-t-[#6941c6] bg-[#f5f1ff] dark:border-t-[#a78bfa] dark:bg-[#34245c]',
+  5: 'border-t-[#b4236d] bg-[#fff1f7] dark:border-t-[#f472b6] dark:bg-[#4a1d3a]',
+  6: 'border-t-[#475569] bg-[#f1f5f9] dark:border-t-[#94a3b8] dark:bg-[#243244]',
 };
 
 const WEEK_DAYS = [
@@ -86,7 +86,7 @@ function TimetableLessonCard({
       : entry.class_name || 'Turma não informada';
 
   return (
-    <article className="rounded-lg border border-[#d8e0ec] bg-white p-2.5 shadow-sm transition hover:border-[#1769c2] hover:shadow-md">
+    <article className="rounded-lg border border-[#d8e0ec] bg-white p-2.5 shadow-sm transition hover:border-[#1769c2] hover:shadow-md dark:border-[#334155] dark:bg-[#18212f] dark:hover:border-[#60a5fa]">
       <div className="flex min-w-0 items-start gap-2">
         <BookOpen
           className="mt-0.5 h-4 w-4 shrink-0 text-[#1769c2]"
@@ -121,7 +121,7 @@ function TimetableBreakCard({ scheduleBreak }: { scheduleBreak: ScheduleBreak })
 
   return (
     <article
-      className="rounded-lg border border-[#f2c46d] bg-[#fff8e7] p-2.5 text-[#8a4b08]"
+      className="rounded-lg border border-[#f2c46d] bg-[#fff8e7] p-2.5 text-[#8a4b08] dark:border-[#b45309] dark:bg-[#451a03] dark:text-[#fcd34d]"
       data-testid="timetable-break"
     >
       <div className="flex items-start gap-2">
@@ -130,7 +130,7 @@ function TimetableBreakCard({ scheduleBreak }: { scheduleBreak: ScheduleBreak })
           <p className="break-words text-xs font-bold leading-4">
             {scheduleBreak.name}
           </p>
-          <p className="mt-1 text-[11px] leading-4 text-[#a15c0a]">
+          <p className="mt-1 text-[11px] leading-4 text-[#a15c0a] dark:text-[#fbbf24]">
             Pausa escolar
           </p>
         </div>
@@ -176,8 +176,8 @@ export default function WeeklyTimetableGrid({
   }
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-[#d8e0ec] bg-white shadow-sm">
-      <header className="flex flex-col gap-3 border-b border-[#e4e8f1] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+    <section className="overflow-hidden rounded-2xl border border-[#d8e0ec] bg-white shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
+      <header className="flex flex-col gap-3 border-b border-[#e4e8f1] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5 dark:border-[#334155]">
         <div>
           <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#1769c2]">
             Semana letiva
@@ -203,12 +203,12 @@ export default function WeeklyTimetableGrid({
       <div className="overflow-x-auto" aria-label="Grade semanal de horários">
         <div className="min-w-[1144px]">
           <div
-            className="grid border-b border-[#d8e0ec] bg-[#f8faff]"
+            className="grid border-b border-[#d8e0ec] bg-[#f8faff] dark:border-[#334155] dark:bg-[#111827]"
             style={{ gridTemplateColumns: '88px repeat(6, minmax(176px, 1fr))' }}
             role="row"
-          >
+            >
             <div
-              className="flex items-center border-r border-[#d8e0ec] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-[#667085]"
+              className="flex items-center border-r border-[#d8e0ec] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-[#667085] dark:border-[#334155]"
               role="columnheader"
             >
               Horário
@@ -217,7 +217,7 @@ export default function WeeklyTimetableGrid({
             {WEEK_DAYS.map(({ value, label }) => (
               <div
                 key={value}
-                className={`border-t-4 border-r border-[#d8e0ec] px-3 py-2.5 last:border-r-0 ${DAY_HEADER_CLASSES[value]}`}
+                className={`border-t-4 border-r border-[#d8e0ec] px-3 py-2.5 last:border-r-0 dark:border-r-[#334155] ${DAY_HEADER_CLASSES[value]}`}
                 role="columnheader"
               >
                 <p className="text-sm font-bold text-[#181c20]">{label}</p>
@@ -237,12 +237,12 @@ export default function WeeklyTimetableGrid({
             timeSlots.map((slot) => (
               <div
                 key={`${slot.startTime}-${slot.endTime}`}
-                className="grid min-h-[122px] border-b border-[#e4e8f1] last:border-b-0"
+                className="grid min-h-[122px] border-b border-[#e4e8f1] last:border-b-0 dark:border-[#334155]"
                 style={{ gridTemplateColumns: '88px repeat(6, minmax(176px, 1fr))' }}
                 role="row"
               >
                 <div
-                  className="border-r border-[#d8e0ec] bg-[#fbfcfe] px-2 py-3 text-center"
+                  className="border-r border-[#d8e0ec] bg-[#fbfcfe] px-2 py-3 text-center dark:border-[#334155] dark:bg-[#111827]"
                   role="rowheader"
                 >
                   <time className="block text-xs font-bold text-[#1769c2]">
@@ -261,17 +261,17 @@ export default function WeeklyTimetableGrid({
                   return (
                     <div
                       key={key}
-                      className="border-r border-[#e4e8f1] bg-white p-2 last:border-r-0"
+                      className="border-r border-[#e4e8f1] bg-white p-2 last:border-r-0 dark:border-[#334155] dark:bg-[#18212f]"
                       role="cell"
                     >
                       {items.length === 0 ? (
-                        <span className="flex min-h-[96px] items-center justify-center text-xs text-[#c0c7d4]">
+                        <span className="flex min-h-[96px] items-center justify-center text-xs text-[#c0c7d4] dark:text-[#64748b]">
                           —
                         </span>
                       ) : (
                         <div className="space-y-2">
                           {items.length > 1 && (
-                            <p className="flex items-center gap-1 text-[10px] font-bold text-[#a15c0a]">
+                            <p className="flex items-center gap-1 text-[10px] font-bold text-[#a15c0a] dark:text-[#fbbf24]">
                               <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
                               {items.length} itens no mesmo horário
                             </p>
@@ -307,8 +307,8 @@ export default function WeeklyTimetableGrid({
         </div>
       </div>
 
-      <footer className="flex items-center gap-2 border-t border-[#e4e8f1] bg-[#fbfcfe] px-4 py-3 text-[11px] text-[#667085] sm:px-5">
-        <Coffee className="h-3.5 w-3.5 text-[#a15c0a]" aria-hidden="true" />
+      <footer className="flex items-center gap-2 border-t border-[#e4e8f1] bg-[#fbfcfe] px-4 py-3 text-[11px] text-[#667085] sm:px-5 dark:border-[#334155] dark:bg-[#111827]">
+        <Coffee className="h-3.5 w-3.5 text-[#a15c0a] dark:text-[#fbbf24]" aria-hidden="true" />
         Pausas e almoço aparecem na mesma linha do horário correspondente.
       </footer>
     </section>

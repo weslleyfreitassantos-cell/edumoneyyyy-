@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Check, Info, Search, Trash2, X } from 'lucide-react';
+import { Check, Info, Loader2, Search, Trash2, X } from 'lucide-react';
 
 import {
   useApplyCurriculumTemplate,
@@ -439,6 +439,7 @@ export default function CurriculumTemplatePanel({
             <button
               type="button"
               onClick={() => void createTemplate()}
+              aria-busy={createMutation.isPending}
               disabled={
                 createMutation.isPending ||
                 !name.trim() ||
@@ -447,10 +448,7 @@ export default function CurriculumTemplatePanel({
               className="mt-4 inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {createMutation.isPending && (
-                <span
-                  className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
-                  aria-hidden="true"
-                />
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
               )}
               {createMutation.isPending ? 'Salvando...' : 'Salvar modelo'}
             </button>

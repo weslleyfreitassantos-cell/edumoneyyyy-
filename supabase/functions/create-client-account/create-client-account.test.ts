@@ -9,7 +9,7 @@ const source = readFileSync(
 describe('create-client-account', () => {
   it('uses the request origin when APP_URL is not configured', () => {
     expect(source).toContain('const resolvedUrl = appUrl || new URL(requestUrl).origin');
-    expect(source).toContain('getAppUrl(requestUrl)');
+    expect(source).toContain('getAppUrl(request.url)');
   });
 
   it('rejects localhost APP_URL in production', () => {
@@ -19,9 +19,10 @@ describe('create-client-account', () => {
     expect(source).toContain('127\\.0\\.0\\.1');
   });
 
-  it('builds the auth confirmation URL from APP_URL', () => {
-    expect(source).toContain('`${getAppUrl(requestUrl)}/auth/confirm`');
-    expect(source).not.toContain('/login');
+  it('builds the administrator login URL from APP_URL', () => {
+    expect(source).toContain('`${getAppUrl(request.url)}/login`');
+    expect(source).toContain('buildClientAdminAccessEmail');
+    expect(source).not.toContain('/auth/confirm');
     expect(source).not.toContain('/reset-password');
   });
 
@@ -30,22 +31,27 @@ describe('create-client-account', () => {
     expect(source).toContain('platform_role');
   });
 
-  it('invites the Auth identity with the institutional confirmation URL', () => {
-    expect(source).toContain('auth.admin.inviteUserByEmail');
-    expect(source).toContain('redirectTo: inviteRedirectUrl');
+  it('creates only the ADMIN identity and sends the access credentials email', () => {
+    expect(source).toContain('auth.admin.createUser');
+    expect(source).toContain('password: temporaryPassword');
+    expect(source).toContain('email_confirm: true');
+    expect(source).toContain('generateSecurePassword');
+    expect(source).toContain('sendResendEmail');
+    expect(source).toContain('client_admin_invitations');
     expect(source).toContain('role: "ADMIN"');
     expect(source).toContain('invitationSent: true');
+    expect(source).toContain('invitationStatus: "SENT"');
     expect(source).toContain('reusedExistingUser: false');
-    expect(source).not.toContain('auth.admin.createUser');
-    expect(source).not.toContain('sendResendEmail');
+    expect(source).not.toContain('role: "SECRETARY"');
+    expect(source).not.toContain('auth.admin.inviteUserByEmail');
   });
 
   it('rolls back the invited identity when account creation fails', () => {
-    expect(source).toContain('invitationError');
-    expect(source).toContain('Nao foi possivel convidar o ADMIN.');
+    expect(source).toContain('userError');
+    expect(source).toContain('Nao foi possivel criar o ADMIN.');
     expect(source).toContain('rollback.createdAuthUserId');
     expect(source).toContain('auth.admin.deleteUser');
     expect(source).toContain('INTERNAL_ERROR');
-    expect(source).not.toContain('RESEND_PROVIDER_ERROR');
+    expect(source).toContain('RESEND_PROVIDER_ERROR');
   });
 });

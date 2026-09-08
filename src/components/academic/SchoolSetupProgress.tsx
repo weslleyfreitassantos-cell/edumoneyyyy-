@@ -107,6 +107,29 @@ function FlowStepRow({
           {step.reason && (
             <p className="mt-2 text-xs font-semibold text-[#667085] dark:text-slate-400">{step.reason}</p>
           )}
+          {step.progress && step.progress.total > 0 && (
+            <div className="mt-3" data-testid={`${step.id}-progress`}>
+              <div className="mb-1 flex items-center justify-between gap-2 text-xs font-semibold text-[#667085] dark:text-slate-400">
+                <span>Disponibilidade cadastrada</span>
+                <span>{step.progress.current} de {step.progress.total}</span>
+              </div>
+              <div
+                className="h-2 overflow-hidden rounded-full bg-[#e4e8f1] dark:bg-slate-700"
+                role="progressbar"
+                aria-label={`Disponibilidade dos professores: ${step.progress.current} de ${step.progress.total}`}
+                aria-valuemin={0}
+                aria-valuemax={step.progress.total}
+                aria-valuenow={step.progress.current}
+              >
+                <div
+                  className="h-full rounded-full bg-[#005bbf] transition-[width] duration-300 ease-out dark:bg-blue-400"
+                  style={{
+                    width: `${Math.min(100, Math.max(0, (step.progress.current / step.progress.total) * 100))}%`,
+                  }}
+                />
+              </div>
+            </div>
+          )}
           {action}
         </div>
       </div>

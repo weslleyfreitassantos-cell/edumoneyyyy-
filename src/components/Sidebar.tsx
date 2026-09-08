@@ -70,7 +70,8 @@ type NavigationSection =
   | 'global'
   | 'account'
   | 'school'
-  | 'personal';
+  | 'personal'
+  | 'teacher';
 
 export interface SidebarNavigationItem {
   id: string;
@@ -107,6 +108,7 @@ const sectionLabels: Record<
   account: 'Conta',
   school: 'Instituição',
   personal: 'Acesso',
+  teacher: 'Operação docente',
 };
 
 const hiddenSectionLabels: readonly NavigationSection[] = [
@@ -224,6 +226,16 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     exactActivePath: true,
   },
   {
+    id: 'student-subjects',
+    label: 'Disciplinas e professores',
+    path: '/dashboard/subjects',
+    section: 'personal',
+    icon: BookOpen,
+    roles: ['student'],
+    activePaths: ['/dashboard/subjects'],
+    exactActivePath: true,
+  },
+  {
     id: 'learning-materials',
     label: 'Materiais e avisos',
     path: '/dashboard/materials',
@@ -232,6 +244,35 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     roles: ['student', 'teacher'],
     activePaths: ['/dashboard/materials'],
     exactActivePath: true,
+  },
+  {
+    id: 'teacher-attendance',
+    label: 'Chamadas',
+    path: '/dashboard/attendance',
+    section: 'teacher',
+    icon: ClipboardCheck,
+    roles: ['teacher'],
+    activePaths: ['/dashboard/attendance'],
+    exactActivePath: true,
+  },
+  {
+    id: 'teacher-grades',
+    label: 'Avaliações e notas',
+    path: '/dashboard/grades',
+    section: 'teacher',
+    icon: BadgeCheck,
+    roles: ['teacher'],
+    activePaths: ['/dashboard/grades'],
+    exactActivePath: true,
+  },
+  {
+    id: 'teacher-term-closing',
+    label: 'Fechamento de período',
+    path: '/dashboard/term-closing',
+    section: 'teacher',
+    icon: FileCheck2,
+    roles: ['teacher'],
+    activePaths: ['/dashboard/term-closing'],
   },
   {
     id: 'library',

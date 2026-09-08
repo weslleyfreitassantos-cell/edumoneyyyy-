@@ -5,7 +5,9 @@ import {
   fireEvent,
   render,
   screen,
+  waitFor,
 } from '@testing-library/react';
+import { useState } from 'react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 import {
   MemoryRouter,
@@ -30,6 +32,9 @@ import {
 import {
   useCurrentInstitution,
 } from '../../hooks/useCurrentInstitution';
+import {
+  useSchoolSetupReadiness,
+} from '../../hooks/useSchoolSetupReadiness';
 
 import AdminPage from './AdminPage';
 
@@ -39,6 +44,10 @@ vi.mock('../../contexts/AuthContext', () => ({
 
 vi.mock('../../hooks/useCurrentInstitution', () => ({
   useCurrentInstitution: vi.fn(),
+}));
+
+vi.mock('../../hooks/useSchoolSetupReadiness', () => ({
+  useSchoolSetupReadiness: vi.fn(),
 }));
 
 vi.mock(
@@ -223,6 +232,9 @@ const mockedUseAuth = vi.mocked(useAuth);
 const mockedUseCurrentInstitution = vi.mocked(
   useCurrentInstitution,
 );
+const mockedUseSchoolSetupReadiness = vi.mocked(
+  useSchoolSetupReadiness,
+);
 
 const baseProfile: Profile = {
   id: 'profile-1',
@@ -298,27 +310,117 @@ function mockAdminState({
   });
 }
 
+function mockReadiness(nextStepId: string | null) {
+  const hrefByStep: Record<string, string> = {
+    'academic-year': '/admin?module=academic-years',
+    terms: '/admin?module=academic-years',
+    subjects: '/admin?module=subjects',
+    'teaching-structure': '/admin?module=academic-policies',
+    shifts: '/admin?module=academic-policies',
+    classes: '/admin?module=classes',
+    'class-subjects': '/admin?module=curriculum',
+    timetable: '/admin?module=timetable&view=automation',
+  };
+
+  const stepIds = Object.keys(hrefByStep);
+  const steps = stepIds.map((id) => ({
+    id,
+    label: id,
+    complete: nextStepId === null || id !== nextStepId,
+    href: hrefByStep[id],
+  }));
+  const blockers = [
+    'academic-setup',
+    'published-timetable',
+    'teachers-configured',
+    'subject-offerings',
+    'teacher-assignments',
+    'teacher-qualifications',
+    'teacher-availability',
+    'active-enrollments',
+  ].map((id) => ({
+    id,
+    label: id,
+    complete: true,
+    description: '',
+    href: '/admin?module=overview',
+  }));
+
+  mockedUseSchoolSetupReadiness.mockReturnValue({
+    data: {
+      institutionId: 'institution-1',
+      academicManagerCount: 1,
+      nextStepId,
+      steps,
+      completedCount: steps.filter((step) => step.complete).length,
+      totalCount: steps.length,
+      progress: 0,
+      configured: nextStepId === null,
+      academicSetupConfigured: nextStepId === null,
+      academicSetupStatus: nextStepId === null ? 'CONFIGURED' : 'IN_PROGRESS',
+      status: nextStepId === null ? 'CONFIGURED' : 'IN_PROGRESS',
+      review: {
+        academicYearName: null,
+        termCount: 0,
+        subjectCount: 0,
+        classCount: 0,
+        curriculumClassCount: 0,
+        timetableClassCount: 0,
+      },
+      publishedVersionId: null,
+      operationalReadiness: {
+        blockers,
+        completedCount: blockers.length,
+        totalCount: blockers.length,
+        progress: 100,
+        ready: true,
+      },
+      optionalSetup: {
+        brandingConfigured: false,
+      },
+    },
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as ReturnType<typeof useSchoolSetupReadiness>);
+}
+
 function renderAdminPage(route = '/admin') {
-  render(
+  function RouterHarness() {
+    const [, setRenderVersion] = useState(0);
+
+    return (
+      <>
+        <button
+          type="button"
+          data-testid="force-rerender"
+          onClick={() => setRenderVersion((version) => version + 1)}
+        />
+        <Routes>
+          <Route
+            path="/admin"
+            element={<AdminPage />}
+          />
+          <Route
+            path="/dashboard"
+            element={<div>Dashboard destino</div>}
+          />
+          <Route
+            path="/login"
+            element={<div>Tela de login</div>}
+          />
+          <Route
+            path="/platform"
+            element={<div>Selecao de instituicao</div>}
+          />
+        </Routes>
+      </>
+    );
+  }
+
+  return render(
     <MemoryRouter initialEntries={[route]}>
-      <Routes>
-        <Route
-          path="/admin"
-          element={<AdminPage />}
-        />
-        <Route
-          path="/dashboard"
-          element={<div>Dashboard destino</div>}
-        />
-        <Route
-          path="/login"
-          element={<div>Tela de login</div>}
-        />
-        <Route
-          path="/platform"
-          element={<div>Selecao de instituicao</div>}
-        />
-      </Routes>
+      <RouterHarness />
     </MemoryRouter>,
   );
 }
@@ -326,6 +428,7 @@ function renderAdminPage(route = '/admin') {
 beforeEach(() => {
   vi.clearAllMocks();
   mockAdminState();
+  mockReadiness('academic-year');
 });
 
 afterEach(() => {
@@ -426,6 +529,29 @@ describe('AdminPage URL module resolution', () => {
     expect(
       screen.getByTestId('classes-tab'),
     ).toBeTruthy();
+  });
+
+  it('avanca para o proximo modulo quando a etapa atual e concluida', async () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    const view = renderAdminPage('/admin?module=academic-years');
+
+    expect(screen.getByTestId('academic-years-tab')).toBeTruthy();
+
+    mockReadiness('subjects');
+    fireEvent.click(screen.getByTestId('force-rerender'));
+
+    await waitFor(() => {
+      expect(screen.getByTestId('subjects-tab')).toBeTruthy();
+    });
+
+    view.unmount();
   });
 
   it('URL invalida volta para Visao geral', () => {

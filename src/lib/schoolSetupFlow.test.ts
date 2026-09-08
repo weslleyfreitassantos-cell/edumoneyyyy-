@@ -58,6 +58,9 @@ function createReadiness({
       ? 'A política não exige disponibilidade cadastrada.'
       : `${id} está configurado.`,
     href: `/admin?module=${id}`,
+    ...(id === 'teacher-availability'
+      ? { progress: { current: 2, total: 3 } }
+      : {}),
   }));
   const completedAcademic = steps.filter((step) => step.complete).length;
   const completedBlockers = blockers.filter((blocker) => blocker.complete).length;
@@ -137,6 +140,15 @@ describe('buildSchoolSetupFlow', () => {
 
   it('recomenda matrículas quando os professores estão prontos', () => {
     expect(nextId({ incompleteBlockers: ['active-enrollments'] })).toBe('active-enrollments');
+  });
+
+  it('preserva o progresso de disponibilidade no fluxo operacional', () => {
+    const flow = buildSchoolSetupFlow(createReadiness({ incompleteBlockers: ['teacher-availability'] }));
+    const availability = flow.sections
+      .flatMap((section) => section.steps)
+      .find((step) => step.id === 'teacher-availability');
+
+    expect(availability?.progress).toEqual({ current: 2, total: 3 });
   });
 
   it('recomenda revisar e publicar uma grade em rascunho', () => {

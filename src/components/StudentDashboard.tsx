@@ -10,7 +10,6 @@ import {
   Mail,
   School,
   UserRound,
-  UsersRound,
 } from 'lucide-react';
 
 import { useLocation } from 'react-router-dom';
@@ -26,7 +25,10 @@ import { useStudentRegistrationCompletion } from '../hooks/useRegistrationComple
 import { normalizeAcademicShift } from '../lib/academic/academicShifts';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 
-import type { StudentDashboardOffering } from '../services/studentDashboardService';
+import type {
+  StudentDashboardData,
+  StudentDashboardOffering,
+} from '../services/studentDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import StudentReportCard from './academic/StudentReportCard';
@@ -90,7 +92,7 @@ function DetailCard({
   value: string | number;
 }) {
   return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
       <div className="flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
           {icon}
@@ -115,7 +117,7 @@ function OfferingCard({
   offering: StudentDashboardOffering;
 }) {
   return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-[10px] font-bold uppercase tracking-wide text-[#005bbf]">
@@ -168,6 +170,84 @@ function OfferingCard({
         </div>
       </dl>
     </article>
+  );
+}
+
+function StudentSubjectsView({
+  offerings,
+  enrollment,
+}: {
+  offerings: StudentDashboardOffering[];
+  enrollment: StudentDashboardData['activeEnrollment'];
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-6"
+      id="student-subjects-main"
+    >
+      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+              Período atual
+            </p>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20]">
+              Disciplinas e professores
+            </h1>
+            <p className="mt-2 text-sm text-[#727785]">
+              Consulte as disciplinas e os professores da sua turma no período vigente.
+            </p>
+          </div>
+
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-[#1e3a5f]">
+            <BookOpen className="h-6 w-6" aria-hidden="true" />
+          </div>
+        </div>
+
+        {enrollment && (
+          <div className="mt-5 rounded-lg border border-[#dfe3e8] bg-[#f8faff] px-4 py-3 text-sm dark:border-[#334155] dark:bg-[#111827]">
+            <p className="font-semibold text-[#181c20]">
+              {enrollment.class_name}
+            </p>
+            <p className="mt-1 text-xs text-[#727785]">
+              {enrollment.academic_year_name}
+              {enrollment.shift ? ` • ${enrollment.shift}` : ''}
+            </p>
+          </div>
+        )}
+      </section>
+
+      {offerings.length === 0 ? (
+        <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-8 text-center text-sm text-[#727785] dark:border-[#475569] dark:bg-[#18212f]">
+          Nenhuma disciplina encontrada para o período atual.
+        </div>
+      ) : (
+        <section aria-labelledby="student-subjects-heading">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <h2
+              id="student-subjects-heading"
+              className="text-lg font-bold text-[#181c20]"
+            >
+              Disciplinas cadastradas
+            </h2>
+            <span className="text-sm text-[#727785]">
+              {offerings.length}{' '}
+              {offerings.length === 1 ? 'disciplina' : 'disciplinas'}
+            </span>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {offerings.map((offering) => (
+              <div key={offering.id}>
+                <OfferingCard offering={offering} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </motion.div>
   );
 }
 
@@ -383,6 +463,15 @@ export default function StudentDashboard() {
     );
   }
 
+  if (location.pathname === '/dashboard/subjects') {
+    return (
+      <StudentSubjectsView
+        offerings={offerings}
+        enrollment={activeEnrollment}
+      />
+    );
+  }
+
   const firstName =
     getFirstName(profile.full_name);
 
@@ -470,16 +559,6 @@ export default function StudentDashboard() {
           }
         />
 
-        <DetailCard
-          icon={
-            <BookOpen
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Disciplinas do período atual"
-          value={offerings.length}
-        />
       </section>
 
       <section className="grid gap-4 lg:grid-cols-2">
@@ -595,33 +674,6 @@ export default function StudentDashboard() {
         studentId={student.id}
       />
 
-      <section>
-        <div className="mb-4 flex items-center gap-2">
-          <UsersRound
-            className="h-5 w-5 text-[#005bbf]"
-            aria-hidden="true"
-          />
-          <h2 className="text-lg font-bold text-[#181c20]">
-            Disciplinas e professores do período atual
-          </h2>
-        </div>
-
-        {offerings.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-8 text-center text-sm text-[#727785]">
-            Nenhuma disciplina encontrada para o período atual.
-          </div>
-        ) : (
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {offerings.map((offering) => (
-              <div key={offering.id}>
-                <OfferingCard
-                  offering={offering}
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
     </motion.div>
   );
 }

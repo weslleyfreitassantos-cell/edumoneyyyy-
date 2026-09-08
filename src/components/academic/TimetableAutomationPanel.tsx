@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Loader2 } from 'lucide-react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import {
@@ -508,8 +509,10 @@ export default function TimetableAutomationPanel({
             type="button"
             onClick={() => void generate()}
             disabled={!selectedYearId || generateMutation.isPending}
-            className="min-h-10 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"
+            aria-busy={generateMutation.isPending}
+            className="inline-flex min-h-10 items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white hover:bg-[#004a9b] disabled:cursor-not-allowed disabled:opacity-50"
           >
+            {generateMutation.isPending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
             {generateMutation.isPending ? 'Gerando...' : 'Gerar grade automaticamente'}
           </button>
         </div>

@@ -731,7 +731,16 @@ export default function AccountPage() {
                         title="Excluir"
                         className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-red-300 text-red-700 hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-60"
                       >
-                        <Trash2 className="h-4 w-4" />
+                        {deleteInstitution.isPending &&
+                        deleteInstitution.variables?.institutionId ===
+                          institution.id ? (
+                          <Loader2
+                            className="h-4 w-4 animate-spin"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <Trash2 className="h-4 w-4" />
+                        )}
                       </button>
                     </div>
                   </div>

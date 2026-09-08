@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
+import { Loader2 } from 'lucide-react';
 
 import { useAcademicYears } from '../../hooks/useAcademicStructure';
 import { useAcademicShiftSettings } from '../../hooks/useAcademicTermClosing';
@@ -16,7 +17,10 @@ import {
   getAcademicShiftLabel,
   type AcademicShift,
 } from '../../lib/academic/academicShifts';
-import { ACADEMIC_LEVEL_OPTIONS } from '../../lib/academic/academicLevels';
+import {
+  ACADEMIC_LEVEL_OPTIONS,
+  getAcademicLevelLabel,
+} from '../../lib/academic/academicLevels';
 import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 
 interface ClassAutomationPanelProps {
@@ -27,7 +31,6 @@ interface ClassAutomationPanelProps {
 
 interface FormState {
   academicYearId: string;
-  baseName: string;
   count: string;
   gradeLevel: string;
   shift: string;
@@ -40,7 +43,6 @@ type AutomationMode = 'preset' | 'single';
 
 const defaultForm: FormState = {
   academicYearId: '',
-  baseName: '',
   count: '2',
   gradeLevel: '',
   shift: '',
@@ -107,11 +109,15 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
         ).flatMap((definition) => definition.names);
       }
 
-      return buildClassBatchNames(formData.baseName, count);
+      const baseName = formData.gradeLevel
+        ? getAcademicLevelLabel(formData.gradeLevel)
+        : '';
+
+      return buildClassBatchNames(baseName, count);
     } catch {
       return [];
     }
-  }, [count, formData.baseName, mode, presetCounts]);
+  }, [count, formData.gradeLevel, mode, presetCounts]);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]): void {
     setFormData((current) => ({ ...current, [key]: value }));
@@ -137,7 +143,7 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
         : await createMutation.mutateAsync({
           institutionId,
           academicYearId: formData.academicYearId,
-          baseName: formData.baseName,
+          baseName: getAcademicLevelLabel(formData.gradeLevel),
           count,
           gradeLevel: formData.gradeLevel,
           shift: formData.shift,
@@ -243,16 +249,10 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
               </div>
             </section>
           ) : (
-            <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_9rem]">
-              <div>
-                <label htmlFor="class-automation-base-name" className="block text-sm font-medium text-gray-700">Nome-base</label>
-                <input id="class-automation-base-name" value={formData.baseName} onChange={(event) => update('baseName', event.target.value)} placeholder="Ex.: 1º ano" className="mt-1 w-full rounded-lg border px-3 py-2" required />
-                <p className="mt-1 text-xs text-gray-500">Com várias turmas, serão gerados sufixos A, B, C... Use {'{letra}'} para controlar o padrão.</p>
-              </div>
-              <div>
-                <label htmlFor="class-automation-count" className="block text-sm font-medium text-gray-700">Quantidade</label>
-                <input id="class-automation-count" type="number" min="1" max="26" step="1" value={formData.count} onChange={(event) => update('count', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" required />
-              </div>
+            <div className="max-w-xs">
+              <label htmlFor="class-automation-count" className="block text-sm font-medium text-gray-700">Quantidade de turmas</label>
+              <input id="class-automation-count" type="number" min="1" max="26" step="1" value={formData.count} onChange={(event) => update('count', event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2" required />
+              <p className="mt-1 text-xs text-gray-500">As turmas serão identificadas pela série selecionada, com sufixos A, B, C quando necessário.</p>
             </div>
           )}
 
@@ -319,13 +319,16 @@ export default function ClassAutomationPanel({ institutionId, onClose, onComplet
                 {previewNames.map((name) => <li key={name}>• {name}</li>)}
               </ul>
             ) : (
-              <p className="mt-2 text-sm text-gray-500">Informe o nome e a quantidade de turmas.</p>
+              <p className="mt-2 text-sm text-gray-500">Selecione a série e informe a quantidade de turmas.</p>
             )}
           </section>
 
           <div className="flex justify-end gap-2 border-t pt-4">
             <button type="button" onClick={onClose} disabled={isPending} className="rounded-lg border px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 disabled:opacity-50">Cancelar</button>
-            <button type="submit" disabled={isPending || years.length === 0 || previewNames.length === 0} className="rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50">{isPending ? 'Criando...' : 'Criar turmas'}</button>
+            <button type="submit" disabled={isPending || years.length === 0 || previewNames.length === 0} className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-medium text-white hover:bg-[#1a73e8] disabled:cursor-not-allowed disabled:opacity-50">
+              {isPending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+              {isPending ? 'Criando...' : 'Criar turmas'}
+            </button>
           </div>
         </form>
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 
 import SpreadsheetImportModal from './SpreadsheetImportModal';
 import type { AcademicYearRow } from '../services/academicStructureService';
@@ -24,6 +25,7 @@ import {
   downloadSpreadsheetTemplate,
   readSpreadsheetFile,
 } from '../services/spreadsheetImportService';
+import { invalidateSchoolSetupReadiness } from '../hooks/useSchoolSetupReadiness';
 
 interface StudentSpreadsheetImportModalProps {
   institutionId: string;
@@ -70,6 +72,7 @@ function PreviewTable({ previews }: { previews: Array<ImportPreview<StudentImpor
 }
 
 export default function StudentSpreadsheetImportModal({ institutionId, years, classes, onClose, onImported }: StudentSpreadsheetImportModalProps) {
+  const queryClient = useQueryClient();
   const yearOptions = useMemo(
     () => sortAcademicYearsForSelection(years),
     [years],
@@ -148,6 +151,7 @@ export default function StudentSpreadsheetImportModal({ institutionId, years, cl
       const imported = await importStudents(institutionId, validPreviews, setProgress);
       setResult(imported);
       onImported?.(imported);
+      void invalidateSchoolSetupReadiness(queryClient, institutionId).catch(() => undefined);
     } finally {
       setIsImporting(false);
     }

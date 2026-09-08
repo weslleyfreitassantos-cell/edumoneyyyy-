@@ -112,6 +112,21 @@ const timetableEntry = {
   teacher_name: 'Prof. João',
 };
 
+const currentOffering = {
+  id: 'offering-1',
+  subject_id: 'subject-1',
+  subject_name: 'Matemática',
+  subject_code: 'MAT',
+  workload: 5,
+  teacher_profile_id: 'teacher-1',
+  teacher_name: 'Prof. João',
+  teacher_email: 'joao@example.com',
+  term_id: 'term-1',
+  term_name: '1º Bimestre',
+  term_start_date: '2026-02-01',
+  term_end_date: '2026-04-30',
+};
+
 function mockDefaultState() {
   vi.mocked(useAuth).mockReturnValue({
     profile: {
@@ -215,5 +230,47 @@ describe('StudentDashboard', () => {
 
     expect(screen.getByTestId('timetable-break')).toBeTruthy();
     expect(screen.getByText('Pausa escolar')).toBeTruthy();
+  });
+
+  it('move disciplinas e professores para a tela própria do menu do aluno', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: { ...dashboard, offerings: [currentOffering] },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard/subjects']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.getByRole('heading', { name: 'Disciplinas e professores' }),
+    ).toBeTruthy();
+    expect(screen.getByText('Matemática')).toBeTruthy();
+    expect(screen.getByText('Prof. João')).toBeTruthy();
+    expect(screen.queryByText('Área do aluno')).toBeNull();
+  });
+
+  it('remove disciplinas e professores do dashboard principal', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: { ...dashboard, offerings: [currentOffering] },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.queryByText('Disciplinas e professores do período atual'),
+    ).toBeNull();
+    expect(screen.queryByText('Disciplinas do período atual')).toBeNull();
   });
 });

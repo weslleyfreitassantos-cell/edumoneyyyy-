@@ -19,6 +19,10 @@ export interface SchoolSetupFlowStep {
   href: string;
   actionLabel: string;
   dependencies: string[];
+  progress?: {
+    current: number;
+    total: number;
+  };
 }
 
 export interface SchoolSetupFlowSection {
@@ -56,6 +60,10 @@ interface StepDefinition {
   dependencies?: string[];
   complete: boolean;
   optional?: boolean;
+  progress?: {
+    current: number;
+    total: number;
+  };
 }
 
 const defaultResponsibleUserHref = '/admin?module=school-users';
@@ -175,6 +183,7 @@ function definitionFromBlocker(
     actionLabel,
     dependencies,
     complete: blockerComplete(readiness, id),
+    progress: blocker?.progress,
   };
 }
 
@@ -238,6 +247,7 @@ function resolveStep(
       definition.actionLabel ??
       (firstDependency ? `Configurar ${firstDependency.label.toLowerCase()}` : 'Configurar'),
     dependencies: definition.dependencies ?? [],
+    progress: definition.progress,
   };
 }
 
