@@ -6,7 +6,7 @@ import {
   Star,
   X,
 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type Subject =
   | 'Todos'
@@ -96,31 +96,125 @@ function storeUrl(
     : `https://lista.mercadolivre.com.br/${encoded.replace(/%20/g, '-')}`;
 }
 
-function coverUrl(isbn: string): string {
-  return `https://books.google.com/books/content?vid=ISBN:${isbn}&printsec=frontcover&img=1&zoom=1&source=gbs_api`;
+function openLibraryCoverUrl(isbn: string): string {
+  return `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`;
 }
 
+interface GoogleBooksResponse {
+  items?: Array<{
+    volumeInfo?: {
+      imageLinks?: {
+        thumbnail?: string;
+        smallThumbnail?: string;
+      };
+    };
+  }>;
+}
+
+function googleBooksCoverUrl(data: GoogleBooksResponse): string | null {
+  const imageLinks = data.items?.find(
+    (item) => item.volumeInfo?.imageLinks,
+  )?.volumeInfo?.imageLinks;
+  const url = imageLinks?.thumbnail ?? imageLinks?.smallThumbnail;
+
+  return url?.replace(/^http:\/\//, 'https://') ?? null;
+}
+
+function CoverPlaceholder({
+  book,
+  loading = false,
+}: {
+  book: BookRecommendation;
+  loading?: boolean;
+}) {
+  return (
+    <div
+      className="grid h-full place-items-center gap-2 p-3 text-center text-[#005bbf]"
+      role={loading ? 'status' : undefined}
+      aria-label={loading ? `Carregando capa de ${book.title}` : undefined}
+    >
+      <BookOpen className="h-8 w-8" aria-hidden="true" />
+      <span className="text-[10px] font-bold leading-tight">
+        {book.title}
+      </span>
+    </div>
+  );
+}
+
+type CoverSource = 'loading' | 'google' | 'open-library' | 'fallback';
+
 function BookCover({ book }: { book: BookRecommendation }) {
-  const [hasFailed, setHasFailed] = useState(false);
+  const [source, setSource] = useState<CoverSource>('loading');
+  const [googleUrl, setGoogleUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    let cancelled = false;
+
+    setSource('loading');
+    setGoogleUrl(null);
+
+    fetch(
+      `https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn}`,
+      { signal: controller.signal },
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Google Books metadata unavailable');
+        }
+
+        return response.json() as Promise<GoogleBooksResponse>;
+      })
+      .then((data) => {
+        if (!cancelled) {
+          const coverUrl = googleBooksCoverUrl(data);
+
+          setGoogleUrl(coverUrl);
+          setSource(coverUrl ? 'google' : 'open-library');
+        }
+      })
+      .catch((error: unknown) => {
+        if (
+          !cancelled &&
+          !(error instanceof DOMException && error.name === 'AbortError')
+        ) {
+          setSource('open-library');
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, [book.isbn]);
+
+  const googleCover = source === 'google';
+  const imageUrl = googleCover
+    ? undefined
+    : source === 'open-library'
+      ? openLibraryCoverUrl(book.isbn)
+      : undefined;
+
+  function handleImageError(): void {
+    setSource((current) =>
+      current === 'google' ? 'open-library' : 'fallback',
+    );
+  }
 
   return (
     <div className="h-48 w-32 shrink-0 overflow-hidden rounded-lg bg-blue-50 shadow-sm dark:bg-blue-950/40 sm:h-44 sm:w-32">
-      {hasFailed ? (
-        <div className="grid h-full place-items-center gap-2 p-3 text-center text-[#005bbf]">
-          <BookOpen className="h-8 w-8" aria-hidden="true" />
-          <span className="text-[10px] font-bold leading-tight">
-            {book.title}
-          </span>
-        </div>
+      {source === 'loading' || source === 'fallback' ? (
+        <CoverPlaceholder book={book} loading={source === 'loading'} />
       ) : (
         <img
-          src={coverUrl(book.isbn)}
+          src={googleCover ? googleUrl ?? '' : imageUrl ?? ''}
           alt={`Capa de ${book.title}`}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"
-          onError={() => setHasFailed(true)}
+          data-cover-source={source}
+          onError={handleImageError}
         />
       )}
     </div>
