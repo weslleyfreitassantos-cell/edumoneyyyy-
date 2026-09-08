@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import type { FormEvent } from 'react';
 import { Cable, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -20,7 +21,7 @@ export default function AccessControlTab() {
     void supabase.from('access_devices').select('id, name, provider, model, status').eq('institution_id', institutionId).order('name').then(({ data }) => setDevices((data ?? []) as Device[]));
   }, [institutionId]);
 
-  async function connect(event: React.FormEvent) {
+  async function connect(event: FormEvent) {
     event.preventDefault();
     const token = crypto.randomUUID().replaceAll('-', '');
     const { data, error } = await supabase.from('access_devices').insert({ institution_id: institutionId, name: form.name, provider: form.provider, model: form.model, endpoint: `/functions/v1/access-ingest/${token}`, status: 'OFFLINE' }).select('id, name, provider, model, status').single();

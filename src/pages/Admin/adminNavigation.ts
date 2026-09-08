@@ -12,6 +12,7 @@ export type AdminModuleId =
   | 'teachers'
   | 'guardians'
   | 'secretaries'
+  | 'directors'
   | 'email'
   | 'academic-years'
   | 'classes'
