@@ -519,7 +519,7 @@ export default function StudentsTab() {
           studentsQuery.isLoading ||
           enrollmentsQuery.isLoading
         }
-        actionCellClassName="min-w-[136px] align-top whitespace-nowrap"
+        actionCellClassName="min-w-[136px] align-middle whitespace-nowrap"
         actionGroupClassName="md:flex-nowrap"
         onAdd={openFullWizard}
         emptyMessage={
