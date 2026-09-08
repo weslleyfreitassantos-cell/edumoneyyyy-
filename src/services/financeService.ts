@@ -15,6 +15,19 @@ export interface InvoiceRow {
 
 export interface FinanceSummary { received: number; receivable: number; overdue: number; delinquency: number; }
 
+export interface FinancialContractInput {
+  institutionId: string;
+  studentId: string;
+  academicYearId: string;
+  responsibleProfileId: string;
+  monthlyAmountCents: number;
+  enrollmentFeeCents: number;
+  installmentCount: number;
+  firstDueDate: string;
+  dueDay: number;
+  notes?: string;
+}
+
 const today = () => new Date().toISOString().slice(0, 10);
 
 export const financeService = {
@@ -32,6 +45,22 @@ export const financeService = {
   },
   async registerMockPayment(invoiceId: string, institutionId: string, amount: number): Promise<void> {
     const { error } = await supabase.from('payments').insert({ invoice_id: invoiceId, institution_id: institutionId, provider: 'MOCK', method: 'MANUAL', amount, status: 'PAID', paid_at: new Date().toISOString(), notes: 'Pagamento simulado — ambiente de homologação' });
+    if (error) throw error;
+  },
+  async createContract(input: FinancialContractInput): Promise<void> {
+    const { error } = await supabase.rpc('create_financial_contract_with_invoices', {
+      p_institution_id: input.institutionId,
+      p_student_id: input.studentId,
+      p_enrollment_id: null,
+      p_academic_year_id: input.academicYearId,
+      p_financial_responsible_profile_id: input.responsibleProfileId,
+      p_base_amount: input.monthlyAmountCents * input.installmentCount,
+      p_enrollment_fee_amount: input.enrollmentFeeCents,
+      p_installment_count: input.installmentCount,
+      p_first_due_date: input.firstDueDate,
+      p_default_due_day: input.dueDay,
+      p_notes: input.notes || null,
+    });
     if (error) throw error;
   },
 };
