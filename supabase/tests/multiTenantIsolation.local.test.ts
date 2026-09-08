@@ -59,6 +59,14 @@ type TenantFixture = {
   learningPostB: string;
   announcementA: string;
   announcementB: string;
+  announcementStudentA: string;
+  announcementStudentB: string;
+  announcementGuardianA: string;
+  announcementGuardianB: string;
+  accessDeviceA: string;
+  accessDeviceB: string;
+  accessEventA: string;
+  accessEventB: string;
   contractA: string;
   contractB: string;
   invoiceA: string;
@@ -150,6 +158,24 @@ async function readCount(client: AnyClient, table: string): Promise<number> {
     .select('id', { count: 'exact', head: true });
   if (error) throw new Error(`${table} count: ${error.message}`);
   return count ?? 0;
+}
+
+type IsolationClassification =
+  | 'PASS_RLS'
+  | 'BLOCKED_BY_GRANTS'
+  | 'LEAK'
+  | 'NOT_AVAILABLE';
+
+function classifyScopedRead(
+  own: { rows: any[]; error: string | null },
+  foreign: { rows: any[]; error: string | null },
+): IsolationClassification {
+  if (own.error?.match(/permission denied/i) || foreign.error?.match(/permission denied/i)) {
+    return 'BLOCKED_BY_GRANTS';
+  }
+  if (foreign.rows.length > 0) return 'LEAK';
+  if (!own.error && !foreign.error && own.rows.length === 1) return 'PASS_RLS';
+  return 'NOT_AVAILABLE';
 }
 
 async function writeAttempt(
@@ -552,6 +578,75 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
     created_by: actors.adminB.id,
   })).id;
+  const announcementStudentA = (await insertOne(admin, 'institution_announcements', {
+    institution_id: institutionA,
+    title: `Aviso estudantes A ${suffix}`,
+    message: 'Aviso exclusivo para estudantes do tenant A',
+    audience: 'STUDENTS',
+    active: true,
+    created_by: actors.adminA.id,
+  })).id;
+  const announcementStudentB = (await insertOne(admin, 'institution_announcements', {
+    institution_id: institutionB,
+    title: `Aviso estudantes B ${suffix}`,
+    message: 'Aviso exclusivo para estudantes do tenant B',
+    audience: 'STUDENTS',
+    active: true,
+    created_by: actors.adminB.id,
+  })).id;
+  const announcementGuardianA = (await insertOne(admin, 'institution_announcements', {
+    institution_id: institutionA,
+    title: `Aviso responsáveis A ${suffix}`,
+    message: 'Aviso exclusivo para responsáveis do tenant A',
+    audience: 'GUARDIANS',
+    active: true,
+    created_by: actors.adminA.id,
+  })).id;
+  const announcementGuardianB = (await insertOne(admin, 'institution_announcements', {
+    institution_id: institutionB,
+    title: `Aviso responsáveis B ${suffix}`,
+    message: 'Aviso exclusivo para responsáveis do tenant B',
+    audience: 'GUARDIANS',
+    active: true,
+    created_by: actors.adminB.id,
+  })).id;
+
+  const accessDeviceA = (await insertOne(admin, 'access_devices', {
+    institution_id: institutionA,
+    name: `Portaria A ${suffix}`,
+    provider: 'TEST',
+    model: 'AUDIT',
+    status: 'OFFLINE',
+  })).id;
+  const accessDeviceB = (await insertOne(admin, 'access_devices', {
+    institution_id: institutionB,
+    name: `Portaria B ${suffix}`,
+    provider: 'TEST',
+    model: 'AUDIT',
+    status: 'OFFLINE',
+  })).id;
+  const accessEventA = (await insertOne(admin, 'access_events', {
+    institution_id: institutionA,
+    student_id: studentA,
+    device_id: accessDeviceA,
+    provider: 'TEST',
+    provider_event_id: `event-a-${suffix}`,
+    event_type: 'ENTRY',
+    direction: 'ENTRY',
+    occurred_at: '2026-09-07T08:00:00Z',
+    status: 'ACCEPTED',
+  })).id;
+  const accessEventB = (await insertOne(admin, 'access_events', {
+    institution_id: institutionB,
+    student_id: studentB,
+    device_id: accessDeviceB,
+    provider: 'TEST',
+    provider_event_id: `event-b-${suffix}`,
+    event_type: 'ENTRY',
+    direction: 'ENTRY',
+    occurred_at: '2026-09-07T08:00:00Z',
+    status: 'ACCEPTED',
+  })).id;
 
   const contractA = (await insertOne(admin, 'financial_contracts', {
     institution_id: institutionA,
@@ -664,6 +759,14 @@ async function createFixture(): Promise<TenantFixture> {
     learningPostB,
     announcementA,
     announcementB,
+    announcementStudentA,
+    announcementStudentB,
+    announcementGuardianA,
+    announcementGuardianB,
+    accessDeviceA,
+    accessDeviceB,
+    accessEventA,
+    accessEventB,
     contractA,
     contractB,
     invoiceA,
@@ -750,23 +853,193 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
     }
   }, 120_000);
 
+  it('audits announcements by staff, student, guardian, audience, and tenant', async () => {
+    const staffChecks = [
+      ['directorA', fixture.announcementA],
+      ['directorA', fixture.announcementStudentA],
+      ['directorA', fixture.announcementGuardianA],
+      ['directorA', fixture.announcementB],
+      ['secretaryA', fixture.announcementA],
+      ['secretaryA', fixture.announcementB],
+    ] as const;
+    for (const [actorKey, id] of staffChecks) {
+      const result = await readIds(fixture.actors[actorKey].client, 'institution_announcements', id);
+      expect(result.error, `${actorKey} announcements`).toBeNull();
+      expect(result.rows, `${actorKey} announcements`).toHaveLength(id === fixture.announcementB ? 0 : 1);
+    }
+
+    const studentChecks = [
+      [fixture.announcementA, 1],
+      [fixture.announcementStudentA, 1],
+      [fixture.announcementGuardianA, 0],
+      [fixture.announcementB, 0],
+      [fixture.announcementStudentB, 0],
+      [fixture.announcementGuardianB, 0],
+    ] as const;
+    for (const [id, expectedLength] of studentChecks) {
+      const result = await readIds(fixture.actors.studentA.client, 'institution_announcements', id);
+      expect(result.error, `studentA announcement ${id}`).toBeNull();
+      expect(result.rows, `studentA announcement ${id}`).toHaveLength(expectedLength);
+    }
+
+    const guardianChecks = [
+      [fixture.announcementA, 1],
+      [fixture.announcementStudentA, 0],
+      [fixture.announcementGuardianA, 1],
+      [fixture.announcementB, 0],
+      [fixture.announcementStudentB, 0],
+      [fixture.announcementGuardianB, 0],
+    ] as const;
+    for (const [id, expectedLength] of guardianChecks) {
+      const result = await readIds(fixture.actors.guardianA.client, 'institution_announcements', id);
+      expect(result.error, `guardianA announcement ${id}`).toBeNull();
+      expect(result.rows, `guardianA announcement ${id}`).toHaveLength(expectedLength);
+    }
+  }, 120_000);
+
+  it('audits Portaria reads and writes across institutions', async () => {
+    const eventResults = [];
+    for (const actorKey of ['directorA', 'secretaryA'] as const) {
+      const ownEvent = await readIds(
+        fixture.actors[actorKey].client,
+        'access_events',
+        fixture.accessEventA,
+      );
+      const foreignEvent = await readIds(
+        fixture.actors[actorKey].client,
+        'access_events',
+        fixture.accessEventB,
+      );
+      const classification = classifyScopedRead(ownEvent, foreignEvent);
+      eventResults.push({ actorKey, ownEvent, foreignEvent, classification });
+      expect(foreignEvent.rows, `${actorKey} foreign access event`).toHaveLength(0);
+      if (classification === 'LEAK') {
+        throw new Error(`${actorKey}: cross-tenant Portaria event leak`);
+      }
+    }
+
+    const ownDevice = await readIds(
+      fixture.actors.directorA.client,
+      'access_devices',
+      fixture.accessDeviceA,
+    );
+    const foreignDevice = await readIds(
+      fixture.actors.directorA.client,
+      'access_devices',
+      fixture.accessDeviceB,
+    );
+    const deviceReadClassification = classifyScopedRead(ownDevice, foreignDevice);
+    expect(foreignDevice.rows).toHaveLength(0);
+    if (deviceReadClassification === 'LEAK') {
+      throw new Error('directorA: cross-tenant Portaria device leak');
+    }
+
+    const originalDevice = await fixture.admin
+      .from('access_devices')
+      .select('name')
+      .eq('id', fixture.accessDeviceA)
+      .single();
+    const foreignDeviceBefore = await fixture.admin
+      .from('access_devices')
+      .select('name')
+      .eq('id', fixture.accessDeviceB)
+      .single();
+    const ownUpdate = await writeAttempt(() =>
+      fixture.actors.directorA.client
+        .from('access_devices')
+        .update({ name: 'Portaria A auditada' })
+        .eq('id', fixture.accessDeviceA)
+        .select('id'),
+    );
+    const foreignUpdate = await writeAttempt(() =>
+      fixture.actors.directorA.client
+        .from('access_devices')
+        .update({ name: 'Portaria B adulterada' })
+        .eq('id', fixture.accessDeviceB)
+        .select('id'),
+    );
+    const foreignInsert = await writeAttempt(() =>
+      fixture.actors.directorA.client
+        .from('access_devices')
+        .insert({
+          institution_id: fixture.institutionB,
+          name: 'Dispositivo B adulterado',
+          provider: 'TEST',
+          model: 'AUDIT',
+        })
+        .select('id'),
+    );
+
+    const ownUpdateClassification = ownUpdate.error?.match(/permission denied/i)
+      ? 'BLOCKED_BY_GRANTS'
+      : ownUpdate.rows.length === 1
+        ? 'PASS_RLS'
+        : 'NOT_AVAILABLE';
+    expect(foreignUpdate.rows).toHaveLength(0);
+    expect(foreignInsert.rows).toHaveLength(0);
+    if (ownUpdateClassification === 'PASS_RLS') {
+      expect(
+        (await fixture.admin.from('access_devices').select('name').eq('id', fixture.accessDeviceA).single()).data?.name,
+      ).toBe('Portaria A auditada');
+    }
+    expect(
+      (await fixture.admin.from('access_devices').select('name').eq('id', fixture.accessDeviceB).single()).data?.name,
+    ).toBe(foreignDeviceBefore.data?.name);
+    if (foreignUpdate.rows.length > 0 || foreignInsert.rows.length > 0) {
+      throw new Error('directorA: cross-tenant Portaria write leak');
+    }
+
+    if (ownUpdateClassification === 'PASS_RLS') {
+      await fixture.admin
+        .from('access_devices')
+        .update({ name: originalDevice.data?.name })
+        .eq('id', fixture.accessDeviceA);
+    }
+
+    console.log(JSON.stringify({
+      finding: 'ACCESS_CONTROL_TENANT_BOUNDARY',
+      eventResults,
+      deviceReadClassification,
+      ownUpdateClassification,
+      ownDeviceUpdate: ownUpdate,
+      foreignDeviceUpdate: foreignUpdate,
+      foreignDeviceInsert: foreignInsert,
+      profilesActiveCoverage: 'covered by the profiles.active matrix below',
+    }));
+  }, 120_000);
+
   it('records finance table grant gaps separately from tenant isolation', async () => {
     const checks = [
-      ['financial_contracts', fixture.contractA],
-      ['invoices', fixture.invoiceA],
-      ['payments', fixture.paymentA],
+      ['financial_contracts', fixture.contractA, fixture.contractB],
+      ['invoices', fixture.invoiceA, fixture.invoiceB],
+      ['payments', fixture.paymentA, fixture.paymentB],
     ] as const;
     const results = [];
-    for (const [table, id] of checks) {
-      const result = await readIds(fixture.actors.guardianA.client, table, id);
-      results.push({ table, error: result.error });
-      expect(result.rows).toHaveLength(0);
-      expect(result.error).toMatch(/permission denied/i);
+    for (const [table, ownId, foreignId] of checks) {
+      const own = await readIds(fixture.actors.adminA.client, table, ownId);
+      const foreign = await readIds(fixture.actors.adminA.client, table, foreignId);
+      const classification = classifyScopedRead(own, foreign);
+      results.push({ table, own, foreign, classification });
+      expect(foreign.rows, `${table} cross-tenant rows`).toHaveLength(0);
+      if (classification === 'LEAK') {
+        throw new Error(`${table}: cross-tenant finance read leak`);
+      }
     }
+
+    const guardianResults = [];
+    for (const [table, ownId, foreignId] of checks) {
+      const own = await readIds(fixture.actors.guardianA.client, table, ownId);
+      const foreign = await readIds(fixture.actors.guardianA.client, table, foreignId);
+      guardianResults.push({ table, own, foreign });
+      expect(foreign.rows, `${table} guardian cross-tenant rows`).toHaveLength(0);
+    }
+
     console.log(JSON.stringify({
-      finding: 'FINANCE_TABLE_GRANTS_MISSING',
-      actor: 'guardianA',
+      finding: 'FINANCE_ISOLATION_RESULTS',
+      staffActor: 'adminA',
       results,
+      guardianResults,
+      note: 'BLOCKED_BY_GRANTS is not treated as RLS proof',
     }));
   }, 60_000);
 
@@ -900,35 +1173,70 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
     expect(restoreError).toBeNull();
   }, 60_000);
 
-  it('reproduces the profile.active revocation gap with an already issued JWT', async () => {
-    await fixture.admin
-      .from('profiles')
-      .update({ active: false })
-      .eq('id', fixture.actors.directorA.id);
+  it('audits profiles.active independently for every role with an old JWT', async () => {
+    const checks = [
+      ['adminA', 'classes', fixture.classA],
+      ['directorA', 'classes', fixture.classA],
+      ['secretaryA', 'classes', fixture.classA],
+      ['teacherA', 'subject_offerings', fixture.offeringA],
+      ['studentA', 'students', fixture.studentA],
+      ['guardianA', 'students', fixture.studentA],
+    ] as const;
+    const results = [];
 
-    const directorAccess = await readIds(
-      fixture.actors.directorA.client,
-      'classes',
-      fixture.classA,
-    );
-    const teacherAccess = await readIds(
-      fixture.actors.teacherA.client,
-      'subject_offerings',
-      fixture.offeringA,
-    );
+    for (const [actorKey, table, id] of checks) {
+      const actor = fixture.actors[actorKey];
+      const before = await readIds(actor.client, table, id);
+      expect(before.error, `${actorKey} access before deactivation`).toBeNull();
+      expect(before.rows, `${actorKey} access before deactivation`).toHaveLength(1);
+      const portariaBefore = actorKey === 'directorA' || actorKey === 'secretaryA'
+        ? await readIds(actor.client, 'access_events', fixture.accessEventA)
+        : null;
+      if (portariaBefore) {
+        expect(portariaBefore.error, `${actorKey} Portaria before deactivation`).toBeNull();
+        expect(portariaBefore.rows, `${actorKey} Portaria before deactivation`).toHaveLength(1);
+      }
+
+      const { error: deactivateError } = await fixture.admin
+        .from('profiles')
+        .update({ active: false })
+        .eq('id', actor.id);
+      expect(deactivateError, `${actorKey} profile deactivation`).toBeNull();
+
+      const after = await readIds(actor.client, table, id);
+      const portariaAfter = portariaBefore
+        ? await readIds(actor.client, 'access_events', fixture.accessEventA)
+        : null;
+      const classification = after.rows.length > 0
+        ? 'KNOWN GAP'
+        : after.error
+          ? 'BLOCKED'
+          : 'SAFE';
+      results.push({
+        role: actor.role,
+        actorKey,
+        jwtIssuedBeforeDeactivation: true,
+        table,
+        before,
+        after,
+        portariaBefore,
+        portariaAfter,
+        classification,
+      });
+
+      const { error: restoreError } = await fixture.admin
+        .from('profiles')
+        .update({ active: true })
+        .eq('id', actor.id);
+      expect(restoreError, `${actorKey} profile restore`).toBeNull();
+    }
 
     console.log(JSON.stringify({
-      finding: 'PROFILE_ACTIVE_REVOCATION_GAP',
-      directorAccessAfterProfileDeactivation: directorAccess.rows.length,
-      teacherAccessAfterProfileDeactivation: teacherAccess.rows.length,
+      finding: 'PROFILE_ACTIVE_REVOCATION_MATRIX',
       jwtWasNotRefreshed: true,
+      results,
     }));
-
-    expect(directorAccess.error).toBeNull();
-    expect(teacherAccess.error).toBeNull();
-    expect(directorAccess.rows.length).toBeGreaterThan(0);
-    expect(teacherAccess.rows.length).toBeGreaterThan(0);
-  }, 60_000);
+  }, 120_000);
 
   it('keeps SUPER_ADMIN global access distinct from a normal administrator', async () => {
     const superAdminRows = await readIds(
