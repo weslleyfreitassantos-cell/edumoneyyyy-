@@ -30,6 +30,7 @@ import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { schoolEmailService } from '../services/schoolEmailService';
+import AssistantTec from './AssistantTec';
 
 interface AppShellProps {
   children: ReactNode;
@@ -615,6 +616,7 @@ export default function AppShell({
           </div>
         </main>
       </div>
+      <AssistantTec />
     </div>
   );
 }
