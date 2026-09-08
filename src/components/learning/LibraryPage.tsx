@@ -6,7 +6,7 @@ import {
   Star,
   X,
 } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 type Subject =
   | 'Todos'
@@ -21,6 +21,7 @@ interface BookRecommendation {
   title: string;
   author: string;
   isbn: string;
+  coverUrl: string | null;
   note: string;
   query: string;
 }
@@ -36,10 +37,11 @@ const subjects: Subject[] = [
 
 const recommendations: BookRecommendation[] = [
   {
-    subject: 'História',
+    subject: 'Ciências',
     title: 'Uma breve história do tempo',
     author: 'Stephen Hawking',
     isbn: '9788535905409',
+    coverUrl: 'https://covers.openlibrary.org/b/id/10432365-L.jpg',
     note: 'Uma leitura acessível para conhecer ideias que mudaram a ciência.',
     query: 'Uma breve história do tempo Stephen Hawking',
   },
@@ -48,6 +50,7 @@ const recommendations: BookRecommendation[] = [
     title: 'O povo brasileiro',
     author: 'Darcy Ribeiro',
     isbn: '9788526022574',
+    coverUrl: 'https://covers.openlibrary.org/b/id/3842030-L.jpg',
     note: 'Uma introdução marcante à formação histórica e cultural do Brasil.',
     query: 'O povo brasileiro Darcy Ribeiro',
   },
@@ -56,6 +59,7 @@ const recommendations: BookRecommendation[] = [
     title: 'O mundo assombrado pelos demônios',
     author: 'Carl Sagan',
     isbn: '9788535908349',
+    coverUrl: 'https://covers.openlibrary.org/b/id/13129044-L.jpg',
     note: 'Pensamento crítico e curiosidade científica em uma leitura envolvente.',
     query: 'O mundo assombrado pelos demônios Carl Sagan',
   },
@@ -64,6 +68,7 @@ const recommendations: BookRecommendation[] = [
     title: 'O homem que calculava',
     author: 'Malba Tahan',
     isbn: '9788504014464',
+    coverUrl: 'https://covers.openlibrary.org/b/id/6828127-L.jpg',
     note: 'Matemática apresentada por meio de histórias e desafios.',
     query: 'O homem que calculava Malba Tahan',
   },
@@ -72,6 +77,7 @@ const recommendations: BookRecommendation[] = [
     title: 'Gramática em textos',
     author: 'Ulisses Infante',
     isbn: '9788526284255',
+    coverUrl: null,
     note: 'Apoio prático para estudar língua portuguesa e produção textual.',
     query: 'Gramática em textos Ulisses Infante',
   },
@@ -80,6 +86,7 @@ const recommendations: BookRecommendation[] = [
     title: 'Dom Casmurro',
     author: 'Machado de Assis',
     isbn: '9788535910663',
+    coverUrl: 'https://covers.openlibrary.org/b/id/647501-L.jpg',
     note: 'Um clássico brasileiro para ler, interpretar e discutir.',
     query: 'Dom Casmurro Machado de Assis livro',
   },
@@ -96,42 +103,14 @@ function storeUrl(
     : `https://lista.mercadolivre.com.br/${encoded.replace(/%20/g, '-')}`;
 }
 
-function openLibraryCoverUrl(isbn: string): string {
-  return `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg?default=false`;
-}
-
-interface GoogleBooksResponse {
-  items?: Array<{
-    volumeInfo?: {
-      imageLinks?: {
-        thumbnail?: string;
-        smallThumbnail?: string;
-      };
-    };
-  }>;
-}
-
-function googleBooksCoverUrl(data: GoogleBooksResponse): string | null {
-  const imageLinks = data.items?.find(
-    (item) => item.volumeInfo?.imageLinks,
-  )?.volumeInfo?.imageLinks;
-  const url = imageLinks?.thumbnail ?? imageLinks?.smallThumbnail;
-
-  return url?.replace(/^http:\/\//, 'https://') ?? null;
-}
-
 function CoverPlaceholder({
   book,
-  loading = false,
 }: {
   book: BookRecommendation;
-  loading?: boolean;
 }) {
   return (
     <div
       className="grid h-full place-items-center gap-2 p-3 text-center text-[#005bbf]"
-      role={loading ? 'status' : undefined}
-      aria-label={loading ? `Carregando capa de ${book.title}` : undefined}
     >
       <BookOpen className="h-8 w-8" aria-hidden="true" />
       <span className="text-[10px] font-bold leading-tight">
@@ -141,80 +120,22 @@ function CoverPlaceholder({
   );
 }
 
-type CoverSource = 'loading' | 'google' | 'open-library' | 'fallback';
-
 function BookCover({ book }: { book: BookRecommendation }) {
-  const [source, setSource] = useState<CoverSource>('loading');
-  const [googleUrl, setGoogleUrl] = useState<string | null>(null);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    let cancelled = false;
-
-    setSource('loading');
-    setGoogleUrl(null);
-
-    fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=isbn:${book.isbn}`,
-      { signal: controller.signal },
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Google Books metadata unavailable');
-        }
-
-        return response.json() as Promise<GoogleBooksResponse>;
-      })
-      .then((data) => {
-        if (!cancelled) {
-          const coverUrl = googleBooksCoverUrl(data);
-
-          setGoogleUrl(coverUrl);
-          setSource(coverUrl ? 'google' : 'open-library');
-        }
-      })
-      .catch((error: unknown) => {
-        if (
-          !cancelled &&
-          !(error instanceof DOMException && error.name === 'AbortError')
-        ) {
-          setSource('open-library');
-        }
-      });
-
-    return () => {
-      cancelled = true;
-      controller.abort();
-    };
-  }, [book.isbn]);
-
-  const googleCover = source === 'google';
-  const imageUrl = googleCover
-    ? undefined
-    : source === 'open-library'
-      ? openLibraryCoverUrl(book.isbn)
-      : undefined;
-
-  function handleImageError(): void {
-    setSource((current) =>
-      current === 'google' ? 'open-library' : 'fallback',
-    );
-  }
+  const [hasFailed, setHasFailed] = useState(false);
 
   return (
     <div className="h-48 w-32 shrink-0 overflow-hidden rounded-lg bg-blue-50 shadow-sm dark:bg-blue-950/40 sm:h-44 sm:w-32">
-      {source === 'loading' || source === 'fallback' ? (
-        <CoverPlaceholder book={book} loading={source === 'loading'} />
+      {!book.coverUrl || hasFailed ? (
+        <CoverPlaceholder book={book} />
       ) : (
         <img
-          src={googleCover ? googleUrl ?? '' : imageUrl ?? ''}
+          src={book.coverUrl}
           alt={`Capa de ${book.title}`}
           className="h-full w-full object-cover"
           loading="lazy"
           decoding="async"
           referrerPolicy="no-referrer"
-          data-cover-source={source}
-          onError={handleImageError}
+          onError={() => setHasFailed(true)}
         />
       )}
     </div>

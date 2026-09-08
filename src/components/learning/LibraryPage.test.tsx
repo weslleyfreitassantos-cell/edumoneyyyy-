@@ -5,41 +5,19 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor,
 } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import LibraryPage from './LibraryPage';
 
-const firstIsbn = '9788535905409';
-const openLibraryCover =
-  `https://covers.openlibrary.org/b/isbn/${firstIsbn}-M.jpg?default=false`;
-const googleCover = 'https://books.google.com/books/content?id=real-cover';
 const mockFetch = vi.fn();
-
-function metadataResponse(imageLinks?: Record<string, string>) {
-  return {
-    ok: true,
-    json: async () => ({
-      items: imageLinks
-        ? [{ volumeInfo: { imageLinks } }]
-        : [{ volumeInfo: {} }],
-    }),
-  };
-}
 
 function renderLibrary() {
   return render(
     <MemoryRouter>
       <LibraryPage />
     </MemoryRouter>,
-  );
-}
-
-function mockGoogleCovers() {
-  mockFetch.mockImplementation(async () =>
-    metadataResponse({ thumbnail: googleCover }),
   );
 }
 
@@ -54,100 +32,67 @@ beforeEach(() => {
 });
 
 describe('LibraryPage', () => {
-  it('usa a capa do Google Books quando a metadata possui imageLinks', async () => {
-    mockGoogleCovers();
+  it('renderiza as capas estáticas e não consulta Google Books', () => {
     renderLibrary();
 
-    await waitFor(() => {
-      expect(screen.getAllByRole('img')).toHaveLength(6);
-    });
+    const covers = screen.getAllByRole('img');
 
-    const firstCover = screen.getAllByRole('img')[0];
-
-    expect(firstCover.getAttribute('src')).toBe(googleCover);
-    expect(firstCover.getAttribute('data-cover-source')).toBe('google');
-    expect(firstCover.getAttribute('alt')).toBe(
+    expect(covers).toHaveLength(5);
+    expect(covers[0].getAttribute('src')).toBe(
+      'https://covers.openlibrary.org/b/id/10432365-L.jpg',
+    );
+    expect(covers[0].getAttribute('alt')).toBe(
       'Capa de Uma breve história do tempo',
     );
-    expect(mockFetch.mock.calls[0][0]).toBe(
-      `https://www.googleapis.com/books/v1/volumes?q=isbn:${firstIsbn}`,
-    );
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(screen.getAllByText('Ciências').length).toBeGreaterThan(1);
   });
 
-  it('usa Open Library quando Google Books não possui imageLinks', async () => {
-    mockFetch.mockImplementation(async () => metadataResponse());
+  it('mostra o fallback local quando a imagem da capa falha', () => {
     renderLibrary();
 
-    await waitFor(() => {
-      expect(screen.getAllByRole('img')[0].getAttribute('src')).toBe(
-        openLibraryCover,
-      );
-    });
+    fireEvent.error(
+      screen.getByAltText('Capa de Uma breve história do tempo'),
+    );
 
     expect(
-      screen.getAllByRole('img')[0].getAttribute('data-cover-source'),
-    ).toBe('open-library');
-  });
-
-  it('mostra o fallback local quando a capa da Open Library falha', async () => {
-    mockFetch.mockImplementation(async () => metadataResponse());
-    renderLibrary();
-
-    const firstCover = (await screen.findAllByRole('img'))[0];
-    fireEvent.error(firstCover);
-
-    await waitFor(() => {
-      expect(
-        screen.queryByAltText('Capa de Uma breve história do tempo'),
-      ).toBeNull();
-    });
+      screen.queryByAltText('Capa de Uma breve história do tempo'),
+    ).toBeNull();
     expect(
       screen.getAllByText('Uma breve história do tempo').length,
     ).toBeGreaterThan(1);
   });
 
-  it('tenta Open Library quando a imagem do Google dispara erro', async () => {
-    mockGoogleCovers();
+  it('mostra o fallback local quando a recomendação não possui coverUrl', () => {
     renderLibrary();
 
-    const firstCover = (await screen.findAllByRole('img'))[0];
-    fireEvent.error(firstCover);
-
-    await waitFor(() => {
-      expect(screen.getAllByRole('img')[0].getAttribute('src')).toBe(
-        openLibraryCover,
-      );
-    });
+    expect(screen.queryByAltText('Capa de Gramática em textos')).toBeNull();
+    expect(screen.getAllByText('Gramática em textos').length).toBeGreaterThan(1);
   });
 
-  it('preserva filtro, busca nas lojas e modal de pesquisa', async () => {
-    mockGoogleCovers();
+  it('mantém o filtro por assunto, incluindo Hawking em Ciências', () => {
     renderLibrary();
 
-    await waitFor(() => {
-      expect(screen.getAllByRole('img')).toHaveLength(6);
+    fireEvent.change(screen.getByRole('combobox'), {
+      target: { value: 'Ciências' },
     });
 
-    fireEvent.change(screen.getByRole('combobox'), {
-      target: { value: 'Literatura' },
-    });
     expect(
-      screen.getByRole('heading', { name: 'Dom Casmurro' }),
+      screen.getByRole('heading', { name: 'Uma breve história do tempo' }),
     ).toBeTruthy();
     expect(
-      screen.queryByRole('heading', {
-        name: 'O homem que calculava',
-      }),
+      screen.queryByRole('heading', { name: 'Dom Casmurro' }),
     ).toBeNull();
+  });
 
-    fireEvent.change(screen.getByRole('combobox'), {
-      target: { value: 'Todos' },
-    });
+  it('preserva busca livre, Amazon, Mercado Livre e modal de pesquisa', () => {
+    renderLibrary();
 
     const search = screen.getByRole('textbox', {
       name: 'Buscar livro, autor ou tema',
     });
     fireEvent.change(search, { target: { value: 'ciência' } });
+
     expect(
       screen.getByRole('button', { name: /Pesquisar no Amazon/i }),
     ).toBeTruthy();
@@ -156,6 +101,18 @@ describe('LibraryPage', () => {
         name: /Pesquisar no Mercado Livre/i,
       }),
     ).toBeTruthy();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /Pesquisar no Mercado Livre/i,
+      }),
+    );
+    expect(
+      screen.getByRole('dialog', { name: 'Pesquisa na Mercado Livre' }),
+    ).toBeTruthy();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Fechar pesquisa' }),
+    );
 
     fireEvent.change(search, { target: { value: '' } });
     fireEvent.click(screen.getAllByRole('button', { name: 'Amazon' })[0]);
