@@ -2,6 +2,7 @@ import {
   Component,
   lazy,
   Suspense,
+  useEffect,
   type ErrorInfo,
   type ReactNode,
 } from 'react';
@@ -110,8 +111,9 @@ const ParentDashboard = lazy(
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5,
-      gcTime: 1000 * 60 * 30,
+      // Keep already visited screens warm while the user changes browser tabs.
+      staleTime: 1000 * 60 * 10,
+      gcTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
       retry: 1,
@@ -121,6 +123,19 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+function preloadApplicationScreens(): void {
+  void Promise.all([
+    import('./pages/Login'),
+    import('./pages/Admin/AdminPage'),
+    import('./pages/Platform/PlatformPage'),
+    import('./pages/Account/AccountPage'),
+    import('./components/TeacherDashboard'),
+    import('./components/StudentDashboard'),
+    import('./components/DirectorDashboard'),
+    import('./components/ParentDashboard'),
+  ]);
+}
 
 class AppErrorBoundary extends Component<
   { children: ReactNode },
@@ -282,6 +297,18 @@ function DashboardContent() {
     );
   }
 
+  if (
+    currentRole === 'director' ||
+    currentRole === 'secretary'
+  ) {
+    return (
+      <Navigate
+        to="/admin?module=overview"
+        replace
+      />
+    );
+  }
+
   return <>{renderDashboard(currentRole)}</>;
 }
 
@@ -397,6 +424,29 @@ function AppRoutes() {
 }
 
 function App() {
+  useEffect(() => {
+    const idleWindow = window as Window & {
+      requestIdleCallback?: (callback: () => void) => number;
+    };
+
+    if (idleWindow.requestIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(
+        preloadApplicationScreens,
+      );
+
+      return () => {
+        window.clearTimeout(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(
+      preloadApplicationScreens,
+      800,
+    );
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <AppErrorBoundary>
       <QueryClientProvider
