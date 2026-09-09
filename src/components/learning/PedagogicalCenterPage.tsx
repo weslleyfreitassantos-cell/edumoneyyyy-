@@ -96,9 +96,14 @@ export default function PedagogicalCenterPage() {
     enabled: Boolean(currentInstitutionId && profile?.id),
   });
   const classes = useQuery({
-    queryKey: ['learning-center', 'teacher-classes', currentInstitutionId, profile?.id],
-    queryFn: () => learningCenterService.teacherClasses(profile!.id),
-    enabled: Boolean(currentInstitutionId && profile?.id),
+    queryKey: ['learning-center', 'teacher-classes', currentInstitutionId, profile?.id, draft.subjectId],
+    queryFn: () => learningCenterService.teacherClassesForSubject(currentInstitutionId!, profile!.id, draft.subjectId),
+    enabled: Boolean(currentInstitutionId && profile?.id && draft.subjectId),
+  });
+  const collectionClasses = useQuery({
+    queryKey: ['learning-center', 'collection-classes', currentInstitutionId, profile?.id, collectionSubjectId],
+    queryFn: () => learningCenterService.teacherClassesForSubject(currentInstitutionId!, profile!.id, collectionSubjectId),
+    enabled: Boolean(currentInstitutionId && profile?.id && collectionSubjectId),
   });
   const units = useLearningUnits(currentInstitutionId ?? undefined, draft.subjectId);
   const skills = useLearningSkills(currentInstitutionId ?? undefined, draft.unitId);
@@ -207,7 +212,7 @@ export default function PedagogicalCenterPage() {
 
   const update = <K extends keyof ActivityDraft>(key: K, value: ActivityDraft[K]) => {
     setDraft((current) => ({ ...current, [key]: value }));
-    if (key === 'subjectId') setDraft((current) => ({ ...current, unitId: '', skillId: '' }));
+    if (key === 'subjectId') setDraft((current) => ({ ...current, classId: '', unitId: '', skillId: '' }));
     if (key === 'unitId') setDraft((current) => ({ ...current, skillId: '' }));
   };
 
@@ -331,7 +336,7 @@ export default function PedagogicalCenterPage() {
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           <label className="text-sm font-semibold dark:text-white">Matéria
-            <select required value={collectionSubjectId} onChange={(event) => setCollectionSubjectId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:bg-slate-900">
+            <select required value={collectionSubjectId} onChange={(event) => { setCollectionSubjectId(event.target.value); setCollectionClassId(''); }} className="mt-1 w-full rounded-lg border px-3 py-2 dark:bg-slate-900">
               <option value="">Selecione</option>
               {subjects.data?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
@@ -339,7 +344,7 @@ export default function PedagogicalCenterPage() {
           <label className="text-sm font-semibold dark:text-white">Turma
             <select required value={collectionClassId} onChange={(event) => setCollectionClassId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:bg-slate-900">
               <option value="">Selecione</option>
-              {classes.data?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+              {collectionClasses.data?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
           </label>
         </div>

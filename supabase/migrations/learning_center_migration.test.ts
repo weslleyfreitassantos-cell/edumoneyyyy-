@@ -50,5 +50,11 @@ describe('learning center migrations', () => {
     );
     expect(referenceHardening).toContain('private.learning_teacher_owns_subject');
     expect(referenceHardening).toContain('private.learning_teacher_owns_subject_class');
+    const assignmentFix = readFileSync(
+      resolve(process.cwd(), 'supabase/migrations/20260909000600_fix_learning_assignment_scope.sql'),
+      'utf8',
+    );
+    expect(assignmentFix).toContain('private.learning_can_assign_activity');
+    expect(assignmentFix).toContain('learning_assignments_insert');
   });
 });

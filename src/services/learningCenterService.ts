@@ -254,6 +254,34 @@ export const learningCenterService = {
     );
   },
 
+  teacherClassesForSubject: async (
+    institutionId: string,
+    teacherId: string,
+    subjectId: string,
+  ) => {
+    const classIds = await uniqueIds(
+      supabase
+        .from('subject_offerings')
+        .select('class_id')
+        .eq('teacher_profile_id', teacherId)
+        .eq('subject_id', subjectId)
+        .eq('active', true),
+      'class_id',
+    );
+
+    if (!classIds.length) return [];
+
+    return read<LearningClass[]>(
+      supabase
+        .from('classes')
+        .select('id,name')
+        .eq('institution_id', institutionId)
+        .in('id', classIds)
+        .eq('active', true)
+        .order('name'),
+    );
+  },
+
   studentCollections: (institutionId: string) =>
     read<LearningCollection[]>(
       supabase
