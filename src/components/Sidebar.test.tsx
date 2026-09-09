@@ -653,6 +653,10 @@ describe('sidebar navigation helpers', () => {
     expect(subjectsItem?.label).toBe('Disciplinas e professores');
     expect(subjectsItem?.path).toBe('/dashboard/subjects');
 
+    expect(studentItems.map((item) => item.id)).toEqual(
+      expect.arrayContaining(['student-study', 'library']),
+    );
+
     const teacherItems = getSidebarNavigationItems({
       profile: {
         ...baseProfile,
@@ -666,6 +670,12 @@ describe('sidebar navigation helpers', () => {
     expect(
       teacherItems.map((item) => item.id),
     ).toContain('student-timetable');
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toContain('library');
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toContain('teacher-pedagogical-center');
     expect(
       teacherItems.map((item) => item.id),
     ).toEqual(

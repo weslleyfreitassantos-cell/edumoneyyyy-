@@ -283,7 +283,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     path: '/dashboard/library',
     section: 'personal',
     icon: BookMarked,
-    roles: ['student'],
+    roles: ['student', 'teacher'],
     activePaths: ['/dashboard/library'],
     exactActivePath: true,
   },
