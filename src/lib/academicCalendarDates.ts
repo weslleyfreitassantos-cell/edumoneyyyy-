@@ -14,9 +14,20 @@ function pad(value: number): string {
   return String(value).padStart(2, '0');
 }
 
-function localDateKey(value: string): string {
+function localDateKey(value: string, timeZone?: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value.slice(0, 10);
+
+  if (timeZone) {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      timeZone,
+    }).formatToParts(date);
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+  }
 
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
@@ -34,9 +45,13 @@ export function parseCalendarDate(value: string): Date {
   return date;
 }
 
-export function calendarDateKey(value: string, allDay = false): string {
+export function calendarDateKey(
+  value: string,
+  allDay = false,
+  timeZone?: string,
+): string {
   if (allDay || isCalendarDate(value)) return value.slice(0, 10);
-  return localDateKey(value);
+  return localDateKey(value, timeZone);
 }
 
 export function calendarDateToUtcStart(value: string): string {
@@ -129,7 +144,7 @@ export function isCalendarEventUpcoming(
   now = Date.now(),
 ): boolean {
   if (event.allDay) {
-    const todayKey = calendarDateKey(new Date(now).toISOString(), true);
+    const todayKey = calendarDateKey(new Date(now).toISOString());
     const startKey = calendarDateKey(event.startsAt, true);
     const endKey = event.endsAt
       ? calendarDateKey(event.endsAt, true)

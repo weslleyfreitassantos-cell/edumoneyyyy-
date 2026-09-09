@@ -17,6 +17,14 @@ describe('academicCalendarDates', () => {
     })).toBe('15/09/2026 • Dia inteiro');
   });
 
+  it('usa a data civil local na virada UTC em UTC-3', () => {
+    expect(calendarDateKey(
+      '2026-09-09T00:30:00.000Z',
+      false,
+      'America/Bahia',
+    )).toBe('2026-09-08');
+  });
+
   it('expande um evento all-day de forma inclusiva no calendário', () => {
     expect(calendarEventDateKeys({
       startsAt: '2026-07-10T00:00:00.000Z',

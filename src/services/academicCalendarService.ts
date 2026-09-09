@@ -292,7 +292,7 @@ export const academicCalendarService = {
     limit = 5,
   ): Promise<AcademicCalendarEvent[]> {
     const now = new Date().toISOString();
-    const todayKey = calendarDateKey(now, true);
+    const todayKey = calendarDateKey(now);
     const todayStart = calendarDateToUtcStart(todayKey);
     const tomorrowStart = calendarDateToUtcStart(nextCalendarDateKey(todayKey));
     const { data, error } = await supabase
