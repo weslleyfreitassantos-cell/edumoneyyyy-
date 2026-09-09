@@ -13,7 +13,7 @@ import {
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
@@ -53,7 +53,7 @@ function classLabel(activity: LearningActivity): string {
     return classRecord?.name;
   }).filter((name): name is string => Boolean(name));
 
-  return names.length ? names.join(', ') : 'Turma vinculada';
+  return names.length ? names.join(', ') : 'Nenhuma turma vinculada';
 }
 
 function formatDate(value?: string): string {
@@ -80,10 +80,17 @@ export default function PublishedActivitiesPage() {
   const queryClient = useQueryClient();
   const [editing, setEditing] = useState<LearningActivity | null>(null);
   const [editDraft, setEditDraft] = useState<ActivityEditDraft | null>(null);
+  const [assigning, setAssigning] = useState<LearningActivity | null>(null);
+  const [assignmentClassId, setAssignmentClassId] = useState('');
   const [message, setMessage] = useState('');
 
   const activities = useTeacherLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const publishedActivities = (activities.data ?? []).filter((activity) => activity.status === 'PUBLISHED');
+  const assignmentClasses = useQuery({
+    queryKey: ['learning-center', 'repair-classes', currentInstitutionId, profile?.id, assigning?.subject_id],
+    queryFn: () => learningCenterService.teacherClassesForSubject(currentInstitutionId!, profile!.id, assigning!.subject_id),
+    enabled: Boolean(currentInstitutionId && profile?.id && assigning),
+  });
 
   const updateMutation = useMutation({
     mutationFn: async ({ activity, draft }: { activity: LearningActivity; draft: ActivityEditDraft }) => {
@@ -121,10 +128,35 @@ export default function PublishedActivitiesPage() {
     },
   });
 
+  const assignMutation = useMutation({
+    mutationFn: async () => {
+      if (!assigning || !assignmentClassId) throw new Error('Selecione uma turma.');
+      return learningCenterService.publishAndAssignActivity({
+        activity_id: assigning.id,
+        class_id: assignmentClassId,
+      });
+    },
+    onSuccess: () => {
+      setAssigning(null);
+      setAssignmentClassId('');
+      setMessage('Atividade vinculada à turma. Agora ela já pode ser iniciada pelos alunos.');
+      void queryClient.invalidateQueries({ queryKey: learningCenterKeys.all });
+    },
+    onError: (error) => {
+      setMessage(error instanceof Error ? error.message : 'Não foi possível vincular a atividade.');
+    },
+  });
+
   const openEdit = (activity: LearningActivity) => {
     setMessage('');
     setEditing(activity);
     setEditDraft(toEditDraft(activity));
+  };
+
+  const openAssignment = (activity: LearningActivity) => {
+    setMessage('');
+    setAssignmentClassId('');
+    setAssigning(activity);
   };
 
   const removeActivity = (activity: LearningActivity) => {
@@ -200,8 +232,18 @@ export default function PublishedActivitiesPage() {
                 <span>Publicada em {formatDate(activity.created_at)}</span>
                 <span className="inline-flex items-center gap-1 sm:col-span-2"><UsersRound className="h-3.5 w-3.5" aria-hidden="true" />{classLabel(activity)}</span>
               </div>
+              {!activity.learning_assignments?.length ? (
+                <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-800 dark:border-amber-900/50 dark:bg-amber-950/20 dark:text-amber-200">
+                  Esta atividade está publicada, mas ainda não foi vinculada a uma turma.
+                </p>
+              ) : null}
 
               <div className="mt-5 flex flex-wrap gap-2 border-t pt-4 dark:border-slate-700">
+                {!activity.learning_assignments?.length ? (
+                  <button type="button" onClick={() => openAssignment(activity)} disabled={assignMutation.isPending} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white hover:bg-[#004a9c] disabled:opacity-50">
+                    <UsersRound className="h-4 w-4" aria-hidden="true" />Vincular turma
+                  </button>
+                ) : null}
                 <button type="button" onClick={() => openEdit(activity)} disabled={updateMutation.isPending || deleteMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-[#005bbf] px-3 py-2 text-sm font-bold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50">
                   <Edit3 className="h-4 w-4" aria-hidden="true" />Editar
                 </button>
@@ -267,6 +309,48 @@ export default function PublishedActivitiesPage() {
                 </button>
               </div>
             </form>
+          </section>
+        </div>
+      ) : null}
+
+      {assigning ? (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/55 p-4">
+          <section role="dialog" aria-modal="true" aria-labelledby="assign-learning-activity-title" className="w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#005bbf]">Atribuir atividade</p>
+                <h2 id="assign-learning-activity-title" className="mt-1 text-xl font-bold dark:text-white">Liberar para uma turma</h2>
+                <p className="mt-1 text-sm text-slate-500">{assigning.title} · {subjectLabel(assigning)}</p>
+              </div>
+              <button type="button" onClick={() => { setAssigning(null); setAssignmentClassId(''); }} aria-label="Fechar atribuição" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
+                <X className="h-5 w-5" aria-hidden="true" />
+              </button>
+            </div>
+
+            <p className="mt-5 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm text-blue-900 dark:border-blue-900/50 dark:bg-blue-950/30 dark:text-blue-200">
+              Depois de vincular a turma, a atividade aparecerá automaticamente em Práticas recomendadas para os alunos matriculados.
+            </p>
+
+            <label className="mt-5 block text-sm font-semibold dark:text-white">Turma
+              {assignmentClasses.isLoading ? (
+                <span className="mt-2 flex items-center gap-2 text-sm font-normal text-slate-500"><Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />Carregando turmas...</span>
+              ) : assignmentClasses.isError ? (
+                <span className="mt-2 block text-sm font-normal text-red-600">Não foi possível carregar as turmas vinculadas à disciplina.</span>
+              ) : (
+                <select required value={assignmentClassId} onChange={(event) => setAssignmentClassId(event.target.value)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+                  <option value="">Selecione uma turma</option>
+                  {(assignmentClasses.data ?? []).map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+                </select>
+              )}
+            </label>
+
+            <div className="mt-6 flex flex-wrap justify-end gap-2 border-t pt-4 dark:border-slate-700">
+              <button type="button" onClick={() => { setAssigning(null); setAssignmentClassId(''); }} disabled={assignMutation.isPending} className="rounded-lg border px-4 py-2 text-sm font-bold text-slate-700 dark:border-slate-700 dark:text-slate-200">Cancelar</button>
+              <button type="button" onClick={() => assignMutation.mutate()} disabled={assignMutation.isPending || assignmentClasses.isLoading || !assignmentClassId} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">
+                {assignMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <UsersRound className="h-4 w-4" aria-hidden="true" />}
+                {assignMutation.isPending ? 'Vinculando...' : 'Vincular e liberar'}
+              </button>
+            </div>
           </section>
         </div>
       ) : null}

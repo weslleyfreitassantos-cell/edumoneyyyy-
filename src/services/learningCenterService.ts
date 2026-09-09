@@ -119,8 +119,6 @@ export interface LearningAttemptSummary {
   }[] | null;
 }
 
-const activitySelect =
-  'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,subjects(name),learning_questions(id,question_text,question_type,options_json,explanation,points,sort_order)';
 const teacherActivitySelect =
   'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,created_at,subjects(name),learning_questions(id,question_text,question_type,options_json,correct_answer_json,explanation,points,sort_order),learning_assignments(id,class_id,due_at,classes(name))';
 
@@ -401,12 +399,9 @@ export const learningCenterService = {
 
   publishedActivities: (institutionId: string) =>
     read<LearningActivity[]>(
-      supabase
-        .from('learning_activities')
-        .select(activitySelect)
-        .eq('institution_id', institutionId)
-        .eq('status', 'PUBLISHED')
-        .order('created_at', { ascending: false }),
+      supabase.rpc('list_student_learning_activities', {
+        p_institution_id: institutionId,
+      }),
     ),
 
   teacherActivities: (institutionId: string, teacherId: string) =>

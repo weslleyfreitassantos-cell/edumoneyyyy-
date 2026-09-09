@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 export default function PracticePage() {
   const { activityId } = useParams(); const navigate = useNavigate(); const { profile } = useAuth(); const { currentInstitutionId } = useInstitution();
-  const query = usePublishedLearningActivities(currentInstitutionId ?? undefined); const activity = query.data?.find((item) => item.id === activityId); const questions = useMemo(() => [...(activity?.learning_questions ?? [])].sort((a, b) => a.sort_order - b.sort_order), [activity]);
+  const query = usePublishedLearningActivities(currentInstitutionId ?? undefined, profile?.id); const activity = query.data?.find((item) => item.id === activityId); const questions = useMemo(() => [...(activity?.learning_questions ?? [])].sort((a, b) => a.sort_order - b.sort_order), [activity]);
   const [answers, setAnswers] = useState<Record<string, string>>({}); const [result, setResult] = useState<{ score: number; total_points: number; mastery_percent: number } | null>(null); const submit = useSubmitLearningAttempt(currentInstitutionId ?? undefined, profile?.id);
   if (query.isLoading) return <div className="grid min-h-48 place-items-center text-sm text-slate-500">Carregando prática...</div>;
   if (!activity) return <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-800">Esta atividade não está disponível para você.</div>;

@@ -70,5 +70,13 @@ describe('learning center migrations', () => {
     expect(managementMigration).toContain('create or replace function public.update_learning_activity');
     expect(managementMigration).toContain('create or replace function public.delete_learning_activity');
     expect(managementMigration).toContain('grant execute on function public.delete_learning_activity(uuid) to authenticated;');
+    const studentActivitiesMigration = readFileSync(
+      resolve(process.cwd(), 'supabase/migrations/20260909000900_student_learning_activities_rpc.sql'),
+      'utf8',
+    );
+    expect(studentActivitiesMigration).toContain('create or replace function public.list_student_learning_activities');
+    expect(studentActivitiesMigration).toContain("a.status = 'PUBLISHED'");
+    expect(studentActivitiesMigration).toContain('st.profile_id = auth.uid()');
+    expect(studentActivitiesMigration).toContain('grant execute on function public.list_student_learning_activities(uuid) to authenticated;');
   });
 });
