@@ -1,12 +1,24 @@
 import {
+  Atom,
+  Brain,
+  Calculator,
   BookOpen,
+  Dna,
+  Dumbbell,
   CheckCircle2,
   Circle,
   GraduationCap,
   ExternalLink,
+  FlaskConical,
+  Globe2,
+  Languages,
+  Landmark,
+  Palette,
   PlayCircle,
   Search,
   Sparkles,
+  UsersRound,
+  type LucideIcon,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -34,6 +46,31 @@ function statusLabel(status: string): string {
   if (status === 'MASTERED') return 'Dominado';
   if (status === 'IN_PROGRESS') return 'Em progresso';
   return 'Não iniciado';
+}
+
+const subjectIcons: Record<string, LucideIcon> = {
+  arte: Palette,
+  biologia: Dna,
+  'educacao fisica': Dumbbell,
+  filosofia: Brain,
+  fisica: Atom,
+  geografia: Globe2,
+  historia: Landmark,
+  'lingua inglesa': Languages,
+  'lingua portuguesa': Languages,
+  matematica: Calculator,
+  quimica: FlaskConical,
+  sociologia: UsersRound,
+};
+
+function subjectIcon(subject: string): LucideIcon {
+  const normalized = subject
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase('pt-BR')
+    .trim();
+
+  return subjectIcons[normalized] ?? BookOpen;
 }
 
 export default function StudyCenterPage() {
@@ -143,17 +180,20 @@ export default function StudyCenterPage() {
           </p>
         ) : filteredSubjects.length ? (
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredSubjects.map((subject) => (
-              <button
-                key={subject.id}
-                type="button"
-                onClick={() => selectSubject(subject.id)}
-                className={`flex items-center gap-3 rounded-xl border p-4 text-left shadow-sm transition ${selectedSubjectId === subject.id ? 'border-[#005bbf] bg-blue-50 dark:bg-blue-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}
-              >
-                <BookOpen className="h-5 w-5 text-[#005bbf]" />
-                <span className="font-semibold dark:text-white">{subject.name}</span>
-              </button>
-            ))}
+            {filteredSubjects.map((subject) => {
+              const Icon = subjectIcon(subject.name);
+              return (
+                <button
+                  key={subject.id}
+                  type="button"
+                  onClick={() => selectSubject(subject.id)}
+                  className={`flex items-center gap-3 rounded-xl border p-4 text-left shadow-sm transition ${selectedSubjectId === subject.id ? 'border-[#005bbf] bg-blue-50 dark:bg-blue-950/30' : 'border-slate-200 bg-white dark:border-slate-700 dark:bg-slate-900'}`}
+                >
+                  <Icon className="h-5 w-5 text-[#005bbf]" aria-hidden="true" />
+                  <span className="font-semibold dark:text-white">{subject.name}</span>
+                </button>
+              );
+            })}
           </div>
         ) : (
           <p className="rounded-xl border border-dashed p-6 text-sm text-slate-500">
