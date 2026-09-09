@@ -34,6 +34,7 @@ import StudentGradesPanel from './grades/StudentGradesPanel';
 import StudentReportCard from './academic/StudentReportCard';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
+import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
 function getErrorMessage(
   error: unknown,
@@ -519,6 +520,11 @@ export default function StudentDashboard() {
         registration={registrationQuery.data}
         isLoading={announcementsQuery.isLoading}
         isError={announcementsQuery.isError}
+        role="student"
+      />
+
+      <UpcomingAcademicEvents
+        institutionId={institutionQuery.data}
         role="student"
       />
 

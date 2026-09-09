@@ -24,6 +24,7 @@ import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummary
 import StudentGradesPanel from './grades/StudentGradesPanel';
 import GuardianReportCard from './academic/GuardianReportCard';
 import DashboardAnnouncements from './DashboardAnnouncements';
+import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
 function getErrorMessage(
   error: unknown,
@@ -244,6 +245,11 @@ export default function ParentDashboard() {
         registration={registrationQuery.data}
         isLoading={announcementsQuery.isLoading}
         isError={announcementsQuery.isError}
+        role="guardian"
+      />
+
+      <UpcomingAcademicEvents
+        institutionId={institutionQuery.data}
         role="guardian"
       />
 
