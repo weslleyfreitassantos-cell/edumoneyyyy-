@@ -25,7 +25,9 @@ import {
   ATTENDANCE_STATUS_LABELS,
   formatAttendanceDate,
   formatAttendanceTime,
+  getDateForAttendancePeriod,
   getTodayDateInputValue,
+  isAttendanceDateWithinPeriod,
 } from './attendanceDisplay';
 
 interface EditableAttendanceRecord {
@@ -68,6 +70,8 @@ export default function TeacherAttendancePanel({
   >([]);
   const [successMessage, setSuccessMessage] =
     useState('');
+  const [dateAdjustmentMessage, setDateAdjustmentMessage] =
+    useState('');
 
   const offeringsQuery =
     useTeacherAttendanceOfferings(
@@ -81,18 +85,52 @@ export default function TeacherAttendancePanel({
   );
   const termStartDate = selectedOffering?.termStartDate ?? null;
   const termEndDate = selectedOffering?.termEndDate ?? null;
+  const todayDate = getTodayDateInputValue();
 
   useEffect(() => {
-    if (
-      offerings.length > 0 &&
-      !offerings.some(
-        (offering) =>
-          offering.id === selectedOfferingId,
-      )
-    ) {
-      setSelectedOfferingId(offerings[0].id);
+    if (offerings.length === 0) {
+      return;
     }
-  }, [offerings, selectedOfferingId]);
+
+    const selectedOfferingStillExists = offerings.some(
+      (offering) => offering.id === selectedOfferingId,
+    );
+
+    if (!selectedOfferingStillExists) {
+      const offeringForToday = offerings.find((offering) =>
+        isAttendanceDateWithinPeriod(
+          todayDate,
+          offering.termStartDate,
+          offering.termEndDate,
+        ),
+      );
+
+      setSelectedOfferingId(
+        (offeringForToday ?? offerings[0]).id,
+      );
+    }
+  }, [offerings, selectedOfferingId, todayDate]);
+
+  useEffect(() => {
+    if (!selectedOffering) {
+      return;
+    }
+
+    const dateForPeriod = getDateForAttendancePeriod(
+      todayDate,
+      selectedOffering.termStartDate,
+      selectedOffering.termEndDate,
+    );
+
+    if (dateForPeriod === sessionDate) {
+      return;
+    }
+
+    setSessionDate(dateForPeriod);
+    setDateAdjustmentMessage(
+      `A data de hoje está fora do período ${selectedOffering.termName ? `"${selectedOffering.termName}" ` : ''}da atribuição. A chamada foi preparada para ${formatAttendanceDate(dateForPeriod)}. Para registrar a aula de hoje, atualize o período letivo no calendário acadêmico.`,
+    );
+  }, [selectedOffering, todayDate]);
 
   const rollCallQuery = useAttendanceRollCall(
     institutionId,
@@ -263,7 +301,7 @@ export default function TeacherAttendancePanel({
           className="space-y-5"
           onSubmit={handleSubmit}
         >
-          <div className="grid gap-4 md:grid-cols-[1.5fr_0.8fr_auto] md:items-end">
+          <div className="grid gap-4 md:grid-cols-[minmax(0,1.5fr)_minmax(14rem,0.8fr)_auto] md:items-start">
             <div>
               <label
                 htmlFor="attendance-offering"
@@ -316,6 +354,7 @@ export default function TeacherAttendancePanel({
                   onChange={(event) => {
                     setSessionDate(event.target.value);
                     setSuccessMessage('');
+                    setDateAdjustmentMessage('');
                   }}
                   className="w-full bg-transparent text-sm text-[#181c20] outline-none"
                 />
@@ -349,7 +388,7 @@ export default function TeacherAttendancePanel({
                 records.length === 0 ||
                 saveMutation.isPending
               }
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#c8d4e3] px-4 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#c8d4e3] px-4 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 md:mt-5"
             >
               <CheckCircle2
                 className="h-4 w-4"
@@ -358,6 +397,15 @@ export default function TeacherAttendancePanel({
               Marcar presentes
             </button>
           </div>
+
+          {dateAdjustmentMessage && (
+            <div
+              role="status"
+              className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800"
+            >
+              {dateAdjustmentMessage}
+            </div>
+          )}
 
           {rollCallQuery.isLoading && (
             <div className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785]">

@@ -72,10 +72,18 @@ function createAssetRequest(request: Request): Request {
     return request;
   }
 
+  // The edge can retain an old SPA entry point even after a new asset upload.
+  // Keep versioned static files cacheable while forcing the HTML shell to be
+  // resolved from the current asset namespace on every document request.
+  const url = new URL(request.url);
+  url.searchParams.set(
+    '__document_cache_buster',
+    crypto.randomUUID(),
+  );
   const headers = new Headers(request.headers);
   headers.set('Cache-Control', 'no-cache');
   headers.set('Pragma', 'no-cache');
-  return new Request(request, { headers });
+  return new Request(url, { headers });
 }
 
 function isGrupotecSubdomain(hostname: string): boolean {

@@ -75,7 +75,12 @@ describe('Worker script', () => {
     });
 
     const assetRequest = assets.fetch.mock.calls[0][0] as Request;
-    expect(assetRequest.url).toBe(request.url);
+    expect(new URL(assetRequest.url).pathname).toBe('/dashboard');
+    expect(
+      new URL(assetRequest.url).searchParams.get(
+        '__document_cache_buster',
+      ),
+    ).toBeTruthy();
     expect(assetRequest.headers.get('cache-control')).toBe('no-cache');
     expect(response.status).toBe(200);
     expect(await response.text()).toBe('asset');
@@ -293,7 +298,12 @@ describe('Worker script', () => {
     const response = await worker.fetch(request, { ASSETS: assets });
 
     const assetRequest = assets.fetch.mock.calls[0][0] as Request;
-    expect(assetRequest.url).toBe(request.url);
+    expect(new URL(assetRequest.url).pathname).toBe('/');
+    expect(
+      new URL(assetRequest.url).searchParams.get(
+        '__document_cache_buster',
+      ),
+    ).toBeTruthy();
     expect(assetRequest.headers.get('cache-control')).toBe('no-cache');
     expect(await response.text()).toBe('asset');
   });

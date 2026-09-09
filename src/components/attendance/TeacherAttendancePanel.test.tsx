@@ -17,6 +17,10 @@ import {
 } from 'vitest';
 
 import TeacherAttendancePanel from './TeacherAttendancePanel';
+import {
+  getDateForAttendancePeriod,
+  getTodayDateInputValue,
+} from './attendanceDisplay';
 
 const mutateAsync = vi.fn();
 const useTeacherAttendanceOfferings = vi.fn();
@@ -192,6 +196,33 @@ describe('TeacherAttendancePanel', () => {
     expect(
       screen.getByText('Bruno Lima'),
     ).toBeTruthy();
+  });
+
+  it('prepara uma data válida quando a atribuição não cobre hoje', async () => {
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    const expectedDate = getDateForAttendancePeriod(
+      getTodayDateInputValue(),
+      offering.termStartDate,
+      offering.termEndDate,
+    );
+
+    await waitFor(() => {
+      expect(
+        (screen.getByLabelText('Data') as HTMLInputElement).value,
+      ).toBe(expectedDate);
+    });
+
+    if (expectedDate !== getTodayDateInputValue()) {
+      expect(
+        screen.getByRole('status').textContent,
+      ).toMatch(/A data de hoje está fora do período/);
+    }
   });
 
   it('marca todos presentes e permite sobrescrever aluno individual', async () => {
