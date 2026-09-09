@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from '../../contexts/AuthContext';
@@ -239,11 +240,11 @@ export default function PedagogicalCenterPage() {
       </header>
 
       <section className="grid gap-4 md:grid-cols-3">
-        <article className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <Link to="/teacher/pedagogical-center/activities" aria-label="Abrir atividades publicadas" className="block rounded-xl border bg-white p-5 shadow-sm transition hover:border-[#005bbf] hover:shadow-md dark:border-slate-700 dark:bg-slate-900">
           <BarChart3 className="h-6 w-6 text-[#005bbf]" />
           <h2 className="mt-3 font-bold dark:text-white">Atividades publicadas</h2>
-          <p className="mt-2 text-2xl font-bold dark:text-white">{activities.data?.length ?? 0}</p>
-        </article>
+          <p className="mt-2 text-2xl font-bold dark:text-white">{activities.data?.filter((activity) => activity.status === 'PUBLISHED').length ?? 0}</p>
+        </Link>
         <article className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <UsersRound className="h-6 w-6 text-amber-500" />
           <h2 className="mt-3 font-bold dark:text-white">Respostas recebidas</h2>

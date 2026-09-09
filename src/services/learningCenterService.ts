@@ -63,8 +63,17 @@ export interface LearningActivity {
   description: string | null;
   activity_type: string;
   status: string;
+  created_at?: string;
   subjects?: { name: string } | { name: string }[] | null;
   learning_questions?: LearningQuestion[];
+  learning_assignments?: LearningAssignment[];
+}
+
+export interface LearningAssignment {
+  id: string;
+  class_id: string;
+  due_at: string | null;
+  classes?: { name: string } | { name: string }[] | null;
 }
 
 export interface LearningQuestion {
@@ -112,6 +121,8 @@ export interface LearningAttemptSummary {
 
 const activitySelect =
   'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,subjects(name),learning_questions(id,question_text,question_type,options_json,explanation,points,sort_order)';
+const teacherActivitySelect =
+  'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,created_at,subjects(name),learning_questions(id,question_text,question_type,options_json,correct_answer_json,explanation,points,sort_order),learning_assignments(id,class_id,due_at,classes(name))';
 
 async function read<T>(
   query: PromiseLike<{
@@ -402,7 +413,7 @@ export const learningCenterService = {
     read<LearningActivity[]>(
       supabase
         .from('learning_activities')
-        .select(activitySelect)
+        .select(teacherActivitySelect)
         .eq('institution_id', institutionId)
         .eq('teacher_id', teacherId)
         .order('created_at', { ascending: false }),
@@ -488,6 +499,35 @@ export const learningCenterService = {
 
     return { id: assignmentId };
   },
+
+  updateActivity: async (input: {
+    activity_id: string;
+    title: string;
+    description?: string;
+    activity_type: 'PRACTICE' | 'REINFORCEMENT';
+    question_text: string;
+    options_json: string[];
+    correct_answer_json: string;
+    explanation?: string;
+  }) => {
+    const activityId = await read<string>(
+      supabase.rpc('update_learning_activity', {
+        p_activity_id: input.activity_id,
+        p_title: input.title,
+        p_description: input.description ?? null,
+        p_activity_type: input.activity_type,
+        p_question_text: input.question_text,
+        p_options_json: input.options_json,
+        p_correct_answer_json: input.correct_answer_json,
+        p_explanation: input.explanation ?? null,
+      }),
+    );
+
+    return { id: activityId };
+  },
+
+  deleteActivity: (activityId: string) =>
+    read<boolean>(supabase.rpc('delete_learning_activity', { p_activity_id: activityId })),
 
   assignActivity: (input: {
     institution_id: string;
