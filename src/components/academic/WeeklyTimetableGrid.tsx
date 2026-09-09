@@ -1,6 +1,5 @@
 import {
   AlertTriangle,
-  BookOpen,
   CalendarDays,
   Coffee,
   MapPin,
@@ -87,23 +86,17 @@ function TimetableLessonCard({
 
   return (
     <article className="rounded-lg border border-[#d8e0ec] bg-white p-2.5 shadow-sm transition hover:border-[#1769c2] hover:shadow-md dark:border-[#334155] dark:bg-[#18212f] dark:hover:border-[#60a5fa]">
-      <div className="flex min-w-0 items-start gap-2">
-        <BookOpen
-          className="mt-0.5 h-4 w-4 shrink-0 text-[#1769c2]"
-          aria-hidden="true"
-        />
-        <div className="min-w-0">
-          <h3
-            className="break-words text-xs font-bold leading-4 text-[#181c20]"
-            title={entry.subject_name || 'Disciplina não informada'}
-          >
-            {entry.subject_name || 'Disciplina não informada'}
-          </h3>
-          <p className="mt-1 break-words text-[11px] leading-4 text-[#667085]">
-            <span>{secondaryLabel}: </span>
-            <span>{secondaryValue}</span>
-          </p>
-        </div>
+      <div className="min-w-0">
+        <h3
+          className="break-words text-xs font-bold leading-4 text-[#181c20]"
+          title={entry.subject_name || 'Disciplina não informada'}
+        >
+          {entry.subject_name || 'Disciplina não informada'}
+        </h3>
+        <p className="mt-1 break-words text-[11px] leading-4 text-[#667085]">
+          <span>{secondaryLabel}: </span>
+          <span>{secondaryValue}</span>
+        </p>
       </div>
 
       {entry.room_name && (
