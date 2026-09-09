@@ -98,6 +98,7 @@ export default function StudyCenterPage() {
   );
   const activities = usePublishedLearningActivities(
     currentInstitutionId ?? undefined,
+    profile?.id,
   );
   const collections = useStudentLearningCollections(
     currentInstitutionId ?? undefined,
@@ -138,6 +139,7 @@ export default function StudyCenterPage() {
   const selectSubject = (subjectId: string) => {
     setSelectedSubjectId(subjectId);
     setSelectedUnitId('');
+    void activities.refetch();
   };
 
   return (
@@ -271,8 +273,8 @@ export default function StudyCenterPage() {
           <Sparkles className="h-5 w-5 text-amber-500" />
           <h2 className="font-bold dark:text-white">Práticas recomendadas</h2>
         </div>
-        {activities.isLoading ? (
-          <p className="mt-3 text-sm text-slate-500">Carregando práticas...</p>
+        {activities.isLoading || activities.isFetching ? (
+          <p className="mt-3 text-sm text-slate-500">Atualizando práticas...</p>
         ) : activities.isError ? (
           <p role="alert" className="mt-3 text-sm text-red-600">Não foi possível carregar as práticas agora.</p>
         ) : selectedActivities.length ? (
@@ -289,14 +291,16 @@ export default function StudyCenterPage() {
                 </p>
                 <span className="mt-3 inline-flex items-center gap-2 text-xs font-bold text-[#005bbf]">
                   <PlayCircle className="h-4 w-4" />
-                  Começar
+                  Começar atividade
                 </span>
               </Link>
             ))}
           </div>
         ) : (
           <p className="mt-3 text-sm text-slate-500">
-            As atividades atribuídas pelos seus professores aparecerão aqui.
+            {selectedSubjectId
+              ? 'Nenhuma atividade foi atribuída para esta matéria e sua turma ainda.'
+              : 'As atividades atribuídas pelos seus professores aparecerão aqui.'}
           </p>
         )}
       </section>
