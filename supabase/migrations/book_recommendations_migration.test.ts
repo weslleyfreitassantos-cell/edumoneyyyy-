@@ -3,11 +3,11 @@ import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const migration = readFileSync(
-  resolve(process.cwd(), 'supabase/migrations/20260909001000_book_recommendations.sql'),
+  resolve(process.cwd(), 'supabase/migrations/20260909001100_book_recommendations.sql'),
   'utf8',
 );
 
-const migrationFileName = '20260909001000_book_recommendations.sql';
+const migrationFileName = '20260909001100_book_recommendations.sql';
 
 function indexOfOrFail(value: string, search: string) {
   const index = value.indexOf(search);
@@ -17,7 +17,7 @@ function indexOfOrFail(value: string, search: string) {
 
 describe('book recommendations migration', () => {
   it('uses the next unique migration version after the learning center chain', () => {
-    expect(migrationFileName).toBe('20260909001000_book_recommendations.sql');
+    expect(migrationFileName).toBe('20260909001100_book_recommendations.sql');
     expect(migration).toContain('begin;');
 
     const migrationFiles = readdirSync(
@@ -25,7 +25,7 @@ describe('book recommendations migration', () => {
     ).filter((fileName) => fileName.endsWith('.sql'));
 
     expect(
-      migrationFiles.filter((fileName) => fileName.startsWith('20260909001000_')),
+      migrationFiles.filter((fileName) => fileName.startsWith('20260909001100_')),
     ).toEqual([migrationFileName]);
   });
 
