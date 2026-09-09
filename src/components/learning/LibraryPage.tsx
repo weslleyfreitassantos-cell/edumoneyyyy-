@@ -4,7 +4,6 @@ import {
   Search,
   ShoppingCart,
   Star,
-  X,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
@@ -41,7 +40,7 @@ const recommendations: BookRecommendation[] = [
     title: 'Uma breve história do tempo',
     author: 'Stephen Hawking',
     isbn: '9788535905409',
-    coverUrl: 'https://covers.openlibrary.org/b/id/10432365-L.jpg',
+    coverUrl: null,
     note: 'Uma leitura acessível para conhecer ideias que mudaram a ciência.',
     query: 'Uma breve história do tempo Stephen Hawking',
   },
@@ -59,7 +58,7 @@ const recommendations: BookRecommendation[] = [
     title: 'O mundo assombrado pelos demônios',
     author: 'Carl Sagan',
     isbn: '9788535908349',
-    coverUrl: 'https://covers.openlibrary.org/b/id/13129044-L.jpg',
+    coverUrl: null,
     note: 'Pensamento crítico e curiosidade científica em uma leitura envolvente.',
     query: 'O mundo assombrado pelos demônios Carl Sagan',
   },
@@ -145,10 +144,6 @@ function BookCover({ book }: { book: BookRecommendation }) {
 export default function LibraryPage() {
   const [search, setSearch] = useState('');
   const [subject, setSubject] = useState<Subject>('Todos');
-  const [modal, setModal] = useState<{
-    store: 'Amazon' | 'Mercado Livre';
-    url: string;
-  } | null>(null);
 
   const visible = useMemo(() => {
     const term = search.trim().toLocaleLowerCase('pt-BR');
@@ -164,13 +159,6 @@ export default function LibraryPage() {
   }, [search, subject]);
 
   const customQuery = search.trim();
-
-  function openStore(
-    store: 'Amazon' | 'Mercado Livre',
-    query: string,
-  ): void {
-    setModal({ store, url: storeUrl(store, query) });
-  }
 
   return (
     <div className="space-y-6">
@@ -232,10 +220,11 @@ export default function LibraryPage() {
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             {(['Amazon', 'Mercado Livre'] as const).map((store) => (
-              <button
+              <a
                 key={store}
-                type="button"
-                onClick={() => openStore(store, customQuery)}
+                href={storeUrl(store, customQuery)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={
                   store === 'Amazon'
                     ? 'inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-xs font-bold text-white'
@@ -244,7 +233,7 @@ export default function LibraryPage() {
               >
                 <ShoppingCart className="h-4 w-4" aria-hidden="true" />
                 Pesquisar no {store}
-              </button>
+              </a>
             ))}
           </div>
         </section>
@@ -295,10 +284,11 @@ export default function LibraryPage() {
               </div>
               <div className="mt-5 flex flex-wrap gap-2">
                 {(['Amazon', 'Mercado Livre'] as const).map((store) => (
-                  <button
+                  <a
                     key={store}
-                    type="button"
-                    onClick={() => openStore(store, book.query)}
+                    href={storeUrl(store, book.query)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-lg border border-[#cfd7e6] px-3 py-2 text-xs font-bold text-[#005bbf] hover:bg-blue-50 dark:border-slate-700 dark:hover:bg-slate-800"
                   >
                     <ExternalLink
@@ -306,7 +296,7 @@ export default function LibraryPage() {
                       aria-hidden="true"
                     />
                     {store}
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -321,54 +311,8 @@ export default function LibraryPage() {
       )}
 
       <p className="text-xs text-slate-500 dark:text-slate-400">
-        As capas são carregadas pelo ISBN em catálogo público. O TEC Escola apenas recomenda títulos e direciona para lojas oficiais.
+        As capas exibidas foram validadas em catálogo público. O TEC Escola apenas recomenda títulos e direciona para lojas oficiais.
       </p>
-
-      {modal && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Pesquisa na ${modal.store}`}
-          className="fixed inset-0 z-50 grid place-items-center bg-slate-950/60 p-4"
-        >
-          <section className="flex h-[min(760px,92vh)] w-full max-w-6xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl dark:bg-slate-900">
-            <header className="flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-3 dark:border-slate-700">
-              <strong className="text-[#181c20] dark:text-white">
-                Pesquisa na {modal.store}
-              </strong>
-              <button
-                type="button"
-                onClick={() => setModal(null)}
-                aria-label="Fechar pesquisa"
-                className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
-              >
-                <X className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </header>
-            <div className="min-h-0 flex-1 bg-slate-50 dark:bg-slate-950">
-              <iframe
-                title={`Resultados da pesquisa na ${modal.store}`}
-                src={modal.url}
-                className="h-full w-full border-0"
-              />
-            </div>
-            <footer className="flex flex-col items-start justify-between gap-3 border-t border-slate-200 px-5 py-3 dark:border-slate-700 sm:flex-row sm:items-center">
-              <span className="text-xs text-slate-500 dark:text-slate-400">
-                A loja pode bloquear visualização dentro do TEC por segurança.
-              </span>
-              <a
-                href={modal.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-xs font-bold text-white"
-              >
-                Abrir na loja
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </footer>
-          </section>
-        </div>
-      )}
     </div>
   );
 }

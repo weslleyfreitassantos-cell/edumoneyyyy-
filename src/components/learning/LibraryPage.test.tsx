@@ -32,41 +32,32 @@ beforeEach(() => {
 });
 
 describe('LibraryPage', () => {
-  it('renderiza as capas estáticas e não consulta Google Books', () => {
+  it('renderiza a capa Open Library configurada sem consultar metadata', () => {
     renderLibrary();
 
-    const covers = screen.getAllByRole('img');
+    const cover = screen.getByAltText('Capa de O povo brasileiro');
 
-    expect(covers).toHaveLength(5);
-    expect(covers[0].getAttribute('src')).toBe(
-      'https://covers.openlibrary.org/b/id/10432365-L.jpg',
-    );
-    expect(covers[0].getAttribute('alt')).toBe(
-      'Capa de Uma breve história do tempo',
+    expect(cover.getAttribute('src')).toBe(
+      'https://covers.openlibrary.org/b/id/3842030-L.jpg',
     );
     expect(mockFetch).not.toHaveBeenCalled();
-    expect(screen.getAllByText('Ciências').length).toBeGreaterThan(1);
   });
 
   it('mostra o fallback local quando a imagem da capa falha', () => {
     renderLibrary();
 
-    fireEvent.error(
-      screen.getByAltText('Capa de Uma breve história do tempo'),
-    );
+    fireEvent.error(screen.getByAltText('Capa de O povo brasileiro'));
 
-    expect(
-      screen.queryByAltText('Capa de Uma breve história do tempo'),
-    ).toBeNull();
-    expect(
-      screen.getAllByText('Uma breve história do tempo').length,
-    ).toBeGreaterThan(1);
+    expect(screen.queryByAltText('Capa de O povo brasileiro')).toBeNull();
+    expect(screen.getAllByText('O povo brasileiro').length).toBeGreaterThan(1);
   });
 
   it('mostra o fallback local quando a recomendação não possui coverUrl', () => {
     renderLibrary();
 
     expect(screen.queryByAltText('Capa de Gramática em textos')).toBeNull();
+    expect(screen.queryByAltText('Capa de Uma breve história do tempo')).toBeNull();
+    expect(screen.queryByAltText('Capa de O mundo assombrado pelos demônios')).toBeNull();
     expect(screen.getAllByText('Gramática em textos').length).toBeGreaterThan(1);
   });
 
@@ -85,49 +76,40 @@ describe('LibraryPage', () => {
     ).toBeNull();
   });
 
-  it('preserva busca livre, Amazon, Mercado Livre e modal de pesquisa', () => {
+  it('abre Amazon e Mercado Livre por links diretos em nova aba', () => {
     renderLibrary();
 
     const search = screen.getByRole('textbox', {
       name: 'Buscar livro, autor ou tema',
     });
-    fireEvent.change(search, { target: { value: 'ciência' } });
+    fireEvent.change(search, { target: { value: 'Dom Casmurro' } });
 
-    expect(
-      screen.getByRole('button', { name: /Pesquisar no Amazon/i }),
-    ).toBeTruthy();
-    expect(
-      screen.getByRole('button', {
-        name: /Pesquisar no Mercado Livre/i,
-      }),
-    ).toBeTruthy();
+    const amazonSearch = screen.getByRole('link', {
+      name: /Pesquisar no Amazon/i,
+    });
+    const mercadoSearch = screen.getByRole('link', {
+      name: /Pesquisar no Mercado Livre/i,
+    });
 
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /Pesquisar no Mercado Livre/i,
-      }),
+    expect(amazonSearch.getAttribute('target')).toBe('_blank');
+    expect(amazonSearch.getAttribute('rel')).toContain('noopener');
+    expect(amazonSearch.getAttribute('href')).toContain(
+      'amazon.com.br/s?k=Dom%20Casmurro',
     );
-    expect(
-      screen.getByRole('dialog', { name: 'Pesquisa na Mercado Livre' }),
-    ).toBeTruthy();
-    fireEvent.click(
-      screen.getByRole('button', { name: 'Fechar pesquisa' }),
+    expect(mercadoSearch.getAttribute('target')).toBe('_blank');
+    expect(mercadoSearch.getAttribute('rel')).toContain('noopener');
+    expect(mercadoSearch.getAttribute('href')).toContain(
+      'mercadolivre.com.br/Dom-Casmurro',
     );
 
-    fireEvent.change(search, { target: { value: '' } });
-    fireEvent.click(screen.getAllByRole('button', { name: 'Amazon' })[0]);
-    expect(
-      screen.getByRole('dialog', { name: 'Pesquisa na Amazon' }),
-    ).toBeTruthy();
-    expect(
-      screen.getByTitle('Resultados da pesquisa na Amazon'),
-    ).toBeTruthy();
+    const amazonCard = screen.getAllByRole('link', { name: 'Amazon' })[0];
+    const mercadoCard = screen.getAllByRole('link', {
+      name: 'Mercado Livre',
+    })[0];
 
-    fireEvent.click(
-      screen.getByRole('button', { name: 'Fechar pesquisa' }),
-    );
-    expect(
-      screen.queryByRole('dialog', { name: 'Pesquisa na Amazon' }),
-    ).toBeNull();
+    expect(amazonCard.getAttribute('target')).toBe('_blank');
+    expect(mercadoCard.getAttribute('target')).toBe('_blank');
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(screen.queryByTitle(/Resultados da pesquisa/)).toBeNull();
   });
 });
