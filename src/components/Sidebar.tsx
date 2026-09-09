@@ -285,8 +285,8 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     activePaths: ['/dashboard/library'],
     exactActivePath: true,
   },
-  { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'], exactActivePath: true },
-  { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'], exactActivePath: true },
+  { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'] },
+  { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
   {
     id: 'personalize-login',
     label: 'Personalizar login',
