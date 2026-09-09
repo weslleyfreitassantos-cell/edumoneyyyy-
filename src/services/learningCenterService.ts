@@ -473,6 +473,22 @@ export const learningCenterService = {
         .single(),
     ),
 
+  publishAndAssignActivity: async (input: {
+    activity_id: string;
+    class_id: string;
+    due_at?: string;
+  }) => {
+    const assignmentId = await read<string>(
+      supabase.rpc('publish_learning_activity', {
+        p_activity_id: input.activity_id,
+        p_class_id: input.class_id,
+        p_due_at: input.due_at ?? null,
+      }),
+    );
+
+    return { id: assignmentId };
+  },
+
   assignActivity: (input: {
     institution_id: string;
     activity_id: string;

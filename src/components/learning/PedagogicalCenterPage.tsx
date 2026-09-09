@@ -154,12 +154,9 @@ export default function PedagogicalCenterPage() {
           },
         ],
       });
-      await learningCenterService.publishActivity(activity.id);
-      await learningCenterService.assignActivity({
-        institution_id: currentInstitutionId!,
+      await learningCenterService.publishAndAssignActivity({
         activity_id: activity.id,
         class_id: input.classId,
-        assigned_by: profile!.id,
       });
       return activity;
     },
