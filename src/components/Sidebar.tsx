@@ -144,6 +144,7 @@ const adminModuleIcons: Record<
   grades: BadgeCheck,
   'term-closing': FileCheck2,
   'academic-policies': ShieldCheck,
+  'academic-calendar': CalendarDays,
   announcements: Megaphone,
 };
 
