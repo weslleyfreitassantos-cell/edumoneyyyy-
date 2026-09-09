@@ -668,6 +668,9 @@ describe('sidebar navigation helpers', () => {
     ).toContain('student-timetable');
     expect(
       teacherItems.map((item) => item.id),
+    ).toContain('library');
+    expect(
+      teacherItems.map((item) => item.id),
     ).toEqual(
       expect.arrayContaining([
         'teacher-attendance',

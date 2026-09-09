@@ -575,7 +575,7 @@ function AppRoutes() {
         <Route
           path="/dashboard/library"
           element={
-            <ProtectedRoute allowedRoles={['STUDENT']}>
+            <ProtectedRoute allowedRoles={['TEACHER', 'STUDENT']}>
               <AuthenticatedRouteContent>
                 <LibraryPage />
               </AuthenticatedRouteContent>
