@@ -11,6 +11,8 @@ export interface AssistantFeature {
 }
 
 export const FEATURE_REGISTRY: AssistantFeature[] = [
+  { id: 'student-study-center', label: 'Central de Estudos', description: 'Estude matérias, pratique e acompanhe seu progresso.', route: '/student/study', roles: ['student'], keywords: ['estudar', 'estudos', 'praticar', 'exercício', 'habilidade', 'progresso', 'central de estudos'] },
+  { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', description: 'Acompanhe práticas e o progresso das suas turmas.', route: '/teacher/pedagogical-center', roles: ['teacher'], keywords: ['pedagógica', 'atividade', 'habilidade', 'progresso', 'reforço', 'central pedagógica'] },
   { id: 'timetable', label: 'Grade horária', description: 'Configure turmas, disciplinas, professores e horários.', route: '/admin?module=timetable&view=automation', roles: ['super_admin', 'director', 'secretary'], keywords: ['grade', 'horario', 'aula', 'professor', 'turma'] },
   { id: 'student-timetable', label: 'Grade de horário', description: 'Consulte os horários das aulas da sua turma.', route: '/dashboard/timetable', roles: ['student', 'teacher'], keywords: ['grade', 'horario', 'aula', 'turma', 'calendario'] },
   { id: 'student-subjects', label: 'Disciplinas e professores', description: 'Consulte as disciplinas e os professores do período atual.', route: '/dashboard/subjects', roles: ['student'], keywords: ['disciplina', 'disciplinas', 'professor', 'professores', 'materias'] },
