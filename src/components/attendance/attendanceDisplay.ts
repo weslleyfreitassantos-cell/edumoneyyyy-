@@ -43,6 +43,38 @@ export function getTodayDateInputValue(): string {
   return `${year}-${month}-${day}`;
 }
 
+export function isAttendanceDateWithinPeriod(
+  value: string,
+  startDate: string | null | undefined,
+  endDate: string | null | undefined,
+): boolean {
+  if (!startDate || !endDate) {
+    return true;
+  }
+
+  return value >= startDate && value <= endDate;
+}
+
+export function getDateForAttendancePeriod(
+  today: string,
+  startDate: string | null | undefined,
+  endDate: string | null | undefined,
+): string {
+  if (!startDate || !endDate) {
+    return today;
+  }
+
+  if (today < startDate) {
+    return startDate;
+  }
+
+  if (today > endDate) {
+    return endDate;
+  }
+
+  return today;
+}
+
 export function getMonthStartDateInputValue(): string {
   const today = new Date();
   const year = today.getFullYear();
