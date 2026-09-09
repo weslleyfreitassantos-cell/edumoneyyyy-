@@ -24,6 +24,7 @@ export type AdminModuleId =
   | 'assignments'
   | 'term-closing'
   | 'academic-policies'
+  | 'academic-calendar'
   | 'timetable'
   | 'rooms'
   | 'finance'
@@ -246,6 +247,13 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'administration',
     permission: 'manage_academic_structure',
     href: moduleHref('academic-policies'),
+  },
+  {
+    id: 'academic-calendar',
+    label: 'Calendário escolar',
+    groupId: 'academic-configuration',
+    permission: 'manage_academic_structure',
+    href: moduleHref('academic-calendar'),
   },
 ];
 

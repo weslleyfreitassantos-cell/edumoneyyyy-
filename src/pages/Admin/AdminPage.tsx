@@ -44,6 +44,7 @@ import FinanceTab from './tabs/FinanceTab';
 import AccessControlTab from './tabs/AccessControlTab';
 import EmailTab from './tabs/EmailTab';
 import AnnouncementsTab from './tabs/AnnouncementsTab';
+import AcademicCalendarTab from './tabs/AcademicCalendarTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -353,6 +354,8 @@ export default function AdminPage() {
             institutionId={institutionQuery.data}
           />
         );
+      case 'academic-calendar':
+        return <AcademicCalendarTab />;
       case 'academic-years':
         return <AcademicYearsTab />;
       case 'classes':

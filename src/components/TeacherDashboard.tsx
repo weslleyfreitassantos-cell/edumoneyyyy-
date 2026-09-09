@@ -22,6 +22,7 @@ import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
 import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
 import TeacherTimetableView from './TeacherTimetableView';
+import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
 function getErrorMessage(
   error: unknown,
@@ -337,6 +338,11 @@ export default function TeacherDashboard() {
           }
         />
       </section>
+
+      <UpcomingAcademicEvents
+        institutionId={institutionQuery.data}
+        role="teacher"
+      />
 
       {!dashboard.enrollmentAccessAvailable && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
