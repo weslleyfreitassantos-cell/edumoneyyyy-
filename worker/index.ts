@@ -20,7 +20,7 @@ const WFR_PATHNAME = '/neonews/wfr.js';
 
 const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "frame-src 'self' https://admin.in9midia.com https://tvescola.grupotec.dev.br",
+  "frame-src 'self' https://admin.in9midia.com https://tvescola.grupotec.dev.br https://www.amazon.com.br https://lista.mercadolivre.com.br",
   "base-uri 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
