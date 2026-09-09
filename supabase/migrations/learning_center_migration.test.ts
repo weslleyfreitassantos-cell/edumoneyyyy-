@@ -78,5 +78,12 @@ describe('learning center migrations', () => {
     expect(studentActivitiesMigration).toContain("a.status = 'PUBLISHED'");
     expect(studentActivitiesMigration).toContain('st.profile_id = auth.uid()');
     expect(studentActivitiesMigration).toContain('grant execute on function public.list_student_learning_activities(uuid) to authenticated;');
+    const attemptAmbiguityFix = readFileSync(
+      resolve(process.cwd(), 'supabase/migrations/20260909001000_fix_learning_attempt_ambiguity.sql'),
+      'utf8',
+    );
+    expect(attemptAmbiguityFix).toContain('delete from public.learning_answers la');
+    expect(attemptAmbiguityFix).toContain('where la.attempt_id = v_attempt;');
+    expect(attemptAmbiguityFix).toContain('sum(la.points_awarded)');
   });
 });
