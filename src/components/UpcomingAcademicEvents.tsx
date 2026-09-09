@@ -1,16 +1,7 @@
 import { CalendarDays, Clock3 } from 'lucide-react';
 
 import { useUpcomingAcademicCalendarEvents } from '../hooks/useAcademicCalendar';
-import type { AcademicCalendarEvent } from '../services/academicCalendarService';
-
-function formatEventDate(event: AcademicCalendarEvent): string {
-  const starts = new Date(event.starts_at);
-  const date = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'medium' }).format(starts);
-
-  if (event.all_day) return `${date} • Dia inteiro`;
-
-  return `${date} • ${new Intl.DateTimeFormat('pt-BR', { timeStyle: 'short' }).format(starts)}`;
-}
+import { formatCalendarEventDate } from '../lib/academicCalendarDates';
 
 export default function UpcomingAcademicEvents({
   institutionId,
@@ -45,7 +36,7 @@ export default function UpcomingAcademicEvents({
                 </div>
                 <div className="min-w-0">
                   <h3 className="font-bold text-[#181c20] dark:text-white">{event.title}</h3>
-                  <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">{formatEventDate(event)}</p>
+                  <p className="mt-1 text-xs text-[#667085] dark:text-slate-400">{formatCalendarEventDate({ startsAt: event.starts_at, endsAt: event.ends_at, allDay: event.all_day })}</p>
                   {event.description && <p className="mt-2 line-clamp-2 text-sm text-[#414754] dark:text-slate-300">{event.description}</p>}
                 </div>
               </div>

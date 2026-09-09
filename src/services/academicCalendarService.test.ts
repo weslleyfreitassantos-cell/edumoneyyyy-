@@ -19,6 +19,7 @@ function queryBuilder(data: unknown[] = []) {
     eq: vi.fn(),
     gte: vi.fn(),
     lt: vi.fn(),
+    or: vi.fn(),
     order: vi.fn(),
     limit: vi.fn(),
     insert: vi.fn(),
@@ -26,7 +27,7 @@ function queryBuilder(data: unknown[] = []) {
     single: vi.fn(),
   } as Record<string, ReturnType<typeof vi.fn>>;
 
-  for (const method of ['select', 'eq', 'gte', 'lt', 'order', 'limit', 'insert', 'update']) {
+  for (const method of ['select', 'eq', 'gte', 'lt', 'or', 'order', 'limit', 'insert', 'update']) {
     builder[method].mockReturnValue(builder);
   }
   builder.single.mockResolvedValue({ data: data[0] ?? null, error: null });
@@ -60,6 +61,16 @@ describe('academicCalendarService', () => {
 
     expect(supabase.from).toHaveBeenCalledWith('academic_calendar_events');
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+  });
+
+  it('filtra por sobreposição quando a data está dentro de um intervalo', async () => {
+    const query = queryBuilder();
+    vi.mocked(supabase.from).mockReturnValue(query as never);
+
+    await academicCalendarService.listForStaff('institution-1', { date: '2026-07-15' });
+
+    expect(query.lt).toHaveBeenCalledWith('starts_at', '2026-07-16T00:00:00.000Z');
+    expect(query.or).toHaveBeenCalledWith('ends_at.gte.2026-07-15T00:00:00.000Z,and(ends_at.is.null,starts_at.gte.2026-07-15T00:00:00.000Z)');
   });
 
   it('cria um evento válido', async () => {
@@ -115,6 +126,7 @@ describe('academicCalendarService', () => {
 
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
     expect(query.eq).toHaveBeenCalledWith('active', true);
+    expect(query.or).toHaveBeenCalledWith(expect.stringContaining('starts_at.gte.'));
     expect(query.limit).toHaveBeenCalledWith(5);
   });
 });

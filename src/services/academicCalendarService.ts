@@ -1,4 +1,9 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  calendarDateKey,
+  calendarDateToUtcStart,
+  parseCalendarDate,
+} from '../lib/academicCalendarDates';
 
 export const ACADEMIC_CALENDAR_EVENT_TYPES = [
   'HOLIDAY',
@@ -147,17 +152,19 @@ function normalizeRow(row: AcademicCalendarQueryRow): AcademicCalendarEvent {
   };
 }
 
-function toIsoOrNull(value: string | null | undefined): string | null {
+function toIsoOrNull(
+  value: string | null | undefined,
+  allDay = false,
+): string | null {
   if (value === undefined || value === null || value.trim() === '') {
     return null;
   }
 
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) {
-    throw new Error('Informe uma data válida para o evento.');
+  if (allDay && /^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return calendarDateToUtcStart(value);
   }
 
-  return parsed.toISOString();
+  return parseCalendarDate(value).toISOString();
 }
 
 export function validateAcademicCalendarInput(
@@ -179,13 +186,25 @@ export function validateAcademicCalendarInput(
     throw new Error('Selecione um público válido.');
   }
 
-  if (!input.starts_at || Number.isNaN(new Date(input.starts_at).getTime())) {
+  if (!input.starts_at) {
     throw new Error('A data inicial do evento é obrigatória.');
   }
 
-  const startsAt = new Date(input.starts_at).getTime();
+  let startsAt: number;
+  try {
+    startsAt = parseCalendarDate(input.starts_at).getTime();
+  } catch {
+    throw new Error('A data inicial do evento é obrigatória.');
+  }
+
   const endsAt = input.ends_at
-    ? new Date(input.ends_at).getTime()
+    ? (() => {
+        try {
+          return parseCalendarDate(input.ends_at).getTime();
+        } catch {
+          return Number.NaN;
+        }
+      })()
     : null;
 
   if (endsAt !== null && Number.isNaN(endsAt)) {
@@ -214,8 +233,8 @@ function buildPayload(input: AcademicCalendarEventInput) {
     title: input.title.trim(),
     description: input.description?.trim() || null,
     event_type: input.event_type,
-    starts_at: toIsoOrNull(input.starts_at),
-    ends_at: toIsoOrNull(input.ends_at),
+    starts_at: toIsoOrNull(input.starts_at, input.all_day),
+    ends_at: toIsoOrNull(input.ends_at, input.all_day),
     all_day: input.all_day,
     audience: input.audience,
     class_id: input.class_id || null,
@@ -226,12 +245,12 @@ function buildPayload(input: AcademicCalendarEventInput) {
 }
 
 function dateStart(value: string): string {
-  return new Date(`${value}T00:00:00`).toISOString();
+  return calendarDateToUtcStart(value);
 }
 
 function dateEnd(value: string): string {
-  const end = new Date(`${value}T00:00:00`);
-  end.setDate(end.getDate() + 1);
+  const end = new Date(calendarDateToUtcStart(value));
+  end.setUTCDate(end.getUTCDate() + 1);
   return end.toISOString();
 }
 
@@ -255,8 +274,10 @@ export const academicCalendarService = {
     }
 
     if (filters.date) {
-      query = query.gte('starts_at', dateStart(filters.date));
-      query = query.lt('starts_at', dateEnd(filters.date));
+      const start = dateStart(filters.date);
+      query = query
+        .lt('starts_at', dateEnd(filters.date))
+        .or(`ends_at.gte.${start},and(ends_at.is.null,starts_at.gte.${start})`);
     }
 
     const { data, error } = await query;
@@ -269,12 +290,14 @@ export const academicCalendarService = {
     institutionId: string,
     limit = 5,
   ): Promise<AcademicCalendarEvent[]> {
+    const now = new Date().toISOString();
+    const todayStart = calendarDateToUtcStart(calendarDateKey(now));
     const { data, error } = await supabase
       .from('academic_calendar_events')
       .select(EVENT_SELECT)
       .eq('institution_id', institutionId)
       .eq('active', true)
-      .gte('starts_at', new Date().toISOString())
+      .or(`starts_at.gte.${now},ends_at.gte.${now},and(all_day.eq.true,ends_at.gte.${todayStart})`)
       .order('starts_at', { ascending: true })
       .limit(limit);
 

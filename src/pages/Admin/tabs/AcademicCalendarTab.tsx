@@ -32,6 +32,12 @@ import {
   type AcademicCalendarEventType,
 } from '../../../services/academicCalendarService';
 import { getPreferredAcademicYear } from '../../../lib/academicSelection';
+import {
+  calendarDateKey,
+  calendarEventDateKeys,
+  formatCalendarEventDate,
+  isCalendarEventUpcoming,
+} from '../../../lib/academicCalendarDates';
 
 interface CalendarDraft {
   title: string;
@@ -105,8 +111,8 @@ function draftFromEvent(event: AcademicCalendarEvent): CalendarDraft {
     title: event.title,
     description: event.description ?? '',
     event_type: event.event_type,
-    starts_at: event.all_day ? localDateValue(starts) : localDateTimeValue(starts),
-    ends_at: ends ? (event.all_day ? localDateValue(ends) : localDateTimeValue(ends)) : '',
+    starts_at: event.all_day ? calendarDateKey(event.starts_at, true) : localDateTimeValue(starts),
+    ends_at: ends ? (event.all_day ? calendarDateKey(event.ends_at ?? '', true) : localDateTimeValue(ends)) : '',
     all_day: event.all_day,
     audience: event.audience,
     class_id: event.class_id ?? '',
@@ -114,25 +120,6 @@ function draftFromEvent(event: AcademicCalendarEvent): CalendarDraft {
     subject_id: event.subject_id ?? '',
     active: event.active,
   };
-}
-
-function eventDateKey(value: string): string {
-  return localDateValue(new Date(value));
-}
-
-function formatEventDate(event: AcademicCalendarEvent): string {
-  const starts = new Date(event.starts_at);
-  const date = new Intl.DateTimeFormat('pt-BR', {
-    dateStyle: 'medium',
-  }).format(starts);
-
-  if (event.all_day) return `${date} • Dia inteiro`;
-
-  const time = new Intl.DateTimeFormat('pt-BR', {
-    timeStyle: 'short',
-  }).format(starts);
-
-  return `${date} • ${time}`;
 }
 
 function monthLabel(date: Date): string {
@@ -197,8 +184,13 @@ export default function AcademicCalendarTab() {
   const eventsByDate = useMemo(() => {
     const result = new Map<string, AcademicCalendarEvent[]>();
     for (const event of events) {
-      const key = eventDateKey(event.starts_at);
-      result.set(key, [...(result.get(key) ?? []), event]);
+      for (const key of calendarEventDateKeys({
+        startsAt: event.starts_at,
+        endsAt: event.ends_at,
+        allDay: event.all_day,
+      })) {
+        result.set(key, [...(result.get(key) ?? []), event]);
+      }
     }
     return result;
   }, [events]);
@@ -206,7 +198,11 @@ export default function AcademicCalendarTab() {
   const upcomingEvents = useMemo(() => {
     const now = Date.now();
     return events
-      .filter((event) => event.active && new Date(event.starts_at).getTime() >= now)
+      .filter((event) => event.active && isCalendarEventUpcoming({
+        startsAt: event.starts_at,
+        endsAt: event.ends_at,
+        allDay: event.all_day,
+      }, now))
       .slice(0, 5);
   }, [events]);
 
@@ -437,11 +433,11 @@ export default function AcademicCalendarTab() {
       <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr]">
         <section className="rounded-xl border border-[#dfe3e8] bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <div className="border-b border-[#dfe3e8] p-5 dark:border-slate-700"><h2 className="font-extrabold text-[#181c20] dark:text-white">Próximos eventos</h2><p className="mt-1 text-sm text-[#667085] dark:text-slate-400">Os próximos compromissos ativos da instituição.</p></div>
-          {upcomingEvents.length === 0 ? <p className="p-8 text-center text-sm text-[#667085] dark:text-slate-400">Nenhum evento cadastrado para este período.</p> : <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">{upcomingEvents.map((event) => <button key={event.id} type="button" onClick={() => setSelectedEvent(event)} className="flex w-full items-start justify-between gap-4 p-5 text-left hover:bg-slate-50 dark:hover:bg-slate-800"><span className="min-w-0"><strong className="block truncate text-sm text-[#181c20] dark:text-white">{event.title}</strong><span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">{formatEventDate(event)} · {eventTypeLabels[event.event_type]}</span></span><span className="shrink-0 rounded-full bg-blue-50 px-2 py-1 text-[11px] font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">{audienceLabels[event.audience]}</span></button>)}</div>}
+          {upcomingEvents.length === 0 ? <p className="p-8 text-center text-sm text-[#667085] dark:text-slate-400">Nenhum evento cadastrado para este período.</p> : <div className="divide-y divide-[#dfe3e8] dark:divide-slate-700">{upcomingEvents.map((event) => <button key={event.id} type="button" onClick={() => setSelectedEvent(event)} className="flex w-full items-start justify-between gap-4 p-5 text-left hover:bg-slate-50 dark:hover:bg-slate-800"><span className="min-w-0"><strong className="block truncate text-sm text-[#181c20] dark:text-white">{event.title}</strong><span className="mt-1 block text-xs text-[#667085] dark:text-slate-400">{formatCalendarEventDate({ startsAt: event.starts_at, endsAt: event.ends_at, allDay: event.all_day })} · {eventTypeLabels[event.event_type]}</span></span><span className="shrink-0 rounded-full bg-blue-50 px-2 py-1 text-[11px] font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-200">{audienceLabels[event.audience]}</span></button>)}</div>}
         </section>
 
         <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-          {selectedEvent ? <><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">Detalhes do evento</p><h2 className="mt-2 text-lg font-extrabold text-[#181c20] dark:text-white">{selectedEvent.title}</h2></div><button type="button" onClick={() => setSelectedEvent(null)} aria-label="Fechar detalhes" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"><X className="h-5 w-5" aria-hidden="true" /></button></div><dl className="mt-5 space-y-3 text-sm"><div><dt className="font-bold text-[#667085] dark:text-slate-400">Quando</dt><dd className="mt-1 text-[#181c20] dark:text-slate-200">{formatEventDate(selectedEvent)}</dd></div><div><dt className="font-bold text-[#667085] dark:text-slate-400">Tipo e público</dt><dd className="mt-1 text-[#181c20] dark:text-slate-200">{eventTypeLabels[selectedEvent.event_type]} · {audienceLabels[selectedEvent.audience]}{selectedEvent.class_name ? ` · ${selectedEvent.class_name}` : ''}</dd></div>{selectedEvent.subject_name && <div><dt className="font-bold text-[#667085] dark:text-slate-400">Disciplina</dt><dd className="mt-1 text-[#181c20] dark:text-slate-200">{selectedEvent.subject_name}</dd></div>}{selectedEvent.description && <div><dt className="font-bold text-[#667085] dark:text-slate-400">Descrição</dt><dd className="mt-1 whitespace-pre-wrap text-[#181c20] dark:text-slate-200">{selectedEvent.description}</dd></div>}</dl><div className="mt-6 flex flex-wrap gap-2"><button type="button" onClick={() => openEditEvent(selectedEvent)} className="inline-flex items-center gap-2 rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-bold text-[#005bbf] dark:border-slate-600"><Edit3 className="h-4 w-4" aria-hidden="true" /> Editar</button><button type="button" onClick={() => void toggleActive(selectedEvent)} disabled={activeMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-bold text-[#414754] dark:border-slate-600 dark:text-slate-200">{selectedEvent.active ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}{selectedEvent.active ? 'Desativar' : 'Ativar'}</button></div></> : <div className="grid min-h-48 place-items-center text-center text-sm text-[#667085] dark:text-slate-400"><CalendarDays className="h-8 w-8 text-[#005bbf]" aria-hidden="true" /><p className="mt-2">Selecione um evento para consultar os detalhes.</p></div>}
+          {selectedEvent ? <><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">Detalhes do evento</p><h2 className="mt-2 text-lg font-extrabold text-[#181c20] dark:text-white">{selectedEvent.title}</h2></div><button type="button" onClick={() => setSelectedEvent(null)} aria-label="Fechar detalhes" className="rounded-lg p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"><X className="h-5 w-5" aria-hidden="true" /></button></div><dl className="mt-5 space-y-3 text-sm"><div><dt className="font-bold text-[#667085] dark:text-slate-400">Quando</dt><dd className="mt-1 text-[#181c20] dark:text-slate-200">{formatCalendarEventDate({ startsAt: selectedEvent.starts_at, endsAt: selectedEvent.ends_at, allDay: selectedEvent.all_day })}</dd></div><div><dt className="font-bold text-[#667085] dark:text-slate-400">Tipo e público</dt><dd className="mt-1 text-[#181c20] dark:text-slate-200">{eventTypeLabels[selectedEvent.event_type]} · {audienceLabels[selectedEvent.audience]}{selectedEvent.class_name ? ` · ${selectedEvent.class_name}` : ''}</dd></div>{selectedEvent.subject_name && <div><dt className="font-bold text-[#667085] dark:text-slate-400">Disciplina</dt><dd className="mt-1 text-[#181c20] dark:text-slate-200">{selectedEvent.subject_name}</dd></div>}{selectedEvent.description && <div><dt className="font-bold text-[#667085] dark:text-slate-400">Descrição</dt><dd className="mt-1 whitespace-pre-wrap text-[#181c20] dark:text-slate-200">{selectedEvent.description}</dd></div>}</dl><div className="mt-6 flex flex-wrap gap-2"><button type="button" onClick={() => openEditEvent(selectedEvent)} className="inline-flex items-center gap-2 rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-bold text-[#005bbf] dark:border-slate-600"><Edit3 className="h-4 w-4" aria-hidden="true" /> Editar</button><button type="button" onClick={() => void toggleActive(selectedEvent)} disabled={activeMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-bold text-[#414754] dark:border-slate-600 dark:text-slate-200">{selectedEvent.active ? <EyeOff className="h-4 w-4" aria-hidden="true" /> : <Eye className="h-4 w-4" aria-hidden="true" />}{selectedEvent.active ? 'Desativar' : 'Ativar'}</button></div></> : <div className="grid min-h-48 place-items-center text-center text-sm text-[#667085] dark:text-slate-400"><CalendarDays className="h-8 w-8 text-[#005bbf]" aria-hidden="true" /><p className="mt-2">Selecione um evento para consultar os detalhes.</p></div>}
         </section>
       </div>
     </div>
