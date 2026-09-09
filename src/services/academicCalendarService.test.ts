@@ -127,6 +127,8 @@ describe('academicCalendarService', () => {
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
     expect(query.eq).toHaveBeenCalledWith('active', true);
     expect(query.or).toHaveBeenCalledWith(expect.stringContaining('starts_at.gte.'));
+    expect(query.or).toHaveBeenCalledWith(expect.stringContaining('and(all_day.eq.true,starts_at.gte.'));
+    expect(query.or).toHaveBeenCalledWith(expect.stringContaining('and(all_day.eq.true,ends_at.gte.'));
     expect(query.limit).toHaveBeenCalledWith(5);
   });
 });

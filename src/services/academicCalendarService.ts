@@ -2,6 +2,7 @@ import { supabase } from '../lib/supabaseClient';
 import {
   calendarDateKey,
   calendarDateToUtcStart,
+  nextCalendarDateKey,
   parseCalendarDate,
 } from '../lib/academicCalendarDates';
 
@@ -291,13 +292,15 @@ export const academicCalendarService = {
     limit = 5,
   ): Promise<AcademicCalendarEvent[]> {
     const now = new Date().toISOString();
-    const todayStart = calendarDateToUtcStart(calendarDateKey(now));
+    const todayKey = calendarDateKey(now, true);
+    const todayStart = calendarDateToUtcStart(todayKey);
+    const tomorrowStart = calendarDateToUtcStart(nextCalendarDateKey(todayKey));
     const { data, error } = await supabase
       .from('academic_calendar_events')
       .select(EVENT_SELECT)
       .eq('institution_id', institutionId)
       .eq('active', true)
-      .or(`starts_at.gte.${now},ends_at.gte.${now},and(all_day.eq.true,ends_at.gte.${todayStart})`)
+      .or(`starts_at.gte.${now},ends_at.gte.${now},and(all_day.eq.true,starts_at.gte.${todayStart},starts_at.lt.${tomorrowStart}),and(all_day.eq.true,ends_at.gte.${todayStart})`)
       .order('starts_at', { ascending: true })
       .limit(limit);
 

@@ -69,4 +69,34 @@ describe('academicCalendarDates', () => {
       allDay: false,
     }, now)).toBe(false);
   });
+
+  it('mantém all-day de hoje durante todo o dia civil, inclusive sem fim', () => {
+    const now = new Date('2026-09-15T10:00:00.000Z').getTime();
+
+    expect(isCalendarEventUpcoming({
+      startsAt: '2026-09-15T00:00:00.000Z',
+      endsAt: null,
+      allDay: true,
+    }, now)).toBe(true);
+    expect(isCalendarEventUpcoming({
+      startsAt: '2026-09-14T00:00:00.000Z',
+      endsAt: null,
+      allDay: true,
+    }, now)).toBe(false);
+    expect(isCalendarEventUpcoming({
+      startsAt: '2026-09-16T00:00:00.000Z',
+      endsAt: null,
+      allDay: true,
+    }, now)).toBe(true);
+    expect(isCalendarEventUpcoming({
+      startsAt: '2026-09-10T00:00:00.000Z',
+      endsAt: '2026-09-15T00:00:00.000Z',
+      allDay: true,
+    }, now)).toBe(true);
+    expect(isCalendarEventUpcoming({
+      startsAt: '2026-09-10T00:00:00.000Z',
+      endsAt: '2026-09-14T00:00:00.000Z',
+      allDay: true,
+    }, now)).toBe(false);
+  });
 });

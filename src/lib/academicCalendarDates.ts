@@ -129,7 +129,7 @@ export function isCalendarEventUpcoming(
   now = Date.now(),
 ): boolean {
   if (event.allDay) {
-    const todayKey = calendarDateKey(new Date(now).toISOString());
+    const todayKey = calendarDateKey(new Date(now).toISOString(), true);
     const startKey = calendarDateKey(event.startsAt, true);
     const endKey = event.endsAt
       ? calendarDateKey(event.endsAt, true)
