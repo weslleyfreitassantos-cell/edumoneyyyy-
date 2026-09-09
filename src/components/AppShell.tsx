@@ -195,6 +195,9 @@ export function getRouteVisualContext(
     }
 
     if (role === 'teacher') {
+      if (normalizedPath.startsWith('/teacher/pedagogical-center')) {
+        return { section: 'Acadêmico', title: 'Central Pedagógica' };
+      }
       if (normalizedPath === '/dashboard/timetable') {
         return {
           section: 'Acadêmico',
@@ -244,6 +247,9 @@ export function getRouteVisualContext(
     }
 
     if (role === 'student') {
+      if (normalizedPath.startsWith('/student/study')) {
+        return { section: 'Acadêmico', title: 'Central de Estudos' };
+      }
       if (normalizedPath === '/dashboard/timetable') {
         return {
           section: 'Acadêmico',
