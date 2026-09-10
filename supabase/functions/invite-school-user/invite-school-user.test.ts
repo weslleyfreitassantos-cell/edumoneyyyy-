@@ -61,7 +61,8 @@ describe('invite-school-user', () => {
   });
 
   it('allows an ADMIN to create a director only in the selected institution', () => {
-    expect(source).toContain('["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"]');
+    expect(source).toContain('["DIRECTOR"]');
+    expect(source).toContain('["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"]');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
     expect(source).toContain('role: input.role');
   });

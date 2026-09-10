@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  canManageTargetRole,
   getDeleteAuthorizationDecision,
   getUpdateAuthorizationDecision,
   type UpdateAuthorizationContext,
@@ -25,6 +26,32 @@ const activeStudentReset: UpdateAuthorizationInput = {
 };
 
 describe("manage-school-user update authorization", () => {
+  it("aplica a matriz de papeis por autoridade", () => {
+    const secretaryAuthorization = {
+      ...operationalManager,
+      isDirector: false,
+      isSecretary: true,
+    };
+
+    expect(canManageTargetRole(secretaryAuthorization, "SECRETARY")).toBe(false);
+    expect(canManageTargetRole(secretaryAuthorization, "TEACHER")).toBe(true);
+    expect(canManageTargetRole(secretaryAuthorization, "STUDENT")).toBe(true);
+    expect(canManageTargetRole(secretaryAuthorization, "GUARDIAN")).toBe(true);
+    expect(canManageTargetRole(secretaryAuthorization, "DIRECTOR")).toBe(false);
+    expect(
+      canManageTargetRole(
+        { ...operationalManager, isDirector: false, isOperationalManager: false, isLocalAdmin: true },
+        "DIRECTOR",
+      ),
+    ).toBe(true);
+    expect(
+      canManageTargetRole(
+        { ...operationalManager, isDirector: false, isOperationalManager: false, isLocalAdmin: true },
+        "TEACHER",
+      ),
+    ).toBe(false);
+  });
+
   it("permite DIRECTOR redefinir senha de STUDENT ativo da mesma instituição", () => {
     expect(
       getUpdateAuthorizationDecision(operationalManager, activeStudentReset),
@@ -46,7 +73,7 @@ describe("manage-school-user update authorization", () => {
     ).toEqual({ allowed: false, code: "TARGET_MEMBERSHIP_INACTIVE" });
   });
 
-  it.each(["TEACHER", "GUARDIAN", "SECRETARY", "DIRECTOR"])(
+  it.each(["TEACHER", "GUARDIAN", "SECRETARY"])(
     "permite ao gestor atualizar %s",
     (targetRole) => {
       expect(
@@ -64,6 +91,16 @@ describe("manage-school-user update authorization", () => {
       getUpdateAuthorizationDecision(operationalManager, {
         ...activeStudentReset,
         targetRole: "ADMIN",
+        studentActive: null,
+      }),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("bloqueia DIRECTOR de editar outro DIRECTOR", () => {
+    expect(
+      getUpdateAuthorizationDecision(operationalManager, {
+        ...activeStudentReset,
+        targetRole: "DIRECTOR",
         studentActive: null,
       }),
     ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
@@ -141,7 +178,7 @@ describe("manage-school-user update authorization", () => {
         },
         {
           ...activeStudentReset,
-          targetRole: "TEACHER",
+          targetRole: "DIRECTOR",
           studentActive: null,
         },
       ),
@@ -223,7 +260,7 @@ describe("manage-school-user delete authorization", () => {
     expect(
       getDeleteAuthorizationDecision(
         { ...directorAuthorization, isDirector: false, ...overrides },
-        ordinaryDeleteTarget,
+        { ...ordinaryDeleteTarget, targetRole: "DIRECTOR" },
       ),
     ).toEqual({ allowed: true });
   });
@@ -288,5 +325,74 @@ describe("manage-school-user delete authorization", () => {
       allowed: false,
       code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE",
     });
+  });
+
+  it("bloqueia ADMIN local de atualizar usuario operacional", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isLocalAdmin: true, isOperationalManager: false },
+        { ...activeStudentReset, targetRole: "TEACHER", studentActive: null },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("permite ADMIN local atualizar somente DIRECTOR", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isLocalAdmin: true, isOperationalManager: false },
+        { ...activeStudentReset, targetRole: "DIRECTOR", studentActive: null },
+      ),
+    ).toEqual({ allowed: true });
+  });
+
+  it("bloqueia SECRETARY de editar DIRECTOR", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        { ...activeStudentReset, targetRole: "DIRECTOR", studentActive: null },
+      ),
+    ).toEqual({ allowed: false, code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE" });
+  });
+
+  it("bloqueia SECRETARY de editar outra SECRETARY", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        { ...activeStudentReset, targetRole: "SECRETARY", studentActive: null },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("bloqueia SECRETARY de alterar TEACHER para SECRETARY", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        {
+          ...activeStudentReset,
+          targetRole: "TEACHER",
+          requestedRole: "SECRETARY",
+          studentActive: null,
+          hasRole: true,
+        },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("bloqueia SECRETARY de remover outra SECRETARY", () => {
+    expect(
+      getDeleteAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        { ...ordinaryDeleteTarget, targetRole: "SECRETARY" },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("bloqueia ADMIN local de remover usuario operacional", () => {
+    expect(
+      getDeleteAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isLocalAdmin: true, isOperationalManager: false },
+        ordinaryDeleteTarget,
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
   });
 });

@@ -54,10 +54,6 @@ describe('unified user invite model', () => {
   it('resolve alvos permitidos por papel efetivo', () => {
     expect(getAllowedInviteTargets('ADMIN')).toEqual([
       'DIRECTOR',
-      'SECRETARY',
-      'TEACHER',
-      'STUDENT',
-      'GUARDIAN',
     ]);
     expect(getAllowedInviteTargets('DIRECTOR')).toEqual([
       'SECRETARY',

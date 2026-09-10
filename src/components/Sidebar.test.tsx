@@ -172,7 +172,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('não exibe Diretores como módulo administrativo', () => {
+  it('exibe Diretores e oculta Secretaria para ADMIN', () => {
     renderSidebar();
 
     fireEvent.click(
@@ -180,11 +180,14 @@ describe('Sidebar', () => {
     );
 
     expect(
-      screen.queryByRole('link', { name: /^diretores$/i }),
+      screen.getByRole('link', { name: /^diretores$/i }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', { name: /^secretaria$/i }),
     ).toBeNull();
     expect(
-      screen.getByRole('link', { name: /^secretaria$/i }),
-    ).toBeTruthy();
+      screen.queryByRole('button', { name: /comunica..o e recursos/i }),
+    ).toBeNull();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {

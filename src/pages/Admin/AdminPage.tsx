@@ -25,6 +25,7 @@ import { buildSchoolSetupFlow } from '../../lib/schoolSetupFlow';
 import {
   ADMIN_MODULES,
   DEFAULT_ADMIN_MODULE_ID,
+  isAdminModuleAvailable,
   isAdminModuleId,
   type AdminModuleId,
 } from './adminNavigation';
@@ -109,7 +110,12 @@ export default function AdminPage() {
   const modules = useMemo(
     () =>
       ADMIN_MODULES.filter((module) =>
-        can(module.permission),
+        can(module.permission) &&
+        isAdminModuleAvailable(
+          module,
+          institutionQuery.currentRole,
+          profile?.platform_role,
+        ),
       ),
     [
       profile?.platform_role,
@@ -326,6 +332,14 @@ export default function AdminPage() {
         );
       case 'school-users':
         return <SchoolUsersTab />;
+      case 'directors':
+        return (
+          <SchoolUsersTab
+            fixedRole="DIRECTOR"
+            inviteTargets={['DIRECTOR']}
+            inviteHeading="Cadastro de diretor"
+          />
+        );
       case 'students':
         return <StudentsTab />;
       case 'teachers':

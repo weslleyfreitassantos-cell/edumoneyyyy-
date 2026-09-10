@@ -105,6 +105,8 @@ function getTargetNote(
       return 'Cria usuario, profile, membership GUARDIAN, vinculo guardianships e envia as credenciais por e-mail.';
     case 'DIRECTOR':
       return 'Cria usuario, profile e membership DIRECTOR. Apenas ADMIN da conta pode criar este acesso.';
+    case 'SECRETARY':
+      return 'Cria usuario, profile e membership SECRETARY. O acesso operacional e administrado pela Direcao.';
   }
 }
 
@@ -192,21 +194,11 @@ export default function UnifiedUserInvitePreview({
   }, [allowedTargetsProp, roleAllowedTargets]);
 
   const visibleOptions = useMemo(() => {
-    if (allowedTargetsProp) {
-      return UNIFIED_USER_INVITE_OPTIONS.filter((option) =>
-        allowedTargetsProp.includes(option.target),
-      );
-    }
-
-    if (roleAllowedTargets.length === 0) {
-      return UNIFIED_USER_INVITE_OPTIONS;
-    }
-
     return UNIFIED_USER_INVITE_OPTIONS.filter(
       (option) =>
         allowedTargets.includes(option.target),
     );
-  }, [allowedTargets, allowedTargetsProp, roleAllowedTargets]);
+  }, [allowedTargets]);
 
   const canManageSchoolUsers =
     hasEffectivePermission({

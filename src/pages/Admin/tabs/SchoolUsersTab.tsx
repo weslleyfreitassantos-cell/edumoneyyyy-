@@ -29,6 +29,8 @@ import StatusBadge from '../../../components/StatusBadge';
 
 import {
   CURRENT_DATABASE_ROLES,
+  canManageSchoolUserRole,
+  getManageableSchoolUserRoles,
   hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
@@ -95,6 +97,20 @@ const editableRoleOptions: {
   { value: 'STUDENT', label: 'Aluno' },
   { value: 'GUARDIAN', label: 'Responsável' },
 ];
+
+function getEditableRoleOptions(
+  requesterRole: string | null | undefined,
+  targetRole: CurrentDatabaseRole,
+): typeof editableRoleOptions {
+  const manageableRoles = getManageableSchoolUserRoles(requesterRole);
+  const allowedRoles = manageableRoles.includes(targetRole)
+    ? manageableRoles
+    : [targetRole];
+
+  return editableRoleOptions.filter((option) =>
+    allowedRoles.includes(option.value),
+  );
+}
 
 const SCHOOL_USERS_PAGE_SIZE = 6;
 
@@ -316,7 +332,12 @@ function UserActions({
   currentRole: CurrentDatabaseRole | string | null;
 }) {
   const userName = user.profile?.full_name ?? 'usuario';
-  const canDelete = !(currentRole === 'SECRETARY' && user.role === 'DIRECTOR');
+  const canManage = canManageSchoolUserRole(currentRole, user.role);
+  const canDelete = canManage;
+
+  if (!canManage) {
+    return null;
+  }
 
   return (
     <ActionGroup>
@@ -523,6 +544,7 @@ function SchoolUserEditDialog({
   onSubmit,
   isSubmitting,
   allowRoleChange,
+  roleOptions,
 }: {
   user: SchoolUserRow;
   onClose: () => void;
@@ -533,6 +555,7 @@ function SchoolUserEditDialog({
   }) => void;
   isSubmitting: boolean;
   allowRoleChange: boolean;
+  roleOptions: typeof editableRoleOptions;
 }) {
   const [fullName, setFullName] = useState(
     user.profile?.full_name ?? '',
@@ -624,7 +647,7 @@ function SchoolUserEditDialog({
               }
               className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             >
-              {editableRoleOptions.map((option) => (
+              {roleOptions.map((option) => (
                 <option
                   key={option.value}
                   value={option.value}
@@ -815,6 +838,10 @@ export default function SchoolUsersTab({
 
   const isManaging =
     manageUserMutation.isPending;
+  const managementRole =
+    profile?.platform_role === 'SUPER_ADMIN'
+      ? 'SUPER_ADMIN'
+      : institutionQuery.currentRole;
 
   function handleEditSubmit(input: {
     fullName: string;
@@ -1129,7 +1156,7 @@ export default function SchoolUsersTab({
             onEdit={setEditingUser}
             onDelete={handleDeleteUser}
             isBusy={isManaging}
-            currentRole={institutionQuery.currentRole}
+            currentRole={managementRole}
           />
         )}
 
@@ -1197,7 +1224,16 @@ export default function SchoolUsersTab({
           onClose={() => setEditingUser(null)}
           onSubmit={handleEditSubmit}
           isSubmitting={isManaging}
-          allowRoleChange={!(institutionQuery.currentRole === 'SECRETARY' && editingUser.role === 'DIRECTOR')}
+          allowRoleChange={
+            getEditableRoleOptions(
+              managementRole,
+              editingUser.role,
+            ).some((option) => option.value !== editingUser.role)
+          }
+          roleOptions={getEditableRoleOptions(
+            managementRole,
+            editingUser.role,
+          )}
         />
       )}
     </div>
