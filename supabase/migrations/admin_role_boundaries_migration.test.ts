@@ -10,6 +10,8 @@ describe('admin role boundaries migration', () => {
   it('keeps institutional announcements under operational roles', () => {
     expect(migration).toContain("array['DIRECTOR', 'SECRETARY']::public.user_role[]");
     expect(migration).not.toContain("array['ADMIN', 'DIRECTOR', 'SECRETARY']");
+    expect(migration).toContain('create or replace function private.has_exact_institution_role(');
+    expect(migration).toContain('private.has_exact_institution_role(');
   });
 
   it('rebuilds every staff policy without changing audience policies', () => {

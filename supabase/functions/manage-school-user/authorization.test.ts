@@ -27,18 +27,17 @@ const activeStudentReset: UpdateAuthorizationInput = {
 
 describe("manage-school-user update authorization", () => {
   it("aplica a matriz de papeis por autoridade", () => {
-    expect(
-      canManageTargetRole(
-        { ...operationalManager, isDirector: false, isSecretary: true },
-        "DIRECTOR",
-      ),
-    ).toBe(false);
-    expect(
-      canManageTargetRole(
-        { ...operationalManager, isDirector: false, isSecretary: true },
-        "TEACHER",
-      ),
-    ).toBe(true);
+    const secretaryAuthorization = {
+      ...operationalManager,
+      isDirector: false,
+      isSecretary: true,
+    };
+
+    expect(canManageTargetRole(secretaryAuthorization, "SECRETARY")).toBe(false);
+    expect(canManageTargetRole(secretaryAuthorization, "TEACHER")).toBe(true);
+    expect(canManageTargetRole(secretaryAuthorization, "STUDENT")).toBe(true);
+    expect(canManageTargetRole(secretaryAuthorization, "GUARDIAN")).toBe(true);
+    expect(canManageTargetRole(secretaryAuthorization, "DIRECTOR")).toBe(false);
     expect(
       canManageTargetRole(
         { ...operationalManager, isDirector: false, isOperationalManager: false, isLocalAdmin: true },
@@ -353,6 +352,39 @@ describe("manage-school-user delete authorization", () => {
         { ...activeStudentReset, targetRole: "DIRECTOR", studentActive: null },
       ),
     ).toEqual({ allowed: false, code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE" });
+  });
+
+  it("bloqueia SECRETARY de editar outra SECRETARY", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        { ...activeStudentReset, targetRole: "SECRETARY", studentActive: null },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("bloqueia SECRETARY de alterar TEACHER para SECRETARY", () => {
+    expect(
+      getUpdateAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        {
+          ...activeStudentReset,
+          targetRole: "TEACHER",
+          requestedRole: "SECRETARY",
+          studentActive: null,
+          hasRole: true,
+        },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
+  });
+
+  it("bloqueia SECRETARY de remover outra SECRETARY", () => {
+    expect(
+      getDeleteAuthorizationDecision(
+        { ...directorAuthorization, isDirector: false, isSecretary: true },
+        { ...ordinaryDeleteTarget, targetRole: "SECRETARY" },
+      ),
+    ).toEqual({ allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" });
   });
 
   it("bloqueia ADMIN local de remover usuario operacional", () => {

@@ -127,7 +127,7 @@ export function canManageTargetRole(
     return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"].includes(targetRole);
   }
   if (authorization.isSecretary) {
-    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"].includes(targetRole);
+    return ["TEACHER", "STUDENT", "GUARDIAN"].includes(targetRole);
   }
   return false;
 }

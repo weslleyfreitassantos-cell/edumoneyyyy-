@@ -94,7 +94,6 @@ describe('school permissions', () => {
       'GUARDIAN',
     ]);
     expect(getManageableSchoolUserRoles('SECRETARY')).toEqual([
-      'SECRETARY',
       'TEACHER',
       'STUDENT',
       'GUARDIAN',
