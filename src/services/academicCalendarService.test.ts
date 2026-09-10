@@ -10,6 +10,7 @@ import {
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     from: vi.fn(),
+    rpc: vi.fn(),
   },
 }));
 
@@ -53,6 +54,34 @@ beforeEach(() => {
 });
 
 describe('academicCalendarService', () => {
+  it('consulta os bloqueios da data no contexto informado', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{ event_id: 'event-1', event_type: 'HOLIDAY' }],
+      error: null,
+    } as never);
+
+    const status = await academicCalendarService.getAcademicDateStatus({
+      institutionId: 'institution-1',
+      academicYearId: 'year-1',
+      classId: 'class-1',
+      subjectId: 'subject-1',
+    }, '2026-09-15');
+
+    expect(supabase.rpc).toHaveBeenCalledWith('get_academic_day_blockers', {
+      p_institution_id: 'institution-1',
+      p_date: '2026-09-15',
+      p_academic_year_id: 'year-1',
+      p_class_id: 'class-1',
+      p_subject_id: 'subject-1',
+    });
+    expect(status).toEqual({
+      date: '2026-09-15',
+      state: 'BLOCKED',
+      blocked: true,
+      blockers: [{ event_id: 'event-1', event_type: 'HOLIDAY' }],
+    });
+  });
+
   it('lista eventos filtrando pela instituição atual', async () => {
     const query = queryBuilder();
     vi.mocked(supabase.from).mockReturnValue(query as never);

@@ -5,6 +5,12 @@ import {
   nextCalendarDateKey,
   parseCalendarDate,
 } from '../lib/academicCalendarDates';
+import {
+  createAcademicDateStatus,
+  type AcademicDateBlocker,
+  type AcademicDateStatus,
+  type AcademicDateStatusContext,
+} from '../lib/academicCalendarStatus';
 
 export const ACADEMIC_CALENDAR_EVENT_TYPES = [
   'HOLIDAY',
@@ -73,6 +79,8 @@ export interface AcademicCalendarEventFilters {
   audience?: AcademicCalendarAudience | 'ALL';
   date?: string;
 }
+
+export type { AcademicDateStatusContext, AcademicDateStatus } from '../lib/academicCalendarStatus';
 
 interface AcademicCalendarRelation {
   id: string;
@@ -256,6 +264,30 @@ function dateEnd(value: string): string {
 }
 
 export const academicCalendarService = {
+  async getAcademicDateStatus(
+    context: AcademicDateStatusContext,
+    date: string,
+  ): Promise<AcademicDateStatus> {
+    if (!context.institutionId.trim()) {
+      throw new Error('A instituição é obrigatória para consultar o status da data.');
+    }
+
+    const { data, error } = await supabase.rpc('get_academic_day_blockers', {
+      p_institution_id: context.institutionId,
+      p_date: date,
+      p_academic_year_id: context.academicYearId ?? null,
+      p_class_id: context.classId ?? null,
+      p_subject_id: context.subjectId ?? null,
+    });
+
+    if (error) throw error;
+
+    return createAcademicDateStatus(
+      date,
+      (data ?? []) as AcademicDateBlocker[],
+    );
+  },
+
   async listForStaff(
     institutionId: string,
     filters: AcademicCalendarEventFilters = {},
