@@ -25,11 +25,17 @@ export default function TeacherTimetableView({
   institutionId,
   teacherProfileId,
   termId,
+  termName,
+  termStartDate,
+  termEndDate,
   shifts,
 }: {
   institutionId: string;
   teacherProfileId: string;
   termId?: string;
+  termName?: string | null;
+  termStartDate?: string | null;
+  termEndDate?: string | null;
   shifts: readonly (string | null)[];
 }) {
   const timetableQuery = useTeacherTimetable(
@@ -80,6 +86,10 @@ export default function TeacherTimetableView({
       scheduleBreak.active &&
       teacherShifts.has(normalizeAcademicShift(scheduleBreak.shift)),
   );
+  const formatDate = (value: string) => {
+    const [year, month, day] = value.split('-');
+    return `${day}/${month}/${year}`;
+  };
 
   return (
     <motion.div
@@ -100,6 +110,17 @@ export default function TeacherTimetableView({
             <p className="mt-2 text-sm text-[#727785]">
               Horários publicados das turmas e disciplinas atribuídas a você.
             </p>
+            {termName && (
+              <p className="mt-3 text-sm font-medium text-[#005bbf]">
+                Período atual: {termName}
+                {termStartDate && termEndDate && (
+                  <span className="font-normal text-[#727785]">
+                    {' '}
+                    ({formatDate(termStartDate)} a {formatDate(termEndDate)})
+                  </span>
+                )}
+              </p>
+            )}
           </div>
 
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf]">

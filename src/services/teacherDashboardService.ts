@@ -1,4 +1,8 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  getAcademicTermForDate,
+  getLocalDateInputValue,
+} from '../lib/academicTermDates';
 
 interface ClassRelation {
   id: string;
@@ -21,6 +25,7 @@ interface SubjectRelation {
 
 interface TermRelation {
   id: string;
+  name: string;
   start_date: string;
   end_date: string;
   active: boolean | null;
@@ -71,6 +76,10 @@ export interface TeacherOffering {
   subjectCode: string | null;
   workload: number | null;
 
+  termName: string | null;
+  termStartDate: string | null;
+  termEndDate: string | null;
+
   studentCount: number | null;
 }
 
@@ -98,19 +107,40 @@ function normalizeRelation<T>(
 }
 
 function calculateEffectiveDate(startDate: string, endDate: string): string {
-  const today = new Date();
-  const start = new Date(`${startDate}T00:00:00.000Z`);
-  const end = new Date(`${endDate}T23:59:59.999Z`);
-  
-  if (today.getTime() < start.getTime()) {
+  const today = getLocalDateInputValue();
+
+  if (today < startDate) {
     return startDate;
   }
-  
-  if (today.getTime() > end.getTime()) {
+
+  if (today > endDate) {
     return endDate;
   }
-  
-  return today.toISOString().split('T')[0];
+
+  return today;
+}
+
+export function selectTeacherOfferingForDate(
+  offerings: readonly TeacherOffering[],
+  value: string = getLocalDateInputValue(),
+): TeacherOffering | null {
+  const currentTerm = getAcademicTermForDate(
+    offerings.map((offering) => ({
+      id: offering.termId,
+      startDate: offering.termStartDate,
+      endDate: offering.termEndDate,
+      active: true,
+    })),
+    value,
+  );
+
+  return (
+    offerings.find(
+      (offering) => offering.termId === currentTerm?.id,
+    ) ??
+    offerings[0] ??
+    null
+  );
 }
 
 export const teacherDashboardService = {
@@ -150,6 +180,7 @@ export const teacherDashboardService = {
         ),
         terms:term_id (
           id,
+          name,
           start_date,
           end_date,
           active
@@ -292,6 +323,7 @@ export const teacherDashboardService = {
             row,
             classRecord,
             subjectRecord,
+            termRecord,
           }) => {
             if (
               !classRecord ||
@@ -328,6 +360,15 @@ export const teacherDashboardService = {
 
               workload:
                 subjectRecord.workload,
+
+              termName:
+                termRecord?.name ?? null,
+
+              termStartDate:
+                termRecord?.start_date ?? null,
+
+              termEndDate:
+                termRecord?.end_date ?? null,
 
               studentCount:
                 enrollmentAccessAvailable

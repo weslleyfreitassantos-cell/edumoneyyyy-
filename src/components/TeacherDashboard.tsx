@@ -16,8 +16,12 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 
 import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
 
-import type { TeacherOffering } from '../services/teacherDashboardService';
+import {
+  selectTeacherOfferingForDate,
+  type TeacherOffering,
+} from '../services/teacherDashboardService';
 import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
 import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
@@ -196,12 +200,20 @@ export default function TeacherDashboard() {
     );
   }
 
+  const currentTermOffering = selectTeacherOfferingForDate(
+    dashboard.offerings,
+    getLocalDateInputValue(),
+  );
+
   if (location.pathname === '/dashboard/timetable') {
     return (
       <TeacherTimetableView
         institutionId={institutionQuery.data}
         teacherProfileId={profile.id}
-        termId={dashboard.offerings[0]?.termId}
+        termId={currentTermOffering?.termId}
+        termName={currentTermOffering?.termName}
+        termStartDate={currentTermOffering?.termStartDate}
+        termEndDate={currentTermOffering?.termEndDate}
         shifts={dashboard.offerings.map(
           (offering) => offering.shift,
         )}

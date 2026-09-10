@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabaseClient';
+import { isAcademicTermDateWithinRange } from '../lib/academicTermDates';
 
 export const ATTENDANCE_RECORD_STATUSES = [
   'PRESENT',
@@ -619,7 +620,11 @@ export function selectAttendanceOfferingForDate(
     return (
       !start ||
       !end ||
-      (sessionDate >= start && sessionDate <= end)
+      isAcademicTermDateWithinRange(
+        sessionDate,
+        start,
+        end,
+      )
     );
   });
 
