@@ -90,6 +90,8 @@ function recommendation(overrides: Partial<BookRecommendation> = {}): BookRecomm
     author: 'Carl Sagan',
     isbn: null,
     note: 'Leitura para pensamento crítico.',
+    coverPath: null,
+    coverUrl: null,
     active: true,
     createdBy: 'teacher-1',
     createdAt: '2026-09-09T10:00:00.000Z',
@@ -129,6 +131,16 @@ describe('LibraryPage', () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it('renderiza a capa assinada e volta ao placeholder quando a imagem falha', () => {
+    state.teacherRecommendations = [recommendation({ coverUrl: 'https://signed.example/cover' })];
+    renderLibrary();
+
+    const image = screen.getByRole('img', { name: 'Capa de O mundo assombrado pelos demônios' });
+    expect(image.getAttribute('src')).toBe('https://signed.example/cover');
+    fireEvent.error(image);
+    expect(screen.getByTestId('book-cover-placeholder')).toBeTruthy();
+  });
+
   it('permite criar uma indicação escolhendo uma oferta ativa do professor', () => {
     renderLibrary();
 
@@ -145,6 +157,40 @@ describe('LibraryPage', () => {
         author: 'Machado de Assis',
         subjectOfferingId: offering.id,
       }),
+    }));
+  });
+
+  it('envia a capa opcional sem expor controles de upload para alunos', () => {
+    renderLibrary();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Indicar livro' }));
+    fireEvent.change(screen.getByRole('textbox', { name: 'Título' }), { target: { value: 'Dom Casmurro' } });
+    fireEvent.change(screen.getByRole('textbox', { name: 'Autor' }), { target: { value: 'Machado de Assis' } });
+    fireEvent.change(screen.getByRole('combobox', { name: 'Turma e disciplina' }), { target: { value: offering.id } });
+    const file = new File(['cover'], 'cover.webp', { type: 'image/webp' });
+    fireEvent.change(screen.getByTestId('book-cover-input'), { target: { files: [file] } });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar indicação' }));
+
+    expect(state.create).toHaveBeenCalledWith(expect.objectContaining({ coverFile: file }));
+
+    state.role = 'STUDENT';
+    state.studentRecommendations = [recommendation()];
+    cleanup();
+    renderLibrary();
+    expect(screen.queryByTestId('book-cover-input')).toBeNull();
+  });
+
+  it('permite remover a capa atual durante a edição', () => {
+    state.teacherRecommendations = [recommendation({ coverUrl: 'https://signed.example/cover', coverPath: 'institution-1/recommendation-1/cover.jpg' })];
+    renderLibrary();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Editar O mundo assombrado pelos demônios' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Remover capa' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar alterações' }));
+
+    expect(state.update).toHaveBeenCalledWith(expect.objectContaining({
+      removeCover: true,
+      coverFile: null,
     }));
   });
 

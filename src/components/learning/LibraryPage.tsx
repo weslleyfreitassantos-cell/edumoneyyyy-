@@ -12,7 +12,7 @@ import {
   Trash2,
   X,
 } from 'lucide-react';
-import { useMemo, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useState, type ChangeEvent, type FormEvent } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
@@ -25,6 +25,7 @@ import {
   useTeacherBookRecommendations,
   useUpdateBookRecommendation,
 } from '../../hooks/useBookRecommendations';
+import { validateBookRecommendationCover } from '../../services/bookRecommendationValidation';
 import type {
   BookRecommendation,
   BookRecommendationFilters,
@@ -32,7 +33,10 @@ import type {
   BookRecommendationOffering,
 } from '../../services/bookRecommendationService';
 
-type Draft = Omit<BookRecommendationInput, 'institutionId'>;
+type Draft = Omit<BookRecommendationInput, 'institutionId'> & {
+  coverFile: File | null;
+  removeCover: boolean;
+};
 
 const EMPTY_DRAFT: Draft = {
   subjectOfferingId: '',
@@ -41,6 +45,8 @@ const EMPTY_DRAFT: Draft = {
   isbn: '',
   note: '',
   active: true,
+  coverFile: null,
+  removeCover: false,
 };
 
 function storeUrl(store: 'Amazon' | 'Mercado Livre', query: string): string {
@@ -66,10 +72,23 @@ function CoverPlaceholder({ title }: { title: string }) {
   );
 }
 
-function BookCover({ title }: { title: string }) {
+function BookCover({ title, coverUrl }: { title: string; coverUrl: string | null }) {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  useEffect(() => {
+    setImageFailed(false);
+  }, [coverUrl]);
+
   return (
     <div className="h-44 w-32 shrink-0 overflow-hidden rounded-lg border border-[#dfe3e8] bg-blue-50 dark:border-slate-700 dark:bg-blue-950/40">
-      <CoverPlaceholder title={title} />
+      {coverUrl && !imageFailed ? (
+        <img
+          src={coverUrl}
+          alt={`Capa de ${title}`}
+          className="h-full w-full object-cover"
+          onError={() => setImageFailed(true)}
+        />
+      ) : <CoverPlaceholder title={title} />}
     </div>
   );
 }
@@ -177,6 +196,7 @@ function RecommendationForm({
   draft,
   offerings,
   editing,
+  currentCoverUrl,
   isPending,
   error,
   onChange,
@@ -186,12 +206,42 @@ function RecommendationForm({
   draft: Draft;
   offerings: readonly BookRecommendationOffering[];
   editing: boolean;
+  currentCoverUrl: string | null;
   isPending: boolean;
   error: string | null;
   onChange: (next: Partial<Draft>) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
   onCancel: () => void;
 }) {
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [coverError, setCoverError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!draft.coverFile) {
+      setPreviewUrl(null);
+      return;
+    }
+
+    const nextUrl = URL.createObjectURL(draft.coverFile);
+    setPreviewUrl(nextUrl);
+    return () => URL.revokeObjectURL(nextUrl);
+  }, [draft.coverFile]);
+
+  function handleCoverChange(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0] ?? null;
+    const validationError = validateBookRecommendationCover(file);
+    setCoverError(validationError);
+    if (validationError) {
+      event.target.value = '';
+      onChange({ coverFile: null });
+      return;
+    }
+    onChange({ coverFile: file, removeCover: false });
+  }
+
+  const previewCoverUrl = previewUrl ?? (draft.removeCover ? null : currentCoverUrl);
+  const hasCover = Boolean(previewCoverUrl || currentCoverUrl);
+
   return (
     <section aria-label={editing ? 'Editar indicação' : 'Nova indicação'} className="rounded-2xl border border-blue-200 bg-blue-50/70 p-5 dark:border-blue-900/70 dark:bg-blue-950/30">
       <div className="flex items-start justify-between gap-3">
@@ -227,6 +277,28 @@ function RecommendationForm({
           <span className="mb-1 block text-sm font-semibold text-[#181c20] dark:text-white">Observação <span className="font-normal text-slate-500">(opcional)</span></span>
           <textarea aria-label="Observação" maxLength={2000} rows={3} value={draft.note ?? ''} onChange={(event) => onChange({ note: event.target.value })} className="w-full rounded-xl border border-[#cfd7e6] bg-white px-3 py-2 text-sm outline-none dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
         </label>
+        <div className="flex items-start gap-4 md:col-span-2">
+          <BookCover title={draft.title || 'Capa do livro'} coverUrl={previewCoverUrl} />
+          <div className="min-w-0 flex-1">
+            <span className="mb-1 block text-sm font-semibold text-[#181c20] dark:text-white">Capa <span className="font-normal text-slate-500">(opcional)</span></span>
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+              aria-label="Capa do livro"
+              data-testid="book-cover-input"
+              onChange={handleCoverChange}
+              className="block w-full rounded-xl border border-[#cfd7e6] bg-white px-3 py-2 text-sm text-slate-700 file:mr-3 file:rounded-lg file:border-0 file:bg-blue-50 file:px-3 file:py-1.5 file:text-xs file:font-bold file:text-[#005bbf] dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:file:bg-blue-950/60 dark:file:text-blue-300"
+            />
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">JPG, PNG ou WebP, até 5 MB.</p>
+            {hasCover && !draft.removeCover ? (
+              <button type="button" onClick={() => onChange({ coverFile: null, removeCover: true })} className="mt-2 inline-flex items-center gap-2 rounded-lg border border-red-200 px-3 py-2 text-xs font-bold text-red-700 dark:border-red-900 dark:text-red-300">
+                <Trash2 className="h-4 w-4" aria-hidden="true" /> Remover capa
+              </button>
+            ) : null}
+            {draft.removeCover ? <button type="button" onClick={() => onChange({ removeCover: false })} className="mt-2 inline-flex items-center gap-2 rounded-lg border border-blue-200 px-3 py-2 text-xs font-bold text-[#005bbf] dark:border-blue-900 dark:text-blue-300">Manter capa atual</button> : null}
+            {coverError ? <p role="alert" className="mt-2 text-sm font-medium text-red-700 dark:text-red-300">{coverError}</p> : null}
+          </div>
+        </div>
         <label className="flex items-center gap-2 text-sm font-semibold text-[#181c20] dark:text-white">
           <input type="checkbox" checked={draft.active !== false} onChange={(event) => onChange({ active: event.target.checked })} />
           Indicação ativa
@@ -263,7 +335,7 @@ function RecommendationCard({
   return (
     <article className={`flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm dark:bg-slate-900 ${recommendation.active ? 'border-[#dfe3e8] dark:border-slate-800' : 'border-slate-300 opacity-80 dark:border-slate-700'}`}>
       <div className="flex gap-4 p-5">
-        <BookCover title={recommendation.title} />
+         <BookCover title={recommendation.title} coverUrl={recommendation.coverUrl} />
         <div className="min-w-0 flex-1">
           <span className={`inline-flex rounded-full px-2 py-1 text-[11px] font-bold ${recommendation.active ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300' : 'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}`}>
             {recommendation.active ? 'Ativa' : 'Inativa'}
@@ -309,6 +381,7 @@ export default function LibraryPage() {
   const [editing, setEditing] = useState<BookRecommendation | null>(null);
   const [draft, setDraft] = useState<Draft>(EMPTY_DRAFT);
   const [formError, setFormError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   const teacherRecommendations = useTeacherBookRecommendations(institutionId, profile?.id ?? null, filters, isTeacher);
   const studentRecommendations = useStudentBookRecommendations(institutionId, { search: filters.search, subjectOfferingId: filters.subjectOfferingId }, !isTeacher);
@@ -336,13 +409,15 @@ export default function LibraryPage() {
     setEditing(null);
     setDraft(EMPTY_DRAFT);
     setFormError(null);
+    setNotice(null);
     setFormOpen(true);
   }
 
   function openEdit(recommendation: BookRecommendation) {
     setEditing(recommendation);
-    setDraft({ subjectOfferingId: recommendation.subjectOfferingId, title: recommendation.title, author: recommendation.author, isbn: recommendation.isbn ?? '', note: recommendation.note ?? '', active: recommendation.active });
+    setDraft({ subjectOfferingId: recommendation.subjectOfferingId, title: recommendation.title, author: recommendation.author, isbn: recommendation.isbn ?? '', note: recommendation.note ?? '', active: recommendation.active, coverFile: null, removeCover: false });
     setFormError(null);
+    setNotice(null);
     setFormOpen(true);
   }
 
@@ -356,11 +431,18 @@ export default function LibraryPage() {
     event.preventDefault();
     if (!institutionId || !profile?.id) return;
     setFormError(null);
-    const input: BookRecommendationInput = { institutionId, ...draft };
+    const { coverFile, removeCover, ...metadata } = draft;
+    const input: BookRecommendationInput = { institutionId, ...metadata };
     try {
-      if (editing) await updateRecommendation.mutateAsync({ id: editing.id, input });
-      else await createRecommendation.mutateAsync({ input, createdBy: profile.id });
+      const result = editing
+        ? await updateRecommendation.mutateAsync({ id: editing.id, input, coverFile, removeCover })
+        : await createRecommendation.mutateAsync({ input, createdBy: profile.id, coverFile });
       closeForm();
+      if (result?.coverUploadError) {
+        setNotice(editing
+          ? 'Indicação atualizada, mas a capa não pôde ser salva. Você pode tentar novamente ao editar.'
+          : 'Indicação criada, mas a capa não pôde ser enviada. Você pode adicioná-la ao editar.');
+      }
     } catch (error) {
       setFormError(error instanceof Error ? error.message : 'Não foi possível salvar a indicação.');
     }
@@ -395,7 +477,9 @@ export default function LibraryPage() {
         </div>
       </section> : null}
 
-      {isTeacher && formOpen ? <RecommendationForm draft={draft} offerings={activeOfferings} editing={Boolean(editing)} isPending={createRecommendation.isPending || updateRecommendation.isPending} error={formError} onChange={(next) => setDraft((current) => ({ ...current, ...next }))} onSubmit={handleSubmit} onCancel={closeForm} /> : null}
+      {notice ? <section role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm font-medium text-amber-900 dark:border-amber-900/70 dark:bg-amber-950/30 dark:text-amber-200">{notice}</section> : null}
+
+      {isTeacher && formOpen ? <RecommendationForm draft={draft} offerings={activeOfferings} editing={Boolean(editing)} currentCoverUrl={editing?.coverUrl ?? null} isPending={createRecommendation.isPending || updateRecommendation.isPending} error={formError} onChange={(next) => setDraft((current) => ({ ...current, ...next }))} onSubmit={handleSubmit} onCancel={closeForm} /> : null}
 
       {isLoading ? <LoadingState /> : isError ? <ErrorState onRetry={retry} /> : <>
         <div className="flex items-center justify-between gap-3">

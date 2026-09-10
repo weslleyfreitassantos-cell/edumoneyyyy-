@@ -68,8 +68,15 @@ export function useCreateBookRecommendation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ input, createdBy }: { input: BookRecommendationInput; createdBy: string }) =>
-      bookRecommendationService.create(input, createdBy),
+    mutationFn: ({
+      input,
+      createdBy,
+      coverFile,
+    }: {
+      input: BookRecommendationInput;
+      createdBy: string;
+      coverFile?: File | null;
+    }) => bookRecommendationService.createWithCover(input, createdBy, coverFile),
     onSuccess: () => invalidateBookRecommendations(queryClient),
   });
 }
@@ -78,8 +85,17 @@ export function useUpdateBookRecommendation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, input }: { id: string; input: BookRecommendationInput }) =>
-      bookRecommendationService.update(id, input),
+    mutationFn: ({
+      id,
+      input,
+      coverFile,
+      removeCover,
+    }: {
+      id: string;
+      input: BookRecommendationInput;
+      coverFile?: File | null;
+      removeCover?: boolean;
+    }) => bookRecommendationService.updateWithCover(id, input, { coverFile, removeCover }),
     onSuccess: () => invalidateBookRecommendations(queryClient),
   });
 }
