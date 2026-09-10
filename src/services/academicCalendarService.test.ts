@@ -82,6 +82,22 @@ describe('academicCalendarService', () => {
     });
   });
 
+  it('rejeita data civil inválida antes da RPC', async () => {
+    await expect(academicCalendarService.getAcademicDateStatus({
+      institutionId: 'institution-1',
+    }, '15/09/2026')).rejects.toThrow('Informe uma data civil válida.');
+
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
+  it('rejeita instituição vazia antes da RPC', async () => {
+    await expect(academicCalendarService.getAcademicDateStatus({
+      institutionId: ' ',
+    }, '2026-09-15')).rejects.toThrow('A instituição é obrigatória');
+
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
   it('lista eventos filtrando pela instituição atual', async () => {
     const query = queryBuilder();
     vi.mocked(supabase.from).mockReturnValue(query as never);

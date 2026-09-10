@@ -272,6 +272,8 @@ export const academicCalendarService = {
       throw new Error('A instituição é obrigatória para consultar o status da data.');
     }
 
+    calendarDateToUtcStart(date);
+
     const { data, error } = await supabase.rpc('get_academic_day_blockers', {
       p_institution_id: context.institutionId,
       p_date: date,
