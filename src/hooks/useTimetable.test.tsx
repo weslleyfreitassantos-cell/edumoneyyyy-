@@ -22,4 +22,12 @@ describe('timetableKeys', () => {
   it('gera chave entries para instituicao', () => {
     expect(timetableKeys.entries('inst-1')).toEqual(['timetable', 'entries', 'inst-1']);
   });
+
+  it('gera chave de status do calendario por contexto e data', () => {
+    expect(timetableKeys.calendarStatus('inst-1|2026-09-07|year-1|class-1|subject-1')).toEqual([
+      'timetable',
+      'calendar-status',
+      'inst-1|2026-09-07|year-1|class-1|subject-1',
+    ]);
+  });
 });

@@ -8,7 +8,10 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
-import { useTeacherTimetable } from '../hooks/useTimetable';
+import {
+  useTeacherTimetable,
+  useTimetableCalendarStatuses,
+} from '../hooks/useTimetable';
 import { selectTeacherOfferingForDate } from '../services/teacherDashboardService';
 
 import TeacherDashboard from './TeacherDashboard';
@@ -35,6 +38,7 @@ vi.mock('../hooks/useTeacherDashboard', () => ({
 
 vi.mock('../hooks/useTimetable', () => ({
   useTeacherTimetable: vi.fn(),
+  useTimetableCalendarStatuses: vi.fn(),
 }));
 
 vi.mock('./attendance/TeacherAttendancePanel', () => ({
@@ -129,6 +133,13 @@ beforeEach(() => {
 
   vi.mocked(useTeacherTimetable).mockReturnValue({
     data: [timetableEntry],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+
+  vi.mocked(useTimetableCalendarStatuses).mockReturnValue({
+    data: {},
     isLoading: false,
     isError: false,
     error: null,

@@ -1,11 +1,23 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMemo } from 'react';
+import {
+  useMutation,
+  useQueries,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 import { adminOverviewKeys } from './useAdminOverview';
 import { assignmentKeys } from './useAssignments';
+import { academicCalendarService } from '../services/academicCalendarService';
+import {
+  buildTimetableCalendarRequests,
+  type TimetableCalendarRequest,
+} from '../lib/academic/timetableOccurrences';
 import {
   timetableService,
   type RoomRow,
   type TimetableEntryRow,
 } from '../services/timetableService';
+import type { AcademicDateStatus } from '../lib/academicCalendarStatus';
 import type {
   RoomFormData,
   RoomUpdateData,
@@ -19,6 +31,7 @@ export const timetableKeys = {
   entries: (institutionId: string) => [...timetableKeys.all, 'entries', institutionId] as const,
   classEntries: (institutionId: string, classId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'class', classId, termId ?? 'current'] as const,
   teacherEntries: (institutionId: string, teacherProfileId: string, termId?: string) => [...timetableKeys.entries(institutionId), 'teacher', teacherProfileId, termId ?? 'current'] as const,
+  calendarStatus: (requestKey: string) => [...timetableKeys.all, 'calendar-status', requestKey] as const,
 };
 
 function invalidateTimetable(
@@ -149,6 +162,45 @@ export function useTeacherTimetable(
     },
     enabled: Boolean(institutionId && teacherProfileId),
   });
+}
+
+export function useTimetableCalendarStatuses(
+  institutionId: string | undefined,
+  entries: readonly TimetableEntryRow[],
+  weekStartDate: string | undefined,
+) {
+  const requests = useMemo(
+    () => weekStartDate
+      ? buildTimetableCalendarRequests(entries, weekStartDate)
+      : [],
+    [entries, weekStartDate],
+  );
+  const queryResults = useQueries({
+    queries: requests.map((request: TimetableCalendarRequest) => ({
+      queryKey: timetableKeys.calendarStatus(request.key),
+      queryFn: () => academicCalendarService.getAcademicDateStatus(
+        request.context,
+        request.date,
+      ),
+      enabled: Boolean(institutionId && weekStartDate),
+      staleTime: 60_000,
+    })),
+  });
+  const data = useMemo(
+    () => Object.fromEntries(
+      queryResults.flatMap((query, index) => (
+        query.data ? [[requests[index].key, query.data] as const] : []
+      )),
+    ) as Record<string, AcademicDateStatus>,
+    [queryResults, requests],
+  );
+
+  return {
+    data,
+    isLoading: queryResults.some((query) => query.isLoading),
+    isError: queryResults.some((query) => query.isError),
+    error: queryResults.find((query) => query.error)?.error ?? null,
+  };
 }
 
 export function useCreateTimetableEntry() {
