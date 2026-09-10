@@ -108,6 +108,70 @@ const users: SchoolUserRow[] = [
   },
 ];
 
+function createRoleFixture(
+  role: SchoolUserRow['role'],
+  count: number,
+  namePrefix: string,
+): SchoolUserRow[] {
+  return Array.from({ length: count }, (_, index) => ({
+    ...users[0],
+    id: `${role.toLowerCase()}-${index + 1}`,
+    profile_id: `${role.toLowerCase()}-profile-${index + 1}`,
+    role,
+    profile: {
+      ...users[0].profile!,
+      full_name: `${namePrefix} ${index + 1}`,
+      email: `${role.toLowerCase()}${index + 1}@escola.com`,
+    },
+  }));
+}
+
+const directorPanelUsers: SchoolUserRow[] = [
+  {
+    ...users[1],
+    id: 'director-1',
+    profile_id: 'director-profile-1',
+    active: true,
+    profile: {
+      ...users[1].profile!,
+      full_name: 'Diretor Principal',
+      email: 'diretor@escola.com',
+      active: true,
+    },
+  },
+  ...createRoleFixture('TEACHER', 25, 'Professor'),
+  ...createRoleFixture('STUDENT', 29, 'Aluno'),
+  ...createRoleFixture('GUARDIAN', 27, 'Responsável'),
+];
+
+const secretaryPanelUsers: SchoolUserRow[] = [
+  {
+    ...users[0],
+    id: 'secretary-1',
+    profile_id: 'secretary-profile-1',
+    role: 'SECRETARY',
+    active: true,
+    profile: {
+      ...users[0].profile!,
+      full_name: 'Secretária Ativa',
+      email: 'secretaria.ativa@escola.com',
+    },
+  },
+  {
+    ...users[0],
+    id: 'secretary-2',
+    profile_id: 'secretary-profile-2',
+    role: 'SECRETARY',
+    active: false,
+    profile: {
+      ...users[0].profile!,
+      full_name: 'Secretária Inativa',
+      email: 'secretaria.inativa@escola.com',
+    },
+  },
+  ...createRoleFixture('TEACHER', 1, 'Professor'),
+];
+
 function mockTabState({
   institutionId = 'institution-1',
   currentRole = 'ADMIN',
@@ -318,6 +382,68 @@ describe('SchoolUsersTab integration', () => {
         heading: 'Cadastro de secretaria',
       }),
     );
+  });
+
+  it('renderiza o painel de diretores com resumo e controles especializados', () => {
+    mockedUseSchoolUsers.mockReturnValue({
+      data: directorPanelUsers,
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolUsers>);
+
+    render(createElement(SchoolUsersTab, { fixedRole: 'DIRECTOR' }));
+
+    expect(screen.queryByText(/Exclusão protegida/)).toBeNull();
+    expect(screen.queryByText('Total por papel')).toBeNull();
+    expect(screen.queryByLabelText('Filtrar usuários por papel')).toBeNull();
+
+    const totalCard = screen.getByText('Diretores cadastrados').closest('article');
+    const activeCard = screen.getByText('Diretores ativos').closest('article');
+    const inactiveCard = screen.getByText('Diretores inativos').closest('article');
+
+    expect(totalCard?.textContent).toContain('1');
+    expect(activeCard?.textContent).toContain('1');
+    expect(inactiveCard?.textContent).toContain('0');
+
+    expect(screen.queryByRole('button', { name: 'Todos' })).toBeNull();
+    for (const label of ['Administração', 'Direção', 'Secretaria', 'Professores', 'Alunos', 'Responsáveis']) {
+      expect(screen.queryByRole('button', { name: new RegExp(`^${label}$`) })).toBeNull();
+    }
+  });
+
+  it('renderiza o painel de secretaria sem misturar outros papéis no resumo', () => {
+    mockedUseSchoolUsers.mockReturnValue({
+      data: secretaryPanelUsers,
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useSchoolUsers>);
+
+    render(createElement(SchoolUsersTab, { fixedRole: 'SECRETARY' }));
+
+    expect(screen.queryByText(/Exclusão protegida/)).toBeNull();
+    expect(screen.queryByText('Total por papel')).toBeNull();
+    expect(screen.queryByLabelText('Filtrar usuários por papel')).toBeNull();
+
+    const totalCard = screen.getByText('Secretários cadastrados').closest('article');
+    const activeCard = screen.getByText('Secretários ativos').closest('article');
+    const inactiveCard = screen.getByText('Secretários inativos').closest('article');
+
+    expect(totalCard?.textContent).toContain('2');
+    expect(activeCard?.textContent).toContain('1');
+    expect(inactiveCard?.textContent).toContain('1');
+  });
+
+  it('preserva a visão global sem fixedRole', () => {
+    render(createElement(SchoolUsersTab));
+
+    expect(screen.getByText(/Exclusão protegida/)).toBeTruthy();
+    expect(screen.getByText('Total por papel')).toBeTruthy();
+    expect(screen.getByLabelText('Filtrar usuários por papel')).toBeTruthy();
+    expect(screen.getByText('Usuários vinculados')).toBeTruthy();
+    expect(screen.getByText('Vínculos ativos')).toBeTruthy();
+    expect(screen.getByText('Vínculos inativos')).toBeTruthy();
   });
 
   it('mostra acoes de editar e excluir usuarios', () => {
