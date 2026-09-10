@@ -6,7 +6,7 @@ import { resolve } from 'node:path';
 const migrationSql = readFileSync(
   resolve(process.cwd(), 'supabase/migrations/20260910000300_book_recommendation_covers.sql'),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 
 describe('book recommendation covers migration', () => {
   it('adds a tenant-scoped cover path and private bucket limits', () => {
