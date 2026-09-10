@@ -14,6 +14,7 @@ import {
   calculateAttendanceSummary,
   getAttendanceDayOfWeek,
   isEnrollmentValidForAttendanceDate,
+  selectAttendanceOfferingForDate,
 } from './attendanceService';
 
 vi.mock('../lib/supabaseClient', () => ({
@@ -25,6 +26,7 @@ vi.mock('../lib/supabaseClient', () => ({
 interface MockQuery {
   select: ReturnType<typeof vi.fn>;
   eq: ReturnType<typeof vi.fn>;
+  in: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
   then: Promise<unknown>['then'];
 }
@@ -34,6 +36,7 @@ function createQuery(response: unknown): MockQuery {
 
   query.select = vi.fn(() => query);
   query.eq = vi.fn(() => query);
+  query.in = vi.fn(() => query);
   query.order = vi.fn(() => query);
   query.then = (
     resolve,
@@ -286,6 +289,124 @@ describe('attendanceService', () => {
       'active',
       true,
     );
+  });
+
+  it('associa os horários do dia ao offering exato e prioriza a atribuição com aula', async () => {
+    const offeringRows = [
+      {
+        id: 'offering-term-1',
+        class_id: 'class-2',
+        subject_id: 'subject-sociology',
+        teacher_profile_id: 'teacher-1',
+        term_id: 'term-1',
+        active: true,
+        created_at: '2026-02-02T10:00:00.000Z',
+        classes: {
+          id: 'class-2',
+          institution_id: 'institution-1',
+          name: '2',
+          grade_level: '2º ano',
+          shift: 'Manhã',
+          active: true,
+        },
+        subjects: {
+          id: 'subject-sociology',
+          institution_id: 'institution-1',
+          name: 'Sociologia',
+          code: 'SOC',
+          workload: 80,
+          active: true,
+        },
+        profiles: {
+          full_name: 'Isabela Monteiro',
+          email: 'isabela@escola.com',
+          active: true,
+        },
+        terms: {
+          id: 'term-1',
+          academic_year_id: 'year-1',
+          name: '1º bimestre',
+          start_date: '2026-01-01',
+          end_date: '2026-04-01',
+          active: true,
+        },
+      },
+      {
+        id: 'offering-term-3',
+        class_id: 'class-2',
+        subject_id: 'subject-sociology',
+        teacher_profile_id: 'teacher-1',
+        term_id: 'term-3',
+        active: true,
+        created_at: '2026-02-03T10:00:00.000Z',
+        classes: {
+          id: 'class-2',
+          institution_id: 'institution-1',
+          name: '2',
+          grade_level: '2º ano',
+          shift: 'Manhã',
+          active: true,
+        },
+        subjects: {
+          id: 'subject-sociology',
+          institution_id: 'institution-1',
+          name: 'Sociologia',
+          code: 'SOC',
+          workload: 80,
+          active: true,
+        },
+        profiles: {
+          full_name: 'Isabela Monteiro',
+          email: 'isabela@escola.com',
+          active: true,
+        },
+        terms: {
+          id: 'term-3',
+          academic_year_id: 'year-1',
+          name: '3º bimestre',
+          start_date: '2026-06-26',
+          end_date: '2026-09-17',
+          active: true,
+        },
+      },
+    ];
+    const offeringsQuery = createQuery({ data: offeringRows, error: null });
+    const scheduleQuery = createQuery({
+      data: [
+        {
+          subject_offering_id: 'offering-term-3',
+          day_of_week: 3,
+          start_time: '10:50:00',
+          end_time: '11:40:00',
+        },
+      ],
+      error: null,
+    });
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(offeringsQuery as unknown as ReturnType<typeof supabase.from>)
+      .mockReturnValueOnce(scheduleQuery as unknown as ReturnType<typeof supabase.from>);
+
+    const offerings = await attendanceService.listTeacherOfferings(
+      'teacher-1',
+      'institution-1',
+      '2026-09-09',
+    );
+
+    expect(offerings).toHaveLength(2);
+    expect(offerings.find((offering) => offering.id === 'offering-term-3'))
+      .toMatchObject({
+        termName: '3º bimestre',
+        scheduleSlots: [{ dayOfWeek: 3, startTime: '10:50:00', endTime: '11:40:00' }],
+      });
+    expect(offerings.find((offering) => offering.id === 'offering-term-1'))
+      .toMatchObject({ scheduleSlots: [] });
+    expect(scheduleQuery.in).toHaveBeenCalledWith(
+      'subject_offering_id',
+      ['offering-term-1', 'offering-term-3'],
+    );
+    expect(
+      selectAttendanceOfferingForDate(offerings, '2026-09-09')?.id,
+    ).toBe('offering-term-3');
   });
 
   it('não salva chamada vazia', async () => {

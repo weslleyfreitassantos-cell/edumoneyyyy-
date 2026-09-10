@@ -16,6 +16,7 @@ import { useMemo, useState, type FormEvent } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
+import { formatSubjectOfferingLabel } from '../../lib/subjectOfferingLabels';
 import {
   useCreateBookRecommendation,
   useSetBookRecommendationActive,
@@ -50,9 +51,7 @@ function storeUrl(store: 'Amazon' | 'Mercado Livre', query: string): string {
 }
 
 function formatOffering(offering: BookRecommendationOffering): string {
-  const level = offering.gradeLevel ? ` - ${offering.gradeLevel}` : '';
-  const shift = offering.shift ? ` (${offering.shift})` : '';
-  return `${offering.className}${level}${shift} • ${offering.subjectName}`;
+  return formatSubjectOfferingLabel(offering);
 }
 
 function CoverPlaceholder({ title }: { title: string }) {

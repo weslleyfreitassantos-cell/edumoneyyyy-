@@ -184,7 +184,7 @@ describe('TeacherAttendancePanel', () => {
     expect(dateInput.getAttribute('max')).toBe('2026-05-09');
     expect(
       screen.getByText(
-        'Período permitido: 09/02/2026 a 09/05/2026.',
+        'Período "1º bimestre" permitido: 09/02/2026 a 09/05/2026.',
       ),
     ).toBeTruthy();
     expect(
@@ -196,6 +196,46 @@ describe('TeacherAttendancePanel', () => {
     expect(
       screen.getByText('Bruno Lima'),
     ).toBeTruthy();
+  });
+
+  it('prioriza a atribuição com aula no dia e exibe o período no rótulo', async () => {
+    const secondOffering = {
+      ...offering,
+      id: 'offering-2',
+      termId: 'term-3',
+      termName: '3º bimestre',
+      termStartDate: null,
+      termEndDate: null,
+      scheduleSlots: [
+        {
+          dayOfWeek: 3,
+          startTime: '10:50:00',
+          endTime: '11:40:00',
+        },
+      ],
+    };
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [{ ...offering, termStartDate: null, termEndDate: null }, secondOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(
+        (screen.getByLabelText('Atribuição') as HTMLSelectElement).value,
+      ).toBe('offering-2');
+    });
+    expect(screen.getByRole('option', {
+      name: 'Matemática · Turma 1A · 3º bimestre',
+    })).toBeTruthy();
   });
 
   it('prepara uma data válida quando a atribuição não cobre hoje', async () => {
