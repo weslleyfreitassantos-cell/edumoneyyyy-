@@ -148,6 +148,11 @@ interface AttendanceScheduleQueryRow {
   end_time: string;
 }
 
+interface AttendanceOfferingScheduleQueryRow
+  extends AttendanceScheduleQueryRow {
+  subject_offering_id: string;
+}
+
 interface AttendanceRecordQueryRow {
   id: string;
   institution_id: string;
@@ -191,6 +196,7 @@ export interface AttendanceOffering {
   termName: string | null;
   termStartDate: string | null;
   termEndDate: string | null;
+  scheduleSlots?: AttendanceScheduleSlot[];
 }
 
 export interface AttendanceSession {
@@ -581,6 +587,53 @@ function normalizeOffering(
     termStartDate: term?.start_date ?? null,
     termEndDate: term?.end_date ?? null,
   };
+}
+
+function sortAttendanceOfferings(
+  offerings: AttendanceOffering[],
+): AttendanceOffering[] {
+  return offerings.sort((first, second) =>
+    first.subjectName.localeCompare(second.subjectName, 'pt-BR'),
+  );
+}
+
+export function selectAttendanceOfferingForDate(
+  offerings: readonly AttendanceOffering[],
+  sessionDate: string,
+  preservedOfferingId?: string,
+): AttendanceOffering | null {
+  if (preservedOfferingId) {
+    const preservedOffering = offerings.find(
+      (offering) => offering.id === preservedOfferingId,
+    );
+
+    if (preservedOffering) {
+      return preservedOffering;
+    }
+  }
+
+  const offeringsInPeriod = offerings.filter((offering) => {
+    const start = offering.termStartDate;
+    const end = offering.termEndDate;
+
+    return (
+      !start ||
+      !end ||
+      (sessionDate >= start && sessionDate <= end)
+    );
+  });
+
+  return (
+    offeringsInPeriod.find(
+      (offering) => (offering.scheduleSlots?.length ?? 0) > 0,
+    ) ??
+    offeringsInPeriod[0] ??
+    offerings.find(
+      (offering) => (offering.scheduleSlots?.length ?? 0) > 0,
+    ) ??
+    offerings[0] ??
+    null
+  );
 }
 
 function normalizeSession(
@@ -1358,6 +1411,7 @@ export const attendanceService = {
   async listTeacherOfferings(
     profileId: string,
     institutionId: string,
+    sessionDate?: string,
   ): Promise<AttendanceOffering[]> {
     const { data, error } = await supabase
       .from('subject_offerings')
@@ -1415,7 +1469,7 @@ export const attendanceService = {
       );
     }
 
-    return (
+    const offerings = (
       (data ?? []) as unknown as OfferingQueryRow[]
     )
       .map((row) => normalizeOffering(row, institutionId))
@@ -1424,13 +1478,67 @@ export const attendanceService = {
           offering,
         ): offering is AttendanceOffering =>
           offering !== null,
-      )
-      .sort((first, second) =>
-        first.subjectName.localeCompare(
-          second.subjectName,
-          'pt-BR',
-        ),
       );
+
+    if (!sessionDate || offerings.length === 0) {
+      return sortAttendanceOfferings(
+        offerings.map((offering) => ({
+          ...offering,
+          scheduleSlots: [],
+        })),
+      );
+    }
+
+    const dayOfWeek = getAttendanceDayOfWeek(sessionDate);
+    if (dayOfWeek < 1 || dayOfWeek > 6) {
+      return sortAttendanceOfferings(
+        offerings.map((offering) => ({
+          ...offering,
+          scheduleSlots: [],
+        })),
+      );
+    }
+
+    const { data: scheduleData, error: scheduleError } = await supabase
+      .from('timetable_entries')
+      .select('subject_offering_id, day_of_week, start_time, end_time')
+      .eq('institution_id', institutionId)
+      .in(
+        'subject_offering_id',
+        offerings.map((offering) => offering.id),
+      )
+      .eq('day_of_week', dayOfWeek)
+      .eq('active', true)
+      .order('start_time', { ascending: true });
+
+    if (scheduleError) {
+      throw createAttendanceError(
+        scheduleError,
+        'ATTENDANCE_FORBIDDEN',
+      );
+    }
+
+    const schedulesByOffering = new Map<
+      string,
+      AttendanceScheduleSlot[]
+    >();
+
+    for (const row of (scheduleData ?? []) as unknown as AttendanceOfferingScheduleQueryRow[]) {
+      const slots = schedulesByOffering.get(row.subject_offering_id) ?? [];
+      slots.push({
+        dayOfWeek: row.day_of_week,
+        startTime: row.start_time,
+        endTime: row.end_time,
+      });
+      schedulesByOffering.set(row.subject_offering_id, slots);
+    }
+
+    return sortAttendanceOfferings(
+      offerings.map((offering) => ({
+        ...offering,
+        scheduleSlots: schedulesByOffering.get(offering.id) ?? [],
+      })),
+    );
   },
 
   async loadRollCall(

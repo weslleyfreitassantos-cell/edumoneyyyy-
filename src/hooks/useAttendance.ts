@@ -19,12 +19,14 @@ export const attendanceKeys = {
   teacherOfferings: (
     profileId: string | undefined,
     institutionId: string | undefined,
+    sessionDate: string | undefined,
   ) =>
     [
       ...attendanceKeys.all,
       'teacher-offerings',
       profileId,
       institutionId,
+      sessionDate,
     ] as const,
   rollCall: (
     institutionId: string | undefined,
@@ -63,11 +65,13 @@ export const attendanceKeys = {
 export function useTeacherAttendanceOfferings(
   profileId: string | undefined,
   institutionId: string | undefined,
+  sessionDate: string | undefined,
 ) {
   return useQuery<AttendanceOffering[]>({
     queryKey: attendanceKeys.teacherOfferings(
       profileId,
       institutionId,
+      sessionDate,
     ),
     queryFn: () => {
       if (!profileId || !institutionId) {
@@ -79,9 +83,10 @@ export function useTeacherAttendanceOfferings(
       return attendanceService.listTeacherOfferings(
         profileId,
         institutionId,
+        sessionDate,
       );
     },
-    enabled: Boolean(profileId && institutionId),
+    enabled: Boolean(profileId && institutionId && sessionDate),
     staleTime: 1000 * 60 * 5,
   });
 }

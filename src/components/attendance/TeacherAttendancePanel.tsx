@@ -19,15 +19,16 @@ import {
 } from '../../hooks/useAttendance';
 import {
   ATTENDANCE_RECORD_STATUSES,
+  selectAttendanceOfferingForDate,
   type AttendanceStatus,
 } from '../../services/attendanceService';
+import { formatSubjectOfferingLabel } from '../../lib/subjectOfferingLabels';
 import {
   ATTENDANCE_STATUS_LABELS,
   formatAttendanceDate,
   formatAttendanceTime,
   getDateForAttendancePeriod,
   getTodayDateInputValue,
-  isAttendanceDateWithinPeriod,
 } from './attendanceDisplay';
 
 interface EditableAttendanceRecord {
@@ -65,6 +66,7 @@ export default function TeacherAttendancePanel({
   const [sessionDate, setSessionDate] = useState(
     getTodayDateInputValue,
   );
+  const [selectionTouched, setSelectionTouched] = useState(false);
   const [records, setRecords] = useState<
     EditableAttendanceRecord[]
   >([]);
@@ -77,6 +79,7 @@ export default function TeacherAttendancePanel({
     useTeacherAttendanceOfferings(
       profileId,
       institutionId,
+      sessionDate,
     );
 
   const offerings = offeringsQuery.data ?? [];
@@ -92,24 +95,21 @@ export default function TeacherAttendancePanel({
       return;
     }
 
-    const selectedOfferingStillExists = offerings.some(
-      (offering) => offering.id === selectedOfferingId,
+    const selectedOffering = selectAttendanceOfferingForDate(
+      offerings,
+      sessionDate,
+      selectionTouched ? selectedOfferingId : undefined,
     );
 
-    if (!selectedOfferingStillExists) {
-      const offeringForToday = offerings.find((offering) =>
-        isAttendanceDateWithinPeriod(
-          todayDate,
-          offering.termStartDate,
-          offering.termEndDate,
-        ),
-      );
-
-      setSelectedOfferingId(
-        (offeringForToday ?? offerings[0]).id,
-      );
+    if (selectedOffering && selectedOffering.id !== selectedOfferingId) {
+      setSelectedOfferingId(selectedOffering.id);
     }
-  }, [offerings, selectedOfferingId, todayDate]);
+  }, [
+    offerings,
+    selectedOfferingId,
+    selectionTouched,
+    sessionDate,
+  ]);
 
   useEffect(() => {
     if (!selectedOffering) {
@@ -316,6 +316,7 @@ export default function TeacherAttendancePanel({
                   setSelectedOfferingId(
                     event.target.value,
                   );
+                  setSelectionTouched(true);
                   setSuccessMessage('');
                 }}
                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
@@ -325,8 +326,7 @@ export default function TeacherAttendancePanel({
                     key={offering.id}
                     value={offering.id}
                   >
-                    {offering.subjectName} ·{' '}
-                    {offering.className}
+                    {formatSubjectOfferingLabel(offering)}
                   </option>
                 ))}
               </select>
@@ -361,7 +361,7 @@ export default function TeacherAttendancePanel({
               </div>
               {termStartDate && termEndDate && (
                 <p className="mt-1 text-xs text-[#727785]">
-                  Período permitido:{' '}
+                  Período {selectedOffering?.termName ? `"${selectedOffering.termName}" ` : ''}permitido:{' '}
                   {formatAttendanceDate(termStartDate)} a{' '}
                   {formatAttendanceDate(termEndDate)}.
                 </p>
