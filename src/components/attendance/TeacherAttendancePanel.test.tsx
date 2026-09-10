@@ -27,6 +27,10 @@ const useTeacherAttendanceOfferings = vi.fn();
 const useAttendanceRollCall = vi.fn();
 const useSaveAttendanceRollCall = vi.fn();
 
+vi.mock('../../lib/supabaseClient', () => ({
+  supabase: {},
+}));
+
 vi.mock('../../hooks/useAttendance', () => ({
   useTeacherAttendanceOfferings: (
     ...args: unknown[]
@@ -140,6 +144,7 @@ beforeEach(() => {
 
 afterEach(() => {
   cleanup();
+  vi.useRealTimers();
 });
 
 describe('TeacherAttendancePanel', () => {
@@ -263,6 +268,36 @@ describe('TeacherAttendancePanel', () => {
         screen.getByRole('status').textContent,
       ).toMatch(/A data de hoje está fora do período/);
     }
+  });
+
+  it('não exibe aviso quando a data civil de hoje está no período atual', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2026, 8, 9, 21, 30));
+
+    const currentOffering = {
+      ...offering,
+      termName: '3º bimestre',
+      termStartDate: '2026-06-26',
+      termEndDate: '2026-09-17',
+    };
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [currentOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(
+      (screen.getByLabelText('Data') as HTMLInputElement).value,
+    ).toBe('2026-09-09');
+    expect(screen.queryByRole('status')).toBeNull();
   });
 
   it('marca todos presentes e permite sobrescrever aluno individual', async () => {

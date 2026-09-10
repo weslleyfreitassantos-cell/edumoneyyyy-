@@ -29,6 +29,7 @@ import {
   formatAttendanceTime,
   getDateForAttendancePeriod,
   getTodayDateInputValue,
+  isAttendanceDateWithinPeriod,
 } from './attendanceDisplay';
 
 interface EditableAttendanceRecord {
@@ -121,6 +122,26 @@ export default function TeacherAttendancePanel({
       selectedOffering.termStartDate,
       selectedOffering.termEndDate,
     );
+
+    const todayIsWithinPeriod = isAttendanceDateWithinPeriod(
+      todayDate,
+      selectedOffering.termStartDate,
+      selectedOffering.termEndDate,
+    );
+
+    if (todayIsWithinPeriod) {
+      if (
+        !isAttendanceDateWithinPeriod(
+          sessionDate,
+          selectedOffering.termStartDate,
+          selectedOffering.termEndDate,
+        )
+      ) {
+        setSessionDate(todayDate);
+      }
+      setDateAdjustmentMessage('');
+      return;
+    }
 
     if (dateForPeriod === sessionDate) {
       return;

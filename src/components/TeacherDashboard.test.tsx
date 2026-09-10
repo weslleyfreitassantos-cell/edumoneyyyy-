@@ -9,11 +9,16 @@ import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
 import { useTeacherTimetable } from '../hooks/useTimetable';
+import { selectTeacherOfferingForDate } from '../services/teacherDashboardService';
 
 import TeacherDashboard from './TeacherDashboard';
 
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
+}));
+
+vi.mock('../lib/supabaseClient', () => ({
+  supabase: {},
 }));
 
 vi.mock('../hooks/useCurrentInstitution', () => ({
@@ -142,6 +147,44 @@ afterEach(() => {
 });
 
 describe('TeacherDashboard', () => {
+  it('seleciona o offering do período vigente para a grade', () => {
+    const selectedOffering = selectTeacherOfferingForDate(
+      [
+        {
+          id: 'offering-term-1',
+          termId: 'term-1',
+          termName: '1º bimestre',
+          termStartDate: '2026-01-10',
+          termEndDate: '2026-04-02',
+        },
+        {
+          id: 'offering-term-3',
+          termId: 'term-3',
+          termName: '3º bimestre',
+          termStartDate: '2026-06-26',
+          termEndDate: '2026-09-17',
+        },
+        {
+          id: 'offering-term-2',
+          termId: 'term-2',
+          termName: '2º bimestre',
+          termStartDate: '2026-04-03',
+          termEndDate: '2026-06-25',
+        },
+        {
+          id: 'offering-term-4',
+          termId: 'term-4',
+          termName: '4º bimestre',
+          termStartDate: '2026-09-18',
+          termEndDate: '2026-12-10',
+        },
+      ] as never,
+      '2026-09-09',
+    );
+
+    expect(selectedOffering?.id).toBe('offering-term-3');
+  });
+
   it('exibe a grade publicada do professor em uma rota própria', () => {
     render(
       <MemoryRouter initialEntries={['/dashboard/timetable']}>

@@ -2,6 +2,10 @@ import type {
   AttendanceStatus,
   AttendanceSummary,
 } from '../../services/attendanceService';
+import {
+  getLocalDateInputValue,
+  isAcademicTermDateWithinRange,
+} from '../../lib/academicTermDates';
 
 export const ATTENDANCE_STATUS_LABELS: Record<
   AttendanceStatus,
@@ -32,15 +36,7 @@ export function formatAttendanceTime(
 }
 
 export function getTodayDateInputValue(): string {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(
-    2,
-    '0',
-  );
-  const day = String(today.getDate()).padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
+  return getLocalDateInputValue();
 }
 
 export function isAttendanceDateWithinPeriod(
@@ -52,7 +48,11 @@ export function isAttendanceDateWithinPeriod(
     return true;
   }
 
-  return value >= startDate && value <= endDate;
+  return isAcademicTermDateWithinRange(
+    value,
+    startDate,
+    endDate,
+  );
 }
 
 export function getDateForAttendancePeriod(
@@ -64,12 +64,12 @@ export function getDateForAttendancePeriod(
     return today;
   }
 
-  if (today < startDate) {
-    return startDate;
+  if (today.slice(0, 10) < startDate.slice(0, 10)) {
+    return startDate.slice(0, 10);
   }
 
-  if (today > endDate) {
-    return endDate;
+  if (today.slice(0, 10) > endDate.slice(0, 10)) {
+    return endDate.slice(0, 10);
   }
 
   return today;
