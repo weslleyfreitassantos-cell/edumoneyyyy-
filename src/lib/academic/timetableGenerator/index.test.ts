@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  auditTimetableIntegrity,
   generateTimetable,
   timetableEntriesConflict,
   type TimetableGeneratorInput,
@@ -239,6 +240,19 @@ describe('timetable generator', () => {
     const left = { institutionId: 'institution-a', academicYearId: 'year-2027', termId: 'term-1', classId: 'class-a', subjectOfferingId: 'offering-math', teacherProfileId: 'teacher-a', subjectId: 'math', roomId: 'room-a', dayOfWeek: 1, startTime: '07:00', endTime: '07:50', locked: true };
     const right = { ...left, termId: 'term-2', subjectOfferingId: 'offering-math-2' };
     expect(timetableEntriesConflict(left, right, terms)).toBe(false);
+  });
+
+  it('audits partial overlaps for class, teacher and room while allowing adjacency', () => {
+    const terms = new Map([
+      ['term-1', { id: 'term-1', academicYearId: 'year-2027', startDate: '2027-02-01', endDate: '2027-04-30' }],
+    ]);
+    const entryA = { ...baseInput.lockedEntries?.[0], id: 'entry-a', institutionId: 'institution-a', academicYearId: 'year-2027', termId: 'term-1', classId: 'class-a', subjectOfferingId: 'offering-a', teacherProfileId: 'teacher-a', subjectId: 'math', roomId: 'room-a', dayOfWeek: 1, startTime: '08:00', endTime: '09:00', locked: false };
+    const entryB = { ...entryA, id: 'entry-b', classId: 'class-b', subjectOfferingId: 'offering-b', teacherProfileId: 'teacher-b', roomId: 'room-b', startTime: '08:30', endTime: '09:30' };
+
+    expect(auditTimetableIntegrity([entryA, { ...entryB, classId: entryA.classId }], terms).conflicts.map((conflict) => conflict.type)).toEqual(['CLASS']);
+    expect(auditTimetableIntegrity([entryA, { ...entryB, teacherProfileId: entryA.teacherProfileId }], terms).conflicts.map((conflict) => conflict.type)).toEqual(['TEACHER']);
+    expect(auditTimetableIntegrity([entryA, { ...entryB, roomId: entryA.roomId }], terms).conflicts.map((conflict) => conflict.type)).toEqual(['ROOM']);
+    expect(auditTimetableIntegrity([entryA, { ...entryB, startTime: '09:00', endTime: '10:00' }], terms)).toEqual({ valid: true, conflicts: [] });
   });
 
   it('reports an overlapping teacher conflict for fixed entries', () => {
