@@ -1,6 +1,19 @@
 import { supabase } from '../lib/supabaseClient';
+import {
+  BOOK_RECOMMENDATION_COVER_MAX_BYTES,
+  BOOK_RECOMMENDATION_COVER_MIME_TYPES,
+  validateBookRecommendationCover,
+} from './bookRecommendationValidation';
+
+export {
+  BOOK_RECOMMENDATION_COVER_MAX_BYTES,
+  BOOK_RECOMMENDATION_COVER_MIME_TYPES,
+  validateBookRecommendationCover,
+} from './bookRecommendationValidation';
 
 export type BookRecommendationStatus = 'active' | 'inactive' | 'all';
+
+export const BOOK_RECOMMENDATION_COVERS_BUCKET = 'book-recommendation-covers';
 
 export interface BookRecommendationFilters {
   search?: string;
@@ -30,6 +43,8 @@ export interface BookRecommendation {
   author: string;
   isbn: string | null;
   note: string | null;
+  coverPath: string | null;
+  coverUrl: string | null;
   active: boolean;
   createdBy: string;
   createdAt: string;
@@ -45,6 +60,11 @@ export interface BookRecommendationInput {
   isbn?: string | null;
   note?: string | null;
   active?: boolean;
+}
+
+export interface BookRecommendationMutationResult {
+  recommendation: BookRecommendation;
+  coverUploadError: string | null;
 }
 
 interface RawRecord {
@@ -88,6 +108,7 @@ const RECOMMENDATION_SELECT = `
   author,
   isbn,
   note,
+  cover_path,
   active,
   created_by,
   created_at,
@@ -119,6 +140,12 @@ function nullableString(value: unknown): string | null {
 
 function booleanValue(value: unknown): boolean {
   return value !== false;
+}
+
+function errorMessage(error: unknown): string {
+  return error instanceof Error && error.message
+    ? error.message
+    : 'Não foi possível salvar a capa.';
 }
 
 function normalizeOffering(
@@ -167,7 +194,10 @@ function normalizeOffering(
   };
 }
 
-function normalizeRecommendation(value: unknown): BookRecommendation | null {
+function normalizeRecommendation(
+  value: unknown,
+  coverUrl: string | null = null,
+): BookRecommendation | null {
   const row = asRecord(value);
   const id = stringValue(row.id);
   const institutionId = stringValue(row.institution_id);
@@ -188,6 +218,8 @@ function normalizeRecommendation(value: unknown): BookRecommendation | null {
     author,
     isbn: nullableString(row.isbn),
     note: nullableString(row.note),
+    coverPath: nullableString(row.cover_path),
+    coverUrl,
     active: booleanValue(row.active),
     createdBy: stringValue(row.created_by),
     createdAt: stringValue(row.created_at),
@@ -276,6 +308,57 @@ function sortRecommendations(
   );
 }
 
+async function hydrateCoverUrls(
+  recommendations: BookRecommendation[],
+): Promise<BookRecommendation[]> {
+  const paths = [...new Set(
+    recommendations
+      .map((recommendation) => recommendation.coverPath)
+      .filter((path): path is string => Boolean(path)),
+  )];
+  if (paths.length === 0) return recommendations;
+
+  const { data, error } = await supabase.storage
+    .from(BOOK_RECOMMENDATION_COVERS_BUCKET)
+    .createSignedUrls(paths, 300);
+  if (error || !data) return recommendations;
+
+  const urls = new Map(
+    data
+      .filter((item) => typeof item?.path === 'string' && typeof item.signedUrl === 'string')
+      .map((item) => [item.path, item.signedUrl]),
+  );
+
+  return recommendations.map((recommendation) => ({
+    ...recommendation,
+    coverUrl: recommendation.coverPath ? urls.get(recommendation.coverPath) ?? null : null,
+  }));
+}
+
+function getRandomId(): string {
+  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
+    return crypto.randomUUID();
+  }
+  return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
+function coverExtension(file: File): string {
+  if (file.type === 'image/png') return 'png';
+  if (file.type === 'image/webp') return 'webp';
+  return 'jpg';
+}
+
+function buildCoverPath(recommendation: BookRecommendation, file: File): string {
+  return `${recommendation.institutionId}/${recommendation.id}/${getRandomId()}.${coverExtension(file)}`;
+}
+
+function createMutationResult(
+  recommendation: BookRecommendation,
+  coverUploadError: string | null = null,
+): BookRecommendationMutationResult {
+  return { recommendation, coverUploadError };
+}
+
 export const bookRecommendationService = {
   async listForTeacher(
     institutionId: string,
@@ -291,12 +374,13 @@ export const bookRecommendationService = {
 
     if (error) throw error;
 
-    return sortRecommendations(
+    const recommendations = sortRecommendations(
       (data ?? [])
         .map((row) => normalizeRecommendation(row))
         .filter((row): row is BookRecommendation => row !== null)
         .filter((row) => matchesBookRecommendationFilters(row, filters)),
     );
+    return hydrateCoverUrls(recommendations);
   },
 
   async listForStudent(
@@ -312,12 +396,13 @@ export const bookRecommendationService = {
 
     if (error) throw error;
 
-    return sortRecommendations(
+    const recommendations = sortRecommendations(
       (data ?? [])
         .map((row) => normalizeRecommendation(row))
         .filter((row): row is BookRecommendation => row !== null)
         .filter((row) => matchesBookRecommendationFilters(row, { ...filters, status: 'active' })),
     );
+    return hydrateCoverUrls(recommendations);
   },
 
   async listTeacherOfferings(
@@ -370,6 +455,21 @@ export const bookRecommendationService = {
     return recommendation;
   },
 
+  async createWithCover(
+    input: BookRecommendationInput,
+    createdBy: string,
+    coverFile?: File | null,
+  ): Promise<BookRecommendationMutationResult> {
+    const recommendation = await this.create(input, createdBy);
+    if (!coverFile) return createMutationResult(recommendation);
+
+    try {
+      return createMutationResult(await this.uploadCover(recommendation, coverFile));
+    } catch (error) {
+      return createMutationResult(recommendation, errorMessage(error));
+    }
+  },
+
   async update(
     id: string,
     input: BookRecommendationInput,
@@ -394,6 +494,94 @@ export const bookRecommendationService = {
     const recommendation = normalizeRecommendation(data);
     if (!recommendation) throw new Error('A indicação atualizada não retornou seus dados.');
     return recommendation;
+  },
+
+  async updateWithCover(
+    id: string,
+    input: BookRecommendationInput,
+    options: { coverFile?: File | null; removeCover?: boolean } = {},
+  ): Promise<BookRecommendationMutationResult> {
+    const recommendation = await this.update(id, input);
+    if (options.coverFile) {
+      try {
+        return createMutationResult(await this.uploadCover(recommendation, options.coverFile));
+      } catch (error) {
+        return createMutationResult(recommendation, errorMessage(error));
+      }
+    }
+    if (options.removeCover) {
+      try {
+        return createMutationResult(await this.removeCover(recommendation));
+      } catch (error) {
+        return createMutationResult(recommendation, errorMessage(error));
+      }
+    }
+    return createMutationResult(recommendation);
+  },
+
+  async uploadCover(
+    recommendation: BookRecommendation,
+    file: File,
+  ): Promise<BookRecommendation> {
+    const validationError = validateBookRecommendationCover(file);
+    if (validationError) throw new Error(validationError);
+
+    const path = buildCoverPath(recommendation, file);
+    const storage = supabase.storage.from(BOOK_RECOMMENDATION_COVERS_BUCKET);
+    const { error: uploadError } = await storage.upload(path, file, {
+      cacheControl: '3600',
+      contentType: file.type,
+      upsert: false,
+    });
+    if (uploadError) throw uploadError;
+
+    const { data, error: updateError } = await supabase
+      .from('book_recommendations')
+      .update({ cover_path: path })
+      .eq('id', recommendation.id)
+      .eq('institution_id', recommendation.institutionId)
+      .select(RECOMMENDATION_SELECT)
+      .single();
+
+    if (updateError) {
+      await storage.remove([path]).catch(() => undefined);
+      throw updateError;
+    }
+
+    const updated = normalizeRecommendation(data);
+    if (!updated) {
+      await storage.remove([path]).catch(() => undefined);
+      throw new Error('A capa foi enviada, mas a indicação não retornou seus dados.');
+    }
+
+    if (recommendation.coverPath && recommendation.coverPath !== path) {
+      await storage.remove([recommendation.coverPath]).catch(() => undefined);
+    }
+
+    const [withUrl] = await hydrateCoverUrls([updated]);
+    return withUrl;
+  },
+
+  async removeCover(recommendation: BookRecommendation): Promise<BookRecommendation> {
+    if (!recommendation.coverPath) return recommendation;
+
+    const { data, error } = await supabase
+      .from('book_recommendations')
+      .update({ cover_path: null })
+      .eq('id', recommendation.id)
+      .eq('institution_id', recommendation.institutionId)
+      .select(RECOMMENDATION_SELECT)
+      .single();
+    if (error) throw error;
+
+    const updated = normalizeRecommendation(data);
+    if (!updated) throw new Error('A indicação atualizada não retornou seus dados.');
+
+    await supabase.storage
+      .from(BOOK_RECOMMENDATION_COVERS_BUCKET)
+      .remove([recommendation.coverPath])
+      .catch(() => undefined);
+    return updated;
   },
 
   async setActive(
