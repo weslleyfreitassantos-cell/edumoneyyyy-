@@ -15,7 +15,6 @@ export type AdminModuleId =
   | 'directors'
   | 'announcements'
   | 'email'
-  | 'announcements'
   | 'academic-years'
   | 'classes'
   | 'subjects'
@@ -105,6 +104,7 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_school_users',
     href: moduleHref('school-users'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'students',
@@ -133,6 +133,15 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_school_users',
     href: moduleHref('secretaries'),
+    allowedRoles: ['DIRECTOR'],
+  },
+  {
+    id: 'directors',
+    label: 'Diretores',
+    groupId: 'people',
+    permission: 'manage_school_users',
+    href: moduleHref('directors'),
+    allowedRoles: ['ADMIN'],
   },
   {
     id: 'email',
@@ -141,13 +150,15 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     permission: 'send_school_email',
     href: moduleHref('email'),
     visibleInSidebar: false,
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'announcements',
     label: 'Avisos',
     groupId: 'communication-resources',
-    permission: 'manage_school_users',
+    permission: 'manage_school_communications',
     href: moduleHref('announcements'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'finance',
@@ -263,7 +274,9 @@ export const DEFAULT_ADMIN_MODULE_ID: AdminModuleId =
 export function isAdminModuleAvailable(
   module: AdminModuleDefinition,
   currentRole: string | null | undefined,
+  platformRole?: string | null | undefined,
 ): boolean {
+  if (platformRole === 'SUPER_ADMIN') return true;
   if (!module.allowedRoles) return true;
   return typeof currentRole === 'string' && module.allowedRoles.includes(currentRole as CurrentDatabaseRole);
 }

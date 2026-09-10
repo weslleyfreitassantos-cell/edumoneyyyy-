@@ -16,7 +16,7 @@ import {
 type UserRole = Database["public"]["Enums"]["user_role"];
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN"
 >;
 type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
@@ -61,6 +61,7 @@ interface RollbackState {
 
 const targetRoleSchema = z.enum([
   "DIRECTOR",
+  "SECRETARY",
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
@@ -337,10 +338,10 @@ function toPublicError(error: unknown): InviteError {
 
 function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[] {
   if (requesterRole === "ADMIN") {
-    return ["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["DIRECTOR"];
   }
   if (requesterRole === "DIRECTOR") {
-    return ["TEACHER", "STUDENT", "GUARDIAN"];
+    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
   }
   return ["TEACHER", "STUDENT", "GUARDIAN"];
 }

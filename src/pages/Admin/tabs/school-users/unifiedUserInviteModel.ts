@@ -1,3 +1,7 @@
+import {
+  getManageableSchoolUserRoles,
+} from '../../../../lib/permissions';
+
 export const UNIFIED_USER_INVITE_TARGETS = [
   'STUDENT',
   'TEACHER',
@@ -210,34 +214,18 @@ export function isUnifiedInviteRole(
 export function getAllowedInviteTargets(
   currentRole: string | null | undefined,
 ): UnifiedUserInviteRole[] {
-  if (currentRole === 'ADMIN') {
-    return [
-      'DIRECTOR',
-      'SECRETARY',
-      'TEACHER',
-      'STUDENT',
-      'GUARDIAN',
-    ];
-  }
+  const inviteTargets = currentRole === 'ADMIN'
+    ? ['DIRECTOR']
+    : currentRole === 'DIRECTOR'
+      ? ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN']
+      : currentRole === 'SECRETARY'
+        ? ['TEACHER', 'STUDENT', 'GUARDIAN']
+        : [];
 
-  if (currentRole === 'DIRECTOR') {
-    return [
-      'SECRETARY',
-      'TEACHER',
-      'STUDENT',
-      'GUARDIAN',
-    ];
-  }
-
-  if (currentRole === 'SECRETARY') {
-    return [
-      'TEACHER',
-      'STUDENT',
-      'GUARDIAN',
-    ];
-  }
-
-  return [];
+  return getManageableSchoolUserRoles(currentRole).filter(
+    (target): target is UnifiedUserInviteRole =>
+      inviteTargets.includes(target as (typeof inviteTargets)[number]),
+  );
 }
 
 export function canInviteTarget(

@@ -133,9 +133,15 @@ vi.mock('./tabs/AdminOverviewTab', () => ({
 }));
 
 vi.mock('./tabs/SchoolUsersTab', () => ({
-  default: () => (
+  default: ({
+    fixedRole,
+    inviteHeading,
+  }: {
+    fixedRole?: string;
+    inviteHeading?: string;
+  }) => (
     <div data-testid="school-users-tab">
-      Aba usuarios
+      Aba usuarios {fixedRole ?? 'ALL'} {inviteHeading ?? ''}
     </div>
   ),
 }));
@@ -463,12 +469,12 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
-  it('usa a visão geral quando a rota antiga de Diretor é acessada', () => {
+  it('renderiza o cadastro de diretores para ADMIN e bloqueia a rota para DIRECTOR', () => {
     renderAdminPage('/admin?module=directors');
 
     expect(
-      screen.getByTestId('overview-tab'),
-    ).toBeTruthy();
+      screen.getByTestId('school-users-tab').textContent,
+    ).toContain('DIRECTOR');
 
     cleanup();
     mockAdminState({
@@ -485,7 +491,7 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
-  it('renderiza a tela de avisos para perfis administrativos autorizados', () => {
+  it('renderiza a tela de avisos para perfis institucionais autorizados', () => {
     mockAdminState({
       profile: {
         ...baseProfile,
@@ -514,6 +520,15 @@ describe('AdminPage URL module resolution', () => {
 
     expect(screen.getByTestId('email-tab')).toBeTruthy();
   });
+
+  it.each(['secretaries', 'announcements', 'email'])(
+    'bloqueia ADMIN da rota %s',
+    (moduleId) => {
+      renderAdminPage(`/admin?module=${moduleId}`);
+
+      expect(screen.getByTestId('overview-tab')).toBeTruthy();
+    },
+  );
 
   it('mantem modulo ao recarregar com a mesma URL', () => {
     mockAdminState({
@@ -610,16 +625,16 @@ describe('AdminPage URL module resolution', () => {
 });
 
 describe('AdminPage permissions', () => {
-  it('permite ADMIN acessar usuarios e bloqueia estrutura academica', () => {
-    renderAdminPage('/admin?module=school-users');
+  it('permite ADMIN acessar diretores e bloqueia a lista generica de usuarios', () => {
+    renderAdminPage('/admin?module=directors');
 
     expect(
-      screen.getByTestId('school-users-tab'),
+      screen.getByTestId('school-users-tab').textContent,
     ).toBeTruthy();
 
     cleanup();
     mockAdminState();
-    renderAdminPage('/admin?module=subjects');
+    renderAdminPage('/admin?module=school-users');
 
     expect(
       screen.getByTestId('overview-tab'),

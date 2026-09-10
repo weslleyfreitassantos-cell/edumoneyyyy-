@@ -7,6 +7,7 @@ import {
 import {
   CURRENT_DATABASE_ROLES,
   getEffectiveRole,
+  getManageableSchoolUserRoles,
   hasEffectivePermission,
   hasPermission,
   PLATFORM_ROLES,
@@ -84,6 +85,22 @@ describe('school permissions', () => {
     ).toBe(false);
   });
 
+  it('limita a gestão de usuários pela hierarquia administrativa', () => {
+    expect(getManageableSchoolUserRoles('ADMIN')).toEqual(['DIRECTOR']);
+    expect(getManageableSchoolUserRoles('DIRECTOR')).toEqual([
+      'SECRETARY',
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ]);
+    expect(getManageableSchoolUserRoles('SECRETARY')).toEqual([
+      'SECRETARY',
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ]);
+  });
+
   it('mantem TEACHER, STUDENT e GUARDIAN restritos', () => {
     expect(
       hasPermission(
@@ -108,10 +125,13 @@ describe('school permissions', () => {
     ).toBe(true);
   });
 
-  it('permite e-mail institucional a ADMIN, DIRECTOR e SECRETARY', () => {
+  it('mantem e-mail fora do ADMIN e avisos sob permissao propria', () => {
     expect(hasPermission(null, 'DIRECTOR', 'send_school_email')).toBe(true);
     expect(hasPermission(null, 'SECRETARY', 'send_school_email')).toBe(true);
-    expect(hasPermission(null, 'ADMIN', 'send_school_email')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'send_school_email')).toBe(false);
+    expect(hasPermission(null, 'DIRECTOR', 'manage_school_communications')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'manage_school_communications')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'manage_school_communications')).toBe(false);
     expect(hasPermission(null, 'TEACHER', 'send_school_email')).toBe(false);
     expect(hasPermission(null, 'STUDENT', 'send_school_email')).toBe(false);
     expect(hasPermission(null, 'GUARDIAN', 'send_school_email')).toBe(false);

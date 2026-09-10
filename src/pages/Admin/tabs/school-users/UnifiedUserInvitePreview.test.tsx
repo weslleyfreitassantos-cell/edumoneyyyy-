@@ -91,7 +91,7 @@ vi.mock('../../../../hooks/useStudents', () => ({
 const defaultProps = {
   institutionId:
     '22222222-2222-4222-8222-222222222222',
-  currentRole: 'ADMIN',
+  currentRole: 'DIRECTOR',
   profileRole: null,
   currentInstitutionName: 'Escola Centro',
   hasActiveInstitution: true,
@@ -143,6 +143,7 @@ describe('UnifiedUserInvitePreview', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
+        currentRole="ADMIN"
         allowedTargets={['DIRECTOR']}
         heading="Cadastro de diretor"
       />,
@@ -497,16 +498,11 @@ describe('UnifiedUserInvitePreview', () => {
     render(
       <UnifiedUserInvitePreview
         {...defaultProps}
+        currentRole="ADMIN"
       />,
     );
 
-    expect(
-      screen
-        .getByRole('button', {
-          name: /^Diretor/,
-        })
-        .hasAttribute('disabled'),
-    ).toBe(false);
+    expect(screen.getByText('Diretor')).toBeTruthy();
   });
 
   it('oculta DIRECTOR para diretor', () => {

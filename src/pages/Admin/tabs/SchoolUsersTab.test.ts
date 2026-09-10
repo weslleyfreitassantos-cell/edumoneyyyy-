@@ -321,21 +321,23 @@ describe('SchoolUsersTab integration', () => {
   });
 
   it('mostra acoes de editar e excluir usuarios', () => {
+    mockTabState({ currentRole: 'DIRECTOR' });
     render(createElement(SchoolUsersTab));
 
     expect(
       screen.getByRole('button', {
-        name: /Editar Ana Admin/i,
+        name: /Editar Patricia Professora/i,
       }),
     ).toBeTruthy();
     expect(
       screen.getByRole('button', {
-        name: /Excluir Ana Admin/i,
+        name: /Excluir Patricia Professora/i,
       }),
     ).toBeTruthy();
   });
 
   it('remove a geracao de senha aleatoria e mantem a senha manual na edicao', () => {
+    mockTabState({ currentRole: 'DIRECTOR' });
     render(createElement(SchoolUsersTab));
 
     expect(
@@ -346,7 +348,7 @@ describe('SchoolUsersTab integration', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Editar Ana Admin/i,
+        name: /Editar Patricia Professora/i,
       }),
     );
 

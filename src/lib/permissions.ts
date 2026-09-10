@@ -62,6 +62,7 @@ export const SYSTEM_PERMISSIONS = [
   'manage_assignments',
   'view_school_dashboard',
   'send_school_email',
+  'manage_school_communications',
   'view_reports',
   'view_own_classes',
   'view_own_student_data',
@@ -79,7 +80,6 @@ const ADMIN_PERMISSIONS = [
   'view_account_dashboard',
   'manage_owned_institutions',
   'manage_school_users',
-  'send_school_email',
   'view_school_dashboard',
   'view_reports',
 ] as const satisfies readonly SystemPermission[];
@@ -96,6 +96,7 @@ const DIRECTOR_PERMISSIONS = [
   'manage_finance',
   'view_school_dashboard',
   'send_school_email',
+  'manage_school_communications',
   'view_reports',
   'view_live_cameras',
 ] as const satisfies readonly SystemPermission[];
@@ -148,10 +149,46 @@ export const PLATFORM_ROLE_PERMISSIONS: Record<
     'manage_enrollments',
     'manage_academic_structure',
     'manage_assignments',
+    'manage_school_communications',
     'view_reports',
   ],
   USER: [],
 };
+
+const SCHOOL_USER_MANAGEMENT_TARGETS: Record<
+  CurrentDatabaseRole,
+  readonly CurrentDatabaseRole[]
+> = {
+  ADMIN: ['DIRECTOR'],
+  DIRECTOR: ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN'],
+  SECRETARY: ['SECRETARY', 'TEACHER', 'STUDENT', 'GUARDIAN'],
+  TEACHER: [],
+  STUDENT: [],
+  GUARDIAN: [],
+};
+
+export function getManageableSchoolUserRoles(
+  requesterRole: string | null | undefined,
+): CurrentDatabaseRole[] {
+  if (requesterRole === 'SUPER_ADMIN') {
+    return [...CURRENT_DATABASE_ROLES];
+  }
+
+  if (!isCurrentDatabaseRole(requesterRole)) {
+    return [];
+  }
+
+  return [...SCHOOL_USER_MANAGEMENT_TARGETS[requesterRole]];
+}
+
+export function canManageSchoolUserRole(
+  requesterRole: string | null | undefined,
+  targetRole: string | null | undefined,
+): boolean {
+  return getManageableSchoolUserRoles(requesterRole).includes(
+    targetRole as CurrentDatabaseRole,
+  );
+}
 
 export interface EffectiveRoleSource {
   platformRole?: PlatformRole | string | null;

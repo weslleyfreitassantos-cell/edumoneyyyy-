@@ -490,6 +490,7 @@ export function getSidebarAdminModules({
       !isAdminModuleAvailable(
         module,
         effectiveRole,
+        profile.platform_role,
       )
     ) {
       return false;
