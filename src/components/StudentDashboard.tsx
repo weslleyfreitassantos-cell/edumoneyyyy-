@@ -280,6 +280,8 @@ function StudentTimetableView({
   institutionId,
   enrollment,
   currentTermId,
+  termStartDate,
+  termEndDate,
 }: {
   institutionId: string;
   enrollment: {
@@ -289,6 +291,8 @@ function StudentTimetableView({
     academic_year_name: string;
   } | null;
   currentTermId?: string;
+  termStartDate?: string | null;
+  termEndDate?: string | null;
 }) {
   const timetableQuery = useStudentTimetable(
     institutionId,
@@ -306,6 +310,8 @@ function StudentTimetableView({
     institutionId,
     entries,
     weekStartDate,
+    termStartDate,
+    termEndDate,
   );
 
   if (!enrollment) {
@@ -352,6 +358,8 @@ function StudentTimetableView({
     entries,
     weekStartDate,
     calendarStatusQuery.data,
+    termStartDate,
+    termEndDate,
   );
 
   return (
@@ -486,13 +494,16 @@ export default function StudentDashboard() {
 
   const { student, activeEnrollment, offerings } =
     dashboard;
+  const currentOffering = offerings[0];
 
   if (location.pathname === '/dashboard/timetable') {
     return (
       <StudentTimetableView
         institutionId={institutionQuery.data}
         enrollment={activeEnrollment}
-        currentTermId={offerings[0]?.term_id}
+        currentTermId={currentOffering?.term_id}
+        termStartDate={currentOffering?.term_start_date}
+        termEndDate={currentOffering?.term_end_date}
       />
     );
   }
