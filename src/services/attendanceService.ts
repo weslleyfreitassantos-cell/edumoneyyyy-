@@ -1066,7 +1066,9 @@ async function getAttendanceSessionForSlot(
     .eq('institution_id', institutionId)
     .eq('subject_offering_id', subjectOfferingId)
     .eq('session_date', sessionDate)
-    .eq('starts_at', scheduleSlot.startTime)
+    .or(
+      `starts_at.eq.${scheduleSlot.startTime},starts_at.is.null`,
+    )
     .neq('status', 'CANCELED')
     .order('created_at', { ascending: true });
 
@@ -1092,7 +1094,10 @@ async function getAttendanceSessionForSlot(
 
   if (
     session &&
-    session.endsAt !== scheduleSlot.endTime
+    ((session.startsAt === null) !==
+      (session.endsAt === null) ||
+      (session.startsAt !== null &&
+        session.endsAt !== scheduleSlot.endTime))
   ) {
     throw new AttendanceServiceError(
       'ATTENDANCE_SESSION_CONFLICT',

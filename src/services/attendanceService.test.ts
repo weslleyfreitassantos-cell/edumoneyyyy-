@@ -31,6 +31,7 @@ interface MockQuery {
   in: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
   neq: ReturnType<typeof vi.fn>;
+  or: ReturnType<typeof vi.fn>;
   maybeSingle: ReturnType<typeof vi.fn>;
   then: Promise<unknown>['then'];
 }
@@ -43,6 +44,7 @@ function createQuery(response: unknown): MockQuery {
   query.in = vi.fn(() => query);
   query.order = vi.fn(() => query);
   query.neq = vi.fn(() => query);
+  query.or = vi.fn(() => query);
   query.maybeSingle = vi.fn(() =>
     Promise.resolve(response),
   );
@@ -667,9 +669,8 @@ describe('attendanceService calendar integration', () => {
       endTime: '08:50:00',
     });
     expect(rollCall.session?.id).toBe('session-1');
-    expect(sessionsQuery.eq).toHaveBeenCalledWith(
-      'starts_at',
-      '08:00:00',
+    expect(sessionsQuery.or).toHaveBeenCalledWith(
+      'starts_at.eq.08:00:00,starts_at.is.null',
     );
     expect(rollCall.offering.id).toBe('offering-1');
   });
@@ -708,9 +709,8 @@ describe('attendanceService calendar integration', () => {
     );
 
     expect(rollCall.session?.id).toBe('session-2');
-    expect(sessionsQuery.eq).toHaveBeenCalledWith(
-      'starts_at',
-      '08:00:00',
+    expect(sessionsQuery.or).toHaveBeenCalledWith(
+      'starts_at.eq.08:00:00,starts_at.is.null',
     );
 
     setupRollCallQueries({
@@ -807,6 +807,24 @@ describe('attendanceService calendar integration', () => {
 
     expect(rollCall.session?.id).toBe('session-1');
     expect(rollCall.scheduleSlot).toBeNull();
+  });
+
+  it('lê sessão legacy sem horário quando existe um único slot atual', async () => {
+    setupRollCallQueries({
+      session: createSession(null, null),
+    });
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+    );
+
+    expect(rollCall.session?.id).toBe('session-1');
+    expect(rollCall.scheduleSlot).toMatchObject({
+      startTime: '07:00:00',
+      endTime: '07:50:00',
+    });
   });
 
   it('resolve slots sem usar posição do array como identidade', () => {
