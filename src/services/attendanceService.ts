@@ -1,5 +1,9 @@
 import { supabase } from '../lib/supabaseClient';
 import { isAcademicTermDateWithinRange } from '../lib/academicTermDates';
+import {
+  academicCalendarService,
+  type AcademicDateStatus,
+} from './academicCalendarService';
 
 export const ATTENDANCE_RECORD_STATUSES = [
   'PRESENT',
@@ -25,6 +29,7 @@ export type AttendanceServiceErrorCode =
   | 'ATTENDANCE_OFFERING_NOT_FOUND'
   | 'ATTENDANCE_FORBIDDEN'
   | 'ATTENDANCE_SCHEDULE_NOT_FOUND'
+  | 'ATTENDANCE_CALENDAR_BLOCKED'
   | 'ATTENDANCE_SESSION_CONFLICT'
   | 'ATTENDANCE_STUDENT_NOT_ENROLLED'
   | 'ATTENDANCE_SAVE_FAILED';
@@ -195,6 +200,7 @@ export interface AttendanceOffering {
   teacherName: string;
   teacherEmail: string;
   termName: string | null;
+  academicYearId: string | null;
   termStartDate: string | null;
   termEndDate: string | null;
   scheduleSlots?: AttendanceScheduleSlot[];
@@ -243,6 +249,8 @@ export interface AttendanceRollCall {
   offering: AttendanceOffering;
   session: AttendanceSession | null;
   scheduleSlot: AttendanceScheduleSlot | null;
+  calendarStatus: AcademicDateStatus;
+  attendanceAllowed: boolean;
   records: AttendanceRollCallRecord[];
 }
 
@@ -410,6 +418,16 @@ function createAttendanceError(
       return new AttendanceServiceError(
         'ATTENDANCE_SCHEDULE_NOT_FOUND',
         'Não existe aula publicada para esta atribuição na data selecionada.',
+        error,
+      );
+    }
+
+    if (
+      error.message?.includes('ATTENDANCE_CALENDAR_BLOCKED')
+    ) {
+      return new AttendanceServiceError(
+        'ATTENDANCE_CALENDAR_BLOCKED',
+        'Esta aula está suspensa pelo Calendário Acadêmico na data selecionada.',
         error,
       );
     }
@@ -585,6 +603,7 @@ function normalizeOffering(
     teacherName: teacher?.full_name ?? 'Professor',
     teacherEmail: teacher?.email ?? '',
     termName: term?.name ?? null,
+    academicYearId: term?.academic_year_id ?? null,
     termStartDate: term?.start_date ?? null,
     termEndDate: term?.end_date ?? null,
   };
@@ -1017,6 +1036,25 @@ function getScheduleSlotFromSession(
     startTime: session.startsAt,
     endTime: session.endsAt,
   };
+}
+
+async function getAttendanceCalendarStatus(
+  offering: AttendanceOffering,
+  sessionDate: string,
+): Promise<AcademicDateStatus> {
+  try {
+    return await academicCalendarService.getAcademicDateStatus(
+      {
+        institutionId: offering.institutionId,
+        academicYearId: offering.academicYearId,
+        classId: offering.classId,
+        subjectId: offering.subjectId,
+      },
+      sessionDate,
+    );
+  } catch (error) {
+    throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+  }
 }
 
 async function getRecordsForSession(
@@ -1575,11 +1613,18 @@ export const attendanceService = {
       );
     }
 
+    const calendarStatus = await getAttendanceCalendarStatus(
+      offering,
+      sessionDate,
+    );
+    const attendanceAllowed = !calendarStatus.blocked;
     const students =
-      await getValidStudentsForOfferingDate(
-        offering,
-        sessionDate,
-      );
+      calendarStatus.blocked && !session
+        ? []
+        : await getValidStudentsForOfferingDate(
+            offering,
+            sessionDate,
+          );
     const records = session
       ? await getRecordsForSession(session.id)
       : [];
@@ -1588,6 +1633,8 @@ export const attendanceService = {
       offering,
       session,
       scheduleSlot,
+      calendarStatus,
+      attendanceAllowed,
       records: buildRollCallRecords(students, records),
     };
   },
@@ -1618,6 +1665,18 @@ export const attendanceService = {
       throw new AttendanceServiceError(
         'ATTENDANCE_SCHEDULE_NOT_FOUND',
         'Não existe aula publicada para esta atribuição na data selecionada.',
+      );
+    }
+
+    const calendarStatus = await getAttendanceCalendarStatus(
+      offering,
+      input.sessionDate,
+    );
+
+    if (calendarStatus.blocked) {
+      throw new AttendanceServiceError(
+        'ATTENDANCE_CALENDAR_BLOCKED',
+        'Esta aula está suspensa pelo Calendário Acadêmico na data selecionada.',
       );
     }
 

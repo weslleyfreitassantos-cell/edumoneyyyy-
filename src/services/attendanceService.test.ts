@@ -20,6 +20,7 @@ import {
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     from: vi.fn(),
+    rpc: vi.fn(),
   },
 }));
 
@@ -28,6 +29,8 @@ interface MockQuery {
   eq: ReturnType<typeof vi.fn>;
   in: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
+  neq: ReturnType<typeof vi.fn>;
+  maybeSingle: ReturnType<typeof vi.fn>;
   then: Promise<unknown>['then'];
 }
 
@@ -38,6 +41,10 @@ function createQuery(response: unknown): MockQuery {
   query.eq = vi.fn(() => query);
   query.in = vi.fn(() => query);
   query.order = vi.fn(() => query);
+  query.neq = vi.fn(() => query);
+  query.maybeSingle = vi.fn(() =>
+    Promise.resolve(response),
+  );
   query.then = (
     resolve,
     reject,
@@ -46,9 +53,125 @@ function createQuery(response: unknown): MockQuery {
   return query;
 }
 
+const attendanceOfferingRow = {
+  id: 'offering-1',
+  class_id: 'class-1',
+  subject_id: 'subject-1',
+  teacher_profile_id: 'teacher-1',
+  term_id: 'term-1',
+  active: true,
+  created_at: '2026-02-02T10:00:00.000Z',
+  classes: {
+    id: 'class-1',
+    institution_id: 'institution-1',
+    name: '1A',
+    grade_level: '1º ano',
+    shift: 'Manhã',
+    active: true,
+  },
+  subjects: {
+    id: 'subject-1',
+    institution_id: 'institution-1',
+    name: 'Matemática',
+    code: 'MAT',
+    workload: 80,
+    active: true,
+  },
+  profiles: {
+    full_name: 'Professora Ana',
+    email: 'ana@escola.com',
+    active: true,
+  },
+  terms: {
+    id: 'term-1',
+    academic_year_id: 'year-1',
+    name: '1º bimestre',
+    start_date: '2026-02-01',
+    end_date: '2026-04-30',
+    active: true,
+  },
+};
+
+function setupRollCallQueries({
+  blockers = [],
+  session = null,
+  schedule = [
+    {
+      day_of_week: 1,
+      start_time: '07:00:00',
+      end_time: '07:50:00',
+    },
+  ],
+  records = [],
+  roster = [
+    {
+      student_id: 'student-1',
+      profile_id: 'profile-1',
+      full_name: 'Ana Silva',
+      registration_number: 'RA-001',
+      enrollment_id: 'enrollment-1',
+    },
+  ],
+}: {
+  blockers?: unknown[];
+  session?: unknown;
+  schedule?: unknown[];
+  records?: unknown[];
+  roster?: unknown[];
+} = {}) {
+  const offeringQuery = createQuery({
+    data: attendanceOfferingRow,
+    error: null,
+  });
+  const sessionsQuery = createQuery({
+    data: session ? [session] : [],
+    error: null,
+  });
+  const scheduleQuery = createQuery({
+    data: schedule,
+    error: null,
+  });
+  const recordsQuery = createQuery({
+    data: records,
+    error: null,
+  });
+
+  vi.mocked(supabase.from)
+    .mockReturnValueOnce(offeringQuery as never)
+    .mockReturnValueOnce(sessionsQuery as never)
+    .mockReturnValueOnce(scheduleQuery as never);
+
+  if (session) {
+    vi.mocked(supabase.from).mockReturnValueOnce(
+      recordsQuery as never,
+    );
+  }
+
+  vi.mocked(supabase.rpc)
+    .mockResolvedValueOnce({
+      data: blockers,
+      error: null,
+    } as never);
+
+  if (roster.length > 0) {
+    vi.mocked(supabase.rpc).mockResolvedValueOnce({
+      data: roster,
+      error: null,
+    } as never);
+  }
+
+  return {
+    offeringQuery,
+    sessionsQuery,
+    scheduleQuery,
+    recordsQuery,
+  };
+}
+
 describe('attendanceService', () => {
   beforeEach(() => {
     vi.mocked(supabase.from).mockReset();
+    vi.mocked(supabase.rpc).mockReset();
   });
 
   it('calcula percentual com atraso contando como presença', () => {
@@ -421,5 +544,143 @@ describe('attendanceService', () => {
     ).rejects.toMatchObject({
       code: 'ATTENDANCE_SAVE_FAILED',
     } satisfies Partial<AttendanceServiceError>);
+  });
+});
+
+describe('attendanceService calendar integration', () => {
+  beforeEach(() => {
+    vi.mocked(supabase.from).mockReset();
+    vi.mocked(supabase.rpc).mockReset();
+  });
+
+  it('permite chamada quando a grade existe e o calendário está aberto', async () => {
+    setupRollCallQueries();
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+    );
+
+    expect(rollCall.attendanceAllowed).toBe(true);
+    expect(rollCall.calendarStatus.state).toBe('OPEN');
+    expect(rollCall.offering.id).toBe('offering-1');
+    expect(supabase.rpc).toHaveBeenNthCalledWith(
+      1,
+      'get_academic_day_blockers',
+      {
+        p_institution_id: 'institution-1',
+        p_date: '2026-02-02',
+        p_academic_year_id: 'year-1',
+        p_class_id: 'class-1',
+        p_subject_id: 'subject-1',
+      },
+    );
+  });
+
+  it.each(['HOLIDAY', 'RECESS', 'CLASS_SUSPENSION'] as const)(
+    'não prepara uma chamada nova em %s',
+    async (eventType) => {
+      setupRollCallQueries({
+        blockers: [{ event_id: 'event-1', event_type: eventType }],
+      });
+
+      const rollCall = await attendanceService.loadRollCall(
+        'institution-1',
+        'offering-1',
+        '2026-02-02',
+      );
+
+      expect(rollCall.calendarStatus.blockers[0]?.event_type).toBe(eventType);
+      expect(rollCall.attendanceAllowed).toBe(false);
+      expect(rollCall.session).toBeNull();
+      expect(rollCall.records).toEqual([]);
+    },
+  );
+
+  it('não bloqueia o dia inteiro por suspensão com horário', async () => {
+    setupRollCallQueries();
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+    );
+
+    expect(rollCall.calendarStatus.state).toBe('OPEN');
+    expect(rollCall.attendanceAllowed).toBe(true);
+  });
+
+  it('preserva a sessão histórica quando o calendário passa a bloquear a data', async () => {
+    const session = {
+      id: 'session-1',
+      institution_id: 'institution-1',
+      subject_offering_id: 'offering-1',
+      session_date: '2026-02-02',
+      starts_at: '07:00:00',
+      ends_at: '07:50:00',
+      topic: null,
+      notes: null,
+      status: 'CLOSED',
+      created_by: 'teacher-1',
+      closed_at: '2026-02-02T10:00:00.000Z',
+      created_at: '2026-02-02T10:00:00.000Z',
+      updated_at: '2026-02-02T10:00:00.000Z',
+    };
+    setupRollCallQueries({
+      blockers: [{ event_id: 'event-1', event_type: 'HOLIDAY' }],
+      session,
+    });
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+    );
+
+    expect(rollCall.session?.id).toBe('session-1');
+    expect(rollCall.records).toHaveLength(1);
+    expect(rollCall.attendanceAllowed).toBe(false);
+  });
+
+  it('distingue a ausência da grade antes de consultar o calendário', async () => {
+    setupRollCallQueries({ schedule: [] });
+
+    await expect(
+      attendanceService.loadRollCall(
+        'institution-1',
+        'offering-1',
+        '2026-02-02',
+      ),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_SCHEDULE_NOT_FOUND',
+    } satisfies Partial<AttendanceServiceError>);
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
+  it('falha antes de qualquer escrita quando o calendário bloqueia a aula', async () => {
+    setupRollCallQueries({
+      blockers: [{ event_id: 'event-1', event_type: 'CLASS_SUSPENSION' }],
+    });
+
+    await expect(
+      attendanceService.saveRollCall({
+        institutionId: 'institution-1',
+        subjectOfferingId: 'offering-1',
+        sessionDate: '2026-02-02',
+        profileId: 'teacher-1',
+        records: [
+          {
+            studentId: 'student-1',
+            status: 'PRESENT',
+          },
+        ],
+      }),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_CALENDAR_BLOCKED',
+    } satisfies Partial<AttendanceServiceError>);
+
+    expect(supabase.from).toHaveBeenCalledTimes(3);
+    expect(supabase.rpc).toHaveBeenCalledTimes(1);
   });
 });
