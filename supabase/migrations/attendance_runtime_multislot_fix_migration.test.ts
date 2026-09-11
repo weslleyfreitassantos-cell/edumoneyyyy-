@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 const migration = readFileSync(
   new URL('./20260911000200_attendance_runtime_multislot_fix.sql', import.meta.url),
   'utf8',
-);
+).replace(/\r\n/g, '\n');
 const historicalAttendanceMigration = readFileSync(
   new URL('./20260710000200_attendance_and_grades.sql', import.meta.url),
   'utf8',
