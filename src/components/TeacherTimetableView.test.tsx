@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
@@ -134,5 +134,24 @@ describe('TeacherTimetableView', () => {
       screen.getByText('Não foi possível verificar o calendário. As aulas continuam visíveis.'),
     ).toBeTruthy();
     expect(screen.queryByText('Aula suspensa')).toBeNull();
+  });
+
+  it('não projeta o período atual em uma semana posterior ao seu intervalo', () => {
+    render(
+      <TeacherTimetableView
+        institutionId="institution-1"
+        teacherProfileId="teacher-1"
+        termId="term-1"
+        termStartDate={weekStartDate}
+        termEndDate={mondayDate}
+        shifts={[]}
+      />,
+    );
+
+    expect(screen.getByText('Matemática')).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Próxima semana' }));
+
+    expect(screen.queryByText('Matemática')).toBeNull();
   });
 });

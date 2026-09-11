@@ -168,12 +168,19 @@ export function useTimetableCalendarStatuses(
   institutionId: string | undefined,
   entries: readonly TimetableEntryRow[],
   weekStartDate: string | undefined,
+  termStartDate?: string | null,
+  termEndDate?: string | null,
 ) {
   const requests = useMemo(
     () => weekStartDate
-      ? buildTimetableCalendarRequests(entries, weekStartDate)
+      ? buildTimetableCalendarRequests(
+        entries,
+        weekStartDate,
+        termStartDate,
+        termEndDate,
+      )
       : [],
-    [entries, weekStartDate],
+    [entries, weekStartDate, termStartDate, termEndDate],
   );
   const queryResults = useQueries({
     queries: requests.map((request: TimetableCalendarRequest) => ({

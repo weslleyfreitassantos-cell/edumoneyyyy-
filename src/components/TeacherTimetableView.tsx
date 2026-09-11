@@ -65,6 +65,8 @@ export default function TeacherTimetableView({
     institutionId,
     entries,
     weekStartDate,
+    termStartDate,
+    termEndDate,
   );
 
   if (timetableQuery.isLoading) {
@@ -109,6 +111,8 @@ export default function TeacherTimetableView({
     entries,
     weekStartDate,
     calendarStatusQuery.data,
+    termStartDate,
+    termEndDate,
   );
   const formatDate = (value: string) => {
     const [year, month, day] = value.split('-');

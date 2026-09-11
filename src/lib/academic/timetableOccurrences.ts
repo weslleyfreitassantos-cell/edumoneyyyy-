@@ -3,6 +3,7 @@ import {
   nextCalendarDateKey,
   parseCalendarDate,
 } from '../academicCalendarDates';
+import { isAcademicTermDateWithinRange } from '../academicTermDates';
 import type {
   AcademicDateBlocker,
   AcademicDateStatus,
@@ -23,6 +24,11 @@ export interface TimetableCalendarRequest {
   key: string;
   date: string;
   context: AcademicDateStatusContext;
+}
+
+export interface TimetableTermDateRange {
+  termStartDate?: string | null;
+  termEndDate?: string | null;
 }
 
 const BLOCKER_LABELS: Partial<Record<AcademicDateBlocker['event_type'], string>> = {
@@ -91,9 +97,23 @@ export function timetableCalendarRequestKey(
   ].join('|');
 }
 
+export function isTimetableDateWithinTerm(
+  date: string,
+  termStartDate?: string | null,
+  termEndDate?: string | null,
+): boolean {
+  if (!termStartDate || !termEndDate) {
+    return true;
+  }
+
+  return isAcademicTermDateWithinRange(date, termStartDate, termEndDate);
+}
+
 export function buildTimetableCalendarRequests(
   entries: readonly TimetableEntryRow[],
   weekStartDate: string,
+  termStartDate?: string | null,
+  termEndDate?: string | null,
 ): TimetableCalendarRequest[] {
   const requests = new Map<string, TimetableCalendarRequest>();
 
@@ -103,6 +123,10 @@ export function buildTimetableCalendarRequests(
     }
 
     const date = getDateForWeekDay(weekStartDate, entry.day_of_week);
+    if (!isTimetableDateWithinTerm(date, termStartDate, termEndDate)) {
+      continue;
+    }
+
     const context: AcademicDateStatusContext = {
       institutionId: entry.institution_id,
       academicYearId: entry.academic_year_id,
@@ -140,6 +164,8 @@ export function projectTimetableOccurrences(
   entries: readonly TimetableEntryRow[],
   weekStartDate: string,
   statuses: Readonly<Record<string, AcademicDateStatus>> = {},
+  termStartDate?: string | null,
+  termEndDate?: string | null,
 ): TimetableOccurrence[] {
   calendarDateToUtcStart(weekStartDate);
 
@@ -147,6 +173,10 @@ export function projectTimetableOccurrences(
     .filter((entry) => entry.active && entry.day_of_week >= 1 && entry.day_of_week <= 6)
     .map((entry) => {
       const date = getDateForWeekDay(weekStartDate, entry.day_of_week);
+      if (!isTimetableDateWithinTerm(date, termStartDate, termEndDate)) {
+        return null;
+      }
+
       const context: AcademicDateStatusContext = {
         institutionId: entry.institution_id,
         academicYearId: entry.academic_year_id,
@@ -162,7 +192,8 @@ export function projectTimetableOccurrences(
       };
 
       return projectTimetableOccurrence(entry, date, calendarStatus);
-    });
+    })
+    .filter((occurrence): occurrence is TimetableOccurrence => occurrence !== null);
 }
 
 export function getTimetableBlockerLabel(

@@ -46,6 +46,13 @@ const holidayStatus: AcademicDateStatus = {
   blockers: [{ event_id: 'holiday-1', event_type: 'HOLIDAY' }],
 };
 
+const fridayEntry: TimetableEntryRow = {
+  ...entry,
+  id: 'entry-friday',
+  day_of_week: 5,
+  day_label: 'Sexta',
+};
+
 describe('timetableOccurrences', () => {
   it('projeta uma aula aberta preservando data, período e oferta exata', () => {
     const occurrences = projectTimetableOccurrences(
@@ -100,6 +107,54 @@ describe('timetableOccurrences', () => {
     ]);
   });
 
+  it('cria ocorrência dentro do intervalo e rejeita datas posteriores ou anteriores', () => {
+    expect(
+      projectTimetableOccurrences(
+        [entry],
+        '2026-09-07',
+        {},
+        '2026-09-01',
+        '2026-09-10',
+      ),
+    ).toHaveLength(1);
+
+    expect(
+      projectTimetableOccurrences(
+        [fridayEntry],
+        '2026-09-07',
+        {},
+        '2026-09-01',
+        '2026-09-10',
+      ),
+    ).toEqual([]);
+
+    expect(
+      projectTimetableOccurrences(
+        [entry],
+        '2026-08-31',
+        {},
+        '2026-09-01',
+        '2026-09-10',
+      ),
+    ).toEqual([]);
+  });
+
+  it('preserva a primeira parte de uma semana que cruza o fim do período', () => {
+    const occurrences = projectTimetableOccurrences(
+      [entry, fridayEntry],
+      '2026-09-07',
+      {},
+      '2026-09-01',
+      '2026-09-10',
+    );
+
+    expect(occurrences.map((occurrence) => occurrence.date)).toEqual([
+      '2026-09-07',
+    ]);
+    expect(occurrences[0].entry.subject_offering_id).toBe('offering-exact-1');
+    expect(occurrences[0].entry.term_id).toBe('term-1');
+  });
+
   it('resume bloqueios múltiplos com rótulos operacionais estáveis', () => {
     expect(getTimetableBlockerLabel({
       date: '2026-09-07',
@@ -145,5 +200,24 @@ describe('timetableOccurrences', () => {
       'subject-2',
     ]);
     expect(requests.every((request) => request.context.academicYearId === 'year-1')).toBe(true);
+  });
+
+  it('não consulta o calendário para aulas fora do período', () => {
+    const requests = buildTimetableCalendarRequests(
+      [entry, fridayEntry],
+      '2026-09-07',
+      '2026-09-01',
+      '2026-09-10',
+    );
+
+    expect(requests).toHaveLength(1);
+    expect(requests[0].date).toBe('2026-09-07');
+  });
+
+  it('mantém compatibilidade quando não há limites de período', () => {
+    expect(buildTimetableCalendarRequests([fridayEntry], '2026-09-07')).toHaveLength(1);
+    expect(
+      projectTimetableOccurrences([fridayEntry], '2026-09-07'),
+    ).toHaveLength(1);
   });
 });
