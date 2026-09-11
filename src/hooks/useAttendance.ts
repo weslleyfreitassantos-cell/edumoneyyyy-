@@ -9,10 +9,12 @@ import {
   type AttendanceInstitutionFilters,
   type AttendanceRollCall,
   type AttendanceOffering,
+  type AttendanceScheduleSlotSelection,
   type InstitutionAttendanceSummary,
   type SaveAttendanceRollCallInput,
   type StudentAttendanceSummary,
 } from '../services/attendanceService';
+import { workloadKeys } from './useWorkload';
 
 export const attendanceKeys = {
   all: ['attendance'] as const,
@@ -32,6 +34,7 @@ export const attendanceKeys = {
     institutionId: string | undefined,
     subjectOfferingId: string | undefined,
     sessionDate: string | undefined,
+    scheduleSlot?: AttendanceScheduleSlotSelection,
   ) =>
     [
       ...attendanceKeys.all,
@@ -39,6 +42,8 @@ export const attendanceKeys = {
       institutionId,
       subjectOfferingId,
       sessionDate,
+      scheduleSlot?.startTime,
+      scheduleSlot?.endTime,
     ] as const,
   studentSummary: (
     institutionId: string | undefined,
@@ -95,12 +100,15 @@ export function useAttendanceRollCall(
   institutionId: string | undefined,
   subjectOfferingId: string | undefined,
   sessionDate: string | undefined,
+  scheduleSlot?: AttendanceScheduleSlotSelection,
+  enabled = true,
 ) {
   return useQuery<AttendanceRollCall>({
     queryKey: attendanceKeys.rollCall(
       institutionId,
       subjectOfferingId,
       sessionDate,
+      scheduleSlot,
     ),
     queryFn: () => {
       if (
@@ -117,12 +125,14 @@ export function useAttendanceRollCall(
         institutionId,
         subjectOfferingId,
         sessionDate,
+        scheduleSlot,
       );
     },
     enabled: Boolean(
-      institutionId &&
+        institutionId &&
         subjectOfferingId &&
-        sessionDate,
+        sessionDate &&
+        enabled,
     ),
     staleTime: 1000 * 30,
   });
@@ -141,12 +151,16 @@ export function useSaveAttendanceRollCall() {
           input.institutionId,
           input.subjectOfferingId,
           input.sessionDate,
+          input.scheduleSlot,
         ),
         rollCall,
       );
 
       void queryClient.invalidateQueries({
         queryKey: attendanceKeys.all,
+      });
+      void queryClient.invalidateQueries({
+        queryKey: workloadKeys.all,
       });
     },
   });
