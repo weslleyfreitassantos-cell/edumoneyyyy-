@@ -47,7 +47,7 @@ async function signIn(
 
 async function createActor(
   admin: AnyClient,
-  role: 'ADMIN' | 'TEACHER',
+  role: 'ADMIN' | 'DIRECTOR' | 'TEACHER',
   label: string,
   suffix: string,
 ): Promise<{ id: string; email: string; client: AnyClient }> {
@@ -100,10 +100,12 @@ async function insertSession(
 
 localDescribe('attendance calendar workload runtime', () => {
   let admin: AnyClient;
+  let director: AnyClient;
   let teacher: AnyClient;
   let teacherB: AnyClient;
   let anonymous: AnyClient;
   let adminId = '';
+  let directorId = '';
   let teacherId = '';
   let teacherBId = '';
   let institutionId = '';
@@ -124,12 +126,15 @@ localDescribe('attendance calendar workload runtime', () => {
     suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
 
     const adminActor = await createActor(service, 'ADMIN', 'admin', suffix);
+    const directorActor = await createActor(service, 'DIRECTOR', 'director', suffix);
     const teacherActor = await createActor(service, 'TEACHER', 'teacher', suffix);
     const teacherBActor = await createActor(service, 'TEACHER', 'teacher-b', suffix);
     adminId = adminActor.id;
+    directorId = directorActor.id;
     teacherId = teacherActor.id;
     teacherBId = teacherBActor.id;
     admin = adminActor.client;
+    director = directorActor.client;
     teacher = teacherActor.client;
     teacherB = teacherBActor.client;
     anonymous = createClient(localUrl!, anonKey!, {
@@ -155,6 +160,12 @@ localDescribe('attendance calendar workload runtime', () => {
       active: true,
     });
     await insertOne(service, 'memberships', {
+      profile_id: directorId,
+      institution_id: institutionId,
+      role: 'DIRECTOR',
+      active: true,
+    });
+    await insertOne(service, 'memberships', {
       profile_id: teacherId,
       institution_id: institutionId,
       role: 'TEACHER',
@@ -167,21 +178,21 @@ localDescribe('attendance calendar workload runtime', () => {
       active: true,
     });
 
-    academicYearId = (await insertOne(admin, 'academic_years', {
+    academicYearId = (await insertOne(director, 'academic_years', {
       institution_id: institutionId,
       name: `2026 ${suffix}`,
       start_date: '2026-09-07',
       end_date: '2026-09-11',
       active: true,
     })).id;
-    termId = (await insertOne(admin, 'terms', {
+    termId = (await insertOne(director, 'terms', {
       academic_year_id: academicYearId,
       name: `1º período ${suffix}`,
       start_date: '2026-09-07',
       end_date: '2026-09-11',
       active: true,
     })).id;
-    classId = (await insertOne(admin, 'classes', {
+    classId = (await insertOne(director, 'classes', {
       institution_id: institutionId,
       academic_year_id: academicYearId,
       name: `Turma ${suffix}`,
@@ -191,14 +202,14 @@ localDescribe('attendance calendar workload runtime', () => {
       active: true,
     })).id;
 
-    subjectA = (await insertOne(admin, 'subjects', {
+    subjectA = (await insertOne(director, 'subjects', {
       institution_id: institutionId,
       name: `Matemática ${suffix}`,
       code: `MAT-${suffix}`,
       workload: 100,
       active: true,
     })).id;
-    const subjectB = (await insertOne(admin, 'subjects', {
+    const subjectB = (await insertOne(director, 'subjects', {
       institution_id: institutionId,
       name: `Ciências ${suffix}`,
       code: `CIE-${suffix}`,
@@ -206,7 +217,7 @@ localDescribe('attendance calendar workload runtime', () => {
       active: true,
     })).id;
 
-    await insertOne(admin, 'class_curriculum_items', {
+    await insertOne(director, 'class_curriculum_items', {
       institution_id: institutionId,
       class_id: classId,
       subject_id: subjectA,
@@ -214,7 +225,7 @@ localDescribe('attendance calendar workload runtime', () => {
       lesson_duration_minutes: 50,
       active: true,
     });
-    await insertOne(admin, 'class_curriculum_items', {
+    await insertOne(director, 'class_curriculum_items', {
       institution_id: institutionId,
       class_id: classId,
       subject_id: subjectB,
@@ -222,14 +233,14 @@ localDescribe('attendance calendar workload runtime', () => {
       lesson_duration_minutes: 50,
       active: true,
     });
-    await insertOne(admin, 'teacher_subjects', {
+    await insertOne(director, 'teacher_subjects', {
       institution_id: institutionId,
       teacher_profile_id: teacherId,
       subject_id: subjectA,
       primary_subject: true,
       active: true,
     });
-    await insertOne(admin, 'teacher_subjects', {
+    await insertOne(director, 'teacher_subjects', {
       institution_id: institutionId,
       teacher_profile_id: teacherBId,
       subject_id: subjectB,
@@ -237,14 +248,14 @@ localDescribe('attendance calendar workload runtime', () => {
       active: true,
     });
 
-    offeringA = (await insertOne(admin, 'subject_offerings', {
+    offeringA = (await insertOne(director, 'subject_offerings', {
       subject_id: subjectA,
       class_id: classId,
       teacher_profile_id: teacherId,
       term_id: termId,
       active: true,
     })).id;
-    offeringB = (await insertOne(admin, 'subject_offerings', {
+    offeringB = (await insertOne(director, 'subject_offerings', {
       subject_id: subjectB,
       class_id: classId,
       teacher_profile_id: teacherBId,
@@ -252,13 +263,13 @@ localDescribe('attendance calendar workload runtime', () => {
       active: true,
     })).id;
 
-    const room = (await insertOne(admin, 'rooms', {
+    const room = (await insertOne(director, 'rooms', {
       institution_id: institutionId,
       name: `Sala ${suffix}`,
       capacity: 30,
       active: true,
     })).id;
-    await insertOne(admin, 'timetable_entries', {
+    await insertOne(director, 'timetable_entries', {
       institution_id: institutionId,
       subject_offering_id: offeringA,
       room_id: room,
@@ -269,7 +280,7 @@ localDescribe('attendance calendar workload runtime', () => {
       term_id: termId,
       active: true,
     });
-    await insertOne(admin, 'timetable_entries', {
+    await insertOne(director, 'timetable_entries', {
       institution_id: institutionId,
       subject_offering_id: offeringA,
       room_id: room,
@@ -282,7 +293,7 @@ localDescribe('attendance calendar workload runtime', () => {
     });
 
     for (const dayOfWeek of [1, 2, 3, 4, 5] as const) {
-      await insertOne(admin, 'timetable_entries', {
+      await insertOne(director, 'timetable_entries', {
         institution_id: institutionId,
         subject_offering_id: offeringB,
         room_id: room,
@@ -401,7 +412,7 @@ localDescribe('attendance calendar workload runtime', () => {
     ] as const;
 
     for (const [eventType, title, startsAt, endsAt, allDay, subjectId] of events) {
-      const result = await insertOne(admin, 'academic_calendar_events', {
+      const result = await insertOne(director, 'academic_calendar_events', {
         institution_id: institutionId,
         academic_year_id: academicYearId,
         title: `${title} ${suffix}`,
@@ -412,7 +423,7 @@ localDescribe('attendance calendar workload runtime', () => {
         audience: 'CLASS',
         class_id: classId,
         subject_id: subjectId,
-        created_by: adminId,
+        created_by: directorId,
       });
       expect(result.id).toBeTruthy();
     }
