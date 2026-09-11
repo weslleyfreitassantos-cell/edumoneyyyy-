@@ -105,6 +105,15 @@ async function insertOne(
   return required(data, `${table} insert result`);
 }
 
+async function insertWithoutSelect(
+  client: AnyClient,
+  table: string,
+  row: Record<string, unknown>,
+): Promise<void> {
+  const { error } = await client.from(table).insert(row);
+  if (error) throw new Error(`${table}: ${error.message}`);
+}
+
 async function createActor(
   admin: AnyClient,
   role: Role,
@@ -278,28 +287,35 @@ async function createFixture(): Promise<TenantFixture> {
     if (actorKey === 'adminB') membershipB = membership.id;
   }
 
-  const yearA = (await insertOne(admin, 'academic_years', {
+  const directorA = actors.directorA.client;
+  const directorB = actors.directorB.client;
+  const teacherA = actors.teacherA.client;
+  const teacherB = actors.teacherB.client;
+
+  // Use authenticated operational actors for product data. The service role
+  // is reserved for identity/bootstrap data and system-only event ingestion.
+  const yearA = (await insertOne(directorA, 'academic_years', {
     institution_id: institutionA,
     name: `2026 A ${suffix}`,
     start_date: '2026-01-01',
     end_date: '2026-12-31',
     active: true,
   })).id;
-  const yearB = (await insertOne(admin, 'academic_years', {
+  const yearB = (await insertOne(directorB, 'academic_years', {
     institution_id: institutionB,
     name: `2026 B ${suffix}`,
     start_date: '2026-01-01',
     end_date: '2026-12-31',
     active: true,
   })).id;
-  const termA = (await insertOne(admin, 'terms', {
+  const termA = (await insertOne(directorA, 'terms', {
     academic_year_id: yearA,
     name: `1º Bimestre A ${suffix}`,
     start_date: '2026-01-01',
     end_date: '2026-03-31',
     active: true,
   })).id;
-  const termB = (await insertOne(admin, 'terms', {
+  const termB = (await insertOne(directorB, 'terms', {
     academic_year_id: yearB,
     name: `1º Bimestre B ${suffix}`,
     start_date: '2026-01-01',
@@ -307,7 +323,7 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
   })).id;
 
-  const classA = (await insertOne(admin, 'classes', {
+  const classA = (await insertOne(directorA, 'classes', {
     institution_id: institutionA,
     academic_year_id: yearA,
     name: `Turma A ${suffix}`,
@@ -316,7 +332,7 @@ async function createFixture(): Promise<TenantFixture> {
     capacity: 30,
     active: true,
   })).id;
-  const classB = (await insertOne(admin, 'classes', {
+  const classB = (await insertOne(directorB, 'classes', {
     institution_id: institutionB,
     academic_year_id: yearB,
     name: `Turma B ${suffix}`,
@@ -325,14 +341,14 @@ async function createFixture(): Promise<TenantFixture> {
     capacity: 30,
     active: true,
   })).id;
-  const subjectA = (await insertOne(admin, 'subjects', {
+  const subjectA = (await insertOne(directorA, 'subjects', {
     institution_id: institutionA,
     name: `Matemática A ${suffix}`,
     code: `MTA-${suffix}`,
     workload: 100,
     active: true,
   })).id;
-  const subjectB = (await insertOne(admin, 'subjects', {
+  const subjectB = (await insertOne(directorB, 'subjects', {
     institution_id: institutionB,
     name: `Matemática B ${suffix}`,
     code: `MTB-${suffix}`,
@@ -340,7 +356,7 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
   })).id;
 
-  await insertOne(admin, 'class_curriculum_items', {
+  await insertOne(directorA, 'class_curriculum_items', {
     institution_id: institutionA,
     class_id: classA,
     subject_id: subjectA,
@@ -348,7 +364,7 @@ async function createFixture(): Promise<TenantFixture> {
     lesson_duration_minutes: 50,
     active: true,
   });
-  await insertOne(admin, 'class_curriculum_items', {
+  await insertOne(directorB, 'class_curriculum_items', {
     institution_id: institutionB,
     class_id: classB,
     subject_id: subjectB,
@@ -356,14 +372,14 @@ async function createFixture(): Promise<TenantFixture> {
     lesson_duration_minutes: 50,
     active: true,
   });
-  await insertOne(admin, 'teacher_subjects', {
+  await insertOne(directorA, 'teacher_subjects', {
     institution_id: institutionA,
     teacher_profile_id: actors.teacherA.id,
     subject_id: subjectA,
     primary_subject: true,
     active: true,
   });
-  await insertOne(admin, 'teacher_subjects', {
+  await insertOne(directorB, 'teacher_subjects', {
     institution_id: institutionB,
     teacher_profile_id: actors.teacherB.id,
     subject_id: subjectB,
@@ -371,14 +387,14 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
   });
 
-  const offeringA = (await insertOne(admin, 'subject_offerings', {
+  const offeringA = (await insertOne(directorA, 'subject_offerings', {
     subject_id: subjectA,
     class_id: classA,
     teacher_profile_id: actors.teacherA.id,
     term_id: termA,
     active: true,
   })).id;
-  const offeringB = (await insertOne(admin, 'subject_offerings', {
+  const offeringB = (await insertOne(directorB, 'subject_offerings', {
     subject_id: subjectB,
     class_id: classB,
     teacher_profile_id: actors.teacherB.id,
@@ -414,7 +430,7 @@ async function createFixture(): Promise<TenantFixture> {
     is_primary: true,
     active: true,
   })).id;
-  const enrollmentA = (await insertOne(admin, 'enrollments', {
+  const enrollmentA = (await insertOne(directorA, 'enrollments', {
     student_id: studentA,
     class_id: classA,
     academic_year_id: yearA,
@@ -422,7 +438,7 @@ async function createFixture(): Promise<TenantFixture> {
     enrolled_at: '2026-01-01T00:00:00Z',
     active: true,
   })).id;
-  const enrollmentB = (await insertOne(admin, 'enrollments', {
+  const enrollmentB = (await insertOne(directorB, 'enrollments', {
     student_id: studentB,
     class_id: classB,
     academic_year_id: yearB,
@@ -431,19 +447,19 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
   })).id;
 
-  const roomA = (await insertOne(admin, 'rooms', {
+  const roomA = (await insertOne(directorA, 'rooms', {
     institution_id: institutionA,
     name: `Sala A ${suffix}`,
     capacity: 30,
     active: true,
   })).id;
-  const roomB = (await insertOne(admin, 'rooms', {
+  const roomB = (await insertOne(directorB, 'rooms', {
     institution_id: institutionB,
     name: `Sala B ${suffix}`,
     capacity: 30,
     active: true,
   })).id;
-  const timetableEntryA = (await insertOne(admin, 'timetable_entries', {
+  const timetableEntryA = (await insertOne(directorA, 'timetable_entries', {
     institution_id: institutionA,
     subject_offering_id: offeringA,
     room_id: roomA,
@@ -454,7 +470,7 @@ async function createFixture(): Promise<TenantFixture> {
     term_id: termA,
     active: true,
   })).id;
-  const timetableEntryB = (await insertOne(admin, 'timetable_entries', {
+  const timetableEntryB = (await insertOne(directorB, 'timetable_entries', {
     institution_id: institutionB,
     subject_offering_id: offeringB,
     room_id: roomB,
@@ -540,7 +556,7 @@ async function createFixture(): Promise<TenantFixture> {
     recorded_by: actors.teacherB.id,
   })).id;
 
-  const learningPostA = (await insertOne(admin, 'learning_posts', {
+  const learningPostA = (await insertOne(teacherA, 'learning_posts', {
     institution_id: institutionA,
     class_id: classA,
     subject_id: subjectA,
@@ -551,7 +567,7 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
     published_at: new Date().toISOString(),
   })).id;
-  const learningPostB = (await insertOne(admin, 'learning_posts', {
+  const learningPostB = (await insertOne(teacherB, 'learning_posts', {
     institution_id: institutionB,
     class_id: classB,
     subject_id: subjectB,
@@ -562,70 +578,72 @@ async function createFixture(): Promise<TenantFixture> {
     active: true,
     published_at: new Date().toISOString(),
   })).id;
-  const announcementA = (await insertOne(admin, 'institution_announcements', {
+  const announcementA = (await insertOne(directorA, 'institution_announcements', {
     institution_id: institutionA,
     title: `Comunicado A ${suffix}`,
     message: 'Comunicado exclusivo do tenant A',
     audience: 'ALL',
     active: true,
-    created_by: actors.adminA.id,
+    created_by: actors.directorA.id,
   })).id;
-  const announcementB = (await insertOne(admin, 'institution_announcements', {
+  const announcementB = (await insertOne(directorB, 'institution_announcements', {
     institution_id: institutionB,
     title: `Comunicado B ${suffix}`,
     message: 'Comunicado exclusivo do tenant B',
     audience: 'ALL',
     active: true,
-    created_by: actors.adminB.id,
+    created_by: actors.directorB.id,
   })).id;
-  const announcementStudentA = (await insertOne(admin, 'institution_announcements', {
+  const announcementStudentA = (await insertOne(directorA, 'institution_announcements', {
     institution_id: institutionA,
     title: `Aviso estudantes A ${suffix}`,
     message: 'Aviso exclusivo para estudantes do tenant A',
     audience: 'STUDENTS',
     active: true,
-    created_by: actors.adminA.id,
+    created_by: actors.directorA.id,
   })).id;
-  const announcementStudentB = (await insertOne(admin, 'institution_announcements', {
+  const announcementStudentB = (await insertOne(directorB, 'institution_announcements', {
     institution_id: institutionB,
     title: `Aviso estudantes B ${suffix}`,
     message: 'Aviso exclusivo para estudantes do tenant B',
     audience: 'STUDENTS',
     active: true,
-    created_by: actors.adminB.id,
+    created_by: actors.directorB.id,
   })).id;
-  const announcementGuardianA = (await insertOne(admin, 'institution_announcements', {
+  const announcementGuardianA = (await insertOne(directorA, 'institution_announcements', {
     institution_id: institutionA,
     title: `Aviso responsáveis A ${suffix}`,
     message: 'Aviso exclusivo para responsáveis do tenant A',
     audience: 'GUARDIANS',
     active: true,
-    created_by: actors.adminA.id,
+    created_by: actors.directorA.id,
   })).id;
-  const announcementGuardianB = (await insertOne(admin, 'institution_announcements', {
+  const announcementGuardianB = (await insertOne(directorB, 'institution_announcements', {
     institution_id: institutionB,
     title: `Aviso responsáveis B ${suffix}`,
     message: 'Aviso exclusivo para responsáveis do tenant B',
     audience: 'GUARDIANS',
     active: true,
-    created_by: actors.adminB.id,
+    created_by: actors.directorB.id,
   })).id;
 
-  const accessDeviceA = (await insertOne(admin, 'access_devices', {
+  const accessDeviceA = (await insertOne(directorA, 'access_devices', {
     institution_id: institutionA,
     name: `Portaria A ${suffix}`,
     provider: 'TEST',
     model: 'AUDIT',
     status: 'OFFLINE',
   })).id;
-  const accessDeviceB = (await insertOne(admin, 'access_devices', {
+  const accessDeviceB = (await insertOne(directorB, 'access_devices', {
     institution_id: institutionB,
     name: `Portaria B ${suffix}`,
     provider: 'TEST',
     model: 'AUDIT',
     status: 'OFFLINE',
   })).id;
-  const accessEventA = (await insertOne(admin, 'access_events', {
+  const accessEventA = globalThis.crypto.randomUUID();
+  await insertWithoutSelect(admin, 'access_events', {
+    id: accessEventA,
     institution_id: institutionA,
     student_id: studentA,
     device_id: accessDeviceA,
@@ -635,8 +653,10 @@ async function createFixture(): Promise<TenantFixture> {
     direction: 'ENTRY',
     occurred_at: '2026-09-07T08:00:00Z',
     status: 'ACCEPTED',
-  })).id;
-  const accessEventB = (await insertOne(admin, 'access_events', {
+  });
+  const accessEventB = globalThis.crypto.randomUUID();
+  await insertWithoutSelect(admin, 'access_events', {
+    id: accessEventB,
     institution_id: institutionB,
     student_id: studentB,
     device_id: accessDeviceB,
@@ -646,9 +666,9 @@ async function createFixture(): Promise<TenantFixture> {
     direction: 'ENTRY',
     occurred_at: '2026-09-07T08:00:00Z',
     status: 'ACCEPTED',
-  })).id;
+  });
 
-  const contractA = (await insertOne(admin, 'financial_contracts', {
+  const contractA = (await insertOne(directorA, 'financial_contracts', {
     institution_id: institutionA,
     student_id: studentA,
     academic_year_id: yearA,
@@ -659,9 +679,9 @@ async function createFixture(): Promise<TenantFixture> {
     installment_count: 1,
     first_due_date: '2026-02-10',
     default_due_day: 10,
-    created_by: actors.adminA.id,
+    created_by: actors.directorA.id,
   })).id;
-  const contractB = (await insertOne(admin, 'financial_contracts', {
+  const contractB = (await insertOne(directorB, 'financial_contracts', {
     institution_id: institutionB,
     student_id: studentB,
     academic_year_id: yearB,
@@ -672,9 +692,9 @@ async function createFixture(): Promise<TenantFixture> {
     installment_count: 1,
     first_due_date: '2026-02-10',
     default_due_day: 10,
-    created_by: actors.adminB.id,
+    created_by: actors.directorB.id,
   })).id;
-  const invoiceA = (await insertOne(admin, 'invoices', {
+  const invoiceA = (await insertOne(directorA, 'invoices', {
     institution_id: institutionA,
     contract_id: contractA,
     student_id: studentA,
@@ -685,7 +705,7 @@ async function createFixture(): Promise<TenantFixture> {
     sequence_number: 1,
     status: 'OPEN',
   })).id;
-  const invoiceB = (await insertOne(admin, 'invoices', {
+  const invoiceB = (await insertOne(directorB, 'invoices', {
     institution_id: institutionB,
     contract_id: contractB,
     student_id: studentB,
@@ -696,7 +716,7 @@ async function createFixture(): Promise<TenantFixture> {
     sequence_number: 1,
     status: 'OPEN',
   })).id;
-  const paymentA = (await insertOne(admin, 'payments', {
+  const paymentA = (await insertOne(directorA, 'payments', {
     institution_id: institutionA,
     invoice_id: invoiceA,
     provider: 'MOCK',
@@ -704,9 +724,9 @@ async function createFixture(): Promise<TenantFixture> {
     method: 'MANUAL',
     amount: 100000,
     status: 'PAID',
-    registered_by: actors.adminA.id,
+    registered_by: actors.directorA.id,
   })).id;
-  const paymentB = (await insertOne(admin, 'payments', {
+  const paymentB = (await insertOne(directorB, 'payments', {
     institution_id: institutionB,
     invoice_id: invoiceB,
     provider: 'MOCK',
@@ -714,7 +734,7 @@ async function createFixture(): Promise<TenantFixture> {
     method: 'MANUAL',
     amount: 100000,
     status: 'PAID',
-    registered_by: actors.adminB.id,
+    registered_by: actors.directorB.id,
   })).id;
 
   return {
@@ -792,9 +812,9 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       ['adminA', 'institutions', fixture.institutionA],
       ['adminA', 'profiles', fixture.actors.adminA.id],
       ['adminA', 'memberships', fixture.membershipA],
-      ['adminA', 'academic_years', fixture.yearA],
-      ['adminA', 'terms', fixture.termA],
-      ['adminA', 'subjects', fixture.subjectA],
+      ['directorA', 'academic_years', fixture.yearA],
+      ['directorA', 'terms', fixture.termA],
+      ['directorA', 'subjects', fixture.subjectA],
       ['adminA', 'enrollments', fixture.enrollmentA],
       ['adminA', 'rooms', fixture.roomA],
       ['adminA', 'timetable_entries', fixture.timetableEntryA],
@@ -825,9 +845,9 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       ['adminA', 'institutions', fixture.institutionB],
       ['adminA', 'profiles', fixture.actors.adminB.id],
       ['adminA', 'memberships', fixture.membershipB],
-      ['adminA', 'academic_years', fixture.yearB],
-      ['adminA', 'terms', fixture.termB],
-      ['adminA', 'subjects', fixture.subjectB],
+      ['directorA', 'academic_years', fixture.yearB],
+      ['directorA', 'terms', fixture.termB],
+      ['directorA', 'subjects', fixture.subjectB],
       ['adminA', 'enrollments', fixture.enrollmentB],
       ['adminA', 'rooms', fixture.roomB],
       ['adminA', 'timetable_entries', fixture.timetableEntryB],
@@ -918,6 +938,23 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       }
     }
 
+    for (const actorKey of ['adminA', 'teacherA', 'studentA', 'guardianA'] as const) {
+      const ownEvent = await readIds(
+        fixture.actors[actorKey].client,
+        'access_events',
+        fixture.accessEventA,
+      );
+      const ownDevice = await readIds(
+        fixture.actors[actorKey].client,
+        'access_devices',
+        fixture.accessDeviceA,
+      );
+      expect(ownEvent.error, `${actorKey} Portaria event authorization`).toBeNull();
+      expect(ownEvent.rows, `${actorKey} Portaria event authorization`).toHaveLength(0);
+      expect(ownDevice.error, `${actorKey} Portaria device authorization`).toBeNull();
+      expect(ownDevice.rows, `${actorKey} Portaria device authorization`).toHaveLength(0);
+    }
+
     const ownDevice = await readIds(
       fixture.actors.directorA.client,
       'access_devices',
@@ -934,12 +971,12 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       throw new Error('directorA: cross-tenant Portaria device leak');
     }
 
-    const originalDevice = await fixture.admin
+    const originalDevice = await fixture.actors.directorA.client
       .from('access_devices')
       .select('name')
       .eq('id', fixture.accessDeviceA)
       .single();
-    const foreignDeviceBefore = await fixture.admin
+    const foreignDeviceBefore = await fixture.actors.directorB.client
       .from('access_devices')
       .select('name')
       .eq('id', fixture.accessDeviceB)
@@ -969,6 +1006,19 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
         })
         .select('id'),
     );
+    const eventInsert = await writeAttempt(() =>
+      fixture.actors.directorA.client
+        .from('access_events')
+        .insert({
+          id: globalThis.crypto.randomUUID(),
+          institution_id: fixture.institutionA,
+          provider: 'TEST',
+          provider_event_id: `manual-event-${Date.now()}`,
+          event_type: 'ENTRY',
+          occurred_at: '2026-09-07T08:00:00Z',
+        })
+        .select('id'),
+    );
 
     const ownUpdateClassification = ownUpdate.error?.match(/permission denied/i)
       ? 'BLOCKED_BY_GRANTS'
@@ -977,20 +1027,22 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
         : 'NOT_AVAILABLE';
     expect(foreignUpdate.rows).toHaveLength(0);
     expect(foreignInsert.rows).toHaveLength(0);
+    expect(eventInsert.rows).toHaveLength(0);
+    expect(eventInsert.error).toMatch(/permission denied|row-level security/i);
     if (ownUpdateClassification === 'PASS_RLS') {
       expect(
-        (await fixture.admin.from('access_devices').select('name').eq('id', fixture.accessDeviceA).single()).data?.name,
+        (await fixture.actors.directorA.client.from('access_devices').select('name').eq('id', fixture.accessDeviceA).single()).data?.name,
       ).toBe('Portaria A auditada');
     }
     expect(
-      (await fixture.admin.from('access_devices').select('name').eq('id', fixture.accessDeviceB).single()).data?.name,
+      (await fixture.actors.directorB.client.from('access_devices').select('name').eq('id', fixture.accessDeviceB).single()).data?.name,
     ).toBe(foreignDeviceBefore.data?.name);
     if (foreignUpdate.rows.length > 0 || foreignInsert.rows.length > 0) {
       throw new Error('directorA: cross-tenant Portaria write leak');
     }
 
     if (ownUpdateClassification === 'PASS_RLS') {
-      await fixture.admin
+      await fixture.actors.directorA.client
         .from('access_devices')
         .update({ name: originalDevice.data?.name })
         .eq('id', fixture.accessDeviceA);
@@ -1004,11 +1056,12 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       ownDeviceUpdate: ownUpdate,
       foreignDeviceUpdate: foreignUpdate,
       foreignDeviceInsert: foreignInsert,
+      authenticatedEventInsert: eventInsert,
       profilesActiveCoverage: 'covered by the profiles.active matrix below',
     }));
   }, 120_000);
 
-  it('records finance table grant gaps separately from tenant isolation', async () => {
+  it('audits finance table privileges separately from tenant isolation', async () => {
     const checks = [
       ['financial_contracts', fixture.contractA, fixture.contractB],
       ['invoices', fixture.invoiceA, fixture.invoiceB],
@@ -1016,8 +1069,8 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
     ] as const;
     const results = [];
     for (const [table, ownId, foreignId] of checks) {
-      const own = await readIds(fixture.actors.adminA.client, table, ownId);
-      const foreign = await readIds(fixture.actors.adminA.client, table, foreignId);
+      const own = await readIds(fixture.actors.directorA.client, table, ownId);
+      const foreign = await readIds(fixture.actors.directorA.client, table, foreignId);
       const classification = classifyScopedRead(own, foreign);
       results.push({ table, own, foreign, classification });
       expect(foreign.rows, `${table} cross-tenant rows`).toHaveLength(0);
@@ -1031,14 +1084,49 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       const own = await readIds(fixture.actors.guardianA.client, table, ownId);
       const foreign = await readIds(fixture.actors.guardianA.client, table, foreignId);
       guardianResults.push({ table, own, foreign });
+      expect(own.error, `${table} guardian own access`).toBeNull();
+      expect(own.rows, `${table} guardian own access`).toHaveLength(1);
       expect(foreign.rows, `${table} guardian cross-tenant rows`).toHaveLength(0);
     }
 
+    const adminContract = await readIds(
+      fixture.actors.adminA.client,
+      'financial_contracts',
+      fixture.contractA,
+    );
+    expect(adminContract.error, 'adminA finance authorization').toBeNull();
+    expect(adminContract.rows, 'adminA finance authorization').toHaveLength(0);
+
+    const adminFinanceWrite = await writeAttempt(() =>
+      fixture.actors.adminA.client
+        .from('financial_contracts')
+        .insert({
+          institution_id: fixture.institutionA,
+          student_id: fixture.studentA,
+          academic_year_id: fixture.yearA,
+          financial_responsible_profile_id: fixture.actors.guardianA.id,
+          status: 'ACTIVE',
+          base_amount: 1,
+          enrollment_fee_amount: 0,
+          installment_count: 1,
+          first_due_date: '2026-02-10',
+          default_due_day: 10,
+          created_by: fixture.actors.adminA.id,
+        })
+        .select('id'),
+    );
+    expect(adminFinanceWrite.rows, 'adminA finance write authorization').toHaveLength(0);
+    expect(adminFinanceWrite.error, 'adminA finance write authorization').toMatch(
+      /permission denied|row-level security/i,
+    );
+
     console.log(JSON.stringify({
       finding: 'FINANCE_ISOLATION_RESULTS',
-      staffActor: 'adminA',
+      staffActor: 'directorA',
       results,
       guardianResults,
+      adminFinanceRead: adminContract,
+      adminFinanceWrite,
       note: 'BLOCKED_BY_GRANTS is not treated as RLS proof',
     }));
   }, 60_000);
@@ -1067,12 +1155,12 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       'institution_announcements',
       'financial_contracts',
     ]) {
-      expect((await fixture.admin.from(table).select('id').limit(1)).error, `${table} snapshot`).toBeNull();
+      expect((await fixture.actors.directorB.client.from(table).select('id').limit(1)).error, `${table} snapshot`).toBeNull();
     }
     const countsBefore = new Map(
       await Promise.all(
         ['classes', 'enrollments', 'assessments', 'attendance_records', 'institution_announcements', 'financial_contracts']
-          .map(async (table) => [table, await readCount(fixture.admin, table)] as const),
+          .map(async (table) => [table, await readCount(fixture.actors.directorB.client, table)] as const),
       ),
     );
 
@@ -1120,12 +1208,12 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
     expect((await fixture.admin.from('students').select('registration_number').eq('id', fixture.studentB).single()).data?.registration_number)
       .toBe(studentBefore.data?.registration_number);
     for (const [table, count] of countsBefore) {
-      expect(await readCount(fixture.admin, table), `${table} row count`).toBe(count);
+      expect(await readCount(fixture.actors.directorB.client, table), `${table} row count`).toBe(count);
     }
     console.log(JSON.stringify({
       finding: 'IDOR_WRITE_RESULTS',
       results,
-      note: 'zero rows were verified against service-role snapshots; explicitDenied distinguishes HTTP/RLS errors from silent no-op updates',
+      note: 'zero rows were verified against tenant-B director snapshots; explicitDenied distinguishes HTTP/RLS errors from silent no-op updates',
     }));
   }, 120_000);
 
@@ -1297,7 +1385,7 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       expect(data, label).toBe(expected);
     }
 
-    const enrollmentCountBefore = await readCount(fixture.admin, 'enrollments');
+    const enrollmentCountBefore = await readCount(fixture.actors.directorB.client, 'enrollments');
     const bundleAttempt = await fixture.actors.adminA.client.rpc(
       'create_full_student_enrollment_bundle',
       {
@@ -1317,7 +1405,7 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
     );
     expect(bundleAttempt.data).toBeNull();
     expect(bundleAttempt.error?.message).toMatch(/papel|matr[ií]cula|institui[cç][aã]o/i);
-    expect(await readCount(fixture.admin, 'enrollments')).toBe(enrollmentCountBefore);
+    expect(await readCount(fixture.actors.directorB.client, 'enrollments')).toBe(enrollmentCountBefore);
 
     console.log(JSON.stringify({
       finding: 'AUTHORIZATION_RPC_BOUNDARIES',
