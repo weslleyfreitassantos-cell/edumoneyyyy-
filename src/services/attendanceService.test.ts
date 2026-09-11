@@ -532,9 +532,39 @@ describe('attendanceService', () => {
       ],
       error: null,
     });
+    const historicalQuery = createQuery({
+      data: [
+        {
+          subject_offering_id: 'offering-term-3',
+          starts_at: '10:50:00',
+          ends_at: '11:40:00',
+          status: 'CLOSED',
+        },
+        {
+          subject_offering_id: 'offering-term-3',
+          starts_at: '09:00:00',
+          ends_at: '09:50:00',
+          status: 'CLOSED',
+        },
+        {
+          subject_offering_id: 'offering-term-3',
+          starts_at: '11:50:00',
+          ends_at: '12:40:00',
+          status: 'CANCELED',
+        },
+        {
+          subject_offering_id: 'offering-term-3',
+          starts_at: null,
+          ends_at: null,
+          status: 'CLOSED',
+        },
+      ],
+      error: null,
+    });
     vi.mocked(supabase.from)
       .mockReturnValueOnce(offeringsQuery as unknown as ReturnType<typeof supabase.from>)
-      .mockReturnValueOnce(scheduleQuery as unknown as ReturnType<typeof supabase.from>);
+      .mockReturnValueOnce(scheduleQuery as unknown as ReturnType<typeof supabase.from>)
+      .mockReturnValueOnce(historicalQuery as unknown as ReturnType<typeof supabase.from>);
 
     const offerings = await attendanceService.listTeacherOfferings(
       'teacher-1',
@@ -547,9 +577,13 @@ describe('attendanceService', () => {
       .toMatchObject({
         termName: '3º bimestre',
         scheduleSlots: [{ dayOfWeek: 3, startTime: '10:50:00', endTime: '11:40:00' }],
+        selectableSlots: [
+          { source: 'HISTORICAL', startTime: '09:00:00', endTime: '09:50:00' },
+          { source: 'TIMETABLE', startTime: '10:50:00', endTime: '11:40:00' },
+        ],
       });
     expect(offerings.find((offering) => offering.id === 'offering-term-1'))
-      .toMatchObject({ scheduleSlots: [] });
+      .toMatchObject({ scheduleSlots: [], selectableSlots: [] });
     expect(scheduleQuery.in).toHaveBeenCalledWith(
       'subject_offering_id',
       ['offering-term-1', 'offering-term-3'],
@@ -557,6 +591,60 @@ describe('attendanceService', () => {
     expect(
       selectAttendanceOfferingForDate(offerings, '2026-09-09')?.id,
     ).toBe('offering-term-3');
+  });
+
+  it('descobre slots históricos quando a grade atual não possui horários', async () => {
+    const offeringsQuery = createQuery({
+      data: [attendanceOfferingRow],
+      error: null,
+    });
+    const scheduleQuery = createQuery({
+      data: [],
+      error: null,
+    });
+    const historicalQuery = createQuery({
+      data: [
+        {
+          subject_offering_id: 'offering-1',
+          starts_at: '07:00:00',
+          ends_at: '07:50:00',
+          status: 'CLOSED',
+        },
+        {
+          subject_offering_id: 'offering-1',
+          starts_at: '08:00:00',
+          ends_at: '08:50:00',
+          status: 'CLOSED',
+        },
+      ],
+      error: null,
+    });
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(offeringsQuery as unknown as ReturnType<typeof supabase.from>)
+      .mockReturnValueOnce(scheduleQuery as unknown as ReturnType<typeof supabase.from>)
+      .mockReturnValueOnce(historicalQuery as unknown as ReturnType<typeof supabase.from>);
+
+    const offerings = await attendanceService.listTeacherOfferings(
+      'teacher-1',
+      'institution-1',
+      '2026-02-02',
+    );
+
+    expect(offerings[0]).toMatchObject({
+      scheduleSlots: [],
+      selectableSlots: [
+        {
+          source: 'HISTORICAL',
+          startTime: '07:00:00',
+          endTime: '07:50:00',
+        },
+        {
+          source: 'HISTORICAL',
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+        },
+      ],
+    });
   });
 
   it('não salva chamada vazia', async () => {
@@ -669,8 +757,9 @@ describe('attendanceService calendar integration', () => {
       endTime: '08:50:00',
     });
     expect(rollCall.session?.id).toBe('session-1');
-    expect(sessionsQuery.or).toHaveBeenCalledWith(
-      'starts_at.eq.08:00:00,starts_at.is.null',
+    expect(sessionsQuery.eq).toHaveBeenCalledWith(
+      'starts_at',
+      '08:00:00',
     );
     expect(rollCall.offering.id).toBe('offering-1');
   });
@@ -709,8 +798,9 @@ describe('attendanceService calendar integration', () => {
     );
 
     expect(rollCall.session?.id).toBe('session-2');
-    expect(sessionsQuery.or).toHaveBeenCalledWith(
-      'starts_at.eq.08:00:00,starts_at.is.null',
+    expect(sessionsQuery.eq).toHaveBeenCalledWith(
+      'starts_at',
+      '08:00:00',
     );
 
     setupRollCallQueries({
@@ -792,6 +882,32 @@ describe('attendanceService calendar integration', () => {
       endTime: '08:50:00',
     });
   });
+
+  it.each([
+    ['07:00:00', '07:50:00', 'session-07'],
+    ['08:00:00', '08:50:00', 'session-08'],
+  ] as const)(
+    'carrega sessão histórica %s sem timetable atual',
+    async (startTime, endTime, sessionId) => {
+      setupRollCallQueries({
+        schedule: [],
+        session: createSession(startTime, endTime, sessionId),
+      });
+
+      const rollCall = await attendanceService.loadRollCall(
+        'institution-1',
+        'offering-1',
+        '2026-02-02',
+        { startTime, endTime },
+      );
+
+      expect(rollCall.session?.id).toBe(sessionId);
+      expect(rollCall.scheduleSlot).toMatchObject({
+        startTime,
+        endTime,
+      });
+    },
+  );
 
   it('preserva o fallback de sessão histórica legacy sem horário quando inequívoca', async () => {
     setupRollCallQueries({

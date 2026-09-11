@@ -160,6 +160,13 @@ interface AttendanceOfferingScheduleQueryRow
   subject_offering_id: string;
 }
 
+interface AttendanceOfferingHistoricalSlotQueryRow {
+  subject_offering_id: string;
+  starts_at: string | null;
+  ends_at: string | null;
+  status: string;
+}
+
 interface AttendanceRecordQueryRow {
   id: string;
   institution_id: string;
@@ -205,6 +212,7 @@ export interface AttendanceOffering {
   termStartDate: string | null;
   termEndDate: string | null;
   scheduleSlots?: AttendanceScheduleSlot[];
+  selectableSlots?: AttendanceSelectableSlot[];
 }
 
 export interface AttendanceSession {
@@ -227,6 +235,15 @@ export interface AttendanceScheduleSlot {
   dayOfWeek: number;
   startTime: string;
   endTime: string;
+}
+
+export type AttendanceSelectableSlotSource =
+  | 'TIMETABLE'
+  | 'HISTORICAL';
+
+export interface AttendanceSelectableSlot
+  extends AttendanceScheduleSlot {
+  source: AttendanceSelectableSlotSource;
 }
 
 export type AttendanceScheduleSlotSelection = Pick<
@@ -640,6 +657,60 @@ function sortAttendanceOfferings(
   );
 }
 
+function buildAttendanceSelectableSlots(
+  sessionDate: string,
+  timetableSlots: readonly AttendanceScheduleSlot[],
+  historicalSlots: readonly AttendanceOfferingHistoricalSlotQueryRow[],
+): AttendanceSelectableSlot[] {
+  const slotsByKey = new Map<
+    string,
+    AttendanceSelectableSlot
+  >();
+
+  for (const slot of timetableSlots) {
+    slotsByKey.set(attendanceSlotKey(slot), {
+      ...slot,
+      source: 'TIMETABLE',
+    });
+  }
+
+  const dayOfWeek = getAttendanceDayOfWeek(sessionDate);
+
+  for (const session of historicalSlots) {
+    if (
+      session.status === 'CANCELED' ||
+      session.starts_at === null ||
+      session.ends_at === null ||
+      dayOfWeek < 1 ||
+      dayOfWeek > 6
+    ) {
+      continue;
+    }
+
+    const key = attendanceSlotKey({
+      startTime: session.starts_at,
+      endTime: session.ends_at,
+    });
+
+    if (slotsByKey.has(key)) {
+      continue;
+    }
+
+    slotsByKey.set(key, {
+      dayOfWeek,
+      startTime: session.starts_at,
+      endTime: session.ends_at,
+      source: 'HISTORICAL',
+    });
+  }
+
+  return [...slotsByKey.values()].sort((first, second) =>
+    attendanceSlotKey(first).localeCompare(
+      attendanceSlotKey(second),
+    ),
+  );
+}
+
 export function selectAttendanceOfferingForDate(
   offerings: readonly AttendanceOffering[],
   sessionDate: string,
@@ -672,11 +743,17 @@ export function selectAttendanceOfferingForDate(
 
   return (
     offeringsInPeriod.find(
-      (offering) => (offering.scheduleSlots?.length ?? 0) > 0,
+      (offering) =>
+        (offering.selectableSlots?.length ??
+          offering.scheduleSlots?.length ??
+          0) > 0,
     ) ??
     offeringsInPeriod[0] ??
     offerings.find(
-      (offering) => (offering.scheduleSlots?.length ?? 0) > 0,
+      (offering) =>
+        (offering.selectableSlots?.length ??
+          offering.scheduleSlots?.length ??
+          0) > 0,
     ) ??
     offerings[0] ??
     null
@@ -1043,8 +1120,9 @@ async function getAttendanceSessionForSlot(
   subjectOfferingId: string,
   sessionDate: string,
   scheduleSlot: AttendanceScheduleSlotSelection,
+  allowLegacySession = false,
 ): Promise<AttendanceSession | null> {
-  const { data, error } = await supabase
+  const sessionQuery = supabase
     .from('attendance_sessions')
     .select(
       `
@@ -1065,10 +1143,13 @@ async function getAttendanceSessionForSlot(
     )
     .eq('institution_id', institutionId)
     .eq('subject_offering_id', subjectOfferingId)
-    .eq('session_date', sessionDate)
-    .or(
-      `starts_at.eq.${scheduleSlot.startTime},starts_at.is.null`,
-    )
+    .eq('session_date', sessionDate);
+  const { data, error } = await (allowLegacySession
+    ? sessionQuery.or(
+        `starts_at.eq.${scheduleSlot.startTime},starts_at.is.null`,
+      )
+    : sessionQuery.eq('starts_at', scheduleSlot.startTime)
+  )
     .neq('status', 'CANCELED')
     .order('created_at', { ascending: true });
 
@@ -1214,6 +1295,7 @@ async function resolveAttendanceSlotForLoad(
             subjectOfferingId,
             sessionDate,
             matchingTimetableSlot,
+            timetableSlots.length === 1,
           ),
         };
       }
@@ -1254,6 +1336,7 @@ async function resolveAttendanceSlotForLoad(
         subjectOfferingId,
         sessionDate,
         scheduleSlot,
+        timetableSlots.length === 1,
       ),
     };
   }
@@ -1330,6 +1413,7 @@ async function resolveAttendanceSlotForSave(
       subjectOfferingId,
       sessionDate,
       scheduleSlot,
+      timetableSlots.length === 1,
     ),
   };
 }
@@ -1824,58 +1908,97 @@ export const attendanceService = {
         offerings.map((offering) => ({
           ...offering,
           scheduleSlots: [],
+          selectableSlots: [],
         })),
       );
     }
 
     const dayOfWeek = getAttendanceDayOfWeek(sessionDate);
-    if (dayOfWeek < 1 || dayOfWeek > 6) {
-      return sortAttendanceOfferings(
-        offerings.map((offering) => ({
-          ...offering,
-          scheduleSlots: [],
-        })),
-      );
-    }
-
-    const { data: scheduleData, error: scheduleError } = await supabase
-      .from('timetable_entries')
-      .select('subject_offering_id, day_of_week, start_time, end_time')
-      .eq('institution_id', institutionId)
-      .in(
-        'subject_offering_id',
-        offerings.map((offering) => offering.id),
-      )
-      .eq('day_of_week', dayOfWeek)
-      .eq('active', true)
-      .order('start_time', { ascending: true });
-
-    if (scheduleError) {
-      throw createAttendanceError(
-        scheduleError,
-        'ATTENDANCE_FORBIDDEN',
-      );
-    }
 
     const schedulesByOffering = new Map<
       string,
       AttendanceScheduleSlot[]
     >();
 
-    for (const row of (scheduleData ?? []) as unknown as AttendanceOfferingScheduleQueryRow[]) {
-      const slots = schedulesByOffering.get(row.subject_offering_id) ?? [];
-      slots.push({
-        dayOfWeek: row.day_of_week,
-        startTime: row.start_time,
-        endTime: row.end_time,
-      });
-      schedulesByOffering.set(row.subject_offering_id, slots);
+    if (dayOfWeek >= 1 && dayOfWeek <= 6) {
+      const {
+        data: scheduleData,
+        error: scheduleError,
+      } = await supabase
+        .from('timetable_entries')
+        .select('subject_offering_id, day_of_week, start_time, end_time')
+        .eq('institution_id', institutionId)
+        .in(
+          'subject_offering_id',
+          offerings.map((offering) => offering.id),
+        )
+        .eq('day_of_week', dayOfWeek)
+        .eq('active', true)
+        .order('start_time', { ascending: true });
+
+      if (scheduleError) {
+        throw createAttendanceError(
+          scheduleError,
+          'ATTENDANCE_FORBIDDEN',
+        );
+      }
+
+      for (const row of (scheduleData ?? []) as unknown as AttendanceOfferingScheduleQueryRow[]) {
+        const slots = schedulesByOffering.get(row.subject_offering_id) ?? [];
+        slots.push({
+          dayOfWeek: row.day_of_week,
+          startTime: row.start_time,
+          endTime: row.end_time,
+        });
+        schedulesByOffering.set(row.subject_offering_id, slots);
+      }
+    }
+
+    const {
+      data: historicalData,
+      error: historicalError,
+    } = await supabase
+      .from('attendance_sessions')
+      .select(
+        'subject_offering_id, starts_at, ends_at, status',
+      )
+      .eq('institution_id', institutionId)
+      .in(
+        'subject_offering_id',
+        offerings.map((offering) => offering.id),
+      )
+      .eq('session_date', sessionDate)
+      .neq('status', 'CANCELED');
+
+    if (historicalError) {
+      throw createAttendanceError(
+        historicalError,
+        'ATTENDANCE_FORBIDDEN',
+      );
+    }
+
+    const historicalSlotsByOffering = new Map<
+      string,
+      AttendanceOfferingHistoricalSlotQueryRow[]
+    >();
+
+    for (const row of (historicalData ?? []) as unknown as AttendanceOfferingHistoricalSlotQueryRow[]) {
+      const slots =
+        historicalSlotsByOffering.get(row.subject_offering_id) ?? [];
+      slots.push(row);
+      historicalSlotsByOffering.set(row.subject_offering_id, slots);
     }
 
     return sortAttendanceOfferings(
       offerings.map((offering) => ({
         ...offering,
-        scheduleSlots: schedulesByOffering.get(offering.id) ?? [],
+        scheduleSlots:
+          schedulesByOffering.get(offering.id) ?? [],
+        selectableSlots: buildAttendanceSelectableSlots(
+          sessionDate,
+          schedulesByOffering.get(offering.id) ?? [],
+          historicalSlotsByOffering.get(offering.id) ?? [],
+        ),
       })),
     );
   },

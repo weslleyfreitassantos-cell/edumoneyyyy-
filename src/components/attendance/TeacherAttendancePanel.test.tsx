@@ -550,6 +550,172 @@ describe('TeacherAttendancePanel', () => {
     });
   });
 
+  it('navega por slots históricos sem timetable e mantém a chamada somente leitura', async () => {
+    const historicalOffering = {
+      ...offering,
+      scheduleSlots: [],
+      selectableSlots: [
+        {
+          dayOfWeek: 1,
+          startTime: '07:00:00',
+          endTime: '07:50:00',
+          source: 'HISTORICAL' as const,
+        },
+        {
+          dayOfWeek: 1,
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+          source: 'HISTORICAL' as const,
+        },
+      ],
+    };
+    const historical08RollCall = {
+      ...rollCall,
+      scheduleSlot: {
+        dayOfWeek: 1,
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+      session: {
+        ...rollCall.session,
+        id: 'session-08',
+        startsAt: '08:00:00',
+        endsAt: '08:50:00',
+      },
+      records: [rollCall.records[1]],
+    };
+
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [historicalOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    useAttendanceRollCall.mockImplementation(
+      (...args: unknown[]) => ({
+        data:
+          (args[3] as { startTime?: string } | undefined)
+            ?.startTime === '08:00:00'
+            ? historical08RollCall
+            : undefined,
+        dataUpdatedAt:
+          (args[3] as { startTime?: string } | undefined)
+            ?.startTime === '08:00:00'
+            ? 2
+            : 1,
+        isLoading: false,
+        isError: false,
+        error: null,
+      }),
+    );
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    const slotSelect = await screen.findByLabelText(
+      'Horário da aula',
+    );
+    expect(
+      screen.getByRole('option', {
+        name: '07:00 a 07:50 · Histórico',
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('option', {
+        name: '08:00 a 08:50 · Histórico',
+      }),
+    ).toBeTruthy();
+
+    fireEvent.change(slotSelect, {
+      target: { value: '08:00:00|08:50:00' },
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Bruno Lima')).toBeTruthy();
+    });
+    expect(
+      screen.getByText(
+        'Esta chamada pertence a um horário histórico que não está mais na grade publicada.',
+      ),
+    ).toBeTruthy();
+    expect(
+      screen
+        .getByLabelText(/Status de Bruno Lima/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByLabelText(/Observação de Bruno Lima/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Marcar presentes/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Salvar chamada/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+  });
+
+  it('torna sessão histórica somente leitura quando o calendário bloqueia a data', () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        calendarStatus: {
+          date: '2026-02-02',
+          state: 'BLOCKED',
+          blocked: true,
+          blockers: [
+            { event_id: 'event-1', event_type: 'HOLIDAY' },
+          ],
+        },
+        attendanceAllowed: false,
+      },
+      dataUpdatedAt: 3,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getByText('Ana Silva')).toBeTruthy();
+    expect(screen.getByText('Bruno Lima')).toBeTruthy();
+    expect(screen.getByText(/já existe uma chamada registrada/)).toBeTruthy();
+    expect(
+      screen
+        .getByLabelText(/Status de Ana Silva/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByLabelText(/Observação de Ana Silva/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Marcar presentes/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Salvar chamada/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+  });
+
   it('exibe o progresso da carga horária da atribuição', () => {
     useSubjectOfferingWorkloadProgress.mockReturnValue({
       data: {

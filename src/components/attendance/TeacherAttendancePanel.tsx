@@ -22,6 +22,7 @@ import {
   ATTENDANCE_RECORD_STATUSES,
   attendanceSlotKey,
   selectAttendanceOfferingForDate,
+  type AttendanceSelectableSlot,
   type AttendanceScheduleSlotSelection,
   type AttendanceStatus,
 } from '../../services/attendanceService';
@@ -113,9 +114,18 @@ export default function TeacherAttendancePanel({
   const selectedOffering = offerings.find(
     (offering) => offering.id === selectedOfferingId,
   );
-  const availableScheduleSlots = useMemo(
-    () => selectedOffering?.scheduleSlots ?? [],
-    [selectedOffering?.scheduleSlots],
+  const availableScheduleSlots = useMemo<
+    AttendanceSelectableSlot[]
+  >(
+    () =>
+      selectedOffering?.selectableSlots ??
+      (selectedOffering?.scheduleSlots ?? []).map(
+        (slot) => ({ ...slot, source: 'TIMETABLE' }),
+      ),
+    [
+      selectedOffering?.scheduleSlots,
+      selectedOffering?.selectableSlots,
+    ],
   );
   const slotRequired =
     availableScheduleSlots.length > 1 && !selectedScheduleSlot;
@@ -231,11 +241,22 @@ export default function TeacherAttendancePanel({
   const activeRollCall = slotRequired
     ? undefined
     : rollCallQuery.data;
+  const selectedSlot = selectedScheduleSlot
+    ? availableScheduleSlots.find(
+        (slot) =>
+          attendanceSlotKey(slot) ===
+          attendanceSlotKey(selectedScheduleSlot),
+      )
+    : undefined;
+  const historicalOnlySlot =
+    selectedSlot?.source === 'HISTORICAL';
   const calendarStatus = activeRollCall?.calendarStatus;
   const calendarBlocked = Boolean(calendarStatus?.blocked);
   const historicalSession = Boolean(activeRollCall?.session);
   const editingDisabled =
-    slotRequired || (calendarBlocked && !historicalSession);
+    slotRequired ||
+    historicalOnlySlot ||
+    calendarBlocked;
   const blockerLabels = calendarStatus
     ? getCalendarBlockerLabels(calendarStatus.blockers)
     : [];
@@ -553,6 +574,9 @@ export default function TeacherAttendancePanel({
                       >
                         {formatAttendanceTime(slot.startTime)} a{' '}
                         {formatAttendanceTime(slot.endTime)}
+                        {slot.source === 'HISTORICAL'
+                          ? ' · Histórico'
+                          : ''}
                       </option>
                     ))}
                   </select>
@@ -612,6 +636,15 @@ export default function TeacherAttendancePanel({
             </div>
           )}
 
+          {historicalOnlySlot && (
+            <div
+              role="status"
+              className="rounded-lg border border-slate-200 bg-slate-50 p-3 text-sm text-slate-700"
+            >
+              Esta chamada pertence a um horário histórico que não está mais na grade publicada.
+            </div>
+          )}
+
           {calendarBlocked && (
             <div
               role="status"
@@ -630,7 +663,7 @@ export default function TeacherAttendancePanel({
               )}
               {!historicalSession && (
                 <p className="mt-2">
-                  A chamada não pode ser aberta enquanto esta data estiver bloqueada.
+                  Aula suspensa — chamada não pode ser aberta.
                 </p>
               )}
             </div>
