@@ -1120,6 +1120,14 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       /permission denied|row-level security/i,
     );
 
+    const superAdminContract = await readIds(
+      fixture.actors.superAdmin.client,
+      'financial_contracts',
+      fixture.contractA,
+    );
+    expect(superAdminContract.error, 'superAdmin finance authorization').toBeNull();
+    expect(superAdminContract.rows, 'superAdmin finance authorization').toHaveLength(1);
+
     console.log(JSON.stringify({
       finding: 'FINANCE_ISOLATION_RESULTS',
       staffActor: 'directorA',
@@ -1127,6 +1135,7 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       guardianResults,
       adminFinanceRead: adminContract,
       adminFinanceWrite,
+      superAdminFinanceRead: superAdminContract,
       note: 'BLOCKED_BY_GRANTS is not treated as RLS proof',
     }));
   }, 60_000);

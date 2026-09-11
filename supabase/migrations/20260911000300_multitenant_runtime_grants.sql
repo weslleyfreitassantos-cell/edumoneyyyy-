@@ -67,13 +67,15 @@ create policy finance_contract_staff
 on public.financial_contracts
 for all
 using (
-  private.has_exact_institution_role(
+  public.is_platform_super_admin()
+  or private.has_exact_institution_role(
     institution_id,
     array['DIRECTOR', 'SECRETARY']::public.user_role[]
   )
 )
 with check (
-  private.has_exact_institution_role(
+  public.is_platform_super_admin()
+  or private.has_exact_institution_role(
     institution_id,
     array['DIRECTOR', 'SECRETARY']::public.user_role[]
   )
@@ -86,13 +88,15 @@ create policy finance_invoice_staff
 on public.invoices
 for all
 using (
-  private.has_exact_institution_role(
+  public.is_platform_super_admin()
+  or private.has_exact_institution_role(
     institution_id,
     array['DIRECTOR', 'SECRETARY']::public.user_role[]
   )
 )
 with check (
-  private.has_exact_institution_role(
+  public.is_platform_super_admin()
+  or private.has_exact_institution_role(
     institution_id,
     array['DIRECTOR', 'SECRETARY']::public.user_role[]
   )
@@ -105,13 +109,15 @@ create policy finance_payment_staff
 on public.payments
 for all
 using (
-  private.has_exact_institution_role(
+  public.is_platform_super_admin()
+  or private.has_exact_institution_role(
     institution_id,
     array['DIRECTOR', 'SECRETARY']::public.user_role[]
   )
 )
 with check (
-  private.has_exact_institution_role(
+  public.is_platform_super_admin()
+  or private.has_exact_institution_role(
     institution_id,
     array['DIRECTOR', 'SECRETARY']::public.user_role[]
   )
