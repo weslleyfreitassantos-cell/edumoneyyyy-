@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 
 import {
   BadgeCheck,
@@ -19,10 +19,18 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
-import { useStudentTimetable } from '../hooks/useTimetable';
+import {
+  useStudentTimetable,
+  useTimetableCalendarStatuses,
+} from '../hooks/useTimetable';
 import { useAudienceAnnouncements } from '../hooks/useAnnouncements';
 import { useStudentRegistrationCompletion } from '../hooks/useRegistrationCompletion';
 import { normalizeAcademicShift } from '../lib/academic/academicShifts';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
+import {
+  getWeekStartDateKey,
+  projectTimetableOccurrences,
+} from '../lib/academic/timetableOccurrences';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 
 import type {
@@ -272,6 +280,8 @@ function StudentTimetableView({
   institutionId,
   enrollment,
   currentTermId,
+  termStartDate,
+  termEndDate,
 }: {
   institutionId: string;
   enrollment: {
@@ -281,6 +291,8 @@ function StudentTimetableView({
     academic_year_name: string;
   } | null;
   currentTermId?: string;
+  termStartDate?: string | null;
+  termEndDate?: string | null;
 }) {
   const timetableQuery = useStudentTimetable(
     institutionId,
@@ -288,6 +300,19 @@ function StudentTimetableView({
     currentTermId,
   );
   const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
+  const [weekStartDate] = useState(() =>
+    getWeekStartDateKey(getLocalDateInputValue()),
+  );
+  const entries = (timetableQuery.data ?? []).filter(
+    (entry) => entry.active,
+  );
+  const calendarStatusQuery = useTimetableCalendarStatuses(
+    institutionId,
+    entries,
+    weekStartDate,
+    termStartDate,
+    termEndDate,
+  );
 
   if (!enrollment) {
     return (
@@ -325,13 +350,17 @@ function StudentTimetableView({
     );
   }
 
-  const entries = (timetableQuery.data ?? []).filter(
-    (entry) => entry.active,
-  );
   const classShift = enrollment.shift?.trim()
     ? normalizeAcademicShift(enrollment.shift)
     : null;
   const scheduleBreaks = scheduleBreaksQuery.data ?? [];
+  const occurrences = projectTimetableOccurrences(
+    entries,
+    weekStartDate,
+    calendarStatusQuery.data,
+    termStartDate,
+    termEndDate,
+  );
 
   return (
     <motion.div
@@ -368,17 +397,29 @@ function StudentTimetableView({
           A grade de horário da sua turma ainda não foi publicada.
         </div>
       ) : (
-        <WeeklyTimetableGrid
-          entries={entries}
-          scheduleBreaks={scheduleBreaks
-            .filter(
-              (scheduleBreak) =>
-                classShift !== null &&
-                scheduleBreak.active &&
-                normalizeAcademicShift(scheduleBreak.shift) === classShift,
-            )}
-          audience="student"
-        />
+        <>
+          {calendarStatusQuery.isError && (
+            <p
+              role="status"
+              className="rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-xs text-[#727785]"
+            >
+              Não foi possível verificar o calendário. As aulas continuam visíveis.
+            </p>
+          )}
+          <WeeklyTimetableGrid
+            entries={entries}
+            occurrences={occurrences}
+            weekStartDate={weekStartDate}
+            scheduleBreaks={scheduleBreaks
+              .filter(
+                (scheduleBreak) =>
+                  classShift !== null &&
+                  scheduleBreak.active &&
+                  normalizeAcademicShift(scheduleBreak.shift) === classShift,
+              )}
+            audience="student"
+          />
+        </>
       )}
     </motion.div>
   );
@@ -453,13 +494,16 @@ export default function StudentDashboard() {
 
   const { student, activeEnrollment, offerings } =
     dashboard;
+  const currentOffering = offerings[0];
 
   if (location.pathname === '/dashboard/timetable') {
     return (
       <StudentTimetableView
         institutionId={institutionQuery.data}
         enrollment={activeEnrollment}
-        currentTermId={offerings[0]?.term_id}
+        currentTermId={currentOffering?.term_id}
+        termStartDate={currentOffering?.term_start_date}
+        termEndDate={currentOffering?.term_end_date}
       />
     );
   }

@@ -8,7 +8,15 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
-import { useStudentTimetable } from '../hooks/useTimetable';
+import {
+  useStudentTimetable,
+  useTimetableCalendarStatuses,
+} from '../hooks/useTimetable';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
+import {
+  getDateForWeekDay,
+  getWeekStartDateKey,
+} from '../lib/academic/timetableOccurrences';
 
 import StudentDashboard from './StudentDashboard';
 
@@ -30,6 +38,7 @@ vi.mock('../hooks/useStudentDashboard', () => ({
 
 vi.mock('../hooks/useTimetable', () => ({
   useStudentTimetable: vi.fn(),
+  useTimetableCalendarStatuses: vi.fn(),
 }));
 
 vi.mock('../hooks/useAnnouncements', () => ({
@@ -131,6 +140,25 @@ const currentOffering = {
   term_end_date: '2026-04-30',
 };
 
+const currentWeekStartDate = getWeekStartDateKey(getLocalDateInputValue());
+const currentWeekEndDate = getDateForWeekDay(currentWeekStartDate, 4);
+const currentWeekOffering = {
+  ...currentOffering,
+  term_id: 'term-current-week',
+  term_start_date: currentWeekStartDate,
+  term_end_date: currentWeekEndDate,
+};
+
+const fridayTimetableEntry = {
+  ...timetableEntry,
+  id: 'entry-friday',
+  day_of_week: 5,
+  day_label: 'Sexta',
+  subject_id: 'subject-2',
+  subject_name: 'História',
+  subject_offering_id: 'offering-2',
+};
+
 function mockDefaultState() {
   vi.mocked(useAuth).mockReturnValue({
     profile: {
@@ -159,6 +187,13 @@ function mockDefaultState() {
 
   vi.mocked(useStudentTimetable).mockReturnValue({
     data: [timetableEntry],
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+
+  vi.mocked(useTimetableCalendarStatuses).mockReturnValue({
+    data: {},
     isLoading: false,
     isError: false,
     error: null,
@@ -195,6 +230,81 @@ describe('StudentDashboard', () => {
     expect(screen.getByText('07:00')).toBeTruthy();
     expect(screen.getByText('Prof. João')).toBeTruthy();
     expect(useStudentTimetable).toHaveBeenCalledWith(institutionId, classId, undefined);
+  });
+
+  it('passa ao timetable o intervalo do mesmo offering usado como período atual', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: { ...dashboard, offerings: [currentWeekOffering] },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard/timetable']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(useStudentTimetable).toHaveBeenCalledWith(
+      institutionId,
+      classId,
+      currentWeekOffering.term_id,
+    );
+    expect(useTimetableCalendarStatuses).toHaveBeenCalledWith(
+      institutionId,
+      [timetableEntry],
+      currentWeekStartDate,
+      currentWeekOffering.term_start_date,
+      currentWeekOffering.term_end_date,
+    );
+  });
+
+  it('mantém a aula dentro do período e não projeta a aula posterior ao seu fim', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: { ...dashboard, offerings: [currentWeekOffering] },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useStudentTimetable).mockReturnValue({
+      data: [timetableEntry, fridayTimetableEntry],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard/timetable']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText('Matemática')).toBeTruthy();
+    expect(screen.queryByText('História')).toBeNull();
+  });
+
+  it('não projeta uma aula anterior ao início do período', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: {
+        ...dashboard,
+        offerings: [{
+          ...currentWeekOffering,
+          term_start_date: getDateForWeekDay(currentWeekStartDate, 2),
+        }],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard/timetable']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.queryByText('Matemática')).toBeNull();
   });
 
   it('informa quando a turma ainda não tem grade publicada', () => {

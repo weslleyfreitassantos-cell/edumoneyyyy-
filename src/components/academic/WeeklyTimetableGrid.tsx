@@ -9,6 +9,12 @@ import {
 
 import type { TimetableEntryRow } from '../../services/timetableService';
 import type { SchoolScheduleBreakRow } from '../../services/academicAutomationService';
+import {
+  getDateForWeekDay,
+  getTimetableBlockerLabel,
+  getWeekDayForDate,
+  type TimetableOccurrence,
+} from '../../lib/academic/timetableOccurrences';
 
 type ScheduleBreak = Pick<
   SchoolScheduleBreakRow,
@@ -16,7 +22,7 @@ type ScheduleBreak = Pick<
 >;
 
 type TimetableItem =
-  | { kind: 'lesson'; entry: TimetableEntryRow }
+  | { kind: 'lesson'; entry: TimetableEntryRow; occurrence?: TimetableOccurrence }
   | { kind: 'break'; scheduleBreak: ScheduleBreak };
 
 const DAY_HEADER_CLASSES: Record<number, string> = {
@@ -73,9 +79,11 @@ function buildTimeSlots(
 
 function TimetableLessonCard({
   entry,
+  occurrence,
   audience,
 }: {
   entry: TimetableEntryRow;
+  occurrence?: TimetableOccurrence;
   audience: 'student' | 'teacher';
 }) {
   const secondaryLabel = audience === 'student' ? 'Professor' : 'Turma';
@@ -85,7 +93,11 @@ function TimetableLessonCard({
       : entry.class_name || 'Turma não informada';
 
   return (
-    <article className="rounded-lg border border-[#d8e0ec] bg-white p-2.5 shadow-sm transition hover:border-[#1769c2] hover:shadow-md dark:border-[#334155] dark:bg-[#18212f] dark:hover:border-[#60a5fa]">
+    <article className={`rounded-lg border bg-white p-2.5 shadow-sm transition hover:border-[#1769c2] hover:shadow-md dark:bg-[#18212f] dark:hover:border-[#60a5fa] ${
+      occurrence?.state === 'SUSPENDED'
+        ? 'border-[#f2c46d] dark:border-[#b45309]'
+        : 'border-[#d8e0ec] dark:border-[#334155]'
+    }`}>
       <div className="min-w-0">
         <h3
           className="break-words text-xs font-bold leading-4 text-[#181c20]"
@@ -98,6 +110,17 @@ function TimetableLessonCard({
           <span>{secondaryValue}</span>
         </p>
       </div>
+
+      {occurrence?.state === 'SUSPENDED' && (
+        <div className="mt-2 rounded-md bg-[#fff8e7] px-2 py-1.5 text-[11px] font-bold text-[#8a4b08] dark:bg-[#451a03] dark:text-[#fcd34d]">
+          <p>Aula suspensa</p>
+          {getTimetableBlockerLabel(occurrence.calendarStatus) && (
+            <p className="mt-0.5 font-medium">
+              {getTimetableBlockerLabel(occurrence.calendarStatus)}
+            </p>
+          )}
+        </div>
+      )}
 
       {entry.room_name && (
         <p className="mt-2 flex min-w-0 items-center gap-1 text-[11px] leading-4 text-[#667085]">
@@ -136,25 +159,44 @@ export default function WeeklyTimetableGrid({
   entries,
   scheduleBreaks,
   audience,
+  occurrences,
+  weekStartDate,
 }: {
   entries: TimetableEntryRow[];
   scheduleBreaks: ScheduleBreak[];
   audience: 'student' | 'teacher';
+  occurrences?: TimetableOccurrence[];
+  weekStartDate?: string;
 }) {
-  const timeSlots = buildTimeSlots(entries, scheduleBreaks);
+  const lessonEntries = occurrences?.map((occurrence) => occurrence.entry) ?? entries;
+  const timeSlots = buildTimeSlots(lessonEntries, scheduleBreaks);
+  const lessonDays = occurrences
+    ? occurrences.map((occurrence) => getWeekDayForDate(occurrence.date))
+    : entries.map((entry) => entry.day_of_week);
   const dayCounts = new Map(
     WEEK_DAYS.map(({ value }) => [
       value,
-      entries.filter((entry) => entry.day_of_week === value).length,
+      lessonDays.filter((day) => day === value).length,
     ]),
   );
   const itemsBySlot = new Map<string, TimetableItem[]>();
 
-  for (const entry of entries) {
-    const key = slotKey(entry.day_of_week, entry.start_time, entry.end_time);
+  for (const occurrence of occurrences ?? []) {
+    const entry = occurrence.entry;
+    const dayOfWeek = getWeekDayForDate(occurrence.date);
+    const key = slotKey(dayOfWeek, entry.start_time, entry.end_time);
     const items = itemsBySlot.get(key) ?? [];
-    items.push({ kind: 'lesson', entry });
+    items.push({ kind: 'lesson', entry, occurrence });
     itemsBySlot.set(key, items);
+  }
+
+  if (!occurrences) {
+    for (const entry of entries) {
+      const key = slotKey(entry.day_of_week, entry.start_time, entry.end_time);
+      const items = itemsBySlot.get(key) ?? [];
+      items.push({ kind: 'lesson', entry });
+      itemsBySlot.set(key, items);
+    }
   }
 
   for (const scheduleBreak of scheduleBreaks) {
@@ -214,6 +256,15 @@ export default function WeeklyTimetableGrid({
                 role="columnheader"
               >
                 <p className="text-sm font-bold text-[#181c20]">{label}</p>
+                {weekStartDate && (
+                  <p className="mt-0.5 text-[11px] font-medium text-[#667085]">
+                    {new Intl.DateTimeFormat('pt-BR', {
+                      day: '2-digit',
+                      month: '2-digit',
+                      timeZone: 'UTC',
+                    }).format(new Date(`${getDateForWeekDay(weekStartDate, value)}T00:00:00.000Z`))}
+                  </p>
+                )}
                 <p className="mt-0.5 text-[11px] text-[#667085]">
                   {dayCounts.get(value) ?? 0}{' '}
                   {(dayCounts.get(value) ?? 0) === 1 ? 'aula' : 'aulas'}
@@ -284,6 +335,7 @@ export default function WeeklyTimetableGrid({
                               ) : (
                                 <TimetableLessonCard
                                   entry={item.entry}
+                                  occurrence={item.occurrence}
                                   audience={audience}
                                 />
                               )}
