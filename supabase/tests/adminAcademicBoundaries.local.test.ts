@@ -86,6 +86,8 @@ type Fixture = {
   classA2: string;
   classB: string;
   subjectA: string;
+  curriculumItemA: string;
+  teacherSubjectA: string;
   offeringA: string;
   offeringB: string;
   studentA: string;
@@ -170,9 +172,9 @@ async function createFixture(): Promise<Fixture> {
   const classB = (await insertOne(directorB, 'classes', { institution_id: institutionB, academic_year_id: yearB, name: `Class B ${suffix}`, grade_level: '1º EM', shift: 'MATUTINO', capacity: 30, active: true })).id;
   const subjectA = (await insertOne(directorA, 'subjects', { institution_id: institutionA, name: `Subject A ${suffix}`, code: `BOUNDARY-A-${suffix}`, workload: 100, active: true })).id;
   const subjectB = (await insertOne(directorB, 'subjects', { institution_id: institutionB, name: `Subject B ${suffix}`, code: `BOUNDARY-B-${suffix}`, workload: 100, active: true })).id;
-  await insertOne(directorA, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: subjectA, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
+  const curriculumItemA = (await insertOne(directorA, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: subjectA, weekly_lessons: 2, lesson_duration_minutes: 50, active: true })).id;
   await insertOne(directorB, 'class_curriculum_items', { institution_id: institutionB, class_id: classB, subject_id: subjectB, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
-  await insertOne(directorA, 'teacher_subjects', { institution_id: institutionA, teacher_profile_id: actors['teacher-a'].id, subject_id: subjectA, primary_subject: true, active: true });
+  const teacherSubjectA = (await insertOne(directorA, 'teacher_subjects', { institution_id: institutionA, teacher_profile_id: actors['teacher-a'].id, subject_id: subjectA, primary_subject: true, active: true })).id;
   await insertOne(directorB, 'teacher_subjects', { institution_id: institutionB, teacher_profile_id: actors['teacher-b'].id, subject_id: subjectB, primary_subject: true, active: true });
   const offeringA = (await insertOne(directorA, 'subject_offerings', { subject_id: subjectA, class_id: classA, teacher_profile_id: actors['teacher-a'].id, term_id: termA, active: true })).id;
   const offeringB = (await insertOne(directorB, 'subject_offerings', { subject_id: subjectB, class_id: classB, teacher_profile_id: actors['teacher-b'].id, term_id: termB, active: true })).id;
@@ -199,7 +201,7 @@ async function createFixture(): Promise<Fixture> {
   const teacherA = actors['teacher-a'].client;
   const bookRecommendationA = (await insertOne(teacherA, 'book_recommendations', { institution_id: institutionA, subject_offering_id: offeringA, title: `Book A ${suffix}`, author: 'Boundary test', isbn: '9780000000000', active: true, created_by: actors['teacher-a'].id })).id;
 
-  return { actors, accountA, accountB, institutionA, institutionA2, institutionB, yearA, yearA2, yearB, termA, classA, classA2, classB, subjectA, offeringA, offeringB, studentA, studentB, guardianshipA, enrollmentA, roomA, timetableA, assessmentA, gradeA, attendanceSessionA, attendanceRecordA, calendarEventA, bookRecommendationA };
+  return { actors, accountA, accountB, institutionA, institutionA2, institutionB, yearA, yearA2, yearB, termA, classA, classA2, classB, subjectA, curriculumItemA, teacherSubjectA, offeringA, offeringB, studentA, studentB, guardianshipA, enrollmentA, roomA, timetableA, assessmentA, gradeA, attendanceSessionA, attendanceRecordA, calendarEventA, bookRecommendationA };
 }
 
 localDescribe('admin academic boundaries runtime', () => {
@@ -237,10 +239,17 @@ localDescribe('admin academic boundaries runtime', () => {
 
   it('blocks ADMIN from academic records and operational RPCs', async () => {
     const admin = fixture.actors['admin-a'].client;
+    const director = fixture.actors['director-a'].client;
+    const directorCurriculum = await readId(director, 'class_curriculum_items', fixture.curriculumItemA);
+    expect(directorCurriculum.error, 'DIRECTOR curriculum item read').toBeNull();
+    expect(directorCurriculum.rows, 'DIRECTOR curriculum item exists').toHaveLength(1);
+    const directorTeacherSubject = await readId(director, 'teacher_subjects', fixture.teacherSubjectA);
+    expect(directorTeacherSubject.error, 'DIRECTOR teacher subject read').toBeNull();
+    expect(directorTeacherSubject.rows, 'DIRECTOR teacher subject exists').toHaveLength(1);
     const checks = [
       ['academic_years', fixture.yearA], ['academic_years', fixture.yearA2], ['terms', fixture.termA], ['classes', fixture.classA], ['classes', fixture.classA2], ['subjects', fixture.subjectA],
-      ['class_curriculum_items', fixture.subjectA], ['enrollments', fixture.enrollmentA], ['subject_offerings', fixture.offeringA],
-      ['rooms', fixture.roomA], ['teacher_subjects', fixture.subjectA], ['timetable_entries', fixture.timetableA],
+      ['class_curriculum_items', fixture.curriculumItemA], ['enrollments', fixture.enrollmentA], ['subject_offerings', fixture.offeringA],
+      ['rooms', fixture.roomA], ['teacher_subjects', fixture.teacherSubjectA], ['timetable_entries', fixture.timetableA],
       ['students', fixture.studentA], ['guardianships', fixture.guardianshipA], ['assessments', fixture.assessmentA],
       ['grades', fixture.gradeA], ['attendance_sessions', fixture.attendanceSessionA], ['attendance_records', fixture.attendanceRecordA],
       ['academic_calendar_events', fixture.calendarEventA], ['book_recommendations', fixture.bookRecommendationA],
