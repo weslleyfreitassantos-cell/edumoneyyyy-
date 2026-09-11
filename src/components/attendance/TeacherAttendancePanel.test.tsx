@@ -435,6 +435,121 @@ describe('TeacherAttendancePanel', () => {
     ).toBeTruthy();
   });
 
+  it('exibe e troca o horário da chamada quando há dois slots no dia', async () => {
+    const multiSlotOffering = {
+      ...offering,
+      scheduleSlots: [
+        {
+          dayOfWeek: 1,
+          startTime: '07:00:00',
+          endTime: '07:50:00',
+        },
+        {
+          dayOfWeek: 1,
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+        },
+      ],
+    };
+    const secondSlotRollCall = {
+      ...rollCall,
+      scheduleSlot: {
+        dayOfWeek: 1,
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+      records: [rollCall.records[1]],
+    };
+
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [multiSlotOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    useAttendanceRollCall.mockImplementation(
+      (...args: unknown[]) => {
+        const slot = args[3] as
+          | { startTime: string; endTime: string }
+          | undefined;
+
+        return {
+          data:
+            slot?.startTime === '08:00:00'
+              ? secondSlotRollCall
+              : slot?.startTime === '07:00:00'
+                ? rollCall
+                : undefined,
+          dataUpdatedAt: slot?.startTime === '08:00:00' ? 2 : 1,
+          isLoading: false,
+          isError: false,
+          error: null,
+        };
+      },
+    );
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    const slotSelect = await screen.findByLabelText(
+      'Horário da aula',
+    );
+    expect(
+      screen.getByRole('option', {
+        name: '07:00 a 07:50',
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('option', {
+        name: '08:00 a 08:50',
+      }),
+    ).toBeTruthy();
+
+    fireEvent.change(slotSelect, {
+      target: { value: '08:00:00|08:50:00' },
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Bruno Lima')).toBeTruthy();
+      expect(
+        useAttendanceRollCall,
+      ).toHaveBeenCalledWith(
+        'institution-1',
+        'offering-1',
+        expect.any(String),
+        {
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+        },
+        true,
+      );
+    });
+    expect(screen.queryByText('Ana Silva')).toBeNull();
+
+    fireEvent.change(
+      screen.getByLabelText(/Status de Bruno Lima/),
+      { target: { value: 'PRESENT' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /Salvar chamada/ }),
+    );
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          scheduleSlot: {
+            startTime: '08:00:00',
+            endTime: '08:50:00',
+          },
+        }),
+      );
+    });
+  });
+
   it('exibe o progresso da carga horária da atribuição', () => {
     useSubjectOfferingWorkloadProgress.mockReturnValue({
       data: {

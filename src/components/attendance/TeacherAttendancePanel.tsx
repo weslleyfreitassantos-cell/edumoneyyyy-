@@ -20,7 +20,9 @@ import {
 import { useSubjectOfferingWorkloadProgress } from '../../hooks/useWorkload';
 import {
   ATTENDANCE_RECORD_STATUSES,
+  attendanceSlotKey,
   selectAttendanceOfferingForDate,
+  type AttendanceScheduleSlotSelection,
   type AttendanceStatus,
 } from '../../services/attendanceService';
 import { formatSubjectOfferingLabel } from '../../lib/subjectOfferingLabels';
@@ -89,6 +91,8 @@ export default function TeacherAttendancePanel({
   const [sessionDate, setSessionDate] = useState(
     getTodayDateInputValue,
   );
+  const [selectedScheduleSlot, setSelectedScheduleSlot] =
+    useState<AttendanceScheduleSlotSelection>();
   const [selectionTouched, setSelectionTouched] = useState(false);
   const [records, setRecords] = useState<
     EditableAttendanceRecord[]
@@ -109,6 +113,12 @@ export default function TeacherAttendancePanel({
   const selectedOffering = offerings.find(
     (offering) => offering.id === selectedOfferingId,
   );
+  const availableScheduleSlots = useMemo(
+    () => selectedOffering?.scheduleSlots ?? [],
+    [selectedOffering?.scheduleSlots],
+  );
+  const slotRequired =
+    availableScheduleSlots.length > 1 && !selectedScheduleSlot;
   const termStartDate = selectedOffering?.termStartDate ?? null;
   const termEndDate = selectedOffering?.termEndDate ?? null;
   const todayDate = getTodayDateInputValue();
@@ -175,10 +185,40 @@ export default function TeacherAttendancePanel({
     );
   }, [selectedOffering, todayDate]);
 
+  useEffect(() => {
+    setSelectedScheduleSlot((currentSlot) => {
+      if (availableScheduleSlots.length === 1) {
+        const onlySlot = availableScheduleSlots[0];
+
+        return onlySlot
+          ? {
+              startTime: onlySlot.startTime,
+              endTime: onlySlot.endTime,
+            }
+          : undefined;
+      }
+
+      if (
+        currentSlot &&
+        availableScheduleSlots.some(
+          (slot) =>
+            attendanceSlotKey(slot) ===
+            attendanceSlotKey(currentSlot),
+        )
+      ) {
+        return currentSlot;
+      }
+
+      return undefined;
+    });
+  }, [availableScheduleSlots]);
+
   const rollCallQuery = useAttendanceRollCall(
     institutionId,
     selectedOfferingId || undefined,
     sessionDate,
+    selectedScheduleSlot,
+    !slotRequired,
   );
 
   const saveMutation = useSaveAttendanceRollCall();
@@ -188,34 +228,38 @@ export default function TeacherAttendancePanel({
     todayDate,
   );
 
-  const calendarStatus = rollCallQuery.data?.calendarStatus;
+  const activeRollCall = slotRequired
+    ? undefined
+    : rollCallQuery.data;
+  const calendarStatus = activeRollCall?.calendarStatus;
   const calendarBlocked = Boolean(calendarStatus?.blocked);
-  const historicalSession = Boolean(rollCallQuery.data?.session);
-  const editingDisabled = calendarBlocked && !historicalSession;
+  const historicalSession = Boolean(activeRollCall?.session);
+  const editingDisabled =
+    slotRequired || (calendarBlocked && !historicalSession);
   const blockerLabels = calendarStatus
     ? getCalendarBlockerLabels(calendarStatus.blockers)
     : [];
 
   useEffect(() => {
-    if (!rollCallQuery.data) {
+    if (!activeRollCall) {
       setRecords([]);
       return;
     }
 
     setRecords(
-      rollCallQuery.data.records.map((record) => ({
+      activeRollCall.records.map((record) => ({
         studentId: record.student.id,
         status: record.status,
         notes: record.notes ?? '',
       })),
     );
     setSuccessMessage('');
-  }, [rollCallQuery.dataUpdatedAt, rollCallQuery.data]);
+  }, [rollCallQuery.dataUpdatedAt, activeRollCall]);
 
   const originalRecords = useMemo(() => {
     const values = new Map<string, string>();
 
-    for (const record of rollCallQuery.data?.records ?? []) {
+    for (const record of activeRollCall?.records ?? []) {
       values.set(
         record.student.id,
         getRecordKey({
@@ -226,7 +270,7 @@ export default function TeacherAttendancePanel({
     }
 
     return values;
-  }, [rollCallQuery.data]);
+  }, [activeRollCall]);
 
   const recordsByStudentId = useMemo(
     () =>
@@ -240,7 +284,7 @@ export default function TeacherAttendancePanel({
   );
 
   const hasUnsavedChanges =
-    (!rollCallQuery.data?.session && records.length > 0) ||
+    (!activeRollCall?.session && records.length > 0) ||
     records.some(
       (record) =>
         originalRecords.get(record.studentId) !==
@@ -296,6 +340,7 @@ export default function TeacherAttendancePanel({
       subjectOfferingId: selectedOfferingId,
       sessionDate,
       profileId,
+      scheduleSlot: selectedScheduleSlot,
       records: records.map((record) => ({
         studentId: record.studentId,
         status: record.status,
@@ -319,9 +364,9 @@ export default function TeacherAttendancePanel({
               Chamada
             </h2>
             <p className="mt-1 text-sm text-[#727785]">
-              {rollCallQuery.data?.session
+              {activeRollCall?.session
                 ? 'Sessão carregada para correção.'
-                : rollCallQuery.data?.scheduleSlot
+                : activeRollCall?.scheduleSlot
                   ? 'Aula encontrada na grade publicada.'
                 : 'Sessão ainda não salva.'}
             </p>
@@ -421,6 +466,7 @@ export default function TeacherAttendancePanel({
                   setSelectedOfferingId(
                     event.target.value,
                   );
+                  setSelectedScheduleSlot(undefined);
                   setSelectionTouched(true);
                   setSuccessMessage('');
                 }}
@@ -458,12 +504,65 @@ export default function TeacherAttendancePanel({
                   max={termEndDate ?? undefined}
                   onChange={(event) => {
                     setSessionDate(event.target.value);
+                    setSelectedScheduleSlot(undefined);
                     setSuccessMessage('');
                     setDateAdjustmentMessage('');
                   }}
                   className="w-full bg-transparent text-sm text-[#181c20] outline-none"
                 />
               </div>
+              {availableScheduleSlots.length > 1 && (
+                <div className="mt-3">
+                  <label
+                    htmlFor="attendance-schedule-slot"
+                    className="text-xs font-bold uppercase tracking-wide text-[#727785]"
+                  >
+                    Horário da aula
+                  </label>
+                  <select
+                    id="attendance-schedule-slot"
+                    value={
+                      selectedScheduleSlot
+                        ? attendanceSlotKey(selectedScheduleSlot)
+                        : ''
+                    }
+                    onChange={(event) => {
+                      const nextSlot = availableScheduleSlots.find(
+                        (slot) =>
+                          attendanceSlotKey(slot) ===
+                          event.target.value,
+                      );
+
+                      setSelectedScheduleSlot(
+                        nextSlot
+                          ? {
+                              startTime: nextSlot.startTime,
+                              endTime: nextSlot.endTime,
+                            }
+                          : undefined,
+                      );
+                      setSuccessMessage('');
+                    }}
+                    className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100"
+                  >
+                    <option value="">Selecione o horário</option>
+                    {availableScheduleSlots.map((slot) => (
+                      <option
+                        key={attendanceSlotKey(slot)}
+                        value={attendanceSlotKey(slot)}
+                      >
+                        {formatAttendanceTime(slot.startTime)} a{' '}
+                        {formatAttendanceTime(slot.endTime)}
+                      </option>
+                    ))}
+                  </select>
+                  {slotRequired && (
+                    <p className="mt-1 text-xs text-amber-700">
+                      Escolha o horário da chamada para carregar os alunos.
+                    </p>
+                  )}
+                </div>
+              )}
               {termStartDate && termEndDate && (
                 <p className="mt-1 text-xs text-[#727785]">
                   Período {selectedOffering?.termName ? `"${selectedOffering.termName}" ` : ''}permitido:{' '}
@@ -471,16 +570,16 @@ export default function TeacherAttendancePanel({
                   {formatAttendanceDate(termEndDate)}.
                 </p>
               )}
-              {rollCallQuery.data?.scheduleSlot && (
+              {activeRollCall?.scheduleSlot && (
                 <p className="mt-1 flex items-center gap-1 text-xs font-medium text-[#005bbf]">
                   <Clock3 className="h-3.5 w-3.5" aria-hidden="true" />
                   Aula prevista:{' '}
                   {formatAttendanceTime(
-                    rollCallQuery.data.scheduleSlot.startTime,
+                    activeRollCall.scheduleSlot.startTime,
                   )}{' '}
                   a{' '}
                   {formatAttendanceTime(
-                    rollCallQuery.data.scheduleSlot.endTime,
+                    activeRollCall.scheduleSlot.endTime,
                   )}
                 </p>
               )}
@@ -552,15 +651,15 @@ export default function TeacherAttendancePanel({
             </div>
           )}
 
-          {rollCallQuery.data &&
+          {activeRollCall &&
             !calendarBlocked &&
-            rollCallQuery.data.records.length === 0 && (
+            activeRollCall.records.length === 0 && (
               <div className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785]">
                 Nenhum aluno com matrícula ativa para esta data.
               </div>
             )}
 
-          {rollCallQuery.data &&
+          {activeRollCall &&
             calendarBlocked &&
             !historicalSession && (
               <div className="rounded-lg border border-dashed border-amber-200 bg-amber-50/50 p-6 text-center text-sm text-amber-900">
@@ -568,8 +667,8 @@ export default function TeacherAttendancePanel({
               </div>
             )}
 
-          {rollCallQuery.data &&
-            rollCallQuery.data.records.length > 0 && (
+          {activeRollCall &&
+            activeRollCall.records.length > 0 && (
               <div className="overflow-hidden rounded-lg border border-[#dfe3e8]">
                 <div className="hidden grid-cols-[1.4fr_0.7fr_1fr] gap-3 bg-[#f7f9fc] px-4 py-3 text-xs font-bold uppercase tracking-wide text-[#727785] md:grid">
                   <span>Aluno</span>
@@ -578,7 +677,7 @@ export default function TeacherAttendancePanel({
                 </div>
 
                 <div className="divide-y divide-[#eef1f5]">
-                  {rollCallQuery.data.records.map(
+                  {activeRollCall.records.map(
                     (record) => {
                       const editableRecord =
                         recordsByStudentId.get(

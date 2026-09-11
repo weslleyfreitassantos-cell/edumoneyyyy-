@@ -14,6 +14,7 @@ import {
   calculateAttendanceSummary,
   getAttendanceDayOfWeek,
   isEnrollmentValidForAttendanceDate,
+  resolveAttendanceScheduleSlot,
   selectAttendanceOfferingForDate,
 } from './attendanceService';
 
@@ -92,9 +93,32 @@ const attendanceOfferingRow = {
   },
 };
 
+function createSession(
+  startTime: string | null = '07:00:00',
+  endTime: string | null = '07:50:00',
+  id = 'session-1',
+) {
+  return {
+    id,
+    institution_id: 'institution-1',
+    subject_offering_id: 'offering-1',
+    session_date: '2026-02-02',
+    starts_at: startTime,
+    ends_at: endTime,
+    topic: null,
+    notes: null,
+    status: 'CLOSED',
+    created_by: 'teacher-1',
+    closed_at: '2026-02-02T10:00:00.000Z',
+    created_at: '2026-02-02T10:00:00.000Z',
+    updated_at: '2026-02-02T10:00:00.000Z',
+  };
+}
+
 function setupRollCallQueries({
   blockers = [],
   session = null,
+  sessions,
   schedule = [
     {
       day_of_week: 1,
@@ -115,6 +139,7 @@ function setupRollCallQueries({
 }: {
   blockers?: unknown[];
   session?: unknown;
+  sessions?: unknown[];
   schedule?: unknown[];
   records?: unknown[];
   roster?: unknown[];
@@ -124,7 +149,7 @@ function setupRollCallQueries({
     error: null,
   });
   const sessionsQuery = createQuery({
-    data: session ? [session] : [],
+    data: sessions ?? (session ? [session] : []),
     error: null,
   });
   const scheduleQuery = createQuery({
@@ -138,10 +163,10 @@ function setupRollCallQueries({
 
   vi.mocked(supabase.from)
     .mockReturnValueOnce(offeringQuery as never)
-    .mockReturnValueOnce(sessionsQuery as never)
-    .mockReturnValueOnce(scheduleQuery as never);
+    .mockReturnValueOnce(scheduleQuery as never)
+    .mockReturnValueOnce(sessionsQuery as never);
 
-  if (session) {
+  if ((sessions ?? (session ? [session] : [])).length > 0) {
     vi.mocked(supabase.from).mockReturnValueOnce(
       recordsQuery as never,
     );
@@ -575,6 +600,238 @@ describe('attendanceService calendar integration', () => {
         p_class_id: 'class-1',
         p_subject_id: 'subject-1',
       },
+    );
+  });
+
+  it('exige o horário quando há mais de um slot na mesma data', async () => {
+    setupRollCallQueries({
+      schedule: [
+        {
+          day_of_week: 1,
+          start_time: '07:00:00',
+          end_time: '07:50:00',
+        },
+        {
+          day_of_week: 1,
+          start_time: '08:00:00',
+          end_time: '08:50:00',
+        },
+      ],
+    });
+
+    await expect(
+      attendanceService.loadRollCall(
+        'institution-1',
+        'offering-1',
+        '2026-02-02',
+      ),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_SLOT_REQUIRED',
+    } satisfies Partial<AttendanceServiceError>);
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
+  it('carrega exatamente o slot selecionado entre duas aulas do dia', async () => {
+    const session = createSession(
+      '08:00:00',
+      '08:50:00',
+    );
+    const { sessionsQuery } = setupRollCallQueries({
+      schedule: [
+        {
+          day_of_week: 1,
+          start_time: '07:00:00',
+          end_time: '07:50:00',
+        },
+        {
+          day_of_week: 1,
+          start_time: '08:00:00',
+          end_time: '08:50:00',
+        },
+      ],
+      session,
+    });
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+      {
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+    );
+
+    expect(rollCall.scheduleSlot).toMatchObject({
+      startTime: '08:00:00',
+      endTime: '08:50:00',
+    });
+    expect(rollCall.session?.id).toBe('session-1');
+    expect(sessionsQuery.eq).toHaveBeenCalledWith(
+      'starts_at',
+      '08:00:00',
+    );
+    expect(rollCall.offering.id).toBe('offering-1');
+  });
+
+  it('não confunde sessões de horários diferentes e protege duplicata do mesmo slot', async () => {
+    const firstSession = createSession();
+    const secondSession = createSession(
+      '08:00:00',
+      '08:50:00',
+      'session-2',
+    );
+    const { sessionsQuery } = setupRollCallQueries({
+      schedule: [
+        {
+          day_of_week: 1,
+          start_time: '07:00:00',
+          end_time: '07:50:00',
+        },
+        {
+          day_of_week: 1,
+          start_time: '08:00:00',
+          end_time: '08:50:00',
+        },
+      ],
+      session: secondSession,
+    });
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+      {
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+    );
+
+    expect(rollCall.session?.id).toBe('session-2');
+    expect(sessionsQuery.eq).toHaveBeenCalledWith(
+      'starts_at',
+      '08:00:00',
+    );
+
+    setupRollCallQueries({
+      schedule: [
+        {
+          day_of_week: 1,
+          start_time: '07:00:00',
+          end_time: '07:50:00',
+        },
+      ],
+      sessions: [firstSession, createSession(
+        '07:00:00',
+        '07:50:00',
+        'session-duplicate',
+      )],
+    });
+
+    await expect(
+      attendanceService.loadRollCall(
+        'institution-1',
+        'offering-1',
+        '2026-02-02',
+      ),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_SESSION_CONFLICT',
+    } satisfies Partial<AttendanceServiceError>);
+  });
+
+  it('rejeita slot inexistente sem consultar o calendário', async () => {
+    setupRollCallQueries({
+      schedule: [
+        {
+          day_of_week: 1,
+          start_time: '07:00:00',
+          end_time: '07:50:00',
+        },
+      ],
+    });
+
+    await expect(
+      attendanceService.loadRollCall(
+        'institution-1',
+        'offering-1',
+        '2026-02-02',
+        {
+          startTime: '09:00:00',
+          endTime: '09:50:00',
+        },
+      ),
+    ).rejects.toMatchObject({
+      code: 'ATTENDANCE_SCHEDULE_NOT_FOUND',
+    } satisfies Partial<AttendanceServiceError>);
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
+  it('mantém histórico por slot mesmo quando a grade atual foi removida', async () => {
+    const historicalSession = createSession(
+      '08:00:00',
+      '08:50:00',
+    );
+    setupRollCallQueries({
+      schedule: [],
+      session: historicalSession,
+    });
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+      {
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+    );
+
+    expect(rollCall.session?.id).toBe('session-1');
+    expect(rollCall.scheduleSlot).toMatchObject({
+      startTime: '08:00:00',
+      endTime: '08:50:00',
+    });
+  });
+
+  it('preserva o fallback de sessão histórica legacy sem horário quando inequívoca', async () => {
+    setupRollCallQueries({
+      schedule: [],
+      session: createSession(null, null),
+    });
+
+    const rollCall = await attendanceService.loadRollCall(
+      'institution-1',
+      'offering-1',
+      '2026-02-02',
+    );
+
+    expect(rollCall.session?.id).toBe('session-1');
+    expect(rollCall.scheduleSlot).toBeNull();
+  });
+
+  it('resolve slots sem usar posição do array como identidade', () => {
+    const slots = [
+      {
+        dayOfWeek: 1,
+        startTime: '07:00:00',
+        endTime: '07:50:00',
+      },
+      {
+        dayOfWeek: 1,
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+    ];
+
+    expect(
+      resolveAttendanceScheduleSlot(slots, {
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      }),
+    ).toEqual(slots[1]);
+
+    expect(() => resolveAttendanceScheduleSlot([])).toThrow(
+      'Não existe aula publicada para esta atribuição na data selecionada.',
     );
   });
 

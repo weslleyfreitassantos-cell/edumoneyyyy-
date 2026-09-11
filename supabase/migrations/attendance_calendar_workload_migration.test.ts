@@ -5,6 +5,14 @@ const migration = readFileSync(
   new URL('./20260911000100_attendance_calendar_workload.sql', import.meta.url),
   'utf8',
 );
+const historicalAttendanceMigration = readFileSync(
+  new URL('./20260710000200_attendance_and_grades.sql', import.meta.url),
+  'utf8',
+);
+const timetableIntegrityMigration = readFileSync(
+  new URL('./20260727000300_fix_timetable_conflict_trigger_variables.sql', import.meta.url),
+  'utf8',
+);
 
 describe('attendance calendar workload migration', () => {
   it('mantém a validação de grade exata e adiciona o bloqueio do calendário', () => {
@@ -48,5 +56,34 @@ describe('attendance calendar workload migration', () => {
     expect(migration).toContain('private.is_teacher_for_offering(');
     expect(migration).toContain('from public, anon');
     expect(migration).toContain('to authenticated');
+  });
+
+  it('preserva a identidade histórica de sessão por slot', () => {
+    expect(historicalAttendanceMigration).toMatch(
+      /constraint attendance_sessions_slot_unique[\s\S]*?unique\s*\(\s*subject_offering_id,\s*session_date,\s*starts_at\s*\)/i,
+    );
+  });
+
+  it('documenta os guards que impedem conflito de turma no mesmo horário', () => {
+    expect(timetableIntegrityMigration).toContain(
+      'where offering.class_id = v_class_id',
+    );
+    expect(timetableIntegrityMigration).toContain(
+      'entry.start_time < new.end_time',
+    );
+    expect(timetableIntegrityMigration).toContain(
+      'new.start_time < entry.end_time',
+    );
+  });
+
+  it('conta cada slot da grade como ocorrência individual', () => {
+    expect(migration).toContain('timetable_entry.start_time');
+    expect(migration).toContain('timetable_entry.end_time');
+    expect(migration).toContain(
+      'count(timetable_occurrence.occurrence_date)',
+    );
+    expect(migration).toContain(
+      'session_record.ends_at - session_record.starts_at',
+    );
   });
 });

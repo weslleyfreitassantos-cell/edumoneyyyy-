@@ -84,4 +84,61 @@ describe('workloadService', () => {
       },
     );
   });
+
+  it('mantém os dois slots de 50 minutos independentes no read model', async () => {
+    vi.mocked(supabase.rpc)
+      .mockResolvedValueOnce({
+        data: [
+          {
+            ...row,
+            planned_occurrences: 2,
+            planned_minutes: 100,
+            planned_minutes_to_date: 100,
+            delivered_sessions: 1,
+            delivered_minutes: 50,
+            completion_percent: 50,
+          },
+        ],
+        error: null,
+      } as never)
+      .mockResolvedValueOnce({
+        data: [
+          {
+            ...row,
+            planned_occurrences: 2,
+            planned_minutes: 100,
+            planned_minutes_to_date: 100,
+            delivered_sessions: 2,
+            delivered_minutes: 100,
+            completion_percent: 100,
+          },
+        ],
+        error: null,
+      } as never);
+
+    const afterFirstSession =
+      await workloadService.getSubjectOfferingProgress(
+        'institution-1',
+        'offering-1',
+        '2026-03-01',
+      );
+    const afterSecondSession =
+      await workloadService.getSubjectOfferingProgress(
+        'institution-1',
+        'offering-1',
+        '2026-03-01',
+      );
+
+    expect(afterFirstSession).toMatchObject({
+      plannedMinutes: 100,
+      deliveredMinutes: 50,
+      deliveredSessions: 1,
+    });
+    expect(afterSecondSession).toMatchObject({
+      plannedMinutes: 100,
+      deliveredMinutes: 100,
+      deliveredSessions: 2,
+      completionPercent: 100,
+    });
+  });
 });
