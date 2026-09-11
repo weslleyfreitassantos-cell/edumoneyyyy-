@@ -1270,7 +1270,7 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
     expect(restoreError).toBeNull();
   }, 60_000);
 
-  it('audits profiles.active independently for every role with an old JWT', async () => {
+  it('revokes user-facing access immediately when profiles.active becomes false', async () => {
     const checks = [
       ['adminA', 'classes', fixture.classA],
       ['directorA', 'classes', fixture.classA],
@@ -1278,6 +1278,7 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       ['teacherA', 'subject_offerings', fixture.offeringA],
       ['studentA', 'students', fixture.studentA],
       ['guardianA', 'students', fixture.studentA],
+      ['superAdmin', 'institutions', fixture.institutionB],
     ] as const;
     const results = [];
 
@@ -1294,6 +1295,14 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
         expect(portariaBefore.rows, `${actorKey} Portaria before deactivation`).toHaveLength(1);
       }
 
+      const financeBefore = actorKey === 'directorA' || actorKey === 'secretaryA'
+        ? await readIds(actor.client, 'financial_contracts', fixture.contractA)
+        : null;
+      if (financeBefore) {
+        expect(financeBefore.error, `${actorKey} finance before deactivation`).toBeNull();
+        expect(financeBefore.rows, `${actorKey} finance before deactivation`).toHaveLength(1);
+      }
+
       const { error: deactivateError } = await fixture.admin
         .from('profiles')
         .update({ active: false })
@@ -1304,11 +1313,82 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       const portariaAfter = portariaBefore
         ? await readIds(actor.client, 'access_events', fixture.accessEventA)
         : null;
-      const classification = after.rows.length > 0
-        ? 'KNOWN GAP'
-        : after.error
-          ? 'BLOCKED'
-          : 'SAFE';
+      const financeAfter = financeBefore
+        ? await readIds(actor.client, 'financial_contracts', fixture.contractA)
+        : null;
+      expect(after.error, `${actorKey} access after profile deactivation`).toBeNull();
+      expect(after.rows, `${actorKey} access after profile deactivation`).toHaveLength(0);
+      if (portariaAfter) {
+        expect(portariaAfter.error, `${actorKey} Portaria after deactivation`).toBeNull();
+        expect(portariaAfter.rows, `${actorKey} Portaria after deactivation`).toHaveLength(0);
+      }
+      if (financeAfter) {
+        expect(financeAfter.error, `${actorKey} finance after deactivation`).toBeNull();
+        expect(financeAfter.rows, `${actorKey} finance after deactivation`).toHaveLength(0);
+      }
+
+      const inactiveDeviceWrite = actorKey === 'directorA'
+        ? await writeAttempt(() => actor.client
+          .from('access_devices')
+          .update({ name: 'inactive-profile-write' })
+          .eq('id', fixture.accessDeviceA)
+          .select('id'))
+        : null;
+      if (inactiveDeviceWrite) {
+        expect(inactiveDeviceWrite.rows, 'inactive director device write').toHaveLength(0);
+        expect(
+          (await fixture.admin.from('access_devices').select('name').eq('id', fixture.accessDeviceA).single()).data?.name,
+        ).not.toBe('inactive-profile-write');
+      }
+
+      const inactiveFinanceWrite = actorKey === 'directorA'
+        ? await writeAttempt(() => actor.client
+          .from('financial_contracts')
+          .insert({
+            institution_id: fixture.institutionA,
+            student_id: fixture.studentA,
+            academic_year_id: fixture.yearA,
+            financial_responsible_profile_id: fixture.actors.guardianA.id,
+            status: 'ACTIVE',
+            base_amount: 1,
+            enrollment_fee_amount: 0,
+            installment_count: 1,
+            first_due_date: '2026-02-10',
+            default_due_day: 10,
+            created_by: actor.id,
+          })
+          .select('id'))
+        : null;
+      if (inactiveFinanceWrite) {
+        expect(inactiveFinanceWrite.rows, 'inactive director finance write').toHaveLength(0);
+        expect(inactiveFinanceWrite.error, 'inactive director finance write').toMatch(
+          /permission denied|row-level security/i,
+        );
+      }
+
+      const membershipState = await fixture.admin
+        .from('memberships')
+        .select('active')
+        .eq('profile_id', actor.id)
+        .eq('institution_id', fixture.institutionA)
+        .maybeSingle();
+      expect(membershipState.error, `${actorKey} membership state`).toBeNull();
+      if (actorKey === 'superAdmin') {
+        expect(membershipState.data, 'superAdmin has no institution membership').toBeNull();
+      } else {
+        expect(membershipState.data?.active, `${actorKey} membership remains active`).toBe(true);
+      }
+
+      const reactivation = await fixture.admin
+        .from('profiles')
+        .update({ active: true })
+        .eq('id', actor.id);
+      expect(reactivation.error, `${actorKey} profile restore`).toBeNull();
+
+      const afterReactivation = await readIds(actor.client, table, id);
+      expect(afterReactivation.error, `${actorKey} access after reactivation`).toBeNull();
+      expect(afterReactivation.rows, `${actorKey} access after reactivation`).toHaveLength(1);
+
       results.push({
         role: actor.role,
         actorKey,
@@ -1318,14 +1398,12 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
         after,
         portariaBefore,
         portariaAfter,
-        classification,
+        financeBefore,
+        financeAfter,
+        inactiveDeviceWrite,
+        inactiveFinanceWrite,
+        afterReactivation,
       });
-
-      const { error: restoreError } = await fixture.admin
-        .from('profiles')
-        .update({ active: true })
-        .eq('id', actor.id);
-      expect(restoreError, `${actorKey} profile restore`).toBeNull();
     }
 
     console.log(JSON.stringify({
