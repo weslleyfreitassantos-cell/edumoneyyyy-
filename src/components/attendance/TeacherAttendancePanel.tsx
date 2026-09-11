@@ -17,6 +17,7 @@ import {
   useSaveAttendanceRollCall,
   useTeacherAttendanceOfferings,
 } from '../../hooks/useAttendance';
+import { useSubjectOfferingWorkloadProgress } from '../../hooks/useWorkload';
 import {
   ATTENDANCE_RECORD_STATUSES,
   selectAttendanceOfferingForDate,
@@ -53,6 +54,27 @@ function getRecordKey(
   >,
 ): string {
   return `${record.status}:${record.notes.trim()}`;
+}
+
+function formatWorkloadMinutes(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  return `${hours}h ${String(remainingMinutes).padStart(2, '0')}min`;
+}
+
+function getCalendarBlockerLabels(
+  blockers: readonly { event_type: string }[],
+): string[] {
+  const labels: Record<string, string> = {
+    HOLIDAY: 'Feriado',
+    RECESS: 'Recesso',
+    CLASS_SUSPENSION: 'Suspensão de aula',
+  };
+
+  return blockers
+    .map((blocker) => labels[blocker.event_type])
+    .filter((label): label is string => Boolean(label));
 }
 
 export default function TeacherAttendancePanel({
@@ -160,6 +182,19 @@ export default function TeacherAttendancePanel({
   );
 
   const saveMutation = useSaveAttendanceRollCall();
+  const workloadQuery = useSubjectOfferingWorkloadProgress(
+    institutionId,
+    selectedOfferingId || undefined,
+    todayDate,
+  );
+
+  const calendarStatus = rollCallQuery.data?.calendarStatus;
+  const calendarBlocked = Boolean(calendarStatus?.blocked);
+  const historicalSession = Boolean(rollCallQuery.data?.session);
+  const editingDisabled = calendarBlocked && !historicalSession;
+  const blockerLabels = calendarStatus
+    ? getCalendarBlockerLabels(calendarStatus.blockers)
+    : [];
 
   useEffect(() => {
     if (!rollCallQuery.data) {
@@ -294,6 +329,55 @@ export default function TeacherAttendancePanel({
         </div>
       </div>
 
+      {workloadQuery.data && (
+        <div className="mb-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {[
+            [
+              'Carga prevista no período',
+              formatWorkloadMinutes(
+                workloadQuery.data.plannedMinutes,
+              ),
+            ],
+            [
+              'Prevista até hoje',
+              formatWorkloadMinutes(
+                workloadQuery.data.plannedMinutesToDate,
+              ),
+            ],
+            [
+              'Realizada',
+              formatWorkloadMinutes(
+                workloadQuery.data.deliveredMinutes,
+              ),
+            ],
+            [
+              'Progresso do período',
+              workloadQuery.data.completionPercent === null
+                ? 'Sem base'
+                : `${workloadQuery.data.completionPercent}%`,
+            ],
+            [
+              'Ritmo até hoje',
+              workloadQuery.data.deliveryVsPlanToDatePercent === null
+                ? 'Sem base'
+                : `${workloadQuery.data.deliveryVsPlanToDatePercent}%`,
+            ],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              className="rounded-lg border border-[#dfe3e8] bg-[#f7f9fc] px-3 py-3"
+            >
+              <p className="text-xs font-bold uppercase tracking-wide text-[#727785]">
+                {label}
+              </p>
+              <p className="mt-1 text-base font-bold text-[#181c20]">
+                {value}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
+
       {offeringsQuery.isLoading && (
         <div className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785]">
           Carregando atribuições...
@@ -407,7 +491,8 @@ export default function TeacherAttendancePanel({
               onClick={markAllPresent}
               disabled={
                 records.length === 0 ||
-                saveMutation.isPending
+                saveMutation.isPending ||
+                editingDisabled
               }
               className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#c8d4e3] px-4 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 md:mt-5"
             >
@@ -428,6 +513,30 @@ export default function TeacherAttendancePanel({
             </div>
           )}
 
+          {calendarBlocked && (
+            <div
+              role="status"
+              className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"
+            >
+              <p className="font-bold">Aula suspensa</p>
+              <p className="mt-1">
+                {blockerLabels.length > 0
+                  ? blockerLabels.join(' · ')
+                  : 'Calendário Acadêmico'}
+              </p>
+              {historicalSession && (
+                <p className="mt-2">
+                  Esta data está atualmente bloqueada pelo Calendário Acadêmico, mas já existe uma chamada registrada.
+                </p>
+              )}
+              {!historicalSession && (
+                <p className="mt-2">
+                  A chamada não pode ser aberta enquanto esta data estiver bloqueada.
+                </p>
+              )}
+            </div>
+          )}
+
           {rollCallQuery.isLoading && (
             <div className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785]">
               Carregando alunos...
@@ -444,9 +553,18 @@ export default function TeacherAttendancePanel({
           )}
 
           {rollCallQuery.data &&
+            !calendarBlocked &&
             rollCallQuery.data.records.length === 0 && (
               <div className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785]">
                 Nenhum aluno com matrícula ativa para esta data.
+              </div>
+            )}
+
+          {rollCallQuery.data &&
+            calendarBlocked &&
+            !historicalSession && (
+              <div className="rounded-lg border border-dashed border-amber-200 bg-amber-50/50 p-6 text-center text-sm text-amber-900">
+                Nenhuma chamada editável para esta aula suspensa.
               </div>
             )}
 
@@ -514,6 +632,7 @@ export default function TeacherAttendancePanel({
                                 editableRecord?.status ??
                                 record.status
                               }
+                              disabled={editingDisabled}
                               onChange={(event) =>
                                 updateRecord(
                                   record.student.id,
@@ -556,6 +675,7 @@ export default function TeacherAttendancePanel({
                               value={
                                 editableRecord?.notes ?? ''
                               }
+                              disabled={editingDisabled}
                               onChange={(event) =>
                                 updateRecord(
                                   record.student.id,
@@ -598,7 +718,8 @@ export default function TeacherAttendancePanel({
               disabled={
                 saveMutation.isPending ||
                 records.length === 0 ||
-                !hasUnsavedChanges
+                !hasUnsavedChanges ||
+                editingDisabled
               }
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#004a99] disabled:cursor-not-allowed disabled:bg-[#9db9dc]"
             >

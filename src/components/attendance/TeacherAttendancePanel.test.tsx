@@ -26,6 +26,7 @@ const mutateAsync = vi.fn();
 const useTeacherAttendanceOfferings = vi.fn();
 const useAttendanceRollCall = vi.fn();
 const useSaveAttendanceRollCall = vi.fn();
+const useSubjectOfferingWorkloadProgress = vi.fn();
 
 vi.mock('../../lib/supabaseClient', () => ({
   supabase: {},
@@ -39,6 +40,12 @@ vi.mock('../../hooks/useAttendance', () => ({
     useAttendanceRollCall(...args),
   useSaveAttendanceRollCall: () =>
     useSaveAttendanceRollCall(),
+}));
+
+vi.mock('../../hooks/useWorkload', () => ({
+  useSubjectOfferingWorkloadProgress: (
+    ...args: unknown[]
+  ) => useSubjectOfferingWorkloadProgress(...args),
 }));
 
 const offering = {
@@ -137,6 +144,13 @@ beforeEach(() => {
   useSaveAttendanceRollCall.mockReturnValue({
     mutateAsync,
     isPending: false,
+    isError: false,
+    error: null,
+  });
+
+  useSubjectOfferingWorkloadProgress.mockReturnValue({
+    data: null,
+    isLoading: false,
     isError: false,
     error: null,
   });
@@ -378,5 +392,81 @@ describe('TeacherAttendancePanel', () => {
         })
         .hasAttribute('disabled'),
     ).toBe(true);
+  });
+
+  it('mostra aula suspensa e desabilita edição quando não há sessão histórica', () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        session: null,
+        records: [],
+        calendarStatus: {
+          date: '2026-02-02',
+          state: 'BLOCKED',
+          blocked: true,
+          blockers: [
+            { event_id: 'event-1', event_type: 'HOLIDAY' },
+          ],
+        },
+        attendanceAllowed: false,
+      },
+      dataUpdatedAt: 2,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getByText('Aula suspensa')).toBeTruthy();
+    expect(screen.getByText('Feriado')).toBeTruthy();
+    expect(
+      screen
+        .getByRole('button', { name: /Marcar presentes/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen.getByText(/Nenhuma chamada editável/),
+    ).toBeTruthy();
+  });
+
+  it('exibe o progresso da carga horária da atribuição', () => {
+    useSubjectOfferingWorkloadProgress.mockReturnValue({
+      data: {
+        subjectOfferingId: 'offering-1',
+        termStartDate: '2026-02-01',
+        termEndDate: '2026-04-30',
+        referenceDate: '2026-03-01',
+        plannedOccurrences: 10,
+        plannedOccurrencesToDate: 5,
+        suspendedOccurrences: 1,
+        deliveredSessions: 7,
+        plannedMinutes: 450,
+        plannedMinutesToDate: 250,
+        deliveredMinutes: 350,
+        completionPercent: 77.78,
+        deliveryVsPlanToDatePercent: 140,
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getByText('Carga prevista no período')).toBeTruthy();
+    expect(screen.getByText('7h 30min')).toBeTruthy();
+    expect(screen.getByText('77.78%')).toBeTruthy();
+    expect(screen.getByText('140%')).toBeTruthy();
   });
 });

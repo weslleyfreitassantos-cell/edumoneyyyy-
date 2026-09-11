@@ -13,6 +13,7 @@ import {
   type SaveAttendanceRollCallInput,
   type StudentAttendanceSummary,
 } from '../services/attendanceService';
+import { workloadKeys } from './useWorkload';
 
 export const attendanceKeys = {
   all: ['attendance'] as const,
@@ -147,6 +148,9 @@ export function useSaveAttendanceRollCall() {
 
       void queryClient.invalidateQueries({
         queryKey: attendanceKeys.all,
+      });
+      void queryClient.invalidateQueries({
+        queryKey: workloadKeys.all,
       });
     },
   });
