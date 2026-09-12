@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTeacherTermClosureOfferings, useTermClosurePreview, useSubmitTermClosure } from '../../hooks/useAcademicTermClosing';
 import TermClosurePreviewTable from './TermClosurePreviewTable';
 import { getErrorMessage, getClosureBadgeClass, getClosureStatusLabel } from './academicDisplay';
@@ -55,6 +56,7 @@ export default function TeacherTermClosingPanel({
         <div className="mt-6">
           <label className="text-xs font-semibold text-[#3d4652]">Selecione a Oferta e Período</label>
           <select
+            aria-label="Oferta e período para fechamento"
             value={selectedOfferingId}
             onChange={(e) => {
               setSelectedOfferingId(e.target.value);
@@ -70,11 +72,35 @@ export default function TeacherTermClosingPanel({
             ))}
           </select>
         </div>
+
+        {offeringsQuery.isLoading && (
+          <p role="status" className="mt-4 text-sm text-[#727785]">
+            Carregando ofertas disponíveis...
+          </p>
+        )}
+
+        {offeringsQuery.isError && (
+          <div role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+            {getErrorMessage(offeringsQuery.error)}
+          </div>
+        )}
+
+        {!offeringsQuery.isLoading && !offeringsQuery.isError && offerings.length === 0 && (
+          <div className="mt-4 rounded-lg border border-dashed border-[#c1c6d6] p-4 text-sm text-[#727785]">
+            Nenhuma oferta ativa disponível para fechamento.
+          </div>
+        )}
       </div>
 
       {selectedOfferingId && previewQuery.isLoading && (
-        <div className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-sm text-[#727785]">
+        <div role="status" className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-sm text-[#727785]">
           Carregando prévia do fechamento...
+        </div>
+      )}
+
+      {selectedOfferingId && previewQuery.isError && (
+        <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+          {getErrorMessage(previewQuery.error)}
         </div>
       )}
 
@@ -82,11 +108,9 @@ export default function TeacherTermClosingPanel({
         <div className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-md font-bold text-[#181c20]">Prévia de Resultados</h3>
-            {preview.closure && (
-              <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${getClosureBadgeClass(preview.closure.status)}`}>
-                {getClosureStatusLabel(preview.closure.status)}
-              </span>
-            )}
+            <span className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${preview.closure ? getClosureBadgeClass(preview.closure.status) : 'border-gray-200 bg-gray-50 text-gray-700'}`}>
+              {preview.closure ? getClosureStatusLabel(preview.closure.status) : 'Não iniciado'}
+            </span>
           </div>
 
           <TermClosurePreviewTable preview={preview} />
@@ -99,10 +123,18 @@ export default function TeacherTermClosingPanel({
             )}
             
             {successMessage && (
-              <div className="mb-4 rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-700">
+              <div role="status" aria-live="polite" className="mb-4 rounded-lg border border-green-200 bg-green-50 p-3 text-sm text-green-700">
                 {successMessage}
               </div>
             )}
+
+            <p className="mb-4 text-sm text-[#727785]">
+              {preview.canSubmit
+                ? 'A prévia está pronta. Envie o fechamento para revisão da direção.'
+                : preview.issues.length > 0
+                  ? 'O envio está bloqueado até que as pendências exibidas na prévia sejam resolvidas.'
+                  : 'O envio não está disponível para o estado atual deste período.'}
+            </p>
 
             <button
               onClick={handleSubmit}
@@ -111,6 +143,12 @@ export default function TeacherTermClosingPanel({
             >
               {submitMutation.isPending ? 'Enviando...' : 'Enviar para Revisão'}
             </button>
+            <Link
+              to="/dashboard/grades"
+              className="mt-3 inline-flex w-full justify-center rounded-lg border border-[#cfd6e2] px-4 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 sm:ml-2 sm:mt-0 sm:w-auto"
+            >
+              Voltar para avaliações e notas
+            </Link>
           </div>
         </div>
       )}

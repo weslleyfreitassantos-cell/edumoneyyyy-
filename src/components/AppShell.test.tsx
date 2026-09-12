@@ -223,6 +223,24 @@ describe('getRouteVisualContext', () => {
       title: 'Grade de horário',
     });
     expect(
+      getRouteVisualContext('/student/grades', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Notas',
+    });
+    expect(
+      getRouteVisualContext('/student/report-card', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Boletim',
+    });
+    expect(
+      getRouteVisualContext('/guardian/attendance', 'parent'),
+    ).toEqual({
+      section: 'Família',
+      title: 'Frequência dos dependentes',
+    });
+    expect(
       getRouteVisualContext('/dashboard/attendance', 'teacher'),
     ).toEqual({
       section: 'Operação docente',

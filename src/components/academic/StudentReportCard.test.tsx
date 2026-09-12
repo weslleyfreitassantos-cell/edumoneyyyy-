@@ -21,7 +21,36 @@ describe('StudentReportCard', () => {
 
     render(<StudentReportCard institutionId="inst-1" studentId="student-1" />);
     expect(screen.getByText(/Resultado ainda não fechado/i)).toBeDefined();
-    // não apresenta ações de edição (nenhum botão)
-    expect(screen.queryByRole('button')).toBeNull();
+    expect(screen.getByRole('button', { name: /Imprimir boletim/i })).toBeDefined();
+  });
+
+  it('diferencia resultado oficial de resultado parcial', () => {
+    (useStudentReportCard as any).mockReturnValue({
+      data: {
+        studentId: 'student-1',
+        closedCount: 1,
+        openCount: 0,
+        subjects: [
+          {
+            key: 'closed',
+            academicYearName: '2026',
+            termName: '1º Bimestre',
+            subjectName: 'Matemática',
+            teacherName: 'Prof. Ana',
+            gradePercentage: 80,
+            attendancePercentage: 95,
+            resultStatus: 'APPROVED',
+            isClosed: true,
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+    });
+
+    render(<StudentReportCard institutionId="inst-1" studentId="student-1" />);
+
+    expect(screen.getByText('Resultado oficial')).toBeDefined();
+    expect(screen.getByText('80%')).toBeDefined();
   });
 });

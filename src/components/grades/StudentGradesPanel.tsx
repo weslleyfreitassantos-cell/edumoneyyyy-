@@ -37,19 +37,19 @@ export default function StudentGradesPanel({
   );
 
   return (
-    <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
+    <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
       <div className="mb-5 flex items-center gap-3">
         <BookMarked
           className="h-5 w-5 text-[#005bbf]"
           aria-hidden="true"
         />
-        <h2 className="text-lg font-bold text-[#181c20]">
+        <h2 className="text-lg font-bold text-[#181c20] dark:text-white">
           {title}
         </h2>
       </div>
 
       {gradesQuery.isLoading && (
-        <div className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785]">
+        <div className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
           Carregando notas...
         </div>
       )}
@@ -57,7 +57,7 @@ export default function StudentGradesPanel({
       {gradesQuery.isError && (
         <div
           role="alert"
-          className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700"
+          className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200"
         >
           {getErrorMessage(gradesQuery.error)}
         </div>
@@ -65,7 +65,7 @@ export default function StudentGradesPanel({
 
       {gradesQuery.data &&
         gradesQuery.data.records.length === 0 && (
-          <div className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785]">
+          <div className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
             Nenhuma avaliação publicada para este aluno.
           </div>
         )}
@@ -82,7 +82,7 @@ export default function StudentGradesPanel({
                 Registros recentes
               </h3>
 
-              <div className="mt-3 divide-y divide-[#eef1f5] rounded-lg border border-[#dfe3e8]">
+              <div className="mt-3 divide-y divide-[#eef1f5] rounded-lg border border-[#dfe3e8] dark:divide-slate-700 dark:border-slate-700">
                 {gradesQuery.data.recentRecords.map(
                   (record) => (
                     <div
@@ -95,7 +95,7 @@ export default function StudentGradesPanel({
                           aria-hidden="true"
                         />
                         <div>
-                          <p className="text-sm font-semibold text-[#181c20]">
+                          <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
                             {record.title}
                           </p>
                           <p className="mt-1 text-xs text-[#727785]">
@@ -113,14 +113,14 @@ export default function StudentGradesPanel({
                         </div>
                       </div>
 
-                      <p className="text-sm font-semibold text-[#181c20]">
+                      <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
                         {formatScore(
                           record.score,
                           record.maxScore,
                         )}
                       </p>
 
-                      <p className="text-sm text-[#181c20]">
+                      <p className="text-sm text-[#181c20] dark:text-slate-100">
                         {formatPercent(record.percentage)}
                       </p>
 

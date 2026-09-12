@@ -169,6 +169,34 @@ export function getRouteVisualContext(
     };
   }
 
+  if (role === 'student') {
+    if (normalizedPath === '/student/attendance') {
+      return { section: 'Acadêmico', title: 'Frequência' };
+    }
+
+    if (normalizedPath === '/student/grades') {
+      return { section: 'Acadêmico', title: 'Notas' };
+    }
+
+    if (normalizedPath === '/student/report-card') {
+      return { section: 'Acadêmico', title: 'Boletim' };
+    }
+  }
+
+  if (role === 'parent') {
+    if (normalizedPath === '/guardian/attendance') {
+      return { section: 'Família', title: 'Frequência dos dependentes' };
+    }
+
+    if (normalizedPath === '/guardian/grades') {
+      return { section: 'Família', title: 'Notas dos dependentes' };
+    }
+
+    if (normalizedPath === '/guardian/report-card') {
+      return { section: 'Família', title: 'Boletim dos dependentes' };
+    }
+  }
+
   if (normalizedPath.startsWith('/dashboard')) {
     if (role === 'super_admin') {
       return {
