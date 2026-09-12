@@ -725,7 +725,8 @@ Revisões ainda recomendadas antes de produção:
 - não há interface de `SUPER_ADMIN` para cadastrar instituições;
 - a criação da instituição e do primeiro administrador depende do fluxo de
   onboarding configurado no ambiente;
-- não há seletor para usuários vinculados a várias instituições;
+- usuários vinculados a várias instituições podem alternar a instituição ativa
+  pelo `InstitutionSwitcher` quando houver mais de uma instituição disponível;
 - `profiles.role` ainda participa do roteamento global em pontos legados;
 - as Edge Functions dependem da configuração de runtime do ambiente;
 - é necessário configurar SMTP e URLs de produção;

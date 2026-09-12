@@ -63,7 +63,7 @@ async function readRows(
   client: AnyClient,
   table: string,
   select: string,
-  filters: Array<[string, string, unknown]> = [],
+  filters: ReadonlyArray<readonly [string, string, unknown]> = [],
 ): Promise<{ rows: any[]; error: any }> {
   let query = client.from(table).select(select);
   for (const [operator, column, value] of filters) {
@@ -131,6 +131,7 @@ async function createFixture(): Promise<Fixture> {
     ['TEACHER', 'teacher-a'],
     ['STUDENT', 'student-a'],
     ['GUARDIAN', 'guardian-a'],
+    ['GUARDIAN', 'guardian-unlinked-a'],
     ['TEACHER', 'teacher-b'],
     ['STUDENT', 'student-b'],
     ['GUARDIAN', 'guardian-b'],
@@ -169,6 +170,7 @@ async function createFixture(): Promise<Fixture> {
     ['teacher-a', institutionA, 'TEACHER'],
     ['student-a', institutionA, 'STUDENT'],
     ['guardian-a', institutionA, 'GUARDIAN'],
+    ['guardian-unlinked-a', institutionA, 'GUARDIAN'],
     ['teacher-b', institutionB, 'TEACHER'],
     ['student-b', institutionB, 'STUDENT'],
     ['guardian-b', institutionB, 'GUARDIAN'],
@@ -509,6 +511,15 @@ localDescribe('academic results runtime flow', () => {
       expect(result.error, label).toBeNull();
       expect(result.rows).toHaveLength(0);
     }
+
+    const unlinked = await readRows(
+      fixture.actors['guardian-unlinked-a'].client,
+      'assessments',
+      assessmentSelect,
+      [['eq', 'id', fixture.assessmentPublished]],
+    );
+    expect(unlinked.error).toBeNull();
+    expect(unlinked.rows).toHaveLength(0);
   }, 60_000);
 
   it('blocks pending closure, records graded and excused states, and closes idempotently', async () => {
@@ -725,6 +736,163 @@ localDescribe('academic results runtime flow', () => {
       expect(after.error, `${label} after`).toBeNull();
       expect(after.rows, `${label} active=false`).toHaveLength(0);
       await fixture.service.from('profiles').update({ active: true }).eq('id', actor.id);
+    }
+  }, 60_000);
+
+  it('revokes student academic reads when membership becomes inactive on the same JWT', async () => {
+    const student = fixture.actors['student-a'].client;
+    const beforeAssessment = await readRows(student, 'assessments', 'id', [
+      ['eq', 'id', fixture.assessmentPublished],
+    ]);
+    const beforeGrade = await readRows(student, 'grades', 'id', [
+      ['eq', 'id', fixture.gradePublished],
+    ]);
+    const beforeResult = await readRows(student, 'student_term_results', 'id', [
+      ['eq', 'id', fixture.resultId],
+    ]);
+    expect(beforeAssessment.error).toBeNull();
+    expect(beforeGrade.error).toBeNull();
+    expect(beforeResult.error).toBeNull();
+    expect(beforeAssessment.rows).toHaveLength(1);
+    expect(beforeGrade.rows).toHaveLength(1);
+    expect(beforeResult.rows).toHaveLength(1);
+
+    await fixture.service
+      .from('memberships')
+      .update({ active: false })
+      .eq('profile_id', fixture.actors['student-a'].id)
+      .eq('institution_id', fixture.institutionA);
+
+    const state = await fixture.service
+      .from('profiles')
+      .select('active')
+      .eq('id', fixture.actors['student-a'].id)
+      .single();
+    expect(state.error).toBeNull();
+    expect(state.data.active).toBe(true);
+
+    for (const [table, id] of [
+      ['assessments', fixture.assessmentPublished],
+      ['grades', fixture.gradePublished],
+      ['student_term_results', fixture.resultId],
+    ] as const) {
+      const after = await readRows(student, table, 'id', [['eq', 'id', id]]);
+      expect(after.error, table).toBeNull();
+      expect(after.rows, `${table} with inactive membership`).toHaveLength(0);
+    }
+
+    await fixture.service
+      .from('memberships')
+      .update({ active: true })
+      .eq('profile_id', fixture.actors['student-a'].id)
+      .eq('institution_id', fixture.institutionA);
+
+    for (const [table, id] of [
+      ['assessments', fixture.assessmentPublished],
+      ['grades', fixture.gradePublished],
+      ['student_term_results', fixture.resultId],
+    ] as const) {
+      const afterReactivation = await readRows(student, table, 'id', [['eq', 'id', id]]);
+      expect(afterReactivation.error, `${table} reactivation`).toBeNull();
+      expect(afterReactivation.rows, `${table} after reactivation`).toHaveLength(1);
+    }
+  }, 60_000);
+
+  it('revokes guardian academic reads when membership becomes inactive on the same JWT', async () => {
+    const guardian = fixture.actors['guardian-a'].client;
+    const beforeAssessment = await readRows(guardian, 'assessments', 'id', [
+      ['eq', 'id', fixture.assessmentPublished],
+    ]);
+    const beforeGrade = await readRows(guardian, 'grades', 'id', [
+      ['eq', 'id', fixture.gradePublished],
+    ]);
+    const beforeResult = await readRows(guardian, 'student_term_results', 'id', [
+      ['eq', 'id', fixture.resultId],
+    ]);
+    const beforeAttendance = await readRows(guardian, 'attendance_records', 'id', [
+      ['eq', 'attendance_session_id', fixture.attendanceSession],
+      ['eq', 'student_id', fixture.studentA],
+    ]);
+    expect(beforeAssessment.error).toBeNull();
+    expect(beforeGrade.error).toBeNull();
+    expect(beforeResult.error).toBeNull();
+    expect(beforeAttendance.error).toBeNull();
+    expect(beforeAssessment.rows).toHaveLength(1);
+    expect(beforeGrade.rows).toHaveLength(1);
+    expect(beforeResult.rows).toHaveLength(1);
+    expect(beforeAttendance.rows).toHaveLength(1);
+
+    await fixture.service
+      .from('memberships')
+      .update({ active: false })
+      .eq('profile_id', fixture.actors['guardian-a'].id)
+      .eq('institution_id', fixture.institutionA);
+
+    const state = await fixture.service
+      .from('profiles')
+      .select('active')
+      .eq('id', fixture.actors['guardian-a'].id)
+      .single();
+    const guardianship = await fixture.service
+      .from('guardianships')
+      .select('active')
+      .eq('guardian_profile_id', fixture.actors['guardian-a'].id)
+      .eq('student_id', fixture.studentA)
+      .single();
+    expect(state.error).toBeNull();
+    expect(state.data.active).toBe(true);
+    expect(guardianship.error).toBeNull();
+    expect(guardianship.data.active).toBe(true);
+
+    for (const [table, filters] of [
+      ['assessments', [['eq', 'id', fixture.assessmentPublished]]],
+      ['grades', [['eq', 'id', fixture.gradePublished]]],
+      ['student_term_results', [['eq', 'id', fixture.resultId]]],
+      ['attendance_records', [
+        ['eq', 'attendance_session_id', fixture.attendanceSession],
+        ['eq', 'student_id', fixture.studentA],
+      ]],
+    ] as const) {
+      const after = await readRows(guardian, table, 'id', filters);
+      expect(after.error, table).toBeNull();
+      expect(after.rows, `${table} with inactive membership`).toHaveLength(0);
+    }
+
+    await fixture.service
+      .from('memberships')
+      .update({ active: true })
+      .eq('profile_id', fixture.actors['guardian-a'].id)
+      .eq('institution_id', fixture.institutionA);
+
+    for (const [table, filters] of [
+      ['assessments', [['eq', 'id', fixture.assessmentPublished]]],
+      ['grades', [['eq', 'id', fixture.gradePublished]]],
+      ['student_term_results', [['eq', 'id', fixture.resultId]]],
+      ['attendance_records', [
+        ['eq', 'attendance_session_id', fixture.attendanceSession],
+        ['eq', 'student_id', fixture.studentA],
+      ]],
+    ] as const) {
+      const afterReactivation = await readRows(guardian, table, 'id', filters);
+      expect(afterReactivation.error, `${table} reactivation`).toBeNull();
+      expect(afterReactivation.rows, `${table} after reactivation`).toHaveLength(1);
+    }
+  }, 60_000);
+
+  it('keeps same-tenant guardianship isolation', async () => {
+    for (const [table, select, filters] of [
+      ['assessments', 'id', [['eq', 'id', fixture.assessmentPublished]]],
+      ['grades', 'id', [['eq', 'id', fixture.gradePublished]]],
+      ['student_term_results', 'id', [['eq', 'id', fixture.resultId]]],
+    ] as const) {
+      const result = await readRows(
+        fixture.actors['guardian-unlinked-a'].client,
+        table,
+        select,
+        filters,
+      );
+      expect(result.error, table).toBeNull();
+      expect(result.rows, `${table} for unlinked guardian`).toHaveLength(0);
     }
   }, 60_000);
 });

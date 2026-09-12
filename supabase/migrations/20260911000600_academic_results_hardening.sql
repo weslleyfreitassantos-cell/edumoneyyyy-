@@ -134,6 +134,10 @@ set search_path = ''
 as $$
   select
     private.is_current_profile_active()
+    and private.has_exact_institution_role(
+      target_institution_id,
+      array['STUDENT'::public.user_role]
+    )
     and exists (
       select 1
       from public.assessments as assessment
@@ -172,6 +176,10 @@ set search_path = ''
 as $$
   select
     private.is_current_profile_active()
+    and private.has_exact_institution_role(
+      target_institution_id,
+      array['STUDENT'::public.user_role]
+    )
     and private.is_student_owner(
       target_student_id,
       target_institution_id
@@ -204,6 +212,10 @@ set search_path = ''
 as $$
   select
     private.is_current_profile_active()
+    and private.has_exact_institution_role(
+      target_institution_id,
+      array['GUARDIAN'::public.user_role]
+    )
     and exists (
       select 1
       from public.assessments as assessment
@@ -254,6 +266,10 @@ set search_path = ''
 as $$
   select
     private.is_current_profile_active()
+    and private.has_exact_institution_role(
+      target_institution_id,
+      array['GUARDIAN'::public.user_role]
+    )
     and exists (
       select 1
       from public.guardianships as guardianship
@@ -302,6 +318,10 @@ as $$
           on student.id = guardianship.student_id
         where guardianship.student_id = target_student_id
           and guardianship.guardian_profile_id = auth.uid()
+          and private.has_exact_institution_role(
+            target_institution_id,
+            array['GUARDIAN'::public.user_role]
+          )
           and guardianship.active is true
           and student.institution_id = target_institution_id
       )
@@ -321,6 +341,10 @@ set search_path = ''
 as $$
   select
     private.is_current_profile_active()
+    and private.has_exact_institution_role(
+      target_institution_id,
+      array['GUARDIAN'::public.user_role]
+    )
     and exists (
       select 1
       from public.guardianships as guardianship
