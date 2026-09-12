@@ -39,6 +39,10 @@ interface TermRelation {
   id: string;
   name: string;
   academic_year_id: string;
+  academic_years?:
+    | AcademicYearRelation
+    | AcademicYearRelation[]
+    | null;
 }
 
 interface AcademicYearRelation {
@@ -126,6 +130,23 @@ interface GradeRow {
   assessments:
     | AssessmentRelation
     | AssessmentRelation[]
+    | null;
+}
+
+interface AssessmentRow extends AssessmentRelation {
+  grades?: GradeRow[] | null;
+}
+
+interface StudentEnrollmentContext {
+  student_id: string;
+  class_id: string;
+  academic_year_id: string;
+  status: string | null;
+  active: boolean | null;
+  enrolled_at: string | null;
+  classes:
+    | { id: string; institution_id: string }
+    | { id: string; institution_id: string }[]
     | null;
 }
 
@@ -277,15 +298,10 @@ function createReportCardError(
 }
 
 function normalizeAssessment(
-  grade: GradeRow,
+  assessment: AssessmentRelation,
+  grade: GradeRow | null,
 ): ReportCardAssessment | null {
-  const assessment = normalizeRelation(grade.assessments);
-
-  if (!assessment) {
-    return null;
-  }
-
-  const score = toNullableNumber(grade.score);
+  const score = toNullableNumber(grade?.score ?? null);
   const maxScore = toNumber(assessment.max_score);
 
   return {
@@ -296,9 +312,9 @@ function normalizeAssessment(
     maxScore,
     weight: toNumber(assessment.weight),
     score,
-    status: normalizeGradeStatus(grade.status),
+    status: normalizeGradeStatus(grade?.status),
     percentage: calculateGradePercentage(score, maxScore),
-    feedback: grade.feedback,
+    feedback: grade?.feedback ?? null,
   };
 }
 
@@ -311,11 +327,15 @@ function normalizeOfferingDetails(
   teacherName: string;
   teacherEmail: string;
   termName: string;
+  academicYearName: string | null;
 } | null {
   const subject = normalizeRelation(offering.subjects);
   const classRecord = normalizeRelation(offering.classes);
   const teacher = normalizeRelation(offering.profiles);
   const term = normalizeRelation(offering.terms);
+  const academicYear = normalizeRelation(
+    term?.academic_years,
+  );
 
   if (!subject || !classRecord || !teacher || !term) {
     return null;
@@ -328,21 +348,17 @@ function normalizeOfferingDetails(
     teacherName: teacher.full_name,
     teacherEmail: teacher.email,
     termName: term.name,
+    academicYearName: academicYear?.name ?? null,
   };
 }
 
 function groupAssessmentsBySubjectTerm(
-  grades: readonly GradeRow[],
+  assessments: readonly AssessmentRow[],
+  studentId: string,
 ): Map<string, ReportCardAssessment[]> {
   const grouped = new Map<string, ReportCardAssessment[]>();
 
-  for (const grade of grades) {
-    const assessment = normalizeRelation(grade.assessments);
-
-    if (!assessment) {
-      continue;
-    }
-
+  for (const assessment of assessments) {
     const status = normalizeAssessmentStatus(
       assessment.status,
     );
@@ -357,8 +373,14 @@ function groupAssessmentsBySubjectTerm(
       continue;
     }
 
-    const normalizedAssessment =
-      normalizeAssessment(grade);
+    const grade =
+      (assessment.grades ?? []).find(
+        (item) => item.student_id === studentId,
+      ) ?? null;
+    const normalizedAssessment = normalizeAssessment(
+      assessment,
+      grade,
+    );
 
     if (!normalizedAssessment) {
       continue;
@@ -424,11 +446,10 @@ function buildClosedSubjectResult(
 }
 
 function buildOpenSubjectResult(
-  grade: GradeRow,
+  assessment: AssessmentRow,
   assessments: readonly ReportCardAssessment[],
   institutionId: string,
 ): ReportCardSubjectResult | null {
-  const assessment = normalizeRelation(grade.assessments);
   const offering = normalizeRelation(
     assessment?.subject_offerings,
   );
@@ -461,7 +482,8 @@ function buildOpenSubjectResult(
     key: `${assessment.subject_offering_id}:${assessment.term_id}`,
     institutionId,
     academicYearId: term.academic_year_id,
-    academicYearName: 'Ano letivo',
+    academicYearName:
+      details.academicYearName ?? 'Ano letivo',
     termId: assessment.term_id,
     termName: details.termName,
     subjectOfferingId: assessment.subject_offering_id,
@@ -555,88 +577,165 @@ async function loadResultRowsForStudents(
   return (data ?? []) as unknown as StudentTermResultRow[];
 }
 
-async function loadGradeRowsForStudents(
+async function loadAssessmentRowsForStudents(
   institutionId: string,
   studentIds: readonly string[],
-): Promise<GradeRow[]> {
+): Promise<AssessmentRow[]> {
   let query = supabase
-    .from('grades')
+    .from('assessments')
     .select(
       `
       id,
-      assessment_id,
-      student_id,
-      score,
+      subject_offering_id,
+      term_id,
+      title,
+      assessment_type,
+      assessment_date,
+      max_score,
+      weight,
       status,
-      feedback,
-      recorded_at,
-      assessments:assessment_id (
+      subject_offerings:subject_offering_id (
         id,
-        subject_offering_id,
+        class_id,
+        subject_id,
+        teacher_profile_id,
         term_id,
-        title,
-        assessment_type,
-        assessment_date,
-        max_score,
-        weight,
-        status,
-        subject_offerings:subject_offering_id (
+        classes:class_id (
           id,
-          class_id,
-          subject_id,
-          teacher_profile_id,
-          term_id,
-          classes:class_id (
+          name,
+          grade_level,
+          shift
+        ),
+        subjects:subject_id (
+          id,
+          name,
+          code
+        ),
+        profiles:teacher_profile_id (
+          full_name,
+          email
+        ),
+        terms:term_id (
+          id,
+          name,
+          academic_year_id,
+          academic_years:academic_year_id (
             id,
-            name,
-            grade_level,
-            shift
-          ),
-          subjects:subject_id (
-            id,
-            name,
-            code
-          ),
-          profiles:teacher_profile_id (
-            full_name,
-            email
-          ),
-          terms:term_id (
-            id,
-            name,
-            academic_year_id
+            name
           )
         )
+      ),
+      grades (
+        id,
+        assessment_id,
+        student_id,
+        score,
+        status,
+        feedback,
+        recorded_at
       )
     `,
     )
-    .eq('institution_id', institutionId);
+    .eq('institution_id', institutionId)
+    .in('status', ['PUBLISHED', 'CLOSED'])
+    .order('assessment_date', { ascending: true });
 
-  if (studentIds.length === 1) {
-    query = query.eq('student_id', studentIds[0]);
-  } else {
-    query = query.in('student_id', [...studentIds]);
-  }
+  void studentIds;
 
-  const { data, error } = await query.order('recorded_at', {
-    ascending: false,
-  });
+  const { data, error } = await query;
 
   if (error) {
     throw createReportCardError(error);
   }
 
-  return (data ?? []) as unknown as GradeRow[];
+  return (data ?? []) as unknown as AssessmentRow[];
+}
+
+async function loadEnrollmentContexts(
+  studentIds: readonly string[],
+): Promise<StudentEnrollmentContext[]> {
+  const { data, error } = await supabase
+    .from('enrollments')
+    .select(
+      `
+      student_id,
+      class_id,
+      academic_year_id,
+      status,
+      active,
+      enrolled_at,
+      classes:class_id (
+        id,
+        institution_id
+      )
+    `,
+    )
+    .in('student_id', [...studentIds]);
+
+  if (error) {
+    throw createReportCardError(error);
+  }
+
+  return (data ?? []) as unknown as StudentEnrollmentContext[];
+}
+
+function isAssessmentEligibleForStudent(
+  assessment: AssessmentRow,
+  studentId: string,
+  enrollments: readonly StudentEnrollmentContext[],
+): boolean {
+  const offering = normalizeRelation(
+    assessment.subject_offerings,
+  );
+  const term = normalizeRelation(offering?.terms);
+
+  if (!offering || !term) {
+    return false;
+  }
+
+  const assessmentEndTime = new Date(
+    `${assessment.assessment_date}T23:59:59.999Z`,
+  ).getTime();
+
+  return enrollments.some((enrollment) => {
+    const status =
+      enrollment.status?.trim().toUpperCase() ?? 'ACTIVE';
+    const enrolledTime = enrollment.enrolled_at
+      ? new Date(enrollment.enrolled_at).getTime()
+      : Number.NEGATIVE_INFINITY;
+
+    return (
+      enrollment.student_id === studentId &&
+      enrollment.class_id === offering.class_id &&
+      enrollment.academic_year_id === term.academic_year_id &&
+      enrollment.active !== false &&
+      status === 'ACTIVE' &&
+      Number.isFinite(assessmentEndTime) &&
+      enrolledTime <= assessmentEndTime
+    );
+  });
 }
 
 function buildStudentReportCard(
   institutionId: string,
   studentId: string,
   resultRows: readonly StudentTermResultRow[],
-  gradeRows: readonly GradeRow[],
+  assessmentRows: readonly AssessmentRow[],
+  enrollmentContexts: readonly StudentEnrollmentContext[],
 ): StudentReportCard {
+  const eligibleAssessments = assessmentRows.filter(
+    (assessment) =>
+      isAssessmentEligibleForStudent(
+        assessment,
+        studentId,
+        enrollmentContexts,
+      ),
+  );
   const assessmentsByKey =
-    groupAssessmentsBySubjectTerm(gradeRows);
+    groupAssessmentsBySubjectTerm(
+      eligibleAssessments,
+      studentId,
+    );
   const closedResults = resultRows
     .map((row) =>
       buildClosedSubjectResult(
@@ -658,10 +757,8 @@ function buildStudentReportCard(
   );
   const openResults: ReportCardSubjectResult[] = [];
 
-  for (const grade of gradeRows) {
-    const assessment = normalizeRelation(grade.assessments);
-
-    if (!assessment?.term_id) {
+  for (const assessment of eligibleAssessments) {
+    if (!assessment.term_id) {
       continue;
     }
 
@@ -673,7 +770,7 @@ function buildStudentReportCard(
 
     const assessments = assessmentsByKey.get(key) ?? [];
     const openResult = buildOpenSubjectResult(
-      grade,
+      assessment,
       assessments,
       institutionId,
     );
@@ -712,16 +809,19 @@ export const reportCardService = {
     institutionId: string,
     studentId: string,
   ): Promise<StudentReportCard> {
-    const [resultRows, gradeRows] = await Promise.all([
+    const [resultRows, assessmentRows, enrollmentContexts] =
+      await Promise.all([
       loadResultRowsForStudents(institutionId, [studentId]),
-      loadGradeRowsForStudents(institutionId, [studentId]),
+      loadAssessmentRowsForStudents(institutionId, [studentId]),
+      loadEnrollmentContexts([studentId]),
     ]);
 
     return buildStudentReportCard(
       institutionId,
       studentId,
       resultRows,
-      gradeRows,
+      assessmentRows,
+      enrollmentContexts,
     );
   },
 
@@ -733,9 +833,11 @@ export const reportCardService = {
       return [];
     }
 
-    const [resultRows, gradeRows] = await Promise.all([
+    const [resultRows, assessmentRows, enrollmentContexts] =
+      await Promise.all([
       loadResultRowsForStudents(institutionId, studentIds),
-      loadGradeRowsForStudents(institutionId, studentIds),
+      loadAssessmentRowsForStudents(institutionId, studentIds),
+      loadEnrollmentContexts(studentIds),
     ]);
 
     return studentIds.map((studentId) =>
@@ -745,9 +847,8 @@ export const reportCardService = {
         resultRows.filter(
           (row) => row.student_id === studentId,
         ),
-        gradeRows.filter(
-          (row) => row.student_id === studentId,
-        ),
+        assessmentRows,
+        enrollmentContexts,
       ),
     );
   },

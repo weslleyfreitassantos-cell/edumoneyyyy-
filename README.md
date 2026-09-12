@@ -1,6 +1,6 @@
 # EduManager Pro
 
-[![CI](https://github.com/SamDevlab/base/actions/workflows/ci.yml/badge.svg?branch=fix%2Festabilizar-fundacao)](https://github.com/SamDevlab/base/actions/workflows/ci.yml)
+[![CI](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/actions/workflows/ci.yml)
 
 Sistema web de gestão acadêmica multi-instituição desenvolvido com React,
 TypeScript e Supabase.
@@ -11,23 +11,22 @@ dashboards por perfil. O projeto evoluiu de um protótipo visual para uma
 aplicação integrada ao banco, com autenticação, autorização institucional,
 convites por e-mail e dados reais nos painéis.
 
-> **Estado atual:** pronto para homologação funcional. Ainda requer revisão
-> final de RLS, reconciliação das migrations, configuração de produção e testes
-> end-to-end antes de uso em produção.
+> **Estado atual:** o núcleo acadêmico está integrado ao Supabase, com fluxo
+> de avaliações, notas, frequência, fechamento e boletim validado em ambiente
+> local descartável. Deploy remoto, staging, backup e operação de produção
+> continuam dependendo da configuração de infraestrutura correspondente.
 
 ---
 
 ## Estado atual do projeto
 
 - multi-instituição ativo com `InstitutionContext` e `InstitutionSwitcher`;
-- role efetiva em telas contextuais, priorizando `memberships.role` e usando
-  `profiles.role` como fallback temporário;
-- aba **Usuários da Escola** com listagem somente leitura e prévia visual de
-  cadastro unificado;
-- cadastro/convite real ainda bloqueado até auditoria read-only do banco,
-  reconciliação das migrations e revisão das Edge Functions;
-- não execute `supabase db push`, `supabase migration repair` ou
-  `supabase db reset` sem reconciliação formal.
+- role efetiva em telas contextuais, priorizando `memberships.role`;
+- usuários, alunos, professores e responsáveis vinculados por instituição;
+- ano letivo, períodos, currículo, atribuições, grade e frequência persistidos;
+- avaliações, notas e fechamento acadêmico com autorização por papel;
+- boletim aberto calculado a partir de avaliações publicadas e boletim fechado
+  baseado em `student_term_results`.
 
 Documentos de readiness:
 
@@ -40,6 +39,7 @@ Documentos de readiness:
 - [Especificação futura de convites](docs/edge-functions-user-invite-spec.md)
 - [Matriz de roles](docs/roles-matrix.md)
 - [Checklist de produção](docs/release-readiness-checklist.md)
+- [Fluxo acadêmico de resultados](docs/academic-results-flow.md)
 - [Avaliação de prontidão do MVP](docs/mvp-readiness-assessment.md)
 - [Auditoria de escritas frontend](docs/frontend-write-audit.md)
 
@@ -93,16 +93,11 @@ módulos:
 
 - **Usuários da Escola**
   - listagem de usuários vinculados à escola via `memberships` + `profiles`;
-  - exibição dos papéis atuais `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT` e
-    `GUARDIAN`;
-  - prévia visual do cadastro/convite unificado de alunos, professores,
-    responsáveis, diretores e papéis escolares planejados;
-  - seção informativa para os papéis planejados `SUPER_ADMIN`, `SCHOOL_ADMIN`
-    e `SECRETARY`;
-  - botão **Novo usuário** desabilitado até a reconciliação das migrations e a
-    homologação do fluxo de convite/senha;
-  - a prévia não cria usuários, não envia convites reais, não chama Supabase
-    Auth, não chama Edge Functions e não escreve no banco.
+  - exibição dos papéis institucionais `ADMIN`, `DIRECTOR`, `SECRETARY`,
+    `TEACHER`, `STUDENT` e `GUARDIAN`;
+  - painéis especializados para Direção, Secretaria, Professores, Alunos e
+    Responsáveis, além da visão global de usuários;
+  - ações protegidas por membership, papel e autorização do backend.
 
 - **Alunos**
   - cadastro com convite por e-mail;
@@ -183,6 +178,11 @@ módulos:
   - turma e ano letivo;
   - disciplinas da turma;
   - alternância entre alunos vinculados.
+- **Resultados acadêmicos**
+  - avaliações com estados `DRAFT`, `PUBLISHED`, `CLOSED` e `CANCELED`;
+  - notas `PENDING`, `GRADED` e `EXCUSED`;
+  - fechamento por oferta e período, com reabertura justificada;
+  - boletim aberto e snapshots oficiais em `student_term_results`.
 
 - **Diretor e administrador**
   - indicadores institucionais;
@@ -191,8 +191,8 @@ módulos:
   - resumo de alunos, professores, turmas, disciplinas, matrículas e
     atribuições.
 
-Os dashboards exibem somente dados disponíveis no schema atual. Notas,
-frequência e agenda não são simuladas.
+Os dashboards exibem dados persistidos e autorizados pelo schema atual. O
+fechamento acadêmico congela o resultado oficial até uma reabertura autorizada.
 
 ---
 
@@ -200,20 +200,17 @@ frequência e agenda não são simuladas.
 
 | Papel      | Escopo atual                                                |
 | ---------- | ----------------------------------------------------------- |
-| `ADMIN`    | Administração acadêmica e operacional da instituição        |
-| `DIRECTOR` | Gestão acadêmica da instituição                             |
-| `TEACHER`  | Visualização das próprias atribuições, turmas e disciplinas |
-| `STUDENT`  | Visualização dos próprios dados e da matrícula              |
-| `GUARDIAN` | Visualização dos alunos vinculados                          |
+| `ADMIN`     | Proprietário da conta e gestão administrativa não acadêmica             |
+| `DIRECTOR`  | Gestão acadêmica e operacional da instituição                           |
+| `SECRETARY` | Operação acadêmica autorizada da instituição                           |
+| `TEACHER`   | Próprias atribuições, turmas, avaliações, notas e frequência             |
+| `STUDENT`   | Próprios dados, matrícula, agenda, resultados e materiais autorizados    |
+| `GUARDIAN`  | Alunos vinculados e seus resultados autorizados                          |
+| `SUPER_ADMIN` | Administração da plataforma, quando habilitado                         |
 
-No estado atual, `ADMIN` e `DIRECTOR` possuem acesso semelhante aos módulos
-acadêmicos de `/admin`. A separação futura pode reservar configurações técnicas,
-permissões e integrações somente ao administrador.
-
-Não existem ainda no banco os papéis `SUPER_ADMIN`, `SCHOOL_ADMIN` e
-`SECRETARY`. Hoje `ADMIN` representa o papel administrativo compatível; no
-modelo futuro ele deve ser dividido entre administração global da plataforma e
-administração interna da escola.
+`ADMIN` mantém a propriedade comercial da conta, mas não substitui `DIRECTOR`
+ou `SECRETARY` nas operações acadêmicas da escola. A autorização efetiva é
+avaliada no banco e considera membership ativa, instituição e perfil ativo.
 
 ---
 
@@ -293,19 +290,28 @@ permissões por `memberships.role`.
 ```text
 Ano letivo
 → Período
+→ Política acadêmica
 → Turma
 → Disciplina
 → Professor
 → Aluno
 → Matrícula
 → Atribuição
-→ Dashboards
+→ Grade
+→ Frequência
+→ Avaliações
+→ Notas
+→ Fechamento
+→ Boletim
 ```
+
+O fluxo de resultados está detalhado em
+[docs/academic-results-flow.md](docs/academic-results-flow.md).
 
 ### Cadastro de aluno
 
 ```text
-ADMIN/DIRECTOR
+DIRECTOR/SECRETARY
 → informa nome, e-mail, nascimento e CPF
 → frontend chama create-student
 → Edge Function valida sessão e instituição
@@ -320,7 +326,7 @@ ADMIN/DIRECTOR
 ### Cadastro de professor
 
 ```text
-ADMIN/DIRECTOR
+DIRECTOR/SECRETARY
 → informa nome e e-mail
 → frontend chama create-teacher
 → usuário recebe convite
@@ -332,7 +338,7 @@ ADMIN/DIRECTOR
 ### Cadastro de responsável
 
 ```text
-ADMIN/DIRECTOR
+DIRECTOR/SECRETARY
 → informa nome e e-mail
 → seleciona um ou mais alunos
 → informa parentesco e vínculo principal
@@ -437,6 +443,11 @@ Principais tabelas:
 | `subjects`                      | Disciplinas                                    |
 | `enrollments`                   | Matrícula do aluno em turma e ano letivo       |
 | `subject_offerings`             | Professor + disciplina + turma + período       |
+| `assessments`                   | Avaliações da oferta e do período              |
+| `grades`                        | Notas dos alunos nas avaliações                |
+| `academic_policies`             | Regras de aprovação e arredondamento           |
+| `term_closures`                  | Estado de revisão e fechamento                 |
+| `student_term_results`           | Resultado oficial congelado                    |
 | `student_registration_counters` | Sequência institucional de RA                  |
 
 Relações centrais:
@@ -447,6 +458,10 @@ Aluno + Turma + Ano letivo
 
 Professor + Disciplina + Turma + Período
 → subject_offering
+
+Avaliações + Notas + Frequência + Política
+→ fechamento do período
+→ student_term_results
 
 Responsável + Aluno
 → guardianship
@@ -467,9 +482,9 @@ Responsável + Aluno
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/SamDevlab/base.git
-cd base
-git checkout fix/estabilizar-fundacao
+git clone https://github.com/weslleyfreitassantos-cell/edumoneyyyy-.git
+cd edumoneyyyy-
+git checkout main
 ```
 
 ### 2. Instale as dependências
@@ -626,39 +641,27 @@ http://localhost:3000/set-password
 O diretório `supabase/migrations` contém:
 
 ```text
-20260709000100_baseline_schema.sql
 20260710000200_attendance_and_grades.sql
 20260710000300_attendance_and_grades_rls.sql
 20260710000400_attendance_and_grades_integrity.sql
+20260712000300_term_closing_report_cards.sql
+20260911000600_academic_results_hardening.sql
 ```
 
-### Atenção ao banco remoto atual
+As migrations de resultados acadêmicos são forward-only. A migration de
+hardening adiciona bloqueios em nível de banco para impedir alterações
+incompatíveis em avaliações, notas e resultados depois do fechamento.
 
-> **Não execute `supabase db push`, `supabase db reset` ou
-> `supabase migration repair` no projeto remoto atual sem reconciliar o
-> histórico de migrations.**
+O reset e o diff foram validados em um projeto Supabase local descartável. O
+banco remoto não é alterado por `npm run check`; aplicações remotas devem seguir
+o processo de release e backup do ambiente correspondente.
 
-O banco remoto já possuía tabelas e alterações aplicadas antes da criação da
-migration baseline. Aplicar a baseline diretamente pode tentar recriar objetos
-existentes ou produzir um histórico inconsistente.
+> **Não execute `supabase migration repair` para corrigir comportamento de
+> aplicação.** Use repair somente quando a equipe de banco tiver evidência do
+> histórico remoto e um plano de reconciliação aprovado.
 
-Existe um candidato documental de hardening de RLS em
-`docs/migration-candidates/001-rls-active-membership-hardening.md` e
-`docs/migration-candidates/001-rls-active-membership-hardening.sql`. Ele ainda
-nao e migration real e nao deve ser aplicado sem reconciliacao e teste em
-staging.
-
-A sequência segura é:
-
-1. gerar um inventário do schema remoto;
-2. comparar com as migrations versionadas;
-3. registrar as alterações manuais;
-4. reconciliar o histórico;
-5. testar em um ambiente descartável;
-6. somente depois aplicar em produção.
-
-As migrations de avaliações, notas e frequência estão versionadas, mas esses
-módulos ainda não são utilizados pelos dashboards atuais.
+O fluxo técnico de avaliações, notas, frequência, fechamento e boletim está em
+[docs/academic-results-flow.md](docs/academic-results-flow.md).
 
 ---
 
@@ -720,28 +723,22 @@ Revisões ainda recomendadas antes de produção:
 ## Limitações atuais
 
 - não há interface de `SUPER_ADMIN` para cadastrar instituições;
-- `SUPER_ADMIN`, `SCHOOL_ADMIN` e `SECRETARY` ainda não existem no banco;
-- a aba **Usuários da Escola** é somente leitura e não realiza cadastro
-  unificado de usuários;
-- a criação da instituição e do primeiro administrador ainda depende de
-  onboarding técnico;
-- não há seletor para usuários vinculados a várias instituições;
-- `profiles.role` ainda participa do roteamento global e permanece como fallback
-  temporário para a role efetiva;
-- a migração completa das permissões para `memberships.role` ainda é gradual;
-- notas, frequência e agenda ainda não estão expostas no frontend;
-- as migrations do banco remoto precisam ser reconciliadas;
-- as Edge Functions ainda não são verificadas pelo GitHub Actions;
+- a criação da instituição e do primeiro administrador depende do fluxo de
+  onboarding configurado no ambiente;
+- usuários vinculados a várias instituições podem alternar a instituição ativa
+  pelo `InstitutionSwitcher` quando houver mais de uma instituição disponível;
+- `profiles.role` ainda participa do roteamento global em pontos legados;
+- as Edge Functions dependem da configuração de runtime do ambiente;
 - é necessário configurar SMTP e URLs de produção;
-- o projeto ainda precisa de homologação multi-instituição antes de produção.
+- staging, backup/restore e observabilidade de produção devem ser comprovados
+  no ambiente operacional.
 
 Próximos passos planejados:
 
-- reconciliar migrations antes de qualquer `db push`;
-- adicionar `SUPER_ADMIN`, `SCHOOL_ADMIN` e `SECRETARY` futuramente;
-- ajustar Edge Functions para o novo modelo de roles;
-- homologar o fluxo de convite e definição de senha;
-- liberar cadastro real por secretaria somente depois da validação completa.
+- configurar e validar staging;
+- comprovar backup/restore e observabilidade;
+- homologar o fluxo de convite e definição de senha com SMTP do ambiente;
+- completar a cobertura E2E dos fluxos operacionais restantes.
 
 ---
 
@@ -776,16 +773,16 @@ Execute o fluxo com contas e e-mails de teste:
 | ----------------------------- | ------------------------------------ |
 | Autenticação e sessão         | Implementado                         |
 | Autorização por papel         | Implementado                         |
-| Isolamento institucional      | Implementado; requer auditoria final |
+| Isolamento institucional      | Implementado; validado nos cenários locais |
 | Administração acadêmica       | Implementado                         |
 | Convites de usuários          | Implementado                         |
 | Dashboards com dados reais    | Implementado                         |
 | Testes frontend               | Implementado                         |
 | CI de frontend                | Implementado                         |
-| CI de Edge Functions          | Pendente                             |
-| Notas e frequência            | Schema versionado; frontend pendente |
+| CI de Edge Functions          | Conforme workflows configurados       |
+| Notas, frequência e boletim   | Fluxo implementado e validado localmente |
 | Gestão global de instituições | Pendente                             |
-| Produção                      | Ainda não recomendada                |
+| Produção                      | Depende de staging e operação comprovados |
 | Homologação                   | Disponível                           |
 
 ---
@@ -794,17 +791,9 @@ Desenvolvido como uma base para gestão acadêmica institucional, com foco em
 separação de responsabilidades, preservação de histórico e segurança
 multi-tenant.
 
-## Diagnóstico final do banco
+## Estado do banco
 
-A auditoria manual read-only do Supabase remoto foi consolidada em `docs/database-final-diagnosis.md`.
-
-Resumo:
-
-- o núcleo escolar remoto existe;
-- `supabase_migrations.schema_migrations` não existe no remoto;
-- notas/frequência ainda não existem no remoto;
-- roles reais atuais: `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT`, `GUARDIAN`;
-- `SECRETARY`, `SCHOOL_ADMIN` e `SUPER_ADMIN` seguem planejados;
-- cadastro real continua bloqueado até reconciliação de migrations, hardening de RLS e Edge Functions seguras.
-
-Não executar `supabase db push`, `migration repair` ou `db reset` sem reconciliação.
+O schema versionado inclui o núcleo acadêmico, avaliações, notas, frequência,
+fechamento e snapshots de boletim. O estado remoto deve ser verificado pelo
+runbook de release antes de cada aplicação; esta documentação não substitui a
+confirmação de deploy, backup ou migração no ambiente de produção.
