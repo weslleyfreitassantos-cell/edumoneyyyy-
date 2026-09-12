@@ -110,6 +110,17 @@ vi.mock(
   }),
 );
 
+vi.mock(
+  '../../components/academic/PedagogicalMonitoringPanel',
+  () => ({
+    default: () => (
+      <div data-testid="pedagogical-monitoring-panel">
+        Acompanhamento pedagogico
+      </div>
+    ),
+  }),
+);
+
 vi.mock('./tabs/AdminOverviewTab', () => ({
   default: ({
     onNavigateToModule,
@@ -505,6 +516,31 @@ describe('AdminPage URL module resolution', () => {
     expect(
       screen.getByTestId('announcements-tab'),
     ).toBeTruthy();
+  });
+
+  it('limita acompanhamento pedagogico a diretor e secretaria', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    renderAdminPage('/admin?module=pedagogical-monitoring');
+
+    expect(
+      screen.getByTestId('pedagogical-monitoring-panel'),
+    ).toBeTruthy();
+
+    cleanup();
+    mockAdminState();
+    renderAdminPage('/admin?module=pedagogical-monitoring');
+
+    expect(
+      screen.queryByTestId('pedagogical-monitoring-panel'),
+    ).toBeNull();
+    expect(screen.getByTestId('overview-tab')).toBeTruthy();
   });
 
   it('renderiza o e-mail para perfis administrativos autorizados', () => {
