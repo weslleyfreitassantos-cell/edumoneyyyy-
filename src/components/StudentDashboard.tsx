@@ -12,7 +12,7 @@ import {
   UserRound,
 } from 'lucide-react';
 
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
 
@@ -255,6 +255,108 @@ function StudentSubjectsView({
             ))}
           </div>
         </section>
+      )}
+    </motion.div>
+  );
+}
+
+type StudentAcademicSection =
+  | 'attendance'
+  | 'grades'
+  | 'report-card';
+
+function StudentAcademicResultsView({
+  section,
+  institutionId,
+  student,
+  enrollment,
+}: {
+  section: StudentAcademicSection;
+  institutionId: string;
+  student: StudentDashboardData['student'];
+  enrollment: StudentDashboardData['activeEnrollment'];
+}) {
+  const page = {
+    attendance: {
+      title: 'Frequência',
+      description: 'Consulte seus registros de presença e faltas publicados.',
+    },
+    grades: {
+      title: 'Notas',
+      description: 'Acompanhe avaliações, notas e situações de lançamento.',
+    },
+    'report-card': {
+      title: 'Boletim',
+      description: 'Consulte seus resultados parciais e boletins oficiais.',
+    },
+  }[section];
+
+  const studentName =
+    student.profile?.full_name ?? student.registration_number;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-6"
+      id={`student-${section}-main`}
+    >
+      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+          Área do aluno
+        </p>
+        <div className="mt-2 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-[#181c20] dark:text-white">
+              {page.title}
+            </h1>
+            <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
+              {page.description}
+            </p>
+          </div>
+          <div className="text-left text-sm sm:text-right">
+            <p className="font-semibold text-[#181c20] dark:text-slate-100">
+              {studentName}
+            </p>
+            <p className="mt-1 text-xs text-[#727785] dark:text-slate-400">
+              {enrollment?.class_name ?? 'Sem matrícula ativa'}
+              {enrollment?.academic_year_name
+                ? ` · ${enrollment.academic_year_name}`
+                : ''}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {!enrollment && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
+          Nenhuma matrícula ativa encontrada para este aluno.
+        </div>
+      )}
+
+      {section === 'attendance' && (
+        <StudentAttendanceSummaryPanel
+          institutionId={institutionId}
+          studentId={student.id}
+          title="Frequência do aluno"
+        />
+      )}
+
+      {section === 'grades' && (
+        <StudentGradesPanel
+          institutionId={institutionId}
+          studentId={student.id}
+          title="Avaliações e notas"
+        />
+      )}
+
+      {section === 'report-card' && (
+        <StudentReportCard
+          institutionId={institutionId}
+          studentId={student.id}
+          studentName={studentName}
+          className={enrollment?.class_name}
+        />
       )}
     </motion.div>
   );
@@ -517,6 +619,23 @@ export default function StudentDashboard() {
     );
   }
 
+  if (
+    location.pathname === '/student/attendance' ||
+    location.pathname === '/student/grades' ||
+    location.pathname === '/student/report-card'
+  ) {
+    const section = location.pathname.split('/').at(-1) as StudentAcademicSection;
+
+    return (
+      <StudentAcademicResultsView
+        section={section}
+        institutionId={institutionQuery.data}
+        student={student}
+        enrollment={activeEnrollment}
+      />
+    );
+  }
+
   const firstName =
     getFirstName(profile.full_name);
 
@@ -709,20 +828,29 @@ export default function StudentDashboard() {
         </article>
       </section>
 
-      <StudentAttendanceSummaryPanel
-        institutionId={institutionQuery.data}
-        studentId={student.id}
-      />
-
-      <StudentGradesPanel
-        institutionId={institutionQuery.data}
-        studentId={student.id}
-      />
-
-      <StudentReportCard
-        institutionId={institutionQuery.data}
-        studentId={student.id}
-      />
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
+              Acompanhamento acadêmico
+            </h2>
+            <p className="mt-1 text-sm text-[#727785] dark:text-slate-400">
+              Acesse os detalhes de frequência, notas e boletim em suas áreas próprias.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/attendance">
+              Frequência
+            </Link>
+            <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/grades">
+              Notas
+            </Link>
+            <Link className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a99]" to="/student/report-card">
+              Boletim
+            </Link>
+          </div>
+        </div>
+      </section>
 
     </motion.div>
   );

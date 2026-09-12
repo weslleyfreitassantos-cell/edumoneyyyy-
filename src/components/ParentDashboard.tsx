@@ -3,6 +3,7 @@ import {
   useState,
 } from 'react';
 import { motion } from 'motion/react';
+import { Link, useLocation } from 'react-router-dom';
 
 import {
   BadgeCheck,
@@ -134,8 +135,140 @@ function StudentSummary({
   );
 }
 
+type GuardianAcademicSection =
+  | 'attendance'
+  | 'grades'
+  | 'report-card';
+
+function GuardianAcademicResultsView({
+  section,
+  institutionId,
+  students,
+  selectedStudent,
+  selectedStudentId,
+  onSelectStudent,
+}: {
+  section: GuardianAcademicSection;
+  institutionId: string;
+  students: GuardianStudentDashboard[];
+  selectedStudent: GuardianStudentDashboard | null;
+  selectedStudentId: string;
+  onSelectStudent: (studentId: string) => void;
+}) {
+  const page = {
+    attendance: {
+      title: 'Frequência dos dependentes',
+      description: 'Consulte os registros de presença do dependente selecionado.',
+    },
+    grades: {
+      title: 'Notas dos dependentes',
+      description: 'Acompanhe as avaliações e notas do dependente selecionado.',
+    },
+    'report-card': {
+      title: 'Boletim dos dependentes',
+      description: 'Consulte resultados parciais e boletins oficiais por dependente.',
+    },
+  }[section];
+
+  const selectedStudentRecord = selectedStudent?.student.student;
+  const selectedName =
+    selectedStudentRecord?.profile?.full_name ??
+    selectedStudentRecord?.registration_number ??
+    'Dependente';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-6"
+      id={`guardian-${section}-main`}
+    >
+      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+              Área da família
+            </p>
+            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20] dark:text-white">
+              {page.title}
+            </h1>
+            <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
+              {page.description}
+            </p>
+          </div>
+
+          <div className="w-full lg:max-w-sm">
+            <label htmlFor="guardian-academic-student" className="text-xs font-bold uppercase tracking-wide text-[#727785] dark:text-slate-400">
+              Dependente
+            </label>
+            <select
+              id="guardian-academic-student"
+              value={selectedStudent?.student.student.id ?? selectedStudentId}
+              onChange={(event) => onSelectStudent(event.target.value)}
+              className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
+            >
+              {students.map((item) => (
+                <option key={item.guardianship_id} value={item.student.student.id}>
+                  {item.student.student.profile?.full_name ?? item.student.student.registration_number}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {selectedStudent && (
+          <div className="mt-5 rounded-lg border border-[#dfe3e8] bg-[#f8faff] px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-800">
+            <p className="font-semibold text-[#181c20] dark:text-slate-100">
+              {selectedName}
+            </p>
+            <p className="mt-1 text-xs text-[#727785] dark:text-slate-400">
+              {selectedStudent.student.activeEnrollment?.class_name ?? 'Sem matrícula ativa'}
+              {selectedStudent.student.activeEnrollment?.academic_year_name
+                ? ` · ${selectedStudent.student.activeEnrollment.academic_year_name}`
+                : ''}
+            </p>
+          </div>
+        )}
+      </section>
+
+      {!selectedStudent && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
+          Nenhum aluno ativo está vinculado a este responsável nesta instituição.
+        </div>
+      )}
+
+      {selectedStudent && section === 'attendance' && (
+        <StudentAttendanceSummaryPanel
+          institutionId={institutionId}
+          studentId={selectedStudent.student.student.id}
+          title="Frequência do aluno"
+        />
+      )}
+
+      {selectedStudent && section === 'grades' && (
+        <StudentGradesPanel
+          institutionId={institutionId}
+          studentId={selectedStudent.student.student.id}
+          title="Notas do aluno"
+        />
+      )}
+
+      {selectedStudent && section === 'report-card' && (
+        <GuardianReportCard
+          institutionId={institutionId}
+          studentIds={students.map((item) => item.student.student.id)}
+          selectedStudentId={selectedStudent.student.student.id}
+          studentName={selectedName}
+          className={selectedStudent.student.activeEnrollment?.class_name}
+        />
+      )}
+    </motion.div>
+  );
+}
+
 export default function ParentDashboard() {
   const { profile } = useAuth();
+  const location = useLocation();
 
   const institutionQuery =
     useCurrentInstitution(profile?.id);
@@ -158,7 +291,9 @@ export default function ParentDashboard() {
   const [
     selectedStudentId,
     setSelectedStudentId,
-  ] = useState('');
+  ] = useState(() =>
+    new URLSearchParams(location.search).get('student') ?? '',
+  );
 
   const students =
     dashboardQuery.data?.students ?? [];
@@ -207,6 +342,25 @@ export default function ParentDashboard() {
           {getErrorMessage(error)}
         </p>
       </div>
+    );
+  }
+
+  if (
+    location.pathname === '/guardian/attendance' ||
+    location.pathname === '/guardian/grades' ||
+    location.pathname === '/guardian/report-card'
+  ) {
+    const section = location.pathname.split('/').at(-1) as GuardianAcademicSection;
+
+    return (
+      <GuardianAcademicResultsView
+        section={section}
+        institutionId={institutionQuery.data}
+        students={students}
+        selectedStudent={selectedStudent}
+        selectedStudentId={selectedStudentId}
+        onSelectStudent={setSelectedStudentId}
+      />
     );
   }
 
@@ -384,23 +538,29 @@ export default function ParentDashboard() {
               </article>
             </section>
 
-            <StudentAttendanceSummaryPanel
-              institutionId={institutionQuery.data}
-              studentId={selectedStudent.student.student.id}
-              title="Frequência do aluno"
-            />
-
-            <StudentGradesPanel
-              institutionId={institutionQuery.data}
-              studentId={selectedStudent.student.student.id}
-              title="Notas do aluno"
-            />
-
-            <GuardianReportCard
-              institutionId={institutionQuery.data}
-              studentIds={students.map(s => s.student.student.id)}
-              selectedStudentId={selectedStudent.student.student.id}
-            />
+            <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
+                    Acompanhamento acadêmico
+                  </h2>
+                  <p className="mt-1 text-sm text-[#727785] dark:text-slate-400">
+                    Consulte detalhes do dependente selecionado em áreas próprias.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to={`/guardian/attendance?student=${selectedStudent.student.student.id}`}>
+                    Frequência
+                  </Link>
+                  <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to={`/guardian/grades?student=${selectedStudent.student.student.id}`}>
+                    Notas
+                  </Link>
+                  <Link className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a99]" to={`/guardian/report-card?student=${selectedStudent.student.student.id}`}>
+                    Boletim
+                  </Link>
+                </div>
+              </div>
+            </section>
             </>
           )}
         </>

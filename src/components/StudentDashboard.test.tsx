@@ -58,15 +58,15 @@ vi.mock('../hooks/useRegistrationCompletion', () => ({
 }));
 
 vi.mock('./attendance/StudentAttendanceSummaryPanel', () => ({
-  default: () => null,
+  default: ({ title }: { title?: string }) => <div>{title ?? 'Frequência'}</div>,
 }));
 
 vi.mock('./grades/StudentGradesPanel', () => ({
-  default: () => null,
+  default: ({ title }: { title?: string }) => <div>{title ?? 'Notas'}</div>,
 }));
 
 vi.mock('./academic/StudentReportCard', () => ({
-  default: () => null,
+  default: () => <div>Boletim escolar</div>,
 }));
 
 vi.mock('./UpcomingAcademicEvents', () => ({
@@ -386,5 +386,25 @@ describe('StudentDashboard', () => {
       screen.queryByText('Disciplinas e professores do período atual'),
     ).toBeNull();
     expect(screen.queryByText('Disciplinas do período atual')).toBeNull();
+  });
+
+  it('exibe frequência, notas e boletim em rotas dedicadas', () => {
+    const routes = [
+      ['/student/attendance', 'Frequência do aluno'],
+      ['/student/grades', 'Avaliações e notas'],
+      ['/student/report-card', 'Boletim escolar'],
+    ] as const;
+
+    for (const [route, expectedLabel] of routes) {
+      const view = render(
+        <MemoryRouter initialEntries={[route]}>
+          <StudentDashboard />
+        </MemoryRouter>,
+      );
+
+      expect(screen.getByText(expectedLabel)).toBeTruthy();
+      expect(screen.queryByText('Área do aluno')).toBeTruthy();
+      view.unmount();
+    }
   });
 });

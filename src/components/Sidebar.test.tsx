@@ -657,7 +657,13 @@ describe('sidebar navigation helpers', () => {
     expect(subjectsItem?.path).toBe('/dashboard/subjects');
 
     expect(studentItems.map((item) => item.id)).toEqual(
-      expect.arrayContaining(['student-study', 'library']),
+      expect.arrayContaining([
+        'student-study',
+        'library',
+        'student-attendance',
+        'student-grades',
+        'student-report-card',
+      ]),
     );
 
     const teacherItems = getSidebarNavigationItems({
@@ -702,6 +708,39 @@ describe('sidebar navigation helpers', () => {
     expect(
       directorItems.map((item) => item.id),
     ).not.toContain('student-timetable');
+  });
+
+  it('mostra resultados acadêmicos dedicados somente no menu do responsável', () => {
+    const parentItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'GUARDIAN',
+      },
+      currentInstitutionRole: 'GUARDIAN',
+      currentUserRole: 'parent',
+      pathname: '/guardian/grades',
+    });
+
+    expect(parentItems.map((item) => item.id)).toEqual(
+      expect.arrayContaining([
+        'guardian-attendance',
+        'guardian-grades',
+        'guardian-report-card',
+      ]),
+    );
+    expect(parentItems.map((item) => item.id)).not.toContain('student-grades');
+
+    const studentItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'STUDENT',
+      },
+      currentInstitutionRole: 'STUDENT',
+      currentUserRole: 'student',
+      pathname: '/student/grades',
+    });
+
+    expect(studentItems.map((item) => item.id)).not.toContain('guardian-grades');
   });
 
   it('mostra Personalizar login somente para DIRECTOR', () => {
