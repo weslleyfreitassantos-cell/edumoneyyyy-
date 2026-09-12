@@ -163,7 +163,7 @@ export default function Header({
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#d8deea] bg-white/95 shadow-sm backdrop-blur">
+    <header data-print-hide className="sticky top-0 z-30 border-b border-[#d8deea] bg-white/95 shadow-sm backdrop-blur">
       <div className="flex min-h-16 items-center gap-3 px-4 sm:px-5 lg:px-6">
         <button
           ref={mobileMenuButtonRef}

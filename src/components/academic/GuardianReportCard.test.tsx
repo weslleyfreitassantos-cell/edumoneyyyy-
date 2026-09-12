@@ -1,10 +1,14 @@
 // @vitest-environment jsdom
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { afterEach, describe, it, expect, vi } from 'vitest';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 import GuardianReportCard from './GuardianReportCard';
 import { useGuardianReportCards } from '../../hooks/useAcademicTermClosing';
 
 vi.mock('../../hooks/useAcademicTermClosing');
+
+afterEach(() => {
+  cleanup();
+});
 
 describe('GuardianReportCard', () => {
   it('responsável sem vínculos recebe estado vazio', () => {
@@ -29,5 +33,25 @@ describe('GuardianReportCard', () => {
     render(<GuardianReportCard institutionId="inst-1" studentIds={['student-1']} selectedStudentId="student-1" />);
     // Math belongs to student-1
     expect(screen.getByText(/Math/i)).toBeDefined();
+  });
+
+  it('mantém o estado vazio quando o estudante ainda não possui resultados', () => {
+    (useGuardianReportCards as any).mockReturnValue({
+      data: [{ studentId: 'student-1', subjects: [] }],
+      isLoading: false,
+      isError: false,
+    });
+
+    render(
+      <GuardianReportCard
+        institutionId="inst-1"
+        studentIds={['student-1']}
+        selectedStudentId="student-1"
+      />,
+    );
+
+    expect(
+      screen.getByText(/Nenhum resultado acadêmico disponível para este estudante/i),
+    ).toBeDefined();
   });
 });

@@ -124,6 +124,7 @@ export default function AssistantTec({
         type="button"
         onClick={() => setOpen(true)}
         aria-label="Abrir Assistente TEC"
+        data-print-hide
         className="fixed bottom-4 right-4 z-40 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#005bbf] text-white shadow-lg transition hover:bg-[#004a9c] sm:bottom-5 sm:right-5"
         title="Assistente TEC"
       >
@@ -135,6 +136,7 @@ export default function AssistantTec({
           role="dialog"
           aria-modal="false"
           aria-label="Assistente TEC"
+          data-print-hide
           className="fixed inset-x-3 bottom-20 z-50 flex max-h-[calc(100dvh-7rem)] w-auto flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900 sm:inset-x-auto sm:right-5 sm:max-h-[min(680px,calc(100dvh-7rem))] sm:w-[min(420px,calc(100vw-2.5rem))]"
         >
           <header className="flex shrink-0 items-start justify-between gap-3 bg-[#005bbf] px-4 py-3 text-white">

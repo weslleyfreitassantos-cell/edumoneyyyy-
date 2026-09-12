@@ -331,3 +331,26 @@ html.dark .login-card input::placeholder {
     opacity: 0.7;
   }
 }
+
+@media print {
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  #app-authenticated-container,
+  #app-main-content {
+    min-height: auto !important;
+    background: white !important;
+  }
+
+  #app-main-content {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .report-card-printable {
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #181c20 !important;
+  }
+}
