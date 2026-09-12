@@ -25,6 +25,7 @@ import {
 import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
 import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
+import TeacherClassCouncilsPanel from './academic/TeacherClassCouncilsPanel';
 import TeacherTimetableView from './TeacherTimetableView';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
@@ -259,6 +260,17 @@ export default function TeacherDashboard() {
           profileId={profile.id}
           institutionId={institutionQuery.data}
         />
+      </TeacherWorkspacePage>
+    );
+  }
+
+  if (location.pathname === '/dashboard/class-councils') {
+    return (
+      <TeacherWorkspacePage
+        title="Conselhos de classe"
+        description="Consulte os conselhos das suas turmas e registre sua contribuição por aluno."
+      >
+        <TeacherClassCouncilsPanel />
       </TeacherWorkspacePage>
     );
   }
