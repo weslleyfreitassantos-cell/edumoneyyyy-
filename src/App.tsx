@@ -676,6 +676,16 @@ function AppRoutes() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/dashboard/class-councils"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />

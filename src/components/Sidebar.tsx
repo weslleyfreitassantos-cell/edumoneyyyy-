@@ -146,6 +146,7 @@ const adminModuleIcons: Record<
   attendance: ClipboardList,
   grades: BadgeCheck,
   'term-closing': FileCheck2,
+  'class-councils': UsersRound,
   'pedagogical-monitoring': BarChart3,
   'academic-policies': ShieldCheck,
   'academic-calendar': CalendarDays,
@@ -308,6 +309,15 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     icon: FileCheck2,
     roles: ['teacher'],
     activePaths: ['/dashboard/term-closing'],
+  },
+  {
+    id: 'teacher-class-councils',
+    label: 'Conselhos de classe',
+    path: '/dashboard/class-councils',
+    section: 'teacher',
+    icon: UsersRound,
+    roles: ['teacher'],
+    activePaths: ['/dashboard/class-councils'],
   },
   {
     id: 'library',
