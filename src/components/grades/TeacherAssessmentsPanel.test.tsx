@@ -7,6 +7,7 @@ import {
   screen,
   waitFor,
 } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import {
   afterEach,
   beforeEach,
@@ -74,6 +75,18 @@ const assessment = {
   createdAt: '2026-03-02T10:00:00.000Z',
   updatedAt: '2026-03-02T10:00:00.000Z',
   offering,
+};
+
+const assessment2 = {
+  ...assessment,
+  id: 'assessment-2',
+  title: 'Trabalho 2',
+};
+
+const offering2 = {
+  ...offering,
+  id: 'offering-2',
+  subjectName: 'História',
 };
 
 const gradeEntry = {
@@ -180,10 +193,12 @@ describe('TeacherAssessmentsPanel', () => {
 
   it('cria avaliação válida', async () => {
     render(
-      <TeacherAssessmentsPanel
-        profileId="teacher-1"
-        institutionId="institution-1"
-      />,
+      <MemoryRouter>
+        <TeacherAssessmentsPanel
+          profileId="teacher-1"
+          institutionId="institution-1"
+        />
+      </MemoryRouter>,
     );
 
     fireEvent.change(
@@ -218,10 +233,12 @@ describe('TeacherAssessmentsPanel', () => {
 
   it('aceita zero como nota lançada e mantém vazio pendente', async () => {
     render(
-      <TeacherAssessmentsPanel
-        profileId="teacher-1"
-        institutionId="institution-1"
-      />,
+      <MemoryRouter>
+        <TeacherAssessmentsPanel
+          profileId="teacher-1"
+          institutionId="institution-1"
+        />
+      </MemoryRouter>,
     );
 
     fireEvent.change(
@@ -286,6 +303,71 @@ describe('TeacherAssessmentsPanel', () => {
         })
         .hasAttribute('disabled'),
     ).toBe(true);
+  });
+
+  it('pede confirmação antes de trocar avaliação com notas não salvas', () => {
+    useAssessments.mockReturnValue({
+      data: [assessment, assessment2],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
+
+    render(
+      <MemoryRouter>
+        <TeacherAssessmentsPanel
+          profileId="teacher-1"
+          institutionId="institution-1"
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Nota de Ana Silva/), {
+      target: { value: '8' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /Trabalho 2/ }));
+
+    expect(confirm).toHaveBeenCalledWith(
+      'Existem alterações de notas ainda não salvas. Deseja descartá-las e continuar?',
+    );
+    expect((screen.getByLabelText(/Nota de Ana Silva/) as HTMLInputElement).value).toBe('8');
+    expect(useGradeEntry).toHaveBeenLastCalledWith('institution-1', 'assessment-1');
+
+    confirm.mockRestore();
+  });
+
+  it('protege a troca de oferta e permite descartar quando confirmado', async () => {
+    useTeacherGradeOfferings.mockReturnValue({
+      data: [offering, offering2],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    render(
+      <MemoryRouter>
+        <TeacherAssessmentsPanel
+          profileId="teacher-1"
+          institutionId="institution-1"
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Nota de Ana Silva/), {
+      target: { value: '8' },
+    });
+    fireEvent.change(screen.getByLabelText('Atribuição'), {
+      target: { value: 'offering-2' },
+    });
+
+    await waitFor(() => {
+      expect((screen.getByLabelText('Atribuição') as HTMLSelectElement).value).toBe('offering-2');
+    });
+    expect(confirm).toHaveBeenCalledTimes(1);
+
+    confirm.mockRestore();
   });
 
   it('bloqueia submit duplicado durante salvamento', () => {
