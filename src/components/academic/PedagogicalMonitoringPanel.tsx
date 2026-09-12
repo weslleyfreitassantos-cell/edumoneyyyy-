@@ -81,6 +81,7 @@ export default function PedagogicalMonitoringPanel({
   const [classId, setClassId] = useState('');
   const [subjectId, setSubjectId] = useState('');
   const [teacherProfileId, setTeacherProfileId] = useState('');
+  const [studentId, setStudentId] = useState('');
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
 
   const filters = useMemo(() => ({
@@ -89,7 +90,8 @@ export default function PedagogicalMonitoringPanel({
     classId: classId || undefined,
     subjectId: subjectId || undefined,
     teacherProfileId: teacherProfileId || undefined,
-  }), [academicYearId, classId, subjectId, teacherProfileId, termId]);
+    studentId: studentId || undefined,
+  }), [academicYearId, classId, studentId, subjectId, teacherProfileId, termId]);
   const query = usePedagogicalMonitoring(institutionId, filters);
   const data = query.data;
   const selectedStudent = data?.students.find(
@@ -102,6 +104,7 @@ export default function PedagogicalMonitoringPanel({
     setClassId('');
     setSubjectId('');
     setTeacherProfileId('');
+    setStudentId('');
     setSelectedStudentId(null);
   };
 
@@ -134,7 +137,7 @@ export default function PedagogicalMonitoringPanel({
         </button>
       </header>
 
-      <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         <label className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
           Ano letivo
           <select
@@ -143,6 +146,10 @@ export default function PedagogicalMonitoringPanel({
             onChange={(event) => {
               setAcademicYearId(event.target.value);
               setTermId('');
+              setClassId('');
+              setSubjectId('');
+              setTeacherProfileId('');
+              setStudentId('');
             }}
             className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
           >
@@ -168,23 +175,30 @@ export default function PedagogicalMonitoringPanel({
         </label>
         <label className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
           Turma
-          <select aria-label="Turma" value={classId} onChange={(event) => setClassId(event.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+          <select aria-label="Turma" value={classId} onChange={(event) => { setClassId(event.target.value); setStudentId(''); }} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
             <option value="">Todas</option>
             {data?.filters.classes.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
           </select>
         </label>
         <label className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
           Disciplina
-          <select aria-label="Disciplina" value={subjectId} onChange={(event) => setSubjectId(event.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+          <select aria-label="Disciplina" value={subjectId} onChange={(event) => { setSubjectId(event.target.value); setStudentId(''); }} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
             <option value="">Todas</option>
             {data?.filters.subjects.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
           </select>
         </label>
         <label className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
           Professor
-          <select aria-label="Professor" value={teacherProfileId} onChange={(event) => setTeacherProfileId(event.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+          <select aria-label="Professor" value={teacherProfileId} onChange={(event) => { setTeacherProfileId(event.target.value); setStudentId(''); }} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
             <option value="">Todos</option>
             {data?.filters.teachers.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
+          </select>
+        </label>
+        <label className="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          Aluno
+          <select aria-label="Aluno" value={studentId} onChange={(event) => setStudentId(event.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal text-slate-900 outline-none focus:border-blue-600 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
+            <option value="">Todos</option>
+            {data?.filters.students.map((option) => <option key={option.id} value={option.id}>{option.label}</option>)}
           </select>
         </label>
       </div>

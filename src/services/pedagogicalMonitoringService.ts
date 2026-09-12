@@ -94,6 +94,7 @@ export interface PedagogicalMonitoringFilters {
   classId?: string;
   subjectId?: string;
   teacherProfileId?: string;
+  studentId?: string;
 }
 
 export interface PedagogicalMonitoringSubject {
@@ -158,6 +159,7 @@ export interface PedagogicalMonitoringData {
     classes: Array<{ id: string; label: string }>;
     subjects: Array<{ id: string; label: string }>;
     teachers: Array<{ id: string; label: string }>;
+    students: Array<{ id: string; label: string }>;
   };
   students: PedagogicalStudentSummary[];
   classes: PedagogicalClassSummary[];
@@ -355,6 +357,7 @@ function emptyData(
       classes: [],
       subjects: [],
       teachers: [],
+      students: [],
     },
     students: [],
     classes: [],
@@ -458,15 +461,29 @@ export const pedagogicalMonitoringService = {
         isActiveEnrollment(enrollment) &&
         (!filters.classId || enrollment.class_id === filters.classId),
     );
+    const hasOfferingScopedFilter = Boolean(
+      filters.subjectId || filters.teacherProfileId,
+    );
+    const offeringClassIds = new Set(
+      offerings.map((offering) => offering.classId),
+    );
+    const scopedEnrollments = activeEnrollments.filter(
+      (enrollment) =>
+        !hasOfferingScopedFilter ||
+        offeringClassIds.has(enrollment.class_id),
+    );
     const enrollmentByStudent = new Map<string, EnrollmentRow>();
-    for (const enrollment of activeEnrollments) {
+    for (const enrollment of scopedEnrollments) {
       if (!enrollmentByStudent.has(enrollment.student_id)) {
         enrollmentByStudent.set(enrollment.student_id, enrollment);
       }
     }
 
-    const filteredStudents = activeStudents.filter((student) =>
+    const contextStudents = activeStudents.filter((student) =>
       enrollmentByStudent.has(student.id),
+    );
+    const filteredStudents = contextStudents.filter((student) =>
+      !filters.studentId || student.id === filters.studentId,
     );
     const reportCardByStudent = new Map(
       reportCards.map((reportCard) => [reportCard.studentId, reportCard]),
@@ -517,17 +534,15 @@ export const pedagogicalMonitoringService = {
                 subject.attendancePercentage < policy.minimumAttendancePercentage,
             ).length
           : 0;
-        const pendingItems = subjects.length === 0
-          ? 1
-          : subjects.reduce(
-              (total, subject) =>
-                total + subject.pendingItems +
-                Number(
-                  subject.gradePercentage === null ||
-                  subject.attendancePercentage === null,
-                ),
-              0,
-            );
+        const pendingItems = subjects.reduce(
+          (total, subject) =>
+            total + subject.pendingItems +
+            Number(
+              subject.gradePercentage === null ||
+              subject.attendancePercentage === null,
+            ),
+          0,
+        );
         const official = subjects.length > 0 && subjects.every(
           (subject) => subject.isClosed,
         );
@@ -571,10 +586,17 @@ export const pedagogicalMonitoringService = {
     const classOptions = new Map<string, string>();
     const subjectOptions = new Map<string, string>();
     const teacherOptions = new Map<string, string>();
+    const studentOptions = new Map<string, string>();
     for (const offering of offerings) {
       classOptions.set(offering.classId, offering.className);
       subjectOptions.set(offering.subjectId, offering.subjectName);
       teacherOptions.set(offering.teacherProfileId, offering.teacherName);
+    }
+    for (const student of contextStudents) {
+      studentOptions.set(
+        student.id,
+        `${student.profiles?.full_name ?? 'Aluno sem nome'} · ${student.registration_number}`,
+      );
     }
 
     return {
@@ -587,6 +609,7 @@ export const pedagogicalMonitoringService = {
         classes: sortOptions(classOptions),
         subjects: sortOptions(subjectOptions),
         teachers: sortOptions(teacherOptions),
+        students: sortOptions(studentOptions),
       },
       students: studentRows,
       classes: buildClassSummaries(studentRows),

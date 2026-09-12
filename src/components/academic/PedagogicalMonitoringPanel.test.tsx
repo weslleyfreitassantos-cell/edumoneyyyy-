@@ -24,9 +24,10 @@ const data = {
   filters: {
     years: [],
     terms: [],
-    classes: [],
+    classes: [{ id: 'class-1', label: '1º Ano' }],
     subjects: [],
     teachers: [],
+    students: [{ id: 'student-1', label: 'Ana Aluna · 20260001' }],
   },
   students: [
     {
@@ -96,5 +97,44 @@ describe('PedagogicalMonitoringPanel', () => {
 
     expect(screen.getByText(/Detalhamento de Ana Aluna/)).toBeTruthy();
     expect(screen.getByText(/Dados parciais do período/)).toBeTruthy();
+  });
+
+  it('envia o aluno selecionado e o remove ao limpar os filtros', () => {
+    render(<PedagogicalMonitoringPanel institutionId="institution-1" />);
+
+    fireEvent.change(screen.getByRole('combobox', { name: 'Aluno' }), {
+      target: { value: 'student-1' },
+    });
+
+    expect(mockedUsePedagogicalMonitoring).toHaveBeenLastCalledWith(
+      'institution-1',
+      expect.objectContaining({ studentId: 'student-1' }),
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Limpar filtros' }));
+
+    expect(mockedUsePedagogicalMonitoring).toHaveBeenLastCalledWith(
+      'institution-1',
+      expect.objectContaining({ studentId: undefined }),
+    );
+  });
+
+  it('limpa o aluno quando a turma muda de contexto', () => {
+    render(<PedagogicalMonitoringPanel institutionId="institution-1" />);
+
+    fireEvent.change(screen.getByRole('combobox', { name: 'Aluno' }), {
+      target: { value: 'student-1' },
+    });
+    fireEvent.change(screen.getByRole('combobox', { name: 'Turma' }), {
+      target: { value: 'class-1' },
+    });
+
+    expect(mockedUsePedagogicalMonitoring).toHaveBeenLastCalledWith(
+      'institution-1',
+      expect.objectContaining({
+        classId: 'class-1',
+        studentId: undefined,
+      }),
+    );
   });
 });
