@@ -11,6 +11,7 @@ import {
 import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from '../../components/grades/InstitutionGradesPanel';
 import InstitutionTermClosingPanel from '../../components/academic/InstitutionTermClosingPanel';
+import PedagogicalMonitoringPanel from '../../components/academic/PedagogicalMonitoringPanel';
 import AcademicPolicyPanel from '../../components/academic/AcademicPolicyPanel';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
@@ -327,6 +328,12 @@ export default function AdminPage() {
       case 'term-closing':
         return (
           <InstitutionTermClosingPanel
+            institutionId={institutionQuery.data}
+          />
+        );
+      case 'pedagogical-monitoring':
+        return (
+          <PedagogicalMonitoringPanel
             institutionId={institutionQuery.data}
           />
         );
