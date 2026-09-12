@@ -231,6 +231,84 @@ describe('TeacherAssessmentsPanel', () => {
     });
   });
 
+  it('cancela a criação e preserva notas não salvas', async () => {
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
+
+    render(
+      <MemoryRouter>
+        <TeacherAssessmentsPanel
+          profileId="teacher-1"
+          institutionId="institution-1"
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Nota de Ana Silva/), {
+      target: { value: '8' },
+    });
+    fireEvent.change(screen.getByLabelText(/Título/), {
+      target: { value: 'Trabalho de leitura' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /Criar avaliação/ }));
+
+    await waitFor(() => {
+      expect(confirm).toHaveBeenCalledWith(
+        'Existem alterações de notas ainda não salvas. Deseja descartá-las e continuar?',
+      );
+    });
+    expect(createAssessment).not.toHaveBeenCalled();
+    expect(
+      (screen.getByLabelText(/Nota de Ana Silva/) as HTMLInputElement).value,
+    ).toBe('8');
+    expect(useGradeEntry).toHaveBeenLastCalledWith(
+      'institution-1',
+      'assessment-1',
+    );
+
+    confirm.mockRestore();
+  });
+
+  it('confirma o descarte e seleciona a avaliação criada', async () => {
+    useAssessments.mockReturnValue({
+      data: [assessment, assessment2],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    createAssessment.mockResolvedValue(assessment2);
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+
+    render(
+      <MemoryRouter>
+        <TeacherAssessmentsPanel
+          profileId="teacher-1"
+          institutionId="institution-1"
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.change(screen.getByLabelText(/Nota de Ana Silva/), {
+      target: { value: '8' },
+    });
+    fireEvent.change(screen.getByLabelText(/Título/), {
+      target: { value: 'Trabalho de leitura' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /Criar avaliação/ }));
+
+    await waitFor(() => {
+      expect(createAssessment).toHaveBeenCalled();
+      expect(useGradeEntry).toHaveBeenLastCalledWith(
+        'institution-1',
+        'assessment-2',
+      );
+    });
+    expect(confirm).toHaveBeenCalledWith(
+      'Existem alterações de notas ainda não salvas. Deseja descartá-las e continuar?',
+    );
+
+    confirm.mockRestore();
+  });
+
   it('aceita zero como nota lançada e mantém vazio pendente', async () => {
     render(
       <MemoryRouter>

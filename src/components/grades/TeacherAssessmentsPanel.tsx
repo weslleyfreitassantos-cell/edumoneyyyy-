@@ -283,6 +283,10 @@ export default function TeacherAssessmentsPanel({
       return;
     }
 
+    if (!canDiscardUnsavedGrades()) {
+      return;
+    }
+
     const created =
       await createAssessmentMutation.mutateAsync({
         institutionId,
