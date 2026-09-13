@@ -198,11 +198,9 @@ describe('TeacherAttendancePanel', () => {
       />,
     );
 
-    expect(
-      screen.getByText(
-        /Rascunho carregado para continuar o registro/,
-      ),
-    ).toBeTruthy();
+    expect(screen.getByText('Registro da aula')).toBeTruthy();
+    expect(screen.getByText('Matemática · 1A')).toBeTruthy();
+    expect(screen.getByText('Rascunho')).toBeTruthy();
     const dateInput = screen.getByLabelText('Data');
     expect(dateInput.getAttribute('lang')).toBe('pt-BR');
     expect(dateInput.getAttribute('min')).toBe('2026-02-09');
@@ -221,6 +219,8 @@ describe('TeacherAttendancePanel', () => {
     expect(
       screen.getByText('Bruno Lima'),
     ).toBeTruthy();
+    expect(screen.getByText(/2 alunos/)).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Marcar presentes' })).toBeTruthy();
   });
 
   it('prioriza a atribuição com aula no dia e exibe o período no rótulo', async () => {
@@ -285,7 +285,7 @@ describe('TeacherAttendancePanel', () => {
 
     if (expectedDate !== getTodayDateInputValue()) {
       expect(
-        screen.getByRole('status').textContent,
+        screen.getByText(/A data de hoje está fora do período/).textContent,
       ).toMatch(/A data de hoje está fora do período/);
     }
   });
@@ -317,7 +317,7 @@ describe('TeacherAttendancePanel', () => {
     expect(
       (screen.getByLabelText('Data') as HTMLInputElement).value,
     ).toBe('2026-09-09');
-    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.queryByText(/A data de hoje está fora do período/)).toBeNull();
   });
 
   it('marca todos presentes e permite sobrescrever aluno individual', async () => {
@@ -429,7 +429,7 @@ describe('TeacherAttendancePanel', () => {
       />,
     );
 
-    expect(screen.getByText('Aula suspensa')).toBeTruthy();
+    expect(screen.getAllByText('Aula suspensa').length).toBeGreaterThan(0);
     expect(screen.getByText('Feriado')).toBeTruthy();
     expect(
       screen
@@ -768,6 +768,7 @@ describe('TeacherAttendancePanel', () => {
     fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
       target: { value: 'Equação do segundo grau' },
     });
+    expect(screen.getByText('Alterações não salvas')).toBeTruthy();
     fireEvent.change(screen.getByLabelText('Atividade realizada'), {
       target: { value: 'Exercícios 1 a 10' },
     });

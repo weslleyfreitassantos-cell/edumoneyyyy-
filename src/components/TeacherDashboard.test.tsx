@@ -42,7 +42,7 @@ vi.mock('../hooks/useTimetable', () => ({
 }));
 
 vi.mock('./attendance/TeacherAttendancePanel', () => ({
-  default: () => null,
+  default: () => <div data-testid="teacher-attendance-panel" />,
 }));
 
 vi.mock('./grades/TeacherAssessmentsPanel', () => ({
@@ -235,5 +235,17 @@ describe('TeacherDashboard', () => {
         'Nenhuma aula publicada foi encontrada para suas atribuições.',
       ),
     ).toBeTruthy();
+  });
+
+  it('remove a introdução duplicada ao abrir o Diário de Classe', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard/class-diary']}>
+        <TeacherDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByTestId('teacher-attendance-panel')).toBeTruthy();
+    expect(screen.queryByText('Operação docente')).toBeNull();
+    expect(screen.queryByText('Registre o conteúdo da aula e a presença dos alunos.')).toBeNull();
   });
 });
