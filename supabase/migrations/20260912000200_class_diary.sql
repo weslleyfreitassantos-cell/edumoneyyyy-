@@ -222,33 +222,80 @@ grant execute on function private.can_write_attendance_session(uuid, uuid)
   to authenticated, service_role;
 
 -- DELETE is granted at the table level so RLS can express the editable-session
--- rule explicitly. The policies below keep institutional roles read-only and
--- prevent deletion after a session is CLOSED.
+-- rule explicitly. 20260712000100 removed these policies after revoking the
+-- privilege, so a clean replay has no policy to alter. Existing installations
+-- that still have the historical policies are altered below; the conditional
+-- fallback only creates the missing policy needed by a clean replay.
 grant delete on table public.attendance_sessions, public.attendance_records
   to authenticated;
 
-create policy attendance_sessions_delete_policy
-on public.attendance_sessions
-for delete
-to authenticated
-using (
-  private.is_teacher_for_offering(
-    subject_offering_id,
-    institution_id
-  )
-  and status <> 'CLOSED'
-);
+do $ensure_attendance_delete_policies$
+begin
+  if not exists (
+    select 1
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and tablename = 'attendance_sessions'
+      and policyname = 'attendance_sessions_delete_policy'
+  ) then
+    execute $policy$
+      create policy attendance_sessions_delete_policy
+      on public.attendance_sessions
+      for delete
+      to authenticated
+      using (
+        private.is_teacher_for_offering(
+          subject_offering_id,
+          institution_id
+        )
+        and status <> 'CLOSED'
+      )
+    $policy$;
+  end if;
 
-create policy attendance_records_delete_policy
-on public.attendance_records
-for delete
-to authenticated
-using (
-  private.can_write_attendance_session(
-    attendance_session_id,
-    institution_id
-  )
-);
+  if not exists (
+    select 1
+    from pg_catalog.pg_policies
+    where schemaname = 'public'
+      and tablename = 'attendance_records'
+      and policyname = 'attendance_records_delete_policy'
+  ) then
+    execute $policy$
+      create policy attendance_records_delete_policy
+      on public.attendance_records
+      for delete
+      to authenticated
+      using (
+        private.can_write_attendance_session(
+          attendance_session_id,
+          institution_id
+        )
+      )
+    $policy$;
+  end if;
+end
+$ensure_attendance_delete_policies$;
+
+alter policy attendance_sessions_delete_policy
+  on public.attendance_sessions
+  to authenticated
+  using (
+    status <> 'CLOSED'
+    and private.is_teacher_for_offering(
+      subject_offering_id,
+      institution_id
+    )
+  );
+
+alter policy attendance_records_delete_policy
+  on public.attendance_records
+  to authenticated
+  using (
+    private.can_write_attendance_session(
+      attendance_session_id,
+      institution_id
+    )
+  );
 
 -- Only the assigned teacher writes attendance. Institutional roles retain
 -- read access, but do not create or mutate diary sessions in this MVP.

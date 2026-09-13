@@ -61,16 +61,17 @@ describe('class diary migration', () => {
       'before update or delete on public.attendance_sessions',
     );
     expect(migration).toContain(
-      'create policy attendance_sessions_delete_policy',
+      'alter policy attendance_sessions_delete_policy',
     );
     expect(migration).toContain(
-      'create policy attendance_records_delete_policy',
+      'alter policy attendance_records_delete_policy',
     );
+    expect(migration).toContain('pg_catalog.pg_policies');
     expect(migration).toContain(
       'grant delete on table public.attendance_sessions, public.attendance_records',
     );
-    expect(migration).toContain(
-      'private.can_write_attendance_session(\n    attendance_session_id,\n    institution_id\n  )',
+    expect(migration).toMatch(
+      /private\.can_write_attendance_session\(\s+attendance_session_id,\s+institution_id\s+\)/,
     );
   });
 });
