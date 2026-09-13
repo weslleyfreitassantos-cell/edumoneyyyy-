@@ -148,7 +148,7 @@ export function DataTable<T extends { id: string }>({
                     columns.length +
                     (hasActions ? 1 : 0)
                   }
-                  className="px-4 py-8 text-center text-gray-500"
+                  className="px-4 py-8 text-center text-gray-500 dark:text-slate-400"
                 >
                   {emptyMessage}
                 </td>
@@ -157,7 +157,7 @@ export function DataTable<T extends { id: string }>({
               data.map((row) => (
                 <tr
                   key={row.id}
-                  className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700"
+                  className="border-t border-[#dfe3e8] transition-colors hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-slate-800/60"
                 >
                   {columns.map((column) => (
                     <td
