@@ -11,6 +11,7 @@ import {
   RotateCcw,
   Save,
   UserPlus,
+  UserMinus,
   Users,
   X,
 } from 'lucide-react';
@@ -27,12 +28,14 @@ import {
   useCompleteClassCouncil,
   useCreateClassCouncil,
   useOpenClassCouncil,
+  useRemoveClassCouncilParticipant,
   useReopenClassCouncil,
   useUpdateClassCouncil,
   useUpdateClassCouncilStudentNote,
 } from '../../hooks/useClassCouncils';
 import type {
   ClassCouncil,
+  ClassCouncilParticipantRole,
   ClassCouncilFollowUpCategory,
   ClassCouncilStatus,
 } from '../../services/classCouncilService';
@@ -109,6 +112,7 @@ export default function ClassCouncilPanel() {
   const institution = useCurrentInstitution(profile?.id);
   const role = institution.currentRole ?? profile?.role;
   const isDirector = role === 'DIRECTOR';
+  const canManageParticipants = role === 'DIRECTOR' || role === 'SECRETARY';
   const institutionId = institution.data;
   const [statusFilter, setStatusFilter] = useState<ClassCouncilStatus | 'ALL'>('ALL');
   const [yearFilter, setYearFilter] = useState('');
@@ -134,11 +138,17 @@ export default function ClassCouncilPanel() {
   }), [classFilter, statusFilter, termFilter, yearFilter]);
   const councilsQuery = useClassCouncils(institutionId, filters);
   const optionsQuery = useClassCouncilContextOptions(institutionId);
-  const eligibleQuery = useClassCouncilEligibleParticipants(institutionId);
   const detailsQuery = useClassCouncilDetails(selectedId);
+  const selectedCouncil = detailsQuery.data?.council ?? null;
+  const eligibleQuery = useClassCouncilEligibleParticipants(
+    institutionId,
+    selectedCouncil?.classId,
+    selectedCouncil?.termId,
+  );
   const createMutation = useCreateClassCouncil();
   const updateMutation = useUpdateClassCouncil();
   const addParticipantMutation = useAddClassCouncilParticipant();
+  const removeParticipantMutation = useRemoveClassCouncilParticipant();
   const openMutation = useOpenClassCouncil();
   const completeMutation = useCompleteClassCouncil();
   const reopenMutation = useReopenClassCouncil();
@@ -149,7 +159,6 @@ export default function ClassCouncilPanel() {
   const classes = optionsQuery.data?.classes ?? [];
   const filterTerms = years.find((year) => year.id === yearFilter)?.terms ?? [];
   const createTerms = years.find((year) => year.id === createYearId)?.terms ?? [];
-  const selectedCouncil = detailsQuery.data?.council ?? null;
 
   useEffect(() => {
     if (!createYearId && years[0]) {
@@ -214,6 +223,24 @@ export default function ClassCouncilPanel() {
     }));
   }
 
+  async function addParticipant(): Promise<void> {
+    if (!selectedCouncil || !participantProfileId) return;
+    const [profileId, participantRole] = participantProfileId.split('|');
+    await addParticipantMutation.mutateAsync({
+      councilId: selectedCouncil.id,
+      profileId,
+      role: participantRole as ClassCouncilParticipantRole,
+    });
+    setParticipantProfileId('');
+    await detailsQuery.refetch();
+  }
+
+  async function removeParticipant(participantId: string): Promise<void> {
+    if (!selectedCouncil) return;
+    await removeParticipantMutation.mutateAsync({ participantId, councilId: selectedCouncil.id });
+    await detailsQuery.refetch();
+  }
+
   if (institution.isLoading || councilsQuery.isLoading || optionsQuery.isLoading) {
     return <div className="grid min-h-[320px] place-items-center rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"><div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-blue-600" aria-label="Carregando" /></div>;
   }
@@ -247,11 +274,11 @@ export default function ClassCouncilPanel() {
       {selectedCouncil && <section className="space-y-5 rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"><div className="flex flex-col justify-between gap-4 border-b border-slate-200 pb-4 dark:border-slate-800 sm:flex-row sm:items-start"><div><div className="flex flex-wrap items-center gap-3"><h2 className="text-xl font-bold text-slate-900 dark:text-white">{selectedCouncil.className}</h2><StatusBadge status={selectedCouncil.status} /></div><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{selectedCouncil.academicYearName} • {selectedCouncil.termName} • {formatDate(selectedCouncil.scheduledAt)}</p>{selectedCouncil.reopenReason && <p className="mt-2 text-xs text-amber-700 dark:text-amber-300">Reabertura: {selectedCouncil.reopenReason}</p>}</div><button type="button" onClick={() => setSelectedId(null)} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 px-3 py-2 text-sm font-bold text-slate-700 dark:border-slate-700 dark:text-slate-300"><X className="h-4 w-4" aria-hidden="true" />Fechar</button></div>
         <div className="flex flex-wrap gap-2"><span className="inline-flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-xs font-bold text-slate-700 dark:bg-slate-800 dark:text-slate-300"><Users className="h-4 w-4" aria-hidden="true" />{detailsQuery.data?.studentNotes.length ?? 0} alunos em snapshot</span>{isDirector && selectedCouncil.status === 'DRAFT' && <button type="button" disabled={openMutation.isPending} onClick={() => void openMutation.mutateAsync({ council: selectedCouncil })} className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-3 py-2 text-xs font-bold text-white disabled:opacity-50">{openMutation.isPending ? 'Abrindo...' : 'Abrir e gerar snapshot'}</button>}{isDirector && selectedCouncil.status === 'OPEN' && <button type="button" disabled={completeMutation.isPending} onClick={() => void completeMutation.mutateAsync(selectedCouncil.id)} className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-3 py-2 text-xs font-bold text-white disabled:opacity-50"><Check className="h-4 w-4" aria-hidden="true" />{completeMutation.isPending ? 'Concluindo...' : 'Concluir'}</button>}{isDirector && selectedCouncil.status === 'COMPLETED' && <><input aria-label="Motivo da reabertura" value={reopenReason} onChange={(event) => setReopenReason(event.target.value)} placeholder="Motivo da reabertura" className="rounded-lg border border-slate-300 px-3 py-2 text-xs dark:border-slate-700 dark:bg-slate-950 dark:text-white" /><button type="button" disabled={!reopenReason.trim() || reopenMutation.isPending} onClick={() => void reopenMutation.mutateAsync({ councilId: selectedCouncil.id, reason: reopenReason })} className="inline-flex items-center gap-2 rounded-lg border border-amber-300 px-3 py-2 text-xs font-bold text-amber-700 dark:border-amber-700 dark:text-amber-300"><RotateCcw className="h-4 w-4" aria-hidden="true" />Reabrir</button></>}{isDirector && ['DRAFT', 'OPEN'].includes(selectedCouncil.status) && <button type="button" disabled={cancelMutation.isPending} onClick={() => void cancelMutation.mutateAsync(selectedCouncil.id)} className="inline-flex items-center gap-2 rounded-lg border border-red-300 px-3 py-2 text-xs font-bold text-red-700 dark:border-red-800 dark:text-red-300"><X className="h-4 w-4" aria-hidden="true" />Cancelar</button>}</div>
         {['DRAFT', 'OPEN'].includes(selectedCouncil.status) && <section className="rounded-lg border border-slate-200 p-4 dark:border-slate-800"><div className="grid gap-3 md:grid-cols-[minmax(0,240px)_minmax(0,1fr)_auto] md:items-end"><label className="text-xs font-bold text-slate-600 dark:text-slate-300">Data e hora<input type="datetime-local" value={editScheduledAt} onChange={(event) => setEditScheduledAt(event.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-950 dark:text-white" /></label><label className="text-xs font-bold text-slate-600 dark:text-slate-300">Observação geral<textarea value={editGeneralNotes} onChange={(event) => setEditGeneralNotes(event.target.value)} rows={2} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-950 dark:text-white" /></label><button type="button" disabled={updateMutation.isPending} onClick={() => void updateMutation.mutateAsync({ councilId: selectedCouncil.id, scheduledAt: editScheduledAt ? new Date(editScheduledAt).toISOString() : null, generalNotes: editGeneralNotes || null })} className="inline-flex items-center justify-center gap-2 rounded-lg border border-blue-300 px-3 py-2 text-xs font-bold text-blue-700 disabled:opacity-50 dark:border-blue-700 dark:text-blue-300"><Save className="h-4 w-4" aria-hidden="true" />Salvar dados</button></div></section>}
-        {isDirector && selectedCouncil.status !== 'COMPLETED' && selectedCouncil.status !== 'CANCELED' && <div className="rounded-lg border border-slate-200 p-4 dark:border-slate-800"><h3 className="text-sm font-bold text-slate-900 dark:text-white">Participantes</h3><div className="mt-3 flex flex-col gap-2 sm:flex-row"><select value={participantProfileId} onChange={(event) => setParticipantProfileId(event.target.value)} className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-white"><option value="">Adicionar participante</option>{(eligibleQuery.data ?? []).filter((item) => !detailsQuery.data?.participants.some((participant) => participant.profileId === item.profileId)).map((item) => <option key={`${item.profileId}-${item.role}`} value={`${item.profileId}|${item.role}`}>{item.profileName} • {item.role}</option>)}</select><button type="button" disabled={!participantProfileId || addParticipantMutation.isPending} onClick={() => { const [profileId, roleValue] = participantProfileId.split('|'); void addParticipantMutation.mutateAsync({ councilId: selectedCouncil.id, profileId, role: roleValue as 'DIRECTOR' | 'SECRETARY' | 'TEACHER' }).then(() => { setParticipantProfileId(''); void detailsQuery.refetch(); }); }} className="inline-flex items-center justify-center gap-2 rounded-lg border border-blue-300 px-3 py-2 text-sm font-bold text-blue-700 disabled:opacity-50 dark:border-blue-700 dark:text-blue-300"><UserPlus className="h-4 w-4" aria-hidden="true" />Adicionar</button></div><div className="mt-3 flex flex-wrap gap-2">{(detailsQuery.data?.participants ?? []).map((participant) => <span key={participant.id} className="rounded-full bg-slate-100 px-3 py-1.5 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-300">{participant.profileName} • {participant.participantRole}</span>)}</div></div>}
+        {canManageParticipants && ['DRAFT', 'OPEN'].includes(selectedCouncil.status) && <div className="rounded-lg border border-slate-200 p-4 dark:border-slate-800"><h3 className="text-sm font-bold text-slate-900 dark:text-white">Participantes</h3><div className="mt-3 flex flex-col gap-2 sm:flex-row"><select aria-label="Novo participante" value={participantProfileId} onChange={(event) => setParticipantProfileId(event.target.value)} className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-950 dark:text-white"><option value="">Adicionar participante</option>{(eligibleQuery.data ?? []).filter((item) => !detailsQuery.data?.participants.some((participant) => participant.profileId === item.profileId)).map((item) => <option key={`${item.profileId}-${item.role}`} value={`${item.profileId}|${item.role}`}>{item.profileName} • {item.role}</option>)}</select><button type="button" disabled={!participantProfileId || addParticipantMutation.isPending} onClick={() => void addParticipant()} className="inline-flex items-center justify-center gap-2 rounded-lg border border-blue-300 px-3 py-2 text-sm font-bold text-blue-700 disabled:opacity-50 dark:border-blue-700 dark:text-blue-300"><UserPlus className="h-4 w-4" aria-hidden="true" />Adicionar</button></div><div className="mt-3 flex flex-wrap gap-2">{(detailsQuery.data?.participants ?? []).map((participant) => <span key={participant.id} className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-300"><span>{participant.profileName} • {participant.participantRole}</span><button type="button" aria-label={`Remover ${participant.profileName}`} disabled={removeParticipantMutation.isPending} onClick={() => void removeParticipant(participant.id)} className="text-red-700 transition hover:text-red-900 disabled:opacity-50 dark:text-red-300 dark:hover:text-red-200"><UserMinus className="h-3.5 w-3.5" aria-hidden="true" /></button></span>)}</div></div>}
         <div><div className="flex items-center justify-between gap-3"><h3 className="text-sm font-bold text-slate-900 dark:text-white">Registro por aluno</h3><span className="text-xs text-slate-500 dark:text-slate-400">Snapshot original preservado ao reabrir</span></div><div className="mt-3 space-y-3">{(detailsQuery.data?.studentNotes ?? []).map((note) => { const draft = noteDrafts[note.id] ?? { observation: note.observation ?? '', resolution: note.resolution ?? '', followUpCategory: note.followUpCategory ?? '', followUpText: note.followUpText ?? '' }; const editable = ['DRAFT', 'OPEN'].includes(selectedCouncil.status); return <article key={note.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-800"><div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start"><div><p className="font-bold text-slate-900 dark:text-white">{note.studentName}</p><p className="text-xs text-slate-500 dark:text-slate-400">RA {note.registrationNumber} • {note.dataStatus === 'OFFICIAL' ? 'Dados oficiais' : 'Dados parciais'}</p></div><div className="flex flex-wrap gap-2 text-xs"><span className="rounded-full bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Média {formatPercentage(note.averageGrade)}</span><span className="rounded-full bg-slate-100 px-2 py-1 text-slate-700 dark:bg-slate-800 dark:text-slate-300">Frequência {formatPercentage(note.attendancePercentage)}</span><span className="rounded-full bg-amber-50 px-2 py-1 font-bold text-amber-700 dark:bg-amber-950/40 dark:text-amber-300">{note.riskLevel}</span></div></div><div className="mt-3 grid gap-3 lg:grid-cols-3"><label className="text-xs font-bold text-slate-600 dark:text-slate-300">Observação<textarea disabled={!editable} value={draft.observation} onChange={(event) => updateDraft(note.id, 'observation', event.target.value)} rows={3} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-950 dark:text-white" /></label><label className="text-xs font-bold text-slate-600 dark:text-slate-300">Resolução<textarea disabled={!editable} value={draft.resolution} onChange={(event) => updateDraft(note.id, 'resolution', event.target.value)} rows={3} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-950 dark:text-white" /></label><div><label className="text-xs font-bold text-slate-600 dark:text-slate-300">Encaminhamento<select disabled={!editable} value={draft.followUpCategory} onChange={(event) => updateDraft(note.id, 'followUpCategory', event.target.value)} className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-950 dark:text-white"><option value="">Não definido</option>{Object.entries(followUpLabels).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label><textarea disabled={!editable} value={draft.followUpText} onChange={(event) => updateDraft(note.id, 'followUpText', event.target.value)} rows={2} placeholder="Detalhes do encaminhamento" className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-normal dark:border-slate-700 dark:bg-slate-950 dark:text-white" />{editable && <button type="button" disabled={noteMutation.isPending} onClick={() => void noteMutation.mutateAsync({ councilId: selectedCouncil.id, studentId: note.studentId, observation: draft.observation || null, resolution: draft.resolution || null, followUpCategory: (draft.followUpCategory || null) as ClassCouncilFollowUpCategory | null, followUpText: draft.followUpText || null })} className="mt-2 inline-flex items-center gap-2 rounded-lg border border-blue-300 px-3 py-2 text-xs font-bold text-blue-700 dark:border-blue-700 dark:text-blue-300"><Save className="h-4 w-4" aria-hidden="true" />Salvar registro</button>}</div></div></article>; })}</div></div>
       </section>}
       {detailsQuery.isError && <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300">{panelError(detailsQuery.error)}</div>}
-      {(createMutation.isError || updateMutation.isError || openMutation.isError || completeMutation.isError || reopenMutation.isError || cancelMutation.isError || addParticipantMutation.isError || noteMutation.isError) && <div role="alert" className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"><CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{panelError(createMutation.error ?? updateMutation.error ?? openMutation.error ?? completeMutation.error ?? reopenMutation.error ?? cancelMutation.error ?? addParticipantMutation.error ?? noteMutation.error)}</div>}
+      {(createMutation.isError || updateMutation.isError || openMutation.isError || completeMutation.isError || reopenMutation.isError || cancelMutation.isError || addParticipantMutation.isError || removeParticipantMutation.isError || noteMutation.isError) && <div role="alert" className="flex items-start gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/30 dark:text-red-300"><CircleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />{panelError(createMutation.error ?? updateMutation.error ?? openMutation.error ?? completeMutation.error ?? reopenMutation.error ?? cancelMutation.error ?? addParticipantMutation.error ?? removeParticipantMutation.error ?? noteMutation.error)}</div>}
     </div>
   );
 }

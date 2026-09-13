@@ -46,11 +46,13 @@ export function useClassCouncilContextOptions(
 
 export function useClassCouncilEligibleParticipants(
   institutionId: string | null | undefined,
+  classId: string | null | undefined,
+  termId: string | null | undefined,
 ) {
   return useQuery({
-    queryKey: ['class-council-eligible-participants', institutionId],
-    queryFn: () => classCouncilService.listEligibleParticipants(institutionId!),
-    enabled: Boolean(institutionId),
+    queryKey: ['class-council-eligible-participants', institutionId, classId, termId],
+    queryFn: () => classCouncilService.listEligibleParticipants(institutionId!, classId!, termId!),
+    enabled: Boolean(institutionId && classId && termId),
     staleTime: 1000 * 60 * 5,
   });
 }
@@ -84,6 +86,12 @@ export function useUpdateClassCouncil() {
 export function useAddClassCouncilParticipant() {
   return useCouncilMutation<{ councilId: string; profileId: string; role: 'DIRECTOR' | 'SECRETARY' | 'TEACHER' }>(
     ({ councilId, profileId, role }) => classCouncilService.addParticipant(councilId, profileId, role),
+  );
+}
+
+export function useRemoveClassCouncilParticipant() {
+  return useCouncilMutation<{ participantId: string; councilId: string }>(
+    ({ participantId }) => classCouncilService.removeParticipant(participantId),
   );
 }
 

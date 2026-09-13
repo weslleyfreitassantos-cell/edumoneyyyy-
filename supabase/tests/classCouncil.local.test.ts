@@ -106,7 +106,12 @@ localDescribe('class council runtime', () => {
     expect(secretaryRead.data?.status).toBe('OPEN');
     const secretaryNote = await secretary.client.rpc('update_class_council_student_note', { p_council_id: councilId, p_student_id: studentId, p_observation: 'Registro operacional da secretaria.' });
     expect(secretaryNote.error).toBeNull();
-    expect((await director.client.rpc('add_class_council_participant', { p_council_id: councilId, p_profile_id: teacher.id, p_participant_role: 'TEACHER' })).error).toBeNull();
+    const secretaryParticipant = await secretary.client.rpc('add_class_council_participant', { p_council_id: councilId, p_profile_id: secretary.id, p_participant_role: 'SECRETARY' });
+    expect(secretaryParticipant.error).toBeNull();
+    expect((await director.client.rpc('add_class_council_participant', { p_council_id: councilId, p_profile_id: unassignedTeacher.id, p_participant_role: 'TEACHER' })).error?.code).toBe('23514');
+    expect((await secretary.client.rpc('add_class_council_participant', { p_council_id: councilId, p_profile_id: unassignedTeacher.id, p_participant_role: 'TEACHER' })).error?.code).toBe('23514');
+    expect((await secretary.client.rpc('remove_class_council_participant', { p_participant_id: secretaryParticipant.data.id })).error).toBeNull();
+    expect((await director.client.rpc('add_class_council_participant', { p_council_id: councilId, p_profile_id: director.id, p_participant_role: 'DIRECTOR' })).error).toBeNull();
     expect((await secretary.client.rpc('complete_class_council', { p_council_id: councilId })).error?.code).toBe('42501');
     expect((await director.client.rpc('complete_class_council', { p_council_id: councilId })).error).toBeNull();
     const reopened = await director.client.rpc('reopen_class_council', { p_council_id: councilId, p_reason: 'Revisar decisão pedagógica' });

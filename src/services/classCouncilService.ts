@@ -233,9 +233,15 @@ interface StudentNoteRow {
 }
 
 interface MembershipParticipantRow {
+  institution_id: string;
   profile_id: string;
   role: ClassCouncilParticipantRole;
-  profiles: { full_name: string; email: string } | { full_name: string; email: string }[] | null;
+  active: boolean;
+  profiles: { full_name: string; email: string; active: boolean } | { full_name: string; email: string; active: boolean }[] | null;
+}
+
+interface OfferingTeacherRow {
+  teacher_profile_id: string;
 }
 
 interface ContextClassRow {
@@ -441,26 +447,51 @@ export const classCouncilService = {
     };
   },
 
-  async listEligibleParticipants(institutionId: string): Promise<ClassCouncilEligibleParticipant[]> {
-    const { data, error } = await supabase
-      .from('memberships')
-      .select('profile_id, role, profiles (full_name, email)')
-      .eq('institution_id', institutionId)
-      .eq('active', true)
-      .in('role', ['DIRECTOR', 'SECRETARY', 'TEACHER'])
-      .order('role')
-      .order('profile_id');
-    if (error) throw new Error(error.message);
-    return ((data ?? []) as unknown as MembershipParticipantRow[])
-      .map((row) => {
-        const profile = relation(row.profiles);
-        return {
-          profileId: row.profile_id,
-          profileName: profile?.full_name ?? 'Participante',
-          profileEmail: profile?.email ?? '',
-          role: row.role,
-        };
-      });
+  async listEligibleParticipants(
+    institutionId: string,
+    classId: string,
+    termId: string,
+  ): Promise<ClassCouncilEligibleParticipant[]> {
+    const [memberships, offerings] = await Promise.all([
+      supabase
+        .from('memberships')
+        .select('institution_id, profile_id, role, active, profiles!inner(full_name, email, active)')
+        .eq('institution_id', institutionId)
+        .eq('active', true)
+        .eq('profiles.active', true)
+        .in('role', ['DIRECTOR', 'SECRETARY', 'TEACHER'])
+        .order('role')
+        .order('profile_id'),
+      supabase
+        .from('subject_offerings')
+        .select('teacher_profile_id')
+        .eq('class_id', classId)
+        .eq('term_id', termId)
+        .eq('active', true),
+    ]);
+    if (memberships.error) throw new Error(memberships.error.message);
+    if (offerings.error) throw new Error(offerings.error.message);
+
+    const assignedTeacherIds = new Set(
+      ((offerings.data ?? []) as unknown as OfferingTeacherRow[])
+        .map((offering) => offering.teacher_profile_id),
+    );
+    const eligible = new Map<string, ClassCouncilEligibleParticipant>();
+
+    for (const row of (memberships.data ?? []) as unknown as MembershipParticipantRow[]) {
+      const profile = relation(row.profiles);
+      if (row.institution_id !== institutionId || !row.active || !profile?.active) continue;
+      if (row.role === 'TEACHER' && !assignedTeacherIds.has(row.profile_id)) continue;
+      const participant = {
+        profileId: row.profile_id,
+        profileName: profile?.full_name ?? 'Participante',
+        profileEmail: profile?.email ?? '',
+        role: row.role,
+      } satisfies ClassCouncilEligibleParticipant;
+      eligible.set(`${participant.profileId}:${participant.role}`, participant);
+    }
+
+    return Array.from(eligible.values());
   },
 
   async create(input: CreateClassCouncilInput): Promise<ClassCouncil> {

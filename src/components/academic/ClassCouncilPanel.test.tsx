@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -17,6 +17,7 @@ import {
   useCreateClassCouncil,
   useOpenClassCouncil,
   useReopenClassCouncil,
+  useRemoveClassCouncilParticipant,
   useUpdateClassCouncil,
   useUpdateClassCouncilStudentNote,
 } from '../../hooks/useClassCouncils';
@@ -26,6 +27,7 @@ vi.mock('../../contexts/AuthContext', () => ({ useAuth: vi.fn() }));
 vi.mock('../../hooks/useCurrentInstitution', () => ({ useCurrentInstitution: vi.fn() }));
 vi.mock('../../hooks/useClassCouncils', () => ({
   useAddClassCouncilParticipant: vi.fn(),
+  useRemoveClassCouncilParticipant: vi.fn(),
   useCancelClassCouncil: vi.fn(),
   useClassCouncilContextOptions: vi.fn(),
   useClassCouncilDetails: vi.fn(),
@@ -71,7 +73,7 @@ const council = {
 };
 
 function mutation() {
-  return { isPending: false, isError: false, error: null, mutateAsync: vi.fn() };
+  return { isPending: false, isError: false, error: null, mutateAsync: vi.fn().mockResolvedValue(undefined) };
 }
 
 beforeEach(() => {
@@ -83,6 +85,7 @@ beforeEach(() => {
   vi.mocked(useClassCouncilEligibleParticipants).mockReturnValue({ data: [], isLoading: false, isError: false, error: null } as never);
   vi.mocked(useClassCouncilDetails).mockReturnValue({ data: null, isLoading: false, isError: false, error: null, refetch: vi.fn() } as never);
   vi.mocked(useAddClassCouncilParticipant).mockReturnValue(mutation() as never);
+  vi.mocked(useRemoveClassCouncilParticipant).mockReturnValue(mutation() as never);
   vi.mocked(useCancelClassCouncil).mockReturnValue(mutation() as never);
   vi.mocked(useCompleteClassCouncil).mockReturnValue(mutation() as never);
   vi.mocked(useCreateClassCouncil).mockReturnValue(mutation() as never);
@@ -112,5 +115,45 @@ describe('ClassCouncilPanel', () => {
     vi.mocked(useCurrentInstitution).mockReturnValue({ data: institutionId, currentRole: 'SECRETARY', isLoading: false, isError: false, error: null } as never);
     renderPanel();
     expect(screen.queryByRole('button', { name: /novo conselho/i })).toBeNull();
+  });
+
+  it('lets the secretary manage participants without exposing lifecycle actions', async () => {
+    const addMutation = mutation();
+    const removeMutation = mutation();
+    const refetch = vi.fn().mockResolvedValue(undefined);
+    vi.mocked(useAuth).mockReturnValue({ profile: { id: 'secretary-1', role: 'SECRETARY', platform_role: 'USER', full_name: 'Secretaria', email: 'secretary@example.com' } } as never);
+    vi.mocked(useCurrentInstitution).mockReturnValue({ data: institutionId, currentRole: 'SECRETARY', isLoading: false, isError: false, error: null } as never);
+    vi.mocked(useClassCouncilDetails).mockReturnValue({ data: { council, participants: [{ id: 'participant-1', institutionId, councilId: council.id, profileId: 'director-1', participantRole: 'DIRECTOR', profileName: 'Diretor', profileEmail: 'director@example.com', createdAt: '2026-01-01T00:00:00Z' }], studentNotes: [] }, isLoading: false, isError: false, error: null, refetch } as never);
+    vi.mocked(useClassCouncilEligibleParticipants).mockReturnValue({ data: [{ profileId: 'teacher-1', profileName: 'Professor', profileEmail: 'teacher@example.com', role: 'TEACHER' }], isLoading: false, isError: false, error: null } as never);
+    vi.mocked(useAddClassCouncilParticipant).mockReturnValue(addMutation as never);
+    vi.mocked(useRemoveClassCouncilParticipant).mockReturnValue(removeMutation as never);
+
+    renderPanel();
+
+    expect(screen.queryByRole('button', { name: /novo conselho/i })).toBeNull();
+    expect(screen.getByText('Participantes')).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Remover Diretor' })).toBeTruthy();
+    expect(useClassCouncilEligibleParticipants).toHaveBeenCalledWith(institutionId, 'class-1', 'term-1');
+
+    fireEvent.change(screen.getByRole('combobox', { name: 'Novo participante' }), { target: { value: 'teacher-1|TEACHER' } });
+    fireEvent.click(screen.getByRole('button', { name: /adicionar/i }));
+    await waitFor(() => expect(addMutation.mutateAsync).toHaveBeenCalledWith({ councilId: council.id, profileId: 'teacher-1', role: 'TEACHER' }));
+
+    fireEvent.click(screen.getByRole('button', { name: 'Remover Diretor' }));
+    await waitFor(() => expect(removeMutation.mutateAsync).toHaveBeenCalledWith({ participantId: 'participant-1', councilId: council.id }));
+    expect(refetch).toHaveBeenCalled();
+  });
+
+  it('shows participant management to the director and hides it after completion', () => {
+    vi.mocked(useClassCouncilDetails).mockReturnValue({ data: { council, participants: [{ id: 'participant-1', institutionId, councilId: council.id, profileId: 'teacher-1', participantRole: 'TEACHER', profileName: 'Professor', profileEmail: 'teacher@example.com', createdAt: '2026-01-01T00:00:00Z' }], studentNotes: [] }, isLoading: false, isError: false, error: null, refetch: vi.fn() } as never);
+    renderPanel();
+    expect(screen.getByRole('button', { name: 'Remover Professor' })).toBeTruthy();
+
+    const completedCouncil = { ...council, status: 'COMPLETED' as const };
+    vi.mocked(useClassCouncilDetails).mockReturnValue({ data: { council: completedCouncil, participants: [{ id: 'participant-1', institutionId, councilId: council.id, profileId: 'teacher-1', participantRole: 'TEACHER', profileName: 'Professor', profileEmail: 'teacher@example.com', createdAt: '2026-01-01T00:00:00Z' }], studentNotes: [] }, isLoading: false, isError: false, error: null, refetch: vi.fn() } as never);
+    cleanup();
+    renderPanel();
+    expect(screen.queryByRole('button', { name: /remover/i })).toBeNull();
+    expect(screen.queryByRole('combobox', { name: 'Novo participante' })).toBeNull();
   });
 });
