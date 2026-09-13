@@ -121,25 +121,29 @@ function LoadingState() {
 function TeacherWorkspacePage({
   title,
   description,
+  showIntro = true,
   children,
 }: {
   title: string;
   description: string;
+  showIntro?: boolean;
   children: ReactNode;
 }) {
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-          Operação docente
-        </p>
-        <h1 className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
-          {title}
-        </h1>
-        <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
-          {description}
-        </p>
-      </section>
+      {showIntro && (
+        <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+            Operação docente
+          </p>
+          <h1 className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
+            {title}
+          </h1>
+          <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
+            {description}
+          </p>
+        </section>
+      )}
       {children}
     </div>
   );
@@ -230,6 +234,7 @@ export default function TeacherDashboard() {
       <TeacherWorkspacePage
         title="Diário de Classe"
         description="Registre o conteúdo da aula e a presença dos alunos."
+        showIntro={false}
       >
         <TeacherAttendancePanel
           profileId={profile.id}
