@@ -57,11 +57,20 @@ async function createActor(
 
 localDescribe('class diary runtime', () => {
   let service: Client;
+  let admin: Client;
   let director: Client;
+  let secretary: Client;
   let teacher: Client;
+  let teacherB: Client;
+  let student: Client;
+  let guardian: Client;
   let institutionId = '';
   let offeringId = '';
+  let adminId = '';
+  let directorId = '';
+  let secretaryId = '';
   let studentId = '';
+  let teacherId = '';
   let sessionId = '';
   let recordId = '';
 
@@ -70,16 +79,28 @@ localDescribe('class diary runtime', () => {
       auth: { autoRefreshToken: false, persistSession: false },
     });
     const suffix = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
-    const admin = await createActor(service, 'ADMIN', 'admin', suffix);
+    const adminActor = await createActor(service, 'ADMIN', 'admin', suffix);
     const directorActor = await createActor(service, 'DIRECTOR', 'director', suffix);
+    const secretaryActor = await createActor(service, 'SECRETARY', 'secretary', suffix);
     const teacherActor = await createActor(service, 'TEACHER', 'teacher', suffix);
+    const teacherBActor = await createActor(service, 'TEACHER', 'teacher-b', suffix);
     const studentActor = await createActor(service, 'STUDENT', 'student', suffix);
+    const guardianActor = await createActor(service, 'GUARDIAN', 'guardian', suffix);
+    admin = adminActor.client;
     teacher = teacherActor.client;
     director = directorActor.client;
+    secretary = secretaryActor.client;
+    teacherB = teacherBActor.client;
+    student = studentActor.client;
+    guardian = guardianActor.client;
+    teacherId = teacherActor.id;
+    adminId = adminActor.id;
+    directorId = directorActor.id;
+    secretaryId = secretaryActor.id;
 
     const account = await insertOne(service, 'accounts', {
       name: `Diary account ${suffix}`,
-      owner_profile_id: admin.id,
+      owner_profile_id: adminActor.id,
       institution_limit: 1,
       status: 'ACTIVE',
     });
@@ -89,7 +110,15 @@ localDescribe('class diary runtime', () => {
       active: true,
     })).id;
 
-    for (const [profileId, role] of [[admin.id, 'ADMIN'], [directorActor.id, 'DIRECTOR'], [teacherActor.id, 'TEACHER'], [studentActor.id, 'STUDENT']] as const) {
+    for (const [profileId, role] of [
+      [adminActor.id, 'ADMIN'],
+      [directorActor.id, 'DIRECTOR'],
+      [secretaryActor.id, 'SECRETARY'],
+      [teacherActor.id, 'TEACHER'],
+      [teacherBActor.id, 'TEACHER'],
+      [studentActor.id, 'STUDENT'],
+      [guardianActor.id, 'GUARDIAN'],
+    ] as const) {
       await insertOne(service, 'memberships', {
         profile_id: profileId,
         institution_id: institutionId,
@@ -175,6 +204,13 @@ localDescribe('class diary runtime', () => {
       status: 'ACTIVE',
       active: true,
     });
+    await insertOne(service, 'guardianships', {
+      student_id: studentId,
+      guardian_profile_id: guardianActor.id,
+      relationship: 'Responsável',
+      is_primary: true,
+      active: true,
+    });
   }, 120_000);
 
   it('salva campos do diário, finaliza a sessão e bloqueia alterações após CLOSED', async () => {
@@ -245,6 +281,42 @@ localDescribe('class diary runtime', () => {
       .single();
     expect(recordUpdate.data).toBeNull();
     expect(recordUpdate.error).toBeTruthy();
+
+    const sessionDelete = await teacher
+      .from('attendance_sessions')
+      .delete()
+      .eq('id', sessionId)
+      .select('id');
+    expect(sessionDelete.data).toBeNull();
+    expect(sessionDelete.error).toBeTruthy();
+
+    const recordInsert = await teacher
+      .from('attendance_records')
+      .insert({
+        institution_id: institutionId,
+        attendance_session_id: sessionId,
+        student_id: studentId,
+        status: 'PRESENT',
+        recorded_by: teacherId,
+      })
+      .select('id');
+    expect(recordInsert.data).toBeNull();
+    expect(recordInsert.error).toBeTruthy();
+
+    const recordDelete = await teacher
+      .from('attendance_records')
+      .delete()
+      .eq('id', recordId)
+      .select('id');
+    expect(recordDelete.data).toBeNull();
+    expect(recordDelete.error).toBeTruthy();
+
+    const foreignTeacherUpdate = await teacherB
+      .from('attendance_sessions')
+      .update({ topic: 'Professor alheio' })
+      .eq('id', sessionId)
+      .select('id');
+    expect(foreignTeacherUpdate.data ?? []).toEqual([]);
   });
 
   it('não permite finalizar novamente uma sessão CLOSED pelo RPC', async () => {
@@ -264,5 +336,102 @@ localDescribe('class diary runtime', () => {
     expect(result.data).toBeNull();
     expect(result.error?.code).toBe('42501');
     expect(result.error?.message).toContain('ATTENDANCE_SESSION_CLOSED');
+  });
+
+  it('mantém o Diário read-only para Direção, Secretaria e ADMIN', async () => {
+    const blocked = async (
+      resultPromise: Promise<{ data: unknown; error: unknown }>,
+      requireError = false,
+    ) => {
+      const result = await resultPromise;
+      expect(result.data === null || (Array.isArray(result.data) && result.data.length === 0)).toBe(true);
+      if (requireError) expect(result.error).toBeTruthy();
+    };
+
+    for (const actor of [director, secretary]) {
+      const readSession = await actor
+        .from('attendance_sessions')
+        .select('id')
+        .eq('id', sessionId)
+        .single();
+      expect(readSession.error).toBeNull();
+      expect(readSession.data?.id).toBe(sessionId);
+
+      await blocked(actor
+        .from('attendance_sessions')
+        .insert({
+          institution_id: institutionId,
+          subject_offering_id: offeringId,
+          session_date: '2026-09-14',
+          starts_at: '08:00',
+          ends_at: '08:50',
+          status: 'DRAFT',
+          created_by: actor === director ? directorId : secretaryId,
+        })
+        .select('id'), true);
+      await blocked(actor
+        .from('attendance_sessions')
+        .update({ topic: 'Alteração institucional' })
+        .eq('id', sessionId)
+        .select('id'));
+      await blocked(actor
+        .from('attendance_records')
+        .insert({
+          institution_id: institutionId,
+          attendance_session_id: sessionId,
+          student_id: studentId,
+          status: 'PRESENT',
+          recorded_by: actor === director ? directorId : secretaryId,
+        })
+        .select('id'), true);
+      await blocked(actor
+        .from('attendance_records')
+        .update({ status: 'ABSENT' })
+        .eq('id', recordId)
+        .select('id'));
+      await blocked(actor
+        .from('attendance_records')
+        .delete()
+        .eq('id', recordId)
+        .select('id'));
+    }
+
+    const adminSessionRead = await admin
+      .from('attendance_sessions')
+      .select('id')
+      .eq('id', sessionId);
+    expect(adminSessionRead.error).toBeNull();
+    expect(adminSessionRead.data).toEqual([]);
+
+    await blocked(admin
+      .from('attendance_sessions')
+      .insert({
+        institution_id: institutionId,
+        subject_offering_id: offeringId,
+        session_date: '2026-09-14',
+        starts_at: '08:00',
+        ends_at: '08:50',
+        status: 'DRAFT',
+        created_by: adminId,
+      })
+      .select('id'), true);
+  });
+
+  it('preserva a leitura fechada de aluno e responsável sem liberar escrita', async () => {
+    const studentRead = await student
+      .from('attendance_sessions')
+      .select('id, status')
+      .eq('id', sessionId)
+      .single();
+    expect(studentRead.error).toBeNull();
+    expect(studentRead.data).toMatchObject({ id: sessionId, status: 'CLOSED' });
+
+    const guardianRead = await guardian
+      .from('attendance_records')
+      .select('id, status')
+      .eq('id', recordId)
+      .single();
+    expect(guardianRead.error).toBeNull();
+    expect(guardianRead.data).toMatchObject({ id: recordId, status: 'PRESENT' });
   });
 });

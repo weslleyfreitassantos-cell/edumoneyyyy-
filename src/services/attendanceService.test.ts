@@ -11,10 +11,13 @@ import {
   AttendanceServiceError,
   attendanceService,
   buildRollCallRecords,
+  buildDiaryFilters,
+  buildInstitutionDiarySessionIndex,
   calculateAttendanceSummary,
   getAttendanceDayOfWeek,
   getInstitutionDiaryStatus,
   isEnrollmentValidForAttendanceDate,
+  listInstitutionDiarySessionKeys,
   resolveAttendanceScheduleSlot,
   selectAttendanceOfferingForDate,
 } from './attendanceService';
@@ -30,7 +33,10 @@ interface MockQuery {
   select: ReturnType<typeof vi.fn>;
   eq: ReturnType<typeof vi.fn>;
   in: ReturnType<typeof vi.fn>;
+  gte: ReturnType<typeof vi.fn>;
+  lte: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
+  range: ReturnType<typeof vi.fn>;
   neq: ReturnType<typeof vi.fn>;
   or: ReturnType<typeof vi.fn>;
   maybeSingle: ReturnType<typeof vi.fn>;
@@ -43,7 +49,10 @@ function createQuery(response: unknown): MockQuery {
   query.select = vi.fn(() => query);
   query.eq = vi.fn(() => query);
   query.in = vi.fn(() => query);
+  query.gte = vi.fn(() => query);
+  query.lte = vi.fn(() => query);
   query.order = vi.fn(() => query);
+  query.range = vi.fn(() => query);
   query.neq = vi.fn(() => query);
   query.or = vi.fn(() => query);
   query.maybeSingle = vi.fn(() =>
@@ -1085,5 +1094,85 @@ describe('institution class diary status', () => {
     expect(getInstitutionDiaryStatus('CANCELED', true)).toBe('CANCELED');
     expect(getInstitutionDiaryStatus(null, true)).toBe('PENDING');
     expect(getInstitutionDiaryStatus(null, false)).toBe('FUTURE');
+  });
+
+  it('indexa uma sessão CLOSED além da antiga janela de 250 registros', () => {
+    const sessions = Array.from({ length: 251 }, (_, index) => ({
+      id: `session-${index}`,
+      sessionDate: '2026-09-14',
+      startsAt: '07:00:00',
+      offering: { id: `offering-${index}` },
+    })) as never[];
+
+    const index = buildInstitutionDiarySessionIndex(sessions as never);
+    const target = index.get('offering-250|2026-09-14|07:00:00');
+
+    expect(index.size).toBe(251);
+    expect(target?.id).toBe('session-250');
+  });
+
+  it('pagina todas as sessões antes de calcular pendências', async () => {
+    const page = (start: number, count: number) => Array.from(
+      { length: count },
+      (_, index) => ({
+        id: `session-${start + index}`,
+        subject_offering_id: 'offering-1',
+        session_date: '2026-09-14',
+        starts_at: `${String(7 + ((start + index) % 10)).padStart(2, '0')}:00:00`,
+        ends_at: null,
+        status: 'CLOSED',
+      }),
+    );
+    const firstQuery = createQuery({
+      data: page(0, 250),
+      error: null,
+    });
+    const secondQuery = createQuery({
+      data: page(250, 1),
+      error: null,
+    });
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(firstQuery as unknown as ReturnType<typeof supabase.from>)
+      .mockReturnValueOnce(secondQuery as unknown as ReturnType<typeof supabase.from>);
+
+    const sessions = await listInstitutionDiarySessionKeys(
+      'institution-1',
+      '2026-09-01',
+      '2026-09-30',
+    );
+
+    expect(sessions).toHaveLength(251);
+    expect(sessions[250]?.id).toBe('session-250');
+    expect(secondQuery.range).toHaveBeenCalledWith(250, 499);
+  });
+
+  it('usa o nome humano do ano letivo nos filtros institucionais', () => {
+    const filters = buildDiaryFilters([
+      {
+        id: 'offering-1',
+        classId: 'class-1',
+        subjectId: 'subject-1',
+        teacherProfileId: 'teacher-1',
+        termId: 'term-1',
+        className: '1A',
+        subjectName: 'Matemática',
+        teacherName: 'Professora Ana',
+        teacherEmail: 'ana@escola.com',
+        subjectCode: 'MAT',
+        gradeLevel: null,
+        shift: null,
+        workload: null,
+        termName: '1º bimestre',
+        academicYearId: 'year-1',
+        academicYearName: '2026',
+        institutionId: 'institution-1',
+        termStartDate: '2026-02-01',
+        termEndDate: '2026-04-30',
+      },
+    ]);
+
+    expect(filters.academicYears).toEqual([
+      { id: 'year-1', label: '2026' },
+    ]);
   });
 });

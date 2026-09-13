@@ -4,6 +4,7 @@ import {
   academicCalendarService,
   type AcademicDateStatus,
 } from './academicCalendarService';
+import { resolveAcademicDateStatus } from '../lib/academicCalendarStatus';
 
 export const ATTENDANCE_RECORD_STATUSES = [
   'PRESENT',
@@ -84,6 +85,11 @@ interface TeacherRelation {
   active: boolean | null;
 }
 
+interface AcademicYearRelation {
+  id: string;
+  name: string;
+}
+
 interface TermRelation {
   id: string;
   academic_year_id: string;
@@ -91,6 +97,7 @@ interface TermRelation {
   start_date: string;
   end_date: string;
   active: boolean | null;
+  academic_years?: AcademicYearRelation | AcademicYearRelation[] | null;
 }
 
 interface OfferingQueryRow {
@@ -195,6 +202,15 @@ interface AttendanceSessionWithRecordsQueryRow
     | null;
 }
 
+interface AttendanceSessionKeyQueryRow {
+  id: string;
+  subject_offering_id: string;
+  session_date: string;
+  starts_at: string | null;
+  ends_at: string | null;
+  status: string;
+}
+
 export interface AttendanceOffering {
   id: string;
   institutionId: string;
@@ -212,6 +228,7 @@ export interface AttendanceOffering {
   teacherEmail: string;
   termName: string | null;
   academicYearId: string | null;
+  academicYearName: string | null;
   termStartDate: string | null;
   termEndDate: string | null;
   scheduleSlots?: AttendanceScheduleSlot[];
@@ -355,6 +372,7 @@ export interface AttendanceInstitutionFilters {
   termId?: string;
   academicYearId?: string;
   includeCanceled?: boolean;
+  sessionIds?: readonly string[];
 }
 
 export interface AttendanceFilterOption {
@@ -681,6 +699,7 @@ function normalizeOffering(
   const subject = normalizeRelation(row.subjects);
   const teacher = normalizeRelation(row.profiles);
   const term = normalizeRelation(row.terms);
+  const academicYear = normalizeRelation(term?.academic_years);
 
   if (
     !classRecord ||
@@ -711,6 +730,7 @@ function normalizeOffering(
     teacherEmail: teacher?.email ?? '',
     termName: term?.name ?? null,
     academicYearId: term?.academic_year_id ?? null,
+    academicYearName: academicYear?.name ?? null,
     termStartDate: term?.start_date ?? null,
     termEndDate: term?.end_date ?? null,
   };
@@ -993,7 +1013,8 @@ async function getAttendanceOffering(
         name,
         start_date,
         end_date,
-        active
+        active,
+        academic_years:academic_year_id (id, name)
       )
     `,
     )
@@ -1888,7 +1909,7 @@ export function getInstitutionDiaryStatus(
   return occurrencePast ? 'PENDING' : 'FUTURE';
 }
 
-function buildDiaryFilters(
+export function buildDiaryFilters(
   offerings: readonly AttendanceOffering[],
 ): InstitutionClassDiarySummary['filters'] {
   const byId = (
@@ -1924,7 +1945,7 @@ function buildDiaryFilters(
         .filter((offering) => offering.academicYearId)
         .map((offering) => [
           offering.academicYearId as string,
-          offering.academicYearId as string,
+          (offering.academicYearName ?? offering.academicYearId) as string,
         ]),
     ),
     terms: byId(
@@ -1934,6 +1955,81 @@ function buildDiaryFilters(
       ]),
     ),
   };
+}
+
+export function institutionDiarySessionKey(
+  offeringId: string,
+  date: string,
+  startsAt: string | null,
+): string {
+  return `${offeringId}|${date}|${startsAt ?? 'legacy'}`;
+}
+
+export function buildInstitutionDiarySessionIndex(
+  sessions: readonly InstitutionAttendanceSession[],
+): Map<string, InstitutionAttendanceSession> {
+  const index = new Map<string, InstitutionAttendanceSession>();
+
+  for (const session of sessions) {
+    index.set(
+      institutionDiarySessionKey(
+        session.offering.id,
+        session.sessionDate,
+        session.startsAt,
+      ),
+      session,
+    );
+  }
+
+  return index;
+}
+
+const DIARY_SESSION_PAGE_SIZE = 250;
+
+export async function listInstitutionDiarySessionKeys(
+  institutionId: string,
+  fromDate: string,
+  toDate: string,
+): Promise<AttendanceSessionKeyQueryRow[]> {
+  const rows: AttendanceSessionKeyQueryRow[] = [];
+  let offset = 0;
+
+  while (true) {
+    const { data, error } = await supabase
+      .from('attendance_sessions')
+      .select(
+        'id, subject_offering_id, session_date, starts_at, ends_at, status',
+      )
+      .eq('institution_id', institutionId)
+      .gte('session_date', fromDate)
+      .lte('session_date', toDate)
+      .order('session_date', { ascending: true })
+      .order('starts_at', { ascending: true })
+      .range(offset, offset + DIARY_SESSION_PAGE_SIZE - 1);
+
+    if (error) {
+      throw createAttendanceError(error, 'ATTENDANCE_FORBIDDEN');
+    }
+
+    const page = (data ?? []) as unknown as AttendanceSessionKeyQueryRow[];
+    rows.push(...page);
+
+    if (page.length < DIARY_SESSION_PAGE_SIZE) {
+      return rows;
+    }
+
+    offset += DIARY_SESSION_PAGE_SIZE;
+  }
+}
+
+function chunkValues<T>(values: readonly T[], size: number): T[][] {
+  const chunks: T[][] = [];
+
+  for (let index = 0; index < values.length; index += size) {
+    chunks.push(values.slice(index, index + size) as T[]);
+  }
+
+  return chunks;
 }
 
 export const attendanceService = {
@@ -1981,7 +2077,8 @@ export const attendanceService = {
           name,
           start_date,
           end_date,
-          active
+          active,
+          academic_years:academic_year_id (id, name)
         )
       `,
       )
@@ -2302,7 +2399,8 @@ export const attendanceService = {
               id,
               academic_year_id,
               name,
-              active
+              active,
+              academic_years:academic_year_id (id, name)
             )
           )
         )
@@ -2452,7 +2550,8 @@ export const attendanceService = {
             id,
             academic_year_id,
             name,
-            active
+            active,
+            academic_years:academic_year_id (id, name)
           )
         ),
         attendance_records (
@@ -2492,7 +2591,21 @@ export const attendanceService = {
       sessionQuery = sessionQuery.neq('status', 'CANCELED');
     }
 
-    const { data, error } = await sessionQuery.limit(250);
+    if (filters.sessionIds) {
+      if (filters.sessionIds.length === 0) {
+        return {
+          summary: calculateAttendanceSummary([]),
+          sessions: [],
+          filters: buildFilterOptions([]),
+        };
+      }
+
+      sessionQuery = sessionQuery.in('id', [...filters.sessionIds]);
+    }
+
+    const { data, error } = filters.sessionIds
+      ? await sessionQuery
+      : await sessionQuery.limit(250);
 
     if (error) {
       throw createAttendanceError(
@@ -2575,7 +2688,8 @@ export const attendanceService = {
             name,
             start_date,
             end_date,
-            active
+            active,
+            academic_years:academic_year_id (id, name)
           )
         `,
         )
@@ -2630,32 +2744,38 @@ export const attendanceService = {
       );
     }
 
-    const actualSummary = await this.getInstitutionAttendanceSummary(
+    const sessionKeys = await listInstitutionDiarySessionKeys(
       institutionId,
-      {
-        fromDate,
-        toDate,
-        includeCanceled: true,
-      },
+      fromDate,
+      toDate,
     );
-    const sessionByKey = new Map<string, InstitutionAttendanceSession>();
-    const sessionKey = (
-      offeringId: string,
-      date: string,
-      startsAt: string | null,
-    ) => `${offeringId}|${date}|${startsAt ?? 'legacy'}`;
+    const actualSessions: InstitutionAttendanceSession[] = [];
 
-    for (const session of actualSummary.sessions) {
-      sessionByKey.set(
-        sessionKey(
-          session.offering.id,
-          session.sessionDate,
-          session.startsAt,
-        ),
-        session,
+    for (const sessionIdChunk of chunkValues(
+      sessionKeys.map((session) => session.id),
+      100,
+    )) {
+      const detailSummary = await this.getInstitutionAttendanceSummary(
+        institutionId,
+        {
+          fromDate,
+          toDate,
+          includeCanceled: true,
+          sessionIds: sessionIdChunk,
+        },
       );
+      actualSessions.push(...detailSummary.sessions);
     }
 
+    const sessionByKey = buildInstitutionDiarySessionIndex(actualSessions);
+
+    const blockingCalendarEvents = offerings.length > 0
+      ? await academicCalendarService.listBlockingEventsForRange(
+        institutionId,
+        fromDate,
+        toDate,
+      )
+      : [];
     const calendarCache = new Map<string, AcademicDateStatus>();
     const entries: InstitutionClassDiaryEntry[] = [];
     const generatedSessionIds = new Set<string>();
@@ -2699,16 +2819,16 @@ export const attendanceService = {
           let calendarStatus = calendarCache.get(cacheKey);
 
           if (!calendarStatus) {
-            calendarStatus =
-              await academicCalendarService.getAcademicDateStatus(
-                {
-                  institutionId,
-                  academicYearId: offering.academicYearId,
-                  classId: offering.classId,
-                  subjectId: offering.subjectId,
-                },
-                date,
-              );
+            calendarStatus = resolveAcademicDateStatus(
+              date,
+              blockingCalendarEvents,
+              {
+                institutionId,
+                academicYearId: offering.academicYearId,
+                classId: offering.classId,
+                subjectId: offering.subjectId,
+              },
+            );
             calendarCache.set(cacheKey, calendarStatus);
           }
 
@@ -2717,7 +2837,11 @@ export const attendanceService = {
           }
 
           const session = sessionByKey.get(
-            sessionKey(offering.id, date, slot.start_time),
+            institutionDiarySessionKey(
+              offering.id,
+              date,
+              slot.start_time,
+            ),
           );
           if (session) {
             generatedSessionIds.add(session.id);
@@ -2744,7 +2868,7 @@ export const attendanceService = {
       }
     }
 
-    for (const session of actualSummary.sessions) {
+    for (const session of actualSessions) {
       if (generatedSessionIds.has(session.id)) continue;
       if (
         (filters.classId && session.offering.classId !== filters.classId) ||
@@ -2789,7 +2913,7 @@ export const attendanceService = {
       filters: buildDiaryFilters(
         Array.from(
           new Map(
-            [...offerings, ...actualSummary.sessions.map((session) => session.offering)].map(
+            [...offerings, ...actualSessions.map((session) => session.offering)].map(
               (offering) => [offering.id, offering],
             ),
           ).values(),

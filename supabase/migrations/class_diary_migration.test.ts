@@ -46,4 +46,19 @@ describe('class diary migration', () => {
     expect(migration).toContain("ATTENDANCE_SESSION_CLOSED");
     expect(migration).not.toMatch(/disable row level security/i);
   });
+
+  it('keeps institutional roles read-only and teachers scoped to open sessions', () => {
+    expect(migration).toContain(
+      'create or replace function private.can_write_attendance_session(',
+    );
+    expect(migration).toContain(
+      'alter policy attendance_records_insert_policy',
+    );
+    expect(migration).toContain(
+      'before insert or update or delete on public.attendance_records',
+    );
+    expect(migration).toContain(
+      'before update or delete on public.attendance_sessions',
+    );
+  });
 });

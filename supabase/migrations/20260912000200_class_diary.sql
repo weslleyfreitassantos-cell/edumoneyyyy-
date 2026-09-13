@@ -189,34 +189,109 @@ grant execute on function public.save_attendance_class_diary(
   uuid, uuid, date, time, time, text, text, text, text, text, jsonb
 ) to authenticated;
 
--- A teacher may finalize a draft, but cannot mutate a session that is already
--- CLOSED. Directors and secretaries retain their existing institutional policy.
+create or replace function private.can_write_attendance_session(
+  target_session_id uuid,
+  target_institution_id uuid
+)
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select exists (
+    select 1
+    from public.attendance_sessions as attendance_session
+    where attendance_session.id = target_session_id
+      and attendance_session.institution_id = target_institution_id
+      and attendance_session.status <> 'CLOSED'
+      and private.is_teacher_for_offering(
+        attendance_session.subject_offering_id,
+        target_institution_id
+      )
+  );
+$$;
+
+alter function private.can_write_attendance_session(uuid, uuid)
+  owner to postgres;
+
+revoke all on function private.can_write_attendance_session(uuid, uuid)
+  from public, anon, authenticated;
+
+grant execute on function private.can_write_attendance_session(uuid, uuid)
+  to authenticated, service_role;
+
+-- Only the assigned teacher writes attendance. Institutional roles retain
+-- read access, but do not create or mutate diary sessions in this MVP.
+alter policy attendance_sessions_insert_policy
+  on public.attendance_sessions
+  with check (
+    private.offering_belongs_to_institution(
+      subject_offering_id,
+      institution_id
+    )
+    and private.is_teacher_for_offering(
+      subject_offering_id,
+      institution_id
+    )
+    and created_by = (select auth.uid())
+  );
+
 alter policy attendance_sessions_update_policy
   on public.attendance_sessions
   using (
-    private.is_admin_or_director(institution_id)
-    or (
-      private.is_teacher_for_offering(subject_offering_id, institution_id)
-      and status <> 'CLOSED'
+    private.is_teacher_for_offering(subject_offering_id, institution_id)
+    and status <> 'CLOSED'
+  );
+
+alter policy attendance_sessions_update_policy
+  on public.attendance_sessions
+  with check (
+    private.offering_belongs_to_institution(
+      subject_offering_id,
+      institution_id
     )
+    and private.is_teacher_for_offering(
+      subject_offering_id,
+      institution_id
+    )
+    and created_by = (select auth.uid())
   );
 
 alter policy attendance_records_update_policy
   on public.attendance_records
   using (
-    private.can_manage_attendance_session(
+    private.can_write_attendance_session(
       attendance_session_id,
       institution_id
     )
-    and (
-      private.is_admin_or_director(institution_id)
-      or exists (
-        select 1
-        from public.attendance_sessions as attendance_session
-        where attendance_session.id = attendance_records.attendance_session_id
-          and attendance_session.status <> 'CLOSED'
-      )
+  )
+  with check (
+    private.can_write_attendance_session(
+      attendance_session_id,
+      institution_id
     )
+    and private.is_student_enrolled_for_attendance_session(
+      student_id,
+      attendance_session_id,
+      institution_id
+    )
+    and recorded_by = (select auth.uid())
+  );
+
+alter policy attendance_records_insert_policy
+  on public.attendance_records
+  with check (
+    private.can_write_attendance_session(
+      attendance_session_id,
+      institution_id
+    )
+    and private.is_student_enrolled_for_attendance_session(
+      student_id,
+      attendance_session_id,
+      institution_id
+    )
+    and recorded_by = (select auth.uid())
   );
 
 create or replace function private.prevent_teacher_closed_attendance_session_mutation()
@@ -226,6 +301,18 @@ security definer
 set search_path = ''
 as $$
 begin
+  if tg_op = 'DELETE' then
+    if old.status = 'CLOSED'
+       and private.is_teacher_for_offering(
+         old.subject_offering_id,
+         old.institution_id
+       ) then
+      raise exception 'ATTENDANCE_SESSION_CLOSED' using errcode = '42501';
+    end if;
+
+    return old;
+  end if;
+
   if old.status = 'CLOSED'
      and private.is_teacher_for_offering(
        old.subject_offering_id,
@@ -265,7 +352,7 @@ drop trigger if exists attendance_sessions_prevent_closed_teacher_mutation
   on public.attendance_sessions;
 
 create trigger attendance_sessions_prevent_closed_teacher_mutation
-before update on public.attendance_sessions
+before update or delete on public.attendance_sessions
 for each row
 execute function private.prevent_teacher_closed_attendance_session_mutation();
 
@@ -278,10 +365,17 @@ as $$
 declare
   attendance_session public.attendance_sessions%rowtype;
 begin
-  select *
-    into attendance_session
-  from public.attendance_sessions
-  where id = old.attendance_session_id;
+  if tg_op = 'DELETE' then
+    select *
+      into attendance_session
+    from public.attendance_sessions
+    where id = old.attendance_session_id;
+  else
+    select *
+      into attendance_session
+    from public.attendance_sessions
+    where id = new.attendance_session_id;
+  end if;
 
   if attendance_session.status = 'CLOSED'
      and private.is_teacher_for_offering(
@@ -291,7 +385,11 @@ begin
     raise exception 'ATTENDANCE_SESSION_CLOSED' using errcode = '42501';
   end if;
 
-  return old;
+  if tg_op = 'DELETE' then
+    return old;
+  end if;
+
+  return new;
 end;
 $$;
 
@@ -308,7 +406,7 @@ drop trigger if exists attendance_records_prevent_closed_teacher_mutation
   on public.attendance_records;
 
 create trigger attendance_records_prevent_closed_teacher_mutation
-before update or delete on public.attendance_records
+before insert or update or delete on public.attendance_records
 for each row
 execute function private.prevent_teacher_closed_attendance_record_mutation();
 
