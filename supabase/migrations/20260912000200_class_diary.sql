@@ -221,6 +221,35 @@ revoke all on function private.can_write_attendance_session(uuid, uuid)
 grant execute on function private.can_write_attendance_session(uuid, uuid)
   to authenticated, service_role;
 
+-- DELETE is granted at the table level so RLS can express the editable-session
+-- rule explicitly. The policies below keep institutional roles read-only and
+-- prevent deletion after a session is CLOSED.
+grant delete on table public.attendance_sessions, public.attendance_records
+  to authenticated;
+
+create policy attendance_sessions_delete_policy
+on public.attendance_sessions
+for delete
+to authenticated
+using (
+  private.is_teacher_for_offering(
+    subject_offering_id,
+    institution_id
+  )
+  and status <> 'CLOSED'
+);
+
+create policy attendance_records_delete_policy
+on public.attendance_records
+for delete
+to authenticated
+using (
+  private.can_write_attendance_session(
+    attendance_session_id,
+    institution_id
+  )
+);
+
 -- Only the assigned teacher writes attendance. Institutional roles retain
 -- read access, but do not create or mutate diary sessions in this MVP.
 alter policy attendance_sessions_insert_policy

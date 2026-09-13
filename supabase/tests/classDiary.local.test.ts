@@ -287,8 +287,8 @@ localDescribe('class diary runtime', () => {
       .delete()
       .eq('id', sessionId)
       .select('id');
-    expect(sessionDelete.data).toBeNull();
-    expect(sessionDelete.error).toBeTruthy();
+    expect(sessionDelete.error).toBeNull();
+    expect(sessionDelete.data).toEqual([]);
 
     const recordInsert = await teacher
       .from('attendance_records')
@@ -308,8 +308,8 @@ localDescribe('class diary runtime', () => {
       .delete()
       .eq('id', recordId)
       .select('id');
-    expect(recordDelete.data).toBeNull();
-    expect(recordDelete.error).toBeTruthy();
+    expect(recordDelete.error).toBeNull();
+    expect(recordDelete.data).toEqual([]);
 
     const foreignTeacherUpdate = await teacherB
       .from('attendance_sessions')
@@ -317,6 +317,34 @@ localDescribe('class diary runtime', () => {
       .eq('id', sessionId)
       .select('id');
     expect(foreignTeacherUpdate.data ?? []).toEqual([]);
+
+    const foreignTeacherDelete = await teacherB
+      .from('attendance_sessions')
+      .delete()
+      .eq('id', sessionId)
+      .select('id');
+    expect(foreignTeacherDelete.data ?? []).toEqual([]);
+
+    const foreignRecordDelete = await teacherB
+      .from('attendance_records')
+      .delete()
+      .eq('id', recordId)
+      .select('id');
+    expect(foreignRecordDelete.data ?? []).toEqual([]);
+
+    const sessionStillExists = await service
+      .from('attendance_sessions')
+      .select('id')
+      .eq('id', sessionId)
+      .single();
+    expect(sessionStillExists.error).toBeNull();
+
+    const recordStillExists = await service
+      .from('attendance_records')
+      .select('id')
+      .eq('id', recordId)
+      .single();
+    expect(recordStillExists.error).toBeNull();
   });
 
   it('não permite finalizar novamente uma sessão CLOSED pelo RPC', async () => {
@@ -375,6 +403,11 @@ localDescribe('class diary runtime', () => {
         .eq('id', sessionId)
         .select('id'));
       await blocked(actor
+        .from('attendance_sessions')
+        .delete()
+        .eq('id', sessionId)
+        .select('id'));
+      await blocked(actor
         .from('attendance_records')
         .insert({
           institution_id: institutionId,
@@ -394,6 +427,20 @@ localDescribe('class diary runtime', () => {
         .delete()
         .eq('id', recordId)
         .select('id'));
+
+      const sessionStillExists = await service
+        .from('attendance_sessions')
+        .select('id')
+        .eq('id', sessionId)
+        .single();
+      expect(sessionStillExists.error).toBeNull();
+
+      const recordStillExists = await service
+        .from('attendance_records')
+        .select('id')
+        .eq('id', recordId)
+        .single();
+      expect(recordStillExists.error).toBeNull();
     }
 
     const adminSessionRead = await admin
@@ -415,6 +462,70 @@ localDescribe('class diary runtime', () => {
         created_by: adminId,
       })
       .select('id'), true);
+
+    await blocked(admin
+      .from('attendance_sessions')
+      .delete()
+      .eq('id', sessionId)
+      .select('id'));
+  });
+
+  it('permite ao professor responsável remover sessão e registro enquanto DRAFT', async () => {
+    const draft = await teacher.rpc('save_attendance_class_diary', {
+      p_institution_id: institutionId,
+      p_subject_offering_id: offeringId,
+      p_session_date: '2026-09-21',
+      p_starts_at: '07:00',
+      p_ends_at: '07:50',
+      p_topic: 'Rascunho removível',
+      p_class_activity: null,
+      p_homework: null,
+      p_notes: null,
+      p_status: 'DRAFT',
+      p_records: [{ student_id: studentId, status: 'PRESENT', notes: null }],
+    });
+    expect(draft.error).toBeNull();
+    const draftSessionId = required(draft.data?.id, 'draft session for delete');
+
+    const draftRecord = await teacher
+      .from('attendance_records')
+      .select('id')
+      .eq('attendance_session_id', draftSessionId)
+      .single();
+    expect(draftRecord.error).toBeNull();
+    const draftRecordId = required(draftRecord.data?.id, 'draft record for delete');
+
+    const update = await teacher
+      .from('attendance_sessions')
+      .update({ topic: 'Rascunho atualizado' })
+      .eq('id', draftSessionId)
+      .select('id')
+      .single();
+    expect(update.error).toBeNull();
+
+    const deleteRecord = await teacher
+      .from('attendance_records')
+      .delete()
+      .eq('id', draftRecordId)
+      .select('id')
+      .single();
+    expect(deleteRecord.error).toBeNull();
+
+    const deleteSession = await teacher
+      .from('attendance_sessions')
+      .delete()
+      .eq('id', draftSessionId)
+      .select('id')
+      .single();
+    expect(deleteSession.error).toBeNull();
+    expect(deleteSession.data?.id).toBe(draftSessionId);
+
+    const deleted = await service
+      .from('attendance_sessions')
+      .select('id')
+      .eq('id', draftSessionId);
+    expect(deleted.error).toBeNull();
+    expect(deleted.data).toEqual([]);
   });
 
   it('preserva a leitura fechada de aluno e responsável sem liberar escrita', async () => {
