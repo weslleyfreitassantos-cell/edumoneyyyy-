@@ -5,7 +5,6 @@ import {
   fireEvent,
   render,
   screen,
-  within,
 } from '@testing-library/react';
 import {
   afterEach,
@@ -60,14 +59,15 @@ const mockedUseSchoolSetupReadiness = vi.mocked(
 
 const overviewData = {
   metrics: {
-    activeStudents: 0,
-    inactiveStudents: 0,
-    activeTeachers: 1,
-    activeGuardians: 0,
-    activeClasses: 0,
-    activeSubjects: 0,
-    activeEnrollments: 0,
-    activeAssignments: 0,
+    activeStudents: 842,
+    inactiveStudents: 21,
+    activeTeachers: 47,
+    activeGuardians: 523,
+    activeClasses: 28,
+    activeSubjects: 14,
+    activeEnrollments: 830,
+    activeAssignments: 64,
+    activeCurriculumItems: 92,
   },
   currentAcademicYear: {
     id: 'year-1',
@@ -206,6 +206,100 @@ describe('AdminOverviewTab', () => {
     expect(screen.queryByText(/nenhuma turma cadastrada/i)).toBeNull();
     expect(screen.queryByText(/professor sem atribuição/i)).toBeNull();
     expect(screen.queryByText(/aluno sem matrícula/i)).toBeNull();
+  });
+
+  it('organiza os indicadores em principais e operacionais sem perder valores', () => {
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('heading', { name: 'Resumo da escola' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Resumo operacional' })).toBeTruthy();
+    expect(screen.getByText('842')).toBeTruthy();
+    expect(screen.getByText('47')).toBeTruthy();
+    expect(screen.getByText('28')).toBeTruthy();
+    expect(screen.getByText('523')).toBeTruthy();
+    expect(screen.getByText('830')).toBeTruthy();
+    expect(screen.getByText('14')).toBeTruthy();
+    expect(screen.getByText('64')).toBeTruthy();
+    expect(screen.getByText('92')).toBeTruthy();
+    expect(screen.getByText('21')).toBeTruthy();
+  });
+
+  it('transforma somente módulos disponíveis em atalhos navegáveis', () => {
+    const navigate = vi.fn();
+
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab
+          availableModuleIds={[
+            'students',
+            'teachers',
+            'classes',
+            'enrollments',
+          ]}
+          onNavigateToModule={navigate}
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /Alunos ativos: 842\. Ver módulo/i }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /Professores ativos: 47\. Ver módulo/i }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /Turmas ativas: 28\. Ver módulo/i }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /Matrículas ativas: 830\. Ver módulo/i }),
+    );
+
+    expect(navigate.mock.calls).toEqual([
+      ['students'],
+      ['teachers'],
+      ['classes'],
+      ['enrollments'],
+    ]);
+    expect(screen.getByText('Responsáveis ativos')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Responsáveis ativos/i })).toBeNull();
+    expect(screen.queryByRole('button', { name: /Disciplinas ativas/i })).toBeNull();
+  });
+
+  it('mantém indicadores estáticos quando o módulo não está disponível, inclusive para ADMIN', () => {
+    const navigate = vi.fn();
+    mockOverviewState({ profileRole: 'ADMIN', currentRole: 'ADMIN' });
+
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab onNavigateToModule={navigate} />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText('Alunos ativos')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Alunos ativos/i })).toBeNull();
+    expect(navigate).not.toHaveBeenCalled();
+  });
+
+  it('exibe um skeleton com a estrutura da visão geral durante o carregamento', () => {
+    mockedUseAdminOverview.mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+      error: null,
+    } as ReturnType<typeof useAdminOverview>);
+
+    render(
+      <MemoryRouter>
+        <AdminOverviewTab />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByTestId('admin-overview-loading')).toBeTruthy();
+    expect(screen.queryByText('Carregando visão geral...')).toBeNull();
   });
 
   it('exibe somente o acesso de configuração para ADMIN', () => {
