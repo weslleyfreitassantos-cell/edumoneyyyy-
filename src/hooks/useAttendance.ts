@@ -11,6 +11,8 @@ import {
   type AttendanceOffering,
   type AttendanceScheduleSlotSelection,
   type InstitutionAttendanceSummary,
+  type InstitutionClassDiaryFilters,
+  type InstitutionClassDiarySummary,
   type SaveAttendanceRollCallInput,
   type StudentAttendanceSummary,
 } from '../services/attendanceService';
@@ -62,6 +64,16 @@ export const attendanceKeys = {
     [
       ...attendanceKeys.all,
       'institution-summary',
+      institutionId,
+      filters,
+    ] as const,
+  institutionDiary: (
+    institutionId: string | undefined,
+    filters: InstitutionClassDiaryFilters,
+  ) =>
+    [
+      ...attendanceKeys.all,
+      'institution-diary',
       institutionId,
       filters,
     ] as const,
@@ -217,5 +229,31 @@ export function useInstitutionAttendanceSummary(
     },
     enabled: Boolean(institutionId),
     staleTime: 1000 * 60,
+  });
+}
+
+export function useInstitutionClassDiary(
+  institutionId: string | undefined,
+  filters: InstitutionClassDiaryFilters,
+) {
+  return useQuery<InstitutionClassDiarySummary>({
+    queryKey: attendanceKeys.institutionDiary(
+      institutionId,
+      filters,
+    ),
+    queryFn: () => {
+      if (!institutionId) {
+        throw new Error(
+          'Instituição é obrigatória para carregar o Diário de Classe.',
+        );
+      }
+
+      return attendanceService.listInstitutionClassDiary(
+        institutionId,
+        filters,
+      );
+    },
+    enabled: Boolean(institutionId),
+    staleTime: 1000 * 30,
   });
 }

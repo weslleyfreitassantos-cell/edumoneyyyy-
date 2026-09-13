@@ -13,6 +13,7 @@ import {
   buildRollCallRecords,
   calculateAttendanceSummary,
   getAttendanceDayOfWeek,
+  getInstitutionDiaryStatus,
   isEnrollmentValidForAttendanceDate,
   resolveAttendanceScheduleSlot,
   selectAttendanceOfferingForDate,
@@ -1073,5 +1074,16 @@ describe('attendanceService calendar integration', () => {
 
     expect(supabase.from).toHaveBeenCalledTimes(3);
     expect(supabase.rpc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('institution class diary status', () => {
+  it('classifica sessões e slots futuros ou pendentes sem persistir pendências', () => {
+    expect(getInstitutionDiaryStatus('CLOSED', true)).toBe('COMPLETED');
+    expect(getInstitutionDiaryStatus('DRAFT', true)).toBe('DRAFT');
+    expect(getInstitutionDiaryStatus('OPEN', true)).toBe('DRAFT');
+    expect(getInstitutionDiaryStatus('CANCELED', true)).toBe('CANCELED');
+    expect(getInstitutionDiaryStatus(null, true)).toBe('PENDING');
+    expect(getInstitutionDiaryStatus(null, false)).toBe('FUTURE');
   });
 });

@@ -98,6 +98,10 @@ export default function TeacherAttendancePanel({
   const [records, setRecords] = useState<
     EditableAttendanceRecord[]
   >([]);
+  const [topic, setTopic] = useState('');
+  const [classActivity, setClassActivity] = useState('');
+  const [homework, setHomework] = useState('');
+  const [notes, setNotes] = useState('');
   const [successMessage, setSuccessMessage] =
     useState('');
   const [dateAdjustmentMessage, setDateAdjustmentMessage] =
@@ -256,7 +260,8 @@ export default function TeacherAttendancePanel({
   const editingDisabled =
     slotRequired ||
     historicalOnlySlot ||
-    calendarBlocked;
+    calendarBlocked ||
+    activeRollCall?.session?.status === 'CLOSED';
   const blockerLabels = calendarStatus
     ? getCalendarBlockerLabels(calendarStatus.blockers)
     : [];
@@ -274,6 +279,10 @@ export default function TeacherAttendancePanel({
         notes: record.notes ?? '',
       })),
     );
+    setTopic(activeRollCall.session?.topic ?? '');
+    setClassActivity(activeRollCall.session?.classActivity ?? '');
+    setHomework(activeRollCall.session?.homework ?? '');
+    setNotes(activeRollCall.session?.notes ?? '');
     setSuccessMessage('');
   }, [rollCallQuery.dataUpdatedAt, activeRollCall]);
 
@@ -306,11 +315,33 @@ export default function TeacherAttendancePanel({
 
   const hasUnsavedChanges =
     (!activeRollCall?.session && records.length > 0) ||
+    topic !== (activeRollCall?.session?.topic ?? '') ||
+    classActivity !== (activeRollCall?.session?.classActivity ?? '') ||
+    homework !== (activeRollCall?.session?.homework ?? '') ||
+    notes !== (activeRollCall?.session?.notes ?? '') ||
     records.some(
       (record) =>
         originalRecords.get(record.studentId) !==
         getRecordKey(record),
     );
+
+  useEffect(() => {
+    if (!hasUnsavedChanges) {
+      return;
+    }
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () =>
+      window.removeEventListener(
+        'beforeunload',
+        handleBeforeUnload,
+      );
+  }, [hasUnsavedChanges]);
 
   const updateRecord = (
     studentId: string,
@@ -341,10 +372,9 @@ export default function TeacherAttendancePanel({
     );
   };
 
-  const handleSubmit = async (
-    event: FormEvent<HTMLFormElement>,
+  const saveDiary = async (
+    action: 'SAVE_DRAFT' | 'FINALIZE',
   ) => {
-    event.preventDefault();
 
     if (
       !profileId ||
@@ -356,12 +386,27 @@ export default function TeacherAttendancePanel({
       return;
     }
 
+    if (
+      action === 'FINALIZE' &&
+      typeof window !== 'undefined' &&
+      !window.confirm(
+        'Após finalizar, o professor não poderá editar livremente este diário. Deseja continuar?',
+      )
+    ) {
+      return;
+    }
+
     await saveMutation.mutateAsync({
       institutionId,
       subjectOfferingId: selectedOfferingId,
       sessionDate,
       profileId,
       scheduleSlot: selectedScheduleSlot,
+      topic,
+      classActivity,
+      homework,
+      notes,
+      action,
       records: records.map((record) => ({
         studentId: record.studentId,
         status: record.status,
@@ -369,7 +414,18 @@ export default function TeacherAttendancePanel({
       })),
     });
 
-    setSuccessMessage('Chamada salva com sucesso.');
+    setSuccessMessage(
+      action === 'FINALIZE'
+        ? 'Aula finalizada com sucesso.'
+        : 'Rascunho salvo com sucesso.',
+    );
+  };
+
+  const handleSubmit = async (
+    event: FormEvent<HTMLFormElement>,
+  ) => {
+    event.preventDefault();
+    await saveDiary('FINALIZE');
   };
 
   return (
@@ -382,14 +438,16 @@ export default function TeacherAttendancePanel({
           />
           <div>
             <h2 className="text-lg font-bold text-[#181c20]">
-              Chamada
+              Diário de Classe
             </h2>
             <p className="mt-1 text-sm text-[#727785]">
-              {activeRollCall?.session
-                ? 'Sessão carregada para correção.'
+              {activeRollCall?.session?.status === 'CLOSED'
+                ? 'Aula finalizada e disponível para consulta.'
+                : activeRollCall?.session
+                  ? 'Rascunho carregado para continuar o registro.'
                 : activeRollCall?.scheduleSlot
                   ? 'Aula encontrada na grade publicada.'
-                : 'Sessão ainda não salva.'}
+                  : 'Sessão ainda não salva.'}
             </p>
           </div>
         </div>
@@ -627,6 +685,68 @@ export default function TeacherAttendancePanel({
             </button>
           </div>
 
+          <div className="grid gap-4 md:grid-cols-2">
+            {[
+              {
+                id: 'diary-topic',
+                label: 'Conteúdo ministrado',
+                value: topic,
+                setValue: setTopic,
+                placeholder: 'Descreva o conteúdo trabalhado.',
+              },
+              {
+                id: 'diary-activity',
+                label: 'Atividade realizada',
+                value: classActivity,
+                setValue: setClassActivity,
+                placeholder: 'Registre a atividade realizada.',
+              },
+              {
+                id: 'diary-homework',
+                label: 'Tarefa',
+                value: homework,
+                setValue: setHomework,
+                placeholder: 'Registre a tarefa proposta.',
+              },
+              {
+                id: 'diary-notes',
+                label: 'Observações da aula',
+                value: notes,
+                setValue: setNotes,
+                placeholder: 'Anote observações gerais da aula.',
+              },
+            ].map((field) => (
+              <div key={field.id}>
+                <label
+                  htmlFor={field.id}
+                  className="text-xs font-bold uppercase tracking-wide text-[#727785]"
+                >
+                  {field.label}
+                </label>
+                <textarea
+                  id={field.id}
+                  value={field.value}
+                  onChange={(event) => {
+                    field.setValue(event.target.value);
+                    setSuccessMessage('');
+                  }}
+                  disabled={editingDisabled}
+                  rows={3}
+                  placeholder={field.placeholder}
+                  className="mt-1 w-full resize-y rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors placeholder:text-[#8a93a3] focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-[#f7f9fc]"
+                />
+              </div>
+            ))}
+          </div>
+
+          {activeRollCall?.session?.status === 'CLOSED' && (
+            <div
+              className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800"
+            >
+              Aula finalizada. O diário e a chamada estão disponíveis somente para leitura.
+            </div>
+          )}
+
           {dateAdjustmentMessage && (
             <div
               role="status"
@@ -844,9 +964,24 @@ export default function TeacherAttendancePanel({
             </div>
           )}
 
-          <div className="flex justify-end">
+          <div className="flex flex-wrap justify-end gap-3">
+            <button
+              type="button"
+              onClick={() => void saveDiary('SAVE_DRAFT')}
+              disabled={
+                saveMutation.isPending ||
+                records.length === 0 ||
+                !hasUnsavedChanges ||
+                editingDisabled
+              }
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              <Save className="h-4 w-4" aria-hidden="true" />
+              {saveMutation.isPending ? 'Salvando...' : 'Salvar rascunho'}
+            </button>
             <button
               type="submit"
+              aria-label="Finalizar aula (Salvar chamada)"
               disabled={
                 saveMutation.isPending ||
                 records.length === 0 ||
@@ -861,7 +996,7 @@ export default function TeacherAttendancePanel({
               />
               {saveMutation.isPending
                 ? 'Salvando...'
-                : 'Salvar chamada'}
+                : 'Finalizar aula'}
             </button>
           </div>
         </form>

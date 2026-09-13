@@ -144,6 +144,7 @@ const adminModuleIcons: Record<
   enrollments: ClipboardCheck,
   assignments: ListChecks,
   attendance: ClipboardList,
+  'class-diary': ClipboardList,
   grades: BadgeCheck,
   'term-closing': FileCheck2,
   'class-councils': UsersRound,
@@ -283,12 +284,12 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
   {
     id: 'teacher-attendance',
-    label: 'Chamadas',
-    path: '/dashboard/attendance',
+    label: 'Diário de Classe',
+    path: '/dashboard/class-diary',
     section: 'teacher',
     icon: ClipboardCheck,
     roles: ['teacher'],
-    activePaths: ['/dashboard/attendance'],
+    activePaths: ['/dashboard/attendance', '/dashboard/class-diary'],
     exactActivePath: true,
   },
   {

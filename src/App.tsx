@@ -657,6 +657,16 @@ function AppRoutes() {
           }
         />
         <Route
+          path="/dashboard/class-diary"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/dashboard/grades"
           element={
             <ProtectedRoute allowedRoles={['TEACHER']}>

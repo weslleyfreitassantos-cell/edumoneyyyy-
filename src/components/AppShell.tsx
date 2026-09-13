@@ -240,10 +240,13 @@ export function getRouteVisualContext(
         };
       }
 
-      if (normalizedPath === '/dashboard/attendance') {
+      if (
+        normalizedPath === '/dashboard/attendance' ||
+        normalizedPath === '/dashboard/class-diary'
+      ) {
         return {
           section: 'Operação docente',
-          title: 'Chamadas',
+          title: 'Diário de Classe',
         };
       }
 
