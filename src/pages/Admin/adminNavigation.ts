@@ -6,6 +6,7 @@ import type { CurrentDatabaseRole } from '../../lib/permissions';
 export type AdminModuleId =
   | 'overview'
   | 'attendance'
+  | 'class-diary'
   | 'grades'
   | 'school-users'
   | 'students'
@@ -239,6 +240,16 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('attendance'),
+    visibleInSidebar: false,
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'class-diary',
+    label: 'Diário de Classe',
+    groupId: 'school-operation',
+    permission: 'view_school_dashboard',
+    href: moduleHref('class-diary'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'grades',

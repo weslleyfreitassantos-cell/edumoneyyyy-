@@ -411,7 +411,7 @@ async function createFixture(): Promise<Fixture> {
     status: 'PUBLISHED',
     created_by: actors['teacher-b'].id,
   });
-  const attendanceSession = (await insertOne(directorA, 'attendance_sessions', {
+  const attendanceSession = (await insertOne(service, 'attendance_sessions', {
     institution_id: institutionA,
     subject_offering_id: offeringA,
     session_date: '2026-05-04',

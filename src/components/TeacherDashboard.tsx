@@ -222,11 +222,14 @@ export default function TeacherDashboard() {
     );
   }
 
-  if (location.pathname === '/dashboard/attendance') {
+  if (
+    location.pathname === '/dashboard/attendance' ||
+    location.pathname === '/dashboard/class-diary'
+  ) {
     return (
       <TeacherWorkspacePage
-        title="Chamadas"
-        description="Registre a presença dos alunos nas aulas previstas para você."
+        title="Diário de Classe"
+        description="Registre o conteúdo da aula e a presença dos alunos."
       >
         <TeacherAttendancePanel
           profileId={profile.id}

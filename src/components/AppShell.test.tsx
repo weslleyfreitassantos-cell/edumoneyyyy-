@@ -244,7 +244,7 @@ describe('getRouteVisualContext', () => {
       getRouteVisualContext('/dashboard/attendance', 'teacher'),
     ).toEqual({
       section: 'Operação docente',
-      title: 'Chamadas',
+      title: 'Diário de Classe',
     });
     expect(
       getRouteVisualContext('/dashboard/grades', 'teacher'),

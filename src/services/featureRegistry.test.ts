@@ -25,7 +25,7 @@ describe('featureRegistry', () => {
       expect.arrayContaining([
         '/dashboard/timetable',
         '/dashboard/materials',
-        '/dashboard/attendance',
+        '/dashboard/class-diary',
         '/dashboard/grades',
         '/dashboard/term-closing',
       ]),

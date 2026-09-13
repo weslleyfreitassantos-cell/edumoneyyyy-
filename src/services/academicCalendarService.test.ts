@@ -21,6 +21,7 @@ function queryBuilder(data: unknown[] = []) {
     gte: vi.fn(),
     lt: vi.fn(),
     or: vi.fn(),
+    in: vi.fn(),
     order: vi.fn(),
     limit: vi.fn(),
     insert: vi.fn(),
@@ -28,7 +29,7 @@ function queryBuilder(data: unknown[] = []) {
     single: vi.fn(),
   } as Record<string, ReturnType<typeof vi.fn>>;
 
-  for (const method of ['select', 'eq', 'gte', 'lt', 'or', 'order', 'limit', 'insert', 'update']) {
+  for (const method of ['select', 'eq', 'gte', 'lt', 'or', 'in', 'order', 'limit', 'insert', 'update']) {
     builder[method].mockReturnValue(builder);
   }
   builder.single.mockResolvedValue({ data: data[0] ?? null, error: null });
@@ -106,6 +107,33 @@ describe('academicCalendarService', () => {
 
     expect(supabase.from).toHaveBeenCalledWith('academic_calendar_events');
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+  });
+
+  it('carrega bloqueios de toda a janela em uma única consulta', async () => {
+    const query = queryBuilder();
+    vi.mocked(supabase.from).mockReturnValue(query as never);
+
+    await academicCalendarService.listBlockingEventsForRange(
+      'institution-1',
+      '2026-09-01',
+      '2026-09-30',
+    );
+
+    expect(supabase.from).toHaveBeenCalledOnce();
+    expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+    expect(query.eq).toHaveBeenCalledWith('active', true);
+    expect(query.eq).toHaveBeenCalledWith('all_day', true);
+    expect(query.in).toHaveBeenCalledWith(
+      'event_type',
+      ['HOLIDAY', 'RECESS', 'CLASS_SUSPENSION'],
+    );
+    expect(query.lt).toHaveBeenCalledWith(
+      'starts_at',
+      '2026-10-01T00:00:00.000Z',
+    );
+    expect(query.or).toHaveBeenCalledWith(
+      'ends_at.gte.2026-09-01T00:00:00.000Z,ends_at.is.null',
+    );
   });
 
   it('filtra por sobreposição quando a data está dentro de um intervalo', async () => {

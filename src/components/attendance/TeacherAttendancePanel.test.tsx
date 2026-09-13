@@ -83,8 +83,10 @@ const rollCall = {
     startsAt: null,
     endsAt: null,
     topic: null,
+    classActivity: null,
+    homework: null,
     notes: null,
-    status: 'CLOSED',
+    status: 'DRAFT',
     createdBy: 'teacher-1',
     closedAt: '2026-02-02T10:00:00.000Z',
     createdAt: '2026-02-02T10:00:00.000Z',
@@ -123,6 +125,10 @@ const rollCall = {
 };
 
 beforeEach(() => {
+  Object.defineProperty(window, 'confirm', {
+    configurable: true,
+    value: vi.fn(() => true),
+  });
   mutateAsync.mockReset();
   mutateAsync.mockResolvedValue(rollCall);
 
@@ -194,7 +200,7 @@ describe('TeacherAttendancePanel', () => {
 
     expect(
       screen.getByText(
-        /Sessão carregada para correção/,
+        /Rascunho carregado para continuar o registro/,
       ),
     ).toBeTruthy();
     const dateInput = screen.getByLabelText('Data');
@@ -749,5 +755,73 @@ describe('TeacherAttendancePanel', () => {
     expect(screen.getByText('7h 30min')).toBeTruthy();
     expect(screen.getByText('77.78%')).toBeTruthy();
     expect(screen.getByText('140%')).toBeTruthy();
+  });
+
+  it('permite salvar os campos do Diário como rascunho', async () => {
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Equação do segundo grau' },
+    });
+    fireEvent.change(screen.getByLabelText('Atividade realizada'), {
+      target: { value: 'Exercícios 1 a 10' },
+    });
+    fireEvent.change(screen.getByLabelText('Tarefa'), {
+      target: { value: 'Exercícios 11 a 15' },
+    });
+    fireEvent.change(screen.getByLabelText('Observações da aula'), {
+      target: { value: 'Revisar Bhaskara.' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          action: 'SAVE_DRAFT',
+          topic: 'Equação do segundo grau',
+          classActivity: 'Exercícios 1 a 10',
+          homework: 'Exercícios 11 a 15',
+          notes: 'Revisar Bhaskara.',
+        }),
+      );
+    });
+  });
+
+  it('mantém aula CLOSED somente para leitura', () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: rollCall,
+      dataUpdatedAt: 4,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    const closedRollCall = {
+      ...rollCall,
+      session: { ...rollCall.session, status: 'CLOSED' as const },
+    };
+    useAttendanceRollCall.mockReturnValue({
+      data: closedRollCall,
+      dataUpdatedAt: 5,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getAllByText(/Aula finalizada/).length).toBeGreaterThan(0);
+    expect(screen.getByLabelText('Conteúdo ministrado').hasAttribute('disabled')).toBe(true);
+    expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(true);
+    expect(screen.getByRole('button', { name: /Finalizar aula/ }).hasAttribute('disabled')).toBe(true);
   });
 });

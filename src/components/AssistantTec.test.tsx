@@ -42,7 +42,7 @@ describe('AssistantTec', () => {
     ).toBeTruthy();
   });
 
-  it('exibe chamadas e avaliações apenas para o professor', () => {
+  it('exibe Diário de Classe e avaliações apenas para o professor', () => {
     renderAssistant('teacher');
     const input = screen.getByRole('textbox', {
       name: 'Pergunte ao Assistente TEC',
@@ -50,7 +50,7 @@ describe('AssistantTec', () => {
 
     fireEvent.change(input, { target: { value: 'chamada' } });
     expect(
-      screen.getByRole('button', { name: /^Chamadas/ }),
+      screen.getByRole('button', { name: /^Diário de Classe/ }),
     ).toBeTruthy();
 
     fireEvent.change(input, { target: { value: 'notas' } });

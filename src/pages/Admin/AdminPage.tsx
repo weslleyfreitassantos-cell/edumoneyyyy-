@@ -315,6 +315,7 @@ export default function AdminPage() {
           />
         );
       case 'attendance':
+      case 'class-diary':
         return (
           <InstitutionAttendancePanel
             institutionId={institutionQuery.data}
