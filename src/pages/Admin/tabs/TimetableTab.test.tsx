@@ -42,6 +42,8 @@ vi.mock('../../../hooks/useTimetable', () => ({
   useSetTimetableEntryActive: vi.fn(() => ({ mutateAsync: vi.fn(), isPending: false })),
 }));
 
+vi.mock('../../../lib/supabaseClient', () => ({ supabase: {} }));
+
 import TimetableTab from './TimetableTab';
 
 const UUID = '00000000-0000-0000-0000-000000000000';
@@ -53,6 +55,10 @@ const baseEntries = [
     id: 'e1',
     institution_id: '11111111-1111-1111-1111-111111111111',
     subject_offering_id: OFFERING_1_UUID,
+    class_id: 'class-1',
+    academic_year_id: 'year-1',
+    term_id: 'term-1',
+    teacher_profile_id: 'prof-1',
     room_id: 'room-1',
     room_name: 'Sala 01',
     day_of_week: 2,
@@ -68,6 +74,10 @@ const baseEntries = [
     id: 'e2',
     institution_id: '11111111-1111-1111-1111-111111111111',
     subject_offering_id: OFFERING_2_UUID,
+    class_id: 'class-1',
+    academic_year_id: 'year-1',
+    term_id: 'term-1',
+    teacher_profile_id: 'prof-2',
     room_id: null,
     room_name: null,
     day_of_week: 3,
@@ -160,6 +170,10 @@ function renderTab(route = '/admin?module=timetable') {
   );
 }
 
+function openClassGrade() {
+  fireEvent.click(screen.getByRole('button', { name: /Ver grade/i }));
+}
+
 beforeEach(() => {
   vi.clearAllMocks();
   mockDefaultHooks();
@@ -172,20 +186,24 @@ afterEach(() => {
 describe('TimetableTab', () => {
   it('renderiza grade horaria com entradas', () => {
     renderTab();
+    expect(screen.getByRole('region', { name: 'Turmas na grade' })).toBeTruthy();
+    openClassGrade();
     expect(screen.getByText('Português')).toBeTruthy();
     expect(screen.getByText('Matemática')).toBeTruthy();
-    expect(screen.getByText('Prof Silva')).toBeTruthy();
-    expect(screen.getByText('Prof Souza')).toBeTruthy();
+    expect(screen.getAllByText('Prof Silva').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Prof Souza').length).toBeGreaterThan(0);
   });
 
   it('mostra horarios na grade', () => {
     renderTab();
+    openClassGrade();
     expect(screen.getAllByText(/07:00/).length).toBeGreaterThanOrEqual(1);
     expect(screen.getAllByText(/07:50/).length).toBeGreaterThanOrEqual(1);
   });
 
   it('mostra sala na celula da grade', () => {
     renderTab();
+    openClassGrade();
     expect(screen.getByText('Sala 01')).toBeTruthy();
   });
 
@@ -197,14 +215,28 @@ describe('TimetableTab', () => {
 
   it('filtra por turma', () => {
     renderTab();
-    const classSelect = screen.getByLabelText(/turma/i);
+    const classSelect = screen.getAllByRole('combobox', { name: 'Turma' })[0];
     expect(classSelect).toBeTruthy();
+    fireEvent.change(classSelect, { target: { value: 'class-1' } });
+    expect(screen.getAllByText('Português').length).toBeGreaterThan(0);
   });
 
   it('filtra por dia da semana', () => {
     renderTab();
     const daySelect = screen.getByLabelText(/dia da semana/i);
     expect(daySelect).toBeTruthy();
+    fireEvent.change(daySelect, { target: { value: '2' } });
+    openClassGrade();
+    expect(screen.getAllByText('Português').length).toBeGreaterThan(0);
+    expect(screen.queryByText('Matemática')).toBeNull();
+  });
+
+  it('mostra contexto de turma quando filtrado por professor e permite editar o card', () => {
+    renderTab();
+    fireEvent.change(screen.getByLabelText(/professor/i), { target: { value: 'prof-1' } });
+    expect(screen.getByText('Turma 1A')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: /Editar Português 07:00/i }));
+    expect(screen.getByLabelText(/disciplina \/ professor \/ período/i)).toBeTruthy();
   });
 
   it('abre modal de criacao ao clicar em Adicionar horario', () => {

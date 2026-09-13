@@ -1,9 +1,13 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
+  BookOpen,
+  ChevronRight,
   Edit3,
+  MapPin,
   Power,
   PowerOff,
+  UsersRound,
 } from 'lucide-react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -56,64 +60,26 @@ function getPreferredTermId(year: AcademicYearRow | undefined): string {
     ?? activeTerms[0].id;
 }
 
-function TimetableView({ grid, onEdit }: { grid: TimetableGrid; onEdit: (e: TimetableEntryRow) => void }) {
-  function renderGridCell(entry: TimetableEntryRow) {
-    return (
-      <div
-        key={entry.id}
-        className="cursor-pointer rounded-md border border-blue-200 bg-blue-50 p-1.5 text-xs hover:bg-blue-100 dark:border-blue-800 dark:bg-blue-950/50 dark:hover:bg-blue-900/60"
-        onClick={() => onEdit(entry)}
-      >
-        <div className="font-semibold text-[#181c20] dark:text-blue-50">{entry.subject_name}</div>
-        <div className="text-[#727785] dark:text-slate-300">{entry.teacher_name ?? '—'}</div>
-        {entry.room_name && <div className="text-[#727785] dark:text-slate-300">{entry.room_name}</div>}
-      </div>
-    );
-  }
+function TimetableClassOverview({ entries, onViewClass }: { entries: TimetableEntryRow[]; onViewClass: (classId: string) => void }) {
+  const classes = Array.from(entries.filter((entry) => entry.active).reduce((map, entry) => {
+    const current = map.get(entry.class_id) ?? { id: entry.class_id, name: entry.class_name, count: 0 };
+    current.count += 1;
+    map.set(entry.class_id, current);
+    return map;
+  }, new Map<string, { id: string; name: string; count: number }>()).values()).sort((left, right) => left.name.localeCompare(right.name, 'pt-BR'));
 
-  if (grid.timeSlots.length === 0) {
-    return (
-      <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 text-center text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">
-        Nenhum horário cadastrado. Clique em "Adicionar horário" para começar.
-      </div>
-    );
-  }
+  if (classes.length === 0) return <div className="rounded-xl border border-slate-200 bg-slate-50 p-8 text-center text-sm text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">Nenhuma turma possui horários nesta seleção.</div>;
+  return <section aria-label="Turmas na grade" className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{classes.map((classItem) => <article key={classItem.id} className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wide text-blue-700 dark:text-blue-300">Turma</p><h2 className="mt-1 text-lg font-bold text-slate-900 dark:text-white">{classItem.name}</h2><p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{classItem.count} horário(s) ativo(s)</p></div><UsersRound className="h-5 w-5 text-blue-600" aria-hidden="true" /></div><button type="button" onClick={() => onViewClass(classItem.id)} className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-blue-700 hover:text-blue-900 dark:text-blue-300 dark:hover:text-blue-200">Ver grade <ChevronRight className="h-4 w-4" aria-hidden="true" /></button></article>)}</section>;
+}
 
-  return (
-    <div className="overflow-x-auto rounded-xl border border-[#dfe3e8] dark:border-slate-700">
-      <table className="min-w-full divide-y divide-[#dfe3e8] text-sm dark:divide-slate-700">
-        <thead>
-          <tr className="bg-gray-50 dark:bg-slate-800">
-            <th className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase dark:text-slate-300">Horário</th>
-            {grid.days.map((day) => (
-              <th key={day.day} className="px-3 py-2 text-left text-xs font-semibold text-[#727785] uppercase dark:text-slate-300">
-                {day.label}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-[#dfe3e8] dark:divide-slate-700">
-          {grid.timeSlots.map((slot, idx) => (
-            <tr key={`${slot.start_time}-${slot.end_time}`} className={idx % 2 === 0 ? 'bg-white dark:bg-slate-900' : 'bg-gray-50/50 dark:bg-slate-800/60'}>
-              <td className="whitespace-nowrap px-3 py-2 text-xs font-medium text-[#727785] dark:text-slate-400">
-                {slot.start_time} – {slot.end_time}
-              </td>
-              {grid.days.map((day) => {
-                const daySlot = day.slots[idx];
-                return (
-                  <td key={day.day} className="px-1 py-1 align-top">
-                    <div className="flex flex-col gap-1">
-                      {daySlot?.entries.map((entry) => renderGridCell(entry))}
-                    </div>
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+function TimetableView({ grid, dayFilter, showClassContext, onEdit }: { grid: TimetableGrid; dayFilter: string; showClassContext: boolean; onEdit: (e: TimetableEntryRow) => void }) {
+  const days = dayFilter === 'all' ? grid.days : grid.days.filter((day) => day.day === Number(dayFilter));
+  const [mobileDay, setMobileDay] = useState(days[0]?.day ?? 1);
+  useEffect(() => { if (days.length > 0 && !days.some((day) => day.day === mobileDay)) setMobileDay(days[0].day); }, [days, mobileDay]);
+  const renderCard = (entry: TimetableEntryRow) => <button key={entry.id} type="button" aria-label={`Editar ${entry.subject_name} ${entry.start_time}`} onClick={() => onEdit(entry)} className="w-full rounded-lg border border-blue-200 bg-blue-50 p-2 text-left text-xs shadow-sm transition hover:border-blue-400 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/50 dark:hover:bg-blue-900/60"><span className="flex items-center gap-1 font-bold text-slate-900 dark:text-blue-50"><BookOpen className="h-3.5 w-3.5 shrink-0 text-blue-700 dark:text-blue-300" aria-hidden="true" />{entry.subject_name}</span><span className="mt-1 block text-slate-600 dark:text-slate-300">{entry.teacher_name ?? 'Professor não informado'}</span>{showClassContext && <span className="mt-1 block font-semibold text-blue-700 dark:text-blue-300">Turma {entry.class_name}</span>}{entry.room_name && <span className="mt-1 flex items-center gap-1 text-slate-600 dark:text-slate-300"><MapPin className="h-3 w-3" aria-hidden="true" />{entry.room_name}</span>}</button>;
+  if (grid.timeSlots.length === 0 || days.length === 0) return <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">Nenhum horário cadastrado para os filtros atuais.</div>;
+  const mobile = days.find((day) => day.day === mobileDay) ?? days[0];
+  return <div className="space-y-3"><div className="flex gap-2 overflow-x-auto md:hidden" role="tablist" aria-label="Dias da semana">{days.map((day) => <button key={day.day} type="button" role="tab" aria-selected={mobile.day === day.day} onClick={() => setMobileDay(day.day)} className={`whitespace-nowrap rounded-lg border px-3 py-2 text-sm font-semibold ${mobile.day === day.day ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 text-slate-600 dark:border-slate-700 dark:text-slate-300'}`}>{day.label}</button>)}</div><div className="md:hidden rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="space-y-2">{grid.timeSlots.map((slot, index) => { const entries = mobile.slots[index]?.entries ?? []; return <div key={`${slot.start_time}-${slot.end_time}`} className="grid grid-cols-[76px_1fr] gap-3 border-b border-slate-100 py-3 last:border-0 dark:border-slate-800"><div className="text-xs font-semibold text-slate-500 dark:text-slate-400">{slot.start_time}<br />{slot.end_time}</div><div className="space-y-2">{entries.length > 0 ? entries.map(renderCard) : <span className="text-xs text-slate-400">Sem aula</span>}</div></div>; })}</div></div><div className="hidden max-h-[70vh] overflow-auto rounded-xl border border-slate-200 md:block dark:border-slate-700"><div className="min-w-[760px]" style={{ display: 'grid', gridTemplateColumns: `108px repeat(${days.length}, minmax(190px, 1fr))` }}><div className="sticky left-0 top-0 z-20 border-b border-slate-200 bg-slate-100 p-3 text-xs font-bold uppercase text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">Horário</div>{days.map((day) => <div key={day.day} className="sticky top-0 z-10 border-b border-l border-slate-200 bg-slate-100 p-3 text-xs font-bold uppercase text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">{day.label}</div>)}{grid.timeSlots.map((slot, index) => <div key={`${slot.start_time}-${slot.end_time}`} className="contents"><div className="sticky left-0 z-10 border-b border-slate-200 bg-white p-3 text-xs font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">{slot.start_time}<br />{slot.end_time}</div>{days.map((day) => <div key={day.day} className="min-h-24 border-b border-l border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900"><div className="space-y-2">{(day.slots[index]?.entries ?? []).map(renderCard)}</div></div>)}</div>)}</div></div></div>;
 }
 
 export default function TimetableTab() {
@@ -186,6 +152,8 @@ export default function TimetableTab() {
   }, [entries, classFilter, dayFilter, teacherFilter, termFilter, yearFilter]);
 
   const grid = useMemo(() => timetableService.buildGrid(filteredEntries), [filteredEntries]);
+  const showClassOverview = classFilter === 'all' && teacherFilter === 'all';
+  const showClassContext = classFilter === 'all' && teacherFilter !== 'all';
 
   // Assignments grouped by class for the entry modal
   const assignmentsByClass = useMemo(() => {
@@ -388,11 +356,22 @@ export default function TimetableTab() {
         <div role="status" className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">{feedbackMessage}</div>
       )}
 
+      <div className="flex flex-col gap-1 border-b border-[#dfe3e8] pb-3 dark:border-slate-700 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700 dark:text-blue-300">Grade horária</p>
+          <h1 className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">Organize a semana por turma</h1>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Escolha uma turma para abrir a grade detalhada ou filtre por professor.</p>
+        </div>
+        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{yearFilter === 'all' ? 'Todos os anos' : years.find((year) => year.id === yearFilter)?.name} · {termFilter === 'all' ? 'Todos os períodos' : 'Período selecionado'}</span>
+      </div>
+
       {/* Sub-navigation */}
-      <div className="flex gap-2 border-b border-[#dfe3e8] pb-2 dark:border-slate-700">
+      <div className="flex gap-2 overflow-x-auto border-b border-[#dfe3e8] pb-2 dark:border-slate-700" role="tablist" aria-label="Recursos da grade horária">
         <button
           type="button"
           onClick={() => setSubView('grid')}
+          role="tab"
+          aria-selected={subView === 'grid'}
           className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'grid' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Grade Horária
@@ -400,6 +379,8 @@ export default function TimetableTab() {
         <button
           type="button"
           onClick={() => setSubView('rooms')}
+          role="tab"
+          aria-selected={subView === 'rooms'}
           className={`px-4 py-2 text-sm font-medium rounded-t-lg ${subView === 'rooms' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Salas
@@ -407,6 +388,8 @@ export default function TimetableTab() {
         <button
           type="button"
           onClick={() => setSubView('automation')}
+          role="tab"
+          aria-selected={subView === 'automation'}
           className={`rounded-t-lg px-4 py-2 text-sm font-medium ${subView === 'automation' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
         >
           Automacao
@@ -418,7 +401,7 @@ export default function TimetableTab() {
       {subView === 'grid' && (
         <>
           {/* Filters */}
-          <section className="flex flex-col gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 dark:border-slate-700 dark:bg-slate-900 sm:flex-row sm:flex-wrap sm:items-end">
+          <section className="grid gap-3 rounded-xl border border-[#dfe3e8] bg-white p-4 dark:border-slate-700 dark:bg-slate-900 sm:grid-cols-2 xl:grid-cols-3">
             <div>
               <label htmlFor="tt-year-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Ano letivo</label>
               <select id="tt-year-filter" value={yearFilter} onChange={(e) => { setYearFilter(e.target.value); setTermFilter('all'); }} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
@@ -452,7 +435,7 @@ export default function TimetableTab() {
               <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Professor</label>
               <select id="tt-teacher-filter" value={teacherFilter} onChange={(e) => setTeacherFilter(e.target.value)} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                 <option value="all">Todos</option>
-                {teachers.filter((teacher) => teacher.active).map((teacher) => <option key={teacher.profile_id} value={teacher.profile_id}>{teacher.profiles?.full_name ?? teacher.profile_id}</option>)}
+                {teachers.map((teacher) => <option key={teacher.profile_id} value={teacher.profile_id}>{teacher.name ?? teacher.profile_id}</option>)}
               </select>
             </div>
 
@@ -471,7 +454,7 @@ export default function TimetableTab() {
               </select>
             </div>
 
-            <div className="sm:ml-auto">
+            <div className="sm:col-span-2 xl:col-span-1 xl:flex xl:justify-end">
               <button
                 type="button"
                 onClick={openCreateEntryModal}
@@ -484,7 +467,7 @@ export default function TimetableTab() {
           </section>
 
           {/* Grid */}
-          <TimetableView grid={grid} onEdit={openEditEntryModal} />
+          {showClassOverview ? <TimetableClassOverview entries={filteredEntries} onViewClass={setClassFilter} /> : <TimetableView grid={grid} dayFilter={dayFilter} showClassContext={showClassContext} onEdit={openEditEntryModal} />}
         </>
       )}
 
