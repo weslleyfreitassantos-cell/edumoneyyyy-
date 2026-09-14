@@ -65,6 +65,7 @@ export const SYSTEM_PERMISSIONS = [
   'manage_school_communications',
   'issue_academic_documents',
   'view_student_academic_record',
+  'view_academic_reports',
   'view_reports',
   'view_own_classes',
   'view_own_student_data',
@@ -101,6 +102,7 @@ const DIRECTOR_PERMISSIONS = [
   'manage_school_communications',
   'issue_academic_documents',
   'view_student_academic_record',
+  'view_academic_reports',
   'view_reports',
   'view_live_cameras',
 ] as const satisfies readonly SystemPermission[];

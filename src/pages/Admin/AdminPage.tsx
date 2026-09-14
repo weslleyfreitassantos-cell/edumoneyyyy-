@@ -50,6 +50,7 @@ import AnnouncementsTab from './tabs/AnnouncementsTab';
 import AcademicCalendarTab from './tabs/AcademicCalendarTab';
 import AcademicDocumentsTab from './tabs/AcademicDocumentsTab';
 import StudentAcademicRecordTab from './tabs/StudentAcademicRecordTab';
+import AcademicReportsTab from './tabs/AcademicReportsTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -358,6 +359,8 @@ export default function AdminPage() {
         return <AcademicDocumentsTab />;
       case 'student-record':
         return <StudentAcademicRecordTab />;
+      case 'academic-reports':
+        return <AcademicReportsTab />;
       case 'school-users':
         return <SchoolUsersTab />;
       case 'directors':

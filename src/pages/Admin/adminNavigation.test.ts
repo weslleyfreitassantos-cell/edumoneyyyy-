@@ -6,6 +6,24 @@ import {
 } from './adminNavigation';
 
 describe('academic documents admin navigation', () => {
+  it('registra relatórios acadêmicos somente para direção e secretaria', () => {
+    const module = ADMIN_MODULES.find((item) => item.id === 'academic-reports');
+
+    expect(module).toMatchObject({
+      label: 'Relatórios acadêmicos',
+      groupId: 'school-operation',
+      permission: 'view_academic_reports',
+      href: '/admin?module=academic-reports',
+      allowedRoles: ['DIRECTOR', 'SECRETARY'],
+    });
+    expect(isAdminModuleAvailable(module!, 'DIRECTOR')).toBe(true);
+    expect(isAdminModuleAvailable(module!, 'SECRETARY')).toBe(true);
+    expect(isAdminModuleAvailable(module!, 'ADMIN')).toBe(false);
+    expect(isAdminModuleAvailable(module!, 'TEACHER')).toBe(false);
+    expect(isAdminModuleAvailable(module!, 'STUDENT')).toBe(false);
+    expect(isAdminModuleAvailable(module!, 'GUARDIAN')).toBe(false);
+  });
+
   it('registers the module only for director and secretary', () => {
     const module = ADMIN_MODULES.find((item) => item.id === 'academic-documents');
 

@@ -152,6 +152,7 @@ const adminModuleIcons: Record<
   'pedagogical-monitoring': BarChart3,
   'academic-documents': FileCheck2,
   'student-record': FileUser,
+  'academic-reports': BarChart3,
   'academic-policies': ShieldCheck,
   'academic-calendar': CalendarDays,
   announcements: Megaphone,
