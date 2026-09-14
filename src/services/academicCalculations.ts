@@ -29,6 +29,14 @@ export const TERM_RESULT_STATUSES = [
 export type TermResultStatus =
   (typeof TERM_RESULT_STATUSES)[number];
 
+export const ACADEMIC_RECOVERY_COMPOSITION_RULE =
+  'HIGHEST_SCORE_V1' as const;
+
+export type AcademicRecoveryStatus =
+  | 'DRAFT'
+  | 'PUBLISHED'
+  | 'CANCELED';
+
 export interface AcademicPolicyRule {
   minimumGradePercentage: number;
   minimumAttendancePercentage: number;
@@ -51,6 +59,16 @@ export interface TermResultCalculation {
   gradePercentage: number | null;
   attendancePercentage: number | null;
   resultStatus: TermResultStatus;
+}
+
+export interface AcademicRecoveryResult {
+  originalGradePercentage: number | null;
+  recoveryPercentage: number | null;
+  finalGradePercentage: number | null;
+  attendancePercentage: number | null;
+  originalResultStatus: TermResultStatus;
+  resultStatus: TermResultStatus;
+  compositionRule: typeof ACADEMIC_RECOVERY_COMPOSITION_RULE | null;
 }
 
 export type AcademicPolicyValidationCode =
@@ -267,5 +285,91 @@ export function calculateTermResult(
       gradePercentage,
       attendancePercentage,
     ),
+  };
+}
+
+export function isRecoveryEligible(
+  resultStatus: TermResultStatus,
+): boolean {
+  return (
+    resultStatus === 'FAILED_BY_GRADE' ||
+    resultStatus === 'FAILED_BY_GRADE_AND_ATTENDANCE'
+  );
+}
+
+export function calculateRecoveryPercentage(
+  score: number,
+  maxScore: number,
+  decimalPlaces = 2,
+): number | null {
+  if (
+    !Number.isFinite(score) ||
+    !Number.isFinite(maxScore) ||
+    maxScore <= 0 ||
+    score < 0 ||
+    score > maxScore
+  ) {
+    return null;
+  }
+
+  return roundAcademicPercentage(
+    (score / maxScore) * 100,
+    decimalPlaces,
+  );
+}
+
+export function calculateEffectiveGradePercentage(
+  originalGradePercentage: number | null,
+  recoveryPercentage: number | null,
+  decimalPlaces: number,
+): number | null {
+  if (originalGradePercentage === null) {
+    return null;
+  }
+
+  if (recoveryPercentage === null) {
+    return originalGradePercentage;
+  }
+
+  return roundAcademicPercentage(
+    Math.max(originalGradePercentage, recoveryPercentage),
+    decimalPlaces,
+  );
+}
+
+export function calculateEffectiveTermResult(
+  policy: AcademicPolicyRule | null,
+  originalGradePercentage: number | null,
+  recoveryPercentage: number | null,
+  attendancePercentage: number | null,
+): AcademicRecoveryResult {
+  const originalResultStatus = calculateTermResultStatus(
+    policy,
+    originalGradePercentage,
+    attendancePercentage,
+  );
+  const appliedRecovery = isRecoveryEligible(originalResultStatus)
+    ? recoveryPercentage
+    : null;
+  const finalGradePercentage = calculateEffectiveGradePercentage(
+    originalGradePercentage,
+    appliedRecovery,
+    policy?.decimalPlaces ?? 1,
+  );
+
+  return {
+    originalGradePercentage,
+    recoveryPercentage: appliedRecovery,
+    finalGradePercentage,
+    attendancePercentage,
+    originalResultStatus,
+    resultStatus: calculateTermResultStatus(
+      policy,
+      finalGradePercentage,
+      attendancePercentage,
+    ),
+    compositionRule: appliedRecovery === null
+      ? null
+      : ACADEMIC_RECOVERY_COMPOSITION_RULE,
   };
 }
