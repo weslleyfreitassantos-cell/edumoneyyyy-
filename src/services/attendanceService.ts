@@ -373,6 +373,7 @@ export interface AttendanceInstitutionFilters {
   academicYearId?: string;
   includeCanceled?: boolean;
   sessionIds?: readonly string[];
+  limit?: number | null;
 }
 
 export interface AttendanceFilterOption {
@@ -2603,9 +2604,9 @@ export const attendanceService = {
       sessionQuery = sessionQuery.in('id', [...filters.sessionIds]);
     }
 
-    const { data, error } = filters.sessionIds
+    const { data, error } = filters.sessionIds || filters.limit === null
       ? await sessionQuery
-      : await sessionQuery.limit(250);
+      : await sessionQuery.limit(filters.limit ?? 250);
 
     if (error) {
       throw createAttendanceError(

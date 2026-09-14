@@ -156,6 +156,16 @@ describe('school permissions', () => {
     expect(hasPermission(null, 'GUARDIAN', 'view_student_academic_record')).toBe(false);
     expect(hasPermission('SUPER_ADMIN', null, 'view_student_academic_record')).toBe(false);
   });
+
+  it('reserva relatórios acadêmicos à direção e secretaria', () => {
+    expect(hasPermission(null, 'DIRECTOR', 'view_academic_reports')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'view_academic_reports')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'view_academic_reports')).toBe(false);
+    expect(hasPermission(null, 'TEACHER', 'view_academic_reports')).toBe(false);
+    expect(hasPermission(null, 'STUDENT', 'view_academic_reports')).toBe(false);
+    expect(hasPermission(null, 'GUARDIAN', 'view_academic_reports')).toBe(false);
+    expect(hasPermission('SUPER_ADMIN', null, 'view_academic_reports')).toBe(false);
+  });
 });
 
 describe('effective role permissions', () => {
