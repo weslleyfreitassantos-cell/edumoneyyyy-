@@ -350,4 +350,131 @@ describe('pedagogicalMonitoringService', () => {
     expect(external.students).toEqual([]);
     expect(incompatible.students).toEqual([]);
   });
+
+  it('usa a nota final da recuperação no risco do monitoramento', async () => {
+    vi.mocked(reportCardService.getGuardianReportCards).mockResolvedValue([{
+      institutionId,
+      studentId: studentOne.id,
+      subjects: [{
+        key: 'offering-a:term-1',
+        institutionId,
+        academicYearId,
+        academicYearName: '2026',
+        termId,
+        termName: '1º Bimestre',
+        subjectOfferingId: 'offering-a',
+        subjectName: 'Matemática',
+        subjectCode: null,
+        className: 'Turma A',
+        teacherName: 'Professor',
+        teacherEmail: 'professor@example.com',
+        gradePercentage: 52,
+        recoveryPercentage: 74,
+        finalGradePercentage: 74,
+        originalResultStatus: 'FAILED_BY_GRADE',
+        compositionRule: null,
+        attendancePercentage: 90,
+        resultStatus: 'APPROVED',
+        finalizedAt: '2026-05-01T00:00:00Z',
+        isClosed: true,
+        assessments: [],
+      }],
+      closedCount: 1,
+      openCount: 0,
+    }] as never);
+
+    const data = await pedagogicalMonitoringService.getInstitutionMonitoring(
+      institutionId,
+      { studentId: studentOne.id },
+    );
+
+    expect(data.students[0]?.subjects[0]?.gradePercentage).toBe(74);
+    expect(data.students[0]?.averageGrade).toBe(74);
+    expect(data.students[0]?.lowPerformanceSubjects).toBe(0);
+    expect(data.students[0]?.risk.level).toBe('NORMAL');
+  });
+
+  it('mantém a nota original quando não existe recuperação', async () => {
+    vi.mocked(reportCardService.getGuardianReportCards).mockResolvedValue([{
+      institutionId,
+      studentId: studentOne.id,
+      subjects: [{
+        key: 'offering-a:term-1',
+        institutionId,
+        academicYearId,
+        academicYearName: '2026',
+        termId,
+        termName: '1º Bimestre',
+        subjectOfferingId: 'offering-a',
+        subjectName: 'Matemática',
+        subjectCode: null,
+        className: 'Turma A',
+        teacherName: 'Professor',
+        teacherEmail: 'professor@example.com',
+        gradePercentage: 72,
+        recoveryPercentage: null,
+        finalGradePercentage: 72,
+        originalResultStatus: 'APPROVED',
+        compositionRule: null,
+        attendancePercentage: 90,
+        resultStatus: 'APPROVED',
+        finalizedAt: '2026-05-01T00:00:00Z',
+        isClosed: true,
+        assessments: [],
+      }],
+      closedCount: 1,
+      openCount: 0,
+    }] as never);
+
+    const data = await pedagogicalMonitoringService.getInstitutionMonitoring(
+      institutionId,
+      { studentId: studentOne.id },
+    );
+
+    expect(data.students[0]?.subjects[0]?.gradePercentage).toBe(72);
+    expect(data.students[0]?.averageGrade).toBe(72);
+  });
+
+  it('mantém atenção por frequência baixa mesmo com nota final aprovada', async () => {
+    vi.mocked(reportCardService.getGuardianReportCards).mockResolvedValue([{
+      institutionId,
+      studentId: studentOne.id,
+      subjects: [{
+        key: 'offering-a:term-1',
+        institutionId,
+        academicYearId,
+        academicYearName: '2026',
+        termId,
+        termName: '1º Bimestre',
+        subjectOfferingId: 'offering-a',
+        subjectName: 'Matemática',
+        subjectCode: null,
+        className: 'Turma A',
+        teacherName: 'Professor',
+        teacherEmail: 'professor@example.com',
+        gradePercentage: 80,
+        recoveryPercentage: null,
+        finalGradePercentage: 80,
+        originalResultStatus: 'APPROVED',
+        compositionRule: null,
+        attendancePercentage: 60,
+        resultStatus: 'FAILED_BY_ATTENDANCE',
+        finalizedAt: '2026-05-01T00:00:00Z',
+        isClosed: true,
+        assessments: [],
+      }],
+      closedCount: 1,
+      openCount: 0,
+    }] as never);
+
+    const data = await pedagogicalMonitoringService.getInstitutionMonitoring(
+      institutionId,
+      { studentId: studentOne.id },
+    );
+
+    expect(data.students[0]?.subjects[0]?.gradePercentage).toBe(80);
+    expect(data.students[0]?.subjects[0]?.attendancePercentage).toBe(60);
+    expect(data.students[0]?.lowAttendanceSubjects).toBe(1);
+    expect(data.students[0]?.risk.reasons).toContain('1 disciplina(s) com frequência baixa.');
+  });
 });

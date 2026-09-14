@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useAuth } from '../../../contexts/AuthContext';
@@ -107,7 +108,7 @@ describe('AcademicDocumentsTab', () => {
     const currentStudent = { ...student, currentEnrollment: student.enrollments[0] ?? null };
     mockState(currentStudent);
 
-    render(<AcademicDocumentsTab />);
+    render(<MemoryRouter><AcademicDocumentsTab /></MemoryRouter>);
     fireEvent.click(screen.getByRole('button', { name: /Ana Silva/ }));
 
     expect(screen.getByRole('heading', { name: 'Declaração de matrícula' })).toBeTruthy();
@@ -136,7 +137,7 @@ describe('AcademicDocumentsTab', () => {
   });
 
   it('mantém ficha disponível sem matrícula e bloqueia declaração', () => {
-    render(<AcademicDocumentsTab />);
+    render(<MemoryRouter><AcademicDocumentsTab /></MemoryRouter>);
     fireEvent.click(screen.getByRole('button', { name: /Ana Silva/ }));
 
     expect(screen.getByText(/não possui matrícula ativa/)).toBeTruthy();
@@ -146,5 +147,23 @@ describe('AcademicDocumentsTab', () => {
     expect(screen.getByText('Sem matrícula ativa')).toBeTruthy();
     expect(screen.getByText('Maria Silva')).toBeTruthy();
     expect((screen.getByRole('button', { name: /Imprimir documento/ }) as HTMLButtonElement).disabled).toBe(false);
+  });
+
+  it('aceita aluno válido no deep-link e ignora id fora da lista institucional', async () => {
+    const currentStudent = { ...student, currentEnrollment: student.enrollments[0] ?? null };
+    mockState(currentStudent);
+    render(<MemoryRouter initialEntries={['/admin?module=academic-documents&student=student-1']}><AcademicDocumentsTab /></MemoryRouter>);
+
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { name: 'Declaração de matrícula' })).toBeTruthy();
+    });
+
+    cleanup();
+    mockState(currentStudent);
+    render(<MemoryRouter initialEntries={['/admin?module=academic-documents&student=foreign-student']}><AcademicDocumentsTab /></MemoryRouter>);
+
+    await waitFor(() => {
+      expect(screen.getByText('Selecione um aluno para visualizar um documento.')).toBeTruthy();
+    });
   });
 });

@@ -261,6 +261,15 @@ describe('StudentsTab - vínculo de responsável', () => {
     ).toContain('md:flex-nowrap');
   });
 
+  it('oferece o acesso ao prontuário acadêmico sem duplicar o CRUD', () => {
+    const onViewAcademicRecord = vi.fn();
+    render(<StudentsTab onViewAcademicRecord={onViewAcademicRecord} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Ver prontuário de Ieti' }));
+
+    expect(onViewAcademicRecord).toHaveBeenCalledWith('00000000-0000-0000-0000-000000000004');
+  });
+
   it('abre o cadastro completo ao criar um aluno', () => {
     render(<StudentsTab />);
 

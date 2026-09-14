@@ -243,6 +243,9 @@ function subjectFromOffering(
     (assessment) => assessment.status === 'PENDING',
   ).length;
   const isClosed = result?.isClosed ?? false;
+  const effectiveGrade = isClosed
+    ? result?.finalGradePercentage ?? result?.gradePercentage
+    : result?.gradePercentage;
 
   return {
     subjectOfferingId: offering.id,
@@ -252,7 +255,7 @@ function subjectFromOffering(
     className: offering.className,
     teacherProfileId: offering.teacherProfileId,
     teacherName: offering.teacherName,
-    gradePercentage: numberOrNull(result?.gradePercentage ?? null),
+    gradePercentage: numberOrNull(effectiveGrade ?? null),
     attendancePercentage: numberOrNull(
       result?.attendancePercentage ?? attendancePercentage,
     ),

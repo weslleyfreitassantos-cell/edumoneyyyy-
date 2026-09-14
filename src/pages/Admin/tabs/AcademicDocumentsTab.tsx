@@ -9,6 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -35,6 +36,8 @@ export default function AcademicDocumentsTab() {
   const { profile } = useAuth();
   const institutionQuery = useCurrentInstitution(profile?.id);
   const institutionId = institutionQuery.data ?? '';
+  const [searchParams] = useSearchParams();
+  const requestedStudentId = searchParams.get('student');
   const studentsQuery = useAcademicDocumentStudents(institutionId);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStudentId, setSelectedStudentId] = useState<string | null>(null);
@@ -56,6 +59,20 @@ export default function AcademicDocumentsTab() {
       ].filter(Boolean).join(' ')).includes(query),
     );
   }, [searchTerm, studentsQuery.data]);
+
+  useEffect(() => {
+    if (
+      requestedStudentId &&
+      studentsQuery.data?.some((student) => student.id === requestedStudentId)
+    ) {
+      setSelectedStudentId(requestedStudentId);
+      return;
+    }
+
+    if (requestedStudentId && studentsQuery.data && !studentsQuery.isLoading) {
+      setSelectedStudentId(null);
+    }
+  }, [requestedStudentId, studentsQuery.data, studentsQuery.isLoading]);
 
   useEffect(() => {
     if (
