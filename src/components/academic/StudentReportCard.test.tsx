@@ -20,7 +20,7 @@ describe('StudentReportCard', () => {
     });
 
     render(<StudentReportCard institutionId="inst-1" studentId="student-1" />);
-    expect(screen.getByText(/Resultado ainda não fechado/i)).toBeDefined();
+    expect(screen.getAllByText(/Resultado ainda não fechado/i)).toHaveLength(2);
     expect(screen.getByRole('button', { name: /Imprimir boletim/i })).toBeDefined();
   });
 
@@ -51,6 +51,6 @@ describe('StudentReportCard', () => {
     render(<StudentReportCard institutionId="inst-1" studentId="student-1" />);
 
     expect(screen.getByText('Resultado oficial')).toBeDefined();
-    expect(screen.getByText('80%')).toBeDefined();
+    expect(screen.getAllByText('80%')).toHaveLength(2);
   });
 });

@@ -217,6 +217,25 @@ afterEach(() => {
 });
 
 describe('StudentDashboard', () => {
+  it('mostra carregamento acessível enquanto os dados acadêmicos chegam', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/student/attendance']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.getByRole('status', { name: 'Carregando dados acadêmicos' }),
+    ).toBeTruthy();
+  });
+
   it('exibe a grade publicada da turma do aluno em uma rota propria', () => {
     render(
       <MemoryRouter initialEntries={['/dashboard/timetable']}>
@@ -390,8 +409,8 @@ describe('StudentDashboard', () => {
 
   it('exibe frequência, notas e boletim em rotas dedicadas', () => {
     const routes = [
-      ['/student/attendance', 'Frequência do aluno'],
-      ['/student/grades', 'Avaliações e notas'],
+      ['/student/attendance', 'Resumo de frequência'],
+      ['/student/grades', 'Avaliações publicadas'],
       ['/student/report-card', 'Boletim escolar'],
     ] as const;
 
@@ -403,8 +422,33 @@ describe('StudentDashboard', () => {
       );
 
       expect(screen.getByText(expectedLabel)).toBeTruthy();
-      expect(screen.queryByText('Área do aluno')).toBeTruthy();
+      expect(screen.getByText('Aluno Teste')).toBeTruthy();
+      expect(screen.getByText('RA TV-001')).toBeTruthy();
+      expect(screen.getByText('1ª série A')).toBeTruthy();
+      expect(screen.getByText('2026')).toBeTruthy();
+      expect(screen.queryByText('Área do aluno')).toBeNull();
       view.unmount();
     }
+  });
+
+  it('informa a ausência de matrícula sem esconder o contexto do aluno', () => {
+    vi.mocked(useStudentDashboard).mockReturnValue({
+      data: { ...dashboard, activeEnrollment: null },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/student/attendance']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText('Aluno Teste')).toBeTruthy();
+    expect(screen.getByText('Sem matrícula ativa')).toBeTruthy();
+    expect(
+      screen.getByText('Nenhuma matrícula ativa encontrada para este aluno.'),
+    ).toBeTruthy();
   });
 });

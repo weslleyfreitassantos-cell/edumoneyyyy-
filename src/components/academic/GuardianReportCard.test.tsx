@@ -32,7 +32,7 @@ describe('GuardianReportCard', () => {
 
     render(<GuardianReportCard institutionId="inst-1" studentIds={['student-1']} selectedStudentId="student-1" />);
     // Math belongs to student-1
-    expect(screen.getByText(/Math/i)).toBeDefined();
+    expect(screen.getAllByText(/Math/i)).toHaveLength(2);
   });
 
   it('mantém o estado vazio quando o estudante ainda não possui resultados', () => {

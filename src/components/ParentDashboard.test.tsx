@@ -33,14 +33,14 @@ vi.mock('../hooks/useRegistrationCompletion', () => ({
 }));
 
 vi.mock('./attendance/StudentAttendanceSummaryPanel', () => ({
-  default: ({ studentId }: { studentId: string }) => (
-    <div data-testid="attendance-panel">Frequência {studentId}</div>
+  default: ({ studentId, title }: { studentId: string; title?: string }) => (
+    <div data-testid="attendance-panel">{title} {studentId}</div>
   ),
 }));
 
 vi.mock('./grades/StudentGradesPanel', () => ({
-  default: ({ studentId }: { studentId: string }) => (
-    <div data-testid="grades-panel">Notas {studentId}</div>
+  default: ({ studentId, title }: { studentId: string; title?: string }) => (
+    <div data-testid="grades-panel">{title} {studentId}</div>
   ),
 }));
 
@@ -146,6 +146,25 @@ afterEach(() => {
 });
 
 describe('ParentDashboard', () => {
+  it('mostra carregamento acessível enquanto os vínculos chegam', () => {
+    vi.mocked(useGuardianDashboard).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/guardian/attendance']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(
+      screen.getByRole('status', { name: 'Carregando vínculos familiares' }),
+    ).toBeTruthy();
+  });
+
   it('troca o dependente e atualiza o painel acadêmico dedicado', () => {
     render(
       <MemoryRouter initialEntries={['/guardian/grades?student=student-2']}>
@@ -155,7 +174,12 @@ describe('ParentDashboard', () => {
 
     const selector = screen.getByLabelText('Dependente');
     expect((selector as HTMLSelectElement).value).toBe('student-2');
-    expect(screen.getByTestId('grades-panel').textContent).toContain('student-2');
+    expect(screen.getByTestId('grades-panel').textContent).toContain('Avaliações publicadas student-2');
+    expect(screen.getAllByText('Bruno Lima')).toHaveLength(2);
+    expect(screen.getByText('RA RA-student-2')).toBeTruthy();
+    expect(screen.getByText('1A')).toBeTruthy();
+    expect(screen.getByText('2026')).toBeTruthy();
+    expect(screen.queryByText('Área da família')).toBeNull();
 
     fireEvent.change(selector, { target: { value: 'student-1' } });
 
@@ -173,5 +197,20 @@ describe('ParentDashboard', () => {
     expect(selector.querySelectorAll('option')).toHaveLength(2);
     expect(screen.queryByText('Aluno não vinculado')).toBeNull();
     expect(screen.getByTestId('report-card-panel').textContent).toContain('student-1');
+  });
+
+  it('mantém o dependente selecionado como contexto na frequência', () => {
+    render(
+      <MemoryRouter initialEntries={['/guardian/attendance']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getAllByText('Ana Silva')).toHaveLength(2);
+    expect(screen.getByText('RA RA-student-1')).toBeTruthy();
+    expect(screen.getByText('1A')).toBeTruthy();
+    expect(screen.getByTestId('attendance-panel').textContent).toContain(
+      'Resumo de frequência student-1',
+    );
   });
 });

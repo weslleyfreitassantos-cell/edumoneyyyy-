@@ -76,7 +76,7 @@ export default function StudentAttendanceSummaryPanel({
             />
 
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-[#005bbf] dark:text-blue-300">
                 Registros recentes
               </h3>
 
@@ -87,16 +87,16 @@ export default function StudentAttendanceSummaryPanel({
                       key={record.id}
                       className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div className="flex items-start gap-3">
+                      <div className="flex min-w-0 items-start gap-3">
                         <CalendarDays
-                          className="mt-0.5 h-5 w-5 text-[#727785]"
+                          className="mt-0.5 h-5 w-5 shrink-0 text-[#727785] dark:text-slate-400"
                           aria-hidden="true"
                         />
-                        <div>
-                          <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
+                        <div className="min-w-0">
+                          <p className="break-words text-sm font-semibold text-[#181c20] dark:text-slate-100">
                             {record.subjectName}
                           </p>
-                          <p className="mt-1 text-xs text-[#727785]">
+                          <p className="mt-1 break-words text-xs text-[#727785] dark:text-slate-400">
                             {record.className} ·{' '}
                             {formatAttendanceDate(
                               record.sessionDate,
