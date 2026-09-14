@@ -136,6 +136,16 @@ describe('school permissions', () => {
     expect(hasPermission(null, 'GUARDIAN', 'send_school_email')).toBe(false);
     expect(hasPermission('SUPER_ADMIN', null, 'send_school_email')).toBe(false);
   });
+
+  it('reserva a emissão de documentos acadêmicos à direção e secretaria', () => {
+    expect(hasPermission(null, 'DIRECTOR', 'issue_academic_documents')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'issue_academic_documents')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission(null, 'TEACHER', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission(null, 'STUDENT', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission(null, 'GUARDIAN', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission('SUPER_ADMIN', null, 'issue_academic_documents')).toBe(false);
+  });
 });
 
 describe('effective role permissions', () => {

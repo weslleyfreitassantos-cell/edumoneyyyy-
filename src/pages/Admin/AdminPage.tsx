@@ -48,6 +48,7 @@ import AccessControlTab from './tabs/AccessControlTab';
 import EmailTab from './tabs/EmailTab';
 import AnnouncementsTab from './tabs/AnnouncementsTab';
 import AcademicCalendarTab from './tabs/AcademicCalendarTab';
+import AcademicDocumentsTab from './tabs/AcademicDocumentsTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -341,6 +342,8 @@ export default function AdminPage() {
             institutionId={institutionQuery.data}
           />
         );
+      case 'academic-documents':
+        return <AcademicDocumentsTab />;
       case 'school-users':
         return <SchoolUsersTab />;
       case 'directors':

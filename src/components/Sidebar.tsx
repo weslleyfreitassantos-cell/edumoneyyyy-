@@ -149,6 +149,7 @@ const adminModuleIcons: Record<
   'term-closing': FileCheck2,
   'class-councils': UsersRound,
   'pedagogical-monitoring': BarChart3,
+  'academic-documents': FileCheck2,
   'academic-policies': ShieldCheck,
   'academic-calendar': CalendarDays,
   announcements: Megaphone,

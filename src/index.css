@@ -135,6 +135,45 @@
   }
 }
 
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  .academic-document-printable,
+  .academic-document-printable * {
+    visibility: visible !important;
+  }
+
+  .academic-document-printable {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #111827 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .academic-document-printable,
+  .academic-document-printable *,
+  .academic-document-printable *::before,
+  .academic-document-printable *::after {
+    background: transparent !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+
+  .academic-document-printable .print-hidden {
+    display: none !important;
+  }
+}
+
 html.dark #app-authenticated-container {
   background: #0f172a;
   color: #e5e7eb;
