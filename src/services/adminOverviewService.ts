@@ -170,13 +170,43 @@ function getProfileName(
   return profileNames.get(membership.profile_id) ?? 'Professor';
 }
 
+export function isMissingAdminOverviewRpcError(
+  error: unknown,
+): boolean {
+  if (typeof error !== 'object' || error === null) {
+    return false;
+  }
+
+  const code = 'code' in error && typeof error.code === 'string'
+    ? error.code
+    : '';
+  const message = 'message' in error && typeof error.message === 'string'
+    ? error.message
+    : '';
+
+  return (
+    code === 'PGRST202' ||
+    code === '42883' ||
+    /function .*get_admin_overview_fast.*does not exist/i.test(message) ||
+    /could not find the function .*get_admin_overview_fast/i.test(message)
+  );
+}
+
 export const adminOverviewService = {
   async getOverview(institutionId: string): Promise<AdminOverviewData> {
     const { data, error } = await supabase.rpc('get_admin_overview_fast', {
       p_institution_id: institutionId,
     });
 
-    if (!error && data && typeof data === 'object' && !Array.isArray(data)) {
+    if (error) {
+      if (isMissingAdminOverviewRpcError(error)) {
+        return this.getOverviewLegacy(institutionId);
+      }
+
+      throw error;
+    }
+
+    if (data && typeof data === 'object' && !Array.isArray(data)) {
       const value = data as Record<string, unknown>;
       const count = (key: string) => Number(value[key] ?? 0);
       return {
@@ -198,7 +228,7 @@ export const adminOverviewService = {
       };
     }
 
-    return this.getOverviewLegacy(institutionId);
+    throw new Error('A visão geral retornou um payload inválido.');
   },
 
   async getOverviewLegacy(

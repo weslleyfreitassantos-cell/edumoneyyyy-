@@ -6,6 +6,7 @@
 
 import {
   studentService,
+  type StudentPage,
   type StudentRow,
 } from '../services/studentService';
 
@@ -22,6 +23,19 @@ export const studentKeys = {
       ...studentKeys.all,
       institutionId,
     ] as const,
+
+  page: (
+    institutionId: string,
+    page: number,
+    pageSize: number,
+    search: string,
+  ) => [
+    ...studentKeys.list(institutionId),
+    'page',
+    page,
+    pageSize,
+    search,
+  ] as const,
 };
 
 export function useStudents(
@@ -35,6 +49,31 @@ export function useStudents(
       studentService.list(institutionId),
 
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useStudentPage(
+  institutionId: string,
+  page: number,
+  pageSize: number,
+  search: string,
+) {
+  return useQuery<StudentPage>({
+    queryKey: studentKeys.page(
+      institutionId,
+      page,
+      pageSize,
+      search,
+    ),
+    queryFn: () =>
+      studentService.listPage({
+        institutionId,
+        page,
+        pageSize,
+        search,
+      }),
+    enabled: Boolean(institutionId),
+    placeholderData: (previous) => previous,
   });
 }
 

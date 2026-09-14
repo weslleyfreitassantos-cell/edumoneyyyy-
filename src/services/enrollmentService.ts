@@ -167,7 +167,7 @@ const enrollmentSelect = `
   enrolled_at,
   created_at,
   updated_at,
-  students:student_id (
+  students:student_id!inner (
     id,
     institution_id,
     registration_number,
@@ -177,7 +177,7 @@ const enrollmentSelect = `
       email
     )
   ),
-  classes:class_id (
+  classes:class_id!inner (
     id,
     institution_id,
     academic_year_id,
@@ -187,7 +187,7 @@ const enrollmentSelect = `
     capacity,
     active
   ),
-  academic_years:academic_year_id (
+  academic_years:academic_year_id!inner (
     id,
     institution_id,
     name,
@@ -486,22 +486,23 @@ async function assertClassCapacityAvailable(
     return;
   }
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('enrollments')
-    .select('id')
+    .select('*', { count: 'exact', head: true })
     .eq('class_id', classId)
     .eq('active', true);
+
+  if (exceptEnrollmentId) {
+    query = query.neq('id', exceptEnrollmentId);
+  }
+
+  const { count, error } = await query;
 
   if (error) {
     throw error;
   }
 
-  const activeCount = (data ?? []).filter(
-    (enrollment) =>
-      enrollment.id !== exceptEnrollmentId,
-  ).length;
-
-  if (activeCount >= capacity) {
+  if ((count ?? 0) >= capacity) {
     throw new Error(
       'A turma selecionada já atingiu a capacidade máxima.',
     );
@@ -579,6 +580,9 @@ export const enrollmentService = {
     const { data, error } = await supabase
       .from('enrollments')
       .select(enrollmentSelect)
+      .eq('students.institution_id', institutionId)
+      .eq('classes.institution_id', institutionId)
+      .eq('academic_years.institution_id', institutionId)
       .order('created_at', {
         ascending: false,
       });
@@ -635,6 +639,50 @@ export const enrollmentService = {
           second.student_name,
           'pt-BR',
         ),
+      );
+  },
+
+  async listCurrentForStudents(
+    institutionId: string,
+    studentIds: string[],
+  ): Promise<EnrollmentRow[]> {
+    const uniqueStudentIds = Array.from(new Set(studentIds));
+
+    if (uniqueStudentIds.length === 0) {
+      return [];
+    }
+
+    const { data, error } = await supabase
+      .from('enrollments')
+      .select(enrollmentSelect)
+      .eq('students.institution_id', institutionId)
+      .eq('classes.institution_id', institutionId)
+      .eq('academic_years.institution_id', institutionId)
+      .in('student_id', uniqueStudentIds)
+      .eq('active', true)
+      .eq('status', 'ACTIVE')
+      .order('enrolled_at', { ascending: false });
+
+    if (error) {
+      throw error;
+    }
+
+    const rows = (data ?? []) as unknown as EnrollmentQueryRow[];
+    const activeEnrollmentsByClass = new Map<string, number>();
+
+    for (const row of rows) {
+      if (isActive(row.active)) {
+        activeEnrollmentsByClass.set(
+          row.class_id,
+          (activeEnrollmentsByClass.get(row.class_id) ?? 0) + 1,
+        );
+      }
+    }
+
+    return rows
+      .map((row) => normalizeEnrollment(row, institutionId, activeEnrollmentsByClass))
+      .filter(
+        (enrollment): enrollment is EnrollmentRow => enrollment !== null,
       );
   },
 

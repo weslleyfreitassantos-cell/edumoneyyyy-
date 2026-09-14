@@ -21,7 +21,9 @@ describe("send-school-email", () => {
     expect(source).toContain('"RECIPIENT_OUTSIDE_INSTITUTION"');
     expect(source).toContain("validateSelectedRecipientIds");
     expect(source).toContain("guardianships");
-    expect(source).toContain("students:student_id");
+    expect(source).toContain("students:student_id!inner");
+    expect(source).toContain('.eq("students.institution_id", institutionId)');
+    expect(source).toContain('.eq("students.active", true)');
   });
 
   it("uses the configured Resend secret and bounded sequential batches", () => {
