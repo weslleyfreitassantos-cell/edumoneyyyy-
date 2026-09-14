@@ -34,6 +34,8 @@ describe('academicDocumentService', () => {
         id: 'old',
         classId: 'class-old',
         className: '1º A',
+        gradeLevel: null,
+        shift: null,
         academicYearId: 'year-old',
         academicYearName: '2025',
         status: 'ACTIVE',
@@ -44,6 +46,8 @@ describe('academicDocumentService', () => {
         id: 'cancelled',
         classId: 'class-cancelled',
         className: '2º A',
+        gradeLevel: null,
+        shift: null,
         academicYearId: 'year-new',
         academicYearName: '2026',
         status: 'CANCELLED',
@@ -54,6 +58,8 @@ describe('academicDocumentService', () => {
         id: 'current',
         classId: 'class-current',
         className: '2º A',
+        gradeLevel: '2º ano',
+        shift: 'Matutino',
         academicYearId: 'year-new',
         academicYearName: '2026',
         status: 'active',
@@ -88,6 +94,12 @@ describe('academicDocumentService', () => {
       }),
       guardianships: queryBuilder({
         data: [{
+          guardian_profile_id: 'guardian-2',
+          relationship: 'Pai',
+          is_primary: false,
+          active: true,
+          profiles: { full_name: 'João Silva', email: 'joao@example.com', phone: null, active: true },
+        }, {
           guardian_profile_id: 'guardian-1',
           relationship: 'Mãe',
           is_primary: true,
@@ -106,7 +118,7 @@ describe('academicDocumentService', () => {
           active: true,
           enrolled_at: '2026-02-01',
           created_at: '2026-02-01',
-          classes: { id: 'class-1', institution_id: 'institution-1', name: '1º A' },
+          classes: { id: 'class-1', institution_id: 'institution-1', name: '1º A', grade_level: '1º ano', shift: 'Matutino' },
           academic_years: { id: 'year-1', institution_id: 'institution-1', name: '2026' },
         }],
         error: null,
@@ -118,7 +130,10 @@ describe('academicDocumentService', () => {
     const result = await academicDocumentService.getStudent('institution-1', 'student-1');
 
     expect(result.currentEnrollment?.className).toBe('1º A');
-    expect(result.guardians).toHaveLength(1);
+    expect(result.currentEnrollment?.gradeLevel).toBe('1º ano');
+    expect(result.currentEnrollment?.shift).toBe('Matutino');
+    expect(result.guardians).toHaveLength(2);
+    expect(result.guardians[0]?.profileId).toBe('guardian-1');
     expect(result.address?.city).toBe('Salvador');
     expect(queries.students.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
     expect(queries.student_registration_details.eq).toHaveBeenCalledWith('institution_id', 'institution-1');

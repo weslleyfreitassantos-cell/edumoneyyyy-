@@ -9,6 +9,7 @@ import {
   useAcademicDocumentStudent,
   useAcademicDocumentStudents,
 } from '../../../hooks/useAcademicDocuments';
+import { formatLocalIssueDate } from '../../../components/documents/AcademicDocumentPreview';
 import type { AcademicDocumentStudent } from '../../../services/academicDocumentService';
 
 import AcademicDocumentsTab from './AcademicDocumentsTab';
@@ -44,6 +45,8 @@ const student: AcademicDocumentStudent = {
     id: 'enrollment-1',
     classId: 'class-1',
     className: '1º A',
+    gradeLevel: '1º ano',
+    shift: 'Matutino',
     academicYearId: 'year-1',
     academicYearName: '2026',
     status: 'ACTIVE',
@@ -109,10 +112,27 @@ describe('AcademicDocumentsTab', () => {
 
     expect(screen.getByRole('heading', { name: 'Declaração de matrícula' })).toBeTruthy();
     expect(screen.getByText('1º A')).toBeTruthy();
+    expect(screen.getByText('Matutino')).toBeTruthy();
+    expect(screen.getByText('Data da matrícula')).toBeTruthy();
+    expect(screen.getByTestId('academic-document-preview').classList.contains('academic-document-printable')).toBe(true);
     fireEvent.click(screen.getByRole('button', { name: /Imprimir documento/ }));
     expect(print).toHaveBeenCalledTimes(1);
 
     print.mockRestore();
+  });
+
+  it('calcula a data de emissão com a data civil local sem serializar para UTC', () => {
+    const date = new Date(2026, 8, 14, 22, 0, 0);
+    const toISOString = vi.spyOn(Date.prototype, 'toISOString');
+
+    expect(formatLocalIssueDate(date)).toBe(new Intl.DateTimeFormat('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+    }).format(date));
+    expect(toISOString).not.toHaveBeenCalled();
+
+    toISOString.mockRestore();
   });
 
   it('mantém ficha disponível sem matrícula e bloqueia declaração', () => {

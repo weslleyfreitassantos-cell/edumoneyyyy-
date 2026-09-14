@@ -7,6 +7,14 @@ export type AcademicDocumentType =
   | 'ENROLLMENT_DECLARATION'
   | 'REGISTRATION_SHEET';
 
+export function formatLocalIssueDate(date: Date): string {
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(date);
+}
+
 interface DocumentFrameProps {
   children: ReactNode;
   institutionName: string;
@@ -52,7 +60,7 @@ function DocumentFrame({
       </header>
       {children}
       <footer className="mt-10 border-t border-slate-200 pt-5 text-sm text-slate-600 dark:border-slate-700 dark:text-slate-400">
-        Documento emitido em {formatDate(new Date().toISOString())}.
+        Documento emitido em {formatLocalIssueDate(new Date())}.
       </footer>
     </article>
   );
@@ -104,6 +112,9 @@ export function EnrollmentDeclarationDocument({
           <Field label="RA" value={student.registrationNumber} />
           <Field label="Ano letivo" value={valueOrFallback(enrollment?.academicYearName)} />
           <Field label="Turma" value={valueOrFallback(enrollment?.className)} />
+          {enrollment?.gradeLevel ? <Field label="Série/nível" value={enrollment.gradeLevel} /> : null}
+          {enrollment?.shift ? <Field label="Turno" value={enrollment.shift} /> : null}
+          {enrollment?.enrolledAt ? <Field label="Data da matrícula" value={formatDate(enrollment.enrolledAt)} /> : null}
           <Field label="Status" value="Matrícula ativa" />
           <Field label="Data de nascimento" value={formatDate(student.birthDate)} />
         </dl>
@@ -160,6 +171,22 @@ export function StudentRegistrationSheetDocument({
             <Field label="E-mail" value={valueOrFallback(student.email)} />
             <Field label="Telefone" value={valueOrFallback(student.phone)} />
           </dl>
+        </section>
+
+        <section>
+          <h3 className="text-lg font-bold">Matrícula atual</h3>
+          {student.currentEnrollment ? (
+            <dl className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <Field label="Ano letivo" value={student.currentEnrollment.academicYearName} />
+              <Field label="Turma" value={student.currentEnrollment.className} />
+              {student.currentEnrollment.gradeLevel ? <Field label="Série/nível" value={student.currentEnrollment.gradeLevel} /> : null}
+              {student.currentEnrollment.shift ? <Field label="Turno" value={student.currentEnrollment.shift} /> : null}
+              {student.currentEnrollment.enrolledAt ? <Field label="Data da matrícula" value={formatDate(student.currentEnrollment.enrolledAt)} /> : null}
+              <Field label="Status" value="Matrícula ativa" />
+            </dl>
+          ) : (
+            <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">Sem matrícula ativa.</p>
+          )}
         </section>
 
         <section>

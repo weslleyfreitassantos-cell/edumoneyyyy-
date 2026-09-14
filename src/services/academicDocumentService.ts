@@ -15,6 +15,8 @@ export interface AcademicDocumentEnrollment {
   id: string;
   classId: string;
   className: string;
+  gradeLevel: string | null;
+  shift: string | null;
   academicYearId: string;
   academicYearName: string;
   status: string;
@@ -95,8 +97,8 @@ interface EnrollmentDetailRow {
   enrolled_at: string | null;
   created_at: string | null;
   classes:
-    | { id: string; institution_id: string; name: string }
-    | { id: string; institution_id: string; name: string }[]
+    | { id: string; institution_id: string; name: string; grade_level: string | null; shift: string | null }
+    | { id: string; institution_id: string; name: string; grade_level: string | null; shift: string | null }[]
     | null;
   academic_years:
     | { id: string; institution_id: string; name: string }
@@ -161,6 +163,8 @@ function normalizeEnrollment(
     id: row.id,
     classId: row.class_id,
     className: classRecord.name,
+    gradeLevel: classRecord.grade_level ?? null,
+    shift: classRecord.shift ?? null,
     academicYearId: row.academic_year_id,
     academicYearName: academicYear.name,
     status: row.status?.trim().toUpperCase() ?? '',
@@ -218,7 +222,7 @@ export const academicDocumentService = {
         .order('created_at'),
       supabase
         .from('enrollments')
-        .select('id, student_id, class_id, academic_year_id, status, active, enrolled_at, created_at, classes:class_id(id, institution_id, name), academic_years:academic_year_id(id, institution_id, name)')
+        .select('id, student_id, class_id, academic_year_id, status, active, enrolled_at, created_at, classes:class_id(id, institution_id, name, grade_level, shift), academic_years:academic_year_id(id, institution_id, name)')
         .eq('student_id', studentId)
         .order('created_at', { ascending: false }),
     ]);
@@ -267,6 +271,10 @@ export const academicDocumentService = {
         } satisfies AcademicDocumentGuardian;
       })
       .filter((row): row is AcademicDocumentGuardian => row !== null);
+    guardians.sort((first, second) =>
+      Number(second.primary) - Number(first.primary) ||
+      first.name.localeCompare(second.name, 'pt-BR'),
+    );
     const details = (detailsResult.data ?? {}) as Record<string, unknown>;
     const addressRow = addressResult.data as {
       postal_code: string | null;
