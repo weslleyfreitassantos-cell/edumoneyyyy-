@@ -133,7 +133,7 @@ function RecoveryRow({
             step="0.01"
             value={value}
             onChange={(event) => onChange(event.target.value)}
-            disabled={readOnly || isSaving || isCanceling}
+            disabled={!canEdit || isSaving || isCanceling}
             className="mt-1 w-full rounded-lg border border-[#cfd6e2] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-slate-100 dark:border-slate-600 dark:bg-slate-950 dark:text-white dark:disabled:bg-slate-800"
           />
         </div>

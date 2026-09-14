@@ -92,4 +92,31 @@ describe('AcademicRecoveryPanel', () => {
     expect(screen.getByText(/A recuperação ficará disponível/)).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Salvar rascunho' }).getAttribute('disabled')).not.toBeNull();
   });
+
+  it('bloqueia o input quando a recuperação já foi publicada', () => {
+    vi.mocked(useTeacherTermClosureOfferings).mockReturnValue({
+      data: [{ id: 'offering-1', academicYearId: 'year-1', termId: 'term-1', subjectName: 'Matemática', className: '1A', termName: '1º bimestre', closure: { status: 'REOPENED' } }],
+    } as never);
+    vi.mocked(useAcademicRecoveryCandidates).mockReturnValue({
+      data: [{
+        student: { id: 'student-1', fullName: 'Ana Silva', registrationNumber: 'RA-1' },
+        originalGradePercentage: 50,
+        attendancePercentage: 90,
+        originalResultStatus: 'FAILED_BY_GRADE',
+        recovery: { id: 'recovery-1', recoveryPercentage: 75, status: 'PUBLISHED', notes: null },
+        policy: { minimumGradePercentage: 60, minimumAttendancePercentage: 75, decimalPlaces: 1 },
+        closureStatus: 'REOPENED',
+      }],
+      isLoading: false,
+      isError: false,
+    } as never);
+    vi.mocked(useSaveAcademicRecovery).mockReturnValue({ mutateAsync: vi.fn(), isPending: false, isError: false } as never);
+    vi.mocked(useCancelAcademicRecovery).mockReturnValue({ mutateAsync: vi.fn(), isPending: false, isError: false } as never);
+
+    render(<AcademicRecoveryPanel profileId="teacher-1" institutionId="inst-1" />);
+
+    expect(screen.getByLabelText('Recuperação (%)').getAttribute('disabled')).not.toBeNull();
+    expect(screen.getByRole('button', { name: 'Publicar recuperação' }).getAttribute('disabled')).not.toBeNull();
+    expect(screen.getByRole('button', { name: 'Cancelar' })).toBeTruthy();
+  });
 });

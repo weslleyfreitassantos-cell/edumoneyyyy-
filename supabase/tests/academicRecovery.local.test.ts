@@ -158,6 +158,14 @@ localDescribe('academic recovery runtime RLS', () => {
       workload: 80,
       active: true,
     })).id;
+    await insertOne(director, 'class_curriculum_items', {
+      institution_id: institutionId,
+      class_id: classId,
+      subject_id: subjectId,
+      weekly_lessons: 2,
+      lesson_duration_minutes: 50,
+      active: true,
+    });
     await insertOne(director, 'teacher_subjects', {
       institution_id: institutionId,
       teacher_profile_id: actors.teacher.id,
