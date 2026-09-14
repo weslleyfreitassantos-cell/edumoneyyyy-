@@ -49,6 +49,7 @@ import EmailTab from './tabs/EmailTab';
 import AnnouncementsTab from './tabs/AnnouncementsTab';
 import AcademicCalendarTab from './tabs/AcademicCalendarTab';
 import AcademicDocumentsTab from './tabs/AcademicDocumentsTab';
+import StudentAcademicRecordTab from './tabs/StudentAcademicRecordTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -293,6 +294,17 @@ export default function AdminPage() {
     );
   }
 
+  function navigateToStudentAcademicRecord(studentId: string): void {
+    if (!modules.some((module) => module.id === 'student-record')) {
+      return;
+    }
+
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set('module', 'student-record');
+    nextParams.set('student', studentId);
+    setSearchParams(nextParams);
+  }
+
   if (!profile) {
     return (
       <Navigate
@@ -344,6 +356,8 @@ export default function AdminPage() {
         );
       case 'academic-documents':
         return <AcademicDocumentsTab />;
+      case 'student-record':
+        return <StudentAcademicRecordTab />;
       case 'school-users':
         return <SchoolUsersTab />;
       case 'directors':
@@ -355,7 +369,7 @@ export default function AdminPage() {
           />
         );
       case 'students':
-        return <StudentsTab />;
+        return <StudentsTab onViewAcademicRecord={navigateToStudentAcademicRecord} />;
       case 'teachers':
         return <TeachersTab />;
       case 'guardians':

@@ -7,6 +7,7 @@
 
 import {
   Edit3,
+  Eye,
   GraduationCap,
   Loader2,
   Power,
@@ -67,6 +68,10 @@ const emptyGuardianLinkDraft: GuardianLinkDraft = {
 
 const STUDENTS_PAGE_SIZE = 6;
 
+interface StudentsTabProps {
+  onViewAcademicRecord?: (studentId: string) => void;
+}
+
 function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
@@ -118,7 +123,7 @@ function getCurrentEnrollmentByStudent(
   return currentByStudent;
 }
 
-export default function StudentsTab() {
+export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps = {}) {
   const { profile } = useAuth();
 
   const institutionQuery =
@@ -561,6 +566,18 @@ export default function StudentsTab() {
               >
                 <Edit3 className="h-4 w-4" aria-hidden="true" />
               </button>
+
+              {onViewAcademicRecord && (
+                <button
+                  type="button"
+                  title={`Ver prontuário de ${getStudentName(student)}`}
+                  aria-label={`Ver prontuário de ${getStudentName(student)}`}
+                  onClick={() => onViewAcademicRecord(student.id)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-slate-300 text-slate-700 transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-700"
+                >
+                  <Eye className="h-4 w-4" aria-hidden="true" />
+                </button>
+              )}
 
               <button
                 type="button"

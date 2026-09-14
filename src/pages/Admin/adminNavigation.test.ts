@@ -23,4 +23,21 @@ describe('academic documents admin navigation', () => {
     expect(isAdminModuleAvailable(module!, 'STUDENT')).toBe(false);
     expect(isAdminModuleAvailable(module!, 'GUARDIAN')).toBe(false);
   });
+
+  it('mantém o prontuário como deep-link interno para direção e secretaria', () => {
+    const module = ADMIN_MODULES.find((item) => item.id === 'student-record');
+
+    expect(module).toMatchObject({
+      label: 'Prontuário acadêmico',
+      permission: 'view_student_academic_record',
+      visibleInSidebar: false,
+      allowedRoles: ['DIRECTOR', 'SECRETARY'],
+    });
+    expect(isAdminModuleAvailable(module!, 'DIRECTOR')).toBe(true);
+    expect(isAdminModuleAvailable(module!, 'SECRETARY')).toBe(true);
+    expect(isAdminModuleAvailable(module!, 'ADMIN')).toBe(false);
+    expect(isAdminModuleAvailable(module!, 'TEACHER')).toBe(false);
+    expect(isAdminModuleAvailable(module!, 'STUDENT')).toBe(false);
+    expect(isAdminModuleAvailable(module!, 'GUARDIAN')).toBe(false);
+  });
 });

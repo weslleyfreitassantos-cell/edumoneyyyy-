@@ -26,6 +26,7 @@ export type AdminModuleId =
   | 'class-councils'
   | 'pedagogical-monitoring'
   | 'academic-documents'
+  | 'student-record'
   | 'academic-policies'
   | 'academic-calendar'
   | 'timetable'
@@ -288,6 +289,15 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-operation',
     permission: 'issue_academic_documents',
     href: moduleHref('academic-documents'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'student-record',
+    label: 'Prontuário acadêmico',
+    groupId: 'people',
+    permission: 'view_student_academic_record',
+    href: `${moduleHref('student-record')}&student=`,
+    visibleInSidebar: false,
     allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
