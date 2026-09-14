@@ -25,6 +25,7 @@ import {
 import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
 import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
+import AcademicRecoveryPanel from './academic/AcademicRecoveryPanel';
 import TeacherClassCouncilsPanel from './academic/TeacherClassCouncilsPanel';
 import TeacherTimetableView from './TeacherTimetableView';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
@@ -264,10 +265,16 @@ export default function TeacherDashboard() {
         title="Fechamento de período"
         description="Revise os resultados acadêmicos antes do fechamento."
       >
-        <TeacherTermClosingPanel
-          profileId={profile.id}
-          institutionId={institutionQuery.data}
-        />
+        <div className="space-y-6">
+          <TeacherTermClosingPanel
+            profileId={profile.id}
+            institutionId={institutionQuery.data}
+          />
+          <AcademicRecoveryPanel
+            profileId={profile.id}
+            institutionId={institutionQuery.data}
+          />
+        </div>
       </TeacherWorkspacePage>
     );
   }

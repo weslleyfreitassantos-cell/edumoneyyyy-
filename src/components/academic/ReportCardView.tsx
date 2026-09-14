@@ -122,6 +122,11 @@ export default function ReportCardView({
                 const isOfficial = subjects.every(
                   (subject) => subject.isClosed,
                 );
+                const hasRecovery = subjects.some(
+                  (subject) =>
+                    subject.recoveryPercentage !== null &&
+                    subject.recoveryPercentage !== undefined,
+                );
 
                 return (
                   <article
@@ -149,7 +154,9 @@ export default function ReportCardView({
                           <tr>
                             <th scope="col" className="px-4 py-3">Disciplina</th>
                             <th scope="col" className="px-4 py-3">Professor</th>
-                            <th scope="col" className="px-4 py-3">Média</th>
+                            <th scope="col" className="px-4 py-3">{hasRecovery ? 'Média original' : 'Média'}</th>
+                            {hasRecovery && <th scope="col" className="px-4 py-3">Recuperação</th>}
+                            {hasRecovery && <th scope="col" className="px-4 py-3">Média final</th>}
                             <th scope="col" className="px-4 py-3">Frequência</th>
                             <th scope="col" className="px-4 py-3">Situação</th>
                           </tr>
@@ -168,6 +175,20 @@ export default function ReportCardView({
                                   ? formatPercent(subject.gradePercentage)
                                   : 'Parcial'}
                               </td>
+                              {hasRecovery && (
+                                <td className="px-4 py-3 font-medium text-[#181c20] dark:text-slate-100">
+                                  {subject.isClosed
+                                    ? formatPercent(subject.recoveryPercentage)
+                                    : 'Parcial'}
+                                </td>
+                              )}
+                              {hasRecovery && (
+                                <td className="px-4 py-3 font-medium text-[#181c20] dark:text-slate-100">
+                                  {subject.isClosed
+                                    ? formatPercent(subject.finalGradePercentage)
+                                    : 'Parcial'}
+                                </td>
+                              )}
                               <td className="px-4 py-3 font-medium text-[#181c20] dark:text-slate-100">
                                 {subject.isClosed
                                   ? formatPercent(subject.attendancePercentage)
@@ -221,7 +242,7 @@ export default function ReportCardView({
                           <dl className="grid grid-cols-2 gap-3 text-sm">
                             <div>
                               <dt className="text-xs font-medium text-[#727785] dark:text-slate-400">
-                                Média
+                                {hasRecovery ? 'Média original' : 'Média'}
                               </dt>
                               <dd className="mt-1 font-semibold text-[#181c20] dark:text-slate-100">
                                 {subject.isClosed
@@ -229,6 +250,30 @@ export default function ReportCardView({
                                   : 'Parcial'}
                               </dd>
                             </div>
+                            {hasRecovery && (
+                              <>
+                                <div>
+                                  <dt className="text-xs font-medium text-[#727785] dark:text-slate-400">
+                                    Recuperação
+                                  </dt>
+                                  <dd className="mt-1 font-semibold text-[#181c20] dark:text-slate-100">
+                                    {subject.isClosed
+                                      ? formatPercent(subject.recoveryPercentage)
+                                      : 'Parcial'}
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt className="text-xs font-medium text-[#727785] dark:text-slate-400">
+                                    Média final
+                                  </dt>
+                                  <dd className="mt-1 font-semibold text-[#181c20] dark:text-slate-100">
+                                    {subject.isClosed
+                                      ? formatPercent(subject.finalGradePercentage)
+                                      : 'Parcial'}
+                                  </dd>
+                                </div>
+                              </>
+                            )}
                             <div>
                               <dt className="text-xs font-medium text-[#727785] dark:text-slate-400">
                                 Frequência

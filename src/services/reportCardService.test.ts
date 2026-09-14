@@ -92,6 +92,10 @@ describe('reportCardService', () => {
           data: [],
           error: null,
         },
+        student_term_recoveries: {
+          data: [],
+          error: null,
+        },
         assessments: {
           data: [assessment],
           error: null,
@@ -190,7 +194,7 @@ describe('reportCardService', () => {
       (supabase.from as any).mockReturnValue({ select: mockSelect });
       await reportCardService.getGuardianReportCards('inst-1', ['student-1', 'student-2']);
       
-      expect(supabase.from).toHaveBeenCalledTimes(3);
+      expect(supabase.from).toHaveBeenCalledTimes(4);
     });
 
     it('17. não existe consulta completa por estudante', async () => {

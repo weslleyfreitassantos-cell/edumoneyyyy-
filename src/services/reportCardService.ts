@@ -89,6 +89,10 @@ interface StudentTermResultRow {
   student_id: string;
   grade_percentage: number | string | null;
   attendance_percentage: number | string | null;
+  recovery_percentage?: number | string | null;
+  final_grade_percentage?: number | string | null;
+  original_result_status?: string | null;
+  composition_rule?: string | null;
   result_status: string;
   calculated_at: string;
   finalized_at: string | null;
@@ -101,6 +105,16 @@ interface StudentTermResultRow {
     | AcademicYearRelation[]
     | null;
   terms: TermRelation | TermRelation[] | null;
+}
+
+interface RecoveryRow {
+  student_id: string;
+  subject_offering_id: string;
+  term_id: string;
+  status: string;
+  recovery_percentage: number | string;
+  composition_rule: string;
+  published_at: string | null;
 }
 
 interface AssessmentRelation {
@@ -177,6 +191,10 @@ export interface ReportCardSubjectResult {
   teacherName: string;
   teacherEmail: string;
   gradePercentage: number | null;
+  recoveryPercentage: number | null;
+  finalGradePercentage: number | null;
+  originalResultStatus: TermResultStatus;
+  compositionRule: string | null;
   attendancePercentage: number | null;
   resultStatus: TermResultStatus;
   finalizedAt: string | null;
@@ -404,6 +422,7 @@ function groupAssessmentsBySubjectTerm(
 function buildClosedSubjectResult(
   row: StudentTermResultRow,
   assessments: readonly ReportCardAssessment[],
+  recovery: RecoveryRow | null,
 ): ReportCardSubjectResult | null {
   const offering = normalizeRelation(row.subject_offerings);
   const academicYear = normalizeRelation(row.academic_years);
@@ -419,6 +438,17 @@ function buildClosedSubjectResult(
     return null;
   }
 
+  const recoveryPercentage = toNullableNumber(
+    row.recovery_percentage ?? recovery?.recovery_percentage ?? null,
+  );
+  const originalGradePercentage = toNullableNumber(row.grade_percentage);
+  const finalGradePercentage = toNullableNumber(
+    row.final_grade_percentage ??
+      (recoveryPercentage === null
+        ? originalGradePercentage
+        : Math.max(originalGradePercentage ?? 0, recoveryPercentage)),
+  );
+
   return {
     key: `${row.subject_offering_id}:${row.term_id}`,
     institutionId: row.institution_id,
@@ -432,7 +462,13 @@ function buildClosedSubjectResult(
     className: details.className,
     teacherName: details.teacherName,
     teacherEmail: details.teacherEmail,
-    gradePercentage: toNullableNumber(row.grade_percentage),
+    gradePercentage: originalGradePercentage,
+    recoveryPercentage,
+    finalGradePercentage,
+    originalResultStatus: normalizeResultStatus(
+      row.original_result_status ?? row.result_status,
+    ),
+    compositionRule: row.composition_rule ?? recovery?.composition_rule ?? null,
     attendancePercentage: toNullableNumber(
       row.attendance_percentage,
     ),
@@ -493,6 +529,10 @@ function buildOpenSubjectResult(
     teacherName: details.teacherName,
     teacherEmail: details.teacherEmail,
     gradePercentage,
+    recoveryPercentage: null,
+    finalGradePercentage: gradePercentage,
+    originalResultStatus: 'PENDING',
+    compositionRule: null,
     attendancePercentage: null,
     resultStatus: 'PENDING',
     finalizedAt: null,
@@ -517,6 +557,10 @@ async function loadResultRowsForStudents(
       student_id,
       grade_percentage,
       attendance_percentage,
+      recovery_percentage,
+      final_grade_percentage,
+      original_result_status,
+      composition_rule,
       result_status,
       calculated_at,
       finalized_at,
@@ -575,6 +619,33 @@ async function loadResultRowsForStudents(
   }
 
   return (data ?? []) as unknown as StudentTermResultRow[];
+}
+
+async function loadPublishedRecoveryRowsForStudents(
+  institutionId: string,
+  studentIds: readonly string[],
+): Promise<RecoveryRow[]> {
+  let query = supabase
+    .from('student_term_recoveries')
+    .select(
+      'student_id, subject_offering_id, term_id, status, recovery_percentage, composition_rule, published_at',
+    )
+    .eq('institution_id', institutionId)
+    .eq('status', 'PUBLISHED');
+
+  if (studentIds.length === 1) {
+    query = query.eq('student_id', studentIds[0]);
+  } else {
+    query = query.in('student_id', [...studentIds]);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw createReportCardError(error);
+  }
+
+  return (data ?? []) as unknown as RecoveryRow[];
 }
 
 async function loadAssessmentRowsForStudents(
@@ -720,6 +791,7 @@ function buildStudentReportCard(
   institutionId: string,
   studentId: string,
   resultRows: readonly StudentTermResultRow[],
+  recoveryRows: readonly RecoveryRow[],
   assessmentRows: readonly AssessmentRow[],
   enrollmentContexts: readonly StudentEnrollmentContext[],
 ): StudentReportCard {
@@ -743,6 +815,12 @@ function buildStudentReportCard(
         assessmentsByKey.get(
           `${row.subject_offering_id}:${row.term_id}`,
         ) ?? [],
+        recoveryRows.find(
+          (recovery) =>
+            recovery.student_id === row.student_id &&
+            recovery.subject_offering_id === row.subject_offering_id &&
+            recovery.term_id === row.term_id,
+        ) ?? null,
       ),
     )
     .filter(
@@ -809,9 +887,10 @@ export const reportCardService = {
     institutionId: string,
     studentId: string,
   ): Promise<StudentReportCard> {
-    const [resultRows, assessmentRows, enrollmentContexts] =
+    const [resultRows, recoveryRows, assessmentRows, enrollmentContexts] =
       await Promise.all([
       loadResultRowsForStudents(institutionId, [studentId]),
+      loadPublishedRecoveryRowsForStudents(institutionId, [studentId]),
       loadAssessmentRowsForStudents(institutionId, [studentId]),
       loadEnrollmentContexts([studentId]),
     ]);
@@ -820,6 +899,7 @@ export const reportCardService = {
       institutionId,
       studentId,
       resultRows,
+      recoveryRows,
       assessmentRows,
       enrollmentContexts,
     );
@@ -833,9 +913,10 @@ export const reportCardService = {
       return [];
     }
 
-    const [resultRows, assessmentRows, enrollmentContexts] =
+    const [resultRows, recoveryRows, assessmentRows, enrollmentContexts] =
       await Promise.all([
       loadResultRowsForStudents(institutionId, studentIds),
+      loadPublishedRecoveryRowsForStudents(institutionId, studentIds),
       loadAssessmentRowsForStudents(institutionId, studentIds),
       loadEnrollmentContexts(studentIds),
     ]);
@@ -845,6 +926,9 @@ export const reportCardService = {
         institutionId,
         studentId,
         resultRows.filter(
+          (row) => row.student_id === studentId,
+        ),
+        recoveryRows.filter(
           (row) => row.student_id === studentId,
         ),
         assessmentRows,
