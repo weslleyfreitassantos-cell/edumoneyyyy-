@@ -123,13 +123,14 @@ export default function StudentAcademicRecordTab() {
 
   const selectedAcademicYearId = academicYearId || record?.selectedAcademicYearId || '';
   const selectedYear = record?.academicYears.find((year) => year.id === selectedAcademicYearId) ?? null;
+  const selectedTermId = termId || record?.selectedTermId || '';
   const selectedSubjects = useMemo(() => {
     const subjects = record?.reportCard.subjects ?? [];
     return subjects.filter((subject) =>
-      (!selectedAcademicYearId || subject.academicYearId === selectedAcademicYearId) &&
-      (!termId || subject.termId === termId),
+      subject.academicYearId === selectedAcademicYearId &&
+      subject.termId === selectedTermId,
     );
-  }, [record?.reportCard.subjects, selectedAcademicYearId, termId]);
+  }, [record?.reportCard.subjects, selectedAcademicYearId, selectedTermId]);
 
   function goToModule(moduleId: 'students' | 'academic-documents'): void {
     const nextParams = new URLSearchParams(searchParams);
@@ -161,10 +162,31 @@ export default function StudentAcademicRecordTab() {
     );
   }
 
-  const { student, monitoring, attendance } = record;
+  const { student, monitoring } = record;
   const currentEnrollment = student.currentEnrollment;
-  const performance = average(selectedSubjects.map((subject) => subject.isClosed ? subject.finalGradePercentage ?? subject.gradePercentage : subject.gradePercentage));
-  const frequency = average(selectedSubjects.map((subject) => subject.attendancePercentage));
+  const monitoringSubjects = new Map(
+    (monitoring?.subjects ?? []).map((subject) => [subject.subjectOfferingId, subject]),
+  );
+  const displaySubjects = selectedSubjects.map((subject) => {
+    if (subject.isClosed) {
+      return subject;
+    }
+
+    const monitoringSubject = monitoringSubjects.get(subject.subjectOfferingId);
+    return {
+      ...subject,
+      gradePercentage: monitoringSubject?.gradePercentage ?? subject.gradePercentage,
+      attendancePercentage: monitoringSubject?.attendancePercentage ?? subject.attendancePercentage,
+    };
+  });
+  const performance = monitoring?.averageGrade ?? average(
+    selectedSubjects.map((subject) => subject.isClosed
+      ? subject.finalGradePercentage ?? subject.gradePercentage
+      : subject.gradePercentage),
+  );
+  const frequency = monitoring?.attendancePercentage ?? average(
+    selectedSubjects.map((subject) => subject.attendancePercentage),
+  );
   const pending = monitoring?.pendingItems ?? selectedSubjects.filter((subject) => !subject.isClosed || subject.resultStatus === 'PENDING').length;
   const risk = monitoring?.risk ?? { level: 'NORMAL' as const, reasons: [] };
   const dataStatus = monitoring?.dataStatus ?? (selectedSubjects.length > 0 && selectedSubjects.every((subject) => subject.isClosed) ? 'OFFICIAL' : 'PARTIAL');
@@ -193,7 +215,7 @@ export default function StudentAcademicRecordTab() {
         <div className="mb-3 flex flex-wrap items-end justify-between gap-3"><div><h2 id="student-record-summary-title" className="text-lg font-bold text-slate-900 dark:text-white">Visão geral</h2><p className="text-sm text-slate-600 dark:text-slate-400">Resumo do desempenho e da frequência no contexto selecionado.</p></div><span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{dataStatus === 'OFFICIAL' ? 'Resultado oficial' : 'Dados parciais'}</span></div>
         <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           <Metric label="Média de desempenho" value={formatPercent(performance)} icon={BookOpen} />
-          <Metric label="Frequência média" value={formatPercent(frequency ?? (attendance.summary.totalRecords > 0 ? attendance.summary.attendanceRate : null))} icon={CalendarDays} />
+          <Metric label="Frequência média" value={formatPercent(frequency)} icon={CalendarDays} />
           <Metric label="Pendências" value={String(pending)} icon={ClipboardList} />
           <div className={`rounded-xl border p-4 ${riskClasses[risk.level]}`}><p className="text-xs font-bold uppercase tracking-wide">Nível de atenção</p><p className="mt-2 text-xl font-extrabold">{riskLabels[risk.level]}</p></div>
         </div>
@@ -201,12 +223,12 @@ export default function StudentAcademicRecordTab() {
       </section>
 
       <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900" aria-labelledby="student-record-filters-title">
-        <div className="grid gap-4 sm:grid-cols-2"><div><label htmlFor="student-record-year" className="block text-sm font-semibold text-slate-700 dark:text-slate-300">Ano letivo</label><select id="student-record-year" value={selectedAcademicYearId} onChange={(event) => { setAcademicYearId(event.target.value); setTermId(''); }} className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-600 dark:bg-slate-950 dark:text-white">{record.academicYears.map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}</select></div><div><label htmlFor="student-record-term" className="block text-sm font-semibold text-slate-700 dark:text-slate-300">Período</label><select id="student-record-term" value={termId} onChange={(event) => setTermId(event.target.value)} className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-600 dark:bg-slate-950 dark:text-white"><option value="">Todos os períodos</option>{(selectedYear?.terms ?? []).map((term) => <option key={term.id} value={term.id}>{term.name}</option>)}</select></div></div>
+        <div className="grid gap-4 sm:grid-cols-2"><div><label htmlFor="student-record-year" className="block text-sm font-semibold text-slate-700 dark:text-slate-300">Ano letivo</label><select id="student-record-year" value={selectedAcademicYearId} onChange={(event) => { setAcademicYearId(event.target.value); setTermId(''); }} className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-600 dark:bg-slate-950 dark:text-white">{record.academicYears.map((year) => <option key={year.id} value={year.id}>{year.name}</option>)}</select></div><div><label htmlFor="student-record-term" className="block text-sm font-semibold text-slate-700 dark:text-slate-300">Período</label><select id="student-record-term" value={selectedTermId} onChange={(event) => setTermId(event.target.value)} className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-600 dark:bg-slate-950 dark:text-white">{(selectedYear?.terms ?? []).map((term) => <option key={term.id} value={term.id}>{term.name}</option>)}</select></div></div>
       </section>
 
       <section className="rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-900" aria-labelledby="student-record-results-title">
         <div className="border-b border-slate-200 p-5 dark:border-slate-700"><h2 id="student-record-results-title" className="text-lg font-bold text-slate-900 dark:text-white">Resultados por disciplina</h2><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">Resultados fechados permanecem oficiais; períodos abertos são exibidos como parciais.</p></div>
-        {selectedSubjects.length === 0 ? <p className="p-5 text-sm text-slate-600 dark:text-slate-400">Ainda não há resultados acadêmicos para este aluno.</p> : <div className="divide-y divide-slate-200 dark:divide-slate-800">{selectedSubjects.map((subject) => <article key={subject.key} className="p-5"><div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between"><div><h3 className="font-bold text-slate-900 dark:text-white">{subject.subjectName}</h3><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{subject.teacherName} · {subject.termName}</p></div><div className="flex flex-wrap gap-2"><span className={`rounded-full border px-2.5 py-1 text-xs font-bold ${subject.isClosed ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'}`}>{subject.isClosed ? 'Resultado oficial' : 'Dados parciais'}</span><span className={`rounded-full border px-2.5 py-1 text-xs font-bold ${getResultBadgeClass(subject.resultStatus)}`}>{subjectStatus(subject)}</span></div></div><dl className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"><Value label="Média original" value={subject.isClosed ? formatPercent(subject.gradePercentage) : 'Parcial'} /><Value label="Recuperação" value={subject.isClosed ? formatPercent(subject.recoveryPercentage) : 'Parcial'} /><Value label="Média final" value={subject.isClosed ? formatPercent(subject.finalGradePercentage) : 'Parcial'} /><Value label="Frequência" value={subject.isClosed ? formatPercent(subject.attendancePercentage) : 'Parcial'} /><Value label="Período" value={subject.termName} /></dl><ResultDetails subject={subject} /></article>)}</div>}
+        {displaySubjects.length === 0 ? <p className="p-5 text-sm text-slate-600 dark:text-slate-400">Ainda não há resultados acadêmicos para este aluno.</p> : <div className="divide-y divide-slate-200 dark:divide-slate-800">{displaySubjects.map((subject) => <article key={subject.key} className="p-5"><div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between"><div><h3 className="font-bold text-slate-900 dark:text-white">{subject.subjectName}</h3><p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{subject.teacherName} · {subject.termName}</p></div><div className="flex flex-wrap gap-2"><span className={`rounded-full border px-2.5 py-1 text-xs font-bold ${subject.isClosed ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-900/60 dark:bg-emerald-950/30 dark:text-emerald-300' : 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300'}`}>{subject.isClosed ? 'Resultado oficial' : 'Dados parciais'}</span><span className={`rounded-full border px-2.5 py-1 text-xs font-bold ${getResultBadgeClass(subject.resultStatus)}`}>{subjectStatus(subject)}</span></div></div><dl className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"><Value label={subject.isClosed ? 'Média original' : 'Média parcial'} value={formatPercent(subject.gradePercentage)} /><Value label={subject.isClosed ? 'Recuperação' : 'Recuperação'} value={subject.isClosed ? formatPercent(subject.recoveryPercentage) : 'Não disponível'} /><Value label={subject.isClosed ? 'Média final' : 'Média final'} value={subject.isClosed ? formatPercent(subject.finalGradePercentage) : 'Não disponível'} /><Value label={subject.isClosed ? 'Frequência' : 'Frequência parcial'} value={formatPercent(subject.attendancePercentage)} /><Value label="Período" value={subject.termName} /></dl><ResultDetails subject={subject} /></article>)}</div>}
       </section>
 
       <div className="grid gap-5 xl:grid-cols-2">

@@ -3,10 +3,6 @@ import {
   type AcademicDocumentStudent,
 } from './academicDocumentService';
 import {
-  attendanceService,
-  type StudentAttendanceSummary,
-} from './attendanceService';
-import {
   pedagogicalMonitoringService,
   type PedagogicalMonitoringData,
   type PedagogicalStudentSummary,
@@ -27,7 +23,6 @@ export interface StudentAcademicRecord {
   selectedAcademicYearId: string | null;
   selectedTermId: string | null;
   reportCard: StudentReportCard;
-  attendance: StudentAttendanceSummary;
   monitoring: PedagogicalStudentSummary | null;
 }
 
@@ -37,10 +32,9 @@ export const studentAcademicRecordService = {
     studentId: string,
     filters: StudentAcademicRecordFilters = {},
   ): Promise<StudentAcademicRecord> {
-    const [student, reportCard, attendance, monitoring] = await Promise.all([
+    const [student, reportCard, monitoring] = await Promise.all([
       academicDocumentService.getStudent(institutionId, studentId),
       reportCardService.getStudentReportCard(institutionId, studentId),
-      attendanceService.getStudentAttendanceSummary(institutionId, studentId),
       pedagogicalMonitoringService.getInstitutionMonitoring(institutionId, {
         academicYearId: filters.academicYearId,
         termId: filters.termId,
@@ -58,7 +52,6 @@ export const studentAcademicRecordService = {
       selectedAcademicYearId: monitoring.academicYear?.id ?? null,
       selectedTermId: monitoring.term?.id ?? null,
       reportCard,
-      attendance,
       monitoring: monitoringStudent,
     };
   },

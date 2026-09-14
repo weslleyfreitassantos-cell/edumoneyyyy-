@@ -55,6 +55,72 @@ describe('StudentAcademicRecordTab', () => {
     expect(screen.getAllByText('Resultado oficial').length).toBeGreaterThan(0);
   });
 
+  it('mantém um período selecionado e mostra valores parciais do monitoramento', () => {
+    const partialRecord = {
+      ...record,
+      selectedTermId: 'term-1',
+      reportCard: {
+        ...record.reportCard,
+        closedCount: 0,
+        openCount: 2,
+        subjects: [
+          {
+            ...record.reportCard.subjects[0],
+            subjectName: 'Matemática',
+            gradePercentage: 68,
+            recoveryPercentage: null,
+            finalGradePercentage: 68,
+            attendancePercentage: null,
+            resultStatus: 'PENDING' as const,
+            finalizedAt: null,
+            isClosed: false,
+          },
+          {
+            ...record.reportCard.subjects[0],
+            key: 'offering-2:term-2',
+            subjectOfferingId: 'offering-2',
+            subjectName: 'História',
+            termId: 'term-2',
+            termName: '2º Bimestre',
+          },
+        ],
+      },
+      monitoring: {
+        ...record.monitoring!,
+        averageGrade: 68,
+        attendancePercentage: 92,
+        pendingItems: 0,
+        dataStatus: 'PARTIAL' as const,
+        risk: { level: 'NORMAL' as const, reasons: [] },
+        subjects: [{
+          subjectOfferingId: 'offering-1',
+          subjectId: 'subject-1',
+          subjectName: 'Matemática',
+          classId: 'class-1',
+          className: '2º A',
+          teacherProfileId: 'teacher-1',
+          teacherName: 'Prof. Ana',
+          gradePercentage: 68,
+          attendancePercentage: 92,
+          pendingItems: 0,
+          isClosed: false,
+          dataStatus: 'PARTIAL' as const,
+        }],
+      },
+    };
+    vi.mocked(useStudentAcademicRecord).mockReturnValue({ data: partialRecord, isLoading: false, isError: false, error: null } as never);
+
+    render(<MemoryRouter initialEntries={['/admin?module=student-record&student=student-1']}><StudentAcademicRecordTab /></MemoryRouter>);
+
+    expect(screen.queryByRole('option', { name: 'Todos os períodos' })).toBeNull();
+    expect((screen.getByLabelText('Período') as HTMLSelectElement).value).toBe('term-1');
+    expect(screen.getByText('Média parcial')).toBeTruthy();
+    expect(screen.getByText('Frequência parcial')).toBeTruthy();
+    expect(screen.getAllByText('68%').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('92%').length).toBeGreaterThan(0);
+    expect(screen.queryByRole('heading', { name: 'História' })).toBeNull();
+  });
+
   it('mostra estado seguro quando o student id não está presente', () => {
     render(<MemoryRouter initialEntries={['/admin?module=student-record']}><StudentAcademicRecordTab /></MemoryRouter>);
 

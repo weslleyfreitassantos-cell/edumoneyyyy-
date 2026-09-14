@@ -1,7 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 
 import { academicDocumentService } from './academicDocumentService';
-import { attendanceService } from './attendanceService';
 import { pedagogicalMonitoringService } from './pedagogicalMonitoringService';
 import { reportCardService } from './reportCardService';
 import { studentAcademicRecordService } from './studentAcademicRecordService';
@@ -9,11 +8,6 @@ import { studentAcademicRecordService } from './studentAcademicRecordService';
 vi.mock('./academicDocumentService', () => ({
   academicDocumentService: {
     getStudent: vi.fn(),
-  },
-}));
-vi.mock('./attendanceService', () => ({
-  attendanceService: {
-    getStudentAttendanceSummary: vi.fn(),
   },
 }));
 vi.mock('./pedagogicalMonitoringService', () => ({
@@ -75,19 +69,6 @@ const reportCard = {
   }],
 };
 
-const attendance = {
-  summary: {
-    totalRecords: 2,
-    presentRecords: 2,
-    absentRecords: 0,
-    lateRecords: 0,
-    excusedRecords: 0,
-    attendanceRate: 100,
-  },
-  records: [],
-  recentRecords: [],
-};
-
 const monitoring = {
   academicYear: { id: 'year-1', name: '2026', institutionId: 'institution-1', startDate: '2026-01-01', endDate: '2026-12-31', active: true, terms: [{ id: 'term-1', academicYearId: 'year-1', name: '1º Bimestre', startDate: '2026-01-01', endDate: '2026-04-01', active: true }] },
   term: { id: 'term-1', academicYearId: 'year-1', name: '1º Bimestre', startDate: '2026-01-01', endDate: '2026-04-01', active: true },
@@ -135,7 +116,6 @@ describe('studentAcademicRecordService', () => {
   it('agrega identidade, resultados, frequência e monitoramento sem recalcular o boletim', async () => {
     vi.mocked(academicDocumentService.getStudent).mockResolvedValue(documentStudent);
     vi.mocked(reportCardService.getStudentReportCard).mockResolvedValue(reportCard as never);
-    vi.mocked(attendanceService.getStudentAttendanceSummary).mockResolvedValue(attendance);
     vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring).mockResolvedValue(monitoring as never);
 
     const result = await studentAcademicRecordService.getStudentAcademicRecord('institution-1', 'student-1');
@@ -143,13 +123,12 @@ describe('studentAcademicRecordService', () => {
     expect(result.student).toBe(documentStudent);
     expect(result.reportCard.subjects[0]?.recoveryPercentage).toBe(74);
     expect(result.monitoring?.risk.level).toBe('ATTENTION');
-    expect(result.attendance.summary.attendanceRate).toBe(100);
+    expect(result).not.toHaveProperty('attendance');
   });
 
   it('repassa os filtros acadêmicos ao monitoramento existente', async () => {
     vi.mocked(academicDocumentService.getStudent).mockResolvedValue(documentStudent);
     vi.mocked(reportCardService.getStudentReportCard).mockResolvedValue(reportCard as never);
-    vi.mocked(attendanceService.getStudentAttendanceSummary).mockResolvedValue(attendance);
     vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring).mockResolvedValue(monitoring as never);
 
     await studentAcademicRecordService.getStudentAcademicRecord('institution-1', 'student-1', {
@@ -167,7 +146,6 @@ describe('studentAcademicRecordService', () => {
   it('mantém o erro seguro para aluno inexistente ou fora da instituição', async () => {
     vi.mocked(academicDocumentService.getStudent).mockRejectedValue(new Error('Aluno não encontrado nesta instituição.'));
     vi.mocked(reportCardService.getStudentReportCard).mockResolvedValue(reportCard as never);
-    vi.mocked(attendanceService.getStudentAttendanceSummary).mockResolvedValue(attendance);
     vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring).mockResolvedValue(monitoring as never);
 
     await expect(
