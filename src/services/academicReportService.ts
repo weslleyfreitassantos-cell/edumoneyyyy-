@@ -150,7 +150,7 @@ function resultRowFromSubjects(
   subject: PedagogicalMonitoringSubject,
   reportCard: ReportCardSubjectResult | undefined,
 ): AcademicResultsReportRow {
-  const isClosed = reportCard?.isClosed ?? subject.isClosed;
+  const isOfficial = reportCard?.isClosed === true;
   return {
     id: `${student.studentId}:${subject.subjectOfferingId}`,
     studentName: student.fullName,
@@ -158,20 +158,40 @@ function resultRowFromSubjects(
     className: subject.className,
     subjectName: subject.subjectName,
     teacherName: subject.teacherName,
-    gradePercentage: isClosed
+    gradePercentage: isOfficial
       ? reportCard?.gradePercentage ?? null
       : subject.gradePercentage,
-    recoveryPercentage: isClosed
+    recoveryPercentage: isOfficial
       ? reportCard?.recoveryPercentage ?? null
       : null,
-    finalGradePercentage: isClosed
+    finalGradePercentage: isOfficial
       ? reportCard?.finalGradePercentage ?? null
       : null,
-    attendancePercentage: isClosed
+    attendancePercentage: isOfficial
       ? reportCard?.attendancePercentage ?? subject.attendancePercentage
       : subject.attendancePercentage,
     resultStatus: reportCard?.resultStatus ?? 'PENDING',
-    dataStatus: isClosed ? 'OFFICIAL' : 'PARTIAL',
+    dataStatus: isOfficial ? 'OFFICIAL' : 'PARTIAL',
+  };
+}
+
+function resultRowFromReportCard(
+  student: { studentId: string; fullName: string; registrationNumber: string },
+  subject: ReportCardSubjectResult,
+): AcademicResultsReportRow {
+  return {
+    id: `${student.studentId}:${subject.subjectOfferingId}`,
+    studentName: student.fullName,
+    registrationNumber: student.registrationNumber,
+    className: subject.className,
+    subjectName: subject.subjectName,
+    teacherName: subject.teacherName,
+    gradePercentage: subject.gradePercentage,
+    recoveryPercentage: subject.recoveryPercentage,
+    finalGradePercentage: subject.finalGradePercentage,
+    attendancePercentage: subject.attendancePercentage,
+    resultStatus: subject.resultStatus,
+    dataStatus: 'OFFICIAL',
   };
 }
 
@@ -282,8 +302,8 @@ export const academicReportService = {
     filters: AcademicResultsReportFilters,
   ): Promise<AcademicResultsReportRow[]> {
     const students = await studentService.list(institutionId);
-    const studentIds = students.filter((student) => student.active).map((student) => student.id);
-    const [monitoring, reportCards] = await Promise.all([
+    const studentIds = students.map((student) => student.id);
+    const [monitoring, reportCards, offerings] = await Promise.all([
       pedagogicalMonitoringService.getInstitutionMonitoring(institutionId, {
         academicYearId: filters.academicYearId,
         termId: filters.termId,
@@ -291,29 +311,55 @@ export const academicReportService = {
         subjectId: filters.subjectId,
       }),
       reportCardService.getGuardianReportCards(institutionId, studentIds),
+      termClosingService.listInstitutionOfferings(institutionId, {
+        academicYearId: filters.academicYearId,
+        termId: filters.termId,
+      }),
     ]);
+    const studentsById = new Map(students.map((student) => [student.id, student]));
+    const offeringsById = new Map(offerings.map((offering) => [offering.id, offering]));
     const reportCardsByKey = new Map<string, ReportCardSubjectResult>();
+    const rowsByKey = new Map<string, AcademicResultsReportRow>();
 
     for (const reportCard of reportCards) {
       for (const subject of reportCard.subjects) {
+        const offering = offeringsById.get(subject.subjectOfferingId);
         if (
+          subject.isClosed &&
           subject.academicYearId === filters.academicYearId &&
-          subject.termId === filters.termId
+          subject.termId === filters.termId &&
+          offering &&
+          offering.classId === filters.classId &&
+          (!filters.subjectId || offering.subjectId === filters.subjectId)
         ) {
-          reportCardsByKey.set(
-            reportCardKey(reportCard.studentId, subject.subjectOfferingId, subject.termId),
-            subject,
-          );
+          const student = studentsById.get(reportCard.studentId);
+          if (!student) continue;
+
+          const key = reportCardKey(reportCard.studentId, subject.subjectOfferingId, subject.termId);
+          reportCardsByKey.set(key, subject);
+          rowsByKey.set(key, resultRowFromReportCard({
+            studentId: student.id,
+            fullName: studentName(student),
+            registrationNumber: student.registration_number,
+          }, subject));
         }
       }
     }
 
-    return monitoring.students
-      .flatMap((student) => student.subjects.map((subject) => resultRowFromSubjects(
-        student,
-        subject,
-        reportCardsByKey.get(reportCardKey(student.studentId, subject.subjectOfferingId, filters.termId)),
-      )))
+    for (const student of monitoring.students) {
+      for (const subject of student.subjects) {
+        const key = reportCardKey(student.studentId, subject.subjectOfferingId, filters.termId);
+        if (!rowsByKey.has(key)) {
+          rowsByKey.set(key, resultRowFromSubjects(
+            student,
+            subject,
+            reportCardsByKey.get(key),
+          ));
+        }
+      }
+    }
+
+    return Array.from(rowsByKey.values())
       .sort((first, second) =>
         first.studentName.localeCompare(second.studentName, 'pt-BR') ||
         first.subjectName.localeCompare(second.subjectName, 'pt-BR'),
@@ -352,11 +398,13 @@ export const academicReportService = {
       }
     }
 
+    const recordsStudentIds = new Set(recordsByStudent.keys());
+
     return enrollments
       .filter((enrollment) =>
         enrollment.academic_year_id === filters.academicYearId &&
         enrollment.class_id === filters.classId &&
-        isActiveEnrollment(enrollment) &&
+        (isActiveEnrollment(enrollment) || recordsStudentIds.has(enrollment.student_id)) &&
         (!filters.studentId || enrollment.student_id === filters.studentId),
       )
       .map((enrollment) => {

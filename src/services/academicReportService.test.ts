@@ -60,7 +60,37 @@ describe('academicReportService', () => {
 
     const rows = await academicReportService.getAcademicResultsReport(institutionId, { academicYearId: 'year-1', termId: 'term-1', classId: 'class-1' });
 
+    expect(rows).toHaveLength(1);
     expect(rows[0]).toMatchObject({ gradePercentage: 52, recoveryPercentage: 74, finalGradePercentage: 74, attendancePercentage: 90, resultStatus: 'APPROVED', dataStatus: 'OFFICIAL' });
+  });
+
+  it.each([
+    ['aluno inativo', false, 'ACTIVE'],
+    ['matrícula transferida', true, 'TRANSFERRED'],
+    ['matrícula concluída', true, 'COMPLETED'],
+  ] as const)('%s continua no relatório histórico quando há snapshot oficial', async (_label, studentActive, enrollmentStatus) => {
+    vi.mocked(studentService.list).mockResolvedValue([{ ...student, active: studentActive }] as never);
+    vi.mocked(enrollmentService.list).mockResolvedValue([{ ...enrollment, active: enrollmentStatus === 'ACTIVE', status: enrollmentStatus }] as never);
+    vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring).mockResolvedValue(monitoring as never);
+    vi.mocked(reportCardService.getGuardianReportCards).mockResolvedValue([{ institutionId, studentId: 'student-1', subjects: [reportSubject], closedCount: 1, openCount: 0 }] as never);
+
+    const rows = await academicReportService.getAcademicResultsReport(institutionId, { academicYearId: 'year-1', termId: 'term-1', classId: 'class-1' });
+
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ studentName: 'Maria Silva', finalGradePercentage: 74, dataStatus: 'OFFICIAL' });
+  });
+
+  it.each([
+    ['turma', { classId: 'class-2' }],
+    ['disciplina', { subjectId: 'subject-2' }],
+  ] as const)('exclui snapshot oficial fora do filtro de %s', async (_label, filter) => {
+    vi.mocked(pedagogicalMonitoringService.getInstitutionMonitoring).mockResolvedValue({ ...monitoring, students: [] } as never);
+    vi.mocked(reportCardService.getGuardianReportCards).mockResolvedValue([{ institutionId, studentId: 'student-1', subjects: [reportSubject], closedCount: 1, openCount: 0 }] as never);
+    vi.mocked(termClosingService.listInstitutionOfferings).mockResolvedValue([{ id: 'offering-1', institutionId, academicYearId: 'year-1', academicYearName: '2026', classId: 'class-1', className: '2º A', gradeLevel: '2º ano', shift: 'Matutino', subjectId: 'subject-1', subjectName: 'Matemática', subjectCode: null, workload: 50, teacherProfileId: 'teacher-1', teacherName: 'Prof. Ana', teacherEmail: 'prof@example.com', termId: 'term-1', termName: '2º Bimestre', termStartDate: '2026-04-01', termEndDate: '2026-06-30', active: true, closure: null }] as never);
+
+    const rows = await academicReportService.getAcademicResultsReport(institutionId, { academicYearId: 'year-1', termId: 'term-1', classId: 'class-1', ...filter });
+
+    expect(rows).toHaveLength(0);
   });
 
   it('gera relatório de matrículas com filtro de status e busca por nome ou RA', async () => {
@@ -106,5 +136,34 @@ describe('academicReportService', () => {
     const rows = await academicReportService.getAttendanceReport(institutionId, { academicYearId: 'year-1', termId: 'term-1', classId: 'class-1' });
 
     expect(rows[0]).toMatchObject({ presentRecords: 2, absentRecords: 1, lateRecords: 1, excusedRecords: 1, totalRecords: 4, attendanceRate: 50 });
+    expect(attendanceService.getInstitutionAttendanceSummary).toHaveBeenCalledWith(institutionId, expect.objectContaining({ limit: null }));
+  });
+
+  it.each(['TRANSFERRED', 'COMPLETED'] as const)('preserva frequência histórica de matrícula %s', async (status) => {
+    vi.mocked(studentService.list).mockResolvedValue([{ ...student, active: false }] as never);
+    vi.mocked(enrollmentService.list).mockResolvedValue([{ ...enrollment, active: false, status }] as never);
+    vi.mocked(attendanceService.getInstitutionAttendanceSummary).mockResolvedValue({
+      summary: { totalRecords: 1, presentRecords: 1, absentRecords: 0, lateRecords: 0, excusedRecords: 0, attendanceRate: 100 },
+      sessions: [{ records: [{ studentId: 'student-1', status: 'PRESENT' }] }],
+      filters: { classes: [], subjects: [], teachers: [], students: [], academicYears: [], terms: [] },
+    } as never);
+
+    const rows = await academicReportService.getAttendanceReport(institutionId, { academicYearId: 'year-1', termId: 'term-1', classId: 'class-1' });
+
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({ studentName: 'Maria Silva', totalRecords: 1, attendanceRate: 100 });
+  });
+
+  it('não inventa frequência para matrícula histórica sem registros', async () => {
+    vi.mocked(attendanceService.getInstitutionAttendanceSummary).mockResolvedValue({
+      summary: { totalRecords: 0, presentRecords: 0, absentRecords: 0, lateRecords: 0, excusedRecords: 0, attendanceRate: 0 },
+      sessions: [],
+      filters: { classes: [], subjects: [], teachers: [], students: [], academicYears: [], terms: [] },
+    } as never);
+    vi.mocked(enrollmentService.list).mockResolvedValue([{ ...enrollment, active: false, status: 'COMPLETED' }] as never);
+
+    const rows = await academicReportService.getAttendanceReport(institutionId, { academicYearId: 'year-1', termId: 'term-1', classId: 'class-1' });
+
+    expect(rows).toHaveLength(0);
   });
 });
