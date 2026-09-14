@@ -60,16 +60,15 @@ interface StudentQueryRow {
     | null;
 }
 
-interface StudentListQueryRow {
+interface StudentListRpcRow {
   id: string;
   profile_id: string;
   institution_id: string;
   registration_number: string;
   active: boolean;
-  profiles:
-    | StudentListProfileSummary
-    | StudentListProfileSummary[]
-    | null;
+  full_name: string;
+  email: string;
+  total_count: number | null;
 }
 
 export interface CreatedStudent {
@@ -88,20 +87,6 @@ function normalizeStudentProfile(
   }
 
   return relation;
-}
-
-function normalizeStudentListProfile(
-  relation: StudentListQueryRow['profiles'],
-): StudentListProfileSummary | null {
-  if (Array.isArray(relation)) {
-    return relation[0] ?? null;
-  }
-
-  return relation;
-}
-
-function escapePostgrestSearch(value: string): string {
-  return value.replace(/[\\%_,()]/g, '\\$&');
 }
 
 export const studentService = {
@@ -168,51 +153,31 @@ export const studentService = {
     const offset = Math.max(0, page - 1) * pageSize;
     const normalizedSearch = search?.trim() ?? '';
 
-    let query = supabase
-      .from('students')
-      .select(
-        `
-          id,
-          profile_id,
-          institution_id,
-          registration_number,
-          active,
-          profiles:profile_id!inner (
-            full_name,
-            email
-          )
-        `,
-        { count: 'exact' },
-      )
-      .eq('institution_id', institutionId)
-      .order('created_at', { ascending: false });
-
-    if (normalizedSearch) {
-      const pattern = escapePostgrestSearch(normalizedSearch);
-      query = query.or(
-        `registration_number.ilike.%${pattern}%,profiles.full_name.ilike.%${pattern}%,profiles.email.ilike.%${pattern}%`,
-      );
-    }
-
-    const { data, error, count } = await query.range(
-      offset,
-      offset + pageSize - 1,
-    );
+    const { data, error } = await supabase.rpc('list_students_page', {
+      p_institution_id: institutionId,
+      p_search: normalizedSearch || null,
+      p_limit: pageSize,
+      p_offset: offset,
+    });
 
     if (error) {
       throw error;
     }
 
+    const rows = (data ?? []) as unknown as StudentListRpcRow[];
     return {
-      rows: ((data ?? []) as unknown as StudentListQueryRow[]).map((row) => ({
+      rows: rows.map((row) => ({
         id: row.id,
         profile_id: row.profile_id,
         institution_id: row.institution_id,
         registration_number: row.registration_number,
         active: row.active,
-        profiles: normalizeStudentListProfile(row.profiles),
+        profiles: {
+          full_name: row.full_name,
+          email: row.email,
+        },
       })),
-      total: count ?? 0,
+      total: rows[0]?.total_count ?? 0,
     };
   },
 

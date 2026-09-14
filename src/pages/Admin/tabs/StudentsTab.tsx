@@ -478,7 +478,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       <ListSearch
         id="students-search"
         label="Buscar aluno"
-        placeholder="Nome, e-mail, RA ou CPF"
+        placeholder="Nome, e-mail ou RA"
         value={searchTerm}
         onChange={setSearchTerm}
       />
@@ -500,13 +500,14 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
         columns={columns}
         isLoading={
           studentsQuery.isLoading ||
+          studentsQuery.isFetching ||
           enrollmentsQuery.isLoading
         }
         actionCellClassName="min-w-[136px] align-middle whitespace-nowrap"
         actionGroupClassName="md:flex-nowrap"
         onAdd={openFullWizard}
         emptyMessage={
-          totalStudents > 0 && students.length === 0
+          searchTerm.trim()
             ? 'Nenhum aluno encontrado.'
             : 'Nenhum aluno cadastrado nesta instituição.'
         }

@@ -1,27 +1,12 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const mocks = vi.hoisted(() => {
-  const query = {
-    select: vi.fn(),
-    eq: vi.fn(),
-    order: vi.fn(),
-    or: vi.fn(),
-    range: vi.fn(),
-  };
-
-  for (const method of ['select', 'eq', 'order', 'or']) {
-    query[method as keyof typeof query].mockReturnValue(query);
-  }
-
-  return {
-    from: vi.fn(() => query),
-    query,
-  };
-});
+const mocks = vi.hoisted(() => ({
+  rpc: vi.fn(),
+}));
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
-    from: mocks.from,
+    rpc: mocks.rpc,
   },
 }));
 
@@ -30,7 +15,7 @@ import { studentService } from './studentService';
 describe('studentService.listPage', () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mocks.query.range.mockResolvedValue({
+    mocks.rpc.mockResolvedValue({
       data: [
         {
           id: 'student-1',
@@ -38,18 +23,16 @@ describe('studentService.listPage', () => {
           institution_id: 'institution-a',
           registration_number: '20260001',
           active: true,
-          profiles: {
-            full_name: 'Ana Silva',
-            email: 'ana@example.com',
-          },
+          full_name: 'Ana Silva',
+          email: 'ana@example.com',
+          total_count: 31,
         },
       ],
-      count: 31,
       error: null,
     });
   });
 
-  it('aplica tenant, count e range no banco sem projetar dados sensíveis', async () => {
+  it('usa a RPC paginada e não projeta dados sensíveis', async () => {
     const result = await studentService.listPage({
       institutionId: 'institution-a',
       page: 1,
@@ -60,22 +43,23 @@ describe('studentService.listPage', () => {
     expect(result.rows[0]).toMatchObject({
       id: 'student-1',
       registration_number: '20260001',
+      profiles: {
+        full_name: 'Ana Silva',
+        email: 'ana@example.com',
+      },
     });
-    expect(mocks.from).toHaveBeenCalledWith('students');
-    expect(mocks.query.select).toHaveBeenCalledWith(
-      expect.not.stringContaining('birth_date'),
-      { count: 'exact' },
-    );
-    expect(mocks.query.select.mock.calls[0][0]).not.toContain('cpf');
-    expect(mocks.query.select.mock.calls[0][0]).not.toContain('avatar_url');
-    expect(mocks.query.eq).toHaveBeenCalledWith(
-      'institution_id',
-      'institution-a',
-    );
-    expect(mocks.query.range).toHaveBeenCalledWith(0, 24);
+    expect(mocks.rpc).toHaveBeenCalledWith('list_students_page', {
+      p_institution_id: 'institution-a',
+      p_search: null,
+      p_limit: 25,
+      p_offset: 0,
+    });
+    expect(JSON.stringify(result.rows[0])).not.toContain('cpf');
+    expect(JSON.stringify(result.rows[0])).not.toContain('birth_date');
+    expect(JSON.stringify(result.rows[0])).not.toContain('avatar_url');
   });
 
-  it('envia busca e pagina seguinte ao PostgREST', async () => {
+  it('envia busca por nome, e-mail ou RA e offset ao banco', async () => {
     await studentService.listPage({
       institutionId: 'institution-a',
       page: 2,
@@ -83,12 +67,11 @@ describe('studentService.listPage', () => {
       search: 'Ana Silva',
     });
 
-    expect(mocks.query.or).toHaveBeenCalledWith(
-      expect.stringContaining('registration_number.ilike.%Ana Silva%'),
-    );
-    expect(mocks.query.or.mock.calls[0][0]).toContain(
-      'profiles.full_name.ilike.%Ana Silva%',
-    );
-    expect(mocks.query.range).toHaveBeenCalledWith(25, 49);
+    expect(mocks.rpc).toHaveBeenCalledWith('list_students_page', {
+      p_institution_id: 'institution-a',
+      p_search: 'Ana Silva',
+      p_limit: 25,
+      p_offset: 25,
+    });
   });
 });
