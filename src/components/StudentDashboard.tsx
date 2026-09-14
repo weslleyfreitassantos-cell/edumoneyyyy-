@@ -39,6 +39,7 @@ import type {
 } from '../services/studentDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
+import AcademicStudentContext from './academic/AcademicStudentContext';
 import StudentReportCard from './academic/StudentReportCard';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
@@ -276,21 +277,6 @@ function StudentAcademicResultsView({
   student: StudentDashboardData['student'];
   enrollment: StudentDashboardData['activeEnrollment'];
 }) {
-  const page = {
-    attendance: {
-      title: 'Frequência',
-      description: 'Consulte seus registros de presença e faltas publicados.',
-    },
-    grades: {
-      title: 'Notas',
-      description: 'Acompanhe avaliações, notas e situações de lançamento.',
-    },
-    'report-card': {
-      title: 'Boletim',
-      description: 'Consulte seus resultados parciais e boletins oficiais.',
-    },
-  }[section];
-
   const studentName =
     student.profile?.full_name ?? student.registration_number;
 
@@ -298,35 +284,15 @@ function StudentAcademicResultsView({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-6"
+      className="space-y-5"
       id={`student-${section}-main`}
     >
-      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-          Área do aluno
-        </p>
-        <div className="mt-2 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight text-[#181c20] dark:text-white">
-              {page.title}
-            </h1>
-            <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
-              {page.description}
-            </p>
-          </div>
-          <div className="text-left text-sm sm:text-right">
-            <p className="font-semibold text-[#181c20] dark:text-slate-100">
-              {studentName}
-            </p>
-            <p className="mt-1 text-xs text-[#727785] dark:text-slate-400">
-              {enrollment?.class_name ?? 'Sem matrícula ativa'}
-              {enrollment?.academic_year_name
-                ? ` · ${enrollment.academic_year_name}`
-                : ''}
-            </p>
-          </div>
-        </div>
-      </section>
+      <AcademicStudentContext
+        studentName={studentName}
+        registrationNumber={student.registration_number}
+        className={enrollment?.class_name}
+        academicYearName={enrollment?.academic_year_name}
+      />
 
       {!enrollment && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
@@ -338,7 +304,7 @@ function StudentAcademicResultsView({
         <StudentAttendanceSummaryPanel
           institutionId={institutionId}
           studentId={student.id}
-          title="Frequência do aluno"
+          title="Resumo de frequência"
         />
       )}
 
@@ -346,7 +312,7 @@ function StudentAcademicResultsView({
         <StudentGradesPanel
           institutionId={institutionId}
           studentId={student.id}
-          title="Avaliações e notas"
+          title="Avaliações publicadas"
         />
       )}
 
@@ -364,13 +330,20 @@ function StudentAcademicResultsView({
 
 function LoadingState() {
   return (
-    <div className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
-      <div className="text-center">
-        <div
-          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
-          aria-hidden="true"
-        />
-        <p className="mt-4 text-sm font-medium text-[#727785]">
+    <div
+      role="status"
+      aria-label="Carregando dados acadêmicos"
+      className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+    >
+      <div className="space-y-4 motion-safe:animate-pulse motion-reduce:animate-none">
+        <div className="h-5 w-44 rounded bg-[#e8edf4] dark:bg-slate-700" />
+        <div className="h-4 w-72 max-w-full rounded bg-[#eef1f5] dark:bg-slate-800" />
+        <div className="grid gap-3 sm:grid-cols-3">
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+        </div>
+        <p className="text-sm font-medium text-[#727785] dark:text-slate-400">
           Carregando dados acadêmicos...
         </p>
       </div>
@@ -587,7 +560,7 @@ export default function StudentDashboard() {
     return (
       <div
         role="alert"
-        className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700"
+        className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200"
       >
         O registro acadêmico do aluno ainda não está disponível.
       </div>

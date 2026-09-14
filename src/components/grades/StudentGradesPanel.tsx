@@ -78,8 +78,8 @@ export default function StudentGradesPanel({
             />
 
             <div>
-              <h3 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-                Registros recentes
+              <h3 className="text-sm font-bold uppercase tracking-wide text-[#005bbf] dark:text-blue-300">
+                Avaliações recentes
               </h3>
 
               <div className="mt-3 divide-y divide-[#eef1f5] rounded-lg border border-[#dfe3e8] dark:divide-slate-700 dark:border-slate-700">
@@ -87,18 +87,18 @@ export default function StudentGradesPanel({
                   (record) => (
                     <div
                       key={record.assessmentId}
-                      className="grid gap-3 p-4 lg:grid-cols-[1.3fr_0.8fr_0.7fr_0.7fr] lg:items-center"
+                      className="grid gap-3 p-4 xl:grid-cols-[1.3fr_0.8fr_0.7fr_0.7fr] xl:items-center"
                     >
-                      <div className="flex items-start gap-3">
+                      <div className="flex min-w-0 items-start gap-3">
                         <CalendarDays
-                          className="mt-0.5 h-5 w-5 text-[#727785]"
+                          className="mt-0.5 h-5 w-5 shrink-0 text-[#727785] dark:text-slate-400"
                           aria-hidden="true"
                         />
-                        <div>
-                          <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
+                        <div className="min-w-0">
+                          <p className="break-words text-sm font-semibold text-[#181c20] dark:text-slate-100">
                             {record.title}
                           </p>
-                          <p className="mt-1 text-xs text-[#727785]">
+                          <p className="mt-1 break-words text-xs text-[#727785] dark:text-slate-400">
                             {record.subjectName} ·{' '}
                             {
                               ASSESSMENT_TYPE_LABELS[
@@ -113,24 +113,39 @@ export default function StudentGradesPanel({
                         </div>
                       </div>
 
-                      <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
-                        {formatScore(
-                          record.score,
-                          record.maxScore,
-                        )}
-                      </p>
+                      <div>
+                        <p className="text-xs font-medium text-[#727785] dark:text-slate-400 xl:hidden">
+                          Nota
+                        </p>
+                        <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
+                          {formatScore(
+                            record.score,
+                            record.maxScore,
+                          )}
+                        </p>
+                      </div>
 
-                      <p className="text-sm text-[#181c20] dark:text-slate-100">
-                        {formatPercent(record.percentage)}
-                      </p>
+                      <div>
+                        <p className="text-xs font-medium text-[#727785] dark:text-slate-400 xl:hidden">
+                          Aproveitamento
+                        </p>
+                        <p className="text-sm text-[#181c20] dark:text-slate-100">
+                          {formatPercent(record.percentage)}
+                        </p>
+                      </div>
 
-                      <span
-                        className={`inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${getGradeStatusClassName(
-                          record.status,
-                        )}`}
-                      >
-                        {GRADE_STATUS_LABELS[record.status]}
-                      </span>
+                      <div>
+                        <p className="text-xs font-medium text-[#727785] dark:text-slate-400 xl:hidden">
+                          Situação
+                        </p>
+                        <span
+                          className={`inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${getGradeStatusClassName(
+                            record.status,
+                          )}`}
+                        >
+                          {GRADE_STATUS_LABELS[record.status]}
+                        </span>
+                      </div>
                     </div>
                   ),
                 )}

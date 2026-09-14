@@ -103,13 +103,13 @@ export function getResultBadgeClass(
 ): string {
   switch (status) {
     case 'APPROVED':
-      return 'border-green-200 bg-green-50 text-green-700';
+      return 'border-green-200 bg-green-50 text-green-700 dark:border-green-900/60 dark:bg-green-950/30 dark:text-green-300';
     case 'FAILED_BY_GRADE':
     case 'FAILED_BY_ATTENDANCE':
     case 'FAILED_BY_GRADE_AND_ATTENDANCE':
-      return 'border-red-200 bg-red-50 text-red-700';
+      return 'border-red-200 bg-red-50 text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300';
     case 'PENDING':
     default:
-      return 'border-amber-200 bg-amber-50 text-amber-700';
+      return 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300';
   }
 }

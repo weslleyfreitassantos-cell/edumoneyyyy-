@@ -23,6 +23,7 @@ import { useGuardianRegistrationCompletion } from '../hooks/useRegistrationCompl
 import type { GuardianStudentDashboard } from '../services/guardianDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
+import AcademicStudentContext from './academic/AcademicStudentContext';
 import GuardianReportCard from './academic/GuardianReportCard';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
@@ -48,13 +49,20 @@ function getErrorMessage(
 
 function LoadingState() {
   return (
-    <div className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
-      <div className="text-center">
-        <div
-          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
-          aria-hidden="true"
-        />
-        <p className="mt-4 text-sm font-medium text-[#727785]">
+    <div
+      role="status"
+      aria-label="Carregando vínculos familiares"
+      className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+    >
+      <div className="space-y-4 motion-safe:animate-pulse motion-reduce:animate-none">
+        <div className="h-5 w-44 rounded bg-[#e8edf4] dark:bg-slate-700" />
+        <div className="h-4 w-72 max-w-full rounded bg-[#eef1f5] dark:bg-slate-800" />
+        <div className="grid gap-3 sm:grid-cols-3">
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+        </div>
+        <p className="text-sm font-medium text-[#727785] dark:text-slate-400">
           Carregando vínculos familiares...
         </p>
       </div>
@@ -155,21 +163,6 @@ function GuardianAcademicResultsView({
   selectedStudentId: string;
   onSelectStudent: (studentId: string) => void;
 }) {
-  const page = {
-    attendance: {
-      title: 'Frequência dos dependentes',
-      description: 'Consulte os registros de presença do dependente selecionado.',
-    },
-    grades: {
-      title: 'Notas dos dependentes',
-      description: 'Acompanhe as avaliações e notas do dependente selecionado.',
-    },
-    'report-card': {
-      title: 'Boletim dos dependentes',
-      description: 'Consulte resultados parciais e boletins oficiais por dependente.',
-    },
-  }[section];
-
   const selectedStudentRecord = selectedStudent?.student.student;
   const selectedName =
     selectedStudentRecord?.profile?.full_name ??
@@ -180,56 +173,36 @@ function GuardianAcademicResultsView({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="space-y-6"
+      className="space-y-5"
       id={`guardian-${section}-main`}
     >
-      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-              Área da família
-            </p>
-            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20] dark:text-white">
-              {page.title}
-            </h1>
-            <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
-              {page.description}
-            </p>
-          </div>
-
-          <div className="w-full lg:max-w-sm">
-            <label htmlFor="guardian-academic-student" className="text-xs font-bold uppercase tracking-wide text-[#727785] dark:text-slate-400">
-              Dependente
-            </label>
-            <select
-              id="guardian-academic-student"
-              value={selectedStudent?.student.student.id ?? selectedStudentId}
-              onChange={(event) => onSelectStudent(event.target.value)}
-              className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100"
-            >
-              {students.map((item) => (
-                <option key={item.guardianship_id} value={item.student.student.id}>
-                  {item.student.student.profile?.full_name ?? item.student.student.registration_number}
-                </option>
-              ))}
-            </select>
-          </div>
+      <AcademicStudentContext
+        studentName={selectedName}
+        registrationNumber={selectedStudentRecord?.registration_number}
+        className={selectedStudent?.student.activeEnrollment?.class_name}
+        academicYearName={selectedStudent?.student.activeEnrollment?.academic_year_name}
+      >
+        <div>
+          <label
+            htmlFor="guardian-academic-student"
+            className="text-xs font-bold uppercase tracking-wide text-[#727785] dark:text-slate-400"
+          >
+            Dependente
+          </label>
+          <select
+            id="guardian-academic-student"
+            value={selectedStudent?.student.student.id ?? selectedStudentId}
+            onChange={(event) => onSelectStudent(event.target.value)}
+            className="mt-1 min-h-10 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus-visible:ring-2 focus-visible:ring-blue-100 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:focus-visible:ring-blue-500/30"
+          >
+            {students.map((item) => (
+              <option key={item.guardianship_id} value={item.student.student.id}>
+                {item.student.student.profile?.full_name ?? item.student.student.registration_number}
+              </option>
+            ))}
+          </select>
         </div>
-
-        {selectedStudent && (
-          <div className="mt-5 rounded-lg border border-[#dfe3e8] bg-[#f8faff] px-4 py-3 text-sm dark:border-slate-700 dark:bg-slate-800">
-            <p className="font-semibold text-[#181c20] dark:text-slate-100">
-              {selectedName}
-            </p>
-            <p className="mt-1 text-xs text-[#727785] dark:text-slate-400">
-              {selectedStudent.student.activeEnrollment?.class_name ?? 'Sem matrícula ativa'}
-              {selectedStudent.student.activeEnrollment?.academic_year_name
-                ? ` · ${selectedStudent.student.activeEnrollment.academic_year_name}`
-                : ''}
-            </p>
-          </div>
-        )}
-      </section>
+      </AcademicStudentContext>
 
       {!selectedStudent && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
@@ -241,7 +214,7 @@ function GuardianAcademicResultsView({
         <StudentAttendanceSummaryPanel
           institutionId={institutionId}
           studentId={selectedStudent.student.student.id}
-          title="Frequência do aluno"
+          title="Resumo de frequência"
         />
       )}
 
@@ -249,7 +222,7 @@ function GuardianAcademicResultsView({
         <StudentGradesPanel
           institutionId={institutionId}
           studentId={selectedStudent.student.student.id}
-          title="Notas do aluno"
+          title="Avaliações publicadas"
         />
       )}
 
@@ -333,7 +306,7 @@ export default function ParentDashboard() {
     return (
       <div
         role="alert"
-        className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700"
+        className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200"
       >
         <h2 className="font-bold">
           Não foi possível carregar o painel
