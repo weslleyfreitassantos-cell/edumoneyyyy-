@@ -135,6 +135,33 @@
   }
 }
 
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  .academic-document-printable,
+  .academic-document-printable * {
+    visibility: visible !important;
+  }
+
+  .academic-document-printable {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #111827 !important;
+  }
+
+  .academic-document-printable .print-hidden {
+    display: none !important;
+  }
+}
+
 html.dark #app-authenticated-container {
   background: #0f172a;
   color: #e5e7eb;

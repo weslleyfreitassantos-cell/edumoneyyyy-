@@ -25,6 +25,7 @@ export type AdminModuleId =
   | 'term-closing'
   | 'class-councils'
   | 'pedagogical-monitoring'
+  | 'academic-documents'
   | 'academic-policies'
   | 'academic-calendar'
   | 'timetable'
@@ -279,6 +280,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('pedagogical-monitoring'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'academic-documents',
+    label: 'Documentos acadêmicos',
+    groupId: 'school-operation',
+    permission: 'issue_academic_documents',
+    href: moduleHref('academic-documents'),
     allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
