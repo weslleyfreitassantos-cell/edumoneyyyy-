@@ -28,6 +28,15 @@ export const enrollmentKeys = {
       ...enrollmentKeys.all,
       institutionId,
     ] as const,
+
+  currentForStudents: (
+    institutionId: string,
+    studentIds: string[],
+  ) => [
+    ...enrollmentKeys.list(institutionId),
+    'current-for-students',
+    ...studentIds,
+  ] as const,
 };
 
 function invalidateEnrollments(
@@ -71,6 +80,26 @@ export function useEnrollments(
     queryFn: () =>
       enrollmentService.list(institutionId),
     enabled: Boolean(institutionId),
+  });
+}
+
+export function useCurrentEnrollmentsForStudents(
+  institutionId: string,
+  studentIds: string[],
+) {
+  const stableStudentIds = [...new Set(studentIds)].sort();
+
+  return useQuery<EnrollmentRow[]>({
+    queryKey: enrollmentKeys.currentForStudents(
+      institutionId,
+      stableStudentIds,
+    ),
+    queryFn: () =>
+      enrollmentService.listCurrentForStudents(
+        institutionId,
+        stableStudentIds,
+      ),
+    enabled: Boolean(institutionId && stableStudentIds.length > 0),
   });
 }
 

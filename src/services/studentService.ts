@@ -14,6 +14,25 @@ export interface StudentProfileSummary {
   avatar_url: string | null;
 }
 
+export interface StudentListProfileSummary {
+  full_name: string;
+  email: string;
+}
+
+export interface StudentListRow {
+  id: string;
+  profile_id: string;
+  institution_id: string;
+  registration_number: string;
+  active: boolean;
+  profiles: StudentListProfileSummary | null;
+}
+
+export interface StudentPage {
+  rows: StudentListRow[];
+  total: number;
+}
+
 export interface StudentRow {
   id: string;
   profile_id: string;
@@ -39,6 +58,17 @@ interface StudentQueryRow {
     | StudentProfileSummary
     | StudentProfileSummary[]
     | null;
+}
+
+interface StudentListRpcRow {
+  id: string;
+  profile_id: string;
+  institution_id: string;
+  registration_number: string;
+  active: boolean;
+  full_name: string;
+  email: string;
+  total_count: number | null;
 }
 
 export interface CreatedStudent {
@@ -107,6 +137,95 @@ export const studentService = {
         row.profiles,
       ),
     }));
+  },
+
+  async listPage({
+    institutionId,
+    page,
+    pageSize,
+    search,
+  }: {
+    institutionId: string;
+    page: number;
+    pageSize: number;
+    search?: string;
+  }): Promise<StudentPage> {
+    const offset = Math.max(0, page - 1) * pageSize;
+    const normalizedSearch = search?.trim() ?? '';
+
+    const { data, error } = await supabase.rpc('list_students_page', {
+      p_institution_id: institutionId,
+      p_search: normalizedSearch || null,
+      p_limit: pageSize,
+      p_offset: offset,
+    });
+
+    if (error) {
+      throw error;
+    }
+
+    const rows = (data ?? []) as unknown as StudentListRpcRow[];
+    return {
+      rows: rows.map((row) => ({
+        id: row.id,
+        profile_id: row.profile_id,
+        institution_id: row.institution_id,
+        registration_number: row.registration_number,
+        active: row.active,
+        profiles: {
+          full_name: row.full_name,
+          email: row.email,
+        },
+      })),
+      total: rows[0]?.total_count ?? 0,
+    };
+  },
+
+  async getById(
+    id: string,
+    institutionId: string,
+  ): Promise<StudentRow> {
+    const { data, error } = await supabase
+      .from('students')
+      .select(`
+        id,
+        profile_id,
+        institution_id,
+        registration_number,
+        birth_date,
+        cpf,
+        active,
+        created_at,
+        profiles:profile_id (
+          full_name,
+          email,
+          avatar_url
+        )
+      `)
+      .eq('id', id)
+      .eq('institution_id', institutionId)
+      .maybeSingle();
+
+    if (error) {
+      throw error;
+    }
+
+    if (!data) {
+      throw new Error('Aluno não encontrado nesta instituição.');
+    }
+
+    const row = data as unknown as StudentQueryRow;
+    return {
+      id: row.id,
+      profile_id: row.profile_id,
+      institution_id: row.institution_id,
+      registration_number: row.registration_number,
+      birth_date: row.birth_date,
+      cpf: row.cpf ?? null,
+      active: row.active,
+      created_at: row.created_at ?? undefined,
+      profiles: normalizeStudentProfile(row.profiles),
+    };
   },
 
   async create(

@@ -27,7 +27,6 @@ import StatusBadge from '../../../components/StatusBadge';
 import {
   ListPagination,
   ListSearch,
-  normalizeListSearch,
 } from '../../../components/ListControls';
 
 import { useCurrentInstitution } from '../../../hooks/useCurrentInstitution';
@@ -38,18 +37,18 @@ import { useSchoolUsers } from '../../../hooks/useSchoolUsers';
 import { useManageSchoolUser } from '../../../hooks/useSchoolUserManagement';
 
 import {
-  useEnrollments,
+  useCurrentEnrollmentsForStudents,
 } from '../../../hooks/useEnrollments';
 
 import {
   useSetStudentActive,
-  useStudents,
+  useStudentPage,
 } from '../../../hooks/useStudents';
 
 import { guardianLinkSchema } from '../../../schemas/adminSchemas';
 
 import type { EnrollmentRow } from '../../../services/enrollmentService';
-import type { StudentRow } from '../../../services/studentService';
+import type { StudentListRow } from '../../../services/studentService';
 import FullStudentEnrollmentWizard from './FullStudentEnrollmentWizard';
 import StudentSpreadsheetImportModal from '../../../components/StudentSpreadsheetImportModal';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
@@ -66,7 +65,7 @@ const emptyGuardianLinkDraft: GuardianLinkDraft = {
   is_primary: false,
 };
 
-const STUDENTS_PAGE_SIZE = 6;
+const STUDENTS_PAGE_SIZE = 25;
 
 interface StudentsTabProps {
   onViewAcademicRecord?: (studentId: string) => void;
@@ -76,17 +75,7 @@ function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
 }
 
-function formatDate(value: string): string {
-  const [year, month, day] = value.split('-');
-
-  if (!year || !month || !day) {
-    return value;
-  }
-
-  return `${day}/${month}/${year}`;
-}
-
-function getStudentName(student: StudentRow): string {
+function getStudentName(student: StudentListRow): string {
   return (
     student.profiles?.full_name ??
     student.registration_number
@@ -132,12 +121,6 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
   const institutionId =
     institutionQuery.data ?? '';
 
-  const studentsQuery =
-    useStudents(institutionId);
-
-  const enrollmentsQuery =
-    useEnrollments(institutionId);
-
   const yearsQuery =
     useAcademicYears(institutionId);
 
@@ -145,7 +128,33 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
     useClasses(institutionId);
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm.trim());
+    }, 350);
+
+    return () => window.clearTimeout(timeout);
+  }, [searchTerm]);
+
+  const studentsQuery = useStudentPage(
+    institutionId,
+    currentPage,
+    STUDENTS_PAGE_SIZE,
+    debouncedSearchTerm,
+  );
+
+  const students = studentsQuery.data?.rows ?? [];
+  const studentIds = useMemo(
+    () => students.map((student) => student.id),
+    [students],
+  );
+  const enrollmentsQuery = useCurrentEnrollmentsForStudents(
+    institutionId,
+    studentIds,
+  );
 
   const [isFullWizardOpen, setIsFullWizardOpen] =
     useState(false);
@@ -176,7 +185,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
     useManageSchoolUser();
 
   const [guardianStudent, setGuardianStudent] =
-    useState<StudentRow | null>(null);
+    useState<StudentListRow | null>(null);
 
   const [guardianLinkDraft, setGuardianLinkDraft] =
     useState<GuardianLinkDraft>({
@@ -199,34 +208,14 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
         user.profile?.active !== false,
     );
 
-  const students = studentsQuery.data ?? [];
   const currentEnrollmentByStudent = useMemo(
     () => getCurrentEnrollmentByStudent(enrollmentsQuery.data ?? []),
     [enrollmentsQuery.data],
   );
-  const filteredStudents = useMemo(() => {
-    const query = normalizeListSearch(searchTerm);
-
-    if (!query) {
-      return students;
-    }
-
-    return students.filter((student) =>
-      normalizeListSearch([
-        student.registration_number,
-        student.profiles?.full_name,
-        student.profiles?.email,
-        student.cpf,
-        currentEnrollmentByStudent.get(student.id)?.class_name,
-        currentEnrollmentByStudent.get(student.id)?.academic_year_name,
-        currentEnrollmentByStudent.get(student.id)?.status_label,
-      ].filter(Boolean).join(' ')).includes(query),
-    );
-  }, [currentEnrollmentByStudent, searchTerm, students]);
-
+  const totalStudents = studentsQuery.data?.total ?? 0;
   const totalPages = Math.max(
     1,
-    Math.ceil(filteredStudents.length / STUDENTS_PAGE_SIZE),
+    Math.ceil(totalStudents / STUDENTS_PAGE_SIZE),
   );
 
   useEffect(() => {
@@ -237,13 +226,8 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
     setCurrentPage((page) => Math.min(page, totalPages));
   }, [totalPages]);
 
-  const paginatedStudents = filteredStudents.slice(
-    (currentPage - 1) * STUDENTS_PAGE_SIZE,
-    currentPage * STUDENTS_PAGE_SIZE,
-  );
-
   function openGuardianLinkModal(
-    student: StudentRow,
+    student: StudentListRow,
   ): void {
     resetMessages();
     setGuardianStudent(student);
@@ -315,7 +299,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
     }
   }
 
-  const columns: Column<StudentRow>[] = [
+  const columns: Column<StudentListRow>[] = [
     {
       key: 'registration_number',
       label: 'RA',
@@ -385,12 +369,6 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       },
     },
     {
-      key: 'birth_date',
-      label: 'Data de nascimento',
-      render: (value) =>
-        formatDate(String(value)),
-    },
-    {
       key: 'active',
       label: 'Status',
       render: (_value, row) => <StatusBadge active={row.active} />,
@@ -408,14 +386,14 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
   }
 
   function openEditModal(
-    student: StudentRow,
+    student: StudentListRow,
   ): void {
     resetMessages();
     setFullEditStudentId(student.id);
   }
 
   async function handleToggleStatus(
-    student: StudentRow,
+    student: StudentListRow,
   ): Promise<void> {
     const nextActive = !student.active;
 
@@ -500,7 +478,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       <ListSearch
         id="students-search"
         label="Buscar aluno"
-        placeholder="Nome, e-mail, RA ou CPF"
+        placeholder="Nome, e-mail ou RA"
         value={searchTerm}
         onChange={setSearchTerm}
       />
@@ -518,17 +496,18 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
             Importar Excel
           </button>
         )}
-        data={paginatedStudents}
+        data={students}
         columns={columns}
         isLoading={
           studentsQuery.isLoading ||
+          studentsQuery.isFetching ||
           enrollmentsQuery.isLoading
         }
         actionCellClassName="min-w-[136px] align-middle whitespace-nowrap"
         actionGroupClassName="md:flex-nowrap"
         onAdd={openFullWizard}
         emptyMessage={
-          filteredStudents.length === 0 && students.length > 0
+          searchTerm.trim()
             ? 'Nenhum aluno encontrado.'
             : 'Nenhum aluno cadastrado nesta instituição.'
         }
@@ -620,7 +599,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       <ListPagination
         page={currentPage}
         pageSize={STUDENTS_PAGE_SIZE}
-        totalItems={filteredStudents.length}
+        totalItems={totalStudents}
         onPageChange={setCurrentPage}
       />
 

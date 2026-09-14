@@ -292,17 +292,18 @@ async function listRecipients(
     );
   }
 
-  const { data: guardianData, error: guardianError } = await supabase
+  const scopedGuardianQuery = supabase
     .from("guardianships")
-    .select("guardian_profile_id, active, profiles:guardian_profile_id(full_name, email, active), students:student_id(institution_id, active)")
-    .eq("active", true);
+    .select("guardian_profile_id, active, profiles:guardian_profile_id(full_name, email, active), students:student_id!inner(institution_id, active)")
+    .eq("active", true)
+    .eq("students.institution_id", institutionId)
+    .eq("students.active", true);
 
-  if (guardianError) throw guardianError;
+  const { data: scopedGuardianData, error: scopedGuardianError } = await scopedGuardianQuery;
 
-  for (const row of (guardianData ?? []) as unknown as GuardianQueryRow[]) {
-    const student = normalizeRelation(row.students);
-    if (student?.institution_id !== institutionId || student.active !== true) continue;
+  if (scopedGuardianError) throw scopedGuardianError;
 
+  for (const row of (scopedGuardianData ?? []) as unknown as GuardianQueryRow[]) {
     addRecipient(
       recipients,
       "GUARDIAN",
