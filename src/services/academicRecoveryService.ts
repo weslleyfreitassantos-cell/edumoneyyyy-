@@ -50,6 +50,15 @@ interface RecoveryRow {
   updated_at: string;
 }
 
+interface OfficialResultRow {
+  student_id: string;
+  grade_percentage: number | string | null;
+  attendance_percentage: number | string | null;
+  original_result_status: string | null;
+  result_status: string;
+  finalized_at: string | null;
+}
+
 export interface AcademicRecoveryRecord {
   id: string;
   institutionId: string;
@@ -101,6 +110,14 @@ function toNumber(value: number | string): number {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function toNullableNumber(value: number | string | null | undefined): number | null {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  return toNumber(value);
+}
+
 function normalizeRecovery(row: RecoveryRow): AcademicRecoveryRecord {
   return {
     id: row.id,
@@ -118,6 +135,19 @@ function normalizeRecovery(row: RecoveryRow): AcademicRecoveryRecord {
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
+}
+
+function normalizeResultStatus(value: string | null | undefined): TermResultStatus {
+  if (
+    value === 'APPROVED' ||
+    value === 'FAILED_BY_GRADE' ||
+    value === 'FAILED_BY_ATTENDANCE' ||
+    value === 'FAILED_BY_GRADE_AND_ATTENDANCE'
+  ) {
+    return value;
+  }
+
+  return 'PENDING';
 }
 
 function createRecoveryError(
@@ -170,6 +200,28 @@ async function loadRecoveries(
   );
 }
 
+async function loadOfficialResults(
+  institutionId: string,
+  subjectOfferingId: string,
+  termId: string,
+): Promise<Map<string, OfficialResultRow>> {
+  const { data, error } = await supabase
+    .from('student_term_results')
+    .select('student_id, grade_percentage, attendance_percentage, original_result_status, result_status, finalized_at')
+    .eq('institution_id', institutionId)
+    .eq('subject_offering_id', subjectOfferingId)
+    .eq('term_id', termId)
+    .not('finalized_at', 'is', null);
+
+  if (error) {
+    throw createRecoveryError(error);
+  }
+
+  return new Map(
+    ((data ?? []) as unknown as OfficialResultRow[]).map((row) => [row.student_id, row]),
+  );
+}
+
 export const academicRecoveryService = {
   async listCandidates(
     institutionId: string,
@@ -179,19 +231,31 @@ export const academicRecoveryService = {
       institutionId,
       subjectOfferingId,
     );
-    const recoveryByStudent = await loadRecoveries(
-      institutionId,
-      subjectOfferingId,
-      preview.offering.termId,
-    );
+    const [recoveryByStudent, officialResults] = await Promise.all([
+      loadRecoveries(
+        institutionId,
+        subjectOfferingId,
+        preview.offering.termId,
+      ),
+      loadOfficialResults(
+        institutionId,
+        subjectOfferingId,
+        preview.offering.termId,
+      ),
+    ]);
 
     return preview.students
-      .filter((student) => isRecoveryEligible(student.resultStatus))
-      .map((student) => ({
+      .map((student) => ({ student, result: officialResults.get(student.student.id) }))
+      .filter(({ result }) => isRecoveryEligible(
+        normalizeResultStatus(result?.original_result_status ?? result?.result_status),
+      ))
+      .map(({ student, result }) => ({
         student: student.student,
-        originalGradePercentage: student.gradePercentage,
-        attendancePercentage: student.attendancePercentage,
-        originalResultStatus: student.resultStatus,
+        originalGradePercentage: toNullableNumber(result?.grade_percentage),
+        attendancePercentage: toNullableNumber(result?.attendance_percentage),
+        originalResultStatus: normalizeResultStatus(
+          result?.original_result_status ?? result?.result_status,
+        ),
         recovery: recoveryByStudent.get(student.student.id) ?? null,
         policy: preview.policy,
         closureStatus: preview.closure?.status ?? 'OPEN',

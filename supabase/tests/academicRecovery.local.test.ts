@@ -60,6 +60,7 @@ localDescribe('academic recovery runtime RLS', () => {
   let offeringId: string;
   let studentId: string;
   let recoveryId: string;
+  let closureId: string;
   let recoveryArgs: Record<string, unknown>;
 
   beforeAll(async () => {
@@ -212,6 +213,20 @@ localDescribe('academic recovery runtime RLS', () => {
       result_status: 'FAILED_BY_GRADE',
       finalized_at: '2026-06-30T12:00:00Z',
     });
+    closureId = (await insertOne(service, 'term_closures', {
+      institution_id: institutionId,
+      academic_year_id: yearId,
+      term_id: termId,
+      subject_offering_id: offeringId,
+      status: 'CLOSED',
+      closed_at: '2026-06-30T12:00:00Z',
+    })).id;
+    const reopened = await actors.director.client.rpc('reopen_term_closure', {
+      p_institution_id: institutionId,
+      p_term_closure_id: closureId,
+      p_reopen_reason: 'Preparar recuperação acadêmica.',
+    });
+    if (reopened.error) throw new Error(reopened.error.message);
 
     recoveryArgs = {
       p_institution_id: institutionId,
@@ -226,6 +241,49 @@ localDescribe('academic recovery runtime RLS', () => {
   }, 120_000);
 
   it('permite ao professor publicar a própria recuperação e bloqueia outras roles', async () => {
+    const draft = await actors.teacher.client.rpc('save_academic_recovery', {
+      ...recoveryArgs,
+      p_status: 'DRAFT',
+    });
+    expect(draft.error).toBeNull();
+    recoveryId = draft.data.id;
+
+    for (const label of ['student', 'guardian']) {
+      const hiddenDraft = await actors[label].client
+        .from('student_term_recoveries')
+        .select('id')
+        .eq('id', recoveryId);
+      expect(hiddenDraft.error, label).toBeNull();
+      expect(hiddenDraft.data).toHaveLength(0);
+    }
+
+    const directInsert = await actors.teacher.client
+      .from('student_term_recoveries')
+      .insert({
+        institution_id: institutionId,
+        academic_year_id: yearId,
+        term_id: termId,
+        subject_offering_id: offeringId,
+        student_id: studentId,
+        status: 'DRAFT',
+        recovery_percentage: 76,
+        composition_rule: 'HIGHEST_SCORE_V1',
+        recorded_by: actors.teacher.id,
+      });
+    expect(directInsert.error?.code).toBe('42501');
+
+    const directUpdate = await actors.teacher.client
+      .from('student_term_recoveries')
+      .update({ recovery_percentage: 76 })
+      .eq('id', recoveryId);
+    expect(directUpdate.error?.code).toBe('42501');
+
+    const directDelete = await actors.teacher.client
+      .from('student_term_recoveries')
+      .delete()
+      .eq('id', recoveryId);
+    expect(directDelete.error?.code).toBe('42501');
+
     const published = await actors.teacher.client.rpc('save_academic_recovery', recoveryArgs);
     expect(published.error).toBeNull();
     recoveryId = published.data.id;
@@ -270,13 +328,11 @@ localDescribe('academic recovery runtime RLS', () => {
       result_status: 'APPROVED',
     });
 
-    await insertOne(service, 'term_closures', {
-      institution_id: institutionId,
-      academic_year_id: yearId,
-      term_id: termId,
-      subject_offering_id: offeringId,
-      status: 'CLOSED',
-    });
+    const closed = await service
+      .from('term_closures')
+      .update({ status: 'CLOSED', closed_at: '2026-06-30T13:00:00Z' })
+      .eq('id', closureId);
+    expect(closed.error).toBeNull();
     await expectRpcForbidden(actors.teacher.client, recoveryArgs);
   }, 60_000);
 });

@@ -25,12 +25,21 @@ describe('academic recovery migration', () => {
 
   it('protects closed periods and applies published recovery at finalization', () => {
     expect(migration).toContain('prevent_invalid_academic_recovery_change');
-    expect(migration).toContain("closure.status = 'CLOSED'");
+    expect(migration).toContain("closure.status = 'REOPENED'");
     expect(migration).toContain('apply_published_academic_recovery');
     expect(migration).toContain("recovery.status = 'PUBLISHED'");
     expect(migration).toContain("'HIGHEST_SCORE_V1'");
     expect(migration).toContain("coalesce(result.original_result_status, result.result_status)");
     expect(migration).toContain("'FAILED_BY_GRADE', 'FAILED_BY_GRADE_AND_ATTENDANCE'");
+  });
+
+  it('forces RPC-only mutations for authenticated users', () => {
+    expect(migration).toContain('revoke all on table public.student_term_recoveries from anon, authenticated');
+    expect(migration).toContain('grant select on table public.student_term_recoveries to authenticated');
+    expect(migration).not.toContain('grant select, insert, update on table public.student_term_recoveries to authenticated');
+    expect(migration).toContain('drop policy if exists student_term_recoveries_insert_policy');
+    expect(migration).toContain('drop policy if exists student_term_recoveries_update_policy');
+    expect(migration).toContain('drop policy if exists student_term_recoveries_delete_policy');
   });
 
   it('keeps operational roles and audiences tenant-scoped', () => {

@@ -61,6 +61,13 @@ function RecoveryRow({
   isCanceling: boolean;
   readOnly: boolean;
 }) {
+  const isPublished = candidate.recovery?.status === 'PUBLISHED';
+  const isCanceled = candidate.recovery?.status === 'CANCELED';
+  const canEdit = !readOnly && !isPublished && !isCanceled;
+  const canCancel = !readOnly && (
+    candidate.recovery?.status === 'DRAFT' ||
+    candidate.recovery?.status === 'PUBLISHED'
+  );
   const typedPercentage = parsePercentage(value);
   const preview = academicRecoveryService.calculatePreview(
     candidate,
@@ -134,7 +141,7 @@ function RecoveryRow({
           <button
             type="button"
             onClick={() => onSave('DRAFT')}
-            disabled={readOnly || typedPercentage === null || isSaving || isCanceling}
+            disabled={!canEdit || typedPercentage === null || isSaving || isCanceling}
             className="inline-flex items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] transition hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800"
           >
             Salvar rascunho
@@ -142,16 +149,16 @@ function RecoveryRow({
           <button
             type="button"
             onClick={() => onSave('PUBLISHED')}
-            disabled={readOnly || typedPercentage === null || isSaving || isCanceling}
+            disabled={!canEdit || typedPercentage === null || isSaving || isCanceling}
             className="inline-flex items-center justify-center rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[#004a99] focus:outline-none focus:ring-2 focus:ring-[#005bbf] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isSaving ? 'Salvando...' : 'Publicar recuperação'}
           </button>
-          {candidate.recovery && candidate.recovery.status !== 'CANCELED' && (
+          {canCancel && (
             <button
               type="button"
               onClick={onCancel}
-              disabled={readOnly || isSaving || isCanceling}
+              disabled={isSaving || isCanceling}
               className="inline-flex items-center justify-center rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 transition hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-50 dark:border-red-900/60 dark:text-red-300 dark:hover:bg-red-950/30"
             >
               {isCanceling ? 'Cancelando...' : 'Cancelar'}
@@ -200,7 +207,10 @@ export default function AcademicRecoveryPanel({
   const saveMutation = useSaveAcademicRecovery();
   const cancelMutation = useCancelAcademicRecovery();
   const selectedOffering = offerings.find((offering) => offering.id === selectedOfferingId);
-  const readOnly = selectedOffering?.closure?.status === 'CLOSED';
+  const closureStatus = selectedOffering?.closure?.status;
+  const recoveryAvailable = closureStatus === 'REOPENED';
+  const periodClosed = closureStatus === 'CLOSED';
+  const readOnly = !recoveryAvailable;
 
   useEffect(() => {
     setValues(
@@ -300,7 +310,8 @@ export default function AcademicRecoveryPanel({
       )}
       {saveMutation.isError && <div role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300">{getErrorMessage(saveMutation.error)}</div>}
       {cancelMutation.isError && <div role="alert" className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300">{getErrorMessage(cancelMutation.error)}</div>}
-      {readOnly && <div role="status" className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300">O período está fechado. Reabra o fechamento pelo fluxo autorizado para registrar alterações.</div>}
+      {periodClosed && <div role="status" className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-300">O período está fechado. Reabra o fechamento pelo fluxo autorizado para registrar alterações.</div>}
+      {!periodClosed && !recoveryAvailable && selectedOfferingId && <div role="status" className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-blue-700 dark:border-blue-900/60 dark:bg-blue-950/30 dark:text-blue-300">A recuperação ficará disponível após o fechamento inicial do período e sua reabertura pelo fluxo autorizado.</div>}
       {candidatesQuery.isLoading && selectedOfferingId && <div className="mt-5 rounded-lg border border-dashed border-[#c1c6d6] p-5 text-sm text-[#727785] dark:border-slate-600 dark:text-slate-400">Carregando alunos elegíveis...</div>}
       {candidatesQuery.isError && <div role="alert" className="mt-5 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-300">{getErrorMessage(candidatesQuery.error)}</div>}
       {!candidatesQuery.isLoading && !candidatesQuery.isError && selectedOfferingId && candidates.length === 0 && <div className="mt-5 rounded-lg border border-dashed border-[#c1c6d6] p-5 text-sm text-[#727785] dark:border-slate-600 dark:text-slate-400">Nenhum aluno precisa de recuperação por nota neste período.</div>}

@@ -22,6 +22,7 @@ function queryResult(data: unknown, error: unknown = null) {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
     in: vi.fn().mockReturnThis(),
+    not: vi.fn().mockReturnThis(),
     then: (resolve: (value: unknown) => unknown) =>
       Promise.resolve({ data, error }).then(resolve),
   };
@@ -58,8 +59,19 @@ describe('academicRecoveryService', () => {
         },
       ],
     } as never);
-    vi.mocked(supabase.from).mockReturnValue(queryResult([
-      {
+    vi.mocked(supabase.from).mockImplementation(((table: string) => {
+      if (table === 'student_term_results') {
+        return queryResult([{
+          student_id: 'student-1',
+          grade_percentage: 50,
+          attendance_percentage: 90,
+          original_result_status: 'FAILED_BY_GRADE',
+          result_status: 'FAILED_BY_GRADE',
+          finalized_at: '2026-08-01T00:00:00Z',
+        }]) as never;
+      }
+
+      return queryResult([{
         id: 'recovery-1',
         institution_id: 'inst-1',
         academic_year_id: 'year-1',
@@ -74,8 +86,8 @@ describe('academicRecoveryService', () => {
         published_at: '2026-09-01T00:00:00Z',
         created_at: '2026-09-01T00:00:00Z',
         updated_at: '2026-09-01T00:00:00Z',
-      },
-    ]) as never);
+      }]);
+    }) as never);
 
     const candidates = await academicRecoveryService.listCandidates('inst-1', 'offering-1');
 
@@ -86,6 +98,24 @@ describe('academicRecoveryService', () => {
       recovery: { status: 'PUBLISHED', recoveryPercentage: 75 },
       closureStatus: 'REOPENED',
     });
+  });
+
+  it('nao lista reprovacao calculada apenas no preview sem snapshot oficial', async () => {
+    vi.mocked(termClosingService.getPreview).mockResolvedValue({
+      offering: { termId: 'term-1' },
+      policy: null,
+      closure: null,
+      students: [{
+        student: { id: 'student-1', fullName: 'Ana' },
+        gradePercentage: 50,
+        attendancePercentage: 90,
+        resultStatus: 'FAILED_BY_GRADE',
+      }],
+    } as never);
+    vi.mocked(supabase.from).mockImplementation(() => queryResult([]) as never);
+
+    await expect(academicRecoveryService.listCandidates('inst-1', 'offering-1'))
+      .resolves.toEqual([]);
   });
 
   it('salva e publica pela RPC transacional do domínio', async () => {

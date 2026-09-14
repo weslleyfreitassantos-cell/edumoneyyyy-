@@ -154,6 +154,84 @@ describe('reportCardService', () => {
         },
       ]);
     });
+
+    it('expõe média original, recuperação e média final no resultado publicado', async () => {
+      const offering = {
+        id: 'offering-1',
+        class_id: 'class-1',
+        subject_id: 'subject-1',
+        teacher_profile_id: 'teacher-1',
+        term_id: 'term-1',
+        classes: { id: 'class-1', name: '1A', grade_level: '1º ano', shift: 'MATUTINO' },
+        subjects: { id: 'subject-1', name: 'Matemática', code: 'MAT' },
+        profiles: { full_name: 'Professora Ana', email: 'ana@escola.com' },
+        terms: { id: 'term-1', name: '1º bimestre', academic_year_id: 'year-1' },
+      };
+      const queries = {
+        student_term_results: {
+          data: [{
+            id: 'result-1',
+            institution_id: 'inst-1',
+            academic_year_id: 'year-1',
+            term_id: 'term-1',
+            subject_offering_id: 'offering-1',
+            student_id: 'student-1',
+            grade_percentage: 50,
+            attendance_percentage: 90,
+            recovery_percentage: 75,
+            final_grade_percentage: 75,
+            original_result_status: 'FAILED_BY_GRADE',
+            composition_rule: 'HIGHEST_SCORE_V1',
+            result_status: 'APPROVED',
+            calculated_at: '2026-06-30T00:00:00Z',
+            finalized_at: '2026-06-30T00:00:00Z',
+            academic_years: { id: 'year-1', name: 'Ano letivo 2026' },
+            terms: { id: 'term-1', name: '1º bimestre', academic_year_id: 'year-1' },
+            subject_offerings: offering,
+          }],
+          error: null,
+        },
+        student_term_recoveries: {
+          data: [{
+            student_id: 'student-1',
+            subject_offering_id: 'offering-1',
+            term_id: 'term-1',
+            status: 'PUBLISHED',
+            recovery_percentage: 75,
+            composition_rule: 'HIGHEST_SCORE_V1',
+            published_at: '2026-07-01T00:00:00Z',
+          }],
+          error: null,
+        },
+        assessments: { data: [], error: null },
+        enrollments: { data: [], error: null },
+      };
+
+      vi.mocked(supabase.from).mockImplementation((table) => {
+        const response = queries[table as keyof typeof queries];
+        const query = {
+          select: vi.fn().mockReturnThis(),
+          eq: vi.fn().mockReturnThis(),
+          in: vi.fn().mockReturnThis(),
+          order: vi.fn().mockReturnThis(),
+          then: (resolve: (value: unknown) => unknown) =>
+            Promise.resolve(response).then(resolve),
+        };
+
+        return query as unknown as ReturnType<typeof supabase.from>;
+      });
+
+      const reportCard = await reportCardService.getStudentReportCard('inst-1', 'student-1');
+
+      expect(reportCard.subjects[0]).toMatchObject({
+        gradePercentage: 50,
+        recoveryPercentage: 75,
+        finalGradePercentage: 75,
+        originalResultStatus: 'FAILED_BY_GRADE',
+        resultStatus: 'APPROVED',
+        compositionRule: 'HIGHEST_SCORE_V1',
+      });
+    });
   });
 
   describe('Guardian constraints', () => {

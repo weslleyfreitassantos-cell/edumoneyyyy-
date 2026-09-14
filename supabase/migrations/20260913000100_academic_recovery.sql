@@ -187,14 +187,26 @@ as $$
       target_subject_offering_id,
       target_student_id
     )
-    and not exists (
+    and exists (
       select 1
       from public.term_closures as closure
       where closure.institution_id = target_institution_id
         and closure.academic_year_id = target_academic_year_id
         and closure.term_id = target_term_id
         and closure.subject_offering_id = target_subject_offering_id
-        and closure.status = 'CLOSED'
+        and closure.status = 'REOPENED'
+    )
+    and exists (
+      select 1
+      from public.student_term_results as result
+      where result.institution_id = target_institution_id
+        and result.academic_year_id = target_academic_year_id
+        and result.term_id = target_term_id
+        and result.subject_offering_id = target_subject_offering_id
+        and result.student_id = target_student_id
+        and result.finalized_at is not null
+        and coalesce(result.original_result_status, result.result_status)
+          in ('FAILED_BY_GRADE', 'FAILED_BY_GRADE_AND_ATTENDANCE')
     );
 $$;
 
@@ -205,17 +217,17 @@ security definer
 set search_path = ''
 as $$
 begin
-  if exists (
+  if not exists (
     select 1
     from public.term_closures as closure
     where closure.institution_id = coalesce(new.institution_id, old.institution_id)
       and closure.academic_year_id = coalesce(new.academic_year_id, old.academic_year_id)
       and closure.term_id = coalesce(new.term_id, old.term_id)
       and closure.subject_offering_id = coalesce(new.subject_offering_id, old.subject_offering_id)
-      and closure.status = 'CLOSED'
+      and closure.status = 'REOPENED'
   ) then
     raise exception
-      'Recuperacao nao pode ser alterada enquanto o periodo estiver fechado.'
+      'Recuperacao exige um fechamento oficial reaberto.'
       using errcode = '23514';
   end if;
 
@@ -395,8 +407,12 @@ begin
     and subject_offering_id = p_subject_offering_id
     and term_id = p_term_id;
 
-  if existing_status = 'PUBLISHED' and p_status = 'DRAFT' then
-    raise exception 'Recuperacao publicada nao pode voltar para rascunho.' using errcode = '23514';
+  if existing_status = 'CANCELED' then
+    raise exception 'Recuperacao cancelada nao pode ser reativada.' using errcode = '23514';
+  end if;
+
+  if existing_status = 'PUBLISHED' then
+    raise exception 'Recuperacao publicada so pode ser cancelada pelo fluxo explicito.' using errcode = '23514';
   end if;
 
   insert into public.student_term_recoveries (
@@ -500,7 +516,7 @@ grant execute on function public.cancel_academic_recovery(uuid, uuid) to authent
 
 alter table public.student_term_recoveries enable row level security;
 revoke all on table public.student_term_recoveries from anon, authenticated;
-grant select, insert, update on table public.student_term_recoveries to authenticated;
+grant select on table public.student_term_recoveries to authenticated;
 grant all on table public.student_term_recoveries to service_role;
 
 drop policy if exists student_term_recoveries_select_policy on public.student_term_recoveries;
@@ -527,60 +543,8 @@ using (
 );
 
 drop policy if exists student_term_recoveries_insert_policy on public.student_term_recoveries;
-create policy student_term_recoveries_insert_policy
-on public.student_term_recoveries
-for insert
-to authenticated
-with check (
-  status = 'DRAFT'
-  and private.can_write_academic_recovery(
-    institution_id,
-    academic_year_id,
-    term_id,
-    subject_offering_id,
-    student_id
-  )
-);
-
 drop policy if exists student_term_recoveries_update_policy on public.student_term_recoveries;
-create policy student_term_recoveries_update_policy
-on public.student_term_recoveries
-for update
-to authenticated
-using (
-  private.can_write_academic_recovery(
-    institution_id,
-    academic_year_id,
-    term_id,
-    subject_offering_id,
-    student_id
-  )
-)
-with check (
-  private.can_write_academic_recovery(
-    institution_id,
-    academic_year_id,
-    term_id,
-    subject_offering_id,
-    student_id
-  )
-);
-
 drop policy if exists student_term_recoveries_delete_policy on public.student_term_recoveries;
-create policy student_term_recoveries_delete_policy
-on public.student_term_recoveries
-for delete
-to authenticated
-using (
-  status <> 'PUBLISHED'
-  and private.can_write_academic_recovery(
-    institution_id,
-    academic_year_id,
-    term_id,
-    subject_offering_id,
-    student_id
-  )
-);
 
 notify pgrst, 'reload schema';
 commit;
