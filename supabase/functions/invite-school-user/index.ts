@@ -143,30 +143,6 @@ const requestSchema = z
 
 type RequestData = z.infer<typeof requestSchema>;
 
-const INVITE_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const INVITE_RATE_LIMIT_MAX_ATTEMPTS = 20;
-const inviteRateLimit = new Map<string, { startedAt: number; count: number }>();
-
-function assertInviteRateLimit(requesterId: string): void {
-  const now = Date.now();
-  const previous = inviteRateLimit.get(requesterId);
-
-  if (!previous || now - previous.startedAt >= INVITE_RATE_LIMIT_WINDOW_MS) {
-    inviteRateLimit.set(requesterId, { startedAt: now, count: 1 });
-    return;
-  }
-
-  if (previous.count >= INVITE_RATE_LIMIT_MAX_ATTEMPTS) {
-    throw new InviteError({
-      status: 429,
-      code: "ACCESS_RATE_LIMITED",
-      message: "Muitas tentativas de criacao de acesso. Tente novamente mais tarde.",
-    });
-  }
-
-  previous.count += 1;
-}
-
 class InviteError extends Error {
   status: number;
   code: string;
@@ -596,8 +572,6 @@ export default {
           message: "Sessao invalida ou expirada.",
         });
       }
-
-      assertInviteRateLimit(user.id);
 
       const { data: requesterProfile, error: requesterProfileError } = await ctx.supabaseAdmin
         .from("profiles")

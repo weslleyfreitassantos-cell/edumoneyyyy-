@@ -75,10 +75,10 @@ describe('invite-school-user', () => {
     expect(source).not.toContain('if (reusedExistingUser)');
   });
 
-  it('has a bounded per-requester rate limit', () => {
-    expect(source).toContain('assertInviteRateLimit');
-    expect(source).toContain('INVITE_RATE_LIMIT_MAX_ATTEMPTS');
-    expect(source).toContain('ACCESS_RATE_LIMITED');
+  it('does not impose an application-level per-requester rate limit', () => {
+    expect(source).not.toContain('assertInviteRateLimit');
+    expect(source).not.toContain('INVITE_RATE_LIMIT_MAX_ATTEMPTS');
+    expect(source).not.toContain('ACCESS_RATE_LIMITED');
   });
 
   it('does not block school access creation by institution quota', () => {
