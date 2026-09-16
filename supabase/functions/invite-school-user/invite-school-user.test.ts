@@ -29,6 +29,12 @@ describe('invite-school-user', () => {
     expect(source).toContain('SchoolAccessConfigurationError');
   });
 
+  it('generates the required student registration before inserting the student', () => {
+    expect(source).toContain('generate_student_registration_number');
+    expect(source).toContain('target_institution_id: institutionId');
+    expect(source).toContain('registration_number: registrationNumber');
+  });
+
   it('does not persist or return a generated password', () => {
     expect(source).not.toContain('generated_password');
     expect(source).not.toContain('temporary_password');

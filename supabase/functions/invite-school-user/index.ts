@@ -438,11 +438,23 @@ async function getOrCreateStudent(
     }
   }
 
+  const {
+    data: registrationNumber,
+    error: registrationNumberError,
+  } = await supabaseAdmin.rpc("generate_student_registration_number", {
+    target_institution_id: institutionId,
+  });
+
+  if (registrationNumberError || typeof registrationNumber !== "string") {
+    throw registrationNumberError ?? new Error("Nao foi possivel gerar a matricula do aluno.");
+  }
+
   const { data: createdStudent, error: studentInsertError } = await supabaseAdmin
     .from("students")
     .insert({
       profile_id: profileId,
       institution_id: institutionId,
+      registration_number: registrationNumber,
       birth_date: input.student!.birthDate,
       cpf: input.student?.cpf ?? null,
       active: true,
