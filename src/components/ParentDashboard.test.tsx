@@ -213,4 +213,44 @@ describe('ParentDashboard', () => {
       'Resumo de frequência student-1',
     );
   });
+
+  it('mantém a lista de disciplinas com rolagem interna', () => {
+    vi.mocked(useGuardianDashboard).mockReturnValue({
+      data: {
+        students: [
+          {
+            ...students[0],
+            student: {
+              ...students[0].student,
+              offerings: [
+                {
+                  id: 'offering-1',
+                  subject_name: 'Matemática',
+                  teacher_name: 'Professor Teste',
+                  term_name: '1º Bimestre',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    const offeringsList = screen.getByLabelText(
+      'Lista de disciplinas e professores',
+    );
+
+    expect(offeringsList.className).toContain('max-h-[32rem]');
+    expect(offeringsList.className).toContain('overflow-y-auto');
+    expect(offeringsList.textContent).toContain('Matemática');
+  });
 });

@@ -3,7 +3,7 @@ import {
   useState,
 } from 'react';
 import { motion } from 'motion/react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import {
   BadgeCheck,
@@ -410,7 +410,7 @@ export default function ParentDashboard() {
 
           {selectedStudent && (
             <>
-            <section className="grid gap-4 lg:grid-cols-[1fr_1.2fr]">
+            <section className="grid items-start gap-4 lg:grid-cols-[1fr_1.2fr]">
               <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
                 <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
                   Dados do aluno
@@ -480,7 +480,10 @@ export default function ParentDashboard() {
                     Nenhuma disciplina ativa encontrada para a turma atual.
                   </div>
                 ) : (
-                  <div className="mt-5 grid gap-3">
+                  <div
+                    aria-label="Lista de disciplinas e professores"
+                    className="mt-5 max-h-[32rem] space-y-3 overflow-y-auto pr-2"
+                  >
                     {selectedStudent.student.offerings.map(
                       (offering) => (
                         <div
@@ -511,29 +514,6 @@ export default function ParentDashboard() {
               </article>
             </section>
 
-            <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-                    Acompanhamento acadêmico
-                  </h2>
-                  <p className="mt-1 text-sm text-[#727785] dark:text-slate-400">
-                    Consulte detalhes do dependente selecionado em áreas próprias.
-                  </p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to={`/guardian/attendance?student=${selectedStudent.student.student.id}`}>
-                    Frequência
-                  </Link>
-                  <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to={`/guardian/grades?student=${selectedStudent.student.student.id}`}>
-                    Notas
-                  </Link>
-                  <Link className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a99]" to={`/guardian/report-card?student=${selectedStudent.student.student.id}`}>
-                    Boletim
-                  </Link>
-                </div>
-              </div>
-            </section>
             </>
           )}
         </>
