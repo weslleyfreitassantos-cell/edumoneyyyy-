@@ -249,7 +249,7 @@ describe('ParentDashboard', () => {
       'Lista de disciplinas e professores',
     );
 
-    expect(offeringsList.className).toContain('max-h-[32rem]');
+    expect(offeringsList.className).toContain('max-h-[24rem]');
     expect(offeringsList.className).toContain('overflow-y-auto');
     expect(offeringsList.textContent).toContain('Matemática');
   });

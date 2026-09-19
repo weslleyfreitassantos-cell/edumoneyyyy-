@@ -482,7 +482,7 @@ export default function ParentDashboard() {
                 ) : (
                   <div
                     aria-label="Lista de disciplinas e professores"
-                    className="mt-5 max-h-[32rem] space-y-3 overflow-y-auto pr-2"
+                    className="mt-5 max-h-[24rem] space-y-3 overflow-y-auto pr-2"
                   >
                     {selectedStudent.student.offerings.map(
                       (offering) => (
