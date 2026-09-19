@@ -42,6 +42,7 @@ import StudentGradesPanel from './grades/StudentGradesPanel';
 import AcademicStudentContext from './academic/AcademicStudentContext';
 import StudentReportCard from './academic/StudentReportCard';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
+import TimetableTermWeekNotice from './academic/TimetableTermWeekNotice';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
@@ -62,6 +63,11 @@ function getErrorMessage(
   }
 
   return 'Não foi possível carregar o dashboard do aluno.';
+}
+
+function formatCivilDate(value: string): string {
+  const [year, month, day] = value.split('-');
+  return `${day}/${month}/${year}`;
 }
 
 function getFirstName(
@@ -355,6 +361,7 @@ function StudentTimetableView({
   institutionId,
   enrollment,
   currentTermId,
+  termName,
   termStartDate,
   termEndDate,
 }: {
@@ -366,6 +373,7 @@ function StudentTimetableView({
     academic_year_name: string;
   } | null;
   currentTermId?: string;
+  termName?: string | null;
   termStartDate?: string | null;
   termEndDate?: string | null;
 }) {
@@ -456,6 +464,15 @@ function StudentTimetableView({
             <p className="mt-2 text-sm text-[#727785]">
               {enrollment.academic_year_name} • horários publicados da sua turma
             </p>
+            {termName && termStartDate && termEndDate && (
+              <p className="mt-3 text-sm font-medium text-[#005bbf]">
+                Período atual: {termName}
+                <span className="font-normal text-[#727785]">
+                  {' '}
+                  ({formatCivilDate(termStartDate)} a {formatCivilDate(termEndDate)})
+                </span>
+              </p>
+            )}
           </div>
 
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf]">
@@ -481,6 +498,12 @@ function StudentTimetableView({
               Não foi possível verificar o calendário. As aulas continuam visíveis.
             </p>
           )}
+          <TimetableTermWeekNotice
+            weekStartDate={weekStartDate}
+            termName={termName}
+            termStartDate={termStartDate}
+            termEndDate={termEndDate}
+          />
           <WeeklyTimetableGrid
             entries={entries}
             occurrences={occurrences}
@@ -577,6 +600,7 @@ export default function StudentDashboard() {
         institutionId={institutionQuery.data}
         enrollment={activeEnrollment}
         currentTermId={currentOffering?.term_id}
+        termName={currentOffering?.term_name}
         termStartDate={currentOffering?.term_start_date}
         termEndDate={currentOffering?.term_end_date}
       />

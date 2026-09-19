@@ -154,4 +154,21 @@ describe('TeacherTimetableView', () => {
 
     expect(screen.queryByText('Matemática')).toBeNull();
   });
+
+  it('explica quando a semana exibida cruza o fim do período', () => {
+    render(
+      <TeacherTimetableView
+        institutionId="institution-1"
+        teacherProfileId="teacher-1"
+        termId="term-1"
+        termName="1º Bimestre"
+        termStartDate={weekStartDate}
+        termEndDate={mondayDate}
+        shifts={[]}
+      />,
+    );
+
+    expect(screen.getByTestId('timetable-term-week-notice')).toBeTruthy();
+    expect(screen.getByText('Esta semana cruza o fim do 1º Bimestre')).toBeTruthy();
+  });
 });

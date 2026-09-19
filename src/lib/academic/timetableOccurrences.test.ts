@@ -4,6 +4,7 @@ import type { AcademicDateStatus } from '../academicCalendarStatus';
 import {
   buildTimetableCalendarRequests,
   getDateForWeekDay,
+  getTimetableWeekTermRelation,
   getTimetableBlockerLabel,
   getWeekStartDateKey,
   projectTimetableOccurrences,
@@ -219,5 +220,34 @@ describe('timetableOccurrences', () => {
     expect(
       projectTimetableOccurrences([fridayEntry], '2026-09-07'),
     ).toHaveLength(1);
+  });
+
+  it('classifica semanas que cruzam ou ficam fora do período', () => {
+    expect(getTimetableWeekTermRelation(
+      '2026-09-21',
+      '2026-09-18',
+      '2026-12-10',
+    )).toBe('WITHIN');
+    expect(getTimetableWeekTermRelation(
+      '2026-09-14',
+      '2026-09-18',
+      '2026-12-10',
+    )).toBe('CROSSES_START');
+    expect(getTimetableWeekTermRelation(
+      '2026-12-07',
+      '2026-09-18',
+      '2026-12-10',
+    )).toBe('CROSSES_END');
+    expect(getTimetableWeekTermRelation(
+      '2026-09-07',
+      '2026-09-18',
+      '2026-12-10',
+    )).toBe('BEFORE');
+    expect(getTimetableWeekTermRelation(
+      '2026-12-14',
+      '2026-09-18',
+      '2026-12-10',
+    )).toBe('AFTER');
+    expect(getTimetableWeekTermRelation('2026-09-14')).toBe('UNKNOWN');
   });
 });

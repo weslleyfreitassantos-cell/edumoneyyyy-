@@ -179,6 +179,7 @@ export default function WeeklyTimetableGrid({
       lessonDays.filter((day) => day === value).length,
     ]),
   );
+  const displayedLessonCount = occurrences?.length ?? entries.length;
   const itemsBySlot = new Map<string, TimetableItem[]>();
 
   for (const occurrence of occurrences ?? []) {
@@ -225,7 +226,9 @@ export default function WeeklyTimetableGrid({
         <div className="flex items-center gap-3 text-xs font-medium text-[#667085]">
           <span className="inline-flex items-center gap-1.5">
             <CalendarDays className="h-4 w-4 text-[#1769c2]" aria-hidden="true" />
-            {entries.length} {entries.length === 1 ? 'aula' : 'aulas'}
+            <span data-testid="timetable-total-lessons">
+              {displayedLessonCount} {displayedLessonCount === 1 ? 'aula' : 'aulas'}
+            </span>
           </span>
           <span className="hidden h-4 w-px bg-[#d8e0ec] sm:block" aria-hidden="true" />
           <span className="hidden items-center gap-1.5 sm:inline-flex">

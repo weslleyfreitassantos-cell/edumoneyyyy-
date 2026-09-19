@@ -31,6 +31,14 @@ export interface TimetableTermDateRange {
   termEndDate?: string | null;
 }
 
+export type TimetableWeekTermRelation =
+  | 'UNKNOWN'
+  | 'WITHIN'
+  | 'CROSSES_START'
+  | 'CROSSES_END'
+  | 'BEFORE'
+  | 'AFTER';
+
 const BLOCKER_LABELS: Partial<Record<AcademicDateBlocker['event_type'], string>> = {
   HOLIDAY: 'Feriado',
   RECESS: 'Recesso',
@@ -75,6 +83,27 @@ export function shiftWeekStartDate(
   const date = parseCalendarDate(weekStartDate);
   date.setUTCDate(date.getUTCDate() + weeks * 7);
   return date.toISOString().slice(0, 10);
+}
+
+export function getTimetableWeekTermRelation(
+  weekStartDate: string,
+  termStartDate?: string | null,
+  termEndDate?: string | null,
+): TimetableWeekTermRelation {
+  if (!termStartDate || !termEndDate) {
+    return 'UNKNOWN';
+  }
+
+  calendarDateToUtcStart(weekStartDate);
+  calendarDateToUtcStart(termStartDate);
+  calendarDateToUtcStart(termEndDate);
+  const weekEndDate = getDateForWeekDay(weekStartDate, 6);
+
+  if (weekEndDate < termStartDate) return 'BEFORE';
+  if (weekStartDate > termEndDate) return 'AFTER';
+  if (weekStartDate < termStartDate) return 'CROSSES_START';
+  if (weekEndDate > termEndDate) return 'CROSSES_END';
+  return 'WITHIN';
 }
 
 export function getWeekDayForDate(value: string): number {

@@ -16,6 +16,7 @@ import {
 } from '../lib/academic/timetableOccurrences';
 import { normalizeAcademicShift } from '../lib/academic/academicShifts';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
+import TimetableTermWeekNotice from './academic/TimetableTermWeekNotice';
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
@@ -210,6 +211,13 @@ export default function TeacherTimetableView({
               Não foi possível verificar o calendário. As aulas continuam visíveis.
             </p>
           )}
+
+          <TimetableTermWeekNotice
+            weekStartDate={weekStartDate}
+            termName={termName}
+            termStartDate={termStartDate}
+            termEndDate={termEndDate}
+          />
 
           <WeeklyTimetableGrid
             entries={entries}

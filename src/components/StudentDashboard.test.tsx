@@ -301,6 +301,7 @@ describe('StudentDashboard', () => {
 
     expect(screen.getByText('Matemática')).toBeTruthy();
     expect(screen.queryByText('História')).toBeNull();
+    expect(screen.getByText('Esta semana cruza o fim do 1º Bimestre')).toBeTruthy();
   });
 
   it('não projeta uma aula anterior ao início do período', () => {

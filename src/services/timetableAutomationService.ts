@@ -910,11 +910,30 @@ export const timetableAutomationService = {
       return preparedResult;
     }
 
-    const { data: version, error: versionError } = await supabase.from('timetable_versions').insert({ institution_id: input.institutionId, academic_year_id: input.academicYearId, name: input.name ?? `Proposta ${new Date().toLocaleDateString('pt-BR')}`, status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', generation_shift: input.shift && input.shift !== 'TODOS' ? normalizeAcademicShift(input.shift) : 'TODOS', created_by: input.createdBy, source_version_id: input.sourceVersionId ?? null }).select('id').single();
+    const { data: versionId, error: versionError } = await supabase.rpc('create_timetable_draft', {
+      p_institution_id: input.institutionId,
+      p_academic_year_id: input.academicYearId,
+      p_name: input.name ?? `Proposta ${new Date().toLocaleDateString('pt-BR')}`,
+      p_generation_source: 'DETERMINISTIC_GENERATOR',
+      p_generation_shift: input.shift && input.shift !== 'TODOS' ? normalizeAcademicShift(input.shift) : 'TODOS',
+      p_created_by: input.createdBy,
+      p_source_version_id: input.sourceVersionId ?? null,
+      p_entries: result.entries.map((entry) => ({
+        academic_year_id: entry.academicYearId,
+        term_id: entry.termId,
+        class_id: entry.classId,
+        subject_offering_id: entry.subjectOfferingId,
+        room_id: entry.roomId,
+        day_of_week: entry.dayOfWeek,
+        start_time: entry.startTime,
+        end_time: entry.endTime,
+        locked: entry.locked,
+        active: true,
+      })),
+    });
     if (versionError) throw versionError;
-    const { error: entriesError } = await supabase.from('timetable_version_entries').insert(result.entries.map((entry) => ({ version_id: version.id, institution_id: entry.institutionId, academic_year_id: entry.academicYearId, term_id: entry.termId, class_id: entry.classId, subject_offering_id: entry.subjectOfferingId, room_id: entry.roomId, day_of_week: entry.dayOfWeek, start_time: entry.startTime, end_time: entry.endTime, locked: entry.locked, active: true })));
-    if (entriesError) throw entriesError;
-    return { ...preparedResult, versionId: version.id };
+    if (!versionId) throw new Error('A versão da grade não foi criada.');
+    return { ...preparedResult, versionId };
     } catch (error) {
       await rollbackAutomaticPreparation({ institutionId: input.institutionId, ...rollbackState });
       throw error;
