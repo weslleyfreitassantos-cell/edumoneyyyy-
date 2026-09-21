@@ -21,6 +21,7 @@ import {
   mapDatabaseRole,
   mapPlatformRole,
 } from '../lib/roles';
+import { hasEffectivePermission } from '../lib/permissions';
 import type {
   User,
   UserRole,
@@ -336,13 +337,19 @@ export default function AppShell({
   const location = useLocation();
   const { theme, toggleTheme } = useThemePreference();
   const branding = useHostBranding();
+  const canSendSchoolEmail = hasEffectivePermission({
+    platformRole: profile?.platform_role,
+    membershipRole: institutionContext.currentRole,
+    profileRole: profile?.role,
+    permission: 'send_school_email',
+  });
 
   useEffect(() => {
     const institutionId = institutionContext.currentInstitutionId;
-    if (!institutionId) return;
+    if (!institutionId || !canSendSchoolEmail) return;
 
     void schoolEmailService.listRecipients(institutionId).catch(() => undefined);
-  }, [institutionContext.currentInstitutionId]);
+  }, [canSendSchoolEmail, institutionContext.currentInstitutionId]);
 
   const [isSidebarHidden, setIsSidebarHidden] =
     useState(readSidebarPreference);

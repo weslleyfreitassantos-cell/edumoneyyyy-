@@ -16,4 +16,6 @@ scripts/cameras/.camera-lab/
 supabase/.temp/
 *.dump
 *.backup
+e2e/**/.runtime/
+test-results/
 scripts/db/production-cleanup-execute.sql

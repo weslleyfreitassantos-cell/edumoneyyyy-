@@ -42,6 +42,8 @@ function formatPercentage(value: number | null): string {
   return value === null ? '—' : `${value}%`;
 }
 
+const EMPTY_RECOVERY_CANDIDATES: AcademicRecoveryCandidate[] = [];
+
 function RecoveryRow({
   candidate,
   value,
@@ -203,7 +205,8 @@ export default function AcademicRecoveryPanel({
     institutionId,
     selectedOfferingId || undefined,
   );
-  const candidates = candidatesQuery.data ?? [];
+  const candidates =
+    candidatesQuery.data ?? EMPTY_RECOVERY_CANDIDATES;
   const saveMutation = useSaveAcademicRecovery();
   const cancelMutation = useCancelAcademicRecovery();
   const selectedOffering = offerings.find((offering) => offering.id === selectedOfferingId);

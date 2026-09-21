@@ -119,4 +119,21 @@ describe('AcademicRecoveryPanel', () => {
     expect(screen.getByRole('button', { name: 'Publicar recuperação' }).getAttribute('disabled')).not.toBeNull();
     expect(screen.getByRole('button', { name: 'Cancelar' })).toBeTruthy();
   });
+
+  it('mantém o estado de carregamento sem entrar em loop enquanto busca elegíveis', () => {
+    vi.mocked(useTeacherTermClosureOfferings).mockReturnValue({
+      data: [{ id: 'offering-1', academicYearId: 'year-1', termId: 'term-1', subjectName: 'Matemática', className: '1A', termName: '1º bimestre', closure: { status: 'REOPENED' } }],
+    } as never);
+    vi.mocked(useAcademicRecoveryCandidates).mockReturnValue({
+      data: undefined,
+      isLoading: true,
+      isError: false,
+    } as never);
+    vi.mocked(useSaveAcademicRecovery).mockReturnValue({ mutateAsync: vi.fn(), isPending: false, isError: false } as never);
+    vi.mocked(useCancelAcademicRecovery).mockReturnValue({ mutateAsync: vi.fn(), isPending: false, isError: false } as never);
+
+    render(<AcademicRecoveryPanel profileId="teacher-1" institutionId="inst-1" />);
+
+    expect(screen.getByText('Carregando alunos elegíveis...')).toBeTruthy();
+  });
 });
