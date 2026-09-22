@@ -355,7 +355,7 @@ function normalizeOfferingDetails(
     term?.academic_years,
   );
 
-  if (!subject || !classRecord || !teacher || !term) {
+  if (!subject || !classRecord || !term) {
     return null;
   }
 
@@ -363,8 +363,8 @@ function normalizeOfferingDetails(
     subjectName: subject.name,
     subjectCode: subject.code,
     className: classRecord.name,
-    teacherName: teacher.full_name,
-    teacherEmail: teacher.email,
+    teacherName: teacher?.full_name ?? 'Professor não informado',
+    teacherEmail: teacher?.email ?? '',
     termName: term.name,
     academicYearName: academicYear?.name ?? null,
   };

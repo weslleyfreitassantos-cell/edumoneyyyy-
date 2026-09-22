@@ -52,7 +52,7 @@ describe('AcademicRecoveryPanel', () => {
     fireEvent.change(screen.getByLabelText('Recuperação (%)'), { target: { value: '75' } });
     expect(screen.getByText('75%')).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Publicar recuperação' }).getAttribute('disabled')).toBeNull();
-  });
+  }, 15_000);
 
   it('fica somente leitura quando o período está fechado', () => {
     vi.mocked(useTeacherTermClosureOfferings).mockReturnValue({

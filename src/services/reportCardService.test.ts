@@ -60,10 +60,7 @@ describe('reportCardService', () => {
           name: 'Matemática',
           code: 'MAT',
         },
-        profiles: {
-          full_name: 'Professora Ana',
-          email: 'ana@escola.com',
-        },
+        profiles: null,
         terms: {
           id: 'term-1',
           name: '1º bimestre',
@@ -143,6 +140,7 @@ describe('reportCardService', () => {
       expect(reportCard.subjects[0]).toMatchObject({
         subjectName: 'Matemática',
         academicYearName: 'Ano letivo 2026',
+        teacherName: 'Professor não informado',
         isClosed: false,
         gradePercentage: null,
       });
@@ -164,7 +162,7 @@ describe('reportCardService', () => {
         term_id: 'term-1',
         classes: { id: 'class-1', name: '1A', grade_level: '1º ano', shift: 'MATUTINO' },
         subjects: { id: 'subject-1', name: 'Matemática', code: 'MAT' },
-        profiles: { full_name: 'Professora Ana', email: 'ana@escola.com' },
+        profiles: null,
         terms: { id: 'term-1', name: '1º bimestre', academic_year_id: 'year-1' },
       };
       const queries = {
@@ -224,6 +222,7 @@ describe('reportCardService', () => {
       const reportCard = await reportCardService.getStudentReportCard('inst-1', 'student-1');
 
       expect(reportCard.subjects[0]).toMatchObject({
+        teacherName: 'Professor não informado',
         gradePercentage: 50,
         recoveryPercentage: 75,
         finalGradePercentage: 75,

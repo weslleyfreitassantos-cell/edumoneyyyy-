@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e:local": "playwright test --config=e2e/playwright.config.ts",
+    "test:full:local": "node scripts/test-full-local.mjs",
     "check": "npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

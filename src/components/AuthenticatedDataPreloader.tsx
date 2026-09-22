@@ -61,12 +61,14 @@ export default function AuthenticatedDataPreloader() {
     profileRole: profile?.role,
     permission: 'send_school_email',
   });
-  const canManageCameras = hasEffectivePermission({
-    platformRole: profile?.platform_role,
-    membershipRole: currentRole,
-    profileRole: profile?.role,
-    permission: 'view_live_cameras',
-  });
+  const canViewDirectorCameras =
+    currentRole === 'DIRECTOR' &&
+    hasEffectivePermission({
+      platformRole: profile?.platform_role,
+      membershipRole: currentRole,
+      profileRole: profile?.role,
+      permission: 'view_live_cameras',
+    });
 
   useEffect(() => {
     if (!profile || isLoading || !currentInstitutionId) return;
@@ -98,7 +100,7 @@ export default function AuthenticatedDataPreloader() {
       requests.push(schoolEmailService.listRecipients(institutionId));
     }
 
-    if (canManageCameras) {
+    if (canViewDirectorCameras) {
       requests.push(
         queryClient.prefetchQuery({
           queryKey: directorCameraKeys.list(institutionId),
@@ -124,7 +126,7 @@ export default function AuthenticatedDataPreloader() {
       if (canSendSchoolEmail) {
         modulePreloads.push(import('../pages/Admin/tabs/EmailTab'));
       }
-      if (canManageCameras) {
+      if (canViewDirectorCameras) {
         modulePreloads.push(import('../pages/Cameras/CamerasPage'));
       }
 
@@ -132,7 +134,7 @@ export default function AuthenticatedDataPreloader() {
     });
   }, [
     canManageAnnouncements,
-    canManageCameras,
+    canViewDirectorCameras,
     canSendSchoolEmail,
     canViewOverview,
     currentInstitutionId,

@@ -276,13 +276,14 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
-  it('não tenta carregar destinatários de e-mail para papéis sem permissão', async () => {
+  it.each(['TEACHER', 'STUDENT', 'GUARDIAN'])(
+    'não tenta carregar destinatários de e-mail para %s', async (role) => {
     mockContexts({
       profile: {
         ...profile,
-        role: 'TEACHER',
+        role: role as Profile['role'],
       },
-      currentRole: 'TEACHER',
+      currentRole: role,
       institutionContext: {
         currentInstitutionId: 'institution-1',
       },
@@ -292,6 +293,28 @@ describe('AppShell', () => {
 
     await waitFor(() => {
       expect(schoolEmailService.listRecipients).not.toHaveBeenCalled();
+    });
+    },
+  );
+
+  it('carrega destinatários de e-mail para diretor autorizado', async () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+      institutionContext: {
+        currentInstitutionId: 'institution-1',
+      },
+    });
+
+    renderShell('/dashboard');
+
+    await waitFor(() => {
+      expect(schoolEmailService.listRecipients).toHaveBeenCalledWith(
+        'institution-1',
+      );
     });
   });
 

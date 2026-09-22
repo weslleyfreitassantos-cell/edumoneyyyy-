@@ -7,13 +7,16 @@ const migration = readFileSync(
 );
 
 describe('automated academic flow lint fixes', () => {
-  it('makes the academic year copy RPC resolve its temporary table', () => {
+  it('defines the academic year copy RPC deterministically without dynamic SQL', () => {
     expect(migration).toContain("set search_path = 'pg_catalog, public, pg_temp'");
-    expect(migration).toContain('copy_academic_year_structure(uuid, uuid, uuid, boolean, boolean)');
+    expect(migration).toMatch(/create or replace function public\.copy_academic_year_structure\(/i);
+    expect(migration).not.toContain('academic_class_copy_map');
+    expect(migration).not.toMatch(/pg_get_functiondef|regexp_replace|\bexecute\s+fixed_definition/i);
   });
 
-  it('keeps the enrollment birth date assignment typed as date', () => {
+  it('defines the enrollment RPC explicitly with a typed birth date', () => {
+    expect(migration).toMatch(/create or replace function public\.update_full_student_enrollment_bundle\(p_payload jsonb\)/i);
     expect(migration).toContain("->>'birth_date', '')::date");
-    expect(migration).toContain("'public.update_full_student_enrollment_bundle(jsonb)'::regprocedure");
+    expect(migration).toContain('private.has_institution_role');
   });
 });

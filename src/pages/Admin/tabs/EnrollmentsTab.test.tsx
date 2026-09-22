@@ -526,16 +526,18 @@ describe('EnrollmentsTab - vínculo de responsável após matrícula', () => {
         isPrimary: true,
       });
     });
-    expect(
-      screen.getByText(
-        'Responsável vinculado ao aluno com sucesso.',
-      ),
-    ).toBeTruthy();
-    expect(
-      screen.queryByRole('dialog', {
-        name: 'Vincular responsável',
-      }),
-    ).toBeNull();
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          'Responsável vinculado ao aluno com sucesso.',
+        ),
+      ).toBeTruthy();
+      expect(
+        screen.queryByRole('dialog', {
+          name: 'Vincular responsável',
+        }),
+      ).toBeNull();
+    });
   });
 
   it('preserva a matrícula e permite tentar novamente quando o vínculo falha', async () => {
