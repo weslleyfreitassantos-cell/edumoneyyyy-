@@ -66,6 +66,11 @@ interface ProfileRelation {
   active?: boolean | null;
 }
 
+type StudentProfileRelation = Pick<
+  ProfileRelation,
+  'id' | 'full_name' | 'active'
+>;
+
 interface SubjectRelation {
   id: string;
   institution_id: string;
@@ -941,6 +946,49 @@ async function loadOffering(
 async function loadEnrollments(
   offering: TermClosureOffering,
 ): Promise<TermClosureStudent[]> {
+  const {
+    data: { user },
+    error: userError,
+  } = await supabase.auth.getUser();
+
+  if (userError || !user) {
+    throw new TermClosingServiceError(
+      'TERM_CLOSURE_FORBIDDEN',
+      'Sessao invalida para consultar o fechamento do periodo.',
+      userError,
+    );
+  }
+
+  const { data: membership, error: membershipError } =
+    await supabase
+      .from('memberships')
+      .select('role')
+      .eq('institution_id', offering.institutionId)
+      .eq('profile_id', user.id)
+      .eq('active', true)
+      .maybeSingle();
+
+  if (membershipError) {
+    throw createTermClosingError(
+      membershipError,
+      'TERM_CLOSURE_FORBIDDEN',
+    );
+  }
+
+  if (
+    membership?.role === 'DIRECTOR' ||
+    membership?.role === 'SECRETARY'
+  ) {
+    return loadInstitutionEnrollments(offering);
+  }
+
+  if (membership?.role !== 'TEACHER') {
+    throw new TermClosingServiceError(
+      'TERM_CLOSURE_FORBIDDEN',
+      'Seu papel nao pode consultar o roster do fechamento.',
+    );
+  }
+
   const { data, error } = await supabase.rpc(
     'get_teacher_offering_rosters',
     {
@@ -964,6 +1012,93 @@ async function loadEnrollments(
     registrationNumber: row.registration_number,
     enrollmentId: row.enrollment_id,
   }));
+}
+
+async function loadInstitutionEnrollments(
+  offering: TermClosureOffering,
+): Promise<TermClosureStudent[]> {
+  const enrollmentEnd = new Date(
+    `${offering.termEndDate}T00:00:00.000Z`,
+  );
+  enrollmentEnd.setUTCDate(enrollmentEnd.getUTCDate() + 1);
+
+  const { data: enrollments, error: enrollmentError } =
+    await supabase
+      .from('enrollments')
+      .select('id, student_id, enrolled_at')
+      .eq('class_id', offering.classId)
+      .eq('academic_year_id', offering.academicYearId)
+      .eq('active', true)
+      .eq('status', 'ACTIVE')
+      .lt('enrolled_at', enrollmentEnd.toISOString());
+
+  if (enrollmentError) {
+    throw createTermClosingError(
+      enrollmentError,
+      'TERM_CLOSURE_FORBIDDEN',
+    );
+  }
+
+  const activeEnrollments = (enrollments ?? []) as {
+    id: string;
+    student_id: string;
+  }[];
+  const studentIds = [
+    ...new Set(activeEnrollments.map((row) => row.student_id)),
+  ];
+
+  if (studentIds.length === 0) {
+    return [];
+  }
+
+  const { data: students, error: studentError } = await supabase
+    .from('students')
+    .select(
+      'id, profile_id, registration_number, active, profiles!inner(id, full_name, active)',
+    )
+    .eq('institution_id', offering.institutionId)
+    .eq('active', true)
+    .eq('profiles.active', true)
+    .in('id', studentIds);
+
+  if (studentError) {
+    throw createTermClosingError(
+      studentError,
+      'TERM_CLOSURE_FORBIDDEN',
+    );
+  }
+
+  const studentById = new Map(
+    ((students ?? []) as {
+      id: string;
+      profile_id: string;
+      registration_number: string;
+      profiles:
+        | StudentProfileRelation
+        | StudentProfileRelation[]
+        | null;
+    }[]).map((student) => [student.id, student]),
+  );
+
+  return activeEnrollments.flatMap((enrollment) => {
+    const student = studentById.get(enrollment.student_id);
+    const profile = student
+      ? normalizeRelation(student.profiles)
+      : null;
+
+    if (!student || !profile) {
+      return [];
+    }
+
+    return [{
+      id: student.id,
+      profileId: student.profile_id,
+      fullName: profile.full_name,
+      email: '',
+      registrationNumber: student.registration_number,
+      enrollmentId: enrollment.id,
+    }];
+  });
 }
 
 async function loadAssessments(

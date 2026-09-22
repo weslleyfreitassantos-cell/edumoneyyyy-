@@ -252,7 +252,20 @@ export default function AdminPage() {
   ]);
 
   useEffect(() => {
-    if (!activeModuleId || modules.length === 0) {
+    const institutionRoleExpected =
+      profile?.role === 'DIRECTOR' ||
+      profile?.role === 'SECRETARY';
+    const resolvingInstitutionRole =
+      institutionQuery.isLoading ||
+      (institutionRoleExpected &&
+        !institutionQuery.currentRole &&
+        profile?.platform_role !== 'SUPER_ADMIN');
+
+    if (
+      resolvingInstitutionRole ||
+      !activeModuleId ||
+      modules.length === 0
+    ) {
       return;
     }
 
@@ -273,7 +286,12 @@ export default function AdminPage() {
     );
   }, [
     activeModuleId,
+    institutionQuery.currentRole,
+    institutionQuery.data,
+    institutionQuery.isLoading,
     modules.length,
+    profile?.platform_role,
+    profile?.role,
     requestedModuleParam,
     searchParams,
     setSearchParams,

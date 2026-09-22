@@ -28,6 +28,7 @@ import {
 } from '../contexts/InstitutionContext';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import type { UserInstitution } from '../services/institutionService';
+import { schoolEmailService } from '../services/schoolEmailService';
 import AppShell, {
   getRouteVisualContext,
 } from './AppShell';
@@ -50,6 +51,12 @@ vi.mock('../hooks/useBranding', () => ({
     primaryColor: '#005bbf',
     secondaryColor: '#6ffbbe',
   }),
+}));
+
+vi.mock('../services/schoolEmailService', () => ({
+  schoolEmailService: {
+    listRecipients: vi.fn(),
+  },
 }));
 
 vi.mock('./InstitutionSwitcher', () => ({
@@ -180,6 +187,7 @@ function getMobileMenuButton() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  vi.mocked(schoolEmailService.listRecipients).mockResolvedValue([]);
   window.localStorage.clear();
   document.body.style.overflow = '';
   mockContexts();
@@ -268,6 +276,48 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
+  it.each(['TEACHER', 'STUDENT', 'GUARDIAN'])(
+    'não tenta carregar destinatários de e-mail para %s', async (role) => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: role as Profile['role'],
+      },
+      currentRole: role,
+      institutionContext: {
+        currentInstitutionId: 'institution-1',
+      },
+    });
+
+    renderShell('/dashboard');
+
+    await waitFor(() => {
+      expect(schoolEmailService.listRecipients).not.toHaveBeenCalled();
+    });
+    },
+  );
+
+  it('carrega destinatários de e-mail para diretor autorizado', async () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+      institutionContext: {
+        currentInstitutionId: 'institution-1',
+      },
+    });
+
+    renderShell('/dashboard');
+
+    await waitFor(() => {
+      expect(schoolEmailService.listRecipients).toHaveBeenCalledWith(
+        'institution-1',
+      );
+    });
+  });
+
   it('restaura e persiste a preferencia de tema do usuario', async () => {
     window.localStorage.setItem(
       'edumanager.theme',

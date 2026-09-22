@@ -582,6 +582,30 @@ describe('AdminPage URL module resolution', () => {
     ).toBeTruthy();
   });
 
+  it('preserva o diario de classe ao reconstruir a rota com a URL', () => {
+    mockAdminState({
+      profile: {
+        ...baseProfile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+    });
+
+    const firstRender = renderAdminPage('/admin?module=class-diary');
+    expect(screen.getByTestId('attendance-panel')).toBeTruthy();
+    firstRender.unmount();
+
+    renderAdminPage('/admin?module=class-diary');
+    expect(screen.getByTestId('attendance-panel')).toBeTruthy();
+  });
+
+  it('faz fallback seguro para diario invalido ou nao autorizado', () => {
+    renderAdminPage('/admin?module=class-diary');
+
+    expect(screen.getByTestId('overview-tab')).toBeTruthy();
+    expect(screen.queryByTestId('attendance-panel')).toBeNull();
+  });
+
   it('avanca para o proximo modulo quando a etapa atual e concluida', async () => {
     mockAdminState({
       profile: {
