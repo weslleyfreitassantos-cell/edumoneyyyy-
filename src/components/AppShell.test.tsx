@@ -53,6 +53,30 @@ vi.mock('../hooks/useBranding', () => ({
   }),
 }));
 
+vi.mock('../hooks/useAttendance', () => ({
+  useTeacherAttendanceOfferings: vi.fn(() => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
+vi.mock('../hooks/useSchoolSetupReadiness', () => ({
+  useSchoolSetupReadiness: vi.fn(() => ({
+    data: null,
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
+vi.mock('../hooks/useTeacherDashboard', () => ({
+  useTeacherDashboard: vi.fn(() => ({
+    data: null,
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
 vi.mock('../services/schoolEmailService', () => ({
   schoolEmailService: {
     listRecipients: vi.fn(),
