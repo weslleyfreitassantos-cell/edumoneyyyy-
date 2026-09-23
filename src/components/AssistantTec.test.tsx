@@ -73,6 +73,11 @@ describe('AssistantTec', () => {
     expect(
       screen.getByRole('button', { name: /Avaliações e notas/i }),
     ).toBeTruthy();
+
+    fireEvent.change(input, { target: { value: 'livros' } });
+    expect(
+      screen.getByRole('button', { name: /Minhas indicações de livros/i }),
+    ).toBeTruthy();
   });
 
   it('exibe comunicação somente quando a permissão efetiva existe', () => {
