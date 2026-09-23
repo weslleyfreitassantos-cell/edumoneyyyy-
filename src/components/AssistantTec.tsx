@@ -340,7 +340,9 @@ function AssistantTeacherContext({
               icon={<CalendarDays className="h-4 w-4" aria-hidden="true" />}
               label="Ver aulas do dia"
               description={
-                todayLessons === 0
+                todayQuery.isError
+                  ? 'Não foi possível verificar a grade de hoje. Abra a tela para conferir.'
+                  : todayLessons === 0
                   ? 'Nenhuma aula foi encontrada na grade de hoje.'
                   : `${todayLessons} aula(s) encontrada(s) na sua grade de hoje.`
               }
