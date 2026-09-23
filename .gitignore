@@ -12,6 +12,7 @@ scripts/cameras/.camera-lab/
 *.log
 .env*
 !.env.example
+.demo/*
 
 supabase/.temp/
 *.dump
