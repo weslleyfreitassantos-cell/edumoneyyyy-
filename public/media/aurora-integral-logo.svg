@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="180" viewBox="0 0 640 180" role="img" aria-labelledby="title desc">
+  <title id="title">Aurora Integral</title>
+  <desc id="desc">Marca institucional sintética do Colégio Aurora Integral</desc>
+  <rect width="640" height="180" rx="24" fill="#173F5F"/>
+  <circle cx="92" cy="90" r="58" fill="#F4B942"/>
+  <path d="M62 112 92 52l30 60h-18l-12-25-12 25H62Z" fill="#173F5F"/>
+  <text x="168" y="84" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" letter-spacing="1">Aurora</text>
+  <text x="168" y="128" fill="#F4B942" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="600" letter-spacing="2">INTEGRAL</text>
+</svg>
