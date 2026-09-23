@@ -753,6 +753,7 @@ export default function AppShell({
       <AssistantTec
         role={currentRole}
         institutionId={institutionContext.currentInstitutionId}
+        profileId={profile.id}
         platformRole={profile.platform_role}
         membershipRole={institutionContext.currentRole}
         profileRole={profile.role}

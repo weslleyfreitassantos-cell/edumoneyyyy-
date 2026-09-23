@@ -33,6 +33,12 @@ describe('featureRegistry', () => {
     expect(features.map((feature) => feature.route)).not.toContain(
       '/dashboard/subjects',
     );
+    expect(features.map((feature) => feature.label)).toEqual(
+      expect.arrayContaining([
+        'Aulas do dia',
+        'Contribuições pedagógicas',
+      ]),
+    );
   });
 
   it('filtra recursos administrativos pela permissão efetiva', () => {

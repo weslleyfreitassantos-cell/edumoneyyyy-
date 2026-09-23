@@ -1,7 +1,29 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Bot, Send, Volume2, VolumeX, X } from 'lucide-react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import {
+  AlertTriangle,
+  ArrowRight,
+  Bot,
+  CalendarDays,
+  CheckCircle2,
+  ClipboardCheck,
+  GraduationCap,
+  LoaderCircle,
+  Send,
+  UsersRound,
+  Volume2,
+  VolumeX,
+  X,
+} from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { useTeacherAttendanceOfferings } from '../hooks/useAttendance';
+import { useSchoolSetupReadiness } from '../hooks/useSchoolSetupReadiness';
+import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
+import {
+  buildSchoolSetupFlow,
+  type SchoolSetupFlowStep,
+} from '../lib/schoolSetupFlow';
 import {
   getAssistantFeatures,
   recordAssistantUsage,
@@ -17,9 +39,342 @@ const normalize = (value: string) =>
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase();
 
+type OpenAssistantRoute = (label: string, route: string) => void;
+
+function AssistantContextAction({
+  icon,
+  label,
+  description,
+  onClick,
+}: {
+  icon: ReactNode;
+  label: string;
+  description: string;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex w-full items-start gap-2 rounded-lg border border-slate-200 bg-white p-2.5 text-left transition hover:border-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-700 dark:bg-slate-950 dark:hover:bg-slate-800"
+    >
+      <span className="mt-0.5 shrink-0 text-[#005bbf] dark:text-blue-300">
+        {icon}
+      </span>
+      <span className="min-w-0 flex-1">
+        <strong className="block text-xs font-bold text-slate-800 dark:text-slate-100">
+          {label}
+        </strong>
+        <span className="mt-0.5 block text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
+          {description}
+        </span>
+      </span>
+      <ArrowRight
+        className="mt-0.5 h-3.5 w-3.5 shrink-0 text-slate-400"
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
+
+function AssistantSchoolSetupContext({
+  institutionId,
+  canEditAcademic,
+  onOpen,
+}: {
+  institutionId: string;
+  canEditAcademic: boolean;
+  onOpen: OpenAssistantRoute;
+}) {
+  const readinessQuery = useSchoolSetupReadiness(institutionId);
+
+  if (readinessQuery.isLoading) {
+    return (
+      <section
+        aria-label="Orientação da configuração da escola"
+        role="status"
+        className="space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950"
+      >
+        <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-200">
+          <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+          Lendo a configuração da escola...
+        </div>
+        <div className="h-3 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
+        <div className="h-3 w-3/4 animate-pulse rounded bg-slate-200 dark:bg-slate-800" />
+      </section>
+    );
+  }
+
+  if (readinessQuery.isError || !readinessQuery.data) {
+    return (
+      <section
+        aria-label="Orientação da configuração da escola"
+        role="status"
+        className="rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-200"
+      >
+        Não foi possível ler a configuração agora. Abra a Visão geral para revisar as etapas.
+      </section>
+    );
+  }
+
+  const flow = buildSchoolSetupFlow(readinessQuery.data, {
+    canEditAcademic,
+    includeFoundation: true,
+  });
+  const steps = flow.sections.flatMap((section) => section.steps);
+  const stepById = new Map(steps.map((step) => [step.id, step]));
+  const timetableStep = stepById.get('timetable');
+  const missingTimetableDependencies = (timetableStep?.dependencies ?? [])
+    .map((dependency) => stepById.get(dependency))
+    .filter(
+      (step): step is SchoolSetupFlowStep =>
+        Boolean(step) && step.status !== 'COMPLETED',
+    );
+  const nextStep = flow.recommendedNextStep;
+  const timetableBlocked =
+    !timetableStep ||
+    timetableStep?.status === 'BLOCKED' ||
+    missingTimetableDependencies.length > 0;
+  const timetableCompleted = timetableStep?.status === 'COMPLETED';
+
+  return (
+    <section
+      aria-label="Orientação da configuração da escola"
+      className="space-y-3 rounded-xl border border-blue-200 bg-blue-50/70 p-3 dark:border-blue-900 dark:bg-blue-950/30"
+    >
+      <div className="flex items-start gap-2">
+        <GraduationCap
+          className="mt-0.5 h-4 w-4 shrink-0 text-[#005bbf] dark:text-blue-300"
+          aria-hidden="true"
+        />
+        <div className="min-w-0">
+          <h2 className="text-xs font-extrabold uppercase tracking-wide text-blue-950 dark:text-blue-100">
+            Configuração da escola
+          </h2>
+          <p className="mt-1 text-xs leading-relaxed text-blue-900 dark:text-blue-200">
+            O Assistente acompanha as dependências e aponta o próximo módulo certo.
+          </p>
+        </div>
+      </div>
+
+      <div className="rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-900 dark:bg-slate-950">
+        <div className="flex items-start gap-2">
+          {nextStep ? (
+            <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-[#005bbf]" aria-hidden="true" />
+          ) : (
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
+          )}
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-bold text-slate-800 dark:text-slate-100">
+              {nextStep ? `Próximo passo: ${nextStep.label}` : 'Configuração principal concluída'}
+            </p>
+            <p className="mt-1 text-[11px] leading-relaxed text-slate-500 dark:text-slate-400">
+              {nextStep?.reason ??
+                (flow.operationalReady
+                  ? 'A escola está pronta para operar.'
+                  : 'Revise as etapas pendentes da configuração.')}
+            </p>
+            {nextStep && (
+              <button
+                type="button"
+                onClick={() => onOpen(nextStep.label, nextStep.href)}
+                className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#005bbf] hover:underline dark:text-blue-300"
+              >
+                {nextStep.actionLabel}
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`rounded-lg border p-3 ${
+          timetableBlocked
+            ? 'border-amber-200 bg-amber-50 dark:border-amber-800 dark:bg-amber-950/30'
+            : 'border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-950/30'
+        }`}
+      >
+        <div className="flex items-start gap-2">
+          {timetableBlocked ? (
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />
+          ) : (
+            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
+          )}
+          <div className="min-w-0">
+            <p className="text-xs font-bold text-slate-800 dark:text-slate-100">
+              {timetableBlocked
+                ? 'O que está bloqueando a grade'
+                : timetableCompleted
+                  ? 'Grade de horário liberada'
+                  : 'Grade de horário pronta para configuração'}
+            </p>
+            {timetableBlocked ? (
+              <>
+                <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-300">
+                  Faltam estas dependências para gerar e publicar a grade:
+                </p>
+                <ul className="mt-2 space-y-1 text-[11px] font-semibold text-amber-900 dark:text-amber-200">
+                  {missingTimetableDependencies.length > 0 ? (
+                    missingTimetableDependencies.map((step) => (
+                      <li key={step.id}>• {step.label}</li>
+                    ))
+                  ) : (
+                    <li>• {timetableStep?.reason ?? 'Revise a configuração acadêmica.'}</li>
+                  )}
+                </ul>
+              </>
+            ) : timetableCompleted ? (
+              <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-300">
+                As dependências acadêmicas necessárias já estão concluídas.
+              </p>
+            ) : (
+              <p className="mt-1 text-[11px] leading-relaxed text-slate-600 dark:text-slate-300">
+                As dependências estão concluídas. Use o próximo passo acima para abrir o módulo da grade.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function AssistantTeacherContext({
+  profileId,
+  institutionId,
+  onOpen,
+}: {
+  profileId: string;
+  institutionId: string;
+  onOpen: OpenAssistantRoute;
+}) {
+  const today = getLocalDateInputValue();
+  const dashboardQuery = useTeacherDashboard(profileId, institutionId);
+  const todayQuery = useTeacherAttendanceOfferings(
+    profileId,
+    institutionId,
+    today,
+  );
+  const offerings = dashboardQuery.data?.offerings ?? [];
+  const todayLessons = todayQuery.data?.reduce(
+    (total, offering) => total + (offering.scheduleSlots?.length ?? 0),
+    0,
+  );
+  const sampleOfferings = offerings.slice(0, 4);
+
+  return (
+    <section
+      aria-label="Resumo do professor"
+      className="space-y-3 rounded-xl border border-emerald-200 bg-emerald-50/70 p-3 dark:border-emerald-900 dark:bg-emerald-950/20"
+    >
+      <div className="flex items-start gap-2">
+        <ClipboardCheck
+          className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700 dark:text-emerald-300"
+          aria-hidden="true"
+        />
+        <div className="min-w-0">
+          <h2 className="text-xs font-extrabold uppercase tracking-wide text-emerald-950 dark:text-emerald-100">
+            Seu contexto pedagógico
+          </h2>
+          <p className="mt-1 text-xs leading-relaxed text-emerald-900 dark:text-emerald-200">
+            Atalhos e informações das suas turmas, disciplinas e registros.
+          </p>
+        </div>
+      </div>
+
+      {dashboardQuery.isLoading || todayQuery.isLoading ? (
+        <div role="status" className="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+          <LoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" />
+          Carregando suas aulas e atribuições...
+        </div>
+      ) : (
+        <>
+          <div className="grid grid-cols-3 gap-2 text-center">
+            <div className="rounded-lg border border-emerald-200 bg-white p-2 dark:border-emerald-900 dark:bg-slate-950">
+              <p className="text-lg font-extrabold text-slate-900 dark:text-white">
+                {todayLessons ?? '—'}
+              </p>
+              <p className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">aulas hoje</p>
+            </div>
+            <div className="rounded-lg border border-emerald-200 bg-white p-2 dark:border-emerald-900 dark:bg-slate-950">
+              <p className="text-lg font-extrabold text-slate-900 dark:text-white">
+                {dashboardQuery.data?.totals.classes ?? '—'}
+              </p>
+              <p className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">turmas</p>
+            </div>
+            <div className="rounded-lg border border-emerald-200 bg-white p-2 dark:border-emerald-900 dark:bg-slate-950">
+              <p className="text-lg font-extrabold text-slate-900 dark:text-white">
+                {dashboardQuery.data?.totals.subjects ?? '—'}
+              </p>
+              <p className="text-[10px] font-semibold text-slate-500 dark:text-slate-400">disciplinas</p>
+            </div>
+          </div>
+
+          {dashboardQuery.isError && (
+            <p role="status" className="text-[11px] text-amber-700 dark:text-amber-300">
+              Não foi possível carregar o resumo das atribuições. Os atalhos continuam disponíveis.
+            </p>
+          )}
+
+          {sampleOfferings.length > 0 && (
+            <div className="rounded-lg border border-emerald-200 bg-white p-2.5 dark:border-emerald-900 dark:bg-slate-950">
+              <p className="text-[11px] font-bold text-slate-700 dark:text-slate-200">Turmas e disciplinas</p>
+              <ul className="mt-1 space-y-1 text-[11px] text-slate-500 dark:text-slate-400">
+                {sampleOfferings.map((offering) => (
+                  <li key={offering.id}>
+                    {offering.subjectName} <span aria-hidden="true">•</span> {offering.className}
+                  </li>
+                ))}
+              </ul>
+              {offerings.length > sampleOfferings.length && (
+                <p className="mt-1 text-[10px] font-semibold text-slate-400">
+                  +{offerings.length - sampleOfferings.length} atribuição(ões)
+                </p>
+              )}
+            </div>
+          )}
+
+          <div className="grid gap-2">
+            <AssistantContextAction
+              icon={<CalendarDays className="h-4 w-4" aria-hidden="true" />}
+              label="Ver aulas do dia"
+              description={
+                todayLessons === 0
+                  ? 'Nenhuma aula foi encontrada na grade de hoje.'
+                  : `${todayLessons} aula(s) encontrada(s) na sua grade de hoje.`
+              }
+              onClick={() => onOpen('Aulas do dia', '/dashboard/timetable')}
+            />
+            <AssistantContextAction
+              icon={<ClipboardCheck className="h-4 w-4" aria-hidden="true" />}
+              label="Ver chamadas pendentes"
+              description="Abra o Diário de Classe para conferir os registros que ainda precisam de atenção."
+              onClick={() => onOpen('Chamadas pendentes', '/dashboard/class-diary')}
+            />
+            <AssistantContextAction
+              icon={<ClipboardCheck className="h-4 w-4" aria-hidden="true" />}
+              label="Abrir Diário de Classe"
+              description="Registre conteúdo, atividade, tarefa, observações e frequência."
+              onClick={() => onOpen('Diário de Classe', '/dashboard/class-diary')}
+            />
+            <AssistantContextAction
+              icon={<UsersRound className="h-4 w-4" aria-hidden="true" />}
+              label="Abrir contribuições pedagógicas"
+              description="Consulte conselhos de classe e registre suas contribuições."
+              onClick={() => onOpen('Contribuições pedagógicas', '/dashboard/class-councils')}
+            />
+          </div>
+        </>
+      )}
+    </section>
+  );
+}
+
 export default function AssistantTec({
   role,
   institutionId,
+  profileId,
   platformRole,
   membershipRole,
   profileRole,
@@ -27,6 +382,7 @@ export default function AssistantTec({
 }: {
   role: UserRole;
   institutionId: string | null;
+  profileId?: string | null;
   platformRole?: AssistantAvailability['platformRole'];
   membershipRole?: AssistantAvailability['membershipRole'];
   profileRole?: AssistantAvailability['profileRole'];
@@ -114,6 +470,14 @@ export default function AssistantTec({
     setQuestion('');
   }
 
+  function openContextRoute(label: string, route: string): void {
+    const text = `Encontrei ${label}. Vou abrir essa tela para você.`;
+    setAnswer(text);
+    speak(text);
+    navigate(route);
+    setQuestion('');
+  }
+
   function ask(): void {
     const best = results[0];
 
@@ -180,6 +544,30 @@ export default function AssistantTec({
               />
               <span>{answer}</span>
             </div>
+
+            {open &&
+              profileId &&
+              institutionId &&
+              role === 'teacher' && (
+                <AssistantTeacherContext
+                  profileId={profileId}
+                  institutionId={institutionId}
+                  onOpen={openContextRoute}
+                />
+              )}
+
+            {open &&
+              institutionId &&
+              (role === 'super_admin' ||
+                role === 'admin' ||
+                role === 'director' ||
+                role === 'secretary') && (
+                <AssistantSchoolSetupContext
+                  institutionId={institutionId}
+                  canEditAcademic={role !== 'admin'}
+                  onOpen={openContextRoute}
+                />
+              )}
 
             <form
               onSubmit={(event) => {
