@@ -10,10 +10,21 @@ afterEach(() => {
   cleanup();
 });
 
-function renderAssistant(role: 'student' | 'teacher') {
+function renderAssistant(
+  role: 'student' | 'teacher' | 'director',
+  availability: {
+    platformRole?: string;
+    membershipRole?: string;
+    profileRole?: string;
+  } = {},
+) {
   render(
     <MemoryRouter>
-      <AssistantTec role={role} institutionId={null} />
+      <AssistantTec
+        role={role}
+        institutionId={null}
+        {...availability}
+      />
     </MemoryRouter>,
   );
 
@@ -56,6 +67,41 @@ describe('AssistantTec', () => {
     fireEvent.change(input, { target: { value: 'notas' } });
     expect(
       screen.getByRole('button', { name: /Avaliações e notas/i }),
+    ).toBeTruthy();
+  });
+
+  it('exibe comunicação somente quando a permissão efetiva existe', () => {
+    renderAssistant('director', {
+      platformRole: 'USER',
+      membershipRole: 'DIRECTOR',
+      profileRole: 'DIRECTOR',
+    });
+    const input = screen.getByRole('textbox', {
+      name: 'Pergunte ao Assistente TEC',
+    });
+
+    fireEvent.change(input, { target: { value: 'avisos' } });
+    expect(
+      screen.getByRole('button', { name: /^Avisos/ }),
+    ).toBeTruthy();
+  });
+
+  it('não oferece recurso administrativo sem permissão efetiva', () => {
+    renderAssistant('director', {
+      platformRole: 'USER',
+      membershipRole: 'TEACHER',
+      profileRole: 'TEACHER',
+    });
+    const input = screen.getByRole('textbox', {
+      name: 'Pergunte ao Assistente TEC',
+    });
+
+    fireEvent.change(input, { target: { value: 'financeiro' } });
+    expect(
+      screen.queryByRole('button', { name: /Financeiro/i }),
+    ).toBeNull();
+    expect(
+      screen.getByText(/Não encontrei um recurso correspondente/i),
     ).toBeTruthy();
   });
 });

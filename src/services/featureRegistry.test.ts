@@ -34,4 +34,32 @@ describe('featureRegistry', () => {
       '/dashboard/subjects',
     );
   });
+
+  it('filtra recursos administrativos pela permissão efetiva', () => {
+    const directorFeatures = getAssistantFeatures('director', {
+      platformRole: 'USER',
+      membershipRole: 'DIRECTOR',
+      profileRole: 'DIRECTOR',
+    });
+    const unavailableFeatures = getAssistantFeatures('director', {
+      platformRole: 'USER',
+      membershipRole: 'TEACHER',
+      profileRole: 'TEACHER',
+    });
+
+    expect(directorFeatures.map((feature) => feature.route)).toEqual(
+      expect.arrayContaining([
+        '/admin?module=email',
+        '/admin?module=announcements',
+        '/admin?module=finance',
+      ]),
+    );
+    expect(unavailableFeatures.map((feature) => feature.route)).not.toEqual(
+      expect.arrayContaining([
+        '/admin?module=email',
+        '/admin?module=announcements',
+        '/admin?module=finance',
+      ]),
+    );
+  });
 });

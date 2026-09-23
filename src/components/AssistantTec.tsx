@@ -6,6 +6,7 @@ import {
   getAssistantFeatures,
   recordAssistantUsage,
   type AssistantFeature,
+  type AssistantAvailability,
 } from '../services/featureRegistry';
 import type { UserRole } from '../types';
 
@@ -18,9 +19,15 @@ const normalize = (value: string) =>
 export default function AssistantTec({
   role,
   institutionId,
+  platformRole,
+  membershipRole,
+  profileRole,
 }: {
   role: UserRole;
   institutionId: string | null;
+  platformRole?: AssistantAvailability['platformRole'];
+  membershipRole?: AssistantAvailability['membershipRole'];
+  profileRole?: AssistantAvailability['profileRole'];
 }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -33,7 +40,11 @@ export default function AssistantTec({
     useState<AssistantFeature | null>(null);
   const [voiceEnabled, setVoiceEnabled] =
     useState(false);
-  const features = getAssistantFeatures(role);
+  const features = getAssistantFeatures(role, {
+    platformRole,
+    membershipRole,
+    profileRole,
+  });
 
   const results = useMemo(() => {
     const terms = normalize(question)
