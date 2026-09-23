@@ -20,6 +20,12 @@ export interface AssistantAvailability {
   profileRole?: string | null;
 }
 
+export interface AssistantMenuItem {
+  id: string;
+  label: string;
+  path: string;
+}
+
 export const FEATURE_REGISTRY: AssistantFeature[] = [
   { id: 'student-study-center', label: 'Central de Estudos', description: 'Estude matérias, pratique e acompanhe seu progresso.', route: '/student/study', roles: ['student'], keywords: ['estudar', 'estudos', 'praticar', 'exercício', 'habilidade', 'progresso', 'central de estudos'] },
   { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', description: 'Acompanhe práticas e o progresso das suas turmas.', route: '/teacher/pedagogical-center', roles: ['teacher'], keywords: ['pedagógica', 'atividade', 'habilidade', 'progresso', 'reforço', 'central pedagógica'] },
@@ -28,8 +34,6 @@ export const FEATURE_REGISTRY: AssistantFeature[] = [
   { id: 'student-subjects', label: 'Disciplinas e professores', description: 'Consulte as disciplinas e os professores do período atual.', route: '/dashboard/subjects', roles: ['student'], keywords: ['disciplina', 'disciplinas', 'professor', 'professores', 'materias'] },
   { id: 'student-library', label: 'Indicações de livros', description: 'Consulte indicações de leitura disponíveis para você.', route: '/dashboard/library', roles: ['student'], keywords: ['livro', 'livros', 'leitura', 'leituras', 'indicacao', 'indicacoes', 'indicação', 'indicações', 'biblioteca'] },
   { id: 'learning-materials', label: 'Materiais e avisos', description: 'Consulte materiais, comunicados e avisos da sua rotina escolar.', route: '/dashboard/materials', roles: ['student', 'teacher'], keywords: ['material', 'materiais', 'aviso', 'avisos', 'comunicado', 'comunicados', 'conteudo'] },
-  { id: 'school-email', label: 'E-mail', description: 'Envie comunicados por e-mail para a comunidade escolar.', route: '/admin?module=email', roles: ['director', 'secretary'], permission: 'send_school_email', keywords: ['email', 'e-mail', 'mensagem', 'comunicado', 'comunicados'] },
-  { id: 'school-announcements', label: 'Avisos', description: 'Publique e acompanhe avisos da instituição.', route: '/admin?module=announcements', roles: ['director', 'secretary'], permission: 'manage_school_communications', keywords: ['aviso', 'avisos', 'comunicado', 'comunicados', 'comunicacao', 'comunicação'] },
   { id: 'teacher-attendance', label: 'Diário de Classe', description: 'Registre o conteúdo da aula e a frequência dos alunos.', route: '/dashboard/class-diary', roles: ['teacher'], keywords: ['diario', 'diário', 'chamada', 'chamadas', 'frequencia', 'presenca', 'faltas', 'alunos'] },
   { id: 'teacher-library', label: 'Minhas indicações de livros', description: 'Crie e gerencie leituras indicadas para suas turmas.', route: '/dashboard/library', roles: ['teacher'], keywords: ['livro', 'livros', 'leitura', 'leituras', 'indicar', 'indicacao', 'indicacoes', 'indicação', 'indicações', 'biblioteca'] },
   { id: 'teacher-grades', label: 'Avaliações e notas', description: 'Crie avaliações e lance notas para suas turmas.', route: '/dashboard/grades', roles: ['teacher'], keywords: ['avaliacao', 'avaliacoes', 'nota', 'notas', 'prova', 'media'] },
@@ -43,8 +47,9 @@ export const FEATURE_REGISTRY: AssistantFeature[] = [
 export function getAssistantFeatures(
   role: UserRole,
   availability: AssistantAvailability = {},
+  menuItems: readonly AssistantMenuItem[] = [],
 ): AssistantFeature[] {
-  return FEATURE_REGISTRY.filter((feature) => {
+  const registeredFeatures = FEATURE_REGISTRY.filter((feature) => {
     if (!feature.roles.includes(role)) {
       return false;
     }
@@ -60,6 +65,47 @@ export function getAssistantFeatures(
       permission: feature.permission,
     });
   });
+
+  const registeredRoutes = new Set(
+    registeredFeatures.map((feature) => getFeatureRouteKey(feature.route)),
+  );
+  const discoveredFeatures = menuItems
+    .filter((item) => item.label.trim() && item.path.trim())
+    .filter((item) => !registeredRoutes.has(getFeatureRouteKey(item.path)))
+    .map((item) => {
+      const pathKeywords = item.path
+        .replace(/[/?=&_-]+/g, ' ')
+        .split(/\s+/)
+        .filter((term) => term.length > 2);
+      const labelKeywords = item.label
+        .split(/\s+/)
+        .filter((term) => term.length > 2);
+
+      return {
+        id: `menu-${item.id}`,
+        label: item.label,
+        description: `Abra ${item.label.toLocaleLowerCase('pt-BR')} pelo menu disponível para você.`,
+        route: item.path,
+        roles: [role],
+        keywords: [...labelKeywords, ...pathKeywords],
+      } satisfies AssistantFeature;
+    });
+
+  return [...registeredFeatures, ...discoveredFeatures];
+}
+
+function getFeatureRouteKey(route: string): string {
+  try {
+    const url = new URL(route, 'https://assistant.local');
+    if (url.pathname === '/admin') {
+      const moduleId = url.searchParams.get('module');
+      if (moduleId) return `admin:${moduleId}`;
+    }
+
+    return `${url.pathname}${url.search}`;
+  } catch {
+    return route;
+  }
 }
 
 export function recordAssistantUsage(featureId: string, institutionId: string | null): void {

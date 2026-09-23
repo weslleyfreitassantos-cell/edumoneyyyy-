@@ -40,7 +40,11 @@ describe('featureRegistry', () => {
       platformRole: 'USER',
       membershipRole: 'DIRECTOR',
       profileRole: 'DIRECTOR',
-    });
+    }, [
+      { id: 'email', label: 'E-mail', path: '/email' },
+      { id: 'announcements', label: 'Avisos', path: '/admin?module=announcements' },
+      { id: 'finance', label: 'Financeiro', path: '/admin?module=finance' },
+    ]);
     const unavailableFeatures = getAssistantFeatures('director', {
       platformRole: 'USER',
       membershipRole: 'TEACHER',
@@ -49,16 +53,35 @@ describe('featureRegistry', () => {
 
     expect(directorFeatures.map((feature) => feature.route)).toEqual(
       expect.arrayContaining([
-        '/admin?module=email',
+        '/email',
         '/admin?module=announcements',
         '/admin?module=finance',
       ]),
     );
     expect(unavailableFeatures.map((feature) => feature.route)).not.toEqual(
       expect.arrayContaining([
-        '/admin?module=email',
+        '/email',
         '/admin?module=announcements',
         '/admin?module=finance',
+      ]),
+    );
+  });
+
+  it('descobre automaticamente um novo item do menu', () => {
+    const features = getAssistantFeatures('student', {}, [
+      {
+        id: 'new-learning-area',
+        label: 'Biblioteca digital',
+        path: '/dashboard/digital-library',
+      },
+    ]);
+
+    expect(features).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          label: 'Biblioteca digital',
+          route: '/dashboard/digital-library',
+        }),
       ]),
     );
   });

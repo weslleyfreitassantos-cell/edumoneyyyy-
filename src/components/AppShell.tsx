@@ -29,7 +29,10 @@ import type {
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
-import Sidebar from './Sidebar';
+import Sidebar, {
+  getSidebarAdminModules,
+  getSidebarNavigationItems,
+} from './Sidebar';
 import { schoolEmailService } from '../services/schoolEmailService';
 import AssistantTec from './AssistantTec';
 
@@ -588,6 +591,29 @@ export default function AppShell({
       roleToSubtitle[currentRole],
   };
 
+  const assistantMenuItems = [
+    ...getSidebarNavigationItems({
+      profile,
+      currentInstitutionRole: institutionContext.currentRole,
+      currentUserRole: currentRole,
+      pathname: location.pathname,
+    }).map((item) => ({
+      id: item.id,
+      label: item.label,
+      path: item.path,
+    })),
+    ...getSidebarAdminModules({
+      profile,
+      currentInstitutionRole: institutionContext.currentRole,
+      currentUserRole: currentRole,
+      pathname: location.pathname,
+    }).map((module) => ({
+      id: module.id,
+      label: module.label,
+      path: module.href,
+    })),
+  ];
+
   const pageContext = getRouteVisualContext(
     location.pathname,
     currentRole,
@@ -730,6 +756,7 @@ export default function AppShell({
         platformRole={profile.platform_role}
         membershipRole={institutionContext.currentRole}
         profileRole={profile.role}
+        menuItems={assistantMenuItems}
       />
     </div>
   );

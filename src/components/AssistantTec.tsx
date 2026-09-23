@@ -7,6 +7,7 @@ import {
   recordAssistantUsage,
   type AssistantFeature,
   type AssistantAvailability,
+  type AssistantMenuItem,
 } from '../services/featureRegistry';
 import type { UserRole } from '../types';
 
@@ -22,12 +23,14 @@ export default function AssistantTec({
   platformRole,
   membershipRole,
   profileRole,
+  menuItems = [],
 }: {
   role: UserRole;
   institutionId: string | null;
   platformRole?: AssistantAvailability['platformRole'];
   membershipRole?: AssistantAvailability['membershipRole'];
   profileRole?: AssistantAvailability['profileRole'];
+  menuItems?: readonly AssistantMenuItem[];
 }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,7 +47,7 @@ export default function AssistantTec({
     platformRole,
     membershipRole,
     profileRole,
-  });
+  }, menuItems);
 
   const results = useMemo(() => {
     const terms = normalize(question)

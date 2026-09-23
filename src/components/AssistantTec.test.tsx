@@ -17,6 +17,7 @@ function renderAssistant(
     membershipRole?: string;
     profileRole?: string;
   } = {},
+  menuItems: { id: string; label: string; path: string }[] = [],
 ) {
   render(
     <MemoryRouter>
@@ -24,6 +25,7 @@ function renderAssistant(
         role={role}
         institutionId={null}
         {...availability}
+        menuItems={menuItems}
       />
     </MemoryRouter>,
   );
@@ -85,7 +87,9 @@ describe('AssistantTec', () => {
       platformRole: 'USER',
       membershipRole: 'DIRECTOR',
       profileRole: 'DIRECTOR',
-    });
+    }, [
+      { id: 'announcements', label: 'Avisos', path: '/admin?module=announcements' },
+    ]);
     const input = screen.getByRole('textbox', {
       name: 'Pergunte ao Assistente TEC',
     });
