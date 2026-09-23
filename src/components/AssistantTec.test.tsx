@@ -51,6 +51,11 @@ describe('AssistantTec', () => {
     expect(
       screen.getByRole('button', { name: /Materiais e avisos/i }),
     ).toBeTruthy();
+
+    fireEvent.change(input, { target: { value: 'livros' } });
+    expect(
+      screen.getByRole('button', { name: /Indicações de livros/i }),
+    ).toBeTruthy();
   });
 
   it('exibe Diário de Classe e avaliações apenas para o professor', () => {
