@@ -51,7 +51,7 @@ afterEach(() => {
 });
 
 describe('StudentGradesPanel', () => {
-  it('mostra resumo, avaliação e labels de leitura', () => {
+  it('mostra os indicadores úteis e apenas a nota acadêmica da avaliação', () => {
     vi.mocked(useStudentGradeSummary).mockReturnValue({
       data: { summary, records: [record], recentRecords: [record] },
       isLoading: false,
@@ -71,15 +71,15 @@ describe('StudentGradesPanel', () => {
     expect(screen.getByText('Avaliações recentes')).toBeTruthy();
     expect(screen.getByText('Prova de álgebra')).toBeTruthy();
     expect(screen.getByText('Nota')).toBeTruthy();
-    expect(screen.getByText('Aproveitamento')).toBeTruthy();
     expect(screen.getByText('Situação')).toBeTruthy();
     expect(screen.getByText('Lançada')).toBeTruthy();
     expect(screen.getByText('Média ponderada')).toBeTruthy();
-    expect(screen.getByText('Média simples')).toBeTruthy();
-    expect(screen.getByText('Avaliações registradas')).toBeTruthy();
+    expect(screen.queryByText('Média simples')).toBeNull();
+    expect(screen.queryByText('Avaliações registradas')).toBeNull();
     expect(screen.getByText('Avaliações pendentes')).toBeTruthy();
     expect(screen.getByText('70%')).toBeTruthy();
-    expect(screen.getAllByText('85%').length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByText('8,5/10')).toBeTruthy();
+    expect(screen.queryByText('85%')).toBeNull();
   });
 
   it('mostra loading, erro de forma segura com recuperação e estado vazio', () => {

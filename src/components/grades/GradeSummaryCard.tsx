@@ -47,11 +47,17 @@ function Metric({
 
 export default function GradeSummaryCard({
   summary,
+  variant = 'full',
 }: {
   summary: GradeSummary;
+  variant?: 'full' | 'student';
 }) {
   return (
-    <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+    <div
+      className={variant === 'student'
+        ? 'grid gap-3 sm:grid-cols-2'
+        : 'grid gap-3 sm:grid-cols-2 xl:grid-cols-4'}
+    >
       <Metric
         label="Média ponderada"
         value={formatPercent(summary.weightedAveragePercent)}
@@ -64,27 +70,21 @@ export default function GradeSummaryCard({
         }
       />
 
-      <Metric
-        label="Média simples"
-        value={formatGradeSummaryAverage(summary)}
-        icon={
-          <Divide
-            className="h-4 w-4"
-            aria-hidden="true"
+      {variant === 'full' && (
+        <>
+          <Metric
+            label="Média simples"
+            value={formatGradeSummaryAverage(summary)}
+            icon={<Divide className="h-4 w-4" aria-hidden="true" />}
           />
-        }
-      />
 
-      <Metric
-        label="Avaliações registradas"
-        value={summary.gradedCount}
-        icon={
-          <ClipboardList
-            className="h-4 w-4"
-            aria-hidden="true"
+          <Metric
+            label="Avaliações registradas"
+            value={summary.gradedCount}
+            icon={<ClipboardList className="h-4 w-4" aria-hidden="true" />}
           />
-        }
-      />
+        </>
+      )}
 
       <Metric
         label="Avaliações pendentes"
