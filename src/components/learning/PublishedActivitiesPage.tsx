@@ -315,7 +315,7 @@ export default function PublishedActivitiesPage() {
 
       {assigning ? (
         <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/55 p-4">
-          <section role="dialog" aria-modal="true" aria-labelledby="assign-learning-activity-title" className="w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+          <section role="dialog" aria-modal="true" aria-labelledby="assign-learning-activity-title" className="max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-2xl dark:bg-slate-900">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#005bbf]">Atribuir atividade</p>

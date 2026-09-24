@@ -42,7 +42,11 @@ export function DataTable<T extends { id: string }>({
   actionCellClassName = '',
   actionGroupClassName = '',
 }: DataTableProps<T>) {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 767px)').matches,
+  );
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) {

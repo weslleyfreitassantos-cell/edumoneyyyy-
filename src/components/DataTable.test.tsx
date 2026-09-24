@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { renderToString } from 'react-dom/server';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { DataTable, type Column } from './DataTable';
@@ -176,5 +177,16 @@ describe('DataTable', () => {
     expect(screen.getByText('Alice Silva')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: 'Editar' }));
     expect(onEdit).toHaveBeenCalledWith(rows[0]);
+  });
+
+  it('renderiza o formato mobile já na primeira pintura', () => {
+    setViewport(true);
+
+    const markup = renderToString(
+      <DataTable<DemoRow> data={rows} columns={columns} />,
+    );
+
+    expect(markup).toContain('<article');
+    expect(markup).not.toContain('<table');
   });
 });
