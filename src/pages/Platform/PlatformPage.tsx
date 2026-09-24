@@ -187,6 +187,10 @@ function getPlatformErrorMessage(error: unknown): string {
       return 'Não foi possível alterar a senha do administrador.';
     }
 
+    if (error.code === 'INVALID_ACCOUNT_ID') {
+      return 'A conta informada é inválida.';
+    }
+
     if (error.code === 'INVALID_PASSWORD') {
       return 'Informe uma senha entre 8 e 72 caracteres.';
     }
