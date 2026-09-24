@@ -362,7 +362,8 @@ describe('StudentDashboard', () => {
     );
 
     expect(screen.getByTestId('timetable-break')).toBeTruthy();
-    expect(screen.getByText('Pausa escolar')).toBeTruthy();
+    expect(screen.getByText('Intervalo')).toBeTruthy();
+    expect(screen.queryByText('Pausa escolar')).toBeNull();
   });
 
   it('move disciplinas e professores para a tela própria do menu do aluno', () => {
@@ -384,6 +385,11 @@ describe('StudentDashboard', () => {
     ).toBeTruthy();
     expect(screen.getByText('Matemática')).toBeTruthy();
     expect(screen.getByText('Prof. João')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: '1 disciplina no período atual' })).toBeTruthy();
+    expect(screen.getByText('1º Bimestre')).toBeTruthy();
+    expect(screen.queryByText('joao@example.com')).toBeNull();
+    expect(screen.queryByText('MAT')).toBeNull();
+    expect(screen.queryByText('Carga')).toBeNull();
     expect(screen.queryByText('Área do aluno')).toBeNull();
   });
 
@@ -405,6 +411,24 @@ describe('StudentDashboard', () => {
       screen.queryByText('Disciplinas e professores do período atual'),
     ).toBeNull();
     expect(screen.queryByText('Disciplinas do período atual')).toBeNull();
+  });
+
+  it('prioriza turma e atalhos acadêmicos sem destacar RA ou dados pessoais', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('heading', { name: '1ª série A' })).toBeTruthy();
+    expect(screen.getByRole('navigation', { name: 'Atalhos acadêmicos' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Grade horária' }).getAttribute('href')).toBe('/dashboard/timetable');
+    expect(screen.getByRole('link', { name: 'Frequência' }).getAttribute('href')).toBe('/student/attendance');
+    expect(screen.getByRole('link', { name: 'Notas' }).getAttribute('href')).toBe('/student/grades');
+    expect(screen.getByRole('link', { name: 'Boletim' }).getAttribute('href')).toBe('/student/report-card');
+    expect(screen.queryByText('TV-001')).toBeNull();
+    expect(screen.queryByText('Nascimento')).toBeNull();
+    expect(screen.queryByText('Dados da conta')).toBeNull();
   });
 
   it('exibe frequência, notas e boletim em rotas dedicadas', () => {

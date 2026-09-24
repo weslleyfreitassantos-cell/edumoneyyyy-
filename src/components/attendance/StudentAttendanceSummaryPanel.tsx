@@ -10,14 +10,7 @@ import {
   getAttendanceStatusClassName,
 } from './attendanceDisplay';
 import AttendanceSummaryCard from './AttendanceSummaryCard';
-
-function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar a frequência.';
-}
+import { getUserFacingErrorMessage } from '../../lib/userFacingError';
 
 export default function StudentAttendanceSummaryPanel({
   institutionId,
@@ -47,7 +40,7 @@ export default function StudentAttendanceSummaryPanel({
       </div>
 
       {attendanceQuery.isLoading && (
-        <div className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
+        <div role="status" aria-label="Carregando frequência" className="rounded-lg border border-[#dfe3e8] p-5 text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
           Carregando frequência...
         </div>
       )}
@@ -57,13 +50,16 @@ export default function StudentAttendanceSummaryPanel({
           role="alert"
           className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200"
         >
-          {getErrorMessage(attendanceQuery.error)}
+          <p>{getUserFacingErrorMessage(attendanceQuery.error, 'Não foi possível carregar a frequência. Tente novamente.')}</p>
+          <button type="button" onClick={() => void attendanceQuery.refetch()} className="mt-3 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+            Tentar novamente
+          </button>
         </div>
       )}
 
       {attendanceQuery.data &&
         attendanceQuery.data.summary.totalRecords === 0 && (
-          <div className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
+          <div role="status" className="rounded-lg border border-dashed border-[#c1c6d6] p-6 text-center text-sm text-[#727785] dark:border-slate-700 dark:text-slate-400">
             Nenhum registro de frequência publicado.
           </div>
         )}

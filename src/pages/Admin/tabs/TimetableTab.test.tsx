@@ -201,6 +201,20 @@ describe('TimetableTab', () => {
     expect(screen.getAllByText(/07:50/).length).toBeGreaterThanOrEqual(1);
   });
 
+  it('mantém a coluna de horários fixa enquanto os dias rolam horizontalmente', () => {
+    renderTab();
+    openClassGrade();
+
+    const gridRegion = screen.getByRole('region', { name: /Grade semanal/ });
+    const timeHeader = screen.getByRole('columnheader', { name: 'Horário' });
+
+    expect(gridRegion.className).toContain('overflow-auto');
+    expect(gridRegion.getAttribute('tabindex')).toBe('0');
+    expect(timeHeader.className).toContain('sticky');
+    expect(timeHeader.className).toContain('left-0');
+    expect(timeHeader.className).toContain('bg-slate-100');
+  });
+
   it('mostra sala na celula da grade', () => {
     renderTab();
     openClassGrade();

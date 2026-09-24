@@ -74,12 +74,83 @@ function TimetableClassOverview({ entries, onViewClass }: { entries: TimetableEn
 
 function TimetableView({ grid, dayFilter, showClassContext, onEdit }: { grid: TimetableGrid; dayFilter: string; showClassContext: boolean; onEdit: (e: TimetableEntryRow) => void }) {
   const days = dayFilter === 'all' ? grid.days : grid.days.filter((day) => day.day === Number(dayFilter));
-  const [mobileDay, setMobileDay] = useState(days[0]?.day ?? 1);
-  useEffect(() => { if (days.length > 0 && !days.some((day) => day.day === mobileDay)) setMobileDay(days[0].day); }, [days, mobileDay]);
-  const renderCard = (entry: TimetableEntryRow) => <button key={entry.id} type="button" aria-label={`Editar ${entry.subject_name} ${entry.start_time}`} onClick={() => onEdit(entry)} className="w-full rounded-lg border border-blue-200 bg-blue-50 p-2 text-left text-xs shadow-sm transition hover:border-blue-400 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/50 dark:hover:bg-blue-900/60"><span className="flex items-center gap-1 font-bold text-slate-900 dark:text-blue-50"><BookOpen className="h-3.5 w-3.5 shrink-0 text-blue-700 dark:text-blue-300" aria-hidden="true" />{entry.subject_name}</span><span className="mt-1 block text-slate-600 dark:text-slate-300">{entry.teacher_name ?? 'Professor não informado'}</span>{showClassContext && <span className="mt-1 block font-semibold text-blue-700 dark:text-blue-300">Turma {entry.class_name}</span>}{entry.room_name && <span className="mt-1 flex items-center gap-1 text-slate-600 dark:text-slate-300"><MapPin className="h-3 w-3" aria-hidden="true" />{entry.room_name}</span>}</button>;
-  if (grid.timeSlots.length === 0 || days.length === 0) return <div className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">Nenhum horário cadastrado para os filtros atuais.</div>;
-  const mobile = days.find((day) => day.day === mobileDay) ?? days[0];
-  return <div className="space-y-3"><div className="flex gap-2 overflow-x-auto md:hidden" role="tablist" aria-label="Dias da semana">{days.map((day) => <button key={day.day} type="button" role="tab" aria-selected={mobile.day === day.day} onClick={() => setMobileDay(day.day)} className={`whitespace-nowrap rounded-lg border px-3 py-2 text-sm font-semibold ${mobile.day === day.day ? 'border-blue-600 bg-blue-600 text-white' : 'border-slate-300 text-slate-600 dark:border-slate-700 dark:text-slate-300'}`}>{day.label}</button>)}</div><div className="md:hidden rounded-xl border border-slate-200 bg-white p-3 dark:border-slate-700 dark:bg-slate-900"><div className="space-y-2">{grid.timeSlots.map((slot, index) => { const entries = mobile.slots[index]?.entries ?? []; return <div key={`${slot.start_time}-${slot.end_time}`} className="grid grid-cols-[76px_1fr] gap-3 border-b border-slate-100 py-3 last:border-0 dark:border-slate-800"><div className="text-xs font-semibold text-slate-500 dark:text-slate-400">{slot.start_time}<br />{slot.end_time}</div><div className="space-y-2">{entries.length > 0 ? entries.map(renderCard) : <span className="text-xs text-slate-400">Sem aula</span>}</div></div>; })}</div></div><div className="hidden max-h-[70vh] overflow-auto rounded-xl border border-slate-200 md:block dark:border-slate-700"><div className="min-w-[760px]" style={{ display: 'grid', gridTemplateColumns: `108px repeat(${days.length}, minmax(190px, 1fr))` }}><div className="sticky left-0 top-0 z-20 border-b border-slate-200 bg-slate-100 p-3 text-xs font-bold uppercase text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">Horário</div>{days.map((day) => <div key={day.day} className="sticky top-0 z-10 border-b border-l border-slate-200 bg-slate-100 p-3 text-xs font-bold uppercase text-slate-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">{day.label}</div>)}{grid.timeSlots.map((slot, index) => <div key={`${slot.start_time}-${slot.end_time}`} className="contents"><div className="sticky left-0 z-10 border-b border-slate-200 bg-white p-3 text-xs font-semibold text-slate-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">{slot.start_time}<br />{slot.end_time}</div>{days.map((day) => <div key={day.day} className="min-h-24 border-b border-l border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900"><div className="space-y-2">{(day.slots[index]?.entries ?? []).map(renderCard)}</div></div>)}</div>)}</div></div></div>;
+  const renderCard = (entry: TimetableEntryRow) => (
+    <button
+      key={entry.id}
+      type="button"
+      aria-label={`Editar ${entry.subject_name} ${entry.start_time}`}
+      onClick={() => onEdit(entry)}
+      className="w-full rounded-lg border border-blue-200 bg-blue-50 p-2 text-left text-xs shadow-sm transition hover:border-blue-400 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-blue-800 dark:bg-blue-950/50 dark:hover:bg-blue-900/60"
+    >
+      <span className="flex items-center gap-1 font-bold text-slate-900 dark:text-blue-50">
+        <BookOpen className="h-3.5 w-3.5 shrink-0 text-blue-700 dark:text-blue-300" aria-hidden="true" />
+        {entry.subject_name}
+      </span>
+      <span className="mt-1 block text-slate-600 dark:text-slate-300">
+        {entry.teacher_name ?? 'Professor não informado'}
+      </span>
+      {showClassContext && (
+        <span className="mt-1 block font-semibold text-blue-700 dark:text-blue-300">
+          Turma {entry.class_name}
+        </span>
+      )}
+      {entry.room_name && (
+        <span className="mt-1 flex items-center gap-1 text-slate-600 dark:text-slate-300">
+          <MapPin className="h-3 w-3" aria-hidden="true" />
+          {entry.room_name}
+        </span>
+      )}
+    </button>
+  );
+  if (grid.timeSlots.length === 0 || days.length === 0) return <div role="status" className="rounded-xl border border-gray-200 bg-gray-50 p-8 text-center text-sm text-gray-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400">Nenhum horário cadastrado para os filtros atuais.</div>;
+  return (
+    <div
+      role="region"
+      aria-label="Grade semanal. A coluna Horário fica fixa; role horizontalmente para consultar os dias."
+      tabIndex={0}
+      className="max-h-[70vh] overflow-auto overscroll-contain rounded-xl border border-slate-200 bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-slate-700 dark:bg-slate-900"
+    >
+      <div
+        role="grid"
+        aria-label="Horários por dia e faixa"
+        className="grid w-max min-w-full"
+        style={{ gridTemplateColumns: `108px repeat(${days.length}, 190px)` }}
+      >
+        <div className="contents" role="row">
+          <div className="sticky left-0 top-0 z-30 border-b border-r border-slate-200 bg-slate-100 p-3 text-xs font-bold uppercase text-slate-600 shadow-[2px_0_4px_rgba(15,23,42,0.08)] dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" role="columnheader">
+            Horário
+          </div>
+          {days.map((day) => (
+            <div key={day.day} className="sticky top-0 z-20 border-b border-l border-slate-200 bg-slate-100 p-3 text-xs font-bold uppercase text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300" role="columnheader">
+              {day.label}
+            </div>
+          ))}
+        </div>
+
+        {grid.timeSlots.map((slot, index) => (
+          <div key={`${slot.start_time}-${slot.end_time}`} className="contents" role="row">
+            <div className="sticky left-0 z-10 border-b border-r border-slate-200 bg-white p-3 text-xs font-semibold text-slate-600 shadow-[2px_0_4px_rgba(15,23,42,0.08)] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300" role="rowheader">
+              <time>{slot.start_time}</time>
+              <br />
+              <time>{slot.end_time}</time>
+            </div>
+            {days.map((day) => {
+              const entries = day.slots[index]?.entries ?? [];
+              return (
+                <div key={day.day} className="min-h-24 border-b border-l border-slate-200 bg-white p-2 dark:border-slate-700 dark:bg-slate-900" role="gridcell">
+                  <div className="space-y-2">
+                    {entries.length > 0
+                      ? entries.map(renderCard)
+                      : <span className="text-xs text-slate-400">—</span>}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function TimetableTab() {

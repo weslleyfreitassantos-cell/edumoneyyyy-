@@ -1,15 +1,12 @@
 import { motion } from 'motion/react';
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 
 import {
   BadgeCheck,
   BookOpen,
   CalendarClock,
-  CalendarDays,
   GraduationCap,
-  Mail,
   School,
-  UserRound,
 } from 'lucide-react';
 
 import { Link, useLocation } from 'react-router-dom';
@@ -32,6 +29,7 @@ import {
   projectTimetableOccurrences,
 } from '../lib/academic/timetableOccurrences';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
+import { getUserFacingErrorMessage } from '../lib/userFacingError';
 
 import type {
   StudentDashboardData,
@@ -45,25 +43,6 @@ import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
-function getErrorMessage(
-  error: unknown,
-): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar o dashboard do aluno.';
-}
-
 function getFirstName(
   fullName: string,
 ): string {
@@ -72,52 +51,6 @@ function getFirstName(
       .trim()
       .split(/\s+/)
       .at(0) || 'Aluno'
-  );
-}
-
-function formatDate(
-  value: string | null,
-): string {
-  if (!value) {
-    return 'Não informada';
-  }
-
-  const [year, month, day] =
-    value.split('-');
-
-  if (!year || !month || !day) {
-    return value;
-  }
-
-  return `${day}/${month}/${year}`;
-}
-
-function DetailCard({
-  icon,
-  label,
-  value,
-}: {
-  icon: ReactNode;
-  label: string;
-  value: string | number;
-}) {
-  return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-          {icon}
-        </div>
-
-        <div>
-          <p className="text-xs font-medium text-[#727785]">
-            {label}
-          </p>
-          <p className="mt-1 text-sm font-bold text-[#181c20]">
-            {value}
-          </p>
-        </div>
-      </div>
-    </article>
   );
 }
 
@@ -130,10 +63,7 @@ function OfferingCard({
     <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wide text-[#005bbf]">
-            {offering.subject_code ?? 'Disciplina'}
-          </p>
-          <h3 className="mt-1 text-base font-bold text-[#181c20]">
+          <h3 className="text-base font-bold text-[#181c20]">
             {offering.subject_name}
           </h3>
         </div>
@@ -152,31 +82,15 @@ function OfferingCard({
           <dd className="mt-1 font-semibold text-[#181c20]">
             {offering.teacher_name}
           </dd>
-          <dd className="mt-0.5 break-all text-xs text-[#727785]">
-            {offering.teacher_email}
-          </dd>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <dt className="text-xs font-medium text-[#727785]">
-              Período
-            </dt>
-            <dd className="mt-1 font-semibold text-[#181c20]">
-              {offering.term_name}
-            </dd>
-          </div>
-
-          <div>
-            <dt className="text-xs font-medium text-[#727785]">
-              Carga
-            </dt>
-            <dd className="mt-1 font-semibold text-[#181c20]">
-              {offering.workload
-                ? `${offering.workload}h`
-                : 'Não informada'}
-            </dd>
-          </div>
+        <div>
+          <dt className="text-xs font-medium text-[#727785]">
+            Período
+          </dt>
+          <dd className="mt-1 font-semibold text-[#181c20]">
+            {offering.term_name}
+          </dd>
         </div>
       </dl>
     </article>
@@ -206,9 +120,6 @@ function StudentSubjectsView({
             <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20]">
               Disciplinas e professores
             </h1>
-            <p className="mt-2 text-sm text-[#727785]">
-              Consulte as disciplinas e os professores da sua turma no período vigente.
-            </p>
           </div>
 
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-[#1e3a5f]">
@@ -235,17 +146,14 @@ function StudentSubjectsView({
         </div>
       ) : (
         <section aria-labelledby="student-subjects-heading">
-          <div className="mb-4 flex items-center justify-between gap-3">
+          <div className="mb-4">
             <h2
               id="student-subjects-heading"
               className="text-lg font-bold text-[#181c20]"
             >
-              Disciplinas cadastradas
-            </h2>
-            <span className="text-sm text-[#727785]">
               {offerings.length}{' '}
-              {offerings.length === 1 ? 'disciplina' : 'disciplinas'}
-            </span>
+              {offerings.length === 1 ? 'disciplina' : 'disciplinas'} no período atual
+            </h2>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -278,7 +186,7 @@ function StudentAcademicResultsView({
   enrollment: StudentDashboardData['activeEnrollment'];
 }) {
   const studentName =
-    student.profile?.full_name ?? student.registration_number;
+    student.profile?.full_name?.trim() || 'Aluno sem nome informado';
 
   return (
     <motion.div
@@ -420,7 +328,10 @@ function StudentTimetableView({
         className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700"
       >
         <h2 className="font-bold">Não foi possível carregar a grade de horário</h2>
-        <p className="mt-2">{getErrorMessage(timetableQuery.error)}</p>
+        <p className="mt-2">{getUserFacingErrorMessage(timetableQuery.error, 'Não foi possível carregar a grade. Tente novamente.')}</p>
+        <button type="button" onClick={() => void timetableQuery.refetch()} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
@@ -548,8 +459,11 @@ export default function StudentDashboard() {
           Não foi possível carregar o dashboard
         </h2>
         <p className="mt-2">
-          {getErrorMessage(error)}
+          {getUserFacingErrorMessage(error, 'Não foi possível carregar os dados acadêmicos. Tente novamente.')}
         </p>
+        <button type="button" onClick={() => void Promise.all([institutionQuery.refetch(), dashboardQuery.refetch()])} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
@@ -637,9 +551,6 @@ export default function StudentDashboard() {
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
               Olá, {firstName}!
             </h1>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85">
-              Matrícula, turma e disciplinas carregadas diretamente do cadastro acadêmico.
-            </p>
           </div>
 
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
@@ -651,179 +562,65 @@ export default function StudentDashboard() {
         </div>
       </section>
 
-      <DashboardAnnouncements
-        announcements={announcementsQuery.data ?? []}
-        registration={registrationQuery.data}
-        isLoading={announcementsQuery.isLoading}
-        isError={announcementsQuery.isError}
-        role="student"
-      />
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
+              Minha turma
+            </p>
+            {activeEnrollment ? (
+              <>
+                <h2 className="mt-1 break-words text-xl font-bold text-[#181c20]">
+                  {activeEnrollment.class_name}
+                </h2>
+                <p className="mt-1 text-sm text-[#727785]">
+                  {activeEnrollment.academic_year_name}
+                  {classDescription ? ` · ${classDescription}` : ''}
+                </p>
+              </>
+            ) : (
+              <p className="mt-1 text-sm text-[#727785]">
+                Nenhuma matrícula ativa encontrada.
+              </p>
+            )}
+          </div>
+          {activeEnrollment && (
+            <span className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
+              <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+              {getEnrollmentStatusLabel(activeEnrollment.status)}
+            </span>
+          )}
+        </div>
+      </section>
+
+      <nav aria-label="Atalhos acadêmicos" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <Link className="flex min-h-11 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/dashboard/timetable">
+          Grade horária
+        </Link>
+        <Link className="flex min-h-11 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/attendance">
+          Frequência
+        </Link>
+        <Link className="flex min-h-11 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/grades">
+          Notas
+        </Link>
+        <Link className="flex min-h-11 items-center justify-center rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2" to="/student/report-card">
+          Boletim
+        </Link>
+      </nav>
 
       <UpcomingAcademicEvents
         institutionId={institutionQuery.data}
         role="student"
       />
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <DetailCard
-          icon={
-            <UserRound
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Registro acadêmico"
-          value={student.registration_number}
-        />
-
-        <DetailCard
-          icon={
-            <CalendarDays
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Nascimento"
-          value={formatDate(student.birth_date)}
-        />
-
-        <DetailCard
-          icon={
-            <School
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Turma atual"
-          value={
-            activeEnrollment?.class_name ??
-            'Sem matrícula ativa'
-          }
-        />
-
-      </section>
-
-      <section className="grid gap-4 lg:grid-cols-2">
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-            Dados da conta
-          </h2>
-
-          <dl className="mt-5 space-y-4">
-            <div className="flex items-start gap-3">
-              <Mail
-                className="mt-0.5 h-5 w-5 text-[#727785]"
-                aria-hidden="true"
-              />
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  E-mail
-                </dt>
-                <dd className="mt-1 break-all text-sm font-semibold text-[#181c20]">
-                  {profile.email}
-                </dd>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <BadgeCheck
-                className={
-                  student.active
-                    ? 'mt-0.5 h-5 w-5 text-green-700'
-                    : 'mt-0.5 h-5 w-5 text-gray-500'
-                }
-                aria-hidden="true"
-              />
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Situação
-                </dt>
-                <dd
-                  className={
-                    student.active
-                      ? 'mt-1 text-sm font-semibold text-green-700'
-                      : 'mt-1 text-sm font-semibold text-gray-600'
-                  }
-                >
-                  {student.active
-                    ? 'Aluno ativo'
-                    : 'Aluno inativo'}
-                </dd>
-              </div>
-            </div>
-          </dl>
-        </article>
-
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-            Matrícula ativa
-          </h2>
-
-          {activeEnrollment ? (
-            <dl className="mt-5 space-y-4">
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Ano letivo
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-[#181c20]">
-                  {activeEnrollment.academic_year_name}
-                </dd>
-              </div>
-
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Turma
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-[#181c20]">
-                  {activeEnrollment.class_name}
-                </dd>
-                {classDescription && (
-                  <dd className="mt-0.5 text-xs text-[#727785]">
-                    {classDescription}
-                  </dd>
-                )}
-              </div>
-
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Status
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-green-700">
-                  {getEnrollmentStatusLabel(activeEnrollment.status)}
-                </dd>
-              </div>
-            </dl>
-          ) : (
-            <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
-              Nenhuma matrícula ativa encontrada para este aluno.
-            </div>
-          )}
-        </article>
-      </section>
-
-      <section className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-              Acompanhamento acadêmico
-            </h2>
-            <p className="mt-1 text-sm text-[#727785] dark:text-slate-400">
-              Acesse os detalhes de frequência, notas e boletim em suas áreas próprias.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/attendance">
-              Frequência
-            </Link>
-            <Link className="rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/grades">
-              Notas
-            </Link>
-            <Link className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a99]" to="/student/report-card">
-              Boletim
-            </Link>
-          </div>
-        </div>
-      </section>
+      <DashboardAnnouncements
+        announcements={announcementsQuery.data ?? []}
+        registration={registrationQuery.data}
+      isLoading={announcementsQuery.isLoading}
+      isError={announcementsQuery.isError}
+      role="student"
+      onRetry={() => void announcementsQuery.refetch()}
+      />
 
     </motion.div>
   );

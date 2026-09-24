@@ -1,7 +1,6 @@
 import {
   AlertTriangle,
   Bell,
-  CheckCircle2,
   Megaphone,
 } from 'lucide-react';
 
@@ -20,12 +19,14 @@ export default function DashboardAnnouncements({
   isLoading,
   isError,
   role,
+  onRetry,
 }: {
   announcements: InstitutionAnnouncement[];
   registration?: RegistrationCompletion;
   isLoading?: boolean;
   isError?: boolean;
   role: 'student' | 'guardian';
+  onRetry?: () => void;
 }) {
   const pendingItems = registration?.pendingItems ?? [];
 
@@ -42,13 +43,13 @@ export default function DashboardAnnouncements({
       </div>
 
       {pendingItems.length > 0 && (
-        <article className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-900 shadow-sm">
+        <article role="alert" className="rounded-xl border border-amber-200 bg-amber-50 p-5 text-amber-900 shadow-sm">
           <div className="flex items-start gap-3">
             <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
             <div className="min-w-0">
               <h3 className="font-bold">Cadastro com pendências</h3>
               <p className="mt-1 text-sm text-amber-800">
-                Finalize os itens abaixo para manter os dados atualizados.
+                Atualize os itens pendentes do cadastro.
               </p>
               <ul className="mt-3 space-y-2 text-sm">
                 {pendingItems.map((item) => (
@@ -66,37 +67,37 @@ export default function DashboardAnnouncements({
                   Atualizar meu cadastro
                 </button>
               )}
-              <p className="mt-4 text-sm font-semibold text-amber-800">
-                Para concluir os itens acadêmicos, procure a secretaria da escola.
-              </p>
             </div>
           </div>
         </article>
       )}
 
-      {registration && pendingItems.length === 0 && (
-        <div className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800">
-          <CheckCircle2 className="h-5 w-5 shrink-0" aria-hidden="true" />
-          <span>Seu cadastro está sem pendências obrigatórias.</span>
-        </div>
-      )}
-
       {isLoading ? (
-        <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-6 text-sm text-[#727785]">
+        <div role="status" aria-label="Carregando avisos" className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-6 text-sm text-[#727785]">
           Carregando avisos...
         </div>
       ) : isError ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-5 text-sm text-[#727785]">
-          Os avisos da instituição estão temporariamente indisponíveis.
+        <div role="alert" className="rounded-xl border border-red-200 bg-red-50 p-5 text-sm text-red-800">
+          <p>Os avisos da instituição estão temporariamente indisponíveis.</p>
+          {onRetry && (
+            <button type="button" onClick={onRetry} className="mt-3 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+              Tentar novamente
+            </button>
+          )}
         </div>
       ) : announcements.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-6 text-sm text-[#727785]">
+        <div role="status" className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-6 text-sm text-[#727785]">
           Nenhum aviso publicado no momento.
         </div>
       ) : (
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div
+          role="region"
+          aria-label="Avisos publicados. Deslize horizontalmente para consultar outros avisos."
+          tabIndex={0}
+          className="flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#005bbf] sm:grid sm:grid-cols-2 sm:overflow-visible sm:snap-none lg:grid-cols-2"
+        >
           {announcements.map((announcement) => (
-            <article key={announcement.id} className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm">
+            <article key={announcement.id} className="w-[min(88vw,24rem)] flex-none snap-start rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:w-auto sm:min-w-0">
               <div className="flex items-start gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
                   <Megaphone className="h-5 w-5" aria-hidden="true" />

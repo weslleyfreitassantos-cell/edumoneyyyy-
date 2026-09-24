@@ -3,7 +3,6 @@ import {
   CalendarDays,
   Coffee,
   MapPin,
-  UsersRound,
   Utensils,
 } from 'lucide-react';
 
@@ -146,9 +145,6 @@ function TimetableBreakCard({ scheduleBreak }: { scheduleBreak: ScheduleBreak })
           <p className="break-words text-xs font-bold leading-4">
             {scheduleBreak.name}
           </p>
-          <p className="mt-1 text-[11px] leading-4 text-[#a15c0a] dark:text-[#fbbf24]">
-            Pausa escolar
-          </p>
         </div>
       </div>
     </article>
@@ -169,6 +165,7 @@ export default function WeeklyTimetableGrid({
   weekStartDate?: string;
 }) {
   const lessonEntries = occurrences?.map((occurrence) => occurrence.entry) ?? entries;
+  const displayedLessonCount = occurrences?.length ?? entries.length;
   const timeSlots = buildTimeSlots(lessonEntries, scheduleBreaks);
   const lessonDays = occurrences
     ? occurrences.map((occurrence) => getWeekDayForDate(occurrence.date))
@@ -225,25 +222,26 @@ export default function WeeklyTimetableGrid({
         <div className="flex items-center gap-3 text-xs font-medium text-[#667085]">
           <span className="inline-flex items-center gap-1.5">
             <CalendarDays className="h-4 w-4 text-[#1769c2]" aria-hidden="true" />
-            {entries.length} {entries.length === 1 ? 'aula' : 'aulas'}
-          </span>
-          <span className="hidden h-4 w-px bg-[#d8e0ec] sm:block" aria-hidden="true" />
-          <span className="hidden items-center gap-1.5 sm:inline-flex">
-            <UsersRound className="h-4 w-4 text-[#667085]" aria-hidden="true" />
-            {audience === 'student' ? 'Sua turma' : 'Suas turmas'}
+            {displayedLessonCount}{' '}
+            {displayedLessonCount === 1 ? 'aula' : 'aulas'}
           </span>
         </div>
       </header>
 
-      <div className="overflow-x-auto" aria-label="Grade semanal de horários">
+      <div
+        role="region"
+        aria-label="Grade semanal de horários. Use a rolagem horizontal para consultar outros dias."
+        tabIndex={0}
+        className="overflow-x-auto overscroll-x-contain focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#1769c2]"
+      >
         <div className="min-w-[1144px]">
           <div
             className="grid border-b border-[#d8e0ec] bg-[#f8faff] dark:border-[#334155] dark:bg-[#111827]"
             style={{ gridTemplateColumns: '88px repeat(6, minmax(176px, 1fr))' }}
             role="row"
-            >
+          >
             <div
-              className="flex items-center border-r border-[#d8e0ec] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-[#667085] dark:border-[#334155]"
+              className="sticky left-0 z-30 flex items-center border-r border-[#d8e0ec] bg-[#f8faff] px-3 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-[#667085] shadow-[2px_0_4px_rgba(15,23,42,0.08)] dark:border-[#334155] dark:bg-[#111827]"
               role="columnheader"
             >
               Horário
@@ -252,7 +250,7 @@ export default function WeeklyTimetableGrid({
             {WEEK_DAYS.map(({ value, label }) => (
               <div
                 key={value}
-                className={`border-t-4 border-r border-[#d8e0ec] px-3 py-2.5 last:border-r-0 dark:border-r-[#334155] ${DAY_HEADER_CLASSES[value]}`}
+                className={`sticky top-0 z-20 border-t-4 border-r border-[#d8e0ec] px-3 py-2.5 last:border-r-0 dark:border-r-[#334155] ${DAY_HEADER_CLASSES[value]}`}
                 role="columnheader"
               >
                 <p className="text-sm font-bold text-[#181c20]">{label}</p>
@@ -273,8 +271,8 @@ export default function WeeklyTimetableGrid({
             ))}
           </div>
 
-          {timeSlots.length === 0 ? (
-            <div className="px-5 py-10 text-center text-sm text-[#667085]">
+      {timeSlots.length === 0 ? (
+            <div role="status" className="px-5 py-10 text-center text-sm text-[#667085]">
               Nenhum horário publicado foi encontrado.
             </div>
           ) : (
@@ -286,7 +284,7 @@ export default function WeeklyTimetableGrid({
                 role="row"
               >
                 <div
-                  className="border-r border-[#d8e0ec] bg-[#fbfcfe] px-2 py-3 text-center dark:border-[#334155] dark:bg-[#111827]"
+                  className="sticky left-0 z-10 border-r border-[#d8e0ec] bg-[#fbfcfe] px-2 py-3 text-center shadow-[2px_0_4px_rgba(15,23,42,0.08)] dark:border-[#334155] dark:bg-[#111827]"
                   role="rowheader"
                 >
                   <time className="block text-xs font-bold text-[#1769c2]">
@@ -352,10 +350,6 @@ export default function WeeklyTimetableGrid({
         </div>
       </div>
 
-      <footer className="flex items-center gap-2 border-t border-[#e4e8f1] bg-[#fbfcfe] px-4 py-3 text-[11px] text-[#667085] sm:px-5 dark:border-[#334155] dark:bg-[#111827]">
-        <Coffee className="h-3.5 w-3.5 text-[#a15c0a] dark:text-[#fbbf24]" aria-hidden="true" />
-        Pausas e almoço aparecem na mesma linha do horário correspondente.
-      </footer>
     </section>
   );
 }

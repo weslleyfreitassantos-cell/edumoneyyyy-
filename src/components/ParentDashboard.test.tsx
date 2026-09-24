@@ -66,7 +66,7 @@ function studentDashboard(id: string, name: string) {
       id,
       profile_id: `profile-${id}`,
       institution_id: institutionId,
-      registration_number: `RA-${id}`,
+      registration_number: id === 'student-1' ? '2026-EM-1A-001' : '2026-EM-1A-002',
       birth_date: '2010-01-01',
       active: true,
       profile: {
@@ -175,8 +175,8 @@ describe('ParentDashboard', () => {
     const selector = screen.getByLabelText('Dependente');
     expect((selector as HTMLSelectElement).value).toBe('student-2');
     expect(screen.getByTestId('grades-panel').textContent).toContain('Avaliações publicadas student-2');
-    expect(screen.getAllByText('Bruno Lima')).toHaveLength(2);
-    expect(screen.getByText('RA RA-student-2')).toBeTruthy();
+    expect(screen.getByText('Bruno Lima')).toBeTruthy();
+    expect(screen.getByText('RA 2026-EM-1A-002')).toBeTruthy();
     expect(screen.getByText('1A')).toBeTruthy();
     expect(screen.getByText('2026')).toBeTruthy();
     expect(screen.queryByText('Área da família')).toBeNull();
@@ -206,8 +206,8 @@ describe('ParentDashboard', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getAllByText('Ana Silva')).toHaveLength(2);
-    expect(screen.getByText('RA RA-student-1')).toBeTruthy();
+    expect(screen.getByText('Ana Silva')).toBeTruthy();
+    expect(screen.getByText('RA 2026-EM-1A-001')).toBeTruthy();
     expect(screen.getByText('1A')).toBeTruthy();
     expect(screen.getByTestId('attendance-panel').textContent).toContain(
       'Resumo de frequência student-1',
@@ -249,8 +249,23 @@ describe('ParentDashboard', () => {
       'Lista de disciplinas e professores',
     );
 
-    expect(offeringsList.className).toContain('max-h-[24rem]');
+    expect(offeringsList.className).toContain('max-h-[32rem]');
     expect(offeringsList.className).toContain('overflow-y-auto');
+    expect(offeringsList.className).toContain('sm:grid-cols-2');
     expect(offeringsList.textContent).toContain('Matemática');
+  });
+
+  it('identifica o dependente pelo nome e não usa o RA como título', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByRole('button', { name: /Ana Silva/ })).toBeTruthy();
+    expect(screen.getAllByText('Ano letivo')).toHaveLength(2);
+    expect(screen.getAllByText('Turma')).toHaveLength(2);
+    expect(screen.queryByText('Registro 2026-EM-1A-001')).toBeNull();
+    expect(screen.getByRole('button', { name: /Ana Silva/ }).getAttribute('aria-pressed')).toBe('true');
   });
 });

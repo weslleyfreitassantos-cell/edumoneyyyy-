@@ -17,6 +17,7 @@ import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 
 import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
 import { getLocalDateInputValue } from '../lib/academicTermDates';
+import { getUserFacingErrorMessage } from '../lib/userFacingError';
 
 import {
   selectTeacherOfferingForDate,
@@ -29,25 +30,6 @@ import AcademicRecoveryPanel from './academic/AcademicRecoveryPanel';
 import TeacherClassCouncilsPanel from './academic/TeacherClassCouncilsPanel';
 import TeacherTimetableView from './TeacherTimetableView';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
-
-function getErrorMessage(
-  error: unknown,
-): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar o dashboard do professor.';
-}
 
 function getFirstName(
   fullName: string,
@@ -104,7 +86,7 @@ icon: ReactNode;
 
 function LoadingState() {
   return (
-    <div className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
+    <div role="status" aria-label="Carregando painel do professor" className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
       <div className="text-center">
         <div
           className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
@@ -189,8 +171,11 @@ export default function TeacherDashboard() {
         </h2>
 
         <p className="mt-2">
-          {getErrorMessage(error)}
+          {getUserFacingErrorMessage(error, 'Não foi possível carregar os dados acadêmicos. Tente novamente.')}
         </p>
+        <button type="button" onClick={() => void Promise.all([institutionQuery.refetch(), dashboardQuery.refetch()])} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
@@ -315,9 +300,6 @@ export default function TeacherDashboard() {
               Olá, {firstName}!
             </h1>
 
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85">
-              Suas turmas e disciplinas abaixo foram carregadas diretamente das ofertas acadêmicas.
-            </p>
           </div>
 
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
