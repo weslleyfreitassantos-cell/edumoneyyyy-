@@ -36,9 +36,11 @@ interface MockQuery {
   gte: ReturnType<typeof vi.fn>;
   lte: ReturnType<typeof vi.fn>;
   order: ReturnType<typeof vi.fn>;
+  limit: ReturnType<typeof vi.fn>;
   range: ReturnType<typeof vi.fn>;
   neq: ReturnType<typeof vi.fn>;
   or: ReturnType<typeof vi.fn>;
+  abortSignal: ReturnType<typeof vi.fn>;
   maybeSingle: ReturnType<typeof vi.fn>;
   then: Promise<unknown>['then'];
 }
@@ -52,9 +54,11 @@ function createQuery(response: unknown): MockQuery {
   query.gte = vi.fn(() => query);
   query.lte = vi.fn(() => query);
   query.order = vi.fn(() => query);
+  query.limit = vi.fn(() => query);
   query.range = vi.fn(() => query);
   query.neq = vi.fn(() => query);
   query.or = vi.fn(() => query);
+  query.abortSignal = vi.fn(() => query);
   query.maybeSingle = vi.fn(() =>
     Promise.resolve(response),
   );
@@ -1083,6 +1087,68 @@ describe('attendanceService calendar integration', () => {
 
     expect(supabase.from).toHaveBeenCalledTimes(3);
     expect(supabase.rpc).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('student attendance read scope', () => {
+  beforeEach(() => {
+    vi.mocked(supabase.from).mockReset();
+  });
+
+  it('carrega somente os registros do aluno, sessões fechadas e ofertas necessárias', async () => {
+    const recordQuery = createQuery({
+      data: [
+        {
+          id: 'record-1',
+          institution_id: 'institution-1',
+          attendance_session_id: 'session-1',
+          student_id: 'student-1',
+          status: 'PRESENT',
+          notes: null,
+          recorded_by: 'teacher-1',
+          recorded_at: '2026-02-02T10:00:00.000Z',
+          created_at: '2026-02-02T10:00:00.000Z',
+          updated_at: '2026-02-02T10:00:00.000Z',
+        },
+      ],
+      error: null,
+    });
+    const sessionQuery = createQuery({
+      data: [createSession()],
+      error: null,
+    });
+    const offeringQuery = createQuery({
+      data: [attendanceOfferingRow],
+      error: null,
+    });
+
+    vi.mocked(supabase.from)
+      .mockReturnValueOnce(recordQuery as never)
+      .mockReturnValueOnce(sessionQuery as never)
+      .mockReturnValueOnce(offeringQuery as never);
+
+    const summary = await attendanceService.getStudentAttendanceSummary(
+      'institution-1',
+      'student-1',
+    );
+
+    expect(summary.records).toHaveLength(1);
+    expect(recordQuery.eq).toHaveBeenCalledWith(
+      'student_id',
+      'student-1',
+    );
+    expect(sessionQuery.eq).toHaveBeenCalledWith(
+      'status',
+      'CLOSED',
+    );
+    expect(sessionQuery.in).toHaveBeenCalledWith(
+      'id',
+      ['session-1'],
+    );
+    expect(offeringQuery.in).toHaveBeenCalledWith(
+      'id',
+      ['offering-1'],
+    );
   });
 });
 

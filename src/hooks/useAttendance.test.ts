@@ -1,4 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
+vi.mock('../services/attendanceService', () => ({
+  attendanceService: {},
+}));
+
+vi.mock('../services/workloadService', () => ({
+  workloadService: {},
+}));
 
 import { attendanceKeys } from './useAttendance';
 

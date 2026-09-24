@@ -19,6 +19,7 @@ describe('reportCardService', () => {
         eq: vi.fn().mockReturnThis(),
         order: vi.fn().mockReturnThis(),
         in: vi.fn().mockReturnThis(),
+        abortSignal: vi.fn().mockReturnThis(),
         then: function(resolve: any) {
           resolve({
             data: [
@@ -97,6 +98,28 @@ describe('reportCardService', () => {
           data: [assessment],
           error: null,
         },
+        subject_offerings: {
+          data: [
+            {
+              id: 'offering-1',
+              class_id: 'class-1',
+              term_id: 'term-1',
+              classes: {
+                id: 'class-1',
+                institution_id: 'inst-1',
+              },
+              terms: {
+                id: 'term-1',
+                academic_year_id: 'year-1',
+              },
+            },
+          ],
+          error: null,
+        },
+        grades: {
+          data: [],
+          error: null,
+        },
         enrollments: {
           data: [
             {
@@ -115,6 +138,7 @@ describe('reportCardService', () => {
           error: null,
         },
       };
+      const queriesUsed: Record<string, any> = {};
 
       vi.mocked(supabase.from).mockImplementation((table) => {
         const response = queries[table as keyof typeof queries];
@@ -123,9 +147,11 @@ describe('reportCardService', () => {
           eq: vi.fn().mockReturnThis(),
           in: vi.fn().mockReturnThis(),
           order: vi.fn().mockReturnThis(),
+          abortSignal: vi.fn().mockReturnThis(),
           then: (resolve: (value: unknown) => unknown) =>
             Promise.resolve(response).then(resolve),
         };
+        queriesUsed[table] = query;
 
         return query as unknown as ReturnType<typeof supabase.from>;
       });
@@ -151,6 +177,26 @@ describe('reportCardService', () => {
           score: null,
         },
       ]);
+      expect(queriesUsed.subject_offerings.in).toHaveBeenCalledWith(
+        'class_id',
+        ['class-1'],
+      );
+      expect(queriesUsed.assessments.in).toHaveBeenCalledWith(
+        'subject_offering_id',
+        ['offering-1'],
+      );
+      expect(queriesUsed.assessments.in).toHaveBeenCalledWith(
+        'status',
+        ['PUBLISHED', 'CLOSED'],
+      );
+      expect(queriesUsed.grades.in).toHaveBeenCalledWith(
+        'assessment_id',
+        ['assessment-1'],
+      );
+      expect(queriesUsed.grades.eq).toHaveBeenCalledWith(
+        'student_id',
+        'student-1',
+      );
     });
 
     it('expõe média original, recuperação e média final no resultado publicado', async () => {
@@ -212,6 +258,7 @@ describe('reportCardService', () => {
           eq: vi.fn().mockReturnThis(),
           in: vi.fn().mockReturnThis(),
           order: vi.fn().mockReturnThis(),
+          abortSignal: vi.fn().mockReturnThis(),
           then: (resolve: (value: unknown) => unknown) =>
             Promise.resolve(response).then(resolve),
         };
@@ -236,10 +283,11 @@ describe('reportCardService', () => {
   describe('Guardian constraints', () => {
     it('14. responsável carrega apenas estudantes vinculados', async () => {
       const mockSelect = vi.fn().mockReturnValue({
-        eq: vi.fn().mockReturnThis(),
-        in: vi.fn().mockReturnThis(),
-        order: vi.fn().mockReturnThis(),
-        then: function(resolve: any) {
+          eq: vi.fn().mockReturnThis(),
+          in: vi.fn().mockReturnThis(),
+          order: vi.fn().mockReturnThis(),
+          abortSignal: vi.fn().mockReturnThis(),
+          then: function(resolve: any) {
           resolve({
             data: [],
             error: null,
@@ -261,6 +309,7 @@ describe('reportCardService', () => {
         eq: vi.fn().mockReturnThis(),
         in: vi.fn().mockReturnThis(),
         order: vi.fn().mockReturnThis(),
+        abortSignal: vi.fn().mockReturnThis(),
         then: function(resolve: any) {
           resolve({
             data: [],
@@ -271,7 +320,7 @@ describe('reportCardService', () => {
       (supabase.from as any).mockReturnValue({ select: mockSelect });
       await reportCardService.getGuardianReportCards('inst-1', ['student-1', 'student-2']);
       
-      expect(supabase.from).toHaveBeenCalledTimes(4);
+      expect(supabase.from).toHaveBeenCalledTimes(3);
     });
 
     it('17. não existe consulta completa por estudante', async () => {
