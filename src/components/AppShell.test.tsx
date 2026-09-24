@@ -261,6 +261,30 @@ describe('getRouteVisualContext', () => {
       title: 'Notas',
     });
     expect(
+      getRouteVisualContext('/student/study', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central de Estudos',
+    });
+    expect(
+      getRouteVisualContext('/student/study/activity/activity-1', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central de Estudos',
+    });
+    expect(
+      getRouteVisualContext('/teacher/pedagogical-center', 'teacher'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central Pedagógica',
+    });
+    expect(
+      getRouteVisualContext('/teacher/pedagogical-center/activities', 'teacher'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central Pedagógica',
+    });
+    expect(
       getRouteVisualContext('/student/report-card', 'student'),
     ).toEqual({
       section: 'Acadêmico',
