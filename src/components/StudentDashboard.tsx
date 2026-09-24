@@ -9,7 +9,7 @@ import {
   School,
 } from 'lucide-react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
 
@@ -592,21 +592,6 @@ export default function StudentDashboard() {
           )}
         </div>
       </section>
-
-      <nav aria-label="Atalhos acadêmicos" className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        <Link className="flex min-h-11 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/dashboard/timetable">
-          Grade horária
-        </Link>
-        <Link className="flex min-h-11 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/attendance">
-          Frequência
-        </Link>
-        <Link className="flex min-h-11 items-center justify-center rounded-lg border border-[#cfd6e2] px-3 py-2 text-sm font-semibold text-[#005bbf] hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-600 dark:text-blue-300 dark:hover:bg-slate-800" to="/student/grades">
-          Notas
-        </Link>
-        <Link className="flex min-h-11 items-center justify-center rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-semibold text-white hover:bg-[#004a99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] focus-visible:ring-offset-2" to="/student/report-card">
-          Boletim
-        </Link>
-      </nav>
 
       <UpcomingAcademicEvents
         institutionId={institutionQuery.data}

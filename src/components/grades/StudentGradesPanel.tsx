@@ -8,7 +8,6 @@ import {
   ASSESSMENT_TYPE_LABELS,
   GRADE_STATUS_LABELS,
   formatAssessmentDate,
-  formatPercent,
   formatScore,
   getGradeStatusClassName,
 } from './gradeDisplay';
@@ -71,6 +70,7 @@ export default function StudentGradesPanel({
           <div className="space-y-5">
             <GradeSummaryCard
               summary={gradesQuery.data.summary}
+              variant="student"
             />
 
             <div>
@@ -83,9 +83,9 @@ export default function StudentGradesPanel({
                   (record) => (
                     <div
                       key={record.assessmentId}
-                      className="grid gap-3 p-4 xl:grid-cols-[1.3fr_0.8fr_0.7fr_0.7fr] xl:items-center"
+                      className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between"
                     >
-                      <div className="flex min-w-0 items-start gap-3">
+                      <div className="flex min-w-0 items-start gap-3 sm:flex-1">
                         <CalendarDays
                           className="mt-0.5 h-5 w-5 shrink-0 text-[#727785] dark:text-slate-400"
                           aria-hidden="true"
@@ -109,38 +109,28 @@ export default function StudentGradesPanel({
                         </div>
                       </div>
 
-                      <div>
-                        <p className="text-xs font-medium text-[#727785] dark:text-slate-400 xl:hidden">
-                          Nota
-                        </p>
-                        <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
-                          {formatScore(
-                            record.score,
-                            record.maxScore,
-                          )}
-                        </p>
-                      </div>
+                      <div className="flex items-center justify-between gap-4 sm:min-w-[12rem] sm:justify-between">
+                        <div>
+                          <p className="text-xs font-medium text-[#727785] dark:text-slate-400">
+                            Nota
+                          </p>
+                          <p className="text-sm font-semibold text-[#181c20] dark:text-slate-100">
+                            {formatScore(record.score, record.maxScore)}
+                          </p>
+                        </div>
 
-                      <div>
-                        <p className="text-xs font-medium text-[#727785] dark:text-slate-400 xl:hidden">
-                          Aproveitamento
-                        </p>
-                        <p className="text-sm text-[#181c20] dark:text-slate-100">
-                          {formatPercent(record.percentage)}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p className="text-xs font-medium text-[#727785] dark:text-slate-400 xl:hidden">
-                          Situação
-                        </p>
-                        <span
-                          className={`inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${getGradeStatusClassName(
-                            record.status,
-                          )}`}
-                        >
-                          {GRADE_STATUS_LABELS[record.status]}
-                        </span>
+                        <div className="shrink-0 text-right">
+                          <p className="text-xs font-medium text-[#727785] dark:text-slate-400">
+                            Situação
+                          </p>
+                          <span
+                            className={`inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-bold ring-1 ${getGradeStatusClassName(
+                              record.status,
+                            )}`}
+                          >
+                            {GRADE_STATUS_LABELS[record.status]}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   ),

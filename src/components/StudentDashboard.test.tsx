@@ -413,7 +413,7 @@ describe('StudentDashboard', () => {
     expect(screen.queryByText('Disciplinas do período atual')).toBeNull();
   });
 
-  it('prioriza turma e atalhos acadêmicos sem destacar RA ou dados pessoais', () => {
+  it('prioriza turma sem repetir atalhos acadêmicos ou destacar RA e dados pessoais', () => {
     render(
       <MemoryRouter initialEntries={['/dashboard']}>
         <StudentDashboard />
@@ -421,11 +421,11 @@ describe('StudentDashboard', () => {
     );
 
     expect(screen.getByRole('heading', { name: '1ª série A' })).toBeTruthy();
-    expect(screen.getByRole('navigation', { name: 'Atalhos acadêmicos' })).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'Grade horária' }).getAttribute('href')).toBe('/dashboard/timetable');
-    expect(screen.getByRole('link', { name: 'Frequência' }).getAttribute('href')).toBe('/student/attendance');
-    expect(screen.getByRole('link', { name: 'Notas' }).getAttribute('href')).toBe('/student/grades');
-    expect(screen.getByRole('link', { name: 'Boletim' }).getAttribute('href')).toBe('/student/report-card');
+    expect(screen.queryByRole('navigation', { name: 'Atalhos acadêmicos' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Grade horária' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Frequência' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Notas' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Boletim' })).toBeNull();
     expect(screen.queryByText('TV-001')).toBeNull();
     expect(screen.queryByText('Nascimento')).toBeNull();
     expect(screen.queryByText('Dados da conta')).toBeNull();
