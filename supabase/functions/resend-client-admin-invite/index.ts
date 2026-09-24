@@ -2,6 +2,7 @@ import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
 import { z } from "zod";
 
+import { accountIdRequestSchema } from "../_shared/postgres-uuid.ts";
 import { buildClientAdminAccessEmail } from "../_shared/client-admin-invite.ts";
 import type { Database } from "../_shared/database.types.ts";
 import { sendResendEmail } from "../_shared/resend.ts";
@@ -18,9 +19,7 @@ class ResendInviteError extends Error {
   }
 }
 
-const requestSchema = z.object({
-  accountId: z.string().uuid("Conta invalida."),
-}).strict();
+const requestSchema = accountIdRequestSchema;
 
 function jsonError(error: ResendInviteError): Response {
   return Response.json(
