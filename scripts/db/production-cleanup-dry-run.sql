@@ -1,7 +1,7 @@
 -- =============================================================================
--- EduManager Pro — DRY RUN: Auditoria SELECT-only da limpeza de PRODUÇÃO
+-- EduManager Pro — arquivo historico: auditoria SELECT-only da antiga producao Cloud
 -- =============================================================================
--- Projeto: jrdmrhsqqclnrouoednn
+-- Supabase Cloud legado; ID redigido. Nao usar como procedimento da VPS.
 -- Versao: 2.0 (inclui rooms, timetable_entries, term_closures,
 --                student_term_results, account_domains)
 -- =============================================================================

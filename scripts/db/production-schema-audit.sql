@@ -1,7 +1,7 @@
 -- =============================================================================
--- EduManager Pro — SCHEMA AUDIT: mapeamento completo do schema remoto
+-- EduManager Pro — arquivo historico: schema audit da antiga producao Cloud
 -- =============================================================================
--- Projeto: jrdmrhsqqclnrouoednn
+-- Supabase Cloud legado; ID redigido. Nao usar como procedimento da VPS.
 -- Instrucao: Executar no SQL Editor do Supabase Dashboard.
 --            Usar o resultado para validar os scripts de limpeza.
 -- =============================================================================
