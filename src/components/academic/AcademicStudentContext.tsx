@@ -15,11 +15,7 @@ export default function AcademicStudentContext({
   academicYearName,
   children,
 }: AcademicStudentContextProps) {
-  const details = [
-    registrationNumber ? `RA ${registrationNumber}` : null,
-    className ?? 'Sem matrícula ativa',
-    academicYearName,
-  ].filter(Boolean);
+  const details = [className ?? 'Sem matrícula ativa', academicYearName].filter(Boolean);
 
   return (
     <section
@@ -39,6 +35,11 @@ export default function AcademicStudentContext({
               </span>
             ))}
           </p>
+          {registrationNumber && (
+            <p className="mt-1 text-xs text-[#98a2b3] dark:text-slate-500">
+              RA {registrationNumber}
+            </p>
+          )}
         </div>
 
         {children && <div className="w-full shrink-0 sm:w-auto sm:min-w-64">{children}</div>}

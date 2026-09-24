@@ -320,8 +320,8 @@ export default function InstitutionGradesPanel({
                   <span>Data</span>
                   <span>Avaliação</span>
                   <span>Professor</span>
-                  <span>Lançadas</span>
-                  <span>Média</span>
+                  <span>Notas lançadas</span>
+                  <span>Média da avaliação</span>
                 </div>
 
                 <div className="divide-y divide-[#eef1f5]">
@@ -362,18 +362,26 @@ export default function InstitutionGradesPanel({
                           }
                         </p>
 
-                        <p className="text-sm text-[#181c20]">
+                        <div>
+                          <p className="text-xs font-medium text-[#727785] lg:hidden">
+                            Notas lançadas
+                          </p>
+                          <p className="text-sm text-[#181c20]">
                           {result.launchedCount}
-                        </p>
+                          </p>
+                        </div>
 
                         <div>
+                          <p className="text-xs font-medium text-[#727785] lg:hidden">
+                            Média da avaliação
+                          </p>
                           <p className="text-sm font-bold text-[#181c20]">
                             {formatPercent(
                               result.averagePercent,
                             )}
                           </p>
                           <p className="mt-1 text-xs text-[#727785]">
-                            {result.missingCount} pendentes
+                            {result.missingCount} notas pendentes
                           </p>
                         </div>
                       </article>

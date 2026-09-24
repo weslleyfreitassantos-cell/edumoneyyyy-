@@ -37,4 +37,41 @@ describe('DashboardAnnouncements', () => {
     expect(dispatchEvent).toHaveBeenCalledWith(expect.any(Event));
     expect(dispatchEvent.mock.calls[0]?.[0].type).toBe('open-self-registration');
   });
+
+  it('mantém avisos em faixa horizontal no celular e não exibe sucesso permanente', () => {
+    render(
+      <DashboardAnnouncements
+        announcements={[
+          { id: 'notice-1', title: 'Reunião', message: 'Reunião na sexta.', starts_at: '2026-09-20T12:00:00Z' },
+          { id: 'notice-2', title: 'Material', message: 'Material disponível.', starts_at: '2026-09-21T12:00:00Z' },
+        ] as never}
+        registration={{ role: 'STUDENT', pendingItems: [] }}
+        role="student"
+      />,
+    );
+
+    const strip = screen.getByRole('region', { name: /Avisos publicados/ });
+    expect(strip.className).toContain('overflow-x-auto');
+    expect(strip.className).toContain('snap-x');
+    expect(strip.getAttribute('tabindex')).toBe('0');
+    expect(screen.getByText('Reunião')).toBeTruthy();
+    expect(screen.getByText('Material')).toBeTruthy();
+    expect(screen.queryByText('Seu cadastro está sem pendências obrigatórias.')).toBeNull();
+  });
+
+  it('oferece recuperação acessível quando os avisos falham', () => {
+    const onRetry = vi.fn();
+    render(
+      <DashboardAnnouncements
+        announcements={[]}
+        isError
+        onRetry={onRetry}
+        role="guardian"
+      />,
+    );
+
+    expect(screen.getByRole('alert').textContent).toContain('temporariamente indisponíveis');
+    fireEvent.click(screen.getByRole('button', { name: 'Tentar novamente' }));
+    expect(onRetry).toHaveBeenCalledOnce();
+  });
 });

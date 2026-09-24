@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useStudentAttendanceSummary } from '../../hooks/useAttendance';
@@ -82,16 +82,23 @@ describe('StudentAttendanceSummaryPanel', () => {
     expect(screen.getByText('Carregando frequência...')).toBeTruthy();
     view.unmount();
 
+    const refetch = vi.fn();
     vi.mocked(useStudentAttendanceSummary).mockReturnValue({
       data: undefined,
       isLoading: false,
       isError: true,
       error: new Error('Falha controlada'),
+      refetch,
     } as never);
     render(
       <StudentAttendanceSummaryPanel institutionId="institution-1" studentId="student-1" />,
     );
-    expect(screen.getByRole('alert').textContent).toContain('Falha controlada');
+    expect(screen.getByRole('alert').textContent).toContain(
+      'Não foi possível carregar a frequência. Tente novamente.',
+    );
+    expect(screen.queryByText('Falha controlada')).toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Tentar novamente' }));
+    expect(refetch).toHaveBeenCalled();
     cleanup();
 
     vi.mocked(useStudentAttendanceSummary).mockReturnValue({
