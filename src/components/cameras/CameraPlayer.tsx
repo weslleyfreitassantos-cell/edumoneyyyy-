@@ -272,7 +272,7 @@ export function CameraPlayer({ camera, streamSession, streamUrl, onClose }: Came
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/70 p-4" role="dialog" aria-modal="true" aria-label={`Camera ${camera.name}`}>
-      <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-slate-700 bg-slate-900 shadow-2xl">
+      <div className="max-h-[calc(100dvh-2rem)] w-full max-w-4xl overflow-y-auto rounded-2xl border border-slate-700 bg-slate-900 shadow-2xl">
         <div className="flex items-center justify-between gap-4 border-b border-slate-700 px-5 py-4">
           <div>
             <h2 className="text-lg font-bold text-white">{camera.name}</h2>
