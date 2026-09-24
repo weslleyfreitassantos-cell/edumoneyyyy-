@@ -11,12 +11,13 @@ derives public URLs from `logo_path` and `favicon_path`; this rollback restores
 the previous URL columns for emergency compatibility.
 
 Replace the storage origin placeholder with the public Storage origin of the
-same Supabase project before running the block.
+same self-hosted Supabase instance before running the block. Do not point this
+rollback at a legacy Supabase Cloud project.
 
 ```sql
 begin;
 
-set local app.rollback_storage_origin = 'https://<project-ref>.supabase.co';
+set local app.rollback_storage_origin = 'https://<self-hosted-supabase-host>';
 
 alter table public.branding_settings
   add column if not exists logo_url text,
@@ -34,7 +35,7 @@ begin
   if storage_origin is null
       or storage_origin !~ '^https://[^/]+$' then
     raise exception
-      'Set app.rollback_storage_origin to the trusted Supabase Storage origin before rolling back migration 005.';
+      'Set app.rollback_storage_origin to the trusted self-hosted Supabase Storage origin before rolling back migration 005.';
   end if;
 
   update public.branding_settings

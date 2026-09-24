@@ -510,9 +510,12 @@ cp .env.example .env
 Preencha:
 
 ```env
-VITE_SUPABASE_URL=https://SEU-PROJETO.supabase.co
+VITE_SUPABASE_URL=https://SEU_BACKEND_SUPABASE
 VITE_SUPABASE_PUBLISHABLE_KEY=SUA_CHAVE_PUBLICAVEL
 ```
+
+Use a origem HTTPS do backend Supabase self-hosted do ambiente. O frontend não
+usa os projetos antigos do Supabase Cloud.
 
 Use apenas a chave publicável no frontend. A `service_role` nunca deve ser
 exposta no navegador.

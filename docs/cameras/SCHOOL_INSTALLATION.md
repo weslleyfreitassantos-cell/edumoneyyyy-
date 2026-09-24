@@ -9,7 +9,7 @@ camera no navegador.
 - Windows com Node.js LTS;
 - `cloudflared` instalado e disponivel no `PATH`;
 - MediaMTX e FFprobe instalados no computador do gateway;
-- acesso de saida HTTPS para Supabase e Cloudflare;
+- acesso de saida HTTPS para o backend Supabase self-hosted e Cloudflare;
 - uma origem HTTPS publicada da aplicacao.
 
 ## Parear
@@ -20,7 +20,7 @@ camera no navegador.
 ```powershell
 npm run camera-gateway -- pair `
   --code CODIGO_DE_PAREAMENTO `
-  --supabase-url https://PROJETO.supabase.co `
+  --supabase-url https://api-edu-vps.grupotec.dev.br `
   --anon-key CHAVE_PUBLICA
 ```
 

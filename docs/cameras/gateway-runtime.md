@@ -7,7 +7,7 @@ O runtime fica separado do React em `camera-gateway/` e representa uma unica ins
 O Diretor gera um codigo de uso unico na tela **Cameras ao vivo**. O operador executa:
 
 ```powershell
-npm run camera-gateway -- pair --code CODIGO --supabase-url https://PROJETO.supabase.co --anon-key CHAVE_PUBLICA
+npm run camera-gateway -- pair --code CODIGO --supabase-url https://api-edu-vps.grupotec.dev.br --anon-key CHAVE_PUBLICA
 ```
 
 O gateway chama a Edge Function `camera-gateway` com a acao `pair`. A funcao usa o service role somente no ambiente de backend para consumir a RPC de pareamento; o processo local recebe apenas um token opaco revogavel. O token fica em `%APPDATA%\EduManager\camera-gateway\config.json`.

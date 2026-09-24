@@ -1,4 +1,10 @@
-# Runbook de produção
+# Runbook histórico de produção — Supabase Cloud
+
+> **Documento legado (28 jul 2026).** Este runbook descreve a antiga operação
+> no Supabase Cloud e não define a produção atual. A fonte de verdade atual é o
+> Supabase self-hosted na VPS. Não execute os comandos de Cloud, `--linked`,
+> deploy de funções ou alteração de banco deste documento contra a VPS. IDs de
+> projetos Cloud foram removidos deliberadamente.
 
 ## Estado inicial (28 jul 2026)
 
@@ -139,7 +145,7 @@ O deployment atual é exibido em:
 ### Listar funções implantadas
 
 ```bash
-npx supabase functions list --project-ref jrdmrhsqqclnrouoednn
+npx supabase functions list --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 ```
 
 ### Redeploy de versão anterior
@@ -150,7 +156,7 @@ npx supabase functions list --project-ref jrdmrhsqqclnrouoednn
 git checkout <commit-hash> -- supabase/functions/<function-name>/
 
 # 3. Deploy da função específica
-npx supabase functions deploy <function-name> --project-ref jrdmrhsqqclnrouoednn
+npx supabase functions deploy <function-name> --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 
 # 4. Voltar ao branch original
 git switch main
@@ -160,17 +166,17 @@ git switch main
 
 ```bash
 # Listar secrets
-npx supabase secrets list --project-ref jrdmrhsqqclnrouoednn
+npx supabase secrets list --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 
 # Atualizar secret
-npx supabase secrets set --env SECRET_NAME=value --project-ref jrdmrhsqqclnrouoednn
+npx supabase secrets set --env SECRET_NAME=value --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 ```
 
 ### Logs
 
 ```bash
 # Logs da função (últimas 50 linhas)
-npx supabase functions logs <function-name> --project-ref jrdmrhsqqclnrouoednn
+npx supabase functions logs <function-name> --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 ```
 
 ---
@@ -204,10 +210,10 @@ npx supabase db push --linked
 
 ```bash
 # 1. Ver logs
-npx supabase functions logs <function-name> --project-ref jrdmrhsqqclnrouoednn
+npx supabase functions logs <function-name> --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 
 # 2. Redeploy de versão estável anterior
-npx supabase functions deploy <function-name> --project-ref jrdmrhsqqclnrouoednn
+npx supabase functions deploy <function-name> --project-ref LEGACY_CLOUD_PROJECT_REF_REDACTED
 ```
 
 ### Rollback completo
@@ -231,7 +237,7 @@ npx supabase functions deploy <function-name> --project-ref jrdmrhsqqclnrouoednn
 
 ### Processo obrigatório para mudanças de Auth
 
-1. **Fazer manualmente no Dashboard** — https://supabase.com/dashboard/project/jrdmrhsqqclnrouoednn/auth/settings
+1. **Histórico:** abrir a configuração de Auth do projeto Cloud legado (ID e link removidos; não usar na VPS).
 2. **Capturar o valor anterior** antes de alterar
 3. **Alterar apenas o campo necessário** — não modificar outros campos
 4. **Validar imediatamente** após salvar (via API pública `auth/v1/settings` ou teste funcional)
@@ -249,7 +255,7 @@ npx supabase functions deploy <function-name> --project-ref jrdmrhsqqclnrouoednn
 
 **Comando executado:**
 ```bash
-npx supabase config push jrdmrhsqqclnrouoednn
+npx supabase config push LEGACY_CLOUD_PROJECT_REF_REDACTED
 ```
 
 **Objetivo:** diagnóstico (sem intenção de alterar).
