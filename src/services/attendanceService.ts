@@ -5,6 +5,10 @@ import {
   type AcademicDateStatus,
 } from './academicCalendarService';
 import { resolveAcademicDateStatus } from '../lib/academicCalendarStatus';
+import {
+  isAbortError,
+  withAcademicReadTimeout,
+} from '../lib/academicReadTimeout';
 
 export const ATTENDANCE_RECORD_STATUSES = [
   'PRESENT',
@@ -35,7 +39,9 @@ export type AttendanceServiceErrorCode =
   | 'ATTENDANCE_SESSION_CONFLICT'
   | 'ATTENDANCE_SESSION_CLOSED'
   | 'ATTENDANCE_STUDENT_NOT_ENROLLED'
-  | 'ATTENDANCE_SAVE_FAILED';
+  | 'ATTENDANCE_SAVE_FAILED'
+  | 'ATTENDANCE_TIMEOUT'
+  | 'ATTENDANCE_LOAD_FAILED';
 
 export class AttendanceServiceError extends Error {
   readonly code: AttendanceServiceErrorCode;
@@ -515,6 +521,14 @@ function createAttendanceError(
 ): AttendanceServiceError {
   if (error instanceof AttendanceServiceError) {
     return error;
+  }
+
+  if (isAbortError(error)) {
+    return new AttendanceServiceError(
+      'ATTENDANCE_TIMEOUT',
+      'A leitura da frequência demorou mais que o esperado. Tente novamente.',
+      error,
+    );
   }
 
   if (isSupabaseErrorLike(error)) {
@@ -2336,37 +2350,123 @@ export const attendanceService = {
     institutionId: string,
     studentId: string,
   ): Promise<StudentAttendanceSummary> {
-    const { data, error } = await supabase
-      .from('attendance_records')
-      .select(
-        `
-        id,
-        institution_id,
-        attendance_session_id,
-        student_id,
-        status,
-        notes,
-        recorded_by,
-        recorded_at,
-        created_at,
-        updated_at,
-        attendance_sessions:attendance_session_id (
-          id,
-          institution_id,
-          subject_offering_id,
-          session_date,
-          starts_at,
-          ends_at,
-          topic,
-          class_activity,
-          homework,
-          notes,
-          status,
-          created_by,
-          closed_at,
-          created_at,
-          updated_at,
-          subject_offerings:subject_offering_id (
+    try {
+      return await withAcademicReadTimeout(async (signal) => {
+        let recordsQuery = supabase
+          .from('attendance_records')
+          .select(
+            `
+            id,
+            institution_id,
+            attendance_session_id,
+            student_id,
+            status,
+            notes,
+            recorded_by,
+            recorded_at,
+            created_at,
+            updated_at
+          `,
+          )
+          .eq('institution_id', institutionId)
+          .eq('student_id', studentId)
+          .order('recorded_at', { ascending: false })
+          .limit(500);
+
+        recordsQuery = recordsQuery.abortSignal(signal);
+
+        const { data: recordData, error: recordError } =
+          await recordsQuery;
+
+        if (recordError) {
+          throw createAttendanceError(
+            recordError,
+            'ATTENDANCE_FORBIDDEN',
+          );
+        }
+
+        const recordRows = (recordData ?? []) as unknown as AttendanceRecordQueryRow[];
+
+        if (recordRows.length === 0) {
+          return {
+            summary: calculateAttendanceSummary([]),
+            records: [],
+            recentRecords: [],
+          };
+        }
+
+        const sessionIds = [
+          ...new Set(
+            recordRows.map((record) => record.attendance_session_id),
+          ),
+        ];
+        let sessionsQuery = supabase
+          .from('attendance_sessions')
+          .select(
+            `
+            id,
+            institution_id,
+            subject_offering_id,
+            session_date,
+            starts_at,
+            ends_at,
+            topic,
+            class_activity,
+            homework,
+            notes,
+            status,
+            created_by,
+            closed_at,
+            created_at,
+            updated_at
+          `,
+          )
+          .eq('institution_id', institutionId)
+          .eq('status', 'CLOSED')
+          .in('id', sessionIds);
+
+        sessionsQuery = sessionsQuery.abortSignal(signal);
+
+        const { data: sessionData, error: sessionError } =
+          await sessionsQuery;
+
+        if (sessionError) {
+          throw createAttendanceError(
+            sessionError,
+            'ATTENDANCE_FORBIDDEN',
+          );
+        }
+
+        const sessionRows = (sessionData ?? []) as unknown as AttendanceSessionQueryRow[];
+        const sessionsById = new Map(
+          sessionRows.map((session) => [session.id, session]),
+        );
+        const closedRecordRows = recordRows.filter((record) =>
+          sessionsById.has(record.attendance_session_id),
+        );
+
+        if (closedRecordRows.length === 0) {
+          return {
+            summary: calculateAttendanceSummary([]),
+            records: [],
+            recentRecords: [],
+          };
+        }
+
+        const offeringIds = [
+          ...new Set(
+            closedRecordRows
+              .map((record) =>
+                sessionsById.get(record.attendance_session_id)
+                  ?.subject_offering_id,
+              )
+              .filter((id): id is string => Boolean(id)),
+          ),
+        ];
+        let offeringsQuery = supabase
+          .from('subject_offerings')
+          .select(
+            `
             id,
             class_id,
             subject_id,
@@ -2403,90 +2503,74 @@ export const attendanceService = {
               active,
               academic_years:academic_year_id (id, name)
             )
+          `,
           )
-        )
-      `,
-      )
-      .eq('institution_id', institutionId)
-      .eq('student_id', studentId)
-      .order('recorded_at', {
-        ascending: false,
-      })
-      .limit(500);
+          .eq('active', true)
+          .in('id', offeringIds);
 
-    if (error) {
+        offeringsQuery = offeringsQuery.abortSignal(signal);
+
+        const { data: offeringData, error: offeringError } =
+          await offeringsQuery;
+
+        if (offeringError) {
+          throw createAttendanceError(
+            offeringError,
+            'ATTENDANCE_FORBIDDEN',
+          );
+        }
+
+        const offeringsById = new Map(
+          ((offeringData ?? []) as unknown as OfferingQueryRow[]).map(
+            (offering) => [offering.id, offering],
+          ),
+        );
+        const records = closedRecordRows
+          .map((row) => {
+            const sessionRow = sessionsById.get(
+              row.attendance_session_id,
+            );
+            const offeringRow = sessionRow
+              ? offeringsById.get(sessionRow.subject_offering_id)
+              : undefined;
+
+            if (!sessionRow || !offeringRow) {
+              return null;
+            }
+
+            const offering = normalizeOffering(
+              offeringRow,
+              institutionId,
+            );
+
+            return offering
+              ? normalizeStudentAttendanceRecord(
+                  row,
+                  normalizeSession(sessionRow),
+                  offering,
+                )
+              : null;
+          })
+          .filter(
+            (
+              record,
+            ): record is StudentAttendanceRecord =>
+              record !== null,
+          )
+          .sort(compareRecentRecords);
+
+        return {
+          summary: calculateAttendanceSummary(records),
+          records,
+          recentRecords: records.slice(0, 6),
+        };
+      });
+    } catch (error) {
       throw createAttendanceError(
         error,
-        'ATTENDANCE_FORBIDDEN',
+        'ATTENDANCE_LOAD_FAILED',
       );
     }
-
-    const records = (
-      (data ?? []) as unknown as Array<
-        AttendanceRecordQueryRow & {
-          attendance_sessions:
-            | (AttendanceSessionQueryRow & {
-                subject_offerings:
-                  | OfferingQueryRow
-                  | OfferingQueryRow[]
-                  | null;
-              })
-            | Array<
-                AttendanceSessionQueryRow & {
-                  subject_offerings:
-                    | OfferingQueryRow
-                    | OfferingQueryRow[]
-                    | null;
-                }
-              >
-            | null;
-        }
-      >
-    )
-      .map((row) => {
-        const session = normalizeRelation(
-          row.attendance_sessions,
-        );
-        const offeringRow = normalizeRelation(
-          session?.subject_offerings,
-        );
-
-        if (
-          !session ||
-          !offeringRow ||
-          normalizeSessionStatus(session.status) !== 'CLOSED'
-        ) {
-          return null;
-        }
-
-        const offering = normalizeOffering(
-          offeringRow,
-          institutionId,
-        );
-
-        if (!offering) {
-          return null;
-        }
-
-        return normalizeStudentAttendanceRecord(
-          row,
-          normalizeSession(session),
-          offering,
-        );
-      })
-      .filter(
-        (
-          record,
-        ): record is StudentAttendanceRecord =>
-          record !== null,
-      )
-      .sort(compareRecentRecords);
-
-    return {
-      summary: calculateAttendanceSummary(records),
-      records,
-      recentRecords: records.slice(0, 6),
-    };
   },
 
   async getInstitutionAttendanceSummary(

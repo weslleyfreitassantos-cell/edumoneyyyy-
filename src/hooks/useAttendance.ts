@@ -202,6 +202,7 @@ export function useStudentAttendanceSummary(
     },
     enabled: Boolean(institutionId && studentId),
     staleTime: 1000 * 60,
+    retry: false,
   });
 }
 
