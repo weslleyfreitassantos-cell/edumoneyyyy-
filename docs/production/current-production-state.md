@@ -66,3 +66,31 @@ O operador da VPS deve fornecer/confirmar por canal seguro:
 Nenhuma tentativa de login foi feita com contas de escolas/clientes. Login
 atualiza estado de Auth e nao foi autorizado como teste sem tenant/usuarios de
 piloto identificados.
+
+## Revalidacao externa em 2026-09-25
+
+Em `2026-09-25T20:49:05.778Z`, o health script executou GETs com a chave
+publishable obtida somente em memoria do bundle publico do frontend. A chave
+nao foi impressa nem persistida. Frontend, Auth, REST e Storage responderam
+200; Realtime respondeu 503 em 120 ms. O ping sem chave respondeu 401, portanto
+nao foi usado como evidencia de health. Uma leitura adicional do ping com a
+chave em `20:48:25Z` recebeu 503 em 197 ms e os headers permitidos mostraram
+`via: 1.1 Caddy`; nao foi possivel determinar se Caddy ou o upstream originou
+o 503 sem inspecao autorizada da VPS.
+
+Busca estatica por `supabase.channel`, `postgres_changes`, presence e broadcast
+nao encontrou uso direto de subscriptions na fonte da aplicacao; referencias
+restantes eram dependencias em lockfiles. Isso nao remove o requisito de
+corrigir ou formalmente desativar o componente Realtime da infraestrutura.
+
+O inventario Docker local, feito apenas em leitura, mostrou um container
+protegido da campanha paralela OmniHub ativo (aprox. 36 MiB/1 GiB). Nenhum
+container foi criado, parado, reiniciado ou removido; networks e volumes
+existentes ficaram intactos. O snapshot sanitizado fica somente no arquivo
+local nao versionado `artifacts/production-closure/docker-before.json`.
+
+Nao ha `~/.ssh/config` nem variaveis de processo configuradas para conexao SQL,
+backup criptografado, SMTP ou identidades de piloto. Nenhuma conexao SSH foi
+tentada. A contagem local e 121 migrations SQL; a contagem remota continua
+desconhecida. Os blockers de auditoria privilegiada, backup/restore, SMTP,
+piloto e causa-raiz do Realtime permanecem abertos; nao ocorreu mutacao remota.

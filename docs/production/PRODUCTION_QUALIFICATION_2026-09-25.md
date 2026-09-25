@@ -123,6 +123,81 @@ The public Realtime 503 is a confirmed service issue, not an inference. It
 requires inspection of the VPS Realtime container and reverse-proxy logs by an
 authorized operator. No container name or Compose topology was guessed.
 
+## External Blocker Closure Checkpoint
+
+```text
+START_BRANCH=release/tecescola-production-qualification
+START_HEAD=788bb7b1e3982c62b5014110d58efe3bbc936f11
+MAIN_HEAD=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
+PR=224
+PR_STATE=OPEN
+PR_MERGEABLE=YES
+MERGED=NO
+LOCAL_MIGRATION_COUNT=121
+REMOTE_MIGRATION_COUNT=UNKNOWN
+```
+
+At `2026-09-25T20:49:05.778Z`, the production health script was rerun with the
+publishable client key obtained transiently from the public frontend bundle;
+the key was neither printed nor stored. Frontend/Auth/REST/Storage returned
+200 (72/126/133/127 ms); Realtime returned 503 (120 ms). A second GET at
+`2026-09-25T20:48:25.620Z` returned 503 in 197 ms and exposed only
+`via: 1.1 Caddy` and `content-type: text/plain` among the allowlisted headers.
+This confirms that Caddy is in the observed request path but does not prove
+whether Caddy or its upstream generated the response. An unauthenticated ping
+returned 401 and is not counted as a health result. No response body was
+recorded.
+
+No direct application subscription usage (`supabase.channel`, `postgres_changes`,
+presence, or broadcast) was found in application source; Realtime client
+references were limited to dependency lockfiles. The 503 remains an
+infrastructure health failure and is not waived by this source search.
+
+The required Docker inventory was read-only. Docker 29.7.2 / Compose 5.4.0
+showed one running, protected container from the parallel OmniHub campaign
+(about 36 MiB of 1 GiB at the snapshot); no TecEscola/Supabase container was
+running. Existing containers, networks, and volumes were not stopped, removed,
+or modified; this campaign created no Docker resources. The sanitized snapshot
+is retained locally at `artifacts/production-closure/docker-before.json` and
+is intentionally untracked because it includes an unrelated protected
+container identity.
+
+No authorized VPS SSH configuration was present (`~/.ssh/config` absent), so
+no connection was attempted. Production DB, backup/restore, SMTP, and pilot
+prerequisite environment variables were unset. Therefore no privileged DB
+inventory, production backup, restore, SMTP delivery, or production Playwright
+was attempted. The remote migration count and schema parity remain unknown.
+
+```text
+READ_ONLY_PHASE_COMPLETE=YES (available public/local checks only)
+VPS_ACCESS=BLOCKED_NO_AUTHORIZED_VPS_ACCESS
+VPS_TOPOLOGY_CONFIRMED=NO
+REALTIME_ROOT_CAUSE=UNKNOWN (public request traverses Caddy; upstream unverified)
+REALTIME_FIX_REQUIRED=YES
+REALTIME_FIX_APPLIED=NO
+REALTIME_AFTER=HTTP 503
+PRODUCTION_DB_AUDIT=BLOCKED_NO_AUTHORIZED_READ_ONLY_CONNECTION
+BACKUP=BLOCKED_NO_ENCRYPTED_DESTINATION_OR_AUTHORIZED_SOURCE
+RESTORE_TEST=BLOCKED_NO_PRODUCTION_BACKUP
+SMTP=BLOCKED_NO_PROVIDER_CREDENTIALS_AND_TEST_MAILBOX
+PILOT_TENANT=BLOCKED_NOT_CONFIRMED
+PLAYWRIGHT_PRODUCTION_SMOKE=BLOCKED_NO_PILOT_IDENTITIES
+PRODUCTION_MUTATIONS_PERFORMED=NONE
+MUTATIONS_APPROVED_BY_HUMAN=NONE
+PARALLEL_OMNIHUB_CAMPAIGN_DETECTED=YES
+PARALLEL_OMNIHUB_CONTAINERS_TOUCHED=NO
+DOCKER_EXISTING_CONTAINERS_PROTECTED=YES
+TECESCOLA_LOCAL_DOCKER_INTERRUPTED=NO
+FOREIGN_CONTAINERS_INTERRUPTED=NO
+```
+
+The next production step requires an authorized VPS operator to provide the
+confirmed SSH identity/topology and perform a bounded, redacted read-only
+inspection of the Caddy route and Realtime service logs. Any proposed restart,
+proxy/Compose edit, secret change, database write, invite, or deployment must
+first pass the campaign's human mutation gate. No specific production mutation
+is proposed while the root cause is unknown.
+
 ## Operational Follow-up
 
 After receiving an authorized read-only database connection, capture inventory
