@@ -6,7 +6,7 @@ REPOSITORY=weslleyfreitassantos-cell/edumoneyyyy-
 EXPECTED_BASE=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
 ACTUAL_BASE=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
 BRANCH=release/tecescola-production-qualification
-FINAL_HEAD=see final qualification PR head
+FINAL_HEAD=recorded by the PR #224 head ref
 ```
 
 This report separates reproducible local evidence from production facts that
@@ -191,7 +191,7 @@ remains blocked by the concrete external items above; no remote state was
 changed to make the report appear green.
 
 ```text
-PR=pending final push
-PR_STATE=not opened yet
+PR=https://github.com/weslleyfreitassantos-cell/edumoneyyyy-/pull/224
+PR_STATE=OPEN
 MERGED=NO
 ```
