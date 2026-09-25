@@ -454,17 +454,10 @@ export default function LibraryPage() {
 
   return (
     <div className="space-y-6">
-      <header className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
-        <div>
-          <div className="flex items-center gap-3">
-            <BookOpen className="h-7 w-7 text-[#005bbf]" aria-hidden="true" />
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">Acadêmico</p>
-              <h1 className="text-2xl font-bold text-[#181c20] dark:text-white">Indicações de livros</h1>
-            </div>
-          </div>
-          <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">{isTeacher ? 'Compartilhe leituras com suas turmas e disciplinas.' : 'Veja as leituras indicadas pelos professores das suas turmas.'}</p>
-        </div>
+      <header className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+        <p className="max-w-2xl text-sm text-[#727785] dark:text-slate-400">
+          {isTeacher ? 'Compartilhe leituras com suas turmas e disciplinas.' : 'Veja as leituras indicadas pelos professores das suas turmas.'}
+        </p>
         {isTeacher ? <button type="button" onClick={openCreate} className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl bg-[#005bbf] px-4 text-sm font-bold text-white hover:bg-[#004a9c]"><Plus className="h-4 w-4" aria-hidden="true" /> Indicar livro</button> : null}
       </header>
 

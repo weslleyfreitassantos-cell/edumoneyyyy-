@@ -107,6 +107,14 @@ function renderPage() {
 }
 
 describe('StudyCenterPage', () => {
+  it('starts with the student greeting instead of repeating the page header', () => {
+    renderPage();
+
+    expect(screen.getByText('Olá, Ana. O que vamos estudar hoje?')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Central de Estudos' })).toBeNull();
+    expect(screen.queryByText('Aluno')).toBeNull();
+  });
+
   it('organizes the mobile journey with section shortcuts and compact progress', () => {
     renderPage();
 

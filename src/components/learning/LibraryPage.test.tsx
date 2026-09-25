@@ -121,6 +121,15 @@ beforeEach(() => {
 });
 
 describe('LibraryPage', () => {
+  it('preserves the student description without repeating the global page heading', () => {
+    state.role = 'STUDENT';
+    renderLibrary();
+
+    expect(screen.getByText('Veja as leituras indicadas pelos professores das suas turmas.')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Indicações de livros' })).toBeNull();
+    expect(screen.queryByText('Acadêmico')).toBeNull();
+  });
+
   it('carrega indicações persistidas e usa sempre o placeholder local sem fetch externo', () => {
     const fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
