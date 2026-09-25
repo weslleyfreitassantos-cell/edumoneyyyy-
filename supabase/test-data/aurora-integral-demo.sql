@@ -1,6 +1,7 @@
 -- Aurora Integral synthetic full-time high-school demo fixture.
 -- Target: self-hosted EduManager VPS only.
--- Idempotency key: deterministic IDs derived from AURORA_INTEGRAL_2026_V1.
+-- Idempotency key: stable IDs derived from AURORA_INTEGRAL_2026_V1; retain
+-- the pre-existing profile IDs for the two secretary accounts.
 -- This fixture deliberately avoids migrations, external email/SMS/payment calls,
 -- and all Supabase Cloud endpoints.
 
@@ -13,7 +14,7 @@ create temp table aurora_seed_users (
   user_key text primary key,
   profile_id uuid not null,
   full_name text not null,
-  email text not null unique,
+  email text,
   role public.user_role not null,
   active_login boolean not null default false
 ) on commit drop;
@@ -73,43 +74,43 @@ create temp table aurora_schedule_plan (
 ) on commit drop;
 
 insert into aurora_seed_users (user_key, profile_id, full_name, email, role, active_login) values
-  ('admin', md5('AURORA_INTEGRAL_2026_V1:profile:admin')::uuid, 'Marcos Vinícius Almeida', 'marcos.almeida@auroraintegral.example.invalid', 'ADMIN', true),
-  ('director', md5('AURORA_INTEGRAL_2026_V1:profile:director')::uuid, 'Helena Martins de Souza', 'helena.martins.souza@auroraintegral.example.invalid', 'DIRECTOR', true),
-  ('secretary-1', md5('AURORA_INTEGRAL_2026_V1:profile:secretary-1')::uuid, 'Carolina Almeida Rocha', 'carolina.almeida.rocha@auroraintegral.example.invalid', 'SECRETARY', true),
-  ('secretary-2', md5('AURORA_INTEGRAL_2026_V1:profile:secretary-2')::uuid, 'Diego Santana Reis', 'diego.santana.reis@auroraintegral.example.invalid', 'SECRETARY', true);
+  ('admin', md5('AURORA_INTEGRAL_2026_V1:profile:admin')::uuid, 'Marcos Vinícius Almeida', null, 'ADMIN', true),
+  ('director', md5('AURORA_INTEGRAL_2026_V1:profile:director')::uuid, 'Helena Martins de Souza', null, 'DIRECTOR', true),
+  ('secretary-1', '5f0071fa-6cb7-387b-af9a-778f6c45dab0'::uuid, 'Carolina Almeida Rocha', null, 'SECRETARY', true),
+  ('secretary-2', '059131f7-51bf-f7ff-66af-e37b0931e57e'::uuid, 'Diego Santana Reis', null, 'SECRETARY', true);
 
 insert into aurora_seed_users (user_key, profile_id, full_name, email, role, active_login)
 select
   'teacher-' || teacher_number,
   md5('AURORA_INTEGRAL_2026_V1:profile:teacher:' || teacher_number)::uuid,
   teacher_name,
-  teacher_slug || '@auroraintegral.example.invalid',
+  null,
   'TEACHER',
   teacher_number = 1
 from (values
-  (1, 'Mariana Lopes Ferreira', 'mariana-lopes-ferreira'),
-  (2, 'Felipe Andrade Costa', 'felipe-andrade-costa'),
-  (3, 'Camila Nunes Barbosa', 'camila-nunes-barbosa'),
-  (4, 'Rafael Barros Menezes', 'rafael-barros-menezes'),
-  (5, 'Lucas Menezes Carvalho', 'lucas-menezes-carvalho'),
-  (6, 'Aline Carvalho Ribeiro', 'aline-carvalho-ribeiro'),
-  (7, 'Beatriz Moreira Santos', 'beatriz-moreira-santos'),
-  (8, 'Tiago Almeida Rocha', 'tiago-almeida-rocha'),
-  (9, 'Renata Souza Martins', 'renata-souza-martins'),
-  (10, 'Marcelo Ribeiro Lima', 'marcelo-ribeiro-lima'),
-  (11, 'Paula Freitas Nogueira', 'paula-freitas-nogueira'),
-  (12, 'Juliana Rocha Almeida', 'juliana-rocha-almeida'),
-  (13, 'Daniel Costa Menezes', 'daniel-costa-menezes'),
-  (14, 'Sofia Martins Carvalho', 'sofia-martins-carvalho'),
-  (15, 'André Lima Barreto', 'andre-lima-barreto')
-) as teacher_data(teacher_number, teacher_name, teacher_slug);
+  (1, 'Mariana Lopes Ferreira'),
+  (2, 'Felipe Andrade Costa'),
+  (3, 'Camila Nunes Barbosa'),
+  (4, 'Rafael Barros Menezes'),
+  (5, 'Lucas Menezes Carvalho'),
+  (6, 'Aline Carvalho Ribeiro'),
+  (7, 'Beatriz Moreira Santos'),
+  (8, 'Tiago Almeida Rocha'),
+  (9, 'Renata Souza Martins'),
+  (10, 'Marcelo Ribeiro Lima'),
+  (11, 'Paula Freitas Nogueira'),
+  (12, 'Juliana Rocha Almeida'),
+  (13, 'Daniel Costa Menezes'),
+  (14, 'Sofia Martins Carvalho'),
+  (15, 'André Lima Barreto')
+) as teacher_data(teacher_number, teacher_name);
 
 insert into aurora_seed_users (user_key, profile_id, full_name, email, role, active_login)
 select
   'student-' || student_number,
   md5('AURORA_INTEGRAL_2026_V1:profile:student:' || student_number)::uuid,
   first_name || ' ' || middle_name || ' ' || surname,
-  'aluno.' || lpad(student_number::text, 3, '0') || '@auroraintegral.example.invalid',
+  null,
   'STUDENT',
   (student_number in (1, 10, 20, 31, 40, 50, 61, 70, 80))
 from (
@@ -126,7 +127,7 @@ select
   'guardian-' || guardian_number,
   md5('AURORA_INTEGRAL_2026_V1:profile:guardian:' || guardian_number)::uuid,
   first_name || ' ' || surname,
-  'responsavel.' || lpad(guardian_number::text, 3, '0') || '@auroraintegral.example.invalid',
+  null,
   'GUARDIAN',
   guardian_number in (1, 8, 10, 20, 31, 40, 50, 61, 70)
 from (
@@ -136,6 +137,77 @@ from (
     (array['Oliveira','Santos','Almeida','Costa','Ribeiro','Rocha','Carvalho','Ferreira','Barbosa','Mendes','Gomes','Martins','Teixeira','Nogueira','Melo','Freitas','Moreira','Cardoso','Azevedo','Pires','Monteiro','Borges','Correia','Batista','Farias','Moraes','Cavalcanti','Siqueira','Tavares','Dantas'])[((gs * 13 - 1) % 30) + 1] as surname
   from generate_series(1, 72) as g(gs)
 ) as generated_guardians;
+
+with name_parts as (
+  select
+    user_key,
+    profile_id,
+    parts[1] as first_name,
+    parts[array_length(parts, 1)] as last_name
+  from (
+    select
+      u.user_key,
+      u.profile_id,
+      array_agg(part order by ordinal) as parts
+    from aurora_seed_users u
+    cross join lateral regexp_split_to_table(
+      translate(
+        lower(u.full_name),
+        'áàâãäåéèêëíìîïóòôõöúùûüýÿçñ',
+        'aaaaaaeeeeiiiiooooouuuuyycn'
+      ),
+      '[^a-z0-9]+'
+    ) with ordinality as parts(part, ordinal)
+    where part <> ''
+      and part not in ('da', 'das', 'de', 'do', 'dos', 'e')
+    group by u.user_key, u.profile_id
+  ) tokens
+), base_addresses as (
+  select
+    user_key,
+    case
+      when first_name = last_name then first_name
+      else first_name || '.' || last_name
+    end as local_part
+  from name_parts
+), ranked_addresses as (
+  select
+    user_key,
+    profile_id,
+    local_part,
+    row_number() over (partition by local_part order by profile_id) as duplicate_number
+  from base_addresses
+), unique_addresses as (
+  select
+    user_key,
+    local_part || case when duplicate_number = 1 then '' else duplicate_number::text end
+      || '@aurora.grupotec.dev.br' as email
+  from ranked_addresses
+)
+update aurora_seed_users users
+set email = addresses.email
+from unique_addresses addresses
+where addresses.user_key = users.user_key;
+
+alter table aurora_seed_users alter column email set not null;
+create unique index aurora_seed_users_email_unique on aurora_seed_users (email);
+
+do $$
+begin
+  if (select count(*) from aurora_seed_users) <> 181 then
+    raise exception 'AURORA_FIXTURE_USER_COUNT_MISMATCH';
+  end if;
+  if exists (
+    select 1 from aurora_seed_users
+    where email !~ '^[a-z0-9]+([.][a-z0-9]+[0-9]*)?@aurora[.]grupotec[.]dev[.]br$'
+  ) then
+    raise exception 'AURORA_FIXTURE_EMAIL_FORMAT_INVALID';
+  end if;
+  if exists (select 1 from aurora_seed_users where email like '%example.invalid%') then
+    raise exception 'AURORA_FIXTURE_LEGACY_EMAIL_REMAINS';
+  end if;
+end;
+$$;
 
 insert into aurora_subject_seed (code, name, weekly_lessons, teacher_number, sort_order) values
   ('PORT', 'Língua Portuguesa', 5, 1, 1),
@@ -198,6 +270,14 @@ begin
   if exists (select 1 from auth.users u join aurora_seed_users s on s.email = u.email where u.id <> s.profile_id) then
     raise exception 'AURORA_EMAIL_ID_CONFLICT';
   end if;
+  if exists (
+    select 1
+    from public.profiles p
+    join aurora_seed_users s on lower(s.email) = lower(p.email)
+    where p.id <> s.profile_id
+  ) then
+    raise exception 'AURORA_PROFILE_EMAIL_ID_CONFLICT';
+  end if;
 end;
 $$;
 
@@ -224,7 +304,17 @@ on conflict (id) do update set
 
 insert into auth.identities (id, provider_id, user_id, identity_data, provider, created_at, updated_at)
 select
-  md5('AURORA_INTEGRAL_2026_V1:identity:' || u.email)::uuid,
+  coalesce(
+    (
+      select existing.id
+      from auth.identities existing
+      where existing.provider = 'email'
+        and existing.user_id = u.profile_id
+      order by existing.created_at, existing.id
+      limit 1
+    ),
+    md5('AURORA_INTEGRAL_2026_V1:identity:' || u.email)::uuid
+  ),
   u.profile_id::text,
   u.profile_id,
   jsonb_build_object('sub', u.profile_id::text, 'email', u.email, 'email_verified', true),
@@ -262,7 +352,7 @@ values (
   '00.000.000/0000-00',
   'Avenida das Palmeiras, 1450 - Caminho das Árvores - Salvador - BA - CEP 41820-000',
   '(71) 4000-2026',
-  'contato@auroraintegral.example.invalid',
+  'contato@aurora.grupotec.dev.br',
   '/media/aurora-integral-logo.svg',
   '/media/aurora-integral-favicon.svg',
   'aurora-integral',
