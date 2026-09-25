@@ -1,5 +1,8 @@
 # Matriz de reconciliacao do schema
 
+> **Status:** `HISTORICAL / PARTIALLY VALID`. Os fatos remotos abaixo pertencem
+> a uma auditoria anterior e precisam ser reobtidos por inventario read-only.
+
 Esta matriz cruza objetos das migrations locais com fatos confirmados da
 auditoria remota. Ela nao executa SQL e nao altera migrations.
 

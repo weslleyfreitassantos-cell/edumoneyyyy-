@@ -1,5 +1,9 @@
 # Modelo de roles e permissoes
 
+> **Status:** `PARTIALLY VALID / HISTORICAL`. Material conceitual antigo; para
+> papeis atuais, use `docs/CURRENT_STATE.md` e valide autorizacao nas policies
+> e testes executaveis.
+
 Esta entrega prepara o EduManager Pro para uma plataforma escolar multi-instituicao sem alterar o banco, migrations ou Edge Functions.
 
 ## Usuarios globais e usuarios da escola

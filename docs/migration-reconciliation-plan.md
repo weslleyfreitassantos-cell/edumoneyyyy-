@@ -1,5 +1,9 @@
 # Plano de reconciliacao das migrations
 
+> **Status:** `HISTORICAL / SUPERSEDED`. Evidencia e plano referem-se a uma
+> auditoria remota anterior. Nao execute comandos deste plano na VPS sem nova
+> captura read-only e aprovacao dos gates de backup/restore.
+
 ## Estado remoto confirmado
 
 A auditoria manual read-only confirmou que

@@ -82,6 +82,8 @@ export async function readSpreadsheetFile(file: File): Promise<ParsedSpreadsheet
   const workbook = XLSX.read(await file.arrayBuffer(), {
     type: 'array',
     cellDates: true,
+    cellFormula: false,
+    cellHTML: false,
   });
   const { name: sheetName, rows } = firstDataSheet(workbook, XLSX.utils);
   const headerIndex = rows.findIndex((row) => row.some((cell) => spreadsheetCellToString(cell)));

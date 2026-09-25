@@ -77,6 +77,29 @@ function capture(label, command, args) {
   return result;
 }
 
+function runReadOnlyInventory() {
+  const containerResult = capture('Locate isolated Supabase database container', 'docker', [
+    'ps', '--filter', 'name=supabase_db_edumoneyyyy-full-local-run', '--format', '{{.Names}}',
+  ]);
+  if (containerResult.status !== 0) throw new Error('Could not locate the isolated Supabase database container');
+  const containers = containerResult.stdout.trim().split(/\r?\n/).filter(Boolean);
+  if (containers.length !== 1) throw new Error('Expected exactly one isolated Supabase database container');
+
+  const result = spawnSync('docker', [
+    'exec', '-i', containers[0], 'psql', '-X', '-v', 'ON_ERROR_STOP=1', '-P', 'pager=off',
+    '-U', 'postgres', '-d', 'postgres',
+  ], {
+    input: readFileSync(resolve('scripts/db/self-hosted-production-inventory.sql'), 'utf8'),
+    encoding: 'utf8',
+    env: process.env,
+    windowsHide: true,
+    shell: process.platform === 'win32',
+    maxBuffer: 24 * 1024 * 1024,
+  });
+  if (result.error) throw result.error;
+  return result;
+}
+
 function localSupabaseEnvironment(output) {
   const values = {};
   for (const line of output.split(/\r?\n/)) {
@@ -133,6 +156,19 @@ try {
   if (!e2eOnly) {
     run('Supabase database reset', npxCommand, supabaseArgs('db', 'reset'));
     run('Supabase database lint', npxCommand, supabaseArgs('db', 'lint', '--local', '--fail-on', 'error'));
+
+    console.log('\n[full-local] Read-only self-hosted inventory query against local Supabase');
+    const inventory = runReadOnlyInventory();
+    if (inventory.status !== 0) {
+      const diagnostic = `${inventory.stderr ?? ''}\n${inventory.stdout ?? ''}`
+        .replace(/(postgres(?:ql)?:\/\/)[^:\s/]+:[^@\s/]+@/gi, '$1[REDACTED]@')
+        .replace(/\beyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]+\b/g, '[REDACTED_JWT]')
+        .trim()
+        .slice(-1500);
+      if (diagnostic) console.error(diagnostic);
+      throw new Error('Read-only inventory query failed against local Supabase');
+    }
+    console.log(`[full-local] inventory SQL syntax/runtime PASS output_bytes=${Buffer.byteLength(inventory.stdout ?? '')}`);
 
     const schemaDiff = capture('Local schema drift check', npxCommand, supabaseArgs('db', 'diff', '--local', '--schema', 'public'));
     if (schemaDiff.status !== 0) throw new Error('Local schema diff failed');

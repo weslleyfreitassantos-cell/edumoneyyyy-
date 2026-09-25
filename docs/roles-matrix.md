@@ -1,5 +1,8 @@
 # Matriz de roles e permissoes
 
+> **Status:** `SUPERSEDED`. SECRETARY e SUPER_ADMIN ja aparecem no modelo
+> versionado atual; nao use as listas abaixo como estado vigente.
+
 ## Premissas
 
 - Roles atuais do banco: `ADMIN`, `DIRECTOR`, `TEACHER`, `STUDENT`,
