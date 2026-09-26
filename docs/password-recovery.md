@@ -1,5 +1,8 @@
 # Recuperacao de senha
 
+> **Status:** `PARTIALLY VALID`. Rotas e codigo sao referencia; envio de email,
+> redirect, token e recuperacao real nao foram verificados na VPS nesta campanha.
+
 ## Rotas
 
 - Solicitacao: `/forgot-password`

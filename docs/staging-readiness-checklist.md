@@ -1,5 +1,8 @@
 # Checklist de Preparação para Staging
 
+> **Status:** `HISTORICAL / PARTIALLY VALID`. Checklist generico, nao prova a
+> existencia de staging dedicado nem substitui o gate self-hosted atual.
+
 ## 1. Frontend e Hospedagem
 - [ ] Frontend publicado
 - [ ] Variáveis configuradas (VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY)

@@ -1,5 +1,9 @@
 # Release readiness checklist
 
+> **Status:** `HISTORICAL / SUPERSEDED`. Os checkboxes registram uma rodada
+> antiga; use `docs/production/PRODUCTION_QUALIFICATION_2026-09-25.md` para o
+> estado desta campanha.
+
 Legenda:
 
 - [x] concluido

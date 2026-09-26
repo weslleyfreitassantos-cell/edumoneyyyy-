@@ -1,5 +1,8 @@
 # Checklist de validacao de banco em staging
 
+> **Status:** `PARTIALLY VALID`. E um procedimento generico; staging remoto
+> dedicado nao foi localizado nem qualificado nesta campanha.
+
 Este checklist prepara a validacao de baseline, migrations incrementais e
 hardening de RLS em um projeto Supabase separado. Ele nao cria staging, nao
 executa SQL e nao executa Supabase CLI.

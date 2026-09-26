@@ -1,5 +1,8 @@
 # Homologacao do fluxo ADMIN
 
+> **Status:** `PARTIALLY VALID / HISTORICAL`. Evidencia local de uma rodada
+> especifica; nao prova o comportamento remoto atual.
+
 Status: em andamento.
 
 Este documento registra a primeira rodada de homologacao local do fluxo ADMIN.
