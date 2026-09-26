@@ -94,3 +94,29 @@ backup criptografado, SMTP ou identidades de piloto. Nenhuma conexao SSH foi
 tentada. A contagem local e 121 migrations SQL; a contagem remota continua
 desconhecida. Os blockers de auditoria privilegiada, backup/restore, SMTP,
 piloto e causa-raiz do Realtime permanecem abertos; nao ocorreu mutacao remota.
+
+## Revalidacao V2 — 2026-09-26 UTC
+
+O checkpoint V2 esta detalhado em
+[`infrastructure-closure-v2-2026-09-25.md`](infrastructure-closure-v2-2026-09-25.md).
+Em `2026-09-26T00:29:36.360Z`, probes GET publicos com a chave publishable
+mantida apenas em memoria retornaram frontend 200 (485 ms), Auth 200 (525 ms),
+REST 200 (952 ms), Storage 200 (1311 ms) e Realtime 503 (963 ms). DNS publico
+resolveu para site e API; os dois certificados TLS estavam autorizados. O
+Realtime continuou retornando 503; o header permitido `via: 1.1 Caddy` confirma
+Caddy no caminho observado, mas nao identifica quem gerou a resposta. Nenhum
+body de resposta foi salvo.
+
+O acesso autorizado a VPS e banco read-only continua indisponivel, portanto a
+topologia interna, o container/imagem/health do Realtime, PostgreSQL e schema
+remotos continuam desconhecidos. A contagem remota de migrations nao pode ser
+comparada. Backup/restore, SMTP/Auth delivery e pilot smoke continuam bloqueados.
+Nenhuma mutacao remota foi realizada.
+
+O inventario Docker local read-only de `2026-09-25T22:39:44.805Z` encontrou
+dois containers existentes: o Postgres OmniHub protegido e um container
+estrangeiro/parado de identidade desconhecida. Nenhum container TecEscola foi
+identificado. Nenhum recurso Docker preexistente foi alterado. O scan Gitleaks
+usou apenas um container temporario isolado com auto-remocao; nenhum container
+existente foi interrompido. Os snapshots V2 em `artifacts/production-closure/`
+sao locais e permanecem fora do Git.

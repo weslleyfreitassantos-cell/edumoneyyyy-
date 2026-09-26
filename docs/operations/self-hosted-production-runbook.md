@@ -13,21 +13,24 @@ nem corpos de resposta. Sem chave, a query DB fica `BLOCKED`; HTTP diferente de
 200 reprova o health check. Edge Functions sem endpoint seguro de health nao
 sao invocadas.
 
-Comandos read-only na VPS, apos autenticar e confirmar que e o host correto:
+Com o host e o usuario SSH confirmados por operador autorizado, rode o collector
+read-only no proprio repo clonado na VPS:
 
 ```sh
-date -u
-uptime
-free -h
-df -h
-docker ps --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
-docker stats --no-stream
-docker inspect --format '{{.Name}} restarts={{.RestartCount}} state={{.State.Status}}' $(docker ps -q)
+bash ops/health/vps-readonly.sh
 ```
 
-Logs devem limitar intervalo/linhas e redigir tokens, e-mails e dados de aluno.
-O caminho Compose, nomes de servico e comandos de restart da VPS ainda nao foram
-confirmados; nao inventar `docker compose up/down` antes de identificar o stack.
+O collector registra host/disk/inodes, Compose projects, todos os containers
+(inclusive parados), imagem/tag e ID, health, restart policy/count, portas,
+nomes de redes, uso agregado de recursos e Docker disk usage. Ele nao le
+`Config.Env`, nao coleta logs e nao modifica serviços, redes ou volumes. Nomes
+de containers e portas devem ser tratados como inventário operacional.
+
+Depois que o container/servico Realtime real estiver identificado, inspecione
+somente logs recentes e limitados no host autorizado, sem salvar nem reproduzir
+linhas contendo e-mails, tokens, JWTs ou identificadores de aluno. Ainda nao ha
+topologia Compose, upstream Caddy, nome de servico ou imagem da VPS confirmados;
+nao invente comandos de restart/alteracao antes do diagnóstico e do human gate.
 
 ## Backup logico do Postgres
 
