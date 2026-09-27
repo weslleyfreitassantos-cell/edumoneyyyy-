@@ -1,5 +1,101 @@
 # Fotografia da producao self-hosted
 
+## Estado atual — 2026-09-27
+
+Este checkpoint substitui os estados antigos de SSH desconhecido, Realtime 503,
+paridade remota desconhecida e restore bloqueado registrados abaixo. As secoes
+posteriores foram preservadas como historico, nao como estado vigente.
+
+```text
+SITE=https://tecescola.grupotec.dev.br
+VPS_HOST=189.126.111.49
+SSH_ACCESS=PASS
+VPS_TOPOLOGY=CONFIRMED
+FRONTEND=HTTP_200
+AUTH=HTTP_200
+REST_RESOURCE_REQUESTS=HTTP_200
+STORAGE=HTTP_200
+REALTIME=WEBSOCKET_101
+REST_OPENAPI_ROOT=403_NON_BLOCKING
+POSTGRES=HEALTHY_17.6
+LOCAL_MIGRATIONS=121
+REMOTE_MIGRATIONS=121
+MIGRATION_PARITY=PASS
+POSTGRES_BACKUP_VERIFY=PASS
+POSTGRES_RESTORE_TEST=PASS
+RESTORED_PUBLIC_TABLES=82
+RESTORED_RLS_POLICIES=180
+RESTORED_RLS_TABLES=104
+STORAGE_OBJECTS=40
+STORAGE_RESTORE_TEST=PASS
+PRODUCTION_CONTAINERS_TOUCHED=NO
+BUSINESS_DATA_WRITES=NONE
+DEPLOYS=NONE
+```
+
+O backup qualificado teve SHA-256
+`ed1aa753baf15a388d3d69e02b5adde6028c278f7eabf91da9c91b43a9262893`.
+O restore aconteceu em container, volume e rede descartaveis, usando a imagem
+PostgreSQL 17.6 fixada por digest e publicacao somente em loopback; todos os
+recursos temporarios foram removidos. O teste de Storage validou 40 objetos em
+copia temporaria e removeu o destino de teste.
+
+### Persistencia do alias Realtime
+
+O Envoy em execucao monta
+`/srv/grupotec/supabase-projects/edumoney/volumes/api/envoy/cds.yaml`, que ja
+usa `address: realtime`. O diretorio do projeto Compose e uma arvore operacional
+sem Git. O template em
+`/srv/grupotec/supabase-upstream/docker/volumes/api/envoy/cds.yaml` pertence ao
+checkout limpo e detached do repositorio oficial `supabase/supabase` em
+`8c7a4d9dbbaf8b552893822e89d7bf06f33f9220`; esse template ainda usa
+`realtime-dev.supabase-realtime`.
+
+A PR #224 versiona
+`ops/production/apply-realtime-envoy-alias.sh`, aplicador idempotente e
+restrito a uma unica linha, com backup fora do checkout em diretorio privado
+(por padrao `/var/backups/tecescola-envoy`) e modo `--check`. Seu teste de
+fixture passou, e o modo de verificacao confirmou os estados do template e do
+arquivo montado sem modifica-los. Portanto a correcao tem mecanismo
+de persistencia versionado (`REALTIME_FIX_PERSISTENT=YES_VIA_VERSIONED_APPLIER`),
+mas a aplicacao ao template deve ser feita antes de sincronizar/recriar a stack
+em qualquer futuro redeploy. Nenhum servico foi reiniciado nesta campanha.
+
+### Email e prontidao do piloto
+
+```text
+SMTP_PROVIDER=RESEND
+SMTP_CONNECTIVITY=PASS
+AUTHORIZED_QA_MAILBOX=NONE_FOUND
+EMAIL_DELIVERY=BLOCKED_NO_AUTHORIZED_TEST_MAILBOX
+INVITE_DELIVERY=BLOCKED_NO_AUTHORIZED_TEST_MAILBOX
+PASSWORD_RECOVERY=BLOCKED_NO_AUTHORIZED_TEST_MAILBOX
+PILOT_TENANT=NONE
+PILOT_IDENTITIES=NONE
+PRODUCTION_AUTOMATED_SMOKE=BLOCKED_NO_DEDICATED_TEST_IDENTITIES
+PRODUCTION_FUNCTIONAL_SMOKE=BLOCKED_NO_PILOT_TENANT_IDENTITIES
+PRODUCTION_CROSS_TENANT=PASS_FOCUSED
+PILOT_READINESS=BLOCKED_EXTERNAL_TEST_IDENTITY_PROVISIONING
+```
+
+SMTP TCP na porta 465 nao foi tratado como prova de entrega. Nenhum e-mail foi
+enviado, nenhuma conta de cliente foi usada, e nao houve login de teste em
+producao. O smoke de cross-tenant previamente aprovado cobre frequencia/RLS;
+nao substitui o fluxo autenticado completo do tenant piloto. O proximo passo de
+homologacao depende de provisionamento humano de mailbox, tenant e identidades
+nao-cliente explicitamente seguros.
+
+**Campanha encerrada sem merge da PR #224.** Os gates de infraestrutura, banco e
+disaster recovery estao verdes; a prontidao de piloto permanece bloqueada pelos
+pre-requisitos de identidade e entrega de email acima.
+
+---
+
+## Checkpoints historicos
+
+Os registros seguintes documentam observacoes feitas em 2026-09-25 e
+2026-09-26. Seus estados foram superados pelo checkpoint atual acima.
+
 **Data:** 2026-09-25
 **Status:** `PARTIAL / PRIVILEGED AUDIT BLOCKED`
 **Site:** `https://tecescola.grupotec.dev.br`

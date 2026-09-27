@@ -6,12 +6,90 @@ REPOSITORY=weslleyfreitassantos-cell/edumoneyyyy-
 EXPECTED_BASE=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
 ACTUAL_BASE=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
 BRANCH=release/tecescola-production-qualification
-FINAL_HEAD=recorded by the PR #224 head ref
+FINAL_HEAD=7ccccf2fa22f3d413ba26ccdef0f8f733d3e00c4
 ```
 
+## Final Pilot Gate — 2026-09-27
+
+This is the current production qualification checkpoint. The initial
+observations and external-blocker sections below are retained as dated history;
+they are superseded where they conflict with this section.
+
+```text
+PR=224
+PR_HEAD=7ccccf2fa22f3d413ba26ccdef0f8f733d3e00c4
+PR_STATE=OPEN
+PR_MERGED=NO
+SSH_ACCESS=PASS
+VPS_TOPOLOGY=CONFIRMED
+FRONTEND=HTTP_200
+AUTH=HTTP_200
+REST_RESOURCE=HTTP_200
+STORAGE=HTTP_200
+REALTIME=WEBSOCKET_101
+REALTIME_FIX_PERSISTENT=YES_VIA_VERSIONED_APPLIER
+LOCAL_MIGRATIONS=121
+REMOTE_MIGRATIONS=121
+MIGRATION_PARITY=PASS
+POSTGRES_BACKUP=PASS
+POSTGRES_BACKUP_VERIFY=PASS
+RESTORE_TEST=PASS
+RESTORED_POSTGRES_VERSION=17.6
+RESTORED_PUBLIC_TABLES=82
+RESTORED_RLS_POLICIES=180
+RESTORED_RLS_TABLES=104
+STORAGE_RESTORE_TEST=PASS
+STORAGE_OBJECTS=40
+DISASTER_RECOVERY_READINESS=PASS
+SMTP_CONNECTIVITY=PASS
+EMAIL_DELIVERY=BLOCKED_NO_AUTHORIZED_TEST_MAILBOX
+INVITE_DELIVERY=BLOCKED_NO_AUTHORIZED_TEST_MAILBOX
+PASSWORD_RECOVERY=BLOCKED_NO_AUTHORIZED_TEST_MAILBOX
+PILOT_TENANT=NONE
+PILOT_IDENTITIES=NONE
+PRODUCTION_AUTOMATED_SMOKE=BLOCKED_NO_DEDICATED_TEST_IDENTITIES
+PRODUCTION_FUNCTIONAL_SMOKE=BLOCKED_NO_PILOT_TENANT_IDENTITIES
+PRODUCTION_CROSS_TENANT_FINAL=PASS_FOCUSED
+FINAL_HEALTH=PASS
+PRODUCTION_MUTATIONS=NONE
+BUSINESS_DATA_WRITES=NONE
+DEPLOYS=NONE
+PILOT_READINESS=BLOCKED_EXTERNAL_TEST_IDENTITY_PROVISIONING
+```
+
+The PostgreSQL backup SHA-256 is
+`ed1aa753baf15a388d3d69e02b5adde6028c278f7eabf91da9c91b43a9262893`.
+Its disposable restore used the production-compatible PostgreSQL 17.6 image,
+with a loopback-only random port, new isolated container/volume/network and
+resource limits. The temporary database contained 82 public tables, 180 RLS
+policies and 104 RLS-enabled tables. All temporary resources were removed and
+the inventory of pre-existing containers matched before/after. Storage restore
+was verified on a temporary copy of 40 objects. No production data was written,
+no service was restarted and no deploy occurred.
+
+Realtime is healthy at WebSocket 101. The running Compose container mounts the
+already-corrected project copy. The official `supabase/supabase` checkout is
+clean at `8c7a4d9dbbaf8b552893822e89d7bf06f33f9220`, but its source template
+still has the old upstream. This PR versions an idempotent, single-line
+applicator with check mode and backup; its fixture test and read-only checks of
+both source/project files passed. Run it on both files before any future
+sync/recreate. No redeploy or restart was used to test persistence.
+
+SMTP TCP connectivity does not prove delivery. No explicitly authorized QA
+mailbox, non-customer pilot tenant or dedicated test identities were found, so
+no email, invite, recovery or authenticated production smoke was attempted.
+The focused cross-tenant evidence covers attendance/RLS and is not represented
+as a full pilot workflow. Readiness is therefore an external test-identity /
+mailbox provisioning blocker, not an infrastructure, database or disaster
+recovery failure.
+
+The public REST OpenAPI root may return HTTP 403 while actual resource requests
+return 200; it is classified as non-blocking. PR #224 remains open and is not
+merged.
+
 This report separates reproducible local evidence from production facts that
-could not be verified without authorized VPS access. A green local suite does
-not certify the current production database or external providers.
+were initially unavailable at the first checkpoint. A green local suite does
+not alone certify current production; the later evidence is recorded above.
 
 ## Graphify
 
@@ -82,7 +160,7 @@ secrets and Graphify cache artifacts, plus a deterministic synthetic seed in
 The local generated files are ignored and are not part of the PR. Staged-diff
 secret scanning is recorded after staging.
 
-## Production Observations
+## Historical Production Observations — 2026-09-25
 
 Only public GET probes were made against `https://tecescola.grupotec.dev.br`
 and `https://api-edu-vps.grupotec.dev.br`. The public key was kept in process
@@ -123,7 +201,7 @@ The public Realtime 503 is a confirmed service issue, not an inference. It
 requires inspection of the VPS Realtime container and reverse-proxy logs by an
 authorized operator. No container name or Compose topology was guessed.
 
-## External Blocker Closure Checkpoint
+## Historical External Blocker Closure Checkpoint — 2026-09-25
 
 ```text
 START_BRANCH=release/tecescola-production-qualification
@@ -248,7 +326,7 @@ CAMERAS=INTEGRATION_REQUIRED (physical device/network flow not qualified)
 PORTARIA=INTEGRATION_REQUIRED (live device ingestion not qualified)
 ```
 
-## External Blockers and Readiness
+## Historical External Blockers and Readiness — 2026-09-25
 
 ```text
 EXTERNAL_BLOCKERS=5

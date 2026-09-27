@@ -1,13 +1,32 @@
 # Estado canonico do TecEscola
 
-**Atualizado:** 2026-09-25
+**Atualizado:** 2026-09-27
 **Baseline:** `e550ad575f9d06e67f7b91d54501c3ed4216dbc7`
 **Qualificacao em andamento:** `release/tecescola-production-qualification`
 
 Este e o ponto inicial para agentes e operadores. O codigo e as migrations desta
-branch descrevem o estado versionado; a producao self-hosted so e considerada
-confirmada quando o inventario privilegiado read-only estiver anexado ao estado
-em `docs/production/current-production-state.md`.
+branch descrevem o estado versionado; fatos da producao self-hosted confirmados
+por leitura privilegiada estao registrados em
+`docs/production/current-production-state.md`.
+
+## Gate atual de producao — 2026-09-27
+
+- VPS/SSH e topologia Supabase self-hosted confirmados; a VPS permaneceu ligada.
+- Frontend, Auth, requests REST de recursos, Storage e Realtime responderam
+  saudaveis; Realtime concluiu WebSocket com HTTP 101. `/rest/v1/` retorna 403
+  nao bloqueante, enquanto requests reais de recursos retornam 200.
+- 121 migrations locais e 121 remotas; paridade confirmada sem `db push` ou
+  `migration repair`.
+- Backup Postgres verificado; restore isolado em PostgreSQL 17.6 passou com 82
+  tabelas publicas, 180 policies e 104 tabelas com RLS. Restore de Storage
+  passou para 40 objetos.
+- Nenhum dado de negocio foi escrito, nenhum deploy ocorreu e nenhum container
+  de producao foi alterado durante os testes de restore.
+- O piloto permanece bloqueado por falta de mailbox de QA autorizada e tenant /
+  identidades dedicados nao-cliente. SMTP TCP nao e evidencia de entrega.
+- O alias Realtime esta corrigido na configuracao montada. A PR #224 versiona
+  um aplicador idempotente para sincronizar o template upstream e o arquivo do
+  projeto antes de um futuro redeploy; nao houve redeploy nesta campanha.
 
 ## Arquitetura observada no repositorio
 
@@ -16,7 +35,8 @@ em `docs/production/current-production-state.md`.
 - Backend Supabase self-hosted: PostgreSQL, Auth, PostgREST, Realtime, Storage e
   Edge Functions; migrations locais em `supabase/migrations`.
 - O baseline contem 121 arquivos SQL timestamped de migration. `npm run
-  test:full:local` reconstruiu o banco local do zero sem drift.
+  test:full:local` reconstruiu o banco local do zero sem drift; o inventario
+  read-only de producao confirmou as mesmas 121 migrations.
 - `attendance_sessions` e a identidade persistida de cada aula; frequencia,
   Diario de Classe, avaliacoes, resultados, documentos, comunicacao, financeiro,
   cameras e controle de acesso possuem implementacao no repositorio em graus
@@ -62,6 +82,7 @@ contratos ou equipamentos.
 
 ## Decisao de piloto
 
-**NOT READY neste momento.** Os gates locais passaram, mas falta acesso
-privilegiado/read-only comprovavel a VPS e tenant dedicado para reconciliar
-schema, validar backup/restauracao de producao, Auth/email e isolamento remoto.
+**NOT READY para iniciar o primeiro piloto.** Infraestrutura, paridade do banco
+e disaster recovery foram qualificados. Falta provisionamento humano de uma
+mailbox de QA autorizada e de um tenant/identidades dedicados nao-cliente para
+provar entrega, convite, recuperacao de senha e os smokes autenticados.
