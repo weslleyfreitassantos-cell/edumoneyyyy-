@@ -190,7 +190,7 @@ describe('TeacherAttendancePanel', () => {
     ).toBeTruthy();
   });
 
-  it('carrega chamada existente para correção', () => {
+  it('carrega chamada existente para correção sem marcar alterações', async () => {
     render(
       <TeacherAttendancePanel
         profileId="teacher-1"
@@ -221,6 +221,119 @@ describe('TeacherAttendancePanel', () => {
     ).toBeTruthy();
     expect(screen.getByText(/2 alunos/)).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Marcar presentes' })).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText('Tudo salvo')).toBeTruthy();
+    });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+  });
+
+  it('prepara chamada nova sem falso estado dirty e mantém salvar disponível', async () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        session: null,
+        records: rollCall.records.map((record) => ({
+          ...record,
+          status: 'PRESENT' as const,
+          notes: null,
+        })),
+      },
+      dataUpdatedAt: 10,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+    });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+    expect(screen.queryByText('Tudo salvo')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(false);
+    expect(screen.getByRole('button', { name: /Finalizar aula/ }).hasAttribute('disabled')).toBe(false);
+  });
+
+  it('limpa o dirty state ao restaurar o baseline do conteúdo', async () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: { ...rollCall, session: null },
+      dataUpdatedAt: 11,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+    });
+    const topicInput = screen.getByLabelText('Conteúdo ministrado');
+    fireEvent.change(topicInput, { target: { value: 'Conteúdo temporário' } });
+    expect(screen.getByText('Alterações não salvas')).toBeTruthy();
+
+    fireEvent.change(topicInput, { target: { value: '' } });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+    expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+  });
+
+  it('marca alteração de frequência e considera o formulário salvo após persistir', async () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        session: null,
+        records: rollCall.records.map((record) => ({
+          ...record,
+          status: 'PRESENT' as const,
+          notes: null,
+        })),
+      },
+      dataUpdatedAt: 12,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+    });
+    fireEvent.change(screen.getByLabelText(/Status de Ana Silva/), {
+      target: { value: 'ABSENT' },
+    });
+    expect(screen.getByText('Alterações não salvas')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          action: 'SAVE_DRAFT',
+          records: expect.arrayContaining([
+            expect.objectContaining({ studentId: 'student-1', status: 'ABSENT' }),
+          ]),
+        }),
+      );
+      expect(screen.getByText('Tudo salvo')).toBeTruthy();
+    });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(true);
   });
 
   it('prioriza a atribuição com aula no dia e exibe o período no rótulo', async () => {

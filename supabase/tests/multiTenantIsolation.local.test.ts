@@ -25,6 +25,7 @@ type TenantFixture = {
   institutionB: string;
   membershipA: string;
   membershipB: string;
+  guardianMembershipA: string;
   yearA: string;
   yearB: string;
   termA: string;
@@ -36,6 +37,7 @@ type TenantFixture = {
   offeringA: string;
   offeringB: string;
   studentA: string;
+  unlinkedStudentA: string;
   studentB: string;
   guardianshipA: string;
   guardianshipB: string;
@@ -215,6 +217,8 @@ async function createFixture(): Promise<TenantFixture> {
   actors.secretaryA = await createActor(admin, 'SECRETARY', 'secretary-a', suffix);
   actors.teacherA = await createActor(admin, 'TEACHER', 'teacher-a', suffix);
   actors.studentA = await createActor(admin, 'STUDENT', 'student-a', suffix);
+  actors.unlinkedStudentA = await createActor(admin, 'STUDENT', 'student-a-unlinked', suffix);
+  actors.randomStudent = await createActor(admin, 'STUDENT', 'random-student', suffix);
   actors.guardianA = await createActor(admin, 'GUARDIAN', 'guardian-a', suffix);
 
   actors.adminB = await createActor(admin, 'ADMIN', 'admin-b', suffix);
@@ -266,6 +270,7 @@ async function createFixture(): Promise<TenantFixture> {
     ['secretaryA', institutionA, 'SECRETARY'],
     ['teacherA', institutionA, 'TEACHER'],
     ['studentA', institutionA, 'STUDENT'],
+    ['unlinkedStudentA', institutionA, 'STUDENT'],
     ['guardianA', institutionA, 'GUARDIAN'],
     ['adminB', institutionB, 'ADMIN'],
     ['directorB', institutionB, 'DIRECTOR'],
@@ -276,6 +281,7 @@ async function createFixture(): Promise<TenantFixture> {
   ] as const;
   let membershipA = '';
   let membershipB = '';
+  let guardianMembershipA = '';
   for (const [actorKey, institutionId, role] of memberships) {
     const membership = await insertOne(admin, 'memberships', {
       profile_id: actors[actorKey].id,
@@ -285,6 +291,7 @@ async function createFixture(): Promise<TenantFixture> {
     });
     if (actorKey === 'adminA') membershipA = membership.id;
     if (actorKey === 'adminB') membershipB = membership.id;
+    if (actorKey === 'guardianA') guardianMembershipA = membership.id;
   }
 
   const directorA = actors.directorA.client;
@@ -407,6 +414,13 @@ async function createFixture(): Promise<TenantFixture> {
     institution_id: institutionA,
     registration_number: `A-${suffix}`,
     birth_date: '2010-01-01',
+    active: true,
+  })).id;
+  const unlinkedStudentA = (await insertOne(admin, 'students', {
+    profile_id: actors.unlinkedStudentA.id,
+    institution_id: institutionA,
+    registration_number: `A-UNLINKED-${suffix}`,
+    birth_date: '2010-01-02',
     active: true,
   })).id;
   const studentB = (await insertOne(admin, 'students', {
@@ -745,6 +759,7 @@ async function createFixture(): Promise<TenantFixture> {
     institutionB,
     membershipA,
     membershipB,
+    guardianMembershipA,
     yearA,
     yearB,
     termA,
@@ -756,6 +771,7 @@ async function createFixture(): Promise<TenantFixture> {
     offeringA,
     offeringB,
     studentA,
+    unlinkedStudentA,
     studentB,
     guardianshipA,
     guardianshipB,
@@ -870,6 +886,71 @@ localDescribe('multi-tenant isolation against local Supabase', () => {
       const result = await readIds(fixture.actors[actorKey].client, table, id);
       expect(result.error, `${actorKey} cross ${table}`).toBeNull();
       expect(result.rows, `${actorKey} cross ${table}`).toHaveLength(0);
+    }
+  }, 120_000);
+
+  it('limits guardian profile reads to linked students and preserves existing profile visibility', async () => {
+    const readProfile = async (actorKey: string, profileId: string) => {
+      const { data, error } = await fixture.actors[actorKey].client
+        .from('profiles')
+        .select('id, full_name')
+        .eq('id', profileId);
+      return { rows: data ?? [], error: error?.message ?? null };
+    };
+
+    const linkedProfile = await readProfile('guardianA', fixture.actors.studentA.id);
+    expect(linkedProfile.error).toBeNull();
+    expect(linkedProfile.rows).toEqual([
+      expect.objectContaining({
+        id: fixture.actors.studentA.id,
+        full_name: 'Multi Tenant student-a',
+      }),
+    ]);
+
+    const deniedProfiles = [
+      ['unlinked student', fixture.actors.unlinkedStudentA.id],
+      ['other tenant student', fixture.actors.studentB.id],
+      ['random student profile', fixture.actors.randomStudent.id],
+    ] as const;
+    for (const [label, profileId] of deniedProfiles) {
+      const result = await readProfile('guardianA', profileId);
+      expect(result.error, label).toBeNull();
+      expect(result.rows, label).toHaveLength(0);
+    }
+
+    const studentOwnProfile = await readProfile('studentA', fixture.actors.studentA.id);
+    expect(studentOwnProfile.error).toBeNull();
+    expect(studentOwnProfile.rows).toHaveLength(1);
+
+    for (const staffRole of ['directorA', 'secretaryA']) {
+      const result = await readProfile(staffRole, fixture.actors.studentA.id);
+      expect(result.error, `${staffRole} existing student profile visibility`).toBeNull();
+      expect(result.rows, `${staffRole} existing student profile visibility`).toHaveLength(1);
+    }
+
+    const teacherVisibility = await readProfile('guardianA', fixture.actors.teacherA.id);
+    expect(teacherVisibility.error).toBeNull();
+    expect(teacherVisibility.rows).toHaveLength(1);
+
+    const { error: deactivateError } = await fixture.admin
+      .from('memberships')
+      .update({ active: false })
+      .eq('id', fixture.guardianMembershipA);
+    expect(deactivateError).toBeNull();
+
+    try {
+      const inactiveMembershipProfile = await readProfile(
+        'guardianA',
+        fixture.actors.studentA.id,
+      );
+      expect(inactiveMembershipProfile.error).toBeNull();
+      expect(inactiveMembershipProfile.rows).toHaveLength(0);
+    } finally {
+      const { error: restoreError } = await fixture.admin
+        .from('memberships')
+        .update({ active: true })
+        .eq('id', fixture.guardianMembershipA);
+      expect(restoreError).toBeNull();
     }
   }, 120_000);
 
