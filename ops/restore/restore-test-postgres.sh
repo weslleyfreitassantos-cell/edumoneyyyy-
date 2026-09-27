@@ -52,7 +52,16 @@ if [[ "$archive" == *.age ]]; then
 else
   cp -- "$archive" "$work/backup.tar"
 fi
-tar -xOf "$work/backup.tar" database.dump > "$work/database.dump"
+entries="$(tar -tf "$work/backup.tar")"
+if grep -qx 'database.dump' <<< "$entries"; then
+  database_entry='database.dump'
+elif grep -qx 'postgres.dump' <<< "$entries"; then
+  database_entry='postgres.dump'
+else
+  printf 'FAIL: backup archive has no supported database dump.\n' >&2
+  exit 1
+fi
+tar -xOf "$work/backup.tar" "$database_entry" > "$work/database.dump"
 
 if psql -X -d postgres -v ON_ERROR_STOP=1 -Atqc "select 1 from pg_database where datname = '$db'" | grep -qx 1; then
   printf 'FAIL: generated restore database name already exists.\n' >&2

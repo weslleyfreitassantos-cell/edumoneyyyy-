@@ -21,20 +21,44 @@ fi
 if [[ "$archive" == *.age ]]; then
   command -v age >/dev/null || { printf 'BLOCKED: age is required.\n' >&2; exit 2; }
   [[ -n "${AGE_IDENTITY:-}" && -f "$AGE_IDENTITY" ]] || { printf 'BLOCKED: AGE_IDENTITY must point to the private decryption identity.\n' >&2; exit 2; }
-  decrypt_archive() { age --decrypt --identity "$AGE_IDENTITY" "$archive"; }
-else
-  decrypt_archive() { cat -- "$archive"; }
 fi
 
-entries="$(decrypt_archive | tar -tf -)"
-grep -qx 'database.dump' <<< "$entries"
-grep -qx 'globals.sql' <<< "$entries"
-grep -qx 'manifest.txt' <<< "$entries"
+verify_work="$(mktemp -d "${TMPDIR:-/tmp}/tecescola-backup-verify.XXXXXXXX")"
+chmod 700 -- "$verify_work"
+trap 'rm -rf -- "$verify_work"' EXIT
+if [[ "$archive" == *.age ]]; then
+  age --decrypt --identity "$AGE_IDENTITY" "$archive" > "$verify_work/backup.tar"
+else
+  cp -- "$archive" "$verify_work/backup.tar"
+fi
+
+entries="$(tar -tf "$verify_work/backup.tar")"
 if grep -qE '(^/|(^|/)\.\.(/|$))' <<< "$entries"; then
   printf 'FAIL: archive contains an unsafe path.\n' >&2
   exit 1
 fi
-global_bytes="$(decrypt_archive | tar -xOf - globals.sql | wc -c | tr -d ' ')"
+
+if grep -qx 'database.dump' <<< "$entries" && grep -qx 'manifest.txt' <<< "$entries"; then
+  database_entry='database.dump'
+  for component in database.dump globals.sql manifest.txt; do
+    [[ "$(grep -Fxc -- "$component" <<< "$entries")" == 1 ]] || { printf 'FAIL: archive entry is missing or duplicated: %s.\n' "$component" >&2; exit 1; }
+  done
+  tar -xf "$verify_work/backup.tar" -C "$verify_work" -- database.dump globals.sql manifest.txt
+elif grep -qx 'postgres.dump' <<< "$entries" && grep -qx 'MANIFEST.txt' <<< "$entries" && grep -qx 'SHA256SUMS' <<< "$entries"; then
+  database_entry='postgres.dump'
+  for component in postgres.dump globals.sql supabase-meta.dump storage.tar.gz config.tar.gz; do
+    [[ "$(grep -Fxc -- "$component" <<< "$entries")" == 1 ]] || { printf 'FAIL: bundle entry is missing or duplicated: %s.\n' "$component" >&2; exit 1; }
+  done
+  [[ "$(grep -Fxc -- 'MANIFEST.txt' <<< "$entries")" == 1 && "$(grep -Fxc -- 'SHA256SUMS' <<< "$entries")" == 1 ]] || { printf 'FAIL: bundle manifest or checksums entry is missing or duplicated.\n' >&2; exit 1; }
+  tar -xf "$verify_work/backup.tar" -C "$verify_work" -- postgres.dump globals.sql supabase-meta.dump storage.tar.gz config.tar.gz MANIFEST.txt SHA256SUMS
+  [[ "$(wc -l < "$verify_work/SHA256SUMS" | tr -d ' ')" == 5 ]] || { printf 'FAIL: production bundle checksum list has an unexpected entry count.\n' >&2; exit 1; }
+  (cd -- "$verify_work" && sha256sum --check --status SHA256SUMS) || { printf 'FAIL: production bundle component checksum mismatch.\n' >&2; exit 1; }
+else
+  printf 'FAIL: archive layout is not a supported PostgreSQL backup.\n' >&2
+  exit 1
+fi
+
+global_bytes="$(wc -c < "$verify_work/globals.sql" | tr -d ' ')"
 [[ "$global_bytes" -gt 0 ]] || { printf 'FAIL: globals dump is empty.\n' >&2; exit 1; }
-decrypt_archive | tar -xOf - database.dump | pg_restore --list - >/dev/null
-printf 'BACKUP_VERIFY=PASS\nsha256=%s\narchive_entries=3\ndatabase_archive=PASS\ncluster_globals=PASS\n' "$sha"
+pg_restore --list "$verify_work/$database_entry" >/dev/null
+printf 'BACKUP_VERIFY=PASS\nsha256=%s\ndatabase_archive=PASS\ncluster_globals=PASS\n' "$sha"
