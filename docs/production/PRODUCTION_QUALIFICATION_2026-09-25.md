@@ -6,7 +6,7 @@ REPOSITORY=weslleyfreitassantos-cell/edumoneyyyy-
 EXPECTED_BASE=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
 ACTUAL_BASE=e550ad575f9d06e67f7b91d54501c3ed4216dbc7
 BRANCH=release/tecescola-production-qualification
-FINAL_HEAD=7ccccf2fa22f3d413ba26ccdef0f8f733d3e00c4
+FINAL_HEAD=tracked by the current PR #224 head ref
 ```
 
 ## Final Pilot Gate — 2026-09-27
@@ -17,7 +17,7 @@ they are superseded where they conflict with this section.
 
 ```text
 PR=224
-PR_HEAD=7ccccf2fa22f3d413ba26ccdef0f8f733d3e00c4
+PR_HEAD=tracked by the current PR #224 head ref
 PR_STATE=OPEN
 PR_MERGED=NO
 SSH_ACCESS=PASS
