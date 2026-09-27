@@ -3,10 +3,16 @@
 import {
   cleanup,
   fireEvent,
-  render,
+  render as renderComponent,
   screen,
   waitFor,
 } from '@testing-library/react';
+import type { ReactNode } from 'react';
+import {
+  createMemoryRouter,
+  Link,
+  RouterProvider,
+} from 'react-router-dom';
 import {
   afterEach,
   beforeEach,
@@ -27,6 +33,42 @@ const useTeacherAttendanceOfferings = vi.fn();
 const useAttendanceRollCall = vi.fn();
 const useSaveAttendanceRollCall = vi.fn();
 const useSubjectOfferingWorkloadProgress = vi.fn();
+
+function createDiaryTestRouter(
+  element: ReactNode,
+  initialEntries = ['/dashboard/class-diary'],
+) {
+  return createMemoryRouter(
+    [
+      { path: '/next', element: <p>Destino da navegação</p> },
+      { path: '/previous', element: <p>Tela anterior</p> },
+      { path: '*', element },
+    ],
+    { initialEntries },
+  );
+}
+
+function render(element: ReactNode) {
+  const router = createDiaryTestRouter(element);
+  return renderComponent(<RouterProvider router={router} />);
+}
+
+function renderDiaryWithNavigation() {
+  const router = createDiaryTestRouter(
+    <>
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />
+      <Link to="/next">Outra tela</Link>
+    </>,
+  );
+
+  return {
+    router,
+    ...renderComponent(<RouterProvider router={router} />),
+  };
+}
 
 vi.mock('../../lib/supabaseClient', () => ({
   supabase: {},
@@ -937,5 +979,123 @@ describe('TeacherAttendancePanel', () => {
     expect(screen.getByLabelText('Conteúdo ministrado').hasAttribute('disabled')).toBe(true);
     expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(true);
     expect(screen.getByRole('button', { name: /Finalizar aula/ }).hasAttribute('disabled')).toBe(true);
+  });
+
+  it('bloqueia navegação da sidebar quando existem alterações não salvas', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Alteração ainda não salva' },
+    });
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+
+    expect(await screen.findByRole('alertdialog')).toBeTruthy();
+    expect(screen.queryByText('Destino da navegação')).toBeNull();
+  });
+
+  it('continuar editando cancela a saída e preserva o formulário', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    const topic = screen.getByLabelText('Conteúdo ministrado') as HTMLTextAreaElement;
+    fireEvent.change(topic, { target: { value: 'Conteúdo preservado' } });
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Continuar editando' }));
+
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+    expect(screen.getByLabelText('Conteúdo ministrado')).toHaveProperty('value', 'Conteúdo preservado');
+    expect(screen.queryByText('Destino da navegação')).toBeNull();
+  });
+
+  it('descartar alterações permite concluir a navegação', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Conteúdo descartável' },
+    });
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Descartar alterações' }));
+
+    expect(await screen.findByText('Destino da navegação')).toBeTruthy();
+  });
+
+  it('navega sem confirmação depois de salvar o rascunho', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Conteúdo salvo' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+
+    await waitFor(() => expect(mutateAsync).toHaveBeenCalled());
+    await waitFor(() => expect(screen.queryByText('Alterações não salvas')).toBeNull());
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+
+    expect(await screen.findByText('Destino da navegação')).toBeTruthy();
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+  });
+
+  it('navega sem confirmação quando o diário não foi editado', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+
+    expect(await screen.findByText('Destino da navegação')).toBeTruthy();
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+  });
+
+  it('bloqueia o voltar do navegador enquanto há alterações não salvas', async () => {
+    const router = createDiaryTestRouter(
+      <TeacherAttendancePanel profileId="teacher-1" institutionId="institution-1" />,
+      ['/previous', '/dashboard/class-diary'],
+    );
+    renderComponent(<RouterProvider router={router} />);
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Alteração antes de voltar' },
+    });
+    await router.navigate(-1);
+
+    expect(await screen.findByRole('alertdialog')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Descartar alterações' }));
+    expect(await screen.findByText('Tela anterior')).toBeTruthy();
+  });
+
+  it('protege a troca de data que substituiria um diário editado', async () => {
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    const date = screen.getByLabelText('Data') as HTMLInputElement;
+    const originalDate = date.value;
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Não descartar sem perguntar' },
+    });
+    fireEvent.change(date, { target: { value: '2026-03-01' } });
+
+    expect(await screen.findByRole('alertdialog')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar editando' }));
+    expect((screen.getByLabelText('Data') as HTMLInputElement).value).toBe(originalDate);
+    expect(screen.getByLabelText('Conteúdo ministrado')).toHaveProperty(
+      'value',
+      'Não descartar sem perguntar',
+    );
+
+    fireEvent.change(screen.getByLabelText('Data'), {
+      target: { value: '2026-03-01' },
+    });
+    fireEvent.click(await screen.findByRole('button', { name: 'Descartar alterações' }));
+    await waitFor(() => {
+      expect((screen.getByLabelText('Data') as HTMLInputElement).value).toBe('2026-03-01');
+    });
   });
 });

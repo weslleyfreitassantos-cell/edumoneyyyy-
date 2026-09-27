@@ -97,6 +97,8 @@ export default function GuardiansTab() {
 
   const [isModalOpen, setIsModalOpen] =
     useState(false);
+  const [pendingLinkChange, setPendingLinkChange] =
+    useState<GuardianStudentLink | null>(null);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -202,9 +204,11 @@ export default function GuardiansTab() {
                 <button
                   type="button"
                   disabled={isChanging}
-                  onClick={() =>
-                    void handleToggleLink(link)
-                  }
+                  onClick={() => {
+                    setPageError(null);
+                    setFeedbackMessage(null);
+                    setPendingLinkChange(link);
+                  }}
                   className={
                     link.active
                       ? 'mt-2 text-xs font-medium text-red-600 hover:text-red-800 disabled:opacity-50'
@@ -350,21 +354,13 @@ export default function GuardiansTab() {
     }
   }
 
-  async function handleToggleLink(
-    link: GuardianStudentLink,
-  ): Promise<void> {
-    const nextActive = !link.active;
-    const action = nextActive
-      ? 'reativar'
-      : 'desativar';
-
-    if (
-      !window.confirm(
-        `Deseja ${action} o vínculo com ${getStudentLabel(link)}?`,
-      )
-    ) {
+  async function confirmLinkChange(): Promise<void> {
+    if (!pendingLinkChange || statusMutation.isPending) {
       return;
     }
+
+    const link = pendingLinkChange;
+    const nextActive = !link.active;
 
     setPageError(null);
     setFeedbackMessage(null);
@@ -381,10 +377,12 @@ export default function GuardiansTab() {
           ? 'Vínculo reativado.'
           : 'Vínculo desativado.',
       );
+      setPendingLinkChange(null);
     } catch (error) {
       setPageError(
         getErrorMessage(error),
       );
+      setPendingLinkChange(null);
     }
   }
 
@@ -718,6 +716,55 @@ export default function GuardiansTab() {
               </div>
             </form>
           </div>
+        </div>
+      )}
+
+      {pendingLinkChange && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4"
+          role="presentation"
+        >
+          <section
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="guardianship-confirm-title"
+            aria-describedby="guardianship-confirm-description"
+            className="w-full max-w-md rounded-xl bg-white p-5 shadow-xl dark:bg-slate-900"
+          >
+            <h2 id="guardianship-confirm-title" className="text-base font-bold text-slate-900 dark:text-white">
+              {pendingLinkChange.active ? 'Desativar vínculo' : 'Reativar vínculo'}
+            </h2>
+            <p id="guardianship-confirm-description" className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Deseja {pendingLinkChange.active ? 'desativar' : 'reativar'} o vínculo de {getStudentLabel(pendingLinkChange)}?
+            </p>
+            {pendingLinkChange.active && (
+              <p className="mt-2 text-sm text-amber-800 dark:text-amber-300">
+                Enquanto estiver inativo, este responsável não terá acesso acadêmico a este aluno por esse vínculo.
+              </p>
+            )}
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={() => setPendingLinkChange(null)}
+                disabled={statusMutation.isPending}
+                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={() => void confirmLinkChange()}
+                disabled={statusMutation.isPending}
+                className="rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 disabled:opacity-50"
+              >
+                {statusMutation.isPending
+                  ? 'Salvando...'
+                  : pendingLinkChange.active
+                    ? 'Confirmar desativação'
+                    : 'Confirmar reativação'}
+              </button>
+            </div>
+          </section>
         </div>
       )}
     </div>
