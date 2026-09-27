@@ -1,5 +1,9 @@
 # Diagnostico final do banco remoto
 
+> **Status:** `HISTORICAL / SUPERSEDED`. Registro de auditoria anterior; nao e
+> evidencia do estado atual da VPS. Consulte
+> `docs/production/current-production-state.md` e faca novo inventario read-only.
+
 Este documento consolida a auditoria real feita manualmente no Supabase SQL
 Editor. A auditoria foi read-only. Nenhum comando Supabase remoto foi executado
 por esta entrega.

@@ -1,5 +1,9 @@
 ﻿# Plano de implementação do cadastro real de usuários
 
+> **Status:** `SUPERSEDED AS A PLAN`. Convites existem no codigo atual, mas o
+> envio e o fluxo de producao ainda nao foram qualificados. Consulte
+> `docs/production/current-production-state.md`.
+
 ## Fase 0 — Estado atual
 
 O fluxo atual é visual. O botão de envio permanece desabilitado e nenhum usuário é criado.

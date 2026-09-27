@@ -1,5 +1,9 @@
 # Auditoria read-only do banco
 
+> **Status:** `HISTORICAL / SUPERSEDED`. A auditoria descrita abaixo nao foi
+> repetida contra a VPS atual; consulte a fotografia desta campanha em
+> `docs/production/current-production-state.md`.
+
 ## Objetivo
 
 Preparar uma auditoria segura do banco Supabase remoto antes de qualquer escrita

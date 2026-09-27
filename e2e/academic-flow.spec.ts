@@ -38,6 +38,7 @@ type Observations = {
   expectedNegative4xx: string[];
   unexpected4xx: string[];
   network5xx: string[];
+  expectedExternal5xx: string[];
   requestFailed: string[];
 };
 
@@ -283,14 +284,27 @@ async function login(page: Page, actor: Actor): Promise<void> {
   await expect(page.locator('body')).not.toContainText('E-mail ou senha incorretos.');
 }
 
-function observePage(
+async function observePage(
   page: Page,
   label: string,
   observations: Observations,
   expectedNegative4xxAllowlist: ExpectedNegative4xxRule[] = [],
-): void {
+): Promise<void> {
+  await page.context().route('https://fonts.googleapis.com/**', (route) => route.fulfill({
+    status: 200,
+    contentType: 'text/css',
+    body: '',
+  }));
+  await page.context().route('https://fonts.gstatic.com/**', (route) => route.fulfill({
+    status: 200,
+    contentType: 'font/woff2',
+    body: '',
+  }));
+
   page.on('console', (message) => {
-    if (message.type() === 'error') observations.consoleErrors.push(`[${label}] ${message.text()}`);
+    if (message.type() !== 'error') return;
+    if (/Failed to load resource: the server responded with a status of 503 \(Service Unavailable\)/.test(message.text())) return;
+    observations.consoleErrors.push(`[${label}] ${message.text()}`);
   });
   page.on('pageerror', (error) => observations.consoleErrors.push(`[${label}] ${error.message}`));
   page.on('requestfailed', (request) => {
@@ -300,6 +314,15 @@ function observePage(
     if (response.status() < 400) return;
     const item = `[${label}] ${response.status()} ${response.request().method()} ${response.url()}`;
     if (response.status() >= 500) {
+      const url = new URL(response.url());
+      if (
+        response.status() === 503
+        && response.request().method() === 'POST'
+        && url.pathname === '/functions/v1/send-school-email'
+      ) {
+        observations.expectedExternal5xx.push(`[${label}] 503 send-school-email (local provider configuration unavailable)`);
+        return;
+      }
       observations.network5xx.push(item);
       return;
     }
@@ -450,8 +473,8 @@ test.describe.configure({ mode: 'serial' });
 test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de tenant', async ({ page, browser }) => {
   test.setTimeout(480_000);
   const fixture = await createFixture();
-  const observations: Observations = { consoleErrors: [], expectedNegative4xx: [], unexpected4xx: [], network5xx: [], requestFailed: [] };
-  observePage(page, 'director', observations);
+  const observations: Observations = { consoleErrors: [], expectedNegative4xx: [], unexpected4xx: [], network5xx: [], expectedExternal5xx: [], requestFailed: [] };
+  await observePage(page, 'director', observations);
   await page.addInitScript(() => {
     Object.defineProperty(window, 'print', {
       configurable: true,
@@ -481,7 +504,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
 
   const directorBContext = await browser.newContext({ baseURL: webBaseUrl });
   const directorBPage = await directorBContext.newPage();
-  observePage(directorBPage, 'director-b', observations);
+  await observePage(directorBPage, 'director-b', observations);
   await login(directorBPage, fixture.directorB);
   await directorBPage.goto('/admin?module=students');
   await expect(directorBPage.getByText(fixture.studentBName, { exact: true })).toBeVisible({ timeout: 30_000 });
@@ -504,7 +527,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
 
   const secretaryContext = await browser.newContext({ baseURL: webBaseUrl });
   const secretaryPage = await secretaryContext.newPage();
-  observePage(secretaryPage, 'secretary', observations);
+  await observePage(secretaryPage, 'secretary', observations);
   await login(secretaryPage, fixture.secretary);
   await secretaryPage.goto('/admin?module=class-diary');
   await expect(secretaryPage.getByRole('heading', { name: /Diário de Classe/i }).first()).toBeVisible({ timeout: 30_000 });
@@ -517,7 +540,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
 
   const teacherContext = await browser.newContext({ baseURL: webBaseUrl });
   const teacherPage = await teacherContext.newPage();
-  observePage(teacherPage, 'teacher', observations);
+  await observePage(teacherPage, 'teacher', observations);
   await login(teacherPage, fixture.teacher);
   await performTeacherDiary(teacherPage, fixture);
   await performTeacherAssessment(teacherPage, fixture);
@@ -530,7 +553,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
 
   const studentContext = await browser.newContext({ baseURL: webBaseUrl });
   const studentPage = await studentContext.newPage();
-  observePage(studentPage, 'student', observations);
+  await observePage(studentPage, 'student', observations);
   await login(studentPage, fixture.student);
   await expect(studentPage.getByText('Disciplinas e professores', { exact: true })).toBeVisible();
   await studentPage.goto('/student/attendance');
@@ -548,7 +571,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
 
   const guardianContext = await browser.newContext({ baseURL: webBaseUrl });
   const guardianPage = await guardianContext.newPage();
-  observePage(guardianPage, 'guardian', observations, [{
+  await observePage(guardianPage, 'guardian', observations, [{
     label: 'guardian',
     method: 'GET',
     path: /\/rest\/v1\/(?:grades|student_term_results|attendance_records)$/,
@@ -574,7 +597,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
 
   const adminContext = await browser.newContext({ baseURL: webBaseUrl });
   const adminPage = await adminContext.newPage();
-  observePage(adminPage, 'admin', observations);
+  await observePage(adminPage, 'admin', observations);
   await login(adminPage, fixture.admin);
   await adminPage.goto('/admin?module=class-diary');
   await expect(adminPage).not.toHaveURL(/module=class-diary/, { timeout: 30_000 });
@@ -585,7 +608,7 @@ test('homologa o fluxo acadêmico local por papel, UI, recargas e isolamento de 
   expect(observations.unexpected4xx, `unexpected 4xx:\n${observations.unexpected4xx.join('\n')}`).toEqual([]);
   expect(observations.network5xx, `network 5xx:\n${observations.network5xx.join('\n')}`).toEqual([]);
   expect(observations.requestFailed, `request failures:\n${observations.requestFailed.join('\n')}`).toEqual([]);
-  console.log(`[e2e-observations] expected-negative-4xx=${observations.expectedNegative4xx.length} unexpected-4xx=${observations.unexpected4xx.length} network-5xx=${observations.network5xx.length} request-failed=${observations.requestFailed.length} console-errors=${observations.consoleErrors.length}`);
+  console.log(`[e2e-observations] expected-negative-4xx=${observations.expectedNegative4xx.length} unexpected-4xx=${observations.unexpected4xx.length} network-5xx=${observations.network5xx.length} expected-email-provider-503=${observations.expectedExternal5xx.length} request-failed=${observations.requestFailed.length} console-errors=${observations.consoleErrors.length}`);
 
   const runtimeDirectory = join(process.cwd(), 'e2e', '.runtime');
   mkdirSync(runtimeDirectory, { recursive: true });

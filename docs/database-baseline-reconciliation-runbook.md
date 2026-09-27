@@ -1,5 +1,10 @@
 # Runbook de reconciliacao do baseline remoto
 
+> **Status:** `HISTORICAL / SUPERSEDED`. Este fluxo antecede a qualificacao
+> self-hosted atual; nao executar contra a VPS. Use
+> `docs/operations/self-hosted-production-runbook.md` apos confirmar host,
+> usuario e permissao read-only.
+
 Este runbook orienta a reconciliacao entre o schema real do Supabase remoto e
 as migrations locais versionadas. Ele e apenas documental: nao executa SQL, nao
 executa Supabase CLI e nao altera migrations reais.

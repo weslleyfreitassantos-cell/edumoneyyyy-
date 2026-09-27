@@ -1,5 +1,8 @@
 # Avaliação de prontidão do MVP
 
+> **Status:** `SUPERSEDED`. Avaliacao de 2026-09-06; nao representa os gates
+> desta qualificacao nem comprova prontidao atual para piloto.
+
 Atualizado em 2026-09-06.
 
 ## Resumo executivo
