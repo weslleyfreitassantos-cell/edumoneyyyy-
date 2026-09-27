@@ -1,4 +1,7 @@
 import {
+  useBlocker,
+} from 'react-router-dom';
+import {
   useEffect,
   useMemo,
   useRef,
@@ -213,6 +216,8 @@ export default function TeacherAttendancePanel({
     useState('');
   const [dateAdjustmentMessage, setDateAdjustmentMessage] =
     useState('');
+  const [pendingContextChange, setPendingContextChange] =
+    useState<(() => void) | null>(null);
 
   const offeringsQuery =
     useTeacherAttendanceOfferings(
@@ -495,6 +500,8 @@ export default function TeacherAttendancePanel({
   const formBaseline = formBaselineRef.current;
   const baselineReady =
     formBaseline?.contextKey === formContextKey;
+  const formEditingDisabled =
+    editingDisabled || !baselineReady;
   const hasPersistedSession = Boolean(
     activeRollCall?.session ||
     (baselineReady && formBaseline?.hasPersistedSession),
@@ -510,6 +517,7 @@ export default function TeacherAttendancePanel({
       records,
     }),
   );
+  const navigationBlocker = useBlocker(hasUserChanges);
   const canSaveDiary = Boolean(
     activeRollCall &&
     baselineReady &&
@@ -517,6 +525,35 @@ export default function TeacherAttendancePanel({
     !editingDisabled &&
     (!hasPersistedSession || hasUserChanges),
   );
+
+  const requestContextChange = (change: () => void) => {
+    if (hasUserChanges) {
+      setPendingContextChange(() => change);
+      return;
+    }
+
+    change();
+  };
+
+  const cancelPendingNavigation = () => {
+    setPendingContextChange(null);
+    if (navigationBlocker.state === 'blocked') {
+      navigationBlocker.reset();
+    }
+  };
+
+  const discardAndContinue = () => {
+    if (pendingContextChange) {
+      const change = pendingContextChange;
+      setPendingContextChange(null);
+      change();
+      return;
+    }
+
+    if (navigationBlocker.state === 'blocked') {
+      navigationBlocker.proceed();
+    }
+  };
 
   useEffect(() => {
     if (!hasUserChanges) {
@@ -735,12 +772,15 @@ export default function TeacherAttendancePanel({
                 id="attendance-offering"
                 value={selectedOfferingId}
                 onChange={(event) => {
-                  setSelectedOfferingId(
-                    event.target.value,
-                  );
-                  setSelectedScheduleSlot(undefined);
-                  setSelectionTouched(true);
-                  setSuccessMessage('');
+                  const nextOfferingId = event.target.value;
+                  if (nextOfferingId === selectedOfferingId) return;
+
+                  requestContextChange(() => {
+                    setSelectedOfferingId(nextOfferingId);
+                    setSelectedScheduleSlot(undefined);
+                    setSelectionTouched(true);
+                    setSuccessMessage('');
+                  });
                 }}
                 className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2.5 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
               >
@@ -775,10 +815,15 @@ export default function TeacherAttendancePanel({
                   min={termStartDate ?? undefined}
                   max={termEndDate ?? undefined}
                   onChange={(event) => {
-                    setSessionDate(event.target.value);
-                    setSelectedScheduleSlot(undefined);
-                    setSuccessMessage('');
-                    setDateAdjustmentMessage('');
+                    const nextDate = event.target.value;
+                    if (nextDate === sessionDate) return;
+
+                    requestContextChange(() => {
+                      setSessionDate(nextDate);
+                      setSelectedScheduleSlot(undefined);
+                      setSuccessMessage('');
+                      setDateAdjustmentMessage('');
+                    });
                   }}
                   className="w-full bg-transparent text-sm text-[#181c20] outline-none dark:text-white"
                 />
@@ -798,8 +843,21 @@ export default function TeacherAttendancePanel({
                     const nextSlot = availableScheduleSlots.find(
                       (slot) => attendanceSlotKey(slot) === event.target.value,
                     );
-                    setSelectedScheduleSlot(nextSlot ? { startTime: nextSlot.startTime, endTime: nextSlot.endTime } : undefined);
-                    setSuccessMessage('');
+                    const nextSelection = nextSlot
+                      ? { startTime: nextSlot.startTime, endTime: nextSlot.endTime }
+                      : undefined;
+                    const nextKey = nextSelection
+                      ? attendanceSlotKey(nextSelection)
+                      : '';
+                    const currentKey = selectedScheduleSlot
+                      ? attendanceSlotKey(selectedScheduleSlot)
+                      : '';
+                    if (nextKey === currentKey) return;
+
+                    requestContextChange(() => {
+                      setSelectedScheduleSlot(nextSelection);
+                      setSuccessMessage('');
+                    });
                   }}
                   className="mt-1 w-full rounded-lg border border-[#dfe3e8] bg-white px-3 py-2.5 text-sm text-[#181c20] outline-none transition-colors focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
                 >
@@ -885,7 +943,7 @@ export default function TeacherAttendancePanel({
                     field.setValue(event.target.value);
                     setSuccessMessage('');
                   }}
-                  disabled={editingDisabled}
+                  disabled={formEditingDisabled}
                   rows={2}
                   placeholder={field.placeholder}
                   className="mt-1 w-full resize-y rounded-lg border border-[#dfe3e8] bg-white px-3 py-2 text-sm text-[#181c20] outline-none transition-colors placeholder:text-[#8a93a3] focus:border-[#005bbf] focus:ring-2 focus:ring-blue-100 disabled:cursor-not-allowed disabled:bg-[#f7f9fc] dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:disabled:bg-slate-950"
@@ -990,7 +1048,7 @@ export default function TeacherAttendancePanel({
                     disabled={
                       records.length === 0 ||
                       saveMutation.isPending ||
-                      editingDisabled
+                      formEditingDisabled
                     }
                     className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#c8d4e3] px-3 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto dark:border-slate-700 dark:text-blue-300 dark:hover:bg-blue-950/40"
                   >
@@ -1066,7 +1124,7 @@ export default function TeacherAttendancePanel({
                                 editableRecord?.status ??
                                 record.status
                               }
-                              disabled={editingDisabled}
+                              disabled={formEditingDisabled}
                               onChange={(event) =>
                                 updateRecord(
                                   record.student.id,
@@ -1112,7 +1170,7 @@ export default function TeacherAttendancePanel({
                               value={
                                 editableRecord?.notes ?? ''
                               }
-                              disabled={editingDisabled}
+                              disabled={formEditingDisabled}
                               onChange={(event) =>
                                 updateRecord(
                                   record.student.id,
@@ -1197,6 +1255,41 @@ export default function TeacherAttendancePanel({
             </div>
           </div>
         </form>
+      )}
+
+      {(navigationBlocker.state === 'blocked' || pendingContextChange) && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/45 p-4" role="presentation">
+          <section
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="diary-unsaved-title"
+            aria-describedby="diary-unsaved-description"
+            className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-5 shadow-xl dark:border-slate-700 dark:bg-slate-900"
+          >
+            <h2 id="diary-unsaved-title" className="text-base font-bold text-slate-900 dark:text-white">
+              Alterações não salvas
+            </h2>
+            <p id="diary-unsaved-description" className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+              Você possui alterações não salvas neste Diário de Classe. Deseja continuar editando ou descartá-las?
+            </p>
+            <div className="mt-5 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+              <button
+                type="button"
+                onClick={cancelPendingNavigation}
+                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
+              >
+                Continuar editando
+              </button>
+              <button
+                type="button"
+                onClick={discardAndContinue}
+                className="rounded-lg bg-red-700 px-4 py-2 text-sm font-semibold text-white hover:bg-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900"
+              >
+                Descartar alterações
+              </button>
+            </div>
+          </section>
+        </div>
       )}
     </section>
   );

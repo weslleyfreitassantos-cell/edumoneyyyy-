@@ -10,11 +10,12 @@ import {
 } from 'react';
 
 import {
-  BrowserRouter,
+  createBrowserRouter,
   Navigate,
   Outlet,
   Route,
   Routes,
+  RouterProvider,
   useLocation,
 } from 'react-router-dom';
 
@@ -808,6 +809,27 @@ function AppRoutes() {
   );
 }
 
+function AppRouteProviders() {
+  return (
+    <AuthProvider>
+      <InstitutionProvider>
+        <ThemeProvider>
+          <Suspense fallback={<PageLoading />}>
+            <AppRoutes />
+          </Suspense>
+        </ThemeProvider>
+      </InstitutionProvider>
+    </AuthProvider>
+  );
+}
+
+const appRouter = createBrowserRouter([
+  {
+    path: '*',
+    element: <AppRouteProviders />,
+  },
+]);
+
 function App() {
   useEffect(() => {
     const idleWindow = window as Window & {
@@ -837,19 +859,7 @@ function App() {
       <QueryClientProvider
         client={queryClient}
       >
-        <BrowserRouter>
-          <AuthProvider>
-            <InstitutionProvider>
-              <ThemeProvider>
-                <Suspense
-                  fallback={<PageLoading />}
-                >
-                  <AppRoutes />
-                </Suspense>
-              </ThemeProvider>
-            </InstitutionProvider>
-          </AuthProvider>
-        </BrowserRouter>
+        <RouterProvider router={appRouter} />
       </QueryClientProvider>
     </AppErrorBoundary>
   );
