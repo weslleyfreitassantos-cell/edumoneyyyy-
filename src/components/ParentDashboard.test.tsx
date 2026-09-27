@@ -268,4 +268,67 @@ describe('ParentDashboard', () => {
     expect(screen.queryByText('Registro 2026-EM-1A-001')).toBeNull();
     expect(screen.getByRole('button', { name: /Ana Silva/ }).getAttribute('aria-pressed')).toBe('true');
   });
+
+  it('mostra nomes dos profiles no seletor e mantém fallback só para quem não tem nome', () => {
+    const namedStudents = [
+      {
+        ...students[0],
+        student: {
+          ...students[0].student,
+          student: {
+            ...students[0].student.student,
+            profile: {
+              ...students[0].student.student.profile!,
+              full_name: 'Maria da Silva',
+            },
+          },
+        },
+      },
+      {
+        ...students[1],
+        student: {
+          ...students[1].student,
+          student: {
+            ...students[1].student.student,
+            profile: {
+              ...students[1].student.student.profile!,
+              full_name: 'João da Silva',
+            },
+          },
+        },
+      },
+      {
+        ...students[1],
+        guardianship_id: 'guardianship-no-name',
+        student: {
+          ...students[1].student,
+          student: {
+            ...students[1].student.student,
+            id: 'student-no-name',
+            profile: null,
+          },
+        },
+      },
+    ];
+    vi.mocked(useGuardianDashboard).mockReturnValue({
+      data: { students: namedStudents },
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/guardian/grades']}>
+        <ParentDashboard />
+      </MemoryRouter>,
+    );
+
+    const selector = screen.getByLabelText('Dependente') as HTMLSelectElement;
+    const options = Array.from(selector.options).map((option) => option.textContent);
+
+    expect(options[0]).toContain('Maria da Silva');
+    expect(options[1]).toContain('João da Silva');
+    expect(options[2]).toContain('Aluno sem nome informado');
+    expect(screen.getByText('Maria da Silva')).toBeTruthy();
+  });
 });

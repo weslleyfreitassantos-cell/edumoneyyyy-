@@ -1,11 +1,16 @@
 import { describe, expect, it, vi } from 'vitest';
 
+const { supabaseFrom } = vi.hoisted(() => ({
+  supabaseFrom: vi.fn(),
+}));
+
 vi.mock('../lib/supabaseClient', () => ({
-  supabase: {},
+  supabase: { from: supabaseFrom },
 }));
 
 import {
   filterStudentOfferingsToCurrentTerm,
+  studentDashboardService,
   type StudentDashboardOffering,
 } from './studentDashboardService';
 
@@ -75,5 +80,56 @@ describe('filterStudentOfferingsToCurrentTerm', () => {
     expect(result.map((offering) => offering.term_id)).toEqual([
       'term-1',
     ]);
+  });
+});
+
+describe('studentDashboardService dependent profile mapping', () => {
+  it('mapeia o nome real vindo da relação profiles do aluno vinculado', async () => {
+    const studentQuery = {
+      select: vi.fn(),
+      eq: vi.fn(),
+      maybeSingle: vi.fn(),
+    };
+    studentQuery.select.mockReturnValue(studentQuery);
+    studentQuery.eq.mockReturnValue(studentQuery);
+    studentQuery.maybeSingle.mockResolvedValue({
+      data: {
+        id: 'student-1',
+        profile_id: 'profile-student-1',
+        institution_id: 'institution-1',
+        registration_number: 'RA-001',
+        birth_date: null,
+        active: true,
+        created_at: '2026-01-01T00:00:00.000Z',
+        profiles: {
+          full_name: 'Maria da Silva',
+          email: 'maria@example.test',
+          avatar_url: null,
+        },
+      },
+      error: null,
+    });
+
+    const enrollmentQuery = {
+      select: vi.fn(),
+      eq: vi.fn(),
+      order: vi.fn(),
+    };
+    enrollmentQuery.select.mockReturnValue(enrollmentQuery);
+    enrollmentQuery.eq.mockReturnValue(enrollmentQuery);
+    enrollmentQuery.order.mockResolvedValue({ data: [], error: null });
+
+    supabaseFrom.mockImplementation((table: string) =>
+      table === 'students' ? studentQuery : enrollmentQuery,
+    );
+
+    const result = await studentDashboardService.getDashboardByStudentId(
+      'student-1',
+      'institution-1',
+    );
+
+    expect(result.student.profile?.full_name).toBe('Maria da Silva');
+    expect(supabaseFrom).toHaveBeenCalledWith('students');
+    expect(supabaseFrom).toHaveBeenCalledWith('enrollments');
   });
 });

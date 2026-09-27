@@ -1,6 +1,7 @@
 import {
   useEffect,
   useMemo,
+  useRef,
   useState,
   type FormEvent,
 } from 'react';
@@ -42,6 +43,16 @@ interface EditableAttendanceRecord {
   notes: string;
 }
 
+interface DiaryFormBaseline {
+  contextKey: string;
+  hasPersistedSession: boolean;
+  topic: string;
+  classActivity: string;
+  homework: string;
+  notes: string;
+  records: Map<string, string>;
+}
+
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     return error.message;
@@ -57,6 +68,57 @@ function getRecordKey(
   >,
 ): string {
   return `${record.status}:${record.notes.trim()}`;
+}
+
+function createDiaryFormBaseline(
+  contextKey: string,
+  hasPersistedSession: boolean,
+  values: {
+    topic: string;
+    classActivity: string;
+    homework: string;
+    notes: string;
+    records: readonly EditableAttendanceRecord[];
+  },
+): DiaryFormBaseline {
+  return {
+    contextKey,
+    hasPersistedSession,
+    topic: values.topic,
+    classActivity: values.classActivity,
+    homework: values.homework,
+    notes: values.notes,
+    records: new Map(
+      values.records.map((record) => [
+        record.studentId,
+        getRecordKey(record),
+      ]),
+    ),
+  };
+}
+
+function hasDiaryFormChanges(
+  baseline: DiaryFormBaseline,
+  values: {
+    topic: string;
+    classActivity: string;
+    homework: string;
+    notes: string;
+    records: readonly EditableAttendanceRecord[];
+  },
+): boolean {
+  return (
+    values.topic !== baseline.topic ||
+    values.classActivity !== baseline.classActivity ||
+    values.homework !== baseline.homework ||
+    values.notes !== baseline.notes ||
+    values.records.length !== baseline.records.size ||
+    values.records.some(
+      (record) =>
+        baseline.records.get(record.studentId) !==
+        getRecordKey(record),
+    )
+  );
 }
 
 function formatWorkloadMinutes(minutes: number): string {
@@ -290,6 +352,16 @@ export default function TeacherAttendancePanel({
   const activeRollCall = slotRequired
     ? undefined
     : rollCallQuery.data;
+  const formContextKey = JSON.stringify([
+    institutionId ?? '',
+    selectedOfferingId,
+    sessionDate,
+    selectedScheduleSlot
+      ? attendanceSlotKey(selectedScheduleSlot)
+      : '',
+  ]);
+  const formBaselineRef = useRef<DiaryFormBaseline | null>(null);
+  const processedQueryVersionRef = useRef<string | null>(null);
   const selectedSlot = selectedScheduleSlot
     ? availableScheduleSlots.find(
         (slot) =>
@@ -331,40 +403,83 @@ export default function TeacherAttendancePanel({
   }, [records]);
 
   useEffect(() => {
-    if (!activeRollCall) {
-      setRecords([]);
+    const queryVersion = `${formContextKey}:${rollCallQuery.dataUpdatedAt}`;
+
+    if (processedQueryVersionRef.current === queryVersion) {
       return;
     }
 
-    setRecords(
-      activeRollCall.records.map((record) => ({
-        studentId: record.student.id,
-        status: record.status,
-        notes: record.notes ?? '',
-      })),
-    );
-    setTopic(activeRollCall.session?.topic ?? '');
-    setClassActivity(activeRollCall.session?.classActivity ?? '');
-    setHomework(activeRollCall.session?.homework ?? '');
-    setNotes(activeRollCall.session?.notes ?? '');
-    setSuccessMessage('');
-  }, [rollCallQuery.dataUpdatedAt, activeRollCall]);
+    processedQueryVersionRef.current = queryVersion;
 
-  const originalRecords = useMemo(() => {
-    const values = new Map<string, string>();
+    const currentBaseline = formBaselineRef.current;
+    const isSameContext =
+      currentBaseline?.contextKey === formContextKey;
 
-    for (const record of activeRollCall?.records ?? []) {
-      values.set(
-        record.student.id,
-        getRecordKey({
-          status: record.status,
-          notes: record.notes ?? '',
-        }),
-      );
+    if (!activeRollCall) {
+      if (!isSameContext) {
+        formBaselineRef.current = null;
+        setRecords([]);
+        setTopic('');
+        setClassActivity('');
+        setHomework('');
+        setNotes('');
+        setSuccessMessage('');
+      }
+
+      return;
     }
 
-    return values;
-  }, [activeRollCall]);
+    const currentValues = {
+      topic,
+      classActivity,
+      homework,
+      notes,
+      records,
+    };
+    const hasCurrentUserChanges = Boolean(
+      isSameContext &&
+      currentBaseline &&
+      hasDiaryFormChanges(currentBaseline, currentValues),
+    );
+
+    if (hasCurrentUserChanges) {
+      return;
+    }
+
+    const nextRecords = activeRollCall.records.map((record) => ({
+      studentId: record.student.id,
+      status: record.status,
+      notes: record.notes ?? '',
+    }));
+    const nextValues = {
+      topic: activeRollCall.session?.topic ?? '',
+      classActivity: activeRollCall.session?.classActivity ?? '',
+      homework: activeRollCall.session?.homework ?? '',
+      notes: activeRollCall.session?.notes ?? '',
+      records: nextRecords,
+    };
+
+    formBaselineRef.current = createDiaryFormBaseline(
+      formContextKey,
+      Boolean(activeRollCall.session),
+      nextValues,
+    );
+    setRecords(nextRecords);
+    setTopic(nextValues.topic);
+    setClassActivity(nextValues.classActivity);
+    setHomework(nextValues.homework);
+    setNotes(nextValues.notes);
+    setSuccessMessage('');
+  }, [
+    activeRollCall,
+    classActivity,
+    formContextKey,
+    homework,
+    notes,
+    records,
+    rollCallQuery.dataUpdatedAt,
+    topic,
+  ]);
 
   const recordsByStudentId = useMemo(
     () =>
@@ -377,20 +492,34 @@ export default function TeacherAttendancePanel({
     [records],
   );
 
-  const hasUnsavedChanges =
-    (!activeRollCall?.session && records.length > 0) ||
-    topic !== (activeRollCall?.session?.topic ?? '') ||
-    classActivity !== (activeRollCall?.session?.classActivity ?? '') ||
-    homework !== (activeRollCall?.session?.homework ?? '') ||
-    notes !== (activeRollCall?.session?.notes ?? '') ||
-    records.some(
-      (record) =>
-        originalRecords.get(record.studentId) !==
-        getRecordKey(record),
-    );
+  const formBaseline = formBaselineRef.current;
+  const baselineReady =
+    formBaseline?.contextKey === formContextKey;
+  const hasPersistedSession = Boolean(
+    activeRollCall?.session ||
+    (baselineReady && formBaseline?.hasPersistedSession),
+  );
+  const hasUserChanges = Boolean(
+    baselineReady &&
+    formBaseline &&
+    hasDiaryFormChanges(formBaseline, {
+      topic,
+      classActivity,
+      homework,
+      notes,
+      records,
+    }),
+  );
+  const canSaveDiary = Boolean(
+    activeRollCall &&
+    baselineReady &&
+    records.length > 0 &&
+    !editingDisabled &&
+    (!hasPersistedSession || hasUserChanges),
+  );
 
   useEffect(() => {
-    if (!hasUnsavedChanges) {
+    if (!hasUserChanges) {
       return;
     }
 
@@ -405,7 +534,7 @@ export default function TeacherAttendancePanel({
         'beforeunload',
         handleBeforeUnload,
       );
-  }, [hasUnsavedChanges]);
+  }, [hasUserChanges]);
 
   const updateRecord = (
     studentId: string,
@@ -460,6 +589,17 @@ export default function TeacherAttendancePanel({
       return;
     }
 
+    const savedRecords = records.map((record) => ({
+      ...record,
+    }));
+    const savedValues = {
+      topic,
+      classActivity,
+      homework,
+      notes,
+      records: savedRecords,
+    };
+
     await saveMutation.mutateAsync({
       institutionId,
       subjectOfferingId: selectedOfferingId,
@@ -477,6 +617,12 @@ export default function TeacherAttendancePanel({
         notes: record.notes,
       })),
     });
+
+    formBaselineRef.current = createDiaryFormBaseline(
+      formContextKey,
+      true,
+      savedValues,
+    );
 
     setSuccessMessage(
       action === 'FINALIZE'
@@ -868,8 +1014,8 @@ export default function TeacherAttendancePanel({
                           record.student.id,
                         );
                       const isDirty =
-                        Boolean(editableRecord) &&
-                        originalRecords.get(
+                        Boolean(editableRecord && baselineReady && formBaseline) &&
+                        formBaseline?.records.get(
                           record.student.id,
                         ) !==
                           getRecordKey(
@@ -1007,11 +1153,13 @@ export default function TeacherAttendancePanel({
 
           <div className="flex flex-col gap-3 border-t border-[#dfe3e8] bg-white/95 pt-3 backdrop-blur-sm md:sticky md:bottom-0 md:z-10 md:flex-row md:items-center md:justify-between dark:border-slate-800 dark:bg-slate-900/95">
             <div role="status" aria-live="polite" className="text-xs font-semibold text-[#727785] dark:text-slate-400">
-              {hasUnsavedChanges ? (
+              {hasUserChanges ? (
                 <span className="inline-flex items-center gap-2 text-amber-700 dark:text-amber-300">
                   <span className="h-2 w-2 rounded-full bg-amber-500" aria-hidden="true" />
                   Alterações não salvas
                 </span>
+              ) : !hasPersistedSession && baselineReady && records.length > 0 ? (
+                'Chamada pronta para preenchimento'
               ) : (
                 'Tudo salvo'
               )}
@@ -1022,9 +1170,7 @@ export default function TeacherAttendancePanel({
               onClick={() => void saveDiary('SAVE_DRAFT')}
               disabled={
                 saveMutation.isPending ||
-                records.length === 0 ||
-                !hasUnsavedChanges ||
-                editingDisabled
+                !canSaveDiary
               }
               className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-semibold text-[#005bbf] transition-colors hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto dark:border-blue-400 dark:text-blue-300 dark:hover:bg-blue-950/40"
             >
@@ -1036,9 +1182,7 @@ export default function TeacherAttendancePanel({
               aria-label="Finalizar aula (Salvar chamada)"
               disabled={
                 saveMutation.isPending ||
-                records.length === 0 ||
-                !hasUnsavedChanges ||
-                editingDisabled
+                !canSaveDiary
               }
               className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#004a99] disabled:cursor-not-allowed disabled:bg-[#9db9dc] sm:w-auto"
             >
