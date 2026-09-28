@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 const baseURL = process.env.PROD_SMOKE_BASE_URL;
 const users = process.env.PROD_SMOKE_USERS_JSON;
@@ -16,6 +18,8 @@ if (!users) {
 export default defineConfig({
   testDir: '.',
   testMatch: 'production-smoke.pw.ts',
+  outputDir: process.env.PROD_SMOKE_OUTPUT_DIR ?? join(tmpdir(), 'tecescola-production-smoke'),
+  preserveOutput: 'never',
   fullyParallel: false,
   workers: 1,
   retries: 0,

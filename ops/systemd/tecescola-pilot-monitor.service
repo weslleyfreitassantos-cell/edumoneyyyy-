@@ -1,0 +1,16 @@
+[Unit]
+Description=TecEscola production pilot health checks
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+StateDirectory=tecescola-pilot-monitor
+StateDirectoryMode=0700
+ExecStart=/usr/bin/python3 /srv/grupotec/bin/tecescola_pilot_monitor.py
+TimeoutStartSec=60
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=read-only
+NoNewPrivileges=true

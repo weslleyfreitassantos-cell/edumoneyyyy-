@@ -30,20 +30,35 @@ function observeRuntime(page: import('@playwright/test').Page) {
   const consoleErrors: string[] = [];
   const pageErrors: string[] = [];
   const failedRequests: string[] = [];
+  const abortedRequests: string[] = [];
   const httpFailures: string[] = [];
+  let routeTransitionDepth = 0;
+  const duringRouteTransition = async <T>(run: () => Promise<T>): Promise<T> => {
+    routeTransitionDepth += 1;
+    try {
+      return await run();
+    } finally {
+      routeTransitionDepth -= 1;
+    }
+  };
 
   page.on('console', (message) => {
     if (message.type() === 'error') consoleErrors.push('console.error');
   });
   page.on('pageerror', () => pageErrors.push('pageerror'));
-  page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${safePath(request.url())}`));
+  page.on('requestfailed', (request) => {
+    const failure = request.failure()?.errorText ?? 'unknown';
+    const detail = `${failure} ${request.method()} ${safePath(request.url())}`;
+    if (failure === 'net::ERR_ABORTED' && routeTransitionDepth > 0) abortedRequests.push(detail);
+    else failedRequests.push(detail);
+  });
   page.on('response', (response) => {
     if (response.status() >= 400) {
       httpFailures.push(`${response.status()} ${response.request().method()} ${safePath(response.url())}`);
     }
   });
 
-  return { consoleErrors, pageErrors, failedRequests, httpFailures };
+  return { consoleErrors, pageErrors, failedRequests, abortedRequests, httpFailures, duringRouteTransition };
 }
 
 async function setSensitiveInputValue(
@@ -73,8 +88,10 @@ async function attachObservations(
 test('unauthenticated academic route returns to login', async ({ page }) => {
   const observations = observeRuntime(page);
   try {
-    await page.goto('/dashboard/class-diary');
-    await expect(page).toHaveURL(/\/login(?:[/?#]|$)/);
+    await observations.duringRouteTransition(async () => {
+      await page.goto('/dashboard/class-diary');
+      await expect(page).toHaveURL(/\/login(?:[/?#]|$)/);
+    });
     expect(observations.consoleErrors).toEqual([]);
     expect(observations.pageErrors).toEqual([]);
     expect(observations.failedRequests).toEqual([]);
@@ -88,8 +105,10 @@ test('password recovery entry point is available without sending mail', async ({
   const observations = observeRuntime(page);
   try {
     await page.goto('/login');
-    await page.getByRole('link', { name: 'Esqueci minha senha' }).click();
-    await expect(page).toHaveURL(/\/forgot-password/);
+    await observations.duringRouteTransition(async () => {
+      await page.getByRole('link', { name: 'Esqueci minha senha' }).click();
+      await expect(page).toHaveURL(/\/forgot-password/);
+    });
     await expect(page.getByLabel('E-mail institucional')).toBeVisible();
     await expect(page.getByRole('button').first()).toBeVisible();
     expect(observations.consoleErrors).toEqual([]);
@@ -109,11 +128,15 @@ for (const user of pilotUsers) {
       await expect(page.getByLabel('E-mail institucional')).toBeVisible();
       await setSensitiveInputValue(page.getByLabel('E-mail institucional'), user.email);
       await setSensitiveInputValue(page.getByLabel('Senha', { exact: true }), user.password);
-      await page.getByRole('button', { name: 'Entrar no sistema' }).click();
-      await expect(page).toHaveURL((url) => url.pathname.startsWith('/dashboard'));
+      await observations.duringRouteTransition(async () => {
+        await page.getByRole('button', { name: 'Entrar no sistema' }).click();
+        await expect(page).toHaveURL((url) => url.pathname.startsWith('/dashboard'));
+      });
       await expect(page.getByRole('button', { name: 'Sair' })).toBeVisible({ timeout: 20_000 });
-      await page.getByRole('button', { name: 'Sair' }).click();
-      await expect(page).toHaveURL(/\/login(?:[/?#]|$)/);
+      await observations.duringRouteTransition(async () => {
+        await page.getByRole('button', { name: 'Sair' }).click();
+        await expect(page).toHaveURL(/\/login(?:[/?#]|$)/);
+      });
 
       expect(observations.consoleErrors).toEqual([]);
       expect(observations.pageErrors).toEqual([]);
