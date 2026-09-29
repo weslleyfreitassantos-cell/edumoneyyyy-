@@ -1116,7 +1116,7 @@ $$;
 
 do $$
 declare
-  package_id uuid;
+  v_package_id uuid;
   lesson_row record;
 begin
   for lesson_row in
@@ -1127,23 +1127,23 @@ begin
      where lesson.version = 1 and lesson.active
      order by canonical.grade_level, canonical.title
   loop
-    select package.id into package_id from public.learning_packages package where package.title = lesson_row.title and package.visibility = 'GLOBAL' limit 1;
-    if package_id is null then
+    select package.id into v_package_id from public.learning_packages package where package.title = lesson_row.title and package.visibility = 'GLOBAL' limit 1;
+    if v_package_id is null then
       insert into public.learning_packages(package_type, visibility, title, description, subject_area)
       values ('TECESCOLA', 'GLOBAL', lesson_row.title, 'Trilha curta para construir segurança passo a passo.', lesson_row.subject_area)
-      returning id into package_id;
+      returning id into v_package_id;
     end if;
     insert into public.learning_package_steps(package_id, position, step_type, lesson_id, title)
-    values (package_id, 0, 'LESSON', lesson_row.id, lesson_row.title)
+    values (v_package_id, 0, 'LESSON', lesson_row.id, lesson_row.title)
     on conflict (package_id, position) do nothing;
   end loop;
 
-  select package.id into package_id from public.learning_packages package where package.title = 'Preparação Matemática ENEM — Fundamentos' and package.visibility = 'GLOBAL' limit 1;
-  if package_id is null then
+  select package.id into v_package_id from public.learning_packages package where package.title = 'Preparação Matemática ENEM — Fundamentos' and package.visibility = 'GLOBAL' limit 1;
+  if v_package_id is null then
     insert into public.learning_packages(package_type, visibility, title, description, subject_area)
-    values ('TECESCOLA', 'GLOBAL', 'Preparação Matemática ENEM — Fundamentos', 'Percurso de fundamentos para interpretar problemas matemáticos.', 'MATEMATICA') returning id into package_id;
+    values ('TECESCOLA', 'GLOBAL', 'Preparação Matemática ENEM — Fundamentos', 'Percurso de fundamentos para interpretar problemas matemáticos.', 'MATEMATICA') returning id into v_package_id;
     insert into public.learning_package_steps(package_id, position, step_type, lesson_id, title)
-    select package_id, row_number() over (order by lesson.id) - 1, 'LESSON', lesson.id, lesson.title
+    select v_package_id, row_number() over (order by lesson.id) - 1, 'LESSON', lesson.id, lesson.title
       from public.learning_skill_lessons lesson
       join public.learning_curriculum_skills canonical on canonical.id = lesson.canonical_skill_id
       join public.learning_curriculum_catalogs catalog on catalog.id = canonical.catalog_id and catalog.code = 'TECESCOLA_CORE'
