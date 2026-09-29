@@ -760,6 +760,35 @@ grant select on table public.learning_attempt_run_answers to authenticated;
 grant select on table public.learning_skill_evidence to authenticated;
 grant select on table public.learning_student_skill_state to authenticated;
 
+-- The service role is used by trusted server-side fixture/bootstrap paths. Keep
+-- its table privileges explicit because bypassrls does not bypass table grants.
+grant all on table
+  public.academic_years,
+  public.terms,
+  public.classes,
+  public.subjects,
+  public.subject_offerings,
+  public.enrollments,
+  public.learning_units,
+  public.learning_skills,
+  public.learning_activities,
+  public.learning_questions,
+  public.learning_assignments,
+  public.learning_attempts,
+  public.learning_answers,
+  public.learning_skill_progress,
+  public.learning_curriculum_catalogs,
+  public.learning_curriculum_skills,
+  public.learning_skill_prerequisites,
+  public.learning_skill_canonical_links,
+  public.learning_curriculum_subject_links,
+  public.learning_curriculum_grade_targets,
+  public.learning_attempt_runs,
+  public.learning_attempt_run_answers,
+  public.learning_skill_evidence,
+  public.learning_student_skill_state
+to service_role;
+
 create policy learning_curriculum_catalogs_select
 on public.learning_curriculum_catalogs for select to authenticated
 using (active is true);
