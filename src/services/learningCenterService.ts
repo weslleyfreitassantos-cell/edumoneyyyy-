@@ -85,7 +85,7 @@ export interface LearningQuestion {
     | 'SHORT_ANSWER';
   options_json: string[];
   correct_answer_json?: unknown;
-  explanation: string | null;
+  explanation?: string | null;
   points: number;
   sort_order: number;
 }
