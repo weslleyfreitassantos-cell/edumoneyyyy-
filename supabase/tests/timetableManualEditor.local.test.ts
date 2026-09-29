@@ -33,7 +33,11 @@ async function actor(db: Db, institutionId: string, role: 'DIRECTOR' | 'SECRETAR
 }
 
 runtimeDescribe('manual timetable editor runtime database contract', () => {
-  const suffix = Date.now().toString(36);
+  const suffix = [
+    process.env.GITHUB_RUN_ID ?? 'local',
+    process.env.GITHUB_RUN_ATTEMPT ?? '0',
+    Date.now().toString(36),
+  ].join('-');
   let service: Db;
   let institutionA: string;
   let institutionB: string;
