@@ -98,7 +98,7 @@ manualDescribe('manual timetable editor v2', () => {
       await expect(page.getByText('Grade publicada.', { exact: false })).toBeVisible({ timeout: 30_000 });
 
       await page.reload();
-      await expect(page.getByText('PUBLICADA', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByText('PUBLISHED', { exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       void offeringId;
     } finally {
