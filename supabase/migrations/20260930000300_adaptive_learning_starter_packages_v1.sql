@@ -23,9 +23,9 @@ begin
       ('LINEAR_FUNCTION', 'Função Afim', 'Percurso curto para interpretar lei, gráfico e variação de uma função afim.')
     ) as starter(code, title, description)
   loop
-    v_code := starter.code;
-    v_title := starter.title;
-    v_description := starter.description;
+    v_code := item.code;
+    v_title := item.title;
+    v_description := item.description;
 
     select canonical.id, lesson.id
       into v_skill_id, v_lesson_id
