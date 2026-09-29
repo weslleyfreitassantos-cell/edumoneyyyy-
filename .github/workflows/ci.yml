@@ -109,7 +109,17 @@ jobs:
           PY
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,storage-api,studio,supavisor,vector
+        run: npx supabase start --debug --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,storage-api,studio,supavisor,vector
+
+      - name: Diagnosticar containers Supabase em falha
+        if: failure()
+        shell: bash
+        run: |
+          docker ps -a --no-trunc || true
+          for container in $(docker ps -aq); do
+            docker inspect --format '{{.Name}} {{.State.Status}} {{.State.ExitCode}}' "$container" || true
+            docker logs "$container" 2>&1 | tail -n 80 || true
+          done
 
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
