@@ -92,6 +92,10 @@ jobs:
 
           path = Path("supabase/config.toml")
           config = path.read_text()
+          project_id = 'project_id = "edumoneyyyy-"'
+          if project_id not in config:
+              raise SystemExit("Missing expected Supabase project_id")
+          config = config.replace(project_id, 'project_id = "edumoneyyyy-ci"', 1)
           replacements = {
               "[realtime]\nenabled = true": "[realtime]\nenabled = false",
               "[local_smtp]\nenabled = true": "[local_smtp]\nenabled = false",
@@ -109,17 +113,7 @@ jobs:
           PY
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --debug --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,storage-api,studio,supavisor,vector
-
-      - name: Diagnosticar containers Supabase em falha
-        if: failure()
-        shell: bash
-        run: |
-          docker ps -a --no-trunc || true
-          for container in $(docker ps -aq); do
-            docker inspect --format '{{.Name}} {{.State.Status}} {{.State.ExitCode}}' "$container" || true
-            docker logs "$container" 2>&1 | tail -n 80 || true
-          done
+        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,storage-api,studio,supavisor,vector
 
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
