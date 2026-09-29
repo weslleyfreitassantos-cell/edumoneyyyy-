@@ -83,8 +83,33 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Preparar stack mínimo do Supabase para CI
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("supabase/config.toml")
+          config = path.read_text()
+          replacements = {
+              "[realtime]\nenabled = true": "[realtime]\nenabled = false",
+              "[local_smtp]\nenabled = true": "[local_smtp]\nenabled = false",
+              "[storage]\nenabled = true": "[storage]\nenabled = false",
+              "[edge_runtime]\nenabled = true": "[edge_runtime]\nenabled = false",
+              "[analytics]\nenabled = true": "[analytics]\nenabled = false",
+          }
+
+          for current, replacement in replacements.items():
+              if current not in config:
+                  raise SystemExit(f"Missing expected Supabase config block: {current.splitlines()[0]}")
+              config = config.replace(current, replacement, 1)
+
+          path.write_text(config)
+          PY
+
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude analytics,edge-runtime,functions,imgproxy,inbucket,realtime,storage,studio,vector
+        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,storage-api,studio,supavisor,vector
 
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
