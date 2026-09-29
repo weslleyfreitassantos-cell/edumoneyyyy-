@@ -9,6 +9,9 @@ declare
   v_skill_id uuid;
   v_lesson_id uuid;
   v_package_id uuid;
+  v_code text;
+  v_title text;
+  v_description text;
 begin
   for item in
     select * from (values
@@ -20,6 +23,10 @@ begin
       ('LINEAR_FUNCTION', 'Função Afim', 'Percurso curto para interpretar lei, gráfico e variação de uma função afim.')
     ) as starter(code, title, description)
   loop
+    v_code := starter.code;
+    v_title := starter.title;
+    v_description := starter.description;
+
     select canonical.id, lesson.id
       into v_skill_id, v_lesson_id
       from public.learning_curriculum_skills canonical
@@ -31,18 +38,18 @@ begin
         on lesson.canonical_skill_id = canonical.id
        and lesson.version = 1
        and lesson.active
-     where canonical.code = starter.code
+     where canonical.code = v_code
        and canonical.active
      limit 1;
 
     if v_skill_id is null or v_lesson_id is null then
-      raise exception 'TECESCOLA_STARTER_LESSON_MISSING:%', starter.code;
+      raise exception 'TECESCOLA_STARTER_LESSON_MISSING:%', v_code;
     end if;
 
     select package.id
       into v_package_id
       from public.learning_packages package
-     where package.title = starter.title
+     where package.title = v_title
        and package.package_type = 'TECESCOLA'
        and package.visibility = 'GLOBAL'
      limit 1;
@@ -64,7 +71,7 @@ begin
         package_type, visibility, title, description, subject_area, metadata
       )
       select
-        'TECESCOLA', 'GLOBAL', starter.title, starter.description,
+        'TECESCOLA', 'GLOBAL', v_title, v_description,
         canonical.subject_area,
         jsonb_build_object('starter_package', true, 'catalog', 'TECESCOLA_CORE_V1')
         from public.learning_curriculum_skills canonical
@@ -72,8 +79,8 @@ begin
       returning id into v_package_id;
     else
       update public.learning_packages
-         set title = starter.title,
-             description = starter.description,
+         set title = v_title,
+             description = v_description,
              active = true,
              subject_area = (select canonical.subject_area from public.learning_curriculum_skills canonical where canonical.id = v_skill_id),
              metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object('starter_package', true, 'catalog', 'TECESCOLA_CORE_V1'),
@@ -85,7 +92,7 @@ begin
       package_id, position, step_type, lesson_id, title, metadata
     )
     values (
-      v_package_id, 0, 'LESSON', v_lesson_id, starter.title,
+      v_package_id, 0, 'LESSON', v_lesson_id, v_title,
       jsonb_build_object('canonical_skill_id', v_skill_id)
     )
     on conflict (package_id, position) do update
