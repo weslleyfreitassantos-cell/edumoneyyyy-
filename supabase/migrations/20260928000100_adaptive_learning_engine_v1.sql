@@ -878,6 +878,9 @@ revoke all on function private.learning_student_owns_state(uuid, uuid) from publ
 revoke all on function private.learning_teacher_can_access_student(uuid, uuid, uuid) from public, anon, authenticated;
 revoke all on function private.learning_teacher_can_access_activity(uuid, uuid, uuid) from public, anon, authenticated;
 revoke all on function private.refresh_learning_student_skill_state(uuid, uuid, uuid) from public, anon, authenticated;
+grant execute on function private.learning_student_owns_state(uuid, uuid) to authenticated;
+grant execute on function private.learning_teacher_can_access_student(uuid, uuid, uuid) to authenticated;
+grant execute on function private.learning_teacher_can_access_activity(uuid, uuid, uuid) to authenticated;
 revoke all on function public.submit_learning_attempt(uuid, jsonb) from public, anon;
 revoke all on function public.list_student_learning_activities(uuid) from public, anon;
 revoke all on function public.get_teacher_adaptive_insights(uuid) from public, anon;
