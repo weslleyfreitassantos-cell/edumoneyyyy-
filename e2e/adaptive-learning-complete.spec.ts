@@ -194,7 +194,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(alicePage);
       await login(alicePage, alice);
       await alicePage.goto('/student/study');
-      await expect(alicePage.getByText('Fundamentos de Frações')).toBeVisible({ timeout: 30_000 });
+      await expect(alicePage.getByText('Fundamentos de Frações', { exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await alicePage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 
       const simulation = await service.from('learning_simulations').select('id,learning_simulation_questions(position,question_bank_id)').eq('title', 'Matemática · diagnóstico rápido').is('institution_id', null).single();
