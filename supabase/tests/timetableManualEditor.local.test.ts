@@ -19,7 +19,7 @@ async function insertOne(db: Db, table: string, row: Record<string, unknown>): P
 }
 
 async function actor(db: Db, institutionId: string, role: 'DIRECTOR' | 'SECRETARY' | 'TEACHER' | 'STUDENT', name: string, suffix: string) {
-  const email = `manual-timetable-${role.toLowerCase()}-${name.toLowerCase()}-${suffix}@local.test`;
+  const email = `manual.timetable.${role.toLowerCase()}.${name.toLowerCase()}.${suffix}@example.com`;
   const password = 'ManualTimetable!2026';
   const created = await db.auth.admin.createUser({ email, password, email_confirm: true });
   if (created.error) throw created.error;
