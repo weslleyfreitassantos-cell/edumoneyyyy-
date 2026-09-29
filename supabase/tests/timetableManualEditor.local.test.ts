@@ -90,9 +90,10 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
       await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
       await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
     }
+    await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: 3, slot_number: 3, start_time: '08:50', end_time: '09:40', active: true });
     await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
     await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 2, start_time: '07:00', end_time: '08:40', active: true });
-    await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 3, start_time: '07:00', end_time: '08:40', active: true });
+    await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 3, start_time: '07:00', end_time: '09:40', active: true });
     await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 4, start_time: '07:00', end_time: '08:40', active: true });
     await insertOne(director.client, 'school_schedule_breaks', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: 1, name: `Intervalo ${suffix}`, start_time: '07:50', end_time: '08:40', active: true });
 
@@ -175,7 +176,7 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
     const failedDouble = await director.client.rpc('add_timetable_draft_double_slot', {
       p_version_id: draftId, p_institution_id: institutionA, p_academic_year_id: yearA, p_term_id: termA,
       p_class_id: classB, p_subject_offering_id: mathOfferingB, p_room_id: roomA, p_day_of_week: 3,
-      p_start_time: '07:00', p_end_time: '07:50', p_next_start_time: '09:00', p_next_end_time: '09:50', p_locked: false,
+      p_start_time: '07:00', p_end_time: '07:50', p_next_start_time: '08:50', p_next_end_time: '09:40', p_locked: false,
     });
     expect(failedDouble.error?.message).toContain('TIMETABLE_DOUBLE_SLOT_NOT_CONSECUTIVE');
     const atomicAfter = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
