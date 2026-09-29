@@ -7,6 +7,7 @@ import { useCurriculum } from '../../hooks/useCurriculum';
 import { useSchoolScheduleBreaks } from '../../hooks/useAcademicTermClosing';
 import {
   useAddTimetableDraftEntry,
+  useAddTimetableDoubleSlot,
   useCopyTimetableDraftDay,
   useCreateManualTimetableDraft,
   useDuplicateTimetableDraftEntry,
@@ -20,7 +21,7 @@ import {
   useUpdateTimetableVersionEntry,
   useValidateTimetableDraft,
 } from '../../hooks/useAcademicAutomation';
-import type { TimetableVersionEntryRow } from '../../services/timetableAutomationService';
+import { buildTimetableVersionDiff, type TimetableVersionEntryRow } from '../../services/timetableAutomationService';
 import { getAcademicShiftLabel, normalizeAcademicShift } from '../../lib/academic/academicShifts';
 
 const DAYS = [1, 2, 3, 4, 5, 6];
@@ -35,6 +36,8 @@ function friendlyError(error: unknown): string {
     ['TIMETABLE_VERSION_NOT_DRAFT', 'A versão publicada é somente leitura. Crie um novo rascunho para editar.'],
     ['TIMETABLE_VERSION_FORBIDDEN', 'Seu perfil não pode editar a grade desta instituição.'],
     ['TIMETABLE_OFFERING_SCOPE_MISMATCH', 'A disciplina não pertence ao período ou turma selecionados.'],
+    ['TIMETABLE_DOUBLE_SLOT_NOT_CONSECUTIVE', 'Os horários escolhidos não são duas aulas consecutivas do mesmo turno.'],
+    ['TIMETABLE_SLOT_OCCUPIED', 'Uma das duas células já está ocupada para esta turma e período.'],
   ];
   return known.find(([code]) => message.toUpperCase().includes(code))?.[1] ?? (message || 'Não foi possível salvar a alteração.');
 }
@@ -76,6 +79,10 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
   const selectedVersionId = versionId || versions[0]?.id || '';
   const selectedVersion = versions.find((version) => version.id === selectedVersionId);
   const entriesQuery = useTimetableVersionEntries(institutionId, selectedVersionId);
+  const comparisonVersionId = selectedVersion?.source_version_id
+    ?? versions.find((version) => version.status === 'PUBLISHED' && version.id !== selectedVersionId)?.id
+    ?? '';
+  const comparisonEntriesQuery = useTimetableVersionEntries(institutionId, comparisonVersionId);
   const editorContextQuery = useTimetableEditorContext({ institutionId, academicYearId: selectedYearId, classId: selectedClassId, termId: selectedTermId });
   const editorContext = editorContextQuery.data;
   const curriculum = (curriculumQuery.data ?? []).filter((item) => item.class_id === selectedClassId && item.active);
@@ -97,6 +104,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
 
   const createDraft = useCreateManualTimetableDraft();
   const addEntry = useAddTimetableDraftEntry();
+  const addDoubleSlot = useAddTimetableDoubleSlot();
   const duplicateEntry = useDuplicateTimetableDraftEntry();
   const updateEntry = useUpdateTimetableVersionEntry();
   const removeEntry = useRemoveTimetableDraftEntry();
@@ -104,6 +112,12 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
   const validateDraft = useValidateTimetableDraft();
   const publishVersion = usePublishTimetableVersion();
   const deleteVersion = useDeleteTimetableVersion();
+
+  async function refreshHealth(): Promise<void> {
+    if (!selectedVersion || selectedVersion.status !== 'DRAFT') return;
+    const result = await validateDraft.mutateAsync({ versionId: selectedVersion.id, institutionId });
+    setValidation(result);
+  }
 
   useEffect(() => {
     if (yearId && !years.some((year) => year.id === yearId)) setYearId('');
@@ -196,6 +210,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
         const entry = versionEntries.find((item) => item.id === payload.entryId);
         if (!entry || (entry.day_of_week === day && shortTime(entry.start_time) === start && shortTime(entry.end_time) === end)) return;
         await updateEntry.mutateAsync({ id: entry.id, versionId: selectedVersion.id, institutionId, dayOfWeek: day, startTime: start, endTime: end, locked: entry.locked, roomId: entry.room_id });
+        await refreshHealth();
         setNotice(`${entry.subject_name} movida para ${DAY_LABELS[day]} ${start}.`);
         return;
       }
@@ -226,6 +241,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
         setUndoAction(() => async () => removeEntry.mutateAsync({ entryId: newId, versionId: selectedVersion.id, institutionId }));
         setNotice('Aula adicionada ao rascunho.');
       }
+      await refreshHealth();
       setDialog(null);
       setEditingEntryId(null);
       setDuplicatingEntryId(null);
@@ -238,6 +254,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
     clearFeedback();
     try {
       await removeEntry.mutateAsync({ entryId: entry.id, versionId: selectedVersion.id, institutionId });
+      await refreshHealth();
       setNotice('Aula removida do rascunho.');
     } catch (removeError) { setError(friendlyError(removeError)); }
   }
@@ -252,6 +269,35 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
       else setNotice('Rascunho pronto para publicação.');
       return result.valid;
     } catch (validationError) { setError(friendlyError(validationError)); return false; }
+  }
+
+  async function addDoubleSlotFromDialog(): Promise<void> {
+    if (!dialog || !selectedVersion || selectedVersion.status !== 'DRAFT' || editingEntryId || duplicatingEntryId) return;
+    const currentSlot = slots.find((slot) => slot.day_of_week === dialog.day && shortTime(slot.start_time) === dialog.start && shortTime(slot.end_time) === dialog.end);
+    const nextSlot = currentSlot ? slots.find((slot) => slot.day_of_week === dialog.day && slot.slot_number === currentSlot.slot_number + 1) : undefined;
+    if (!nextSlot) return;
+    clearFeedback();
+    try {
+      const ids = await addDoubleSlot.mutateAsync({
+        versionId: selectedVersion.id,
+        institutionId,
+        academicYearId: selectedYearId,
+        termId: selectedTermId,
+        classId: selectedClassId,
+        subjectOfferingId: dialog.offeringId,
+        roomId: dialog.roomId || null,
+        dayOfWeek: dialog.day,
+        startTime: dialog.start,
+        endTime: dialog.end,
+        nextStartTime: shortTime(nextSlot.start_time),
+        nextEndTime: shortTime(nextSlot.end_time),
+        locked: dialog.locked,
+      });
+      setUndoAction(() => async () => (await Promise.all(ids.map((entryId) => removeEntry.mutateAsync({ entryId, versionId: selectedVersion.id, institutionId }))), undefined));
+      setDialog(null);
+      await refreshHealth();
+      setNotice(`2 aulas consecutivas adicionadas: ${dialog.start}–${shortTime(nextSlot.end_time)}.`);
+    } catch (doubleSlotError) { setError(friendlyError(doubleSlotError)); }
   }
 
   async function publish(): Promise<void> {
@@ -280,6 +326,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
     clearFeedback();
     try {
       const result = await copyDay.mutateAsync({ versionId: selectedVersion.id, institutionId, sourceDay: copySourceDay, targetDay: copyTargetDay });
+      await refreshHealth();
       setNotice(`${result.created} aula(s) copiadas. ${result.conflicts > 0 ? `${result.conflicts} conflito(s) preservado(s) sem sobrescrever.` : ''}`);
     } catch (copyError) { setError(friendlyError(copyError)); }
   }
@@ -292,7 +339,10 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
   }
 
   const isDraft = selectedVersion?.status === 'DRAFT';
-  const busy = createDraft.isPending || addEntry.isPending || duplicateEntry.isPending || updateEntry.isPending || removeEntry.isPending || copyDay.isPending || validateDraft.isPending || publishVersion.isPending;
+  const busy = createDraft.isPending || addEntry.isPending || addDoubleSlot.isPending || duplicateEntry.isPending || updateEntry.isPending || removeEntry.isPending || copyDay.isPending || validateDraft.isPending || publishVersion.isPending;
+  const publicationDiff = selectedVersion && isDraft && comparisonVersionId && !comparisonEntriesQuery.isLoading
+    ? buildTimetableVersionDiff(versionEntries, comparisonEntriesQuery.data ?? [])
+    : null;
 
   return (
     <section className="space-y-4" aria-label="Editor visual de grade horária">
@@ -329,12 +379,12 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
           {isDraft && undoAction && <button type="button" onClick={() => { void undoAction().then(() => { setUndoAction(null); setNotice('Última alteração desfeita.'); }); }} className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-blue-700 dark:text-blue-300"><RotateCcw className="h-4 w-4" />Desfazer última alteração</button>}
         </div>
         <aside className="space-y-4">
-          <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center gap-2"><History className="h-4 w-4 text-blue-600" /><h3 className="font-bold text-slate-900 dark:text-white">Saúde do rascunho</h3></div>{validation ? <div className="mt-3 space-y-2">{validation.valid ? <p className="flex items-center gap-2 text-sm font-semibold text-emerald-700"><CheckCircle2 className="h-4 w-4" />Sem pendências conhecidas</p> : <><p className="flex items-center gap-2 text-sm font-semibold text-red-700"><XCircle className="h-4 w-4" />{validation.diagnostics.length} pendência(s)</p><ul className="max-h-56 space-y-2 overflow-auto text-xs text-slate-600">{validation.diagnostics.slice(0, 10).map((item, index) => <li key={`${item.code}-${index}`}><strong>{item.code}:</strong> {item.message}</li>)}</ul></>}</div> : <p className="mt-3 text-sm text-slate-500">Valide o rascunho para ver conflitos de turma, professor, sala, intervalo e carga.</p>}</section><section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">Preview de publicação</h3><p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{validation ? `${entries.length} aula(s) da turma/período estão prontas para o próximo publish.` : 'Valide o rascunho para calcular o preview.'}</p>{validation && <p className="mt-1 text-xs text-slate-500">A publicação atômica substituirá somente o conjunto coberto por esta versão.</p>}</section>
+          <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><div className="flex items-center gap-2"><History className="h-4 w-4 text-blue-600" /><h3 className="font-bold text-slate-900 dark:text-white">Saúde do rascunho</h3></div>{validation ? <div className="mt-3 space-y-2">{validation.valid ? <p className="flex items-center gap-2 text-sm font-semibold text-emerald-700"><CheckCircle2 className="h-4 w-4" />Sem pendências conhecidas</p> : <><p className="flex items-center gap-2 text-sm font-semibold text-red-700"><XCircle className="h-4 w-4" />{validation.diagnostics.length} pendência(s)</p><ul className="max-h-56 space-y-2 overflow-auto text-xs text-slate-600">{validation.diagnostics.slice(0, 10).map((item, index) => <li key={`${item.code}-${index}`}><strong>{item.code}:</strong> {item.message}</li>)}</ul></>}</div> : <p className="mt-3 text-sm text-slate-500">Edite o rascunho para atualizar conflitos de turma, professor, sala, intervalo e carga.</p>}</section><section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">Preview de publicação</h3>{publicationDiff ? <><div className="mt-3 grid grid-cols-2 gap-2 text-xs sm:grid-cols-3"><span className="rounded bg-emerald-50 px-2 py-1 font-semibold text-emerald-800">+ {publicationDiff.added} adicionada(s)</span><span className="rounded bg-red-50 px-2 py-1 font-semibold text-red-800">− {publicationDiff.removed} removida(s)</span><span className="rounded bg-blue-50 px-2 py-1 font-semibold text-blue-800">↔ {publicationDiff.moved} movida(s)</span><span className="rounded bg-amber-50 px-2 py-1 font-semibold text-amber-800">Sala {publicationDiff.roomChanged}</span><span className="rounded bg-slate-100 px-2 py-1 font-semibold text-slate-700">= {publicationDiff.unchanged} sem alteração</span></div><p className="mt-3 text-xs text-slate-500">Comparação feita com a versão de origem/publicada. A publicação atômica substituirá somente o conjunto coberto por esta versão.</p>{publicationDiff.affectedClassNames.length > 0 && <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Turmas afetadas: {publicationDiff.affectedClassNames.join(', ')}</p>}</> : <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">O rascunho ainda não possui uma versão de referência para comparar.</p>}</section>
           <section className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-900"><h3 className="font-bold text-slate-900 dark:text-white">Paleta de disciplinas</h3><p className="mt-1 text-xs text-slate-500">Aulas posicionadas nesta turma/período.</p><div className="mt-3 space-y-2">{offeringStats.length === 0 ? <p className="text-sm text-slate-500">Nenhuma atribuição encontrada.</p> : offeringStats.map(({ offering, count, required }) => <div key={offering.id} draggable={isDraft} onDragStart={(event) => { event.dataTransfer.setData('text/plain', JSON.stringify({ kind: 'offering', offeringId: offering.id })); }} className="rounded-lg border border-slate-200 p-2 text-xs dark:border-slate-700"><div className="flex items-start justify-between gap-2"><span className="font-bold text-slate-800 dark:text-slate-100">{offering.subject_name}</span><span className={count === required ? 'font-bold text-emerald-700' : 'font-bold text-amber-700'}>{count}/{required || '—'}</span></div><span className="mt-1 block text-slate-500">{offering.teacher_name ?? 'Professor pendente'}</span></div>)}</div></section>
         </aside>
       </div>}
 
-      {dialog && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4" role="dialog" aria-modal="true" aria-labelledby="manual-entry-title"><div className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl dark:bg-slate-900"><div className="flex items-start justify-between gap-3"><div><h3 id="manual-entry-title" className="text-lg font-bold text-slate-900 dark:text-white">Aula no rascunho</h3><p className="text-sm text-slate-500">{DAY_LABELS[dialog.day]} · {dialog.start}–{dialog.end}</p></div><button type="button" onClick={() => { setDialog(null); setEditingEntryId(null); setDuplicatingEntryId(null); }} aria-label="Fechar" className="rounded-md p-1 text-slate-500 hover:bg-slate-100"><XCircle className="h-5 w-5" /></button></div><div className="mt-4 space-y-3"><label className="block text-sm font-semibold">Disciplina e professor<select className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-950" value={dialog.offeringId} onChange={(event) => setDialog({ ...dialog, offeringId: event.target.value })}>{offeringStats.map(({ offering, count, required }) => <option key={offering.id} value={offering.id}>{offering.subject_name} · {offering.teacher_name ?? 'Professor pendente'} ({count}/{required || '—'})</option>)}</select></label><div className="grid gap-3 sm:grid-cols-3"><label className="block text-sm font-semibold">Dia<select className="mt-1 w-full rounded-lg border border-slate-300 px-2 py-2 text-sm dark:border-slate-700 dark:bg-slate-950" value={dialog.day} onChange={(event) => setDialog({ ...dialog, day: Number(event.target.value) })}>{DAYS.map((day) => <option key={day} value={day}>{DAY_LABELS[day]}</option>)}</select></label><label className="block text-sm font-semibold sm:col-span-2">Horário<select className="mt-1 w-full rounded-lg border border-slate-300 px-2 py-2 text-sm dark:border-slate-700 dark:bg-slate-950" value={`${dialog.start}-${dialog.end}`} onChange={(event) => { const [start, end] = event.target.value.split('-'); setDialog({ ...dialog, start, end }); }}>{rowSlots.map((row) => <option key={`${row.start}-${row.end}`} value={`${row.start}-${row.end}`}>{row.start} até {row.end}</option>)}</select></label></div><label className="block text-sm font-semibold">Sala<select className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-950" value={dialog.roomId} onChange={(event) => setDialog({ ...dialog, roomId: event.target.value })}><option value="">Sem sala definida</option>{(editorContext?.rooms ?? []).map((room) => <option key={room.id} value={room.id}>{room.name}{room.class_id === selectedClassId ? ' · desta turma' : ''}</option>)}</select></label><label className="flex items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={dialog.locked} onChange={(event) => setDialog({ ...dialog, locked: event.target.checked })} />Marcar como aula fixa</label></div><div className="mt-5 flex justify-end gap-2"><button type="button" onClick={() => { setDialog(null); setEditingEntryId(null); setDuplicatingEntryId(null); }} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-bold">Cancelar</button><button type="button" onClick={() => void saveDialog()} disabled={busy || !dialog.offeringId} className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white disabled:opacity-50">Salvar no rascunho</button></div></div></div>}
+      {dialog && <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4" role="dialog" aria-modal="true" aria-labelledby="manual-entry-title"><div className="w-full max-w-lg rounded-xl bg-white p-5 shadow-xl dark:bg-slate-900"><div className="flex items-start justify-between gap-3"><div><h3 id="manual-entry-title" className="text-lg font-bold text-slate-900 dark:text-white">Aula no rascunho</h3><p className="text-sm text-slate-500">{DAY_LABELS[dialog.day]} · {dialog.start}–{dialog.end}</p></div><button type="button" onClick={() => { setDialog(null); setEditingEntryId(null); setDuplicatingEntryId(null); }} aria-label="Fechar" className="rounded-md p-1 text-slate-500 hover:bg-slate-100"><XCircle className="h-5 w-5" /></button></div><div className="mt-4 space-y-3"><label className="block text-sm font-semibold">Disciplina e professor<select className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-950" value={dialog.offeringId} onChange={(event) => setDialog({ ...dialog, offeringId: event.target.value })}>{offeringStats.map(({ offering, count, required }) => <option key={offering.id} value={offering.id}>{offering.subject_name} · {offering.teacher_name ?? 'Professor pendente'} ({count}/{required || '—'})</option>)}</select></label><div className="grid gap-3 sm:grid-cols-3"><label className="block text-sm font-semibold">Dia<select className="mt-1 w-full rounded-lg border border-slate-300 px-2 py-2 text-sm dark:border-slate-700 dark:bg-slate-950" value={dialog.day} onChange={(event) => setDialog({ ...dialog, day: Number(event.target.value) })}>{DAYS.map((day) => <option key={day} value={day}>{DAY_LABELS[day]}</option>)}</select></label><label className="block text-sm font-semibold sm:col-span-2">Horário<select className="mt-1 w-full rounded-lg border border-slate-300 px-2 py-2 text-sm dark:border-slate-700 dark:bg-slate-950" value={`${dialog.start}-${dialog.end}`} onChange={(event) => { const [start, end] = event.target.value.split('-'); setDialog({ ...dialog, start, end }); }}>{rowSlots.map((row) => <option key={`${row.start}-${row.end}`} value={`${row.start}-${row.end}`}>{row.start} até {row.end}</option>)}</select></label></div><label className="block text-sm font-semibold">Sala<select className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 dark:border-slate-700 dark:bg-slate-950" value={dialog.roomId} onChange={(event) => setDialog({ ...dialog, roomId: event.target.value })}><option value="">Sem sala definida</option>{(editorContext?.rooms ?? []).map((room) => <option key={room.id} value={room.id}>{room.name}{room.class_id === selectedClassId ? ' · desta turma' : ''}</option>)}</select></label><label className="flex items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={dialog.locked} onChange={(event) => setDialog({ ...dialog, locked: event.target.checked })} />Marcar como aula fixa</label></div><div className="mt-5 flex justify-end gap-2"><button type="button" onClick={() => { setDialog(null); setEditingEntryId(null); setDuplicatingEntryId(null); }} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-bold">Cancelar</button>{(() => { const currentSlot = slots.find((slot) => slot.day_of_week === dialog.day && shortTime(slot.start_time) === dialog.start && shortTime(slot.end_time) === dialog.end); const nextSlot = currentSlot ? slots.find((slot) => slot.day_of_week === dialog.day && slot.slot_number === currentSlot.slot_number + 1) : undefined; return !editingEntryId && !duplicatingEntryId && nextSlot ? <button type="button" onClick={() => void addDoubleSlotFromDialog()} disabled={busy || !dialog.offeringId} className="rounded-lg border border-blue-300 px-3 py-2 text-sm font-bold text-blue-700">Adicionar 2 aulas consecutivas</button> : null; })()}<button type="button" onClick={() => void saveDialog()} disabled={busy || !dialog.offeringId} className="rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white disabled:opacity-50">Salvar no rascunho</button></div></div></div>}
     </section>
   );
 }

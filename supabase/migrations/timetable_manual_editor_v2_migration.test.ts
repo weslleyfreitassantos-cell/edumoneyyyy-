@@ -41,6 +41,18 @@ describe('manual timetable editor v2 migration', () => {
     expect(migration).toContain('conflict_count');
   });
 
+  it('provides an atomic consecutive double-slot action', () => {
+    const runtimeMigration = readFileSync(
+      new URL('./20260930000700_timetable_manual_editor_v2_runtime.sql', import.meta.url),
+      'utf8',
+    );
+    expect(runtimeMigration).toContain('create or replace function public.add_timetable_draft_double_slot');
+    expect(runtimeMigration).toContain('TIMETABLE_DOUBLE_SLOT_NOT_CONSECUTIVE');
+    expect(runtimeMigration).toContain("return pg_catalog.jsonb_build_object('first_id', first_id, 'second_id', second_id)");
+    expect(runtimeMigration).toContain('returning id into first_id');
+    expect(runtimeMigration).toContain('returning id into second_id');
+  });
+
   it('does not modify the published timetable read model', () => {
     expect(migration).not.toContain('update public.timetable_entries');
     expect(migration).not.toContain('insert into public.timetable_entries');

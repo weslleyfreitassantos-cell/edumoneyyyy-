@@ -381,6 +381,16 @@ export function useAddTimetableDraftEntry() {
   });
 }
 
+export function useAddTimetableDoubleSlot() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.addDoubleDraftEntry,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
 export function useRemoveTimetableDraftEntry() {
   const queryClient = useQueryClient();
   return useMutation({

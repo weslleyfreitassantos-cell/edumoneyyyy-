@@ -27,6 +27,7 @@ export interface TimetableVersionRow {
   status: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
   generation_source: string;
   generation_shift?: string | null;
+  source_version_id?: string | null;
   created_at: string;
   published_at: string | null;
 }
@@ -88,6 +89,82 @@ export interface TimetableDraftValidation {
   valid: boolean;
   diagnostics: TimetableDraftDiagnostic[];
   summary: { active_entries: number; diagnostic_count: number };
+}
+
+export interface TimetableVersionDiff {
+  added: number;
+  removed: number;
+  moved: number;
+  roomChanged: number;
+  unchanged: number;
+  affectedClassNames: string[];
+}
+
+function timetableEntryIdentity(entry: Pick<TimetableVersionEntryRow, 'class_id' | 'term_id' | 'subject_offering_id'>): string {
+  return `${entry.class_id}:${entry.term_id}:${entry.subject_offering_id}`;
+}
+
+function timetableEntryPosition(entry: Pick<TimetableVersionEntryRow, 'day_of_week' | 'start_time' | 'end_time' | 'room_id'>): string {
+  return `${entry.day_of_week}:${entry.start_time}:${entry.end_time}:${entry.room_id ?? ''}`;
+}
+
+export function buildTimetableVersionDiff(
+  currentEntries: TimetableVersionEntryRow[],
+  sourceEntries: TimetableVersionEntryRow[],
+): TimetableVersionDiff {
+  const currentByIdentity = new Map<string, TimetableVersionEntryRow[]>();
+  const sourceByIdentity = new Map<string, TimetableVersionEntryRow[]>();
+  const addToGroup = (groups: Map<string, TimetableVersionEntryRow[]>, entry: TimetableVersionEntryRow) => {
+    const identity = timetableEntryIdentity(entry);
+    groups.set(identity, [...(groups.get(identity) ?? []), entry]);
+  };
+  currentEntries.filter((entry) => entry.active).forEach((entry) => addToGroup(currentByIdentity, entry));
+  sourceEntries.filter((entry) => entry.active).forEach((entry) => addToGroup(sourceByIdentity, entry));
+
+  let added = 0;
+  let removed = 0;
+  let moved = 0;
+  let roomChanged = 0;
+  let unchanged = 0;
+  const affected = new Set<string>();
+  const identities = new Set([...currentByIdentity.keys(), ...sourceByIdentity.keys()]);
+
+  for (const identity of identities) {
+    const current = [...(currentByIdentity.get(identity) ?? [])].sort((a, b) => timetableEntryPosition(a).localeCompare(timetableEntryPosition(b)));
+    const source = [...(sourceByIdentity.get(identity) ?? [])].sort((a, b) => timetableEntryPosition(a).localeCompare(timetableEntryPosition(b)));
+    const commonLength = Math.min(current.length, source.length);
+    for (let index = 0; index < commonLength; index += 1) {
+      const currentEntry = current[index];
+      const sourceEntry = source[index];
+      const sameTime = currentEntry.day_of_week === sourceEntry.day_of_week
+        && currentEntry.start_time === sourceEntry.start_time
+        && currentEntry.end_time === sourceEntry.end_time;
+      const sameRoom = currentEntry.room_id === sourceEntry.room_id;
+      if (sameTime && sameRoom) unchanged += 1;
+      else {
+        affected.add(currentEntry.class_name);
+        if (!sameTime) moved += 1;
+        if (!sameRoom) roomChanged += 1;
+      }
+    }
+    for (const entry of current.slice(commonLength)) {
+      added += 1;
+      affected.add(entry.class_name);
+    }
+    for (const entry of source.slice(commonLength)) {
+      removed += 1;
+      affected.add(entry.class_name);
+    }
+  }
+
+  return {
+    added,
+    removed,
+    moved,
+    roomChanged,
+    unchanged,
+    affectedClassNames: [...affected].filter(Boolean).sort(),
+  };
 }
 
 export interface GeneratedDraft extends TimetableGeneratorResult {
@@ -558,7 +635,7 @@ export const timetableAutomationService = {
   },
 
   async listVersions(institutionId: string, academicYearId?: string): Promise<TimetableVersionRow[]> {
-    let query = supabase.from('timetable_versions').select('id, institution_id, academic_year_id, name, status, generation_source, generation_shift, created_at, published_at').eq('institution_id', institutionId).order('created_at', { ascending: false });
+    let query = supabase.from('timetable_versions').select('id, institution_id, academic_year_id, name, status, generation_source, generation_shift, source_version_id, created_at, published_at').eq('institution_id', institutionId).order('created_at', { ascending: false });
     if (academicYearId) query = query.eq('academic_year_id', academicYearId);
     const { data, error } = await query;
     if (error) throw error;
@@ -880,6 +957,42 @@ export const timetableAutomationService = {
     });
     if (error) throw error;
     return String(data);
+  },
+
+  async addDoubleDraftEntry(input: {
+    versionId: string;
+    institutionId: string;
+    academicYearId: string;
+    termId: string;
+    classId: string;
+    subjectOfferingId: string;
+    roomId?: string | null;
+    dayOfWeek: number;
+    startTime: string;
+    endTime: string;
+    nextStartTime: string;
+    nextEndTime: string;
+    locked?: boolean;
+  }): Promise<[string, string]> {
+    const { data, error } = await supabase.rpc('add_timetable_draft_double_slot', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_academic_year_id: input.academicYearId,
+      p_term_id: input.termId,
+      p_class_id: input.classId,
+      p_subject_offering_id: input.subjectOfferingId,
+      p_room_id: input.roomId ?? null,
+      p_day_of_week: input.dayOfWeek,
+      p_start_time: input.startTime,
+      p_end_time: input.endTime,
+      p_next_start_time: input.nextStartTime,
+      p_next_end_time: input.nextEndTime,
+      p_locked: input.locked ?? false,
+    });
+    if (error) throw error;
+    const result = (data ?? {}) as { first_id?: string; second_id?: string };
+    if (!result.first_id || !result.second_id) throw new Error('A operação de duas aulas não retornou as entradas criadas.');
+    return [result.first_id, result.second_id];
   },
 
   async removeDraftEntry(input: { entryId: string; versionId: string; institutionId: string }): Promise<void> {
