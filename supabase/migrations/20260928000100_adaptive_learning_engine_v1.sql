@@ -722,7 +722,9 @@ as $$
       or public.can_manage_institution_operations(p_institution_id)
     )
   group by state_row.canonical_skill_id, canonical_skill.code, canonical_skill.title, state_row.state
-  order by diagnostic_needed_count desc, canonical_skill.title;
+  order by count(distinct state_row.student_id) filter (
+    where state_row.state in ('UNKNOWN', 'INTRODUCED') or state_row.confidence < 0.67
+  ) desc, canonical_skill.title;
 $$;
 
 alter table public.learning_curriculum_catalogs enable row level security;
