@@ -471,7 +471,8 @@ begin
     public.can_manage_institution_operations(p_institution_id)
     or exists (
       select 1 from public.subject_offerings offering
-      where offering.institution_id = p_institution_id
+      join public.classes offering_class on offering_class.id = offering.class_id
+      where offering_class.institution_id = p_institution_id
         and offering.class_id = target_class_id
         and offering.teacher_profile_id = auth.uid()
         and offering.active
