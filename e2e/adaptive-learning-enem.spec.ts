@@ -20,16 +20,16 @@ async function insertOne(db: Db, table: string, row: Record<string, unknown>): P
   return required(data, `${table} insert`);
 }
 
-async function createStudent(service: Db, suffix: string): Promise<Actor> {
-  const email = `enem-official-${suffix}@local.test`;
+async function createActor(service: Db, role: 'ADMIN' | 'STUDENT', name: string, suffix: string): Promise<Actor> {
+  const email = `enem-official-${role.toLowerCase()}-${suffix}@local.test`;
   const password = 'EnemOfficialE2E!2026';
   const { data, error } = await service.auth.admin.createUser({ email, password, email_confirm: true });
   if (error) throw error;
-  const user = required(data.user, 'ENEM student auth user');
-  await insertOne(service, 'profiles', { id: user.id, full_name: 'Alice ENEM Oficial', email, role: 'STUDENT', active: true });
+  const user = required(data.user, `ENEM ${role.toLowerCase()} auth user`);
+  await insertOne(service, 'profiles', { id: user.id, full_name: name, email, role, active: true });
   const client = createClient(url!, anonKey!, { auth: { autoRefreshToken: false, persistSession: false } });
   const session = await client.auth.signInWithPassword({ email, password });
-  if (session.error || !session.data.session) throw new Error(`sign in ENEM student: ${session.error?.message ?? 'no session'}`);
+  if (session.error || !session.data.session) throw new Error(`sign in ENEM ${role.toLowerCase()}: ${session.error?.message ?? 'no session'}`);
   return { id: user.id, email, password, client };
 }
 
@@ -52,12 +52,13 @@ adaptiveDescribe('official ENEM learning journey', () => {
     let page: import('@playwright/test').Page | undefined;
 
     try {
-      const student = await createStudent(service, suffix);
-      userIds.push(student.id);
+      const admin = await createActor(service, 'ADMIN', 'Admin ENEM Oficial', suffix);
+      const student = await createActor(service, 'STUDENT', 'Alice ENEM Oficial', suffix);
+      userIds.push(admin.id, student.id);
 
       accountId = (await insertOne(service, 'accounts', {
         name: `ENEM official ${suffix}`,
-        owner_profile_id: student.id,
+        owner_profile_id: admin.id,
         institution_limit: 1,
         status: 'ACTIVE',
       })).id;
@@ -66,6 +67,7 @@ adaptiveDescribe('official ENEM learning journey', () => {
         name: `TecEscola ENEM official ${suffix}`,
         active: true,
       })).id;
+      await insertOne(service, 'memberships', { profile_id: admin.id, institution_id: institutionId, role: 'ADMIN', active: true });
       await insertOne(service, 'memberships', { profile_id: student.id, institution_id: institutionId, role: 'STUDENT', active: true });
 
       const yearId = (await insertOne(service, 'academic_years', {

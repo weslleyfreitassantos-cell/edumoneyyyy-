@@ -207,6 +207,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
 
       await alicePage.goto('/student/study/simulation');
       await expect(alicePage.getByRole('button', { name: 'Começar simulado' })).toBeVisible({ timeout: 30_000 });
+      await alicePage.getByRole('button').filter({ hasText: 'Matemática · diagnóstico rápido' }).click();
       await alicePage.getByRole('button', { name: 'Começar simulado' }).click();
       const firstBank = bankById.get(simulationQuestions[0].question_bank_id);
       const firstOptions = firstBank.options as string[];
