@@ -141,6 +141,10 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     const portugueseSubject = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Português ${suffix}`, code: `POR-${suffix}`, active: true })).id;
     const foreignSubject = (await insertOne(service, 'subjects', { institution_id: institutionB, name: `Matemática B ${suffix}`, code: `MATB-${suffix}`, active: true })).id;
     subjectIds = [mathSubject, portugueseSubject, foreignSubject];
+    await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: mathSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
+    await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: portugueseSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
+    await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classUnassigned, subject_id: mathSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
+    await insertOne(service, 'class_curriculum_items', { institution_id: institutionB, class_id: classB, subject_id: foreignSubject, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: mathSubject, teacher_profile_id: teacherA.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: portugueseSubject, teacher_profile_id: teacherB.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classUnassigned, subject_id: mathSubject, teacher_profile_id: teacherB.id, term_id: termA, active: true });

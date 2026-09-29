@@ -769,6 +769,7 @@ grant all on table
   public.subjects,
   public.subject_offerings,
   public.enrollments,
+  public.class_curriculum_items,
   public.learning_units,
   public.learning_skills,
   public.learning_activities,
