@@ -78,6 +78,7 @@ export interface LearningAssignment {
 
 export interface LearningQuestion {
   id: string;
+  question_bank_id?: string | null;
   question_text: string;
   question_type:
     | 'MULTIPLE_CHOICE'
@@ -315,6 +316,39 @@ export interface LearningProgress {
   status: 'NOT_STARTED' | 'IN_PROGRESS' | 'MASTERED';
 }
 
+export interface LearningCanonicalProgress {
+  canonical_skill_id: string;
+  skill_title: string;
+  state: 'UNKNOWN' | 'INTRODUCED' | 'LEARNING' | 'PRACTICING' | 'MASTERED' | 'NEEDS_REVIEW';
+  mastery_estimate: number;
+  evidence_count: number;
+  confidence: number;
+  updated_at: string;
+}
+
+type LearningCanonicalProgressRow = Omit<LearningCanonicalProgress, 'skill_title'> & {
+  learning_curriculum_skills?: { title: string } | { title: string }[] | null;
+};
+
+export interface LearningSkillReview {
+  id: string;
+  canonical_skill_id: string;
+  skill_title?: string;
+  review_due_at: string;
+  interval_days: number;
+  source: 'PRACTICE' | 'LOCK_IN' | 'REVIEW' | 'SIMULATION';
+  completed_at: string | null;
+  result_score: number | null;
+}
+
+export interface LearningClassGap {
+  canonical_skill_id: string;
+  skill_title: string;
+  needs_review_count: number;
+  learning_count: number;
+  diagnostic_needed_count: number;
+}
+
 export interface LearningAttemptSummary {
   id: string;
   activity_id: string;
@@ -339,7 +373,7 @@ export interface LearningAttemptSummary {
 }
 
 const teacherActivitySelect =
-  'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,created_at,subjects(name),learning_questions(id,question_text,question_type,options_json,correct_answer_json,explanation,points,sort_order),learning_assignments(id,class_id,due_at,classes(name))';
+  'id,subject_id,unit_id,skill_id,teacher_id,title,description,activity_type,status,created_at,subjects(name),learning_questions(id,question_bank_id,question_text,question_type,options_json,correct_answer_json,explanation,points,sort_order),learning_assignments(id,class_id,due_at,classes(name))';
 
 async function read<T>(
   query: PromiseLike<{
@@ -642,6 +676,57 @@ export const learningCenterService = {
       .eq('student_id', studentId),
     ),
 
+  canonicalProgress: (institutionId: string, studentId: string) =>
+    read<LearningCanonicalProgressRow[]>(
+      supabase
+        .from('learning_student_skill_state')
+        .select('canonical_skill_id,state,mastery_estimate,evidence_count,confidence,updated_at,learning_curriculum_skills(title)')
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .order('updated_at', { ascending: false }),
+    ).then((rows) => rows.map((row): LearningCanonicalProgress => ({
+      canonical_skill_id: row.canonical_skill_id,
+      skill_title: Array.isArray(row.learning_curriculum_skills) ? row.learning_curriculum_skills[0]?.title ?? 'Habilidade' : row.learning_curriculum_skills?.title ?? 'Habilidade',
+      state: row.state,
+      mastery_estimate: Number(row.mastery_estimate),
+      evidence_count: Number(row.evidence_count),
+      confidence: Number(row.confidence),
+      updated_at: row.updated_at,
+    }))),
+
+  reviewsDue: (institutionId: string, studentId: string) =>
+    read<Array<LearningSkillReview & { learning_curriculum_skills?: { title: string } | { title: string }[] | null }>>(
+      supabase
+        .from('learning_skill_reviews')
+        .select('id,canonical_skill_id,review_due_at,interval_days,source,completed_at,result_score,learning_curriculum_skills(title)')
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .is('completed_at', null)
+        .order('review_due_at', { ascending: true })
+        .limit(20),
+    ).then((rows) => rows.map((row) => ({
+      id: row.id,
+      canonical_skill_id: row.canonical_skill_id,
+      skill_title: Array.isArray(row.learning_curriculum_skills)
+        ? row.learning_curriculum_skills[0]?.title
+        : row.learning_curriculum_skills?.title,
+      review_due_at: row.review_due_at,
+      interval_days: row.interval_days,
+      source: row.source,
+      completed_at: row.completed_at,
+      result_score: row.result_score,
+    }))),
+
+  completeDailyPlanItem: (itemId: string, status: 'COMPLETED' | 'SKIPPED' = 'COMPLETED') =>
+    read<{ item_id: string; idempotent: boolean; status: string; plan_status?: string }>(
+      supabase.rpc('complete_learning_daily_plan_item', { p_item_id: itemId, p_status: status }),
+    ),
+
+  completeSkillReview: (reviewId: string, score: number) =>
+    read<{ review_id: string; idempotent: boolean; score: number; next_interval_days?: number }>(
+      supabase.rpc('complete_learning_skill_review', { p_review_id: reviewId, p_score: score }),
+    ),
+
   guidedSession: (institutionId: string, studentId: string) =>
     read<GuidedSession | null>(
       supabase
@@ -748,6 +833,20 @@ export const learningCenterService = {
         .order('created_at', { ascending: false })
         .limit(100),
     ),
+
+  teacherClassGaps: (institutionId: string, classId: string) =>
+    read<LearningClassGap[]>(
+      supabase.rpc('get_teacher_learning_class_gaps', {
+        p_institution_id: institutionId,
+        p_class_id: classId,
+      }),
+    ).then((rows) => rows.map((row) => ({
+      canonical_skill_id: row.canonical_skill_id,
+      skill_title: row.skill_title,
+      needs_review_count: Number(row.needs_review_count),
+      learning_count: Number(row.learning_count),
+      diagnostic_needed_count: Number(row.diagnostic_needed_count),
+    }))),
 
   simulations: (institutionId: string) =>
     read<LearningSimulation[]>(
@@ -888,6 +987,7 @@ export const learningCenterService = {
     activity_type?: string;
     questions: Array<{
       question_text: string;
+      question_bank_id?: string;
       question_type: LearningQuestion['question_type'];
       options_json: string[];
       correct_answer_json: unknown;
@@ -911,6 +1011,31 @@ export const learningCenterService = {
     );
     return { id: activityId };
   },
+
+  updateActivityWithQuestions: async (input: {
+    activity_id: string;
+    title: string;
+    description?: string;
+    activity_type?: string;
+    questions: Array<{
+      question_text?: string;
+      question_bank_id?: string;
+      question_type: LearningQuestion['question_type'];
+      options_json?: string[];
+      correct_answer_json?: unknown;
+      explanation?: string | null;
+      points?: number;
+      sort_order: number;
+    }>;
+  }) => read<{ id: string }>(
+    supabase.rpc('update_learning_activity_with_questions', {
+      p_activity_id: input.activity_id,
+      p_title: input.title,
+      p_description: input.description ?? null,
+      p_activity_type: input.activity_type ?? 'PRACTICE',
+      p_questions: input.questions,
+    }),
+  ).then((activity) => ({ id: activity.id })),
 
   publishActivity: (activityId: string) =>
     read<{ id: string }>(
@@ -945,7 +1070,7 @@ export const learningCenterService = {
     activity_id: string;
     title: string;
     description?: string;
-    activity_type: 'PRACTICE' | 'REINFORCEMENT';
+    activity_type: string;
     question_text: string;
     options_json: string[];
     correct_answer_json: string;

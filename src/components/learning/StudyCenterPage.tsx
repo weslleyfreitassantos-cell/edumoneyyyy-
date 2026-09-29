@@ -33,6 +33,10 @@ import {
 } from '../../hooks/useAdaptiveLearning';
 import {
   useLearningProgress,
+  useLearningCanonicalProgress,
+  useLearningReviewsDue,
+  useCompleteLearningDailyPlanItem,
+  useCompleteLearningSkillReview,
   useLearningSimulations,
   useLearningDailyPlan,
   useLearningErrorNotebook,
@@ -57,7 +61,9 @@ function subjectName(activity: LearningActivity): string | undefined {
 
 function statusLabel(status: string): string {
   if (status === 'MASTERED') return 'Dominado';
-  if (status === 'IN_PROGRESS') return 'Em progresso';
+  if (status === 'IN_PROGRESS' || status === 'LEARNING' || status === 'PRACTICING') return 'Em progresso';
+  if (status === 'NEEDS_REVIEW') return 'Precisa de revisão';
+  if (status === 'INTRODUCED') return 'Introduzido';
   return 'Não iniciado';
 }
 
@@ -117,6 +123,22 @@ export default function StudyCenterPage() {
     currentInstitutionId ?? undefined,
   );
   const progress = useLearningProgress(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const canonicalProgress = useLearningCanonicalProgress(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const reviewsDue = useLearningReviewsDue(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const completePlanItem = useCompleteLearningDailyPlanItem(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const completeReview = useCompleteLearningSkillReview(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -282,7 +304,7 @@ export default function StudyCenterPage() {
                   <p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p>
                   <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.estimated_minutes} min · {item.status === 'COMPLETED' ? 'Concluído' : 'Pendente'}</p>
                 </div>
-                {item.activity_id ? <Link to={`/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.lesson_id ? <Link to={`/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : null}
+                {item.status === 'PENDING' && !item.activity_id && !item.lesson_id ? <button type="button" onClick={() => completePlanItem.mutate({ itemId: item.id })} className="shrink-0 text-xs font-bold text-[#005bbf]">Concluir</button> : item.activity_id ? <Link to={`/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.lesson_id ? <Link to={`/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : null}
               </li>
             ))}
           </ol>
@@ -317,6 +339,29 @@ export default function StudyCenterPage() {
               </Link>
             ))}
           </div>
+        </section>
+      ) : null}
+
+      {reviewsDue.data?.length ? (
+        <section aria-label="Revisões vencidas" className="rounded-xl border border-violet-200 bg-violet-50 p-4 dark:border-violet-900/60 dark:bg-violet-950/20 sm:p-5">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h2 className="font-bold text-violet-950 dark:text-violet-100">Revisões de hoje</h2>
+              <p className="mt-1 text-sm text-violet-900 dark:text-violet-200">Uma revisão curta ajuda a manter o que você já aprendeu.</p>
+            </div>
+            <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-violet-800 dark:bg-violet-950/60 dark:text-violet-200">{reviewsDue.data.length}</span>
+          </div>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
+            {reviewsDue.data.slice(0, 4).map((review) => (
+              <li key={review.id} className="flex items-center justify-between gap-3 rounded-lg border border-violet-200 bg-white p-3 text-sm dark:border-violet-800 dark:bg-violet-950/40">
+                <span className="min-w-0 truncate font-semibold text-violet-950 dark:text-violet-100">{review.skill_title ?? 'Revisar habilidade'}</span>
+                <div className="flex shrink-0 gap-2">
+                  <button type="button" onClick={() => completeReview.mutate({ reviewId: review.id, score: 50 })} className="rounded-md border border-violet-300 px-2 py-1 text-[11px] font-bold text-violet-800 dark:border-violet-700 dark:text-violet-200">Ainda não</button>
+                  <button type="button" onClick={() => completeReview.mutate({ reviewId: review.id, score: 90 })} className="rounded-md bg-violet-700 px-2 py-1 text-[11px] font-bold text-white">Consegui</button>
+                </div>
+              </li>
+            ))}
+          </ul>
         </section>
       ) : null}
 
@@ -628,6 +673,17 @@ export default function StudyCenterPage() {
             <span><strong className="block text-xl">{progressSummary.inProgress}</strong><span className="text-xs">em progresso</span></span>
           </div>
         )}
+        {canonicalProgress.data?.length ? (
+          <div className="mt-5 grid gap-2 sm:grid-cols-2">
+            {canonicalProgress.data.slice(0, 6).map((skill) => (
+              <div key={skill.canonical_skill_id} className="rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/40">
+                <div className="flex items-center justify-between gap-3"><p className="truncate text-sm font-semibold text-blue-950 dark:text-blue-100">{skill.skill_title}</p><span className="text-xs font-bold text-blue-800 dark:text-blue-200">{Math.round(skill.mastery_estimate)}%</span></div>
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-blue-100 dark:bg-blue-900"><div className="h-full rounded-full bg-[#005bbf]" style={{ width: `${Math.min(100, Math.max(0, skill.mastery_estimate))}%` }} /></div>
+                <p className="mt-1 text-[11px] text-blue-800 dark:text-blue-200">{statusLabel(skill.state)}</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </section>
     </div>
   );
