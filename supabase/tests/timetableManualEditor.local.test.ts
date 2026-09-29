@@ -86,13 +86,14 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
     portugueseOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectPortuguese, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     mathOfferingB = (await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     roomA = (await insertOne(director.client, 'rooms', { institution_id: institutionA, name: `Sala Manual ${suffix}`, capacity: 30, active: true })).id;
-    for (const day of [1, 2, 3]) {
+    for (const day of [1, 2, 3, 4]) {
       await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
       await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
     }
     await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
     await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 2, start_time: '07:00', end_time: '08:40', active: true });
     await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 3, start_time: '07:00', end_time: '08:40', active: true });
+    await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 4, start_time: '07:00', end_time: '08:40', active: true });
     await insertOne(director.client, 'school_schedule_breaks', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: 1, name: `Intervalo ${suffix}`, start_time: '07:50', end_time: '08:40', active: true });
 
     const draft = await director.client.rpc('create_timetable_draft', {
@@ -139,11 +140,11 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
     });
     expect(breakConflict.error?.message).toContain('TIMETABLE_BREAK_CONFLICT');
 
-    const existing = await service.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('day_of_week', 2).eq('start_time', '07:00').single();
+    const existing = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('day_of_week', 2).eq('start_time', '07:00').single();
     const entryId = required(existing.data?.id, 'runtime entry');
     const moved = await director.client.rpc('update_timetable_draft_entry', { p_entry_id: entryId, p_version_id: draftId, p_institution_id: institutionA, p_day_of_week: 3, p_start_time: '07:00', p_end_time: '07:50', p_locked: false, p_room_id: roomA });
     expect(moved.error).toBeNull();
-    const persisted = await service.from('timetable_version_entries').select('day_of_week, start_time').eq('id', entryId).single();
+    const persisted = await director.client.from('timetable_version_entries').select('day_of_week, start_time').eq('id', entryId).single();
     expect(persisted.data).toMatchObject({ day_of_week: 3, start_time: '07:00:00' });
 
     const duplicate = await director.client.rpc('duplicate_timetable_draft_entry', { p_entry_id: entryId, p_version_id: draftId, p_institution_id: institutionA, p_day_of_week: 3, p_start_time: '07:50', p_end_time: '08:40' });
@@ -158,31 +159,31 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
   });
 
   it('creates two consecutive entries atomically and exposes real conflicts in validation', async () => {
-    const before = await service.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
+    const before = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
     const double = await director.client.rpc('add_timetable_draft_double_slot', {
       p_version_id: draftId, p_institution_id: institutionA, p_academic_year_id: yearA, p_term_id: termA,
-      p_class_id: classB, p_subject_offering_id: mathOfferingB, p_room_id: roomA, p_day_of_week: 1,
+      p_class_id: classB, p_subject_offering_id: mathOfferingB, p_room_id: roomA, p_day_of_week: 4,
       p_start_time: '07:00', p_end_time: '07:50', p_next_start_time: '07:50', p_next_end_time: '08:40', p_locked: false,
     });
     expect(double.error).toBeNull();
     expect(double.data.first_id).toBeTruthy();
     expect(double.data.second_id).toBeTruthy();
-    const two = await service.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
+    const two = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
     expect((two.data ?? []).length - (before.data ?? []).length).toBe(2);
 
-    const atomicBefore = await service.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
+    const atomicBefore = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
     const failedDouble = await director.client.rpc('add_timetable_draft_double_slot', {
       p_version_id: draftId, p_institution_id: institutionA, p_academic_year_id: yearA, p_term_id: termA,
-      p_class_id: classB, p_subject_offering_id: mathOfferingB, p_room_id: roomA, p_day_of_week: 2,
+      p_class_id: classB, p_subject_offering_id: mathOfferingB, p_room_id: roomA, p_day_of_week: 3,
       p_start_time: '07:00', p_end_time: '07:50', p_next_start_time: '09:00', p_next_end_time: '09:50', p_locked: false,
     });
     expect(failedDouble.error?.message).toContain('TIMETABLE_DOUBLE_SLOT_NOT_CONSECUTIVE');
-    const atomicAfter = await service.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
+    const atomicAfter = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('class_id', classB);
     expect((atomicAfter.data ?? []).length).toBe((atomicBefore.data ?? []).length);
 
     const conflictEntry = await director.client.rpc('add_timetable_draft_entry', {
       p_version_id: draftId, p_institution_id: institutionA, p_academic_year_id: yearA, p_term_id: termA,
-      p_class_id: classA, p_subject_offering_id: portugueseOfferingA, p_room_id: roomA, p_day_of_week: 1,
+      p_class_id: classA, p_subject_offering_id: portugueseOfferingA, p_room_id: roomA, p_day_of_week: 4,
       p_start_time: '07:00', p_end_time: '07:50', p_locked: false,
     });
     expect(conflictEntry.error).toBeNull();
@@ -195,7 +196,7 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
   });
 
   it('does not mutate a published version through editor RPCs', async () => {
-    const published = await service.from('timetable_versions').insert({ institution_id: institutionA, academic_year_id: yearA, name: `Published ${suffix}`, status: 'PUBLISHED', generation_source: 'MANUAL', generation_shift: 'MATUTINO', created_by: director.id }).select('id').single();
+    const published = await director.client.from('timetable_versions').insert({ institution_id: institutionA, academic_year_id: yearA, name: `Published ${suffix}`, status: 'PUBLISHED', generation_source: 'MANUAL', generation_shift: 'MATUTINO', created_by: director.id }).select('id').single();
     expect(published.error).toBeNull();
     const result = await director.client.rpc('add_timetable_draft_entry', { p_version_id: published.data.id, p_institution_id: institutionA, p_academic_year_id: yearA, p_term_id: termA, p_class_id: classA, p_subject_offering_id: portugueseOfferingA, p_room_id: roomA, p_day_of_week: 1, p_start_time: '07:00', p_end_time: '07:50', p_locked: false });
     expect(result.error?.message).toContain('TIMETABLE_VERSION_NOT_DRAFT');
