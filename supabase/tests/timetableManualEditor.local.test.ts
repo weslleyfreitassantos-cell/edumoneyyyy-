@@ -79,12 +79,12 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
 
     subjectMath = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Matemática ${suffix}`, code: `MAT-${suffix}`, active: true })).id;
     subjectPortuguese = (await insertOne(service, 'subjects', { institution_id: institutionA, name: `Português ${suffix}`, code: `POR-${suffix}`, active: true })).id;
-    mathOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
-    portugueseOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectPortuguese, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
-    mathOfferingB = (await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: subjectMath, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: subjectPortuguese, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classB, subject_id: subjectMath, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
+    mathOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
+    portugueseOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectPortuguese, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
+    mathOfferingB = (await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     roomA = (await insertOne(service, 'rooms', { institution_id: institutionA, name: `Sala Manual ${suffix}`, capacity: 30, active: true })).id;
     for (const day of [1, 2, 3]) {
       await insertOne(service, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
