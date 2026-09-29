@@ -447,8 +447,9 @@ begin
   if p_student_id is not null then
     select enrollment.class_id into target_class_id
       from public.enrollments enrollment
+      join public.classes enrolled_class on enrolled_class.id = enrollment.class_id
      where enrollment.student_id = p_student_id
-       and enrollment.institution_id = p_institution_id
+       and enrolled_class.institution_id = p_institution_id
        and enrollment.active
      order by enrollment.enrolled_at desc nulls last
      limit 1;
@@ -925,7 +926,8 @@ create policy learning_package_assignments_select on public.learning_package_ass
   private.learning_student_owns_state(institution_id, student_id)
   or exists (
     select 1 from public.enrollments enrollment
-    where enrollment.institution_id = learning_package_assignments.institution_id
+    join public.classes target_class on target_class.id = enrollment.class_id
+    where target_class.institution_id = learning_package_assignments.institution_id
       and enrollment.class_id = learning_package_assignments.class_id
       and enrollment.student_id in (select student.id from public.students student where student.profile_id = auth.uid() and student.active)
       and enrollment.active
