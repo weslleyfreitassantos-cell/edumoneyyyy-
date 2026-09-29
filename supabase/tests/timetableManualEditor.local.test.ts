@@ -85,15 +85,15 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
     mathOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     portugueseOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectPortuguese, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     mathOfferingB = (await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
-    roomA = (await insertOne(service, 'rooms', { institution_id: institutionA, name: `Sala Manual ${suffix}`, capacity: 30, active: true })).id;
+    roomA = (await insertOne(director.client, 'rooms', { institution_id: institutionA, name: `Sala Manual ${suffix}`, capacity: 30, active: true })).id;
     for (const day of [1, 2, 3]) {
-      await insertOne(service, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
-      await insertOne(service, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
+      await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
+      await insertOne(director.client, 'school_time_slots', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: day, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
     }
-    await insertOne(service, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
-    await insertOne(service, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 2, start_time: '07:00', end_time: '08:40', active: true });
-    await insertOne(service, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 3, start_time: '07:00', end_time: '08:40', active: true });
-    await insertOne(service, 'school_schedule_breaks', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: 1, name: `Intervalo ${suffix}`, start_time: '07:50', end_time: '08:40', active: true });
+    await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
+    await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 2, start_time: '07:00', end_time: '08:40', active: true });
+    await insertOne(director.client, 'teacher_availability', { institution_id: institutionA, teacher_profile_id: teacher.id, day_of_week: 3, start_time: '07:00', end_time: '08:40', active: true });
+    await insertOne(director.client, 'school_schedule_breaks', { institution_id: institutionA, shift: 'MATUTINO', day_of_week: 1, name: `Intervalo ${suffix}`, start_time: '07:50', end_time: '08:40', active: true });
 
     const draft = await director.client.rpc('create_timetable_draft', {
       p_institution_id: institutionA,
