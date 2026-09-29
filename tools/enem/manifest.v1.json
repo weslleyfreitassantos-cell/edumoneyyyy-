@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": {
+    "allowedHosts": ["gov.br", "inep.gov.br"],
+    "requireHttps": true,
+    "catalogReference": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos"
+  },
+  "discovery": {
+    "mode": "official-catalog",
+    "years": "discover-from-catalog",
+    "download": "manual-or-approved-ingestion-run",
+    "neverInventQuestions": true
+  },
+  "entries": []
+}

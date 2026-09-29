@@ -90,6 +90,131 @@ export interface LearningQuestion {
   sort_order: number;
 }
 
+export interface GuidedSession {
+  id: string;
+  target_canonical_skill_id: string;
+  status: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'NEEDS_TEACHER_SUPPORT' | 'CANCELLED';
+  started_at: string;
+  completed_at: string | null;
+  learning_guided_steps?: GuidedStep[];
+}
+
+export interface GuidedStep {
+  id: string;
+  canonical_skill_id: string;
+  step_type: 'DIAGNOSTIC' | 'LESSON' | 'PRACTICE' | 'LOCK_IN' | 'REVIEW' | 'RETURN_TO_TARGET';
+  position: number;
+  status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'SKIPPED';
+  activity_id: string | null;
+  lesson_id: string | null;
+  attempts: number;
+  learning_curriculum_skills?: { title: string } | { title: string }[] | null;
+}
+
+export interface DailyPlanItem {
+  id: string;
+  position: number;
+  item_type: 'REVIEW' | 'DIAGNOSTIC' | 'BRIDGE' | 'CURRENT_TARGET' | 'LOCK_IN' | 'PRACTICE' | 'LESSON' | 'SIMULATION';
+  title: string;
+  description: string | null;
+  estimated_minutes: number;
+  status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'SKIPPED';
+  session_id: string | null;
+  step_id: string | null;
+  lesson_id: string | null;
+  activity_id: string | null;
+}
+
+export interface DailyPlan {
+  id: string;
+  plan_date: string;
+  estimated_minutes: number;
+  status: 'OPEN' | 'COMPLETED' | 'REPLACED';
+  learning_daily_plan_items?: DailyPlanItem[];
+}
+
+export interface LearningGamification {
+  xp: number;
+  current_streak: number;
+  longest_streak: number;
+  daily_goal_minutes: number;
+  last_qualified_activity_date: string | null;
+}
+
+export interface LearningErrorNote {
+  id: string;
+  question_id: string | null;
+  question_bank_id?: string | null;
+  canonical_skill_id: string | null;
+  error_count: number;
+  status: 'OPEN' | 'REVIEWED' | 'RESOLVED';
+  last_missed_at: string;
+  last_reviewed_at: string | null;
+}
+
+export interface LearningLesson {
+  id: string;
+  canonical_skill_id: string;
+  title: string;
+  summary: string;
+  content_markdown: string;
+  worked_example: string | null;
+  tips: string[];
+  estimated_minutes: number;
+}
+
+export interface LearningQuestionBankItem {
+  id: string;
+  package_type: 'TECESCOLA' | 'ENEM' | 'INSTITUTION' | 'TEACHER';
+  source_type: string;
+  source_name: string | null;
+  source_year: number | null;
+  subject_area: string;
+  topic: string | null;
+  statement: string;
+  options: string[];
+  correct_answer: unknown;
+  explanation: string | null;
+  difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
+}
+
+export interface LearningSimulation {
+  id: string;
+  title: string;
+  simulation_type: 'HISTORICAL_EXAM' | 'AREA' | 'SUBJECT' | 'TOPIC' | 'MINI' | 'ADAPTIVE';
+  duration_minutes: number | null;
+  learning_simulation_questions?: Array<{
+    position: number;
+    learning_question_bank: Pick<LearningQuestionBankItem, 'id' | 'statement' | 'options'> | Pick<LearningQuestionBankItem, 'id' | 'statement' | 'options'>[];
+  }>;
+}
+
+export interface LearningPackage {
+  id: string;
+  package_type: 'TECESCOLA' | 'INSTITUTION' | 'TEACHER';
+  visibility: 'GLOBAL' | 'INSTITUTION' | 'PRIVATE';
+  title: string;
+  description: string | null;
+  subject_area: string | null;
+  learning_package_steps?: Array<{
+    id: string;
+    position: number;
+    step_type: string;
+    title: string;
+    lesson_id: string | null;
+    activity_id: string | null;
+  }>;
+}
+
+export interface LearningPackageAssignment {
+  id: string;
+  package_id: string;
+  class_id: string | null;
+  student_id: string | null;
+  due_at: string | null;
+  learning_packages?: LearningPackage | LearningPackage[] | null;
+}
+
 export interface LearningProgress {
   skill_id: string;
   mastery_percent: number;
@@ -420,8 +545,163 @@ export const learningCenterService = {
         .from('learning_skill_progress')
         .select('skill_id,mastery_percent,status')
         .eq('institution_id', institutionId)
-        .eq('student_id', studentId),
+      .eq('student_id', studentId),
     ),
+
+  guidedSession: (institutionId: string, studentId: string) =>
+    read<GuidedSession | null>(
+      supabase
+        .from('learning_guided_sessions')
+        .select('id,target_canonical_skill_id,status,started_at,completed_at,learning_guided_steps(id,canonical_skill_id,step_type,position,status,activity_id,lesson_id,attempts,learning_curriculum_skills(title))')
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .in('status', ['ACTIVE', 'PAUSED'])
+        .order('updated_at', { ascending: false })
+        .limit(1)
+        .maybeSingle(),
+    ),
+
+  startGuidedSession: (input: {
+    institutionId: string;
+    studentId: string;
+    targetCanonicalSkillId: string;
+  }) =>
+    read<{ session_id: string; created: boolean; gap_count?: number }>(
+      supabase.rpc('start_guided_learning_session', {
+        p_institution_id: input.institutionId,
+        p_student_id: input.studentId,
+        p_target_canonical_skill_id: input.targetCanonicalSkillId,
+      }),
+    ),
+
+  completeGuidedStep: (stepId: string, status: 'COMPLETED' | 'SKIPPED' = 'COMPLETED', metadata: Record<string, unknown> = {}) =>
+    read<{ step_id: string; session_id: string; next_step_id?: string | null; session_status?: string }>(
+      supabase.rpc('complete_guided_learning_step', {
+        p_step_id: stepId,
+        p_status: status,
+        p_metadata: metadata,
+      }),
+    ),
+
+  dailyPlan: async (institutionId: string, studentId: string, planDate = new Date().toISOString().slice(0, 10)) => {
+    const planId = await read<string>(
+      supabase.rpc('create_or_get_learning_daily_plan', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+        p_plan_date: planDate,
+      }),
+    );
+    return read<DailyPlan>(
+      supabase
+        .from('learning_daily_plans')
+        .select('id,plan_date,estimated_minutes,status,learning_daily_plan_items(id,position,item_type,title,description,estimated_minutes,status,session_id,step_id,lesson_id,activity_id)')
+        .eq('id', planId)
+        .single(),
+    );
+  },
+
+  gamification: (institutionId: string, studentId: string) =>
+    read<LearningGamification | null>(
+      supabase
+        .from('learning_student_gamification')
+        .select('xp,current_streak,longest_streak,daily_goal_minutes,last_qualified_activity_date')
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .maybeSingle(),
+    ),
+
+  errorNotebook: (institutionId: string, studentId: string) =>
+    read<LearningErrorNote[]>(
+      supabase
+        .from('learning_error_notebook')
+        .select('id,question_id,question_bank_id,canonical_skill_id,error_count,status,last_missed_at,last_reviewed_at')
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .eq('status', 'OPEN')
+        .order('last_missed_at', { ascending: false }),
+    ),
+
+  lesson: (lessonId: string) =>
+    read<LearningLesson>(
+      supabase
+        .from('learning_skill_lessons')
+        .select('id,canonical_skill_id,title,summary,content_markdown,worked_example,tips,estimated_minutes')
+        .eq('id', lessonId)
+        .eq('active', true)
+        .single(),
+    ),
+
+  questionBank: (institutionId: string) =>
+    read<LearningQuestionBankItem[]>(
+      supabase
+        .from('learning_question_bank')
+        .select('id,package_type,source_type,source_name,source_year,subject_area,topic,statement,options,correct_answer,explanation,difficulty')
+        .eq('active', true)
+        .or(`institution_id.is.null,institution_id.eq.${institutionId}`)
+        .order('created_at', { ascending: false })
+        .limit(100),
+    ),
+
+  simulations: (institutionId: string) =>
+    read<LearningSimulation[]>(
+      supabase
+        .from('learning_simulations')
+        .select('id,title,simulation_type,duration_minutes,learning_simulation_questions(position,learning_question_bank(id,statement,options))')
+        .eq('status', 'PUBLISHED')
+        .or(`institution_id.is.null,institution_id.eq.${institutionId}`)
+        .order('created_at', { ascending: false }),
+    ),
+
+  packages: (institutionId: string) =>
+    read<LearningPackage[]>(
+      supabase
+        .from('learning_packages')
+        .select('id,package_type,visibility,title,description,subject_area,learning_package_steps(id,position,step_type,title,lesson_id,activity_id)')
+        .eq('active', true)
+        .or(`institution_id.is.null,institution_id.eq.${institutionId}`)
+        .order('created_at', { ascending: false }),
+    ),
+
+  studentPackages: (institutionId: string, studentId: string) =>
+    read<LearningPackageAssignment[]>(
+      supabase
+        .from('learning_package_assignments')
+        .select('id,package_id,class_id,student_id,due_at,learning_packages(id,package_type,visibility,title,description,subject_area,learning_package_steps(id,position,step_type,title,lesson_id,activity_id))')
+        .eq('institution_id', institutionId)
+        .or(`student_id.eq.${studentId},student_id.is.null`)
+        .order('created_at', { ascending: false }),
+    ),
+
+  assignPackage: (input: {
+    institutionId: string;
+    packageId: string;
+    classId?: string;
+    studentId?: string;
+    dueAt?: string;
+  }) =>
+    read<string>(
+      supabase.rpc('assign_learning_package', {
+        p_institution_id: input.institutionId,
+        p_package_id: input.packageId,
+        p_class_id: input.classId ?? null,
+        p_student_id: input.studentId ?? null,
+        p_due_at: input.dueAt ?? null,
+      }),
+    ),
+
+  startSimulation: (input: { institutionId: string; studentId: string; simulationId: string }) =>
+    read<string>(supabase.rpc('start_learning_simulation_attempt', {
+      p_institution_id: input.institutionId,
+      p_student_id: input.studentId,
+      p_simulation_id: input.simulationId,
+    })),
+
+  submitSimulation: (attemptId: string, answers: Array<{ question_bank_id: string; answer: unknown }>, durationSeconds: number) =>
+    read<{ attempt_id: string; score: number; correct_count: number; total_questions: number }>(supabase.rpc('submit_learning_simulation_attempt', {
+      p_attempt_id: attemptId,
+      p_answers: answers,
+      p_duration_seconds: durationSeconds,
+    })),
 
   teacherAttempts: (institutionId: string, teacherId: string) =>
     read<LearningAttemptSummary[]>(
@@ -464,6 +744,41 @@ export const learningCenterService = {
 
     await read(supabase.from('learning_questions').insert(rows));
     return activity;
+  },
+
+  createActivityWithQuestions: async (input: {
+    institution_id: string;
+    subject_id: string;
+    unit_id?: string;
+    skill_id?: string;
+    teacher_id: string;
+    title: string;
+    description?: string;
+    activity_type?: string;
+    questions: Array<{
+      question_text: string;
+      question_type: LearningQuestion['question_type'];
+      options_json: string[];
+      correct_answer_json: unknown;
+      explanation?: string | null;
+      points: number;
+      sort_order: number;
+    }>;
+  }) => {
+    const activityId = await read<string>(
+      supabase.rpc('create_learning_activity_with_questions', {
+        p_institution_id: input.institution_id,
+        p_subject_id: input.subject_id,
+        p_unit_id: input.unit_id ?? null,
+        p_skill_id: input.skill_id ?? null,
+        p_teacher_id: input.teacher_id,
+        p_title: input.title,
+        p_description: input.description ?? null,
+        p_activity_type: input.activity_type ?? 'PRACTICE',
+        p_questions: input.questions,
+      }),
+    );
+    return { id: activityId };
   },
 
   publishActivity: (activityId: string) =>
@@ -550,6 +865,28 @@ export const learningCenterService = {
       mastery_percent: number;
     }[]>(
       supabase.rpc('submit_learning_attempt', {
+        p_activity_id: activityId,
+        p_answers: answers,
+      }),
+    ),
+
+  submitAttemptWithFeedback: (
+    activityId: string,
+    answers: Array<{ question_id: string; answer: unknown }>,
+  ) =>
+    read<{
+      attempt_id: string;
+      score: number;
+      total_points: number;
+      mastery_percent: number;
+      feedback: Array<{
+        question_id: string;
+        is_correct: boolean;
+        correct_answer: unknown;
+        explanation: string | null;
+      }>;
+    }>(
+      supabase.rpc('submit_learning_attempt_with_feedback', {
         p_activity_id: activityId,
         p_answers: answers,
       }),

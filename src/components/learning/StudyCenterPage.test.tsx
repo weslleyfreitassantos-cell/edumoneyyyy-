@@ -94,6 +94,12 @@ vi.mock('../../hooks/useLearningCenter', () => ({
     data: [{ skill_id: 'skill-1', mastery_percent: 60, status: 'IN_PROGRESS' }],
     isLoading: false,
   }),
+  useLearningDailyPlan: () => ({ data: null, isLoading: false }),
+  useLearningGamification: () => ({ data: null, isLoading: false }),
+  useLearningErrorNotebook: () => ({ data: [], isLoading: false }),
+  useLearningSimulations: () => ({ data: [], isLoading: false }),
+  useStudentLearningPackages: () => ({ data: [], isLoading: false }),
+  useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
 }));
 
 vi.mock('../../hooks/useAdaptiveLearning', () => ({

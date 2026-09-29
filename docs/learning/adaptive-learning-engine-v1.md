@@ -21,6 +21,14 @@ The catalog is global and versioned. Institutional `learning_units` and `learnin
 - `learning_attempt_runs` and `learning_attempt_run_answers`: append-only submission history.
 - `learning_skill_evidence`: append-only evidence connected to a student, canonical skill and optional attempt run.
 - `learning_student_skill_state`: a materialized, deterministic summary. The existing `learning_skill_progress` table remains untouched as the legacy compatibility surface.
+- `learning_guided_sessions` and `learning_guided_steps`: persistent diagnostic, lesson, practice, lock-in and return-to-target execution.
+- `learning_skill_lessons`: versioned, authorial lesson content that does not depend on AI.
+- `learning_daily_plans`: deterministic plans that remain stable across refreshes for a study day.
+- `learning_question_skill_links`: explicit primary/supporting mappings used for question-level evidence.
+- `learning_question_bank`: reusable TecEscola, institution, teacher and ENEM-compatible question provenance.
+- `learning_packages` and `learning_package_progress`: reusable learning paths that can be assigned or opened voluntarily.
+- `learning_error_notebook`, `learning_skill_reviews` and `learning_student_gamification`: review queues, heuristic spaced review and lightweight XP/streak state.
+- `learning_simulations` and `learning_simulation_attempts`: autosave-ready mini/historical/area simulation contracts; results feed the same evidence state.
 
 Expected grade is metadata for curriculum planning, not an access restriction. A student may receive a prerequisite from another stage when the graph indicates that it is the useful next step.
 
@@ -51,18 +59,18 @@ The student target is resolved before planning through active enrollment, class 
 
 ## UI integration
 
-The student Central de Estudos shows `Seu próximo passo` only when a mapped target and adaptive data exist. Without that data, the current study center continues to behave as before.
+The student Central de Estudos now leads with `Plano de hoje`, then exposes the active guided session, error notebook, simulations, adaptive hint, subjects and progress. Without adaptive configuration, the legacy subject/practice flow remains available. Lessons and practice are separate mobile-first steps; answer keys and explanations are returned only after submission.
 
-The Central Pedagógica adds a read-only readiness panel backed by `get_teacher_adaptive_insights`. The RPC scopes rows to students assigned to the teacher's offering for the mapped subject, or to institution operators with the existing operational permission. A teacher assigned to Portuguese cannot read Mathematics state merely because both subjects share a class. It does not invent rows when there is no evidence.
+The Central Pedagógica adds a read-only readiness panel backed by `get_teacher_adaptive_insights`, a multi-question activity editor backed by a single transactional RPC, and a reusable question-bank surface. The RPC scopes rows to students assigned to the teacher's offering for the mapped subject, or to institution operators with the existing operational permission. A teacher assigned to Portuguese cannot read Mathematics state merely because both subjects share a class. It does not invent rows when there is no evidence.
 
 ## Security and compatibility
 
 Canonical catalog content is readable to authenticated users but has no authenticated write policy. Learner state, evidence and attempt history are readable only by the student who owns the row, a teacher assigned to that student's class, or an institution operator in the existing tenant scope. No cross-tenant policy is added.
 
-`submit_learning_attempt` still updates the existing summary and answer tables so the current activity flow remains compatible. It additionally creates one immutable run, its answers, canonical evidence when a mapping exists, and a refreshed learner state.
+`submit_learning_attempt` still updates the existing summary and answer tables so the current activity flow remains compatible. It additionally creates one immutable run, its answers, question-level canonical evidence when mappings exist (legacy activity-level fallback otherwise), review due dates and a refreshed learner state. XP is awarded through an idempotent event key, so retries do not inflate progress.
 
 The student activity RPC no longer returns `explanation` or any answer key before submission. Teacher authoring continues to retain explanations for the existing authoring flow.
 
-## Scope limits
+## Deliberate V1 boundaries
 
-This v1 does not implement AI, ENEM ingestion, TRI, simulation authoring, spaced repetition, ranking, gamification or a complete national curriculum. It creates the smallest usable contract for those later increments without coupling canonical content to a tenant or changing academic calculations.
+This increment is deterministic and does not depend on AI, TRI or ranking. The question-bank schema and simulation contracts preserve official provenance fields for a future INEP ingestion manifest; the starter content seeded here is explicitly authorial TecEscola content, not official ENEM content. Spaced review is a configurable heuristic (1, 3, 7, 14 or 30 days), and gamification is intentionally lightweight and subordinate to learning evidence.

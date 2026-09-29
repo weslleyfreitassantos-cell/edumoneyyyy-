@@ -33,12 +33,18 @@ import {
 } from '../../hooks/useAdaptiveLearning';
 import {
   useLearningProgress,
+  useLearningSimulations,
+  useLearningDailyPlan,
+  useLearningErrorNotebook,
+  useLearningGamification,
+  useStudentLearningPackages,
   useLearningSkills,
   useLearningStudent,
   useLearningUnits,
   useStudentLearningCollections,
   usePublishedLearningActivities,
   useStudentLearningSubjects,
+  useStartGuidedLearningSession,
 } from '../../hooks/useLearningCenter';
 import type { LearningActivity } from '../../services/learningCenterService';
 
@@ -110,6 +116,24 @@ export default function StudyCenterPage() {
     currentInstitutionId ?? undefined,
   );
   const progress = useLearningProgress(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const dailyPlan = useLearningDailyPlan(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const gamification = useLearningGamification(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const errorNotebook = useLearningErrorNotebook(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const simulations = useLearningSimulations(currentInstitutionId ?? undefined);
+  const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
+  const startGuidedSession = useStartGuidedLearningSession(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -212,6 +236,95 @@ export default function StudyCenterPage() {
           </div>
         </div>
       </header>
+
+      <section
+        aria-label="Plano de hoje"
+        className="rounded-xl border border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/30 sm:p-5"
+      >
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Plano de hoje</p>
+            <h2 className="mt-1 text-lg font-bold text-blue-950 dark:text-blue-100">
+              {dailyPlan.data?.estimated_minutes ? `Seu plano · ${dailyPlan.data.estimated_minutes} min` : 'Um próximo passo por vez'}
+            </h2>
+            <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
+              Diagnóstico, estudo e prática no ritmo que suas evidências indicam.
+            </p>
+          </div>
+          {gamification.data && (
+            <div className="flex gap-2 text-xs font-bold text-blue-900 dark:text-blue-100">
+              <span className="rounded-full border border-blue-200 bg-white px-3 py-1.5 dark:border-blue-800 dark:bg-blue-950/60">{gamification.data.xp} XP</span>
+              <span className="rounded-full border border-blue-200 bg-white px-3 py-1.5 dark:border-blue-800 dark:bg-blue-950/60">{gamification.data.current_streak} dias</span>
+            </div>
+          )}
+        </div>
+        {dailyPlan.isLoading ? (
+          <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Montando seu plano...</p>
+        ) : dailyPlan.data?.learning_daily_plan_items?.length ? (
+          <ol className="mt-4 grid gap-2 sm:grid-cols-2">
+            {dailyPlan.data.learning_daily_plan_items.map((item) => (
+              <li key={item.id} className="flex items-center gap-3 rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/50">
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-blue-100 text-xs font-bold text-[#005bbf] dark:bg-blue-900/60 dark:text-blue-100">{item.position + 1}</span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p>
+                  <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.estimated_minutes} min · {item.status === 'COMPLETED' ? 'Concluído' : 'Pendente'}</p>
+                </div>
+                {item.activity_id ? <Link to={`/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.lesson_id ? <Link to={`/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : null}
+              </li>
+            ))}
+          </ol>
+        ) : adaptiveTarget.data ? (
+          <button
+            type="button"
+            onClick={() => startGuidedSession.mutate(adaptiveTarget.data!.canonicalSkillId)}
+            disabled={startGuidedSession.isPending}
+            className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
+          >
+            {startGuidedSession.isPending ? 'Preparando...' : 'Começar estudo guiado'}
+          </button>
+        ) : (
+          <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Escolha uma matéria para continuar sua trilha.</p>
+        )}
+      </section>
+
+      {errorNotebook.data?.length ? (
+        <section aria-label="Caderno de erros" className="rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20 sm:p-5">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h2 className="font-bold text-amber-950 dark:text-amber-100">Caderno de erros</h2>
+              <p className="mt-1 text-sm text-amber-900 dark:text-amber-200">Questões que merecem uma nova tentativa.</p>
+            </div>
+            <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-200">{errorNotebook.data.length} aberta(s)</span>
+          </div>
+        </section>
+      ) : null}
+
+      <section aria-label="Simulados" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <div className="flex items-center justify-between gap-3">
+          <div><h2 className="font-bold dark:text-white">Simulados</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Pratique sem transformar acertos em nota oficial.</p></div>
+          {simulations.data?.length ? <Link to="/student/study/simulation" className="text-xs font-bold text-[#005bbf]">Abrir simulado</Link> : null}
+        </div>
+        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{simulations.data?.length ? `${simulations.data[0].title} · ${simulations.data[0].learning_simulation_questions?.length ?? 0} questões` : 'Nenhum simulado disponível ainda.'}</p>
+      </section>
+
+      <section aria-label="Trilhas e pacotes" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <h2 className="font-bold dark:text-white">Trilhas e pacotes</h2>
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Sequências recomendadas pela escola ou pelo seu professor.</p>
+          </div>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{packages.data?.length ?? 0}</span>
+        </div>
+        {packages.data?.length ? (
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {packages.data.slice(0, 4).map((assignment) => {
+              const item = Array.isArray(assignment.learning_packages) ? assignment.learning_packages[0] : assignment.learning_packages;
+              if (!item) return null;
+              return <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{item.title}</p><p className="mt-1 text-xs text-slate-500">{item.learning_package_steps?.length ?? 0} etapas · {item.subject_area ?? 'Trilha TecEscola'}</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p></article>;
+            })}
+          </div>
+        ) : <p className="mt-4 text-sm text-slate-500">Nenhuma trilha atribuída ainda.</p>}
+      </section>
 
       {adaptiveGuidance.data && (
         <section
