@@ -49,6 +49,13 @@ async function login(page: import('@playwright/test').Page, actor: Actor): Promi
   await expect(page).not.toHaveURL(/\/login/, { timeout: 30_000 });
 }
 
+async function authenticatedClient(actor: Actor): Promise<Db> {
+  const client = createClient(url!, anonKey!, { auth: { autoRefreshToken: false, persistSession: false } });
+  const { error } = await client.auth.signInWithPassword({ email: actor.email, password: actor.password });
+  if (error) throw error;
+  return client;
+}
+
 manualDescribe('manual timetable editor v2', () => {
   test('director can create, edit, validate and publish without drag-and-drop', async ({ page }) => {
     const db = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
@@ -60,16 +67,17 @@ manualDescribe('manual timetable editor v2', () => {
       institutionId = (await insertOne(db, 'institutions', { name: `Manual UI ${suffix}`, active: true })).id;
       director = await createDirector(db, institutionId, suffix);
       teacher = await createTeacher(db, institutionId, suffix);
+      const directorDb = await authenticatedClient(director);
       const yearId = (await insertOne(db, 'academic_years', { institution_id: institutionId, name: `2026 UI ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true })).id;
       const termId = (await insertOne(db, 'terms', { academic_year_id: yearId, name: `1º Bimestre UI ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true })).id;
       const classId = (await insertOne(db, 'classes', { institution_id: institutionId, academic_year_id: yearId, name: `1º ano UI ${suffix}`, grade_level: '1º ano', shift: 'MATUTINO', active: true })).id;
       const subjectId = (await insertOne(db, 'subjects', { institution_id: institutionId, name: `Matemática UI ${suffix}`, code: `UI-${suffix}`, active: true })).id;
       await insertOne(db, 'class_curriculum_items', { institution_id: institutionId, class_id: classId, subject_id: subjectId, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
       const offeringId = (await insertOne(db, 'subject_offerings', { class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true })).id;
-      await insertOne(db, 'rooms', { institution_id: institutionId, name: `Sala UI ${suffix}`, capacity: 30, active: true });
-      await insertOne(db, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
-      await insertOne(db, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
-      await insertOne(db, 'teacher_availability', { institution_id: institutionId, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
+      await insertOne(directorDb, 'rooms', { institution_id: institutionId, name: `Sala UI ${suffix}`, capacity: 30, active: true });
+      await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
+      await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
+      await insertOne(directorDb, 'teacher_availability', { institution_id: institutionId, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
 
       await login(page, director);
       await page.goto('/admin?module=timetable&view=editor');
