@@ -162,6 +162,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(teacherPage);
       await login(teacherPage, teacher);
       await teacherPage.goto('/dashboard');
+      console.log(`[adaptive-complete] teacher dashboard url=${teacherPage.url()} body=${(await teacherPage.locator('body').innerText()).slice(0, 1200)}`);
       await expect(teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true }).click();
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });

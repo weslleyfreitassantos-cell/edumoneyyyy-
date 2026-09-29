@@ -95,6 +95,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       teacherPage = await browser.newPage();
       await login(teacherPage, pedro);
       await teacherPage.goto('/teacher/pedagogical-center');
+      console.log(`[adaptive-basic] teacher route url=${teacherPage.url()} body=${(await teacherPage.locator('body').innerText()).slice(0, 1200)}`);
       await expect(teacherPage.getByText('Alunos em acompanhamento')).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('Alice Adaptive')).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByRole('link', { name: /Alice Adaptive/ }).click();

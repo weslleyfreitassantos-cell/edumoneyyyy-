@@ -169,3 +169,13 @@ jobs:
 
       - name: Playwright dos fluxos adaptativos
         run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts --config=e2e/playwright.config.ts
+
+      - name: Anexar artefatos Playwright em falha
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-playwright-failure-${{ github.run_id }}
+          path: |
+            test-results/
+            e2e/.runtime/
+          if-no-files-found: ignore
