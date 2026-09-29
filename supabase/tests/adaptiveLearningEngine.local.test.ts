@@ -70,6 +70,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
   let studentB: string;
   let teacherA: { id: string; client: AnyClient };
   let teacherB: { id: string; client: AnyClient };
+  let teacherForeign: { id: string; client: AnyClient };
   let studentClient: AnyClient;
   let activityId: string;
   let questionId: string;
@@ -117,10 +118,11 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
 
     teacherA = await createActor(service, institutionA, 'TEACHER', 'math', suffix);
     teacherB = await createActor(service, institutionA, 'TEACHER', 'portuguese', suffix);
+    teacherForeign = await createActor(service, institutionB, 'TEACHER', 'foreign-teacher', suffix);
     const studentActor = await createActor(service, institutionA, 'STUDENT', 'student', suffix);
     const unassignedActor = await createActor(service, institutionA, 'STUDENT', 'unassigned', suffix);
-    const foreignActor = await createActor(service, institutionB, 'STUDENT', 'foreign', suffix);
-    userIds.push(teacherA.id, teacherB.id, studentActor.id, unassignedActor.id, foreignActor.id);
+    const foreignActor = await createActor(service, institutionB, 'STUDENT', 'foreign-student', suffix);
+    userIds.push(teacherA.id, teacherB.id, teacherForeign.id, studentActor.id, unassignedActor.id, foreignActor.id);
     studentClient = studentActor.client;
 
     studentA = (await insertOne(service, 'students', {
@@ -148,7 +150,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: mathSubject, teacher_profile_id: teacherA.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: portugueseSubject, teacher_profile_id: teacherB.id, term_id: termA, active: true });
     await insertOne(service, 'subject_offerings', { class_id: classUnassigned, subject_id: mathSubject, teacher_profile_id: teacherB.id, term_id: termA, active: true });
-    await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: foreignSubject, teacher_profile_id: teacherB.id, term_id: termB, active: true });
+    await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: foreignSubject, teacher_profile_id: teacherForeign.id, term_id: termB, active: true });
 
     const catalog = (await insertOne(service, 'learning_curriculum_catalogs', {
       code: `ADAPTIVE_RUNTIME_${suffix}`, name: 'Adaptive runtime', version: '1.0', active: true,
@@ -209,7 +211,7 @@ runtimeDescribe('adaptive learning runtime database contract', () => {
     await insertOne(service, 'learning_assignments', {
       institution_id: institutionA, activity_id: activityId, class_id: classA, assigned_by: teacherA.id,
     });
-    userIds.push(teacherA.id, teacherB.id, studentActor.id, unassignedActor.id, foreignActor.id);
+    userIds.push(teacherA.id, teacherB.id, teacherForeign.id, studentActor.id, unassignedActor.id, foreignActor.id);
   }, 120_000);
 
   it('blocks self, direct and indirect prerequisite cycles at runtime', async () => {
