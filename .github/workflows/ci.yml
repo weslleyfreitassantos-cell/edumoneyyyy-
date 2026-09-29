@@ -99,7 +99,7 @@ jobs:
           replacements = {
               "[realtime]\nenabled = true": "[realtime]\nenabled = false",
               "[local_smtp]\nenabled = true": "[local_smtp]\nenabled = false",
-              "[storage]\nenabled = true": "[storage]\nenabled = false",
+              "[storage.vector]\nenabled = true": "[storage.vector]\nenabled = false",
               "[edge_runtime]\nenabled = true": "[edge_runtime]\nenabled = false",
               "[analytics]\nenabled = true": "[analytics]\nenabled = false",
           }
@@ -113,7 +113,7 @@ jobs:
           PY
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,storage-api,studio,supavisor,vector
+        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,studio,supavisor,vector
 
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
