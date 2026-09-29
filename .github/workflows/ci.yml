@@ -147,7 +147,10 @@ jobs:
           set -euo pipefail
           status_output="$(npx supabase status -o env)"
           value_for() {
-            printf '%s\n' "$status_output" | sed -n "s/^$1=//p" | head -n 1
+            printf '%s\n' "$status_output" |
+              sed -n "s/^$1=//p" |
+              head -n 1 |
+              sed -E "s/^[\\\"']//; s/[\\\"']$//"
           }
 
           {
