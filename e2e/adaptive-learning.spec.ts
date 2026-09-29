@@ -21,7 +21,8 @@ async function insertOne(db: Db, table: string, row: Record<string, unknown>): P
 }
 
 async function createActor(db: Db, role: 'TEACHER' | 'STUDENT', name: string, suffix: string): Promise<Actor> {
-  const email = `adaptive-${name.toLowerCase()}-${suffix}@local.test`;
+  const normalizedName = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  const email = `adaptive-${normalizedName}-${suffix}@local.test`;
   const password = 'AdaptiveE2E!2026';
   const { data, error } = await db.auth.admin.createUser({ email, password, email_confirm: true });
   if (error) throw error;

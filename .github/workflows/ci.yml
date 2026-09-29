@@ -168,4 +168,4 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Playwright dos fluxos adaptativos
-        run: npm run e2e:local
+        run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts --config=e2e/playwright.config.ts

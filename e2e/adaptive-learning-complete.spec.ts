@@ -161,8 +161,12 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       const teacherPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
       pages.push(teacherPage);
       await login(teacherPage, teacher);
-      await teacherPage.goto('/teacher/pedagogical-center');
-      await expect(teacherPage.getByText('Trilhas e pacotes')).toBeVisible({ timeout: 30_000 });
+      await teacherPage.goto('/dashboard');
+      await expect(teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true }).click();
+      await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });
+      await expect(teacherPage.getByRole('heading', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('heading', { name: 'Trilhas e pacotes', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.locator('label').filter({ hasText: 'Pacote' }).locator('select').selectOption(starterPackage.data.id);
       await teacherPage.locator('label').filter({ hasText: 'Turma' }).locator('select').selectOption(classId);
       await teacherPage.getByRole('button', { name: 'Atribuir trilha' }).click();
