@@ -84,7 +84,7 @@ jobs:
         run: npm ci
 
       - name: Iniciar Supabase descartável
-        run: npx supabase start --exclude logflare,studio,storage-api,imgproxy,supavisor
+        run: npx supabase start --exclude analytics,edge-runtime,functions,imgproxy,inbucket,realtime,storage,studio,vector
 
       - name: Aplicar migrations em banco Linux
         run: npx supabase db reset --local
