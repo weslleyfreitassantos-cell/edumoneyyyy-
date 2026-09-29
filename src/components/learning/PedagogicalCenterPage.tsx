@@ -13,6 +13,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { useTeacherAdaptiveInsights } from '../../hooks/useAdaptiveLearning';
 import {
   learningCenterKeys,
   useLearningSkills,
@@ -111,6 +112,7 @@ export default function PedagogicalCenterPage() {
   const activities = useTeacherLearningActivities(currentInstitutionId ?? undefined, profile?.id);
   const attempts = useTeacherLearningAttempts(currentInstitutionId ?? undefined, profile?.id);
   const collections = useTeacherLearningCollections(currentInstitutionId ?? undefined, profile?.id);
+  const adaptiveInsights = useTeacherAdaptiveInsights(currentInstitutionId ?? undefined);
 
   const create = useMutation({
     mutationFn: async (input: ActivityDraft) => {
@@ -255,6 +257,42 @@ export default function PedagogicalCenterPage() {
           <h2 className="mt-3 font-bold dark:text-white">Precisam de atenção</h2>
           <p className="mt-2 text-2xl font-bold dark:text-white">{lowPerformance.length}</p>
         </article>
+      </section>
+
+      <section
+        aria-label="Aprendizagem adaptativa"
+        className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30"
+      >
+        <div className="flex items-start gap-3">
+          <BarChart3 className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]" aria-hidden="true" />
+          <div className="min-w-0 flex-1">
+            <h2 className="font-bold text-blue-950 dark:text-blue-100">Aprendizagem adaptativa</h2>
+            <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
+              Lacunas confirmadas e pontos que podem precisar de diagnóstico nas suas turmas.
+            </p>
+            {adaptiveInsights.isLoading ? (
+              <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">Carregando sinais de aprendizagem...</p>
+            ) : adaptiveInsights.data?.length ? (
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {adaptiveInsights.data.map((insight) => (
+                  <article key={`${insight.canonicalSkillId}-${insight.state}`} className="rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/50">
+                    <p className="font-semibold text-slate-900 dark:text-white">{insight.skillTitle}</p>
+                    <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">
+                      {insight.diagnosticNeededCount} aluno(s) precisam de diagnóstico
+                    </p>
+                    <p className="mt-2 text-xs font-semibold text-blue-700 dark:text-blue-300">
+                      {insight.studentCount} aluno(s) · {insight.state === 'NEEDS_REVIEW' ? 'lacuna confirmada' : 'em acompanhamento'}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-3 text-sm text-blue-800 dark:text-blue-300">
+                Ainda não há evidências suficientes para gerar um sinal adaptativo.
+              </p>
+            )}
+          </div>
+        </div>
       </section>
 
       <form onSubmit={submit} className="space-y-4 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">

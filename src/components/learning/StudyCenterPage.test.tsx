@@ -8,6 +8,10 @@ const state = vi.hoisted(() => ({
     { id: 'subject-math', name: 'Matemática' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa' },
   ],
+  adaptiveGuidance: null as null | {
+    message: string;
+    steps: Array<{ id: string; title: string }>;
+  },
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -92,10 +96,15 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   }),
 }));
 
+vi.mock('../../hooks/useAdaptiveLearning', () => ({
+  useStudentAdaptiveGuidance: () => ({ data: state.adaptiveGuidance, isLoading: false }),
+}));
+
 import StudyCenterPage from './StudyCenterPage';
 
 afterEach(() => {
   cleanup();
+  state.adaptiveGuidance = null;
 });
 
 function renderPage() {
@@ -150,5 +159,20 @@ describe('StudyCenterPage', () => {
 
     expect(screen.getByRole('button', { name: /Matemática/ })).toBeTruthy();
     expect(screen.queryByRole('button', { name: /Língua Portuguesa/ })).toBeNull();
+  });
+
+  it('shows adaptive guidance only when the backend has enough mapped evidence', () => {
+    state.adaptiveGuidance = {
+      message: 'Reforço recomendado — vamos fortalecer Frações para facilitar Função afim.',
+      steps: [
+        { id: 'fractions', title: 'Frações' },
+        { id: 'linear-function', title: 'Função afim' },
+      ],
+    };
+    renderPage();
+
+    expect(screen.getByRole('region', { name: 'Seu próximo passo' })).toBeTruthy();
+    expect(screen.getByText(/fortalecer Frações/)).toBeTruthy();
+    expect(screen.getByText('Função afim')).toBeTruthy();
   });
 });
