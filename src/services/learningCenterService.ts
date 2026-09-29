@@ -202,7 +202,7 @@ export interface LearningSimulationAttempt {
   total_questions: number;
   area_breakdown: Record<string, { correct: number; total: number }>;
   skill_breakdown: Record<string, { correct: number; total: number }>;
-  answers?: Record<string, { answer: unknown; is_correct: boolean }>;
+  answers?: Record<string, { answer: unknown; is_correct?: boolean | null }>;
   learning_simulations?: { title: string; simulation_type: LearningSimulation['simulation_type'] } | { title: string; simulation_type: LearningSimulation['simulation_type'] }[] | null;
 }
 
@@ -909,11 +909,17 @@ export const learningCenterService = {
       p_duration_seconds: durationSeconds,
     })),
 
+  saveSimulationAnswers: (attemptId: string, answers: Array<{ question_bank_id: string; answer: unknown }>) =>
+    read<{ attempt_id: string; answers: Record<string, { answer: unknown; is_correct?: boolean | null }> }>(supabase.rpc('save_learning_simulation_attempt_answers', {
+      p_attempt_id: attemptId,
+      p_answers: answers,
+    })),
+
   simulationAttempts: (institutionId: string, studentId: string) =>
     read<LearningSimulationAttempt[]>(
       supabase
         .from('learning_simulation_attempts')
-        .select('id,simulation_id,status,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,learning_simulations(title,simulation_type)')
+        .select('id,simulation_id,status,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,answers,learning_simulations(title,simulation_type)')
         .eq('institution_id', institutionId)
         .eq('student_id', studentId)
         .order('started_at', { ascending: false })

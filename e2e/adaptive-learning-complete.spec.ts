@@ -212,6 +212,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       const firstOptions = firstBank.options as string[];
       const firstWrong = firstOptions.find((option) => option !== firstBank.correct_answer) ?? firstOptions[0];
       await alicePage.getByRole('radio', { name: firstWrong, exact: true }).check();
+      await expect(alicePage.getByRole('status')).toContainText('Resposta salva.', { timeout: 30_000 });
       await alicePage.reload();
       await expect(alicePage.getByRole('radio', { name: firstWrong, exact: true })).toBeChecked({ timeout: 30_000 });
 
