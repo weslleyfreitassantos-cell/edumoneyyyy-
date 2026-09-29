@@ -157,7 +157,15 @@ jobs:
             echo "MULTI_TENANT_SUPABASE_URL=$(value_for API_URL)"
             echo "MULTI_TENANT_SUPABASE_ANON_KEY=$(value_for ANON_KEY)"
             echo "MULTI_TENANT_SUPABASE_SERVICE_ROLE_KEY=$(value_for SERVICE_ROLE_KEY)"
+            echo "VITE_SUPABASE_URL=$(value_for API_URL)"
+            echo "VITE_SUPABASE_PUBLISHABLE_KEY=$(value_for ANON_KEY)"
           } >> "$GITHUB_ENV"
 
       - name: Testes dinâmicos de segurança e RPCs adaptativos
         run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts
+
+      - name: Instalar Chromium para os fluxos adaptativos
+        run: npx playwright install --with-deps chromium
+
+      - name: Playwright dos fluxos adaptativos
+        run: npm run e2e:local
