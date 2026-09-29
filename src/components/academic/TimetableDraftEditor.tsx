@@ -29,7 +29,10 @@ const DAY_LABELS: Record<number, string> = { 1: 'Segunda', 2: 'Terça', 3: 'Quar
 
 function shortTime(value: string): string { return value.slice(0, 5); }
 function friendlyError(error: unknown): string {
-  const message = error instanceof Error ? error.message : String(error ?? '');
+  const structured = typeof error === 'object' && error !== null && 'message' in error
+    ? String((error as { message?: unknown }).message ?? '')
+    : '';
+  const message = error instanceof Error ? error.message : structured || String(error ?? '');
   const known: Array<[string, string]> = [
     ['SCHOOL_TIME_SLOT_NOT_CONFIGURED', 'O horário selecionado não está configurado para o turno da turma.'],
     ['TIMETABLE_BREAK_CONFLICT', 'A aula não pode ocupar um intervalo escolar.'],

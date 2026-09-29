@@ -73,6 +73,7 @@ manualDescribe('manual timetable editor v2', () => {
       const classId = (await insertOne(db, 'classes', { institution_id: institutionId, academic_year_id: yearId, name: `1º ano UI ${suffix}`, grade_level: '1º ano', shift: 'MATUTINO', active: true })).id;
       const subjectId = (await insertOne(db, 'subjects', { institution_id: institutionId, name: `Matemática UI ${suffix}`, code: `UI-${suffix}`, active: true })).id;
       await insertOne(db, 'class_curriculum_items', { institution_id: institutionId, class_id: classId, subject_id: subjectId, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
+      await insertOne(directorDb, 'teacher_subjects', { institution_id: institutionId, teacher_profile_id: teacher.id, subject_id: subjectId, primary_subject: true, active: true });
       const offeringId = (await insertOne(db, 'subject_offerings', { class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true })).id;
       await insertOne(directorDb, 'rooms', { institution_id: institutionId, name: `Sala UI ${suffix}`, capacity: 30, active: true });
       await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });

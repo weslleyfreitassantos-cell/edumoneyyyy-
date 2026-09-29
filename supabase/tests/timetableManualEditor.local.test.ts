@@ -82,6 +82,8 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: subjectMath, weekly_lessons: 2, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classA, subject_id: subjectPortuguese, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
     await insertOne(service, 'class_curriculum_items', { institution_id: institutionA, class_id: classB, subject_id: subjectMath, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
+    await insertOne(director.client, 'teacher_subjects', { institution_id: institutionA, teacher_profile_id: teacher.id, subject_id: subjectMath, primary_subject: true, active: true });
+    await insertOne(director.client, 'teacher_subjects', { institution_id: institutionA, teacher_profile_id: teacher.id, subject_id: subjectPortuguese, primary_subject: true, active: true });
     mathOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     portugueseOfferingA = (await insertOne(service, 'subject_offerings', { class_id: classA, subject_id: subjectPortuguese, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
     mathOfferingB = (await insertOne(service, 'subject_offerings', { class_id: classB, subject_id: subjectMath, teacher_profile_id: teacher.id, term_id: termA, active: true })).id;
