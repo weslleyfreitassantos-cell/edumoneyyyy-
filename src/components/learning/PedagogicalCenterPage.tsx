@@ -25,6 +25,7 @@ import {
   useLearningPackages,
   useAssignLearningPackage,
   useTeacherQuestionBank,
+  useTeacherLearningStudents,
 } from '../../hooks/useLearningCenter';
 import { learningCenterService } from '../../services/learningCenterService';
 
@@ -128,6 +129,7 @@ export default function PedagogicalCenterPage() {
   const questionBank = useTeacherQuestionBank(currentInstitutionId ?? undefined);
   const packages = useLearningPackages(currentInstitutionId ?? undefined);
   const teacherClasses = useTeacherLearningClasses(profile?.id);
+  const teacherStudents = useTeacherLearningStudents(currentInstitutionId ?? undefined);
   const assignPackage = useAssignLearningPackage(currentInstitutionId ?? undefined);
   const [packageId, setPackageId] = useState('');
   const [packageClassId, setPackageClassId] = useState('');
@@ -316,6 +318,17 @@ export default function PedagogicalCenterPage() {
         </article>
       </section>
 
+      <section aria-label="Alunos em acompanhamento" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h2 className="font-bold dark:text-white">Alunos em acompanhamento</h2>
+            <p className="mt-1 text-sm text-slate-500">Abra o detalhe de um aluno para ver domínio, lacunas e próxima ação.</p>
+          </div>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-300">{teacherStudents.data?.length ?? 0}</span>
+        </div>
+        {teacherStudents.isLoading ? <p className="mt-4 text-sm text-slate-500">Carregando seus alunos...</p> : teacherStudents.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{teacherStudents.data.map((student) => <Link key={`${student.student_id}-${student.class_id}`} to={`/teacher/pedagogical-center/students/${student.student_id}`} className="rounded-lg border p-4 transition hover:border-[#005bbf] dark:border-slate-700"><div className="flex items-start justify-between gap-3"><p className="font-semibold dark:text-white">{student.full_name}</p><span className="text-xs font-bold text-[#005bbf]">{Math.round(student.average_mastery)}%</span></div><p className="mt-1 text-xs text-slate-500">{student.class_name}</p><p className="mt-3 text-xs text-amber-700">{student.open_error_count} ponto(s) para revisar</p></Link>)}</div> : <p className="mt-4 text-sm text-slate-500">Nenhum aluno disponível no seu escopo.</p>}
+      </section>
+
       <section
         aria-label="Aprendizagem adaptativa"
         className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30"
@@ -390,7 +403,7 @@ export default function PedagogicalCenterPage() {
         </button>
       </section>
 
-      <form onSubmit={submit} className="space-y-4 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <form id="nova-atividade" onSubmit={submit} className="space-y-4 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-center justify-between gap-4">
           <div>
             <h2 className="font-bold dark:text-white">Nova atividade</h2>

@@ -34,6 +34,7 @@ export default function PracticePage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [result, setResult] = useState<PracticeResult | null>(null);
+  const [guidedOutcome, setGuidedOutcome] = useState<'completed' | 'retry' | 'support' | null>(null);
   const submit = useSubmitLearningAttemptWithFeedback(currentInstitutionId ?? undefined, profile?.id);
   const completeGuidedStep = useCompleteGuidedLearningStep(currentInstitutionId ?? undefined, profile?.id);
   const guidedStepId = searchParams.get('guidedStep');
@@ -48,16 +49,24 @@ export default function PracticePage() {
     void submit.mutateAsync({
       activityId: activity.id,
       answers: questions.map((item) => ({ question_id: item.id, answer: answers[item.id] ?? '' })),
-    }).then((value) => {
+    }).then(async (value) => {
       setResult(value);
       if (guidedStepId) {
-        void completeGuidedStep.mutateAsync({
+        const guidedResult = await completeGuidedStep.mutateAsync({
           stepId: guidedStepId,
           status: 'COMPLETED',
           metadata: { mastery_confirmed: value.mastery_percent >= 80 },
         });
+        setGuidedOutcome(guidedResult.needs_teacher_support ? 'support' : guidedResult.retry ? 'retry' : 'completed');
       }
     });
+  };
+
+  const retryGuidedStep = () => {
+    setResult(null);
+    setGuidedOutcome(null);
+    setAnswers({});
+    setCurrentIndex(0);
   };
 
   if (result) {
@@ -68,6 +77,8 @@ export default function PracticePage() {
           <h1 className="mt-4 text-2xl font-bold dark:text-white">Prática concluída</h1>
           <p className="mt-2 text-slate-500">Você acertou {result.score} de {result.total_points} pontos.</p>
           <p className="mt-4 text-sm font-semibold text-[#005bbf]">Domínio atualizado: {result.mastery_percent}%</p>
+          {guidedOutcome === 'retry' && <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-left text-sm text-amber-900"><p className="font-bold">O lock-in ainda não foi confirmado.</p><p className="mt-1">Tente novamente para consolidar esta habilidade.</p><button type="button" onClick={retryGuidedStep} className="mt-3 rounded-lg border border-amber-700 px-3 py-2 text-xs font-bold">Tentar lock-in novamente</button></div>}
+          {guidedOutcome === 'support' && <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-left text-sm text-red-900"><p className="font-bold">Sessão encaminhada para apoio do professor.</p><p className="mt-1">Você pode voltar ao plano enquanto o professor revisa esta habilidade.</p></div>}
         </div>
         <div className="space-y-3">
           {questions.map((item, index) => {

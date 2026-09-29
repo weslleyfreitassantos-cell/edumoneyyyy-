@@ -189,6 +189,100 @@ export interface LearningSimulation {
   }>;
 }
 
+export interface LearningSimulationAttempt {
+  id: string;
+  simulation_id: string;
+  status: 'IN_PROGRESS' | 'COMPLETED' | 'ABANDONED';
+  started_at: string;
+  completed_at: string | null;
+  duration_seconds: number | null;
+  score: number;
+  correct_count: number;
+  total_questions: number;
+  area_breakdown: Record<string, { correct: number; total: number }>;
+  skill_breakdown: Record<string, { correct: number; total: number }>;
+  answers?: Record<string, { answer: unknown; is_correct: boolean }>;
+  learning_simulations?: { title: string; simulation_type: LearningSimulation['simulation_type'] } | { title: string; simulation_type: LearningSimulation['simulation_type'] }[] | null;
+}
+
+export interface LearningTeacherStudent {
+  student_id: string;
+  full_name: string;
+  class_id: string;
+  class_name: string;
+  open_error_count: number;
+  average_mastery: number;
+  active_session_status: GuidedSession['status'] | null;
+  target_skill_title: string | null;
+}
+
+export interface LearningTeacherStudentDetail {
+  student: {
+    id: string;
+    full_name: string;
+    class_id: string;
+    class_name: string;
+  };
+  progress: Array<{
+    canonical_skill_id: string;
+    skill_title: string;
+    state: string;
+    mastery_estimate: number;
+    evidence_count: number;
+    confidence: number;
+    updated_at: string;
+  }>;
+  open_errors: Array<{
+    id: string;
+    question_id: string | null;
+    question_bank_id: string | null;
+    canonical_skill_id: string | null;
+    error_count: number;
+    last_missed_at: string;
+    last_reviewed_at: string | null;
+  }>;
+  guided_sessions: Array<{
+    id: string;
+    target_canonical_skill_id: string;
+    target_skill_title: string;
+    status: GuidedSession['status'];
+    started_at: string;
+    completed_at: string | null;
+    steps: Array<{ id: string; step_type: string; position: number; status: string; attempts: number; title: string }>;
+  }>;
+  recent_attempts: Array<{
+    id: string;
+    activity_id: string;
+    activity_title: string;
+    score: number;
+    total_points: number;
+    completed_at: string;
+  }>;
+}
+
+export interface LearningErrorReview {
+  error_id: string;
+  source: 'ACTIVITY' | 'QUESTION_BANK';
+  question_id?: string;
+  activity_id?: string;
+  question_bank_id?: string;
+  canonical_skill_id: string | null;
+  question_type: LearningQuestion['question_type'];
+  statement: string;
+  options: string[];
+  subject_area?: string;
+  topic?: string | null;
+  error_count: number;
+}
+
+export interface LearningErrorReviewResult {
+  error_id: string;
+  is_correct: boolean;
+  correct_answer: unknown;
+  explanation: string | null;
+  status: 'OPEN' | 'RESOLVED';
+}
+
 export interface LearningPackage {
   id: string;
   package_type: 'TECESCOLA' | 'INSTITUTION' | 'TEACHER';
@@ -555,7 +649,7 @@ export const learningCenterService = {
         .select('id,target_canonical_skill_id,status,started_at,completed_at,learning_guided_steps(id,canonical_skill_id,step_type,position,status,activity_id,lesson_id,attempts,learning_curriculum_skills(title))')
         .eq('institution_id', institutionId)
         .eq('student_id', studentId)
-        .in('status', ['ACTIVE', 'PAUSED'])
+        .in('status', ['ACTIVE', 'PAUSED', 'NEEDS_TEACHER_SUPPORT'])
         .order('updated_at', { ascending: false })
         .limit(1)
         .maybeSingle(),
@@ -575,7 +669,7 @@ export const learningCenterService = {
     ),
 
   completeGuidedStep: (stepId: string, status: 'COMPLETED' | 'SKIPPED' = 'COMPLETED', metadata: Record<string, unknown> = {}) =>
-    read<{ step_id: string; session_id: string; next_step_id?: string | null; session_status?: string }>(
+    read<{ step_id: string; session_id: string; next_step_id?: string | null; session_status?: string; retry?: boolean; needs_teacher_support?: boolean }>(
       supabase.rpc('complete_guided_learning_step', {
         p_step_id: stepId,
         p_status: status,
@@ -619,6 +713,19 @@ export const learningCenterService = {
         .eq('student_id', studentId)
         .eq('status', 'OPEN')
         .order('last_missed_at', { ascending: false }),
+    ),
+
+  errorReview: (errorId: string) =>
+    read<LearningErrorReview>(
+      supabase.rpc('get_learning_error_review', { p_error_id: errorId }),
+    ),
+
+  submitErrorReview: (errorId: string, answer: unknown) =>
+    read<LearningErrorReviewResult>(
+      supabase.rpc('submit_learning_error_review', {
+        p_error_id: errorId,
+        p_answer: answer,
+      }),
     ),
 
   lesson: (lessonId: string) =>
@@ -697,11 +804,35 @@ export const learningCenterService = {
     })),
 
   submitSimulation: (attemptId: string, answers: Array<{ question_bank_id: string; answer: unknown }>, durationSeconds: number) =>
-    read<{ attempt_id: string; score: number; correct_count: number; total_questions: number }>(supabase.rpc('submit_learning_simulation_attempt', {
+    read<{ attempt_id: string; score: number; correct_count: number; total_questions: number; area_breakdown?: Record<string, { correct: number; total: number }>; skill_breakdown?: Record<string, { correct: number; total: number }> }>(supabase.rpc('submit_learning_simulation_attempt', {
       p_attempt_id: attemptId,
       p_answers: answers,
       p_duration_seconds: durationSeconds,
     })),
+
+  simulationAttempts: (institutionId: string, studentId: string) =>
+    read<LearningSimulationAttempt[]>(
+      supabase
+        .from('learning_simulation_attempts')
+        .select('id,simulation_id,status,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,learning_simulations(title,simulation_type)')
+        .eq('institution_id', institutionId)
+        .eq('student_id', studentId)
+        .order('started_at', { ascending: false })
+        .limit(20),
+    ),
+
+  teacherStudents: (institutionId: string) =>
+    read<LearningTeacherStudent[]>(
+      supabase.rpc('list_teacher_learning_students', { p_institution_id: institutionId }),
+    ),
+
+  teacherStudentDetail: (institutionId: string, studentId: string) =>
+    read<LearningTeacherStudentDetail>(
+      supabase.rpc('get_teacher_learning_student_detail', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+      }),
+    ),
 
   teacherAttempts: (institutionId: string, teacherId: string) =>
     read<LearningAttemptSummary[]>(

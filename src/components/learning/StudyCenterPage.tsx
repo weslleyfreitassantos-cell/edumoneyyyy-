@@ -45,6 +45,7 @@ import {
   usePublishedLearningActivities,
   useStudentLearningSubjects,
   useStartGuidedLearningSession,
+  useGuidedLearningSession,
 } from '../../hooks/useLearningCenter';
 import type { LearningActivity } from '../../services/learningCenterService';
 
@@ -134,6 +135,10 @@ export default function StudyCenterPage() {
   const simulations = useLearningSimulations(currentInstitutionId ?? undefined);
   const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
   const startGuidedSession = useStartGuidedLearningSession(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const guidedSession = useGuidedLearningSession(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -237,6 +242,14 @@ export default function StudyCenterPage() {
         </div>
       </header>
 
+      {guidedSession.data?.status === 'NEEDS_TEACHER_SUPPORT' && (
+        <section aria-label="Apoio do professor" className="rounded-xl border border-red-200 bg-red-50 p-4 dark:border-red-900/60 dark:bg-red-950/20 sm:p-5">
+          <h2 className="font-bold text-red-950 dark:text-red-100">Seu estudo guiado precisa de apoio</h2>
+          <p className="mt-1 text-sm text-red-900 dark:text-red-200">O lock-in foi tentado três vezes sem confirmação. O professor pode revisar seu caminho e indicar um reforço.</p>
+          <Link to="/student/study#study-practice" className="mt-3 inline-flex rounded-lg border border-red-700 px-3 py-2 text-xs font-bold text-red-800 dark:text-red-100">Voltar às práticas</Link>
+        </section>
+      )}
+
       <section
         aria-label="Plano de hoje"
         className="rounded-xl border border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/30 sm:p-5"
@@ -296,6 +309,14 @@ export default function StudyCenterPage() {
             </div>
             <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-200">{errorNotebook.data.length} aberta(s)</span>
           </div>
+          <div className="mt-4 grid gap-2 sm:grid-cols-3">
+            {errorNotebook.data.slice(0, 3).map((error) => (
+              <Link key={error.id} to={`/student/study/error/${error.id}`} className="rounded-lg border border-amber-200 bg-white p-3 text-sm font-semibold text-amber-950 transition hover:border-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100">
+                Revisar agora
+                <span className="mt-1 block text-xs font-normal text-amber-800 dark:text-amber-200">{error.error_count} erro(s) nesta questão</span>
+              </Link>
+            ))}
+          </div>
         </section>
       ) : null}
 
@@ -320,7 +341,7 @@ export default function StudyCenterPage() {
             {packages.data.slice(0, 4).map((assignment) => {
               const item = Array.isArray(assignment.learning_packages) ? assignment.learning_packages[0] : assignment.learning_packages;
               if (!item) return null;
-              return <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{item.title}</p><p className="mt-1 text-xs text-slate-500">{item.learning_package_steps?.length ?? 0} etapas · {item.subject_area ?? 'Trilha TecEscola'}</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p></article>;
+              return <article key={assignment.id} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700"><p className="font-semibold dark:text-white">{item.title}</p><p className="mt-1 text-xs text-slate-500">{item.learning_package_steps?.length ?? 0} etapas · {item.subject_area ?? 'Trilha TecEscola'}</p><p className="mt-2 text-xs font-semibold text-[#005bbf]">{assignment.due_at ? `Entrega até ${new Date(assignment.due_at).toLocaleDateString('pt-BR')}` : 'Disponível para começar'}</p><ol className="mt-3 space-y-2">{item.learning_package_steps?.slice(0, 4).map((step) => <li key={step.id} className="flex items-center justify-between gap-2 text-xs"><span className="min-w-0 truncate text-slate-600 dark:text-slate-300">{step.position + 1}. {step.title}</span>{step.lesson_id ? <Link to={`/student/study/lesson/${step.lesson_id}`} className="shrink-0 font-bold text-[#005bbf]">Abrir</Link> : step.activity_id ? <Link to={`/student/study/activity/${step.activity_id}`} className="shrink-0 font-bold text-[#005bbf]">Praticar</Link> : null}</li>)}</ol></article>;
             })}
           </div>
         ) : <p className="mt-4 text-sm text-slate-500">Nenhuma trilha atribuída ainda.</p>}

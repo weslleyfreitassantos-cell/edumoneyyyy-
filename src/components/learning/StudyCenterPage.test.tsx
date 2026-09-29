@@ -100,6 +100,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningSimulations: () => ({ data: [], isLoading: false }),
   useStudentLearningPackages: () => ({ data: [], isLoading: false }),
   useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
+  useGuidedLearningSession: () => ({ data: null, isLoading: false }),
 }));
 
 vi.mock('../../hooks/useAdaptiveLearning', () => ({

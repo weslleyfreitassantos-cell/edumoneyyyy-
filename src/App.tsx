@@ -109,6 +109,8 @@ const PublishedActivitiesPage = lazy(() => import('./components/learning/Publish
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
 const LessonPage = lazy(() => import('./components/learning/LessonPage'));
 const SimulationPage = lazy(() => import('./components/learning/SimulationPage'));
+const ErrorReviewPage = lazy(() => import('./components/learning/ErrorReviewPage'));
+const TeacherStudentDetailPage = lazy(() => import('./components/learning/TeacherStudentDetailPage'));
 
 const LibraryPage = lazy(
   () => import('./components/learning/LibraryPage'),
@@ -703,8 +705,10 @@ function AppRoutes() {
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/lesson/:lessonId/:stepId?" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><LessonPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/simulation" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><SimulationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/error/:errorId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><ErrorReviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/students/:studentId" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherStudentDetailPage /></AuthenticatedRouteContent></ProtectedRoute>} />
 
         <Route
           path="/dashboard/*"
