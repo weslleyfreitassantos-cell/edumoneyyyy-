@@ -44,10 +44,12 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
     const suffix = Date.now().toString(36);
     const pedro = await createActor(service, 'TEACHER', 'Pedro Adaptive', suffix);
     const alice = await createActor(service, 'STUDENT', 'Alice Adaptive', suffix);
+    const maria = await createActor(service, 'STUDENT', 'Maria Support', suffix);
     const account = await insertOne(service, 'accounts', { name: `Adaptive E2E ${suffix}`, owner_profile_id: pedro.id, institution_limit: 1, status: 'ACTIVE' });
     const institution = await insertOne(service, 'institutions', { account_id: account.id, name: `TecEscola Adaptive ${suffix}`, active: true });
     await insertOne(service, 'memberships', { profile_id: pedro.id, institution_id: institution.id, role: 'TEACHER', active: true });
     await insertOne(service, 'memberships', { profile_id: alice.id, institution_id: institution.id, role: 'STUDENT', active: true });
+    await insertOne(service, 'memberships', { profile_id: maria.id, institution_id: institution.id, role: 'STUDENT', active: true });
     const year = await insertOne(service, 'academic_years', { institution_id: institution.id, name: `2026 Adaptive ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true });
     const term = await insertOne(service, 'terms', { academic_year_id: year.id, name: `Bimestre Adaptive ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true });
     const schoolClass = await insertOne(service, 'classes', { institution_id: institution.id, academic_year_id: year.id, name: `1º ano Adaptive ${suffix}`, grade_level: '1º ano', shift: 'INTEGRAL', active: true });
@@ -56,6 +58,8 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
     await insertOne(service, 'subject_offerings', { class_id: schoolClass.id, subject_id: subject.id, teacher_profile_id: pedro.id, term_id: term.id, active: true });
     const student = await insertOne(service, 'students', { institution_id: institution.id, profile_id: alice.id, registration_number: `ADAPTIVE-${suffix}`, active: true });
     await insertOne(service, 'enrollments', { student_id: student.id, class_id: schoolClass.id, academic_year_id: year.id, status: 'active', active: true });
+    const mariaStudent = await insertOne(service, 'students', { institution_id: institution.id, profile_id: maria.id, registration_number: `SUPPORT-${suffix}`, active: true });
+    await insertOne(service, 'enrollments', { student_id: mariaStudent.id, class_id: schoolClass.id, academic_year_id: year.id, status: 'active', active: true });
     const canonical = await service.from('learning_curriculum_skills').select('id').eq('code', 'FRACTIONS').single();
     const canonicalSkill = required(canonical.data, 'FRACTIONS canonical skill');
     const unit = await insertOne(service, 'learning_units', { institution_id: institution.id, subject_id: subject.id, title: `Números ${suffix}`, active: true });
@@ -74,10 +78,11 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       const started = await aliceDb.rpc('start_guided_learning_session', { p_institution_id: institution.id, p_student_id: student.id, p_target_canonical_skill_id: canonicalSkill.id });
       expect(started.error).toBeNull();
 
-      studentPage = await browser.newPage();
+      studentPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       await login(studentPage, alice);
       await studentPage.goto('/student/study');
       await expect(studentPage.getByText('Olá, Alice. O que vamos estudar hoje?')).toBeVisible({ timeout: 30_000 });
+      expect(await studentPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       await expect(studentPage.getByText(`Prática de frações ${suffix}`)).toBeVisible({ timeout: 30_000 });
       await studentPage.getByRole('link', { name: 'Começar atividade' }).click();
       await expect(studentPage.getByText('Quanto é 1/2 + 1/2?')).toBeVisible({ timeout: 30_000 });
@@ -94,12 +99,17 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await teacherPage.getByRole('link', { name: /Alice Adaptive/ }).click();
       await expect(teacherPage.getByText('Habilidades e domínio')).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('Pontos para revisar')).toBeVisible({ timeout: 30_000 });
+      await teacherPage.goto('/teacher/pedagogical-center');
+      await teacherPage.getByRole('link', { name: /Maria Support/ }).click();
+      await expect(teacherPage.getByText('Ainda não há evidências de aprendizagem.')).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByText('Nenhuma sessão guiada registrada.')).toBeVisible({ timeout: 30_000 });
     } finally {
       await studentPage?.close();
       await teacherPage?.close();
       await service.from('institutions').delete().eq('id', institution.id);
       await service.auth.admin.deleteUser(pedro.id);
       await service.auth.admin.deleteUser(alice.id);
+      await service.auth.admin.deleteUser(maria.id);
     }
   }, 180_000);
 });
