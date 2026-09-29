@@ -367,8 +367,8 @@ declare
   attempt_row public.learning_simulation_attempts%rowtype;
   question_row record;
   answer_item jsonb;
-  correct_count integer := 0;
-  total_count integer := 0;
+  v_correct_count integer := 0;
+  v_total_count integer := 0;
   score_percent integer := 0;
   answer_map jsonb := '{}'::jsonb;
 begin
@@ -389,9 +389,9 @@ begin
      where simulation_question.simulation_id = attempt_row.simulation_id
      order by simulation_question.position
   loop
-    total_count := total_count + 1;
+    v_total_count := v_total_count + 1;
     select item into answer_item from jsonb_array_elements(p_answers) item where item->>'question_bank_id' = question_row.id::text limit 1;
-    if answer_item is not null and (question_row.correct_answer = answer_item->'answer') then correct_count := correct_count + 1; end if;
+    if answer_item is not null and (question_row.correct_answer = answer_item->'answer') then v_correct_count := v_correct_count + 1; end if;
     answer_map := answer_map || jsonb_build_object(question_row.id::text, jsonb_build_object('answer', coalesce(answer_item->'answer', 'null'::jsonb), 'is_correct', answer_item is not null and question_row.correct_answer = answer_item->'answer'));
     if question_row.canonical_skill_id is not null then
       insert into public.learning_skill_evidence(institution_id, student_id, canonical_skill_id, source, correct, score, metadata)
@@ -408,10 +408,10 @@ begin
         canonical_skill_id = coalesce(public.learning_error_notebook.canonical_skill_id, excluded.canonical_skill_id);
     end if;
   end loop;
-  score_percent := case when total_count = 0 then 0 else round(correct_count * 100.0 / total_count)::integer end;
-  update public.learning_simulation_attempts set status = 'COMPLETED', completed_at = now(), duration_seconds = coalesce(p_duration_seconds, duration_seconds), score = score_percent, correct_count = correct_count, total_questions = total_count, answers = answer_map, updated_at = now() where id = attempt_row.id;
+  score_percent := case when v_total_count = 0 then 0 else round(v_correct_count * 100.0 / v_total_count)::integer end;
+  update public.learning_simulation_attempts set status = 'COMPLETED', completed_at = now(), duration_seconds = coalesce(p_duration_seconds, duration_seconds), score = score_percent, correct_count = v_correct_count, total_questions = v_total_count, answers = answer_map, updated_at = now() where id = attempt_row.id;
   perform private.award_learning_xp(attempt_row.institution_id, attempt_row.student_id, 'simulation:' || attempt_row.id::text, 'SIMULATION', 20);
-  return jsonb_build_object('attempt_id', attempt_row.id, 'score', score_percent, 'correct_count', correct_count, 'total_questions', total_count, 'answers', answer_map);
+  return jsonb_build_object('attempt_id', attempt_row.id, 'score', score_percent, 'correct_count', v_correct_count, 'total_questions', v_total_count, 'answers', answer_map);
 end;
 $$;
 
@@ -675,19 +675,19 @@ create or replace function public.create_or_get_learning_daily_plan(p_institutio
 returns uuid language plpgsql security definer set search_path = ''
 as $$
 declare
-  plan_id uuid;
+  v_plan_id uuid;
   active_session_id uuid;
   active_target_id uuid;
   position_index integer := 0;
   review_row record;
 begin
   if not exists (select 1 from public.students student where student.id = p_student_id and student.institution_id = p_institution_id and student.active and (student.profile_id = auth.uid() or public.can_manage_institution_operations(p_institution_id))) then raise exception 'LEARNING_STUDENT_SCOPE_DENIED'; end if;
-  select id into plan_id from public.learning_daily_plans where institution_id = p_institution_id and student_id = p_student_id and plan_date = p_plan_date;
-  if plan_id is not null then return plan_id; end if;
+  select id into v_plan_id from public.learning_daily_plans where institution_id = p_institution_id and student_id = p_student_id and plan_date = p_plan_date;
+  if v_plan_id is not null then return v_plan_id; end if;
 
   select session.id, session.target_canonical_skill_id into active_session_id, active_target_id
     from public.learning_guided_sessions session where session.institution_id = p_institution_id and session.student_id = p_student_id and session.status in ('ACTIVE', 'PAUSED') order by session.updated_at desc limit 1;
-  insert into public.learning_daily_plans(institution_id, student_id, plan_date) values (p_institution_id, p_student_id, p_plan_date) returning id into plan_id;
+  insert into public.learning_daily_plans(institution_id, student_id, plan_date) values (p_institution_id, p_student_id, p_plan_date) returning id into v_plan_id;
 
   for review_row in
     select review.canonical_skill_id, skill.title
@@ -697,23 +697,23 @@ begin
      order by review.review_due_at limit 2
   loop
     insert into public.learning_daily_plan_items(institution_id, plan_id, position, item_type, title, description, canonical_skill_id, session_id, estimated_minutes)
-    values (p_institution_id, plan_id, position_index, 'REVIEW', 'Revisar ' || review_row.title, 'Uma revisão curta para manter o domínio.', review_row.canonical_skill_id, active_session_id, 5);
+    values (p_institution_id, v_plan_id, position_index, 'REVIEW', 'Revisar ' || review_row.title, 'Uma revisão curta para manter o domínio.', review_row.canonical_skill_id, active_session_id, 5);
     position_index := position_index + 1;
   end loop;
 
   if active_session_id is not null then
     insert into public.learning_daily_plan_items(institution_id, plan_id, position, item_type, title, description, canonical_skill_id, session_id, step_id, lesson_id, activity_id, estimated_minutes)
-    select p_institution_id, plan_id, position_index + step.position, case when step.step_type = 'LOCK_IN' then 'LOCK_IN' when step.step_type = 'DIAGNOSTIC' then 'DIAGNOSTIC' when step.step_type = 'LESSON' then 'LESSON' when step.step_type = 'RETURN_TO_TARGET' then 'CURRENT_TARGET' else 'PRACTICE' end, case when step.step_type = 'RETURN_TO_TARGET' then 'Retomar seu objetivo' else initcap(lower(replace(step.step_type, '_', ' '))) || ': ' || skill.title end, 'Próximo passo da sua sessão guiada.', step.canonical_skill_id, active_session_id, step.id, step.lesson_id, step.activity_id, case when step.step_type = 'LESSON' then 6 when step.step_type = 'DIAGNOSTIC' then 5 else 5 end
+    select p_institution_id, v_plan_id, position_index + step.position, case when step.step_type = 'LOCK_IN' then 'LOCK_IN' when step.step_type = 'DIAGNOSTIC' then 'DIAGNOSTIC' when step.step_type = 'LESSON' then 'LESSON' when step.step_type = 'RETURN_TO_TARGET' then 'CURRENT_TARGET' else 'PRACTICE' end, case when step.step_type = 'RETURN_TO_TARGET' then 'Retomar seu objetivo' else initcap(lower(replace(step.step_type, '_', ' '))) || ': ' || skill.title end, 'Próximo passo da sua sessão guiada.', step.canonical_skill_id, active_session_id, step.id, step.lesson_id, step.activity_id, case when step.step_type = 'LESSON' then 6 when step.step_type = 'DIAGNOSTIC' then 5 else 5 end
       from public.learning_guided_steps step
       join public.learning_curriculum_skills skill on skill.id = step.canonical_skill_id
      where step.session_id = active_session_id and step.status in ('ACTIVE', 'PENDING')
      order by step.position limit 4;
   elsif active_target_id is not null then
     insert into public.learning_daily_plan_items(institution_id, plan_id, position, item_type, title, description, canonical_skill_id, estimated_minutes)
-    values (p_institution_id, plan_id, position_index, 'CURRENT_TARGET', 'Começar seu próximo objetivo', 'Abra a Central de Estudos para iniciar o diagnóstico.', active_target_id, 5);
+    values (p_institution_id, v_plan_id, position_index, 'CURRENT_TARGET', 'Começar seu próximo objetivo', 'Abra a Central de Estudos para iniciar o diagnóstico.', active_target_id, 5);
   end if;
-  update public.learning_daily_plans set estimated_minutes = coalesce((select sum(item.estimated_minutes) from public.learning_daily_plan_items item where item.plan_id = plan_id), 0), updated_at = now() where id = plan_id;
-  return plan_id;
+  update public.learning_daily_plans set estimated_minutes = coalesce((select sum(item.estimated_minutes) from public.learning_daily_plan_items item where item.plan_id = v_plan_id), 0), updated_at = now() where id = v_plan_id;
+  return v_plan_id;
 end;
 $$;
 
