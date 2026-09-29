@@ -24,8 +24,8 @@ describe('adaptive learning completion v1 migration', () => {
   });
 
   it('persists simulation result breakdowns and retains idempotent completion', () => {
-    expect(migration).toContain('area_breakdown = area_breakdown');
-    expect(migration).toContain('skill_breakdown = skill_breakdown');
+    expect(migration).toContain('area_breakdown = v_area_breakdown');
+    expect(migration).toContain('skill_breakdown = v_skill_breakdown');
     expect(migration).toContain("if attempt_row.status = 'COMPLETED' then");
     expect(migration).toContain("'area_breakdown', attempt_row.area_breakdown");
   });

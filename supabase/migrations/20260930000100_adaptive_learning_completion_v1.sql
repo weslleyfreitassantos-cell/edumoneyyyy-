@@ -396,8 +396,8 @@ declare
   v_total_count integer := 0;
   score_percent integer := 0;
   answer_map jsonb := '{}'::jsonb;
-  area_breakdown jsonb := '{}'::jsonb;
-  skill_breakdown jsonb := '{}'::jsonb;
+  v_area_breakdown jsonb := '{}'::jsonb;
+  v_skill_breakdown jsonb := '{}'::jsonb;
 begin
   select attempt.* into attempt_row
     from public.learning_simulation_attempts attempt
@@ -488,7 +488,7 @@ begin
   score_percent := case when v_total_count = 0 then 0 else round(v_correct_count * 100.0 / v_total_count)::integer end;
 
   select coalesce(jsonb_object_agg(grouped.area_key, jsonb_build_object('correct', grouped.correct_count, 'total', grouped.total_count)), '{}'::jsonb)
-    into area_breakdown
+    into v_area_breakdown
     from (
       select coalesce(question_bank.subject_area, 'Geral') as area_key,
              count(*)::integer as total_count,
@@ -500,7 +500,7 @@ begin
     ) grouped;
 
   select coalesce(jsonb_object_agg(grouped.skill_key, jsonb_build_object('correct', grouped.correct_count, 'total', grouped.total_count)), '{}'::jsonb)
-    into skill_breakdown
+    into v_skill_breakdown
     from (
       select coalesce(skill_link.canonical_skill_id::text, 'unmapped') as skill_key,
              count(*)::integer as total_count,
@@ -525,8 +525,8 @@ begin
          score = score_percent,
          correct_count = v_correct_count,
          total_questions = v_total_count,
-         area_breakdown = area_breakdown,
-         skill_breakdown = skill_breakdown,
+         area_breakdown = v_area_breakdown,
+         skill_breakdown = v_skill_breakdown,
          answers = answer_map,
          updated_at = now()
    where id = attempt_row.id;
@@ -543,8 +543,8 @@ begin
     'correct_count', v_correct_count,
     'total_questions', v_total_count,
     'answers', answer_map,
-    'area_breakdown', area_breakdown,
-    'skill_breakdown', skill_breakdown
+    'area_breakdown', v_area_breakdown,
+    'skill_breakdown', v_skill_breakdown
   );
 end;
 $$;
