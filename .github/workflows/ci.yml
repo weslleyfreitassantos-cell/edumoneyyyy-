@@ -66,3 +66,66 @@ jobs:
 
       - name: Validar projeto
         run: npm run check
+
+  database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Iniciar Supabase descartável
+        run: npx supabase start --exclude logflare,studio,storage-api,imgproxy,supavisor
+
+      - name: Aplicar migrations em banco Linux
+        run: npx supabase db reset --local
+
+      - name: Lint das migrations
+        run: npx supabase db lint --local --fail-on error
+
+      - name: Confirmar ausência de drift
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          diff_output="$(npx supabase db diff --local --schema public 2>&1)"
+          diff_status=$?
+          set -e
+
+          if [ "$diff_status" -ne 0 ]; then
+            printf '%s\n' "$diff_output"
+            exit "$diff_status"
+          fi
+
+          if ! grep -qi "no schema changes found" <<< "$diff_output"; then
+            printf '%s\n' "$diff_output"
+            echo "Unexpected schema drift detected"
+            exit 1
+          fi
+
+      - name: Exportar credenciais locais sem exibição
+        shell: bash
+        run: |
+          set -euo pipefail
+          status_output="$(npx supabase status -o env)"
+          value_for() {
+            printf '%s\n' "$status_output" | sed -n "s/^$1=//p" | head -n 1
+          }
+
+          {
+            echo "MULTI_TENANT_SUPABASE_URL=$(value_for API_URL)"
+            echo "MULTI_TENANT_SUPABASE_ANON_KEY=$(value_for ANON_KEY)"
+            echo "MULTI_TENANT_SUPABASE_SERVICE_ROLE_KEY=$(value_for SERVICE_ROLE_KEY)"
+          } >> "$GITHUB_ENV"
+
+      - name: Testes dinâmicos de segurança e RPCs adaptativos
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts

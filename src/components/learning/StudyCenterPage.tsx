@@ -27,7 +27,10 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { useStudentAdaptiveGuidance } from '../../hooks/useAdaptiveLearning';
+import {
+  useStudentAdaptiveGuidance,
+  useStudentAdaptiveTarget,
+} from '../../hooks/useAdaptiveLearning';
 import {
   useLearningProgress,
   useLearningSkills,
@@ -110,13 +113,14 @@ export default function StudyCenterPage() {
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
-  const adaptiveTargetSkillId = activities.data?.find(
-    (activity) => activity.skill_id,
-  )?.skill_id;
+  const adaptiveTarget = useStudentAdaptiveTarget(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
   const adaptiveGuidance = useStudentAdaptiveGuidance(
     currentInstitutionId ?? undefined,
     student.data?.id,
-    adaptiveTargetSkillId ?? undefined,
+    adaptiveTarget.data?.institutionSkillId,
   );
 
   const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();

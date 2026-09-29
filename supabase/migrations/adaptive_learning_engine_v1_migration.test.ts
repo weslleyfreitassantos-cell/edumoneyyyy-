@@ -11,6 +11,8 @@ describe('adaptive learning engine v1 migration', () => {
     expect(migration).toContain('create table public.learning_curriculum_catalogs');
     expect(migration).toContain('create table public.learning_curriculum_skills');
     expect(migration).toContain('create table public.learning_skill_canonical_links');
+    expect(migration).toContain('create table public.learning_curriculum_subject_links');
+    expect(migration).toContain('create table public.learning_curriculum_grade_targets');
     expect(migration).toContain('references public.learning_skills(id)');
     expect(migration).not.toContain('drop table public.learning_skills');
   });
@@ -55,5 +57,18 @@ describe('adaptive learning engine v1 migration', () => {
     expect(migration).toContain('learning_skill_evidence_select');
     expect(migration).toContain('public.can_manage_institution_operations(institution_id)');
     expect(migration).toContain('get_teacher_adaptive_insights');
+  });
+
+  it('uses the canonical lowercase enrollment status and subject-scoped teacher access', () => {
+    expect(migration).toContain("enrollment.status = 'active'");
+    expect(migration).not.toContain("enrollment.status = 'ACTIVE'");
+    expect(migration).toContain('offering.subject_id = learning_unit.subject_id');
+    expect(migration).toContain('learning_teacher_can_access_activity');
+  });
+
+  it('keeps the student target curricular and explicit', () => {
+    expect(migration).toContain('learning_curriculum_subject_links');
+    expect(migration).toContain('learning_curriculum_grade_targets');
+    expect(migration).toContain('learning_curriculum_grade_targets_lookup_idx');
   });
 });

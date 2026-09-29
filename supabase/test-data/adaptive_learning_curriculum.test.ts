@@ -16,5 +16,7 @@ describe('adaptive learning curriculum fixture', () => {
     expect(fixture).toContain("'EQUATIONS'");
     expect(fixture).toContain("'LINEAR_FUNCTION'");
     expect(fixture).toContain("('LINEAR_FUNCTION', 'EQUATIONS')");
+    expect(fixture).toContain("'ENSINO_MEDIO', 1, 'MATEMATICA'");
+    expect(fixture).toContain('learning_curriculum_grade_targets');
   });
 });

@@ -59,4 +59,22 @@ join public.learning_curriculum_skills child on child.code = edges.skill_code an
 join public.learning_curriculum_skills parent on parent.code = edges.prerequisite_code and parent.catalog_id = (select id from catalog)
 on conflict (skill_id, prerequisite_skill_id) do nothing;
 
+with catalog as (
+  select id from public.learning_curriculum_catalogs
+  where code = 'TECESCOLA_MATEMATICA_FOUNDATIONS' and version = '1.0'
+), target_skill as (
+  select id from public.learning_curriculum_skills
+  where catalog_id = (select id from catalog) and code = 'LINEAR_FUNCTION'
+)
+insert into public.learning_curriculum_grade_targets (
+  catalog_id, stage, grade_level, subject_area, canonical_skill_id, priority, sort_order
+)
+select (select id from catalog), 'ENSINO_MEDIO', 1, 'MATEMATICA', target_skill.id, 0, 0
+from target_skill
+on conflict (catalog_id, stage, grade_level, subject_area, canonical_skill_id) do update
+set priority = excluded.priority,
+    sort_order = excluded.sort_order,
+    active = true,
+    updated_at = now();
+
 commit;

@@ -4,6 +4,12 @@ import { adaptiveLearningService } from '../services/adaptiveLearningService';
 
 export const adaptiveLearningKeys = {
   all: ['adaptive-learning'] as const,
+  studentTarget: (institutionId: string, studentId: string) => [
+    ...adaptiveLearningKeys.all,
+    'student-target',
+    institutionId,
+    studentId,
+  ] as const,
   studentGuidance: (institutionId: string, studentId: string, targetSkillId: string) => [
     ...adaptiveLearningKeys.all,
     'student-guidance',
@@ -17,6 +23,32 @@ export const adaptiveLearningKeys = {
     institutionId,
   ] as const,
 };
+
+export function useStudentAdaptiveTarget(
+  institutionId?: string,
+  studentId?: string,
+) {
+  return useQuery({
+    queryKey: adaptiveLearningKeys.studentTarget(
+      institutionId ?? '',
+      studentId ?? '',
+    ),
+    queryFn: async () => {
+      try {
+        return await adaptiveLearningService.getStudentAdaptiveTarget(
+          institutionId!,
+          studentId!,
+        );
+      } catch {
+        // Missing adaptive configuration must preserve the legacy study center.
+        return null;
+      }
+    },
+    enabled: Boolean(institutionId && studentId),
+    staleTime: 60_000,
+    retry: false,
+  });
+}
 
 export function useStudentAdaptiveGuidance(
   institutionId?: string,

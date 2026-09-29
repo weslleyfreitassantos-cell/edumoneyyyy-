@@ -16,6 +16,8 @@ The catalog is global and versioned. Institutional `learning_units` and `learnin
 - `learning_curriculum_skills`: canonical skills with stage, expected grade, subject area, domain and stable code.
 - `learning_skill_prerequisites`: directed prerequisite edges. A row means `skill_id` requires `prerequisite_skill_id`.
 - `learning_skill_canonical_links`: tenant-scoped mapping from an existing institutional skill to canonical content.
+- `learning_curriculum_subject_links`: explicit tenant-scoped mapping from an institutional subject to a canonical subject area.
+- `learning_curriculum_grade_targets`: explicit catalog targets by stage, grade, subject area, priority and order.
 - `learning_attempt_runs` and `learning_attempt_run_answers`: append-only submission history.
 - `learning_skill_evidence`: append-only evidence connected to a student, canonical skill and optional attempt run.
 - `learning_student_skill_state`: a materialized, deterministic summary. The existing `learning_skill_progress` table remains untouched as the legacy compatibility surface.
@@ -45,11 +47,13 @@ The TypeScript engine is pure and deterministic. It walks the prerequisite DAG i
 
 Mastered prerequisites are removed from the generated path. The canonical fraction-to-linear-function case therefore produces a bridge through the unresolved skills, while a student who already masters the prerequisites receives only a diagnostic step for the target.
 
+The student target is resolved before planning through active enrollment, class `grade_level`, an active subject offering, the institutional skill, its canonical link and an explicit grade target. The first-year high-school Mathematics fixture targets `Função afim`; the UI never treats the first published activity as a curriculum target. If this relation is not configured, the study center keeps its legacy behavior and does not render adaptive guidance.
+
 ## UI integration
 
 The student Central de Estudos shows `Seu próximo passo` only when a mapped target and adaptive data exist. Without that data, the current study center continues to behave as before.
 
-The Central Pedagógica adds a read-only readiness panel backed by `get_teacher_adaptive_insights`. The RPC scopes rows to students assigned to the teacher's offerings, or to institution operators with the existing operational permission. It does not invent rows when there is no evidence.
+The Central Pedagógica adds a read-only readiness panel backed by `get_teacher_adaptive_insights`. The RPC scopes rows to students assigned to the teacher's offering for the mapped subject, or to institution operators with the existing operational permission. A teacher assigned to Portuguese cannot read Mathematics state merely because both subjects share a class. It does not invent rows when there is no evidence.
 
 ## Security and compatibility
 

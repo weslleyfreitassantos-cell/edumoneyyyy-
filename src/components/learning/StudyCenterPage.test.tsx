@@ -97,6 +97,7 @@ vi.mock('../../hooks/useLearningCenter', () => ({
 }));
 
 vi.mock('../../hooks/useAdaptiveLearning', () => ({
+  useStudentAdaptiveTarget: () => ({ data: null, isLoading: false }),
   useStudentAdaptiveGuidance: () => ({ data: state.adaptiveGuidance, isLoading: false }),
 }));
 
