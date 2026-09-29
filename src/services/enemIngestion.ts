@@ -28,6 +28,24 @@ export interface EnemQuestionRow {
   };
 }
 
+export interface EnemQuestionInput {
+  questionNumber: number;
+  area: string;
+  statement: string;
+  options?: string[];
+  correctAnswer?: string | null;
+  subject?: string | null;
+  topic?: string | null;
+  canonicalSkillCode?: string | null;
+  difficulty?: EnemQuestionRow['classification']['difficulty'];
+}
+
+export interface EnemIngestionOutput {
+  schemaVersion: 1;
+  entries: EnemManifestEntry[];
+  questions: EnemQuestionRow[];
+}
+
 const OFFICIAL_HOSTS = new Set(['gov.br', 'inep.gov.br']);
 
 function isOfficialHost(hostname: string) {
@@ -56,25 +74,41 @@ export function validateEnemManifest(entries: EnemManifestEntry[]) {
   const keys = new Set<string>();
   return entries.map((entry) => {
     const sourceReference = assertOfficialEnemReference(entry.sourceReference);
-    const key = [entry.year, entry.exam, entry.application, entry.day ?? ''].join(':');
+    const downloadUrl = entry.downloadUrl
+      ? assertOfficialEnemReference(entry.downloadUrl)
+      : null;
+    const key = enemManifestKey(entry);
     if (keys.has(key)) throw new Error(`ENEM_MANIFEST_DUPLICATE:${key}`);
     keys.add(key);
-    return { ...entry, sourceReference };
+    return { ...entry, sourceReference, downloadUrl };
   });
 }
 
+export function enemManifestKey(
+  entry: Pick<EnemManifestEntry, 'year' | 'exam' | 'application' | 'day'>,
+) {
+  return [entry.year, entry.exam, entry.application, entry.day ?? ''].join(':');
+}
+
+export function buildEnemIngestionOutput(
+  entries: EnemManifestEntry[],
+  questionsByManifestKey: ReadonlyMap<string, EnemQuestionInput[]>,
+): EnemIngestionOutput {
+  const normalizedEntries = validateEnemManifest(entries);
+  const questions = normalizedEntries.flatMap((entry) => parseEnemQuestionRows(
+    questionsByManifestKey.get(enemManifestKey(entry)) ?? [],
+    entry,
+  ));
+
+  return {
+    schemaVersion: 1,
+    entries: normalizedEntries,
+    questions,
+  };
+}
+
 export function parseEnemQuestionRows(
-  rows: Array<{
-    questionNumber: number;
-    area: string;
-    statement: string;
-    options?: string[];
-    correctAnswer?: string | null;
-    subject?: string | null;
-    topic?: string | null;
-    canonicalSkillCode?: string | null;
-    difficulty?: EnemQuestionRow['classification']['difficulty'];
-  }>,
+  rows: EnemQuestionInput[],
   exam: EnemManifestEntry,
 ) {
   const [validated] = validateEnemManifest([exam]);

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 
 import {
   assertOfficialEnemReference,
+  buildEnemIngestionOutput,
+  enemManifestKey,
   parseEnemQuestionRows,
   validateEnemManifest,
 } from './enemIngestion';
@@ -53,5 +55,23 @@ describe('ENEM ingestion contract', () => {
         canonicalSkillCode: 'LINEAR_FUNCTION',
       },
     });
+  });
+
+  it('builds a deterministic normalized batch without inventing questions', () => {
+    const output = buildEnemIngestionOutput(
+      [manifest],
+      new Map([[enemManifestKey(manifest), [{
+        questionNumber: 42,
+        area: 'Matemática e suas Tecnologias',
+        statement: 'Uma questão oficial.',
+        options: ['A', 'B', 'C', 'D', 'E'],
+        correctAnswer: 'C',
+      }]]]),
+    );
+
+    expect(output.schemaVersion).toBe(1);
+    expect(output.entries).toHaveLength(1);
+    expect(output.questions).toHaveLength(1);
+    expect(output.questions[0].sourceReference).toBe(manifest.sourceReference);
   });
 });

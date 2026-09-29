@@ -16,3 +16,19 @@ An ingestion run must:
 `manifest.v1.json` is the reproducible handoff point. It is empty until a
 verified artifact has been downloaded and reviewed; no fake or placeholder
 question is allowed into the product.
+
+## Normalizing a verified batch
+
+After downloading an official artifact and preparing a reviewed JSON array of
+question rows, add an entry to a copy of the manifest with `artifactPath` and
+`questionsPath` (both relative to the manifest file). Then run:
+
+```bash
+npm run enem:ingest -- --manifest tools/enem/manifest.local.json --out .runtime/enem-normalized.json
+```
+
+The command verifies HTTPS official-domain references, computes or verifies the
+artifact SHA-256, rejects duplicate manifest keys, preserves official
+provenance, and emits normalized question rows with TecEscola-derived
+classification kept separate. An empty manifest produces an empty batch; the
+command never fabricates questions or downloads from third-party sources.
