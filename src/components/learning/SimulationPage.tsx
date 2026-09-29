@@ -1,6 +1,6 @@
 import { CheckCircle2, ChevronLeft, Clock3, Send } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
@@ -26,7 +26,8 @@ export default function SimulationPage() {
   const start = useStartLearningSimulation(currentInstitutionId ?? undefined, student.data?.id);
   const saveAnswers = useSaveLearningSimulationAnswers();
   const submit = useSubmitLearningSimulation(currentInstitutionId ?? undefined, student.data?.id);
-  const [selectedSimulationId, setSelectedSimulationId] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedSimulationId, setSelectedSimulationId] = useState(() => searchParams.get('simulation') ?? '');
   const [attemptId, setAttemptId] = useState<string | null>(null);
   const [startedAt, setStartedAt] = useState<number | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -44,8 +45,21 @@ export default function SimulationPage() {
   const completedAttempts = useMemo(() => (attempts.data ?? []).filter((item) => item.simulation_id === simulation?.id && item.status === 'COMPLETED'), [attempts.data, simulation?.id]);
 
   useEffect(() => {
-    if (!selectedSimulationId && simulations.data?.[0]) setSelectedSimulationId(simulations.data[0].id);
-  }, [selectedSimulationId, simulations.data]);
+    const available = simulations.data ?? [];
+    if (!available.length) return;
+
+    const requestedId = searchParams.get('simulation');
+    const requestedIsAvailable = requestedId ? available.some((item) => item.id === requestedId) : false;
+    const selectedIsAvailable = selectedSimulationId ? available.some((item) => item.id === selectedSimulationId) : false;
+    const nextId = requestedIsAvailable ? requestedId : selectedIsAvailable ? selectedSimulationId : available[0].id;
+
+    if (selectedSimulationId !== nextId) setSelectedSimulationId(nextId);
+    if (searchParams.get('simulation') !== nextId) {
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.set('simulation', nextId);
+      setSearchParams(nextParams, { replace: true });
+    }
+  }, [searchParams, selectedSimulationId, setSearchParams, simulations.data]);
 
   useEffect(() => {
     if (!simulation || attemptId || result) return;
@@ -59,6 +73,9 @@ export default function SimulationPage() {
 
   const resetForSimulation = (simulationId: string) => {
     setSelectedSimulationId(simulationId);
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set('simulation', simulationId);
+    setSearchParams(nextParams, { replace: true });
     setAttemptId(null);
     setStartedAt(null);
     setAnswers({});
