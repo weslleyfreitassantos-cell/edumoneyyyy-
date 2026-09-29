@@ -49,7 +49,7 @@ begin
     select package.id
       into v_package_id
       from public.learning_packages package
-     where package.title = v_title
+     where lower(package.title) = lower(v_title)
        and package.package_type = 'TECESCOLA'
        and package.visibility = 'GLOBAL'
      limit 1;

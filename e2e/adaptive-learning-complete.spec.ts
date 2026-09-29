@@ -20,7 +20,7 @@ async function insertOne(db: Db, table: string, row: Record<string, unknown>): P
   return required(data, `${table} insert`);
 }
 
-async function createActor(service: Db, role: 'TEACHER' | 'STUDENT', name: string, suffix: string): Promise<Actor> {
+async function createActor(service: Db, role: 'ADMIN' | 'TEACHER' | 'STUDENT', name: string, suffix: string): Promise<Actor> {
   const email = `adaptive-complete-${name.toLowerCase().replace(/[^a-z]+/g, '-')}-${suffix}@local.test`;
   const password = 'AdaptiveE2E!2026';
   const { data, error } = await service.auth.admin.createUser({ email, password, email_confirm: true });
@@ -55,20 +55,22 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
     let subjectId: string | undefined;
     let skillId: string | undefined;
     let canonicalSkillId: string | undefined;
+    let admin: Actor | undefined;
     let teacher: Actor | undefined;
     let alice: Actor | undefined;
     let maria: Actor | undefined;
     const pages: import('@playwright/test').Page[] = [];
 
     try {
+      admin = await createActor(service, 'ADMIN', 'Admin Adaptive Complete', suffix);
       teacher = await createActor(service, 'TEACHER', 'Pedro Adaptive Complete', suffix);
       alice = await createActor(service, 'STUDENT', 'Alice Adaptive Complete', suffix);
       maria = await createActor(service, 'STUDENT', 'Maria Support Complete', suffix);
-      userIds.push(teacher.id, alice.id, maria.id);
+      userIds.push(admin.id, teacher.id, alice.id, maria.id);
 
       accountId = (await insertOne(service, 'accounts', {
         name: `Adaptive complete ${suffix}`,
-        owner_profile_id: teacher.id,
+        owner_profile_id: admin.id,
         institution_limit: 1,
         status: 'ACTIVE',
       })).id;
@@ -77,9 +79,10 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
         name: `TecEscola Adaptive Complete ${suffix}`,
         active: true,
       })).id;
-      for (const actor of [teacher, alice, maria]) {
-        await insertOne(service, 'memberships', { profile_id: actor.id, institution_id: institutionId, role: actor === teacher ? 'TEACHER' : 'STUDENT', active: true });
-      }
+      await insertOne(service, 'memberships', { profile_id: admin.id, institution_id: institutionId, role: 'ADMIN', active: true });
+      await insertOne(service, 'memberships', { profile_id: teacher.id, institution_id: institutionId, role: 'TEACHER', active: true });
+      await insertOne(service, 'memberships', { profile_id: alice.id, institution_id: institutionId, role: 'STUDENT', active: true });
+      await insertOne(service, 'memberships', { profile_id: maria.id, institution_id: institutionId, role: 'STUDENT', active: true });
 
       const yearId = (await insertOne(service, 'academic_years', {
         institution_id: institutionId, name: `2026 Complete ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true,

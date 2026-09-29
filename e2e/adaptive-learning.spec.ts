@@ -20,7 +20,7 @@ async function insertOne(db: Db, table: string, row: Record<string, unknown>): P
   return required(data, `${table} insert`);
 }
 
-async function createActor(db: Db, role: 'TEACHER' | 'STUDENT', name: string, suffix: string): Promise<Actor> {
+async function createActor(db: Db, role: 'ADMIN' | 'TEACHER' | 'STUDENT', name: string, suffix: string): Promise<Actor> {
   const normalizedName = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   const email = `adaptive-${normalizedName}-${suffix}@local.test`;
   const password = 'AdaptiveE2E!2026';
@@ -43,11 +43,13 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
   test('Alice studies a guided practice and Pedro sees her learning detail', async ({ browser }) => {
     const service = createClient(url!, serviceRoleKey!, { auth: { autoRefreshToken: false, persistSession: false } });
     const suffix = Date.now().toString(36);
+    const admin = await createActor(service, 'ADMIN', 'Admin Adaptive', suffix);
     const pedro = await createActor(service, 'TEACHER', 'Pedro Adaptive', suffix);
     const alice = await createActor(service, 'STUDENT', 'Alice Adaptive', suffix);
     const maria = await createActor(service, 'STUDENT', 'Maria Support', suffix);
-    const account = await insertOne(service, 'accounts', { name: `Adaptive E2E ${suffix}`, owner_profile_id: pedro.id, institution_limit: 1, status: 'ACTIVE' });
+    const account = await insertOne(service, 'accounts', { name: `Adaptive E2E ${suffix}`, owner_profile_id: admin.id, institution_limit: 1, status: 'ACTIVE' });
     const institution = await insertOne(service, 'institutions', { account_id: account.id, name: `TecEscola Adaptive ${suffix}`, active: true });
+    await insertOne(service, 'memberships', { profile_id: admin.id, institution_id: institution.id, role: 'ADMIN', active: true });
     await insertOne(service, 'memberships', { profile_id: pedro.id, institution_id: institution.id, role: 'TEACHER', active: true });
     await insertOne(service, 'memberships', { profile_id: alice.id, institution_id: institution.id, role: 'STUDENT', active: true });
     await insertOne(service, 'memberships', { profile_id: maria.id, institution_id: institution.id, role: 'STUDENT', active: true });
@@ -109,6 +111,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await studentPage?.close();
       await teacherPage?.close();
       await service.from('institutions').delete().eq('id', institution.id);
+      await service.auth.admin.deleteUser(admin.id);
       await service.auth.admin.deleteUser(pedro.id);
       await service.auth.admin.deleteUser(alice.id);
       await service.auth.admin.deleteUser(maria.id);
