@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
@@ -36,7 +36,7 @@ const state = vi.hoisted(() => ({
     },
     isLoading: false,
   },
-  submit: { mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
+  submit: { data: undefined as { score: number; correct_count: number; total_questions: number; feedback: Array<{ question_bank_id: string; is_correct: boolean; correct_answer: unknown; explanation: string | null }> } | undefined, mutateAsync: vi.fn().mockResolvedValue({ score: 100, correct_count: 1, total_questions: 1, feedback: [] }), isPending: false, isError: false, error: null },
   advance: { mutateAsync: vi.fn(), isPending: false },
 }));
 
@@ -79,6 +79,27 @@ describe('GuidedJourneyPage', () => {
       answers: [{ question_bank_id: 'question-1', answer: '7' }],
       idempotencyKey: 'guided-v2:step-1',
     });
+  });
+
+  it('keeps the correction visible when the completed session is invalidated', async () => {
+    state.session.data = { ...state.session.data, status: 'ACTIVE', current_step_id: 'step-1' };
+    state.submit.data = undefined;
+    const originalMutateAsync = state.submit.mutateAsync;
+    state.submit.mutateAsync = vi.fn().mockImplementation(async () => {
+      const result = { score: 100, correct_count: 1, total_questions: 1, feedback: [] };
+      state.session.data = null;
+      state.submit.data = result;
+      return result;
+    });
+
+    renderPage();
+    fireEvent.click(screen.getByLabelText('7'));
+    fireEvent.click(screen.getByRole('button', { name: 'Enviar respostas' }));
+
+    await waitFor(() => expect(screen.getByText('Evidência registrada')).toBeTruthy());
+
+    state.submit.mutateAsync = originalMutateAsync;
+    state.submit.data = undefined;
   });
 
   it('keeps a recoverable teacher-support state instead of inventing another step', () => {

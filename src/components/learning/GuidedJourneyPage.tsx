@@ -35,6 +35,21 @@ export default function GuidedJourneyPage() {
   );
   const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
 
+  if (submitted && submit.data) {
+    return <div className="mx-auto max-w-2xl space-y-5">
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950">
+        <CheckCircle2 className="h-6 w-6" />
+        <h2 className="mt-2 font-bold">Evidência registrada</h2>
+        <p className="mt-1 text-sm">O servidor corrigiu suas respostas e atualizou o próximo passo.</p>
+        <p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p>
+        <ul className="mt-3 space-y-2 text-sm">
+          {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}</li>)}
+        </ul>
+        <button type="button" onClick={() => { setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>
+      </div>
+    </div>;
+  }
+
   if (session.isLoading || step.isLoading) {
     return <div className="grid min-h-56 place-items-center text-sm text-slate-500">Carregando sua jornada...</div>;
   }
@@ -85,8 +100,8 @@ export default function GuidedJourneyPage() {
         <article className="rounded-xl border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><CheckCircle2 className="h-8 w-8 text-emerald-500" /><h2 className="mt-3 text-xl font-bold dark:text-white">Você fortaleceu a base</h2><p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Agora vamos voltar ao objetivo original e conferir o que ficou consolidado.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button></article>
       ) : (
         <section className="space-y-5">
-          {submitted ? <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950"><CheckCircle2 className="h-6 w-6" /><h2 className="mt-2 font-bold">Evidência registrada</h2><p className="mt-1 text-sm">O servidor corrigiu suas respostas e atualizou o próximo passo.</p>{submit.data && <><p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p><ul className="mt-3 space-y-2 text-sm">{submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}</li>)}</ul></>}<button type="button" onClick={() => { setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button></div> : questions.map((question, index) => <fieldset key={question.id} className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><legend className="text-sm font-bold dark:text-white">Questão {index + 1} de {questions.length}</legend><p className="mt-3 text-base leading-6 dark:text-slate-200">{question.statement}</p><div className="mt-5 space-y-2">{question.options.map((option) => <label key={option} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 text-sm hover:border-[#005bbf] dark:border-slate-700 dark:text-slate-200"><input type="radio" name={question.id} value={option} checked={answers[question.id] === option} onChange={() => setAnswers((current) => ({ ...current, [question.id]: option }))} />{option}</label>)}</div></fieldset>)}
-          {!submitted && <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>}
+          {questions.map((question, index) => <fieldset key={question.id} className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><legend className="text-sm font-bold dark:text-white">Questão {index + 1} de {questions.length}</legend><p className="mt-3 text-base leading-6 dark:text-slate-200">{question.statement}</p><div className="mt-5 space-y-2">{question.options.map((option) => <label key={option} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 text-sm hover:border-[#005bbf] dark:border-slate-700 dark:text-slate-200"><input type="radio" name={question.id} value={option} checked={answers[question.id] === option} onChange={() => setAnswers((current) => ({ ...current, [question.id]: option }))} />{option}</label>)}</div></fieldset>)}
+          <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>
           {submit.isError && <p role="alert" className="text-sm text-red-600">{submit.error.message}</p>}
         </section>
       )}
