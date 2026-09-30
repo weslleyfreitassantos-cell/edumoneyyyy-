@@ -431,9 +431,9 @@ begin
   insert into public.learning_question_option_misconceptions(question_bank_id, option_value, misconception_tag_id, canonical_skill_id, confidence_weight, metadata)
   select question.id, option_value.value, tag.id, skill.id, .8, jsonb_build_object('provenance', 'TECESCOLA_CORE_V3')
     from public.learning_question_bank question
+    cross join lateral (values ('60', 'DISCOUNT_AS_FINAL_PRICE'), ('215', 'PERCENT_AS_ABSOLUTE_VALUE'), ('225', 'INCORRECT_PERCENT_CONVERSION')) option_value(value, tag_code)
     join public.learning_curriculum_skills skill on skill.catalog_id = v_catalog_id and skill.code = 'PERCENTAGE'
     join public.learning_misconception_tags tag on tag.code = option_value.tag_code
-    cross join lateral (values ('60', 'DISCOUNT_AS_FINAL_PRICE'), ('215', 'PERCENT_AS_ABSOLUTE_VALUE'), ('225', 'INCORRECT_PERCENT_CONVERSION')) option_value(value, tag_code)
    where question.source_type = 'TECESCOLA_CORE_V3'
      and question.metadata->>'content_question_id' = 'v3-mathematics-percentage-1'
   on conflict do nothing;
