@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
 import { assignmentAutomationService } from '../services/assignmentAutomationService';
 import { classAutomationService } from '../services/classAutomationService';
-import { timetableAutomationService, type TimetableDraftValidation, type TimetableEditorContext, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
+import { timetableAutomationService, type TimetableDayCopyPreview, type TimetableDraftValidation, type TimetableEditorContext, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
 import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 export const academicAutomationKeys = {
@@ -418,6 +418,12 @@ export function useCopyTimetableDraftDay() {
     onSuccess: async (_result, variables) => {
       await invalidateEditor(queryClient, variables);
     },
+  });
+}
+
+export function usePreviewTimetableDraftDayCopy() {
+  return useMutation<TimetableDayCopyPreview, Error, { versionId: string; institutionId: string; sourceDay: number; targetDay: number }>({
+    mutationFn: timetableAutomationService.previewCopyDraftDay,
   });
 }
 

@@ -76,9 +76,11 @@ manualDescribe('manual timetable editor v2', () => {
       await insertOne(directorDb, 'teacher_subjects', { institution_id: institutionId, teacher_profile_id: teacher.id, subject_id: subjectId, primary_subject: true, active: true });
       const offeringId = (await insertOne(db, 'subject_offerings', { class_id: classId, subject_id: subjectId, teacher_profile_id: teacher.id, term_id: termId, active: true })).id;
       await insertOne(directorDb, 'rooms', { institution_id: institutionId, name: `Sala UI ${suffix}`, capacity: 30, active: true });
-      await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
-      await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: 1, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
-      await insertOne(directorDb, 'teacher_availability', { institution_id: institutionId, teacher_profile_id: teacher.id, day_of_week: 1, start_time: '07:00', end_time: '08:40', active: true });
+      for (const day of [1, 2, 3]) {
+        await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: day, slot_number: 1, start_time: '07:00', end_time: '07:50', active: true });
+        await insertOne(directorDb, 'school_time_slots', { institution_id: institutionId, shift: 'MATUTINO', day_of_week: day, slot_number: 2, start_time: '07:50', end_time: '08:40', active: true });
+        await insertOne(directorDb, 'teacher_availability', { institution_id: institutionId, teacher_profile_id: teacher.id, day_of_week: day, start_time: '07:00', end_time: '08:40', active: true });
+      }
 
       await login(page, director);
       await page.goto('/admin?module=timetable&view=editor');
@@ -100,6 +102,92 @@ manualDescribe('manual timetable editor v2', () => {
       await page.reload();
       await expect(page.getByText('PUBLISHED', { exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+      const publishedVersion = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('status', 'PUBLISHED').single();
+      if (publishedVersion.error) throw publishedVersion.error;
+      const publishedBefore = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId);
+      if (publishedBefore.error) throw publishedBefore.error;
+      expect(publishedBefore.data).toHaveLength(1);
+
+      await page.getByRole('button', { name: 'Editar publicada em novo rascunho' }).click();
+      await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      const draftB = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('source_version_id', publishedVersion.data.id).eq('status', 'DRAFT').order('created_at', { ascending: false }).limit(1).single();
+      if (draftB.error) throw draftB.error;
+      await page.getByRole('button', { name: /Matemática UI/ }).first().click();
+      await page.getByRole('dialog').getByLabel('Dia').selectOption('2');
+      await page.getByRole('button', { name: 'Salvar no rascunho' }).click();
+      await expect(page.getByText('Alteração salva automaticamente no rascunho.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      const publishedDuringDraft = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId);
+      if (publishedDuringDraft.error) throw publishedDuringDraft.error;
+      expect(publishedDuringDraft.data).toEqual(publishedBefore.data);
+      const draftBEntry = await directorDb.from('timetable_version_entries').select('day_of_week').eq('version_id', draftB.data.id).eq('active', true).single();
+      if (draftBEntry.error) throw draftBEntry.error;
+      expect(draftBEntry.data.day_of_week).toBe(2);
+
+      page.once('dialog', (dialog) => void dialog.accept());
+      await page.getByRole('button', { name: 'Descartar' }).click();
+      await expect(page.getByText('Rascunho descartado.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      const discardedDraft = await directorDb.from('timetable_versions').select('id').eq('id', draftB.data.id).maybeSingle();
+      if (discardedDraft.error) throw discardedDraft.error;
+      expect(discardedDraft.data).toBeNull();
+      const publishedAfterDiscard = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId);
+      if (publishedAfterDiscard.error) throw publishedAfterDiscard.error;
+      expect(publishedAfterDiscard.data).toEqual(publishedBefore.data);
+
+      const automaticDraft = await directorDb.rpc('create_timetable_draft', {
+        p_institution_id: institutionId,
+        p_academic_year_id: yearId,
+        p_name: `Automatic UI ${suffix}`,
+        p_generation_source: 'DETERMINISTIC_GENERATOR',
+        p_generation_shift: 'MATUTINO',
+        p_created_by: director.id,
+        p_source_version_id: publishedVersion.data.id,
+        p_entries: [{ academic_year_id: yearId, term_id: termId, class_id: classId, subject_offering_id: offeringId, room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
+      });
+      if (automaticDraft.error) throw automaticDraft.error;
+      const automaticDraftId = required(automaticDraft.data, 'automatic draft');
+      await page.reload();
+      await expect(page.getByText('RASCUNHO', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await page.getByRole('button', { name: /Matemática UI/ }).first().click();
+      await page.getByRole('dialog').getByLabel('Dia').selectOption('2');
+      await page.getByRole('button', { name: 'Salvar no rascunho' }).click();
+      await expect(page.getByText('Alteração salva automaticamente no rascunho.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      const movedAutomatic = await directorDb.from('timetable_version_entries').select('day_of_week').eq('version_id', automaticDraftId).eq('active', true).single();
+      if (movedAutomatic.error) throw movedAutomatic.error;
+      expect(movedAutomatic.data.day_of_week).toBe(2);
+      await page.reload();
+      const persistedAutomatic = await directorDb.from('timetable_version_entries').select('day_of_week').eq('version_id', automaticDraftId).eq('active', true).single();
+      if (persistedAutomatic.error) throw persistedAutomatic.error;
+      expect(persistedAutomatic.data.day_of_week).toBe(2);
+      await page.getByRole('button', { name: 'Validar rascunho' }).click();
+      await expect(page.getByText('Sem pendências conhecidas', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await page.getByRole('button', { name: 'Publicar versão' }).click();
+      await expect(page.getByText('Grade publicada.', { exact: false })).toBeVisible({ timeout: 30_000 });
+      const publishedAutomatic = await directorDb.from('timetable_entries').select('day_of_week').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).single();
+      if (publishedAutomatic.error) throw publishedAutomatic.error;
+      expect(publishedAutomatic.data.day_of_week).toBe(2);
+
+      await page.getByRole('button', { name: 'Editar publicada em novo rascunho' }).click();
+      await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await page.getByLabel('De').selectOption('2');
+      await page.getByLabel('Para').selectOption('3');
+      const copyDraft = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('status', 'DRAFT').order('created_at', { ascending: false }).limit(1).single();
+      if (copyDraft.error) throw copyDraft.error;
+      const beforeCopy = await directorDb.from('timetable_version_entries').select('id').eq('version_id', copyDraft.data.id).eq('active', true);
+      if (beforeCopy.error) throw beforeCopy.error;
+      await page.getByRole('button', { name: 'Pré-visualizar e copiar' }).click();
+      await expect(page.getByRole('heading', { name: 'Prévia da cópia' })).toBeVisible({ timeout: 30_000 });
+      const afterPreview = await directorDb.from('timetable_version_entries').select('id').eq('version_id', copyDraft.data.id).eq('active', true);
+      if (afterPreview.error) throw afterPreview.error;
+      expect(afterPreview.data).toHaveLength(beforeCopy.data.length);
+      await page.getByRole('button', { name: 'Confirmar cópia' }).click();
+      await expect(page.getByText('1 aula(s) copiadas.', { exact: false })).toBeVisible({ timeout: 30_000 });
+      const afterCopy = await directorDb.from('timetable_version_entries').select('id').eq('version_id', copyDraft.data.id).eq('active', true);
+      if (afterCopy.error) throw afterCopy.error;
+      expect(afterCopy.data.length).toBe(beforeCopy.data.length + 1);
+      await page.reload();
+      const persistedCopy = await directorDb.from('timetable_version_entries').select('id').eq('version_id', copyDraft.data.id).eq('active', true);
+      if (persistedCopy.error) throw persistedCopy.error;
+      expect(persistedCopy.data).toHaveLength(afterCopy.data.length);
       void offeringId;
     } finally {
       if (institutionId) await db.from('institutions').delete().eq('id', institutionId);

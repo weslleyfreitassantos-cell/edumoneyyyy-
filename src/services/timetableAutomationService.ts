@@ -91,6 +91,15 @@ export interface TimetableDraftValidation {
   summary: { active_entries: number; diagnostic_count: number };
 }
 
+export interface TimetableDayCopyPreview {
+  total: number;
+  copyable: number;
+  conflicts: number;
+  details: Array<Record<string, unknown>>;
+  source_day: number;
+  target_day: number;
+}
+
 export interface TimetableVersionDiff {
   added: number;
   removed: number;
@@ -1027,6 +1036,25 @@ export const timetableAutomationService = {
     if (error) throw error;
     const result = (data ?? {}) as { created?: number; conflicts?: number; details?: Array<Record<string, unknown>> };
     return { created: Number(result.created ?? 0), conflicts: Number(result.conflicts ?? 0), details: result.details ?? [] };
+  },
+
+  async previewCopyDraftDay(input: { versionId: string; institutionId: string; sourceDay: number; targetDay: number }): Promise<TimetableDayCopyPreview> {
+    const { data, error } = await supabase.rpc('preview_timetable_draft_day_copy', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_source_day: input.sourceDay,
+      p_target_day: input.targetDay,
+    });
+    if (error) throw error;
+    const result = (data ?? {}) as Partial<TimetableDayCopyPreview>;
+    return {
+      total: Number(result.total ?? 0),
+      copyable: Number(result.copyable ?? 0),
+      conflicts: Number(result.conflicts ?? 0),
+      details: Array.isArray(result.details) ? result.details : [],
+      source_day: Number(result.source_day ?? input.sourceDay),
+      target_day: Number(result.target_day ?? input.targetDay),
+    };
   },
 
   async validateDraft(input: { versionId: string; institutionId: string }): Promise<TimetableDraftValidation> {

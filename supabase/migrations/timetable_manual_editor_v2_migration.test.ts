@@ -41,6 +41,18 @@ describe('manual timetable editor v2 migration', () => {
     expect(migration).toContain('conflict_count');
   });
 
+  it('previews day copies without writing and keeps the same conflict vocabulary', () => {
+    const previewMigration = readFileSync(
+      new URL('./20260930000800_timetable_manual_editor_v2_copy_preview.sql', import.meta.url),
+      'utf8',
+    );
+    expect(previewMigration).toContain('create or replace function public.preview_timetable_draft_day_copy');
+    expect(previewMigration).toContain('private.assert_viewable_timetable_draft');
+    expect(previewMigration).toContain("'copyable', true");
+    expect(previewMigration).toContain("'TARGET_CELL_OCCUPIED'");
+    expect(previewMigration).not.toContain('insert into public.timetable_version_entries');
+  });
+
   it('provides an atomic consecutive double-slot action', () => {
     const runtimeMigration = readFileSync(
       new URL('./20260930000700_timetable_manual_editor_v2_runtime.sql', import.meta.url),

@@ -9,6 +9,7 @@ import {
   useAddTimetableDraftEntry,
   useAddTimetableDoubleSlot,
   useCopyTimetableDraftDay,
+  usePreviewTimetableDraftDayCopy,
   useCreateManualTimetableDraft,
   useDuplicateTimetableDraftEntry,
   useDeleteTimetableVersion,
@@ -21,7 +22,7 @@ import {
   useUpdateTimetableVersionEntry,
   useValidateTimetableDraft,
 } from '../../hooks/useAcademicAutomation';
-import { buildTimetableVersionDiff, type TimetableVersionEntryRow } from '../../services/timetableAutomationService';
+import { buildTimetableVersionDiff, type TimetableDayCopyPreview, type TimetableVersionEntryRow } from '../../services/timetableAutomationService';
 import { getAcademicShiftLabel, normalizeAcademicShift } from '../../lib/academic/academicShifts';
 
 const DAYS = [1, 2, 3, 4, 5, 6];
@@ -103,6 +104,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
   const [undoAction, setUndoAction] = useState<(() => Promise<void>) | null>(null);
   const [copySourceDay, setCopySourceDay] = useState(1);
   const [copyTargetDay, setCopyTargetDay] = useState(2);
+  const [copyPreview, setCopyPreview] = useState<TimetableDayCopyPreview | null>(null);
   const [mobileDay, setMobileDay] = useState(1);
 
   const createDraft = useCreateManualTimetableDraft();
@@ -112,6 +114,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
   const updateEntry = useUpdateTimetableVersionEntry();
   const removeEntry = useRemoveTimetableDraftEntry();
   const copyDay = useCopyTimetableDraftDay();
+  const previewCopyDay = usePreviewTimetableDraftDayCopy();
   const validateDraft = useValidateTimetableDraft();
   const publishVersion = usePublishTimetableVersion();
   const deleteVersion = useDeleteTimetableVersion();
@@ -138,6 +141,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
     if (versionId && !versions.some((version) => version.id === versionId)) setVersionId('');
   }, [versionId, versions]);
   useEffect(() => { setValidation(null); }, [selectedVersionId, selectedClassId, selectedTermId]);
+  useEffect(() => { setCopyPreview(null); }, [selectedVersionId, copySourceDay, copyTargetDay]);
 
   const rowSlots = useMemo(() => {
     const unique = new Map<string, { start: string; end: string }>();
@@ -321,14 +325,22 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
     } catch (discardError) { setError(friendlyError(discardError)); }
   }
 
-  async function copySelectedDay(): Promise<void> {
+  async function previewSelectedDay(): Promise<void> {
     if (!selectedVersion || selectedVersion.status !== 'DRAFT' || copySourceDay === copyTargetDay) return;
-    const sourceCount = versionEntries.filter((entry) => entry.active && entry.day_of_week === copySourceDay).length;
-    const occupiedTargets = versionEntries.filter((entry) => entry.active && entry.day_of_week === copyTargetDay);
-    if (!window.confirm(`Copiar ${sourceCount} aula(s) de ${DAY_LABELS[copySourceDay]} para ${DAY_LABELS[copyTargetDay]}? ${occupiedTargets.length > 0 ? `${occupiedTargets.length} aula(s) já existem no dia de destino e serão reportadas como conflito, sem sobrescrever.` : ''}`)) return;
+    clearFeedback();
+    try {
+      const result = await previewCopyDay.mutateAsync({ versionId: selectedVersion.id, institutionId, sourceDay: copySourceDay, targetDay: copyTargetDay });
+      setCopyPreview(result);
+      setNotice('Prévia pronta. Nenhuma aula foi copiada ainda.');
+    } catch (previewError) { setError(friendlyError(previewError)); }
+  }
+
+  async function confirmCopySelectedDay(): Promise<void> {
+    if (!selectedVersion || selectedVersion.status !== 'DRAFT' || !copyPreview) return;
     clearFeedback();
     try {
       const result = await copyDay.mutateAsync({ versionId: selectedVersion.id, institutionId, sourceDay: copySourceDay, targetDay: copyTargetDay });
+      setCopyPreview(null);
       await refreshHealth();
       setNotice(`${result.created} aula(s) copiadas. ${result.conflicts > 0 ? `${result.conflicts} conflito(s) preservado(s) sem sobrescrever.` : ''}`);
     } catch (copyError) { setError(friendlyError(copyError)); }
@@ -342,7 +354,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
   }
 
   const isDraft = selectedVersion?.status === 'DRAFT';
-  const busy = createDraft.isPending || addEntry.isPending || addDoubleSlot.isPending || duplicateEntry.isPending || updateEntry.isPending || removeEntry.isPending || copyDay.isPending || validateDraft.isPending || publishVersion.isPending;
+  const busy = createDraft.isPending || addEntry.isPending || addDoubleSlot.isPending || duplicateEntry.isPending || updateEntry.isPending || removeEntry.isPending || copyDay.isPending || previewCopyDay.isPending || validateDraft.isPending || publishVersion.isPending;
   const publicationDiff = selectedVersion && isDraft && comparisonVersionId && !comparisonEntriesQuery.isLoading
     ? buildTimetableVersionDiff(versionEntries, comparisonEntriesQuery.data ?? [])
     : null;
@@ -370,7 +382,7 @@ export default function TimetableDraftEditor({ institutionId, createdBy }: { ins
           {selectedVersion && <button type="button" onClick={() => void cloneSelectedVersion()} disabled={busy || !selectedTermId || !selectedClassId} className="inline-flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-3 py-2 text-sm font-bold text-blue-700 disabled:opacity-50 dark:bg-slate-900 dark:text-blue-300"><Copy className="h-4 w-4" />{selectedVersion.status === 'PUBLISHED' ? 'Editar publicada em novo rascunho' : 'Duplicar versão'}</button>}
           {selectedVersion && isDraft && <><button type="button" onClick={() => void runValidation()} disabled={busy} className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"><CheckCircle2 className="h-4 w-4" />Validar rascunho</button><button type="button" onClick={() => void publish()} disabled={busy} className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-3 py-2 text-sm font-bold text-white disabled:opacity-50"><Save className="h-4 w-4" />Publicar versão</button><button type="button" onClick={() => void discard()} disabled={busy} className="inline-flex items-center gap-2 rounded-lg border border-red-200 bg-white px-3 py-2 text-sm font-bold text-red-700 dark:bg-slate-900"><Trash2 className="h-4 w-4" />Descartar</button></>}
         </div>
-        {selectedVersion && isDraft && <div className="mt-3 flex flex-wrap items-end gap-2 border-t border-blue-100 pt-3 text-sm dark:border-blue-900/60"><span className="mr-1 font-bold text-slate-700 dark:text-slate-200">Copiar dia</span><label className="text-xs font-semibold text-slate-600 dark:text-slate-300">De<select className="ml-1 rounded border border-slate-300 bg-white px-2 py-1 dark:border-slate-700 dark:bg-slate-950" value={copySourceDay} onChange={(event) => setCopySourceDay(Number(event.target.value))}>{DAYS.map((day) => <option key={day} value={day}>{DAY_LABELS[day]}</option>)}</select></label><label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Para<select className="ml-1 rounded border border-slate-300 bg-white px-2 py-1 dark:border-slate-700 dark:bg-slate-950" value={copyTargetDay} onChange={(event) => setCopyTargetDay(Number(event.target.value))}>{DAYS.map((day) => <option key={day} value={day}>{DAY_LABELS[day]}</option>)}</select></label><button type="button" onClick={() => void copySelectedDay()} disabled={busy || copySourceDay === copyTargetDay} className="inline-flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-3 py-2 text-xs font-bold text-blue-700 disabled:opacity-50 dark:bg-slate-900 dark:text-blue-300"><Copy className="h-4 w-4" />Pré-visualizar e copiar</button><span className="text-xs text-slate-500">Não sobrescreve células ocupadas.</span></div>}
+        {selectedVersion && isDraft && <div className="mt-3 border-t border-blue-100 pt-3 text-sm dark:border-blue-900/60"><div className="flex flex-wrap items-end gap-2"><span className="mr-1 font-bold text-slate-700 dark:text-slate-200">Copiar dia</span><label className="text-xs font-semibold text-slate-600 dark:text-slate-300">De<select className="ml-1 rounded border border-slate-300 bg-white px-2 py-1 dark:border-slate-700 dark:bg-slate-950" value={copySourceDay} onChange={(event) => setCopySourceDay(Number(event.target.value))}>{DAYS.map((day) => <option key={day} value={day}>{DAY_LABELS[day]}</option>)}</select></label><label className="text-xs font-semibold text-slate-600 dark:text-slate-300">Para<select className="ml-1 rounded border border-slate-300 bg-white px-2 py-1 dark:border-slate-700 dark:bg-slate-950" value={copyTargetDay} onChange={(event) => setCopyTargetDay(Number(event.target.value))}>{DAYS.map((day) => <option key={day} value={day}>{DAY_LABELS[day]}</option>)}</select></label><button type="button" onClick={() => void previewSelectedDay()} disabled={busy || copySourceDay === copyTargetDay} className="inline-flex items-center gap-2 rounded-lg border border-blue-300 bg-white px-3 py-2 text-xs font-bold text-blue-700 disabled:opacity-50 dark:bg-slate-900 dark:text-blue-300"><Copy className="h-4 w-4" />Pré-visualizar e copiar</button><span className="text-xs text-slate-500">A prévia não altera o rascunho.</span></div>{copyPreview && <div className="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 dark:border-blue-900/60 dark:bg-blue-950/30" role="dialog" aria-labelledby="copy-preview-title"><h3 id="copy-preview-title" className="font-bold text-slate-900 dark:text-white">Prévia da cópia</h3><p className="mt-1 text-xs text-slate-600 dark:text-slate-300">{copyPreview.total} aula(s) encontradas de {DAY_LABELS[copyPreview.source_day]} para {DAY_LABELS[copyPreview.target_day]}.</p><div className="mt-2 flex flex-wrap gap-2 text-xs"><span className="rounded bg-emerald-100 px-2 py-1 font-bold text-emerald-800">{copyPreview.copyable} copiável(eis)</span><span className="rounded bg-amber-100 px-2 py-1 font-bold text-amber-800">{copyPreview.conflicts} conflito(s)</span></div><p className="mt-2 text-xs text-slate-600 dark:text-slate-300">Confirme para aplicar somente as células copiáveis; conflitos não sobrescrevem aulas existentes.</p><div className="mt-3 flex flex-wrap justify-end gap-2"><button type="button" onClick={() => setCopyPreview(null)} className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-slate-700">Cancelar</button><button type="button" onClick={() => void confirmCopySelectedDay()} disabled={busy || copyPreview.copyable === 0} className="rounded-lg bg-[#005bbf] px-3 py-2 text-xs font-bold text-white disabled:opacity-50">Confirmar cópia</button></div></div>}</div>}
       </div>
 
       {(notice || error) && <div role={error ? 'alert' : 'status'} className={`rounded-lg border px-4 py-3 text-sm ${error ? 'border-red-200 bg-red-50 text-red-800' : 'border-emerald-200 bg-emerald-50 text-emerald-800'}`}>{error ?? notice}</div>}

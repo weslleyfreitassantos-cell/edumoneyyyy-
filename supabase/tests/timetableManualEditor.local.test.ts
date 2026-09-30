@@ -156,9 +156,20 @@ runtimeDescribe('manual timetable editor runtime database contract', () => {
     const removed = await director.client.rpc('remove_timetable_draft_entry', { p_entry_id: duplicateId, p_version_id: draftId, p_institution_id: institutionA });
     expect(removed.error).toBeNull();
 
-    const copied = await director.client.rpc('copy_timetable_draft_day', { p_version_id: draftId, p_institution_id: institutionA, p_source_day: 3, p_target_day: 2 });
+    const beforePreview = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('institution_id', institutionA);
+    const preview = await director.client.rpc('preview_timetable_draft_day_copy', { p_version_id: draftId, p_institution_id: institutionA, p_source_day: 3, p_target_day: 4 });
+    expect(preview.error).toBeNull();
+    expect(preview.data).toMatchObject({ total: 1, copyable: 1, conflicts: 0, source_day: 3, target_day: 4 });
+    const afterPreview = await director.client.from('timetable_version_entries').select('id').eq('version_id', draftId).eq('institution_id', institutionA);
+    expect((afterPreview.data ?? []).map((row: { id: string }) => row.id).sort()).toEqual((beforePreview.data ?? []).map((row: { id: string }) => row.id).sort());
+
+    const copied = await director.client.rpc('copy_timetable_draft_day', { p_version_id: draftId, p_institution_id: institutionA, p_source_day: 3, p_target_day: 4 });
     expect(copied.error).toBeNull();
-    expect(copied.data.created).toBeGreaterThanOrEqual(1);
+    expect(copied.data).toMatchObject({ created: 1, conflicts: 0 });
+
+    const occupiedPreview = await director.client.rpc('preview_timetable_draft_day_copy', { p_version_id: draftId, p_institution_id: institutionA, p_source_day: 3, p_target_day: 4 });
+    expect(occupiedPreview.error).toBeNull();
+    expect(occupiedPreview.data).toMatchObject({ total: 1, copyable: 0, conflicts: 1 });
   });
 
   it('creates two consecutive entries atomically and exposes real conflicts in validation', async () => {
