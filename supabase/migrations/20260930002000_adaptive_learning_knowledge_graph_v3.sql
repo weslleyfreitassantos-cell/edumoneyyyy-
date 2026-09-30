@@ -172,6 +172,7 @@ declare
   v_expected_skill_count integer;
   v_expected_content_count integer := 0;
   v_materialized_question_count integer;
+  v_question_set_item_count integer;
   subject_row record;
   skill_row record;
   skill_ids uuid[];
@@ -548,8 +549,15 @@ begin
           on primary_link.question_bank_id = question.id
          and primary_link.canonical_skill_id = target_row.target_id
          and primary_link.skill_role = 'PRIMARY'
-       where question.source_type = 'TECESCOLA_CORE_V3'
+        where question.source_type = 'TECESCOLA_CORE_V3'
           and question.metadata->>'adaptive_v3_purpose' = set_purpose and question.active;
+      select count(*) into v_question_set_item_count
+        from public.learning_question_set_items item
+       where item.question_set_id = v_question_set_id;
+      if v_question_set_item_count = 0 then
+        raise exception 'ADAPTIVE_V3_QUESTION_SET_INCOMPLETE: %/% has no active questions',
+          target_row.subject_code, set_purpose;
+      end if;
     end loop;
   end loop;
 

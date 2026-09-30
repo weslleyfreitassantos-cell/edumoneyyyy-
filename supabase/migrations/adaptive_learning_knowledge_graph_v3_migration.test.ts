@@ -54,6 +54,7 @@ describe('adaptive learning knowledge graph v3 migration', () => {
     expect(migration).toContain('ADAPTIVE_V3_SKILL_REGISTRY_INCOMPLETE');
     expect(migration).toContain('ADAPTIVE_V3_CONTENT_PREFLIGHT_INCOMPLETE');
     expect(migration).toContain('ADAPTIVE_V3_CONTENT_MATERIALIZATION_INCOMPLETE');
+    expect(migration).toContain('ADAPTIVE_V3_QUESTION_SET_INCOMPLETE');
   });
 
   it('does not let an empty newer question set shadow a usable fallback', () => {
