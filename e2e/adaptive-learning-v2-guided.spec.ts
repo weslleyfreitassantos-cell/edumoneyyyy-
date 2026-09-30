@@ -151,6 +151,7 @@ adaptiveDescribe('adaptive learning V2 guided journey', () => {
       ];
       for (const subjectDraft of secondSubjects) {
         const subject = await insertOne(service, 'subjects', { institution_id: institutionId, name: subjectDraft.name, code: `V2-${subjectDraft.code}-${suffix}`, active: true });
+        await insertOne(service, 'class_curriculum_items', { institution_id: institutionId, class_id: schoolClass.id, subject_id: subject.id, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
         await insertOne(service, 'subject_offerings', { class_id: schoolClass.id, subject_id: subject.id, teacher_profile_id: teacher.id, term_id: term.id, active: true });
         const unit = await insertOne(service, 'learning_units', { institution_id: institutionId, subject_id: subject.id, title: `${subjectDraft.code} V2`, active: true });
         const skill = await insertOne(service, 'learning_skills', { institution_id: institutionId, unit_id: unit.id, title: `${subjectDraft.code} V2`, active: true });
