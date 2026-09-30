@@ -530,6 +530,7 @@ begin
      where subject.active
   loop
     for set_purpose in select unnest(array['PROBE','PRACTICE','TRANSFER','LOCK_IN','REVIEW']) loop
+      raise notice 'ADAPTIVE_V3_QUESTION_SET_BEGIN=%/%', target_row.subject_code, set_purpose;
       select id into question_set_id from public.learning_question_sets question_set
        where question_set.scope = 'GLOBAL' and question_set.canonical_skill_id = target_row.target_id
          and question_set.purpose = set_purpose and question_set.version = 3 limit 1;
@@ -549,8 +550,9 @@ begin
       select question_set_id, question.id, row_number() over (order by question.metadata->>'content_question_id') - 1
         from public.learning_question_bank question
        where question.source_type = 'TECESCOLA_CORE_V3'
-         and question.metadata->>'content_question_id' like 'v3-' || lower(target_row.subject_code) || '-' || lower(target_row.target_code) || '-%'
-         and question.metadata->>'adaptive_v3_purpose' = set_purpose and question.active;
+          and question.metadata->>'content_question_id' like 'v3-' || lower(target_row.subject_code) || '-' || lower(target_row.target_code) || '-%'
+          and question.metadata->>'adaptive_v3_purpose' = set_purpose and question.active;
+      raise notice 'ADAPTIVE_V3_QUESTION_SET_DONE=%/%', target_row.subject_code, set_purpose;
     end loop;
   end loop;
   raise notice 'ADAPTIVE_V3_QUESTION_SETS_READY';
