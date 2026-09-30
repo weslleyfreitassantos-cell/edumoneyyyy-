@@ -39,6 +39,7 @@ export interface TeacherGuidedInsightV2 {
   status: string;
   decisionReason: string | null;
   replanCount: number;
+  misconceptionSummary: Record<string, number>;
 }
 
 interface RawTeacherAdaptiveInsight {
@@ -60,6 +61,7 @@ interface RawTeacherGuidedInsightV2 {
   status: string;
   decision_reason: string | null;
   replan_count: number;
+  misconception_summary: Record<string, number>;
 }
 
 interface EnrollmentClassRow {
@@ -356,6 +358,7 @@ export const adaptiveLearningService = {
       status: row.status,
       decisionReason: row.decision_reason,
       replanCount: Number(row.replan_count),
+      misconceptionSummary: row.misconception_summary ?? {},
     }));
   },
 

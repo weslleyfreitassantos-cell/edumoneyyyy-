@@ -1,0 +1,394 @@
+{
+  "packVersion": "tec-escola-core-v2",
+  "subjectArea": "LINGUAGENS",
+  "provenance": "Conteúdo autoral versionado do TecEscola; não é questão oficial ENEM.",
+  "skills": [
+    {
+      "code": "READING_ARGUMENT",
+      "title": "Leitura argumentativa",
+      "lesson": {
+        "title": "Leitura argumentativa",
+        "summary": "Identificar tese, argumento e evidência em textos de opinião.",
+        "contentMarkdown": "## Conceito\\n\\nA tese é a posição defendida; argumentos sustentam essa posição e evidências tornam a defesa verificável.\\n\\n## Intuição\\n\\nEm um texto que defende bibliotecas abertas no fim de semana, a tese é ampliar o acesso; dados de frequência são evidências.\\n\\n## Erro comum\\n\\nErro comum: confundir assunto com tese. Dica: formule a posição do autor em uma frase completa.",
+        "workedExample": "Em um texto que defende bibliotecas abertas no fim de semana, a tese é ampliar o acesso; dados de frequência são evidências.",
+        "tips": [
+          "Erro comum: confundir assunto com tese. Dica: formule a posição do autor em uma frase completa.",
+          "Explique qual pista textual orientou sua escolha."
+        ],
+        "estimatedMinutes": 7
+      },
+      "questions": [
+        {
+          "id": "reading_argument-1",
+          "purpose": "PROBE",
+          "statement": "Em um texto de opinião, a tese é:",
+          "options": [
+            "A posição central defendida pelo autor",
+            "A quantidade de parágrafos",
+            "A fonte da tinta",
+            "O nome do leitor"
+          ],
+          "correctAnswer": "A posição central defendida pelo autor",
+          "explanation": "A tese responde ao que o autor quer defender.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-2",
+          "purpose": "PROBE",
+          "statement": "Qual elemento melhor sustenta uma afirmação sobre transporte público?",
+          "options": [
+            "Dados de tempo de espera coletados em pesquisa",
+            "Uma cor favorita",
+            "O tamanho do título",
+            "Uma palavra repetida"
+          ],
+          "correctAnswer": "Dados de tempo de espera coletados em pesquisa",
+          "explanation": "A evidência precisa se relacionar verificavelmente à afirmação.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-3",
+          "purpose": "PRACTICE",
+          "statement": "A expressão 'por isso' em um argumento costuma introduzir:",
+          "options": [
+            "Uma consequência ou conclusão",
+            "Uma comparação de tamanho",
+            "Uma personagem",
+            "Uma definição de cor"
+          ],
+          "correctAnswer": "Uma consequência ou conclusão",
+          "explanation": "O conectivo indica relação lógica entre ideias.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-4",
+          "purpose": "PRACTICE",
+          "statement": "Se o autor afirma 'a escola deve plantar árvores' e cita a redução da temperatura no pátio, o dado é:",
+          "options": [
+            "Uma evidência para a proposta",
+            "A tese contrária",
+            "O título",
+            "Uma saudação"
+          ],
+          "correctAnswer": "Uma evidência para a proposta",
+          "explanation": "O dado apoia a relação entre árvores e conforto térmico.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-5",
+          "purpose": "PRACTICE",
+          "statement": "Qual pergunta ajuda a localizar a tese?",
+          "options": [
+            "Qual posição o autor quer que o leitor aceite?",
+            "Quantas letras há no texto?",
+            "Quem imprimiu a folha?",
+            "Qual fonte foi usada?"
+          ],
+          "correctAnswer": "Qual posição o autor quer que o leitor aceite?",
+          "explanation": "A pergunta busca a posição defendida.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-6",
+          "purpose": "TRANSFER",
+          "statement": "Um artigo defende hortas escolares e cita que alunos passaram a consumir mais verduras. Esse trecho funciona como:",
+          "options": [
+            "Evidência relacionada à tese",
+            "Tema sem relação",
+            "Conclusão obrigatória",
+            "Título"
+          ],
+          "correctAnswer": "Evidência relacionada à tese",
+          "explanation": "O dado torna a defesa mais concreta.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-7",
+          "purpose": "LOCK_IN",
+          "statement": "Por que um exemplo isolado não prova sozinho uma tese geral?",
+          "options": [
+            "Ele pode ilustrar, mas não representa necessariamente todos os casos",
+            "Porque exemplos não têm palavras",
+            "Porque toda tese é falsa",
+            "Porque dados só servem para títulos"
+          ],
+          "correctAnswer": "Ele pode ilustrar, mas não representa necessariamente todos os casos",
+          "explanation": "A força da evidência depende da relação e do alcance da afirmação.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_argument-8",
+          "purpose": "REVIEW",
+          "statement": "Para avaliar um argumento, é importante verificar:",
+          "options": [
+            "Se a evidência realmente sustenta a tese",
+            "Somente o tamanho do texto",
+            "A cor do papel",
+            "O número de vírgulas"
+          ],
+          "correctAnswer": "Se a evidência realmente sustenta a tese",
+          "explanation": "A relação entre tese e evidência é o núcleo da análise.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        }
+      ]
+    },
+    {
+      "code": "READING_INFERENCE",
+      "title": "Inferência de leitura",
+      "lesson": {
+        "title": "Inferência de leitura",
+        "summary": "Construir inferências conectando pistas do texto ao conhecimento de mundo.",
+        "contentMarkdown": "## Conceito\\n\\nInferir não é inventar: é concluir algo apoiado por informações explícitas e pela situação apresentada.\\n\\n## Intuição\\n\\nSe o texto diz que Clara levou guarda-chuva e o céu escureceu, podemos inferir que havia chance de chuva.\\n\\n## Erro comum\\n\\nErro comum: escolher uma conclusão possível, mas sem apoio. Dica: aponte a pista textual que sustenta cada inferência.",
+        "workedExample": "Se o texto diz que Clara levou guarda-chuva e o céu escureceu, podemos inferir que havia chance de chuva.",
+        "tips": [
+          "Erro comum: escolher uma conclusão possível, mas sem apoio. Dica: aponte a pista textual que sustenta cada inferência.",
+          "Explique qual pista textual orientou sua escolha."
+        ],
+        "estimatedMinutes": 7
+      },
+      "questions": [
+        {
+          "id": "reading_inference-1",
+          "purpose": "PROBE",
+          "statement": "Inferir em um texto significa:",
+          "options": [
+            "Concluir algo a partir de pistas e conhecimentos pertinentes",
+            "Copiar a primeira palavra",
+            "Ignorar o texto",
+            "Inventar qualquer final"
+          ],
+          "correctAnswer": "Concluir algo a partir de pistas e conhecimentos pertinentes",
+          "explanation": "A inferência precisa ser sustentada por pistas.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-2",
+          "purpose": "PROBE",
+          "statement": "Se o personagem fechou o casaco e tremeu, é razoável inferir que:",
+          "options": [
+            "Ele sentiu frio",
+            "Ele estava com fome",
+            "Era meio-dia",
+            "Ele comprou um livro"
+          ],
+          "correctAnswer": "Ele sentiu frio",
+          "explanation": "As ações funcionam como pistas do estado do personagem.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-3",
+          "purpose": "PRACTICE",
+          "statement": "A frase 'a rua estava molhada e havia guarda-chuvas abertos' sugere:",
+          "options": [
+            "Que choveu ou estava chovendo",
+            "Que fazia muito calor",
+            "Que a rua estava vazia",
+            "Que era feriado"
+          ],
+          "correctAnswer": "Que choveu ou estava chovendo",
+          "explanation": "As duas pistas apontam para chuva.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-4",
+          "purpose": "PRACTICE",
+          "statement": "Se Ana apagou as luzes, trancou a porta e saiu, podemos concluir que:",
+          "options": [
+            "Ela deixou o local",
+            "Ela começou uma festa",
+            "Ela estava cozinhando",
+            "Ela perdeu a chave"
+          ],
+          "correctAnswer": "Ela deixou o local",
+          "explanation": "As ações encadeadas indicam saída, embora o texto não diga literalmente.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-5",
+          "purpose": "PRACTICE",
+          "statement": "Uma inferência forte deve:",
+          "options": [
+            "Combinar pistas do texto sem contradizê-las",
+            "Depender só de opinião",
+            "Ignorar o contexto",
+            "Repetir o título"
+          ],
+          "correctAnswer": "Combinar pistas do texto sem contradizê-las",
+          "explanation": "A coerência com as pistas evita interpretações arbitrárias.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-6",
+          "purpose": "TRANSFER",
+          "statement": "O texto diz que a praça amanheceu coberta de folhas e galhos. A inferência mais apoiada é:",
+          "options": [
+            "Houve vento forte ou tempestade durante a noite",
+            "A praça recebeu um prêmio",
+            "As árvores foram pintadas",
+            "Era dia de feira"
+          ],
+          "correctAnswer": "Houve vento forte ou tempestade durante a noite",
+          "explanation": "Folhas e galhos espalhados são pistas de vento ou tempestade.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-7",
+          "purpose": "LOCK_IN",
+          "statement": "Por que duas inferências podem ser possíveis, mas uma ser melhor?",
+          "options": [
+            "A melhor tem mais pistas textuais a favor",
+            "A melhor é sempre a mais longa",
+            "A pior usa mais palavras",
+            "Toda interpretação tem a mesma prova"
+          ],
+          "correctAnswer": "A melhor tem mais pistas textuais a favor",
+          "explanation": "A qualidade depende do suporte encontrado no texto.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "reading_inference-8",
+          "purpose": "REVIEW",
+          "statement": "Ao revisar uma inferência, pergunte:",
+          "options": [
+            "Qual trecho sustenta minha conclusão?",
+            "Qual é minha cor preferida?",
+            "Quantas páginas tem o livro?",
+            "Quem digitou o texto?"
+          ],
+          "correctAnswer": "Qual trecho sustenta minha conclusão?",
+          "explanation": "Essa pergunta separa inferência de palpite.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        }
+      ]
+    },
+    {
+      "code": "TEXTUAL_COHESION",
+      "title": "Coesão textual",
+      "lesson": {
+        "title": "Coesão textual",
+        "summary": "Relacionar ideias com conectivos, pronomes e retomadas claras.",
+        "contentMarkdown": "## Conceito\\n\\nCoesão é a ligação visível entre partes do texto; ela ajuda o leitor a saber como uma frase se conecta à outra.\\n\\n## Intuição\\n\\nEm 'Choveu muito. Por isso, a quadra fechou', o conectivo explicita consequência. Em 'Maria leu o artigo e depois o resumiu', o pronome retoma artigo.\\n\\n## Erro comum\\n\\nErro comum: escolher conectivo apenas pelo som. Dica: nomeie a relação lógica antes de escolher a palavra.",
+        "workedExample": "Em 'Choveu muito. Por isso, a quadra fechou', o conectivo explicita consequência. Em 'Maria leu o artigo e depois o resumiu', o pronome retoma artigo.",
+        "tips": [
+          "Erro comum: escolher conectivo apenas pelo som. Dica: nomeie a relação lógica antes de escolher a palavra.",
+          "Explique qual pista textual orientou sua escolha."
+        ],
+        "estimatedMinutes": 7
+      },
+      "questions": [
+        {
+          "id": "textual_cohesion-1",
+          "purpose": "PROBE",
+          "statement": "Qual conectivo indica consequência?",
+          "options": [
+            "por isso",
+            "porém",
+            "embora",
+            "enquanto"
+          ],
+          "correctAnswer": "por isso",
+          "explanation": "Por isso apresenta um resultado decorrente da ideia anterior.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-2",
+          "purpose": "PROBE",
+          "statement": "Em 'Lucas pegou o livro e o abriu', o pronome 'o' retoma:",
+          "options": [
+            "livro",
+            "Lucas",
+            "pegou",
+            "abriu"
+          ],
+          "correctAnswer": "livro",
+          "explanation": "O pronome evita repetir o termo já apresentado.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-3",
+          "purpose": "PRACTICE",
+          "statement": "Complete: 'Estudou bastante; ___, conseguiu melhorar'.",
+          "options": [
+            "por isso",
+            "embora",
+            "porém",
+            "enquanto"
+          ],
+          "correctAnswer": "por isso",
+          "explanation": "A segunda oração é consequência da primeira.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-4",
+          "purpose": "PRACTICE",
+          "statement": "Complete: 'Queria sair, ___ estava chovendo'.",
+          "options": [
+            "mas",
+            "portanto",
+            "porque",
+            "assim"
+          ],
+          "correctAnswer": "mas",
+          "explanation": "Mas introduz oposição à expectativa anterior.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-5",
+          "purpose": "PRACTICE",
+          "statement": "Qual palavra retoma melhor 'as crianças'?",
+          "options": [
+            "elas",
+            "ele",
+            "isso",
+            "onde"
+          ],
+          "correctAnswer": "elas",
+          "explanation": "O pronome deve concordar em gênero e número.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-6",
+          "purpose": "TRANSFER",
+          "statement": "Em 'A biblioteca ampliou o horário. Essa mudança ajudou os estudantes', 'essa mudança' retoma:",
+          "options": [
+            "A ampliação do horário",
+            "A biblioteca como prédio",
+            "Os estudantes",
+            "Uma opinião futura"
+          ],
+          "correctAnswer": "A ampliação do horário",
+          "explanation": "A expressão resume a ação da frase anterior.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-7",
+          "purpose": "LOCK_IN",
+          "statement": "Por que trocar 'portanto' por 'porém' pode mudar o sentido?",
+          "options": [
+            "Um indica conclusão e o outro indica oposição",
+            "As duas palavras são sinônimas",
+            "Porque um é verbo",
+            "Porque conectivos não têm função"
+          ],
+          "correctAnswer": "Um indica conclusão e o outro indica oposição",
+          "explanation": "A escolha do conectivo define a relação entre ideias.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        },
+        {
+          "id": "textual_cohesion-8",
+          "purpose": "REVIEW",
+          "statement": "Para revisar a coesão de um parágrafo, verifique:",
+          "options": [
+            "Se pronomes e conectivos deixam claras as relações e retomadas",
+            "Somente o número de linhas",
+            "A cor do título",
+            "A ordem alfabética das palavras"
+          ],
+          "correctAnswer": "Se pronomes e conectivos deixam claras as relações e retomadas",
+          "explanation": "A clareza das conexões é o critério relevante.",
+          "provenance": "TECESCOLA_CORE_V2_PORTUGUES"
+        }
+      ]
+    }
+  ]
+}

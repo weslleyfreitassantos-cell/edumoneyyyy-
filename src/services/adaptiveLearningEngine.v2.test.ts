@@ -1,8 +1,11 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
 import {
   deriveAdaptiveMasteryStateV2,
   planGuidedLearningJourneyV2,
+  V2_MASTERY_POLICY,
   type CanonicalSkillNode,
   type SkillPrerequisiteEdge,
   type StudentSkillState,
@@ -23,6 +26,21 @@ const state = (canonicalSkillId: string, overrides: Partial<StudentSkillState> =
 });
 
 describe('adaptive learning engine v2', () => {
+  it('keeps the TypeScript mastery policy aligned with the pre-release RPC', () => {
+    const migration = readFileSync(resolve(process.cwd(), 'supabase/migrations/20260930001000_adaptive_learning_guided_journey_v2.sql'), 'utf8');
+
+    expect(V2_MASTERY_POLICY).toMatchObject({
+      minValidEvidence: 3,
+      minDistinctRuns: 2,
+      minWeightedMastery: 80,
+      minConfidence: 0.6,
+      strongSources: ['TRANSFER', 'LOCK_IN', 'REVIEW'],
+    });
+    expect(migration).toContain("evidence.source in ('TRANSFER', 'LOCK_IN', 'REVIEW')");
+    expect(migration).toContain("case step_row.purpose when 'PROBE' then 'DIAGNOSTIC' else step_row.purpose end");
+    expect(migration).toContain("source in ('PRACTICE', 'DIAGNOSTIC', 'TRANSFER', 'LOCK_IN', 'REVIEW', 'SIMULATION', 'EXAM')");
+  });
+
   it('starts with a probe when the prerequisite is unknown', () => {
     expect(planGuidedLearningJourneyV2('target', skills, edges, [])).toMatchObject({
       currentSkillId: 'base',

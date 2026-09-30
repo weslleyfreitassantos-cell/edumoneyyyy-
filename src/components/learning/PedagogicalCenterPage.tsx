@@ -88,6 +88,13 @@ function studentName(attempt: {
   return profile?.full_name ?? 'Aluno';
 }
 
+function formatMisconceptions(summary: Record<string, number>): string {
+  return Object.entries(summary)
+    .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
+    .map(([code, total]) => `${code} (${total})`)
+    .join(', ');
+}
+
 function activityTitle(attempt: {
   learning_activities?: { title: string } | { title: string }[] | null;
 }) {
@@ -430,7 +437,7 @@ export default function PedagogicalCenterPage() {
           <div><h2 className="font-bold text-amber-950 dark:text-amber-100">Jornadas que precisam de atenção</h2><p className="mt-1 text-sm text-amber-900 dark:text-amber-200">O motivo é estruturado e não expõe respostas ou raciocínio interno.</p></div>
           <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-200">{guidedInsightsV2.data?.length ?? 0}</span>
         </div>
-        {guidedInsightsV2.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{guidedInsightsV2.data.map((item) => <article key={item.sessionId} className="rounded-lg border border-amber-200 bg-white p-4 dark:border-amber-800 dark:bg-amber-950/40"><p className="font-semibold text-slate-900 dark:text-white">{item.studentName}</p><p className="mt-1 text-xs text-slate-500">{item.status} · {item.decisionReason ?? 'REVIEW_REQUIRED'} · {item.replanCount} replanejamento(s)</p><div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'RESUME' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-amber-400 px-3 py-1.5 text-xs font-bold text-amber-900 dark:text-amber-100">Retomar jornada</button><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'CLOSE' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-bold text-slate-700 dark:border-slate-700 dark:text-slate-200">Encerrar apoio</button></div></article>)}</div> : <p className="mt-4 text-sm text-amber-900 dark:text-amber-200">Nenhuma jornada precisa de intervenção no momento.</p>}
+        {guidedInsightsV2.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{guidedInsightsV2.data.map((item) => <article key={item.sessionId} className="rounded-lg border border-amber-200 bg-white p-4 dark:border-amber-800 dark:bg-amber-950/40"><p className="font-semibold text-slate-900 dark:text-white">{item.studentName}</p><p className="mt-1 text-xs text-slate-500">{item.status} · {item.decisionReason ?? 'REVIEW_REQUIRED'} · {item.replanCount} replanejamento(s)</p>{Object.keys(item.misconceptionSummary).length > 0 && <p className="mt-3 text-xs text-amber-900 dark:text-amber-100">Sinais para revisar: {formatMisconceptions(item.misconceptionSummary)}</p>}<div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'RESUME' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-amber-400 px-3 py-1.5 text-xs font-bold text-amber-900 dark:text-amber-100">Retomar jornada</button><button type="button" onClick={() => resolveGuidedSessionV2.mutate({ sessionId: item.sessionId, action: 'CLOSE' })} disabled={resolveGuidedSessionV2.isPending} className="rounded-md border border-slate-300 px-3 py-1.5 text-xs font-bold text-slate-700 dark:text-slate-200">Encerrar apoio</button></div></article>)}</div> : <p className="mt-4 text-sm text-amber-900 dark:text-amber-200">Nenhuma jornada precisa de intervenção no momento.</p>}
       </section>
 
       <section aria-label="Lacunas por turma" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">

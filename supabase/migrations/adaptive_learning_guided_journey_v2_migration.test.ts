@@ -34,7 +34,22 @@ describe('adaptive learning guided journey v2 migration', () => {
   it('uses V2 mastery policy invariants and tenant-scoped grants', () => {
     expect(migration).toContain("strong_count, 'V2'");
     expect(migration).toContain('valid_count >= 3 and run_count >= 2');
+    expect(migration).toContain("evidence.source in ('TRANSFER', 'LOCK_IN', 'REVIEW')");
+    expect(migration).toContain("case step_row.purpose when 'PROBE' then 'DIAGNOSTIC' else step_row.purpose end");
+    expect(migration).toContain("next_skill is null or next_skill = session_row.target_canonical_skill_id");
+    expect(migration).toContain("source in ('PRACTICE', 'DIAGNOSTIC', 'TRANSFER', 'LOCK_IN', 'REVIEW', 'SIMULATION', 'EXAM')");
     expect(migration).toContain('private.learning_v2_scope_student');
     expect(migration).toContain('grant execute on function public.start_guided_learning_session_v2');
+  });
+
+  it('uses versioned purpose-qualified packs and does not repeat submitted items', () => {
+    expect(migration).toContain('GENERATED FROM content/adaptive/tec-escola-core-v2/*.json');
+    expect(migration).toContain("question.metadata->>'adaptive_v2_purpose' = purpose_row.purpose");
+    expect(migration).toContain('previous_attempt.session_id = step_row.session_id');
+    expect(migration).toContain("feedback_item->>'misconception_code'");
+    expect(migration).toContain('content_pack');
+    expect(migration).toContain("('LINEAR_FUNCTION', 'EQUATIONS')");
+    expect(migration).toContain('session.status in (\'ACTIVE\', \'PAUSED\')');
+    expect(migration).not.toContain("jsonb_build_object('fallback', true)");
   });
 });

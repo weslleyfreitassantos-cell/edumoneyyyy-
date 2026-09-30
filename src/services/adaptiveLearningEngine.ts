@@ -301,11 +301,15 @@ export interface GuidedJourneyPlanV2 {
   nextSkills: string[];
 }
 
-const V2_STRONG_SOURCES = new Set<AdaptiveEvidenceSample['source']>([
-  'TRANSFER',
-  'LOCK_IN',
-  'REVIEW',
-]);
+export const V2_MASTERY_POLICY = {
+  minValidEvidence: 3,
+  minDistinctRuns: 2,
+  minWeightedMastery: 80,
+  minConfidence: 0.6,
+  strongSources: ['TRANSFER', 'LOCK_IN', 'REVIEW'] as const,
+} as const;
+
+const V2_STRONG_SOURCES = new Set<AdaptiveEvidenceSample['source']>(V2_MASTERY_POLICY.strongSources);
 
 /** The single V2 mastery policy used by pure code and mirrored by the RPC. */
 export function deriveAdaptiveMasteryStateV2(
@@ -327,10 +331,10 @@ export function deriveAdaptiveMasteryStateV2(
     ? Math.round((weightedSamples.reduce((sum, sample) => sum + sample.score * sample.weight, 0) / weightedSamples.reduce((sum, sample) => sum + sample.weight, 0)) * 100) / 100
     : 0;
   const confidence = Math.min(1, valid.length / 5);
-  const mastered = valid.length >= 3
-    && distinctRunCount >= 2
-    && weightedMastery >= 80
-    && confidence >= 0.6
+  const mastered = valid.length >= V2_MASTERY_POLICY.minValidEvidence
+    && distinctRunCount >= V2_MASTERY_POLICY.minDistinctRuns
+    && weightedMastery >= V2_MASTERY_POLICY.minWeightedMastery
+    && confidence >= V2_MASTERY_POLICY.minConfidence
     && strongEvidenceCount >= 1;
   const state: AdaptiveSkillState = mastered
     ? 'MASTERED'
