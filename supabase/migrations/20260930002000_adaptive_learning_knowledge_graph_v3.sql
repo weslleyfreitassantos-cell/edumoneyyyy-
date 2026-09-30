@@ -545,7 +545,9 @@ begin
           active = true, updated_at = now()
          where id = question_set_id;
       end if;
+      raise notice 'ADAPTIVE_V3_QUESTION_SET_CREATED=%/%', target_row.subject_code, set_purpose;
       delete from public.learning_question_set_items item where item.question_set_id = question_set_id;
+      raise notice 'ADAPTIVE_V3_QUESTION_SET_CLEARED=%/%', target_row.subject_code, set_purpose;
       insert into public.learning_question_set_items(question_set_id, question_bank_id, position)
       select question_set_id, question.id, row_number() over (order by question.metadata->>'content_question_id') - 1
         from public.learning_question_bank question
