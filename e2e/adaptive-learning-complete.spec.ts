@@ -142,8 +142,8 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       });
       const reviewCompleted = await alice.client.rpc('complete_learning_skill_review', { p_review_id: review.id, p_score: 90 });
       const reviewRetried = await alice.client.rpc('complete_learning_skill_review', { p_review_id: review.id, p_score: 90 });
-      expect(reviewCompleted.data?.idempotent).toBe(false);
-      expect(reviewRetried.data?.idempotent).toBe(true);
+      expect(reviewCompleted.error?.message).toContain('LEARNING_REVIEW_REQUIRES_REAL_QUESTIONS');
+      expect(reviewRetried.error?.message).toContain('LEARNING_REVIEW_REQUIRES_REAL_QUESTIONS');
 
       const mariaLockIn = await service.from('learning_guided_steps').select('id').eq('session_id', mariaSession.data.session_id).eq('step_type', 'LOCK_IN').single();
       expect(mariaLockIn.error).toBeNull();
