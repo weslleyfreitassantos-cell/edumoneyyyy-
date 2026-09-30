@@ -22,6 +22,7 @@ import { roomSchema, timetableEntrySchema, type RoomFormData, type TimetableEntr
 import { DataTable, type Column } from '../../../components/DataTable';
 import StatusBadge from '../../../components/StatusBadge';
 import TimetableAutomationPanel from '../../../components/academic/TimetableAutomationPanel';
+import TimetableDraftEditor from '../../../components/academic/TimetableDraftEditor';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 interface RoomDraft {
@@ -43,7 +44,7 @@ interface EntryDraft {
 const emptyRoomDraft: RoomDraft = { name: '', code: '', capacity: '', class_id: '' };
 const emptyEntryDraft: EntryDraft = { class_id: '', subject_offering_id: '', room_id: '', day_of_week: '1', start_time: '07:00', end_time: '07:50' };
 
-type SubView = 'grid' | 'rooms' | 'automation';
+type SubView = 'grid' | 'rooms' | 'editor' | 'automation';
 
 function getErrorMessage(error: unknown): string {
   return getUserFacingErrorMessage(error, 'Não foi possível concluir a operação.');
@@ -174,7 +175,7 @@ export default function TimetableTab() {
   const [searchParams] = useSearchParams();
   const [subView, setSubView] = useState<SubView>(() => {
     const requestedView = searchParams.get('view');
-    if (requestedView === 'automation' || requestedView === 'rooms') return requestedView;
+    if (requestedView === 'automation' || requestedView === 'rooms' || requestedView === 'editor') return requestedView;
     return 'grid';
   });
   const [classFilter, setClassFilter] = useState('all');
@@ -440,6 +441,15 @@ export default function TimetableTab() {
       <div className="flex gap-2 overflow-x-auto border-b border-[#dfe3e8] pb-2 dark:border-slate-700" role="tablist" aria-label="Recursos da grade horária">
         <button
           type="button"
+          onClick={() => setSubView('editor')}
+          role="tab"
+          aria-selected={subView === 'editor'}
+          className={`rounded-t-lg px-4 py-2 text-sm font-medium ${subView === 'editor' ? 'border-x border-t border-[#dfe3e8] bg-white text-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-blue-300' : 'text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200'}`}
+        >
+          Editor visual
+        </button>
+        <button
+          type="button"
           onClick={() => setSubView('grid')}
           role="tab"
           aria-selected={subView === 'grid'}
@@ -467,6 +477,7 @@ export default function TimetableTab() {
         </button>
       </div>
 
+      {subView === 'editor' && <TimetableDraftEditor institutionId={institutionId} createdBy={profile?.id ?? ''} />}
       {subView === 'automation' && <TimetableAutomationPanel institutionId={institutionId} createdBy={profile?.id ?? ''} />}
 
       {subView === 'grid' && (

@@ -66,3 +66,116 @@ jobs:
 
       - name: Validar projeto
         run: npm run check
+
+  database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Preparar stack mínimo do Supabase para CI
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("supabase/config.toml")
+          config = path.read_text()
+          project_id = 'project_id = "edumoneyyyy-"'
+          if project_id not in config:
+              raise SystemExit("Missing expected Supabase project_id")
+          config = config.replace(project_id, 'project_id = "edumoneyyyy-ci"', 1)
+          replacements = {
+              "[realtime]\nenabled = true": "[realtime]\nenabled = false",
+              "[local_smtp]\nenabled = true": "[local_smtp]\nenabled = false",
+              "[storage.vector]\nenabled = true": "[storage.vector]\nenabled = false",
+              "[edge_runtime]\nenabled = true": "[edge_runtime]\nenabled = false",
+              "[analytics]\nenabled = true": "[analytics]\nenabled = false",
+          }
+
+          for current, replacement in replacements.items():
+              if current not in config:
+                  raise SystemExit(f"Missing expected Supabase config block: {current.splitlines()[0]}")
+              config = config.replace(current, replacement, 1)
+
+          path.write_text(config)
+          PY
+
+      - name: Iniciar Supabase descartável
+        run: npx supabase start --exclude edge-runtime,imgproxy,logflare,mailpit,realtime,studio,supavisor,vector
+
+      - name: Aplicar migrations em banco Linux
+        run: npx supabase db reset --local
+
+      - name: Lint das migrations
+        run: npx supabase db lint --local --fail-on error
+
+      - name: Confirmar ausência de drift
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          diff_output="$(npx supabase db diff --local --schema public 2>&1)"
+          diff_status=$?
+          set -e
+
+          if [ "$diff_status" -ne 0 ]; then
+            printf '%s\n' "$diff_output"
+            exit "$diff_status"
+          fi
+
+          if ! grep -qi "no schema changes found" <<< "$diff_output"; then
+            printf '%s\n' "$diff_output"
+            echo "Unexpected schema drift detected"
+            exit 1
+          fi
+
+      - name: Exportar credenciais locais sem exibição
+        shell: bash
+        run: |
+          set -euo pipefail
+          status_output="$(npx supabase status -o env)"
+          value_for() {
+            printf '%s\n' "$status_output" |
+              sed -n "s/^$1=//p" |
+              head -n 1 |
+              sed -E "s/^[\\\"']//; s/[\\\"']$//"
+          }
+
+          {
+            echo "MULTI_TENANT_SUPABASE_URL=$(value_for API_URL)"
+            echo "MULTI_TENANT_SUPABASE_ANON_KEY=$(value_for ANON_KEY)"
+            echo "MULTI_TENANT_SUPABASE_SERVICE_ROLE_KEY=$(value_for SERVICE_ROLE_KEY)"
+            echo "VITE_SUPABASE_URL=$(value_for API_URL)"
+            echo "VITE_SUPABASE_PUBLISHABLE_KEY=$(value_for ANON_KEY)"
+          } >> "$GITHUB_ENV"
+
+      - name: Testes dinâmicos de segurança e RPCs adaptativos
+        run: npx vitest run supabase/tests/adaptiveLearningEngine.local.test.ts supabase/tests/timetableManualEditor.local.test.ts
+
+      - name: Instalar Chromium para os fluxos adaptativos
+        run: npx playwright install --with-deps chromium
+
+      - name: Playwright dos fluxos adaptativos
+        run: npx playwright test e2e/adaptive-learning.spec.ts e2e/adaptive-learning-complete.spec.ts e2e/adaptive-learning-enem.spec.ts e2e/manual-timetable-v2.spec.ts --config=e2e/playwright.config.ts
+
+      - name: Anexar artefatos Playwright em falha
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adaptive-playwright-failure-${{ github.run_id }}
+          path: |
+            test-results/
+            e2e/.runtime/
+          if-no-files-found: ignore

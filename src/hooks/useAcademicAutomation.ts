@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { academicAutomationService, type PeriodDraft } from '../services/academicAutomationService';
 import { assignmentAutomationService } from '../services/assignmentAutomationService';
 import { classAutomationService } from '../services/classAutomationService';
-import { timetableAutomationService, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
+import { timetableAutomationService, type TimetableDayCopyPreview, type TimetableDraftValidation, type TimetableEditorContext, type TimetableVersionEntryRow, type TimetableVersionRow } from '../services/timetableAutomationService';
 import { invalidateSchoolSetupReadiness } from './useSchoolSetupReadiness';
 
 export const academicAutomationKeys = {
@@ -15,6 +15,7 @@ export const academicAutomationKeys = {
   timetablePreparation: (institutionId: string, academicYearId: string, shift?: string) => [...academicAutomationKeys.all, 'timetable-preparation', institutionId, academicYearId, shift ?? 'TODOS'] as const,
   timetableVersions: (institutionId: string, academicYearId?: string) => [...academicAutomationKeys.all, 'timetable-versions', institutionId, academicYearId ?? 'all'] as const,
   timetableVersionEntries: (institutionId: string, versionId: string) => [...academicAutomationKeys.all, 'timetable-version-entries', institutionId, versionId] as const,
+  timetableEditorContext: (institutionId: string, academicYearId: string, classId: string, termId: string) => [...academicAutomationKeys.all, 'timetable-editor-context', institutionId, academicYearId, classId, termId] as const,
   assignmentPreview: (institutionId: string, academicYearId: string) => [...academicAutomationKeys.all, 'assignment-preview', institutionId, academicYearId] as const,
 };
 
@@ -320,6 +321,19 @@ export function useTimetableVersionEntries(
   });
 }
 
+export function useTimetableEditorContext(input: {
+  institutionId: string;
+  academicYearId: string;
+  classId: string;
+  termId: string;
+}) {
+  return useQuery<TimetableEditorContext>({
+    queryKey: academicAutomationKeys.timetableEditorContext(input.institutionId, input.academicYearId, input.classId, input.termId),
+    queryFn: () => timetableAutomationService.listEditorContext(input),
+    enabled: Boolean(input.institutionId && input.academicYearId && input.classId && input.termId),
+  });
+}
+
 export function useUpdateTimetableVersionEntry() {
   const queryClient = useQueryClient();
 
@@ -333,6 +347,89 @@ export function useUpdateTimetableVersionEntry() {
         ),
       });
     },
+  });
+}
+
+function invalidateEditor(queryClient: ReturnType<typeof useQueryClient>, variables: { institutionId: string; versionId?: string; academicYearId?: string }) {
+  const queries = [
+    queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersions(variables.institutionId, variables.academicYearId) }),
+    queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetablePreparationPrefix(variables.institutionId) }),
+  ];
+  if (variables.versionId) {
+    queries.push(queryClient.invalidateQueries({ queryKey: academicAutomationKeys.timetableVersionEntries(variables.institutionId, variables.versionId) }));
+  }
+  return Promise.all(queries);
+}
+
+export function useCreateManualTimetableDraft() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.createManualDraft,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
+export function useAddTimetableDraftEntry() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.addDraftEntry,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
+export function useAddTimetableDoubleSlot() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.addDoubleDraftEntry,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
+export function useRemoveTimetableDraftEntry() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.removeDraftEntry,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
+export function useDuplicateTimetableDraftEntry() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.duplicateDraftEntry,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
+export function useCopyTimetableDraftDay() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: timetableAutomationService.copyDraftDay,
+    onSuccess: async (_result, variables) => {
+      await invalidateEditor(queryClient, variables);
+    },
+  });
+}
+
+export function usePreviewTimetableDraftDayCopy() {
+  return useMutation<TimetableDayCopyPreview, Error, { versionId: string; institutionId: string; sourceDay: number; targetDay: number }>({
+    mutationFn: timetableAutomationService.previewCopyDraftDay,
+  });
+}
+
+export function useValidateTimetableDraft() {
+  return useMutation<TimetableDraftValidation, Error, { versionId: string; institutionId: string }>({
+    mutationFn: timetableAutomationService.validateDraft,
   });
 }
 

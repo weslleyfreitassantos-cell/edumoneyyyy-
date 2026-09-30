@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": {
+    "allowedHosts": ["gov.br", "inep.gov.br"],
+    "requireHttps": true,
+    "catalogReference": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos"
+  },
+  "discovery": {
+    "mode": "official-catalog",
+    "years": "discover-from-catalog",
+    "download": "manual-or-approved-ingestion-run",
+    "neverInventQuestions": true
+  },
+  "entries": [
+    {
+      "year": 2023,
+      "exam": "ENEM",
+      "application": "REGULAR",
+      "day": "D2",
+      "sourceReference": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem/provas-e-gabaritos",
+      "artifactHash": "818b89dec87eb0b77bf77f96d3e744502c7bdffb57166d2b5137beb3a6b9ac59",
+      "downloadUrl": "https://download.inep.gov.br/enem/provas_e_gabaritos/2023_PV_impresso_D2_CD5.pdf",
+      "questionsPath": "./fixtures/2023-d2-cd5-math.json"
+    }
+  ]
+}

@@ -8,6 +8,10 @@ const state = vi.hoisted(() => ({
     { id: 'subject-math', name: 'Matemática' },
     { id: 'subject-portuguese', name: 'Língua Portuguesa' },
   ],
+  adaptiveGuidance: null as null | {
+    message: string;
+    steps: Array<{ id: string; title: string }>;
+  },
 }));
 
 vi.mock('../../contexts/AuthContext', () => ({
@@ -90,12 +94,29 @@ vi.mock('../../hooks/useLearningCenter', () => ({
     data: [{ skill_id: 'skill-1', mastery_percent: 60, status: 'IN_PROGRESS' }],
     isLoading: false,
   }),
+  useLearningCanonicalProgress: () => ({ data: [], isLoading: false }),
+  useLearningReviewsDue: () => ({ data: [], isLoading: false }),
+  useCompleteLearningDailyPlanItem: () => ({ mutate: vi.fn(), isPending: false }),
+  useCompleteLearningSkillReview: () => ({ mutate: vi.fn(), isPending: false }),
+  useLearningDailyPlan: () => ({ data: null, isLoading: false }),
+  useLearningGamification: () => ({ data: null, isLoading: false }),
+  useLearningErrorNotebook: () => ({ data: [], isLoading: false }),
+  useLearningSimulations: () => ({ data: [], isLoading: false }),
+  useStudentLearningPackages: () => ({ data: [], isLoading: false }),
+  useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
+  useGuidedLearningSession: () => ({ data: null, isLoading: false }),
+}));
+
+vi.mock('../../hooks/useAdaptiveLearning', () => ({
+  useStudentAdaptiveTarget: () => ({ data: null, isLoading: false }),
+  useStudentAdaptiveGuidance: () => ({ data: state.adaptiveGuidance, isLoading: false }),
 }));
 
 import StudyCenterPage from './StudyCenterPage';
 
 afterEach(() => {
   cleanup();
+  state.adaptiveGuidance = null;
 });
 
 function renderPage() {
@@ -150,5 +171,20 @@ describe('StudyCenterPage', () => {
 
     expect(screen.getByRole('button', { name: /Matemática/ })).toBeTruthy();
     expect(screen.queryByRole('button', { name: /Língua Portuguesa/ })).toBeNull();
+  });
+
+  it('shows adaptive guidance only when the backend has enough mapped evidence', () => {
+    state.adaptiveGuidance = {
+      message: 'Reforço recomendado — vamos fortalecer Frações para facilitar Função afim.',
+      steps: [
+        { id: 'fractions', title: 'Frações' },
+        { id: 'linear-function', title: 'Função afim' },
+      ],
+    };
+    renderPage();
+
+    expect(screen.getByRole('region', { name: 'Seu próximo passo' })).toBeTruthy();
+    expect(screen.getByText(/fortalecer Frações/)).toBeTruthy();
+    expect(screen.getByText('Função afim')).toBeTruthy();
   });
 });

@@ -1,0 +1,13 @@
+[
+  {
+    "questionNumber": 136,
+    "area": "Matemática e suas Tecnologias",
+    "statement": "Alguns estudos comprovam que os carboidratos fornecem energia ao corpo, preservam as proteínas estruturais dos músculos durante a prática de atividade física e ainda dão força para o cérebro coordenar os movimentos, o que de fato tem impacto positivo no desenvolvimento do praticante.\n\nUm casal realizará diariamente 30 minutos de caminhada, ingerindo, antes dessa atividade, a quantidade ideal de carboidratos recomendada. Para ter o consumo ideal apenas por meio do consumo de pão de forma integral, o casal planeja garantir o suprimento de pães para um período de 30 dias ininterruptos. Sabe-se que cada pacote desse pão vem com 18 fatias, e que cada uma delas tem 15 gramas de carboidratos.\n\nA quantidade mínima de pacotes de pães de forma necessários para prover o suprimento desse casal é",
+    "options": ["1", "4", "6", "7", "8"],
+    "correctAnswer": "7",
+    "subject": "Matemática",
+    "topic": "Razão e proporção",
+    "canonicalSkillCode": "RATIO_PROPORTION",
+    "difficulty": "MEDIUM"
+  }
+]
