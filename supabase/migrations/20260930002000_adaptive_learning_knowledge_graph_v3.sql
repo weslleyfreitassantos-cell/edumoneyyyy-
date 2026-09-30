@@ -162,7 +162,7 @@ on conflict (code) do update set
 
 do $seed$
 declare
-  catalog_id uuid;
+  v_catalog_id uuid;
   subject_row record;
   skill_row record;
   skill_ids uuid[];
@@ -183,9 +183,9 @@ begin
   insert into public.learning_curriculum_catalogs(code, name, version, description, active)
   values ('TECESCOLA_CORE', 'TecEscola Core V3', '1.0', 'Catalogo autoral do grafo de conhecimento TecEscola.', true)
   on conflict (code, version) do update set name = excluded.name, description = excluded.description, active = true, updated_at = now()
-  returning id into catalog_id;
-  if catalog_id is null then
-    select id into catalog_id from public.learning_curriculum_catalogs where code = 'TECESCOLA_CORE' and version = '1.0';
+  returning id into v_catalog_id;
+  if v_catalog_id is null then
+    select id into v_catalog_id from public.learning_curriculum_catalogs where code = 'TECESCOLA_CORE' and version = '1.0';
   end if;
 
   for skill_row in
@@ -241,7 +241,7 @@ begin
       catalog_id, code, stage, grade_level, subject_area, domain, title, description,
       canonical_subject_id, active, metadata
     )
-    select catalog_id, skill_row.skill_code, 'ENSINO_MEDIO', 1, skill_row.subject_code,
+    select v_catalog_id, skill_row.skill_code, 'ENSINO_MEDIO', 1, skill_row.subject_code,
       skill_row.domain, skill_row.skill_title,
       'Skill canonica autoral TecEscola para o grafo V3.', subject.id, true,
       jsonb_build_object('v3_order', skill_row.skill_order, 'provenance', 'TECESCOLA_DERIVED')
@@ -262,7 +262,7 @@ begin
     select array_agg(skill.id order by (skill.metadata->>'v3_order')::integer)
       into skill_ids
       from public.learning_curriculum_skills skill
-     where skill.catalog_id = catalog_id
+     where skill.catalog_id = v_catalog_id
        and skill.canonical_subject_id = subject_row.id
        and skill.active;
     if coalesce(array_length(skill_ids, 1), 0) >= 3 then
@@ -272,12 +272,12 @@ begin
     end if;
     select skill.id into target_skill_id
       from public.learning_curriculum_skills skill
-     where skill.catalog_id = catalog_id
+     where skill.catalog_id = v_catalog_id
        and skill.code = subject_row.metadata->>'target_skill'
        and skill.active;
     if target_skill_id is not null then
       insert into public.learning_curriculum_grade_targets(catalog_id, stage, grade_level, subject_area, canonical_skill_id, priority, sort_order, active)
-      values (catalog_id, 'ENSINO_MEDIO', 1, subject_row.code, target_skill_id, 0, 0, true)
+      values (v_catalog_id, 'ENSINO_MEDIO', 1, subject_row.code, target_skill_id, 0, 0, true)
       on conflict (catalog_id, stage, grade_level, subject_area, canonical_skill_id)
       do update set active = true, updated_at = now();
       insert into public.learning_skill_lessons(canonical_skill_id, version, title, summary, content_markdown, worked_example, tips, estimated_minutes, metadata)
@@ -379,7 +379,7 @@ begin
       values (question_id, target_row.target_id, 'PRIMARY', true, 1)
       on conflict (question_bank_id, canonical_skill_id) do update set skill_role = 'PRIMARY', evidence_bearing = true, attribution_confidence = 1;
       if target_row.target_code in ('PERCENTAGE', 'PHYSICS_AVERAGE_SPEED') then
-        select skill.id into prerequisite_id from public.learning_curriculum_skills skill where skill.catalog_id = catalog_id and skill.code = 'RATIO_PROPORTION' and skill.active;
+        select skill.id into prerequisite_id from public.learning_curriculum_skills skill where skill.catalog_id = v_catalog_id and skill.code = 'RATIO_PROPORTION' and skill.active;
         if prerequisite_id is not null then
           insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role, evidence_bearing, attribution_confidence)
           values (question_id, prerequisite_id, case when question_number = 2 then 'PREREQUISITE' when question_number = 3 then 'TRANSFER' else 'SUPPORTING' end, question_number > 3, case when question_number > 3 then .5 else .35 end)
@@ -411,13 +411,13 @@ begin
   select target.id, ratio.id, 'PREREQUISITE', 'TECESCOLA_DERIVED', .8, jsonb_build_object('reason', 'Velocidade media exige divisao e razao.')
     from public.learning_curriculum_skills target
     join public.learning_curriculum_skills ratio on ratio.catalog_id = target.catalog_id and ratio.code = 'RATIO_PROPORTION'
-   where target.catalog_id = catalog_id and target.code = 'PHYSICS_AVERAGE_SPEED'
+   where target.catalog_id = v_catalog_id and target.code = 'PHYSICS_AVERAGE_SPEED'
   on conflict do nothing;
   insert into public.learning_skill_relationships(from_canonical_skill_id, to_canonical_skill_id, relation_type, relation_source, confidence)
   select percentage.id, ratio.id, 'RELATED', 'TECESCOLA_DERIVED', .7
     from public.learning_curriculum_skills percentage
     join public.learning_curriculum_skills ratio on ratio.catalog_id = percentage.catalog_id and ratio.code = 'RATIO_PROPORTION'
-   where percentage.catalog_id = catalog_id and percentage.code = 'PERCENTAGE'
+   where percentage.catalog_id = v_catalog_id and percentage.code = 'PERCENTAGE'
   on conflict do nothing;
 
   insert into public.learning_misconception_tags(code, title, description, active)
@@ -431,7 +431,7 @@ begin
   insert into public.learning_question_option_misconceptions(question_bank_id, option_value, misconception_tag_id, canonical_skill_id, confidence_weight, metadata)
   select question.id, option_value.value, tag.id, skill.id, .8, jsonb_build_object('provenance', 'TECESCOLA_CORE_V3')
     from public.learning_question_bank question
-    join public.learning_curriculum_skills skill on skill.catalog_id = catalog_id and skill.code = 'PERCENTAGE'
+    join public.learning_curriculum_skills skill on skill.catalog_id = v_catalog_id and skill.code = 'PERCENTAGE'
     join public.learning_misconception_tags tag on tag.code = option_value.tag_code
     cross join lateral (values ('60', 'DISCOUNT_AS_FINAL_PRICE'), ('215', 'PERCENT_AS_ABSOLUTE_VALUE'), ('225', 'INCORRECT_PERCENT_CONVERSION')) option_value(value, tag_code)
    where question.source_type = 'TECESCOLA_CORE_V3'
@@ -440,7 +440,7 @@ begin
   insert into public.learning_question_option_misconceptions(question_bank_id, option_value, misconception_tag_id, canonical_skill_id, confidence_weight, metadata)
   select question.id, '2/6', tag.id, skill.id, .8, jsonb_build_object('provenance', 'TECESCOLA_CORE_V2')
     from public.learning_question_bank question
-    join public.learning_curriculum_skills skill on skill.catalog_id = catalog_id and skill.code = 'FRACTIONS'
+    join public.learning_curriculum_skills skill on skill.catalog_id = v_catalog_id and skill.code = 'FRACTIONS'
     join public.learning_misconception_tags tag on tag.code = 'FRACTION_ADD_DIRECT_COMPONENTS'
    where question.metadata->>'content_question_id' = 'fractions-4'
   on conflict do nothing;
