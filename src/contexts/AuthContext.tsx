@@ -18,7 +18,9 @@ import {
   type PlatformRole,
 } from '../lib/roles';
 import {
+  PROFILE_AVATAR_REFRESH_DELAY_MS,
   ProfileServiceError,
+  getCurrentProfileAvatarPath,
   removeCurrentProfileAvatar,
   resolveCurrentProfileAvatar,
   updateCurrentProfileAvatar,
@@ -36,6 +38,7 @@ export interface Profile {
   email: string;
   role: DatabaseRole;
   platform_role: PlatformRole;
+  avatar_path?: string | null;
   avatar_url: string | null;
   phone?: string | null;
 }
@@ -132,6 +135,10 @@ async function loadProfile(userId: string): Promise<Profile> {
     data.avatar_url ?? null,
     data.id,
   );
+  const avatarPath = getCurrentProfileAvatarPath(
+    data.avatar_url ?? null,
+    data.id,
+  );
 
   return {
     id: data.id,
@@ -139,6 +146,7 @@ async function loadProfile(userId: string): Promise<Profile> {
     email: data.email,
     role: data.role,
     platform_role: platformRole,
+    avatar_path: avatarPath,
     avatar_url: avatarUrl,
     phone: data.phone ?? null,
   };
@@ -425,6 +433,65 @@ export function AuthProvider({
     synchronizeSession,
   ]);
 
+  useEffect(() => {
+    const avatarPath = profile?.avatar_path;
+    const userId = profile?.id;
+
+    if (!avatarPath || !userId) {
+      return;
+    }
+
+    let cancelled = false;
+    let timerId: number | null = null;
+
+    const refreshAvatar = async (): Promise<void> => {
+      let nextAvatarUrl: string | null = null;
+
+      try {
+        nextAvatarUrl = await resolveCurrentProfileAvatar(
+          avatarPath,
+          userId,
+        );
+      } catch {
+        // Initials remain available when a refresh cannot reach Storage.
+      }
+
+      if (cancelled) {
+        return;
+      }
+
+      const latestProfile = profileRef.current;
+
+      if (
+        latestProfile?.id === userId &&
+        latestProfile.avatar_path === avatarPath
+      ) {
+        setProfileState({
+          ...latestProfile,
+          avatar_url: nextAvatarUrl,
+        });
+      }
+
+      timerId = window.setTimeout(
+        () => void refreshAvatar(),
+        PROFILE_AVATAR_REFRESH_DELAY_MS,
+      );
+    };
+
+    timerId = window.setTimeout(
+      () => void refreshAvatar(),
+      PROFILE_AVATAR_REFRESH_DELAY_MS,
+    );
+
+    return () => {
+      cancelled = true;
+
+      if (timerId !== null) {
+        window.clearTimeout(timerId);
+      }
+    };
+  }, [profile?.avatar_path, profile?.id, setProfileState]);
+
   async function signIn(
     email: string,
     password: string,
@@ -545,6 +612,7 @@ export function AuthProvider({
 
       setProfileState({
         ...latestProfile,
+        avatar_path: updatedProfile.path,
         avatar_url: updatedProfile.avatar_url,
       });
 
@@ -579,6 +647,7 @@ export function AuthProvider({
 
       setProfileState({
         ...latestProfile,
+        avatar_path: null,
         avatar_url: null,
       });
 

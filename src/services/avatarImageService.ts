@@ -48,6 +48,10 @@ function createCanvas(size: number): HTMLCanvasElement {
   return canvas;
 }
 
+function getOutputSize(cropSize: number): number {
+  return Math.min(AVATAR_MAX_DIMENSION, cropSize);
+}
+
 function canvasToWebp(canvas: HTMLCanvasElement): Promise<Blob> {
   return new Promise((resolve, reject) => {
     canvas.toBlob(
@@ -77,7 +81,16 @@ async function prepareWithImageBitmap(file: File): Promise<Blob> {
 
   try {
     const cropSize = Math.min(bitmap.width, bitmap.height);
-    const canvas = createCanvas(AVATAR_MAX_DIMENSION);
+
+    if (cropSize <= 0) {
+      throw new AvatarFileError(
+        'IMAGE_PROCESSING_FAILED',
+        'Não foi possível preparar a imagem para o upload.',
+      );
+    }
+
+    const outputSize = getOutputSize(cropSize);
+    const canvas = createCanvas(outputSize);
     const context = canvas.getContext('2d');
 
     if (!context) {
@@ -95,8 +108,8 @@ async function prepareWithImageBitmap(file: File): Promise<Blob> {
       cropSize,
       0,
       0,
-      AVATAR_MAX_DIMENSION,
-      AVATAR_MAX_DIMENSION,
+      outputSize,
+      outputSize,
     );
 
     return await canvasToWebp(canvas);
@@ -125,10 +138,19 @@ async function prepareWithImageElement(file: File): Promise<Blob> {
     );
 
     const cropSize = Math.min(image.naturalWidth, image.naturalHeight);
-    const canvas = createCanvas(AVATAR_MAX_DIMENSION);
+
+    if (cropSize <= 0) {
+      throw new AvatarFileError(
+        'IMAGE_PROCESSING_FAILED',
+        'Não foi possível preparar a imagem para o upload.',
+      );
+    }
+
+    const outputSize = getOutputSize(cropSize);
+    const canvas = createCanvas(outputSize);
     const context = canvas.getContext('2d');
 
-    if (!context || cropSize <= 0) {
+    if (!context) {
       throw new AvatarFileError(
         'IMAGE_PROCESSING_FAILED',
         'Não foi possível preparar a imagem para o upload.',
@@ -143,8 +165,8 @@ async function prepareWithImageElement(file: File): Promise<Blob> {
       cropSize,
       0,
       0,
-      AVATAR_MAX_DIMENSION,
-      AVATAR_MAX_DIMENSION,
+      outputSize,
+      outputSize,
     );
 
     return await canvasToWebp(canvas);

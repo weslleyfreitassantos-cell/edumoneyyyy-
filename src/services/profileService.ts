@@ -7,6 +7,10 @@ import { prepareAvatarImage } from './avatarImageService';
 
 export const PROFILE_AVATARS_BUCKET = 'profile-avatars';
 export const PROFILE_AVATAR_SIGNED_URL_TTL = 60 * 60;
+export const PROFILE_AVATAR_REFRESH_DELAY_MS = Math.max(
+  60_000,
+  Math.floor(PROFILE_AVATAR_SIGNED_URL_TTL * 1000 / 2),
+);
 
 export type ProfileServiceErrorCode =
   | 'INVALID_NAME'
@@ -125,6 +129,21 @@ function isCanonicalAvatarPath(
   return value === `${userId}/avatar.webp`;
 }
 
+export function getCurrentProfileAvatarPath(
+  avatarReference: string | null | undefined,
+  userId: string,
+): string | null {
+  const reference = avatarReference?.trim();
+
+  if (!reference || isHttpsUrl(reference)) {
+    return null;
+  }
+
+  return isCanonicalAvatarPath(reference, userId)
+    ? reference
+    : null;
+}
+
 async function createCurrentAvatarSignedUrl(
   path: string,
 ): Promise<string> {
@@ -166,13 +185,14 @@ export async function resolveCurrentProfileAvatar(
   }
 
   const userId = expectedUserId ?? await getCurrentUserId();
+  const avatarPath = getCurrentProfileAvatarPath(reference, userId);
 
-  if (!isCanonicalAvatarPath(reference, userId)) {
+  if (!avatarPath) {
     return null;
   }
 
   try {
-    return await createCurrentAvatarSignedUrl(reference);
+    return await createCurrentAvatarSignedUrl(avatarPath);
   } catch {
     // A temporary Storage failure must fall back to initials in the UI.
     return null;
