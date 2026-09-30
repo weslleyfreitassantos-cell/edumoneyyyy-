@@ -374,8 +374,8 @@ declare
   first_type text;
   first_purpose text;
   first_reason text;
-  subject_id uuid;
-  class_id uuid;
+  target_subject_id uuid;
+  enrollment_class_id uuid;
   target_institution_skill_id uuid;
   teacher_profile_id uuid;
 begin
@@ -391,13 +391,13 @@ begin
   if found then
     update public.learning_guided_sessions set status = 'CANCELLED', decision_reason = 'V2_REPLACED_LEGACY_SESSION', updated_at = now() where id = existing.id;
   end if;
-  select link.learning_skill_id, unit.subject_id into target_institution_skill_id, subject_id
+  select link.learning_skill_id, unit.subject_id into target_institution_skill_id, target_subject_id
     from public.learning_skill_canonical_links link join public.learning_skills skill on skill.id = link.learning_skill_id and skill.active join public.learning_units unit on unit.id = skill.unit_id and unit.active
    where link.institution_id = p_institution_id and link.canonical_skill_id = p_target_canonical_skill_id and link.active order by link.created_at limit 1;
-  select enrollment.class_id into class_id from public.enrollments enrollment where enrollment.student_id = p_student_id and enrollment.active and enrollment.status = 'active' order by enrollment.created_at desc limit 1;
-  select offering.teacher_profile_id into teacher_profile_id from public.subject_offerings offering where offering.class_id = class_id and offering.subject_id = subject_id and offering.active order by offering.teacher_profile_id limit 1;
+  select enrollment.class_id into enrollment_class_id from public.enrollments enrollment where enrollment.student_id = p_student_id and enrollment.active and enrollment.status = 'active' order by enrollment.created_at desc limit 1;
+  select offering.teacher_profile_id into teacher_profile_id from public.subject_offerings offering where offering.class_id = enrollment_class_id and offering.subject_id = target_subject_id and offering.active order by offering.teacher_profile_id limit 1;
   insert into public.learning_guided_sessions(institution_id, student_id, target_canonical_skill_id, original_target_canonical_skill_id, current_canonical_skill_id, target_institution_skill_id, subject_id, class_id, planner_version, decision_reason, metadata)
-  values (p_institution_id, p_student_id, p_target_canonical_skill_id, p_target_canonical_skill_id, target_skill, target_institution_skill_id, subject_id, class_id, 'V2', first_reason, jsonb_build_object('engine_version', 'V2', 'decision', first_type, 'decision_reason', first_reason, 'replan_count', 0)) returning * into created;
+  values (p_institution_id, p_student_id, p_target_canonical_skill_id, p_target_canonical_skill_id, target_skill, target_institution_skill_id, target_subject_id, enrollment_class_id, 'V2', first_reason, jsonb_build_object('engine_version', 'V2', 'decision', first_type, 'decision_reason', first_reason, 'replan_count', 0)) returning * into created;
   question_set := private.pick_learning_question_set_v2(p_institution_id, teacher_profile_id, target_skill, first_purpose);
   if question_set is null or not exists (
     select 1
