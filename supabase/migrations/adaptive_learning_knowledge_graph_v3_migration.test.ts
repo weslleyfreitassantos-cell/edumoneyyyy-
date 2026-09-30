@@ -42,6 +42,20 @@ describe('adaptive learning knowledge graph v3 migration', () => {
     expect(migration).not.toContain("target_row.subject_name || ' | '");
   });
 
+  it('maps the canonical skill registry fields by their JSON names before importing content', () => {
+    expect(migration).toContain(
+      'as item(subject text, code text, title text, domain text, skill_order integer)',
+    );
+    expect(migration).toContain('skill_row.subject');
+    expect(migration).toContain('skill_row.code');
+    expect(migration).toContain('skill_row.title');
+    expect(migration).not.toContain('skill_row.subject_code');
+    expect(migration).not.toContain('skill_row.skill_code');
+    expect(migration).toContain('ADAPTIVE_V3_SKILL_REGISTRY_INCOMPLETE');
+    expect(migration).toContain('ADAPTIVE_V3_CONTENT_PREFLIGHT_INCOMPLETE');
+    expect(migration).toContain('ADAPTIVE_V3_CONTENT_MATERIALIZATION_INCOMPLETE');
+  });
+
   it('keeps capability evidence gates explicit for non-objective subjects', () => {
     expect(migration).toContain("'CONSTRUCTED_EVIDENCE_REQUIRED'");
     expect(migration).toContain("'OBSERVATIONAL_EVIDENCE_REQUIRED'");
