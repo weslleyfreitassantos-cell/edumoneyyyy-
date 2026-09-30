@@ -632,11 +632,11 @@ begin
       'evidence_count', coalesce(state.evidence_count, 0), 'strong_evidence_count', coalesce(state.strong_evidence_count, 0),
       'last_evidence_at', state.last_evidence_at,
       'confirmed_misconceptions', coalesce((select jsonb_agg(jsonb_build_object('code', tag.code, 'state', signal.state, 'confidence', signal.confidence)) from public.learning_misconception_signals signal join public.learning_misconception_tags tag on tag.id = signal.misconception_tag_id where signal.institution_id = p_institution_id and signal.student_id = p_student_id and signal.canonical_skill_id = skill.id and signal.state in ('CONFIRMED','RECOVERING')), '[]'::jsonb)
-    ) order by subject.code, skill.code), '[]'::jsonb)
+    ) order by subject.code, skill.code)
       from public.learning_curriculum_skills skill
       join public.learning_canonical_subjects subject on subject.id = skill.canonical_subject_id and subject.active
       left join public.learning_student_skill_state state on state.institution_id = p_institution_id and state.student_id = p_student_id and state.canonical_skill_id = skill.id
-     where skill.active)
+     where skill.active), '[]'::jsonb)
   );
 end;
 $$;
