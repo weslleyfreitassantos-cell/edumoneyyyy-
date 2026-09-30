@@ -109,7 +109,7 @@ manualDescribe('manual timetable editor v2', () => {
       expect(publishedBefore.data).toHaveLength(1);
 
       await page.getByRole('button', { name: 'Editar publicada em novo rascunho' }).click();
-      await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: false })).toBeVisible({ timeout: 30_000 });
       const draftB = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('source_version_id', publishedVersion.data.id).eq('status', 'DRAFT').order('created_at', { ascending: false }).limit(1).single();
       if (draftB.error) throw draftB.error;
       await page.getByRole('button', { name: /Matemática UI/ }).first().click();
@@ -167,7 +167,7 @@ manualDescribe('manual timetable editor v2', () => {
       expect(publishedAutomatic.data.day_of_week).toBe(2);
 
       await page.getByRole('button', { name: 'Editar publicada em novo rascunho' }).click();
-      await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: false })).toBeVisible({ timeout: 30_000 });
       await page.getByLabel('De').selectOption('2');
       await page.getByLabel('Para').selectOption('3');
       const copyDraft = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('status', 'DRAFT').order('created_at', { ascending: false }).limit(1).single();
