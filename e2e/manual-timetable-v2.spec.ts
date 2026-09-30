@@ -104,7 +104,7 @@ manualDescribe('manual timetable editor v2', () => {
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
       const publishedVersion = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('status', 'PUBLISHED').single();
       if (publishedVersion.error) throw publishedVersion.error;
-      const publishedBefore = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId);
+      const publishedBefore = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).eq('active', true);
       if (publishedBefore.error) throw publishedBefore.error;
       expect(publishedBefore.data).toHaveLength(1);
 
@@ -116,7 +116,7 @@ manualDescribe('manual timetable editor v2', () => {
       await page.getByRole('dialog').getByLabel('Dia').selectOption('2');
       await page.getByRole('button', { name: 'Salvar no rascunho' }).click();
       await expect(page.getByText('Alteração salva automaticamente no rascunho.', { exact: true })).toBeVisible({ timeout: 30_000 });
-      const publishedDuringDraft = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId);
+      const publishedDuringDraft = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).eq('active', true);
       if (publishedDuringDraft.error) throw publishedDuringDraft.error;
       expect(publishedDuringDraft.data).toEqual(publishedBefore.data);
       const draftBEntry = await directorDb.from('timetable_version_entries').select('day_of_week').eq('version_id', draftB.data.id).eq('active', true).single();
@@ -129,7 +129,7 @@ manualDescribe('manual timetable editor v2', () => {
       const discardedDraft = await directorDb.from('timetable_versions').select('id').eq('id', draftB.data.id).maybeSingle();
       if (discardedDraft.error) throw discardedDraft.error;
       expect(discardedDraft.data).toBeNull();
-      const publishedAfterDiscard = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId);
+      const publishedAfterDiscard = await directorDb.from('timetable_entries').select('id, day_of_week, start_time, end_time, subject_offering_id').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).eq('active', true);
       if (publishedAfterDiscard.error) throw publishedAfterDiscard.error;
       expect(publishedAfterDiscard.data).toEqual(publishedBefore.data);
 
@@ -162,7 +162,7 @@ manualDescribe('manual timetable editor v2', () => {
       await expect(page.getByText('Sem pendências conhecidas', { exact: true })).toBeVisible({ timeout: 30_000 });
       await page.getByRole('button', { name: 'Publicar versão' }).click();
       await expect(page.getByText('Grade publicada.', { exact: false })).toBeVisible({ timeout: 30_000 });
-      const publishedAutomatic = await directorDb.from('timetable_entries').select('day_of_week').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).single();
+      const publishedAutomatic = await directorDb.from('timetable_entries').select('day_of_week').eq('institution_id', institutionId).eq('subject_offering_id', offeringId).eq('active', true).single();
       if (publishedAutomatic.error) throw publishedAutomatic.error;
       expect(publishedAutomatic.data.day_of_week).toBe(2);
 
