@@ -579,6 +579,68 @@ begin
 end;
 $seed$;
 
+-- Keep graph prerequisites actionable when the current content pack only
+-- materializes a PROBE set for the target skill. The graph remains intact;
+-- the planner skips prerequisite nodes that cannot start a guided step.
+create or replace function private.pick_learning_v2_next_skill(
+  target_institution_id uuid,
+  target_student_id uuid,
+  target_skill_id uuid
+)
+returns uuid language sql stable security definer set search_path = ''
+as $$
+  with recursive prerequisite(skill_id, depth, path) as (
+    select edge.prerequisite_skill_id, 1, array[target_skill_id]::uuid[]
+      from public.learning_skill_prerequisites edge
+     where edge.skill_id = target_skill_id
+    union all
+    select edge.prerequisite_skill_id, prerequisite.depth + 1, prerequisite.path || edge.prerequisite_skill_id
+      from prerequisite
+      join public.learning_skill_prerequisites edge on edge.skill_id = prerequisite.skill_id
+     where not edge.prerequisite_skill_id = any(prerequisite.path)
+  ), candidates as (
+    select target_skill_id as skill_id, 0 as depth
+    union all
+    select prerequisite.skill_id, prerequisite.depth
+      from prerequisite
+  ), ordered as (
+    select candidate.skill_id, max(candidate.depth) as depth
+      from candidates candidate
+      join public.learning_curriculum_skills skill on skill.id = candidate.skill_id and skill.active
+     group by candidate.skill_id
+  )
+  select ordered.skill_id
+    from ordered
+    left join public.learning_student_skill_state state
+      on state.institution_id = target_institution_id
+     and state.student_id = target_student_id
+     and state.canonical_skill_id = ordered.skill_id
+   where (coalesce(state.mastery_policy_version, 'V1') <> 'V2'
+      or coalesce(state.state, 'UNKNOWN') <> 'MASTERED')
+     and (
+       ordered.skill_id = target_skill_id
+       or exists (
+         select 1
+           from public.learning_question_sets set_row
+          where set_row.canonical_skill_id = ordered.skill_id
+            and set_row.purpose = 'PROBE'
+            and set_row.active
+            and (
+              (set_row.scope = 'GLOBAL' and set_row.institution_id is null)
+              or (set_row.scope = 'INSTITUTION' and set_row.institution_id = target_institution_id)
+            )
+            and exists (
+              select 1
+                from public.learning_question_set_items item
+                join public.learning_question_bank bank on bank.id = item.question_bank_id and bank.active
+               where item.question_set_id = set_row.id
+            )
+       )
+     )
+   order by ordered.depth desc, ordered.skill_id
+   limit 1;
+$$;
+
 -- Keep an empty newer set from shadowing a usable fallback set in the V2 flow.
 create or replace function private.pick_learning_question_set_v2(
   target_institution_id uuid,

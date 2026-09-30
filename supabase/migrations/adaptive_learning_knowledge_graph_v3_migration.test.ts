@@ -63,6 +63,13 @@ describe('adaptive learning knowledge graph v3 migration', () => {
     expect(migration).toContain('join public.learning_question_bank bank on bank.id = item.question_bank_id and bank.active');
   });
 
+  it('does not select graph prerequisites without an actionable probe set', () => {
+    expect(migration).toContain('create or replace function private.pick_learning_v2_next_skill');
+    expect(migration).toContain('ordered.skill_id = target_skill_id');
+    expect(migration).toContain("set_row.purpose = 'PROBE'");
+    expect(migration).toContain('item.question_set_id = set_row.id');
+  });
+
   it('materializes V3 question sets from explicit canonical skill links', () => {
     expect(migration).toContain('join public.learning_question_bank_skill_links primary_link');
     expect(migration).toContain('primary_link.canonical_skill_id = target_row.target_id');

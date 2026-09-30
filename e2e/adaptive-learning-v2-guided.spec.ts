@@ -172,14 +172,6 @@ adaptiveDescribe('adaptive learning V2 guided journey', () => {
         const unit = await insertOne(service, 'learning_units', { institution_id: institutionId, subject_id: subject.id, title: `${subjectDraft.code} V2`, active: true });
         const skill = await insertOne(service, 'learning_skills', { institution_id: institutionId, unit_id: unit.id, title: `${subjectDraft.code} V2`, active: true });
         await insertOne(service, 'learning_skill_canonical_links', { institution_id: institutionId, learning_skill_id: skill.id, canonical_skill_id: required(skillByCode.get(subjectDraft.code), `${subjectDraft.code} skill`), active: true });
-        const availableSets = await service.from('learning_question_sets').select('id,scope,version,active').eq('canonical_skill_id', required(skillByCode.get(subjectDraft.code), `${subjectDraft.code} skill`)).eq('purpose', 'PROBE').order('version', { ascending: false });
-        if (availableSets.error) throw availableSets.error;
-        const availableSetIds = availableSets.data.map((row: any) => row.id);
-        const availableItems = availableSetIds.length
-          ? await service.from('learning_question_set_items').select('question_set_id,question_bank_id').in('question_set_id', availableSetIds)
-          : { data: [], error: null };
-        if (availableItems.error) throw availableItems.error;
-        console.log(`ADAPTIVE_V2_SET_DEBUG=${subjectDraft.code}:${JSON.stringify(availableSets.data.map((row: any) => ({ ...row, item_count: availableItems.data.filter((item: any) => item.question_set_id === row.id).length })))}`);
         const startedSubject = await student.client.rpc('start_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentRow.id, p_target_canonical_skill_id: required(skillByCode.get(subjectDraft.code), `${subjectDraft.code} skill`) });
         expect(startedSubject.error, `${subjectDraft.code} guided session`).toBeNull();
         const subjectSessionId = required(startedSubject.data?.session_id, `${subjectDraft.code} V2 session`);
