@@ -174,6 +174,9 @@ adaptiveDescribe('adaptive learning V2 guided journey', () => {
         await insertOne(service, 'learning_skill_canonical_links', { institution_id: institutionId, learning_skill_id: skill.id, canonical_skill_id: required(skillByCode.get(subjectDraft.code), `${subjectDraft.code} skill`), active: true });
         const startedSubject = await student.client.rpc('start_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentRow.id, p_target_canonical_skill_id: required(skillByCode.get(subjectDraft.code), `${subjectDraft.code} skill`) });
         expect(startedSubject.error).toBeNull();
+        const subjectSessionId = required(startedSubject.data?.session_id, `${subjectDraft.code} V2 session`);
+        const subjectEvidence = await submitCurrentStep(service, student, subjectSessionId, `${suffix}:${subjectDraft.code}`);
+        expect(subjectEvidence.result?.attempt_id).toBeTruthy();
       }
 
       const foreignAdmin = await createActor(service, 'ADMIN', 'Admin Adaptive V2 Foreign', `${suffix}-foreign`);
