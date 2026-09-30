@@ -1,0 +1,186 @@
+{
+  "packVersion": "tec-escola-core-v3",
+  "provenance": "Conteudo autoral versionado do TecEscola; nao e BNCC oficial.",
+  "subjects": [
+    {
+      "code": "PORTUGUESE",
+      "name": "Lingua Portuguesa",
+      "domains": ["LEITURA", "ARGUMENTACAO", "COESAO"],
+      "targetSkill": "READING_ARGUMENT",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"READING_LITERAL","title":"Compreensao literal","domain":"LEITURA"},
+        {"code":"READING_INFERENCE","title":"Inferencia de leitura","domain":"LEITURA"},
+        {"code":"READING_ARGUMENT","title":"Leitura argumentativa","domain":"ARGUMENTACAO"}
+      ]
+    },
+    {
+      "code": "MATHEMATICS",
+      "name": "Matematica",
+      "domains": ["NUMEROS", "PROPORCOES", "ALGEBRA"],
+      "targetSkill": "PERCENTAGE",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"FRACTIONS","title":"Fundamentos de fracoes","domain":"NUMEROS"},
+        {"code":"RATIO_PROPORTION","title":"Razao e proporcao","domain":"PROPORCOES"},
+        {"code":"PERCENTAGE","title":"Porcentagem","domain":"NUMEROS"}
+      ]
+    },
+    {
+      "code": "SCIENCE",
+      "name": "Ciencias",
+      "domains": ["MATERIA", "TRANSFORMACOES", "ENERGIA"],
+      "targetSkill": "SCIENCE_TRANSFORMATIONS",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"SCIENCE_MATTER","title":"Materia e propriedades","domain":"MATERIA"},
+        {"code":"SCIENCE_TRANSFORMATIONS","title":"Transformacoes da materia","domain":"TRANSFORMACOES"},
+        {"code":"SCIENCE_ENERGY","title":"Energia e suas formas","domain":"ENERGIA"}
+      ]
+    },
+    {
+      "code": "BIOLOGY",
+      "name": "Biologia",
+      "domains": ["CELULA", "GENETICA", "ECOLOGIA"],
+      "targetSkill": "BIOLOGY_GENETICS",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"BIOLOGY_CELL","title":"Celula e organizacao da vida","domain":"CELULA"},
+        {"code":"BIOLOGY_GENETICS","title":"Fundamentos de genetica","domain":"GENETICA"},
+        {"code":"BIOLOGY_ECOLOGY","title":"Ecologia e interacoes","domain":"ECOLOGIA"}
+      ]
+    },
+    {
+      "code": "PHYSICS",
+      "name": "Fisica",
+      "domains": ["MEDIDAS", "MOVIMENTO", "VELOCIDADE"],
+      "targetSkill": "PHYSICS_AVERAGE_SPEED",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"PHYSICS_MEASUREMENT","title":"Medidas e unidades","domain":"MEDIDAS"},
+        {"code":"PHYSICS_MOTION","title":"Movimento e representacoes","domain":"MOVIMENTO"},
+        {"code":"PHYSICS_AVERAGE_SPEED","title":"Velocidade media","domain":"VELOCIDADE"}
+      ]
+    },
+    {
+      "code": "CHEMISTRY",
+      "name": "Quimica",
+      "domains": ["MATERIA", "ATOMOS", "TRANSFORMACOES"],
+      "targetSkill": "CHEMISTRY_ATOMS",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"CHEMISTRY_MATTER","title":"Materia e misturas","domain":"MATERIA"},
+        {"code":"CHEMISTRY_ATOMS","title":"Atomos e modelos","domain":"ATOMOS"},
+        {"code":"CHEMISTRY_TRANSFORMATIONS","title":"Transformacoes quimicas","domain":"TRANSFORMACOES"}
+      ]
+    },
+    {
+      "code": "HISTORY",
+      "name": "Historia",
+      "domains": ["FONTES", "CRONOLOGIA", "INTERPRETACAO"],
+      "targetSkill": "HISTORY_INTERPRETATION",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"HISTORY_SOURCES","title":"Fontes historicas","domain":"FONTES"},
+        {"code":"HISTORY_CHRONOLOGY","title":"Cronologia e periodizacao","domain":"CRONOLOGIA"},
+        {"code":"HISTORY_INTERPRETATION","title":"Interpretacao historica","domain":"INTERPRETACAO"}
+      ]
+    },
+    {
+      "code": "GEOGRAPHY",
+      "name": "Geografia",
+      "domains": ["ESPACO", "CARTOGRAFIA", "TERRITORIO"],
+      "targetSkill": "GEOGRAPHY_TERRITORY",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"GEOGRAPHY_SPACE","title":"Espaco e lugar","domain":"ESPACO"},
+        {"code":"GEOGRAPHY_CARTOGRAPHY","title":"Cartografia e representacao","domain":"CARTOGRAFIA"},
+        {"code":"GEOGRAPHY_TERRITORY","title":"Territorio e paisagem","domain":"TERRITORIO"}
+      ]
+    },
+    {
+      "code": "PHILOSOPHY",
+      "name": "Filosofia",
+      "domains": ["CONCEITO", "ARGUMENTO", "LOGICA"],
+      "targetSkill": "PHILOSOPHY_ARGUMENT",
+      "capability": "CONSTRUCTED_EVIDENCE_REQUIRED",
+      "skills": [
+        {"code":"PHILOSOPHY_CONCEPT","title":"Formacao de conceitos","domain":"CONCEITO"},
+        {"code":"PHILOSOPHY_ARGUMENT","title":"Argumentacao filosofica","domain":"ARGUMENTO"},
+        {"code":"PHILOSOPHY_LOGIC","title":"Analise logica","domain":"LOGICA"}
+      ]
+    },
+    {
+      "code": "SOCIOLOGY",
+      "name": "Sociologia",
+      "domains": ["INDIVIDUO", "INSTITUICOES", "ESTRUTURA"],
+      "targetSkill": "SOCIOLOGY_INSTITUTIONS",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"SOCIOLOGY_INDIVIDUAL","title":"Individuo e sociedade","domain":"INDIVIDUO"},
+        {"code":"SOCIOLOGY_INSTITUTIONS","title":"Instituicoes sociais","domain":"INSTITUICOES"},
+        {"code":"SOCIOLOGY_STRUCTURE","title":"Estrutura social","domain":"ESTRUTURA"}
+      ]
+    },
+    {
+      "code": "ART",
+      "name": "Arte",
+      "domains": ["ELEMENTOS", "INTERPRETACAO", "CONTEXTO"],
+      "targetSkill": "ART_INTERPRETATION",
+      "capability": "CONSTRUCTED_EVIDENCE_REQUIRED",
+      "skills": [
+        {"code":"ART_ELEMENTS","title":"Elementos visuais","domain":"ELEMENTOS"},
+        {"code":"ART_INTERPRETATION","title":"Interpretacao de obras","domain":"INTERPRETACAO"},
+        {"code":"ART_CONTEXT","title":"Contexto artistico","domain":"CONTEXTO"}
+      ]
+    },
+    {
+      "code": "PHYSICAL_EDUCATION",
+      "name": "Educacao Fisica",
+      "domains": ["CORPO", "ESPORTES", "SAUDE"],
+      "targetSkill": "PE_SPORT_PRINCIPLES",
+      "capability": "OBSERVATIONAL_EVIDENCE_REQUIRED",
+      "skills": [
+        {"code":"PE_BODY_MOVEMENT","title":"Corpo e movimento","domain":"CORPO"},
+        {"code":"PE_SPORT_PRINCIPLES","title":"Principios dos esportes","domain":"ESPORTES"},
+        {"code":"PE_HEALTH_ACTIVITY","title":"Saude e atividade","domain":"SAUDE"}
+      ]
+    },
+    {
+      "code": "ENGLISH",
+      "name": "Lingua Inglesa",
+      "domains": ["VOCABULARIO", "LEITURA", "INFERENCIA"],
+      "targetSkill": "ENGLISH_READING",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"ENGLISH_VOCABULARY","title":"Vocabulary in context","domain":"VOCABULARIO"},
+        {"code":"ENGLISH_READING","title":"Literal reading","domain":"LEITURA"},
+        {"code":"ENGLISH_INFERENCE","title":"Reading inference","domain":"INFERENCIA"}
+      ]
+    },
+    {
+      "code": "RELIGIOUS_EDUCATION",
+      "name": "Ensino Religioso",
+      "domains": ["TRADICOES", "DIVERSIDADE", "INTERPRETACAO"],
+      "targetSkill": "RELIGIOUS_DIVERSITY",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"RELIGIOUS_TRADITIONS","title":"Tradicoes culturais","domain":"TRADICOES"},
+        {"code":"RELIGIOUS_DIVERSITY","title":"Diversidade e respeito","domain":"DIVERSIDADE"},
+        {"code":"RELIGIOUS_INTERPRETATION","title":"Interpretacao e dialogo","domain":"INTERPRETACAO"}
+      ]
+    },
+    {
+      "code": "COMPUTING",
+      "name": "Computacao e Educacao Digital",
+      "domains": ["PENSAMENTO_COMPUTACIONAL", "MUNDO_DIGITAL", "CULTURA_DIGITAL"],
+      "targetSkill": "COMPUTING_ALGORITHMS",
+      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "skills": [
+        {"code":"COMPUTING_ALGORITHMS","title":"Algoritmos e decomposicao","domain":"PENSAMENTO_COMPUTACIONAL"},
+        {"code":"COMPUTING_DIGITAL_REPRESENTATION","title":"Representacao digital","domain":"MUNDO_DIGITAL"},
+        {"code":"COMPUTING_DIGITAL_CITIZENSHIP","title":"Cidadania digital","domain":"CULTURA_DIGITAL"}
+      ]
+    }
+  ]
+}

@@ -15,7 +15,12 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
-import { useResolveTeacherGuidedSessionV2, useTeacherAdaptiveInsights, useTeacherGuidedInsightsV2 } from '../../hooks/useAdaptiveLearning';
+import {
+  useResolveTeacherGuidedSessionV2,
+  useTeacherAdaptiveInsights,
+  useTeacherClassKnowledgeHeatmap,
+  useTeacherGuidedInsightsV2,
+} from '../../hooks/useAdaptiveLearning';
 import {
   learningCenterKeys,
   useLearningSkills,
@@ -31,6 +36,7 @@ import {
   useTeacherLearningClassGaps,
 } from '../../hooks/useLearningCenter';
 import { learningCenterService } from '../../services/learningCenterService';
+import { TeacherKnowledgeHeatmap } from './KnowledgeGraphPanels';
 
 interface ActivityDraft {
   subjectId: string;
@@ -155,6 +161,7 @@ export default function PedagogicalCenterPage() {
   const [packageClassId, setPackageClassId] = useState('');
   const [gapClassId, setGapClassId] = useState('');
   const classGaps = useTeacherLearningClassGaps(currentInstitutionId ?? undefined, gapClassId || undefined);
+  const knowledgeHeatmap = useTeacherClassKnowledgeHeatmap(currentInstitutionId ?? undefined, gapClassId || undefined);
   const filteredQuestionBank = useMemo(() => {
     const search = bankSearch.trim().toLocaleLowerCase('pt-BR');
     return (questionBank.data ?? []).filter((item) => {
@@ -450,6 +457,12 @@ export default function PedagogicalCenterPage() {
         </div>
         {gapClassId && classGaps.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{classGaps.data.slice(0, 9).map((gap) => <article key={gap.canonical_skill_id} className="rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-900/60 dark:bg-amber-950/20"><p className="font-semibold text-amber-950 dark:text-amber-100">{gap.skill_title}</p><p className="mt-2 text-xs text-amber-900 dark:text-amber-200">{gap.needs_review_count} em revisão · {gap.learning_count} em aprendizagem · {gap.diagnostic_needed_count} sem diagnóstico</p><button type="button" onClick={() => { setDraft((current) => ({ ...current, title: `Reforço: ${gap.skill_title}`, activityType: 'REINFORCEMENT' })); setMessage(`Prepare uma prática para ${gap.skill_title}.`); }} className="mt-3 text-xs font-bold text-amber-900 underline dark:text-amber-100">Criar reforço</button></article>)}</div> : gapClassId ? <p className="mt-4 text-sm text-slate-500">Nenhuma lacuna aberta para esta turma.</p> : <p className="mt-4 text-sm text-slate-500">Escolha uma turma para ver os sinais coletivos.</p>}
       </section>
+
+      <TeacherKnowledgeHeatmap
+        rows={knowledgeHeatmap.data}
+        isLoading={knowledgeHeatmap.isLoading}
+        isError={knowledgeHeatmap.isError}
+      />
 
       <section aria-label="Banco de questões" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-start justify-between gap-3">

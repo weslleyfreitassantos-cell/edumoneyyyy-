@@ -42,6 +42,37 @@ export interface TeacherGuidedInsightV2 {
   misconceptionSummary: Record<string, number>;
 }
 
+export interface V3KnowledgeGraphSkill {
+  subjectCode: string;
+  subjectName: string;
+  skillCode: string;
+  skillTitle: string;
+  state: string;
+  mastery: number;
+  confidence: number;
+  evidenceCount: number;
+  strongEvidenceCount: number;
+  confirmedMisconceptions: Array<{ code: string; state: string; confidence: number }>;
+}
+
+export interface V3TeacherHeatmapRow {
+  subjectCode: string;
+  skillCode: string;
+  masteredCount: number;
+  practicingCount: number;
+  needsReviewCount: number;
+  unknownCount: number;
+}
+
+export interface V3StudentPlan {
+  decision: 'ON_TARGET' | 'DIAGNOSTIC_NEEDED' | 'CROSS_SUBJECT_BRIDGE' | 'RETURN_TO_ORIGINAL_TARGET' | string;
+  reasonCode: string | null;
+  originalTargetSubject: string;
+  originalTargetSkill: string;
+  currentSubject: string;
+  currentSkill: string;
+}
+
 interface RawTeacherAdaptiveInsight {
   canonical_skill_id: string;
   skill_code: string;
@@ -62,6 +93,28 @@ interface RawTeacherGuidedInsightV2 {
   decision_reason: string | null;
   replan_count: number;
   misconception_summary: Record<string, number>;
+}
+
+interface RawV3KnowledgeGraphSkill {
+  subject: string;
+  subject_name: string;
+  skill: string;
+  skill_title: string;
+  state: string;
+  mastery: number;
+  confidence: number;
+  evidence_count: number;
+  strong_evidence_count: number;
+  confirmed_misconceptions: Array<{ code: string; state: string; confidence: number }>;
+}
+
+interface RawV3HeatmapRow {
+  subject_code: string;
+  skill_code: string;
+  mastered_count: number;
+  practicing_count: number;
+  needs_review_count: number;
+  unknown_count: number;
 }
 
 interface EnrollmentClassRow {
@@ -360,6 +413,67 @@ export const adaptiveLearningService = {
       replanCount: Number(row.replan_count),
       misconceptionSummary: row.misconception_summary ?? {},
     }));
+  },
+
+  teacherStudentKnowledgeGraph: async (institutionId: string, studentId: string): Promise<V3KnowledgeGraphSkill[]> => {
+    const graph = await read<{ skills?: RawV3KnowledgeGraphSkill[] }>(
+      supabase.rpc('get_teacher_student_knowledge_graph_v3', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+      }),
+    );
+    return (graph.skills ?? []).map((row) => ({
+      subjectCode: row.subject,
+      subjectName: row.subject_name,
+      skillCode: row.skill,
+      skillTitle: row.skill_title,
+      state: row.state,
+      mastery: Number(row.mastery),
+      confidence: Number(row.confidence),
+      evidenceCount: Number(row.evidence_count),
+      strongEvidenceCount: Number(row.strong_evidence_count),
+      confirmedMisconceptions: row.confirmed_misconceptions ?? [],
+    }));
+  },
+
+  teacherClassKnowledgeHeatmap: async (institutionId: string, classId: string): Promise<V3TeacherHeatmapRow[]> => {
+    const rows = await read<RawV3HeatmapRow[]>(
+      supabase.rpc('get_teacher_class_knowledge_heatmap_v3', {
+        p_institution_id: institutionId,
+        p_class_id: classId,
+      }),
+    );
+    return rows.map((row) => ({
+      subjectCode: row.subject_code,
+      skillCode: row.skill_code,
+      masteredCount: Number(row.mastered_count),
+      practicingCount: Number(row.practicing_count),
+      needsReviewCount: Number(row.needs_review_count),
+      unknownCount: Number(row.unknown_count),
+    }));
+  },
+
+  studentV3Plan: async (institutionId: string, studentId: string, targetCanonicalSkillId: string): Promise<V3StudentPlan> => {
+    const row = await read<{
+      decision: string;
+      reason_code: string | null;
+      original_target_subject: string;
+      original_target_skill: string;
+      current_subject: string;
+      current_skill: string;
+    }>(supabase.rpc('get_adaptive_v3_plan', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+      p_target_canonical_skill_id: targetCanonicalSkillId,
+    }));
+    return {
+      decision: row.decision,
+      reasonCode: row.reason_code,
+      originalTargetSubject: row.original_target_subject,
+      originalTargetSkill: row.original_target_skill,
+      currentSubject: row.current_subject,
+      currentSkill: row.current_skill,
+    };
   },
 
   resolveTeacherGuidedSessionV2: (input: { sessionId: string; action: 'RESUME' | 'CLOSE' | 'OVERRIDE_TARGET'; targetCanonicalSkillId?: string | null }) =>
