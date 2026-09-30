@@ -17,7 +17,7 @@ const uniqueCodes = [...new Set(questions.map((question) => question.skillCode))
 
 const lines = [
   '-- GENERATED FROM content/adaptive/tec-escola-core-v2/*.json.',
-  'do $$seed$',
+  'do $seed$',
   'declare',
   '  item record;',
   '  skill_row record;',
