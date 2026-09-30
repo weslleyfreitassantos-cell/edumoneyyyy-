@@ -750,7 +750,7 @@ $$;
 -- A small second-subject slice proves that the engine is generic. Content is
 -- authorial TecEscola material, not an official exam corpus.
 do $$
-declare v_catalog_id uuid; v_reading_skill uuid; v_cohesion_skill uuid; question_id uuid; item record;
+declare v_catalog_id uuid; v_reading_skill uuid; v_inference_skill uuid; v_cohesion_skill uuid; question_id uuid; item record;
 begin
   select id into v_catalog_id from public.learning_curriculum_catalogs where code = 'TECESCOLA_CORE' and version = '1.0' limit 1;
   insert into public.learning_curriculum_skills(catalog_id, code, stage, grade_level, subject_area, domain, title, description, active)
@@ -758,6 +758,11 @@ begin
   on conflict (catalog_id, code) do update set active = true, title = excluded.title, description = excluded.description
   returning id into v_reading_skill;
   if v_reading_skill is null then select canonical.id into v_reading_skill from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = 'READING_ARGUMENT'; end if;
+  insert into public.learning_curriculum_skills(catalog_id, code, stage, grade_level, subject_area, domain, title, description, active)
+  values (v_catalog_id, 'READING_INFERENCE', 'ENSINO_MEDIO', 1, 'LINGUAGENS', 'LEITURA', 'Inferência de leitura', 'Construir inferências conectando pistas do texto ao conhecimento de mundo.', true)
+  on conflict (catalog_id, code) do update set active = true, title = excluded.title, description = excluded.description
+  returning id into v_inference_skill;
+  if v_inference_skill is null then select canonical.id into v_inference_skill from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = 'READING_INFERENCE'; end if;
   insert into public.learning_curriculum_skills(catalog_id, code, stage, grade_level, subject_area, domain, title, description, active)
   values (v_catalog_id, 'TEXTUAL_COHESION', 'ENSINO_MEDIO', 1, 'LINGUAGENS', 'ESCRITA', 'Coesão textual', 'Relacionar ideias com conectivos e retomadas claras.', true)
   on conflict (catalog_id, code) do update set active = true, title = excluded.title, description = excluded.description
@@ -770,6 +775,7 @@ begin
   insert into public.learning_skill_lessons(canonical_skill_id, version, title, summary, content_markdown, worked_example, tips, estimated_minutes, metadata)
   values
     (v_reading_skill, 2, 'Leitura argumentativa', 'Como localizar a ideia central e os argumentos de um texto.', 'CONCEITO\n\nA tese é a ideia que o texto defende. Os argumentos são as razões usadas para sustentá-la.\n\nINTUIÇÃO\n\nPergunte: qual posição o autor quer que eu aceite? e depois qual evidência ele oferece?\n\nEXEMPLO RESOLVIDO\n\nEm um texto que defende bibliotecas abertas no fim de semana, a tese é ampliar o acesso; dados de frequência e relatos de leitores são argumentos.\n\nSEGUNDO EXEMPLO\n\nUma frase que apresenta apenas um dado pode ser evidência, mas não necessariamente a tese.\n\nDICA\n\nNão confunda o assunto geral com a posição defendida.', 'A palavra portanto costuma introduzir uma conclusão; procure a ideia que ela retoma.', array['Destaque a tese em uma frase.', 'Separe opinião, argumento e exemplo.'], 7, jsonb_build_object('engine_version', 'V2')),
+    (v_inference_skill, 2, 'Inferência de leitura', 'Como conectar pistas explícitas a uma conclusão apoiada.', 'CONCEITO\n\nInferir é concluir algo apoiado por informações do texto e pelo contexto, sem inventar uma resposta sem evidência.\n\nINTUIÇÃO\n\nPergunte: qual pista textual sustenta minha conclusão? Quanto mais pistas coerentes, mais forte a inferência.\n\nEXEMPLO RESOLVIDO\n\nSe o texto diz que Clara levou guarda-chuva e o céu escureceu, a inferência mais apoiada é que havia chance de chuva.\n\nSEGUNDO EXEMPLO\n\nUma conclusão pode ser possível, mas ainda fraca se não tiver pistas suficientes no texto.\n\nDICA\n\nDiferencie o que foi dito diretamente do que foi concluído a partir das pistas.', 'Se o texto diz que Clara levou guarda-chuva e o céu escureceu, a inferência mais apoiada é que havia chance de chuva.', array['Aponte a pista que sustenta a conclusão.', 'Compare interpretações e escolha a mais apoiada.'], 7, jsonb_build_object('engine_version', 'V2')),
     (v_cohesion_skill, 2, 'Coesão textual', 'Como conectar frases para que o leitor acompanhe o raciocínio.', 'CONCEITO\n\nCoesão é a ligação visível entre partes do texto por conectivos, pronomes e repetições controladas.\n\nINTUIÇÃO\n\nCada frase deve responder ao que veio antes e preparar o que vem depois.\n\nEXEMPLO RESOLVIDO\n\nChoveu muito. Por isso, a quadra ficou fechada. O conectivo indica consequência e evita uma relação solta.\n\nSEGUNDO EXEMPLO\n\nMaria leu o artigo e depois o resumiu. O pronome retoma artigo sem repetir a expressão inteira.\n\nDICA\n\nEscolha o conectivo pela relação lógica, não apenas pelo som.', 'Troque o conectivo e observe se a relação muda de causa para oposição.', array['Procure o referente dos pronomes.', 'Teste se o conectivo expressa a relação pretendida.'], 7, jsonb_build_object('engine_version', 'V2'))
   on conflict (canonical_skill_id, version) do update set title = excluded.title, summary = excluded.summary, content_markdown = excluded.content_markdown, worked_example = excluded.worked_example, tips = excluded.tips, metadata = excluded.metadata, active = true, updated_at = now();
   for item in select * from (values
