@@ -23,7 +23,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
@@ -35,8 +35,6 @@ import {
   useLearningProgress,
   useLearningCanonicalProgress,
   useLearningReviewsDue,
-  useCompleteLearningDailyPlanItem,
-  useCompleteLearningSkillReview,
   useLearningSimulations,
   useLearningDailyPlan,
   useLearningErrorNotebook,
@@ -48,8 +46,9 @@ import {
   useStudentLearningCollections,
   usePublishedLearningActivities,
   useStudentLearningSubjects,
-  useStartGuidedLearningSession,
   useGuidedLearningSession,
+  useStartGuidedLearningSessionV2,
+  useGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 import type { LearningActivity } from '../../services/learningCenterService';
 
@@ -95,6 +94,7 @@ function subjectIcon(subject: string): LucideIcon {
 export default function StudyCenterPage() {
   const { profile } = useAuth();
   const { currentInstitutionId } = useInstitution();
+  const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [selectedSubjectId, setSelectedSubjectId] = useState('');
   const [selectedUnitId, setSelectedUnitId] = useState('');
@@ -134,14 +134,6 @@ export default function StudyCenterPage() {
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
-  const completePlanItem = useCompleteLearningDailyPlanItem(
-    currentInstitutionId ?? undefined,
-    student.data?.id,
-  );
-  const completeReview = useCompleteLearningSkillReview(
-    currentInstitutionId ?? undefined,
-    student.data?.id,
-  );
   const dailyPlan = useLearningDailyPlan(
     currentInstitutionId ?? undefined,
     student.data?.id,
@@ -156,7 +148,11 @@ export default function StudyCenterPage() {
   );
   const simulations = useLearningSimulations(currentInstitutionId ?? undefined);
   const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
-  const startGuidedSession = useStartGuidedLearningSession(
+  const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+  );
+  const guidedSessionV2 = useGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
@@ -278,12 +274,20 @@ export default function StudyCenterPage() {
       >
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Plano de hoje</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">
+              {guidedSessionV2.data ? 'Sua jornada de hoje · ~20 min' : 'Plano de hoje'}
+            </p>
             <h2 className="mt-1 text-lg font-bold text-blue-950 dark:text-blue-100">
-              {dailyPlan.data?.estimated_minutes ? `Seu plano · ${dailyPlan.data.estimated_minutes} min` : 'Um próximo passo por vez'}
+              {guidedSessionV2.data
+                ? `Jornada guiada · etapa ${(guidedSessionV2.data.current_step?.position ?? 0) + 1}`
+                : dailyPlan.data?.estimated_minutes
+                  ? `Seu plano · ${dailyPlan.data.estimated_minutes} min`
+                  : 'Um próximo passo por vez'}
             </h2>
             <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
-              Diagnóstico, estudo e prática no ritmo que suas evidências indicam.
+              {guidedSessionV2.data
+                ? 'Você responde, recebe feedback e segue para o próximo passo indicado pelo servidor.'
+                : 'Diagnóstico, estudo e prática no ritmo que suas evidências indicam.'}
             </p>
           </div>
           {gamification.data && (
@@ -293,8 +297,20 @@ export default function StudyCenterPage() {
             </div>
           )}
         </div>
+        {guidedSessionV2.data?.status === 'ACTIVE' && (
+          <Link to="/student/study/guided" className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</Link>
+        )}
         {dailyPlan.isLoading ? (
           <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Montando seu plano...</p>
+        ) : adaptiveTarget.data && !guidedSessionV2.data ? (
+          <button
+            type="button"
+            onClick={() => void startGuidedSessionV2.mutateAsync(adaptiveTarget.data!.canonicalSkillId).then(() => navigate('/student/study/guided'))}
+            disabled={startGuidedSessionV2.isPending}
+            className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
+          >
+            {startGuidedSessionV2.isPending ? 'Preparando...' : 'Começar estudo guiado'}
+          </button>
         ) : dailyPlan.data?.learning_daily_plan_items?.length ? (
           <ol className="mt-4 grid gap-2 sm:grid-cols-2">
             {dailyPlan.data.learning_daily_plan_items.map((item) => (
@@ -304,19 +320,10 @@ export default function StudyCenterPage() {
                   <p className="truncate text-sm font-bold text-slate-900 dark:text-white">{item.title}</p>
                   <p className="mt-0.5 text-xs text-slate-600 dark:text-slate-300">{item.estimated_minutes} min · {item.status === 'COMPLETED' ? 'Concluído' : 'Pendente'}</p>
                 </div>
-                {item.status === 'PENDING' && !item.activity_id && !item.lesson_id ? <button type="button" onClick={() => completePlanItem.mutate({ itemId: item.id })} className="shrink-0 text-xs font-bold text-[#005bbf]">Concluir</button> : item.activity_id ? <Link to={`/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.lesson_id ? <Link to={`/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : null}
+                {item.activity_id ? <Link to={`/student/study/activity/${item.activity_id}${item.step_id ? `?guidedStep=${item.step_id}` : ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.lesson_id ? <Link to={`/student/study/lesson/${item.lesson_id}/${item.step_id ?? ''}`} className="shrink-0 text-xs font-bold text-[#005bbf]">Abrir</Link> : item.status === 'PENDING' ? <span className="shrink-0 text-[11px] font-semibold text-slate-500">Aguardando evidência</span> : null}
               </li>
             ))}
           </ol>
-        ) : adaptiveTarget.data ? (
-          <button
-            type="button"
-            onClick={() => startGuidedSession.mutate(adaptiveTarget.data!.canonicalSkillId)}
-            disabled={startGuidedSession.isPending}
-            className="mt-4 inline-flex min-h-10 items-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"
-          >
-            {startGuidedSession.isPending ? 'Preparando...' : 'Começar estudo guiado'}
-          </button>
         ) : (
           <p className="mt-4 text-sm text-blue-800 dark:text-blue-300">Escolha uma matéria para continuar sua trilha.</p>
         )}
@@ -355,10 +362,7 @@ export default function StudyCenterPage() {
             {reviewsDue.data.slice(0, 4).map((review) => (
               <li key={review.id} className="flex items-center justify-between gap-3 rounded-lg border border-violet-200 bg-white p-3 text-sm dark:border-violet-800 dark:bg-violet-950/40">
                 <span className="min-w-0 truncate font-semibold text-violet-950 dark:text-violet-100">{review.skill_title ?? 'Revisar habilidade'}</span>
-                <div className="flex shrink-0 gap-2">
-                  <button type="button" onClick={() => completeReview.mutate({ reviewId: review.id, score: 50 })} className="rounded-md border border-violet-300 px-2 py-1 text-[11px] font-bold text-violet-800 dark:border-violet-700 dark:text-violet-200">Ainda não</button>
-                  <button type="button" onClick={() => completeReview.mutate({ reviewId: review.id, score: 90 })} className="rounded-md bg-violet-700 px-2 py-1 text-[11px] font-bold text-white">Consegui</button>
-                </div>
+                <Link to="/student/study/guided" className="shrink-0 rounded-md bg-violet-700 px-2 py-1 text-[11px] font-bold text-white">Abrir revisão</Link>
               </li>
             ))}
           </ul>

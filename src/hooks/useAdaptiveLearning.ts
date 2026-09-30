@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { adaptiveLearningService } from '../services/adaptiveLearningService';
 
@@ -20,6 +20,11 @@ export const adaptiveLearningKeys = {
   teacherInsights: (institutionId: string) => [
     ...adaptiveLearningKeys.all,
     'teacher-insights',
+    institutionId,
+  ] as const,
+  teacherGuidedInsightsV2: (institutionId: string) => [
+    ...adaptiveLearningKeys.all,
+    'teacher-guided-insights-v2',
     institutionId,
   ] as const,
 };
@@ -93,5 +98,31 @@ export function useTeacherAdaptiveInsights(institutionId?: string) {
     enabled: Boolean(institutionId),
     staleTime: 60_000,
     retry: false,
+  });
+}
+
+export function useTeacherGuidedInsightsV2(institutionId?: string) {
+  return useQuery({
+    queryKey: adaptiveLearningKeys.teacherGuidedInsightsV2(institutionId ?? ''),
+    queryFn: async () => {
+      try {
+        return await adaptiveLearningService.teacherGuidedInsightsV2(institutionId!);
+      } catch {
+        return [];
+      }
+    },
+    enabled: Boolean(institutionId),
+    staleTime: 30_000,
+    retry: false,
+  });
+}
+
+export function useResolveTeacherGuidedSessionV2(institutionId?: string) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (input: { sessionId: string; action: 'RESUME' | 'CLOSE' | 'OVERRIDE_TARGET'; targetCanonicalSkillId?: string | null }) => adaptiveLearningService.resolveTeacherGuidedSessionV2(input),
+    onSuccess: () => {
+      if (institutionId) void client.invalidateQueries({ queryKey: adaptiveLearningKeys.teacherGuidedInsightsV2(institutionId) });
+    },
   });
 }

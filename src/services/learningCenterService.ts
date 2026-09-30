@@ -103,13 +103,75 @@ export interface GuidedSession {
 export interface GuidedStep {
   id: string;
   canonical_skill_id: string;
-  step_type: 'DIAGNOSTIC' | 'LESSON' | 'PRACTICE' | 'LOCK_IN' | 'REVIEW' | 'RETURN_TO_TARGET';
+  step_type: 'DIAGNOSTIC' | 'PROBE' | 'LESSON' | 'PRACTICE' | 'TRANSFER' | 'LOCK_IN' | 'REVIEW' | 'RETURN_TO_TARGET';
   position: number;
   status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'SKIPPED';
   activity_id: string | null;
   lesson_id: string | null;
   attempts: number;
   learning_curriculum_skills?: { title: string } | { title: string }[] | null;
+}
+
+export interface GuidedQuestionV2 {
+  id: string;
+  statement: string;
+  options: string[];
+  difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
+  position: number;
+}
+
+export interface GuidedLessonV2 {
+  id: string;
+  title: string;
+  summary: string;
+  content_markdown: string;
+  worked_example: string | null;
+  tips: string[];
+  estimated_minutes: number;
+}
+
+export interface GuidedStepV2 {
+  id: string;
+  session_id: string;
+  canonical_skill_id: string;
+  step_type: 'PROBE' | 'LESSON' | 'PRACTICE' | 'TRANSFER' | 'LOCK_IN' | 'REVIEW' | 'RETURN_TO_TARGET';
+  purpose: 'PROBE' | 'PRACTICE' | 'TRANSFER' | 'LOCK_IN' | 'REVIEW' | null;
+  status: 'PENDING' | 'ACTIVE' | 'COMPLETED' | 'SKIPPED';
+  position: number;
+  lesson_id: string | null;
+  lesson: GuidedLessonV2 | null;
+  questions: GuidedQuestionV2[];
+}
+
+export interface GuidedSessionV2 {
+  id: string;
+  student_id: string;
+  target_canonical_skill_id: string;
+  original_target_canonical_skill_id: string;
+  current_canonical_skill_id: string;
+  current_step_id: string | null;
+  status: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'NEEDS_TEACHER_SUPPORT' | 'CANCELLED';
+  planner_version: 'V2';
+  decision_reason: string | null;
+  replan_count: number;
+  metadata: Record<string, unknown>;
+  current_step: Pick<GuidedStepV2, 'id' | 'canonical_skill_id' | 'step_type' | 'purpose' | 'status' | 'position' | 'lesson_id'> | null;
+}
+
+export interface GuidedStepAttemptResultV2 {
+  attempt_id: string;
+  idempotent: boolean;
+  score: number;
+  correct_count: number;
+  total_questions: number;
+  feedback: Array<{
+    question_bank_id: string;
+    is_correct: boolean;
+    correct_answer: unknown;
+    explanation: string | null;
+  }>;
+  current_step_id: string | null;
+  session_status: string;
 }
 
 export interface DailyPlanItem {
@@ -740,6 +802,19 @@ export const learningCenterService = {
         .maybeSingle(),
     ),
 
+  guidedSessionV2: (institutionId: string, studentId: string) =>
+    read<GuidedSessionV2 | null>(
+      supabase.rpc('get_guided_learning_session_v2', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+      }),
+    ),
+
+  guidedStepV2: (stepId: string) =>
+    read<GuidedStepV2>(
+      supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId }),
+    ),
+
   startGuidedSession: (input: {
     institutionId: string;
     studentId: string;
@@ -753,12 +828,44 @@ export const learningCenterService = {
       }),
     ),
 
+  startGuidedSessionV2: (input: {
+    institutionId: string;
+    studentId: string;
+    targetCanonicalSkillId: string;
+  }) =>
+    read<{ session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V2' }>(
+      supabase.rpc('start_guided_learning_session_v2', {
+        p_institution_id: input.institutionId,
+        p_student_id: input.studentId,
+        p_target_canonical_skill_id: input.targetCanonicalSkillId,
+      }),
+    ),
+
   completeGuidedStep: (stepId: string, status: 'COMPLETED' | 'SKIPPED' = 'COMPLETED', metadata: Record<string, unknown> = {}) =>
     read<{ step_id: string; session_id: string; next_step_id?: string | null; session_status?: string; retry?: boolean; needs_teacher_support?: boolean }>(
       supabase.rpc('complete_guided_learning_step', {
         p_step_id: stepId,
         p_status: status,
         p_metadata: metadata,
+      }),
+    ),
+
+  advanceGuidedSessionV2: (input: { sessionId: string; stepId: string; action: 'LESSON_COMPLETED' | 'TARGET_RETURNED' | 'REVIEW_REQUESTED'; idempotencyKey: string }) =>
+    read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(
+      supabase.rpc('advance_guided_learning_session_v2', {
+        p_session_id: input.sessionId,
+        p_step_id: input.stepId,
+        p_action: input.action,
+        p_idempotency_key: input.idempotencyKey,
+      }),
+    ),
+
+  submitGuidedStepV2: (input: { stepId: string; answers: Array<{ question_bank_id: string; answer: unknown }>; idempotencyKey: string }) =>
+    read<GuidedStepAttemptResultV2>(
+      supabase.rpc('submit_guided_learning_step_v2', {
+        p_step_id: input.stepId,
+        p_answers: input.answers,
+        p_idempotency_key: input.idempotencyKey,
       }),
     ),
 
@@ -825,13 +932,9 @@ export const learningCenterService = {
 
   questionBank: (institutionId: string) =>
     read<LearningQuestionBankItem[]>(
-      supabase
-        .from('learning_question_bank')
-        .select('id,package_type,source_type,source_name,source_year,subject_area,topic,statement,options,correct_answer,explanation,difficulty')
-        .eq('active', true)
-        .or(`institution_id.is.null,institution_id.eq.${institutionId}`)
-        .order('created_at', { ascending: false })
-        .limit(100),
+      supabase.rpc('list_teacher_learning_question_bank', {
+        p_institution_id: institutionId,
+      }),
     ),
 
   teacherClassGaps: (institutionId: string, classId: string) =>

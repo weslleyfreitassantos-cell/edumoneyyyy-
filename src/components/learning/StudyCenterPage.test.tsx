@@ -104,6 +104,8 @@ vi.mock('../../hooks/useLearningCenter', () => ({
   useLearningSimulations: () => ({ data: [], isLoading: false }),
   useStudentLearningPackages: () => ({ data: [], isLoading: false }),
   useStartGuidedLearningSession: () => ({ mutate: vi.fn(), isPending: false }),
+  useStartGuidedLearningSessionV2: () => ({ mutateAsync: vi.fn().mockResolvedValue({ session_id: 'session-1' }), isPending: false }),
+  useGuidedLearningSessionV2: () => ({ data: null, isLoading: false }),
   useGuidedLearningSession: () => ({ data: null, isLoading: false }),
 }));
 
