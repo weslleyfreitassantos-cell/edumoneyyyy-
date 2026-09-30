@@ -8,7 +8,7 @@ import {
   type StudentSkillState,
 } from './adaptiveLearningEngine';
 import {
-  resolveAdaptiveCurriculumTarget,
+  resolveAdaptiveCurriculumTargets,
   type AdaptiveCurriculumCandidate,
   type AdaptiveCurriculumTarget,
   type CurriculumGradeTarget,
@@ -29,6 +29,19 @@ export interface TeacherAdaptiveInsight {
   diagnosticNeededCount: number;
 }
 
+export interface TeacherGuidedInsightV2 {
+  sessionId: string;
+  studentId: string;
+  studentName: string;
+  classId: string | null;
+  subjectId: string | null;
+  targetCanonicalSkillId: string;
+  status: string;
+  decisionReason: string | null;
+  replanCount: number;
+  misconceptionSummary: Record<string, number>;
+}
+
 interface RawTeacherAdaptiveInsight {
   canonical_skill_id: string;
   skill_code: string;
@@ -36,6 +49,19 @@ interface RawTeacherAdaptiveInsight {
   state: AdaptiveSkillState;
   student_count: number;
   diagnostic_needed_count: number;
+}
+
+interface RawTeacherGuidedInsightV2 {
+  session_id: string;
+  student_id: string;
+  student_name: string;
+  class_id: string | null;
+  subject_id: string | null;
+  target_canonical_skill_id: string;
+  status: string;
+  decision_reason: string | null;
+  replan_count: number;
+  misconception_summary: Record<string, number>;
 }
 
 interface EnrollmentClassRow {
@@ -101,10 +127,10 @@ function guidanceMessage(decision: AdaptivePlan['decision'], target: string, dia
 }
 
 export const adaptiveLearningService = {
-  async getStudentAdaptiveTarget(
+  async getStudentAdaptiveTargets(
     institutionId: string,
     studentId: string,
-  ): Promise<AdaptiveCurriculumTarget | null> {
+  ): Promise<AdaptiveCurriculumTarget[]> {
     const enrollmentRows = await read<EnrollmentContextRow[]>(
       supabase
         .from('enrollments')
@@ -118,7 +144,7 @@ export const adaptiveLearningService = {
       .filter((classRow): classRow is EnrollmentClassRow => Boolean(classRow))
       .filter((classRow) => classRow.institution_id === institutionId && classRow.active);
     const classIds = [...new Set(classes.map((classRow) => classRow.id))];
-    if (!classIds.length) return null;
+    if (!classIds.length) return [];
 
     const offerings = await read<SubjectOfferingRow[]>(
       supabase
@@ -128,7 +154,7 @@ export const adaptiveLearningService = {
         .eq('active', true),
     );
     const subjectIds = [...new Set(offerings.map((offering) => offering.subject_id))];
-    if (!subjectIds.length) return null;
+    if (!subjectIds.length) return [];
 
     const [subjectLinks, skillRows, targetRows] = await Promise.all([
       read<CurriculumSubjectLinkRow[]>(
@@ -154,7 +180,7 @@ export const adaptiveLearningService = {
       ),
     ]);
     const skillIds = skillRows.map((skill) => skill.id);
-    if (!skillIds.length) return null;
+    if (!skillIds.length) return [];
 
     const canonicalLinks = await read<CanonicalLinkRow[]>(
       supabase
@@ -206,7 +232,15 @@ export const adaptiveLearningService = {
       }
     }
 
-    return resolveAdaptiveCurriculumTarget(candidates);
+    return resolveAdaptiveCurriculumTargets(candidates);
+  },
+
+  async getStudentAdaptiveTarget(
+    institutionId: string,
+    studentId: string,
+  ): Promise<AdaptiveCurriculumTarget | null> {
+    const targets = await this.getStudentAdaptiveTargets(institutionId, studentId);
+    return targets[0] ?? null;
   },
 
   async getStudentGuidance(
@@ -243,10 +277,15 @@ export const adaptiveLearningService = {
         mastery_estimate: number;
         evidence_count: number;
         confidence: number;
+        valid_evidence_count: number;
+        distinct_run_count: number;
+        weighted_mastery: number;
+        strong_evidence_count: number;
+        mastery_policy_version: string;
       }>>(
         supabase
           .from('learning_student_skill_state')
-          .select('canonical_skill_id,state,mastery_estimate,evidence_count,confidence')
+          .select('canonical_skill_id,state,mastery_estimate,evidence_count,confidence,valid_evidence_count,distinct_run_count,weighted_mastery,strong_evidence_count,mastery_policy_version')
           .eq('institution_id', institutionId)
           .eq('student_id', studentId),
       ),
@@ -263,6 +302,11 @@ export const adaptiveLearningService = {
       masteryEstimate: Number(state.mastery_estimate),
       evidenceCount: state.evidence_count,
       confidence: Number(state.confidence),
+      validEvidenceCount: state.valid_evidence_count,
+      distinctRunCount: state.distinct_run_count,
+      weightedMastery: Number(state.weighted_mastery),
+      strongEvidenceCount: state.strong_evidence_count,
+      masteryPolicyVersion: state.mastery_policy_version,
     }));
     const plan = planAdaptivePath(link.canonical_skill_id, skills, edges, states);
     const targetSkill = skills.find((skill) => skill.id === plan.targetSkillId);
@@ -299,4 +343,31 @@ export const adaptiveLearningService = {
       diagnosticNeededCount: Number(row.diagnostic_needed_count),
     }));
   },
+
+  teacherGuidedInsightsV2: async (institutionId: string): Promise<TeacherGuidedInsightV2[]> => {
+    const rows = await read<RawTeacherGuidedInsightV2[]>(
+      supabase.rpc('get_teacher_guided_learning_insights_v2', { p_institution_id: institutionId }),
+    );
+    return rows.map((row) => ({
+      sessionId: row.session_id,
+      studentId: row.student_id,
+      studentName: row.student_name,
+      classId: row.class_id,
+      subjectId: row.subject_id,
+      targetCanonicalSkillId: row.target_canonical_skill_id,
+      status: row.status,
+      decisionReason: row.decision_reason,
+      replanCount: Number(row.replan_count),
+      misconceptionSummary: row.misconception_summary ?? {},
+    }));
+  },
+
+  resolveTeacherGuidedSessionV2: (input: { sessionId: string; action: 'RESUME' | 'CLOSE' | 'OVERRIDE_TARGET'; targetCanonicalSkillId?: string | null }) =>
+    read<{ session_id: string; action: string; current_step_id: string | null }>(
+      supabase.rpc('resolve_teacher_guided_learning_session_v2', {
+        p_session_id: input.sessionId,
+        p_action: input.action,
+        p_target_canonical_skill_id: input.targetCanonicalSkillId ?? null,
+      }),
+    ),
 };

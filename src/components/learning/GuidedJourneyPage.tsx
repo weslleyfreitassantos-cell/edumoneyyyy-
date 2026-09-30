@@ -1,0 +1,112 @@
+import { CheckCircle2, ChevronLeft, CircleAlert, Send } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/AuthContext';
+import { useInstitution } from '../../contexts/InstitutionContext';
+import {
+  useAdvanceGuidedLearningSessionV2,
+  useGuidedLearningSessionV2,
+  useGuidedLearningStepV2,
+  useLearningStudent,
+  useSubmitGuidedStepV2,
+} from '../../hooks/useLearningCenter';
+
+function idempotencyKey(stepId: string): string {
+  return `guided-v2:${stepId}`;
+}
+
+export default function GuidedJourneyPage() {
+  const { profile } = useAuth();
+  const { currentInstitutionId } = useInstitution();
+  const navigate = useNavigate();
+  const student = useLearningStudent(currentInstitutionId ?? undefined, profile?.id);
+  const session = useGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
+  const step = useGuidedLearningStepV2(session.data?.current_step_id ?? undefined);
+  const advance = useAdvanceGuidedLearningSessionV2(currentInstitutionId ?? undefined, student.data?.id);
+  const submit = useSubmitGuidedStepV2(currentInstitutionId ?? undefined, student.data?.id);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [lessonDone, setLessonDone] = useState(false);
+
+  const questions = useMemo(
+    () => [...(step.data?.questions ?? [])].sort((left, right) => left.position - right.position),
+    [step.data?.questions],
+  );
+  const allAnswered = questions.length > 0 && questions.every((question) => Boolean(answers[question.id]?.trim()));
+
+  if (submitted && submit.data) {
+    return <div className="mx-auto max-w-2xl space-y-5">
+      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-950">
+        <CheckCircle2 className="h-6 w-6" />
+        <h2 className="mt-2 font-bold">Evidência registrada</h2>
+        <p className="mt-1 text-sm">O servidor corrigiu suas respostas e atualizou o próximo passo.</p>
+        <p className="mt-4 text-sm font-bold">Resultado: {submit.data.score}% ({submit.data.correct_count}/{submit.data.total_questions})</p>
+        <ul className="mt-3 space-y-2 text-sm">
+          {submit.data.feedback.map((item) => <li key={item.question_bank_id} className="rounded-lg border border-emerald-200 bg-white/70 p-3"><strong>{item.is_correct ? 'Acerto' : 'Revisar'}</strong>{!item.is_correct && item.correct_answer != null && <span> · resposta correta: {String(item.correct_answer)}</span>}{item.explanation && <p className="mt-1">{item.explanation}</p>}</li>)}
+        </ul>
+        <button type="button" onClick={() => { setSubmitted(false); setAnswers({}); setLessonDone(false); }} className="mt-4 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Continuar jornada</button>
+      </div>
+    </div>;
+  }
+
+  if (session.isLoading || step.isLoading) {
+    return <div className="grid min-h-56 place-items-center text-sm text-slate-500">Carregando sua jornada...</div>;
+  }
+  if (!session.data) {
+    return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">Nenhuma jornada guiada está ativa. Volte à Central de Estudos para começar.</section>;
+  }
+  if (session.data.status === 'NEEDS_TEACHER_SUPPORT') {
+    return <section className="mx-auto max-w-2xl rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-950"><CircleAlert className="h-6 w-6" /><h1 className="mt-3 text-xl font-bold">Vamos pedir apoio ao professor</h1><p className="mt-2 text-sm">A evidência ainda não confirmou esta habilidade depois de duas tentativas de replanejamento. O professor verá o contexto sem que você precise repetir a mesma etapa.</p><Link to="/student/study" className="mt-5 inline-flex rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">Voltar à Central</Link></section>;
+  }
+  if (!step.data) {
+    return <section className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-900">A próxima etapa ainda não está disponível. Tente atualizar a jornada.</section>;
+  }
+
+  const finishLesson = () => {
+    if (!session.data || !step.data || lessonDone) return;
+    void advance.mutateAsync({
+      sessionId: session.data.id,
+      stepId: step.data.id,
+      action: 'LESSON_COMPLETED',
+      idempotencyKey: idempotencyKey(step.data.id),
+    }).then(() => setLessonDone(true)).catch(() => undefined);
+  };
+  const submitAnswers = () => {
+    if (!step.data || !allAnswered || submitted) return;
+    void submit.mutateAsync({
+      stepId: step.data.id,
+      answers: questions.map((question) => ({ question_bank_id: question.id, answer: answers[question.id] })),
+      idempotencyKey: idempotencyKey(step.data.id),
+    }).then(() => setSubmitted(true)).catch(() => undefined);
+  };
+
+  return (
+    <div className="mx-auto max-w-2xl space-y-5">
+      <Link to="/student/study" className="inline-flex items-center gap-2 text-sm font-bold text-[#005bbf]"><ChevronLeft className="h-4 w-4" />Central de Estudos</Link>
+      <header className="rounded-xl border border-blue-200 bg-blue-50 p-5 dark:border-blue-900/60 dark:bg-blue-950/30">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Sua jornada · etapa {step.data.position + 1}</p>
+        <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100">{step.data.step_type === 'LESSON' ? step.data.lesson?.title ?? 'Aprender' : step.data.step_type === 'PROBE' ? 'Vamos descobrir seu ponto de partida' : step.data.step_type === 'RETURN_TO_TARGET' ? 'Voltar ao objetivo' : 'Vamos praticar esta habilidade'}</h1>
+        <p className="mt-2 text-sm text-blue-900 dark:text-blue-200">{session.data.decision_reason === 'CONFIRMED_GAP' ? 'Encontramos um ponto para reforçar. A próxima evidência vai orientar o caminho.' : 'Uma etapa por vez. Sua resposta define a próxima recomendação.'}</p>
+      </header>
+
+      {step.data.step_type === 'LESSON' ? (
+        <article className="space-y-5 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-7">
+          <p className="whitespace-pre-wrap text-[15px] leading-7 text-slate-700 dark:text-slate-200">{step.data.lesson?.content_markdown ?? step.data.lesson?.summary}</p>
+          {step.data.lesson?.worked_example && <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-6 text-emerald-950 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100"><strong>Exemplo guiado</strong><br />{step.data.lesson.worked_example}</div>}
+          <button type="button" onClick={finishLesson} disabled={advance.isPending || lessonDone} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><CheckCircle2 className="h-4 w-4" />{advance.isPending ? 'Salvando...' : lessonDone ? 'Etapa registrada' : 'Continuar para a prática'}</button>
+        </article>
+      ) : step.data.step_type === 'RETURN_TO_TARGET' ? (
+        <article className="rounded-xl border bg-white p-6 shadow-sm dark:border-slate-700 dark:bg-slate-900"><CheckCircle2 className="h-8 w-8 text-emerald-500" /><h2 className="mt-3 text-xl font-bold dark:text-white">Você fortaleceu a base</h2><p className="mt-2 text-sm text-slate-600 dark:text-slate-300">Agora vamos voltar ao objetivo original e conferir o que ficou consolidado.</p><button type="button" onClick={() => void advance.mutateAsync({ sessionId: session.data!.id, stepId: step.data!.id, action: 'TARGET_RETURNED', idempotencyKey: idempotencyKey(step.data!.id) })} disabled={advance.isPending} className="mt-5 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">Voltar ao objetivo</button></article>
+      ) : (
+        <section className="space-y-5">
+          {questions.map((question, index) => <fieldset key={question.id} className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><legend className="text-sm font-bold dark:text-white">Questão {index + 1} de {questions.length}</legend><p className="mt-3 text-base leading-6 dark:text-slate-200">{question.statement}</p><div className="mt-5 space-y-2">{question.options.map((option) => <label key={option} className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border border-slate-200 p-3 text-sm hover:border-[#005bbf] dark:border-slate-700 dark:text-slate-200"><input type="radio" name={question.id} value={option} checked={answers[question.id] === option} onChange={() => setAnswers((current) => ({ ...current, [question.id]: option }))} />{option}</label>)}</div></fieldset>)}
+          <button type="button" onClick={submitAnswers} disabled={!allAnswered || submit.isPending} className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50"><Send className="h-4 w-4" />{submit.isPending ? 'Corrigindo...' : 'Enviar respostas'}</button>
+          {submit.isError && <p role="alert" className="text-sm text-red-600">{submit.error.message}</p>}
+        </section>
+      )}
+      <p className="text-center text-xs text-slate-500">Sua resposta fica protegida até o envio. O gabarito aparece somente depois da correção.</p>
+      <button type="button" onClick={() => navigate('/student/study')} className="text-sm font-bold text-[#005bbf]">Voltar sem perder o progresso</button>
+    </div>
+  );
+}

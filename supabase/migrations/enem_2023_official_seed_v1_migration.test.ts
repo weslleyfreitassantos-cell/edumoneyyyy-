@@ -5,6 +5,7 @@ const migration = readFileSync(
   new URL('./20260930000500_enem_2023_official_seed_v1.sql', import.meta.url),
   'utf8',
 );
+const normalizedMigration = migration.replace(/\r\n/g, '\n');
 
 describe('official ENEM seed migration', () => {
   it('seeds only the reviewed official question and historical simulation', () => {
@@ -21,6 +22,6 @@ describe('official ENEM seed migration', () => {
     expect(migration).toContain("package_type = 'ENEM'");
     expect(migration).toContain('institution_id is null');
     expect(migration).toContain('learning_question_bank_skill_links');
-    expect(migration).toContain("skill_role)\n  values (v_question_id, v_skill_id, 'PRIMARY')");
+    expect(normalizedMigration).toContain("skill_role)\n  values (v_question_id, v_skill_id, 'PRIMARY')");
   });
 });

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { resolveAdaptiveCurriculumTarget } from './adaptiveCurriculumResolver';
+import { resolveAdaptiveCurriculumTarget, resolveAdaptiveCurriculumTargets } from './adaptiveCurriculumResolver';
 
 const target = (overrides: Partial<{
   canonicalSkillId: string;
@@ -71,5 +71,15 @@ describe('adaptive curriculum resolver', () => {
     ]);
 
     expect(result?.institutionSkillId).toBe('skill-a');
+  });
+
+  it('resolves one deterministic target per class and subject area', () => {
+    const result = resolveAdaptiveCurriculumTargets([
+      { classId: 'class-1', gradeLevel: '1 EM', institutionSkillId: 'math', canonicalSkillId: 'linear-function', subjectArea: 'MATEMATICA', target: target() },
+      { classId: 'class-1', gradeLevel: '1 EM', institutionSkillId: 'portuguese', canonicalSkillId: 'reading', subjectArea: 'LINGUAGENS', target: target({ canonicalSkillId: 'reading', subjectArea: 'LINGUAGENS' }) },
+      { classId: 'class-1', gradeLevel: '1 EM', institutionSkillId: 'math-later', canonicalSkillId: 'equations', subjectArea: 'MATEMATICA', target: target({ canonicalSkillId: 'equations', priority: 3 }) },
+    ]);
+    expect(result.map((item) => item.subjectArea)).toEqual(['LINGUAGENS', 'MATEMATICA']);
+    expect(result.find((item) => item.subjectArea === 'MATEMATICA')?.institutionSkillId).toBe('math');
   });
 });

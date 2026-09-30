@@ -1,0 +1,1190 @@
+{
+  "packVersion": "tec-escola-core-v2",
+  "subjectArea": "MATEMATICA",
+  "provenance": "Conteúdo autoral versionado do TecEscola; não é questão oficial ENEM.",
+  "skills": [
+    {
+      "code": "FRACTIONS",
+      "title": "Fundamentos de frações",
+      "lesson": {
+        "title": "Fundamentos de frações",
+        "summary": "Representar, comparar e operar frações com significado.",
+        "contentMarkdown": "## Conceito\\n\\nUma fração descreve partes iguais de um todo ou uma razão entre quantidades. Antes de operar, pergunte o que representa o denominador.\\n\\n## Intuição\\n\\nUma receita usa 1/2 de xícara de leite e mais 1/4. Com denominador comum 4, 1/2 = 2/4; portanto 2/4 + 1/4 = 3/4.\\n\\n## Exemplo resolvido\\n\\nPara comparar 3/5 e 2/3, use produto cruzado: 3 x 3 = 9 e 2 x 5 = 10; logo 2/3 é maior.\\n\\n## Erro comum\\n\\nErro comum: somar numeradores e denominadores diretamente. Dica: só some diretamente quando os denominadores já forem iguais.",
+        "workedExample": "Para comparar 3/5 e 2/3, use produto cruzado: 3 x 3 = 9 e 2 x 5 = 10; logo 2/3 é maior.",
+        "tips": [
+          "Erro comum: somar numeradores e denominadores diretamente. Dica: só some diretamente quando os denominadores já forem iguais.",
+          "Explique por que a resposta faz sentido antes de avançar."
+        ],
+        "estimatedMinutes": 8
+      },
+      "questions": [
+        {
+          "id": "fractions-1",
+          "purpose": "PROBE",
+          "statement": "Uma barra dividida em 8 partes iguais tem 3 partes pintadas. Qual fração representa a parte pintada?",
+          "options": [
+            "3/8",
+            "5/8",
+            "3/5",
+            "8/3"
+          ],
+          "correctAnswer": "3/8",
+          "explanation": "O numerador conta as partes pintadas e o denominador conta as partes iguais.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-2",
+          "purpose": "PROBE",
+          "statement": "Qual fração é equivalente a 1/2?",
+          "options": [
+            "2/4",
+            "1/3",
+            "3/5",
+            "4/6"
+          ],
+          "correctAnswer": "2/4",
+          "explanation": "Multiplicar numerador e denominador por 2 mantém a mesma parte.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-3",
+          "purpose": "PROBE",
+          "statement": "Em 5/7, o que indica o número 7?",
+          "options": [
+            "O total de partes iguais",
+            "As partes escolhidas",
+            "A quantidade de objetos",
+            "O resultado da divisão"
+          ],
+          "correctAnswer": "O total de partes iguais",
+          "explanation": "O denominador indica em quantas partes iguais o todo foi dividido.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-4",
+          "purpose": "PRACTICE",
+          "statement": "Quanto é 1/2 + 1/4?",
+          "options": [
+            "3/4",
+            "2/6",
+            "1/6",
+            "4/8"
+          ],
+          "correctAnswer": "3/4",
+          "explanation": "Transforme 1/2 em 2/4 e some os numeradores.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": "fraction_add_direct_components"
+        },
+        {
+          "id": "fractions-5",
+          "purpose": "PRACTICE",
+          "statement": "Quanto é 5/6 - 1/3?",
+          "options": [
+            "1/2",
+            "4/3",
+            "2/6",
+            "5/3"
+          ],
+          "correctAnswer": "1/2",
+          "explanation": "Como 1/3 = 2/6, temos 5/6 - 2/6 = 3/6 = 1/2.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-6",
+          "purpose": "PRACTICE",
+          "statement": "Qual é o resultado de 2/3 x 3/4?",
+          "options": [
+            "1/2",
+            "5/7",
+            "6/7",
+            "2/9"
+          ],
+          "correctAnswer": "1/2",
+          "explanation": "Multiplique os numeradores e denominadores e simplifique 6/12.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-7",
+          "purpose": "PRACTICE",
+          "statement": "Qual fração é maior?",
+          "options": [
+            "3/5",
+            "1/2",
+            "2/5",
+            "4/10"
+          ],
+          "correctAnswer": "3/5",
+          "explanation": "Em décimos, 3/5 = 6/10 e 1/2 = 5/10.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-8",
+          "purpose": "TRANSFER",
+          "statement": "Uma turma leu 2/5 de um livro pela manhã e 1/10 à tarde. Que parte foi lida no dia?",
+          "options": [
+            "1/2",
+            "3/15",
+            "2/10",
+            "1/4"
+          ],
+          "correctAnswer": "1/2",
+          "explanation": "2/5 = 4/10; 4/10 + 1/10 = 5/10 = 1/2.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-9",
+          "purpose": "TRANSFER",
+          "statement": "Uma fita de 3/4 m foi cortada em pedaços de 1/8 m. Quantos pedaços completos foram obtidos?",
+          "options": [
+            "6",
+            "3",
+            "8",
+            "12"
+          ],
+          "correctAnswer": "6",
+          "explanation": "3/4 = 6/8, então cabem seis pedaços de 1/8.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-10",
+          "purpose": "LOCK_IN",
+          "statement": "Uma pessoa gastou 3/8 do salário e depois mais 1/4. Qual fração restou?",
+          "options": [
+            "3/8",
+            "5/8",
+            "1/8",
+            "7/8"
+          ],
+          "correctAnswer": "3/8",
+          "explanation": "O gasto foi 3/8 + 2/8 = 5/8; resta 3/8.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-11",
+          "purpose": "LOCK_IN",
+          "statement": "Por que 2/3 não é igual a 2/5?",
+          "options": [
+            "Os numeradores iguais não compensam denominadores diferentes",
+            "Porque 3 é maior que 5",
+            "Porque toda fração é menor que 1/2",
+            "Porque os numeradores deveriam ser diferentes"
+          ],
+          "correctAnswer": "Os numeradores iguais não compensam denominadores diferentes",
+          "explanation": "Com o mesmo numerador, dividir o todo em menos partes produz partes maiores.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "fractions-12",
+          "purpose": "REVIEW",
+          "statement": "Qual estratégia é mais segura para somar 3/4 e 2/3?",
+          "options": [
+            "Encontrar um denominador comum antes de somar",
+            "Somar os quatro números",
+            "Somar os denominadores e manter o maior",
+            "Subtrair os numeradores"
+          ],
+          "correctAnswer": "Encontrar um denominador comum antes de somar",
+          "explanation": "Denominadores comuns representam partes do mesmo tamanho.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        }
+      ]
+    },
+    {
+      "code": "RATIO_PROPORTION",
+      "title": "Razão e proporção",
+      "lesson": {
+        "title": "Razão e proporção",
+        "summary": "Relacionar grandezas por razões, escalas e proporções.",
+        "contentMarkdown": "## Conceito\\n\\nRazão compara quantidades na mesma unidade; proporção afirma que duas razões representam a mesma relação.\\n\\n## Intuição\\n\\nSe 3 cadernos custam R$18, cada caderno custa R$6. Para 5 cadernos, a relação mantém 18/3 = x/5, logo x = 30.\\n\\n## Exemplo resolvido\\n\\nEm um mapa de escala 1:100 000, 1 cm representa 100 000 cm reais, ou 1 km.\\n\\n## Erro comum\\n\\nErro comum: misturar unidades antes de montar a razão. Dica: converta as grandezas primeiro.",
+        "workedExample": "Em um mapa de escala 1:100 000, 1 cm representa 100 000 cm reais, ou 1 km.",
+        "tips": [
+          "Erro comum: misturar unidades antes de montar a razão. Dica: converta as grandezas primeiro.",
+          "Explique por que a resposta faz sentido antes de avançar."
+        ],
+        "estimatedMinutes": 8
+      },
+      "questions": [
+        {
+          "id": "ratio_proportion-1",
+          "purpose": "PROBE",
+          "statement": "A razão entre 2 meninas e 3 meninos pode ser escrita como:",
+          "options": [
+            "2:3",
+            "3:2",
+            "2+3",
+            "5:2"
+          ],
+          "correctAnswer": "2:3",
+          "explanation": "A ordem indicada preserva meninas no primeiro termo e meninos no segundo.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-2",
+          "purpose": "PROBE",
+          "statement": "Se 4 ingressos custam R$40, qual é o preço unitário?",
+          "options": [
+            "R$10",
+            "R$8",
+            "R$36",
+            "R$44"
+          ],
+          "correctAnswer": "R$10",
+          "explanation": "Divida o custo total pela quantidade.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-3",
+          "purpose": "PROBE",
+          "statement": "Qual igualdade forma uma proporção?",
+          "options": [
+            "2/3 = 4/6",
+            "2/3 = 3/4",
+            "2+3 = 4+6",
+            "2/3 = 6/4"
+          ],
+          "correctAnswer": "2/3 = 4/6",
+          "explanation": "As duas razões representam o mesmo valor.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-4",
+          "purpose": "PRACTICE",
+          "statement": "Se 2 cadernos custam R$10, quanto custam 6?",
+          "options": [
+            "R$30",
+            "R$20",
+            "R$25",
+            "R$60"
+          ],
+          "correctAnswer": "R$30",
+          "explanation": "Seis é três vezes dois, então o custo também é triplicado.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-5",
+          "purpose": "PRACTICE",
+          "statement": "Uma receita para 4 pessoas usa 300 g de arroz. Para 6 pessoas, usa:",
+          "options": [
+            "450 g",
+            "350 g",
+            "600 g",
+            "200 g"
+          ],
+          "correctAnswer": "450 g",
+          "explanation": "A quantidade por pessoa é 75 g; 75 x 6 = 450.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-6",
+          "purpose": "PRACTICE",
+          "statement": "Em uma escala 1:100, 2 cm representam:",
+          "options": [
+            "2 m",
+            "20 cm",
+            "100 m",
+            "200 m"
+          ],
+          "correctAnswer": "2 m",
+          "explanation": "2 cm x 100 = 200 cm = 2 m.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-7",
+          "purpose": "PRACTICE",
+          "statement": "Se 5 trabalhadores fazem uma tarefa em 12 dias, a afirmação diretamente proporcional é:",
+          "options": [
+            "Mais trabalhadores podem reduzir o tempo, mantendo a produtividade",
+            "Dobrar trabalhadores dobra os dias",
+            "O tempo não depende de trabalhadores",
+            "A tarefa fica maior"
+          ],
+          "correctAnswer": "Mais trabalhadores podem reduzir o tempo, mantendo a produtividade",
+          "explanation": "A relação depende da produtividade e da quantidade de trabalho.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-8",
+          "purpose": "TRANSFER",
+          "statement": "Uma escola mantém 1 monitor para cada 25 alunos. Para 150 alunos, quantos monitores são necessários?",
+          "options": [
+            "6",
+            "5",
+            "25",
+            "150"
+          ],
+          "correctAnswer": "6",
+          "explanation": "150 dividido por 25 mantém a razão de atendimento.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-9",
+          "purpose": "TRANSFER",
+          "statement": "Uma maquete usa escala 1:50. Uma parede real de 4 m deve medir:",
+          "options": [
+            "8 cm",
+            "2 cm",
+            "50 cm",
+            "200 cm"
+          ],
+          "correctAnswer": "8 cm",
+          "explanation": "4 m = 400 cm; 400/50 = 8 cm.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-10",
+          "purpose": "LOCK_IN",
+          "statement": "Um suco mistura concentrado e água na razão 1:4. Em 10 copos, quantos são de concentrado?",
+          "options": [
+            "2",
+            "1",
+            "4",
+            "5"
+          ],
+          "correctAnswer": "2",
+          "explanation": "Há cinco partes no total; 10/5 = 2 para cada parte.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-11",
+          "purpose": "LOCK_IN",
+          "statement": "Por que 3/5 = 6/10?",
+          "options": [
+            "Os dois termos foram multiplicados por 2",
+            "Somaram-se 3 e 5",
+            "O denominador foi reduzido",
+            "A razão mudou de sentido"
+          ],
+          "correctAnswer": "Os dois termos foram multiplicados por 2",
+          "explanation": "Multiplicar os dois termos pelo mesmo número conserva a razão.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "ratio_proportion-12",
+          "purpose": "REVIEW",
+          "statement": "Para resolver x/8 = 3/4, é adequado:",
+          "options": [
+            "Fazer produto cruzado e obter 4x = 24",
+            "Somar 8 e 4",
+            "Dividir 3 por 8 sem considerar 4",
+            "Trocar x por 3"
+          ],
+          "correctAnswer": "Fazer produto cruzado e obter 4x = 24",
+          "explanation": "O produto cruzado preserva a igualdade entre as razões.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        }
+      ]
+    },
+    {
+      "code": "PERCENTAGE",
+      "title": "Porcentagem",
+      "lesson": {
+        "title": "Porcentagem",
+        "summary": "Interpretar porcentagens como partes de cem em situações reais.",
+        "contentMarkdown": "## Conceito\\n\\nPorcentagem é uma razão com denominador 100. O símbolo % indica quantas partes de cem estão sendo consideradas.\\n\\n## Intuição\\n\\nPara calcular 25% de 80, use 25/100 x 80 = 20. Também é possível notar que 25% é um quarto.\\n\\n## Exemplo resolvido\\n\\nUm desconto de 10% em R$200 é R$20; o preço final é R$180.\\n\\n## Erro comum\\n\\nErro comum: somar percentuais de etapas sem verificar a base. Dica: informe sempre sobre qual valor o percentual é calculado.",
+        "workedExample": "Um desconto de 10% em R$200 é R$20; o preço final é R$180.",
+        "tips": [
+          "Erro comum: somar percentuais de etapas sem verificar a base. Dica: informe sempre sobre qual valor o percentual é calculado.",
+          "Explique por que a resposta faz sentido antes de avançar."
+        ],
+        "estimatedMinutes": 8
+      },
+      "questions": [
+        {
+          "id": "percentage-1",
+          "purpose": "PROBE",
+          "statement": "25% corresponde a qual fração simplificada?",
+          "options": [
+            "1/4",
+            "1/5",
+            "1/2",
+            "25/10"
+          ],
+          "correctAnswer": "1/4",
+          "explanation": "25 em cada 100 equivale a um quarto.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-2",
+          "purpose": "PROBE",
+          "statement": "Em 200 alunos, 10% correspondem a:",
+          "options": [
+            "20 alunos",
+            "10 alunos",
+            "2 alunos",
+            "100 alunos"
+          ],
+          "correctAnswer": "20 alunos",
+          "explanation": "10/100 x 200 = 20.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-3",
+          "purpose": "PROBE",
+          "statement": "Qual número decimal representa 45%?",
+          "options": [
+            "0,45",
+            "4,5",
+            "45,0",
+            "0,045"
+          ],
+          "correctAnswer": "0,45",
+          "explanation": "Divida a porcentagem por 100.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-4",
+          "purpose": "PRACTICE",
+          "statement": "Quanto é 25% de 80?",
+          "options": [
+            "20",
+            "15",
+            "25",
+            "40"
+          ],
+          "correctAnswer": "20",
+          "explanation": "Um quarto de 80 é 20.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-5",
+          "purpose": "PRACTICE",
+          "statement": "Uma camisa de R$120 tem desconto de 15%. O desconto é:",
+          "options": [
+            "R$18",
+            "R$15",
+            "R$102",
+            "R$105"
+          ],
+          "correctAnswer": "R$18",
+          "explanation": "0,15 x 120 = 18.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-6",
+          "purpose": "PRACTICE",
+          "statement": "Um preço de R$50 aumenta 20%. O novo preço é:",
+          "options": [
+            "R$60",
+            "R$70",
+            "R$55",
+            "R$40"
+          ],
+          "correctAnswer": "R$60",
+          "explanation": "20% de 50 é 10; 50 + 10 = 60.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-7",
+          "purpose": "PRACTICE",
+          "statement": "Em uma turma de 40 alunos, 30 foram aprovados. A taxa de aprovação é:",
+          "options": [
+            "75%",
+            "70%",
+            "30%",
+            "25%"
+          ],
+          "correctAnswer": "75%",
+          "explanation": "30/40 = 0,75 = 75%.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-8",
+          "purpose": "TRANSFER",
+          "statement": "Uma conta de R$240 recebe 12% de taxa. Qual é o total?",
+          "options": [
+            "R$268,80",
+            "R$252",
+            "R$28,80",
+            "R$228"
+          ],
+          "correctAnswer": "R$268,80",
+          "explanation": "12% de 240 é 28,80; some à conta.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-9",
+          "purpose": "TRANSFER",
+          "statement": "Uma população cai 8% de 5 000. Qual é a nova população?",
+          "options": [
+            "4 600",
+            "4 920",
+            "4 000",
+            "5 008"
+          ],
+          "correctAnswer": "4 600",
+          "explanation": "8% de 5 000 é 400; subtraia 400.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-10",
+          "purpose": "LOCK_IN",
+          "statement": "Um produto passa de R$80 para R$100. O aumento percentual foi:",
+          "options": [
+            "25%",
+            "20%",
+            "80%",
+            "125%"
+          ],
+          "correctAnswer": "25%",
+          "explanation": "O aumento foi 20 sobre a base 80: 20/80 = 25%.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-11",
+          "purpose": "LOCK_IN",
+          "statement": "Por que descontos sucessivos de 10% não equivalem a desconto único de 20%?",
+          "options": [
+            "A segunda redução usa uma base já reduzida",
+            "Porque 10 + 10 é 30",
+            "Porque percentuais não podem ser somados",
+            "Porque o preço final sempre aumenta"
+          ],
+          "correctAnswer": "A segunda redução usa uma base já reduzida",
+          "explanation": "A segunda redução é calculada sobre 90% do preço original.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "percentage-12",
+          "purpose": "REVIEW",
+          "statement": "Para conferir se 18 é 15% de 120, devemos:",
+          "options": [
+            "Calcular 0,15 x 120 e comparar com 18",
+            "Dividir 18 por 15",
+            "Somar 15 e 120",
+            "Multiplicar 15 x 120 sem dividir por 100"
+          ],
+          "correctAnswer": "Calcular 0,15 x 120 e comparar com 18",
+          "explanation": "A forma decimal explicita a divisão por cem.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        }
+      ]
+    },
+    {
+      "code": "EQUATIONS",
+      "title": "Equações de primeiro grau",
+      "lesson": {
+        "title": "Equações de primeiro grau",
+        "summary": "Modelar situações e resolver equações lineares com uma incógnita.",
+        "contentMarkdown": "## Conceito\\n\\nUma equação afirma que duas expressões têm o mesmo valor. O objetivo é isolar a incógnita mantendo a igualdade.\\n\\n## Intuição\\n\\nEm 2x + 4 = 10, subtraia 4 dos dois lados e divida por 2: x = 3.\\n\\n## Exemplo resolvido\\n\\nEm um problema de preço, escolha a incógnita antes de traduzir as palavras em operações.\\n\\n## Erro comum\\n\\nErro comum: mover um termo sem mudar a operação. Dica: faça a mesma operação nos dois lados e confira substituindo a resposta.",
+        "workedExample": "Em um problema de preço, escolha a incógnita antes de traduzir as palavras em operações.",
+        "tips": [
+          "Erro comum: mover um termo sem mudar a operação. Dica: faça a mesma operação nos dois lados e confira substituindo a resposta.",
+          "Explique por que a resposta faz sentido antes de avançar."
+        ],
+        "estimatedMinutes": 8
+      },
+      "questions": [
+        {
+          "id": "equations-1",
+          "purpose": "PROBE",
+          "statement": "Qual valor resolve x + 5 = 9?",
+          "options": [
+            "4",
+            "14",
+            "5",
+            "-4"
+          ],
+          "correctAnswer": "4",
+          "explanation": "Subtraia 5 dos dois lados.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-2",
+          "purpose": "PROBE",
+          "statement": "Em 3x = 18, x vale:",
+          "options": [
+            "6",
+            "15",
+            "21",
+            "54"
+          ],
+          "correctAnswer": "6",
+          "explanation": "Divida os dois lados por 3.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-3",
+          "purpose": "PROBE",
+          "statement": "Qual expressão representa 'o dobro de x mais 3'?",
+          "options": [
+            "2x + 3",
+            "x + 6",
+            "2(x + 3)",
+            "x/2 + 3"
+          ],
+          "correctAnswer": "2x + 3",
+          "explanation": "Dobro de x é 2x; depois somamos 3.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-4",
+          "purpose": "PRACTICE",
+          "statement": "Qual valor resolve 2x + 4 = 10?",
+          "options": [
+            "3",
+            "2",
+            "4",
+            "7"
+          ],
+          "correctAnswer": "3",
+          "explanation": "2x = 6 e x = 3.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-5",
+          "purpose": "PRACTICE",
+          "statement": "Resolva 5x - 7 = 18.",
+          "options": [
+            "5",
+            "3",
+            "25",
+            "11"
+          ],
+          "correctAnswer": "5",
+          "explanation": "Some 7 e divida o resultado 25 por 5.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-6",
+          "purpose": "PRACTICE",
+          "statement": "Em 4(x - 2) = 20, x vale:",
+          "options": [
+            "7",
+            "5",
+            "3",
+            "18"
+          ],
+          "correctAnswer": "7",
+          "explanation": "Divida por 4: x - 2 = 5; então x = 7.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-7",
+          "purpose": "PRACTICE",
+          "statement": "A equação x/3 + 2 = 6 tem solução:",
+          "options": [
+            "12",
+            "4",
+            "8",
+            "18"
+          ],
+          "correctAnswer": "12",
+          "explanation": "Subtraia 2 e multiplique por 3.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-8",
+          "purpose": "TRANSFER",
+          "statement": "Um táxi cobra R$8 fixos e R$3 por km. Uma corrida custou R$29. Quantos km foram percorridos?",
+          "options": [
+            "7",
+            "9",
+            "21",
+            "3"
+          ],
+          "correctAnswer": "7",
+          "explanation": "3x + 8 = 29, então 3x = 21 e x = 7.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-9",
+          "purpose": "TRANSFER",
+          "statement": "A soma de um número com seu dobro é 36. Qual é o número?",
+          "options": [
+            "12",
+            "18",
+            "9",
+            "24"
+          ],
+          "correctAnswer": "12",
+          "explanation": "x + 2x = 36, logo 3x = 36.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-10",
+          "purpose": "LOCK_IN",
+          "statement": "Ao resolver 2(x+3)=14, qual verificação confirma x=4?",
+          "options": [
+            "2(4+3)=14",
+            "2(4-3)=14",
+            "4+3=14",
+            "2x+3=14"
+          ],
+          "correctAnswer": "2(4+3)=14",
+          "explanation": "Substituir x em toda a expressão original.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-11",
+          "purpose": "LOCK_IN",
+          "statement": "Por que se subtrai 4 dos dois lados em 2x+4=10?",
+          "options": [
+            "Para preservar a igualdade e deixar o termo com x isolado",
+            "Para trocar o sinal de x",
+            "Para eliminar o 10",
+            "Para dobrar a solução"
+          ],
+          "correctAnswer": "Para preservar a igualdade e deixar o termo com x isolado",
+          "explanation": "A mesma operação nos dois lados mantém a equação equivalente.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "equations-12",
+          "purpose": "REVIEW",
+          "statement": "Qual resultado é impossível para uma equação se a substituição não produz igualdade?",
+          "options": [
+            "A resposta está incorreta",
+            "A incógnita virou porcentagem",
+            "A equação deixou de ter números",
+            "Toda solução é válida"
+          ],
+          "correctAnswer": "A resposta está incorreta",
+          "explanation": "A substituição é uma checagem direta da solução.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        }
+      ]
+    },
+    {
+      "code": "FUNCTIONS_INTRO",
+      "title": "Introdução a funções",
+      "lesson": {
+        "title": "Introdução a funções",
+        "summary": "Interpretar funções como relações entre entrada, regra e saída.",
+        "contentMarkdown": "## Conceito\\n\\nUma função associa cada entrada a uma única saída. A lei descreve como transformar x em f(x).\\n\\n## Intuição\\n\\nSe f(x)=2x+1, a entrada 3 produz 7. A tabela ajuda a perceber a regularidade entre entradas e saídas.\\n\\n## Exemplo resolvido\\n\\nUm gráfico de uma função organiza pares ordenados (entrada, saída), não apenas números soltos.\\n\\n## Erro comum\\n\\nErro comum: trocar entrada e saída. Dica: localize primeiro o valor fornecido e aplique a regra.",
+        "workedExample": "Um gráfico de uma função organiza pares ordenados (entrada, saída), não apenas números soltos.",
+        "tips": [
+          "Erro comum: trocar entrada e saída. Dica: localize primeiro o valor fornecido e aplique a regra.",
+          "Explique por que a resposta faz sentido antes de avançar."
+        ],
+        "estimatedMinutes": 8
+      },
+      "questions": [
+        {
+          "id": "functions_intro-1",
+          "purpose": "PROBE",
+          "statement": "Em uma função, a entrada é geralmente representada por:",
+          "options": [
+            "x",
+            "f(x)",
+            "o resultado",
+            "o gráfico"
+          ],
+          "correctAnswer": "x",
+          "explanation": "x é a variável independente mais comum.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-2",
+          "purpose": "PROBE",
+          "statement": "Se f(x)=x+2, qual é f(3)?",
+          "options": [
+            "5",
+            "3",
+            "6",
+            "1"
+          ],
+          "correctAnswer": "5",
+          "explanation": "Substitua x por 3.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-3",
+          "purpose": "PROBE",
+          "statement": "Uma função associa cada entrada a:",
+          "options": [
+            "Uma única saída",
+            "Duas saídas obrigatórias",
+            "Nenhuma saída",
+            "A própria entrada sempre"
+          ],
+          "correctAnswer": "Uma única saída",
+          "explanation": "Essa é a condição que define uma função.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-4",
+          "purpose": "PRACTICE",
+          "statement": "Na tabela x=1,2,3 e f(x)=4,6,8, qual é a regra?",
+          "options": [
+            "f(x)=2x+2",
+            "f(x)=x+3",
+            "f(x)=4x",
+            "f(x)=x+2"
+          ],
+          "correctAnswer": "f(x)=2x+2",
+          "explanation": "Cada saída é o dobro da entrada mais 2.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-5",
+          "purpose": "PRACTICE",
+          "statement": "Se g(x)=3x-1, g(4) é:",
+          "options": [
+            "11",
+            "12",
+            "7",
+            "3"
+          ],
+          "correctAnswer": "11",
+          "explanation": "3 x 4 - 1 = 11.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-6",
+          "purpose": "PRACTICE",
+          "statement": "Qual par pertence a f(x)=x²?",
+          "options": [
+            "(3,9)",
+            "(3,6)",
+            "(2,5)",
+            "(0,1)"
+          ],
+          "correctAnswer": "(3,9)",
+          "explanation": "O quadrado de 3 é 9.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-7",
+          "purpose": "PRACTICE",
+          "statement": "Quando a entrada aumenta 1 em f(x)=5x, a saída aumenta:",
+          "options": [
+            "5",
+            "1",
+            "0",
+            "25"
+          ],
+          "correctAnswer": "5",
+          "explanation": "O coeficiente de x é a taxa de variação.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-8",
+          "purpose": "TRANSFER",
+          "statement": "Uma tarifa é dada por T(h)=12+4h. Quanto custa usar 5 horas?",
+          "options": [
+            "R$32",
+            "R$20",
+            "R$60",
+            "R$17"
+          ],
+          "correctAnswer": "R$32",
+          "explanation": "A taxa fixa é 12 e o uso custa 4 x 5.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-9",
+          "purpose": "TRANSFER",
+          "statement": "Uma relação tempo-distância tem d(t)=60t. O que 60 representa?",
+          "options": [
+            "A taxa de 60 km por hora",
+            "A distância inicial",
+            "O tempo final",
+            "O número de viagens"
+          ],
+          "correctAnswer": "A taxa de 60 km por hora",
+          "explanation": "O coeficiente liga distância e tempo.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-10",
+          "purpose": "LOCK_IN",
+          "statement": "Por que uma tabela com uma entrada ligada a duas saídas diferentes não define função?",
+          "options": [
+            "A unicidade da saída foi quebrada",
+            "Porque a tabela tem duas colunas",
+            "Porque x não pode ser número",
+            "Porque toda função é linear"
+          ],
+          "correctAnswer": "A unicidade da saída foi quebrada",
+          "explanation": "Cada entrada precisa determinar uma única saída.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-11",
+          "purpose": "LOCK_IN",
+          "statement": "Em f(x)=2x+1, qual é a saída quando x=0?",
+          "options": [
+            "1",
+            "0",
+            "2",
+            "-1"
+          ],
+          "correctAnswer": "1",
+          "explanation": "O termo constante permanece quando x é zero.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "functions_intro-12",
+          "purpose": "REVIEW",
+          "statement": "Para verificar f(2)=9 em f(x)=4x+1, devemos:",
+          "options": [
+            "Calcular 4(2)+1 e comparar com 9",
+            "Calcular 4+2+1",
+            "Dividir 9 por 2",
+            "Usar x=9"
+          ],
+          "correctAnswer": "Calcular 4(2)+1 e comparar com 9",
+          "explanation": "Aplicar a lei da função é a checagem correta.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        }
+      ]
+    },
+    {
+      "code": "LINEAR_FUNCTION",
+      "prerequisites": ["EQUATIONS"],
+      "title": "Função afim",
+      "lesson": {
+        "title": "Função afim",
+        "summary": "Interpretar lei, gráfico e variação de uma função afim.",
+        "contentMarkdown": "## Conceito\\n\\nUma função afim tem forma f(x)=ax+b. O coeficiente a indica a variação por unidade e b é o valor inicial quando x=0.\\n\\n## Intuição\\n\\nNa função f(x)=2x+5, a cada unidade de x a saída cresce 2 e o gráfico cruza o eixo vertical em 5.\\n\\n## Exemplo resolvido\\n\\nPara construir um modelo de custo, se há taxa fixa e custo por unidade, a taxa fixa é b e o custo unitário é a.\\n\\n## Erro comum\\n\\nErro comum: confundir intercepto com inclinação. Dica: observe separadamente o valor inicial e quanto cresce a cada passo.",
+        "workedExample": "Para construir um modelo de custo, se há taxa fixa e custo por unidade, a taxa fixa é b e o custo unitário é a.",
+        "tips": [
+          "Erro comum: confundir intercepto com inclinação. Dica: observe separadamente o valor inicial e quanto cresce a cada passo.",
+          "Explique por que a resposta faz sentido antes de avançar."
+        ],
+        "estimatedMinutes": 8
+      },
+      "questions": [
+        {
+          "id": "linear_function-1",
+          "purpose": "PROBE",
+          "statement": "Na função f(x)=3x+2, qual é o coeficiente angular?",
+          "options": [
+            "3",
+            "2",
+            "x",
+            "5"
+          ],
+          "correctAnswer": "3",
+          "explanation": "É o número que multiplica x.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-2",
+          "purpose": "PROBE",
+          "statement": "Em f(x)=4x+7, f(0) vale:",
+          "options": [
+            "7",
+            "4",
+            "0",
+            "11"
+          ],
+          "correctAnswer": "7",
+          "explanation": "O valor inicial é o termo independente.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-3",
+          "purpose": "PROBE",
+          "statement": "Qual expressão é uma função afim?",
+          "options": [
+            "2x+5",
+            "x²+1",
+            "1/x",
+            "raiz de x"
+          ],
+          "correctAnswer": "2x+5",
+          "explanation": "A forma ax+b tem x apenas no primeiro grau.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-4",
+          "purpose": "PRACTICE",
+          "statement": "Na função f(x)=2x+1, qual é f(3)?",
+          "options": [
+            "7",
+            "5",
+            "6",
+            "9"
+          ],
+          "correctAnswer": "7",
+          "explanation": "2 x 3 + 1 = 7.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-5",
+          "purpose": "PRACTICE",
+          "statement": "O gráfico de f(x)=-x+4 é decrescente porque:",
+          "options": [
+            "O coeficiente de x é negativo",
+            "O termo constante é 4",
+            "x aparece uma vez",
+            "A função tem gráfico"
+          ],
+          "correctAnswer": "O coeficiente de x é negativo",
+          "explanation": "A saída diminui quando x aumenta.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-6",
+          "purpose": "PRACTICE",
+          "statement": "Qual é a raiz de f(x)=2x-6?",
+          "options": [
+            "3",
+            "-3",
+            "6",
+            "2"
+          ],
+          "correctAnswer": "3",
+          "explanation": "Faça 2x-6=0.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-7",
+          "purpose": "PRACTICE",
+          "statement": "Uma função passa por (0,5) e (1,8). Sua taxa de variação é:",
+          "options": [
+            "3",
+            "5",
+            "8",
+            "13"
+          ],
+          "correctAnswer": "3",
+          "explanation": "A saída aumentou 3 quando a entrada aumentou 1.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-8",
+          "purpose": "TRANSFER",
+          "statement": "Um estacionamento cobra R$10 de entrada e R$4 por hora. Após 6 horas, o custo é:",
+          "options": [
+            "R$34",
+            "R$24",
+            "R$60",
+            "R$14"
+          ],
+          "correctAnswer": "R$34",
+          "explanation": "C(h)=10+4h; C(6)=34.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-9",
+          "purpose": "TRANSFER",
+          "statement": "Uma planta mede 12 cm e cresce 2 cm por semana. Após 9 semanas, mede:",
+          "options": [
+            "30 cm",
+            "18 cm",
+            "21 cm",
+            "24 cm"
+          ],
+          "correctAnswer": "30 cm",
+          "explanation": "P(t)=12+2t; P(9)=30.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-10",
+          "purpose": "LOCK_IN",
+          "statement": "Em um gráfico, o ponto onde a reta cruza o eixo y representa:",
+          "options": [
+            "O valor inicial b",
+            "A raiz sempre",
+            "A inclinação a",
+            "O maior x"
+          ],
+          "correctAnswer": "O valor inicial b",
+          "explanation": "No eixo y, x=0; resta o termo b.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-11",
+          "purpose": "LOCK_IN",
+          "statement": "Se f(x)=5x-10, aumentar x em 2 aumenta f(x) em:",
+          "options": [
+            "10",
+            "2",
+            "5",
+            "-10"
+          ],
+          "correctAnswer": "10",
+          "explanation": "A variação é a x 2 = 5 x 2.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        },
+        {
+          "id": "linear_function-12",
+          "purpose": "REVIEW",
+          "statement": "Para decidir se f(x)=3x+1 modela um custo, devemos verificar:",
+          "options": [
+            "Se há valor inicial 1 e aumento constante de 3 por unidade",
+            "Somente se x é positivo",
+            "Se o gráfico é uma curva",
+            "Se o custo sempre é zero"
+          ],
+          "correctAnswer": "Se há valor inicial 1 e aumento constante de 3 por unidade",
+          "explanation": "O modelo precisa corresponder às duas partes da situação.",
+          "provenance": "TECESCOLA_CORE_V2_MATEMATICA",
+          "misconceptionCode": null
+        }
+      ]
+    }
+  ]
+}

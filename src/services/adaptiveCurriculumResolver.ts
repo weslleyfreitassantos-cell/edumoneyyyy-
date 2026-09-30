@@ -20,6 +20,39 @@ export interface AdaptiveCurriculumCandidate {
 
 export interface AdaptiveCurriculumTarget extends AdaptiveCurriculumCandidate {}
 
+export function resolveAdaptiveCurriculumTargets(
+  candidates: readonly AdaptiveCurriculumCandidate[],
+): AdaptiveCurriculumTarget[] {
+  const grouped = new Map<string, AdaptiveCurriculumCandidate[]>();
+  for (const candidate of candidates) {
+    const context = gradeContext(candidate.gradeLevel);
+    if (!context) continue;
+    if (
+      candidate.target.canonicalSkillId !== candidate.canonicalSkillId
+      || candidate.target.stage !== context.stage
+      || candidate.target.gradeLevel !== context.gradeLevel
+      || candidate.target.subjectArea !== candidate.subjectArea
+    ) continue;
+    const key = `${candidate.classId}:${candidate.subjectArea}`;
+    grouped.set(key, [...(grouped.get(key) ?? []), candidate]);
+  }
+
+  return [...grouped.values()]
+    .map((group) => [...group].sort((left, right) => (
+      left.target.priority - right.target.priority
+      || left.target.sortOrder - right.target.sortOrder
+      || left.classId.localeCompare(right.classId)
+      || left.institutionSkillId.localeCompare(right.institutionSkillId)
+      || left.canonicalSkillId.localeCompare(right.canonicalSkillId)
+    ))[0])
+    .filter((candidate): candidate is AdaptiveCurriculumTarget => Boolean(candidate))
+    .sort((left, right) => (
+      left.subjectArea.localeCompare(right.subjectArea)
+      || left.classId.localeCompare(right.classId)
+      || left.canonicalSkillId.localeCompare(right.canonicalSkillId)
+    ));
+}
+
 function gradeContext(gradeLevel: string | null): { stage: string; gradeLevel: number } | null {
   const normalized = normalizeAcademicLevel(gradeLevel);
   if (!normalized) return null;
@@ -32,21 +65,5 @@ function gradeContext(gradeLevel: string | null): { stage: string; gradeLevel: n
 export function resolveAdaptiveCurriculumTarget(
   candidates: readonly AdaptiveCurriculumCandidate[],
 ): AdaptiveCurriculumTarget | null {
-  const eligible = candidates.filter((candidate) => {
-    const context = gradeContext(candidate.gradeLevel);
-    if (!context) return false;
-
-    return candidate.target.canonicalSkillId === candidate.canonicalSkillId
-      && candidate.target.stage === context.stage
-      && candidate.target.gradeLevel === context.gradeLevel
-      && candidate.target.subjectArea === candidate.subjectArea;
-  });
-
-  return [...eligible].sort((left, right) => (
-    left.target.priority - right.target.priority
-    || left.target.sortOrder - right.target.sortOrder
-    || left.classId.localeCompare(right.classId)
-    || left.institutionSkillId.localeCompare(right.institutionSkillId)
-    || left.canonicalSkillId.localeCompare(right.canonicalSkillId)
-  ))[0] ?? null;
+  return resolveAdaptiveCurriculumTargets(candidates)[0] ?? null;
 }
