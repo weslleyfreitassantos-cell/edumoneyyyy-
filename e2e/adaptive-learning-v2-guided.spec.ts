@@ -109,6 +109,22 @@ adaptiveDescribe('adaptive learning V2 guided journey', () => {
       expect(session.data.original_target_canonical_skill_id).toBe(linearId);
       expect(session.data.current_canonical_skill_id).toBe(equationsId);
 
+      const teacherInsights = await teacher.client.rpc('get_teacher_guided_learning_insights_v2', { p_institution_id: institutionId });
+      expect(teacherInsights.error).toBeNull();
+      expect(teacherInsights.data?.some((item: any) => item.session_id === sessionId)).toBe(true);
+      const teacherResume = await teacher.client.rpc('resolve_teacher_guided_learning_session_v2', {
+        p_session_id: sessionId,
+        p_action: 'RESUME',
+        p_target_canonical_skill_id: null,
+      });
+      expect(teacherResume.error).toBeNull();
+      const studentTeacherAction = await student.client.rpc('resolve_teacher_guided_learning_session_v2', {
+        p_session_id: sessionId,
+        p_action: 'RESUME',
+        p_target_canonical_skill_id: null,
+      });
+      expect(studentTeacherAction.error?.message).toContain('LEARNING_TEACHER_SCOPE_DENIED');
+
       const firstStep = await student.client.rpc('get_guided_learning_step_v2', { p_step_id: session.data.current_step_id });
       expect(firstStep.error).toBeNull();
       expect(firstStep.data.questions[0]).not.toHaveProperty('correct_answer');
@@ -159,6 +175,39 @@ adaptiveDescribe('adaptive learning V2 guided journey', () => {
         const startedSubject = await student.client.rpc('start_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentRow.id, p_target_canonical_skill_id: required(skillByCode.get(subjectDraft.code), `${subjectDraft.code} skill`) });
         expect(startedSubject.error).toBeNull();
       }
+
+      const foreignAdmin = await createActor(service, 'ADMIN', 'Admin Adaptive V2 Foreign', `${suffix}-foreign`);
+      const foreignTeacher = await createActor(service, 'TEACHER', 'Professor Adaptive V2 Foreign', `${suffix}-foreign`);
+      const foreignStudent = await createActor(service, 'STUDENT', 'Alice Adaptive V2 Foreign', `${suffix}-foreign`);
+      userIds.push(foreignAdmin.id, foreignTeacher.id, foreignStudent.id);
+      const foreignAccount = await insertOne(service, 'accounts', { name: `Adaptive V2 Foreign ${suffix}`, owner_profile_id: foreignAdmin.id, institution_limit: 1, status: 'ACTIVE' });
+      const foreignInstitution = await insertOne(service, 'institutions', { account_id: foreignAccount.id, name: `TecEscola Adaptive V2 Foreign ${suffix}`, active: true });
+      const foreignInstitutionId = foreignInstitution.id as string;
+      for (const [actor, role] of [[foreignAdmin, 'ADMIN'], [foreignTeacher, 'TEACHER'], [foreignStudent, 'STUDENT']] as const) {
+        await insertOne(service, 'memberships', { profile_id: actor.id, institution_id: foreignInstitutionId, role, active: true });
+      }
+      const foreignYear = await insertOne(service, 'academic_years', { institution_id: foreignInstitutionId, name: `2026 V2 Foreign ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true });
+      const foreignTerm = await insertOne(service, 'terms', { academic_year_id: foreignYear.id, name: `V2 Foreign Term ${suffix}`, start_date: '2026-01-01', end_date: '2026-12-31', active: true });
+      const foreignClass = await insertOne(service, 'classes', { institution_id: foreignInstitutionId, academic_year_id: foreignYear.id, name: `1º ano V2 Foreign ${suffix}`, grade_level: '1º ano', shift: 'INTEGRAL', active: true });
+      const foreignSubject = await insertOne(service, 'subjects', { institution_id: foreignInstitutionId, name: `Matemática V2 Foreign ${suffix}`, code: `V2-MATH-FOREIGN-${suffix}`, active: true });
+      await insertOne(service, 'class_curriculum_items', { institution_id: foreignInstitutionId, class_id: foreignClass.id, subject_id: foreignSubject.id, weekly_lessons: 1, lesson_duration_minutes: 50, active: true });
+      await insertOne(service, 'subject_offerings', { class_id: foreignClass.id, subject_id: foreignSubject.id, teacher_profile_id: foreignTeacher.id, term_id: foreignTerm.id, active: true });
+      const foreignStudentRow = await insertOne(service, 'students', { institution_id: foreignInstitutionId, profile_id: foreignStudent.id, registration_number: `V2-FOREIGN-${suffix}`, active: true });
+      await insertOne(service, 'enrollments', { student_id: foreignStudentRow.id, class_id: foreignClass.id, academic_year_id: foreignYear.id, status: 'active', active: true });
+      const foreignUnit = await insertOne(service, 'learning_units', { institution_id: foreignInstitutionId, subject_id: foreignSubject.id, title: `Álgebra V2 Foreign ${suffix}`, active: true });
+      const foreignSkill = await insertOne(service, 'learning_skills', { institution_id: foreignInstitutionId, unit_id: foreignUnit.id, title: `Equações V2 Foreign ${suffix}`, active: true });
+      await insertOne(service, 'learning_skill_canonical_links', { institution_id: foreignInstitutionId, learning_skill_id: foreignSkill.id, canonical_skill_id: equationsId, active: true });
+      const foreignStarted = await foreignStudent.client.rpc('start_guided_learning_session_v2', { p_institution_id: foreignInstitutionId, p_student_id: foreignStudentRow.id, p_target_canonical_skill_id: equationsId });
+      expect(foreignStarted.error).toBeNull();
+      const foreignSessionId = required(foreignStarted.data?.session_id, 'foreign V2 session');
+      const foreignStep = await service.from('learning_guided_sessions').select('current_step_id').eq('id', foreignSessionId).single();
+      const foreignStepId = required(foreignStep.data?.current_step_id, 'foreign V2 step');
+      const crossTenantGet = await student.client.rpc('get_guided_learning_session_v2', { p_institution_id: foreignInstitutionId, p_student_id: foreignStudentRow.id });
+      expect(crossTenantGet.error?.message).toContain('LEARNING_STUDENT_SCOPE_DENIED');
+      const crossTenantSubmit = await student.client.rpc('submit_guided_learning_step_v2', { p_step_id: foreignStepId, p_answers: [], p_idempotency_key: `v2-e2e:cross-tenant:${suffix}` });
+      expect(crossTenantSubmit.error?.message).toContain('LEARNING_STEP_SCOPE_DENIED');
+      const crossTenantTeacher = await teacher.client.rpc('resolve_teacher_guided_learning_session_v2', { p_session_id: foreignSessionId, p_action: 'RESUME', p_target_canonical_skill_id: null });
+      expect(crossTenantTeacher.error?.message).toContain('LEARNING_TEACHER_SCOPE_DENIED');
       const plan = await student.client.rpc('create_or_get_learning_daily_plan', { p_institution_id: institutionId, p_student_id: studentRow.id, p_plan_date: '2026-09-30' });
       expect(plan.error).toBeNull();
       const planItems = await service.from('learning_daily_plan_items').select('session_id').eq('plan_id', plan.data).not('session_id', 'is', null);
@@ -171,6 +220,10 @@ adaptiveDescribe('adaptive learning V2 guided journey', () => {
       for (const page of pages) await page.close();
       if (institutionId) await service.from('institutions').delete().eq('id', institutionId);
       if (accountId) await service.from('accounts').delete().eq('id', accountId);
+      const foreignInstitutions = await service.from('institutions').select('id').like('name', 'TecEscola Adaptive V2 Foreign %');
+      if (foreignInstitutions.data?.length) await service.from('institutions').delete().in('id', foreignInstitutions.data.map((row: any) => row.id));
+      const foreignAccounts = await service.from('accounts').select('id').like('name', 'Adaptive V2 Foreign %');
+      if (foreignAccounts.data?.length) await service.from('accounts').delete().in('id', foreignAccounts.data.map((row: any) => row.id));
       for (const userId of userIds) {
         await service.from('profiles').delete().eq('id', userId);
         await service.auth.admin.deleteUser(userId);
