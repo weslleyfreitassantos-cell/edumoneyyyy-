@@ -275,6 +275,7 @@ begin
   select count(*) into v_expected_subject_count
     from public.learning_canonical_subjects subject
    where subject.active and subject.code = any(v_expected_subject_codes);
+  raise notice 'ADAPTIVE_V3_SUBJECT_COUNT=%', v_expected_subject_count;
   if v_expected_subject_count <> 15 then
     raise exception 'ADAPTIVE_V3_SKILL_REGISTRY_INCOMPLETE: expected 15 active canonical subjects, found %', v_expected_subject_count;
   end if;
@@ -286,6 +287,7 @@ begin
      and skill.active
      and subject.active
      and subject.code = any(v_expected_subject_codes);
+  raise notice 'ADAPTIVE_V3_SKILL_COUNT=%', v_expected_skill_count;
   if v_expected_skill_count <> 45 then
     raise exception 'ADAPTIVE_V3_SKILL_REGISTRY_INCOMPLETE: expected 45 V3 canonical skills, found %', v_expected_skill_count;
   end if;
@@ -389,6 +391,7 @@ begin
   if v_expected_content_count <> 180 then
     raise exception 'ADAPTIVE_V3_CONTENT_PREFLIGHT_INCOMPLETE: expected 180 questions, found %', v_expected_content_count;
   end if;
+  raise notice 'ADAPTIVE_V3_CONTENT_PREFLIGHT_COUNT=%', v_expected_content_count;
 
   for tag_row in
     select distinct misconception.value->>'tag_code' as tag_code
@@ -510,6 +513,7 @@ begin
    where question.source_type = 'TECESCOLA_CORE_V3'
      and question.active
      and question.metadata->>'content_pack' = 'tec-escola-core-v3';
+  raise notice 'ADAPTIVE_V3_CONTENT_MATERIALIZED_COUNT=%', v_materialized_question_count;
   if v_materialized_question_count <> v_expected_content_count then
     raise exception 'ADAPTIVE_V3_CONTENT_MATERIALIZATION_INCOMPLETE: expected %, found %',
       v_expected_content_count, v_materialized_question_count;
