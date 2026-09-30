@@ -32,6 +32,8 @@ interface HeaderProps {
   onToggleSidebar: () => void;
   onLogout: () => void;
   onUpdateProfileName: (fullName: string) => Promise<void>;
+  onUpdateProfileAvatar?: (file: File) => Promise<void>;
+  onRemoveProfileAvatar?: () => Promise<void>;
   onUpdateSelfRegistration?: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   theme: ThemePreference;
@@ -64,6 +66,8 @@ export default function Header({
   onToggleSidebar,
   onLogout,
   onUpdateProfileName,
+  onUpdateProfileAvatar = async () => undefined,
+  onRemoveProfileAvatar = async () => undefined,
   onUpdateSelfRegistration = async () => undefined,
   onUpdatePassword,
   theme,
@@ -87,6 +91,26 @@ export default function Header({
     currentUser.avatar?.trim() || null;
   const userInitials =
     getUserInitials(currentUser.name);
+
+  function renderAvatarContent() {
+    if (avatarUrl && !avatarFailed) {
+      return (
+        <img
+          className="h-full w-full object-cover"
+          alt={`Foto de ${currentUser.name}`}
+          src={avatarUrl}
+          referrerPolicy="no-referrer"
+          onError={() => setAvatarFailed(true)}
+        />
+      );
+    }
+
+    return (
+      <span aria-hidden="true">
+        {userInitials}
+      </span>
+    );
+  }
 
   useEffect(() => {
     setAvatarFailed(false);
@@ -258,21 +282,7 @@ export default function Header({
             </span>
 
             <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
-              {avatarUrl && !avatarFailed ? (
-                <img
-                  className="h-full w-full object-cover"
-                  alt={`Foto de ${currentUser.name}`}
-                  src={avatarUrl}
-                  referrerPolicy="no-referrer"
-                  onError={() =>
-                    setAvatarFailed(true)
-                  }
-                />
-              ) : (
-                <span aria-hidden="true">
-                  {userInitials}
-                </span>
-              )}
+              {renderAvatarContent()}
             </span>
 
             <ChevronDown
@@ -293,8 +303,8 @@ export default function Header({
             >
               <div className="border-b border-[#e4e8f1] bg-[#f8faff] p-4">
                 <div className="flex items-start gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f]">
-                    {userInitials}
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
+                    {renderAvatarContent()}
                   </span>
 
                   <div className="min-w-0">
@@ -369,6 +379,9 @@ export default function Header({
           returnFocusRef={userMenuButtonRef}
           onClose={() => setIsAccountModalOpen(false)}
           onUpdateName={onUpdateProfileName}
+          currentAvatar={avatarUrl}
+          onUpdateAvatar={onUpdateProfileAvatar}
+          onRemoveAvatar={onRemoveProfileAvatar}
           onUpdateSelfRegistration={onUpdateSelfRegistration}
           onUpdatePassword={onUpdatePassword}
           onSuccess={setAccountFeedback}

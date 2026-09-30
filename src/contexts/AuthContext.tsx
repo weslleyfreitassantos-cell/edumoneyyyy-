@@ -18,7 +18,12 @@ import {
   type PlatformRole,
 } from '../lib/roles';
 import {
+  PROFILE_AVATAR_REFRESH_DELAY_MS,
   ProfileServiceError,
+  getCurrentProfileAvatarPath,
+  removeCurrentProfileAvatar,
+  resolveCurrentProfileAvatar,
+  updateCurrentProfileAvatar,
   updateCurrentPassword,
   updateCurrentProfile,
 } from '../services/profileService';
@@ -33,6 +38,7 @@ export interface Profile {
   email: string;
   role: DatabaseRole;
   platform_role: PlatformRole;
+  avatar_path?: string | null;
   avatar_url: string | null;
   phone?: string | null;
 }
@@ -47,6 +53,8 @@ interface AuthContextType {
 
 interface AuthProfileActionsContextType {
   updateProfileName: (fullName: string) => Promise<void>;
+  updateProfileAvatar: (file: File) => Promise<void>;
+  removeProfileAvatar: () => Promise<void>;
   updateSelfRegistration: (input: SelfRegistrationUpdate) => Promise<void>;
   updatePassword: (newPassword: string) => Promise<void>;
 }
@@ -123,13 +131,23 @@ async function loadProfile(userId: string): Promise<Profile> {
     await assertActiveAccountAccess(userId);
   }
 
+  const avatarUrl = await resolveCurrentProfileAvatar(
+    data.avatar_url ?? null,
+    data.id,
+  );
+  const avatarPath = getCurrentProfileAvatarPath(
+    data.avatar_url ?? null,
+    data.id,
+  );
+
   return {
     id: data.id,
     full_name: data.full_name,
     email: data.email,
     role: data.role,
     platform_role: platformRole,
-    avatar_url: data.avatar_url ?? null,
+    avatar_path: avatarPath,
+    avatar_url: avatarUrl,
     phone: data.phone ?? null,
   };
 }
@@ -415,6 +433,65 @@ export function AuthProvider({
     synchronizeSession,
   ]);
 
+  useEffect(() => {
+    const avatarPath = profile?.avatar_path;
+    const userId = profile?.id;
+
+    if (!avatarPath || !userId) {
+      return;
+    }
+
+    let cancelled = false;
+    let timerId: number | null = null;
+
+    const refreshAvatar = async (): Promise<void> => {
+      let nextAvatarUrl: string | null = null;
+
+      try {
+        nextAvatarUrl = await resolveCurrentProfileAvatar(
+          avatarPath,
+          userId,
+        );
+      } catch {
+        // Initials remain available when a refresh cannot reach Storage.
+      }
+
+      if (cancelled) {
+        return;
+      }
+
+      const latestProfile = profileRef.current;
+
+      if (
+        latestProfile?.id === userId &&
+        latestProfile.avatar_path === avatarPath
+      ) {
+        setProfileState({
+          ...latestProfile,
+          avatar_url: nextAvatarUrl,
+        });
+      }
+
+      timerId = window.setTimeout(
+        () => void refreshAvatar(),
+        PROFILE_AVATAR_REFRESH_DELAY_MS,
+      );
+    };
+
+    timerId = window.setTimeout(
+      () => void refreshAvatar(),
+      PROFILE_AVATAR_REFRESH_DELAY_MS,
+    );
+
+    return () => {
+      cancelled = true;
+
+      if (timerId !== null) {
+        window.clearTimeout(timerId);
+      }
+    };
+  }, [profile?.avatar_path, profile?.id, setProfileState]);
+
   async function signIn(
     email: string,
     password: string,
@@ -508,6 +585,80 @@ export function AuthProvider({
     [],
   );
 
+  const updateProfileAvatar = useCallback(
+    async (file: File): Promise<void> => {
+      const currentProfile = profileRef.current;
+
+      if (!currentProfile) {
+        throw new ProfileServiceError(
+          'SESSION_EXPIRED',
+          'Sessão expirada.',
+        );
+      }
+
+      const updatedProfile = await updateCurrentProfileAvatar(file);
+      const latestProfile = profileRef.current;
+
+      if (
+        !latestProfile ||
+        latestProfile.id !== currentProfile.id ||
+        updatedProfile.path !== `${currentProfile.id}/avatar.webp`
+      ) {
+        throw new ProfileServiceError(
+          'PROFILE_UPDATE_FAILED',
+          'Perfil atualizado não corresponde ao usuário atual.',
+        );
+      }
+
+      setProfileState({
+        ...latestProfile,
+        avatar_path: updatedProfile.path,
+        avatar_url: updatedProfile.avatar_url,
+      });
+
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['profile'] }),
+        queryClient.invalidateQueries({ queryKey: ['account'] }),
+      ]);
+    },
+    [queryClient, setProfileState],
+  );
+
+  const removeProfileAvatar = useCallback(
+    async (): Promise<void> => {
+      const currentProfile = profileRef.current;
+
+      if (!currentProfile) {
+        throw new ProfileServiceError(
+          'SESSION_EXPIRED',
+          'Sessão expirada.',
+        );
+      }
+
+      await removeCurrentProfileAvatar();
+      const latestProfile = profileRef.current;
+
+      if (!latestProfile || latestProfile.id !== currentProfile.id) {
+        throw new ProfileServiceError(
+          'PROFILE_UPDATE_FAILED',
+          'Perfil atualizado não corresponde ao usuário atual.',
+        );
+      }
+
+      setProfileState({
+        ...latestProfile,
+        avatar_path: null,
+        avatar_url: null,
+      });
+
+      await Promise.all([
+        queryClient.invalidateQueries({ queryKey: ['profile'] }),
+        queryClient.invalidateQueries({ queryKey: ['account'] }),
+      ]);
+    },
+    [queryClient, setProfileState],
+  );
+
   const updateSelfRegistration = useCallback(
     async (input: SelfRegistrationUpdate): Promise<void> => {
       const currentProfile = profileRef.current;
@@ -573,6 +724,8 @@ export function AuthProvider({
       <AuthProfileActionsContext.Provider
         value={{
           updateProfileName,
+          updateProfileAvatar,
+          removeProfileAvatar,
           updateSelfRegistration,
           updatePassword,
         }}
