@@ -50,4 +50,3 @@ export function resolveAdaptiveCurriculumTarget(
     || left.canonicalSkillId.localeCompare(right.canonicalSkillId)
   ))[0] ?? null;
 }
-

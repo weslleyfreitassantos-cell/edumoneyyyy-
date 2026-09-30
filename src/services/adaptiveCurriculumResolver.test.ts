@@ -73,4 +73,3 @@ describe('adaptive curriculum resolver', () => {
     expect(result?.institutionSkillId).toBe('skill-a');
   });
 });
-
