@@ -179,7 +179,7 @@ declare
   target_skill_id uuid;
   prerequisite_id uuid;
   question_id uuid;
-  question_set_id uuid;
+  v_question_set_id uuid;
   question_number integer;
   purpose text;
   set_purpose text;
@@ -275,7 +275,6 @@ begin
   select count(*) into v_expected_subject_count
     from public.learning_canonical_subjects subject
    where subject.active and subject.code = any(v_expected_subject_codes);
-  raise notice 'ADAPTIVE_V3_SUBJECT_COUNT=%', v_expected_subject_count;
   if v_expected_subject_count <> 15 then
     raise exception 'ADAPTIVE_V3_SKILL_REGISTRY_INCOMPLETE: expected 15 active canonical subjects, found %', v_expected_subject_count;
   end if;
@@ -287,7 +286,6 @@ begin
      and skill.active
      and subject.active
      and subject.code = any(v_expected_subject_codes);
-  raise notice 'ADAPTIVE_V3_SKILL_COUNT=%', v_expected_skill_count;
   if v_expected_skill_count <> 45 then
     raise exception 'ADAPTIVE_V3_SKILL_REGISTRY_INCOMPLETE: expected 45 V3 canonical skills, found %', v_expected_skill_count;
   end if;
@@ -391,7 +389,6 @@ begin
   if v_expected_content_count <> 180 then
     raise exception 'ADAPTIVE_V3_CONTENT_PREFLIGHT_INCOMPLETE: expected 180 questions, found %', v_expected_content_count;
   end if;
-  raise notice 'ADAPTIVE_V3_CONTENT_PREFLIGHT_COUNT=%', v_expected_content_count;
 
   for tag_row in
     select distinct misconception.value->>'tag_code' as tag_code
@@ -513,7 +510,6 @@ begin
    where question.source_type = 'TECESCOLA_CORE_V3'
      and question.active
      and question.metadata->>'content_pack' = 'tec-escola-core-v3';
-  raise notice 'ADAPTIVE_V3_CONTENT_MATERIALIZED_COUNT=%', v_materialized_question_count;
   if v_materialized_question_count <> v_expected_content_count then
     raise exception 'ADAPTIVE_V3_CONTENT_MATERIALIZATION_INCOMPLETE: expected %, found %',
       v_expected_content_count, v_materialized_question_count;
@@ -530,34 +526,29 @@ begin
      where subject.active
   loop
     for set_purpose in select unnest(array['PROBE','PRACTICE','TRANSFER','LOCK_IN','REVIEW']) loop
-      raise notice 'ADAPTIVE_V3_QUESTION_SET_BEGIN=%/%', target_row.subject_code, set_purpose;
-      select id into question_set_id from public.learning_question_sets question_set
-       where question_set.scope = 'GLOBAL' and question_set.canonical_skill_id = target_row.target_id
-         and question_set.purpose = set_purpose and question_set.version = 3 limit 1;
-      if question_set_id is null then
+      select id into v_question_set_id from public.learning_question_sets question_set
+        where question_set.scope = 'GLOBAL' and question_set.canonical_skill_id = target_row.target_id
+          and question_set.purpose = set_purpose and question_set.version = 3 limit 1;
+      if v_question_set_id is null then
         insert into public.learning_question_sets(scope, canonical_skill_id, purpose, version, metadata)
         values ('GLOBAL', target_row.target_id, set_purpose, 3,
           jsonb_build_object('content_pack', 'tec-escola-core-v3', 'adaptive_version', 'V3'))
-        returning id into question_set_id;
+        returning id into v_question_set_id;
       else
         update public.learning_question_sets set
           metadata = metadata || jsonb_build_object('content_pack', 'tec-escola-core-v3', 'adaptive_version', 'V3'),
           active = true, updated_at = now()
-         where id = question_set_id;
+         where id = v_question_set_id;
       end if;
-      raise notice 'ADAPTIVE_V3_QUESTION_SET_CREATED=%/%', target_row.subject_code, set_purpose;
-      delete from public.learning_question_set_items item where item.question_set_id = question_set_id;
-      raise notice 'ADAPTIVE_V3_QUESTION_SET_CLEARED=%/%', target_row.subject_code, set_purpose;
+      delete from public.learning_question_set_items item where item.question_set_id = v_question_set_id;
       insert into public.learning_question_set_items(question_set_id, question_bank_id, position)
-      select question_set_id, question.id, row_number() over (order by question.metadata->>'content_question_id') - 1
+      select v_question_set_id, question.id, row_number() over (order by question.metadata->>'content_question_id') - 1
         from public.learning_question_bank question
        where question.source_type = 'TECESCOLA_CORE_V3'
           and question.metadata->>'content_question_id' like 'v3-' || lower(target_row.subject_code) || '-' || lower(target_row.target_code) || '-%'
           and question.metadata->>'adaptive_v3_purpose' = set_purpose and question.active;
-      raise notice 'ADAPTIVE_V3_QUESTION_SET_DONE=%/%', target_row.subject_code, set_purpose;
     end loop;
   end loop;
-  raise notice 'ADAPTIVE_V3_QUESTION_SETS_READY';
 
   insert into public.learning_skill_relationships(from_canonical_skill_id, to_canonical_skill_id, relation_type, relation_source, confidence, metadata)
   select target.id, ratio.id, 'PREREQUISITE', 'TECESCOLA_DERIVED', .8,
@@ -573,7 +564,6 @@ begin
     join public.learning_curriculum_skills ratio on ratio.catalog_id = percentage.catalog_id and ratio.code = 'RATIO_PROPORTION'
    where percentage.catalog_id = v_catalog_id and percentage.code = 'PERCENTAGE'
    on conflict do nothing;
-  raise notice 'ADAPTIVE_V3_RELATIONSHIPS_READY';
 
 end;
 $seed$;
