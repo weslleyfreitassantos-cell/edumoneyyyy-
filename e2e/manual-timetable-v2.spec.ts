@@ -169,8 +169,8 @@ manualDescribe('manual timetable editor v2', () => {
       await page.getByRole('button', { name: 'Editar publicada em novo rascunho' }).click();
       await expect(page.getByText('Novo rascunho criado a partir da versão selecionada.', { exact: false })).toBeVisible({ timeout: 30_000 });
       const editor = page.getByRole('region', { name: 'Editor visual de grade horária' });
-      await editor.getByLabel('De').selectOption('2');
-      await editor.getByLabel('Para').selectOption('3');
+      await editor.getByLabel('De', { exact: true }).selectOption('2');
+      await editor.getByLabel('Para', { exact: true }).selectOption('3');
       const copyDraft = await directorDb.from('timetable_versions').select('id').eq('institution_id', institutionId).eq('status', 'DRAFT').order('created_at', { ascending: false }).limit(1).single();
       if (copyDraft.error) throw copyDraft.error;
       const beforeCopy = await directorDb.from('timetable_version_entries').select('id').eq('version_id', copyDraft.data.id).eq('active', true);
