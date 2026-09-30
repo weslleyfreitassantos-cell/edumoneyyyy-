@@ -37,7 +37,7 @@ create table if not exists public.learning_question_sets (
   metadata jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  constraint learning_question_sets_scope_check check (
+  constraint learning_question_sets_scope_alignment_check check (
     (scope = 'GLOBAL' and institution_id is null and teacher_profile_id is null)
     or (scope = 'INSTITUTION' and institution_id is not null and teacher_profile_id is null)
     or (scope = 'TEACHER' and institution_id is not null and teacher_profile_id is not null)
