@@ -544,8 +544,11 @@ begin
       insert into public.learning_question_set_items(question_set_id, question_bank_id, position)
       select v_question_set_id, question.id, row_number() over (order by question.metadata->>'content_question_id') - 1
         from public.learning_question_bank question
+        join public.learning_question_bank_skill_links primary_link
+          on primary_link.question_bank_id = question.id
+         and primary_link.canonical_skill_id = target_row.target_id
+         and primary_link.skill_role = 'PRIMARY'
        where question.source_type = 'TECESCOLA_CORE_V3'
-          and question.metadata->>'content_question_id' like 'v3-' || lower(target_row.subject_code) || '-' || lower(target_row.target_code) || '-%'
           and question.metadata->>'adaptive_v3_purpose' = set_purpose and question.active;
     end loop;
   end loop;

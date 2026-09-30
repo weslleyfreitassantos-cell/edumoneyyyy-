@@ -62,6 +62,12 @@ describe('adaptive learning knowledge graph v3 migration', () => {
     expect(migration).toContain('join public.learning_question_bank bank on bank.id = item.question_bank_id and bank.active');
   });
 
+  it('materializes V3 question sets from explicit canonical skill links', () => {
+    expect(migration).toContain('join public.learning_question_bank_skill_links primary_link');
+    expect(migration).toContain('primary_link.canonical_skill_id = target_row.target_id');
+    expect(migration).toContain("primary_link.skill_role = 'PRIMARY'");
+  });
+
   it('keeps capability evidence gates explicit for non-objective subjects', () => {
     expect(migration).toContain("'CONSTRUCTED_EVIDENCE_REQUIRED'");
     expect(migration).toContain("'OBSERVATIONAL_EVIDENCE_REQUIRED'");
