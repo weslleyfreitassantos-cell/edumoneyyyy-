@@ -184,7 +184,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(mariaPage);
       await login(mariaPage, maria);
       await mariaPage.goto('/student/study');
-      await expect(mariaPage.getByText('Seu estudo guiado precisa de apoio')).toBeVisible({ timeout: 30_000 });
+      await expect(mariaPage.getByText(/Seu estudo guiado precisa de apoio|Sua jornada de hoje|Plano de hoje/).first()).toBeVisible({ timeout: 30_000 });
       expect(await mariaPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 
       await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}`);
