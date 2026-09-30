@@ -56,6 +56,12 @@ describe('adaptive learning knowledge graph v3 migration', () => {
     expect(migration).toContain('ADAPTIVE_V3_CONTENT_MATERIALIZATION_INCOMPLETE');
   });
 
+  it('does not let an empty newer question set shadow a usable fallback', () => {
+    expect(migration).toContain('create or replace function private.pick_learning_question_set_v2');
+    expect(migration).toContain('where item.question_set_id = set_row.id');
+    expect(migration).toContain('join public.learning_question_bank bank on bank.id = item.question_bank_id and bank.active');
+  });
+
   it('keeps capability evidence gates explicit for non-objective subjects', () => {
     expect(migration).toContain("'CONSTRUCTED_EVIDENCE_REQUIRED'");
     expect(migration).toContain("'OBSERVATIONAL_EVIDENCE_REQUIRED'");

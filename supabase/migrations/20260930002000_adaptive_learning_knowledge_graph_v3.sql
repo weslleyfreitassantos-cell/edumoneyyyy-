@@ -568,6 +568,36 @@ begin
 end;
 $seed$;
 
+-- Keep an empty newer set from shadowing a usable fallback set in the V2 flow.
+create or replace function private.pick_learning_question_set_v2(
+  target_institution_id uuid,
+  target_teacher_profile_id uuid,
+  target_skill_id uuid,
+  target_purpose text
+)
+returns uuid language sql stable security definer set search_path = ''
+as $$
+  select set_row.id
+    from public.learning_question_sets set_row
+   where set_row.canonical_skill_id = target_skill_id
+     and set_row.purpose = target_purpose
+     and set_row.active
+     and exists (
+       select 1
+         from public.learning_question_set_items item
+         join public.learning_question_bank bank on bank.id = item.question_bank_id and bank.active
+        where item.question_set_id = set_row.id
+     )
+     and (
+       (set_row.scope = 'TEACHER' and set_row.institution_id = target_institution_id and set_row.teacher_profile_id = target_teacher_profile_id)
+       or (set_row.scope = 'INSTITUTION' and set_row.institution_id = target_institution_id)
+       or (set_row.scope = 'GLOBAL' and set_row.institution_id is null)
+     )
+   order by case set_row.scope when 'TEACHER' then 0 when 'INSTITUTION' then 1 else 2 end,
+            set_row.version desc, set_row.id
+   limit 1;
+$$;
+
 create or replace function private.enforce_learning_v3_capability_gate()
 returns trigger language plpgsql security definer set search_path = ''
 as $$
