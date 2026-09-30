@@ -553,6 +553,7 @@ begin
          and question.metadata->>'adaptive_v3_purpose' = set_purpose and question.active;
     end loop;
   end loop;
+  raise notice 'ADAPTIVE_V3_QUESTION_SETS_READY';
 
   insert into public.learning_skill_relationships(from_canonical_skill_id, to_canonical_skill_id, relation_type, relation_source, confidence, metadata)
   select target.id, ratio.id, 'PREREQUISITE', 'TECESCOLA_DERIVED', .8,
@@ -567,7 +568,8 @@ begin
     from public.learning_curriculum_skills percentage
     join public.learning_curriculum_skills ratio on ratio.catalog_id = percentage.catalog_id and ratio.code = 'RATIO_PROPORTION'
    where percentage.catalog_id = v_catalog_id and percentage.code = 'PERCENTAGE'
-  on conflict do nothing;
+   on conflict do nothing;
+  raise notice 'ADAPTIVE_V3_RELATIONSHIPS_READY';
 
 end;
 $seed$;
