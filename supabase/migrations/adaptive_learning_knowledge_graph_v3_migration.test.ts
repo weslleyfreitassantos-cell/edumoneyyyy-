@@ -34,9 +34,19 @@ describe('adaptive learning knowledge graph v3 migration', () => {
   it('seeds all target verticals and uses authored V3 provenance', () => {
     expect(migration).toContain("'TECESCOLA_CORE_V3'");
     expect(migration).toContain("'adaptive_version', 'V3'");
-    expect(migration).toContain("for question_number in 1..12 loop");
+    expect(migration).toContain('v3_question_pack');
+    expect(migration).toContain('Um carro percorre 120 km em 2 h');
     expect(migration).toContain("'COMPUTING'");
     expect(migration).toContain("'RELIGIOUS_EDUCATION'");
+    expect(migration).not.toContain('for question_number in 1..12 loop');
+    expect(migration).not.toContain("target_row.subject_name || ' | '");
+  });
+
+  it('keeps capability evidence gates explicit for non-objective subjects', () => {
+    expect(migration).toContain("'CONSTRUCTED_EVIDENCE_REQUIRED'");
+    expect(migration).toContain("'OBSERVATIONAL_EVIDENCE_REQUIRED'");
+    expect(migration).toContain('enforce_learning_v3_capability_gate');
+    expect(migration).toContain("new.state := 'PRACTICING'");
   });
 
   it('does not expose option misconception mappings to authenticated students', () => {

@@ -106,6 +106,28 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
 
       const canonical = await service.from('learning_curriculum_skills').select('id').eq('code', 'FRACTIONS').single();
       canonicalSkillId = required(canonical.data?.id, 'FRACTIONS canonical skill');
+      const physicsSkill = await service.from('learning_curriculum_skills').select('id').eq('code', 'PHYSICS_AVERAGE_SPEED').single();
+      const ratioSkill = await service.from('learning_curriculum_skills').select('id').eq('code', 'RATIO_PROPORTION').single();
+      const speedTag = await service.from('learning_misconception_tags').select('id').eq('code', 'SPEED_UNIT_CONVERSION').single();
+      expect(physicsSkill.error).toBeNull();
+      expect(ratioSkill.error).toBeNull();
+      expect(speedTag.error).toBeNull();
+      const authoredPhysics = await service.from('learning_question_bank').select('id,statement,correct_answer').eq('source_type', 'TECESCOLA_CORE_V3').ilike('statement', 'Um carro percorre 120 km em 2 h%').single();
+      expect(authoredPhysics.error).toBeNull();
+      expect(authoredPhysics.data?.statement).toContain('120 km em 2 h');
+      const physicsBridgeSignal = await service.from('learning_misconception_signals').insert({
+        institution_id: institutionId,
+        student_id: studentId,
+        canonical_skill_id: ratioSkill.data.id,
+        misconception_tag_id: speedTag.data.id,
+        state: 'CONFIRMED',
+        signal_count: 3,
+        distinct_context_count: 2,
+        confidence: 0.9,
+        first_signal_at: '2026-09-01T00:00:00Z',
+        last_signal_at: '2026-09-20T00:00:00Z',
+      });
+      expect(physicsBridgeSignal.error).toBeNull();
       const unitId = (await insertOne(service, 'learning_units', { institution_id: institutionId, subject_id: subjectId, title: `Frações ${suffix}`, active: true })).id;
       skillId = (await insertOne(service, 'learning_skills', { institution_id: institutionId, unit_id: unitId, title: `Frações ${suffix}`, active: true })).id;
       await insertOne(service, 'learning_skill_canonical_links', { institution_id: institutionId, learning_skill_id: skillId, canonical_skill_id: canonicalSkillId, active: true });
@@ -125,6 +147,18 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       expect(aliceSession.error).toBeNull();
       const mariaSession = await maria.client.rpc('start_guided_learning_session', { p_institution_id: institutionId, p_student_id: mariaStudentId, p_target_canonical_skill_id: canonicalSkillId });
       expect(mariaSession.error).toBeNull();
+      const physicsBridge = await alice.client.rpc('get_adaptive_v3_plan', {
+        p_institution_id: institutionId,
+        p_student_id: studentId,
+        p_target_canonical_skill_id: physicsSkill.data.id,
+      });
+      expect(physicsBridge.error).toBeNull();
+      expect(physicsBridge.data).toMatchObject({
+        decision: 'CROSS_SUBJECT_BRIDGE',
+        reason_code: 'PREREQUISITE_CONFIRMED_GAP',
+        original_target_skill: 'PHYSICS_AVERAGE_SPEED',
+        current_skill: 'RATIO_PROPORTION',
+      });
 
       const alicePlan = await alice.client.rpc('create_or_get_learning_daily_plan', { p_institution_id: institutionId, p_student_id: studentId, p_plan_date: '2026-09-29' });
       const alicePlanAgain = await alice.client.rpc('create_or_get_learning_daily_plan', { p_institution_id: institutionId, p_student_id: studentId, p_plan_date: '2026-09-29' });
@@ -170,6 +204,9 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });
       await expect(teacherPage.getByRole('heading', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByRole('heading', { name: 'Trilhas e pacotes', exact: true })).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem da turma' })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.getByLabel('Turma para analisar lacunas').selectOption(classId);
+      await expect(teacherPage.getByText('PHYSICS_AVERAGE_SPEED', { exact: true })).toBeVisible({ timeout: 30_000 });
       const packageSection = teacherPage.getByRole('region', { name: 'Trilhas e pacotes' });
       await packageSection.getByLabel('Pacote').selectOption(starterPackage.data.id);
       await packageSection.getByLabel('Turma').selectOption(classId);
@@ -189,6 +226,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
 
       await teacherPage.goto(`/teacher/pedagogical-center/students/${mariaStudentId}`);
       await expect(teacherPage.getByText('NEEDS_TEACHER_SUPPORT')).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem' })).toBeVisible({ timeout: 30_000 });
 
       const alicePage = await browser.newPage({ viewport: { width: 390, height: 844 } });
       pages.push(alicePage);

@@ -1,3 +1,5 @@
+import { V3_AUTHORED_CONTENT } from './adaptiveLearningV3Content';
+
 export const V3_PURPOSES = ['PROBE', 'PRACTICE', 'TRANSFER', 'LOCK_IN', 'REVIEW'] as const;
 export type AdaptiveV3Purpose = (typeof V3_PURPOSES)[number];
 
@@ -46,6 +48,7 @@ export interface AdaptiveV3Question {
   correctAnswer: string;
   explanation: string;
   misconceptionsByOption: Readonly<Record<string, string[]>>;
+  capability: AdaptiveV3SubjectContract['capability'];
   provenance: 'TECESCOLA_CORE_V3';
 }
 
@@ -62,13 +65,12 @@ export const V3_SUBJECT_CONTRACTS: readonly AdaptiveV3SubjectContract[] = V3_SUB
   name,
   skills,
   targetSkill,
-  capability: 'OBJECTIVE_EVIDENCE_READY',
+  capability: code === 'PHILOSOPHY' || code === 'ART'
+    ? 'CONSTRUCTED_EVIDENCE_REQUIRED'
+    : code === 'PHYSICAL_EDUCATION'
+      ? 'OBSERVATIONAL_EVIDENCE_REQUIRED'
+      : 'OBJECTIVE_EVIDENCE_READY',
 }));
-
-const CONTEXT_FAMILIES = [
-  'DIRECT_CALCULATION', 'DISCOUNT', 'INCREASE', 'PROPORTION', 'FINANCIAL_CONTEXT',
-  'CLASSROOM', 'COMPARISON', 'CHART', 'DAILY_LIFE', 'TRANSFER', 'LOCK_IN', 'REVIEW',
-] as const;
 
 const PURPOSE_FOR_INDEX: readonly AdaptiveV3Purpose[] = [
   'PROBE', 'PROBE', 'PROBE', 'PRACTICE', 'PRACTICE', 'PRACTICE', 'PRACTICE',
@@ -87,33 +89,29 @@ export function generateV3Questions(
   subject: AdaptiveV3SubjectContract,
   domain: string,
 ): AdaptiveV3Question[] {
-  return PURPOSE_FOR_INDEX.map((purpose, index) => {
-    const number = index + 1;
-    const contextFamily = CONTEXT_FAMILIES[index];
-    const correctAnswer = `Aplicacao coerente de ${subject.targetSkill}`;
+  const authored = V3_AUTHORED_CONTENT[subject.code] ?? [];
+  return authored.map((item, index) => {
+    const purpose = PURPOSE_FOR_INDEX[index] ?? 'REVIEW';
+    const misconception = item.misconception;
     return {
-      id: `v3-${subject.code.toLowerCase()}-${subject.targetSkill.toLowerCase()}-${number}`,
+      id: item.id,
       subject: subject.code,
-      domain,
-      topic: subject.targetSkill,
+      domain: item.domain || domain,
+      topic: item.topic,
       primarySkill: subject.targetSkill,
-      supportingSkills: [],
-      prerequisiteSkills: [],
-      transferSkills: [],
+      supportingSkills: item.secondaryLinks.filter((link) => link.role === 'SUPPORTING').map((link) => link.skillCode),
+      prerequisiteSkills: item.secondaryLinks.filter((link) => link.role === 'PREREQUISITE').map((link) => link.skillCode),
+      transferSkills: item.secondaryLinks.filter((link) => link.role === 'TRANSFER').map((link) => link.skillCode),
       purpose,
-      difficulty: number <= 3 ? 'EASY' : number >= 10 ? 'HARD' : 'MEDIUM',
+      difficulty: index < 3 ? 'EASY' : index >= 10 ? 'HARD' : 'MEDIUM',
       cognitiveProcess: PROCESS_FOR_PURPOSE[purpose],
-      contextFamily,
-      statement: `${subject.name} | ${subject.targetSkill} | ${contextFamily} | questao ${number}: qual alternativa aplica melhor o conceito ao contexto apresentado?`,
-      options: [
-        correctAnswer,
-        `Confusao comum sobre ${subject.targetSkill}`,
-        `Informacao sem relacao com ${subject.targetSkill}`,
-        `Conclusao que contradiz ${subject.targetSkill}`,
-      ],
-      correctAnswer,
-      explanation: `A alternativa correta relaciona o contexto ao conceito de ${subject.targetSkill} sem extrapolar as evidencias.`,
-      misconceptionsByOption: {},
+      contextFamily: item.topic.toUpperCase().replace(/[^A-Z0-9]+/g, '_'),
+      statement: item.statement,
+      options: item.options,
+      correctAnswer: item.correctAnswer,
+      explanation: item.explanation,
+      misconceptionsByOption: { [misconception.option]: [misconception.code] },
+      capability: subject.capability,
       provenance: 'TECESCOLA_CORE_V3',
     };
   });
@@ -133,6 +131,12 @@ export interface AdaptiveV3ValidationResult {
   missingCognitiveProcess: number;
   missingProvenance: number;
   invalidMisconceptions: number;
+  duplicateOptions: number;
+  genericTemplateStems: number;
+  genericPlaceholderOptions: number;
+  missingRealTopic: number;
+  invalidPurpose: number;
+  invalidCapability: number;
   purposeCoverage: Record<string, number>;
 }
 
@@ -153,7 +157,16 @@ export function validateAdaptiveV3Questions(
   let missingCognitiveProcess = 0;
   let missingProvenance = 0;
   let invalidMisconceptions = 0;
+  let duplicateOptions = 0;
+  let genericTemplateStems = 0;
+  let genericPlaceholderOptions = 0;
+  let missingRealTopic = 0;
+  let invalidPurpose = 0;
+  let invalidCapability = 0;
   const purposeCoverage: Record<string, number> = {};
+  const genericStem = 'qual alternativa aplica melhor o conceito ao contexto apresentado?';
+  const genericOptions = ['aplicacao coerente', 'confusao comum', 'informacao sem relacao', 'conclusao que contradiz'];
+  const capabilities = ['OBJECTIVE_EVIDENCE_READY', 'CONSTRUCTED_EVIDENCE_REQUIRED', 'OBSERVATIONAL_EVIDENCE_REQUIRED'];
 
   for (const question of questions) {
     const stem = question.statement.trim().toLocaleLowerCase('pt-BR');
@@ -170,11 +183,19 @@ export function validateAdaptiveV3Questions(
     if (!knownSkills.has(question.primarySkill) || roles.some(([, skill]) => !knownSkills.has(skill))) invalidRelationRoles += 1;
     if (!knownSubjects.has(question.subject)) invalidSubjects += 1;
     if (!knownSkills.has(question.primarySkill) || roles.some(([, skill]) => !knownSkills.has(skill))) invalidSkills += 1;
-    if (question.options.length < 2 || new Set(question.options.map((option) => option.trim())).size !== question.options.length) invalidOptions += 1;
+    const normalizedOptions = question.options.map((option) => option.trim().toLocaleLowerCase('pt-BR'));
+    const hasDuplicateOptions = new Set(normalizedOptions).size !== normalizedOptions.length;
+    if (question.options.length < 2 || hasDuplicateOptions) invalidOptions += 1;
+    if (hasDuplicateOptions) duplicateOptions += 1;
     if (!question.options.some((option) => option.trim() === question.correctAnswer.trim())) invalidAnswers += 1;
     if (!question.explanation.trim()) missingExplanations += 1;
     if (!V3_COGNITIVE_PROCESSES.includes(question.cognitiveProcess)) missingCognitiveProcess += 1;
     if (question.provenance !== 'TECESCOLA_CORE_V3') missingProvenance += 1;
+    if (!V3_PURPOSES.includes(question.purpose)) invalidPurpose += 1;
+    if (!capabilities.includes(question.capability)) invalidCapability += 1;
+    if (!question.topic.trim() || question.topic.trim().toLocaleLowerCase('pt-BR') === question.primarySkill.toLocaleLowerCase('pt-BR')) missingRealTopic += 1;
+    if (stem.includes(genericStem)) genericTemplateStems += 1;
+    if (normalizedOptions.some((option) => genericOptions.some((token) => option.startsWith(token)))) genericPlaceholderOptions += 1;
     for (const [option, tags] of Object.entries(question.misconceptionsByOption)) {
       if (!question.options.includes(option) || tags.some((tag) => !tag.trim())) invalidMisconceptions += 1;
     }
@@ -185,12 +206,16 @@ export function validateAdaptiveV3Questions(
   const valid = duplicateStems === 0 && missingPrimary === 0 && multiplePrimary === 0
     && invalidRelationRoles === 0 && invalidSubjects === 0 && invalidSkills === 0
     && invalidOptions === 0 && invalidAnswers === 0 && missingExplanations === 0
-    && missingCognitiveProcess === 0 && missingProvenance === 0 && invalidMisconceptions === 0;
+    && missingCognitiveProcess === 0 && missingProvenance === 0 && invalidMisconceptions === 0
+    && duplicateOptions === 0 && genericTemplateStems === 0 && genericPlaceholderOptions === 0
+    && missingRealTopic === 0 && invalidPurpose === 0 && invalidCapability === 0;
   return {
     valid, duplicateStems, missingPrimary, multiplePrimary, invalidRelationRoles,
     invalidSubjects, invalidSkills, invalidOptions, invalidAnswers,
     missingExplanations, missingCognitiveProcess, missingProvenance,
-    invalidMisconceptions, purposeCoverage,
+    invalidMisconceptions, duplicateOptions, genericTemplateStems,
+    genericPlaceholderOptions, missingRealTopic, invalidPurpose,
+    invalidCapability, purposeCoverage,
   };
 }
 

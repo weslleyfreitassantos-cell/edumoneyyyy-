@@ -51,10 +51,21 @@ to it after recovery.
 
 The initial registry covers Portuguese, Mathematics, Science, Biology, Physics,
 Chemistry, History, Geography, Philosophy, Sociology, Art, Physical Education,
-English, Religious Education and Computing. Each has at least three canonical
-skills and one objective-evidence target vertical. Art and Physical Education
-are explicitly capability-limited; objective questions do not claim to assess
-future production or observation evidence.
+English, Religious Education and Computing. Each has three canonical skills,
+one target vertical and twelve authored questions in the versioned
+`content/adaptive/tec-escola-core-v3` pack (180 questions total). The pack uses
+one explicit `PRIMARY` mapping per question, with secondary links only where
+the statement supports them. Physics includes an authored bridge from ratio
+and proportion to average speed; it is not generated from a generic template.
+
+Art and Philosophy use `CONSTRUCTED_EVIDENCE_REQUIRED`, while Physical
+Education uses `OBSERVATIONAL_EVIDENCE_REQUIRED`. Objective evidence alone
+cannot move those capabilities to `MASTERED`; the database gate caps them at
+`PRACTICING` until the appropriate evidence exists. The teacher detail view
+shows the student's state, mastery, confidence, evidence and confirmed
+misconceptions. The pedagogical center shows a class heatmap without ranking,
+and the student sees only a friendly bridge or diagnostic message rather than
+internal reason codes.
 
 ## BNCC role
 
@@ -64,8 +75,8 @@ prerequisite graph or adaptive planner.
 
 ## Limitations and next increment
 
-The first V3 verticals are deterministic authored fixtures, not a full
-curriculum. The next increment can add reviewed BNCC references, richer
-question writing, constructed responses, teacher rubrics, projects and
-observation evidence. No LLM tutor, ML mastery, TRI, automatic essay grading,
-vision grading or audio grading is part of V3.
+The V3 pack is a deterministic authored core, not a full curriculum. The next
+increment can add reviewed BNCC references, richer question writing,
+constructed responses, teacher rubrics, projects and observation evidence. No
+LLM tutor, ML mastery, TRI, automatic essay grading, vision grading or audio
+grading is part of V3.

@@ -28,6 +28,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
 import {
+  useStudentAdaptiveV3Plan,
   useStudentAdaptiveGuidance,
   useStudentAdaptiveTarget,
 } from '../../hooks/useAdaptiveLearning';
@@ -51,6 +52,7 @@ import {
   useGuidedLearningSessionV2,
 } from '../../hooks/useLearningCenter';
 import type { LearningActivity } from '../../services/learningCenterService';
+import { StudentAdaptiveBridgeCard } from './KnowledgeGraphPanels';
 
 function subjectName(activity: LearningActivity): string | undefined {
   return Array.isArray(activity.subjects)
@@ -168,6 +170,11 @@ export default function StudyCenterPage() {
     currentInstitutionId ?? undefined,
     student.data?.id,
     adaptiveTarget.data?.institutionSkillId,
+  );
+  const adaptiveV3Plan = useStudentAdaptiveV3Plan(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+    adaptiveTarget.data?.canonicalSkillId,
   );
 
   const normalizedSearch = search.toLocaleLowerCase('pt-BR').trim();
@@ -395,6 +402,13 @@ export default function StudyCenterPage() {
           </div>
         ) : <p className="mt-4 text-sm text-slate-500">Nenhuma trilha atribuída ainda.</p>}
       </section>
+
+      {(adaptiveV3Plan.data || adaptiveV3Plan.isLoading) ? (
+        <StudentAdaptiveBridgeCard
+          plan={adaptiveV3Plan.data}
+          isLoading={adaptiveV3Plan.isLoading}
+        />
+      ) : null}
 
       {adaptiveGuidance.data && (
         <section

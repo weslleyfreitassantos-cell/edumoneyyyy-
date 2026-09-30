@@ -14,6 +14,7 @@ import {
   planAdaptiveKnowledgeGraphV3,
   validateAdaptiveV3Questions,
 } from './adaptiveLearningV3';
+import { V3_AUTHORED_CONTENT } from './adaptiveLearningV3Content';
 
 describe('adaptive learning V3 knowledge graph contract', () => {
   it('keeps the authored registry aligned with the executable subject contract', () => {
@@ -35,6 +36,9 @@ describe('adaptive learning V3 knowledge graph contract', () => {
 
     expect(result.valid).toBe(true);
     expect(questions).toHaveLength(180);
+    expect(result.genericTemplateStems).toBe(0);
+    expect(result.genericPlaceholderOptions).toBe(0);
+    expect(result.missingRealTopic).toBe(0);
     for (const subject of V3_SUBJECT_CONTRACTS) {
       expect(subject.skills).toHaveLength(3);
       expect(questions.filter((question) => question.subject === subject.code)).toHaveLength(12);
@@ -42,6 +46,37 @@ describe('adaptive learning V3 knowledge graph contract', () => {
         expect(questions.filter((question) => question.subject === subject.code && question.purpose === purpose).length).toBeGreaterThan(0);
       }
     }
+  });
+
+  it('ships real authored content with one primary mapping per question', () => {
+    const authored = Object.values(V3_AUTHORED_CONTENT).flat();
+    expect(authored).toHaveLength(180);
+    expect(new Set(authored.map((question) => question.id)).size).toBe(180);
+    expect(authored.filter((question) => question.subject === 'PHYSICS').some((question) => question.statement.includes('120 km em 2 h'))).toBe(true);
+    expect(authored.every((question) => question.options.includes(question.correctAnswer))).toBe(true);
+    expect(authored.every((question) => question.misconception.option !== question.correctAnswer)).toBe(true);
+    expect(authored.every((question) => question.topic && !question.topic.includes('questao'))).toBe(true);
+  });
+
+  it('rejects the former generic template and placeholder options', () => {
+    const subject = V3_SUBJECT_CONTRACTS[0];
+    const [question] = generateV3Questions(subject, subject.skills[2]);
+    const invalid = {
+      ...question,
+      statement: 'qual alternativa aplica melhor o conceito ao contexto apresentado?',
+      options: ['Aplicacao coerente de X', 'Confusao comum sobre X', 'Informacao sem relacao com X'],
+      correctAnswer: 'Aplicacao coerente de X',
+    };
+    const result = validateAdaptiveV3Questions([invalid], new Set([subject.code]), new Set(subject.skills));
+    expect(result.valid).toBe(false);
+    expect(result.genericTemplateStems).toBe(1);
+    expect(result.genericPlaceholderOptions).toBe(1);
+  });
+
+  it('keeps non-objective evidence from claiming mastery', () => {
+    expect(V3_SUBJECT_CONTRACTS.find((subject) => subject.code === 'PHILOSOPHY')?.capability).toBe('CONSTRUCTED_EVIDENCE_REQUIRED');
+    expect(V3_SUBJECT_CONTRACTS.find((subject) => subject.code === 'ART')?.capability).toBe('CONSTRUCTED_EVIDENCE_REQUIRED');
+    expect(V3_SUBJECT_CONTRACTS.find((subject) => subject.code === 'PHYSICAL_EDUCATION')?.capability).toBe('OBSERVATIONAL_EVIDENCE_REQUIRED');
   });
 
   it('rejects a question without exactly one primary knowledge mapping', () => {

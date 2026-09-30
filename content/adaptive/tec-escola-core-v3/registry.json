@@ -103,7 +103,7 @@
       "name": "Filosofia",
       "domains": ["CONCEITO", "ARGUMENTO", "LOGICA"],
       "targetSkill": "PHILOSOPHY_ARGUMENT",
-      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "capability": "CONSTRUCTED_EVIDENCE_REQUIRED",
       "skills": [
         {"code":"PHILOSOPHY_CONCEPT","title":"Formacao de conceitos","domain":"CONCEITO"},
         {"code":"PHILOSOPHY_ARGUMENT","title":"Argumentacao filosofica","domain":"ARGUMENTO"},
@@ -127,7 +127,7 @@
       "name": "Arte",
       "domains": ["ELEMENTOS", "INTERPRETACAO", "CONTEXTO"],
       "targetSkill": "ART_INTERPRETATION",
-      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "capability": "CONSTRUCTED_EVIDENCE_REQUIRED",
       "skills": [
         {"code":"ART_ELEMENTS","title":"Elementos visuais","domain":"ELEMENTOS"},
         {"code":"ART_INTERPRETATION","title":"Interpretacao de obras","domain":"INTERPRETACAO"},
@@ -139,7 +139,7 @@
       "name": "Educacao Fisica",
       "domains": ["CORPO", "ESPORTES", "SAUDE"],
       "targetSkill": "PE_SPORT_PRINCIPLES",
-      "capability": "OBJECTIVE_EVIDENCE_READY",
+      "capability": "OBSERVATIONAL_EVIDENCE_REQUIRED",
       "skills": [
         {"code":"PE_BODY_MOVEMENT","title":"Corpo e movimento","domain":"CORPO"},
         {"code":"PE_SPORT_PRINCIPLES","title":"Principios dos esportes","domain":"ESPORTES"},

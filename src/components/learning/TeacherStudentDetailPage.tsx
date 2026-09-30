@@ -4,12 +4,14 @@ import { useState } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
 import { useInstitution } from '../../contexts/InstitutionContext';
+import { useTeacherStudentKnowledgeGraph } from '../../hooks/useAdaptiveLearning';
 import {
   useAssignLearningPackage,
   useLearningPackages,
   useTeacherLearningStudentDetail,
   useTeacherLearningStudents,
 } from '../../hooks/useLearningCenter';
+import { TeacherKnowledgeGraphPanel } from './KnowledgeGraphPanels';
 
 export default function TeacherStudentDetailPage() {
   const { studentId } = useParams();
@@ -17,6 +19,7 @@ export default function TeacherStudentDetailPage() {
   const { currentInstitutionId } = useInstitution();
   const students = useTeacherLearningStudents(currentInstitutionId ?? undefined);
   const detail = useTeacherLearningStudentDetail(currentInstitutionId ?? undefined, studentId);
+  const knowledgeGraph = useTeacherStudentKnowledgeGraph(currentInstitutionId ?? undefined, studentId);
   const packages = useLearningPackages(currentInstitutionId ?? undefined);
   const assign = useAssignLearningPackage(currentInstitutionId ?? undefined);
   const [packageId, setPackageId] = useState('');
@@ -43,6 +46,11 @@ export default function TeacherStudentDetailPage() {
       </header>
       <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
         <main className="space-y-5">
+          <TeacherKnowledgeGraphPanel
+            skills={knowledgeGraph.data}
+            isLoading={knowledgeGraph.isLoading}
+            isError={knowledgeGraph.isError}
+          />
           <section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <div className="flex items-center gap-2"><BookOpen className="h-5 w-5 text-[#005bbf]" /><h2 className="font-bold dark:text-white">Habilidades e domínio</h2></div>
             {data.progress.length ? <div className="mt-4 grid gap-3 md:grid-cols-2">{data.progress.map((item) => <article key={item.canonical_skill_id} className="rounded-lg border p-4 dark:border-slate-700"><div className="flex items-start justify-between gap-3"><p className="font-semibold dark:text-white">{item.skill_title}</p><span className="text-xs font-bold text-slate-500">{Math.round(item.mastery_estimate)}%</span></div><div className="mt-3 h-2 rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-2 rounded-full bg-[#005bbf]" style={{ width: `${Math.min(100, Math.max(0, item.mastery_estimate))}%` }} /></div><p className="mt-2 text-xs text-slate-500">{item.state} · {item.evidence_count} evidência(s)</p></article>)}</div> : <p className="mt-4 text-sm text-slate-500">Ainda não há evidências de aprendizagem.</p>}
