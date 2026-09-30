@@ -478,6 +478,106 @@ describe('Header', () => {
     expect(email.readOnly).toBe(true);
   });
 
+  it('mostra a instituição completa antes da identidade no menu da conta', () => {
+    const institutionName =
+      'Colégio Aurora Integral de Salvador';
+
+    renderHeader({
+      currentInstitutionName: institutionName,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const menu = screen.getByRole('region', {
+      name: 'Menu do usuário',
+    });
+    const paragraphs = Array.from(
+      menu.querySelectorAll('p'),
+    );
+
+    expect(paragraphs.map((paragraph) => paragraph.textContent)).toEqual([
+      institutionName,
+      'Ana Silva',
+      'ana@example.com',
+      'Administrador',
+    ]);
+    expect(paragraphs[0]?.className).not.toContain('truncate');
+    expect(paragraphs[0]?.className).not.toContain('line-clamp');
+    expect(screen.getByText(institutionName)).toBeTruthy();
+    expect(
+      screen.queryByAltText('Foto de Ana Silva'),
+    ).toBeNull();
+    expect(screen.getAllByText('AS')).toHaveLength(2);
+    expect(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: 'Sair' }),
+    ).toBeTruthy();
+  });
+
+  it('quebra instituições longas e omite contexto institucional vazio', () => {
+    const longInstitutionName =
+      'Centro Educacional Integrado Professora Maria das Graças de Oliveira e Silva';
+
+    const { rerender, props } = renderHeader({
+      currentInstitutionName: longInstitutionName,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const longInstitution = screen.getByText(
+      longInstitutionName,
+    );
+    expect(longInstitution).toBeTruthy();
+    expect(longInstitution.className).toContain(
+      'whitespace-normal',
+    );
+    expect(longInstitution.className).toContain(
+      'break-words',
+    );
+    expect(longInstitution.className).not.toContain(
+      'truncate',
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    rerender(
+      <MemoryRouter>
+        <Header
+          {...props}
+          currentInstitutionName="   "
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const menu = screen.getByRole('region', {
+      name: 'Menu do usuário',
+    });
+    expect(menu.textContent).not.toContain(
+      longInstitutionName,
+    );
+    expect(menu.textContent).toContain('Ana Silva');
+    expect(menu.textContent).toContain('Administrador');
+  });
+
   it.each([
     'super_admin',
     'admin',
