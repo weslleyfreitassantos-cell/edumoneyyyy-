@@ -164,6 +164,8 @@ function mockContexts(
 
   mockedUseAuthProfileActions.mockReturnValue({
     updateProfileName,
+    updateProfileAvatar: vi.fn(async () => undefined),
+    removeProfileAvatar: vi.fn(async () => undefined),
     updateSelfRegistration: vi.fn(async () => undefined),
     updatePassword,
   });

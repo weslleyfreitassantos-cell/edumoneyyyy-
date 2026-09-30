@@ -259,6 +259,112 @@ describe('Header', () => {
     expect(screen.getByText('AS')).toBeTruthy();
   });
 
+  it('usa a mesma foto no botão do header e no dropdown', () => {
+    renderHeader({
+      currentUser: {
+        ...currentUser,
+        avatar: 'https://example.com/avatar.webp',
+      },
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const images = screen.getAllByRole('img', {
+      name: /foto de ana silva/i,
+    }) as HTMLImageElement[];
+
+    expect(images).toHaveLength(2);
+    expect(images.map((image) => image.src)).toEqual([
+      'https://example.com/avatar.webp',
+      'https://example.com/avatar.webp',
+    ]);
+  });
+
+  it('faz fallback para iniciais quando a foto do dropdown falha', () => {
+    renderHeader({
+      currentUser: {
+        ...currentUser,
+        avatar: 'https://example.com/avatar.webp',
+      },
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const images = screen.getAllByRole('img', {
+      name: /foto de ana silva/i,
+    });
+    fireEvent.error(images[1]);
+
+    expect(screen.queryAllByRole('img', { name: /foto de ana silva/i })).toHaveLength(0);
+    expect(screen.getAllByText('AS')).toHaveLength(2);
+  });
+
+  it('valida o formato da foto antes de iniciar o upload', () => {
+    const onUpdateProfileAvatar = vi.fn(async () => undefined);
+    renderHeader({ onUpdateProfileAvatar });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    const input = screen.getByLabelText('Alterar foto');
+    fireEvent.change(input, {
+      target: {
+        files: [new File(['svg'], 'avatar.svg', { type: 'image/svg+xml' })],
+      },
+    });
+
+    expect(screen.getByRole('alert').textContent).toContain(
+      'Escolha uma imagem JPG, PNG ou WebP.',
+    );
+    expect(onUpdateProfileAvatar).not.toHaveBeenCalled();
+  });
+
+  it('mostra preview e salva a foto selecionada', async () => {
+    const onUpdateProfileAvatar = vi.fn(async () => undefined);
+    renderHeader({ onUpdateProfileAvatar });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    const file = new File(['png'], 'avatar.png', { type: 'image/png' });
+    fireEvent.change(screen.getByLabelText('Alterar foto'), {
+      target: { files: [file] },
+    });
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Salvar foto' })).toBeTruthy();
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar foto' }));
+
+    await waitFor(() => {
+      expect(onUpdateProfileAvatar).toHaveBeenCalledWith(file);
+      expect(
+        screen.getByText('Foto de perfil atualizada com sucesso.', {
+          selector: 'p',
+        }),
+      ).toBeTruthy();
+    });
+  });
+
   it('aciona botao mobile e expoe aria-expanded', () => {
     const onOpenMobileSidebar = vi.fn();
     renderHeader({

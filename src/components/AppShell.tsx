@@ -340,6 +340,8 @@ export default function AppShell({
   const { profile, signOut } = useAuth();
   const {
     updateProfileName,
+    updateProfileAvatar,
+    removeProfileAvatar,
     updateSelfRegistration,
     updatePassword,
   } =
@@ -729,6 +731,8 @@ export default function AppShell({
             void handleLogout();
           }}
           onUpdateProfileName={updateProfileName}
+          onUpdateProfileAvatar={updateProfileAvatar}
+          onRemoveProfileAvatar={removeProfileAvatar}
           onUpdateSelfRegistration={updateSelfRegistration}
           onUpdatePassword={updatePassword}
           theme={theme}
