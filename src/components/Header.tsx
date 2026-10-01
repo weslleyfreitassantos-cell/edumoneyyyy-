@@ -32,6 +32,8 @@ interface HeaderProps {
   onToggleSidebar: () => void;
   onLogout: () => void;
   onUpdateProfileName: (fullName: string) => Promise<void>;
+  onUpdateAvatar?: (file: File) => Promise<void>;
+  onRemoveAvatar?: () => Promise<void>;
   onUpdateSelfRegistration?: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   theme: ThemePreference;
@@ -64,6 +66,8 @@ export default function Header({
   onToggleSidebar,
   onLogout,
   onUpdateProfileName,
+  onUpdateAvatar = async () => undefined,
+  onRemoveAvatar = async () => undefined,
   onUpdateSelfRegistration = async () => undefined,
   onUpdatePassword,
   theme,
@@ -260,7 +264,7 @@ export default function Header({
             <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
               {avatarUrl && !avatarFailed ? (
                 <img
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                   alt={`Foto de ${currentUser.name}`}
                   src={avatarUrl}
                   referrerPolicy="no-referrer"
@@ -369,6 +373,9 @@ export default function Header({
           returnFocusRef={userMenuButtonRef}
           onClose={() => setIsAccountModalOpen(false)}
           onUpdateName={onUpdateProfileName}
+          currentAvatar={avatarUrl}
+          onUpdateAvatar={onUpdateAvatar}
+          onRemoveAvatar={onRemoveAvatar}
           onUpdateSelfRegistration={onUpdateSelfRegistration}
           onUpdatePassword={onUpdatePassword}
           onSuccess={setAccountFeedback}

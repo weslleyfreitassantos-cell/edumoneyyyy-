@@ -1,7 +1,9 @@
 import {
+  Camera,
   Eye,
   EyeOff,
   Loader2,
+  Trash2,
   X,
 } from 'lucide-react';
 import {
@@ -10,6 +12,7 @@ import {
   useRef,
   useState,
   type FormEvent,
+  type ChangeEvent,
   type KeyboardEvent as ReactKeyboardEvent,
   type RefObject,
 } from 'react';
@@ -23,6 +26,7 @@ import {
   type StudentSelfRegistration,
 } from '../services/selfRegistrationService';
 import { ProfileServiceError } from '../services/profileService';
+import { validateProfileAvatarFile } from '../services/profileAvatarService';
 import type { User } from '../types';
 
 interface AccountSettingsModalProps {
@@ -31,6 +35,9 @@ interface AccountSettingsModalProps {
   returnFocusRef: RefObject<HTMLButtonElement | null>;
   onClose: () => void;
   onUpdateName: (fullName: string) => Promise<void>;
+  currentAvatar: string | null;
+  onUpdateAvatar: (file: File) => Promise<void>;
+  onRemoveAvatar: () => Promise<void>;
   onUpdateSelfRegistration: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   onSuccess: (message: string) => void;
@@ -84,6 +91,18 @@ const textareaClass =
 
 function fieldLabel(text: string): string {
   return `block text-xs font-bold text-[#414754] dark:text-[#cbd5e1]`;
+}
+
+function getProfileInitials(name: string): string {
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join('');
+
+  return initials || 'U';
 }
 
 function StudentRegistrationFields({
@@ -220,6 +239,9 @@ export default function AccountSettingsModal({
   returnFocusRef,
   onClose,
   onUpdateName,
+  currentAvatar,
+  onUpdateAvatar,
+  onRemoveAvatar,
   onUpdateSelfRegistration,
   onUpdatePassword,
   onSuccess,
@@ -242,10 +264,24 @@ export default function AccountSettingsModal({
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState<File | null>(null);
+  const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(null);
+  const [avatarError, setAvatarError] = useState<string | null>(null);
+  const [isAvatarSaving, setIsAvatarSaving] = useState(false);
+  const avatarInputRef = useRef<HTMLInputElement | null>(null);
   const initialSelfRegistrationRef = useRef<string | null>(null);
 
   const isSelfRegistration =
     currentRole === 'student' || currentRole === 'parent';
+  const isBusy = isSaving || isAvatarSaving;
+
+  useEffect(() => {
+    return () => {
+      if (avatarPreviewUrl) {
+        URL.revokeObjectURL(avatarPreviewUrl);
+      }
+    };
+  }, [avatarPreviewUrl]);
 
   useEffect(() => {
     if (!isSelfRegistration) {
@@ -315,8 +351,92 @@ export default function AccountSettingsModal({
     };
   }, [returnFocusRef]);
 
+  function handleAvatarSelection(
+    event: ChangeEvent<HTMLInputElement>,
+  ): void {
+    const file = event.target.files?.[0] ?? null;
+    event.target.value = '';
+    setAvatarError(null);
+
+    if (!file) {
+      return;
+    }
+
+    try {
+      validateProfileAvatarFile(file);
+      setSelectedAvatar(file);
+      setAvatarPreviewUrl(URL.createObjectURL(file));
+    } catch (selectionError) {
+      setSelectedAvatar(null);
+      setAvatarPreviewUrl(null);
+      setAvatarError(
+        selectionError instanceof Error
+          ? selectionError.message
+          : 'Não foi possível selecionar essa imagem.',
+      );
+    }
+  }
+
+  function clearSelectedAvatar(): void {
+    setSelectedAvatar(null);
+    setAvatarPreviewUrl(null);
+    setAvatarError(null);
+  }
+
+  async function handleAvatarUpload(): Promise<void> {
+    if (!selectedAvatar || isAvatarSaving) {
+      return;
+    }
+
+    setAvatarError(null);
+    setIsAvatarSaving(true);
+
+    try {
+      await onUpdateAvatar(selectedAvatar);
+      clearSelectedAvatar();
+    } catch (uploadError) {
+      setAvatarError(
+        uploadError instanceof Error
+          ? uploadError.message
+          : 'Não foi possível atualizar sua foto de perfil.',
+      );
+    } finally {
+      setIsAvatarSaving(false);
+    }
+  }
+
+  async function handleAvatarRemoval(): Promise<void> {
+    if (isAvatarSaving) {
+      return;
+    }
+
+    if (selectedAvatar) {
+      clearSelectedAvatar();
+      return;
+    }
+
+    if (!currentAvatar || !window.confirm('Remover sua foto de perfil?')) {
+      return;
+    }
+
+    setAvatarError(null);
+    setIsAvatarSaving(true);
+
+    try {
+      await onRemoveAvatar();
+    } catch (removeError) {
+      setAvatarError(
+        removeError instanceof Error
+          ? removeError.message
+          : 'Não foi possível remover sua foto de perfil.',
+      );
+    } finally {
+      setIsAvatarSaving(false);
+    }
+  }
+
   function closeModal(): void {
-    if (!submittingRef.current) {
+    if (!submittingRef.current && !isAvatarSaving) {
       onClose();
     }
   }
@@ -521,7 +641,7 @@ export default function AccountSettingsModal({
           <button
             type="button"
             onClick={closeModal}
-            disabled={isSaving}
+            disabled={isBusy}
             aria-label="Fechar Minha conta"
             title="Fechar"
             className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8deea] text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247] dark:hover:text-[#f8fafc]"
@@ -529,6 +649,81 @@ export default function AccountSettingsModal({
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
+
+        <section className="mt-5 rounded-lg border border-[#d8deea] p-4 dark:border-[#334155]">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#e8eeff] text-lg font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff] dark:bg-[#243247] dark:text-[#bfdbfe]">
+                {avatarPreviewUrl || currentAvatar ? (
+                  <img
+                    className="h-full w-full object-contain"
+                    src={avatarPreviewUrl ?? currentAvatar ?? undefined}
+                    alt={`Foto de ${currentName}`}
+                    referrerPolicy="no-referrer"
+                  />
+                ) : (
+                  <span aria-hidden="true">
+                    {getProfileInitials(currentName)}
+                  </span>
+                )}
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
+                  Foto de perfil
+                </h3>
+                <p className="mt-1 text-xs text-[#667085] dark:text-[#cbd5e1]">
+                  JPG, PNG ou WebP
+                </p>
+                {avatarError && (
+                  <p role="alert" className="mt-1 text-xs font-semibold text-[#ba1a1a] dark:text-red-300">
+                    {avatarError}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2 sm:justify-end">
+              <input
+                ref={avatarInputRef}
+                id={`${titleId}-avatar-input`}
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                onChange={handleAvatarSelection}
+                disabled={isBusy}
+                className="sr-only"
+              />
+              <label
+                htmlFor={`${titleId}-avatar-input`}
+                className={`inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border border-[#c5cbd6] bg-white px-3 text-sm font-bold text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-within:ring-2 focus-within:ring-[#005bbf] dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247] ${isBusy ? 'pointer-events-none opacity-60' : ''}`}
+              >
+                <Camera className="h-4 w-4" aria-hidden="true" />
+                Alterar foto
+              </label>
+              {selectedAvatar && (
+                <button
+                  type="button"
+                  onClick={() => void handleAvatarUpload()}
+                  disabled={isBusy}
+                  className="inline-flex h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-3 text-sm font-bold text-white outline-none transition hover:bg-[#004a9f] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-70"
+                >
+                  {isAvatarSaving && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  {isAvatarSaving ? 'Enviando...' : 'Usar foto'}
+                </button>
+              )}
+              {(currentAvatar || selectedAvatar) && (
+                <button
+                  type="button"
+                  onClick={() => void handleAvatarRemoval()}
+                  disabled={isBusy}
+                  className="inline-flex h-10 items-center gap-2 rounded-lg border border-red-200 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-60 dark:border-red-900/60 dark:bg-[#182235] dark:text-red-300 dark:hover:bg-red-950/30"
+                >
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                  {selectedAvatar ? 'Cancelar' : 'Remover foto'}
+                </button>
+              )}
+            </div>
+          </div>
+        </section>
 
         <form
           className="mt-5 space-y-4"

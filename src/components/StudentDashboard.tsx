@@ -475,6 +475,7 @@ export default function StudentDashboard() {
 
   const firstName =
     getFirstName(profile.full_name);
+  const avatarUrl = profile.avatar_url?.trim() || null;
 
   const classDescription = activeEnrollment
     ? [
@@ -506,11 +507,20 @@ export default function StudentDashboard() {
             </p>
           </div>
 
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
-            <GraduationCap
-              className="h-8 w-8"
-              aria-hidden="true"
-            />
+          <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20">
+            {avatarUrl ? (
+              <img
+                className="h-full w-full object-contain"
+                src={avatarUrl}
+                alt={`Foto de ${profile.full_name}`}
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <GraduationCap
+                className="h-8 w-8"
+                aria-hidden="true"
+              />
+            )}
           </div>
         </div>
       </section>
