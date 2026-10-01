@@ -139,14 +139,15 @@ describe('StudyCenterPage', () => {
     expect(screen.queryByText('Aluno')).toBeNull();
   });
 
-  it('organizes the mobile journey with section shortcuts and compact progress', () => {
+  it('organizes the mobile journey without legacy KPI clutter', () => {
     renderPage();
 
     expect(screen.getByRole('searchbox', { name: 'Pesquisar matéria ou assunto' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Práticas' }).getAttribute('href')).toBe('#study-practice');
     expect(screen.getByRole('link', { name: 'Coleções' }).getAttribute('href')).toBe('#study-resources');
-    expect(screen.getAllByText('60%')).toHaveLength(2);
-    expect(screen.getByText('práticas disponíveis')).toBeTruthy();
+    expect(screen.getAllByText('Continuamos conhecendo seu perfil de aprendizagem.').length).toBeGreaterThan(0);
+    expect(screen.queryByText('práticas disponíveis')).toBeNull();
+    expect(screen.queryByText('domínio médio')).toBeNull();
   });
 
   it('selects a subject locally, filters practices and clears the search', () => {

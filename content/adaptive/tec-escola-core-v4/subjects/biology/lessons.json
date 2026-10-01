@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "title": "Relacionar alelos e variacao",
+    "objective": "Explicar como combinacoes de alelos contribuem para variacao entre individuos.",
+    "summary": "A heranca transmite informacao genetica, mas combinacoes diferentes produzem variacao.",
+    "explanation": "A heranca transmite informacao genetica, mas combinacoes diferentes produzem variacao.",
+    "workedExample": "Irmaos podem receber combinacoes diferentes de alelos e apresentar caracteristicas distintas.",
+    "commonMistake": "Tratar alelo como celula ou imaginar que toda caracteristica tem causa unica.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

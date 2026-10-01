@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "title": "Ler principios de um jogo",
+    "objective": "Explicar como regras, cooperacao e uso do espaco orientam uma situacao esportiva.",
+    "summary": "Uma tatica articula decisoes individuais e coletivas dentro das regras.",
+    "explanation": "Uma tatica articula decisoes individuais e coletivas dentro das regras.",
+    "workedExample": "Trocar passes para criar espaco combina cooperacao e leitura do jogo.",
+    "commonMistake": "Reduzir a tatica a habilidade individual ou a vencer a qualquer custo.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

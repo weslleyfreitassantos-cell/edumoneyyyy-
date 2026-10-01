@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-sociology-sociology_institutions-1",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "instituicoes",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "INSTITUICOES",
+    "statement": "Familia, escola e Estado possuem regras e papeis que organizam a vida coletiva. Elas sao:",
+    "options": [
+      "Instituicoes sociais.",
+      "Apenas grupos de amigos.",
+      "Fenomenos naturais.",
+      "Objetos sem normas."
+    ],
+    "correctAnswer": "Instituicoes sociais.",
+    "explanation": "Instituicoes estruturam expectativas, papeis e praticas.",
+    "misconceptions": {
+      "Apenas grupos de amigos.": [
+        "INSTITUTION_CONFUSED_WITH_GROUP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-2",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "socializacao",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SOCIALIZACAO",
+    "statement": "Aprender regras de convivencia desde a infancia e parte do processo de:",
+    "options": [
+      "Erosao.",
+      "Socializacao.",
+      "Industrializacao.",
+      "Urbanizacao."
+    ],
+    "correctAnswer": "Socializacao.",
+    "explanation": "Socializacao transmite normas e formas de participar da sociedade.",
+    "misconceptions": {
+      "Industrializacao.": [
+        "SOCIALIZATION_MISNAMED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-3",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "norma e lei",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "NORMA_E_LEI",
+    "statement": "Uma norma social pode existir mesmo sem estar escrita em um codigo porque:",
+    "options": [
+      "Leis nao influenciam costumes.",
+      "Comportamentos nunca tem sancao social.",
+      "Expectativas coletivas orientam comportamentos.",
+      "Toda norma e natural."
+    ],
+    "correctAnswer": "Expectativas coletivas orientam comportamentos.",
+    "explanation": "Normas podem ser informais e produzir aprovacao ou reprovacao.",
+    "misconceptions": {
+      "Toda norma e natural.": [
+        "NORMS_ONLY_LAW"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-4",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "desigualdade",
+    "primarySkill": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DESIGUALDADE",
+    "statement": "Duas pessoas com o mesmo talento recebem oportunidades escolares diferentes por renda. Isso indica:",
+    "options": [
+      "Igualdade plena.",
+      "Apenas diferenca biologica.",
+      "Ausencia de estrutura social.",
+      "Desigualdade de oportunidades."
+    ],
+    "correctAnswer": "Desigualdade de oportunidades.",
+    "explanation": "Recursos economicos influenciam acesso e trajetorias.",
+    "misconceptions": {
+      "Igualdade plena.": [
+        "INEQUALITY_AS_EFFORT_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-5",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "cultura",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CULTURA",
+    "statement": "Uma pratica cultural muda ao entrar em contato com outras comunidades. Isso mostra que cultura:",
+    "options": [
+      "E aprendida, compartilhada e dinamica.",
+      "E fixa biologicamente.",
+      "E identica em todo lugar.",
+      "Nao possui significados."
+    ],
+    "correctAnswer": "E aprendida, compartilhada e dinamica.",
+    "explanation": "Cultura se transforma por interacao e disputas de significado.",
+    "misconceptions": {
+      "E fixa biologicamente.": [
+        "CULTURE_AS_FIXED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-6",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "trabalho",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TRABALHO",
+    "statement": "A automacao pode substituir tarefas e criar novas qualificacoes. Qual analise e mais adequada?",
+    "options": [
+      "Reduzir tudo a escolha individual.",
+      "Considerar efeitos sobre ocupacoes, qualificacao e desigualdade.",
+      "Concluir que todo trabalho desaparece.",
+      "Ignorar tecnologia."
+    ],
+    "correctAnswer": "Considerar efeitos sobre ocupacoes, qualificacao e desigualdade.",
+    "explanation": "Mudancas do trabalho tem efeitos distribuidos de forma desigual.",
+    "misconceptions": {
+      "Concluir que todo trabalho desaparece.": [
+        "AUTOMATION_TOTALIZED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-7",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "movimentos",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "MOVIMENTOS",
+    "statement": "Um movimento organiza pessoas para reivindicar transporte acessivel. Ele atua principalmente:",
+    "options": [
+      "Sem relacao com poder.",
+      "Como fenomeno natural.",
+      "Na disputa por direitos e politicas publicas.",
+      "Apenas no consumo privado."
+    ],
+    "correctAnswer": "Na disputa por direitos e politicas publicas.",
+    "explanation": "Movimentos sociais articulam demandas coletivas.",
+    "misconceptions": {
+      "Apenas no consumo privado.": [
+        "MOVEMENT_AS_PRIVATE_CHOICE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-8",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "identidade",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "IDENTIDADE",
+    "statement": "Uma pessoa participa de varios grupos e combina referencias diferentes. Isso indica que identidade:",
+    "options": [
+      "E determinada por um unico grupo.",
+      "Nao muda com experiencias.",
+      "Nao tem dimensao coletiva.",
+      "E plural e construida em relacoes sociais."
+    ],
+    "correctAnswer": "E plural e construida em relacoes sociais.",
+    "explanation": "Identidades sao formadas por pertencimentos e trajetorias.",
+    "misconceptions": {
+      "E determinada por um unico grupo.": [
+        "IDENTITY_AS_SINGLE_LABEL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-9",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "poder",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "PODER",
+    "statement": "Uma regra define quem pode falar em uma reuniao e quais temas entram na pauta. Isso revela poder sobre:",
+    "options": [
+      "Participacao e agenda.",
+      "Clima e relevo.",
+      "Genes e celulas.",
+      "Apenas linguagem privada."
+    ],
+    "correctAnswer": "Participacao e agenda.",
+    "explanation": "Poder tambem opera definindo acesso e temas legitimados.",
+    "misconceptions": {
+      "Clima e relevo.": [
+        "POWER_AS_FORCE_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-10",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "pesquisa",
+    "primarySkill": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PESQUISA",
+    "statement": "Uma pesquisa entrevista apenas pessoas de uma rede social. Qual cuidado e necessario?",
+    "options": [
+      "Concluir causalidade automaticamente.",
+      "Reconhecer que a amostra pode nao representar toda a populacao.",
+      "Tratar respostas como universais.",
+      "Eliminar perguntas abertas."
+    ],
+    "correctAnswer": "Reconhecer que a amostra pode nao representar toda a populacao.",
+    "explanation": "A selecao de participantes limita a generalizacao.",
+    "misconceptions": {
+      "Tratar respostas como universais.": [
+        "SAMPLE_REPRESENTATION_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-11",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "instituicao e mudanca",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "INSTITUICAO_E_MUDANCA",
+    "statement": "Uma escola altera suas regras apos reivindicacoes de estudantes. Isso mostra que instituicoes:",
+    "options": [
+      "Existem sem participantes.",
+      "Mudam apenas por causas naturais.",
+      "Podem reproduzir e tambem transformar normas.",
+      "Sao imunes a conflitos."
+    ],
+    "correctAnswer": "Podem reproduzir e tambem transformar normas.",
+    "explanation": "Instituicoes sao historicas e disputadas.",
+    "misconceptions": {
+      "Sao imunes a conflitos.": [
+        "INSTITUTIONS_AS_IMMUTABLE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-sociology-sociology_institutions-12",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "midia",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "MIDIA",
+    "statement": "Uma campanha viraliza e muda a pauta de uma reuniao municipal. A analise deve observar:",
+    "options": [
+      "Somente o numero de curtidas.",
+      "A tecnologia como causa unica.",
+      "A ausencia de atores sociais.",
+      "Como comunicacao, poder e participacao se articulam."
+    ],
+    "correctAnswer": "Como comunicacao, poder e participacao se articulam.",
+    "explanation": "Mediacoes digitais alteram circulacao de demandas sem explicar tudo sozinhas.",
+    "misconceptions": {
+      "Somente o numero de curtidas.": [
+        "MEDIA_TECHNOLOGY_DETERMINISM"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-sociology-review-01",
+    "subject": "SOCIOLOGY",
+    "domain": "INSTITUICOES",
+    "topic": "Explicar instituicoes sociais",
+    "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "A escola possui horarios, regras e papeis que organizam a convivencia. Isso mostra que uma instituicao social:",
+    "options": [
+      "Organiza praticas e expectativas coletivas.",
+      "E apenas um grupo de amigos.",
+      "Nao muda com a sociedade.",
+      "Existe sem regras ou papeis."
+    ],
+    "correctAnswer": "Organiza praticas e expectativas coletivas.",
+    "explanation": "Instituicoes estruturam papeis, regras e expectativas compartilhadas.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "code": "PORTUGUESE",
+  "name": "Lingua Portuguesa",
+  "anchors": [
+    {
+      "code": "PORTUGUESE_READING",
+      "title": "Leitura e compreensao"
+    },
+    {
+      "code": "PORTUGUESE_ARGUMENTATION",
+      "title": "Argumentacao e evidencia"
+    },
+    {
+      "code": "PORTUGUESE_COHESION",
+      "title": "Coesao textual"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "title": "Identificar tese e evidencia em textos argumentativos",
+      "objective": "Identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+      "description": "Identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+      "masteryCapability": "Demonstrar que consegue identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+      "domain": "ARGUMENTACAO",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_INFER_FROM_CLUES",
+      "title": "Inferir informacao a partir de pistas textuais",
+      "objective": "Inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+      "description": "Inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+      "masteryCapability": "Demonstrar que consegue inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+      "domain": "LEITURA",
+      "parent": "PORTUGUESE_READING",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_CONNECT_IDEAS",
+      "title": "Interpretar conectores e relacoes de sentido",
+      "objective": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+      "description": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+      "masteryCapability": "Demonstrar que consegue interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+      "domain": "COESAO",
+      "parent": "PORTUGUESE_COHESION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+      "title": "Distinguir razao de evidencia",
+      "objective": "Distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+      "description": "Distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+      "masteryCapability": "Demonstrar que consegue distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+      "domain": "ARGUMENTACAO",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+      "title": "Distinguir fato de opiniao",
+      "domain": "LEITURA",
+      "parent": "PORTUGUESE_READING",
+      "objective": "Distinguir informacao verificavel de avaliacao ou posicionamento do autor.",
+      "description": "Distinguir informacao verificavel de avaliacao ou posicionamento do autor.",
+      "masteryCapability": "Demonstrar que consegue distinguir informacao verificavel de avaliacao ou posicionamento do autor..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+      "title": "Identificar genero e finalidade",
+      "domain": "GENEROS",
+      "parent": "PORTUGUESE_READING",
+      "objective": "Relacionar genero textual, finalidade comunicativa e escolhas de linguagem.",
+      "description": "Relacionar genero textual, finalidade comunicativa e escolhas de linguagem.",
+      "masteryCapability": "Demonstrar que consegue relacionar genero textual, finalidade comunicativa e escolhas de linguagem..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_COMPARE_SOURCES",
+      "title": "Comparar fontes e perspectivas",
+      "domain": "FONTES",
+      "parent": "PORTUGUESE_READING",
+      "objective": "Comparar informacoes de fontes considerando convergencias, divergencias e contexto.",
+      "description": "Comparar informacoes de fontes considerando convergencias, divergencias e contexto.",
+      "masteryCapability": "Demonstrar que consegue comparar informacoes de fontes considerando convergencias, divergencias e contexto..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "title": "Identificar contraponto argumentativo",
+      "domain": "ARGUMENTACAO",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "objective": "Identificar a ideia que responde, limita ou contrapoe uma tese em um texto.",
+      "description": "Identificar a ideia que responde, limita ou contrapoe uma tese em um texto.",
+      "masteryCapability": "Demonstrar que consegue identificar a ideia que responde, limita ou contrapoe uma tese em um texto..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+      "title": "Sintetizar um argumento",
+      "domain": "ARGUMENTACAO",
+      "parent": "PORTUGUESE_ARGUMENTATION",
+      "objective": "Resumir tese, razoes e evidencia sem acrescentar afirmacoes que o texto nao sustenta.",
+      "description": "Resumir tese, razoes e evidencia sem acrescentar afirmacoes que o texto nao sustenta.",
+      "masteryCapability": "Demonstrar que consegue resumir tese, razoes e evidencia sem acrescentar afirmacoes que o texto nao sustenta..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

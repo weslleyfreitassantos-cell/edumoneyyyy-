@@ -1,0 +1,802 @@
+{
+  "packVersion": "tec-escola-core-v4",
+  "canonicalHash": "90c65541e614f78be5bc75b2f7483161cbb9e000db0ca490ddf12491f0076699",
+  "subjects": [
+    {
+      "code": "ART",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 0,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ABSTRACAO",
+        "ARTE_E_SOCIEDADE",
+        "COMPOSICAO",
+        "CONTEXTO_DA_OBRA",
+        "CONTRASTE",
+        "CURADORIA",
+        "HIERARQUIA_VISUAL",
+        "INTERPRETACAO_PLURAL",
+        "PATRIMONIO",
+        "PERSPECTIVA",
+        "PROCESSO_CRIATIVO",
+        "REVIEW_APLICADA",
+        "TECNICA"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "BIOLOGY",
+      "skills": 7,
+      "leafs": 4,
+      "adaptiveReady": 0,
+      "graphOnly": 3,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ALELO",
+        "CARACTERISTICA_COMPLEXA",
+        "CROMOSSOMO",
+        "DIVERSIDADE_GENETICA",
+        "DNA_E_RNA",
+        "DOMINANCIA",
+        "FENOTIPO",
+        "HERANCA_LIGADA_AO_X",
+        "HEREDITARIEDADE",
+        "MUTACAO",
+        "PROBABILIDADE",
+        "REVIEW_APLICADA",
+        "SELECAO"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 4,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "CHEMISTRY",
+      "skills": 7,
+      "leafs": 4,
+      "adaptiveReady": 0,
+      "graphOnly": 3,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "CONSERVACAO",
+        "ION",
+        "ISOTOPOS",
+        "LIGACAO_COVALENTE",
+        "LIGACAO_IONICA",
+        "MASSA",
+        "NUCLEO",
+        "NUMERO_ATOMICO",
+        "PH",
+        "REACAO",
+        "REVIEW_APLICADA",
+        "SEPARACAO",
+        "SOLUBILIDADE"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 4,
+      "prerequisites": 1,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "COMPUTING",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 0,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ALGORITHM_FAIRNESS",
+        "BINARY",
+        "CONDITION",
+        "DATA_PRIVACY",
+        "DEBUGGING",
+        "DECOMPOSITION",
+        "DIGITAL_CITIZENSHIP",
+        "LOOP",
+        "PASSWORD_SECURITY",
+        "PROTOCOL",
+        "REVIEW_APLICADA",
+        "SEQUENCE",
+        "TRACE"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "ENGLISH",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 1,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "CONTRAST",
+        "CRITICAL_READING",
+        "EVIDENCE",
+        "INFERENCE",
+        "LITERAL_DETAIL",
+        "MAIN_IDEA",
+        "PREFIX",
+        "PURPOSE",
+        "REFERENCE",
+        "REVIEW_APLICADA",
+        "SEQUENCE",
+        "SUMMARY",
+        "VOCABULARY"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "GEOGRAPHY",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 1,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ALAGAMENTO",
+        "CLIMA_E_TEMPO",
+        "DESIGUALDADE_TERRITORIAL",
+        "ESCALA",
+        "FRONTEIRA",
+        "LEGENDA",
+        "MIGRACAO",
+        "PAISAGEM",
+        "POPULACAO",
+        "REDE_URBANA",
+        "REVIEW_APLICADA",
+        "TERRITORIO",
+        "USO_DO_SOLO"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "HISTORY",
+      "skills": 10,
+      "leafs": 7,
+      "adaptiveReady": 1,
+      "graphOnly": 6,
+      "lessons": 1,
+      "questions": 15,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 6,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "CAUSA",
+        "CONTEXTO",
+        "CRONOLOGIA",
+        "DIARIO_DE_TRABALHADOR",
+        "FONTE_PRIMARIA",
+        "FOTOGRAFIA",
+        "INTERPRETACAO",
+        "JORNAL_DE_EPOCA",
+        "MAPA_HISTORICO",
+        "MEMORIA",
+        "MUDANCA",
+        "MULTIPERSPECTIVA",
+        "PATRIMONIO",
+        "PERIODIZACAO",
+        "REVIEW_APLICADA"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 7,
+      "prerequisites": 4,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "MATHEMATICS",
+      "skills": 9,
+      "leafs": 6,
+      "adaptiveReady": 2,
+      "graphOnly": 4,
+      "lessons": 2,
+      "questions": 21,
+      "purposes": {
+        "PROBE": 5,
+        "PRACTICE": 5,
+        "TRANSFER": 4,
+        "LOCK_IN": 3,
+        "REVIEW": 4
+      },
+      "contextFamilies": [
+        "ABASTECIMENTO",
+        "AUMENTO",
+        "COMISSAO",
+        "CONSUMO_DE_AGUA",
+        "DESCONTO",
+        "FRACAO_PERCENTUAL",
+        "GRAFICO",
+        "JUROS_SIMPLES",
+        "OFERTAS",
+        "ORCAMENTO",
+        "PARTE_E_TODO",
+        "PERCENTUAL_ACUMULADO",
+        "PESQUISA",
+        "PLANEJAMENTO_DE_PERCURSO",
+        "PLANEJAMENTO_DE_RECURSOS",
+        "PRODUCAO_DE_ALIMENTOS",
+        "PROPORCAO",
+        "REVIEW_APLICADA",
+        "TAXA_EQUIVALENTE",
+        "TECNOLOGIA",
+        "TRANSPORTE"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 6,
+      "prerequisites": 2,
+      "crossSubjectLinks": 4,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PHILOSOPHY",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 1,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ANALOGIA",
+        "ANECDOTA",
+        "CETICISMO",
+        "CONHECIMENTO",
+        "DIALOGO",
+        "ETICA",
+        "FALACIA",
+        "JUSTICA",
+        "LIBERDADE",
+        "PENSAMENTO_CRITICO",
+        "PREMISSA_E_CONCLUSAO",
+        "REVIEW_APLICADA",
+        "VALIDADE"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PHYSICAL_EDUCATION",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 0,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "AQUECIMENTO",
+        "COOPERACAO",
+        "DEFESA",
+        "FAIR_PLAY",
+        "INCLUSAO",
+        "OBSERVACAO",
+        "OCUPACAO",
+        "PASSE_E_APOIO",
+        "REGRAS",
+        "REVIEW_APLICADA",
+        "RITMO",
+        "SAUDE",
+        "TATICA"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PHYSICS",
+      "skills": 10,
+      "leafs": 7,
+      "adaptiveReady": 1,
+      "graphOnly": 6,
+      "lessons": 1,
+      "questions": 15,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 5,
+        "TRANSFER": 2,
+        "LOCK_IN": 3,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ACELERACAO",
+        "AREA_NO_GRAFICO",
+        "CICLISMO",
+        "COMPARACAO",
+        "CONVERSAO",
+        "DISTANCIA",
+        "ENCONTRO",
+        "GRAFICO_POSICAO_TEMPO",
+        "MEDIA_DE_TRECHOS",
+        "MOVIMENTO_UNIFORME",
+        "PERCURSO_COM_PARADAS",
+        "REVIEW_APLICADA",
+        "TEMPO",
+        "UNIDADES",
+        "VELOCIDADE_MEDIA"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 7,
+      "prerequisites": 4,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PORTUGUESE",
+      "skills": 12,
+      "leafs": 9,
+      "adaptiveReady": 1,
+      "graphOnly": 8,
+      "lessons": 1,
+      "questions": 17,
+      "purposes": {
+        "PROBE": 4,
+        "PRACTICE": 5,
+        "TRANSFER": 3,
+        "LOCK_IN": 2,
+        "REVIEW": 3
+      },
+      "contextFamilies": [
+        "ANUNCIO_PUBLICO",
+        "ARGUMENTO_E_RAZAO",
+        "CAMPANHA_DE_LEITURA",
+        "CARTA_DE_OPINIAO",
+        "COMPARACAO_DE_FONTES",
+        "CONSUMO_CONSCIENTE",
+        "CONTRAPONTO",
+        "EDITORIAL_AMBIENTAL",
+        "EDITORIAL_E_TESE",
+        "EVIDENCIA_E_CONCLUSAO",
+        "INFERENCIA_NO_CONTO",
+        "LINGUAGEM_PERSUASIVA",
+        "NOTICIA_E_FATO",
+        "POLITICA_ESCOLAR",
+        "REVIEW_APLICADA",
+        "SAUDE_PUBLICA",
+        "SINTESE_ARGUMENTATIVA"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 9,
+      "prerequisites": 4,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "RELIGIOUS_EDUCATION",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 0,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "DIALOGUE_NORMS",
+        "DIVERSITY",
+        "FREEDOM",
+        "INTERNAL_DIVERSITY",
+        "PREJUDICE",
+        "RESPECT",
+        "REVIEW_APLICADA",
+        "RITUAL",
+        "SECULAR_CONTEXT",
+        "SOURCE",
+        "SYMBOL",
+        "TRADITIONS",
+        "WORLDVIEWS"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "SCIENCE",
+      "skills": 7,
+      "leafs": 4,
+      "adaptiveReady": 1,
+      "graphOnly": 3,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "CICLO_DA_AGUA",
+        "COMBUSTAO",
+        "CONDUCAO",
+        "CONVERSAO_DE_ENERGIA",
+        "DENSIDADE",
+        "EXPERIMENTO",
+        "FUSAO",
+        "MISTURA",
+        "MUDANCA_FISICA",
+        "OXIDACAO",
+        "PRESSAO",
+        "RECICLAGEM",
+        "REVIEW_APLICADA"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 4,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "SOCIOLOGY",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 1,
+      "graphOnly": 2,
+      "lessons": 1,
+      "questions": 13,
+      "purposes": {
+        "PROBE": 3,
+        "PRACTICE": 4,
+        "TRANSFER": 2,
+        "LOCK_IN": 2,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "CULTURA",
+        "DESIGUALDADE",
+        "IDENTIDADE",
+        "INSTITUICAO_E_MUDANCA",
+        "INSTITUICOES",
+        "MIDIA",
+        "MOVIMENTOS",
+        "NORMA_E_LEI",
+        "PESQUISA",
+        "PODER",
+        "REVIEW_APLICADA",
+        "SOCIALIZACAO",
+        "TRABALHO"
+      ],
+      "misconceptions": 12,
+      "hierarchy": 3,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    }
+  ]
+}

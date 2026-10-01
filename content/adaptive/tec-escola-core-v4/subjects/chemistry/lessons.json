@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "title": "Interpretar numero atomico e massa",
+    "objective": "Interpretar numero atomico e numero de massa para identificar particulas do atomo.",
+    "summary": "Numero atomico indica protons; a diferenca entre massa e numero atomico indica neutrons.",
+    "explanation": "Numero atomico indica protons; a diferenca entre massa e numero atomico indica neutrons.",
+    "workedExample": "Um atomo de numero atomico 8 e massa 16 tem 8 neutrons.",
+    "commonMistake": "Confundir numero atomico com numero de massa ou dobrar o numero atomico.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

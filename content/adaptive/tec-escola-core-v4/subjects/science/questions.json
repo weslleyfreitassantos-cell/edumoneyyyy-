@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-science-science_transformations-1",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "fusao",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "FUSAO",
+    "statement": "Cubos de gelo deixados sobre a mesa viram agua liquida. Que transformacao ocorreu?",
+    "options": [
+      "Fusao",
+      "Evaporacao",
+      "Condensacao",
+      "Solidificacao"
+    ],
+    "correctAnswer": "Fusao",
+    "explanation": "Fusao e a passagem do solido para o liquido.",
+    "misconceptions": {
+      "Evaporacao": [
+        "STATE_CHANGE_DIRECTION_CONFUSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-2",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "combustao",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "COMBUSTAO",
+    "statement": "Uma vela acesa produz luz, calor e novos gases. Por que isso e uma transformacao quimica?",
+    "options": [
+      "O pavio se torna agua.",
+      "Novas substancias sao formadas.",
+      "A cera apenas muda de lugar.",
+      "A vela fica mais fria."
+    ],
+    "correctAnswer": "Novas substancias sao formadas.",
+    "explanation": "A combustao altera a composicao e forma gases.",
+    "misconceptions": {
+      "A cera apenas muda de lugar.": [
+        "CHEMICAL_CHANGE_CONFUSED_WITH_SHAPE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-3",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "ciclo da agua",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "CICLO_DA_AGUA",
+    "statement": "A agua de uma poca desaparece em um dia quente. Qual processo explica a mudanca?",
+    "options": [
+      "Precipitacao",
+      "Congelamento",
+      "Evaporacao",
+      "Fusao"
+    ],
+    "correctAnswer": "Evaporacao",
+    "explanation": "O calor favorece a passagem do liquido para vapor.",
+    "misconceptions": {
+      "Fusao": [
+        "EVAPORATION_CONFUSED_WITH_BOILING"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-4",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "mistura",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "MISTURA",
+    "statement": "Agua e areia foram colocadas em um copo. Qual metodo separa melhor os componentes?",
+    "options": [
+      "Fusao",
+      "Combustao",
+      "Imantacao",
+      "Filtracao"
+    ],
+    "correctAnswer": "Filtracao",
+    "explanation": "A areia fica retida no filtro enquanto a agua atravessa.",
+    "misconceptions": {
+      "Fusao": [
+        "SEPARATION_METHOD_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-5",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "conducao",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CONDUCAO",
+    "statement": "Uma colher metalica esquenta dentro da sopa. Como o calor chegou a sua ponta?",
+    "options": [
+      "Por conducao pelo metal.",
+      "Por fotossintese.",
+      "Por evaporacao da colher.",
+      "Por separacao magnetica."
+    ],
+    "correctAnswer": "Por conducao pelo metal.",
+    "explanation": "O metal conduz energia termica ao longo do objeto.",
+    "misconceptions": {
+      "Por fotossintese.": [
+        "HEAT_TRANSFER_CONFUSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-6",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "mudanca fisica",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "MUDANCA_FISICA",
+    "statement": "Uma folha de papel foi dobrada e depois desdobrada. Por que a mudanca e fisica?",
+    "options": [
+      "A dobradura libera oxigenio.",
+      "A composicao do papel permanece a mesma.",
+      "Surge uma nova substancia.",
+      "O papel vira liquido."
+    ],
+    "correctAnswer": "A composicao do papel permanece a mesma.",
+    "explanation": "A forma muda, mas a substancia continua sendo papel.",
+    "misconceptions": {
+      "Surge uma nova substancia.": [
+        "PHYSICAL_CHANGE_CONFUSED_WITH_CHEMICAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-7",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "densidade",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DENSIDADE",
+    "statement": "Dois blocos de mesmo volume: um pesa mais que o outro. O que se pode inferir?",
+    "options": [
+      "Eles tem necessariamente a mesma massa.",
+      "Volume nao participa da densidade.",
+      "O mais pesado tem maior densidade.",
+      "O mais leve tem maior densidade."
+    ],
+    "correctAnswer": "O mais pesado tem maior densidade.",
+    "explanation": "Com volumes iguais, maior massa implica maior densidade.",
+    "misconceptions": {
+      "O mais leve tem maior densidade.": [
+        "DENSITY_IGNORES_MASS"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-8",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "experimento",
+    "primarySkill": "SCIENCE_IDENTIFY_VARIABLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "EXPERIMENTO",
+    "statement": "Uma planta ficou em local claro e outra no escuro, com a mesma agua. O que a comparacao investiga?",
+    "options": [
+      "Efeito da agua sobre o metal.",
+      "A massa do vaso.",
+      "A temperatura de uma estrela.",
+      "Efeito da luz sobre o crescimento."
+    ],
+    "correctAnswer": "Efeito da luz sobre o crescimento.",
+    "explanation": "Manter a agua igual destaca a variavel luz.",
+    "misconceptions": {
+      "Efeito da agua sobre o metal.": [
+        "CONTROL_VARIABLE_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-9",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "oxidacao",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "OXIDACAO",
+    "statement": "Um portao de ferro exposto a chuva enferruja. Qual condicao favorece o processo?",
+    "options": [
+      "Contato com agua e oxigenio.",
+      "Ausencia completa de ar.",
+      "Congelamento imediato.",
+      "Filtracao da tinta."
+    ],
+    "correctAnswer": "Contato com agua e oxigenio.",
+    "explanation": "A ferrugem resulta da reacao do ferro com oxigenio e agua.",
+    "misconceptions": {
+      "Ausencia completa de ar.": [
+        "OXIDATION_CAUSE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-10",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "pressao",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PRESSAO",
+    "statement": "Ao apertar uma seringa tampada, o ar oferece resistencia. Qual explicacao e adequada?",
+    "options": [
+      "A pressao desaparece ao reduzir o volume.",
+      "As particulas do ar ocupam espaco e colidem.",
+      "O ar nao tem particulas.",
+      "A seringa produz agua."
+    ],
+    "correctAnswer": "As particulas do ar ocupam espaco e colidem.",
+    "explanation": "O modelo particulado explica a resistencia.",
+    "misconceptions": {
+      "O ar nao tem particulas.": [
+        "PARTICLE_MODEL_DENIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-11",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "reciclagem",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "RECICLAGEM",
+    "statement": "Separar vidro, papel e metal antes da coleta facilita qual etapa?",
+    "options": [
+      "Formacao de combustivel fossil.",
+      "Aumento da mistura.",
+      "Reaproveitamento de materiais.",
+      "Evaporacao da agua."
+    ],
+    "correctAnswer": "Reaproveitamento de materiais.",
+    "explanation": "A separacao reduz contaminacao e facilita a reciclagem.",
+    "misconceptions": {
+      "Evaporacao da agua.": [
+        "RECYCLING_GOAL_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-science-science_transformations-12",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "conversao de energia",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "CONVERSAO_DE_ENERGIA",
+    "statement": "Uma placa solar transforma luz em energia eletrica. O que muda principalmente?",
+    "options": [
+      "O material vira agua.",
+      "A luz deixa de existir.",
+      "A eletricidade vira massa.",
+      "A forma de energia disponivel."
+    ],
+    "correctAnswer": "A forma de energia disponivel.",
+    "explanation": "O dispositivo converte energia luminosa em eletrica.",
+    "misconceptions": {
+      "O material vira agua.": [
+        "ENERGY_CONVERSION_DENIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-science-review-01",
+    "subject": "SCIENCE",
+    "domain": "TRANSFORMACOES",
+    "topic": "Explicar transformacoes da materia",
+    "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Ao aquecer um cubo de gelo, ele derrete e continua sendo agua. Qual evidencia indica uma mudanca de estado fisico?",
+    "options": [
+      "A composicao continua sendo agua.",
+      "Surge uma substancia nova.",
+      "A massa deixa de existir.",
+      "O material se transforma em outro elemento."
+    ],
+    "correctAnswer": "A composicao continua sendo agua.",
+    "explanation": "A mudanca de estado altera a forma fisica, mas nao cria outra substancia.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

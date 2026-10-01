@@ -151,7 +151,7 @@ export interface GuidedSessionV2 {
   current_canonical_skill_id: string;
   current_step_id: string | null;
   status: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'NEEDS_TEACHER_SUPPORT' | 'CANCELLED';
-  planner_version: 'V2';
+  planner_version: 'V2' | 'V3' | 'V4';
   decision_reason: string | null;
   replan_count: number;
   metadata: Record<string, unknown>;
@@ -803,17 +803,18 @@ export const learningCenterService = {
     ),
 
   guidedSessionV2: (institutionId: string, studentId: string) =>
-    read<GuidedSessionV2 | null>(
-      supabase.rpc('get_guided_learning_session_v2', {
-        p_institution_id: institutionId,
-        p_student_id: studentId,
-      }),
-    ),
+    (async () => {
+      const v4 = await supabase.rpc('get_guided_learning_session_v4', { p_institution_id: institutionId, p_student_id: studentId });
+      if (!v4.error && v4.data) return v4.data as GuidedSessionV2;
+      return read<GuidedSessionV2 | null>(supabase.rpc('get_guided_learning_session_v2', { p_institution_id: institutionId, p_student_id: studentId }));
+    })(),
 
   guidedStepV2: (stepId: string) =>
-    read<GuidedStepV2>(
-      supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId }),
-    ),
+    (async () => {
+      const v4 = await supabase.rpc('get_guided_learning_step_v4', { p_step_id: stepId });
+      if (!v4.error && v4.data) return v4.data as GuidedStepV2;
+      return read<GuidedStepV2>(supabase.rpc('get_guided_learning_step_v2', { p_step_id: stepId }));
+    })(),
 
   startGuidedSession: (input: {
     institutionId: string;
@@ -833,13 +834,37 @@ export const learningCenterService = {
     studentId: string;
     targetCanonicalSkillId: string;
   }) =>
-    read<{ session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V2' }>(
-      supabase.rpc('start_guided_learning_session_v2', {
-        p_institution_id: input.institutionId,
-        p_student_id: input.studentId,
-        p_target_canonical_skill_id: input.targetCanonicalSkillId,
-      }),
-    ),
+    (async () => {
+      const v4 = await supabase.rpc('start_guided_learning_session_v4', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId });
+      if (!v4.error && v4.data) return v4.data as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V4' };
+      // V4 deliberately refuses to cancel an active/paused V2 or V3 session.
+      // V2's compatibility start is idempotent for V2, but its legacy branch
+      // predates V3, so inspect the scoped session first to avoid cancelling it.
+      if (v4.error?.message?.includes('LEARNING_V4_EXISTING_SESSION_OTHER_ENGINE')) {
+        const existing = await supabase
+          .from('learning_guided_sessions')
+          .select('id,current_step_id,planner_version')
+          .eq('institution_id', input.institutionId)
+          .eq('student_id', input.studentId)
+          .eq('target_canonical_skill_id', input.targetCanonicalSkillId)
+          .in('status', ['ACTIVE', 'PAUSED'])
+          .order('updated_at', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        const plannerVersion = existing.data?.planner_version as 'V2' | 'V3' | 'V4' | null | undefined;
+        if (!existing.error && existing.data && plannerVersion && plannerVersion !== 'V2') {
+          return {
+            session_id: existing.data.id,
+            created: false,
+            current_step_id: existing.data.current_step_id,
+            engine_version: plannerVersion,
+          } as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V3' | 'V4' };
+        }
+      }
+      // For V2, the V2 RPC returns the existing session without creating a
+      // duplicate. Other V4 errors retain the established compatibility path.
+      return read<{ session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V2' }>(supabase.rpc('start_guided_learning_session_v2', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId }));
+    })(),
 
   completeGuidedStep: (stepId: string, status: 'COMPLETED' | 'SKIPPED' = 'COMPLETED', metadata: Record<string, unknown> = {}) =>
     read<{ step_id: string; session_id: string; next_step_id?: string | null; session_status?: string; retry?: boolean; needs_teacher_support?: boolean }>(
@@ -851,23 +876,18 @@ export const learningCenterService = {
     ),
 
   advanceGuidedSessionV2: (input: { sessionId: string; stepId: string; action: 'LESSON_COMPLETED' | 'TARGET_RETURNED' | 'REVIEW_REQUESTED'; idempotencyKey: string }) =>
-    read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(
-      supabase.rpc('advance_guided_learning_session_v2', {
-        p_session_id: input.sessionId,
-        p_step_id: input.stepId,
-        p_action: input.action,
-        p_idempotency_key: input.idempotencyKey,
-      }),
-    ),
+    (async () => {
+      const v4 = await supabase.rpc('advance_guided_learning_session_v4', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey });
+      if (!v4.error && v4.data) return v4.data as { session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string };
+      return read<{ session_id: string; step_id: string; idempotent: boolean; current_step_id: string | null; session_status: string }>(supabase.rpc('advance_guided_learning_session_v2', { p_session_id: input.sessionId, p_step_id: input.stepId, p_action: input.action, p_idempotency_key: input.idempotencyKey }));
+    })(),
 
   submitGuidedStepV2: (input: { stepId: string; answers: Array<{ question_bank_id: string; answer: unknown }>; idempotencyKey: string }) =>
-    read<GuidedStepAttemptResultV2>(
-      supabase.rpc('submit_guided_learning_step_v2', {
-        p_step_id: input.stepId,
-        p_answers: input.answers,
-        p_idempotency_key: input.idempotencyKey,
-      }),
-    ),
+    (async () => {
+      const v4 = await supabase.rpc('submit_guided_learning_step_v4', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey });
+      if (!v4.error && v4.data) return v4.data as GuidedStepAttemptResultV2;
+      return read<GuidedStepAttemptResultV2>(supabase.rpc('submit_guided_learning_step_v2', { p_step_id: input.stepId, p_answers: input.answers, p_idempotency_key: input.idempotencyKey }));
+    })(),
 
   dailyPlan: async (institutionId: string, studentId: string, planDate = new Date().toISOString().slice(0, 10)) => {
     const planId = await read<string>(

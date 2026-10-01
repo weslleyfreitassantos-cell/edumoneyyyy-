@@ -18,6 +18,8 @@
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",
     "test:full:local": "node scripts/test-full-local.mjs",
     "health:prod": "node scripts/production-health.mjs",
+    "adaptive:v4:validate": "node --experimental-strip-types tools/adaptive/compile-v4.ts validate",
+    "adaptive:v4:compile": "node --experimental-strip-types tools/adaptive/compile-v4.ts compile",
     "check": "npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

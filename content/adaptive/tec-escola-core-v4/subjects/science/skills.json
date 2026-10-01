@@ -1,0 +1,76 @@
+{
+  "code": "SCIENCE",
+  "name": "Ciencias",
+  "anchors": [
+    {
+      "code": "SCIENCE_INVESTIGATION",
+      "title": "Investigacao cientifica"
+    },
+    {
+      "code": "SCIENCE_MATTER",
+      "title": "Materia e transformacoes"
+    },
+    {
+      "code": "SCIENCE_EVIDENCE",
+      "title": "Evidencia e explicacao"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "title": "Explicar transformacoes da materia",
+      "objective": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "description": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "masteryCapability": "Demonstrar que consegue explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "domain": "TRANSFORMACOES",
+      "parent": "SCIENCE_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_PLAN_INVESTIGATION",
+      "title": "Planejar uma investigacao controlada",
+      "objective": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "description": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "masteryCapability": "Demonstrar que consegue planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "domain": "INVESTIGACAO",
+      "parent": "SCIENCE_INVESTIGATION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_IDENTIFY_VARIABLES",
+      "title": "Identificar variaveis experimentais",
+      "objective": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "description": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "masteryCapability": "Demonstrar que consegue identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "domain": "INVESTIGACAO",
+      "parent": "SCIENCE_INVESTIGATION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_EVIDENCE_CONCLUSION",
+      "title": "Relacionar evidencia e conclusao",
+      "objective": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+      "description": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+      "masteryCapability": "Demonstrar que consegue relacionar uma conclusao aos dados que realmente a sustentam.",
+      "domain": "EVIDENCIA",
+      "parent": "SCIENCE_EVIDENCE",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

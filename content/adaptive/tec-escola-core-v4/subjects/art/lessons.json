@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "ART_INTERPRET_WORK",
+    "title": "Interpretar elementos de uma obra",
+    "objective": "Interpretar como escolhas de forma, cor, ritmo e enquadramento produzem sentidos.",
+    "summary": "O sentido emerge da relacao entre elementos e do contexto de leitura.",
+    "explanation": "O sentido emerge da relacao entre elementos e do contexto de leitura.",
+    "workedExample": "A mesma cor pode produzir tensao ou calma conforme contraste e repeticao.",
+    "commonMistake": "Atribuir significado universal a um elemento isolado.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

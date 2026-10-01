@@ -1,0 +1,508 @@
+[
+  {
+    "id": "v3-portuguese-reading_argument-1",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "editorial e tese",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "EDITORIAL_E_TESE",
+    "statement": "Um editorial defende a ampliacao de bibliotecas de bairro e apresenta dados de emprestimos. Qual e a tese central?",
+    "options": [
+      "Bibliotecas de bairro ampliam o acesso a leitura.",
+      "Todo livro deve ser digital.",
+      "Emprestimos substituem escolas.",
+      "Dados de emprestimos nao podem ser usados."
+    ],
+    "correctAnswer": "Bibliotecas de bairro ampliam o acesso a leitura.",
+    "explanation": "A tese e a ideia que o editorial procura sustentar com os dados.",
+    "misconceptions": {
+      "Todo livro deve ser digital.": [
+        "THESIS_CONFUSED_WITH_DETAIL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-2",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "noticia e fato",
+    "primarySkill": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "NOTICIA_E_FATO",
+    "statement": "Uma noticia informa que a escola abriu uma horta e cita data, local e numero de mudas. Qual trecho funciona como informacao verificavel?",
+    "options": [
+      "A medida vai mudar o mundo.",
+      "A horta foi aberta na segunda-feira.",
+      "A horta e a mais bonita da cidade.",
+      "Todos adoraram a iniciativa."
+    ],
+    "correctAnswer": "A horta foi aberta na segunda-feira.",
+    "explanation": "Data e local podem ser conferidos; os demais trechos sao avaliacao ou previsao.",
+    "misconceptions": {
+      "A horta e a mais bonita da cidade.": [
+        "FACT_CONFUSED_WITH_OPINION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-3",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "campanha de leitura",
+    "primarySkill": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "CAMPANHA_DE_LEITURA",
+    "statement": "Uma campanha apresenta o slogan Leia dez minutos por dia e uma imagem de estudantes lendo. Qual recurso reforca o argumento?",
+    "options": [
+      "O slogan elimina a necessidade de livros.",
+      "A imagem substitui os dados da campanha.",
+      "O slogan transforma a proposta em uma acao concreta.",
+      "A imagem prova que todos gostam de ler."
+    ],
+    "correctAnswer": "O slogan transforma a proposta em uma acao concreta.",
+    "explanation": "O slogan traduz a tese em uma pratica simples sem provar mais do que afirma.",
+    "misconceptions": {
+      "A imagem prova que todos gostam de ler.": [
+        "SLOGAN_TREATED_AS_PROOF"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-4",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "carta de opiniao",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CARTA_DE_OPINIAO",
+    "statement": "Na carta, Joana afirma que o recreio deve ter mais arvores porque a sombra reduz o calor. Qual evidencia apoia melhor a conclusao?",
+    "options": [
+      "A cor preferida dos estudantes.",
+      "O numero de cartazes no patio.",
+      "A opiniao de um estudante sobre musica.",
+      "Medidas de temperatura com e sem sombra."
+    ],
+    "correctAnswer": "Medidas de temperatura com e sem sombra.",
+    "explanation": "A evidencia mede diretamente a relacao entre sombra e temperatura.",
+    "misconceptions": {
+      "A cor preferida dos estudantes.": [
+        "UNRELATED_EVIDENCE_USED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-5",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "comparacao de fontes",
+    "primarySkill": "PORTUGUESE_COMPARE_SOURCES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "COMPARACAO_DE_FONTES",
+    "statement": "Duas fontes descrevem a mesma feira: uma e da organizacao e outra de um jornal. O que uma leitura critica deve fazer?",
+    "options": [
+      "Comparar perspectivas e evidencias das duas fontes.",
+      "Escolher a fonte mais curta.",
+      "Aceitar apenas a fonte com fotografia.",
+      "Somar todas as opinioes como fatos."
+    ],
+    "correctAnswer": "Comparar perspectivas e evidencias das duas fontes.",
+    "explanation": "Fontes podem ter finalidades diferentes; a comparacao ajuda a avaliar seus recortes.",
+    "misconceptions": {
+      "Escolher a fonte mais curta.": [
+        "SOURCE_AUTHORITY_REPLACES_COMPARISON"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-6",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "inferencia no conto",
+    "primarySkill": "PORTUGUESE_INFER_FROM_CLUES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "INFERENCIA_NO_CONTO",
+    "statement": "No conto, o personagem guarda o guarda-chuva mesmo com o ceu aberto e olha varias vezes para a janela. Que inferencia e sustentada?",
+    "options": [
+      "A janela esta quebrada.",
+      "Ele espera uma mudanca no tempo ou alguem chegar.",
+      "Ele certamente perdeu a chave.",
+      "Ele nunca saiu de casa."
+    ],
+    "correctAnswer": "Ele espera uma mudanca no tempo ou alguem chegar.",
+    "explanation": "A inferencia combina os sinais do comportamento sem afirmar uma causa que o texto nao apresenta.",
+    "misconceptions": {
+      "Ele certamente perdeu a chave.": [
+        "INFERENCE_TREATED_AS_CERTAINTY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-7",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "argumento e razao",
+    "primarySkill": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ARGUMENTO_E_RAZAO",
+    "statement": "Uma proposta diz que o laboratorio deve abrir a tarde porque a procura por esse horario dobrou. Qual e a razao apresentada?",
+    "options": [
+      "A existencia de outros laboratorios.",
+      "A preferencia do autor por ciencias.",
+      "O aumento da procura pelo horario da tarde.",
+      "A cor das paredes do laboratorio."
+    ],
+    "correctAnswer": "O aumento da procura pelo horario da tarde.",
+    "explanation": "A razao e o dado usado para apoiar a proposta.",
+    "misconceptions": {
+      "A cor das paredes do laboratorio.": [
+        "REASON_CONFUSED_WITH_PROPOSAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-8",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "contraponto",
+    "primarySkill": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CONTRAPONTO",
+    "statement": "Um texto defende uniformes, mas reconhece que algumas familias teriam custo inicial maior. Qual e a funcao desse trecho?",
+    "options": [
+      "Provar que uniformes sao sempre baratos.",
+      "Mudar o assunto para transporte.",
+      "Encerrar o argumento sem justificativa.",
+      "Apresentar uma dificuldade e abrir espaco para resposta."
+    ],
+    "correctAnswer": "Apresentar uma dificuldade e abrir espaco para resposta.",
+    "explanation": "O contraponto torna o argumento mais completo porque reconhece uma objecao.",
+    "misconceptions": {
+      "Provar que uniformes sao sempre baratos.": [
+        "COUNTERARGUMENT_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-9",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "anuncio publico",
+    "primarySkill": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "ANUNCIO_PUBLICO",
+    "statement": "Um aviso informa que a quadra ficara fechada na quarta para manutencao e indica outro local. Qual e a finalidade principal?",
+    "options": [
+      "Orientar a comunidade sobre uma mudanca de uso.",
+      "Narrar a historia da quadra.",
+      "Vender materiais esportivos.",
+      "Avaliar o desempenho dos alunos."
+    ],
+    "correctAnswer": "Orientar a comunidade sobre uma mudanca de uso.",
+    "explanation": "Avisos publicos organizam uma acao ou expectativa do leitor.",
+    "misconceptions": {
+      "Narrar a historia da quadra.": [
+        "GENRE_PURPOSE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-10",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "evidencia e conclusao",
+    "primarySkill": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "EVIDENCIA_E_CONCLUSAO",
+    "statement": "Uma pesquisa ouviu 80 alunos de uma turma sobre o horario de estudo. Qual conclusao e mais cuidadosa?",
+    "options": [
+      "Nenhum aluno estuda pela manha.",
+      "Na turma pesquisada, a maioria prefere estudar no inicio da noite.",
+      "Todos os alunos da cidade preferem esse horario.",
+      "O horario causa melhores notas."
+    ],
+    "correctAnswer": "Na turma pesquisada, a maioria prefere estudar no inicio da noite.",
+    "explanation": "A conclusao respeita a amostra e nao cria causalidade sem evidencia.",
+    "misconceptions": {
+      "Todos os alunos da cidade preferem esse horario.": [
+        "SAMPLE_GENERALIZED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-11",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "linguagem persuasiva",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "LINGUAGEM_PERSUASIVA",
+    "statement": "Um texto usa a expressao juntos podemos transformar o patio e apresenta etapas de plantio. O uso de juntos produz qual efeito?",
+    "options": [
+      "Indica que apenas gestores podem agir.",
+      "Substitui todas as etapas do plano.",
+      "Convoca o leitor para uma acao coletiva.",
+      "Prova que o plantio ja terminou."
+    ],
+    "correctAnswer": "Convoca o leitor para uma acao coletiva.",
+    "explanation": "A primeira pessoa do plural aproxima leitor e proposta, mas nao prova que a acao ocorreu.",
+    "misconceptions": {
+      "Prova que o plantio ja terminou.": [
+        "PERSUASION_CONFUSED_WITH_EVIDENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-portuguese-reading_argument-12",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "sintese argumentativa",
+    "primarySkill": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "SINTESE_ARGUMENTATIVA",
+    "statement": "Um texto apresenta problema de descarte, dados de coleta e proposta de pontos de entrega. Qual sintese preserva sua linha argumentativa?",
+    "options": [
+      "O texto apenas descreve lixeiras coloridas.",
+      "A proposta elimina a necessidade de coleta.",
+      "Os dados mostram que todo descarte e ilegal.",
+      "A coleta melhora quando o problema e medido e a comunidade recebe uma alternativa."
+    ],
+    "correctAnswer": "A coleta melhora quando o problema e medido e a comunidade recebe uma alternativa.",
+    "explanation": "A sintese mantem problema, evidencia e proposta sem acrescentar uma acusacao.",
+    "misconceptions": {
+      "O texto apenas descreve lixeiras coloridas.": [
+        "SUMMARY_ADDS_UNSUPPORTED_CLAIM"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-portuguese-review-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "Identificar tese e evidencia em textos argumentativos",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um artigo afirma que a biblioteca do bairro deve ampliar o horario porque os registros mostram maior procura no fim da tarde. Qual evidencia sustenta diretamente a proposta?",
+    "options": [
+      "Os registros de atendimento por horario.",
+      "A cor da fachada da biblioteca.",
+      "A opiniao de um visitante sobre musica.",
+      "O numero de arvores da rua."
+    ],
+    "correctAnswer": "Os registros de atendimento por horario.",
+    "explanation": "Os registros medem a procura no horario citado e sustentam a decisao.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-probe-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "editorial e tese",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "EDITORIAL_AMBIENTAL",
+    "statement": "Um editorial defende que a escola deve ampliar a coleta seletiva. Qual frase expressa a tese central?",
+    "options": [
+      "A escola deve ampliar a coleta seletiva para reduzir residuos.",
+      "A coleta acontece na sexta-feira.",
+      "As lixeiras ficam perto da cantina.",
+      "Alguns estudantes chegam cedo."
+    ],
+    "correctAnswer": "A escola deve ampliar a coleta seletiva para reduzir residuos.",
+    "explanation": "A tese apresenta a posicao defendida e o objetivo da proposta; as demais alternativas sao detalhes do contexto.",
+    "misconceptions": {
+      "A coleta acontece na sexta-feira.": [
+        "THESIS_CONFUSED_WITH_DETAIL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-practice-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "carta de opiniao",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "POLITICA_ESCOLAR",
+    "statement": "Uma carta defende mais bebedouros no patio porque a fila atual e longa. Qual evidencia apoia melhor essa proposta?",
+    "options": [
+      "Registros mostram que 180 estudantes esperam mais de cinco minutos no intervalo.",
+      "O patio foi pintado de azul.",
+      "A escola tem uma biblioteca grande.",
+      "Alguns estudantes preferem estudar em casa."
+    ],
+    "correctAnswer": "Registros mostram que 180 estudantes esperam mais de cinco minutos no intervalo.",
+    "explanation": "A evidencia precisa medir diretamente a fila e o problema que a proposta pretende resolver.",
+    "misconceptions": {
+      "O patio foi pintado de azul.": [
+        "UNRELATED_EVIDENCE_USED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-transfer-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "editorial e tese",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "SAUDE_PUBLICA",
+    "statement": "Um artigo recomenda ampliar a iluminacao de uma praca porque o uso caiu a noite. Qual dado sustenta diretamente a recomendacao?",
+    "options": [
+      "O registro de entradas mostra queda de 40% depois das 18h.",
+      "A praca possui arvores antigas.",
+      "O bairro tem tres escolas.",
+      "A fonte da praca foi inaugurada em maio."
+    ],
+    "correctAnswer": "O registro de entradas mostra queda de 40% depois das 18h.",
+    "explanation": "O dado relaciona o horario de menor uso ao problema que a iluminacao pretende enfrentar.",
+    "misconceptions": {
+      "A praca possui arvores antigas.": [
+        "UNRELATED_EVIDENCE_USED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-review-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "linguagem persuasiva",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "CONSUMO_CONSCIENTE",
+    "statement": "Uma campanha recomenda reduzir o uso de descartaveis e cita a coleta de 320 copos em uma semana. Como avaliar o argumento?",
+    "options": [
+      "A proposta tem evidencia relacionada, mas pode ser fortalecida com comparacao de outras semanas.",
+      "O numero de copos prova sozinho que toda a cidade pensa igual.",
+      "A frase de impacto substitui qualquer dado.",
+      "A coleta nao tem relacao com o consumo."
+    ],
+    "correctAnswer": "A proposta tem evidencia relacionada, mas pode ser fortalecida com comparacao de outras semanas.",
+    "explanation": "A evidencia se relaciona a proposta, e a avaliacao cuidadosa tambem reconhece o que ainda falta comparar.",
+    "misconceptions": {
+      "A frase de impacto substitui qualquer dado.": [
+        "PERSUASION_CONFUSED_WITH_EVIDENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

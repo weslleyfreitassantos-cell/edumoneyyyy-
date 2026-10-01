@@ -1,0 +1,62 @@
+{
+  "code": "GEOGRAPHY",
+  "name": "Geografia",
+  "anchors": [
+    {
+      "code": "GEOGRAPHY_SPACE",
+      "title": "Espaco geografico"
+    },
+    {
+      "code": "GEOGRAPHY_CARTOGRAPHY",
+      "title": "Cartografia e escala"
+    },
+    {
+      "code": "GEOGRAPHY_TERRITORY",
+      "title": "Territorio e paisagem"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+      "title": "Interpretar territorio e paisagem",
+      "objective": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "description": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "masteryCapability": "Demonstrar que consegue interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "domain": "TERRITORIO",
+      "parent": "GEOGRAPHY_TERRITORY",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "GEOGRAPHY_MAP_SCALE",
+      "title": "Interpretar escala cartografica",
+      "objective": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+      "description": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+      "masteryCapability": "Demonstrar que consegue interpretar a relacao entre distancia representada e distancia real em um mapa.",
+      "domain": "CARTOGRAFIA",
+      "parent": "GEOGRAPHY_CARTOGRAPHY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+      "title": "Analisar dados climaticos",
+      "objective": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "description": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "masteryCapability": "Demonstrar que consegue analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "domain": "CLIMA",
+      "parent": "GEOGRAPHY_SPACE",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

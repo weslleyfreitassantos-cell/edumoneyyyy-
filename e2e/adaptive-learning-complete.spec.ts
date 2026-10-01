@@ -203,18 +203,18 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await teacherPage.getByRole('link', { name: 'Central Pedagógica', exact: true }).click();
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });
       await expect(teacherPage.getByRole('heading', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
-      await expect(teacherPage.getByRole('heading', { name: 'Trilhas e pacotes', exact: true })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
+      await teacherPage.getByRole('link', { name: 'Abrir mapa' }).click();
+      await expect(teacherPage).toHaveURL(new RegExp(`/teacher/pedagogical-center/map\\?class=${classId}`), { timeout: 30_000 });
       await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem da turma' })).toBeVisible({ timeout: 30_000 });
-      await teacherPage.getByLabel('Turma para analisar lacunas').selectOption(classId);
       await expect(teacherPage.getByText('PHYSICS_AVERAGE_SPEED', { exact: true })).toBeVisible({ timeout: 30_000 });
-      const packageSection = teacherPage.getByRole('region', { name: 'Trilhas e pacotes' });
-      await packageSection.getByLabel('Pacote').selectOption(starterPackage.data.id);
-      await packageSection.getByLabel('Turma').selectOption(classId);
-      await packageSection.getByRole('button', { name: 'Atribuir trilha' }).click();
-      await expect(teacherPage.getByRole('status')).toContainText('Trilha atribuída à turma', { timeout: 30_000 });
-      const assignment = await service.from('learning_package_assignments').select('id').eq('institution_id', institutionId).eq('package_id', starterPackage.data.id).eq('class_id', classId).single();
+      await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);
+      await expect(teacherPage.getByRole('heading', { name: 'Alice Adaptive Complete', exact: true })).toBeVisible({ timeout: 30_000 });
+      await teacherPage.locator('select').selectOption(starterPackage.data.id);
+      await teacherPage.getByRole('button', { name: 'Atribuir ao aluno' }).click();
+      const assignment = await service.from('learning_package_assignments').select('id').eq('institution_id', institutionId).eq('package_id', starterPackage.data.id).eq('student_id', studentId).single();
       expect(assignment.error).toBeNull();
-      const assignmentRetry = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_class_id: classId });
+      const assignmentRetry = await teacher.client.rpc('assign_learning_package', { p_institution_id: institutionId, p_package_id: starterPackage.data.id, p_student_id: studentId });
       expect(assignmentRetry.data).toBe(assignment.data.id);
 
       const mariaPage = await browser.newPage({ viewport: { width: 390, height: 844 } });
@@ -232,6 +232,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(alicePage);
       await login(alicePage, alice);
       await alicePage.goto('/student/study');
+      await alicePage.getByRole('button', { name: 'Explorar', exact: true }).click();
       await expect(alicePage.getByText('Fundamentos de Frações', { exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await alicePage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 

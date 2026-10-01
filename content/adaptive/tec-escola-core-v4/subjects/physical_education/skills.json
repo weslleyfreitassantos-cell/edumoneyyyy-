@@ -1,0 +1,62 @@
+{
+  "code": "PHYSICAL_EDUCATION",
+  "name": "Educacao Fisica",
+  "anchors": [
+    {
+      "code": "PE_BODY",
+      "title": "Corpo e movimento"
+    },
+    {
+      "code": "PE_SPORTS",
+      "title": "Esportes e jogos"
+    },
+    {
+      "code": "PE_HEALTH",
+      "title": "Saude e participacao"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
+      "title": "Explicar principios de esportes",
+      "objective": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "description": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "masteryCapability": "Demonstrar que consegue explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "domain": "ESPORTES",
+      "parent": "PE_SPORTS",
+      "readiness": "CONTENT_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_ANALYZE_MOVEMENT",
+      "title": "Analisar movimento corporal",
+      "objective": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "description": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "masteryCapability": "Demonstrar que consegue analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "domain": "CORPO",
+      "parent": "PE_BODY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_PLAN_SAFE_ACTIVITY",
+      "title": "Planejar atividade fisica segura",
+      "objective": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+      "description": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+      "masteryCapability": "Demonstrar que consegue planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+      "domain": "SAUDE",
+      "parent": "PE_HEALTH",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

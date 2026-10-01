@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-art-art_interpretation-1",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPARE_COMPOSITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "COMPOSICAO",
+    "statement": "Uma fotografia usa linhas diagonais para conduzir o olhar ate uma janela iluminada. Qual elemento esta em destaque?",
+    "options": [
+      "Direcao e composicao.",
+      "Apenas o suporte fisico.",
+      "O preco da fotografia.",
+      "A biografia do observador."
+    ],
+    "correctAnswer": "Direcao e composicao.",
+    "explanation": "Linhas podem organizar o percurso visual na imagem.",
+    "misconceptions": {
+      "Apenas o suporte fisico.": [
+        "FORM_IGNORED_FOR_CONTENT"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-2",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "contraste",
+    "primarySkill": "ART_INTERPRET_WORK",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "CONTRASTE",
+    "statement": "Em uma pintura, azul escuro ao lado de amarelo intenso cria forte:",
+    "options": [
+      "Escala temporal.",
+      "Contraste de cor.",
+      "Perspectiva linear.",
+      "Textura sonora."
+    ],
+    "correctAnswer": "Contraste de cor.",
+    "explanation": "A oposicao de matizes aumenta a diferenca visual percebida.",
+    "misconceptions": {
+      "Perspectiva linear.": [
+        "CONTRAST_CONFUSED_WITH_TEXTURE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-3",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "contexto da obra",
+    "primarySkill": "ART_RELATE_WORK_CONTEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "CONTEXTO_DA_OBRA",
+    "statement": "Para interpretar um mural sobre trabalho urbano, e importante observar:",
+    "options": [
+      "A opiniao de um unico espectador.",
+      "A tinta como prova de autoria.",
+      "Tema, local, periodo e escolhas visuais.",
+      "Somente o tamanho do mural."
+    ],
+    "correctAnswer": "Tema, local, periodo e escolhas visuais.",
+    "explanation": "Contexto amplia a leitura sem substituir a observacao.",
+    "misconceptions": {
+      "Somente o tamanho do mural.": [
+        "ART_CONTEXT_REDUCED_TO_DATE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-4",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "abstracao",
+    "primarySkill": "ART_INTERPRET_WORK",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ABSTRACAO",
+    "statement": "Uma obra nao representa objetos reconheciveis, mas repete formas geometricas. Uma leitura adequada e:",
+    "options": [
+      "Concluir que nao existe significado.",
+      "Procurar uma fotografia escondida.",
+      "Ignorar toda composicao.",
+      "Analisar ritmo, forma, cor e relacoes visuais."
+    ],
+    "correctAnswer": "Analisar ritmo, forma, cor e relacoes visuais.",
+    "explanation": "Abstracao organiza sentidos por elementos visuais.",
+    "misconceptions": {
+      "Concluir que nao existe significado.": [
+        "ABSTRACTION_AS_MEANINGLESS"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-5",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "patrimonio",
+    "primarySkill": "ART_RELATE_WORK_CONTEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "PATRIMONIO",
+    "statement": "Uma comunidade restaura um painel antigo e registra relatos de moradores. O projeto valoriza:",
+    "options": [
+      "Memoria, materialidade e participacao.",
+      "Apenas o valor comercial.",
+      "A obra sem contexto.",
+      "A substituicao do painel por publicidade."
+    ],
+    "correctAnswer": "Memoria, materialidade e participacao.",
+    "explanation": "Patrimonio envolve objeto e significados da comunidade.",
+    "misconceptions": {
+      "Apenas o valor comercial.": [
+        "HERITAGE_AS_COMMODITY_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-6",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "hierarquia visual",
+    "primarySkill": "ART_COMPARE_COMPOSITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "HIERARQUIA_VISUAL",
+    "statement": "Uma imagem mostra uma figura central maior que as demais. O tamanho pode sugerir:",
+    "options": [
+      "Um movimento sonoro.",
+      "Hierarquia ou destaque.",
+      "Somente distancia real.",
+      "Ausencia de composicao."
+    ],
+    "correctAnswer": "Hierarquia ou destaque.",
+    "explanation": "Escala visual orienta a atencao no conjunto.",
+    "misconceptions": {
+      "Somente distancia real.": [
+        "SCALE_AS_REAL_SIZE_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-7",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "arte e sociedade",
+    "primarySkill": "ART_RELATE_WORK_CONTEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ARTE_E_SOCIEDADE",
+    "statement": "Um cartaz de campanha apresenta cores nacionais e pessoas diversas. Para interpreta-lo, vale perguntar:",
+    "options": [
+      "Se a cor e bonita sem contexto.",
+      "Se toda campanha e neutra.",
+      "Que valores e identidades a imagem procura mobilizar.",
+      "Apenas quem fabricou o papel."
+    ],
+    "correctAnswer": "Que valores e identidades a imagem procura mobilizar.",
+    "explanation": "Imagens publicas comunicam valores e pertencimentos.",
+    "misconceptions": {
+      "Apenas quem fabricou o papel.": [
+        "IMAGE_AS_NEUTRAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-8",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "tecnica",
+    "primarySkill": "ART_INTERPRET_WORK",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "TECNICA",
+    "statement": "Uma gravura apresenta marcas repetidas e areas de tinta mais espessas. A observacao pode investigar:",
+    "options": [
+      "Somente a idade do artista.",
+      "O som emitido pela tinta.",
+      "A ausencia de materialidade.",
+      "Como a tecnica produz textura e contraste."
+    ],
+    "correctAnswer": "Como a tecnica produz textura e contraste.",
+    "explanation": "Procedimentos materiais tambem participam do sentido visual.",
+    "misconceptions": {
+      "Somente a idade do artista.": [
+        "TECHNIQUE_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-9",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "perspectiva",
+    "primarySkill": "ART_INTERPRET_WORK",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "PERSPECTIVA",
+    "statement": "Linhas que parecem convergir ao longe criam efeito de:",
+    "options": [
+      "Perspectiva.",
+      "Colagem sonora.",
+      "Contraste termico.",
+      "Textura tatil real."
+    ],
+    "correctAnswer": "Perspectiva.",
+    "explanation": "A convergencia organiza profundidade na imagem.",
+    "misconceptions": {
+      "Colagem sonora.": [
+        "PERSPECTIVE_CONFUSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-10",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "interpretacao plural",
+    "primarySkill": "ART_COMPARE_COMPOSITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "INTERPRETACAO_PLURAL",
+    "statement": "Duas pessoas interpretam uma obra de modos diferentes e apontam elementos observaveis. Isso mostra que:",
+    "options": [
+      "Observacao impede interpretacao.",
+      "Leituras podem ser plurais quando justificadas pela obra.",
+      "Qualquer leitura vale sem evidencia.",
+      "A obra tem um unico significado obrigatorio."
+    ],
+    "correctAnswer": "Leituras podem ser plurais quando justificadas pela obra.",
+    "explanation": "Interpretacao admite diversidade com argumentos visuais.",
+    "misconceptions": {
+      "Qualquer leitura vale sem evidencia.": [
+        "PLURALITY_AS_ANYTHING_GOES"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-11",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "processo criativo",
+    "primarySkill": "ART_INTERPRET_WORK",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PROCESSO_CRIATIVO",
+    "statement": "Um sketchbook mostra varias tentativas antes da obra final. O material evidencia:",
+    "options": [
+      "Que rascunhos nao tem valor.",
+      "A impossibilidade de planejar.",
+      "Decisoes e revisoes do processo criativo.",
+      "Que a obra final foi automatica."
+    ],
+    "correctAnswer": "Decisoes e revisoes do processo criativo.",
+    "explanation": "Rascunhos tornam visiveis escolhas e experimentacoes.",
+    "misconceptions": {
+      "Que a obra final foi automatica.": [
+        "PROCESS_HIDDEN"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-art-art_interpretation-12",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "curadoria",
+    "primarySkill": "ART_RELATE_WORK_CONTEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "CURADORIA",
+    "statement": "Uma exposicao organiza obras por tema e explica os criterios em um texto. A curadoria:",
+    "options": [
+      "Define um unico sentido imutavel.",
+      "Substitui as obras.",
+      "Serve apenas para vender ingressos.",
+      "Cria um percurso de leitura para o publico."
+    ],
+    "correctAnswer": "Cria um percurso de leitura para o publico.",
+    "explanation": "Curadoria relaciona obras sem impedir leituras do visitante.",
+    "misconceptions": {
+      "Define um unico sentido imutavel.": [
+        "CURATION_AS_AUTHORITARIAN"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-art-review-01",
+    "subject": "ART",
+    "domain": "INTERPRETACAO",
+    "topic": "Interpretar elementos de uma obra",
+    "primarySkill": "ART_INTERPRET_WORK",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Duas pinturas usam a mesma cor, mas uma cria tensao por contraste e outra cria calma por repeticao. O que a comparacao mostra?",
+    "options": [
+      "O sentido depende da relacao entre elementos da obra.",
+      "A cor possui um significado universal e fixo.",
+      "O contexto nunca interfere na leitura.",
+      "A tecnica e irrelevante para a interpretacao."
+    ],
+    "correctAnswer": "O sentido depende da relacao entre elementos da obra.",
+    "explanation": "O efeito de uma cor depende de sua relacao com outros elementos e escolhas da obra.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

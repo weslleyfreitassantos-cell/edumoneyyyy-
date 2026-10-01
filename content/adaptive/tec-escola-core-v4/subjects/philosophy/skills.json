@@ -1,0 +1,62 @@
+{
+  "code": "PHILOSOPHY",
+  "name": "Filosofia",
+  "anchors": [
+    {
+      "code": "PHILOSOPHY_CONCEPTS",
+      "title": "Conceitos filosoficos"
+    },
+    {
+      "code": "PHILOSOPHY_ARGUMENT",
+      "title": "Argumentacao"
+    },
+    {
+      "code": "PHILOSOPHY_ETHICS",
+      "title": "Etica e vida coletiva"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "title": "Avaliar argumento filosofico",
+      "objective": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+      "description": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+      "masteryCapability": "Demonstrar que consegue avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+      "domain": "ARGUMENTO",
+      "parent": "PHILOSOPHY_ARGUMENT",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "title": "Distinguir conceito de opiniao",
+      "objective": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "description": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "masteryCapability": "Demonstrar que consegue distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "domain": "CONCEITO",
+      "parent": "PHILOSOPHY_CONCEPTS",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+      "title": "Aplicar principio etico a um caso",
+      "objective": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "description": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "masteryCapability": "Demonstrar que consegue aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "domain": "ETICA",
+      "parent": "PHILOSOPHY_ETHICS",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    }
+  ]
+}

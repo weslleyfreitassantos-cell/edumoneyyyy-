@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-philosophy-philosophy_argument-1",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "justica",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "JUSTICA",
+    "statement": "Uma escola debate se e justo distribuir recursos igualmente ou conforme a necessidade. Qual procedimento e adequado?",
+    "options": [
+      "Definir criterios e examinar suas consequencias.",
+      "Escolher a opiniao mais popular.",
+      "Encerrar o debate com um exemplo.",
+      "Tratar justica como palavra sem sentido."
+    ],
+    "correctAnswer": "Definir criterios e examinar suas consequencias.",
+    "explanation": "A analise conceitual explicita criterios antes de julgar.",
+    "misconceptions": {
+      "Escolher a opiniao mais popular.": [
+        "POPULARITY_REPLACES_ARGUMENT"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-2",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "premissa e conclusao",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "PREMISSA_E_CONCLUSAO",
+    "statement": "Em Se chove, o patio molha; chove; logo, o patio molha, qual e a conclusao?",
+    "options": [
+      "O patio e coberto.",
+      "O patio molha.",
+      "Se chove.",
+      "Chove."
+    ],
+    "correctAnswer": "O patio molha.",
+    "explanation": "A conclusao e o enunciado sustentado pelas premissas.",
+    "misconceptions": {
+      "Se chove.": [
+        "CONCLUSION_PREMISE_SWAPPED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-3",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "validade",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "VALIDADE",
+    "statement": "Um argumento pode ter forma valida e premissa falsa. O que isso significa?",
+    "options": [
+      "Premissas nunca importam.",
+      "Forma e conteudo sao a mesma coisa.",
+      "A conclusao segue a forma, mas o conteudo inicial precisa ser examinado.",
+      "Toda conclusao valida e verdadeira."
+    ],
+    "correctAnswer": "A conclusao segue a forma, mas o conteudo inicial precisa ser examinado.",
+    "explanation": "Validade trata da estrutura; verdade exige avaliar premissas.",
+    "misconceptions": {
+      "Toda conclusao valida e verdadeira.": [
+        "VALIDITY_EQUALS_TRUTH"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-4",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "dialogo",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DIALOGO",
+    "statement": "Em um dialogo filosofico, responder a uma objecao relevante serve para:",
+    "options": [
+      "Evitar qualquer criterio.",
+      "Trocar razoes por autoridade.",
+      "Provar que discordancia e erro.",
+      "Testar e aperfeicoar o argumento."
+    ],
+    "correctAnswer": "Testar e aperfeicoar o argumento.",
+    "explanation": "Objecoes ajudam a identificar limites e fortalecer uma tese.",
+    "misconceptions": {
+      "Evitar qualquer criterio.": [
+        "OBJECTION_AS_ATTACK"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-5",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "etica",
+    "primarySkill": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ETICA",
+    "statement": "Uma decisao pode beneficiar muitos, mas prejudicar um grupo vulneravel. Qual pergunta e pertinente?",
+    "options": [
+      "Como distribuir beneficios e danos de modo justificavel?",
+      "Quantas pessoas concordam nas redes?",
+      "Quem falou primeiro?",
+      "Qual escolha e mais rapida?"
+    ],
+    "correctAnswer": "Como distribuir beneficios e danos de modo justificavel?",
+    "explanation": "A avaliacao etica considera impactos e justificacao.",
+    "misconceptions": {
+      "Quantas pessoas concordam nas redes?": [
+        "MAJORITY_REPLACES_ETHICS"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-6",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "analogia",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ANALOGIA",
+    "statement": "Comparar uma regra escolar com uma regra de um jogo pode ajudar quando:",
+    "options": [
+      "Analogia dispensa razoes.",
+      "As semelhancas relevantes e os limites da comparacao sao explicitados.",
+      "Toda comparacao prova a conclusao.",
+      "As diferencas sao ignoradas."
+    ],
+    "correctAnswer": "As semelhancas relevantes e os limites da comparacao sao explicitados.",
+    "explanation": "Analogia orienta, mas precisa mostrar por que a relacao e pertinente.",
+    "misconceptions": {
+      "Toda comparacao prova a conclusao.": [
+        "ANALOGY_AS_PROOF"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-7",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "ceticismo",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CETICISMO",
+    "statement": "Duvidar de uma afirmacao para pedir evidencia e diferente de negar tudo porque:",
+    "options": [
+      "Toda evidencia e opiniao.",
+      "Negacao sem razao e mais rigorosa.",
+      "A duvida metodica busca criterios para avaliar.",
+      "Ceticismo impede qualquer investigacao."
+    ],
+    "correctAnswer": "A duvida metodica busca criterios para avaliar.",
+    "explanation": "Questionar com metodo nao equivale a rejeitar todo conhecimento.",
+    "misconceptions": {
+      "Ceticismo impede qualquer investigacao.": [
+        "SKEPTICISM_AS_DENIAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-8",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "liberdade",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LIBERDADE",
+    "statement": "Se escolhas sao influenciadas por contexto social, ainda e relevante perguntar:",
+    "options": [
+      "Se contexto torna toda escolha falsa.",
+      "Se liberdade so existe sem sociedade.",
+      "Se responsabilidade desaparece sempre.",
+      "Quais condicoes ampliam ou limitam a autonomia?"
+    ],
+    "correctAnswer": "Quais condicoes ampliam ou limitam a autonomia?",
+    "explanation": "A filosofia pode analisar graus e condicoes de autonomia.",
+    "misconceptions": {
+      "Se contexto torna toda escolha falsa.": [
+        "CONTEXT_ERASES_AGENCY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-9",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "conhecimento",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CONHECIMENTO",
+    "statement": "O que diferencia conhecimento de palpite em uma previsao de chuva?",
+    "options": [
+      "A justificacao e a possibilidade de exame da evidencia.",
+      "A certeza absoluta em qualquer caso.",
+      "A quantidade de pessoas que repetem a frase.",
+      "A velocidade da resposta."
+    ],
+    "correctAnswer": "A justificacao e a possibilidade de exame da evidencia.",
+    "explanation": "Conhecimento exige mais que opiniao: requer justificacao examinavel.",
+    "misconceptions": {
+      "A certeza absoluta em qualquer caso.": [
+        "BELIEF_EQUALS_KNOWLEDGE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-10",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "falacia",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "FALACIA",
+    "statement": "Dizer que uma proposta e falsa apenas porque seu autor errou em outro assunto e:",
+    "options": [
+      "Silogismo valido.",
+      "Ataque a pessoa em vez do argumento.",
+      "Evidencia experimental.",
+      "Definicao conceitual."
+    ],
+    "correctAnswer": "Ataque a pessoa em vez do argumento.",
+    "explanation": "A origem pessoal nao refuta o conteudo da proposta.",
+    "misconceptions": {
+      "Evidencia experimental.": [
+        "PERSON_ATTACK_AS_REFUTATION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-11",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "pensamento critico",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PENSAMENTO_CRITICO",
+    "statement": "Ao ouvir uma afirmacao viral, uma atitude filosofica e:",
+    "options": [
+      "Aceitar se for emocional.",
+      "Rejeitar toda afirmacao.",
+      "Perguntar conceitos, razoes, evidencias e contraexemplos.",
+      "Compartilhar antes de ler."
+    ],
+    "correctAnswer": "Perguntar conceitos, razoes, evidencias e contraexemplos.",
+    "explanation": "Pensamento critico organiza perguntas antes do julgamento.",
+    "misconceptions": {
+      "Compartilhar antes de ler.": [
+        "CRITICAL_THINKING_AS_CYNICISM"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-philosophy-philosophy_argument-12",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "anecdota",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "ANECDOTA",
+    "statement": "Uma tese sobre transporte cita apenas um caso individual. Qual limite deve ser reconhecido?",
+    "options": [
+      "Um caso prova qualquer generalizacao.",
+      "Exemplos nunca tem valor.",
+      "A tese se torna necessariamente falsa.",
+      "O caso ilustra, mas pode nao representar toda a cidade."
+    ],
+    "correctAnswer": "O caso ilustra, mas pode nao representar toda a cidade.",
+    "explanation": "O argumento precisa ajustar a conclusao ao alcance da evidencia.",
+    "misconceptions": {
+      "Um caso prova qualquer generalizacao.": [
+        "ANECDOTE_GENERALIZED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-philosophy-review-01",
+    "subject": "PHILOSOPHY",
+    "domain": "ARGUMENTO",
+    "topic": "Avaliar argumento filosofico",
+    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Todo argumento deve ser avaliado pelas razoes apresentadas, e nao apenas por quem o defende. Essa ideia combate qual erro?",
+    "options": [
+      "Substituir a analise pela autoridade da pessoa.",
+      "Distinguir premissa de conclusao.",
+      "Examinar a relacao entre as razoes.",
+      "Comparar argumentos diferentes."
+    ],
+    "correctAnswer": "Substituir a analise pela autoridade da pessoa.",
+    "explanation": "A qualidade do argumento depende das razoes e da relacao com a conclusao.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

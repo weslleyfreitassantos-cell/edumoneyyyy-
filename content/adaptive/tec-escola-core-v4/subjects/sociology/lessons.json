@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+    "title": "Explicar instituicoes sociais",
+    "objective": "Explicar como instituicoes organizam papeis, regras e expectativas coletivas.",
+    "summary": "Instituicoes estabilizam praticas, mas podem mudar com conflitos e transformacoes sociais.",
+    "explanation": "Instituicoes estabilizam praticas, mas podem mudar com conflitos e transformacoes sociais.",
+    "workedExample": "A escola organiza horarios e papeis que orientam a convivencia.",
+    "commonMistake": "Tratar instituicoes como grupos de amizade ou estruturas imutaveis.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

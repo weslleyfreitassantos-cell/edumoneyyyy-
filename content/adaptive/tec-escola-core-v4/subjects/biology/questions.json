@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-biology-biology_genetics-1",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "alelo",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "ALELO",
+    "statement": "Em uma familia, diferentes alelos influenciam a cor dos olhos. O que e um alelo?",
+    "options": [
+      "Uma versao de um gene.",
+      "Uma celula inteira.",
+      "Um orgao do corpo.",
+      "Uma especie diferente."
+    ],
+    "correctAnswer": "Uma versao de um gene.",
+    "explanation": "Alelo e uma forma alternativa de um gene.",
+    "misconceptions": {
+      "Uma celula inteira.": [
+        "ALLELE_CONFUSED_WITH_CELL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-2",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "hereditariedade",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "HEREDITARIEDADE",
+    "statement": "Pais com uma caracteristica podem ter filho sem ela. Qual explicacao e possivel?",
+    "options": [
+      "O ambiente altera todo o DNA dos pais.",
+      "O filho recebeu outra combinacao de alelos.",
+      "Caracteristicas nunca dependem de genes.",
+      "Todos os filhos sao geneticamente identicos."
+    ],
+    "correctAnswer": "O filho recebeu outra combinacao de alelos.",
+    "explanation": "A combinacao herdada pode diferir entre irmaos.",
+    "misconceptions": {
+      "Caracteristicas nunca dependem de genes.": [
+        "INHERITANCE_TREATED_AS_COPY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-3",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "dominancia",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DOMINANCIA",
+    "statement": "Em um modelo, A domina a. Um individuo Aa apresenta qual alelo no fenotipo?",
+    "options": [
+      "Nenhum alelo",
+      "AA e aa ao mesmo tempo",
+      "A",
+      "a apenas"
+    ],
+    "correctAnswer": "A",
+    "explanation": "No modelo dado, o alelo dominante se expressa em Aa.",
+    "misconceptions": {
+      "a apenas": [
+        "DOMINANCE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-4",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "probabilidade",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "PROBABILIDADE",
+    "statement": "No cruzamento Aa x Aa, usando dominancia completa, qual proporcao esperada de aa?",
+    "options": [
+      "50%",
+      "75%",
+      "100%",
+      "25%"
+    ],
+    "correctAnswer": "25%",
+    "explanation": "As combinacoes incluem um aa em quatro.",
+    "misconceptions": {
+      "50%": [
+        "PUNNETT_COUNT_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-5",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "mutacao",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "MUTACAO",
+    "statement": "Uma mudanca no DNA pode nao alterar uma caracteristica observavel. Por que?",
+    "options": [
+      "Pode ocorrer em regiao sem efeito ou ser compensada.",
+      "Toda mudanca no DNA e fatal.",
+      "DNA nao participa das caracteristicas.",
+      "A mutacao sempre altera o ambiente."
+    ],
+    "correctAnswer": "Pode ocorrer em regiao sem efeito ou ser compensada.",
+    "explanation": "O efeito depende do gene, da regiao e do contexto.",
+    "misconceptions": {
+      "Toda mudanca no DNA e fatal.": [
+        "MUTATION_ALWAYS_VISIBLE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-6",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "selecao",
+    "primarySkill": "BIOLOGY_INTERPRET_POPULATION_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "SELECAO",
+    "statement": "Uma populacao de insetos passa a ter mais individuos resistentes ao pesticida apos varias geracoes. Qual processo explica?",
+    "options": [
+      "Eliminacao da hereditariedade.",
+      "Selecao de variantes resistentes.",
+      "Treino individual dos insetos.",
+      "Mudanca instantanea em todos os genes."
+    ],
+    "correctAnswer": "Selecao de variantes resistentes.",
+    "explanation": "O pesticida favorece a sobrevivencia e reproducao de variantes resistentes.",
+    "misconceptions": {
+      "Treino individual dos insetos.": [
+        "SELECTION_CONFUSED_WITH_TRAINING"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-7",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "cromossomo",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CROMOSSOMO",
+    "statement": "Onde esta a maior parte do material genetico de uma celula animal?",
+    "options": [
+      "No vacuolo de agua.",
+      "No espaco extracelular.",
+      "No nucleo.",
+      "Na parede celular."
+    ],
+    "correctAnswer": "No nucleo.",
+    "explanation": "O nucleo abriga os cromossomos na maioria das celulas animais.",
+    "misconceptions": {
+      "Na parede celular.": [
+        "CELL_STRUCTURE_MISPLACED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-8",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "DNA e RNA",
+    "primarySkill": "BIOLOGY_CELL_FUNCTION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "DNA_E_RNA",
+    "statement": "Qual diferenca geral entre DNA e RNA e correta?",
+    "options": [
+      "O DNA existe apenas fora das celulas.",
+      "RNA nao possui nucleotideos.",
+      "DNA e sempre uma proteina.",
+      "O RNA costuma participar da leitura da informacao genetica."
+    ],
+    "correctAnswer": "O RNA costuma participar da leitura da informacao genetica.",
+    "explanation": "DNA armazena informacao e RNA atua em sua expressao.",
+    "misconceptions": {
+      "O DNA existe apenas fora das celulas.": [
+        "DNA_RNA_FUNCTIONS_SWAPPED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-9",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "caracteristica complexa",
+    "primarySkill": "BIOLOGY_INTERPRET_POPULATION_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CARACTERISTICA_COMPLEXA",
+    "statement": "Altura humana varia de forma continua. Qual ideia explica melhor?",
+    "options": [
+      "Muitos genes e ambiente podem contribuir.",
+      "Apenas um alelo determina toda altura.",
+      "Ambiente nunca afeta fenotipo.",
+      "Altura nao tem relacao com heranca."
+    ],
+    "correctAnswer": "Muitos genes e ambiente podem contribuir.",
+    "explanation": "Caracteristicas complexas resultam de varios fatores.",
+    "misconceptions": {
+      "Apenas um alelo determina toda altura.": [
+        "COMPLEX_TRAIT_SINGLE_CAUSE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-10",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "fenotipo",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "FENOTIPO",
+    "statement": "Duas plantas com genotipos iguais crescem com alturas diferentes em ambientes distintos. O que isso mostra?",
+    "options": [
+      "Fenotipo e sempre identico ao genotipo.",
+      "Fenotipo resulta da interacao entre genes e ambiente.",
+      "Genotipo muda a cada rega.",
+      "Ambiente nao interfere."
+    ],
+    "correctAnswer": "Fenotipo resulta da interacao entre genes e ambiente.",
+    "explanation": "A expressao observada depende de fatores geneticos e ambientais.",
+    "misconceptions": {
+      "Genotipo muda a cada rega.": [
+        "GENOTYPE_EQUALS_PHENOTYPE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-11",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "heranca ligada ao X",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "HERANCA_LIGADA_AO_X",
+    "statement": "Uma caracteristica ligada ao cromossomo X pode aparecer mais em homens em certo modelo. Qual razao?",
+    "options": [
+      "Mulheres sempre expressam todos os alelos.",
+      "O cromossomo Y e uma copia de X.",
+      "Homens possuem uma unica copia de X.",
+      "Homens nao possuem cromossomos."
+    ],
+    "correctAnswer": "Homens possuem uma unica copia de X.",
+    "explanation": "Uma unica copia pode revelar um alelo recessivo ligado ao X.",
+    "misconceptions": {
+      "Homens nao possuem cromossomos.": [
+        "SEX_LINKAGE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-biology-biology_genetics-12",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "diversidade genetica",
+    "primarySkill": "BIOLOGY_INTERPRET_POPULATION_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DIVERSIDADE_GENETICA",
+    "statement": "Por que a diversidade genetica ajuda uma populacao diante de uma doenca?",
+    "options": [
+      "Faz todos os individuos iguais.",
+      "Elimina a selecao natural.",
+      "Impede qualquer mutacao.",
+      "Aumenta a chance de existirem variantes resistentes."
+    ],
+    "correctAnswer": "Aumenta a chance de existirem variantes resistentes.",
+    "explanation": "Variacao amplia as possibilidades de resposta da populacao.",
+    "misconceptions": {
+      "Faz todos os individuos iguais.": [
+        "DIVERSITY_REDUCES_SURVIVAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-biology-review-01",
+    "subject": "BIOLOGY",
+    "domain": "GENETICA",
+    "topic": "Explicar heranca genetica",
+    "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Em uma familia, dois irmaos recebem combinacoes diferentes de alelos para uma caracteristica. O que isso ajuda a explicar?",
+    "options": [
+      "A variacao genetica entre os irmaos.",
+      "Que cada irmao possui uma especie diferente.",
+      "Que o ambiente nunca interfere no fenotipo.",
+      "Que alelos sao celulas completas."
+    ],
+    "correctAnswer": "A variacao genetica entre os irmaos.",
+    "explanation": "Combinacoes diferentes de alelos podem produzir variacao entre individuos da mesma especie.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

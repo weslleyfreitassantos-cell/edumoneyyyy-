@@ -1,0 +1,376 @@
+{
+  "hierarchy": [
+    [
+      "PORTUGUESE_ARGUMENTATION",
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ],
+    [
+      "PORTUGUESE_READING",
+      "PORTUGUESE_INFER_FROM_CLUES"
+    ],
+    [
+      "PORTUGUESE_COHESION",
+      "PORTUGUESE_CONNECT_IDEAS"
+    ],
+    [
+      "PORTUGUESE_ARGUMENTATION",
+      "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE"
+    ],
+    [
+      "MATHEMATICS_PROPORTIONS",
+      "MATH_PERCENT_OF_QUANTITY"
+    ],
+    [
+      "MATHEMATICS_PROPORTIONS",
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
+    [
+      "MATHEMATICS_PROPORTIONS",
+      "MATH_PERCENT_INCREASE"
+    ],
+    [
+      "MATHEMATICS_PROPORTIONS",
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    [
+      "MATHEMATICS_DATA",
+      "MATH_INTERPRET_DATA_TABLE"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ],
+    [
+      "SCIENCE_INVESTIGATION",
+      "SCIENCE_PLAN_INVESTIGATION"
+    ],
+    [
+      "SCIENCE_INVESTIGATION",
+      "SCIENCE_IDENTIFY_VARIABLES"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_EVIDENCE_CONCLUSION"
+    ],
+    [
+      "BIOLOGY_INHERITANCE",
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ],
+    [
+      "BIOLOGY_CELL",
+      "BIOLOGY_CELL_FUNCTION"
+    ],
+    [
+      "BIOLOGY_ECOLOGY",
+      "BIOLOGY_INTERPRET_POPULATION_DATA"
+    ],
+    [
+      "BIOLOGY_ECOLOGY",
+      "BIOLOGY_ECOSYSTEM_INTERACTIONS"
+    ],
+    [
+      "PHYSICS_MOTION",
+      "PHYSICS_AVERAGE_SPEED"
+    ],
+    [
+      "PHYSICS_MEASUREMENT",
+      "PHYSICS_UNIT_CONVERSION"
+    ],
+    [
+      "PHYSICS_MOTION",
+      "PHYSICS_INTERPRET_MOTION_GRAPH"
+    ],
+    [
+      "PHYSICS_ENERGY",
+      "PHYSICS_MODEL_FORCE"
+    ],
+    [
+      "CHEMISTRY_ATOMIC",
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ],
+    [
+      "CHEMISTRY_REACTIONS",
+      "CHEMISTRY_STOICHIOMETRY"
+    ],
+    [
+      "CHEMISTRY_REACTIONS",
+      "CHEMISTRY_REACTION_EVIDENCE"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ACID_BASE"
+    ],
+    [
+      "HISTORY_SOURCES",
+      "HISTORY_INTERPRET_EVIDENCE"
+    ],
+    [
+      "HISTORY_TIME",
+      "HISTORY_ORDER_EVENTS"
+    ],
+    [
+      "HISTORY_CAUSALITY",
+      "HISTORY_COMPARE_CAUSES"
+    ],
+    [
+      "GEOGRAPHY_TERRITORY",
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ],
+    [
+      "GEOGRAPHY_CARTOGRAPHY",
+      "GEOGRAPHY_MAP_SCALE"
+    ],
+    [
+      "GEOGRAPHY_SPACE",
+      "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+    ],
+    [
+      "PHILOSOPHY_ARGUMENT",
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ],
+    [
+      "PHILOSOPHY_CONCEPTS",
+      "PHILOSOPHY_DISTINGUISH_CONCEPT"
+    ],
+    [
+      "PHILOSOPHY_ETHICS",
+      "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE"
+    ],
+    [
+      "SOCIOLOGY_INSTITUTIONS",
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ],
+    [
+      "SOCIOLOGY_INDIVIDUAL",
+      "SOCIOLOGY_DISTINGUISH_NORM_VALUE"
+    ],
+    [
+      "SOCIOLOGY_STRUCTURE",
+      "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+    ],
+    [
+      "ART_INTERPRETATION",
+      "ART_INTERPRET_WORK"
+    ],
+    [
+      "ART_ELEMENTS",
+      "ART_COMPARE_COMPOSITIONS"
+    ],
+    [
+      "ART_CONTEXT",
+      "ART_RELATE_WORK_CONTEXT"
+    ],
+    [
+      "PE_SPORTS",
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ],
+    [
+      "PE_BODY",
+      "PE_ANALYZE_MOVEMENT"
+    ],
+    [
+      "PE_HEALTH",
+      "PE_PLAN_SAFE_ACTIVITY"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_INFER_FROM_TEXT"
+    ],
+    [
+      "ENGLISH_VOCABULARY",
+      "ENGLISH_USE_CONTEXT_VOCABULARY"
+    ],
+    [
+      "ENGLISH_COMMUNICATION",
+      "ENGLISH_RELATE_LANGUAGE_CULTURE"
+    ],
+    [
+      "RELIGIOUS_DIVERSITY",
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ],
+    [
+      "RELIGIOUS_TRADITIONS",
+      "RELIGIOUS_INTERPRET_SYMBOLS"
+    ],
+    [
+      "RELIGIOUS_DIALOGUE",
+      "RELIGIOUS_MEDIATE_DIALOGUE"
+    ],
+    [
+      "COMPUTING_ALGORITHMS",
+      "COMPUTING_TRACE_ALGORITHM"
+    ],
+    [
+      "COMPUTING_DATA",
+      "COMPUTING_READ_TABLE_DATA"
+    ],
+    [
+      "COMPUTING_SAFETY",
+      "COMPUTING_RECOGNIZE_PHISHING"
+    ],
+    [
+      "MATHEMATICS_PROPORTIONS",
+      "MATH_SUCCESSIVE_PERCENT_CHANGE"
+    ],
+    [
+      "PORTUGUESE_READING",
+      "PORTUGUESE_DISTINGUISH_FACT_OPINION"
+    ],
+    [
+      "PORTUGUESE_READING",
+      "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+    ],
+    [
+      "PORTUGUESE_READING",
+      "PORTUGUESE_COMPARE_SOURCES"
+    ],
+    [
+      "PORTUGUESE_ARGUMENTATION",
+      "PORTUGUESE_IDENTIFY_COUNTERARGUMENT"
+    ],
+    [
+      "PORTUGUESE_ARGUMENTATION",
+      "PORTUGUESE_SUMMARIZE_ARGUMENT"
+    ],
+    [
+      "HISTORY_SOURCES",
+      "HISTORY_COMPARE_PERSPECTIVES"
+    ],
+    [
+      "HISTORY_TIME",
+      "HISTORY_INTERPRET_PERIODIZATION"
+    ],
+    [
+      "HISTORY_SOURCES",
+      "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+    ],
+    [
+      "HISTORY_CAUSALITY",
+      "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+    ],
+    [
+      "PHYSICS_MOTION",
+      "PHYSICS_RELATIVE_SPEED"
+    ],
+    [
+      "PHYSICS_MOTION",
+      "PHYSICS_UNIFORM_MOTION"
+    ],
+    [
+      "PHYSICS_MOTION",
+      "PHYSICS_INTERPRET_ACCELERATION"
+    ]
+  ],
+  "prerequisites": [
+    [
+      "MATH_PERCENT_OF_QUANTITY",
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    [
+      "PHYSICS_AVERAGE_SPEED",
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    [
+      "CHEMISTRY_ATOMIC_STRUCTURE",
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ],
+    [
+      "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "PORTUGUESE_INFER_FROM_CLUES"
+    ],
+    [
+      "MATH_SUCCESSIVE_PERCENT_CHANGE",
+      "MATH_PERCENT_INCREASE"
+    ],
+    [
+      "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ],
+    [
+      "PORTUGUESE_COMPARE_SOURCES",
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ],
+    [
+      "PORTUGUESE_SUMMARIZE_ARGUMENT",
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ],
+    [
+      "HISTORY_COMPARE_PERSPECTIVES",
+      "HISTORY_INTERPRET_EVIDENCE"
+    ],
+    [
+      "HISTORY_INTERPRET_PERIODIZATION",
+      "HISTORY_ORDER_EVENTS"
+    ],
+    [
+      "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "HISTORY_INTERPRET_EVIDENCE"
+    ],
+    [
+      "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "HISTORY_COMPARE_CAUSES"
+    ],
+    [
+      "PHYSICS_RELATIVE_SPEED",
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    [
+      "PHYSICS_UNIFORM_MOTION",
+      "PHYSICS_AVERAGE_SPEED"
+    ],
+    [
+      "PHYSICS_INTERPRET_ACCELERATION",
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  ],
+  "relationships": [
+    {
+      "from": "PHYSICS_AVERAGE_SPEED",
+      "to": "MATH_RATIO_UNIT_RATE",
+      "type": "PREREQUISITE",
+      "source": "EXPLICIT_AUTHORING",
+      "confidence": 0.95,
+      "rationale": "Velocidade media exige interpretar distancia por unidade de tempo."
+    },
+    {
+      "from": "GEOGRAPHY_MAP_SCALE",
+      "to": "MATH_RATIO_UNIT_RATE",
+      "type": "PREREQUISITE",
+      "source": "EXPLICIT_AUTHORING",
+      "confidence": 0.92,
+      "rationale": "Escala cartografica exige comparar duas grandezas proporcionais."
+    },
+    {
+      "from": "CHEMISTRY_STOICHIOMETRY",
+      "to": "MATH_RATIO_UNIT_RATE",
+      "type": "PREREQUISITE",
+      "source": "EXPLICIT_AUTHORING",
+      "confidence": 0.9,
+      "rationale": "Proporcoes de uma reacao dependem de relacoes quantitativas."
+    },
+    {
+      "from": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "to": "MATH_INTERPRET_DATA_TABLE",
+      "type": "RELATED",
+      "source": "EXPLICIT_AUTHORING",
+      "confidence": 0.88,
+      "rationale": "Dados de populacao podem ser interpretados com leitura de tabelas."
+    },
+    {
+      "from": "SCIENCE_EVIDENCE_CONCLUSION",
+      "to": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "type": "TRANSFER",
+      "source": "EXPLICIT_AUTHORING",
+      "confidence": 0.82,
+      "rationale": "Construir conclusao a partir de evidencia e uma operacao compartilhada."
+    },
+    {
+      "from": "COMPUTING_TRACE_ALGORITHM",
+      "to": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "type": "RELATED",
+      "source": "EXPLICIT_AUTHORING",
+      "confidence": 0.76,
+      "rationale": "Rastrear passos explicitos aproxima-se da analise de premissas e conclusoes."
+    }
+  ]
+}

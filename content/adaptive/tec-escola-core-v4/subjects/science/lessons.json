@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+    "title": "Explicar transformacao da materia",
+    "objective": "Explicar uma transformacao distinguindo mudanca fisica de mudanca quimica.",
+    "summary": "Observe composicao, reversibilidade e evidencias de novas substancias.",
+    "explanation": "Observe composicao, reversibilidade e evidencias de novas substancias.",
+    "workedExample": "Derreter gelo muda o estado, mas a substancia continua sendo agua.",
+    "commonMistake": "Confundir qualquer mudanca visivel com formacao de substancia nova.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

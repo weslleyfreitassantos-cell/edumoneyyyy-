@@ -53,6 +53,8 @@ const event = {
 const createEvent = vi.fn().mockResolvedValue(event);
 
 beforeEach(() => {
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(new Date('2026-09-10T12:00:00.000Z'));
   vi.clearAllMocks();
   vi.mocked(useAuth).mockReturnValue({
     profile: {
@@ -74,7 +76,10 @@ beforeEach(() => {
   vi.mocked(useUpdateAcademicCalendarEvent).mockReturnValue({ mutateAsync: vi.fn(), isPending: false } as never);
 });
 
-afterEach(() => cleanup());
+afterEach(() => {
+  cleanup();
+  vi.useRealTimers();
+});
 
 function renderCalendar() {
   return render(<MemoryRouter><AcademicCalendarTab /></MemoryRouter>);

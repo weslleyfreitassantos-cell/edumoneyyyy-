@@ -1,0 +1,62 @@
+{
+  "code": "RELIGIOUS_EDUCATION",
+  "name": "Ensino Religioso",
+  "anchors": [
+    {
+      "code": "RELIGIOUS_TRADITIONS",
+      "title": "Tradicoes e narrativas"
+    },
+    {
+      "code": "RELIGIOUS_DIVERSITY",
+      "title": "Diversidade e respeito"
+    },
+    {
+      "code": "RELIGIOUS_DIALOGUE",
+      "title": "Dialogo e direitos"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "RELIGIOUS_COMPARE_TRADITIONS",
+      "title": "Comparar tradicoes com respeito",
+      "objective": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "description": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "masteryCapability": "Demonstrar que consegue comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "domain": "DIVERSIDADE",
+      "parent": "RELIGIOUS_DIVERSITY",
+      "readiness": "CONTENT_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "title": "Interpretar simbolos e narrativas",
+      "objective": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "description": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "masteryCapability": "Demonstrar que consegue interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "domain": "TRADICOES",
+      "parent": "RELIGIOUS_TRADITIONS",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "RELIGIOUS_MEDIATE_DIALOGUE",
+      "title": "Mediar dialogo sobre conviccoes",
+      "objective": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "description": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "masteryCapability": "Demonstrar que consegue mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "domain": "DIALOGO",
+      "parent": "RELIGIOUS_DIALOGUE",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

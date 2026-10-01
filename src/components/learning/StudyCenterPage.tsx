@@ -100,6 +100,7 @@ export default function StudyCenterPage() {
   const [search, setSearch] = useState('');
   const [selectedSubjectId, setSelectedSubjectId] = useState('');
   const [selectedUnitId, setSelectedUnitId] = useState('');
+  const [showSecondaryStudyAreas, setShowSecondaryStudyAreas] = useState(false);
 
   const student = useLearningStudent(
     currentInstitutionId ?? undefined,
@@ -123,6 +124,7 @@ export default function StudyCenterPage() {
   );
   const collections = useStudentLearningCollections(
     currentInstitutionId ?? undefined,
+    showSecondaryStudyAreas,
   );
   const progress = useLearningProgress(
     currentInstitutionId ?? undefined,
@@ -148,8 +150,8 @@ export default function StudyCenterPage() {
     currentInstitutionId ?? undefined,
     student.data?.id,
   );
-  const simulations = useLearningSimulations(currentInstitutionId ?? undefined);
-  const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id);
+  const simulations = useLearningSimulations(currentInstitutionId ?? undefined, showSecondaryStudyAreas);
+  const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id, showSecondaryStudyAreas);
   const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
     currentInstitutionId ?? undefined,
     student.data?.id,
@@ -204,19 +206,16 @@ export default function StudyCenterPage() {
     () => new Map((progress.data ?? []).map((item) => [item.skill_id, item])),
     [progress.data],
   );
-  const progressSummary = useMemo(() => {
-    const values = progress.data ?? [];
+  const canonicalSummary = useMemo(() => {
+    const values = canonicalProgress.data ?? [];
     return {
-      mastered: values.filter((item) => item.status === 'MASTERED').length,
-      inProgress: values.filter((item) => item.status === 'IN_PROGRESS').length,
-      average: values.length
-        ? Math.round(
-            values.reduce((total, item) => total + item.mastery_percent, 0) /
-              values.length,
-          )
-        : 0,
+      strengthened: values.filter((item) => item.state === 'MASTERED').length,
+      developing: values.filter((item) => ['INTRODUCED', 'LEARNING', 'PRACTICING'].includes(item.state)).length,
+      review: values.filter((item) => item.state === 'NEEDS_REVIEW').length,
+      evidence: values.reduce((total, item) => total + item.evidence_count, 0),
+      hasEvidence: values.some((item) => item.evidence_count > 0),
     };
-  }, [progress.data]);
+  }, [canonicalProgress.data]);
 
   const selectedSubject = (subjects.data ?? []).find(
     (subject) => subject.id === selectedSubjectId,
@@ -235,36 +234,27 @@ export default function StudyCenterPage() {
   return (
     <div className="w-full space-y-6 overflow-x-hidden">
       <header className="space-y-4">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Olá, {profile?.full_name?.split(' ')[0] ?? 'aluno'}. O que vamos estudar hoje?
-        </p>
-
-        <div className="grid grid-cols-3 gap-2 sm:max-w-xl sm:gap-3">
-          <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 dark:border-slate-700 dark:bg-slate-900 sm:px-4">
-            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-              {progressSummary.average}%
-            </p>
-            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">
-              domínio médio
-            </p>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 dark:border-slate-700 dark:bg-slate-900 sm:px-4">
-            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-              {activities.data?.length ?? 0}
-            </p>
-            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">
-              práticas disponíveis
-            </p>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 dark:border-slate-700 dark:bg-slate-900 sm:px-4">
-            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-              {collections.data?.length ?? 0}
-            </p>
-            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">
-              coleções
-            </p>
+        <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5 shadow-sm dark:border-blue-900/60 dark:from-blue-950/40 dark:to-slate-900 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Seu próximo passo</p>
+              <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100">Continue estudando</h1>
+              <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
+                Olá, {profile?.full_name?.split(' ')[0] ?? 'aluno'}. O que vamos estudar hoje?
+              </p>
+            </div>
+            {guidedSessionV2.data?.status === 'ACTIVE' ? (
+              <Link to="/student/study/guided" className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">
+                Continuar jornada
+              </Link>
+            ) : (
+              <a href="#study-subjects" className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-bold text-[#005bbf]">
+                Explorar matérias
+              </a>
+            )}
           </div>
         </div>
+
       </header>
 
       {guidedSession.data?.status === 'NEEDS_TEACHER_SUPPORT' && (
@@ -336,12 +326,40 @@ export default function StudyCenterPage() {
         )}
       </section>
 
+      <section id="study-progress" aria-label="Seu progresso" className="scroll-mt-24 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="font-bold dark:text-white">Seu progresso</h2>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Habilidades organizadas pelo que suas evidências mostram hoje.</p>
+          </div>
+          <span className="text-xs font-semibold text-slate-500">{canonicalSummary.evidence} evidência(s)</span>
+        </div>
+        {canonicalProgress.isLoading ? <p className="mt-4 text-sm text-slate-500">Conhecendo seu perfil...</p> : canonicalSummary.hasEvidence ? (
+          <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-3 dark:border-emerald-900/50 dark:bg-emerald-950/20"><p className="text-xl font-bold text-emerald-800 dark:text-emerald-200">{canonicalSummary.strengthened}</p><p className="text-xs text-emerald-900 dark:text-emerald-300">Fortalecidas</p></div>
+            <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 dark:border-blue-900/50 dark:bg-blue-950/20"><p className="text-xl font-bold text-blue-800 dark:text-blue-200">{canonicalSummary.developing}</p><p className="text-xs text-blue-900 dark:text-blue-300">Em desenvolvimento</p></div>
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-900/50 dark:bg-amber-950/20"><p className="text-xl font-bold text-amber-800 dark:text-amber-200">{canonicalSummary.review}</p><p className="text-xs text-amber-900 dark:text-amber-300">Para revisar</p></div>
+          </div>
+        ) : <p className="mt-4 text-sm text-slate-600 dark:text-slate-300">Continuamos conhecendo seu perfil de aprendizagem.</p>}
+      </section>
+
+      {adaptiveTarget.data ? (
+        <section aria-label="Objetivo atual" className="rounded-xl border border-indigo-200 bg-indigo-50 p-4 dark:border-indigo-900/50 dark:bg-indigo-950/20 sm:p-5">
+          <p className="text-xs font-bold uppercase tracking-[0.16em] text-indigo-700 dark:text-indigo-300">Seu caminho agora</p>
+          <div className="mt-3 grid gap-3 sm:grid-cols-3">
+            <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Objetivo</p><p className="mt-1 font-bold text-indigo-950 dark:text-indigo-100">{adaptiveTarget.data.target.subjectArea}</p></div>
+            <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Agora</p><p className="mt-1 font-semibold text-indigo-950 dark:text-indigo-100">Diagnóstico da próxima habilidade</p></div>
+            <div><p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">Depois</p><p className="mt-1 font-semibold text-indigo-950 dark:text-indigo-100">Prática orientada pelas suas respostas</p></div>
+          </div>
+        </section>
+      ) : null}
+
       {errorNotebook.data?.length ? (
-        <section aria-label="Caderno de erros" className="rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20 sm:p-5">
+        <section aria-label="Pontos para fortalecer" className="rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/60 dark:bg-amber-950/20 sm:p-5">
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h2 className="font-bold text-amber-950 dark:text-amber-100">Caderno de erros</h2>
-              <p className="mt-1 text-sm text-amber-900 dark:text-amber-200">Questões que merecem uma nova tentativa.</p>
+              <h2 className="font-bold text-amber-950 dark:text-amber-100">Pontos para fortalecer</h2>
+              <p className="mt-1 text-sm text-amber-900 dark:text-amber-200">Conceitos que merecem uma nova tentativa.</p>
             </div>
             <span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-amber-800 dark:bg-amber-950/60 dark:text-amber-200">{errorNotebook.data.length} aberta(s)</span>
           </div>
@@ -376,6 +394,20 @@ export default function StudyCenterPage() {
         </section>
       ) : null}
 
+      {!showSecondaryStudyAreas ? (
+        <section aria-label="Mais áreas de estudo" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="font-bold dark:text-white">Mais áreas de estudo</h2>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Abra simulados, trilhas e materiais quando quiser explorar além do plano de hoje.</p>
+            </div>
+            <button type="button" onClick={() => setShowSecondaryStudyAreas(true)} className="inline-flex min-h-10 items-center rounded-lg border border-[#005bbf] px-3 py-2 text-xs font-bold text-[#005bbf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf]">Explorar</button>
+          </div>
+        </section>
+      ) : null}
+
+      {showSecondaryStudyAreas ? (
+        <>
       <section aria-label="Simulados" className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
         <div className="flex items-center justify-between gap-3">
           <div><h2 className="font-bold dark:text-white">Simulados</h2><p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Pratique sem transformar acertos em nota oficial.</p></div>
@@ -402,6 +434,8 @@ export default function StudyCenterPage() {
           </div>
         ) : <p className="mt-4 text-sm text-slate-500">Nenhuma trilha atribuída ainda.</p>}
       </section>
+        </>
+      ) : null}
 
       {(adaptiveV3Plan.data || adaptiveV3Plan.isLoading) ? (
         <StudentAdaptiveBridgeCard
@@ -677,32 +711,6 @@ export default function StudyCenterPage() {
         )}
       </section>
 
-      <section id="study-progress" className="scroll-mt-24 rounded-xl border border-blue-100 bg-blue-50 p-4 dark:border-blue-900/50 dark:bg-blue-950/30 sm:p-5">
-        <div className="flex items-center gap-2">
-          <CheckCircle2 className="h-5 w-5 text-[#005bbf]" />
-          <h2 className="font-bold text-blue-900 dark:text-blue-200">Meu progresso</h2>
-        </div>
-        {progress.isLoading || student.isLoading ? (
-          <p className="mt-2 text-sm text-blue-800 dark:text-blue-300">Calculando seu progresso...</p>
-        ) : (
-          <div className="mt-4 grid grid-cols-3 gap-3 text-blue-900 dark:text-blue-200">
-            <span><strong className="block text-xl">{progressSummary.average}%</strong><span className="text-xs">domínio médio</span></span>
-            <span><strong className="block text-xl">{progressSummary.mastered}</strong><span className="text-xs">dominadas</span></span>
-            <span><strong className="block text-xl">{progressSummary.inProgress}</strong><span className="text-xs">em progresso</span></span>
-          </div>
-        )}
-        {canonicalProgress.data?.length ? (
-          <div className="mt-5 grid gap-2 sm:grid-cols-2">
-            {canonicalProgress.data.slice(0, 6).map((skill) => (
-              <div key={skill.canonical_skill_id} className="rounded-lg border border-blue-200 bg-white p-3 dark:border-blue-800 dark:bg-blue-950/40">
-                <div className="flex items-center justify-between gap-3"><p className="truncate text-sm font-semibold text-blue-950 dark:text-blue-100">{skill.skill_title}</p><span className="text-xs font-bold text-blue-800 dark:text-blue-200">{Math.round(skill.mastery_estimate)}%</span></div>
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-blue-100 dark:bg-blue-900"><div className="h-full rounded-full bg-[#005bbf]" style={{ width: `${Math.min(100, Math.max(0, skill.mastery_estimate))}%` }} /></div>
-                <p className="mt-1 text-[11px] text-blue-800 dark:text-blue-200">{statusLabel(skill.state)}</p>
-              </div>
-            ))}
-          </div>
-        ) : null}
-      </section>
     </div>
   );
 }

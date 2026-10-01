@@ -1,0 +1,62 @@
+{
+  "code": "COMPUTING",
+  "name": "Computacao e Educacao Digital",
+  "anchors": [
+    {
+      "code": "COMPUTING_ALGORITHMS",
+      "title": "Algoritmos e decomposicao"
+    },
+    {
+      "code": "COMPUTING_DATA",
+      "title": "Dados e representacao"
+    },
+    {
+      "code": "COMPUTING_SAFETY",
+      "title": "Seguranca e cidadania digital"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "COMPUTING_TRACE_ALGORITHM",
+      "title": "Rastrear algoritmo com condicoes",
+      "objective": "Rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+      "description": "Rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+      "masteryCapability": "Demonstrar que consegue rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+      "domain": "ALGORITMOS",
+      "parent": "COMPUTING_ALGORITHMS",
+      "readiness": "CONTENT_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_READ_TABLE_DATA",
+      "title": "Selecionar dados em uma tabela",
+      "objective": "Selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+      "description": "Selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+      "masteryCapability": "Demonstrar que consegue selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+      "domain": "DADOS",
+      "parent": "COMPUTING_DATA",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_RECOGNIZE_PHISHING",
+      "title": "Reconhecer sinais de phishing",
+      "objective": "Reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+      "description": "Reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+      "masteryCapability": "Demonstrar que consegue reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+      "domain": "SEGURANCA",
+      "parent": "COMPUTING_SAFETY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

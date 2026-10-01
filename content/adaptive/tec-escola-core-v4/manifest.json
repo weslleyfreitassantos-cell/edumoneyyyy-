@@ -1,0 +1,29 @@
+{
+  "packVersion": "tec-escola-core-v4",
+  "sourceOfTruth": "subjects/{subject}/skills.json + lessons.json + questions.json",
+  "provenance": "Conteudo versionado do TecEscola; parte reutilizada do V3 validado e parte autorada no V4; nao e BNCC oficial.",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "contentPolicy": "Somente conteudo explicitamente autorado pode ser ADAPTIVE_READY.",
+  "qualityTargets": [
+    "REAL_SEMANTIC_SKILLS",
+    "HONEST_CONTENT_READINESS",
+    "NO_GENERIC_TEMPLATE_FAMILIES"
+  ],
+  "subjects": [
+    "PORTUGUESE",
+    "MATHEMATICS",
+    "SCIENCE",
+    "BIOLOGY",
+    "PHYSICS",
+    "CHEMISTRY",
+    "HISTORY",
+    "GEOGRAPHY",
+    "PHILOSOPHY",
+    "SOCIOLOGY",
+    "ART",
+    "PHYSICAL_EDUCATION",
+    "ENGLISH",
+    "RELIGIOUS_EDUCATION",
+    "COMPUTING"
+  ]
+}

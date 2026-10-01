@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-physical_education-pe_sport_principles-1",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "ocupacao",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "OCUPACAO",
+    "statement": "Em um jogo coletivo, manter a equipe espalhada pode criar linhas de passe. Qual principio aparece?",
+    "options": [
+      "Ocupacao de espacos.",
+      "Imobilidade obrigatoria.",
+      "Falta tecnica.",
+      "Aquecimento passivo."
+    ],
+    "correctAnswer": "Ocupacao de espacos.",
+    "explanation": "A distribuicao espacial amplia opcoes de passe e ataque.",
+    "misconceptions": {
+      "Imobilidade obrigatoria.": [
+        "SPACE_OCCUPATION_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-2",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "defesa",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DEFESA",
+    "statement": "Uma equipe marca a linha de passe e protege a area central. Essa acao busca:",
+    "options": [
+      "Substituir o aquecimento.",
+      "Reduzir opcoes do adversario.",
+      "Aumentar o espaco adversario.",
+      "Evitar qualquer comunicacao."
+    ],
+    "correctAnswer": "Reduzir opcoes do adversario.",
+    "explanation": "A defesa organiza cobertura e limita caminhos.",
+    "misconceptions": {
+      "Aumentar o espaco adversario.": [
+        "DEFENSE_AS_CHASING_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-3",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "fair play",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "FAIR_PLAY",
+    "statement": "Dois jogadores discordam de uma falta e consultam a regra antes de retomar. A atitude expressa:",
+    "options": [
+      "Recusa da arbitragem.",
+      "Ausencia de cooperacao.",
+      "Respeito as regras e ao dialogo.",
+      "Vantagem a qualquer custo."
+    ],
+    "correctAnswer": "Respeito as regras e ao dialogo.",
+    "explanation": "Fair play inclui respeito mesmo em conflito.",
+    "misconceptions": {
+      "Vantagem a qualquer custo.": [
+        "FAIR_PLAY_AS_WINNING"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-4",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "aquecimento",
+    "primarySkill": "PE_ANALYZE_MOVEMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "AQUECIMENTO",
+    "statement": "Antes de uma atividade intensa, a turma realiza movimentos graduais. A finalidade e:",
+    "options": [
+      "Garantir desempenho identico.",
+      "Substituir todas as aulas.",
+      "Evitar qualquer esforco.",
+      "Preparar o corpo para a atividade."
+    ],
+    "correctAnswer": "Preparar o corpo para a atividade.",
+    "explanation": "Aquecimento eleva gradualmente a demanda.",
+    "misconceptions": {
+      "Garantir desempenho identico.": [
+        "WARMUP_GUARANTEES_RESULT"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-5",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "passe e apoio",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "PASSE_E_APOIO",
+    "statement": "No futsal, um jogador passa e se desloca para oferecer nova linha de passe. Isso e:",
+    "options": [
+      "Criar apoio ao portador da bola.",
+      "Abandonar a jogada.",
+      "Impedir circulacao.",
+      "Fazer uma falta."
+    ],
+    "correctAnswer": "Criar apoio ao portador da bola.",
+    "explanation": "O deslocamento sem bola amplia possibilidades coletivas.",
+    "misconceptions": {
+      "Abandonar a jogada.": [
+        "OFF_BALL_MOVEMENT_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-6",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "ritmo",
+    "primarySkill": "PE_ANALYZE_MOVEMENT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "RITMO",
+    "statement": "Em uma corrida de resistencia, controlar o ritmo ajuda a:",
+    "options": [
+      "Garantir a mesma marca para todos.",
+      "Sustentar o esforco ao longo do tempo.",
+      "Aumentar a velocidade sem limite.",
+      "Evitar qualquer respiracao."
+    ],
+    "correctAnswer": "Sustentar o esforco ao longo do tempo.",
+    "explanation": "Ritmo relaciona intensidade e duracao.",
+    "misconceptions": {
+      "Aumentar a velocidade sem limite.": [
+        "ENDURANCE_AS_SPRINT"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-7",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "inclusao",
+    "primarySkill": "PE_PLAN_SAFE_ACTIVITY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "INCLUSAO",
+    "statement": "Adaptar o tamanho da quadra e a regra de tempo para uma turma diversa favorece:",
+    "options": [
+      "Competicao sem regras.",
+      "Abolicao do objetivo da atividade.",
+      "Participacao com equidade.",
+      "Exclusao de quem precisa de apoio."
+    ],
+    "correctAnswer": "Participacao com equidade.",
+    "explanation": "A adaptacao remove barreiras sem retirar o sentido.",
+    "misconceptions": {
+      "Exclusao de quem precisa de apoio.": [
+        "EQUITY_CONFUSED_WITH_EQUALITY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-8",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "tatica",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "TATICA",
+    "statement": "Em um jogo, a equipe troca passes para deslocar a defesa antes de finalizar. A estrategia prioriza:",
+    "options": [
+      "Chutes aleatorios.",
+      "Defesa individual parada.",
+      "Interrupcao do jogo.",
+      "Circulacao e criacao de espacos."
+    ],
+    "correctAnswer": "Circulacao e criacao de espacos.",
+    "explanation": "Troca de passes pode abrir linhas.",
+    "misconceptions": {
+      "Chutes aleatorios.": [
+        "TACTIC_AS_INDIVIDUAL_SKILL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-9",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "regras",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "REGRAS",
+    "statement": "No voleibol, a equipe deve respeitar o limite de toques antes de enviar a bola. A regra organiza:",
+    "options": [
+      "A continuidade e a participacao coletiva.",
+      "Somente a altura da rede.",
+      "A cor da bola.",
+      "A velocidade do saque."
+    ],
+    "correctAnswer": "A continuidade e a participacao coletiva.",
+    "explanation": "Limites de toque estruturam a dinamica.",
+    "misconceptions": {
+      "Somente a altura da rede.": [
+        "RULE_SCOPE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-10",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "saude",
+    "primarySkill": "PE_PLAN_SAFE_ACTIVITY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "SAUDE",
+    "statement": "Durante atividade intensa, perceber tontura e comunicar ao professor e importante porque:",
+    "options": [
+      "Substitui a hidratacao.",
+      "Permite interromper e avaliar a situacao.",
+      "Prova falta de vontade.",
+      "Garante melhor resultado."
+    ],
+    "correctAnswer": "Permite interromper e avaliar a situacao.",
+    "explanation": "Percepcao corporal e comunicacao ajudam na seguranca.",
+    "misconceptions": {
+      "Prova falta de vontade.": [
+        "BODY_SIGNAL_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-11",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "cooperacao",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "COOPERACAO",
+    "statement": "Uma equipe reorganiza a estrategia para que todos participem de uma atividade. Isso demonstra:",
+    "options": [
+      "Ausencia de objetivo.",
+      "Competicao individual.",
+      "Cooperacao e responsabilidade coletiva.",
+      "Apenas busca por recorde."
+    ],
+    "correctAnswer": "Cooperacao e responsabilidade coletiva.",
+    "explanation": "Participacao de todos exige decisao coletiva.",
+    "misconceptions": {
+      "Apenas busca por recorde.": [
+        "COOPERATION_AS_NO_RULES"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physical_education-pe_sport_principles-12",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "observacao",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "OBSERVACAO",
+    "statement": "Ao analisar um jogo, observar deslocamentos, passes e escolhas taticas permite:",
+    "options": [
+      "Medir apenas velocidade.",
+      "Definir valor pessoal do jogador.",
+      "Ignorar contexto e regras.",
+      "Compreender o desempenho sem reduzir a pessoa ao resultado."
+    ],
+    "correctAnswer": "Compreender o desempenho sem reduzir a pessoa ao resultado.",
+    "explanation": "Analise observacional considera comportamento e contexto.",
+    "misconceptions": {
+      "Medir apenas velocidade.": [
+        "PERFORMANCE_AS_PERSONAL_WORTH"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-physical_education-review-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "ESPORTES",
+    "topic": "Explicar principios de esportes",
+    "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Em um jogo coletivo, uma equipe troca passes para criar espaco antes de finalizar. Essa escolha demonstra:",
+    "options": [
+      "Cooperacao e uso tatico do espaco.",
+      "Que cada jogador deve agir sozinho.",
+      "Que regra e tecnica sao a mesma coisa.",
+      "Que vencer elimina a necessidade de fair play."
+    ],
+    "correctAnswer": "Cooperacao e uso tatico do espaco.",
+    "explanation": "A troca de passes coordena jogadores e explora o espaco do jogo.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]
