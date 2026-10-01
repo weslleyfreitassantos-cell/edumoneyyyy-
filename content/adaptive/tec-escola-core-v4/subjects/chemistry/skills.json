@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue interpretar numero atomico, massa e particulas em um modelo de atomo.",
       "domain": "ATOMOS",
       "parent": "CHEMISTRY_ATOMIC",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,

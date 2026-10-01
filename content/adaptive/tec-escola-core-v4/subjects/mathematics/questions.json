@@ -5,7 +5,9 @@
     "domain": "NUMEROS",
     "topic": "desconto",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
@@ -34,9 +36,11 @@
     "subject": "MATHEMATICS",
     "domain": "NUMEROS",
     "topic": "aumento",
-    "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+    "primarySkill": "MATH_PERCENT_INCREASE",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
@@ -65,7 +69,9 @@
     "domain": "NUMEROS",
     "topic": "parte e todo",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
@@ -95,7 +101,9 @@
     "domain": "NUMEROS",
     "topic": "taxa equivalente",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
@@ -124,7 +132,7 @@
     "subject": "MATHEMATICS",
     "domain": "NUMEROS",
     "topic": "proporcao",
-    "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+    "primarySkill": "MATH_RATIO_UNIT_RATE",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -154,9 +162,11 @@
     "subject": "MATHEMATICS",
     "domain": "NUMEROS",
     "topic": "percentual acumulado",
-    "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+    "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_PERCENT_INCREASE"
+    ],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
@@ -185,7 +195,9 @@
     "domain": "NUMEROS",
     "topic": "fracao percentual",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
@@ -214,7 +226,7 @@
     "subject": "MATHEMATICS",
     "domain": "NUMEROS",
     "topic": "grafico",
-    "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+    "primarySkill": "MATH_INTERPRET_DATA_TABLE",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -244,9 +256,11 @@
     "subject": "MATHEMATICS",
     "domain": "NUMEROS",
     "topic": "juros simples",
-    "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+    "primarySkill": "MATH_PERCENT_INCREASE",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "transferSkills": [],
     "purpose": "TRANSFER",
     "difficulty": "MEDIUM",
@@ -274,7 +288,7 @@
     "subject": "MATHEMATICS",
     "domain": "NUMEROS",
     "topic": "pesquisa",
-    "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+    "primarySkill": "MATH_INTERPRET_DATA_TABLE",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -305,7 +319,9 @@
     "domain": "NUMEROS",
     "topic": "comissao",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "LOCK_IN",
@@ -335,7 +351,9 @@
     "domain": "NUMEROS",
     "topic": "ofertas",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "REVIEW",
@@ -365,7 +383,9 @@
     "domain": "PORCENTAGEM",
     "topic": "Calcular percentual de uma quantidade",
     "primarySkill": "MATH_PERCENT_OF_QUANTITY",
-    "supportingSkills": [],
+    "supportingSkills": [
+      "MATH_IDENTIFY_PERCENT_BASE"
+    ],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "REVIEW",

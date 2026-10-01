@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
       "domain": "ALGORITMOS",
       "parent": "COMPUTING_ALGORITHMS",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,

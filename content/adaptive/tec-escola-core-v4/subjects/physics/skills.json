@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
       "domain": "VELOCIDADE",
       "parent": "PHYSICS_MOTION",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
@@ -71,6 +71,48 @@
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_RELATIVE_SPEED",
+      "title": "Interpretar velocidade relativa",
+      "domain": "MOVIMENTO",
+      "parent": "PHYSICS_MOTION",
+      "objective": "Comparar velocidades de corpos em movimento considerando o referencial e o sentido do movimento.",
+      "description": "Comparar velocidades de corpos em movimento considerando o referencial e o sentido do movimento.",
+      "masteryCapability": "Demonstrar que consegue comparar velocidades de corpos em movimento considerando o referencial e o sentido do movimento..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_UNIFORM_MOTION",
+      "title": "Interpretar movimento uniforme",
+      "domain": "MOVIMENTO",
+      "parent": "PHYSICS_MOTION",
+      "objective": "Reconhecer movimento uniforme pela constancia da velocidade e pela representacao correspondente.",
+      "description": "Reconhecer movimento uniforme pela constancia da velocidade e pela representacao correspondente.",
+      "masteryCapability": "Demonstrar que consegue reconhecer movimento uniforme pela constancia da velocidade e pela representacao correspondente..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_INTERPRET_ACCELERATION",
+      "title": "Interpretar aceleracao",
+      "domain": "MOVIMENTO",
+      "parent": "PHYSICS_MOTION",
+      "objective": "Interpretar aceleracao como variacao da velocidade em um intervalo de tempo.",
+      "description": "Interpretar aceleracao como variacao da velocidade em um intervalo de tempo.",
+      "masteryCapability": "Demonstrar que consegue interpretar aceleracao como variacao da velocidade em um intervalo de tempo..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
     }
   ]
 }

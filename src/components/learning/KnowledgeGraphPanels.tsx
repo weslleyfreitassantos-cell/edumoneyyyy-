@@ -35,12 +35,18 @@ function misconceptionLabel(code: string): string {
     DISTANCE_TIME_INVERSION: 'Inverte distância e tempo',
     UNSUPPORTED_INFERENCE: 'Conclui além das pistas do texto',
     UNIT_CONVERSION_ERROR: 'Mistura unidades antes de calcular',
+    UNIT_CONVERSION: 'Conversão de unidades',
+    DISCOUNT_CONFUSED_WITH_FINAL_PRICE: 'Confunde desconto com preço final',
+    SUCCESSIVE_PERCENTAGES_CANCELLED: 'Trata variações sucessivas como cancelamento',
+    INFERENCE_TREATED_AS_CERTAINTY: 'Trata inferência como certeza',
+    THESIS_CONFUSED_WITH_DETAIL: 'Confunde tese com detalhe',
+    FACT_CONFUSED_WITH_OPINION: 'Confunde fato com opinião',
+    GENRE_PURPOSE_MISREAD: 'Confunde gênero e finalidade do texto',
+    CHRONOLOGY_REVERSED: 'Inverte a ordem cronológica',
+    CAUSE_EFFECT_REVERSED: 'Inverte causa e consequência',
   };
   if (labels[code]) return labels[code];
-  return code
-    .replace(/_/g, ' ')
-    .toLocaleLowerCase('pt-BR')
-    .replace(/(^|\s)\S/g, (letter) => letter.toLocaleUpperCase('pt-BR'));
+  return 'Sinal de aprendizagem específico';
 }
 
 function percent(value: number): number {

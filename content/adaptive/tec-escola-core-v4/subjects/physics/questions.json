@@ -6,7 +6,9 @@
     "topic": "velocidade media",
     "primarySkill": "PHYSICS_AVERAGE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
@@ -34,7 +36,7 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "unidades",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_UNIT_CONVERSION",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -66,7 +68,9 @@
     "topic": "distancia",
     "primarySkill": "PHYSICS_AVERAGE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
@@ -96,7 +100,9 @@
     "topic": "tempo",
     "primarySkill": "PHYSICS_AVERAGE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
@@ -124,7 +130,7 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "grafico posicao-tempo",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_INTERPRET_MOTION_GRAPH",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -154,7 +160,7 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "movimento uniforme",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_UNIFORM_MOTION",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -184,9 +190,11 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "encontro",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_RELATIVE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
@@ -216,7 +224,9 @@
     "topic": "media de trechos",
     "primarySkill": "PHYSICS_AVERAGE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "TRANSFER",
     "difficulty": "MEDIUM",
@@ -244,7 +254,7 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "conversao",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_UNIT_CONVERSION",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -274,7 +284,7 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "area no grafico",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_INTERPRET_MOTION_GRAPH",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -304,7 +314,7 @@
     "subject": "PHYSICS",
     "domain": "VELOCIDADE",
     "topic": "aceleracao",
-    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "primarySkill": "PHYSICS_INTERPRET_ACCELERATION",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
@@ -336,7 +346,9 @@
     "topic": "comparacao",
     "primarySkill": "PHYSICS_AVERAGE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "REVIEW",
     "difficulty": "HARD",
@@ -366,7 +378,9 @@
     "topic": "Calcular velocidade media",
     "primarySkill": "PHYSICS_AVERAGE_SPEED",
     "supportingSkills": [],
-    "prerequisiteSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
     "transferSkills": [],
     "purpose": "REVIEW",
     "difficulty": "HARD",

@@ -33,6 +33,7 @@ interface Question {
   explanation: string; misconceptions: Record<string, string[]>; provenance: string; content_authoring_status: AuthoringStatus;
 }
 interface Relationship { from: string; to: string; type: 'RELATED' | 'TRANSFER' | 'PREREQUISITE'; source: string; confidence: number; rationale: string }
+interface TopicOwnership { subject: string; topic: string; primarySkill: string }
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const PACK = join(ROOT, 'content', 'adaptive', 'tec-escola-core-v4');
@@ -61,6 +62,7 @@ export function loadV4Pack() {
   const stageReferences = readJson<Record<string, StageReference[]>>(join(PACK, 'stage-references.json'));
   const misconceptions = readJson<Record<string, string[]>>(join(PACK, 'misconceptions.json'));
   const misconceptionDetails = readJson<Record<string, { title: string; description: string; affectedSkills: string[] }>>(join(PACK, 'misconception-details.json'));
+  const topicOwnership = readJson<{ version: number; source: string; ownership: TopicOwnership[] }>(join(PACK, 'topic-ownership.json'));
   const subjects = readdirSync(join(PACK, 'subjects'), { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .sort((left, right) => left.name.localeCompare(right.name))
@@ -85,7 +87,7 @@ export function loadV4Pack() {
     subject: subject.code,
   })));
   const leaves = registry.subjects.flatMap((subject) => subject.leaves.map((leaf) => ({ ...leaf, subject: subject.code })));
-  return { manifest, registry, relationships, stageReferences, misconceptions, misconceptionDetails, questions, lessons, anchors, leaves };
+  return { manifest, registry, relationships, stageReferences, misconceptions, misconceptionDetails, topicOwnership, questions, lessons, anchors, leaves };
 }
 
 export interface V4ValidationResult {
@@ -114,6 +116,11 @@ export interface V4ValidationResult {
   numericSuffixDuplicateConcepts: string[];
   realMisconceptions: number;
   genericMisconceptions: number;
+  genericMisconceptionLabels: number;
+  genericMisconceptionDescriptions: number;
+  misconceptionAffectedSkillMismatches: string[];
+  topicOwnershipCount: number;
+  questionsRemapped: number;
   subjectsWithoutAdaptiveReady: string[];
   unknownSecondarySkills: string[];
   unknownPrerequisites: string[];
@@ -174,6 +181,7 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   const anchors = new Set(pack.anchors.map((skill) => skill.code));
   const lessonsBySkill = new Map(pack.lessons.map((lesson) => [lesson.skill, lesson]));
   const questionsBySkill = new Map<string, Question[]>();
+  const ownershipByTopic = new Map(pack.topicOwnership.ownership.map((item) => [`${item.subject}\u0000${item.topic}`, item]));
   const semanticSkillCodes = new Map<string, string>();
   const duplicateSemanticSkills: string[] = [];
   const numericSuffixDuplicateConcepts: string[] = [];
@@ -218,6 +226,11 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   const knownSubjects = new Set(pack.registry.subjects.map((subject) => subject.code));
   const knownMisconceptionTags = new Set(Object.values(pack.misconceptions).flat());
   const detailTags = new Set(Object.keys(pack.misconceptionDetails));
+  const misconceptionAffectedSkillMismatches: string[] = [];
+  const genericMisconceptionLabels = Object.values(pack.misconceptionDetails).filter((detail) => /^Confunde\b/i.test(detail.title) || /\b(confused|misread|ignored|treated as)\b/i.test(detail.title)).length;
+  const genericMisconceptionDescriptions = Object.values(pack.misconceptionDetails).filter((detail) => /Interpreta a evidencia de uma forma que contradiz o contexto/i.test(detail.description) || /interpretacao inadequada sobre .*; a resposta deve seguir/i.test(detail.description)).length;
+  if (genericMisconceptionLabels) errors.push(`GENERIC_MISCONCEPTION_LABELS:${genericMisconceptionLabels}`);
+  if (genericMisconceptionDescriptions) errors.push(`GENERIC_MISCONCEPTION_DESCRIPTIONS:${genericMisconceptionDescriptions}`);
   for (const [tag, detail] of Object.entries(pack.misconceptionDetails)) {
     if (!detail.title.trim() || !detail.description.trim() || !detail.affectedSkills.length) errors.push(`INCOMPLETE_MISCONCEPTION_DETAIL:${tag}`);
     for (const skill of detail.affectedSkills) if (!skillCodes.has(skill)) errors.push(`UNKNOWN_MISCONCEPTION_SKILL:${tag}:${skill}`);
@@ -268,14 +281,28 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
       genericTemplateQuestions += 1;
       genericTemplateFamilies.add(normalizedSemantic(question.statement).replace(/\b\d+\b/g, '#'));
     }
+    const ownership = ownershipByTopic.get(`${question.subject}\u0000${question.topic}`);
+    if (!ownership) errors.push(`MISSING_TOPIC_OWNERSHIP:${question.id}`);
+    else if (ownership.primarySkill !== question.primarySkill) errors.push(`TOPIC_OWNER_MISMATCH:${question.id}:${ownership.primarySkill}:${question.primarySkill}`);
+    if (new Set(question.supportingSkills).size !== question.supportingSkills.length || new Set(question.prerequisiteSkills).size !== question.prerequisiteSkills.length || new Set(question.transferSkills).size !== question.transferSkills.length) errors.push(`DUPLICATE_SECONDARY_LINK:${question.id}`);
+    if (question.supportingSkills.some((skill) => question.prerequisiteSkills.includes(skill))) errors.push(`SECONDARY_ROLE_OVERLAP:${question.id}`);
     for (const reference of [...question.supportingSkills, ...question.prerequisiteSkills, ...question.transferSkills]) {
       if (!skillCodes.has(reference)) errors.push(`UNKNOWN_SECONDARY_SKILL:${question.id}:${reference}`);
     }
     for (const [option, tags] of Object.entries(question.misconceptions)) {
       if (!question.options.includes(option) || tags.length === 0) errors.push(`INVALID_MISCONCEPTION:${question.id}`);
-      for (const tag of tags) if (!knownMisconceptionTags.has(tag)) errors.push(`UNKNOWN_MISCONCEPTION_TAG:${question.id}:${tag}`);
+      for (const tag of tags) {
+        if (!knownMisconceptionTags.has(tag)) errors.push(`UNKNOWN_MISCONCEPTION_TAG:${question.id}:${tag}`);
+        else if (!pack.misconceptionDetails[tag]?.affectedSkills.includes(question.primarySkill)) misconceptionAffectedSkillMismatches.push(`${tag}:${question.id}:${question.primarySkill}`);
+      }
     }
   }
+  for (const item of pack.topicOwnership.ownership) {
+    if (!knownSubjects.has(item.subject)) errors.push(`UNKNOWN_TOPIC_OWNERSHIP_SUBJECT:${item.subject}:${item.topic}`);
+    if (!skillCodes.has(item.primarySkill)) errors.push(`UNKNOWN_TOPIC_OWNERSHIP_SKILL:${item.subject}:${item.topic}:${item.primarySkill}`);
+  }
+  if (new Set(pack.topicOwnership.ownership.map((item) => `${item.subject}\u0000${item.topic}`)).size !== pack.topicOwnership.ownership.length) errors.push('DUPLICATE_TOPIC_OWNERSHIP');
+  for (const mismatch of misconceptionAffectedSkillMismatches) errors.push(`MISCONCEPTION_AFFECTED_SKILL_MISMATCH:${mismatch}`);
   const nearDuplicateStems = stemList.flatMap((stem, index) => stemList.slice(index + 1).filter((candidate) => nearDuplicate(stem, candidate)).map((candidate) => `${stem}::${candidate}`));
   if (nearDuplicateStems.length) errors.push(`NEAR_DUPLICATE_STEMS:${nearDuplicateStems.length}`);
   const parentMap = new Map(pack.leaves.map((leaf) => [leaf.code, leaf.parent]));
@@ -293,7 +320,7 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
       errors.push(`INVALID_LEAF_STAGE_METADATA:${leaf.code}`);
     }
   }
-  const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, misconceptions: pack.misconceptions, misconceptionDetails: pack.misconceptionDetails, questions: pack.questions, lessons: pack.lessons })).digest('hex');
+  const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, topicOwnership: pack.topicOwnership, misconceptions: pack.misconceptions, misconceptionDetails: pack.misconceptionDetails, questions: pack.questions, lessons: pack.lessons })).digest('hex');
   const unknownPrerequisites = pack.relationships.prerequisites.filter(([from, to]) => !skillCodes.has(from) || !skillCodes.has(to)).map((edge) => edge.join(':')).sort();
   const prerequisiteCycles = cycleNodes(pack.relationships.prerequisites);
   for (const cycle of prerequisiteCycles) errors.push(`PREREQUISITE_CYCLE:${cycle}`);
@@ -315,7 +342,8 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   const answerPositionBias = totalQuestions > 0 && answerPositionCounts.some((count) => count / totalQuestions > 0.4);
   if (answerPositionBias) errors.push(`ANSWER_POSITION_BIAS:${answerPositionCounts.join(',')}`);
   const misconceptionCount = Object.values(pack.misconceptions).reduce((sum, tags) => sum + tags.length, 0);
-  const genericMisconceptions = [...knownMisconceptionTags].filter((tag) => /CONTEXT_OMISSION|CONCEPT_SWAP|GENERIC/i.test(tag)).length;
+  const genericMisconceptions = genericMisconceptionLabels + genericMisconceptionDescriptions;
+  const questionsRemapped = pack.questions.filter((question) => question.provenance === 'TECESCOLA_CORE_V3_REUSED' && ownershipByTopic.get(`${question.subject}\u0000${question.topic}`)?.primarySkill === question.primarySkill).length;
   return {
     valid: errors.length === 0,
     canonicalHash,
@@ -342,6 +370,11 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     numericSuffixDuplicateConcepts,
     realMisconceptions: Object.keys(pack.misconceptionDetails).length,
     genericMisconceptions,
+    genericMisconceptionLabels,
+    genericMisconceptionDescriptions,
+    misconceptionAffectedSkillMismatches,
+    topicOwnershipCount: pack.topicOwnership.ownership.length,
+    questionsRemapped,
     subjectsWithoutAdaptiveReady,
     unknownSecondarySkills: errors.filter((error) => error.startsWith('UNKNOWN_SECONDARY_SKILL:')),
     unknownPrerequisites,
@@ -378,6 +411,25 @@ function buildCoverage(pack: ReturnType<typeof loadV4Pack>, result: V4Validation
   };
 }
 
+function buildContentMatrix(pack: ReturnType<typeof loadV4Pack>) {
+  const readinessBySkill = new Map(pack.leaves.map((leaf) => [leaf.code, leaf.readiness]));
+  return {
+    version: 1,
+    source: 'EXPLICIT_SEMANTIC_AUTHORING',
+    questions: pack.questions.map((question) => ({
+      questionId: question.id,
+      subject: question.subject,
+      topic: question.topic,
+      primarySkill: question.primarySkill,
+      supportingSkills: question.supportingSkills,
+      prerequisiteSkills: question.prerequisiteSkills,
+      transferSkills: question.transferSkills,
+      readiness: readinessBySkill.get(question.primarySkill) ?? 'UNKNOWN',
+      selectionEligible: readinessBySkill.get(question.primarySkill) === 'ADAPTIVE_READY',
+    })),
+  };
+}
+
 function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4ValidationResult): string {
   const lines: string[] = [
     'begin;',
@@ -404,7 +456,7 @@ function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4Validatio
     "create policy learning_adaptive_content_packs_select on public.learning_adaptive_content_packs for select to authenticated using (active);",
     'grant select on public.learning_skill_hierarchy, public.learning_adaptive_content_packs to authenticated;',
     'revoke all on public.learning_skill_hierarchy, public.learning_adaptive_content_packs from anon;',
-    `insert into public.learning_adaptive_content_packs(pack_version, canonical_hash, manifest, pedagogical_review_status) values (${sql(pack.registry.packVersion)}, ${sql(result.canonicalHash)}, ${jsonSql({ ...pack.manifest, ...result, coverage: buildCoverage(pack, result) })}, 'PEDAGOGICAL_REVIEW_PENDING') on conflict (pack_version) do update set canonical_hash = excluded.canonical_hash, manifest = excluded.manifest, updated_at = now();`,
+    `insert into public.learning_adaptive_content_packs(pack_version, canonical_hash, manifest, pedagogical_review_status) values (${sql(pack.registry.packVersion)}, ${sql(result.canonicalHash)}, ${jsonSql({ ...pack.manifest, ...result, topic_ownership: pack.topicOwnership, coverage: buildCoverage(pack, result) })}, 'PEDAGOGICAL_REVIEW_PENDING') on conflict (pack_version) do update set canonical_hash = excluded.canonical_hash, manifest = excluded.manifest, updated_at = now();`,
     'do $v4$ declare v_catalog_id uuid; v_skill_id uuid; v_parent_id uuid; v_question_id uuid; v_set_id uuid; position_index integer; begin',
     "  select id into v_catalog_id from public.learning_curriculum_catalogs where code = 'TECESCOLA_CORE' and version = '1.0' limit 1;",
     "  if v_catalog_id is null then raise exception 'TECESCOLA_CORE_CATALOG_MISSING'; end if;",
@@ -439,8 +491,10 @@ function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4Validatio
     lines.push(`  insert into public.learning_skill_relationships(from_canonical_skill_id, to_canonical_skill_id, relation_type, relation_source, confidence, metadata) select source.id, target.id, ${sql(relationship.type)}, ${sql(relationship.source)}, ${relationship.confidence}, jsonb_build_object('rationale', ${sql(relationship.rationale)}, 'content_pack', 'tec-escola-core-v4') from public.learning_curriculum_skills source, public.learning_curriculum_skills target where source.catalog_id = v_catalog_id and target.catalog_id = v_catalog_id and source.code = ${sql(relationship.from)} and target.code = ${sql(relationship.to)} on conflict (from_canonical_skill_id, to_canonical_skill_id, relation_type) do update set confidence = excluded.confidence, metadata = excluded.metadata;`);
   }
   for (const question of pack.questions) {
-    lines.push(`  insert into public.learning_question_bank(package_type, source_type, source_name, subject_area, domain, topic, statement, options, correct_answer, explanation, difficulty, estimated_minutes, provenance, metadata, active) select 'TECESCOLA', 'TECESCOLA_CORE_V4', 'TecEscola Core V4', ${sql(question.subject)}, ${sql(question.domain)}, ${sql(question.topic)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${jsonSql(question.correctAnswer)}, ${sql(question.explanation)}, ${sql(question.difficulty)}, 4, ${sql(question.provenance)}, ${jsonSql({ content_id: question.id, purpose: question.purpose, context_family: question.contextFamily, cognitive_process: question.cognitiveProcess, misconceptions: question.misconceptions, content_authoring_status: question.content_authoring_status, pack_version: 'tec-escola-core-v4' })}, true where not exists (select 1 from public.learning_question_bank existing where existing.source_type = 'TECESCOLA_CORE_V4' and existing.metadata->>'content_id' = ${sql(question.id)}) returning id into v_question_id;`);
+    const topicOwner = pack.topicOwnership.ownership.find((item) => item.subject === question.subject && item.topic === question.topic);
+    lines.push(`  insert into public.learning_question_bank(package_type, source_type, source_name, subject_area, domain, topic, statement, options, correct_answer, explanation, difficulty, estimated_minutes, provenance, metadata, active) select 'TECESCOLA', 'TECESCOLA_CORE_V4', 'TecEscola Core V4', ${sql(question.subject)}, ${sql(question.domain)}, ${sql(question.topic)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${jsonSql(question.correctAnswer)}, ${sql(question.explanation)}, ${sql(question.difficulty)}, 4, ${sql(question.provenance)}, ${jsonSql({ content_id: question.id, purpose: question.purpose, context_family: question.contextFamily, cognitive_process: question.cognitiveProcess, misconceptions: question.misconceptions, primary_skill: question.primarySkill, supporting_skills: question.supportingSkills, prerequisite_skills: question.prerequisiteSkills, transfer_skills: question.transferSkills, semantic_topic_owner: topicOwner?.primarySkill ?? null, content_authoring_status: question.content_authoring_status, pack_version: 'tec-escola-core-v4' })}, true where not exists (select 1 from public.learning_question_bank existing where existing.source_type = 'TECESCOLA_CORE_V4' and existing.metadata->>'content_id' = ${sql(question.id)}) returning id into v_question_id;`);
     lines.push(`  select id into v_question_id from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V4' and metadata->>'content_id' = ${sql(question.id)};`);
+    lines.push(`  update public.learning_question_bank set metadata = coalesce(metadata, '{}'::jsonb) || ${jsonSql({ primary_skill: question.primarySkill, supporting_skills: question.supportingSkills, prerequisite_skills: question.prerequisiteSkills, transfer_skills: question.transferSkills, semantic_topic_owner: topicOwner?.primarySkill ?? null })} where id = v_question_id;`);
     lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'PRIMARY' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(question.primarySkill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
     for (const skill of question.supportingSkills) lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'SUPPORTING' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(skill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
     for (const skill of question.prerequisiteSkills) lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'PREREQUISITE' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(skill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
@@ -770,6 +824,7 @@ export function compileV4Pack() {
   const result = validateV4Pack(pack);
   if (!result.valid) throw new Error(`V4_CONTENT_INVALID\n${result.errors.join('\n')}`);
   writeFileSync(join(PACK, 'coverage.json'), `${JSON.stringify(buildCoverage(pack, result), null, 2)}\n`);
+  writeFileSync(join(PACK, 'content-matrix.json'), `${JSON.stringify(buildContentMatrix(pack), null, 2)}\n`);
   writeFileSync(MIGRATION, `${buildMigration(pack, result)}\n`);
   return result;
 }

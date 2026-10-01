@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
       "domain": "GENETICA",
       "parent": "BIOLOGY_INHERITANCE",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,

@@ -1,12 +1,12 @@
 {
   "packVersion": "tec-escola-core-v4",
-  "canonicalHash": "c0202d59eef03796407392f012b4551c3189fd9573df1b0bf13edfb6afa50bbf",
+  "canonicalHash": "1c202b14020b7c34a5b7deabd6e34a6aa881c99b9b0297f3fbaf62bc0a99c5c4",
   "subjects": [
     {
       "code": "ART",
       "skills": 6,
       "leafs": 3,
-      "adaptiveReady": 1,
+      "adaptiveReady": 0,
       "graphOnly": 2,
       "lessons": 1,
       "questions": 13,
@@ -58,7 +58,7 @@
       "code": "BIOLOGY",
       "skills": 7,
       "leafs": 4,
-      "adaptiveReady": 1,
+      "adaptiveReady": 0,
       "graphOnly": 3,
       "lessons": 1,
       "questions": 13,
@@ -110,7 +110,7 @@
       "code": "CHEMISTRY",
       "skills": 7,
       "leafs": 4,
-      "adaptiveReady": 1,
+      "adaptiveReady": 0,
       "graphOnly": 3,
       "lessons": 1,
       "questions": 13,
@@ -162,7 +162,7 @@
       "code": "COMPUTING",
       "skills": 6,
       "leafs": 3,
-      "adaptiveReady": 1,
+      "adaptiveReady": 0,
       "graphOnly": 2,
       "lessons": 1,
       "questions": 13,
@@ -316,10 +316,10 @@
     },
     {
       "code": "HISTORY",
-      "skills": 6,
-      "leafs": 3,
-      "adaptiveReady": 1,
-      "graphOnly": 2,
+      "skills": 10,
+      "leafs": 7,
+      "adaptiveReady": 0,
+      "graphOnly": 6,
       "lessons": 1,
       "questions": 13,
       "purposes": {
@@ -345,8 +345,8 @@
         "REVIEW_APLICADA"
       ],
       "misconceptions": 12,
-      "hierarchy": 3,
-      "prerequisites": 0,
+      "hierarchy": 7,
+      "prerequisites": 4,
       "crossSubjectLinks": 0,
       "stageReferences": [
         {
@@ -368,10 +368,10 @@
     },
     {
       "code": "MATHEMATICS",
-      "skills": 8,
-      "leafs": 5,
-      "adaptiveReady": 1,
-      "graphOnly": 4,
+      "skills": 9,
+      "leafs": 6,
+      "adaptiveReady": 0,
+      "graphOnly": 5,
       "lessons": 1,
       "questions": 13,
       "purposes": {
@@ -397,8 +397,8 @@
         "TAXA_EQUIVALENTE"
       ],
       "misconceptions": 12,
-      "hierarchy": 5,
-      "prerequisites": 1,
+      "hierarchy": 6,
+      "prerequisites": 2,
       "crossSubjectLinks": 4,
       "stageReferences": [
         {
@@ -474,7 +474,7 @@
       "code": "PHYSICAL_EDUCATION",
       "skills": 6,
       "leafs": 3,
-      "adaptiveReady": 1,
+      "adaptiveReady": 0,
       "graphOnly": 2,
       "lessons": 1,
       "questions": 13,
@@ -524,10 +524,10 @@
     },
     {
       "code": "PHYSICS",
-      "skills": 7,
-      "leafs": 4,
-      "adaptiveReady": 1,
-      "graphOnly": 3,
+      "skills": 10,
+      "leafs": 7,
+      "adaptiveReady": 0,
+      "graphOnly": 6,
       "lessons": 1,
       "questions": 13,
       "purposes": {
@@ -553,8 +553,8 @@
         "VELOCIDADE_MEDIA"
       ],
       "misconceptions": 12,
-      "hierarchy": 4,
-      "prerequisites": 1,
+      "hierarchy": 7,
+      "prerequisites": 4,
       "crossSubjectLinks": 1,
       "stageReferences": [
         {
@@ -576,10 +576,10 @@
     },
     {
       "code": "PORTUGUESE",
-      "skills": 7,
-      "leafs": 4,
-      "adaptiveReady": 1,
-      "graphOnly": 3,
+      "skills": 12,
+      "leafs": 9,
+      "adaptiveReady": 0,
+      "graphOnly": 8,
       "lessons": 1,
       "questions": 13,
       "purposes": {
@@ -605,8 +605,8 @@
         "SINTESE_ARGUMENTATIVA"
       ],
       "misconceptions": 12,
-      "hierarchy": 4,
-      "prerequisites": 1,
+      "hierarchy": 9,
+      "prerequisites": 4,
       "crossSubjectLinks": 1,
       "stageReferences": [
         {
@@ -630,7 +630,7 @@
       "code": "RELIGIOUS_EDUCATION",
       "skills": 6,
       "leafs": 3,
-      "adaptiveReady": 1,
+      "adaptiveReady": 0,
       "graphOnly": 2,
       "lessons": 1,
       "questions": 13,

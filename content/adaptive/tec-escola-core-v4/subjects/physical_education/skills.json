@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
       "domain": "ESPORTES",
       "parent": "PE_SPORTS",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,

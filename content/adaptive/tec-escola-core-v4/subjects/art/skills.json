@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
       "domain": "INTERPRETACAO",
       "parent": "ART_INTERPRETATION",
-      "readiness": "ADAPTIVE_READY",
+      "readiness": "CONTENT_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,

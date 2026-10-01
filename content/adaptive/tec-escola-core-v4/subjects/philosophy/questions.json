@@ -124,7 +124,7 @@
     "subject": "PHILOSOPHY",
     "domain": "ARGUMENTO",
     "topic": "etica",
-    "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "primarySkill": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
     "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],

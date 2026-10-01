@@ -29,13 +29,16 @@ describe('adaptive V4 source-of-truth and honest content gates', () => {
     const result = validateV4Pack(pack);
     expect(result.valid).toBe(true);
     expect(result.subjectCount).toBe(15);
-    expect(result.adaptiveReadyCount).toBe(15);
+    expect(result.adaptiveReadyCount).toBe(5);
     expect(result.graphOnlyCount).toBeGreaterThan(0);
+    expect(result.contentReadyCount).toBe(10);
     expect(result.lessonCount).toBe(15);
     expect(result.questionCount).toBe(195);
     expect(result.reusedV2V3Questions).toBe(180);
     expect(result.newRealV4Questions).toBe(15);
-    expect(result.realSelectableQuestions).toBe(195);
+    expect(result.realSelectableQuestions).toBe(55);
+    expect(result.questionsRemapped).toBe(180);
+    expect(result.topicOwnershipCount).toBe(195);
     expect(result.genericTemplateQuestions).toBe(0);
     expect(result.genericTemplateLessons).toBe(0);
     expect(result.genericTemplateFamilies).toBe(0);
@@ -43,6 +46,8 @@ describe('adaptive V4 source-of-truth and honest content gates', () => {
     expect(result.numericSuffixDuplicateConcepts).toHaveLength(0);
     expect(result.realMisconceptions).toBeGreaterThan(0);
     expect(result.genericMisconceptions).toBe(0);
+    expect(result.genericMisconceptionLabels).toBe(0);
+    expect(result.genericMisconceptionDescriptions).toBe(0);
     expect(compiler).not.toContain('SCALE_ADAPTIVE_READY_LEAVES_BELOW_180');
     expect(compiler).not.toContain('SCALE_LESSONS_BELOW_180');
     expect(compiler).not.toContain('SCALE_QUESTIONS_BELOW_1440');

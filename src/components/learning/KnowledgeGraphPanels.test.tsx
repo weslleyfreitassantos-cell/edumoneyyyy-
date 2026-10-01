@@ -12,28 +12,36 @@ import {
 afterEach(() => cleanup());
 
 describe('KnowledgeGraphPanels', () => {
-  it('mostra estado, evidências e misconception confirmada para o professor', () => {
+  it('mostra estado, evidências e misconceptions humanas para matematica, portugues e historia', () => {
     render(
       <TeacherKnowledgeGraphPanel
-        skills={[{
-          subjectCode: 'PHYSICS',
-          subjectName: 'Física',
-          skillCode: 'PHYSICS_AVERAGE_SPEED',
-          skillTitle: 'Velocidade média',
-          state: 'NEEDS_REVIEW',
-          mastery: 42,
-          confidence: 0.78,
-          evidenceCount: 5,
-          strongEvidenceCount: 3,
-          confirmedMisconceptions: [{ code: 'UNIT_CONVERSION', state: 'CONFIRMED', confidence: 0.8 }],
-        }]}
+        skills={[
+          {
+            subjectCode: 'MATHEMATICS', subjectName: 'Matemática', skillCode: 'MATH_PERCENT_OF_QUANTITY', skillTitle: 'Percentual de quantidade',
+            state: 'NEEDS_REVIEW', mastery: 42, confidence: 0.78, evidenceCount: 5, strongEvidenceCount: 3,
+            confirmedMisconceptions: [{ code: 'DISCOUNT_CONFUSED_WITH_FINAL_PRICE', state: 'CONFIRMED', confidence: 0.8 }],
+          },
+          {
+            subjectCode: 'PORTUGUESE', subjectName: 'Língua Portuguesa', skillCode: 'PORTUGUESE_INFER_FROM_CLUES', skillTitle: 'Inferência',
+            state: 'PRACTICING', mastery: 52, confidence: 0.72, evidenceCount: 4, strongEvidenceCount: 2,
+            confirmedMisconceptions: [{ code: 'INFERENCE_TREATED_AS_CERTAINTY', state: 'CONFIRMED', confidence: 0.8 }],
+          },
+          {
+            subjectCode: 'HISTORY', subjectName: 'História', skillCode: 'HISTORY_ORDER_EVENTS', skillTitle: 'Cronologia',
+            state: 'NEEDS_REVIEW', mastery: 38, confidence: 0.7, evidenceCount: 3, strongEvidenceCount: 1,
+            confirmedMisconceptions: [{ code: 'CHRONOLOGY_REVERSED', state: 'CONFIRMED', confidence: 0.8 }],
+          },
+        ]}
       />,
     );
 
     expect(screen.getByRole('region', { name: 'Mapa de aprendizagem' })).toBeTruthy();
-    expect(screen.getByText('Precisa revisar')).toBeTruthy();
+    expect(screen.getAllByText('Precisa revisar')).toHaveLength(2);
     expect(screen.getByText((_, element) => element?.textContent === 'Domínio: 42%')).toBeTruthy();
-    expect(screen.getByText(/Unit Conversion/)).toBeTruthy();
+    expect(screen.getByText(/Confunde desconto com preço final/)).toBeTruthy();
+    expect(screen.getByText(/Trata inferência como certeza/)).toBeTruthy();
+    expect(screen.getByText(/Inverte a ordem cronológica/)).toBeTruthy();
+    expect(screen.queryByText(/DISCOUNT_CONFUSED_WITH_FINAL_PRICE/)).toBeNull();
   });
 
   it('mostra a distribuição da turma sem ranking', () => {
