@@ -1,0 +1,10 @@
+{
+  "packVersion": "tec-escola-core-v4",
+  "provenance": "Conteudo autoral versionado do TecEscola; nao e BNCC oficial.",
+  "subjectCount": 15,
+  "canonicalSubjects": [
+    "PORTUGUESE", "MATHEMATICS", "SCIENCE", "BIOLOGY", "PHYSICS", "CHEMISTRY", "HISTORY", "GEOGRAPHY", "PHILOSOPHY", "SOCIOLOGY", "ART", "PHYSICAL_EDUCATION", "ENGLISH", "RELIGIOUS_EDUCATION", "COMPUTING"
+  ],
+  "contentReadinessPolicy": "Only ADAPTIVE_READY leaves may be selected by the planner.",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+}

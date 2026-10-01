@@ -1,0 +1,156 @@
+{
+  "packVersion": "tec-escola-core-v4",
+  "canonicalHash": "599d4939b54c4573acd1b041ccb7a28a3a1acc6931d04677f241917727c86c79",
+  "subjects": [
+    {
+      "code": "PORTUGUESE",
+      "skills": 9,
+      "leafs": 6,
+      "adaptiveReady": 1,
+      "graphOnly": 0,
+      "lessons": 3,
+      "questions": 9,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "MATHEMATICS",
+      "skills": 17,
+      "leafs": 12,
+      "adaptiveReady": 2,
+      "graphOnly": 1,
+      "lessons": 6,
+      "questions": 17,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "SCIENCE",
+      "skills": 5,
+      "leafs": 2,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "BIOLOGY",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 1
+    },
+    {
+      "code": "PHYSICS",
+      "skills": 6,
+      "leafs": 3,
+      "adaptiveReady": 1,
+      "graphOnly": 0,
+      "lessons": 1,
+      "questions": 9,
+      "crossSubjectLinks": 1
+    },
+    {
+      "code": "CHEMISTRY",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 1
+    },
+    {
+      "code": "HISTORY",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "GEOGRAPHY",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 1
+    },
+    {
+      "code": "PHILOSOPHY",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "SOCIOLOGY",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "ART",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "PHYSICAL_EDUCATION",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "ENGLISH",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "RELIGIOUS_EDUCATION",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 0
+    },
+    {
+      "code": "COMPUTING",
+      "skills": 3,
+      "leafs": 1,
+      "adaptiveReady": 0,
+      "graphOnly": 0,
+      "lessons": 0,
+      "questions": 0,
+      "crossSubjectLinks": 1
+    }
+  ]
+}

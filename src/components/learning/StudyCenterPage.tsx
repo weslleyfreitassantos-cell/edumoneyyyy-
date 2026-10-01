@@ -235,34 +235,39 @@ export default function StudyCenterPage() {
   return (
     <div className="w-full space-y-6 overflow-x-hidden">
       <header className="space-y-4">
-        <p className="text-sm text-slate-500 dark:text-slate-400">
-          Olá, {profile?.full_name?.split(' ')[0] ?? 'aluno'}. O que vamos estudar hoje?
-        </p>
+        <div className="rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-white p-5 shadow-sm dark:border-blue-900/60 dark:from-blue-950/40 dark:to-slate-900 sm:p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div className="min-w-0">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Seu próximo passo</p>
+              <h1 className="mt-1 text-2xl font-bold text-blue-950 dark:text-blue-100">Continue estudando</h1>
+              <p className="mt-1 text-sm text-blue-900 dark:text-blue-200">
+                Olá, {profile?.full_name?.split(' ')[0] ?? 'aluno'}. O que vamos estudar hoje?
+              </p>
+            </div>
+            {guidedSessionV2.data?.status === 'ACTIVE' ? (
+              <Link to="/student/study/guided" className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white">
+                Continuar jornada
+              </Link>
+            ) : (
+              <a href="#study-subjects" className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-lg border border-[#005bbf] px-4 py-2 text-sm font-bold text-[#005bbf]">
+                Explorar matérias
+              </a>
+            )}
+          </div>
+        </div>
 
         <div className="grid grid-cols-3 gap-2 sm:max-w-xl sm:gap-3">
           <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 dark:border-slate-700 dark:bg-slate-900 sm:px-4">
-            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-              {progressSummary.average}%
-            </p>
-            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">
-              domínio médio
-            </p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">{progressSummary.average}%</p>
+            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">domínio médio</p>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 dark:border-slate-700 dark:bg-slate-900 sm:px-4">
-            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-              {activities.data?.length ?? 0}
-            </p>
-            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">
-              práticas disponíveis
-            </p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">{activities.data?.length ?? 0}</p>
+            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">práticas disponíveis</p>
           </div>
           <div className="rounded-xl border border-slate-200 bg-white px-3 py-3 dark:border-slate-700 dark:bg-slate-900 sm:px-4">
-            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">
-              {collections.data?.length ?? 0}
-            </p>
-            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">
-              coleções
-            </p>
+            <p className="text-lg font-bold text-slate-900 dark:text-white sm:text-xl">{collections.data?.length ?? 0}</p>
+            <p className="text-[11px] leading-4 text-slate-500 dark:text-slate-400 sm:text-xs">coleções</p>
           </div>
         </div>
       </header>

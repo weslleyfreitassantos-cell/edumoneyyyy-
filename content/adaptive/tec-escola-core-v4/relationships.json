@@ -1,0 +1,22 @@
+{
+  "hierarchy": [
+    ["PERCENTAGE", "IDENTIFY_PERCENT_BASE"], ["PERCENTAGE", "PERCENT_OF_QUANTITY"], ["PERCENTAGE", "PERCENT_INCREASE"], ["PERCENTAGE", "PERCENT_DECREASE"], ["PERCENTAGE", "SUCCESSIVE_PERCENT_CHANGE"], ["PERCENTAGE", "REVERSE_PERCENTAGE"],
+    ["RATIO", "RATIO_UNIT_RATE"], ["RATIO", "PROPORTIONAL_REASONING"], ["NUMBER_SENSE", "FRACTION_COMPARISON"], ["ALGEBRA", "ONE_STEP_EQUATION"], ["ALGEBRA", "TWO_STEP_EQUATION"], ["DATA", "INTERPRET_DATA_TABLE"],
+    ["READING", "READING_LITERAL"], ["READING", "READING_INFERENCE"], ["ARGUMENTATION", "IDENTIFY_THESIS"], ["ARGUMENTATION", "EVIDENCE_SUPPORT"], ["LANGUAGE_USE", "COHESION_CONNECTORS"], ["MOTION", "PHYSICS_AVERAGE_SPEED"], ["MEASUREMENT", "PHYSICS_UNIT_CONVERSION"], ["MOTION", "PHYSICS_GRAPH_MOTION"]
+  ],
+  "prerequisites": [
+    ["PERCENT_OF_QUANTITY", "RATIO_UNIT_RATE"],
+    ["PERCENT_INCREASE", "PERCENT_OF_QUANTITY"],
+    ["PERCENT_DECREASE", "PERCENT_OF_QUANTITY"],
+    ["SUCCESSIVE_PERCENT_CHANGE", "PERCENT_INCREASE"],
+    ["PHYSICS_AVERAGE_SPEED", "RATIO_UNIT_RATE"]
+  ],
+  "relationships": [
+    { "from": "PHYSICS_AVERAGE_SPEED", "to": "RATIO_UNIT_RATE", "type": "PREREQUISITE", "source": "TECESCOLA_AUTHORED", "confidence": 0.95, "rationale": "Velocidade media exige dividir grandezas e interpretar uma taxa." },
+    { "from": "CHEMISTRY_STOICHIOMETRIC_REASONING", "to": "RATIO_UNIT_RATE", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.82, "rationale": "A leitura proporcional apoia o raciocinio estequiometrico." },
+    { "from": "GEOGRAPHY_MAP_SCALE", "to": "PROPORTIONAL_REASONING", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.84, "rationale": "Escala cartografica muda a representacao, mas preserva a relacao proporcional." },
+    { "from": "BIOLOGY_DATA_INTERPRETATION", "to": "INTERPRET_DATA_TABLE", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.8, "rationale": "Dados biologicos exigem leitura de tabela e variacao." },
+    { "from": "EXPERIMENTAL_EVIDENCE", "to": "EVIDENCE_SUPPORT", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.78, "rationale": "Conclusoes experimentais precisam ser apoiadas por evidencia observada." },
+    { "from": "COMPUTING_CONDITION", "to": "PROPORTIONAL_REASONING", "type": "RELATED", "source": "TECESCOLA_AUTHORED", "confidence": 0.55, "rationale": "Ambos exigem interpretar uma regra e verificar suas condicoes." }
+  ]
+}

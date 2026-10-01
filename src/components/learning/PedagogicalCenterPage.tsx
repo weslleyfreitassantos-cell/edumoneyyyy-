@@ -374,7 +374,21 @@ export default function PedagogicalCenterPage() {
         </p>
       </header>
 
-      <section className="grid gap-4 md:grid-cols-3">
+      <nav aria-label="Áreas da Central Pedagógica" className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+        {[
+          ['pedagogical-overview', 'Visão geral'],
+          ['pedagogical-students', 'Alunos'],
+          ['pedagogical-diagnostics', 'Diagnóstico'],
+          ['pedagogical-content', 'Conteúdo'],
+          ['pedagogical-activities', 'Atividades'],
+        ].map(([id, label]) => (
+          <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-600 transition hover:border-[#005bbf] hover:text-[#005bbf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <section id="pedagogical-overview" className="scroll-mt-24 grid gap-4 md:grid-cols-3">
         <Link to="/teacher/pedagogical-center/activities" aria-label="Abrir atividades publicadas" className="block rounded-xl border bg-white p-5 shadow-sm transition hover:border-[#005bbf] hover:shadow-md dark:border-slate-700 dark:bg-slate-900">
           <BarChart3 className="h-6 w-6 text-[#005bbf]" />
           <h2 className="mt-3 font-bold dark:text-white">Atividades publicadas</h2>
@@ -392,7 +406,7 @@ export default function PedagogicalCenterPage() {
         </article>
       </section>
 
-      <section aria-label="Alunos em acompanhamento" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <section id="pedagogical-students" aria-label="Alunos em acompanhamento" className="scroll-mt-24 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h2 className="font-bold dark:text-white">Alunos em acompanhamento</h2>
@@ -404,8 +418,9 @@ export default function PedagogicalCenterPage() {
       </section>
 
       <section
+        id="pedagogical-diagnostics"
         aria-label="Aprendizagem adaptativa"
-        className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30"
+        className="scroll-mt-24 rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30"
       >
         <div className="flex items-start gap-3">
           <BarChart3 className="mt-0.5 h-5 w-5 shrink-0 text-[#005bbf]" aria-hidden="true" />
@@ -464,7 +479,7 @@ export default function PedagogicalCenterPage() {
         isError={knowledgeHeatmap.isError}
       />
 
-      <section aria-label="Banco de questões" className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <section id="pedagogical-content" aria-label="Banco de questões" className="scroll-mt-24 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h2 className="font-bold dark:text-white">Banco de questões</h2>
@@ -615,7 +630,7 @@ export default function PedagogicalCenterPage() {
         {message && <p role="status" className="text-sm text-slate-600 dark:text-slate-300">{message}</p>}
       </form>
 
-      <section className="space-y-4 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+      <section id="pedagogical-activities" className="scroll-mt-24 space-y-4 rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div>
           <h2 className="font-bold dark:text-white">Nova coleção pedagógica</h2>
           <p className="mt-1 text-sm text-slate-500">Organize links e vídeos oficiais para uma turma.</p>

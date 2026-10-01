@@ -1,0 +1,3 @@
+[
+  { "skill": "PHYSICS_AVERAGE_SPEED", "title": "Relacionar distancia e tempo", "objective": "Interpretar velocidade media como uma razao entre distancia e tempo.", "summary": "A velocidade media responde quanto de distancia corresponde a cada unidade de tempo.", "explanation": "Mantenha as unidades compativeis e divida distancia pelo intervalo de tempo.", "workedExample": "120 km em 2 h correspondem a 60 km/h.", "commonMistake": "Inverter distancia e tempo ou misturar minutos com horas.", "tips": ["Escreva a unidade do resultado.", "Pergunte se a resposta e razoavel."], "estimatedMinutes": 8 }
+]
