@@ -595,7 +595,9 @@ export default function AppShell({
     name: profile.full_name,
     email: profile.email,
     avatar:
-      profile.avatar_url?.trim() || null,
+      currentRole === 'student'
+        ? null
+        : profile.avatar_url?.trim() || null,
     role: currentRole,
     subtitle:
       roleToSubtitle[currentRole],

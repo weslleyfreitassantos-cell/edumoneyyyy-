@@ -4,7 +4,6 @@ import { useState } from 'react';
 import {
   BadgeCheck,
   BookOpen,
-  CalendarClock,
   GraduationCap,
   School,
 } from 'lucide-react';
@@ -99,10 +98,8 @@ function OfferingCard({
 
 function StudentSubjectsView({
   offerings,
-  enrollment,
 }: {
   offerings: StudentDashboardOffering[];
-  enrollment: StudentDashboardData['activeEnrollment'];
 }) {
   return (
     <motion.div
@@ -111,35 +108,6 @@ function StudentSubjectsView({
       className="space-y-6"
       id="student-subjects-main"
     >
-      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-              Período atual
-            </p>
-            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20]">
-              Disciplinas e professores
-            </h1>
-          </div>
-
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-[#1e3a5f]">
-            <BookOpen className="h-6 w-6" aria-hidden="true" />
-          </div>
-        </div>
-
-        {enrollment && (
-          <div className="mt-5 rounded-lg border border-[#dfe3e8] bg-[#f8faff] px-4 py-3 text-sm dark:border-[#334155] dark:bg-[#111827]">
-            <p className="font-semibold text-[#181c20]">
-              {enrollment.class_name}
-            </p>
-            <p className="mt-1 text-xs text-[#727785]">
-              {enrollment.academic_year_name}
-              {enrollment.shift ? ` • ${enrollment.shift}` : ''}
-            </p>
-          </div>
-        )}
-      </section>
-
       {offerings.length === 0 ? (
         <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-8 text-center text-sm text-[#727785] dark:border-[#475569] dark:bg-[#18212f]">
           Nenhuma disciplina encontrada para o período atual.
@@ -355,26 +323,6 @@ function StudentTimetableView({
       className="space-y-6"
       id="student-timetable-main"
     >
-      <section className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfe3e8]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-              Grade de horário
-            </p>
-            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20]">
-              {enrollment.class_name}
-            </h1>
-            <p className="mt-2 text-sm text-[#727785]">
-              {enrollment.academic_year_name} • horários publicados da sua turma
-            </p>
-          </div>
-
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf]">
-            <CalendarClock className="h-6 w-6" aria-hidden="true" />
-          </div>
-        </div>
-      </section>
-
       {entries.length === 0 ? (
         <div
           role="status"
@@ -501,7 +449,6 @@ export default function StudentDashboard() {
     return (
       <StudentSubjectsView
         offerings={offerings}
-        enrollment={activeEnrollment}
       />
     );
   }
@@ -525,6 +472,8 @@ export default function StudentDashboard() {
 
   const firstName =
     getFirstName(profile.full_name);
+  const avatarUrl =
+    profile.avatar_url?.trim() || null;
 
   const classDescription = activeEnrollment
     ? [
@@ -543,7 +492,7 @@ export default function StudentDashboard() {
       id="student-dashboard-main"
     >
       <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
+        <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
               Área do aluno
@@ -553,11 +502,20 @@ export default function StudentDashboard() {
             </h1>
           </div>
 
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">
-            <GraduationCap
-              className="h-8 w-8"
-              aria-hidden="true"
-            />
+          <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20">
+            {avatarUrl ? (
+              <img
+                className="h-full w-full object-cover"
+                src={avatarUrl}
+                alt={`Foto de ${profile.full_name}`}
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <GraduationCap
+                className="h-8 w-8"
+                aria-hidden="true"
+              />
+            )}
           </div>
         </div>
       </section>

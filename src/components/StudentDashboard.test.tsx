@@ -243,8 +243,7 @@ describe('StudentDashboard', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole('heading', { name: '1ª série A' })).toBeTruthy();
-    expect(screen.getByText('Grade de horário')).toBeTruthy();
+    expect(screen.queryByText('Grade de horário')).toBeNull();
     expect(screen.getByText('Matemática')).toBeTruthy();
     expect(screen.getByText('07:00')).toBeTruthy();
     expect(screen.getByText('Prof. João')).toBeTruthy();
@@ -381,8 +380,8 @@ describe('StudentDashboard', () => {
     );
 
     expect(
-      screen.getByRole('heading', { name: 'Disciplinas e professores' }),
-    ).toBeTruthy();
+      screen.queryByRole('heading', { name: 'Disciplinas e professores' }),
+    ).toBeNull();
     expect(screen.getByText('Matemática')).toBeTruthy();
     expect(screen.getByText('Prof. João')).toBeTruthy();
     expect(screen.getByRole('heading', { name: '1 disciplina no período atual' })).toBeTruthy();
@@ -411,6 +410,36 @@ describe('StudentDashboard', () => {
       screen.queryByText('Disciplinas e professores do período atual'),
     ).toBeNull();
     expect(screen.queryByText('Disciplinas do período atual')).toBeNull();
+  });
+
+  it('exibe a foto do aluno no banner em proporção 3x4', () => {
+    vi.mocked(useAuth).mockReturnValue({
+      profile: {
+        id: 'profile-1',
+        full_name: 'Aluno Teste',
+        email: 'aluno@example.com',
+        avatar_url: 'https://cdn.example.com/aluno.webp',
+        role: 'STUDENT',
+        platform_role: 'USER',
+      },
+    } as never);
+
+    render(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <StudentDashboard />
+      </MemoryRouter>,
+    );
+
+    const image = screen.getByRole('img', {
+      name: 'Foto de Aluno Teste',
+    });
+
+    expect(image.getAttribute('src')).toBe(
+      'https://cdn.example.com/aluno.webp',
+    );
+    expect(image.classList.contains('object-cover')).toBe(true);
+    expect(image.parentElement?.classList.contains('aspect-[3/4]')).toBe(true);
+    expect(image.parentElement?.classList.contains('w-24')).toBe(true);
   });
 
   it('prioriza turma sem repetir atalhos acadêmicos ou destacar RA e dados pessoais', () => {
