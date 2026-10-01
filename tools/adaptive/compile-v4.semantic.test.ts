@@ -59,6 +59,7 @@ describe('V4 semantic ownership', () => {
     const migration = readFileSync('supabase/migrations/20261001000100_adaptive_learning_pedagogical_depth_v4.sql', 'utf8');
     expect(migration).toContain('semantic_topic_owner');
     expect(migration).toContain('v4-authored-mathematics-review-01');
+    expect(migration).toContain('if v_set_id is not null then insert into public.learning_question_set_items');
   });
 
   it('provides at least three deterministic samples per subject and never selects graph-only content', () => {
