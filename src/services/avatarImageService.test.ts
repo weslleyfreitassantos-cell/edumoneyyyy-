@@ -3,7 +3,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
-  AVATAR_MAX_FILE_SIZE,
   prepareAvatarImage,
   AvatarFileError,
   validateAvatarFile,
@@ -22,24 +21,16 @@ afterEach(() => {
 });
 
 describe('avatarImageService', () => {
-  it('accepts the supported input formats under the size limit', () => {
+  it('accepts supported input formats without an artificial size limit', () => {
     expect(() => validateAvatarFile(file('image/jpeg', 1024))).not.toThrow();
     expect(() => validateAvatarFile(file('image/png', 1024))).not.toThrow();
-    expect(() => validateAvatarFile(file('image/webp', AVATAR_MAX_FILE_SIZE))).not.toThrow();
+    expect(() => validateAvatarFile(file('image/webp', 6 * 1024 * 1024))).not.toThrow();
   });
 
   it('rejects unsupported files before processing', () => {
     expect(() => validateAvatarFile(file('image/svg+xml', 1024))).toThrowError(
       expect.objectContaining<Partial<AvatarFileError>>({
         code: 'INVALID_FILE_TYPE',
-      }),
-    );
-  });
-
-  it('rejects files larger than 5 MiB', () => {
-    expect(() => validateAvatarFile(file('image/jpeg', AVATAR_MAX_FILE_SIZE + 1))).toThrowError(
-      expect.objectContaining<Partial<AvatarFileError>>({
-        code: 'FILE_TOO_LARGE',
       }),
     );
   });

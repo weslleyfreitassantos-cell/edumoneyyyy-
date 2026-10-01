@@ -13,7 +13,6 @@ import {
   useState,
   type ChangeEvent,
   type FormEvent,
-  type ChangeEvent,
   type KeyboardEvent as ReactKeyboardEvent,
   type RefObject,
 } from 'react';
@@ -31,7 +30,6 @@ import {
   validateAvatarFile,
 } from '../services/avatarImageService';
 import { ProfileServiceError } from '../services/profileService';
-import { validateProfileAvatarFile } from '../services/profileAvatarService';
 import type { User } from '../types';
 
 interface AccountSettingsModalProps {
@@ -123,18 +121,6 @@ const textareaClass =
 
 function fieldLabel(text: string): string {
   return `block text-xs font-bold text-[#414754] dark:text-[#cbd5e1]`;
-}
-
-function getProfileInitials(name: string): string {
-  const initials = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join('');
-
-  return initials || 'U';
 }
 
 function StudentRegistrationFields({
@@ -307,15 +293,6 @@ export default function AccountSettingsModal({
 
   const isSelfRegistration =
     currentRole === 'student' || currentRole === 'parent';
-  const isBusy = isSaving || isAvatarSaving;
-
-  useEffect(() => {
-    return () => {
-      if (avatarPreviewUrl) {
-        URL.revokeObjectURL(avatarPreviewUrl);
-      }
-    };
-  }, [avatarPreviewUrl]);
 
   useEffect(() => {
     setAvatarFailed(false);
@@ -408,90 +385,6 @@ export default function AccountSettingsModal({
       returnFocusRef.current?.focus();
     };
   }, [returnFocusRef]);
-
-  function handleAvatarSelection(
-    event: ChangeEvent<HTMLInputElement>,
-  ): void {
-    const file = event.target.files?.[0] ?? null;
-    event.target.value = '';
-    setAvatarError(null);
-
-    if (!file) {
-      return;
-    }
-
-    try {
-      validateProfileAvatarFile(file);
-      setSelectedAvatar(file);
-      setAvatarPreviewUrl(URL.createObjectURL(file));
-    } catch (selectionError) {
-      setSelectedAvatar(null);
-      setAvatarPreviewUrl(null);
-      setAvatarError(
-        selectionError instanceof Error
-          ? selectionError.message
-          : 'Não foi possível selecionar essa imagem.',
-      );
-    }
-  }
-
-  function clearSelectedAvatar(): void {
-    setSelectedAvatar(null);
-    setAvatarPreviewUrl(null);
-    setAvatarError(null);
-  }
-
-  async function handleAvatarUpload(): Promise<void> {
-    if (!selectedAvatar || isAvatarSaving) {
-      return;
-    }
-
-    setAvatarError(null);
-    setIsAvatarSaving(true);
-
-    try {
-      await onUpdateAvatar(selectedAvatar);
-      clearSelectedAvatar();
-    } catch (uploadError) {
-      setAvatarError(
-        uploadError instanceof Error
-          ? uploadError.message
-          : 'Não foi possível atualizar sua foto de perfil.',
-      );
-    } finally {
-      setIsAvatarSaving(false);
-    }
-  }
-
-  async function handleAvatarRemoval(): Promise<void> {
-    if (isAvatarSaving) {
-      return;
-    }
-
-    if (selectedAvatar) {
-      clearSelectedAvatar();
-      return;
-    }
-
-    if (!currentAvatar || !window.confirm('Remover sua foto de perfil?')) {
-      return;
-    }
-
-    setAvatarError(null);
-    setIsAvatarSaving(true);
-
-    try {
-      await onRemoveAvatar();
-    } catch (removeError) {
-      setAvatarError(
-        removeError instanceof Error
-          ? removeError.message
-          : 'Não foi possível remover sua foto de perfil.',
-      );
-    } finally {
-      setIsAvatarSaving(false);
-    }
-  }
 
   function closeModal(): void {
     if (!submittingRef.current && avatarStatus !== 'uploading') {
@@ -802,10 +695,10 @@ export default function AccountSettingsModal({
             <div className="flex items-center gap-3">
               <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#e8eeff] text-lg font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff] dark:bg-[#243247] dark:text-[#bfdbfe]">
                 {avatarPreviewUrl ? (
-                  <img className="h-full w-full object-cover" src={avatarPreviewUrl} alt="Prévia da foto de perfil" />
+                  <img className="h-full w-full object-contain" src={avatarPreviewUrl} alt="Prévia da foto de perfil" />
                 ) : currentAvatar && !avatarFailed ? (
                   <img
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                     src={currentAvatar}
                     alt={`Foto de ${currentName}`}
                     referrerPolicy="no-referrer"
@@ -820,7 +713,7 @@ export default function AccountSettingsModal({
                   Foto de perfil
                 </h3>
                 <p className="mt-1 text-xs text-[#667085] dark:text-[#cbd5e1]">
-                  JPG, PNG ou WebP · até 5 MB
+                  JPG, PNG ou WebP
                 </p>
                 {avatarSuccessMessage && (
                   <p className="mt-1 text-xs font-semibold text-green-700 dark:text-green-300">{avatarSuccessMessage}</p>

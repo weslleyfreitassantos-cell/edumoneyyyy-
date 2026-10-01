@@ -28,13 +28,6 @@ import {
   updateCurrentProfile,
 } from '../services/profileService';
 import {
-  getProfileAvatarPath,
-  removeCurrentProfileAvatar,
-  resolveProfileAvatarUrl,
-  updateCurrentProfileAvatar,
-  type UpdatedProfileAvatar,
-} from '../services/profileAvatarService';
-import {
   selfRegistrationService,
   type SelfRegistrationUpdate,
 } from '../services/selfRegistrationService';
@@ -47,7 +40,6 @@ export interface Profile {
   platform_role: PlatformRole;
   avatar_path?: string | null;
   avatar_url: string | null;
-  avatar_path?: string | null;
   phone?: string | null;
 }
 

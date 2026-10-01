@@ -58,7 +58,7 @@ describe('AccountSettingsModal', () => {
     const input = screen.getByLabelText('Alterar foto');
 
     fireEvent.change(input, { target: { files: [file] } });
-    fireEvent.click(screen.getByRole('button', { name: 'Usar foto' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar foto' }));
 
     await waitFor(() => {
       expect(baseProps.onUpdateAvatar).toHaveBeenCalledWith(file);

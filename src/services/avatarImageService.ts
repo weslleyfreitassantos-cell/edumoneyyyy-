@@ -1,4 +1,3 @@
-export const AVATAR_MAX_FILE_SIZE = 5 * 1024 * 1024;
 export const AVATAR_MAX_DIMENSION = 512;
 export const AVATAR_ACCEPTED_MIME_TYPES = [
   'image/jpeg',
@@ -8,7 +7,6 @@ export const AVATAR_ACCEPTED_MIME_TYPES = [
 
 export type AvatarFileErrorCode =
   | 'INVALID_FILE_TYPE'
-  | 'FILE_TOO_LARGE'
   | 'IMAGE_PROCESSING_FAILED';
 
 export class AvatarFileError extends Error {
@@ -33,12 +31,6 @@ export function validateAvatarFile(file: File): void {
     );
   }
 
-  if (file.size > AVATAR_MAX_FILE_SIZE) {
-    throw new AvatarFileError(
-      'FILE_TOO_LARGE',
-      'A foto deve ter no máximo 5 MB.',
-    );
-  }
 }
 
 function createCanvas(size: number): HTMLCanvasElement {
@@ -50,6 +42,29 @@ function createCanvas(size: number): HTMLCanvasElement {
 
 function getOutputSize(cropSize: number): number {
   return Math.min(AVATAR_MAX_DIMENSION, cropSize);
+}
+
+function drawContained(
+  context: CanvasRenderingContext2D,
+  source: CanvasImageSource,
+  sourceWidth: number,
+  sourceHeight: number,
+  outputSize: number,
+): void {
+  const scale = Math.min(
+    outputSize / sourceWidth,
+    outputSize / sourceHeight,
+  );
+  const drawnWidth = sourceWidth * scale;
+  const drawnHeight = sourceHeight * scale;
+
+  context.drawImage(
+    source,
+    (outputSize - drawnWidth) / 2,
+    (outputSize - drawnHeight) / 2,
+    drawnWidth,
+    drawnHeight,
+  );
 }
 
 function canvasToWebp(canvas: HTMLCanvasElement): Promise<Blob> {
@@ -100,15 +115,11 @@ async function prepareWithImageBitmap(file: File): Promise<Blob> {
       );
     }
 
-    context.drawImage(
+    drawContained(
+      context,
       bitmap,
-      (bitmap.width - cropSize) / 2,
-      (bitmap.height - cropSize) / 2,
-      cropSize,
-      cropSize,
-      0,
-      0,
-      outputSize,
+      bitmap.width,
+      bitmap.height,
       outputSize,
     );
 
@@ -157,15 +168,11 @@ async function prepareWithImageElement(file: File): Promise<Blob> {
       );
     }
 
-    context.drawImage(
+    drawContained(
+      context,
       image,
-      (image.naturalWidth - cropSize) / 2,
-      (image.naturalHeight - cropSize) / 2,
-      cropSize,
-      cropSize,
-      0,
-      0,
-      outputSize,
+      image.naturalWidth,
+      image.naturalHeight,
       outputSize,
     );
 
