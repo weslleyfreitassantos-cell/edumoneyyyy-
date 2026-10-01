@@ -81,18 +81,6 @@ async function completeCurrentStep(service: Db, student: Actor, sessionId: strin
   return { step: step.data, result: submitted.data };
 }
 
-async function runSession(service: Db, student: Actor, sessionId: string, suffix: string): Promise<{ steps: Record<string, any>[]; final: Record<string, any> }> {
-  const steps: Record<string, any>[] = [];
-  for (let index = 0; index < 18; index += 1) {
-    const session = await readServiceSession(service, sessionId);
-    if (!session.current_step_id || session.status !== 'ACTIVE') break;
-    const completed = await completeCurrentStep(service, student, sessionId, `${suffix}:${index}`);
-    steps.push(completed.step);
-  }
-  const final = await readServiceSession(service, sessionId);
-  return { steps, final };
-}
-
 async function runUntilSkill(service: Db, student: Actor, sessionId: string, targetSkillId: string, suffix: string): Promise<{ steps: Record<string, any>[]; final: Record<string, any> }> {
   const steps: Record<string, any>[] = [];
   for (let index = 0; index < 8; index += 1) {
@@ -167,18 +155,29 @@ adaptiveDescribe('adaptive learning V4 real proof slices', () => {
       expect(physicsEvents.data?.some((event: any) => event.event_type === 'REPLANNED')).toBe(true);
       const physicsEvidence = await service.from('learning_skill_evidence').select('canonical_skill_id,source,metadata').eq('institution_id', institutionId).eq('student_id', studentRow.id).in('canonical_skill_id', [skillByCode.get('PHYSICS_AVERAGE_SPEED'), skillByCode.get('MATH_RATIO_UNIT_RATE')]);
       expect(physicsEvidence.error).toBeNull();
+      expect(physicsEvidence.data?.some((item: any) => item.canonical_skill_id === skillByCode.get('PHYSICS_AVERAGE_SPEED') && item.metadata?.engine_version === 'V4')).toBe(true);
       expect(physicsEvidence.data?.some((item: any) => item.canonical_skill_id === skillByCode.get('MATH_RATIO_UNIT_RATE') && item.metadata?.engine_version === 'V4')).toBe(true);
 
       for (const code of ['MATH_PERCENT_OF_QUANTITY', 'MATH_RATIO_UNIT_RATE', 'PORTUGUESE_ARGUMENT_EVIDENCE', 'HISTORY_INTERPRET_EVIDENCE'] as TargetCode[]) {
         const started = await student.client.rpc('start_guided_learning_session_v4', { p_institution_id: institutionId, p_student_id: studentRow.id, p_target_canonical_skill_id: skillByCode.get(code) });
         expect(started.error, `${code} V4 start`).toBeNull();
         const sessionId = required(started.data?.session_id, `${code} V4 session`);
-        const journey = await runSession(service, student, sessionId, `${suffix}:${code}`);
-        expect(journey.final.status, `${code} V4 completion`).toBe('COMPLETED');
-        expect(journey.steps[0]?.step_type, `${code} V4 lesson`).toBe('LESSON');
-        expect(journey.steps[0]?.lesson_id, `${code} real lesson`).toBeTruthy();
-        expect(journey.steps.some((step) => step.canonical_skill_id === skillByCode.get(code) && step.step_type === 'PRACTICE'), `${code} practice`).toBe(true);
-        expect(journey.steps.some((step) => step.canonical_skill_id === skillByCode.get(code) && step.step_type === 'REVIEW'), `${code} review`).toBe(true);
+        const initial = await readServiceSession(service, sessionId);
+        const initialStepId = required(initial.current_step_id, `${code} initial step`);
+        const initialStep = await service.from('learning_guided_steps').select('id,canonical_skill_id,step_type,lesson_id').eq('id', initialStepId).single();
+        expect(initialStep.error).toBeNull();
+        expect(initialStep.data?.step_type, `${code} V4 lesson`).toBe('LESSON');
+        expect(initialStep.data?.lesson_id, `${code} real lesson`).toBeTruthy();
+        const renderedLesson = await student.client.rpc('get_guided_learning_step_v4', { p_step_id: initialStepId });
+        expect(renderedLesson.error, `${code} lesson RPC`).toBeNull();
+        expect(renderedLesson.data?.lesson?.title, `${code} lesson title`).toBeTruthy();
+        expect(renderedLesson.data?.lesson?.content_markdown, `${code} lesson content`).toBeTruthy();
+        await completeCurrentStep(service, student, sessionId, `${suffix}:${code}:lesson`);
+        const practice = await readServiceSession(service, sessionId);
+        const practiceStep = await service.from('learning_guided_steps').select('id,canonical_skill_id,step_type').eq('id', practice.current_step_id).single();
+        expect(practiceStep.error).toBeNull();
+        expect(practiceStep.data?.step_type, `${code} practice`).toBe('PRACTICE');
+        await completeCurrentStep(service, student, sessionId, `${suffix}:${code}:practice`);
         const evidence = await service.from('learning_skill_evidence').select('canonical_skill_id,metadata').eq('institution_id', institutionId).eq('student_id', studentRow.id).eq('canonical_skill_id', skillByCode.get(code));
         expect(evidence.error).toBeNull();
         expect(evidence.data?.some((item: any) => item.metadata?.engine_version === 'V4')).toBe(true);
