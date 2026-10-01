@@ -459,6 +459,37 @@ describe('AppShell', () => {
     ).toBe('false');
   });
 
+  it('mantem a foto do aluno disponivel no cadastro sem exibi-la no Header', async () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        full_name: 'Alice Fernanda Teixeira',
+        role: 'STUDENT',
+        avatar_url: 'https://cdn.example.com/alice.webp',
+      },
+      currentRole: 'student',
+    });
+
+    renderShell('/dashboard');
+
+    expect(screen.queryByRole('img')).toBeNull();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Abrir menu do usuário',
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    expect(
+      await screen.findByRole('img', {
+        name: 'Foto de Alice Fernanda Teixeira',
+      }),
+    ).toBeTruthy();
+  });
+
   it('restaura preferencia de Sidebar desktop oculta', () => {
     window.localStorage.setItem(
       'edumanager.sidebarCollapsed',
