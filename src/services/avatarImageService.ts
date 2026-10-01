@@ -1,4 +1,5 @@
-export const AVATAR_MAX_DIMENSION = 512;
+export const AVATAR_OUTPUT_WIDTH = 384;
+export const AVATAR_OUTPUT_HEIGHT = 512;
 export const AVATAR_ACCEPTED_MIME_TYPES = [
   'image/jpeg',
   'image/png',
@@ -33,15 +34,11 @@ export function validateAvatarFile(file: File): void {
 
 }
 
-function createCanvas(size: number): HTMLCanvasElement {
+function createCanvas(): HTMLCanvasElement {
   const canvas = document.createElement('canvas');
-  canvas.width = size;
-  canvas.height = size;
+  canvas.width = AVATAR_OUTPUT_WIDTH;
+  canvas.height = AVATAR_OUTPUT_HEIGHT;
   return canvas;
-}
-
-function getOutputSize(cropSize: number): number {
-  return Math.min(AVATAR_MAX_DIMENSION, cropSize);
 }
 
 function drawContained(
@@ -49,22 +46,49 @@ function drawContained(
   source: CanvasImageSource,
   sourceWidth: number,
   sourceHeight: number,
-  outputSize: number,
 ): void {
   const scale = Math.min(
-    outputSize / sourceWidth,
-    outputSize / sourceHeight,
+    AVATAR_OUTPUT_WIDTH / sourceWidth,
+    AVATAR_OUTPUT_HEIGHT / sourceHeight,
   );
   const drawnWidth = sourceWidth * scale;
   const drawnHeight = sourceHeight * scale;
 
+  context.filter = 'none';
+  context.globalAlpha = 1;
   context.drawImage(
     source,
-    (outputSize - drawnWidth) / 2,
-    (outputSize - drawnHeight) / 2,
+    (AVATAR_OUTPUT_WIDTH - drawnWidth) / 2,
+    (AVATAR_OUTPUT_HEIGHT - drawnHeight) / 2,
     drawnWidth,
     drawnHeight,
   );
+}
+
+function drawFilledBackground(
+  context: CanvasRenderingContext2D,
+  source: CanvasImageSource,
+  sourceWidth: number,
+  sourceHeight: number,
+): void {
+  const scale = Math.max(
+    AVATAR_OUTPUT_WIDTH / sourceWidth,
+    AVATAR_OUTPUT_HEIGHT / sourceHeight,
+  );
+  const drawnWidth = sourceWidth * scale;
+  const drawnHeight = sourceHeight * scale;
+
+  context.filter = 'blur(18px)';
+  context.globalAlpha = 0.42;
+  context.drawImage(
+    source,
+    (AVATAR_OUTPUT_WIDTH - drawnWidth) / 2,
+    (AVATAR_OUTPUT_HEIGHT - drawnHeight) / 2,
+    drawnWidth,
+    drawnHeight,
+  );
+  context.filter = 'none';
+  context.globalAlpha = 1;
 }
 
 function canvasToWebp(canvas: HTMLCanvasElement): Promise<Blob> {
@@ -95,17 +119,14 @@ async function prepareWithImageBitmap(file: File): Promise<Blob> {
   });
 
   try {
-    const cropSize = Math.min(bitmap.width, bitmap.height);
-
-    if (cropSize <= 0) {
+    if (bitmap.width <= 0 || bitmap.height <= 0) {
       throw new AvatarFileError(
         'IMAGE_PROCESSING_FAILED',
         'Não foi possível preparar a imagem para o upload.',
       );
     }
 
-    const outputSize = getOutputSize(cropSize);
-    const canvas = createCanvas(outputSize);
+    const canvas = createCanvas();
     const context = canvas.getContext('2d');
 
     if (!context) {
@@ -115,12 +136,17 @@ async function prepareWithImageBitmap(file: File): Promise<Blob> {
       );
     }
 
+    drawFilledBackground(
+      context,
+      bitmap,
+      bitmap.width,
+      bitmap.height,
+    );
     drawContained(
       context,
       bitmap,
       bitmap.width,
       bitmap.height,
-      outputSize,
     );
 
     return await canvasToWebp(canvas);
@@ -148,17 +174,14 @@ async function prepareWithImageElement(file: File): Promise<Blob> {
       },
     );
 
-    const cropSize = Math.min(image.naturalWidth, image.naturalHeight);
-
-    if (cropSize <= 0) {
+    if (image.naturalWidth <= 0 || image.naturalHeight <= 0) {
       throw new AvatarFileError(
         'IMAGE_PROCESSING_FAILED',
         'Não foi possível preparar a imagem para o upload.',
       );
     }
 
-    const outputSize = getOutputSize(cropSize);
-    const canvas = createCanvas(outputSize);
+    const canvas = createCanvas();
     const context = canvas.getContext('2d');
 
     if (!context) {
@@ -168,12 +191,17 @@ async function prepareWithImageElement(file: File): Promise<Blob> {
       );
     }
 
+    drawFilledBackground(
+      context,
+      image,
+      image.naturalWidth,
+      image.naturalHeight,
+    );
     drawContained(
       context,
       image,
       image.naturalWidth,
       image.naturalHeight,
-      outputSize,
     );
 
     return await canvasToWebp(canvas);

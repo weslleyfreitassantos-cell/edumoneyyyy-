@@ -3,6 +3,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
+  AVATAR_OUTPUT_HEIGHT,
+  AVATAR_OUTPUT_WIDTH,
   prepareAvatarImage,
   AvatarFileError,
   validateAvatarFile,
@@ -36,25 +38,26 @@ describe('avatarImageService', () => {
   });
 
   it.each([
-    { width: 128, height: 128, outputSize: 128 },
-    { width: 400, height: 600, outputSize: 400 },
-    { width: 2000, height: 3000, outputSize: 512 },
+    { width: 128, height: 128 },
+    { width: 400, height: 600 },
+    { width: 2000, height: 3000 },
   ])(
-    'does not upscale and keeps a square WebP output for $width x $height',
-    async ({ width, height, outputSize }) => {
+    'keeps the full image inside the vertical WebP frame for $width x $height',
+    async ({ width, height }) => {
       const bitmap = {
         width,
         height,
         close: vi.fn(),
       };
       const canvasSizes: Array<{ width: number; height: number }> = [];
+      const drawCalls: unknown[][] = [];
 
       vi.stubGlobal(
         'createImageBitmap',
         vi.fn().mockResolvedValue(bitmap),
       );
       vi.spyOn(HTMLCanvasElement.prototype, 'getContext')
-        .mockReturnValue({ drawImage: vi.fn() } as never);
+        .mockReturnValue({ drawImage: (...args: unknown[]) => drawCalls.push(args) } as never);
       vi.spyOn(HTMLCanvasElement.prototype, 'toBlob')
         .mockImplementation(function (callback) {
           canvasSizes.push({ width: this.width, height: this.height });
@@ -67,8 +70,9 @@ describe('avatarImageService', () => {
 
       expect(result.type).toBe('image/webp');
       expect(canvasSizes).toEqual([
-        { width: outputSize, height: outputSize },
+        { width: AVATAR_OUTPUT_WIDTH, height: AVATAR_OUTPUT_HEIGHT },
       ]);
+      expect(drawCalls).toHaveLength(2);
       expect(bitmap.close).toHaveBeenCalledOnce();
     },
   );
