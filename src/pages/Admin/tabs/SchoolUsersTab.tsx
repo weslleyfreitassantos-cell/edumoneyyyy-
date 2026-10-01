@@ -29,6 +29,8 @@ import StatusBadge from '../../../components/StatusBadge';
 
 import {
   CURRENT_DATABASE_ROLES,
+  canManageSchoolUserRole,
+  getManageableSchoolUserRoles,
   hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
@@ -60,6 +62,15 @@ export const schoolUserRoleLabels: Record<
   TEACHER: 'Professor',
   STUDENT: 'Aluno',
   GUARDIAN: 'Responsável',
+};
+
+const schoolUserRoleNouns: Record<CurrentDatabaseRole, string> = {
+  ADMIN: 'Administradores',
+  DIRECTOR: 'Diretores',
+  SECRETARY: 'Secretários',
+  TEACHER: 'Professores',
+  STUDENT: 'Alunos',
+  GUARDIAN: 'Responsáveis',
 };
 
 const filterOptions: {
@@ -95,6 +106,20 @@ const editableRoleOptions: {
   { value: 'STUDENT', label: 'Aluno' },
   { value: 'GUARDIAN', label: 'Responsável' },
 ];
+
+function getEditableRoleOptions(
+  requesterRole: string | null | undefined,
+  targetRole: CurrentDatabaseRole,
+): typeof editableRoleOptions {
+  const manageableRoles = getManageableSchoolUserRoles(requesterRole);
+  const allowedRoles = manageableRoles.includes(targetRole)
+    ? manageableRoles
+    : [targetRole];
+
+  return editableRoleOptions.filter((option) =>
+    allowedRoles.includes(option.value),
+  );
+}
 
 const SCHOOL_USERS_PAGE_SIZE = 6;
 
@@ -224,6 +249,23 @@ export function getSchoolUserSummary(
   };
 }
 
+function getSummaryLabels(fixedRole?: CurrentDatabaseRole) {
+  if (!fixedRole) {
+    return {
+      total: 'Usuários vinculados',
+      active: 'Vínculos ativos',
+      inactive: 'Vínculos inativos',
+    };
+  }
+
+  const noun = schoolUserRoleNouns[fixedRole];
+  return {
+    total: `${noun} cadastrados`,
+    active: `${noun} ativos`,
+    inactive: `${noun} inativos`,
+  };
+}
+
 export function getSchoolUserAccessStatus(
   user: SchoolUserRow,
 ): SchoolUserAccessStatus {
@@ -316,7 +358,12 @@ function UserActions({
   currentRole: CurrentDatabaseRole | string | null;
 }) {
   const userName = user.profile?.full_name ?? 'usuario';
-  const canDelete = !(currentRole === 'SECRETARY' && user.role === 'DIRECTOR');
+  const canManage = canManageSchoolUserRole(currentRole, user.role);
+  const canDelete = canManage;
+
+  if (!canManage) {
+    return null;
+  }
 
   return (
     <ActionGroup>
@@ -523,6 +570,7 @@ function SchoolUserEditDialog({
   onSubmit,
   isSubmitting,
   allowRoleChange,
+  roleOptions,
 }: {
   user: SchoolUserRow;
   onClose: () => void;
@@ -533,6 +581,7 @@ function SchoolUserEditDialog({
   }) => void;
   isSubmitting: boolean;
   allowRoleChange: boolean;
+  roleOptions: typeof editableRoleOptions;
 }) {
   const [fullName, setFullName] = useState(
     user.profile?.full_name ?? '',
@@ -624,7 +673,7 @@ function SchoolUserEditDialog({
               }
               className="mt-1 h-11 w-full rounded-lg border border-gray-300 bg-white px-3 text-sm text-gray-900 outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             >
-              {editableRoleOptions.map((option) => (
+              {roleOptions.map((option) => (
                 <option
                   key={option.value}
                   value={option.value}
@@ -772,10 +821,18 @@ export default function SchoolUsersTab({
   const effectiveSelectedRole =
     fixedRole ?? selectedRole;
 
-  const summary = useMemo(
-    () => getSchoolUserSummary(users),
-    [users],
+  const scopedUsers = useMemo(
+    () => fixedRole
+      ? users.filter((user) => user.role === fixedRole)
+      : users,
+    [fixedRole, users],
   );
+
+  const summary = useMemo(
+    () => getSchoolUserSummary(scopedUsers),
+    [scopedUsers],
+  );
+  const summaryLabels = getSummaryLabels(fixedRole);
 
   const filteredUsers = useMemo(
     () =>
@@ -815,6 +872,10 @@ export default function SchoolUsersTab({
 
   const isManaging =
     manageUserMutation.isPending;
+  const managementRole =
+    profile?.platform_role === 'SUPER_ADMIN'
+      ? 'SUPER_ADMIN'
+      : institutionQuery.currentRole;
 
   function handleEditSubmit(input: {
     fullName: string;
@@ -947,15 +1008,17 @@ export default function SchoolUsersTab({
         </div>
       )}
 
-      <div
-        role="note"
-        className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
-      >
-        <strong>Exclusão protegida:</strong> alunos com notas, frequência ou
-        fechamento de período não podem ser excluídos. O bloqueio preserva o
-        histórico acadêmico; alunos sem esses registros podem ser removidos
-        normalmente.
-      </div>
+      {(!fixedRole || fixedRole === 'STUDENT') && (
+        <div
+          role="note"
+          className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
+        >
+          <strong>Exclusão protegida:</strong> alunos com notas, frequência ou
+          fechamento de período não podem ser excluídos. O bloqueio preserva o
+          histórico acadêmico; alunos sem esses registros podem ser removidos
+          normalmente.
+        </div>
+      )}
 
       {inviteTargets ? (
         <UnifiedUserInvitePreview
@@ -976,9 +1039,13 @@ export default function SchoolUsersTab({
         />
       ) : null}
 
-      <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <section
+        className={fixedRole
+          ? 'grid gap-3 sm:grid-cols-3'
+          : 'grid gap-3 sm:grid-cols-2 xl:grid-cols-4'}
+      >
         <SummaryCard
-          label="Usuários vinculados"
+          label={summaryLabels.total}
           value={summary.total}
           icon={
             <Users
@@ -989,7 +1056,7 @@ export default function SchoolUsersTab({
         />
 
         <SummaryCard
-          label="Vínculos ativos"
+          label={summaryLabels.active}
           value={summary.active}
           tone="success"
           icon={
@@ -1001,7 +1068,7 @@ export default function SchoolUsersTab({
         />
 
         <SummaryCard
-          label="Vínculos inativos"
+          label={summaryLabels.inactive}
           value={summary.inactive}
           tone="muted"
           icon={
@@ -1012,33 +1079,37 @@ export default function SchoolUsersTab({
           }
         />
 
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
-          <p className="text-xs font-semibold text-[#727785] dark:text-slate-400">
-            Total por papel
-          </p>
+        {!fixedRole && (
+          <article className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+            <p className="text-xs font-semibold text-[#727785] dark:text-slate-400">
+              Total por papel
+            </p>
 
-          <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-            {CURRENT_DATABASE_ROLES.map(
-              (role) => (
-                <div
-                  key={role}
-                  className="flex items-center justify-between gap-2"
-                >
-                  <dt className="truncate text-[#727785] dark:text-slate-400">
-                    {schoolUserRoleLabels[role]}
-                  </dt>
-                  <dd className="font-bold text-[#181c20] dark:text-white">
-                    {summary.byRole[role]}
-                  </dd>
-                </div>
-              ),
-            )}
-          </dl>
-        </article>
+            <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+              {CURRENT_DATABASE_ROLES.map(
+                (role) => (
+                  <div
+                    key={role}
+                    className="flex items-center justify-between gap-2"
+                  >
+                    <dt className="truncate text-[#727785] dark:text-slate-400">
+                      {schoolUserRoleLabels[role]}
+                    </dt>
+                    <dd className="font-bold text-[#181c20] dark:text-white">
+                      {summary.byRole[role]}
+                    </dd>
+                  </div>
+                ),
+              )}
+            </dl>
+          </article>
+        )}
       </section>
 
       <section className="space-y-3">
-        <div className="grid gap-3 lg:grid-cols-[minmax(240px,1fr)_auto] lg:items-end">
+        <div className={fixedRole
+          ? 'grid gap-3'
+          : 'grid gap-3 lg:grid-cols-[minmax(240px,1fr)_auto] lg:items-end'}>
           <div className="rounded-xl border border-[#dfe3e8] bg-white p-3 shadow-sm dark:border-slate-700 dark:bg-slate-900">
             <label
               htmlFor="school-users-search"
@@ -1093,11 +1164,7 @@ export default function SchoolUsersTab({
                 </button>
               ))}
             </div>
-          ) : (
-            <span className="rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 text-sm font-medium text-[#005bbf] dark:border-blue-900/70 dark:bg-blue-950/40 dark:text-blue-300">
-              {schoolUserRoleLabels[fixedRole]}
-            </span>
-          )}
+          ) : null}
         </div>
 
         {usersQuery.isLoading ? (
@@ -1129,7 +1196,7 @@ export default function SchoolUsersTab({
             onEdit={setEditingUser}
             onDelete={handleDeleteUser}
             isBusy={isManaging}
-            currentRole={institutionQuery.currentRole}
+            currentRole={managementRole}
           />
         )}
 
@@ -1197,7 +1264,16 @@ export default function SchoolUsersTab({
           onClose={() => setEditingUser(null)}
           onSubmit={handleEditSubmit}
           isSubmitting={isManaging}
-          allowRoleChange={!(institutionQuery.currentRole === 'SECRETARY' && editingUser.role === 'DIRECTOR')}
+          allowRoleChange={
+            getEditableRoleOptions(
+              managementRole,
+              editingUser.role,
+            ).some((option) => option.value !== editingUser.role)
+          }
+          roleOptions={getEditableRoleOptions(
+            managementRole,
+            editingUser.role,
+          )}
         />
       )}
     </div>

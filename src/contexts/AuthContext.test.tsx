@@ -24,6 +24,8 @@ import {
 
 import { supabase } from '../lib/supabaseClient';
 import {
+  PROFILE_AVATAR_REFRESH_DELAY_MS,
+  resolveCurrentProfileAvatar,
   updateCurrentPassword,
   updateCurrentProfile,
 } from '../services/profileService';
@@ -67,6 +69,7 @@ vi.mock('../services/profileService', async () => {
 
   return {
     ...actual,
+    resolveCurrentProfileAvatar: vi.fn(),
     updateCurrentProfile: vi.fn(),
     updateCurrentPassword: vi.fn(),
   };
@@ -150,6 +153,7 @@ function ProfileProbe() {
       <p>{profile.email}</p>
       <p>{profile.role}</p>
       <p>{profile.platform_role}</p>
+      <p data-testid="avatar-url">{profile.avatar_url ?? 'Sem foto'}</p>
       <button
         type="button"
         onClick={() =>
@@ -175,6 +179,7 @@ function ProfileProbe() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  vi.mocked(resolveCurrentProfileAvatar).mockResolvedValue(null);
 
   vi.mocked(supabase.auth.getSession).mockResolvedValue({
     data: {
@@ -199,6 +204,99 @@ afterEach(() => {
 });
 
 describe('AuthProfileActionsContext', () => {
+  it('renova a signed URL antes do TTL sem alterar o path persistente', async () => {
+    vi.useFakeTimers();
+    vi.mocked(resolveCurrentProfileAvatar)
+      .mockResolvedValueOnce('https://signed.example/initial')
+      .mockResolvedValue('https://signed.example/refreshed');
+    mockAuthQueries({
+      profile: {
+        id: 'user-1',
+        full_name: 'Ana Silva',
+        email: 'ana@example.com',
+        role: 'ADMIN',
+        platform_role: 'USER',
+        avatar_url: 'user-1/avatar.webp',
+        active: true,
+      },
+    });
+
+    try {
+      renderAuthProvider(<ProfileProbe />);
+
+      await vi.waitFor(() => {
+        expect(screen.getByTestId('avatar-url').textContent).toBe(
+          'https://signed.example/initial',
+        );
+      });
+
+      await vi.advanceTimersByTimeAsync(
+        PROFILE_AVATAR_REFRESH_DELAY_MS,
+      );
+
+      await vi.waitFor(() => {
+        expect(screen.getByTestId('avatar-url').textContent).toBe(
+          'https://signed.example/refreshed',
+        );
+      });
+
+      expect(resolveCurrentProfileAvatar).toHaveBeenNthCalledWith(
+        1,
+        'user-1/avatar.webp',
+        'user-1',
+      );
+      expect(resolveCurrentProfileAvatar).toHaveBeenNthCalledWith(
+        2,
+        'user-1/avatar.webp',
+        'user-1',
+      );
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('mantém iniciais quando a renovação falha sem entrar em loop', async () => {
+    vi.useFakeTimers();
+    vi.mocked(resolveCurrentProfileAvatar)
+      .mockResolvedValueOnce('https://signed.example/initial')
+      .mockResolvedValueOnce(null);
+    mockAuthQueries({
+      profile: {
+        id: 'user-1',
+        full_name: 'Ana Silva',
+        email: 'ana@example.com',
+        role: 'ADMIN',
+        platform_role: 'USER',
+        avatar_url: 'user-1/avatar.webp',
+        active: true,
+      },
+    });
+
+    try {
+      renderAuthProvider(<ProfileProbe />);
+
+      await vi.waitFor(() => {
+        expect(screen.getByTestId('avatar-url').textContent).toBe(
+          'https://signed.example/initial',
+        );
+      });
+
+      await vi.advanceTimersByTimeAsync(
+        PROFILE_AVATAR_REFRESH_DELAY_MS,
+      );
+
+      await vi.waitFor(() => {
+        expect(screen.getByTestId('avatar-url').textContent).toBe('Sem foto');
+      });
+      expect(resolveCurrentProfileAvatar).toHaveBeenCalledTimes(2);
+
+      await vi.advanceTimersByTimeAsync(1000);
+      expect(resolveCurrentProfileAvatar).toHaveBeenCalledTimes(2);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it('atualiza o nome no contexto e preserva e-mail e papéis', async () => {
     vi.mocked(updateCurrentProfile).mockResolvedValue({
       id: 'user-1',

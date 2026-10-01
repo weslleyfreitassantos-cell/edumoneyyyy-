@@ -889,6 +889,45 @@ describe('PlatformPage', () => {
     ).toBeNull();
   });
 
+  it('mostra erro de conta inválida sem mascará-lo como erro de senha', async () => {
+    hookMock.updateClientAdminPasswordMutateAsync.mockRejectedValueOnce(
+      new AccountServiceError('Conta invalida.', 'INVALID_ACCOUNT_ID'),
+    );
+
+    const accountDialog = openInstitutionAccessDialog();
+    fireEvent.click(
+      within(accountDialog).getByRole('button', {
+        name: 'Alterar senha do administrador',
+      }),
+    );
+
+    const passwordDialog = screen.getByRole('dialog', {
+      name: 'Alterar senha do administrador',
+    });
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Nova senha'),
+      { target: { value: 'ValidPass123!' } },
+    );
+    fireEvent.change(
+      within(passwordDialog).getByLabelText('Confirmar nova senha'),
+      { target: { value: 'ValidPass123!' } },
+    );
+    fireEvent.click(
+      within(passwordDialog).getByRole('button', {
+        name: 'Alterar senha',
+      }),
+    );
+
+    await waitFor(() => {
+      expect(within(passwordDialog).getByRole('alert').textContent).toBe(
+        'A conta informada é inválida.',
+      );
+    });
+    expect(within(passwordDialog).getByRole('alert').textContent).not.toContain(
+      'senha entre 8 e 72 caracteres',
+    );
+  });
+
   it('bloqueia criacao com nome do ADMIN vazio', () => {
     renderPage();
 

@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
 import {
+  act,
   cleanup,
   fireEvent,
   render,
@@ -224,39 +225,127 @@ describe('Header', () => {
     ).toBeNull();
   });
 
-  it('usa iniciais quando nao ha avatar e nao cria src vazio', () => {
+  it('nao renderiza bolinha de avatar no header nem no menu da conta', () => {
     renderHeader({
-      currentUser: {
-        ...currentUser,
-        avatar: '',
-      },
+      currentUser: { ...currentUser, avatar: 'https://example.com/avatar.png' },
     });
 
-    expect(screen.getByText('AS')).toBeTruthy();
     expect(screen.queryByRole('img')).toBeNull();
-  });
 
-  it('renderiza avatar valido e volta para iniciais em erro', () => {
-    renderHeader({
-      currentUser: {
-        ...currentUser,
-        avatar:
-          'https://example.com/avatar.png',
-      },
-    });
-
-    const image = screen.getByRole('img', {
-      name: /foto de ana silva/i,
-    }) as HTMLImageElement;
-
-    expect(image.getAttribute('src')).toBe(
-      'https://example.com/avatar.png',
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
     );
 
-    fireEvent.error(image);
-
     expect(screen.queryByRole('img')).toBeNull();
-    expect(screen.getByText('AS')).toBeTruthy();
+    expect(screen.queryByText('AS')).toBeNull();
+  });
+
+  it('valida o formato da foto antes de iniciar o upload', () => {
+    const onUpdateProfileAvatar = vi.fn(async () => undefined);
+    renderHeader({ onUpdateProfileAvatar });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    const input = screen.getByLabelText('Alterar foto');
+    fireEvent.change(input, {
+      target: {
+        files: [new File(['svg'], 'avatar.svg', { type: 'image/svg+xml' })],
+      },
+    });
+
+    expect(screen.getByRole('alert').textContent).toContain(
+      'Escolha uma imagem JPG, PNG ou WebP.',
+    );
+    expect(onUpdateProfileAvatar).not.toHaveBeenCalled();
+  });
+
+  it('mostra preview e salva a foto selecionada', async () => {
+    const onUpdateProfileAvatar = vi.fn(async () => undefined);
+    renderHeader({ onUpdateProfileAvatar });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    const file = new File(['png'], 'avatar.png', { type: 'image/png' });
+    fireEvent.change(screen.getByLabelText('Alterar foto'), {
+      target: { files: [file] },
+    });
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Salvar foto' })).toBeTruthy();
+    });
+
+    const preview = screen.getByRole('heading', { name: 'Foto de perfil' })
+      .parentElement?.previousElementSibling;
+    expect(preview?.classList.contains('aspect-[3/4]')).toBe(true);
+    expect(preview?.classList.contains('rounded-full')).toBe(false);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar foto' }));
+
+    await waitFor(() => {
+      expect(onUpdateProfileAvatar).toHaveBeenCalledWith(file);
+      expect(
+        screen.getByText('Foto de perfil atualizada com sucesso.', {
+          selector: 'p',
+        }),
+      ).toBeTruthy();
+    });
+  });
+
+  it('remove temporariamente o feedback de foto após a atualização', async () => {
+    vi.useFakeTimers();
+    try {
+      const onUpdateProfileAvatar = vi.fn(async () => undefined);
+      renderHeader({ onUpdateProfileAvatar });
+
+      fireEvent.click(
+        screen.getByRole('button', {
+          name: /abrir menu do usu/i,
+        }),
+      );
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Minha conta' }),
+      );
+
+      fireEvent.change(screen.getByLabelText('Alterar foto'), {
+        target: {
+          files: [new File(['png'], 'avatar.png', { type: 'image/png' })],
+        },
+      });
+
+      await act(async () => {
+        fireEvent.click(screen.getByRole('button', { name: 'Salvar foto' }));
+        await Promise.resolve();
+      });
+
+      expect(
+        screen.getAllByText('Foto de perfil atualizada com sucesso.'),
+      ).toHaveLength(2);
+
+      act(() => {
+        vi.advanceTimersByTime(4000);
+      });
+
+      expect(
+        screen.queryByText('Foto de perfil atualizada com sucesso.'),
+      ).toBeNull();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('aciona botao mobile e expoe aria-expanded', () => {
@@ -370,6 +459,106 @@ describe('Header', () => {
 
     expect(email.value).toBe('ana@example.com');
     expect(email.readOnly).toBe(true);
+  });
+
+  it('mostra a instituição completa antes da identidade no menu da conta', () => {
+    const institutionName =
+      'Colégio Aurora Integral de Salvador';
+
+    renderHeader({
+      currentInstitutionName: institutionName,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const menu = screen.getByRole('region', {
+      name: 'Menu do usuário',
+    });
+    const paragraphs = Array.from(
+      menu.querySelectorAll('p'),
+    );
+
+    expect(paragraphs.map((paragraph) => paragraph.textContent)).toEqual([
+      institutionName,
+      'Ana Silva',
+      'ana@example.com',
+      'Administrador',
+    ]);
+    expect(paragraphs[0]?.className).not.toContain('truncate');
+    expect(paragraphs[0]?.className).not.toContain('line-clamp');
+    expect(screen.getByText(institutionName)).toBeTruthy();
+    expect(
+      screen.queryByAltText('Foto de Ana Silva'),
+    ).toBeNull();
+    expect(screen.queryByText('AS')).toBeNull();
+    expect(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('button', { name: 'Sair' }),
+    ).toBeTruthy();
+  });
+
+  it('quebra instituições longas e omite contexto institucional vazio', () => {
+    const longInstitutionName =
+      'Centro Educacional Integrado Professora Maria das Graças de Oliveira e Silva';
+
+    const { rerender, props } = renderHeader({
+      currentInstitutionName: longInstitutionName,
+    });
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const longInstitution = screen.getByText(
+      longInstitutionName,
+    );
+    expect(longInstitution).toBeTruthy();
+    expect(longInstitution.className).toContain(
+      'whitespace-normal',
+    );
+    expect(longInstitution.className).toContain(
+      'break-words',
+    );
+    expect(longInstitution.className).not.toContain(
+      'truncate',
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+    rerender(
+      <MemoryRouter>
+        <Header
+          {...props}
+          currentInstitutionName="   "
+        />
+      </MemoryRouter>,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /abrir menu do usu/i,
+      }),
+    );
+
+    const menu = screen.getByRole('region', {
+      name: 'Menu do usuário',
+    });
+    expect(menu.textContent).not.toContain(
+      longInstitutionName,
+    );
+    expect(menu.textContent).toContain('Ana Silva');
+    expect(menu.textContent).toContain('Administrador');
   });
 
   it.each([
@@ -624,7 +813,6 @@ describe('Header', () => {
     );
 
     expect(screen.getByText('Novo Nome')).toBeTruthy();
-    expect(screen.getByText('NN')).toBeTruthy();
     expect(screen.getByText('Administrador')).toBeTruthy();
   });
 

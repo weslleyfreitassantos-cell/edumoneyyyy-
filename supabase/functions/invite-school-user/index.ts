@@ -16,7 +16,7 @@ import {
 type UserRole = Database["public"]["Enums"]["user_role"];
 type TargetRole = Extract<
   UserRole,
-  "DIRECTOR" | "TEACHER" | "STUDENT" | "GUARDIAN"
+  "DIRECTOR" | "SECRETARY" | "TEACHER" | "STUDENT" | "GUARDIAN"
 >;
 type RequesterInviteRole = "ADMIN" | "DIRECTOR" | "SECRETARY";
 
@@ -61,6 +61,7 @@ interface RollbackState {
 
 const targetRoleSchema = z.enum([
   "DIRECTOR",
+  "SECRETARY",
   "TEACHER",
   "STUDENT",
   "GUARDIAN",
@@ -141,30 +142,6 @@ const requestSchema = z
   });
 
 type RequestData = z.infer<typeof requestSchema>;
-
-const INVITE_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
-const INVITE_RATE_LIMIT_MAX_ATTEMPTS = 20;
-const inviteRateLimit = new Map<string, { startedAt: number; count: number }>();
-
-function assertInviteRateLimit(requesterId: string): void {
-  const now = Date.now();
-  const previous = inviteRateLimit.get(requesterId);
-
-  if (!previous || now - previous.startedAt >= INVITE_RATE_LIMIT_WINDOW_MS) {
-    inviteRateLimit.set(requesterId, { startedAt: now, count: 1 });
-    return;
-  }
-
-  if (previous.count >= INVITE_RATE_LIMIT_MAX_ATTEMPTS) {
-    throw new InviteError({
-      status: 429,
-      code: "ACCESS_RATE_LIMITED",
-      message: "Muitas tentativas de criacao de acesso. Tente novamente mais tarde.",
-    });
-  }
-
-  previous.count += 1;
-}
 
 class InviteError extends Error {
   status: number;
@@ -337,10 +314,10 @@ function toPublicError(error: unknown): InviteError {
 
 function getAllowedInviteRoles(requesterRole: RequesterInviteRole): TargetRole[] {
   if (requesterRole === "ADMIN") {
-    return ["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"];
+    return ["DIRECTOR"];
   }
   if (requesterRole === "DIRECTOR") {
-    return ["TEACHER", "STUDENT", "GUARDIAN"];
+    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"];
   }
   return ["TEACHER", "STUDENT", "GUARDIAN"];
 }
@@ -461,11 +438,23 @@ async function getOrCreateStudent(
     }
   }
 
+  const {
+    data: registrationNumber,
+    error: registrationNumberError,
+  } = await supabaseAdmin.rpc("generate_student_registration_number", {
+    target_institution_id: institutionId,
+  });
+
+  if (registrationNumberError || typeof registrationNumber !== "string") {
+    throw registrationNumberError ?? new Error("Nao foi possivel gerar a matricula do aluno.");
+  }
+
   const { data: createdStudent, error: studentInsertError } = await supabaseAdmin
     .from("students")
     .insert({
       profile_id: profileId,
       institution_id: institutionId,
+      registration_number: registrationNumber,
       birth_date: input.student!.birthDate,
       cpf: input.student?.cpf ?? null,
       active: true,
@@ -595,8 +584,6 @@ export default {
           message: "Sessao invalida ou expirada.",
         });
       }
-
-      assertInviteRateLimit(user.id);
 
       const { data: requesterProfile, error: requesterProfileError } = await ctx.supabaseAdmin
         .from("profiles")

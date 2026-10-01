@@ -16,6 +16,24 @@
 }
 
 @layer components {
+  .report-select {
+    width: 100%;
+    min-height: 2.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    background: #fff;
+    padding: 0.5rem 0.75rem;
+    color: #0f172a;
+    font-size: 0.875rem;
+  }
+
+  .dark .report-select {
+    border-color: #475569;
+    background: #020617;
+    color: #f8fafc;
+  }
+
   .assistant-focus {
     animation: assistant-focus-pulse 1s ease-in-out 3;
     position: relative;
@@ -132,6 +150,82 @@
     .auth-hero-video {
       animation: none;
     }
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  .academic-document-printable,
+  .academic-document-printable * {
+    visibility: visible !important;
+  }
+
+  .academic-document-printable {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    color: #111827 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .academic-document-printable,
+  .academic-document-printable *,
+  .academic-document-printable *::before,
+  .academic-document-printable *::after {
+    background: transparent !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
+  }
+
+  .academic-document-printable .print-hidden {
+    display: none !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .academic-report-printable,
+  .academic-report-printable * {
+    visibility: visible !important;
+  }
+
+  .academic-report-printable {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: #fff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+  }
+
+  .academic-report-printable .print-hidden {
+    display: none !important;
+  }
+
+  .academic-report-printable .print-only {
+    display: block !important;
+    color: #111827 !important;
+  }
+
+  .academic-report-printable,
+  .academic-report-printable * {
+    background: #fff !important;
+    color: #111827 !important;
+    border-color: #d1d5db !important;
+    box-shadow: none !important;
   }
 }
 
@@ -329,5 +423,28 @@ html.dark .login-card input::placeholder {
 @media (max-width: 1023px) {
   .auth-hero-video-layer {
     opacity: 0.7;
+  }
+}
+
+@media print {
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  #app-authenticated-container,
+  #app-main-content {
+    min-height: auto !important;
+    background: white !important;
+  }
+
+  #app-main-content {
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .report-card-printable {
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #181c20 !important;
   }
 }

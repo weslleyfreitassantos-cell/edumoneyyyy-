@@ -96,14 +96,14 @@ export function formatGradeSummaryAverage(
 
 export function getGradeStatusClassName(status: GradeStatus): string {
   if (status === 'GRADED') {
-    return 'bg-green-50 text-green-700 ring-green-200';
+    return 'bg-green-50 text-green-700 ring-green-200 dark:bg-green-950/40 dark:text-green-300 dark:ring-green-900/60';
   }
 
   if (status === 'EXCUSED') {
-    return 'bg-blue-50 text-[#005bbf] ring-blue-200';
+    return 'bg-blue-50 text-[#005bbf] ring-blue-200 dark:bg-blue-950/40 dark:text-blue-300 dark:ring-blue-900/60';
   }
 
-  return 'bg-amber-50 text-amber-700 ring-amber-200';
+  return 'bg-amber-50 text-amber-700 ring-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:ring-amber-900/60';
 }
 
 export function getAssessmentStatusClassName(

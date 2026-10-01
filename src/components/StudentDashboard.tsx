@@ -1,15 +1,11 @@
 import { motion } from 'motion/react';
-import type { ReactNode } from 'react';
+import { useState } from 'react';
 
 import {
   BadgeCheck,
   BookOpen,
-  CalendarClock,
-  CalendarDays,
   GraduationCap,
-  Mail,
   School,
-  UserRound,
 } from 'lucide-react';
 
 import { useLocation } from 'react-router-dom';
@@ -19,11 +15,20 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useStudentDashboard } from '../hooks/useStudentDashboard';
-import { useStudentTimetable } from '../hooks/useTimetable';
+import {
+  useStudentTimetable,
+  useTimetableCalendarStatuses,
+} from '../hooks/useTimetable';
 import { useAudienceAnnouncements } from '../hooks/useAnnouncements';
 import { useStudentRegistrationCompletion } from '../hooks/useRegistrationCompletion';
 import { normalizeAcademicShift } from '../lib/academic/academicShifts';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
+import {
+  getWeekStartDateKey,
+  projectTimetableOccurrences,
+} from '../lib/academic/timetableOccurrences';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
+import { getUserFacingErrorMessage } from '../lib/userFacingError';
 
 import type {
   StudentDashboardData,
@@ -31,29 +36,11 @@ import type {
 } from '../services/studentDashboardService';
 import StudentAttendanceSummaryPanel from './attendance/StudentAttendanceSummaryPanel';
 import StudentGradesPanel from './grades/StudentGradesPanel';
+import AcademicStudentContext from './academic/AcademicStudentContext';
 import StudentReportCard from './academic/StudentReportCard';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
-
-function getErrorMessage(
-  error: unknown,
-): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar o dashboard do aluno.';
-}
 
 function getFirstName(
   fullName: string,
@@ -66,52 +53,6 @@ function getFirstName(
   );
 }
 
-function formatDate(
-  value: string | null,
-): string {
-  if (!value) {
-    return 'Não informada';
-  }
-
-  const [year, month, day] =
-    value.split('-');
-
-  if (!year || !month || !day) {
-    return value;
-  }
-
-  return `${day}/${month}/${year}`;
-}
-
-function DetailCard({
-  icon,
-  label,
-  value,
-}: {
-  icon: ReactNode;
-  label: string;
-  value: string | number;
-}) {
-  return (
-    <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
-      <div className="flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-[#005bbf]">
-          {icon}
-        </div>
-
-        <div>
-          <p className="text-xs font-medium text-[#727785]">
-            {label}
-          </p>
-          <p className="mt-1 text-sm font-bold text-[#181c20]">
-            {value}
-          </p>
-        </div>
-      </div>
-    </article>
-  );
-}
-
 function OfferingCard({
   offering,
 }: {
@@ -121,10 +62,7 @@ function OfferingCard({
     <article className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-wide text-[#005bbf]">
-            {offering.subject_code ?? 'Disciplina'}
-          </p>
-          <h3 className="mt-1 text-base font-bold text-[#181c20]">
+          <h3 className="text-base font-bold text-[#181c20]">
             {offering.subject_name}
           </h3>
         </div>
@@ -143,31 +81,15 @@ function OfferingCard({
           <dd className="mt-1 font-semibold text-[#181c20]">
             {offering.teacher_name}
           </dd>
-          <dd className="mt-0.5 break-all text-xs text-[#727785]">
-            {offering.teacher_email}
-          </dd>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <dt className="text-xs font-medium text-[#727785]">
-              Período
-            </dt>
-            <dd className="mt-1 font-semibold text-[#181c20]">
-              {offering.term_name}
-            </dd>
-          </div>
-
-          <div>
-            <dt className="text-xs font-medium text-[#727785]">
-              Carga
-            </dt>
-            <dd className="mt-1 font-semibold text-[#181c20]">
-              {offering.workload
-                ? `${offering.workload}h`
-                : 'Não informada'}
-            </dd>
-          </div>
+        <div>
+          <dt className="text-xs font-medium text-[#727785]">
+            Período
+          </dt>
+          <dd className="mt-1 font-semibold text-[#181c20]">
+            {offering.term_name}
+          </dd>
         </div>
       </dl>
     </article>
@@ -176,10 +98,8 @@ function OfferingCard({
 
 function StudentSubjectsView({
   offerings,
-  enrollment,
 }: {
   offerings: StudentDashboardOffering[];
-  enrollment: StudentDashboardData['activeEnrollment'];
 }) {
   return (
     <motion.div
@@ -188,55 +108,20 @@ function StudentSubjectsView({
       className="space-y-6"
       id="student-subjects-main"
     >
-      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-[#334155] dark:bg-[#18212f]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-              Período atual
-            </p>
-            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20]">
-              Disciplinas e professores
-            </h1>
-            <p className="mt-2 text-sm text-[#727785]">
-              Consulte as disciplinas e os professores da sua turma no período vigente.
-            </p>
-          </div>
-
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf] dark:bg-[#1e3a5f]">
-            <BookOpen className="h-6 w-6" aria-hidden="true" />
-          </div>
-        </div>
-
-        {enrollment && (
-          <div className="mt-5 rounded-lg border border-[#dfe3e8] bg-[#f8faff] px-4 py-3 text-sm dark:border-[#334155] dark:bg-[#111827]">
-            <p className="font-semibold text-[#181c20]">
-              {enrollment.class_name}
-            </p>
-            <p className="mt-1 text-xs text-[#727785]">
-              {enrollment.academic_year_name}
-              {enrollment.shift ? ` • ${enrollment.shift}` : ''}
-            </p>
-          </div>
-        )}
-      </section>
-
       {offerings.length === 0 ? (
         <div className="rounded-xl border border-dashed border-[#c1c6d6] bg-white p-8 text-center text-sm text-[#727785] dark:border-[#475569] dark:bg-[#18212f]">
           Nenhuma disciplina encontrada para o período atual.
         </div>
       ) : (
         <section aria-labelledby="student-subjects-heading">
-          <div className="mb-4 flex items-center justify-between gap-3">
+          <div className="mb-4">
             <h2
               id="student-subjects-heading"
               className="text-lg font-bold text-[#181c20]"
             >
-              Disciplinas cadastradas
-            </h2>
-            <span className="text-sm text-[#727785]">
               {offerings.length}{' '}
-              {offerings.length === 1 ? 'disciplina' : 'disciplinas'}
-            </span>
+              {offerings.length === 1 ? 'disciplina' : 'disciplinas'} no período atual
+            </h2>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -252,15 +137,89 @@ function StudentSubjectsView({
   );
 }
 
+type StudentAcademicSection =
+  | 'attendance'
+  | 'grades'
+  | 'report-card';
+
+function StudentAcademicResultsView({
+  section,
+  institutionId,
+  student,
+  enrollment,
+}: {
+  section: StudentAcademicSection;
+  institutionId: string;
+  student: StudentDashboardData['student'];
+  enrollment: StudentDashboardData['activeEnrollment'];
+}) {
+  const studentName =
+    student.profile?.full_name?.trim() || 'Aluno sem nome informado';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="space-y-5"
+      id={`student-${section}-main`}
+    >
+      <AcademicStudentContext
+        studentName={studentName}
+        registrationNumber={student.registration_number}
+        className={enrollment?.class_name}
+        academicYearName={enrollment?.academic_year_name}
+      />
+
+      {!enrollment && (
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
+          Nenhuma matrícula ativa encontrada para este aluno.
+        </div>
+      )}
+
+      {section === 'attendance' && (
+        <StudentAttendanceSummaryPanel
+          institutionId={institutionId}
+          studentId={student.id}
+          title="Resumo de frequência"
+        />
+      )}
+
+      {section === 'grades' && (
+        <StudentGradesPanel
+          institutionId={institutionId}
+          studentId={student.id}
+          title="Avaliações publicadas"
+        />
+      )}
+
+      {section === 'report-card' && (
+        <StudentReportCard
+          institutionId={institutionId}
+          studentId={student.id}
+          studentName={studentName}
+          className={enrollment?.class_name}
+        />
+      )}
+    </motion.div>
+  );
+}
+
 function LoadingState() {
   return (
-    <div className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
-      <div className="text-center">
-        <div
-          className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
-          aria-hidden="true"
-        />
-        <p className="mt-4 text-sm font-medium text-[#727785]">
+    <div
+      role="status"
+      aria-label="Carregando dados acadêmicos"
+      className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"
+    >
+      <div className="space-y-4 motion-safe:animate-pulse motion-reduce:animate-none">
+        <div className="h-5 w-44 rounded bg-[#e8edf4] dark:bg-slate-700" />
+        <div className="h-4 w-72 max-w-full rounded bg-[#eef1f5] dark:bg-slate-800" />
+        <div className="grid gap-3 sm:grid-cols-3">
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+          <div className="h-20 rounded-lg bg-[#f3f5f8] dark:bg-slate-800" />
+        </div>
+        <p className="text-sm font-medium text-[#727785] dark:text-slate-400">
           Carregando dados acadêmicos...
         </p>
       </div>
@@ -272,6 +231,8 @@ function StudentTimetableView({
   institutionId,
   enrollment,
   currentTermId,
+  termStartDate,
+  termEndDate,
 }: {
   institutionId: string;
   enrollment: {
@@ -281,6 +242,8 @@ function StudentTimetableView({
     academic_year_name: string;
   } | null;
   currentTermId?: string;
+  termStartDate?: string | null;
+  termEndDate?: string | null;
 }) {
   const timetableQuery = useStudentTimetable(
     institutionId,
@@ -288,6 +251,19 @@ function StudentTimetableView({
     currentTermId,
   );
   const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
+  const [weekStartDate] = useState(() =>
+    getWeekStartDateKey(getLocalDateInputValue()),
+  );
+  const entries = (timetableQuery.data ?? []).filter(
+    (entry) => entry.active,
+  );
+  const calendarStatusQuery = useTimetableCalendarStatuses(
+    institutionId,
+    entries,
+    weekStartDate,
+    termStartDate,
+    termEndDate,
+  );
 
   if (!enrollment) {
     return (
@@ -320,18 +296,25 @@ function StudentTimetableView({
         className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700"
       >
         <h2 className="font-bold">Não foi possível carregar a grade de horário</h2>
-        <p className="mt-2">{getErrorMessage(timetableQuery.error)}</p>
+        <p className="mt-2">{getUserFacingErrorMessage(timetableQuery.error, 'Não foi possível carregar a grade. Tente novamente.')}</p>
+        <button type="button" onClick={() => void timetableQuery.refetch()} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
 
-  const entries = (timetableQuery.data ?? []).filter(
-    (entry) => entry.active,
-  );
   const classShift = enrollment.shift?.trim()
     ? normalizeAcademicShift(enrollment.shift)
     : null;
   const scheduleBreaks = scheduleBreaksQuery.data ?? [];
+  const occurrences = projectTimetableOccurrences(
+    entries,
+    weekStartDate,
+    calendarStatusQuery.data,
+    termStartDate,
+    termEndDate,
+  );
 
   return (
     <motion.div
@@ -340,26 +323,6 @@ function StudentTimetableView({
       className="space-y-6"
       id="student-timetable-main"
     >
-      <section className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-[#dfe3e8]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-              Grade de horário
-            </p>
-            <h1 className="mt-2 text-2xl font-bold tracking-tight text-[#181c20]">
-              {enrollment.class_name}
-            </h1>
-            <p className="mt-2 text-sm text-[#727785]">
-              {enrollment.academic_year_name} • horários publicados da sua turma
-            </p>
-          </div>
-
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf]">
-            <CalendarClock className="h-6 w-6" aria-hidden="true" />
-          </div>
-        </div>
-      </section>
-
       {entries.length === 0 ? (
         <div
           role="status"
@@ -368,17 +331,29 @@ function StudentTimetableView({
           A grade de horário da sua turma ainda não foi publicada.
         </div>
       ) : (
-        <WeeklyTimetableGrid
-          entries={entries}
-          scheduleBreaks={scheduleBreaks
-            .filter(
-              (scheduleBreak) =>
-                classShift !== null &&
-                scheduleBreak.active &&
-                normalizeAcademicShift(scheduleBreak.shift) === classShift,
-            )}
-          audience="student"
-        />
+        <>
+          {calendarStatusQuery.isError && (
+            <p
+              role="status"
+              className="rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-xs text-[#727785]"
+            >
+              Não foi possível verificar o calendário. As aulas continuam visíveis.
+            </p>
+          )}
+          <WeeklyTimetableGrid
+            entries={entries}
+            occurrences={occurrences}
+            weekStartDate={weekStartDate}
+            scheduleBreaks={scheduleBreaks
+              .filter(
+                (scheduleBreak) =>
+                  classShift !== null &&
+                  scheduleBreak.active &&
+                  normalizeAcademicShift(scheduleBreak.shift) === classShift,
+              )}
+            audience="student"
+          />
+        </>
       )}
     </motion.div>
   );
@@ -432,8 +407,11 @@ export default function StudentDashboard() {
           Não foi possível carregar o dashboard
         </h2>
         <p className="mt-2">
-          {getErrorMessage(error)}
+          {getUserFacingErrorMessage(error, 'Não foi possível carregar os dados acadêmicos. Tente novamente.')}
         </p>
+        <button type="button" onClick={() => void Promise.all([institutionQuery.refetch(), dashboardQuery.refetch()])} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
@@ -444,7 +422,7 @@ export default function StudentDashboard() {
     return (
       <div
         role="alert"
-        className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700"
+        className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200"
       >
         O registro acadêmico do aluno ainda não está disponível.
       </div>
@@ -453,13 +431,16 @@ export default function StudentDashboard() {
 
   const { student, activeEnrollment, offerings } =
     dashboard;
+  const currentOffering = offerings[0];
 
   if (location.pathname === '/dashboard/timetable') {
     return (
       <StudentTimetableView
         institutionId={institutionQuery.data}
         enrollment={activeEnrollment}
-        currentTermId={offerings[0]?.term_id}
+        currentTermId={currentOffering?.term_id}
+        termStartDate={currentOffering?.term_start_date}
+        termEndDate={currentOffering?.term_end_date}
       />
     );
   }
@@ -468,6 +449,22 @@ export default function StudentDashboard() {
     return (
       <StudentSubjectsView
         offerings={offerings}
+      />
+    );
+  }
+
+  if (
+    location.pathname === '/student/attendance' ||
+    location.pathname === '/student/grades' ||
+    location.pathname === '/student/report-card'
+  ) {
+    const section = location.pathname.split('/').at(-1) as StudentAcademicSection;
+
+    return (
+      <StudentAcademicResultsView
+        section={section}
+        institutionId={institutionQuery.data}
+        student={student}
         enrollment={activeEnrollment}
       />
     );
@@ -475,7 +472,8 @@ export default function StudentDashboard() {
 
   const firstName =
     getFirstName(profile.full_name);
-  const avatarUrl = profile.avatar_url?.trim() || null;
+  const avatarUrl =
+    profile.avatar_url?.trim() || null;
 
   const classDescription = activeEnrollment
     ? [
@@ -494,7 +492,7 @@ export default function StudentDashboard() {
       id="student-dashboard-main"
     >
       <section className="overflow-hidden rounded-2xl bg-gradient-to-r from-[#005bbf] to-[#1a73e8] p-6 text-white shadow-sm">
-        <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
+        <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
               Área do aluno
@@ -502,15 +500,12 @@ export default function StudentDashboard() {
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
               Olá, {firstName}!
             </h1>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85">
-              Matrícula, turma e disciplinas carregadas diretamente do cadastro acadêmico.
-            </p>
           </div>
 
           <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20">
             {avatarUrl ? (
               <img
-                className="h-full w-full object-contain"
+                className="h-full w-full object-cover"
                 src={avatarUrl}
                 alt={`Foto de ${profile.full_name}`}
                 referrerPolicy="no-referrer"
@@ -525,169 +520,49 @@ export default function StudentDashboard() {
         </div>
       </section>
 
-      <DashboardAnnouncements
-        announcements={announcementsQuery.data ?? []}
-        registration={registrationQuery.data}
-        isLoading={announcementsQuery.isLoading}
-        isError={announcementsQuery.isError}
-        role="student"
-      />
+      <section className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="min-w-0">
+            <p className="text-xs font-bold uppercase tracking-wide text-[#005bbf]">
+              Minha turma
+            </p>
+            {activeEnrollment ? (
+              <>
+                <h2 className="mt-1 break-words text-xl font-bold text-[#181c20]">
+                  {activeEnrollment.class_name}
+                </h2>
+                <p className="mt-1 text-sm text-[#727785]">
+                  {activeEnrollment.academic_year_name}
+                  {classDescription ? ` · ${classDescription}` : ''}
+                </p>
+              </>
+            ) : (
+              <p className="mt-1 text-sm text-[#727785]">
+                Nenhuma matrícula ativa encontrada.
+              </p>
+            )}
+          </div>
+          {activeEnrollment && (
+            <span className="inline-flex min-h-8 items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-800">
+              <BadgeCheck className="h-4 w-4" aria-hidden="true" />
+              {getEnrollmentStatusLabel(activeEnrollment.status)}
+            </span>
+          )}
+        </div>
+      </section>
 
       <UpcomingAcademicEvents
         institutionId={institutionQuery.data}
         role="student"
       />
 
-      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <DetailCard
-          icon={
-            <UserRound
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Registro acadêmico"
-          value={student.registration_number}
-        />
-
-        <DetailCard
-          icon={
-            <CalendarDays
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Nascimento"
-          value={formatDate(student.birth_date)}
-        />
-
-        <DetailCard
-          icon={
-            <School
-              className="h-5 w-5"
-              aria-hidden="true"
-            />
-          }
-          label="Turma atual"
-          value={
-            activeEnrollment?.class_name ??
-            'Sem matrícula ativa'
-          }
-        />
-
-      </section>
-
-      <section className="grid gap-4 lg:grid-cols-2">
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-            Dados da conta
-          </h2>
-
-          <dl className="mt-5 space-y-4">
-            <div className="flex items-start gap-3">
-              <Mail
-                className="mt-0.5 h-5 w-5 text-[#727785]"
-                aria-hidden="true"
-              />
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  E-mail
-                </dt>
-                <dd className="mt-1 break-all text-sm font-semibold text-[#181c20]">
-                  {profile.email}
-                </dd>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <BadgeCheck
-                className={
-                  student.active
-                    ? 'mt-0.5 h-5 w-5 text-green-700'
-                    : 'mt-0.5 h-5 w-5 text-gray-500'
-                }
-                aria-hidden="true"
-              />
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Situação
-                </dt>
-                <dd
-                  className={
-                    student.active
-                      ? 'mt-1 text-sm font-semibold text-green-700'
-                      : 'mt-1 text-sm font-semibold text-gray-600'
-                  }
-                >
-                  {student.active
-                    ? 'Aluno ativo'
-                    : 'Aluno inativo'}
-                </dd>
-              </div>
-            </div>
-          </dl>
-        </article>
-
-        <article className="rounded-xl border border-[#dfe3e8] bg-white p-6 shadow-sm">
-          <h2 className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-            Matrícula ativa
-          </h2>
-
-          {activeEnrollment ? (
-            <dl className="mt-5 space-y-4">
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Ano letivo
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-[#181c20]">
-                  {activeEnrollment.academic_year_name}
-                </dd>
-              </div>
-
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Turma
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-[#181c20]">
-                  {activeEnrollment.class_name}
-                </dd>
-                {classDescription && (
-                  <dd className="mt-0.5 text-xs text-[#727785]">
-                    {classDescription}
-                  </dd>
-                )}
-              </div>
-
-              <div>
-                <dt className="text-xs font-medium text-[#727785]">
-                  Status
-                </dt>
-                <dd className="mt-1 text-sm font-semibold text-green-700">
-                  {getEnrollmentStatusLabel(activeEnrollment.status)}
-                </dd>
-              </div>
-            </dl>
-          ) : (
-            <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
-              Nenhuma matrícula ativa encontrada para este aluno.
-            </div>
-          )}
-        </article>
-      </section>
-
-      <StudentAttendanceSummaryPanel
-        institutionId={institutionQuery.data}
-        studentId={student.id}
-      />
-
-      <StudentGradesPanel
-        institutionId={institutionQuery.data}
-        studentId={student.id}
-      />
-
-      <StudentReportCard
-        institutionId={institutionQuery.data}
-        studentId={student.id}
+      <DashboardAnnouncements
+        announcements={announcementsQuery.data ?? []}
+        registration={registrationQuery.data}
+      isLoading={announcementsQuery.isLoading}
+      isError={announcementsQuery.isError}
+      role="student"
+      onRetry={() => void announcementsQuery.refetch()}
       />
 
     </motion.div>

@@ -10,6 +10,7 @@ import {
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
     from: vi.fn(),
+    rpc: vi.fn(),
   },
 }));
 
@@ -20,6 +21,7 @@ function queryBuilder(data: unknown[] = []) {
     gte: vi.fn(),
     lt: vi.fn(),
     or: vi.fn(),
+    in: vi.fn(),
     order: vi.fn(),
     limit: vi.fn(),
     insert: vi.fn(),
@@ -27,7 +29,7 @@ function queryBuilder(data: unknown[] = []) {
     single: vi.fn(),
   } as Record<string, ReturnType<typeof vi.fn>>;
 
-  for (const method of ['select', 'eq', 'gte', 'lt', 'or', 'order', 'limit', 'insert', 'update']) {
+  for (const method of ['select', 'eq', 'gte', 'lt', 'or', 'in', 'order', 'limit', 'insert', 'update']) {
     builder[method].mockReturnValue(builder);
   }
   builder.single.mockResolvedValue({ data: data[0] ?? null, error: null });
@@ -53,6 +55,50 @@ beforeEach(() => {
 });
 
 describe('academicCalendarService', () => {
+  it('consulta os bloqueios da data no contexto informado', async () => {
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: [{ event_id: 'event-1', event_type: 'HOLIDAY' }],
+      error: null,
+    } as never);
+
+    const status = await academicCalendarService.getAcademicDateStatus({
+      institutionId: 'institution-1',
+      academicYearId: 'year-1',
+      classId: 'class-1',
+      subjectId: 'subject-1',
+    }, '2026-09-15');
+
+    expect(supabase.rpc).toHaveBeenCalledWith('get_academic_day_blockers', {
+      p_institution_id: 'institution-1',
+      p_date: '2026-09-15',
+      p_academic_year_id: 'year-1',
+      p_class_id: 'class-1',
+      p_subject_id: 'subject-1',
+    });
+    expect(status).toEqual({
+      date: '2026-09-15',
+      state: 'BLOCKED',
+      blocked: true,
+      blockers: [{ event_id: 'event-1', event_type: 'HOLIDAY' }],
+    });
+  });
+
+  it('rejeita data civil inválida antes da RPC', async () => {
+    await expect(academicCalendarService.getAcademicDateStatus({
+      institutionId: 'institution-1',
+    }, '15/09/2026')).rejects.toThrow('Informe uma data civil válida.');
+
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
+  it('rejeita instituição vazia antes da RPC', async () => {
+    await expect(academicCalendarService.getAcademicDateStatus({
+      institutionId: ' ',
+    }, '2026-09-15')).rejects.toThrow('A instituição é obrigatória');
+
+    expect(supabase.rpc).not.toHaveBeenCalled();
+  });
+
   it('lista eventos filtrando pela instituição atual', async () => {
     const query = queryBuilder();
     vi.mocked(supabase.from).mockReturnValue(query as never);
@@ -61,6 +107,33 @@ describe('academicCalendarService', () => {
 
     expect(supabase.from).toHaveBeenCalledWith('academic_calendar_events');
     expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+  });
+
+  it('carrega bloqueios de toda a janela em uma única consulta', async () => {
+    const query = queryBuilder();
+    vi.mocked(supabase.from).mockReturnValue(query as never);
+
+    await academicCalendarService.listBlockingEventsForRange(
+      'institution-1',
+      '2026-09-01',
+      '2026-09-30',
+    );
+
+    expect(supabase.from).toHaveBeenCalledOnce();
+    expect(query.eq).toHaveBeenCalledWith('institution_id', 'institution-1');
+    expect(query.eq).toHaveBeenCalledWith('active', true);
+    expect(query.eq).toHaveBeenCalledWith('all_day', true);
+    expect(query.in).toHaveBeenCalledWith(
+      'event_type',
+      ['HOLIDAY', 'RECESS', 'CLASS_SUSPENSION'],
+    );
+    expect(query.lt).toHaveBeenCalledWith(
+      'starts_at',
+      '2026-10-01T00:00:00.000Z',
+    );
+    expect(query.or).toHaveBeenCalledWith(
+      'ends_at.gte.2026-09-01T00:00:00.000Z,ends_at.is.null',
+    );
   });
 
   it('filtra por sobreposição quando a data está dentro de um intervalo', async () => {

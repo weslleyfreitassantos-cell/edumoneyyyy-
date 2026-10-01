@@ -29,6 +29,12 @@ describe('invite-school-user', () => {
     expect(source).toContain('SchoolAccessConfigurationError');
   });
 
+  it('generates the required student registration before inserting the student', () => {
+    expect(source).toContain('generate_student_registration_number');
+    expect(source).toContain('target_institution_id: institutionId');
+    expect(source).toContain('registration_number: registrationNumber');
+  });
+
   it('does not persist or return a generated password', () => {
     expect(source).not.toContain('generated_password');
     expect(source).not.toContain('temporary_password');
@@ -61,7 +67,8 @@ describe('invite-school-user', () => {
   });
 
   it('allows an ADMIN to create a director only in the selected institution', () => {
-    expect(source).toContain('["DIRECTOR", "TEACHER", "STUDENT", "GUARDIAN"]');
+    expect(source).toContain('["DIRECTOR"]');
+    expect(source).toContain('["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"]');
     expect(source).toContain('.eq("institution_id", input.institutionId)');
     expect(source).toContain('role: input.role');
   });
@@ -74,10 +81,10 @@ describe('invite-school-user', () => {
     expect(source).not.toContain('if (reusedExistingUser)');
   });
 
-  it('has a bounded per-requester rate limit', () => {
-    expect(source).toContain('assertInviteRateLimit');
-    expect(source).toContain('INVITE_RATE_LIMIT_MAX_ATTEMPTS');
-    expect(source).toContain('ACCESS_RATE_LIMITED');
+  it('does not impose an application-level per-requester rate limit', () => {
+    expect(source).not.toContain('assertInviteRateLimit');
+    expect(source).not.toContain('INVITE_RATE_LIMIT_MAX_ATTEMPTS');
+    expect(source).not.toContain('ACCESS_RATE_LIMITED');
   });
 
   it('does not block school access creation by institution quota', () => {

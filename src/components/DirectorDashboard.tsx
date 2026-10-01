@@ -17,6 +17,7 @@ import {
 } from '../lib/permissions';
 import InstitutionAttendancePanel from './attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from './grades/InstitutionGradesPanel';
+import { getUserFacingErrorMessage } from '../lib/userFacingError';
 
 export function getDirectorDashboardTitle(
   role: EffectiveRole | undefined,
@@ -34,25 +35,6 @@ export function getDirectorDashboardTitle(
   }
 
   return 'Painel acadêmico';
-}
-
-function getErrorMessage(
-  error: unknown,
-): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar o painel do diretor.';
 }
 
 function MetricCard({
@@ -93,7 +75,7 @@ function MetricCard({
 
 function LoadingState() {
   return (
-    <div className="grid min-h-[360px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
+    <div role="status" aria-label="Carregando painel da escola" className="grid min-h-[360px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
       <div className="text-center">
         <div
           className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
@@ -147,8 +129,11 @@ export default function DirectorDashboard() {
           Não foi possível carregar o painel
         </h2>
         <p className="mt-2">
-          {getErrorMessage(error)}
+          {getUserFacingErrorMessage(error, 'Não foi possível carregar os dados da escola. Tente novamente.')}
         </p>
+        <button type="button" onClick={() => void Promise.all([institutionQuery.refetch(), overviewQuery.refetch()])} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
@@ -198,9 +183,6 @@ export default function DirectorDashboard() {
         <h2 className="text-2xl font-bold text-[#181c20]">
           {dashboardTitle}
         </h2>
-        <p className="mt-1 text-sm text-[#727785]">
-          Resumo da estrutura acadêmica carregado das tabelas operacionais.
-        </p>
         </div>
 
       </div>

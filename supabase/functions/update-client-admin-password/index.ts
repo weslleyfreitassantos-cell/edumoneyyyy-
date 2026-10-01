@@ -1,8 +1,8 @@
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
-import { z } from "zod";
 
 import type { Database } from "../_shared/database.types.ts";
+import { parsePasswordUpdateRequest } from "./request-validation.ts";
 
 type SessionRevocation = "NOT_SUPPORTED";
 
@@ -16,14 +16,6 @@ class PasswordUpdateError extends Error {
     this.name = "PasswordUpdateError";
   }
 }
-
-const requestSchema = z.object({
-  accountId: z.string().uuid("Conta invalida."),
-  password: z.string().min(8, "A senha deve possuir pelo menos 8 caracteres.").max(
-    72,
-    "A senha deve possuir no maximo 72 caracteres.",
-  ),
-}).strict();
 
 function jsonError(error: PasswordUpdateError): Response {
   return Response.json(
@@ -198,7 +190,18 @@ export default {
       }
 
       try {
-        const input = requestSchema.parse(await request.json());
+        const parsedInput = parsePasswordUpdateRequest(await request.json());
+        if (!parsedInput.success) {
+          return jsonError(
+            new PasswordUpdateError(
+              400,
+              parsedInput.code,
+              parsedInput.message,
+            ),
+          );
+        }
+
+        const input = parsedInput.data;
         const { requesterId } = await assertSuperAdmin(ctx);
         const target = await resolveAccountOwner(ctx, input.accountId);
 
@@ -236,16 +239,6 @@ export default {
           sessionRevocation,
         });
       } catch (error) {
-        if (error instanceof z.ZodError) {
-          return jsonError(
-            new PasswordUpdateError(
-              400,
-              "INVALID_PASSWORD",
-              "Informe uma senha entre 8 e 72 caracteres.",
-            ),
-          );
-        }
-
         if (error instanceof PasswordUpdateError) {
           return jsonError(error);
         }

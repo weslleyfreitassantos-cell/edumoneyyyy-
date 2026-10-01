@@ -1,0 +1,34 @@
+[
+  {
+    "skill": "MATH_PERCENT_OF_QUANTITY",
+    "title": "Calcular percentual mantendo a base",
+    "objective": "Calcular percentual de uma quantidade identificando a base e a taxa.",
+    "summary": "Percentual e uma razao por cem aplicada a um valor de referencia.",
+    "explanation": "Percentual e uma razao por cem aplicada a um valor de referencia.",
+    "workedExample": "Para 15% de 240, calcule 0,15 x 240 = 36.",
+    "commonMistake": "Usar a taxa como se fosse a quantidade final.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "skill": "MATH_RATIO_UNIT_RATE",
+    "title": "Interpretar razao e calcular taxa unitaria",
+    "objective": "Interpretar uma razao e calcular quanto corresponde a uma unidade.",
+    "summary": "Uma taxa unitaria mostra quanto corresponde a cada unidade da grandeza de referencia.",
+    "explanation": "Para encontrar a taxa unitaria, divida a quantidade observada pelo numero de unidades. Depois, use essa taxa para comparar ou projetar outras quantidades.",
+    "workedExample": "Se 45 paginas sao impressas em 5 minutos, a taxa e 45 dividido por 5 = 9 paginas por minuto. Em 8 minutos, serao 72 paginas.",
+    "commonMistake": "Multiplicar as duas grandezas sem primeiro identificar qual quantidade corresponde a uma unidade.",
+    "tips": [
+      "Identifique as duas grandezas relacionadas.",
+      "Calcule primeiro o valor de uma unidade.",
+      "Confira se a unidade da resposta corresponde a pergunta."
+    ],
+    "estimatedMinutes": 9,
+    "content_authoring_status": "AUTHORED"
+  }
+]

@@ -8,9 +8,13 @@ import {
 } from 'vitest';
 import {
   ProfileServiceError,
+  removeCurrentProfileAvatar,
+  resolveCurrentProfileAvatar,
+  updateCurrentProfileAvatar,
   updateCurrentPassword,
   updateCurrentProfile,
 } from './profileService';
+import { prepareAvatarImage } from './avatarImageService';
 
 vi.mock('../lib/supabaseClient', () => ({
   supabase: {
@@ -19,8 +23,23 @@ vi.mock('../lib/supabaseClient', () => ({
       updateUser: vi.fn(),
     },
     from: vi.fn(),
+    rpc: vi.fn(),
+    storage: {
+      from: vi.fn(),
+    },
   },
 }));
+
+vi.mock('./avatarImageService', async () => {
+  const actual = await vi.importActual<
+    typeof import('./avatarImageService')
+  >('./avatarImageService');
+
+  return {
+    ...actual,
+    prepareAvatarImage: vi.fn(),
+  };
+});
 
 describe('profileService', () => {
   beforeEach(() => {
@@ -199,5 +218,118 @@ describe('profileService', () => {
 
     expect(consoleError).not.toHaveBeenCalled();
     consoleError.mockRestore();
+  });
+
+  it('faz upload no path canônico, atualiza pela RPC e retorna signed URL', async () => {
+    vi.mocked(supabase.auth.getUser).mockResolvedValue({
+      data: { user: { id: 'user-1' } },
+      error: null,
+    } as never);
+    vi.mocked(prepareAvatarImage).mockResolvedValue(
+      new Blob(['webp'], { type: 'image/webp' }),
+    );
+    const upload = vi.fn().mockResolvedValue({ error: null });
+    const remove = vi.fn().mockResolvedValue({ error: null });
+    const createSignedUrl = vi.fn().mockResolvedValue({
+      data: { signedUrl: 'https://signed.example/avatar' },
+      error: null,
+    });
+    vi.mocked(supabase.storage.from).mockReturnValue({
+      upload,
+      remove,
+      createSignedUrl,
+    } as never);
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: 'user-1/avatar.webp',
+      error: null,
+    } as never);
+
+    const result = await updateCurrentProfileAvatar(
+      new File(['source'], 'avatar.png', { type: 'image/png' }),
+    );
+
+    expect(upload).toHaveBeenCalledWith(
+      'user-1/avatar.webp',
+      expect.any(Blob),
+      expect.objectContaining({
+        contentType: 'image/webp',
+        upsert: true,
+      }),
+    );
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'set_current_profile_avatar',
+      { p_avatar_path: 'user-1/avatar.webp' },
+    );
+    expect(createSignedUrl).toHaveBeenCalledWith(
+      'user-1/avatar.webp',
+      3600,
+    );
+    expect(result).toEqual({
+      path: 'user-1/avatar.webp',
+      avatar_url: 'https://signed.example/avatar',
+    });
+  });
+
+  it('remove o avatar pela RPC e pelo objeto privado', async () => {
+    vi.mocked(supabase.auth.getUser).mockResolvedValue({
+      data: { user: { id: 'user-1' } },
+      error: null,
+    } as never);
+    const remove = vi.fn().mockResolvedValue({ error: null });
+    vi.mocked(supabase.storage.from).mockReturnValue({ remove } as never);
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: null,
+      error: null,
+    } as never);
+
+    await removeCurrentProfileAvatar();
+
+    expect(supabase.rpc).toHaveBeenCalledWith(
+      'set_current_profile_avatar',
+      { p_avatar_path: null },
+    );
+    expect(remove).toHaveBeenCalledWith(['user-1/avatar.webp']);
+  });
+
+  it('não assina path de outro usuário e mantém URL HTTPS legada', async () => {
+    const createSignedUrl = vi.fn();
+    vi.mocked(supabase.storage.from).mockReturnValue({ createSignedUrl } as never);
+
+    await expect(
+      resolveCurrentProfileAvatar('user-2/avatar.webp', 'user-1'),
+    ).resolves.toBeNull();
+    await expect(
+      resolveCurrentProfileAvatar(
+        'https://legacy.example/avatar.jpg',
+        'user-1',
+      ),
+    ).resolves.toBe('https://legacy.example/avatar.jpg');
+    expect(createSignedUrl).not.toHaveBeenCalled();
+  });
+
+  it('limpa o objeto se a RPC de perfil falhar', async () => {
+    vi.mocked(supabase.auth.getUser).mockResolvedValue({
+      data: { user: { id: 'user-1' } },
+      error: null,
+    } as never);
+    vi.mocked(prepareAvatarImage).mockResolvedValue(
+      new Blob(['webp'], { type: 'image/webp' }),
+    );
+    const upload = vi.fn().mockResolvedValue({ error: null });
+    const remove = vi.fn().mockResolvedValue({ error: null });
+    vi.mocked(supabase.storage.from).mockReturnValue({ upload, remove } as never);
+    vi.mocked(supabase.rpc).mockResolvedValue({
+      data: null,
+      error: { code: 'unexpected_failure' },
+    } as never);
+
+    await expect(
+      updateCurrentProfileAvatar(
+        new File(['source'], 'avatar.png', { type: 'image/png' }),
+      ),
+    ).rejects.toMatchObject({
+      code: 'AVATAR_PROFILE_UPDATE_FAILED',
+    });
+    expect(remove).toHaveBeenCalledWith(['user-1/avatar.webp']);
   });
 });

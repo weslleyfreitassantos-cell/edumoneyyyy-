@@ -96,6 +96,21 @@ export interface GeneratorEntry {
   locked: boolean;
 }
 
+export type TimetableIntegrityConflictType = 'CLASS' | 'TEACHER' | 'ROOM';
+
+export interface TimetableIntegrityConflict {
+  type: TimetableIntegrityConflictType;
+  entryA: GeneratorEntry;
+  entryB: GeneratorEntry;
+  dayOfWeek: number;
+  overlapStart: string;
+  overlapEnd: string;
+  terms: {
+    entryA: GeneratorTerm;
+    entryB: GeneratorTerm;
+  };
+}
+
 export interface TimetableGeneratorInput {
   institutionId: string;
   academicYearId: string;
@@ -1003,4 +1018,46 @@ export function timetableEntriesConflict(left: GeneratorEntry, right: GeneratorE
   const rightTerm = termsById.get(right.termId);
   if (!leftTerm || !rightTerm || !termsOverlap(leftTerm, rightTerm)) return false;
   return left.classId === right.classId || left.teacherProfileId === right.teacherProfileId || (left.roomId !== null && left.roomId === right.roomId);
+}
+
+export function auditTimetableIntegrity(
+  entries: readonly GeneratorEntry[],
+  termsById: Map<string, GeneratorTerm>,
+): { valid: boolean; conflicts: TimetableIntegrityConflict[] } {
+  const conflicts: TimetableIntegrityConflict[] = [];
+
+  for (let leftIndex = 0; leftIndex < entries.length; leftIndex += 1) {
+    const entryA = entries[leftIndex];
+    const termA = termsById.get(entryA.termId);
+    if (!termA) continue;
+
+    for (let rightIndex = leftIndex + 1; rightIndex < entries.length; rightIndex += 1) {
+      const entryB = entries[rightIndex];
+      const termB = termsById.get(entryB.termId);
+      if (!termB || !timetableEntriesConflict(entryA, entryB, termsById)) continue;
+
+      const overlapStart = timeToMinutes(entryA.startTime) >= timeToMinutes(entryB.startTime) ? entryA.startTime : entryB.startTime;
+      const overlapEnd = timeToMinutes(entryA.endTime) <= timeToMinutes(entryB.endTime) ? entryA.endTime : entryB.endTime;
+      const sharedResources: Array<[TimetableIntegrityConflictType, boolean]> = [
+        ['CLASS', entryA.classId === entryB.classId],
+        ['TEACHER', entryA.teacherProfileId === entryB.teacherProfileId],
+        ['ROOM', entryA.roomId !== null && entryA.roomId === entryB.roomId],
+      ];
+
+      for (const [type, isShared] of sharedResources) {
+        if (!isShared) continue;
+        conflicts.push({
+          type,
+          entryA,
+          entryB,
+          dayOfWeek: entryA.dayOfWeek,
+          overlapStart,
+          overlapEnd,
+          terms: { entryA: termA, entryB: termB },
+        });
+      }
+    }
+  }
+
+  return { valid: conflicts.length === 0, conflicts };
 }

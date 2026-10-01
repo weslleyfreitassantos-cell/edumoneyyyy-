@@ -11,6 +11,8 @@ import {
 import InstitutionAttendancePanel from '../../components/attendance/InstitutionAttendancePanel';
 import InstitutionGradesPanel from '../../components/grades/InstitutionGradesPanel';
 import InstitutionTermClosingPanel from '../../components/academic/InstitutionTermClosingPanel';
+import ClassCouncilPanel from '../../components/academic/ClassCouncilPanel';
+import PedagogicalMonitoringPanel from '../../components/academic/PedagogicalMonitoringPanel';
 import AcademicPolicyPanel from '../../components/academic/AcademicPolicyPanel';
 import { useAuth } from '../../contexts/AuthContext';
 import { useCurrentInstitution } from '../../hooks/useCurrentInstitution';
@@ -25,6 +27,7 @@ import { buildSchoolSetupFlow } from '../../lib/schoolSetupFlow';
 import {
   ADMIN_MODULES,
   DEFAULT_ADMIN_MODULE_ID,
+  isAdminModuleAvailable,
   isAdminModuleId,
   type AdminModuleId,
 } from './adminNavigation';
@@ -45,6 +48,9 @@ import AccessControlTab from './tabs/AccessControlTab';
 import EmailTab from './tabs/EmailTab';
 import AnnouncementsTab from './tabs/AnnouncementsTab';
 import AcademicCalendarTab from './tabs/AcademicCalendarTab';
+import AcademicDocumentsTab from './tabs/AcademicDocumentsTab';
+import StudentAcademicRecordTab from './tabs/StudentAcademicRecordTab';
+import AcademicReportsTab from './tabs/AcademicReportsTab';
 
 function setModuleParam(
   searchParams: URLSearchParams,
@@ -109,7 +115,12 @@ export default function AdminPage() {
   const modules = useMemo(
     () =>
       ADMIN_MODULES.filter((module) =>
-        can(module.permission),
+        can(module.permission) &&
+        isAdminModuleAvailable(
+          module,
+          institutionQuery.currentRole,
+          profile?.platform_role,
+        ),
       ),
     [
       profile?.platform_role,
@@ -241,7 +252,20 @@ export default function AdminPage() {
   ]);
 
   useEffect(() => {
-    if (!activeModuleId || modules.length === 0) {
+    const institutionRoleExpected =
+      profile?.role === 'DIRECTOR' ||
+      profile?.role === 'SECRETARY';
+    const resolvingInstitutionRole =
+      institutionQuery.isLoading ||
+      (institutionRoleExpected &&
+        !institutionQuery.currentRole &&
+        profile?.platform_role !== 'SUPER_ADMIN');
+
+    if (
+      resolvingInstitutionRole ||
+      !activeModuleId ||
+      modules.length === 0
+    ) {
       return;
     }
 
@@ -262,7 +286,12 @@ export default function AdminPage() {
     );
   }, [
     activeModuleId,
+    institutionQuery.currentRole,
+    institutionQuery.data,
+    institutionQuery.isLoading,
     modules.length,
+    profile?.platform_role,
+    profile?.role,
     requestedModuleParam,
     searchParams,
     setSearchParams,
@@ -282,6 +311,17 @@ export default function AdminPage() {
     setSearchParams(
       setModuleParam(searchParams, moduleId),
     );
+  }
+
+  function navigateToStudentAcademicRecord(studentId: string): void {
+    if (!modules.some((module) => module.id === 'student-record')) {
+      return;
+    }
+
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set('module', 'student-record');
+    nextParams.set('student', studentId);
+    setSearchParams(nextParams);
   }
 
   if (!profile) {
@@ -307,6 +347,7 @@ export default function AdminPage() {
           />
         );
       case 'attendance':
+      case 'class-diary':
         return (
           <InstitutionAttendancePanel
             institutionId={institutionQuery.data}
@@ -324,10 +365,32 @@ export default function AdminPage() {
             institutionId={institutionQuery.data}
           />
         );
+      case 'class-councils':
+        return <ClassCouncilPanel />;
+      case 'pedagogical-monitoring':
+        return (
+          <PedagogicalMonitoringPanel
+            institutionId={institutionQuery.data}
+          />
+        );
+      case 'academic-documents':
+        return <AcademicDocumentsTab />;
+      case 'student-record':
+        return <StudentAcademicRecordTab />;
+      case 'academic-reports':
+        return <AcademicReportsTab />;
       case 'school-users':
         return <SchoolUsersTab />;
+      case 'directors':
+        return (
+          <SchoolUsersTab
+            fixedRole="DIRECTOR"
+            inviteTargets={['DIRECTOR']}
+            inviteHeading="Cadastro de diretor"
+          />
+        );
       case 'students':
-        return <StudentsTab />;
+        return <StudentsTab onViewAcademicRecord={navigateToStudentAcademicRecord} />;
       case 'teachers':
         return <TeachersTab />;
       case 'guardians':

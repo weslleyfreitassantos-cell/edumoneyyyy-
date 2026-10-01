@@ -1,8 +1,19 @@
-import { CalendarClock } from 'lucide-react';
+import { CalendarClock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useState } from 'react';
 
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
-import { useTeacherTimetable } from '../hooks/useTimetable';
+import {
+  useTeacherTimetable,
+  useTimetableCalendarStatuses,
+} from '../hooks/useTimetable';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
+import {
+  getWeekStartDateKey,
+  getDateForWeekDay,
+  projectTimetableOccurrences,
+  shiftWeekStartDate,
+} from '../lib/academic/timetableOccurrences';
 import { normalizeAcademicShift } from '../lib/academic/academicShifts';
 import WeeklyTimetableGrid from './academic/WeeklyTimetableGrid';
 
@@ -25,11 +36,17 @@ export default function TeacherTimetableView({
   institutionId,
   teacherProfileId,
   termId,
+  termName,
+  termStartDate,
+  termEndDate,
   shifts,
 }: {
   institutionId: string;
   teacherProfileId: string;
   termId?: string;
+  termName?: string | null;
+  termStartDate?: string | null;
+  termEndDate?: string | null;
   shifts: readonly (string | null)[];
 }) {
   const timetableQuery = useTeacherTimetable(
@@ -38,6 +55,19 @@ export default function TeacherTimetableView({
     termId,
   );
   const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
+  const [weekStartDate, setWeekStartDate] = useState(() =>
+    getWeekStartDateKey(getLocalDateInputValue()),
+  );
+  const entries = (timetableQuery.data ?? []).filter(
+    (entry) => entry.active,
+  );
+  const calendarStatusQuery = useTimetableCalendarStatuses(
+    institutionId,
+    entries,
+    weekStartDate,
+    termStartDate,
+    termEndDate,
+  );
 
   if (timetableQuery.isLoading) {
     return (
@@ -67,9 +97,6 @@ export default function TeacherTimetableView({
     );
   }
 
-  const entries = (timetableQuery.data ?? []).filter(
-    (entry) => entry.active,
-  );
   const teacherShifts = new Set(
     shifts
       .filter((shift): shift is string => Boolean(shift?.trim()))
@@ -80,6 +107,17 @@ export default function TeacherTimetableView({
       scheduleBreak.active &&
       teacherShifts.has(normalizeAcademicShift(scheduleBreak.shift)),
   );
+  const occurrences = projectTimetableOccurrences(
+    entries,
+    weekStartDate,
+    calendarStatusQuery.data,
+    termStartDate,
+    termEndDate,
+  );
+  const formatDate = (value: string) => {
+    const [year, month, day] = value.split('-');
+    return `${day}/${month}/${year}`;
+  };
 
   return (
     <motion.div
@@ -100,6 +138,17 @@ export default function TeacherTimetableView({
             <p className="mt-2 text-sm text-[#727785]">
               Horários publicados das turmas e disciplinas atribuídas a você.
             </p>
+            {termName && (
+              <p className="mt-3 text-sm font-medium text-[#005bbf]">
+                Período atual: {termName}
+                {termStartDate && termEndDate && (
+                  <span className="font-normal text-[#727785]">
+                    {' '}
+                    ({formatDate(termStartDate)} a {formatDate(termEndDate)})
+                  </span>
+                )}
+              </p>
+            )}
           </div>
 
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#005bbf]">
@@ -116,11 +165,60 @@ export default function TeacherTimetableView({
           Nenhuma aula publicada foi encontrada para suas atribuições.
         </div>
       ) : (
-        <WeeklyTimetableGrid
-          entries={entries}
-          scheduleBreaks={scheduleBreaks}
-          audience="teacher"
-        />
+        <>
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-[#dfe3e8] bg-white px-4 py-3 text-sm shadow-sm">
+            <div>
+              <p className="font-semibold text-[#181c20]">Semana exibida</p>
+              <p className="text-xs text-[#727785]">
+                {formatDate(weekStartDate)} a {formatDate(getDateForWeekDay(weekStartDate, 6))}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setWeekStartDate((current) => shiftWeekStartDate(current, -1))}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#cbd5e1] text-[#005bbf] transition hover:bg-[#eef5ff] focus:outline-none focus:ring-2 focus:ring-[#1769c2]"
+                aria-label="Semana anterior"
+                title="Semana anterior"
+              >
+                <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={() => setWeekStartDate(getWeekStartDateKey(getLocalDateInputValue()))}
+                className="rounded-lg border border-[#cbd5e1] px-3 py-2 text-xs font-semibold text-[#005bbf] transition hover:bg-[#eef5ff] focus:outline-none focus:ring-2 focus:ring-[#1769c2]"
+              >
+                Semana atual
+              </button>
+              <button
+                type="button"
+                onClick={() => setWeekStartDate((current) => shiftWeekStartDate(current, 1))}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#cbd5e1] text-[#005bbf] transition hover:bg-[#eef5ff] focus:outline-none focus:ring-2 focus:ring-[#1769c2]"
+                aria-label="Próxima semana"
+                title="Próxima semana"
+              >
+                <ChevronRight className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+
+          {calendarStatusQuery.isError && (
+            <p
+              role="status"
+              className="rounded-lg border border-[#dfe3e8] bg-white px-4 py-2 text-xs text-[#727785]"
+            >
+              Não foi possível verificar o calendário. As aulas continuam visíveis.
+            </p>
+          )}
+
+          <WeeklyTimetableGrid
+            entries={entries}
+            occurrences={occurrences}
+            weekStartDate={weekStartDate}
+            scheduleBreaks={scheduleBreaks}
+            audience="teacher"
+          />
+        </>
       )}
     </motion.div>
   );

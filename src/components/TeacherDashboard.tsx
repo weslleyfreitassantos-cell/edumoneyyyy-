@@ -16,32 +16,20 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 
 import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
+import { getLocalDateInputValue } from '../lib/academicTermDates';
+import { getUserFacingErrorMessage } from '../lib/userFacingError';
 
-import type { TeacherOffering } from '../services/teacherDashboardService';
+import {
+  selectTeacherOfferingForDate,
+  type TeacherOffering,
+} from '../services/teacherDashboardService';
 import TeacherAttendancePanel from './attendance/TeacherAttendancePanel';
 import TeacherAssessmentsPanel from './grades/TeacherAssessmentsPanel';
 import TeacherTermClosingPanel from './academic/TeacherTermClosingPanel';
+import AcademicRecoveryPanel from './academic/AcademicRecoveryPanel';
+import TeacherClassCouncilsPanel from './academic/TeacherClassCouncilsPanel';
 import TeacherTimetableView from './TeacherTimetableView';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
-
-function getErrorMessage(
-  error: unknown,
-): string {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  if (
-    typeof error === 'object' &&
-    error !== null &&
-    'message' in error &&
-    typeof error.message === 'string'
-  ) {
-    return error.message;
-  }
-
-  return 'Não foi possível carregar o dashboard do professor.';
-}
 
 function getFirstName(
   fullName: string,
@@ -98,7 +86,7 @@ icon: ReactNode;
 
 function LoadingState() {
   return (
-    <div className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
+    <div role="status" aria-label="Carregando painel do professor" className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
       <div className="text-center">
         <div
           className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
@@ -116,25 +104,29 @@ function LoadingState() {
 function TeacherWorkspacePage({
   title,
   description,
+  showIntro = true,
   children,
 }: {
   title: string;
   description: string;
+  showIntro?: boolean;
   children: ReactNode;
 }) {
   return (
     <div className="space-y-6">
-      <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
-          Operação docente
-        </p>
-        <h1 className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
-          {title}
-        </h1>
-        <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
-          {description}
-        </p>
-      </section>
+      {showIntro && (
+        <section className="rounded-2xl border border-[#dfe3e8] bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#005bbf]">
+            Operação docente
+          </p>
+          <h1 className="mt-2 text-2xl font-bold text-[#181c20] dark:text-white">
+            {title}
+          </h1>
+          <p className="mt-2 text-sm text-[#727785] dark:text-slate-400">
+            {description}
+          </p>
+        </section>
+      )}
       {children}
     </div>
   );
@@ -179,8 +171,11 @@ export default function TeacherDashboard() {
         </h2>
 
         <p className="mt-2">
-          {getErrorMessage(error)}
+          {getUserFacingErrorMessage(error, 'Não foi possível carregar os dados acadêmicos. Tente novamente.')}
         </p>
+        <button type="button" onClick={() => void Promise.all([institutionQuery.refetch(), dashboardQuery.refetch()])} className="mt-4 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
       </div>
     );
   }
@@ -196,12 +191,20 @@ export default function TeacherDashboard() {
     );
   }
 
+  const currentTermOffering = selectTeacherOfferingForDate(
+    dashboard.offerings,
+    getLocalDateInputValue(),
+  );
+
   if (location.pathname === '/dashboard/timetable') {
     return (
       <TeacherTimetableView
         institutionId={institutionQuery.data}
         teacherProfileId={profile.id}
-        termId={dashboard.offerings[0]?.termId}
+        termId={currentTermOffering?.termId}
+        termName={currentTermOffering?.termName}
+        termStartDate={currentTermOffering?.termStartDate}
+        termEndDate={currentTermOffering?.termEndDate}
         shifts={dashboard.offerings.map(
           (offering) => offering.shift,
         )}
@@ -209,11 +212,15 @@ export default function TeacherDashboard() {
     );
   }
 
-  if (location.pathname === '/dashboard/attendance') {
+  if (
+    location.pathname === '/dashboard/attendance' ||
+    location.pathname === '/dashboard/class-diary'
+  ) {
     return (
       <TeacherWorkspacePage
-        title="Chamadas"
-        description="Registre a presença dos alunos nas aulas previstas para você."
+        title="Diário de Classe"
+        description="Registre o conteúdo da aula e a presença dos alunos."
+        showIntro={false}
       >
         <TeacherAttendancePanel
           profileId={profile.id}
@@ -243,10 +250,27 @@ export default function TeacherDashboard() {
         title="Fechamento de período"
         description="Revise os resultados acadêmicos antes do fechamento."
       >
-        <TeacherTermClosingPanel
-          profileId={profile.id}
-          institutionId={institutionQuery.data}
-        />
+        <div className="space-y-6">
+          <TeacherTermClosingPanel
+            profileId={profile.id}
+            institutionId={institutionQuery.data}
+          />
+          <AcademicRecoveryPanel
+            profileId={profile.id}
+            institutionId={institutionQuery.data}
+          />
+        </div>
+      </TeacherWorkspacePage>
+    );
+  }
+
+  if (location.pathname === '/dashboard/class-councils') {
+    return (
+      <TeacherWorkspacePage
+        title="Conselhos de classe"
+        description="Consulte os conselhos das suas turmas e registre sua contribuição por aluno."
+      >
+        <TeacherClassCouncilsPanel />
       </TeacherWorkspacePage>
     );
   }
@@ -276,9 +300,6 @@ export default function TeacherDashboard() {
               Olá, {firstName}!
             </h1>
 
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/85">
-              Suas turmas e disciplinas abaixo foram carregadas diretamente das ofertas acadêmicas.
-            </p>
           </div>
 
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/15">

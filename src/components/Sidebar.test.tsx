@@ -172,7 +172,7 @@ describe('Sidebar', () => {
     ).toBeNull();
   });
 
-  it('não exibe Diretores como módulo administrativo', () => {
+  it('exibe Diretores e oculta Secretaria para ADMIN', () => {
     renderSidebar();
 
     fireEvent.click(
@@ -180,11 +180,14 @@ describe('Sidebar', () => {
     );
 
     expect(
-      screen.queryByRole('link', { name: /^diretores$/i }),
+      screen.getByRole('link', { name: /^diretores$/i }),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole('link', { name: /^secretaria$/i }),
     ).toBeNull();
     expect(
-      screen.getByRole('link', { name: /^secretaria$/i }),
-    ).toBeTruthy();
+      screen.queryByRole('button', { name: /comunica..o e recursos/i }),
+    ).toBeNull();
   });
 
   it('exibe somente Plataforma para SUPER_ADMIN em /platform', () => {
@@ -653,6 +656,16 @@ describe('sidebar navigation helpers', () => {
     expect(subjectsItem?.label).toBe('Disciplinas e professores');
     expect(subjectsItem?.path).toBe('/dashboard/subjects');
 
+    expect(studentItems.map((item) => item.id)).toEqual(
+      expect.arrayContaining([
+        'student-study',
+        'library',
+        'student-attendance',
+        'student-grades',
+        'student-report-card',
+      ]),
+    );
+
     const teacherItems = getSidebarNavigationItems({
       profile: {
         ...baseProfile,
@@ -666,6 +679,12 @@ describe('sidebar navigation helpers', () => {
     expect(
       teacherItems.map((item) => item.id),
     ).toContain('student-timetable');
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toContain('library');
+    expect(
+      teacherItems.map((item) => item.id),
+    ).toContain('teacher-pedagogical-center');
     expect(
       teacherItems.map((item) => item.id),
     ).toEqual(
@@ -689,6 +708,39 @@ describe('sidebar navigation helpers', () => {
     expect(
       directorItems.map((item) => item.id),
     ).not.toContain('student-timetable');
+  });
+
+  it('mostra resultados acadêmicos dedicados somente no menu do responsável', () => {
+    const parentItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'GUARDIAN',
+      },
+      currentInstitutionRole: 'GUARDIAN',
+      currentUserRole: 'parent',
+      pathname: '/guardian/grades',
+    });
+
+    expect(parentItems.map((item) => item.id)).toEqual(
+      expect.arrayContaining([
+        'guardian-attendance',
+        'guardian-grades',
+        'guardian-report-card',
+      ]),
+    );
+    expect(parentItems.map((item) => item.id)).not.toContain('student-grades');
+
+    const studentItems = getSidebarNavigationItems({
+      profile: {
+        ...baseProfile,
+        role: 'STUDENT',
+      },
+      currentInstitutionRole: 'STUDENT',
+      currentUserRole: 'student',
+      pathname: '/student/grades',
+    });
+
+    expect(studentItems.map((item) => item.id)).not.toContain('guardian-grades');
   });
 
   it('mostra Personalizar login somente para DIRECTOR', () => {

@@ -32,25 +32,13 @@ interface HeaderProps {
   onToggleSidebar: () => void;
   onLogout: () => void;
   onUpdateProfileName: (fullName: string) => Promise<void>;
-  onUpdateAvatar?: (file: File) => Promise<void>;
-  onRemoveAvatar?: () => Promise<void>;
+  onUpdateProfileAvatar?: (file: File) => Promise<void>;
+  onRemoveProfileAvatar?: () => Promise<void>;
   onUpdateSelfRegistration?: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   theme: ThemePreference;
   onToggleTheme: () => void;
   mobileMenuButtonRef?: RefObject<HTMLButtonElement | null>;
-}
-
-function getUserInitials(name: string): string {
-  const initials = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join('');
-
-  return initials || 'U';
 }
 
 export default function Header({
@@ -66,8 +54,8 @@ export default function Header({
   onToggleSidebar,
   onLogout,
   onUpdateProfileName,
-  onUpdateAvatar = async () => undefined,
-  onRemoveAvatar = async () => undefined,
+  onUpdateProfileAvatar = async () => undefined,
+  onRemoveProfileAvatar = async () => undefined,
   onUpdateSelfRegistration = async () => undefined,
   onUpdatePassword,
   theme,
@@ -80,8 +68,6 @@ export default function Header({
     useState(false);
   const [accountFeedback, setAccountFeedback] =
     useState<string | null>(null);
-  const [avatarFailed, setAvatarFailed] =
-    useState(false);
   const userMenuRef =
     useRef<HTMLDivElement | null>(null);
   const userMenuButtonRef =
@@ -89,12 +75,8 @@ export default function Header({
 
   const avatarUrl =
     currentUser.avatar?.trim() || null;
-  const userInitials =
-    getUserInitials(currentUser.name);
-
-  useEffect(() => {
-    setAvatarFailed(false);
-  }, [avatarUrl]);
+  const institutionName =
+    currentInstitutionName?.trim() || null;
 
   useEffect(() => {
     if (!isUserMenuOpen) {
@@ -155,6 +137,18 @@ export default function Header({
     };
   }, []);
 
+  useEffect(() => {
+    if (!accountFeedback) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setAccountFeedback(null);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [accountFeedback]);
+
   function handleLogout(): void {
     setIsUserMenuOpen(false);
     onLogout();
@@ -167,7 +161,7 @@ export default function Header({
   }
 
   return (
-    <header className="sticky top-0 z-30 border-b border-[#d8deea] bg-white/95 shadow-sm backdrop-blur">
+    <header data-print-hide className="sticky top-0 z-30 border-b border-[#d8deea] bg-white/95 shadow-sm backdrop-blur">
       <div className="flex min-h-16 items-center gap-3 px-4 sm:px-5 lg:px-6">
         <button
           ref={mobileMenuButtonRef}
@@ -261,26 +255,8 @@ export default function Header({
               </span>
             </span>
 
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
-              {avatarUrl && !avatarFailed ? (
-                <img
-                  className="h-full w-full object-contain"
-                  alt={`Foto de ${currentUser.name}`}
-                  src={avatarUrl}
-                  referrerPolicy="no-referrer"
-                  onError={() =>
-                    setAvatarFailed(true)
-                  }
-                />
-              ) : (
-                <span aria-hidden="true">
-                  {userInitials}
-                </span>
-              )}
-            </span>
-
             <ChevronDown
-              className={`hidden h-4 w-4 text-[#667085] transition-transform sm:block ${
+              className={`h-4 w-4 shrink-0 text-[#667085] transition-transform ${
                 isUserMenuOpen
                   ? 'rotate-180'
                   : ''
@@ -292,17 +268,18 @@ export default function Header({
           {isUserMenuOpen && (
             <section
               id="header-user-menu"
-              className="absolute right-0 mt-2 w-72 overflow-hidden rounded-xl border border-[#d8deea] bg-white shadow-xl shadow-slate-950/10"
+              className="absolute right-0 mt-2 w-[min(24rem,calc(100vw-1rem))] max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl border border-[#d8deea] bg-white shadow-xl shadow-slate-950/10 sm:w-80"
               aria-label="Menu do usuário"
             >
               <div className="border-b border-[#e4e8f1] bg-[#f8faff] p-4">
                 <div className="flex items-start gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f]">
-                    {userInitials}
-                  </span>
-
                   <div className="min-w-0">
-                    <p className="truncate text-sm font-bold text-[#181c20]">
+                    {institutionName ? (
+                      <p className="break-words whitespace-normal text-sm font-semibold leading-snug text-[#414754]">
+                        {institutionName}
+                      </p>
+                    ) : null}
+                    <p className="mt-2 break-words whitespace-normal text-sm font-bold leading-snug text-[#181c20]">
                       {currentUser.name}
                     </p>
                     <p className="mt-0.5 truncate text-xs text-[#667085]">
@@ -311,11 +288,6 @@ export default function Header({
                     <p className="mt-2 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#061f6f] ring-1 ring-[#d8deea]">
                       {currentUser.subtitle}
                     </p>
-                    {currentInstitutionName ? (
-                      <p className="mt-2 truncate text-xs font-semibold text-[#414754]">
-                        {currentInstitutionName}
-                      </p>
-                    ) : null}
                   </div>
                 </div>
               </div>
@@ -374,8 +346,8 @@ export default function Header({
           onClose={() => setIsAccountModalOpen(false)}
           onUpdateName={onUpdateProfileName}
           currentAvatar={avatarUrl}
-          onUpdateAvatar={onUpdateAvatar}
-          onRemoveAvatar={onRemoveAvatar}
+          onUpdateAvatar={onUpdateProfileAvatar}
+          onRemoveAvatar={onRemoveProfileAvatar}
           onUpdateSelfRegistration={onUpdateSelfRegistration}
           onUpdatePassword={onUpdatePassword}
           onSuccess={setAccountFeedback}

@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-geography-geography_territory-1",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "territorio",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "TERRITORIO",
+    "statement": "Uma comunidade controla o uso de uma area e define regras de acesso. Esse espaco e analisado como:",
+    "options": [
+      "Territorio.",
+      "Clima.",
+      "Relevo apenas.",
+      "Fuso horario."
+    ],
+    "correctAnswer": "Territorio.",
+    "explanation": "Territorio envolve poder, controle e apropriacao do espaco.",
+    "misconceptions": {
+      "Clima.": [
+        "TERRITORY_CONFUSED_WITH_LOCATION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-2",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "paisagem",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "PAISAGEM",
+    "statement": "Uma paisagem com predios, avenida e rio registra:",
+    "options": [
+      "Somente atividades rurais.",
+      "Elementos naturais e transformacoes humanas.",
+      "Somente clima.",
+      "Apenas fronteiras politicas."
+    ],
+    "correctAnswer": "Elementos naturais e transformacoes humanas.",
+    "explanation": "Paisagem reune elementos percebidos e suas marcas historicas.",
+    "misconceptions": {
+      "Somente clima.": [
+        "LANDSCAPE_NATURAL_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-3",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "escala",
+    "primarySkill": "GEOGRAPHY_MAP_SCALE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "ESCALA",
+    "statement": "Em um mapa de escala grande, uma quadra aparece com mais detalhes porque:",
+    "options": [
+      "A escala nao muda o detalhe.",
+      "A legenda deixa de ser necessaria.",
+      "A area representada e menor e o detalhamento e maior.",
+      "Todo mapa grande mostra o planeta."
+    ],
+    "correctAnswer": "A area representada e menor e o detalhamento e maior.",
+    "explanation": "Escala grande permite observar area menor com mais detalhe.",
+    "misconceptions": {
+      "Todo mapa grande mostra o planeta.": [
+        "MAP_SCALE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-4",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "rede urbana",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "REDE_URBANA",
+    "statement": "Uma cidade ligada a outras por transporte, comercio e servicos participa de:",
+    "options": [
+      "Um ecossistema fechado.",
+      "Uma bacia hidrografica.",
+      "Uma fronteira natural.",
+      "Uma rede urbana."
+    ],
+    "correctAnswer": "Uma rede urbana.",
+    "explanation": "Fluxos entre cidades formam redes de relacoes.",
+    "misconceptions": {
+      "Um ecossistema fechado.": [
+        "URBAN_NETWORK_DENIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-5",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "legenda",
+    "primarySkill": "GEOGRAPHY_MAP_SCALE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "LEGENDA",
+    "statement": "A legenda de um mapa serve para:",
+    "options": [
+      "Explicar simbolos e cores usados na representacao.",
+      "Indicar apenas a orientacao do norte.",
+      "Substituir a escala.",
+      "Mostrar dados que nao foram mapeados."
+    ],
+    "correctAnswer": "Explicar simbolos e cores usados na representacao.",
+    "explanation": "A legenda permite interpretar sinais cartograficos.",
+    "misconceptions": {
+      "Indicar apenas a orientacao do norte.": [
+        "LEGEND_CONFUSED_WITH_SCALE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-6",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "fronteira",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "FRONTEIRA",
+    "statement": "Uma fronteira politica pode mudar por acordos ou conflitos. Isso mostra que:",
+    "options": [
+      "Mapas nao expressam poder.",
+      "Fronteiras sao construcoes historicas e politicas.",
+      "Fronteiras naturais nunca mudam.",
+      "Todo limite e apenas fisico."
+    ],
+    "correctAnswer": "Fronteiras sao construcoes historicas e politicas.",
+    "explanation": "Limites territoriais resultam de processos sociais e politicos.",
+    "misconceptions": {
+      "Fronteiras naturais nunca mudam.": [
+        "BORDER_TREATED_AS_NATURAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-7",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "uso do solo",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "USO_DO_SOLO",
+    "statement": "A substituicao de area verde por estacionamento altera principalmente:",
+    "options": [
+      "A distancia ao Sol.",
+      "A composicao do nucleo terrestre.",
+      "O uso do solo e a drenagem local.",
+      "A rotacao da Terra."
+    ],
+    "correctAnswer": "O uso do solo e a drenagem local.",
+    "explanation": "Cobertura e uso do solo influenciam escoamento e ocupacao.",
+    "misconceptions": {
+      "A rotacao da Terra.": [
+        "LAND_USE_EFFECT_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-8",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "populacao",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "POPULACAO",
+    "statement": "Um mapa mostra concentracao de moradores perto de corredores de onibus. Uma hipotese adequada e:",
+    "options": [
+      "Onibus determinam toda renda.",
+      "Nao existe relacao espacial possivel.",
+      "A populacao se distribui ao acaso.",
+      "Transporte influencia acessibilidade e ocupacao."
+    ],
+    "correctAnswer": "Transporte influencia acessibilidade e ocupacao.",
+    "explanation": "A concentracao sugere uma relacao a investigar.",
+    "misconceptions": {
+      "Onibus determinam toda renda.": [
+        "SPATIAL_PATTERN_OVERSTATED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-9",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "clima e tempo",
+    "primarySkill": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CLIMA_E_TEMPO",
+    "statement": "A previsao indica chuva amanha; a media de chuvas de uma regiao em trinta anos descreve:",
+    "options": [
+      "Clima.",
+      "Tempo atmosferico de amanha.",
+      "Latitude apenas.",
+      "Relevo de uma rua."
+    ],
+    "correctAnswer": "Clima.",
+    "explanation": "Clima e o comportamento medio em periodo longo.",
+    "misconceptions": {
+      "Tempo atmosferico de amanha.": [
+        "CLIMATE_TIME_CONFUSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-10",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "migracao",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MIGRACAO",
+    "statement": "Pessoas deixam uma regiao por falta de trabalho e procuram emprego em outra. Esse movimento e:",
+    "options": [
+      "Urbanizacao sem deslocamento.",
+      "Migracao motivada por fator economico.",
+      "Rotacao terrestre.",
+      "Erosao."
+    ],
+    "correctAnswer": "Migracao motivada por fator economico.",
+    "explanation": "A mudanca de lugar tem relacao com oportunidade de trabalho.",
+    "misconceptions": {
+      "Rotacao terrestre.": [
+        "MIGRATION_CAUSE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-11",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "alagamento",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "ALAGAMENTO",
+    "statement": "A impermeabilizacao de muitas ruas pode aumentar alagamentos porque:",
+    "options": [
+      "A chuva deixa de existir.",
+      "O relevo desaparece.",
+      "A agua infiltra menos e escoa mais rapidamente.",
+      "O solo passa a absorver mais agua."
+    ],
+    "correctAnswer": "A agua infiltra menos e escoa mais rapidamente.",
+    "explanation": "Superficies impermeaveis reduzem infiltracao.",
+    "misconceptions": {
+      "O solo passa a absorver mais agua.": [
+        "IMPERMEABILITY_EFFECT_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-12",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "desigualdade territorial",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DESIGUALDADE_TERRITORIAL",
+    "statement": "Dois bairros tem a mesma distancia do centro, mas servicos diferentes. O que a analise deve considerar?",
+    "options": [
+      "Somente a distancia em linha reta.",
+      "Apenas o nome dos bairros.",
+      "A altitude como unica causa.",
+      "Infraestrutura, renda, mobilidade e politicas territoriais."
+    ],
+    "correctAnswer": "Infraestrutura, renda, mobilidade e politicas territoriais.",
+    "explanation": "Desigualdade territorial resulta de varios fatores articulados.",
+    "misconceptions": {
+      "Somente a distancia em linha reta.": [
+        "DISTANCE_EXPLAINS_ALL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-geography-review-01",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "Interpretar territorio e paisagem",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um bairro recebeu novos terminais de onibus e passou a concentrar comercio nas avenidas principais. O caso evidencia que territorio envolve:",
+    "options": [
+      "Uso do espaco por praticas e relacoes de poder.",
+      "Apenas elementos naturais sem acao humana.",
+      "Uma divisao fixa que nunca muda.",
+      "Somente a distancia entre dois pontos."
+    ],
+    "correctAnswer": "Uso do espaco por praticas e relacoes de poder.",
+    "explanation": "Territorio e produzido por usos, fluxos e relacoes sociais no espaco.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

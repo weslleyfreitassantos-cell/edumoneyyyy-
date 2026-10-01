@@ -3,10 +3,16 @@
 import {
   cleanup,
   fireEvent,
-  render,
+  render as renderComponent,
   screen,
   waitFor,
 } from '@testing-library/react';
+import type { ReactNode } from 'react';
+import {
+  createMemoryRouter,
+  Link,
+  RouterProvider,
+} from 'react-router-dom';
 import {
   afterEach,
   beforeEach,
@@ -26,6 +32,47 @@ const mutateAsync = vi.fn();
 const useTeacherAttendanceOfferings = vi.fn();
 const useAttendanceRollCall = vi.fn();
 const useSaveAttendanceRollCall = vi.fn();
+const useSubjectOfferingWorkloadProgress = vi.fn();
+
+function createDiaryTestRouter(
+  element: ReactNode,
+  initialEntries = ['/dashboard/class-diary'],
+) {
+  return createMemoryRouter(
+    [
+      { path: '/next', element: <p>Destino da navegação</p> },
+      { path: '/previous', element: <p>Tela anterior</p> },
+      { path: '*', element },
+    ],
+    { initialEntries },
+  );
+}
+
+function render(element: ReactNode) {
+  const router = createDiaryTestRouter(element);
+  return renderComponent(<RouterProvider router={router} />);
+}
+
+function renderDiaryWithNavigation() {
+  const router = createDiaryTestRouter(
+    <>
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />
+      <Link to="/next">Outra tela</Link>
+    </>,
+  );
+
+  return {
+    router,
+    ...renderComponent(<RouterProvider router={router} />),
+  };
+}
+
+vi.mock('../../lib/supabaseClient', () => ({
+  supabase: {},
+}));
 
 vi.mock('../../hooks/useAttendance', () => ({
   useTeacherAttendanceOfferings: (
@@ -35,6 +82,12 @@ vi.mock('../../hooks/useAttendance', () => ({
     useAttendanceRollCall(...args),
   useSaveAttendanceRollCall: () =>
     useSaveAttendanceRollCall(),
+}));
+
+vi.mock('../../hooks/useWorkload', () => ({
+  useSubjectOfferingWorkloadProgress: (
+    ...args: unknown[]
+  ) => useSubjectOfferingWorkloadProgress(...args),
 }));
 
 const offering = {
@@ -72,8 +125,10 @@ const rollCall = {
     startsAt: null,
     endsAt: null,
     topic: null,
+    classActivity: null,
+    homework: null,
     notes: null,
-    status: 'CLOSED',
+    status: 'DRAFT',
     createdBy: 'teacher-1',
     closedAt: '2026-02-02T10:00:00.000Z',
     createdAt: '2026-02-02T10:00:00.000Z',
@@ -112,6 +167,10 @@ const rollCall = {
 };
 
 beforeEach(() => {
+  Object.defineProperty(window, 'confirm', {
+    configurable: true,
+    value: vi.fn(() => true),
+  });
   mutateAsync.mockReset();
   mutateAsync.mockResolvedValue(rollCall);
 
@@ -136,10 +195,18 @@ beforeEach(() => {
     isError: false,
     error: null,
   });
+
+  useSubjectOfferingWorkloadProgress.mockReturnValue({
+    data: null,
+    isLoading: false,
+    isError: false,
+    error: null,
+  });
 });
 
 afterEach(() => {
   cleanup();
+  vi.useRealTimers();
 });
 
 describe('TeacherAttendancePanel', () => {
@@ -165,7 +232,7 @@ describe('TeacherAttendancePanel', () => {
     ).toBeTruthy();
   });
 
-  it('carrega chamada existente para correção', () => {
+  it('carrega chamada existente para correção sem marcar alterações', async () => {
     render(
       <TeacherAttendancePanel
         profileId="teacher-1"
@@ -173,18 +240,16 @@ describe('TeacherAttendancePanel', () => {
       />,
     );
 
-    expect(
-      screen.getByText(
-        /Sessão carregada para correção/,
-      ),
-    ).toBeTruthy();
+    expect(screen.getByText('Registro da aula')).toBeTruthy();
+    expect(screen.getByText('Matemática · 1A')).toBeTruthy();
+    expect(screen.getByText('Rascunho')).toBeTruthy();
     const dateInput = screen.getByLabelText('Data');
     expect(dateInput.getAttribute('lang')).toBe('pt-BR');
     expect(dateInput.getAttribute('min')).toBe('2026-02-09');
     expect(dateInput.getAttribute('max')).toBe('2026-05-09');
     expect(
       screen.getByText(
-        'Período permitido: 09/02/2026 a 09/05/2026.',
+        'Período "1º bimestre" permitido: 09/02/2026 a 09/05/2026.',
       ),
     ).toBeTruthy();
     expect(
@@ -196,6 +261,161 @@ describe('TeacherAttendancePanel', () => {
     expect(
       screen.getByText('Bruno Lima'),
     ).toBeTruthy();
+    expect(screen.getByText(/2 alunos/)).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Marcar presentes' })).toBeTruthy();
+    await waitFor(() => {
+      expect(screen.getByText('Tudo salvo')).toBeTruthy();
+    });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+  });
+
+  it('prepara chamada nova sem falso estado dirty e mantém salvar disponível', async () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        session: null,
+        records: rollCall.records.map((record) => ({
+          ...record,
+          status: 'PRESENT' as const,
+          notes: null,
+        })),
+      },
+      dataUpdatedAt: 10,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+    });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+    expect(screen.queryByText('Tudo salvo')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(false);
+    expect(screen.getByRole('button', { name: /Finalizar aula/ }).hasAttribute('disabled')).toBe(false);
+  });
+
+  it('limpa o dirty state ao restaurar o baseline do conteúdo', async () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: { ...rollCall, session: null },
+      dataUpdatedAt: 11,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+    });
+    const topicInput = screen.getByLabelText('Conteúdo ministrado');
+    fireEvent.change(topicInput, { target: { value: 'Conteúdo temporário' } });
+    expect(screen.getByText('Alterações não salvas')).toBeTruthy();
+
+    fireEvent.change(topicInput, { target: { value: '' } });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+    expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+  });
+
+  it('marca alteração de frequência e considera o formulário salvo após persistir', async () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        session: null,
+        records: rollCall.records.map((record) => ({
+          ...record,
+          status: 'PRESENT' as const,
+          notes: null,
+        })),
+      },
+      dataUpdatedAt: 12,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(screen.getByText('Chamada pronta para preenchimento')).toBeTruthy();
+    });
+    fireEvent.change(screen.getByLabelText(/Status de Ana Silva/), {
+      target: { value: 'ABSENT' },
+    });
+    expect(screen.getByText('Alterações não salvas')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          action: 'SAVE_DRAFT',
+          records: expect.arrayContaining([
+            expect.objectContaining({ studentId: 'student-1', status: 'ABSENT' }),
+          ]),
+        }),
+      );
+      expect(screen.getByText('Tudo salvo')).toBeTruthy();
+    });
+    expect(screen.queryByText('Alterações não salvas')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(true);
+  });
+
+  it('prioriza a atribuição com aula no dia e exibe o período no rótulo', async () => {
+    const secondOffering = {
+      ...offering,
+      id: 'offering-2',
+      termId: 'term-3',
+      termName: '3º bimestre',
+      termStartDate: null,
+      termEndDate: null,
+      scheduleSlots: [
+        {
+          dayOfWeek: 3,
+          startTime: '10:50:00',
+          endTime: '11:40:00',
+        },
+      ],
+    };
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [{ ...offering, termStartDate: null, termEndDate: null }, secondOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await waitFor(() => {
+      expect(
+        (screen.getByLabelText('Atribuição') as HTMLSelectElement).value,
+      ).toBe('offering-2');
+    });
+    expect(screen.getByRole('option', {
+      name: 'Matemática · Turma 1A · 3º bimestre',
+    })).toBeTruthy();
   });
 
   it('prepara uma data válida quando a atribuição não cobre hoje', async () => {
@@ -220,9 +440,39 @@ describe('TeacherAttendancePanel', () => {
 
     if (expectedDate !== getTodayDateInputValue()) {
       expect(
-        screen.getByRole('status').textContent,
+        screen.getByText(/A data de hoje está fora do período/).textContent,
       ).toMatch(/A data de hoje está fora do período/);
     }
+  });
+
+  it('não exibe aviso quando a data civil de hoje está no período atual', () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2026, 8, 9, 21, 30));
+
+    const currentOffering = {
+      ...offering,
+      termName: '3º bimestre',
+      termStartDate: '2026-06-26',
+      termEndDate: '2026-09-17',
+    };
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [currentOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(
+      (screen.getByLabelText('Data') as HTMLInputElement).value,
+    ).toBe('2026-09-09');
+    expect(screen.queryByText(/A data de hoje está fora do período/)).toBeNull();
   });
 
   it('marca todos presentes e permite sobrescrever aluno individual', async () => {
@@ -303,5 +553,549 @@ describe('TeacherAttendancePanel', () => {
         })
         .hasAttribute('disabled'),
     ).toBe(true);
+  });
+
+  it('mostra aula suspensa e desabilita edição quando não há sessão histórica', () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        session: null,
+        records: [],
+        calendarStatus: {
+          date: '2026-02-02',
+          state: 'BLOCKED',
+          blocked: true,
+          blockers: [
+            { event_id: 'event-1', event_type: 'HOLIDAY' },
+          ],
+        },
+        attendanceAllowed: false,
+      },
+      dataUpdatedAt: 2,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getAllByText('Aula suspensa').length).toBeGreaterThan(0);
+    expect(screen.getByText('Feriado')).toBeTruthy();
+    expect(
+      screen
+        .getByRole('button', { name: /Marcar presentes/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen.getByText(/Nenhuma chamada editável/),
+    ).toBeTruthy();
+  });
+
+  it('exibe e troca o horário da chamada quando há dois slots no dia', async () => {
+    const multiSlotOffering = {
+      ...offering,
+      scheduleSlots: [
+        {
+          dayOfWeek: 1,
+          startTime: '07:00:00',
+          endTime: '07:50:00',
+        },
+        {
+          dayOfWeek: 1,
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+        },
+      ],
+    };
+    const secondSlotRollCall = {
+      ...rollCall,
+      scheduleSlot: {
+        dayOfWeek: 1,
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+      records: [rollCall.records[1]],
+    };
+
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [multiSlotOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    useAttendanceRollCall.mockImplementation(
+      (...args: unknown[]) => {
+        const slot = args[3] as
+          | { startTime: string; endTime: string }
+          | undefined;
+
+        return {
+          data:
+            slot?.startTime === '08:00:00'
+              ? secondSlotRollCall
+              : slot?.startTime === '07:00:00'
+                ? rollCall
+                : undefined,
+          dataUpdatedAt: slot?.startTime === '08:00:00' ? 2 : 1,
+          isLoading: false,
+          isError: false,
+          error: null,
+        };
+      },
+    );
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    const slotSelect = await screen.findByLabelText(
+      'Horário da aula',
+    );
+    expect(
+      screen.getByRole('option', {
+        name: '07:00 a 07:50',
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('option', {
+        name: '08:00 a 08:50',
+      }),
+    ).toBeTruthy();
+
+    fireEvent.change(slotSelect, {
+      target: { value: '08:00:00|08:50:00' },
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Bruno Lima')).toBeTruthy();
+      expect(
+        useAttendanceRollCall,
+      ).toHaveBeenCalledWith(
+        'institution-1',
+        'offering-1',
+        expect.any(String),
+        {
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+        },
+        true,
+      );
+    });
+    expect(screen.queryByText('Ana Silva')).toBeNull();
+
+    fireEvent.change(
+      screen.getByLabelText(/Status de Bruno Lima/),
+      { target: { value: 'PRESENT' } },
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: /Salvar chamada/ }),
+    );
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          scheduleSlot: {
+            startTime: '08:00:00',
+            endTime: '08:50:00',
+          },
+        }),
+      );
+    });
+  });
+
+  it('navega por slots históricos sem timetable e mantém a chamada somente leitura', async () => {
+    const historicalOffering = {
+      ...offering,
+      scheduleSlots: [],
+      selectableSlots: [
+        {
+          dayOfWeek: 1,
+          startTime: '07:00:00',
+          endTime: '07:50:00',
+          source: 'HISTORICAL' as const,
+        },
+        {
+          dayOfWeek: 1,
+          startTime: '08:00:00',
+          endTime: '08:50:00',
+          source: 'HISTORICAL' as const,
+        },
+      ],
+    };
+    const historical08RollCall = {
+      ...rollCall,
+      scheduleSlot: {
+        dayOfWeek: 1,
+        startTime: '08:00:00',
+        endTime: '08:50:00',
+      },
+      session: {
+        ...rollCall.session,
+        id: 'session-08',
+        startsAt: '08:00:00',
+        endsAt: '08:50:00',
+      },
+      records: [rollCall.records[1]],
+    };
+
+    useTeacherAttendanceOfferings.mockReturnValue({
+      data: [historicalOffering],
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    useAttendanceRollCall.mockImplementation(
+      (...args: unknown[]) => ({
+        data:
+          (args[3] as { startTime?: string } | undefined)
+            ?.startTime === '08:00:00'
+            ? historical08RollCall
+            : undefined,
+        dataUpdatedAt:
+          (args[3] as { startTime?: string } | undefined)
+            ?.startTime === '08:00:00'
+            ? 2
+            : 1,
+        isLoading: false,
+        isError: false,
+        error: null,
+      }),
+    );
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    const slotSelect = await screen.findByLabelText(
+      'Horário da aula',
+    );
+    expect(
+      screen.getByRole('option', {
+        name: '07:00 a 07:50 · Histórico',
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole('option', {
+        name: '08:00 a 08:50 · Histórico',
+      }),
+    ).toBeTruthy();
+
+    fireEvent.change(slotSelect, {
+      target: { value: '08:00:00|08:50:00' },
+    });
+
+    await waitFor(() => {
+      expect(screen.getByText('Bruno Lima')).toBeTruthy();
+    });
+    expect(
+      screen.getByText(
+        'Esta chamada pertence a um horário histórico que não está mais na grade publicada.',
+      ),
+    ).toBeTruthy();
+    expect(
+      screen
+        .getByLabelText(/Status de Bruno Lima/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByLabelText(/Observação de Bruno Lima/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Marcar presentes/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Salvar chamada/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+  });
+
+  it('torna sessão histórica somente leitura quando o calendário bloqueia a data', () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: {
+        ...rollCall,
+        calendarStatus: {
+          date: '2026-02-02',
+          state: 'BLOCKED',
+          blocked: true,
+          blockers: [
+            { event_id: 'event-1', event_type: 'HOLIDAY' },
+          ],
+        },
+        attendanceAllowed: false,
+      },
+      dataUpdatedAt: 3,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getByText('Ana Silva')).toBeTruthy();
+    expect(screen.getByText('Bruno Lima')).toBeTruthy();
+    expect(screen.getByText(/já existe uma chamada registrada/)).toBeTruthy();
+    expect(
+      screen
+        .getByLabelText(/Status de Ana Silva/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByLabelText(/Observação de Ana Silva/)
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Marcar presentes/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+    expect(
+      screen
+        .getByRole('button', { name: /Salvar chamada/ })
+        .hasAttribute('disabled'),
+    ).toBe(true);
+  });
+
+  it('exibe o progresso da carga horária da atribuição', () => {
+    useSubjectOfferingWorkloadProgress.mockReturnValue({
+      data: {
+        subjectOfferingId: 'offering-1',
+        termStartDate: '2026-02-01',
+        termEndDate: '2026-04-30',
+        referenceDate: '2026-03-01',
+        plannedOccurrences: 10,
+        plannedOccurrencesToDate: 5,
+        suspendedOccurrences: 1,
+        deliveredSessions: 7,
+        plannedMinutes: 450,
+        plannedMinutesToDate: 250,
+        deliveredMinutes: 350,
+        completionPercent: 77.78,
+        deliveryVsPlanToDatePercent: 140,
+      },
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getByText('Carga prevista no período')).toBeTruthy();
+    expect(screen.getByText('7h 30min')).toBeTruthy();
+    expect(screen.getByText('77.78%')).toBeTruthy();
+    expect(screen.getByText('140%')).toBeTruthy();
+  });
+
+  it('permite salvar os campos do Diário como rascunho', async () => {
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Equação do segundo grau' },
+    });
+    expect(screen.getByText('Alterações não salvas')).toBeTruthy();
+    fireEvent.change(screen.getByLabelText('Atividade realizada'), {
+      target: { value: 'Exercícios 1 a 10' },
+    });
+    fireEvent.change(screen.getByLabelText('Tarefa'), {
+      target: { value: 'Exercícios 11 a 15' },
+    });
+    fireEvent.change(screen.getByLabelText('Observações da aula'), {
+      target: { value: 'Revisar Bhaskara.' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+
+    await waitFor(() => {
+      expect(mutateAsync).toHaveBeenCalledWith(
+        expect.objectContaining({
+          action: 'SAVE_DRAFT',
+          topic: 'Equação do segundo grau',
+          classActivity: 'Exercícios 1 a 10',
+          homework: 'Exercícios 11 a 15',
+          notes: 'Revisar Bhaskara.',
+        }),
+      );
+    });
+  });
+
+  it('mantém aula CLOSED somente para leitura', () => {
+    useAttendanceRollCall.mockReturnValue({
+      data: rollCall,
+      dataUpdatedAt: 4,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+    const closedRollCall = {
+      ...rollCall,
+      session: { ...rollCall.session, status: 'CLOSED' as const },
+    };
+    useAttendanceRollCall.mockReturnValue({
+      data: closedRollCall,
+      dataUpdatedAt: 5,
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    expect(screen.getAllByText(/Aula finalizada/).length).toBeGreaterThan(0);
+    expect(screen.getByLabelText('Conteúdo ministrado').hasAttribute('disabled')).toBe(true);
+    expect(screen.getByRole('button', { name: 'Salvar rascunho' }).hasAttribute('disabled')).toBe(true);
+    expect(screen.getByRole('button', { name: /Finalizar aula/ }).hasAttribute('disabled')).toBe(true);
+  });
+
+  it('bloqueia navegação da sidebar quando existem alterações não salvas', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Alteração ainda não salva' },
+    });
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+
+    expect(await screen.findByRole('alertdialog')).toBeTruthy();
+    expect(screen.queryByText('Destino da navegação')).toBeNull();
+  });
+
+  it('continuar editando cancela a saída e preserva o formulário', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    const topic = screen.getByLabelText('Conteúdo ministrado') as HTMLTextAreaElement;
+    fireEvent.change(topic, { target: { value: 'Conteúdo preservado' } });
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Continuar editando' }));
+
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+    expect(screen.getByLabelText('Conteúdo ministrado')).toHaveProperty('value', 'Conteúdo preservado');
+    expect(screen.queryByText('Destino da navegação')).toBeNull();
+  });
+
+  it('descartar alterações permite concluir a navegação', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Conteúdo descartável' },
+    });
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+    fireEvent.click(await screen.findByRole('button', { name: 'Descartar alterações' }));
+
+    expect(await screen.findByText('Destino da navegação')).toBeTruthy();
+  });
+
+  it('navega sem confirmação depois de salvar o rascunho', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Conteúdo salvo' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar rascunho' }));
+
+    await waitFor(() => expect(mutateAsync).toHaveBeenCalled());
+    await waitFor(() => expect(screen.queryByText('Alterações não salvas')).toBeNull());
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+
+    expect(await screen.findByText('Destino da navegação')).toBeTruthy();
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+  });
+
+  it('navega sem confirmação quando o diário não foi editado', async () => {
+    renderDiaryWithNavigation();
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.click(screen.getByRole('link', { name: 'Outra tela' }));
+
+    expect(await screen.findByText('Destino da navegação')).toBeTruthy();
+    expect(screen.queryByRole('alertdialog')).toBeNull();
+  });
+
+  it('bloqueia o voltar do navegador enquanto há alterações não salvas', async () => {
+    const router = createDiaryTestRouter(
+      <TeacherAttendancePanel profileId="teacher-1" institutionId="institution-1" />,
+      ['/previous', '/dashboard/class-diary'],
+    );
+    renderComponent(<RouterProvider router={router} />);
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Alteração antes de voltar' },
+    });
+    await router.navigate(-1);
+
+    expect(await screen.findByRole('alertdialog')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Descartar alterações' }));
+    expect(await screen.findByText('Tela anterior')).toBeTruthy();
+  });
+
+  it('protege a troca de data que substituiria um diário editado', async () => {
+    render(
+      <TeacherAttendancePanel
+        profileId="teacher-1"
+        institutionId="institution-1"
+      />,
+    );
+
+    await screen.findByLabelText('Conteúdo ministrado');
+    const date = screen.getByLabelText('Data') as HTMLInputElement;
+    const originalDate = date.value;
+    fireEvent.change(screen.getByLabelText('Conteúdo ministrado'), {
+      target: { value: 'Não descartar sem perguntar' },
+    });
+    fireEvent.change(date, { target: { value: '2026-03-01' } });
+
+    expect(await screen.findByRole('alertdialog')).toBeTruthy();
+    fireEvent.click(screen.getByRole('button', { name: 'Continuar editando' }));
+    expect((screen.getByLabelText('Data') as HTMLInputElement).value).toBe(originalDate);
+    expect(screen.getByLabelText('Conteúdo ministrado')).toHaveProperty(
+      'value',
+      'Não descartar sem perguntar',
+    );
+
+    fireEvent.change(screen.getByLabelText('Data'), {
+      target: { value: '2026-03-01' },
+    });
+    fireEvent.click(await screen.findByRole('button', { name: 'Descartar alterações' }));
+    await waitFor(() => {
+      expect((screen.getByLabelText('Data') as HTMLInputElement).value).toBe('2026-03-01');
+    });
   });
 });

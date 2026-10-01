@@ -8,12 +8,20 @@ import { useAuth } from '../contexts/AuthContext';
 import { useCurrentInstitution } from '../hooks/useCurrentInstitution';
 import { useSchoolScheduleBreaks } from '../hooks/useAcademicTermClosing';
 import { useTeacherDashboard } from '../hooks/useTeacherDashboard';
-import { useTeacherTimetable } from '../hooks/useTimetable';
+import {
+  useTeacherTimetable,
+  useTimetableCalendarStatuses,
+} from '../hooks/useTimetable';
+import { selectTeacherOfferingForDate } from '../services/teacherDashboardService';
 
 import TeacherDashboard from './TeacherDashboard';
 
 vi.mock('../contexts/AuthContext', () => ({
   useAuth: vi.fn(),
+}));
+
+vi.mock('../lib/supabaseClient', () => ({
+  supabase: {},
 }));
 
 vi.mock('../hooks/useCurrentInstitution', () => ({
@@ -30,10 +38,11 @@ vi.mock('../hooks/useTeacherDashboard', () => ({
 
 vi.mock('../hooks/useTimetable', () => ({
   useTeacherTimetable: vi.fn(),
+  useTimetableCalendarStatuses: vi.fn(),
 }));
 
 vi.mock('./attendance/TeacherAttendancePanel', () => ({
-  default: () => null,
+  default: () => <div data-testid="teacher-attendance-panel" />,
 }));
 
 vi.mock('./grades/TeacherAssessmentsPanel', () => ({
@@ -129,6 +138,13 @@ beforeEach(() => {
     error: null,
   } as never);
 
+  vi.mocked(useTimetableCalendarStatuses).mockReturnValue({
+    data: {},
+    isLoading: false,
+    isError: false,
+    error: null,
+  } as never);
+
   vi.mocked(useSchoolScheduleBreaks).mockReturnValue({
     data: [],
     isLoading: false,
@@ -142,6 +158,44 @@ afterEach(() => {
 });
 
 describe('TeacherDashboard', () => {
+  it('seleciona o offering do período vigente para a grade', () => {
+    const selectedOffering = selectTeacherOfferingForDate(
+      [
+        {
+          id: 'offering-term-1',
+          termId: 'term-1',
+          termName: '1º bimestre',
+          termStartDate: '2026-01-10',
+          termEndDate: '2026-04-02',
+        },
+        {
+          id: 'offering-term-3',
+          termId: 'term-3',
+          termName: '3º bimestre',
+          termStartDate: '2026-06-26',
+          termEndDate: '2026-09-17',
+        },
+        {
+          id: 'offering-term-2',
+          termId: 'term-2',
+          termName: '2º bimestre',
+          termStartDate: '2026-04-03',
+          termEndDate: '2026-06-25',
+        },
+        {
+          id: 'offering-term-4',
+          termId: 'term-4',
+          termName: '4º bimestre',
+          termStartDate: '2026-09-18',
+          termEndDate: '2026-12-10',
+        },
+      ] as never,
+      '2026-09-09',
+    );
+
+    expect(selectedOffering?.id).toBe('offering-term-3');
+  });
+
   it('exibe a grade publicada do professor em uma rota própria', () => {
     render(
       <MemoryRouter initialEntries={['/dashboard/timetable']}>
@@ -181,5 +235,17 @@ describe('TeacherDashboard', () => {
         'Nenhuma aula publicada foi encontrada para suas atribuições.',
       ),
     ).toBeTruthy();
+  });
+
+  it('remove a introdução duplicada ao abrir o Diário de Classe', () => {
+    render(
+      <MemoryRouter initialEntries={['/dashboard/class-diary']}>
+        <TeacherDashboard />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByTestId('teacher-attendance-panel')).toBeTruthy();
+    expect(screen.queryByText('Operação docente')).toBeNull();
+    expect(screen.queryByText('Registre o conteúdo da aula e a presença dos alunos.')).toBeNull();
   });
 });

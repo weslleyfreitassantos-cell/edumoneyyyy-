@@ -9,10 +9,16 @@ import {
   type AssessmentType,
   type GradeStatus,
 } from './gradeService';
+import {
+  isAbortError,
+  withAcademicReadTimeout,
+} from '../lib/academicReadTimeout';
 
 export type ReportCardServiceErrorCode =
   | 'REPORT_CARD_FORBIDDEN'
-  | 'REPORT_CARD_NOT_FOUND';
+  | 'REPORT_CARD_NOT_FOUND'
+  | 'REPORT_CARD_TIMEOUT'
+  | 'REPORT_CARD_LOAD_FAILED';
 
 export class ReportCardServiceError extends Error {
   readonly code: ReportCardServiceErrorCode;
@@ -32,6 +38,7 @@ export class ReportCardServiceError extends Error {
 }
 
 interface SupabaseErrorLike {
+  name?: string;
   message?: string;
 }
 
@@ -39,6 +46,10 @@ interface TermRelation {
   id: string;
   name: string;
   academic_year_id: string;
+  academic_years?:
+    | AcademicYearRelation
+    | AcademicYearRelation[]
+    | null;
 }
 
 interface AcademicYearRelation {
@@ -85,6 +96,10 @@ interface StudentTermResultRow {
   student_id: string;
   grade_percentage: number | string | null;
   attendance_percentage: number | string | null;
+  recovery_percentage?: number | string | null;
+  final_grade_percentage?: number | string | null;
+  original_result_status?: string | null;
+  composition_rule?: string | null;
   result_status: string;
   calculated_at: string;
   finalized_at: string | null;
@@ -97,6 +112,16 @@ interface StudentTermResultRow {
     | AcademicYearRelation[]
     | null;
   terms: TermRelation | TermRelation[] | null;
+}
+
+interface RecoveryRow {
+  student_id: string;
+  subject_offering_id: string;
+  term_id: string;
+  status: string;
+  recovery_percentage: number | string;
+  composition_rule: string;
+  published_at: string | null;
 }
 
 interface AssessmentRelation {
@@ -123,9 +148,40 @@ interface GradeRow {
   status: string;
   feedback: string | null;
   recorded_at: string | null;
-  assessments:
+  assessments?:
     | AssessmentRelation
     | AssessmentRelation[]
+    | null;
+}
+
+interface EligibleOfferingQueryRow {
+  id: string;
+  class_id: string;
+  term_id: string;
+  classes:
+    | { id: string; institution_id: string }
+    | { id: string; institution_id: string }[]
+    | null;
+  terms:
+    | { id: string; academic_year_id: string }
+    | { id: string; academic_year_id: string }[]
+    | null;
+}
+
+interface AssessmentRow extends AssessmentRelation {
+  grades?: GradeRow[] | null;
+}
+
+interface StudentEnrollmentContext {
+  student_id: string;
+  class_id: string;
+  academic_year_id: string;
+  status: string | null;
+  active: boolean | null;
+  enrolled_at: string | null;
+  classes:
+    | { id: string; institution_id: string }
+    | { id: string; institution_id: string }[]
     | null;
 }
 
@@ -156,6 +212,10 @@ export interface ReportCardSubjectResult {
   teacherName: string;
   teacherEmail: string;
   gradePercentage: number | null;
+  recoveryPercentage: number | null;
+  finalGradePercentage: number | null;
+  originalResultStatus: TermResultStatus;
+  compositionRule: string | null;
   attendancePercentage: number | null;
   resultStatus: TermResultStatus;
   finalizedAt: string | null;
@@ -259,33 +319,40 @@ function normalizeResultStatus(
 function createReportCardError(
   error: unknown,
 ): ReportCardServiceError {
+  if (error instanceof ReportCardServiceError) {
+    return error;
+  }
+
+  if (isAbortError(error)) {
+    return new ReportCardServiceError(
+      'REPORT_CARD_TIMEOUT',
+      'A leitura do boletim demorou mais que o esperado. Tente novamente.',
+      error,
+    );
+  }
+
   const supabaseError = error as SupabaseErrorLike;
 
   if (supabaseError?.message) {
     return new ReportCardServiceError(
-      'REPORT_CARD_FORBIDDEN',
-      supabaseError.message,
+      'REPORT_CARD_LOAD_FAILED',
+      'Não foi possível carregar o boletim. Tente novamente.',
       error,
     );
   }
 
   return new ReportCardServiceError(
-    'REPORT_CARD_FORBIDDEN',
-    'Nao foi possivel carregar o boletim.',
+    'REPORT_CARD_LOAD_FAILED',
+    'Não foi possível carregar o boletim. Tente novamente.',
     error,
   );
 }
 
 function normalizeAssessment(
-  grade: GradeRow,
+  assessment: AssessmentRelation,
+  grade: GradeRow | null,
 ): ReportCardAssessment | null {
-  const assessment = normalizeRelation(grade.assessments);
-
-  if (!assessment) {
-    return null;
-  }
-
-  const score = toNullableNumber(grade.score);
+  const score = toNullableNumber(grade?.score ?? null);
   const maxScore = toNumber(assessment.max_score);
 
   return {
@@ -296,9 +363,9 @@ function normalizeAssessment(
     maxScore,
     weight: toNumber(assessment.weight),
     score,
-    status: normalizeGradeStatus(grade.status),
+    status: normalizeGradeStatus(grade?.status),
     percentage: calculateGradePercentage(score, maxScore),
-    feedback: grade.feedback,
+    feedback: grade?.feedback ?? null,
   };
 }
 
@@ -311,13 +378,17 @@ function normalizeOfferingDetails(
   teacherName: string;
   teacherEmail: string;
   termName: string;
+  academicYearName: string | null;
 } | null {
   const subject = normalizeRelation(offering.subjects);
   const classRecord = normalizeRelation(offering.classes);
   const teacher = normalizeRelation(offering.profiles);
   const term = normalizeRelation(offering.terms);
+  const academicYear = normalizeRelation(
+    term?.academic_years,
+  );
 
-  if (!subject || !classRecord || !teacher || !term) {
+  if (!subject || !classRecord || !term) {
     return null;
   }
 
@@ -325,24 +396,20 @@ function normalizeOfferingDetails(
     subjectName: subject.name,
     subjectCode: subject.code,
     className: classRecord.name,
-    teacherName: teacher.full_name,
-    teacherEmail: teacher.email,
+    teacherName: teacher?.full_name ?? 'Professor não informado',
+    teacherEmail: teacher?.email ?? '',
     termName: term.name,
+    academicYearName: academicYear?.name ?? null,
   };
 }
 
 function groupAssessmentsBySubjectTerm(
-  grades: readonly GradeRow[],
+  assessments: readonly AssessmentRow[],
+  studentId: string,
 ): Map<string, ReportCardAssessment[]> {
   const grouped = new Map<string, ReportCardAssessment[]>();
 
-  for (const grade of grades) {
-    const assessment = normalizeRelation(grade.assessments);
-
-    if (!assessment) {
-      continue;
-    }
-
+  for (const assessment of assessments) {
     const status = normalizeAssessmentStatus(
       assessment.status,
     );
@@ -357,8 +424,14 @@ function groupAssessmentsBySubjectTerm(
       continue;
     }
 
-    const normalizedAssessment =
-      normalizeAssessment(grade);
+    const grade =
+      (assessment.grades ?? []).find(
+        (item) => item.student_id === studentId,
+      ) ?? null;
+    const normalizedAssessment = normalizeAssessment(
+      assessment,
+      grade,
+    );
 
     if (!normalizedAssessment) {
       continue;
@@ -382,6 +455,7 @@ function groupAssessmentsBySubjectTerm(
 function buildClosedSubjectResult(
   row: StudentTermResultRow,
   assessments: readonly ReportCardAssessment[],
+  recovery: RecoveryRow | null,
 ): ReportCardSubjectResult | null {
   const offering = normalizeRelation(row.subject_offerings);
   const academicYear = normalizeRelation(row.academic_years);
@@ -397,6 +471,17 @@ function buildClosedSubjectResult(
     return null;
   }
 
+  const recoveryPercentage = toNullableNumber(
+    row.recovery_percentage ?? recovery?.recovery_percentage ?? null,
+  );
+  const originalGradePercentage = toNullableNumber(row.grade_percentage);
+  const finalGradePercentage = toNullableNumber(
+    row.final_grade_percentage ??
+      (recoveryPercentage === null
+        ? originalGradePercentage
+        : Math.max(originalGradePercentage ?? 0, recoveryPercentage)),
+  );
+
   return {
     key: `${row.subject_offering_id}:${row.term_id}`,
     institutionId: row.institution_id,
@@ -410,7 +495,13 @@ function buildClosedSubjectResult(
     className: details.className,
     teacherName: details.teacherName,
     teacherEmail: details.teacherEmail,
-    gradePercentage: toNullableNumber(row.grade_percentage),
+    gradePercentage: originalGradePercentage,
+    recoveryPercentage,
+    finalGradePercentage,
+    originalResultStatus: normalizeResultStatus(
+      row.original_result_status ?? row.result_status,
+    ),
+    compositionRule: row.composition_rule ?? recovery?.composition_rule ?? null,
     attendancePercentage: toNullableNumber(
       row.attendance_percentage,
     ),
@@ -424,11 +515,10 @@ function buildClosedSubjectResult(
 }
 
 function buildOpenSubjectResult(
-  grade: GradeRow,
+  assessment: AssessmentRow,
   assessments: readonly ReportCardAssessment[],
   institutionId: string,
 ): ReportCardSubjectResult | null {
-  const assessment = normalizeRelation(grade.assessments);
   const offering = normalizeRelation(
     assessment?.subject_offerings,
   );
@@ -461,7 +551,8 @@ function buildOpenSubjectResult(
     key: `${assessment.subject_offering_id}:${assessment.term_id}`,
     institutionId,
     academicYearId: term.academic_year_id,
-    academicYearName: 'Ano letivo',
+    academicYearName:
+      details.academicYearName ?? 'Ano letivo',
     termId: assessment.term_id,
     termName: details.termName,
     subjectOfferingId: assessment.subject_offering_id,
@@ -471,6 +562,10 @@ function buildOpenSubjectResult(
     teacherName: details.teacherName,
     teacherEmail: details.teacherEmail,
     gradePercentage,
+    recoveryPercentage: null,
+    finalGradePercentage: gradePercentage,
+    originalResultStatus: 'PENDING',
+    compositionRule: null,
     attendancePercentage: null,
     resultStatus: 'PENDING',
     finalizedAt: null,
@@ -482,6 +577,7 @@ function buildOpenSubjectResult(
 async function loadResultRowsForStudents(
   institutionId: string,
   studentIds: readonly string[],
+  signal?: AbortSignal,
 ): Promise<StudentTermResultRow[]> {
   let query = supabase
     .from('student_term_results')
@@ -495,6 +591,10 @@ async function loadResultRowsForStudents(
       student_id,
       grade_percentage,
       attendance_percentage,
+      recovery_percentage,
+      final_grade_percentage,
+      original_result_status,
+      composition_rule,
       result_status,
       calculated_at,
       finalized_at,
@@ -544,6 +644,10 @@ async function loadResultRowsForStudents(
     query = query.in('student_id', [...studentIds]);
   }
 
+  if (signal) {
+    query = query.abortSignal(signal);
+  }
+
   const { data, error } = await query.order('calculated_at', {
     ascending: false,
   });
@@ -555,62 +659,18 @@ async function loadResultRowsForStudents(
   return (data ?? []) as unknown as StudentTermResultRow[];
 }
 
-async function loadGradeRowsForStudents(
+async function loadPublishedRecoveryRowsForStudents(
   institutionId: string,
   studentIds: readonly string[],
-): Promise<GradeRow[]> {
+  signal?: AbortSignal,
+): Promise<RecoveryRow[]> {
   let query = supabase
-    .from('grades')
+    .from('student_term_recoveries')
     .select(
-      `
-      id,
-      assessment_id,
-      student_id,
-      score,
-      status,
-      feedback,
-      recorded_at,
-      assessments:assessment_id (
-        id,
-        subject_offering_id,
-        term_id,
-        title,
-        assessment_type,
-        assessment_date,
-        max_score,
-        weight,
-        status,
-        subject_offerings:subject_offering_id (
-          id,
-          class_id,
-          subject_id,
-          teacher_profile_id,
-          term_id,
-          classes:class_id (
-            id,
-            name,
-            grade_level,
-            shift
-          ),
-          subjects:subject_id (
-            id,
-            name,
-            code
-          ),
-          profiles:teacher_profile_id (
-            full_name,
-            email
-          ),
-          terms:term_id (
-            id,
-            name,
-            academic_year_id
-          )
-        )
-      )
-    `,
+      'student_id, subject_offering_id, term_id, status, recovery_percentage, composition_rule, published_at',
     )
-    .eq('institution_id', institutionId);
+    .eq('institution_id', institutionId)
+    .eq('status', 'PUBLISHED');
 
   if (studentIds.length === 1) {
     query = query.eq('student_id', studentIds[0]);
@@ -618,9 +678,121 @@ async function loadGradeRowsForStudents(
     query = query.in('student_id', [...studentIds]);
   }
 
-  const { data, error } = await query.order('recorded_at', {
-    ascending: false,
-  });
+  if (signal) {
+    query = query.abortSignal(signal);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw createReportCardError(error);
+  }
+
+  return (data ?? []) as unknown as RecoveryRow[];
+}
+
+async function loadAssessmentRowsForStudents(
+  institutionId: string,
+  eligibleOfferingIds: readonly string[],
+  signal?: AbortSignal,
+): Promise<AssessmentRow[]> {
+  if (eligibleOfferingIds.length === 0) {
+    return [];
+  }
+
+  let query = supabase
+    .from('assessments')
+    .select(
+      `
+      id,
+      subject_offering_id,
+      term_id,
+      title,
+      assessment_type,
+      assessment_date,
+      max_score,
+      weight,
+      status,
+      subject_offerings:subject_offering_id (
+        id,
+        class_id,
+        subject_id,
+        teacher_profile_id,
+        term_id,
+        classes:class_id (
+          id,
+          name,
+          grade_level,
+          shift
+        ),
+        subjects:subject_id (
+          id,
+          name,
+          code
+        ),
+        profiles:teacher_profile_id (
+          full_name,
+          email
+        ),
+        terms:term_id (
+          id,
+          name,
+          academic_year_id,
+          academic_years:academic_year_id (
+            id,
+            name
+          )
+        )
+      )
+    `,
+    )
+    .eq('institution_id', institutionId)
+    .in('subject_offering_id', [...eligibleOfferingIds])
+    .in('status', ['PUBLISHED', 'CLOSED'])
+    .order('assessment_date', { ascending: true });
+
+  if (signal) {
+    query = query.abortSignal(signal);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw createReportCardError(error);
+  }
+
+  return (data ?? []) as unknown as AssessmentRow[];
+}
+
+async function loadGradeRowsForStudents(
+  institutionId: string,
+  studentIds: readonly string[],
+  assessmentIds: readonly string[],
+  signal?: AbortSignal,
+): Promise<GradeRow[]> {
+  if (studentIds.length === 0 || assessmentIds.length === 0) {
+    return [];
+  }
+
+  let query = supabase
+    .from('grades')
+    .select(
+      'id, assessment_id, student_id, score, status, feedback, recorded_at',
+    )
+    .eq('institution_id', institutionId)
+    .in('assessment_id', [...assessmentIds]);
+
+  if (studentIds.length === 1) {
+    query = query.eq('student_id', studentIds[0]);
+  } else {
+    query = query.in('student_id', [...studentIds]);
+  }
+
+  if (signal) {
+    query = query.abortSignal(signal);
+  }
+
+  const { data, error } = await query;
 
   if (error) {
     throw createReportCardError(error);
@@ -629,14 +801,195 @@ async function loadGradeRowsForStudents(
   return (data ?? []) as unknown as GradeRow[];
 }
 
+function attachGradeRows(
+  assessmentRows: readonly AssessmentRow[],
+  gradeRows: readonly GradeRow[],
+): AssessmentRow[] {
+  const gradesByAssessment = new Map<string, GradeRow[]>();
+
+  for (const grade of gradeRows) {
+    const grades = gradesByAssessment.get(grade.assessment_id) ?? [];
+    grades.push(grade);
+    gradesByAssessment.set(grade.assessment_id, grades);
+  }
+
+  return assessmentRows.map((assessment) => ({
+    ...assessment,
+    grades: gradesByAssessment.get(assessment.id) ?? [],
+  }));
+}
+
+async function loadEnrollmentContexts(
+  studentIds: readonly string[],
+  signal?: AbortSignal,
+): Promise<StudentEnrollmentContext[]> {
+  let query = supabase
+    .from('enrollments')
+    .select(
+      `
+      student_id,
+      class_id,
+      academic_year_id,
+      status,
+      active,
+      enrolled_at,
+      classes:class_id (
+        id,
+        institution_id
+      )
+    `,
+    )
+    .in('student_id', [...studentIds]);
+
+  if (signal) {
+    query = query.abortSignal(signal);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw createReportCardError(error);
+  }
+
+  return (data ?? []) as unknown as StudentEnrollmentContext[];
+}
+
+async function loadEligibleOfferingIdsForEnrollments(
+  institutionId: string,
+  enrollmentContexts: readonly StudentEnrollmentContext[],
+  signal?: AbortSignal,
+): Promise<string[]> {
+  const eligibleEnrollments = enrollmentContexts.filter(
+    (enrollment) => {
+      const status =
+        enrollment.status?.trim().toUpperCase() ?? 'ACTIVE';
+      const classRecord = normalizeRelation(enrollment.classes);
+
+      return (
+        classRecord?.institution_id === institutionId &&
+        enrollment.active !== false &&
+        status === 'ACTIVE'
+      );
+    },
+  );
+  const classIds = [
+    ...new Set(
+      eligibleEnrollments.map((enrollment) => enrollment.class_id),
+    ),
+  ];
+  const academicYearIds = [
+    ...new Set(
+      eligibleEnrollments.map(
+        (enrollment) => enrollment.academic_year_id,
+      ),
+    ),
+  ];
+
+  if (classIds.length === 0 || academicYearIds.length === 0) {
+    return [];
+  }
+
+  let query = supabase
+    .from('subject_offerings')
+    .select(
+      `
+      id,
+      class_id,
+      term_id,
+      classes:class_id (
+        id,
+        institution_id
+      ),
+      terms:term_id (
+        id,
+        academic_year_id
+      )
+    `,
+    )
+    .eq('active', true)
+    .in('class_id', classIds);
+
+  if (signal) {
+    query = query.abortSignal(signal);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    throw createReportCardError(error);
+  }
+
+  return ((data ?? []) as unknown as EligibleOfferingQueryRow[])
+    .filter((offering) => {
+      const classRecord = normalizeRelation(offering.classes);
+      const term = normalizeRelation(offering.terms);
+
+      return (
+        classRecord?.institution_id === institutionId &&
+        academicYearIds.includes(term?.academic_year_id ?? '')
+      );
+    })
+    .map((offering) => offering.id);
+}
+
+function isAssessmentEligibleForStudent(
+  assessment: AssessmentRow,
+  studentId: string,
+  enrollments: readonly StudentEnrollmentContext[],
+): boolean {
+  const offering = normalizeRelation(
+    assessment.subject_offerings,
+  );
+  const term = normalizeRelation(offering?.terms);
+
+  if (!offering || !term) {
+    return false;
+  }
+
+  const assessmentEndTime = new Date(
+    `${assessment.assessment_date}T23:59:59.999Z`,
+  ).getTime();
+
+  return enrollments.some((enrollment) => {
+    const status =
+      enrollment.status?.trim().toUpperCase() ?? 'ACTIVE';
+    const enrolledTime = enrollment.enrolled_at
+      ? new Date(enrollment.enrolled_at).getTime()
+      : Number.NEGATIVE_INFINITY;
+
+    return (
+      enrollment.student_id === studentId &&
+      enrollment.class_id === offering.class_id &&
+      enrollment.academic_year_id === term.academic_year_id &&
+      enrollment.active !== false &&
+      status === 'ACTIVE' &&
+      Number.isFinite(assessmentEndTime) &&
+      enrolledTime <= assessmentEndTime
+    );
+  });
+}
+
 function buildStudentReportCard(
   institutionId: string,
   studentId: string,
   resultRows: readonly StudentTermResultRow[],
-  gradeRows: readonly GradeRow[],
+  recoveryRows: readonly RecoveryRow[],
+  assessmentRows: readonly AssessmentRow[],
+  enrollmentContexts: readonly StudentEnrollmentContext[],
 ): StudentReportCard {
+  const eligibleAssessments = assessmentRows.filter(
+    (assessment) =>
+      isAssessmentEligibleForStudent(
+        assessment,
+        studentId,
+        enrollmentContexts,
+      ),
+  );
   const assessmentsByKey =
-    groupAssessmentsBySubjectTerm(gradeRows);
+    groupAssessmentsBySubjectTerm(
+      eligibleAssessments,
+      studentId,
+    );
   const closedResults = resultRows
     .map((row) =>
       buildClosedSubjectResult(
@@ -644,6 +997,12 @@ function buildStudentReportCard(
         assessmentsByKey.get(
           `${row.subject_offering_id}:${row.term_id}`,
         ) ?? [],
+        recoveryRows.find(
+          (recovery) =>
+            recovery.student_id === row.student_id &&
+            recovery.subject_offering_id === row.subject_offering_id &&
+            recovery.term_id === row.term_id,
+        ) ?? null,
       ),
     )
     .filter(
@@ -658,10 +1017,8 @@ function buildStudentReportCard(
   );
   const openResults: ReportCardSubjectResult[] = [];
 
-  for (const grade of gradeRows) {
-    const assessment = normalizeRelation(grade.assessments);
-
-    if (!assessment?.term_id) {
+  for (const assessment of eligibleAssessments) {
+    if (!assessment.term_id) {
       continue;
     }
 
@@ -673,7 +1030,7 @@ function buildStudentReportCard(
 
     const assessments = assessmentsByKey.get(key) ?? [];
     const openResult = buildOpenSubjectResult(
-      grade,
+      assessment,
       assessments,
       institutionId,
     );
@@ -712,17 +1069,53 @@ export const reportCardService = {
     institutionId: string,
     studentId: string,
   ): Promise<StudentReportCard> {
-    const [resultRows, gradeRows] = await Promise.all([
-      loadResultRowsForStudents(institutionId, [studentId]),
-      loadGradeRowsForStudents(institutionId, [studentId]),
-    ]);
+    try {
+      return await withAcademicReadTimeout(async (signal) => {
+        const enrollmentContexts =
+          await loadEnrollmentContexts([studentId], signal);
+        const eligibleOfferingIds =
+          await loadEligibleOfferingIdsForEnrollments(
+            institutionId,
+            enrollmentContexts,
+            signal,
+          );
+        const [resultRows, recoveryRows, assessmentRows] =
+          await Promise.all([
+            loadResultRowsForStudents(
+              institutionId,
+              [studentId],
+              signal,
+            ),
+            loadPublishedRecoveryRowsForStudents(
+              institutionId,
+              [studentId],
+              signal,
+            ),
+            loadAssessmentRowsForStudents(
+              institutionId,
+              eligibleOfferingIds,
+              signal,
+            ),
+          ]);
+        const gradeRows = await loadGradeRowsForStudents(
+          institutionId,
+          [studentId],
+          assessmentRows.map((assessment) => assessment.id),
+          signal,
+        );
 
-    return buildStudentReportCard(
-      institutionId,
-      studentId,
-      resultRows,
-      gradeRows,
-    );
+        return buildStudentReportCard(
+          institutionId,
+          studentId,
+          resultRows,
+          recoveryRows,
+          attachGradeRows(assessmentRows, gradeRows),
+          enrollmentContexts,
+        );
+      });
+    } catch (error) {
+      throw createReportCardError(error);
+    }
   },
 
   async getGuardianReportCards(
@@ -733,22 +1126,66 @@ export const reportCardService = {
       return [];
     }
 
-    const [resultRows, gradeRows] = await Promise.all([
-      loadResultRowsForStudents(institutionId, studentIds),
-      loadGradeRowsForStudents(institutionId, studentIds),
-    ]);
+    try {
+      return await withAcademicReadTimeout(async (signal) => {
+        const enrollmentContexts = await loadEnrollmentContexts(
+          studentIds,
+          signal,
+        );
+        const eligibleOfferingIds =
+          await loadEligibleOfferingIdsForEnrollments(
+            institutionId,
+            enrollmentContexts,
+            signal,
+          );
+        const [resultRows, recoveryRows, assessmentRows] =
+          await Promise.all([
+            loadResultRowsForStudents(
+              institutionId,
+              studentIds,
+              signal,
+            ),
+            loadPublishedRecoveryRowsForStudents(
+              institutionId,
+              studentIds,
+              signal,
+            ),
+            loadAssessmentRowsForStudents(
+              institutionId,
+              eligibleOfferingIds,
+              signal,
+            ),
+          ]);
+        const gradeRows = await loadGradeRowsForStudents(
+          institutionId,
+          studentIds,
+          assessmentRows.map((assessment) => assessment.id),
+          signal,
+        );
+        const assessmentsWithGrades = attachGradeRows(
+          assessmentRows,
+          gradeRows,
+        );
 
-    return studentIds.map((studentId) =>
-      buildStudentReportCard(
-        institutionId,
-        studentId,
-        resultRows.filter(
-          (row) => row.student_id === studentId,
-        ),
-        gradeRows.filter(
-          (row) => row.student_id === studentId,
-        ),
-      ),
-    );
+        return studentIds.map((studentId) =>
+          buildStudentReportCard(
+            institutionId,
+            studentId,
+            resultRows.filter(
+              (row) => row.student_id === studentId,
+            ),
+            recoveryRows.filter(
+              (row) => row.student_id === studentId,
+            ),
+            assessmentsWithGrades,
+            enrollmentContexts.filter(
+              (enrollment) => enrollment.student_id === studentId,
+            ),
+          ),
+        );
+      });
+    } catch (error) {
+      throw createReportCardError(error);
+    }
   },
 };

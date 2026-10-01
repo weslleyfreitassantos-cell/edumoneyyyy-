@@ -404,6 +404,7 @@ export function useStudentReportCard(
     },
     enabled: Boolean(institutionId && studentId),
     staleTime: 1000 * 60,
+    retry: false,
   });
 }
 
@@ -434,5 +435,6 @@ export function useGuardianReportCards(
     },
     enabled: Boolean(institutionId && studentIds.length > 0),
     staleTime: 1000 * 60,
+    retry: false,
   });
 }

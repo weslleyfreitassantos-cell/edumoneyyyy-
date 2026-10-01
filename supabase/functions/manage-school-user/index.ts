@@ -6,6 +6,7 @@ import { z } from "zod";
 import type { Database } from "../_shared/database.types.ts";
 import {
   getDeleteAuthorizationDecision,
+  canManageTargetRole,
   getUpdateAuthorizationDecision,
   type UpdateAuthorizationContext,
 } from "./authorization.ts";
@@ -419,7 +420,7 @@ async function handleUpdate(
       TARGET_ROLE_NOT_ALLOWED: new ManageSchoolUserError({
         status: 403,
         code: "TARGET_ROLE_NOT_ALLOWED",
-        message: "Somente alunos podem ter a senha redefinida por esta tela.",
+        message: "Seu papel atual nao permite gerenciar este tipo de usuario.",
       }),
       STUDENT_INACTIVE: new ManageSchoolUserError({
         status: 403,
@@ -490,6 +491,7 @@ async function handleUpdateStudentIdentity(
   ctx: SupabaseFunctionContext,
   requesterId: string,
   input: Extract<RequestData, { action: "update_student_identity" }>,
+  authorization: UpdateAuthorizationContext,
 ) {
   const { data: student, error: studentError } = await ctx.supabaseAdmin
     .from("students")
@@ -504,6 +506,14 @@ async function handleUpdateStudentIdentity(
       status: 404,
       code: "STUDENT_NOT_FOUND",
       message: "Aluno nao encontrado nesta instituicao.",
+    });
+  }
+
+  if (!canManageTargetRole(authorization, "STUDENT")) {
+    throw new ManageSchoolUserError({
+      status: 403,
+      code: "TARGET_ROLE_NOT_ALLOWED",
+      message: "Seu papel atual nao permite gerenciar este tipo de usuario.",
     });
   }
 
@@ -664,6 +674,11 @@ async function handleDelete(
         status: 403,
         code: "SECRETARY_CANNOT_REMOVE_DIRECTOR",
         message: "A Secretaria nao pode remover um Diretor.",
+      }),
+      TARGET_ROLE_NOT_ALLOWED: new ManageSchoolUserError({
+        status: 403,
+        code: "TARGET_ROLE_NOT_ALLOWED",
+        message: "Seu papel atual nao permite gerenciar este tipo de usuario.",
       }),
       DIRECTOR_REQUIRED: new ManageSchoolUserError({
         status: 403,
@@ -852,7 +867,16 @@ async function handleDelete(
 async function handleLinkGuardian(
   ctx: SupabaseFunctionContext,
   input: Extract<RequestData, { action: "link_guardian" }>,
+  authorization: UpdateAuthorizationContext,
 ) {
+  if (!canManageTargetRole(authorization, "GUARDIAN")) {
+    throw new ManageSchoolUserError({
+      status: 403,
+      code: "TARGET_ROLE_NOT_ALLOWED",
+      message: "Seu papel atual nao permite gerenciar este tipo de usuario.",
+    });
+  }
+
   const { data: guardianMembership, error: guardianMembershipError } =
     await ctx.supabaseAdmin
       .from("memberships")
@@ -1068,12 +1092,17 @@ const authenticatedFetch = withSupabase<Database>(
           return await handleUpdate(ctx, user.id, input, authorization);
         }
         if (input.action === "update_student_identity") {
-          return await handleUpdateStudentIdentity(ctx, user.id, input);
+          return await handleUpdateStudentIdentity(
+            ctx,
+            user.id,
+            input,
+            authorization,
+          );
         }
         if (input.action === "delete") {
           return await handleDelete(ctx, user.id, input, authorization);
         }
-        return await handleLinkGuardian(ctx, input);
+        return await handleLinkGuardian(ctx, input, authorization);
       } catch (error) {
         console.error("Erro ao gerenciar usuario escolar:", {
           code: error instanceof ManageSchoolUserError ? error.code : "INTERNAL_ERROR",

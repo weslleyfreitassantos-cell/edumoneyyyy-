@@ -1,0 +1,62 @@
+{
+  "code": "ENGLISH",
+  "name": "Lingua Inglesa",
+  "anchors": [
+    {
+      "code": "ENGLISH_READING",
+      "title": "Leitura em lingua inglesa"
+    },
+    {
+      "code": "ENGLISH_VOCABULARY",
+      "title": "Vocabulario em contexto"
+    },
+    {
+      "code": "ENGLISH_COMMUNICATION",
+      "title": "Comunicacao e cultura"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "ENGLISH_INFER_FROM_TEXT",
+      "title": "Inferir sentido em texto em ingles",
+      "objective": "Inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+      "description": "Inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+      "masteryCapability": "Demonstrar que consegue inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+      "domain": "LEITURA",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_USE_CONTEXT_VOCABULARY",
+      "title": "Interpretar vocabulario pelo contexto",
+      "objective": "Interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+      "description": "Interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+      "masteryCapability": "Demonstrar que consegue interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+      "domain": "VOCABULARIO",
+      "parent": "ENGLISH_VOCABULARY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+      "title": "Relacionar linguagem e contexto cultural",
+      "objective": "Relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+      "description": "Relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+      "masteryCapability": "Demonstrar que consegue relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+      "domain": "CULTURA",
+      "parent": "ENGLISH_COMMUNICATION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

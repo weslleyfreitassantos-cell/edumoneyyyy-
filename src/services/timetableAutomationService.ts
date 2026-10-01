@@ -27,6 +27,7 @@ export interface TimetableVersionRow {
   status: 'DRAFT' | 'PUBLISHED' | 'ARCHIVED';
   generation_source: string;
   generation_shift?: string | null;
+  source_version_id?: string | null;
   created_at: string;
   published_at: string | null;
 }
@@ -51,6 +52,128 @@ export interface TimetableVersionEntryRow {
   end_time: string;
   locked: boolean;
   active: boolean;
+}
+
+export interface TimetableEditorOffering {
+  id: string;
+  class_id: string;
+  subject_id: string;
+  subject_name: string;
+  teacher_profile_id: string;
+  teacher_name: string | null;
+  term_id: string;
+  active: boolean;
+}
+
+export interface TimetableEditorCurriculumItem {
+  class_id: string;
+  subject_id: string;
+  subject_name: string;
+  weekly_lessons: number;
+  lesson_duration_minutes: number;
+  active: boolean;
+}
+
+export interface TimetableEditorContext {
+  offerings: TimetableEditorOffering[];
+  curriculum: TimetableEditorCurriculumItem[];
+  rooms: Array<{ id: string; name: string; active: boolean; class_id: string | null }>;
+}
+
+export interface TimetableDraftDiagnostic {
+  code: string;
+  message: string;
+}
+
+export interface TimetableDraftValidation {
+  valid: boolean;
+  diagnostics: TimetableDraftDiagnostic[];
+  summary: { active_entries: number; diagnostic_count: number };
+}
+
+export interface TimetableDayCopyPreview {
+  total: number;
+  copyable: number;
+  conflicts: number;
+  details: Array<Record<string, unknown>>;
+  source_day: number;
+  target_day: number;
+}
+
+export interface TimetableVersionDiff {
+  added: number;
+  removed: number;
+  moved: number;
+  roomChanged: number;
+  unchanged: number;
+  affectedClassNames: string[];
+}
+
+function timetableEntryIdentity(entry: Pick<TimetableVersionEntryRow, 'class_id' | 'term_id' | 'subject_offering_id'>): string {
+  return `${entry.class_id}:${entry.term_id}:${entry.subject_offering_id}`;
+}
+
+function timetableEntryPosition(entry: Pick<TimetableVersionEntryRow, 'day_of_week' | 'start_time' | 'end_time' | 'room_id'>): string {
+  return `${entry.day_of_week}:${entry.start_time}:${entry.end_time}:${entry.room_id ?? ''}`;
+}
+
+export function buildTimetableVersionDiff(
+  currentEntries: TimetableVersionEntryRow[],
+  sourceEntries: TimetableVersionEntryRow[],
+): TimetableVersionDiff {
+  const currentByIdentity = new Map<string, TimetableVersionEntryRow[]>();
+  const sourceByIdentity = new Map<string, TimetableVersionEntryRow[]>();
+  const addToGroup = (groups: Map<string, TimetableVersionEntryRow[]>, entry: TimetableVersionEntryRow) => {
+    const identity = timetableEntryIdentity(entry);
+    groups.set(identity, [...(groups.get(identity) ?? []), entry]);
+  };
+  currentEntries.filter((entry) => entry.active).forEach((entry) => addToGroup(currentByIdentity, entry));
+  sourceEntries.filter((entry) => entry.active).forEach((entry) => addToGroup(sourceByIdentity, entry));
+
+  let added = 0;
+  let removed = 0;
+  let moved = 0;
+  let roomChanged = 0;
+  let unchanged = 0;
+  const affected = new Set<string>();
+  const identities = new Set([...currentByIdentity.keys(), ...sourceByIdentity.keys()]);
+
+  for (const identity of identities) {
+    const current = [...(currentByIdentity.get(identity) ?? [])].sort((a, b) => timetableEntryPosition(a).localeCompare(timetableEntryPosition(b)));
+    const source = [...(sourceByIdentity.get(identity) ?? [])].sort((a, b) => timetableEntryPosition(a).localeCompare(timetableEntryPosition(b)));
+    const commonLength = Math.min(current.length, source.length);
+    for (let index = 0; index < commonLength; index += 1) {
+      const currentEntry = current[index];
+      const sourceEntry = source[index];
+      const sameTime = currentEntry.day_of_week === sourceEntry.day_of_week
+        && currentEntry.start_time === sourceEntry.start_time
+        && currentEntry.end_time === sourceEntry.end_time;
+      const sameRoom = currentEntry.room_id === sourceEntry.room_id;
+      if (sameTime && sameRoom) unchanged += 1;
+      else {
+        affected.add(currentEntry.class_name);
+        if (!sameTime) moved += 1;
+        if (!sameRoom) roomChanged += 1;
+      }
+    }
+    for (const entry of current.slice(commonLength)) {
+      added += 1;
+      affected.add(entry.class_name);
+    }
+    for (const entry of source.slice(commonLength)) {
+      removed += 1;
+      affected.add(entry.class_name);
+    }
+  }
+
+  return {
+    added,
+    removed,
+    moved,
+    roomChanged,
+    unchanged,
+    affectedClassNames: [...affected].filter(Boolean).sort(),
+  };
 }
 
 export interface GeneratedDraft extends TimetableGeneratorResult {
@@ -521,11 +644,112 @@ export const timetableAutomationService = {
   },
 
   async listVersions(institutionId: string, academicYearId?: string): Promise<TimetableVersionRow[]> {
-    let query = supabase.from('timetable_versions').select('id, institution_id, academic_year_id, name, status, generation_source, generation_shift, created_at, published_at').eq('institution_id', institutionId).order('created_at', { ascending: false });
+    let query = supabase.from('timetable_versions').select('id, institution_id, academic_year_id, name, status, generation_source, generation_shift, source_version_id, created_at, published_at').eq('institution_id', institutionId).order('created_at', { ascending: false });
     if (academicYearId) query = query.eq('academic_year_id', academicYearId);
     const { data, error } = await query;
     if (error) throw error;
     return (data ?? []) as TimetableVersionRow[];
+  },
+
+  async listEditorContext(input: {
+    institutionId: string;
+    academicYearId: string;
+    classId: string;
+    termId: string;
+  }): Promise<TimetableEditorContext> {
+    const [offeringsResult, curriculumResult, roomsResult] = await Promise.all([
+      supabase
+        .from('subject_offerings')
+        .select('id, class_id, subject_id, teacher_profile_id, term_id, active, subjects:subject_id(name), profiles:teacher_profile_id(full_name)')
+        .eq('class_id', input.classId)
+        .eq('term_id', input.termId)
+        .eq('active', true),
+      supabase
+        .from('class_curriculum_items')
+        .select('class_id, subject_id, weekly_lessons, lesson_duration_minutes, active, subjects:subject_id(name)')
+        .eq('institution_id', input.institutionId)
+        .eq('class_id', input.classId)
+        .eq('active', true),
+      supabase
+        .from('rooms')
+        .select('id, name, active, class_id')
+        .eq('institution_id', input.institutionId)
+        .eq('active', true)
+        .order('name'),
+    ]);
+    if (offeringsResult.error) throw offeringsResult.error;
+    if (curriculumResult.error) throw curriculumResult.error;
+    if (roomsResult.error) throw roomsResult.error;
+
+    type Relation = { name?: string; full_name?: string } | Array<{ name?: string; full_name?: string }> | null;
+    const relation = (value: Relation): { name?: string; full_name?: string } | null => Array.isArray(value) ? value[0] ?? null : value;
+    return {
+      offerings: ((offeringsResult.data ?? []) as Array<Record<string, unknown>>).map((row) => {
+        const subject = relation(row.subjects as Relation);
+        const teacher = relation(row.profiles as Relation);
+        return {
+          id: String(row.id),
+          class_id: String(row.class_id),
+          subject_id: String(row.subject_id),
+          subject_name: subject?.name ?? 'Disciplina',
+          teacher_profile_id: String(row.teacher_profile_id),
+          teacher_name: teacher?.full_name ?? null,
+          term_id: String(row.term_id),
+          active: row.active !== false,
+        };
+      }),
+      curriculum: ((curriculumResult.data ?? []) as Array<Record<string, unknown>>).map((row) => {
+        const subject = relation(row.subjects as Relation);
+        return {
+          class_id: String(row.class_id),
+          subject_id: String(row.subject_id),
+          subject_name: subject?.name ?? 'Disciplina',
+          weekly_lessons: Number(row.weekly_lessons ?? 0),
+          lesson_duration_minutes: Number(row.lesson_duration_minutes ?? 50),
+          active: row.active !== false,
+        };
+      }),
+      rooms: ((roomsResult.data ?? []) as Array<Record<string, unknown>>).map((row) => ({
+        id: String(row.id),
+        name: String(row.name ?? 'Sala'),
+        active: row.active !== false,
+        class_id: row.class_id ? String(row.class_id) : null,
+      })),
+    };
+  },
+
+  async createManualDraft(input: {
+    institutionId: string;
+    academicYearId: string;
+    name: string;
+    createdBy: string;
+    generationShift: string;
+    sourceVersionId?: string | null;
+    entries?: TimetableVersionEntryRow[];
+  }): Promise<string> {
+    const { data, error } = await supabase.rpc('create_timetable_draft', {
+      p_institution_id: input.institutionId,
+      p_academic_year_id: input.academicYearId,
+      p_name: input.name,
+      p_generation_source: 'MANUAL',
+      p_generation_shift: input.generationShift,
+      p_created_by: input.createdBy,
+      p_source_version_id: input.sourceVersionId ?? null,
+      p_entries: (input.entries ?? []).map((entry) => ({
+        academic_year_id: entry.academic_year_id,
+        term_id: entry.term_id,
+        class_id: entry.class_id,
+        subject_offering_id: entry.subject_offering_id,
+        room_id: entry.room_id,
+        day_of_week: entry.day_of_week,
+        start_time: entry.start_time,
+        end_time: entry.end_time,
+        locked: entry.locked,
+        active: true,
+      })),
+    });
+    if (error) throw error;
+    return String(data);
   },
 
   async listVersionEntries(
@@ -691,6 +915,7 @@ export const timetableAutomationService = {
     startTime: string;
     endTime: string;
     locked: boolean;
+    roomId?: string | null;
   }): Promise<void> {
     if (
       input.dayOfWeek < 1 ||
@@ -700,30 +925,150 @@ export const timetableAutomationService = {
       throw new Error('O horário informado é inválido.');
     }
 
-    const { data: version, error: versionError } = await supabase
-      .from('timetable_versions')
-      .select('status')
-      .eq('id', input.versionId)
-      .eq('institution_id', input.institutionId)
-      .maybeSingle();
-    if (versionError) throw versionError;
-    if (!version || version.status !== 'DRAFT') {
-      throw new Error('Somente uma grade em rascunho pode ser editada.');
-    }
-
-    const { error } = await supabase
-      .from('timetable_version_entries')
-      .update({
-        day_of_week: input.dayOfWeek,
-        start_time: input.startTime,
-        end_time: input.endTime,
-        locked: input.locked,
-      })
-      .eq('id', input.id)
-      .eq('version_id', input.versionId)
-      .eq('institution_id', input.institutionId);
-
+    const { error } = await supabase.rpc('update_timetable_draft_entry', {
+      p_entry_id: input.id,
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_day_of_week: input.dayOfWeek,
+      p_start_time: input.startTime,
+      p_end_time: input.endTime,
+      p_locked: input.locked,
+      p_room_id: input.roomId ?? null,
+    });
     if (error) throw error;
+  },
+
+  async addDraftEntry(input: {
+    versionId: string;
+    institutionId: string;
+    academicYearId: string;
+    termId: string;
+    classId: string;
+    subjectOfferingId: string;
+    roomId?: string | null;
+    dayOfWeek: number;
+    startTime: string;
+    endTime: string;
+    locked?: boolean;
+  }): Promise<string> {
+    const { data, error } = await supabase.rpc('add_timetable_draft_entry', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_academic_year_id: input.academicYearId,
+      p_term_id: input.termId,
+      p_class_id: input.classId,
+      p_subject_offering_id: input.subjectOfferingId,
+      p_room_id: input.roomId ?? null,
+      p_day_of_week: input.dayOfWeek,
+      p_start_time: input.startTime,
+      p_end_time: input.endTime,
+      p_locked: input.locked ?? false,
+    });
+    if (error) throw error;
+    return String(data);
+  },
+
+  async addDoubleDraftEntry(input: {
+    versionId: string;
+    institutionId: string;
+    academicYearId: string;
+    termId: string;
+    classId: string;
+    subjectOfferingId: string;
+    roomId?: string | null;
+    dayOfWeek: number;
+    startTime: string;
+    endTime: string;
+    nextStartTime: string;
+    nextEndTime: string;
+    locked?: boolean;
+  }): Promise<[string, string]> {
+    const { data, error } = await supabase.rpc('add_timetable_draft_double_slot', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_academic_year_id: input.academicYearId,
+      p_term_id: input.termId,
+      p_class_id: input.classId,
+      p_subject_offering_id: input.subjectOfferingId,
+      p_room_id: input.roomId ?? null,
+      p_day_of_week: input.dayOfWeek,
+      p_start_time: input.startTime,
+      p_end_time: input.endTime,
+      p_next_start_time: input.nextStartTime,
+      p_next_end_time: input.nextEndTime,
+      p_locked: input.locked ?? false,
+    });
+    if (error) throw error;
+    const result = (data ?? {}) as { first_id?: string; second_id?: string };
+    if (!result.first_id || !result.second_id) throw new Error('A operação de duas aulas não retornou as entradas criadas.');
+    return [result.first_id, result.second_id];
+  },
+
+  async removeDraftEntry(input: { entryId: string; versionId: string; institutionId: string }): Promise<void> {
+    const { error } = await supabase.rpc('remove_timetable_draft_entry', {
+      p_entry_id: input.entryId,
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+    });
+    if (error) throw error;
+  },
+
+  async duplicateDraftEntry(input: { entryId: string; versionId: string; institutionId: string; dayOfWeek: number; startTime: string; endTime: string }): Promise<string> {
+    const { data, error } = await supabase.rpc('duplicate_timetable_draft_entry', {
+      p_entry_id: input.entryId,
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_day_of_week: input.dayOfWeek,
+      p_start_time: input.startTime,
+      p_end_time: input.endTime,
+    });
+    if (error) throw error;
+    return String(data);
+  },
+
+  async copyDraftDay(input: { versionId: string; institutionId: string; sourceDay: number; targetDay: number }): Promise<{ created: number; conflicts: number; details: Array<Record<string, unknown>> }> {
+    const { data, error } = await supabase.rpc('copy_timetable_draft_day', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_source_day: input.sourceDay,
+      p_target_day: input.targetDay,
+    });
+    if (error) throw error;
+    const result = (data ?? {}) as { created?: number; conflicts?: number; details?: Array<Record<string, unknown>> };
+    return { created: Number(result.created ?? 0), conflicts: Number(result.conflicts ?? 0), details: result.details ?? [] };
+  },
+
+  async previewCopyDraftDay(input: { versionId: string; institutionId: string; sourceDay: number; targetDay: number }): Promise<TimetableDayCopyPreview> {
+    const { data, error } = await supabase.rpc('preview_timetable_draft_day_copy', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+      p_source_day: input.sourceDay,
+      p_target_day: input.targetDay,
+    });
+    if (error) throw error;
+    const result = (data ?? {}) as Partial<TimetableDayCopyPreview>;
+    return {
+      total: Number(result.total ?? 0),
+      copyable: Number(result.copyable ?? 0),
+      conflicts: Number(result.conflicts ?? 0),
+      details: Array.isArray(result.details) ? result.details : [],
+      source_day: Number(result.source_day ?? input.sourceDay),
+      target_day: Number(result.target_day ?? input.targetDay),
+    };
+  },
+
+  async validateDraft(input: { versionId: string; institutionId: string }): Promise<TimetableDraftValidation> {
+    const { data, error } = await supabase.rpc('validate_timetable_draft', {
+      p_version_id: input.versionId,
+      p_institution_id: input.institutionId,
+    });
+    if (error) throw error;
+    const result = (data ?? {}) as Partial<TimetableDraftValidation>;
+    return {
+      valid: result.valid === true,
+      diagnostics: Array.isArray(result.diagnostics) ? result.diagnostics as TimetableDraftDiagnostic[] : [],
+      summary: result.summary ?? { active_entries: 0, diagnostic_count: 0 },
+    };
   },
 
   async deleteVersion(versionId: string, institutionId: string): Promise<void> {
@@ -910,11 +1255,29 @@ export const timetableAutomationService = {
       return preparedResult;
     }
 
-    const { data: version, error: versionError } = await supabase.from('timetable_versions').insert({ institution_id: input.institutionId, academic_year_id: input.academicYearId, name: input.name ?? `Proposta ${new Date().toLocaleDateString('pt-BR')}`, status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', generation_shift: input.shift && input.shift !== 'TODOS' ? normalizeAcademicShift(input.shift) : 'TODOS', created_by: input.createdBy, source_version_id: input.sourceVersionId ?? null }).select('id').single();
+    const { data: versionId, error: versionError } = await supabase.rpc('create_timetable_draft', {
+      p_institution_id: input.institutionId,
+      p_academic_year_id: input.academicYearId,
+      p_name: input.name ?? `Proposta ${new Date().toLocaleDateString('pt-BR')}`,
+      p_generation_source: 'DETERMINISTIC_GENERATOR',
+      p_generation_shift: input.shift && input.shift !== 'TODOS' ? normalizeAcademicShift(input.shift) : 'TODOS',
+      p_created_by: input.createdBy,
+      p_source_version_id: input.sourceVersionId ?? null,
+      p_entries: result.entries.map((entry) => ({
+        academic_year_id: entry.academicYearId,
+        term_id: entry.termId,
+        class_id: entry.classId,
+        subject_offering_id: entry.subjectOfferingId,
+        room_id: entry.roomId,
+        day_of_week: entry.dayOfWeek,
+        start_time: entry.startTime,
+        end_time: entry.endTime,
+        locked: entry.locked,
+        active: true,
+      })),
+    });
     if (versionError) throw versionError;
-    const { error: entriesError } = await supabase.from('timetable_version_entries').insert(result.entries.map((entry) => ({ version_id: version.id, institution_id: entry.institutionId, academic_year_id: entry.academicYearId, term_id: entry.termId, class_id: entry.classId, subject_offering_id: entry.subjectOfferingId, room_id: entry.roomId, day_of_week: entry.dayOfWeek, start_time: entry.startTime, end_time: entry.endTime, locked: entry.locked, active: true })));
-    if (entriesError) throw entriesError;
-    return { ...preparedResult, versionId: version.id };
+    return { ...preparedResult, versionId: String(versionId) };
     } catch (error) {
       await rollbackAutomaticPreparation({ institutionId: input.institutionId, ...rollbackState });
       throw error;

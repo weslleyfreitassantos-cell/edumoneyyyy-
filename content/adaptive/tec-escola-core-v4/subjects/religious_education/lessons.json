@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "title": "Comparar tradicoes com respeito",
+    "objective": "Comparar tradicoes reconhecendo contexto, diversidade interna e direitos humanos.",
+    "summary": "Comparacao respeitosa descreve praticas sem hierarquizar pessoas ou comunidades.",
+    "explanation": "Comparacao respeitosa descreve praticas sem hierarquizar pessoas ou comunidades.",
+    "workedExample": "Simbolos diferentes podem expressar gratidao em contextos distintos.",
+    "commonMistake": "Rank traditions or reduce a community to one fixed label.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

@@ -698,12 +698,10 @@ function LearningHeader({
   onCreate?: () => void;
 }) {
   return (
-    <header className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#005bbf]">Acadêmico</p>
-        <h1 className="mt-1 text-2xl font-bold tracking-tight text-[#181c20] dark:text-white">Materiais e avisos</h1>
-        <p className="mt-2 max-w-2xl text-sm leading-6 text-[#727785] dark:text-slate-400">{isTeacher ? 'Publique conteúdos para as disciplinas e turmas que você leciona.' : 'Acompanhe conteúdos e comunicados das suas turmas.'}</p>
-      </div>
+    <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <p className="max-w-2xl text-sm leading-6 text-[#727785] dark:text-slate-400">
+        {isTeacher ? 'Publique conteúdos para as disciplinas e turmas que você leciona.' : 'Acompanhe conteúdos e comunicados das suas turmas.'}
+      </p>
       <div className="flex items-center gap-3">
         {!isTeacher && unreadCount > 0 ? <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-2 text-xs font-bold text-[#005bbf] dark:bg-blue-950/50 dark:text-blue-300"><span className="h-2 w-2 rounded-full bg-[#005bbf]" aria-hidden="true" />{unreadCount} não lido(s)</span> : null}
         {isTeacher && onCreate ? <button type="button" onClick={onCreate} className="inline-flex min-h-10 items-center gap-2 rounded-xl bg-[#005bbf] px-4 text-sm font-bold text-white hover:bg-[#004a9c] focus:outline-none focus:ring-2 focus:ring-[#005bbf] focus:ring-offset-2"><Plus className="h-4 w-4" aria-hidden="true" />Nova publicação</button> : null}

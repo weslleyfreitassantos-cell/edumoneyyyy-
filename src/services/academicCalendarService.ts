@@ -5,6 +5,13 @@ import {
   nextCalendarDateKey,
   parseCalendarDate,
 } from '../lib/academicCalendarDates';
+import {
+  ACADEMIC_DATE_BLOCKING_EVENT_TYPES,
+  createAcademicDateStatus,
+  type AcademicDateBlocker,
+  type AcademicDateStatus,
+  type AcademicDateStatusContext,
+} from '../lib/academicCalendarStatus';
 
 export const ACADEMIC_CALENDAR_EVENT_TYPES = [
   'HOLIDAY',
@@ -73,6 +80,22 @@ export interface AcademicCalendarEventFilters {
   audience?: AcademicCalendarAudience | 'ALL';
   date?: string;
 }
+
+export type AcademicCalendarBlockingEvent = Pick<
+  AcademicCalendarEvent,
+  | 'id'
+  | 'institution_id'
+  | 'academic_year_id'
+  | 'event_type'
+  | 'starts_at'
+  | 'ends_at'
+  | 'all_day'
+  | 'class_id'
+  | 'subject_id'
+  | 'active'
+>;
+
+export type { AcademicDateStatusContext, AcademicDateStatus } from '../lib/academicCalendarStatus';
 
 interface AcademicCalendarRelation {
   id: string;
@@ -256,6 +279,62 @@ function dateEnd(value: string): string {
 }
 
 export const academicCalendarService = {
+  async getAcademicDateStatus(
+    context: AcademicDateStatusContext,
+    date: string,
+  ): Promise<AcademicDateStatus> {
+    if (!context.institutionId.trim()) {
+      throw new Error('A instituição é obrigatória para consultar o status da data.');
+    }
+
+    calendarDateToUtcStart(date);
+
+    const { data, error } = await supabase.rpc('get_academic_day_blockers', {
+      p_institution_id: context.institutionId,
+      p_date: date,
+      p_academic_year_id: context.academicYearId ?? null,
+      p_class_id: context.classId ?? null,
+      p_subject_id: context.subjectId ?? null,
+    });
+
+    if (error) throw error;
+
+    return createAcademicDateStatus(
+      date,
+      (data ?? []) as AcademicDateBlocker[],
+    );
+  },
+
+  async listBlockingEventsForRange(
+    institutionId: string,
+    fromDate: string,
+    toDate: string,
+  ): Promise<AcademicCalendarBlockingEvent[]> {
+    if (!institutionId.trim()) {
+      throw new Error('A instituição é obrigatória para consultar o calendário.');
+    }
+
+    calendarDateToUtcStart(fromDate);
+    calendarDateToUtcStart(toDate);
+
+    const { data, error } = await supabase
+      .from('academic_calendar_events')
+      .select(
+        'id, institution_id, academic_year_id, event_type, starts_at, ends_at, all_day, class_id, subject_id, active',
+      )
+      .eq('institution_id', institutionId)
+      .eq('active', true)
+      .eq('all_day', true)
+      .in('event_type', [...ACADEMIC_DATE_BLOCKING_EVENT_TYPES])
+      .lt('starts_at', dateEnd(toDate))
+      .or(`ends_at.gte.${dateStart(fromDate)},ends_at.is.null`)
+      .order('starts_at', { ascending: true });
+
+    if (error) throw error;
+
+    return (data ?? []) as unknown as AcademicCalendarBlockingEvent[];
+  },
+
   async listForStaff(
     institutionId: string,
     filters: AcademicCalendarEventFilters = {},

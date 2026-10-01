@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "ENGLISH_INFER_FROM_TEXT",
+    "title": "Infer meaning from context",
+    "objective": "Inferir sentido em um texto em ingles usando conectores e pistas contextuais.",
+    "summary": "Connectors such as because and so organize cause and consequence.",
+    "explanation": "Connectors such as because and so organize cause and consequence.",
+    "workedExample": "In The bus was late, so Maya walked, so introduces the consequence.",
+    "commonMistake": "Treating a contextual inference as a guess without textual support.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

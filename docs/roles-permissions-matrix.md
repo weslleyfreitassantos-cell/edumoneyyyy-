@@ -1,5 +1,9 @@
 # Matriz de papéis e permissões
 
+> **Status:** `SUPERSEDED`. Esta matriz antecede os papeis/migrations atuais.
+> Fonte versionada: `docs/CURRENT_STATE.md` mais codigo, migrations e testes;
+> a VPS ainda requer inventario privilegiado para confirmacao runtime.
+
 > Atualizado em 28 jul 2026 — baseado em auditoria de frontend, RLS e Edge Functions.
 
 ---

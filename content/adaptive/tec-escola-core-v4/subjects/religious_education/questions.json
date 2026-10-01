@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-religious_education-religious_diversity-1",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "traditions",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "TRADITIONS",
+    "statement": "A class compares harvest celebrations from different communities. A respectful study should:",
+    "options": [
+      "Describe practices in their own contexts.",
+      "Rank traditions as better or worse.",
+      "Assume all practices are identical.",
+      "Replace accounts with stereotypes."
+    ],
+    "correctAnswer": "Describe practices in their own contexts.",
+    "explanation": "Contextual description avoids hierarchy and caricature.",
+    "misconceptions": {
+      "Rank traditions as better or worse.": [
+        "TRADITION_RANKING"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-2",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "diversity",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DIVERSITY",
+    "statement": "Students hear different beliefs about the origin of life. A plural dialogue asks them to:",
+    "options": [
+      "Erase all religious vocabulary.",
+      "Listen, identify differences and discuss respectfully.",
+      "Force one belief on everyone.",
+      "Mock disagreement."
+    ],
+    "correctAnswer": "Listen, identify differences and discuss respectfully.",
+    "explanation": "Plural education protects dialogue and dignity.",
+    "misconceptions": {
+      "Force one belief on everyone.": [
+        "DIALOGUE_CONFUSED_WITH_CONVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-3",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "secular context",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SECULAR_CONTEXT",
+    "statement": "A public school studies religion without requiring adherence. The educational approach is:",
+    "options": [
+      "A test of personal faith.",
+      "A ranking of families.",
+      "Descriptive and non-confessional.",
+      "A worship service."
+    ],
+    "correctAnswer": "Descriptive and non-confessional.",
+    "explanation": "The class studies phenomena without imposing belief.",
+    "misconceptions": {
+      "A worship service.": [
+        "DESCRIPTIVE_STUDY_AS_WORSHIP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-4",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "ritual",
+    "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "RITUAL",
+    "statement": "A ritual may include gestures, objects and words meaningful to a community. To understand it, one should:",
+    "options": [
+      "Assume every ritual has the same meaning.",
+      "Treat objects as decoration only.",
+      "Ignore the community.",
+      "Ask what meanings participants attribute to it."
+    ],
+    "correctAnswer": "Ask what meanings participants attribute to it.",
+    "explanation": "Meaning is connected to practice and community.",
+    "misconceptions": {
+      "Assume every ritual has the same meaning.": [
+        "RITUAL_REDUCED_TO_OBJECT"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-5",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "respect",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "RESPECT",
+    "statement": "A student asks a colleague about a tradition. Which question is respectful?",
+    "options": [
+      "Como voce interpreta essa pratica?",
+      "Por que sua tradicao e estranha?",
+      "Voce acredita em tudo sem pensar?",
+      "Sua familia nao tem ciencia?"
+    ],
+    "correctAnswer": "Como voce interpreta essa pratica?",
+    "explanation": "The question invites explanation without judgment.",
+    "misconceptions": {
+      "Por que sua tradicao e estranha?": [
+        "STEREOTYPE_AS_QUESTION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-6",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "internal diversity",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "INTERNAL_DIVERSITY",
+    "statement": "There can be different interpretations within the same tradition. This shows that traditions:",
+    "options": [
+      "Have no social context.",
+      "Have internal diversity and historical change.",
+      "Are identical for every member.",
+      "Never change over time."
+    ],
+    "correctAnswer": "Have internal diversity and historical change.",
+    "explanation": "Communities interpret and live traditions in varied ways.",
+    "misconceptions": {
+      "Are identical for every member.": [
+        "TRADITION_AS_MONOLITH"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-7",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "worldviews",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "WORLDVIEWS",
+    "statement": "A worldview may connect ideas about meaning, nature and community. A careful study should:",
+    "options": [
+      "Reduce it to one slogan.",
+      "Separate it from any lived practice.",
+      "Examine how these ideas relate in a specific context.",
+      "Assume every worldview rejects science."
+    ],
+    "correctAnswer": "Examine how these ideas relate in a specific context.",
+    "explanation": "Worldviews are systems of meaning, not isolated labels.",
+    "misconceptions": {
+      "Assume every worldview rejects science.": [
+        "WORLDVIEW_REDUCED_TO_SLOGAN"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-8",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "freedom",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "FREEDOM",
+    "statement": "Respecting freedom of belief in school means:",
+    "options": [
+      "Requiring one answer from everyone.",
+      "Allowing insults as debate.",
+      "Ignoring discrimination.",
+      "Protecting different convictions and the right not to adhere."
+    ],
+    "correctAnswer": "Protecting different convictions and the right not to adhere.",
+    "explanation": "Freedom includes belief, non-belief and protection from coercion.",
+    "misconceptions": {
+      "Requiring one answer from everyone.": [
+        "FREEDOM_AS_MAJORITY_RULE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-9",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "source",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "SOURCE",
+    "statement": "An oral account of a festival should be studied with attention to:",
+    "options": [
+      "Who speaks, in what context and for what purpose.",
+      "Only the date in a calendar.",
+      "A stereotype from another group.",
+      "A single outsider opinion."
+    ],
+    "correctAnswer": "Who speaks, in what context and for what purpose.",
+    "explanation": "Source context helps interpret voice and meaning.",
+    "misconceptions": {
+      "Only the date in a calendar.": [
+        "SOURCE_CONTEXT_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-10",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "symbol",
+    "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "SYMBOL",
+    "statement": "A symbol can have different meanings in different communities. The safest interpretation is to:",
+    "options": [
+      "Choose the most exotic explanation.",
+      "Use the community context before generalizing.",
+      "Assign the same meaning everywhere.",
+      "Assume symbols have no meaning."
+    ],
+    "correctAnswer": "Use the community context before generalizing.",
+    "explanation": "Meaning is situated and should not be projected from outside.",
+    "misconceptions": {
+      "Assign the same meaning everywhere.": [
+        "SYMBOL_MEANING_UNIVERSALIZED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-11",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "prejudice",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PREJUDICE",
+    "statement": "Calling a whole community violent based on one news story is:",
+    "options": [
+      "A neutral description.",
+      "A source criticism.",
+      "A stereotype and an unjustified generalization.",
+      "A careful comparative method."
+    ],
+    "correctAnswer": "A stereotype and an unjustified generalization.",
+    "explanation": "One case cannot define a diverse community.",
+    "misconceptions": {
+      "A careful comparative method.": [
+        "SINGLE_CASE_STEREOTYPE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-religious_education-religious_diversity-12",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "dialogue norms",
+    "primarySkill": "RELIGIOUS_MEDIATE_DIALOGUE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DIALOGUE_NORMS",
+    "statement": "A productive classroom dialogue about belief should include:",
+    "options": [
+      "Interruption and ridicule.",
+      "A vote to silence minorities.",
+      "Personal attacks.",
+      "Turn-taking, evidence, respect and space for disagreement."
+    ],
+    "correctAnswer": "Turn-taking, evidence, respect and space for disagreement.",
+    "explanation": "Dialogue rules protect participation and dignity.",
+    "misconceptions": {
+      "Interruption and ridicule.": [
+        "DIALOGUE_AS_CONFLICT"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-religious_education-review-01",
+    "subject": "RELIGIOUS_EDUCATION",
+    "domain": "DIVERSIDADE",
+    "topic": "Comparar tradicoes com respeito",
+    "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Duas comunidades usam simbolos diferentes para expressar gratidao. Uma atitude adequada ao comparar as praticas e:",
+    "options": [
+      "Descrever cada pratica em seu contexto sem hierarquiza-las.",
+      "Escolher uma como universalmente superior.",
+      "Reduzir ambas a um unico significado.",
+      "Impedir que a comunidade explique seu simbolo."
+    ],
+    "correctAnswer": "Descrever cada pratica em seu contexto sem hierarquiza-las.",
+    "explanation": "Comparar com respeito exige contexto, escuta e reconhecimento da diversidade.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "HISTORY_INTERPRET_EVIDENCE",
+    "title": "Ler uma fonte historica situada",
+    "objective": "Interpretar uma fonte considerando autoria, data, contexto e limites de representacao.",
+    "summary": "Fontes registram perspectivas situadas; nenhuma fala sozinha por toda uma sociedade.",
+    "explanation": "Fontes registram perspectivas situadas; nenhuma fala sozinha por toda uma sociedade.",
+    "workedExample": "Uma carta de greve revela a experiencia de quem escreveu e precisa ser comparada a outras fontes.",
+    "commonMistake": "Tratar a fonte como neutra ou universal sem considerar autoria e contexto.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

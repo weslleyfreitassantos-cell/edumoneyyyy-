@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-computing-computing_algorithms-1",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "decomposition",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DECOMPOSITION",
+    "statement": "To plan a school app, the team lists login, schedule and messages as separate tasks. This is:",
+    "options": [
+      "Decomposition.",
+      "Encryption.",
+      "Randomization.",
+      "Compression."
+    ],
+    "correctAnswer": "Decomposition.",
+    "explanation": "Breaking a problem into smaller tasks makes it manageable.",
+    "misconceptions": {
+      "Encryption.": [
+        "DECOMPOSITION_CONFUSED_WITH_CODING"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-2",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "sequence",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SEQUENCE",
+    "statement": "An algorithm says: receive score, add points, display total. What concept is shown?",
+    "options": [
+      "A network address.",
+      "Sequence of steps.",
+      "A loop without condition.",
+      "A password."
+    ],
+    "correctAnswer": "Sequence of steps.",
+    "explanation": "The instructions run in an ordered progression.",
+    "misconceptions": {
+      "A loop without condition.": [
+        "SEQUENCE_ORDER_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-3",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "condition",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "CONDITION",
+    "statement": "If the temperature is below 18, show a coat reminder. The if statement represents:",
+    "options": [
+      "A variable name only.",
+      "A drawing tool.",
+      "A condition.",
+      "A file format."
+    ],
+    "correctAnswer": "A condition.",
+    "explanation": "The action depends on a true or false test.",
+    "misconceptions": {
+      "A file format.": [
+        "CONDITION_CONFUSED_WITH_ACTION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-4",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "loop",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "LOOP",
+    "statement": "A program repeats reading names until the list ends. Which structure is useful?",
+    "options": [
+      "A single constant.",
+      "A color palette.",
+      "A manual screenshot.",
+      "A loop."
+    ],
+    "correctAnswer": "A loop.",
+    "explanation": "Repetition avoids writing the same step for every name.",
+    "misconceptions": {
+      "A single constant.": [
+        "LOOP_AS_SINGLE_STEP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-5",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "debugging",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DEBUGGING",
+    "statement": "The app totals 2 + 3 as 23 because values were read as text. What is debugging here?",
+    "options": [
+      "Finding and correcting the type error.",
+      "Deleting the whole app.",
+      "Changing the screen color.",
+      "Adding a random delay."
+    ],
+    "correctAnswer": "Finding and correcting the type error.",
+    "explanation": "The behavior points to a data representation problem.",
+    "misconceptions": {
+      "Deleting the whole app.": [
+        "DEBUGGING_AS_RESTART"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-6",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "trace",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TRACE",
+    "statement": "A trace table records variable values after each step. Its purpose is to:",
+    "options": [
+      "Replace testing.",
+      "Follow the algorithm state.",
+      "Hide input data.",
+      "Encrypt every variable."
+    ],
+    "correctAnswer": "Follow the algorithm state.",
+    "explanation": "Tracing makes intermediate results visible for checking.",
+    "misconceptions": {
+      "Hide input data.": [
+        "TRACE_AS_OUTPUT_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-7",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "binary",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "BINARY",
+    "statement": "A computer stores a black-and-white pixel using 0 and 1. This illustrates:",
+    "options": [
+      "A physical analog meter.",
+      "A password policy.",
+      "Digital binary representation.",
+      "A natural language sentence."
+    ],
+    "correctAnswer": "Digital binary representation.",
+    "explanation": "Binary symbols encode discrete states.",
+    "misconceptions": {
+      "A natural language sentence.": [
+        "BINARY_AS_DECIMAL_ONLY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-8",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "data privacy",
+    "primarySkill": "COMPUTING_RECOGNIZE_PHISHING",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "DATA_PRIVACY",
+    "statement": "An app asks for a student location when it only needs a class name. A better design is to:",
+    "options": [
+      "Collect every possible field.",
+      "Publish the location.",
+      "Disable all access controls.",
+      "Collect only the data needed for the purpose."
+    ],
+    "correctAnswer": "Collect only the data needed for the purpose.",
+    "explanation": "Data minimization reduces unnecessary exposure.",
+    "misconceptions": {
+      "Collect every possible field.": [
+        "DATA_MINIMIZATION_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-9",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "password security",
+    "primarySkill": "COMPUTING_RECOGNIZE_PHISHING",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "PASSWORD_SECURITY",
+    "statement": "A service stores passwords with a one-way hash and salt. The main goal is:",
+    "options": [
+      "Reduce exposure if stored data leaks.",
+      "Make passwords public.",
+      "Recover every original password.",
+      "Avoid user authentication."
+    ],
+    "correctAnswer": "Reduce exposure if stored data leaks.",
+    "explanation": "Hashing and salting protect stored representations.",
+    "misconceptions": {
+      "Make passwords public.": [
+        "HASH_AS_ENCRYPTION_RECOVERY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-10",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "algorithm fairness",
+    "primarySkill": "COMPUTING_READ_TABLE_DATA",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "ALGORITHM_FAIRNESS",
+    "statement": "A school recommendation model uses attendance as the only signal. A responsible review should ask:",
+    "options": [
+      "Whether context is irrelevant.",
+      "Whether the signal creates unfair effects or misses context.",
+      "Whether the model can never be wrong.",
+      "Whether students should lose access."
+    ],
+    "correctAnswer": "Whether the signal creates unfair effects or misses context.",
+    "explanation": "Responsible computing examines effects and limits.",
+    "misconceptions": {
+      "Whether the model can never be wrong.": [
+        "SINGLE_SIGNAL_AS_NEUTRAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-11",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "protocol",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PROTOCOL",
+    "statement": "A browser requests a page and a server returns data. This exchange follows:",
+    "options": [
+      "A drawing layer.",
+      "A battery charge.",
+      "A communication protocol.",
+      "A spreadsheet formula."
+    ],
+    "correctAnswer": "A communication protocol.",
+    "explanation": "Protocols define how systems exchange messages.",
+    "misconceptions": {
+      "A spreadsheet formula.": [
+        "PROTOCOL_CONFUSED_WITH_DEVICE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-computing-computing_algorithms-12",
+    "subject": "COMPUTING",
+    "domain": "PENSAMENTO_COMPUTACIONAL",
+    "topic": "digital citizenship",
+    "primarySkill": "COMPUTING_RECOGNIZE_PHISHING",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DIGITAL_CITIZENSHIP",
+    "statement": "Before forwarding a dramatic post, a student checks source, date and evidence. This is:",
+    "options": [
+      "Data deletion.",
+      "A sorting algorithm.",
+      "A hardware repair.",
+      "Responsible digital citizenship."
+    ],
+    "correctAnswer": "Responsible digital citizenship.",
+    "explanation": "Checking context reduces harmful misinformation sharing.",
+    "misconceptions": {
+      "Data deletion.": [
+        "SHARING_BEFORE_CHECKING"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-computing-review-01",
+    "subject": "COMPUTING",
+    "domain": "ALGORITMOS",
+    "topic": "Rastrear algoritmo com condicoes",
+    "primarySkill": "COMPUTING_TRACE_ALGORITHM",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um algoritmo verifica a senha, bloqueia o acesso quando ha tres tentativas erradas e libera o acesso quando a senha esta correta. Qual estrutura deve ser rastreada?",
+    "options": [
+      "Uma condicao que depende do resultado de cada tentativa.",
+      "Uma sequencia sem verificacoes.",
+      "Um loop que sempre libera o acesso.",
+      "Uma variavel que ignora a entrada."
+    ],
+    "correctAnswer": "Uma condicao que depende do resultado de cada tentativa.",
+    "explanation": "O comportamento muda conforme a condicao senha correta ou limite de tentativas.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

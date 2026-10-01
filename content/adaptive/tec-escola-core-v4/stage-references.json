@@ -1,0 +1,257 @@
+{
+  "PORTUGUESE": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "MATHEMATICS": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "SCIENCE": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "BIOLOGY": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "PHYSICS": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "CHEMISTRY": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "HISTORY": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "GEOGRAPHY": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "PHILOSOPHY": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "SOCIOLOGY": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "ART": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "PHYSICAL_EDUCATION": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "ENGLISH": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "RELIGIOUS_EDUCATION": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ],
+  "COMPUTING": [
+    {
+      "stage": "FUNDAMENTAL_I",
+      "from": 1,
+      "to": 5
+    },
+    {
+      "stage": "FUNDAMENTAL_II",
+      "from": 6,
+      "to": 9
+    },
+    {
+      "stage": "ENSINO_MEDIO",
+      "from": 1,
+      "to": 3
+    }
+  ]
+}

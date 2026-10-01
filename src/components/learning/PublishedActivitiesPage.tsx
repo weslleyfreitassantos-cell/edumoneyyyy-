@@ -1,5 +1,7 @@
 import {
   ArrowLeft,
+  ArrowDown,
+  ArrowUp,
   BookOpenCheck,
   CheckCircle2,
   Edit3,
@@ -24,11 +26,14 @@ import { learningCenterService } from '../../services/learningCenterService';
 interface ActivityEditDraft {
   title: string;
   description: string;
-  activityType: 'PRACTICE' | 'REINFORCEMENT';
-  question: string;
-  options: string;
-  correct: string;
-  explanation: string;
+  activityType: 'PRACTICE' | 'REINFORCEMENT' | 'DIAGNOSTIC' | 'LOCK_IN';
+  questions: Array<{
+    questionBankId: string;
+    question: string;
+    options: string;
+    correct: string;
+    explanation: string;
+  }>;
 }
 
 function textValue(value: unknown): string {
@@ -62,15 +67,17 @@ function formatDate(value?: string): string {
 }
 
 function toEditDraft(activity: LearningActivity): ActivityEditDraft {
-  const question = activity.learning_questions?.[0];
   return {
     title: activity.title,
     description: activity.description ?? '',
-    activityType: activity.activity_type === 'REINFORCEMENT' ? 'REINFORCEMENT' : 'PRACTICE',
-    question: question?.question_text ?? '',
-    options: (question?.options_json ?? []).join('\n'),
-    correct: textValue(question?.correct_answer_json),
-    explanation: question?.explanation ?? '',
+    activityType: activity.activity_type === 'REINFORCEMENT' || activity.activity_type === 'DIAGNOSTIC' || activity.activity_type === 'LOCK_IN' ? activity.activity_type : 'PRACTICE',
+    questions: (activity.learning_questions ?? []).sort((a, b) => a.sort_order - b.sort_order).map((question) => ({
+      questionBankId: question.question_bank_id ?? '',
+      question: question.question_text,
+      options: question.options_json.join('\n'),
+      correct: textValue(question.correct_answer_json),
+      explanation: question.explanation ?? '',
+    })),
   };
 }
 
@@ -85,7 +92,7 @@ export default function PublishedActivitiesPage() {
   const [message, setMessage] = useState('');
 
   const activities = useTeacherLearningActivities(currentInstitutionId ?? undefined, profile?.id);
-  const publishedActivities = (activities.data ?? []).filter((activity) => activity.status === 'PUBLISHED');
+  const visibleActivities = activities.data ?? [];
   const assignmentClasses = useQuery({
     queryKey: ['learning-center', 'repair-classes', currentInstitutionId, profile?.id, assigning?.subject_id],
     queryFn: () => learningCenterService.teacherClassesForSubject(currentInstitutionId!, profile!.id, assigning!.subject_id),
@@ -94,15 +101,35 @@ export default function PublishedActivitiesPage() {
 
   const updateMutation = useMutation({
     mutationFn: async ({ activity, draft }: { activity: LearningActivity; draft: ActivityEditDraft }) => {
+      if (!draft.questions.length) throw new Error('Adicione pelo menos uma questão.');
+      if (activity.status === 'DRAFT') {
+        return learningCenterService.updateActivityWithQuestions({
+          activity_id: activity.id,
+          title: draft.title.trim(),
+          description: draft.description.trim(),
+          activity_type: draft.activityType,
+          questions: draft.questions.map((question, index) => ({
+            question_bank_id: question.questionBankId || undefined,
+            question_text: question.question.trim(),
+            question_type: 'MULTIPLE_CHOICE',
+            options_json: question.options.split('\n').map((item) => item.trim()).filter(Boolean),
+            correct_answer_json: question.correct.trim(),
+            explanation: question.explanation.trim(),
+            points: 1,
+            sort_order: index,
+          })),
+        });
+      }
+      const question = draft.questions[0];
       const updated = await learningCenterService.updateActivity({
         activity_id: activity.id,
         title: draft.title.trim(),
         description: draft.description.trim(),
         activity_type: draft.activityType,
-        question_text: draft.question.trim(),
-        options_json: draft.options.split('\n').map((item) => item.trim()).filter(Boolean),
-        correct_answer_json: draft.correct.trim(),
-        explanation: draft.explanation.trim(),
+        question_text: question.question.trim(),
+        options_json: question.options.split('\n').map((item) => item.trim()).filter(Boolean),
+        correct_answer_json: question.correct.trim(),
+        explanation: question.explanation.trim(),
       });
       return updated;
     },
@@ -159,6 +186,29 @@ export default function PublishedActivitiesPage() {
     setAssigning(activity);
   };
 
+  const updateEditQuestion = (index: number, key: keyof ActivityEditDraft['questions'][number], value: string) => {
+    setEditDraft((current) => current ? { ...current, questions: current.questions.map((question, questionIndex) => questionIndex === index ? { ...question, [key]: value } : question) } : current);
+  };
+
+  const addEditQuestion = () => {
+    setEditDraft((current) => current ? { ...current, questions: [...current.questions, { questionBankId: '', question: '', options: '', correct: '', explanation: '' }] } : current);
+  };
+
+  const moveEditQuestion = (index: number, direction: -1 | 1) => {
+    setEditDraft((current) => {
+      if (!current) return current;
+      const target = index + direction;
+      if (target < 0 || target >= current.questions.length) return current;
+      const questions = [...current.questions];
+      [questions[index], questions[target]] = [questions[target], questions[index]];
+      return { ...current, questions };
+    });
+  };
+
+  const removeEditQuestion = (index: number) => {
+    setEditDraft((current) => current && current.questions.length > 1 ? { ...current, questions: current.questions.filter((_, questionIndex) => questionIndex !== index) } : current);
+  };
+
   const removeActivity = (activity: LearningActivity) => {
     const confirmed = window.confirm(
       `Excluir definitivamente a atividade “${activity.title}”? As perguntas, atribuições e respostas relacionadas também serão removidas.`,
@@ -200,7 +250,7 @@ export default function PublishedActivitiesPage() {
         <section className="rounded-xl border border-red-200 bg-red-50 p-6 text-sm text-red-700">
           Não foi possível carregar suas atividades publicadas.
         </section>
-      ) : publishedActivities.length === 0 ? (
+      ) : visibleActivities.length === 0 ? (
         <section className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
           <BookOpenCheck className="mx-auto h-10 w-10 text-slate-400" aria-hidden="true" />
           <h2 className="mt-4 font-bold dark:text-white">Nenhuma atividade publicada</h2>
@@ -211,7 +261,7 @@ export default function PublishedActivitiesPage() {
         </section>
       ) : (
         <section className="grid gap-4 lg:grid-cols-2">
-          {publishedActivities.map((activity) => (
+          {visibleActivities.map((activity) => (
             <article key={activity.id} className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 items-start gap-3">
@@ -223,7 +273,7 @@ export default function PublishedActivitiesPage() {
                     <p className="mt-1 text-sm font-semibold text-[#005bbf]">{subjectLabel(activity)}</p>
                   </div>
                 </div>
-                <span className="shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300">Publicada</span>
+                <span className={activity.status === 'DRAFT' ? 'shrink-0 rounded-full bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-700 dark:bg-amber-950/40 dark:text-amber-300' : 'shrink-0 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300'}>{activity.status === 'DRAFT' ? 'Rascunho' : 'Publicada'}</span>
               </div>
 
               <p className="mt-4 line-clamp-2 text-sm text-slate-600 dark:text-slate-300">{activity.description ?? 'Sem descrição cadastrada.'}</p>
@@ -241,10 +291,10 @@ export default function PublishedActivitiesPage() {
               <div className="mt-5 flex flex-wrap gap-2 border-t pt-4 dark:border-slate-700">
                 {!activity.learning_assignments?.length ? (
                   <button type="button" onClick={() => openAssignment(activity)} disabled={assignMutation.isPending} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-3 py-2 text-sm font-bold text-white hover:bg-[#004a9c] disabled:opacity-50">
-                    <UsersRound className="h-4 w-4" aria-hidden="true" />Vincular turma
+                    <UsersRound className="h-4 w-4" aria-hidden="true" />{activity.status === 'DRAFT' ? 'Publicar e vincular' : 'Vincular turma'}
                   </button>
                 ) : null}
-                <button type="button" onClick={() => openEdit(activity)} disabled={updateMutation.isPending || deleteMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-[#005bbf] px-3 py-2 text-sm font-bold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50">
+                <button type="button" onClick={() => openEdit(activity)} disabled={updateMutation.isPending || deleteMutation.isPending || (activity.status === 'PUBLISHED' && ['DIAGNOSTIC', 'LOCK_IN'].includes(activity.activity_type))} className="inline-flex items-center gap-2 rounded-lg border border-[#005bbf] px-3 py-2 text-sm font-bold text-[#005bbf] hover:bg-blue-50 disabled:opacity-50">
                   <Edit3 className="h-4 w-4" aria-hidden="true" />Editar
                 </button>
                 <button type="button" onClick={() => removeActivity(activity)} disabled={deleteMutation.isPending || updateMutation.isPending} className="inline-flex items-center gap-2 rounded-lg border border-red-200 px-3 py-2 text-sm font-bold text-red-700 hover:bg-red-50 disabled:opacity-50">
@@ -279,28 +329,21 @@ export default function PublishedActivitiesPage() {
                   <select value={editDraft.activityType} onChange={(event) => setEditDraft((current) => current ? { ...current, activityType: event.target.value as ActivityEditDraft['activityType'] } : current)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                     <option value="PRACTICE">Prática</option>
                     <option value="REINFORCEMENT">Reforço</option>
+                    <option value="DIAGNOSTIC">Diagnóstico</option>
+                    <option value="LOCK_IN">Fixação</option>
                   </select>
                 </label>
               </div>
               <label className="block text-sm font-semibold dark:text-white">Descrição
                 <textarea value={editDraft.description} onChange={(event) => setEditDraft((current) => current ? { ...current, description: event.target.value } : current)} rows={2} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
               </label>
-              <label className="block text-sm font-semibold dark:text-white">Pergunta
-                <textarea required value={editDraft.question} onChange={(event) => setEditDraft((current) => current ? { ...current, question: event.target.value } : current)} rows={3} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-              </label>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <label className="text-sm font-semibold dark:text-white">Opções (uma por linha)
-                  <textarea required value={editDraft.options} onChange={(event) => setEditDraft((current) => current ? { ...current, options: event.target.value } : current)} rows={4} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-                </label>
-                <div className="space-y-3">
-                  <label className="block text-sm font-semibold dark:text-white">Resposta correta
-                    <input required value={editDraft.correct} onChange={(event) => setEditDraft((current) => current ? { ...current, correct: event.target.value } : current)} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-                  </label>
-                  <label className="block text-sm font-semibold dark:text-white">Explicação
-                    <textarea value={editDraft.explanation} onChange={(event) => setEditDraft((current) => current ? { ...current, explanation: event.target.value } : current)} rows={2} className="mt-1 w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
-                  </label>
-                </div>
-              </div>
+              {editDraft.questions.map((question, index) => <fieldset key={`edit-question-${index}`} className="space-y-3 rounded-lg border p-4 dark:border-slate-700">
+                <legend className="flex w-full items-center justify-between gap-2 px-1 text-sm font-bold dark:text-white"><span>Questão {index + 1}</span><span className="flex gap-1"><button type="button" aria-label={`Mover questão ${index + 1} para cima`} disabled={index === 0} onClick={() => moveEditQuestion(index, -1)} className="rounded border p-1 disabled:opacity-30"><ArrowUp className="h-3.5 w-3.5" /></button><button type="button" aria-label={`Mover questão ${index + 1} para baixo`} disabled={index === editDraft.questions.length - 1} onClick={() => moveEditQuestion(index, 1)} className="rounded border p-1 disabled:opacity-30"><ArrowDown className="h-3.5 w-3.5" /></button></span></legend>
+                <textarea required value={question.question} onChange={(event) => updateEditQuestion(index, 'question', event.target.value)} rows={3} placeholder="Enunciado" className="w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" />
+                <div className="grid gap-3 sm:grid-cols-2"><textarea required value={question.options} onChange={(event) => updateEditQuestion(index, 'options', event.target.value)} rows={4} placeholder="Opções, uma por linha" className="w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" /><div className="space-y-3"><input required value={question.correct} onChange={(event) => updateEditQuestion(index, 'correct', event.target.value)} placeholder="Resposta correta" className="w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" /><textarea value={question.explanation} onChange={(event) => updateEditQuestion(index, 'explanation', event.target.value)} rows={2} placeholder="Explicação" className="w-full rounded-lg border px-3 py-2 dark:border-slate-700 dark:bg-slate-950 dark:text-white" /></div></div>
+                {editDraft.questions.length > 1 ? <button type="button" onClick={() => removeEditQuestion(index)} className="text-sm font-bold text-red-600">Remover questão</button> : null}
+              </fieldset>)}
+              {editing.status === 'DRAFT' ? <button type="button" onClick={addEditQuestion} className="rounded-lg border border-[#005bbf] px-3 py-2 text-sm font-bold text-[#005bbf]">Adicionar questão</button> : null}
               <div className="flex flex-wrap justify-end gap-2 border-t pt-4 dark:border-slate-700">
                 <button type="button" onClick={() => { setEditing(null); setEditDraft(null); }} disabled={updateMutation.isPending} className="rounded-lg border px-4 py-2 text-sm font-bold text-slate-700 dark:border-slate-700 dark:text-slate-200">Cancelar</button>
                 <button type="submit" disabled={updateMutation.isPending} className="inline-flex items-center gap-2 rounded-lg bg-[#005bbf] px-4 py-2 text-sm font-bold text-white disabled:opacity-50">
@@ -315,7 +358,7 @@ export default function PublishedActivitiesPage() {
 
       {assigning ? (
         <div className="fixed inset-0 z-50 grid place-items-center bg-slate-950/55 p-4">
-          <section role="dialog" aria-modal="true" aria-labelledby="assign-learning-activity-title" className="w-full max-w-lg rounded-xl bg-white p-6 shadow-2xl dark:bg-slate-900">
+          <section role="dialog" aria-modal="true" aria-labelledby="assign-learning-activity-title" className="max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-2xl dark:bg-slate-900">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#005bbf]">Atribuir atividade</p>

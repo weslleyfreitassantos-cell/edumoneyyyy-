@@ -6,6 +6,7 @@ import {
   BookOpen,
   BookMarked,
   BadgeCheck,
+  BarChart3,
   BookOpenCheck,
   CalendarDays,
   CalendarClock,
@@ -16,6 +17,7 @@ import {
   CircleHelp,
   Clock3,
   FileCheck2,
+  FileUser,
   GraduationCap,
   LayoutDashboard,
   ListChecks,
@@ -143,8 +145,14 @@ const adminModuleIcons: Record<
   enrollments: ClipboardCheck,
   assignments: ListChecks,
   attendance: ClipboardList,
+  'class-diary': ClipboardList,
   grades: BadgeCheck,
   'term-closing': FileCheck2,
+  'class-councils': UsersRound,
+  'pedagogical-monitoring': BarChart3,
+  'academic-documents': FileCheck2,
+  'student-record': FileUser,
+  'academic-reports': BarChart3,
   'academic-policies': ShieldCheck,
   'academic-calendar': CalendarDays,
   announcements: Megaphone,
@@ -239,6 +247,36 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     exactActivePath: true,
   },
   {
+    id: 'student-attendance',
+    label: 'Frequência',
+    path: '/student/attendance',
+    section: 'personal',
+    icon: ClipboardCheck,
+    roles: ['student'],
+    activePaths: ['/student/attendance'],
+    exactActivePath: true,
+  },
+  {
+    id: 'student-grades',
+    label: 'Notas',
+    path: '/student/grades',
+    section: 'personal',
+    icon: BadgeCheck,
+    roles: ['student'],
+    activePaths: ['/student/grades'],
+    exactActivePath: true,
+  },
+  {
+    id: 'student-report-card',
+    label: 'Boletim',
+    path: '/student/report-card',
+    section: 'personal',
+    icon: FileCheck2,
+    roles: ['student'],
+    activePaths: ['/student/report-card'],
+    exactActivePath: true,
+  },
+  {
     id: 'learning-materials',
     label: 'Materiais e avisos',
     path: '/dashboard/materials',
@@ -250,12 +288,12 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
   {
     id: 'teacher-attendance',
-    label: 'Chamadas',
-    path: '/dashboard/attendance',
+    label: 'Diário de Classe',
+    path: '/dashboard/class-diary',
     section: 'teacher',
     icon: ClipboardCheck,
     roles: ['teacher'],
-    activePaths: ['/dashboard/attendance'],
+    activePaths: ['/dashboard/attendance', '/dashboard/class-diary'],
     exactActivePath: true,
   },
   {
@@ -278,16 +316,28 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
     activePaths: ['/dashboard/term-closing'],
   },
   {
+    id: 'teacher-class-councils',
+    label: 'Conselhos de classe',
+    path: '/dashboard/class-councils',
+    section: 'teacher',
+    icon: UsersRound,
+    roles: ['teacher'],
+    activePaths: ['/dashboard/class-councils'],
+  },
+  {
     id: 'library',
     label: 'Indicações de livros',
     path: '/dashboard/library',
     section: 'personal',
     icon: BookMarked,
-    roles: ['student'],
+    roles: ['student', 'teacher'],
     activePaths: ['/dashboard/library'],
     exactActivePath: true,
   },
   { id: 'student-study', label: 'Central de Estudos', path: '/student/study', section: 'personal', icon: GraduationCap, roles: ['student'], activePaths: ['/student/study'] },
+  { id: 'guardian-attendance', label: 'Frequência dos dependentes', path: '/guardian/attendance', section: 'personal', icon: ClipboardCheck, roles: ['parent'], activePaths: ['/guardian/attendance'], exactActivePath: true },
+  { id: 'guardian-grades', label: 'Notas dos dependentes', path: '/guardian/grades', section: 'personal', icon: BadgeCheck, roles: ['parent'], activePaths: ['/guardian/grades'], exactActivePath: true },
+  { id: 'guardian-report-card', label: 'Boletim dos dependentes', path: '/guardian/report-card', section: 'personal', icon: FileCheck2, roles: ['parent'], activePaths: ['/guardian/report-card'], exactActivePath: true },
   { id: 'teacher-pedagogical-center', label: 'Central Pedagógica', path: '/teacher/pedagogical-center', section: 'personal', icon: GraduationCap, roles: ['teacher'], activePaths: ['/teacher/pedagogical-center'] },
   {
     id: 'personalize-login',
@@ -490,6 +540,7 @@ export function getSidebarAdminModules({
       !isAdminModuleAvailable(
         module,
         effectiveRole,
+        profile.platform_role,
       )
     ) {
       return false;
@@ -806,6 +857,7 @@ export default function Sidebar({
       <aside
         ref={mobileSidebarRef}
         id="app-sidebar"
+        data-print-hide
         role={isMobileOpen ? 'dialog' : undefined}
         aria-modal={isMobileOpen ? 'true' : undefined}
         aria-labelledby={

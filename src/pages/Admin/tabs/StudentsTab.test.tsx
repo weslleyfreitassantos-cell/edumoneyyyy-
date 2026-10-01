@@ -62,7 +62,7 @@ vi.mock('../../../hooks/useClasses', () => ({
 }));
 
 vi.mock('../../../hooks/useEnrollments', () => ({
-  useEnrollments: () => ({
+  useCurrentEnrollmentsForStudents: () => ({
     data: [
       {
         id: 'enrollment-1',
@@ -94,8 +94,9 @@ vi.mock('../../../hooks/useEnrollments', () => ({
 }));
 
 vi.mock('../../../hooks/useStudents', () => ({
-  useStudents: () => ({
-    data: [
+  useStudentPage: () => ({
+    data: {
+      rows: [
       {
         id: '00000000-0000-0000-0000-000000000004',
         profile_id: 'student-profile',
@@ -126,7 +127,9 @@ vi.mock('../../../hooks/useStudents', () => ({
           avatar_url: null,
         },
       },
-    ],
+      ],
+      total: 2,
+    },
     isLoading: false,
     isError: false,
     error: null,
@@ -259,6 +262,15 @@ describe('StudentsTab - vínculo de responsável', () => {
       screen.getByRole('button', { name: 'Editar Ieti' })
         .parentElement?.className,
     ).toContain('md:flex-nowrap');
+  });
+
+  it('oferece o acesso ao prontuário acadêmico sem duplicar o CRUD', () => {
+    const onViewAcademicRecord = vi.fn();
+    render(<StudentsTab onViewAcademicRecord={onViewAcademicRecord} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'Ver prontuário de Ieti' }));
+
+    expect(onViewAcademicRecord).toHaveBeenCalledWith('00000000-0000-0000-0000-000000000004');
   });
 
   it('abre o cadastro completo ao criar um aluno', () => {

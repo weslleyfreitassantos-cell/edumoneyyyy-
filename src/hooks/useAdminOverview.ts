@@ -5,7 +5,7 @@ import {
   type AdminOverviewData,
 } from '../services/adminOverviewService';
 
-export const ADMIN_OVERVIEW_STALE_TIME = 30_000;
+export const ADMIN_OVERVIEW_STALE_TIME = 5 * 60 * 1000;
 
 export const adminOverviewKeys = {
   all: ['admin-overview'] as const,

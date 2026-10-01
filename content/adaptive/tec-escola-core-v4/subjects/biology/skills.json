@@ -1,0 +1,76 @@
+{
+  "code": "BIOLOGY",
+  "name": "Biologia",
+  "anchors": [
+    {
+      "code": "BIOLOGY_CELL",
+      "title": "Celula e organizacao da vida"
+    },
+    {
+      "code": "BIOLOGY_INHERITANCE",
+      "title": "Heranca e variacao"
+    },
+    {
+      "code": "BIOLOGY_ECOLOGY",
+      "title": "Ecologia e sistemas vivos"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "BIOLOGY_EXPLAIN_INHERITANCE",
+      "title": "Explicar heranca genetica",
+      "objective": "Explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+      "description": "Explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+      "masteryCapability": "Demonstrar que consegue explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+      "domain": "GENETICA",
+      "parent": "BIOLOGY_INHERITANCE",
+      "readiness": "CONTENT_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_CELL_FUNCTION",
+      "title": "Relacionar estrutura e funcao celular",
+      "objective": "Relacionar uma estrutura celular a sua funcao em um organismo.",
+      "description": "Relacionar uma estrutura celular a sua funcao em um organismo.",
+      "masteryCapability": "Demonstrar que consegue relacionar uma estrutura celular a sua funcao em um organismo.",
+      "domain": "CELULA",
+      "parent": "BIOLOGY_CELL",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "title": "Interpretar dados de uma populacao",
+      "objective": "Interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+      "description": "Interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+      "masteryCapability": "Demonstrar que consegue interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+      "domain": "ECOLOGIA",
+      "parent": "BIOLOGY_ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "title": "Explicar interacoes em ecossistemas",
+      "objective": "Explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+      "description": "Explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+      "masteryCapability": "Demonstrar que consegue explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+      "domain": "ECOLOGIA",
+      "parent": "BIOLOGY_ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    }
+  ]
+}

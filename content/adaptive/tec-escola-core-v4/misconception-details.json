@@ -1,0 +1,1256 @@
+{
+  "THESIS_CONFUSED_WITH_DETAIL": {
+    "title": "Tese confundida com detalhe",
+    "description": "Escolhe uma informacao secundaria como se ela expressasse a ideia defendida pelo texto.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "FACT_CONFUSED_WITH_OPINION": {
+    "title": "Fato confundido com opiniao",
+    "description": "A resposta revela fato confundido com opiniao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_DISTINGUISH_FACT_OPINION"
+    ]
+  },
+  "SLOGAN_TREATED_AS_PROOF": {
+    "title": "Slogan tratado como prova",
+    "description": "A resposta revela slogan tratado as prova. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+    ]
+  },
+  "UNRELATED_EVIDENCE_USED": {
+    "title": "Evidencia sem relacao utilizada",
+    "description": "A resposta revela evidencia sem relacao evidencia used. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "SOURCE_AUTHORITY_REPLACES_COMPARISON": {
+    "title": "Autoridade da fonte substitui a comparacao",
+    "description": "A resposta revela fonte autoridade substitui comparison. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_COMPARE_SOURCES"
+    ]
+  },
+  "INFERENCE_TREATED_AS_CERTAINTY": {
+    "title": "Inferencia tratada como certeza",
+    "description": "Transforma uma conclusao apoiada por pistas em certeza que o texto nao garante.",
+    "affectedSkills": [
+      "PORTUGUESE_INFER_FROM_CLUES"
+    ]
+  },
+  "REASON_CONFUSED_WITH_PROPOSAL": {
+    "title": "Razao confundida com proposta",
+    "description": "A resposta revela razao confundido com proposta. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE"
+    ]
+  },
+  "COUNTERARGUMENT_MISREAD": {
+    "title": "Contraponto interpretado de forma inadequada",
+    "description": "A resposta revela contraponto interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_IDENTIFY_COUNTERARGUMENT"
+    ]
+  },
+  "GENRE_PURPOSE_MISREAD": {
+    "title": "Finalidade do genero interpretada de forma inadequada",
+    "description": "A resposta revela genero finalidade interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_RELATE_LANGUAGE_CULTURE",
+      "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+    ]
+  },
+  "SAMPLE_GENERALIZED": {
+    "title": "Amostra generalizada indevidamente",
+    "description": "A resposta revela amostra generalizacao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE"
+    ]
+  },
+  "PERSUASION_CONFUSED_WITH_EVIDENCE": {
+    "title": "Persuasao confundida com evidencia",
+    "description": "A resposta revela persuasao confundido com evidencia. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "SUMMARY_ADDS_UNSUPPORTED_CLAIM": {
+    "title": "Resumo acrescenta afirmacao sem apoio",
+    "description": "A resposta revela resumo acrescenta sem apoio textual afirmacao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PORTUGUESE_SUMMARIZE_ARGUMENT"
+    ]
+  },
+  "DISCOUNT_CONFUSED_WITH_FINAL_PRICE": {
+    "title": "Desconto confundido com preco final",
+    "description": "Subtrai o preco final em vez de identificar o desconto calculado sobre o preco inicial.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PERCENT_AS_ABSOLUTE_VALUE": {
+    "title": "Percentual tratado como valor absoluto",
+    "description": "A resposta revela percentual as absoluto valor. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_INCREASE"
+    ]
+  },
+  "PERCENT_DENOMINATOR_IGNORED": {
+    "title": "Denominador do percentual ignorado",
+    "description": "A resposta revela percentual denominador ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "DECIMAL_PERCENT_SHIFT": {
+    "title": "Conversao decimal-percentual deslocada",
+    "description": "A resposta revela decimal percentual deslocamento. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PROPORTION_NOT_SCALED": {
+    "title": "Proporcao nao escalada",
+    "description": "A resposta revela proporcao nao escalada. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ]
+  },
+  "SUCCESSIVE_PERCENTAGES_CANCELLED": {
+    "title": "Variacoes sucessivas tratadas como cancelamento",
+    "description": "Soma ou cancela percentuais sucessivos sem atualizar a base de cada etapa.",
+    "affectedSkills": [
+      "MATH_SUCCESSIVE_PERCENT_CHANGE"
+    ]
+  },
+  "PERCENT_NOT_SIMPLIFIED": {
+    "title": "Percentual nao simplificado",
+    "description": "A resposta revela percentual nao simplificado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "INCREASE_USES_NEW_BASE": {
+    "title": "Aumento calculado sobre a base nova",
+    "description": "A resposta revela aumento uses nova base. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_INTERPRET_DATA_TABLE"
+    ]
+  },
+  "RATE_TREATED_AS_AMOUNT": {
+    "title": "Taxa tratada como valor",
+    "description": "A resposta revela taxa tratado as valor. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_INCREASE"
+    ]
+  },
+  "PART_WHOLE_REVERSED": {
+    "title": "Parte e todo invertidos",
+    "description": "A resposta revela parte todo invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_INTERPRET_DATA_TABLE"
+    ]
+  },
+  "COMMISSION_RATE_MISREAD": {
+    "title": "Taxa de comissao interpretada de forma inadequada",
+    "description": "A resposta revela comissao taxa interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PERCENT_COMPARED_WITHOUT_BASE": {
+    "title": "Percentuais comparados sem considerar a base",
+    "description": "A resposta revela percentual comparado sem base. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "STATE_CHANGE_DIRECTION_CONFUSED": {
+    "title": "Direcao da mudanca de estado confundida",
+    "description": "A resposta revela estado mudanca direcao confundido. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "CHEMICAL_CHANGE_CONFUSED_WITH_SHAPE": {
+    "title": "Mudanca quimica confundida com mudanca de forma",
+    "description": "A resposta revela quimica mudanca confundido com forma. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "EVAPORATION_CONFUSED_WITH_BOILING": {
+    "title": "Evaporacao confundida com ebulicao",
+    "description": "A resposta revela evaporacao confundido com ebulicao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "SEPARATION_METHOD_MISREAD": {
+    "title": "Metodo de separacao interpretado de forma inadequada",
+    "description": "A resposta revela separation metodo interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "HEAT_TRANSFER_CONFUSED": {
+    "title": "Transferencia de calor confundida",
+    "description": "A resposta revela calor transferencia confundido. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "PHYSICAL_CHANGE_CONFUSED_WITH_CHEMICAL": {
+    "title": "Mudanca fisica confundida com mudanca quimica",
+    "description": "A resposta revela fisica mudanca confundido com quimica. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "DENSITY_IGNORES_MASS": {
+    "title": "Densidade calculada sem considerar a massa",
+    "description": "A resposta revela densidade ignores massa. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "CONTROL_VARIABLE_IGNORED": {
+    "title": "Variavel de controle ignorada",
+    "description": "A resposta revela controle variavel ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_IDENTIFY_VARIABLES"
+    ]
+  },
+  "OXIDATION_CAUSE_MISREAD": {
+    "title": "Causa da oxidacao interpretada de forma inadequada",
+    "description": "A resposta revela oxidacao causa interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "PARTICLE_MODEL_DENIED": {
+    "title": "Modelo de particulas negado",
+    "description": "A resposta revela particula modelo negado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "RECYCLING_GOAL_MISREAD": {
+    "title": "Objetivo da reciclagem interpretado de forma inadequada",
+    "description": "A resposta revela reciclagem objetivo interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "ENERGY_CONVERSION_DENIED": {
+    "title": "Conversao de energia negada",
+    "description": "A resposta revela energia conversao negado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "ALLELE_CONFUSED_WITH_CELL": {
+    "title": "Alelo confundido com celula",
+    "description": "A resposta revela alelo confundido com celula. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "INHERITANCE_TREATED_AS_COPY": {
+    "title": "Heranca tratado como copia",
+    "description": "A resposta revela heranca tratado as copy. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "DOMINANCE_REVERSED": {
+    "title": "Dominancia invertida",
+    "description": "A resposta revela dominancia invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "PUNNETT_COUNT_MISREAD": {
+    "title": "Contagem no quadro de Punnett interpretada de forma inadequada",
+    "description": "A resposta revela punnett count interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "MUTATION_ALWAYS_VISIBLE": {
+    "title": "Mutacao sempre visivel",
+    "description": "A resposta revela mutacao always visible. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "SELECTION_CONFUSED_WITH_TRAINING": {
+    "title": "Selecao confundido com treinamento",
+    "description": "A resposta revela selecao confundido com treinamento. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_INTERPRET_POPULATION_DATA"
+    ]
+  },
+  "CELL_STRUCTURE_MISPLACED": {
+    "title": "Celula estrutura posicionada de forma inadequada",
+    "description": "A resposta revela celula structure misplaced. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "DNA_RNA_FUNCTIONS_SWAPPED": {
+    "title": "Dna rna functions trocado",
+    "description": "A resposta revela dna rna functions trocado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_CELL_FUNCTION"
+    ]
+  },
+  "COMPLEX_TRAIT_SINGLE_CAUSE": {
+    "title": "complexa caracteristica unica causa",
+    "description": "A resposta revela complex trait unica causa. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_INTERPRET_POPULATION_DATA"
+    ]
+  },
+  "GENOTYPE_EQUALS_PHENOTYPE": {
+    "title": "Genotipo equivale fenotipo",
+    "description": "A resposta revela genotipo equals fenotipo. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "SEX_LINKAGE_REVERSED": {
+    "title": "Sex ligacao invertida",
+    "description": "A resposta revela sex linkage invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "DIVERSITY_REDUCES_SURVIVAL": {
+    "title": "Diversidade reduz sobrevivencia",
+    "description": "A resposta revela diversidade reduces survival. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "BIOLOGY_INTERPRET_POPULATION_DATA"
+    ]
+  },
+  "SPEED_MULTIPLIES_DISTANCE_TIME": {
+    "title": "Velocidade multiplica distancia tempo",
+    "description": "A resposta revela velocidade multiplies distancia tempo. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "SPEED_UNIT_CONVERSION": {
+    "title": "Velocidade unidade conversao",
+    "description": "A resposta revela velocidade unidade conversao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_UNIT_CONVERSION"
+    ]
+  },
+  "DISTANCE_DIVIDED_INSTEAD_OF_MULTIPLIED": {
+    "title": "Distancia dividida em vez disso de multiplicada",
+    "description": "A resposta revela distancia divided instead of multiplied. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "TIME_MULTIPLIES_SPEED_DISTANCE": {
+    "title": "Tempo multiplica velocidade distancia",
+    "description": "A resposta revela tempo multiplies velocidade distancia. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "GRAPH_SLOPE_MISREAD": {
+    "title": "Grafico inclinacao interpretado",
+    "description": "A resposta revela grafico inclinacao interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_INTERPRET_MOTION_GRAPH"
+    ]
+  },
+  "UNIFORM_MOTION_DENIED": {
+    "title": "uniforme movimento negado",
+    "description": "A resposta revela uniform movimento negado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_UNIFORM_MOTION"
+    ]
+  },
+  "RELATIVE_SPEED_IGNORED": {
+    "title": "Relativa velocidade ignorado",
+    "description": "A resposta revela relativa velocidade ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_RELATIVE_SPEED"
+    ]
+  },
+  "AVERAGE_USES_AVERAGE_SPEEDS": {
+    "title": "media usa media velocidades",
+    "description": "A resposta revela average uses average speeds. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "KMH_MS_CONVERSION": {
+    "title": "Kmh ms conversao",
+    "description": "A resposta revela kmh ms conversao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_UNIT_CONVERSION"
+    ]
+  },
+  "GRAPH_AREA_MISREAD": {
+    "title": "Grafico area interpretado",
+    "description": "A resposta revela grafico area interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_INTERPRET_MOTION_GRAPH"
+    ]
+  },
+  "ACCELERATION_NOT_DIVIDED": {
+    "title": "Aceleracao nao dividida",
+    "description": "A resposta revela aceleracao nao divided. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_INTERPRET_ACCELERATION"
+    ]
+  },
+  "SAME_DISTANCE_SAME_SPEED": {
+    "title": "mesma distancia mesma velocidade",
+    "description": "A resposta revela same distancia same velocidade. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "NUCLEUS_SHELL_SWAPPED": {
+    "title": "Nucleo camada eletronica trocado",
+    "description": "A resposta revela nucleo camada eletronica trocado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "ATOMIC_NUMBER_DOUBLED": {
+    "title": "Atomico numero duplicado",
+    "description": "A resposta revela atomico numero doubled. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "ION_CHARGE_REVERSED": {
+    "title": "Ion carga invertida",
+    "description": "A resposta revela ion charge invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "ISOTOPE_CONFUSED_WITH_ION": {
+    "title": "Isotopo confundido com ion",
+    "description": "A resposta revela isotopo confundido com ion. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "IONIC_BOND_MISNAMED": {
+    "title": "ionica ligacao nomeada de forma inadequada",
+    "description": "A resposta revela ionic ligacao misnamed. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "COVALENT_SHARING_DENIED": {
+    "title": "covalente compartilhamento negado",
+    "description": "A resposta revela covalent compartilhamento negado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "REACTION_CONSERVES_MOLECULES": {
+    "title": "Reacao conserva moleculas",
+    "description": "A resposta revela reacao conserves molecules. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_REACTION_EVIDENCE"
+    ]
+  },
+  "PH_SCALE_REVERSED": {
+    "title": "Ph escala invertida",
+    "description": "A resposta revela ph escala invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_ACID_BASE"
+    ]
+  },
+  "SOLUBILITY_CONFUSED_WITH_MASS": {
+    "title": "Solubilidade confundido com massa",
+    "description": "A resposta revela solubilidade confundido com massa. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_REACTION_EVIDENCE"
+    ]
+  },
+  "EVAPORATION_REMOVES_SOLUTE": {
+    "title": "Evaporacao remove solute",
+    "description": "A resposta revela evaporacao removes solute. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_REACTION_EVIDENCE"
+    ]
+  },
+  "REACTION_SIGNS_IGNORED": {
+    "title": "Reacao sinais ignorado",
+    "description": "A resposta revela reacao signs ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_REACTION_EVIDENCE"
+    ]
+  },
+  "MASS_CONSERVATION_DENIED": {
+    "title": "Massa conservacao negado",
+    "description": "A resposta revela massa conservacao negado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "CHEMISTRY_STOICHIOMETRY"
+    ]
+  },
+  "PRIMARY_SOURCE_CONFUSED_WITH_NEUTRAL": {
+    "title": "Primaria fonte confundido com neutra",
+    "description": "A resposta revela primaria fonte confundido com neutral. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "ANACHRONISM_IGNORED": {
+    "title": "Anacronismo ignorado",
+    "description": "A resposta revela anacronismo ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "CHRONOLOGY_REVERSED": {
+    "title": "Ordem cronologica invertida",
+    "description": "Troca a anterioridade ou a simultaneidade dos acontecimentos apresentados pela fonte.",
+    "affectedSkills": [
+      "HISTORY_ORDER_EVENTS"
+    ]
+  },
+  "CAUSE_EFFECT_REVERSED": {
+    "title": "Causa e consequencia invertidas",
+    "description": "Atribui como causa um resultado posterior ou troca a direcao da relacao historica.",
+    "affectedSkills": [
+      "HISTORY_COMPARE_CAUSES"
+    ]
+  },
+  "SINGLE_NARRATIVE_ASSUMED": {
+    "title": "Unica narrativa presumida",
+    "description": "A resposta revela unica narrativa assumed. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_COMPARE_PERSPECTIVES"
+    ]
+  },
+  "PERIODIZATION_TREATED_AS_ABSOLUTE": {
+    "title": "Periodizacao tratado como absoluto",
+    "description": "A resposta revela periodizacao tratado as absoluto. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_PERIODIZATION"
+    ]
+  },
+  "MEMORY_EQUALS_COMPLETE_HISTORY": {
+    "title": "Memoria equivale completa history",
+    "description": "A resposta revela memoria equals complete history. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+    ]
+  },
+  "MAP_DATA_IGNORED": {
+    "title": "Mapa dados ignorado",
+    "description": "A resposta revela mapa dados ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "IMAGE_OVERINTERPRETED": {
+    "title": "Imagem interpretada em excesso",
+    "description": "A resposta revela imagem overinterpreted. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "CHANGE_ERASES_CONTINUITY": {
+    "title": "Mudanca apaga continuidade",
+    "description": "A resposta revela mudanca erases continuidade. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+    ]
+  },
+  "INTERPRETATION_IS_GUESS": {
+    "title": "Interpretacao e palpite",
+    "description": "A resposta revela interpretacao is guess. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "HERITAGE_ROMANTICIZED": {
+    "title": "Patrimonio romantizado",
+    "description": "A resposta revela patrimonio romanticized. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "TERRITORY_CONFUSED_WITH_LOCATION": {
+    "title": "Territorio confundido com localizacao",
+    "description": "A resposta revela territorio confundido com localizacao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "LANDSCAPE_NATURAL_ONLY": {
+    "title": "Paisagem natural apenas",
+    "description": "A resposta revela paisagem natural only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "MAP_SCALE_REVERSED": {
+    "title": "Mapa escala invertida",
+    "description": "A resposta revela mapa escala invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_MAP_SCALE"
+    ]
+  },
+  "URBAN_NETWORK_DENIED": {
+    "title": "Urbana rede negado",
+    "description": "A resposta revela urbana rede negado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "LEGEND_CONFUSED_WITH_SCALE": {
+    "title": "legenda confundido com escala",
+    "description": "A resposta revela legend confundido com escala. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_MAP_SCALE"
+    ]
+  },
+  "BORDER_TREATED_AS_NATURAL": {
+    "title": "Fronteira tratado como natural",
+    "description": "A resposta revela fronteira tratado as natural. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "LAND_USE_EFFECT_IGNORED": {
+    "title": "Efeito do uso do solo ignorado",
+    "description": "A resposta revela uso do solo use efeito ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "SPATIAL_PATTERN_OVERSTATED": {
+    "title": "espacial padrao exagerada",
+    "description": "A resposta revela spatial pattern overstated. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "CLIMATE_TIME_CONFUSED": {
+    "title": "Clima tempo confundido",
+    "description": "A resposta revela clima tempo confundido. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+    ]
+  },
+  "MIGRATION_CAUSE_MISREAD": {
+    "title": "Migracao causa interpretado",
+    "description": "A resposta revela migracao causa interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "IMPERMEABILITY_EFFECT_REVERSED": {
+    "title": "impermeabilidade efeito invertida",
+    "description": "A resposta revela impermeability efeito invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "DISTANCE_EXPLAINS_ALL": {
+    "title": "Distancia explica todo",
+    "description": "A resposta revela distancia explains all. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "POPULARITY_REPLACES_ARGUMENT": {
+    "title": "Popularidade substitui argumento",
+    "description": "A resposta revela popularidade substitui argumento. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "CONCLUSION_PREMISE_SWAPPED": {
+    "title": "Conclusao premissa trocado",
+    "description": "A resposta revela conclusao premissa trocado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "VALIDITY_EQUALS_TRUTH": {
+    "title": "Validade equivale verdade",
+    "description": "A resposta revela validade equals verdade. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "OBJECTION_AS_ATTACK": {
+    "title": "Objecao como ataque",
+    "description": "A resposta revela objecao as ataque. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "MAJORITY_REPLACES_ETHICS": {
+    "title": "Maioria substitui etica",
+    "description": "A resposta revela maioria substitui etica. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE"
+    ]
+  },
+  "ANALOGY_AS_PROOF": {
+    "title": "Analogia como prova",
+    "description": "A resposta revela analogia as prova. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "SKEPTICISM_AS_DENIAL": {
+    "title": "Ceticismo como negacao",
+    "description": "A resposta revela ceticismo as denial. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "CONTEXT_ERASES_AGENCY": {
+    "title": "Contexto apaga agencia",
+    "description": "A resposta revela contexto erases agency. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "BELIEF_EQUALS_KNOWLEDGE": {
+    "title": "Crenca equivale conhecimento",
+    "description": "A resposta revela crenca equals conhecimento. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "PERSON_ATTACK_AS_REFUTATION": {
+    "title": "Pessoa ataque como refutacao",
+    "description": "A resposta revela pessoa ataque as refutation. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "CRITICAL_THINKING_AS_CYNICISM": {
+    "title": "Critico pensamento como cynicism",
+    "description": "A resposta revela critico thinking as cynicism. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "ANECDOTE_GENERALIZED": {
+    "title": "Anecdota generalizacao",
+    "description": "A resposta revela anecdota generalizacao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "INSTITUTION_CONFUSED_WITH_GROUP": {
+    "title": "Instituicao confundido com grupo",
+    "description": "A resposta revela instituicao confundido com grupo. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "SOCIALIZATION_MISNAMED": {
+    "title": "socializacao nomeada de forma inadequada",
+    "description": "A resposta revela socialization misnamed. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "NORMS_ONLY_LAW": {
+    "title": "Normas apenas lei",
+    "description": "A resposta revela normas only lei. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "INEQUALITY_AS_EFFORT_ONLY": {
+    "title": "Desigualdade como esforco apenas",
+    "description": "A resposta revela desigualdade as effort only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+    ]
+  },
+  "CULTURE_AS_FIXED": {
+    "title": "Cultura como fixa",
+    "description": "A resposta revela cultura as fixed. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "AUTOMATION_TOTALIZED": {
+    "title": "automacao totalizada",
+    "description": "A resposta revela automation totalized. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "MOVEMENT_AS_PRIVATE_CHOICE": {
+    "title": "movimento como privada escolha",
+    "description": "A resposta revela movement as private choice. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "IDENTITY_AS_SINGLE_LABEL": {
+    "title": "identidade como unica rotulo",
+    "description": "A resposta revela identity as unica label. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "POWER_AS_FORCE_ONLY": {
+    "title": "Poder como forca apenas",
+    "description": "A resposta revela poder as force only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "SAMPLE_REPRESENTATION_IGNORED": {
+    "title": "Amostra representacao ignorado",
+    "description": "A resposta revela amostra representation ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+    ]
+  },
+  "INSTITUTIONS_AS_IMMUTABLE": {
+    "title": "instituicoes como imutaveis",
+    "description": "A resposta revela institutions as immutable. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "MEDIA_TECHNOLOGY_DETERMINISM": {
+    "title": "Media tecnologia determinismo",
+    "description": "A resposta revela media technology determinism. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "FORM_IGNORED_FOR_CONTENT": {
+    "title": "Forma ignorado para content",
+    "description": "A resposta revela forma ignorado for content. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_COMPARE_COMPOSITIONS"
+    ]
+  },
+  "CONTRAST_CONFUSED_WITH_TEXTURE": {
+    "title": "Contraste confundido com textura",
+    "description": "A resposta revela contraste confundido com textura. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "ART_CONTEXT_REDUCED_TO_DATE": {
+    "title": "Art contexto reduzida para date",
+    "description": "A resposta revela art contexto reduced to date. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_RELATE_WORK_CONTEXT"
+    ]
+  },
+  "ABSTRACTION_AS_MEANINGLESS": {
+    "title": "Abstracao como meaningless",
+    "description": "A resposta revela abstracao as meaningless. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "HERITAGE_AS_COMMODITY_ONLY": {
+    "title": "Patrimonio como mercadoria apenas",
+    "description": "A resposta revela patrimonio as commodity only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_RELATE_WORK_CONTEXT"
+    ]
+  },
+  "SCALE_AS_REAL_SIZE_ONLY": {
+    "title": "Escala tratada apenas como tamanho real",
+    "description": "A resposta revela escala as real size only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_COMPARE_COMPOSITIONS"
+    ]
+  },
+  "IMAGE_AS_NEUTRAL": {
+    "title": "Imagem como neutra",
+    "description": "A resposta revela imagem as neutral. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_RELATE_WORK_CONTEXT"
+    ]
+  },
+  "TECHNIQUE_IGNORED": {
+    "title": "Tecnica ignorado",
+    "description": "A resposta revela tecnica ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "PERSPECTIVE_CONFUSED": {
+    "title": "Perspectiva confundido",
+    "description": "A resposta revela perspectiva confundido. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "PLURALITY_AS_ANYTHING_GOES": {
+    "title": "pluralidade como anything avanca",
+    "description": "A resposta revela plurality as anything goes. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_COMPARE_COMPOSITIONS"
+    ]
+  },
+  "PROCESS_HIDDEN": {
+    "title": "processo oculta",
+    "description": "A resposta revela process hidden. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "CURATION_AS_AUTHORITARIAN": {
+    "title": "curadoria como authoritarian",
+    "description": "A resposta revela curation as authoritarian. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ART_RELATE_WORK_CONTEXT"
+    ]
+  },
+  "SPACE_OCCUPATION_IGNORED": {
+    "title": "Espaco ocupacao ignorado",
+    "description": "A resposta revela espaco occupation ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "DEFENSE_AS_CHASING_ONLY": {
+    "title": "Defesa como perseguicao apenas",
+    "description": "A resposta revela defesa as chasing only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "FAIR_PLAY_AS_WINNING": {
+    "title": "Justo jogo como vitoria",
+    "description": "A resposta revela justo play as winning. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "WARMUP_GUARANTEES_RESULT": {
+    "title": "Aquecimento garante resultado",
+    "description": "A resposta revela aquecimento guarantees result. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_ANALYZE_MOVEMENT"
+    ]
+  },
+  "OFF_BALL_MOVEMENT_IGNORED": {
+    "title": "fora bola movimento ignorado",
+    "description": "A resposta revela off ball movement ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "ENDURANCE_AS_SPRINT": {
+    "title": "Resistencia confundida com velocidade de sprint",
+    "description": "A resposta revela resistencia as sprint. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_ANALYZE_MOVEMENT"
+    ]
+  },
+  "EQUITY_CONFUSED_WITH_EQUALITY": {
+    "title": "Equidade confundido com igualdade",
+    "description": "A resposta revela equidade confundido com igualdade. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_PLAN_SAFE_ACTIVITY"
+    ]
+  },
+  "TACTIC_AS_INDIVIDUAL_SKILL": {
+    "title": "Tatica confundida com habilidade individual",
+    "description": "A resposta revela tactic as individual skill. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "RULE_SCOPE_MISREAD": {
+    "title": "Regra scope interpretado",
+    "description": "A resposta revela regra scope interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "BODY_SIGNAL_IGNORED": {
+    "title": "Corpo sinal ignorado",
+    "description": "A resposta revela corpo signal ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_PLAN_SAFE_ACTIVITY"
+    ]
+  },
+  "COOPERATION_AS_NO_RULES": {
+    "title": "Cooperacao como nao regras",
+    "description": "A resposta revela cooperacao as no rules. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "PERFORMANCE_AS_PERSONAL_WORTH": {
+    "title": "Performance como pessoal valor pessoal",
+    "description": "A resposta revela performance as personal worth. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "MAIN_IDEA_CONFUSED_WITH_DETAIL": {
+    "title": "Ideia principal idea confundido com detalhe",
+    "description": "A resposta revela ideia principal idea confundido com detalhe. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "EXPLICIT_DETAIL_IGNORED": {
+    "title": "explicita detalhe ignorado",
+    "description": "A resposta revela explicit detalhe ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "VOCABULARY_LITERAL_MISREAD": {
+    "title": "Vocabulario literal interpretado",
+    "description": "A resposta revela vocabulario literal interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_USE_CONTEXT_VOCABULARY"
+    ]
+  },
+  "INFERENCE_AS_CERTAINTY": {
+    "title": "Inferencia como certeza",
+    "description": "A resposta revela inferencia as certeza. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "PRONOUN_REFERENCE_MISREAD": {
+    "title": "Pronome referencia interpretado",
+    "description": "A resposta revela pronome reference interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "SEQUENCE_REVERSED": {
+    "title": "Sequencia invertida",
+    "description": "A resposta revela sequencia invertida. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "CONTRAST_CONNECTOR_IGNORED": {
+    "title": "Contraste connector ignorado",
+    "description": "A resposta revela contraste connector ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "EVIDENCE_OVERGENERALIZED": {
+    "title": "Evidencia generalizada em excesso",
+    "description": "A resposta revela evidencia overgeneralized. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "SUMMARY_ADDS_DETAIL": {
+    "title": "Resumo acrescenta detalhe",
+    "description": "A resposta revela resumo acrescenta detalhe. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "PREFIX_MEANING_MISREAD": {
+    "title": "Prefixo significado interpretado",
+    "description": "A resposta revela prefixo meaning interpretado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_USE_CONTEXT_VOCABULARY"
+    ]
+  },
+  "CLAIM_WITHOUT_EVIDENCE_ACCEPTED": {
+    "title": "Afirmacao sem evidencia aceita",
+    "description": "A resposta revela afirmacao sem evidencia accepted. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "TRADITION_RANKING": {
+    "title": "Tradicao hierarquia",
+    "description": "A resposta revela tradicao hierarquia. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DIALOGUE_CONFUSED_WITH_CONVERSION": {
+    "title": "Dialogo confundido com conversao",
+    "description": "A resposta revela dialogo confundido com conversao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DESCRIPTIVE_STUDY_AS_WORSHIP": {
+    "title": "descritivo estudo como culto",
+    "description": "A resposta revela descriptive study as worship. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "RITUAL_REDUCED_TO_OBJECT": {
+    "title": "Ritual reduzida para objeto",
+    "description": "A resposta revela ritual reduced to object. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_INTERPRET_SYMBOLS"
+    ]
+  },
+  "STEREOTYPE_AS_QUESTION": {
+    "title": "Estereotipo como pergunta",
+    "description": "A resposta revela estereotipo as question. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "TRADITION_AS_MONOLITH": {
+    "title": "Tradicao como monolitica",
+    "description": "A resposta revela tradicao as monolith. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "WORLDVIEW_REDUCED_TO_SLOGAN": {
+    "title": "Visao de mundo reduzida para slogan",
+    "description": "A resposta revela visao de mundo reduced to slogan. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "FREEDOM_AS_MAJORITY_RULE": {
+    "title": "Liberdade como maioria regra",
+    "description": "A resposta revela liberdade as maioria regra. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "SOURCE_CONTEXT_IGNORED": {
+    "title": "Fonte contexto ignorado",
+    "description": "A resposta revela fonte contexto ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "SYMBOL_MEANING_UNIVERSALIZED": {
+    "title": "Simbolo significado universalizado",
+    "description": "A resposta revela simbolo meaning universalizado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_INTERPRET_SYMBOLS"
+    ]
+  },
+  "SINGLE_CASE_STEREOTYPE": {
+    "title": "Unica caso estereotipo",
+    "description": "A resposta revela unica case estereotipo. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DIALOGUE_AS_CONFLICT": {
+    "title": "Dialogo como conflito",
+    "description": "A resposta revela dialogo as conflict. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "RELIGIOUS_MEDIATE_DIALOGUE"
+    ]
+  },
+  "DECOMPOSITION_CONFUSED_WITH_CODING": {
+    "title": "Decomposicao confundido com programacao",
+    "description": "A resposta revela decomposicao confundido com coding. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "SEQUENCE_ORDER_IGNORED": {
+    "title": "Sequencia ordem ignorado",
+    "description": "A resposta revela sequencia order ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "CONDITION_CONFUSED_WITH_ACTION": {
+    "title": "Condicao confundido com acao",
+    "description": "A resposta revela condicao confundido com action. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "LOOP_AS_SINGLE_STEP": {
+    "title": "Laco como unica passo",
+    "description": "A resposta revela laco as unica step. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "DEBUGGING_AS_RESTART": {
+    "title": "Depuracao como reinicio",
+    "description": "A resposta revela depuracao as restart. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "TRACE_AS_OUTPUT_ONLY": {
+    "title": "Rastreio como saida apenas",
+    "description": "A resposta revela rastreio as output only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "BINARY_AS_DECIMAL_ONLY": {
+    "title": "Binario como decimal apenas",
+    "description": "A resposta revela binario as decimal only. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "DATA_MINIMIZATION_IGNORED": {
+    "title": "Dados minimization ignorado",
+    "description": "A resposta revela dados minimization ignorado. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_RECOGNIZE_PHISHING"
+    ]
+  },
+  "HASH_AS_ENCRYPTION_RECOVERY": {
+    "title": "hash como encryption recuperacao",
+    "description": "A resposta revela hash as encryption recovery. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_RECOGNIZE_PHISHING"
+    ]
+  },
+  "SINGLE_SIGNAL_AS_NEUTRAL": {
+    "title": "Unica sinal como neutra",
+    "description": "A resposta revela unica signal as neutral. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_READ_TABLE_DATA"
+    ]
+  },
+  "PROTOCOL_CONFUSED_WITH_DEVICE": {
+    "title": "Protocolo confundido com dispositivo",
+    "description": "A resposta revela protocolo confundido com dispositivo. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "SHARING_BEFORE_CHECKING": {
+    "title": "Compartilhamento antes verificacao",
+    "description": "A resposta revela compartilhamento before verificacao. Revise a relacao entre o enunciado, a evidencia e a habilidade avaliada.",
+    "affectedSkills": [
+      "COMPUTING_RECOGNIZE_PHISHING"
+    ]
+  }
+}

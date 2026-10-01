@@ -1,0 +1,62 @@
+{
+  "code": "SOCIOLOGY",
+  "name": "Sociologia",
+  "anchors": [
+    {
+      "code": "SOCIOLOGY_INDIVIDUAL",
+      "title": "Individuo e sociedade"
+    },
+    {
+      "code": "SOCIOLOGY_INSTITUTIONS",
+      "title": "Instituicoes sociais"
+    },
+    {
+      "code": "SOCIOLOGY_STRUCTURE",
+      "title": "Estrutura e desigualdade"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+      "title": "Explicar instituicoes sociais",
+      "objective": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "description": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "masteryCapability": "Demonstrar que consegue explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "domain": "INSTITUICOES",
+      "parent": "SOCIOLOGY_INSTITUTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+      "title": "Distinguir norma de valor social",
+      "objective": "Distinguir regras de comportamento de valores que justificam essas regras.",
+      "description": "Distinguir regras de comportamento de valores que justificam essas regras.",
+      "masteryCapability": "Demonstrar que consegue distinguir regras de comportamento de valores que justificam essas regras.",
+      "domain": "CULTURA",
+      "parent": "SOCIOLOGY_INDIVIDUAL",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+      "title": "Analisar dados de desigualdade",
+      "objective": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "description": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "masteryCapability": "Demonstrar que consegue analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "domain": "ESTRUTURA",
+      "parent": "SOCIOLOGY_STRUCTURE",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    }
+  ]
+}

@@ -6,6 +6,7 @@ import type { CurrentDatabaseRole } from '../../lib/permissions';
 export type AdminModuleId =
   | 'overview'
   | 'attendance'
+  | 'class-diary'
   | 'grades'
   | 'school-users'
   | 'students'
@@ -15,7 +16,6 @@ export type AdminModuleId =
   | 'directors'
   | 'announcements'
   | 'email'
-  | 'announcements'
   | 'academic-years'
   | 'classes'
   | 'subjects'
@@ -23,6 +23,11 @@ export type AdminModuleId =
   | 'enrollments'
   | 'assignments'
   | 'term-closing'
+  | 'class-councils'
+  | 'pedagogical-monitoring'
+  | 'academic-documents'
+  | 'student-record'
+  | 'academic-reports'
   | 'academic-policies'
   | 'academic-calendar'
   | 'timetable'
@@ -105,6 +110,7 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_school_users',
     href: moduleHref('school-users'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'students',
@@ -133,6 +139,15 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'people',
     permission: 'manage_school_users',
     href: moduleHref('secretaries'),
+    allowedRoles: ['DIRECTOR'],
+  },
+  {
+    id: 'directors',
+    label: 'Diretores',
+    groupId: 'people',
+    permission: 'manage_school_users',
+    href: moduleHref('directors'),
+    allowedRoles: ['ADMIN'],
   },
   {
     id: 'email',
@@ -141,13 +156,15 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     permission: 'send_school_email',
     href: moduleHref('email'),
     visibleInSidebar: false,
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'announcements',
     label: 'Avisos',
     groupId: 'communication-resources',
-    permission: 'manage_school_users',
+    permission: 'manage_school_communications',
     href: moduleHref('announcements'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'finance',
@@ -226,6 +243,16 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('attendance'),
+    visibleInSidebar: false,
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'class-diary',
+    label: 'Diário de Classe',
+    groupId: 'school-operation',
+    permission: 'view_school_dashboard',
+    href: moduleHref('class-diary'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'grades',
@@ -240,6 +267,47 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
     groupId: 'school-operation',
     permission: 'view_school_dashboard',
     href: moduleHref('term-closing'),
+  },
+  {
+    id: 'class-councils',
+    label: 'Conselhos de classe',
+    groupId: 'school-operation',
+    permission: 'view_school_dashboard',
+    href: moduleHref('class-councils'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'pedagogical-monitoring',
+    label: 'Acompanhamento pedagógico',
+    groupId: 'school-operation',
+    permission: 'view_school_dashboard',
+    href: moduleHref('pedagogical-monitoring'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'academic-documents',
+    label: 'Documentos acadêmicos',
+    groupId: 'school-operation',
+    permission: 'issue_academic_documents',
+    href: moduleHref('academic-documents'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'student-record',
+    label: 'Prontuário acadêmico',
+    groupId: 'people',
+    permission: 'view_student_academic_record',
+    href: `${moduleHref('student-record')}&student=`,
+    visibleInSidebar: false,
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
+  },
+  {
+    id: 'academic-reports',
+    label: 'Relatórios acadêmicos',
+    groupId: 'school-operation',
+    permission: 'view_academic_reports',
+    href: moduleHref('academic-reports'),
+    allowedRoles: ['DIRECTOR', 'SECRETARY'],
   },
   {
     id: 'academic-policies',
@@ -263,7 +331,9 @@ export const DEFAULT_ADMIN_MODULE_ID: AdminModuleId =
 export function isAdminModuleAvailable(
   module: AdminModuleDefinition,
   currentRole: string | null | undefined,
+  platformRole?: string | null | undefined,
 ): boolean {
+  if (platformRole === 'SUPER_ADMIN') return true;
   if (!module.allowedRoles) return true;
   return typeof currentRole === 'string' && module.allowedRoles.includes(currentRole as CurrentDatabaseRole);
 }

@@ -1,0 +1,981 @@
+{
+  "version": 1,
+  "source": "EXPLICIT_SEMANTIC_AUTHORING",
+  "ownership": [
+    {
+      "subject": "ART",
+      "topic": "composicao",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS"
+    },
+    {
+      "subject": "ART",
+      "topic": "contraste",
+      "primarySkill": "ART_INTERPRET_WORK"
+    },
+    {
+      "subject": "ART",
+      "topic": "contexto da obra",
+      "primarySkill": "ART_RELATE_WORK_CONTEXT"
+    },
+    {
+      "subject": "ART",
+      "topic": "abstracao",
+      "primarySkill": "ART_INTERPRET_WORK"
+    },
+    {
+      "subject": "ART",
+      "topic": "patrimonio",
+      "primarySkill": "ART_RELATE_WORK_CONTEXT"
+    },
+    {
+      "subject": "ART",
+      "topic": "hierarquia visual",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS"
+    },
+    {
+      "subject": "ART",
+      "topic": "arte e sociedade",
+      "primarySkill": "ART_RELATE_WORK_CONTEXT"
+    },
+    {
+      "subject": "ART",
+      "topic": "tecnica",
+      "primarySkill": "ART_INTERPRET_WORK"
+    },
+    {
+      "subject": "ART",
+      "topic": "perspectiva",
+      "primarySkill": "ART_INTERPRET_WORK"
+    },
+    {
+      "subject": "ART",
+      "topic": "interpretacao plural",
+      "primarySkill": "ART_COMPARE_COMPOSITIONS"
+    },
+    {
+      "subject": "ART",
+      "topic": "processo criativo",
+      "primarySkill": "ART_INTERPRET_WORK"
+    },
+    {
+      "subject": "ART",
+      "topic": "curadoria",
+      "primarySkill": "ART_RELATE_WORK_CONTEXT"
+    },
+    {
+      "subject": "ART",
+      "topic": "Interpretar elementos de uma obra",
+      "primarySkill": "ART_INTERPRET_WORK"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "alelo",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "hereditariedade",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "dominancia",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "probabilidade",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "mutacao",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "selecao",
+      "primarySkill": "BIOLOGY_INTERPRET_POPULATION_DATA"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "cromossomo",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "DNA e RNA",
+      "primarySkill": "BIOLOGY_CELL_FUNCTION"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "caracteristica complexa",
+      "primarySkill": "BIOLOGY_INTERPRET_POPULATION_DATA"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "fenotipo",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "heranca ligada ao X",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "diversidade genetica",
+      "primarySkill": "BIOLOGY_INTERPRET_POPULATION_DATA"
+    },
+    {
+      "subject": "BIOLOGY",
+      "topic": "Explicar heranca genetica",
+      "primarySkill": "BIOLOGY_EXPLAIN_INHERITANCE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "nucleo",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "numero atomico",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "ion",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "isotopos",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "ligacao ionica",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "ligacao covalente",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "conservacao",
+      "primarySkill": "CHEMISTRY_REACTION_EVIDENCE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "pH",
+      "primarySkill": "CHEMISTRY_ACID_BASE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "solubilidade",
+      "primarySkill": "CHEMISTRY_REACTION_EVIDENCE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "separacao",
+      "primarySkill": "CHEMISTRY_REACTION_EVIDENCE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "reacao",
+      "primarySkill": "CHEMISTRY_REACTION_EVIDENCE"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "massa",
+      "primarySkill": "CHEMISTRY_STOICHIOMETRY"
+    },
+    {
+      "subject": "CHEMISTRY",
+      "topic": "Interpretar modelos atomicos",
+      "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "decomposition",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "sequence",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "condition",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "loop",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "debugging",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "trace",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "binary",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "data privacy",
+      "primarySkill": "COMPUTING_RECOGNIZE_PHISHING"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "password security",
+      "primarySkill": "COMPUTING_RECOGNIZE_PHISHING"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "algorithm fairness",
+      "primarySkill": "COMPUTING_READ_TABLE_DATA"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "protocol",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "digital citizenship",
+      "primarySkill": "COMPUTING_RECOGNIZE_PHISHING"
+    },
+    {
+      "subject": "COMPUTING",
+      "topic": "Rastrear algoritmo com condicoes",
+      "primarySkill": "COMPUTING_TRACE_ALGORITHM"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "main idea",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "literal detail",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "vocabulary",
+      "primarySkill": "ENGLISH_USE_CONTEXT_VOCABULARY"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "inference",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "reference",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "sequence",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "purpose",
+      "primarySkill": "ENGLISH_RELATE_LANGUAGE_CULTURE"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "contrast",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "evidence",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "summary",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "prefix",
+      "primarySkill": "ENGLISH_USE_CONTEXT_VOCABULARY"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "critical reading",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "ENGLISH",
+      "topic": "Inferir sentido em texto em ingles",
+      "primarySkill": "ENGLISH_INFER_FROM_TEXT"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "territorio",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "paisagem",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "escala",
+      "primarySkill": "GEOGRAPHY_MAP_SCALE"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "rede urbana",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "legenda",
+      "primarySkill": "GEOGRAPHY_MAP_SCALE"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "fronteira",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "uso do solo",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "populacao",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "clima e tempo",
+      "primarySkill": "GEOGRAPHY_ANALYZE_CLIMATE_DATA"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "migracao",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "alagamento",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "desigualdade territorial",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "GEOGRAPHY",
+      "topic": "Interpretar territorio e paisagem",
+      "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "fonte primaria",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "contexto",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "cronologia",
+      "primarySkill": "HISTORY_ORDER_EVENTS"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "causa",
+      "primarySkill": "HISTORY_COMPARE_CAUSES"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "multiperspectiva",
+      "primarySkill": "HISTORY_COMPARE_PERSPECTIVES"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "periodizacao",
+      "primarySkill": "HISTORY_INTERPRET_PERIODIZATION"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "memoria",
+      "primarySkill": "HISTORY_DISTINGUISH_MEMORY_HISTORY"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "mapa historico",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "fotografia",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "mudanca",
+      "primarySkill": "HISTORY_ANALYZE_CHANGE_CONTINUITY"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "interpretacao",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "patrimonio",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "HISTORY",
+      "topic": "Interpretar evidencia historica",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "desconto",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "aumento",
+      "primarySkill": "MATH_PERCENT_INCREASE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "parte e todo",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "taxa equivalente",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "percentual acumulado",
+      "primarySkill": "MATH_SUCCESSIVE_PERCENT_CHANGE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "fracao percentual",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "grafico",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "juros simples",
+      "primarySkill": "MATH_PERCENT_INCREASE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "pesquisa",
+      "primarySkill": "MATH_INTERPRET_DATA_TABLE"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "comissao",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "ofertas",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "MATHEMATICS",
+      "topic": "Calcular percentual de uma quantidade",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "justica",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "premissa e conclusao",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "validade",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "dialogo",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "etica",
+      "primarySkill": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "analogia",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "ceticismo",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "liberdade",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "conhecimento",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "falacia",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "pensamento critico",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "anecdota",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHILOSOPHY",
+      "topic": "Avaliar argumento filosofico",
+      "primarySkill": "PHILOSOPHY_EVALUATE_ARGUMENT"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "ocupacao",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "defesa",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "fair play",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "aquecimento",
+      "primarySkill": "PE_ANALYZE_MOVEMENT"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "passe e apoio",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "ritmo",
+      "primarySkill": "PE_ANALYZE_MOVEMENT"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "inclusao",
+      "primarySkill": "PE_PLAN_SAFE_ACTIVITY"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "tatica",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "regras",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "saude",
+      "primarySkill": "PE_PLAN_SAFE_ACTIVITY"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "cooperacao",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "observacao",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICAL_EDUCATION",
+      "topic": "Explicar principios de esportes",
+      "primarySkill": "PE_EXPLAIN_SPORT_PRINCIPLES"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "velocidade media",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "unidades",
+      "primarySkill": "PHYSICS_UNIT_CONVERSION"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "distancia",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "tempo",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "grafico posicao-tempo",
+      "primarySkill": "PHYSICS_INTERPRET_MOTION_GRAPH"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "movimento uniforme",
+      "primarySkill": "PHYSICS_UNIFORM_MOTION"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "encontro",
+      "primarySkill": "PHYSICS_RELATIVE_SPEED"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "media de trechos",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "conversao",
+      "primarySkill": "PHYSICS_UNIT_CONVERSION"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "area no grafico",
+      "primarySkill": "PHYSICS_INTERPRET_MOTION_GRAPH"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "aceleracao",
+      "primarySkill": "PHYSICS_INTERPRET_ACCELERATION"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "comparacao",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "subject": "PHYSICS",
+      "topic": "Calcular velocidade media",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "editorial e tese",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "noticia e fato",
+      "primarySkill": "PORTUGUESE_DISTINGUISH_FACT_OPINION"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "campanha de leitura",
+      "primarySkill": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "carta de opiniao",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "comparacao de fontes",
+      "primarySkill": "PORTUGUESE_COMPARE_SOURCES"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "inferencia no conto",
+      "primarySkill": "PORTUGUESE_INFER_FROM_CLUES"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "argumento e razao",
+      "primarySkill": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "contraponto",
+      "primarySkill": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "anuncio publico",
+      "primarySkill": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "evidencia e conclusao",
+      "primarySkill": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "linguagem persuasiva",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "sintese argumentativa",
+      "primarySkill": "PORTUGUESE_SUMMARIZE_ARGUMENT"
+    },
+    {
+      "subject": "PORTUGUESE",
+      "topic": "Identificar tese e evidencia em textos argumentativos",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "traditions",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "diversity",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "secular context",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "ritual",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "respect",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "internal diversity",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "worldviews",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "freedom",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "source",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "symbol",
+      "primarySkill": "RELIGIOUS_INTERPRET_SYMBOLS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "prejudice",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "dialogue norms",
+      "primarySkill": "RELIGIOUS_MEDIATE_DIALOGUE"
+    },
+    {
+      "subject": "RELIGIOUS_EDUCATION",
+      "topic": "Comparar tradicoes com respeito",
+      "primarySkill": "RELIGIOUS_COMPARE_TRADITIONS"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "fusao",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "combustao",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "ciclo da agua",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "mistura",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "conducao",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "mudanca fisica",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "densidade",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "experimento",
+      "primarySkill": "SCIENCE_IDENTIFY_VARIABLES"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "oxidacao",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "pressao",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "reciclagem",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "conversao de energia",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SCIENCE",
+      "topic": "Explicar transformacoes da materia",
+      "primarySkill": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "instituicoes",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "socializacao",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "norma e lei",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "desigualdade",
+      "primarySkill": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "cultura",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "trabalho",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "movimentos",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "identidade",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "poder",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "pesquisa",
+      "primarySkill": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "instituicao e mudanca",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "midia",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    },
+    {
+      "subject": "SOCIOLOGY",
+      "topic": "Explicar instituicoes sociais",
+      "primarySkill": "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    }
+  ]
+}

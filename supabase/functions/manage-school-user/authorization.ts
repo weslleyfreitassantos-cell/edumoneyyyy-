@@ -43,6 +43,7 @@ export interface DeleteAuthorizationDecision {
     | "SUPER_ADMIN_PROTECTED"
     | "ACCOUNT_OWNER_PROTECTED"
     | "SECRETARY_CANNOT_REMOVE_DIRECTOR"
+    | "TARGET_ROLE_NOT_ALLOWED"
     | "DIRECTOR_REQUIRED";
 }
 
@@ -75,6 +76,21 @@ export function getDeleteAuthorizationDecision(
     return { allowed: false, code: "SECRETARY_CANNOT_REMOVE_DIRECTOR" };
   }
 
+  const hasManagementAuthority =
+    authorization.isSuperAdmin ||
+    authorization.isAccountOwner ||
+    authorization.isLocalAdmin ||
+    authorization.isDirector === true ||
+    authorization.isSecretary === true;
+
+  if (!hasManagementAuthority) {
+    return { allowed: false, code: "DIRECTOR_REQUIRED" };
+  }
+
+  if (!canManageTargetRole(authorization, input.targetRole)) {
+    return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
+  }
+
   if (
     authorization.isSuperAdmin ||
     authorization.isAccountOwner ||
@@ -99,6 +115,23 @@ function isOperationalManagerOnly(
   );
 }
 
+export function canManageTargetRole(
+  authorization: UpdateAuthorizationContext,
+  targetRole: string,
+): boolean {
+  if (authorization.isSuperAdmin) return true;
+  if (authorization.isAccountOwner || authorization.isLocalAdmin) {
+    return targetRole === "DIRECTOR";
+  }
+  if (authorization.isDirector) {
+    return ["SECRETARY", "TEACHER", "STUDENT", "GUARDIAN"].includes(targetRole);
+  }
+  if (authorization.isSecretary) {
+    return ["TEACHER", "STUDENT", "GUARDIAN"].includes(targetRole);
+  }
+  return false;
+}
+
 export function getUpdateAuthorizationDecision(
   authorization: UpdateAuthorizationContext,
   input: UpdateAuthorizationInput,
@@ -108,6 +141,24 @@ export function getUpdateAuthorizationDecision(
     !authorization.isSuperAdmin &&
     !authorization.isAccountOwner &&
     !authorization.isLocalAdmin
+  ) {
+    return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
+  }
+
+  if (
+    authorization.isSecretary === true &&
+    input.targetRole === "DIRECTOR"
+  ) {
+    return { allowed: false, code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE" };
+  }
+
+  if (!canManageTargetRole(authorization, input.targetRole)) {
+    return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
+  }
+
+  if (
+    input.requestedRole !== undefined &&
+    !canManageTargetRole(authorization, input.requestedRole)
   ) {
     return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
   }
@@ -122,15 +173,6 @@ export function getUpdateAuthorizationDecision(
 
   if (input.targetRole === "ADMIN") {
     return { allowed: false, code: "TARGET_ROLE_NOT_ALLOWED" };
-  }
-
-  if (
-    authorization.isSecretary === true &&
-    input.targetRole === "DIRECTOR" &&
-    input.requestedRole !== undefined &&
-    input.requestedRole !== "DIRECTOR"
-  ) {
-    return { allowed: false, code: "SECRETARY_CANNOT_CHANGE_DIRECTOR_ROLE" };
   }
 
   return { allowed: true };

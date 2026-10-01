@@ -1,4 +1,5 @@
 -- READ-ONLY AUDIT SCRIPT
+-- Status: PARTIALLY VALID; review every relation/role against the live VPS inventory first.
 -- Execute manualmente no Supabase SQL Editor.
 -- Nao altera dados.
 -- Revise antes de executar.

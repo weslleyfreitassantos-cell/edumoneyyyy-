@@ -1,0 +1,898 @@
+{
+  "packVersion": "tec-escola-core-v4",
+  "subjects": [
+    {
+      "code": "PORTUGUESE",
+      "name": "Lingua Portuguesa",
+      "anchors": [
+        "PORTUGUESE_READING",
+        "PORTUGUESE_ARGUMENTATION",
+        "PORTUGUESE_COHESION"
+      ],
+      "leaves": [
+        {
+          "code": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "title": "Identificar tese e evidencia em textos argumentativos",
+          "objective": "Identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+          "description": "Identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+          "masteryCapability": "Demonstrar que consegue identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
+          "domain": "ARGUMENTACAO",
+          "parent": "PORTUGUESE_ARGUMENTATION",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "PORTUGUESE_INFER_FROM_CLUES",
+          "title": "Inferir informacao a partir de pistas textuais",
+          "objective": "Inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+          "description": "Inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+          "masteryCapability": "Demonstrar que consegue inferir uma informacao apoiada por pistas explicitas e implicitas do texto.",
+          "domain": "LEITURA",
+          "parent": "PORTUGUESE_READING",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "PORTUGUESE_CONNECT_IDEAS",
+          "title": "Interpretar conectores e relacoes de sentido",
+          "objective": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+          "description": "Interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+          "masteryCapability": "Demonstrar que consegue interpretar como conectores organizam contraste, causa, consequencia e conclusao.",
+          "domain": "COESAO",
+          "parent": "PORTUGUESE_COHESION",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+          "title": "Distinguir razao de evidencia",
+          "objective": "Distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+          "description": "Distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+          "masteryCapability": "Demonstrar que consegue distinguir a justificativa de uma afirmacao dos dados que a comprovam.",
+          "domain": "ARGUMENTACAO",
+          "parent": "PORTUGUESE_ARGUMENTATION",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "MATHEMATICS",
+      "name": "Matematica",
+      "anchors": [
+        "MATHEMATICS_NUMBERS",
+        "MATHEMATICS_PROPORTIONS",
+        "MATHEMATICS_DATA"
+      ],
+      "leaves": [
+        {
+          "code": "MATH_PERCENT_OF_QUANTITY",
+          "title": "Calcular percentual de uma quantidade",
+          "objective": "Calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+          "description": "Calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+          "masteryCapability": "Demonstrar que consegue calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+          "domain": "PORCENTAGEM",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "MATH_IDENTIFY_PERCENT_BASE",
+          "title": "Identificar a base de uma porcentagem",
+          "objective": "Identificar o valor de referencia sobre o qual uma porcentagem incide.",
+          "description": "Identificar o valor de referencia sobre o qual uma porcentagem incide.",
+          "masteryCapability": "Demonstrar que consegue identificar o valor de referencia sobre o qual uma porcentagem incide.",
+          "domain": "PORCENTAGEM",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "MATH_PERCENT_INCREASE",
+          "title": "Resolver aumento percentual",
+          "objective": "Calcular aumento percentual e valor final sem trocar a base inicial.",
+          "description": "Calcular aumento percentual e valor final sem trocar a base inicial.",
+          "masteryCapability": "Demonstrar que consegue calcular aumento percentual e valor final sem trocar a base inicial.",
+          "domain": "PORCENTAGEM",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "MATH_RATIO_UNIT_RATE",
+          "title": "Interpretar razao e taxa unitaria",
+          "objective": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+          "description": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+          "masteryCapability": "Demonstrar que consegue interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+          "domain": "RAZAO",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "MATH_INTERPRET_DATA_TABLE",
+          "title": "Interpretar dados em tabela",
+          "objective": "Interpretar dados relevantes de uma tabela para responder a uma pergunta.",
+          "description": "Interpretar dados relevantes de uma tabela para responder a uma pergunta.",
+          "masteryCapability": "Demonstrar que consegue interpretar dados relevantes de uma tabela para responder a uma pergunta.",
+          "domain": "DADOS",
+          "parent": "MATHEMATICS_DATA",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "SCIENCE",
+      "name": "Ciencias",
+      "anchors": [
+        "SCIENCE_INVESTIGATION",
+        "SCIENCE_MATTER",
+        "SCIENCE_EVIDENCE"
+      ],
+      "leaves": [
+        {
+          "code": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "title": "Explicar transformacoes da materia",
+          "objective": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+          "description": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+          "masteryCapability": "Demonstrar que consegue explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+          "domain": "TRANSFORMACOES",
+          "parent": "SCIENCE_MATTER",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "SCIENCE_PLAN_INVESTIGATION",
+          "title": "Planejar uma investigacao controlada",
+          "objective": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+          "description": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+          "masteryCapability": "Demonstrar que consegue planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+          "domain": "INVESTIGACAO",
+          "parent": "SCIENCE_INVESTIGATION",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "SCIENCE_IDENTIFY_VARIABLES",
+          "title": "Identificar variaveis experimentais",
+          "objective": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+          "description": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+          "masteryCapability": "Demonstrar que consegue identificar variavel manipulada, resposta medida e controles em um experimento.",
+          "domain": "INVESTIGACAO",
+          "parent": "SCIENCE_INVESTIGATION",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "SCIENCE_EVIDENCE_CONCLUSION",
+          "title": "Relacionar evidencia e conclusao",
+          "objective": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+          "description": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+          "masteryCapability": "Demonstrar que consegue relacionar uma conclusao aos dados que realmente a sustentam.",
+          "domain": "EVIDENCIA",
+          "parent": "SCIENCE_EVIDENCE",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "BIOLOGY",
+      "name": "Biologia",
+      "anchors": [
+        "BIOLOGY_CELL",
+        "BIOLOGY_INHERITANCE",
+        "BIOLOGY_ECOLOGY"
+      ],
+      "leaves": [
+        {
+          "code": "BIOLOGY_EXPLAIN_INHERITANCE",
+          "title": "Explicar heranca genetica",
+          "objective": "Explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+          "description": "Explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+          "masteryCapability": "Demonstrar que consegue explicar como informacao genetica e variacao contribuem para a heranca de caracteristicas.",
+          "domain": "GENETICA",
+          "parent": "BIOLOGY_INHERITANCE",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "BIOLOGY_CELL_FUNCTION",
+          "title": "Relacionar estrutura e funcao celular",
+          "objective": "Relacionar uma estrutura celular a sua funcao em um organismo.",
+          "description": "Relacionar uma estrutura celular a sua funcao em um organismo.",
+          "masteryCapability": "Demonstrar que consegue relacionar uma estrutura celular a sua funcao em um organismo.",
+          "domain": "CELULA",
+          "parent": "BIOLOGY_CELL",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "BIOLOGY_INTERPRET_POPULATION_DATA",
+          "title": "Interpretar dados de uma populacao",
+          "objective": "Interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+          "description": "Interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+          "masteryCapability": "Demonstrar que consegue interpretar variacoes de uma populacao usando dados de tamanho, ambiente e tempo.",
+          "domain": "ECOLOGIA",
+          "parent": "BIOLOGY_ECOLOGY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "title": "Explicar interacoes em ecossistemas",
+          "objective": "Explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+          "description": "Explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+          "masteryCapability": "Demonstrar que consegue explicar como organismos e fatores abioticos se relacionam em um ecossistema.",
+          "domain": "ECOLOGIA",
+          "parent": "BIOLOGY_ECOLOGY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        }
+      ]
+    },
+    {
+      "code": "PHYSICS",
+      "name": "Fisica",
+      "anchors": [
+        "PHYSICS_MEASUREMENT",
+        "PHYSICS_MOTION",
+        "PHYSICS_ENERGY"
+      ],
+      "leaves": [
+        {
+          "code": "PHYSICS_AVERAGE_SPEED",
+          "title": "Calcular velocidade media",
+          "objective": "Calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+          "description": "Calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+          "masteryCapability": "Demonstrar que consegue calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+          "domain": "VELOCIDADE",
+          "parent": "PHYSICS_MOTION",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "PHYSICS_UNIT_CONVERSION",
+          "title": "Converter unidades de movimento",
+          "objective": "Converter unidades de distancia e tempo antes de comparar velocidades.",
+          "description": "Converter unidades de distancia e tempo antes de comparar velocidades.",
+          "masteryCapability": "Demonstrar que consegue converter unidades de distancia e tempo antes de comparar velocidades.",
+          "domain": "MEDIDAS",
+          "parent": "PHYSICS_MEASUREMENT",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "PHYSICS_INTERPRET_MOTION_GRAPH",
+          "title": "Interpretar grafico de movimento",
+          "objective": "Interpretar como inclinacao e trechos de um grafico representam um movimento.",
+          "description": "Interpretar como inclinacao e trechos de um grafico representam um movimento.",
+          "masteryCapability": "Demonstrar que consegue interpretar como inclinacao e trechos de um grafico representam um movimento.",
+          "domain": "MOVIMENTO",
+          "parent": "PHYSICS_MOTION",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "PHYSICS_MODEL_FORCE",
+          "title": "Relacionar forca e movimento",
+          "objective": "Relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+          "description": "Relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+          "masteryCapability": "Demonstrar que consegue relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+          "domain": "INTERACOES",
+          "parent": "PHYSICS_ENERGY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        }
+      ]
+    },
+    {
+      "code": "CHEMISTRY",
+      "name": "Quimica",
+      "anchors": [
+        "CHEMISTRY_MATTER",
+        "CHEMISTRY_ATOMIC",
+        "CHEMISTRY_REACTIONS"
+      ],
+      "leaves": [
+        {
+          "code": "CHEMISTRY_ATOMIC_STRUCTURE",
+          "title": "Interpretar modelos atomicos",
+          "objective": "Interpretar numero atomico, massa e particulas em um modelo de atomo.",
+          "description": "Interpretar numero atomico, massa e particulas em um modelo de atomo.",
+          "masteryCapability": "Demonstrar que consegue interpretar numero atomico, massa e particulas em um modelo de atomo.",
+          "domain": "ATOMOS",
+          "parent": "CHEMISTRY_ATOMIC",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "CHEMISTRY_STOICHIOMETRY",
+          "title": "Raciocinar sobre proporcoes em reacoes",
+          "objective": "Relacionar quantidades de reagentes e produtos usando proporcoes da equacao.",
+          "description": "Relacionar quantidades de reagentes e produtos usando proporcoes da equacao.",
+          "masteryCapability": "Demonstrar que consegue relacionar quantidades de reagentes e produtos usando proporcoes da equacao.",
+          "domain": "REACOES",
+          "parent": "CHEMISTRY_REACTIONS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "CHEMISTRY_REACTION_EVIDENCE",
+          "title": "Identificar evidencia de transformacao quimica",
+          "objective": "Identificar evidencia observavel de uma transformacao quimica sem confundi-la com mudanca fisica.",
+          "description": "Identificar evidencia observavel de uma transformacao quimica sem confundi-la com mudanca fisica.",
+          "masteryCapability": "Demonstrar que consegue identificar evidencia observavel de uma transformacao quimica sem confundi-la com mudanca fisica.",
+          "domain": "REACOES",
+          "parent": "CHEMISTRY_REACTIONS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "CHEMISTRY_ACID_BASE",
+          "title": "Interpretar acidez e basicidade",
+          "objective": "Interpretar pH como medida de acidez ou basicidade em uma solucao.",
+          "description": "Interpretar pH como medida de acidez ou basicidade em uma solucao.",
+          "masteryCapability": "Demonstrar que consegue interpretar pH como medida de acidez ou basicidade em uma solucao.",
+          "domain": "SOLUCOES",
+          "parent": "CHEMISTRY_MATTER",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        }
+      ]
+    },
+    {
+      "code": "HISTORY",
+      "name": "Historia",
+      "anchors": [
+        "HISTORY_TIME",
+        "HISTORY_SOURCES",
+        "HISTORY_CAUSALITY"
+      ],
+      "leaves": [
+        {
+          "code": "HISTORY_INTERPRET_EVIDENCE",
+          "title": "Interpretar evidencia historica",
+          "objective": "Interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+          "description": "Interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+          "masteryCapability": "Demonstrar que consegue interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+          "domain": "FONTES",
+          "parent": "HISTORY_SOURCES",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "HISTORY_ORDER_EVENTS",
+          "title": "Ordenar acontecimentos no tempo",
+          "objective": "Ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+          "description": "Ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+          "masteryCapability": "Demonstrar que consegue ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+          "domain": "CRONOLOGIA",
+          "parent": "HISTORY_TIME",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "HISTORY_COMPARE_CAUSES",
+          "title": "Comparar causas e consequencias historicas",
+          "objective": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+          "description": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+          "masteryCapability": "Demonstrar que consegue comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+          "domain": "CAUSALIDADE",
+          "parent": "HISTORY_CAUSALITY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "GEOGRAPHY",
+      "name": "Geografia",
+      "anchors": [
+        "GEOGRAPHY_SPACE",
+        "GEOGRAPHY_CARTOGRAPHY",
+        "GEOGRAPHY_TERRITORY"
+      ],
+      "leaves": [
+        {
+          "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "title": "Interpretar territorio e paisagem",
+          "objective": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+          "description": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+          "masteryCapability": "Demonstrar que consegue interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+          "domain": "TERRITORIO",
+          "parent": "GEOGRAPHY_TERRITORY",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "GEOGRAPHY_MAP_SCALE",
+          "title": "Interpretar escala cartografica",
+          "objective": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+          "description": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+          "masteryCapability": "Demonstrar que consegue interpretar a relacao entre distancia representada e distancia real em um mapa.",
+          "domain": "CARTOGRAFIA",
+          "parent": "GEOGRAPHY_CARTOGRAPHY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "title": "Analisar dados climaticos",
+          "objective": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+          "description": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+          "masteryCapability": "Demonstrar que consegue analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+          "domain": "CLIMA",
+          "parent": "GEOGRAPHY_SPACE",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "PHILOSOPHY",
+      "name": "Filosofia",
+      "anchors": [
+        "PHILOSOPHY_CONCEPTS",
+        "PHILOSOPHY_ARGUMENT",
+        "PHILOSOPHY_ETHICS"
+      ],
+      "leaves": [
+        {
+          "code": "PHILOSOPHY_EVALUATE_ARGUMENT",
+          "title": "Avaliar argumento filosofico",
+          "objective": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+          "description": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+          "masteryCapability": "Demonstrar que consegue avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+          "domain": "ARGUMENTO",
+          "parent": "PHILOSOPHY_ARGUMENT",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+          "title": "Distinguir conceito de opiniao",
+          "objective": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+          "description": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+          "masteryCapability": "Demonstrar que consegue distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+          "domain": "CONCEITO",
+          "parent": "PHILOSOPHY_CONCEPTS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+          "title": "Aplicar principio etico a um caso",
+          "objective": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+          "description": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+          "masteryCapability": "Demonstrar que consegue aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+          "domain": "ETICA",
+          "parent": "PHILOSOPHY_ETHICS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        }
+      ]
+    },
+    {
+      "code": "SOCIOLOGY",
+      "name": "Sociologia",
+      "anchors": [
+        "SOCIOLOGY_INDIVIDUAL",
+        "SOCIOLOGY_INSTITUTIONS",
+        "SOCIOLOGY_STRUCTURE"
+      ],
+      "leaves": [
+        {
+          "code": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+          "title": "Explicar instituicoes sociais",
+          "objective": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+          "description": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+          "masteryCapability": "Demonstrar que consegue explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+          "domain": "INSTITUICOES",
+          "parent": "SOCIOLOGY_INSTITUTIONS",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+          "title": "Distinguir norma de valor social",
+          "objective": "Distinguir regras de comportamento de valores que justificam essas regras.",
+          "description": "Distinguir regras de comportamento de valores que justificam essas regras.",
+          "masteryCapability": "Demonstrar que consegue distinguir regras de comportamento de valores que justificam essas regras.",
+          "domain": "CULTURA",
+          "parent": "SOCIOLOGY_INDIVIDUAL",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        },
+        {
+          "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+          "title": "Analisar dados de desigualdade",
+          "objective": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+          "description": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+          "masteryCapability": "Demonstrar que consegue analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+          "domain": "ESTRUTURA",
+          "parent": "SOCIOLOGY_STRUCTURE",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3
+        }
+      ]
+    },
+    {
+      "code": "ART",
+      "name": "Arte",
+      "anchors": [
+        "ART_ELEMENTS",
+        "ART_INTERPRETATION",
+        "ART_CONTEXT"
+      ],
+      "leaves": [
+        {
+          "code": "ART_INTERPRET_WORK",
+          "title": "Interpretar elementos de uma obra",
+          "objective": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+          "description": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+          "masteryCapability": "Demonstrar que consegue interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+          "domain": "INTERPRETACAO",
+          "parent": "ART_INTERPRETATION",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "ART_COMPARE_COMPOSITIONS",
+          "title": "Comparar composicoes artisticas",
+          "objective": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+          "description": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+          "masteryCapability": "Demonstrar que consegue comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+          "domain": "ELEMENTOS",
+          "parent": "ART_ELEMENTS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "ART_RELATE_WORK_CONTEXT",
+          "title": "Relacionar obra e contexto cultural",
+          "objective": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+          "description": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+          "masteryCapability": "Demonstrar que consegue relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+          "domain": "CONTEXTO",
+          "parent": "ART_CONTEXT",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "PHYSICAL_EDUCATION",
+      "name": "Educacao Fisica",
+      "anchors": [
+        "PE_BODY",
+        "PE_SPORTS",
+        "PE_HEALTH"
+      ],
+      "leaves": [
+        {
+          "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
+          "title": "Explicar principios de esportes",
+          "objective": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+          "description": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+          "masteryCapability": "Demonstrar que consegue explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+          "domain": "ESPORTES",
+          "parent": "PE_SPORTS",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "PE_ANALYZE_MOVEMENT",
+          "title": "Analisar movimento corporal",
+          "objective": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+          "description": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+          "masteryCapability": "Demonstrar que consegue analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+          "domain": "CORPO",
+          "parent": "PE_BODY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "PE_PLAN_SAFE_ACTIVITY",
+          "title": "Planejar atividade fisica segura",
+          "objective": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+          "description": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+          "masteryCapability": "Demonstrar que consegue planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+          "domain": "SAUDE",
+          "parent": "PE_HEALTH",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "ENGLISH",
+      "name": "Lingua Inglesa",
+      "anchors": [
+        "ENGLISH_READING",
+        "ENGLISH_VOCABULARY",
+        "ENGLISH_COMMUNICATION"
+      ],
+      "leaves": [
+        {
+          "code": "ENGLISH_INFER_FROM_TEXT",
+          "title": "Inferir sentido em texto em ingles",
+          "objective": "Inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+          "description": "Inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+          "masteryCapability": "Demonstrar que consegue inferir sentido de um texto em ingles usando pistas lexicais, sintaticas e contextuais.",
+          "domain": "LEITURA",
+          "parent": "ENGLISH_READING",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "ENGLISH_USE_CONTEXT_VOCABULARY",
+          "title": "Interpretar vocabulario pelo contexto",
+          "objective": "Interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+          "description": "Interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+          "masteryCapability": "Demonstrar que consegue interpretar o significado de uma palavra em ingles a partir do contexto em que aparece.",
+          "domain": "VOCABULARIO",
+          "parent": "ENGLISH_VOCABULARY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+          "title": "Relacionar linguagem e contexto cultural",
+          "objective": "Relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+          "description": "Relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+          "masteryCapability": "Demonstrar que consegue relacionar escolhas linguisticas a situacoes culturais e comunicativas.",
+          "domain": "CULTURA",
+          "parent": "ENGLISH_COMMUNICATION",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "RELIGIOUS_EDUCATION",
+      "name": "Ensino Religioso",
+      "anchors": [
+        "RELIGIOUS_TRADITIONS",
+        "RELIGIOUS_DIVERSITY",
+        "RELIGIOUS_DIALOGUE"
+      ],
+      "leaves": [
+        {
+          "code": "RELIGIOUS_COMPARE_TRADITIONS",
+          "title": "Comparar tradicoes com respeito",
+          "objective": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+          "description": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+          "masteryCapability": "Demonstrar que consegue comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+          "domain": "DIVERSIDADE",
+          "parent": "RELIGIOUS_DIVERSITY",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "title": "Interpretar simbolos e narrativas",
+          "objective": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+          "description": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+          "masteryCapability": "Demonstrar que consegue interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+          "domain": "TRADICOES",
+          "parent": "RELIGIOUS_TRADITIONS",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "title": "Mediar dialogo sobre conviccoes",
+          "objective": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+          "description": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+          "masteryCapability": "Demonstrar que consegue mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+          "domain": "DIALOGO",
+          "parent": "RELIGIOUS_DIALOGUE",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    },
+    {
+      "code": "COMPUTING",
+      "name": "Computacao e Educacao Digital",
+      "anchors": [
+        "COMPUTING_ALGORITHMS",
+        "COMPUTING_DATA",
+        "COMPUTING_SAFETY"
+      ],
+      "leaves": [
+        {
+          "code": "COMPUTING_TRACE_ALGORITHM",
+          "title": "Rastrear algoritmo com condicoes",
+          "objective": "Rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+          "description": "Rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+          "masteryCapability": "Demonstrar que consegue rastrear a execucao de um algoritmo identificando sequencia, condicao e resultado.",
+          "domain": "ALGORITMOS",
+          "parent": "COMPUTING_ALGORITHMS",
+          "readiness": "ADAPTIVE_READY",
+          "content_authoring_status": "TECH_VALIDATED",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "COMPUTING_READ_TABLE_DATA",
+          "title": "Selecionar dados em uma tabela",
+          "objective": "Selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+          "description": "Selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+          "masteryCapability": "Demonstrar que consegue selecionar dados relevantes de uma tabela para responder a uma pergunta.",
+          "domain": "DADOS",
+          "parent": "COMPUTING_DATA",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        },
+        {
+          "code": "COMPUTING_RECOGNIZE_PHISHING",
+          "title": "Reconhecer sinais de phishing",
+          "objective": "Reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+          "description": "Reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+          "masteryCapability": "Demonstrar que consegue reconhecer sinais de phishing verificando remetente, contexto, link e pedido de informacao.",
+          "domain": "SEGURANCA",
+          "parent": "COMPUTING_SAFETY",
+          "readiness": "GRAPH_ONLY",
+          "content_authoring_status": "SCAFFOLD",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9
+        }
+      ]
+    }
+  ]
+}

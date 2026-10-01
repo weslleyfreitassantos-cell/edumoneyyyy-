@@ -21,6 +21,7 @@ import {
   mapDatabaseRole,
   mapPlatformRole,
 } from '../lib/roles';
+import { hasEffectivePermission } from '../lib/permissions';
 import type {
   User,
   UserRole,
@@ -28,7 +29,10 @@ import type {
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
-import Sidebar from './Sidebar';
+import Sidebar, {
+  getSidebarAdminModules,
+  getSidebarNavigationItems,
+} from './Sidebar';
 import { schoolEmailService } from '../services/schoolEmailService';
 import AssistantTec from './AssistantTec';
 
@@ -169,6 +173,48 @@ export function getRouteVisualContext(
     };
   }
 
+  if (
+    role === 'teacher' &&
+    normalizedPath.startsWith('/teacher/pedagogical-center')
+  ) {
+    return { section: 'Acadêmico', title: 'Central Pedagógica' };
+  }
+
+  if (
+    role === 'student' &&
+    normalizedPath.startsWith('/student/study')
+  ) {
+    return { section: 'Acadêmico', title: 'Central de Estudos' };
+  }
+
+  if (role === 'student') {
+    if (normalizedPath === '/student/attendance') {
+      return { section: 'Acadêmico', title: 'Frequência' };
+    }
+
+    if (normalizedPath === '/student/grades') {
+      return { section: 'Acadêmico', title: 'Notas' };
+    }
+
+    if (normalizedPath === '/student/report-card') {
+      return { section: 'Acadêmico', title: 'Boletim' };
+    }
+  }
+
+  if (role === 'parent') {
+    if (normalizedPath === '/guardian/attendance') {
+      return { section: 'Família', title: 'Frequência dos dependentes' };
+    }
+
+    if (normalizedPath === '/guardian/grades') {
+      return { section: 'Família', title: 'Notas dos dependentes' };
+    }
+
+    if (normalizedPath === '/guardian/report-card') {
+      return { section: 'Família', title: 'Boletim dos dependentes' };
+    }
+  }
+
   if (normalizedPath.startsWith('/dashboard')) {
     if (role === 'super_admin') {
       return {
@@ -195,9 +241,6 @@ export function getRouteVisualContext(
     }
 
     if (role === 'teacher') {
-      if (normalizedPath.startsWith('/teacher/pedagogical-center')) {
-        return { section: 'Acadêmico', title: 'Central Pedagógica' };
-      }
       if (normalizedPath === '/dashboard/timetable') {
         return {
           section: 'Acadêmico',
@@ -212,10 +255,13 @@ export function getRouteVisualContext(
         };
       }
 
-      if (normalizedPath === '/dashboard/attendance') {
+      if (
+        normalizedPath === '/dashboard/attendance' ||
+        normalizedPath === '/dashboard/class-diary'
+      ) {
         return {
           section: 'Operação docente',
-          title: 'Chamadas',
+          title: 'Diário de Classe',
         };
       }
 
@@ -247,9 +293,6 @@ export function getRouteVisualContext(
     }
 
     if (role === 'student') {
-      if (normalizedPath.startsWith('/student/study')) {
-        return { section: 'Acadêmico', title: 'Central de Estudos' };
-      }
       if (normalizedPath === '/dashboard/timetable') {
         return {
           section: 'Acadêmico',
@@ -297,8 +340,8 @@ export default function AppShell({
   const { profile, signOut } = useAuth();
   const {
     updateProfileName,
-    updateProfileAvatar = async () => undefined,
-    removeProfileAvatar = async () => undefined,
+    updateProfileAvatar,
+    removeProfileAvatar,
     updateSelfRegistration,
     updatePassword,
   } =
@@ -307,13 +350,19 @@ export default function AppShell({
   const location = useLocation();
   const { theme, toggleTheme } = useThemePreference();
   const branding = useHostBranding();
+  const canSendSchoolEmail = hasEffectivePermission({
+    platformRole: profile?.platform_role,
+    membershipRole: institutionContext.currentRole,
+    profileRole: profile?.role,
+    permission: 'send_school_email',
+  });
 
   useEffect(() => {
     const institutionId = institutionContext.currentInstitutionId;
-    if (!institutionId) return;
+    if (!institutionId || !canSendSchoolEmail) return;
 
     void schoolEmailService.listRecipients(institutionId).catch(() => undefined);
-  }, [institutionContext.currentInstitutionId]);
+  }, [canSendSchoolEmail, institutionContext.currentInstitutionId]);
 
   const [isSidebarHidden, setIsSidebarHidden] =
     useState(readSidebarPreference);
@@ -545,12 +594,34 @@ export default function AppShell({
     id: profile.id,
     name: profile.full_name,
     email: profile.email,
-    avatar:
-      profile.avatar_url?.trim() || null,
+    avatar: profile.avatar_url?.trim() || null,
     role: currentRole,
     subtitle:
       roleToSubtitle[currentRole],
   };
+
+  const assistantMenuItems = [
+    ...getSidebarNavigationItems({
+      profile,
+      currentInstitutionRole: institutionContext.currentRole,
+      currentUserRole: currentRole,
+      pathname: location.pathname,
+    }).map((item) => ({
+      id: item.id,
+      label: item.label,
+      path: item.path,
+    })),
+    ...getSidebarAdminModules({
+      profile,
+      currentInstitutionRole: institutionContext.currentRole,
+      currentUserRole: currentRole,
+      pathname: location.pathname,
+    }).map((module) => ({
+      id: module.id,
+      label: module.label,
+      path: module.href,
+    })),
+  ];
 
   const pageContext = getRouteVisualContext(
     location.pathname,
@@ -659,8 +730,8 @@ export default function AppShell({
             void handleLogout();
           }}
           onUpdateProfileName={updateProfileName}
-          onUpdateAvatar={updateProfileAvatar}
-          onRemoveAvatar={removeProfileAvatar}
+          onUpdateProfileAvatar={updateProfileAvatar}
+          onRemoveProfileAvatar={removeProfileAvatar}
           onUpdateSelfRegistration={updateSelfRegistration}
           onUpdatePassword={updatePassword}
           theme={theme}
@@ -693,6 +764,11 @@ export default function AppShell({
       <AssistantTec
         role={currentRole}
         institutionId={institutionContext.currentInstitutionId}
+        profileId={profile.id}
+        platformRole={profile.platform_role}
+        membershipRole={institutionContext.currentRole}
+        profileRole={profile.role}
+        menuItems={assistantMenuItems}
       />
     </div>
   );

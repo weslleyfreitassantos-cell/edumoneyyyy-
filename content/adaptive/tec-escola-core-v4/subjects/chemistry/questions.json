@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-chemistry-chemistry_atoms-1",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "nucleo",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "NUCLEO",
+    "statement": "No modelo atual, o atomo possui nucleo e eletrosfera. Onde ficam proton e neutron?",
+    "options": [
+      "No nucleo.",
+      "Na eletrosfera.",
+      "Fora do atomo.",
+      "Somente na ligacao."
+    ],
+    "correctAnswer": "No nucleo.",
+    "explanation": "Protons e neutrons formam o nucleo atomico.",
+    "misconceptions": {
+      "Na eletrosfera.": [
+        "NUCLEUS_SHELL_SWAPPED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-2",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "numero atomico",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "NUMERO_ATOMICO",
+    "statement": "Um atomo com numero atomico 8 possui quantos protons?",
+    "options": [
+      "0",
+      "8",
+      "16",
+      "4"
+    ],
+    "correctAnswer": "8",
+    "explanation": "O numero atomico identifica a quantidade de protons.",
+    "misconceptions": {
+      "16": [
+        "ATOMIC_NUMBER_DOUBLED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-3",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "ion",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "ION",
+    "statement": "Quando um atomo neutro perde um eletron, ele se torna:",
+    "options": [
+      "Um neutron.",
+      "Uma molecula neutra sempre.",
+      "Um cation.",
+      "Um anion."
+    ],
+    "correctAnswer": "Um cation.",
+    "explanation": "Perder carga negativa deixa excesso relativo de carga positiva.",
+    "misconceptions": {
+      "Um anion.": [
+        "ION_CHARGE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-4",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "isotopos",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ISOTOPOS",
+    "statement": "Dois atomos com mesmo numero de protons e diferente numero de neutrons sao:",
+    "options": [
+      "Ions de cargas opostas.",
+      "Moleculas.",
+      "Elementos diferentes.",
+      "Isotopos."
+    ],
+    "correctAnswer": "Isotopos.",
+    "explanation": "Isotopos pertencem ao mesmo elemento e diferem no numero de neutrons.",
+    "misconceptions": {
+      "Ions de cargas opostas.": [
+        "ISOTOPE_CONFUSED_WITH_ION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-5",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "ligacao ionica",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "LIGACAO_IONICA",
+    "statement": "Na formacao de cloreto de sodio, ocorre transferencia de eletron. Que tipo de ligacao se forma?",
+    "options": [
+      "Ionica.",
+      "Metalica apenas.",
+      "Ponte de hidrogenio.",
+      "Nenhuma."
+    ],
+    "correctAnswer": "Ionica.",
+    "explanation": "A transferencia gera ions atraidos eletrostaticamente.",
+    "misconceptions": {
+      "Metalica apenas.": [
+        "IONIC_BOND_MISNAMED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-6",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "ligacao covalente",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "LIGACAO_COVALENTE",
+    "statement": "Na molecula de agua, os atomos compartilham eletrons. Isso caracteriza ligacao:",
+    "options": [
+      "Nuclear.",
+      "Covalente.",
+      "Ionica por transferencia total.",
+      "Metalica."
+    ],
+    "correctAnswer": "Covalente.",
+    "explanation": "Compartilhar pares de eletrons e caracteristico da ligacao covalente.",
+    "misconceptions": {
+      "Ionica por transferencia total.": [
+        "COVALENT_SHARING_DENIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-7",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "conservacao",
+    "primarySkill": "CHEMISTRY_REACTION_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CONSERVACAO",
+    "statement": "Na reacao 2H2 + O2 -> 2H2O, o que se conserva?",
+    "options": [
+      "A temperatura.",
+      "A cor dos reagentes.",
+      "A quantidade de atomos de cada elemento.",
+      "O numero de moleculas sempre."
+    ],
+    "correctAnswer": "A quantidade de atomos de cada elemento.",
+    "explanation": "A equacao balanceada conserva atomos de hidrogenio e oxigenio.",
+    "misconceptions": {
+      "O numero de moleculas sempre.": [
+        "REACTION_CONSERVES_MOLECULES"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-8",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "pH",
+    "primarySkill": "CHEMISTRY_ACID_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "PH",
+    "statement": "Uma solucao com pH 3 e classificada como:",
+    "options": [
+      "Basica.",
+      "Neutra.",
+      "Sem agua necessariamente.",
+      "Acida."
+    ],
+    "correctAnswer": "Acida.",
+    "explanation": "Valores menores que 7 indicam acidez em agua.",
+    "misconceptions": {
+      "Basica.": [
+        "PH_SCALE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-9",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "solubilidade",
+    "primarySkill": "CHEMISTRY_REACTION_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "SOLUBILIDADE",
+    "statement": "Ao aquecer a agua, certo soluto passa a dissolver mais. O que aumenta?",
+    "options": [
+      "A solubilidade desse soluto.",
+      "A massa do soluto sem adicionar nada.",
+      "O numero atomico.",
+      "A carga do copo."
+    ],
+    "correctAnswer": "A solubilidade desse soluto.",
+    "explanation": "Solubilidade indica quanto soluto se dissolve em uma condicao.",
+    "misconceptions": {
+      "A massa do soluto sem adicionar nada.": [
+        "SOLUBILITY_CONFUSED_WITH_MASS"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-10",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "separacao",
+    "primarySkill": "CHEMISTRY_REACTION_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "SEPARACAO",
+    "statement": "Uma mistura de agua e sal pode ser separada por evaporacao porque:",
+    "options": [
+      "Os atomos desaparecem.",
+      "A agua muda para vapor e o sal permanece.",
+      "O sal vira gas primeiro.",
+      "A agua se transforma em sal."
+    ],
+    "correctAnswer": "A agua muda para vapor e o sal permanece.",
+    "explanation": "A diferenca de volatilidade permite recuperar o sal.",
+    "misconceptions": {
+      "O sal vira gas primeiro.": [
+        "EVAPORATION_REMOVES_SOLUTE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-11",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "reacao",
+    "primarySkill": "CHEMISTRY_REACTION_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REACAO",
+    "statement": "Bolhas surgem ao misturar duas substancias e o recipiente esquenta. Esses sinais sugerem:",
+    "options": [
+      "Separacao mecanica.",
+      "Congelamento.",
+      "Reacao quimica.",
+      "Apenas mudanca de forma."
+    ],
+    "correctAnswer": "Reacao quimica.",
+    "explanation": "Gas e variacao de temperatura podem indicar novas substancias.",
+    "misconceptions": {
+      "Apenas mudanca de forma.": [
+        "REACTION_SIGNS_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-12",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "massa",
+    "primarySkill": "CHEMISTRY_STOICHIOMETRY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "MASSA",
+    "statement": "Em uma reacao fechada, a massa total permanece constante porque:",
+    "options": [
+      "A materia sai do recipiente.",
+      "Os atomos deixam de existir.",
+      "A massa depende apenas da cor.",
+      "Os atomos se reorganizam sem desaparecer."
+    ],
+    "correctAnswer": "Os atomos se reorganizam sem desaparecer.",
+    "explanation": "A conservacao da massa decorre da reorganizacao das particulas.",
+    "misconceptions": {
+      "A materia sai do recipiente.": [
+        "MASS_CONSERVATION_DENIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-chemistry-review-01",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "Interpretar modelos atomicos",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um atomo tem numero atomico 8 e numero de massa 16. Quantos neutrons ele possui?",
+    "options": [
+      "8 neutrons.",
+      "16 neutrons.",
+      "24 neutrons.",
+      "4 neutrons."
+    ],
+    "correctAnswer": "8 neutrons.",
+    "explanation": "Neutrons = numero de massa - numero atomico: 16 - 8 = 8.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

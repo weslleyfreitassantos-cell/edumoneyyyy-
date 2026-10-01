@@ -1,0 +1,388 @@
+[
+  {
+    "id": "v3-english-english_reading-1",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "main idea",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "MAIN_IDEA",
+    "statement": "Read: The school garden supplies herbs for the cafeteria and gives students a place to study insects. What is the main idea?",
+    "options": [
+      "The garden supports food and learning.",
+      "The garden is used only for sports.",
+      "Students avoid science.",
+      "The cafeteria closed."
+    ],
+    "correctAnswer": "The garden supports food and learning.",
+    "explanation": "The answer combines the two purposes in the text.",
+    "misconceptions": {
+      "The garden is used only for sports.": [
+        "MAIN_IDEA_CONFUSED_WITH_DETAIL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-2",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "literal detail",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "LITERAL_DETAIL",
+    "statement": "Read: The workshop starts at 9 a.m. on Saturday. When does it start?",
+    "options": [
+      "At 10 a.m. on Monday.",
+      "At 9 a.m. on Saturday.",
+      "At 8 p.m. on Friday.",
+      "At noon on Sunday."
+    ],
+    "correctAnswer": "At 9 a.m. on Saturday.",
+    "explanation": "The answer repeats the explicit time and day.",
+    "misconceptions": {
+      "At 8 p.m. on Friday.": [
+        "EXPLICIT_DETAIL_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-3",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_USE_CONTEXT_VOCABULARY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "VOCABULARY",
+    "statement": "In The path is narrow, but safe, the word narrow means:",
+    "options": [
+      "Extremely loud.",
+      "Full of water.",
+      "Not wide.",
+      "Very fast."
+    ],
+    "correctAnswer": "Not wide.",
+    "explanation": "Narrow describes limited width.",
+    "misconceptions": {
+      "Very fast.": [
+        "VOCABULARY_LITERAL_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-4",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "inference",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "INFERENCE",
+    "statement": "Read: Maya took an umbrella after checking the dark clouds. What can we infer?",
+    "options": [
+      "She had lost her bicycle.",
+      "She was going swimming.",
+      "The sun was very strong.",
+      "She expected rain."
+    ],
+    "correctAnswer": "She expected rain.",
+    "explanation": "The action and clouds support this inference.",
+    "misconceptions": {
+      "She had lost her bicycle.": [
+        "INFERENCE_AS_CERTAINTY"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-5",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "reference",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "REFERENCE",
+    "statement": "In The team planted trees because they wanted more shade, they refers to:",
+    "options": [
+      "The team.",
+      "The trees.",
+      "The shade.",
+      "The street."
+    ],
+    "correctAnswer": "The team.",
+    "explanation": "The pronoun agrees with the group doing the planting.",
+    "misconceptions": {
+      "The trees.": [
+        "PRONOUN_REFERENCE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-6",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "sequence",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "SEQUENCE",
+    "statement": "First Ana measured the soil, then she added seeds. What happened first?",
+    "options": [
+      "She closed the garden.",
+      "She measured the soil.",
+      "She added seeds.",
+      "She watered flowers."
+    ],
+    "correctAnswer": "She measured the soil.",
+    "explanation": "First marks the initial action.",
+    "misconceptions": {
+      "She added seeds.": [
+        "SEQUENCE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-7",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "purpose",
+    "primarySkill": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "PURPOSE",
+    "statement": "A poster says Bring a reusable bottle to reduce waste. Its purpose is to:",
+    "options": [
+      "Tell a fictional story.",
+      "Define a musical note.",
+      "Encourage an action.",
+      "Report yesterday weather."
+    ],
+    "correctAnswer": "Encourage an action.",
+    "explanation": "The imperative invites the reader to act.",
+    "misconceptions": {
+      "Report yesterday weather.": [
+        "GENRE_PURPOSE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-8",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "contrast",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CONTRAST",
+    "statement": "The text says The bus is slower, but it is cheaper. What contrast is presented?",
+    "options": [
+      "Weather and food.",
+      "Age and height.",
+      "Noise and color.",
+      "Speed and cost."
+    ],
+    "correctAnswer": "Speed and cost.",
+    "explanation": "But connects two contrasting qualities.",
+    "misconceptions": {
+      "Weather and food.": [
+        "CONTRAST_CONNECTOR_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-9",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "evidence",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "EVIDENCE",
+    "statement": "Read: The river level fell after three weeks without rain. Which statement is supported?",
+    "options": [
+      "Lack of rain was associated with a lower river level.",
+      "Rain always increases pollution.",
+      "The river disappeared forever.",
+      "No one measured the river."
+    ],
+    "correctAnswer": "Lack of rain was associated with a lower river level.",
+    "explanation": "The statement stays within the evidence.",
+    "misconceptions": {
+      "Rain always increases pollution.": [
+        "EVIDENCE_OVERGENERALIZED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-10",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "summary",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "SUMMARY",
+    "statement": "A paragraph describes a student reading, taking notes and comparing sources. Which summary is best?",
+    "options": [
+      "The student writes a fictional poem.",
+      "The student studies by reading and checking sources.",
+      "The student only copies a title.",
+      "The student avoids all evidence."
+    ],
+    "correctAnswer": "The student studies by reading and checking sources.",
+    "explanation": "The summary keeps the central actions.",
+    "misconceptions": {
+      "The student only copies a title.": [
+        "SUMMARY_ADDS_DETAIL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-11",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "prefix",
+    "primarySkill": "ENGLISH_USE_CONTEXT_VOCABULARY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PREFIX",
+    "statement": "In unhappy, the prefix un- most likely means:",
+    "options": [
+      "Before.",
+      "Very.",
+      "Not.",
+      "Again."
+    ],
+    "correctAnswer": "Not.",
+    "explanation": "Un- commonly negates the adjective.",
+    "misconceptions": {
+      "Again.": [
+        "PREFIX_MEANING_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-english-english_reading-12",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "critical reading",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "CRITICAL_READING",
+    "statement": "A post claims one drink improves every exam result but gives no source. What is the best response?",
+    "options": [
+      "Share it because it sounds positive.",
+      "Assume every claim is false.",
+      "Ignore the wording and buy it.",
+      "Ask for evidence before accepting the claim."
+    ],
+    "correctAnswer": "Ask for evidence before accepting the claim.",
+    "explanation": "Critical reading checks the claim and its support.",
+    "misconceptions": {
+      "Share it because it sounds positive.": [
+        "CLAIM_WITHOUT_EVIDENCE_ACCEPTED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-english-review-01",
+    "subject": "ENGLISH",
+    "domain": "LEITURA",
+    "topic": "Inferir sentido em texto em ingles",
+    "primarySkill": "ENGLISH_INFER_FROM_TEXT",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Read the sentence: \"The bus was late, so Maya walked to school.\" What can the reader infer?",
+    "options": [
+      "Maya walked because the bus was late.",
+      "Maya missed the school day.",
+      "The bus arrived early.",
+      "Maya lives at school."
+    ],
+    "correctAnswer": "Maya walked because the bus was late.",
+    "explanation": "The connector \"so\" indicates the consequence of the late bus.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

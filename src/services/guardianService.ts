@@ -281,13 +281,21 @@ export const guardianService = {
       );
     }
 
-    const { error } = await supabase
+    const { data: updatedLink, error } = await supabase
       .from('guardianships')
       .update({ active })
-      .eq('id', guardianshipId);
+      .eq('id', guardianshipId)
+      .select('id, active')
+      .maybeSingle();
 
     if (error) {
       throw error;
+    }
+
+    if (!updatedLink || updatedLink.active !== active) {
+      throw new Error(
+        'O vínculo não foi atualizado. Verifique sua permissão e tente novamente.',
+      );
     }
   },
 };

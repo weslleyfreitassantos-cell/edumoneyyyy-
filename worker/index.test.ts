@@ -99,7 +99,7 @@ describe('Worker script', () => {
       "base-uri 'self'",
       "frame-ancestors 'none'",
       "object-src 'none'",
-      "connect-src 'self' https://*.supabase.co https://*.supabase.in https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://static.cloudflareinsights.com",
+      "connect-src 'self' https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br https://static.cloudflareinsights.com",
       "media-src 'self' blob: https://*.cameras.grupotec.dev.br https://*.grupotec.dev.br",
       "img-src 'self' data: blob: https:",
       "font-src 'self' https://fonts.gstatic.com",
@@ -110,6 +110,10 @@ describe('Worker script', () => {
     ]) {
       expect(contentSecurityPolicy).toContain(directive);
     }
+
+    expect(contentSecurityPolicy).toContain('https://*.grupotec.dev.br');
+    expect(contentSecurityPolicy).not.toContain('supabase.co');
+    expect(contentSecurityPolicy).not.toContain('supabase.in');
 
     expect(response.headers.get('x-content-type-options')).toBe('nosniff');
     expect(response.headers.get('cache-control')).toBe(

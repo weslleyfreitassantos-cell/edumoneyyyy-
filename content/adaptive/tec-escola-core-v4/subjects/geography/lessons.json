@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "title": "Interpretar territorio e paisagem",
+    "objective": "Interpretar como usos, fluxos e poderes produzem um territorio.",
+    "summary": "Territorio nao e apenas localizacao; envolve praticas, disputas e relacoes sociais.",
+    "explanation": "Territorio nao e apenas localizacao; envolve praticas, disputas e relacoes sociais.",
+    "workedExample": "Terminais de onibus podem reorganizar comercio e circulacao em um bairro.",
+    "commonMistake": "Confundir territorio com ponto no mapa ou com natureza imutavel.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

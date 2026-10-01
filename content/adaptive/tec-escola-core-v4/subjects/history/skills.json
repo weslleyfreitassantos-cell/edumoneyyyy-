@@ -1,0 +1,118 @@
+{
+  "code": "HISTORY",
+  "name": "Historia",
+  "anchors": [
+    {
+      "code": "HISTORY_TIME",
+      "title": "Tempo historico"
+    },
+    {
+      "code": "HISTORY_SOURCES",
+      "title": "Fontes historicas"
+    },
+    {
+      "code": "HISTORY_CAUSALITY",
+      "title": "Causalidade historica"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "HISTORY_INTERPRET_EVIDENCE",
+      "title": "Interpretar evidencia historica",
+      "objective": "Interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+      "description": "Interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+      "masteryCapability": "Demonstrar que consegue interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
+      "domain": "FONTES",
+      "parent": "HISTORY_SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_ORDER_EVENTS",
+      "title": "Ordenar acontecimentos no tempo",
+      "objective": "Ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+      "description": "Ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+      "masteryCapability": "Demonstrar que consegue ordenar acontecimentos usando relacoes de anterioridade, duracao e simultaneidade.",
+      "domain": "CRONOLOGIA",
+      "parent": "HISTORY_TIME",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_COMPARE_CAUSES",
+      "title": "Comparar causas e consequencias historicas",
+      "objective": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+      "description": "Comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+      "masteryCapability": "Demonstrar que consegue comparar causas e consequencias de um processo historico sem reduzir o processo a um unico fator.",
+      "domain": "CAUSALIDADE",
+      "parent": "HISTORY_CAUSALITY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_COMPARE_PERSPECTIVES",
+      "title": "Comparar perspectivas historicas",
+      "domain": "MULTIPERSPECTIVA",
+      "parent": "HISTORY_SOURCES",
+      "objective": "Comparar perspectivas de fontes historicas sem tratar uma narrativa como unica.",
+      "description": "Comparar perspectivas de fontes historicas sem tratar uma narrativa como unica.",
+      "masteryCapability": "Demonstrar que consegue comparar perspectivas de fontes historicas sem tratar uma narrativa como unica..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_INTERPRET_PERIODIZATION",
+      "title": "Interpretar periodizacao",
+      "domain": "TEMPO_HISTORICO",
+      "parent": "HISTORY_TIME",
+      "objective": "Interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades.",
+      "description": "Interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades.",
+      "masteryCapability": "Demonstrar que consegue interpretar periodos historicos como recortes construidos para analisar mudancas e continuidades..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+      "title": "Relacionar memoria e historia",
+      "domain": "MEMORIA",
+      "parent": "HISTORY_SOURCES",
+      "objective": "Distinguir memoria social, experiencia vivida e interpretacao historica documentada.",
+      "description": "Distinguir memoria social, experiencia vivida e interpretacao historica documentada.",
+      "masteryCapability": "Demonstrar que consegue distinguir memoria social, experiencia vivida e interpretacao historica documentada..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+      "title": "Analisar mudanca e continuidade",
+      "domain": "MUDANCA_E_CONTINUIDADE",
+      "parent": "HISTORY_CAUSALITY",
+      "objective": "Analisar o que se transforma e o que permanece em um processo historico.",
+      "description": "Analisar o que se transforma e o que permanece em um processo historico.",
+      "masteryCapability": "Demonstrar que consegue analisar o que se transforma e o que permanece em um processo historico..",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

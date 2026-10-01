@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "PHYSICS_AVERAGE_SPEED",
+    "title": "Calcular velocidade media",
+    "objective": "Calcular velocidade media dividindo distancia percorrida pelo intervalo de tempo.",
+    "summary": "A velocidade media resume a relacao entre distancia e tempo do percurso.",
+    "explanation": "A velocidade media resume a relacao entre distancia e tempo do percurso.",
+    "workedExample": "18 km em 1,5 h resultam em 12 km/h.",
+    "commonMistake": "Multiplicar distancia e tempo ou misturar unidades sem conversao.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

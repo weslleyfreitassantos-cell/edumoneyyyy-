@@ -7,6 +7,7 @@ import {
 import {
   CURRENT_DATABASE_ROLES,
   getEffectiveRole,
+  getManageableSchoolUserRoles,
   hasEffectivePermission,
   hasPermission,
   PLATFORM_ROLES,
@@ -84,6 +85,21 @@ describe('school permissions', () => {
     ).toBe(false);
   });
 
+  it('limita a gestão de usuários pela hierarquia administrativa', () => {
+    expect(getManageableSchoolUserRoles('ADMIN')).toEqual(['DIRECTOR']);
+    expect(getManageableSchoolUserRoles('DIRECTOR')).toEqual([
+      'SECRETARY',
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ]);
+    expect(getManageableSchoolUserRoles('SECRETARY')).toEqual([
+      'TEACHER',
+      'STUDENT',
+      'GUARDIAN',
+    ]);
+  });
+
   it('mantem TEACHER, STUDENT e GUARDIAN restritos', () => {
     expect(
       hasPermission(
@@ -108,14 +124,47 @@ describe('school permissions', () => {
     ).toBe(true);
   });
 
-  it('permite e-mail institucional a ADMIN, DIRECTOR e SECRETARY', () => {
+  it('mantem e-mail fora do ADMIN e avisos sob permissao propria', () => {
     expect(hasPermission(null, 'DIRECTOR', 'send_school_email')).toBe(true);
     expect(hasPermission(null, 'SECRETARY', 'send_school_email')).toBe(true);
-    expect(hasPermission(null, 'ADMIN', 'send_school_email')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'send_school_email')).toBe(false);
+    expect(hasPermission(null, 'DIRECTOR', 'manage_school_communications')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'manage_school_communications')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'manage_school_communications')).toBe(false);
     expect(hasPermission(null, 'TEACHER', 'send_school_email')).toBe(false);
     expect(hasPermission(null, 'STUDENT', 'send_school_email')).toBe(false);
     expect(hasPermission(null, 'GUARDIAN', 'send_school_email')).toBe(false);
     expect(hasPermission('SUPER_ADMIN', null, 'send_school_email')).toBe(false);
+  });
+
+  it('reserva a emissão de documentos acadêmicos à direção e secretaria', () => {
+    expect(hasPermission(null, 'DIRECTOR', 'issue_academic_documents')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'issue_academic_documents')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission(null, 'TEACHER', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission(null, 'STUDENT', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission(null, 'GUARDIAN', 'issue_academic_documents')).toBe(false);
+    expect(hasPermission('SUPER_ADMIN', null, 'issue_academic_documents')).toBe(false);
+  });
+
+  it('reserva o prontuário acadêmico à direção e secretaria', () => {
+    expect(hasPermission(null, 'DIRECTOR', 'view_student_academic_record')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'view_student_academic_record')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'view_student_academic_record')).toBe(false);
+    expect(hasPermission(null, 'TEACHER', 'view_student_academic_record')).toBe(false);
+    expect(hasPermission(null, 'STUDENT', 'view_student_academic_record')).toBe(false);
+    expect(hasPermission(null, 'GUARDIAN', 'view_student_academic_record')).toBe(false);
+    expect(hasPermission('SUPER_ADMIN', null, 'view_student_academic_record')).toBe(false);
+  });
+
+  it('reserva relatórios acadêmicos à direção e secretaria', () => {
+    expect(hasPermission(null, 'DIRECTOR', 'view_academic_reports')).toBe(true);
+    expect(hasPermission(null, 'SECRETARY', 'view_academic_reports')).toBe(true);
+    expect(hasPermission(null, 'ADMIN', 'view_academic_reports')).toBe(false);
+    expect(hasPermission(null, 'TEACHER', 'view_academic_reports')).toBe(false);
+    expect(hasPermission(null, 'STUDENT', 'view_academic_reports')).toBe(false);
+    expect(hasPermission(null, 'GUARDIAN', 'view_academic_reports')).toBe(false);
+    expect(hasPermission('SUPER_ADMIN', null, 'view_academic_reports')).toBe(false);
   });
 });
 

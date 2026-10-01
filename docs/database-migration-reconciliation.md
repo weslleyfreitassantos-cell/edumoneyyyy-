@@ -1,5 +1,8 @@
 # Database migration reconciliation
 
+> **Status:** `HISTORICAL`. Root cause and commit references below document a
+> past migration duplication, not the current production migration history.
+
 ## Root cause
 
 The advisor hardening SQL was committed twice under different versions:

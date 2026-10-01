@@ -1,0 +1,462 @@
+[
+  {
+    "id": "v3-physics-physics_average_speed-1",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "VELOCIDADE_MEDIA",
+    "statement": "Um carro percorre 120 km em 2 h. Qual e sua velocidade media?",
+    "options": [
+      "60 km/h",
+      "240 km/h",
+      "118 km/h",
+      "2 km/h"
+    ],
+    "correctAnswer": "60 km/h",
+    "explanation": "Velocidade media e distancia dividida pelo tempo: 120/2 = 60 km/h.",
+    "misconceptions": {
+      "240 km/h": [
+        "SPEED_MULTIPLIES_DISTANCE_TIME"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-2",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "unidades",
+    "primarySkill": "PHYSICS_UNIT_CONVERSION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "UNIDADES",
+    "statement": "Uma bicicleta percorre 300 m em 60 s. Qual e a velocidade media em m/s?",
+    "options": [
+      "0,2 m/s",
+      "5 m/s",
+      "18 m/s",
+      "360 m/s"
+    ],
+    "correctAnswer": "5 m/s",
+    "explanation": "300 dividido por 60 resulta em 5 m/s.",
+    "misconceptions": {
+      "18 m/s": [
+        "SPEED_UNIT_CONVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-3",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "distancia",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DISTANCIA",
+    "statement": "Um trem viaja a 80 km/h durante 3 h. Que distancia percorre?",
+    "options": [
+      "26,7 km",
+      "80 km",
+      "240 km",
+      "83 km"
+    ],
+    "correctAnswer": "240 km",
+    "explanation": "Distancia e velocidade vezes tempo: 80 x 3 = 240 km.",
+    "misconceptions": {
+      "83 km": [
+        "DISTANCE_DIVIDED_INSTEAD_OF_MULTIPLIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-4",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "tempo",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEMPO",
+    "statement": "Uma viagem de 150 km ocorre a 50 km/h. Quanto tempo dura?",
+    "options": [
+      "100 h",
+      "200 h",
+      "0,33 h",
+      "3 h"
+    ],
+    "correctAnswer": "3 h",
+    "explanation": "Tempo e distancia dividida pela velocidade: 150/50 = 3 h.",
+    "misconceptions": {
+      "100 h": [
+        "TIME_MULTIPLIES_SPEED_DISTANCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-5",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "grafico posicao-tempo",
+    "primarySkill": "PHYSICS_INTERPRET_MOTION_GRAPH",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "GRAFICO_POSICAO_TEMPO",
+    "statement": "Em um grafico posicao-tempo, uma reta mais inclinada indica maior:",
+    "options": [
+      "Velocidade",
+      "Massa",
+      "Temperatura",
+      "Tempo total parado"
+    ],
+    "correctAnswer": "Velocidade",
+    "explanation": "A inclinacao representa a variacao da posicao por tempo.",
+    "misconceptions": {
+      "Massa": [
+        "GRAPH_SLOPE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-6",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "movimento uniforme",
+    "primarySkill": "PHYSICS_UNIFORM_MOTION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "MOVIMENTO_UNIFORME",
+    "statement": "Um objeto percorre distancias iguais em tempos iguais. Como e classificado o movimento?",
+    "options": [
+      "Sem movimento",
+      "Uniforme",
+      "Circular necessariamente",
+      "Aleatorio"
+    ],
+    "correctAnswer": "Uniforme",
+    "explanation": "A regularidade da razao distancia-tempo caracteriza movimento uniforme.",
+    "misconceptions": {
+      "Circular necessariamente": [
+        "UNIFORM_MOTION_DENIED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-7",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "encontro",
+    "primarySkill": "PHYSICS_RELATIVE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "ENCONTRO",
+    "statement": "Dois ciclistas saem de pontos separados por 30 km, com velocidades de 10 e 5 km/h em direcao um ao outro. Em quanto tempo se encontram?",
+    "options": [
+      "6 h",
+      "15 h",
+      "2 h",
+      "3 h"
+    ],
+    "correctAnswer": "2 h",
+    "explanation": "A velocidade relativa e 15 km/h; 30/15 = 2 h.",
+    "misconceptions": {
+      "3 h": [
+        "RELATIVE_SPEED_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-8",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "media de trechos",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "MEDIA_DE_TRECHOS",
+    "statement": "Um estudante caminha 2 km em 30 min e depois 1 km em 30 min. Qual velocidade media total em km/h?",
+    "options": [
+      "2 km/h",
+      "1 km/h",
+      "6 km/h",
+      "3 km/h"
+    ],
+    "correctAnswer": "3 km/h",
+    "explanation": "Sao 3 km em 1 h, portanto 3 km/h.",
+    "misconceptions": {
+      "2 km/h": [
+        "AVERAGE_USES_AVERAGE_SPEEDS"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-9",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "conversao",
+    "primarySkill": "PHYSICS_UNIT_CONVERSION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CONVERSAO",
+    "statement": "Uma velocidade de 72 km/h equivale a quantos m/s?",
+    "options": [
+      "20 m/s",
+      "7,2 m/s",
+      "72 m/s",
+      "259,2 m/s"
+    ],
+    "correctAnswer": "20 m/s",
+    "explanation": "Dividir por 3,6 converte km/h para m/s.",
+    "misconceptions": {
+      "7,2 m/s": [
+        "KMH_MS_CONVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-10",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "area no grafico",
+    "primarySkill": "PHYSICS_INTERPRET_MOTION_GRAPH",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "AREA_NO_GRAFICO",
+    "statement": "A area sob um grafico velocidade-tempo representa qual grandeza?",
+    "options": [
+      "Temperatura",
+      "Deslocamento",
+      "Massa",
+      "Aceleracao"
+    ],
+    "correctAnswer": "Deslocamento",
+    "explanation": "A area soma velocidade ao longo do tempo.",
+    "misconceptions": {
+      "Massa": [
+        "GRAPH_AREA_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-11",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "aceleracao",
+    "primarySkill": "PHYSICS_INTERPRET_ACCELERATION",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "ACELERACAO",
+    "statement": "Um carro passa de 10 para 20 m/s em 5 s. Qual aceleracao media?",
+    "options": [
+      "30 m/s2",
+      "0,5 m/s2",
+      "2 m/s2",
+      "10 m/s2"
+    ],
+    "correctAnswer": "2 m/s2",
+    "explanation": "Aceleracao media e variacao de velocidade por tempo: 10/5 = 2 m/s2.",
+    "misconceptions": {
+      "10 m/s2": [
+        "ACCELERATION_NOT_DIVIDED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-physics-physics_average_speed-12",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "comparacao",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "COMPARACAO",
+    "statement": "Dois trajetos tem a mesma distancia, mas um leva mais tempo. Qual trajeto tem menor velocidade media?",
+    "options": [
+      "O que leva menos tempo.",
+      "Os dois sempre tem a mesma.",
+      "Nenhum pode ser comparado.",
+      "O que leva mais tempo."
+    ],
+    "correctAnswer": "O que leva mais tempo.",
+    "explanation": "Com a mesma distancia, maior tempo reduz a razao distancia-tempo.",
+    "misconceptions": {
+      "O que leva menos tempo.": [
+        "SAME_DISTANCE_SAME_SPEED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v4-authored-physics-review-01",
+    "subject": "PHYSICS",
+    "domain": "VELOCIDADE",
+    "topic": "Calcular velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um ciclista percorre 18 km em 1,5 hora. Qual e a velocidade media?",
+    "options": [
+      "12 km/h.",
+      "19,5 km/h.",
+      "27 km/h.",
+      "9 km/h."
+    ],
+    "correctAnswer": "12 km/h.",
+    "explanation": "A velocidade media e distancia dividida pelo tempo: 18 / 1,5 = 12 km/h.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-physics-average-speed-lock-in-01",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "PERCURSO_COM_PARADAS",
+    "statement": "Um veiculo percorre 42 km em 2 h, incluindo uma parada. Qual foi a velocidade media do trajeto?",
+    "options": [
+      "21 km/h",
+      "42 km/h",
+      "20 km/h",
+      "84 km/h"
+    ],
+    "correctAnswer": "21 km/h",
+    "explanation": "A velocidade media considera a distancia total e o tempo total: 42 dividido por 2 = 21 km/h.",
+    "misconceptions": {
+      "42 km/h": [
+        "AVERAGE_USES_AVERAGE_SPEEDS"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-physics-average-speed-practice-01",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [],
+    "prerequisiteSkills": [
+      "MATH_RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "CICLISMO",
+    "statement": "Uma ciclista percorre 24 km em 2 horas. Qual e sua velocidade media?",
+    "options": [
+      "12 km/h",
+      "22 km/h",
+      "26 km/h",
+      "48 km/h"
+    ],
+    "correctAnswer": "12 km/h",
+    "explanation": "A velocidade media e a distancia dividida pelo tempo: 24 dividido por 2 = 12 km/h.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  }
+]

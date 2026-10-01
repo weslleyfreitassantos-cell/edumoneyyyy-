@@ -10,11 +10,12 @@ import {
 } from 'react';
 
 import {
-  BrowserRouter,
+  createBrowserRouter,
   Navigate,
   Outlet,
   Route,
   Routes,
+  RouterProvider,
   useLocation,
 } from 'react-router-dom';
 
@@ -103,9 +104,19 @@ const LearningContentPage = lazy(
   () => import('./components/learning/LearningContentPage'),
 );
 const StudyCenterPage = lazy(() => import('./components/learning/StudyCenterPage'));
+const GuidedJourneyPage = lazy(() => import('./components/learning/GuidedJourneyPage'));
 const PedagogicalCenterPage = lazy(() => import('./components/learning/PedagogicalCenterPage'));
+const PedagogicalCenterOverviewPage = lazy(() => import('./components/learning/PedagogicalCenterOverviewPage'));
+const PedagogicalCenterStudentsPage = lazy(() => import('./components/learning/PedagogicalCenterStudentsPage'));
+const PedagogicalCenterMapPage = lazy(() => import('./components/learning/PedagogicalCenterMapPage'));
+const PedagogicalCenterJourneysPage = lazy(() => import('./components/learning/PedagogicalCenterJourneysPage'));
+const PedagogicalCenterContentPage = lazy(() => import('./components/learning/PedagogicalCenterContentPage'));
 const PublishedActivitiesPage = lazy(() => import('./components/learning/PublishedActivitiesPage'));
 const PracticePage = lazy(() => import('./components/learning/PracticePage'));
+const LessonPage = lazy(() => import('./components/learning/LessonPage'));
+const SimulationPage = lazy(() => import('./components/learning/SimulationPage'));
+const ErrorReviewPage = lazy(() => import('./components/learning/ErrorReviewPage'));
+const TeacherStudentDetailPage = lazy(() => import('./components/learning/TeacherStudentDetailPage'));
 
 const LibraryPage = lazy(
   () => import('./components/learning/LibraryPage'),
@@ -579,17 +590,137 @@ function AppRoutes() {
         <Route
           path="/dashboard/library"
           element={
-            <ProtectedRoute allowedRoles={['STUDENT']}>
+            <ProtectedRoute allowedRoles={['TEACHER', 'STUDENT']}>
               <AuthenticatedRouteContent>
                 <LibraryPage />
               </AuthenticatedRouteContent>
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/student/attendance"
+          element={
+            <ProtectedRoute allowedRoles={['STUDENT']}>
+              <AuthenticatedRouteContent>
+                <StudentDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/grades"
+          element={
+            <ProtectedRoute allowedRoles={['STUDENT']}>
+              <AuthenticatedRouteContent>
+                <StudentDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/report-card"
+          element={
+            <ProtectedRoute allowedRoles={['STUDENT']}>
+              <AuthenticatedRouteContent>
+                <StudentDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/guardian/attendance"
+          element={
+            <ProtectedRoute allowedRoles={['GUARDIAN']}>
+              <AuthenticatedRouteContent>
+                <ParentDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/guardian/grades"
+          element={
+            <ProtectedRoute allowedRoles={['GUARDIAN']}>
+              <AuthenticatedRouteContent>
+                <ParentDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/guardian/report-card"
+          element={
+            <ProtectedRoute allowedRoles={['GUARDIAN']}>
+              <AuthenticatedRouteContent>
+                <ParentDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/attendance"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/class-diary"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/grades"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/term-closing"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/dashboard/class-councils"
+          element={
+            <ProtectedRoute allowedRoles={['TEACHER']}>
+              <AuthenticatedRouteContent>
+                <TeacherDashboard />
+              </AuthenticatedRouteContent>
+            </ProtectedRoute>
+          }
+        />
         <Route path="/student/study" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><StudyCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/guided" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><GuidedJourneyPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/student/study/activity/:activityId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><PracticePage /></AuthenticatedRouteContent></ProtectedRoute>} />
-        <Route path="/teacher/pedagogical-center" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/lesson/:lessonId/:stepId?" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><LessonPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/simulation" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><SimulationPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/student/study/error/:errorId" element={<ProtectedRoute allowedRoles={['STUDENT']}><AuthenticatedRouteContent><ErrorReviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterOverviewPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/students" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterStudentsPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/map" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterMapPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/journeys" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterJourneysPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/content" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterContentPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/activities/new" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PedagogicalCenterPage /></AuthenticatedRouteContent></ProtectedRoute>} />
         <Route path="/teacher/pedagogical-center/activities" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><PublishedActivitiesPage /></AuthenticatedRouteContent></ProtectedRoute>} />
+        <Route path="/teacher/pedagogical-center/students/:studentId" element={<ProtectedRoute allowedRoles={['TEACHER']}><AuthenticatedRouteContent><TeacherStudentDetailPage /></AuthenticatedRouteContent></ProtectedRoute>} />
 
         <Route
           path="/dashboard/*"
@@ -698,6 +829,27 @@ function AppRoutes() {
   );
 }
 
+function AppRouteProviders() {
+  return (
+    <AuthProvider>
+      <InstitutionProvider>
+        <ThemeProvider>
+          <Suspense fallback={<PageLoading />}>
+            <AppRoutes />
+          </Suspense>
+        </ThemeProvider>
+      </InstitutionProvider>
+    </AuthProvider>
+  );
+}
+
+const appRouter = createBrowserRouter([
+  {
+    path: '*',
+    element: <AppRouteProviders />,
+  },
+]);
+
 function App() {
   useEffect(() => {
     const idleWindow = window as Window & {
@@ -727,19 +879,7 @@ function App() {
       <QueryClientProvider
         client={queryClient}
       >
-        <BrowserRouter>
-          <AuthProvider>
-            <InstitutionProvider>
-              <ThemeProvider>
-                <Suspense
-                  fallback={<PageLoading />}
-                >
-                  <AppRoutes />
-                </Suspense>
-              </ThemeProvider>
-            </InstitutionProvider>
-          </AuthProvider>
-        </BrowserRouter>
+        <RouterProvider router={appRouter} />
       </QueryClientProvider>
     </AppErrorBoundary>
   );

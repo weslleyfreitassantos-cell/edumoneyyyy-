@@ -1390,7 +1390,7 @@ export default function AcademicYearsTab() {
           aria-modal="true"
           aria-labelledby="term-modal-title"
         >
-          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+          <div className="max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-xl bg-white p-6 shadow-xl">
             <h3
               id="term-modal-title"
               className="mb-1 text-lg font-bold text-[#181c20]"

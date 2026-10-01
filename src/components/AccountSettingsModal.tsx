@@ -11,6 +11,7 @@ import {
   useId,
   useRef,
   useState,
+  type ChangeEvent,
   type FormEvent,
   type ChangeEvent,
   type KeyboardEvent as ReactKeyboardEvent,
@@ -25,6 +26,10 @@ import {
   type SelfRegistrationUpdate,
   type StudentSelfRegistration,
 } from '../services/selfRegistrationService';
+import {
+  AvatarFileError,
+  validateAvatarFile,
+} from '../services/avatarImageService';
 import { ProfileServiceError } from '../services/profileService';
 import { validateProfileAvatarFile } from '../services/profileAvatarService';
 import type { User } from '../types';
@@ -35,9 +40,9 @@ interface AccountSettingsModalProps {
   returnFocusRef: RefObject<HTMLButtonElement | null>;
   onClose: () => void;
   onUpdateName: (fullName: string) => Promise<void>;
-  currentAvatar: string | null;
-  onUpdateAvatar: (file: File) => Promise<void>;
-  onRemoveAvatar: () => Promise<void>;
+  currentAvatar?: string | null;
+  onUpdateAvatar?: (file: File) => Promise<void>;
+  onRemoveAvatar?: () => Promise<void>;
   onUpdateSelfRegistration: (input: SelfRegistrationUpdate) => Promise<void>;
   onUpdatePassword: (newPassword: string) => Promise<void>;
   onSuccess: (message: string) => void;
@@ -81,6 +86,33 @@ function getOperationErrorMessage(
   return operation === 'name'
     ? 'Não foi possível atualizar seu nome.'
     : 'Não foi possível alterar sua senha.';
+}
+
+function getAvatarErrorMessage(error: unknown): string {
+  if (error instanceof AvatarFileError) {
+    return error.message;
+  }
+
+  if (
+    error instanceof ProfileServiceError &&
+    error.code === 'SESSION_EXPIRED'
+  ) {
+    return 'Sua sessão expirou. Entre novamente.';
+  }
+
+  return 'Não foi possível atualizar sua foto de perfil.';
+}
+
+function getInitials(name: string): string {
+  const initials = name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part.charAt(0).toUpperCase())
+    .join('');
+
+  return initials || 'U';
 }
 
 const inputClass =
@@ -239,9 +271,9 @@ export default function AccountSettingsModal({
   returnFocusRef,
   onClose,
   onUpdateName,
-  currentAvatar,
-  onUpdateAvatar,
-  onRemoveAvatar,
+  currentAvatar = null,
+  onUpdateAvatar = async () => undefined,
+  onRemoveAvatar = async () => undefined,
   onUpdateSelfRegistration,
   onUpdatePassword,
   onSuccess,
@@ -264,12 +296,14 @@ export default function AccountSettingsModal({
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-  const [selectedAvatar, setSelectedAvatar] = useState<File | null>(null);
   const [avatarPreviewUrl, setAvatarPreviewUrl] = useState<string | null>(null);
+  const [selectedAvatarFile, setSelectedAvatarFile] = useState<File | null>(null);
+  const [avatarStatus, setAvatarStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
   const [avatarError, setAvatarError] = useState<string | null>(null);
-  const [isAvatarSaving, setIsAvatarSaving] = useState(false);
-  const avatarInputRef = useRef<HTMLInputElement | null>(null);
+  const [avatarSuccessMessage, setAvatarSuccessMessage] = useState<string | null>(null);
+  const [avatarFailed, setAvatarFailed] = useState(false);
   const initialSelfRegistrationRef = useRef<string | null>(null);
+  const avatarInputId = `${titleId}-avatar-input`;
 
   const isSelfRegistration =
     currentRole === 'student' || currentRole === 'parent';
@@ -282,6 +316,30 @@ export default function AccountSettingsModal({
       }
     };
   }, [avatarPreviewUrl]);
+
+  useEffect(() => {
+    setAvatarFailed(false);
+  }, [currentAvatar]);
+
+  useEffect(() => {
+    return () => {
+      if (avatarPreviewUrl) {
+        URL.revokeObjectURL(avatarPreviewUrl);
+      }
+    };
+  }, [avatarPreviewUrl]);
+
+  useEffect(() => {
+    if (!avatarSuccessMessage) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setAvatarSuccessMessage(null);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [avatarSuccessMessage]);
 
   useEffect(() => {
     if (!isSelfRegistration) {
@@ -436,8 +494,94 @@ export default function AccountSettingsModal({
   }
 
   function closeModal(): void {
-    if (!submittingRef.current && !isAvatarSaving) {
+    if (!submittingRef.current && avatarStatus !== 'uploading') {
       onClose();
+    }
+  }
+
+  function handleAvatarFileChange(
+    event: ChangeEvent<HTMLInputElement>,
+  ): void {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+
+    if (!file) {
+      return;
+    }
+
+    setAvatarError(null);
+    setAvatarSuccessMessage(null);
+    setAvatarStatus('idle');
+
+    try {
+      validateAvatarFile(file);
+      setSelectedAvatarFile(file);
+      setAvatarPreviewUrl(
+        typeof URL.createObjectURL === 'function'
+          ? URL.createObjectURL(file)
+          : null,
+      );
+    } catch (error) {
+      setSelectedAvatarFile(null);
+      setAvatarPreviewUrl(null);
+      setAvatarStatus('error');
+      setAvatarError(getAvatarErrorMessage(error));
+    }
+  }
+
+  async function handleAvatarUpload(): Promise<void> {
+    if (!selectedAvatarFile || avatarStatus === 'uploading') {
+      return;
+    }
+
+    setAvatarError(null);
+    setAvatarStatus('uploading');
+
+    try {
+      await onUpdateAvatar(selectedAvatarFile);
+      setSelectedAvatarFile(null);
+      setAvatarPreviewUrl(null);
+      setAvatarStatus('success');
+      setAvatarSuccessMessage('Foto de perfil atualizada com sucesso.');
+      onSuccess('Foto de perfil atualizada com sucesso.');
+    } catch (error) {
+      setAvatarStatus('error');
+      setAvatarError(getAvatarErrorMessage(error));
+    }
+  }
+
+  async function handleAvatarRemove(): Promise<void> {
+    if (avatarStatus === 'uploading' || (!currentAvatar && !selectedAvatarFile)) {
+      return;
+    }
+
+    if (!currentAvatar && selectedAvatarFile) {
+      setSelectedAvatarFile(null);
+      setAvatarPreviewUrl(null);
+      setAvatarError(null);
+      setAvatarSuccessMessage(null);
+      setAvatarStatus('idle');
+      return;
+    }
+
+    if (!window.confirm('Remover sua foto de perfil?')) {
+      return;
+    }
+
+    setAvatarError(null);
+    setAvatarSuccessMessage(null);
+    setAvatarStatus('uploading');
+
+    try {
+      await onRemoveAvatar();
+      setSelectedAvatarFile(null);
+      setAvatarPreviewUrl(null);
+      setAvatarStatus('success');
+      setAvatarSuccessMessage('Foto de perfil removida.');
+      onSuccess('Foto de perfil removida.');
+    } catch (error) {
+      setAvatarStatus('error');
+      setAvatarError(getAvatarErrorMessage(error));
     }
   }
 
@@ -641,7 +785,7 @@ export default function AccountSettingsModal({
           <button
             type="button"
             onClick={closeModal}
-            disabled={isBusy}
+            disabled={isSaving || avatarStatus === 'uploading'}
             aria-label="Fechar Minha conta"
             title="Fechar"
             className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8deea] text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247] dark:hover:text-[#f8fafc]"
@@ -650,79 +794,89 @@ export default function AccountSettingsModal({
           </button>
         </div>
 
-        <section className="mt-5 rounded-lg border border-[#d8deea] p-4 dark:border-[#334155]">
+        <section
+          aria-labelledby={`${titleId}-avatar-heading`}
+          className="mt-5 rounded-lg border border-[#d8deea] p-4 dark:border-[#334155]"
+        >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#e8eeff] text-lg font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff] dark:bg-[#243247] dark:text-[#bfdbfe]">
-                {avatarPreviewUrl || currentAvatar ? (
+                {avatarPreviewUrl ? (
+                  <img className="h-full w-full object-cover" src={avatarPreviewUrl} alt="Prévia da foto de perfil" />
+                ) : currentAvatar && !avatarFailed ? (
                   <img
-                    className="h-full w-full object-contain"
-                    src={avatarPreviewUrl ?? currentAvatar ?? undefined}
+                    className="h-full w-full object-cover"
+                    src={currentAvatar}
                     alt={`Foto de ${currentName}`}
                     referrerPolicy="no-referrer"
+                    onError={() => setAvatarFailed(true)}
                   />
                 ) : (
-                  <span aria-hidden="true">
-                    {getProfileInitials(currentName)}
-                  </span>
+                  <span aria-hidden="true">{getInitials(currentName)}</span>
                 )}
               </div>
               <div>
-                <h3 className="text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
+                <h3 id={`${titleId}-avatar-heading`} className="text-sm font-bold text-[#181c20] dark:text-[#f8fafc]">
                   Foto de perfil
                 </h3>
                 <p className="mt-1 text-xs text-[#667085] dark:text-[#cbd5e1]">
-                  JPG, PNG ou WebP
+                  JPG, PNG ou WebP · até 5 MB
                 </p>
-                {avatarError && (
-                  <p role="alert" className="mt-1 text-xs font-semibold text-[#ba1a1a] dark:text-red-300">
-                    {avatarError}
-                  </p>
+                {avatarSuccessMessage && (
+                  <p className="mt-1 text-xs font-semibold text-green-700 dark:text-green-300">{avatarSuccessMessage}</p>
                 )}
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2 sm:justify-end">
               <input
-                ref={avatarInputRef}
-                id={`${titleId}-avatar-input`}
+                id={avatarInputId}
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
-                onChange={handleAvatarSelection}
-                disabled={isBusy}
+                onChange={handleAvatarFileChange}
+                disabled={isSaving || avatarStatus === 'uploading'}
                 className="sr-only"
               />
               <label
-                htmlFor={`${titleId}-avatar-input`}
-                className={`inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border border-[#c5cbd6] bg-white px-3 text-sm font-bold text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-within:ring-2 focus-within:ring-[#005bbf] dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247] ${isBusy ? 'pointer-events-none opacity-60' : ''}`}
+                htmlFor={avatarInputId}
+                className={`inline-flex h-10 cursor-pointer items-center gap-2 rounded-lg border border-[#c5cbd6] bg-white px-3 text-sm font-bold text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-within:ring-2 focus-within:ring-[#005bbf] dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247] ${isSaving || avatarStatus === 'uploading' ? 'pointer-events-none opacity-60' : ''}`}
               >
                 <Camera className="h-4 w-4" aria-hidden="true" />
                 Alterar foto
               </label>
-              {selectedAvatar && (
+              {selectedAvatarFile && (
                 <button
                   type="button"
                   onClick={() => void handleAvatarUpload()}
-                  disabled={isBusy}
+                  disabled={isSaving || avatarStatus === 'uploading'}
                   className="inline-flex h-10 items-center gap-2 rounded-lg bg-[#005bbf] px-3 text-sm font-bold text-white outline-none transition hover:bg-[#004a9f] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-70"
                 >
-                  {isAvatarSaving && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                  {isAvatarSaving ? 'Enviando...' : 'Usar foto'}
+                  {avatarStatus === 'uploading' && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  Salvar foto
                 </button>
               )}
-              {(currentAvatar || selectedAvatar) && (
+              {(currentAvatar || selectedAvatarFile) && (
                 <button
                   type="button"
-                  onClick={() => void handleAvatarRemoval()}
-                  disabled={isBusy}
-                  className="inline-flex h-10 items-center gap-2 rounded-lg border border-red-200 bg-white px-3 text-sm font-bold text-[#ba1a1a] outline-none transition hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-60 dark:border-red-900/60 dark:bg-[#182235] dark:text-red-300 dark:hover:bg-red-950/30"
+                  onClick={() => void handleAvatarRemove()}
+                  disabled={isSaving || avatarStatus === 'uploading'}
+                  className="inline-flex h-10 items-center gap-2 rounded-lg border border-[#ffb4ab] px-3 text-sm font-bold text-[#ba1a1a] outline-none transition hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-[#ba1a1a] disabled:cursor-wait disabled:opacity-70 dark:border-red-900/70 dark:hover:bg-red-950/30"
                 >
                   <Trash2 className="h-4 w-4" aria-hidden="true" />
-                  {selectedAvatar ? 'Cancelar' : 'Remover foto'}
+                  Remover foto
                 </button>
               )}
             </div>
           </div>
+          {avatarStatus === 'uploading' && (
+            <p className="mt-3 flex items-center gap-2 text-sm text-[#667085] dark:text-[#cbd5e1]">
+              <Loader2 className="h-4 w-4 animate-spin text-[#005bbf]" aria-hidden="true" />
+              Processando e enviando sua foto...
+            </p>
+          )}
+          {avatarError && (
+            <p role="alert" className="mt-3 text-sm font-semibold text-[#ba1a1a]">{avatarError}</p>
+          )}
         </section>
 
         <form
@@ -741,7 +895,7 @@ export default function AccountSettingsModal({
               id={`${titleId}-name`}
               value={fullName}
               onChange={(event) => setFullName(event.target.value)}
-              disabled={isSaving}
+              disabled={isSaving || avatarStatus === 'uploading'}
               autoComplete="name"
               maxLength={120}
               required
@@ -778,7 +932,7 @@ export default function AccountSettingsModal({
               ) : selfRegistration?.role === 'STUDENT' ? (
                 <StudentRegistrationFields
                   data={selfRegistration.student}
-                  disabled={isSaving}
+                  disabled={isSaving || avatarStatus === 'uploading'}
                   onChange={(student) =>
                     setSelfRegistration({ ...selfRegistration, student })
                   }
@@ -852,7 +1006,7 @@ export default function AccountSettingsModal({
               onChange={(event) =>
                 setPasswordConfirmation(event.target.value)
               }
-              disabled={isSaving}
+              disabled={isSaving || avatarStatus === 'uploading'}
               autoComplete="new-password"
               className="mt-1 h-11 w-full rounded-lg border border-[#c5cbd6] bg-white px-3 text-sm text-[#181c20] outline-none transition focus:border-[#005bbf] focus:ring-2 focus:ring-[#005bbf]/20 disabled:cursor-wait disabled:bg-[#f3f6fb] dark:border-[#475569] dark:bg-[#0f172a] dark:text-[#f8fafc] dark:caret-[#f8fafc] dark:placeholder:text-[#64748b] dark:disabled:bg-[#111827]"
             />
@@ -871,7 +1025,7 @@ export default function AccountSettingsModal({
             <button
               type="button"
               onClick={closeModal}
-              disabled={isSaving}
+              disabled={isSaving || avatarStatus === 'uploading'}
               className="inline-flex h-10 items-center justify-center rounded-lg border border-[#c5cbd6] bg-white px-4 text-sm font-bold text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-60 dark:border-[#475569] dark:bg-[#182235] dark:text-[#e2e8f0] dark:hover:bg-[#243247]"
             >
               Cancelar

@@ -2,6 +2,7 @@ node_modules/
 build/
 dist/
 coverage/
+graphify-out/
 /outputs/
 .camera-lab/
 scripts/cameras/.camera-lab/
@@ -12,8 +13,11 @@ scripts/cameras/.camera-lab/
 *.log
 .env*
 !.env.example
+.demo/*
 
 supabase/.temp/
 *.dump
 *.backup
+e2e/**/.runtime/
+test-results/
 scripts/db/production-cleanup-execute.sql

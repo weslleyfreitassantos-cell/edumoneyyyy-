@@ -1,7 +1,8 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
-import { defineConfig, loadEnv } from 'vite';
+import { loadEnv } from 'vite';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 function isPlaceholderSupabaseValue(value: string | undefined): boolean {
   const normalized = value?.trim().toLowerCase() ?? '';
@@ -43,6 +44,9 @@ export default defineConfig(({ command, mode }) => {
       alias: {
         '@': fileURLToPath(new URL('.', import.meta.url)),
       },
+    },
+    test: {
+      exclude: [...configDefaults.exclude, 'e2e/**'],
     },
   };
 });

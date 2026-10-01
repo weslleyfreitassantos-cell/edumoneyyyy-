@@ -100,6 +100,9 @@ const studentPost: LearningPost = {
 describe('LearningContentPage', () => {
   it('exposes the composer to teachers and keeps the student feed action-free', () => {
     render(<LearningContentPage />);
+    expect(screen.getByText('Publique conteúdos para as disciplinas e turmas que você leciona.')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Materiais e avisos' })).toBeNull();
+    expect(screen.queryByText('Acadêmico')).toBeNull();
     expect(screen.getAllByRole('button', { name: /Nova publicação/i }).length).toBeGreaterThan(0);
     expect(screen.getByRole('searchbox', { name: 'Buscar' })).toBeTruthy();
     expect(screen.getByRole('combobox', { name: 'Turma' })).toBeTruthy();
@@ -120,6 +123,8 @@ describe('LearningContentPage', () => {
     render(<LearningContentPage />);
 
     expect(screen.getByRole('searchbox', { name: 'Buscar' })).toBeTruthy();
+    expect(screen.getByText('Acompanhe conteúdos e comunicados das suas turmas.')).toBeTruthy();
+    expect(screen.queryByRole('heading', { name: 'Materiais e avisos' })).toBeNull();
     expect(screen.queryByRole('combobox', { name: 'Turma' })).toBeNull();
     expect(screen.queryByRole('option', { name: 'Todas as turmas' })).toBeNull();
     expect(screen.getByRole('combobox', { name: 'Disciplina' })).toBeTruthy();

@@ -1,0 +1,62 @@
+{
+  "code": "ART",
+  "name": "Arte",
+  "anchors": [
+    {
+      "code": "ART_ELEMENTS",
+      "title": "Elementos da linguagem artistica"
+    },
+    {
+      "code": "ART_INTERPRETATION",
+      "title": "Leitura de obras"
+    },
+    {
+      "code": "ART_CONTEXT",
+      "title": "Contexto e patrimonio"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "ART_INTERPRET_WORK",
+      "title": "Interpretar elementos de uma obra",
+      "objective": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "description": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "masteryCapability": "Demonstrar que consegue interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "domain": "INTERPRETACAO",
+      "parent": "ART_INTERPRETATION",
+      "readiness": "CONTENT_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ART_COMPARE_COMPOSITIONS",
+      "title": "Comparar composicoes artisticas",
+      "objective": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+      "description": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+      "masteryCapability": "Demonstrar que consegue comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+      "domain": "ELEMENTOS",
+      "parent": "ART_ELEMENTS",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ART_RELATE_WORK_CONTEXT",
+      "title": "Relacionar obra e contexto cultural",
+      "objective": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "description": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "masteryCapability": "Demonstrar que consegue relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "domain": "CONTEXTO",
+      "parent": "ART_CONTEXT",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    }
+  ]
+}

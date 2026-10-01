@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "PHILOSOPHY_EVALUATE_ARGUMENT",
+    "title": "Avaliar premissas e conclusao",
+    "objective": "Avaliar se as razoes apresentadas sustentam a conclusao de um argumento.",
+    "summary": "Analise argumentativa examina relacoes entre premissas, evidencia e conclusao.",
+    "explanation": "Analise argumentativa examina relacoes entre premissas, evidencia e conclusao.",
+    "workedExample": "Uma afirmacao nao se torna forte apenas porque foi dita por uma pessoa famosa.",
+    "commonMistake": "Atacar a pessoa ou aceitar autoridade sem examinar as razoes.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

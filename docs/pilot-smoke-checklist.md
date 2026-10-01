@@ -1,5 +1,8 @@
 # Checklist de smoke para piloto
 
+> **Status:** `PARTIALLY VALID`. E um roteiro, nao evidencia de uma execucao
+> remota. Esta campanha nao identificou tenant dedicado para o smoke.
+
 > Navegador. Usar dados reais de 1–3 escolas de teste.
 
 ---

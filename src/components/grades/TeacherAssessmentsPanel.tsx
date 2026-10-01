@@ -4,6 +4,7 @@ import {
   useState,
   type FormEvent,
 } from 'react';
+import { Link } from 'react-router-dom';
 import {
   BookMarked,
   Plus,
@@ -200,6 +201,23 @@ export default function TeacherAssessmentsPanel({
       getGradeKey(record),
   );
 
+  useEffect(() => {
+    if (!hasUnsavedGrades) {
+      return;
+    }
+
+    const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [hasUnsavedGrades]);
+
   const selectedAssessment =
     gradeEntryQuery.data?.assessment;
 
@@ -241,6 +259,16 @@ export default function TeacherAssessmentsPanel({
     );
   };
 
+  const canDiscardUnsavedGrades = () => {
+    if (!hasUnsavedGrades) {
+      return true;
+    }
+
+    return window.confirm(
+      'Existem alterações de notas ainda não salvas. Deseja descartá-las e continuar?',
+    );
+  };
+
   const handleCreateAssessment = async (
     event: FormEvent<HTMLFormElement>,
   ) => {
@@ -252,6 +280,10 @@ export default function TeacherAssessmentsPanel({
       !selectedOffering ||
       createAssessmentMutation.isPending
     ) {
+      return;
+    }
+
+    if (!canDiscardUnsavedGrades()) {
       return;
     }
 
@@ -364,6 +396,10 @@ export default function TeacherAssessmentsPanel({
               id="grade-offering"
               value={selectedOfferingId}
               onChange={(event) => {
+                if (!canDiscardUnsavedGrades()) {
+                  return;
+                }
+
                 setSelectedOfferingId(event.target.value);
                 setSelectedAssessmentId('');
                 setSuccessMessage('');
@@ -620,9 +656,14 @@ export default function TeacherAssessmentsPanel({
                     key={assessment.id}
                     type="button"
                     onClick={() => {
-                      setSelectedAssessmentId(
-                        assessment.id,
-                      );
+                      if (
+                        assessment.id !== selectedAssessmentId &&
+                        !canDiscardUnsavedGrades()
+                      ) {
+                        return;
+                      }
+
+                      setSelectedAssessmentId(assessment.id);
                       setSuccessMessage('');
                     }}
                     className={
@@ -701,6 +742,16 @@ export default function TeacherAssessmentsPanel({
                     : 'Salvar notas'}
                 </button>
               </div>
+
+              {hasUnsavedGrades && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className="mt-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800"
+                >
+                  Existem alterações de notas ainda não salvas.
+                </div>
+              )}
 
               {gradeEntryQuery.isLoading && (
                 <p className="mt-4 text-sm text-[#727785]">
@@ -893,8 +944,18 @@ export default function TeacherAssessmentsPanel({
           </div>
 
           {successMessage && (
-            <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm font-medium text-green-700">
-              {successMessage}
+            <div
+              role="status"
+              aria-live="polite"
+              className="flex flex-col gap-3 rounded-lg border border-green-200 bg-green-50 p-4 text-sm font-medium text-green-700 sm:flex-row sm:items-center sm:justify-between"
+            >
+              <span>{successMessage}</span>
+              <Link
+                to="/dashboard/term-closing"
+                className="inline-flex w-fit items-center rounded-lg border border-green-300 px-3 py-2 font-semibold text-green-800 hover:bg-green-100"
+              >
+                Ir para fechamento
+              </Link>
             </div>
           )}
         </div>

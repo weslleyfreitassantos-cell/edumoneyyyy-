@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "title": "Ler tese e evidencia com criterio",
+    "objective": "Identificar a ideia defendida e a evidencia que realmente a sustenta.",
+    "summary": "Uma tese orienta o texto; evidencias verificaveis a sustentam.",
+    "explanation": "Uma tese orienta o texto; evidencias verificaveis a sustentam.",
+    "workedExample": "Separe afirmacao, razao e dado antes de escolher.",
+    "commonMistake": "Confundir exemplo ou opiniao com evidencia relevante.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]

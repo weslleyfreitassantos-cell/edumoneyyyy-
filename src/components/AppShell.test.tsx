@@ -28,6 +28,7 @@ import {
 } from '../contexts/InstitutionContext';
 import { ThemeProvider } from '../contexts/ThemeContext';
 import type { UserInstitution } from '../services/institutionService';
+import { schoolEmailService } from '../services/schoolEmailService';
 import AppShell, {
   getRouteVisualContext,
 } from './AppShell';
@@ -50,6 +51,36 @@ vi.mock('../hooks/useBranding', () => ({
     primaryColor: '#005bbf',
     secondaryColor: '#6ffbbe',
   }),
+}));
+
+vi.mock('../hooks/useAttendance', () => ({
+  useTeacherAttendanceOfferings: vi.fn(() => ({
+    data: [],
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
+vi.mock('../hooks/useSchoolSetupReadiness', () => ({
+  useSchoolSetupReadiness: vi.fn(() => ({
+    data: null,
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
+vi.mock('../hooks/useTeacherDashboard', () => ({
+  useTeacherDashboard: vi.fn(() => ({
+    data: null,
+    isLoading: false,
+    isError: false,
+  })),
+}));
+
+vi.mock('../services/schoolEmailService', () => ({
+  schoolEmailService: {
+    listRecipients: vi.fn(),
+  },
 }));
 
 vi.mock('./InstitutionSwitcher', () => ({
@@ -133,6 +164,8 @@ function mockContexts(
 
   mockedUseAuthProfileActions.mockReturnValue({
     updateProfileName,
+    updateProfileAvatar: vi.fn(async () => undefined),
+    removeProfileAvatar: vi.fn(async () => undefined),
     updateSelfRegistration: vi.fn(async () => undefined),
     updatePassword,
   });
@@ -180,6 +213,7 @@ function getMobileMenuButton() {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  vi.mocked(schoolEmailService.listRecipients).mockResolvedValue([]);
   window.localStorage.clear();
   document.body.style.overflow = '';
   mockContexts();
@@ -223,10 +257,52 @@ describe('getRouteVisualContext', () => {
       title: 'Grade de horário',
     });
     expect(
+      getRouteVisualContext('/student/grades', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Notas',
+    });
+    expect(
+      getRouteVisualContext('/student/study', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central de Estudos',
+    });
+    expect(
+      getRouteVisualContext('/student/study/activity/activity-1', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central de Estudos',
+    });
+    expect(
+      getRouteVisualContext('/teacher/pedagogical-center', 'teacher'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central Pedagógica',
+    });
+    expect(
+      getRouteVisualContext('/teacher/pedagogical-center/activities', 'teacher'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Central Pedagógica',
+    });
+    expect(
+      getRouteVisualContext('/student/report-card', 'student'),
+    ).toEqual({
+      section: 'Acadêmico',
+      title: 'Boletim',
+    });
+    expect(
+      getRouteVisualContext('/guardian/attendance', 'parent'),
+    ).toEqual({
+      section: 'Família',
+      title: 'Frequência dos dependentes',
+    });
+    expect(
       getRouteVisualContext('/dashboard/attendance', 'teacher'),
     ).toEqual({
       section: 'Operação docente',
-      title: 'Chamadas',
+      title: 'Diário de Classe',
     });
     expect(
       getRouteVisualContext('/dashboard/grades', 'teacher'),
@@ -250,6 +326,48 @@ describe('getRouteVisualContext', () => {
 });
 
 describe('AppShell', () => {
+  it.each(['TEACHER', 'STUDENT', 'GUARDIAN'])(
+    'não tenta carregar destinatários de e-mail para %s', async (role) => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: role as Profile['role'],
+      },
+      currentRole: role,
+      institutionContext: {
+        currentInstitutionId: 'institution-1',
+      },
+    });
+
+    renderShell('/dashboard');
+
+    await waitFor(() => {
+      expect(schoolEmailService.listRecipients).not.toHaveBeenCalled();
+    });
+    },
+  );
+
+  it('carrega destinatários de e-mail para diretor autorizado', async () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        role: 'DIRECTOR',
+      },
+      currentRole: 'DIRECTOR',
+      institutionContext: {
+        currentInstitutionId: 'institution-1',
+      },
+    });
+
+    renderShell('/dashboard');
+
+    await waitFor(() => {
+      expect(schoolEmailService.listRecipients).toHaveBeenCalledWith(
+        'institution-1',
+      );
+    });
+  });
+
   it('restaura e persiste a preferencia de tema do usuario', async () => {
     window.localStorage.setItem(
       'edumanager.theme',
@@ -339,6 +457,37 @@ describe('AppShell', () => {
         'edumanager.sidebarCollapsed',
       ),
     ).toBe('false');
+  });
+
+  it('mantem a foto do aluno disponivel no cadastro sem exibi-la no Header', async () => {
+    mockContexts({
+      profile: {
+        ...profile,
+        full_name: 'Alice Fernanda Teixeira',
+        role: 'STUDENT',
+        avatar_url: 'https://cdn.example.com/alice.webp',
+      },
+      currentRole: 'student',
+    });
+
+    renderShell('/dashboard');
+
+    expect(screen.queryByRole('img')).toBeNull();
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: 'Abrir menu do usuário',
+      }),
+    );
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Minha conta' }),
+    );
+
+    expect(
+      await screen.findByRole('img', {
+        name: 'Foto de Alice Fernanda Teixeira',
+      }),
+    ).toBeTruthy();
   });
 
   it('restaura preferencia de Sidebar desktop oculta', () => {

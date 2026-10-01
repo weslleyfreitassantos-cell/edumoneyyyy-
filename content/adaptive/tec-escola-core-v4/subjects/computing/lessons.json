@@ -1,0 +1,18 @@
+[
+  {
+    "skill": "COMPUTING_TRACE_ALGORITHM",
+    "title": "Rastrear condicoes de um algoritmo",
+    "objective": "Rastrear sequencia e condicoes de um algoritmo para explicar seu resultado.",
+    "summary": "A execucao muda quando uma condicao recebe valor verdadeiro ou falso.",
+    "explanation": "A execucao muda quando uma condicao recebe valor verdadeiro ou falso.",
+    "workedExample": "Um sistema de senha deve bloquear apos tentativas erradas e liberar apenas quando a condicao correta ocorre.",
+    "commonMistake": "Tratar uma condicao como acao fixa ou ignorar o estado da variavel.",
+    "tips": [
+      "Nomeie a evidencia ou dado usado.",
+      "Explique a relacao entre conceito e contexto.",
+      "Revise a alternativa contra o enunciado."
+    ],
+    "estimatedMinutes": 8,
+    "content_authoring_status": "TECH_VALIDATED"
+  }
+]
