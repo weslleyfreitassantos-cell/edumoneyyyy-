@@ -437,7 +437,7 @@ describe('StudentDashboard', () => {
     expect(image.getAttribute('src')).toBe(
       'https://cdn.example.com/aluno.webp',
     );
-    expect(image.classList.contains('object-contain')).toBe(true);
+    expect(image.classList.contains('object-fill')).toBe(true);
     expect(image.parentElement?.classList.contains('aspect-[3/4]')).toBe(true);
     expect(image.parentElement?.classList.contains('w-24')).toBe(true);
   });

@@ -505,7 +505,7 @@ export default function StudentDashboard() {
           <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white/15 ring-1 ring-white/20">
             {avatarUrl ? (
               <img
-                className="h-full w-full object-contain"
+                className="h-full w-full object-fill"
                 src={avatarUrl}
                 alt={`Foto de ${profile.full_name}`}
                 referrerPolicy="no-referrer"
