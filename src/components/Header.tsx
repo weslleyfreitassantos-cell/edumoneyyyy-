@@ -41,18 +41,6 @@ interface HeaderProps {
   mobileMenuButtonRef?: RefObject<HTMLButtonElement | null>;
 }
 
-function getUserInitials(name: string): string {
-  const initials = name
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part.charAt(0).toUpperCase())
-    .join('');
-
-  return initials || 'U';
-}
-
 export default function Header({
   currentUser,
   pageTitle,
@@ -80,8 +68,6 @@ export default function Header({
     useState(false);
   const [accountFeedback, setAccountFeedback] =
     useState<string | null>(null);
-  const [avatarFailed, setAvatarFailed] =
-    useState(false);
   const userMenuRef =
     useRef<HTMLDivElement | null>(null);
   const userMenuButtonRef =
@@ -91,32 +77,6 @@ export default function Header({
     currentUser.avatar?.trim() || null;
   const institutionName =
     currentInstitutionName?.trim() || null;
-  const userInitials =
-    getUserInitials(currentUser.name);
-
-  function renderAvatarContent() {
-    if (avatarUrl && !avatarFailed) {
-      return (
-        <img
-          className="h-full w-full object-cover"
-          alt={`Foto de ${currentUser.name}`}
-          src={avatarUrl}
-          referrerPolicy="no-referrer"
-          onError={() => setAvatarFailed(true)}
-        />
-      );
-    }
-
-    return (
-      <span aria-hidden="true">
-        {userInitials}
-      </span>
-    );
-  }
-
-  useEffect(() => {
-    setAvatarFailed(false);
-  }, [avatarUrl]);
 
   useEffect(() => {
     if (!isUserMenuOpen) {
@@ -176,6 +136,18 @@ export default function Header({
       );
     };
   }, []);
+
+  useEffect(() => {
+    if (!accountFeedback) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setAccountFeedback(null);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [accountFeedback]);
 
   function handleLogout(): void {
     setIsUserMenuOpen(false);
@@ -283,12 +255,8 @@ export default function Header({
               </span>
             </span>
 
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
-              {renderAvatarContent()}
-            </span>
-
             <ChevronDown
-              className={`hidden h-4 w-4 text-[#667085] transition-transform sm:block ${
+              className={`h-4 w-4 shrink-0 text-[#667085] transition-transform ${
                 isUserMenuOpen
                   ? 'rotate-180'
                   : ''
@@ -305,10 +273,6 @@ export default function Header({
             >
               <div className="border-b border-[#e4e8f1] bg-[#f8faff] p-4">
                 <div className="flex items-start gap-3">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-sm font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff]">
-                    {renderAvatarContent()}
-                  </span>
-
                   <div className="min-w-0">
                     {institutionName ? (
                       <p className="break-words whitespace-normal text-sm font-semibold leading-snug text-[#414754]">
