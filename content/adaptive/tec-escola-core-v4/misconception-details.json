@@ -1,0 +1,1255 @@
+{
+  "THESIS_CONFUSED_WITH_DETAIL": {
+    "title": "Confunde thesis confused with detail",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "FACT_CONFUSED_WITH_OPINION": {
+    "title": "Confunde fact confused with opinion",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "SLOGAN_TREATED_AS_PROOF": {
+    "title": "Confunde slogan treated as proof",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "UNRELATED_EVIDENCE_USED": {
+    "title": "Confunde unrelated evidence used",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "SOURCE_AUTHORITY_REPLACES_COMPARISON": {
+    "title": "Confunde source authority replaces comparison",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "INFERENCE_TREATED_AS_CERTAINTY": {
+    "title": "Confunde inference treated as certainty",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "REASON_CONFUSED_WITH_PROPOSAL": {
+    "title": "Confunde reason confused with proposal",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "COUNTERARGUMENT_MISREAD": {
+    "title": "Confunde counterargument misread",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "GENRE_PURPOSE_MISREAD": {
+    "title": "Confunde genre purpose misread",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "SAMPLE_GENERALIZED": {
+    "title": "Confunde sample generalized",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "PERSUASION_CONFUSED_WITH_EVIDENCE": {
+    "title": "Confunde persuasion confused with evidence",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "SUMMARY_ADDS_UNSUPPORTED_CLAIM": {
+    "title": "Confunde summary adds unsupported claim",
+    "description": "Interpreta a evidencia de identificar tese e evidencia em textos argumentativos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PORTUGUESE_ARGUMENT_EVIDENCE"
+    ]
+  },
+  "DISCOUNT_CONFUSED_WITH_FINAL_PRICE": {
+    "title": "Confunde discount confused with final price",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PERCENT_AS_ABSOLUTE_VALUE": {
+    "title": "Confunde percent as absolute value",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PERCENT_DENOMINATOR_IGNORED": {
+    "title": "Confunde percent denominator ignored",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "DECIMAL_PERCENT_SHIFT": {
+    "title": "Confunde decimal percent shift",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PROPORTION_NOT_SCALED": {
+    "title": "Confunde proportion not scaled",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "SUCCESSIVE_PERCENTAGES_CANCELLED": {
+    "title": "Confunde successive percentages cancelled",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PERCENT_NOT_SIMPLIFIED": {
+    "title": "Confunde percent not simplified",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "INCREASE_USES_NEW_BASE": {
+    "title": "Confunde increase uses new base",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "RATE_TREATED_AS_AMOUNT": {
+    "title": "Confunde rate treated as amount",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PART_WHOLE_REVERSED": {
+    "title": "Confunde part whole reversed",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "COMMISSION_RATE_MISREAD": {
+    "title": "Confunde commission rate misread",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "PERCENT_COMPARED_WITHOUT_BASE": {
+    "title": "Confunde percent compared without base",
+    "description": "Interpreta a evidencia de calcular percentual de uma quantidade de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "MATH_PERCENT_OF_QUANTITY"
+    ]
+  },
+  "STATE_CHANGE_DIRECTION_CONFUSED": {
+    "title": "Confunde state change direction confused",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "CHEMICAL_CHANGE_CONFUSED_WITH_SHAPE": {
+    "title": "Confunde chemical change confused with shape",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "EVAPORATION_CONFUSED_WITH_BOILING": {
+    "title": "Confunde evaporation confused with boiling",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "SEPARATION_METHOD_MISREAD": {
+    "title": "Confunde separation method misread",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "HEAT_TRANSFER_CONFUSED": {
+    "title": "Confunde heat transfer confused",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "PHYSICAL_CHANGE_CONFUSED_WITH_CHEMICAL": {
+    "title": "Confunde physical change confused with chemical",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "DENSITY_IGNORES_MASS": {
+    "title": "Confunde density ignores mass",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "CONTROL_VARIABLE_IGNORED": {
+    "title": "Confunde control variable ignored",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "OXIDATION_CAUSE_MISREAD": {
+    "title": "Confunde oxidation cause misread",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "PARTICLE_MODEL_DENIED": {
+    "title": "Confunde particle model denied",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "RECYCLING_GOAL_MISREAD": {
+    "title": "Confunde recycling goal misread",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "ENERGY_CONVERSION_DENIED": {
+    "title": "Confunde energy conversion denied",
+    "description": "Interpreta a evidencia de explicar transformacoes da materia de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION"
+    ]
+  },
+  "ALLELE_CONFUSED_WITH_CELL": {
+    "title": "Confunde allele confused with cell",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "INHERITANCE_TREATED_AS_COPY": {
+    "title": "Confunde inheritance treated as copy",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "DOMINANCE_REVERSED": {
+    "title": "Confunde dominance reversed",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "PUNNETT_COUNT_MISREAD": {
+    "title": "Confunde punnett count misread",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "MUTATION_ALWAYS_VISIBLE": {
+    "title": "Confunde mutation always visible",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "SELECTION_CONFUSED_WITH_TRAINING": {
+    "title": "Confunde selection confused with training",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "CELL_STRUCTURE_MISPLACED": {
+    "title": "Confunde cell structure misplaced",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "DNA_RNA_FUNCTIONS_SWAPPED": {
+    "title": "Confunde dna rna functions swapped",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "COMPLEX_TRAIT_SINGLE_CAUSE": {
+    "title": "Confunde complex trait single cause",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "GENOTYPE_EQUALS_PHENOTYPE": {
+    "title": "Confunde genotype equals phenotype",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "SEX_LINKAGE_REVERSED": {
+    "title": "Confunde sex linkage reversed",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "DIVERSITY_REDUCES_SURVIVAL": {
+    "title": "Confunde diversity reduces survival",
+    "description": "Interpreta a evidencia de explicar heranca genetica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "BIOLOGY_EXPLAIN_INHERITANCE"
+    ]
+  },
+  "SPEED_MULTIPLIES_DISTANCE_TIME": {
+    "title": "Confunde speed multiplies distance time",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "SPEED_UNIT_CONVERSION": {
+    "title": "Confunde speed unit conversion",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "DISTANCE_DIVIDED_INSTEAD_OF_MULTIPLIED": {
+    "title": "Confunde distance divided instead of multiplied",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "TIME_MULTIPLIES_SPEED_DISTANCE": {
+    "title": "Confunde time multiplies speed distance",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "GRAPH_SLOPE_MISREAD": {
+    "title": "Confunde graph slope misread",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "UNIFORM_MOTION_DENIED": {
+    "title": "Confunde uniform motion denied",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "RELATIVE_SPEED_IGNORED": {
+    "title": "Confunde relative speed ignored",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "AVERAGE_USES_AVERAGE_SPEEDS": {
+    "title": "Confunde average uses average speeds",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "KMH_MS_CONVERSION": {
+    "title": "Confunde kmh ms conversion",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "GRAPH_AREA_MISREAD": {
+    "title": "Confunde graph area misread",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "ACCELERATION_NOT_DIVIDED": {
+    "title": "Confunde acceleration not divided",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "SAME_DISTANCE_SAME_SPEED": {
+    "title": "Confunde same distance same speed",
+    "description": "Interpreta a evidencia de calcular velocidade media de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHYSICS_AVERAGE_SPEED"
+    ]
+  },
+  "NUCLEUS_SHELL_SWAPPED": {
+    "title": "Confunde nucleus shell swapped",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "ATOMIC_NUMBER_DOUBLED": {
+    "title": "Confunde atomic number doubled",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "ION_CHARGE_REVERSED": {
+    "title": "Confunde ion charge reversed",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "ISOTOPE_CONFUSED_WITH_ION": {
+    "title": "Confunde isotope confused with ion",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "IONIC_BOND_MISNAMED": {
+    "title": "Confunde ionic bond misnamed",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "COVALENT_SHARING_DENIED": {
+    "title": "Confunde covalent sharing denied",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "REACTION_CONSERVES_MOLECULES": {
+    "title": "Confunde reaction conserves molecules",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "PH_SCALE_REVERSED": {
+    "title": "Confunde ph scale reversed",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "SOLUBILITY_CONFUSED_WITH_MASS": {
+    "title": "Confunde solubility confused with mass",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "EVAPORATION_REMOVES_SOLUTE": {
+    "title": "Confunde evaporation removes solute",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "REACTION_SIGNS_IGNORED": {
+    "title": "Confunde reaction signs ignored",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "MASS_CONSERVATION_DENIED": {
+    "title": "Confunde mass conservation denied",
+    "description": "Interpreta a evidencia de interpretar modelos atomicos de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "CHEMISTRY_ATOMIC_STRUCTURE"
+    ]
+  },
+  "PRIMARY_SOURCE_CONFUSED_WITH_NEUTRAL": {
+    "title": "Confunde primary source confused with neutral",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "ANACHRONISM_IGNORED": {
+    "title": "Confunde anachronism ignored",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "CHRONOLOGY_REVERSED": {
+    "title": "Confunde chronology reversed",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "CAUSE_EFFECT_REVERSED": {
+    "title": "Confunde cause effect reversed",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "SINGLE_NARRATIVE_ASSUMED": {
+    "title": "Confunde single narrative assumed",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "PERIODIZATION_TREATED_AS_ABSOLUTE": {
+    "title": "Confunde periodization treated as absolute",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "MEMORY_EQUALS_COMPLETE_HISTORY": {
+    "title": "Confunde memory equals complete history",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "MAP_DATA_IGNORED": {
+    "title": "Confunde map data ignored",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "IMAGE_OVERINTERPRETED": {
+    "title": "Confunde image overinterpreted",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "CHANGE_ERASES_CONTINUITY": {
+    "title": "Confunde change erases continuity",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "INTERPRETATION_IS_GUESS": {
+    "title": "Confunde interpretation is guess",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "HERITAGE_ROMANTICIZED": {
+    "title": "Confunde heritage romanticized",
+    "description": "Interpreta a evidencia de interpretar evidencia historica de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "HISTORY_INTERPRET_EVIDENCE"
+    ]
+  },
+  "TERRITORY_CONFUSED_WITH_LOCATION": {
+    "title": "Confunde territory confused with location",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "LANDSCAPE_NATURAL_ONLY": {
+    "title": "Confunde landscape natural only",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "MAP_SCALE_REVERSED": {
+    "title": "Confunde map scale reversed",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "URBAN_NETWORK_DENIED": {
+    "title": "Confunde urban network denied",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "LEGEND_CONFUSED_WITH_SCALE": {
+    "title": "Confunde legend confused with scale",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "BORDER_TREATED_AS_NATURAL": {
+    "title": "Confunde border treated as natural",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "LAND_USE_EFFECT_IGNORED": {
+    "title": "Confunde land use effect ignored",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "SPATIAL_PATTERN_OVERSTATED": {
+    "title": "Confunde spatial pattern overstated",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "CLIMATE_TIME_CONFUSED": {
+    "title": "Confunde climate time confused",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "MIGRATION_CAUSE_MISREAD": {
+    "title": "Confunde migration cause misread",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "IMPERMEABILITY_EFFECT_REVERSED": {
+    "title": "Confunde impermeability effect reversed",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "DISTANCE_EXPLAINS_ALL": {
+    "title": "Confunde distance explains all",
+    "description": "Interpreta a evidencia de interpretar territorio e paisagem de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "GEOGRAPHY_INTERPRET_TERRITORY"
+    ]
+  },
+  "POPULARITY_REPLACES_ARGUMENT": {
+    "title": "Confunde popularity replaces argument",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "CONCLUSION_PREMISE_SWAPPED": {
+    "title": "Confunde conclusion premise swapped",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "VALIDITY_EQUALS_TRUTH": {
+    "title": "Confunde validity equals truth",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "OBJECTION_AS_ATTACK": {
+    "title": "Confunde objection as attack",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "MAJORITY_REPLACES_ETHICS": {
+    "title": "Confunde majority replaces ethics",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "ANALOGY_AS_PROOF": {
+    "title": "Confunde analogy as proof",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "SKEPTICISM_AS_DENIAL": {
+    "title": "Confunde skepticism as denial",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "CONTEXT_ERASES_AGENCY": {
+    "title": "Confunde context erases agency",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "BELIEF_EQUALS_KNOWLEDGE": {
+    "title": "Confunde belief equals knowledge",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "PERSON_ATTACK_AS_REFUTATION": {
+    "title": "Confunde person attack as refutation",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "CRITICAL_THINKING_AS_CYNICISM": {
+    "title": "Confunde critical thinking as cynicism",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "ANECDOTE_GENERALIZED": {
+    "title": "Confunde anecdote generalized",
+    "description": "Interpreta a evidencia de avaliar argumento filosofico de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PHILOSOPHY_EVALUATE_ARGUMENT"
+    ]
+  },
+  "INSTITUTION_CONFUSED_WITH_GROUP": {
+    "title": "Confunde institution confused with group",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "SOCIALIZATION_MISNAMED": {
+    "title": "Confunde socialization misnamed",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "NORMS_ONLY_LAW": {
+    "title": "Confunde norms only law",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "INEQUALITY_AS_EFFORT_ONLY": {
+    "title": "Confunde inequality as effort only",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "CULTURE_AS_FIXED": {
+    "title": "Confunde culture as fixed",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "AUTOMATION_TOTALIZED": {
+    "title": "Confunde automation totalized",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "MOVEMENT_AS_PRIVATE_CHOICE": {
+    "title": "Confunde movement as private choice",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "IDENTITY_AS_SINGLE_LABEL": {
+    "title": "Confunde identity as single label",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "POWER_AS_FORCE_ONLY": {
+    "title": "Confunde power as force only",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "SAMPLE_REPRESENTATION_IGNORED": {
+    "title": "Confunde sample representation ignored",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "INSTITUTIONS_AS_IMMUTABLE": {
+    "title": "Confunde institutions as immutable",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "MEDIA_TECHNOLOGY_DETERMINISM": {
+    "title": "Confunde media technology determinism",
+    "description": "Interpreta a evidencia de explicar instituicoes sociais de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "SOCIOLOGY_EXPLAIN_INSTITUTIONS"
+    ]
+  },
+  "FORM_IGNORED_FOR_CONTENT": {
+    "title": "Confunde form ignored for content",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "CONTRAST_CONFUSED_WITH_TEXTURE": {
+    "title": "Confunde contrast confused with texture",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "ART_CONTEXT_REDUCED_TO_DATE": {
+    "title": "Confunde art context reduced to date",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "ABSTRACTION_AS_MEANINGLESS": {
+    "title": "Confunde abstraction as meaningless",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "HERITAGE_AS_COMMODITY_ONLY": {
+    "title": "Confunde heritage as commodity only",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "SCALE_AS_REAL_SIZE_ONLY": {
+    "title": "Confunde scale as real size only",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "IMAGE_AS_NEUTRAL": {
+    "title": "Confunde image as neutral",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "TECHNIQUE_IGNORED": {
+    "title": "Confunde technique ignored",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "PERSPECTIVE_CONFUSED": {
+    "title": "Confunde perspective confused",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "PLURALITY_AS_ANYTHING_GOES": {
+    "title": "Confunde plurality as anything goes",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "PROCESS_HIDDEN": {
+    "title": "Confunde process hidden",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "CURATION_AS_AUTHORITARIAN": {
+    "title": "Confunde curation as authoritarian",
+    "description": "Interpreta a evidencia de interpretar elementos de uma obra de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ART_INTERPRET_WORK"
+    ]
+  },
+  "SPACE_OCCUPATION_IGNORED": {
+    "title": "Confunde space occupation ignored",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "DEFENSE_AS_CHASING_ONLY": {
+    "title": "Confunde defense as chasing only",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "FAIR_PLAY_AS_WINNING": {
+    "title": "Confunde fair play as winning",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "WARMUP_GUARANTEES_RESULT": {
+    "title": "Confunde warmup guarantees result",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "OFF_BALL_MOVEMENT_IGNORED": {
+    "title": "Confunde off ball movement ignored",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "ENDURANCE_AS_SPRINT": {
+    "title": "Confunde endurance as sprint",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "EQUITY_CONFUSED_WITH_EQUALITY": {
+    "title": "Confunde equity confused with equality",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "TACTIC_AS_INDIVIDUAL_SKILL": {
+    "title": "Confunde tactic as individual skill",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "RULE_SCOPE_MISREAD": {
+    "title": "Confunde rule scope misread",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "BODY_SIGNAL_IGNORED": {
+    "title": "Confunde body signal ignored",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "COOPERATION_AS_NO_RULES": {
+    "title": "Confunde cooperation as no rules",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "PERFORMANCE_AS_PERSONAL_WORTH": {
+    "title": "Confunde performance as personal worth",
+    "description": "Interpreta a evidencia de explicar principios de esportes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "PE_EXPLAIN_SPORT_PRINCIPLES"
+    ]
+  },
+  "MAIN_IDEA_CONFUSED_WITH_DETAIL": {
+    "title": "Confunde main idea confused with detail",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "EXPLICIT_DETAIL_IGNORED": {
+    "title": "Confunde explicit detail ignored",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "VOCABULARY_LITERAL_MISREAD": {
+    "title": "Confunde vocabulary literal misread",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "INFERENCE_AS_CERTAINTY": {
+    "title": "Confunde inference as certainty",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "PRONOUN_REFERENCE_MISREAD": {
+    "title": "Confunde pronoun reference misread",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "SEQUENCE_REVERSED": {
+    "title": "Confunde sequence reversed",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "CONTRAST_CONNECTOR_IGNORED": {
+    "title": "Confunde contrast connector ignored",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "EVIDENCE_OVERGENERALIZED": {
+    "title": "Confunde evidence overgeneralized",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "SUMMARY_ADDS_DETAIL": {
+    "title": "Confunde summary adds detail",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "PREFIX_MEANING_MISREAD": {
+    "title": "Confunde prefix meaning misread",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "CLAIM_WITHOUT_EVIDENCE_ACCEPTED": {
+    "title": "Confunde claim without evidence accepted",
+    "description": "Interpreta a evidencia de inferir sentido em texto em ingles de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "ENGLISH_INFER_FROM_TEXT"
+    ]
+  },
+  "TRADITION_RANKING": {
+    "title": "Confunde tradition ranking",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DIALOGUE_CONFUSED_WITH_CONVERSION": {
+    "title": "Confunde dialogue confused with conversion",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DESCRIPTIVE_STUDY_AS_WORSHIP": {
+    "title": "Confunde descriptive study as worship",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "RITUAL_REDUCED_TO_OBJECT": {
+    "title": "Confunde ritual reduced to object",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "STEREOTYPE_AS_QUESTION": {
+    "title": "Confunde stereotype as question",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "TRADITION_AS_MONOLITH": {
+    "title": "Confunde tradition as monolith",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "WORLDVIEW_REDUCED_TO_SLOGAN": {
+    "title": "Confunde worldview reduced to slogan",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "FREEDOM_AS_MAJORITY_RULE": {
+    "title": "Confunde freedom as majority rule",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "SOURCE_CONTEXT_IGNORED": {
+    "title": "Confunde source context ignored",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "SYMBOL_MEANING_UNIVERSALIZED": {
+    "title": "Confunde symbol meaning universalized",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "SINGLE_CASE_STEREOTYPE": {
+    "title": "Confunde single case stereotype",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DIALOGUE_AS_CONFLICT": {
+    "title": "Confunde dialogue as conflict",
+    "description": "Interpreta a evidencia de comparar tradicoes com respeito de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "RELIGIOUS_COMPARE_TRADITIONS"
+    ]
+  },
+  "DECOMPOSITION_CONFUSED_WITH_CODING": {
+    "title": "Confunde decomposition confused with coding",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "SEQUENCE_ORDER_IGNORED": {
+    "title": "Confunde sequence order ignored",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "CONDITION_CONFUSED_WITH_ACTION": {
+    "title": "Confunde condition confused with action",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "LOOP_AS_SINGLE_STEP": {
+    "title": "Confunde loop as single step",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "DEBUGGING_AS_RESTART": {
+    "title": "Confunde debugging as restart",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "TRACE_AS_OUTPUT_ONLY": {
+    "title": "Confunde trace as output only",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "BINARY_AS_DECIMAL_ONLY": {
+    "title": "Confunde binary as decimal only",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "DATA_MINIMIZATION_IGNORED": {
+    "title": "Confunde data minimization ignored",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "HASH_AS_ENCRYPTION_RECOVERY": {
+    "title": "Confunde hash as encryption recovery",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "SINGLE_SIGNAL_AS_NEUTRAL": {
+    "title": "Confunde single signal as neutral",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "PROTOCOL_CONFUSED_WITH_DEVICE": {
+    "title": "Confunde protocol confused with device",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  },
+  "SHARING_BEFORE_CHECKING": {
+    "title": "Confunde sharing before checking",
+    "description": "Interpreta a evidencia de rastrear algoritmo com condicoes de uma forma que contradiz o contexto apresentado.",
+    "affectedSkills": [
+      "COMPUTING_TRACE_ALGORITHM"
+    ]
+  }
+}

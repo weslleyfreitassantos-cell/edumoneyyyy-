@@ -3,291 +3,57 @@
   "name": "Filosofia",
   "anchors": [
     {
-      "code": "CONCEPTS",
-      "title": "Concepts"
+      "code": "PHILOSOPHY_CONCEPTS",
+      "title": "Conceitos filosoficos"
     },
     {
-      "code": "ARGUMENT",
-      "title": "Argument"
+      "code": "PHILOSOPHY_ARGUMENT",
+      "title": "Argumentacao"
+    },
+    {
+      "code": "PHILOSOPHY_ETHICS",
+      "title": "Etica e vida coletiva"
     }
   ],
   "leaves": [
     {
-      "code": "PHILOSOPHY_PREMISE_CONCLUSION",
-      "title": "Distinguir premissa e conclusao",
+      "code": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "title": "Avaliar argumento filosofico",
+      "objective": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+      "description": "Avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
+      "masteryCapability": "Demonstrar que consegue avaliar a relacao entre premissas e conclusao em um argumento filosofico.",
       "domain": "ARGUMENTO",
-      "parent": "ARGUMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_ETICA_01",
-      "title": "Etica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
+      "parent": "PHILOSOPHY_ARGUMENT",
       "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
     },
     {
-      "code": "PHILOSOPHY_CONHECIMENTO_02",
-      "title": "Conhecimento aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_ARGUMENTO_03",
-      "title": "Argumento aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_JUSTICA_04",
-      "title": "Justica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_POLITICA_05",
-      "title": "Politica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_LOGICA_06",
-      "title": "Logica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_CIENCIA_07",
-      "title": "Ciencia aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_ESTETICA_08",
-      "title": "Estetica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_LINGUAGEM_09",
-      "title": "Linguagem aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_LIBERDADE_10",
-      "title": "Liberdade aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_CIDADANIA_11",
-      "title": "Cidadania aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_EPISTEMOLOGIA_12",
-      "title": "Epistemologia aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_HISTORIA_DA_FILOSOFIA_13",
-      "title": "Historia Da Filosofia aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_TECNOLOGIA_E_SOCIEDADE_14",
-      "title": "Tecnologia E Sociedade aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_ETICA_15",
-      "title": "Etica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
+      "code": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "title": "Distinguir conceito de opiniao",
+      "objective": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "description": "Distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "masteryCapability": "Demonstrar que consegue distinguir uma definicao conceitual de uma preferencia ou opiniao pessoal.",
+      "domain": "CONCEITO",
+      "parent": "PHILOSOPHY_CONCEPTS",
       "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
     },
     {
-      "code": "PHILOSOPHY_CONHECIMENTO_16",
-      "title": "Conhecimento aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
+      "code": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+      "title": "Aplicar principio etico a um caso",
+      "objective": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "description": "Aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "masteryCapability": "Demonstrar que consegue aplicar um principio etico a um caso considerando conflito de valores e consequencias.",
+      "domain": "ETICA",
+      "parent": "PHILOSOPHY_ETHICS",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_ARGUMENTO_17",
-      "title": "Argumento aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_JUSTICA_18",
-      "title": "Justica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_POLITICA_19",
-      "title": "Politica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_LOGICA_20",
-      "title": "Logica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_CIENCIA_21",
-      "title": "Ciencia aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_ESTETICA_22",
-      "title": "Estetica aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_LINGUAGEM_23",
-      "title": "Linguagem aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_LIBERDADE_24",
-      "title": "Liberdade aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_CIDADANIA_25",
-      "title": "Cidadania aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_EPISTEMOLOGIA_26",
-      "title": "Epistemologia aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "ARGUMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHILOSOPHY_HISTORIA_DA_FILOSOFIA_27",
-      "title": "Historia Da Filosofia aplicado",
-      "domain": "PHILOSOPHY_V4",
-      "parent": "CONCEPTS",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3

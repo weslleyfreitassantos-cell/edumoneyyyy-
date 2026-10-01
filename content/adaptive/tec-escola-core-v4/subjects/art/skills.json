@@ -3,294 +3,60 @@
   "name": "Arte",
   "anchors": [
     {
-      "code": "VISUAL_ELEMENTS",
-      "title": "Visual Elements"
+      "code": "ART_ELEMENTS",
+      "title": "Elementos da linguagem artistica"
     },
     {
-      "code": "CONTEXT",
-      "title": "Context"
+      "code": "ART_INTERPRETATION",
+      "title": "Leitura de obras"
+    },
+    {
+      "code": "ART_CONTEXT",
+      "title": "Contexto e patrimonio"
     }
   ],
   "leaves": [
     {
-      "code": "ART_COMPOSITION",
-      "title": "Analisar composicao visual",
+      "code": "ART_INTERPRET_WORK",
+      "title": "Interpretar elementos de uma obra",
+      "objective": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "description": "Interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "masteryCapability": "Demonstrar que consegue interpretar como elementos visuais, sonoros ou corporais produzem sentidos em uma obra.",
+      "domain": "INTERPRETACAO",
+      "parent": "ART_INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ART_COMPARE_COMPOSITIONS",
+      "title": "Comparar composicoes artisticas",
+      "objective": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+      "description": "Comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
+      "masteryCapability": "Demonstrar que consegue comparar composicoes usando escolhas de forma, cor, ritmo ou enquadramento.",
       "domain": "ELEMENTOS",
-      "parent": "VISUAL_ELEMENTS",
+      "parent": "ART_ELEMENTS",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_ELEMENTOS_VISUAIS_01",
-      "title": "Elementos Visuais aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "ART_COR_02",
-      "title": "Cor aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_COMPOSICAO_03",
-      "title": "Composicao aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_HISTORIA_DA_ARTE_04",
-      "title": "Historia Da Arte aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
+      "code": "ART_RELATE_WORK_CONTEXT",
+      "title": "Relacionar obra e contexto cultural",
+      "objective": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "description": "Relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "masteryCapability": "Demonstrar que consegue relacionar uma obra ao contexto cultural sem reduzir seu sentido a uma data.",
+      "domain": "CONTEXTO",
+      "parent": "ART_CONTEXT",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_LEITURA_DE_IMAGEM_05",
-      "title": "Leitura De Imagem aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_MUSICA_06",
-      "title": "Musica aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_TEATRO_07",
-      "title": "Teatro aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_DANCA_08",
-      "title": "Danca aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_AUDIOVISUAL_09",
-      "title": "Audiovisual aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_PATRIMONIO_CULTURAL_10",
-      "title": "Patrimonio Cultural aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_ARTE_CONTEMPORANEA_11",
-      "title": "Arte Contemporanea aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_PROCESSO_CRIATIVO_12",
-      "title": "Processo Criativo aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_CRITICA_DE_ARTE_13",
-      "title": "Critica De Arte aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_CURADORIA_14",
-      "title": "Curadoria aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_ELEMENTOS_VISUAIS_15",
-      "title": "Elementos Visuais aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_COR_16",
-      "title": "Cor aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_COMPOSICAO_17",
-      "title": "Composicao aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_HISTORIA_DA_ARTE_18",
-      "title": "Historia Da Arte aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_LEITURA_DE_IMAGEM_19",
-      "title": "Leitura De Imagem aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_MUSICA_20",
-      "title": "Musica aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_TEATRO_21",
-      "title": "Teatro aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_DANCA_22",
-      "title": "Danca aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_AUDIOVISUAL_23",
-      "title": "Audiovisual aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_PATRIMONIO_CULTURAL_24",
-      "title": "Patrimonio Cultural aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "ART_ARTE_CONTEMPORANEA_25",
-      "title": "Arte Contemporanea aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "ART_PROCESSO_CRIATIVO_26",
-      "title": "Processo Criativo aplicado",
-      "domain": "ART_V4",
-      "parent": "CONTEXT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ART_CRITICA_DE_ARTE_27",
-      "title": "Critica De Arte aplicado",
-      "domain": "ART_V4",
-      "parent": "VISUAL_ELEMENTS",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
     }
   ]
 }

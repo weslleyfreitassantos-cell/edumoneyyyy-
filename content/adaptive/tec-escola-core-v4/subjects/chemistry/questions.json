@@ -1,3474 +1,388 @@
 [
   {
-    "id": "v4-scale-chemistry-01-01",
+    "id": "v3-chemistry-chemistry_atoms-1",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
+    "domain": "ATOMOS",
+    "topic": "nucleo",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
     "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 1, como interpretar atomos na etapa probe da trilha CHEMISTRY_ATOMOS_01?",
+    "contextFamily": "NUCLEO",
+    "statement": "No modelo atual, o atomo possui nucleo e eletrosfera. Onde ficam proton e neutron?",
     "options": [
-      "Aplicar atomos usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de atomos",
-      "Trocar atomos por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
+      "No nucleo.",
+      "Na eletrosfera.",
+      "Fora do atomo.",
+      "Somente na ligacao."
     ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona atomos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "correctAnswer": "No nucleo.",
+    "explanation": "Protons e neutrons formam o nucleo atomico.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de atomos": [
-        "V4_CHEMISTRY_01_CONTEXT_OMISSION"
+      "Na eletrosfera.": [
+        "NUCLEUS_SHELL_SWAPPED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-01-02",
+    "id": "v3-chemistry-chemistry_atoms-2",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 1, como interpretar atomos na etapa probe da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar atomos usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de atomos",
-      "Trocar atomos por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona atomos ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-01-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 1, como interpretar atomos na etapa practice da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Trocar atomos por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar atomos usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de atomos"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona atomos ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar atomos por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-01-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 1, como interpretar atomos na etapa practice da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de atomos",
-      "Trocar atomos por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar atomos usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona atomos ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de atomos": [
-        "V4_CHEMISTRY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-01-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 1, como interpretar atomos na etapa transfer da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Aplicar atomos usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de atomos",
-      "Trocar atomos por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona atomos ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de atomos": [
-        "V4_CHEMISTRY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-01-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 1, como interpretar atomos na etapa lock_in da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar atomos usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de atomos",
-      "Trocar atomos por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona atomos ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-01-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 1, como interpretar atomos na etapa review da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Trocar atomos por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar atomos usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de atomos"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona atomos ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar atomos por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-01-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "atomos",
-    "primarySkill": "CHEMISTRY_ATOMOS_01",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 1, como interpretar atomos na etapa review da trilha CHEMISTRY_ATOMOS_01?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de atomos",
-      "Trocar atomos por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar atomos usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar atomos usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona atomos ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de atomos": [
-        "V4_CHEMISTRY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
+    "domain": "ATOMOS",
+    "topic": "numero atomico",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
     "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 2, como interpretar tabela periodica na etapa probe da trilha CHEMISTRY_TABELA_PERIODICA_02?",
+    "contextFamily": "NUMERO_ATOMICO",
+    "statement": "Um atomo com numero atomico 8 possui quantos protons?",
     "options": [
-      "Aplicar tabela periodica usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de tabela periodica",
-      "Trocar tabela periodica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
+      "0",
+      "8",
+      "16",
+      "4"
     ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "correctAnswer": "8",
+    "explanation": "O numero atomico identifica a quantidade de protons.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de tabela periodica": [
-        "V4_CHEMISTRY_02_CONTEXT_OMISSION"
+      "16": [
+        "ATOMIC_NUMBER_DOUBLED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-02-02",
+    "id": "v3-chemistry-chemistry_atoms-3",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 2, como interpretar tabela periodica na etapa probe da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar tabela periodica usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de tabela periodica",
-      "Trocar tabela periodica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 2, como interpretar tabela periodica na etapa practice da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Trocar tabela periodica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar tabela periodica usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de tabela periodica"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar tabela periodica por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 2, como interpretar tabela periodica na etapa practice da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de tabela periodica",
-      "Trocar tabela periodica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar tabela periodica usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de tabela periodica": [
-        "V4_CHEMISTRY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 2, como interpretar tabela periodica na etapa transfer da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Aplicar tabela periodica usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de tabela periodica",
-      "Trocar tabela periodica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de tabela periodica": [
-        "V4_CHEMISTRY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 2, como interpretar tabela periodica na etapa lock_in da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar tabela periodica usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de tabela periodica",
-      "Trocar tabela periodica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 2, como interpretar tabela periodica na etapa review da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Trocar tabela periodica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar tabela periodica usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de tabela periodica"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar tabela periodica por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-02-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "tabela periodica",
-    "primarySkill": "CHEMISTRY_TABELA_PERIODICA_02",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 2, como interpretar tabela periodica na etapa review da trilha CHEMISTRY_TABELA_PERIODICA_02?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de tabela periodica",
-      "Trocar tabela periodica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar tabela periodica usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar tabela periodica usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona tabela periodica ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de tabela periodica": [
-        "V4_CHEMISTRY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-03-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
+    "domain": "ATOMOS",
+    "topic": "ion",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
     "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 3, como interpretar ligacoes quimicas na etapa probe da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
+    "contextFamily": "ION",
+    "statement": "Quando um atomo neutro perde um eletron, ele se torna:",
     "options": [
-      "Aplicar ligacoes quimicas usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas",
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
+      "Um neutron.",
+      "Uma molecula neutra sempre.",
+      "Um cation.",
+      "Um anion."
     ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "correctAnswer": "Um cation.",
+    "explanation": "Perder carga negativa deixa excesso relativo de carga positiva.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas": [
-        "V4_CHEMISTRY_03_CONTEXT_OMISSION"
+      "Um anion.": [
+        "ION_CHARGE_REVERSED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-03-02",
+    "id": "v3-chemistry-chemistry_atoms-4",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 3, como interpretar ligacoes quimicas na etapa probe da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar ligacoes quimicas usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas",
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_03_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-03-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
+    "domain": "ATOMOS",
+    "topic": "isotopos",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 3, como interpretar ligacoes quimicas na etapa practice da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
+    "contextFamily": "ISOTOPOS",
+    "statement": "Dois atomos com mesmo numero de protons e diferente numero de neutrons sao:",
     "options": [
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar ligacoes quimicas usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas"
+      "Ions de cargas opostas.",
+      "Moleculas.",
+      "Elementos diferentes.",
+      "Isotopos."
     ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "correctAnswer": "Isotopos.",
+    "explanation": "Isotopos pertencem ao mesmo elemento e diferem no numero de neutrons.",
     "misconceptions": {
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_03_CONTEXT_OMISSION"
+      "Ions de cargas opostas.": [
+        "ISOTOPE_CONFUSED_WITH_ION"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-03-04",
+    "id": "v3-chemistry-chemistry_atoms-5",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 3, como interpretar ligacoes quimicas na etapa practice da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas",
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar ligacoes quimicas usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas": [
-        "V4_CHEMISTRY_03_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-03-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 3, como interpretar ligacoes quimicas na etapa transfer da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
-    "options": [
-      "Aplicar ligacoes quimicas usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas",
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas": [
-        "V4_CHEMISTRY_03_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-03-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 3, como interpretar ligacoes quimicas na etapa lock_in da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar ligacoes quimicas usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas",
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_03_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-03-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 3, como interpretar ligacoes quimicas na etapa review da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
-    "options": [
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar ligacoes quimicas usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas"
-    ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_03_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-03-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "ligacoes quimicas",
-    "primarySkill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 3, como interpretar ligacoes quimicas na etapa review da trilha CHEMISTRY_LIGACOES_QUIMICAS_03?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas",
-      "Trocar ligacoes quimicas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar ligacoes quimicas usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar ligacoes quimicas usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona ligacoes quimicas ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ligacoes quimicas": [
-        "V4_CHEMISTRY_03_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 4, como interpretar reacoes na etapa probe da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Aplicar reacoes usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de reacoes",
-      "Trocar reacoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de reacoes": [
-        "V4_CHEMISTRY_04_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 4, como interpretar reacoes na etapa probe da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar reacoes usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de reacoes",
-      "Trocar reacoes por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
+    "domain": "ATOMOS",
+    "topic": "ligacao ionica",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 4, como interpretar reacoes na etapa practice da trilha CHEMISTRY_REACOES_04?",
+    "contextFamily": "LIGACAO_IONICA",
+    "statement": "Na formacao de cloreto de sodio, ocorre transferencia de eletron. Que tipo de ligacao se forma?",
     "options": [
-      "Trocar reacoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar reacoes usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de reacoes"
+      "Ionica.",
+      "Metalica apenas.",
+      "Ponte de hidrogenio.",
+      "Nenhuma."
     ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto texto_explicativo e explicita a evidencia observada.",
+    "correctAnswer": "Ionica.",
+    "explanation": "A transferencia gera ions atraidos eletrostaticamente.",
     "misconceptions": {
-      "Trocar reacoes por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_04_CONTEXT_OMISSION"
+      "Metalica apenas.": [
+        "IONIC_BOND_MISNAMED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-04-04",
+    "id": "v3-chemistry-chemistry_atoms-6",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 4, como interpretar reacoes na etapa practice da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de reacoes",
-      "Trocar reacoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar reacoes usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de reacoes": [
-        "V4_CHEMISTRY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 4, como interpretar reacoes na etapa transfer da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Aplicar reacoes usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de reacoes",
-      "Trocar reacoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de reacoes": [
-        "V4_CHEMISTRY_04_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 4, como interpretar reacoes na etapa lock_in da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar reacoes usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de reacoes",
-      "Trocar reacoes por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 4, como interpretar reacoes na etapa review da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Trocar reacoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar reacoes usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de reacoes"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar reacoes por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_04_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-04-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "reacoes",
-    "primarySkill": "CHEMISTRY_REACOES_04",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 4, como interpretar reacoes na etapa review da trilha CHEMISTRY_REACOES_04?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de reacoes",
-      "Trocar reacoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar reacoes usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar reacoes usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona reacoes ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de reacoes": [
-        "V4_CHEMISTRY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 5, como interpretar estequiometria na etapa probe da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Aplicar estequiometria usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de estequiometria",
-      "Trocar estequiometria por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de estequiometria": [
-        "V4_CHEMISTRY_05_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 5, como interpretar estequiometria na etapa probe da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar estequiometria usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de estequiometria",
-      "Trocar estequiometria por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_05_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
+    "domain": "ATOMOS",
+    "topic": "ligacao covalente",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 5, como interpretar estequiometria na etapa practice da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
+    "contextFamily": "LIGACAO_COVALENTE",
+    "statement": "Na molecula de agua, os atomos compartilham eletrons. Isso caracteriza ligacao:",
     "options": [
-      "Trocar estequiometria por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar estequiometria usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de estequiometria"
+      "Nuclear.",
+      "Covalente.",
+      "Ionica por transferencia total.",
+      "Metalica."
     ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto texto_explicativo e explicita a evidencia observada.",
+    "correctAnswer": "Covalente.",
+    "explanation": "Compartilhar pares de eletrons e caracteristico da ligacao covalente.",
     "misconceptions": {
-      "Trocar estequiometria por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_05_CONTEXT_OMISSION"
+      "Ionica por transferencia total.": [
+        "COVALENT_SHARING_DENIED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-05-04",
+    "id": "v3-chemistry-chemistry_atoms-7",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 5, como interpretar estequiometria na etapa practice da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de estequiometria",
-      "Trocar estequiometria por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar estequiometria usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de estequiometria": [
-        "V4_CHEMISTRY_05_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 5, como interpretar estequiometria na etapa transfer da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Aplicar estequiometria usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de estequiometria",
-      "Trocar estequiometria por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de estequiometria": [
-        "V4_CHEMISTRY_05_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 5, como interpretar estequiometria na etapa lock_in da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar estequiometria usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de estequiometria",
-      "Trocar estequiometria por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_05_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 5, como interpretar estequiometria na etapa review da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Trocar estequiometria por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar estequiometria usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de estequiometria"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar estequiometria por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_05_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-05-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "estequiometria",
-    "primarySkill": "CHEMISTRY_ESTEQUIOMETRIA_05",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 5, como interpretar estequiometria na etapa review da trilha CHEMISTRY_ESTEQUIOMETRIA_05?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de estequiometria",
-      "Trocar estequiometria por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar estequiometria usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar estequiometria usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona estequiometria ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de estequiometria": [
-        "V4_CHEMISTRY_05_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 6, como interpretar solucoes na etapa probe da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Aplicar solucoes usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de solucoes",
-      "Trocar solucoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de solucoes": [
-        "V4_CHEMISTRY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 6, como interpretar solucoes na etapa probe da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar solucoes usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de solucoes",
-      "Trocar solucoes por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
+    "domain": "ATOMOS",
+    "topic": "conservacao",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 6, como interpretar solucoes na etapa practice da trilha CHEMISTRY_SOLUCOES_06?",
+    "contextFamily": "CONSERVACAO",
+    "statement": "Na reacao 2H2 + O2 -> 2H2O, o que se conserva?",
     "options": [
-      "Trocar solucoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar solucoes usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de solucoes"
+      "A temperatura.",
+      "A cor dos reagentes.",
+      "A quantidade de atomos de cada elemento.",
+      "O numero de moleculas sempre."
     ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto texto_explicativo e explicita a evidencia observada.",
+    "correctAnswer": "A quantidade de atomos de cada elemento.",
+    "explanation": "A equacao balanceada conserva atomos de hidrogenio e oxigenio.",
     "misconceptions": {
-      "Trocar solucoes por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_06_CONTEXT_OMISSION"
+      "O numero de moleculas sempre.": [
+        "REACTION_CONSERVES_MOLECULES"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-06-04",
+    "id": "v3-chemistry-chemistry_atoms-8",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 6, como interpretar solucoes na etapa practice da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de solucoes",
-      "Trocar solucoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar solucoes usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de solucoes": [
-        "V4_CHEMISTRY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 6, como interpretar solucoes na etapa transfer da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Aplicar solucoes usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de solucoes",
-      "Trocar solucoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de solucoes": [
-        "V4_CHEMISTRY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 6, como interpretar solucoes na etapa lock_in da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar solucoes usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de solucoes",
-      "Trocar solucoes por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 6, como interpretar solucoes na etapa review da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Trocar solucoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar solucoes usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de solucoes"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar solucoes por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-06-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "solucoes",
-    "primarySkill": "CHEMISTRY_SOLUCOES_06",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 6, como interpretar solucoes na etapa review da trilha CHEMISTRY_SOLUCOES_06?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de solucoes",
-      "Trocar solucoes por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar solucoes usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar solucoes usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona solucoes ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de solucoes": [
-        "V4_CHEMISTRY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 7, como interpretar acidos e bases na etapa probe da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Aplicar acidos e bases usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de acidos e bases",
-      "Trocar acidos e bases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de acidos e bases": [
-        "V4_CHEMISTRY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 7, como interpretar acidos e bases na etapa probe da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar acidos e bases usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de acidos e bases",
-      "Trocar acidos e bases por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 7, como interpretar acidos e bases na etapa practice da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Trocar acidos e bases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar acidos e bases usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de acidos e bases"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar acidos e bases por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 7, como interpretar acidos e bases na etapa practice da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de acidos e bases",
-      "Trocar acidos e bases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar acidos e bases usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de acidos e bases": [
-        "V4_CHEMISTRY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 7, como interpretar acidos e bases na etapa transfer da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Aplicar acidos e bases usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de acidos e bases",
-      "Trocar acidos e bases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de acidos e bases": [
-        "V4_CHEMISTRY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 7, como interpretar acidos e bases na etapa lock_in da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar acidos e bases usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de acidos e bases",
-      "Trocar acidos e bases por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 7, como interpretar acidos e bases na etapa review da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Trocar acidos e bases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar acidos e bases usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de acidos e bases"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar acidos e bases por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-07-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "acidos e bases",
-    "primarySkill": "CHEMISTRY_ACIDOS_E_BASES_07",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 7, como interpretar acidos e bases na etapa review da trilha CHEMISTRY_ACIDOS_E_BASES_07?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de acidos e bases",
-      "Trocar acidos e bases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar acidos e bases usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar acidos e bases usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona acidos e bases ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de acidos e bases": [
-        "V4_CHEMISTRY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
+    "domain": "ATOMOS",
     "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 8, como interpretar pH na etapa probe da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Aplicar pH usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de pH",
-      "Trocar pH por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona pH ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de pH": [
-        "V4_CHEMISTRY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 8, como interpretar pH na etapa probe da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar pH usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de pH",
-      "Trocar pH por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona pH ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 8, como interpretar pH na etapa practice da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Trocar pH por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar pH usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de pH"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona pH ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar pH por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 8, como interpretar pH na etapa practice da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de pH",
-      "Trocar pH por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar pH usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona pH ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de pH": [
-        "V4_CHEMISTRY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "TRANSFER",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 8, como interpretar pH na etapa transfer da trilha CHEMISTRY_PH_08?",
+    "contextFamily": "PH",
+    "statement": "Uma solucao com pH 3 e classificada como:",
     "options": [
-      "Aplicar pH usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de pH",
-      "Trocar pH por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
+      "Basica.",
+      "Neutra.",
+      "Sem agua necessariamente.",
+      "Acida."
     ],
-    "correctAnswer": "Aplicar pH usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona pH ao contexto laboratorio e explicita a evidencia observada.",
+    "correctAnswer": "Acida.",
+    "explanation": "Valores menores que 7 indicam acidez em agua.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de pH": [
-        "V4_CHEMISTRY_08_CONTEXT_OMISSION"
+      "Basica.": [
+        "PH_SCALE_REVERSED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-08-06",
+    "id": "v3-chemistry-chemistry_atoms-9",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 8, como interpretar pH na etapa lock_in da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar pH usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de pH",
-      "Trocar pH por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona pH ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 8, como interpretar pH na etapa review da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Trocar pH por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar pH usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de pH"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona pH ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar pH por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-08-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "pH",
-    "primarySkill": "CHEMISTRY_PH_08",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 8, como interpretar pH na etapa review da trilha CHEMISTRY_PH_08?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de pH",
-      "Trocar pH por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar pH usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar pH usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona pH ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de pH": [
-        "V4_CHEMISTRY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-09-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 9, como interpretar termoquimica na etapa probe da trilha CHEMISTRY_TERMOQUIMICA_09?",
-    "options": [
-      "Aplicar termoquimica usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de termoquimica",
-      "Trocar termoquimica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de termoquimica": [
-        "V4_CHEMISTRY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-09-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 9, como interpretar termoquimica na etapa probe da trilha CHEMISTRY_TERMOQUIMICA_09?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar termoquimica usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de termoquimica",
-      "Trocar termoquimica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_09_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-09-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 9, como interpretar termoquimica na etapa practice da trilha CHEMISTRY_TERMOQUIMICA_09?",
-    "options": [
-      "Trocar termoquimica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar termoquimica usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de termoquimica"
-    ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar termoquimica por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-09-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 9, como interpretar termoquimica na etapa practice da trilha CHEMISTRY_TERMOQUIMICA_09?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de termoquimica",
-      "Trocar termoquimica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar termoquimica usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de termoquimica": [
-        "V4_CHEMISTRY_09_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-09-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
+    "domain": "ATOMOS",
+    "topic": "solubilidade",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "TRANSFER",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 9, como interpretar termoquimica na etapa transfer da trilha CHEMISTRY_TERMOQUIMICA_09?",
+    "contextFamily": "SOLUBILIDADE",
+    "statement": "Ao aquecer a agua, certo soluto passa a dissolver mais. O que aumenta?",
     "options": [
-      "Aplicar termoquimica usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de termoquimica",
-      "Trocar termoquimica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
+      "A solubilidade desse soluto.",
+      "A massa do soluto sem adicionar nada.",
+      "O numero atomico.",
+      "A carga do copo."
     ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto laboratorio e explicita a evidencia observada.",
+    "correctAnswer": "A solubilidade desse soluto.",
+    "explanation": "Solubilidade indica quanto soluto se dissolve em uma condicao.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de termoquimica": [
-        "V4_CHEMISTRY_09_CONTEXT_OMISSION"
+      "A massa do soluto sem adicionar nada.": [
+        "SOLUBILITY_CONFUSED_WITH_MASS"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-09-06",
+    "id": "v3-chemistry-chemistry_atoms-10",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
+    "domain": "ATOMOS",
+    "topic": "separacao",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "SEPARACAO",
+    "statement": "Uma mistura de agua e sal pode ser separada por evaporacao porque:",
+    "options": [
+      "Os atomos desaparecem.",
+      "A agua muda para vapor e o sal permanece.",
+      "O sal vira gas primeiro.",
+      "A agua se transforma em sal."
     ],
+    "correctAnswer": "A agua muda para vapor e o sal permanece.",
+    "explanation": "A diferenca de volatilidade permite recuperar o sal.",
+    "misconceptions": {
+      "O sal vira gas primeiro.": [
+        "EVAPORATION_REMOVES_SOLUTE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-chemistry-chemistry_atoms-11",
+    "subject": "CHEMISTRY",
+    "domain": "ATOMOS",
+    "topic": "reacao",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "LOCK_IN",
     "difficulty": "HARD",
     "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 9, como interpretar termoquimica na etapa lock_in da trilha CHEMISTRY_TERMOQUIMICA_09?",
+    "contextFamily": "REACAO",
+    "statement": "Bolhas surgem ao misturar duas substancias e o recipiente esquenta. Esses sinais sugerem:",
     "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar termoquimica usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de termoquimica",
-      "Trocar termoquimica por outro conceito sem justificar a relacao"
+      "Separacao mecanica.",
+      "Congelamento.",
+      "Reacao quimica.",
+      "Apenas mudanca de forma."
     ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "correctAnswer": "Reacao quimica.",
+    "explanation": "Gas e variacao de temperatura podem indicar novas substancias.",
     "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_09_CONCEPT_SWAP"
+      "Apenas mudanca de forma.": [
+        "REACTION_SIGNS_IGNORED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-09-07",
+    "id": "v3-chemistry-chemistry_atoms-12",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 9, como interpretar termoquimica na etapa review da trilha CHEMISTRY_TERMOQUIMICA_09?",
-    "options": [
-      "Trocar termoquimica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar termoquimica usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de termoquimica"
-    ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar termoquimica por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-09-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "termoquimica",
-    "primarySkill": "CHEMISTRY_TERMOQUIMICA_09",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
+    "domain": "ATOMOS",
+    "topic": "massa",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "REVIEW",
     "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 9, como interpretar termoquimica na etapa review da trilha CHEMISTRY_TERMOQUIMICA_09?",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "MASSA",
+    "statement": "Em uma reacao fechada, a massa total permanece constante porque:",
     "options": [
-      "Ignorar o contexto e repetir uma regra de termoquimica",
-      "Trocar termoquimica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar termoquimica usando as evidencias de revisao_guiada"
+      "A materia sai do recipiente.",
+      "Os atomos deixam de existir.",
+      "A massa depende apenas da cor.",
+      "Os atomos se reorganizam sem desaparecer."
     ],
-    "correctAnswer": "Aplicar termoquimica usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona termoquimica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "correctAnswer": "Os atomos se reorganizam sem desaparecer.",
+    "explanation": "A conservacao da massa decorre da reorganizacao das particulas.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de termoquimica": [
-        "V4_CHEMISTRY_09_CONCEPT_SWAP"
+      "A materia sai do recipiente.": [
+        "MASS_CONSERVATION_DENIED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-chemistry-10-01",
+    "id": "v4-authored-chemistry-review-01",
     "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
+    "domain": "ATOMOS",
+    "topic": "Interpretar modelos atomicos",
+    "primarySkill": "CHEMISTRY_ATOMIC_STRUCTURE",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 10, como interpretar quimica organica na etapa probe da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Aplicar quimica organica usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de quimica organica",
-      "Trocar quimica organica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de quimica organica": [
-        "V4_CHEMISTRY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 10, como interpretar quimica organica na etapa probe da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar quimica organica usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de quimica organica",
-      "Trocar quimica organica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 10, como interpretar quimica organica na etapa practice da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Trocar quimica organica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar quimica organica usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de quimica organica"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar quimica organica por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 10, como interpretar quimica organica na etapa practice da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de quimica organica",
-      "Trocar quimica organica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar quimica organica usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de quimica organica": [
-        "V4_CHEMISTRY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 10, como interpretar quimica organica na etapa transfer da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Aplicar quimica organica usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de quimica organica",
-      "Trocar quimica organica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de quimica organica": [
-        "V4_CHEMISTRY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
+    "purpose": "REVIEW",
     "difficulty": "HARD",
     "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 10, como interpretar quimica organica na etapa lock_in da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um atomo tem numero atomico 8 e numero de massa 16. Quantos neutrons ele possui?",
     "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar quimica organica usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de quimica organica",
-      "Trocar quimica organica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 10, como interpretar quimica organica na etapa review da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Trocar quimica organica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar quimica organica usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de quimica organica"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar quimica organica por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-10-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "quimica organica",
-    "primarySkill": "CHEMISTRY_QUIMICA_ORGANICA_10",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 10, como interpretar quimica organica na etapa review da trilha CHEMISTRY_QUIMICA_ORGANICA_10?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de quimica organica",
-      "Trocar quimica organica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar quimica organica usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar quimica organica usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona quimica organica ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de quimica organica": [
-        "V4_CHEMISTRY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 11, como interpretar gases na etapa probe da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Aplicar gases usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de gases",
-      "Trocar gases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona gases ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de gases": [
-        "V4_CHEMISTRY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 11, como interpretar gases na etapa probe da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar gases usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de gases",
-      "Trocar gases por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona gases ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 11, como interpretar gases na etapa practice da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Trocar gases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar gases usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de gases"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona gases ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar gases por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 11, como interpretar gases na etapa practice da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de gases",
-      "Trocar gases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar gases usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona gases ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de gases": [
-        "V4_CHEMISTRY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 11, como interpretar gases na etapa transfer da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Aplicar gases usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de gases",
-      "Trocar gases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona gases ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de gases": [
-        "V4_CHEMISTRY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 11, como interpretar gases na etapa lock_in da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar gases usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de gases",
-      "Trocar gases por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona gases ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 11, como interpretar gases na etapa review da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Trocar gases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar gases usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de gases"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona gases ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar gases por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-11-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "gases",
-    "primarySkill": "CHEMISTRY_GASES_11",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 11, como interpretar gases na etapa review da trilha CHEMISTRY_GASES_11?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de gases",
-      "Trocar gases por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar gases usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar gases usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona gases ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de gases": [
-        "V4_CHEMISTRY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 12, como interpretar separacao de misturas na etapa probe da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Aplicar separacao de misturas usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de separacao de misturas",
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de separacao de misturas": [
-        "V4_CHEMISTRY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 12, como interpretar separacao de misturas na etapa probe da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar separacao de misturas usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de separacao de misturas",
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 12, como interpretar separacao de misturas na etapa practice da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar separacao de misturas usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de separacao de misturas"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 12, como interpretar separacao de misturas na etapa practice da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de separacao de misturas",
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar separacao de misturas usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de separacao de misturas": [
-        "V4_CHEMISTRY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 12, como interpretar separacao de misturas na etapa transfer da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Aplicar separacao de misturas usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de separacao de misturas",
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de separacao de misturas": [
-        "V4_CHEMISTRY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 12, como interpretar separacao de misturas na etapa lock_in da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar separacao de misturas usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de separacao de misturas",
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 12, como interpretar separacao de misturas na etapa review da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar separacao de misturas usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de separacao de misturas"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-12-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "separacao de misturas",
-    "primarySkill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 12, como interpretar separacao de misturas na etapa review da trilha CHEMISTRY_SEPARACAO_DE_MISTURAS_12?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de separacao de misturas",
-      "Trocar separacao de misturas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar separacao de misturas usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar separacao de misturas usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona separacao de misturas ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de separacao de misturas": [
-        "V4_CHEMISTRY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 13, como interpretar seguranca de laboratorio na etapa probe da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Aplicar seguranca de laboratorio usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio",
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio": [
-        "V4_CHEMISTRY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 13, como interpretar seguranca de laboratorio na etapa probe da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar seguranca de laboratorio usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio",
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 13, como interpretar seguranca de laboratorio na etapa practice da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar seguranca de laboratorio usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 13, como interpretar seguranca de laboratorio na etapa practice da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio",
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar seguranca de laboratorio usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio": [
-        "V4_CHEMISTRY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 13, como interpretar seguranca de laboratorio na etapa transfer da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Aplicar seguranca de laboratorio usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio",
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio": [
-        "V4_CHEMISTRY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 13, como interpretar seguranca de laboratorio na etapa lock_in da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar seguranca de laboratorio usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio",
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 13, como interpretar seguranca de laboratorio na etapa review da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar seguranca de laboratorio usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-13-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "seguranca de laboratorio",
-    "primarySkill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
-    "supportingSkills": [
-      "CHEMISTRY_MATTER"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 13, como interpretar seguranca de laboratorio na etapa review da trilha CHEMISTRY_SEGURANCA_DE_LABORATORIO_13?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio",
-      "Trocar seguranca de laboratorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar seguranca de laboratorio usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar seguranca de laboratorio usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona seguranca de laboratorio ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de seguranca de laboratorio": [
-        "V4_CHEMISTRY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-01",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Quimica: na atividade situacao_cotidiana 14, como interpretar evidencia experimental na etapa probe da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Aplicar evidencia experimental usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de evidencia experimental",
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de evidencia experimental": [
-        "V4_CHEMISTRY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-02",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Quimica: na atividade dados_observados 14, como interpretar evidencia experimental na etapa probe da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar evidencia experimental usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de evidencia experimental",
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_CHEMISTRY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-03",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Quimica: na atividade texto_explicativo 14, como interpretar evidencia experimental na etapa practice da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar evidencia experimental usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de evidencia experimental"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-04",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Quimica: na atividade projeto_aplicado 14, como interpretar evidencia experimental na etapa practice da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de evidencia experimental",
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar evidencia experimental usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de evidencia experimental": [
-        "V4_CHEMISTRY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-05",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Quimica: na atividade laboratorio 14, como interpretar evidencia experimental na etapa transfer da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Aplicar evidencia experimental usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de evidencia experimental",
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de evidencia experimental": [
-        "V4_CHEMISTRY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-06",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Quimica: na atividade mapa_conceitual 14, como interpretar evidencia experimental na etapa lock_in da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar evidencia experimental usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de evidencia experimental",
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_CHEMISTRY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-07",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Quimica: na atividade debate_orientado 14, como interpretar evidencia experimental na etapa review da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar evidencia experimental usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de evidencia experimental"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao": [
-        "V4_CHEMISTRY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-chemistry-14-08",
-    "subject": "CHEMISTRY",
-    "domain": "CHEMISTRY_V4",
-    "topic": "evidencia experimental",
-    "primarySkill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
-    "supportingSkills": [
-      "REACTIONS"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Quimica: na atividade revisao_guiada 14, como interpretar evidencia experimental na etapa review da trilha CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de evidencia experimental",
-      "Trocar evidencia experimental por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar evidencia experimental usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar evidencia experimental usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona evidencia experimental ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de evidencia experimental": [
-        "V4_CHEMISTRY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+      "8 neutrons.",
+      "16 neutrons.",
+      "24 neutrons.",
+      "4 neutrons."
+    ],
+    "correctAnswer": "8 neutrons.",
+    "explanation": "Neutrons = numero de massa - numero atomico: 16 - 8 = 8.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
   }
 ]

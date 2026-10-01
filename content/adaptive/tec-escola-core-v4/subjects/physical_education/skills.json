@@ -3,294 +3,60 @@
   "name": "Educacao Fisica",
   "anchors": [
     {
-      "code": "MOVEMENT",
-      "title": "Movement"
+      "code": "PE_BODY",
+      "title": "Corpo e movimento"
     },
     {
-      "code": "HEALTH",
-      "title": "Health"
+      "code": "PE_SPORTS",
+      "title": "Esportes e jogos"
+    },
+    {
+      "code": "PE_HEALTH",
+      "title": "Saude e participacao"
     }
   ],
   "leaves": [
     {
-      "code": "PE_TRAINING_PRINCIPLES",
-      "title": "Reconhecer principios de treinamento",
+      "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
+      "title": "Explicar principios de esportes",
+      "objective": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "description": "Explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "masteryCapability": "Demonstrar que consegue explicar como regras, espaco e cooperacao orientam uma situacao esportiva.",
+      "domain": "ESPORTES",
+      "parent": "PE_SPORTS",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_ANALYZE_MOVEMENT",
+      "title": "Analisar movimento corporal",
+      "objective": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "description": "Analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "masteryCapability": "Demonstrar que consegue analisar uma habilidade motora considerando equilibrio, forca e coordenacao.",
+      "domain": "CORPO",
+      "parent": "PE_BODY",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PE_PLAN_SAFE_ACTIVITY",
+      "title": "Planejar atividade fisica segura",
+      "objective": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+      "description": "Planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
+      "masteryCapability": "Demonstrar que consegue planejar atividade fisica considerando aquecimento, intensidade, descanso e inclusao.",
       "domain": "SAUDE",
-      "parent": "HEALTH",
+      "parent": "PE_HEALTH",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
-      "title": "Consciencia Corporal aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
-      "title": "Habilidades Motoras aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_JOGOS_03",
-      "title": "Jogos aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_ATLETISMO_04",
-      "title": "Atletismo aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_GINASTICA_05",
-      "title": "Ginastica aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_DANCA_06",
-      "title": "Danca aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
-      "title": "Esportes Coletivos aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_LUTAS_08",
-      "title": "Lutas aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_SAUDE_09",
-      "title": "Saude aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_TREINAMENTO_10",
-      "title": "Treinamento aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_INCLUSAO_11",
-      "title": "Inclusao aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_LAZER_12",
-      "title": "Lazer aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_REGRAS_13",
-      "title": "Regras aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
-      "title": "Cultura Corporal aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_15",
-      "title": "Consciencia Corporal aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_16",
-      "title": "Habilidades Motoras aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_JOGOS_17",
-      "title": "Jogos aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_ATLETISMO_18",
-      "title": "Atletismo aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_GINASTICA_19",
-      "title": "Ginastica aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_DANCA_20",
-      "title": "Danca aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_21",
-      "title": "Esportes Coletivos aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_LUTAS_22",
-      "title": "Lutas aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_SAUDE_23",
-      "title": "Saude aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_TREINAMENTO_24",
-      "title": "Treinamento aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_INCLUSAO_25",
-      "title": "Inclusao aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_LAZER_26",
-      "title": "Lazer aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "HEALTH",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICAL_EDUCATION_REGRAS_27",
-      "title": "Regras aplicado",
-      "domain": "PHYSICAL_EDUCATION_V4",
-      "parent": "MOVEMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
     }
   ]
 }

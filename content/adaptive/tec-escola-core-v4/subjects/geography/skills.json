@@ -3,294 +3,60 @@
   "name": "Geografia",
   "anchors": [
     {
-      "code": "SPACE",
-      "title": "Space"
+      "code": "GEOGRAPHY_SPACE",
+      "title": "Espaco geografico"
     },
     {
-      "code": "CARTOGRAPHY",
-      "title": "Cartography"
+      "code": "GEOGRAPHY_CARTOGRAPHY",
+      "title": "Cartografia e escala"
+    },
+    {
+      "code": "GEOGRAPHY_TERRITORY",
+      "title": "Territorio e paisagem"
     }
   ],
   "leaves": [
     {
+      "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+      "title": "Interpretar territorio e paisagem",
+      "objective": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "description": "Interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "masteryCapability": "Demonstrar que consegue interpretar como usos, poderes e praticas sociais produzem territorios e paisagens.",
+      "domain": "TERRITORIO",
+      "parent": "GEOGRAPHY_TERRITORY",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
       "code": "GEOGRAPHY_MAP_SCALE",
       "title": "Interpretar escala cartografica",
+      "objective": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+      "description": "Interpretar a relacao entre distancia representada e distancia real em um mapa.",
+      "masteryCapability": "Demonstrar que consegue interpretar a relacao entre distancia representada e distancia real em um mapa.",
       "domain": "CARTOGRAFIA",
-      "parent": "CARTOGRAPHY",
+      "parent": "GEOGRAPHY_CARTOGRAPHY",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-      "title": "Escala Cartografica aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-      "title": "Representacao Do Espaco aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_TERRITORIO_03",
-      "title": "Territorio aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_POPULACAO_04",
-      "title": "Populacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
+      "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+      "title": "Analisar dados climaticos",
+      "objective": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "description": "Analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "masteryCapability": "Demonstrar que consegue analisar variacoes de temperatura e chuva relacionando-as ao clima de um lugar.",
+      "domain": "CLIMA",
+      "parent": "GEOGRAPHY_SPACE",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_URBANIZACAO_05",
-      "title": "Urbanizacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_CLIMA_06",
-      "title": "Clima aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_BIOMAS_07",
-      "title": "Biomas aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_ECONOMIA_08",
-      "title": "Economia aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_GLOBALIZACAO_09",
-      "title": "Globalizacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_GEOPOLITICA_10",
-      "title": "Geopolitica aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_AMBIENTE_11",
-      "title": "Ambiente aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_AGUA_12",
-      "title": "Agua aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_ESPACO_RURAL_13",
-      "title": "Espaco Rural aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_REGIONALIZACAO_14",
-      "title": "Regionalizacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_ESCALA_CARTOGRAFICA_15",
-      "title": "Escala Cartografica aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_16",
-      "title": "Representacao Do Espaco aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_TERRITORIO_17",
-      "title": "Territorio aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_POPULACAO_18",
-      "title": "Populacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_URBANIZACAO_19",
-      "title": "Urbanizacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_CLIMA_20",
-      "title": "Clima aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_BIOMAS_21",
-      "title": "Biomas aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_ECONOMIA_22",
-      "title": "Economia aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_GLOBALIZACAO_23",
-      "title": "Globalizacao aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_GEOPOLITICA_24",
-      "title": "Geopolitica aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "GEOGRAPHY_AMBIENTE_25",
-      "title": "Ambiente aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "GEOGRAPHY_AGUA_26",
-      "title": "Agua aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "CARTOGRAPHY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "GEOGRAPHY_ESPACO_RURAL_27",
-      "title": "Espaco Rural aplicado",
-      "domain": "GEOGRAPHY_V4",
-      "parent": "SPACE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
     }
   ]
 }

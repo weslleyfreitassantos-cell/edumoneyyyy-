@@ -3,295 +3,71 @@
   "name": "Fisica",
   "anchors": [
     {
-      "code": "MEASUREMENT",
-      "title": "Measurement"
+      "code": "PHYSICS_MEASUREMENT",
+      "title": "Medidas e unidades"
     },
     {
-      "code": "MOTION",
-      "title": "Motion"
+      "code": "PHYSICS_MOTION",
+      "title": "Movimento e representacoes"
     },
     {
-      "code": "ENERGY",
-      "title": "Energy"
+      "code": "PHYSICS_ENERGY",
+      "title": "Energia e interacoes"
     }
   ],
   "leaves": [
     {
       "code": "PHYSICS_AVERAGE_SPEED",
-      "title": "Interpretar velocidade media",
-      "domain": "MOVIMENTO",
-      "parent": "MOTION",
+      "title": "Calcular velocidade media",
+      "objective": "Calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+      "description": "Calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+      "masteryCapability": "Demonstrar que consegue calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
+      "domain": "VELOCIDADE",
+      "parent": "PHYSICS_MOTION",
       "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
     },
     {
       "code": "PHYSICS_UNIT_CONVERSION",
-      "title": "Converter unidades de medida",
+      "title": "Converter unidades de movimento",
+      "objective": "Converter unidades de distancia e tempo antes de comparar velocidades.",
+      "description": "Converter unidades de distancia e tempo antes de comparar velocidades.",
+      "masteryCapability": "Demonstrar que consegue converter unidades de distancia e tempo antes de comparar velocidades.",
       "domain": "MEDIDAS",
-      "parent": "MEASUREMENT",
+      "parent": "PHYSICS_MEASUREMENT",
       "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
     },
     {
-      "code": "PHYSICS_GRAPH_MOTION",
-      "title": "Ler grafico de movimento",
+      "code": "PHYSICS_INTERPRET_MOTION_GRAPH",
+      "title": "Interpretar grafico de movimento",
+      "objective": "Interpretar como inclinacao e trechos de um grafico representam um movimento.",
+      "description": "Interpretar como inclinacao e trechos de um grafico representam um movimento.",
+      "masteryCapability": "Demonstrar que consegue interpretar como inclinacao e trechos de um grafico representam um movimento.",
       "domain": "MOVIMENTO",
-      "parent": "MOTION",
+      "parent": "PHYSICS_MOTION",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_MOVIMENTO_01",
-      "title": "Movimento aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
     },
     {
-      "code": "PHYSICS_VELOCIDADE_MEDIA_02",
-      "title": "Velocidade Media aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_FORCAS_03",
-      "title": "Forcas aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_ENERGIA_04",
-      "title": "Energia aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_TRABALHO_05",
-      "title": "Trabalho aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_CALOR_06",
-      "title": "Calor aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_ONDAS_07",
-      "title": "Ondas aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_ELETRICIDADE_08",
-      "title": "Eletricidade aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_CIRCUITOS_09",
-      "title": "Circuitos aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_DENSIDADE_10",
-      "title": "Densidade aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_PRESSAO_11",
-      "title": "Pressao aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_OPTICA_12",
-      "title": "Optica aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
-      "title": "Quantidade De Movimento aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
-      "title": "Graficos De Movimento aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_MOVIMENTO_15",
-      "title": "Movimento aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
+      "code": "PHYSICS_MODEL_FORCE",
+      "title": "Relacionar forca e movimento",
+      "objective": "Relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+      "description": "Relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+      "masteryCapability": "Demonstrar que consegue relacionar forca resultante e mudanca de movimento em uma situacao observavel.",
+      "domain": "INTERACOES",
+      "parent": "PHYSICS_ENERGY",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_VELOCIDADE_MEDIA_16",
-      "title": "Velocidade Media aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_FORCAS_17",
-      "title": "Forcas aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_ENERGIA_18",
-      "title": "Energia aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_TRABALHO_19",
-      "title": "Trabalho aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_CALOR_20",
-      "title": "Calor aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_ONDAS_21",
-      "title": "Ondas aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_ELETRICIDADE_22",
-      "title": "Eletricidade aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_CIRCUITOS_23",
-      "title": "Circuitos aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MOTION",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PHYSICS_DENSIDADE_24",
-      "title": "Densidade aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "ENERGY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 8,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "PHYSICS_PRESSAO_25",
-      "title": "Pressao aplicado",
-      "domain": "PHYSICS_V4",
-      "parent": "MEASUREMENT",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3

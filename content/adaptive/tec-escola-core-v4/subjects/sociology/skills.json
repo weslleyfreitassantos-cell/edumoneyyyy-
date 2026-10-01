@@ -3,291 +3,57 @@
   "name": "Sociologia",
   "anchors": [
     {
-      "code": "SOCIETY",
-      "title": "Society"
+      "code": "SOCIOLOGY_INDIVIDUAL",
+      "title": "Individuo e sociedade"
     },
     {
-      "code": "EVIDENCE",
-      "title": "Evidence"
+      "code": "SOCIOLOGY_INSTITUTIONS",
+      "title": "Instituicoes sociais"
+    },
+    {
+      "code": "SOCIOLOGY_STRUCTURE",
+      "title": "Estrutura e desigualdade"
     }
   ],
   "leaves": [
     {
-      "code": "SOCIOLOGY_RESEARCH_EVIDENCE",
-      "title": "Interpretar evidencia sobre a sociedade",
-      "domain": "PESQUISA",
-      "parent": "EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_SOCIALIZACAO_01",
-      "title": "Socializacao aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
+      "code": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+      "title": "Explicar instituicoes sociais",
+      "objective": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "description": "Explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "masteryCapability": "Demonstrar que consegue explicar como instituicoes sociais organizam praticas, papeis e expectativas coletivas.",
+      "domain": "INSTITUICOES",
+      "parent": "SOCIOLOGY_INSTITUTIONS",
       "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
     },
     {
-      "code": "SOCIOLOGY_CULTURA_02",
-      "title": "Cultura aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_IDENTIDADE_03",
-      "title": "Identidade aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_INSTITUICOES_04",
-      "title": "Instituicoes aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_DESIGUALDADE_05",
-      "title": "Desigualdade aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_TRABALHO_06",
-      "title": "Trabalho aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_PODER_07",
-      "title": "Poder aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_CIDADANIA_08",
-      "title": "Cidadania aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_MIDIA_09",
-      "title": "Midia aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_GLOBALIZACAO_10",
-      "title": "Globalizacao aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_JUVENTUDES_11",
-      "title": "Juventudes aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_PESQUISA_SOCIAL_12",
-      "title": "Pesquisa Social aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_DIVERSIDADE_13",
-      "title": "Diversidade aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_MOVIMENTOS_SOCIAIS_14",
-      "title": "Movimentos Sociais aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_SOCIALIZACAO_15",
-      "title": "Socializacao aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
+      "code": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+      "title": "Distinguir norma de valor social",
+      "objective": "Distinguir regras de comportamento de valores que justificam essas regras.",
+      "description": "Distinguir regras de comportamento de valores que justificam essas regras.",
+      "masteryCapability": "Demonstrar que consegue distinguir regras de comportamento de valores que justificam essas regras.",
+      "domain": "CULTURA",
+      "parent": "SOCIOLOGY_INDIVIDUAL",
       "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3
     },
     {
-      "code": "SOCIOLOGY_CULTURA_16",
-      "title": "Cultura aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
+      "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+      "title": "Analisar dados de desigualdade",
+      "objective": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "description": "Analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "masteryCapability": "Demonstrar que consegue analisar dados de desigualdade sem atribuir o resultado apenas ao esforco individual.",
+      "domain": "ESTRUTURA",
+      "parent": "SOCIOLOGY_STRUCTURE",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_IDENTIDADE_17",
-      "title": "Identidade aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_INSTITUICOES_18",
-      "title": "Instituicoes aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_DESIGUALDADE_19",
-      "title": "Desigualdade aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_TRABALHO_20",
-      "title": "Trabalho aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_PODER_21",
-      "title": "Poder aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_CIDADANIA_22",
-      "title": "Cidadania aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_MIDIA_23",
-      "title": "Midia aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_GLOBALIZACAO_24",
-      "title": "Globalizacao aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_JUVENTUDES_25",
-      "title": "Juventudes aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_PESQUISA_SOCIAL_26",
-      "title": "Pesquisa Social aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "SOCIOLOGY_DIVERSIDADE_27",
-      "title": "Diversidade aplicado",
-      "domain": "SOCIOLOGY_V4",
-      "parent": "SOCIETY",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,
       "recommendedGradeTo": 3

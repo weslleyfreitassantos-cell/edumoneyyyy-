@@ -3,291 +3,57 @@
   "name": "Ensino Religioso",
   "anchors": [
     {
-      "code": "DIVERSITY",
-      "title": "Diversity"
+      "code": "RELIGIOUS_TRADITIONS",
+      "title": "Tradicoes e narrativas"
     },
     {
-      "code": "DIALOGUE",
-      "title": "Dialogue"
+      "code": "RELIGIOUS_DIVERSITY",
+      "title": "Diversidade e respeito"
+    },
+    {
+      "code": "RELIGIOUS_DIALOGUE",
+      "title": "Dialogo e direitos"
     }
   ],
   "leaves": [
     {
-      "code": "RELIGIOUS_SOURCE_INTERPRETATION",
-      "title": "Interpretar fontes sobre tradicoes",
-      "domain": "INTERPRETACAO",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_01",
-      "title": "Diversidade Religiosa aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
+      "code": "RELIGIOUS_COMPARE_TRADITIONS",
+      "title": "Comparar tradicoes com respeito",
+      "objective": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "description": "Comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "masteryCapability": "Demonstrar que consegue comparar tradicoes religiosas e nao religiosas reconhecendo diversidade interna e direitos.",
+      "domain": "DIVERSIDADE",
+      "parent": "RELIGIOUS_DIVERSITY",
       "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "RELIGIOUS_EDUCATION_SIMBOLOS_02",
-      "title": "Simbolos aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_NARRATIVAS_03",
-      "title": "Narrativas aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "ADAPTIVE_READY",
+      "code": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "title": "Interpretar simbolos e narrativas",
+      "objective": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "description": "Interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "masteryCapability": "Demonstrar que consegue interpretar simbolos e narrativas considerando o contexto da comunidade que os utiliza.",
+      "domain": "TRADICOES",
+      "parent": "RELIGIOUS_TRADITIONS",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "RELIGIOUS_EDUCATION_ETICA_04",
-      "title": "Etica aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_CONVIVENCIA_05",
-      "title": "Convivencia aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_DIREITOS_HUMANOS_06",
-      "title": "Direitos Humanos aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_RITUAIS_07",
-      "title": "Rituais aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_COMUNIDADE_08",
-      "title": "Comunidade aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_COSMOVISOES_09",
-      "title": "Cosmovisoes aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_AMBIENTE_10",
-      "title": "Ambiente aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_DIALOGO_11",
-      "title": "Dialogo aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_PRECONCEITO_12",
-      "title": "Preconceito aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_IDENTIDADE_13",
-      "title": "Identidade aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_CULTURA_E_MEMORIA_14",
-      "title": "Cultura E Memoria aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_15",
-      "title": "Diversidade Religiosa aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
+      "code": "RELIGIOUS_MEDIATE_DIALOGUE",
+      "title": "Mediar dialogo sobre conviccoes",
+      "objective": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "description": "Mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "masteryCapability": "Demonstrar que consegue mediar um dialogo sobre conviccoes diferentes sem transformar diferenca em hierarquia.",
+      "domain": "DIALOGO",
+      "parent": "RELIGIOUS_DIALOGUE",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_SIMBOLOS_16",
-      "title": "Simbolos aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_NARRATIVAS_17",
-      "title": "Narrativas aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_ETICA_18",
-      "title": "Etica aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_CONVIVENCIA_19",
-      "title": "Convivencia aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_DIREITOS_HUMANOS_20",
-      "title": "Direitos Humanos aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_RITUAIS_21",
-      "title": "Rituais aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_COMUNIDADE_22",
-      "title": "Comunidade aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_COSMOVISOES_23",
-      "title": "Cosmovisoes aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_AMBIENTE_24",
-      "title": "Ambiente aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_DIALOGO_25",
-      "title": "Dialogo aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_PRECONCEITO_26",
-      "title": "Preconceito aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIALOGUE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "RELIGIOUS_EDUCATION_IDENTIDADE_27",
-      "title": "Identidade aplicado",
-      "domain": "RELIGIOUS_EDUCATION_V4",
-      "parent": "DIVERSITY",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9

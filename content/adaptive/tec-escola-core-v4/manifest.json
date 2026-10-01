@@ -1,8 +1,15 @@
 {
   "packVersion": "tec-escola-core-v4",
-  "provenance": "Conteudo autoral versionado do TecEscola; nao e BNCC oficial.",
-  "subjectCount": 15,
-  "canonicalSubjects": [
+  "sourceOfTruth": "subjects/{subject}/skills.json + lessons.json + questions.json",
+  "provenance": "Conteudo versionado do TecEscola; parte reutilizada do V3 validado e parte autorada no V4; nao e BNCC oficial.",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "contentPolicy": "Somente conteudo explicitamente autorado pode ser ADAPTIVE_READY.",
+  "qualityTargets": [
+    "REAL_SEMANTIC_SKILLS",
+    "HONEST_CONTENT_READINESS",
+    "NO_GENERIC_TEMPLATE_FAMILIES"
+  ],
+  "subjects": [
     "PORTUGUESE",
     "MATHEMATICS",
     "SCIENCE",
@@ -18,15 +25,5 @@
     "ENGLISH",
     "RELIGIOUS_EDUCATION",
     "COMPUTING"
-  ],
-  "sourceOfTruth": "subjects/{subject}/skills.json + lessons.json + questions.json",
-  "contentReadinessPolicy": "Only ADAPTIVE_READY leaves may be selected by the planner; GRAPH_ONLY nodes preserve graph edges but are not mastery targets.",
-  "scaleTargets": {
-    "minimumCanonicalNodes": 400,
-    "minimumAdaptiveReadyLeaves": 180,
-    "minimumLessons": 180,
-    "minimumQuestions": 1440,
-    "minimumCrossSubjectRelationships": 30
-  },
-  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING"
+  ]
 }

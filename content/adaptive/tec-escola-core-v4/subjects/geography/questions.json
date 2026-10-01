@@ -1,3474 +1,388 @@
 [
   {
-    "id": "v4-scale-geography-01-01",
+    "id": "v3-geography-geography_territory-1",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 1, como interpretar escala cartografica na etapa probe da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Aplicar escala cartografica usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de escala cartografica",
-      "Trocar escala cartografica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de escala cartografica": [
-        "V4_GEOGRAPHY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 1, como interpretar escala cartografica na etapa probe da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar escala cartografica usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de escala cartografica",
-      "Trocar escala cartografica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 1, como interpretar escala cartografica na etapa practice da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Trocar escala cartografica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar escala cartografica usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de escala cartografica"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar escala cartografica por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 1, como interpretar escala cartografica na etapa practice da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de escala cartografica",
-      "Trocar escala cartografica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar escala cartografica usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de escala cartografica": [
-        "V4_GEOGRAPHY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 1, como interpretar escala cartografica na etapa transfer da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Aplicar escala cartografica usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de escala cartografica",
-      "Trocar escala cartografica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de escala cartografica": [
-        "V4_GEOGRAPHY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 1, como interpretar escala cartografica na etapa lock_in da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar escala cartografica usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de escala cartografica",
-      "Trocar escala cartografica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 1, como interpretar escala cartografica na etapa review da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Trocar escala cartografica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar escala cartografica usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de escala cartografica"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar escala cartografica por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_01_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-01-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "escala cartografica",
-    "primarySkill": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 1, como interpretar escala cartografica na etapa review da trilha GEOGRAPHY_ESCALA_CARTOGRAFICA_01?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de escala cartografica",
-      "Trocar escala cartografica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar escala cartografica usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar escala cartografica usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona escala cartografica ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de escala cartografica": [
-        "V4_GEOGRAPHY_01_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 2, como interpretar representacao do espaco na etapa probe da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Aplicar representacao do espaco usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de representacao do espaco",
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de representacao do espaco": [
-        "V4_GEOGRAPHY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 2, como interpretar representacao do espaco na etapa probe da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar representacao do espaco usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de representacao do espaco",
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 2, como interpretar representacao do espaco na etapa practice da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar representacao do espaco usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de representacao do espaco"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 2, como interpretar representacao do espaco na etapa practice da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de representacao do espaco",
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar representacao do espaco usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de representacao do espaco": [
-        "V4_GEOGRAPHY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 2, como interpretar representacao do espaco na etapa transfer da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Aplicar representacao do espaco usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de representacao do espaco",
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de representacao do espaco": [
-        "V4_GEOGRAPHY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 2, como interpretar representacao do espaco na etapa lock_in da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar representacao do espaco usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de representacao do espaco",
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 2, como interpretar representacao do espaco na etapa review da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar representacao do espaco usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de representacao do espaco"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_02_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-02-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "representacao do espaco",
-    "primarySkill": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 2, como interpretar representacao do espaco na etapa review da trilha GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de representacao do espaco",
-      "Trocar representacao do espaco por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar representacao do espaco usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar representacao do espaco usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona representacao do espaco ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de representacao do espaco": [
-        "V4_GEOGRAPHY_02_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-03-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
+    "domain": "TERRITORIO",
     "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
     "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 3, como interpretar territorio na etapa probe da trilha GEOGRAPHY_TERRITORIO_03?",
+    "contextFamily": "TERRITORIO",
+    "statement": "Uma comunidade controla o uso de uma area e define regras de acesso. Esse espaco e analisado como:",
     "options": [
-      "Aplicar territorio usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de territorio",
-      "Trocar territorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
+      "Territorio.",
+      "Clima.",
+      "Relevo apenas.",
+      "Fuso horario."
     ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona territorio ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "correctAnswer": "Territorio.",
+    "explanation": "Territorio envolve poder, controle e apropriacao do espaco.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de territorio": [
-        "V4_GEOGRAPHY_03_CONTEXT_OMISSION"
+      "Clima.": [
+        "TERRITORY_CONFUSED_WITH_LOCATION"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-03-02",
+    "id": "v3-geography-geography_territory-2",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "paisagem",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PROBE",
     "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 3, como interpretar territorio na etapa probe da trilha GEOGRAPHY_TERRITORIO_03?",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "PAISAGEM",
+    "statement": "Uma paisagem com predios, avenida e rio registra:",
     "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar territorio usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de territorio",
-      "Trocar territorio por outro conceito sem justificar a relacao"
+      "Somente atividades rurais.",
+      "Elementos naturais e transformacoes humanas.",
+      "Somente clima.",
+      "Apenas fronteiras politicas."
     ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona territorio ao contexto dados_observados e explicita a evidencia observada.",
+    "correctAnswer": "Elementos naturais e transformacoes humanas.",
+    "explanation": "Paisagem reune elementos percebidos e suas marcas historicas.",
     "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_03_CONCEPT_SWAP"
+      "Somente clima.": [
+        "LANDSCAPE_NATURAL_ONLY"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-03-03",
+    "id": "v3-geography-geography_territory-3",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
+    "domain": "TERRITORIO",
+    "topic": "escala",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "ESCALA",
+    "statement": "Em um mapa de escala grande, uma quadra aparece com mais detalhes porque:",
+    "options": [
+      "A escala nao muda o detalhe.",
+      "A legenda deixa de ser necessaria.",
+      "A area representada e menor e o detalhamento e maior.",
+      "Todo mapa grande mostra o planeta."
     ],
+    "correctAnswer": "A area representada e menor e o detalhamento e maior.",
+    "explanation": "Escala grande permite observar area menor com mais detalhe.",
+    "misconceptions": {
+      "Todo mapa grande mostra o planeta.": [
+        "MAP_SCALE_REVERSED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-4",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "rede urbana",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 3, como interpretar territorio na etapa practice da trilha GEOGRAPHY_TERRITORIO_03?",
+    "contextFamily": "REDE_URBANA",
+    "statement": "Uma cidade ligada a outras por transporte, comercio e servicos participa de:",
     "options": [
-      "Trocar territorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar territorio usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de territorio"
+      "Um ecossistema fechado.",
+      "Uma bacia hidrografica.",
+      "Uma fronteira natural.",
+      "Uma rede urbana."
     ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona territorio ao contexto texto_explicativo e explicita a evidencia observada.",
+    "correctAnswer": "Uma rede urbana.",
+    "explanation": "Fluxos entre cidades formam redes de relacoes.",
     "misconceptions": {
-      "Trocar territorio por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_03_CONTEXT_OMISSION"
+      "Um ecossistema fechado.": [
+        "URBAN_NETWORK_DENIED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-03-04",
+    "id": "v3-geography-geography_territory-5",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "legenda",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 3, como interpretar territorio na etapa practice da trilha GEOGRAPHY_TERRITORIO_03?",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "LEGENDA",
+    "statement": "A legenda de um mapa serve para:",
     "options": [
-      "Ignorar o contexto e repetir uma regra de territorio",
-      "Trocar territorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar territorio usando as evidencias de projeto_aplicado"
+      "Explicar simbolos e cores usados na representacao.",
+      "Indicar apenas a orientacao do norte.",
+      "Substituir a escala.",
+      "Mostrar dados que nao foram mapeados."
     ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona territorio ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "correctAnswer": "Explicar simbolos e cores usados na representacao.",
+    "explanation": "A legenda permite interpretar sinais cartograficos.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de territorio": [
-        "V4_GEOGRAPHY_03_CONCEPT_SWAP"
+      "Indicar apenas a orientacao do norte.": [
+        "LEGEND_CONFUSED_WITH_SCALE"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-03-05",
+    "id": "v3-geography-geography_territory-6",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "fronteira",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
-    "purpose": "TRANSFER",
+    "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 3, como interpretar territorio na etapa transfer da trilha GEOGRAPHY_TERRITORIO_03?",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "FRONTEIRA",
+    "statement": "Uma fronteira politica pode mudar por acordos ou conflitos. Isso mostra que:",
     "options": [
-      "Aplicar territorio usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de territorio",
-      "Trocar territorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
+      "Mapas nao expressam poder.",
+      "Fronteiras sao construcoes historicas e politicas.",
+      "Fronteiras naturais nunca mudam.",
+      "Todo limite e apenas fisico."
     ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona territorio ao contexto laboratorio e explicita a evidencia observada.",
+    "correctAnswer": "Fronteiras sao construcoes historicas e politicas.",
+    "explanation": "Limites territoriais resultam de processos sociais e politicos.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de territorio": [
-        "V4_GEOGRAPHY_03_CONTEXT_OMISSION"
+      "Fronteiras naturais nunca mudam.": [
+        "BORDER_TREATED_AS_NATURAL"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-03-06",
+    "id": "v3-geography-geography_territory-7",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "uso do solo",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 3, como interpretar territorio na etapa lock_in da trilha GEOGRAPHY_TERRITORIO_03?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar territorio usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de territorio",
-      "Trocar territorio por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona territorio ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_03_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-03-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
+    "purpose": "PRACTICE",
     "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 3, como interpretar territorio na etapa review da trilha GEOGRAPHY_TERRITORIO_03?",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "USO_DO_SOLO",
+    "statement": "A substituicao de area verde por estacionamento altera principalmente:",
     "options": [
-      "Trocar territorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar territorio usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de territorio"
+      "A distancia ao Sol.",
+      "A composicao do nucleo terrestre.",
+      "O uso do solo e a drenagem local.",
+      "A rotacao da Terra."
     ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona territorio ao contexto debate_orientado e explicita a evidencia observada.",
+    "correctAnswer": "O uso do solo e a drenagem local.",
+    "explanation": "Cobertura e uso do solo influenciam escoamento e ocupacao.",
     "misconceptions": {
-      "Trocar territorio por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_03_CONTEXT_OMISSION"
+      "A rotacao da Terra.": [
+        "LAND_USE_EFFECT_IGNORED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-03-08",
+    "id": "v3-geography-geography_territory-8",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "territorio",
-    "primarySkill": "GEOGRAPHY_TERRITORIO_03",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 3, como interpretar territorio na etapa review da trilha GEOGRAPHY_TERRITORIO_03?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de territorio",
-      "Trocar territorio por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar territorio usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar territorio usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona territorio ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de territorio": [
-        "V4_GEOGRAPHY_03_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
+    "domain": "TERRITORIO",
     "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 4, como interpretar populacao na etapa probe da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Aplicar populacao usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de populacao",
-      "Trocar populacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona populacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de populacao": [
-        "V4_GEOGRAPHY_04_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 4, como interpretar populacao na etapa probe da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar populacao usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de populacao",
-      "Trocar populacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona populacao ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 4, como interpretar populacao na etapa practice da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Trocar populacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar populacao usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de populacao"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona populacao ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar populacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_04_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 4, como interpretar populacao na etapa practice da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de populacao",
-      "Trocar populacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar populacao usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona populacao ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de populacao": [
-        "V4_GEOGRAPHY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "TRANSFER",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 4, como interpretar populacao na etapa transfer da trilha GEOGRAPHY_POPULACAO_04?",
+    "contextFamily": "POPULACAO",
+    "statement": "Um mapa mostra concentracao de moradores perto de corredores de onibus. Uma hipotese adequada e:",
     "options": [
-      "Aplicar populacao usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de populacao",
-      "Trocar populacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
+      "Onibus determinam toda renda.",
+      "Nao existe relacao espacial possivel.",
+      "A populacao se distribui ao acaso.",
+      "Transporte influencia acessibilidade e ocupacao."
     ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona populacao ao contexto laboratorio e explicita a evidencia observada.",
+    "correctAnswer": "Transporte influencia acessibilidade e ocupacao.",
+    "explanation": "A concentracao sugere uma relacao a investigar.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de populacao": [
-        "V4_GEOGRAPHY_04_CONTEXT_OMISSION"
+      "Onibus determinam toda renda.": [
+        "SPATIAL_PATTERN_OVERSTATED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-04-06",
+    "id": "v3-geography-geography_territory-9",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 4, como interpretar populacao na etapa lock_in da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar populacao usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de populacao",
-      "Trocar populacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona populacao ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 4, como interpretar populacao na etapa review da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Trocar populacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar populacao usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de populacao"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona populacao ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar populacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_04_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-04-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "populacao",
-    "primarySkill": "GEOGRAPHY_POPULACAO_04",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 4, como interpretar populacao na etapa review da trilha GEOGRAPHY_POPULACAO_04?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de populacao",
-      "Trocar populacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar populacao usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar populacao usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona populacao ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de populacao": [
-        "V4_GEOGRAPHY_04_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-05-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 5, como interpretar urbanizacao na etapa probe da trilha GEOGRAPHY_URBANIZACAO_05?",
-    "options": [
-      "Aplicar urbanizacao usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de urbanizacao",
-      "Trocar urbanizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de urbanizacao": [
-        "V4_GEOGRAPHY_05_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-05-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 5, como interpretar urbanizacao na etapa probe da trilha GEOGRAPHY_URBANIZACAO_05?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar urbanizacao usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de urbanizacao",
-      "Trocar urbanizacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_05_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-05-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 5, como interpretar urbanizacao na etapa practice da trilha GEOGRAPHY_URBANIZACAO_05?",
-    "options": [
-      "Trocar urbanizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar urbanizacao usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de urbanizacao"
-    ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar urbanizacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_05_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-05-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 5, como interpretar urbanizacao na etapa practice da trilha GEOGRAPHY_URBANIZACAO_05?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de urbanizacao",
-      "Trocar urbanizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar urbanizacao usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de urbanizacao": [
-        "V4_GEOGRAPHY_05_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-05-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "clima e tempo",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "TRANSFER",
     "difficulty": "MEDIUM",
     "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 5, como interpretar urbanizacao na etapa transfer da trilha GEOGRAPHY_URBANIZACAO_05?",
+    "contextFamily": "CLIMA_E_TEMPO",
+    "statement": "A previsao indica chuva amanha; a media de chuvas de uma regiao em trinta anos descreve:",
     "options": [
-      "Aplicar urbanizacao usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de urbanizacao",
-      "Trocar urbanizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
+      "Clima.",
+      "Tempo atmosferico de amanha.",
+      "Latitude apenas.",
+      "Relevo de uma rua."
     ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto laboratorio e explicita a evidencia observada.",
+    "correctAnswer": "Clima.",
+    "explanation": "Clima e o comportamento medio em periodo longo.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de urbanizacao": [
-        "V4_GEOGRAPHY_05_CONTEXT_OMISSION"
+      "Tempo atmosferico de amanha.": [
+        "CLIMATE_TIME_CONFUSED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-05-06",
+    "id": "v3-geography-geography_territory-10",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
+    "domain": "TERRITORIO",
+    "topic": "migracao",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MIGRACAO",
+    "statement": "Pessoas deixam uma regiao por falta de trabalho e procuram emprego em outra. Esse movimento e:",
+    "options": [
+      "Urbanizacao sem deslocamento.",
+      "Migracao motivada por fator economico.",
+      "Rotacao terrestre.",
+      "Erosao."
     ],
+    "correctAnswer": "Migracao motivada por fator economico.",
+    "explanation": "A mudanca de lugar tem relacao com oportunidade de trabalho.",
+    "misconceptions": {
+      "Rotacao terrestre.": [
+        "MIGRATION_CAUSE_MISREAD"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
+  },
+  {
+    "id": "v3-geography-geography_territory-11",
+    "subject": "GEOGRAPHY",
+    "domain": "TERRITORIO",
+    "topic": "alagamento",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "LOCK_IN",
     "difficulty": "HARD",
     "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 5, como interpretar urbanizacao na etapa lock_in da trilha GEOGRAPHY_URBANIZACAO_05?",
+    "contextFamily": "ALAGAMENTO",
+    "statement": "A impermeabilizacao de muitas ruas pode aumentar alagamentos porque:",
     "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar urbanizacao usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de urbanizacao",
-      "Trocar urbanizacao por outro conceito sem justificar a relacao"
+      "A chuva deixa de existir.",
+      "O relevo desaparece.",
+      "A agua infiltra menos e escoa mais rapidamente.",
+      "O solo passa a absorver mais agua."
     ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "correctAnswer": "A agua infiltra menos e escoa mais rapidamente.",
+    "explanation": "Superficies impermeaveis reduzem infiltracao.",
     "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_05_CONCEPT_SWAP"
+      "O solo passa a absorver mais agua.": [
+        "IMPERMEABILITY_EFFECT_REVERSED"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-05-07",
+    "id": "v3-geography-geography_territory-12",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 5, como interpretar urbanizacao na etapa review da trilha GEOGRAPHY_URBANIZACAO_05?",
-    "options": [
-      "Trocar urbanizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar urbanizacao usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de urbanizacao"
-    ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar urbanizacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_05_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-05-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "urbanizacao",
-    "primarySkill": "GEOGRAPHY_URBANIZACAO_05",
-    "supportingSkills": [
-      "SPACE"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "desigualdade territorial",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
     "purpose": "REVIEW",
     "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 5, como interpretar urbanizacao na etapa review da trilha GEOGRAPHY_URBANIZACAO_05?",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DESIGUALDADE_TERRITORIAL",
+    "statement": "Dois bairros tem a mesma distancia do centro, mas servicos diferentes. O que a analise deve considerar?",
     "options": [
-      "Ignorar o contexto e repetir uma regra de urbanizacao",
-      "Trocar urbanizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar urbanizacao usando as evidencias de revisao_guiada"
+      "Somente a distancia em linha reta.",
+      "Apenas o nome dos bairros.",
+      "A altitude como unica causa.",
+      "Infraestrutura, renda, mobilidade e politicas territoriais."
     ],
-    "correctAnswer": "Aplicar urbanizacao usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona urbanizacao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "correctAnswer": "Infraestrutura, renda, mobilidade e politicas territoriais.",
+    "explanation": "Desigualdade territorial resulta de varios fatores articulados.",
     "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de urbanizacao": [
-        "V4_GEOGRAPHY_05_CONCEPT_SWAP"
+      "Somente a distancia em linha reta.": [
+        "DISTANCE_EXPLAINS_ALL"
       ]
     },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "provenance": "TECESCOLA_CORE_V3_REUSED",
+    "content_authoring_status": "TECH_VALIDATED"
   },
   {
-    "id": "v4-scale-geography-06-01",
+    "id": "v4-authored-geography-review-01",
     "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
+    "domain": "TERRITORIO",
+    "topic": "Interpretar territorio e paisagem",
+    "primarySkill": "GEOGRAPHY_INTERPRET_TERRITORY",
+    "supportingSkills": [],
     "prerequisiteSkills": [],
     "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 6, como interpretar clima na etapa probe da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Aplicar clima usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de clima",
-      "Trocar clima por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona clima ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de clima": [
-        "V4_GEOGRAPHY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 6, como interpretar clima na etapa probe da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar clima usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de clima",
-      "Trocar clima por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona clima ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 6, como interpretar clima na etapa practice da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Trocar clima por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar clima usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de clima"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona clima ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar clima por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 6, como interpretar clima na etapa practice da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de clima",
-      "Trocar clima por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar clima usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona clima ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de clima": [
-        "V4_GEOGRAPHY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 6, como interpretar clima na etapa transfer da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Aplicar clima usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de clima",
-      "Trocar clima por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona clima ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de clima": [
-        "V4_GEOGRAPHY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
+    "purpose": "REVIEW",
     "difficulty": "HARD",
     "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 6, como interpretar clima na etapa lock_in da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar clima usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de clima",
-      "Trocar clima por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona clima ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 6, como interpretar clima na etapa review da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Trocar clima por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar clima usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de clima"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona clima ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar clima por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_06_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-06-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "clima",
-    "primarySkill": "GEOGRAPHY_CLIMA_06",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 6, como interpretar clima na etapa review da trilha GEOGRAPHY_CLIMA_06?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de clima",
-      "Trocar clima por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar clima usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar clima usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona clima ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de clima": [
-        "V4_GEOGRAPHY_06_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 7, como interpretar biomas na etapa probe da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Aplicar biomas usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de biomas",
-      "Trocar biomas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona biomas ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de biomas": [
-        "V4_GEOGRAPHY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 7, como interpretar biomas na etapa probe da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar biomas usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de biomas",
-      "Trocar biomas por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona biomas ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 7, como interpretar biomas na etapa practice da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Trocar biomas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar biomas usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de biomas"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona biomas ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar biomas por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 7, como interpretar biomas na etapa practice da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de biomas",
-      "Trocar biomas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar biomas usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona biomas ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de biomas": [
-        "V4_GEOGRAPHY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 7, como interpretar biomas na etapa transfer da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Aplicar biomas usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de biomas",
-      "Trocar biomas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona biomas ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de biomas": [
-        "V4_GEOGRAPHY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 7, como interpretar biomas na etapa lock_in da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar biomas usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de biomas",
-      "Trocar biomas por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona biomas ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 7, como interpretar biomas na etapa review da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Trocar biomas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar biomas usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de biomas"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona biomas ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar biomas por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_07_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-07-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "biomas",
-    "primarySkill": "GEOGRAPHY_BIOMAS_07",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 7, como interpretar biomas na etapa review da trilha GEOGRAPHY_BIOMAS_07?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de biomas",
-      "Trocar biomas por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar biomas usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar biomas usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona biomas ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de biomas": [
-        "V4_GEOGRAPHY_07_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 8, como interpretar economia na etapa probe da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Aplicar economia usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de economia",
-      "Trocar economia por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona economia ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de economia": [
-        "V4_GEOGRAPHY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 8, como interpretar economia na etapa probe da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar economia usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de economia",
-      "Trocar economia por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona economia ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 8, como interpretar economia na etapa practice da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Trocar economia por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar economia usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de economia"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona economia ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar economia por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 8, como interpretar economia na etapa practice da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de economia",
-      "Trocar economia por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar economia usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona economia ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de economia": [
-        "V4_GEOGRAPHY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 8, como interpretar economia na etapa transfer da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Aplicar economia usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de economia",
-      "Trocar economia por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona economia ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de economia": [
-        "V4_GEOGRAPHY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 8, como interpretar economia na etapa lock_in da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar economia usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de economia",
-      "Trocar economia por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona economia ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 8, como interpretar economia na etapa review da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Trocar economia por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar economia usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de economia"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona economia ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar economia por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_08_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-08-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "economia",
-    "primarySkill": "GEOGRAPHY_ECONOMIA_08",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 8, como interpretar economia na etapa review da trilha GEOGRAPHY_ECONOMIA_08?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de economia",
-      "Trocar economia por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar economia usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar economia usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona economia ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de economia": [
-        "V4_GEOGRAPHY_08_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 9, como interpretar globalizacao na etapa probe da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Aplicar globalizacao usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de globalizacao",
-      "Trocar globalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de globalizacao": [
-        "V4_GEOGRAPHY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 9, como interpretar globalizacao na etapa probe da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar globalizacao usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de globalizacao",
-      "Trocar globalizacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_09_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 9, como interpretar globalizacao na etapa practice da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Trocar globalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar globalizacao usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de globalizacao"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar globalizacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 9, como interpretar globalizacao na etapa practice da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de globalizacao",
-      "Trocar globalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar globalizacao usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de globalizacao": [
-        "V4_GEOGRAPHY_09_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 9, como interpretar globalizacao na etapa transfer da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Aplicar globalizacao usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de globalizacao",
-      "Trocar globalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de globalizacao": [
-        "V4_GEOGRAPHY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 9, como interpretar globalizacao na etapa lock_in da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar globalizacao usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de globalizacao",
-      "Trocar globalizacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_09_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 9, como interpretar globalizacao na etapa review da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Trocar globalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar globalizacao usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de globalizacao"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar globalizacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_09_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-09-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "globalizacao",
-    "primarySkill": "GEOGRAPHY_GLOBALIZACAO_09",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 9, como interpretar globalizacao na etapa review da trilha GEOGRAPHY_GLOBALIZACAO_09?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de globalizacao",
-      "Trocar globalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar globalizacao usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar globalizacao usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona globalizacao ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de globalizacao": [
-        "V4_GEOGRAPHY_09_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 10, como interpretar geopolitica na etapa probe da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Aplicar geopolitica usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de geopolitica",
-      "Trocar geopolitica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de geopolitica": [
-        "V4_GEOGRAPHY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 10, como interpretar geopolitica na etapa probe da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar geopolitica usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de geopolitica",
-      "Trocar geopolitica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 10, como interpretar geopolitica na etapa practice da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Trocar geopolitica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar geopolitica usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de geopolitica"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar geopolitica por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 10, como interpretar geopolitica na etapa practice da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de geopolitica",
-      "Trocar geopolitica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar geopolitica usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de geopolitica": [
-        "V4_GEOGRAPHY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 10, como interpretar geopolitica na etapa transfer da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Aplicar geopolitica usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de geopolitica",
-      "Trocar geopolitica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de geopolitica": [
-        "V4_GEOGRAPHY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 10, como interpretar geopolitica na etapa lock_in da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar geopolitica usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de geopolitica",
-      "Trocar geopolitica por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 10, como interpretar geopolitica na etapa review da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Trocar geopolitica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar geopolitica usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de geopolitica"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar geopolitica por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_10_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-10-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "geopolitica",
-    "primarySkill": "GEOGRAPHY_GEOPOLITICA_10",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 10, como interpretar geopolitica na etapa review da trilha GEOGRAPHY_GEOPOLITICA_10?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de geopolitica",
-      "Trocar geopolitica por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar geopolitica usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar geopolitica usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona geopolitica ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de geopolitica": [
-        "V4_GEOGRAPHY_10_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 11, como interpretar ambiente na etapa probe da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Aplicar ambiente usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de ambiente",
-      "Trocar ambiente por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ambiente": [
-        "V4_GEOGRAPHY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 11, como interpretar ambiente na etapa probe da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar ambiente usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de ambiente",
-      "Trocar ambiente por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 11, como interpretar ambiente na etapa practice da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Trocar ambiente por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar ambiente usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de ambiente"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar ambiente por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 11, como interpretar ambiente na etapa practice da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de ambiente",
-      "Trocar ambiente por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar ambiente usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ambiente": [
-        "V4_GEOGRAPHY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 11, como interpretar ambiente na etapa transfer da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Aplicar ambiente usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de ambiente",
-      "Trocar ambiente por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ambiente": [
-        "V4_GEOGRAPHY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 11, como interpretar ambiente na etapa lock_in da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar ambiente usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de ambiente",
-      "Trocar ambiente por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 11, como interpretar ambiente na etapa review da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Trocar ambiente por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar ambiente usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de ambiente"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar ambiente por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_11_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-11-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "ambiente",
-    "primarySkill": "GEOGRAPHY_AMBIENTE_11",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 11, como interpretar ambiente na etapa review da trilha GEOGRAPHY_AMBIENTE_11?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de ambiente",
-      "Trocar ambiente por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar ambiente usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar ambiente usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona ambiente ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de ambiente": [
-        "V4_GEOGRAPHY_11_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 12, como interpretar agua na etapa probe da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Aplicar agua usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de agua",
-      "Trocar agua por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona agua ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de agua": [
-        "V4_GEOGRAPHY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 12, como interpretar agua na etapa probe da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar agua usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de agua",
-      "Trocar agua por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona agua ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 12, como interpretar agua na etapa practice da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Trocar agua por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar agua usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de agua"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona agua ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar agua por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 12, como interpretar agua na etapa practice da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de agua",
-      "Trocar agua por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar agua usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona agua ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de agua": [
-        "V4_GEOGRAPHY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 12, como interpretar agua na etapa transfer da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Aplicar agua usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de agua",
-      "Trocar agua por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona agua ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de agua": [
-        "V4_GEOGRAPHY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 12, como interpretar agua na etapa lock_in da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar agua usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de agua",
-      "Trocar agua por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona agua ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 12, como interpretar agua na etapa review da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Trocar agua por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar agua usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de agua"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona agua ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar agua por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_12_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-12-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "agua",
-    "primarySkill": "GEOGRAPHY_AGUA_12",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 12, como interpretar agua na etapa review da trilha GEOGRAPHY_AGUA_12?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de agua",
-      "Trocar agua por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar agua usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar agua usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona agua ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de agua": [
-        "V4_GEOGRAPHY_12_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 13, como interpretar espaco rural na etapa probe da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Aplicar espaco rural usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de espaco rural",
-      "Trocar espaco rural por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de espaco rural": [
-        "V4_GEOGRAPHY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 13, como interpretar espaco rural na etapa probe da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar espaco rural usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de espaco rural",
-      "Trocar espaco rural por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 13, como interpretar espaco rural na etapa practice da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Trocar espaco rural por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar espaco rural usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de espaco rural"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar espaco rural por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 13, como interpretar espaco rural na etapa practice da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de espaco rural",
-      "Trocar espaco rural por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar espaco rural usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de espaco rural": [
-        "V4_GEOGRAPHY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 13, como interpretar espaco rural na etapa transfer da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Aplicar espaco rural usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de espaco rural",
-      "Trocar espaco rural por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de espaco rural": [
-        "V4_GEOGRAPHY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 13, como interpretar espaco rural na etapa lock_in da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar espaco rural usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de espaco rural",
-      "Trocar espaco rural por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 13, como interpretar espaco rural na etapa review da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Trocar espaco rural por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar espaco rural usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de espaco rural"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar espaco rural por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_13_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-13-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "espaco rural",
-    "primarySkill": "GEOGRAPHY_ESPACO_RURAL_13",
-    "supportingSkills": [
-      "SPACE"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 13, como interpretar espaco rural na etapa review da trilha GEOGRAPHY_ESPACO_RURAL_13?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de espaco rural",
-      "Trocar espaco rural por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar espaco rural usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar espaco rural usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona espaco rural ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de espaco rural": [
-        "V4_GEOGRAPHY_13_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-01",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "IDENTIFY",
-    "contextFamily": "SITUACAO_COTIDIANA",
-    "statement": "Geografia: na atividade situacao_cotidiana 14, como interpretar regionalizacao na etapa probe da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Aplicar regionalizacao usando as evidencias de situacao_cotidiana",
-      "Ignorar o contexto e repetir uma regra de regionalizacao",
-      "Trocar regionalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de situacao_cotidiana"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de situacao_cotidiana",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de regionalizacao": [
-        "V4_GEOGRAPHY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-02",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PROBE",
-    "difficulty": "EASY",
-    "cognitiveProcess": "RECOGNIZE",
-    "contextFamily": "DADOS_OBSERVADOS",
-    "statement": "Geografia: na atividade dados_observados 14, como interpretar regionalizacao na etapa probe da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Concluir antes de observar os dados de dados_observados",
-      "Aplicar regionalizacao usando as evidencias de dados_observados",
-      "Ignorar o contexto e repetir uma regra de regionalizacao",
-      "Trocar regionalizacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de dados_observados",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto dados_observados e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de dados_observados": [
-        "V4_GEOGRAPHY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-03",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "APPLY",
-    "contextFamily": "TEXTO_EXPLICATIVO",
-    "statement": "Geografia: na atividade texto_explicativo 14, como interpretar regionalizacao na etapa practice da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Trocar regionalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de texto_explicativo",
-      "Aplicar regionalizacao usando as evidencias de texto_explicativo",
-      "Ignorar o contexto e repetir uma regra de regionalizacao"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de texto_explicativo",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto texto_explicativo e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar regionalizacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-04",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "PRACTICE",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "COMPARE",
-    "contextFamily": "PROJETO_APLICADO",
-    "statement": "Geografia: na atividade projeto_aplicado 14, como interpretar regionalizacao na etapa practice da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de regionalizacao",
-      "Trocar regionalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de projeto_aplicado",
-      "Aplicar regionalizacao usando as evidencias de projeto_aplicado"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de projeto_aplicado",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto projeto_aplicado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de regionalizacao": [
-        "V4_GEOGRAPHY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-05",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "TRANSFER",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "INTERPRET",
-    "contextFamily": "LABORATORIO",
-    "statement": "Geografia: na atividade laboratorio 14, como interpretar regionalizacao na etapa transfer da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Aplicar regionalizacao usando as evidencias de laboratorio",
-      "Ignorar o contexto e repetir uma regra de regionalizacao",
-      "Trocar regionalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de laboratorio"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de laboratorio",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto laboratorio e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de regionalizacao": [
-        "V4_GEOGRAPHY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-06",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "LOCK_IN",
-    "difficulty": "HARD",
-    "cognitiveProcess": "ANALYZE",
-    "contextFamily": "MAPA_CONCEITUAL",
-    "statement": "Geografia: na atividade mapa_conceitual 14, como interpretar regionalizacao na etapa lock_in da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Concluir antes de observar os dados de mapa_conceitual",
-      "Aplicar regionalizacao usando as evidencias de mapa_conceitual",
-      "Ignorar o contexto e repetir uma regra de regionalizacao",
-      "Trocar regionalizacao por outro conceito sem justificar a relacao"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de mapa_conceitual",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto mapa_conceitual e explicita a evidencia observada.",
-    "misconceptions": {
-      "Concluir antes de observar os dados de mapa_conceitual": [
-        "V4_GEOGRAPHY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-07",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "MEDIUM",
-    "cognitiveProcess": "EVALUATE",
-    "contextFamily": "DEBATE_ORIENTADO",
-    "statement": "Geografia: na atividade debate_orientado 14, como interpretar regionalizacao na etapa review da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Trocar regionalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de debate_orientado",
-      "Aplicar regionalizacao usando as evidencias de debate_orientado",
-      "Ignorar o contexto e repetir uma regra de regionalizacao"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de debate_orientado",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto debate_orientado e explicita a evidencia observada.",
-    "misconceptions": {
-      "Trocar regionalizacao por outro conceito sem justificar a relacao": [
-        "V4_GEOGRAPHY_14_CONTEXT_OMISSION"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
-  },
-  {
-    "id": "v4-scale-geography-14-08",
-    "subject": "GEOGRAPHY",
-    "domain": "GEOGRAPHY_V4",
-    "topic": "regionalizacao",
-    "primarySkill": "GEOGRAPHY_REGIONALIZACAO_14",
-    "supportingSkills": [
-      "CARTOGRAPHY"
-    ],
-    "prerequisiteSkills": [],
-    "transferSkills": [],
-    "purpose": "REVIEW",
-    "difficulty": "HARD",
-    "cognitiveProcess": "EXPLAIN",
-    "contextFamily": "REVISAO_GUIADA",
-    "statement": "Geografia: na atividade revisao_guiada 14, como interpretar regionalizacao na etapa review da trilha GEOGRAPHY_REGIONALIZACAO_14?",
-    "options": [
-      "Ignorar o contexto e repetir uma regra de regionalizacao",
-      "Trocar regionalizacao por outro conceito sem justificar a relacao",
-      "Concluir antes de observar os dados de revisao_guiada",
-      "Aplicar regionalizacao usando as evidencias de revisao_guiada"
-    ],
-    "correctAnswer": "Aplicar regionalizacao usando as evidencias de revisao_guiada",
-    "explanation": "A resposta adequada relaciona regionalizacao ao contexto revisao_guiada e explicita a evidencia observada.",
-    "misconceptions": {
-      "Ignorar o contexto e repetir uma regra de regionalizacao": [
-        "V4_GEOGRAPHY_14_CONCEPT_SWAP"
-      ]
-    },
-    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+    "contextFamily": "REVIEW_APLICADA",
+    "statement": "Um bairro recebeu novos terminais de onibus e passou a concentrar comercio nas avenidas principais. O caso evidencia que territorio envolve:",
+    "options": [
+      "Uso do espaco por praticas e relacoes de poder.",
+      "Apenas elementos naturais sem acao humana.",
+      "Uma divisao fixa que nunca muda.",
+      "Somente a distancia entre dois pontos."
+    ],
+    "correctAnswer": "Uso do espaco por praticas e relacoes de poder.",
+    "explanation": "Territorio e produzido por usos, fluxos e relacoes sociais no espaco.",
+    "misconceptions": {},
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
   }
 ]

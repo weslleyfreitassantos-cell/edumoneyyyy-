@@ -6,13 +6,18 @@ import { fileURLToPath } from 'node:url';
 type Readiness = 'GRAPH_ONLY' | 'CONTENT_READY' | 'ADAPTIVE_READY';
 type Purpose = 'PROBE' | 'PRACTICE' | 'TRANSFER' | 'LOCK_IN' | 'REVIEW';
 type SkillKind = 'ANCHOR' | 'LEAF';
+type AuthoringStatus = 'SCAFFOLD' | 'AUTHORED' | 'TECH_VALIDATED' | 'PEDAGOGICAL_REVIEWED';
 
 interface RegistryLeaf {
   code: string;
   title: string;
   domain: string;
   parent: string;
+  objective: string;
+  description: string;
+  masteryCapability: string;
   readiness: Readiness;
+  content_authoring_status: AuthoringStatus;
   recommendedStage: StageReference['stage'];
   recommendedGradeFrom: number;
   recommendedGradeTo: number;
@@ -20,12 +25,12 @@ interface RegistryLeaf {
 interface RegistrySubject { code: string; name: string; anchors: string[]; leaves: RegistryLeaf[] }
 interface Registry { packVersion: string; subjects: RegistrySubject[] }
 interface StageReference { stage: 'FUNDAMENTAL_I' | 'FUNDAMENTAL_II' | 'ENSINO_MEDIO'; from: number; to: number }
-interface Lesson { skill: string; title: string; objective: string; summary: string; explanation: string; workedExample: string; commonMistake: string; tips: string[]; estimatedMinutes: number }
+interface Lesson { skill: string; title: string; objective: string; summary: string; explanation: string; workedExample: string; commonMistake: string; tips: string[]; estimatedMinutes: number; content_authoring_status: AuthoringStatus }
 interface Question {
   id: string; subject: string; domain: string; topic: string; primarySkill: string; supportingSkills: string[];
   prerequisiteSkills: string[]; transferSkills: string[]; purpose: Purpose; difficulty: 'EASY' | 'MEDIUM' | 'HARD';
   cognitiveProcess: string; contextFamily: string; statement: string; options: string[]; correctAnswer: string;
-  explanation: string; misconceptions: Record<string, string[]>; provenance: string;
+  explanation: string; misconceptions: Record<string, string[]>; provenance: string; content_authoring_status: AuthoringStatus;
 }
 interface Relationship { from: string; to: string; type: 'RELATED' | 'TRANSFER' | 'PREREQUISITE'; source: string; confidence: number; rationale: string }
 
@@ -55,6 +60,7 @@ export function loadV4Pack() {
   const relationships = readJson<{ hierarchy: string[][]; prerequisites: string[][]; relationships: Relationship[] }>(join(PACK, 'relationships.json'));
   const stageReferences = readJson<Record<string, StageReference[]>>(join(PACK, 'stage-references.json'));
   const misconceptions = readJson<Record<string, string[]>>(join(PACK, 'misconceptions.json'));
+  const misconceptionDetails = readJson<Record<string, { title: string; description: string; affectedSkills: string[] }>>(join(PACK, 'misconception-details.json'));
   const subjects = readdirSync(join(PACK, 'subjects'), { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
     .sort((left, right) => left.name.localeCompare(right.name))
@@ -79,7 +85,7 @@ export function loadV4Pack() {
     subject: subject.code,
   })));
   const leaves = registry.subjects.flatMap((subject) => subject.leaves.map((leaf) => ({ ...leaf, subject: subject.code })));
-  return { manifest, registry, relationships, stageReferences, misconceptions, questions, lessons, anchors, leaves };
+  return { manifest, registry, relationships, stageReferences, misconceptions, misconceptionDetails, questions, lessons, anchors, leaves };
 }
 
 export interface V4ValidationResult {
@@ -97,6 +103,17 @@ export interface V4ValidationResult {
   misconceptionCount: number;
   prerequisiteCount: number;
   crossSubjectRelationshipCount: number;
+  contentReadyCount: number;
+  realSelectableQuestions: number;
+  reusedV2V3Questions: number;
+  newRealV4Questions: number;
+  genericTemplateQuestions: number;
+  genericTemplateLessons: number;
+  genericTemplateFamilies: number;
+  duplicateSemanticSkills: string[];
+  numericSuffixDuplicateConcepts: string[];
+  realMisconceptions: number;
+  genericMisconceptions: number;
   subjectsWithoutAdaptiveReady: string[];
   unknownSecondarySkills: string[];
   unknownPrerequisites: string[];
@@ -109,9 +126,22 @@ export interface V4ValidationResult {
 const STAGES = new Set(['FUNDAMENTAL_I', 'FUNDAMENTAL_II', 'ENSINO_MEDIO']);
 const COGNITIVE_PROCESSES = new Set(['IDENTIFY', 'RECOGNIZE', 'APPLY', 'COMPARE', 'INTERPRET', 'ANALYZE', 'EVALUATE', 'EXPLAIN', 'INFER', 'ARGUE']);
 const DIFFICULTIES = new Set(['EASY', 'MEDIUM', 'HARD']);
+const AUTHORING_STATUSES = new Set<AuthoringStatus>(['SCAFFOLD', 'AUTHORED', 'TECH_VALIDATED', 'PEDAGOGICAL_REVIEWED']);
+const TEMPLATE_PATTERNS = [
+  /na atividade\b/i,
+  /na etapa\b/i,
+  /trilha de\b/i,
+  /trilha [A-Z_]+/i,
+  /aplicar .* usando as evidencias/i,
+  /ignorar o contexto/i,
+  /trocar .* por outro conceito/i,
+  /concluir antes de observar/i,
+];
 function normalizedTokens(value: string): string[] {
   return value.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim().split(/\s+/).filter(Boolean);
 }
+function normalizedSemantic(value: string): string { return normalizedTokens(value).join(' '); }
+function templateLike(value: string): boolean { return TEMPLATE_PATTERNS.some((pattern) => pattern.test(value)); }
 function nearDuplicate(left: string, right: string): boolean {
   const a = new Set(normalizedTokens(left));
   const b = new Set(normalizedTokens(right));
@@ -144,6 +174,9 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   const anchors = new Set(pack.anchors.map((skill) => skill.code));
   const lessonsBySkill = new Map(pack.lessons.map((lesson) => [lesson.skill, lesson]));
   const questionsBySkill = new Map<string, Question[]>();
+  const semanticSkillCodes = new Map<string, string>();
+  const duplicateSemanticSkills: string[] = [];
+  const numericSuffixDuplicateConcepts: string[] = [];
   for (const question of pack.questions) questionsBySkill.set(question.primarySkill, [...(questionsBySkill.get(question.primarySkill) ?? []), question]);
   for (const skill of [...pack.anchors, ...pack.leaves]) {
     if (skillCodes.has(skill.code)) errors.push(`DUPLICATE_SKILL:${skill.code}`);
@@ -157,11 +190,20 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     }
   }
   for (const leaf of pack.leaves) {
+    if (!leaf.title.trim() || !leaf.objective.trim() || !leaf.description.trim() || !leaf.masteryCapability.trim()) errors.push(`LEAF_WITHOUT_EXPLICIT_OUTCOME:${leaf.code}`);
+    if (!AUTHORING_STATUSES.has(leaf.content_authoring_status)) errors.push(`INVALID_AUTHORING_STATUS:${leaf.code}`);
+    if (leaf.readiness === 'ADAPTIVE_READY' && leaf.content_authoring_status === 'SCAFFOLD') errors.push(`READY_SCAFFOLD:${leaf.code}`);
+    if (/_\d{2}$/.test(leaf.code)) numericSuffixDuplicateConcepts.push(leaf.code);
+    const semantic = normalizedSemantic(`${leaf.title} ${leaf.objective}`);
+    const previousSemantic = semanticSkillCodes.get(semantic);
+    if (previousSemantic) duplicateSemanticSkills.push(`${previousSemantic}:${leaf.code}`);
+    semanticSkillCodes.set(semantic, leaf.code);
     if (!anchors.has(leaf.parent)) errors.push(`UNKNOWN_PARENT:${leaf.code}:${leaf.parent}`);
     if (leaf.readiness === 'CONTENT_READY' || leaf.readiness === 'ADAPTIVE_READY') {
       const lesson = lessonsBySkill.get(leaf.code);
       const questions = questionsBySkill.get(leaf.code) ?? [];
       if (!lesson || questions.length === 0) errors.push(`CONTENT_READY_WITHOUT_CONTENT:${leaf.code}`);
+      if (lesson && !AUTHORING_STATUSES.has(lesson.content_authoring_status)) errors.push(`INVALID_LESSON_AUTHORING_STATUS:${leaf.code}`);
       if (leaf.readiness === 'ADAPTIVE_READY' && (!lesson || !lesson.objective || !lesson.summary || !lesson.explanation || !lesson.workedExample || !lesson.commonMistake || !lesson.tips.length || !lesson.estimatedMinutes)) errors.push(`ADAPTIVE_READY_WITHOUT_LESSON:${leaf.code}`);
       if (leaf.readiness === 'CONTENT_READY') continue;
       const byPurpose = new Map(PURPOSES.map((purpose) => [purpose, questions.filter((question) => question.purpose === purpose).length]));
@@ -175,6 +217,12 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   }
   const knownSubjects = new Set(pack.registry.subjects.map((subject) => subject.code));
   const knownMisconceptionTags = new Set(Object.values(pack.misconceptions).flat());
+  const detailTags = new Set(Object.keys(pack.misconceptionDetails));
+  for (const [tag, detail] of Object.entries(pack.misconceptionDetails)) {
+    if (!detail.title.trim() || !detail.description.trim() || !detail.affectedSkills.length) errors.push(`INCOMPLETE_MISCONCEPTION_DETAIL:${tag}`);
+    for (const skill of detail.affectedSkills) if (!skillCodes.has(skill)) errors.push(`UNKNOWN_MISCONCEPTION_SKILL:${tag}:${skill}`);
+  }
+  for (const tag of knownMisconceptionTags) if (!detailTags.has(tag)) errors.push(`MISSING_MISCONCEPTION_DETAIL:${tag}`);
   const validateEdgeList = (label: string, edges: string[][]) => {
     for (const edge of edges) {
       if (edge.length !== 2 || !skillCodes.has(edge[0]) || !skillCodes.has(edge[1])) errors.push(`UNKNOWN_${label}:${edge.join(':')}`);
@@ -191,6 +239,16 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   const stemList: string[] = [];
   const questionIds = new Set<string>();
   const answerPositionCounts = [0, 0, 0, 0];
+  let genericTemplateQuestions = 0;
+  let genericTemplateLessons = 0;
+  const genericTemplateFamilies = new Set<string>();
+  for (const lesson of pack.lessons) {
+    if (!AUTHORING_STATUSES.has(lesson.content_authoring_status)) errors.push(`INVALID_LESSON_AUTHORING_STATUS:${lesson.skill}`);
+    if (templateLike(JSON.stringify(lesson))) {
+      genericTemplateLessons += 1;
+      genericTemplateFamilies.add(normalizedSemantic(lesson.title).replace(/\b\d+\b/g, '#'));
+    }
+  }
   for (const question of pack.questions) {
     if (!knownSubjects.has(question.subject)) errors.push(`UNKNOWN_SUBJECT:${question.id}`);
     if (!skillCodes.has(question.primarySkill)) errors.push(`UNKNOWN_PRIMARY:${question.id}`);
@@ -205,7 +263,11 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     if (!DIFFICULTIES.has(question.difficulty) || !COGNITIVE_PROCESSES.has(question.cognitiveProcess) || !PURPOSES.includes(question.purpose)) errors.push(`INVALID_QUESTION_ENUM:${question.id}`);
     if (question.options.length < 2 || new Set(question.options.map((option) => option.trim())).size !== question.options.length) errors.push(`INVALID_OPTIONS:${question.id}`);
     if (!question.options.includes(question.correctAnswer)) errors.push(`INVALID_ANSWER:${question.id}`);
-    if (!question.explanation.trim() || !question.provenance.trim() || !question.contextFamily.trim()) errors.push(`INCOMPLETE_QUESTION:${question.id}`);
+    if (!question.explanation.trim() || !question.provenance.trim() || !question.contextFamily.trim() || !AUTHORING_STATUSES.has(question.content_authoring_status)) errors.push(`INCOMPLETE_QUESTION:${question.id}`);
+    if (templateLike(JSON.stringify(question))) {
+      genericTemplateQuestions += 1;
+      genericTemplateFamilies.add(normalizedSemantic(question.statement).replace(/\b\d+\b/g, '#'));
+    }
     for (const reference of [...question.supportingSkills, ...question.prerequisiteSkills, ...question.transferSkills]) {
       if (!skillCodes.has(reference)) errors.push(`UNKNOWN_SECONDARY_SKILL:${question.id}:${reference}`);
     }
@@ -231,7 +293,7 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
       errors.push(`INVALID_LEAF_STAGE_METADATA:${leaf.code}`);
     }
   }
-  const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, misconceptions: pack.misconceptions, questions: pack.questions, lessons: pack.lessons })).digest('hex');
+  const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, misconceptions: pack.misconceptions, misconceptionDetails: pack.misconceptionDetails, questions: pack.questions, lessons: pack.lessons })).digest('hex');
   const unknownPrerequisites = pack.relationships.prerequisites.filter(([from, to]) => !skillCodes.has(from) || !skillCodes.has(to)).map((edge) => edge.join(':')).sort();
   const prerequisiteCycles = cycleNodes(pack.relationships.prerequisites);
   for (const cycle of prerequisiteCycles) errors.push(`PREREQUISITE_CYCLE:${cycle}`);
@@ -240,16 +302,20 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     return subjectFor(relationship.from) !== subjectFor(relationship.to);
   }).length;
   const subjectsWithoutAdaptiveReady = pack.registry.subjects.filter((subject) => !subject.leaves.some((leaf) => leaf.readiness === 'ADAPTIVE_READY')).map((subject) => subject.code);
-  for (const subject of subjectsWithoutAdaptiveReady) errors.push(`SUBJECT_WITHOUT_ADAPTIVE_READY:${subject}`);
-  if (pack.anchors.length + pack.leaves.length < 400) errors.push('SCALE_CANONICAL_NODES_BELOW_400');
-  if (adaptiveReadyCount < 180) errors.push('SCALE_ADAPTIVE_READY_LEAVES_BELOW_180');
-  if (pack.lessons.length < 180) errors.push('SCALE_LESSONS_BELOW_180');
-  if (pack.questions.length < 1440) errors.push('SCALE_QUESTIONS_BELOW_1440');
-  if (crossSubjectRelationshipCount < 30) errors.push('SCALE_CROSS_SUBJECT_RELATIONSHIPS_BELOW_30');
+  const contentReadyCount = pack.leaves.filter((leaf) => leaf.readiness === 'CONTENT_READY').length;
+  const readySkills = new Set(pack.leaves.filter((leaf) => leaf.readiness === 'ADAPTIVE_READY').map((leaf) => leaf.code));
+  const realSelectableQuestions = pack.questions.filter((question) => readySkills.has(question.primarySkill) && !templateLike(JSON.stringify(question))).length;
+  const reusedV2V3Questions = pack.questions.filter((question) => question.provenance === 'TECESCOLA_CORE_V3_REUSED').length;
+  const newRealV4Questions = pack.questions.filter((question) => question.provenance === 'TECESCOLA_CORE_V4_AUTHORED').length;
+  for (const code of duplicateSemanticSkills) errors.push(`DUPLICATE_SEMANTIC_SKILL:${code}`);
+  for (const code of numericSuffixDuplicateConcepts) errors.push(`NUMERIC_SUFFIX_DUPLICATE_CONCEPT:${code}`);
+  if (genericTemplateQuestions) errors.push(`GENERIC_TEMPLATE_QUESTIONS:${genericTemplateQuestions}`);
+  if (genericTemplateLessons) errors.push(`GENERIC_TEMPLATE_LESSONS:${genericTemplateLessons}`);
   const totalQuestions = answerPositionCounts.reduce((sum, count) => sum + count, 0);
   const answerPositionBias = totalQuestions > 0 && answerPositionCounts.some((count) => count / totalQuestions > 0.4);
   if (answerPositionBias) errors.push(`ANSWER_POSITION_BIAS:${answerPositionCounts.join(',')}`);
   const misconceptionCount = Object.values(pack.misconceptions).reduce((sum, tags) => sum + tags.length, 0);
+  const genericMisconceptions = [...knownMisconceptionTags].filter((tag) => /CONTEXT_OMISSION|CONCEPT_SWAP|GENERIC/i.test(tag)).length;
   return {
     valid: errors.length === 0,
     canonicalHash,
@@ -265,6 +331,17 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     misconceptionCount,
     prerequisiteCount: pack.relationships.prerequisites.length,
     crossSubjectRelationshipCount,
+    contentReadyCount,
+    realSelectableQuestions,
+    reusedV2V3Questions,
+    newRealV4Questions,
+    genericTemplateQuestions,
+    genericTemplateLessons,
+    genericTemplateFamilies: genericTemplateFamilies.size,
+    duplicateSemanticSkills,
+    numericSuffixDuplicateConcepts,
+    realMisconceptions: Object.keys(pack.misconceptionDetails).length,
+    genericMisconceptions,
     subjectsWithoutAdaptiveReady,
     unknownSecondarySkills: errors.filter((error) => error.startsWith('UNKNOWN_SECONDARY_SKILL:')),
     unknownPrerequisites,
@@ -341,13 +418,13 @@ function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4Validatio
     const subject = pack.registry.subjects.find((item) => item.code === leaf.subject)!;
     const review = leaf.readiness === 'ADAPTIVE_READY' ? 'PEDAGOGICAL_REVIEW_PENDING' : 'TECH_VALIDATED';
     const leafReference = { stage: leaf.recommendedStage, from: leaf.recommendedGradeFrom, to: leaf.recommendedGradeTo };
-    lines.push(`  insert into public.learning_curriculum_skills(catalog_id, code, stage, grade_level, subject_area, domain, title, description, active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status, bncc_alignment_status, metadata) values (v_catalog_id, ${sql(leaf.code)}, ${sql(leafReference.stage)}, ${leafReference.from}, ${sql(subject.code)}, ${sql(leaf.domain)}, ${sql(leaf.title)}, ${sql(`Unidade diagnosticavel de ${leaf.title.toLocaleLowerCase('pt-BR')}.`)}, true, 'LEAF', ${sql(leaf.readiness)}, ${leaf.readiness === 'ADAPTIVE_READY'}, ${sql(review)}, 'CANDIDATE', jsonb_build_object('content_pack', 'tec-escola-core-v4', 'recommended_stage', ${sql(leafReference.stage)}, 'recommended_grade_from', ${leafReference.from}, 'recommended_grade_to', ${leafReference.to}, 'stage_references', ${jsonSql(pack.stageReferences[subject.code])})) on conflict (catalog_id, code) do update set title = excluded.title, description = excluded.description, node_kind = 'LEAF', content_readiness = excluded.content_readiness, mastery_targetable = excluded.mastery_targetable, pedagogical_review_status = excluded.pedagogical_review_status, active = true, metadata = excluded.metadata;`);
+    lines.push(`  insert into public.learning_curriculum_skills(catalog_id, code, stage, grade_level, subject_area, domain, title, description, active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status, bncc_alignment_status, metadata) values (v_catalog_id, ${sql(leaf.code)}, ${sql(leafReference.stage)}, ${leafReference.from}, ${sql(subject.code)}, ${sql(leaf.domain)}, ${sql(leaf.title)}, ${sql(leaf.description)}, true, 'LEAF', ${sql(leaf.readiness)}, ${leaf.readiness === 'ADAPTIVE_READY'}, ${sql(review)}, 'CANDIDATE', ${jsonSql({ content_pack: 'tec-escola-core-v4', objective: leaf.objective, mastery_capability: leaf.masteryCapability, content_authoring_status: leaf.content_authoring_status, recommended_stage: leafReference.stage, recommended_grade_from: leafReference.from, recommended_grade_to: leafReference.to, stage_references: pack.stageReferences[subject.code] })}) on conflict (catalog_id, code) do update set title = excluded.title, description = excluded.description, node_kind = 'LEAF', content_readiness = excluded.content_readiness, mastery_targetable = excluded.mastery_targetable, pedagogical_review_status = excluded.pedagogical_review_status, active = true, metadata = excluded.metadata;`);
     lines.push(`  select canonical.id into v_skill_id from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(leaf.code)};`);
     lines.push(`  select canonical.id into v_parent_id from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(leaf.parent)};`);
     lines.push('  if v_parent_id is not null then insert into public.learning_skill_hierarchy(parent_skill_id, child_skill_id) values (v_parent_id, v_skill_id) on conflict do nothing; end if;');
     const lesson = pack.lessons.find((item) => item.skill === leaf.code);
     if (lesson) {
-      lines.push(`  insert into public.learning_skill_lessons(canonical_skill_id, version, title, summary, content_markdown, worked_example, tips, estimated_minutes, metadata) values (v_skill_id, 4, ${sql(lesson.title)}, ${sql(lesson.summary)}, ${sql(`${lesson.explanation}\n\nErro comum: ${lesson.commonMistake}`)}, ${sql(lesson.workedExample)}, ${sqlArray(lesson.tips)}, ${lesson.estimatedMinutes}, jsonb_build_object('content_pack', 'tec-escola-core-v4', 'objective', ${sql(lesson.objective)})) on conflict (canonical_skill_id, version) do update set title = excluded.title, summary = excluded.summary, content_markdown = excluded.content_markdown, worked_example = excluded.worked_example, tips = excluded.tips, estimated_minutes = excluded.estimated_minutes, metadata = excluded.metadata, active = true;`);
+      lines.push(`  insert into public.learning_skill_lessons(canonical_skill_id, version, title, summary, content_markdown, worked_example, tips, estimated_minutes, metadata) values (v_skill_id, 4, ${sql(lesson.title)}, ${sql(lesson.summary)}, ${sql(`${lesson.explanation}\n\nErro comum: ${lesson.commonMistake}`)}, ${sql(lesson.workedExample)}, ${sqlArray(lesson.tips)}, ${lesson.estimatedMinutes}, ${jsonSql({ content_pack: 'tec-escola-core-v4', objective: lesson.objective, content_authoring_status: lesson.content_authoring_status })}) on conflict (canonical_skill_id, version) do update set title = excluded.title, summary = excluded.summary, content_markdown = excluded.content_markdown, worked_example = excluded.worked_example, tips = excluded.tips, estimated_minutes = excluded.estimated_minutes, metadata = excluded.metadata, active = true;`);
     }
     if (leaf.readiness === 'ADAPTIVE_READY') {
       for (const purpose of PURPOSES) {
@@ -362,14 +439,15 @@ function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4Validatio
     lines.push(`  insert into public.learning_skill_relationships(from_canonical_skill_id, to_canonical_skill_id, relation_type, relation_source, confidence, metadata) select source.id, target.id, ${sql(relationship.type)}, ${sql(relationship.source)}, ${relationship.confidence}, jsonb_build_object('rationale', ${sql(relationship.rationale)}, 'content_pack', 'tec-escola-core-v4') from public.learning_curriculum_skills source, public.learning_curriculum_skills target where source.catalog_id = v_catalog_id and target.catalog_id = v_catalog_id and source.code = ${sql(relationship.from)} and target.code = ${sql(relationship.to)} on conflict (from_canonical_skill_id, to_canonical_skill_id, relation_type) do update set confidence = excluded.confidence, metadata = excluded.metadata;`);
   }
   for (const question of pack.questions) {
-    lines.push(`  insert into public.learning_question_bank(package_type, source_type, source_name, subject_area, domain, topic, statement, options, correct_answer, explanation, difficulty, estimated_minutes, provenance, metadata, active) select 'TECESCOLA', 'TECESCOLA_CORE_V4', 'TecEscola Core V4', ${sql(question.subject)}, ${sql(question.domain)}, ${sql(question.topic)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${jsonSql(question.correctAnswer)}, ${sql(question.explanation)}, ${sql(question.difficulty)}, 4, 'Conteudo autoral versionado do TecEscola; nao e BNCC oficial.', ${jsonSql({ content_id: question.id, purpose: question.purpose, context_family: question.contextFamily, cognitive_process: question.cognitiveProcess, misconceptions: question.misconceptions, pack_version: 'tec-escola-core-v4' })}, true where not exists (select 1 from public.learning_question_bank existing where existing.source_type = 'TECESCOLA_CORE_V4' and existing.metadata->>'content_id' = ${sql(question.id)}) returning id into v_question_id;`);
+    lines.push(`  insert into public.learning_question_bank(package_type, source_type, source_name, subject_area, domain, topic, statement, options, correct_answer, explanation, difficulty, estimated_minutes, provenance, metadata, active) select 'TECESCOLA', 'TECESCOLA_CORE_V4', 'TecEscola Core V4', ${sql(question.subject)}, ${sql(question.domain)}, ${sql(question.topic)}, ${sql(question.statement)}, ${jsonSql(question.options)}, ${jsonSql(question.correctAnswer)}, ${sql(question.explanation)}, ${sql(question.difficulty)}, 4, ${sql(question.provenance)}, ${jsonSql({ content_id: question.id, purpose: question.purpose, context_family: question.contextFamily, cognitive_process: question.cognitiveProcess, misconceptions: question.misconceptions, content_authoring_status: question.content_authoring_status, pack_version: 'tec-escola-core-v4' })}, true where not exists (select 1 from public.learning_question_bank existing where existing.source_type = 'TECESCOLA_CORE_V4' and existing.metadata->>'content_id' = ${sql(question.id)}) returning id into v_question_id;`);
     lines.push(`  select id into v_question_id from public.learning_question_bank where source_type = 'TECESCOLA_CORE_V4' and metadata->>'content_id' = ${sql(question.id)};`);
     lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'PRIMARY' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(question.primarySkill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
     for (const skill of question.supportingSkills) lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'SUPPORTING' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(skill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
     for (const skill of question.prerequisiteSkills) lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'PREREQUISITE' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(skill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
     for (const skill of question.transferSkills) lines.push(`  insert into public.learning_question_bank_skill_links(question_bank_id, canonical_skill_id, skill_role) select v_question_id, canonical.id, 'TRANSFER' from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(skill)} on conflict (question_bank_id, canonical_skill_id) do nothing;`);
     for (const [option, tags] of Object.entries(question.misconceptions)) for (const tag of tags) {
-      lines.push(`  insert into public.learning_misconception_tags(code, title, description) values (${sql(tag)}, ${sql(tag.replaceAll('_', ' ').toLocaleLowerCase('pt-BR'))}, 'Sinal diagnostico autoral do TecEscola.') on conflict (code) do update set active = true;`);
+      const detail = pack.misconceptionDetails[tag];
+      lines.push(`  insert into public.learning_misconception_tags(code, title, description) values (${sql(tag)}, ${sql(detail.title)}, ${sql(detail.description)}) on conflict (code) do update set title = excluded.title, description = excluded.description, active = true;`);
       lines.push(`  insert into public.learning_question_option_misconceptions(question_bank_id, option_value, misconception_tag_id, canonical_skill_id, confidence_weight, metadata) select v_question_id, ${sql(option)}, tag.id, skill.id, 0.8, jsonb_build_object('content_pack', 'tec-escola-core-v4') from public.learning_misconception_tags tag, public.learning_curriculum_skills skill where tag.code = ${sql(tag)} and skill.catalog_id = v_catalog_id and skill.code = ${sql(question.primarySkill)} on conflict do nothing;`);
     }
     if (PURPOSES.includes(question.purpose)) lines.push(`  select id into v_set_id from public.learning_question_sets where scope = 'GLOBAL' and canonical_skill_id = (select canonical.id from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(question.primarySkill)}) and purpose = ${sql(question.purpose)} and version = 4; insert into public.learning_question_set_items(question_set_id, question_bank_id, position) values (v_set_id, v_question_id, (select coalesce(max(position), -1) + 1 from public.learning_question_set_items where question_set_id = v_set_id)) on conflict do nothing;`);
@@ -696,6 +774,9 @@ export function compileV4Pack() {
   return result;
 }
 
-const command = process.argv[2] ?? 'validate';
-const result = command === 'compile' ? compileV4Pack() : validateV4Pack();
-console.log(JSON.stringify(result, null, 2));
+const isMainModule = process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url));
+if (isMainModule) {
+  const command = process.argv[2] ?? 'validate';
+  const result = command === 'compile' ? compileV4Pack() : validateV4Pack();
+  console.log(JSON.stringify(result, null, 2));
+}

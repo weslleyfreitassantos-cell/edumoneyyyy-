@@ -3,295 +3,71 @@
   "name": "Ciencias",
   "anchors": [
     {
-      "code": "SCIENCE_MATTER",
-      "title": "Science Matter"
+      "code": "SCIENCE_INVESTIGATION",
+      "title": "Investigacao cientifica"
     },
     {
-      "code": "SCIENCE_ENERGY",
-      "title": "Science Energy"
+      "code": "SCIENCE_MATTER",
+      "title": "Materia e transformacoes"
     },
     {
       "code": "SCIENCE_EVIDENCE",
-      "title": "Science Evidence"
+      "title": "Evidencia e explicacao"
     }
   ],
   "leaves": [
     {
-      "code": "MEASURE_OBSERVATION",
-      "title": "Registrar observacoes e medidas",
-      "domain": "EVIDENCIA",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
+      "code": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "title": "Explicar transformacoes da materia",
+      "objective": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "description": "Explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "masteryCapability": "Demonstrar que consegue explicar uma transformacao da materia usando observacoes e conservacao de evidencias.",
+      "domain": "TRANSFORMACOES",
+      "parent": "SCIENCE_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
     },
     {
-      "code": "EXPERIMENTAL_EVIDENCE",
+      "code": "SCIENCE_PLAN_INVESTIGATION",
+      "title": "Planejar uma investigacao controlada",
+      "objective": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "description": "Planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "masteryCapability": "Demonstrar que consegue planejar uma investigacao definindo pergunta, procedimento e medida observavel.",
+      "domain": "INVESTIGACAO",
+      "parent": "SCIENCE_INVESTIGATION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_IDENTIFY_VARIABLES",
+      "title": "Identificar variaveis experimentais",
+      "objective": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "description": "Identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "masteryCapability": "Demonstrar que consegue identificar variavel manipulada, resposta medida e controles em um experimento.",
+      "domain": "INVESTIGACAO",
+      "parent": "SCIENCE_INVESTIGATION",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "SCIENCE_EVIDENCE_CONCLUSION",
       "title": "Relacionar evidencia e conclusao",
+      "objective": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+      "description": "Relacionar uma conclusao aos dados que realmente a sustentam.",
+      "masteryCapability": "Demonstrar que consegue relacionar uma conclusao aos dados que realmente a sustentam.",
       "domain": "EVIDENCIA",
       "parent": "SCIENCE_EVIDENCE",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
-      "title": "Investigacao Cientifica aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_ESTADOS_DA_MATERIA_02",
-      "title": "Estados Da Materia aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
-      "title": "Transformacoes De Energia aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_ECOSSISTEMAS_04",
-      "title": "Ecossistemas aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_CICLOS_NATURAIS_05",
-      "title": "Ciclos Naturais aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
-      "title": "Forcas E Movimentos aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_MEDICAO_E_UNIDADES_07",
-      "title": "Medicao E Unidades aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_MISTURAS_08",
-      "title": "Misturas aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_SAUDE_E_PREVENCAO_09",
-      "title": "Saude E Prevencao aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_ASTRONOMIA_10",
-      "title": "Astronomia aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
-      "title": "Variaveis Experimentais aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_BIODIVERSIDADE_12",
-      "title": "Biodiversidade aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_CLIMA_13",
-      "title": "Clima aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_SOM_E_LUZ_14",
-      "title": "Som E Luz aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_INVESTIGACAO_CIENTIFICA_15",
-      "title": "Investigacao Cientifica aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_ESTADOS_DA_MATERIA_16",
-      "title": "Estados Da Materia aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_17",
-      "title": "Transformacoes De Energia aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_ECOSSISTEMAS_18",
-      "title": "Ecossistemas aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_CICLOS_NATURAIS_19",
-      "title": "Ciclos Naturais aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_FORCAS_E_MOVIMENTOS_20",
-      "title": "Forcas E Movimentos aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_MEDICAO_E_UNIDADES_21",
-      "title": "Medicao E Unidades aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_MISTURAS_22",
-      "title": "Misturas aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_SAUDE_E_PREVENCAO_23",
-      "title": "Saude E Prevencao aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_ASTRONOMIA_24",
-      "title": "Astronomia aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_EVIDENCE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_25",
-      "title": "Variaveis Experimentais aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_MATTER",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SCIENCE_BIODIVERSIDADE_26",
-      "title": "Biodiversidade aplicado",
-      "domain": "SCIENCE_V4",
-      "parent": "SCIENCE_ENERGY",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9

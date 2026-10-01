@@ -3,306 +3,88 @@
   "name": "Matematica",
   "anchors": [
     {
-      "code": "NUMBER_SENSE",
-      "title": "Number Sense"
+      "code": "MATHEMATICS_NUMBERS",
+      "title": "Numeros e operacoes"
     },
     {
-      "code": "RATIO",
-      "title": "Ratio"
+      "code": "MATHEMATICS_PROPORTIONS",
+      "title": "Razoes e proporcionalidade"
     },
     {
-      "code": "PERCENTAGE",
-      "title": "Percentage"
-    },
-    {
-      "code": "ALGEBRA",
-      "title": "Algebra"
-    },
-    {
-      "code": "DATA",
-      "title": "Data"
+      "code": "MATHEMATICS_DATA",
+      "title": "Dados e representacoes"
     }
   ],
   "leaves": [
     {
-      "code": "IDENTIFY_PERCENT_BASE",
-      "title": "Identificar a base percentual",
-      "domain": "PORCENTAGENS",
-      "parent": "PERCENTAGE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PERCENT_OF_QUANTITY",
+      "code": "MATH_PERCENT_OF_QUANTITY",
       "title": "Calcular percentual de uma quantidade",
-      "domain": "PORCENTAGENS",
-      "parent": "PERCENTAGE",
+      "objective": "Calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+      "description": "Calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+      "masteryCapability": "Demonstrar que consegue calcular um percentual de uma quantidade mantendo explicita a base do calculo.",
+      "domain": "PORCENTAGEM",
+      "parent": "MATHEMATICS_PROPORTIONS",
       "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "PERCENT_INCREASE",
+      "code": "MATH_IDENTIFY_PERCENT_BASE",
+      "title": "Identificar a base de uma porcentagem",
+      "objective": "Identificar o valor de referencia sobre o qual uma porcentagem incide.",
+      "description": "Identificar o valor de referencia sobre o qual uma porcentagem incide.",
+      "masteryCapability": "Demonstrar que consegue identificar o valor de referencia sobre o qual uma porcentagem incide.",
+      "domain": "PORCENTAGEM",
+      "parent": "MATHEMATICS_PROPORTIONS",
+      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "MATH_PERCENT_INCREASE",
       "title": "Resolver aumento percentual",
-      "domain": "PORCENTAGENS",
-      "parent": "PERCENTAGE",
+      "objective": "Calcular aumento percentual e valor final sem trocar a base inicial.",
+      "description": "Calcular aumento percentual e valor final sem trocar a base inicial.",
+      "masteryCapability": "Demonstrar que consegue calcular aumento percentual e valor final sem trocar a base inicial.",
+      "domain": "PORCENTAGEM",
+      "parent": "MATHEMATICS_PROPORTIONS",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "PERCENT_DECREASE",
-      "title": "Resolver reducao percentual",
-      "domain": "PORCENTAGENS",
-      "parent": "PERCENTAGE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "SUCCESSIVE_PERCENT_CHANGE",
-      "title": "Interpretar percentuais sucessivos",
-      "domain": "PORCENTAGENS",
-      "parent": "PERCENTAGE",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "REVERSE_PERCENTAGE",
-      "title": "Resolver porcentagem reversa",
-      "domain": "PORCENTAGENS",
-      "parent": "PERCENTAGE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "RATIO_UNIT_RATE",
-      "title": "Encontrar a taxa unitaria",
+      "code": "MATH_RATIO_UNIT_RATE",
+      "title": "Interpretar razao e taxa unitaria",
+      "objective": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+      "description": "Interpretar uma razao e calcular a taxa correspondente a uma unidade.",
+      "masteryCapability": "Demonstrar que consegue interpretar uma razao e calcular a taxa correspondente a uma unidade.",
       "domain": "RAZAO",
-      "parent": "RATIO",
+      "parent": "MATHEMATICS_PROPORTIONS",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "PROPORTIONAL_REASONING",
-      "title": "Raciocinar com grandezas proporcionais",
-      "domain": "PROPORCIONALIDADE",
-      "parent": "RATIO",
-      "readiness": "GRAPH_ONLY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
     },
     {
-      "code": "FRACTION_COMPARISON",
-      "title": "Comparar fracoes por referencia",
-      "domain": "FRACOES",
-      "parent": "NUMBER_SENSE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "ONE_STEP_EQUATION",
-      "title": "Resolver equacao linear de uma etapa",
-      "domain": "ALGEBRA",
-      "parent": "ALGEBRA",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "TWO_STEP_EQUATION",
-      "title": "Resolver equacao linear de duas etapas",
-      "domain": "ALGEBRA",
-      "parent": "ALGEBRA",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "INTERPRET_DATA_TABLE",
+      "code": "MATH_INTERPRET_DATA_TABLE",
       "title": "Interpretar dados em tabela",
+      "objective": "Interpretar dados relevantes de uma tabela para responder a uma pergunta.",
+      "description": "Interpretar dados relevantes de uma tabela para responder a uma pergunta.",
+      "masteryCapability": "Demonstrar que consegue interpretar dados relevantes de uma tabela para responder a uma pergunta.",
       "domain": "DADOS",
-      "parent": "DATA",
+      "parent": "MATHEMATICS_DATA",
       "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "MATHEMATICS_PORCENTAGENS_01",
-      "title": "Porcentagens aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "NUMBER_SENSE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "MATHEMATICS_RAZAO_E_TAXA_02",
-      "title": "Razao E Taxa aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "RATIO",
-      "readiness": "ADAPTIVE_READY",
+      "content_authoring_status": "SCAFFOLD",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,
       "recommendedGradeTo": 9
-    },
-    {
-      "code": "MATHEMATICS_FRACOES_03",
-      "title": "Fracoes aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "PERCENTAGE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "MATHEMATICS_EQUACOES_04",
-      "title": "Equacoes aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "ALGEBRA",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
-      "title": "Expressoes Algebricas aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "DATA",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "MATHEMATICS_TABELAS_E_DADOS_06",
-      "title": "Tabelas E Dados aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "NUMBER_SENSE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "MATHEMATICS_MEDIA_E_VARIACAO_07",
-      "title": "Media E Variacao aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "RATIO",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "MATHEMATICS_PERIMETRO_08",
-      "title": "Perimetro aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "PERCENTAGE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "MATHEMATICS_AREA_09",
-      "title": "Area aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "ALGEBRA",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "MATHEMATICS_PROBABILIDADE_10",
-      "title": "Probabilidade aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "DATA",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "MATHEMATICS_PROPORCIONALIDADE_11",
-      "title": "Proporcionalidade aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "NUMBER_SENSE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "MATHEMATICS_PADROES_NUMERICOS_12",
-      "title": "Padroes Numericos aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "RATIO",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "MATHEMATICS_INTEIROS_13",
-      "title": "Inteiros aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "PERCENTAGE",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
-    },
-    {
-      "code": "MATHEMATICS_PLANO_CARTESIANO_14",
-      "title": "Plano Cartesiano aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "ALGEBRA",
-      "readiness": "ADAPTIVE_READY",
-      "recommendedStage": "FUNDAMENTAL_II",
-      "recommendedGradeFrom": 6,
-      "recommendedGradeTo": 9
-    },
-    {
-      "code": "MATHEMATICS_PORCENTAGENS_15",
-      "title": "Porcentagens aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "DATA",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "ENSINO_MEDIO",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 3
-    },
-    {
-      "code": "MATHEMATICS_RAZAO_E_TAXA_16",
-      "title": "Razao E Taxa aplicado",
-      "domain": "MATHEMATICS_V4",
-      "parent": "NUMBER_SENSE",
-      "readiness": "GRAPH_ONLY",
-      "recommendedStage": "FUNDAMENTAL_I",
-      "recommendedGradeFrom": 1,
-      "recommendedGradeTo": 5
     }
   ]
 }

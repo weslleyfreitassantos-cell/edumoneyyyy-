@@ -17,14 +17,25 @@ migration `20261001000100_adaptive_learning_pedagogical_depth_v4.sql`.
 
 ## Current pack status
 
-The checked-in pack is a scaled, reviewable foundation:
+The checked-in pack is an explicit, reviewable foundation. It deliberately
+does not inflate coverage with generated copies:
 
 - 15 subjects
-- 456 canonical nodes
-- 36 anchors and 420 leaves
-- 214 `ADAPTIVE_READY` leaves and 206 `GRAPH_ONLY` leaves
-- 248 lessons and 1,715 authored questions
-- 48 cross-subject relationships
+- 97 canonical nodes: 45 anchors and 52 semantic leaves
+- 15 `ADAPTIVE_READY` leaves and 37 `GRAPH_ONLY` leaves
+- 15 lessons and 195 selectable questions
+- 180 questions reused from the validated V3 pack and 15 concrete V4 review questions
+- 6 explicit cross-subject relationships
+- 179 misconception details with a title, explanation and affected skill
+
+Only the 15 ready leaves currently have a complete adaptive journey. The
+remaining leaves are honest `GRAPH_ONLY` scaffolding: they keep explicit
+hierarchy and semantic relationships without pretending that lessons and
+questions exist. Ready leaves carry explicit objectives, descriptions,
+mastery capabilities, stage metadata and authoring status. The compiler rejects
+numeric duplicate concepts, semantic duplicate skills, generic template
+families and incomplete misconception details; there are no quota gates for
+node, lesson, question or relationship counts.
 
 The source of truth is split by subject under
 `content/adaptive/tec-escola-core-v4/subjects/{subject}/`:
@@ -46,6 +57,8 @@ npm run adaptive:v4:compile
 ```
 
 Compilation is deterministic and writes the generated migration plus
-`content/adaptive/tec-escola-core-v4/coverage.json`. This campaign does not
+`content/adaptive/tec-escola-core-v4/coverage.json`. The legacy
+`generate-v4-content.ts` command is now validation-only and never writes
+content. This campaign does not
 apply the migration, seed production, or change Auth, RLS infrastructure or
 Cloudflare configuration.
