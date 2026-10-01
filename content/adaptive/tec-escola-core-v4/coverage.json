@@ -1,34 +1,36 @@
 {
   "packVersion": "tec-escola-core-v4",
-  "canonicalHash": "0656bfbd16041eda306cac9e423fd8af95eb470b2ef933b0852656bbebb95df3",
+  "canonicalHash": "3f416cfe302b59650f42700b04e14bae49664325150e29c0218f7c1e1bb87664",
   "subjects": [
     {
-      "code": "PORTUGUESE",
-      "skills": 9,
-      "leafs": 6,
-      "adaptiveReady": 1,
-      "graphOnly": 5,
-      "lessons": 3,
-      "questions": 9,
+      "code": "ART",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 2,
-        "PRACTICE": 2,
-        "TRANSFER": 2,
-        "LOCK_IN": 1,
-        "REVIEW": 2
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
       "contextFamilies": [
-        "ARGUMENTO",
-        "CIENCIA",
-        "COTIDIANO",
-        "CULTURA",
-        "ESCOLA",
-        "NOTICIA"
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
       ],
-      "misconceptions": 2,
-      "hierarchy": 6,
-      "prerequisites": 0,
-      "crossSubjectLinks": 1,
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_I",
@@ -44,147 +46,38 @@
           "stage": "ENSINO_MEDIO",
           "from": 1,
           "to": 3
-        }
-      ]
-    },
-    {
-      "code": "MATHEMATICS",
-      "skills": 17,
-      "leafs": 12,
-      "adaptiveReady": 2,
-      "graphOnly": 10,
-      "lessons": 6,
-      "questions": 17,
-      "purposes": {
-        "PROBE": 4,
-        "PRACTICE": 4,
-        "TRANSFER": 3,
-        "LOCK_IN": 2,
-        "REVIEW": 4
-      },
-      "contextFamilies": [
-        "COMPARISON",
-        "DATA",
-        "DIRECT",
-        "DISCOUNT",
-        "FINANCE",
-        "INCREASE"
-      ],
-      "misconceptions": 7,
-      "hierarchy": 12,
-      "prerequisites": 4,
-      "crossSubjectLinks": 5,
-      "stageReferences": [
-        {
-          "stage": "FUNDAMENTAL_I",
-          "from": 1,
-          "to": 5
-        },
-        {
-          "stage": "FUNDAMENTAL_II",
-          "from": 6,
-          "to": 9
-        },
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "SCIENCE",
-      "skills": 5,
-      "leafs": 2,
-      "adaptiveReady": 0,
-      "graphOnly": 2,
-      "lessons": 0,
-      "questions": 0,
-      "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 2,
-      "prerequisites": 0,
-      "crossSubjectLinks": 1,
-      "stageReferences": [
-        {
-          "stage": "FUNDAMENTAL_I",
-          "from": 1,
-          "to": 5
-        },
-        {
-          "stage": "FUNDAMENTAL_II",
-          "from": 6,
-          "to": 9
         }
       ]
     },
     {
       "code": "BIOLOGY",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 1,
-      "stageReferences": [
-        {
-          "stage": "FUNDAMENTAL_II",
-          "from": 8,
-          "to": 9
-        },
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "PHYSICS",
-      "skills": 6,
-      "leafs": 3,
-      "adaptiveReady": 1,
-      "graphOnly": 2,
-      "lessons": 1,
-      "questions": 9,
-      "purposes": {
-        "PROBE": 2,
-        "PRACTICE": 2,
-        "TRANSFER": 2,
-        "LOCK_IN": 1,
-        "REVIEW": 2
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
       "contextFamilies": [
-        "DIRECT",
-        "GRAPH",
-        "MAPA",
-        "SPORT",
-        "TRANSPORT",
-        "UNITS"
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
       ],
-      "misconceptions": 2,
-      "hierarchy": 3,
-      "prerequisites": 1,
-      "crossSubjectLinks": 1,
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 7,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_II",
@@ -200,24 +93,33 @@
     },
     {
       "code": "CHEMISTRY",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 1,
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 7,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_II",
@@ -232,195 +134,34 @@
       ]
     },
     {
-      "code": "HISTORY",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
+      "code": "COMPUTING",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
-      "stageReferences": [
-        {
-          "stage": "FUNDAMENTAL_I",
-          "from": 1,
-          "to": 5
-        },
-        {
-          "stage": "FUNDAMENTAL_II",
-          "from": 6,
-          "to": 9
-        },
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "GEOGRAPHY",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
-      "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 1,
-      "stageReferences": [
-        {
-          "stage": "FUNDAMENTAL_I",
-          "from": 1,
-          "to": 5
-        },
-        {
-          "stage": "FUNDAMENTAL_II",
-          "from": 6,
-          "to": 9
-        },
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "PHILOSOPHY",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
-      "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
-      "stageReferences": [
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "SOCIOLOGY",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
-      "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
-      "stageReferences": [
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "ART",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
-      "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
-      "stageReferences": [
-        {
-          "stage": "FUNDAMENTAL_I",
-          "from": 1,
-          "to": 5
-        },
-        {
-          "stage": "FUNDAMENTAL_II",
-          "from": 6,
-          "to": 9
-        },
-        {
-          "stage": "ENSINO_MEDIO",
-          "from": 1,
-          "to": 3
-        }
-      ]
-    },
-    {
-      "code": "PHYSICAL_EDUCATION",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
-      "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
-      },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 4,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_I",
@@ -441,24 +182,365 @@
     },
     {
       "code": "ENGLISH",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "GEOGRAPHY",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
+      "purposes": {
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
+      },
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 7,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "HISTORY",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
+      "purposes": {
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
+      },
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "MATHEMATICS",
+      "skills": 33,
+      "leafs": 28,
+      "adaptiveReady": 16,
+      "graphOnly": 12,
+      "lessons": 20,
+      "questions": 129,
+      "purposes": {
+        "PROBE": 32,
+        "PRACTICE": 32,
+        "TRANSFER": 17,
+        "LOCK_IN": 16,
+        "REVIEW": 32
+      },
+      "contextFamilies": [
+        "COMPARISON",
+        "DADOS_OBSERVADOS",
+        "DATA",
+        "DEBATE_ORIENTADO",
+        "DIRECT",
+        "DISCOUNT",
+        "FINANCE",
+        "INCREASE",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 35,
+      "hierarchy": 28,
+      "prerequisites": 17,
+      "crossSubjectLinks": 11,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PHILOSOPHY",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
+      "purposes": {
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
+      },
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
+      "stageReferences": [
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PHYSICAL_EDUCATION",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
+      "purposes": {
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
+      },
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PHYSICS",
+      "skills": 31,
+      "leafs": 28,
+      "adaptiveReady": 15,
+      "graphOnly": 13,
+      "lessons": 15,
+      "questions": 121,
+      "purposes": {
+        "PROBE": 30,
+        "PRACTICE": 30,
+        "TRANSFER": 16,
+        "LOCK_IN": 15,
+        "REVIEW": 30
+      },
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "DIRECT",
+        "GRAPH",
+        "LABORATORIO",
+        "MAPA",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "SPORT",
+        "TEXTO_EXPLICATIVO",
+        "TRANSPORT",
+        "UNITS"
+      ],
+      "misconceptions": 30,
+      "hierarchy": 28,
+      "prerequisites": 14,
+      "crossSubjectLinks": 7,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 8,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
+    },
+    {
+      "code": "PORTUGUESE",
+      "skills": 31,
+      "leafs": 28,
+      "adaptiveReady": 15,
+      "graphOnly": 13,
+      "lessons": 17,
+      "questions": 121,
+      "purposes": {
+        "PROBE": 30,
+        "PRACTICE": 30,
+        "TRANSFER": 16,
+        "LOCK_IN": 15,
+        "REVIEW": 30
+      },
+      "contextFamilies": [
+        "ARGUMENTO",
+        "CIENCIA",
+        "COTIDIANO",
+        "CULTURA",
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "ESCOLA",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "NOTICIA",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 30,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 4,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_I",
@@ -479,24 +561,33 @@
     },
     {
       "code": "RELIGIOUS_EDUCATION",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 0,
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_I",
@@ -511,25 +602,34 @@
       ]
     },
     {
-      "code": "COMPUTING",
-      "skills": 3,
-      "leafs": 1,
-      "adaptiveReady": 0,
-      "graphOnly": 1,
-      "lessons": 0,
-      "questions": 0,
+      "code": "SCIENCE",
+      "skills": 31,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
       "purposes": {
-        "PROBE": 0,
-        "PRACTICE": 0,
-        "TRANSFER": 0,
-        "LOCK_IN": 0,
-        "REVIEW": 0
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
       },
-      "contextFamilies": [],
-      "misconceptions": 0,
-      "hierarchy": 1,
-      "prerequisites": 0,
-      "crossSubjectLinks": 1,
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 7,
       "stageReferences": [
         {
           "stage": "FUNDAMENTAL_I",
@@ -540,7 +640,39 @@
           "stage": "FUNDAMENTAL_II",
           "from": 6,
           "to": 9
-        },
+        }
+      ]
+    },
+    {
+      "code": "SOCIOLOGY",
+      "skills": 30,
+      "leafs": 28,
+      "adaptiveReady": 14,
+      "graphOnly": 14,
+      "lessons": 14,
+      "questions": 112,
+      "purposes": {
+        "PROBE": 28,
+        "PRACTICE": 28,
+        "TRANSFER": 14,
+        "LOCK_IN": 14,
+        "REVIEW": 28
+      },
+      "contextFamilies": [
+        "DADOS_OBSERVADOS",
+        "DEBATE_ORIENTADO",
+        "LABORATORIO",
+        "MAPA_CONCEITUAL",
+        "PROJETO_APLICADO",
+        "REVISAO_GUIADA",
+        "SITUACAO_COTIDIANA",
+        "TEXTO_EXPLICATIVO"
+      ],
+      "misconceptions": 28,
+      "hierarchy": 28,
+      "prerequisites": 13,
+      "crossSubjectLinks": 6,
+      "stageReferences": [
         {
           "stage": "ENSINO_MEDIO",
           "from": 1,

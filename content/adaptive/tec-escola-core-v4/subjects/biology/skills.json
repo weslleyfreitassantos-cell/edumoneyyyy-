@@ -1,0 +1,296 @@
+{
+  "code": "BIOLOGY",
+  "name": "Biologia",
+  "anchors": [
+    {
+      "code": "LIFE",
+      "title": "Life"
+    },
+    {
+      "code": "ECOLOGY",
+      "title": "Ecology"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "BIOLOGY_DATA_INTERPRETATION",
+      "title": "Interpretar dados biologicos",
+      "domain": "DADOS",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_CELULAS_01",
+      "title": "Celulas aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_TECIDOS_02",
+      "title": "Tecidos aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_GENETICA_03",
+      "title": "Genetica aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_EVOLUCAO_04",
+      "title": "Evolucao aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_ECOLOGIA_05",
+      "title": "Ecologia aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_FISIOLOGIA_06",
+      "title": "Fisiologia aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_METABOLISMO_07",
+      "title": "Metabolismo aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_REPRODUCAO_08",
+      "title": "Reproducao aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_MICROBIOLOGIA_09",
+      "title": "Microbiologia aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_BIODIVERSIDADE_10",
+      "title": "Biodiversidade aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_HOMEOSTASE_11",
+      "title": "Homeostase aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+      "title": "Interpretacao De Dados aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_SAUDE_COLETIVA_13",
+      "title": "Saude Coletiva aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_BIOETICA_14",
+      "title": "Bioetica aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_CELULAS_15",
+      "title": "Celulas aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_TECIDOS_16",
+      "title": "Tecidos aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_GENETICA_17",
+      "title": "Genetica aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_EVOLUCAO_18",
+      "title": "Evolucao aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_ECOLOGIA_19",
+      "title": "Ecologia aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_FISIOLOGIA_20",
+      "title": "Fisiologia aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_METABOLISMO_21",
+      "title": "Metabolismo aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_REPRODUCAO_22",
+      "title": "Reproducao aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_MICROBIOLOGIA_23",
+      "title": "Microbiologia aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_BIODIVERSIDADE_24",
+      "title": "Biodiversidade aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_HOMEOSTASE_25",
+      "title": "Homeostase aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "BIOLOGY_INTERPRETACAO_DE_DADOS_26",
+      "title": "Interpretacao De Dados aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "ECOLOGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "BIOLOGY_SAUDE_COLETIVA_27",
+      "title": "Saude Coletiva aplicado",
+      "domain": "BIOLOGY_V4",
+      "parent": "LIFE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    }
+  ]
+}

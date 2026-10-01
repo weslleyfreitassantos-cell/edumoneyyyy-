@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-biology-01-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 1, como interpretar celulas na etapa probe da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Aplicar celulas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de celulas",
+      "Trocar celulas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona celulas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de celulas": [
+        "V4_BIOLOGY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 1, como interpretar celulas na etapa probe da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar celulas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de celulas",
+      "Trocar celulas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona celulas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 1, como interpretar celulas na etapa practice da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Trocar celulas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar celulas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de celulas"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona celulas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar celulas por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 1, como interpretar celulas na etapa practice da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de celulas",
+      "Trocar celulas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar celulas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona celulas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de celulas": [
+        "V4_BIOLOGY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 1, como interpretar celulas na etapa transfer da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Aplicar celulas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de celulas",
+      "Trocar celulas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona celulas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de celulas": [
+        "V4_BIOLOGY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 1, como interpretar celulas na etapa lock_in da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar celulas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de celulas",
+      "Trocar celulas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona celulas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 1, como interpretar celulas na etapa review da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Trocar celulas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar celulas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de celulas"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona celulas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar celulas por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-01-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "celulas",
+    "primarySkill": "BIOLOGY_CELULAS_01",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 1, como interpretar celulas na etapa review da trilha BIOLOGY_CELULAS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de celulas",
+      "Trocar celulas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar celulas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar celulas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona celulas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de celulas": [
+        "V4_BIOLOGY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 2, como interpretar tecidos na etapa probe da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Aplicar tecidos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de tecidos",
+      "Trocar tecidos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tecidos": [
+        "V4_BIOLOGY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 2, como interpretar tecidos na etapa probe da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar tecidos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de tecidos",
+      "Trocar tecidos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 2, como interpretar tecidos na etapa practice da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Trocar tecidos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar tecidos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de tecidos"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tecidos por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 2, como interpretar tecidos na etapa practice da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tecidos",
+      "Trocar tecidos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar tecidos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tecidos": [
+        "V4_BIOLOGY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 2, como interpretar tecidos na etapa transfer da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Aplicar tecidos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de tecidos",
+      "Trocar tecidos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tecidos": [
+        "V4_BIOLOGY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 2, como interpretar tecidos na etapa lock_in da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar tecidos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de tecidos",
+      "Trocar tecidos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 2, como interpretar tecidos na etapa review da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Trocar tecidos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar tecidos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de tecidos"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tecidos por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-02-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "tecidos",
+    "primarySkill": "BIOLOGY_TECIDOS_02",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 2, como interpretar tecidos na etapa review da trilha BIOLOGY_TECIDOS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tecidos",
+      "Trocar tecidos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar tecidos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar tecidos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona tecidos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tecidos": [
+        "V4_BIOLOGY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 3, como interpretar genetica na etapa probe da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Aplicar genetica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de genetica",
+      "Trocar genetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona genetica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de genetica": [
+        "V4_BIOLOGY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 3, como interpretar genetica na etapa probe da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar genetica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de genetica",
+      "Trocar genetica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona genetica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 3, como interpretar genetica na etapa practice da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Trocar genetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar genetica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de genetica"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona genetica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar genetica por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 3, como interpretar genetica na etapa practice da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de genetica",
+      "Trocar genetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar genetica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona genetica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de genetica": [
+        "V4_BIOLOGY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 3, como interpretar genetica na etapa transfer da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Aplicar genetica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de genetica",
+      "Trocar genetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona genetica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de genetica": [
+        "V4_BIOLOGY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 3, como interpretar genetica na etapa lock_in da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar genetica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de genetica",
+      "Trocar genetica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona genetica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 3, como interpretar genetica na etapa review da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Trocar genetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar genetica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de genetica"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona genetica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar genetica por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-03-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "genetica",
+    "primarySkill": "BIOLOGY_GENETICA_03",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 3, como interpretar genetica na etapa review da trilha BIOLOGY_GENETICA_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de genetica",
+      "Trocar genetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar genetica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar genetica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona genetica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de genetica": [
+        "V4_BIOLOGY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 4, como interpretar evolucao na etapa probe da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Aplicar evolucao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de evolucao",
+      "Trocar evolucao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evolucao": [
+        "V4_BIOLOGY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 4, como interpretar evolucao na etapa probe da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar evolucao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de evolucao",
+      "Trocar evolucao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 4, como interpretar evolucao na etapa practice da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Trocar evolucao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar evolucao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de evolucao"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar evolucao por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 4, como interpretar evolucao na etapa practice da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de evolucao",
+      "Trocar evolucao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar evolucao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evolucao": [
+        "V4_BIOLOGY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 4, como interpretar evolucao na etapa transfer da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Aplicar evolucao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de evolucao",
+      "Trocar evolucao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evolucao": [
+        "V4_BIOLOGY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 4, como interpretar evolucao na etapa lock_in da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar evolucao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de evolucao",
+      "Trocar evolucao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 4, como interpretar evolucao na etapa review da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Trocar evolucao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar evolucao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de evolucao"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar evolucao por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-04-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "evolucao",
+    "primarySkill": "BIOLOGY_EVOLUCAO_04",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 4, como interpretar evolucao na etapa review da trilha BIOLOGY_EVOLUCAO_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de evolucao",
+      "Trocar evolucao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar evolucao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar evolucao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona evolucao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evolucao": [
+        "V4_BIOLOGY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 5, como interpretar ecologia na etapa probe da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Aplicar ecologia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de ecologia",
+      "Trocar ecologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecologia": [
+        "V4_BIOLOGY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 5, como interpretar ecologia na etapa probe da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar ecologia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de ecologia",
+      "Trocar ecologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 5, como interpretar ecologia na etapa practice da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Trocar ecologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar ecologia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de ecologia"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ecologia por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 5, como interpretar ecologia na etapa practice da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ecologia",
+      "Trocar ecologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar ecologia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecologia": [
+        "V4_BIOLOGY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 5, como interpretar ecologia na etapa transfer da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Aplicar ecologia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de ecologia",
+      "Trocar ecologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecologia": [
+        "V4_BIOLOGY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 5, como interpretar ecologia na etapa lock_in da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar ecologia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de ecologia",
+      "Trocar ecologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 5, como interpretar ecologia na etapa review da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Trocar ecologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar ecologia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de ecologia"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ecologia por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-05-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "ecologia",
+    "primarySkill": "BIOLOGY_ECOLOGIA_05",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 5, como interpretar ecologia na etapa review da trilha BIOLOGY_ECOLOGIA_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ecologia",
+      "Trocar ecologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar ecologia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar ecologia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona ecologia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecologia": [
+        "V4_BIOLOGY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 6, como interpretar fisiologia na etapa probe da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Aplicar fisiologia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de fisiologia",
+      "Trocar fisiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fisiologia": [
+        "V4_BIOLOGY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 6, como interpretar fisiologia na etapa probe da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar fisiologia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de fisiologia",
+      "Trocar fisiologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 6, como interpretar fisiologia na etapa practice da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Trocar fisiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar fisiologia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de fisiologia"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar fisiologia por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 6, como interpretar fisiologia na etapa practice da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de fisiologia",
+      "Trocar fisiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar fisiologia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fisiologia": [
+        "V4_BIOLOGY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 6, como interpretar fisiologia na etapa transfer da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Aplicar fisiologia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de fisiologia",
+      "Trocar fisiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fisiologia": [
+        "V4_BIOLOGY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 6, como interpretar fisiologia na etapa lock_in da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar fisiologia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de fisiologia",
+      "Trocar fisiologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 6, como interpretar fisiologia na etapa review da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Trocar fisiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar fisiologia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de fisiologia"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar fisiologia por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-06-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "fisiologia",
+    "primarySkill": "BIOLOGY_FISIOLOGIA_06",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 6, como interpretar fisiologia na etapa review da trilha BIOLOGY_FISIOLOGIA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de fisiologia",
+      "Trocar fisiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar fisiologia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar fisiologia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona fisiologia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fisiologia": [
+        "V4_BIOLOGY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 7, como interpretar metabolismo na etapa probe da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Aplicar metabolismo usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de metabolismo",
+      "Trocar metabolismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de metabolismo": [
+        "V4_BIOLOGY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 7, como interpretar metabolismo na etapa probe da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar metabolismo usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de metabolismo",
+      "Trocar metabolismo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 7, como interpretar metabolismo na etapa practice da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Trocar metabolismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar metabolismo usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de metabolismo"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar metabolismo por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 7, como interpretar metabolismo na etapa practice da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de metabolismo",
+      "Trocar metabolismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar metabolismo usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de metabolismo": [
+        "V4_BIOLOGY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 7, como interpretar metabolismo na etapa transfer da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Aplicar metabolismo usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de metabolismo",
+      "Trocar metabolismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de metabolismo": [
+        "V4_BIOLOGY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 7, como interpretar metabolismo na etapa lock_in da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar metabolismo usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de metabolismo",
+      "Trocar metabolismo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 7, como interpretar metabolismo na etapa review da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Trocar metabolismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar metabolismo usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de metabolismo"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar metabolismo por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-07-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "metabolismo",
+    "primarySkill": "BIOLOGY_METABOLISMO_07",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 7, como interpretar metabolismo na etapa review da trilha BIOLOGY_METABOLISMO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de metabolismo",
+      "Trocar metabolismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar metabolismo usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar metabolismo usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona metabolismo ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de metabolismo": [
+        "V4_BIOLOGY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 8, como interpretar reproducao na etapa probe da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Aplicar reproducao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de reproducao",
+      "Trocar reproducao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reproducao": [
+        "V4_BIOLOGY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 8, como interpretar reproducao na etapa probe da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar reproducao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de reproducao",
+      "Trocar reproducao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 8, como interpretar reproducao na etapa practice da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Trocar reproducao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar reproducao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de reproducao"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar reproducao por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 8, como interpretar reproducao na etapa practice da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de reproducao",
+      "Trocar reproducao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar reproducao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reproducao": [
+        "V4_BIOLOGY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 8, como interpretar reproducao na etapa transfer da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Aplicar reproducao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de reproducao",
+      "Trocar reproducao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reproducao": [
+        "V4_BIOLOGY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 8, como interpretar reproducao na etapa lock_in da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar reproducao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de reproducao",
+      "Trocar reproducao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 8, como interpretar reproducao na etapa review da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Trocar reproducao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar reproducao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de reproducao"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar reproducao por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-08-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "reproducao",
+    "primarySkill": "BIOLOGY_REPRODUCAO_08",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 8, como interpretar reproducao na etapa review da trilha BIOLOGY_REPRODUCAO_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de reproducao",
+      "Trocar reproducao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar reproducao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar reproducao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona reproducao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reproducao": [
+        "V4_BIOLOGY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 9, como interpretar microbiologia na etapa probe da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Aplicar microbiologia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de microbiologia",
+      "Trocar microbiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de microbiologia": [
+        "V4_BIOLOGY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 9, como interpretar microbiologia na etapa probe da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar microbiologia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de microbiologia",
+      "Trocar microbiologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 9, como interpretar microbiologia na etapa practice da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Trocar microbiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar microbiologia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de microbiologia"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar microbiologia por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 9, como interpretar microbiologia na etapa practice da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de microbiologia",
+      "Trocar microbiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar microbiologia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de microbiologia": [
+        "V4_BIOLOGY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 9, como interpretar microbiologia na etapa transfer da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Aplicar microbiologia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de microbiologia",
+      "Trocar microbiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de microbiologia": [
+        "V4_BIOLOGY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 9, como interpretar microbiologia na etapa lock_in da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar microbiologia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de microbiologia",
+      "Trocar microbiologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 9, como interpretar microbiologia na etapa review da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Trocar microbiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar microbiologia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de microbiologia"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar microbiologia por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-09-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "microbiologia",
+    "primarySkill": "BIOLOGY_MICROBIOLOGIA_09",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 9, como interpretar microbiologia na etapa review da trilha BIOLOGY_MICROBIOLOGIA_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de microbiologia",
+      "Trocar microbiologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar microbiologia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar microbiologia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona microbiologia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de microbiologia": [
+        "V4_BIOLOGY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 10, como interpretar biodiversidade na etapa probe da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Aplicar biodiversidade usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_BIOLOGY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 10, como interpretar biodiversidade na etapa probe da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar biodiversidade usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 10, como interpretar biodiversidade na etapa practice da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar biodiversidade usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de biodiversidade"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar biodiversidade por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 10, como interpretar biodiversidade na etapa practice da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar biodiversidade usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_BIOLOGY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 10, como interpretar biodiversidade na etapa transfer da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Aplicar biodiversidade usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_BIOLOGY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 10, como interpretar biodiversidade na etapa lock_in da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar biodiversidade usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 10, como interpretar biodiversidade na etapa review da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar biodiversidade usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de biodiversidade"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar biodiversidade por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-10-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "BIOLOGY_BIODIVERSIDADE_10",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 10, como interpretar biodiversidade na etapa review da trilha BIOLOGY_BIODIVERSIDADE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar biodiversidade usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_BIOLOGY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 11, como interpretar homeostase na etapa probe da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Aplicar homeostase usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de homeostase",
+      "Trocar homeostase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de homeostase": [
+        "V4_BIOLOGY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 11, como interpretar homeostase na etapa probe da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar homeostase usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de homeostase",
+      "Trocar homeostase por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 11, como interpretar homeostase na etapa practice da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Trocar homeostase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar homeostase usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de homeostase"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar homeostase por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 11, como interpretar homeostase na etapa practice da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de homeostase",
+      "Trocar homeostase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar homeostase usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de homeostase": [
+        "V4_BIOLOGY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 11, como interpretar homeostase na etapa transfer da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Aplicar homeostase usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de homeostase",
+      "Trocar homeostase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de homeostase": [
+        "V4_BIOLOGY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 11, como interpretar homeostase na etapa lock_in da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar homeostase usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de homeostase",
+      "Trocar homeostase por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 11, como interpretar homeostase na etapa review da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Trocar homeostase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar homeostase usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de homeostase"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar homeostase por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-11-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "homeostase",
+    "primarySkill": "BIOLOGY_HOMEOSTASE_11",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 11, como interpretar homeostase na etapa review da trilha BIOLOGY_HOMEOSTASE_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de homeostase",
+      "Trocar homeostase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar homeostase usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar homeostase usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona homeostase ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de homeostase": [
+        "V4_BIOLOGY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 12, como interpretar interpretacao de dados na etapa probe da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Aplicar interpretacao de dados usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados",
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados": [
+        "V4_BIOLOGY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 12, como interpretar interpretacao de dados na etapa probe da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar interpretacao de dados usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados",
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 12, como interpretar interpretacao de dados na etapa practice da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar interpretacao de dados usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 12, como interpretar interpretacao de dados na etapa practice da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados",
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar interpretacao de dados usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados": [
+        "V4_BIOLOGY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 12, como interpretar interpretacao de dados na etapa transfer da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Aplicar interpretacao de dados usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados",
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados": [
+        "V4_BIOLOGY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 12, como interpretar interpretacao de dados na etapa lock_in da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar interpretacao de dados usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados",
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 12, como interpretar interpretacao de dados na etapa review da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar interpretacao de dados usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-12-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "interpretacao de dados",
+    "primarySkill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 12, como interpretar interpretacao de dados na etapa review da trilha BIOLOGY_INTERPRETACAO_DE_DADOS_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados",
+      "Trocar interpretacao de dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar interpretacao de dados usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar interpretacao de dados usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona interpretacao de dados ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de interpretacao de dados": [
+        "V4_BIOLOGY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 13, como interpretar saude coletiva na etapa probe da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Aplicar saude coletiva usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de saude coletiva",
+      "Trocar saude coletiva por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude coletiva": [
+        "V4_BIOLOGY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 13, como interpretar saude coletiva na etapa probe da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar saude coletiva usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de saude coletiva",
+      "Trocar saude coletiva por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 13, como interpretar saude coletiva na etapa practice da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Trocar saude coletiva por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar saude coletiva usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de saude coletiva"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar saude coletiva por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 13, como interpretar saude coletiva na etapa practice da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de saude coletiva",
+      "Trocar saude coletiva por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar saude coletiva usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude coletiva": [
+        "V4_BIOLOGY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 13, como interpretar saude coletiva na etapa transfer da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Aplicar saude coletiva usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de saude coletiva",
+      "Trocar saude coletiva por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude coletiva": [
+        "V4_BIOLOGY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 13, como interpretar saude coletiva na etapa lock_in da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar saude coletiva usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de saude coletiva",
+      "Trocar saude coletiva por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 13, como interpretar saude coletiva na etapa review da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Trocar saude coletiva por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar saude coletiva usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de saude coletiva"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar saude coletiva por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-13-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "saude coletiva",
+    "primarySkill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "supportingSkills": [
+      "LIFE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 13, como interpretar saude coletiva na etapa review da trilha BIOLOGY_SAUDE_COLETIVA_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de saude coletiva",
+      "Trocar saude coletiva por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar saude coletiva usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar saude coletiva usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona saude coletiva ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude coletiva": [
+        "V4_BIOLOGY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-01",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Biologia: na atividade situacao_cotidiana 14, como interpretar bioetica na etapa probe da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Aplicar bioetica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de bioetica",
+      "Trocar bioetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de bioetica": [
+        "V4_BIOLOGY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-02",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Biologia: na atividade dados_observados 14, como interpretar bioetica na etapa probe da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar bioetica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de bioetica",
+      "Trocar bioetica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_BIOLOGY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-03",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Biologia: na atividade texto_explicativo 14, como interpretar bioetica na etapa practice da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Trocar bioetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar bioetica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de bioetica"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar bioetica por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-04",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Biologia: na atividade projeto_aplicado 14, como interpretar bioetica na etapa practice da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de bioetica",
+      "Trocar bioetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar bioetica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de bioetica": [
+        "V4_BIOLOGY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-05",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Biologia: na atividade laboratorio 14, como interpretar bioetica na etapa transfer da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Aplicar bioetica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de bioetica",
+      "Trocar bioetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de bioetica": [
+        "V4_BIOLOGY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-06",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Biologia: na atividade mapa_conceitual 14, como interpretar bioetica na etapa lock_in da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar bioetica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de bioetica",
+      "Trocar bioetica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_BIOLOGY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-07",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Biologia: na atividade debate_orientado 14, como interpretar bioetica na etapa review da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Trocar bioetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar bioetica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de bioetica"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar bioetica por outro conceito sem justificar a relacao": [
+        "V4_BIOLOGY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-biology-14-08",
+    "subject": "BIOLOGY",
+    "domain": "BIOLOGY_V4",
+    "topic": "bioetica",
+    "primarySkill": "BIOLOGY_BIOETICA_14",
+    "supportingSkills": [
+      "ECOLOGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Biologia: na atividade revisao_guiada 14, como interpretar bioetica na etapa review da trilha BIOLOGY_BIOETICA_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de bioetica",
+      "Trocar bioetica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar bioetica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar bioetica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona bioetica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de bioetica": [
+        "V4_BIOLOGY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

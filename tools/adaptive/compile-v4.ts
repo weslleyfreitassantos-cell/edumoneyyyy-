@@ -7,7 +7,16 @@ type Readiness = 'GRAPH_ONLY' | 'CONTENT_READY' | 'ADAPTIVE_READY';
 type Purpose = 'PROBE' | 'PRACTICE' | 'TRANSFER' | 'LOCK_IN' | 'REVIEW';
 type SkillKind = 'ANCHOR' | 'LEAF';
 
-interface RegistryLeaf { code: string; title: string; domain: string; parent: string; readiness: Readiness }
+interface RegistryLeaf {
+  code: string;
+  title: string;
+  domain: string;
+  parent: string;
+  readiness: Readiness;
+  recommendedStage: StageReference['stage'];
+  recommendedGradeFrom: number;
+  recommendedGradeTo: number;
+}
 interface RegistrySubject { code: string; name: string; anchors: string[]; leaves: RegistryLeaf[] }
 interface Registry { packVersion: string; subjects: RegistrySubject[] }
 interface StageReference { stage: 'FUNDAMENTAL_I' | 'FUNDAMENTAL_II' | 'ENSINO_MEDIO'; from: number; to: number }
@@ -43,14 +52,28 @@ function sqlArray(values: readonly string[]): string { return `array[${values.ma
 
 export function loadV4Pack() {
   const manifest = readJson<Record<string, unknown>>(join(PACK, 'manifest.json'));
-  const registry = readJson<Registry>(join(PACK, 'registry.json'));
   const relationships = readJson<{ hierarchy: string[][]; prerequisites: string[][]; relationships: Relationship[] }>(join(PACK, 'relationships.json'));
   const stageReferences = readJson<Record<string, StageReference[]>>(join(PACK, 'stage-references.json'));
   const misconceptions = readJson<Record<string, string[]>>(join(PACK, 'misconceptions.json'));
-  const questions = readJson<Question[]>(join(PACK, 'questions.json'));
-  const lessons = readdirSync(join(PACK, 'subjects'), { withFileTypes: true })
+  const subjects = readdirSync(join(PACK, 'subjects'), { withFileTypes: true })
     .filter((entry) => entry.isDirectory())
-    .flatMap((entry) => readJson<Lesson[]>(join(PACK, 'subjects', entry.name, 'lessons.json')));
+    .sort((left, right) => left.name.localeCompare(right.name))
+    .map((entry) => ({
+      skills: readJson<{ code: string; name: string; anchors: Array<{ code: string; title: string }>; leaves: RegistryLeaf[] }>(join(PACK, 'subjects', entry.name, 'skills.json')),
+      lessons: readJson<Lesson[]>(join(PACK, 'subjects', entry.name, 'lessons.json')),
+      questions: readJson<Question[]>(join(PACK, 'subjects', entry.name, 'questions.json')),
+    }));
+  const registry: Registry = {
+    packVersion: String(manifest.packVersion ?? 'tec-escola-core-v4'),
+    subjects: subjects.map(({ skills }) => ({
+      code: skills.code,
+      name: skills.name,
+      anchors: skills.anchors.map((anchor) => anchor.code),
+      leaves: skills.leaves,
+    })),
+  };
+  const questions = subjects.flatMap(({ questions: subjectQuestions }) => subjectQuestions);
+  const lessons = subjects.flatMap(({ lessons: subjectLessons }) => subjectLessons);
   const anchors = registry.subjects.flatMap((subject) => subject.anchors.map((code) => ({
     code, title: code.replaceAll('_', ' ').toLocaleLowerCase('pt-BR').replace(/(^|\s)\S/g, (letter) => letter.toLocaleUpperCase('pt-BR')),
     subject: subject.code,
@@ -67,12 +90,14 @@ export interface V4ValidationResult {
   anchorCount: number;
   leafCount: number;
   adaptiveReadyCount: number;
+  graphOnlyCount: number;
   lessonCount: number;
   questionCount: number;
   relationshipCount: number;
   misconceptionCount: number;
   prerequisiteCount: number;
   crossSubjectRelationshipCount: number;
+  subjectsWithoutAdaptiveReady: string[];
   unknownSecondarySkills: string[];
   unknownPrerequisites: string[];
   prerequisiteCycles: string[];
@@ -144,6 +169,8 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
       for (const purpose of PURPOSES) if ((byPurpose.get(purpose) ?? 0) < minimums[purpose]) errors.push(`PURPOSE_COVERAGE:${leaf.code}:${purpose}`);
       const contexts = new Set(questions.map((question) => question.contextFamily));
       if (contexts.size < 4) errors.push(`CONTEXT_DIVERSITY:${leaf.code}`);
+      if (new Set(questions.map((question) => question.difficulty)).size < 2) errors.push(`DIFFICULTY_DIVERSITY:${leaf.code}`);
+      if (new Set(questions.map((question) => question.cognitiveProcess)).size < 2) errors.push(`COGNITIVE_PROCESS_DIVERSITY:${leaf.code}`);
     }
   }
   const knownSubjects = new Set(pack.registry.subjects.map((subject) => subject.code));
@@ -163,7 +190,7 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   const stems = new Set<string>();
   const stemList: string[] = [];
   const questionIds = new Set<string>();
-  const answerPositions = new Set<number>();
+  const answerPositionCounts = [0, 0, 0, 0];
   for (const question of pack.questions) {
     if (!knownSubjects.has(question.subject)) errors.push(`UNKNOWN_SUBJECT:${question.id}`);
     if (!skillCodes.has(question.primarySkill)) errors.push(`UNKNOWN_PRIMARY:${question.id}`);
@@ -174,7 +201,7 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     stems.add(stem);
     stemList.push(question.statement);
     const answerPosition = question.options.indexOf(question.correctAnswer);
-    if (answerPosition >= 0) answerPositions.add(answerPosition);
+    if (answerPosition >= 0 && answerPositionCounts[answerPosition] !== undefined) answerPositionCounts[answerPosition] += 1;
     if (!DIFFICULTIES.has(question.difficulty) || !COGNITIVE_PROCESSES.has(question.cognitiveProcess) || !PURPOSES.includes(question.purpose)) errors.push(`INVALID_QUESTION_ENUM:${question.id}`);
     if (question.options.length < 2 || new Set(question.options.map((option) => option.trim())).size !== question.options.length) errors.push(`INVALID_OPTIONS:${question.id}`);
     if (!question.options.includes(question.correctAnswer)) errors.push(`INVALID_ANSWER:${question.id}`);
@@ -198,6 +225,12 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
   for (const leaf of pack.leaves) if (hierarchyCycle(leaf.code)) errors.push(`HIERARCHY_CYCLE:${leaf.code}`);
   const leafCount = pack.leaves.length;
   const adaptiveReadyCount = pack.leaves.filter((leaf) => leaf.readiness === 'ADAPTIVE_READY').length;
+  const graphOnlyCount = pack.leaves.filter((leaf) => leaf.readiness === 'GRAPH_ONLY').length;
+  for (const leaf of pack.leaves) {
+    if (!STAGES.has(leaf.recommendedStage) || !Number.isInteger(leaf.recommendedGradeFrom) || !Number.isInteger(leaf.recommendedGradeTo) || leaf.recommendedGradeFrom < 1 || leaf.recommendedGradeTo < leaf.recommendedGradeFrom || leaf.recommendedGradeTo > 12) {
+      errors.push(`INVALID_LEAF_STAGE_METADATA:${leaf.code}`);
+    }
+  }
   const canonicalHash = createHash('sha256').update(stableJson({ manifest: pack.manifest, registry: pack.registry, relationships: pack.relationships, misconceptions: pack.misconceptions, questions: pack.questions, lessons: pack.lessons })).digest('hex');
   const unknownPrerequisites = pack.relationships.prerequisites.filter(([from, to]) => !skillCodes.has(from) || !skillCodes.has(to)).map((edge) => edge.join(':')).sort();
   const prerequisiteCycles = cycleNodes(pack.relationships.prerequisites);
@@ -206,6 +239,16 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     const subjectFor = (code: string) => pack.registry.subjects.find((subject) => subject.anchors.includes(code) || subject.leaves.some((leaf) => leaf.code === code))?.code;
     return subjectFor(relationship.from) !== subjectFor(relationship.to);
   }).length;
+  const subjectsWithoutAdaptiveReady = pack.registry.subjects.filter((subject) => !subject.leaves.some((leaf) => leaf.readiness === 'ADAPTIVE_READY')).map((subject) => subject.code);
+  for (const subject of subjectsWithoutAdaptiveReady) errors.push(`SUBJECT_WITHOUT_ADAPTIVE_READY:${subject}`);
+  if (pack.anchors.length + pack.leaves.length < 400) errors.push('SCALE_CANONICAL_NODES_BELOW_400');
+  if (adaptiveReadyCount < 180) errors.push('SCALE_ADAPTIVE_READY_LEAVES_BELOW_180');
+  if (pack.lessons.length < 180) errors.push('SCALE_LESSONS_BELOW_180');
+  if (pack.questions.length < 1440) errors.push('SCALE_QUESTIONS_BELOW_1440');
+  if (crossSubjectRelationshipCount < 30) errors.push('SCALE_CROSS_SUBJECT_RELATIONSHIPS_BELOW_30');
+  const totalQuestions = answerPositionCounts.reduce((sum, count) => sum + count, 0);
+  const answerPositionBias = totalQuestions > 0 && answerPositionCounts.some((count) => count / totalQuestions > 0.4);
+  if (answerPositionBias) errors.push(`ANSWER_POSITION_BIAS:${answerPositionCounts.join(',')}`);
   const misconceptionCount = Object.values(pack.misconceptions).reduce((sum, tags) => sum + tags.length, 0);
   return {
     valid: errors.length === 0,
@@ -215,17 +258,19 @@ export function validateV4Pack(pack = loadV4Pack()): V4ValidationResult {
     anchorCount: pack.anchors.length,
     leafCount,
     adaptiveReadyCount,
+    graphOnlyCount,
     lessonCount: pack.lessons.length,
     questionCount: pack.questions.length,
     relationshipCount: pack.relationships.relationships.length,
     misconceptionCount,
     prerequisiteCount: pack.relationships.prerequisites.length,
     crossSubjectRelationshipCount,
+    subjectsWithoutAdaptiveReady,
     unknownSecondarySkills: errors.filter((error) => error.startsWith('UNKNOWN_SECONDARY_SKILL:')),
     unknownPrerequisites,
     prerequisiteCycles,
     nearDuplicateStems,
-    answerPositionBias: answerPositions.size > 1,
+    answerPositionBias,
     errors,
   };
 }
@@ -295,8 +340,7 @@ function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4Validatio
   for (const leaf of pack.leaves) {
     const subject = pack.registry.subjects.find((item) => item.code === leaf.subject)!;
     const review = leaf.readiness === 'ADAPTIVE_READY' ? 'PEDAGOGICAL_REVIEW_PENDING' : 'TECH_VALIDATED';
-    const subjectLeafIndex = pack.leaves.filter((item) => item.subject === leaf.subject).indexOf(leaf);
-    const leafReference = pack.stageReferences[subject.code][subjectLeafIndex % pack.stageReferences[subject.code].length];
+    const leafReference = { stage: leaf.recommendedStage, from: leaf.recommendedGradeFrom, to: leaf.recommendedGradeTo };
     lines.push(`  insert into public.learning_curriculum_skills(catalog_id, code, stage, grade_level, subject_area, domain, title, description, active, node_kind, content_readiness, mastery_targetable, pedagogical_review_status, bncc_alignment_status, metadata) values (v_catalog_id, ${sql(leaf.code)}, ${sql(leafReference.stage)}, ${leafReference.from}, ${sql(subject.code)}, ${sql(leaf.domain)}, ${sql(leaf.title)}, ${sql(`Unidade diagnosticavel de ${leaf.title.toLocaleLowerCase('pt-BR')}.`)}, true, 'LEAF', ${sql(leaf.readiness)}, ${leaf.readiness === 'ADAPTIVE_READY'}, ${sql(review)}, 'CANDIDATE', jsonb_build_object('content_pack', 'tec-escola-core-v4', 'recommended_stage', ${sql(leafReference.stage)}, 'recommended_grade_from', ${leafReference.from}, 'recommended_grade_to', ${leafReference.to}, 'stage_references', ${jsonSql(pack.stageReferences[subject.code])})) on conflict (catalog_id, code) do update set title = excluded.title, description = excluded.description, node_kind = 'LEAF', content_readiness = excluded.content_readiness, mastery_targetable = excluded.mastery_targetable, pedagogical_review_status = excluded.pedagogical_review_status, active = true, metadata = excluded.metadata;`);
     lines.push(`  select canonical.id into v_skill_id from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(leaf.code)};`);
     lines.push(`  select canonical.id into v_parent_id from public.learning_curriculum_skills canonical where canonical.catalog_id = v_catalog_id and canonical.code = ${sql(leaf.parent)};`);
@@ -334,6 +378,81 @@ function buildMigration(pack: ReturnType<typeof loadV4Pack>, result: V4Validatio
   lines.push(String.raw`
 -- V4 keeps the guided-journey contract additive. These RPCs only select
 -- ADAPTIVE_READY V4 leaves and never reinterpret a V2/V3 session as V4.
+create or replace function private.append_guided_v4_next_step(
+  session_row public.learning_guided_sessions,
+  completed_step public.learning_guided_steps,
+  outcome text,
+  event_key text
+)
+returns uuid language plpgsql security definer set search_path = ''
+as $$
+declare
+  next_step uuid;
+  next_skill uuid;
+  candidate_skill uuid;
+  candidate_readiness text;
+  next_readiness text;
+  bridge_depth integer := coalesce(nullif(session_row.metadata->>'bridge_depth', '')::integer, 0);
+begin
+  if bridge_depth >= 2 and completed_step.canonical_skill_id <> session_row.original_target_canonical_skill_id then
+    update public.learning_guided_sessions
+       set status = 'PAUSED', current_step_id = null,
+           decision_reason = 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED',
+           metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object('bridge_depth', bridge_depth, 'runtime_reason', 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED'),
+           updated_at = now()
+     where id = session_row.id;
+    insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
+    values (session_row.institution_id, session_row.id, session_row.student_id, 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED', completed_step.id, event_key, jsonb_build_object('bridge_depth', bridge_depth, 'runtime_reason', 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED'));
+    return null;
+  end if;
+
+  -- The shared V2 helper chooses the bridge at LOCK_IN. Preflight that
+  -- choice so a GRAPH_ONLY node never reaches its question-set lookup.
+  if completed_step.step_type = 'LOCK_IN' and outcome = 'SUCCESS' then
+    candidate_skill := private.pick_learning_v2_next_skill(session_row.institution_id, session_row.student_id, session_row.target_canonical_skill_id);
+    if candidate_skill is not null and candidate_skill <> session_row.target_canonical_skill_id then
+      select skill.content_readiness into candidate_readiness from public.learning_curriculum_skills skill where skill.id = candidate_skill and skill.active;
+      if coalesce(candidate_readiness, 'GRAPH_ONLY') <> 'ADAPTIVE_READY' then
+        update public.learning_guided_sessions
+           set status = 'PAUSED', current_step_id = null, decision_reason = 'CONTENT_NOT_READY',
+               metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object('bridge_depth', bridge_depth, 'runtime_reason', 'CONTENT_NOT_READY', 'skipped_canonical_skill_id', candidate_skill),
+               updated_at = now()
+         where id = session_row.id;
+        insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
+        values (session_row.institution_id, session_row.id, session_row.student_id, 'CONTENT_NOT_READY', completed_step.id, event_key, jsonb_build_object('canonical_skill_id', candidate_skill, 'runtime_reason', 'CONTENT_NOT_READY'));
+        return null;
+      end if;
+    end if;
+  end if;
+
+  next_step := private.append_guided_v2_next_step(session_row, completed_step, outcome, event_key);
+  if next_step is null then return null; end if;
+  select step.canonical_skill_id into next_skill from public.learning_guided_steps step where step.id = next_step;
+  select skill.content_readiness into next_readiness from public.learning_curriculum_skills skill where skill.id = next_skill and skill.active;
+  if coalesce(next_readiness, 'GRAPH_ONLY') <> 'ADAPTIVE_READY' then
+    update public.learning_guided_steps
+       set status = 'SKIPPED', metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object('runtime_reason', 'CONTENT_NOT_READY'), updated_at = now()
+     where id = next_step;
+    update public.learning_guided_sessions
+       set status = 'PAUSED', current_step_id = null, decision_reason = 'CONTENT_NOT_READY',
+           metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object('bridge_depth', bridge_depth, 'runtime_reason', 'CONTENT_NOT_READY', 'skipped_canonical_skill_id', next_skill),
+           updated_at = now()
+     where id = session_row.id;
+    insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
+    values (session_row.institution_id, session_row.id, session_row.student_id, 'CONTENT_NOT_READY', next_step, event_key || ':content-not-ready', jsonb_build_object('canonical_skill_id', next_skill, 'runtime_reason', 'CONTENT_NOT_READY'));
+    return null;
+  end if;
+
+  update public.learning_guided_sessions
+     set metadata = coalesce(metadata, '{}'::jsonb) || jsonb_build_object(
+       'bridge_depth', case when next_skill = session_row.original_target_canonical_skill_id then 0 else bridge_depth + 1 end,
+       'runtime_reason', null
+     ), updated_at = now()
+   where id = session_row.id;
+  return next_step;
+end;
+$$;
+
 create or replace function public.start_guided_learning_session_v4(
   p_institution_id uuid,
   p_student_id uuid,
@@ -374,9 +493,8 @@ begin
     return jsonb_build_object('session_id', existing.id, 'created', false, 'current_step_id', existing.current_step_id, 'engine_version', 'V4');
   end if;
   if found then
-    update public.learning_guided_sessions
-       set status = 'CANCELLED', decision_reason = 'V4_REPLACED_PREVIOUS_SESSION', updated_at = now()
-     where id = existing.id;
+    raise exception 'LEARNING_V4_EXISTING_SESSION_OTHER_ENGINE'
+      using detail = 'An active or paused V2/V3 session owns this target; continue it with the V2-compatible service fallback.';
   end if;
 
   select link.learning_skill_id, unit.subject_id
@@ -519,7 +637,7 @@ begin
   update public.learning_guided_steps set status = 'COMPLETED', completed_at = now(), updated_at = now() where id = p_step_id;
   insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
   values (session_row.institution_id, p_session_id, session_row.student_id, 'STEP_COMPLETED', p_step_id, p_idempotency_key, jsonb_build_object('action', p_action, 'engine_version', 'V4'));
-  next_step := private.append_guided_v2_next_step(session_row, step_row, case when p_action = 'REVIEW_REQUESTED' then 'GAP' else 'SUCCESS' end, p_idempotency_key || ':next');
+  next_step := private.append_guided_v4_next_step(session_row, step_row, case when p_action = 'REVIEW_REQUESTED' then 'GAP' else 'SUCCESS' end, p_idempotency_key || ':next');
   return jsonb_build_object('session_id', p_session_id, 'step_id', p_step_id, 'idempotent', false, 'current_step_id', next_step, 'session_status', (select status from public.learning_guided_sessions where id = p_session_id));
 end;
 $$;
@@ -557,7 +675,7 @@ begin
   insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
   values (session_row.institution_id, session_row.id, session_row.student_id, 'EVIDENCE_RECORDED', step_row.id, p_idempotency_key, jsonb_build_object('score', score, 'purpose', step_row.purpose, 'engine_version', 'V4'));
   outcome := case when score >= 80 then 'SUCCESS' else 'GAP' end;
-  next_step := private.append_guided_v2_next_step(session_row, step_row, outcome, p_idempotency_key || ':next');
+  next_step := private.append_guided_v4_next_step(session_row, step_row, outcome, p_idempotency_key || ':next');
   return jsonb_build_object('attempt_id', attempt_id, 'idempotent', false, 'score', score, 'correct_count', correct_count, 'total_questions', total, 'feedback', feedback, 'current_step_id', next_step, 'session_status', (select status from public.learning_guided_sessions where id = session_row.id));
 end;
 $$;

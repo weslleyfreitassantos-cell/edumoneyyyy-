@@ -1,0 +1,296 @@
+{
+  "code": "COMPUTING",
+  "name": "Computacao e Educacao Digital",
+  "anchors": [
+    {
+      "code": "ALGORITHMS",
+      "title": "Algorithms"
+    },
+    {
+      "code": "DIGITAL_CITIZENSHIP",
+      "title": "Digital Citizenship"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "COMPUTING_CONDITION",
+      "title": "Raciocinar com condicoes",
+      "domain": "LOGICA",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_ALGORITMOS_01",
+      "title": "Algoritmos aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_VARIAVEIS_02",
+      "title": "Variaveis aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_CONDICIONAIS_03",
+      "title": "Condicionais aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_REPETICOES_04",
+      "title": "Repeticoes aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_DADOS_05",
+      "title": "Dados aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_CIBERSEGURANCA_06",
+      "title": "Ciberseguranca aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_REDES_07",
+      "title": "Redes aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_WEB_08",
+      "title": "Web aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_CIDADANIA_DIGITAL_09",
+      "title": "Cidadania Digital aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_PLANILHAS_10",
+      "title": "Planilhas aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_DEPURACAO_11",
+      "title": "Depuracao aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_ABSTRACAO_12",
+      "title": "Abstracao aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+      "title": "Inteligencia Artificial aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_PROJETOS_DIGITAIS_14",
+      "title": "Projetos Digitais aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_ALGORITMOS_15",
+      "title": "Algoritmos aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_VARIAVEIS_16",
+      "title": "Variaveis aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_CONDICIONAIS_17",
+      "title": "Condicionais aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_REPETICOES_18",
+      "title": "Repeticoes aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_DADOS_19",
+      "title": "Dados aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_CIBERSEGURANCA_20",
+      "title": "Ciberseguranca aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_REDES_21",
+      "title": "Redes aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_WEB_22",
+      "title": "Web aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_CIDADANIA_DIGITAL_23",
+      "title": "Cidadania Digital aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_PLANILHAS_24",
+      "title": "Planilhas aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "COMPUTING_DEPURACAO_25",
+      "title": "Depuracao aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COMPUTING_ABSTRACAO_26",
+      "title": "Abstracao aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "DIGITAL_CITIZENSHIP",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "COMPUTING_INTELIGENCIA_ARTIFICIAL_27",
+      "title": "Inteligencia Artificial aplicado",
+      "domain": "COMPUTING_V4",
+      "parent": "ALGORITHMS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    }
+  ]
+}

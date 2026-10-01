@@ -17,18 +17,26 @@ migration `20261001000100_adaptive_learning_pedagogical_depth_v4.sql`.
 
 ## Current pack status
 
-The checked-in pack is a representative, reviewable foundation:
+The checked-in pack is a scaled, reviewable foundation:
 
 - 15 subjects
-- 70 canonical nodes
-- 36 anchors and 34 leaves
-- 4 `ADAPTIVE_READY` leaves
-- 10 lessons and 35 authored questions
+- 456 canonical nodes
+- 36 anchors and 420 leaves
+- 214 `ADAPTIVE_READY` leaves and 206 `GRAPH_ONLY` leaves
+- 248 lessons and 1,715 authored questions
+- 48 cross-subject relationships
 
-The remaining subjects and leaves are deliberately marked `GRAPH_ONLY` or
-`CONTENT_READY`; the planner must not pretend they are ready. The pack remains
-`PEDAGOGICAL_REVIEW_PENDING` until the authored content is reviewed by the
-pedagogical team.
+The source of truth is split by subject under
+`content/adaptive/tec-escola-core-v4/subjects/{subject}/`:
+`skills.json`, `lessons.json` and `questions.json`. `GRAPH_ONLY` leaves keep
+their hierarchy/prerequisite edges but are not mastery targets and are skipped
+by the V4 runtime with `CONTENT_NOT_READY` rather than being marked mastered.
+The pack remains `PEDAGOGICAL_REVIEW_PENDING` until the authored content is
+reviewed by the pedagogical team.
+
+V4 never cancels an active or paused V2/V3 session. It returns the structured
+`LEARNING_V4_EXISTING_SESSION_OTHER_ENGINE` decision and the service preserves
+the existing engine. Bridge steps are limited to two active levels.
 
 ## Commands
 

@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-history-01-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 1, como interpretar cronologia na etapa probe da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Aplicar cronologia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de cronologia",
+      "Trocar cronologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cronologia": [
+        "V4_HISTORY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 1, como interpretar cronologia na etapa probe da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar cronologia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de cronologia",
+      "Trocar cronologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 1, como interpretar cronologia na etapa practice da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Trocar cronologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar cronologia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de cronologia"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cronologia por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 1, como interpretar cronologia na etapa practice da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cronologia",
+      "Trocar cronologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar cronologia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cronologia": [
+        "V4_HISTORY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 1, como interpretar cronologia na etapa transfer da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Aplicar cronologia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de cronologia",
+      "Trocar cronologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cronologia": [
+        "V4_HISTORY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 1, como interpretar cronologia na etapa lock_in da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar cronologia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de cronologia",
+      "Trocar cronologia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 1, como interpretar cronologia na etapa review da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Trocar cronologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar cronologia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de cronologia"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cronologia por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-01-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cronologia",
+    "primarySkill": "HISTORY_CRONOLOGIA_01",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 1, como interpretar cronologia na etapa review da trilha HISTORY_CRONOLOGIA_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cronologia",
+      "Trocar cronologia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar cronologia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar cronologia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona cronologia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cronologia": [
+        "V4_HISTORY_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 2, como interpretar fontes historicas na etapa probe da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Aplicar fontes historicas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de fontes historicas",
+      "Trocar fontes historicas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fontes historicas": [
+        "V4_HISTORY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 2, como interpretar fontes historicas na etapa probe da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar fontes historicas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de fontes historicas",
+      "Trocar fontes historicas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 2, como interpretar fontes historicas na etapa practice da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Trocar fontes historicas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar fontes historicas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de fontes historicas"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar fontes historicas por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 2, como interpretar fontes historicas na etapa practice da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de fontes historicas",
+      "Trocar fontes historicas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar fontes historicas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fontes historicas": [
+        "V4_HISTORY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 2, como interpretar fontes historicas na etapa transfer da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Aplicar fontes historicas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de fontes historicas",
+      "Trocar fontes historicas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fontes historicas": [
+        "V4_HISTORY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 2, como interpretar fontes historicas na etapa lock_in da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar fontes historicas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de fontes historicas",
+      "Trocar fontes historicas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 2, como interpretar fontes historicas na etapa review da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Trocar fontes historicas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar fontes historicas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de fontes historicas"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar fontes historicas por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-02-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "fontes historicas",
+    "primarySkill": "HISTORY_FONTES_HISTORICAS_02",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 2, como interpretar fontes historicas na etapa review da trilha HISTORY_FONTES_HISTORICAS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de fontes historicas",
+      "Trocar fontes historicas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar fontes historicas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar fontes historicas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona fontes historicas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fontes historicas": [
+        "V4_HISTORY_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 3, como interpretar sociedades antigas na etapa probe da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Aplicar sociedades antigas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de sociedades antigas",
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sociedades antigas": [
+        "V4_HISTORY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 3, como interpretar sociedades antigas na etapa probe da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar sociedades antigas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de sociedades antigas",
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 3, como interpretar sociedades antigas na etapa practice da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar sociedades antigas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de sociedades antigas"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 3, como interpretar sociedades antigas na etapa practice da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de sociedades antigas",
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar sociedades antigas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sociedades antigas": [
+        "V4_HISTORY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 3, como interpretar sociedades antigas na etapa transfer da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Aplicar sociedades antigas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de sociedades antigas",
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sociedades antigas": [
+        "V4_HISTORY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 3, como interpretar sociedades antigas na etapa lock_in da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar sociedades antigas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de sociedades antigas",
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 3, como interpretar sociedades antigas na etapa review da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar sociedades antigas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de sociedades antigas"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-03-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "sociedades antigas",
+    "primarySkill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 3, como interpretar sociedades antigas na etapa review da trilha HISTORY_SOCIEDADES_ANTIGAS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de sociedades antigas",
+      "Trocar sociedades antigas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar sociedades antigas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar sociedades antigas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona sociedades antigas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sociedades antigas": [
+        "V4_HISTORY_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 4, como interpretar mundo medieval na etapa probe da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Aplicar mundo medieval usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de mundo medieval",
+      "Trocar mundo medieval por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo medieval": [
+        "V4_HISTORY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 4, como interpretar mundo medieval na etapa probe da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar mundo medieval usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de mundo medieval",
+      "Trocar mundo medieval por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 4, como interpretar mundo medieval na etapa practice da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Trocar mundo medieval por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar mundo medieval usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de mundo medieval"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar mundo medieval por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 4, como interpretar mundo medieval na etapa practice da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de mundo medieval",
+      "Trocar mundo medieval por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar mundo medieval usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo medieval": [
+        "V4_HISTORY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 4, como interpretar mundo medieval na etapa transfer da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Aplicar mundo medieval usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de mundo medieval",
+      "Trocar mundo medieval por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo medieval": [
+        "V4_HISTORY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 4, como interpretar mundo medieval na etapa lock_in da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar mundo medieval usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de mundo medieval",
+      "Trocar mundo medieval por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 4, como interpretar mundo medieval na etapa review da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Trocar mundo medieval por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar mundo medieval usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de mundo medieval"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar mundo medieval por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-04-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo medieval",
+    "primarySkill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 4, como interpretar mundo medieval na etapa review da trilha HISTORY_MUNDO_MEDIEVAL_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de mundo medieval",
+      "Trocar mundo medieval por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar mundo medieval usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar mundo medieval usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona mundo medieval ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo medieval": [
+        "V4_HISTORY_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 5, como interpretar formacao do estado moderno na etapa probe da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Aplicar formacao do estado moderno usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno",
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno": [
+        "V4_HISTORY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 5, como interpretar formacao do estado moderno na etapa probe da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar formacao do estado moderno usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno",
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 5, como interpretar formacao do estado moderno na etapa practice da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar formacao do estado moderno usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 5, como interpretar formacao do estado moderno na etapa practice da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno",
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar formacao do estado moderno usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno": [
+        "V4_HISTORY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 5, como interpretar formacao do estado moderno na etapa transfer da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Aplicar formacao do estado moderno usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno",
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno": [
+        "V4_HISTORY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 5, como interpretar formacao do estado moderno na etapa lock_in da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar formacao do estado moderno usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno",
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 5, como interpretar formacao do estado moderno na etapa review da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar formacao do estado moderno usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-05-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "formacao do estado moderno",
+    "primarySkill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 5, como interpretar formacao do estado moderno na etapa review da trilha HISTORY_FORMACAO_DO_ESTADO_MODERNO_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno",
+      "Trocar formacao do estado moderno por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar formacao do estado moderno usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar formacao do estado moderno usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona formacao do estado moderno ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de formacao do estado moderno": [
+        "V4_HISTORY_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 6, como interpretar colonizacao na etapa probe da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Aplicar colonizacao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de colonizacao",
+      "Trocar colonizacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de colonizacao": [
+        "V4_HISTORY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 6, como interpretar colonizacao na etapa probe da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar colonizacao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de colonizacao",
+      "Trocar colonizacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 6, como interpretar colonizacao na etapa practice da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Trocar colonizacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar colonizacao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de colonizacao"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar colonizacao por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 6, como interpretar colonizacao na etapa practice da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de colonizacao",
+      "Trocar colonizacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar colonizacao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de colonizacao": [
+        "V4_HISTORY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 6, como interpretar colonizacao na etapa transfer da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Aplicar colonizacao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de colonizacao",
+      "Trocar colonizacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de colonizacao": [
+        "V4_HISTORY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 6, como interpretar colonizacao na etapa lock_in da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar colonizacao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de colonizacao",
+      "Trocar colonizacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 6, como interpretar colonizacao na etapa review da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Trocar colonizacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar colonizacao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de colonizacao"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar colonizacao por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-06-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "colonizacao",
+    "primarySkill": "HISTORY_COLONIZACAO_06",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 6, como interpretar colonizacao na etapa review da trilha HISTORY_COLONIZACAO_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de colonizacao",
+      "Trocar colonizacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar colonizacao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar colonizacao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona colonizacao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de colonizacao": [
+        "V4_HISTORY_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 7, como interpretar escravidao e resistencia na etapa probe da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Aplicar escravidao e resistencia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia",
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia": [
+        "V4_HISTORY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 7, como interpretar escravidao e resistencia na etapa probe da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar escravidao e resistencia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia",
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 7, como interpretar escravidao e resistencia na etapa practice da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar escravidao e resistencia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 7, como interpretar escravidao e resistencia na etapa practice da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia",
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar escravidao e resistencia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia": [
+        "V4_HISTORY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 7, como interpretar escravidao e resistencia na etapa transfer da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Aplicar escravidao e resistencia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia",
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia": [
+        "V4_HISTORY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 7, como interpretar escravidao e resistencia na etapa lock_in da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar escravidao e resistencia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia",
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 7, como interpretar escravidao e resistencia na etapa review da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar escravidao e resistencia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-07-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "escravidao e resistencia",
+    "primarySkill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 7, como interpretar escravidao e resistencia na etapa review da trilha HISTORY_ESCRAVIDAO_E_RESISTENCIA_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia",
+      "Trocar escravidao e resistencia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar escravidao e resistencia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar escravidao e resistencia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona escravidao e resistencia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de escravidao e resistencia": [
+        "V4_HISTORY_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 8, como interpretar independencias na etapa probe da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Aplicar independencias usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de independencias",
+      "Trocar independencias por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona independencias ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de independencias": [
+        "V4_HISTORY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 8, como interpretar independencias na etapa probe da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar independencias usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de independencias",
+      "Trocar independencias por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona independencias ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 8, como interpretar independencias na etapa practice da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Trocar independencias por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar independencias usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de independencias"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona independencias ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar independencias por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 8, como interpretar independencias na etapa practice da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de independencias",
+      "Trocar independencias por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar independencias usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona independencias ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de independencias": [
+        "V4_HISTORY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 8, como interpretar independencias na etapa transfer da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Aplicar independencias usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de independencias",
+      "Trocar independencias por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona independencias ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de independencias": [
+        "V4_HISTORY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 8, como interpretar independencias na etapa lock_in da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar independencias usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de independencias",
+      "Trocar independencias por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona independencias ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 8, como interpretar independencias na etapa review da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Trocar independencias por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar independencias usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de independencias"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona independencias ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar independencias por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-08-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "independencias",
+    "primarySkill": "HISTORY_INDEPENDENCIAS_08",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 8, como interpretar independencias na etapa review da trilha HISTORY_INDEPENDENCIAS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de independencias",
+      "Trocar independencias por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar independencias usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar independencias usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona independencias ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de independencias": [
+        "V4_HISTORY_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 9, como interpretar industrializacao na etapa probe da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Aplicar industrializacao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de industrializacao",
+      "Trocar industrializacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de industrializacao": [
+        "V4_HISTORY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 9, como interpretar industrializacao na etapa probe da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar industrializacao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de industrializacao",
+      "Trocar industrializacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 9, como interpretar industrializacao na etapa practice da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Trocar industrializacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar industrializacao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de industrializacao"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar industrializacao por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 9, como interpretar industrializacao na etapa practice da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de industrializacao",
+      "Trocar industrializacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar industrializacao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de industrializacao": [
+        "V4_HISTORY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 9, como interpretar industrializacao na etapa transfer da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Aplicar industrializacao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de industrializacao",
+      "Trocar industrializacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de industrializacao": [
+        "V4_HISTORY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 9, como interpretar industrializacao na etapa lock_in da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar industrializacao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de industrializacao",
+      "Trocar industrializacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 9, como interpretar industrializacao na etapa review da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Trocar industrializacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar industrializacao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de industrializacao"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar industrializacao por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-09-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "industrializacao",
+    "primarySkill": "HISTORY_INDUSTRIALIZACAO_09",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 9, como interpretar industrializacao na etapa review da trilha HISTORY_INDUSTRIALIZACAO_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de industrializacao",
+      "Trocar industrializacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar industrializacao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar industrializacao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona industrializacao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de industrializacao": [
+        "V4_HISTORY_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 10, como interpretar republica na etapa probe da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Aplicar republica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de republica",
+      "Trocar republica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona republica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de republica": [
+        "V4_HISTORY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 10, como interpretar republica na etapa probe da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar republica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de republica",
+      "Trocar republica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona republica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 10, como interpretar republica na etapa practice da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Trocar republica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar republica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de republica"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona republica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar republica por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 10, como interpretar republica na etapa practice da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de republica",
+      "Trocar republica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar republica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona republica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de republica": [
+        "V4_HISTORY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 10, como interpretar republica na etapa transfer da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Aplicar republica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de republica",
+      "Trocar republica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona republica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de republica": [
+        "V4_HISTORY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 10, como interpretar republica na etapa lock_in da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar republica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de republica",
+      "Trocar republica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona republica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 10, como interpretar republica na etapa review da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Trocar republica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar republica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de republica"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona republica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar republica por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-10-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "republica",
+    "primarySkill": "HISTORY_REPUBLICA_10",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 10, como interpretar republica na etapa review da trilha HISTORY_REPUBLICA_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de republica",
+      "Trocar republica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar republica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar republica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona republica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de republica": [
+        "V4_HISTORY_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 11, como interpretar cidadania na etapa probe da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Aplicar cidadania usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de cidadania",
+      "Trocar cidadania por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania": [
+        "V4_HISTORY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 11, como interpretar cidadania na etapa probe da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar cidadania usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de cidadania",
+      "Trocar cidadania por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 11, como interpretar cidadania na etapa practice da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Trocar cidadania por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar cidadania usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de cidadania"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cidadania por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 11, como interpretar cidadania na etapa practice da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cidadania",
+      "Trocar cidadania por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar cidadania usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania": [
+        "V4_HISTORY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 11, como interpretar cidadania na etapa transfer da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Aplicar cidadania usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de cidadania",
+      "Trocar cidadania por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania": [
+        "V4_HISTORY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 11, como interpretar cidadania na etapa lock_in da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar cidadania usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de cidadania",
+      "Trocar cidadania por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 11, como interpretar cidadania na etapa review da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Trocar cidadania por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar cidadania usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de cidadania"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cidadania por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-11-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "cidadania",
+    "primarySkill": "HISTORY_CIDADANIA_11",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 11, como interpretar cidadania na etapa review da trilha HISTORY_CIDADANIA_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cidadania",
+      "Trocar cidadania por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar cidadania usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar cidadania usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona cidadania ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania": [
+        "V4_HISTORY_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 12, como interpretar memoria social na etapa probe da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Aplicar memoria social usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de memoria social",
+      "Trocar memoria social por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de memoria social": [
+        "V4_HISTORY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 12, como interpretar memoria social na etapa probe da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar memoria social usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de memoria social",
+      "Trocar memoria social por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 12, como interpretar memoria social na etapa practice da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Trocar memoria social por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar memoria social usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de memoria social"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar memoria social por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 12, como interpretar memoria social na etapa practice da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de memoria social",
+      "Trocar memoria social por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar memoria social usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de memoria social": [
+        "V4_HISTORY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 12, como interpretar memoria social na etapa transfer da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Aplicar memoria social usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de memoria social",
+      "Trocar memoria social por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de memoria social": [
+        "V4_HISTORY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 12, como interpretar memoria social na etapa lock_in da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar memoria social usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de memoria social",
+      "Trocar memoria social por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 12, como interpretar memoria social na etapa review da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Trocar memoria social por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar memoria social usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de memoria social"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar memoria social por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-12-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "memoria social",
+    "primarySkill": "HISTORY_MEMORIA_SOCIAL_12",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 12, como interpretar memoria social na etapa review da trilha HISTORY_MEMORIA_SOCIAL_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de memoria social",
+      "Trocar memoria social por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar memoria social usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar memoria social usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona memoria social ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de memoria social": [
+        "V4_HISTORY_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 13, como interpretar povos originarios na etapa probe da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Aplicar povos originarios usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de povos originarios",
+      "Trocar povos originarios por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de povos originarios": [
+        "V4_HISTORY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 13, como interpretar povos originarios na etapa probe da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar povos originarios usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de povos originarios",
+      "Trocar povos originarios por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 13, como interpretar povos originarios na etapa practice da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Trocar povos originarios por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar povos originarios usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de povos originarios"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar povos originarios por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 13, como interpretar povos originarios na etapa practice da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de povos originarios",
+      "Trocar povos originarios por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar povos originarios usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de povos originarios": [
+        "V4_HISTORY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 13, como interpretar povos originarios na etapa transfer da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Aplicar povos originarios usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de povos originarios",
+      "Trocar povos originarios por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de povos originarios": [
+        "V4_HISTORY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 13, como interpretar povos originarios na etapa lock_in da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar povos originarios usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de povos originarios",
+      "Trocar povos originarios por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 13, como interpretar povos originarios na etapa review da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Trocar povos originarios por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar povos originarios usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de povos originarios"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar povos originarios por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-13-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "povos originarios",
+    "primarySkill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "supportingSkills": [
+      "SOURCES"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 13, como interpretar povos originarios na etapa review da trilha HISTORY_POVOS_ORIGINARIOS_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de povos originarios",
+      "Trocar povos originarios por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar povos originarios usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar povos originarios usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona povos originarios ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de povos originarios": [
+        "V4_HISTORY_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-01",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Historia: na atividade situacao_cotidiana 14, como interpretar mundo contemporaneo na etapa probe da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Aplicar mundo contemporaneo usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo",
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo": [
+        "V4_HISTORY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-02",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Historia: na atividade dados_observados 14, como interpretar mundo contemporaneo na etapa probe da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar mundo contemporaneo usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo",
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_HISTORY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-03",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Historia: na atividade texto_explicativo 14, como interpretar mundo contemporaneo na etapa practice da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar mundo contemporaneo usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-04",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Historia: na atividade projeto_aplicado 14, como interpretar mundo contemporaneo na etapa practice da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo",
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar mundo contemporaneo usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo": [
+        "V4_HISTORY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-05",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Historia: na atividade laboratorio 14, como interpretar mundo contemporaneo na etapa transfer da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Aplicar mundo contemporaneo usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo",
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo": [
+        "V4_HISTORY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-06",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Historia: na atividade mapa_conceitual 14, como interpretar mundo contemporaneo na etapa lock_in da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar mundo contemporaneo usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo",
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_HISTORY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-07",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Historia: na atividade debate_orientado 14, como interpretar mundo contemporaneo na etapa review da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar mundo contemporaneo usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao": [
+        "V4_HISTORY_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-history-14-08",
+    "subject": "HISTORY",
+    "domain": "HISTORY_V4",
+    "topic": "mundo contemporaneo",
+    "primarySkill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "supportingSkills": [
+      "INTERPRETATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Historia: na atividade revisao_guiada 14, como interpretar mundo contemporaneo na etapa review da trilha HISTORY_MUNDO_CONTEMPORANEO_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo",
+      "Trocar mundo contemporaneo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar mundo contemporaneo usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar mundo contemporaneo usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona mundo contemporaneo ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de mundo contemporaneo": [
+        "V4_HISTORY_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

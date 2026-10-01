@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-physical_education-01-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 1, como interpretar consciencia corporal na etapa probe da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Aplicar consciencia corporal usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de consciencia corporal",
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de consciencia corporal": [
+        "V4_PHYSICAL_EDUCATION_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 1, como interpretar consciencia corporal na etapa probe da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar consciencia corporal usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de consciencia corporal",
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 1, como interpretar consciencia corporal na etapa practice da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar consciencia corporal usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de consciencia corporal"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 1, como interpretar consciencia corporal na etapa practice da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de consciencia corporal",
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar consciencia corporal usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de consciencia corporal": [
+        "V4_PHYSICAL_EDUCATION_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 1, como interpretar consciencia corporal na etapa transfer da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Aplicar consciencia corporal usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de consciencia corporal",
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de consciencia corporal": [
+        "V4_PHYSICAL_EDUCATION_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 1, como interpretar consciencia corporal na etapa lock_in da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar consciencia corporal usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de consciencia corporal",
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 1, como interpretar consciencia corporal na etapa review da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar consciencia corporal usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de consciencia corporal"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-01-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "consciencia corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 1, como interpretar consciencia corporal na etapa review da trilha PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de consciencia corporal",
+      "Trocar consciencia corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar consciencia corporal usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar consciencia corporal usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona consciencia corporal ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de consciencia corporal": [
+        "V4_PHYSICAL_EDUCATION_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 2, como interpretar habilidades motoras na etapa probe da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Aplicar habilidades motoras usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de habilidades motoras",
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de habilidades motoras": [
+        "V4_PHYSICAL_EDUCATION_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 2, como interpretar habilidades motoras na etapa probe da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar habilidades motoras usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de habilidades motoras",
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 2, como interpretar habilidades motoras na etapa practice da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar habilidades motoras usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de habilidades motoras"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 2, como interpretar habilidades motoras na etapa practice da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de habilidades motoras",
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar habilidades motoras usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de habilidades motoras": [
+        "V4_PHYSICAL_EDUCATION_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 2, como interpretar habilidades motoras na etapa transfer da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Aplicar habilidades motoras usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de habilidades motoras",
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de habilidades motoras": [
+        "V4_PHYSICAL_EDUCATION_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 2, como interpretar habilidades motoras na etapa lock_in da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar habilidades motoras usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de habilidades motoras",
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 2, como interpretar habilidades motoras na etapa review da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar habilidades motoras usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de habilidades motoras"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-02-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "habilidades motoras",
+    "primarySkill": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 2, como interpretar habilidades motoras na etapa review da trilha PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de habilidades motoras",
+      "Trocar habilidades motoras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar habilidades motoras usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar habilidades motoras usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona habilidades motoras ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de habilidades motoras": [
+        "V4_PHYSICAL_EDUCATION_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 3, como interpretar jogos na etapa probe da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Aplicar jogos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de jogos",
+      "Trocar jogos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona jogos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de jogos": [
+        "V4_PHYSICAL_EDUCATION_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 3, como interpretar jogos na etapa probe da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar jogos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de jogos",
+      "Trocar jogos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona jogos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 3, como interpretar jogos na etapa practice da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Trocar jogos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar jogos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de jogos"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona jogos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar jogos por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 3, como interpretar jogos na etapa practice da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de jogos",
+      "Trocar jogos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar jogos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona jogos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de jogos": [
+        "V4_PHYSICAL_EDUCATION_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 3, como interpretar jogos na etapa transfer da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Aplicar jogos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de jogos",
+      "Trocar jogos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona jogos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de jogos": [
+        "V4_PHYSICAL_EDUCATION_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 3, como interpretar jogos na etapa lock_in da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar jogos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de jogos",
+      "Trocar jogos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona jogos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 3, como interpretar jogos na etapa review da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Trocar jogos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar jogos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de jogos"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona jogos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar jogos por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-03-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "jogos",
+    "primarySkill": "PHYSICAL_EDUCATION_JOGOS_03",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 3, como interpretar jogos na etapa review da trilha PHYSICAL_EDUCATION_JOGOS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de jogos",
+      "Trocar jogos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar jogos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar jogos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona jogos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de jogos": [
+        "V4_PHYSICAL_EDUCATION_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 4, como interpretar atletismo na etapa probe da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Aplicar atletismo usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de atletismo",
+      "Trocar atletismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de atletismo": [
+        "V4_PHYSICAL_EDUCATION_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 4, como interpretar atletismo na etapa probe da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar atletismo usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de atletismo",
+      "Trocar atletismo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 4, como interpretar atletismo na etapa practice da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Trocar atletismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar atletismo usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de atletismo"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar atletismo por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 4, como interpretar atletismo na etapa practice da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de atletismo",
+      "Trocar atletismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar atletismo usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de atletismo": [
+        "V4_PHYSICAL_EDUCATION_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 4, como interpretar atletismo na etapa transfer da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Aplicar atletismo usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de atletismo",
+      "Trocar atletismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de atletismo": [
+        "V4_PHYSICAL_EDUCATION_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 4, como interpretar atletismo na etapa lock_in da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar atletismo usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de atletismo",
+      "Trocar atletismo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 4, como interpretar atletismo na etapa review da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Trocar atletismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar atletismo usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de atletismo"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar atletismo por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-04-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "atletismo",
+    "primarySkill": "PHYSICAL_EDUCATION_ATLETISMO_04",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 4, como interpretar atletismo na etapa review da trilha PHYSICAL_EDUCATION_ATLETISMO_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de atletismo",
+      "Trocar atletismo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar atletismo usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar atletismo usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona atletismo ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de atletismo": [
+        "V4_PHYSICAL_EDUCATION_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 5, como interpretar ginastica na etapa probe da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Aplicar ginastica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de ginastica",
+      "Trocar ginastica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ginastica": [
+        "V4_PHYSICAL_EDUCATION_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 5, como interpretar ginastica na etapa probe da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar ginastica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de ginastica",
+      "Trocar ginastica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 5, como interpretar ginastica na etapa practice da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Trocar ginastica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar ginastica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de ginastica"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ginastica por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 5, como interpretar ginastica na etapa practice da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ginastica",
+      "Trocar ginastica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar ginastica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ginastica": [
+        "V4_PHYSICAL_EDUCATION_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 5, como interpretar ginastica na etapa transfer da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Aplicar ginastica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de ginastica",
+      "Trocar ginastica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ginastica": [
+        "V4_PHYSICAL_EDUCATION_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 5, como interpretar ginastica na etapa lock_in da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar ginastica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de ginastica",
+      "Trocar ginastica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 5, como interpretar ginastica na etapa review da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Trocar ginastica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar ginastica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de ginastica"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ginastica por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-05-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "ginastica",
+    "primarySkill": "PHYSICAL_EDUCATION_GINASTICA_05",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 5, como interpretar ginastica na etapa review da trilha PHYSICAL_EDUCATION_GINASTICA_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ginastica",
+      "Trocar ginastica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar ginastica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar ginastica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona ginastica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ginastica": [
+        "V4_PHYSICAL_EDUCATION_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 6, como interpretar danca na etapa probe da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Aplicar danca usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona danca ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_PHYSICAL_EDUCATION_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 6, como interpretar danca na etapa probe da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar danca usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona danca ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 6, como interpretar danca na etapa practice da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar danca usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de danca"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona danca ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar danca por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 6, como interpretar danca na etapa practice da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar danca usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona danca ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_PHYSICAL_EDUCATION_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 6, como interpretar danca na etapa transfer da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Aplicar danca usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona danca ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_PHYSICAL_EDUCATION_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 6, como interpretar danca na etapa lock_in da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar danca usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona danca ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 6, como interpretar danca na etapa review da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar danca usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de danca"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona danca ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar danca por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-06-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "danca",
+    "primarySkill": "PHYSICAL_EDUCATION_DANCA_06",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 6, como interpretar danca na etapa review da trilha PHYSICAL_EDUCATION_DANCA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar danca usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona danca ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_PHYSICAL_EDUCATION_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 7, como interpretar esportes coletivos na etapa probe da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Aplicar esportes coletivos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de esportes coletivos",
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de esportes coletivos": [
+        "V4_PHYSICAL_EDUCATION_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 7, como interpretar esportes coletivos na etapa probe da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar esportes coletivos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de esportes coletivos",
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 7, como interpretar esportes coletivos na etapa practice da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar esportes coletivos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de esportes coletivos"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 7, como interpretar esportes coletivos na etapa practice da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de esportes coletivos",
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar esportes coletivos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de esportes coletivos": [
+        "V4_PHYSICAL_EDUCATION_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 7, como interpretar esportes coletivos na etapa transfer da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Aplicar esportes coletivos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de esportes coletivos",
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de esportes coletivos": [
+        "V4_PHYSICAL_EDUCATION_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 7, como interpretar esportes coletivos na etapa lock_in da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar esportes coletivos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de esportes coletivos",
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 7, como interpretar esportes coletivos na etapa review da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar esportes coletivos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de esportes coletivos"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-07-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "esportes coletivos",
+    "primarySkill": "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 7, como interpretar esportes coletivos na etapa review da trilha PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de esportes coletivos",
+      "Trocar esportes coletivos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar esportes coletivos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar esportes coletivos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona esportes coletivos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de esportes coletivos": [
+        "V4_PHYSICAL_EDUCATION_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 8, como interpretar lutas na etapa probe da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Aplicar lutas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de lutas",
+      "Trocar lutas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona lutas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lutas": [
+        "V4_PHYSICAL_EDUCATION_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 8, como interpretar lutas na etapa probe da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar lutas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de lutas",
+      "Trocar lutas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona lutas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 8, como interpretar lutas na etapa practice da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Trocar lutas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar lutas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de lutas"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona lutas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar lutas por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 8, como interpretar lutas na etapa practice da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de lutas",
+      "Trocar lutas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar lutas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona lutas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lutas": [
+        "V4_PHYSICAL_EDUCATION_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 8, como interpretar lutas na etapa transfer da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Aplicar lutas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de lutas",
+      "Trocar lutas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona lutas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lutas": [
+        "V4_PHYSICAL_EDUCATION_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 8, como interpretar lutas na etapa lock_in da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar lutas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de lutas",
+      "Trocar lutas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona lutas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 8, como interpretar lutas na etapa review da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Trocar lutas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar lutas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de lutas"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona lutas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar lutas por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-08-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lutas",
+    "primarySkill": "PHYSICAL_EDUCATION_LUTAS_08",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 8, como interpretar lutas na etapa review da trilha PHYSICAL_EDUCATION_LUTAS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de lutas",
+      "Trocar lutas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar lutas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar lutas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona lutas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lutas": [
+        "V4_PHYSICAL_EDUCATION_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 9, como interpretar saude na etapa probe da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Aplicar saude usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de saude",
+      "Trocar saude por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona saude ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude": [
+        "V4_PHYSICAL_EDUCATION_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 9, como interpretar saude na etapa probe da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar saude usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de saude",
+      "Trocar saude por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona saude ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 9, como interpretar saude na etapa practice da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Trocar saude por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar saude usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de saude"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona saude ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar saude por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 9, como interpretar saude na etapa practice da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de saude",
+      "Trocar saude por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar saude usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona saude ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude": [
+        "V4_PHYSICAL_EDUCATION_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 9, como interpretar saude na etapa transfer da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Aplicar saude usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de saude",
+      "Trocar saude por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona saude ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude": [
+        "V4_PHYSICAL_EDUCATION_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 9, como interpretar saude na etapa lock_in da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar saude usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de saude",
+      "Trocar saude por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona saude ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 9, como interpretar saude na etapa review da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Trocar saude por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar saude usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de saude"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona saude ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar saude por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-09-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "saude",
+    "primarySkill": "PHYSICAL_EDUCATION_SAUDE_09",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 9, como interpretar saude na etapa review da trilha PHYSICAL_EDUCATION_SAUDE_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de saude",
+      "Trocar saude por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar saude usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar saude usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona saude ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude": [
+        "V4_PHYSICAL_EDUCATION_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 10, como interpretar treinamento na etapa probe da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Aplicar treinamento usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de treinamento",
+      "Trocar treinamento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de treinamento": [
+        "V4_PHYSICAL_EDUCATION_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 10, como interpretar treinamento na etapa probe da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar treinamento usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de treinamento",
+      "Trocar treinamento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 10, como interpretar treinamento na etapa practice da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Trocar treinamento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar treinamento usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de treinamento"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar treinamento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 10, como interpretar treinamento na etapa practice da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de treinamento",
+      "Trocar treinamento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar treinamento usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de treinamento": [
+        "V4_PHYSICAL_EDUCATION_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 10, como interpretar treinamento na etapa transfer da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Aplicar treinamento usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de treinamento",
+      "Trocar treinamento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de treinamento": [
+        "V4_PHYSICAL_EDUCATION_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 10, como interpretar treinamento na etapa lock_in da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar treinamento usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de treinamento",
+      "Trocar treinamento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 10, como interpretar treinamento na etapa review da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Trocar treinamento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar treinamento usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de treinamento"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar treinamento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-10-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "treinamento",
+    "primarySkill": "PHYSICAL_EDUCATION_TREINAMENTO_10",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 10, como interpretar treinamento na etapa review da trilha PHYSICAL_EDUCATION_TREINAMENTO_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de treinamento",
+      "Trocar treinamento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar treinamento usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar treinamento usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona treinamento ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de treinamento": [
+        "V4_PHYSICAL_EDUCATION_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 11, como interpretar inclusao na etapa probe da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Aplicar inclusao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de inclusao",
+      "Trocar inclusao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inclusao": [
+        "V4_PHYSICAL_EDUCATION_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 11, como interpretar inclusao na etapa probe da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar inclusao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de inclusao",
+      "Trocar inclusao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 11, como interpretar inclusao na etapa practice da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Trocar inclusao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar inclusao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de inclusao"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inclusao por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 11, como interpretar inclusao na etapa practice da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inclusao",
+      "Trocar inclusao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar inclusao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inclusao": [
+        "V4_PHYSICAL_EDUCATION_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 11, como interpretar inclusao na etapa transfer da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Aplicar inclusao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de inclusao",
+      "Trocar inclusao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inclusao": [
+        "V4_PHYSICAL_EDUCATION_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 11, como interpretar inclusao na etapa lock_in da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar inclusao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de inclusao",
+      "Trocar inclusao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 11, como interpretar inclusao na etapa review da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Trocar inclusao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar inclusao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de inclusao"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inclusao por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-11-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "inclusao",
+    "primarySkill": "PHYSICAL_EDUCATION_INCLUSAO_11",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 11, como interpretar inclusao na etapa review da trilha PHYSICAL_EDUCATION_INCLUSAO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inclusao",
+      "Trocar inclusao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar inclusao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar inclusao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona inclusao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inclusao": [
+        "V4_PHYSICAL_EDUCATION_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 12, como interpretar lazer na etapa probe da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Aplicar lazer usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de lazer",
+      "Trocar lazer por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona lazer ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lazer": [
+        "V4_PHYSICAL_EDUCATION_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 12, como interpretar lazer na etapa probe da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar lazer usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de lazer",
+      "Trocar lazer por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona lazer ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 12, como interpretar lazer na etapa practice da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Trocar lazer por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar lazer usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de lazer"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona lazer ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar lazer por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 12, como interpretar lazer na etapa practice da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de lazer",
+      "Trocar lazer por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar lazer usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona lazer ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lazer": [
+        "V4_PHYSICAL_EDUCATION_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 12, como interpretar lazer na etapa transfer da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Aplicar lazer usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de lazer",
+      "Trocar lazer por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona lazer ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lazer": [
+        "V4_PHYSICAL_EDUCATION_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 12, como interpretar lazer na etapa lock_in da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar lazer usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de lazer",
+      "Trocar lazer por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona lazer ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 12, como interpretar lazer na etapa review da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Trocar lazer por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar lazer usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de lazer"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona lazer ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar lazer por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-12-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "lazer",
+    "primarySkill": "PHYSICAL_EDUCATION_LAZER_12",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 12, como interpretar lazer na etapa review da trilha PHYSICAL_EDUCATION_LAZER_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de lazer",
+      "Trocar lazer por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar lazer usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar lazer usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona lazer ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de lazer": [
+        "V4_PHYSICAL_EDUCATION_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 13, como interpretar regras na etapa probe da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Aplicar regras usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de regras",
+      "Trocar regras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona regras ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de regras": [
+        "V4_PHYSICAL_EDUCATION_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 13, como interpretar regras na etapa probe da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar regras usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de regras",
+      "Trocar regras por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona regras ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 13, como interpretar regras na etapa practice da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Trocar regras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar regras usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de regras"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona regras ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar regras por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 13, como interpretar regras na etapa practice da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de regras",
+      "Trocar regras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar regras usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona regras ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de regras": [
+        "V4_PHYSICAL_EDUCATION_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 13, como interpretar regras na etapa transfer da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Aplicar regras usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de regras",
+      "Trocar regras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona regras ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de regras": [
+        "V4_PHYSICAL_EDUCATION_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 13, como interpretar regras na etapa lock_in da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar regras usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de regras",
+      "Trocar regras por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona regras ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 13, como interpretar regras na etapa review da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Trocar regras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar regras usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de regras"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona regras ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar regras por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-13-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "regras",
+    "primarySkill": "PHYSICAL_EDUCATION_REGRAS_13",
+    "supportingSkills": [
+      "MOVEMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 13, como interpretar regras na etapa review da trilha PHYSICAL_EDUCATION_REGRAS_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de regras",
+      "Trocar regras por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar regras usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar regras usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona regras ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de regras": [
+        "V4_PHYSICAL_EDUCATION_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-01",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Educacao Fisica: na atividade situacao_cotidiana 14, como interpretar cultura corporal na etapa probe da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Aplicar cultura corporal usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de cultura corporal",
+      "Trocar cultura corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cultura corporal": [
+        "V4_PHYSICAL_EDUCATION_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-02",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Educacao Fisica: na atividade dados_observados 14, como interpretar cultura corporal na etapa probe da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar cultura corporal usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de cultura corporal",
+      "Trocar cultura corporal por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICAL_EDUCATION_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-03",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Educacao Fisica: na atividade texto_explicativo 14, como interpretar cultura corporal na etapa practice da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Trocar cultura corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar cultura corporal usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de cultura corporal"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cultura corporal por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-04",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Educacao Fisica: na atividade projeto_aplicado 14, como interpretar cultura corporal na etapa practice da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cultura corporal",
+      "Trocar cultura corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar cultura corporal usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cultura corporal": [
+        "V4_PHYSICAL_EDUCATION_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-05",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Educacao Fisica: na atividade laboratorio 14, como interpretar cultura corporal na etapa transfer da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Aplicar cultura corporal usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de cultura corporal",
+      "Trocar cultura corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cultura corporal": [
+        "V4_PHYSICAL_EDUCATION_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-06",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Educacao Fisica: na atividade mapa_conceitual 14, como interpretar cultura corporal na etapa lock_in da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar cultura corporal usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de cultura corporal",
+      "Trocar cultura corporal por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICAL_EDUCATION_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-07",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Educacao Fisica: na atividade debate_orientado 14, como interpretar cultura corporal na etapa review da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Trocar cultura corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar cultura corporal usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de cultura corporal"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cultura corporal por outro conceito sem justificar a relacao": [
+        "V4_PHYSICAL_EDUCATION_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physical_education-14-08",
+    "subject": "PHYSICAL_EDUCATION",
+    "domain": "PHYSICAL_EDUCATION_V4",
+    "topic": "cultura corporal",
+    "primarySkill": "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+    "supportingSkills": [
+      "HEALTH"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Educacao Fisica: na atividade revisao_guiada 14, como interpretar cultura corporal na etapa review da trilha PHYSICAL_EDUCATION_CULTURA_CORPORAL_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cultura corporal",
+      "Trocar cultura corporal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar cultura corporal usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar cultura corporal usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona cultura corporal ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cultura corporal": [
+        "V4_PHYSICAL_EDUCATION_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

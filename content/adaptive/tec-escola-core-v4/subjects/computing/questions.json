@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-computing-01-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 1, como interpretar algoritmos na etapa probe da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Aplicar algoritmos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de algoritmos",
+      "Trocar algoritmos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de algoritmos": [
+        "V4_COMPUTING_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 1, como interpretar algoritmos na etapa probe da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar algoritmos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de algoritmos",
+      "Trocar algoritmos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 1, como interpretar algoritmos na etapa practice da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Trocar algoritmos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar algoritmos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de algoritmos"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar algoritmos por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 1, como interpretar algoritmos na etapa practice da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de algoritmos",
+      "Trocar algoritmos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar algoritmos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de algoritmos": [
+        "V4_COMPUTING_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 1, como interpretar algoritmos na etapa transfer da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Aplicar algoritmos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de algoritmos",
+      "Trocar algoritmos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de algoritmos": [
+        "V4_COMPUTING_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 1, como interpretar algoritmos na etapa lock_in da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar algoritmos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de algoritmos",
+      "Trocar algoritmos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 1, como interpretar algoritmos na etapa review da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Trocar algoritmos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar algoritmos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de algoritmos"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar algoritmos por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-01-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "algoritmos",
+    "primarySkill": "COMPUTING_ALGORITMOS_01",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 1, como interpretar algoritmos na etapa review da trilha COMPUTING_ALGORITMOS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de algoritmos",
+      "Trocar algoritmos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar algoritmos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar algoritmos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona algoritmos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de algoritmos": [
+        "V4_COMPUTING_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 2, como interpretar variaveis na etapa probe da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Aplicar variaveis usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de variaveis",
+      "Trocar variaveis por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis": [
+        "V4_COMPUTING_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 2, como interpretar variaveis na etapa probe da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar variaveis usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de variaveis",
+      "Trocar variaveis por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 2, como interpretar variaveis na etapa practice da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Trocar variaveis por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar variaveis usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de variaveis"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar variaveis por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 2, como interpretar variaveis na etapa practice da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de variaveis",
+      "Trocar variaveis por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar variaveis usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis": [
+        "V4_COMPUTING_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 2, como interpretar variaveis na etapa transfer da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Aplicar variaveis usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de variaveis",
+      "Trocar variaveis por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis": [
+        "V4_COMPUTING_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 2, como interpretar variaveis na etapa lock_in da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar variaveis usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de variaveis",
+      "Trocar variaveis por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 2, como interpretar variaveis na etapa review da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Trocar variaveis por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar variaveis usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de variaveis"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar variaveis por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-02-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "variaveis",
+    "primarySkill": "COMPUTING_VARIAVEIS_02",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 2, como interpretar variaveis na etapa review da trilha COMPUTING_VARIAVEIS_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de variaveis",
+      "Trocar variaveis por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar variaveis usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar variaveis usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona variaveis ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis": [
+        "V4_COMPUTING_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 3, como interpretar condicionais na etapa probe da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Aplicar condicionais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de condicionais",
+      "Trocar condicionais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de condicionais": [
+        "V4_COMPUTING_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 3, como interpretar condicionais na etapa probe da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar condicionais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de condicionais",
+      "Trocar condicionais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 3, como interpretar condicionais na etapa practice da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Trocar condicionais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar condicionais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de condicionais"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar condicionais por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 3, como interpretar condicionais na etapa practice da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de condicionais",
+      "Trocar condicionais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar condicionais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de condicionais": [
+        "V4_COMPUTING_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 3, como interpretar condicionais na etapa transfer da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Aplicar condicionais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de condicionais",
+      "Trocar condicionais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de condicionais": [
+        "V4_COMPUTING_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 3, como interpretar condicionais na etapa lock_in da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar condicionais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de condicionais",
+      "Trocar condicionais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 3, como interpretar condicionais na etapa review da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Trocar condicionais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar condicionais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de condicionais"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar condicionais por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-03-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "condicionais",
+    "primarySkill": "COMPUTING_CONDICIONAIS_03",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 3, como interpretar condicionais na etapa review da trilha COMPUTING_CONDICIONAIS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de condicionais",
+      "Trocar condicionais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar condicionais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar condicionais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona condicionais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de condicionais": [
+        "V4_COMPUTING_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 4, como interpretar repeticoes na etapa probe da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Aplicar repeticoes usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de repeticoes",
+      "Trocar repeticoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de repeticoes": [
+        "V4_COMPUTING_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 4, como interpretar repeticoes na etapa probe da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar repeticoes usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de repeticoes",
+      "Trocar repeticoes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 4, como interpretar repeticoes na etapa practice da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Trocar repeticoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar repeticoes usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de repeticoes"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar repeticoes por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 4, como interpretar repeticoes na etapa practice da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de repeticoes",
+      "Trocar repeticoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar repeticoes usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de repeticoes": [
+        "V4_COMPUTING_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 4, como interpretar repeticoes na etapa transfer da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Aplicar repeticoes usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de repeticoes",
+      "Trocar repeticoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de repeticoes": [
+        "V4_COMPUTING_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 4, como interpretar repeticoes na etapa lock_in da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar repeticoes usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de repeticoes",
+      "Trocar repeticoes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 4, como interpretar repeticoes na etapa review da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Trocar repeticoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar repeticoes usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de repeticoes"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar repeticoes por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-04-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "repeticoes",
+    "primarySkill": "COMPUTING_REPETICOES_04",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 4, como interpretar repeticoes na etapa review da trilha COMPUTING_REPETICOES_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de repeticoes",
+      "Trocar repeticoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar repeticoes usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar repeticoes usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona repeticoes ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de repeticoes": [
+        "V4_COMPUTING_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 5, como interpretar dados na etapa probe da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Aplicar dados usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de dados",
+      "Trocar dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona dados ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de dados": [
+        "V4_COMPUTING_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 5, como interpretar dados na etapa probe da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar dados usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de dados",
+      "Trocar dados por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona dados ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 5, como interpretar dados na etapa practice da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Trocar dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar dados usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de dados"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona dados ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar dados por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 5, como interpretar dados na etapa practice da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de dados",
+      "Trocar dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar dados usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona dados ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de dados": [
+        "V4_COMPUTING_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 5, como interpretar dados na etapa transfer da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Aplicar dados usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de dados",
+      "Trocar dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona dados ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de dados": [
+        "V4_COMPUTING_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 5, como interpretar dados na etapa lock_in da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar dados usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de dados",
+      "Trocar dados por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona dados ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 5, como interpretar dados na etapa review da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Trocar dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar dados usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de dados"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona dados ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar dados por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-05-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "dados",
+    "primarySkill": "COMPUTING_DADOS_05",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 5, como interpretar dados na etapa review da trilha COMPUTING_DADOS_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de dados",
+      "Trocar dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar dados usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar dados usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona dados ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de dados": [
+        "V4_COMPUTING_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 6, como interpretar ciberseguranca na etapa probe da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Aplicar ciberseguranca usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de ciberseguranca",
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciberseguranca": [
+        "V4_COMPUTING_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 6, como interpretar ciberseguranca na etapa probe da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar ciberseguranca usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de ciberseguranca",
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 6, como interpretar ciberseguranca na etapa practice da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar ciberseguranca usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de ciberseguranca"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 6, como interpretar ciberseguranca na etapa practice da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ciberseguranca",
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar ciberseguranca usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciberseguranca": [
+        "V4_COMPUTING_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 6, como interpretar ciberseguranca na etapa transfer da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Aplicar ciberseguranca usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de ciberseguranca",
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciberseguranca": [
+        "V4_COMPUTING_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 6, como interpretar ciberseguranca na etapa lock_in da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar ciberseguranca usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de ciberseguranca",
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 6, como interpretar ciberseguranca na etapa review da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar ciberseguranca usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de ciberseguranca"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-06-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "ciberseguranca",
+    "primarySkill": "COMPUTING_CIBERSEGURANCA_06",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 6, como interpretar ciberseguranca na etapa review da trilha COMPUTING_CIBERSEGURANCA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ciberseguranca",
+      "Trocar ciberseguranca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar ciberseguranca usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar ciberseguranca usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona ciberseguranca ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciberseguranca": [
+        "V4_COMPUTING_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 7, como interpretar redes na etapa probe da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Aplicar redes usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de redes",
+      "Trocar redes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona redes ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de redes": [
+        "V4_COMPUTING_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 7, como interpretar redes na etapa probe da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar redes usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de redes",
+      "Trocar redes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona redes ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 7, como interpretar redes na etapa practice da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Trocar redes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar redes usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de redes"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona redes ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar redes por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 7, como interpretar redes na etapa practice da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de redes",
+      "Trocar redes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar redes usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona redes ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de redes": [
+        "V4_COMPUTING_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 7, como interpretar redes na etapa transfer da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Aplicar redes usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de redes",
+      "Trocar redes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona redes ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de redes": [
+        "V4_COMPUTING_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 7, como interpretar redes na etapa lock_in da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar redes usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de redes",
+      "Trocar redes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona redes ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 7, como interpretar redes na etapa review da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Trocar redes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar redes usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de redes"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona redes ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar redes por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-07-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "redes",
+    "primarySkill": "COMPUTING_REDES_07",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 7, como interpretar redes na etapa review da trilha COMPUTING_REDES_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de redes",
+      "Trocar redes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar redes usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar redes usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona redes ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de redes": [
+        "V4_COMPUTING_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 8, como interpretar web na etapa probe da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Aplicar web usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de web",
+      "Trocar web por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona web ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de web": [
+        "V4_COMPUTING_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 8, como interpretar web na etapa probe da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar web usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de web",
+      "Trocar web por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona web ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 8, como interpretar web na etapa practice da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Trocar web por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar web usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de web"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona web ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar web por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 8, como interpretar web na etapa practice da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de web",
+      "Trocar web por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar web usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona web ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de web": [
+        "V4_COMPUTING_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 8, como interpretar web na etapa transfer da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Aplicar web usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de web",
+      "Trocar web por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona web ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de web": [
+        "V4_COMPUTING_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 8, como interpretar web na etapa lock_in da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar web usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de web",
+      "Trocar web por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona web ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 8, como interpretar web na etapa review da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Trocar web por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar web usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de web"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona web ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar web por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-08-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "web",
+    "primarySkill": "COMPUTING_WEB_08",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 8, como interpretar web na etapa review da trilha COMPUTING_WEB_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de web",
+      "Trocar web por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar web usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar web usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona web ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de web": [
+        "V4_COMPUTING_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 9, como interpretar cidadania digital na etapa probe da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Aplicar cidadania digital usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de cidadania digital",
+      "Trocar cidadania digital por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania digital": [
+        "V4_COMPUTING_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 9, como interpretar cidadania digital na etapa probe da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar cidadania digital usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de cidadania digital",
+      "Trocar cidadania digital por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 9, como interpretar cidadania digital na etapa practice da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Trocar cidadania digital por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar cidadania digital usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de cidadania digital"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cidadania digital por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 9, como interpretar cidadania digital na etapa practice da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cidadania digital",
+      "Trocar cidadania digital por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar cidadania digital usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania digital": [
+        "V4_COMPUTING_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 9, como interpretar cidadania digital na etapa transfer da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Aplicar cidadania digital usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de cidadania digital",
+      "Trocar cidadania digital por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania digital": [
+        "V4_COMPUTING_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 9, como interpretar cidadania digital na etapa lock_in da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar cidadania digital usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de cidadania digital",
+      "Trocar cidadania digital por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 9, como interpretar cidadania digital na etapa review da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Trocar cidadania digital por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar cidadania digital usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de cidadania digital"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cidadania digital por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-09-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "cidadania digital",
+    "primarySkill": "COMPUTING_CIDADANIA_DIGITAL_09",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 9, como interpretar cidadania digital na etapa review da trilha COMPUTING_CIDADANIA_DIGITAL_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cidadania digital",
+      "Trocar cidadania digital por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar cidadania digital usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar cidadania digital usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona cidadania digital ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cidadania digital": [
+        "V4_COMPUTING_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 10, como interpretar planilhas na etapa probe da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Aplicar planilhas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de planilhas",
+      "Trocar planilhas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de planilhas": [
+        "V4_COMPUTING_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 10, como interpretar planilhas na etapa probe da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar planilhas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de planilhas",
+      "Trocar planilhas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 10, como interpretar planilhas na etapa practice da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Trocar planilhas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar planilhas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de planilhas"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar planilhas por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 10, como interpretar planilhas na etapa practice da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de planilhas",
+      "Trocar planilhas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar planilhas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de planilhas": [
+        "V4_COMPUTING_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 10, como interpretar planilhas na etapa transfer da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Aplicar planilhas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de planilhas",
+      "Trocar planilhas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de planilhas": [
+        "V4_COMPUTING_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 10, como interpretar planilhas na etapa lock_in da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar planilhas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de planilhas",
+      "Trocar planilhas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 10, como interpretar planilhas na etapa review da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Trocar planilhas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar planilhas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de planilhas"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar planilhas por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-10-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "planilhas",
+    "primarySkill": "COMPUTING_PLANILHAS_10",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 10, como interpretar planilhas na etapa review da trilha COMPUTING_PLANILHAS_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de planilhas",
+      "Trocar planilhas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar planilhas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar planilhas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona planilhas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de planilhas": [
+        "V4_COMPUTING_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 11, como interpretar depuracao na etapa probe da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Aplicar depuracao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de depuracao",
+      "Trocar depuracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de depuracao": [
+        "V4_COMPUTING_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 11, como interpretar depuracao na etapa probe da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar depuracao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de depuracao",
+      "Trocar depuracao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 11, como interpretar depuracao na etapa practice da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Trocar depuracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar depuracao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de depuracao"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar depuracao por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 11, como interpretar depuracao na etapa practice da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de depuracao",
+      "Trocar depuracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar depuracao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de depuracao": [
+        "V4_COMPUTING_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 11, como interpretar depuracao na etapa transfer da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Aplicar depuracao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de depuracao",
+      "Trocar depuracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de depuracao": [
+        "V4_COMPUTING_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 11, como interpretar depuracao na etapa lock_in da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar depuracao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de depuracao",
+      "Trocar depuracao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 11, como interpretar depuracao na etapa review da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Trocar depuracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar depuracao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de depuracao"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar depuracao por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-11-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "depuracao",
+    "primarySkill": "COMPUTING_DEPURACAO_11",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 11, como interpretar depuracao na etapa review da trilha COMPUTING_DEPURACAO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de depuracao",
+      "Trocar depuracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar depuracao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar depuracao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona depuracao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de depuracao": [
+        "V4_COMPUTING_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 12, como interpretar abstracao na etapa probe da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Aplicar abstracao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de abstracao",
+      "Trocar abstracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de abstracao": [
+        "V4_COMPUTING_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 12, como interpretar abstracao na etapa probe da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar abstracao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de abstracao",
+      "Trocar abstracao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 12, como interpretar abstracao na etapa practice da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Trocar abstracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar abstracao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de abstracao"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar abstracao por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 12, como interpretar abstracao na etapa practice da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de abstracao",
+      "Trocar abstracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar abstracao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de abstracao": [
+        "V4_COMPUTING_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 12, como interpretar abstracao na etapa transfer da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Aplicar abstracao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de abstracao",
+      "Trocar abstracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de abstracao": [
+        "V4_COMPUTING_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 12, como interpretar abstracao na etapa lock_in da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar abstracao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de abstracao",
+      "Trocar abstracao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 12, como interpretar abstracao na etapa review da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Trocar abstracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar abstracao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de abstracao"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar abstracao por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-12-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "abstracao",
+    "primarySkill": "COMPUTING_ABSTRACAO_12",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 12, como interpretar abstracao na etapa review da trilha COMPUTING_ABSTRACAO_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de abstracao",
+      "Trocar abstracao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar abstracao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar abstracao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona abstracao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de abstracao": [
+        "V4_COMPUTING_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 13, como interpretar inteligencia artificial na etapa probe da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Aplicar inteligencia artificial usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial",
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial": [
+        "V4_COMPUTING_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 13, como interpretar inteligencia artificial na etapa probe da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar inteligencia artificial usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial",
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 13, como interpretar inteligencia artificial na etapa practice da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar inteligencia artificial usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 13, como interpretar inteligencia artificial na etapa practice da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial",
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar inteligencia artificial usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial": [
+        "V4_COMPUTING_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 13, como interpretar inteligencia artificial na etapa transfer da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Aplicar inteligencia artificial usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial",
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial": [
+        "V4_COMPUTING_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 13, como interpretar inteligencia artificial na etapa lock_in da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar inteligencia artificial usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial",
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 13, como interpretar inteligencia artificial na etapa review da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar inteligencia artificial usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-13-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "inteligencia artificial",
+    "primarySkill": "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+    "supportingSkills": [
+      "ALGORITHMS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 13, como interpretar inteligencia artificial na etapa review da trilha COMPUTING_INTELIGENCIA_ARTIFICIAL_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial",
+      "Trocar inteligencia artificial por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar inteligencia artificial usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar inteligencia artificial usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona inteligencia artificial ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteligencia artificial": [
+        "V4_COMPUTING_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-01",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Computacao e Educacao Digital: na atividade situacao_cotidiana 14, como interpretar projetos digitais na etapa probe da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Aplicar projetos digitais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de projetos digitais",
+      "Trocar projetos digitais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de projetos digitais": [
+        "V4_COMPUTING_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-02",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Computacao e Educacao Digital: na atividade dados_observados 14, como interpretar projetos digitais na etapa probe da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar projetos digitais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de projetos digitais",
+      "Trocar projetos digitais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_COMPUTING_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-03",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Computacao e Educacao Digital: na atividade texto_explicativo 14, como interpretar projetos digitais na etapa practice da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Trocar projetos digitais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar projetos digitais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de projetos digitais"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar projetos digitais por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-04",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Computacao e Educacao Digital: na atividade projeto_aplicado 14, como interpretar projetos digitais na etapa practice da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de projetos digitais",
+      "Trocar projetos digitais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar projetos digitais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de projetos digitais": [
+        "V4_COMPUTING_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-05",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Computacao e Educacao Digital: na atividade laboratorio 14, como interpretar projetos digitais na etapa transfer da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Aplicar projetos digitais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de projetos digitais",
+      "Trocar projetos digitais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de projetos digitais": [
+        "V4_COMPUTING_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-06",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Computacao e Educacao Digital: na atividade mapa_conceitual 14, como interpretar projetos digitais na etapa lock_in da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar projetos digitais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de projetos digitais",
+      "Trocar projetos digitais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_COMPUTING_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-07",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Computacao e Educacao Digital: na atividade debate_orientado 14, como interpretar projetos digitais na etapa review da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Trocar projetos digitais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar projetos digitais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de projetos digitais"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar projetos digitais por outro conceito sem justificar a relacao": [
+        "V4_COMPUTING_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-computing-14-08",
+    "subject": "COMPUTING",
+    "domain": "COMPUTING_V4",
+    "topic": "projetos digitais",
+    "primarySkill": "COMPUTING_PROJETOS_DIGITAIS_14",
+    "supportingSkills": [
+      "DIGITAL_CITIZENSHIP"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Computacao e Educacao Digital: na atividade revisao_guiada 14, como interpretar projetos digitais na etapa review da trilha COMPUTING_PROJETOS_DIGITAIS_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de projetos digitais",
+      "Trocar projetos digitais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar projetos digitais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar projetos digitais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona projetos digitais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de projetos digitais": [
+        "V4_COMPUTING_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

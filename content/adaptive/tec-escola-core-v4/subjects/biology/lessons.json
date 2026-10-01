@@ -1,0 +1,226 @@
+[
+  {
+    "skill": "BIOLOGY_CELULAS_01",
+    "title": "Trilha de celulas",
+    "objective": "Aplicar celulas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza celulas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de celulas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de celulas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de celulas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "BIOLOGY_TECIDOS_02",
+    "title": "Trilha de tecidos",
+    "objective": "Aplicar tecidos em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza tecidos em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de tecidos, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de tecidos, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de tecidos sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "BIOLOGY_GENETICA_03",
+    "title": "Trilha de genetica",
+    "objective": "Aplicar genetica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza genetica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de genetica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de genetica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de genetica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "BIOLOGY_EVOLUCAO_04",
+    "title": "Trilha de evolucao",
+    "objective": "Aplicar evolucao em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza evolucao em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de evolucao, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de evolucao, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de evolucao sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "BIOLOGY_ECOLOGIA_05",
+    "title": "Trilha de ecologia",
+    "objective": "Aplicar ecologia em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza ecologia em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de ecologia, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de ecologia, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de ecologia sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "BIOLOGY_FISIOLOGIA_06",
+    "title": "Trilha de fisiologia",
+    "objective": "Aplicar fisiologia em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza fisiologia em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de fisiologia, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de fisiologia, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de fisiologia sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "BIOLOGY_METABOLISMO_07",
+    "title": "Trilha de metabolismo",
+    "objective": "Aplicar metabolismo em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza metabolismo em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de metabolismo, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de metabolismo, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de metabolismo sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "BIOLOGY_REPRODUCAO_08",
+    "title": "Trilha de reproducao",
+    "objective": "Aplicar reproducao em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza reproducao em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de reproducao, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de reproducao, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de reproducao sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "BIOLOGY_MICROBIOLOGIA_09",
+    "title": "Trilha de microbiologia",
+    "objective": "Aplicar microbiologia em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza microbiologia em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de microbiologia, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de microbiologia, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de microbiologia sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "BIOLOGY_BIODIVERSIDADE_10",
+    "title": "Trilha de biodiversidade",
+    "objective": "Aplicar biodiversidade em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza biodiversidade em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de biodiversidade, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de biodiversidade, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de biodiversidade sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "BIOLOGY_HOMEOSTASE_11",
+    "title": "Trilha de homeostase",
+    "objective": "Aplicar homeostase em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza homeostase em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de homeostase, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de homeostase, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de homeostase sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+    "title": "Trilha de interpretacao de dados",
+    "objective": "Aplicar interpretacao de dados em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza interpretacao de dados em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de interpretacao de dados, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de interpretacao de dados, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de interpretacao de dados sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "BIOLOGY_SAUDE_COLETIVA_13",
+    "title": "Trilha de saude coletiva",
+    "objective": "Aplicar saude coletiva em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza saude coletiva em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de saude coletiva, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de saude coletiva, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de saude coletiva sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "BIOLOGY_BIOETICA_14",
+    "title": "Trilha de bioetica",
+    "objective": "Aplicar bioetica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza bioetica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de bioetica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de bioetica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de bioetica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  }
+]

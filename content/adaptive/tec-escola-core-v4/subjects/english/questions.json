@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-english-01-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 1, como interpretar reading na etapa probe da trilha ENGLISH_READING_01?",
+    "options": [
+      "Aplicar reading usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de reading",
+      "Trocar reading por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona reading ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading": [
+        "V4_ENGLISH_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 1, como interpretar reading na etapa probe da trilha ENGLISH_READING_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar reading usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de reading",
+      "Trocar reading por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona reading ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 1, como interpretar reading na etapa practice da trilha ENGLISH_READING_01?",
+    "options": [
+      "Trocar reading por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar reading usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de reading"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona reading ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar reading por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 1, como interpretar reading na etapa practice da trilha ENGLISH_READING_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de reading",
+      "Trocar reading por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar reading usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona reading ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading": [
+        "V4_ENGLISH_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 1, como interpretar reading na etapa transfer da trilha ENGLISH_READING_01?",
+    "options": [
+      "Aplicar reading usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de reading",
+      "Trocar reading por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona reading ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading": [
+        "V4_ENGLISH_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 1, como interpretar reading na etapa lock_in da trilha ENGLISH_READING_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar reading usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de reading",
+      "Trocar reading por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona reading ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 1, como interpretar reading na etapa review da trilha ENGLISH_READING_01?",
+    "options": [
+      "Trocar reading por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar reading usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de reading"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona reading ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar reading por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-01-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading",
+    "primarySkill": "ENGLISH_READING_01",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 1, como interpretar reading na etapa review da trilha ENGLISH_READING_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de reading",
+      "Trocar reading por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar reading usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar reading usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona reading ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading": [
+        "V4_ENGLISH_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 2, como interpretar vocabulary na etapa probe da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Aplicar vocabulary usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de vocabulary",
+      "Trocar vocabulary por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulary": [
+        "V4_ENGLISH_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 2, como interpretar vocabulary na etapa probe da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar vocabulary usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de vocabulary",
+      "Trocar vocabulary por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 2, como interpretar vocabulary na etapa practice da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Trocar vocabulary por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar vocabulary usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de vocabulary"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar vocabulary por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 2, como interpretar vocabulary na etapa practice da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de vocabulary",
+      "Trocar vocabulary por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar vocabulary usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulary": [
+        "V4_ENGLISH_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 2, como interpretar vocabulary na etapa transfer da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Aplicar vocabulary usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de vocabulary",
+      "Trocar vocabulary por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulary": [
+        "V4_ENGLISH_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 2, como interpretar vocabulary na etapa lock_in da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar vocabulary usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de vocabulary",
+      "Trocar vocabulary por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 2, como interpretar vocabulary na etapa review da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Trocar vocabulary por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar vocabulary usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de vocabulary"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar vocabulary por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-02-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "vocabulary",
+    "primarySkill": "ENGLISH_VOCABULARY_02",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 2, como interpretar vocabulary na etapa review da trilha ENGLISH_VOCABULARY_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de vocabulary",
+      "Trocar vocabulary por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar vocabulary usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar vocabulary usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona vocabulary ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulary": [
+        "V4_ENGLISH_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 3, como interpretar cognates na etapa probe da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Aplicar cognates usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de cognates",
+      "Trocar cognates por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona cognates ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cognates": [
+        "V4_ENGLISH_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 3, como interpretar cognates na etapa probe da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar cognates usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de cognates",
+      "Trocar cognates por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona cognates ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 3, como interpretar cognates na etapa practice da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Trocar cognates por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar cognates usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de cognates"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona cognates ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cognates por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 3, como interpretar cognates na etapa practice da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cognates",
+      "Trocar cognates por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar cognates usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona cognates ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cognates": [
+        "V4_ENGLISH_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 3, como interpretar cognates na etapa transfer da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Aplicar cognates usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de cognates",
+      "Trocar cognates por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona cognates ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cognates": [
+        "V4_ENGLISH_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 3, como interpretar cognates na etapa lock_in da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar cognates usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de cognates",
+      "Trocar cognates por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona cognates ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 3, como interpretar cognates na etapa review da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Trocar cognates por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar cognates usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de cognates"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona cognates ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cognates por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-03-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "cognates",
+    "primarySkill": "ENGLISH_COGNATES_03",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 3, como interpretar cognates na etapa review da trilha ENGLISH_COGNATES_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cognates",
+      "Trocar cognates por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar cognates usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar cognates usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona cognates ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cognates": [
+        "V4_ENGLISH_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 4, como interpretar simple present na etapa probe da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Aplicar simple present usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de simple present",
+      "Trocar simple present por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona simple present ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple present": [
+        "V4_ENGLISH_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 4, como interpretar simple present na etapa probe da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar simple present usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de simple present",
+      "Trocar simple present por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona simple present ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 4, como interpretar simple present na etapa practice da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Trocar simple present por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar simple present usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de simple present"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona simple present ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar simple present por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 4, como interpretar simple present na etapa practice da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de simple present",
+      "Trocar simple present por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar simple present usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona simple present ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple present": [
+        "V4_ENGLISH_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 4, como interpretar simple present na etapa transfer da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Aplicar simple present usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de simple present",
+      "Trocar simple present por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona simple present ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple present": [
+        "V4_ENGLISH_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 4, como interpretar simple present na etapa lock_in da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar simple present usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de simple present",
+      "Trocar simple present por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona simple present ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 4, como interpretar simple present na etapa review da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Trocar simple present por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar simple present usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de simple present"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona simple present ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar simple present por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-04-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple present",
+    "primarySkill": "ENGLISH_SIMPLE_PRESENT_04",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 4, como interpretar simple present na etapa review da trilha ENGLISH_SIMPLE_PRESENT_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de simple present",
+      "Trocar simple present por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar simple present usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar simple present usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona simple present ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple present": [
+        "V4_ENGLISH_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 5, como interpretar simple past na etapa probe da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Aplicar simple past usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de simple past",
+      "Trocar simple past por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona simple past ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple past": [
+        "V4_ENGLISH_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 5, como interpretar simple past na etapa probe da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar simple past usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de simple past",
+      "Trocar simple past por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona simple past ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 5, como interpretar simple past na etapa practice da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Trocar simple past por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar simple past usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de simple past"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona simple past ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar simple past por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 5, como interpretar simple past na etapa practice da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de simple past",
+      "Trocar simple past por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar simple past usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona simple past ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple past": [
+        "V4_ENGLISH_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 5, como interpretar simple past na etapa transfer da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Aplicar simple past usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de simple past",
+      "Trocar simple past por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona simple past ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple past": [
+        "V4_ENGLISH_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 5, como interpretar simple past na etapa lock_in da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar simple past usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de simple past",
+      "Trocar simple past por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona simple past ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 5, como interpretar simple past na etapa review da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Trocar simple past por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar simple past usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de simple past"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona simple past ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar simple past por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-05-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "simple past",
+    "primarySkill": "ENGLISH_SIMPLE_PAST_05",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 5, como interpretar simple past na etapa review da trilha ENGLISH_SIMPLE_PAST_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de simple past",
+      "Trocar simple past por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar simple past usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar simple past usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona simple past ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de simple past": [
+        "V4_ENGLISH_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 6, como interpretar future forms na etapa probe da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Aplicar future forms usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de future forms",
+      "Trocar future forms por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona future forms ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de future forms": [
+        "V4_ENGLISH_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 6, como interpretar future forms na etapa probe da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar future forms usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de future forms",
+      "Trocar future forms por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona future forms ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 6, como interpretar future forms na etapa practice da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Trocar future forms por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar future forms usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de future forms"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona future forms ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar future forms por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 6, como interpretar future forms na etapa practice da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de future forms",
+      "Trocar future forms por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar future forms usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona future forms ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de future forms": [
+        "V4_ENGLISH_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 6, como interpretar future forms na etapa transfer da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Aplicar future forms usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de future forms",
+      "Trocar future forms por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona future forms ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de future forms": [
+        "V4_ENGLISH_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 6, como interpretar future forms na etapa lock_in da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar future forms usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de future forms",
+      "Trocar future forms por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona future forms ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 6, como interpretar future forms na etapa review da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Trocar future forms por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar future forms usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de future forms"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona future forms ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar future forms por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-06-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "future forms",
+    "primarySkill": "ENGLISH_FUTURE_FORMS_06",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 6, como interpretar future forms na etapa review da trilha ENGLISH_FUTURE_FORMS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de future forms",
+      "Trocar future forms por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar future forms usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar future forms usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona future forms ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de future forms": [
+        "V4_ENGLISH_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 7, como interpretar modal verbs na etapa probe da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Aplicar modal verbs usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de modal verbs",
+      "Trocar modal verbs por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de modal verbs": [
+        "V4_ENGLISH_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 7, como interpretar modal verbs na etapa probe da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar modal verbs usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de modal verbs",
+      "Trocar modal verbs por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 7, como interpretar modal verbs na etapa practice da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Trocar modal verbs por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar modal verbs usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de modal verbs"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar modal verbs por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 7, como interpretar modal verbs na etapa practice da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de modal verbs",
+      "Trocar modal verbs por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar modal verbs usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de modal verbs": [
+        "V4_ENGLISH_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 7, como interpretar modal verbs na etapa transfer da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Aplicar modal verbs usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de modal verbs",
+      "Trocar modal verbs por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de modal verbs": [
+        "V4_ENGLISH_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 7, como interpretar modal verbs na etapa lock_in da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar modal verbs usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de modal verbs",
+      "Trocar modal verbs por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 7, como interpretar modal verbs na etapa review da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Trocar modal verbs por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar modal verbs usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de modal verbs"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar modal verbs por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-07-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "modal verbs",
+    "primarySkill": "ENGLISH_MODAL_VERBS_07",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 7, como interpretar modal verbs na etapa review da trilha ENGLISH_MODAL_VERBS_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de modal verbs",
+      "Trocar modal verbs por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar modal verbs usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar modal verbs usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona modal verbs ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de modal verbs": [
+        "V4_ENGLISH_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 8, como interpretar connectors na etapa probe da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Aplicar connectors usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de connectors",
+      "Trocar connectors por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona connectors ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de connectors": [
+        "V4_ENGLISH_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 8, como interpretar connectors na etapa probe da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar connectors usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de connectors",
+      "Trocar connectors por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona connectors ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 8, como interpretar connectors na etapa practice da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Trocar connectors por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar connectors usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de connectors"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona connectors ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar connectors por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 8, como interpretar connectors na etapa practice da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de connectors",
+      "Trocar connectors por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar connectors usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona connectors ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de connectors": [
+        "V4_ENGLISH_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 8, como interpretar connectors na etapa transfer da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Aplicar connectors usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de connectors",
+      "Trocar connectors por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona connectors ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de connectors": [
+        "V4_ENGLISH_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 8, como interpretar connectors na etapa lock_in da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar connectors usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de connectors",
+      "Trocar connectors por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona connectors ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 8, como interpretar connectors na etapa review da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Trocar connectors por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar connectors usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de connectors"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona connectors ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar connectors por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-08-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "connectors",
+    "primarySkill": "ENGLISH_CONNECTORS_08",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 8, como interpretar connectors na etapa review da trilha ENGLISH_CONNECTORS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de connectors",
+      "Trocar connectors por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar connectors usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar connectors usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona connectors ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de connectors": [
+        "V4_ENGLISH_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 9, como interpretar text genres na etapa probe da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Aplicar text genres usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de text genres",
+      "Trocar text genres por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona text genres ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de text genres": [
+        "V4_ENGLISH_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 9, como interpretar text genres na etapa probe da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar text genres usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de text genres",
+      "Trocar text genres por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona text genres ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 9, como interpretar text genres na etapa practice da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Trocar text genres por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar text genres usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de text genres"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona text genres ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar text genres por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 9, como interpretar text genres na etapa practice da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de text genres",
+      "Trocar text genres por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar text genres usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona text genres ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de text genres": [
+        "V4_ENGLISH_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 9, como interpretar text genres na etapa transfer da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Aplicar text genres usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de text genres",
+      "Trocar text genres por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona text genres ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de text genres": [
+        "V4_ENGLISH_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 9, como interpretar text genres na etapa lock_in da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar text genres usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de text genres",
+      "Trocar text genres por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona text genres ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 9, como interpretar text genres na etapa review da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Trocar text genres por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar text genres usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de text genres"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona text genres ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar text genres por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-09-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "text genres",
+    "primarySkill": "ENGLISH_TEXT_GENRES_09",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 9, como interpretar text genres na etapa review da trilha ENGLISH_TEXT_GENRES_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de text genres",
+      "Trocar text genres por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar text genres usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar text genres usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona text genres ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de text genres": [
+        "V4_ENGLISH_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 10, como interpretar reading inference na etapa probe da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Aplicar reading inference usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de reading inference",
+      "Trocar reading inference por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading inference": [
+        "V4_ENGLISH_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 10, como interpretar reading inference na etapa probe da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar reading inference usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de reading inference",
+      "Trocar reading inference por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 10, como interpretar reading inference na etapa practice da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Trocar reading inference por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar reading inference usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de reading inference"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar reading inference por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 10, como interpretar reading inference na etapa practice da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de reading inference",
+      "Trocar reading inference por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar reading inference usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading inference": [
+        "V4_ENGLISH_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 10, como interpretar reading inference na etapa transfer da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Aplicar reading inference usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de reading inference",
+      "Trocar reading inference por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading inference": [
+        "V4_ENGLISH_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 10, como interpretar reading inference na etapa lock_in da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar reading inference usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de reading inference",
+      "Trocar reading inference por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 10, como interpretar reading inference na etapa review da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Trocar reading inference por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar reading inference usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de reading inference"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar reading inference por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-10-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "reading inference",
+    "primarySkill": "ENGLISH_READING_INFERENCE_10",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 10, como interpretar reading inference na etapa review da trilha ENGLISH_READING_INFERENCE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de reading inference",
+      "Trocar reading inference por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar reading inference usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar reading inference usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona reading inference ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de reading inference": [
+        "V4_ENGLISH_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 11, como interpretar pronunciation na etapa probe da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Aplicar pronunciation usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de pronunciation",
+      "Trocar pronunciation por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pronunciation": [
+        "V4_ENGLISH_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 11, como interpretar pronunciation na etapa probe da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar pronunciation usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de pronunciation",
+      "Trocar pronunciation por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 11, como interpretar pronunciation na etapa practice da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Trocar pronunciation por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar pronunciation usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de pronunciation"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar pronunciation por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 11, como interpretar pronunciation na etapa practice da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de pronunciation",
+      "Trocar pronunciation por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar pronunciation usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pronunciation": [
+        "V4_ENGLISH_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 11, como interpretar pronunciation na etapa transfer da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Aplicar pronunciation usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de pronunciation",
+      "Trocar pronunciation por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pronunciation": [
+        "V4_ENGLISH_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 11, como interpretar pronunciation na etapa lock_in da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar pronunciation usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de pronunciation",
+      "Trocar pronunciation por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 11, como interpretar pronunciation na etapa review da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Trocar pronunciation por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar pronunciation usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de pronunciation"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar pronunciation por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-11-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "pronunciation",
+    "primarySkill": "ENGLISH_PRONUNCIATION_11",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 11, como interpretar pronunciation na etapa review da trilha ENGLISH_PRONUNCIATION_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de pronunciation",
+      "Trocar pronunciation por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar pronunciation usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar pronunciation usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona pronunciation ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pronunciation": [
+        "V4_ENGLISH_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 12, como interpretar listening na etapa probe da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Aplicar listening usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de listening",
+      "Trocar listening por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona listening ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de listening": [
+        "V4_ENGLISH_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 12, como interpretar listening na etapa probe da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar listening usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de listening",
+      "Trocar listening por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona listening ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 12, como interpretar listening na etapa practice da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Trocar listening por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar listening usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de listening"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona listening ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar listening por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 12, como interpretar listening na etapa practice da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de listening",
+      "Trocar listening por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar listening usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona listening ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de listening": [
+        "V4_ENGLISH_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 12, como interpretar listening na etapa transfer da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Aplicar listening usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de listening",
+      "Trocar listening por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona listening ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de listening": [
+        "V4_ENGLISH_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 12, como interpretar listening na etapa lock_in da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar listening usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de listening",
+      "Trocar listening por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona listening ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 12, como interpretar listening na etapa review da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Trocar listening por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar listening usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de listening"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona listening ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar listening por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-12-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "listening",
+    "primarySkill": "ENGLISH_LISTENING_12",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 12, como interpretar listening na etapa review da trilha ENGLISH_LISTENING_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de listening",
+      "Trocar listening por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar listening usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar listening usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona listening ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de listening": [
+        "V4_ENGLISH_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 13, como interpretar culture na etapa probe da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Aplicar culture usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de culture",
+      "Trocar culture por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona culture ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de culture": [
+        "V4_ENGLISH_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 13, como interpretar culture na etapa probe da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar culture usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de culture",
+      "Trocar culture por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona culture ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 13, como interpretar culture na etapa practice da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Trocar culture por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar culture usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de culture"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona culture ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar culture por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 13, como interpretar culture na etapa practice da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de culture",
+      "Trocar culture por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar culture usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona culture ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de culture": [
+        "V4_ENGLISH_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 13, como interpretar culture na etapa transfer da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Aplicar culture usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de culture",
+      "Trocar culture por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona culture ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de culture": [
+        "V4_ENGLISH_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 13, como interpretar culture na etapa lock_in da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar culture usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de culture",
+      "Trocar culture por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona culture ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 13, como interpretar culture na etapa review da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Trocar culture por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar culture usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de culture"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona culture ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar culture por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-13-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "culture",
+    "primarySkill": "ENGLISH_CULTURE_13",
+    "supportingSkills": [
+      "ENGLISH_READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 13, como interpretar culture na etapa review da trilha ENGLISH_CULTURE_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de culture",
+      "Trocar culture por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar culture usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar culture usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona culture ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de culture": [
+        "V4_ENGLISH_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-01",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Inglesa: na atividade situacao_cotidiana 14, como interpretar guided writing na etapa probe da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Aplicar guided writing usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de guided writing",
+      "Trocar guided writing por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de guided writing": [
+        "V4_ENGLISH_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-02",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Inglesa: na atividade dados_observados 14, como interpretar guided writing na etapa probe da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar guided writing usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de guided writing",
+      "Trocar guided writing por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ENGLISH_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-03",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Inglesa: na atividade texto_explicativo 14, como interpretar guided writing na etapa practice da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Trocar guided writing por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar guided writing usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de guided writing"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar guided writing por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-04",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Inglesa: na atividade projeto_aplicado 14, como interpretar guided writing na etapa practice da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de guided writing",
+      "Trocar guided writing por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar guided writing usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de guided writing": [
+        "V4_ENGLISH_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-05",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Inglesa: na atividade laboratorio 14, como interpretar guided writing na etapa transfer da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Aplicar guided writing usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de guided writing",
+      "Trocar guided writing por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de guided writing": [
+        "V4_ENGLISH_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-06",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Inglesa: na atividade mapa_conceitual 14, como interpretar guided writing na etapa lock_in da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar guided writing usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de guided writing",
+      "Trocar guided writing por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ENGLISH_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-07",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Inglesa: na atividade debate_orientado 14, como interpretar guided writing na etapa review da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Trocar guided writing por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar guided writing usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de guided writing"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar guided writing por outro conceito sem justificar a relacao": [
+        "V4_ENGLISH_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-english-14-08",
+    "subject": "ENGLISH",
+    "domain": "ENGLISH_V4",
+    "topic": "guided writing",
+    "primarySkill": "ENGLISH_GUIDED_WRITING_14",
+    "supportingSkills": [
+      "LANGUAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Inglesa: na atividade revisao_guiada 14, como interpretar guided writing na etapa review da trilha ENGLISH_GUIDED_WRITING_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de guided writing",
+      "Trocar guided writing por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar guided writing usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar guided writing usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona guided writing ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de guided writing": [
+        "V4_ENGLISH_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

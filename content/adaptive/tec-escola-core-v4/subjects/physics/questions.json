@@ -1,0 +1,3771 @@
+[
+  {
+    "id": "v4-speed-1",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DIRECT",
+    "statement": "Um ciclista percorre 120 km em 2 h. Qual e a velocidade media?",
+    "options": [
+      "60 km/h",
+      "240 km/h",
+      "118 km/h",
+      "2 km/h"
+    ],
+    "correctAnswer": "60 km/h",
+    "explanation": "Divida a distancia pelo tempo: 120 / 2 = 60.",
+    "misconceptions": {
+      "240 km/h": [
+        "DISTANCE_TIME_INVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-2",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "UNITS",
+    "statement": "Para calcular velocidade media, quais grandezas devem ser relacionadas?",
+    "options": [
+      "Distancia e intervalo de tempo",
+      "Massa e volume",
+      "Forca e area",
+      "Temperatura e energia"
+    ],
+    "correctAnswer": "Distancia e intervalo de tempo",
+    "explanation": "Velocidade media e a razao entre distancia percorrida e tempo decorrido.",
+    "misconceptions": {
+      "Massa e volume": [
+        "UNIT_CONVERSION_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-3",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TRANSPORT",
+    "statement": "Um onibus percorre 90 km em 1,5 h. Qual e a velocidade media?",
+    "options": [
+      "60 km/h",
+      "135 km/h",
+      "45 km/h",
+      "91,5 km/h"
+    ],
+    "correctAnswer": "60 km/h",
+    "explanation": "90 dividido por 1,5 resulta em 60 km/h.",
+    "misconceptions": {
+      "135 km/h": [
+        "DISTANCE_TIME_INVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-4",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "SPORT",
+    "statement": "Atleta A percorre 400 m em 80 s e atleta B percorre 300 m em 50 s. Quem teve maior velocidade media?",
+    "options": [
+      "Atleta B",
+      "Atleta A",
+      "Os dois tiveram a mesma",
+      "Nao e possivel comparar distancias e tempos"
+    ],
+    "correctAnswer": "Atleta B",
+    "explanation": "A tem 5 m/s; B tem 6 m/s.",
+    "misconceptions": {
+      "Atleta A": [
+        "DISTANCE_TIME_INVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-5",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "MAPA",
+    "statement": "Em uma viagem, 180 km foram percorridos em 3 h, incluindo uma parada? Para a velocidade media do trajeto, usa-se:",
+    "options": [
+      "A distancia total dividida pelo tempo total",
+      "Somente o tempo em movimento",
+      "A distancia dividida por 3 minutos",
+      "A soma de distancia e tempo"
+    ],
+    "correctAnswer": "A distancia total dividida pelo tempo total",
+    "explanation": "A velocidade media do trajeto considera o intervalo total informado.",
+    "misconceptions": {
+      "Somente o tempo em movimento": [
+        "UNIT_CONVERSION_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-6",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "GRAPH",
+    "statement": "Em um grafico distancia-tempo, um trecho mais inclinado representa, em geral:",
+    "options": [
+      "Maior velocidade media",
+      "Menor distancia total sempre",
+      "Tempo igual a zero",
+      "Ausencia de movimento em todos os casos"
+    ],
+    "correctAnswer": "Maior velocidade media",
+    "explanation": "A inclinacao representa quanto a distancia cresce por unidade de tempo.",
+    "misconceptions": {
+      "Menor distancia total sempre": [
+        "DISTANCE_TIME_INVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-7",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "UNITS",
+    "statement": "Qual verificacao evita erro ao calcular 2 km em 4 min?",
+    "options": [
+      "Manter unidades compativeis antes de dividir",
+      "Multiplicar km e minutos",
+      "Somar 2 e 4",
+      "Ignorar a unidade final"
+    ],
+    "correctAnswer": "Manter unidades compativeis antes de dividir",
+    "explanation": "A unidade do tempo deve ser interpretada junto da unidade de distancia.",
+    "misconceptions": {
+      "Multiplicar km e minutos": [
+        "UNIT_CONVERSION_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-8",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DIRECT",
+    "statement": "Por que velocidade media nao e simplesmente a distancia total?",
+    "options": [
+      "Porque ela relaciona distancia e tempo",
+      "Porque distancia nunca pode ser medida",
+      "Porque tempo e sempre constante",
+      "Porque a massa determina a velocidade"
+    ],
+    "correctAnswer": "Porque ela relaciona distancia e tempo",
+    "explanation": "A taxa so tem significado quando a distancia e comparada ao intervalo de tempo.",
+    "misconceptions": {
+      "Porque tempo e sempre constante": [
+        "DISTANCE_TIME_INVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-speed-9",
+    "subject": "PHYSICS",
+    "domain": "MOVIMENTO",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_AVERAGE_SPEED",
+    "supportingSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "prerequisiteSkills": [
+      "RATIO_UNIT_RATE"
+    ],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "SPORT",
+    "statement": "Se dois percursos tem a mesma distancia, o percurso com menor tempo tem:",
+    "options": [
+      "Maior velocidade media",
+      "Menor velocidade media",
+      "A mesma velocidade sempre",
+      "Nenhuma velocidade"
+    ],
+    "correctAnswer": "Maior velocidade media",
+    "explanation": "Com a distancia fixa, dividir por um tempo menor gera uma taxa maior.",
+    "misconceptions": {
+      "Menor velocidade media": [
+        "DISTANCE_TIME_INVERSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-scale-physics-01-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 1, como interpretar movimento na etapa probe da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Aplicar movimento usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de movimento",
+      "Trocar movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona movimento ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de movimento": [
+        "V4_PHYSICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 1, como interpretar movimento na etapa probe da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar movimento usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de movimento",
+      "Trocar movimento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona movimento ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 1, como interpretar movimento na etapa practice da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Trocar movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar movimento usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de movimento"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona movimento ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar movimento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 1, como interpretar movimento na etapa practice da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de movimento",
+      "Trocar movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar movimento usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona movimento ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de movimento": [
+        "V4_PHYSICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 1, como interpretar movimento na etapa transfer da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Aplicar movimento usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de movimento",
+      "Trocar movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona movimento ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de movimento": [
+        "V4_PHYSICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 1, como interpretar movimento na etapa lock_in da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar movimento usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de movimento",
+      "Trocar movimento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona movimento ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 1, como interpretar movimento na etapa review da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Trocar movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar movimento usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de movimento"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona movimento ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar movimento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-01-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "movimento",
+    "primarySkill": "PHYSICS_MOVIMENTO_01",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 1, como interpretar movimento na etapa review da trilha PHYSICS_MOVIMENTO_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de movimento",
+      "Trocar movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar movimento usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar movimento usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona movimento ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de movimento": [
+        "V4_PHYSICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 2, como interpretar velocidade media na etapa probe da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Aplicar velocidade media usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de velocidade media",
+      "Trocar velocidade media por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de velocidade media": [
+        "V4_PHYSICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 2, como interpretar velocidade media na etapa probe da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar velocidade media usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de velocidade media",
+      "Trocar velocidade media por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 2, como interpretar velocidade media na etapa practice da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Trocar velocidade media por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar velocidade media usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de velocidade media"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar velocidade media por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 2, como interpretar velocidade media na etapa practice da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de velocidade media",
+      "Trocar velocidade media por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar velocidade media usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de velocidade media": [
+        "V4_PHYSICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 2, como interpretar velocidade media na etapa transfer da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Aplicar velocidade media usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de velocidade media",
+      "Trocar velocidade media por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de velocidade media": [
+        "V4_PHYSICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 2, como interpretar velocidade media na etapa lock_in da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar velocidade media usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de velocidade media",
+      "Trocar velocidade media por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 2, como interpretar velocidade media na etapa review da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Trocar velocidade media por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar velocidade media usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de velocidade media"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar velocidade media por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-02-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "velocidade media",
+    "primarySkill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 2, como interpretar velocidade media na etapa review da trilha PHYSICS_VELOCIDADE_MEDIA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de velocidade media",
+      "Trocar velocidade media por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar velocidade media usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar velocidade media usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona velocidade media ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de velocidade media": [
+        "V4_PHYSICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 3, como interpretar forcas na etapa probe da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Aplicar forcas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de forcas",
+      "Trocar forcas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona forcas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas": [
+        "V4_PHYSICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 3, como interpretar forcas na etapa probe da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar forcas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de forcas",
+      "Trocar forcas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona forcas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 3, como interpretar forcas na etapa practice da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Trocar forcas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar forcas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de forcas"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona forcas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar forcas por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 3, como interpretar forcas na etapa practice da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de forcas",
+      "Trocar forcas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar forcas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona forcas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas": [
+        "V4_PHYSICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 3, como interpretar forcas na etapa transfer da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Aplicar forcas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de forcas",
+      "Trocar forcas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona forcas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas": [
+        "V4_PHYSICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 3, como interpretar forcas na etapa lock_in da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar forcas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de forcas",
+      "Trocar forcas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona forcas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 3, como interpretar forcas na etapa review da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Trocar forcas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar forcas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de forcas"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona forcas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar forcas por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-03-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "forcas",
+    "primarySkill": "PHYSICS_FORCAS_03",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 3, como interpretar forcas na etapa review da trilha PHYSICS_FORCAS_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de forcas",
+      "Trocar forcas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar forcas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar forcas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona forcas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas": [
+        "V4_PHYSICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 4, como interpretar energia na etapa probe da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Aplicar energia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de energia",
+      "Trocar energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona energia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de energia": [
+        "V4_PHYSICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 4, como interpretar energia na etapa probe da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar energia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de energia",
+      "Trocar energia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona energia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 4, como interpretar energia na etapa practice da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Trocar energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar energia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de energia"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona energia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar energia por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 4, como interpretar energia na etapa practice da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de energia",
+      "Trocar energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar energia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona energia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de energia": [
+        "V4_PHYSICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 4, como interpretar energia na etapa transfer da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Aplicar energia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de energia",
+      "Trocar energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona energia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de energia": [
+        "V4_PHYSICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 4, como interpretar energia na etapa lock_in da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar energia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de energia",
+      "Trocar energia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona energia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 4, como interpretar energia na etapa review da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Trocar energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar energia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de energia"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona energia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar energia por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-04-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "energia",
+    "primarySkill": "PHYSICS_ENERGIA_04",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 4, como interpretar energia na etapa review da trilha PHYSICS_ENERGIA_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de energia",
+      "Trocar energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar energia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar energia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona energia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de energia": [
+        "V4_PHYSICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 5, como interpretar trabalho na etapa probe da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Aplicar trabalho usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de trabalho",
+      "Trocar trabalho por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de trabalho": [
+        "V4_PHYSICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 5, como interpretar trabalho na etapa probe da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar trabalho usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de trabalho",
+      "Trocar trabalho por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 5, como interpretar trabalho na etapa practice da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Trocar trabalho por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar trabalho usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de trabalho"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar trabalho por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 5, como interpretar trabalho na etapa practice da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de trabalho",
+      "Trocar trabalho por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar trabalho usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de trabalho": [
+        "V4_PHYSICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 5, como interpretar trabalho na etapa transfer da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Aplicar trabalho usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de trabalho",
+      "Trocar trabalho por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de trabalho": [
+        "V4_PHYSICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 5, como interpretar trabalho na etapa lock_in da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar trabalho usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de trabalho",
+      "Trocar trabalho por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 5, como interpretar trabalho na etapa review da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Trocar trabalho por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar trabalho usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de trabalho"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar trabalho por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-05-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "trabalho",
+    "primarySkill": "PHYSICS_TRABALHO_05",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 5, como interpretar trabalho na etapa review da trilha PHYSICS_TRABALHO_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de trabalho",
+      "Trocar trabalho por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar trabalho usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar trabalho usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona trabalho ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de trabalho": [
+        "V4_PHYSICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 6, como interpretar calor na etapa probe da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Aplicar calor usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de calor",
+      "Trocar calor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona calor ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de calor": [
+        "V4_PHYSICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 6, como interpretar calor na etapa probe da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar calor usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de calor",
+      "Trocar calor por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona calor ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 6, como interpretar calor na etapa practice da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Trocar calor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar calor usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de calor"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona calor ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar calor por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 6, como interpretar calor na etapa practice da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de calor",
+      "Trocar calor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar calor usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona calor ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de calor": [
+        "V4_PHYSICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 6, como interpretar calor na etapa transfer da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Aplicar calor usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de calor",
+      "Trocar calor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona calor ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de calor": [
+        "V4_PHYSICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 6, como interpretar calor na etapa lock_in da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar calor usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de calor",
+      "Trocar calor por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona calor ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 6, como interpretar calor na etapa review da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Trocar calor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar calor usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de calor"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona calor ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar calor por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-06-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "calor",
+    "primarySkill": "PHYSICS_CALOR_06",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 6, como interpretar calor na etapa review da trilha PHYSICS_CALOR_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de calor",
+      "Trocar calor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar calor usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar calor usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona calor ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de calor": [
+        "V4_PHYSICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 7, como interpretar ondas na etapa probe da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Aplicar ondas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de ondas",
+      "Trocar ondas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona ondas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ondas": [
+        "V4_PHYSICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 7, como interpretar ondas na etapa probe da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar ondas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de ondas",
+      "Trocar ondas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona ondas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 7, como interpretar ondas na etapa practice da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Trocar ondas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar ondas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de ondas"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona ondas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ondas por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 7, como interpretar ondas na etapa practice da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ondas",
+      "Trocar ondas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar ondas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona ondas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ondas": [
+        "V4_PHYSICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 7, como interpretar ondas na etapa transfer da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Aplicar ondas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de ondas",
+      "Trocar ondas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona ondas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ondas": [
+        "V4_PHYSICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 7, como interpretar ondas na etapa lock_in da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar ondas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de ondas",
+      "Trocar ondas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona ondas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 7, como interpretar ondas na etapa review da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Trocar ondas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar ondas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de ondas"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona ondas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ondas por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-07-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "ondas",
+    "primarySkill": "PHYSICS_ONDAS_07",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 7, como interpretar ondas na etapa review da trilha PHYSICS_ONDAS_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ondas",
+      "Trocar ondas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar ondas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar ondas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona ondas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ondas": [
+        "V4_PHYSICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 8, como interpretar eletricidade na etapa probe da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Aplicar eletricidade usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de eletricidade",
+      "Trocar eletricidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de eletricidade": [
+        "V4_PHYSICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 8, como interpretar eletricidade na etapa probe da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar eletricidade usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de eletricidade",
+      "Trocar eletricidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 8, como interpretar eletricidade na etapa practice da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Trocar eletricidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar eletricidade usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de eletricidade"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar eletricidade por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 8, como interpretar eletricidade na etapa practice da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de eletricidade",
+      "Trocar eletricidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar eletricidade usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de eletricidade": [
+        "V4_PHYSICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 8, como interpretar eletricidade na etapa transfer da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Aplicar eletricidade usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de eletricidade",
+      "Trocar eletricidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de eletricidade": [
+        "V4_PHYSICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 8, como interpretar eletricidade na etapa lock_in da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar eletricidade usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de eletricidade",
+      "Trocar eletricidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 8, como interpretar eletricidade na etapa review da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Trocar eletricidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar eletricidade usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de eletricidade"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar eletricidade por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-08-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "eletricidade",
+    "primarySkill": "PHYSICS_ELETRICIDADE_08",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 8, como interpretar eletricidade na etapa review da trilha PHYSICS_ELETRICIDADE_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de eletricidade",
+      "Trocar eletricidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar eletricidade usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar eletricidade usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona eletricidade ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de eletricidade": [
+        "V4_PHYSICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 9, como interpretar circuitos na etapa probe da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Aplicar circuitos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de circuitos",
+      "Trocar circuitos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de circuitos": [
+        "V4_PHYSICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 9, como interpretar circuitos na etapa probe da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar circuitos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de circuitos",
+      "Trocar circuitos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 9, como interpretar circuitos na etapa practice da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Trocar circuitos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar circuitos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de circuitos"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar circuitos por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 9, como interpretar circuitos na etapa practice da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de circuitos",
+      "Trocar circuitos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar circuitos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de circuitos": [
+        "V4_PHYSICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 9, como interpretar circuitos na etapa transfer da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Aplicar circuitos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de circuitos",
+      "Trocar circuitos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de circuitos": [
+        "V4_PHYSICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 9, como interpretar circuitos na etapa lock_in da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar circuitos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de circuitos",
+      "Trocar circuitos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 9, como interpretar circuitos na etapa review da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Trocar circuitos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar circuitos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de circuitos"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar circuitos por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-09-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "circuitos",
+    "primarySkill": "PHYSICS_CIRCUITOS_09",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 9, como interpretar circuitos na etapa review da trilha PHYSICS_CIRCUITOS_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de circuitos",
+      "Trocar circuitos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar circuitos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar circuitos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona circuitos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de circuitos": [
+        "V4_PHYSICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 10, como interpretar densidade na etapa probe da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Aplicar densidade usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de densidade",
+      "Trocar densidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona densidade ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de densidade": [
+        "V4_PHYSICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 10, como interpretar densidade na etapa probe da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar densidade usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de densidade",
+      "Trocar densidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona densidade ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 10, como interpretar densidade na etapa practice da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Trocar densidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar densidade usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de densidade"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona densidade ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar densidade por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 10, como interpretar densidade na etapa practice da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de densidade",
+      "Trocar densidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar densidade usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona densidade ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de densidade": [
+        "V4_PHYSICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 10, como interpretar densidade na etapa transfer da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Aplicar densidade usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de densidade",
+      "Trocar densidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona densidade ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de densidade": [
+        "V4_PHYSICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 10, como interpretar densidade na etapa lock_in da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar densidade usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de densidade",
+      "Trocar densidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona densidade ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 10, como interpretar densidade na etapa review da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Trocar densidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar densidade usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de densidade"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona densidade ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar densidade por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-10-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "densidade",
+    "primarySkill": "PHYSICS_DENSIDADE_10",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 10, como interpretar densidade na etapa review da trilha PHYSICS_DENSIDADE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de densidade",
+      "Trocar densidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar densidade usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar densidade usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona densidade ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de densidade": [
+        "V4_PHYSICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 11, como interpretar pressao na etapa probe da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Aplicar pressao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de pressao",
+      "Trocar pressao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona pressao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pressao": [
+        "V4_PHYSICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 11, como interpretar pressao na etapa probe da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar pressao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de pressao",
+      "Trocar pressao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona pressao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 11, como interpretar pressao na etapa practice da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Trocar pressao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar pressao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de pressao"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona pressao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar pressao por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 11, como interpretar pressao na etapa practice da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de pressao",
+      "Trocar pressao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar pressao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona pressao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pressao": [
+        "V4_PHYSICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 11, como interpretar pressao na etapa transfer da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Aplicar pressao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de pressao",
+      "Trocar pressao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona pressao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pressao": [
+        "V4_PHYSICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 11, como interpretar pressao na etapa lock_in da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar pressao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de pressao",
+      "Trocar pressao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona pressao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 11, como interpretar pressao na etapa review da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Trocar pressao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar pressao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de pressao"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona pressao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar pressao por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-11-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "pressao",
+    "primarySkill": "PHYSICS_PRESSAO_11",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 11, como interpretar pressao na etapa review da trilha PHYSICS_PRESSAO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de pressao",
+      "Trocar pressao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar pressao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar pressao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona pressao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pressao": [
+        "V4_PHYSICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 12, como interpretar optica na etapa probe da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Aplicar optica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de optica",
+      "Trocar optica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona optica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de optica": [
+        "V4_PHYSICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 12, como interpretar optica na etapa probe da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar optica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de optica",
+      "Trocar optica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona optica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 12, como interpretar optica na etapa practice da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Trocar optica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar optica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de optica"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona optica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar optica por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 12, como interpretar optica na etapa practice da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de optica",
+      "Trocar optica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar optica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona optica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de optica": [
+        "V4_PHYSICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 12, como interpretar optica na etapa transfer da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Aplicar optica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de optica",
+      "Trocar optica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona optica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de optica": [
+        "V4_PHYSICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 12, como interpretar optica na etapa lock_in da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar optica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de optica",
+      "Trocar optica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona optica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 12, como interpretar optica na etapa review da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Trocar optica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar optica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de optica"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona optica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar optica por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-12-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "optica",
+    "primarySkill": "PHYSICS_OPTICA_12",
+    "supportingSkills": [
+      "ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 12, como interpretar optica na etapa review da trilha PHYSICS_OPTICA_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de optica",
+      "Trocar optica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar optica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar optica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona optica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de optica": [
+        "V4_PHYSICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 13, como interpretar quantidade de movimento na etapa probe da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Aplicar quantidade de movimento usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento",
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento": [
+        "V4_PHYSICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 13, como interpretar quantidade de movimento na etapa probe da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar quantidade de movimento usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento",
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 13, como interpretar quantidade de movimento na etapa practice da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar quantidade de movimento usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 13, como interpretar quantidade de movimento na etapa practice da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento",
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar quantidade de movimento usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento": [
+        "V4_PHYSICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 13, como interpretar quantidade de movimento na etapa transfer da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Aplicar quantidade de movimento usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento",
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento": [
+        "V4_PHYSICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 13, como interpretar quantidade de movimento na etapa lock_in da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar quantidade de movimento usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento",
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 13, como interpretar quantidade de movimento na etapa review da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar quantidade de movimento usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-13-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "quantidade de movimento",
+    "primarySkill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "supportingSkills": [
+      "MEASUREMENT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 13, como interpretar quantidade de movimento na etapa review da trilha PHYSICS_QUANTIDADE_DE_MOVIMENTO_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento",
+      "Trocar quantidade de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar quantidade de movimento usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar quantidade de movimento usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona quantidade de movimento ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de quantidade de movimento": [
+        "V4_PHYSICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-01",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Fisica: na atividade situacao_cotidiana 14, como interpretar graficos de movimento na etapa probe da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Aplicar graficos de movimento usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de graficos de movimento",
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de graficos de movimento": [
+        "V4_PHYSICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-02",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Fisica: na atividade dados_observados 14, como interpretar graficos de movimento na etapa probe da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar graficos de movimento usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de graficos de movimento",
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PHYSICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-03",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Fisica: na atividade texto_explicativo 14, como interpretar graficos de movimento na etapa practice da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar graficos de movimento usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de graficos de movimento"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-04",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Fisica: na atividade projeto_aplicado 14, como interpretar graficos de movimento na etapa practice da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de graficos de movimento",
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar graficos de movimento usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de graficos de movimento": [
+        "V4_PHYSICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-05",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Fisica: na atividade laboratorio 14, como interpretar graficos de movimento na etapa transfer da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Aplicar graficos de movimento usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de graficos de movimento",
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de graficos de movimento": [
+        "V4_PHYSICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-06",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Fisica: na atividade mapa_conceitual 14, como interpretar graficos de movimento na etapa lock_in da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar graficos de movimento usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de graficos de movimento",
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PHYSICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-07",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Fisica: na atividade debate_orientado 14, como interpretar graficos de movimento na etapa review da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar graficos de movimento usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de graficos de movimento"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao": [
+        "V4_PHYSICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-physics-14-08",
+    "subject": "PHYSICS",
+    "domain": "PHYSICS_V4",
+    "topic": "graficos de movimento",
+    "primarySkill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "supportingSkills": [
+      "MOTION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Fisica: na atividade revisao_guiada 14, como interpretar graficos de movimento na etapa review da trilha PHYSICS_GRAFICOS_DE_MOVIMENTO_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de graficos de movimento",
+      "Trocar graficos de movimento por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar graficos de movimento usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar graficos de movimento usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona graficos de movimento ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de graficos de movimento": [
+        "V4_PHYSICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

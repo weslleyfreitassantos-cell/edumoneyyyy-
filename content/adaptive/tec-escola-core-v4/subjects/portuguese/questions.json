@@ -1,0 +1,3753 @@
+[
+  {
+    "id": "v4-reading-inference-1",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "INFER",
+    "contextFamily": "COTIDIANO",
+    "statement": "O texto informa que Clara levou guarda-chuva e o ceu escureceu. Qual inferencia e mais apoiada?",
+    "options": [
+      "Havia possibilidade de chuva",
+      "Clara queria viajar",
+      "Era madrugada",
+      "O guarda-chuva estava quebrado"
+    ],
+    "correctAnswer": "Havia possibilidade de chuva",
+    "explanation": "As duas pistas apoiam a possibilidade de chuva, sem provar outros detalhes.",
+    "misconceptions": {
+      "Clara queria viajar": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-2",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "NOTICIA",
+    "statement": "Uma noticia diz que a rua foi interditada depois de uma arvore cair. O que se pode inferir?",
+    "options": [
+      "A queda afetou a passagem",
+      "A arvore era centenaria",
+      "Todos ficaram feridos",
+      "A rua nunca sera reaberta"
+    ],
+    "correctAnswer": "A queda afetou a passagem",
+    "explanation": "A interdiccao indica impacto na passagem, mas nao sustenta as demais conclusoes.",
+    "misconceptions": {
+      "Todos ficaram feridos": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-3",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INFER",
+    "contextFamily": "ESCOLA",
+    "statement": "Pedro apagou as luzes e fechou as janelas antes de sair da sala. Qual inferencia e razoavel?",
+    "options": [
+      "Ele estava encerrando o uso da sala",
+      "Ele tinha prova de matematica",
+      "A sala ficou sem paredes",
+      "Pedro odiava janelas"
+    ],
+    "correctAnswer": "Ele estava encerrando o uso da sala",
+    "explanation": "As acoes indicam cuidado ao deixar o espaco, sem informar outras motivacoes.",
+    "misconceptions": {
+      "Ele tinha prova de matematica": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-4",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "CIENCIA",
+    "statement": "O relatorio registra temperatura menor ao amanhecer e maior ao meio-dia. O que a sequencia sugere?",
+    "options": [
+      "A temperatura variou ao longo do dia",
+      "A medicao foi feita uma unica vez",
+      "A cidade mudou de lugar",
+      "O termometro nao foi usado"
+    ],
+    "correctAnswer": "A temperatura variou ao longo do dia",
+    "explanation": "Os dois registros, em horarios diferentes, sustentam a variacao.",
+    "misconceptions": {
+      "A medicao foi feita uma unica vez": [
+        "EXPLICIT_VS_INFERRED_CONFUSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-5",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "CULTURA",
+    "statement": "Um museu informa que ampliou o horario e recebeu mais visitantes no mes seguinte. Qual inferencia e apoiada?",
+    "options": [
+      "O novo horario pode ter facilitado o acesso",
+      "O museu passou a ser gratuito",
+      "Todos os visitantes eram estudantes",
+      "A exposicao foi removida"
+    ],
+    "correctAnswer": "O novo horario pode ter facilitado o acesso",
+    "explanation": "A relacao e possivel e apoiada pela sequencia, mas nao prova detalhes nao informados.",
+    "misconceptions": {
+      "O museu passou a ser gratuito": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-6",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "ARGUMENTO",
+    "statement": "Um autor apresenta dados de economia de agua depois de defender a troca de torneiras. Que inferencia sobre os dados e mais adequada?",
+    "options": [
+      "Eles funcionam como apoio para a proposta",
+      "Eles provam que toda torneira e igual",
+      "Eles substituem o tema do texto",
+      "Eles mostram a opiniao de cada leitor"
+    ],
+    "correctAnswer": "Eles funcionam como apoio para a proposta",
+    "explanation": "Os dados se relacionam à proposta e podem sustentá-la, sem provar afirmações mais amplas.",
+    "misconceptions": {
+      "Eles substituem o tema do texto": [
+        "EXPLICIT_VS_INFERRED_CONFUSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-7",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ARGUE",
+    "contextFamily": "COTIDIANO",
+    "statement": "Qual pergunta ajuda a testar se uma inferencia esta bem apoiada?",
+    "options": [
+      "Qual pista do texto sustenta essa conclusao?",
+      "Eu gostei dessa resposta?",
+      "Qual resposta parece mais longa?",
+      "Que informacao posso inventar?"
+    ],
+    "correctAnswer": "Qual pista do texto sustenta essa conclusao?",
+    "explanation": "A evidencia textual limita a interpretacao e evita adivinhacao.",
+    "misconceptions": {
+      "Eu gostei dessa resposta?": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-8",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "NOTICIA",
+    "statement": "Se uma noticia afirma que a fila diminuiu apos ampliar o atendimento, qual resposta evita extrapolacao?",
+    "options": [
+      "A ampliacao pode ter contribuido para reduzir a fila",
+      "A ampliacao resolveu todos os problemas",
+      "A fila nunca voltara",
+      "O atendimento ficou gratuito"
+    ],
+    "correctAnswer": "A ampliacao pode ter contribuido para reduzir a fila",
+    "explanation": "A resposta reconhece a evidencia sem transformar uma associacao em certeza absoluta.",
+    "misconceptions": {
+      "A ampliacao resolveu todos os problemas": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-reading-inference-9",
+    "subject": "PORTUGUESE",
+    "domain": "LEITURA",
+    "topic": "inferencias",
+    "primarySkill": "READING_INFERENCE",
+    "supportingSkills": [
+      "READING_LITERAL"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "CIENCIA",
+    "statement": "Um experimento registrou crescimento maior com luz do que sem luz. Qual conclusao e proporcional aos dados?",
+    "options": [
+      "A luz pode ter favorecido o crescimento observado",
+      "A luz sempre e a unica causa do crescimento",
+      "Todo ser vivo cresce com a mesma taxa",
+      "O experimento prova todas as hipoteses"
+    ],
+    "correctAnswer": "A luz pode ter favorecido o crescimento observado",
+    "explanation": "A conclusao considera o resultado observado sem generalizar alem do experimento.",
+    "misconceptions": {
+      "A luz sempre e a unica causa do crescimento": [
+        "UNSUPPORTED_INFERENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-scale-portuguese-01-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 1, como interpretar leitura literal na etapa probe da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Aplicar leitura literal usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de leitura literal",
+      "Trocar leitura literal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura literal": [
+        "V4_PORTUGUESE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 1, como interpretar leitura literal na etapa probe da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar leitura literal usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de leitura literal",
+      "Trocar leitura literal por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 1, como interpretar leitura literal na etapa practice da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Trocar leitura literal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar leitura literal usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de leitura literal"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar leitura literal por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 1, como interpretar leitura literal na etapa practice da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de leitura literal",
+      "Trocar leitura literal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar leitura literal usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura literal": [
+        "V4_PORTUGUESE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 1, como interpretar leitura literal na etapa transfer da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Aplicar leitura literal usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de leitura literal",
+      "Trocar leitura literal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura literal": [
+        "V4_PORTUGUESE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 1, como interpretar leitura literal na etapa lock_in da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar leitura literal usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de leitura literal",
+      "Trocar leitura literal por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 1, como interpretar leitura literal na etapa review da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Trocar leitura literal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar leitura literal usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de leitura literal"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar leitura literal por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-01-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "leitura literal",
+    "primarySkill": "PORTUGUESE_LEITURA_LITERAL_01",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 1, como interpretar leitura literal na etapa review da trilha PORTUGUESE_LEITURA_LITERAL_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de leitura literal",
+      "Trocar leitura literal por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar leitura literal usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar leitura literal usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona leitura literal ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura literal": [
+        "V4_PORTUGUESE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 2, como interpretar inferencia de leitura na etapa probe da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Aplicar inferencia de leitura usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura",
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura": [
+        "V4_PORTUGUESE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 2, como interpretar inferencia de leitura na etapa probe da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar inferencia de leitura usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura",
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 2, como interpretar inferencia de leitura na etapa practice da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar inferencia de leitura usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 2, como interpretar inferencia de leitura na etapa practice da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura",
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar inferencia de leitura usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura": [
+        "V4_PORTUGUESE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 2, como interpretar inferencia de leitura na etapa transfer da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Aplicar inferencia de leitura usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura",
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura": [
+        "V4_PORTUGUESE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 2, como interpretar inferencia de leitura na etapa lock_in da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar inferencia de leitura usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura",
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 2, como interpretar inferencia de leitura na etapa review da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar inferencia de leitura usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-02-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "inferencia de leitura",
+    "primarySkill": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 2, como interpretar inferencia de leitura na etapa review da trilha PORTUGUESE_INFERENCIA_DE_LEITURA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura",
+      "Trocar inferencia de leitura por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar inferencia de leitura usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar inferencia de leitura usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona inferencia de leitura ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inferencia de leitura": [
+        "V4_PORTUGUESE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 3, como interpretar tese e tema na etapa probe da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Aplicar tese e tema usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de tese e tema",
+      "Trocar tese e tema por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tese e tema": [
+        "V4_PORTUGUESE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 3, como interpretar tese e tema na etapa probe da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar tese e tema usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de tese e tema",
+      "Trocar tese e tema por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 3, como interpretar tese e tema na etapa practice da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Trocar tese e tema por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar tese e tema usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de tese e tema"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tese e tema por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 3, como interpretar tese e tema na etapa practice da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tese e tema",
+      "Trocar tese e tema por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar tese e tema usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tese e tema": [
+        "V4_PORTUGUESE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 3, como interpretar tese e tema na etapa transfer da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Aplicar tese e tema usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de tese e tema",
+      "Trocar tese e tema por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tese e tema": [
+        "V4_PORTUGUESE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 3, como interpretar tese e tema na etapa lock_in da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar tese e tema usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de tese e tema",
+      "Trocar tese e tema por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 3, como interpretar tese e tema na etapa review da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Trocar tese e tema por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar tese e tema usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de tese e tema"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tese e tema por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-03-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tese e tema",
+    "primarySkill": "PORTUGUESE_TESE_E_TEMA_03",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 3, como interpretar tese e tema na etapa review da trilha PORTUGUESE_TESE_E_TEMA_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tese e tema",
+      "Trocar tese e tema por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar tese e tema usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar tese e tema usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona tese e tema ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tese e tema": [
+        "V4_PORTUGUESE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 4, como interpretar evidencia textual na etapa probe da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Aplicar evidencia textual usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de evidencia textual",
+      "Trocar evidencia textual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evidencia textual": [
+        "V4_PORTUGUESE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 4, como interpretar evidencia textual na etapa probe da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar evidencia textual usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de evidencia textual",
+      "Trocar evidencia textual por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 4, como interpretar evidencia textual na etapa practice da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Trocar evidencia textual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar evidencia textual usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de evidencia textual"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar evidencia textual por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 4, como interpretar evidencia textual na etapa practice da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de evidencia textual",
+      "Trocar evidencia textual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar evidencia textual usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evidencia textual": [
+        "V4_PORTUGUESE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 4, como interpretar evidencia textual na etapa transfer da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Aplicar evidencia textual usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de evidencia textual",
+      "Trocar evidencia textual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evidencia textual": [
+        "V4_PORTUGUESE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 4, como interpretar evidencia textual na etapa lock_in da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar evidencia textual usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de evidencia textual",
+      "Trocar evidencia textual por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 4, como interpretar evidencia textual na etapa review da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Trocar evidencia textual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar evidencia textual usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de evidencia textual"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar evidencia textual por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-04-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "evidencia textual",
+    "primarySkill": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 4, como interpretar evidencia textual na etapa review da trilha PORTUGUESE_EVIDENCIA_TEXTUAL_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de evidencia textual",
+      "Trocar evidencia textual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar evidencia textual usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar evidencia textual usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona evidencia textual ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de evidencia textual": [
+        "V4_PORTUGUESE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 5, como interpretar coesao e conectores na etapa probe da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Aplicar coesao e conectores usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de coesao e conectores",
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de coesao e conectores": [
+        "V4_PORTUGUESE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 5, como interpretar coesao e conectores na etapa probe da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar coesao e conectores usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de coesao e conectores",
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 5, como interpretar coesao e conectores na etapa practice da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar coesao e conectores usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de coesao e conectores"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 5, como interpretar coesao e conectores na etapa practice da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de coesao e conectores",
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar coesao e conectores usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de coesao e conectores": [
+        "V4_PORTUGUESE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 5, como interpretar coesao e conectores na etapa transfer da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Aplicar coesao e conectores usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de coesao e conectores",
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de coesao e conectores": [
+        "V4_PORTUGUESE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 5, como interpretar coesao e conectores na etapa lock_in da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar coesao e conectores usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de coesao e conectores",
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 5, como interpretar coesao e conectores na etapa review da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar coesao e conectores usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de coesao e conectores"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-05-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "coesao e conectores",
+    "primarySkill": "PORTUGUESE_COESAO_E_CONECTORES_05",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 5, como interpretar coesao e conectores na etapa review da trilha PORTUGUESE_COESAO_E_CONECTORES_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de coesao e conectores",
+      "Trocar coesao e conectores por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar coesao e conectores usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar coesao e conectores usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona coesao e conectores ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de coesao e conectores": [
+        "V4_PORTUGUESE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 6, como interpretar generos textuais na etapa probe da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Aplicar generos textuais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de generos textuais",
+      "Trocar generos textuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de generos textuais": [
+        "V4_PORTUGUESE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 6, como interpretar generos textuais na etapa probe da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar generos textuais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de generos textuais",
+      "Trocar generos textuais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 6, como interpretar generos textuais na etapa practice da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Trocar generos textuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar generos textuais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de generos textuais"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar generos textuais por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 6, como interpretar generos textuais na etapa practice da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de generos textuais",
+      "Trocar generos textuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar generos textuais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de generos textuais": [
+        "V4_PORTUGUESE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 6, como interpretar generos textuais na etapa transfer da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Aplicar generos textuais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de generos textuais",
+      "Trocar generos textuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de generos textuais": [
+        "V4_PORTUGUESE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 6, como interpretar generos textuais na etapa lock_in da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar generos textuais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de generos textuais",
+      "Trocar generos textuais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 6, como interpretar generos textuais na etapa review da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Trocar generos textuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar generos textuais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de generos textuais"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar generos textuais por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-06-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "generos textuais",
+    "primarySkill": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 6, como interpretar generos textuais na etapa review da trilha PORTUGUESE_GENEROS_TEXTUAIS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de generos textuais",
+      "Trocar generos textuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar generos textuais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar generos textuais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona generos textuais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de generos textuais": [
+        "V4_PORTUGUESE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 7, como interpretar argumentacao na etapa probe da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Aplicar argumentacao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de argumentacao",
+      "Trocar argumentacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de argumentacao": [
+        "V4_PORTUGUESE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 7, como interpretar argumentacao na etapa probe da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar argumentacao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de argumentacao",
+      "Trocar argumentacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 7, como interpretar argumentacao na etapa practice da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Trocar argumentacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar argumentacao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de argumentacao"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar argumentacao por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 7, como interpretar argumentacao na etapa practice da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de argumentacao",
+      "Trocar argumentacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar argumentacao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de argumentacao": [
+        "V4_PORTUGUESE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 7, como interpretar argumentacao na etapa transfer da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Aplicar argumentacao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de argumentacao",
+      "Trocar argumentacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de argumentacao": [
+        "V4_PORTUGUESE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 7, como interpretar argumentacao na etapa lock_in da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar argumentacao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de argumentacao",
+      "Trocar argumentacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 7, como interpretar argumentacao na etapa review da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Trocar argumentacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar argumentacao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de argumentacao"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar argumentacao por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-07-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "argumentacao",
+    "primarySkill": "PORTUGUESE_ARGUMENTACAO_07",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 7, como interpretar argumentacao na etapa review da trilha PORTUGUESE_ARGUMENTACAO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de argumentacao",
+      "Trocar argumentacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar argumentacao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar argumentacao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona argumentacao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de argumentacao": [
+        "V4_PORTUGUESE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 8, como interpretar pontuacao na etapa probe da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Aplicar pontuacao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de pontuacao",
+      "Trocar pontuacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pontuacao": [
+        "V4_PORTUGUESE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 8, como interpretar pontuacao na etapa probe da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar pontuacao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de pontuacao",
+      "Trocar pontuacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 8, como interpretar pontuacao na etapa practice da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Trocar pontuacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar pontuacao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de pontuacao"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar pontuacao por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 8, como interpretar pontuacao na etapa practice da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de pontuacao",
+      "Trocar pontuacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar pontuacao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pontuacao": [
+        "V4_PORTUGUESE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 8, como interpretar pontuacao na etapa transfer da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Aplicar pontuacao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de pontuacao",
+      "Trocar pontuacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pontuacao": [
+        "V4_PORTUGUESE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 8, como interpretar pontuacao na etapa lock_in da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar pontuacao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de pontuacao",
+      "Trocar pontuacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 8, como interpretar pontuacao na etapa review da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Trocar pontuacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar pontuacao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de pontuacao"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar pontuacao por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-08-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "pontuacao",
+    "primarySkill": "PORTUGUESE_PONTUACAO_08",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 8, como interpretar pontuacao na etapa review da trilha PORTUGUESE_PONTUACAO_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de pontuacao",
+      "Trocar pontuacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar pontuacao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar pontuacao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona pontuacao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de pontuacao": [
+        "V4_PORTUGUESE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 9, como interpretar tempos verbais na etapa probe da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Aplicar tempos verbais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de tempos verbais",
+      "Trocar tempos verbais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tempos verbais": [
+        "V4_PORTUGUESE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 9, como interpretar tempos verbais na etapa probe da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar tempos verbais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de tempos verbais",
+      "Trocar tempos verbais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 9, como interpretar tempos verbais na etapa practice da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Trocar tempos verbais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar tempos verbais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de tempos verbais"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tempos verbais por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 9, como interpretar tempos verbais na etapa practice da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tempos verbais",
+      "Trocar tempos verbais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar tempos verbais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tempos verbais": [
+        "V4_PORTUGUESE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 9, como interpretar tempos verbais na etapa transfer da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Aplicar tempos verbais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de tempos verbais",
+      "Trocar tempos verbais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tempos verbais": [
+        "V4_PORTUGUESE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 9, como interpretar tempos verbais na etapa lock_in da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar tempos verbais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de tempos verbais",
+      "Trocar tempos verbais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 9, como interpretar tempos verbais na etapa review da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Trocar tempos verbais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar tempos verbais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de tempos verbais"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tempos verbais por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-09-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "tempos verbais",
+    "primarySkill": "PORTUGUESE_TEMPOS_VERBAIS_09",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 9, como interpretar tempos verbais na etapa review da trilha PORTUGUESE_TEMPOS_VERBAIS_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tempos verbais",
+      "Trocar tempos verbais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar tempos verbais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar tempos verbais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona tempos verbais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tempos verbais": [
+        "V4_PORTUGUESE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 10, como interpretar sintaxe em uso na etapa probe da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Aplicar sintaxe em uso usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso",
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso": [
+        "V4_PORTUGUESE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 10, como interpretar sintaxe em uso na etapa probe da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar sintaxe em uso usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso",
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 10, como interpretar sintaxe em uso na etapa practice da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar sintaxe em uso usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 10, como interpretar sintaxe em uso na etapa practice da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso",
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar sintaxe em uso usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso": [
+        "V4_PORTUGUESE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 10, como interpretar sintaxe em uso na etapa transfer da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Aplicar sintaxe em uso usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso",
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso": [
+        "V4_PORTUGUESE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 10, como interpretar sintaxe em uso na etapa lock_in da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar sintaxe em uso usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso",
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 10, como interpretar sintaxe em uso na etapa review da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar sintaxe em uso usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-10-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "sintaxe em uso",
+    "primarySkill": "PORTUGUESE_SINTAXE_EM_USO_10",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 10, como interpretar sintaxe em uso na etapa review da trilha PORTUGUESE_SINTAXE_EM_USO_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso",
+      "Trocar sintaxe em uso por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar sintaxe em uso usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar sintaxe em uso usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona sintaxe em uso ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de sintaxe em uso": [
+        "V4_PORTUGUESE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 11, como interpretar vocabulario em contexto na etapa probe da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Aplicar vocabulario em contexto usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto",
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto": [
+        "V4_PORTUGUESE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 11, como interpretar vocabulario em contexto na etapa probe da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar vocabulario em contexto usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto",
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 11, como interpretar vocabulario em contexto na etapa practice da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar vocabulario em contexto usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 11, como interpretar vocabulario em contexto na etapa practice da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto",
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar vocabulario em contexto usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto": [
+        "V4_PORTUGUESE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 11, como interpretar vocabulario em contexto na etapa transfer da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Aplicar vocabulario em contexto usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto",
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto": [
+        "V4_PORTUGUESE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 11, como interpretar vocabulario em contexto na etapa lock_in da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar vocabulario em contexto usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto",
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 11, como interpretar vocabulario em contexto na etapa review da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar vocabulario em contexto usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-11-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "vocabulario em contexto",
+    "primarySkill": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 11, como interpretar vocabulario em contexto na etapa review da trilha PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto",
+      "Trocar vocabulario em contexto por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar vocabulario em contexto usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar vocabulario em contexto usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona vocabulario em contexto ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de vocabulario em contexto": [
+        "V4_PORTUGUESE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 12, como interpretar parafrase na etapa probe da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Aplicar parafrase usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de parafrase",
+      "Trocar parafrase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de parafrase": [
+        "V4_PORTUGUESE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 12, como interpretar parafrase na etapa probe da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar parafrase usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de parafrase",
+      "Trocar parafrase por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 12, como interpretar parafrase na etapa practice da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Trocar parafrase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar parafrase usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de parafrase"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar parafrase por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 12, como interpretar parafrase na etapa practice da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de parafrase",
+      "Trocar parafrase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar parafrase usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de parafrase": [
+        "V4_PORTUGUESE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 12, como interpretar parafrase na etapa transfer da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Aplicar parafrase usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de parafrase",
+      "Trocar parafrase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de parafrase": [
+        "V4_PORTUGUESE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 12, como interpretar parafrase na etapa lock_in da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar parafrase usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de parafrase",
+      "Trocar parafrase por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 12, como interpretar parafrase na etapa review da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Trocar parafrase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar parafrase usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de parafrase"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar parafrase por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-12-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "parafrase",
+    "primarySkill": "PORTUGUESE_PARAFRASE_12",
+    "supportingSkills": [
+      "LANGUAGE_USE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 12, como interpretar parafrase na etapa review da trilha PORTUGUESE_PARAFRASE_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de parafrase",
+      "Trocar parafrase por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar parafrase usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar parafrase usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona parafrase ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de parafrase": [
+        "V4_PORTUGUESE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 13, como interpretar letramento midiatico na etapa probe da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Aplicar letramento midiatico usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de letramento midiatico",
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de letramento midiatico": [
+        "V4_PORTUGUESE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 13, como interpretar letramento midiatico na etapa probe da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar letramento midiatico usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de letramento midiatico",
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 13, como interpretar letramento midiatico na etapa practice da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar letramento midiatico usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de letramento midiatico"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 13, como interpretar letramento midiatico na etapa practice da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de letramento midiatico",
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar letramento midiatico usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de letramento midiatico": [
+        "V4_PORTUGUESE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 13, como interpretar letramento midiatico na etapa transfer da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Aplicar letramento midiatico usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de letramento midiatico",
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de letramento midiatico": [
+        "V4_PORTUGUESE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 13, como interpretar letramento midiatico na etapa lock_in da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar letramento midiatico usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de letramento midiatico",
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 13, como interpretar letramento midiatico na etapa review da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar letramento midiatico usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de letramento midiatico"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-13-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "letramento midiatico",
+    "primarySkill": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+    "supportingSkills": [
+      "READING"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 13, como interpretar letramento midiatico na etapa review da trilha PORTUGUESE_LETRAMENTO_MIDIATICO_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de letramento midiatico",
+      "Trocar letramento midiatico por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar letramento midiatico usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar letramento midiatico usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona letramento midiatico ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de letramento midiatico": [
+        "V4_PORTUGUESE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-01",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Lingua Portuguesa: na atividade situacao_cotidiana 14, como interpretar analise literaria na etapa probe da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Aplicar analise literaria usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de analise literaria",
+      "Trocar analise literaria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de analise literaria": [
+        "V4_PORTUGUESE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-02",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Lingua Portuguesa: na atividade dados_observados 14, como interpretar analise literaria na etapa probe da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar analise literaria usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de analise literaria",
+      "Trocar analise literaria por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_PORTUGUESE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-03",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Lingua Portuguesa: na atividade texto_explicativo 14, como interpretar analise literaria na etapa practice da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Trocar analise literaria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar analise literaria usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de analise literaria"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar analise literaria por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-04",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Lingua Portuguesa: na atividade projeto_aplicado 14, como interpretar analise literaria na etapa practice da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de analise literaria",
+      "Trocar analise literaria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar analise literaria usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de analise literaria": [
+        "V4_PORTUGUESE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-05",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Lingua Portuguesa: na atividade laboratorio 14, como interpretar analise literaria na etapa transfer da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Aplicar analise literaria usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de analise literaria",
+      "Trocar analise literaria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de analise literaria": [
+        "V4_PORTUGUESE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-06",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Lingua Portuguesa: na atividade mapa_conceitual 14, como interpretar analise literaria na etapa lock_in da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar analise literaria usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de analise literaria",
+      "Trocar analise literaria por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_PORTUGUESE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-07",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Lingua Portuguesa: na atividade debate_orientado 14, como interpretar analise literaria na etapa review da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Trocar analise literaria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar analise literaria usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de analise literaria"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar analise literaria por outro conceito sem justificar a relacao": [
+        "V4_PORTUGUESE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-portuguese-14-08",
+    "subject": "PORTUGUESE",
+    "domain": "PORTUGUESE_V4",
+    "topic": "analise literaria",
+    "primarySkill": "PORTUGUESE_ANALISE_LITERARIA_14",
+    "supportingSkills": [
+      "ARGUMENTATION"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Lingua Portuguesa: na atividade revisao_guiada 14, como interpretar analise literaria na etapa review da trilha PORTUGUESE_ANALISE_LITERARIA_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de analise literaria",
+      "Trocar analise literaria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar analise literaria usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar analise literaria usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona analise literaria ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de analise literaria": [
+        "V4_PORTUGUESE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

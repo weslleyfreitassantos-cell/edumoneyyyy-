@@ -1,22 +1,2872 @@
 {
   "hierarchy": [
-    ["PERCENTAGE", "IDENTIFY_PERCENT_BASE"], ["PERCENTAGE", "PERCENT_OF_QUANTITY"], ["PERCENTAGE", "PERCENT_INCREASE"], ["PERCENTAGE", "PERCENT_DECREASE"], ["PERCENTAGE", "SUCCESSIVE_PERCENT_CHANGE"], ["PERCENTAGE", "REVERSE_PERCENTAGE"],
-    ["RATIO", "RATIO_UNIT_RATE"], ["RATIO", "PROPORTIONAL_REASONING"], ["NUMBER_SENSE", "FRACTION_COMPARISON"], ["ALGEBRA", "ONE_STEP_EQUATION"], ["ALGEBRA", "TWO_STEP_EQUATION"], ["DATA", "INTERPRET_DATA_TABLE"],
-    ["READING", "READING_LITERAL"], ["READING", "READING_INFERENCE"], ["ARGUMENTATION", "IDENTIFY_THESIS"], ["ARGUMENTATION", "EVIDENCE_SUPPORT"], ["LANGUAGE_USE", "COHESION_CONNECTORS"], ["MOTION", "PHYSICS_AVERAGE_SPEED"], ["MEASUREMENT", "PHYSICS_UNIT_CONVERSION"], ["MOTION", "PHYSICS_GRAPH_MOTION"]
+    [
+      "ALGEBRA",
+      "MATHEMATICS_AREA_09"
+    ],
+    [
+      "ALGEBRA",
+      "MATHEMATICS_EQUACOES_04"
+    ],
+    [
+      "ALGEBRA",
+      "MATHEMATICS_PLANO_CARTESIANO_14"
+    ],
+    [
+      "ALGEBRA",
+      "ONE_STEP_EQUATION"
+    ],
+    [
+      "ALGEBRA",
+      "TWO_STEP_EQUATION"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_ALGORITMOS_01"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_ALGORITMOS_15"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_CIDADANIA_DIGITAL_09"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_CIDADANIA_DIGITAL_23"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_CONDICIONAIS_03"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_CONDICIONAIS_17"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_CONDITION"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_DADOS_05"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_DADOS_19"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_DEPURACAO_11"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_DEPURACAO_25"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_INTELIGENCIA_ARTIFICIAL_13"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_INTELIGENCIA_ARTIFICIAL_27"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_REDES_07"
+    ],
+    [
+      "ALGORITHMS",
+      "COMPUTING_REDES_21"
+    ],
+    [
+      "ARGUMENTATION",
+      "EVIDENCE_SUPPORT"
+    ],
+    [
+      "ARGUMENTATION",
+      "IDENTIFY_THESIS"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_ANALISE_LITERARIA_14"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_COESAO_E_CONECTORES_05"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_GENEROS_TEXTUAIS_20"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_INFERENCIA_DE_LEITURA_02"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_PONTUACAO_08"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_TESE_E_TEMA_17"
+    ],
+    [
+      "ARGUMENTATION",
+      "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_CONHECIMENTO_02"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_CONHECIMENTO_16"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_EPISTEMOLOGIA_12"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_EPISTEMOLOGIA_26"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_ESTETICA_08"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_ESTETICA_22"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_JUSTICA_04"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_JUSTICA_18"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_LIBERDADE_10"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_LIBERDADE_24"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_LOGICA_06"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_LOGICA_20"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_PREMISE_CONCLUSION"
+    ],
+    [
+      "ARGUMENT",
+      "PHILOSOPHY_TECNOLOGIA_E_SOCIEDADE_14"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_AGUA_12"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_AGUA_26"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_CLIMA_06"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_CLIMA_20"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_ECONOMIA_08"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_ECONOMIA_22"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_GEOPOLITICA_10"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_GEOPOLITICA_24"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_MAP_SCALE"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_POPULACAO_04"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_POPULACAO_18"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_REGIONALIZACAO_14"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02"
+    ],
+    [
+      "CARTOGRAPHY",
+      "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_16"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ACIDOS_E_BASES_07"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ACIDOS_E_BASES_21"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ATOMOS_01"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ATOMOS_15"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ESTEQUIOMETRIA_05"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_ESTEQUIOMETRIA_19"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_GASES_11"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_GASES_25"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_LIGACOES_QUIMICAS_03"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_LIGACOES_QUIMICAS_17"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_SEGURANCA_DE_LABORATORIO_27"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_TERMOQUIMICA_09"
+    ],
+    [
+      "CHEMISTRY_MATTER",
+      "CHEMISTRY_TERMOQUIMICA_23"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_ARGUMENTO_03"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_ARGUMENTO_17"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_CIDADANIA_11"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_CIDADANIA_25"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_CIENCIA_07"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_CIENCIA_21"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_ETICA_01"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_ETICA_15"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_HISTORIA_DA_FILOSOFIA_13"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_HISTORIA_DA_FILOSOFIA_27"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_LINGUAGEM_09"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_LINGUAGEM_23"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_POLITICA_05"
+    ],
+    [
+      "CONCEPTS",
+      "PHILOSOPHY_POLITICA_19"
+    ],
+    [
+      "CONTEXT",
+      "ART_COR_02"
+    ],
+    [
+      "CONTEXT",
+      "ART_COR_16"
+    ],
+    [
+      "CONTEXT",
+      "ART_CURADORIA_14"
+    ],
+    [
+      "CONTEXT",
+      "ART_DANCA_08"
+    ],
+    [
+      "CONTEXT",
+      "ART_DANCA_22"
+    ],
+    [
+      "CONTEXT",
+      "ART_HISTORIA_DA_ARTE_04"
+    ],
+    [
+      "CONTEXT",
+      "ART_HISTORIA_DA_ARTE_18"
+    ],
+    [
+      "CONTEXT",
+      "ART_MUSICA_06"
+    ],
+    [
+      "CONTEXT",
+      "ART_MUSICA_20"
+    ],
+    [
+      "CONTEXT",
+      "ART_PATRIMONIO_CULTURAL_10"
+    ],
+    [
+      "CONTEXT",
+      "ART_PATRIMONIO_CULTURAL_24"
+    ],
+    [
+      "CONTEXT",
+      "ART_PROCESSO_CRIATIVO_12"
+    ],
+    [
+      "CONTEXT",
+      "ART_PROCESSO_CRIATIVO_26"
+    ],
+    [
+      "DATA",
+      "INTERPRET_DATA_TABLE"
+    ],
+    [
+      "DATA",
+      "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05"
+    ],
+    [
+      "DATA",
+      "MATHEMATICS_PORCENTAGENS_15"
+    ],
+    [
+      "DATA",
+      "MATHEMATICS_PROBABILIDADE_10"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_AMBIENTE_10"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_AMBIENTE_24"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_COMUNIDADE_08"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_COMUNIDADE_22"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_CULTURA_E_MEMORIA_14"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_DIREITOS_HUMANOS_06"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_DIREITOS_HUMANOS_20"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_ETICA_04"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_ETICA_18"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_PRECONCEITO_12"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_PRECONCEITO_26"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_SIMBOLOS_02"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_EDUCATION_SIMBOLOS_16"
+    ],
+    [
+      "DIALOGUE",
+      "RELIGIOUS_SOURCE_INTERPRETATION"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_ABSTRACAO_12"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_ABSTRACAO_26"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_CIBERSEGURANCA_06"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_CIBERSEGURANCA_20"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_PLANILHAS_10"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_PLANILHAS_24"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_PROJETOS_DIGITAIS_14"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_REPETICOES_04"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_REPETICOES_18"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_VARIAVEIS_02"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_VARIAVEIS_16"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_WEB_08"
+    ],
+    [
+      "DIGITAL_CITIZENSHIP",
+      "COMPUTING_WEB_22"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_CONVIVENCIA_05"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_CONVIVENCIA_19"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_COSMOVISOES_09"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_COSMOVISOES_23"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_DIALOGO_11"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_DIALOGO_25"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_01"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_15"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_IDENTIDADE_13"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_IDENTIDADE_27"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_NARRATIVAS_03"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_NARRATIVAS_17"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_RITUAIS_07"
+    ],
+    [
+      "DIVERSITY",
+      "RELIGIOUS_EDUCATION_RITUAIS_21"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_BIODIVERSIDADE_10"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_BIODIVERSIDADE_24"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_BIOETICA_14"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_EVOLUCAO_04"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_EVOLUCAO_18"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_FISIOLOGIA_06"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_FISIOLOGIA_20"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_INTERPRETACAO_DE_DADOS_12"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_INTERPRETACAO_DE_DADOS_26"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_REPRODUCAO_08"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_REPRODUCAO_22"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_TECIDOS_02"
+    ],
+    [
+      "ECOLOGY",
+      "BIOLOGY_TECIDOS_16"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_CALOR_06"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_CIRCUITOS_09"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_DENSIDADE_24"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_ENERGIA_18"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_FORCAS_03"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_MOVIMENTO_15"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_ONDAS_21"
+    ],
+    [
+      "ENERGY",
+      "PHYSICS_OPTICA_12"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_COGNATES_03"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_COGNATES_17"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_CONNECTORS"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_CULTURE_13"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_CULTURE_27"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_MODAL_VERBS_07"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_MODAL_VERBS_21"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_PRONUNCIATION_11"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_PRONUNCIATION_25"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_READING_01"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_READING_15"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_SIMPLE_PAST_05"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_SIMPLE_PAST_19"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_TEXT_GENRES_09"
+    ],
+    [
+      "ENGLISH_READING",
+      "ENGLISH_TEXT_GENRES_23"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_CIDADANIA_08"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_CIDADANIA_22"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_CULTURA_02"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_CULTURA_16"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_GLOBALIZACAO_10"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_GLOBALIZACAO_24"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_INSTITUICOES_04"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_INSTITUICOES_18"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_MOVIMENTOS_SOCIAIS_14"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_PESQUISA_SOCIAL_12"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_PESQUISA_SOCIAL_26"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_RESEARCH_EVIDENCE"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_TRABALHO_06"
+    ],
+    [
+      "EVIDENCE",
+      "SOCIOLOGY_TRABALHO_20"
+    ],
+    [
+      "HEALTH",
+      "PE_TRAINING_PRINCIPLES"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_ATLETISMO_04"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_ATLETISMO_18"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_DANCA_06"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_DANCA_20"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_16"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_LAZER_12"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_LAZER_26"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_LUTAS_08"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_LUTAS_22"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_TREINAMENTO_10"
+    ],
+    [
+      "HEALTH",
+      "PHYSICAL_EDUCATION_TREINAMENTO_24"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_CAUSALITY"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_COLONIZACAO_06"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_COLONIZACAO_20"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_FONTES_HISTORICAS_02"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_FONTES_HISTORICAS_16"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_INDEPENDENCIAS_08"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_INDEPENDENCIAS_22"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_MEMORIA_SOCIAL_12"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_MEMORIA_SOCIAL_26"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_MUNDO_CONTEMPORANEO_14"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_MUNDO_MEDIEVAL_04"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_MUNDO_MEDIEVAL_18"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_REPUBLICA_10"
+    ],
+    [
+      "INTERPRETATION",
+      "HISTORY_REPUBLICA_24"
+    ],
+    [
+      "LANGUAGE_USE",
+      "COHESION_CONNECTORS"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_ARGUMENTACAO_21"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_EVIDENCIA_TEXTUAL_18"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_GENEROS_TEXTUAIS_06"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_LEITURA_LITERAL_15"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_PARAFRASE_12"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_TEMPOS_VERBAIS_09"
+    ],
+    [
+      "LANGUAGE_USE",
+      "PORTUGUESE_TESE_E_TEMA_03"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_CONNECTORS_08"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_CONNECTORS_22"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_FUTURE_FORMS_06"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_FUTURE_FORMS_20"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_GUIDED_WRITING_14"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_LISTENING_12"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_LISTENING_26"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_READING_INFERENCE_10"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_READING_INFERENCE_24"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_SIMPLE_PRESENT_04"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_SIMPLE_PRESENT_18"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_VOCABULARY_02"
+    ],
+    [
+      "LANGUAGE",
+      "ENGLISH_VOCABULARY_16"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_CELULAS_01"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_CELULAS_15"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_DATA_INTERPRETATION"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_ECOLOGIA_05"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_ECOLOGIA_19"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_GENETICA_03"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_GENETICA_17"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_HOMEOSTASE_11"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_HOMEOSTASE_25"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_METABOLISMO_07"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_METABOLISMO_21"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_MICROBIOLOGIA_09"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_MICROBIOLOGIA_23"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_SAUDE_COLETIVA_13"
+    ],
+    [
+      "LIFE",
+      "BIOLOGY_SAUDE_COLETIVA_27"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_DENSIDADE_10"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_ELETRICIDADE_22"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_ENERGIA_04"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_MOVIMENTO_01"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_ONDAS_07"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_PRESSAO_25"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_TRABALHO_19"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_UNIT_CONVERSION"
+    ],
+    [
+      "MEASUREMENT",
+      "PHYSICS_VELOCIDADE_MEDIA_16"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_AVERAGE_SPEED"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_CALOR_20"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_CIRCUITOS_23"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_ELETRICIDADE_08"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_FORCAS_17"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_GRAFICOS_DE_MOVIMENTO_14"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_GRAPH_MOTION"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_PRESSAO_11"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_TRABALHO_05"
+    ],
+    [
+      "MOTION",
+      "PHYSICS_VELOCIDADE_MEDIA_02"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_15"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_21"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_GINASTICA_05"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_GINASTICA_19"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_INCLUSAO_11"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_INCLUSAO_25"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_JOGOS_03"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_JOGOS_17"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_REGRAS_13"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_REGRAS_27"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_SAUDE_09"
+    ],
+    [
+      "MOVEMENT",
+      "PHYSICAL_EDUCATION_SAUDE_23"
+    ],
+    [
+      "NUMBER_SENSE",
+      "FRACTION_COMPARISON"
+    ],
+    [
+      "NUMBER_SENSE",
+      "MATHEMATICS_PORCENTAGENS_01"
+    ],
+    [
+      "NUMBER_SENSE",
+      "MATHEMATICS_PROPORCIONALIDADE_11"
+    ],
+    [
+      "NUMBER_SENSE",
+      "MATHEMATICS_RAZAO_E_TAXA_16"
+    ],
+    [
+      "NUMBER_SENSE",
+      "MATHEMATICS_TABELAS_E_DADOS_06"
+    ],
+    [
+      "PERCENTAGE",
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    [
+      "PERCENTAGE",
+      "MATHEMATICS_FRACOES_03"
+    ],
+    [
+      "PERCENTAGE",
+      "MATHEMATICS_INTEIROS_13"
+    ],
+    [
+      "PERCENTAGE",
+      "MATHEMATICS_PERIMETRO_08"
+    ],
+    [
+      "PERCENTAGE",
+      "PERCENT_DECREASE"
+    ],
+    [
+      "PERCENTAGE",
+      "PERCENT_INCREASE"
+    ],
+    [
+      "PERCENTAGE",
+      "PERCENT_OF_QUANTITY"
+    ],
+    [
+      "PERCENTAGE",
+      "REVERSE_PERCENTAGE"
+    ],
+    [
+      "PERCENTAGE",
+      "SUCCESSIVE_PERCENT_CHANGE"
+    ],
+    [
+      "RATIO",
+      "MATHEMATICS_MEDIA_E_VARIACAO_07"
+    ],
+    [
+      "RATIO",
+      "MATHEMATICS_PADROES_NUMERICOS_12"
+    ],
+    [
+      "RATIO",
+      "MATHEMATICS_RAZAO_E_TAXA_02"
+    ],
+    [
+      "RATIO",
+      "PROPORTIONAL_REASONING"
+    ],
+    [
+      "RATIO",
+      "RATIO_UNIT_RATE"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_PH_08"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_PH_22"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_QUIMICA_ORGANICA_10"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_QUIMICA_ORGANICA_24"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_REACOES_04"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_REACOES_18"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_SEPARACAO_DE_MISTURAS_12"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_SEPARACAO_DE_MISTURAS_26"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_SOLUCOES_06"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_SOLUCOES_20"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_STOICHIOMETRIC_REASONING"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_TABELA_PERIODICA_02"
+    ],
+    [
+      "REACTIONS",
+      "CHEMISTRY_TABELA_PERIODICA_16"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_ARGUMENTACAO_07"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_COESAO_E_CONECTORES_19"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_EVIDENCIA_TEXTUAL_04"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_INFERENCIA_DE_LEITURA_16"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_LEITURA_LITERAL_01"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_LETRAMENTO_MIDIATICO_13"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_PONTUACAO_22"
+    ],
+    [
+      "READING",
+      "PORTUGUESE_SINTAXE_EM_USO_10"
+    ],
+    [
+      "READING",
+      "READING_INFERENCE"
+    ],
+    [
+      "READING",
+      "READING_LITERAL"
+    ],
+    [
+      "READING",
+      "TEXT_STRUCTURE"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_BIODIVERSIDADE_26"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_CICLOS_NATURAIS_05"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_ESTADOS_DA_MATERIA_02"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_FORCAS_E_MOVIMENTOS_20"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_MISTURAS_08"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_SAUDE_E_PREVENCAO_23"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_SOM_E_LUZ_14"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_TRANSFORMACOES_DE_ENERGIA_17"
+    ],
+    [
+      "SCIENCE_ENERGY",
+      "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "EXPERIMENTAL_EVIDENCE"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "MEASURE_OBSERVATION"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_ASTRONOMIA_24"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_BIODIVERSIDADE_12"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_ECOSSISTEMAS_18"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_FORCAS_E_MOVIMENTOS_06"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_INVESTIGACAO_CIENTIFICA_15"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_MEDICAO_E_UNIDADES_21"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_SAUDE_E_PREVENCAO_09"
+    ],
+    [
+      "SCIENCE_EVIDENCE",
+      "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_ASTRONOMIA_10"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_CICLOS_NATURAIS_19"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_CLIMA_13"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_ECOSSISTEMAS_04"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_ESTADOS_DA_MATERIA_16"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_INVESTIGACAO_CIENTIFICA_01"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_MEDICAO_E_UNIDADES_07"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_MISTURAS_22"
+    ],
+    [
+      "SCIENCE_MATTER",
+      "SCIENCE_VARIAVEIS_EXPERIMENTAIS_25"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_DESIGUALDADE_05"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_DESIGUALDADE_19"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_DIVERSIDADE_13"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_DIVERSIDADE_27"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_IDENTIDADE_03"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_IDENTIDADE_17"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_JUVENTUDES_11"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_JUVENTUDES_25"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_MIDIA_09"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_MIDIA_23"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_PODER_07"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_PODER_21"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_SOCIALIZACAO_01"
+    ],
+    [
+      "SOCIETY",
+      "SOCIOLOGY_SOCIALIZACAO_15"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_CIDADANIA_11"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_CIDADANIA_25"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_CRONOLOGIA_01"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_CRONOLOGIA_15"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_ESCRAVIDAO_E_RESISTENCIA_21"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_FORMACAO_DO_ESTADO_MODERNO_19"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_INDUSTRIALIZACAO_09"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_INDUSTRIALIZACAO_23"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_POVOS_ORIGINARIOS_13"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_POVOS_ORIGINARIOS_27"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_SOCIEDADES_ANTIGAS_03"
+    ],
+    [
+      "SOURCES",
+      "HISTORY_SOCIEDADES_ANTIGAS_17"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_AMBIENTE_11"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_AMBIENTE_25"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_BIOMAS_07"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_BIOMAS_21"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_ESCALA_CARTOGRAFICA_01"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_ESCALA_CARTOGRAFICA_15"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_ESPACO_RURAL_13"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_ESPACO_RURAL_27"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_GLOBALIZACAO_09"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_GLOBALIZACAO_23"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_TERRITORIO_03"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_TERRITORIO_17"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_URBANIZACAO_05"
+    ],
+    [
+      "SPACE",
+      "GEOGRAPHY_URBANIZACAO_19"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_ARTE_CONTEMPORANEA_11"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_ARTE_CONTEMPORANEA_25"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_AUDIOVISUAL_09"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_AUDIOVISUAL_23"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_COMPOSICAO_03"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_COMPOSICAO_17"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_COMPOSITION"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_CRITICA_DE_ARTE_13"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_CRITICA_DE_ARTE_27"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_ELEMENTOS_VISUAIS_01"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_ELEMENTOS_VISUAIS_15"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_LEITURA_DE_IMAGEM_05"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_LEITURA_DE_IMAGEM_19"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_TEATRO_07"
+    ],
+    [
+      "VISUAL_ELEMENTS",
+      "ART_TEATRO_21"
+    ]
   ],
   "prerequisites": [
-    ["PERCENT_OF_QUANTITY", "RATIO_UNIT_RATE"],
-    ["PERCENT_INCREASE", "PERCENT_OF_QUANTITY"],
-    ["PERCENT_DECREASE", "PERCENT_OF_QUANTITY"],
-    ["SUCCESSIVE_PERCENT_CHANGE", "PERCENT_INCREASE"],
-    ["PHYSICS_AVERAGE_SPEED", "RATIO_UNIT_RATE"]
+    [
+      "ART_ARTE_CONTEMPORANEA_11",
+      "ART_PATRIMONIO_CULTURAL_10"
+    ],
+    [
+      "ART_AUDIOVISUAL_09",
+      "ART_DANCA_08"
+    ],
+    [
+      "ART_COMPOSICAO_03",
+      "ART_COR_02"
+    ],
+    [
+      "ART_COR_02",
+      "ART_ELEMENTOS_VISUAIS_01"
+    ],
+    [
+      "ART_CRITICA_DE_ARTE_13",
+      "ART_PROCESSO_CRIATIVO_12"
+    ],
+    [
+      "ART_CURADORIA_14",
+      "ART_CRITICA_DE_ARTE_13"
+    ],
+    [
+      "ART_DANCA_08",
+      "ART_TEATRO_07"
+    ],
+    [
+      "ART_HISTORIA_DA_ARTE_04",
+      "ART_COMPOSICAO_03"
+    ],
+    [
+      "ART_LEITURA_DE_IMAGEM_05",
+      "ART_HISTORIA_DA_ARTE_04"
+    ],
+    [
+      "ART_MUSICA_06",
+      "ART_LEITURA_DE_IMAGEM_05"
+    ],
+    [
+      "ART_PATRIMONIO_CULTURAL_10",
+      "ART_AUDIOVISUAL_09"
+    ],
+    [
+      "ART_PROCESSO_CRIATIVO_12",
+      "ART_ARTE_CONTEMPORANEA_11"
+    ],
+    [
+      "ART_TEATRO_07",
+      "ART_MUSICA_06"
+    ],
+    [
+      "BIOLOGY_BIODIVERSIDADE_10",
+      "BIOLOGY_MICROBIOLOGIA_09"
+    ],
+    [
+      "BIOLOGY_BIOETICA_14",
+      "BIOLOGY_SAUDE_COLETIVA_13"
+    ],
+    [
+      "BIOLOGY_ECOLOGIA_05",
+      "BIOLOGY_EVOLUCAO_04"
+    ],
+    [
+      "BIOLOGY_EVOLUCAO_04",
+      "BIOLOGY_GENETICA_03"
+    ],
+    [
+      "BIOLOGY_FISIOLOGIA_06",
+      "BIOLOGY_ECOLOGIA_05"
+    ],
+    [
+      "BIOLOGY_GENETICA_03",
+      "BIOLOGY_TECIDOS_02"
+    ],
+    [
+      "BIOLOGY_HOMEOSTASE_11",
+      "BIOLOGY_BIODIVERSIDADE_10"
+    ],
+    [
+      "BIOLOGY_INTERPRETACAO_DE_DADOS_12",
+      "BIOLOGY_HOMEOSTASE_11"
+    ],
+    [
+      "BIOLOGY_METABOLISMO_07",
+      "BIOLOGY_FISIOLOGIA_06"
+    ],
+    [
+      "BIOLOGY_MICROBIOLOGIA_09",
+      "BIOLOGY_REPRODUCAO_08"
+    ],
+    [
+      "BIOLOGY_REPRODUCAO_08",
+      "BIOLOGY_METABOLISMO_07"
+    ],
+    [
+      "BIOLOGY_SAUDE_COLETIVA_13",
+      "BIOLOGY_INTERPRETACAO_DE_DADOS_12"
+    ],
+    [
+      "BIOLOGY_TECIDOS_02",
+      "BIOLOGY_CELULAS_01"
+    ],
+    [
+      "CHEMISTRY_ACIDOS_E_BASES_07",
+      "CHEMISTRY_SOLUCOES_06"
+    ],
+    [
+      "CHEMISTRY_ESTEQUIOMETRIA_05",
+      "CHEMISTRY_REACOES_04"
+    ],
+    [
+      "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
+      "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13"
+    ],
+    [
+      "CHEMISTRY_GASES_11",
+      "CHEMISTRY_QUIMICA_ORGANICA_10"
+    ],
+    [
+      "CHEMISTRY_LIGACOES_QUIMICAS_03",
+      "CHEMISTRY_TABELA_PERIODICA_02"
+    ],
+    [
+      "CHEMISTRY_PH_08",
+      "CHEMISTRY_ACIDOS_E_BASES_07"
+    ],
+    [
+      "CHEMISTRY_QUIMICA_ORGANICA_10",
+      "CHEMISTRY_TERMOQUIMICA_09"
+    ],
+    [
+      "CHEMISTRY_REACOES_04",
+      "CHEMISTRY_LIGACOES_QUIMICAS_03"
+    ],
+    [
+      "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
+      "CHEMISTRY_SEPARACAO_DE_MISTURAS_12"
+    ],
+    [
+      "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
+      "CHEMISTRY_GASES_11"
+    ],
+    [
+      "CHEMISTRY_SOLUCOES_06",
+      "CHEMISTRY_ESTEQUIOMETRIA_05"
+    ],
+    [
+      "CHEMISTRY_TABELA_PERIODICA_02",
+      "CHEMISTRY_ATOMOS_01"
+    ],
+    [
+      "CHEMISTRY_TERMOQUIMICA_09",
+      "CHEMISTRY_PH_08"
+    ],
+    [
+      "COMPUTING_ABSTRACAO_12",
+      "COMPUTING_DEPURACAO_11"
+    ],
+    [
+      "COMPUTING_CIBERSEGURANCA_06",
+      "COMPUTING_DADOS_05"
+    ],
+    [
+      "COMPUTING_CIDADANIA_DIGITAL_09",
+      "COMPUTING_WEB_08"
+    ],
+    [
+      "COMPUTING_CONDICIONAIS_03",
+      "COMPUTING_VARIAVEIS_02"
+    ],
+    [
+      "COMPUTING_DADOS_05",
+      "COMPUTING_REPETICOES_04"
+    ],
+    [
+      "COMPUTING_DEPURACAO_11",
+      "COMPUTING_PLANILHAS_10"
+    ],
+    [
+      "COMPUTING_INTELIGENCIA_ARTIFICIAL_13",
+      "COMPUTING_ABSTRACAO_12"
+    ],
+    [
+      "COMPUTING_PLANILHAS_10",
+      "COMPUTING_CIDADANIA_DIGITAL_09"
+    ],
+    [
+      "COMPUTING_PROJETOS_DIGITAIS_14",
+      "COMPUTING_INTELIGENCIA_ARTIFICIAL_13"
+    ],
+    [
+      "COMPUTING_REDES_07",
+      "COMPUTING_CIBERSEGURANCA_06"
+    ],
+    [
+      "COMPUTING_REPETICOES_04",
+      "COMPUTING_CONDICIONAIS_03"
+    ],
+    [
+      "COMPUTING_VARIAVEIS_02",
+      "COMPUTING_ALGORITMOS_01"
+    ],
+    [
+      "COMPUTING_WEB_08",
+      "COMPUTING_REDES_07"
+    ],
+    [
+      "ENGLISH_COGNATES_03",
+      "ENGLISH_VOCABULARY_02"
+    ],
+    [
+      "ENGLISH_CONNECTORS_08",
+      "ENGLISH_MODAL_VERBS_07"
+    ],
+    [
+      "ENGLISH_CULTURE_13",
+      "ENGLISH_LISTENING_12"
+    ],
+    [
+      "ENGLISH_FUTURE_FORMS_06",
+      "ENGLISH_SIMPLE_PAST_05"
+    ],
+    [
+      "ENGLISH_GUIDED_WRITING_14",
+      "ENGLISH_CULTURE_13"
+    ],
+    [
+      "ENGLISH_LISTENING_12",
+      "ENGLISH_PRONUNCIATION_11"
+    ],
+    [
+      "ENGLISH_MODAL_VERBS_07",
+      "ENGLISH_FUTURE_FORMS_06"
+    ],
+    [
+      "ENGLISH_PRONUNCIATION_11",
+      "ENGLISH_READING_INFERENCE_10"
+    ],
+    [
+      "ENGLISH_READING_INFERENCE_10",
+      "ENGLISH_TEXT_GENRES_09"
+    ],
+    [
+      "ENGLISH_SIMPLE_PAST_05",
+      "ENGLISH_SIMPLE_PRESENT_04"
+    ],
+    [
+      "ENGLISH_SIMPLE_PRESENT_04",
+      "ENGLISH_COGNATES_03"
+    ],
+    [
+      "ENGLISH_TEXT_GENRES_09",
+      "ENGLISH_CONNECTORS_08"
+    ],
+    [
+      "ENGLISH_VOCABULARY_02",
+      "ENGLISH_READING_01"
+    ],
+    [
+      "GEOGRAPHY_AGUA_12",
+      "GEOGRAPHY_AMBIENTE_11"
+    ],
+    [
+      "GEOGRAPHY_AMBIENTE_11",
+      "GEOGRAPHY_GEOPOLITICA_10"
+    ],
+    [
+      "GEOGRAPHY_BIOMAS_07",
+      "GEOGRAPHY_CLIMA_06"
+    ],
+    [
+      "GEOGRAPHY_CLIMA_06",
+      "GEOGRAPHY_URBANIZACAO_05"
+    ],
+    [
+      "GEOGRAPHY_ECONOMIA_08",
+      "GEOGRAPHY_BIOMAS_07"
+    ],
+    [
+      "GEOGRAPHY_ESPACO_RURAL_13",
+      "GEOGRAPHY_AGUA_12"
+    ],
+    [
+      "GEOGRAPHY_GEOPOLITICA_10",
+      "GEOGRAPHY_GLOBALIZACAO_09"
+    ],
+    [
+      "GEOGRAPHY_GLOBALIZACAO_09",
+      "GEOGRAPHY_ECONOMIA_08"
+    ],
+    [
+      "GEOGRAPHY_POPULACAO_04",
+      "GEOGRAPHY_TERRITORIO_03"
+    ],
+    [
+      "GEOGRAPHY_REGIONALIZACAO_14",
+      "GEOGRAPHY_ESPACO_RURAL_13"
+    ],
+    [
+      "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
+      "GEOGRAPHY_ESCALA_CARTOGRAFICA_01"
+    ],
+    [
+      "GEOGRAPHY_TERRITORIO_03",
+      "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02"
+    ],
+    [
+      "GEOGRAPHY_URBANIZACAO_05",
+      "GEOGRAPHY_POPULACAO_04"
+    ],
+    [
+      "HISTORY_CIDADANIA_11",
+      "HISTORY_REPUBLICA_10"
+    ],
+    [
+      "HISTORY_COLONIZACAO_06",
+      "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05"
+    ],
+    [
+      "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+      "HISTORY_COLONIZACAO_06"
+    ],
+    [
+      "HISTORY_FONTES_HISTORICAS_02",
+      "HISTORY_CRONOLOGIA_01"
+    ],
+    [
+      "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+      "HISTORY_MUNDO_MEDIEVAL_04"
+    ],
+    [
+      "HISTORY_INDEPENDENCIAS_08",
+      "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07"
+    ],
+    [
+      "HISTORY_INDUSTRIALIZACAO_09",
+      "HISTORY_INDEPENDENCIAS_08"
+    ],
+    [
+      "HISTORY_MEMORIA_SOCIAL_12",
+      "HISTORY_CIDADANIA_11"
+    ],
+    [
+      "HISTORY_MUNDO_CONTEMPORANEO_14",
+      "HISTORY_POVOS_ORIGINARIOS_13"
+    ],
+    [
+      "HISTORY_MUNDO_MEDIEVAL_04",
+      "HISTORY_SOCIEDADES_ANTIGAS_03"
+    ],
+    [
+      "HISTORY_POVOS_ORIGINARIOS_13",
+      "HISTORY_MEMORIA_SOCIAL_12"
+    ],
+    [
+      "HISTORY_REPUBLICA_10",
+      "HISTORY_INDUSTRIALIZACAO_09"
+    ],
+    [
+      "HISTORY_SOCIEDADES_ANTIGAS_03",
+      "HISTORY_FONTES_HISTORICAS_02"
+    ],
+    [
+      "MATHEMATICS_AREA_09",
+      "MATHEMATICS_PERIMETRO_08"
+    ],
+    [
+      "MATHEMATICS_EQUACOES_04",
+      "MATHEMATICS_FRACOES_03"
+    ],
+    [
+      "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+      "MATHEMATICS_EQUACOES_04"
+    ],
+    [
+      "MATHEMATICS_FRACOES_03",
+      "MATHEMATICS_RAZAO_E_TAXA_02"
+    ],
+    [
+      "MATHEMATICS_INTEIROS_13",
+      "MATHEMATICS_PADROES_NUMERICOS_12"
+    ],
+    [
+      "MATHEMATICS_MEDIA_E_VARIACAO_07",
+      "MATHEMATICS_TABELAS_E_DADOS_06"
+    ],
+    [
+      "MATHEMATICS_PADROES_NUMERICOS_12",
+      "MATHEMATICS_PROPORCIONALIDADE_11"
+    ],
+    [
+      "MATHEMATICS_PERIMETRO_08",
+      "MATHEMATICS_MEDIA_E_VARIACAO_07"
+    ],
+    [
+      "MATHEMATICS_PLANO_CARTESIANO_14",
+      "MATHEMATICS_INTEIROS_13"
+    ],
+    [
+      "MATHEMATICS_PROBABILIDADE_10",
+      "MATHEMATICS_AREA_09"
+    ],
+    [
+      "MATHEMATICS_PROPORCIONALIDADE_11",
+      "MATHEMATICS_PROBABILIDADE_10"
+    ],
+    [
+      "MATHEMATICS_RAZAO_E_TAXA_02",
+      "MATHEMATICS_PORCENTAGENS_01"
+    ],
+    [
+      "MATHEMATICS_TABELAS_E_DADOS_06",
+      "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05"
+    ],
+    [
+      "PERCENT_DECREASE",
+      "PERCENT_OF_QUANTITY"
+    ],
+    [
+      "PERCENT_INCREASE",
+      "PERCENT_OF_QUANTITY"
+    ],
+    [
+      "PERCENT_OF_QUANTITY",
+      "RATIO_UNIT_RATE"
+    ],
+    [
+      "PHILOSOPHY_ARGUMENTO_03",
+      "PHILOSOPHY_CONHECIMENTO_02"
+    ],
+    [
+      "PHILOSOPHY_CIDADANIA_11",
+      "PHILOSOPHY_LIBERDADE_10"
+    ],
+    [
+      "PHILOSOPHY_CIENCIA_07",
+      "PHILOSOPHY_LOGICA_06"
+    ],
+    [
+      "PHILOSOPHY_CONHECIMENTO_02",
+      "PHILOSOPHY_ETICA_01"
+    ],
+    [
+      "PHILOSOPHY_EPISTEMOLOGIA_12",
+      "PHILOSOPHY_CIDADANIA_11"
+    ],
+    [
+      "PHILOSOPHY_ESTETICA_08",
+      "PHILOSOPHY_CIENCIA_07"
+    ],
+    [
+      "PHILOSOPHY_HISTORIA_DA_FILOSOFIA_13",
+      "PHILOSOPHY_EPISTEMOLOGIA_12"
+    ],
+    [
+      "PHILOSOPHY_JUSTICA_04",
+      "PHILOSOPHY_ARGUMENTO_03"
+    ],
+    [
+      "PHILOSOPHY_LIBERDADE_10",
+      "PHILOSOPHY_LINGUAGEM_09"
+    ],
+    [
+      "PHILOSOPHY_LINGUAGEM_09",
+      "PHILOSOPHY_ESTETICA_08"
+    ],
+    [
+      "PHILOSOPHY_LOGICA_06",
+      "PHILOSOPHY_POLITICA_05"
+    ],
+    [
+      "PHILOSOPHY_POLITICA_05",
+      "PHILOSOPHY_JUSTICA_04"
+    ],
+    [
+      "PHILOSOPHY_TECNOLOGIA_E_SOCIEDADE_14",
+      "PHILOSOPHY_HISTORIA_DA_FILOSOFIA_13"
+    ],
+    [
+      "PHYSICAL_EDUCATION_ATLETISMO_04",
+      "PHYSICAL_EDUCATION_JOGOS_03"
+    ],
+    [
+      "PHYSICAL_EDUCATION_CULTURA_CORPORAL_14",
+      "PHYSICAL_EDUCATION_REGRAS_13"
+    ],
+    [
+      "PHYSICAL_EDUCATION_DANCA_06",
+      "PHYSICAL_EDUCATION_GINASTICA_05"
+    ],
+    [
+      "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07",
+      "PHYSICAL_EDUCATION_DANCA_06"
+    ],
+    [
+      "PHYSICAL_EDUCATION_GINASTICA_05",
+      "PHYSICAL_EDUCATION_ATLETISMO_04"
+    ],
+    [
+      "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+      "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01"
+    ],
+    [
+      "PHYSICAL_EDUCATION_INCLUSAO_11",
+      "PHYSICAL_EDUCATION_TREINAMENTO_10"
+    ],
+    [
+      "PHYSICAL_EDUCATION_JOGOS_03",
+      "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02"
+    ],
+    [
+      "PHYSICAL_EDUCATION_LAZER_12",
+      "PHYSICAL_EDUCATION_INCLUSAO_11"
+    ],
+    [
+      "PHYSICAL_EDUCATION_LUTAS_08",
+      "PHYSICAL_EDUCATION_ESPORTES_COLETIVOS_07"
+    ],
+    [
+      "PHYSICAL_EDUCATION_REGRAS_13",
+      "PHYSICAL_EDUCATION_LAZER_12"
+    ],
+    [
+      "PHYSICAL_EDUCATION_SAUDE_09",
+      "PHYSICAL_EDUCATION_LUTAS_08"
+    ],
+    [
+      "PHYSICAL_EDUCATION_TREINAMENTO_10",
+      "PHYSICAL_EDUCATION_SAUDE_09"
+    ],
+    [
+      "PHYSICS_AVERAGE_SPEED",
+      "RATIO_UNIT_RATE"
+    ],
+    [
+      "PHYSICS_CALOR_06",
+      "PHYSICS_TRABALHO_05"
+    ],
+    [
+      "PHYSICS_CIRCUITOS_09",
+      "PHYSICS_ELETRICIDADE_08"
+    ],
+    [
+      "PHYSICS_DENSIDADE_10",
+      "PHYSICS_CIRCUITOS_09"
+    ],
+    [
+      "PHYSICS_ELETRICIDADE_08",
+      "PHYSICS_ONDAS_07"
+    ],
+    [
+      "PHYSICS_ENERGIA_04",
+      "PHYSICS_FORCAS_03"
+    ],
+    [
+      "PHYSICS_FORCAS_03",
+      "PHYSICS_VELOCIDADE_MEDIA_02"
+    ],
+    [
+      "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+      "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13"
+    ],
+    [
+      "PHYSICS_ONDAS_07",
+      "PHYSICS_CALOR_06"
+    ],
+    [
+      "PHYSICS_OPTICA_12",
+      "PHYSICS_PRESSAO_11"
+    ],
+    [
+      "PHYSICS_PRESSAO_11",
+      "PHYSICS_DENSIDADE_10"
+    ],
+    [
+      "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+      "PHYSICS_OPTICA_12"
+    ],
+    [
+      "PHYSICS_TRABALHO_05",
+      "PHYSICS_ENERGIA_04"
+    ],
+    [
+      "PHYSICS_VELOCIDADE_MEDIA_02",
+      "PHYSICS_MOVIMENTO_01"
+    ],
+    [
+      "PORTUGUESE_ANALISE_LITERARIA_14",
+      "PORTUGUESE_LETRAMENTO_MIDIATICO_13"
+    ],
+    [
+      "PORTUGUESE_ARGUMENTACAO_07",
+      "PORTUGUESE_GENEROS_TEXTUAIS_06"
+    ],
+    [
+      "PORTUGUESE_COESAO_E_CONECTORES_05",
+      "PORTUGUESE_EVIDENCIA_TEXTUAL_04"
+    ],
+    [
+      "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+      "PORTUGUESE_TESE_E_TEMA_03"
+    ],
+    [
+      "PORTUGUESE_GENEROS_TEXTUAIS_06",
+      "PORTUGUESE_COESAO_E_CONECTORES_05"
+    ],
+    [
+      "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+      "PORTUGUESE_LEITURA_LITERAL_01"
+    ],
+    [
+      "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+      "PORTUGUESE_PARAFRASE_12"
+    ],
+    [
+      "PORTUGUESE_PARAFRASE_12",
+      "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11"
+    ],
+    [
+      "PORTUGUESE_PONTUACAO_08",
+      "PORTUGUESE_ARGUMENTACAO_07"
+    ],
+    [
+      "PORTUGUESE_SINTAXE_EM_USO_10",
+      "PORTUGUESE_TEMPOS_VERBAIS_09"
+    ],
+    [
+      "PORTUGUESE_TEMPOS_VERBAIS_09",
+      "PORTUGUESE_PONTUACAO_08"
+    ],
+    [
+      "PORTUGUESE_TESE_E_TEMA_03",
+      "PORTUGUESE_INFERENCIA_DE_LEITURA_02"
+    ],
+    [
+      "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+      "PORTUGUESE_SINTAXE_EM_USO_10"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_AMBIENTE_10",
+      "RELIGIOUS_EDUCATION_COSMOVISOES_09"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_COMUNIDADE_08",
+      "RELIGIOUS_EDUCATION_RITUAIS_07"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_CONVIVENCIA_05",
+      "RELIGIOUS_EDUCATION_ETICA_04"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_COSMOVISOES_09",
+      "RELIGIOUS_EDUCATION_COMUNIDADE_08"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_CULTURA_E_MEMORIA_14",
+      "RELIGIOUS_EDUCATION_IDENTIDADE_13"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_DIALOGO_11",
+      "RELIGIOUS_EDUCATION_AMBIENTE_10"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_DIREITOS_HUMANOS_06",
+      "RELIGIOUS_EDUCATION_CONVIVENCIA_05"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_ETICA_04",
+      "RELIGIOUS_EDUCATION_NARRATIVAS_03"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_IDENTIDADE_13",
+      "RELIGIOUS_EDUCATION_PRECONCEITO_12"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_NARRATIVAS_03",
+      "RELIGIOUS_EDUCATION_SIMBOLOS_02"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_PRECONCEITO_12",
+      "RELIGIOUS_EDUCATION_DIALOGO_11"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_RITUAIS_07",
+      "RELIGIOUS_EDUCATION_DIREITOS_HUMANOS_06"
+    ],
+    [
+      "RELIGIOUS_EDUCATION_SIMBOLOS_02",
+      "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_01"
+    ],
+    [
+      "SCIENCE_ASTRONOMIA_10",
+      "SCIENCE_SAUDE_E_PREVENCAO_09"
+    ],
+    [
+      "SCIENCE_BIODIVERSIDADE_12",
+      "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11"
+    ],
+    [
+      "SCIENCE_CICLOS_NATURAIS_05",
+      "SCIENCE_ECOSSISTEMAS_04"
+    ],
+    [
+      "SCIENCE_CLIMA_13",
+      "SCIENCE_BIODIVERSIDADE_12"
+    ],
+    [
+      "SCIENCE_ECOSSISTEMAS_04",
+      "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03"
+    ],
+    [
+      "SCIENCE_ESTADOS_DA_MATERIA_02",
+      "SCIENCE_INVESTIGACAO_CIENTIFICA_01"
+    ],
+    [
+      "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+      "SCIENCE_CICLOS_NATURAIS_05"
+    ],
+    [
+      "SCIENCE_MEDICAO_E_UNIDADES_07",
+      "SCIENCE_FORCAS_E_MOVIMENTOS_06"
+    ],
+    [
+      "SCIENCE_MISTURAS_08",
+      "SCIENCE_MEDICAO_E_UNIDADES_07"
+    ],
+    [
+      "SCIENCE_SAUDE_E_PREVENCAO_09",
+      "SCIENCE_MISTURAS_08"
+    ],
+    [
+      "SCIENCE_SOM_E_LUZ_14",
+      "SCIENCE_CLIMA_13"
+    ],
+    [
+      "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+      "SCIENCE_ESTADOS_DA_MATERIA_02"
+    ],
+    [
+      "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+      "SCIENCE_ASTRONOMIA_10"
+    ],
+    [
+      "SOCIOLOGY_CIDADANIA_08",
+      "SOCIOLOGY_PODER_07"
+    ],
+    [
+      "SOCIOLOGY_CULTURA_02",
+      "SOCIOLOGY_SOCIALIZACAO_01"
+    ],
+    [
+      "SOCIOLOGY_DESIGUALDADE_05",
+      "SOCIOLOGY_INSTITUICOES_04"
+    ],
+    [
+      "SOCIOLOGY_DIVERSIDADE_13",
+      "SOCIOLOGY_PESQUISA_SOCIAL_12"
+    ],
+    [
+      "SOCIOLOGY_GLOBALIZACAO_10",
+      "SOCIOLOGY_MIDIA_09"
+    ],
+    [
+      "SOCIOLOGY_IDENTIDADE_03",
+      "SOCIOLOGY_CULTURA_02"
+    ],
+    [
+      "SOCIOLOGY_INSTITUICOES_04",
+      "SOCIOLOGY_IDENTIDADE_03"
+    ],
+    [
+      "SOCIOLOGY_JUVENTUDES_11",
+      "SOCIOLOGY_GLOBALIZACAO_10"
+    ],
+    [
+      "SOCIOLOGY_MIDIA_09",
+      "SOCIOLOGY_CIDADANIA_08"
+    ],
+    [
+      "SOCIOLOGY_MOVIMENTOS_SOCIAIS_14",
+      "SOCIOLOGY_DIVERSIDADE_13"
+    ],
+    [
+      "SOCIOLOGY_PESQUISA_SOCIAL_12",
+      "SOCIOLOGY_JUVENTUDES_11"
+    ],
+    [
+      "SOCIOLOGY_PODER_07",
+      "SOCIOLOGY_TRABALHO_06"
+    ],
+    [
+      "SOCIOLOGY_TRABALHO_06",
+      "SOCIOLOGY_DESIGUALDADE_05"
+    ],
+    [
+      "SUCCESSIVE_PERCENT_CHANGE",
+      "PERCENT_INCREASE"
+    ]
   ],
   "relationships": [
-    { "from": "PHYSICS_AVERAGE_SPEED", "to": "RATIO_UNIT_RATE", "type": "PREREQUISITE", "source": "TECESCOLA_AUTHORED", "confidence": 0.95, "rationale": "Velocidade media exige dividir grandezas e interpretar uma taxa." },
-    { "from": "CHEMISTRY_STOICHIOMETRIC_REASONING", "to": "RATIO_UNIT_RATE", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.82, "rationale": "A leitura proporcional apoia o raciocinio estequiometrico." },
-    { "from": "GEOGRAPHY_MAP_SCALE", "to": "PROPORTIONAL_REASONING", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.84, "rationale": "Escala cartografica muda a representacao, mas preserva a relacao proporcional." },
-    { "from": "BIOLOGY_DATA_INTERPRETATION", "to": "INTERPRET_DATA_TABLE", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.8, "rationale": "Dados biologicos exigem leitura de tabela e variacao." },
-    { "from": "EXPERIMENTAL_EVIDENCE", "to": "EVIDENCE_SUPPORT", "type": "TRANSFER", "source": "TECESCOLA_AUTHORED", "confidence": 0.78, "rationale": "Conclusoes experimentais precisam ser apoiadas por evidencia observada." },
-    { "from": "COMPUTING_CONDITION", "to": "PROPORTIONAL_REASONING", "type": "RELATED", "source": "TECESCOLA_AUTHORED", "confidence": 0.55, "rationale": "Ambos exigem interpretar uma regra e verificar suas condicoes." }
+    {
+      "from": "PHYSICS_AVERAGE_SPEED",
+      "to": "RATIO_UNIT_RATE",
+      "type": "PREREQUISITE",
+      "source": "TECESCOLA_AUTHORED",
+      "confidence": 0.95,
+      "rationale": "Velocidade media exige dividir grandezas e interpretar uma taxa."
+    },
+    {
+      "from": "CHEMISTRY_STOICHIOMETRIC_REASONING",
+      "to": "RATIO_UNIT_RATE",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED",
+      "confidence": 0.82,
+      "rationale": "A leitura proporcional apoia o raciocinio estequiometrico."
+    },
+    {
+      "from": "GEOGRAPHY_MAP_SCALE",
+      "to": "PROPORTIONAL_REASONING",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED",
+      "confidence": 0.84,
+      "rationale": "Escala cartografica muda a representacao, mas preserva a relacao proporcional."
+    },
+    {
+      "from": "BIOLOGY_DATA_INTERPRETATION",
+      "to": "INTERPRET_DATA_TABLE",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED",
+      "confidence": 0.8,
+      "rationale": "Dados biologicos exigem leitura de tabela e variacao."
+    },
+    {
+      "from": "EXPERIMENTAL_EVIDENCE",
+      "to": "EVIDENCE_SUPPORT",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED",
+      "confidence": 0.78,
+      "rationale": "Conclusoes experimentais precisam ser apoiadas por evidencia observada."
+    },
+    {
+      "from": "COMPUTING_CONDITION",
+      "to": "PROPORTIONAL_REASONING",
+      "type": "RELATED",
+      "source": "TECESCOLA_AUTHORED",
+      "confidence": 0.55,
+      "rationale": "Ambos exigem interpretar uma regra e verificar suas condicoes."
+    },
+    {
+      "from": "IDENTIFY_PERCENT_BASE",
+      "to": "READING_INFERENCE",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Matematica retoma evidencias de Lingua Portuguesa."
+    },
+    {
+      "from": "PERCENT_OF_QUANTITY",
+      "to": "PORTUGUESE_LEITURA_LITERAL_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Matematica retoma evidencias de Lingua Portuguesa."
+    },
+    {
+      "from": "MATHEMATICS_PORCENTAGENS_01",
+      "to": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Matematica retoma evidencias de Lingua Portuguesa."
+    },
+    {
+      "from": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+      "to": "IDENTIFY_PERCENT_BASE",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Ciencias retoma evidencias de Matematica."
+    },
+    {
+      "from": "SCIENCE_ESTADOS_DA_MATERIA_02",
+      "to": "PERCENT_OF_QUANTITY",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Ciencias retoma evidencias de Matematica."
+    },
+    {
+      "from": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+      "to": "MATHEMATICS_PORCENTAGENS_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Ciencias retoma evidencias de Matematica."
+    },
+    {
+      "from": "BIOLOGY_CELULAS_01",
+      "to": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Biologia retoma evidencias de Ciencias."
+    },
+    {
+      "from": "BIOLOGY_TECIDOS_02",
+      "to": "SCIENCE_ESTADOS_DA_MATERIA_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Biologia retoma evidencias de Ciencias."
+    },
+    {
+      "from": "BIOLOGY_GENETICA_03",
+      "to": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Biologia retoma evidencias de Ciencias."
+    },
+    {
+      "from": "PHYSICS_AVERAGE_SPEED",
+      "to": "BIOLOGY_CELULAS_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Fisica retoma evidencias de Biologia."
+    },
+    {
+      "from": "PHYSICS_MOVIMENTO_01",
+      "to": "BIOLOGY_TECIDOS_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Fisica retoma evidencias de Biologia."
+    },
+    {
+      "from": "PHYSICS_VELOCIDADE_MEDIA_02",
+      "to": "BIOLOGY_GENETICA_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Fisica retoma evidencias de Biologia."
+    },
+    {
+      "from": "CHEMISTRY_ATOMOS_01",
+      "to": "PHYSICS_AVERAGE_SPEED",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Quimica retoma evidencias de Fisica."
+    },
+    {
+      "from": "CHEMISTRY_TABELA_PERIODICA_02",
+      "to": "PHYSICS_MOVIMENTO_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Quimica retoma evidencias de Fisica."
+    },
+    {
+      "from": "CHEMISTRY_LIGACOES_QUIMICAS_03",
+      "to": "PHYSICS_VELOCIDADE_MEDIA_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Quimica retoma evidencias de Fisica."
+    },
+    {
+      "from": "HISTORY_CRONOLOGIA_01",
+      "to": "CHEMISTRY_ATOMOS_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Historia retoma evidencias de Quimica."
+    },
+    {
+      "from": "HISTORY_FONTES_HISTORICAS_02",
+      "to": "CHEMISTRY_TABELA_PERIODICA_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Historia retoma evidencias de Quimica."
+    },
+    {
+      "from": "HISTORY_SOCIEDADES_ANTIGAS_03",
+      "to": "CHEMISTRY_LIGACOES_QUIMICAS_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Historia retoma evidencias de Quimica."
+    },
+    {
+      "from": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
+      "to": "HISTORY_CRONOLOGIA_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Geografia retoma evidencias de Historia."
+    },
+    {
+      "from": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
+      "to": "HISTORY_FONTES_HISTORICAS_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Geografia retoma evidencias de Historia."
+    },
+    {
+      "from": "GEOGRAPHY_TERRITORIO_03",
+      "to": "HISTORY_SOCIEDADES_ANTIGAS_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Geografia retoma evidencias de Historia."
+    },
+    {
+      "from": "PHILOSOPHY_ETICA_01",
+      "to": "GEOGRAPHY_ESCALA_CARTOGRAFICA_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Filosofia retoma evidencias de Geografia."
+    },
+    {
+      "from": "PHILOSOPHY_CONHECIMENTO_02",
+      "to": "GEOGRAPHY_REPRESENTACAO_DO_ESPACO_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Filosofia retoma evidencias de Geografia."
+    },
+    {
+      "from": "PHILOSOPHY_ARGUMENTO_03",
+      "to": "GEOGRAPHY_TERRITORIO_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Filosofia retoma evidencias de Geografia."
+    },
+    {
+      "from": "SOCIOLOGY_SOCIALIZACAO_01",
+      "to": "PHILOSOPHY_ETICA_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Sociologia retoma evidencias de Filosofia."
+    },
+    {
+      "from": "SOCIOLOGY_CULTURA_02",
+      "to": "PHILOSOPHY_CONHECIMENTO_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Sociologia retoma evidencias de Filosofia."
+    },
+    {
+      "from": "SOCIOLOGY_IDENTIDADE_03",
+      "to": "PHILOSOPHY_ARGUMENTO_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Sociologia retoma evidencias de Filosofia."
+    },
+    {
+      "from": "ART_ELEMENTOS_VISUAIS_01",
+      "to": "SOCIOLOGY_SOCIALIZACAO_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Arte retoma evidencias de Sociologia."
+    },
+    {
+      "from": "ART_COR_02",
+      "to": "SOCIOLOGY_CULTURA_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Arte retoma evidencias de Sociologia."
+    },
+    {
+      "from": "ART_COMPOSICAO_03",
+      "to": "SOCIOLOGY_IDENTIDADE_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Arte retoma evidencias de Sociologia."
+    },
+    {
+      "from": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+      "to": "ART_ELEMENTOS_VISUAIS_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Educacao Fisica retoma evidencias de Arte."
+    },
+    {
+      "from": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+      "to": "ART_COR_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Educacao Fisica retoma evidencias de Arte."
+    },
+    {
+      "from": "PHYSICAL_EDUCATION_JOGOS_03",
+      "to": "ART_COMPOSICAO_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Educacao Fisica retoma evidencias de Arte."
+    },
+    {
+      "from": "ENGLISH_READING_01",
+      "to": "PHYSICAL_EDUCATION_CONSCIENCIA_CORPORAL_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Lingua Inglesa retoma evidencias de Educacao Fisica."
+    },
+    {
+      "from": "ENGLISH_VOCABULARY_02",
+      "to": "PHYSICAL_EDUCATION_HABILIDADES_MOTORAS_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Lingua Inglesa retoma evidencias de Educacao Fisica."
+    },
+    {
+      "from": "ENGLISH_COGNATES_03",
+      "to": "PHYSICAL_EDUCATION_JOGOS_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Lingua Inglesa retoma evidencias de Educacao Fisica."
+    },
+    {
+      "from": "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_01",
+      "to": "ENGLISH_READING_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Ensino Religioso retoma evidencias de Lingua Inglesa."
+    },
+    {
+      "from": "RELIGIOUS_EDUCATION_SIMBOLOS_02",
+      "to": "ENGLISH_VOCABULARY_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Ensino Religioso retoma evidencias de Lingua Inglesa."
+    },
+    {
+      "from": "RELIGIOUS_EDUCATION_NARRATIVAS_03",
+      "to": "ENGLISH_COGNATES_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Ensino Religioso retoma evidencias de Lingua Inglesa."
+    },
+    {
+      "from": "COMPUTING_ALGORITMOS_01",
+      "to": "RELIGIOUS_EDUCATION_DIVERSIDADE_RELIGIOSA_01",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Computacao e Educacao Digital retoma evidencias de Ensino Religioso."
+    },
+    {
+      "from": "COMPUTING_VARIAVEIS_02",
+      "to": "RELIGIOUS_EDUCATION_SIMBOLOS_02",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Computacao e Educacao Digital retoma evidencias de Ensino Religioso."
+    },
+    {
+      "from": "COMPUTING_CONDICIONAIS_03",
+      "to": "RELIGIOUS_EDUCATION_NARRATIVAS_03",
+      "type": "TRANSFER",
+      "source": "TECESCOLA_AUTHORED_SCALE",
+      "confidence": 0.72,
+      "rationale": "A transferencia de Computacao e Educacao Digital retoma evidencias de Ensino Religioso."
+    }
   ]
 }

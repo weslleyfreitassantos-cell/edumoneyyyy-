@@ -1,0 +1,226 @@
+[
+  {
+    "skill": "ART_ELEMENTOS_VISUAIS_01",
+    "title": "Trilha de elementos visuais",
+    "objective": "Aplicar elementos visuais em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza elementos visuais em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de elementos visuais, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de elementos visuais, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de elementos visuais sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "ART_COR_02",
+    "title": "Trilha de cor",
+    "objective": "Aplicar cor em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza cor em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de cor, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de cor, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de cor sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "ART_COMPOSICAO_03",
+    "title": "Trilha de composicao",
+    "objective": "Aplicar composicao em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza composicao em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de composicao, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de composicao, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de composicao sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "ART_HISTORIA_DA_ARTE_04",
+    "title": "Trilha de historia da arte",
+    "objective": "Aplicar historia da arte em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza historia da arte em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de historia da arte, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de historia da arte, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de historia da arte sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "ART_LEITURA_DE_IMAGEM_05",
+    "title": "Trilha de leitura de imagem",
+    "objective": "Aplicar leitura de imagem em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza leitura de imagem em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de leitura de imagem, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de leitura de imagem, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de leitura de imagem sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "ART_MUSICA_06",
+    "title": "Trilha de musica",
+    "objective": "Aplicar musica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza musica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de musica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de musica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de musica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "ART_TEATRO_07",
+    "title": "Trilha de teatro",
+    "objective": "Aplicar teatro em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza teatro em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de teatro, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de teatro, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de teatro sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "ART_DANCA_08",
+    "title": "Trilha de danca",
+    "objective": "Aplicar danca em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza danca em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de danca, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de danca, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de danca sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "ART_AUDIOVISUAL_09",
+    "title": "Trilha de audiovisual",
+    "objective": "Aplicar audiovisual em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza audiovisual em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de audiovisual, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de audiovisual, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de audiovisual sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "ART_PATRIMONIO_CULTURAL_10",
+    "title": "Trilha de patrimonio cultural",
+    "objective": "Aplicar patrimonio cultural em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza patrimonio cultural em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de patrimonio cultural, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de patrimonio cultural, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de patrimonio cultural sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "ART_ARTE_CONTEMPORANEA_11",
+    "title": "Trilha de arte contemporanea",
+    "objective": "Aplicar arte contemporanea em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza arte contemporanea em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de arte contemporanea, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de arte contemporanea, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de arte contemporanea sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "ART_PROCESSO_CRIATIVO_12",
+    "title": "Trilha de processo criativo",
+    "objective": "Aplicar processo criativo em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza processo criativo em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de processo criativo, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de processo criativo, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de processo criativo sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "ART_CRITICA_DE_ARTE_13",
+    "title": "Trilha de critica de arte",
+    "objective": "Aplicar critica de arte em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza critica de arte em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de critica de arte, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de critica de arte, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de critica de arte sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "ART_CURADORIA_14",
+    "title": "Trilha de curadoria",
+    "objective": "Aplicar curadoria em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza curadoria em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de curadoria, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de curadoria, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de curadoria sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  }
+]

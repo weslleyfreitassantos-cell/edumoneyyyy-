@@ -1,0 +1,226 @@
+[
+  {
+    "skill": "CHEMISTRY_ATOMOS_01",
+    "title": "Trilha de atomos",
+    "objective": "Aplicar atomos em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza atomos em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de atomos, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de atomos, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de atomos sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "CHEMISTRY_TABELA_PERIODICA_02",
+    "title": "Trilha de tabela periodica",
+    "objective": "Aplicar tabela periodica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza tabela periodica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de tabela periodica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de tabela periodica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de tabela periodica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "CHEMISTRY_LIGACOES_QUIMICAS_03",
+    "title": "Trilha de ligacoes quimicas",
+    "objective": "Aplicar ligacoes quimicas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza ligacoes quimicas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de ligacoes quimicas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de ligacoes quimicas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de ligacoes quimicas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "CHEMISTRY_REACOES_04",
+    "title": "Trilha de reacoes",
+    "objective": "Aplicar reacoes em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza reacoes em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de reacoes, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de reacoes, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de reacoes sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "CHEMISTRY_ESTEQUIOMETRIA_05",
+    "title": "Trilha de estequiometria",
+    "objective": "Aplicar estequiometria em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza estequiometria em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de estequiometria, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de estequiometria, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de estequiometria sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "CHEMISTRY_SOLUCOES_06",
+    "title": "Trilha de solucoes",
+    "objective": "Aplicar solucoes em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza solucoes em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de solucoes, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de solucoes, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de solucoes sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "CHEMISTRY_ACIDOS_E_BASES_07",
+    "title": "Trilha de acidos e bases",
+    "objective": "Aplicar acidos e bases em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza acidos e bases em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de acidos e bases, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de acidos e bases, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de acidos e bases sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "CHEMISTRY_PH_08",
+    "title": "Trilha de pH",
+    "objective": "Aplicar pH em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza pH em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de pH, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de pH, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de pH sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "CHEMISTRY_TERMOQUIMICA_09",
+    "title": "Trilha de termoquimica",
+    "objective": "Aplicar termoquimica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza termoquimica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de termoquimica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de termoquimica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de termoquimica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "CHEMISTRY_QUIMICA_ORGANICA_10",
+    "title": "Trilha de quimica organica",
+    "objective": "Aplicar quimica organica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza quimica organica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de quimica organica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de quimica organica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de quimica organica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "CHEMISTRY_GASES_11",
+    "title": "Trilha de gases",
+    "objective": "Aplicar gases em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza gases em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de gases, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de gases, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de gases sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
+    "title": "Trilha de separacao de misturas",
+    "objective": "Aplicar separacao de misturas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza separacao de misturas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de separacao de misturas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de separacao de misturas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de separacao de misturas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
+    "title": "Trilha de seguranca de laboratorio",
+    "objective": "Aplicar seguranca de laboratorio em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza seguranca de laboratorio em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de seguranca de laboratorio, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de seguranca de laboratorio, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de seguranca de laboratorio sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
+    "title": "Trilha de evidencia experimental",
+    "objective": "Aplicar evidencia experimental em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza evidencia experimental em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de evidencia experimental, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de evidencia experimental, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de evidencia experimental sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  }
+]

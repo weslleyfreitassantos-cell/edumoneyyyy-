@@ -1,3 +1,240 @@
 [
-  { "skill": "PHYSICS_AVERAGE_SPEED", "title": "Relacionar distancia e tempo", "objective": "Interpretar velocidade media como uma razao entre distancia e tempo.", "summary": "A velocidade media responde quanto de distancia corresponde a cada unidade de tempo.", "explanation": "Mantenha as unidades compativeis e divida distancia pelo intervalo de tempo.", "workedExample": "120 km em 2 h correspondem a 60 km/h.", "commonMistake": "Inverter distancia e tempo ou misturar minutos com horas.", "tips": ["Escreva a unidade do resultado.", "Pergunte se a resposta e razoavel."], "estimatedMinutes": 8 }
+  {
+    "skill": "PHYSICS_AVERAGE_SPEED",
+    "title": "Relacionar distancia e tempo",
+    "objective": "Interpretar velocidade media como uma razao entre distancia e tempo.",
+    "summary": "A velocidade media responde quanto de distancia corresponde a cada unidade de tempo.",
+    "explanation": "Mantenha as unidades compativeis e divida distancia pelo intervalo de tempo.",
+    "workedExample": "120 km em 2 h correspondem a 60 km/h.",
+    "commonMistake": "Inverter distancia e tempo ou misturar minutos com horas.",
+    "tips": [
+      "Escreva a unidade do resultado.",
+      "Pergunte se a resposta e razoavel."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "PHYSICS_MOVIMENTO_01",
+    "title": "Trilha de movimento",
+    "objective": "Aplicar movimento em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza movimento em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de movimento, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de movimento, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de movimento sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "PHYSICS_VELOCIDADE_MEDIA_02",
+    "title": "Trilha de velocidade media",
+    "objective": "Aplicar velocidade media em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza velocidade media em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de velocidade media, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de velocidade media, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de velocidade media sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "PHYSICS_FORCAS_03",
+    "title": "Trilha de forcas",
+    "objective": "Aplicar forcas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza forcas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de forcas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de forcas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de forcas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "PHYSICS_ENERGIA_04",
+    "title": "Trilha de energia",
+    "objective": "Aplicar energia em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza energia em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de energia, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de energia, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de energia sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "PHYSICS_TRABALHO_05",
+    "title": "Trilha de trabalho",
+    "objective": "Aplicar trabalho em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza trabalho em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de trabalho, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de trabalho, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de trabalho sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "PHYSICS_CALOR_06",
+    "title": "Trilha de calor",
+    "objective": "Aplicar calor em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza calor em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de calor, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de calor, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de calor sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "PHYSICS_ONDAS_07",
+    "title": "Trilha de ondas",
+    "objective": "Aplicar ondas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza ondas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de ondas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de ondas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de ondas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "PHYSICS_ELETRICIDADE_08",
+    "title": "Trilha de eletricidade",
+    "objective": "Aplicar eletricidade em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza eletricidade em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de eletricidade, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de eletricidade, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de eletricidade sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "PHYSICS_CIRCUITOS_09",
+    "title": "Trilha de circuitos",
+    "objective": "Aplicar circuitos em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza circuitos em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de circuitos, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de circuitos, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de circuitos sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "PHYSICS_DENSIDADE_10",
+    "title": "Trilha de densidade",
+    "objective": "Aplicar densidade em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza densidade em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de densidade, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de densidade, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de densidade sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "PHYSICS_PRESSAO_11",
+    "title": "Trilha de pressao",
+    "objective": "Aplicar pressao em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza pressao em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de pressao, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de pressao, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de pressao sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "PHYSICS_OPTICA_12",
+    "title": "Trilha de optica",
+    "objective": "Aplicar optica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza optica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de optica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de optica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de optica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+    "title": "Trilha de quantidade de movimento",
+    "objective": "Aplicar quantidade de movimento em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza quantidade de movimento em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de quantidade de movimento, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de quantidade de movimento, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de quantidade de movimento sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+    "title": "Trilha de graficos de movimento",
+    "objective": "Aplicar graficos de movimento em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza graficos de movimento em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de graficos de movimento, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de graficos de movimento, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de graficos de movimento sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  }
 ]

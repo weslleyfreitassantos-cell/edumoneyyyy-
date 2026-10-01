@@ -1,0 +1,226 @@
+[
+  {
+    "skill": "HISTORY_CRONOLOGIA_01",
+    "title": "Trilha de cronologia",
+    "objective": "Aplicar cronologia em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza cronologia em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de cronologia, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de cronologia, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de cronologia sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "HISTORY_FONTES_HISTORICAS_02",
+    "title": "Trilha de fontes historicas",
+    "objective": "Aplicar fontes historicas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza fontes historicas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de fontes historicas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de fontes historicas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de fontes historicas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "HISTORY_SOCIEDADES_ANTIGAS_03",
+    "title": "Trilha de sociedades antigas",
+    "objective": "Aplicar sociedades antigas em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza sociedades antigas em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de sociedades antigas, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de sociedades antigas, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de sociedades antigas sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "HISTORY_MUNDO_MEDIEVAL_04",
+    "title": "Trilha de mundo medieval",
+    "objective": "Aplicar mundo medieval em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza mundo medieval em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de mundo medieval, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de mundo medieval, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de mundo medieval sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+    "title": "Trilha de formacao do estado moderno",
+    "objective": "Aplicar formacao do estado moderno em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza formacao do estado moderno em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de formacao do estado moderno, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de formacao do estado moderno, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de formacao do estado moderno sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "HISTORY_COLONIZACAO_06",
+    "title": "Trilha de colonizacao",
+    "objective": "Aplicar colonizacao em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza colonizacao em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de colonizacao, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de colonizacao, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de colonizacao sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+    "title": "Trilha de escravidao e resistencia",
+    "objective": "Aplicar escravidao e resistencia em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza escravidao e resistencia em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de escravidao e resistencia, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de escravidao e resistencia, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de escravidao e resistencia sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "HISTORY_INDEPENDENCIAS_08",
+    "title": "Trilha de independencias",
+    "objective": "Aplicar independencias em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza independencias em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de independencias, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de independencias, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de independencias sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "HISTORY_INDUSTRIALIZACAO_09",
+    "title": "Trilha de industrializacao",
+    "objective": "Aplicar industrializacao em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza industrializacao em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de industrializacao, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de industrializacao, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de industrializacao sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  },
+  {
+    "skill": "HISTORY_REPUBLICA_10",
+    "title": "Trilha de republica",
+    "objective": "Aplicar republica em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza republica em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de republica, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de republica, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de republica sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 12
+  },
+  {
+    "skill": "HISTORY_CIDADANIA_11",
+    "title": "Trilha de cidadania",
+    "objective": "Aplicar cidadania em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza cidadania em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de cidadania, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de cidadania, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de cidadania sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 8
+  },
+  {
+    "skill": "HISTORY_MEMORIA_SOCIAL_12",
+    "title": "Trilha de memoria social",
+    "objective": "Aplicar memoria social em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza memoria social em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de memoria social, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de memoria social, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de memoria social sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 9
+  },
+  {
+    "skill": "HISTORY_POVOS_ORIGINARIOS_13",
+    "title": "Trilha de povos originarios",
+    "objective": "Aplicar povos originarios em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza povos originarios em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de povos originarios, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de povos originarios, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de povos originarios sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 10
+  },
+  {
+    "skill": "HISTORY_MUNDO_CONTEMPORANEO_14",
+    "title": "Trilha de mundo contemporaneo",
+    "objective": "Aplicar mundo contemporaneo em situacoes variadas, justificando a escolha com evidencias do problema.",
+    "summary": "Esta trilha organiza mundo contemporaneo em uma progressao de observacao, pratica e transferencia.",
+    "explanation": "Comece identificando os dados relevantes de mundo contemporaneo, relacione-os ao conceito e explique por que a estrategia escolhida responde ao contexto.",
+    "workedExample": "Em um caso de mundo contemporaneo, destaque a evidencia principal, escolha o procedimento adequado e confira se a conclusao respeita as condicoes apresentadas.",
+    "commonMistake": "Ignorar o contexto e aplicar uma regra de mundo contemporaneo sem verificar se as grandezas, fontes ou evidencias sao compativeis.",
+    "tips": [
+      "Nomeie o conceito antes de resolver.",
+      "Registre a evidencia usada.",
+      "Revise a unidade ou o contexto.",
+      "Explique a escolha em uma frase."
+    ],
+    "estimatedMinutes": 11
+  }
+]

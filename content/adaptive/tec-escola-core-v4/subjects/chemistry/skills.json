@@ -1,0 +1,296 @@
+{
+  "code": "CHEMISTRY",
+  "name": "Quimica",
+  "anchors": [
+    {
+      "code": "CHEMISTRY_MATTER",
+      "title": "Chemistry Matter"
+    },
+    {
+      "code": "REACTIONS",
+      "title": "Reactions"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "CHEMISTRY_STOICHIOMETRIC_REASONING",
+      "title": "Raciocinar com proporcoes em reacoes",
+      "domain": "REACOES",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_ATOMOS_01",
+      "title": "Atomos aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_TABELA_PERIODICA_02",
+      "title": "Tabela Periodica aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_LIGACOES_QUIMICAS_03",
+      "title": "Ligacoes Quimicas aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_REACOES_04",
+      "title": "Reacoes aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_ESTEQUIOMETRIA_05",
+      "title": "Estequiometria aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_SOLUCOES_06",
+      "title": "Solucoes aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_ACIDOS_E_BASES_07",
+      "title": "Acidos E Bases aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_PH_08",
+      "title": "PH aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_TERMOQUIMICA_09",
+      "title": "Termoquimica aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_QUIMICA_ORGANICA_10",
+      "title": "Quimica Organica aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_GASES_11",
+      "title": "Gases aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_SEPARACAO_DE_MISTURAS_12",
+      "title": "Separacao De Misturas aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_13",
+      "title": "Seguranca De Laboratorio aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_EVIDENCIA_EXPERIMENTAL_14",
+      "title": "Evidencia Experimental aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_ATOMOS_15",
+      "title": "Atomos aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_TABELA_PERIODICA_16",
+      "title": "Tabela Periodica aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_LIGACOES_QUIMICAS_17",
+      "title": "Ligacoes Quimicas aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_REACOES_18",
+      "title": "Reacoes aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_ESTEQUIOMETRIA_19",
+      "title": "Estequiometria aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_SOLUCOES_20",
+      "title": "Solucoes aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_ACIDOS_E_BASES_21",
+      "title": "Acidos E Bases aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_PH_22",
+      "title": "PH aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_TERMOQUIMICA_23",
+      "title": "Termoquimica aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_QUIMICA_ORGANICA_24",
+      "title": "Quimica Organica aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_GASES_25",
+      "title": "Gases aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "CHEMISTRY_SEPARACAO_DE_MISTURAS_26",
+      "title": "Separacao De Misturas aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "REACTIONS",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "CHEMISTRY_SEGURANCA_DE_LABORATORIO_27",
+      "title": "Seguranca De Laboratorio aplicado",
+      "domain": "CHEMISTRY_V4",
+      "parent": "CHEMISTRY_MATTER",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    }
+  ]
+}

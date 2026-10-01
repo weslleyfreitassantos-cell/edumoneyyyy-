@@ -35,6 +35,22 @@ describe('adaptive learning pedagogical depth v4 migration', () => {
     expect(migration).toContain('grant execute on function public.start_guided_learning_session_v4');
   });
 
+  it('does not cancel another engine and bounds runtime bridge/content readiness decisions', () => {
+    expect(migration).toContain('LEARNING_V4_EXISTING_SESSION_OTHER_ENGINE');
+    expect(migration).toContain('private.append_guided_v4_next_step');
+    expect(migration).toContain('MAX_ACTIVE_BRIDGE_DEPTH_REACHED');
+    expect(migration).toContain("CONTENT_NOT_READY");
+    expect(migration).not.toContain('V4_REPLACED_PREVIOUS_SESSION');
+  });
+
+  it('keeps V4 attempts compatible with the V3 attribution trigger contract', () => {
+    expect(migration).toContain('insert into public.learning_guided_step_attempts');
+    expect(migration).toContain('session_row.institution_id');
+    expect(migration).toContain('session_row.student_id');
+    expect(migration).toContain('step_row.purpose');
+    expect(migration).toContain('p_answers');
+  });
+
   it('uses scoped PL/pgSQL variables instead of ambiguous column names', () => {
     expect(migration).toContain('v_catalog_id');
     expect(migration).toContain('v_skill_id');

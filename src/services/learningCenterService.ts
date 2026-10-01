@@ -151,7 +151,7 @@ export interface GuidedSessionV2 {
   current_canonical_skill_id: string;
   current_step_id: string | null;
   status: 'ACTIVE' | 'PAUSED' | 'COMPLETED' | 'NEEDS_TEACHER_SUPPORT' | 'CANCELLED';
-  planner_version: 'V2' | 'V4';
+  planner_version: 'V2' | 'V3' | 'V4';
   decision_reason: string | null;
   replan_count: number;
   metadata: Record<string, unknown>;
@@ -837,6 +837,32 @@ export const learningCenterService = {
     (async () => {
       const v4 = await supabase.rpc('start_guided_learning_session_v4', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId });
       if (!v4.error && v4.data) return v4.data as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V4' };
+      // V4 deliberately refuses to cancel an active/paused V2 or V3 session.
+      // V2's compatibility start is idempotent for V2, but its legacy branch
+      // predates V3, so inspect the scoped session first to avoid cancelling it.
+      if (v4.error?.message?.includes('LEARNING_V4_EXISTING_SESSION_OTHER_ENGINE')) {
+        const existing = await supabase
+          .from('learning_guided_sessions')
+          .select('id,current_step_id,planner_version')
+          .eq('institution_id', input.institutionId)
+          .eq('student_id', input.studentId)
+          .eq('target_canonical_skill_id', input.targetCanonicalSkillId)
+          .in('status', ['ACTIVE', 'PAUSED'])
+          .order('updated_at', { ascending: false })
+          .limit(1)
+          .maybeSingle();
+        const plannerVersion = existing.data?.planner_version as 'V2' | 'V3' | 'V4' | null | undefined;
+        if (!existing.error && existing.data && plannerVersion && plannerVersion !== 'V2') {
+          return {
+            session_id: existing.data.id,
+            created: false,
+            current_step_id: existing.data.current_step_id,
+            engine_version: plannerVersion,
+          } as { session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V3' | 'V4' };
+        }
+      }
+      // For V2, the V2 RPC returns the existing session without creating a
+      // duplicate. Other V4 errors retain the established compatibility path.
       return read<{ session_id: string; created: boolean; current_step_id: string | null; engine_version: 'V2' }>(supabase.rpc('start_guided_learning_session_v2', { p_institution_id: input.institutionId, p_student_id: input.studentId, p_target_canonical_skill_id: input.targetCanonicalSkillId }));
     })(),
 

@@ -1,0 +1,296 @@
+{
+  "code": "HISTORY",
+  "name": "Historia",
+  "anchors": [
+    {
+      "code": "SOURCES",
+      "title": "Sources"
+    },
+    {
+      "code": "INTERPRETATION",
+      "title": "Interpretation"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "HISTORY_CAUSALITY",
+      "title": "Explicar relacoes de causa historica",
+      "domain": "INTERPRETACAO",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_CRONOLOGIA_01",
+      "title": "Cronologia aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_FONTES_HISTORICAS_02",
+      "title": "Fontes Historicas aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_SOCIEDADES_ANTIGAS_03",
+      "title": "Sociedades Antigas aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_MUNDO_MEDIEVAL_04",
+      "title": "Mundo Medieval aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_05",
+      "title": "Formacao Do Estado Moderno aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_COLONIZACAO_06",
+      "title": "Colonizacao aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_07",
+      "title": "Escravidao E Resistencia aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_INDEPENDENCIAS_08",
+      "title": "Independencias aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_INDUSTRIALIZACAO_09",
+      "title": "Industrializacao aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_REPUBLICA_10",
+      "title": "Republica aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_CIDADANIA_11",
+      "title": "Cidadania aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_MEMORIA_SOCIAL_12",
+      "title": "Memoria Social aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_POVOS_ORIGINARIOS_13",
+      "title": "Povos Originarios aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_MUNDO_CONTEMPORANEO_14",
+      "title": "Mundo Contemporaneo aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_CRONOLOGIA_15",
+      "title": "Cronologia aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_FONTES_HISTORICAS_16",
+      "title": "Fontes Historicas aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_SOCIEDADES_ANTIGAS_17",
+      "title": "Sociedades Antigas aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_MUNDO_MEDIEVAL_18",
+      "title": "Mundo Medieval aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_FORMACAO_DO_ESTADO_MODERNO_19",
+      "title": "Formacao Do Estado Moderno aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_COLONIZACAO_20",
+      "title": "Colonizacao aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_ESCRAVIDAO_E_RESISTENCIA_21",
+      "title": "Escravidao E Resistencia aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_INDEPENDENCIAS_22",
+      "title": "Independencias aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_INDUSTRIALIZACAO_23",
+      "title": "Industrializacao aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_REPUBLICA_24",
+      "title": "Republica aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "HISTORY_CIDADANIA_25",
+      "title": "Cidadania aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "HISTORY_MEMORIA_SOCIAL_26",
+      "title": "Memoria Social aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "INTERPRETATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "HISTORY_POVOS_ORIGINARIOS_27",
+      "title": "Povos Originarios aplicado",
+      "domain": "HISTORY_V4",
+      "parent": "SOURCES",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    }
+  ]
+}

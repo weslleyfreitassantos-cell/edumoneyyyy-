@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-science-01-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 1, como interpretar investigacao cientifica na etapa probe da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Aplicar investigacao cientifica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica",
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica": [
+        "V4_SCIENCE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 1, como interpretar investigacao cientifica na etapa probe da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar investigacao cientifica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica",
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 1, como interpretar investigacao cientifica na etapa practice da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar investigacao cientifica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 1, como interpretar investigacao cientifica na etapa practice da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica",
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar investigacao cientifica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica": [
+        "V4_SCIENCE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 1, como interpretar investigacao cientifica na etapa transfer da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Aplicar investigacao cientifica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica",
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica": [
+        "V4_SCIENCE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 1, como interpretar investigacao cientifica na etapa lock_in da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar investigacao cientifica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica",
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 1, como interpretar investigacao cientifica na etapa review da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar investigacao cientifica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-01-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "investigacao cientifica",
+    "primarySkill": "SCIENCE_INVESTIGACAO_CIENTIFICA_01",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 1, como interpretar investigacao cientifica na etapa review da trilha SCIENCE_INVESTIGACAO_CIENTIFICA_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica",
+      "Trocar investigacao cientifica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar investigacao cientifica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar investigacao cientifica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona investigacao cientifica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de investigacao cientifica": [
+        "V4_SCIENCE_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 2, como interpretar estados da materia na etapa probe da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Aplicar estados da materia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de estados da materia",
+      "Trocar estados da materia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de estados da materia": [
+        "V4_SCIENCE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 2, como interpretar estados da materia na etapa probe da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar estados da materia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de estados da materia",
+      "Trocar estados da materia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 2, como interpretar estados da materia na etapa practice da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Trocar estados da materia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar estados da materia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de estados da materia"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar estados da materia por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 2, como interpretar estados da materia na etapa practice da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de estados da materia",
+      "Trocar estados da materia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar estados da materia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de estados da materia": [
+        "V4_SCIENCE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 2, como interpretar estados da materia na etapa transfer da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Aplicar estados da materia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de estados da materia",
+      "Trocar estados da materia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de estados da materia": [
+        "V4_SCIENCE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 2, como interpretar estados da materia na etapa lock_in da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar estados da materia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de estados da materia",
+      "Trocar estados da materia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 2, como interpretar estados da materia na etapa review da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Trocar estados da materia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar estados da materia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de estados da materia"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar estados da materia por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-02-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "estados da materia",
+    "primarySkill": "SCIENCE_ESTADOS_DA_MATERIA_02",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 2, como interpretar estados da materia na etapa review da trilha SCIENCE_ESTADOS_DA_MATERIA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de estados da materia",
+      "Trocar estados da materia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar estados da materia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar estados da materia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona estados da materia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de estados da materia": [
+        "V4_SCIENCE_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 3, como interpretar transformacoes de energia na etapa probe da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Aplicar transformacoes de energia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia",
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia": [
+        "V4_SCIENCE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 3, como interpretar transformacoes de energia na etapa probe da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar transformacoes de energia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia",
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 3, como interpretar transformacoes de energia na etapa practice da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar transformacoes de energia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 3, como interpretar transformacoes de energia na etapa practice da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia",
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar transformacoes de energia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia": [
+        "V4_SCIENCE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 3, como interpretar transformacoes de energia na etapa transfer da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Aplicar transformacoes de energia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia",
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia": [
+        "V4_SCIENCE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 3, como interpretar transformacoes de energia na etapa lock_in da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar transformacoes de energia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia",
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 3, como interpretar transformacoes de energia na etapa review da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar transformacoes de energia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-03-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "transformacoes de energia",
+    "primarySkill": "SCIENCE_TRANSFORMACOES_DE_ENERGIA_03",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 3, como interpretar transformacoes de energia na etapa review da trilha SCIENCE_TRANSFORMACOES_DE_ENERGIA_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia",
+      "Trocar transformacoes de energia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar transformacoes de energia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar transformacoes de energia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona transformacoes de energia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de transformacoes de energia": [
+        "V4_SCIENCE_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 4, como interpretar ecossistemas na etapa probe da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Aplicar ecossistemas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de ecossistemas",
+      "Trocar ecossistemas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecossistemas": [
+        "V4_SCIENCE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 4, como interpretar ecossistemas na etapa probe da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar ecossistemas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de ecossistemas",
+      "Trocar ecossistemas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 4, como interpretar ecossistemas na etapa practice da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Trocar ecossistemas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar ecossistemas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de ecossistemas"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ecossistemas por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 4, como interpretar ecossistemas na etapa practice da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ecossistemas",
+      "Trocar ecossistemas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar ecossistemas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecossistemas": [
+        "V4_SCIENCE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 4, como interpretar ecossistemas na etapa transfer da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Aplicar ecossistemas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de ecossistemas",
+      "Trocar ecossistemas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecossistemas": [
+        "V4_SCIENCE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 4, como interpretar ecossistemas na etapa lock_in da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar ecossistemas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de ecossistemas",
+      "Trocar ecossistemas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 4, como interpretar ecossistemas na etapa review da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Trocar ecossistemas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar ecossistemas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de ecossistemas"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ecossistemas por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-04-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ecossistemas",
+    "primarySkill": "SCIENCE_ECOSSISTEMAS_04",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 4, como interpretar ecossistemas na etapa review da trilha SCIENCE_ECOSSISTEMAS_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ecossistemas",
+      "Trocar ecossistemas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar ecossistemas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar ecossistemas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona ecossistemas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ecossistemas": [
+        "V4_SCIENCE_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 5, como interpretar ciclos naturais na etapa probe da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Aplicar ciclos naturais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de ciclos naturais",
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciclos naturais": [
+        "V4_SCIENCE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 5, como interpretar ciclos naturais na etapa probe da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar ciclos naturais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de ciclos naturais",
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 5, como interpretar ciclos naturais na etapa practice da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar ciclos naturais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de ciclos naturais"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 5, como interpretar ciclos naturais na etapa practice da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ciclos naturais",
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar ciclos naturais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciclos naturais": [
+        "V4_SCIENCE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 5, como interpretar ciclos naturais na etapa transfer da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Aplicar ciclos naturais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de ciclos naturais",
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciclos naturais": [
+        "V4_SCIENCE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 5, como interpretar ciclos naturais na etapa lock_in da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar ciclos naturais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de ciclos naturais",
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 5, como interpretar ciclos naturais na etapa review da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar ciclos naturais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de ciclos naturais"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-05-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "ciclos naturais",
+    "primarySkill": "SCIENCE_CICLOS_NATURAIS_05",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 5, como interpretar ciclos naturais na etapa review da trilha SCIENCE_CICLOS_NATURAIS_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de ciclos naturais",
+      "Trocar ciclos naturais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar ciclos naturais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar ciclos naturais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona ciclos naturais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de ciclos naturais": [
+        "V4_SCIENCE_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 6, como interpretar forcas e movimentos na etapa probe da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Aplicar forcas e movimentos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos",
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos": [
+        "V4_SCIENCE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 6, como interpretar forcas e movimentos na etapa probe da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar forcas e movimentos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos",
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 6, como interpretar forcas e movimentos na etapa practice da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar forcas e movimentos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 6, como interpretar forcas e movimentos na etapa practice da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos",
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar forcas e movimentos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos": [
+        "V4_SCIENCE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 6, como interpretar forcas e movimentos na etapa transfer da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Aplicar forcas e movimentos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos",
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos": [
+        "V4_SCIENCE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 6, como interpretar forcas e movimentos na etapa lock_in da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar forcas e movimentos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos",
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 6, como interpretar forcas e movimentos na etapa review da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar forcas e movimentos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-06-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "forcas e movimentos",
+    "primarySkill": "SCIENCE_FORCAS_E_MOVIMENTOS_06",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 6, como interpretar forcas e movimentos na etapa review da trilha SCIENCE_FORCAS_E_MOVIMENTOS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos",
+      "Trocar forcas e movimentos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar forcas e movimentos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar forcas e movimentos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona forcas e movimentos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de forcas e movimentos": [
+        "V4_SCIENCE_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 7, como interpretar medicao e unidades na etapa probe da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Aplicar medicao e unidades usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de medicao e unidades",
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de medicao e unidades": [
+        "V4_SCIENCE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 7, como interpretar medicao e unidades na etapa probe da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar medicao e unidades usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de medicao e unidades",
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 7, como interpretar medicao e unidades na etapa practice da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar medicao e unidades usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de medicao e unidades"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 7, como interpretar medicao e unidades na etapa practice da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de medicao e unidades",
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar medicao e unidades usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de medicao e unidades": [
+        "V4_SCIENCE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 7, como interpretar medicao e unidades na etapa transfer da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Aplicar medicao e unidades usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de medicao e unidades",
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de medicao e unidades": [
+        "V4_SCIENCE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 7, como interpretar medicao e unidades na etapa lock_in da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar medicao e unidades usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de medicao e unidades",
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 7, como interpretar medicao e unidades na etapa review da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar medicao e unidades usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de medicao e unidades"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-07-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "medicao e unidades",
+    "primarySkill": "SCIENCE_MEDICAO_E_UNIDADES_07",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 7, como interpretar medicao e unidades na etapa review da trilha SCIENCE_MEDICAO_E_UNIDADES_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de medicao e unidades",
+      "Trocar medicao e unidades por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar medicao e unidades usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar medicao e unidades usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona medicao e unidades ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de medicao e unidades": [
+        "V4_SCIENCE_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 8, como interpretar misturas na etapa probe da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Aplicar misturas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de misturas",
+      "Trocar misturas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona misturas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de misturas": [
+        "V4_SCIENCE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 8, como interpretar misturas na etapa probe da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar misturas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de misturas",
+      "Trocar misturas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona misturas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 8, como interpretar misturas na etapa practice da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Trocar misturas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar misturas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de misturas"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona misturas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar misturas por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 8, como interpretar misturas na etapa practice da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de misturas",
+      "Trocar misturas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar misturas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona misturas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de misturas": [
+        "V4_SCIENCE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 8, como interpretar misturas na etapa transfer da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Aplicar misturas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de misturas",
+      "Trocar misturas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona misturas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de misturas": [
+        "V4_SCIENCE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 8, como interpretar misturas na etapa lock_in da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar misturas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de misturas",
+      "Trocar misturas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona misturas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 8, como interpretar misturas na etapa review da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Trocar misturas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar misturas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de misturas"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona misturas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar misturas por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-08-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "misturas",
+    "primarySkill": "SCIENCE_MISTURAS_08",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 8, como interpretar misturas na etapa review da trilha SCIENCE_MISTURAS_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de misturas",
+      "Trocar misturas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar misturas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar misturas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona misturas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de misturas": [
+        "V4_SCIENCE_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 9, como interpretar saude e prevencao na etapa probe da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Aplicar saude e prevencao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de saude e prevencao",
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude e prevencao": [
+        "V4_SCIENCE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 9, como interpretar saude e prevencao na etapa probe da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar saude e prevencao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de saude e prevencao",
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 9, como interpretar saude e prevencao na etapa practice da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar saude e prevencao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de saude e prevencao"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 9, como interpretar saude e prevencao na etapa practice da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de saude e prevencao",
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar saude e prevencao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude e prevencao": [
+        "V4_SCIENCE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 9, como interpretar saude e prevencao na etapa transfer da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Aplicar saude e prevencao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de saude e prevencao",
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude e prevencao": [
+        "V4_SCIENCE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 9, como interpretar saude e prevencao na etapa lock_in da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar saude e prevencao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de saude e prevencao",
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 9, como interpretar saude e prevencao na etapa review da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar saude e prevencao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de saude e prevencao"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-09-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "saude e prevencao",
+    "primarySkill": "SCIENCE_SAUDE_E_PREVENCAO_09",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 9, como interpretar saude e prevencao na etapa review da trilha SCIENCE_SAUDE_E_PREVENCAO_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de saude e prevencao",
+      "Trocar saude e prevencao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar saude e prevencao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar saude e prevencao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona saude e prevencao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de saude e prevencao": [
+        "V4_SCIENCE_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 10, como interpretar astronomia na etapa probe da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Aplicar astronomia usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de astronomia",
+      "Trocar astronomia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de astronomia": [
+        "V4_SCIENCE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 10, como interpretar astronomia na etapa probe da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar astronomia usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de astronomia",
+      "Trocar astronomia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 10, como interpretar astronomia na etapa practice da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Trocar astronomia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar astronomia usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de astronomia"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar astronomia por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 10, como interpretar astronomia na etapa practice da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de astronomia",
+      "Trocar astronomia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar astronomia usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de astronomia": [
+        "V4_SCIENCE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 10, como interpretar astronomia na etapa transfer da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Aplicar astronomia usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de astronomia",
+      "Trocar astronomia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de astronomia": [
+        "V4_SCIENCE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 10, como interpretar astronomia na etapa lock_in da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar astronomia usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de astronomia",
+      "Trocar astronomia por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 10, como interpretar astronomia na etapa review da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Trocar astronomia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar astronomia usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de astronomia"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar astronomia por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-10-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "astronomia",
+    "primarySkill": "SCIENCE_ASTRONOMIA_10",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 10, como interpretar astronomia na etapa review da trilha SCIENCE_ASTRONOMIA_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de astronomia",
+      "Trocar astronomia por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar astronomia usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar astronomia usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona astronomia ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de astronomia": [
+        "V4_SCIENCE_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 11, como interpretar variaveis experimentais na etapa probe da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Aplicar variaveis experimentais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais",
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais": [
+        "V4_SCIENCE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 11, como interpretar variaveis experimentais na etapa probe da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar variaveis experimentais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais",
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 11, como interpretar variaveis experimentais na etapa practice da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar variaveis experimentais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 11, como interpretar variaveis experimentais na etapa practice da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais",
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar variaveis experimentais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais": [
+        "V4_SCIENCE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 11, como interpretar variaveis experimentais na etapa transfer da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Aplicar variaveis experimentais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais",
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais": [
+        "V4_SCIENCE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 11, como interpretar variaveis experimentais na etapa lock_in da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar variaveis experimentais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais",
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 11, como interpretar variaveis experimentais na etapa review da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar variaveis experimentais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-11-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "variaveis experimentais",
+    "primarySkill": "SCIENCE_VARIAVEIS_EXPERIMENTAIS_11",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 11, como interpretar variaveis experimentais na etapa review da trilha SCIENCE_VARIAVEIS_EXPERIMENTAIS_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais",
+      "Trocar variaveis experimentais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar variaveis experimentais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar variaveis experimentais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona variaveis experimentais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de variaveis experimentais": [
+        "V4_SCIENCE_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 12, como interpretar biodiversidade na etapa probe da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Aplicar biodiversidade usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_SCIENCE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 12, como interpretar biodiversidade na etapa probe da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar biodiversidade usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 12, como interpretar biodiversidade na etapa practice da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar biodiversidade usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de biodiversidade"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar biodiversidade por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 12, como interpretar biodiversidade na etapa practice da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar biodiversidade usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_SCIENCE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 12, como interpretar biodiversidade na etapa transfer da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Aplicar biodiversidade usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_SCIENCE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 12, como interpretar biodiversidade na etapa lock_in da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar biodiversidade usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 12, como interpretar biodiversidade na etapa review da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar biodiversidade usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de biodiversidade"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar biodiversidade por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-12-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "biodiversidade",
+    "primarySkill": "SCIENCE_BIODIVERSIDADE_12",
+    "supportingSkills": [
+      "SCIENCE_EVIDENCE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 12, como interpretar biodiversidade na etapa review da trilha SCIENCE_BIODIVERSIDADE_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de biodiversidade",
+      "Trocar biodiversidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar biodiversidade usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar biodiversidade usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona biodiversidade ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de biodiversidade": [
+        "V4_SCIENCE_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 13, como interpretar clima na etapa probe da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Aplicar clima usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de clima",
+      "Trocar clima por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona clima ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de clima": [
+        "V4_SCIENCE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 13, como interpretar clima na etapa probe da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar clima usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de clima",
+      "Trocar clima por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona clima ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 13, como interpretar clima na etapa practice da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Trocar clima por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar clima usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de clima"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona clima ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar clima por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 13, como interpretar clima na etapa practice da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de clima",
+      "Trocar clima por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar clima usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona clima ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de clima": [
+        "V4_SCIENCE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 13, como interpretar clima na etapa transfer da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Aplicar clima usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de clima",
+      "Trocar clima por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona clima ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de clima": [
+        "V4_SCIENCE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 13, como interpretar clima na etapa lock_in da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar clima usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de clima",
+      "Trocar clima por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona clima ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 13, como interpretar clima na etapa review da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Trocar clima por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar clima usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de clima"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona clima ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar clima por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-13-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "clima",
+    "primarySkill": "SCIENCE_CLIMA_13",
+    "supportingSkills": [
+      "SCIENCE_MATTER"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 13, como interpretar clima na etapa review da trilha SCIENCE_CLIMA_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de clima",
+      "Trocar clima por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar clima usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar clima usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona clima ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de clima": [
+        "V4_SCIENCE_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-01",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Ciencias: na atividade situacao_cotidiana 14, como interpretar som e luz na etapa probe da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Aplicar som e luz usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de som e luz",
+      "Trocar som e luz por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de som e luz": [
+        "V4_SCIENCE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-02",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Ciencias: na atividade dados_observados 14, como interpretar som e luz na etapa probe da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar som e luz usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de som e luz",
+      "Trocar som e luz por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_SCIENCE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-03",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Ciencias: na atividade texto_explicativo 14, como interpretar som e luz na etapa practice da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Trocar som e luz por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar som e luz usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de som e luz"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar som e luz por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-04",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Ciencias: na atividade projeto_aplicado 14, como interpretar som e luz na etapa practice da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de som e luz",
+      "Trocar som e luz por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar som e luz usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de som e luz": [
+        "V4_SCIENCE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-05",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Ciencias: na atividade laboratorio 14, como interpretar som e luz na etapa transfer da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Aplicar som e luz usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de som e luz",
+      "Trocar som e luz por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de som e luz": [
+        "V4_SCIENCE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-06",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Ciencias: na atividade mapa_conceitual 14, como interpretar som e luz na etapa lock_in da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar som e luz usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de som e luz",
+      "Trocar som e luz por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_SCIENCE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-07",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Ciencias: na atividade debate_orientado 14, como interpretar som e luz na etapa review da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Trocar som e luz por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar som e luz usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de som e luz"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar som e luz por outro conceito sem justificar a relacao": [
+        "V4_SCIENCE_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-science-14-08",
+    "subject": "SCIENCE",
+    "domain": "SCIENCE_V4",
+    "topic": "som e luz",
+    "primarySkill": "SCIENCE_SOM_E_LUZ_14",
+    "supportingSkills": [
+      "SCIENCE_ENERGY"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Ciencias: na atividade revisao_guiada 14, como interpretar som e luz na etapa review da trilha SCIENCE_SOM_E_LUZ_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de som e luz",
+      "Trocar som e luz por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar som e luz usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar som e luz usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona som e luz ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de som e luz": [
+        "V4_SCIENCE_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

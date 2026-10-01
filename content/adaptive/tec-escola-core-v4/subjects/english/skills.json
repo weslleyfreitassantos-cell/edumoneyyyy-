@@ -1,0 +1,296 @@
+{
+  "code": "ENGLISH",
+  "name": "Lingua Inglesa",
+  "anchors": [
+    {
+      "code": "ENGLISH_READING",
+      "title": "English Reading"
+    },
+    {
+      "code": "LANGUAGE",
+      "title": "Language"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "ENGLISH_CONNECTORS",
+      "title": "Interpretar conectores em contexto",
+      "domain": "LEITURA",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_READING_01",
+      "title": "Reading aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_VOCABULARY_02",
+      "title": "Vocabulary aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_COGNATES_03",
+      "title": "Cognates aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_SIMPLE_PRESENT_04",
+      "title": "Simple Present aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_SIMPLE_PAST_05",
+      "title": "Simple Past aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_FUTURE_FORMS_06",
+      "title": "Future Forms aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_MODAL_VERBS_07",
+      "title": "Modal Verbs aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_CONNECTORS_08",
+      "title": "Connectors aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_TEXT_GENRES_09",
+      "title": "Text Genres aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_READING_INFERENCE_10",
+      "title": "Reading Inference aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_PRONUNCIATION_11",
+      "title": "Pronunciation aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_LISTENING_12",
+      "title": "Listening aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_CULTURE_13",
+      "title": "Culture aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_GUIDED_WRITING_14",
+      "title": "Guided Writing aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_READING_15",
+      "title": "Reading aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_VOCABULARY_16",
+      "title": "Vocabulary aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_COGNATES_17",
+      "title": "Cognates aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_SIMPLE_PRESENT_18",
+      "title": "Simple Present aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_SIMPLE_PAST_19",
+      "title": "Simple Past aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_FUTURE_FORMS_20",
+      "title": "Future Forms aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_MODAL_VERBS_21",
+      "title": "Modal Verbs aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_CONNECTORS_22",
+      "title": "Connectors aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_TEXT_GENRES_23",
+      "title": "Text Genres aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_READING_INFERENCE_24",
+      "title": "Reading Inference aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "ENGLISH_PRONUNCIATION_25",
+      "title": "Pronunciation aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "ENGLISH_LISTENING_26",
+      "title": "Listening aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "LANGUAGE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "ENGLISH_CULTURE_27",
+      "title": "Culture aplicado",
+      "domain": "ENGLISH_V4",
+      "parent": "ENGLISH_READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    }
+  ]
+}

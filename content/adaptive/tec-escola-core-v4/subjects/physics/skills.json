@@ -1,0 +1,300 @@
+{
+  "code": "PHYSICS",
+  "name": "Fisica",
+  "anchors": [
+    {
+      "code": "MEASUREMENT",
+      "title": "Measurement"
+    },
+    {
+      "code": "MOTION",
+      "title": "Motion"
+    },
+    {
+      "code": "ENERGY",
+      "title": "Energy"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "PHYSICS_AVERAGE_SPEED",
+      "title": "Interpretar velocidade media",
+      "domain": "MOVIMENTO",
+      "parent": "MOTION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_UNIT_CONVERSION",
+      "title": "Converter unidades de medida",
+      "domain": "MEDIDAS",
+      "parent": "MEASUREMENT",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_GRAPH_MOTION",
+      "title": "Ler grafico de movimento",
+      "domain": "MOVIMENTO",
+      "parent": "MOTION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_MOVIMENTO_01",
+      "title": "Movimento aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_VELOCIDADE_MEDIA_02",
+      "title": "Velocidade Media aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_FORCAS_03",
+      "title": "Forcas aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_ENERGIA_04",
+      "title": "Energia aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_TRABALHO_05",
+      "title": "Trabalho aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_CALOR_06",
+      "title": "Calor aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_ONDAS_07",
+      "title": "Ondas aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_ELETRICIDADE_08",
+      "title": "Eletricidade aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_CIRCUITOS_09",
+      "title": "Circuitos aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_DENSIDADE_10",
+      "title": "Densidade aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_PRESSAO_11",
+      "title": "Pressao aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_OPTICA_12",
+      "title": "Optica aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_QUANTIDADE_DE_MOVIMENTO_13",
+      "title": "Quantidade De Movimento aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_GRAFICOS_DE_MOVIMENTO_14",
+      "title": "Graficos De Movimento aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_MOVIMENTO_15",
+      "title": "Movimento aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_VELOCIDADE_MEDIA_16",
+      "title": "Velocidade Media aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_FORCAS_17",
+      "title": "Forcas aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_ENERGIA_18",
+      "title": "Energia aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_TRABALHO_19",
+      "title": "Trabalho aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_CALOR_20",
+      "title": "Calor aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_ONDAS_21",
+      "title": "Ondas aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_ELETRICIDADE_22",
+      "title": "Eletricidade aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_CIRCUITOS_23",
+      "title": "Circuitos aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MOTION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PHYSICS_DENSIDADE_24",
+      "title": "Densidade aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "ENERGY",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 8,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PHYSICS_PRESSAO_25",
+      "title": "Pressao aplicado",
+      "domain": "PHYSICS_V4",
+      "parent": "MEASUREMENT",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    }
+  ]
+}

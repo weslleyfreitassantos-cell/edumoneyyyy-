@@ -1,0 +1,3985 @@
+[
+  {
+    "id": "v4-percent-base-1",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DIRECT",
+    "statement": "Na expressao 18% de 250, qual valor e a base percentual?",
+    "options": [
+      "250",
+      "18",
+      "0,18",
+      "268"
+    ],
+    "correctAnswer": "250",
+    "explanation": "A base e o valor sobre o qual a taxa de 18% incide.",
+    "misconceptions": {
+      "18": [
+        "PERCENT_BASE_CONFUSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-2",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DATA",
+    "statement": "Em uma pesquisa, 30% de 80 estudantes preferem a biblioteca. Qual e a base da porcentagem?",
+    "options": [
+      "80 estudantes",
+      "30 estudantes",
+      "30%",
+      "50 estudantes"
+    ],
+    "correctAnswer": "80 estudantes",
+    "explanation": "A taxa e aplicada ao total pesquisado, que e 80.",
+    "misconceptions": {
+      "30 estudantes": [
+        "WHOLE_VALUE_CONFUSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-3",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "DISCOUNT",
+    "statement": "Uma mochila custa R$ 120 e recebe 15% de desconto. Sobre qual valor o desconto e calculado?",
+    "options": [
+      "R$ 120",
+      "R$ 15",
+      "R$ 105",
+      "R$ 135"
+    ],
+    "correctAnswer": "R$ 120",
+    "explanation": "O desconto inicial usa o preco antes da reducao.",
+    "misconceptions": {
+      "R$ 105": [
+        "FINAL_VALUE_AS_BASE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-4",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "INCREASE",
+    "statement": "Depois de um aumento de 10%, uma tarifa passou a R$ 55. Para calcular o aumento original, qual valor representa a base?",
+    "options": [
+      "A tarifa antes do aumento",
+      "R$ 10",
+      "R$ 55 sempre",
+      "10%"
+    ],
+    "correctAnswer": "A tarifa antes do aumento",
+    "explanation": "A taxa de aumento incide sobre o valor anterior, não sobre a taxa.",
+    "misconceptions": {
+      "R$ 55 sempre": [
+        "WRONG_BASE_AFTER_INCREASE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-5",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "FINANCE",
+    "statement": "Uma conta de R$ 200 teve multa de 2% e juros calculados depois. Para nao misturar as etapas, a base da multa e:",
+    "options": [
+      "R$ 200",
+      "2%",
+      "R$ 2",
+      "o total depois dos juros"
+    ],
+    "correctAnswer": "R$ 200",
+    "explanation": "A primeira taxa usa o valor da conta antes das alteracoes posteriores.",
+    "misconceptions": {
+      "o total depois dos juros": [
+        "SAME_BASE_ASSUMPTION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-6",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "COMPARISON",
+    "statement": "Duas lojas anunciam 20% de desconto, mas os precos iniciais sao diferentes. O que precisa ser identificado para comparar os descontos?",
+    "options": [
+      "A base de cada preco",
+      "Somente o numero 20",
+      "A cor da etiqueta",
+      "A soma dos dois percentuais"
+    ],
+    "correctAnswer": "A base de cada preco",
+    "explanation": "A mesma taxa pode gerar valores absolutos diferentes quando as bases mudam.",
+    "misconceptions": {
+      "Somente o numero 20": [
+        "PERCENT_AS_WHOLE_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-7",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DATA",
+    "statement": "Uma tabela informa que 40% dos participantes, de um total de 150, escolheram a opcao A. Qual dado e a base?",
+    "options": [
+      "150 participantes",
+      "40 participantes",
+      "opcao A",
+      "40%"
+    ],
+    "correctAnswer": "150 participantes",
+    "explanation": "O total do grupo e a referencia da taxa.",
+    "misconceptions": {
+      "40 participantes": [
+        "WHOLE_VALUE_CONFUSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-base-8",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "base percentual",
+    "primarySkill": "IDENTIFY_PERCENT_BASE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DIRECT",
+    "statement": "Qual explicacao melhor descreve a base percentual?",
+    "options": [
+      "O valor de referencia sobre o qual a taxa incide",
+      "A taxa escrita com o simbolo %",
+      "O resultado final depois da conta",
+      "A diferenca entre dois resultados"
+    ],
+    "correctAnswer": "O valor de referencia sobre o qual a taxa incide",
+    "explanation": "Nomear a referencia evita trocar a base entre etapas.",
+    "misconceptions": {
+      "O resultado final depois da conta": [
+        "FINAL_VALUE_AS_BASE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-1",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DIRECT",
+    "statement": "Quanto e 25% de 80?",
+    "options": [
+      "20",
+      "25",
+      "55",
+      "105"
+    ],
+    "correctAnswer": "20",
+    "explanation": "25% e um quarto; um quarto de 80 e 20.",
+    "misconceptions": {
+      "25": [
+        "DIRECT_COMPONENT_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-2",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DATA",
+    "statement": "Em 200 estudantes, 10% correspondem a:",
+    "options": [
+      "20 estudantes",
+      "10 estudantes",
+      "2 estudantes",
+      "100 estudantes"
+    ],
+    "correctAnswer": "20 estudantes",
+    "explanation": "10/100 x 200 = 20.",
+    "misconceptions": {
+      "10 estudantes": [
+        "PERCENT_AS_WHOLE_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-3",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "DISCOUNT",
+    "statement": "Qual e o desconto de 15% em R$ 120?",
+    "options": [
+      "R$ 18",
+      "R$ 15",
+      "R$ 102",
+      "R$ 105"
+    ],
+    "correctAnswer": "R$ 18",
+    "explanation": "0,15 x 120 = 18.",
+    "misconceptions": {
+      "R$ 15": [
+        "DIRECT_COMPONENT_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-4",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "FINANCE",
+    "statement": "Uma reserva de R$ 500 rende 4% em um periodo. Qual e o rendimento?",
+    "options": [
+      "R$ 20",
+      "R$ 4",
+      "R$ 496",
+      "R$ 504"
+    ],
+    "correctAnswer": "R$ 20",
+    "explanation": "4% de 500 = 0,04 x 500 = 20.",
+    "misconceptions": {
+      "R$ 504": [
+        "PERCENT_AS_WHOLE_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-5",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "COMPARISON",
+    "statement": "Uma turma tem 32 estudantes e 75% entregaram o trabalho. Quantos entregaram?",
+    "options": [
+      "24",
+      "8",
+      "25",
+      "75"
+    ],
+    "correctAnswer": "24",
+    "explanation": "0,75 x 32 = 24.",
+    "misconceptions": {
+      "8": [
+        "PERCENT_AS_WHOLE_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-6",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "DATA",
+    "statement": "Em um grafico, 12% de 250 registros pertencem a uma categoria. Quantos registros sao?",
+    "options": [
+      "30",
+      "12",
+      "21",
+      "238"
+    ],
+    "correctAnswer": "30",
+    "explanation": "0,12 x 250 = 30.",
+    "misconceptions": {
+      "12": [
+        "DIRECT_COMPONENT_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-7",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DIRECT",
+    "statement": "Qual procedimento evita erro ao calcular 7% de 300?",
+    "options": [
+      "Multiplicar 0,07 por 300",
+      "Multiplicar 7 por 300 sem converter",
+      "Dividir 300 por 7",
+      "Somar 7 a 300"
+    ],
+    "correctAnswer": "Multiplicar 0,07 por 300",
+    "explanation": "A taxa deve ser convertida para uma forma multiplicavel pela base.",
+    "misconceptions": {
+      "Multiplicar 7 por 300 sem converter": [
+        "PERCENT_AS_WHOLE_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-8",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "DISCOUNT",
+    "statement": "Por que 10% de 90 nao e 10?",
+    "options": [
+      "Porque a base 90 tambem participa da conta",
+      "Porque porcentagem nunca gera inteiro",
+      "Porque o percentual deve ser somado",
+      "Porque 90 e menor que 100"
+    ],
+    "correctAnswer": "Porque a base 90 tambem participa da conta",
+    "explanation": "A taxa representa uma parte da base, e nao um numero isolado.",
+    "misconceptions": {
+      "Porque o percentual deve ser somado": [
+        "DIRECT_COMPONENT_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-percent-quantity-9",
+    "subject": "MATHEMATICS",
+    "domain": "PORCENTAGENS",
+    "topic": "percentual de quantidade",
+    "primarySkill": "PERCENT_OF_QUANTITY",
+    "supportingSkills": [
+      "IDENTIFY_PERCENT_BASE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "COMPARISON",
+    "statement": "Qual resultado representa 35% de 200 e mantem a unidade da base?",
+    "options": [
+      "70 estudantes",
+      "35 estudantes",
+      "165 estudantes",
+      "0,35 estudante"
+    ],
+    "correctAnswer": "70 estudantes",
+    "explanation": "0,35 x 200 = 70 e a unidade continua sendo estudantes.",
+    "misconceptions": {
+      "35 estudantes": [
+        "DIRECT_COMPONENT_ERROR"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4"
+  },
+  {
+    "id": "v4-scale-mathematics-01-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 1, como interpretar porcentagens na etapa probe da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Aplicar porcentagens usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de porcentagens",
+      "Trocar porcentagens por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de porcentagens": [
+        "V4_MATHEMATICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 1, como interpretar porcentagens na etapa probe da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar porcentagens usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de porcentagens",
+      "Trocar porcentagens por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 1, como interpretar porcentagens na etapa practice da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Trocar porcentagens por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar porcentagens usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de porcentagens"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar porcentagens por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 1, como interpretar porcentagens na etapa practice da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de porcentagens",
+      "Trocar porcentagens por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar porcentagens usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de porcentagens": [
+        "V4_MATHEMATICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 1, como interpretar porcentagens na etapa transfer da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Aplicar porcentagens usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de porcentagens",
+      "Trocar porcentagens por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de porcentagens": [
+        "V4_MATHEMATICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 1, como interpretar porcentagens na etapa lock_in da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar porcentagens usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de porcentagens",
+      "Trocar porcentagens por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 1, como interpretar porcentagens na etapa review da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Trocar porcentagens por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar porcentagens usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de porcentagens"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar porcentagens por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-01-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "porcentagens",
+    "primarySkill": "MATHEMATICS_PORCENTAGENS_01",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 1, como interpretar porcentagens na etapa review da trilha MATHEMATICS_PORCENTAGENS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de porcentagens",
+      "Trocar porcentagens por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar porcentagens usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar porcentagens usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona porcentagens ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de porcentagens": [
+        "V4_MATHEMATICS_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 2, como interpretar razao e taxa na etapa probe da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Aplicar razao e taxa usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de razao e taxa",
+      "Trocar razao e taxa por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de razao e taxa": [
+        "V4_MATHEMATICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 2, como interpretar razao e taxa na etapa probe da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar razao e taxa usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de razao e taxa",
+      "Trocar razao e taxa por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 2, como interpretar razao e taxa na etapa practice da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Trocar razao e taxa por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar razao e taxa usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de razao e taxa"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar razao e taxa por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 2, como interpretar razao e taxa na etapa practice da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de razao e taxa",
+      "Trocar razao e taxa por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar razao e taxa usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de razao e taxa": [
+        "V4_MATHEMATICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 2, como interpretar razao e taxa na etapa transfer da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Aplicar razao e taxa usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de razao e taxa",
+      "Trocar razao e taxa por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de razao e taxa": [
+        "V4_MATHEMATICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 2, como interpretar razao e taxa na etapa lock_in da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar razao e taxa usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de razao e taxa",
+      "Trocar razao e taxa por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 2, como interpretar razao e taxa na etapa review da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Trocar razao e taxa por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar razao e taxa usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de razao e taxa"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar razao e taxa por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-02-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "razao e taxa",
+    "primarySkill": "MATHEMATICS_RAZAO_E_TAXA_02",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 2, como interpretar razao e taxa na etapa review da trilha MATHEMATICS_RAZAO_E_TAXA_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de razao e taxa",
+      "Trocar razao e taxa por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar razao e taxa usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar razao e taxa usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona razao e taxa ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de razao e taxa": [
+        "V4_MATHEMATICS_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 3, como interpretar fracoes na etapa probe da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Aplicar fracoes usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de fracoes",
+      "Trocar fracoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fracoes": [
+        "V4_MATHEMATICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 3, como interpretar fracoes na etapa probe da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar fracoes usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de fracoes",
+      "Trocar fracoes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 3, como interpretar fracoes na etapa practice da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Trocar fracoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar fracoes usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de fracoes"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar fracoes por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 3, como interpretar fracoes na etapa practice da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de fracoes",
+      "Trocar fracoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar fracoes usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fracoes": [
+        "V4_MATHEMATICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 3, como interpretar fracoes na etapa transfer da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Aplicar fracoes usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de fracoes",
+      "Trocar fracoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fracoes": [
+        "V4_MATHEMATICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 3, como interpretar fracoes na etapa lock_in da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar fracoes usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de fracoes",
+      "Trocar fracoes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 3, como interpretar fracoes na etapa review da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Trocar fracoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar fracoes usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de fracoes"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar fracoes por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-03-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "fracoes",
+    "primarySkill": "MATHEMATICS_FRACOES_03",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 3, como interpretar fracoes na etapa review da trilha MATHEMATICS_FRACOES_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de fracoes",
+      "Trocar fracoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar fracoes usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar fracoes usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona fracoes ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de fracoes": [
+        "V4_MATHEMATICS_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 4, como interpretar equacoes na etapa probe da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Aplicar equacoes usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de equacoes",
+      "Trocar equacoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de equacoes": [
+        "V4_MATHEMATICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 4, como interpretar equacoes na etapa probe da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar equacoes usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de equacoes",
+      "Trocar equacoes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 4, como interpretar equacoes na etapa practice da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Trocar equacoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar equacoes usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de equacoes"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar equacoes por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 4, como interpretar equacoes na etapa practice da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de equacoes",
+      "Trocar equacoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar equacoes usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de equacoes": [
+        "V4_MATHEMATICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 4, como interpretar equacoes na etapa transfer da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Aplicar equacoes usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de equacoes",
+      "Trocar equacoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de equacoes": [
+        "V4_MATHEMATICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 4, como interpretar equacoes na etapa lock_in da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar equacoes usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de equacoes",
+      "Trocar equacoes por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 4, como interpretar equacoes na etapa review da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Trocar equacoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar equacoes usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de equacoes"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar equacoes por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-04-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "equacoes",
+    "primarySkill": "MATHEMATICS_EQUACOES_04",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 4, como interpretar equacoes na etapa review da trilha MATHEMATICS_EQUACOES_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de equacoes",
+      "Trocar equacoes por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar equacoes usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar equacoes usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona equacoes ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de equacoes": [
+        "V4_MATHEMATICS_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 5, como interpretar expressoes algebricas na etapa probe da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Aplicar expressoes algebricas usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas",
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas": [
+        "V4_MATHEMATICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 5, como interpretar expressoes algebricas na etapa probe da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar expressoes algebricas usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas",
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 5, como interpretar expressoes algebricas na etapa practice da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar expressoes algebricas usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 5, como interpretar expressoes algebricas na etapa practice da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas",
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar expressoes algebricas usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas": [
+        "V4_MATHEMATICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 5, como interpretar expressoes algebricas na etapa transfer da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Aplicar expressoes algebricas usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas",
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas": [
+        "V4_MATHEMATICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 5, como interpretar expressoes algebricas na etapa lock_in da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar expressoes algebricas usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas",
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 5, como interpretar expressoes algebricas na etapa review da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar expressoes algebricas usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-05-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "expressoes algebricas",
+    "primarySkill": "MATHEMATICS_EXPRESSOES_ALGEBRICAS_05",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 5, como interpretar expressoes algebricas na etapa review da trilha MATHEMATICS_EXPRESSOES_ALGEBRICAS_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas",
+      "Trocar expressoes algebricas por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar expressoes algebricas usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar expressoes algebricas usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona expressoes algebricas ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de expressoes algebricas": [
+        "V4_MATHEMATICS_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 6, como interpretar tabelas e dados na etapa probe da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Aplicar tabelas e dados usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de tabelas e dados",
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tabelas e dados": [
+        "V4_MATHEMATICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 6, como interpretar tabelas e dados na etapa probe da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar tabelas e dados usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de tabelas e dados",
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 6, como interpretar tabelas e dados na etapa practice da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar tabelas e dados usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de tabelas e dados"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 6, como interpretar tabelas e dados na etapa practice da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tabelas e dados",
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar tabelas e dados usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tabelas e dados": [
+        "V4_MATHEMATICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 6, como interpretar tabelas e dados na etapa transfer da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Aplicar tabelas e dados usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de tabelas e dados",
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tabelas e dados": [
+        "V4_MATHEMATICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 6, como interpretar tabelas e dados na etapa lock_in da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar tabelas e dados usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de tabelas e dados",
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 6, como interpretar tabelas e dados na etapa review da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar tabelas e dados usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de tabelas e dados"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-06-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "tabelas e dados",
+    "primarySkill": "MATHEMATICS_TABELAS_E_DADOS_06",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 6, como interpretar tabelas e dados na etapa review da trilha MATHEMATICS_TABELAS_E_DADOS_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de tabelas e dados",
+      "Trocar tabelas e dados por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar tabelas e dados usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar tabelas e dados usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona tabelas e dados ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de tabelas e dados": [
+        "V4_MATHEMATICS_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 7, como interpretar media e variacao na etapa probe da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Aplicar media e variacao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de media e variacao",
+      "Trocar media e variacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de media e variacao": [
+        "V4_MATHEMATICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 7, como interpretar media e variacao na etapa probe da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar media e variacao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de media e variacao",
+      "Trocar media e variacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 7, como interpretar media e variacao na etapa practice da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Trocar media e variacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar media e variacao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de media e variacao"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar media e variacao por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 7, como interpretar media e variacao na etapa practice da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de media e variacao",
+      "Trocar media e variacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar media e variacao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de media e variacao": [
+        "V4_MATHEMATICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 7, como interpretar media e variacao na etapa transfer da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Aplicar media e variacao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de media e variacao",
+      "Trocar media e variacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de media e variacao": [
+        "V4_MATHEMATICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 7, como interpretar media e variacao na etapa lock_in da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar media e variacao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de media e variacao",
+      "Trocar media e variacao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 7, como interpretar media e variacao na etapa review da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Trocar media e variacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar media e variacao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de media e variacao"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar media e variacao por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-07-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "media e variacao",
+    "primarySkill": "MATHEMATICS_MEDIA_E_VARIACAO_07",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 7, como interpretar media e variacao na etapa review da trilha MATHEMATICS_MEDIA_E_VARIACAO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de media e variacao",
+      "Trocar media e variacao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar media e variacao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar media e variacao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona media e variacao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de media e variacao": [
+        "V4_MATHEMATICS_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 8, como interpretar perimetro na etapa probe da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Aplicar perimetro usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de perimetro",
+      "Trocar perimetro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de perimetro": [
+        "V4_MATHEMATICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 8, como interpretar perimetro na etapa probe da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar perimetro usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de perimetro",
+      "Trocar perimetro por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 8, como interpretar perimetro na etapa practice da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Trocar perimetro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar perimetro usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de perimetro"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar perimetro por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 8, como interpretar perimetro na etapa practice da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de perimetro",
+      "Trocar perimetro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar perimetro usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de perimetro": [
+        "V4_MATHEMATICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 8, como interpretar perimetro na etapa transfer da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Aplicar perimetro usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de perimetro",
+      "Trocar perimetro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de perimetro": [
+        "V4_MATHEMATICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 8, como interpretar perimetro na etapa lock_in da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar perimetro usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de perimetro",
+      "Trocar perimetro por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 8, como interpretar perimetro na etapa review da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Trocar perimetro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar perimetro usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de perimetro"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar perimetro por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-08-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "perimetro",
+    "primarySkill": "MATHEMATICS_PERIMETRO_08",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 8, como interpretar perimetro na etapa review da trilha MATHEMATICS_PERIMETRO_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de perimetro",
+      "Trocar perimetro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar perimetro usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar perimetro usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona perimetro ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de perimetro": [
+        "V4_MATHEMATICS_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 9, como interpretar area na etapa probe da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Aplicar area usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de area",
+      "Trocar area por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona area ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de area": [
+        "V4_MATHEMATICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 9, como interpretar area na etapa probe da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar area usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de area",
+      "Trocar area por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona area ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 9, como interpretar area na etapa practice da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Trocar area por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar area usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de area"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona area ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar area por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 9, como interpretar area na etapa practice da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de area",
+      "Trocar area por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar area usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona area ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de area": [
+        "V4_MATHEMATICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 9, como interpretar area na etapa transfer da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Aplicar area usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de area",
+      "Trocar area por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona area ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de area": [
+        "V4_MATHEMATICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 9, como interpretar area na etapa lock_in da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar area usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de area",
+      "Trocar area por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona area ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 9, como interpretar area na etapa review da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Trocar area por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar area usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de area"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona area ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar area por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-09-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "area",
+    "primarySkill": "MATHEMATICS_AREA_09",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 9, como interpretar area na etapa review da trilha MATHEMATICS_AREA_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de area",
+      "Trocar area por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar area usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar area usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona area ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de area": [
+        "V4_MATHEMATICS_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 10, como interpretar probabilidade na etapa probe da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Aplicar probabilidade usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de probabilidade",
+      "Trocar probabilidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de probabilidade": [
+        "V4_MATHEMATICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 10, como interpretar probabilidade na etapa probe da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar probabilidade usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de probabilidade",
+      "Trocar probabilidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 10, como interpretar probabilidade na etapa practice da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Trocar probabilidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar probabilidade usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de probabilidade"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar probabilidade por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 10, como interpretar probabilidade na etapa practice da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de probabilidade",
+      "Trocar probabilidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar probabilidade usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de probabilidade": [
+        "V4_MATHEMATICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 10, como interpretar probabilidade na etapa transfer da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Aplicar probabilidade usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de probabilidade",
+      "Trocar probabilidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de probabilidade": [
+        "V4_MATHEMATICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 10, como interpretar probabilidade na etapa lock_in da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar probabilidade usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de probabilidade",
+      "Trocar probabilidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 10, como interpretar probabilidade na etapa review da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Trocar probabilidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar probabilidade usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de probabilidade"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar probabilidade por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-10-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "probabilidade",
+    "primarySkill": "MATHEMATICS_PROBABILIDADE_10",
+    "supportingSkills": [
+      "DATA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 10, como interpretar probabilidade na etapa review da trilha MATHEMATICS_PROBABILIDADE_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de probabilidade",
+      "Trocar probabilidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar probabilidade usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar probabilidade usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona probabilidade ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de probabilidade": [
+        "V4_MATHEMATICS_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 11, como interpretar proporcionalidade na etapa probe da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Aplicar proporcionalidade usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de proporcionalidade",
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de proporcionalidade": [
+        "V4_MATHEMATICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 11, como interpretar proporcionalidade na etapa probe da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar proporcionalidade usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de proporcionalidade",
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 11, como interpretar proporcionalidade na etapa practice da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar proporcionalidade usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de proporcionalidade"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 11, como interpretar proporcionalidade na etapa practice da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de proporcionalidade",
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar proporcionalidade usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de proporcionalidade": [
+        "V4_MATHEMATICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 11, como interpretar proporcionalidade na etapa transfer da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Aplicar proporcionalidade usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de proporcionalidade",
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de proporcionalidade": [
+        "V4_MATHEMATICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 11, como interpretar proporcionalidade na etapa lock_in da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar proporcionalidade usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de proporcionalidade",
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 11, como interpretar proporcionalidade na etapa review da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar proporcionalidade usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de proporcionalidade"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-11-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "proporcionalidade",
+    "primarySkill": "MATHEMATICS_PROPORCIONALIDADE_11",
+    "supportingSkills": [
+      "NUMBER_SENSE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 11, como interpretar proporcionalidade na etapa review da trilha MATHEMATICS_PROPORCIONALIDADE_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de proporcionalidade",
+      "Trocar proporcionalidade por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar proporcionalidade usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar proporcionalidade usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona proporcionalidade ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de proporcionalidade": [
+        "V4_MATHEMATICS_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 12, como interpretar padroes numericos na etapa probe da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Aplicar padroes numericos usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de padroes numericos",
+      "Trocar padroes numericos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de padroes numericos": [
+        "V4_MATHEMATICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 12, como interpretar padroes numericos na etapa probe da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar padroes numericos usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de padroes numericos",
+      "Trocar padroes numericos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 12, como interpretar padroes numericos na etapa practice da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Trocar padroes numericos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar padroes numericos usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de padroes numericos"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar padroes numericos por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 12, como interpretar padroes numericos na etapa practice da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de padroes numericos",
+      "Trocar padroes numericos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar padroes numericos usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de padroes numericos": [
+        "V4_MATHEMATICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 12, como interpretar padroes numericos na etapa transfer da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Aplicar padroes numericos usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de padroes numericos",
+      "Trocar padroes numericos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de padroes numericos": [
+        "V4_MATHEMATICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 12, como interpretar padroes numericos na etapa lock_in da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar padroes numericos usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de padroes numericos",
+      "Trocar padroes numericos por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 12, como interpretar padroes numericos na etapa review da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Trocar padroes numericos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar padroes numericos usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de padroes numericos"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar padroes numericos por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-12-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "padroes numericos",
+    "primarySkill": "MATHEMATICS_PADROES_NUMERICOS_12",
+    "supportingSkills": [
+      "RATIO"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 12, como interpretar padroes numericos na etapa review da trilha MATHEMATICS_PADROES_NUMERICOS_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de padroes numericos",
+      "Trocar padroes numericos por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar padroes numericos usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar padroes numericos usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona padroes numericos ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de padroes numericos": [
+        "V4_MATHEMATICS_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 13, como interpretar inteiros na etapa probe da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Aplicar inteiros usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de inteiros",
+      "Trocar inteiros por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteiros": [
+        "V4_MATHEMATICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 13, como interpretar inteiros na etapa probe da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar inteiros usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de inteiros",
+      "Trocar inteiros por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 13, como interpretar inteiros na etapa practice da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Trocar inteiros por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar inteiros usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de inteiros"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inteiros por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 13, como interpretar inteiros na etapa practice da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inteiros",
+      "Trocar inteiros por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar inteiros usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteiros": [
+        "V4_MATHEMATICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 13, como interpretar inteiros na etapa transfer da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Aplicar inteiros usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de inteiros",
+      "Trocar inteiros por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteiros": [
+        "V4_MATHEMATICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 13, como interpretar inteiros na etapa lock_in da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar inteiros usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de inteiros",
+      "Trocar inteiros por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 13, como interpretar inteiros na etapa review da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Trocar inteiros por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar inteiros usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de inteiros"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar inteiros por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-13-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "inteiros",
+    "primarySkill": "MATHEMATICS_INTEIROS_13",
+    "supportingSkills": [
+      "PERCENTAGE"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 13, como interpretar inteiros na etapa review da trilha MATHEMATICS_INTEIROS_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de inteiros",
+      "Trocar inteiros por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar inteiros usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar inteiros usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona inteiros ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de inteiros": [
+        "V4_MATHEMATICS_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-01",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Matematica: na atividade situacao_cotidiana 14, como interpretar plano cartesiano na etapa probe da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Aplicar plano cartesiano usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de plano cartesiano",
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de plano cartesiano": [
+        "V4_MATHEMATICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-02",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Matematica: na atividade dados_observados 14, como interpretar plano cartesiano na etapa probe da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar plano cartesiano usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de plano cartesiano",
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_MATHEMATICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-03",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Matematica: na atividade texto_explicativo 14, como interpretar plano cartesiano na etapa practice da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar plano cartesiano usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de plano cartesiano"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-04",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Matematica: na atividade projeto_aplicado 14, como interpretar plano cartesiano na etapa practice da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de plano cartesiano",
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar plano cartesiano usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de plano cartesiano": [
+        "V4_MATHEMATICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-05",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Matematica: na atividade laboratorio 14, como interpretar plano cartesiano na etapa transfer da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Aplicar plano cartesiano usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de plano cartesiano",
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de plano cartesiano": [
+        "V4_MATHEMATICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-06",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Matematica: na atividade mapa_conceitual 14, como interpretar plano cartesiano na etapa lock_in da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar plano cartesiano usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de plano cartesiano",
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_MATHEMATICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-07",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Matematica: na atividade debate_orientado 14, como interpretar plano cartesiano na etapa review da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar plano cartesiano usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de plano cartesiano"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao": [
+        "V4_MATHEMATICS_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-mathematics-14-08",
+    "subject": "MATHEMATICS",
+    "domain": "MATHEMATICS_V4",
+    "topic": "plano cartesiano",
+    "primarySkill": "MATHEMATICS_PLANO_CARTESIANO_14",
+    "supportingSkills": [
+      "ALGEBRA"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Matematica: na atividade revisao_guiada 14, como interpretar plano cartesiano na etapa review da trilha MATHEMATICS_PLANO_CARTESIANO_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de plano cartesiano",
+      "Trocar plano cartesiano por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar plano cartesiano usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar plano cartesiano usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona plano cartesiano ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de plano cartesiano": [
+        "V4_MATHEMATICS_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]

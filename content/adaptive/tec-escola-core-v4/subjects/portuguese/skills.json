@@ -1,0 +1,300 @@
+{
+  "code": "PORTUGUESE",
+  "name": "Lingua Portuguesa",
+  "anchors": [
+    {
+      "code": "READING",
+      "title": "Reading"
+    },
+    {
+      "code": "ARGUMENTATION",
+      "title": "Argumentation"
+    },
+    {
+      "code": "LANGUAGE_USE",
+      "title": "Language Use"
+    }
+  ],
+  "leaves": [
+    {
+      "code": "READING_LITERAL",
+      "title": "Localizar informacoes explicitas",
+      "domain": "LEITURA",
+      "parent": "READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "READING_INFERENCE",
+      "title": "Construir inferencias apoiadas",
+      "domain": "LEITURA",
+      "parent": "READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "IDENTIFY_THESIS",
+      "title": "Identificar a tese de um texto",
+      "domain": "ARGUMENTACAO",
+      "parent": "ARGUMENTATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "EVIDENCE_SUPPORT",
+      "title": "Relacionar evidencia e argumento",
+      "domain": "ARGUMENTACAO",
+      "parent": "ARGUMENTATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "TEXT_STRUCTURE",
+      "title": "Reconhecer a estrutura textual",
+      "domain": "LEITURA",
+      "parent": "READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "COHESION_CONNECTORS",
+      "title": "Escolher conectivos pela relacao logica",
+      "domain": "COESAO",
+      "parent": "LANGUAGE_USE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_LEITURA_LITERAL_01",
+      "title": "Leitura Literal aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_INFERENCIA_DE_LEITURA_02",
+      "title": "Inferencia De Leitura aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_TESE_E_TEMA_03",
+      "title": "Tese E Tema aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_EVIDENCIA_TEXTUAL_04",
+      "title": "Evidencia Textual aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_COESAO_E_CONECTORES_05",
+      "title": "Coesao E Conectores aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_GENEROS_TEXTUAIS_06",
+      "title": "Generos Textuais aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_ARGUMENTACAO_07",
+      "title": "Argumentacao aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_PONTUACAO_08",
+      "title": "Pontuacao aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_TEMPOS_VERBAIS_09",
+      "title": "Tempos Verbais aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_SINTAXE_EM_USO_10",
+      "title": "Sintaxe Em Uso aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_VOCABULARIO_EM_CONTEXTO_11",
+      "title": "Vocabulario Em Contexto aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_PARAFRASE_12",
+      "title": "Parafrase aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_LETRAMENTO_MIDIATICO_13",
+      "title": "Letramento Midiatico aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_ANALISE_LITERARIA_14",
+      "title": "Analise Literaria aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "ADAPTIVE_READY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_LEITURA_LITERAL_15",
+      "title": "Leitura Literal aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_INFERENCIA_DE_LEITURA_16",
+      "title": "Inferencia De Leitura aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_TESE_E_TEMA_17",
+      "title": "Tese E Tema aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_EVIDENCIA_TEXTUAL_18",
+      "title": "Evidencia Textual aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_COESAO_E_CONECTORES_19",
+      "title": "Coesao E Conectores aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    },
+    {
+      "code": "PORTUGUESE_GENEROS_TEXTUAIS_20",
+      "title": "Generos Textuais aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "ARGUMENTATION",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_II",
+      "recommendedGradeFrom": 6,
+      "recommendedGradeTo": 9
+    },
+    {
+      "code": "PORTUGUESE_ARGUMENTACAO_21",
+      "title": "Argumentacao aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "LANGUAGE_USE",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "ENSINO_MEDIO",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 3
+    },
+    {
+      "code": "PORTUGUESE_PONTUACAO_22",
+      "title": "Pontuacao aplicado",
+      "domain": "PORTUGUESE_V4",
+      "parent": "READING",
+      "readiness": "GRAPH_ONLY",
+      "recommendedStage": "FUNDAMENTAL_I",
+      "recommendedGradeFrom": 1,
+      "recommendedGradeTo": 5
+    }
+  ]
+}

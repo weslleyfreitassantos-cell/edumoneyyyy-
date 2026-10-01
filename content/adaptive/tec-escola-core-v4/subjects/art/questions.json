@@ -1,0 +1,3474 @@
+[
+  {
+    "id": "v4-scale-art-01-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 1, como interpretar elementos visuais na etapa probe da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Aplicar elementos visuais usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de elementos visuais",
+      "Trocar elementos visuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de elementos visuais": [
+        "V4_ART_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 1, como interpretar elementos visuais na etapa probe da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar elementos visuais usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de elementos visuais",
+      "Trocar elementos visuais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 1, como interpretar elementos visuais na etapa practice da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Trocar elementos visuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar elementos visuais usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de elementos visuais"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar elementos visuais por outro conceito sem justificar a relacao": [
+        "V4_ART_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 1, como interpretar elementos visuais na etapa practice da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de elementos visuais",
+      "Trocar elementos visuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar elementos visuais usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de elementos visuais": [
+        "V4_ART_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 1, como interpretar elementos visuais na etapa transfer da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Aplicar elementos visuais usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de elementos visuais",
+      "Trocar elementos visuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de elementos visuais": [
+        "V4_ART_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 1, como interpretar elementos visuais na etapa lock_in da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar elementos visuais usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de elementos visuais",
+      "Trocar elementos visuais por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 1, como interpretar elementos visuais na etapa review da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Trocar elementos visuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar elementos visuais usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de elementos visuais"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar elementos visuais por outro conceito sem justificar a relacao": [
+        "V4_ART_01_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-01-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "elementos visuais",
+    "primarySkill": "ART_ELEMENTOS_VISUAIS_01",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 1, como interpretar elementos visuais na etapa review da trilha ART_ELEMENTOS_VISUAIS_01?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de elementos visuais",
+      "Trocar elementos visuais por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar elementos visuais usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar elementos visuais usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona elementos visuais ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de elementos visuais": [
+        "V4_ART_01_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 2, como interpretar cor na etapa probe da trilha ART_COR_02?",
+    "options": [
+      "Aplicar cor usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de cor",
+      "Trocar cor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona cor ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cor": [
+        "V4_ART_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 2, como interpretar cor na etapa probe da trilha ART_COR_02?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar cor usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de cor",
+      "Trocar cor por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona cor ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 2, como interpretar cor na etapa practice da trilha ART_COR_02?",
+    "options": [
+      "Trocar cor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar cor usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de cor"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona cor ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cor por outro conceito sem justificar a relacao": [
+        "V4_ART_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 2, como interpretar cor na etapa practice da trilha ART_COR_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cor",
+      "Trocar cor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar cor usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona cor ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cor": [
+        "V4_ART_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 2, como interpretar cor na etapa transfer da trilha ART_COR_02?",
+    "options": [
+      "Aplicar cor usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de cor",
+      "Trocar cor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona cor ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cor": [
+        "V4_ART_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 2, como interpretar cor na etapa lock_in da trilha ART_COR_02?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar cor usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de cor",
+      "Trocar cor por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona cor ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 2, como interpretar cor na etapa review da trilha ART_COR_02?",
+    "options": [
+      "Trocar cor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar cor usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de cor"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona cor ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar cor por outro conceito sem justificar a relacao": [
+        "V4_ART_02_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-02-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "cor",
+    "primarySkill": "ART_COR_02",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 2, como interpretar cor na etapa review da trilha ART_COR_02?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de cor",
+      "Trocar cor por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar cor usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar cor usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona cor ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de cor": [
+        "V4_ART_02_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 3, como interpretar composicao na etapa probe da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Aplicar composicao usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de composicao",
+      "Trocar composicao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona composicao ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de composicao": [
+        "V4_ART_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 3, como interpretar composicao na etapa probe da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar composicao usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de composicao",
+      "Trocar composicao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona composicao ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 3, como interpretar composicao na etapa practice da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Trocar composicao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar composicao usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de composicao"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona composicao ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar composicao por outro conceito sem justificar a relacao": [
+        "V4_ART_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 3, como interpretar composicao na etapa practice da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de composicao",
+      "Trocar composicao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar composicao usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona composicao ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de composicao": [
+        "V4_ART_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 3, como interpretar composicao na etapa transfer da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Aplicar composicao usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de composicao",
+      "Trocar composicao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona composicao ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de composicao": [
+        "V4_ART_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 3, como interpretar composicao na etapa lock_in da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar composicao usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de composicao",
+      "Trocar composicao por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona composicao ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 3, como interpretar composicao na etapa review da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Trocar composicao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar composicao usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de composicao"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona composicao ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar composicao por outro conceito sem justificar a relacao": [
+        "V4_ART_03_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-03-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "composicao",
+    "primarySkill": "ART_COMPOSICAO_03",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 3, como interpretar composicao na etapa review da trilha ART_COMPOSICAO_03?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de composicao",
+      "Trocar composicao por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar composicao usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar composicao usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona composicao ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de composicao": [
+        "V4_ART_03_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 4, como interpretar historia da arte na etapa probe da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Aplicar historia da arte usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de historia da arte",
+      "Trocar historia da arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de historia da arte": [
+        "V4_ART_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 4, como interpretar historia da arte na etapa probe da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar historia da arte usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de historia da arte",
+      "Trocar historia da arte por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 4, como interpretar historia da arte na etapa practice da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Trocar historia da arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar historia da arte usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de historia da arte"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar historia da arte por outro conceito sem justificar a relacao": [
+        "V4_ART_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 4, como interpretar historia da arte na etapa practice da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de historia da arte",
+      "Trocar historia da arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar historia da arte usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de historia da arte": [
+        "V4_ART_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 4, como interpretar historia da arte na etapa transfer da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Aplicar historia da arte usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de historia da arte",
+      "Trocar historia da arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de historia da arte": [
+        "V4_ART_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 4, como interpretar historia da arte na etapa lock_in da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar historia da arte usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de historia da arte",
+      "Trocar historia da arte por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 4, como interpretar historia da arte na etapa review da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Trocar historia da arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar historia da arte usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de historia da arte"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar historia da arte por outro conceito sem justificar a relacao": [
+        "V4_ART_04_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-04-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "historia da arte",
+    "primarySkill": "ART_HISTORIA_DA_ARTE_04",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 4, como interpretar historia da arte na etapa review da trilha ART_HISTORIA_DA_ARTE_04?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de historia da arte",
+      "Trocar historia da arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar historia da arte usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar historia da arte usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona historia da arte ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de historia da arte": [
+        "V4_ART_04_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 5, como interpretar leitura de imagem na etapa probe da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Aplicar leitura de imagem usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de leitura de imagem",
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura de imagem": [
+        "V4_ART_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 5, como interpretar leitura de imagem na etapa probe da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar leitura de imagem usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de leitura de imagem",
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 5, como interpretar leitura de imagem na etapa practice da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar leitura de imagem usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de leitura de imagem"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao": [
+        "V4_ART_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 5, como interpretar leitura de imagem na etapa practice da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de leitura de imagem",
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar leitura de imagem usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura de imagem": [
+        "V4_ART_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 5, como interpretar leitura de imagem na etapa transfer da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Aplicar leitura de imagem usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de leitura de imagem",
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura de imagem": [
+        "V4_ART_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 5, como interpretar leitura de imagem na etapa lock_in da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar leitura de imagem usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de leitura de imagem",
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 5, como interpretar leitura de imagem na etapa review da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar leitura de imagem usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de leitura de imagem"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao": [
+        "V4_ART_05_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-05-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "leitura de imagem",
+    "primarySkill": "ART_LEITURA_DE_IMAGEM_05",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 5, como interpretar leitura de imagem na etapa review da trilha ART_LEITURA_DE_IMAGEM_05?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de leitura de imagem",
+      "Trocar leitura de imagem por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar leitura de imagem usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar leitura de imagem usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona leitura de imagem ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de leitura de imagem": [
+        "V4_ART_05_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 6, como interpretar musica na etapa probe da trilha ART_MUSICA_06?",
+    "options": [
+      "Aplicar musica usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de musica",
+      "Trocar musica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona musica ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de musica": [
+        "V4_ART_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 6, como interpretar musica na etapa probe da trilha ART_MUSICA_06?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar musica usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de musica",
+      "Trocar musica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona musica ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 6, como interpretar musica na etapa practice da trilha ART_MUSICA_06?",
+    "options": [
+      "Trocar musica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar musica usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de musica"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona musica ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar musica por outro conceito sem justificar a relacao": [
+        "V4_ART_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 6, como interpretar musica na etapa practice da trilha ART_MUSICA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de musica",
+      "Trocar musica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar musica usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona musica ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de musica": [
+        "V4_ART_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 6, como interpretar musica na etapa transfer da trilha ART_MUSICA_06?",
+    "options": [
+      "Aplicar musica usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de musica",
+      "Trocar musica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona musica ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de musica": [
+        "V4_ART_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 6, como interpretar musica na etapa lock_in da trilha ART_MUSICA_06?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar musica usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de musica",
+      "Trocar musica por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona musica ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 6, como interpretar musica na etapa review da trilha ART_MUSICA_06?",
+    "options": [
+      "Trocar musica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar musica usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de musica"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona musica ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar musica por outro conceito sem justificar a relacao": [
+        "V4_ART_06_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-06-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "musica",
+    "primarySkill": "ART_MUSICA_06",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 6, como interpretar musica na etapa review da trilha ART_MUSICA_06?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de musica",
+      "Trocar musica por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar musica usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar musica usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona musica ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de musica": [
+        "V4_ART_06_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 7, como interpretar teatro na etapa probe da trilha ART_TEATRO_07?",
+    "options": [
+      "Aplicar teatro usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de teatro",
+      "Trocar teatro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona teatro ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de teatro": [
+        "V4_ART_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 7, como interpretar teatro na etapa probe da trilha ART_TEATRO_07?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar teatro usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de teatro",
+      "Trocar teatro por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona teatro ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 7, como interpretar teatro na etapa practice da trilha ART_TEATRO_07?",
+    "options": [
+      "Trocar teatro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar teatro usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de teatro"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona teatro ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar teatro por outro conceito sem justificar a relacao": [
+        "V4_ART_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 7, como interpretar teatro na etapa practice da trilha ART_TEATRO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de teatro",
+      "Trocar teatro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar teatro usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona teatro ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de teatro": [
+        "V4_ART_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 7, como interpretar teatro na etapa transfer da trilha ART_TEATRO_07?",
+    "options": [
+      "Aplicar teatro usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de teatro",
+      "Trocar teatro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona teatro ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de teatro": [
+        "V4_ART_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 7, como interpretar teatro na etapa lock_in da trilha ART_TEATRO_07?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar teatro usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de teatro",
+      "Trocar teatro por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona teatro ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 7, como interpretar teatro na etapa review da trilha ART_TEATRO_07?",
+    "options": [
+      "Trocar teatro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar teatro usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de teatro"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona teatro ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar teatro por outro conceito sem justificar a relacao": [
+        "V4_ART_07_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-07-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "teatro",
+    "primarySkill": "ART_TEATRO_07",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 7, como interpretar teatro na etapa review da trilha ART_TEATRO_07?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de teatro",
+      "Trocar teatro por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar teatro usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar teatro usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona teatro ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de teatro": [
+        "V4_ART_07_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 8, como interpretar danca na etapa probe da trilha ART_DANCA_08?",
+    "options": [
+      "Aplicar danca usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona danca ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_ART_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 8, como interpretar danca na etapa probe da trilha ART_DANCA_08?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar danca usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona danca ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 8, como interpretar danca na etapa practice da trilha ART_DANCA_08?",
+    "options": [
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar danca usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de danca"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona danca ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar danca por outro conceito sem justificar a relacao": [
+        "V4_ART_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 8, como interpretar danca na etapa practice da trilha ART_DANCA_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar danca usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona danca ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_ART_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 8, como interpretar danca na etapa transfer da trilha ART_DANCA_08?",
+    "options": [
+      "Aplicar danca usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona danca ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_ART_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 8, como interpretar danca na etapa lock_in da trilha ART_DANCA_08?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar danca usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona danca ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 8, como interpretar danca na etapa review da trilha ART_DANCA_08?",
+    "options": [
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar danca usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de danca"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona danca ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar danca por outro conceito sem justificar a relacao": [
+        "V4_ART_08_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-08-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "danca",
+    "primarySkill": "ART_DANCA_08",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 8, como interpretar danca na etapa review da trilha ART_DANCA_08?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de danca",
+      "Trocar danca por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar danca usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar danca usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona danca ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de danca": [
+        "V4_ART_08_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 9, como interpretar audiovisual na etapa probe da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Aplicar audiovisual usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de audiovisual",
+      "Trocar audiovisual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de audiovisual": [
+        "V4_ART_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 9, como interpretar audiovisual na etapa probe da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar audiovisual usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de audiovisual",
+      "Trocar audiovisual por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 9, como interpretar audiovisual na etapa practice da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Trocar audiovisual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar audiovisual usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de audiovisual"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar audiovisual por outro conceito sem justificar a relacao": [
+        "V4_ART_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 9, como interpretar audiovisual na etapa practice da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de audiovisual",
+      "Trocar audiovisual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar audiovisual usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de audiovisual": [
+        "V4_ART_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 9, como interpretar audiovisual na etapa transfer da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Aplicar audiovisual usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de audiovisual",
+      "Trocar audiovisual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de audiovisual": [
+        "V4_ART_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 9, como interpretar audiovisual na etapa lock_in da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar audiovisual usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de audiovisual",
+      "Trocar audiovisual por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 9, como interpretar audiovisual na etapa review da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Trocar audiovisual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar audiovisual usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de audiovisual"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar audiovisual por outro conceito sem justificar a relacao": [
+        "V4_ART_09_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-09-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "audiovisual",
+    "primarySkill": "ART_AUDIOVISUAL_09",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 9, como interpretar audiovisual na etapa review da trilha ART_AUDIOVISUAL_09?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de audiovisual",
+      "Trocar audiovisual por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar audiovisual usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar audiovisual usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona audiovisual ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de audiovisual": [
+        "V4_ART_09_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 10, como interpretar patrimonio cultural na etapa probe da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Aplicar patrimonio cultural usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural",
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural": [
+        "V4_ART_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 10, como interpretar patrimonio cultural na etapa probe da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar patrimonio cultural usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural",
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 10, como interpretar patrimonio cultural na etapa practice da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar patrimonio cultural usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao": [
+        "V4_ART_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 10, como interpretar patrimonio cultural na etapa practice da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural",
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar patrimonio cultural usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural": [
+        "V4_ART_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 10, como interpretar patrimonio cultural na etapa transfer da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Aplicar patrimonio cultural usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural",
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural": [
+        "V4_ART_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 10, como interpretar patrimonio cultural na etapa lock_in da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar patrimonio cultural usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural",
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 10, como interpretar patrimonio cultural na etapa review da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar patrimonio cultural usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao": [
+        "V4_ART_10_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-10-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "patrimonio cultural",
+    "primarySkill": "ART_PATRIMONIO_CULTURAL_10",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 10, como interpretar patrimonio cultural na etapa review da trilha ART_PATRIMONIO_CULTURAL_10?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural",
+      "Trocar patrimonio cultural por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar patrimonio cultural usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar patrimonio cultural usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona patrimonio cultural ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de patrimonio cultural": [
+        "V4_ART_10_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 11, como interpretar arte contemporanea na etapa probe da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Aplicar arte contemporanea usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de arte contemporanea",
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de arte contemporanea": [
+        "V4_ART_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 11, como interpretar arte contemporanea na etapa probe da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar arte contemporanea usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de arte contemporanea",
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 11, como interpretar arte contemporanea na etapa practice da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar arte contemporanea usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de arte contemporanea"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao": [
+        "V4_ART_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 11, como interpretar arte contemporanea na etapa practice da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de arte contemporanea",
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar arte contemporanea usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de arte contemporanea": [
+        "V4_ART_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 11, como interpretar arte contemporanea na etapa transfer da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Aplicar arte contemporanea usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de arte contemporanea",
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de arte contemporanea": [
+        "V4_ART_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 11, como interpretar arte contemporanea na etapa lock_in da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar arte contemporanea usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de arte contemporanea",
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 11, como interpretar arte contemporanea na etapa review da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar arte contemporanea usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de arte contemporanea"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao": [
+        "V4_ART_11_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-11-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "arte contemporanea",
+    "primarySkill": "ART_ARTE_CONTEMPORANEA_11",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 11, como interpretar arte contemporanea na etapa review da trilha ART_ARTE_CONTEMPORANEA_11?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de arte contemporanea",
+      "Trocar arte contemporanea por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar arte contemporanea usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar arte contemporanea usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona arte contemporanea ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de arte contemporanea": [
+        "V4_ART_11_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 12, como interpretar processo criativo na etapa probe da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Aplicar processo criativo usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de processo criativo",
+      "Trocar processo criativo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de processo criativo": [
+        "V4_ART_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 12, como interpretar processo criativo na etapa probe da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar processo criativo usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de processo criativo",
+      "Trocar processo criativo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 12, como interpretar processo criativo na etapa practice da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Trocar processo criativo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar processo criativo usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de processo criativo"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar processo criativo por outro conceito sem justificar a relacao": [
+        "V4_ART_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 12, como interpretar processo criativo na etapa practice da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de processo criativo",
+      "Trocar processo criativo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar processo criativo usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de processo criativo": [
+        "V4_ART_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 12, como interpretar processo criativo na etapa transfer da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Aplicar processo criativo usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de processo criativo",
+      "Trocar processo criativo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de processo criativo": [
+        "V4_ART_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 12, como interpretar processo criativo na etapa lock_in da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar processo criativo usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de processo criativo",
+      "Trocar processo criativo por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 12, como interpretar processo criativo na etapa review da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Trocar processo criativo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar processo criativo usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de processo criativo"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar processo criativo por outro conceito sem justificar a relacao": [
+        "V4_ART_12_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-12-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "processo criativo",
+    "primarySkill": "ART_PROCESSO_CRIATIVO_12",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 12, como interpretar processo criativo na etapa review da trilha ART_PROCESSO_CRIATIVO_12?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de processo criativo",
+      "Trocar processo criativo por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar processo criativo usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar processo criativo usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona processo criativo ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de processo criativo": [
+        "V4_ART_12_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 13, como interpretar critica de arte na etapa probe da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Aplicar critica de arte usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de critica de arte",
+      "Trocar critica de arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de critica de arte": [
+        "V4_ART_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 13, como interpretar critica de arte na etapa probe da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar critica de arte usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de critica de arte",
+      "Trocar critica de arte por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 13, como interpretar critica de arte na etapa practice da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Trocar critica de arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar critica de arte usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de critica de arte"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar critica de arte por outro conceito sem justificar a relacao": [
+        "V4_ART_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 13, como interpretar critica de arte na etapa practice da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de critica de arte",
+      "Trocar critica de arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar critica de arte usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de critica de arte": [
+        "V4_ART_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 13, como interpretar critica de arte na etapa transfer da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Aplicar critica de arte usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de critica de arte",
+      "Trocar critica de arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de critica de arte": [
+        "V4_ART_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 13, como interpretar critica de arte na etapa lock_in da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar critica de arte usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de critica de arte",
+      "Trocar critica de arte por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 13, como interpretar critica de arte na etapa review da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Trocar critica de arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar critica de arte usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de critica de arte"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar critica de arte por outro conceito sem justificar a relacao": [
+        "V4_ART_13_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-13-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "critica de arte",
+    "primarySkill": "ART_CRITICA_DE_ARTE_13",
+    "supportingSkills": [
+      "VISUAL_ELEMENTS"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 13, como interpretar critica de arte na etapa review da trilha ART_CRITICA_DE_ARTE_13?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de critica de arte",
+      "Trocar critica de arte por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar critica de arte usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar critica de arte usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona critica de arte ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de critica de arte": [
+        "V4_ART_13_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-01",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "SITUACAO_COTIDIANA",
+    "statement": "Arte: na atividade situacao_cotidiana 14, como interpretar curadoria na etapa probe da trilha ART_CURADORIA_14?",
+    "options": [
+      "Aplicar curadoria usando as evidencias de situacao_cotidiana",
+      "Ignorar o contexto e repetir uma regra de curadoria",
+      "Trocar curadoria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de situacao_cotidiana"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de situacao_cotidiana",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto situacao_cotidiana e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de curadoria": [
+        "V4_ART_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-02",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "RECOGNIZE",
+    "contextFamily": "DADOS_OBSERVADOS",
+    "statement": "Arte: na atividade dados_observados 14, como interpretar curadoria na etapa probe da trilha ART_CURADORIA_14?",
+    "options": [
+      "Concluir antes de observar os dados de dados_observados",
+      "Aplicar curadoria usando as evidencias de dados_observados",
+      "Ignorar o contexto e repetir uma regra de curadoria",
+      "Trocar curadoria por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de dados_observados",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto dados_observados e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de dados_observados": [
+        "V4_ART_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-03",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "TEXTO_EXPLICATIVO",
+    "statement": "Arte: na atividade texto_explicativo 14, como interpretar curadoria na etapa practice da trilha ART_CURADORIA_14?",
+    "options": [
+      "Trocar curadoria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de texto_explicativo",
+      "Aplicar curadoria usando as evidencias de texto_explicativo",
+      "Ignorar o contexto e repetir uma regra de curadoria"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de texto_explicativo",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto texto_explicativo e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar curadoria por outro conceito sem justificar a relacao": [
+        "V4_ART_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-04",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "COMPARE",
+    "contextFamily": "PROJETO_APLICADO",
+    "statement": "Arte: na atividade projeto_aplicado 14, como interpretar curadoria na etapa practice da trilha ART_CURADORIA_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de curadoria",
+      "Trocar curadoria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de projeto_aplicado",
+      "Aplicar curadoria usando as evidencias de projeto_aplicado"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de projeto_aplicado",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto projeto_aplicado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de curadoria": [
+        "V4_ART_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-05",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "LABORATORIO",
+    "statement": "Arte: na atividade laboratorio 14, como interpretar curadoria na etapa transfer da trilha ART_CURADORIA_14?",
+    "options": [
+      "Aplicar curadoria usando as evidencias de laboratorio",
+      "Ignorar o contexto e repetir uma regra de curadoria",
+      "Trocar curadoria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de laboratorio"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de laboratorio",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto laboratorio e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de curadoria": [
+        "V4_ART_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-06",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "LOCK_IN",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "MAPA_CONCEITUAL",
+    "statement": "Arte: na atividade mapa_conceitual 14, como interpretar curadoria na etapa lock_in da trilha ART_CURADORIA_14?",
+    "options": [
+      "Concluir antes de observar os dados de mapa_conceitual",
+      "Aplicar curadoria usando as evidencias de mapa_conceitual",
+      "Ignorar o contexto e repetir uma regra de curadoria",
+      "Trocar curadoria por outro conceito sem justificar a relacao"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de mapa_conceitual",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto mapa_conceitual e explicita a evidencia observada.",
+    "misconceptions": {
+      "Concluir antes de observar os dados de mapa_conceitual": [
+        "V4_ART_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-07",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "DEBATE_ORIENTADO",
+    "statement": "Arte: na atividade debate_orientado 14, como interpretar curadoria na etapa review da trilha ART_CURADORIA_14?",
+    "options": [
+      "Trocar curadoria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de debate_orientado",
+      "Aplicar curadoria usando as evidencias de debate_orientado",
+      "Ignorar o contexto e repetir uma regra de curadoria"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de debate_orientado",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto debate_orientado e explicita a evidencia observada.",
+    "misconceptions": {
+      "Trocar curadoria por outro conceito sem justificar a relacao": [
+        "V4_ART_14_CONTEXT_OMISSION"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  },
+  {
+    "id": "v4-scale-art-14-08",
+    "subject": "ART",
+    "domain": "ART_V4",
+    "topic": "curadoria",
+    "primarySkill": "ART_CURADORIA_14",
+    "supportingSkills": [
+      "CONTEXT"
+    ],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EXPLAIN",
+    "contextFamily": "REVISAO_GUIADA",
+    "statement": "Arte: na atividade revisao_guiada 14, como interpretar curadoria na etapa review da trilha ART_CURADORIA_14?",
+    "options": [
+      "Ignorar o contexto e repetir uma regra de curadoria",
+      "Trocar curadoria por outro conceito sem justificar a relacao",
+      "Concluir antes de observar os dados de revisao_guiada",
+      "Aplicar curadoria usando as evidencias de revisao_guiada"
+    ],
+    "correctAnswer": "Aplicar curadoria usando as evidencias de revisao_guiada",
+    "explanation": "A resposta adequada relaciona curadoria ao contexto revisao_guiada e explicita a evidencia observada.",
+    "misconceptions": {
+      "Ignorar o contexto e repetir uma regra de curadoria": [
+        "V4_ART_14_CONCEPT_SWAP"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED_SCALE"
+  }
+]
