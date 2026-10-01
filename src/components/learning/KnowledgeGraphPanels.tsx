@@ -29,6 +29,14 @@ function stateLabel(state: string): string {
 }
 
 function misconceptionLabel(code: string): string {
+  const labels: Record<string, string> = {
+    PERCENT_BASE_CONFUSION: 'Confunde a base usada no cálculo percentual',
+    WHOLE_VALUE_CONFUSION: 'Confunde o valor total com a parte percentual',
+    DISTANCE_TIME_INVERSION: 'Inverte distância e tempo',
+    UNSUPPORTED_INFERENCE: 'Conclui além das pistas do texto',
+    UNIT_CONVERSION_ERROR: 'Mistura unidades antes de calcular',
+  };
+  if (labels[code]) return labels[code];
   return code
     .replace(/_/g, ' ')
     .toLocaleLowerCase('pt-BR')

@@ -2,68 +2,68 @@
   "packVersion": "tec-escola-core-v4",
   "subjects": [
     { "code": "PORTUGUESE", "name": "Lingua Portuguesa", "anchors": ["READING", "ARGUMENTATION", "LANGUAGE_USE"], "leaves": [
-      { "code": "READING_LITERAL", "title": "Localizar informacoes explicitas", "domain": "LEITURA", "parent": "READING", "readiness": "CONTENT_READY" },
+      { "code": "READING_LITERAL", "title": "Localizar informacoes explicitas", "domain": "LEITURA", "parent": "READING", "readiness": "GRAPH_ONLY" },
       { "code": "READING_INFERENCE", "title": "Construir inferencias apoiadas", "domain": "LEITURA", "parent": "READING", "readiness": "ADAPTIVE_READY" },
-      { "code": "IDENTIFY_THESIS", "title": "Identificar a tese de um texto", "domain": "ARGUMENTACAO", "parent": "ARGUMENTATION", "readiness": "CONTENT_READY" },
-      { "code": "EVIDENCE_SUPPORT", "title": "Relacionar evidencia e argumento", "domain": "ARGUMENTACAO", "parent": "ARGUMENTATION", "readiness": "CONTENT_READY" },
-      { "code": "TEXT_STRUCTURE", "title": "Reconhecer a estrutura textual", "domain": "LEITURA", "parent": "READING", "readiness": "CONTENT_READY" },
-      { "code": "COHESION_CONNECTORS", "title": "Escolher conectivos pela relacao logica", "domain": "COESAO", "parent": "LANGUAGE_USE", "readiness": "CONTENT_READY" }
+      { "code": "IDENTIFY_THESIS", "title": "Identificar a tese de um texto", "domain": "ARGUMENTACAO", "parent": "ARGUMENTATION", "readiness": "GRAPH_ONLY" },
+      { "code": "EVIDENCE_SUPPORT", "title": "Relacionar evidencia e argumento", "domain": "ARGUMENTACAO", "parent": "ARGUMENTATION", "readiness": "GRAPH_ONLY" },
+      { "code": "TEXT_STRUCTURE", "title": "Reconhecer a estrutura textual", "domain": "LEITURA", "parent": "READING", "readiness": "GRAPH_ONLY" },
+      { "code": "COHESION_CONNECTORS", "title": "Escolher conectivos pela relacao logica", "domain": "COESAO", "parent": "LANGUAGE_USE", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "MATHEMATICS", "name": "Matematica", "anchors": ["NUMBER_SENSE", "RATIO", "PERCENTAGE", "ALGEBRA", "DATA"], "leaves": [
       { "code": "IDENTIFY_PERCENT_BASE", "title": "Identificar a base percentual", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "ADAPTIVE_READY" },
       { "code": "PERCENT_OF_QUANTITY", "title": "Calcular percentual de uma quantidade", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "ADAPTIVE_READY" },
-      { "code": "PERCENT_INCREASE", "title": "Resolver aumento percentual", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "CONTENT_READY" },
-      { "code": "PERCENT_DECREASE", "title": "Resolver reducao percentual", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "CONTENT_READY" },
-      { "code": "SUCCESSIVE_PERCENT_CHANGE", "title": "Interpretar percentuais sucessivos", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "CONTENT_READY" },
-      { "code": "REVERSE_PERCENTAGE", "title": "Resolver porcentagem reversa", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "CONTENT_READY" },
-      { "code": "RATIO_UNIT_RATE", "title": "Encontrar a taxa unitaria", "domain": "RAZAO", "parent": "RATIO", "readiness": "CONTENT_READY" },
-      { "code": "PROPORTIONAL_REASONING", "title": "Raciocinar com grandezas proporcionais", "domain": "PROPORCIONALIDADE", "parent": "RATIO", "readiness": "CONTENT_READY" },
-      { "code": "FRACTION_COMPARISON", "title": "Comparar fracoes por referencia", "domain": "FRACOES", "parent": "NUMBER_SENSE", "readiness": "CONTENT_READY" },
-      { "code": "ONE_STEP_EQUATION", "title": "Resolver equacao linear de uma etapa", "domain": "ALGEBRA", "parent": "ALGEBRA", "readiness": "CONTENT_READY" },
+      { "code": "PERCENT_INCREASE", "title": "Resolver aumento percentual", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "GRAPH_ONLY" },
+      { "code": "PERCENT_DECREASE", "title": "Resolver reducao percentual", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "GRAPH_ONLY" },
+      { "code": "SUCCESSIVE_PERCENT_CHANGE", "title": "Interpretar percentuais sucessivos", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "GRAPH_ONLY" },
+      { "code": "REVERSE_PERCENTAGE", "title": "Resolver porcentagem reversa", "domain": "PORCENTAGENS", "parent": "PERCENTAGE", "readiness": "GRAPH_ONLY" },
+      { "code": "RATIO_UNIT_RATE", "title": "Encontrar a taxa unitaria", "domain": "RAZAO", "parent": "RATIO", "readiness": "GRAPH_ONLY" },
+      { "code": "PROPORTIONAL_REASONING", "title": "Raciocinar com grandezas proporcionais", "domain": "PROPORCIONALIDADE", "parent": "RATIO", "readiness": "GRAPH_ONLY" },
+      { "code": "FRACTION_COMPARISON", "title": "Comparar fracoes por referencia", "domain": "FRACOES", "parent": "NUMBER_SENSE", "readiness": "GRAPH_ONLY" },
+      { "code": "ONE_STEP_EQUATION", "title": "Resolver equacao linear de uma etapa", "domain": "ALGEBRA", "parent": "ALGEBRA", "readiness": "GRAPH_ONLY" },
       { "code": "TWO_STEP_EQUATION", "title": "Resolver equacao linear de duas etapas", "domain": "ALGEBRA", "parent": "ALGEBRA", "readiness": "GRAPH_ONLY" },
-      { "code": "INTERPRET_DATA_TABLE", "title": "Interpretar dados em tabela", "domain": "DADOS", "parent": "DATA", "readiness": "CONTENT_READY" }
+      { "code": "INTERPRET_DATA_TABLE", "title": "Interpretar dados em tabela", "domain": "DADOS", "parent": "DATA", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "SCIENCE", "name": "Ciencias", "anchors": ["SCIENCE_MATTER", "SCIENCE_ENERGY", "SCIENCE_EVIDENCE"], "leaves": [
-      { "code": "MEASURE_OBSERVATION", "title": "Registrar observacoes e medidas", "domain": "EVIDENCIA", "parent": "SCIENCE_EVIDENCE", "readiness": "CONTENT_READY" },
-      { "code": "EXPERIMENTAL_EVIDENCE", "title": "Relacionar evidencia e conclusao", "domain": "EVIDENCIA", "parent": "SCIENCE_EVIDENCE", "readiness": "CONTENT_READY" }
+      { "code": "MEASURE_OBSERVATION", "title": "Registrar observacoes e medidas", "domain": "EVIDENCIA", "parent": "SCIENCE_EVIDENCE", "readiness": "GRAPH_ONLY" },
+      { "code": "EXPERIMENTAL_EVIDENCE", "title": "Relacionar evidencia e conclusao", "domain": "EVIDENCIA", "parent": "SCIENCE_EVIDENCE", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "BIOLOGY", "name": "Biologia", "anchors": ["LIFE", "ECOLOGY"], "leaves": [
-      { "code": "BIOLOGY_DATA_INTERPRETATION", "title": "Interpretar dados biologicos", "domain": "DADOS", "parent": "LIFE", "readiness": "CONTENT_READY" }
+      { "code": "BIOLOGY_DATA_INTERPRETATION", "title": "Interpretar dados biologicos", "domain": "DADOS", "parent": "LIFE", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "PHYSICS", "name": "Fisica", "anchors": ["MEASUREMENT", "MOTION", "ENERGY"], "leaves": [
       { "code": "PHYSICS_AVERAGE_SPEED", "title": "Interpretar velocidade media", "domain": "MOVIMENTO", "parent": "MOTION", "readiness": "ADAPTIVE_READY" },
-      { "code": "PHYSICS_UNIT_CONVERSION", "title": "Converter unidades de medida", "domain": "MEDIDAS", "parent": "MEASUREMENT", "readiness": "CONTENT_READY" },
-      { "code": "PHYSICS_GRAPH_MOTION", "title": "Ler grafico de movimento", "domain": "MOVIMENTO", "parent": "MOTION", "readiness": "CONTENT_READY" }
+      { "code": "PHYSICS_UNIT_CONVERSION", "title": "Converter unidades de medida", "domain": "MEDIDAS", "parent": "MEASUREMENT", "readiness": "GRAPH_ONLY" },
+      { "code": "PHYSICS_GRAPH_MOTION", "title": "Ler grafico de movimento", "domain": "MOVIMENTO", "parent": "MOTION", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "CHEMISTRY", "name": "Quimica", "anchors": ["CHEMISTRY_MATTER", "REACTIONS"], "leaves": [
-      { "code": "CHEMISTRY_STOICHIOMETRIC_REASONING", "title": "Raciocinar com proporcoes em reacoes", "domain": "REACOES", "parent": "REACTIONS", "readiness": "CONTENT_READY" }
+      { "code": "CHEMISTRY_STOICHIOMETRIC_REASONING", "title": "Raciocinar com proporcoes em reacoes", "domain": "REACOES", "parent": "REACTIONS", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "HISTORY", "name": "Historia", "anchors": ["SOURCES", "INTERPRETATION"], "leaves": [
-      { "code": "HISTORY_CAUSALITY", "title": "Explicar relacoes de causa historica", "domain": "INTERPRETACAO", "parent": "INTERPRETATION", "readiness": "CONTENT_READY" }
+      { "code": "HISTORY_CAUSALITY", "title": "Explicar relacoes de causa historica", "domain": "INTERPRETACAO", "parent": "INTERPRETATION", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "GEOGRAPHY", "name": "Geografia", "anchors": ["SPACE", "CARTOGRAPHY"], "leaves": [
-      { "code": "GEOGRAPHY_MAP_SCALE", "title": "Interpretar escala cartografica", "domain": "CARTOGRAFIA", "parent": "CARTOGRAPHY", "readiness": "CONTENT_READY" }
+      { "code": "GEOGRAPHY_MAP_SCALE", "title": "Interpretar escala cartografica", "domain": "CARTOGRAFIA", "parent": "CARTOGRAPHY", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "PHILOSOPHY", "name": "Filosofia", "anchors": ["CONCEPTS", "ARGUMENT"], "leaves": [
-      { "code": "PHILOSOPHY_PREMISE_CONCLUSION", "title": "Distinguir premissa e conclusao", "domain": "ARGUMENTO", "parent": "ARGUMENT", "readiness": "CONTENT_READY" }
+      { "code": "PHILOSOPHY_PREMISE_CONCLUSION", "title": "Distinguir premissa e conclusao", "domain": "ARGUMENTO", "parent": "ARGUMENT", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "SOCIOLOGY", "name": "Sociologia", "anchors": ["SOCIETY", "EVIDENCE"], "leaves": [
-      { "code": "SOCIOLOGY_RESEARCH_EVIDENCE", "title": "Interpretar evidencia sobre a sociedade", "domain": "PESQUISA", "parent": "EVIDENCE", "readiness": "CONTENT_READY" }
+      { "code": "SOCIOLOGY_RESEARCH_EVIDENCE", "title": "Interpretar evidencia sobre a sociedade", "domain": "PESQUISA", "parent": "EVIDENCE", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "ART", "name": "Arte", "anchors": ["VISUAL_ELEMENTS", "CONTEXT"], "leaves": [
-      { "code": "ART_COMPOSITION", "title": "Analisar composicao visual", "domain": "ELEMENTOS", "parent": "VISUAL_ELEMENTS", "readiness": "CONTENT_READY" }
+      { "code": "ART_COMPOSITION", "title": "Analisar composicao visual", "domain": "ELEMENTOS", "parent": "VISUAL_ELEMENTS", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "PHYSICAL_EDUCATION", "name": "Educacao Fisica", "anchors": ["MOVEMENT", "HEALTH"], "leaves": [
-      { "code": "PE_TRAINING_PRINCIPLES", "title": "Reconhecer principios de treinamento", "domain": "SAUDE", "parent": "HEALTH", "readiness": "CONTENT_READY" }
+      { "code": "PE_TRAINING_PRINCIPLES", "title": "Reconhecer principios de treinamento", "domain": "SAUDE", "parent": "HEALTH", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "ENGLISH", "name": "Lingua Inglesa", "anchors": ["ENGLISH_READING", "LANGUAGE"], "leaves": [
-      { "code": "ENGLISH_CONNECTORS", "title": "Interpretar conectores em contexto", "domain": "LEITURA", "parent": "ENGLISH_READING", "readiness": "CONTENT_READY" }
+      { "code": "ENGLISH_CONNECTORS", "title": "Interpretar conectores em contexto", "domain": "LEITURA", "parent": "ENGLISH_READING", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "RELIGIOUS_EDUCATION", "name": "Ensino Religioso", "anchors": ["DIVERSITY", "DIALOGUE"], "leaves": [
-      { "code": "RELIGIOUS_SOURCE_INTERPRETATION", "title": "Interpretar fontes sobre tradicoes", "domain": "INTERPRETACAO", "parent": "DIALOGUE", "readiness": "CONTENT_READY" }
+      { "code": "RELIGIOUS_SOURCE_INTERPRETATION", "title": "Interpretar fontes sobre tradicoes", "domain": "INTERPRETACAO", "parent": "DIALOGUE", "readiness": "GRAPH_ONLY" }
     ] },
     { "code": "COMPUTING", "name": "Computacao e Educacao Digital", "anchors": ["ALGORITHMS", "DIGITAL_CITIZENSHIP"], "leaves": [
-      { "code": "COMPUTING_CONDITION", "title": "Raciocinar com condicoes", "domain": "LOGICA", "parent": "ALGORITHMS", "readiness": "CONTENT_READY" }
+      { "code": "COMPUTING_CONDITION", "title": "Raciocinar com condicoes", "domain": "LOGICA", "parent": "ALGORITHMS", "readiness": "GRAPH_ONLY" }
     ] }
   ]
 }

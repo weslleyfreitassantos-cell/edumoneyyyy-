@@ -1,0 +1,19 @@
+import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import { useInstitution } from '../../contexts/InstitutionContext';
+import { useTeacherClassKnowledgeHeatmap } from '../../hooks/useAdaptiveLearning';
+import { useTeacherLearningClasses } from '../../hooks/useLearningCenter';
+import { PedagogicalCenterHeader, PageState } from './PedagogicalCenterNav';
+
+export default function PedagogicalCenterMapPage() {
+  const { profile } = useAuth();
+  const { currentInstitutionId } = useInstitution();
+  const [params, setParams] = useSearchParams();
+  const classes = useTeacherLearningClasses(profile?.id);
+  const classId = params.get('class') ?? '';
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const heatmap = useTeacherClassKnowledgeHeatmap(currentInstitutionId ?? undefined, classId || undefined);
+  const groups = useMemo(() => Object.entries((heatmap.data ?? []).reduce<Record<string, typeof heatmap.data>>((acc, row) => ({ ...acc, [row.subjectCode]: [...(acc[row.subjectCode] ?? []), row] }), {})), [heatmap.data]);
+  return <div className="space-y-6"><PedagogicalCenterHeader subtitle="Navegue por matéria, área e habilidade para encontrar o próximo sinal." /><section className="rounded-xl border bg-white p-5 shadow-sm dark:border-slate-700 dark:bg-slate-900"><label className="block max-w-md text-sm font-bold dark:text-white">Turma<select aria-label="Turma do mapa" value={classId} onChange={(event) => { const next = new URLSearchParams(params); if (event.target.value) next.set('class', event.target.value); else next.delete('class'); setParams(next); setSelectedSkill(null); }} className="mt-2 w-full rounded-lg border px-3 py-2 text-sm dark:bg-slate-900 dark:text-white"><option value="">Selecione</option>{classes.data?.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label></section>{!classId ? <PageState>Selecione uma turma para abrir o mapa.</PageState> : heatmap.isLoading ? <PageState>Carregando mapa...</PageState> : heatmap.isError ? <PageState error>Não foi possível carregar o mapa.</PageState> : <div className="space-y-3">{groups.map(([subject, rows]) => <details key={subject} open className="rounded-xl border bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900"><summary className="cursor-pointer font-bold dark:text-white">{subject} <span className="ml-2 text-xs font-normal text-slate-500">{rows?.length ?? 0} habilidade(s)</span></summary><div className="mt-3 grid gap-2 sm:grid-cols-2">{rows?.map((row) => <button key={`${row.subjectCode}-${row.skillCode}`} type="button" onClick={() => setSelectedSkill(`${row.subjectCode}:${row.skillCode}`)} className="rounded-lg border p-3 text-left transition hover:border-[#005bbf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005bbf] dark:border-slate-700"><p className="text-sm font-semibold dark:text-white">{row.skillCode}</p><p className="mt-1 text-xs text-slate-500">{row.masteredCount} dominado(s) · {row.practicingCount} em prática · {row.needsReviewCount} para revisar</p></button>)}</div></details>)}</div>}{selectedSkill ? <aside aria-label="Detalhe da habilidade" className="rounded-xl border border-blue-200 bg-blue-50 p-5 dark:border-blue-900/60 dark:bg-blue-950/30"><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#005bbf]">Habilidade selecionada</p><h2 className="mt-1 font-bold text-blue-950 dark:text-blue-100">{selectedSkill.split(':')[1]}</h2></div><button type="button" aria-label="Fechar detalhe da habilidade" onClick={() => setSelectedSkill(null)} className="text-sm font-bold text-[#005bbf]">Fechar</button></div><p className="mt-3 text-sm text-blue-900 dark:text-blue-200">Veja a distribuição de evidências no mapa e abra o aluno para decidir a intervenção.</p></aside> : null}</div>;
+}

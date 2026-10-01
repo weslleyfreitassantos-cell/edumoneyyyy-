@@ -24,6 +24,17 @@ describe('adaptive learning pedagogical depth v4 migration', () => {
     expect(migration).not.toContain('truncate ');
   });
 
+  it('exposes an isolated V4 guided-journey contract with a V2 fallback path', () => {
+    expect(migration).toContain('start_guided_learning_session_v4');
+    expect(migration).toContain('get_guided_learning_session_v4');
+    expect(migration).toContain('get_guided_learning_step_v4');
+    expect(migration).toContain('advance_guided_learning_session_v4');
+    expect(migration).toContain('submit_guided_learning_step_v4');
+    expect(migration).toContain("planner_version = 'V4'");
+    expect(migration).toContain("content_readiness = 'ADAPTIVE_READY'");
+    expect(migration).toContain('grant execute on function public.start_guided_learning_session_v4');
+  });
+
   it('uses scoped PL/pgSQL variables instead of ambiguous column names', () => {
     expect(migration).toContain('v_catalog_id');
     expect(migration).toContain('v_skill_id');

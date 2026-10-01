@@ -1,156 +1,552 @@
 {
   "packVersion": "tec-escola-core-v4",
-  "canonicalHash": "599d4939b54c4573acd1b041ccb7a28a3a1acc6931d04677f241917727c86c79",
+  "canonicalHash": "0656bfbd16041eda306cac9e423fd8af95eb470b2ef933b0852656bbebb95df3",
   "subjects": [
     {
       "code": "PORTUGUESE",
       "skills": 9,
       "leafs": 6,
       "adaptiveReady": 1,
-      "graphOnly": 0,
+      "graphOnly": 5,
       "lessons": 3,
       "questions": 9,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 2,
+        "PRACTICE": 2,
+        "TRANSFER": 2,
+        "LOCK_IN": 1,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "ARGUMENTO",
+        "CIENCIA",
+        "COTIDIANO",
+        "CULTURA",
+        "ESCOLA",
+        "NOTICIA"
+      ],
+      "misconceptions": 2,
+      "hierarchy": 6,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "MATHEMATICS",
       "skills": 17,
       "leafs": 12,
       "adaptiveReady": 2,
-      "graphOnly": 1,
+      "graphOnly": 10,
       "lessons": 6,
       "questions": 17,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 4,
+        "PRACTICE": 4,
+        "TRANSFER": 3,
+        "LOCK_IN": 2,
+        "REVIEW": 4
+      },
+      "contextFamilies": [
+        "COMPARISON",
+        "DATA",
+        "DIRECT",
+        "DISCOUNT",
+        "FINANCE",
+        "INCREASE"
+      ],
+      "misconceptions": 7,
+      "hierarchy": 12,
+      "prerequisites": 4,
+      "crossSubjectLinks": 5,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "SCIENCE",
       "skills": 5,
       "leafs": 2,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 2,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 2,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        }
+      ]
     },
     {
       "code": "BIOLOGY",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 1
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 8,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "PHYSICS",
       "skills": 6,
       "leafs": 3,
       "adaptiveReady": 1,
-      "graphOnly": 0,
+      "graphOnly": 2,
       "lessons": 1,
       "questions": 9,
-      "crossSubjectLinks": 1
+      "purposes": {
+        "PROBE": 2,
+        "PRACTICE": 2,
+        "TRANSFER": 2,
+        "LOCK_IN": 1,
+        "REVIEW": 2
+      },
+      "contextFamilies": [
+        "DIRECT",
+        "GRAPH",
+        "MAPA",
+        "SPORT",
+        "TRANSPORT",
+        "UNITS"
+      ],
+      "misconceptions": 2,
+      "hierarchy": 3,
+      "prerequisites": 1,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 8,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "CHEMISTRY",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 1
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 8,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "HISTORY",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "GEOGRAPHY",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 1
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "PHILOSOPHY",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "SOCIOLOGY",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "ART",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "PHYSICAL_EDUCATION",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "ENGLISH",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     },
     {
       "code": "RELIGIOUS_EDUCATION",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 0
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 0,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        }
+      ]
     },
     {
       "code": "COMPUTING",
       "skills": 3,
       "leafs": 1,
       "adaptiveReady": 0,
-      "graphOnly": 0,
+      "graphOnly": 1,
       "lessons": 0,
       "questions": 0,
-      "crossSubjectLinks": 1
+      "purposes": {
+        "PROBE": 0,
+        "PRACTICE": 0,
+        "TRANSFER": 0,
+        "LOCK_IN": 0,
+        "REVIEW": 0
+      },
+      "contextFamilies": [],
+      "misconceptions": 0,
+      "hierarchy": 1,
+      "prerequisites": 0,
+      "crossSubjectLinks": 1,
+      "stageReferences": [
+        {
+          "stage": "FUNDAMENTAL_I",
+          "from": 1,
+          "to": 5
+        },
+        {
+          "stage": "FUNDAMENTAL_II",
+          "from": 6,
+          "to": 9
+        },
+        {
+          "stage": "ENSINO_MEDIO",
+          "from": 1,
+          "to": 3
+        }
+      ]
     }
   ]
 }
