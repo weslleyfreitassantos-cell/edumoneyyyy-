@@ -307,6 +307,18 @@ export default function AccountSettingsModal({
   }, [avatarPreviewUrl]);
 
   useEffect(() => {
+    if (!avatarSuccessMessage) {
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setAvatarSuccessMessage(null);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [avatarSuccessMessage]);
+
+  useEffect(() => {
     if (!isSelfRegistration) {
       return;
     }
@@ -681,7 +693,7 @@ export default function AccountSettingsModal({
         >
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#e8eeff] text-lg font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff] dark:bg-[#243247] dark:text-[#bfdbfe]">
+              <div className="flex aspect-[3/4] w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-[#e8eeff] text-lg font-extrabold text-[#061f6f] ring-1 ring-[#cbd6ff] dark:bg-[#243247] dark:text-[#bfdbfe]">
                 {avatarPreviewUrl ? (
                   <img className="h-full w-full object-cover" src={avatarPreviewUrl} alt="Prévia da foto de perfil" />
                 ) : currentAvatar && !avatarFailed ? (

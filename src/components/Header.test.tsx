@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
 import {
+  act,
   cleanup,
   fireEvent,
   render,
@@ -224,48 +225,12 @@ describe('Header', () => {
     ).toBeNull();
   });
 
-  it('usa iniciais quando nao ha avatar e nao cria src vazio', () => {
+  it('nao renderiza bolinha de avatar no header nem no menu da conta', () => {
     renderHeader({
-      currentUser: {
-        ...currentUser,
-        avatar: '',
-      },
+      currentUser: { ...currentUser, avatar: 'https://example.com/avatar.png' },
     });
-
-    expect(screen.getByText('AS')).toBeTruthy();
-    expect(screen.queryByRole('img')).toBeNull();
-  });
-
-  it('renderiza avatar valido e volta para iniciais em erro', () => {
-    renderHeader({
-      currentUser: {
-        ...currentUser,
-        avatar:
-          'https://example.com/avatar.png',
-      },
-    });
-
-    const image = screen.getByRole('img', {
-      name: /foto de ana silva/i,
-    }) as HTMLImageElement;
-
-    expect(image.getAttribute('src')).toBe(
-      'https://example.com/avatar.png',
-    );
-
-    fireEvent.error(image);
 
     expect(screen.queryByRole('img')).toBeNull();
-    expect(screen.getByText('AS')).toBeTruthy();
-  });
-
-  it('usa a mesma foto no botão do header e no dropdown', () => {
-    renderHeader({
-      currentUser: {
-        ...currentUser,
-        avatar: 'https://example.com/avatar.webp',
-      },
-    });
 
     fireEvent.click(
       screen.getByRole('button', {
@@ -273,38 +238,8 @@ describe('Header', () => {
       }),
     );
 
-    const images = screen.getAllByRole('img', {
-      name: /foto de ana silva/i,
-    }) as HTMLImageElement[];
-
-    expect(images).toHaveLength(2);
-    expect(images.map((image) => image.src)).toEqual([
-      'https://example.com/avatar.webp',
-      'https://example.com/avatar.webp',
-    ]);
-  });
-
-  it('faz fallback para iniciais quando a foto do dropdown falha', () => {
-    renderHeader({
-      currentUser: {
-        ...currentUser,
-        avatar: 'https://example.com/avatar.webp',
-      },
-    });
-
-    fireEvent.click(
-      screen.getByRole('button', {
-        name: /abrir menu do usu/i,
-      }),
-    );
-
-    const images = screen.getAllByRole('img', {
-      name: /foto de ana silva/i,
-    });
-    fireEvent.error(images[1]);
-
-    expect(screen.queryAllByRole('img', { name: /foto de ana silva/i })).toHaveLength(0);
-    expect(screen.getAllByText('AS')).toHaveLength(2);
+    expect(screen.queryByRole('img')).toBeNull();
+    expect(screen.queryByText('AS')).toBeNull();
   });
 
   it('valida o formato da foto antes de iniciar o upload', () => {
@@ -353,6 +288,12 @@ describe('Header', () => {
     await waitFor(() => {
       expect(screen.getByRole('button', { name: 'Salvar foto' })).toBeTruthy();
     });
+
+    const preview = screen.getByRole('heading', { name: 'Foto de perfil' })
+      .parentElement?.previousElementSibling;
+    expect(preview?.classList.contains('aspect-[3/4]')).toBe(true);
+    expect(preview?.classList.contains('rounded-full')).toBe(false);
+
     fireEvent.click(screen.getByRole('button', { name: 'Salvar foto' }));
 
     await waitFor(() => {
@@ -363,6 +304,48 @@ describe('Header', () => {
         }),
       ).toBeTruthy();
     });
+  });
+
+  it('remove temporariamente o feedback de foto após a atualização', async () => {
+    vi.useFakeTimers();
+    try {
+      const onUpdateProfileAvatar = vi.fn(async () => undefined);
+      renderHeader({ onUpdateProfileAvatar });
+
+      fireEvent.click(
+        screen.getByRole('button', {
+          name: /abrir menu do usu/i,
+        }),
+      );
+      fireEvent.click(
+        screen.getByRole('button', { name: 'Minha conta' }),
+      );
+
+      fireEvent.change(screen.getByLabelText('Alterar foto'), {
+        target: {
+          files: [new File(['png'], 'avatar.png', { type: 'image/png' })],
+        },
+      });
+
+      await act(async () => {
+        fireEvent.click(screen.getByRole('button', { name: 'Salvar foto' }));
+        await Promise.resolve();
+      });
+
+      expect(
+        screen.getAllByText('Foto de perfil atualizada com sucesso.'),
+      ).toHaveLength(2);
+
+      act(() => {
+        vi.advanceTimersByTime(4000);
+      });
+
+      expect(
+        screen.queryByText('Foto de perfil atualizada com sucesso.'),
+      ).toBeNull();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('aciona botao mobile e expoe aria-expanded', () => {
@@ -511,7 +494,7 @@ describe('Header', () => {
     expect(
       screen.queryByAltText('Foto de Ana Silva'),
     ).toBeNull();
-    expect(screen.getAllByText('AS')).toHaveLength(2);
+    expect(screen.queryByText('AS')).toBeNull();
     expect(
       screen.getByRole('button', { name: 'Minha conta' }),
     ).toBeTruthy();
@@ -830,7 +813,6 @@ describe('Header', () => {
     );
 
     expect(screen.getByText('Novo Nome')).toBeTruthy();
-    expect(screen.getByText('NN')).toBeTruthy();
     expect(screen.getByText('Administrador')).toBeTruthy();
   });
 
