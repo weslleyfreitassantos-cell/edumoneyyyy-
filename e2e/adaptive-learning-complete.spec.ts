@@ -232,6 +232,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       pages.push(alicePage);
       await login(alicePage, alice);
       await alicePage.goto('/student/study');
+      await alicePage.getByRole('button', { name: 'Explorar', exact: true }).click();
       await expect(alicePage.getByText('Fundamentos de Frações', { exact: true })).toBeVisible({ timeout: 30_000 });
       expect(await alicePage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
 
