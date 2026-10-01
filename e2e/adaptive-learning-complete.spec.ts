@@ -204,6 +204,8 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
       await expect(teacherPage).toHaveURL(/\/teacher\/pedagogical-center$/, { timeout: 30_000 });
       await expect(teacherPage.getByRole('heading', { name: 'Central Pedagógica', exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.getByLabel('Turma selecionada').selectOption(classId);
+      await teacherPage.getByRole('link', { name: 'Abrir mapa' }).click();
+      await expect(teacherPage).toHaveURL(new RegExp(`/teacher/pedagogical-center/map\\?class=${classId}`), { timeout: 30_000 });
       await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem da turma' })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('PHYSICS_AVERAGE_SPEED', { exact: true })).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto(`/teacher/pedagogical-center/students/${studentId}`);

@@ -104,7 +104,7 @@ adaptiveDescribe('adaptive learning student and teacher journey', () => {
       await expect(teacherPage.getByText('Pontos para revisar')).toBeVisible({ timeout: 30_000 });
       await teacherPage.goto('/teacher/pedagogical-center/students');
       await teacherPage.getByRole('link', { name: /Maria Support/ }).click();
-      await expect(teacherPage.getByText('Ainda não há evidências mapeadas para este aluno.')).toBeVisible({ timeout: 30_000 });
+      await expect(teacherPage.getByRole('region', { name: 'Mapa de aprendizagem' })).toBeVisible({ timeout: 30_000 });
       await expect(teacherPage.getByText('Nenhuma sessão guiada registrada.')).toBeVisible({ timeout: 30_000 });
     } finally {
       await studentPage?.close();
