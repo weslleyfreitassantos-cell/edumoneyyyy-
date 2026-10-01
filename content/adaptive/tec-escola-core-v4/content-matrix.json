@@ -868,8 +868,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-history-history_interpretation-2",
@@ -879,8 +879,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-history-history_interpretation-3",
@@ -947,8 +947,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-history-history_interpretation-9",
@@ -958,8 +958,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-history-history_interpretation-10",
@@ -982,8 +982,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-history-history_interpretation-12",
@@ -993,8 +993,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v4-authored-history-review-01",
@@ -1004,8 +1004,30 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-history-evidence-practice-01",
+      "subject": "HISTORY",
+      "topic": "fonte primaria",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-history-evidence-practice-02",
+      "subject": "HISTORY",
+      "topic": "contexto",
+      "primarySkill": "HISTORY_INTERPRET_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-1",
@@ -1017,8 +1039,8 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-2",
@@ -1043,8 +1065,8 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-4",
@@ -1056,8 +1078,8 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-5",
@@ -1067,8 +1089,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "GRAPH_ONLY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-6",
@@ -1093,8 +1115,8 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-8",
@@ -1141,8 +1163,8 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-mathematics-percentage-12",
@@ -1154,8 +1176,8 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v4-authored-mathematics-review-01",
@@ -1167,8 +1189,98 @@
       ],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-percent-transfer-01",
+      "subject": "MATHEMATICS",
+      "topic": "desconto",
+      "primarySkill": "MATH_PERCENT_OF_QUANTITY",
+      "supportingSkills": [
+        "MATH_IDENTIFY_PERCENT_BASE"
+      ],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-probe-01",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-probe-02",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-transfer-01",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-lock-in-01",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-review-01",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-review-02",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-mathematics-ratio-practice-01",
+      "subject": "MATHEMATICS",
+      "topic": "proporcao",
+      "primarySkill": "MATH_RATIO_UNIT_RATE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-philosophy-philosophy_argument-1",
@@ -1466,8 +1578,8 @@
         "MATH_RATIO_UNIT_RATE"
       ],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physics-physics_average_speed-2",
@@ -1490,8 +1602,8 @@
         "MATH_RATIO_UNIT_RATE"
       ],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physics-physics_average_speed-4",
@@ -1503,8 +1615,8 @@
         "MATH_RATIO_UNIT_RATE"
       ],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physics-physics_average_speed-5",
@@ -1551,8 +1663,8 @@
         "MATH_RATIO_UNIT_RATE"
       ],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-physics-physics_average_speed-9",
@@ -1597,8 +1709,8 @@
         "MATH_RATIO_UNIT_RATE"
       ],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v4-authored-physics-review-01",
@@ -1610,8 +1722,34 @@
         "MATH_RATIO_UNIT_RATE"
       ],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physics-average-speed-lock-in-01",
+      "subject": "PHYSICS",
+      "topic": "velocidade media",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED",
+      "supportingSkills": [],
+      "prerequisiteSkills": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-physics-average-speed-practice-01",
+      "subject": "PHYSICS",
+      "topic": "velocidade media",
+      "primarySkill": "PHYSICS_AVERAGE_SPEED",
+      "supportingSkills": [],
+      "prerequisiteSkills": [
+        "MATH_RATIO_UNIT_RATE"
+      ],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-portuguese-reading_argument-1",
@@ -1621,8 +1759,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-portuguese-reading_argument-2",
@@ -1654,8 +1792,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-portuguese-reading_argument-5",
@@ -1731,8 +1869,8 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-portuguese-reading_argument-12",
@@ -1753,8 +1891,52 @@
       "supportingSkills": [],
       "prerequisiteSkills": [],
       "transferSkills": [],
-      "readiness": "CONTENT_READY",
-      "selectionEligible": false
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-probe-01",
+      "subject": "PORTUGUESE",
+      "topic": "editorial e tese",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-practice-01",
+      "subject": "PORTUGUESE",
+      "topic": "carta de opiniao",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-transfer-01",
+      "subject": "PORTUGUESE",
+      "topic": "editorial e tese",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
+    },
+    {
+      "questionId": "v4-authored-portuguese-argument-review-01",
+      "subject": "PORTUGUESE",
+      "topic": "linguagem persuasiva",
+      "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "supportingSkills": [],
+      "prerequisiteSkills": [],
+      "transferSkills": [],
+      "readiness": "ADAPTIVE_READY",
+      "selectionEligible": true
     },
     {
       "questionId": "v3-religious_education-religious_diversity-1",

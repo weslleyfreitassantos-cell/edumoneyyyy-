@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue interpretar uma fonte historica considerando autoria, contexto e limite da evidencia.",
       "domain": "FONTES",
       "parent": "HISTORY_SOURCES",
-      "readiness": "CONTENT_READY",
+      "readiness": "ADAPTIVE_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,

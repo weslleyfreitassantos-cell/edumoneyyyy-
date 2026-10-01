@@ -388,5 +388,65 @@
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-history-evidence-practice-01",
+    "subject": "HISTORY",
+    "domain": "FONTES",
+    "topic": "fonte primaria",
+    "primarySkill": "HISTORY_INTERPRET_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "DIARIO_DE_TRABALHADOR",
+    "statement": "Um diario de uma trabalhadora de 1910 descreve o horario da fabrica. Qual cuidado e essencial ao interpretar esse registro?",
+    "options": [
+      "Considerar a experiencia da autora e comparar o relato com outras fontes.",
+      "Tratar o diario como relato neutro de toda a sociedade.",
+      "Usar apenas informacoes de hoje para explicar 1910.",
+      "Concluir que toda fabrica funcionava do mesmo modo."
+    ],
+    "correctAnswer": "Considerar a experiencia da autora e comparar o relato com outras fontes.",
+    "explanation": "A fonte registra uma experiencia situada; autoria e comparacao ajudam a evitar generalizacoes.",
+    "misconceptions": {
+      "Tratar o diario como relato neutro de toda a sociedade.": [
+        "PRIMARY_SOURCE_CONFUSED_WITH_NEUTRAL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-history-evidence-practice-02",
+    "subject": "HISTORY",
+    "domain": "FONTES",
+    "topic": "contexto",
+    "primarySkill": "HISTORY_INTERPRET_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "HARD",
+    "cognitiveProcess": "ANALYZE",
+    "contextFamily": "JORNAL_DE_EPOCA",
+    "statement": "Um jornal de 1968 noticia uma passeata. Para interpretar o que ocorreu, o pesquisador deve:",
+    "options": [
+      "Verificar data, autoria, publico e comparar a noticia com outras fontes.",
+      "Aceitar toda afirmacao do jornal como fato completo.",
+      "Ler somente o titulo, sem verificar a autoria.",
+      "Usar uma opiniao atual como unica evidencia."
+    ],
+    "correctAnswer": "Verificar data, autoria, publico e comparar a noticia com outras fontes.",
+    "explanation": "Data, autoria, publico e confronto com outras fontes revelam o contexto e os limites da noticia.",
+    "misconceptions": {
+      "Ler somente o titulo, sem verificar a autoria.": [
+        "ANACHRONISM_IGNORED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
   }
 ]

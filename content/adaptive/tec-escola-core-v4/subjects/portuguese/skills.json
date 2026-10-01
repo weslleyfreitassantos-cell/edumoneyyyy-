@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue identificar a tese e selecionar a evidencia que a sustenta em textos argumentativos.",
       "domain": "ARGUMENTACAO",
       "parent": "PORTUGUESE_ARGUMENTATION",
-      "readiness": "CONTENT_READY",
+      "readiness": "ADAPTIVE_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "FUNDAMENTAL_II",
       "recommendedGradeFrom": 6,

@@ -24,7 +24,7 @@
       "masteryCapability": "Demonstrar que consegue calcular velocidade media relacionando distancia percorrida e intervalo de tempo.",
       "domain": "VELOCIDADE",
       "parent": "PHYSICS_MOTION",
-      "readiness": "CONTENT_READY",
+      "readiness": "ADAPTIVE_READY",
       "content_authoring_status": "TECH_VALIDATED",
       "recommendedStage": "ENSINO_MEDIO",
       "recommendedGradeFrom": 1,

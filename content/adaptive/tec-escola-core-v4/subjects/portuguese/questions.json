@@ -384,5 +384,125 @@
     "misconceptions": {},
     "provenance": "TECESCOLA_CORE_V4_AUTHORED",
     "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-probe-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "editorial e tese",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PROBE",
+    "difficulty": "EASY",
+    "cognitiveProcess": "IDENTIFY",
+    "contextFamily": "EDITORIAL_AMBIENTAL",
+    "statement": "Um editorial defende que a escola deve ampliar a coleta seletiva. Qual frase expressa a tese central?",
+    "options": [
+      "A escola deve ampliar a coleta seletiva para reduzir residuos.",
+      "A coleta acontece na sexta-feira.",
+      "As lixeiras ficam perto da cantina.",
+      "Alguns estudantes chegam cedo."
+    ],
+    "correctAnswer": "A escola deve ampliar a coleta seletiva para reduzir residuos.",
+    "explanation": "A tese apresenta a posicao defendida e o objetivo da proposta; as demais alternativas sao detalhes do contexto.",
+    "misconceptions": {
+      "A coleta acontece na sexta-feira.": [
+        "THESIS_CONFUSED_WITH_DETAIL"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-practice-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "carta de opiniao",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "PRACTICE",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "APPLY",
+    "contextFamily": "POLITICA_ESCOLAR",
+    "statement": "Uma carta defende mais bebedouros no patio porque a fila atual e longa. Qual evidencia apoia melhor essa proposta?",
+    "options": [
+      "Registros mostram que 180 estudantes esperam mais de cinco minutos no intervalo.",
+      "O patio foi pintado de azul.",
+      "A escola tem uma biblioteca grande.",
+      "Alguns estudantes preferem estudar em casa."
+    ],
+    "correctAnswer": "Registros mostram que 180 estudantes esperam mais de cinco minutos no intervalo.",
+    "explanation": "A evidencia precisa medir diretamente a fila e o problema que a proposta pretende resolver.",
+    "misconceptions": {
+      "O patio foi pintado de azul.": [
+        "UNRELATED_EVIDENCE_USED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-transfer-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "editorial e tese",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "TRANSFER",
+    "difficulty": "MEDIUM",
+    "cognitiveProcess": "INTERPRET",
+    "contextFamily": "SAUDE_PUBLICA",
+    "statement": "Um artigo recomenda ampliar a iluminacao de uma praca porque o uso caiu a noite. Qual dado sustenta diretamente a recomendacao?",
+    "options": [
+      "O registro de entradas mostra queda de 40% depois das 18h.",
+      "A praca possui arvores antigas.",
+      "O bairro tem tres escolas.",
+      "A fonte da praca foi inaugurada em maio."
+    ],
+    "correctAnswer": "O registro de entradas mostra queda de 40% depois das 18h.",
+    "explanation": "O dado relaciona o horario de menor uso ao problema que a iluminacao pretende enfrentar.",
+    "misconceptions": {
+      "A praca possui arvores antigas.": [
+        "UNRELATED_EVIDENCE_USED"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
+  },
+  {
+    "id": "v4-authored-portuguese-argument-review-01",
+    "subject": "PORTUGUESE",
+    "domain": "ARGUMENTACAO",
+    "topic": "linguagem persuasiva",
+    "primarySkill": "PORTUGUESE_ARGUMENT_EVIDENCE",
+    "supportingSkills": [],
+    "prerequisiteSkills": [],
+    "transferSkills": [],
+    "purpose": "REVIEW",
+    "difficulty": "HARD",
+    "cognitiveProcess": "EVALUATE",
+    "contextFamily": "CONSUMO_CONSCIENTE",
+    "statement": "Uma campanha recomenda reduzir o uso de descartaveis e cita a coleta de 320 copos em uma semana. Como avaliar o argumento?",
+    "options": [
+      "A proposta tem evidencia relacionada, mas pode ser fortalecida com comparacao de outras semanas.",
+      "O numero de copos prova sozinho que toda a cidade pensa igual.",
+      "A frase de impacto substitui qualquer dado.",
+      "A coleta nao tem relacao com o consumo."
+    ],
+    "correctAnswer": "A proposta tem evidencia relacionada, mas pode ser fortalecida com comparacao de outras semanas.",
+    "explanation": "A evidencia se relaciona a proposta, e a avaliacao cuidadosa tambem reconhece o que ainda falta comparar.",
+    "misconceptions": {
+      "A frase de impacto substitui qualquer dado.": [
+        "PERSUASION_CONFUSED_WITH_EVIDENCE"
+      ]
+    },
+    "provenance": "TECESCOLA_CORE_V4_AUTHORED",
+    "content_authoring_status": "AUTHORED"
   }
 ]

@@ -19,6 +19,42 @@ describe('V4 semantic ownership', () => {
     expect(byId.get('v3-mathematics-percentage-5')?.supportingSkills).toEqual([]);
   });
 
+  it('activates the minimum real proof slices with the full adaptive contract', () => {
+    const required = [
+      'MATH_PERCENT_OF_QUANTITY',
+      'MATH_RATIO_UNIT_RATE',
+      'PHYSICS_AVERAGE_SPEED',
+      'PORTUGUESE_ARGUMENT_EVIDENCE',
+      'HISTORY_INTERPRET_EVIDENCE',
+    ];
+    const minimums = { PROBE: 2, PRACTICE: 2, TRANSFER: 1, LOCK_IN: 1, REVIEW: 2 } as const;
+    for (const code of required) {
+      const leaf = pack.leaves.find((item) => item.code === code);
+      expect(leaf?.readiness).toBe('ADAPTIVE_READY');
+      expect(pack.lessons.some((lesson) => lesson.skill === code)).toBe(true);
+      const questions = pack.questions.filter((question) => question.primarySkill === code);
+      for (const [purpose, minimum] of Object.entries(minimums)) {
+        expect(questions.filter((question) => question.purpose === purpose).length).toBeGreaterThanOrEqual(minimum);
+      }
+      expect(new Set(questions.map((question) => question.contextFamily)).size).toBeGreaterThanOrEqual(4);
+    }
+    expect(pack.leaves.find((item) => item.code === 'MATH_IDENTIFY_PERCENT_BASE')?.readiness).toBe('GRAPH_ONLY');
+    expect(pack.leaves.find((item) => item.code === 'PORTUGUESE_INFER_FROM_CLUES')?.readiness).toBe('GRAPH_ONLY');
+    expect(pack.leaves.find((item) => item.code === 'HISTORY_ORDER_EVENTS')?.readiness).toBe('GRAPH_ONLY');
+  });
+
+  it('keeps the Physics to Math prerequisite bridge actionable and attributed', () => {
+    expect(pack.relationships.prerequisites).toContainEqual(['PHYSICS_AVERAGE_SPEED', 'MATH_RATIO_UNIT_RATE']);
+    const physicsQuestions = pack.questions.filter((question) => question.primarySkill === 'PHYSICS_AVERAGE_SPEED');
+    expect(physicsQuestions.length).toBeGreaterThanOrEqual(8);
+    expect(physicsQuestions.every((question) => question.prerequisiteSkills.includes('MATH_RATIO_UNIT_RATE'))).toBe(true);
+    expect(matrix.find((item) => item.primarySkill === 'MATH_RATIO_UNIT_RATE')?.readiness).toBe('ADAPTIVE_READY');
+    const migration = readFileSync('supabase/migrations/20261001000100_adaptive_learning_pedagogical_depth_v4.sql', 'utf8');
+    expect(migration).toContain('candidate_skill := private.pick_learning_v2_next_skill');
+    expect(migration).toContain('CONTENT_NOT_READY');
+    expect(migration).toContain('v4-authored-mathematics-ratio-probe-01');
+  });
+
   it('separates Portuguese inference, thesis/evidence, genre and source comparison', () => {
     const byTopic = new Map(pack.questions.filter((question) => question.subject === 'PORTUGUESE').map((question) => [question.topic, question.primarySkill]));
     expect(byTopic.get('editorial e tese')).toBe('PORTUGUESE_ARGUMENT_EVIDENCE');
