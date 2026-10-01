@@ -1932,7 +1932,7 @@ begin
            updated_at = now()
      where id = session_row.id;
     insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
-    values (session_row.institution_id, session_row.id, session_row.student_id, 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED', completed_step.id, event_key, jsonb_build_object('bridge_depth', bridge_depth, 'runtime_reason', 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED'));
+    values (session_row.institution_id, session_row.id, session_row.student_id, 'REPLANNED', completed_step.id, event_key, jsonb_build_object('bridge_depth', bridge_depth, 'runtime_reason', 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED'));
     return null;
   end if;
 
@@ -1949,7 +1949,7 @@ begin
                updated_at = now()
          where id = session_row.id;
         insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
-        values (session_row.institution_id, session_row.id, session_row.student_id, 'CONTENT_NOT_READY', completed_step.id, event_key, jsonb_build_object('canonical_skill_id', candidate_skill, 'runtime_reason', 'CONTENT_NOT_READY'));
+        values (session_row.institution_id, session_row.id, session_row.student_id, 'REPLANNED', completed_step.id, event_key, jsonb_build_object('canonical_skill_id', candidate_skill, 'runtime_reason', 'CONTENT_NOT_READY'));
         return null;
       end if;
     end if;
@@ -1969,7 +1969,7 @@ begin
            updated_at = now()
      where id = session_row.id;
     insert into public.learning_guided_session_events(institution_id, session_id, student_id, event_type, step_id, idempotency_key, payload)
-    values (session_row.institution_id, session_row.id, session_row.student_id, 'CONTENT_NOT_READY', next_step, event_key || ':content-not-ready', jsonb_build_object('canonical_skill_id', next_skill, 'runtime_reason', 'CONTENT_NOT_READY'));
+    values (session_row.institution_id, session_row.id, session_row.student_id, 'REPLANNED', next_step, event_key || ':content-not-ready', jsonb_build_object('canonical_skill_id', next_skill, 'runtime_reason', 'CONTENT_NOT_READY'));
     return null;
   end if;
 

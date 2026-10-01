@@ -52,6 +52,8 @@ describe('V4 semantic ownership', () => {
     const migration = readFileSync('supabase/migrations/20261001000100_adaptive_learning_pedagogical_depth_v4.sql', 'utf8');
     expect(migration).toContain('candidate_skill := private.pick_learning_v2_next_skill');
     expect(migration).toContain('CONTENT_NOT_READY');
+    expect(migration).not.toContain("event_type, step_id, idempotency_key, payload) values (session_row.institution_id, session_row.id, session_row.student_id, 'CONTENT_NOT_READY'");
+    expect(migration).not.toContain("event_type, step_id, idempotency_key, payload) values (session_row.institution_id, session_row.id, session_row.student_id, 'MAX_ACTIVE_BRIDGE_DEPTH_REACHED'");
     expect(migration).toContain('v4-authored-mathematics-ratio-probe-01');
   });
 
