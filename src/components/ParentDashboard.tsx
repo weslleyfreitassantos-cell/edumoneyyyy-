@@ -27,7 +27,7 @@ import DashboardAnnouncements from './DashboardAnnouncements';
 import UpcomingAcademicEvents from './UpcomingAcademicEvents';
 
 function getStudentDisplayName(student: GuardianStudentDashboard['student']['student']): string {
-  return student.profile?.full_name?.trim() || 'Aluno sem nome informado';
+  return student.profile?.full_name?.trim() || 'Estudante sem nome informado';
 }
 
 function LoadingState() {
@@ -144,7 +144,7 @@ function GuardianAcademicResultsView({
 }) {
   const selectedStudentRecord = selectedStudent?.student.student;
   const selectedName =
-    selectedStudentRecord ? getStudentDisplayName(selectedStudentRecord) : 'Aluno';
+    selectedStudentRecord ? getStudentDisplayName(selectedStudentRecord) : 'Estudante';
 
   return (
     <motion.div
@@ -186,7 +186,7 @@ function GuardianAcademicResultsView({
 
       {!selectedStudent && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
-          Nenhum aluno ativo está vinculado a este responsável nesta instituição.
+          Nenhum estudante ativo está vinculado a este perfil nesta instituição.
         </div>
       )}
 
@@ -367,7 +367,7 @@ export default function ParentDashboard() {
 
       {students.length === 0 ? (
         <div role="status" className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
-          Nenhum aluno está vinculado a este responsável nesta instituição.
+          Nenhum estudante está vinculado a este perfil nesta instituição.
         </div>
       ) : (
         <>
@@ -397,7 +397,7 @@ export default function ParentDashboard() {
           {selectedStudent && (
             <section aria-labelledby="guardian-subjects-title" className="rounded-xl border border-[#dfe3e8] bg-white p-5 shadow-sm sm:p-6">
               <h2 id="guardian-subjects-title" className="text-sm font-bold uppercase tracking-wide text-[#005bbf]">
-                Disciplinas e professores
+                Disciplinas e docentes
               </h2>
 
               {selectedStudent.student.offerings.length === 0 ? (
@@ -406,7 +406,7 @@ export default function ParentDashboard() {
                 </div>
               ) : (
                 <div
-                  aria-label="Lista de disciplinas e professores"
+                  aria-label="Lista de disciplinas e docentes"
                   className="mt-5 grid max-h-[32rem] gap-3 overflow-y-auto pr-1 sm:grid-cols-2 xl:grid-cols-3"
                 >
                   {selectedStudent.student.offerings.map(

@@ -105,7 +105,7 @@ function getTeacherName(
   return (
     teacher.profiles?.full_name ??
     teacher.profiles?.email ??
-    'Professor'
+    'Docente'
   );
 }
 
@@ -355,7 +355,7 @@ export default function TeachersTab() {
 
     if (formData.subject_ids.length === 0) {
       setModalError(
-        'Selecione pelo menos uma disciplina para vincular ao professor.',
+        'Selecione pelo menos uma disciplina para vincular ao perfil docente.',
       );
       return;
     }
@@ -401,7 +401,7 @@ export default function TeachersTab() {
       });
 
       setFeedbackMessage(
-        `Professor ${createdTeacher.full_name} cadastrado com sucesso. As credenciais foram enviadas para ${createdTeacher.email}.`,
+        `Cadastro de ${createdTeacher.full_name} concluído. O convite foi enviado para ${createdTeacher.email}.`,
       );
     } catch (error) {
       setModalError(
@@ -420,7 +420,7 @@ export default function TeachersTab() {
       : 'desativar';
 
     const confirmed = window.confirm(
-      `Deseja ${action} o professor ${getTeacherName(teacher)} nesta instituição?`,
+      `Deseja ${action} o perfil de ${getTeacherName(teacher)} nesta instituição?`,
     );
 
     if (!confirmed) {
@@ -439,8 +439,8 @@ export default function TeachersTab() {
 
       setFeedbackMessage(
         nextActive
-          ? 'Professor reativado com sucesso.'
-          : 'Professor desativado nesta instituição.',
+          ? 'Perfil docente reativado com sucesso.'
+          : 'Perfil docente desativado nesta instituição.',
       );
     } catch (error) {
       setPageError(
@@ -460,7 +460,7 @@ export default function TeachersTab() {
       : 'a sugestão padrão da Política acadêmica';
 
     if (activeTeachers.length === 0) {
-      setPageError('Nenhum professor ativo encontrado nesta instituição.');
+      setPageError('Nenhum perfil docente ativo encontrado nesta instituição.');
       return;
     }
     if (suggestions.length === 0) {
@@ -469,7 +469,7 @@ export default function TeachersTab() {
     }
 
     const confirmed = window.confirm(
-      `Aplicar ${sourceLabel} a ${activeTeachers.length} professor(es)? A disponibilidade atual será substituída; depois você poderá ajustar exceções individualmente.`,
+      `Aplicar ${sourceLabel} a ${activeTeachers.length} docentes? A disponibilidade atual será substituída; depois você poderá ajustar exceções individualmente.`,
     );
     if (!confirmed) return;
 
@@ -483,10 +483,10 @@ export default function TeachersTab() {
         });
         updatedCount += 1;
       }
-      setFeedbackMessage(`Disponibilidade aplicada a ${updatedCount} professor(es) usando ${sourceLabel}. Revise as exceções antes de publicar a grade.`);
+      setFeedbackMessage(`Disponibilidade aplicada a ${updatedCount} docentes usando ${sourceLabel}. Revise as exceções antes de publicar a grade.`);
     } catch (error) {
       setPageError(
-        `A aplicação foi interrompida após ${updatedCount} professor(es). ${getErrorMessage(error)}`,
+        `A aplicação foi interrompida após ${updatedCount} docentes. ${getErrorMessage(error)}`,
       );
     }
   }
@@ -546,7 +546,7 @@ export default function TeachersTab() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <h3 className="font-bold text-[#181c20] dark:text-white">Cobertura das disciplinas</h3>
-              <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Cada disciplina precisa de pelo menos um professor ativo vinculado.</p>
+              <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Cada disciplina precisa de pelo menos um perfil docente ativo vinculado.</p>
             </div>
             <span className="text-sm text-gray-600 dark:text-slate-300">
               {subjectCoverage.filter((subject) => subject.teacherCount > 0).length}/{subjectCoverage.length} cobertas
@@ -557,7 +557,7 @@ export default function TeachersTab() {
               <div key={subject.id} className="flex items-center justify-between gap-3 rounded-lg border border-gray-100 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800/60">
                 <span className="min-w-0 truncate text-gray-800 dark:text-slate-200">{subject.name}</span>
                 <span className={subject.teacherCount > 0 ? 'shrink-0 text-xs font-semibold text-green-700 dark:text-emerald-300' : 'shrink-0 text-xs font-semibold text-amber-700 dark:text-amber-300'}>
-                  {subject.teacherCount > 0 ? `${subject.teacherCount} professor(es)` : 'Sem professor'}
+                  {subject.teacherCount > 0 ? `${subject.teacherCount} ${subject.teacherCount === 1 ? 'docente' : 'docentes'}` : 'Sem docente'}
                 </span>
               </div>
             ))}
@@ -568,7 +568,7 @@ export default function TeachersTab() {
       <section className="rounded-xl border border-[#dfe3e8] bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h3 className="font-bold text-[#181c20] dark:text-white">Disponibilidade dos professores</h3>
+            <h3 className="font-bold text-[#181c20] dark:text-white">Disponibilidade docente</h3>
             <p className="mt-1 text-sm text-gray-500 dark:text-slate-400">Aplique o horário padrão e ajuste apenas as exceções.</p>
           </div>
           <button
@@ -588,7 +588,7 @@ export default function TeachersTab() {
             }
             className="rounded-lg border border-blue-200 px-3 py-2 text-sm font-semibold text-blue-700 hover:bg-blue-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-blue-800 dark:text-blue-300 dark:hover:bg-slate-800"
           >
-            {availabilityMutation.isPending ? 'Aplicando...' : 'Aplicar aos professores ativos'}
+            {availabilityMutation.isPending ? 'Aplicando...' : 'Aplicar aos docentes ativos'}
           </button>
         </div>
         {schoolTimeSlotsQuery.isError && <p role="alert" className="mt-3 text-sm text-red-700 dark:text-red-300">Não foi possível carregar os horários da escola.</p>}
@@ -597,15 +597,15 @@ export default function TeachersTab() {
 
       <ListSearch
         id="teachers-search"
-        label="Buscar professor"
+        label="Buscar docente"
         placeholder="Nome, e-mail ou disciplina"
         value={searchTerm}
         onChange={setSearchTerm}
       />
 
       <DataTable
-        title="Professores"
-        addLabel="Novo professor"
+        title="Docentes"
+        addLabel="Novo perfil docente"
         extraHeaderActions={(
           <button
             type="button"
@@ -624,8 +624,8 @@ export default function TeachersTab() {
         onAdd={openCreateModal}
         emptyMessage={
           filteredTeachers.length === 0 && teachers.length > 0
-            ? 'Nenhum professor encontrado.'
-            : 'Nenhum professor cadastrado nesta instituição.'
+            ? 'Nenhum perfil docente encontrado.'
+            : 'Nenhum perfil docente cadastrado nesta instituição.'
         }
         renderActions={(teacher) => {
           const isChangingStatus =
@@ -684,7 +684,7 @@ export default function TeachersTab() {
           onImported={(result) => {
             void teachersQuery.refetch();
             setFeedbackMessage(
-              `${result.succeeded.length} professor(es) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}`,
+              `Importação concluída para ${result.succeeded.length} perfis docentes.${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}`,
             );
           }}
         />
@@ -702,7 +702,7 @@ export default function TeachersTab() {
               id="teacher-modal-title"
               className="mb-4 text-lg font-bold text-[#181c20]"
             >
-              Novo professor
+              Novo perfil docente
             </h3>
 
             <form
@@ -750,7 +750,7 @@ export default function TeachersTab() {
               <div>
                 <div className="flex items-center justify-between gap-3">
                   <p className="block text-sm font-medium text-gray-700">
-                    Disciplinas vinculadas ao professor
+                    Disciplinas do perfil docente
                   </p>
                   <span className="text-xs text-gray-500">
                     {formData.subject_ids.length} selecionada(s)
@@ -823,7 +823,7 @@ export default function TeachersTab() {
               </div>
 
               <p className="rounded-lg bg-blue-50 px-3 py-2 text-xs leading-relaxed text-blue-700">
-                O usuário e o vínculo como professor serão criados automaticamente. O professor receberá um convite por e-mail para definir a senha.
+                O perfil e o vínculo docente serão criados automaticamente. O convite por e-mail permitirá definir uma senha.
               </p>
 
               <div className="flex justify-end gap-2 pt-2">

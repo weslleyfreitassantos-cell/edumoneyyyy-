@@ -398,16 +398,16 @@ describe('SchoolUsersTab integration', () => {
     expect(screen.queryByText('Total por papel')).toBeNull();
     expect(screen.queryByLabelText('Filtrar usuários por papel')).toBeNull();
 
-    const totalCard = screen.getByText('Diretores cadastrados').closest('article');
-    const activeCard = screen.getByText('Diretores ativos').closest('article');
-    const inactiveCard = screen.getByText('Diretores inativos').closest('article');
+    const totalCard = screen.getByText('Integrantes da direção').closest('article');
+    const activeCard = screen.getByText('Vínculos ativos').closest('article');
+    const inactiveCard = screen.getByText('Vínculos inativos').closest('article');
 
     expect(totalCard?.textContent).toContain('1');
     expect(activeCard?.textContent).toContain('1');
     expect(inactiveCard?.textContent).toContain('0');
 
     expect(screen.queryByRole('button', { name: 'Todos' })).toBeNull();
-    for (const label of ['Administração', 'Direção', 'Secretaria', 'Professores', 'Alunos', 'Responsáveis']) {
+    for (const label of ['Administração', 'Direção', 'Secretaria', 'Docentes', 'Estudantes', 'Responsáveis']) {
       expect(screen.queryByRole('button', { name: new RegExp(`^${label}$`) })).toBeNull();
     }
   });
@@ -426,9 +426,9 @@ describe('SchoolUsersTab integration', () => {
     expect(screen.queryByText('Total por papel')).toBeNull();
     expect(screen.queryByLabelText('Filtrar usuários por papel')).toBeNull();
 
-    const totalCard = screen.getByText('Secretários cadastrados').closest('article');
-    const activeCard = screen.getByText('Secretários ativos').closest('article');
-    const inactiveCard = screen.getByText('Secretários inativos').closest('article');
+    const totalCard = screen.getByText('Integrantes da secretaria').closest('article');
+    const activeCard = screen.getByText('Vínculos ativos').closest('article');
+    const inactiveCard = screen.getByText('Vínculos inativos').closest('article');
 
     expect(totalCard?.textContent).toContain('2');
     expect(activeCard?.textContent).toContain('1');

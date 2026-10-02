@@ -166,7 +166,7 @@ describe('reportCardService', () => {
       expect(reportCard.subjects[0]).toMatchObject({
         subjectName: 'Matemática',
         academicYearName: 'Ano letivo 2026',
-        teacherName: 'Professor não informado',
+        teacherName: 'Docente não informado',
         isClosed: false,
         gradePercentage: null,
       });
@@ -269,7 +269,7 @@ describe('reportCardService', () => {
       const reportCard = await reportCardService.getStudentReportCard('inst-1', 'student-1');
 
       expect(reportCard.subjects[0]).toMatchObject({
-        teacherName: 'Professor não informado',
+        teacherName: 'Docente não informado',
         gradePercentage: 50,
         recoveryPercentage: 75,
         finalGradePercentage: 75,

@@ -245,19 +245,19 @@ describe('TimetableTab', () => {
     expect(screen.queryByText('Matemática')).toBeNull();
   });
 
-  it('mostra contexto de turma quando filtrado por professor e permite editar o card', () => {
+  it('mostra contexto de turma quando filtrado por docente e permite editar o card', () => {
     renderTab();
-    fireEvent.change(screen.getByLabelText(/professor/i), { target: { value: 'prof-1' } });
+    fireEvent.change(screen.getByLabelText(/docente/i), { target: { value: 'prof-1' } });
     expect(screen.getByText('Turma 1A')).toBeTruthy();
     fireEvent.click(screen.getByRole('button', { name: /Editar Português 07:00/i }));
-    expect(screen.getByLabelText(/disciplina \/ professor \/ período/i)).toBeTruthy();
+    expect(screen.getByLabelText(/disciplina \/ docente \/ período/i)).toBeTruthy();
   });
 
   it('abre modal de criacao ao clicar em Adicionar horario', () => {
     renderTab();
     const buttons = screen.getAllByText(/Adicionar horário/i);
     fireEvent.click(buttons[0]);
-    expect(screen.getByLabelText(/disciplina \/ professor \/ período/i)).toBeTruthy();
+    expect(screen.getByLabelText(/disciplina \/ docente \/ período/i)).toBeTruthy();
   });
 
   it('mostra estado de carregamento', () => {
@@ -333,7 +333,7 @@ describe('TimetableTab', () => {
 
     const turmaSelects = screen.getAllByLabelText('Turma');
     fireEvent.change(turmaSelects[1], { target: { value: 'class-1' } });
-    fireEvent.change(screen.getByLabelText(/disciplina \/ professor \/ período/i), { target: { value: OFFERING_1_UUID } });
+    fireEvent.change(screen.getByLabelText(/disciplina \/ docente \/ período/i), { target: { value: OFFERING_1_UUID } });
     fireEvent.change(screen.getByLabelText('Dia'), { target: { value: '2' } });
     fireEvent.click(screen.getAllByText('Salvar')[0]);
 

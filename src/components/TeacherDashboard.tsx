@@ -39,7 +39,7 @@ function getFirstName(
       .trim()
       .split(/\s+/)
       .at(0) ||
-    'Professor'
+    'Docente'
   );
 }
 
@@ -86,7 +86,7 @@ icon: ReactNode;
 
 function LoadingState() {
   return (
-    <div role="status" aria-label="Carregando painel do professor" className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
+    <div role="status" aria-label="Carregando painel docente" className="grid min-h-[400px] place-items-center rounded-xl border border-[#dfe3e8] bg-white">
       <div className="text-center">
         <div
           className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-[#dfe3e8] border-t-[#005bbf]"
@@ -186,7 +186,7 @@ export default function TeacherDashboard() {
   if (!dashboard) {
     return (
       <div className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700">
-        Os dados acadêmicos do professor ainda não estão disponíveis.
+        Os dados acadêmicos ainda não estão disponíveis.
       </div>
     );
   }
@@ -219,7 +219,7 @@ export default function TeacherDashboard() {
     return (
       <TeacherWorkspacePage
         title="Diário de Classe"
-        description="Registre o conteúdo da aula e a presença dos alunos."
+        description="Registre o conteúdo da aula e a frequência dos estudantes."
         showIntro={false}
       >
         <TeacherAttendancePanel
@@ -268,7 +268,7 @@ export default function TeacherDashboard() {
     return (
       <TeacherWorkspacePage
         title="Conselhos de classe"
-        description="Consulte os conselhos das suas turmas e registre sua contribuição por aluno."
+        description="Consulte os conselhos das suas turmas e registre suas contribuições pedagógicas."
       >
         <TeacherClassCouncilsPanel />
       </TeacherWorkspacePage>
@@ -293,7 +293,7 @@ export default function TeacherDashboard() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
-              Área do professor
+              Área docente
             </p>
 
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
@@ -346,7 +346,7 @@ export default function TeacherDashboard() {
         />
 
         <MetricCard
-          label="Alunos vinculados"
+          label="Estudantes vinculados"
           value={
             dashboard.totals.students ??
             '—'
@@ -367,7 +367,7 @@ export default function TeacherDashboard() {
 
       {!dashboard.enrollmentAccessAvailable && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
-          As ofertas foram carregadas, mas a quantidade de alunos não pôde ser consultada com as permissões atuais.
+          As ofertas foram carregadas, mas não foi possível consultar a quantidade de estudantes com as permissões atuais.
         </div>
       )}
 
@@ -394,7 +394,7 @@ export default function TeacherDashboard() {
             </h3>
 
             <p className="mt-2 text-xs text-[#727785]">
-              Um administrador ou diretor precisa vincular este professor a uma oferta de disciplina.
+              A gestão escolar precisa vincular seu perfil a uma oferta de disciplina.
             </p>
           </div>
         ) : (
@@ -455,7 +455,7 @@ export default function TeacherDashboard() {
                         <div className="grid grid-cols-2 gap-4">
                           <div>
                             <dt className="text-[10px] font-bold uppercase tracking-wide text-[#727785]">
-                              Alunos
+                              Estudantes
                             </dt>
 
                             <dd className="mt-1 text-sm font-semibold text-[#181c20]">

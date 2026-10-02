@@ -167,7 +167,7 @@ function getProfileName(
   membership: MembershipSummaryRow,
   profileNames: Map<string, string>,
 ): string {
-  return profileNames.get(membership.profile_id) ?? 'Professor';
+  return profileNames.get(membership.profile_id) ?? 'Docente';
 }
 
 export function isMissingAdminOverviewRpcError(
@@ -541,7 +541,7 @@ export const adminOverviewService = {
       ) {
         warnings.push({
           id: `teacher-without-offering-${teacher.profile_id}`,
-          title: 'Professor sem atribuição',
+          title: 'Docente sem atribuição',
           description: `${getProfileName(teacher, profileNames)} ainda não foi vinculado a uma disciplina/turma.`,
           severity: 'info',
         });
@@ -552,7 +552,7 @@ export const adminOverviewService = {
       if (!enrollmentStudentIds.has(student.id)) {
         warnings.push({
           id: `student-without-enrollment-${student.id}`,
-          title: 'Aluno sem matrícula',
+          title: 'Estudante sem matrícula',
           description:
             'Existe aluno ativo sem matrícula ativa.',
           severity: 'info',

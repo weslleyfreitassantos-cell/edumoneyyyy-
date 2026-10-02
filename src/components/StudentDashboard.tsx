@@ -49,7 +49,7 @@ function getFirstName(
     fullName
       .trim()
       .split(/\s+/)
-      .at(0) || 'Aluno'
+      .at(0) || 'Estudante'
   );
 }
 
@@ -76,7 +76,7 @@ function OfferingCard({
       <dl className="mt-4 space-y-3 text-sm">
         <div>
           <dt className="text-xs font-medium text-[#727785]">
-            Professor
+            Docente
           </dt>
           <dd className="mt-1 font-semibold text-[#181c20]">
             {offering.teacher_name}
@@ -154,7 +154,7 @@ function StudentAcademicResultsView({
   enrollment: StudentDashboardData['activeEnrollment'];
 }) {
   const studentName =
-    student.profile?.full_name?.trim() || 'Aluno sem nome informado';
+    student.profile?.full_name?.trim() || 'Estudante sem nome informado';
 
   return (
     <motion.div
@@ -172,7 +172,7 @@ function StudentAcademicResultsView({
 
       {!enrollment && (
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200">
-          Nenhuma matrícula ativa encontrada para este aluno.
+          Nenhuma matrícula ativa encontrada.
         </div>
       )}
 
@@ -424,7 +424,7 @@ export default function StudentDashboard() {
         role="alert"
         className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-sm text-amber-700 dark:border-amber-900/60 dark:bg-amber-950/30 dark:text-amber-200"
       >
-        O registro acadêmico do aluno ainda não está disponível.
+        O registro acadêmico ainda não está disponível.
       </div>
     );
   }
@@ -495,7 +495,7 @@ export default function StudentDashboard() {
         <div className="flex items-center justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/75">
-              Área do aluno
+              Área do estudante
             </p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight">
               Olá, {firstName}!

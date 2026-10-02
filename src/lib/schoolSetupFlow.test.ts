@@ -102,7 +102,7 @@ function nextId(options?: Parameters<typeof createReadiness>[0]): string | null 
 }
 
 describe('buildSchoolSetupFlow', () => {
-  it('encaminha para Diretor ou Secretaria quando não existe responsável', () => {
+  it('encaminha para a Direção ou Secretaria quando não existe responsável', () => {
     expect(nextId({ academicManagerCount: 0 })).toBe('responsible-user');
   });
 
@@ -135,7 +135,7 @@ describe('buildSchoolSetupFlow', () => {
       'Matérias das turmas',
     ]);
     expect(peopleSection?.steps.map((step) => step.label)).toContain('Atribuições');
-    expect(flow.sections.find((section) => section.id === 'enrollments')?.label).toBe('Alunos');
+    expect(flow.sections.find((section) => section.id === 'enrollments')?.label).toBe('Estudantes');
   });
 
   it('recomenda matrículas quando os professores estão prontos', () => {

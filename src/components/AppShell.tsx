@@ -21,11 +21,9 @@ import {
   mapDatabaseRole,
   mapPlatformRole,
 } from '../lib/roles';
+import { getRoleDisplayLabel } from '../lib/roleDisplay';
 import { hasEffectivePermission } from '../lib/permissions';
-import type {
-  User,
-  UserRole,
-} from '../types';
+import type { User, UserRole } from '../types';
 import { useThemePreference } from '../contexts/ThemeContext';
 import { useHostBranding } from '../hooks/useBranding';
 import Header from './Header';
@@ -57,19 +55,6 @@ const focusableSelector = [
   'textarea:not([disabled])',
   '[tabindex]:not([tabindex="-1"])',
 ].join(',');
-
-const roleToSubtitle: Record<
-  UserRole,
-  string
-> = {
-  super_admin: 'Super Admin',
-  admin: 'Administrador',
-  director: 'Diretor',
-  secretary: 'Secretaria',
-  teacher: 'Professor',
-  student: 'Aluno',
-  parent: 'Responsável',
-};
 
 function readSidebarPreference(): boolean {
   if (typeof window === 'undefined') {
@@ -288,7 +273,7 @@ export function getRouteVisualContext(
 
       return {
         section: 'Acadêmico',
-        title: 'Painel do professor',
+        title: 'Painel docente',
       };
     }
 
@@ -316,7 +301,7 @@ export function getRouteVisualContext(
 
       return {
         section: 'Acadêmico',
-        title: 'Painel do aluno',
+        title: 'Painel do estudante',
       };
     }
 
@@ -597,7 +582,7 @@ export default function AppShell({
     avatar: profile.avatar_url?.trim() || null,
     role: currentRole,
     subtitle:
-      roleToSubtitle[currentRole],
+      getRoleDisplayLabel(currentRole),
   };
 
   const assistantMenuItems = [

@@ -290,7 +290,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
 
       closeGuardianLinkModal();
       setFeedbackMessage(
-        'Responsável vinculado ao aluno com sucesso.',
+        'Vínculo do responsável salvo com sucesso.',
       );
     } catch (error) {
       setGuardianLinkError(
@@ -339,7 +339,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
                   onClick={() => setEnrollStudentId(row.id)}
                 >
                   <GraduationCap className="h-3.5 w-3.5" aria-hidden="true" />
-                  Matricular aluno
+                  Matricular estudante
                 </button>
               )}
             </div>
@@ -402,7 +402,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
       : 'desativar';
 
     const confirmed = window.confirm(
-      `Deseja ${action} o aluno ${getStudentName(student)}?`,
+      `Deseja ${action} o perfil de ${getStudentName(student)}?`,
     );
 
     if (!confirmed) {
@@ -421,8 +421,8 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
 
       setFeedbackMessage(
         nextActive
-          ? 'Aluno reativado com sucesso.'
-          : 'Aluno desativado com sucesso.',
+          ? 'Perfil de estudante reativado com sucesso.'
+          : 'Perfil de estudante desativado com sucesso.',
       );
     } catch (error) {
       setPageError(
@@ -477,15 +477,15 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
 
       <ListSearch
         id="students-search"
-        label="Buscar aluno"
+        label="Buscar estudante"
         placeholder="Nome, e-mail ou RA"
         value={searchTerm}
         onChange={setSearchTerm}
       />
 
       <DataTable
-        title="Alunos"
-        addLabel="Novo aluno"
+        title="Estudantes"
+        addLabel="Novo estudante"
         extraHeaderActions={(
           <button
             type="button"
@@ -508,8 +508,8 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
         onAdd={openFullWizard}
         emptyMessage={
           searchTerm.trim()
-            ? 'Nenhum aluno encontrado.'
-            : 'Nenhum aluno cadastrado nesta instituição.'
+            ? 'Nenhum estudante encontrado.'
+            : 'Nenhum estudante cadastrado nesta instituição.'
         }
         renderActions={(student) => {
           const isChangingStatus =
@@ -625,8 +625,12 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
           onImported={(result) => {
             void studentsQuery.refetch();
             void enrollmentsQuery.refetch();
+            const importedCount = result.succeeded.length;
+            const importedSummary = importedCount === 1
+              ? '1 cadastro de estudante foi importado.'
+              : `${importedCount} cadastros de estudante foram importados.`;
             setFeedbackMessage(
-              `${result.succeeded.length} aluno(s) importado(s).${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}${result.emailPending.length > 0 ? ` ${result.emailPending.length} acesso(s) ficaram sem e-mail.` : ''}`,
+              `${importedSummary}${result.failed.length > 0 ? ` ${result.failed.length} linha(s) precisam de revisão.` : ''}${result.emailPending.length > 0 ? ` ${result.emailPending.length} acesso(s) ficaram sem e-mail.` : ''}`,
             );
           }}
         />
@@ -642,7 +646,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
           onClose={() => setFullEditStudentId(null)}
           onCompleted={() => {
             setFullEditStudentId(null);
-            setFeedbackMessage('Cadastro completo do aluno atualizado com sucesso.');
+            setFeedbackMessage('Cadastro completo do estudante atualizado com sucesso.');
           }}
         />
       )}
@@ -677,7 +681,7 @@ export default function StudentsTab({ onViewAcademicRecord }: StudentsTabProps =
               Vincular responsável
             </h3>
             <p className="mb-4 text-sm text-[#727785]">
-              Aluno:{' '}
+              Estudante:{' '}
               <strong>
                 {getStudentName(guardianStudent)}
               </strong>

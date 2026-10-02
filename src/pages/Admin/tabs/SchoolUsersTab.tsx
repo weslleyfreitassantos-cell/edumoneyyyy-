@@ -34,6 +34,7 @@ import {
   hasEffectivePermission,
   type CurrentDatabaseRole,
 } from '../../../lib/permissions';
+import { getRoleDisplayLabel } from '../../../lib/roleDisplay';
 import { getUserFacingErrorMessage } from '../../../lib/userFacingError';
 
 import type { SchoolUserRow } from '../../../services/schoolUserService';
@@ -56,21 +57,24 @@ export const schoolUserRoleLabels: Record<
   CurrentDatabaseRole,
   string
 > = {
-  ADMIN: 'Administração',
-  DIRECTOR: 'Direção',
-  SECRETARY: 'Secretaria',
-  TEACHER: 'Professor',
-  STUDENT: 'Aluno',
-  GUARDIAN: 'Responsável',
+  ADMIN: getRoleDisplayLabel('ADMIN'),
+  DIRECTOR: getRoleDisplayLabel('DIRECTOR'),
+  SECRETARY: getRoleDisplayLabel('SECRETARY'),
+  TEACHER: getRoleDisplayLabel('TEACHER'),
+  STUDENT: getRoleDisplayLabel('STUDENT'),
+  GUARDIAN: getRoleDisplayLabel('GUARDIAN'),
 };
 
-const schoolUserRoleNouns: Record<CurrentDatabaseRole, string> = {
-  ADMIN: 'Administradores',
-  DIRECTOR: 'Diretores',
-  SECRETARY: 'Secretários',
-  TEACHER: 'Professores',
-  STUDENT: 'Alunos',
-  GUARDIAN: 'Responsáveis',
+const fixedRoleSummaryLabels: Record<
+  CurrentDatabaseRole,
+  { total: string; active: string; inactive: string }
+> = {
+  ADMIN: { total: 'Contas administrativas', active: 'Acessos ativos', inactive: 'Acessos inativos' },
+  DIRECTOR: { total: 'Integrantes da direção', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
+  SECRETARY: { total: 'Integrantes da secretaria', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
+  TEACHER: { total: 'Total de docentes', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
+  STUDENT: { total: 'Total de estudantes', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
+  GUARDIAN: { total: 'Total de responsáveis', active: 'Vínculos ativos', inactive: 'Vínculos inativos' },
 };
 
 const filterOptions: {
@@ -86,9 +90,9 @@ const filterOptions: {
   { value: 'SECRETARY', label: 'Secretaria' },
   {
     value: 'TEACHER',
-    label: 'Professores',
+    label: 'Docentes',
   },
-  { value: 'STUDENT', label: 'Alunos' },
+  { value: 'STUDENT', label: 'Estudantes' },
   {
     value: 'GUARDIAN',
     label: 'Responsáveis',
@@ -102,8 +106,8 @@ const editableRoleOptions: {
   { value: 'ADMIN', label: 'Administração' },
   { value: 'DIRECTOR', label: 'Direção' },
   { value: 'SECRETARY', label: 'Secretaria' },
-  { value: 'TEACHER', label: 'Professor' },
-  { value: 'STUDENT', label: 'Aluno' },
+  { value: 'TEACHER', label: 'Docente' },
+  { value: 'STUDENT', label: 'Estudante' },
   { value: 'GUARDIAN', label: 'Responsável' },
 ];
 
@@ -258,12 +262,7 @@ function getSummaryLabels(fixedRole?: CurrentDatabaseRole) {
     };
   }
 
-  const noun = schoolUserRoleNouns[fixedRole];
-  return {
-    total: `${noun} cadastrados`,
-    active: `${noun} ativos`,
-    inactive: `${noun} inativos`,
-  };
+  return fixedRoleSummaryLabels[fixedRole];
 }
 
 export function getSchoolUserAccessStatus(
@@ -1013,9 +1012,9 @@ export default function SchoolUsersTab({
           role="note"
           className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800"
         >
-          <strong>Exclusão protegida:</strong> alunos com notas, frequência ou
+          <strong>Exclusão protegida:</strong> estudantes com notas, frequência ou
           fechamento de período não podem ser excluídos. O bloqueio preserva o
-          histórico acadêmico; alunos sem esses registros podem ser removidos
+          histórico acadêmico; estudantes sem esses registros podem ser removidos
           normalmente.
         </div>
       )}

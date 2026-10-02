@@ -246,6 +246,6 @@ describe('TeacherDashboard', () => {
 
     expect(screen.getByTestId('teacher-attendance-panel')).toBeTruthy();
     expect(screen.queryByText('Operação docente')).toBeNull();
-    expect(screen.queryByText('Registre o conteúdo da aula e a presença dos alunos.')).toBeNull();
+    expect(screen.queryByText('Registre o conteúdo da aula e a frequência dos estudantes.')).toBeNull();
   });
 });

@@ -196,8 +196,8 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
-    expect(screen.getByText(/professores ativos/i)).toBeTruthy();
+    expect(screen.getByText(/estudantes ativos/i)).toBeTruthy();
+    expect(screen.getByText(/docentes ativos/i)).toBeTruthy();
     expect(screen.getAllByText(/turmas ativas/i).length).toBeGreaterThan(0);
 
     expect(screen.getByText(/^configuração da escola$/i)).toBeTruthy();
@@ -246,10 +246,10 @@ describe('AdminOverviewTab', () => {
     );
 
     fireEvent.click(
-      screen.getByRole('button', { name: /Alunos ativos: 842\. Ver módulo/i }),
+      screen.getByRole('button', { name: /Estudantes ativos: 842\. Ver módulo/i }),
     );
     fireEvent.click(
-      screen.getByRole('button', { name: /Professores ativos: 47\. Ver módulo/i }),
+      screen.getByRole('button', { name: /Docentes ativos: 47\. Ver módulo/i }),
     );
     fireEvent.click(
       screen.getByRole('button', { name: /Turmas ativas: 28\. Ver módulo/i }),
@@ -279,8 +279,8 @@ describe('AdminOverviewTab', () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText('Alunos ativos')).toBeTruthy();
-    expect(screen.queryByRole('button', { name: /Alunos ativos/i })).toBeNull();
+    expect(screen.getByText('Estudantes ativos')).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Estudantes ativos/i })).toBeNull();
     expect(navigate).not.toHaveBeenCalled();
   });
 
@@ -318,6 +318,6 @@ describe('AdminOverviewTab', () => {
     expect(screen.queryByRole('heading', { name: /^base acadêmica$/i })).toBeNull();
     expect(screen.queryByRole('heading', { name: /^equipe$/i })).toBeNull();
     expect(screen.queryByText(/gerenciar acesso/i)).toBeNull();
-    expect(screen.getByText(/alunos ativos/i)).toBeTruthy();
+    expect(screen.getByText(/estudantes ativos/i)).toBeTruthy();
   });
 });

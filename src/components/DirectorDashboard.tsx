@@ -23,11 +23,11 @@ export function getDirectorDashboardTitle(
   role: EffectiveRole | undefined,
 ): string {
   if (role === 'ADMIN') {
-    return 'Painel do Administrador';
+    return 'Painel administrativo';
   }
 
   if (role === 'DIRECTOR') {
-    return 'Painel do Diretor';
+    return 'Painel da direção';
   }
 
   if (role === 'SECRETARY') {
@@ -189,7 +189,7 @@ export default function DirectorDashboard() {
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <MetricCard
-          title="Alunos ativos"
+          title="Estudantes ativos"
           value={overview.metrics.activeStudents}
           subtitle={`${overview.metrics.inactiveStudents} inativos`}
           icon={
@@ -201,7 +201,7 @@ export default function DirectorDashboard() {
         />
 
         <MetricCard
-          title="Professores ativos"
+          title="Docentes ativos"
           value={overview.metrics.activeTeachers}
           icon={
             <UsersRound

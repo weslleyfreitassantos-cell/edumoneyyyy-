@@ -50,7 +50,7 @@ export default function UpcomingAcademicEvents({
         </div>
       )}
 
-      <span className="sr-only">Eventos compatíveis com o perfil de {role === 'student' ? 'aluno' : role === 'guardian' ? 'responsável' : 'professor'}.</span>
+      <span className="sr-only">Eventos compatíveis com o perfil de {role === 'student' ? 'estudante' : role === 'guardian' ? 'responsável' : 'docente'}.</span>
     </section>
   );
 }

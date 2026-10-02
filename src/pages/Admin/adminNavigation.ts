@@ -114,14 +114,14 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
   },
   {
     id: 'students',
-    label: 'Alunos',
+    label: 'Estudantes',
     groupId: 'people',
     permission: 'manage_students',
     href: moduleHref('students'),
   },
   {
     id: 'teachers',
-    label: 'Professores',
+    label: 'Docentes',
     groupId: 'people',
     permission: 'manage_teachers',
     href: moduleHref('teachers'),
@@ -143,7 +143,7 @@ export const ADMIN_MODULES: AdminModuleDefinition[] = [
   },
   {
     id: 'directors',
-    label: 'Diretores',
+    label: 'Direção',
     groupId: 'people',
     permission: 'manage_school_users',
     href: moduleHref('directors'),
