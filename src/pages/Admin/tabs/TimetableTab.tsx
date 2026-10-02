@@ -88,7 +88,7 @@ function TimetableView({ grid, dayFilter, showClassContext, onEdit }: { grid: Ti
         {entry.subject_name}
       </span>
       <span className="mt-1 block text-slate-600 dark:text-slate-300">
-        {entry.teacher_name ?? 'Professor não informado'}
+        {entry.teacher_name ?? 'Docente não informado'}
       </span>
       {showClassContext && (
         <span className="mt-1 block font-semibold text-blue-700 dark:text-blue-300">
@@ -432,7 +432,7 @@ export default function TimetableTab() {
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-blue-700 dark:text-blue-300">Grade horária</p>
           <h1 className="mt-1 text-xl font-extrabold text-slate-900 dark:text-white">Organize a semana por turma</h1>
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Escolha uma turma para abrir a grade detalhada ou filtre por professor.</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Escolha uma turma para abrir a grade detalhada ou filtre por docente.</p>
         </div>
         <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{yearFilter === 'all' ? 'Todos os anos' : years.find((year) => year.id === yearFilter)?.name} · {termFilter === 'all' ? 'Todos os períodos' : 'Período selecionado'}</span>
       </div>
@@ -514,7 +514,7 @@ export default function TimetableTab() {
             </div>
 
             <div>
-              <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Professor</label>
+              <label htmlFor="tt-teacher-filter" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Docente</label>
               <select id="tt-teacher-filter" value={teacherFilter} onChange={(e) => setTeacherFilter(e.target.value)} className="mt-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 dark:border-slate-700 dark:bg-slate-950 dark:text-white">
                 <option value="all">Todos</option>
                 {teachers.map((teacher) => <option key={teacher.profile_id} value={teacher.profile_id}>{teacher.name ?? teacher.profile_id}</option>)}
@@ -641,7 +641,7 @@ export default function TimetableTab() {
               </div>
 
               <div>
-                <label htmlFor="entry-offering" className="block text-sm font-medium text-gray-700">Disciplina / Professor / Período</label>
+                <label htmlFor="entry-offering" className="block text-sm font-medium text-gray-700">Disciplina / Docente / Período</label>
                 <select
                   id="entry-offering"
                   value={entryDraft.subject_offering_id}

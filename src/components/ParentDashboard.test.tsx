@@ -246,7 +246,7 @@ describe('ParentDashboard', () => {
     );
 
     const offeringsList = screen.getByLabelText(
-      'Lista de disciplinas e professores',
+      'Lista de disciplinas e docentes',
     );
 
     expect(offeringsList.className).toContain('max-h-[32rem]');
@@ -328,7 +328,7 @@ describe('ParentDashboard', () => {
 
     expect(options[0]).toContain('Maria da Silva');
     expect(options[1]).toContain('João da Silva');
-    expect(options[2]).toContain('Aluno sem nome informado');
+    expect(options[2]).toContain('Estudante sem nome informado');
     expect(screen.getByText('Maria da Silva')).toBeTruthy();
   });
 });

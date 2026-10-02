@@ -501,7 +501,7 @@ describe('StudentDashboard', () => {
     expect(screen.getByText('Aluno Teste')).toBeTruthy();
     expect(screen.getByText('Sem matrícula ativa')).toBeTruthy();
     expect(
-      screen.getByText('Nenhuma matrícula ativa encontrada para este aluno.'),
+      screen.getByText('Nenhuma matrícula ativa encontrada.'),
     ).toBeTruthy();
   });
 });

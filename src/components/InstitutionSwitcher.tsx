@@ -4,15 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
 import { useInstitution } from '../contexts/InstitutionContext';
-
-const roleLabels: Record<string, string> = {
-  ADMIN: 'Administração',
-  DIRECTOR: 'Direção',
-  SECRETARY: 'Secretaria',
-  TEACHER: 'Professor',
-  STUDENT: 'Aluno',
-  GUARDIAN: 'Responsável',
-};
+import { getRoleDisplayLabel } from '../lib/roleDisplay';
 
 function getRoleLabel(
   role: string | null,
@@ -26,7 +18,7 @@ function getRoleLabel(
     return null;
   }
 
-  return roleLabels[role] ?? role;
+  return getRoleDisplayLabel(role);
 }
 
 export default function InstitutionSwitcher() {

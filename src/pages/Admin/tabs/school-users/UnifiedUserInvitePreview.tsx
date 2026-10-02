@@ -256,7 +256,7 @@ export default function UnifiedUserInvitePreview({
     selectedTarget !== 'TEACHER'
       ? null
       : teacherSubjectIds.length === 0
-        ? 'Selecione pelo menos uma disciplina para o professor.'
+        ? 'Selecione pelo menos uma disciplina para o perfil docente.'
         : teacherAvailability.length === 0
           ? 'Adicione pelo menos uma janela de disponibilidade semanal.'
           : invalidAvailability
@@ -396,7 +396,7 @@ export default function UnifiedUserInvitePreview({
       setTeacherAcademicError(teacherAcademicValidationError);
       setFeedback({
         type: 'error',
-        message: 'Complete a configuração acadêmica do professor antes de enviar o acesso.',
+        message: 'Complete a configuração acadêmica do perfil docente antes de enviar o acesso.',
       });
       return;
     }
@@ -425,14 +425,14 @@ export default function UnifiedUserInvitePreview({
           setTeacherAcademicError(
             academicError instanceof Error
               ? academicError.message
-              : 'O acesso foi criado, mas a configuração acadêmica não foi salva. Abra o professor e tente salvar novamente.',
+              : 'O acesso foi criado, mas a configuração acadêmica não foi salva. Abra o perfil docente e tente salvar novamente.',
           );
           setFeedback({
             type: 'error',
             message:
               emailPending
-                ? 'O acesso do professor foi criado e o e-mail de acesso ficou pendente, mas as disciplinas e a disponibilidade não foram salvas.'
-                : 'O acesso do professor foi criado e o e-mail foi enviado, mas as disciplinas e a disponibilidade não foram salvas.',
+                ? 'O acesso foi criado e o e-mail ficou pendente, mas as disciplinas e a disponibilidade não foram salvas.'
+                : 'O acesso foi criado e o e-mail foi enviado, mas as disciplinas e a disponibilidade não foram salvas.',
           });
           return;
         }
@@ -763,10 +763,10 @@ export default function UnifiedUserInvitePreview({
               <div className="space-y-5 rounded-lg bg-gray-50 p-4">
                 <div>
                   <h4 className="font-semibold text-[#181c20]">
-                    Configuração acadêmica do professor
+                    Configuração acadêmica do perfil docente
                   </h4>
                   <p className="mt-1 text-xs text-[#727785]">
-                    Selecione as disciplinas e informe quando o professor pode dar aulas. Esses dados serão salvos junto com o vínculo docente.
+                    Selecione as disciplinas e informe a disponibilidade para aulas. Esses dados serão salvos junto com o vínculo docente.
                   </p>
                 </div>
 
@@ -928,7 +928,7 @@ export default function UnifiedUserInvitePreview({
 
             {selectedTarget === 'DIRECTOR' && (
               <p className="rounded-lg bg-gray-50 p-3 text-sm text-[#727785]">
-                Diretor so pode ser convidado por ADMIN da conta.
+                O perfil de direção só pode ser convidado pela administração da conta.
               </p>
             )}
 
@@ -939,7 +939,7 @@ export default function UnifiedUserInvitePreview({
                     htmlFor="unified-invite-student"
                     className="block text-sm font-medium text-[#414754]"
                   >
-                    Aluno da instituicao
+                    Estudante da instituição
                   </label>
                   <select
                     id="unified-invite-student"
@@ -954,8 +954,8 @@ export default function UnifiedUserInvitePreview({
                   >
                     <option value="">
                       {studentsQuery.isLoading
-                        ? 'Carregando alunos...'
-                        : 'Selecione um aluno'}
+                        ? 'Carregando estudantes...'
+                        : 'Escolha um estudante da escola'}
                     </option>
                     {(studentsQuery.data ?? [])
                       .filter(
@@ -981,7 +981,7 @@ export default function UnifiedUserInvitePreview({
                   />
                   {studentsQuery.isError && (
                     <p className="mt-1 text-xs font-medium text-red-700">
-                      Nao foi possivel carregar alunos desta escola.
+                      Não foi possível carregar estudantes desta escola.
                     </p>
                   )}
                 </div>

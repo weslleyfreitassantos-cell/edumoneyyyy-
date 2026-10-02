@@ -156,7 +156,7 @@ describe('Sidebar', () => {
     );
 
     expect(
-      screen.getByRole('link', { name: /^alunos$/i }),
+      screen.getByRole('link', { name: /^estudantes$/i }),
     ).toBeTruthy();
     expect(
       screen.queryByRole('link', { name: /^matr.culas$/i }),
@@ -168,11 +168,11 @@ describe('Sidebar', () => {
       screen.getByRole('link', { name: /^secretaria$/i }),
     ).toBeTruthy();
     expect(
-      screen.queryByRole('link', { name: /^diretores$/i }),
+      screen.queryByRole('link', { name: /^direção$/i }),
     ).toBeNull();
   });
 
-  it('exibe Diretores e oculta Secretaria para ADMIN', () => {
+  it('exibe Direção e oculta Secretaria para ADMIN', () => {
     renderSidebar();
 
     fireEvent.click(
@@ -180,7 +180,7 @@ describe('Sidebar', () => {
     );
 
     expect(
-      screen.getByRole('link', { name: /^diretores$/i }),
+      screen.getByRole('link', { name: /^direção$/i }),
     ).toBeTruthy();
     expect(
       screen.queryByRole('link', { name: /^secretaria$/i }),
@@ -428,7 +428,7 @@ describe('Sidebar', () => {
 
     expect(
       screen.getByRole('link', {
-        name: /alunos/i,
+        name: /estudantes/i,
       }),
     ).toBeTruthy();
     fireEvent.click(
@@ -653,7 +653,7 @@ describe('sidebar navigation helpers', () => {
       (item) => item.id === 'student-subjects',
     );
 
-    expect(subjectsItem?.label).toBe('Disciplinas e professores');
+    expect(subjectsItem?.label).toBe('Disciplinas e docentes');
     expect(subjectsItem?.path).toBe('/dashboard/subjects');
 
     expect(studentItems.map((item) => item.id)).toEqual(

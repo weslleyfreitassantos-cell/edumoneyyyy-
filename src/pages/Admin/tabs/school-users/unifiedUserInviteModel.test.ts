@@ -23,10 +23,10 @@ describe('unified user invite model', () => {
         (option) => option.label,
       ),
     ).toEqual([
-      'Aluno',
-      'Professor',
-      'Responsavel',
-      'Diretor',
+      'Estudante',
+      'Docente',
+      'Responsável',
+      'Direção',
       'Secretaria',
     ]);
 
@@ -72,7 +72,7 @@ describe('unified user invite model', () => {
     expect(
       getUnifiedUserInviteOption('GUARDIAN')
         .description,
-    ).toContain('guardianships');
+    ).toContain('estudante');
   });
 
   it('monta payload normalizado para professor', () => {

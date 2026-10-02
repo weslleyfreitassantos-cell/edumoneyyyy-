@@ -83,7 +83,7 @@ function FlowStepRow({
           aria-disabled="true"
           className="mt-3 inline-flex min-h-9 items-center text-xs font-semibold text-[#667085]"
         >
-          Somente Diretor ou Secretaria
+          Somente Direção ou Secretaria
         </span>
         );
 
@@ -116,7 +116,7 @@ function FlowStepRow({
               <div
                 className="h-2 overflow-hidden rounded-full bg-[#e4e8f1] dark:bg-slate-700"
                 role="progressbar"
-                aria-label={`Disponibilidade dos professores: ${step.progress.current} de ${step.progress.total}`}
+                aria-label={`Disponibilidade docente: ${step.progress.current} de ${step.progress.total}`}
                 aria-valuemin={0}
                 aria-valuemax={step.progress.total}
                 aria-valuenow={step.progress.current}

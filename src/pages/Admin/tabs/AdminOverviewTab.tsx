@@ -172,13 +172,13 @@ export default function AdminOverviewTab({
   const { metrics } = overviewQuery.data;
   const primaryMetrics: Array<Omit<MetricCardProps, 'availableModuleIds' | 'onNavigateToModule' | 'emphasis'>> = [
     {
-      label: 'Alunos ativos',
+      label: 'Estudantes ativos',
       value: metrics.activeStudents,
       icon: GraduationCap,
       moduleId: 'students',
     },
     {
-      label: 'Professores ativos',
+      label: 'Docentes ativos',
       value: metrics.activeTeachers,
       icon: UserRoundCheck,
       moduleId: 'teachers',
@@ -222,7 +222,7 @@ export default function AdminOverviewTab({
       moduleId: 'curriculum',
     },
     {
-      label: 'Alunos inativos',
+      label: 'Estudantes inativos',
       value: metrics.inactiveStudents,
       icon: Users,
       moduleId: 'students',

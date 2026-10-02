@@ -27,12 +27,12 @@ describe('getDirectorDashboardTitle', () => {
   it('diferencia o painel visual do administrador', () => {
     expect(
       getDirectorDashboardTitle('ADMIN'),
-    ).toBe('Painel do Administrador');
+    ).toBe('Painel administrativo');
   });
 
   it('diferencia o painel visual do diretor', () => {
     expect(
       getDirectorDashboardTitle('DIRECTOR'),
-    ).toBe('Painel do Diretor');
+    ).toBe('Painel da direção');
   });
 });

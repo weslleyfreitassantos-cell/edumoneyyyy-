@@ -152,9 +152,9 @@ describe('UnifiedUserInvitePreview', () => {
     expect(
       screen.getByText('Cadastro de diretor'),
     ).toBeTruthy();
-    expect(screen.getByText('Diretor')).toBeTruthy();
+    expect(screen.getByText('Direção')).toBeTruthy();
     expect(
-      screen.queryByRole('button', { name: /^Aluno$/i }),
+      screen.queryByRole('button', { name: /^Estudante$/i }),
     ).toBeNull();
   });
 
@@ -183,7 +183,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Professor/,
+        name: /Docente/,
       }),
     );
     fireEvent.change(
@@ -297,7 +297,7 @@ describe('UnifiedUserInvitePreview', () => {
     });
 
     render(<UnifiedUserInvitePreview {...defaultProps} />);
-    fireEvent.click(screen.getByRole('button', { name: /Professor/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Docente/ }));
     fireEvent.change(screen.getByLabelText(/Nome completo/), {
       target: { value: 'Professor Pendente' },
     });
@@ -335,7 +335,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Professor/,
+        name: /Docente/,
       }),
     );
     fireEvent.change(
@@ -375,7 +375,7 @@ describe('UnifiedUserInvitePreview', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /Professor/,
+        name: /Docente/,
       }),
     );
     fireEvent.change(
@@ -455,7 +455,7 @@ describe('UnifiedUserInvitePreview', () => {
       },
     );
     fireEvent.change(
-      screen.getByLabelText(/Aluno da instituicao/),
+      screen.getByLabelText(/Estudante da instituição/),
       {
         target: {
           value:
@@ -502,7 +502,7 @@ describe('UnifiedUserInvitePreview', () => {
       />,
     );
 
-    expect(screen.getByText('Diretor')).toBeTruthy();
+    expect(screen.getByText('Direção')).toBeTruthy();
   });
 
   it('oculta DIRECTOR para diretor', () => {
@@ -515,12 +515,12 @@ describe('UnifiedUserInvitePreview', () => {
 
     expect(
       screen.queryByRole('button', {
-        name: /Diretor/,
+        name: /Direção/,
       }),
     ).toBeNull();
     expect(
       screen.getByRole('button', {
-        name: /Professor/,
+        name: /Docente/,
       }),
     ).toBeTruthy();
   });
@@ -535,17 +535,17 @@ describe('UnifiedUserInvitePreview', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /Professor/,
+        name: /Docente/,
       }),
     ).toBeTruthy();
     expect(
       screen.queryByRole('button', {
-        name: /Diretor/,
+        name: /Direção/,
       }),
     ).toBeNull();
     expect(
       screen.getByRole('button', {
-        name: /Aluno/,
+        name: /Estudante/,
       }),
     ).toBeTruthy();
     expect(

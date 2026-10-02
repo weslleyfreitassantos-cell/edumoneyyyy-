@@ -238,7 +238,7 @@ const baseNavigationItems: readonly SidebarNavigationItem[] = [
   },
   {
     id: 'student-subjects',
-    label: 'Disciplinas e professores',
+    label: 'Disciplinas e docentes',
     path: '/dashboard/subjects',
     section: 'personal',
     icon: UsersRound,

@@ -191,7 +191,7 @@ describe('StudentsTab - vínculo de responsável', () => {
       membershipId: 'membership-guardian',
       profileId: '00000000-0000-0000-0000-000000000005',
       guardianshipId: 'guardianship-1',
-      message: 'Responsável vinculado ao aluno com sucesso.',
+      message: 'Vínculo do responsável salvo com sucesso.',
     });
 
     render(<StudentsTab />);
@@ -231,7 +231,7 @@ describe('StudentsTab - vínculo de responsável', () => {
 
     expect(
       screen.getByText(
-        'Responsável vinculado ao aluno com sucesso.',
+        'Vínculo do responsável salvo com sucesso.',
       ),
     ).toBeTruthy();
   });
@@ -278,7 +278,7 @@ describe('StudentsTab - vínculo de responsável', () => {
 
     fireEvent.click(
       screen.getByRole('button', {
-        name: /novo aluno/i,
+        name: /novo estudante/i,
       }),
     );
 
@@ -293,7 +293,7 @@ describe('StudentsTab - vínculo de responsável', () => {
     render(<StudentsTab />);
 
     expect(screen.getByText('Não matriculado')).toBeTruthy();
-    fireEvent.click(screen.getByRole('button', { name: 'Matricular aluno' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Matricular estudante' }));
 
     expect(screen.getByTestId('full-student-enrollment-wizard')).toBeTruthy();
   });

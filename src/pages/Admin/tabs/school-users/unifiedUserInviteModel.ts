@@ -1,6 +1,7 @@
 import {
   getManageableSchoolUserRoles,
 } from '../../../../lib/permissions';
+import { getRoleDisplayLabel } from '../../../../lib/roleDisplay';
 
 export const UNIFIED_USER_INVITE_TARGETS = [
   'STUDENT',
@@ -29,9 +30,9 @@ export interface UnifiedUserInviteOption {
 export const UNIFIED_USER_INVITE_OPTIONS = [
   {
     target: 'STUDENT',
-    label: 'Aluno',
+    label: getRoleDisplayLabel('STUDENT'),
     description:
-      'Cadastro academico do aluno com vinculo institucional.',
+      'Cadastro acadêmico de estudante com vínculo institucional.',
     rolePreview: 'STUDENT',
     availabilityStatuses: [
       'available_now',
@@ -46,9 +47,9 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
   },
   {
     target: 'TEACHER',
-    label: 'Professor',
+    label: getRoleDisplayLabel('TEACHER'),
     description:
-      'Usuario com vinculo docente e acesso ao painel de professor.',
+      'Perfil docente com acesso ao painel docente.',
     rolePreview: 'TEACHER',
     availabilityStatuses: [
       'available_now',
@@ -62,9 +63,9 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
   },
   {
     target: 'GUARDIAN',
-    label: 'Responsavel',
+    label: getRoleDisplayLabel('GUARDIAN'),
     description:
-      'Usuario vinculado a aluno por guardianships.',
+      'Vínculo de responsabilidade associado à matrícula de estudante.',
     rolePreview: 'GUARDIAN',
     availabilityStatuses: [
       'available_now',
@@ -79,9 +80,9 @@ export const UNIFIED_USER_INVITE_OPTIONS = [
   },
   {
     target: 'DIRECTOR',
-    label: 'Diretor',
+    label: getRoleDisplayLabel('DIRECTOR'),
     description:
-      'Administrador institucional com membership DIRECTOR.',
+      'Perfil com acesso institucional de direção.',
     rolePreview: 'DIRECTOR',
     availabilityStatuses: [
       'available_now',
@@ -296,7 +297,7 @@ export function buildUnifiedUserInvitePayload(
   if (input.target === 'GUARDIAN') {
     if (!guardianStudentId) {
       fieldErrors.guardianStudentId =
-        'Selecione um aluno da escola.';
+        'Selecione a matrícula de estudante da escola.';
     }
 
     if (!relationship || relationship.length < 2) {

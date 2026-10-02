@@ -85,10 +85,10 @@ function TimetableLessonCard({
   occurrence?: TimetableOccurrence;
   audience: 'student' | 'teacher';
 }) {
-  const secondaryLabel = audience === 'student' ? 'Professor' : 'Turma';
+  const secondaryLabel = audience === 'student' ? 'Docente' : 'Turma';
   const secondaryValue =
     audience === 'student'
-      ? entry.teacher_name || 'Professor não informado'
+      ? entry.teacher_name || 'Docente não informado'
       : entry.class_name || 'Turma não informada';
 
   return (
