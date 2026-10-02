@@ -150,7 +150,8 @@ export function classifyHostname(hostname: string): HostResolution {
 
   if (
     cleanHost === 'grupotec.dev.br' ||
-    cleanHost === 'tecescola.grupotec.dev.br'
+    cleanHost === 'tecescola.grupotec.dev.br' ||
+    cleanHost === 'admin.grupotec.dev.br'
   ) {
     return { type: 'platform', hostname: cleanHost };
   }
@@ -188,7 +189,7 @@ export function extractSubdomainFromHostname(hostname: string): string | null {
   return null;
 }
 
-export const PLATFORM_ORIGIN = 'https://tecescola.grupotec.dev.br';
+export const PLATFORM_ORIGIN = 'https://admin.grupotec.dev.br';
 
 const SSO_INSTITUTION_COOKIE = 'edumanager.ssoInstitutionId';
 const UUID_PATTERN =

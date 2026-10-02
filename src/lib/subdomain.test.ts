@@ -83,6 +83,13 @@ describe('Subdomain Utilities', () => {
       });
     });
 
+    it('classifica admin.grupotec.dev.br como plataforma administrativa', () => {
+      expect(classifyHostname('admin.grupotec.dev.br')).toEqual({
+        type: 'platform',
+        hostname: 'admin.grupotec.dev.br',
+      });
+    });
+
     it('classifica escolaluz.grupotec.dev.br como instituicao com subdominio escolaluz', () => {
       expect(classifyHostname('escolaluz.grupotec.dev.br')).toEqual({
         type: 'institution',
