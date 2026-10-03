@@ -1,0 +1,64 @@
+{
+  "campaign": "TECESCOLA_BNCC_COMPLETE_CURRICULUM_DEFAULT_CONTENT_AND_LEARNING_UX_REFOUNDATION_V1",
+  "updatedAt": "2026-10-03T18:30:00Z",
+  "sourceFreeze": {
+    "status": "PARTIAL",
+    "earlyChildhoodAndElementary": "FROZEN",
+    "highSchool": "FROZEN",
+    "computing": "BLOCKED_SOURCE_UNAVAILABLE"
+  },
+  "officialCatalog": {
+    "status": "COMPLETE_FOR_FROZEN_SOURCES",
+    "uniqueCodes": 1583,
+    "catalogHash": "c99ff9ac6ead4417c44266db7bf4dd87c2492f9c4f354b0aa435ac766fa7ffda"
+  },
+  "mapping": {
+    "status": "NOT_COMPLETE",
+    "mappedCodes": 0,
+    "unaccountedCodes": 1583,
+    "reviewRequiredCodes": 1583
+  },
+  "pedagogicalContent": {
+    "status": "PARTIAL",
+    "officialBnccCoverage": "NOT_CLAIMED",
+    "tecEscolaDerivedV4": "PRESERVED",
+    "pedagogicalReview": "PENDING"
+  },
+  "defaultAvailability": {
+    "status": "ACTIVE_FOR_EXISTING_TECESCOLA_V4_PACKAGES",
+    "studentAssignmentsRequired": false,
+    "remoteMigrationLedger": 150,
+    "latestMigration": "20261003001100",
+    "qaSmoke": {
+      "schoolQaA": { "packages": 9, "automatic": 9, "explicit": 0 },
+      "schoolQaB": { "packages": 9, "automatic": 9, "explicit": 0 }
+    }
+  },
+  "studentExperience": {
+    "status": "PARTIAL",
+    "defaultContentVisibleOnFirstStudyCenterRender": true,
+    "adaptiveV4Preserved": true,
+    "enemPreservedAsComplementary": true
+  },
+  "teacherExperience": {
+    "status": "PARTIAL",
+    "monitoringPreserved": true,
+    "manualCustomizationPreserved": true,
+    "curatorFlowRedesign": "PENDING"
+  },
+  "production": {
+    "customerDataTouched": false,
+    "realStudentDataTouched": false,
+    "workerVersion": "35c46948-8d0c-4c63-8c3f-d1d3b1547adf",
+    "frontendMatchesMain": true,
+    "landingHttp": 200,
+    "adminHttp": 200,
+    "qaTenantHttp": 200
+  },
+  "blockers": [
+    "official Computing complement source could not be retrieved from an official endpoint",
+    "official-code-to-canonical mapping requires pedagogical review",
+    "official BNCC lesson/question coverage is not yet complete"
+  ],
+  "nextAction": "freeze_or_obtain_official_computing_source_then map independent BNCC stages with pedagogical review"
+}
