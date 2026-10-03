@@ -275,6 +275,7 @@ adaptiveDescribe('adaptive learning completion journeys', () => {
         await alicePage.getByRole('radio', { name: answer, exact: true }).check();
         if (index < simulationQuestions.length - 1) await alicePage.getByRole('button', { name: 'Próxima' }).click();
       }
+      await alicePage.getByRole('button', { name: 'Revisar e finalizar' }).click();
       await alicePage.getByRole('button', { name: 'Finalizar simulado' }).click();
       await expect(alicePage.getByText('Simulado concluído')).toBeVisible({ timeout: 30_000 });
       const completedAttempt = await service.from('learning_simulation_attempts').select('id,score,status').eq('simulation_id', simulation.data.id).eq('student_id', studentId).single();

@@ -142,6 +142,7 @@ adaptiveDescribe('official ENEM learning journey', () => {
       await expect(page.getByRole('status')).toContainText('Resposta salva.', { timeout: 30_000 });
       await page.reload();
       await expect(page.getByRole('radio', { name: wrongAnswer, exact: true })).toBeChecked({ timeout: 30_000 });
+      await page.getByRole('button', { name: 'Revisar e finalizar' }).click();
       await page.getByRole('button', { name: 'Finalizar simulado' }).click();
       await expect(page.getByText('Simulado concluído')).toBeVisible({ timeout: 30_000 });
 
