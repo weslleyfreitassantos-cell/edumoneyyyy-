@@ -34,3 +34,18 @@ artifact SHA-256, rejects duplicate manifest keys, preserves official
 provenance, and emits normalized question rows with TecEscola-derived
 classification kept separate. An empty manifest produces an empty batch; the
 command never fabricates questions or downloads from third-party sources.
+
+## Discovering the official catalog
+
+Discovery reads the INEP catalog and its year pages, pairs printed exam PDFs
+with their official answer keys, and writes only URLs and provenance metadata.
+It does not download PDFs or create question rows:
+
+```bash
+npm run enem:discover -- --year 2025 --out .runtime/enem-discovery-2025.json
+```
+
+Without `--year`, all year pages exposed by the catalog are discovered. An
+unpaired official PDF is reported in `issues` instead of being silently used.
+The output is an input for a later reviewed download/parse step, not an import
+batch by itself.

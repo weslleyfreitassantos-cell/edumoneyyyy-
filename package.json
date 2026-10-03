@@ -15,6 +15,7 @@
     "test:watch": "vitest",
     "e2e:local": "playwright test --config=e2e/playwright.config.ts",
     "e2e:production-smoke": "playwright test --config=e2e/production-smoke.config.ts",
+    "enem:discover": "node --experimental-strip-types tools/enem/discover.ts",
     "enem:ingest": "node --experimental-strip-types tools/enem/ingest.ts",
     "test:full:local": "node scripts/test-full-local.mjs",
     "health:prod": "node scripts/production-health.mjs",

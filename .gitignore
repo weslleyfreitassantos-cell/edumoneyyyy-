@@ -19,5 +19,6 @@ supabase/.temp/
 *.dump
 *.backup
 e2e/**/.runtime/
+.runtime/
 test-results/
 scripts/db/production-cleanup-execute.sql
