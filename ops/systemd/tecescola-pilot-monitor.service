@@ -8,6 +8,8 @@ Type=oneshot
 User=root
 StateDirectory=tecescola-pilot-monitor
 StateDirectoryMode=0700
+Environment=HOME=/root
+Environment=XDG_CONFIG_HOME=/root/.config
 ExecStart=/usr/bin/python3 /srv/grupotec/bin/tecescola_pilot_monitor.py
 TimeoutStartSec=60
 PrivateTmp=true
