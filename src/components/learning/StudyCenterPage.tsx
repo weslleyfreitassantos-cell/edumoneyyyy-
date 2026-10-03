@@ -38,6 +38,7 @@ import {
   useLearningReviewsDue,
   useLearningSimulations,
   useLearningSimulationAttempts,
+  useStudentLearningSimulationAssignments,
   useLearningDailyPlan,
   useLearningErrorNotebook,
   useLearningGamification,
@@ -155,6 +156,11 @@ export default function StudyCenterPage() {
   const simulationAttempts = useLearningSimulationAttempts(
     currentInstitutionId ?? undefined,
     student.data?.id,
+  );
+  const simulationAssignments = useStudentLearningSimulationAssignments(
+    currentInstitutionId ?? undefined,
+    student.data?.id,
+    showSecondaryStudyAreas,
   );
   const packages = useStudentLearningPackages(currentInstitutionId ?? undefined, student.data?.id, showSecondaryStudyAreas);
   const startGuidedSessionV2 = useStartGuidedLearningSessionV2(
@@ -449,6 +455,11 @@ export default function StudyCenterPage() {
           {simulations.data?.length ? <Link to="/student/study/simulation" className="text-xs font-bold text-[#005bbf]">Abrir simulado</Link> : null}
         </div>
         <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{simulations.data?.length ? `${simulations.data[0].title} · ${simulations.data[0].learning_simulation_questions?.length ?? 0} questões` : 'Nenhum simulado disponível ainda.'}</p>
+      </section>
+
+      <section aria-label="Simulados atribuídos" className="rounded-xl border border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/60 dark:bg-blue-950/20 sm:p-5">
+        <div className="flex items-start justify-between gap-3"><div><h2 className="font-bold text-blue-950 dark:text-blue-100">Simulados atribuídos</h2><p className="mt-1 text-xs text-blue-900 dark:text-blue-200">O que seu professor liberou para sua turma.</p></div><span className="rounded-full bg-white px-3 py-1 text-xs font-bold text-blue-800 dark:bg-blue-950/60 dark:text-blue-100">{simulationAssignments.data?.length ?? 0}</span></div>
+        {simulationAssignments.isLoading ? <p className="mt-4 text-sm text-blue-900 dark:text-blue-200">Carregando atribuições...</p> : simulationAssignments.data?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{simulationAssignments.data.slice(0, 6).map((assignment) => <Link key={assignment.assignment_id} to={`/student/study/simulation?simulation=${assignment.simulation_id}`} className="rounded-lg border border-blue-200 bg-white p-4 transition hover:border-[#005bbf] dark:border-blue-900/60 dark:bg-blue-950/40"><div className="flex items-start justify-between gap-3"><p className="font-semibold text-blue-950 dark:text-blue-100">{assignment.title}</p><span className="shrink-0 text-xs font-bold text-[#005bbf]">{assignment.assignment_status === 'COMPLETED' ? 'Concluído' : assignment.assignment_status === 'IN_PROGRESS' ? 'Em andamento' : 'Novo'}</span></div><p className="mt-1 text-xs text-blue-900 dark:text-blue-200">Professor: {assignment.assigned_by_name ?? 'Professor'}</p>{assignment.due_at ? <p className="mt-2 text-xs font-semibold text-blue-800 dark:text-blue-200">Entrega até {new Date(assignment.due_at).toLocaleDateString('pt-BR')}</p> : null}</Link>)}</div> : <p className="mt-4 text-sm text-blue-900 dark:text-blue-200">Nenhum simulado atribuído no momento.</p>}
       </section>
 
       <section id="historical-exams" aria-label="Provas anteriores" className="scroll-mt-24 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900 sm:p-5">
