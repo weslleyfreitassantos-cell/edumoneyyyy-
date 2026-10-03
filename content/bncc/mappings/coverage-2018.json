@@ -1,7 +1,7 @@
 {
   "schemaVersion": "tec-escola.bncc.mapping-coverage.v1",
-  "catalogVersion": "BNCC_2018_TEXT_EXTRACTION",
-  "catalogHash": "c99ff9ac6ead4417c44266db7bf4dd87c2492f9c4f354b0aa435ac766fa7ffda",
+  "catalogVersion": "BNCC_2018_AND_COMPUTACAO_2022_TEXT_EXTRACTION",
+  "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989",
   "sourceOfTruth": "official_catalog_plus_explicit_mapping_review",
   "generatedAt": "2026-10-03T00:00:00.000Z",
   "statusContract": {
@@ -13,14 +13,14 @@
     "reviewRequiredStatus": "REVIEW_REQUIRED"
   },
   "summary": {
-    "totalOfficialNodes": 1583,
+    "totalOfficialNodes": 1723,
     "mapped": 0,
     "explicitlyNonAdaptive": 0,
-    "unaccounted": 1583,
+    "unaccounted": 1723,
     "byStage": {
-      "EDUCACAO_INFANTIL": 93,
-      "ENSINO_FUNDAMENTAL": 1304,
-      "ENSINO_MEDIO": 186
+      "EDUCACAO_INFANTIL": 104,
+      "ENSINO_FUNDAMENTAL": 1407,
+      "ENSINO_MEDIO": 212
     },
     "byComponent": {
       "AR": 61,
@@ -28,6 +28,7 @@
       "CHS": 32,
       "CI": 111,
       "CNT": 26,
+      "CO": 140,
       "EF": 96,
       "EO": 20,
       "ER": 63,
@@ -132,6 +133,118 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 335
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 16
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 16
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 16
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 16
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 16
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 18
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF01CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "01",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 18
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -1428,6 +1541,102 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 337
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF02CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "02",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 20
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF02CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "02",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 20
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF02CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "02",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 20
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF02CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "02",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 20
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF02CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "02",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 20
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF02CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "02",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 20
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -2884,6 +3093,150 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 339
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 22
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 22
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 22
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 24
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 24
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 24
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 26
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 26
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF03CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 26
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -4404,6 +4757,134 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 341
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 28
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 28
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 30
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 30
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 30
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 30
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 30
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF04CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "04",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 30
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -5964,6 +6445,166 @@
       "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
     },
     {
+      "officialCode": "EF05CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 32
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 32
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 32
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 34
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 34
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 34
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 34
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 36
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 36
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF05CO10",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "05",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 36
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
       "officialCode": "EF05ER01",
       "stage": "ENSINO_FUNDAMENTAL",
       "kind": "SKILL",
@@ -7492,6 +8133,166 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 347
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 42
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 42
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 42
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 42
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 42
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 42
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 44
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 44
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 44
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF06CO10",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "06",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 44
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -9532,6 +10333,182 @@
       "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
     },
     {
+      "officialCode": "EF07CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 46
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 46
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 46
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 46
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 48
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 48
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 48
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 50
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 50
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO10",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 50
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF07CO11",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "07",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 50
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
       "officialCode": "EF07ER01",
       "stage": "ENSINO_FUNDAMENTAL",
       "kind": "SKILL",
@@ -11556,6 +12533,182 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 351
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 52
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 52
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 52
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 52
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 52
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 52
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 54
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 54
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 54
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO10",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 54
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF08CO11",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "08",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 54
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -13764,6 +14917,166 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 353
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 56
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 56
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 56
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 56
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 58
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 58
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 58
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 58
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 58
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF09CO10",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "09",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 58
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -16540,6 +17853,150 @@
       "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
     },
     {
+      "officialCode": "EF15CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 38
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 38
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 38
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 38
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 40
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 40
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 40
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 40
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF15CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "15",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 40
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
       "officialCode": "EF15LP01",
       "stage": "ENSINO_FUNDAMENTAL",
       "kind": "SKILL",
@@ -19076,6 +20533,198 @@
       "officialSource": {
         "id": "BNCC_EI_EF_2018",
         "page": 213
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO01",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 60
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO02",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 60
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO03",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 60
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO04",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 60
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO05",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 60
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO06",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 60
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO07",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 62
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO08",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 62
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO09",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 62
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO10",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 62
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO11",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 62
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EF69CO12",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "kind": "SKILL",
+      "gradeOrRange": "69",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 62
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -21964,6 +23613,182 @@
       "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
     },
     {
+      "officialCode": "EI03CO01",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 6
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO02",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 6
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO03",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 6
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO04",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 8
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO05",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 8
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO06",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 8
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO07",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 10
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO08",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 10
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO09",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 10
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO10",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 12
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EI03CO11",
+      "stage": "EDUCACAO_INFANTIL",
+      "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
+      "gradeOrRange": "03",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 12
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
       "officialCode": "EI03EF01",
       "stage": "EDUCACAO_INFANTIL",
       "kind": "LEARNING_DEVELOPMENT_OBJECTIVE",
@@ -23316,6 +25141,422 @@
       "officialSource": {
         "id": "BNCC_EM_2018",
         "page": 121
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO01",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 66
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO02",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 66
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO03",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 66
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO04",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 66
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO05",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 66
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO06",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 66
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO07",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 68
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO08",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 68
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO09",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 68
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO10",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 68
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO11",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 68
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO12",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO13",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO14",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO15",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO16",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO17",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO18",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 70
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO19",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 72
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO20",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 72
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO21",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 72
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO22",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 72
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO23",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 74
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO24",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 74
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO25",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 74
+      },
+      "status": "UNACCOUNTED",
+      "mappingSource": "NOT_YET_MAPPED",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "canonicalSkillCodes": [],
+      "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
+    },
+    {
+      "officialCode": "EM13CO26",
+      "stage": "ENSINO_MEDIO",
+      "kind": "SKILL",
+      "gradeOrRange": "1-3",
+      "componentCode": "CO",
+      "officialSource": {
+        "id": "BNCC_COMPUTACAO_2022",
+        "page": 74
       },
       "status": "UNACCOUNTED",
       "mappingSource": "NOT_YET_MAPPED",
@@ -25372,5 +27613,5 @@
       "rationale": "Nenhum mapeamento TecEscola foi promovido sem revisão pedagógica explícita."
     }
   ],
-  "coverageHash": "3ed115cc722eb2c22d0010ecf260baae560a8809ea852ba98dbf939e89ba0ef6"
+  "coverageHash": "56031ec277e0a3a30ad5b8aa3fbfa6944cd19af2c02ce6620f9eac275e3be9a4"
 }

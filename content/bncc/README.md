@@ -18,9 +18,9 @@ aluno elegível por instituição, matrícula, etapa e ano. A atribuição expl�
 continua legível para compatibilidade e personalização, mas não é criada para
 habilitar o conteúdo padrão.
 
-O complemento oficial de Computação permanece explicitamente bloqueado até que
-o anexo oficial seja baixado do host do MEC. Um espelho de terceiro não pode ser
-promovido a source of truth.
+O complemento oficial de Computação está congelado a partir do anexo oficial
+publicado pelo MEC. Um espelho de terceiro não pode ser promovido a source of
+truth.
 
 Os arquivos baixados e os textos extraídos ficam em `.runtime/bncc/`, que é
 ignorado pelo Git. O catálogo versionado contém proveniência suficiente para

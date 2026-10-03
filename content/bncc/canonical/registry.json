@@ -1,59 +1,1029 @@
 {
   "schemaVersion": "tec-escola.bncc.canonical-registry.v1",
-  "source": "TECESCOLA_CORE_V1 migration seed",
+  "source": "TECESCOLA_CORE_V1 migration seed + TECESCOLA_CORE_V4 leaf registry",
   "skills": [
     {
-      "code": "FRACTIONS",
+      "code": "ART_COMPARE_COMPOSITIONS",
       "stage": "ENSINO_FUNDAMENTAL",
-      "gradeLevels": [6],
-      "subjectAreas": ["MATEMATICA"],
-      "title": "Fundamentos de frações",
-      "aliases": ["fração", "frações", "parte de um todo", "equivalência"],
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "ARTE"
+      ],
+      "title": "Comparar composicoes artisticas",
+      "aliases": [
+        "ELEMENTOS"
+      ],
       "kind": "LEAF"
     },
     {
-      "code": "RATIO_PROPORTION",
+      "code": "ART_INTERPRET_WORK",
       "stage": "ENSINO_FUNDAMENTAL",
-      "gradeLevels": [7],
-      "subjectAreas": ["MATEMATICA"],
-      "title": "Razão e proporção",
-      "aliases": ["razão", "proporção", "grandezas proporcionais"],
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "ARTE"
+      ],
+      "title": "Interpretar elementos de uma obra",
+      "aliases": [
+        "INTERPRETACAO"
+      ],
       "kind": "LEAF"
     },
     {
-      "code": "PERCENTAGE",
+      "code": "ART_RELATE_WORK_CONTEXT",
       "stage": "ENSINO_FUNDAMENTAL",
-      "gradeLevels": [7],
-      "subjectAreas": ["MATEMATICA"],
-      "title": "Porcentagem",
-      "aliases": ["porcentagem", "percentual", "percentuais"],
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "ARTE"
+      ],
+      "title": "Relacionar obra e contexto cultural",
+      "aliases": [
+        "CONTEXTO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "BIOLOGY_CELL_FUNCTION",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Relacionar estrutura e funcao celular",
+      "aliases": [
+        "CELULA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Explicar interacoes em ecossistemas",
+      "aliases": [
+        "ECOLOGIA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "BIOLOGY_EXPLAIN_INHERITANCE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Explicar heranca genetica",
+      "aliases": [
+        "GENETICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "BIOLOGY_INTERPRET_POPULATION_DATA",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar dados de uma populacao",
+      "aliases": [
+        "ECOLOGIA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "CHEMISTRY_ACID_BASE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar acidez e basicidade",
+      "aliases": [
+        "SOLUCOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "CHEMISTRY_ATOMIC_STRUCTURE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar modelos atomicos",
+      "aliases": [
+        "ATOMOS"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "CHEMISTRY_REACTION_EVIDENCE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Identificar evidencia de transformacao quimica",
+      "aliases": [
+        "REACOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "CHEMISTRY_STOICHIOMETRY",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Raciocinar sobre proporcoes em reacoes",
+      "aliases": [
+        "REACOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "COMPUTING_READ_TABLE_DATA",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "COMPUTACAO"
+      ],
+      "title": "Selecionar dados em uma tabela",
+      "aliases": [
+        "DADOS"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "COMPUTING_RECOGNIZE_PHISHING",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "COMPUTACAO"
+      ],
+      "title": "Reconhecer sinais de phishing",
+      "aliases": [
+        "SEGURANCA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "COMPUTING_TRACE_ALGORITHM",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "COMPUTACAO"
+      ],
+      "title": "Rastrear algoritmo com condicoes",
+      "aliases": [
+        "ALGORITMOS"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "ENGLISH_INFER_FROM_TEXT",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_INGLESA"
+      ],
+      "title": "Inferir sentido em texto em ingles",
+      "aliases": [
+        "LEITURA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_INGLESA"
+      ],
+      "title": "Relacionar linguagem e contexto cultural",
+      "aliases": [
+        "CULTURA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "ENGLISH_USE_CONTEXT_VOCABULARY",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_INGLESA"
+      ],
+      "title": "Interpretar vocabulario pelo contexto",
+      "aliases": [
+        "VOCABULARIO"
+      ],
       "kind": "LEAF"
     },
     {
       "code": "EQUATIONS",
       "stage": "ENSINO_FUNDAMENTAL",
-      "gradeLevels": [8],
-      "subjectAreas": ["MATEMATICA"],
+      "gradeLevels": [
+        8
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
       "title": "Equações",
-      "aliases": ["equação", "equações", "incógnita", "primeiro grau"],
+      "aliases": [
+        "equação",
+        "equações",
+        "incógnita",
+        "primeiro grau"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "FRACTIONS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Fundamentos de frações",
+      "aliases": [
+        "fração",
+        "frações",
+        "parte de um todo",
+        "equivalência"
+      ],
       "kind": "LEAF"
     },
     {
       "code": "FUNCTIONS_INTRO",
       "stage": "ENSINO_MEDIO",
-      "gradeLevels": [1],
-      "subjectAreas": ["MATEMATICA"],
+      "gradeLevels": [
+        1
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
       "title": "Introdução a funções",
-      "aliases": ["função", "funções", "variáveis", "relação"],
+      "aliases": [
+        "função",
+        "funções",
+        "variáveis",
+        "relação"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Analisar dados climaticos",
+      "aliases": [
+        "CLIMA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Interpretar territorio e paisagem",
+      "aliases": [
+        "TERRITORIO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "GEOGRAPHY_MAP_SCALE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Interpretar escala cartografica",
+      "aliases": [
+        "CARTOGRAFIA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_COMPARE_CAUSES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Comparar causas e consequencias historicas",
+      "aliases": [
+        "CAUSALIDADE"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_INTERPRET_EVIDENCE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Interpretar evidencia historica",
+      "aliases": [
+        "FONTES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "HISTORY_ORDER_EVENTS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Ordenar acontecimentos no tempo",
+      "aliases": [
+        "CRONOLOGIA"
+      ],
       "kind": "LEAF"
     },
     {
       "code": "LINEAR_FUNCTION",
       "stage": "ENSINO_MEDIO",
-      "gradeLevels": [1],
-      "subjectAreas": ["MATEMATICA"],
+      "gradeLevels": [
+        1
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
       "title": "Função afim",
-      "aliases": ["função afim", "função linear", "gráfico", "variação"],
+      "aliases": [
+        "função afim",
+        "função linear",
+        "gráfico",
+        "variação"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "MATH_IDENTIFY_PERCENT_BASE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Identificar a base de uma porcentagem",
+      "aliases": [
+        "PORCENTAGEM"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "MATH_INTERPRET_DATA_TABLE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Interpretar dados em tabela",
+      "aliases": [
+        "DADOS"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "MATH_PERCENT_INCREASE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Resolver aumento percentual",
+      "aliases": [
+        "PORCENTAGEM"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "MATH_PERCENT_OF_QUANTITY",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Calcular percentual de uma quantidade",
+      "aliases": [
+        "PORCENTAGEM"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "MATH_RATIO_UNIT_RATE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Interpretar razao e taxa unitaria",
+      "aliases": [
+        "RAZAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PE_ANALYZE_MOVEMENT",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "EDUCACAO_FISICA"
+      ],
+      "title": "Analisar movimento corporal",
+      "aliases": [
+        "CORPO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "EDUCACAO_FISICA"
+      ],
+      "title": "Explicar principios de esportes",
+      "aliases": [
+        "ESPORTES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PE_PLAN_SAFE_ACTIVITY",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "EDUCACAO_FISICA"
+      ],
+      "title": "Planejar atividade fisica segura",
+      "aliases": [
+        "SAUDE"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PERCENTAGE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        7
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Porcentagem",
+      "aliases": [
+        "porcentagem",
+        "percentual",
+        "percentuais"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Aplicar principio etico a um caso",
+      "aliases": [
+        "ETICA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Distinguir conceito de opiniao",
+      "aliases": [
+        "CONCEITO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHILOSOPHY_EVALUATE_ARGUMENT",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Avaliar argumento filosofico",
+      "aliases": [
+        "ARGUMENTO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_AVERAGE_SPEED",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Calcular velocidade media",
+      "aliases": [
+        "VELOCIDADE"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_INTERPRET_MOTION_GRAPH",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Interpretar grafico de movimento",
+      "aliases": [
+        "MOVIMENTO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_MODEL_FORCE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Relacionar forca e movimento",
+      "aliases": [
+        "INTERACOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PHYSICS_UNIT_CONVERSION",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_NATUREZA"
+      ],
+      "title": "Converter unidades de movimento",
+      "aliases": [
+        "MEDIDAS"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_ARGUMENT_EVIDENCE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Identificar tese e evidencia em textos argumentativos",
+      "aliases": [
+        "ARGUMENTACAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_CONNECT_IDEAS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Interpretar conectores e relacoes de sentido",
+      "aliases": [
+        "COESAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Distinguir razao de evidencia",
+      "aliases": [
+        "ARGUMENTACAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PORTUGUESE_INFER_FROM_CLUES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "LINGUA_PORTUGUESA"
+      ],
+      "title": "Inferir informacao a partir de pistas textuais",
+      "aliases": [
+        "LEITURA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "RATIO_PROPORTION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        7
+      ],
+      "subjectAreas": [
+        "MATEMATICA"
+      ],
+      "title": "Razão e proporção",
+      "aliases": [
+        "razão",
+        "proporção",
+        "grandezas proporcionais"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "RELIGIOUS_COMPARE_TRADITIONS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "ENSINO_RELIGIOSO"
+      ],
+      "title": "Comparar tradicoes com respeito",
+      "aliases": [
+        "DIVERSIDADE"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "RELIGIOUS_INTERPRET_SYMBOLS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "ENSINO_RELIGIOSO"
+      ],
+      "title": "Interpretar simbolos e narrativas",
+      "aliases": [
+        "TRADICOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "RELIGIOUS_MEDIATE_DIALOGUE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "ENSINO_RELIGIOSO"
+      ],
+      "title": "Mediar dialogo sobre conviccoes",
+      "aliases": [
+        "DIALOGO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SCIENCE_EVIDENCE_CONCLUSION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS"
+      ],
+      "title": "Relacionar evidencia e conclusao",
+      "aliases": [
+        "EVIDENCIA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS"
+      ],
+      "title": "Explicar transformacoes da materia",
+      "aliases": [
+        "TRANSFORMACOES"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SCIENCE_IDENTIFY_VARIABLES",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS"
+      ],
+      "title": "Identificar variaveis experimentais",
+      "aliases": [
+        "INVESTIGACAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SCIENCE_PLAN_INVESTIGATION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "subjectAreas": [
+        "CIENCIAS"
+      ],
+      "title": "Planejar uma investigacao controlada",
+      "aliases": [
+        "INVESTIGACAO"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Analisar dados de desigualdade",
+      "aliases": [
+        "ESTRUTURA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Distinguir norma de valor social",
+      "aliases": [
+        "CULTURA"
+      ],
+      "kind": "LEAF"
+    },
+    {
+      "code": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [
+        1,
+        2,
+        3
+      ],
+      "subjectAreas": [
+        "CIENCIAS_HUMANAS"
+      ],
+      "title": "Explicar instituicoes sociais",
+      "aliases": [
+        "INSTITUICOES"
+      ],
       "kind": "LEAF"
     }
   ]
