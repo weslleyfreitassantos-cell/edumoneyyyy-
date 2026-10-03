@@ -9,6 +9,19 @@ import type { EnemDownloadedArtifact } from './download.ts';
 export type EnemLanguage = 'ENGLISH' | 'SPANISH' | null;
 export type EnemAnswer = 'A' | 'B' | 'C' | 'D' | 'E' | 'ANNULLED' | 'UNKNOWN';
 export type EnemQualityState = 'PARSED' | 'REVIEW_REQUIRED' | 'REJECTED';
+export type EnemReviewReason =
+  | 'MISSING_OPTIONS'
+  | 'MEDIA_REQUIRED'
+  | 'UNKNOWN_OFFICIAL_ANSWER'
+  | 'FORMULA_REVIEW'
+  | 'TEXT_EXTRACTION_LOW_CONFIDENCE'
+  | 'DUPLICATE_IDENTITY'
+  | 'LANGUAGE_AMBIGUOUS'
+  | 'MISSING_ANSWER_KEY'
+  | 'STATEMENT_TOO_SHORT'
+  | 'HEADER_CONTAMINATION'
+  | 'PAGE_BOUNDARY_ERROR'
+  | 'OTHER';
 
 export interface PdfTextPage {
   page: number;
@@ -32,6 +45,7 @@ export interface ParsedEnemQuestion {
   officialAnswer: EnemAnswer;
   mediaStatus: 'NOT_DETECTED' | 'REVIEW_REQUIRED';
   qualityState: EnemQualityState;
+  reviewReasons?: EnemReviewReason[];
 }
 
 export interface ParsedEnemArtifact {
@@ -209,7 +223,17 @@ export function parseQuestionSegments(segments: ReturnType<typeof extractQuestio
     const textStatus = statement.length >= 20 && !/QUESTÕES|OPÇÃO INGLÊS|OPÇÃO ESPANHOL|CADERNO|GABARITO/i.test(statement)
       ? 'VALID'
       : 'REVIEW_REQUIRED';
-    const qualityState: EnemQualityState = extracted.options.length === 5 && officialAnswer !== 'UNKNOWN' && mediaStatus === 'NOT_DETECTED' && textStatus === 'VALID'
+    const reviewReasons: EnemReviewReason[] = [];
+    if (extracted.options.length !== 5) reviewReasons.push('MISSING_OPTIONS');
+    if (mediaStatus === 'REVIEW_REQUIRED') reviewReasons.push('MEDIA_REQUIRED');
+    if (officialAnswer === 'UNKNOWN') reviewReasons.push('UNKNOWN_OFFICIAL_ANSWER');
+    if (statement.length < 20) reviewReasons.push('STATEMENT_TOO_SHORT');
+    if (/QUESTÕES|OPÇÃO INGLÊS|OPÇÃO ESPANHOL|CADERNO|GABARITO/i.test(statement)) reviewReasons.push('HEADER_CONTAMINATION');
+    if (/\b(fórmula|equação|raiz quadrada|integral|logaritmo)\b|[√∑∫]/i.test(statement)) reviewReasons.push('FORMULA_REVIEW');
+    if (Number(segment.language === null && segment.questionNumber <= 5 && Number(day.replace(/\D/g, '')) % 2 === 1)) {
+      reviewReasons.push('LANGUAGE_AMBIGUOUS');
+    }
+    const qualityState: EnemQualityState = reviewReasons.length === 0 && textStatus === 'VALID'
       ? 'PARSED'
       : 'REVIEW_REQUIRED';
     return {
@@ -223,6 +247,7 @@ export function parseQuestionSegments(segments: ReturnType<typeof extractQuestio
       officialAnswer,
       mediaStatus,
       qualityState,
+      reviewReasons,
     };
   });
 }
@@ -266,7 +291,11 @@ async function parseArtifact(artifact: EnemDownloadedArtifact): Promise<ParsedEn
   const questions = parsedQuestions.map((question) => {
     const key = `${question.questionNumber}:${question.language ?? ''}`;
     return (identityCounts.get(key) ?? 0) > 1
-      ? { ...question, qualityState: 'REVIEW_REQUIRED' as const }
+      ? {
+        ...question,
+        qualityState: 'REVIEW_REQUIRED' as const,
+        reviewReasons: [...new Set([...(question.reviewReasons ?? []), 'DUPLICATE_IDENTITY' as const])],
+      }
       : question;
   });
   const issues: string[] = [];
