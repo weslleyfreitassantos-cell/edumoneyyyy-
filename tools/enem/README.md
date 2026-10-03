@@ -49,3 +49,37 @@ Without `--year`, all year pages exposed by the catalog are discovered. An
 unpaired official PDF is reported in `issues` instead of being silently used.
 The output is an input for a later reviewed download/parse step, not an import
 batch by itself.
+
+## Downloading and parsing a canary year
+
+The downloader follows only URLs emitted by discovery, retries transient
+transport failures, verifies the PDF magic header, and writes PDFs under
+`.runtime` (which is not committed). Missing or broken official artifacts are
+quarantined while valid pairs continue:
+
+```bash
+npm run enem:download -- \
+  --discovery .runtime/enem-discovery-2025.json \
+  --dir .runtime/enem/2025 \
+  --out .runtime/enem-download-2025.json
+```
+
+The parser uses the official answer-key PDF only for `A`-`E`/`ANNULLED` states;
+it never asks a model to decide an answer. Question text, options, page and
+language are extracted conservatively. Items with uncertain layout, media or
+missing options are `REVIEW_REQUIRED` and are not import-ready:
+
+```bash
+npm run enem:parse -- \
+  --downloads .runtime/enem-download-2025.json \
+  --out .runtime/enem-parsed-2025.json
+npm run enem:canonicalize -- \
+  --parsed .runtime/enem-parsed-2025.json \
+  --out .runtime/enem-canonical-2025.json
+```
+
+Canonicalization collapses repeated booklet occurrences while preserving each
+official occurrence and quarantining genuine cross-booklet conflicts. The
+`20261003000500_enem_official_corpus_v1.sql` migration adds service-role-only
+batch, occurrence and media provenance tables; it does not import content by
+itself.
