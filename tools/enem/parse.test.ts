@@ -35,5 +35,14 @@ describe('ENEM official PDF parser', () => {
     ]);
     expect(questions[0]).toMatchObject({ questionNumber: 1, language: 'ENGLISH', officialAnswer: 'A', options: ['Uma', 'Duas', 'Três', 'Quatro', 'Cinco'], qualityState: 'PARSED' });
     expect(questions[1]).toMatchObject({ questionNumber: 2, mediaStatus: 'REVIEW_REQUIRED', qualityState: 'REVIEW_REQUIRED' });
+    expect(questions[1].reviewReasons).toContain('MEDIA_REQUIRED');
+  });
+
+  it('records structural reasons without pretending they are pedagogical review', () => {
+    const [question] = parseQuestionSegments([
+      { questionNumber: 10, language: null, page: 4, area: 'MATEMATICA', raw: 'curto A Uma B Duas' },
+    ], []);
+    expect(question.qualityState).toBe('REVIEW_REQUIRED');
+    expect(question.reviewReasons).toEqual(expect.arrayContaining(['MISSING_OPTIONS', 'STATEMENT_TOO_SHORT', 'UNKNOWN_OFFICIAL_ANSWER']));
   });
 });

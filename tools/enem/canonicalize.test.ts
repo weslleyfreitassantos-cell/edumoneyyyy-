@@ -15,6 +15,7 @@ function question(overrides: Partial<ParsedEnemQuestion> = {}): ParsedEnemQuesti
     officialAnswer: 'C',
     mediaStatus: 'NOT_DETECTED',
     qualityState: 'PARSED',
+    reviewReasons: [],
     ...overrides,
   };
 }
