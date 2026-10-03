@@ -22,7 +22,14 @@ export default function StudentReportCard({
   }
 
   if (query.isError) {
-    return <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200">Não foi possível carregar o boletim.</div>;
+    return (
+      <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900/60 dark:bg-red-950/30 dark:text-red-200">
+        <p>Não foi possível carregar o boletim agora.</p>
+        <button type="button" onClick={() => void query.refetch()} className="mt-3 min-h-11 rounded-lg border border-red-300 bg-white px-4 py-2 font-semibold text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2">
+          Tentar novamente
+        </button>
+      </div>
+    );
   }
 
   if (!reportCard || reportCard.subjects.length === 0) {

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import StudentReportCard from './StudentReportCard';
 import { useStudentReportCard } from '../../hooks/useAcademicTermClosing';
 
@@ -52,5 +52,21 @@ describe('StudentReportCard', () => {
 
     expect(screen.getByText('Resultado oficial')).toBeDefined();
     expect(screen.getAllByText('80%')).toHaveLength(2);
+  });
+
+  it('oferece recuperação sem recarregar a página quando a leitura falha', () => {
+    const refetch = vi.fn();
+    (useStudentReportCard as any).mockReturnValue({
+      data: undefined,
+      isLoading: false,
+      isError: true,
+      refetch,
+    });
+
+    render(<StudentReportCard institutionId="inst-1" studentId="student-1" />);
+
+    expect(screen.getByText('Não foi possível carregar o boletim agora.')).toBeDefined();
+    fireEvent.click(screen.getByRole('button', { name: 'Tentar novamente' }));
+    expect(refetch).toHaveBeenCalledTimes(1);
   });
 });

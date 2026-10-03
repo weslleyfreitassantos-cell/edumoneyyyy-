@@ -138,10 +138,19 @@ export interface StudentDashboardOffering {
   term_end_date: string;
 }
 
+export interface StudentDashboardTerm {
+  id: string;
+  name: string;
+  start_date: string;
+  end_date: string;
+  active: boolean | null;
+}
+
 export interface StudentDashboardData {
   student: StudentDashboardRecord;
   activeEnrollment: StudentDashboardEnrollment | null;
   offerings: StudentDashboardOffering[];
+  academicYearTerms: StudentDashboardTerm[];
 }
 
 function normalizeRelation<T>(
@@ -471,9 +480,12 @@ async function getActiveEnrollment(
 async function getOfferings(
   enrollment: StudentDashboardEnrollment | null,
   institutionId: string,
-): Promise<StudentDashboardOffering[]> {
+): Promise<{
+  offerings: StudentDashboardOffering[];
+  academicYearTerms: StudentDashboardTerm[];
+}> {
   if (!enrollment) {
-    return [];
+    return { offerings: [], academicYearTerms: [] };
   }
 
   const { data, error } = await supabase
@@ -531,15 +543,36 @@ async function getOfferings(
         offering,
       ): offering is StudentDashboardOffering =>
         offering !== null,
-    )
-  return filterStudentOfferingsToCurrentTerm(
-    normalizedOfferings,
+    );
+
+  const academicYearTerms = Array.from(
+    new Map(
+      normalizedOfferings.map((offering) => [
+        offering.term_id,
+        {
+          id: offering.term_id,
+          name: offering.term_name,
+          start_date: offering.term_start_date,
+          end_date: offering.term_end_date,
+          active: true,
+        },
+      ]),
+    ).values(),
   ).sort((first, second) =>
+    first.start_date.localeCompare(second.start_date),
+  );
+
+  return {
+    offerings: filterStudentOfferingsToCurrentTerm(
+      normalizedOfferings,
+    ).sort((first, second) =>
       first.subject_name.localeCompare(
         second.subject_name,
         'pt-BR',
       ),
-  );
+    ),
+    academicYearTerms,
+  };
 }
 
 async function getDashboardForStudent(
@@ -551,7 +584,7 @@ async function getDashboardForStudent(
       student.institution_id,
     );
 
-  const offerings = await getOfferings(
+  const offeringData = await getOfferings(
     activeEnrollment,
     student.institution_id,
   );
@@ -559,7 +592,8 @@ async function getDashboardForStudent(
   return {
     student,
     activeEnrollment,
-    offerings,
+    offerings: offeringData.offerings,
+    academicYearTerms: offeringData.academicYearTerms,
   };
 }
 

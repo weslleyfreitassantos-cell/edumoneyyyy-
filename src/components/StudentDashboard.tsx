@@ -27,6 +27,7 @@ import {
   getWeekStartDateKey,
   projectTimetableOccurrences,
 } from '../lib/academic/timetableOccurrences';
+import { resolveStudentTimetableTerm } from '../lib/academic/studentTimetableTerms';
 import { getEnrollmentStatusLabel } from '../lib/statusLabels';
 import { getUserFacingErrorMessage } from '../lib/userFacingError';
 
@@ -230,9 +231,8 @@ function LoadingState() {
 function StudentTimetableView({
   institutionId,
   enrollment,
-  currentTermId,
-  termStartDate,
-  termEndDate,
+  academicYearTerms,
+  fallbackTerm,
 }: {
   institutionId: string;
   enrollment: {
@@ -241,19 +241,35 @@ function StudentTimetableView({
     shift: string | null;
     academic_year_name: string;
   } | null;
-  currentTermId?: string;
-  termStartDate?: string | null;
-  termEndDate?: string | null;
+  academicYearTerms: StudentDashboardData['academicYearTerms'];
+  fallbackTerm: StudentDashboardOffering | null;
 }) {
-  const timetableQuery = useStudentTimetable(
-    institutionId,
-    enrollment?.class_id,
-    currentTermId,
-  );
-  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
   const [weekStartDate] = useState(() =>
     getWeekStartDateKey(getLocalDateInputValue()),
   );
+  const resolvedTerm = resolveStudentTimetableTerm(
+    academicYearTerms.map((term) => ({
+      id: term.id,
+      startDate: term.start_date,
+      endDate: term.end_date,
+      active: term.active,
+    })),
+    weekStartDate,
+  );
+  const timetableTerm = resolvedTerm ??
+    (academicYearTerms.length === 0 && fallbackTerm
+      ? {
+          id: fallbackTerm.term_id,
+          startDate: fallbackTerm.term_start_date,
+          endDate: fallbackTerm.term_end_date,
+        }
+      : null);
+  const timetableQuery = useStudentTimetable(
+    institutionId,
+    enrollment?.class_id,
+    timetableTerm?.id ?? (academicYearTerms.length > 0 ? null : undefined),
+  );
+  const scheduleBreaksQuery = useSchoolScheduleBreaks(institutionId);
   const entries = (timetableQuery.data ?? []).filter(
     (entry) => entry.active,
   );
@@ -261,8 +277,8 @@ function StudentTimetableView({
     institutionId,
     entries,
     weekStartDate,
-    termStartDate,
-    termEndDate,
+    timetableTerm?.startDate,
+    timetableTerm?.endDate,
   );
 
   if (!enrollment) {
@@ -312,8 +328,8 @@ function StudentTimetableView({
     entries,
     weekStartDate,
     calendarStatusQuery.data,
-    termStartDate,
-    termEndDate,
+    timetableTerm?.startDate,
+    timetableTerm?.endDate,
   );
 
   return (
@@ -429,18 +445,21 @@ export default function StudentDashboard() {
     );
   }
 
-  const { student, activeEnrollment, offerings } =
+  const {
+    student,
+    activeEnrollment,
+    offerings,
+    academicYearTerms = [],
+  } =
     dashboard;
-  const currentOffering = offerings[0];
 
   if (location.pathname === '/dashboard/timetable') {
     return (
       <StudentTimetableView
         institutionId={institutionQuery.data}
         enrollment={activeEnrollment}
-        currentTermId={currentOffering?.term_id}
-        termStartDate={currentOffering?.term_start_date}
-        termEndDate={currentOffering?.term_end_date}
+        academicYearTerms={academicYearTerms}
+        fallbackTerm={offerings.length === 1 ? offerings[0] : null}
       />
     );
   }

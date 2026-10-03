@@ -22,6 +22,7 @@ import {
 import type { AcademicShift } from '../lib/academic/academicShifts';
 import {
   reportCardService,
+  isRetryableReportCardError,
   type StudentReportCard,
 } from '../services/reportCardService';
 import {
@@ -404,7 +405,9 @@ export function useStudentReportCard(
     },
     enabled: Boolean(institutionId && studentId),
     staleTime: 1000 * 60,
-    retry: false,
+    retry: (failureCount, error) =>
+      failureCount < 2 && isRetryableReportCardError(error),
+    retryDelay: (attemptIndex) => 250 * 2 ** attemptIndex,
   });
 }
 

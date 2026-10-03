@@ -102,6 +102,7 @@ const dashboard = {
     academic_year_name: '2026',
   },
   offerings: [],
+  academicYearTerms: [],
 };
 
 const timetableEntry = {

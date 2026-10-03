@@ -216,6 +216,9 @@ const entrySelect = `
   rooms:room_id (name)
 `;
 
+const NO_MATCHING_TIMETABLE_TERM_ID =
+  '00000000-0000-0000-0000-000000000000';
+
 export const timetableService = {
   // ==================== ROOMS ====================
 
@@ -336,7 +339,7 @@ export const timetableService = {
     if (error) throw mapTimetableError(error);
   },
 
-  async listByClass(institutionId: string, classId: string, termId?: string): Promise<TimetableEntryRow[]> {
+  async listByClass(institutionId: string, classId: string, termId?: string | null): Promise<TimetableEntryRow[]> {
     let query = supabase
       .from('timetable_entries')
       .select(entrySelect)
@@ -344,8 +347,11 @@ export const timetableService = {
       .eq('active', true)
       .eq('subject_offerings.class_id', classId);
 
-    if (termId) {
-      query = query.eq('term_id', termId);
+    if (termId !== undefined) {
+      query = query.eq(
+        'term_id',
+        termId ?? NO_MATCHING_TIMETABLE_TERM_ID,
+      );
     }
 
     const { data, error } = await query
