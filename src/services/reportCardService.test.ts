@@ -1,5 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { reportCardService } from './reportCardService';
+import {
+  isRetryableReportCardError,
+  ReportCardServiceError,
+  reportCardService,
+} from './reportCardService';
 import { supabase } from '../lib/supabaseClient';
 
 vi.mock('../lib/supabaseClient', () => ({
@@ -11,6 +15,37 @@ vi.mock('../lib/supabaseClient', () => ({
 describe('reportCardService', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  describe('retry de leitura', () => {
+    it('permite repetir timeout, rede e erro 5xx', () => {
+      expect(
+        isRetryableReportCardError(
+          new ReportCardServiceError(
+            'REPORT_CARD_TIMEOUT',
+            'timeout',
+          ),
+        ),
+      ).toBe(true);
+      expect(
+        isRetryableReportCardError({
+          name: 'TypeError',
+          message: 'Failed to fetch',
+        }),
+      ).toBe(true);
+      expect(
+        isRetryableReportCardError({ status: 503, message: 'upstream' }),
+      ).toBe(true);
+    });
+
+    it('não repete falhas de autenticação/autorização', () => {
+      expect(
+        isRetryableReportCardError({ status: 401, message: 'unauthorized' }),
+      ).toBe(false);
+      expect(
+        isRetryableReportCardError({ status: 403, message: 'forbidden' }),
+      ).toBe(false);
+    });
   });
 
   describe('Student constraints', () => {

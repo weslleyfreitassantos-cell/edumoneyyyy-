@@ -13,6 +13,7 @@ import {
   studentDashboardService,
   type StudentDashboardOffering,
 } from './studentDashboardService';
+import { resolveStudentTimetableTerm } from '../lib/academic/studentTimetableTerms';
 
 const baseOffering: StudentDashboardOffering = {
   id: 'offering-1',
@@ -80,6 +81,29 @@ describe('filterStudentOfferingsToCurrentTerm', () => {
     expect(result.map((offering) => offering.term_id)).toEqual([
       'term-1',
     ]);
+  });
+});
+
+describe('student timetable term resolution', () => {
+  it('não usa offerings[0] quando a semana pertence ao período atual', () => {
+    const terms = [
+      {
+        id: 'term-old',
+        startDate: '2026-01-01',
+        endDate: '2026-06-30',
+        active: true,
+      },
+      {
+        id: 'term-current',
+        startDate: '2026-07-01',
+        endDate: '2026-12-18',
+        active: true,
+      },
+    ];
+
+    expect(
+      resolveStudentTimetableTerm(terms, '2026-09-07', '2026-09-10')?.id,
+    ).toBe('term-current');
   });
 });
 

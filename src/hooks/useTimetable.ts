@@ -115,7 +115,7 @@ export function useTimetableEntries(institutionId: string) {
 export function useStudentTimetable(
   institutionId: string | undefined,
   classId: string | undefined,
-  termId?: string,
+  termId?: string | null,
 ) {
   return useQuery<TimetableEntryRow[]>({
     queryKey: timetableKeys.classEntries(

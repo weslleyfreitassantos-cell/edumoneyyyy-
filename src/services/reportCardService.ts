@@ -40,6 +40,9 @@ export class ReportCardServiceError extends Error {
 interface SupabaseErrorLike {
   name?: string;
   message?: string;
+  code?: string;
+  status?: number;
+  statusCode?: number;
 }
 
 interface TermRelation {
@@ -345,6 +348,37 @@ function createReportCardError(
     'REPORT_CARD_LOAD_FAILED',
     'Não foi possível carregar o boletim. Tente novamente.',
     error,
+  );
+}
+
+export function isRetryableReportCardError(
+  error: unknown,
+): boolean {
+  const reportCardError =
+    error instanceof ReportCardServiceError ? error : null;
+  const original =
+    (reportCardError?.originalError ?? error) as SupabaseErrorLike;
+  const status = original?.status ?? original?.statusCode;
+
+  if (status === 401 || status === 403) {
+    return false;
+  }
+
+  if (reportCardError?.code === 'REPORT_CARD_TIMEOUT') {
+    return true;
+  }
+
+  if (typeof status === 'number' && status >= 500) {
+    return true;
+  }
+
+  const message = original?.message?.toLowerCase() ?? '';
+  return (
+    original?.name === 'TypeError' ||
+    message.includes('network') ||
+    message.includes('fetch') ||
+    message.includes('timeout') ||
+    message.includes('timed out')
   );
 }
 
