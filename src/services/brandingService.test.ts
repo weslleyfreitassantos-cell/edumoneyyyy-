@@ -215,9 +215,7 @@ describe('brandingService', () => {
     } as never);
 
     await brandingService.resolveForHostname('grupotec.dev.br');
-    await brandingService.resolveForHostname(
-      'tecescola.grupotec.dev.br',
-    );
+    await brandingService.resolveForHostname('admin.grupotec.dev.br');
 
     expect(supabase.rpc).toHaveBeenNthCalledWith(
       1,
@@ -227,7 +225,7 @@ describe('brandingService', () => {
     expect(supabase.rpc).toHaveBeenNthCalledWith(
       2,
       'resolve_public_branding',
-      { hostname: 'tecescola.grupotec.dev.br' },
+      { hostname: 'admin.grupotec.dev.br' },
     );
   });
 

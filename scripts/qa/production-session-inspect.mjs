@@ -7,7 +7,7 @@ import { createInterface } from 'node:readline';
 import { createClient } from '@supabase/supabase-js';
 import { chromium } from '@playwright/test';
 
-const APP_ORIGIN = (process.env.TECESCOLA_APP_ORIGIN ?? 'https://tecescola.grupotec.dev.br').replace(/\/+$/, '');
+const APP_ORIGIN = (process.env.TECESCOLA_APP_ORIGIN ?? 'https://admin.grupotec.dev.br').replace(/\/+$/, '');
 const API_ORIGIN = (process.env.TECESCOLA_API_ORIGIN ?? 'https://api-edu-vps.grupotec.dev.br').replace(/\/+$/, '');
 const QA_ACCOUNT_MARKER = 'qa';
 const QA_EMAIL_PREFIX = process.env.TECESCOLA_QA_EMAIL_PREFIX;

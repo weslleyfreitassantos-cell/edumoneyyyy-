@@ -22,6 +22,8 @@ describe("institution-sso-handoff", () => {
     expect(source).toContain('select("id, account_id, active")');
     expect(source).toContain('return `${PLATFORM_ORIGIN}/auth/confirm`');
     expect(source).toContain('PLATFORM_ORIGIN');
+    expect(source).toContain('https://admin.grupotec.dev.br');
+    expect(source).not.toContain('https://tecescola.grupotec.dev.br');
   });
 
   it("usa link magiclink de uso único e não devolve tokens de sessão", () => {

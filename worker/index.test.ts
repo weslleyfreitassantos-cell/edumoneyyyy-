@@ -68,7 +68,7 @@ describe('Worker script', () => {
       fetch: vi.fn().mockResolvedValue(expectedResponse),
     };
 
-    const request = new Request('https://tecescola.grupotec.dev.br/dashboard');
+    const request = new Request('https://admin.grupotec.dev.br/dashboard');
 
     const response = await worker.fetch(request, {
       ASSETS: assets,
@@ -123,18 +123,18 @@ describe('Worker script', () => {
 
   it('revalida apenas documentos HTML, preservando cache de assets versionados', () => {
     expect(
-      isDocumentRequest(new Request('https://tecescola.grupotec.dev.br/')),
+      isDocumentRequest(new Request('https://admin.grupotec.dev.br/')),
     ).toBe(true);
     expect(
       isDocumentRequest(
-        new Request('https://tecescola.grupotec.dev.br/admin?module=academic-policies', {
+        new Request('https://admin.grupotec.dev.br/admin?module=academic-policies', {
           headers: { Accept: 'text/html,application/xhtml+xml' },
         }),
       ),
     ).toBe(true);
     expect(
       isDocumentRequest(
-        new Request('https://tecescola.grupotec.dev.br/assets/index-123.js'),
+        new Request('https://admin.grupotec.dev.br/assets/index-123.js'),
       ),
     ).toBe(false);
   });
@@ -151,7 +151,7 @@ describe('Worker script', () => {
         'tecescola.grupotec.dev.br',
         '/neonews/logon.jsp',
       ),
-    ).toBe(true);
+    ).toBe(false);
     expect(
       shouldProxyNeoNewsRequest('sesi.grupotec.dev.br', '/dashboard'),
     ).toBe(false);
@@ -208,15 +208,15 @@ describe('Worker script', () => {
     );
   });
 
-  it('proxyfica o caminho same-origin de tecescola para o NeoNews', async () => {
+  it('proxyfica o caminho same-origin de um tenant para o NeoNews', async () => {
     const upstreamFetch = vi.fn().mockResolvedValue(new Response('ok'));
     const request = new Request(
-      'https://tecescola.grupotec.dev.br/neonews/session',
+      'https://sesi.grupotec.dev.br/neonews/session',
       {
         method: 'POST',
         headers: {
-          origin: 'https://tecescola.grupotec.dev.br',
-          referer: 'https://tecescola.grupotec.dev.br/neonews/logon.jsp',
+          origin: 'https://sesi.grupotec.dev.br',
+          referer: 'https://sesi.grupotec.dev.br/neonews/logon.jsp',
         },
         body: 'field=value',
       },
@@ -240,10 +240,10 @@ describe('Worker script', () => {
     expect(
       rewriteNeoNewsLocation(
         'https://tvescola.grupotec.dev.br/neonews/home.jsp?a=1',
-        'https://tecescola.grupotec.dev.br',
+        'https://sesi.grupotec.dev.br',
       ),
     ).toBe(
-      'https://tecescola.grupotec.dev.br/neonews/home.jsp?a=1',
+      'https://sesi.grupotec.dev.br/neonews/home.jsp?a=1',
     );
   });
 

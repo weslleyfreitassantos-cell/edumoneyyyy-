@@ -118,8 +118,13 @@ npx supabase migration list --linked
 ### Deploy
 
 ```bash
-npx wrangler deploy
+npm run deploy:worker
 ```
+
+The Edu Worker platform origin is `https://admin.grupotec.dev.br`. The
+marketing host `https://tecescola.grupotec.dev.br` belongs to the landing-page
+Pages project and must never be used as an Edu deploy target. The Cloudflare
+route exception for that host is managed separately from this wildcard.
 
 ### Rollback
 

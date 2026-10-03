@@ -21,7 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-APP_ORIGIN = os.environ.get("TECESCOLA_APP_ORIGIN", "https://tecescola.grupotec.dev.br").rstrip("/")
+APP_ORIGIN = os.environ.get("TECESCOLA_APP_ORIGIN", "https://admin.grupotec.dev.br").rstrip("/")
 API_ORIGIN = os.environ.get("TECESCOLA_API_ORIGIN", "https://api-edu-vps.grupotec.dev.br").rstrip("/")
 BACKUP_ROOT = Path(os.environ.get("LOCAL_BACKUP_ROOT", "/srv/grupotec/backups/edumoney"))
 OFFSITE_REMOTE = os.environ.get("OFFSITE_REMOTE", "gdrive-backups:tecescola-offsite").rstrip("/")
