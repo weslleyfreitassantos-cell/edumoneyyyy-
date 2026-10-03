@@ -1084,12 +1084,25 @@ export const learningCenterService = {
     ),
 
   studentPackages: async (institutionId: string, studentId: string) => {
+    const legacySelect = 'id,package_id,class_id,student_id,due_at,learning_packages(id,package_type,visibility,title,description,subject_area,learning_package_steps(id,position,step_type,title,lesson_id,activity_id))';
     const automatic = await supabase.rpc('list_student_learning_packages', {
       p_institution_id: institutionId,
       p_student_id: studentId,
     });
     if (!automatic.error) {
-      return (automatic.data ?? []).map((row) => ({
+      const legacy = await read<LearningPackageAssignment[]>(
+        supabase
+          .from('learning_package_assignments')
+          .select(legacySelect)
+          .eq('institution_id', institutionId)
+          .or(`student_id.eq.${studentId},student_id.is.null`)
+          .order('created_at', { ascending: false }),
+      );
+      const explicitPackageIds = new Set(legacy.map((assignment) => assignment.package_id));
+      const automaticRows = (automatic.data ?? []).filter((row) => !explicitPackageIds.has(row.package_id));
+      return [
+        ...legacy.map((assignment) => ({ ...assignment, access_source: 'EXPLICIT_ASSIGNMENT' as const })),
+        ...automaticRows.map((row) => ({
         id: row.access_id,
         package_id: row.package_id,
         class_id: row.class_id,
@@ -1097,7 +1110,8 @@ export const learningCenterService = {
         due_at: row.due_at,
         access_source: row.access_source,
         learning_packages: row.learning_packages,
-      })) as LearningPackageAssignment[];
+        })),
+      ] as LearningPackageAssignment[];
     }
 
     const rpcError = automatic.error as { code?: string; message?: string };
@@ -1112,11 +1126,14 @@ export const learningCenterService = {
     return read<LearningPackageAssignment[]>(
       supabase
         .from('learning_package_assignments')
-        .select('id,package_id,class_id,student_id,due_at,learning_packages(id,package_type,visibility,title,description,subject_area,learning_package_steps(id,position,step_type,title,lesson_id,activity_id))')
+        .select(legacySelect)
         .eq('institution_id', institutionId)
         .or(`student_id.eq.${studentId},student_id.is.null`)
         .order('created_at', { ascending: false }),
-    );
+    ).then((rows) => rows.map((assignment) => ({
+      ...assignment,
+      access_source: 'EXPLICIT_ASSIGNMENT' as const,
+    })));
   },
 
   assignPackage: (input: {
