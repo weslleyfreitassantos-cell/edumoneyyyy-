@@ -1,6 +1,6 @@
 {
-  "campaign": "TECESCOLA_BNCC_COMPLETE_CURRICULUM_DEFAULT_CONTENT_AND_LEARNING_UX_REFOUNDATION_V1",
-  "updatedAt": "2026-10-03T18:30:00Z",
+  "campaign": "TECESCOLA_BNCC_FULL_MAPPING_CONTENT_FACTORY_PACKAGES_AND_UX_COMPLETION_V2",
+  "updatedAt": "2026-10-03T20:00:00Z",
   "sourceFreeze": {
     "status": "PARTIAL",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -13,10 +13,15 @@
     "catalogHash": "c99ff9ac6ead4417c44266db7bf4dd87c2492f9c4f354b0aa435ac766fa7ffda"
   },
   "mapping": {
-    "status": "NOT_COMPLETE",
+    "status": "CANDIDATES_GENERATED",
     "mappedCodes": 0,
+    "candidateCodes": 1583,
+    "oneToOneCandidates": 14,
+    "canonicalGaps": 1476,
+    "hierarchyOnly": 93,
     "unaccountedCodes": 1583,
-    "reviewRequiredCodes": 1583
+    "reviewRequiredCodes": 1583,
+    "candidateHash": "10dd17dc0de08f4ce926eaa1d54cf58ef2f233b2612e28f8e57075a41506b999"
   },
   "pedagogicalContent": {
     "status": "PARTIAL",
@@ -57,8 +62,8 @@
   },
   "blockers": [
     "official Computing complement source could not be retrieved from an official endpoint",
-    "official-code-to-canonical mapping requires pedagogical review",
+    "candidate mappings are technically generated but require independent pedagogical review before promotion",
     "official BNCC lesson/question coverage is not yet complete"
   ],
-  "nextAction": "freeze_or_obtain_official_computing_source_then map independent BNCC stages with pedagogical review"
+  "nextAction": "obtain a valid official Computing artifact, expand the canonical registry, then review and promote candidate mappings in batches"
 }

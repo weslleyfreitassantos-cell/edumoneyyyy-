@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/mapping-candidates-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "catalogHash", "statusContract", "summary", "candidates", "candidatesHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.mapping-candidates.v1" },
+    "catalogVersion": { "type": "string" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "sourceOfTruth": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "registry": {
+      "type": "object",
+      "required": ["skillCodes"],
+      "properties": {
+        "schemaVersion": { "type": ["string", "null"] },
+        "skillCodes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "statusContract": {
+      "type": "object",
+      "required": ["candidateStatus", "reviewStatus", "promotionRule"],
+      "properties": {
+        "candidateStatus": { "const": "CANDIDATE" },
+        "reviewStatus": { "const": "PEDAGOGICAL_REVIEW_PENDING" },
+        "promotionRule": { "type": "string", "minLength": 1 }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["totalOfficialNodes", "oneToOneCandidates", "canonicalGaps", "hierarchyOnly", "pedagogicalReviewPending"],
+      "properties": {
+        "totalOfficialNodes": { "type": "integer", "minimum": 0 },
+        "oneToOneCandidates": { "type": "integer", "minimum": 0 },
+        "canonicalGaps": { "type": "integer", "minimum": 0 },
+        "hierarchyOnly": { "type": "integer", "minimum": 0 },
+        "highConfidence": { "type": "integer", "minimum": 0 },
+        "mediumConfidence": { "type": "integer", "minimum": 0 },
+        "lowConfidence": { "type": "integer", "minimum": 0 },
+        "pedagogicalReviewPending": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["officialCode", "stage", "kind", "status", "mappingType", "confidence", "candidateCanonicalSkillCodes", "reviewStatus", "mappingSource", "rationale"],
+        "properties": {
+          "officialCode": { "type": "string" },
+          "stage": { "type": "string" },
+          "kind": { "type": "string" },
+          "gradeOrRange": { "type": "string" },
+          "componentCode": { "type": "string" },
+          "officialSource": { "type": "object" },
+          "status": { "const": "CANDIDATE" },
+          "mappingType": { "enum": ["ONE_TO_ONE_CANDIDATE", "CANONICAL_GAP", "HIERARCHY_ONLY"] },
+          "confidence": { "enum": ["HIGH", "MEDIUM", "LOW"] },
+          "confidenceScore": { "type": "number", "minimum": 0, "maximum": 1 },
+          "candidateCanonicalSkillCodes": { "type": "array", "items": { "type": "string" } },
+          "reviewStatus": { "const": "PEDAGOGICAL_REVIEW_PENDING" },
+          "mappingSource": { "const": "TECESCOLA_DERIVED_AUTOMATED" },
+          "rationale": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "candidatesHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

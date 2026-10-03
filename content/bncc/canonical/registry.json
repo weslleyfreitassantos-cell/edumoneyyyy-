@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "tec-escola.bncc.canonical-registry.v1",
+  "source": "TECESCOLA_CORE_V1 migration seed",
+  "skills": [
+    {
+      "code": "FRACTIONS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [6],
+      "subjectAreas": ["MATEMATICA"],
+      "title": "Fundamentos de frações",
+      "aliases": ["fração", "frações", "parte de um todo", "equivalência"],
+      "kind": "LEAF"
+    },
+    {
+      "code": "RATIO_PROPORTION",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [7],
+      "subjectAreas": ["MATEMATICA"],
+      "title": "Razão e proporção",
+      "aliases": ["razão", "proporção", "grandezas proporcionais"],
+      "kind": "LEAF"
+    },
+    {
+      "code": "PERCENTAGE",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [7],
+      "subjectAreas": ["MATEMATICA"],
+      "title": "Porcentagem",
+      "aliases": ["porcentagem", "percentual", "percentuais"],
+      "kind": "LEAF"
+    },
+    {
+      "code": "EQUATIONS",
+      "stage": "ENSINO_FUNDAMENTAL",
+      "gradeLevels": [8],
+      "subjectAreas": ["MATEMATICA"],
+      "title": "Equações",
+      "aliases": ["equação", "equações", "incógnita", "primeiro grau"],
+      "kind": "LEAF"
+    },
+    {
+      "code": "FUNCTIONS_INTRO",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [1],
+      "subjectAreas": ["MATEMATICA"],
+      "title": "Introdução a funções",
+      "aliases": ["função", "funções", "variáveis", "relação"],
+      "kind": "LEAF"
+    },
+    {
+      "code": "LINEAR_FUNCTION",
+      "stage": "ENSINO_MEDIO",
+      "gradeLevels": [1],
+      "subjectAreas": ["MATEMATICA"],
+      "title": "Função afim",
+      "aliases": ["função afim", "função linear", "gráfico", "variação"],
+      "kind": "LEAF"
+    }
+  ]
+}
