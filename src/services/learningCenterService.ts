@@ -245,7 +245,11 @@ export interface LearningSimulation {
   id: string;
   title: string;
   simulation_type: 'HISTORICAL_EXAM' | 'AREA' | 'SUBJECT' | 'TOPIC' | 'MINI' | 'ADAPTIVE';
+  area: string | null;
+  source_year: number | null;
+  question_count: number;
   duration_minutes: number | null;
+  metadata: Record<string, unknown>;
   learning_simulation_questions?: Array<{
     position: number;
     learning_question_bank: Pick<LearningQuestionBankItem, 'id' | 'statement' | 'options'> | Pick<LearningQuestionBankItem, 'id' | 'statement' | 'options'>[];
@@ -265,6 +269,7 @@ export interface LearningSimulationAttempt {
   area_breakdown: Record<string, { correct: number; total: number }>;
   skill_breakdown: Record<string, { correct: number; total: number }>;
   answers?: Record<string, { answer: unknown; is_correct?: boolean | null }>;
+  navigation_state?: { current_index?: number; flagged?: string[] } | null;
   learning_simulations?: { title: string; simulation_type: LearningSimulation['simulation_type'] } | { title: string; simulation_type: LearningSimulation['simulation_type'] }[] | null;
 }
 
@@ -975,7 +980,7 @@ export const learningCenterService = {
     read<LearningSimulation[]>(
       supabase
         .from('learning_simulations')
-        .select('id,title,simulation_type,duration_minutes,learning_simulation_questions(position,learning_question_bank(id,statement,options))')
+        .select('id,title,simulation_type,area,source_year,question_count,duration_minutes,metadata,learning_simulation_questions(position,learning_question_bank(id,statement,options))')
         .eq('status', 'PUBLISHED')
         .or(`institution_id.is.null,institution_id.eq.${institutionId}`)
         .order('created_at', { ascending: false }),
@@ -1038,11 +1043,17 @@ export const learningCenterService = {
       p_answers: answers,
     })),
 
+  saveSimulationNavigation: (attemptId: string, navigation: { current_index: number; flagged: string[] }) =>
+    read<{ attempt_id: string; navigation_state: { current_index: number; flagged: string[] } }>(supabase.rpc('save_learning_simulation_attempt_navigation', {
+      p_attempt_id: attemptId,
+      p_navigation: navigation,
+    })),
+
   simulationAttempts: (institutionId: string, studentId: string) =>
     read<LearningSimulationAttempt[]>(
       supabase
         .from('learning_simulation_attempts')
-        .select('id,simulation_id,status,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,answers,learning_simulations(title,simulation_type)')
+        .select('id,simulation_id,status,started_at,completed_at,duration_seconds,score,correct_count,total_questions,area_breakdown,skill_breakdown,answers,navigation_state,learning_simulations(title,simulation_type)')
         .eq('institution_id', institutionId)
         .eq('student_id', studentId)
         .order('started_at', { ascending: false })
