@@ -10,6 +10,13 @@ referenciar uma ou mais habilidades canônicas existentes e registrar a fonte,
 a confiança e a revisão correspondente. Objetivos que não são adaptativos
 devem usar `EXPLICITLY_NON_ADAPTIVE` com justificativa explícita.
 
+`candidates-2018.json` é uma camada anterior à promoção. A fábrica em
+`tools/bncc/map-candidates.mjs` verifica etapa, ano e componente antes de
+propor uma habilidade canônica existente. Quando não há correspondência
+compatível, registra `CANONICAL_GAP`; não cria uma skill com o nome do código
+oficial. Todos os candidatos permanecem `PEDAGOGICAL_REVIEW_PENDING` e não
+podem ser tratados como `MAPPED` sem validação independente e revisão humana.
+
 O catálogo oficial e o grafo TecEscola permanecem camadas separadas. O V4
 atual continua sendo conteúdo derivado da TecEscola; ele não é promovido a
 BNCC oficial por semelhança textual.
