@@ -450,6 +450,7 @@ export interface LearningPackageAssignment {
   class_id: string | null;
   student_id: string | null;
   due_at: string | null;
+  access_source?: 'EXPLICIT_ASSIGNMENT' | 'AUTOMATIC_DEFAULT';
   learning_packages?: LearningPackage | LearningPackage[] | null;
 }
 
@@ -1082,15 +1083,41 @@ export const learningCenterService = {
         .order('created_at', { ascending: false }),
     ),
 
-  studentPackages: (institutionId: string, studentId: string) =>
-    read<LearningPackageAssignment[]>(
+  studentPackages: async (institutionId: string, studentId: string) => {
+    const automatic = await supabase.rpc('list_student_learning_packages', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+    });
+    if (!automatic.error) {
+      return (automatic.data ?? []).map((row) => ({
+        id: row.access_id,
+        package_id: row.package_id,
+        class_id: row.class_id,
+        student_id: row.student_id,
+        due_at: row.due_at,
+        access_source: row.access_source,
+        learning_packages: row.learning_packages,
+      })) as LearningPackageAssignment[];
+    }
+
+    const rpcError = automatic.error as { code?: string; message?: string };
+    const functionIsUnavailable =
+      rpcError.code === 'PGRST202' ||
+      rpcError.code === '42883' ||
+      /function .*list_student_learning_packages.*(does not exist|not found)/i.test(rpcError.message ?? '');
+
+    if (!functionIsUnavailable) throw new Error(rpcError.message ?? 'LEARNING_PACKAGE_AVAILABILITY_FAILED');
+
+    // Keep legacy installations readable until the availability RPC is applied.
+    return read<LearningPackageAssignment[]>(
       supabase
         .from('learning_package_assignments')
         .select('id,package_id,class_id,student_id,due_at,learning_packages(id,package_type,visibility,title,description,subject_area,learning_package_steps(id,position,step_type,title,lesson_id,activity_id))')
         .eq('institution_id', institutionId)
         .or(`student_id.eq.${studentId},student_id.is.null`)
         .order('created_at', { ascending: false }),
-    ),
+    );
+  },
 
   assignPackage: (input: {
     institutionId: string;

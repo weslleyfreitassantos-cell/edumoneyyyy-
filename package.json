@@ -30,6 +30,8 @@
     "health:prod": "node scripts/production-health.mjs",
     "adaptive:v4:validate": "node --experimental-strip-types tools/adaptive/compile-v4.ts validate",
     "adaptive:v4:compile": "node --experimental-strip-types tools/adaptive/compile-v4.ts compile",
+    "bncc:validate": "node tools/bncc/validate-catalog.mjs && node tools/bncc/validate-coverage.mjs",
+    "bncc:coverage": "node tools/bncc/generate-coverage.mjs",
     "check": "npm run routing:guard && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

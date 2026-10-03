@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/official-catalog-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "catalogVersion", "sourceOfTruth", "sources", "nodes", "coverage", "catalogHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.official-catalog.v1" },
+    "catalogVersion": { "type": "string" },
+    "sourceOfTruth": { "const": "official_mec_bncc_pdf" },
+    "extractionStatus": { "type": "string" },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "sources": { "type": "array", "minItems": 2 },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "stage", "kind", "componentCode", "officialTextExcerpt", "officialSource"],
+        "properties": {
+          "code": { "type": "string" },
+          "stage": { "enum": ["EDUCACAO_INFANTIL", "ENSINO_FUNDAMENTAL", "ENSINO_MEDIO"] },
+          "kind": { "enum": ["LEARNING_DEVELOPMENT_OBJECTIVE", "SKILL"] },
+          "gradeOrRange": { "type": "string" },
+          "componentCode": { "type": "string" },
+          "officialTextExcerpt": { "type": "string", "minLength": 1 },
+          "officialSource": { "type": "object", "required": ["id", "url", "page"] }
+        }
+      }
+    },
+    "coverage": { "type": "object" },
+    "catalogHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
