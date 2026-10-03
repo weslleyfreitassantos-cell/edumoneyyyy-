@@ -736,16 +736,18 @@ async function runOfficialProductionSmoke(users, credentials) {
     ['TEACHER', 'teacherA'],
     ['STUDENT', 'studentA'],
     ['GUARDIAN', 'guardianA'],
-    ['ADMIN', 'admin'],
   ].map(([role, key]) => ({
     role,
-    email: role === 'ADMIN'
-      ? credentials.admin.email
-      : qaRoleEmail(role, key.endsWith('B') ? 'b' : 'a'),
-    password: role === 'ADMIN'
-      ? credentials.admin.password
-      : users[key].password ?? credentials[key]?.password,
+    email: qaRoleEmail(role, key.endsWith('B') ? 'b' : 'a'),
+    password: users[key].password ?? credentials[key]?.password,
   }));
+  if (credentials.admin) {
+    pilotUsers.push({
+      role: 'ADMIN',
+      email: credentials.admin.email,
+      password: credentials.admin.password,
+    });
+  }
 
   const outputDir = await mkdtemp(join(tmpdir(), 'tecescola-production-smoke-'));
   return new Promise((resolve) => {
@@ -1149,7 +1151,7 @@ async function runFinalQaGates(input, publishableKey) {
     secretary: apiResults.secretaryA === 'PASS' && apiResults.secretaryB === 'PASS' && uiResults.secretaryA === 'PASS' && uiResults.secretaryB === 'PASS',
     teacher: apiResults.teacherA === 'PASS' && apiResults.teacherB === 'PASS' && uiResults.teacherA === 'PASS' && uiResults.teacherB === 'PASS',
     student: apiResults.studentA === 'PASS' && apiResults.studentB === 'PASS' && uiResults.studentA === 'PASS' && uiResults.studentB === 'PASS',
-    guardian: apiResults.guardianA === 'PASS' && apiResults.guardianB === 'PASS' && uiResults.guardianB === 'PASS' && guardianAUi?.result === 'PASS' && inactiveUi?.result === 'PASS',
+    guardian: apiResults.guardianA === 'PASS' && apiResults.guardianB === 'PASS' && uiResults.guardianB === 'PASS' && guardianAUi?.studentVisible === true && inactiveUi?.studentVisible === false,
   };
   const allRolesPass = Object.values(roleMatrix).every(Boolean) && (!users.admin || (apiResults.admin === 'PASS' && uiResults.admin === 'PASS'));
   console.log(JSON.stringify({ progress: 'OFFICIAL_PRODUCTION_SMOKE' }));
