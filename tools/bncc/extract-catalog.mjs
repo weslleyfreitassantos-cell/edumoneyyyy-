@@ -20,9 +20,15 @@ const SOURCES = [
     url: 'https://basenacionalcomum.mec.gov.br/images/historico/BNCC_EnsinoMedio_embaixa_site_110518.pdf',
     documentVersion: 'BNCC Ensino Médio, versão homologada 2018',
   },
+  {
+    id: 'BNCC_COMPUTACAO_2022',
+    file: 'bncc-computacao-2022.pdf',
+    url: 'https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf',
+    documentVersion: 'Computação na Educação Básica - Complemento à BNCC, 2022',
+  },
 ];
 
-const CODE_PATTERN = /\b(?:EI\d{2}[A-Z]{2}\d{2}|EF(?:\d{2}|67)[A-Z]{2}\d{2}|EM13(?:LGG|CNT|CHS|MAT)\d{3}|EM13LP\d{2})\b/g;
+const CODE_PATTERN = /\b(?:EI\d{2}[A-Z]{2}\d{2}|EF(?:\d{2}|67)[A-Z]{2}\d{2}|EM13(?:LGG|CNT|CHS|MAT)\d{3}|EM13(?:LP|CO)\d{2})\b/g;
 
 function stableJson(value) {
   return JSON.stringify(value, (_key, current) => {
@@ -54,6 +60,14 @@ function classify(code) {
       kind: 'SKILL',
       gradeOrRange: yearRange,
       componentCode: code.slice(4, 6),
+    };
+  }
+  if (code.startsWith('EM13CO')) {
+    return {
+      stage: 'ENSINO_MEDIO',
+      kind: 'SKILL',
+      gradeOrRange: '1-3',
+      componentCode: 'CO',
     };
   }
   const componentCode = code.slice(4, code.startsWith('EM13LP') ? 6 : 7);
@@ -138,7 +152,7 @@ const duplicateCodes = [...new Set(extracted.flatMap((item) => item.nodes.map((n
 );
 const catalog = {
   schemaVersion: 'tec-escola.bncc.official-catalog.v1',
-  catalogVersion: 'BNCC_2018_TEXT_EXTRACTION',
+  catalogVersion: 'BNCC_2018_AND_COMPUTACAO_2022_TEXT_EXTRACTION',
   sourceOfTruth: 'official_mec_bncc_pdf',
   extractionStatus: 'AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED',
   generatedAt: process.env.BNCC_GENERATED_AT ?? '2026-10-03T00:00:00.000Z',

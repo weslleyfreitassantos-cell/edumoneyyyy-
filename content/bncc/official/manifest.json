@@ -28,18 +28,21 @@
       "id": "BNCC_COMPUTACAO_2022",
       "title": "Normas sobre Computação na Educação Básica — Complemento à BNCC",
       "version": "Parecer CNE/CEB nº 2/2022 e Resolução CNE/CEB nº 1/2022",
-      "source": "https://portal.mec.gov.br/docman/fevereiro-2022-pdf/236791-anexo-ao-parecer-ceceb-n-2-2022-bncc-computacao/file",
+      "source": "https://www.gov.br/mec/pt-br/escolas-conectadas/arquivos/AnexoaoParecerCNECEBn22022BNCCComputao.pdf",
       "localArtifact": ".runtime/bncc/bncc-computacao-2022.pdf",
-      "status": "BLOCKED_SOURCE_UNAVAILABLE",
-      "reason": "O host oficial portal.mec.gov.br não resolveu neste ambiente; não usar espelho como fonte de verdade."
+      "sha256": "60aab0b192acf867bc582dc06678cd8f3bc597e8f1b65256fc7bf04190bb793d",
+      "bytes": 1426590,
+      "pages": 75,
+      "retrievedAt": "2026-10-03T00:00:00Z",
+      "status": "FROZEN"
     }
   ],
   "catalogArtifact": "content/bncc/official/catalog-2018.json",
-  "catalogHash": "c99ff9ac6ead4417c44266db7bf4dd87c2492f9c4f354b0aa435ac766fa7ffda",
+  "catalogHash": "b0da60b72e055d8bbafe2366651f1ccc6676d92e83a65f9bf3e062c5026e3989",
   "extraction": {
     "tool": "tools/bncc/extract-catalog.mjs",
     "status": "AUTOMATED_TEXT_EXTRACTION_REVIEW_REQUIRED",
     "sourceOverlapCodes": 185,
-    "officialCodesDetected": 1583
+    "officialCodesDetected": 1723
   }
 }

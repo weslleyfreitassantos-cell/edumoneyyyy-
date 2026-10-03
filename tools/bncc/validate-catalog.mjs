@@ -10,7 +10,7 @@ if (!Array.isArray(catalog.sources) || catalog.sources.length < 2) failures.push
 if (!Array.isArray(catalog.nodes) || catalog.nodes.length === 0) failures.push('nodes');
 const codes = new Set();
 for (const node of catalog.nodes ?? []) {
-  if (!/^(?:EI\d{2}[A-Z]{2}\d{2}|EF(?:\d{2}|67)[A-Z]{2}\d{2}|EM13(?:LGG|CNT|CHS|MAT)\d{3}|EM13LP\d{2})$/.test(node.code)) failures.push(`invalid_code:${node.code}`);
+  if (!/^(?:EI\d{2}[A-Z]{2}\d{2}|EF(?:\d{2}|67)[A-Z]{2}\d{2}|EM13(?:LGG|CNT|CHS|MAT)\d{3}|EM13(?:LP|CO)\d{2})$/.test(node.code)) failures.push(`invalid_code:${node.code}`);
   if (codes.has(node.code)) failures.push(`duplicate_code:${node.code}`);
   codes.add(node.code);
   if (!node.officialSource?.url || !node.officialSource?.page) failures.push(`missing_provenance:${node.code}`);
