@@ -1,5 +1,6 @@
 import {
   Camera,
+  Download,
   Eye,
   EyeOff,
   Loader2,
@@ -30,6 +31,10 @@ import {
   validateAvatarFile,
 } from '../services/avatarImageService';
 import { ProfileServiceError } from '../services/profileService';
+import {
+  downloadPrivacyExport,
+  exportCurrentUserData,
+} from '../services/privacyService';
 import type { User } from '../types';
 
 interface AccountSettingsModalProps {
@@ -288,6 +293,8 @@ export default function AccountSettingsModal({
   const [avatarError, setAvatarError] = useState<string | null>(null);
   const [avatarSuccessMessage, setAvatarSuccessMessage] = useState<string | null>(null);
   const [avatarFailed, setAvatarFailed] = useState(false);
+  const [isExportingPrivacyData, setIsExportingPrivacyData] = useState(false);
+  const [privacyMessage, setPrivacyMessage] = useState<string | null>(null);
   const initialSelfRegistrationRef = useRef<string | null>(null);
   const avatarInputId = `${titleId}-avatar-input`;
 
@@ -475,6 +482,25 @@ export default function AccountSettingsModal({
     } catch (error) {
       setAvatarStatus('error');
       setAvatarError(getAvatarErrorMessage(error));
+    }
+  }
+
+  async function handlePrivacyExport(): Promise<void> {
+    if (isExportingPrivacyData) {
+      return;
+    }
+
+    setPrivacyMessage(null);
+    setIsExportingPrivacyData(true);
+
+    try {
+      const payload = await exportCurrentUserData();
+      downloadPrivacyExport(payload);
+      setPrivacyMessage('Exportação preparada e baixada neste dispositivo.');
+    } catch {
+      setPrivacyMessage('Não foi possível preparar a exportação agora.');
+    } finally {
+      setIsExportingPrivacyData(false);
     }
   }
 
@@ -678,7 +704,7 @@ export default function AccountSettingsModal({
           <button
             type="button"
             onClick={closeModal}
-            disabled={isSaving || avatarStatus === 'uploading'}
+            disabled={isSaving || avatarStatus === 'uploading' || isExportingPrivacyData}
             aria-label="Fechar Minha conta"
             title="Fechar"
             className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8deea] text-[#414754] outline-none transition hover:bg-[#f3f6fb] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-60 dark:border-[#475569] dark:text-[#cbd5e1] dark:hover:bg-[#243247] dark:hover:text-[#f8fafc]"
@@ -769,6 +795,43 @@ export default function AccountSettingsModal({
           )}
           {avatarError && (
             <p role="alert" className="mt-3 text-sm font-semibold text-[#ba1a1a]">{avatarError}</p>
+          )}
+        </section>
+
+        <section
+          aria-labelledby={`${titleId}-privacy-heading`}
+          className="mt-5 rounded-lg border border-[#d8deea] p-4 dark:border-[#334155]"
+        >
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3
+                id={`${titleId}-privacy-heading`}
+                className="text-sm font-bold text-[#181c20] dark:text-[#f8fafc]"
+              >
+                Privacidade
+              </h3>
+              <p className="mt-1 text-xs text-[#667085] dark:text-[#cbd5e1]">
+                Baixe uma cópia estruturada dos seus dados e vínculos visíveis para sua conta.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void handlePrivacyExport()}
+              disabled={isSaving || avatarStatus === 'uploading' || isExportingPrivacyData}
+              className="inline-flex h-10 shrink-0 items-center justify-center gap-2 rounded-lg border border-[#005bbf] px-3 text-sm font-bold text-[#005bbf] outline-none transition hover:bg-[#eef3ff] focus-visible:ring-2 focus-visible:ring-[#005bbf] disabled:cursor-wait disabled:opacity-60 dark:text-[#bfdbfe] dark:hover:bg-[#243247]"
+            >
+              {isExportingPrivacyData ? (
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              ) : (
+                <Download className="h-4 w-4" aria-hidden="true" />
+              )}
+              Baixar meus dados
+            </button>
+          </div>
+          {privacyMessage && (
+            <p className="mt-3 text-xs font-semibold text-[#356859] dark:text-green-300" aria-live="polite">
+              {privacyMessage}
+            </p>
           )}
         </section>
 
