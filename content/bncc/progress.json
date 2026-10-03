@@ -1,6 +1,6 @@
 {
-  "campaign": "TECESCOLA_BNCC_CANONICAL_GRAPH_CONTENT_COMPLETION_AND_LEARNING_PRODUCT_V3",
-  "updatedAt": "2026-10-03T22:20:12Z",
+  "campaign": "TECESCOLA_BNCC_MAPPING_GRAPH_CONTENT_AND_PRODUCT_COMPLETION_V4",
+  "updatedAt": "2026-10-03T23:30:33Z",
   "sourceFreeze": {
     "status": "FROZEN",
     "earlyChildhoodAndElementary": "FROZEN",
@@ -22,7 +22,30 @@
     "hierarchyOnly": 104,
     "unaccountedCodes": 1723,
     "reviewRequiredCodes": 1723,
-    "candidateHash": "f28c62f1756fd3ad77c91156573e7fb6d944a28650f469940bde1688b4e5bf94"
+    "candidateHash": "f28c62f1756fd3ad77c91156573e7fb6d944a28650f469940bde1688b4e5bf94",
+    "technicalReview": {
+      "status": "COMPLETE_WITH_PEDAGOGICAL_GATE",
+      "reviewHash": "81ea34dc2c2f0f7edb7caa9ef95d7d56f1d526e6a9be32c4e096d39ad77e72c9",
+      "technicallyReviewed": 1619,
+      "technicallyClassified": 104,
+      "approveConservative": 3,
+      "needsHumanReview": 98,
+      "canonicalGaps": 1509,
+      "pedagogicalReviewPending": 1619,
+      "promotedCodes": 0
+    },
+    "canonicalGraph": {
+      "status": "AUDITED_NOT_BNCC_PROMOTED",
+      "graphHash": "ead924e0e10f77e27be37b13082e28cc8d6f9d1ed7040315f30b76884242e96a",
+      "subjects": 15,
+      "anchors": 45,
+      "leaves": 52,
+      "seedSkills": 6,
+      "targetableSkills": 58,
+      "otherSemanticNodes": 13,
+      "orphanAnchors": ["MATHEMATICS_NUMBERS"],
+      "unresolvedSemanticNodes": 13
+    }
   },
   "pedagogicalContent": {
     "status": "PARTIAL",
@@ -73,8 +96,9 @@
     "qaTenantHttp": 200
   },
   "blockers": [
-    "candidate mappings are technically generated but require independent pedagogical review before promotion",
-    "official BNCC lesson/question coverage is not yet complete"
+    "technical review is complete, but pedagogical review is still required before any mapping promotion",
+    "official BNCC lesson/question coverage is not yet complete",
+    "13 V4 relationship nodes remain unresolved and one anchor has no hierarchy edge"
   ],
-  "nextAction": "independently review high-confidence candidate mappings, then promote reviewed batches"
+  "nextAction": "resolve canonical graph gaps and author/review content before promoting any BNCC mapping"
 }

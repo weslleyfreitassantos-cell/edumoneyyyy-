@@ -10,6 +10,10 @@ grafo pedagógico do TecEscola e não deve ser alterado por professores.
 - `schema/official-catalog.schema.json`: contrato estrutural do catálogo.
 - `mappings/coverage-2018.json`: uma linha por código oficial, distinguindo
   `MAPPED`, `EXPLICITLY_NON_ADAPTIVE` e `UNACCOUNTED`; lacunas não são ocultadas.
+- `mappings/reviews-2018.json`: revisão técnica independente, sem promoção
+  pedagógica automática.
+- `canonical/graph-v4.json`: auditoria do grafo V4, separando âncoras, folhas
+  targetáveis, seeds legadas e nós semânticos ainda não resolvidos.
 - `schema/mapping-coverage.schema.json`: contrato da matriz de mapeamento.
 
 O catálogo não exige que um professor faça atribuições manuais. A migration de

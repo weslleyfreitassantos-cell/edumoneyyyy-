@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tecescola.grupotec.dev.br/schemas/bncc/canonical-graph-v1.json",
+  "type": "object",
+  "required": ["schemaVersion", "sourceOfTruth", "graphStatus", "statusContract", "summary", "nodes", "edges", "graphHash"],
+  "properties": {
+    "schemaVersion": { "const": "tec-escola.bncc.canonical-graph.v1" },
+    "sourceOfTruth": { "type": "string" },
+    "graphStatus": { "const": "AUDITED_NOT_BNCC_PROMOTED" },
+    "statusContract": { "type": "object" },
+    "summary": {
+      "type": "object",
+      "required": ["subjects", "anchors", "leaves", "seedSkills", "targetableSkills", "otherSemanticNodes", "hierarchyEdges", "orphanAnchors", "orphanLeaves", "unresolvedSemanticNodes"],
+      "properties": {
+        "subjects": { "type": "integer", "minimum": 0 },
+        "anchors": { "type": "integer", "minimum": 0 },
+        "leaves": { "type": "integer", "minimum": 0 },
+        "seedSkills": { "type": "integer", "minimum": 0 },
+        "targetableSkills": { "type": "integer", "minimum": 0 },
+        "otherSemanticNodes": { "type": "integer", "minimum": 0 },
+        "hierarchyEdges": { "type": "integer", "minimum": 0 },
+        "orphanAnchors": { "type": "array", "items": { "type": "string" } },
+        "orphanLeaves": { "type": "array", "items": { "type": "string" } },
+        "unresolvedSemanticNodes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "nodes": { "type": "array", "items": { "type": "object", "required": ["code", "class"] } },
+    "edges": { "type": "array", "items": { "type": "object", "required": ["parent", "child"] } },
+    "graphHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
