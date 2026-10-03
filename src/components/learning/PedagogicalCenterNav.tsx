@@ -6,6 +6,8 @@ const links = [
   ['Mapa', '/teacher/pedagogical-center/map'],
   ['Jornadas', '/teacher/pedagogical-center/journeys'],
   ['Conteúdo', '/teacher/pedagogical-center/content'],
+  ['Revisão', '/teacher/pedagogical-center/reviews'],
+  ['Simulados', '/teacher/pedagogical-center/simulations'],
   ['Atividades', '/teacher/pedagogical-center/activities'],
 ] as const;
 

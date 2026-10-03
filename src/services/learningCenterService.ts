@@ -273,6 +273,82 @@ export interface LearningSimulationAttempt {
   learning_simulations?: { title: string; simulation_type: LearningSimulation['simulation_type'] } | { title: string; simulation_type: LearningSimulation['simulation_type'] }[] | null;
 }
 
+export interface LearningSimulationAssignment {
+  assignment_id: string;
+  simulation_id: string;
+  title: string;
+  simulation_type?: LearningSimulation['simulation_type'] | string;
+  area?: string | null;
+  source_year?: number | null;
+  question_count?: number;
+  duration_minutes?: number | null;
+  assigned_by_name?: string | null;
+  class_id?: string | null;
+  class_name?: string | null;
+  student_id?: string | null;
+  student_name?: string | null;
+  available_from?: string;
+  due_at: string | null;
+  assignment_status?: 'ASSIGNED' | 'IN_PROGRESS' | 'COMPLETED' | 'ACTIVE' | 'CANCELLED' | string;
+  status?: string;
+  started_at?: string | null;
+  completed_at?: string | null;
+  created_at?: string;
+}
+
+export interface LearningSimulationResults {
+  assignment_id: string;
+  simulation_id: string;
+  summary: {
+    assigned: number;
+    started: number;
+    completed: number;
+    not_started: number;
+    completion_rate: number;
+    average_raw_accuracy: number;
+  };
+  students: Array<{
+    student_id: string;
+    student_name: string;
+    status: 'COMPLETED' | 'IN_PROGRESS' | 'NOT_STARTED';
+    score: number | null;
+    correct_count: number | null;
+    total_questions: number | null;
+    completed_at: string | null;
+  }>;
+  area_breakdown: Record<string, { correct: number; total: number }>;
+  skill_breakdown: Record<string, { correct: number; total: number }>;
+}
+
+export interface LearningPedagogicalReview {
+  id: string;
+  question_bank_id: string;
+  state: 'AUTO_CLASSIFIED' | 'HUMAN_REVIEW_PENDING' | 'HUMAN_REVIEWED' | 'NEEDS_CORRECTION';
+  source_year: number | null;
+  source_name: string | null;
+  source_reference: string | null;
+  statement: string;
+  source_options: string[];
+  official_answer: unknown;
+  source_subject_area: string;
+  suggested_subject_area: string | null;
+  topic: string | null;
+  difficulty: 'EASY' | 'MEDIUM' | 'HARD' | null;
+  primary_canonical_skill_id: string | null;
+  primary_skill_title: string | null;
+  supporting_canonical_skill_ids: string[];
+  explanation: string | null;
+  misconception: string | null;
+  confidence: 'HIGH' | 'MEDIUM' | 'LOW' | 'UNMAPPED';
+  reviewed_at: string | null;
+}
+
+export interface LearningCanonicalSkillOption {
+  id: string;
+  title: string;
+  subject_area: string | null;
+}
+
 export interface LearningTeacherStudent {
   student_id: string;
   full_name: string;
@@ -761,6 +837,16 @@ export const learningCenterService = {
       updated_at: row.updated_at,
     }))),
 
+  canonicalSkills: () =>
+    read<LearningCanonicalSkillOption[]>(
+      supabase
+        .from('learning_curriculum_skills')
+        .select('id,title,subject_area')
+        .eq('active', true)
+        .order('subject_area')
+        .order('title'),
+    ),
+
   reviewsDue: (institutionId: string, studentId: string) =>
     read<Array<LearningSkillReview & { learning_curriculum_skills?: { title: string } | { title: string }[] | null }>>(
       supabase
@@ -1059,6 +1145,74 @@ export const learningCenterService = {
         .order('started_at', { ascending: false })
         .limit(20),
     ),
+
+  assignSimulation: (input: {
+    institutionId: string;
+    simulationId: string;
+    classId?: string;
+    studentId?: string;
+    availableFrom?: string;
+    dueAt?: string;
+  }) =>
+    read<string>(supabase.rpc('assign_learning_simulation', {
+      p_institution_id: input.institutionId,
+      p_simulation_id: input.simulationId,
+      p_class_id: input.classId ?? null,
+      p_student_id: input.studentId ?? null,
+      p_available_from: input.availableFrom ?? null,
+      p_due_at: input.dueAt ?? null,
+    })),
+
+  studentSimulationAssignments: (institutionId: string, studentId: string) =>
+    read<LearningSimulationAssignment[]>(supabase.rpc('list_student_learning_simulation_assignments', {
+      p_institution_id: institutionId,
+      p_student_id: studentId,
+    })),
+
+  teacherSimulationAssignments: (institutionId: string) =>
+    read<LearningSimulationAssignment[]>(supabase.rpc('list_teacher_learning_simulation_assignments', {
+      p_institution_id: institutionId,
+    })),
+
+  teacherSimulationResults: (institutionId: string, assignmentId: string) =>
+    read<LearningSimulationResults>(supabase.rpc('get_teacher_learning_simulation_results', {
+      p_institution_id: institutionId,
+      p_assignment_id: assignmentId,
+    })),
+
+  pedagogicalReviews: (institutionId: string, state?: string) =>
+    read<LearningPedagogicalReview[]>(supabase.rpc('list_teacher_learning_pedagogical_reviews', {
+      p_institution_id: institutionId,
+      p_state: state ?? null,
+      p_limit: 40,
+    })),
+
+  reviewPedagogicalItem: (input: {
+    institutionId: string;
+    reviewId: string;
+    state: LearningPedagogicalReview['state'];
+    suggestedSubjectArea: string;
+    topic: string;
+    difficulty: LearningPedagogicalReview['difficulty'];
+    primaryCanonicalSkillId: string | null;
+    supportingCanonicalSkillIds?: string[];
+    explanation: string;
+    misconception: string;
+    confidence: LearningPedagogicalReview['confidence'];
+  }) =>
+    read<string>(supabase.rpc('review_teacher_learning_item', {
+      p_institution_id: input.institutionId,
+      p_review_id: input.reviewId,
+      p_state: input.state,
+      p_suggested_subject_area: input.suggestedSubjectArea || null,
+      p_topic: input.topic || null,
+      p_difficulty: input.difficulty || null,
+      p_primary_canonical_skill_id: input.primaryCanonicalSkillId,
+      p_supporting_canonical_skill_ids: input.supportingCanonicalSkillIds ?? [],
+      p_explanation: input.explanation || null,
+      p_misconception: input.misconception || null,
+      p_confidence: input.confidence,
+    })),
 
   teacherStudents: (institutionId: string) =>
     read<LearningTeacherStudent[]>(
