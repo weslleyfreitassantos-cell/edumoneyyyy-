@@ -34,6 +34,8 @@
     "bncc:coverage": "node tools/bncc/generate-coverage.mjs",
     "bncc:mapping-candidates": "node tools/bncc/map-candidates.mjs",
     "bncc:validate-mapping-candidates": "node tools/bncc/validate-mapping-candidates.mjs",
+    "bncc:content-packages": "node tools/bncc/build-content-packages.mjs",
+    "bncc:validate-content-packages": "node tools/bncc/validate-content-packages.mjs",
     "check": "npm run routing:guard && npm run typecheck && npm run test && npm run build"
   },
   "dependencies": {

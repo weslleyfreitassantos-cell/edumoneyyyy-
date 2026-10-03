@@ -1,0 +1,1480 @@
+{
+  "schemaVersion": "tec-escola.bncc.content-packages.v1",
+  "packVersion": "tec-escola-core-v4",
+  "sourceOfTruth": "subjects/{subject}/skills.json + lessons.json + questions.json",
+  "provenance": "Conteudo versionado do TecEscola; parte reutilizada do V3 validado e parte autorada no V4; nao e BNCC oficial.",
+  "bnccAlignment": "NOT_CLAIMED",
+  "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+  "statusContract": {
+    "publishedStatus": "TECH_VALIDATED",
+    "scaffoldStatus": "SCAFFOLD",
+    "promotionRule": "SCAFFOLD nunca entra em disponibilidade automática; BNCC só é declarado após mapeamento independente."
+  },
+  "summary": {
+    "totalPackages": 15,
+    "defaultAutomaticEligible": 9,
+    "curatorReviewRequired": 6,
+    "totalSkills": 65,
+    "techValidatedSkills": 10,
+    "scaffoldSkills": 55,
+    "totalLessons": 16,
+    "totalQuestions": 211
+  },
+  "packages": [
+    {
+      "packageId": "tec-escola-core-v4-portuguese",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "PORTUGUESE",
+      "subjectName": "Lingua Portuguesa",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "PORTUGUESE_ARGUMENT_EVIDENCE",
+          "title": "Identificar tese e evidencia em textos argumentativos",
+          "domain": "ARGUMENTACAO",
+          "parent": "PORTUGUESE_ARGUMENTATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 8,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_INFER_FROM_CLUES",
+          "title": "Inferir informacao a partir de pistas textuais",
+          "domain": "LEITURA",
+          "parent": "PORTUGUESE_READING",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_CONNECT_IDEAS",
+          "title": "Interpretar conectores e relacoes de sentido",
+          "domain": "COESAO",
+          "parent": "PORTUGUESE_COHESION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        },
+        {
+          "code": "PORTUGUESE_DISTINGUISH_REASON_EVIDENCE",
+          "title": "Distinguir razao de evidencia",
+          "domain": "ARGUMENTACAO",
+          "parent": "PORTUGUESE_ARGUMENTATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_DISTINGUISH_FACT_OPINION",
+          "title": "Distinguir fato de opiniao",
+          "domain": "LEITURA",
+          "parent": "PORTUGUESE_READING",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PROBE"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_IDENTIFY_GENRE_PURPOSE",
+          "title": "Identificar genero e finalidade",
+          "domain": "GENEROS",
+          "parent": "PORTUGUESE_READING",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "PROBE",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_COMPARE_SOURCES",
+          "title": "Comparar fontes e perspectivas",
+          "domain": "FONTES",
+          "parent": "PORTUGUESE_READING",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_IDENTIFY_COUNTERARGUMENT",
+          "title": "Identificar contraponto argumentativo",
+          "domain": "ARGUMENTACAO",
+          "parent": "PORTUGUESE_ARGUMENTATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PORTUGUESE_SUMMARIZE_ARGUMENT",
+          "title": "Sintetizar um argumento",
+          "domain": "ARGUMENTACAO",
+          "parent": "PORTUGUESE_ARGUMENTATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "REVIEW"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 9,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 8,
+        "lessons": 1,
+        "questions": 17
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-mathematics",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "MATHEMATICS",
+      "subjectName": "Matematica",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "MATH_PERCENT_OF_QUANTITY",
+          "title": "Calcular percentual de uma quantidade",
+          "domain": "PORCENTAGEM",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 8,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "MATH_IDENTIFY_PERCENT_BASE",
+          "title": "Identificar a base de uma porcentagem",
+          "domain": "PORCENTAGEM",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        },
+        {
+          "code": "MATH_PERCENT_INCREASE",
+          "title": "Resolver aumento percentual",
+          "domain": "PORCENTAGEM",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "PROBE",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "MATH_RATIO_UNIT_RATE",
+          "title": "Interpretar razao e taxa unitaria",
+          "domain": "RAZAO",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 8,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "MATH_INTERPRET_DATA_TABLE",
+          "title": "Interpretar dados em tabela",
+          "domain": "DADOS",
+          "parent": "MATHEMATICS_DATA",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "MATH_SUCCESSIVE_PERCENT_CHANGE",
+          "title": "Raciocinar sobre variacoes percentuais sucessivas",
+          "domain": "PORCENTAGENS",
+          "parent": "MATHEMATICS_PROPORTIONS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 6,
+        "techValidatedSkills": 2,
+        "scaffoldSkills": 4,
+        "lessons": 2,
+        "questions": 21
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-science",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "SCIENCE",
+      "subjectName": "Ciencias",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "SCIENCE_EXPLAIN_MATTER_TRANSFORMATION",
+          "title": "Explicar transformacoes da materia",
+          "domain": "TRANSFORMACOES",
+          "parent": "SCIENCE_MATTER",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 12,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "SCIENCE_PLAN_INVESTIGATION",
+          "title": "Planejar uma investigacao controlada",
+          "domain": "INVESTIGACAO",
+          "parent": "SCIENCE_INVESTIGATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        },
+        {
+          "code": "SCIENCE_IDENTIFY_VARIABLES",
+          "title": "Identificar variaveis experimentais",
+          "domain": "INVESTIGACAO",
+          "parent": "SCIENCE_INVESTIGATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "SCIENCE_EVIDENCE_CONCLUSION",
+          "title": "Relacionar evidencia e conclusao",
+          "domain": "EVIDENCIA",
+          "parent": "SCIENCE_EVIDENCE",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        }
+      ],
+      "summary": {
+        "totalSkills": 4,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 3,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-biology",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "BIOLOGY",
+      "subjectName": "Biologia",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "CURATOR_REVIEW_REQUIRED",
+      "skills": [
+        {
+          "code": "BIOLOGY_EXPLAIN_INHERITANCE",
+          "title": "Explicar heranca genetica",
+          "domain": "GENETICA",
+          "parent": "BIOLOGY_INHERITANCE",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 9,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW"
+          ]
+        },
+        {
+          "code": "BIOLOGY_CELL_FUNCTION",
+          "title": "Relacionar estrutura e funcao celular",
+          "domain": "CELULA",
+          "parent": "BIOLOGY_CELL",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "BIOLOGY_INTERPRET_POPULATION_DATA",
+          "title": "Interpretar dados de uma populacao",
+          "domain": "ECOLOGIA",
+          "parent": "BIOLOGY_ECOLOGY",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 3,
+          "questionPurposes": [
+            "PRACTICE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "BIOLOGY_ECOSYSTEM_INTERACTIONS",
+          "title": "Explicar interacoes em ecossistemas",
+          "domain": "ECOLOGIA",
+          "parent": "BIOLOGY_ECOLOGY",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        }
+      ],
+      "summary": {
+        "totalSkills": 4,
+        "techValidatedSkills": 0,
+        "scaffoldSkills": 4,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-physics",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "PHYSICS",
+      "subjectName": "Fisica",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "PHYSICS_AVERAGE_SPEED",
+          "title": "Calcular velocidade media",
+          "domain": "VELOCIDADE",
+          "parent": "PHYSICS_MOTION",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 8,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PHYSICS_UNIT_CONVERSION",
+          "title": "Converter unidades de movimento",
+          "domain": "MEDIDAS",
+          "parent": "PHYSICS_MEASUREMENT",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "PROBE",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PHYSICS_INTERPRET_MOTION_GRAPH",
+          "title": "Interpretar grafico de movimento",
+          "domain": "MOVIMENTO",
+          "parent": "PHYSICS_MOTION",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PHYSICS_MODEL_FORCE",
+          "title": "Relacionar forca e movimento",
+          "domain": "INTERACOES",
+          "parent": "PHYSICS_ENERGY",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        },
+        {
+          "code": "PHYSICS_RELATIVE_SPEED",
+          "title": "Interpretar velocidade relativa",
+          "domain": "MOVIMENTO",
+          "parent": "PHYSICS_MOTION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PHYSICS_UNIFORM_MOTION",
+          "title": "Interpretar movimento uniforme",
+          "domain": "MOVIMENTO",
+          "parent": "PHYSICS_MOTION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PHYSICS_INTERPRET_ACCELERATION",
+          "title": "Interpretar aceleracao",
+          "domain": "MOVIMENTO",
+          "parent": "PHYSICS_MOTION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "LOCK_IN"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 7,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 6,
+        "lessons": 1,
+        "questions": 15
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-chemistry",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "CHEMISTRY",
+      "subjectName": "Quimica",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "CURATOR_REVIEW_REQUIRED",
+      "skills": [
+        {
+          "code": "CHEMISTRY_ATOMIC_STRUCTURE",
+          "title": "Interpretar modelos atomicos",
+          "domain": "ATOMOS",
+          "parent": "CHEMISTRY_ATOMIC",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 7,
+          "questionPurposes": [
+            "PRACTICE",
+            "PROBE",
+            "REVIEW"
+          ]
+        },
+        {
+          "code": "CHEMISTRY_STOICHIOMETRY",
+          "title": "Raciocinar sobre proporcoes em reacoes",
+          "domain": "REACOES",
+          "parent": "CHEMISTRY_REACTIONS",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "REVIEW"
+          ]
+        },
+        {
+          "code": "CHEMISTRY_REACTION_EVIDENCE",
+          "title": "Identificar evidencia de transformacao quimica",
+          "domain": "REACOES",
+          "parent": "CHEMISTRY_REACTIONS",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 4,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "CHEMISTRY_ACID_BASE",
+          "title": "Interpretar acidez e basicidade",
+          "domain": "SOLUCOES",
+          "parent": "CHEMISTRY_MATTER",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "TRANSFER"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 4,
+        "techValidatedSkills": 0,
+        "scaffoldSkills": 4,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-history",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "HISTORY",
+      "subjectName": "Historia",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "HISTORY_INTERPRET_EVIDENCE",
+          "title": "Interpretar evidencia historica",
+          "domain": "FONTES",
+          "parent": "HISTORY_SOURCES",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 9,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "HISTORY_ORDER_EVENTS",
+          "title": "Ordenar acontecimentos no tempo",
+          "domain": "CRONOLOGIA",
+          "parent": "HISTORY_TIME",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PROBE"
+          ]
+        },
+        {
+          "code": "HISTORY_COMPARE_CAUSES",
+          "title": "Comparar causas e consequencias historicas",
+          "domain": "CAUSALIDADE",
+          "parent": "HISTORY_CAUSALITY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "HISTORY_COMPARE_PERSPECTIVES",
+          "title": "Comparar perspectivas historicas",
+          "domain": "MULTIPERSPECTIVA",
+          "parent": "HISTORY_SOURCES",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "HISTORY_INTERPRET_PERIODIZATION",
+          "title": "Interpretar periodizacao",
+          "domain": "TEMPO_HISTORICO",
+          "parent": "HISTORY_TIME",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "HISTORY_DISTINGUISH_MEMORY_HISTORY",
+          "title": "Relacionar memoria e historia",
+          "domain": "MEMORIA",
+          "parent": "HISTORY_SOURCES",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "HISTORY_ANALYZE_CHANGE_CONTINUITY",
+          "title": "Analisar mudanca e continuidade",
+          "domain": "MUDANCA_E_CONTINUIDADE",
+          "parent": "HISTORY_CAUSALITY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "LOCK_IN"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 7,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 6,
+        "lessons": 1,
+        "questions": 15
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-geography",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "GEOGRAPHY",
+      "subjectName": "Geografia",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "GEOGRAPHY_INTERPRET_TERRITORY",
+          "title": "Interpretar territorio e paisagem",
+          "domain": "TERRITORIO",
+          "parent": "GEOGRAPHY_TERRITORY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 10,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "GEOGRAPHY_MAP_SCALE",
+          "title": "Interpretar escala cartografica",
+          "domain": "CARTOGRAFIA",
+          "parent": "GEOGRAPHY_CARTOGRAPHY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "PRACTICE",
+            "PROBE"
+          ]
+        },
+        {
+          "code": "GEOGRAPHY_ANALYZE_CLIMATE_DATA",
+          "title": "Analisar dados climaticos",
+          "domain": "CLIMA",
+          "parent": "GEOGRAPHY_SPACE",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "TRANSFER"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-philosophy",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "PHILOSOPHY",
+      "subjectName": "Filosofia",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "PHILOSOPHY_EVALUATE_ARGUMENT",
+          "title": "Avaliar argumento filosofico",
+          "domain": "ARGUMENTO",
+          "parent": "PHILOSOPHY_ARGUMENT",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 12,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PHILOSOPHY_DISTINGUISH_CONCEPT",
+          "title": "Distinguir conceito de opiniao",
+          "domain": "CONCEITO",
+          "parent": "PHILOSOPHY_CONCEPTS",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        },
+        {
+          "code": "PHILOSOPHY_APPLY_ETHICAL_PRINCIPLE",
+          "title": "Aplicar principio etico a um caso",
+          "domain": "ETICA",
+          "parent": "PHILOSOPHY_ETHICS",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-sociology",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "SOCIOLOGY",
+      "subjectName": "Sociologia",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "SOCIOLOGY_EXPLAIN_INSTITUTIONS",
+          "title": "Explicar instituicoes sociais",
+          "domain": "INSTITUICOES",
+          "parent": "SOCIOLOGY_INSTITUTIONS",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 11,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "SOCIOLOGY_DISTINGUISH_NORM_VALUE",
+          "title": "Distinguir norma de valor social",
+          "domain": "CULTURA",
+          "parent": "SOCIOLOGY_INDIVIDUAL",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 0,
+          "questionPurposes": []
+        },
+        {
+          "code": "SOCIOLOGY_ANALYZE_INEQUALITY_DATA",
+          "title": "Analisar dados de desigualdade",
+          "domain": "ESTRUTURA",
+          "parent": "SOCIOLOGY_STRUCTURE",
+          "recommendedStage": "ENSINO_MEDIO",
+          "recommendedGradeFrom": 1,
+          "recommendedGradeTo": 3,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-art",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "ART",
+      "subjectName": "Arte",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "CURATOR_REVIEW_REQUIRED",
+      "skills": [
+        {
+          "code": "ART_INTERPRET_WORK",
+          "title": "Interpretar elementos de uma obra",
+          "domain": "INTERPRETACAO",
+          "parent": "ART_INTERPRETATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 6,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "ART_COMPARE_COMPOSITIONS",
+          "title": "Comparar composicoes artisticas",
+          "domain": "ELEMENTOS",
+          "parent": "ART_ELEMENTS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 3,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE"
+          ]
+        },
+        {
+          "code": "ART_RELATE_WORK_CONTEXT",
+          "title": "Relacionar obra e contexto cultural",
+          "domain": "CONTEXTO",
+          "parent": "ART_CONTEXT",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 4,
+          "questionPurposes": [
+            "PRACTICE",
+            "PROBE",
+            "REVIEW"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 0,
+        "scaffoldSkills": 3,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-physical_education",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "PHYSICAL_EDUCATION",
+      "subjectName": "Educacao Fisica",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "CURATOR_REVIEW_REQUIRED",
+      "skills": [
+        {
+          "code": "PE_EXPLAIN_SPORT_PRINCIPLES",
+          "title": "Explicar principios de esportes",
+          "domain": "ESPORTES",
+          "parent": "PE_SPORTS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 9,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "PE_ANALYZE_MOVEMENT",
+          "title": "Analisar movimento corporal",
+          "domain": "CORPO",
+          "parent": "PE_BODY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "PE_PLAN_SAFE_ACTIVITY",
+          "title": "Planejar atividade fisica segura",
+          "domain": "SAUDE",
+          "parent": "PE_HEALTH",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 0,
+        "scaffoldSkills": 3,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-english",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "ENGLISH",
+      "subjectName": "Lingua Inglesa",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "DEFAULT_AUTOMATIC_ELIGIBLE",
+      "skills": [
+        {
+          "code": "ENGLISH_INFER_FROM_TEXT",
+          "title": "Inferir sentido em texto em ingles",
+          "domain": "LEITURA",
+          "parent": "ENGLISH_READING",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "ADAPTIVE_READY",
+          "contentStatus": "TECH_VALIDATED",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 10,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "ENGLISH_USE_CONTEXT_VOCABULARY",
+          "title": "Interpretar vocabulario pelo contexto",
+          "domain": "VOCABULARIO",
+          "parent": "ENGLISH_VOCABULARY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PROBE"
+          ]
+        },
+        {
+          "code": "ENGLISH_RELATE_LANGUAGE_CULTURE",
+          "title": "Relacionar linguagem e contexto cultural",
+          "domain": "CULTURA",
+          "parent": "ENGLISH_COMMUNICATION",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "PRACTICE"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 1,
+        "scaffoldSkills": 2,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-religious_education",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "RELIGIOUS_EDUCATION",
+      "subjectName": "Ensino Religioso",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "CURATOR_REVIEW_REQUIRED",
+      "skills": [
+        {
+          "code": "RELIGIOUS_COMPARE_TRADITIONS",
+          "title": "Comparar tradicoes com respeito",
+          "domain": "DIVERSIDADE",
+          "parent": "RELIGIOUS_DIVERSITY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 10,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW",
+            "TRANSFER"
+          ]
+        },
+        {
+          "code": "RELIGIOUS_INTERPRET_SYMBOLS",
+          "title": "Interpretar simbolos e narrativas",
+          "domain": "TRADICOES",
+          "parent": "RELIGIOUS_TRADITIONS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 2,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE"
+          ]
+        },
+        {
+          "code": "RELIGIOUS_MEDIATE_DIALOGUE",
+          "title": "Mediar dialogo sobre conviccoes",
+          "domain": "DIALOGO",
+          "parent": "RELIGIOUS_DIALOGUE",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "REVIEW"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 0,
+        "scaffoldSkills": 3,
+        "lessons": 1,
+        "questions": 13
+      }
+    },
+    {
+      "packageId": "tec-escola-core-v4-computing",
+      "packVersion": "tec-escola-core-v4",
+      "subjectCode": "COMPUTING",
+      "subjectName": "Computacao e Educacao Digital",
+      "provenance": "TECESCOLA_DERIVED_VERSIONED_CONTENT",
+      "bnccAlignment": "NOT_CLAIMED",
+      "pedagogicalReviewStatus": "PEDAGOGICAL_REVIEW_PENDING",
+      "availability": "CURATOR_REVIEW_REQUIRED",
+      "skills": [
+        {
+          "code": "COMPUTING_TRACE_ALGORITHM",
+          "title": "Rastrear algoritmo com condicoes",
+          "domain": "ALGORITMOS",
+          "parent": "COMPUTING_ALGORITHMS",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "CONTENT_READY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 1,
+          "questionCount": 9,
+          "questionPurposes": [
+            "LOCK_IN",
+            "PRACTICE",
+            "PROBE",
+            "REVIEW"
+          ]
+        },
+        {
+          "code": "COMPUTING_READ_TABLE_DATA",
+          "title": "Selecionar dados em uma tabela",
+          "domain": "DADOS",
+          "parent": "COMPUTING_DATA",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 1,
+          "questionPurposes": [
+            "LOCK_IN"
+          ]
+        },
+        {
+          "code": "COMPUTING_RECOGNIZE_PHISHING",
+          "title": "Reconhecer sinais de phishing",
+          "domain": "SEGURANCA",
+          "parent": "COMPUTING_SAFETY",
+          "recommendedStage": "FUNDAMENTAL_II",
+          "recommendedGradeFrom": 6,
+          "recommendedGradeTo": 9,
+          "readiness": "GRAPH_ONLY",
+          "contentStatus": "SCAFFOLD",
+          "bnccAlignment": "NOT_CLAIMED",
+          "lessonCount": 0,
+          "questionCount": 3,
+          "questionPurposes": [
+            "REVIEW",
+            "TRANSFER"
+          ]
+        }
+      ],
+      "summary": {
+        "totalSkills": 3,
+        "techValidatedSkills": 0,
+        "scaffoldSkills": 3,
+        "lessons": 1,
+        "questions": 13
+      }
+    }
+  ],
+  "contentHash": "a707dda0579bca6c8a681aa837fc671502f3bd58c822b657746f9b52a137d1f7"
+}

@@ -27,7 +27,18 @@
     "status": "PARTIAL",
     "officialBnccCoverage": "NOT_CLAIMED",
     "tecEscolaDerivedV4": "PRESERVED",
-    "pedagogicalReview": "PENDING"
+    "pedagogicalReview": "PENDING",
+    "contentFactory": {
+      "status": "TECHNICAL_MANIFEST_GENERATED",
+      "packVersion": "tec-escola-core-v4",
+      "totalPackages": 15,
+      "defaultAutomaticEligible": 9,
+      "techValidatedSkills": 10,
+      "scaffoldSkills": 55,
+      "totalLessons": 16,
+      "totalQuestions": 211,
+      "bnccAlignment": "NOT_CLAIMED"
+    }
   },
   "defaultAvailability": {
     "status": "ACTIVE_FOR_EXISTING_TECESCOLA_V4_PACKAGES",
