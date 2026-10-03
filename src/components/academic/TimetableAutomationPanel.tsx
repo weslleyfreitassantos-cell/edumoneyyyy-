@@ -473,7 +473,11 @@ export default function TimetableAutomationPanel({
         id: editingEntry.id,
         versionId: reviewVersionId,
         institutionId,
-        ...entryDraft,
+        dayOfWeek: entryDraft.day_of_week,
+        startTime: entryDraft.start_time,
+        endTime: entryDraft.end_time,
+        locked: entryDraft.locked,
+        roomId: editingEntry.room_id ?? null,
       });
       setEditingEntry(null);
       setEntryDraft(null);

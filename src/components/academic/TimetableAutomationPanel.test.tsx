@@ -180,6 +180,41 @@ describe('TimetableAutomationPanel', () => {
     expect(screen.getByRole('checkbox')).toBeTruthy();
   });
 
+  it('envia os campos da edição no formato esperado pelo serviço', async () => {
+    vi.mocked(useTimetableVersions).mockReturnValue({
+      data: [{ id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', name: 'Proposta', status: 'DRAFT', generation_source: 'DETERMINISTIC_GENERATOR', created_at: '2026-01-01', published_at: null }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    vi.mocked(useTimetableVersionEntries).mockReturnValue({
+      data: [{ id: 'entry-1', version_id: 'version-1', institution_id: 'institution-1', academic_year_id: 'year-1', term_id: 'term-1', class_id: 'class-1', class_name: '1A', subject_offering_id: 'offering-1', subject_name: 'Português', teacher_profile_id: 'teacher-1', teacher_name: 'Professora Ana', room_id: null, day_of_week: 1, start_time: '07:00', end_time: '07:50', locked: false, active: true }],
+      isLoading: false,
+      isError: false,
+      error: null,
+    } as never);
+    updateEntryMutation.mutateAsync.mockResolvedValue(undefined);
+
+    render(<TimetableAutomationPanel institutionId="institution-1" createdBy="profile-1" />);
+    fireEvent.click(screen.getByRole('button', { name: 'Revisar grade' }));
+    fireEvent.click(screen.getByRole('button', { name: /07:00 PortuguêsProfessora Ana/i }));
+    fireEvent.click(screen.getByRole('checkbox'));
+    fireEvent.click(screen.getByRole('button', { name: 'Salvar alteração' }));
+
+    await waitFor(() => {
+      expect(updateEntryMutation.mutateAsync).toHaveBeenCalledWith({
+        id: 'entry-1',
+        versionId: 'version-1',
+        institutionId: 'institution-1',
+        dayOfWeek: 1,
+        startTime: '07:00',
+        endTime: '07:50',
+        locked: true,
+        roomId: null,
+      });
+    });
+  });
+
   it('mostra o bloqueio e os diagnósticos quando a geração é UNSAT', async () => {
     generateMutation.mutateAsync.mockResolvedValue({
       valid: false,
